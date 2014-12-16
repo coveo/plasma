@@ -10,9 +10,11 @@ It is widely inspired by [Bootstrap 3.0](https://github.com/twbs/bootstrap) and 
 
 The project is at it's early stages, some components can still have _lots_ of breaking changes.
 
-# Contributing
+# Compiling
 
-TODO
+Make sure you have Node JS and NPM installed.
+Run `npm install`, then `npm run compile`.
+The compiled styleguide will be available in the `/styleguide` folder.
 
 
 # License
