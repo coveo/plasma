@@ -1,0 +1,275 @@
+// Tables
+//
+// Basic table
+//
+// Markup:
+//<table class="admin-table">
+//  <thead>
+//    <tr>
+//      <th>Column 1</th>
+//      <th>Column 2</th>
+//      <th>Column 3</th>
+//    </tr>
+//  </thead>
+//  <tbody>
+//    <tr>
+//      <td>Data 1</td>
+//      <td>Data 2</td>
+//      <td>Data 3</td>
+//    </tr>
+//    <tr>
+//      <td>Data 1</td>
+//      <td>Data 2</td>
+//      <td>Data 3</td>
+//    </tr>
+//  </tbody>
+//</table>
+//
+// Styleguide 4.1
+
+@import "../common/colors";
+@import "../common/sprites";
+
+table.admin-table {
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+    border: none;
+
+    th, td {
+        vertical-align: middle;
+        text-align: left;
+    }
+
+    th {
+        padding: 2px 10px;
+
+        &.selection {
+            width: 1%;
+        }
+
+        tr.actions-bar {
+            height: 20px;
+        }
+    }
+
+    td {
+        padding: 5px 10px 6px;
+    }
+
+    .dataTables_empty {
+        text-align: center;
+    }
+
+    thead {
+        font-size: 13px;
+
+        tr {
+            background-color: @table-header-background-color-light;
+            color: @table-header-text-color;
+
+            th {
+                padding: 4px 10px;
+                white-space: nowrap;
+
+                &.metric {
+                    background-color: @metric-table-header-color;
+                    color: @heading-2-color;
+                }
+
+                &.admin-sort {
+                    cursor: pointer;
+                    padding-right: 5px;
+
+                    .admin-sort-icon {
+                        float: left;
+                        margin: 3px 5px 0 0;
+
+                        i {
+                            opacity: 0.3;
+                            display: block;
+                            margin: 1px 0;
+                            &:hover {
+                                opacity: 0.6;
+                            }
+                        }
+                    }
+
+                    &.admin-sort-ascending, &.sorting_asc {
+                        cursor: pointer;
+                        color: @text-color;
+
+                        .admin-sort-icon i.coveo-sprites-tables-sort_asc {
+                            opacity: 1;
+                        }
+                    }
+
+                    &.admin-sort-descending, &.sorting_desc {
+                        cursor: pointer;
+                        color: @text-color;
+
+                        .admin-sort-icon i.coveo-sprites-tables-sort_desc {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                &.sorting_asc {
+                    background-color: @table-header-background-hover;
+                    background-image: none;
+                    cursor: pointer;
+
+                    .icon-sort {
+                        display: inline-block;
+                        .coveo-sprites-datatables-sorttable_asc;
+                    }
+                }
+
+                &.sorting_desc {
+                    background-color: @table-header-background-hover;
+                    background-image: none;
+                    cursor: pointer;
+
+                    .icon-sort {
+                        display: inline-block;
+                        .coveo-sprites-datatables-sorttable_desc;
+                    }
+                }
+
+                &.sorting {
+                    cursor: pointer;
+                }
+
+                &.sorting_disabled {
+                    cursor: default;
+                }
+
+                &.sorting, &.sorting_asc, &.sorting_desc, &.admin-sort {
+                    &:hover {
+                        background-color: @table-header-background-hover;
+                    }
+                }
+            }
+        }
+    }
+
+    tbody.table-loading {
+        opacity: 0.3;
+    }
+
+    tbody tr {
+        font-size: 15px;
+
+        td {
+            border-bottom: solid 1px @table-row-border;
+
+            .btn-icon, .dropdown-toggle {
+                padding: 2px 4px;
+                cursor: default;
+                opacity: 0.3;
+
+                &.enabled:active:hover {
+                    border-radius: 4px 4px 4px 4px;
+                }
+
+                &.disabled {
+                    cursor: default;
+                    opacity: 0.3;
+                }
+
+                &.enabled {
+                    cursor: pointer;
+                    opacity: 1;
+                }
+            }
+
+            &.actions, &.visibility {
+                user-select: none;
+                white-space: nowrap;
+                text-align: center;
+
+                & > div {
+                    float: left;
+                    font-size: inherit;
+                    vertical-align: baseline;
+                }
+
+                i {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                .btn-group {
+                    &.open {
+                        .dropdown-toggle.enabled {
+                            border-radius: 4px 4px 4px 4px;
+                        }
+                    }
+                }
+
+                #actions {
+                    min-height: 16px;
+                }
+
+                .dropdown-menu {
+                    left: inherit;
+                    right: 0;
+                    text-align: left;
+                    min-width: 135px;
+
+                    .arrow-up {
+                        right: 5px;
+                    }
+
+                    .dropdown-label {
+                        font-size: 12px;
+                        padding-left: 15px;
+
+                        &:hover {
+                            background: none;
+                        }
+                    }
+
+                    .visibility a {
+                        font-size: 14px;
+
+                        &.active {
+                            font-weight: bold;
+                        }
+
+                        i {
+                            margin: -4px 5px 0 0;
+                        }
+                    }
+
+                    .hide {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &.row-selected td, &.row-selected:hover td {
+            background-color: @table-row-background-selected;
+        }
+
+        &:hover > td {
+            background-color: @table-row-background-hover;
+        }
+
+        &.empty td {
+            text-align: center;
+            padding: 25px;
+        }
+
+        &.admin-focus {
+            td {
+                background-color: #f5f9fd;
+
+                &.admin-focus-cell {
+                    background-color: #ebf3fb;
+                }
+            }
+        }
+    }
+}

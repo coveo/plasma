@@ -1,0 +1,146 @@
+// Text Input
+//
+// Below are the text-oriented form elements used on the site.
+//
+// Single-Line Text Boxes, Standard text boxes.
+//
+// :disabled - When disabled, the input's appearance should reflect as such.
+//
+// Markup:
+// <input type="text" class="{$modifiers}" value="Text"/>
+// <input type="text" class="{$modifiers}" placeholder="Placeholder"/>
+//
+// Styleguide 5.1
+@import "../common/colors";
+@import "../common/font";
+
+::-webkit-input-placeholder {
+    // WebKit browsers
+    font-family: @base-font-family;
+    font-size: 16px;
+    color: @placeholder-text;
+    text-transform: none;
+}
+
+:-moz-placeholder {
+    // Mozilla Firefox 4 to 18
+    font-family: @base-font-family;
+    font-size: 16px;
+    color: @placeholder-text;
+    text-transform: none;
+}
+
+::-moz-placeholder {
+    // Mozilla Firefox 19+
+    font-family: @base-font-family;
+    font-size: 16px;
+    color: @placeholder-text;
+    text-transform: none;
+}
+
+:-ms-input-placeholder {
+    // Internet Explorer 10+
+    font-family: @base-font-family;
+    font-size: 16px;
+    color: @placeholder-text;
+    text-transform: none;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    padding: 4px 6px;
+
+    font-family: @base-font-family;
+    font-size: 16px;
+    color: black;
+
+    border: 1px solid @input-border;
+    border-radius: 2px;
+}
+
+input[type='text'],
+textarea {
+    &.admin-invisible-textbox {
+        padding: 4px 6px;
+        margin-bottom: 0;
+        background: transparent;
+        border-width: 0;
+        resize: none;
+    }
+}
+
+
+// Numeric Spinner
+//
+// Spinner for numeric values
+//
+// Markup:
+//  <div class="input-group admin-numeric-spinner">
+//      <input type="text" value="1" class="">
+//      <span class="add-on">
+//          <div id="SpinnerUp">
+//              <i class="coveo-sprites-misc-spinner_arrow_up"></i>
+//          </div>
+//          <div id="SpinnerDown">
+//              <i class="coveo-sprites-misc-spinner_arrow_down"></i>
+//          </div>
+//      </span>
+//  </div>
+//
+// Styleguide 5.2
+.admin-numeric-spinner.input-group {
+    input[type='text'] {
+        width: 35px;
+    }
+
+    .add-on {
+        padding-top: 2px;
+        border-left-width: 0;
+        user-select: none;
+
+        div {
+            padding: 0 6px;
+            cursor: pointer;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: @coveo-dark-blue-grey;
+            }
+
+            i {
+                display: block;
+            }
+        }
+    }
+}
+
+.input-group{
+    input {
+        height: 30px;
+    }
+    .add-on {
+        display: inline-block;
+        height: 30px;
+        vertical-align: top;
+        padding: 0;
+        background-color: @button-background;
+        border: 1px solid darken(@button-background, 10%);
+
+        border-radius: 0 2px 2px 0;
+        margin-left: -5px;
+    }
+}

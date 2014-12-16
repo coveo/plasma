@@ -1,0 +1,145 @@
+// Collapsable
+//
+// Base styles and flexible support for collapsable components like accordions and navigation.
+//
+// Markup:
+//<div class="collapsable-panel-group" id="CollapsableSettings" role="tablist" aria-multiselectable="true">
+//    <div class="panel panel-default">
+//        <div class="panel-heading" role="tab" id="ExampleHeading">
+//            <a class="collapsed" data-toggle="collapse" data-parent="#CollapsableSettings" href="#Example" aria-expanded="false"
+//               aria-controls="Example">
+//                Example
+//            </a>
+//            <i class="toggle-icon"></i>
+//        </div>
+//        <div class="panel-collapse collapse" id="Example" role="tabpanel" aria-labelledby="ExampleHeading">
+//            <div class="panel-body">
+//                Example Content
+//            </div>
+//        </div>
+//    </div>
+//    <div class="panel panel-source">
+//        <div class="panel-heading" role="tab" id="SecuritySettingsHeading">
+//            <a class="collapsed" data-toggle="collapse" data-parent="#CollapsableSettings" href="#SecuritySettings"
+//               aria-expanded="false" aria-controls="SecuritySettings">
+//                Authentication
+//            </a>
+//            <i class="toggle-icon"></i>
+//        </div>
+//        <div class="panel-collapse collapse" id="SecuritySettings" role="tabpanel" aria-labelledby="SecuritySettingsHeading">
+//            <div class="panel-body">
+//                <form>
+//                    <div class="coveo-form">
+//                        <div class="form-group">
+//                            <label for="field1">
+//                                Field 1
+//                            </label>
+//                            <div class="value">
+//                                <input type="text" name="field1" id="field1" placeholder="Field 1" value="Field 1">
+//                            </div>
+//                        </div>
+//                        <div class="form-group input-validation-error">
+//                            <label for="field2">
+//                                Field 2
+//                            </label>
+//                            <div class="value validated-input">
+//                                <input type="text" name="field2" id="field2" placeholder="Field 2">
+//                                <div class="input-validation-error-details">
+//                                    <i class="coveo-sprites-misc-alert"></i>
+//                                    <span class="input-validation-error-message">Error message goes here!</span>
+//                                </div>
+//                            </div>
+//                        </div>
+//                    </div>
+//                </form>
+//            </div>
+//        </div>
+//    </div>
+//</div>
+//
+// Styleguide 1.1
+
+@import "../common/colors";
+@import "../common/vendor-prefixes";
+@import "../common/font";
+@import "../common/sprites";
+
+.collapsable-panel-group {
+
+    .collapse {
+        display: none;
+        visibility: hidden;
+
+        &.in {
+            display: block;
+            visibility: visible;
+        }
+        tr&.in {
+            display: table-row;
+        }
+        tbody&.in {
+            display: table-row-group;
+        }
+    }
+
+    .collapsing {
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        .transition-property(~"height, visibility");
+        .transition-duration(.35s);
+        .transition-timing-function(ease);
+    }
+
+    .panel {
+
+        @bottom-top-border-height: 2px;
+
+        border-top: @bottom-top-border-height solid @table-header-border;
+        border-bottom: @bottom-top-border-height solid @table-header-border;
+
+        margin-bottom: 15px;
+
+        + .panel {
+            margin-top: 5px;
+        }
+
+        .panel-heading {
+
+            padding: 8px 10px 7px 10px;
+            position: relative;
+
+            a {
+                font-family: @base-font-family;
+                font-size: 16px;
+                color: @table-header-text-color-light;
+
+                display: block;
+                outline: none;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            i.toggle-icon {
+                .coveo-sprites-misc-panel-expended();
+                content: "\00a0";
+                display: inline-block;
+                position: absolute;
+                right: 11px;
+                top: 14px;
+                z-index: -1;
+            }
+
+            a.collapsed + i.toggle-icon {
+                .coveo-sprites-misc-panel-collapsed();
+            }
+        }
+
+        &.panel-default {
+
+            .panel-body {
+                padding: 0 10px 18px 10px
+            }
+        }
+    }
+}
