@@ -1,0 +1,259 @@
+// Table form
+//
+// Aligned form. Use as a `table` or as a `form`. Prefer `form`. Table is for legacy purpose only.
+//
+// Markup:
+//<form>
+//    <div class="coveo-form">
+//        <table>
+//            <tbody>
+//            <tr>
+//                <th>Field 1</th>
+//                <td>
+//                    <div>
+//                        <input type="text" name="field1" placeholder="Field 1" value="Field 1">
+//                    </div>
+//                </td>
+//            </tr>
+//            <tr>
+//                <th>Field 2</th>
+//                <td>
+//                    <div class="validated-input">
+//                        <input type="text" name="field2" placeholder="Field 2">
+//                    </div>
+//                    <div class="input-validation-error-details">
+//                        <i class="coveo-sprites-misc-alert"></i>
+//                        <span class="input-validation-error-message">Error message goes here!</span>
+//                    </div>
+//                </td>
+//            </tr>
+//            <tr class="input-validation-error">
+//                <th>Field 3</th>
+//                <td>
+//                    <div class="validated-input">
+//                        <input type="text" name="field3" placeholder="Field 3">
+//                    </div>
+//                    <div class="input-validation-error-details">
+//                        <i class="coveo-sprites-misc-alert"></i>
+//                        <span class="input-validation-error-message">Error message goes here!</span>
+//                    </div>
+//                </td>
+//            </tr>
+//            </tbody>
+//        </table>
+//    </div>
+//</form>
+//<br/>
+//<form>
+//    <div class="coveo-form">
+//        <div class="form-group">
+//            <label for="field1">
+//                Field 1
+//            </label>
+//            <div class="value">
+//                <input type="text" name="field1" placeholder="Field 1" value="Field 1">
+//            </div>
+//        </div>
+//        <div class="form-group">
+//            <label for="field2">
+//                Field 2
+//            </label>
+//            <div class="value validated-input">
+//                <input type="text" name="field2" placeholder="Field 2">
+//                <div class="input-validation-error-details">
+//                    <i class="coveo-sprites-misc-alert"></i>
+//                    <span class="input-validation-error-message">Error message goes here!</span>
+//                </div>
+//            </div>
+//        </div>
+//        <div class="form-group input-validation-error">
+//            <label for="field3">
+//                Field 3
+//            </label>
+//            <div class="value validated-input">
+//                <input type="text" name="field3" placeholder="Field 3">
+//                <div class="input-validation-error-details">
+//                    <i class="coveo-sprites-misc-alert"></i>
+//                    <span class="input-validation-error-message">Error message goes here!</span>
+//                </div>
+//            </div>
+//        </div>
+//    </div>
+//</form>
+//
+// Styleguide 5.6
+@import "../common/colors";
+@import "../common/font";
+@import (reference) "../common/mixins";
+
+form {
+    .coveo-form {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        margin-bottom: 22px;
+        text-align: left;
+
+        tr, .form-group {
+            display: table-row;
+            color: @block-text-color;
+            height: 36px;
+
+            & > label:first-child, .value, th, td {
+                display: table-cell;
+                border-bottom: solid 1px @table-header-background-color-dark;
+            }
+
+            & > label:first-child, th {
+                width: 25%;
+                background-color: @body-background-color;
+                padding: 0 10px;
+                vertical-align: middle;
+
+                font-family: @base-font-family;
+                font-size: 16px;
+                color: @table-header-text-color;
+            }
+
+            .context-help {
+                float: right;
+            }
+
+            .coveo-checkbox + span {
+                margin-left: 10px;
+            }
+
+            .input-validation-error-details {
+                display: none;
+            }
+
+            td > div:first-child {
+                border-top: 2px solid white;
+            }
+
+            .value, td {
+                background-color: @table-editable-cell-color;
+                border-top: 2px solid white;
+                vertical-align: middle;
+
+                input, textarea, .admin-select {
+                    padding: 6px 10px;
+                    .box-sizing(border-box);
+                }
+
+                input {
+                    height: 39px;
+                    width: 100%;
+                    text-align: left;
+                    margin-bottom: 0;
+                    background-color: transparent;
+                    border-width: 0;
+                    box-shadow: none;
+                    resize: none;
+                }
+
+                &.admin-editable:hover {
+                    background-color: @table-editable-cell-hover;
+                }
+
+                &.admin-non-editable {
+                    background-color: @body-background-color;
+                    padding-left: 9px;
+
+                    i {
+                        margin-right: 5px;
+                        vertical-align: text-bottom;
+                    }
+                }
+
+                .admin-multiline {
+                    border: none;
+                    margin-bottom: 0;
+                }
+
+                .admin-select {
+                    float: left;
+                    width: 100%;
+
+                    .dropdown-toggle {
+                        cursor: pointer;
+                        width: 100%;
+                        text-align: left;
+                        border: none;
+                        background-color: transparent;
+                        padding-right: 0;
+                        padding-left: 0;
+                        .opacity(1);
+                        .box-shadow(none);
+                        .box-sizing(border-box);
+
+                        .coveo-sprites-misc-dropdown_arrow {
+                            position: absolute;
+                            right: 0;
+                        }
+                    }
+
+                    .dropdown-menu {
+                        width: 100%;
+                        text-align: left;
+                        max-height: 250px;
+                        overflow-y: auto;
+                        .slim-scroll();
+                        .box-sizing(border-box);
+
+                        li a i {
+                            margin-top: 0;
+                            margin-bottom: 0;
+                            vertical-align: text-top;
+                        }
+                    }
+                }
+
+                textarea {
+                    width: 100%;
+                    margin-bottom: 0;
+                    background-color: transparent;
+                    border: none;
+                    box-shadow: none;
+                    resize: vertical;
+                    .slim-scroll();
+                }
+            }
+        }
+
+        tr.input-validation-error,  .form-group.input-validation-error {
+
+            td, .value {
+                background-color: @invalid-background-color;
+            }
+
+            .validated-input {
+                input:focus {
+                    background-color: @invalid-background-color;
+                }
+            }
+
+            .input-validation-error-details {
+                background-color: @invalid-message-background-color;
+                color: white;
+                display: block;
+                padding: 0 10px;
+
+                font-size: 11px;
+                line-height: 15px;
+
+                i {
+                    vertical-align: -2px;
+                }
+            }
+
+            th, label {
+                color: @error-color;
+            }
+
+            td, th, label, .value {
+                border-bottom: solid 1px @invalid-message-background-color;
+            }
+        }
+    }
+}
