@@ -1,97 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Styleguide Example</title>
-  <link rel="stylesheet" href="public/kss.css" type="text/css" />
-  <link rel="stylesheet" href="public/style.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
-  <!--[if lt IE 9]>
-  <script src="public/html5shiv.js"></script>
-  <![endif]-->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>Coveo Styleguide</title>
+    <meta name="description" content=""/>
+    <meta name="generator" content="kss-node"/>
+    <link rel="stylesheet" href="../lib/css/reset.css"/>
+    <link rel="stylesheet" href="public/kss.css"/>
+    <link rel="stylesheet" href="public/style.css"/>
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
 </head>
-<body id="styleguide">
-<header class="styleguide-header styleguide-reset">
-  <div class="styleguide-container">
-    <h1>Styleguide</h1>
-  </div>
-</header>
-<div class="styleguide-container">
-  <nav class="styleguide-menu styleguide-reset">
-    <ul class="styleguide-menu-list" data-kss-ref="{{rootNumber}}">
-      <li><a href="index.html">0. Overview</a></li>
-      {{#eachRoot}}
-      <li><a href="section-{{reference}}.html">{{reference}}. {{header}}</a></li>
-      {{/eachRoot}}
-    </ul>
-  </nav>
-
-  <div class="styleguide-content">
-
-    {{#if overview}}
-    <div class="styleguide-markdown-body styleguide-reset">
-      {{{overview}}}
-    </div>
-    {{else}}
-    {{#eachSection rootNumber}}
-    {{#if markup}}
-    <div class="styleguide-example">
-      <header class="styleguide-example-header styleguide-reset">
-        <h3>{{reference}} <em>{{header}}</em></h3>
-      </header>
-      {{#if description}}
-      <div class="styleguide-description styleguide-markdown-body styleguide-reset">
-        {{{description}}}
-
-        <ul class="styleguide-modifier">
-          {{#eachModifier}}
-          <li><strong>{{name}}</strong> - {{{description}}}</li>
-          {{/eachModifier}}
-        </ul>
-      </div>
-      {{/if}}
-
-      <div class="styleguide-element">
-        {{modifierMarkup}}
-      </div>
-
-      {{#eachModifier}}
-      <div class="styleguide-element styleguide-modifier">
-        <span class="styleguide-modifier-name">{{name}}</span>
-        {{modifierMarkup}}
-      </div>
-      {{/eachModifier}}
-
-      <div class="styleguide-html styleguide-reset">
-        <div class="styleguide-html-highlight">
-          <pre><code class="xml">{{markup}}</code></pre>
+<body id="kss-node">
+<div class="kss-wrapper">
+    <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+            <header class="kss-header">
+                <h1 class="kss-doc-title"><a href="./">Coveo Styleguide</a></h1>
+            </header>
+            <nav class="kss-nav">
+                <ul class="kss-menu" data-kss-ref="{{rootNumber}}">
+                    <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+                    {{#eachRoot}}
+                    <li class="kss-menu-item"><a href="section-{{reference}}.html"><span class="kss-ref">{{reference}}</span><span
+                            class="kss-name">{{header}}</span></a></li>
+                    {{/eachRoot}}
+                </ul>
+                {{#if overview}}
+                {{else}}
+                <ul class="kss-menu-child">
+                    {{#eachSection rootNumber}}
+                    {{#ifDepth 2}}
+                    <li class="kss-menu-item"><a href="#section-{{reference}}"><span class="kss-ref">{{reference}}</span><span
+                            class="kss-name">{{header}}</span></a></li>
+                    {{/ifDepth}}
+                    {{/eachSection}}
+                </ul>
+                {{/if}}
+            </nav>
         </div>
-      </div>
     </div>
-    {{else}}
-    <header class="example-header styleguide-reset">
-      <h1>{{header}}</h1>
-    </header>
-    {{#if description}}
-    <div class="markdown-body styleguide-reset">
-      {{{description}}}
+    <div class="kss-content">
+        <article class="kss-article">
+            {{#if overview}}
+            <section id="section-0" class="kss-section kss-overview">
+                {{{overview}}}
+            </section>
+            {{else}}
+            {{#eachSection rootNumber}}
+            <section id="section-{{reference}}" class="kss-section kss-depth-{{refDepth}}">
+                <h1 class="kss-title"><span class="kss-ref">{{reference}}</span> {{header}}</h1>
+                {{#if markup}}
+                {{#if description}}
+                <div class="kss-description">
+                    {{{description}}}
+                </div>
+                {{/if}}
+                <div class="kss-modifier-block">
+                    <div class="kss-modifier kss-modifier-original">
+                        <div class="kss-modifier-example">
+                            {{modifierMarkup}}
+                        </div>
+                    </div>
+                    {{#eachModifier}}
+                    <div class="kss-modifier">
+                        <div class="kss-modifier-head">
+                            <div class="kss-modifier-name">{{name}}</div>
+                            <div class="kss-modifier-description">
+                                {{{description}}}
+                            </div>
+                        </div>
+                        <div class="kss-modifier-example">
+                            {{modifierMarkup}}
+                        </div>
+                    </div>
+                    {{/eachModifier}}
+                    <div class="kss-markup">
+                        <pre><code data-language="html">{{markup}}</code></pre>
+                    </div>
+                </div>
+                {{else}}
+                {{#if description}}
+                <div class="kss-description">
+                    {{{description}}}
+                </div>
+                {{/if}}
+                {{/if}}
+            </section>
+            {{/eachSection}}
+            {{/if}}
+        </article>
+        <footer class="kss-footer">
+            <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a
+                    href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.
+            </div>
+        </footer>
     </div>
-    {{/if}}
-    {{/if}}
-    {{/eachSection}}
-    {{/if}}
-  </div>
 </div>
-
-<footer class="styleguide-footer styleguide-reset styleguide-container">
-  <p>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a>.</p>
-  <p>Designed by <a href="https://github.com/">GitHub</a> , <a href="http://warpspire.com/">Kyle Neath</a>. Adjusted by 1026</p>
-</footer>
 <script src="public/kss.js"></script>
-<script src="public/jquery-1.10.2.min.js"></script>
-<script src="public/styleguide.js"></script>
-<script src="../js/transition.js"></script>
-<script src="../js/collapse.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="public/jquery-1.11.2.min.js"></script>
+<!--[if gt IE 8]><!-->
+<script src="public/rainbow.min.js"></script>
+<!--<![endif]-->
+<script src="../lib/js/collapse.js"></script>
+<script src="../lib/js/transition.js"></script>
+<script src="public/main.js"></script>
 </body>
 </html>
