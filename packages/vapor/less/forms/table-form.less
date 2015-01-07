@@ -84,14 +84,15 @@
 // Styleguide 5.6
 @import "../common/colors";
 @import "../common/font";
-@import (reference) "../common/mixins";
+@import (reference) "../../lib/_elements";
+@import (reference) "../../_mixins";
 
 form {
     .coveo-form {
         display: table;
         table-layout: fixed;
         width: 100%;
-        margin-bottom: 22px;
+        margin-bottom: 20px;
         text-align: left;
 
         tr, .form-group {
@@ -172,7 +173,6 @@ form {
                 }
 
                 .admin-select {
-                    float: left;
                     width: 100%;
 
                     .dropdown-toggle {
@@ -183,7 +183,7 @@ form {
                         background-color: transparent;
                         padding-right: 0;
                         padding-left: 0;
-                        .opacity(1);
+                        opacity: 1;
                         .box-shadow(none);
                         .box-sizing(border-box);
 
@@ -219,40 +219,50 @@ form {
                     .slim-scroll();
                 }
             }
-        }
 
-        tr.input-validation-error,  .form-group.input-validation-error {
+            &.input-validation-error, &.multiline-input-validation-error {
 
-            td, .value {
-                background-color: @invalid-background-color;
+                .input-validation-error-details {
+                    background-color: @invalid-message-background-color;
+                    color: white;
+                    display: block;
+                    padding: 0 10px;
+
+                    font-size: 11px;
+                    line-height: 15px;
+
+                    i {
+                        vertical-align: -2px;
+                    }
+                }
+
+                th, label {
+                    color: @error-color;
+                }
+
+                td, th, label, .value {
+                    border-bottom: solid 1px @invalid-message-background-color;
+                }
             }
 
-            .validated-input {
-                input:focus {
+            &.input-validation-error {
+
+                td, .value {
                     background-color: @invalid-background-color;
                 }
             }
 
-            .input-validation-error-details {
-                background-color: @invalid-message-background-color;
-                color: white;
-                display: block;
-                padding: 0 10px;
-
-                font-size: 11px;
-                line-height: 15px;
-
-                i {
-                    vertical-align: -2px;
-                }
+            &.multiline-input-validation-error .erroneous-input {
+                background-color: @invalid-background-color;
             }
+        }
 
-            th, label {
-                color: @error-color;
-            }
+        .form-simple-row {
+            display: table-row;
 
-            td, th, label, .value {
-                border-bottom: solid 1px @invalid-message-background-color;
+            .simple-input {
+                margin-left: 10px;
+                margin-top: 10px;
             }
         }
     }
