@@ -1,275 +1,113 @@
-// Tables
+// Users labels
 //
-// Basic table
+// Labels for users types
 //
 // Markup:
-//<table class="admin-table">
-//  <thead>
-//    <tr>
-//      <th>Column 1</th>
-//      <th>Column 2</th>
-//      <th>Column 3</th>
-//    </tr>
-//  </thead>
-//  <tbody>
-//    <tr>
-//      <td>Data 1</td>
-//      <td>Data 2</td>
-//      <td>Data 3</td>
-//    </tr>
-//    <tr>
-//      <td>Data 1</td>
-//      <td>Data 2</td>
-//      <td>Data 3</td>
-//    </tr>
-//  </tbody>
-//</table>
+// <span class="user-type user-admin">admin</span>
+// <span class="user-type user-user">user</span>
+// <span class="user-type user-role_uareader">usage analyst</span>
+// <span class="user-type user-role_rankingeditor">relevance analyst</span>
+// <span class="user-type user-owner">owner</span>
+// <span class="user-type user-ops">ops</span>
 //
-// Styleguide 4.1
+// Styleguide 2.2
 
+@import "../common/font";
 @import "../common/colors";
-@import "../common/sprites";
 
-table.admin-table {
-    width: 100%;
-    text-align: left;
-    border-spacing: 0;
-    border: none;
+.user-type {
+    font-size: 10px;
+    font-weight: bold;
+    font-family: @base-font-family;
+    text-transform: uppercase;
+    background-color: @placeholder-text;
+    color: #ffffff;
+    cursor: default;
+    padding: 0 4px;
+    display: inline-block;
+    border-radius: 2px;
 
-    th, td {
-        vertical-align: middle;
-        text-align: left;
+    &.user-admin {
+        background-color: @user-admin-color;
     }
 
-    th {
-        padding: 2px 10px;
-
-        &.selection {
-            width: 1%;
-        }
-
-        tr.actions-bar {
-            height: 20px;
-        }
+    &.user-user {
+        background-color: @user-user-color;
     }
 
-    td {
-        padding: 5px 10px 6px;
+    &.user-role_uareader {
+        background-color: @user-ua-reader-color;
     }
 
-    .dataTables_empty {
-        text-align: center;
+    &.user-role_rankingeditor {
+        background-color: @user-ranking-editor-color;
     }
 
-    thead {
-        font-size: 13px;
-
-        tr {
-            background-color: @table-header-background-color-light;
-            color: @table-header-text-color;
-
-            th {
-                padding: 4px 10px;
-                white-space: nowrap;
-
-                &.metric {
-                    background-color: @metric-table-header-color;
-                    color: @heading-2-color;
-                }
-
-                &.admin-sort {
-                    cursor: pointer;
-                    padding-right: 5px;
-
-                    .admin-sort-icon {
-                        float: left;
-                        margin: 3px 5px 0 0;
-
-                        i {
-                            opacity: 0.3;
-                            display: block;
-                            margin: 1px 0;
-                            &:hover {
-                                opacity: 0.6;
-                            }
-                        }
-                    }
-
-                    &.admin-sort-ascending, &.sorting_asc {
-                        cursor: pointer;
-                        color: @text-color;
-
-                        .admin-sort-icon i.coveo-sprites-tables-sort_asc {
-                            opacity: 1;
-                        }
-                    }
-
-                    &.admin-sort-descending, &.sorting_desc {
-                        cursor: pointer;
-                        color: @text-color;
-
-                        .admin-sort-icon i.coveo-sprites-tables-sort_desc {
-                            opacity: 1;
-                        }
-                    }
-                }
-
-                &.sorting_asc {
-                    background-color: @table-header-background-hover;
-                    background-image: none;
-                    cursor: pointer;
-
-                    .icon-sort {
-                        display: inline-block;
-                        .coveo-sprites-datatables-sorttable_asc;
-                    }
-                }
-
-                &.sorting_desc {
-                    background-color: @table-header-background-hover;
-                    background-image: none;
-                    cursor: pointer;
-
-                    .icon-sort {
-                        display: inline-block;
-                        .coveo-sprites-datatables-sorttable_desc;
-                    }
-                }
-
-                &.sorting {
-                    cursor: pointer;
-                }
-
-                &.sorting_disabled {
-                    cursor: default;
-                }
-
-                &.sorting, &.sorting_asc, &.sorting_desc, &.admin-sort {
-                    &:hover {
-                        background-color: @table-header-background-hover;
-                    }
-                }
-            }
-        }
+    &.user-owner {
+        background-color: @user-owner-color;
     }
 
-    tbody.table-loading {
-        opacity: 0.3;
+    &.user-invited {
+        background-color: @user-invited-color;
     }
 
-    tbody tr {
-        font-size: 15px;
+    &.user-ops {
+        background-color: @user-ops-color;
+    }
+}
 
-        td {
-            border-bottom: solid 1px @table-row-border;
+// Organizations label
+//
+// Labels for license types
+//
+// Markup:
+// <span class="organization-type STANDARD-label">STANDARD</span>
+// <span class="organization-type SANDBOX-label">SANDBOX</span>
+// <span class="organization-type INTERNAL-label">INTERNAL</span>
+// <span class="organization-type DEMO-label">DEMO</span>
+// <span class="organization-type TRIAL-label">TRIAL</span>
+// <span class="organization-type FREE-label">FREE</span>
+// <span class="organization-type ua-only-label">ua only</span>
+//
+// Styleguide 2.3
 
-            .btn-icon, .dropdown-toggle {
-                padding: 2px 4px;
-                cursor: default;
-                opacity: 0.3;
+.organization-type {
+    font-size: 11px;
+    font-weight: bold;
+    font-family: @base-font-family;
+    text-transform: uppercase;
+    background-color: @placeholder-text;
+    color: #fff;
+    cursor: default;
+    padding: 0 4px;
+    display: inline-block;
+    border-radius: 2px;
 
-                &.enabled:active:hover {
-                    border-radius: 4px 4px 4px 4px;
-                }
+    &.STANDARD-label {
+        background-color: @standard-type-label-color;
+    }
 
-                &.disabled {
-                    cursor: default;
-                    opacity: 0.3;
-                }
+    &.SANDBOX-label {
+        background-color: @sandbox-type-label-color;
+    }
 
-                &.enabled {
-                    cursor: pointer;
-                    opacity: 1;
-                }
-            }
+    &.INTERNAL-label {
+        background-color: @internal-type-label-color;
+    }
 
-            &.actions, &.visibility {
-                user-select: none;
-                white-space: nowrap;
-                text-align: center;
+    &.DEMO-label {
+        background-color: @demo-type-label-color;
+    }
 
-                & > div {
-                    float: left;
-                    font-size: inherit;
-                    vertical-align: baseline;
-                }
+    &.TRIAL-label {
+        background-color: @trial-type-label-color;
+    }
 
-                i {
-                    display: inline-block;
-                    vertical-align: middle;
-                }
+    &.FREE-label {
+        background-color: @free-type-label-color;
+    }
 
-                .btn-group {
-                    &.open {
-                        .dropdown-toggle.enabled {
-                            border-radius: 4px 4px 4px 4px;
-                        }
-                    }
-                }
-
-                #actions {
-                    min-height: 16px;
-                }
-
-                .dropdown-menu {
-                    left: inherit;
-                    right: 0;
-                    text-align: left;
-                    min-width: 135px;
-
-                    .arrow-up {
-                        right: 5px;
-                    }
-
-                    .dropdown-label {
-                        font-size: 12px;
-                        padding-left: 15px;
-
-                        &:hover {
-                            background: none;
-                        }
-                    }
-
-                    .visibility a {
-                        font-size: 14px;
-
-                        &.active {
-                            font-weight: bold;
-                        }
-
-                        i {
-                            margin: -4px 5px 0 0;
-                        }
-                    }
-
-                    .hide {
-                        display: none;
-                    }
-                }
-            }
-        }
-
-        &.row-selected td, &.row-selected:hover td {
-            background-color: @table-row-background-selected;
-        }
-
-        &:hover > td {
-            background-color: @table-row-background-hover;
-        }
-
-        &.empty td {
-            text-align: center;
-            padding: 25px;
-        }
-
-        &.admin-focus {
-            td {
-                background-color: #f5f9fd;
-
-                &.admin-focus-cell {
-                    background-color: #ebf3fb;
-                }
-            }
-        }
+    &.ua-only-label {
+        background-color: @ua-only-label-color;
     }
 }
