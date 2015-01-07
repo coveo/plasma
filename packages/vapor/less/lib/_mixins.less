@@ -1,0 +1,245 @@
+﻿@import (reference) "_elements";
+
+.text-overflow(@value: ellipsis) {
+    -o-text-overflow: @value;
+    -ms-text-overflow: @value;
+    text-overflow: @value;
+}
+
+.background-size(@width: 100%, @height: 100%) {
+    -moz-background-size: @width @height;
+    -o-background-size: @width @height;
+    -webkit-background-size: @width @height;
+    background-size: @width @height;
+}
+
+.arrow-popup(@arrowSize, @backgroundColor, @borderColor) {
+    position: absolute;
+    background: @backgroundColor;
+    border: 1px solid @borderColor;
+    .rounded(4px);
+    .box-shadow(0 0 3px .5px rgba(0, 0, 0, 0.2));
+    z-index: 999;
+
+    &:after, &:before {
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-width: @arrowSize;
+        border-left-width: @arrowSize / 2 + 1;
+        border-right-width: @arrowSize / 2 + 1;
+    }
+
+    &:before {
+        border-color: rgba(204, 204, 204, 0);
+        border-width: @arrowSize + 1;
+        border-left-width: (@arrowSize + 1) / 2 + 1;
+        border-right-width: (@arrowSize + 1) / 2 + 1;
+    }
+}
+
+.arrow-top-popup(@arrowSize, @arrowPosition, @backgroundColor, @borderColor) {
+    .arrow-popup(@arrowSize, @backgroundColor, @borderColor);
+    &:after, &:before {
+        bottom: 100%;
+        left: @arrowPosition;
+    }
+
+    &:after {
+        border-bottom-color: @borderColor;
+    }
+
+    &:before {
+        border-bottom-color: @borderColor;
+    }
+}
+
+.arrow-bottom-popup(@arrowSize: 8px, @arrowPosition, @backgroundColor, @borderColor) {
+    .arrow-popup(@arrowSize, @backgroundColor, @borderColor);
+    &:after, &:before {
+        top: 100%;
+        left: @arrowPosition;
+    }
+
+    &:after {
+        border-top-color: @borderColor;
+        margin-left: -@arrowSize;
+    }
+
+    &:before {
+        border-top-color: @borderColor;
+        margin-left: -(@arrowSize + 1);
+    }
+}
+
+.arrow-top-right-popup(@arrowSize, @arrowPosition, @backgroundColor, @borderColor) {
+    .arrow-popup(@arrowSize, @backgroundColor, @borderColor);
+    &:after, &:before {
+        bottom: 100%;
+        right: @arrowPosition;
+        left: auto;
+    }
+
+    &:after {
+        border-bottom-color: @borderColor;
+        margin-right: -@arrowSize;
+    }
+
+    &:before {
+        border-bottom-color: @borderColor;
+        margin-right: -(@arrowSize + 1);
+    }
+}
+
+.arrow-bottom-right-popup(@arrowSize: 8px, @arrowPosition, @backgroundColor, @borderColor) {
+    .arrow-popup(@arrowSize, @backgroundColor, @borderColor);
+
+    &:after, &:before {
+        top: 100%;
+        right: @arrowPosition;
+        left: auto;
+    }
+
+    &:after {
+        border-top-color: @borderColor;
+        margin-right: -@arrowSize;
+    }
+
+    &:before {
+        border-top-color: @borderColor;
+        margin-right: -(@arrowSize + 1);
+    }
+}
+
+.arrow-left-popup(@arrowSize, @arrowPosition, @backgroundColor, @borderColor) {
+    .arrow-popup(@arrowSize, @backgroundColor, @borderColor);
+
+    &:after, &:before {
+        right: 100%;
+        bottom: @arrowPosition;
+    }
+
+    &:after {
+        border-right-color: @borderColor;
+        margin-top: -@arrowSize;
+    }
+
+    &:before {
+        border-right-color: @borderColor;
+        margin-top: -(@arrowSize + 1);
+    }
+}
+
+.arrow-right-popup(@arrowSize, @arrowPosition, @backgroundColor, @borderColor) {
+    .arrow-popup(@arrowSize, @backgroundColor, @borderColor);
+
+    &:after, &:before {
+        left: 100%;
+        bottom: @arrowPosition;
+    }
+
+    &:after {
+        border-left-color: @borderColor;
+        margin-top: -@arrowSize;
+    }
+
+    &:before {
+        border-left-color: @borderColor;
+        margin-top: -(@arrowSize + 1);
+    }
+}
+
+.slim-scroll() {
+    &::-webkit-scrollbar, ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-track, ::-webkit-scrollbar-track {
+        background-color: #D3D3D3;
+    }
+
+    &::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
+        background-color: #606060;
+        .rounded(3px);
+    }
+
+    &::-webkit-scrollbar-button, ::-webkit-scrollbar-button {
+        height: 0;
+        width: 0;
+    }
+}
+
+.btn(@btn-background, @text-color ) {
+    @btn-border: darken(@btn-background, 10%);
+
+    .rounded (3px);
+    .box-shadow(0 1px 0 rgba(0, 0, 0, 0.2));
+    background: @btn-background;
+    border: 1px solid @btn-border;
+    color: @text-color;
+    cursor: pointer;
+
+    &:hover {
+        @btn-background-hover: lighten(@btn-background, 10%);
+        @btn-border-hover: lighten(@btn-border, 10%);
+
+        background: @btn-background-hover;
+        border: 1px solid @btn-border-hover;
+    }
+
+    &:focus {
+        background-color: @btn-border;
+    }
+
+    &:disabled, &.disabled {
+        .drop-shadow-none;
+        background-color: @btn-background;
+        .opacity (0.5);
+
+        &:hover {
+            background-color: @btn-background;
+            border: 1px solid @btn-border;
+        }
+    }
+}
+
+.arc-shadow() {
+    position: relative;
+    display: inline-block;
+    font: inherit;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    padding: 15px 20px 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+
+    &:before, &:after {
+        z-index: -1;
+        position: absolute;
+        content: "";
+        bottom: 10px;
+        left: 10px;
+        width: 50%;
+        top: 80%;
+        max-width: 300px;
+        background: rgba(0, 0, 0, 1);
+        box-shadow: 0 15px 10px rgba(0, 0, 0, 0.5);
+        transform: rotate(-4deg);
+    }
+
+    &:after {
+        transform: rotate(4deg);
+        right: 10px;
+        left: auto;
+    }
+}
