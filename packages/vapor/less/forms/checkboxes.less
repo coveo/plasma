@@ -15,8 +15,6 @@
 // Styleguide 5.3
 @import "../common/colors";
 @import "../common/font";
-@import "../sprites";
-@import "../common/vendor-prefixes";
 
 input[type=checkbox].coveo-checkbox {
     display: none;
@@ -107,30 +105,29 @@ input[type=checkbox].coveo-slide-toggle {
     display: none;
 
     & + span, &:checked + span {
-        .transition(0.35s, ease, background);
+        transition: background 0.35s ease;
         background-color: @checkbox-slide-background-color;
         background-image: url('../images/misc/slide_toggle.png');
         width: 42px;
         height: 20px;
         display: inline-block;
         vertical-align: middle;
-        .rounded(2px);
+        border-radius: 2px;
     }
 
     &:checked + span {
         background-position: -20px;
         background-color: @checkbox-slide-active-background-color;
-        .rounded(2px);
+        border-radius: 2px;
     }
 
     &:disabled + span {
         cursor: default;
-        .opacity(0.4);
+        opacity: 0.4;
     }
 }
 
 label.coveo-slide-toggle-label {
-    margin: 0 5px;
     display: inline-block;
     cursor: pointer;
 
@@ -143,7 +140,7 @@ label.coveo-slide-toggle-label {
     }
 
     &.disabled {
-        .opacity(0.4);
+        opacity: 0.4;
     }
 }
 
@@ -184,7 +181,7 @@ label.coveo-slide-toggle-label {
 
         & + span {
             transition: background-position 0.35s ease;
-            background: @toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0;
+            background: @toggle-double-background-color url('../../images/misc/two_option_toggle.png') 0 0;
             width: 33px;
             height: 16px;
             display: inline-block;
