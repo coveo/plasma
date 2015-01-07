@@ -15,7 +15,7 @@
 // Styleguide 5.3
 @import "../common/colors";
 @import "../common/font";
-@import "../common/sprites";
+@import "../sprites";
 @import "../common/vendor-prefixes";
 
 input[type=checkbox].coveo-checkbox {
@@ -109,7 +109,7 @@ input[type=checkbox].coveo-slide-toggle {
     & + span, &:checked + span {
         .transition(0.35s, ease, background);
         background-color: @checkbox-slide-background-color;
-        background-image: url('../../images/misc/slide_toggle.png');
+        background-image: url('../images/misc/slide_toggle.png');
         width: 42px;
         height: 20px;
         display: inline-block;
@@ -184,7 +184,7 @@ label.coveo-slide-toggle-label {
 
         & + span {
             transition: background-position 0.35s ease;
-            background: @toggle-double-background-color url('../../images/misc/two_option_toggle.png') 0 0;
+            background: @toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0;
             width: 33px;
             height: 16px;
             display: inline-block;
