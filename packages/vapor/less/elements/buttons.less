@@ -1,32 +1,64 @@
 // Buttons
 //
-// A majority of buttons in the site are built from the same base class.
-// 
+// Styleguide 3.1
+
+// Base Buttons
+//
 // Markup:
-// <a href="#" class="btn {$modifiers}">Link Button</a>
+// <a class="btn {$modifiers}">Link Button</a>
 // <button class="btn {$modifiers}">Button Element</button>
 //
-// .btn-primary             - Indicate that the button is the primary feature of this form.
-// .btn-secondary           - Indicate that the button will remove a feature, or other negative connotations.
-// .btn-danger              - Indicate that the button will remove a feature, or other negative connotations.
 // :hover                   - Highlight the button when hovered.
 // :disabled                - Make the button change appearance to reflect it being disabled.
 //
-// Styleguide 3.1
+// Styleguide 3.1.1
+
+// Buttons Primary
+//
+// Markup:
+// <a class="btn btn-primary {$modifiers}">Link Action</a>
+// <button class="btn btn-primary {$modifiers}">Button Action</button>
+//
+// :hover                   - Highlight the button when hovered.
+// :disabled                - Make the button change appearance to reflect it being disabled.
+//
+// Styleguide 3.1.2
+
+// Buttons Secondary
+//
+// Markup:
+// <a class="btn btn-secondary {$modifiers}">Link Info</a>
+// <button class="btn btn-secondary {$modifiers}">Button Info</button>
+//
+// :hover                   - Highlight the button when hovered.
+// :disabled                - Make the button change appearance to reflect it being disabled.
+//
+// Styleguide 3.1.3
+
+// Buttons Danger
+//
+// Markup:
+// <a class="btn btn-danger {$modifiers}">Link Danger</a>
+// <button class="btn btn-danger {$modifiers}">Button Danger</button>
+//
+// :hover                   - Highlight the button when hovered.
+// :disabled                - Make the button change appearance to reflect it being disabled.
+//
+// Styleguide 3.1.4
 
 @import "../common/font";
 @import "../common/colors";
 
 .btn {
+    border: none;
+    cursor: pointer;
     font-family: @base-font-family;
     font-weight: bold;
     font-size: 13px;
+    outline: none;
+    padding: 6px 10px 6px;
     text-decoration: none;
-    border: none;
-    border-radius: 2px;
-    padding: 6px 13px 6px;
-    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.10);
-    cursor: pointer;
+
     .btn-colorize(@button-background, @button-background-hover, @button-background-disabled);
 
     &.btn-primary {
