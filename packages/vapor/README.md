@@ -16,7 +16,6 @@ Make sure you have Node JS and NPM installed.
 Run `npm install`, then `npm run compile`.
 The compiled styleguide will be available in the `/styleguide` folder.
 
-
 # License
 
 Coveo StyleGuide is distributed under MIT license.
