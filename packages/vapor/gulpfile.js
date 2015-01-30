@@ -36,6 +36,11 @@ gulp.task('pull', function () {
 
 gulp.task('styleguide', ['kss-compile', 'lib'], function () {
     gulp.src('./images/**').pipe(gulp.dest('styleguide/images'));
+    gulp.src('./fonts/**').pipe(gulp.dest('styleguide/fonts'));
 });
 
 gulp.task('default', ['styleguide']);
+
+gulp.task('watch', function () {
+    gulp.watch(['less/**/*'], ['kss-compile']);
+});
