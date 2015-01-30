@@ -1,19 +1,59 @@
 // Headings
 //
 // Admin HTML headings
+// Use modifiers instead of `font-weight` for crispier fonts.
 //
 // Markup:
-//<h1>Admin heading</h1>
-//<h2>Admin heading</h2>
-//<h3>Admin heading</h3>
-//<h4>Admin heading</h4>
-//<h5>Admin heading</h5>
-//<h6>Admin heading</h6>
+//<h1 class="{$modifiers}">Admin heading</h1>
+//<h2 class="{$modifiers}">Admin heading</h2>
+//<h3 class="{$modifiers}">Admin heading</h3>
+//<h4 class="{$modifiers}">Admin heading</h4>
+//<h5 class="{$modifiers}">Admin heading</h5>
+//<h6 class="{$modifiers}">Admin heading</h6>
+//
+// .light           - Light font
+// .semibold        - Semi bold font
+// .bold            - Bold font
 //
 // Styleguide 2.1
 @import "../common/font";
 
 h1, h2, h3, h4, h5, h6 {
     font-family: @headings-font-family;
+
+    &.light {
+        font-family: @headings-font-family-light;
+    }
+
+    &.semibold {
+        font-family: @headings-font-family-semibold;
+    }
+
+    &.bold {
+        font-family: @headings-font-family-bold;
+    }
 }
 
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1.12em;
+}
+
+h5 {
+    font-size: .83em;
+}
+
+h6 {
+    font-size: .75em;
+}
