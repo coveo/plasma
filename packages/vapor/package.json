@@ -5,11 +5,12 @@
   "main": "''",
   "scripts": {
     "test": "",
-    "compile": "kss-node less --less less/guide.less --template template"
+    "compile": "node ./node_modules/gulp/bin/gulp default",
+    "watch": "node ./node_modules/gulp/bin/gulp default"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wfortin/StyleGuide.git"
+    "url": "https://github.com/Coveo/styleguide.git"
   },
   "keywords": [
     "style",
@@ -19,7 +20,7 @@
   "author": "Coveo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wfortin/StyleGuide/issues"
+    "url": "https://github.com/Coveo/styleguide/issues"
   },
   "devDependencies": {
     "del": "^1.1.1",
