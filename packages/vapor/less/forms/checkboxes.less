@@ -112,6 +112,7 @@ input[type=checkbox].coveo-slide-toggle {
         height: 20px;
         display: inline-block;
         border-radius: 2px;
+        vertical-align: middle;
     }
 
     &:checked + span {
@@ -129,6 +130,12 @@ input[type=checkbox].coveo-slide-toggle {
 label.coveo-slide-toggle-label {
     display: inline-block;
     cursor: pointer;
+
+    line-height: 20px;
+
+    .toggle-label {
+        vertical-align: middle;
+    }
 
     &.admin-text-inline {
         input[type=checkbox].coveo-slide-toggle {
