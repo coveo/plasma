@@ -1,0 +1,41 @@
+// Block form (horizontal form)
+//
+// Simple form
+//
+// Markup:
+//<form>
+//    <div class="coveo-block-form">
+//        <div class="form-group">
+//            <label class="coveo-slide-toggle-label">
+//                <input type="checkbox" class="coveo-slide-toggle {$modifiers}">
+//                <span></span>
+//                <span class="toggle-label">Slide toggle label</span>
+//            </label>
+//        </div>
+//        <div class="form-group">
+//            <label class="coveo-slide-toggle-label">
+//                <input type="checkbox" class="coveo-slide-toggle {$modifiers}">
+//                <span></span>
+//                <span class="toggle-label">Slide toggle label</span>
+//            </label>
+//        </div>
+//    </div>
+//</form>
+//
+// Styleguide 5.7
+
+@import (reference) "../common/colors";
+
+form {
+
+    .coveo-block-form {
+
+        // TODO implement a correct base form (need to implement base inputs first)
+
+        margin: 0 0 20px 10px;
+
+        .form-group + .form-group {
+            margin-top: 10px;
+        }
+    }
+}

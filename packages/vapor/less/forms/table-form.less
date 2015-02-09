@@ -1,51 +1,10 @@
 // Table form
 //
-// Aligned form. Use as a `table` or as a `form`. Prefer `form`. Table is for legacy purpose only.
+// Aligned form using display table.
 //
 // Markup:
 //<form>
-//    <div class="coveo-form">
-//        <table>
-//            <tbody>
-//            <tr>
-//                <th>Field 1</th>
-//                <td>
-//                    <div>
-//                        <input type="text" name="field1" placeholder="Field 1" value="Field 1">
-//                    </div>
-//                </td>
-//            </tr>
-//            <tr>
-//                <th>Field 2</th>
-//                <td>
-//                    <div class="validated-input">
-//                        <input type="text" name="field2" placeholder="Field 2">
-//                    </div>
-//                    <div class="input-validation-error-details">
-//                        <i class="coveo-sprites-misc-alert"></i>
-//                        <span class="input-validation-error-message">Error message goes here!</span>
-//                    </div>
-//                </td>
-//            </tr>
-//            <tr class="input-validation-error">
-//                <th>Field 3</th>
-//                <td>
-//                    <div class="validated-input">
-//                        <input type="text" name="field3" placeholder="Field 3">
-//                    </div>
-//                    <div class="input-validation-error-details">
-//                        <i class="coveo-sprites-misc-alert"></i>
-//                        <span class="input-validation-error-message">Error message goes here!</span>
-//                    </div>
-//                </td>
-//            </tr>
-//            </tbody>
-//        </table>
-//    </div>
-//</form>
-//<br/>
-//<form>
-//    <div class="coveo-form">
+//    <div class="coveo-table-form">
 //        <div class="form-group">
 //            <label for="field1">
 //                Field 1
@@ -82,13 +41,14 @@
 //</form>
 //
 // Styleguide 5.6
+
 @import "../common/colors";
 @import "../common/font";
 @import (reference) "../lib/_elements";
 @import (reference) "../lib/_mixins";
 
 form {
-    .coveo-form {
+    .coveo-table-form {
         display: table;
         table-layout: fixed;
         width: 100%;
@@ -254,15 +214,6 @@ form {
 
             &.multiline-input-validation-error .erroneous-input {
                 background-color: @invalid-background-color;
-            }
-        }
-
-        .form-simple-row {
-            display: table-row;
-
-            .simple-input {
-                margin-left: 10px;
-                margin-top: 10px;
             }
         }
     }
