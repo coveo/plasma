@@ -15,17 +15,23 @@
 @import "../common/font";
 @import "../common/colors";
 
-.user-type {
-    font-size: 10px;
+.JsAdmin-tag {
+    font-size: 11px;
     font-weight: bold;
     font-family: @base-font-family;
     text-transform: uppercase;
     background-color: @placeholder-text;
     color: #ffffff;
     cursor: default;
-    padding: 0 4px;
+    padding: 2px 4px 1px;
     display: inline-block;
     border-radius: 2px;
+}
+
+.user-type {
+    .JsAdmin-tag();
+
+    font-size: 10px;
 
     &.user-admin {
         background-color: @user-admin-color;
@@ -72,16 +78,7 @@
 // Styleguide 2.3
 
 .organization-type {
-    font-size: 11px;
-    font-weight: bold;
-    font-family: @base-font-family;
-    text-transform: uppercase;
-    background-color: @placeholder-text;
-    color: #fff;
-    cursor: default;
-    padding: 0 4px;
-    display: inline-block;
-    border-radius: 2px;
+    .JsAdmin-tag();
 
     &.STANDARD-label {
         background-color: @standard-type-label-color;
@@ -109,5 +106,27 @@
 
     &.ua-only-label {
         background-color: @ua-only-label-color;
+    }
+}
+
+// Organizations label
+//
+// Labels for encryption status
+//
+// Markup:
+// <span class="encryption-status SHAREDKEY-label">SHAREDKEY</span>
+// <span class="encryption-status UNIQUEKEY-label">UNIQUEKEY</span>
+//
+// Styleguide 2.4
+
+.encryption-status {
+    .JsAdmin-tag();
+
+    &.SHAREDKEY-label {
+        background-color: @trial-type-label-color;
+    }
+
+    &.UNIQUEKEY-label {
+        background-color: @user-admin-color;
     }
 }
