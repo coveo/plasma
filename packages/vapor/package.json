@@ -6,8 +6,7 @@
   "scripts": {
     "test": "",
     "compile": "node ./node_modules/gulp/bin/gulp default",
-    "watch": "node ./node_modules/gulp/bin/gulp default",
-    "postinstall": "node ./node_modules/gulp/bin/gulp default"
+    "watch": "node ./node_modules/gulp/bin/gulp default"
   },
   "repository": {
     "type": "git",
