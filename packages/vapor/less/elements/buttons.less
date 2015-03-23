@@ -1,50 +1,36 @@
-// Buttons
+// Button Tags
+//
+// Use the button classes on an <code>&lt;a&gt;</code> or  <code>&lt;button&gt;</code> element.
+//
+// Markup:
+// <a class="btn">Link</a>
+// <button class="btn">Button</button>
 //
 // Styleguide 3.1
 
-// Base Buttons
+// Button Options
+//
+// Use any of the available button classes to quickly create a styled button.
 //
 // Markup:
-// <a class="btn {$modifiers}">Link Button</a>
-// <button class="btn {$modifiers}">Button Element</button>
+// <button class="btn">Default</button>
+// <button class="btn btn-primary">Action</button>
+// <button class="btn btn-secondary">Info</button>
+// <button class="btn btn-danger">Danger</button>
+// <button class="btn btn-slim">Submit</button>
+// <button class="btn btn-primary btn-slim">Submit</button>
 //
-// :hover                   - Highlight the button when hovered.
-// :disabled                - Make the button change appearance to reflect it being disabled.
-//
-// Styleguide 3.1.1
+// Styleguide 3.2
 
-// Buttons Primary
+// Buttons States
 //
 // Markup:
-// <a class="btn btn-primary {$modifiers}">Link Action</a>
-// <button class="btn btn-primary {$modifiers}">Button Action</button>
+// <button class="btn btn-primary {$modifiers}">Action</button>
 //
 // :hover                   - Highlight the button when hovered.
 // :disabled                - Make the button change appearance to reflect it being disabled.
 //
-// Styleguide 3.1.2
-
-// Buttons Secondary
-//
-// Markup:
-// <a class="btn btn-secondary {$modifiers}">Link Info</a>
-// <button class="btn btn-secondary {$modifiers}">Button Info</button>
-//
-// :hover                   - Highlight the button when hovered.
-// :disabled                - Make the button change appearance to reflect it being disabled.
-//
-// Styleguide 3.1.3
-
-// Buttons Danger
-//
-// Markup:
-// <a class="btn btn-danger {$modifiers}">Link Danger</a>
-// <button class="btn btn-danger {$modifiers}">Button Danger</button>
-//
-// :hover                   - Highlight the button when hovered.
-// :disabled                - Make the button change appearance to reflect it being disabled.
-//
-// Styleguide 3.1.4
+// Styleguide 3.3
 
 @import "../common/font";
 @import "../common/colors";
@@ -63,6 +49,14 @@
 
     &.btn-primary {
         .btn-colorize(@primary-button-background, @primary-button-background-hover, @primary-button-background-disabled);
+
+        &.btn-slim {
+            color: @coveo-orange;
+
+            svg {
+                fill: @coveo-orange;
+            }
+        }
     }
 
     &.btn-secondary {
@@ -71,6 +65,28 @@
 
     &.btn-danger {
         .btn-colorize(@button-error-background, @button-error-background-hover, @button-error-background-disabled);
+    }
+
+    &.btn-slim {
+        background-color: transparent;
+        color: @coveo-dark-blue-grey;
+        outline: none;
+        padding: 0;
+        text-transform: uppercase;
+
+        &:active {
+            box-shadow: none;
+        }
+
+        &:focus, &:hover {
+            background-color: transparent;
+        }
+
+        svg {
+            vertical-align: top;
+            margin-right: 5px;
+            fill: @coveo-dark-blue-grey;
+        }
     }
 }
 
