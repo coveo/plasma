@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>ProductAlert</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32" rx="2"></rect>
+    </defs>
+    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="ProductAlert" sketch:type="MSArtboardGroup">
+            <g id="source-product_alert" sketch:type="MSLayerGroup">
+                <mask id="mask-2" sketch:name="BG" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="BG" fill="#004990" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <path d="M17.0335925,21 C17.3524433,21.5829448 19.9674587,26 26,26 C26,26 23.0326358,24.8287991 23.0002667,21 L26.9993054,21 C27.5519738,21 28,20.544239 28,19.9975267 L28,10.0024733 C28,9.44882258 27.5525308,9 26.9993054,9 L5.00069463,9 C4.44802625,9 4,9.45576096 4,10.0024733 L4,19.9975267 C4,20.5511774 4.44746922,21 5.00069463,21 L17.0335925,21 Z" id="Path-173" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <circle id="Oval-33" fill="#D0011B" sketch:type="MSShapeGroup" mask="url(#mask-2)" cx="8" cy="8" r="3"></circle>
+                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Symantec</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32" rx="2"></rect>
+    </defs>
+    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Symantec" sketch:type="MSArtboardGroup">
+            <g id="source-symantec" sketch:type="MSLayerGroup">
+                <mask id="mask-2" sketch:name="BG" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="BG" fill="#F6F6F6" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <g id="logo-symantec" mask="url(#mask-2)">
+                    <g transform="translate(6.000000, 5.000000)">
+                        <path d="M9.89685714,22 C4.39580952,21.999 -0.0806666667,17.727 -0.0806666667,12.474 C-0.0806666667,7.222 4.39580952,2.948 9.89685714,2.948 C15.4,2.948 19.8764762,7.222 19.8764762,12.474 C19.8775238,17.727 15.4,21.999 9.89685714,22 L9.89685714,22 L9.89685714,22 Z M9.89685714,5.961 C8.07819048,5.961 6.3632381,6.639 5.07361905,7.869 C3.78504762,9.099 3.07580952,10.735 3.07580952,12.474 C3.07580952,14.212 3.78504762,15.849 5.07571429,17.079 C6.3632381,18.308 8.07609524,18.986 9.89790476,18.986 C11.7207619,18.986 13.433619,18.308 14.7232381,17.078 C16.0107619,15.849 16.7210476,14.212 16.7210476,12.474 C16.7210476,10.735 16.0097143,9.099 14.7232381,7.868 C13.4325714,6.639 11.7186667,5.961 9.89685714,5.961 L9.89685714,5.961 L9.89685714,5.961 Z" id="Shape" fill="#FFB819" sketch:type="MSShapeGroup"></path>
+                        <g id="check" stroke-width="1" fill="none" sketch:type="MSLayerGroup" transform="translate(5.238095, 0.000000)">
+                            <rect id="Rectangle-path" fill="#FFB819" sketch:type="MSShapeGroup" x="15.7142857" y="1" width="0.778380952" height="0.742"></rect>
+                            <rect id="Rectangle-path" fill="#FFB819" sketch:type="MSShapeGroup" x="15.7142857" y="0" width="0.778380952" height="0.744"></rect>
+                            <rect id="Rectangle-path" fill="#FFB819" sketch:type="MSShapeGroup" x="13.6190476" y="2" width="0.727047619" height="0.725"></rect>
+                            <rect id="Rectangle-path" fill="#231F20" sketch:type="MSShapeGroup" x="11.5238095" y="4" width="0.733333333" height="0.693"></rect>
+                            <rect id="Rectangle-path" fill="#231F20" sketch:type="MSShapeGroup" x="13.6190476" y="3" width="0.816095238" height="0.699"></rect>
+                            <rect id="Rectangle-path" fill="#231F20" sketch:type="MSShapeGroup" x="11.5238095" y="3" width="0.729142857" height="0.664"></rect>
+                            <rect id="Rectangle-path" fill="#231F20" sketch:type="MSShapeGroup" x="13.6190476" y="4" width="0.727047619" height="0.693"></rect>
+                            <rect id="Rectangle-path" fill="#231F20" sketch:type="MSShapeGroup" x="14.6666667" y="1" width="0.771047619" height="0.736"></rect>
+                            <rect id="Rectangle-path" fill="#231F20" sketch:type="MSShapeGroup" x="13.6190476" y="1" width="1.41847619" height="0.737"></rect>
+                            <rect id="Rectangle-path" fill="#231F20" sketch:type="MSShapeGroup" x="12.5714286" y="2" width="0.707142857" height="1.424"></rect>
+                            <path d="M12.6353333,4.335 L12.6353333,5.034 L11.902,5.034 L11.902,4.335 L10.6857143,4.335 L10.6857143,4.839 L10.0340952,4.839 L10.0340952,5.46 L10.7621905,5.46 L10.7621905,6.152 L10.0340952,6.152 L10.0340952,5.46 L9.262,5.46 L9.262,6.546 L8.5307619,6.546 L8.5307619,7.239 L8.04466667,7.239 L8.04466667,7.935 L7.51038095,7.935 C6.91009524,8.786 5.40990476,11.437 4.95419048,12.519 C3.31780952,10.344 2.04704762,9.482 1.04552381,9.17 C0.504952381,9.015 -0.145619048,9.576 0.753238095,10.46 C2.81285714,12.622 3.46238095,14.411 4.08885714,15.84 C4.41885714,16.593 5.90438095,16.71 6.20295238,15.944 C6.8367619,14.323 7.75552381,12.502 8.844,11.006 L8.844,10.231 L9.42647619,10.231 L9.42647619,9.532 L10.0372381,9.532 L10.0372381,8.722 L10.7674286,8.722 L10.7674286,7.941 L10.0299048,7.941 L10.0299048,7.232 L10.7674286,7.232 L10.7674286,7.941 L11.4892381,7.941 L11.4871429,7.238 L12.0664762,7.238 L12.0664762,6.39 L12.7170476,6.39 L12.7170476,5.807 L13.3445714,5.807 L13.3445714,4.334 L12.6353333,4.334 L12.6353333,4.335 Z" id="Shape" fill="#231F20" sketch:type="MSShapeGroup"></path>
+                        </g>
+                    </g>
+                </g>
+                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
