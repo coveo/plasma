@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Gmail</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32" rx="2"></rect>
+    </defs>
+    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Gmail" sketch:type="MSArtboardGroup">
+            <g id="source-gmail" sketch:type="MSLayerGroup">
+                <mask id="mask-2" sketch:name="BG" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="BG" fill="#A7A7A7" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <g id="logo-gmail" mask="url(#mask-2)" sketch:type="MSShapeGroup">
+                    <path d="M0,13 L0,30.0025781 C0,31.1057238 0.889261723,32 2.00174332,32 L29.9982567,32 C31.103789,32 32,31.1090746 32,30.0025781 L32,13 L16,0 L0,13 Z" id="Rectangle-121" fill="#A0A0A8"></path>
+                    <path d="M1,13.1875 L1,28.991305 C1,30.1006766 1.89784041,31 2.99161703,31 L29.008383,31 C30.1083227,31 31,30.1044682 31,28.991305 L31,13.1875 L16,1 L1,13.1875 Z" id="Rectangle-122" fill="#CFCFDA"></path>
+                    <rect id="Rectangle-119" fill-opacity="0.05" fill="#000000" x="2" y="6" width="28" height="15"></rect>
+                    <rect id="Rectangle-116" fill="#E6E6E7" x="3" y="7" width="26" height="18"></rect>
+                    <path d="M4,8 L4,21 L9,21 L9,8 L4,8 Z M9,8 L9,14 L16,19 L16,13 L9,8 Z M23,8 L23,21 L28,21 L28,8 L23,8 Z M23,8 L23,14 L16,19 L16,13 L23,8 Z" id="Rectangle-116" fill="#D21C0F"></path>
+                    <path d="M16,22 L1,13.7104235 L1,28.008124 C1,29.6604915 2.34731857,31 4.00001915,31 L27.9999809,31 C29.6568457,31 31,29.6577027 31,28.008124 L31,13.7104235 L16,22 Z" id="Rectangle-115" fill="#CFCFDA"></path>
+                    <path d="M1.2368421,13.7893709 L15.9907393,23.1914888 L30.789473,13.7893709 L15.9907393,22.0788446 L1.2368421,13.7893709 Z" id="Path-162" fill-opacity="0.5" fill="#FFFFFF"></path>
+                    <path d="M1.1043281,13.7321867 C1.1043281,13.7321867 8.91158544,18.1085479 12.8152141,20.2967285 L16.0291061,22.098277 L30.9538841,13.7321867 L16.0291061,20.9472656 L1.1043281,13.7321867 Z" id="Path-163" fill-opacity="0.5" fill="#000000"></path>
+                </g>
+                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

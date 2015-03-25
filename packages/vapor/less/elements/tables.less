@@ -3,21 +3,51 @@
 // Basic table
 //
 // Markup:
-//<table class="admin-table">
+//<table>
 //  <thead>
 //    <tr>
-//      <th>Column 1</th>
+//      <th class="selection">
+//        <label class="coveo-checkbox-label">
+//          <input type="checkbox" class="coveo-checkbox">
+//          <button title="Select All" type="button"/>
+//        </label>
+//      </th>
+//      <th class="admin-sort">
+//        <div class="admin-sort-icon">
+//          <i class="coveo-sprites-tables-sort_asc"></i>
+//          <i class="coveo-sprites-tables-sort_desc"></i>
+//        </div>
+//        Column 1
+//      </th>
 //      <th>Column 2</th>
-//      <th>Column 3</th>
+//      <th class="admin-sort">
+//        <div class="admin-sort-icon">
+//          <i class="coveo-sprites-tables-sort_asc"></i>
+//          <i class="coveo-sprites-tables-sort_desc"></i>
+//        </div>
+//        Column 3
+//      </th>
 //    </tr>
 //  </thead>
 //  <tbody>
 //    <tr>
+//      <td class="selection">
+//        <label class="coveo-checkbox-label">
+//          <input id="main-checkbox" type="checkbox" class="coveo-checkbox">
+//          <button type="button"></button>
+//        </label>
+//      </td>
 //      <td>Data 1</td>
 //      <td>Data 2</td>
 //      <td>Data 3</td>
 //    </tr>
 //    <tr>
+//      <td class="selection">
+//        <label class="coveo-checkbox-label">
+//          <input id="main-checkbox" type="checkbox" class="coveo-checkbox">
+//          <button type="button"></button>
+//        </label>
+//      </td>
 //      <td>Data 1</td>
 //      <td>Data 2</td>
 //      <td>Data 3</td>
@@ -26,128 +56,108 @@
 //</table>
 //
 // Styleguide 4.1
-
-@import "../common/colors";
+@import (reference) "../common/colors";
 @import (reference) "../sprites";
 
-table.admin-table {
+table {
     width: 100%;
     text-align: left;
     border-spacing: 0;
     border: none;
+    clear: both;
 
     th, td {
-        vertical-align: middle;
+        padding: 0 10px;
         text-align: left;
-    }
-
-    th {
-        padding: 2px 10px;
+        vertical-align: middle;
 
         &.selection {
-            width: 1%;
-        }
-
-        tr.actions-bar {
-            height: 20px;
+            margin: 0;
+            padding: 0 10px;
+            width: 25px !important;
         }
     }
 
-    td {
-        padding: 5px 10px 6px;
-    }
-
-    .dataTables_empty {
-        text-align: center;
-    }
-
-    thead {
+    thead tr {
+        background-color: @table-header-background-color-light;
+        color: @table-header-text-color;
         font-size: 13px;
+        height: 30px;
 
-        tr {
-            background-color: @table-header-background-color-light;
-            color: @table-header-text-color;
+        th {
+            border-bottom: 2px solid @body-background-color;
+            line-height: normal;
+            white-space: nowrap;
 
-            th {
-                padding: 4px 10px;
-                white-space: nowrap;
+            &.metric {
+                background-color: @metric-table-header-color;
+                color: @heading-2-color;
+            }
 
-                &.metric {
-                    background-color: @metric-table-header-color;
-                    color: @heading-2-color;
+            &.admin-sort {
+                cursor: pointer;
+
+                .admin-sort-icon {
+                    position: absolute;
+
+                    i {
+                        display: block;
+                        position: relative;
+                        left: -10px;
+                        opacity: 0.3;
+
+                        &:hover {
+                            opacity: 0.6;
+                        }
+
+                        + i {
+                            margin-top: 2px;
+                        }
+                    }
                 }
 
-                &.admin-sort {
+                &.admin-sort-ascending, &.sorting_asc {
                     cursor: pointer;
-                    padding-right: 5px;
+                    color: @text-color;
 
-                    .admin-sort-icon {
-                        float: left;
-                        margin: 3px 5px 0 0;
-
-                        i {
-                            opacity: 0.3;
-                            display: block;
-                            margin: 1px 0;
-                            &:hover {
-                                opacity: 0.6;
-                            }
-                        }
-                    }
-
-                    &.admin-sort-ascending, &.sorting_asc {
-                        cursor: pointer;
-                        color: @text-color;
-
-                        .admin-sort-icon i.coveo-sprites-tables-sort_asc {
-                            opacity: 1;
-                        }
-                    }
-
-                    &.admin-sort-descending, &.sorting_desc {
-                        cursor: pointer;
-                        color: @text-color;
-
-                        .admin-sort-icon i.coveo-sprites-tables-sort_desc {
-                            opacity: 1;
-                        }
+                    .admin-sort-icon i.coveo-sprites-tables-sort_asc {
+                        opacity: 1;
                     }
                 }
 
-                &.sorting_asc {
+                &.admin-sort-descending, &.sorting_desc {
+                    cursor: pointer;
+                    color: @text-color;
+
+                    .admin-sort-icon i.coveo-sprites-tables-sort_desc {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &.sorting_asc {
+                background-color: @table-header-background-hover;
+                background-image: none;
+                cursor: pointer;
+            }
+
+            &.sorting_desc {
+                background-color: @table-header-background-hover;
+                background-image: none;
+                cursor: pointer;
+            }
+
+            &.sorting {
+                cursor: pointer;
+            }
+
+            &.sorting_disabled {
+                cursor: default;
+            }
+
+            &.sorting, &.sorting_asc, &.sorting_desc, &.admin-sort {
+                &:hover {
                     background-color: @table-header-background-hover;
-                    background-image: none;
-                    cursor: pointer;
-
-                    .icon-sort {
-                        display: inline-block;
-                        .coveo-sprites-datatables-sorttable_asc;
-                    }
-                }
-
-                &.sorting_desc {
-                    background-color: @table-header-background-hover;
-                    background-image: none;
-                    cursor: pointer;
-
-                    .icon-sort {
-                        display: inline-block;
-                        .coveo-sprites-datatables-sorttable_desc;
-                    }
-                }
-
-                &.sorting {
-                    cursor: pointer;
-                }
-
-                &.sorting_disabled {
-                    cursor: default;
-                }
-
-                &.sorting, &.sorting_asc, &.sorting_desc, &.admin-sort {
-                    &:hover {
-                        background-color: @table-header-background-hover;
-                    }
                 }
             }
         }
@@ -159,9 +169,17 @@ table.admin-table {
 
     tbody tr {
         font-size: 15px;
+        height: 36px;
 
         td {
+            text-align: left;
             border-bottom: solid 1px @table-row-border;
+            margin-left: 15px;
+
+            &.edit.enabled {
+                color: @coveo-blue;
+                cursor: pointer;
+            }
 
             .btn-icon, .dropdown-toggle {
                 padding: 2px 4px;
@@ -189,7 +207,7 @@ table.admin-table {
                 text-align: center;
 
                 & > div {
-                    float: left;
+                    float: right;
                     font-size: inherit;
                     vertical-align: baseline;
                 }
@@ -230,7 +248,7 @@ table.admin-table {
                         }
                     }
 
-                    .visibility a {
+                    .visibility span, .visibility a {
                         font-size: 14px;
 
                         &.active {
@@ -247,10 +265,16 @@ table.admin-table {
                     }
                 }
             }
-        }
 
-        &.row-selected td, &.row-selected:hover td {
-            background-color: @table-row-background-selected;
+            &.actions {
+                text-align: right;
+                position: relative;
+                overflow: visible;
+            }
+
+            i {
+                margin-bottom: 1px;
+            }
         }
 
         &:hover > td {
@@ -270,6 +294,17 @@ table.admin-table {
                     background-color: #ebf3fb;
                 }
             }
+        }
+    }
+
+    &.row-selected td, &.row-selected:hover td {
+        background-color: @table-row-background-selected;
+    }
+
+    &.confirm-delete {
+        .row-selected td, &.row-selected:hover td {
+            transition: background-color 300ms;
+            background-color: @button-error-background-disabled;
         }
     }
 }

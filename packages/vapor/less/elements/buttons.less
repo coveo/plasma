@@ -1,10 +1,10 @@
 // Button Tags
 //
-// Use the button classes on an <code>&lt;a&gt;</code> or  <code>&lt;button&gt;</code> element.
+// Use the btn class on an <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> element.
 //
 // Markup:
 // <a class="btn">Link</a>
-// <button class="btn">Button</button>
+// <button type="button" class="btn">Button</button>
 //
 // Styleguide 3.1
 
@@ -13,27 +13,38 @@
 // Use any of the available button classes to quickly create a styled button.
 //
 // Markup:
-// <button class="btn">Default</button>
-// <button class="btn btn-primary">Action</button>
-// <button class="btn btn-secondary">Info</button>
-// <button class="btn btn-danger">Danger</button>
-// <button class="btn btn-slim">Submit</button>
-// <button class="btn btn-primary btn-slim">Submit</button>
+// <button type="button" class="btn">Default</button>
+// <button type="button" class="btn btn-primary">Action</button>
+// <button type="button" class="btn btn-secondary">Info</button>
+// <button type="button" class="btn btn-danger">Danger</button>
 //
 // Styleguide 3.2
+
+// Button Slim
+//
+// Use the btn-slim class on an <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> element. Use any of the available button classes to quickly create a slim styled button.
+//
+// Markup:
+// <a class="btn-slim">Link</a>
+// <button type="button" class="btn-slim">Default</button>
+// <button type="button" class="btn-slim btn-primary">Action</button>
+// <button type="button" class="btn-slim btn-secondary">Info</button>
+// <button type="button" class="btn-slim btn-danger">Danger</button>
+//
+// Styleguide 3.3
 
 // Buttons States
 //
 // Markup:
-// <button class="btn btn-primary {$modifiers}">Action</button>
+// <button type="button" class="btn btn-primary {$modifiers}">Action</button>
 //
 // :hover                   - Highlight the button when hovered.
 // :disabled                - Make the button change appearance to reflect it being disabled.
 //
-// Styleguide 3.3
+// Styleguide 3.4
 
-@import "../common/font";
-@import "../common/colors";
+@import (reference) "../common/font";
+@import (reference) "../common/colors";
 
 .btn {
     border: none;
@@ -49,14 +60,6 @@
 
     &.btn-primary {
         .btn-colorize(@primary-button-background, @primary-button-background-hover, @primary-button-background-disabled);
-
-        &.btn-slim {
-            color: @coveo-orange;
-
-            svg {
-                fill: @coveo-orange;
-            }
-        }
     }
 
     &.btn-secondary {
@@ -67,26 +70,46 @@
         .btn-colorize(@button-error-background, @button-error-background-hover, @button-error-background-disabled);
     }
 
-    &.btn-slim {
-        background-color: transparent;
-        color: @coveo-dark-blue-grey;
+    &:focus {
         outline: none;
-        padding: 0;
-        text-transform: uppercase;
+        box-shadow: 0 0 2px 1px @coveo-blue;
+    }
+}
 
-        &:active {
-            box-shadow: none;
-        }
+.btn-slim {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: @coveo-dark-blue-grey;
+    cursor: pointer;
+    font-family: @base-font-family;
+    font-size: 13px;
+    font-weight: bold;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+    text-transform: uppercase;
 
-        &:focus, &:hover {
-            background-color: transparent;
-        }
+    &:active {
+        box-shadow: none;
+    }
 
-        svg {
-            vertical-align: top;
-            margin-right: 5px;
-            fill: @coveo-dark-blue-grey;
-        }
+    svg {
+        fill: @coveo-dark-blue-grey;
+        margin-right: 5px;
+        vertical-align: top;
+    }
+
+    &.btn-primary {
+        .btn-slim-colorize(@primary-button-background, @primary-button-background-hover, @primary-button-background-disabled);
+    }
+
+    &.btn-secondary {
+        .btn-slim-colorize(@secondary-button-background, @secondary-button-background-hover, @secondary-button-background-disabled);
+    }
+
+    &.btn-danger {
+        .btn-slim-colorize(@button-error-background, @button-error-background-hover, @button-error-background-disabled);
     }
 }
 
@@ -154,6 +177,31 @@
 
         &:hover {
             background-color: @btn-background-disabled;
+        }
+    }
+}
+
+.btn-slim-colorize(@button-background, @button-background-hover, @button-background-disabled) {
+    color: @button-background;
+
+    svg {
+        fill: @button-background;
+    }
+
+    &:hover {
+        color: @button-background-disabled;
+        text-decoration: none;
+
+        svg {
+            fill: @button-background-disabled;
+        }
+    }
+
+    &:disabled, &.disabled {
+        color: @button-background-disabled;
+
+        svg {
+            fill: @button-background-disabled;
         }
     }
 }

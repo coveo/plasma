@@ -3,7 +3,7 @@
 // Custom checkboxes. Compatible IE9+.
 //
 // :checked         - Checkbox is checked
-// .indeterminate   - Checkbox state is indeterminate
+// :indeterminate   - Checkbox state is indeterminate
 // :disabled        - Checkbox is not clickable/modifiable
 //
 // Markup:
@@ -13,9 +13,11 @@
 // </label>
 //
 // Styleguide 5.3
-@import "../common/colors";
-@import "../common/font";
+@import (reference) "../common/colors";
+@import (reference) "../common/font";
+@import (reference) "../common/vendor-prefixes";
 @import (reference) "../sprites";
+@import (reference) "../lib/_mixins";
 
 input[type=checkbox].coveo-checkbox {
     display: none;
@@ -35,7 +37,7 @@ input[type=checkbox].coveo-checkbox {
         margin: 0;
         padding: 0;
         text-align: center;
-        vertical-align: middle;
+        vertical-align: text-bottom;
 
         &:hover {
             background-color: #ffffff;
@@ -50,7 +52,6 @@ input[type=checkbox].coveo-checkbox {
 
     &:checked + span:after, &:checked + button:after {
         .coveo-sprites-misc-check;
-        width: 2px;
     }
 
     &:indeterminate + span:after, &:indeterminate + button:after {
@@ -104,8 +105,6 @@ label.coveo-checkbox-label {
 // </label>
 //
 // Styleguide 5.4
-@import "../common/vendor-prefixes";
-@import "../common/mixins";
 
 input[type=checkbox].coveo-slide-toggle {
     display: none;
@@ -118,7 +117,7 @@ input[type=checkbox].coveo-slide-toggle {
 
     & + span, & + button {
         background-color: @checkbox-slide-background-color;
-        background-image: url('../images/misc/slide_toggle.png');
+        background-image: url('../images/misc/slide_toggle.png'); // Ignore error
         vertical-align: middle;
     }
 
@@ -143,6 +142,12 @@ input[type=checkbox].coveo-slide-toggle {
     &:disabled + span, &:disabled + button {
         cursor: default;
         opacity: 0.4;
+    }
+
+    & + span:focus, & + button:focus {
+        margin-top: -1px;
+        border: 2px solid rgba(82, 168, 236, 0.8);
+        padding: 9px;
     }
 }
 
@@ -206,7 +211,7 @@ label.coveo-slide-toggle-label {
 
         & + span {
             transition: background-position 0.35s ease;
-            background: @toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0;
+            background: @toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0; // Ignore error
             width: 33px;
             height: 16px;
             display: inline-block;
