@@ -22,10 +22,6 @@
 input[type=checkbox].coveo-checkbox {
     display: none;
 
-    & + button {
-        outline: none;
-    }
-
     & + span, & + button {
         background: @body-background-color none 0 0;
         border: 1px solid rgba(176, 179, 174, 0.3);
@@ -47,7 +43,6 @@ input[type=checkbox].coveo-checkbox {
 
     & + span:after, & + button:after {
         content: "\00a0";
-        padding-left: 10px;
     }
 
     &:checked + span:after, &:checked + button:after {

@@ -80,25 +80,32 @@
     background-color: transparent;
     border: none;
     border-radius: 0;
-    color: @coveo-dark-blue-grey;
     cursor: pointer;
     font-family: @base-font-family;
     font-size: 13px;
     font-weight: bold;
-    outline: none;
-    padding: 0;
+    padding: 3px;
     text-decoration: none;
     text-transform: uppercase;
+
+    + button.btn-slim {
+        margin-left: 10px;
+    }
 
     &:active {
         box-shadow: none;
     }
 
+    &:disabled, &.disabled {
+        cursor: default;
+    }
+
     svg {
         fill: @coveo-dark-blue-grey;
-        margin-right: 5px;
-        vertical-align: top;
+        vertical-align: text-bottom;
     }
+
+    .btn-slim-colorize(@coveo-dark-blue-grey, @default-slim-button-hover, @default-slim-button-disabled);
 
     &.btn-primary {
         .btn-slim-colorize(@primary-button-background, @primary-button-background-hover, @primary-button-background-disabled);
@@ -189,11 +196,11 @@
     }
 
     &:hover {
-        color: @button-background-disabled;
+        color: @button-background-hover;
         text-decoration: none;
 
         svg {
-            fill: @button-background-disabled;
+            fill: @button-background-hover;
         }
     }
 
