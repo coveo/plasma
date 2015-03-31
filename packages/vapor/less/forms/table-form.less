@@ -52,7 +52,6 @@ form {
         display: table;
         table-layout: fixed;
         width: 100%;
-        margin-bottom: 20px;
         text-align: left;
 
         tr, .form-group {
@@ -80,7 +79,7 @@ form {
                 float: right;
             }
 
-            .coveo-checkbox + span {
+            .coveo-checkbox + span, .coveo-checkbox + button {
                 margin-left: 10px;
             }
 
@@ -111,6 +110,10 @@ form {
                     border-width: 0;
                     box-shadow: none;
                     resize: none;
+                }
+
+                input:disabled {
+                    background-color: @disabled-input-backgroud-color;
                 }
 
                 &.admin-editable:hover {
@@ -215,6 +218,10 @@ form {
             &.multiline-input-validation-error .erroneous-input {
                 background-color: @invalid-background-color;
             }
+        }
+
+        & + .coveo-table-form, & + .coveo-block-form {
+            margin-top: 10px;
         }
     }
 }
