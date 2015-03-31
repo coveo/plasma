@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>16/uatype/data</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M1.00087166,0 C0.448105505,0 0,0.444630861 0,1.00087166 L0,14.9991283 C0,15.5518945 0.444630861,16 1.00087166,16 L14.9991283,16 C15.5518945,16 16,15.5553691 16,14.9991283 L16,1.00087166 C16,0.448105505 15.5553691,0 14.9991283,0 L1.00087166,0 Z"></path>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g sketch:type="MSArtboardGroup" transform="translate(0.000000, -16.000000)">
+            <g sketch:type="MSLayerGroup" transform="translate(0.000000, 16.000000)">
+                <mask id="mask-2" sketch:name="mask" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use stroke="#BDBDBD" fill="#F9F9F9" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <rect fill="#4B4B4B" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="3" y="3" width="7" height="1"></rect>
+                <text sketch:type="MSTextLayer" mask="url(#mask-2)" font-family="Proxima Nova" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="4.15151515" y="12.5">22</tspan>
+                </text>
+                <path d="M14.571454,0 C14.1386805,0.588822842 6.0193808,12.7774648 4,16 L16,16 L16,0 L14.571454,0 Z" opacity="0.0599999987" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
