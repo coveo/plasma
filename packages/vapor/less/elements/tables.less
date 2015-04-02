@@ -170,6 +170,7 @@ table {
     tbody tr {
         font-size: 15px;
         height: 36px;
+        line-height: initial;
 
         td {
             text-align: left;
@@ -182,7 +183,6 @@ table {
             }
 
             .btn-icon, .dropdown-toggle {
-                padding: 2px 4px;
                 cursor: default;
                 opacity: 0.3;
 
@@ -201,20 +201,20 @@ table {
                 }
             }
 
-            &.actions, &.visibility {
+            &.actions {
                 user-select: none;
                 white-space: nowrap;
-                text-align: center;
+                text-align: right;
+                position: relative;
+                overflow: visible;
 
                 & > div {
-                    float: right;
+                    display: inline-block;
                     font-size: inherit;
-                    vertical-align: baseline;
                 }
 
-                i {
-                    display: inline-block;
-                    vertical-align: middle;
+                &.group-collapse i {
+                    margin: 1.5px;
                 }
 
                 .btn-group {
@@ -236,7 +236,7 @@ table {
                     min-width: 135px;
 
                     .arrow-up {
-                        right: 5px;
+                        right: 1px;
                     }
 
                     .dropdown-label {
@@ -248,32 +248,10 @@ table {
                         }
                     }
 
-                    .visibility span, .visibility a {
-                        font-size: 14px;
-
-                        &.active {
-                            font-weight: bold;
-                        }
-
-                        i {
-                            margin: -4px 5px 0 0;
-                        }
-                    }
-
                     .hide {
                         display: none;
                     }
                 }
-            }
-
-            &.actions {
-                text-align: right;
-                position: relative;
-                overflow: visible;
-            }
-
-            i {
-                margin-bottom: 1px;
             }
         }
 

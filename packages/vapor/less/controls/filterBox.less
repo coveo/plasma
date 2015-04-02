@@ -1,0 +1,50 @@
+// Filter box
+//
+// Basic filter box.
+//
+// Markup:
+//<div class="filter-container pull-right">
+//  <span class="filter">
+//      <i class="coveo-sprites-misc-filter"></i>
+//  </span>
+//  <input type="text" class="filterBox">
+//</div>
+//
+// Styleguide 5.6
+@import (reference) "../common/colors";
+@import (reference) "../sprites";
+
+.filter-container {
+    position: relative;
+
+    .filter .coveo-sprites-misc-filter {
+        position: absolute;
+        cursor: default;
+        left: 8px;
+        top: 7px;
+    }
+
+    input.filterBox {
+        padding-left: 25px;
+        padding-right: 25px;
+        width: 260px;
+
+        & + span {
+            display: inline-block;
+            position: absolute;
+            right: 10px;
+            top: 4px;
+
+            &.hide {
+                display: none;
+            }
+
+            &:after {
+                content: "\00a0";
+                padding-left: 11px;
+                .coveo-sprites-misc-closepopup;
+                display: inline;
+            }
+        }
+    }
+}
