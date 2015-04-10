@@ -207,6 +207,7 @@ table {
                 text-align: right;
                 position: relative;
                 overflow: visible;
+                background-clip: padding-box; // Fix for FF and IE
 
                 & > div {
                     display: inline-block;
@@ -217,6 +218,10 @@ table {
                     margin: 1.5px;
                 }
 
+                #actions {
+                    min-height: 16px;
+                }
+
                 .btn-group {
                     &.open {
                         .dropdown-toggle.enabled {
@@ -225,8 +230,11 @@ table {
                     }
                 }
 
-                #actions {
-                    min-height: 16px;
+                .btn-icon span.delete {
+                    vertical-align: -1px;
+                    svg {
+                        fill: @coveo-dark-blue-grey;
+                    }
                 }
 
                 .dropdown-menu {
@@ -250,6 +258,13 @@ table {
 
                     .hide {
                         display: none;
+                    }
+                }
+
+                .dropdown-toggle span.menu {
+                    vertical-align: 1px;
+                    svg {
+                        fill: @coveo-dark-blue-grey;
                     }
                 }
             }
@@ -282,7 +297,8 @@ table {
     &.confirm-delete {
         .row-selected td, &.row-selected:hover td {
             transition: background-color 300ms;
-            background-color: @button-error-background-disabled;
+            border-color: @invalid-message-background-color;
+            background-color: @invalid-background-color;
         }
     }
 }

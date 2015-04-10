@@ -1,0 +1,33 @@
+// Coveo Flex Form
+//
+// Simple form using flex display. Used for boxed coveo-slide-toggle-label.
+//
+// Markup:
+// <form>
+//   <div class="coveo-flex-form">
+//     <label class="coveo-slide-toggle-label boxed">
+//       <span class="toggle-label">Simple text</span>
+//       <input type="checkbox" class="coveo-slide-toggle">
+//       <button></button>
+//     </label>
+//     <label class="coveo-slide-toggle-label boxed">
+//       <span class="toggle-label">Simple text</span>
+//       <input type="checkbox" class="coveo-slide-toggle">
+//       <button></button>
+//     </label>
+//   </div>
+// </form>
+//
+// Styleguide 6.3
+
+form .coveo-flex-form {
+    display: flex;
+    flex-flow: row wrap;
+    margin: -10px 0 0 -10px;
+
+    .coveo-slide-toggle-label.boxed {
+        flex: auto;
+        margin: 10px 0 0 10px;
+        width: 0; // Fix to make all boxes the same size
+    }
+}
