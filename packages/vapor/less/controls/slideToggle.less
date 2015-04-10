@@ -1,6 +1,6 @@
 // Slide Toggle
 //
-// Another style for a checkbox with stylish animations. Compatible IE9+.
+// Another style for a checkbox with stylish animations.
 //
 // :checked         - Checkbox is checked
 // :disabled        - Checkbox is not clickable/modifiable
@@ -14,6 +14,24 @@
 //
 // Styleguide 5.4
 
+// Slide Toggle Boxed
+//
+// Same as the slide toggle, but with a box.
+//
+// Markup:
+// <label class="coveo-slide-toggle-label boxed">
+//   <span class="toggle-label">Simple text</span>
+//   <input type="checkbox" class="coveo-slide-toggle">
+//   <button></button>
+// </label>
+// <label class="coveo-slide-toggle-label boxed">
+//   <span class="toggle-label">Simple text</span>
+//   <input type="checkbox" class="coveo-slide-toggle">
+//   <button></button>
+// </label>
+//
+// Styleguide 5.4
+
 @import (reference) "../common/colors";
 
 label.coveo-slide-toggle-label {
@@ -22,6 +40,21 @@ label.coveo-slide-toggle-label {
 
     &.disabled {
         opacity: 0.4;
+    }
+
+    &.boxed {
+        border: solid 1px @table-header-background-color-dark;
+        padding: 8px 12px;
+
+        .toggle-label {
+            margin-right: 20px;
+            vertical-align: -2px;
+        }
+
+        button {
+            float: right;
+            top: 2px;
+        }
     }
 
     input[type=checkbox].coveo-slide-toggle {

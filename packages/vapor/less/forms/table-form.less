@@ -48,23 +48,32 @@
 @import (reference) "../lib/_mixins";
 
 form {
+
+    .form-section {
+        margin-top: 10px;
+    }
+
     .coveo-table-form {
         display: table;
         table-layout: fixed;
         width: 100%;
         text-align: left;
 
-        tr, .form-group {
+        .form-group {
             display: table-row;
             color: @block-text-color;
             height: 36px;
 
-            & > label:first-child, .value, th, td {
+            &.hidden {
+                display: none;
+            }
+
+            & > label:first-child, .value {
                 display: table-cell;
                 border-bottom: solid 1px @table-header-background-color-dark;
             }
 
-            & > label:first-child, th {
+            & > label:first-child{
                 width: 25%;
                 background-color: @body-background-color;
                 padding: 0 10px;
@@ -87,11 +96,7 @@ form {
                 display: none;
             }
 
-            td > div:first-child {
-                border-top: 2px solid white;
-            }
-
-            .value, td {
+            .value {
                 background-color: @table-editable-cell-color;
                 border-top: 2px solid white;
                 vertical-align: middle;
@@ -110,6 +115,10 @@ form {
                     border-width: 0;
                     box-shadow: none;
                     resize: none;
+                }
+
+                input[type="file"] {
+                    padding: 9px 10px;
                 }
 
                 input:disabled {
@@ -199,18 +208,18 @@ form {
                     }
                 }
 
-                th, label {
+                label {
                     color: @error-color;
                 }
 
-                td, th, label, .value {
+                label, .value {
                     border-bottom: solid 1px @invalid-message-background-color;
                 }
             }
 
             &.input-validation-error {
 
-                td, .value {
+                .value {
                     background-color: @invalid-background-color;
                 }
             }
