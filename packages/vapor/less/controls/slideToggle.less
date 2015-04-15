@@ -35,10 +35,12 @@
 @import (reference) "../common/colors";
 
 label.coveo-slide-toggle-label {
-    display: inline-block;
     cursor: pointer;
+    display: inline-block;
+    user-select: none;
 
     &.disabled {
+        cursor: default;
         opacity: 0.4;
     }
 

@@ -41,7 +41,6 @@
 //</form>
 //
 // Styleguide 6.1
-
 @import (reference) "../common/colors";
 @import (reference) "../common/font";
 @import (reference) "../lib/_elements";
@@ -51,6 +50,41 @@ form {
 
     .form-section {
         margin-top: 10px;
+
+        .section-heading {
+            margin: 20px 0 10px 0;
+
+            .heading-title {
+                color: @table-header-text-color;
+                font-size: 15px;
+                text-transform: uppercase;
+            }
+
+            .heading-description {
+                font-size: 12px;
+            }
+        }
+
+        .form-subsection {
+
+            + .form-subsection {
+                margin-top: 10px;
+            }
+
+            .subsection-heading {
+                margin: 5px 0;
+
+                .heading-title {
+                    color: @table-header-text-color;
+                    font-size: 13px;
+                    text-transform: uppercase;
+
+                    svg {
+                        fill: @table-header-text-color;
+                    }
+                }
+            }
+        }
     }
 
     .coveo-table-form {
@@ -68,16 +102,21 @@ form {
                 display: none;
             }
 
+            &.disabled .value {
+                background-color: transparent;
+            }
+
             & > label:first-child, .value {
                 display: table-cell;
                 border-bottom: solid 1px @table-header-background-color-dark;
+                border-top: 2px solid white;
+                vertical-align: middle;
             }
 
-            & > label:first-child{
-                width: 25%;
+            & > label:first-child {
+                width: 30%;
                 background-color: @body-background-color;
                 padding: 0 10px;
-                vertical-align: middle;
 
                 font-family: @base-font-family;
                 font-size: 16px;
@@ -98,23 +137,19 @@ form {
 
             .value {
                 background-color: @table-editable-cell-color;
-                border-top: 2px solid white;
-                vertical-align: middle;
 
                 input, textarea, .admin-select {
+                    box-sizing: border-box;
                     padding: 6px 10px;
-                    .box-sizing(border-box);
                 }
 
                 input {
-                    height: 39px;
-                    width: 100%;
-                    text-align: left;
-                    margin-bottom: 0;
                     background-color: transparent;
                     border-width: 0;
                     box-shadow: none;
+                    height: 39px;
                     resize: none;
+                    width: 100%;
                 }
 
                 input[type="file"] {
@@ -122,7 +157,10 @@ form {
                 }
 
                 input:disabled {
-                    background-color: @disabled-input-backgroud-color;
+                    background-color: white;
+                    color: black;
+                    font-family: @headings-font-family-semibold;
+                    font-size: 16px;
                 }
 
                 &.admin-editable:hover {
