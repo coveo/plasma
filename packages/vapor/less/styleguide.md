@@ -5,7 +5,7 @@ Coveo UI StyleGuide
 ===================
 
 Coveo StyleGuide is a collection of UI components used in Coveo's Cloud Services administration console.
-All components and their documentation is [available here](http://source.coveo.com/styleguide/)
+All components and their documentation is [available here](http://coveo.github.io/styleguide/)
 Source code is [available on GitHub](https://github.com/Coveo/styleguide)
 
 It is widely inspired by [Bootstrap 3.0](https://github.com/twbs/bootstrap) and borrows some of it components.
