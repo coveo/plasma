@@ -39,14 +39,18 @@ label.coveo-slide-toggle-label {
     display: inline-block;
     user-select: none;
 
-    &.disabled {
+    &.disabled, &[for].disabled {
         cursor: default;
         opacity: 0.4;
+
+        button {
+            cursor: default;
+        }
     }
 
     &.boxed {
         border: solid 1px @table-header-background-color-dark;
-        padding: 8px 12px;
+        padding: 8px 10px;
 
         .toggle-label {
             margin-right: 20px;
@@ -55,7 +59,6 @@ label.coveo-slide-toggle-label {
 
         button {
             float: right;
-            top: 2px;
         }
     }
 
