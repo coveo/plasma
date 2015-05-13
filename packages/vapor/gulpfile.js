@@ -20,6 +20,11 @@ var autoprefixerOptions = {
 var gzipOptions = {append: false};
 var useMinifiedSources = gutil.env.min;
 
+// Utilities
+var copyFonts = function(destination) {
+    return gulp.src('./resources/fonts/**').pipe(gulp.dest(destination));
+};
+
 // Tasks
 gulp.task('clean', 'Delete styleguide and target folders.', function () {
     del(['styleguide', 'target'], function (err, deletedFiles) {
@@ -80,11 +85,12 @@ gulp.task('styleguide', 'Build the styleguide using kss-node', ['lib', 'sprites'
     run('kss-node less --less less/guide.less --template template').exec();
     gulp.src('./resources/images/**').pipe(gulp.dest('styleguide/images'));
     gulp.src('./target/package/images/*').pipe(gulp.dest('styleguide/images'));
-    gulp.src('./resources/fonts/**').pipe(gulp.dest('styleguide/fonts'));
+    copyFonts('styleguide/fonts');
 });
 
 gulp.task('default', 'Compile less and dependencies and export to target.', ['less', 'lib', 'sprites'], function () {
     gulp.src('./target/package/images/CoveoStyleGuide.Sprites.png').pipe(gulp.dest('styleguide/images'));
+    copyFonts('target/package/fonts');
 }, {
     aliases: ['d', 'D']
 });
