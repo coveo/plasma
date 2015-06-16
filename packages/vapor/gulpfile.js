@@ -82,7 +82,11 @@ gulp.task('sprites', 'Generate sprites from images and export to styleguide and 
 });
 
 gulp.task('styleguide', 'Build the styleguide using kss-node', ['lib', 'sprites'], function () {
-    run('kss-node less --less less/guide.less --template template').exec();
+    run('kss-node less --less less/guide.less --template template').exec(function() {
+        return gulp.src('styleguide/public/style.css')
+            .pipe(autoprefixer(autoprefixerOptions))
+            .pipe(gulp.dest('styleguide/public'));
+    });
     gulp.src('./resources/images/**').pipe(gulp.dest('styleguide/images'));
     gulp.src('./target/package/images/*').pipe(gulp.dest('styleguide/images'));
     copyFonts('styleguide/fonts');

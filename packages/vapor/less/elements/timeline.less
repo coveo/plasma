@@ -1,0 +1,193 @@
+// Timeline
+//
+// Timeline layout use for logs, visits, events.
+//
+// Markup:
+//<div class="flex-timeline">
+//    <div class="flex-row">
+//        <div class="column">
+//            <div class="cell">
+//                Source
+//            </div>
+//            <i class="color-dot none"></i>
+//        </div>
+//        <div class="column border-left">
+//            <div class="cell item">
+//                <div class="value">
+//                    Comunity URL : http://forums.caterpillar.com
+//                </div>
+//                <div class="label">
+//                    comunity_url field change
+//                </div>
+//            </div>
+//            <div class="cell item">
+//                <div class="value">
+//                    Today, 4:55 PM
+//                </div>
+//                <div class="label">
+//                    Start Time
+//                </div>
+//            </div>
+//            <div class="cell item">
+//                <div class="value">
+//                    Today, 5:17 PM
+//                </div>
+//                <div class="label">
+//                    End Time
+//                </div>
+//            </div>
+//        </div>
+//    </div>
+//    <div class="flex-row">
+//        <div class="column">
+//            <div class="cell">
+//                Document
+//            </div>
+//            <i class="color-dot none"></i>
+//        </div>
+//        <div class="column border-left">
+//            <div class="cell item">
+//                <div class="value">
+//                    Incremental Refresh
+//                </div>
+//                <div class="label">
+//                    Document Refresh
+//                </div>
+//            </div>
+//            <div class="cell item">
+//                <div class="value">
+//                    Today, 4:55 PM
+//                </div>
+//                <div class="label">
+//                    Start Time
+//                </div>
+//            </div>
+//            <div class="cell item">
+//                <div class="value">
+//                    Today, 5:17 PM
+//                </div>
+//                <div class="label">
+//                    End Time
+//                </div>
+//            </div>
+//        </div>
+//    </div>
+//    <div class="flex-row">
+//        <div class="column">
+//            <div class="cell">
+//                Source
+//            </div>
+//            <i class="color-dot critical"></i>
+//        </div>
+//        <div class="column border-left">
+//            <div class="cell item">
+//                <div class="value">
+//                    Credentials
+//                </div>
+//                <div class="label">
+//                    Configuration change
+//                </div>
+//            </div>
+//            <div class="cell item">
+//                <div class="value">
+//                    Today, 4:55 PM
+//                </div>
+//                <div class="label">
+//                    Start Time
+//                </div>
+//            </div>
+//            <div class="cell item">
+//                <div class="value">
+//                    Today, 5:17 PM
+//                </div>
+//                <div class="label">
+//                    End Time
+//                </div>
+//            </div>
+//            <div class="cell item error">
+//                <div class="value">
+//                    No longer able to authenticate.
+//                </div>
+//                <div class="label">
+//                    LITHIUM_AUTHENTICATION_ERROR
+//                </div>
+//            </div>
+//        </div>
+//    </div>
+//</div>
+//
+// Styleguide 4.2
+@import (reference) "../common/colors";
+
+.flex-timeline {
+
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+
+        .column {
+            flex-direction: column;
+            flex-wrap: wrap;
+            min-width: 100px;
+            position: relative;
+
+            &.border-left {
+                border-left: 2px dashed gray;
+                padding-left: 50px;
+            }
+
+            .color-dot {
+                position: absolute;
+                margin: 0;
+                width: 20px;
+                height: 20px;
+                right: -11px;
+                top: 2px;
+                z-index: 1;
+
+                &.success {
+                    background-color: @timeline-success;
+                }
+
+                &.error {
+                    background-color: @timeline-error;
+                }
+            }
+
+            .flex-row {
+                flex-wrap: wrap;
+            }
+        }
+
+        .cell {
+            flex-direction: column;
+            margin-bottom: 15px;
+
+            .value {
+                flex-direction: column;
+                line-height: 25px;
+            }
+
+            .label {
+                flex-direction: column;
+                text-transform: uppercase;
+                color: #a5a5a5;
+                font-size: 10px;
+            }
+
+            &.item {
+                margin-right: 50px;
+            }
+
+        }
+
+        .cell.error {
+            color: @timeline-error;
+
+            .label {
+                color: @timeline-error;
+            }
+        }
+    }
+}
