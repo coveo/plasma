@@ -3,11 +3,12 @@
 // Basic filter box.
 //
 // Markup:
-//<div class="filter-container pull-right">
+//<div class="filter-container">
 //  <span class="filter">
 //      <i class="coveo-sprites-misc-filter"></i>
 //  </span>
 //  <input type="text" class="filterBox">
+//  <span></span>
 //</div>
 //
 // Styleguide 5.6
@@ -16,6 +17,7 @@
 
 .filter-container {
     position: relative;
+    width: 260px;
 
     .filter .coveo-sprites-misc-filter {
         position: absolute;
@@ -33,7 +35,7 @@
             display: inline-block;
             position: absolute;
             right: 10px;
-            top: 4px;
+            top: 6px;
 
             &.hide {
                 display: none;
