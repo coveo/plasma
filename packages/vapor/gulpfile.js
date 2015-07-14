@@ -12,13 +12,15 @@ var rename = require('gulp-rename');
 var run = require('gulp-run');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
+var config = require('../adminV8/gulpTasks/configuration');
 
 // Variables
 var autoprefixerOptions = {
     browsers: ['Chrome >= 23', 'Firefox >= 21', 'Explorer >= 10', 'Opera >= 15']
 };
-var gzipOptions = {append: false};
-var useMinifiedSources = gutil.env.min;
+var gzipOptions = config.gzipOptions;
+var useMinifiedSources = config.minify;
+var useGzippedSources = config.gzip;
 
 // Utilities
 var copyFonts = function(destination) {
@@ -44,9 +46,10 @@ gulp.task('less', 'Compile less files to target.', function () {
         .pipe(sourcemaps.write('../css'))
         .pipe(gulp.dest('./target/package/css'))
         .pipe(gulpif(useMinifiedSources, minifyCSS({
-            keepSpecialComments: 0
+            keepSpecialComments: 0,
+            processImport: false
         })))
-        .pipe(gulpif(useMinifiedSources, gzip(gzipOptions)))
+        .pipe(gulpif(useGzippedSources, gzip(gzipOptions)))
         .pipe(gulpif(useMinifiedSources, rename('CoveoStyleGuide.min.css')))
         .pipe(gulpif(useMinifiedSources, gulp.dest('./target/package/css')));
 });
@@ -57,7 +60,7 @@ gulp.task('lib', 'Concat and export js libs to styleguide and target.', function
         .pipe(gulp.dest('styleguide/js'))
         .pipe(gulp.dest('target/package/js'))
         .pipe(gulpif(useMinifiedSources, uglify()))
-        .pipe(gulpif(useMinifiedSources, gzip(gzipOptions)))
+        .pipe(gulpif(useGzippedSources, gzip(gzipOptions)))
         .pipe(gulpif(useMinifiedSources, rename('CoveoStyleGuide.Dependencies.min.js')))
         .pipe(gulpif(useMinifiedSources, gulp.dest('target/package/js')));
 });
