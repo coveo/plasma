@@ -5,6 +5,7 @@ notifications:
     on_failure: never
 node_js:
 - '0.12'
+sudo: false
 script:
 - npm run-script deploy
 env:
