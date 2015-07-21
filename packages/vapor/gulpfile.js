@@ -12,15 +12,16 @@ var rename = require('gulp-rename');
 var run = require('gulp-run');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var config = require('../adminV8/gulpTasks/configuration');
 
 // Variables
 var autoprefixerOptions = {
     browsers: ['Chrome >= 23', 'Firefox >= 21', 'Explorer >= 10', 'Opera >= 15']
 };
-var gzipOptions = config.gzipOptions;
-var useMinifiedSources = config.minify;
-var useGzippedSources = config.gzip;
+var gzipOptions = {
+    append: false
+};
+var useMinifiedSources = false;
+var useGzippedSources = false;
 
 // Utilities
 var copyFonts = function(destination) {
