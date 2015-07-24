@@ -1,0 +1,84 @@
+// Input Slider
+//
+// Styled input slider for cross-browser compatibility. IE10+, FF, Chrome, Safari.
+//
+// Initialize the component's colors whenever it is rendered by using $(selector).slider()
+//
+// Markup:
+//  <style class="coveo-input-slider-style" type="text/css"></style>
+//  <input type="range" class="coveo-input-slider" data-uid="1" min="1" max="100" value="50">
+//
+// Styleguide 5.7
+
+input[type=range].coveo-input-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 500px;
+}
+
+input[type=range].coveo-input-slider:focus {
+    outline: none;
+}
+
+// WEBKIT
+input[type=range].coveo-input-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    max-width: 500px;
+    height: 7px;
+    border: none;
+    background: @coveo-input-slider-track-default;
+}
+
+input[type=range].coveo-input-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid @coveo-input-slider-thumb-border;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: @coveo-input-slider-thumb-dark;
+    background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+    margin-top: -6px;
+}
+
+// FIREFOX
+input[type=range].coveo-input-slider::-moz-range-track {
+    width: 100%;
+    max-width: 500px;
+    height: 7px;
+    border: none;
+    background: @coveo-input-slider-track-default;
+}
+
+input[type=range].coveo-input-slider::-moz-range-thumb {
+    border: 1px solid @coveo-input-slider-thumb-border;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: @coveo-input-slider-thumb-dark;
+    background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+}
+
+// IE10+
+input[type=range].coveo-input-slider::-ms-track {
+    width: 100%;
+    max-width: 500px;
+    height: 7px;
+    background: transparent;
+    border-color: transparent;
+    border-width: 8px 0;
+    color: transparent;
+}
+
+input[type=range].coveo-input-slider::-ms-thumb {
+    border: 1px solid @coveo-input-slider-thumb-border;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: @coveo-input-slider-thumb-dark;
+    background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+}
+
+input[type=range].coveo-input-slider::-ms-tooltip {
+    display: none;
+    visibility: hidden;
+}
