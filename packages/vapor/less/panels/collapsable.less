@@ -61,7 +61,6 @@
 
 @import (reference) "../common/colors";
 @import (reference) "../common/font";
-@import (reference) "../common/vendor-prefixes";
 @import (reference) "../sprites";
 
 .collapsable-panel-group {
@@ -71,7 +70,8 @@
         visibility: hidden;
 
         &.in {
-            display: block;
+            display: table;
+            width: 100%;
             visibility: visible;
         }
         tr&.in {
@@ -86,9 +86,9 @@
         position: relative;
         height: 0;
         overflow: hidden;
-        .transition-property(~"height, visibility");
-        .transition-duration(.35s);
-        .transition-timing-function(ease);
+        transition-property: ~"height, visibility";
+        transition-duration: .35s;
+        transition-timing-function: ease;
     }
 
     .panel {
@@ -128,10 +128,6 @@
             a.collapsed + i.toggle-icon {
                 .coveo-sprites-misc-panel-collapsed();
             }
-        }
-
-        .panel-collapse.collapse.in .panel-body.coveo-table-form {
-            border-bottom: 1px solid @table-header-background-color-dark;
         }
 
         &.panel-default {
