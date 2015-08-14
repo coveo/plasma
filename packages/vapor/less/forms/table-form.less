@@ -53,6 +53,8 @@ form {
         width: 100%;
         text-align: left;
 
+        transition: opacity 0.35s ease;
+
         .form-group {
             display: table-row;
             color: @block-text-color;
@@ -93,6 +95,13 @@ form {
 
             .value {
                 background-color: @table-editable-cell-color;
+                height: 39px;
+                font-size: 16px;
+
+                svg {
+                    margin-left: 10px;
+                    margin-right: 5px;
+                }
 
                 input, textarea, .admin-select {
                     box-sizing: border-box;
@@ -222,6 +231,14 @@ form {
 
             &.multiline-input-validation-error .erroneous-input {
                 background-color: @invalid-background-color;
+            }
+        }
+
+        &.disabled {
+            opacity: 0.4;
+
+            .form-group label {
+                cursor: default;
             }
         }
 
