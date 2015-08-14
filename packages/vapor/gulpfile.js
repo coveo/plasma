@@ -56,7 +56,7 @@ gulp.task('less', 'Compile less files to target.', function () {
 });
 
 gulp.task('lib', 'Concat and export js libs to styleguide and target.', function () {
-    return gulp.src(require('./config/dependencies').dependencies)
+    return gulp.src('lib/js/**')
         .pipe(concat('CoveoStyleGuide.Dependencies.js'))
         .pipe(gulp.dest('styleguide/js'))
         .pipe(gulp.dest('target/package/js'))
