@@ -1,5 +1,4 @@
-﻿@import (reference) "_elements";
-
+﻿
 .text-overflow(@value: ellipsis) {
     -o-text-overflow: @value;
     -ms-text-overflow: @value;
@@ -17,8 +16,8 @@
     position: absolute;
     background: @backgroundColor;
     border: 1px solid @borderColor;
-    .rounded(4px);
-    .box-shadow(0 0 3px .5px rgba(0, 0, 0, 0.2));
+    border-radius: 4px;
+    box-shadow: 0 0 3px .5px rgba(0, 0, 0, 0.2);
     z-index: 999;
 
     &:after, &:before {
@@ -168,7 +167,7 @@
 
     &::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
         background-color: #606060;
-        .rounded(3px);
+        border-radius: 3px;
     }
 
     &::-webkit-scrollbar-button, ::-webkit-scrollbar-button {
@@ -180,8 +179,8 @@
 .btn(@btn-background, @text-color ) {
     @btn-border: darken(@btn-background, 10%);
 
-    .rounded (3px);
-    .box-shadow(0 1px 0 rgba(0, 0, 0, 0.2));
+    border-radius: 3px;
+    box-shadow:0 1px 0 rgba(0, 0, 0, 0.2);
     background: @btn-background;
     border: 1px solid @btn-border;
     color: @text-color;
@@ -200,9 +199,9 @@
     }
 
     &:disabled, &.disabled {
-        .drop-shadow-none;
+        box-shadow: none;
         background-color: @btn-background;
-        .opacity (0.5);
+        opacity: 0.5;
 
         &:hover {
             background-color: @btn-background;
