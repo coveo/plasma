@@ -1,0 +1,128 @@
+// Fixed header table
+//
+// Another table, but with a fixed header and a scrolling body.
+//
+// Markup:
+//<div class="fixed-header-table-container">
+//    <div class="fixed-header-table" style="height: 85px">
+//        <table>
+//            <thead>
+//            <tr>
+//                <th class="selection">
+//                    <div class="fixed-header-container">
+//                        <label class="coveo-checkbox-label">
+//                            <input type="checkbox" class="coveo-checkbox">
+//                            <button title="Select All" type="button"></button>
+//                        </label>
+//                    </div>
+//                </th>
+//                <th class="admin-sort">
+//                    Column 1
+//                    <div class="fixed-header-container">
+//                        <div class="admin-sort-icon">
+//                            <i class="coveo-sprites-tables-sort_asc"></i>
+//                            <i class="coveo-sprites-tables-sort_desc"></i>
+//                        </div>
+//                        Column 1
+//                    </div>
+//                </th>
+//                <th>
+//                    Column 2
+//                    <div class="fixed-header-container">
+//                        Column 2
+//                    </div>
+//                </th>
+//                <th class="admin-sort">
+//                    Column 3
+//                    <div class="fixed-header-container">
+//                        <div class="admin-sort-icon">
+//                            <i class="coveo-sprites-tables-sort_asc"></i>
+//                            <i class="coveo-sprites-tables-sort_desc"></i>
+//                        </div>
+//                        Column 3
+//                    </div>
+//                </th>
+//            </tr>
+//            </thead>
+//            <tbody>
+//            <tr>
+//                <td class="selection">
+//                    <label class="coveo-checkbox-label">
+//                        <input type="checkbox" class="coveo-checkbox">
+//                        <button type="button"></button>
+//                    </label>
+//                </td>
+//                <td>Data 1</td>
+//                <td>Data 2</td>
+//                <td>Data 3</td>
+//            </tr>
+//            <tr>
+//                <td class="selection">
+//                    <label class="coveo-checkbox-label">
+//                        <input type="checkbox" class="coveo-checkbox">
+//                        <button type="button"></button>
+//                    </label>
+//                </td>
+//                <td>Data 1</td>
+//                <td>Data 2</td>
+//                <td>Data 3</td>
+//            </tr>
+//            <tr>
+//                <td class="selection">
+//                    <label class="coveo-checkbox-label">
+//                        <input type="checkbox" class="coveo-checkbox">
+//                        <button type="button"></button>
+//                    </label>
+//                </td>
+//                <td>Data 1</td>
+//                <td>Data 2</td>
+//                <td>Data 3</td>
+//            </tr>
+//            </tbody>
+//        </table>
+//    </div>
+//</div>
+//
+// Styleguide 4.2
+@import (reference) '../common/colors';
+
+.fixed-header-table-container {
+    border-top: solid 2px @table-borders;
+    padding-top: 27px;
+    position: relative;
+
+    .fixed-header-table {
+        border-bottom: solid 2px @table-borders;
+        border-top: solid 2px @table-borders;
+
+        overflow-y: scroll;
+
+        table thead tr {
+            height: 0;
+
+            th {
+                border: none;
+                font-size: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+                position: inherit;
+                white-space: nowrap;
+
+                &.admin-sort .admin-sort-icon {
+                    left: 0;
+                }
+
+                &.selection .fixed-header-container {
+                    padding-top: 4px;
+                }
+
+                div.fixed-header-container {
+                    font-size: 12px;
+                    padding-top: 5px;
+                    position: absolute;
+                    top: 0;
+                }
+            }
+        }
+    }
+}

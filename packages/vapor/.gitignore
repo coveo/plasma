@@ -18,3 +18,6 @@ node_modules
 # Styleguide is generated
 styleguide
 target
+
+.sass-cache
+_gh_pages

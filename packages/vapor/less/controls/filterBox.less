@@ -3,31 +3,33 @@
 // Basic filter box.
 //
 // Markup:
-//<div class="filter-container">
-//  <span class="filter">
+//<div class="coveo-filter-container">
+//  <input type="text" class="filter-box">
+//  <span></span>
+//  <span class="filter-icon">
 //      <i class="coveo-sprites-misc-filter"></i>
 //  </span>
-//  <input type="text" class="filterBox">
-//  <span></span>
 //</div>
 //
 // Styleguide 5.6
 @import (reference) "../common/colors";
 @import (reference) "../sprites";
 
-.filter-container {
+@coveo-filter-box-height: 25px;
+
+.coveo-filter-container {
     position: relative;
     width: 260px;
 
-    .filter .coveo-sprites-misc-filter {
+    .filter-icon .coveo-sprites-misc-filter {
         position: absolute;
         cursor: default;
         left: 8px;
         top: 7px;
     }
 
-    input.filterBox {
-        height: 25px;
+    input.filter-box {
+        height: @coveo-filter-box-height;
         margin: 0;
         padding-left: 25px;
         padding-right: 25px;
@@ -45,7 +47,7 @@
 
             &:after {
                 content: "\00a0";
-                padding-left: 11px;
+                padding-left: 12px;
                 .coveo-sprites-misc-closepopup;
                 display: inline;
             }

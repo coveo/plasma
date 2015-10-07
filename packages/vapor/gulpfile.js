@@ -15,13 +15,13 @@ var uglify = require('gulp-uglify');
 
 // Variables
 var autoprefixerOptions = {
-    browsers: ['Chrome >= 23', 'Firefox >= 21', 'Explorer >= 10', 'Opera >= 15']
+    browsers: ['Chrome >= 23', 'Firefox >= 21', 'Explorer >= 10', 'Opera >= 15', 'Safari >= 6']
 };
 var gzipOptions = {
     append: false
 };
-var useMinifiedSources = false;
-var useGzippedSources = false;
+var useMinifiedSources = gutil.env.min;
+var useGzippedSources = gutil.env.gzip;
 
 // Utilities
 var copyFonts = function(destination) {
@@ -56,7 +56,7 @@ gulp.task('less', 'Compile less files to target.', function () {
 });
 
 gulp.task('lib', 'Concat and export js libs to styleguide and target.', function () {
-    return gulp.src('lib/js/**')
+    return gulp.src('lib/js/*')
         .pipe(concat('CoveoStyleGuide.Dependencies.js'))
         .pipe(gulp.dest('styleguide/js'))
         .pipe(gulp.dest('target/package/js'))

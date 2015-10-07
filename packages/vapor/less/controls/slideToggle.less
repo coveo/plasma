@@ -39,12 +39,15 @@ label.coveo-slide-toggle-label {
     display: inline-block;
     user-select: none;
 
+    transition: opacity 0.35s ease;
+
     &.disabled, &[for].disabled {
         cursor: default;
         opacity: 0.4;
 
         button {
             cursor: default;
+            outline: none;
         }
     }
 
@@ -57,6 +60,16 @@ label.coveo-slide-toggle-label {
             line-height: 20px;
         }
 
+        .toggle-description {
+            display: block;
+
+            color: @text-color;
+            font-size: 13px;
+            line-height: 16px;
+
+            margin-top: 8px;
+        }
+
         button {
             float: right;
         }
@@ -67,7 +80,7 @@ label.coveo-slide-toggle-label {
 
         &:checked {
             + button:before {
-                background-color: @checkbox-slide-active-background-color;
+                background-color: @coveo-green;
             }
 
             + button:after {

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>WebCrawler</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32" rx="2"></rect>
+    </defs>
+    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="WebCrawler" sketch:type="MSArtboardGroup">
+            <g id="source-web_crawler" sketch:type="MSLayerGroup">
+                <mask id="mask-2" sketch:name="BG 4" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="BG-4" fill="#BBBBBB" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <path d="M0,3.5 L0,2 C0,0.887729645 0.89621101,0 2.00174332,0 L29.9982567,0 C31.1107383,0 32,0.8954305 32,2 L32,3.5 L32,3 C32,1.8954305 31.1107383,1 29.9982567,1 L2.00174332,1 C0.89621101,1 0,1.88772964 0,3 L0,3.5 Z" id="shadow" fill="#909090" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <path d="M0,5.5 L0,4 C0,2.88772964 0.89621101,2 2.00174332,2 L29.9982567,2 C31.1107383,2 32,2.8954305 32,4 L32,5.5 L32,5 C32,3.8954305 31.1107383,3 29.9982567,3 L2.00174332,3 C0.89621101,3 0,3.88772964 0,5 L0,5.5 Z" id="shadow-2" fill="#909090" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <path d="M0,7.5 L0,6 C0,4.88772964 0.89621101,4 2.00174332,4 L29.9982567,4 C31.1107383,4 32,4.8954305 32,6 L32,7.5 L32,7 C32,5.8954305 31.1107383,5 29.9982567,5 L2.00174332,5 C0.89621101,5 0,5.88772964 0,7 L0,7.5 Z" id="shadow-3" fill="#909090" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <path d="M1,12 L1,29.0025781 C1,30.1057238 1.89784041,31 2.99161703,31 L29.008383,31 C30.1083227,31 31,30.1090746 31,29.0025781 L31,12 L1,12 Z M3,7 L3,10 L24,10 L24,7 L3,7 Z" id="Page" fill="#FEFEFE" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <path d="M3,16 L3,20 L18.6,20 L18.6,16 L3,16 Z M21.2,16 L21.2,28 L29,28 L29,16 L21.2,16 Z M3,21.3333333 L3,22.6666667 L18.6,22.6666667 L18.6,21.3333333 L3,21.3333333 Z M3,24 L3,25.3333333 L18.6,25.3333333 L18.6,24 L3,24 Z M3,26.6666667 L3,28 L18.6,28 L18.6,26.6666667 L3,26.6666667 Z" id="content" fill="#88888A" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <rect id="Path" fill="#88888A" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="24" y="7" width="5" height="3"></rect>
+                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

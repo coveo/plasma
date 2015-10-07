@@ -1,6 +1,6 @@
 {
   "name": "coveo-styleguide",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Collection of UI components used in Coveo's Cloud Services administration console",
   "main": "''",
   "scripts": {
@@ -41,5 +41,13 @@
     "gulp-util": "^3.0.4",
     "kss": "^1.3.0",
     "png-sprite": "https://github.com/apare/png-sprite/tarball/master"
-  }
+  },
+  "files": [
+    "less/**/*.less",
+    "lib",
+    "resources",
+    "target",
+    "gulpfile.js",
+    "LICENSE"
+  ]
 }

@@ -98,9 +98,8 @@ form {
                 height: 39px;
                 font-size: 16px;
 
-                svg {
-                    margin-left: 10px;
-                    margin-right: 5px;
+                &.disabled {
+                    background-color: white;
                 }
 
                 input, textarea, .admin-select {
@@ -127,6 +126,10 @@ form {
                     font-family: @base-font-family;
                     font-weight: 600;
                     font-size: 16px;
+                }
+
+                &.coveo-slide-toggle-label {
+                    padding: 0 10px;
                 }
 
                 &.admin-editable:hover {
