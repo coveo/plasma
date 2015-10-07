@@ -41,7 +41,7 @@
 //      <td>Data 2</td>
 //      <td>Data 3</td>
 //    </tr>
-//    <tr>
+//    <tr class="selected">
 //      <td class="selection">
 //        <label class="coveo-checkbox-label">
 //          <input id="main-checkbox" type="checkbox" class="coveo-checkbox">
@@ -64,10 +64,9 @@ table {
     text-align: left;
     border-spacing: 0;
     border: none;
-    clear: both;
 
     th, td {
-        padding: 0 15px;
+        padding: 5px 15px;
         text-align: left;
         vertical-align: middle;
 
@@ -76,18 +75,26 @@ table {
             padding: 0 10px;
             width: 25px !important;
         }
+
+        &:first-child {
+            padding-left: 20px;
+        }
+
+        &:last-child {
+            padding-right: 20px;
+        }
     }
 
     thead tr {
         background-color: transparent;
-        font-weight: normal;
-        text-transform: uppercase;
         color: @table-header-text-color;
         height: 25px;
-        font-size: 11px;
+        font-size: 12px;
+        font-weight: bold;
 
         th {
-            border-bottom: solid 2px @table-header-border;
+            border-bottom: solid 2px @table-borders;
+            border-top: solid 2px @table-borders;
             line-height: normal;
             white-space: nowrap;
 
@@ -102,7 +109,7 @@ table {
 
                 .admin-sort-icon {
                     position: absolute;
-                    top: 2px;
+                    top: 3px;
                     left: 15px;
 
                     i {
@@ -124,7 +131,6 @@ table {
 
                 &.admin-sort-ascending, &.sorting_asc {
                     cursor: pointer;
-                    color: @text-color;
 
                     .admin-sort-icon i.coveo-sprites-tables-sort_asc {
                         opacity: 1;
@@ -133,7 +139,6 @@ table {
 
                 &.admin-sort-descending, &.sorting_desc {
                     cursor: pointer;
-                    color: @text-color;
 
                     .admin-sort-icon i.coveo-sprites-tables-sort_desc {
                         opacity: 1;
@@ -173,13 +178,13 @@ table {
         opacity: 0.3;
     }
 
-    tbody tr {
+    tr {
         font-size: 15px;
         height: 36px;
 
         td {
             text-align: left;
-            border-bottom: solid 1px @table-row-border;
+            border-bottom: solid 1px @table-borders;
             margin-left: 15px;
 
             &.edit.enabled {
@@ -192,7 +197,7 @@ table {
                 opacity: 0.3;
 
                 &.enabled:active:hover {
-                    border-radius: 4px 4px 4px 4px;
+                    border-radius: 4px;
                 }
 
                 &.disabled {
@@ -219,8 +224,17 @@ table {
                     font-size: inherit;
                 }
 
-                &.group-collapse i {
-                    margin-right: 1.5px;
+                &.group-collapse {
+                    cursor: pointer;
+
+                    i {
+                        margin-right: 2px;
+                        vertical-align: -1px;
+                    }
+
+                    .group-count {
+                        margin-right: 5px;
+                    }
                 }
 
                 #actions {
@@ -236,9 +250,10 @@ table {
                 }
 
                 .btn-icon span.delete {
-                    vertical-align: -1px;
+                    vertical-align: -3px;
+
                     svg {
-                        fill: @coveo-dark-blue-grey;
+                        fill: @coveo-dark-blue;
                     }
                 }
 
@@ -269,17 +284,22 @@ table {
                 .dropdown-toggle span.menu {
                     vertical-align: 1px;
                     svg {
-                        fill: @coveo-dark-blue-grey;
+                        fill: @coveo-dark-blue;
                     }
                 }
             }
+        }
+
+        &:first-child {
+            padding-left: 10px;
         }
 
         &:hover > td {
             background-color: @table-row-background-hover;
 
             .prompt .prompt-danger {
-                background-color: @table-row-background-hover !important;
+                background-color: @table-row-background-hover;
+                box-shadow: -15px 0 25px 0 @table-row-background-hover;
             }
         }
 
@@ -295,6 +315,15 @@ table {
                 &.admin-focus-cell {
                     background-color: #ebf3fb;
                 }
+            }
+        }
+
+        &.selected {
+            background-color: @block-background-color;
+
+            td:first-child {
+                border-left: 5px solid @coveo-orange;
+                padding-left: 15px;
             }
         }
     }

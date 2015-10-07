@@ -1,0 +1,100 @@
+// Table actions container
+//
+// This define how to set a filter box for a table and where to place actions button for each table elements.
+//
+// Markup:
+//<div class="coveo-table-actions-container">
+//    <div class="coveo-table-actions">
+//        <span class="action">An action</span>
+//        <span class="action">Another action</span>
+//    </div>
+//    <div class="coveo-table-actions">
+//        <span class="action">Another action section</span>
+//    </div>
+//    <div class="coveo-table-actions">
+//        <div class="coveo-filter-container">
+//            <input type="text" class="filter-box" placeholder="Filter">
+//            <span></span>
+//            <span class="filter-icon">
+//                <i class="coveo-sprites-misc-filter"></i>
+//            </span>
+//        </div>
+//    </div>
+//</div>
+//<table>
+//    <thead>
+//    <tr>
+//        <th>
+//            Column 1
+//        </th>
+//        <th>
+//            Column 2
+//        </th>
+//    </tr>
+//    </thead>
+//    <tbody>
+//    <tr>
+//        <td>Data 1</td>
+//        <td>Data 2</td>
+//    </tr>
+//    <tr>
+//        <td>Data 1</td>
+//        <td>Data 2</td>
+//    </tr>
+//    </tbody>
+//</table>
+//
+// Styleguide 4.3
+
+@import "../common/colors";
+@import "../controls/filterBox";
+
+@coveo-table-actions-container-height: 45px;
+
+.coveo-table-actions-container {
+    border-top: 2px solid @table-borders;
+    height: @coveo-table-actions-container-height;
+    display: flex;
+    justify-content: flex-end;
+
+    .coveo-table-actions {
+        display: table;
+        height: @coveo-table-actions-container-height;
+        padding: 0 10px;
+
+        .action {
+            display: table-cell;
+            vertical-align: middle;
+
+            & + .action {
+                padding-left: 10px;
+            }
+        }
+
+        .action-bar {
+            display: table-row;
+        }
+
+        .coveo-filter-container {
+            margin: calc((@coveo-table-actions-container-height - @coveo-filter-box-height) / 2) 0;
+        }
+
+        .prompt {
+            display: table-cell;
+            vertical-align: middle;
+
+            .prompt-danger {
+                display: table-row;
+
+                & > span {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    .coveo-table-actions + .coveo-table-actions {
+        border-left: 2px solid @table-borders;
+    }
+}
