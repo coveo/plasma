@@ -1,4 +1,5 @@
 var autoprefixer = require('gulp-autoprefixer');
+var cheerio = require('gulp-cheerio');
 var concat = require('gulp-concat');
 var del = require('del');
 var gulp = require('gulp-help')(require('gulp'));
@@ -7,10 +8,13 @@ var gutil = require('gulp-util');
 var gzip = require('gulp-gzip');
 var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
+var path = require('path');
 var pngSprite = require('png-sprite');
 var rename = require('gulp-rename');
 var run = require('gulp-run');
 var sourcemaps = require('gulp-sourcemaps');
+var svgmin = require('gulp-svgmin');
+var svgstore = require('gulp-svgstore');
 var uglify = require('gulp-uglify');
 
 // Variables
@@ -24,7 +28,7 @@ var useMinifiedSources = gutil.env.min;
 var useGzippedSources = gutil.env.gzip;
 
 // Utilities
-var copyFonts = function(destination) {
+var copyFonts = function (destination) {
     return gulp.src('./resources/fonts/**').pipe(gulp.dest(destination));
 };
 
@@ -66,6 +70,38 @@ gulp.task('lib', 'Concat and export js libs to styleguide and target.', function
         .pipe(gulpif(useMinifiedSources, gulp.dest('target/package/js')));
 });
 
+gulp.task('svg', function () {
+    return gulp.src('./resources/icons/svg/*.svg')
+        .pipe(svgmin())
+        .pipe(cheerio({
+            run: function ($, file) {
+                var idPrefix = path.basename(file.path).split('.')[0] + '-';
+                $('[id]').each(function () {
+                    var id = $(this);
+                    id.attr('id', idPrefix + id.attr('id'));
+                });
+                $('use').each(function () {
+                    var id = $(this);
+                    id.attr('xlink:href', '#' + idPrefix + id.attr('xlink:href').substring(1));
+                });
+                $('[mask]').each(function () {
+                    var id = $(this);
+                    var parts = id.attr('mask').split('#');
+                    id.attr('mask', parts[0] + '#' + idPrefix + parts[1]);
+                });
+            },
+            parserOptions: {
+                xmlMode: true
+            }
+        }))
+        .pipe(rename({prefix: 'coveo-icon-'}))
+        .pipe(svgstore({
+            inlineSvg: true
+        }))
+        .pipe(rename('icons.svg'))
+        .pipe(gulp.dest('target/package/svg'));
+});
+
 gulp.task('sprites', 'Generate sprites from images and export to styleguide and target.', function () {
     var template = '<%= "i." + node.className + ", ." + node.className %> {\
       background-position:<%= -node.x / ratio %>px <%= -node.y / ratio %>px;\
@@ -86,7 +122,7 @@ gulp.task('sprites', 'Generate sprites from images and export to styleguide and 
 });
 
 gulp.task('styleguide', 'Build the styleguide using kss-node', ['lib', 'sprites'], function () {
-    run('kss-node less --less less/guide.less --template template').exec(function() {
+    run('kss-node less --less less/guide.less --template template').exec(function () {
         return gulp.src('styleguide/public/style.css')
             .pipe(autoprefixer(autoprefixerOptions))
             .pipe(gulp.dest('styleguide/public'));
@@ -96,7 +132,7 @@ gulp.task('styleguide', 'Build the styleguide using kss-node', ['lib', 'sprites'
     copyFonts('styleguide/fonts');
 });
 
-gulp.task('default', 'Compile less and dependencies and export to target.', ['less', 'lib', 'sprites'], function () {
+gulp.task('default', 'Compile less and dependencies and export to target.', ['less', 'lib', 'sprites', 'svg'], function () {
     gulp.src('./target/package/images/CoveoStyleGuide.Sprites.png').pipe(gulp.dest('styleguide/images'));
     copyFonts('target/package/fonts');
 }, {
