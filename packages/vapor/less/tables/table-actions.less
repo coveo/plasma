@@ -49,18 +49,34 @@
 @import "../common/colors";
 @import "../controls/filterBox";
 
-@coveo-table-actions-container-height: 45px;
+@coveo-table-actions-container-height: 43px;
+@coveo-table-actions-border-width: 2px;
 
 .coveo-table-actions-container {
-    border-top: 2px solid @table-borders;
-    height: @coveo-table-actions-container-height;
+    border-top: @coveo-table-actions-border-width solid @table-borders;
+
     display: flex;
     justify-content: flex-end;
+    flex-flow: row wrap;
 
     .coveo-table-actions {
         display: table;
+        position: relative;
+
         height: @coveo-table-actions-container-height;
         padding: 0 10px;
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: -@coveo-table-actions-border-width;
+
+            background-color: @table-borders;
+            height: @coveo-table-actions-border-width;
+            width: 100%;
+        }
 
         .action {
             display: table-cell;
@@ -95,6 +111,6 @@
     }
 
     .coveo-table-actions + .coveo-table-actions {
-        border-left: 2px solid @table-borders;
+        border-left: @coveo-table-actions-border-width solid @table-borders;
     }
 }
