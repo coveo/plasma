@@ -1,6 +1,6 @@
 {
   "name": "coveo-styleguide",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Collection of UI components used in Coveo's Cloud Services administration console",
   "main": "''",
   "scripts": {
