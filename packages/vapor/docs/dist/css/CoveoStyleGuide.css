@@ -813,7 +813,6 @@ table thead tr th.admin-sort {
 table thead tr th.admin-sort .admin-sort-icon {
   position: absolute;
   top: 3px;
-  left: 15px;
 }
 table thead tr th.admin-sort .admin-sort-icon i {
   display: block;
@@ -929,38 +928,42 @@ table tr td.actions.group-collapse .group-count {
 table tr td.actions #actions {
   min-height: 16px;
 }
-table tr td.actions .btn-group.open .dropdown-toggle.enabled {
-  border-radius: 4px 4px 4px 4px;
+table tr td.actions .btn-group .dropdown-toggle {
+  height: 20px;
+  padding: 2px;
 }
-table tr td.actions .btn-icon span.delete {
-  vertical-align: -3px;
+table tr td.actions .btn-group .dropdown-toggle span.menu {
+  vertical-align: 1px;
 }
-table tr td.actions .btn-icon span.delete svg {
+table tr td.actions .btn-group .dropdown-toggle span.menu svg {
   fill: #1d1f21;
 }
-table tr td.actions .dropdown-menu {
+table tr td.actions .btn-group.open .dropdown-toggle.enabled {
+  border-radius: 4px;
+}
+table tr td.actions .btn-group .dropdown-menu {
   left: inherit;
   right: 0;
   text-align: left;
   min-width: 135px;
 }
-table tr td.actions .dropdown-menu .arrow-up {
-  right: 1px;
+table tr td.actions .btn-group .dropdown-menu .arrow-up {
+  right: 4px;
 }
-table tr td.actions .dropdown-menu .dropdown-label {
+table tr td.actions .btn-group .dropdown-menu .dropdown-label {
   font-size: 12px;
   padding-left: 15px;
 }
-table tr td.actions .dropdown-menu .dropdown-label:hover {
+table tr td.actions .btn-group .dropdown-menu .dropdown-label:hover {
   background: none;
 }
-table tr td.actions .dropdown-menu .hide {
+table tr td.actions .btn-group .dropdown-menu .hide {
   display: none;
 }
-table tr td.actions .dropdown-toggle span.menu {
-  vertical-align: 1px;
+table tr td.actions .btn-icon span.delete {
+  vertical-align: -3px;
 }
-table tr td.actions .dropdown-toggle span.menu svg {
+table tr td.actions .btn-icon span.delete svg {
   fill: #1d1f21;
 }
 table tr:first-child {
@@ -1069,16 +1072,22 @@ table.confirm-delete.row-selected:hover td {
 .coveo-table-actions-container .coveo-table-actions .action {
   display: table-cell;
   vertical-align: middle;
+  cursor: pointer;
 }
 .coveo-table-actions-container .coveo-table-actions .action + .action {
   padding-left: 10px;
 }
 .coveo-table-actions-container .coveo-table-actions .action-bar {
   display: table-row;
+  height: 100%;
 }
 .coveo-table-actions-container .coveo-table-actions .action-bar .dropdown-menu {
   left: initial;
+  top: 42px;
   right: 0;
+}
+.coveo-table-actions-container .coveo-table-actions .action-bar .dropdown-menu .dropdown-arrow {
+  right: 5px;
 }
 .coveo-table-actions-container .coveo-table-actions .coveo-filter-container {
   margin: -webkit-calc(9px) 0;
@@ -1373,6 +1382,7 @@ label.coveo-slide-toggle-label {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  line-height: 20px;
   -webkit-transition: opacity 0.35s ease;
           transition: opacity 0.35s ease;
 }
