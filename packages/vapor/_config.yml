@@ -26,4 +26,5 @@ sass:
 # Server
 source: docs
 destination: _gh_pages
+baseurl: "/styleguide"
 url: "http://coveo.github.io/styleguide/"
