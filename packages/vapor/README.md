@@ -1,5 +1,5 @@
-[![Build Status](https://img.shields.io/travis/Coveo/styleguide.svg?style=flat-square)](https://travis-ci.org/Coveo/styleguide)
-[![dev-dependencies](https://img.shields.io/david/dev/Coveo/styleguide.svg?style=flat-square)](https://github.com/Coveo/styleguide/blob/master/package.json)
+[![Build Status](https://img.shields.io/travis/coveo/styleguide.svg?style=flat-square)](https://travis-ci.org/Coveo/styleguide)
+[![dev-dependencies](https://img.shields.io/david/dev/coveo/styleguide.svg?style=flat-square)](https://github.com/Coveo/styleguide/blob/master/package.json)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Coveo/styleguide/blob/master/LICENSE)
 
 Coveo UI StyleGuide
