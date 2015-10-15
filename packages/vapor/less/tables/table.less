@@ -110,7 +110,6 @@ table {
                 .admin-sort-icon {
                     position: absolute;
                     top: 3px;
-                    left: 15px;
 
                     i {
                         display: block;
@@ -242,9 +241,43 @@ table {
                 }
 
                 .btn-group {
-                    &.open {
-                        .dropdown-toggle.enabled {
-                            border-radius: 4px 4px 4px 4px;
+                    .dropdown-toggle {
+                        height: 20px;
+                        padding: 2px;
+
+                        span.menu {
+                            vertical-align: 1px;
+                            svg {
+                                fill: @coveo-dark-blue;
+                            }
+                        }
+                    }
+
+                    &.open .dropdown-toggle.enabled {
+                        border-radius: 4px;
+                    }
+
+                    .dropdown-menu {
+                        left: inherit;
+                        right: 0;
+                        text-align: left;
+                        min-width: 135px;
+
+                        .arrow-up {
+                            right: 4px;
+                        }
+
+                        .dropdown-label {
+                            font-size: 12px;
+                            padding-left: 15px;
+
+                            &:hover {
+                                background: none;
+                            }
+                        }
+
+                        .hide {
+                            display: none;
                         }
                     }
                 }
@@ -252,37 +285,6 @@ table {
                 .btn-icon span.delete {
                     vertical-align: -3px;
 
-                    svg {
-                        fill: @coveo-dark-blue;
-                    }
-                }
-
-                .dropdown-menu {
-                    left: inherit;
-                    right: 0;
-                    text-align: left;
-                    min-width: 135px;
-
-                    .arrow-up {
-                        right: 1px;
-                    }
-
-                    .dropdown-label {
-                        font-size: 12px;
-                        padding-left: 15px;
-
-                        &:hover {
-                            background: none;
-                        }
-                    }
-
-                    .hide {
-                        display: none;
-                    }
-                }
-
-                .dropdown-toggle span.menu {
-                    vertical-align: 1px;
                     svg {
                         fill: @coveo-dark-blue;
                     }

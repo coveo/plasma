@@ -9,7 +9,7 @@
     "styleguide": "node ./node_modules/gulp/bin/gulp styleguide",
     "watch": "node ./node_modules/gulp/bin/gulp default",
     "deploy": "./deploy.sh",
-    "prepublish": "npm run styleguide"
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",

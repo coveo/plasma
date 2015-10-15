@@ -24,7 +24,11 @@
 //<table>
 //    <thead>
 //    <tr>
-//        <th>
+//        <th class="admin-sort">
+//            <div class="admin-sort-icon">
+//                <i class="coveo-sprites-tables-sort_asc"></i>
+//                <i class="coveo-sprites-tables-sort_desc"></i>
+//            </div>
 //            Column 1
 //        </th>
 //        <th>
@@ -45,7 +49,6 @@
 //</table>
 //
 // Styleguide 4.3
-
 @import "../common/colors";
 @import "../controls/filterBox";
 
@@ -82,6 +85,8 @@
             display: table-cell;
             vertical-align: middle;
 
+            cursor: pointer;
+
             & + .action {
                 padding-left: 10px;
             }
@@ -89,10 +94,17 @@
 
         .action-bar {
             display: table-row;
+            height: 100%;
 
             .dropdown-menu {
                 left: initial;
+
+                top: 42px;
                 right: 0;
+
+                .dropdown-arrow {
+                    right: 5px;
+                }
             }
         }
 
