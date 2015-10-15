@@ -1,5 +1,5 @@
 #!/bin/bash
--rm -rf _gh_pages || exit 0;
+rm -rf _gh_pages || exit 0;
 
 npm run compile
 
