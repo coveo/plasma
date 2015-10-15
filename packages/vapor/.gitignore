@@ -1,23 +1,29 @@
-# Logs
-logs
-*.log
-
-# Runtime data
-pids
-*.pid
-*.seed
-
-# Dependency directory
-# Commenting this out is preferred by some people, see
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
-node_modules
-
-# Webstorm
-.idea
-
-# Styleguide is generated
-styleguide
-target
-
+# Ignore docs files
 .sass-cache
 _gh_pages
+
+node_modules
+
+# OS/editor 
+._*
+.DS_Store
+.idea
+Thumbs.db
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+
+# Other various
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
+*~

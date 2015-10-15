@@ -6,8 +6,6 @@
 	.st0{fill:#000000;}
 	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#000000;}
 	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:none;}
-	.st3{clip-path:url(#SVGID_2_);fill:#000000;}
-	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#000000;}
 </style>
 <g>
 	<path class="st0" d="M16.4,19L1.9,19C1.4,18.9,1,18.4,1,17.8v-14c0-0.7,0.5-1.2,1.2-1.2h9.3v1.7H2.9c-0.1,0-0.2,0.1-0.2,0.2v12.6
@@ -18,7 +16,4 @@
 	<polygon class="st2" points="16.3,1.7 6.4,11.6 5.2,14.8 8.4,13.6 18.3,3.7 	"/>
 	<polyline class="st1" points="15,3.5 14.5,4 16,5.5 16.5,5 15,3.5 	"/>
 </g>
-<rect x="-254.7" y="-396" class="st2" width="960" height="800"/>
-<rect x="-254.7" y="-396" class="st2" width="960" height="800"/>
-<rect x="-5" y="-82.3" class="st2" width="1920" height="1080"/>
 </svg>

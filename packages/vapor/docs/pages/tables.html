@@ -1,0 +1,10 @@
+---
+layout: default
+title: Tables
+permalink: /tables/
+---
+
+{% assign entries = site.components | where:"type","tables" %}
+{% for entry in entries %}
+{% include component.html %}
+{% endfor %}
