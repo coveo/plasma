@@ -1,0 +1,47 @@
+---
+type: tables
+title: Table actions container
+usage: This define how to set a filter box for a table and where to place actions button for each table elements.
+stylesheet: '/less/tables/table-actions.less'
+---
+
+<div class="coveo-table-actions-container">
+    <div class="coveo-table-actions">
+        <span class="action">Action 1</span>
+        <span class="action">Action 2</span>
+    </div>
+    <div class="coveo-table-actions">
+        <span class="action">Action 3</span>
+    </div>
+    <div class="coveo-table-actions">
+        <div class="coveo-filter-container">
+            <input type="text" class="filter-box" placeholder="Filter">
+            <span></span>
+            <span class="filter-icon">
+                <i class="coveo-sprites-misc-filter"></i>
+            </span>
+        </div>
+    </div>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>
+            Column 1
+        </th>
+        <th>
+            Column 2
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+    </tr>
+    <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+    </tr>
+    </tbody>
+</table>

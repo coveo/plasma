@@ -1,13 +1,26 @@
+sudo: false
 language: node_js
+
+node_js:
+  - '0.12'
+
+before_install:
+  - rvm install 2.0.0 && rvm use 2.0.0
+
+install:
+  - npm install -g gulp
+  - npm install
+
+cache:
+  directories:
+    - node_modules
+    - vendor/bundle
+
+env:
+  global:
+  - secure: WJ3lMQmoZKhHGbMz26gq3ZeLqVCKZuFT/7EkG93PHhrS5fkr3HViOxqf2ld+M33L1yUq/L7jv2mmPKF2jfw76uQDACvcwlaoDFmS/UGVU6BLRAFKyovLCRX2EILQN0p1LJ2YyS2Y9oAak97QV6Eck7aSpjmUsxCWT5kgNikWYko=
+
 notifications:
   email:
     on_success: never
     on_failure: never
-node_js:
-- '0.12'
-sudo: false
-script:
-- npm run-script deploy
-env:
-  global:
-  - secure: WJ3lMQmoZKhHGbMz26gq3ZeLqVCKZuFT/7EkG93PHhrS5fkr3HViOxqf2ld+M33L1yUq/L7jv2mmPKF2jfw76uQDACvcwlaoDFmS/UGVU6BLRAFKyovLCRX2EILQN0p1LJ2YyS2Y9oAak97QV6Eck7aSpjmUsxCWT5kgNikWYko=

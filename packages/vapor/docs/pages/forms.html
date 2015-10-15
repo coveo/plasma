@@ -1,0 +1,10 @@
+---
+layout: default
+title: Forms
+permalink: /forms/
+---
+
+{% assign entries = site.components | where:"type","forms" %}
+{% for entry in entries %}
+{% include component.html %}
+{% endfor %}

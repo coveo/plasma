@@ -1,0 +1,29 @@
+# Site settings
+title: Coveo StyleGuide
+email: styleguide@coveo.com
+description:
+  Coveo StyleGuide is a collection of UI components used in Coveo's Administration Console.
+  It is widely inspired by Bootstrap 3.0 and borrows some of its components.
+  The project is at its early stages, some components can still have lots of breaking changes.
+baseurl: ""
+twitter_username: coveo
+github_username:  Coveo
+
+# Collections
+collections:
+  components:
+    output: false
+
+# Build settings
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+# Server
+source: docs
+destination: _gh_pages
+url: "http://coveo.github.io/styleguide/"

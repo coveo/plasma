@@ -1,0 +1,10 @@
+---
+layout: default
+title: Typography
+permalink: /typography/
+---
+
+{% assign entries = site.components | where:"type","typography" %}
+{% for entry in entries %}
+{% include component.html %}
+{% endfor %}

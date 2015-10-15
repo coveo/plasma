@@ -1,0 +1,10 @@
+---
+layout: default
+title: Controls
+permalink: /controls/
+---
+
+{% assign entries = site.components | where:"type","controls" %}
+{% for entry in entries %}
+{% include component.html %}
+{% endfor %}
