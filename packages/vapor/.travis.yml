@@ -9,7 +9,7 @@ sudo: false
 before_script:
  - chmod +x deploy.sh
 script:
-- npm run-script deploy
+ - npm run-script deploy
 env:
   global:
   - secure: WJ3lMQmoZKhHGbMz26gq3ZeLqVCKZuFT/7EkG93PHhrS5fkr3HViOxqf2ld+M33L1yUq/L7jv2mmPKF2jfw76uQDACvcwlaoDFmS/UGVU6BLRAFKyovLCRX2EILQN0p1LJ2YyS2Y9oAak97QV6Eck7aSpjmUsxCWT5kgNikWYko=

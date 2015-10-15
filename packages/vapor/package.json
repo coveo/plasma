@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "",
   "scripts": {
-    "test": "node ./node_modules/gulp/bin/gulp",
+    "test": "",
     "clean": "node ./node_modules/gulp/bin/gulp clean",
     "compile": "node ./node_modules/gulp/bin/gulp docs",
     "deploy": "./deploy.sh",
