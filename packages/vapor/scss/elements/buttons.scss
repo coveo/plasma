@@ -1,0 +1,190 @@
+@import '../common/font';
+@import '../common/colors';
+
+@mixin btn-colorize($btn-background, $btn-background-hover, $btn-background-disabled) {
+  color: $button-text-color;
+
+  background-color: $btn-background;
+
+  transition: background-color 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
+  &:focus {
+    color: $button-text-color;
+
+    background-color: $btn-background-hover;
+
+    transition: background-color 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  }
+
+  &:hover {
+    color: $button-text-color;
+
+    background-color: $btn-background-hover;
+
+    transition: background-color 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  }
+
+  &:disabled, &.disabled {
+    color: transparentize($button-text-color, 0.25);
+
+    background-color: $btn-background-disabled;
+    box-shadow: none;
+
+    cursor: default;
+
+    &:hover {
+      background-color: $btn-background-disabled;
+    }
+  }
+}
+
+@mixin btn-slim-colorize($button-background, $button-background-hover, $button-background-disabled) {
+  color: $button-background;
+
+  svg {
+    fill: $button-background;
+  }
+
+  &:hover {
+    color: $button-background-hover;
+    text-decoration: none;
+
+    svg {
+      fill: $button-background-hover;
+    }
+  }
+
+  &:disabled, &.disabled {
+    color: $button-background-disabled;
+
+    svg {
+      fill: $button-background-disabled;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  height: 25px;
+  padding: 5px 10px 5px;
+  margin: 0;
+
+  font-family: $base-font-family;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 13px;
+  text-decoration: none;
+  vertical-align: middle;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  @include btn-colorize($button-background, $button-background-hover, $button-background-disabled);
+
+  &.btn-primary {
+    @include btn-colorize($primary-button-background, $primary-button-background-hover, $primary-button-background-disabled);
+  }
+
+  &.btn-secondary {
+    @include btn-colorize($secondary-button-background, $secondary-button-background-hover, $secondary-button-background-disabled);
+  }
+
+  &.btn-danger {
+    @include btn-colorize($button-error-background, $button-error-background-hover, $button-error-background-disabled);
+  }
+
+  &:focus {
+    box-shadow: 0 0 2px 1px $coveo-blue;
+    outline: none;
+  }
+}
+
+.btn-slim {
+  padding: 0;
+
+  font-family: $base-font-family;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+
+  cursor: pointer;
+
+  @include btn-slim-colorize($coveo-dark-blue, $default-slim-button-hover, $default-slim-button-disabled);
+
+  + button.btn-slim {
+    margin-left: 10px;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &:disabled, &.disabled {
+    cursor: default;
+  }
+
+  svg {
+    vertical-align: sub;
+
+    fill: $coveo-dark-blue;
+  }
+
+  &.btn-primary {
+    @include btn-slim-colorize($primary-button-background, $primary-button-background-hover, $primary-button-background-disabled);
+  }
+
+  &.btn-secondary {
+    @include btn-slim-colorize($secondary-button-background, $secondary-button-background-hover, $secondary-button-background-disabled);
+  }
+
+  &.btn-danger {
+    @include btn-slim-colorize($button-error-background, $button-error-background-hover, $button-error-background-disabled);
+  }
+}
+
+.btn-group.btn-group-square {
+  > .btn {
+    min-width: 40px;
+    padding-right: 5px;
+    padding-left: 6px;
+
+    font-size: 12px;
+
+    box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.1);
+
+    &.btn-single-letter {
+      min-width: 30px;
+    }
+
+    &:hover {
+      z-index: 0;
+    }
+
+    &:active {
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    &.active {
+      @include btn-colorize($primary-button-background, $primary-button-background-hover, $primary-button-background-disabled);
+    }
+  }
+}
+
+.btn-link {
+  color: $headline-color;
+
+  &:hover {
+    color: $headline-color;
+  }
+}
+
+.input-append {
+  margin-bottom: 0;
+}

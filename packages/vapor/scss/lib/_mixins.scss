@@ -1,0 +1,20 @@
+@mixin slim-scroll() {
+  &::-webkit-scrollbar, ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track, ::-webkit-scrollbar-track {
+    background-color: #d3d3d3;
+  }
+
+  &::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
+    background-color: #606060;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-button, ::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
+}

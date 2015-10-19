@@ -11,7 +11,7 @@ gulp.task('sprites', 'Generate sprites from images and export to dist folder', f
 
     return gulp.src('./resources/sprites/**/*.png')
         .pipe(pngSprite.gulp({
-            cssPath: 'sprites.less',
+            cssPath: 'sprites.scss',
             pngPath: '../dist/images/CoveoStyleGuide.Sprites.png',
             relPath: '../images/CoveoStyleGuide.Sprites.png',
             eachTemplate: template,

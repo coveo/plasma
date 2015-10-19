@@ -1,0 +1,46 @@
+@import '../common/colors';
+@import '../sprites';
+$coveo-filter-box-height: 25px;
+
+.coveo-filter-container {
+  position: relative;
+
+  width: 260px;
+
+  .filter-icon .coveo-sprites-misc-filter {
+    position: absolute;
+    top: 7px;
+    left: 8px;
+
+    cursor: default;
+  }
+
+  input.filter-box {
+    width: 260px;
+    height: $coveo-filter-box-height;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin: 0;
+
+    & + span {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+
+      display: inline-block;
+
+      &.hide {
+        display: none;
+      }
+
+      &:after {
+        display: inline;
+        padding-left: 12px;
+
+        content: '\00a0';
+
+        @extend .coveo-sprites-misc-closepopup;
+      }
+    }
+  }
+}

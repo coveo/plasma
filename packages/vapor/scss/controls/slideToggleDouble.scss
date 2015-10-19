@@ -1,0 +1,47 @@
+@import '../common/colors';
+
+label.coveo-slide-toggle-double {
+  float: left;
+  margin-bottom: 0;
+
+  color: $checkbox-slide-label-color;
+  font-size: 13px;
+  line-height: 22px;
+
+  &.first {
+    margin-right: 5px;
+  }
+
+  &.second {
+    margin-left: 5px;
+  }
+
+  input[type=checkbox] & {
+    display: none;
+
+    & + span {
+      box-sizing: initial;
+      display: inline-block;
+      float: left;
+      width: 33px;
+      height: 16px;
+
+      background: $toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0; // Ignore error
+      border: 3px solid $toggle-double-background-color;
+      border-radius: 3px;
+
+      transition: background-position 0.35s ease;
+
+      cursor: pointer;
+    }
+
+    &:checked + span {
+      background-position: -15px;
+    }
+
+    &:disabled + span {
+      cursor: default;
+      opacity: 0.4;
+    }
+  }
+}

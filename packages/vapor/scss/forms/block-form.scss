@@ -1,0 +1,15 @@
+@import '../common/colors';
+
+form {
+  .coveo-block-form {
+    // TODO implement a correct base form (need to implement base inputs first)
+
+    .form-group + .form-group {
+      margin-top: 10px;
+    }
+
+    .form-group.sub {
+      margin-left: 10px;
+    }
+  }
+}
