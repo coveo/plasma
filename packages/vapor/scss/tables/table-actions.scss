@@ -1,0 +1,86 @@
+@import '../common/colors';
+@import '../controls/filterBox';
+$coveo-table-actions-container-height: 43px;
+$coveo-table-actions-border-width: 2px;
+
+.coveo-table-actions-container {
+  flex-flow: row wrap;
+  justify-content: flex-end;
+
+  display: flex;
+
+  border-top: $coveo-table-actions-border-width solid $table-borders;
+
+  .coveo-table-actions {
+    position: relative;
+
+    display: table;
+    height: $coveo-table-actions-container-height;
+    padding: 0 10px;
+
+    &:before {
+      position: absolute;
+      top: -$coveo-table-actions-border-width;
+      left: 0;
+
+      display: block;
+      width: 100%;
+      height: $coveo-table-actions-border-width;
+
+      content: '';
+
+      background-color: $table-borders;
+    }
+
+    .action {
+      display: table-cell;
+
+      vertical-align: middle;
+
+      cursor: pointer;
+
+      & + .action {
+        padding-left: 10px;
+      }
+    }
+
+    .action-bar {
+      display: table-row;
+      height: 100%;
+
+      .dropdown-menu {
+        top: 42px;
+        right: 0;
+        left: initial;
+
+        .dropdown-arrow {
+          right: 5px;
+        }
+      }
+    }
+
+    .coveo-filter-container {
+      margin: (($coveo-table-actions-container-height - $coveo-filter-box-height) / 2) 0;
+    }
+
+    .prompt {
+      display: table-cell;
+
+      vertical-align: middle;
+
+      .prompt-danger {
+        display: table-row;
+
+        & > span {
+          display: table-cell;
+
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .coveo-table-actions + .coveo-table-actions {
+    border-left: $coveo-table-actions-border-width solid $table-borders;
+  }
+}

@@ -1,0 +1,126 @@
+@import '../common/colors';
+
+form {
+  .form-section {
+    margin-top: 10px;
+
+    .section-heading {
+      margin-bottom: 20px;
+
+      .heading-title, .heading-description {
+        color: $table-header-text-color;
+      }
+
+      .heading-title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .heading-description {
+        margin-top: 10px;
+
+        font-size: 13px;
+      }
+    }
+
+    .form-subsection {
+      + .form-subsection {
+        margin-top: 10px;
+      }
+
+      .subsection-heading {
+        margin: 5px 0;
+
+        .heading-title {
+          color: $table-header-text-color;
+          font-size: 13px;
+          text-transform: uppercase;
+
+          svg {
+            fill: $table-header-text-color;
+          }
+        }
+      }
+    }
+  }
+
+  .form-section-separator {
+    position: relative;
+
+    width: 100%;
+    margin: 20px 0 10px;
+
+    text-align: center;
+
+    span {
+      display: inline-block;
+
+      color: grey;
+      text-transform: uppercase;
+
+      &:before, &:after {
+        position: absolute;
+        top: 4px;
+
+        width: 235px;
+
+        content: ' ';
+
+        border-top: solid 1px;
+      }
+
+      &:before {
+        left: 0;
+
+        border-image: linear-gradient(to left, $table-header-background-color-dark, white) 1;
+      }
+
+      &:after {
+        left: 265px;
+
+        border-image: linear-gradient(to right, $table-header-background-color-dark, white) 1;
+      }
+    }
+  }
+
+  .form-group {
+    .input-validation-error-details {
+      display: none;
+    }
+
+    &.input-validation-error {
+      .value {
+        background-color: $invalid-background-color;
+      }
+    }
+
+    &.input-validation-error, &.multiline-input-validation-error {
+      .input-validation-error-details {
+        display: block;
+        padding: 0 10px;
+
+        color: white;
+        font-size: 11px;
+        line-height: 15px;
+
+        background-color: $invalid-message-background-color;
+
+        i {
+          vertical-align: -2px;
+        }
+      }
+
+      label {
+        color: $error-color;
+      }
+
+      label, .value {
+        border-bottom: solid 1px $invalid-message-background-color;
+      }
+    }
+
+    &.multiline-input-validation-error .erroneous-input {
+      background-color: $invalid-background-color;
+    }
+  }
+}

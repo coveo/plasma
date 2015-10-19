@@ -1,0 +1,77 @@
+@import '../common/colors';
+@import '../common/font';
+@import '../sprites';
+
+.collapsable-panel-group {
+  .collapse {
+    display: none;
+
+    visibility: hidden;
+
+    &.in {
+      display: table;
+      width: 100%;
+
+      visibility: visible;
+    }
+  }
+
+  .collapsing {
+    position: relative;
+
+    height: 0;
+    overflow: hidden;
+
+    transition-duration: 0.35s;
+    transition-property: height, visibility;
+    transition-timing-function: ease;
+  }
+
+  .panel {
+    border-bottom: 2px solid $table-header-background-color-dark;
+
+    + .panel {
+      margin-top: 15px;
+    }
+
+    .panel-heading {
+      position: relative;
+
+      a {
+        display: block;
+        padding: 3px 0 3px 26px;
+        margin-bottom: 5px;
+
+        color: $table-header-text-color;
+        font-family: $base-font-family;
+        font-size: 15px;
+        line-height: initial;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      i.toggle-icon {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        z-index: -1;
+
+        display: inline-block;
+
+        content: '\00a0';
+
+        @extend .coveo-sprites-misc-panel-expended;
+      }
+
+      a.collapsed + i.toggle-icon {
+        @extend .coveo-sprites-misc-panel-collapsed;
+      }
+    }
+
+    &.panel-default {
+      .panel-body {
+        padding: 0 10px 10px 10px;
+      }
+    }
+  }
+}

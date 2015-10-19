@@ -6,8 +6,8 @@ var gulp = require('gulp-help')(require('gulp'));
 var requireDir = require('require-dir');
 var tasks = requireDir('./gulpTasks');
 
-gulp.task('default', 'Build less, libs and sprites to the dist folder', [
-    'less',
+gulp.task('default', 'Build sass, libs and sprites to the dist folder', [
+    'sass',
     'lib',
     'copy:images',
     'copy:fonts',
