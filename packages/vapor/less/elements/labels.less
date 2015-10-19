@@ -1,131 +1,96 @@
-// Users labels
-//
-// Labels for users types
-//
-// Markup:
-// <span class="user-type user-admin">admin</span>
-// <span class="user-type user-user">user</span>
-// <span class="user-type user-role_uareader">usage analyst</span>
-// <span class="user-type user-role_rankingeditor">relevance analyst</span>
-// <span class="user-type user-owner">owner</span>
-// <span class="user-type user-ops">ops</span>
-//
-// Styleguide 2.2
-@import (reference) "../common/font";
-@import (reference) "../common/colors";
+@import (reference) '../common/font';
+@import (reference) '../common/colors';
 
 .JsAdmin-tag {
-    font-size: 11px;
-    font-weight: 700;
-    font-family: @base-font-family;
-    text-transform: uppercase;
-    background-color: @placeholder-text;
-    color: #ffffff;
-    cursor: default;
-    padding: 2px 4px 3px;
-    display: inline-block;
-    border-radius: 2px;
+  display: inline-block;
+  padding: 2px 4px 3px;
+
+  color: #ffffff;
+  font-family: @base-font-family;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  background-color: @placeholder-text;
+  border-radius: 2px;
+
+  cursor: default;
 }
 
 .user-type {
-    .JsAdmin-tag();
+  font-size: 10px;
 
-    font-size: 10px;
+  .JsAdmin-tag();
 
-    &.user-admin {
-        background-color: @user-admin-color;
-    }
+  &.user-admin {
+    background-color: @user-admin-color;
+  }
 
-    &.user-user {
-        background-color: @user-user-color;
-    }
+  &.user-user {
+    background-color: @user-user-color;
+  }
 
-    &.user-role_uareader {
-        background-color: @user-ua-reader-color;
-    }
+  &.user-role_uareader {
+    background-color: @user-ua-reader-color;
+  }
 
-    &.user-role_rankingeditor {
-        background-color: @user-ranking-editor-color;
-    }
+  &.user-role_rankingeditor {
+    background-color: @user-ranking-editor-color;
+  }
 
-    &.user-owner {
-        background-color: @user-owner-color;
-    }
+  &.user-owner {
+    background-color: @user-owner-color;
+  }
 
-    &.user-invited {
-        background-color: @user-invited-color;
-    }
+  &.user-invited {
+    background-color: @user-invited-color;
+  }
 
-    &.user-ops {
-        background-color: @user-ops-color;
-    }
+  &.user-ops {
+    background-color: @user-ops-color;
+  }
 }
-
-// Organizations label
-//
-// Labels for license types
-//
-// Markup:
-// <span class="organization-type STANDARD-label">STANDARD</span>
-// <span class="organization-type SANDBOX-label">SANDBOX</span>
-// <span class="organization-type INTERNAL-label">INTERNAL</span>
-// <span class="organization-type DEMO-label">DEMO</span>
-// <span class="organization-type TRIAL-label">TRIAL</span>
-// <span class="organization-type FREE-label">FREE</span>
-// <span class="organization-type ua-only-label">ua only</span>
-//
-// Styleguide 2.3
 
 .organization-type {
-    .JsAdmin-tag();
+  .JsAdmin-tag();
 
-    &.STANDARD-label {
-        background-color: @standard-type-label-color;
-    }
+  &.STANDARD-label {
+    background-color: @standard-type-label-color;
+  }
 
-    &.SANDBOX-label {
-        background-color: @sandbox-type-label-color;
-    }
+  &.SANDBOX-label {
+    background-color: @sandbox-type-label-color;
+  }
 
-    &.INTERNAL-label {
-        background-color: @internal-type-label-color;
-    }
+  &.INTERNAL-label {
+    background-color: @internal-type-label-color;
+  }
 
-    &.DEMO-label {
-        background-color: @demo-type-label-color;
-    }
+  &.DEMO-label {
+    background-color: @demo-type-label-color;
+  }
 
-    &.TRIAL-label {
-        background-color: @trial-type-label-color;
-    }
+  &.TRIAL-label {
+    background-color: @trial-type-label-color;
+  }
 
-    &.FREE-label {
-        background-color: @free-type-label-color;
-    }
+  &.FREE-label {
+    background-color: @free-type-label-color;
+  }
 
-    &.ua-only-label {
-        background-color: @ua-only-label-color;
-    }
+  &.ua-only-label {
+    background-color: @ua-only-label-color;
+  }
 }
 
-// Organizations label
-//
-// Labels for encryption status
-//
-// Markup:
-// <span class="encryption-status SHAREDKEY-label">SHAREDKEY</span>
-// <span class="encryption-status UNIQUEKEY-label">UNIQUEKEY</span>
-//
-// Styleguide 2.4
-
 .encryption-status {
-    .JsAdmin-tag();
+  .JsAdmin-tag();
 
-    &.SHAREDKEY-label {
-        background-color: @trial-type-label-color;
-    }
+  &.SHAREDKEY-label {
+    background-color: @trial-type-label-color;
+  }
 
-    &.UNIQUEKEY-label {
-        background-color: @user-admin-color;
-    }
+  &.UNIQUEKEY-label {
+    background-color: @user-admin-color;
+  }
 }

@@ -1,60 +1,50 @@
-// Slide Toggle Double
-//
-// Slide toggle with 2 options. Compatible IE9+.
-//
-// :checked         - Checkbox is checked
-// :disabled        - Checkbox is not clickable/modifiable
-//
-// Markup:
-//   <label class="coveo-slide-toggle-double first" for="choice">Choice 1</label>
-//   <input type="checkbox" class="coveo-slide-toggle-double {$modifiers}" name="choice"><span></span>
-//   <label class="coveo-slide-toggle-double second" for="choice">Choice 2</label>
-//   <br>
-//
-// Styleguide 5.5
-@import (reference) "../common/colors";
+@import (reference) '../common/colors';
 
 .coveo-slide-toggle-double {
-    float: left;
+  float: left;
 
-    label& {
-        font-size: 13px;
-        color: @checkbox-slide-label-color;
-        margin-bottom: 0;
-        line-height: 22px;
+  label& {
+    margin-bottom: 0;
 
-        &.first {
-            margin-right: 5px;
-        }
+    color: @checkbox-slide-label-color;
+    font-size: 13px;
+    line-height: 22px;
 
-        &.second {
-            margin-left: 5px;
-        }
+    &.first {
+      margin-right: 5px;
     }
 
-    input[type=checkbox] & {
-        display: none;
-
-        & + span {
-            transition: background-position 0.35s ease;
-            background: @toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0; // Ignore error
-            width: 33px;
-            height: 16px;
-            display: inline-block;
-            border-radius: 3px;
-            border: 3px solid @toggle-double-background-color;
-            float: left;
-            cursor: pointer;
-            box-sizing: initial;
-        }
-
-        &:checked + span {
-            background-position: -15px;
-        }
-
-        &:disabled + span {
-            cursor: default;
-            opacity: 0.4;
-        }
+    &.second {
+      margin-left: 5px;
     }
+  }
+
+  input[type=checkbox] & {
+    display: none;
+
+    & + span {
+      box-sizing: initial;
+      display: inline-block;
+      float: left;
+      width: 33px;
+      height: 16px;
+
+      background: @toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0; // Ignore error
+      border: 3px solid @toggle-double-background-color;
+      border-radius: 3px;
+
+      transition: background-position 0.35s ease;
+
+      cursor: pointer;
+    }
+
+    &:checked + span {
+      background-position: -15px;
+    }
+
+    &:disabled + span {
+      cursor: default;
+      opacity: 0.4;
+    }
+  }
 }

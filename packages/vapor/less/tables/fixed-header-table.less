@@ -1,42 +1,49 @@
 @import (reference) '../common/colors';
 
 .fixed-header-table-container {
+  position: relative;
+
+  padding-top: 27px;
+
+  border-top: solid 2px @table-borders;
+
+  .fixed-header-table {
+    overflow-y: scroll;
+
     border-top: solid 2px @table-borders;
-    padding-top: 27px;
-    position: relative;
+    border-bottom: solid 2px @table-borders;
 
-    .fixed-header-table {
-        border-bottom: solid 2px @table-borders;
-        border-top: solid 2px @table-borders;
+    table thead tr {
+      height: 0;
 
-        overflow-y: scroll;
+      th {
+        position: inherit;
 
-        table thead tr {
-            height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
 
-            th {
-                border: none;
-                font-size: 0;
-                padding-top: 0;
-                padding-bottom: 0;
-                position: inherit;
-                white-space: nowrap;
+        font-size: 0;
+        white-space: nowrap;
 
-                &.admin-sort .admin-sort-icon {
-                    left: 0;
-                }
+        border: none;
 
-                &.selection .fixed-header-container {
-                    padding-top: 4px;
-                }
-
-                div.fixed-header-container {
-                    font-size: 12px;
-                    padding-top: 5px;
-                    position: absolute;
-                    top: 0;
-                }
-            }
+        &.admin-sort .admin-sort-icon {
+          left: 0;
         }
+
+        &.selection .fixed-header-container {
+          padding-top: 4px;
+        }
+
+        div.fixed-header-container {
+          position: absolute;
+          top: 0;
+
+          padding-top: 5px;
+
+          font-size: 12px;
+        }
+      }
     }
+  }
 }

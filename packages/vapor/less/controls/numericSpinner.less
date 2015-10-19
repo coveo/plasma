@@ -1,48 +1,33 @@
-// Numeric Spinner
-//
-// Spinner for numeric values
-//
-// Markup:
-//  <div class="input-group admin-numeric-spinner">
-//      <input type="text" value="1" class="">
-//      <span class="add-on">
-//          <div id="SpinnerUp">
-//              <i class="coveo-sprites-misc-spinner_arrow_up"></i>
-//          </div>
-//          <div id="SpinnerDown">
-//              <i class="coveo-sprites-misc-spinner_arrow_down"></i>
-//          </div>
-//      </span>
-//  </div>
-//
-// Styleguide 5.2
 .admin-numeric-spinner.input-group {
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
 
-    *, *:before, *:after {
-        box-sizing: border-box;
+  input[type='text'] {
+    width: 35px;
+  }
+
+  .add-on {
+    padding-top: 2px;
+
+    border-left-width: 0;
+
+    user-select: none;
+
+    div {
+      padding: 0 6px;
+
+      border-radius: 3px;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: @coveo-dark-blue;
+      }
+
+      i {
+        display: block;
+      }
     }
-
-    input[type='text'] {
-        width: 35px;
-    }
-
-    .add-on {
-        padding-top: 2px;
-        border-left-width: 0;
-        user-select: none;
-
-        div {
-            padding: 0 6px;
-            cursor: pointer;
-            border-radius: 3px;
-
-            &:hover {
-                background-color: @coveo-dark-blue;
-            }
-
-            i {
-                display: block;
-            }
-        }
-    }
+  }
 }

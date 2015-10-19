@@ -1,84 +1,81 @@
-// Input Slider
-//
-// Styled input slider for cross-browser compatibility. IE10+, FF, Chrome, Safari.
-//
-// Initialize the component's colors whenever it is rendered by using $(selector).slider()
-//
-// Markup:
-//  <style class="coveo-input-slider-style" type="text/css"></style>
-//  <input type="range" class="coveo-input-slider" data-uid="1" min="1" max="100" value="50">
-//
-// Styleguide 5.7
-
 input[type=range].coveo-input-slider {
-    -webkit-appearance: none;
-    width: 100%;
-    max-width: 500px;
+  width: 100%;
+  max-width: 500px;
+
+  -webkit-appearance: none;
 }
 
 input[type=range].coveo-input-slider:focus {
-    outline: none;
+  outline: none;
 }
 
 // WEBKIT
 input[type=range].coveo-input-slider::-webkit-slider-runnable-track {
-    width: 100%;
-    max-width: 500px;
-    height: 7px;
-    border: none;
-    background: @coveo-input-slider-track-default;
+  width: 100%;
+  height: 7px;
+  max-width: 500px;
+
+  background: @coveo-input-slider-track-default;
+  border: none;
 }
 
 input[type=range].coveo-input-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: 1px solid @coveo-input-slider-thumb-border;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: @coveo-input-slider-thumb-dark;
-    background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
-    margin-top: -6px;
+  width: 20px;
+  height: 20px;
+  margin-top: -6px;
+
+  -webkit-appearance: none;
+  background: @coveo-input-slider-thumb-dark;
+  background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+  border: 1px solid @coveo-input-slider-thumb-border;
+  border-radius: 50%;
 }
 
 // FIREFOX
 input[type=range].coveo-input-slider::-moz-range-track {
-    width: 100%;
-    max-width: 500px;
-    height: 7px;
-    border: none;
-    background: @coveo-input-slider-track-default;
+  width: 100%;
+  height: 7px;
+  max-width: 500px;
+
+  background: @coveo-input-slider-track-default;
+  border: none;
 }
 
 input[type=range].coveo-input-slider::-moz-range-thumb {
-    border: 1px solid @coveo-input-slider-thumb-border;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: @coveo-input-slider-thumb-dark;
-    background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+  width: 20px;
+  height: 20px;
+
+  background: @coveo-input-slider-thumb-dark;
+  background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+  border: 1px solid @coveo-input-slider-thumb-border;
+  border-radius: 50%;
 }
 
 // IE10+
 input[type=range].coveo-input-slider::-ms-track {
-    width: 100%;
-    max-width: 500px;
-    height: 7px;
-    background: transparent;
-    border-color: transparent;
-    border-width: 8px 0;
-    color: transparent;
+  width: 100%;
+  height: 7px;
+  max-width: 500px;
+
+  color: transparent;
+
+  background: transparent;
+  border-color: transparent;
+  border-width: 8px 0;
 }
 
 input[type=range].coveo-input-slider::-ms-thumb {
-    border: 1px solid @coveo-input-slider-thumb-border;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: @coveo-input-slider-thumb-dark;
-    background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+  width: 20px;
+  height: 20px;
+
+  background: @coveo-input-slider-thumb-dark;
+  background: linear-gradient(to top right, @coveo-input-slider-thumb-dark 50%, @coveo-input-slider-thumb-light 50%);
+  border: 1px solid @coveo-input-slider-thumb-border;
+  border-radius: 50%;
 }
 
 input[type=range].coveo-input-slider::-ms-tooltip {
-    display: none;
-    visibility: hidden;
+  display: none;
+
+  visibility: hidden;
 }
