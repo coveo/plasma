@@ -1,56 +1,47 @@
-// Filter box
-//
-// Basic filter box.
-//
-// Markup:
-//<div class="coveo-filter-container">
-//  <input type="text" class="filter-box">
-//  <span></span>
-//  <span class="filter-icon">
-//      <i class="coveo-sprites-misc-filter"></i>
-//  </span>
-//</div>
-//
-// Styleguide 5.6
-@import (reference) "../common/colors";
-@import (reference) "../sprites";
+@import (reference) '../common/colors';
+@import (reference) '../sprites';
 
 @coveo-filter-box-height: 25px;
 
 .coveo-filter-container {
-    position: relative;
+  position: relative;
+
+  width: 260px;
+
+  .filter-icon .coveo-sprites-misc-filter {
+    position: absolute;
+    top: 7px;
+    left: 8px;
+
+    cursor: default;
+  }
+
+  input.filter-box {
     width: 260px;
+    height: @coveo-filter-box-height;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin: 0;
 
-    .filter-icon .coveo-sprites-misc-filter {
-        position: absolute;
-        cursor: default;
-        left: 8px;
-        top: 7px;
+    & + span {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+
+      display: inline-block;
+
+      &.hide {
+        display: none;
+      }
+
+      &:after {
+        display: inline;
+        padding-left: 12px;
+
+        content: '\00a0';
+
+        .coveo-sprites-misc-closepopup;
+      }
     }
-
-    input.filter-box {
-        height: @coveo-filter-box-height;
-        margin: 0;
-        padding-left: 25px;
-        padding-right: 25px;
-        width: 260px;
-
-        & + span {
-            display: inline-block;
-            position: absolute;
-            right: 10px;
-            top: 8px;
-
-            &.hide {
-                display: none;
-            }
-
-            &:after {
-                content: "\00a0";
-                padding-left: 12px;
-                .coveo-sprites-misc-closepopup;
-                display: inline;
-            }
-        }
-    }
+  }
 }

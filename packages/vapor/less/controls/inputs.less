@@ -1,101 +1,75 @@
-// Text Input
-//
-// Below are the text-oriented form elements used on the site.
-//
-// Single-Line Text Boxes, Standard text boxes.
-//
-// :disabled - When disabled, the input's appearance should reflect as such.
-//
-// Markup:
-// <input type="text" class="{$modifiers}" value="Text"/>
-// <input type="text" class="{$modifiers}" placeholder="Placeholder"/>
-//
-// Styleguide 5.1
-@import (reference) "../common/colors";
-@import (reference) "../common/font";
+@import (reference) '../common/colors';
+@import (reference) '../common/font';
 
 ::-webkit-input-placeholder {
-    // WebKit browsers
-    font-family: @base-font-family;
-    font-size: inherit;
-    color: @placeholder-text;
-    text-transform: none;
+  // WebKit browsers
+  color: @placeholder-text;
+  font-family: @base-font-family;
+  font-size: inherit;
+  text-transform: none;
 }
 
 :-moz-placeholder {
-    // Mozilla Firefox 4 to 18
-    font-family: @base-font-family;
-    font-size: inherit;
-    color: @placeholder-text;
-    text-transform: none;
+  // Mozilla Firefox 4 to 18
+  color: @placeholder-text;
+  font-family: @base-font-family;
+  font-size: inherit;
+  text-transform: none;
 }
 
 ::-moz-placeholder {
-    // Mozilla Firefox 19+
-    font-family: @base-font-family;
-    font-size: inherit;
-    color: @placeholder-text;
-    text-transform: none;
+  // Mozilla Firefox 19+
+  color: @placeholder-text;
+  font-family: @base-font-family;
+  font-size: inherit;
+  text-transform: none;
 }
 
 :-ms-input-placeholder {
-    // Internet Explorer 10+
-    font-family: @base-font-family;
-    font-size: inherit;
-    color: @placeholder-text;
-    text-transform: none;
+  // Internet Explorer 10+
+  color: @placeholder-text;
+  font-family: @base-font-family;
+  font-size: inherit;
+  text-transform: none;
 }
 
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
-    padding: 3px 6px;
+select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] {
+  padding: 3px 6px;
 
-    font-family: @base-font-family;
-    font-size: 16px;
-    color: @text-color;
+  color: @text-color;
+  font-family: @base-font-family;
+  font-size: 16px;
 
-    border: 1px solid @input-border;
-    border-radius: 2px;
+  border: 1px solid @input-border;
+  border-radius: 2px;
 }
 
-input[type='text'],
-textarea {
-    &.admin-invisible-textbox {
-        padding: 4px 6px;
-        margin-bottom: 0;
-        background: transparent;
-        border-width: 0;
-        resize: none;
-    }
+input[type='text'], textarea {
+  &.admin-invisible-textbox {
+    padding: 4px 6px;
+    margin-bottom: 0;
+
+    background: transparent;
+    border-width: 0;
+
+    resize: none;
+  }
 }
 
 .input-group {
-    input {
-        height: 30px;
-    }
-    .add-on {
-        display: inline-block;
-        height: 30px;
-        vertical-align: top;
-        padding: 0;
-        background-color: @button-background;
-        border: 1px solid darken(@button-background, 10%);
+  input {
+    height: 30px;
+  }
+  .add-on {
+    display: inline-block;
+    height: 30px;
+    padding: 0;
+    margin-left: -5px;
 
-        border-radius: 0 2px 2px 0;
-        margin-left: -5px;
-    }
+    vertical-align: top;
+
+    background-color: @button-background;
+    border: 1px solid darken(@button-background, 10%);
+    border-radius: 0 2px 2px 0;
+  }
 }

@@ -1,158 +1,161 @@
-// Date Picker
-//
-// Follow http://foxrunsoftware.github.io/DatePicker/ documentation to initialize a date picker.
-//
-// Markup:
-//  <div class="coveo-datepicker"></div>
-//
-// Styleguide 5.8
-@import (reference) "../common/colors";
-@import "../lib/datepicker";
+@import (reference) '../common/colors';
+@import '../lib/datepicker';
 
 .inline .datepicker {
-    padding: 0;
-    box-sizing: border-box;
-    width: 100% !important;
-    height: auto !important;
-    border: none;
+  box-sizing: border-box;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0;
 
-    .datepickerContainer {
-        width: 100% !important;
-        height: 100% !important;
-        position: relative;
-    }
+  border: none;
+
+  .datepickerContainer {
+    position: relative;
+
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 .datepicker {
-    background-color: @body-background-color;
+  background-color: @body-background-color;
 
-    .datepickerBlock {
-        border: none !important;
-    }
+  .datepickerBlock {
+    border: none !important;
+  }
 
-    table {
-        thead {
-            tr {
-                background-color: transparent;
+  table {
+    thead {
+      tr:first-child th {
+        a:hover {
+          text-decoration: none;
 
-                th {
-                    padding: 3px 0;
-                    text-align: center;
-                }
+          background: @datepicker-day-hover-background-color;
 
-                &.datepickerDoW {
-                    th {
-                        padding: 2px 0;
-                        border-bottom: 1px solid @datepicker-border-color;
-                    }
-                    span {
-                        font-size: 9px;
-                        border-top: none;
-                        border-right: none;
-                        border-bottom: none;
-                        color: @datepicker-dayofweeks-color;
-                    }
-                }
+          cursor: pointer;
+        }
+
+          .datepickerMonth {
+            width: calc(~'100% - 74px');
+            margin: 0 37px;
+            &:hover {
+              text-decoration: underline;
+
+              background-color: transparent;
+            }
+          }
+
+            .datepickerGoPrev, .datepickerGoNext {
+              position: absolute;
             }
 
-            tr:first-child th {
-                a:hover {
-                    background: @datepicker-day-hover-background-color;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-
-                .datepickerMonth {
-                    width: calc(~'100% - 74px');
-                    margin: 0 37px;
-                    &:hover {
-                        background-color: transparent;
-                        text-decoration: underline;
-                    }
-                }
-
-                .datepickerGoPrev, .datepickerGoNext {
-                    position: absolute;
-                }
-
-                .datepickerGoPrev {
-                    left: 0;
-                }
+              .datepickerGoPrev {
+                left: 0;
+              }
 
                 .datepickerGoNext {
-                    right: 0;
+                  right: 0;
                 }
+      }
+        tr {
+          background-color: transparent;
+
+          th {
+            padding: 3px 0;
+
+            text-align: center;
+          }
+
+          &.datepickerDoW {
+            th {
+              padding: 2px 0;
+
+              border-bottom: 1px solid @datepicker-border-color;
             }
-        }
+            span {
+              color: @datepicker-dayofweeks-color;
+              font-size: 9px;
 
-        tbody {
-            tr {
-                &:hover > td {
-                    background-color: inherit;
-                }
-
-                td {
-                    background-color: @body-background-color;
-                    color: @datepicker-day-color;
-                    font-size: 11px;
-                    border: 1px solid @datepicker-border-color;
-                    text-align: center;
-
-                    a {
-                        box-sizing: border-box;
-                        width: 37px;
-                        height: 26px;
-                        line-height: 26px;
-                        cursor: pointer;
-                        text-decoration: none;
-                    }
-
-                    &.datepickerSelected {
-                        background-color: @coveo-blue;
-
-                        &.datepickerNotInMonth {
-                            background-color: @datepicker-day-selected-notinmonth-background-color;
-                            a {
-                                color: @datepicker-day-selected-notinmonth-color;
-                            }
-                        }
-                    }
-
-                    &.datepickerNotInMonth {
-                        background-color: @datepicker-day-notinmonth-background-color;
-                    }
-
-                    &.datepickerFuture {
-                        &.datepickerNotInMonth {
-                            background-color: @datepicker-day-notinmonth-background-color;
-                            a {
-                                cursor: default;
-                            }
-
-                            &.datepickerDisabled {
-                                background-color: @datepicker-day-disabled-background-color;
-                            }
-                        }
-                    }
-
-                    &.datepickerDisabled {
-                        background-color: @datepicker-day-disabled-background-color;
-
-                        a {
-                            cursor: default;
-                            color: @datepicker-day-disabled-color;
-                        }
-                    }
-                }
-
-                .datepickerSpace {
-                    border: none !important;
-
-                    div {
-                        width: 5px;
-                    }
-                }
+              border-top: none;
+              border-right: none;
+              border-bottom: none;
             }
+          }
         }
     }
+
+    tbody {
+      tr {
+        &:hover > td {
+          background-color: inherit;
+        }
+
+        td {
+          color: @datepicker-day-color;
+          font-size: 11px;
+          text-align: center;
+
+          background-color: @body-background-color;
+          border: 1px solid @datepicker-border-color;
+
+          a {
+            box-sizing: border-box;
+            width: 37px;
+            height: 26px;
+
+            line-height: 26px;
+            text-decoration: none;
+
+            cursor: pointer;
+          }
+
+          &.datepickerSelected {
+            background-color: @coveo-blue;
+
+            &.datepickerNotInMonth {
+              background-color: @datepicker-day-selected-notinmonth-background-color;
+              a {
+                color: @datepicker-day-selected-notinmonth-color;
+              }
+            }
+          }
+
+          &.datepickerNotInMonth {
+            background-color: @datepicker-day-notinmonth-background-color;
+          }
+
+          &.datepickerFuture {
+            &.datepickerNotInMonth {
+              background-color: @datepicker-day-notinmonth-background-color;
+              a {
+                cursor: default;
+              }
+
+              &.datepickerDisabled {
+                background-color: @datepicker-day-disabled-background-color;
+              }
+            }
+          }
+
+          &.datepickerDisabled {
+            background-color: @datepicker-day-disabled-background-color;
+
+            a {
+              color: @datepicker-day-disabled-color;
+
+              cursor: default;
+            }
+          }
+        }
+
+        .datepickerSpace {
+          border: none !important;
+
+          div {
+            width: 5px;
+          }
+        }
+      }
+    }
+  }
 }

@@ -11,6 +11,8 @@ var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
 var sourcemaps = require('gulp-sourcemaps');
 
+var csscomb = require('gulp-csscomb');
+
 var autoprefixerOptions = config.autoprefixerOptions;
 var gzipOptions = config.gzipOptions;
 
@@ -39,4 +41,11 @@ gulp.task('less', 'Compile less files to dist folder', ['sprites'], function () 
 
 gulp.task('less:docs', 'Build less and copy it to /docs/dist', ['less'], function () {
     gulp.src('./dist/css/*').pipe(gulp.dest('./dist/css')).pipe(gulp.dest('./_gh_pages/dist/css'));
+});
+
+
+gulp.task('less:format', function() {
+    return gulp.src('./less/**/*.less')
+        .pipe(csscomb())
+        .pipe(gulp.dest('./less'));
 });
