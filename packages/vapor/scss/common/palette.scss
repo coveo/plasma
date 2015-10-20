@@ -1,0 +1,22 @@
+// Primary palette
+$orange: #f58020;
+$white: #ffffff;
+$light-gray: #f5f6f7;
+$light-blue: #2b4b72;
+$dark-blue: #1c2e44;
+$black: #1d1f21;
+
+// Secondary palette
+$red: #f44336;
+$yellow: #ffc200;
+$green: #4caf50;
+$blue: #1194f6;
+
+$palette-primary: orange $orange, white $white, light-gray $light-gray, light-blue $light-blue, dark-blue $dark-blue, black $black;
+$palette-secondary: red $red, yellow $yellow, green $green, blue $blue;
+
+@each $color in $palette-primary {
+  .bg-#{nth($color, 1)} {
+    background-color: nth($color, 2);
+  }
+}

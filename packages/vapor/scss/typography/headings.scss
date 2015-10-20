@@ -1,4 +1,5 @@
 @import '../common/font';
+@import 'utility';
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $base-font-family;
@@ -42,4 +43,8 @@ h5 {
 
 h6 {
   font-size: 11.9px;
+}
+
+.text-white {
+  color: $white;
 }

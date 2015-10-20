@@ -1,71 +1,9 @@
-.coveo-sprites-misc-closepopup, .coveo-sprites-misc-filter, .coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-alert, .coveo-sprites-misc-panel-collapsed, .coveo-sprites-tables-sort_asc, .coveo-sprites-misc-panel-expended, .coveo-sprites-tables-sort_desc {
-  display:inline-block;
-  overflow:hidden;
-
-  background-image:url('../images/CoveoStyleGuide.Sprites.png');
-  background-repeat:no-repeat;
-  background-size: 83px 16px;
-}i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup {
-  width:16px;
-  height:16px;
-
-  text-indent:16px;
-
-  background-position:0 0;
-}i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
-  width:12px;
-  height:12px;
-
-  text-indent:12px;
-
-  background-position:-16px 0;
-}i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
-  width:12px;
-  height:12px;
-
-  text-indent:12px;
-
-  background-position:-28px 0;
-}i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
-  width:12px;
-  height:12px;
-
-  text-indent:12px;
-
-  background-position:-40px 0;
-}i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
-  width:11px;
-  height:11px;
-
-  text-indent:11px;
-
-  background-position:-52px 0;
-}i.coveo-sprites-misc-panel-collapsed, .coveo-sprites-misc-panel-collapsed {
-  width:10px;
-  height:10px;
-
-  text-indent:10px;
-
-  background-position:-63px 0;
-}i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
-  width:6px;
-  height:6px;
-
-  text-indent:6px;
-
-  background-position:-63px -10px;
-}i.coveo-sprites-misc-panel-expended, .coveo-sprites-misc-panel-expended {
-  width:10px;
-  height:10px;
-
-  text-indent:10px;
-
-  background-position:-73px 0;
-}i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
-  width:6px;
-  height:6px;
-
-  text-indent:6px;
-
-  background-position:-73px -10px;
-}
+.coveo-sprites-misc-closepopup,
+.coveo-sprites-misc-filter,
+.coveo-sprites-misc-spinner_arrow_down,
+.coveo-sprites-misc-spinner_arrow_up,
+.coveo-sprites-misc-alert,
+.coveo-sprites-misc-panel-collapsed,
+.coveo-sprites-tables-sort_asc,
+.coveo-sprites-misc-panel-expended,
+.coveo-sprites-tables-sort_desc{      background-image:url("../images/CoveoStyleGuide.Sprites.png");      display:inline-block;      background-repeat:no-repeat;      overflow:hidden;      background-size: 83px 16px;    }i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup {      background-position:0px 0px;      width:16px;      height:16px;      text-indent:16px;    }i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {      background-position:-16px 0px;      width:12px;      height:12px;      text-indent:12px;    }i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {      background-position:-28px 0px;      width:12px;      height:12px;      text-indent:12px;    }i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {      background-position:-40px 0px;      width:12px;      height:12px;      text-indent:12px;    }i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {      background-position:-52px 0px;      width:11px;      height:11px;      text-indent:11px;    }i.coveo-sprites-misc-panel-collapsed, .coveo-sprites-misc-panel-collapsed {      background-position:-63px 0px;      width:10px;      height:10px;      text-indent:10px;    }i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {      background-position:-63px -10px;      width:6px;      height:6px;      text-indent:6px;    }i.coveo-sprites-misc-panel-expended, .coveo-sprites-misc-panel-expended {      background-position:-73px 0px;      width:10px;      height:10px;      text-indent:10px;    }i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {      background-position:-73px -10px;      width:6px;      height:6px;      text-indent:6px;    }

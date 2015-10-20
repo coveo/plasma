@@ -49,6 +49,37 @@ html {
 body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif; }
 
+.bg-orange {
+  background-color: #f58020; }
+
+.bg-white {
+  background-color: #ffffff; }
+
+.bg-light-gray {
+  background-color: #f5f6f7; }
+
+.bg-light-blue {
+  background-color: #2b4b72; }
+
+.bg-dark-blue {
+  background-color: #1c2e44; }
+
+.bg-black {
+  background-color: #1d1f21; }
+
+.bg-red {
+  background-color: #f44336; }
+
+.bg-yellow {
+  background-color: #ffc200; }
+
+.bg-green {
+  background-color: #4caf50; }
+
+.bg-blue {
+  background-color: #1194f6; }
+
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -68,67 +99,79 @@ body {
   src: url("../fonts/SourceCodePro-Regular.eot");
   src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
 
-.coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after, .coveo-sprites-misc-filter, .coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-alert, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-tables-sort_asc, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-tables-sort_desc {
-  display: inline-block;
-  overflow: hidden;
+.coveo-sprites-misc-closepopup,
+.coveo-filter-container input.filter-box + span:after,
+.coveo-sprites-misc-filter,
+.coveo-sprites-misc-spinner_arrow_down,
+.coveo-sprites-misc-spinner_arrow_up,
+.coveo-sprites-misc-alert,
+.coveo-sprites-misc-panel-collapsed,
+.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,
+.coveo-sprites-tables-sort_asc,
+.coveo-sprites-misc-panel-expended,
+.collapsable-panel-group .panel .panel-heading i.toggle-icon,
+.coveo-sprites-tables-sort_desc {
   background-image: url("../images/CoveoStyleGuide.Sprites.png");
+  display: inline-block;
   background-repeat: no-repeat;
+  overflow: hidden;
   background-size: 83px 16px; }
 
 i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after {
+  background-position: 0px 0px;
   width: 16px;
   height: 16px;
-  text-indent: 16px;
-  background-position: 0 0; }
+  text-indent: 16px; }
 
 i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
+  background-position: -16px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -16px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
+  background-position: -28px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -28px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
+  background-position: -40px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -40px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
+  background-position: -52px 0px;
   width: 11px;
   height: 11px;
-  text-indent: 11px;
-  background-position: -52px 0; }
+  text-indent: 11px; }
 
 i.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {
+  background-position: -63px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -63px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
+  background-position: -63px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -63px -10px; }
+  text-indent: 6px; }
 
 i.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {
+  background-position: -73px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -73px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
+  background-position: -73px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -73px -10px; }
+  text-indent: 6px; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -148,66 +191,77 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   src: url("../fonts/SourceCodePro-Regular.eot");
   src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
 
-.coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after, .coveo-sprites-misc-filter, .coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-alert, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-tables-sort_asc, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-tables-sort_desc {
-  display: inline-block;
-  overflow: hidden;
+.coveo-sprites-misc-closepopup,
+.coveo-filter-container input.filter-box + span:after,
+.coveo-sprites-misc-filter,
+.coveo-sprites-misc-spinner_arrow_down,
+.coveo-sprites-misc-spinner_arrow_up,
+.coveo-sprites-misc-alert,
+.coveo-sprites-misc-panel-collapsed,
+.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,
+.coveo-sprites-tables-sort_asc,
+.coveo-sprites-misc-panel-expended,
+.collapsable-panel-group .panel .panel-heading i.toggle-icon,
+.coveo-sprites-tables-sort_desc {
   background-image: url("../images/CoveoStyleGuide.Sprites.png");
+  display: inline-block;
   background-repeat: no-repeat;
+  overflow: hidden;
   background-size: 83px 16px; }
 
 i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after {
+  background-position: 0px 0px;
   width: 16px;
   height: 16px;
-  text-indent: 16px;
-  background-position: 0 0; }
+  text-indent: 16px; }
 
 i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
+  background-position: -16px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -16px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
+  background-position: -28px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -28px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
+  background-position: -40px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -40px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
+  background-position: -52px 0px;
   width: 11px;
   height: 11px;
-  text-indent: 11px;
-  background-position: -52px 0; }
+  text-indent: 11px; }
 
 i.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {
+  background-position: -63px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -63px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
+  background-position: -63px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -63px -10px; }
+  text-indent: 6px; }
 
 i.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {
+  background-position: -73px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -73px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
+  background-position: -73px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -73px -10px; }
+  text-indent: 6px; }
 
 .collapsable-panel-group .collapse {
   display: none;
@@ -261,6 +315,47 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   src: url("../fonts/SourceCodePro-Regular.eot");
   src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
 
+.bold {
+  font-weight: bold; }
+
+.regular {
+  font-weight: normal; }
+
+.italic {
+  font-style: italic; }
+
+.caps {
+  letter-spacing: 0.2em;
+  text-transform: uppercase; }
+
+.left-align {
+  text-align: left; }
+
+.center {
+  text-align: center; }
+
+.right-align {
+  text-align: right; }
+
+.justify {
+  text-align: justify; }
+
+.nowrap {
+  white-space: nowrap; }
+
+.break-word {
+  word-wrap: break-word; }
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.list-reset {
+  padding-left: 0;
+  list-style: none; }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", Arial, Helvetica, sans-serif; }
   h1.light, h2.light, h3.light, h4.light, h5.light, h6.light {
@@ -291,6 +386,9 @@ h5 {
 h6 {
   font-size: 11.9px; }
 
+.text-white {
+  color: #ffffff; }
+
 @font-face {
   font-family: 'source_code_pro_regular';
   font-style: normal;
@@ -298,6 +396,7 @@ h6 {
   src: url("../fonts/SourceCodePro-Regular.eot");
   src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -379,6 +478,7 @@ h6 {
   .encryption-status.UNIQUEKEY-label {
     background-color: #59be90; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -402,6 +502,7 @@ a {
   src: url("../fonts/SourceCodePro-Regular.eot");
   src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -634,6 +735,7 @@ a {
 .input-append {
   margin-bottom: 0; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -646,66 +748,77 @@ a {
 /* Organizations */
 /* Timeline */
 /* Datepicker */
-.coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after, .coveo-sprites-misc-filter, .coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-alert, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-tables-sort_asc, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-tables-sort_desc {
-  display: inline-block;
-  overflow: hidden;
+.coveo-sprites-misc-closepopup,
+.coveo-filter-container input.filter-box + span:after,
+.coveo-sprites-misc-filter,
+.coveo-sprites-misc-spinner_arrow_down,
+.coveo-sprites-misc-spinner_arrow_up,
+.coveo-sprites-misc-alert,
+.coveo-sprites-misc-panel-collapsed,
+.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,
+.coveo-sprites-tables-sort_asc,
+.coveo-sprites-misc-panel-expended,
+.collapsable-panel-group .panel .panel-heading i.toggle-icon,
+.coveo-sprites-tables-sort_desc {
   background-image: url("../images/CoveoStyleGuide.Sprites.png");
+  display: inline-block;
   background-repeat: no-repeat;
+  overflow: hidden;
   background-size: 83px 16px; }
 
 i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after {
+  background-position: 0px 0px;
   width: 16px;
   height: 16px;
-  text-indent: 16px;
-  background-position: 0 0; }
+  text-indent: 16px; }
 
 i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
+  background-position: -16px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -16px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
+  background-position: -28px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -28px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
+  background-position: -40px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -40px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
+  background-position: -52px 0px;
   width: 11px;
   height: 11px;
-  text-indent: 11px;
-  background-position: -52px 0; }
+  text-indent: 11px; }
 
 i.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {
+  background-position: -63px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -63px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
+  background-position: -63px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -63px -10px; }
+  text-indent: 6px; }
 
 i.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {
+  background-position: -73px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -73px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
+  background-position: -73px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -73px -10px; }
+  text-indent: 6px; }
 
 table {
   width: 100%;
@@ -875,6 +988,7 @@ table {
     -webkit-transition: background-color 300ms;
             transition: background-color 300ms; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -914,6 +1028,7 @@ table {
           padding-top: 5px;
           font-size: 12px; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -926,6 +1041,7 @@ table {
 /* Organizations */
 /* Timeline */
 /* Datepicker */
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -938,66 +1054,77 @@ table {
 /* Organizations */
 /* Timeline */
 /* Datepicker */
-.coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after, .coveo-sprites-misc-filter, .coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-alert, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-tables-sort_asc, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-tables-sort_desc {
-  display: inline-block;
-  overflow: hidden;
+.coveo-sprites-misc-closepopup,
+.coveo-filter-container input.filter-box + span:after,
+.coveo-sprites-misc-filter,
+.coveo-sprites-misc-spinner_arrow_down,
+.coveo-sprites-misc-spinner_arrow_up,
+.coveo-sprites-misc-alert,
+.coveo-sprites-misc-panel-collapsed,
+.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,
+.coveo-sprites-tables-sort_asc,
+.coveo-sprites-misc-panel-expended,
+.collapsable-panel-group .panel .panel-heading i.toggle-icon,
+.coveo-sprites-tables-sort_desc {
   background-image: url("../images/CoveoStyleGuide.Sprites.png");
+  display: inline-block;
   background-repeat: no-repeat;
+  overflow: hidden;
   background-size: 83px 16px; }
 
 i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after {
+  background-position: 0px 0px;
   width: 16px;
   height: 16px;
-  text-indent: 16px;
-  background-position: 0 0; }
+  text-indent: 16px; }
 
 i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
+  background-position: -16px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -16px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
+  background-position: -28px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -28px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
+  background-position: -40px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -40px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
+  background-position: -52px 0px;
   width: 11px;
   height: 11px;
-  text-indent: 11px;
-  background-position: -52px 0; }
+  text-indent: 11px; }
 
 i.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {
+  background-position: -63px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -63px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
+  background-position: -63px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -63px -10px; }
+  text-indent: 6px; }
 
 i.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {
+  background-position: -73px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -73px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
+  background-position: -73px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -73px -10px; }
+  text-indent: 6px; }
 
 .coveo-filter-container {
   position: relative;
@@ -1082,6 +1209,7 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   .coveo-table-actions-container .coveo-table-actions + .coveo-table-actions {
     border-left: 2px solid #e5eaec; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -1176,6 +1304,7 @@ input[type='text'].admin-invisible-textbox, textarea.admin-invisible-textbox {
     .admin-numeric-spinner.input-group .add-on div i {
       display: block; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -1253,6 +1382,7 @@ label.coveo-checkbox-label {
   label.coveo-checkbox-label.disabled span {
     opacity: 0.4; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -1329,6 +1459,7 @@ label.coveo-slide-toggle-label {
     font-size: 16px;
     vertical-align: text-top; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -1372,6 +1503,7 @@ label.coveo-slide-toggle-double {
       cursor: default;
       opacity: 0.4; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -1384,66 +1516,77 @@ label.coveo-slide-toggle-double {
 /* Organizations */
 /* Timeline */
 /* Datepicker */
-.coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after, .coveo-sprites-misc-filter, .coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-alert, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-tables-sort_asc, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-tables-sort_desc {
-  display: inline-block;
-  overflow: hidden;
+.coveo-sprites-misc-closepopup,
+.coveo-filter-container input.filter-box + span:after,
+.coveo-sprites-misc-filter,
+.coveo-sprites-misc-spinner_arrow_down,
+.coveo-sprites-misc-spinner_arrow_up,
+.coveo-sprites-misc-alert,
+.coveo-sprites-misc-panel-collapsed,
+.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,
+.coveo-sprites-tables-sort_asc,
+.coveo-sprites-misc-panel-expended,
+.collapsable-panel-group .panel .panel-heading i.toggle-icon,
+.coveo-sprites-tables-sort_desc {
   background-image: url("../images/CoveoStyleGuide.Sprites.png");
+  display: inline-block;
   background-repeat: no-repeat;
+  overflow: hidden;
   background-size: 83px 16px; }
 
 i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after {
+  background-position: 0px 0px;
   width: 16px;
   height: 16px;
-  text-indent: 16px;
-  background-position: 0 0; }
+  text-indent: 16px; }
 
 i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
+  background-position: -16px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -16px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
+  background-position: -28px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -28px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
+  background-position: -40px 0px;
   width: 12px;
   height: 12px;
-  text-indent: 12px;
-  background-position: -40px 0; }
+  text-indent: 12px; }
 
 i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
+  background-position: -52px 0px;
   width: 11px;
   height: 11px;
-  text-indent: 11px;
-  background-position: -52px 0; }
+  text-indent: 11px; }
 
 i.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {
+  background-position: -63px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -63px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
+  background-position: -63px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -63px -10px; }
+  text-indent: 6px; }
 
 i.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {
+  background-position: -73px 0px;
   width: 10px;
   height: 10px;
-  text-indent: 10px;
-  background-position: -73px 0; }
+  text-indent: 10px; }
 
 i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
+  background-position: -73px -10px;
   width: 6px;
   height: 6px;
-  text-indent: 6px;
-  background-position: -73px -10px; }
+  text-indent: 6px; }
 
 .coveo-filter-container {
   position: relative;
@@ -1533,6 +1676,7 @@ input[type=range].coveo-input-slider::-ms-tooltip {
   display: none;
   visibility: hidden; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -1819,6 +1963,7 @@ div.datepicker th a.datepickerMonth {
     .datepicker table tbody tr .datepickerSpace div {
       width: 5px; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -1903,6 +2048,7 @@ form .form-group.input-validation-error label, form .form-group.input-validation
 form .form-group.multiline-input-validation-error .erroneous-input {
   background-color: #faeaea; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
@@ -2073,6 +2219,7 @@ form .coveo-table-form {
   form .coveo-table-form + .coveo-table-form, form .coveo-table-form + .coveo-block-form {
     margin-top: 10px; }
 
+/* */
 /* Common */
 /* Headings */
 /* Buttons */
