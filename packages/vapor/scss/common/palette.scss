@@ -15,7 +15,7 @@ $blue: #1194f6;
 $palette-primary: orange $orange, white $white, light-gray $light-gray, light-blue $light-blue, dark-blue $dark-blue, black $black;
 $palette-secondary: red $red, yellow $yellow, green $green, blue $blue;
 
-@each $color in $palette-primary {
+@each $color in join($palette-primary, $palette-secondary) {
   .bg-#{nth($color, 1)} {
     background-color: nth($color, 2);
   }
