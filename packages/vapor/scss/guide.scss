@@ -1,5 +1,38 @@
-@import '_reset.scss';
+// Must be the first import
+@import 'dependencies';
+@import 'common/common';
+@import 'common/colors';
+@import 'common/font';
+@import 'sprites';
 
-html {
-  color:blue;
-}
+// Panels
+@import 'controls/collapsable';
+
+// Typography
+@import 'typography/headings';
+@import 'elements/labels';
+@import 'elements/links';
+
+// Buttons
+@import 'elements/buttons';
+
+// Tables
+@import 'tables/table';
+@import 'tables/fixed-header-table';
+@import 'tables/table-actions';
+
+// Controls
+@import 'controls/inputs';
+@import 'controls/numericSpinner';
+@import 'controls/checkboxes';
+@import 'controls/slideToggle';
+@import 'controls/slideToggleDouble';
+@import 'controls/filterBox';
+@import 'controls/inputSlider';
+@import 'controls/datepicker';
+
+// Forms
+@import 'forms/forms';
+@import 'forms/table-form';
+@import 'forms/block-form';
+@import 'forms/flex-form';
