@@ -18,7 +18,8 @@
     "clean": "node ./node_modules/gulp/bin/gulp clean",
     "compile": "node ./node_modules/gulp/bin/gulp docs",
     "deploy": "./deploy.sh",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "start": "npm run "
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,7 @@
 # Ignore docs files
 .sass-cache
 _gh_pages
+docs/dist
 
 node_modules
 
