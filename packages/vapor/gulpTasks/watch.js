@@ -1,9 +1,9 @@
 var gulp = require('gulp-help')(require('gulp'));
 
 gulp.task('watch', function () {
-    gulp.watch('./less/**/*', ['less']);
+    gulp.watch('./scss/**/*', ['sass']);
 });
 
 gulp.task('watch:docs', function () {
-    gulp.watch('./less/**/*', ['less:docs']);
+    gulp.watch('./scss/**/*', ['sass:docs']);
 });

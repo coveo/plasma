@@ -17,5 +17,5 @@ gulp.task('sprites', 'Generate sprites from images and export to dist folder', f
             eachTemplate: template,
             namespace: 'coveo-sprites'
         }))
-        .pipe(gulp.dest('less'));
+        .pipe(gulp.dest('scss'));
 });
