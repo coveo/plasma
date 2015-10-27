@@ -620,6 +620,9 @@ a {
     box-shadow: 0 0 2px 1px #325f82;
     outline: none; }
 
+a.btn {
+  line-height: 14px; }
+
 .btn-slim {
   padding: 0;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
