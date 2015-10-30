@@ -1,6 +1,3 @@
-@import '../common/font';
-@import '../common/colors';
-
 @mixin btn-colorize($btn-background, $btn-background-hover, $btn-background-disabled) {
   color: $button-text-color;
 
