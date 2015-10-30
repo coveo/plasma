@@ -6,13 +6,25 @@
 @import 'common/font';
 @import 'sprites';
 
+// Utility
+@import 'utility/layout';
+@import 'utility/flex';
+
+// Panels
+@import 'controls/collapsable';
+
 // Typography
 @import 'typography/headings';
 @import 'elements/labels';
 @import 'elements/links';
 
+// Icons
+@import 'elements/icons';
+@import 'elements/color-dot';
+
 // Buttons
 @import 'elements/buttons';
+@import 'elements/buttons-alternate';
 
 // Tables
 @import 'tables/table';
@@ -20,26 +32,20 @@
 @import 'tables/table-actions';
 
 // Controls
-@import 'controls/checkboxes';
-@import 'controls/collapsable';
-@import 'controls/datepicker';
-@import 'controls/dropdown';
-@import 'controls/filter-box';
 @import 'controls/inputs';
-@import 'controls/input-slider';
-@import 'controls/numeric-spinner';
-@import 'controls/slide-toggle';
-@import 'controls/slide-toggle-double';
-
-// Components
-.coveo-styleguide {
-  @import 'components/header';
-  @import 'components/member';
-  @import 'components/menu';
-}
+@import 'controls/numericSpinner';
+@import 'controls/checkboxes';
+@import 'controls/slideToggle';
+@import 'controls/slideToggleDouble';
+@import 'controls/filterBox';
+@import 'controls/inputSlider';
+@import 'controls/datepicker';
 
 // Forms
 @import 'forms/forms';
 @import 'forms/table-form';
 @import 'forms/block-form';
 @import 'forms/flex-form';
+
+// Panels
+@import 'controls/splash';

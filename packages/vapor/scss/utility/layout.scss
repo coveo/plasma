@@ -1,0 +1,55 @@
+// Layout utility classes
+// Source: https://github.com/basscss/utility-layout
+
+.inline {
+  display: inline;
+}
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.table {
+  display: table;
+}
+.table-cell {
+  display: table-cell;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+.overflow-auto {
+  overflow: auto;
+}
+
+.clearfix:before, .clearfix:after {
+  display: table;
+
+  content: ' ';
+}
+.clearfix:after {
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+.fullscreen {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.hidden {
+  display: none;
+
+  visibility: hidden;
+}

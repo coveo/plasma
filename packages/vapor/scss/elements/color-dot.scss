@@ -1,0 +1,22 @@
+.color-dot {
+  display: inline-block;
+
+  background-color: $green;
+  border-radius: 100%;
+
+  &.state-critical {
+    background-color: $red;
+  }
+
+  &.state-major {
+    background-color: $orange;
+  }
+
+  &.state-minor {
+    background-color: $yellow;
+  }
+
+  &.state-info {
+    background-color: $blue;
+  }
+}

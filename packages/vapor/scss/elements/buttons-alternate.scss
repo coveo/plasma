@@ -1,0 +1,42 @@
+$btn-login-height: 54px;
+$btn-login-padding-left-right: 20px;
+$btn-login-padding-border: 1px solid $medium-grey;
+
+.btn-alternate {
+  position: relative;
+
+  display: block;
+  width: 240px;
+  height: $btn-login-height;
+  padding-right: $btn-login-padding-left-right;
+  padding-left: $btn-login-height + $btn-login-padding-left-right;
+  margin: 0 auto 13px;
+
+  color: $dark-grey;
+  font-size: 14px;
+  font-weight: 400;
+
+  background-color: $white;
+  border: $btn-login-padding-border;
+
+  .btn-prepend {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: inline-block;
+    width: $btn-login-height;
+    height: ($btn-login-height - 1);
+    padding: 8px;
+
+    line-height: $btn-login-height;
+
+    border-right: $btn-login-padding-border;
+  }
+
+  &:hover, &:focus {
+    color: $dark-grey;
+
+    background-color: $light-grey;
+  }
+}
