@@ -1,0 +1,10 @@
+---
+layout: default
+title: Components
+permalink: /components/
+---
+
+{% assign entries = site.components | where:"type","component" %}
+{% for entry in entries %}
+{% include component.html %}
+{% endfor %}

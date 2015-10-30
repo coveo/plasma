@@ -1,0 +1,17 @@
+$header-height: 67px;
+$header-application-offset-y: 9px;
+
+.header {
+  height: $header-height;
+  background-color: $light-blue;
+  color: $white;
+
+  .header-section {
+    height: calc(100% - #{$header-application-offset-y});
+    border-left: solid 1px rgba(0, 0, 0, 0.1);
+
+    &.mod-padded {
+      padding: 13px 30px;
+    }
+  }
+}

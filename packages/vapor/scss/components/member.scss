@@ -1,0 +1,31 @@
+.member {
+  .member-avatar {
+    height: 41px;
+    width: 41px;
+    border-radius: 100%;
+    border: solid 2px $white;
+  }
+
+  .member-info {
+    float: right;
+    margin: 3px 0 0 14px;
+
+    .member-info-name {
+      line-height: 16px;
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .member-info-provider {
+      vertical-align: text-bottom;
+    }
+
+    .member-info-email {
+      line-height: 15px;
+      font-size: 12px;
+      font-weight: 300;
+      margin-top: 2px;
+    }
+  }
+}
