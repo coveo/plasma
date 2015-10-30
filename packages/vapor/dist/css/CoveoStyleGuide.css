@@ -2512,7 +2512,7 @@ form .coveo-flex-form {
   .splash-box .splash-box-title {
     padding: 70px 0 40px; }
   .splash-box .splash-box-description {
-    padding-bottom: 50px; }
+    padding: 0 30px 50px; }
   .splash-box .splash-box-footer {
     padding: 17px;
     margin-top: 50px; }
