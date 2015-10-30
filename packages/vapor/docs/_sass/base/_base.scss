@@ -25,7 +25,7 @@ body {
   margin-left: auto;
   padding-right: $spacing-unit;
   padding-left: $spacing-unit;
-  @extend %clearfix;
+  @extend .clearfix;
 
   @include media-query($on-laptop) {
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
@@ -54,8 +54,7 @@ blockquote {
 /**
  * Clearfix
  */
-%clearfix {
-
+.clearfix {
   &:after {
     content: "";
     display: table;
@@ -67,7 +66,6 @@ blockquote {
  * Icons
  */
 .icon {
-
   > svg {
     display: inline-block;
     width: 16px;

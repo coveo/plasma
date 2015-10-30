@@ -1,0 +1,21 @@
+.dropdown.mod-menu {
+  .dropdown-toggle {
+    cursor: pointer;
+    height: auto;
+    text-transform: none;
+    background-color: transparent;
+    border: none;
+  }
+
+  .dropdown-menu {
+    li {
+      > a, > span {
+        padding: 8px 38px;
+      }
+
+      &.divider {
+        margin: 8px 0;
+      }
+    }
+  }
+}

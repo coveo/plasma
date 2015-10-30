@@ -1,6 +1,6 @@
 @import '../common/colors';
 @import '../sprites';
-$coveo-filter-box-height: 25px;
+$coveo-filter-box-height: 32px;
 
 .coveo-filter-container {
   position: relative;
@@ -9,7 +9,7 @@ $coveo-filter-box-height: 25px;
 
   .filter-icon .coveo-sprites-misc-filter {
     position: absolute;
-    top: 7px;
+    top: 10px;
     left: 8px;
 
     cursor: default;
@@ -24,7 +24,7 @@ $coveo-filter-box-height: 25px;
 
     & + span {
       position: absolute;
-      top: 8px;
+      top: 11px;
       right: 10px;
 
       display: inline-block;

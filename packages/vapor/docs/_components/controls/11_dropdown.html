@@ -1,0 +1,32 @@
+---
+type: controls
+title: Dropdown
+usage: A dropdown control. Basically, it replaces the HTML select tag.
+stylesheet: '/scss/elements/dropdown.scss'
+---
+<div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+        <span class="dropdown-toggle-arrow">
+            <svg class="fill-dark-blue" viewBox="0 0 512 512" style="height: 16px; width: 16px">
+                <g style="pointer-events: none;">
+                    <path d="M128 320l128 128 128-128"></path>
+                </g>
+            </svg>
+        </span>
+
+        Option 3
+
+    </button>
+
+    <ul class="dropdown-menu">
+        <li>
+            <span class="enabled" title="">Option 1</span>
+        </li>
+        <li>
+            <span class="enabled" title="">Option 2</span>
+        </li>
+        <li>
+            <span class="enabled" title="">Option 3</span>
+        </li>
+    </ul>
+</div>

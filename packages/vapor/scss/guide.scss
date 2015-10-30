@@ -6,9 +6,6 @@
 @import 'common/font';
 @import 'sprites';
 
-// Panels
-@import 'controls/collapsable';
-
 // Typography
 @import 'typography/headings';
 @import 'elements/labels';
@@ -23,14 +20,23 @@
 @import 'tables/table-actions';
 
 // Controls
-@import 'controls/inputs';
-@import 'controls/numericSpinner';
 @import 'controls/checkboxes';
-@import 'controls/slideToggle';
-@import 'controls/slideToggleDouble';
-@import 'controls/filterBox';
-@import 'controls/inputSlider';
+@import 'controls/collapsable';
 @import 'controls/datepicker';
+@import 'controls/dropdown';
+@import 'controls/filter-box';
+@import 'controls/inputs';
+@import 'controls/input-slider';
+@import 'controls/numeric-spinner';
+@import 'controls/slide-toggle';
+@import 'controls/slide-toggle-double';
+
+// Components
+.coveo-styleguide {
+  @import 'components/header';
+  @import 'components/member';
+  @import 'components/menu';
+}
 
 // Forms
 @import 'forms/forms';
