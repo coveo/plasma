@@ -6,6 +6,12 @@
   min-height: 230px;
 }
 
+@media (max-width: 495px) {
+  .splash-header {
+    height: 100vh;
+  }
+}
+
 .bg-polygon {
   background: $light-blue url('../images/polyart.svg');
   background-size: cover;
