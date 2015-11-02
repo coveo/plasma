@@ -1,23 +1,28 @@
-$btn-login-height: 54px;
-$btn-login-padding-left-right: 20px;
-$btn-login-padding-border: 1px solid $medium-grey;
+$btn-alternate-height: 54px;
+$btn-alternate-padding: 20px;
+$btn-alternate-border: 1px solid $medium-grey;
 
 .btn-alternate {
   position: relative;
 
   display: block;
   width: 240px;
-  height: $btn-login-height;
-  padding-right: $btn-login-padding-left-right;
-  padding-left: $btn-login-height + $btn-login-padding-left-right;
+  height: $btn-alternate-height;
+  padding-right: $btn-alternate-padding;
+  padding-left: $btn-alternate-padding;
   margin: 0 auto 13px;
 
   color: $dark-grey;
   font-size: 14px;
   font-weight: 400;
+  line-height: $btn-alternate-height;
 
   background-color: $white;
-  border: $btn-login-padding-border;
+  border: $btn-alternate-border;
+
+  &.mod-prepend {
+    padding-left: $btn-alternate-height + $btn-alternate-padding;
+  }
 
   .btn-prepend {
     position: absolute;
@@ -25,13 +30,13 @@ $btn-login-padding-border: 1px solid $medium-grey;
     left: 0;
 
     display: inline-block;
-    width: $btn-login-height;
-    height: ($btn-login-height - 1);
+    width: $btn-alternate-height;
+    height: ($btn-alternate-height - 1);
     padding: 8px;
 
-    line-height: $btn-login-height;
+    line-height: $btn-alternate-height;
 
-    border-right: $btn-login-padding-border;
+    border-right: $btn-alternate-border;
   }
 
   &:hover, &:focus {

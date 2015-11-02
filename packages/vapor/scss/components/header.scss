@@ -3,11 +3,14 @@ $header-application-offset-y: 9px;
 
 .header {
   height: $header-height;
-  background-color: $light-blue;
+
   color: $white;
+
+  background-color: $light-blue;
 
   .header-section {
     height: calc(100% - #{$header-application-offset-y});
+
     border-left: solid 1px rgba(0, 0, 0, 0.1);
 
     &.mod-padded {
