@@ -10,9 +10,6 @@
 @import 'utility/layout';
 @import 'utility/flex';
 
-// Panels
-@import 'controls/collapsable';
-
 // Typography
 @import 'typography/headings';
 @import 'elements/labels';
@@ -32,20 +29,27 @@
 @import 'tables/table-actions';
 
 // Controls
-@import 'controls/inputs';
-@import 'controls/numeric-spinner';
 @import 'controls/checkboxes';
+@import 'controls/collapsable';
+@import 'controls/datepicker';
+@import 'controls/dropdown';
+@import 'controls/filter-box';
+@import 'controls/inputs';
+@import 'controls/input-slider';
+@import 'controls/numeric-spinner';
 @import 'controls/slide-toggle';
 @import 'controls/slide-toggle-double';
-@import 'controls/filter-box';
-@import 'controls/input-slider';
-@import 'controls/datepicker';
+@import 'controls/splash';
+
+// Components
+.coveo-styleguide {
+  @import 'components/header';
+  @import 'components/member';
+  @import 'components/menu';
+}
 
 // Forms
 @import 'forms/forms';
 @import 'forms/table-form';
 @import 'forms/block-form';
 @import 'forms/flex-form';
-
-// Panels
-@import 'controls/splash';
