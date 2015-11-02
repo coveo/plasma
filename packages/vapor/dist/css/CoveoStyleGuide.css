@@ -2266,9 +2266,9 @@ label.coveo-slide-toggle-double {
   .splash-box .splash-box-title {
     padding: 70px 0 40px; }
   .splash-box .splash-box-section {
+    padding-right: 20px;
     padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px; }
+    padding-left: 20px; }
   .splash-box .splash-box-description {
     padding: 0 30px 50px; }
   .splash-box .splash-box-footer {
@@ -2276,8 +2276,11 @@ label.coveo-slide-toggle-double {
     margin-top: 50px; }
 
 .splash-footer {
-  height: 50px;
-  padding: 17px 247px 17px; }
+  z-index: 1;
+  min-height: 50px;
+  padding: 17px 20px 17px; }
+  .splash-footer span {
+    line-height: 25px; }
 
 .coveo-styleguide .header {
   height: 67px;

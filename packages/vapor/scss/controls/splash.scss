@@ -44,9 +44,9 @@
   }
 
   .splash-box-section {
+    padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
-    padding-right: 20px;
   }
 
   .splash-box-description {
@@ -60,6 +60,12 @@
 }
 
 .splash-footer {
-  height: 50px;
-  padding: 17px 247px 17px;
+  z-index: 1;
+
+  min-height: 50px;
+  padding: 17px 20px 17px;
+
+  span {
+    line-height: 25px;
+  }
 }
