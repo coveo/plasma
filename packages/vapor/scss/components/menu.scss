@@ -1,10 +1,13 @@
 .dropdown.mod-menu {
   .dropdown-toggle {
-    cursor: pointer;
     height: auto;
+
     text-transform: none;
+
     background-color: transparent;
     border: none;
+
+    cursor: pointer;
   }
 
   .dropdown-menu {

@@ -804,13 +804,16 @@ a.btn {
   width: 240px;
   height: 54px;
   padding-right: 20px;
-  padding-left: 74px;
+  padding-left: 20px;
   margin: 0 auto 13px;
   color: #373737;
   font-size: 14px;
   font-weight: 400;
+  line-height: 54px;
   background-color: #f7f8f9;
   border: 1px solid #bcc3ca; }
+  .btn-alternate.mod-prepend {
+    padding-left: 74px; }
   .btn-alternate .btn-prepend {
     position: absolute;
     top: 0;
@@ -1805,39 +1808,39 @@ div.datepicker th a.datepickerMonth {
   display: inline-block; }
   .dropdown .dropdown-toggle {
     display: inline-block;
-    background-color: #f7f8f9;
     color: #263e55;
     font-size: 11px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    background-color: #f7f8f9; }
     .dropdown .dropdown-toggle .dropdown-toggle-arrow {
       float: right;
       margin-top: -5px;
       margin-left: 10px; }
   .dropdown button.dropdown-toggle {
-    border: solid 1px #cdcfd1;
-    border-radius: 2px;
     height: 32px;
-    padding: 0 12px; }
+    padding: 0 12px;
+    border: solid 1px #cdcfd1;
+    border-radius: 2px; }
   .dropdown .dropdown-menu {
-    margin: 0;
     min-width: 100%;
-    border: 1px solid #263e55;
-    border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
+    margin: 0;
     color: #263e55;
-    background-color: #f7f8f9; }
+    background-color: #f7f8f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
+    border: 1px solid #263e55;
+    border-radius: 2px; }
     .dropdown .dropdown-menu li > a, .dropdown .dropdown-menu li > span {
+      display: block;
       padding: 5px 10px;
-      line-height: 16px;
-      cursor: pointer;
-      white-space: nowrap;
       overflow: hidden;
+      line-height: 16px;
       text-overflow: ellipsis;
-      display: block; }
+      white-space: nowrap;
+      cursor: pointer; }
       .dropdown .dropdown-menu li > a:hover, .dropdown .dropdown-menu li > a:focus, .dropdown .dropdown-menu li > span:hover, .dropdown .dropdown-menu li > span:focus {
+        color: #263e55;
         background: none;
-        background-color: #e6ecf0;
-        color: #263e55; }
+        background-color: #e6ecf0; }
     .dropdown .dropdown-menu li.divider {
       height: 1px;
       background-color: #cdcfd1; }
@@ -2262,6 +2265,10 @@ label.coveo-slide-toggle-double {
   background: #f7f8f9; }
   .splash-box .splash-box-title {
     padding: 70px 0 40px; }
+  .splash-box .splash-box-section {
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px; }
   .splash-box .splash-box-description {
     padding: 0 30px 50px; }
   .splash-box .splash-box-footer {
@@ -2274,8 +2281,8 @@ label.coveo-slide-toggle-double {
 
 .coveo-styleguide .header {
   height: 67px;
-  background-color: #296896;
-  color: #f7f8f9; }
+  color: #f7f8f9;
+  background-color: #296896; }
   .coveo-styleguide .header .header-section {
     height: -webkit-calc(100% - 9px);
     height: calc(100% - 9px);
@@ -2284,33 +2291,33 @@ label.coveo-slide-toggle-double {
       padding: 13px 30px; }
 
 .coveo-styleguide .member .member-avatar {
-  height: 41px;
   width: 41px;
-  border-radius: 100%;
-  border: solid 2px #f7f8f9; }
+  height: 41px;
+  border: solid 2px #f7f8f9;
+  border-radius: 100%; }
 
 .coveo-styleguide .member .member-info {
   float: right;
   margin: 3px 0 0 14px; }
   .coveo-styleguide .member .member-info .member-info-name {
-    line-height: 16px;
     font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 700; }
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: uppercase; }
   .coveo-styleguide .member .member-info .member-info-provider {
     vertical-align: text-bottom; }
   .coveo-styleguide .member .member-info .member-info-email {
-    line-height: 15px;
+    margin-top: 2px;
     font-size: 12px;
     font-weight: 300;
-    margin-top: 2px; }
+    line-height: 15px; }
 
 .coveo-styleguide .dropdown.mod-menu .dropdown-toggle {
-  cursor: pointer;
   height: auto;
   text-transform: none;
   background-color: transparent;
-  border: none; }
+  border: none;
+  cursor: pointer; }
 
 .coveo-styleguide .dropdown.mod-menu .dropdown-menu li > a, .coveo-styleguide .dropdown.mod-menu .dropdown-menu li > span {
   padding: 8px 38px; }
@@ -2503,10 +2510,10 @@ form .coveo-table-form {
           font-size: 16px;
           text-align: left;
           background-color: transparent;
+          box-shadow: none;
           border: none;
           cursor: pointer;
-          opacity: 1;
-          box-shadow: none; }
+          opacity: 1; }
           form .coveo-table-form .form-group .value .admin-select .dropdown-toggle .coveo-sprites-misc-dropdown_arrow {
             position: absolute;
             right: 0; }

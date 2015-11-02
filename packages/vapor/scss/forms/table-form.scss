@@ -133,12 +133,11 @@ form {
             text-align: left;
 
             background-color: transparent;
+            box-shadow: none;
             border: none;
 
             cursor: pointer;
             opacity: 1;
-
-            box-shadow: none;
 
             .coveo-sprites-misc-dropdown_arrow {
               position: absolute;
