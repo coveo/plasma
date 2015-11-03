@@ -349,6 +349,18 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
       -ms-flex-pack: center;
           justify-content: center; }
 
+.align-baseline {
+  vertical-align: baseline; }
+
+.align-top {
+  vertical-align: top; }
+
+.align-middle {
+  vertical-align: middle; }
+
+.align-bottom {
+  vertical-align: bottom; }
+
 @font-face {
   font-family: 'source_code_pro_regular';
   font-style: normal;
@@ -540,11 +552,7 @@ a {
   text-decoration: none; }
 
 [class^='icon-'] {
-  display: inline-block;
-  vertical-align: middle; }
-  [class^='icon-'] svg {
-    width: 100%;
-    height: 100%; }
+  display: inline-block; }
 
 .icon-small {
   width: 17px;
