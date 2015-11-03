@@ -41,7 +41,7 @@ Once you're proud of your contribution, push your changes to GitHub (in a branch
 > This requires an [npm account](https://www.npmjs.com/signup) with permission to publish to [coveo-styleguide](https://www.npmjs.com/package/coveo-styleguide). Create an account if you don't have one and ask our team for publish access.
 
 1. Install [npm-release](https://github.com/phuu/npm-release) `npm install -g npm release`
-2. `npm-release patch -m "Version X.Y.Z"` 
+2. `npm-release patch`
 
 ### Library
 If you prefer simply referencing the generated styleguide in one of your project,
