@@ -811,7 +811,8 @@ a.btn {
   font-weight: 400;
   line-height: 54px;
   background-color: #f7f8f9;
-  border: 1px solid #bcc3ca; }
+  border: 1px solid #bcc3ca;
+  cursor: pointer; }
   .btn-alternate.mod-prepend {
     padding-left: 74px; }
   .btn-alternate .btn-prepend {

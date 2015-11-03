@@ -20,6 +20,8 @@ $btn-alternate-border: 1px solid $medium-grey;
   background-color: $white;
   border: $btn-alternate-border;
 
+  cursor: pointer;
+
   &.mod-prepend {
     padding-left: $btn-alternate-height + $btn-alternate-padding;
   }
