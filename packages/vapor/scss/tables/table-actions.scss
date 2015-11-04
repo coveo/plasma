@@ -1,7 +1,6 @@
 @import '../common/colors';
 @import '../controls/filter-box';
 $coveo-table-actions-container-height: 52px;
-$coveo-table-actions-border-width: 2px;
 
 .coveo-table-actions-container {
   flex-flow: row wrap;
@@ -9,7 +8,7 @@ $coveo-table-actions-border-width: 2px;
 
   display: flex;
 
-  border-top: $coveo-table-actions-border-width solid $table-borders;
+  border-top: $table-border;
 
   .coveo-table-actions {
     position: relative;
@@ -20,16 +19,16 @@ $coveo-table-actions-border-width: 2px;
 
     &:before {
       position: absolute;
-      top: -$coveo-table-actions-border-width;
+      top: -$table-border-width;
       left: 0;
 
       display: block;
       width: 100%;
-      height: $coveo-table-actions-border-width;
+      height: $table-border-width;
 
       content: '';
 
-      background-color: $table-borders;
+      background-color: $medium-grey;
     }
 
     .action {
@@ -81,6 +80,6 @@ $coveo-table-actions-border-width: 2px;
   }
 
   .coveo-table-actions + .coveo-table-actions {
-    border-left: $coveo-table-actions-border-width solid $table-borders;
+    border-left: $table-border;
   }
 }
