@@ -8,7 +8,7 @@ form {
       margin-bottom: 20px;
 
       .heading-title, .heading-description {
-        color: $table-header-text-color;
+        color: $medium-blue;
       }
 
       .heading-title {
@@ -32,12 +32,12 @@ form {
         margin: 5px 0;
 
         .heading-title {
-          color: $table-header-text-color;
+          color: $medium-blue;
           font-size: 13px;
           text-transform: uppercase;
 
           svg {
-            fill: $table-header-text-color;
+            fill: $medium-blue;
           }
         }
       }
@@ -72,13 +72,13 @@ form {
       &:before {
         left: 0;
 
-        border-image: linear-gradient(to left, $table-header-background-color-dark, white) 1;
+        border-image: linear-gradient(to left, $medium-grey, white) 1;
       }
 
       &:after {
         left: 265px;
 
-        border-image: linear-gradient(to right, $table-header-background-color-dark, white) 1;
+        border-image: linear-gradient(to right, $medium-grey, white) 1;
       }
     }
   }

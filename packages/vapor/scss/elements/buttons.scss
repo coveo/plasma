@@ -93,7 +93,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 2px 1px $coveo-blue;
+    box-shadow: 0 0 2px 1px $medium-blue;
     outline: none;
   }
 }
@@ -117,7 +117,7 @@ a.btn {
 
   cursor: pointer;
 
-  @include btn-slim-colorize($coveo-dark-blue, $default-slim-button-hover, $default-slim-button-disabled);
+  @include btn-slim-colorize($medium-blue, $default-slim-button-hover, $default-slim-button-disabled);
 
   + button.btn-slim {
     margin-left: 10px;
@@ -134,7 +134,7 @@ a.btn {
   svg {
     vertical-align: sub;
 
-    fill: $coveo-dark-blue;
+    fill: $medium-blue;
   }
 
   &.btn-primary {

@@ -1,8 +1,6 @@
 /* */
 
 /* Common */
-$coveo-blue: #325f82;
-$coveo-dark-blue: #1d1f21;
 $coveo-green: #4caf50;
 $coveo-grey: #d8d8d8;
 $coveo-orange: #fd7e27;
@@ -39,7 +37,6 @@ $button-error-background-disabled: #e39292;
 
 /* Forms */
 $placeholder-text: #999999;
-$input-border: #cccccc;
 $input-disabled-background: #ebebe4;
 $table-editable-cell-color: #f6f6f7;
 $error-color: #cc3333;
@@ -50,18 +47,6 @@ $invalid-message-background-color: #cd3233;
 $checkbox-slide-background-color: #bbbbbb;
 $toggle-double-background-color: $checkbox-slide-background-color;
 $checkbox-slide-label-color: #000000;
-
-/* Table */
-$table-borders: #e5eaec;
-$table-editable-cell-hover: #ebf3fb;
-$table-header-background-color-light: #ececec;
-$table-header-background-color-dark: #dddddd;
-$table-header-background-hover: #ececec;
-$table-header-text-color: $block-text-color;
-$table-row-background-selected: #f6f6f6;
-$table-row-background-focus: #ebf3fb;
-$table-row-background-hover: #f8f8f8;
-$metric-table-header-color: #ececec;
 
 /* Controls */
 $coveo-input-slider-track-default: #dddddd;

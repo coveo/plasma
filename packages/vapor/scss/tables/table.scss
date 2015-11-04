@@ -1,5 +1,5 @@
-@import '../common/colors';
-@import '../sprites';
+$table-border-width: 1px;
+$table-border: $table-border-width solid $medium-grey;
 
 table {
   width: 100%;
@@ -33,7 +33,7 @@ table {
   thead tr {
     height: 25px;
 
-    color: $table-header-text-color;
+    color: $medium-blue;
     font-size: 12px;
     font-weight: bold;
 
@@ -43,14 +43,8 @@ table {
       line-height: normal;
       white-space: nowrap;
 
-      border-top: solid 2px $table-borders;
-      border-bottom: solid 2px $table-borders;
-
-      &.metric {
-        color: $heading-2-color;
-
-        background-color: $metric-table-header-color;
-      }
+      border-top: $table-border;
+      border-bottom: $table-border;
 
       &.admin-sort {
         position: relative;
@@ -98,14 +92,14 @@ table {
       }
 
       &.sorting_asc {
-        background-color: $table-header-background-hover;
+        background-color: $light-grey;
         background-image: none;
 
         cursor: pointer;
       }
 
       &.sorting_desc {
-        background-color: $table-header-background-hover;
+        background-color: $light-grey;
         background-image: none;
 
         cursor: pointer;
@@ -121,7 +115,7 @@ table {
 
       &.sorting, &.sorting_asc, &.sorting_desc, &.admin-sort {
         &:hover {
-          background-color: $table-header-background-hover;
+          background-color: $light-grey;
         }
       }
     }
@@ -141,10 +135,10 @@ table {
 
       text-align: left;
 
-      border-bottom: solid 1px $table-borders;
+      border-bottom: $table-border;
 
       &.edit.enabled {
-        color: $coveo-blue;
+        color: $medium-blue;
 
         cursor: pointer;
       }
@@ -212,7 +206,7 @@ table {
             span.menu {
               vertical-align: 1px;
               svg {
-                fill: $coveo-dark-blue;
+                fill: $medium-blue;
               }
             }
           }
@@ -253,7 +247,7 @@ table {
           vertical-align: -3px;
 
           svg {
-            fill: $coveo-dark-blue;
+            fill: $medium-blue;
           }
         }
       }
@@ -264,11 +258,11 @@ table {
     }
 
     &:hover > td {
-      background-color: $table-row-background-hover;
+      background-color: $light-grey;
 
       .prompt .prompt-danger {
-        background-color: $table-row-background-hover;
-        box-shadow: -15px 0 25px 0 $table-row-background-hover;
+        background-color: $light-grey;
+        box-shadow: -15px 0 25px 0 $light-grey;
       }
     }
 
@@ -300,7 +294,7 @@ table {
   }
 
   &.row-selected td, &.row-selected:hover td {
-    background-color: $table-row-background-selected;
+    background-color: $light-grey;
   }
 
   &.confirm-delete {

@@ -21,7 +21,7 @@ input[type=checkbox].coveo-checkbox {
 
     &:hover, &focus {
       background-color: $body-background-color;
-      box-shadow: 0 0 2px $coveo-blue;
+      box-shadow: 0 0 2px $medium-blue;
     }
   }
 
@@ -75,7 +75,7 @@ input[type=checkbox].coveo-checkbox {
 
       content: '';
 
-      border-bottom: solid 2px $coveo-blue;
+      border-bottom: solid 2px $medium-blue;
     }
   }
 }

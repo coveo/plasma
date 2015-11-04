@@ -32,14 +32,14 @@ form {
         vertical-align: middle;
 
         border-top: 2px solid white;
-        border-bottom: solid 1px $table-header-background-color-dark;
+        border-bottom: $table-border;
       }
 
       & > label:first-child {
         width: 30%;
         padding: 0 10px;
 
-        color: $table-header-text-color;
+        color: $medium-blue;
         font-family: $base-font-family;
         font-size: 16px;
 
@@ -99,7 +99,7 @@ form {
         }
 
         &.admin-editable:hover {
-          background-color: $table-editable-cell-hover;
+          background-color: $light-grey;
         }
 
         &.admin-non-editable {

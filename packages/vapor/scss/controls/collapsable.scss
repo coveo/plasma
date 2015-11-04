@@ -28,7 +28,7 @@
   }
 
   .panel {
-    border-bottom: 2px solid $table-header-background-color-dark;
+    border-bottom: 2px solid $medium-grey;
 
     + .panel {
       margin-top: 15px;
@@ -42,7 +42,7 @@
         padding: 3px 0 3px 26px;
         margin-bottom: 5px;
 
-        color: $table-header-text-color;
+        color: $medium-blue;
         font-family: $base-font-family;
         font-size: 15px;
         line-height: initial;
