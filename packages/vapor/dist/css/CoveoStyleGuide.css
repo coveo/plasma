@@ -551,24 +551,29 @@ a {
   color: #2c5985;
   text-decoration: none; }
 
-[class^='icon-'] {
-  display: inline-block; }
-
-.icon-small {
-  width: 17px;
-  height: 17px; }
-
-.icon-medium {
-  width: 24px;
-  height: 24px; }
-
-.icon-big {
-  width: 36px;
-  height: 36px; }
-
-.icon-fit {
-  width: 100%;
-  height: 100%; }
+.icon {
+  height: 1em;
+  width: 1em;
+  display: inline-block;
+  overflow: visible;
+  /* makes the icon 33% larger relative to the icon container */ }
+  .icon.mod-lg {
+    height: 1.33333em;
+    width: 1.33333em;
+    line-height: 1.33333em;
+    vertical-align: -15%; }
+  .icon.mod-2x {
+    height: 2em;
+    width: 2em; }
+  .icon.mod-3x {
+    height: 3em;
+    width: 3em; }
+  .icon.mod-4x {
+    height: 4em;
+    width: 4em; }
+  .icon.mod-5x {
+    height: 5em;
+    width: 5em; }
 
 .color-dot {
   display: inline-block;
@@ -1272,7 +1277,7 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   .coveo-table-actions-container .coveo-table-actions {
     position: relative;
     display: table;
-    height: 43px;
+    height: 52px;
     padding: 0 10px; }
     .coveo-table-actions-container .coveo-table-actions:before {
       position: absolute;
@@ -1818,7 +1823,6 @@ div.datepicker th a.datepickerMonth {
   .dropdown .dropdown-toggle {
     display: inline-block;
     color: #263e55;
-    font-size: 11px;
     text-transform: uppercase;
     background-color: #f7f8f9; }
     .dropdown .dropdown-toggle .dropdown-toggle-arrow {

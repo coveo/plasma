@@ -1,23 +1,35 @@
-[class^='icon-'] {
+.icon {
+  height: 1em;
+  width: 1em;
   display: inline-block;
+  overflow: visible;
+
+  /* makes the icon 33% larger relative to the icon container */
+  &.mod-lg {
+    height: (4em / 3);
+    width: (4em / 3);
+    line-height: (4em / 3);
+    vertical-align: -15%;
+  }
+
+  &.mod-2x {
+    height: 2em;
+    width: 2em;
+  }
+
+  &.mod-3x {
+    height: 3em;
+    width: 3em;
+  }
+
+  &.mod-4x {
+    height: 4em;
+    width: 4em;
+  }
+
+  &.mod-5x {
+    height: 5em;
+    width: 5em;
+  }
 }
 
-.icon-small {
-  width: 17px;
-  height: 17px;
-}
-
-.icon-medium {
-  width: 24px;
-  height: 24px;
-}
-
-.icon-big {
-  width: 36px;
-  height: 36px;
-}
-
-.icon-fit {
-  width: 100%;
-  height: 100%;
-}
