@@ -1,0 +1,122 @@
+$navigation-width: 245px;
+$navigation-background-color: $dark-blue;
+$navigation-active-background-color: #57748a;
+$navigation-active-border-width: 3px;
+$navigation-section-icon-size: 16px;
+$navigation-section-icon-margin: 15px;
+$navigation-locked-color: $medium-grey;
+
+.navigation {
+  z-index: 50;
+
+  width: $navigation-width;
+  height: 100vh;
+
+  background-color: $navigation-background-color;
+
+  user-select: none;
+
+  *, *:before, *:after {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+
+  .navigation-menu {
+    position: relative;
+    z-index: 51;
+
+    float: left;
+    width: $navigation-width;
+    height: calc(100vh - #{$header-height});
+
+    color: $white;
+
+    background-color: $navigation-background-color;
+
+    .navigation-menu-sections {
+      height: 100%;
+      overflow: auto;
+
+      @include slim-scroll(#444444, #d3d3d3);
+
+      .navigation-menu-section {
+        .navigation-menu-section-header {
+          align-items: center;
+
+          display: flex;
+          height: 50px;
+
+          font-size: 13px;
+          font-weight: 700;
+          text-transform: uppercase;
+
+          background-color: $medium-blue;
+
+          .navigation-menu-section-header-icon {
+            margin: 0 $navigation-section-icon-margin;
+          }
+        }
+
+        .navigation-menu-section-items {
+          .navigation-menu-section-item {
+            font-weight: 300;
+
+            border-left: $navigation-active-border-width solid transparent;
+
+            cursor: pointer;
+
+            .navigation-menu-section-item-link {
+              align-items: center;
+
+              display: flex;
+              height: 30px;
+              padding-left: 2 * $navigation-section-icon-margin + $navigation-section-icon-size - $navigation-active-border-width;
+
+              color: $white;
+
+              .navigation-menu-section-item-link-icon {
+                margin-right: 10px;
+              }
+            }
+
+            &.state-locked {
+              .navigation-menu-section-item-link {
+                color: $navigation-locked-color;
+              }
+
+              .icon-folder-locked {
+                display: inline-block;
+
+                visibility: visible;
+              }
+            }
+
+            &.state-closed {
+              .icon-folder-closed {
+                display: inline-block;
+
+                visibility: visible;
+              }
+            }
+
+            &.state-opened {
+              .icon-folder-opened {
+                display: inline-block;
+
+                visibility: visible;
+              }
+            }
+
+            &.state-active {
+              background-color: $navigation-active-background-color;
+              border-left-color: $white;
+            }
+
+            &:hover {
+              background-color: $navigation-active-background-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
