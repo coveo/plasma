@@ -41,10 +41,10 @@ $on-laptop: 800px;
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "base/base";
 @import "base/syntax-highlighting";
-@import "layout/header";
-@import "layout/styleguide";
 @import "layout/footer";
+@import "layout/header";
 @import "layout/palette";
+@import "layout/styleguide";
 
 .body {
   margin: 2em 0;

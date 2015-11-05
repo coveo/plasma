@@ -1,35 +1,35 @@
 .icon {
-  height: 1em;
-  width: 1em;
   display: inline-block;
+  width: 1em;
+  height: 1em;
   overflow: visible;
 
   /* makes the icon 33% larger relative to the icon container */
   &.mod-lg {
-    height: (4em / 3);
     width: (4em / 3);
+    height: (4em / 3);
+
     line-height: (4em / 3);
     vertical-align: -15%;
   }
 
   &.mod-2x {
-    height: 2em;
     width: 2em;
+    height: 2em;
   }
 
   &.mod-3x {
-    height: 3em;
     width: 3em;
+    height: 3em;
   }
 
   &.mod-4x {
-    height: 4em;
     width: 4em;
+    height: 4em;
   }
 
   &.mod-5x {
-    height: 5em;
     width: 5em;
+    height: 5em;
   }
 }
-

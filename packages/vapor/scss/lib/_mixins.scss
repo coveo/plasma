@@ -1,15 +1,15 @@
-@mixin slim-scroll() {
+@mixin slim-scroll($track-color: #d3d3d3, $thumb-color: #606060) {
   &::-webkit-scrollbar, ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   &::-webkit-scrollbar-track, ::-webkit-scrollbar-track {
-    background-color: #d3d3d3;
+    background-color: $track-color;
   }
 
   &::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
-    background-color: #606060;
+    background-color: $thumb-color;
     border-radius: 3px;
   }
 

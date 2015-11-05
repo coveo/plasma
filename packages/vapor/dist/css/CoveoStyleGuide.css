@@ -266,100 +266,6 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   height: 6px;
   text-indent: 6px; }
 
-.inline {
-  display: inline; }
-
-.block {
-  display: block; }
-
-.inline-block {
-  display: inline-block; }
-
-.table {
-  display: table; }
-
-.table-cell {
-  display: table-cell; }
-
-.overflow-hidden {
-  overflow: hidden; }
-
-.overflow-scroll {
-  overflow: scroll; }
-
-.overflow-auto {
-  overflow: auto; }
-
-.clearfix:before, .clearfix:after {
-  display: table;
-  content: ' '; }
-
-.clearfix:after {
-  clear: both; }
-
-.left {
-  float: left; }
-
-.right {
-  float: right; }
-
-.fullscreen {
-  min-width: 100vw;
-  min-height: 100vh; }
-
-.hidden {
-  display: none;
-  visibility: hidden; }
-
-.flex {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex; }
-
-.flex-column {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.flex-auto {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 auto;
-     -moz-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  min-width: 0;
-  min-height: 0; }
-
-.center-align {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-     -moz-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-
-.align-baseline {
-  vertical-align: baseline; }
-
-.align-top {
-  vertical-align: top; }
-
-.align-middle {
-  vertical-align: middle; }
-
-.align-bottom {
-  vertical-align: bottom; }
-
 @font-face {
   font-family: 'source_code_pro_regular';
   font-style: normal;
@@ -549,28 +455,28 @@ a {
   text-decoration: none; }
 
 .icon {
-  height: 1em;
-  width: 1em;
   display: inline-block;
+  width: 1em;
+  height: 1em;
   overflow: visible;
   /* makes the icon 33% larger relative to the icon container */ }
   .icon.mod-lg {
-    height: 1.33333em;
     width: 1.33333em;
+    height: 1.33333em;
     line-height: 1.33333em;
     vertical-align: -15%; }
   .icon.mod-2x {
-    height: 2em;
-    width: 2em; }
+    width: 2em;
+    height: 2em; }
   .icon.mod-3x {
-    height: 3em;
-    width: 3em; }
+    width: 3em;
+    height: 3em; }
   .icon.mod-4x {
-    height: 4em;
-    width: 4em; }
+    width: 4em;
+    height: 4em; }
   .icon.mod-5x {
-    height: 5em;
-    width: 5em; }
+    width: 5em;
+    height: 5em; }
 
 .color-dot {
   display: inline-block;
@@ -1714,7 +1620,6 @@ div.datepicker th a.datepickerMonth {
   .dropdown .dropdown-toggle {
     display: inline-block;
     color: #263e55;
-    text-transform: uppercase;
     background-color: #f7f8f9; }
     .dropdown .dropdown-toggle .dropdown-toggle-arrow {
       float: right;
@@ -2228,6 +2133,95 @@ label.coveo-slide-toggle-double {
 .coveo-styleguide .dropdown.mod-menu .dropdown-menu li.divider {
   margin: 8px 0; }
 
+.coveo-styleguide .navigation {
+  z-index: 50;
+  width: 245px;
+  height: 100vh;
+  background-color: #263e55;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+  .coveo-styleguide .navigation *, .coveo-styleguide .navigation *:before, .coveo-styleguide .navigation *:after {
+    -webkit-font-smoothing: subpixel-antialiased; }
+  .coveo-styleguide .navigation .navigation-menu {
+    position: relative;
+    z-index: 899;
+    float: left;
+    width: 245px;
+    height: -webkit-calc(100vh - 67px);
+    height: calc(100vh - 67px);
+    color: #f7f8f9;
+    background-color: #263e55; }
+    .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections {
+      height: 100%;
+      overflow: auto; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections::-webkit-scrollbar, .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections::-webkit-scrollbar-track, .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections ::-webkit-scrollbar-track {
+        background-color: #444444; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections::-webkit-scrollbar-thumb, .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections ::-webkit-scrollbar-thumb {
+        background-color: #d3d3d3;
+        border-radius: 3px; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections::-webkit-scrollbar-button, .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections ::-webkit-scrollbar-button {
+        width: 0;
+        height: 0; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+           -moz-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        height: 50px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        background-color: #1d4f76; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header .navigation-menu-section-header-icon {
+          margin: 0 15px; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item {
+        font-weight: 300;
+        border-left: 3px solid transparent;
+        cursor: pointer; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link {
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+             -moz-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          height: 30px;
+          padding-left: 43px;
+          color: #f7f8f9; }
+          .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link .navigation-menu-section-item-link-icon {
+            margin-right: 10px; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .navigation-menu-section-item-link {
+          color: #bcc3ca; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .icon-folder-locked {
+          display: inline-block;
+          visibility: visible; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-closed .icon-folder-closed {
+          display: inline-block;
+          visibility: visible; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-opened .icon-folder-opened {
+          display: inline-block;
+          visibility: visible; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-active {
+          background-color: #57748a;
+          border-left-color: #f7f8f9; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item:hover {
+          background-color: #57748a; }
+
 /* */
 /* Common */
 /* Headings */
@@ -2518,5 +2512,108 @@ form .coveo-flex-form {
             flex: auto;
     width: 0;
     margin: 10px 0 0 10px; }
+
+.align-baseline {
+  vertical-align: baseline; }
+
+.align-top {
+  vertical-align: top; }
+
+.align-middle {
+  vertical-align: middle; }
+
+.align-bottom {
+  vertical-align: bottom; }
+
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.flex-auto {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0; }
+
+.center-align {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.inline {
+  display: inline; }
+
+.block {
+  display: block; }
+
+.inline-block {
+  display: inline-block; }
+
+.table {
+  display: table; }
+
+.table-cell {
+  display: table-cell; }
+
+.overflow-hidden {
+  overflow: hidden; }
+
+.overflow-scroll {
+  overflow: scroll; }
+
+.overflow-auto {
+  overflow: auto; }
+
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: ' '; }
+
+.clearfix:after {
+  clear: both; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.fullscreen {
+  min-width: 100vw;
+  min-height: 100vh; }
+
+.hidden {
+  display: none;
+  visibility: hidden; }
+
+.relative {
+  position: relative; }
+
+.absolute {
+  position: absolute; }
+
+.fixed {
+  position: fixed; }
 
 /*# sourceMappingURL=../css/CoveoStyleGuide.css.map */
