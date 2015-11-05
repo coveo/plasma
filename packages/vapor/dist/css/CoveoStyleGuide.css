@@ -2146,7 +2146,7 @@ label.coveo-slide-toggle-double {
     -webkit-font-smoothing: subpixel-antialiased; }
   .coveo-styleguide .navigation .navigation-menu {
     position: relative;
-    z-index: 899;
+    z-index: 51;
     float: left;
     width: 245px;
     height: -webkit-calc(100vh - 67px);
