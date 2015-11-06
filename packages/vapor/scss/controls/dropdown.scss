@@ -1,4 +1,6 @@
 .dropdown {
+  position: relative;
+
   display: inline-block;
 
   .dropdown-toggle {
@@ -24,6 +26,13 @@
   }
 
   .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+
+    display: none;
+    float: left;
     min-width: 100%;
     margin: 0;
 
@@ -33,6 +42,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
     border: 1px solid $dark-blue;
     border-radius: 2px;
+    padding: 5px 0;
+    list-style: none;
 
     li {
       > a, > span {
@@ -60,5 +71,9 @@
         background-color: $border-color;
       }
     }
+  }
+
+  &.open > .dropdown-menu {
+    display: block;
   }
 }
