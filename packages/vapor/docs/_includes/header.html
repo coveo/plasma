@@ -43,12 +43,13 @@
                     <span class="navigation-menu-section-header-icon"></span>
                     Basic
                 </header>
+                {% assign currentPageUrl = page.url %}
                 <ul class="navigation-menu-section-items">
-                    {% for page in site.pages %}
-                    {% if page.title %}
-                    <li class="navigation-menu-section-item">
-                        <a href="{{ page.url | prepend: site.baseurl }}" class="block navigation-menu-section-item-link">
-                            {{ page.title }}
+                    {% for pageInformation in site.pages %}
+                    {% if pageInformation.title %}
+                    <li class="navigation-menu-section-item {% if currentPageUrl == pageInformation.url %}state-active{% endif %}">
+                        <a href="{{ pageInformation.url | prepend: site.baseurl }}" class="block navigation-menu-section-item-link">
+                            {{ pageInformation.title }}
                         </a>
                     </li>
                     {% endif %}
