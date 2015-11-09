@@ -719,8 +719,8 @@ a.btn {
   display: block;
   width: 240px;
   height: 54px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
   margin: 0 auto 13px;
   color: #373737;
   font-size: 14px;
@@ -730,7 +730,7 @@ a.btn {
   border: 1px solid #bcc3ca;
   cursor: pointer; }
   .btn-alternate.mod-prepend {
-    padding-left: 74px; }
+    padding-left: 69px; }
   .btn-alternate .btn-prepend {
     position: absolute;
     top: 0;
@@ -1626,8 +1626,6 @@ div.datepicker th a.datepickerMonth {
       float: right;
       margin-top: -5px;
       margin-left: 10px; }
-    .dropdown .dropdown-toggle:active, .dropdown .dropdown-toggle .open .dropdown-toggle {
-      outline: 0; }
   .dropdown button.dropdown-toggle {
     height: 32px;
     padding: 0 12px;
