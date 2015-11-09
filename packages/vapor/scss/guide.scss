@@ -40,9 +40,10 @@
 // Components
 .coveo-styleguide {
   @import 'components/header';
+  @import 'components/navigation';
+  @import 'components/application-container';
   @import 'components/member';
   @import 'components/menu';
-  @import 'components/navigation';
 }
 
 // Forms
