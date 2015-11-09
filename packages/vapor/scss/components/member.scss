@@ -1,4 +1,7 @@
 .member {
+  display: flex;
+  align-items: center;
+  
   .member-avatar {
     width: 41px;
     height: 41px;
@@ -8,8 +11,7 @@
   }
 
   .member-info {
-    float: right;
-    margin: 3px 0 0 14px;
+    margin-left: 14px;
 
     .member-info-name {
       font-size: 13px;

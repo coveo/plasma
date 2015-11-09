@@ -10,7 +10,7 @@ $navigation-locked-color: $medium-grey;
   z-index: 50;
 
   width: $navigation-width;
-  height: 100vh;
+  height: 100%;
 
   background-color: $navigation-background-color;
 
@@ -24,20 +24,15 @@ $navigation-locked-color: $medium-grey;
     position: relative;
     z-index: 51;
 
-    float: left;
-    width: $navigation-width;
     height: calc(100vh - #{$header-height});
+    overflow: auto;
+    @include slim-scroll($dark-grey, $medium-grey);
 
     color: $white;
 
     background-color: $navigation-background-color;
 
     .navigation-menu-sections {
-      height: 100%;
-      overflow: auto;
-
-      @include slim-scroll(#444444, #d3d3d3);
-
       .navigation-menu-section {
         .navigation-menu-section-header {
           align-items: center;

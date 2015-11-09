@@ -4,14 +4,15 @@ title: Header
 usage: Use as your web application header. Note that the 9px gap at the bottom of the header is normal and should be hidden by the application container.
 stylesheet: '/scss/components/header.scss'
 ---
-<div class="header">
-    <div class="header-section mod-padded pull-left">
+<div class="header flex">
+    <div class="header-section mod-padded flex flex-center">
         [LOGO]
     </div>
-    <div class="header-section pull-right">
-        Section 2
+    <div class="flex-auto"></div>
+    <div class="header-section mod-padded flex flex-center">
+        Section 1, mod-padded
     </div>
-    <div class="header-section mod-padded pull-right">
-        Section 1s, mod-padded
+    <div class="header-section">
+        Section 2
     </div>
 </div>
