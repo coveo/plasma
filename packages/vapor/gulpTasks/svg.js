@@ -1,38 +1,34 @@
-var cheerio = require('gulp-cheerio');
 var gulp = require('gulp-help')(require('gulp'));
-var path = require('path');
-var rename = require('gulp-rename');
 var svgmin = require('gulp-svgmin');
-var svgstore = require('gulp-svgstore');
+var filesToJson = require('gulp-files-to-json');
+var cheerio = require('gulp-cheerio');
 
-gulp.task('svg', 'Concat all svg files into one and export it to dist/svg', function () {
+gulp.task('svg', 'Concat all svg files into one in a json format and export it to dist/svg', function () {
     return gulp.src('./resources/icons/svg/*.svg')
-        .pipe(svgmin())
-        .pipe(cheerio({
-            run: function ($, file) {
-                var idPrefix = path.basename(file.path).split('.')[0] + '-';
-                $('[id]').each(function () {
-                    var id = $(this);
-                    id.attr('id', idPrefix + id.attr('id'));
-                });
-                $('use').each(function () {
-                    var id = $(this);
-                    id.attr('xlink:href', '#' + idPrefix + id.attr('xlink:href').substring(1));
-                });
-                $('[mask]').each(function () {
-                    var id = $(this);
-                    var parts = id.attr('mask').split('#');
-                    id.attr('mask', parts[0] + '#' + idPrefix + parts[1]);
-                });
-            },
-            parserOptions: {
-                xmlMode: true
-            }
+        .pipe(svgmin({
+            plugins: [{
+                removeAttrs: {
+                    attrs: ['xmlns:*', 'xmlns', 'id']
+                }
+            },{
+                removeUselessDefs: true
+            }, {
+                removeComments: true    
+            }]
         }))
-        .pipe(rename({prefix: 'coveo-icon-'}))
-        .pipe(svgstore({
-            inlineSvg: true
+        .pipe(cheerio(function ($) {
+            $('svg').each(function () {
+                var svg = $(this);
+                if (svg) {
+                    var attrs = svg[0].attribs;
+                    for (var attrName in attrs) {
+                        if (attrName.match(/xmlns:.+/)) {
+                            svg.removeAttr(attrName);
+                        }
+                    }
+                }
+            });
         }))
-        .pipe(rename('icons.svg'))
+        .pipe(filesToJson('CoveoStyleGuideSvg.json'))
         .pipe(gulp.dest('dist/svg'));
 });
