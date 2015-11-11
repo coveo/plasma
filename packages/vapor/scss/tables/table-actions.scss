@@ -38,6 +38,11 @@ $coveo-table-actions-container-height: 52px;
 
       cursor: pointer;
 
+      .state-unrepeatable {
+        cursor: default;
+        opacity: 0.3;
+      }
+
       & + .action {
         padding-left: 10px;
       }

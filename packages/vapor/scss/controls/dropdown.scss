@@ -34,16 +34,16 @@
     display: none;
     float: left;
     min-width: 100%;
+    padding: 5px 0;
     margin: 0;
 
     color: $dark-blue;
+    list-style: none;
 
     background-color: $white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
     border: 1px solid $dark-blue;
     border-radius: 0 0 2px 2px;
-    padding: 5px 0;
-    list-style: none;
 
     li {
       > a, > span {
