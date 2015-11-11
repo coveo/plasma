@@ -1,7 +1,8 @@
 .application-container {
   height: calc(100vh - #{$header-height});
-  overflow-y: scroll;
   margin-top: -1 * $header-application-offset-y;
-  border-top-left-radius: 2px;
   margin-left: $navigation-width;
+  overflow-y: scroll;
+
+  border-top-left-radius: 2px;
 }

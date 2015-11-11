@@ -26,11 +26,12 @@ $navigation-locked-color: $medium-grey;
 
     height: calc(100vh - #{$header-height});
     overflow: auto;
-    @include slim-scroll($dark-grey, $medium-grey);
 
     color: $white;
 
     background-color: $navigation-background-color;
+
+    @include slim-scroll($dark-grey, $medium-grey);
 
     .navigation-menu-sections {
       .navigation-menu-section {
