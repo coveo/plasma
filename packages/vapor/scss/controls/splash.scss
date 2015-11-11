@@ -53,6 +53,12 @@
     padding: 0 30px 50px;
   }
 
+  .btn {
+    display: block;
+    width: 250px;
+    margin: auto auto 1em;
+  }
+
   .splash-box-footer {
     padding: 17px;
     margin-top: 50px;
@@ -67,5 +73,9 @@
 
   span {
     line-height: 25px;
+
+    a {
+      margin-right: 10px;
+    }
   }
 }

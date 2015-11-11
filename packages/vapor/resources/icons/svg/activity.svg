@@ -1,15 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#000000;}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#000000;}
-	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:none;}
-</style>
-<g>
-	<path class="st1" d="M10,17.2c-4,0-7.2-3.2-7.2-7.2S6,2.8,10,2.8S17.2,6,17.2,10S14,17.2,10,17.2z M10,1c-5,0-9,4-9,9s4,9,9,9
-		c5,0,9-4,9-9S15,1,10,1z"/>
-	<polygon class="st1" points="10.5,5.5 9.1,5.5 9.1,10.9 13.8,13.7 14.5,12.6 10.5,10.2 	"/>
-</g>
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <path id="svg_2" d="m10,17.2c-4,0 -7.2,-3.2 -7.2,-7.2s3.2,-7.2 7.2,-7.2s7.2,3.2 7.2,7.2s-3.2,7.2 -7.2,7.2zm0,-16.2c-5,0 -9,4 -9,9s4,9 9,9c5,0 9,-4 9,-9s-4,-9 -9,-9z"/>
+   <polygon id="svg_3" points="10.5,5.5 9.1,5.5 9.1,10.9 13.8,13.7 14.5,12.6 10.5,10.2  "/>
+  </g>
+ </g>
 </svg>

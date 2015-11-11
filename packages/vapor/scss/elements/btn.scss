@@ -1,0 +1,81 @@
+$button-font-size: 12px;
+$button-line-height: 15px;
+$button-font-weight: 700;
+$button-padding-x: 16px;
+$button-padding-y: 8.5px;
+$button-border-width: 1px;
+$button-border-radius: 2px;
+$button-height: 34px;
+$button-large-height: 50px;
+
+@mixin button-variant($color, $background) {
+  color: $color;
+
+  background-color: $background;
+  border: $button-border-width solid $background;
+
+  &:hover, &:focus {
+    background-color: lighten($background, 5%);
+    border: $button-border-width solid lighten($background, 5%);
+  }
+
+  &:disabled, &.state-disabled {
+    background-color: lighten($background, 20%);
+    border: $button-border-width solid lighten($background, 20%);
+
+    cursor: default;
+  }
+}
+
+
+.btn {
+  display: inline-block;
+  height: $button-height;
+  padding: $button-padding-y $button-padding-x;
+  margin-right: 5px;
+  overflow: hidden;
+
+  color: $medium-blue;
+  font-family: $base-font-family;
+  font-size: $button-font-size;
+  font-weight: $button-font-weight;
+  line-height: $button-line-height;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  background-color: $white;
+  border: $button-border-width solid $medium-grey;
+  border-radius: $button-border-radius;
+
+  cursor: pointer;
+
+  &:hover, &:focus {
+    text-decoration: none;
+
+    background-color: $light-grey;
+    outline: none;
+  }
+
+  &:disabled, &.state-disabled {
+    color: $medium-grey;
+
+    &:hover, &:focus {
+      background-color: inherit;
+    }
+  }
+
+  &.mod-large {
+    height: $button-large-height;
+  }
+
+  &.mod-primary {
+    @include button-variant($white, $orange);
+  }
+
+  &.mod-danger {
+    @include button-variant($white, $red);
+  }
+}

@@ -16,8 +16,8 @@
 @import 'elements/color-dot';
 
 // Buttons
-@import 'elements/buttons';
-@import 'elements/buttons-alternate';
+@import 'elements/btn';
+@import 'elements/btn-prepend';
 
 // Tables
 @import 'tables/table';
@@ -57,3 +57,4 @@
 @import 'utility/flex';
 @import 'utility/layout';
 @import 'utility/position';
+@import 'utility/colors';

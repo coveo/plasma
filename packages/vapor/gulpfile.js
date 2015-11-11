@@ -13,3 +13,7 @@ gulp.task('default', 'Build sass, libs and sprites to the dist folder', [
     'copy:fonts',
     'svg'
 ]);
+
+gulp.task('watch', function () {
+    gulp.watch('./scss/**/*', ['default']);
+});

@@ -1,0 +1,34 @@
+.btn {
+  &.mod-prepend {
+    padding: 0 $button-padding-x 0 0;
+
+    line-height: $button-height;
+
+    .btn-prepend {
+      display: inline-block;
+      float: left;
+      width: $button-height;
+      height: ($button-height - 1);
+      margin-right: $button-padding-x;
+
+      line-height: $button-height;
+
+      border-right: $button-border-width solid $medium-grey;
+
+      &.mod-icon {
+        padding: 8px;
+      }
+    }
+
+    &.mod-large {
+      line-height: $button-large-height;
+
+      .btn-prepend {
+        width: $button-large-height;
+        height: ($button-large-height - 1);
+
+        line-height: $button-large-height;
+      }
+    }
+  }
+}
