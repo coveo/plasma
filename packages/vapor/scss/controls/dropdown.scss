@@ -6,23 +6,13 @@
   .dropdown-toggle {
     display: inline-block;
 
-    color: $dark-blue;
-
-    background-color: $white;
+    text-transform: initial;
 
     .dropdown-toggle-arrow {
       float: right;
       margin-top: -5px;
       margin-left: 10px;
     }
-  }
-
-  button.dropdown-toggle {
-    height: 32px;
-    padding: 0 12px;
-
-    border: solid 1px $border-color;
-    border-radius: 2px;
   }
 
   .dropdown-menu {
@@ -51,6 +41,7 @@
         padding: 5px 10px;
         overflow: hidden;
 
+        color: $dark-grey;
         line-height: 16px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -68,7 +59,7 @@
       &.divider {
         height: 1px;
 
-        background-color: $border-color;
+        background-color: $medium-grey;
       }
     }
   }

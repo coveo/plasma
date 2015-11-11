@@ -17,25 +17,3 @@ $blue: #1194f6;
 // Brands
 $salesforce-blue: #00a0de;
 $google-red: #dd4b39;
-
-$palette-primary: dark-blue $dark-blue, medium-blue $medium-blue, light-blue $light-blue, dark-grey $dark-grey, medium-grey $medium-grey,
-light-grey $light-grey, white $white, orange $orange;
-
-$palette-secondary: red $red, yellow $yellow, green $green, blue $blue, salesforce-blue $salesforce-blue, google-red $google-red;
-
-@each $color in join($palette-primary, $palette-secondary) {
-  .bg-#{nth($color, 1)} {
-    background-color: nth($color, 2);
-  }
-
-  .fill-#{nth($color, 1)} {
-    fill: nth($color, 2);
-  }
-
-  .text-#{nth($color, 1)} {
-    color: nth($color, 2);
-  }
-}
-
-// Other colors
-$border-color: #cdcfd1;
