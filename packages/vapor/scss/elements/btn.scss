@@ -25,6 +25,10 @@ $button-large-height: 50px;
 
     cursor: default;
   }
+
+  .icon {
+    fill: $color;
+  }
 }
 
 
@@ -52,6 +56,10 @@ $button-large-height: 50px;
 
   cursor: pointer;
 
+  .icon {
+    fill: $medium-blue;
+  }
+
   &:hover, &:focus {
     text-decoration: none;
 
@@ -77,5 +85,10 @@ $button-large-height: 50px;
 
   &.mod-danger {
     @include button-variant($white, $red);
+  }
+
+  &.mod-link {
+    background-color: transparent;
+    border: none;
   }
 }
