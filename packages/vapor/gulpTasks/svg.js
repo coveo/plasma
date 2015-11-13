@@ -2,6 +2,7 @@ var gulp = require('gulp-help')(require('gulp'));
 var svgmin = require('gulp-svgmin');
 var filesToJson = require('gulp-files-to-json');
 var cheerio = require('gulp-cheerio');
+var rename = require('gulp-rename');
 
 gulp.task('svg', 'Concat all svg files into one in a json format and export it to dist/svg', function () {
     return gulp.src('./resources/icons/svg/*.svg')
@@ -30,5 +31,7 @@ gulp.task('svg', 'Concat all svg files into one in a json format and export it t
             });
         }))
         .pipe(filesToJson('CoveoStyleGuideSvg.json'))
-        .pipe(gulp.dest('dist/svg'));
+        .pipe(gulp.dest('dist/svg'))
+        .pipe(rename('icons.json'))
+        .pipe(gulp.dest('docs/_data/'))
 });

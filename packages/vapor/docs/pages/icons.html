@@ -1,0 +1,10 @@
+---
+layout: default
+title: Icons
+permalink: /icons/
+---
+
+{% assign entries = site.components | where:"type","icons" %}
+{% for entry in entries %}
+{% include component_icons.html %}
+{% endfor %}
