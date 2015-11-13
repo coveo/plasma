@@ -330,8 +330,8 @@ a {
 
 .icon {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 0.9em;
+  height: 0.9em;
   overflow: visible;
   /* makes the icon 33% larger relative to the icon container */ }
   .icon.mod-lg {
@@ -385,6 +385,8 @@ a {
   border: 1px solid #bcc3ca;
   border-radius: 2px;
   cursor: pointer; }
+  .btn .icon {
+    fill: #1d4f76; }
   .btn:hover, .btn:focus {
     text-decoration: none;
     background-color: #e6ecf0;
@@ -406,6 +408,8 @@ a {
       background-color: #f9b882;
       border: 1px solid #f9b882;
       cursor: default; }
+    .btn.mod-primary .icon {
+      fill: #f7f8f9; }
   .btn.mod-danger {
     color: #f7f8f9;
     background-color: #f44336;
@@ -417,6 +421,11 @@ a {
       background-color: #f99d97;
       border: 1px solid #f99d97;
       cursor: default; }
+    .btn.mod-danger .icon {
+      fill: #f7f8f9; }
+  .btn.mod-link {
+    background-color: transparent;
+    border: none; }
 
 .btn.mod-prepend {
   padding: 0 16px 0 0;
