@@ -1,20 +1,7 @@
 <article class="sg-component">
 
-    <header class="sg-component-header">
-        <h3>{{ entry.title }}</h3>
+    {% include component_header.html %}
 
-        {% if entry.usage %}
-        <p class="sg-component-description">
-            {{ entry.usage }}
-        </p>
-        {% endif %}
-
-        {% if entry.stylesheet %}
-        <p class="sg-component-stylesheet">
-            <strong>Style sheet:</strong> {{ entry.stylesheet }}
-        </p>
-        {% endif %}
-    </header>
     <div class="sg-component-body">
         <div class="sg-component-display">
             {{ entry.content }}

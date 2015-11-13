@@ -1,0 +1,15 @@
+<header class="sg-component-header">
+    <h3>{{ entry.title }}</h3>
+
+    {% if entry.usage %}
+    <p class="sg-component-description">
+        {{ entry.usage }}
+    </p>
+    {% endif %}
+
+    {% if entry.stylesheet %}
+    <p class="sg-component-stylesheet">
+        <strong>Style sheet:</strong> {{ entry.stylesheet }}
+    </p>
+    {% endif %}
+</header>
