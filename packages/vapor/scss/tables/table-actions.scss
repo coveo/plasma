@@ -8,28 +8,12 @@ $coveo-table-actions-container-height: 52px;
 
   display: flex;
 
-  border-top: $table-border;
-
   .coveo-table-actions {
     position: relative;
 
     display: table;
     height: $coveo-table-actions-container-height;
     padding: 0 10px;
-
-    &:before {
-      position: absolute;
-      top: -$table-border-width;
-      left: 0;
-
-      display: block;
-      width: 100%;
-      height: $table-border-width;
-
-      content: '';
-
-      background-color: $medium-grey;
-    }
 
     .action {
       display: table-cell;

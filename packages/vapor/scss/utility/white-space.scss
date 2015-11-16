@@ -1,0 +1,24 @@
+// Immutable padding utilities, based on a global white space scale.
+// Inspired by: http://www.basscss.com/docs/white-space/
+
+$spacing: 0.5rem;
+
+.p0 {
+  padding: 0;
+}
+
+@for $i from 1 through 2 {
+  .p#{$i} {
+    padding: $i * $spacing;
+  }
+
+  .px#{$i} {
+    padding-right: $i * $spacing;
+    padding-left: $i * $spacing;
+  }
+
+  .py#{$i} {
+    padding-top: $i * $spacing;
+    padding-bottom: $i * $spacing;
+  }
+}
