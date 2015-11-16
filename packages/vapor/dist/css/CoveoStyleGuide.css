@@ -140,89 +140,27 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   height: 6px;
   text-indent: 6px; }
 
-@font-face {
-  font-family: 'source_code_pro_regular';
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/SourceCodePro-Regular.eot");
-  src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
-
-.bold {
-  font-weight: bold; }
-
-.regular {
-  font-weight: normal; }
-
-.italic {
-  font-style: italic; }
-
-.caps {
-  letter-spacing: 0.2em;
-  text-transform: uppercase; }
-
-.left-align {
-  text-align: left; }
-
-.center {
-  text-align: center; }
-
-.right-align {
-  text-align: right; }
-
-.justify {
-  text-align: justify; }
-
-.nowrap {
-  white-space: nowrap; }
-
-.break-word {
-  word-wrap: break-word; }
-
-.truncate {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
-
-.list-reset {
-  padding-left: 0;
-  list-style: none; }
-
-.pull-right {
-  float: right; }
-
-.pull-left {
-  float: left; }
-
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif; }
-  h1.light, h2.light, h3.light, h4.light, h5.light, h6.light {
-    font-weight: 300; }
-  h1.semibold, h2.semibold, h3.semibold, h4.semibold, h5.semibold, h6.semibold {
-    font-weight: 600; }
-  h1.bold, h2.bold, h3.bold, h4.bold, h5.bold, h6.bold {
-    font-weight: 700; }
-
-h1, h2, h3 {
-  line-height: 40px; }
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  line-height: 1.5; }
 
 h1, .h1 {
-  font-size: 38.5px; }
+  font-size: 24px; }
 
 h2, .h2 {
-  font-size: 31.5px; }
+  font-size: 20px; }
 
 h3, .h3 {
-  font-size: 24.5px; }
+  font-size: 15px; }
 
 h4, .h4 {
-  font-size: 17.5px; }
-
-h5, .h5 {
   font-size: 13px; }
 
-h6, .h6 {
-  font-size: 11.9px; }
+h5 {
+  font-size: 13px; }
+
+h6 {
+  font-size: 13px; }
 
 @font-face {
   font-family: 'source_code_pro_regular';
@@ -774,22 +712,12 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
-  display: flex;
-  border-top: 1px solid #bcc3ca; }
+  display: flex; }
   .coveo-table-actions-container .coveo-table-actions {
     position: relative;
     display: table;
     height: 52px;
     padding: 0 10px; }
-    .coveo-table-actions-container .coveo-table-actions:before {
-      position: absolute;
-      top: -1px;
-      left: 0;
-      display: block;
-      width: 100%;
-      height: 1px;
-      content: '';
-      background-color: #bcc3ca; }
     .coveo-table-actions-container .coveo-table-actions .action {
       display: table-cell;
       vertical-align: middle;
@@ -1359,6 +1287,8 @@ div.datepicker th a.datepickerMonth {
         color: #263e55;
         background: none;
         background-color: #e6ecf0; }
+      .dropdown .dropdown-menu li > a.state-selected, .dropdown .dropdown-menu li > span.state-selected {
+        font-weight: bold; }
     .dropdown .dropdown-menu li.divider {
       height: 1px;
       background-color: #bcc3ca; }
@@ -1821,6 +1751,12 @@ label.coveo-slide-toggle-double {
     .coveo-styleguide .header .header-section:first-child {
       border-left: none; }
 
+.coveo-styleguide .panel-header {
+  height: 110px;
+  padding: 0 40px;
+  background-color: #f7f8f9;
+  border-bottom: solid 1px #bcc3ca; }
+
 .coveo-styleguide .navigation {
   z-index: 50;
   width: 245px;
@@ -2249,6 +2185,56 @@ form .coveo-flex-form {
     width: 0;
     margin: 10px 0 0 10px; }
 
+.bold {
+  font-weight: bold; }
+
+.semibold {
+  font-weight: 600; }
+
+.regular {
+  font-weight: normal; }
+
+.italic {
+  font-style: italic; }
+
+.caps {
+  letter-spacing: 0.2em;
+  text-transform: uppercase; }
+
+.left-align {
+  text-align: left; }
+
+.center {
+  text-align: center; }
+
+.right-align {
+  text-align: right; }
+
+.justify {
+  text-align: justify; }
+
+.nowrap {
+  white-space: nowrap; }
+
+.break-word {
+  word-wrap: break-word; }
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.list-reset {
+  padding-left: 0;
+  list-style: none; }
+
+.pull-right {
+  float: right; }
+
+.pull-left {
+  float: left; }
+
 .align-baseline {
   vertical-align: baseline; }
 
@@ -2358,6 +2344,31 @@ form .coveo-flex-form {
 
 .fixed {
   position: fixed; }
+
+.p0 {
+  padding: 0; }
+
+.p1 {
+  padding: 0.5rem; }
+
+.px1 {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem; }
+
+.py1 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; }
+
+.p2 {
+  padding: 1rem; }
+
+.px2 {
+  padding-right: 1rem;
+  padding-left: 1rem; }
+
+.py2 {
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
 
 .bg-dark-blue {
   background-color: #263e55; }

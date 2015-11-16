@@ -22,3 +22,11 @@ $header-application-offset-y: 6px;
     }
   }
 }
+
+.panel-header {
+  height: 110px;
+  padding: 0 40px;
+
+  background-color: $white;
+  border-bottom: solid 1px $medium-grey;
+}
