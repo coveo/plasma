@@ -37,26 +37,26 @@
 @import 'controls/slide-toggle-double';
 @import 'controls/splash';
 
-// Components
 .coveo-styleguide {
+  // Components
   @import 'components/header';
   @import 'components/navigation';
   @import 'components/application-container';
   @import 'components/member';
   @import 'components/menu';
+
+  // Forms
+  @import 'forms/forms';
+  @import 'forms/table-form';
+  @import 'forms/block-form';
+  @import 'forms/flex-form';
+
+  // Utility
+  @import 'typography/utility';
+  @import 'utility/align';
+  @import 'utility/flex';
+  @import 'utility/layout';
+  @import 'utility/position';
+  @import 'utility/white-space';
+  @import 'utility/colors';
 }
-
-// Forms
-@import 'forms/forms';
-@import 'forms/table-form';
-@import 'forms/block-form';
-@import 'forms/flex-form';
-
-// Utility
-@import 'typography/utility';
-@import 'utility/align';
-@import 'utility/flex';
-@import 'utility/layout';
-@import 'utility/position';
-@import 'utility/white-space';
-@import 'utility/colors';
