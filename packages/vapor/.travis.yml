@@ -49,4 +49,4 @@ deploy:
   acl: public_read
   on:
     tags: true
-    repo: Coveo/styleguide
+    repo: coveo/styleguide
