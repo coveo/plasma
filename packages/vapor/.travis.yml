@@ -32,3 +32,21 @@ notifications:
 branches:
   only:
     - master
+
+after_success:
+- mkdir -p "deploy/$TRAVIS_TAG"
+- cp -a dist/. "deploy/$TRAVIS_TAG"
+
+deploy:
+  provider: s3
+  access_key_id: AKIAJRPK7RSZINC7HADA
+  secret_access_key:
+    secure: arp5dQ0jPdM18y20Rpurkf3lBLx70k6ssnIlV+F6Q1j16uWQygwiA17WnXtJlgL8IDEKhxbIDc/lmH2HsMhbQJQdbfpiLmzWNw79HjV5kMkzeOxdGTuFLRfta5iZ4VVNemveRExUjygrbJIIulvhdv0NGLt3BkLUJaWw5zYm2LI=
+  bucket: coveo-public-content
+  skip_cleanup: true
+  local-dir: deploy
+  upload-dir: styleguide
+  acl: public_read
+  on:
+    tags: true
+    repo: Coveo/styleguide

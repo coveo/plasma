@@ -2219,7 +2219,6 @@ label.coveo-slide-toggle-double {
   .coveo-styleguide .italic {
     font-style: italic; }
   .coveo-styleguide .caps {
-    letter-spacing: 0.2em;
     text-transform: uppercase; }
   .coveo-styleguide .left-align {
     text-align: left; }
@@ -2241,10 +2240,6 @@ label.coveo-slide-toggle-double {
   .coveo-styleguide .list-reset {
     padding-left: 0;
     list-style: none; }
-  .coveo-styleguide .pull-right {
-    float: right; }
-  .coveo-styleguide .pull-left {
-    float: left; }
   .coveo-styleguide .align-baseline {
     vertical-align: baseline; }
   .coveo-styleguide .align-top {
