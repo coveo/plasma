@@ -21,7 +21,7 @@ cache:
 script:
  - npm run-script lint
  - npm run-script compile
- - npm run-script build-pages
+ - npm run-script buildpages
 
 env:
   global:
