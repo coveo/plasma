@@ -1,4 +1,6 @@
 {
+  "exclude": ["node_modules/**", "scss/utility/colors.scss", "scss/sprites.scss"],
+
   "remove-empty-rulesets": true,
   "always-semicolon": true,
   "color-case": "lower",
