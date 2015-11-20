@@ -9,7 +9,7 @@ before_install:
   - rvm install 2.2.2 && rvm use 2.2.2
 
 install:
-  - bundle install --jobs=3
+  - bundle install
   - npm install -g gulp
   - npm install
 
@@ -20,7 +20,8 @@ cache:
 
 script:
  - npm run-script compile
-   
+ - npm run-script build-pages
+
 env:
   global:
   - secure: WJ3lMQmoZKhHGbMz26gq3ZeLqVCKZuFT/7EkG93PHhrS5fkr3HViOxqf2ld+M33L1yUq/L7jv2mmPKF2jfw76uQDACvcwlaoDFmS/UGVU6BLRAFKyovLCRX2EILQN0p1LJ2YyS2Y9oAak97QV6Eck7aSpjmUsxCWT5kgNikWYko=
