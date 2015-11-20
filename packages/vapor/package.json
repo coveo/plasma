@@ -15,11 +15,9 @@
   "main": "",
   "scripts": {
     "test": "",
-    "clean": "node ./node_modules/gulp/bin/gulp clean",
-    "compile": "node ./node_modules/gulp/bin/gulp docs",
-    "deploy": "./deploy.sh",
-    "prepublish": "npm run compile",
-    "start": "npm run "
+    "clean": "gulp clean",
+    "compile": "gulp docs",
+    "start": "npm run"
   },
   "repository": {
     "type": "git",
