@@ -1,8 +1,7 @@
 #!/bin/bash
 rm -rf _gh_pages || exit 0;
 
-npm run compile
-
+bundle install
 bundle exec jekyll build
 
 ( cd _gh_pages

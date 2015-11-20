@@ -28,10 +28,6 @@ notifications:
     on_success: never
     on_failure: never
 
-branches:
-  only:
-    - master
-
 after_success:
 - mkdir -p "deploy/$TRAVIS_TAG"
 - cp -a dist/. "deploy/$TRAVIS_TAG"
