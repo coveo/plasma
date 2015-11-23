@@ -743,6 +743,8 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
           vertical-align: middle; }
   .coveo-table-actions-container .coveo-table-actions + .coveo-table-actions {
     border-left: 1px solid #bcc3ca; }
+  .coveo-table-actions-container.mod-border-top {
+    border-top: 1px solid #bcc3ca; }
 
 /* Common */
 /* Headings */
