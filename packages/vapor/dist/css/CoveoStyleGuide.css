@@ -717,7 +717,7 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
       display: table-cell;
       vertical-align: middle;
       cursor: pointer; }
-      .coveo-table-actions-container .coveo-table-actions .action .state-unrepeatable {
+      .coveo-table-actions-container .coveo-table-actions .action .state-disabled {
         cursor: default;
         opacity: 0.3; }
       .coveo-table-actions-container .coveo-table-actions .action + .action {
