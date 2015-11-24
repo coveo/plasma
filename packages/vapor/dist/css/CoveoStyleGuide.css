@@ -741,6 +741,11 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
         .coveo-table-actions-container .coveo-table-actions .prompt .prompt-danger > span {
           display: table-cell;
           vertical-align: middle; }
+          .coveo-table-actions-container .coveo-table-actions .prompt .prompt-danger > span.prompt-icon {
+            padding-right: 5px; }
+          .coveo-table-actions-container .coveo-table-actions .prompt .prompt-danger > span.prompt-action {
+            padding-left: 5px;
+            cursor: pointer; }
   .coveo-table-actions-container .coveo-table-actions + .coveo-table-actions {
     border-left: 1px solid #bcc3ca; }
   .coveo-table-actions-container.mod-border-top {
