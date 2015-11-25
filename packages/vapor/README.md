@@ -9,6 +9,10 @@ Coveo Styleguide is a collection of UI components used in Coveo's Administration
 Available on npm:
 
 	npm install coveo-styleguide
+	
+Also available on our cdn :
+
+	static.cloud.coveo.com/styleguide/v1.x.y/css/CoveoStyleGuide.css
 
 > The project is at its early stages, some components can still have _lots_ of breaking changes.
 
