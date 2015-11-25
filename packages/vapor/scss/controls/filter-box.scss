@@ -1,7 +1,3 @@
-@import '../common/colors';
-@import '../sprites';
-$coveo-filter-box-height: 32px;
-
 .coveo-filter-container {
   position: relative;
 
@@ -17,7 +13,7 @@ $coveo-filter-box-height: 32px;
 
   input.filter-box {
     width: 260px;
-    height: $coveo-filter-box-height;
+    height: $filter-box-height;
     padding-right: 25px;
     padding-left: 25px;
     margin: 0;

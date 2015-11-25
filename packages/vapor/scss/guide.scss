@@ -5,6 +5,7 @@
 @import 'common/colors';
 @import 'common/font';
 @import 'sprites';
+@import 'variables';
 
 // Typography
 @import 'typography/headings';
@@ -19,10 +20,6 @@
 @import 'elements/btn';
 @import 'elements/btn-prepend';
 
-// Tables
-@import 'tables/table';
-@import 'tables/fixed-header-table';
-@import 'tables/table-actions';
 
 // Controls
 @import 'controls/checkboxes';
@@ -31,13 +28,16 @@
 @import 'controls/dropdown';
 @import 'controls/filter-box';
 @import 'controls/inputs';
-@import 'controls/input-slider';
 @import 'controls/numeric-spinner';
 @import 'controls/slide-toggle';
 @import 'controls/slide-toggle-double';
 @import 'controls/splash';
 
 .coveo-styleguide {
+  // Tables
+  @import 'tables/table';
+  @import 'tables/fixed-header-table';
+  @import 'tables/table-actions';
   // Components
   @import 'components/header';
   @import 'components/navigation';
