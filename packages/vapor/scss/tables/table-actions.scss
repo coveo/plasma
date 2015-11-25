@@ -1,6 +1,3 @@
-@import '../common/colors';
-@import '../controls/filter-box';
-$coveo-table-actions-container-height: 52px;
 
 .coveo-table-actions-container {
   flex-flow: row wrap;
@@ -12,7 +9,7 @@ $coveo-table-actions-container-height: 52px;
     position: relative;
 
     display: table;
-    height: $coveo-table-actions-container-height;
+    height: $table-actions-container-height;
     padding: 0 10px;
 
     .action {

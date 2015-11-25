@@ -31,6 +31,64 @@ table {
   border-collapse: inherit;
   border-spacing: 0; }
 
+input[type=range].coveo-input-slider {
+  width: 100%;
+  -webkit-appearance: none; }
+
+input[type=range].coveo-input-slider:focus {
+  outline: none; }
+
+input[type=range].coveo-input-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7px;
+  background: #dddddd;
+  border: none; }
+
+input[type=range].coveo-input-slider::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  margin-top: -6px;
+  -webkit-appearance: none;
+  background: #f5f5f5;
+  background: -webkit-linear-gradient(bottom left, #f5f5f5 50%, #ffffff 50%);
+  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);
+  border: 1px solid #e4e4e4;
+  border-radius: 50%; }
+
+input[type=range].coveo-input-slider::-moz-range-track {
+  width: 100%;
+  height: 7px;
+  background: #dddddd;
+  border: none; }
+
+input[type=range].coveo-input-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #f5f5f5;
+  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);
+  border: 1px solid #e4e4e4;
+  border-radius: 50%; }
+
+input[type=range].coveo-input-slider::-ms-track {
+  width: 100%;
+  height: 7px;
+  color: transparent;
+  background: transparent;
+  border-color: transparent;
+  border-width: 8px 0; }
+
+input[type=range].coveo-input-slider::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: #f5f5f5;
+  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);
+  border: 1px solid #e4e4e4;
+  border-radius: 50%; }
+
+input[type=range].coveo-input-slider::-ms-tooltip {
+  display: none;
+  visibility: hidden; }
+
 @font-face {
   font-family: 'source_code_pro_regular';
   font-style: normal;
@@ -67,8 +125,7 @@ body {
   src: url("../fonts/SourceCodePro-Regular.eot");
   src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
 
-.coveo-sprites-misc-closepopup,
-.coveo-filter-container input.filter-box + span:after,
+.coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after,
 .coveo-sprites-misc-filter,
 .coveo-sprites-misc-spinner_arrow_down,
 .coveo-sprites-misc-spinner_arrow_up,
@@ -161,24 +218,6 @@ h5 {
 h6 {
   font-size: 13px; }
 
-@font-face {
-  font-family: 'source_code_pro_regular';
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/SourceCodePro-Regular.eot");
-  src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
-
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
 .user-type {
   font-size: 10px;
   display: inline-block;
@@ -248,17 +287,6 @@ h6 {
   .encryption-status.UNIQUEKEY-label {
     background-color: #59be90; }
 
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
 a {
   color: #2c5985;
   text-decoration: none; }
@@ -382,6 +410,7 @@ a {
       height: 49px;
       line-height: 50px; }
 
+<<<<<<< HEAD
 table {
   width: 100%;
   text-align: left;
@@ -762,6 +791,8 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
 /* Organizations */
 /* Timeline */
 /* Datepicker */
+=======
+>>>>>>> master
 input[type=checkbox].coveo-checkbox {
   display: none; }
   input[type=checkbox].coveo-checkbox + button {
@@ -774,7 +805,11 @@ input[type=checkbox].coveo-checkbox {
     border-radius: 2px;
     outline: none;
     -webkit-transition: all 200ms;
+<<<<<<< HEAD
             transition: all 200ms;
+=======
+    transition: all 200ms;
+>>>>>>> master
     cursor: pointer; }
     input[type=checkbox].coveo-checkbox + button:hover, input[type=checkbox].coveo-checkbox + buttonfocus {
       background-color: #ffffff;
@@ -827,96 +862,6 @@ label.coveo-checkbox-label {
   label.coveo-checkbox-label.disabled span {
     opacity: 0.4; }
 
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
-@font-face {
-  font-family: 'source_code_pro_regular';
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/SourceCodePro-Regular.eot");
-  src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); }
-
-.coveo-sprites-misc-closepopup,
-.coveo-filter-container input.filter-box + span:after,
-.coveo-sprites-misc-filter,
-.coveo-sprites-misc-spinner_arrow_down,
-.coveo-sprites-misc-spinner_arrow_up,
-.coveo-sprites-misc-alert,
-.coveo-sprites-misc-panel-collapsed,
-.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,
-.coveo-sprites-tables-sort_asc,
-.coveo-sprites-misc-panel-expended,
-.collapsable-panel-group .panel .panel-heading i.toggle-icon,
-.coveo-sprites-tables-sort_desc {
-  background-image: url("../images/CoveoStyleGuide.Sprites.png");
-  display: inline-block;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  background-size: 83px 16px; }
-
-i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after {
-  background-position: 0px 0px;
-  width: 16px;
-  height: 16px;
-  text-indent: 16px; }
-
-i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
-  background-position: -16px 0px;
-  width: 12px;
-  height: 12px;
-  text-indent: 12px; }
-
-i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
-  background-position: -28px 0px;
-  width: 12px;
-  height: 12px;
-  text-indent: 12px; }
-
-i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
-  background-position: -40px 0px;
-  width: 12px;
-  height: 12px;
-  text-indent: 12px; }
-
-i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
-  background-position: -52px 0px;
-  width: 11px;
-  height: 11px;
-  text-indent: 11px; }
-
-i.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {
-  background-position: -63px 0px;
-  width: 10px;
-  height: 10px;
-  text-indent: 10px; }
-
-i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
-  background-position: -63px -10px;
-  width: 6px;
-  height: 6px;
-  text-indent: 6px; }
-
-i.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {
-  background-position: -73px 0px;
-  width: 10px;
-  height: 10px;
-  text-indent: 10px; }
-
-i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
-  background-position: -73px -10px;
-  width: 6px;
-  height: 6px;
-  text-indent: 6px; }
-
 .collapsable-panel-group .collapse {
   display: none;
   visibility: hidden; }
@@ -932,7 +877,7 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
   -webkit-transition-duration: 0.35s;
           transition-duration: 0.35s;
   -webkit-transition-property: height, visibility;
-          transition-property: height, visibility;
+  transition-property: height, visibility;
   -webkit-transition-timing-function: ease;
           transition-timing-function: ease; }
 
@@ -961,204 +906,6 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
       content: '\00a0'; }
   .collapsable-panel-group .panel.panel-default .panel-body {
     padding: 0 10px 10px 10px; }
-
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
-div.datepicker {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  -moz-box-sizing: content-box;
-       box-sizing: content-box;
-  display: none;
-  width: 196px;
-  font-size: 12px;
-  cursor: default; }
-
-.datepickerContainer {
-  position: absolute; }
-
-/* Hide border divs by default */
-.datepickerBorderT, .datepickerBorderB, .datepickerBorderL, .datepickerBorderR, .datepickerBorderTL, .datepickerBorderTR, .datepickerBorderBL, .datepickerBorderBR {
-  display: none; }
-
-.datepickerHidden {
-  display: none; }
-
-div.datepicker table {
-  border-collapse: collapse; }
-
-div.datepicker a {
-  color: black;
-  text-decoration: none;
-  outline: none; }
-
-div.datepicker table td {
-  padding: 0;
-  margin: 0;
-  text-align: center; }
-
-div.datepicker th {
-  padding: 0;
-  color: #666666;
-  font-weight: normal;
-  text-align: center; }
-
-div.datepicker tbody a {
-  display: block; }
-
-.datepickerDays a {
-  width: 20px;
-  height: 16px;
-  padding-right: 2px;
-  line-height: 16px; }
-
-.datepickerYears a, .datepickerMonths a {
-  width: 39px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center; }
-
-.datepickerMonths td:first-child a, .datepickerMonths td:last-child a, .datepickerYears td:first-child a, .datepickerYears td:last-child a {
-  width: 38px; }
-
-td.datepickerNotInMonth a {
-  color: #666666; }
-
-tbody.datepickerDays td.datepickerSelected {
-  background: #136a9f; }
-
-tbody.datepickerDays td.datepickerNotInMonth.datepickerSelected {
-  background: #17384d; }
-
-tbody.datepickerYears td.datepickerSelected, tbody.datepickerMonths td.datepickerSelected {
-  background: #17384d; }
-
-div.datepicker td.datepickerSelected a {
-  color: white; }
-
-div.datepicker a:hover, div.datepicker a:hover {
-  color: #88c5eb; }
-
-.datepickerSpace div {
-  width: 20px; }
-
-.datepickerBlock {
-  vertical-align: top; }
-
-a.datepickerGoNext, a.datepickerGoPrev, a.datepickerMonth {
-  float: left;
-  height: 20px;
-  line-height: 20px;
-  text-align: center; }
-
-div.datepicker th a.datepickerGoNext, div.datepicker th a.datepickerGoPrev {
-  display: none;
-  width: 20px;
-  color: #666666; }
-
-div.datepicker th a.datepickerMonth {
-  display: block;
-  width: 114px; }
-
-/* Only display the previous/next arrows on the first/last calendars */
-div.datepicker .datepickerFirstView th a.datepickerGoPrev, div.datepicker .datepickerLastView th a.datepickerGoNext {
-  display: block; }
-
-/* Compensate for the space lost by not having a previous arrow */
-div.datepicker th a.datepickerMonth {
-  margin-left: 20px; }
-
-div.datepicker .datepickerFirstView th a.datepickerMonth {
-  margin-left: 0; }
-
-/* Day mode calendar body */
-table.datepickerViewDays tbody.datepickerMonths, table.datepickerViewDays tbody.datepickerYears {
-  display: none; }
-
-/* Month mode calendar body */
-table.datepickerViewMonths tbody.datepickerDays, table.datepickerViewMonths tbody.datepickerYears, table.datepickerViewMonths tr.datepickerDoW {
-  display: none; }
-
-/* Year mode calendar body */
-table.datepickerViewYears tbody.datepickerDays, table.datepickerViewYears tbody.datepickerMonths, table.datepickerViewYears tr.datepickerDoW {
-  display: none; }
-
-td.datepickerDisabled a, td.datepickerDisabled.datepickerNotInMonth a {
-  color: #555555; }
-
-/* Not used by default, calendar cells can be marked as special if desired (doesn't seem to be totally working) */
-div.datepicker tbody.datepickerDays td.datepickerSpecial a {
-  color: white;
-  background: #770000; }
-
-div.datepicker tbody.datepickerDays td.datepickerSpecial.datepickerSelected a {
-  background: #aa0000; }
-
-/* Datepicker border styling */
-.datepicker {
-  padding: 10px;
-  background-color: #f7f7f7;
-  border: 1px solid #cccccc; }
-
-/* Tighten up the spacing between multiple calendars */
-.datepickerSpace div {
-  width: 2px; }
-
-div.datepicker th a.datepickerMonth {
-  color: #008ed6;
-  font-weight: normal; }
-
-/* style the day of week header cells */
-div.datepicker th {
-  color: black;
-  font-weight: bold; }
-
-/* grey underline beneath day of week row */
-div.datepicker table thead tr.datepickerDoW th {
-  border-bottom: 1px solid #cccccc; }
-
-/* Black text, white background, and grey borders around day cells */
-div.datepicker a, div.datepicker a:hover {
-  color: black; }
-
-div.datepicker table.datepickerViewDays, div.datepicker table.datepickerViewMonths, div.datepicker table.datepickerViewYears {
-  background-color: white; }
-
-div.datepicker table tbody.datepickerDays td {
-  border: 1px solid #f7f7f7; }
-
-/* blue cell color for selected days */
-tbody.datepickerDays td.datepickerSelected {
-  background-color: #0077cc; }
-
-/* Grey out dates in the future */
-div.datepicker td.datepickerFuture a {
-  color: #dddddd; }
-
-/* Bold today's date */
-div.datepicker td.datepickerToday a {
-  font-weight: bold; }
-
-/* cells are wider in the clean style */
-.datepickerYears a, .datepickerMonths a {
-  width: 42px; }
-
-.datepickerMonths td:first-child a, .datepickerYears td:first-child a {
-  width: 39px; }
-
-div.datepicker th a.datepickerMonth {
-  width: 121px; }
 
 .inline .datepicker {
   -moz-box-sizing: border-box;
@@ -1294,89 +1041,6 @@ div.datepicker th a.datepickerMonth {
   .dropdown.open > .dropdown-menu {
     display: block; }
 
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
-.coveo-sprites-misc-closepopup,
-.coveo-filter-container input.filter-box + span:after,
-.coveo-sprites-misc-filter,
-.coveo-sprites-misc-spinner_arrow_down,
-.coveo-sprites-misc-spinner_arrow_up,
-.coveo-sprites-misc-alert,
-.coveo-sprites-misc-panel-collapsed,
-.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,
-.coveo-sprites-tables-sort_asc,
-.coveo-sprites-misc-panel-expended,
-.collapsable-panel-group .panel .panel-heading i.toggle-icon,
-.coveo-sprites-tables-sort_desc {
-  background-image: url("../images/CoveoStyleGuide.Sprites.png");
-  display: inline-block;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  background-size: 83px 16px; }
-
-i.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup, .coveo-filter-container input.filter-box + span:after {
-  background-position: 0px 0px;
-  width: 16px;
-  height: 16px;
-  text-indent: 16px; }
-
-i.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {
-  background-position: -16px 0px;
-  width: 12px;
-  height: 12px;
-  text-indent: 12px; }
-
-i.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {
-  background-position: -28px 0px;
-  width: 12px;
-  height: 12px;
-  text-indent: 12px; }
-
-i.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {
-  background-position: -40px 0px;
-  width: 12px;
-  height: 12px;
-  text-indent: 12px; }
-
-i.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {
-  background-position: -52px 0px;
-  width: 11px;
-  height: 11px;
-  text-indent: 11px; }
-
-i.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {
-  background-position: -63px 0px;
-  width: 10px;
-  height: 10px;
-  text-indent: 10px; }
-
-i.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {
-  background-position: -63px -10px;
-  width: 6px;
-  height: 6px;
-  text-indent: 6px; }
-
-i.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {
-  background-position: -73px 0px;
-  width: 10px;
-  height: 10px;
-  text-indent: 10px; }
-
-i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
-  background-position: -73px -10px;
-  width: 6px;
-  height: 6px;
-  text-indent: 6px; }
-
 .coveo-filter-container {
   position: relative;
   width: 260px; }
@@ -1403,32 +1067,24 @@ i.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {
         padding-left: 12px;
         content: '\00a0'; }
 
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
 ::-webkit-input-placeholder {
   color: #bcc3ca;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: inherit;
   text-transform: none; }
+
 ::-moz-placeholder {
   color: #bcc3ca;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: inherit;
   text-transform: none; }
+
 :-ms-input-placeholder {
   color: #bcc3ca;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: inherit;
   text-transform: none; }
+
 ::placeholder {
   color: #bcc3ca;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -1528,70 +1184,8 @@ input[type='text'].admin-invisible-textbox, textarea.admin-invisible-textbox {
     top: 10px;
     left: 6px;
     -webkit-transition: 0.2s ease all;
-            transition: 0.2s ease all;
+    transition: 0.2s ease all;
     pointer-events: none; }
-
-input[type=range].coveo-input-slider {
-  width: 100%;
-  max-width: 500px;
-  -webkit-appearance: none; }
-
-input[type=range].coveo-input-slider:focus {
-  outline: none; }
-
-input[type=range].coveo-input-slider::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 7px;
-  max-width: 500px;
-  background: #dddddd;
-  border: none; }
-
-input[type=range].coveo-input-slider::-webkit-slider-thumb {
-  width: 20px;
-  height: 20px;
-  margin-top: -6px;
-  -webkit-appearance: none;
-  background: #f5f5f5;
-  background: -webkit-linear-gradient(bottom left, #f5f5f5 50%, #ffffff 50%);
-  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);
-  border: 1px solid #e4e4e4;
-  border-radius: 50%; }
-
-input[type=range].coveo-input-slider::-moz-range-track {
-  width: 100%;
-  height: 7px;
-  max-width: 500px;
-  background: #dddddd;
-  border: none; }
-
-input[type=range].coveo-input-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: #f5f5f5;
-  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);
-  border: 1px solid #e4e4e4;
-  border-radius: 50%; }
-
-input[type=range].coveo-input-slider::-ms-track {
-  width: 100%;
-  height: 7px;
-  max-width: 500px;
-  color: transparent;
-  background: transparent;
-  border-color: transparent;
-  border-width: 8px 0; }
-
-input[type=range].coveo-input-slider::-ms-thumb {
-  width: 20px;
-  height: 20px;
-  background: #f5f5f5;
-  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);
-  border: 1px solid #e4e4e4;
-  border-radius: 50%; }
-
-input[type=range].coveo-input-slider::-ms-tooltip {
-  display: none;
-  visibility: hidden; }
 
 .admin-numeric-spinner.input-group *, .admin-numeric-spinner.input-group *:before, .admin-numeric-spinner.input-group *:after {
   -moz-box-sizing: border-box;
@@ -1616,22 +1210,11 @@ input[type=range].coveo-input-slider::-ms-tooltip {
     .admin-numeric-spinner.input-group .add-on div i {
       display: block; }
 
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
 label.coveo-slide-toggle-label {
   display: inline-block;
   line-height: 20px;
   -webkit-transition: opacity 0.35s ease;
-          transition: opacity 0.35s ease;
+  transition: opacity 0.35s ease;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -1679,7 +1262,7 @@ label.coveo-slide-toggle-label {
       content: ' ';
       background-color: #bbbbbb;
       -webkit-transition: all 0.35s ease;
-              transition: all 0.35s ease; }
+      transition: all 0.35s ease; }
     label.coveo-slide-toggle-label button:after {
       top: 2px;
       bottom: 2px;
@@ -1691,17 +1274,6 @@ label.coveo-slide-toggle-label {
     font-size: 16px;
     vertical-align: text-top; }
 
-/* Common */
-/* Headings */
-/* Buttons */
-/* Forms */
-/* Checkboxes */
-/* Controls */
-/* Alerts */
-/* Users */
-/* Organizations */
-/* Timeline */
-/* Datepicker */
 label.coveo-slide-toggle-double {
   float: left;
   margin-bottom: 0;
@@ -1725,7 +1297,7 @@ label.coveo-slide-toggle-double {
       border: 3px solid #bbbbbb;
       border-radius: 3px;
       -webkit-transition: background-position 0.35s ease;
-              transition: background-position 0.35s ease;
+      transition: background-position 0.35s ease;
       cursor: pointer; }
     input[type=checkbox] label.coveo-slide-toggle-double:checked + span {
       background-position: -15px; }
@@ -1787,92 +1359,330 @@ label.coveo-slide-toggle-double {
     .splash-footer span a {
       margin-right: 10px; }
 
-.coveo-styleguide {
-  /* Common */
-  /* Headings */
-  /* Buttons */
-  /* Forms */
-  /* Checkboxes */
-  /* Controls */
-  /* Alerts */
-  /* Users */
-  /* Organizations */
-  /* Timeline */
-  /* Datepicker */
-  /* Common */
-  /* Headings */
-  /* Buttons */
-  /* Forms */
-  /* Checkboxes */
-  /* Controls */
-  /* Alerts */
-  /* Users */
-  /* Organizations */
-  /* Timeline */
-  /* Datepicker */
-  /* Common */
-  /* Headings */
-  /* Buttons */
-  /* Forms */
-  /* Checkboxes */
-  /* Controls */
-  /* Alerts */
-  /* Users */
-  /* Organizations */
-  /* Timeline */
-  /* Datepicker */ }
-  .coveo-styleguide .header {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: 65px;
-    padding-bottom: 6px;
+.coveo-styleguide table {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-spacing: 0; }
+  .coveo-styleguide table th, .coveo-styleguide table td {
+    padding: 5px 15px;
+    text-align: left;
+    vertical-align: middle; }
+    .coveo-styleguide table th.selection, .coveo-styleguide table td.selection {
+      width: 25px !important;
+      padding: 0 10px;
+      margin: 0; }
+    .coveo-styleguide table th:first-child, .coveo-styleguide table td:first-child {
+      padding-left: 20px; }
+    .coveo-styleguide table th:last-child, .coveo-styleguide table td:last-child {
+      padding-right: 20px; }
+  .coveo-styleguide table.mod-align-header th:first-child, .coveo-styleguide table.mod-align-header td:first-child {
+    padding-left: 40px; }
+  .coveo-styleguide table.mod-align-header tbody tr.selected td:first-child {
+    padding-left: 35px; }
+  .coveo-styleguide table thead tr {
+    height: 25px;
+    color: #1d4f76;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: transparent; }
+    .coveo-styleguide table thead tr th {
+      line-height: normal;
+      white-space: nowrap;
+      border-top: 1px solid #bcc3ca;
+      border-bottom: 1px solid #bcc3ca; }
+      .coveo-styleguide table thead tr th.admin-sort {
+        position: relative;
+        cursor: pointer; }
+        .coveo-styleguide table thead tr th.admin-sort .admin-sort-icon {
+          position: absolute;
+          top: 3px; }
+          .coveo-styleguide table thead tr th.admin-sort .admin-sort-icon i {
+            position: relative;
+            top: 3px;
+            left: -11px;
+            display: block;
+            opacity: 0.3; }
+            .coveo-styleguide table thead tr th.admin-sort .admin-sort-icon i:hover {
+              opacity: 0.6; }
+            .coveo-styleguide table thead tr th.admin-sort .admin-sort-icon i + i {
+              margin-top: 2px; }
+        .coveo-styleguide table thead tr th.admin-sort.admin-sort-ascending, .coveo-styleguide table thead tr th.admin-sort.sorting_asc {
+          cursor: pointer; }
+          .coveo-styleguide table thead tr th.admin-sort.admin-sort-ascending .admin-sort-icon i.coveo-sprites-tables-sort_asc, .coveo-styleguide table thead tr th.admin-sort.sorting_asc .admin-sort-icon i.coveo-sprites-tables-sort_asc {
+            opacity: 1; }
+        .coveo-styleguide table thead tr th.admin-sort.admin-sort-descending, .coveo-styleguide table thead tr th.admin-sort.sorting_desc {
+          cursor: pointer; }
+          .coveo-styleguide table thead tr th.admin-sort.admin-sort-descending .admin-sort-icon i.coveo-sprites-tables-sort_desc, .coveo-styleguide table thead tr th.admin-sort.sorting_desc .admin-sort-icon i.coveo-sprites-tables-sort_desc {
+            opacity: 1; }
+      .coveo-styleguide table thead tr th.sorting_asc {
+        background-color: #e6ecf0;
+        background-image: none;
+        cursor: pointer; }
+      .coveo-styleguide table thead tr th.sorting_desc {
+        background-color: #e6ecf0;
+        background-image: none;
+        cursor: pointer; }
+      .coveo-styleguide table thead tr th.sorting {
+        cursor: pointer; }
+      .coveo-styleguide table thead tr th.sorting_disabled {
+        cursor: default; }
+      .coveo-styleguide table thead tr th.sorting:hover, .coveo-styleguide table thead tr th.sorting_asc:hover, .coveo-styleguide table thead tr th.sorting_desc:hover, .coveo-styleguide table thead tr th.admin-sort:hover {
+        background-color: #e6ecf0; }
+  .coveo-styleguide table tbody.table-loading {
+    opacity: 0.3; }
+  .coveo-styleguide table tr {
+    height: 36px;
+    font-size: 15px; }
+    .coveo-styleguide table tr td {
+      margin-left: 15px;
+      text-align: left;
+      border-bottom: 1px solid #bcc3ca; }
+      .coveo-styleguide table tr td.edit.enabled {
+        color: #1d4f76;
+        cursor: pointer; }
+      .coveo-styleguide table tr td .btn-icon, .coveo-styleguide table tr td .dropdown-toggle {
+        cursor: default;
+        opacity: 0.3; }
+        .coveo-styleguide table tr td .btn-icon.enabled:active:hover, .coveo-styleguide table tr td .dropdown-toggle.enabled:active:hover {
+          border-radius: 4px; }
+        .coveo-styleguide table tr td .btn-icon.disabled, .coveo-styleguide table tr td .dropdown-toggle.disabled {
+          cursor: default;
+          opacity: 0.3; }
+        .coveo-styleguide table tr td .btn-icon.enabled, .coveo-styleguide table tr td .dropdown-toggle.enabled {
+          cursor: pointer;
+          opacity: 1; }
+      .coveo-styleguide table tr td.actions {
+        position: relative;
+        overflow: visible;
+        text-align: right;
+        white-space: nowrap;
+        background-clip: padding-box;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none; }
+        .coveo-styleguide table tr td.actions > div {
+          display: inline-block;
+          font-size: inherit; }
+        .coveo-styleguide table tr td.actions.group-collapse {
+          cursor: pointer; }
+          .coveo-styleguide table tr td.actions.group-collapse i {
+            margin-right: 2px;
+            vertical-align: -1px; }
+          .coveo-styleguide table tr td.actions.group-collapse .group-count {
+            margin-right: 5px; }
+        .coveo-styleguide table tr td.actions #actions {
+          min-height: 16px; }
+        .coveo-styleguide table tr td.actions .btn-group .dropdown-toggle {
+          height: 20px;
+          padding: 2px; }
+          .coveo-styleguide table tr td.actions .btn-group .dropdown-toggle span.menu {
+            vertical-align: 1px; }
+            .coveo-styleguide table tr td.actions .btn-group .dropdown-toggle span.menu svg {
+              fill: #1d4f76; }
+        .coveo-styleguide table tr td.actions .btn-group.open .dropdown-toggle.enabled {
+          border-radius: 4px; }
+        .coveo-styleguide table tr td.actions .btn-group .dropdown-menu {
+          right: 0;
+          left: inherit;
+          min-width: 135px;
+          text-align: left; }
+          .coveo-styleguide table tr td.actions .btn-group .dropdown-menu .arrow-up {
+            right: 4px; }
+          .coveo-styleguide table tr td.actions .btn-group .dropdown-menu .dropdown-label {
+            padding-left: 15px;
+            font-size: 12px; }
+            .coveo-styleguide table tr td.actions .btn-group .dropdown-menu .dropdown-label:hover {
+              background: none; }
+          .coveo-styleguide table tr td.actions .btn-group .dropdown-menu .hide {
+            display: none; }
+        .coveo-styleguide table tr td.actions .btn-icon span.delete {
+          vertical-align: -3px; }
+          .coveo-styleguide table tr td.actions .btn-icon span.delete svg {
+            fill: #1d4f76; }
+    .coveo-styleguide table tr:first-child {
+      padding-left: 10px; }
+    .coveo-styleguide table tr:hover > td {
+      background-color: #e6ecf0; }
+      .coveo-styleguide table tr:hover > td .prompt .prompt-danger {
+        background-color: #e6ecf0;
+        box-shadow: -15px 0 25px 0 #e6ecf0; }
+    .coveo-styleguide table tr.empty td {
+      padding: 25px;
+      text-align: center; }
+    .coveo-styleguide table tr.admin-focus td {
+      background-color: #f5f9fd; }
+      .coveo-styleguide table tr.admin-focus td.admin-focus-cell {
+        background-color: #ebf3fb; }
+    .coveo-styleguide table tr.selected {
+      background-color: #f6f6f6; }
+      .coveo-styleguide table tr.selected td:first-child {
+        padding-left: 15px;
+        border-left: 5px solid #fd7e27; }
+  .coveo-styleguide table.row-selected td, .coveo-styleguide table.row-selected:hover td {
+    background-color: #e6ecf0; }
+  .coveo-styleguide table.confirm-delete .row-selected td, .coveo-styleguide table.confirm-delete.row-selected:hover td {
+    background-color: #faeaea;
+    border-color: #cd3233;
+    -webkit-transition: background-color 300ms;
+    transition: background-color 300ms; }
+
+.coveo-styleguide .fixed-header-table-container {
+  position: relative;
+  padding-top: 27px;
+  border-top: 1px solid #bcc3ca; }
+  .coveo-styleguide .fixed-header-table-container .fixed-header-table {
+    overflow-y: scroll;
+    border-top: 1px solid #bcc3ca;
+    border-bottom: 1px solid #bcc3ca; }
+    .coveo-styleguide .fixed-header-table-container .fixed-header-table table thead tr {
+      height: 0; }
+      .coveo-styleguide .fixed-header-table-container .fixed-header-table table thead tr th {
+        position: inherit;
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: 0;
+        white-space: nowrap;
+        border: none; }
+        .coveo-styleguide .fixed-header-table-container .fixed-header-table table thead tr th.admin-sort .admin-sort-icon {
+          left: 0; }
+        .coveo-styleguide .fixed-header-table-container .fixed-header-table table thead tr th.selection .fixed-header-container {
+          padding-top: 4px; }
+        .coveo-styleguide .fixed-header-table-container .fixed-header-table table thead tr th div.fixed-header-container {
+          position: absolute;
+          top: 0;
+          padding-top: 5px;
+          font-size: 12px; }
+
+.coveo-styleguide .coveo-table-actions-container {
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+     -moz-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions {
+    position: relative;
+    display: table;
+    height: 52px;
+    padding: 0 10px; }
+    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action {
+      display: table-cell;
+      vertical-align: middle;
+      cursor: pointer; }
+      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .state-disabled {
+        cursor: default;
+        opacity: 0.3; }
+      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action + .action {
+        padding-left: 10px; }
+    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action-bar {
+      display: table-row;
+      height: 100%; }
+      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action-bar .dropdown-menu {
+        top: 42px;
+        right: 0;
+        left: initial; }
+        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action-bar .dropdown-menu .dropdown-arrow {
+          right: 5px; }
+    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .coveo-filter-container {
+      margin: 10px 0; }
+    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .prompt {
+      display: table-cell;
+      vertical-align: middle; }
+      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .prompt .prompt-danger {
+        display: table-row; }
+        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .prompt .prompt-danger > span {
+          display: table-cell;
+          vertical-align: middle; }
+  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions + .coveo-table-actions {
+    border-left: 1px solid #bcc3ca; }
+  .coveo-styleguide .coveo-table-actions-container.mod-border-top {
+    border-top: 1px solid #bcc3ca; }
+
+.coveo-styleguide .header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 65px;
+  padding-bottom: 6px;
+  color: #f7f8f9;
+  background-color: #296896; }
+  .coveo-styleguide .header .header-section {
+    border-left: solid 1px rgba(0, 0, 0, 0.1); }
+    .coveo-styleguide .header .header-section.mod-padded {
+      padding: 0 30px; }
+    .coveo-styleguide .header .header-section:first-child {
+      border-left: none; }
+
+.coveo-styleguide .panel-header {
+  height: 110px;
+  padding: 0 40px;
+  background-color: #f7f8f9;
+  border-bottom: solid 1px #bcc3ca; }
+
+.coveo-styleguide .navigation {
+  z-index: 50;
+  width: 245px;
+  height: 100%;
+  background-color: #263e55;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+  .coveo-styleguide .navigation *, .coveo-styleguide .navigation *:before, .coveo-styleguide .navigation *:after {
+    -webkit-font-smoothing: subpixel-antialiased; }
+  .coveo-styleguide .navigation .navigation-menu {
+    position: relative;
+    z-index: 51;
+    height: -webkit-calc(100vh - 65px);
+    height: calc(100vh - 65px);
+    overflow: auto;
     color: #f7f8f9;
-    background-color: #296896; }
-    .coveo-styleguide .header .header-section {
-      border-left: solid 1px rgba(0, 0, 0, 0.1); }
-      .coveo-styleguide .header .header-section.mod-padded {
-        padding: 0 30px; }
-      .coveo-styleguide .header .header-section:first-child {
-        border-left: none; }
-  .coveo-styleguide .panel-header {
-    height: 110px;
-    padding: 0 40px;
-    background-color: #f7f8f9;
-    border-bottom: solid 1px #bcc3ca; }
-  .coveo-styleguide .navigation {
-    z-index: 50;
-    width: 245px;
-    height: 100%;
-    background-color: #263e55;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none; }
-    .coveo-styleguide .navigation *, .coveo-styleguide .navigation *:before, .coveo-styleguide .navigation *:after {
-      -webkit-font-smoothing: subpixel-antialiased; }
-    .coveo-styleguide .navigation .navigation-menu {
-      position: relative;
-      z-index: 51;
-      height: -webkit-calc(100vh - 65px);
-      height: calc(100vh - 65px);
-      overflow: auto;
-      color: #f7f8f9;
-      background-color: #263e55; }
-      .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px; }
-      .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar-track, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar-track {
-        background-color: #373737; }
-      .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar-thumb, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar-thumb {
-        background-color: #bcc3ca;
-        border-radius: 3px; }
-      .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar-button, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar-button {
-        width: 0;
-        height: 0; }
-      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header {
+    background-color: #263e55; }
+    .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px; }
+    .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar-track, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar-track {
+      background-color: #373737; }
+    .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar-thumb, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar-thumb {
+      background-color: #bcc3ca;
+      border-radius: 3px; }
+    .coveo-styleguide .navigation .navigation-menu::-webkit-scrollbar-button, .coveo-styleguide .navigation .navigation-menu ::-webkit-scrollbar-button {
+      width: 0;
+      height: 0; }
+    .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header {
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+         -moz-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      height: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: #1d4f76; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header .navigation-menu-section-header-icon {
+        margin: 0 15px; }
+    .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item {
+      font-weight: 300;
+      border-left: 3px solid transparent;
+      cursor: pointer; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link {
         -webkit-box-align: center;
         -webkit-align-items: center;
            -moz-box-align: center;
@@ -1883,561 +1693,639 @@ label.coveo-slide-toggle-double {
         display: -moz-box;
         display: -ms-flexbox;
         display: flex;
-        height: 50px;
-        font-size: 13px;
-        font-weight: 700;
-        text-transform: uppercase;
-        background-color: #1d4f76; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header .navigation-menu-section-header-icon {
-          margin: 0 15px; }
-      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item {
-        font-weight: 300;
-        border-left: 3px solid transparent;
-        cursor: pointer; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link {
-          -webkit-box-align: center;
-          -webkit-align-items: center;
-             -moz-box-align: center;
-              -ms-flex-align: center;
-                  align-items: center;
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: flex;
-          height: 30px;
-          padding-left: 43px;
-          color: #f7f8f9; }
-          .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link .navigation-menu-section-item-link-icon {
-            margin-right: 10px; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .navigation-menu-section-item-link {
-          color: #bcc3ca; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .icon-folder-locked {
-          display: inline-block;
-          visibility: visible; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-closed .icon-folder-closed {
-          display: inline-block;
-          visibility: visible; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-opened .icon-folder-opened {
-          display: inline-block;
-          visibility: visible; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-active {
-          background-color: #57748a;
-          border-left-color: #f7f8f9; }
-        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item:hover {
-          background-color: #57748a; }
-  .coveo-styleguide .application-container {
-    height: -webkit-calc(100vh - 65px);
-    height: calc(100vh - 65px);
-    margin-top: -6px;
-    margin-left: 245px;
-    overflow-y: scroll;
-    border-top-left-radius: 2px; }
-  .coveo-styleguide .member {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-       -moz-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex; }
-    .coveo-styleguide .member .member-avatar {
-      width: 41px;
-      height: 41px;
-      border: solid 2px #f7f8f9;
-      border-radius: 100%; }
-    .coveo-styleguide .member .member-info {
-      margin-left: 14px; }
-      .coveo-styleguide .member .member-info .member-info-name {
-        font-size: 13px;
-        font-weight: 700;
-        line-height: 16px;
-        text-transform: uppercase; }
-      .coveo-styleguide .member .member-info .member-info-provider {
-        vertical-align: text-bottom; }
-      .coveo-styleguide .member .member-info .member-info-email {
-        margin-top: 2px;
-        font-size: 12px;
-        font-weight: 300;
-        line-height: 15px; }
-  .coveo-styleguide .dropdown.mod-menu .dropdown-toggle {
-    height: auto;
-    text-transform: none;
-    background-color: transparent;
-    border: none;
-    cursor: pointer; }
-  .coveo-styleguide .dropdown.mod-menu .dropdown-menu li > a, .coveo-styleguide .dropdown.mod-menu .dropdown-menu li > span {
-    padding: 8px 38px; }
-  .coveo-styleguide .dropdown.mod-menu .dropdown-menu li.divider {
-    margin: 8px 0; }
-  .coveo-styleguide form .form-section {
-    margin-top: 10px; }
-    .coveo-styleguide form .form-section .section-heading {
-      margin-bottom: 20px; }
-      .coveo-styleguide form .form-section .section-heading .heading-title, .coveo-styleguide form .form-section .section-heading .heading-description {
-        color: #1d4f76; }
-      .coveo-styleguide form .form-section .section-heading .heading-title {
-        font-size: 16px;
-        font-weight: bold; }
-      .coveo-styleguide form .form-section .section-heading .heading-description {
-        margin-top: 10px;
-        font-size: 13px; }
-    .coveo-styleguide form .form-section .form-subsection + .form-subsection {
-      margin-top: 10px; }
-    .coveo-styleguide form .form-section .form-subsection .subsection-heading {
-      margin: 5px 0; }
-      .coveo-styleguide form .form-section .form-subsection .subsection-heading .heading-title {
-        color: #1d4f76;
-        font-size: 13px;
-        text-transform: uppercase; }
-        .coveo-styleguide form .form-section .form-subsection .subsection-heading .heading-title svg {
-          fill: #1d4f76; }
-  .coveo-styleguide form .form-section-separator {
-    position: relative;
-    width: 100%;
-    margin: 20px 0 10px;
-    text-align: center; }
-    .coveo-styleguide form .form-section-separator span {
-      display: inline-block;
-      color: grey;
-      text-transform: uppercase; }
-      .coveo-styleguide form .form-section-separator span:before, .coveo-styleguide form .form-section-separator span:after {
-        position: absolute;
-        top: 4px;
-        width: 235px;
-        content: ' ';
-        border-top: solid 1px; }
-      .coveo-styleguide form .form-section-separator span:before {
-        left: 0;
-        border-image: -webkit-linear-gradient(right, #bcc3ca, white) 1;
-        border-image: linear-gradient(to left, #bcc3ca, white) 1; }
-      .coveo-styleguide form .form-section-separator span:after {
-        left: 265px;
-        border-image: -webkit-linear-gradient(left, #bcc3ca, white) 1;
-        border-image: linear-gradient(to right, #bcc3ca, white) 1; }
-  .coveo-styleguide form .form-group .input-validation-error-details {
-    display: none; }
-  .coveo-styleguide form .form-group.input-validation-error .value {
-    background-color: #faeaea; }
-  .coveo-styleguide form .form-group.input-validation-error .input-validation-error-details, .coveo-styleguide form .form-group.multiline-input-validation-error .input-validation-error-details {
-    display: block;
-    padding: 0 10px;
-    color: white;
-    font-size: 11px;
-    line-height: 15px;
-    background-color: #cd3233; }
-    .coveo-styleguide form .form-group.input-validation-error .input-validation-error-details i, .coveo-styleguide form .form-group.multiline-input-validation-error .input-validation-error-details i {
-      vertical-align: -2px; }
-  .coveo-styleguide form .form-group.input-validation-error label, .coveo-styleguide form .form-group.multiline-input-validation-error label {
-    color: #cc3333; }
-  .coveo-styleguide form .form-group.input-validation-error label, .coveo-styleguide form .form-group.input-validation-error .value, .coveo-styleguide form .form-group.multiline-input-validation-error label, .coveo-styleguide form .form-group.multiline-input-validation-error .value {
-    border-bottom: solid 1px #cd3233; }
-  .coveo-styleguide form .form-group.multiline-input-validation-error .erroneous-input {
-    background-color: #faeaea; }
+        height: 30px;
+        padding-left: 43px;
+        color: #f7f8f9; }
+        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link .navigation-menu-section-item-link-icon {
+          margin-right: 10px; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .navigation-menu-section-item-link {
+        color: #bcc3ca; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .icon-folder-locked {
+        display: inline-block;
+        visibility: visible; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-closed .icon-folder-closed {
+        display: inline-block;
+        visibility: visible; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-opened .icon-folder-opened {
+        display: inline-block;
+        visibility: visible; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-active {
+        background-color: #57748a;
+        border-left-color: #f7f8f9; }
+      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item:hover {
+        background-color: #57748a; }
 
-@font-face {
-  .coveo-styleguide {
-    font-family: 'source_code_pro_regular';
-    font-style: normal;
-    font-weight: normal;
-    src: url("../fonts/SourceCodePro-Regular.eot");
-    src: url("../fonts/SourceCodePro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceCodePro-Regular.woff") format("woff"), url("../fonts/SourceCodePro-Regular.ttf") format("truetype"); } }
-  .coveo-styleguide form .coveo-table-form {
-    display: table;
-    width: 100%;
-    text-align: left;
-    table-layout: fixed;
-    -webkit-transition: opacity 0.35s ease;
-            transition: opacity 0.35s ease; }
-    .coveo-styleguide form .coveo-table-form .form-group {
-      display: table-row;
-      height: 36px;
-      color: #666666; }
-      .coveo-styleguide form .coveo-table-form .form-group.hidden {
-        display: none; }
-      .coveo-styleguide form .coveo-table-form .form-group.disabled .value {
-        background-color: transparent; }
-      .coveo-styleguide form .coveo-table-form .form-group > label:first-child, .coveo-styleguide form .coveo-table-form .form-group .value {
-        display: table-cell;
-        vertical-align: middle;
-        border-top: 2px solid white;
-        border-bottom: 1px solid #bcc3ca; }
-      .coveo-styleguide form .coveo-table-form .form-group > label:first-child {
-        width: 30%;
-        padding: 0 10px;
-        color: #1d4f76;
+.coveo-styleguide .application-container {
+  height: -webkit-calc(100vh - 65px);
+  height: calc(100vh - 65px);
+  margin-top: -6px;
+  margin-left: 245px;
+  overflow-y: scroll;
+  border-top-left-radius: 2px; }
+
+.coveo-styleguide .member {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .coveo-styleguide .member .member-avatar {
+    width: 41px;
+    height: 41px;
+    border: solid 2px #f7f8f9;
+    border-radius: 100%; }
+  .coveo-styleguide .member .member-info {
+    margin-left: 14px; }
+    .coveo-styleguide .member .member-info .member-info-name {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 16px;
+      text-transform: uppercase; }
+    .coveo-styleguide .member .member-info .member-info-provider {
+      vertical-align: text-bottom; }
+    .coveo-styleguide .member .member-info .member-info-email {
+      margin-top: 2px;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 15px; }
+
+.coveo-styleguide .dropdown.mod-menu .dropdown-toggle {
+  height: auto;
+  text-transform: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer; }
+
+.coveo-styleguide .dropdown.mod-menu .dropdown-menu li > a, .coveo-styleguide .dropdown.mod-menu .dropdown-menu li > span {
+  padding: 8px 38px; }
+
+.coveo-styleguide .dropdown.mod-menu .dropdown-menu li.divider {
+  margin: 8px 0; }
+
+.coveo-styleguide form .form-section {
+  margin-top: 10px; }
+  .coveo-styleguide form .form-section .section-heading {
+    margin-bottom: 20px; }
+    .coveo-styleguide form .form-section .section-heading .heading-title, .coveo-styleguide form .form-section .section-heading .heading-description {
+      color: #1d4f76; }
+    .coveo-styleguide form .form-section .section-heading .heading-title {
+      font-size: 16px;
+      font-weight: bold; }
+    .coveo-styleguide form .form-section .section-heading .heading-description {
+      margin-top: 10px;
+      font-size: 13px; }
+  .coveo-styleguide form .form-section .form-subsection + .form-subsection {
+    margin-top: 10px; }
+  .coveo-styleguide form .form-section .form-subsection .subsection-heading {
+    margin: 5px 0; }
+    .coveo-styleguide form .form-section .form-subsection .subsection-heading .heading-title {
+      color: #1d4f76;
+      font-size: 13px;
+      text-transform: uppercase; }
+      .coveo-styleguide form .form-section .form-subsection .subsection-heading .heading-title svg {
+        fill: #1d4f76; }
+
+.coveo-styleguide form .form-section-separator {
+  position: relative;
+  width: 100%;
+  margin: 20px 0 10px;
+  text-align: center; }
+  .coveo-styleguide form .form-section-separator span {
+    display: inline-block;
+    color: grey;
+    text-transform: uppercase; }
+    .coveo-styleguide form .form-section-separator span:before, .coveo-styleguide form .form-section-separator span:after {
+      position: absolute;
+      top: 4px;
+      width: 235px;
+      content: ' ';
+      border-top: solid 1px; }
+    .coveo-styleguide form .form-section-separator span:before {
+      left: 0;
+      border-image: -webkit-linear-gradient(right, #bcc3ca, white) 1;
+      border-image: linear-gradient(to left, #bcc3ca, white) 1; }
+    .coveo-styleguide form .form-section-separator span:after {
+      left: 265px;
+      border-image: -webkit-linear-gradient(left, #bcc3ca, white) 1;
+      border-image: linear-gradient(to right, #bcc3ca, white) 1; }
+
+.coveo-styleguide form .form-group .input-validation-error-details {
+  display: none; }
+
+.coveo-styleguide form .form-group.input-validation-error .value {
+  background-color: #faeaea; }
+
+.coveo-styleguide form .form-group.input-validation-error .input-validation-error-details, .coveo-styleguide form .form-group.multiline-input-validation-error .input-validation-error-details {
+  display: block;
+  padding: 0 10px;
+  color: white;
+  font-size: 11px;
+  line-height: 15px;
+  background-color: #cd3233; }
+  .coveo-styleguide form .form-group.input-validation-error .input-validation-error-details i, .coveo-styleguide form .form-group.multiline-input-validation-error .input-validation-error-details i {
+    vertical-align: -2px; }
+
+.coveo-styleguide form .form-group.input-validation-error label, .coveo-styleguide form .form-group.multiline-input-validation-error label {
+  color: #cc3333; }
+
+.coveo-styleguide form .form-group.input-validation-error label, .coveo-styleguide form .form-group.input-validation-error .value, .coveo-styleguide form .form-group.multiline-input-validation-error label, .coveo-styleguide form .form-group.multiline-input-validation-error .value {
+  border-bottom: solid 1px #cd3233; }
+
+.coveo-styleguide form .form-group.multiline-input-validation-error .erroneous-input {
+  background-color: #faeaea; }
+
+.coveo-styleguide form .coveo-table-form {
+  display: table;
+  width: 100%;
+  text-align: left;
+  table-layout: fixed;
+  -webkit-transition: opacity 0.35s ease;
+  transition: opacity 0.35s ease; }
+  .coveo-styleguide form .coveo-table-form .form-group {
+    display: table-row;
+    height: 36px;
+    color: #666666; }
+    .coveo-styleguide form .coveo-table-form .form-group.hidden {
+      display: none; }
+    .coveo-styleguide form .coveo-table-form .form-group.disabled .value {
+      background-color: transparent; }
+    .coveo-styleguide form .coveo-table-form .form-group > label:first-child, .coveo-styleguide form .coveo-table-form .form-group .value {
+      display: table-cell;
+      vertical-align: middle;
+      border-top: 2px solid white;
+      border-bottom: 1px solid #bcc3ca; }
+    .coveo-styleguide form .coveo-table-form .form-group > label:first-child {
+      width: 30%;
+      padding: 0 10px;
+      color: #1d4f76;
+      font-family: "Open Sans", Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      background-color: #ffffff; }
+    .coveo-styleguide form .coveo-table-form .form-group .context-help {
+      float: right; }
+    .coveo-styleguide form .coveo-table-form .form-group .coveo-checkbox + span, .coveo-styleguide form .coveo-table-form .form-group .coveo-checkbox + button {
+      margin-left: 10px; }
+    .coveo-styleguide form .coveo-table-form .form-group .value {
+      height: 39px;
+      font-size: 16px;
+      background-color: #f6f6f7; }
+      .coveo-styleguide form .coveo-table-form .form-group .value input:disabled {
+        color: black;
         font-family: "Open Sans", Arial, Helvetica, sans-serif;
         font-size: 16px;
-        background-color: #ffffff; }
-      .coveo-styleguide form .coveo-table-form .form-group .context-help {
-        float: right; }
-      .coveo-styleguide form .coveo-table-form .form-group .coveo-checkbox + span, .coveo-styleguide form .coveo-table-form .form-group .coveo-checkbox + button {
-        margin-left: 10px; }
-      .coveo-styleguide form .coveo-table-form .form-group .value {
+        font-weight: 600;
+        background-color: white; }
+      .coveo-styleguide form .coveo-table-form .form-group .value.disabled {
+        background-color: white; }
+      .coveo-styleguide form .coveo-table-form .form-group .value input, .coveo-styleguide form .coveo-table-form .form-group .value textarea, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select {
+        -moz-box-sizing: border-box;
+             box-sizing: border-box;
+        padding: 6px 10px; }
+      .coveo-styleguide form .coveo-table-form .form-group .value input {
+        width: 100%;
         height: 39px;
-        font-size: 16px;
-        background-color: #f6f6f7; }
-        .coveo-styleguide form .coveo-table-form .form-group .value input:disabled {
-          color: black;
-          font-family: "Open Sans", Arial, Helvetica, sans-serif;
-          font-size: 16px;
-          font-weight: 600;
-          background-color: white; }
-        .coveo-styleguide form .coveo-table-form .form-group .value.disabled {
-          background-color: white; }
-        .coveo-styleguide form .coveo-table-form .form-group .value input, .coveo-styleguide form .coveo-table-form .form-group .value textarea, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select {
+        background-color: transparent;
+        box-shadow: none;
+        border-width: 0;
+        resize: none; }
+      .coveo-styleguide form .coveo-table-form .form-group .value input[type='file'] {
+        padding: 9px 10px; }
+      .coveo-styleguide form .coveo-table-form .form-group .value.coveo-slide-toggle-label {
+        padding: 0 10px; }
+      .coveo-styleguide form .coveo-table-form .form-group .value.admin-editable:hover {
+        background-color: #e6ecf0; }
+      .coveo-styleguide form .coveo-table-form .form-group .value.admin-non-editable {
+        padding-left: 9px;
+        background-color: #ffffff; }
+        .coveo-styleguide form .coveo-table-form .form-group .value.admin-non-editable i {
+          margin-right: 5px;
+          vertical-align: text-bottom; }
+      .coveo-styleguide form .coveo-table-form .form-group .value .admin-multiline {
+        margin-bottom: 0;
+        border: none; }
+      .coveo-styleguide form .coveo-table-form .form-group .value .admin-select {
+        width: 100%; }
+        .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-toggle {
           -moz-box-sizing: border-box;
                box-sizing: border-box;
-          padding: 6px 10px; }
-        .coveo-styleguide form .coveo-table-form .form-group .value input {
           width: 100%;
-          height: 39px;
-          background-color: transparent;
-          box-shadow: none;
-          border-width: 0;
-          resize: none; }
-        .coveo-styleguide form .coveo-table-form .form-group .value input[type='file'] {
-          padding: 9px 10px; }
-        .coveo-styleguide form .coveo-table-form .form-group .value.coveo-slide-toggle-label {
-          padding: 0 10px; }
-        .coveo-styleguide form .coveo-table-form .form-group .value.admin-editable:hover {
-          background-color: #e6ecf0; }
-        .coveo-styleguide form .coveo-table-form .form-group .value.admin-non-editable {
-          padding-left: 9px;
-          background-color: #ffffff; }
-          .coveo-styleguide form .coveo-table-form .form-group .value.admin-non-editable i {
-            margin-right: 5px;
-            vertical-align: text-bottom; }
-        .coveo-styleguide form .coveo-table-form .form-group .value .admin-multiline {
-          margin-bottom: 0;
-          border: none; }
-        .coveo-styleguide form .coveo-table-form .form-group .value .admin-select {
-          width: 100%; }
-          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-toggle {
-            -moz-box-sizing: border-box;
-                 box-sizing: border-box;
-            width: 100%;
-            padding-right: 0;
-            padding-left: 0;
-            font-size: 16px;
-            text-align: left;
-            background-color: transparent;
-            box-shadow: none;
-            border: none;
-            cursor: pointer;
-            opacity: 1; }
-            .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-toggle .coveo-sprites-misc-dropdown_arrow {
-              position: absolute;
-              right: 0; }
-          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu {
-            -moz-box-sizing: border-box;
-                 box-sizing: border-box;
-            width: 100%;
-            max-height: 250px;
-            overflow-y: auto;
-            text-align: left; }
-            .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar {
-              width: 6px;
-              height: 6px; }
-            .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-track, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-track {
-              background-color: #e6ecf0; }
-            .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-thumb, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-thumb {
-              background-color: #373737;
-              border-radius: 3px; }
-            .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-button, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-button {
-              width: 0;
-              height: 0; }
-            .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu li a i {
-              margin-top: 0;
-              margin-bottom: 0;
-              vertical-align: text-top; }
-        .coveo-styleguide form .coveo-table-form .form-group .value textarea {
-          width: 100%;
-          margin-bottom: 0;
+          padding-right: 0;
+          padding-left: 0;
+          font-size: 16px;
+          text-align: left;
           background-color: transparent;
           box-shadow: none;
           border: none;
-          resize: vertical; }
-          .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar {
+          cursor: pointer;
+          opacity: 1; }
+          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-toggle .coveo-sprites-misc-dropdown_arrow {
+            position: absolute;
+            right: 0; }
+        .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu {
+          -moz-box-sizing: border-box;
+               box-sizing: border-box;
+          width: 100%;
+          max-height: 250px;
+          overflow-y: auto;
+          text-align: left; }
+          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar {
             width: 6px;
             height: 6px; }
-          .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar-track, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-track {
+          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-track, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-track {
             background-color: #e6ecf0; }
-          .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar-thumb, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-thumb {
+          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-thumb, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-thumb {
             background-color: #373737;
             border-radius: 3px; }
-          .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar-button, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-button {
+          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-button, .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-button {
             width: 0;
             height: 0; }
-      .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .input-validation-error-details, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .input-validation-error-details {
-        display: block;
-        padding: 0 10px;
-        color: white;
-        font-size: 11px;
-        line-height: 15px;
-        background-color: #cd3233; }
-        .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .input-validation-error-details i, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .input-validation-error-details i {
-          vertical-align: -2px; }
-      .coveo-styleguide form .coveo-table-form .form-group.input-validation-error label, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error label {
-        color: #cc3333; }
-      .coveo-styleguide form .coveo-table-form .form-group.input-validation-error label, .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .value, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error label, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .value {
-        border-bottom: solid 1px #cd3233; }
-      .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .value {
-        background-color: #faeaea; }
-      .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .erroneous-input {
-        background-color: #faeaea; }
-    .coveo-styleguide form .coveo-table-form.disabled {
-      opacity: 0.4; }
-      .coveo-styleguide form .coveo-table-form.disabled .form-group label {
-        cursor: default; }
-    .coveo-styleguide form .coveo-table-form + .coveo-table-form, .coveo-styleguide form .coveo-table-form + .coveo-block-form {
-      margin-top: 10px; }
-  .coveo-styleguide form .coveo-block-form .form-group + .form-group {
+          .coveo-styleguide form .coveo-table-form .form-group .value .admin-select .dropdown-menu li a i {
+            margin-top: 0;
+            margin-bottom: 0;
+            vertical-align: text-top; }
+      .coveo-styleguide form .coveo-table-form .form-group .value textarea {
+        width: 100%;
+        margin-bottom: 0;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        resize: vertical; }
+        .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar {
+          width: 6px;
+          height: 6px; }
+        .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar-track, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-track {
+          background-color: #e6ecf0; }
+        .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar-thumb, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-thumb {
+          background-color: #373737;
+          border-radius: 3px; }
+        .coveo-styleguide form .coveo-table-form .form-group .value textarea::-webkit-scrollbar-button, .coveo-styleguide form .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-button {
+          width: 0;
+          height: 0; }
+    .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .input-validation-error-details, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .input-validation-error-details {
+      display: block;
+      padding: 0 10px;
+      color: white;
+      font-size: 11px;
+      line-height: 15px;
+      background-color: #cd3233; }
+      .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .input-validation-error-details i, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .input-validation-error-details i {
+        vertical-align: -2px; }
+    .coveo-styleguide form .coveo-table-form .form-group.input-validation-error label, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error label {
+      color: #cc3333; }
+    .coveo-styleguide form .coveo-table-form .form-group.input-validation-error label, .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .value, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error label, .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .value {
+      border-bottom: solid 1px #cd3233; }
+    .coveo-styleguide form .coveo-table-form .form-group.input-validation-error .value {
+      background-color: #faeaea; }
+    .coveo-styleguide form .coveo-table-form .form-group.multiline-input-validation-error .erroneous-input {
+      background-color: #faeaea; }
+  .coveo-styleguide form .coveo-table-form.disabled {
+    opacity: 0.4; }
+    .coveo-styleguide form .coveo-table-form.disabled .form-group label {
+      cursor: default; }
+  .coveo-styleguide form .coveo-table-form + .coveo-table-form, .coveo-styleguide form .coveo-table-form + .coveo-block-form {
     margin-top: 10px; }
-  .coveo-styleguide form .coveo-block-form .form-group.sub {
-    margin-left: 10px; }
-  .coveo-styleguide form .coveo-flex-form {
-    -webkit-flex-flow: row wrap;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin: -10px 0 0 -10px; }
-    .coveo-styleguide form .coveo-flex-form .coveo-slide-toggle-label.boxed {
-      -webkit-box-flex: 1;
-      -webkit-flex: auto;
-         -moz-box-flex: 1;
-          -ms-flex: auto;
-              flex: auto;
-      width: 0;
-      margin: 10px 0 0 10px; }
-  .coveo-styleguide .bold {
-    font-weight: bold; }
-  .coveo-styleguide .semibold {
-    font-weight: 600; }
-  .coveo-styleguide .regular {
-    font-weight: normal; }
-  .coveo-styleguide .italic {
-    font-style: italic; }
-  .coveo-styleguide .caps {
-    text-transform: uppercase; }
-  .coveo-styleguide .left-align {
-    text-align: left; }
-  .coveo-styleguide .center {
-    text-align: center; }
-  .coveo-styleguide .right-align {
-    text-align: right; }
-  .coveo-styleguide .justify {
-    text-align: justify; }
-  .coveo-styleguide .nowrap {
-    white-space: nowrap; }
-  .coveo-styleguide .break-word {
-    word-wrap: break-word; }
-  .coveo-styleguide .truncate {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; }
-  .coveo-styleguide .list-reset {
-    padding-left: 0;
-    list-style: none; }
-  .coveo-styleguide .align-baseline {
-    vertical-align: baseline; }
-  .coveo-styleguide .align-top {
-    vertical-align: top; }
-  .coveo-styleguide .align-middle {
-    vertical-align: middle; }
-  .coveo-styleguide .align-bottom {
-    vertical-align: bottom; }
-  .coveo-styleguide .flex {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex; }
-  .coveo-styleguide .flex-column {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-       -moz-box-orient: vertical;
-       -moz-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column; }
-  .coveo-styleguide .flex-center {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-       -moz-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
-  .coveo-styleguide .flex-auto {
+
+.coveo-styleguide form .coveo-block-form .form-group + .form-group {
+  margin-top: 10px; }
+
+.coveo-styleguide form .coveo-block-form .form-group.sub {
+  margin-left: 10px; }
+
+.coveo-styleguide form .coveo-flex-form {
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: -10px 0 0 -10px; }
+  .coveo-styleguide form .coveo-flex-form .coveo-slide-toggle-label.boxed {
     -webkit-box-flex: 1;
-    -webkit-flex: 1 1 auto;
+    -webkit-flex: auto;
        -moz-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    min-width: 0;
-    min-height: 0; }
-  .coveo-styleguide .center-align {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-       -moz-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-       -moz-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
-  .coveo-styleguide .inline {
-    display: inline; }
-  .coveo-styleguide .block {
-    display: block; }
-  .coveo-styleguide .inline-block {
-    display: inline-block; }
-  .coveo-styleguide .table {
-    display: table; }
-  .coveo-styleguide .table-cell {
-    display: table-cell; }
-  .coveo-styleguide .overflow-hidden {
-    overflow: hidden; }
-  .coveo-styleguide .overflow-scroll {
-    overflow: scroll; }
-  .coveo-styleguide .overflow-auto {
-    overflow: auto; }
-  .coveo-styleguide .clearfix:before, .coveo-styleguide .clearfix:after {
-    display: table;
-    content: ' '; }
-  .coveo-styleguide .clearfix:after {
-    clear: both; }
-  .coveo-styleguide .left {
-    float: left; }
-  .coveo-styleguide .right {
-    float: right; }
-  .coveo-styleguide .fullscreen {
-    min-width: 100vw;
-    min-height: 100vh; }
-  .coveo-styleguide .hidden {
-    display: none;
-    visibility: hidden; }
-  .coveo-styleguide .relative {
-    position: relative; }
-  .coveo-styleguide .absolute {
-    position: absolute; }
-  .coveo-styleguide .fixed {
-    position: fixed; }
-  .coveo-styleguide .p0 {
-    padding: 0; }
-  .coveo-styleguide .p1 {
-    padding: 0.5rem; }
-  .coveo-styleguide .px1 {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem; }
-  .coveo-styleguide .py1 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem; }
-  .coveo-styleguide .p2 {
-    padding: 1rem; }
-  .coveo-styleguide .px2 {
-    padding-right: 1rem;
-    padding-left: 1rem; }
-  .coveo-styleguide .py2 {
-    padding-top: 1rem;
-    padding-bottom: 1rem; }
-  .coveo-styleguide .bg-dark-blue {
-    background-color: #263e55; }
-  .coveo-styleguide .fill-dark-blue {
-    fill: #263e55; }
-  .coveo-styleguide .text-dark-blue {
-    color: #263e55; }
-  .coveo-styleguide .bg-medium-blue {
-    background-color: #1d4f76; }
-  .coveo-styleguide .fill-medium-blue {
-    fill: #1d4f76; }
-  .coveo-styleguide .text-medium-blue {
-    color: #1d4f76; }
-  .coveo-styleguide .bg-light-blue {
-    background-color: #296896; }
-  .coveo-styleguide .fill-light-blue {
-    fill: #296896; }
-  .coveo-styleguide .text-light-blue {
-    color: #296896; }
-  .coveo-styleguide .bg-dark-grey {
-    background-color: #373737; }
-  .coveo-styleguide .fill-dark-grey {
-    fill: #373737; }
-  .coveo-styleguide .text-dark-grey {
-    color: #373737; }
-  .coveo-styleguide .bg-medium-grey {
-    background-color: #bcc3ca; }
-  .coveo-styleguide .fill-medium-grey {
-    fill: #bcc3ca; }
-  .coveo-styleguide .text-medium-grey {
-    color: #bcc3ca; }
-  .coveo-styleguide .bg-light-grey {
-    background-color: #e6ecf0; }
-  .coveo-styleguide .fill-light-grey {
-    fill: #e6ecf0; }
-  .coveo-styleguide .text-light-grey {
-    color: #e6ecf0; }
-  .coveo-styleguide .bg-white {
-    background-color: #f7f8f9; }
-  .coveo-styleguide .fill-white {
-    fill: #f7f8f9; }
-  .coveo-styleguide .text-white {
-    color: #f7f8f9; }
-  .coveo-styleguide .bg-orange {
-    background-color: #f58020; }
-  .coveo-styleguide .fill-orange {
-    fill: #f58020; }
-  .coveo-styleguide .text-orange {
-    color: #f58020; }
-  .coveo-styleguide .bg-red {
-    background-color: #f44336; }
-  .coveo-styleguide .fill-red {
-    fill: #f44336; }
-  .coveo-styleguide .text-red {
-    color: #f44336; }
-  .coveo-styleguide .bg-yellow {
-    background-color: #ffc200; }
-  .coveo-styleguide .fill-yellow {
-    fill: #ffc200; }
-  .coveo-styleguide .text-yellow {
-    color: #ffc200; }
-  .coveo-styleguide .bg-green {
-    background-color: #4caf50; }
-  .coveo-styleguide .fill-green {
-    fill: #4caf50; }
-  .coveo-styleguide .text-green {
-    color: #4caf50; }
-  .coveo-styleguide .bg-blue {
-    background-color: #1194f6; }
-  .coveo-styleguide .fill-blue {
-    fill: #1194f6; }
-  .coveo-styleguide .text-blue {
-    color: #1194f6; }
-  .coveo-styleguide .bg-salesforce-blue {
-    background-color: #00a0de; }
-  .coveo-styleguide .fill-salesforce-blue {
-    fill: #00a0de; }
-  .coveo-styleguide .text-salesforce-blue {
-    color: #00a0de; }
-  .coveo-styleguide .bg-google-red {
-    background-color: #dd4b39; }
-  .coveo-styleguide .fill-google-red {
-    fill: #dd4b39; }
-  .coveo-styleguide .text-google-red {
-    color: #dd4b39; }
-  .coveo-styleguide .bg-office365-red {
-    background-color: #eb3c00; }
-  .coveo-styleguide .fill-office365-red {
-    fill: #eb3c00; }
-  .coveo-styleguide .text-office365-red {
-    color: #eb3c00; }
+        -ms-flex: auto;
+            flex: auto;
+    width: 0;
+    margin: 10px 0 0 10px; }
+
+.coveo-styleguide .bold {
+  font-weight: bold; }
+
+.coveo-styleguide .semibold {
+  font-weight: 600; }
+
+.coveo-styleguide .regular {
+  font-weight: normal; }
+
+.coveo-styleguide .italic {
+  font-style: italic; }
+
+.coveo-styleguide .caps {
+  text-transform: uppercase; }
+
+.coveo-styleguide .left-align {
+  text-align: left; }
+
+.coveo-styleguide .center {
+  text-align: center; }
+
+.coveo-styleguide .right-align {
+  text-align: right; }
+
+.coveo-styleguide .justify {
+  text-align: justify; }
+
+.coveo-styleguide .nowrap {
+  white-space: nowrap; }
+
+.coveo-styleguide .break-word {
+  word-wrap: break-word; }
+
+.coveo-styleguide .truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.coveo-styleguide .list-reset {
+  padding-left: 0;
+  list-style: none; }
+
+.coveo-styleguide .align-baseline {
+  vertical-align: baseline; }
+
+.coveo-styleguide .align-top {
+  vertical-align: top; }
+
+.coveo-styleguide .align-middle {
+  vertical-align: middle; }
+
+.coveo-styleguide .align-bottom {
+  vertical-align: bottom; }
+
+.coveo-styleguide .flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.coveo-styleguide .flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.coveo-styleguide .flex-center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.coveo-styleguide .flex-auto {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0; }
+
+.coveo-styleguide .center-align {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.coveo-styleguide .inline {
+  display: inline; }
+
+.coveo-styleguide .block {
+  display: block; }
+
+.coveo-styleguide .inline-block {
+  display: inline-block; }
+
+.coveo-styleguide .table {
+  display: table; }
+
+.coveo-styleguide .table-cell {
+  display: table-cell; }
+
+.coveo-styleguide .overflow-hidden {
+  overflow: hidden; }
+
+.coveo-styleguide .overflow-scroll {
+  overflow: scroll; }
+
+.coveo-styleguide .overflow-auto {
+  overflow: auto; }
+
+.coveo-styleguide .clearfix:before, .coveo-styleguide .clearfix:after {
+  display: table;
+  content: ' '; }
+
+.coveo-styleguide .clearfix:after {
+  clear: both; }
+
+.coveo-styleguide .left {
+  float: left; }
+
+.coveo-styleguide .right {
+  float: right; }
+
+.coveo-styleguide .fullscreen {
+  min-width: 100vw;
+  min-height: 100vh; }
+
+.coveo-styleguide .hidden {
+  display: none;
+  visibility: hidden; }
+
+.coveo-styleguide .relative {
+  position: relative; }
+
+.coveo-styleguide .absolute {
+  position: absolute; }
+
+.coveo-styleguide .fixed {
+  position: fixed; }
+
+.coveo-styleguide .p0 {
+  padding: 0; }
+
+.coveo-styleguide .p1 {
+  padding: 0.5rem; }
+
+.coveo-styleguide .px1 {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem; }
+
+.coveo-styleguide .py1 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; }
+
+.coveo-styleguide .p2 {
+  padding: 1rem; }
+
+.coveo-styleguide .px2 {
+  padding-right: 1rem;
+  padding-left: 1rem; }
+
+.coveo-styleguide .py2 {
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+
+.coveo-styleguide .bg-dark-blue {
+  background-color: #263e55; }
+
+.coveo-styleguide .fill-dark-blue {
+  fill: #263e55; }
+
+.coveo-styleguide .text-dark-blue {
+  color: #263e55; }
+
+.coveo-styleguide .bg-medium-blue {
+  background-color: #1d4f76; }
+
+.coveo-styleguide .fill-medium-blue {
+  fill: #1d4f76; }
+
+.coveo-styleguide .text-medium-blue {
+  color: #1d4f76; }
+
+.coveo-styleguide .bg-light-blue {
+  background-color: #296896; }
+
+.coveo-styleguide .fill-light-blue {
+  fill: #296896; }
+
+.coveo-styleguide .text-light-blue {
+  color: #296896; }
+
+.coveo-styleguide .bg-dark-grey {
+  background-color: #373737; }
+
+.coveo-styleguide .fill-dark-grey {
+  fill: #373737; }
+
+.coveo-styleguide .text-dark-grey {
+  color: #373737; }
+
+.coveo-styleguide .bg-medium-grey {
+  background-color: #bcc3ca; }
+
+.coveo-styleguide .fill-medium-grey {
+  fill: #bcc3ca; }
+
+.coveo-styleguide .text-medium-grey {
+  color: #bcc3ca; }
+
+.coveo-styleguide .bg-light-grey {
+  background-color: #e6ecf0; }
+
+.coveo-styleguide .fill-light-grey {
+  fill: #e6ecf0; }
+
+.coveo-styleguide .text-light-grey {
+  color: #e6ecf0; }
+
+.coveo-styleguide .bg-white {
+  background-color: #f7f8f9; }
+
+.coveo-styleguide .fill-white {
+  fill: #f7f8f9; }
+
+.coveo-styleguide .text-white {
+  color: #f7f8f9; }
+
+.coveo-styleguide .bg-orange {
+  background-color: #f58020; }
+
+.coveo-styleguide .fill-orange {
+  fill: #f58020; }
+
+.coveo-styleguide .text-orange {
+  color: #f58020; }
+
+.coveo-styleguide .bg-red {
+  background-color: #f44336; }
+
+.coveo-styleguide .fill-red {
+  fill: #f44336; }
+
+.coveo-styleguide .text-red {
+  color: #f44336; }
+
+.coveo-styleguide .bg-yellow {
+  background-color: #ffc200; }
+
+.coveo-styleguide .fill-yellow {
+  fill: #ffc200; }
+
+.coveo-styleguide .text-yellow {
+  color: #ffc200; }
+
+.coveo-styleguide .bg-green {
+  background-color: #4caf50; }
+
+.coveo-styleguide .fill-green {
+  fill: #4caf50; }
+
+.coveo-styleguide .text-green {
+  color: #4caf50; }
+
+.coveo-styleguide .bg-blue {
+  background-color: #1194f6; }
+
+.coveo-styleguide .fill-blue {
+  fill: #1194f6; }
+
+.coveo-styleguide .text-blue {
+  color: #1194f6; }
+
+.coveo-styleguide .bg-salesforce-blue {
+  background-color: #00a0de; }
+
+.coveo-styleguide .fill-salesforce-blue {
+  fill: #00a0de; }
+
+.coveo-styleguide .text-salesforce-blue {
+  color: #00a0de; }
+
+.coveo-styleguide .bg-google-red {
+  background-color: #dd4b39; }
+
+.coveo-styleguide .fill-google-red {
+  fill: #dd4b39; }
+
+.coveo-styleguide .text-google-red {
+  color: #dd4b39; }
+
+.coveo-styleguide .bg-office365-red {
+  background-color: #eb3c00; }
+
+.coveo-styleguide .fill-office365-red {
+  fill: #eb3c00; }
+
+.coveo-styleguide .text-office365-red {
+  color: #eb3c00; }
 
 /*# sourceMappingURL=../css/CoveoStyleGuide.css.map */

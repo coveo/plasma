@@ -1,0 +1,29 @@
+// Button
+$button-font-size: 12px;
+$button-line-height: 15px;
+$button-font-weight: 700;
+$button-padding-x: 16px;
+$button-padding-y: 8.5px;
+$button-border-width: 1px;
+$button-border-radius: 2px;
+$button-height: 34px;
+$button-large-height: 50px;
+// Filter Box
+$filter-box-height: 32px;
+// Header
+$header-height: 65px;
+$header-application-offset-y: 6px;
+$header-padding: 40px;
+// Navigation
+$navigation-width: 245px;
+$navigation-background-color: $dark-blue;
+$navigation-active-background-color: #57748a;
+$navigation-active-border-width: 3px;
+$navigation-section-icon-size: 16px;
+$navigation-section-icon-margin: 15px;
+$navigation-locked-color: $medium-grey;
+// Table
+$table-actions-container-height: 52px;
+$table-border-width: 1px;
+$table-border: $table-border-width solid $medium-grey;
+$table-selected-border-width: 5px;

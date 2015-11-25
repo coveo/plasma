@@ -16,6 +16,9 @@ Available on npm:
 Make sure you have Node JS and NPM installed.
 Run `npm install` to get the required dependencies.
 
+###Dependencies
+Coveo Styleguide uses [jQuery](https://jquery.com/) and [Underscore](http://underscorejs.org/) for the more complex components. Tested with jQuery 2.1.4 and Underscore 1.8.3
+
 ### Building
 To build the dist folder and export it into the docs folder, simply run `gulp docs`.
 

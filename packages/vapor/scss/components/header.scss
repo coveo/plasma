@@ -1,6 +1,3 @@
-$header-height: 65px;
-$header-application-offset-y: 6px;
-
 .header {
   display: flex;
   height: $header-height;
@@ -25,7 +22,7 @@ $header-application-offset-y: 6px;
 
 .panel-header {
   height: 110px;
-  padding: 0 40px;
+  padding: 0 $header-padding;
 
   background-color: $white;
   border-bottom: solid 1px $medium-grey;
