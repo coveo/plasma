@@ -1,3 +1,6 @@
+# Ignore compiled files
+dist
+
 # Ignore docs files
 .sass-cache
 _gh_pages
