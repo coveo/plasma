@@ -19,7 +19,8 @@
     "compile": "gulp docs",
     "buildpages": "bundle exec jekyll build",
     "start": "npm run",
-    "lint": "csscomb -l scss/**/*.scss"
+    "lint": "csscomb -l scss/**/*.scss",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
