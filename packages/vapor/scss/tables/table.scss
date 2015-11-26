@@ -40,10 +40,10 @@ table {
   }
 
   thead tr {
-    height: 25px;
+    height: 36px;
 
     color: $medium-blue;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
 
     background-color: transparent;
@@ -62,7 +62,7 @@ table {
 
         .admin-sort-icon {
           position: absolute;
-          top: 3px;
+          top: 8px;
 
           i {
             position: relative;
