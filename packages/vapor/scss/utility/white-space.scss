@@ -7,6 +7,15 @@ $spacing: 0.5rem;
   padding: 0;
 }
 
+.m0 {
+  margin: 0;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @for $i from 1 through 2 {
   .p#{$i} {
     padding: $i * $spacing;
@@ -20,5 +29,25 @@ $spacing: 0.5rem;
   .py#{$i} {
     padding-top: $i * $spacing;
     padding-bottom: $i * $spacing;
+  }
+
+  .m#{$i} {
+    margin: $i * $spacing;
+  }
+
+  .mt#{$i} {
+    margin-top: $i * $spacing;
+  }
+
+  .mr#{$i} {
+    margin-right: $i * $spacing;
+  }
+
+  .mb#{$i} {
+    margin-bottom: $i * $spacing;
+  }
+
+  .ml#{$i} {
+    margin-left: $i * $spacing;
   }
 }
