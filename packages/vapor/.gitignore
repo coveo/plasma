@@ -1,5 +1,6 @@
 # Ignore compiled files
 dist
+docs/_data
 
 # Ignore docs files
 .sass-cache
