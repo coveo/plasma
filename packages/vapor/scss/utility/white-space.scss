@@ -16,6 +16,14 @@ $spacing: 0.5rem;
   margin-left: auto;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
 @for $i from 1 through 2 {
   .p#{$i} {
     padding: $i * $spacing;
