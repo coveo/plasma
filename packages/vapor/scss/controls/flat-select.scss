@@ -4,6 +4,7 @@
 
   .flat-select-option {
     display: inline-block;
+    float: left; // Prevent unwanted spacing between anchor-tag elements
     height: $flat-select-option-size;
     min-width: $flat-select-option-size;
     padding: 0 4px;
