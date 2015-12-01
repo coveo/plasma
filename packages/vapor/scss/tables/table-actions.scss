@@ -45,6 +45,13 @@
 
     .coveo-filter-container {
       margin: 10px 0;
+      .filter-icon {
+        position: absolute;
+        top: 10px;
+        left: 8px;
+
+        cursor: default;
+      }
     }
 
     .prompt {
