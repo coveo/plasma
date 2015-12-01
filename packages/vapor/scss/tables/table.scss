@@ -18,29 +18,25 @@ table {
       margin: 0;
     }
 
-    &:first-child {
-      padding-left: 20px;
-    }
-
     &:last-child {
       padding-right: 20px;
     }
   }
 
   &.mod-align-header {
-    th, td {
+    th {
       &:first-child {
         padding-left: $header-padding;
       }
     }
 
-    tbody tr.selected td:first-child {
-      padding-left: $header-padding - $table-selected-border-width;
+    tbody tr td:first-child {
+      padding-left: $header-padding;
     }
   }
 
   thead tr {
-    height: 36px;
+    height: $table-header-height;
 
     color: $medium-blue;
     font-size: 15px;
@@ -61,41 +57,35 @@ table {
         cursor: pointer;
 
         .admin-sort-icon {
-          position: absolute;
-          top: 8px;
+          display: inline-flex;
 
-          i {
-            position: relative;
-            top: 3px;
-            left: -11px;
+          .tables-sort {
+            vertical-align: middle;
 
-            display: block;
+            .asc-arrow, .desc-arrow {
+              cursor: pointer;
+              opacity: 0.3;
 
-            opacity: 0.3;
-
-            &:hover {
-              opacity: 0.6;
-            }
-
-            + i {
-              margin-top: 2px;
+              &:hover {
+                opacity: 0.6;
+              }
             }
           }
         }
 
-        &.admin-sort-ascending, &.sorting_asc {
-          cursor: pointer;
-
-          .admin-sort-icon i.coveo-sprites-tables-sort_asc {
-            opacity: 1;
+        &.admin-sort-descending {
+          .admin-sort-icon {
+            .desc-arrow {
+              opacity: 1;
+            }
           }
         }
 
-        &.admin-sort-descending, &.sorting_desc {
-          cursor: pointer;
-
-          .admin-sort-icon i.coveo-sprites-tables-sort_desc {
-            opacity: 1;
+        &.admin-sort-ascending {
+          .admin-sort-icon {
+            .asc-arrow {
+              opacity: 1;
+            }
           }
         }
       }
@@ -145,6 +135,10 @@ table {
       text-align: left;
 
       border-bottom: $table-border;
+
+      &:first-child {
+        border-left: $table-selected-border-width solid transparent;
+      }
 
       &.edit.enabled {
         color: $medium-blue;
@@ -295,9 +289,7 @@ table {
       background-color: $block-background-color;
 
       td:first-child {
-        padding-left: 15px;
-
-        border-left: $table-selected-border-width solid $coveo-orange;
+        border-left-color: $coveo-orange;
       }
     }
   }

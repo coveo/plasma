@@ -1,7 +1,7 @@
 .fixed-header-table-container {
   position: relative;
 
-  padding-top: 27px;
+  padding-top: $table-header-height;
 
   border-top: $table-border;
 
@@ -37,7 +37,7 @@
           position: absolute;
           top: 0;
 
-          padding-top: 5px;
+          padding-top: 8px;
 
           font-size: 12px;
         }
