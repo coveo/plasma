@@ -1,0 +1,84 @@
+.flat-select {
+  background-color: $pure-white;
+  border-radius: 2px;
+
+  .flat-select-option {
+    display: inline-block;
+    height: $flat-select-option-size;
+    min-width: $flat-select-option-size;
+    padding: 0 4px;
+    margin-right: 10px;
+
+    color: $pure-white;
+    font-size: 13px;
+    line-height: $flat-select-option-size - 2px;
+    text-align: center;
+
+    background-color: $medium-blue;
+    border: 1px solid $medium-blue;
+    border-radius: 2px;
+
+    cursor: default;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.selectable {
+      color: $medium-grey;
+
+      background-color: $pure-white;
+      border: 1px solid $medium-grey;
+
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:empty {
+      display: none;
+    }
+
+    &.mod-link, &.selectable.mod-link {
+      padding: 0;
+
+      color: $medium-blue;
+      font-size: 15px;
+
+      background-color: $pure-white;
+      border: none;
+
+      .icon {
+        fill: $medium-blue;
+      }
+
+      &.disabled {
+        color: $medium-grey;
+
+        .icon {
+          fill: $medium-grey;
+        }
+      }
+    }
+  }
+}
+
+.prepended-flat-select {
+  align-items: center;
+
+  display: flex;
+
+  .flat-select-prepend {
+    margin-right: 10px;
+
+    color: $medium-grey;
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
