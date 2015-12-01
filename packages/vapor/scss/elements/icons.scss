@@ -10,26 +10,34 @@
     height: (4em / 3);
 
     line-height: (4em / 3);
-    vertical-align: -15%;
+    vertical-align: -0.1em;
   }
 
   &.mod-2x {
     width: 2em;
     height: 2em;
+
+    vertical-align: -0.5em;
   }
 
   &.mod-3x {
     width: 3em;
     height: 3em;
+
+    vertical-align: -1em;
   }
 
   &.mod-4x {
     width: 4em;
     height: 4em;
+
+    vertical-align: -1.5em;
   }
 
   &.mod-5x {
     width: 5em;
     height: 5em;
+
+    vertical-align: -2em;
   }
 }
