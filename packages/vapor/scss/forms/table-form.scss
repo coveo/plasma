@@ -123,7 +123,7 @@ form {
           .dropdown-toggle {
             box-sizing: border-box;
             width: 100%;
-            padding-right: 0;
+            padding-right: 11px;
             padding-left: 0;
 
             font-size: 16px;
@@ -136,9 +136,8 @@ form {
             cursor: pointer;
             opacity: 1;
 
-            .coveo-sprites-misc-dropdown_arrow {
-              position: absolute;
-              right: 0;
+            .dropdown-toggle-arrow {
+              margin-top: -8px;
             }
           }
 
