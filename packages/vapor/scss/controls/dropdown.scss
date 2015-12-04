@@ -23,10 +23,10 @@
 
     display: none;
     float: left;
+    max-height: 400px;
     min-width: 100%;
     padding: 5px 0;
     margin: 0;
-    max-height: 400px;
     overflow-y: auto;
 
     color: $dark-blue;

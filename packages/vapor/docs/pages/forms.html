@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Forms
-permalink: /forms/
+type: forms
+permalink: /forms
 ---
 
-{% assign entries = site.components | where:"type","forms" %}
+{% assign entries = site.components | where:"type", page.type %}
 {% for entry in entries %}
 {% include component.html %}
 {% endfor %}

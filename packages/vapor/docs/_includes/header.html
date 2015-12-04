@@ -2,8 +2,7 @@
     <div class="header-section flex center-align" style="width: 245px;">
         <a href="http://coveo.com" target="_blank">
             <div>
-                <svg width="100px" height="37px" viewBox="0 0 100 37" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <svg width="100px" height="37px" viewBox="0 0 100 37" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <!-- Coveo Logo -->
                     <g id="Menu" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
                         <g id="Menu---Etape-2" sketch:type="MSArtboardGroup" transform="translate(-15.000000, -12.000000)">
@@ -39,22 +38,25 @@
     <div class="navigation-menu">
         <ul class="navigation-menu-sections">
             <li class="block navigation-menu-section">
-                <header class="navigation-menu-section-header">
+                {% for pageInformation in site.pages %}
+                {% if pageInformation.title %}
+                <a href="{{ pageInformation.url | prepend: site.baseurl }}" class="navigation-menu-section-header text-white">
                     <span class="navigation-menu-section-header-icon"></span>
-                    Basic
-                </header>
-                {% assign currentPageUrl = page.url %}
+                    {{ pageInformation.title }}
+                </a>
                 <ul class="navigation-menu-section-items">
-                    {% for pageInformation in site.pages %}
-                    {% if pageInformation.title %}
-                    <li class="navigation-menu-section-item {% if currentPageUrl == pageInformation.url %}state-active{% endif %}">
-                        <a href="{{ pageInformation.url | prepend: site.baseurl }}" class="block navigation-menu-section-item-link">
-                            {{ pageInformation.title }}
+                    {% for subMenu in site.components %}
+                    {% if subMenu.type == pageInformation.type %}
+                    <li class="navigation-menu-section-item  ">
+                        <a href="{{ pageInformation.url | prepend: site.baseurl }}#{{subMenu.title | slugify }}" class="block navigation-menu-section-item-link">
+                            {{ subMenu.title }}
                         </a>
                     </li>
                     {% endif %}
                     {% endfor %}
                 </ul>
+                {% endif %}
+                {% endfor %}
             </li>
         </ul>
     </div>
