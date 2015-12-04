@@ -6,5 +6,24 @@
             inline: true,
             date: new Date()
         });
+
+        var selectedTab;
+        window.onload = function() {
+            if (window.location.hash) {
+                var selectedTabChild = $('.navigation-menu-section-item-link[href="' + window.location.pathname + window.location.hash + '"]');
+                selectedTab = selectedTabChild.parent().addClass('state-active');
+            } else {
+                var selectedTabParend = $('.navigation-menu-section-item-link[href*="' + window.location.pathname + '"]');
+                selectedTab = $(selectedTabParend[0]).parent().addClass('state-active');
+            }
+        };
+
+        $('.navigation-menu-section-item').click(function() {
+            if (selectedTab) {
+                selectedTab.removeClass('state-active');
+            }
+            $(this).addClass('state-active');
+            selectedTab = $(this);
+        });
     });
 </script>

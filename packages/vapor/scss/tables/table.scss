@@ -31,7 +31,7 @@ table {
     }
 
     tbody tr td:first-child {
-      padding-left: $header-padding;
+      padding-left: $table-first-column-padding-left;
     }
   }
 
@@ -61,6 +61,8 @@ table {
 
           .tables-sort {
             vertical-align: middle;
+
+            fill: $medium-blue;
 
             .asc-arrow, .desc-arrow {
               cursor: pointer;

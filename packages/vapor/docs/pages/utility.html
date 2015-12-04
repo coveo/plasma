@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Utility
-permalink: /utility/
+type: utility
+permalink: /utility
 ---
 
-{% assign entries = site.components | where:"type","utility" %}
+{% assign entries = site.components | where:"type", page.type %}
 {% for entry in entries %}
 {% include component.html %}
 {% endfor %}
