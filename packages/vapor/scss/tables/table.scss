@@ -39,7 +39,7 @@ table {
     height: $table-header-height;
 
     color: $medium-blue;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
 
     background-color: transparent;
@@ -60,6 +60,9 @@ table {
           display: inline-flex;
 
           .tables-sort {
+            width: 15px;
+            height: 15px;
+
             vertical-align: middle;
 
             fill: $medium-blue;
