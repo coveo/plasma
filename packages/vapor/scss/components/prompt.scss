@@ -1,0 +1,13 @@
+.prompt .prompt-danger {
+  & > span {
+    &.prompt-icon {
+      padding-right: 5px;
+    }
+
+    &.prompt-action {
+      padding-left: 5px;
+
+      cursor: pointer;
+    }
+  }
+}

@@ -20,7 +20,6 @@
 @import 'elements/btn';
 @import 'elements/btn-prepend';
 
-
 // Controls
 @import 'controls/checkboxes';
 @import 'controls/collapsable';
@@ -40,6 +39,7 @@
   @import 'tables/fixed-header-table';
   @import 'tables/table-actions';
   // Components
+  @import 'components/prompt';
   @import 'components/header';
   @import 'components/navigation';
   @import 'components/application-container';
