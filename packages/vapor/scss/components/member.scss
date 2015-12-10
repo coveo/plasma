@@ -3,12 +3,20 @@
 
   display: flex;
 
-  .member-avatar {
-    width: 41px;
-    height: 41px;
+  .member-icon {
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
 
-    border: solid 2px $white;
+    background-color: $white;
     border-radius: 100%;
+
+    .member-icon-provider {
+      display: block;
+      height: 42px;
+      max-width: 26px;
+      margin: auto;
+    }
   }
 
   .member-info {
@@ -19,10 +27,6 @@
       font-weight: 700;
       line-height: 16px;
       text-transform: uppercase;
-    }
-
-    .member-info-provider {
-      vertical-align: text-bottom;
     }
 
     .member-info-email {

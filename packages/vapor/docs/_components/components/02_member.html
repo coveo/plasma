@@ -5,14 +5,16 @@ usage: Use when displaying a user or member thumbnail.
 stylesheet: '/scss/components/member.scss'
 ---
 <div class="member bg-medium-grey">
-    <img class="member-avatar" src="https://www.gravatar.com/avatar/?d=mm">
-
+    <div class="member-icon">
+        <svg class="'member-icon-provider">
+            [Provider icon]
+        </svg>
+    </div>
     <div class="member-info">
         <div class="member-info-name">
             Member name
         </div>
         <div class="member-info-email">
-            <span class="member-info-provider">[Icon]</span>
             member@domain.com
         </div>
     </div>
