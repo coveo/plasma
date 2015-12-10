@@ -1,0 +1,119 @@
+.tooltip {
+  position: absolute;
+  z-index: 1050;
+
+  display: block;
+
+  font-size: 13px;
+  line-height: 1.4;
+
+  opacity: 0;
+  visibility: visible;
+
+  &.in {
+    opacity: 1;
+  }
+
+  &.top {
+    padding: 5px 0;
+    margin-top: -3px;
+
+    .tooltip-arrow {
+      bottom: 0;
+      left: 50%;
+
+      margin-left: -5px;
+
+      border-top-color: $dark-blue;
+      border-width: 5px 5px 0;
+    }
+  }
+
+  &.right {
+    padding: 0 5px;
+    margin-left: 3px;
+
+    .tooltip-arrow {
+      top: 50%;
+      left: 0;
+
+      margin-top: -5px;
+
+      border-right-color: $dark-blue;
+      border-width: 5px 5px 5px 0;
+    }
+  }
+
+  &.bottom {
+    padding: 5px 0;
+    margin-top: 3px;
+
+    .tooltip-arrow {
+      top: 0;
+      left: 50%;
+
+      margin-left: -5px;
+
+      border-bottom-color: $dark-blue;
+      border-width: 0 5px 5px;
+    }
+  }
+
+  &.left {
+    padding: 0 5px;
+    margin-left: -3px;
+
+    .tooltip-arrow {
+      top: 50%;
+      right: 0;
+
+      margin-top: -5px;
+
+      border-left-color: $dark-blue;
+      border-width: 5px 0 5px 5px;
+    }
+  }
+
+  &.state-error {
+    .tooltip-inner {
+      background-color: $red;
+    }
+
+    &.left .tooltip-arrow {
+      border-left-color: $red;
+    }
+
+    &.bottom .tooltip-arrow {
+      border-bottom-color: $red;
+    }
+
+    &.top .tooltip-arrow {
+      border-top-color: $red;
+    }
+
+    &.right .tooltip-arrow {
+      border-right-color: $red;
+    }
+  }
+
+  .tooltip-arrow {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  .tooltip-inner {
+    max-width: 300px;
+    padding: 5px 10px;
+
+    color: $pure-white;
+    text-decoration: none;
+
+    background-color: $dark-blue;
+    border-radius: 2px;
+  }
+}
