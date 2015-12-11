@@ -58,7 +58,8 @@ you can run `gulp` and retrieve the files in the `/dist` folder.
 Coveo Styleguide cherry picks from these awesome UI Libraries
 
 * [Bootstrap](https://github.com/twbs/bootstrap)
-* [Basscss](https://github.com/basscss/basscss)
+* [BassCss](https://github.com/basscss/basscss)
+* [ResetCss](http://meyerweb.com/eric/tools/css/reset/)
 
 # License
 Coveo StyleGuide is distributed under [MIT license](https://github.com/Coveo/styleguide/blob/master/LICENSE).
