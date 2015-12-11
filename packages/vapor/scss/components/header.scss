@@ -1,7 +1,10 @@
 .header {
+  position: fixed;
+  z-index: 50;
+
   display: flex;
+  width: 100%;
   height: $header-height;
-  padding-bottom: $header-application-offset-y;
 
   color: $white;
 
