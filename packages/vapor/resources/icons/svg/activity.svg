@@ -1,9 +1,11 @@
-<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
- <g>
-  <title>Layer 1</title>
-  <g id="svg_1">
-   <path id="svg_2" d="m10,17.2c-4,0 -7.2,-3.2 -7.2,-7.2s3.2,-7.2 7.2,-7.2s7.2,3.2 7.2,7.2s-3.2,7.2 -7.2,7.2zm0,-16.2c-5,0 -9,4 -9,9s4,9 9,9c5,0 9,-4 9,-9s-4,-9 -9,-9z"/>
-   <polygon id="svg_3" points="10.5,5.5 9.1,5.5 9.1,10.9 13.8,13.7 14.5,12.6 10.5,10.2  "/>
-  </g>
- </g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-269 416.89 20 20" xml:space="preserve">
+	<circle fill-rule="evenodd" clip-rule="evenodd" cx="-264.367" cy="431.89" r="1.6"/>
+	<circle fill-rule="evenodd" clip-rule="evenodd" cx="-264.367" cy="426.89" r="1.6"/>
+    <circle fill-rule="evenodd" clip-rule="evenodd" cx="-264.367" cy="421.89" r="1.6"/>
+	<path d="M-253.033,432.89h-7.339c-0.552,0-1-0.448-1-1s0.448-1,1-1h7.339c0.552,0,1,0.448,1,1
+		S-252.48,432.89-253.033,432.89z"/>
+	<path d="M-253.033,427.89h-7.339c-0.552,0-1-0.448-1-1s0.448-1,1-1h7.339c0.552,0,1,0.448,1,1
+		S-252.48,427.89-253.033,427.89z"/>
+	<path d="M-253.033,422.89h-7.339c-0.552,0-1-0.448-1-1s0.448-1,1-1h7.339c0.552,0,1,0.448,1,1
+		S-252.48,422.89-253.033,422.89z"/>	
 </svg>
