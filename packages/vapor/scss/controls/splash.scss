@@ -37,7 +37,8 @@
 .splash-box {
   text-align: center;
 
-  background: $white;
+  background: $pure-white;
+  border-radius: $button-border-radius;
 
   .splash-box-title {
     padding: 70px 0 40px;
@@ -68,8 +69,12 @@
 .splash-footer {
   z-index: 1;
 
-  min-height: 50px;
-  padding: 17px 20px 17px;
+  min-height: 45px;
+  padding: 10px 20px 10px;
+
+  background-color: $darker-blue;
+  border-bottom-right-radius: $button-border-radius;
+  border-bottom-left-radius: $button-border-radius;
 
   span {
     line-height: 25px;
