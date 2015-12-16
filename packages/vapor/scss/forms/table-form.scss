@@ -151,11 +151,17 @@ form {
 
             @include slim-scroll();
 
-            li a i {
-              margin-top: 0;
-              margin-bottom: 0;
+            li {
+              a i {
+                margin-top: 0;
+                margin-bottom: 0;
 
-              vertical-align: text-top;
+                vertical-align: text-top;
+              }
+
+              > a, > span {
+                padding-left: 9px;
+              }
             }
           }
         }
