@@ -1,4 +1,5 @@
 .application-container {
+  min-height: $application-container-min-height;
   margin-top: $header-height;
   margin-left: $navigation-width;
   overflow: hidden;
