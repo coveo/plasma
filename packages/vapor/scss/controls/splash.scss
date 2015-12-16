@@ -60,8 +60,11 @@
     margin: auto auto 1em;
   }
 
-  .splash-box-footer {
+  .splash-box-header, .splash-box-footer {
     padding: 17px;
+  }
+
+  .splash-box-footer {
     margin-top: 50px;
   }
 }
