@@ -19,4 +19,12 @@
   &.state-info {
     background-color: $blue;
   }
+
+  &.state-disabled {
+    background-color: $light-grey;
+  }
+
+  &.state-executing {
+    animation: scaleout 1.0s infinite ease-in-out;
+  }
 }
