@@ -37,7 +37,7 @@
   vertical-align: middle;
   white-space: nowrap;
 
-  background-color: $white;
+  background-color: $pure-white;
   border: $button-border-width solid $medium-grey;
   border-radius: $button-border-radius;
 
@@ -71,11 +71,11 @@
   }
 
   &.mod-primary {
-    @include button-variant($white, $orange);
+    @include button-variant($pure-white, $orange);
   }
 
   &.mod-danger {
-    @include button-variant($white, $red);
+    @include button-variant($pure-white, $red);
   }
 
   &.mod-link {
