@@ -11,13 +11,30 @@
     .actions-row {
       line-height: $table-actions-container-height;
 
-      .dropdown-menu {
-        top: 42px;
-        right: 0;
-        left: inherit;
+      .dropdown {
+        &.open {
+          .dropdown-toggle {
+            align-items: center;
 
-        .dropdown-arrow {
-          right: 5px;
+            display: flex;
+            height: $table-actions-container-height - 12px;
+            padding: 0 $table-actions-dropdown-toggle 0 $table-actions-dropdown-toggle;
+            margin-right: -$table-actions-dropdown-toggle - 1px;
+            margin-left: -$table-actions-dropdown-toggle - 1px;
+
+            background-color: $light-grey;
+            border: $table-border;
+            border-radius: 2px;
+          }
+        }
+
+        .dropdown-menu {
+          margin-top: -3px;
+          margin-left: -19px;
+
+          .dropdown-arrow {
+            right: 5px;
+          }
         }
       }
     }
@@ -35,10 +52,16 @@
       }
 
       .action-label {
+        padding-left: 10px;
+
         color: $medium-blue;
         font-size: 12px;
         font-weight: bold;
         vertical-align: top;
+      }
+
+      > :first-child {
+        display: inline-flex;
       }
     }
   }
