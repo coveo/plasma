@@ -27,4 +27,8 @@
   &.state-executing {
     animation: scaleout 1.0s infinite ease-in-out;
   }
+
+  &.state-waiting {
+    background-color: $medium-grey;
+  }
 }
