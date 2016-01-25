@@ -6,7 +6,7 @@
   min-height: $table-actions-container-height;
 
   .coveo-table-actions {
-    padding: 0 30px;
+    padding: 0 19px 0 30px;
 
     .actions-row {
       line-height: $table-actions-container-height;
@@ -14,21 +14,24 @@
       .dropdown {
         &.open {
           .dropdown-toggle {
-            align-items: center;
-
-            height: $table-actions-container-height - 12px;
-            padding: 0 $table-actions-dropdown-toggle 0 $table-actions-dropdown-toggle;
-            margin-right: -$table-actions-dropdown-toggle - 1px;
-            margin-left: -$table-actions-dropdown-toggle - 1px;
-
             background-color: $light-grey;
-            border: $table-border;
-            border-radius: 2px;
+            border-color: $medium-grey;
           }
         }
 
+        .dropdown-toggle {
+          align-items: center;
+
+          display: flex;
+          height: $table-actions-container-height - 12px;
+
+          border: $table-border-button;
+          border-radius: 2px;
+
+          user-select: none;
+        }
+
         .dropdown-menu {
-          margin-top: -10px;
           margin-left: 19px;
 
           .dropdown-arrow {
@@ -48,6 +51,14 @@
 
       & + .action {
         padding-left: 30px;
+
+        &:last-of-type {
+          padding-left: 19px;
+
+          > :first-child {
+            padding: 0 11px 0 11px;
+          }
+        }
       }
 
       .action-label {
