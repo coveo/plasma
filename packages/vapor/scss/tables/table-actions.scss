@@ -22,7 +22,6 @@
         .dropdown-toggle {
           align-items: center;
 
-          display: flex;
           height: $table-actions-container-height - 12px;
 
           border: $table-border-button;
@@ -32,6 +31,7 @@
         }
 
         .dropdown-menu {
+          margin-top: -6px;
           margin-left: 19px;
 
           .dropdown-arrow {
