@@ -13,33 +13,33 @@ label.coveo-slide-toggle-double {
   &.second {
     margin-left: 5px;
   }
+}
 
-  input[type=checkbox] & {
-    display: none;
+input.coveo-slide-toggle-double[type=checkbox] {
+  display: none;
 
-    & + span {
-      box-sizing: initial;
-      display: inline-block;
-      float: left;
-      width: 33px;
-      height: 16px;
+  & + span {
+    box-sizing: initial;
+    display: inline-block;
+    float: left;
+    width: 33px;
+    height: 16px;
 
-      background: $toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0; // Ignore error
-      border: 3px solid $toggle-double-background-color;
-      border-radius: 3px;
+    background: $toggle-double-background-color url('../images/misc/two_option_toggle.png') 0 0; // Ignore error
+    border: 3px solid $toggle-double-background-color;
+    border-radius: 3px;
 
-      transition: background-position 0.35s ease;
+    transition: background-position 0.35s ease;
 
-      cursor: pointer;
-    }
+    cursor: pointer;
+  }
 
-    &:checked + span {
-      background-position: -15px;
-    }
+  &:checked + span {
+    background-position: -15px;
+  }
 
-    &:disabled + span {
-      cursor: default;
-      opacity: 0.4;
-    }
+  &:disabled + span {
+    cursor: default;
+    opacity: 0.4;
   }
 }
