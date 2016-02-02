@@ -265,13 +265,8 @@ table {
       padding-left: 10px;
     }
 
-    &:hover > td {
+    &:hover {
       background-color: $light-grey;
-
-      .prompt .prompt-danger {
-        background-color: $light-grey;
-        box-shadow: -15px 0 25px 0 $light-grey;
-      }
     }
 
     &.empty td {
@@ -291,7 +286,9 @@ table {
     }
 
     &.selected {
-      background-color: $block-background-color;
+      &:not(:hover) {
+        background-color: $white;
+      }
 
       td:first-child {
         border-left-color: $coveo-orange;
