@@ -26,8 +26,10 @@
     "type": "git",
     "url": "https://github.com/Coveo/styleguide.git"
   },
+  "dependencies": {
+    "coveo-slider": "0.9.8"
+  },
   "devDependencies": {
-    "coveo-slider": "0.9.8",
     "csscomb": "3.1.8",
     "del": "2.0.2",
     "gulp": "3.9.0",
