@@ -45,6 +45,10 @@
   word-wrap: break-word;
 }
 
+.break-all {
+  word-break: break-all;
+}
+
 .truncate {
   max-width: 100%;
   overflow: hidden;
