@@ -134,6 +134,12 @@ table {
 
     font-size: 15px;
 
+    &.disabled {
+      div.wrapper {
+        opacity: 0.4;
+      }
+    }
+
     td {
       margin-left: 15px;
 
@@ -161,7 +167,7 @@ table {
 
         &.disabled {
           cursor: default;
-          opacity: 0.3;
+          opacity: 0.2;
         }
 
         &.enabled {
