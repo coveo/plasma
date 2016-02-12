@@ -11,7 +11,7 @@ input[type=checkbox].coveo-checkbox {
     vertical-align: bottom;
 
     background: $body-background-color none 0 0;
-    border: 1px solid rgba(57, 95, 132, 0.5);
+    border: 1px solid $medium-blue;
     border-radius: 2px;
     outline: none;
 
@@ -95,8 +95,11 @@ input[type=checkbox].coveo-checkbox {
   }
 
   &:disabled + button {
+    background-color: $dark-grey;
+    border: none;
+
     cursor: default;
-    opacity: 0.5;
+    opacity: 0.2;
   }
 }
 
