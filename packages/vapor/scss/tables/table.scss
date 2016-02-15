@@ -14,7 +14,6 @@ table {
 
     &.selection {
       width: 25px !important;
-      padding: 0 10px;
       margin: 0;
     }
 
@@ -23,11 +22,13 @@ table {
     }
   }
 
+  th:first-child {
+    padding-left: 20px;
+  }
+
   &.mod-align-header {
-    th {
-      &:first-child {
-        padding-left: $header-padding;
-      }
+    th:first-child {
+      padding-left: $header-padding;
     }
 
     tbody tr td:first-child {
