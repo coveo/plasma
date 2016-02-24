@@ -31,7 +31,7 @@
         function modalHandler() {
             var backdrop = $('.modal-backdrop');
 
-            $('.js-modal-trigger').forEach(function(modalTrigger) {
+            $('.js-modal-trigger').each(function(i, modalTrigger) {
                 var modal = $('#' + modalTrigger.getAttribute('data-modal'));
                 var closeButton = modal.find('.js-modal-close');
 
@@ -40,7 +40,7 @@
                     backdrop.addClass('closed');
                 }
 
-                modalTrigger.on('click', function() {
+                $(modalTrigger).on('click', function() {
                     modal.addClass('opened');
                     backdrop.removeClass('closed');
 
