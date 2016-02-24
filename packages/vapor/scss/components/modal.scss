@@ -1,0 +1,173 @@
+$base-backdrop-z-index: 1049;
+$base-modal-z-index: 1050;
+
+// This generate classes layer-1, layer-2, ..., layer-10.
+@mixin generate-layers($nbr-layers, $base) {
+  @for $i from 1 through $nbr-layers {
+    &.layer-#{$i} {
+      z-index: $base + ($i - 1) * 20;
+    }
+  }
+}
+
+.modal-backdrop, .modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal-backdrop {
+  z-index: $base-backdrop-z-index;
+
+  background: $medium-blue;
+
+  transition: all 0.3s;
+
+  opacity: 0.9;
+
+  @include generate-layers(10, $base-backdrop-z-index);
+
+  &.prompt-backdrop {
+    position: absolute;
+
+    opacity: 0.5;
+  }
+
+  &.clear, &.closed {
+    opacity: 0;
+  }
+
+  &.closed {
+    visibility: hidden;
+  }
+}
+
+.modal-container {
+  align-items: center;
+  justify-content: center;
+  z-index: $base-modal-z-index;
+
+  display: flex;
+
+  visibility: hidden;
+  pointer-events: none; // Required to allow clicking through the modal-container on the modal-backdrop. Known issue: wont work on IE 10.
+
+  @include generate-layers(10, $base-modal-z-index);
+
+  &.opening, &.opened {
+    visibility: visible;
+  }
+
+  .modal-content {
+    flex-direction: column;
+
+    display: flex;
+    width: 50%;
+    height: 50%;
+
+    border-radius: 2px;
+
+    pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
+
+    .content-header {
+      justify-content: space-between;
+
+      display: flex;
+      padding: 30px 52px 40px;
+
+      color: $pure-white;
+
+      background-color: $dark-blue;
+
+      h1 {
+        overflow: hidden;
+
+        line-height: 30px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .small-close {
+        margin-top: 6px;
+        margin-left: 20px;
+
+        cursor: pointer;
+
+        // Make both the icon and his containing span the same size.
+        &, & .icon {
+          width: (4em / 3);
+          height: (4em / 3);
+        }
+      }
+    }
+
+    .content-body {
+      flex: 1;
+
+      overflow: auto;
+
+      background-color: $pure-white;
+    }
+
+    .content-footer {
+      justify-content: flex-end;
+
+      display: flex;
+      padding: 24px 52px;
+      overflow: hidden;
+
+      background-color: $white;
+      border-top: solid 1px $medium-grey;
+    }
+  }
+
+  &.mod-big .modal-content {
+    width: 70%;
+    height: 80%;
+  }
+
+  &.mod-stick-bottom {
+    align-items: flex-end;
+
+    .modal-content {
+      width: 70%;
+      height: 85%;
+
+      border-radius: 2px 2px 0 0;
+    }
+  }
+
+  &.mod-fade-in-scale .modal-content {
+    transform: scale(0.7);
+
+    transition: all 0.3s;
+
+    opacity: 0;
+  }
+
+  &.opened.mod-fade-in-scale .modal-content {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+
+  &.mod-slide-in-bottom .modal-content {
+    transform: translateY(20%);
+
+    transition: all 0.3s;
+
+    opacity: 0;
+  }
+
+  &.opened.mod-slide-in-bottom .modal-content {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+}

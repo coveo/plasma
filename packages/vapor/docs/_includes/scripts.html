@@ -1,5 +1,5 @@
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.coveo-slider-input').slider();
         $('.coveo-datepicker').DatePicker({
             mode: 'single',
@@ -26,5 +26,35 @@
             $(this).addClass('state-active');
             selectedTab = $(this);
         });
+
+        // Simple script to handle opening/closing modals
+        function modalHandler() {
+            var backdrop = $('.modal-backdrop');
+
+            $('.js-modal-trigger').forEach(function(modalTrigger) {
+                var modal = $('#' + modalTrigger.getAttribute('data-modal'));
+                var closeButton = modal.find('.js-modal-close');
+
+                function removeModal() {
+                    modal.removeClass('opened');
+                    backdrop.addClass('closed');
+                }
+
+                modalTrigger.on('click', function() {
+                    modal.addClass('opened');
+                    backdrop.removeClass('closed');
+
+                    backdrop.off('click', removeModal);
+                    backdrop.on('click', removeModal);
+                });
+
+                closeButton.on('click', function(ev) {
+                    ev.stopPropagation();
+                    removeModal();
+                });
+            });
+        }
+
+        modalHandler();
     });
 </script>
