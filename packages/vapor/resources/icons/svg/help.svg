@@ -1,6 +1,6 @@
 <svg width="20" height="20"  x="0px" y="0px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <path fill-rule="evenodd" clip-rule="evenodd" d="m10,4.6c-2,0 -3.7,1.6 -3.7,3.7l1.8,0c0,-1 0.8,-1.8 1.8,-1.8s1.8,0.8 1.8,1.8c0,1.8 -2.8,1.6 -2.8,4.6l1.8,0c0,-2.1 2.8,-2.3 2.8,-4.6c0.2,-2.1 -1.5,-3.7 -3.5,-3.7z" id="svg_3"/>
-    <rect x="9.1" y="13.8" class="st0" width="1.8" height="1.8" id="svg_4"/>
+    <rect x="9.1" y="13.8" width="1.8" height="1.8" id="svg_4"/>
     <path d="m10,17.2c-4,0 -7.2,-3.2 -7.2,-7.2s3.2,-7.2 7.2,-7.2s7.2,3.2 7.2,7.2s-3.2,7.2 -7.2,7.2zm0,-16.2c-5,0 -9,4 -9,9s4,9 9,9c5,0 9,-4 9,-9s-4,-9 -9,-9z" clip-rule="evenodd" fill-rule="evenodd" id="svg_5"/>
     <rect x="-1114" y="-116" fill="none" width="1920" height="2800"/>
     <defs>
