@@ -1,0 +1,96 @@
+---
+type: component
+title: Modal
+usage: Modal window styling
+stylesheet: '/scss/components/modal.scss'
+---
+<!-- Modal triggers -->
+<button class="btn js-modal-trigger" data-modal="BaseModal">Basic modal</button>
+<button class="btn js-modal-trigger" data-modal="FadeInScaleModal">Mod big & mod fade in scale</button>
+<button class="btn js-modal-trigger" data-modal="SlideInBottomModal">Mod stick bottom & mod slide in bottom</button>
+<button class="btn js-modal-trigger" data-modal="ModalInnerBackdrop">Modal with inner backdrop</button>
+
+<!-- Base Modals -->
+<div class="modal-container" id="BaseModal">
+    <div class="modal-content">
+        <div class="content-header">
+            <h1>Basic modal</h1>
+            <span class="small-close js-modal-close" title="">
+                <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
+                    <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
+                </svg>
+            </span>
+        </div>
+        <div class="content-body">
+            <div class="p2">
+                The basic small modal for all usage!
+            </div>
+        </div>
+        <div class="content-footer">
+            <button class="btn js-modal-close">Close</button>
+        </div>
+    </div>
+</div>
+<div class="modal-container mod-big mod-fade-in-scale" id="FadeInScaleModal">
+    <div class="modal-content">
+        <div class="content-header">
+            <h1>Mod big & mod fade in scale</h1>
+            <span class="small-close js-modal-close" title="">
+                <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
+                    <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
+                </svg>
+            </span>
+        </div>
+        <div class="content-body">
+            <div class="p2">
+                A bigger modal with a fade in animation.
+            </div>
+        </div>
+        <div class="content-footer">
+            <button class="btn js-modal-close">Close</button>
+        </div>
+    </div>
+</div>
+<div class="modal-container mod-stick-bottom mod-slide-in-bottom" id="SlideInBottomModal">
+    <div class="modal-content">
+        <div class="content-header">
+            <h1>Mod stick bottom & mod slide in bottom</h1>
+            <span class="small-close js-modal-close" title="">
+                <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
+                    <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
+                </svg>
+            </span>
+        </div>
+        <div class="content-body">
+            <div class="p2">
+                A big modal that slides in from the bottom.
+            </div>
+        </div>
+        <div class="content-footer">
+            <button class="btn mod-primary js-modal-close">Submit</button>
+            <button class="btn js-modal-close">Close</button>
+        </div>
+    </div>
+</div>
+<div class="modal-container mod-big mod-slide-in-bottom" id="ModalInnerBackdrop">
+    <div class="modal-content">
+        <div class="content-header">
+            <h1>Modal with inner backdrop</h1>
+            <span class="small-close js-modal-close" title="">
+                <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
+                    <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
+                </svg>
+            </span>
+        </div>
+        <div class="content-body">
+            <div class="p2">
+                A modal with an inner prompt (useful when showing a prompt over a modal).
+            </div>
+        </div>
+        <div class="content-footer">
+            <button class="btn js-modal-close">Close</button>
+        </div>
+        <div class="modal-backdrop prompt-backdrop"></div>
+    </div>
+</div>
+<div class="modal-backdrop closed"></div>
