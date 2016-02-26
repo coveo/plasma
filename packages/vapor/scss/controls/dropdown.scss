@@ -5,9 +5,11 @@
 
   .dropdown-toggle {
     display: inline-block;
+    overflow: hidden;
 
+    text-overflow: ellipsis;
     text-transform: none;
-    white-space: normal;
+    white-space: nowrap;
     .dropdown-toggle-arrow {
       float: right;
       margin-top: -5px;

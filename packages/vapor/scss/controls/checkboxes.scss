@@ -7,8 +7,9 @@ input[type=checkbox].coveo-checkbox {
     width: 16px;
     height: 16px;
     padding: 0;
+    margin-top: -2px;
 
-    vertical-align: bottom;
+    vertical-align: middle;
 
     background: $body-background-color none 0 0;
     border: 1px solid $medium-blue;
@@ -107,7 +108,6 @@ label.coveo-checkbox-label {
   display: inline;
 
   line-height: 16px;
-  vertical-align: middle;
 
   & + label.coveo-checkbox-label {
     margin-top: 5px;
