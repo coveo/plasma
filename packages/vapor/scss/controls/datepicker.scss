@@ -1,155 +1,159 @@
-.inline .datepicker {
-  box-sizing: border-box;
-  width: 100% !important;
-  height: auto !important;
-  padding: 0;
-
-  border: none;
-
-  .datepickerContainer {
-    position: relative;
-
+.CoveoAdminInterface {
+  .inline .datepicker {
+    box-sizing: border-box;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
+    padding: 0;
+
+    border: none;
+
+    .datepickerContainer {
+      position: relative;
+
+      width: 100% !important;
+      height: 100% !important;
+    }
   }
-}
+  .datepicker {
+    background-color: $body-background-color;
 
-.datepicker {
-  background-color: $body-background-color;
-
-  .datepickerBlock {
-    border: none !important;
-  }
-
-  table {
-    thead {
-      tr:first-child th {
-        a:hover {
-          text-decoration: none;
-
-          background: $datepicker-day-hover-background-color;
-
-          cursor: pointer;
-        }
-
-        .datepickerMonth {
-          width: calc(100% - 74px);
-          margin: 0 37px;
-          &:hover {
-            text-decoration: underline;
-
-            background-color: transparent;
-          }
-        }
-
-        .datepickerGoPrev, .datepickerGoNext {
-          position: absolute;
-        }
-
-        .datepickerGoPrev {
-          left: 0;
-        }
-
-        .datepickerGoNext {
-          right: 0;
-        }
-      }
-      tr {
-        background-color: transparent;
-
-        th {
-          padding: 3px 0;
-
-          text-align: center;
-        }
-
-        &.datepickerDoW {
-          th {
-            padding: 2px 0;
-
-            border-bottom: 1px solid $datepicker-border-color;
-          }
-          span {
-            color: $datepicker-dayofweeks-color;
-            font-size: 9px;
-
-            border-top: none;
-            border-right: none;
-            border-bottom: none;
-          }
-        }
-      }
+    .datepickerBlock {
+      border: none !important;
     }
 
-    tbody {
-      tr {
-        &:hover > td {
-          background-color: inherit;
+    table {
+      thead {
+        tr {
+          background-color: transparent;
+
+          th {
+            padding: 3px 0;
+
+            text-align: center;
+          }
+
+          &.datepickerDoW {
+            th {
+              padding: 2px 0;
+
+              border-bottom: 1px solid $datepicker-border-color;
+            }
+            span {
+              color: $datepicker-dayofweeks-color;
+              font-size: 9px;
+
+              border-top: none;
+              border-right: none;
+              border-bottom: none;
+            }
+          }
         }
 
-        td {
-          color: $datepicker-day-color;
-          font-size: 11px;
-          text-align: center;
-
-          background-color: $body-background-color;
-          border: 1px solid $datepicker-border-color;
-
-          a {
-            box-sizing: border-box;
-            width: 37px;
-            height: 26px;
-
-            line-height: 26px;
+        tr:first-child th {
+          a:hover {
             text-decoration: none;
+
+            background: $datepicker-day-hover-background-color;
 
             cursor: pointer;
           }
 
-          &.datepickerSelected {
-            background-color: $medium-blue;
+          .datepickerMonth {
+            width: calc(100% - 74px);
+            margin: 0 37px;
+            &:hover {
+              text-decoration: underline;
 
-            &.datepickerNotInMonth {
-              background-color: $datepicker-day-selected-notinmonth-background-color;
-              a {
-                color: $datepicker-day-selected-notinmonth-color;
-              }
+              background-color: transparent;
             }
           }
 
-          &.datepickerNotInMonth {
-            background-color: $datepicker-day-notinmonth-background-color;
+          .datepickerGoPrev, .datepickerGoNext {
+            position: absolute;
           }
 
-          &.datepickerFuture {
-            &.datepickerNotInMonth {
-              background-color: $datepicker-day-notinmonth-background-color;
-              a {
-                cursor: default;
-              }
-
-              &.datepickerDisabled {
-                background-color: $datepicker-day-disabled-background-color;
-              }
-            }
+          .datepickerGoPrev {
+            left: 0;
           }
 
-          &.datepickerDisabled {
-            background-color: $datepicker-day-disabled-background-color;
-
-            a {
-              color: $datepicker-day-disabled-color;
-
-              cursor: default;
-            }
+          .datepickerGoNext {
+            right: 0;
           }
         }
+      }
 
-        .datepickerSpace {
-          border: none !important;
+      tbody {
+        tr {
+          &:hover > td {
+            background-color: inherit;
+          }
 
-          div {
-            width: 5px;
+          td {
+            padding: 0;
+
+            color: $datepicker-day-color;
+            font-size: 11px;
+            text-align: center;
+
+            background-color: $body-background-color;
+            border: 1px solid $datepicker-border-color;
+
+            a {
+              box-sizing: border-box;
+              width: 37px;
+              height: 26px;
+
+              line-height: 26px;
+              text-decoration: none;
+
+              cursor: pointer;
+            }
+
+            &.datepickerSelected {
+              background-color: $medium-blue;
+
+              &.datepickerNotInMonth {
+                background-color: $datepicker-day-selected-notinmonth-background-color;
+                a {
+                  color: $datepicker-day-selected-notinmonth-color;
+                }
+              }
+            }
+
+            &.datepickerNotInMonth {
+              background-color: $datepicker-day-notinmonth-background-color;
+            }
+
+            &.datepickerFuture {
+              &.datepickerNotInMonth {
+                background-color: $datepicker-day-notinmonth-background-color;
+                a {
+                  cursor: default;
+                }
+
+                &.datepickerDisabled {
+                  background-color: $datepicker-day-disabled-background-color;
+                }
+              }
+            }
+
+            &.datepickerDisabled {
+              background-color: $datepicker-day-disabled-background-color;
+
+              a {
+                color: $datepicker-day-disabled-color;
+
+                cursor: default;
+              }
+            }
+          }
+
+          .datepickerSpace {
+            border: none !important;
+
+            div {
+              width: 5px;
+            }
           }
         }
       }

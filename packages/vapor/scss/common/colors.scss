@@ -82,11 +82,11 @@ $timeline-warn: #f2ac4b;
 
 /* Datepicker */
 $datepicker-border-color: #f6f6f6;
-$datepicker-dayofweeks-color: #111111;
+$datepicker-dayofweeks-color: $text-color;
 $datepicker-day-hover-background-color: #eeeeee;
-$datepicker-day-color: #666666;
-$datepicker-day-selected-notinmonth-color: #bbbbbb;
+$datepicker-day-color: $text-color;
+$datepicker-day-selected-notinmonth-color: $text-color;
 $datepicker-day-selected-notinmonth-background-color: #d2dce6;
-$datepicker-day-notinmonth-background-color: #f6f6f6;
+$datepicker-day-notinmonth-background-color: $text-color;
 $datepicker-day-disabled-background-color: #e6e6e6;
 $datepicker-day-disabled-color: #666666;

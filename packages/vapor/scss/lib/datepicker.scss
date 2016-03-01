@@ -219,9 +219,9 @@ tbody.datepickerDays td.datepickerSelected {
   background-color: #0077cc;
 }
 
-/* Grey out dates in the future */
-div.datepicker td.datepickerFuture a {
-  color: #dddddd;
+/* yellow cell background on hover */
+div.datepicker tbody.datepickerDays td:hover {
+  background-color: #ffcc33;
 }
 
 /* Bold today's date */
