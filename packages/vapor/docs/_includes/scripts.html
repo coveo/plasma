@@ -33,24 +33,51 @@
 
             $('.js-modal-trigger').each(function(i, modalTrigger) {
                 var modal = $('#' + modalTrigger.getAttribute('data-modal'));
+                var modalPrompt = $('#' + modalTrigger.getAttribute('data-modal') + 'Prompt');
+
                 var closeButton = modal.find('.js-modal-close');
+                var promptCloseButton = modalPrompt.find('.js-modal-close');
 
                 function removeModal() {
                     modal.removeClass('opened');
+
                     backdrop.addClass('closed');
+
+                    backdrop.off('click', removeModal);
+                }
+
+                function removePrompt() {
+                    modalPrompt.removeClass('opened');
+
+                    modal.find('.prompt-backdrop').addClass('closed');
+
+                    backdrop.off('click', removePrompt);
+
+                    backdrop.on('click', removeModal);
                 }
 
                 $(modalTrigger).on('click', function() {
                     modal.addClass('opened');
+
                     backdrop.removeClass('closed');
 
-                    backdrop.off('click', removeModal);
-                    backdrop.on('click', removeModal);
+                    if (modalPrompt.length > 0) {
+                        modalPrompt.addClass('opened');
+
+                        backdrop.on('click', removePrompt);
+                    } else {
+                        backdrop.on('click', removeModal);
+                    }
                 });
 
-                closeButton.on('click', function(ev) {
-                    ev.stopPropagation();
+                closeButton.on('click', function(event) {
+                    event.stopPropagation();
                     removeModal();
+                });
+
+                promptCloseButton.on('click', function(event) {
+                    event.stopPropagation();
+                    removePrompt();
                 });
             });
         }

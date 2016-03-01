@@ -6,91 +6,116 @@ stylesheet: '/scss/components/modal.scss'
 ---
 <!-- Modal triggers -->
 <button class="btn js-modal-trigger" data-modal="BaseModal">Basic modal</button>
-<button class="btn js-modal-trigger" data-modal="FadeInScaleModal">Mod big & mod fade in scale</button>
-<button class="btn js-modal-trigger" data-modal="SlideInBottomModal">Mod stick bottom & mod slide in bottom</button>
-<button class="btn js-modal-trigger" data-modal="ModalInnerBackdrop">Modal with inner backdrop</button>
+<button class="btn js-modal-trigger" data-modal="FadeInScaleModal">Mod medium & mod fade in scale</button>
+<button class="btn js-modal-trigger" data-modal="SlideInBottomModal">Mod big & mod stick bottom & mod slide in bottom</button>
+<button class="btn js-modal-trigger" data-modal="ModalWithInnerBackdrop">Modal with a prompt</button>
 
-<!-- Base Modals -->
+<!-- Modals -->
 <div class="modal-container" id="BaseModal">
     <div class="modal-content">
-        <div class="content-header">
+        <header class="modal-header">
             <h1>Basic modal</h1>
-            <span class="small-close js-modal-close" title="">
+            <span class="small-close js-modal-close">
                 <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
                     <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
                 </svg>
             </span>
-        </div>
-        <div class="content-body">
+        </header>
+        <div class="modal-body">
             <div class="p2">
                 The basic small modal for all usage!
             </div>
         </div>
-        <div class="content-footer">
+        <footer class="modal-footer">
             <button class="btn js-modal-close">Close</button>
-        </div>
+        </footer>
     </div>
 </div>
-<div class="modal-container mod-big mod-fade-in-scale" id="FadeInScaleModal">
+<div class="modal-container mod-medium mod-fade-in-scale" id="FadeInScaleModal">
     <div class="modal-content">
-        <div class="content-header">
-            <h1>Mod big & mod fade in scale</h1>
-            <span class="small-close js-modal-close" title="">
+        <header class="modal-header">
+            <h1>Mod medium & mod fade in scale</h1>
+            <span class="small-close js-modal-close">
                 <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
                     <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
                 </svg>
             </span>
-        </div>
-        <div class="content-body">
+        </header>
+        <div class="modal-body">
             <div class="p2">
-                A bigger modal with a fade in animation.
+                A medium modal with a fade in animation.
             </div>
         </div>
-        <div class="content-footer">
+        <footer class="modal-footer">
             <button class="btn js-modal-close">Close</button>
-        </div>
+        </footer>
     </div>
 </div>
-<div class="modal-container mod-stick-bottom mod-slide-in-bottom" id="SlideInBottomModal">
+<div class="modal-container mod-big mod-stick-bottom mod-slide-in-bottom" id="SlideInBottomModal">
     <div class="modal-content">
-        <div class="content-header">
-            <h1>Mod stick bottom & mod slide in bottom</h1>
-            <span class="small-close js-modal-close" title="">
+        <header class="modal-header">
+            <h1>Mod big & mod stick bottom & mod slide in bottom</h1>
+            <span class="small-close js-modal-close">
                 <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
                     <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
                 </svg>
             </span>
-        </div>
-        <div class="content-body">
+        </header>
+        <div class="modal-body">
             <div class="p2">
                 A big modal that slides in from the bottom.
             </div>
         </div>
-        <div class="content-footer">
+        <footer class="modal-footer">
             <button class="btn mod-primary js-modal-close">Submit</button>
             <button class="btn js-modal-close">Close</button>
-        </div>
+        </footer>
     </div>
 </div>
-<div class="modal-container mod-big mod-slide-in-bottom" id="ModalInnerBackdrop">
+<div class="modal-container mod-big mod-fade-in-scale" id="ModalWithInnerBackdrop">
     <div class="modal-content">
-        <div class="content-header">
-            <h1>Modal with inner backdrop</h1>
-            <span class="small-close js-modal-close" title="">
+        <header class="modal-header">
+            <h1>Modal with a prompt</h1>
+            <span class="small-close js-modal-close">
                 <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
                     <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
                 </svg>
             </span>
-        </div>
-        <div class="content-body">
+        </header>
+        <div class="modal-body">
             <div class="p2">
-                A modal with an inner prompt (useful when showing a prompt over a modal).
+                A modal with an inner backdrop and a prompt over it.
             </div>
         </div>
-        <div class="content-footer">
+        <footer class="modal-footer">
             <button class="btn js-modal-close">Close</button>
-        </div>
+        </footer>
+
+        <!-- The inner backdrop for the prompt -->
         <div class="modal-backdrop prompt-backdrop"></div>
     </div>
 </div>
+
+<!-- The prompt using class layer-2 to have a z-index higher than the one of the underlying modal -->
+<div class="modal-container mod-fade-in-scale layer-2" id="ModalWithInnerBackdropPrompt">
+    <div class="modal-content">
+        <header class="modal-header">
+            <h1>A prompt</h1>
+            <span class="small-close js-modal-close">
+                <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
+                    <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
+                </svg>
+            </span>
+        </header>
+        <div class="modal-body">
+            <div class="p2">
+                A small prompt over the main modal.
+            </div>
+        </div>
+        <!-- It's kind of preferable to always have a footer even if there is nothing in it. -->
+        <footer class="modal-footer"></footer>
+    </div>
+</div>
+
+<!-- The main backdrop -->
 <div class="modal-backdrop closed"></div>
