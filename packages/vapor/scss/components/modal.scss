@@ -68,24 +68,27 @@ $base-modal-z-index: 1050;
     flex-direction: column;
 
     display: flex;
-    width: 50%;
+    width: 45%;
     height: 50%;
 
     border-radius: 2px;
 
     pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
 
-    .content-header {
-      justify-content: space-between;
+    .modal-header {
+      align-items: center;
 
       display: flex;
-      padding: 30px 52px 40px;
+      height: $modal-header-height;
+      padding: 0 $header-padding;
 
       color: $pure-white;
 
       background-color: $dark-blue;
 
       h1 {
+        flex-grow: 1;
+
         overflow: hidden;
 
         line-height: 30px;
@@ -94,7 +97,6 @@ $base-modal-z-index: 1050;
       }
 
       .small-close {
-        margin-top: 6px;
         margin-left: 20px;
 
         cursor: pointer;
@@ -107,7 +109,7 @@ $base-modal-z-index: 1050;
       }
     }
 
-    .content-body {
+    .modal-body {
       flex: 1;
 
       overflow: auto;
@@ -115,11 +117,11 @@ $base-modal-z-index: 1050;
       background-color: $pure-white;
     }
 
-    .content-footer {
+    .modal-footer {
       justify-content: flex-end;
 
       display: flex;
-      padding: 24px 52px;
+      padding: 24px 40px;
       overflow: hidden;
 
       background-color: $white;
@@ -127,19 +129,31 @@ $base-modal-z-index: 1050;
     }
   }
 
+  &.mod-medium .modal-content {
+    width: 65%;
+    height: 70%;
+  }
+
   &.mod-big .modal-content {
-    width: 70%;
-    height: 80%;
+    width: 85%;
+    height: 90%;
   }
 
   &.mod-stick-bottom {
     align-items: flex-end;
 
     .modal-content {
-      width: 70%;
-      height: 85%;
+      height: 55%;
 
       border-radius: 2px 2px 0 0;
+    }
+
+    &.mod-medium .modal-content {
+      height: 75%;
+    }
+
+    &.mod-big .modal-content {
+      height: 95%;
     }
   }
 
@@ -158,7 +172,7 @@ $base-modal-z-index: 1050;
   }
 
   &.mod-slide-in-bottom .modal-content {
-    transform: translateY(20%);
+    transform: translate3d(0, 20%, 0);
 
     transition: all 0.3s;
 
@@ -166,7 +180,7 @@ $base-modal-z-index: 1050;
   }
 
   &.opened.mod-slide-in-bottom .modal-content {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
 
     opacity: 1;
   }
