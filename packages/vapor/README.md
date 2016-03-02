@@ -27,12 +27,10 @@ Coveo Styleguide uses [jQuery](https://jquery.com/) and [Underscore](http://unde
 To build the dist folder and export it into the docs folder, simply run `gulp docs`.
 
 ### Running documentation locally
-1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation)
-
-   > OSX El Capitan users might run into permissions issues on `gem install` run `sudo gem install -n /usr/local/bin` instead.
-
-2. From the project root directory, run `jekyll serve` in the command line.
-3. Open `http://localhost:4000/styleguide/` in your browser, and voila!
+1. If necessary install bundler `gem install bundler` (sudo may be needed)
+2. Install needed gems `bundle install`
+3. From the project root directory, run `bundle exec jekyll serve` in the command line.
+4. Open `http://localhost:4000/styleguide/` in your browser, and voila!
 
 ### Test locally without publishing
 To easily test the result locally without publishing a new package at each build:
