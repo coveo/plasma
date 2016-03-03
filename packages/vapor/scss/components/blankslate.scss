@@ -1,0 +1,22 @@
+.blankslate {
+  padding: 30px;
+  margin: 20px;
+
+  color: $medium-blue;
+  text-align: center;
+
+  background-color: $white;
+  border: 1px solid $medium-blue;
+  border-radius: 2px;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    margin-bottom: 15px;
+
+    color: $medium-blue;
+  }
+}
