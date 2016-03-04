@@ -1,7 +1,7 @@
 ---
 type: controls
 title: Dropdown Modifiers
-usage: Modifiers for the Dropdown control { mod-menu } .
+usage: Modifiers for the Dropdown control { mod-menu, mod-right } .
 stylesheet: '/scss/controls/dropdown.scss'
 ---
 <div class="dropdown open mod-menu">
@@ -14,7 +14,7 @@ stylesheet: '/scss/controls/dropdown.scss'
             </svg>
         </span>
 
-        Menu
+        mod-menu
 
     </button>
 
@@ -24,6 +24,30 @@ stylesheet: '/scss/controls/dropdown.scss'
         </li>
         <li>
             <span>Item 2</span>
+        </li>
+    </ul>
+</div>
+
+<div class="dropdown open right">
+    <button class="btn dropdown-toggle" type="button">
+        <span class="dropdown-toggle-arrow">
+            <svg class="fill-dark-blue" viewBox="0 0 512 512" style="height: 16px; width: 16px">
+                <g style="pointer-events: none;">
+                    <path d="M128 320l128 128 128-128"></path>
+                </g>
+            </svg>
+        </span>
+
+        mod-right
+
+    </button>
+
+    <ul class="dropdown-menu mod-right">
+        <li>
+            <span>Item 1</span>
+        </li>
+        <li>
+            <span>Really Long Item</span>
         </li>
     </ul>
 </div>

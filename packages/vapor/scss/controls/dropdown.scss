@@ -39,6 +39,11 @@
     border: 1px solid $dark-blue;
     border-radius: 0 0 2px 2px;
 
+    &.mod-right {
+      right: 0;
+      left: auto;
+    }
+
     li {
       > a, > span {
         display: block;
