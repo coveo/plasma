@@ -76,8 +76,6 @@ $base-modal-z-index: 1050;
     width: 45%;
     height: 50%;
 
-    border-radius: 2px;
-
     opacity: 0;
     pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
 
@@ -91,6 +89,7 @@ $base-modal-z-index: 1050;
       color: $pure-white;
 
       background-color: $dark-blue;
+      border-radius: 2px 2px 0 0;
 
       h1 {
         flex-grow: 1;
@@ -133,6 +132,7 @@ $base-modal-z-index: 1050;
 
       background-color: $white;
       border-top: solid 1px $medium-grey;
+      border-radius: 0 0 2px 2px;
     }
   }
 
@@ -152,7 +152,9 @@ $base-modal-z-index: 1050;
     > .modal-content {
       height: 55%;
 
-      border-radius: 2px 2px 0 0;
+      > .modal-footer {
+        border-radius: 0;
+      }
     }
 
     &.mod-medium > .modal-content {
