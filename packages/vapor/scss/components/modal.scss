@@ -62,9 +62,14 @@ $base-modal-z-index: 1050;
 
   &.opening, &.opened {
     visibility: visible;
+
+    > .modal-content {
+      opacity: 1;
+    }
   }
 
   .modal-content {
+    position: relative;
     flex-direction: column;
 
     display: flex;
@@ -73,6 +78,7 @@ $base-modal-z-index: 1050;
 
     border-radius: 2px;
 
+    opacity: 0;
     pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
 
     .modal-header {
@@ -130,12 +136,12 @@ $base-modal-z-index: 1050;
     }
   }
 
-  &.mod-medium .modal-content {
+  &.mod-medium > .modal-content {
     width: 65%;
     height: 70%;
   }
 
-  &.mod-big .modal-content {
+  &.mod-big > .modal-content {
     width: 85%;
     height: 90%;
   }
@@ -143,46 +149,38 @@ $base-modal-z-index: 1050;
   &.mod-stick-bottom {
     align-items: flex-end;
 
-    .modal-content {
+    > .modal-content {
       height: 55%;
 
       border-radius: 2px 2px 0 0;
     }
 
-    &.mod-medium .modal-content {
+    &.mod-medium > .modal-content {
       height: 75%;
     }
 
-    &.mod-big .modal-content {
+    &.mod-big > .modal-content {
       height: 95%;
     }
   }
 
-  &.mod-fade-in-scale .modal-content {
+  &.mod-fade-in-scale > .modal-content {
     transform: scale(0.7);
 
     transition: all 0.3s;
-
-    opacity: 0;
   }
 
-  &.opened.mod-fade-in-scale .modal-content {
+  &.opened.mod-fade-in-scale > .modal-content {
     transform: scale(1);
-
-    opacity: 1;
   }
 
-  &.mod-slide-in-bottom .modal-content {
+  &.mod-slide-in-bottom > .modal-content {
     transform: translate3d(0, 20%, 0);
 
     transition: all 0.3s;
-
-    opacity: 0;
   }
 
-  &.opened.mod-slide-in-bottom .modal-content {
+  &.opened.mod-slide-in-bottom > .modal-content {
     transform: translate3d(0, 0, 0);
-
-    opacity: 1;
   }
 }
