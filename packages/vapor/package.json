@@ -27,6 +27,7 @@
     "url": "https://github.com/Coveo/styleguide.git"
   },
   "dependencies": {
+    "chosen-npm": "1.4.2",
     "coveo-slider": "0.9.8"
   },
   "devDependencies": {

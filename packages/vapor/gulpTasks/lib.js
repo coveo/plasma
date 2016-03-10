@@ -14,7 +14,7 @@ var useMinifiedSources = gutil.env.min;
 var useGzippedSources = gutil.env.gzip;
 
 gulp.task('lib', 'Concat and export libs to dist folder', function () {
-    return gulp.src(['./lib/js/*','./node_modules/coveo-slider/dist/js/Coveo.Slider.js'])
+    return gulp.src(['./lib/js/*','./node_modules/coveo-slider/dist/js/Coveo.Slider.js','./node_modules/chosen-npm/public/chosen.jquery.js'])
         .pipe(concat('CoveoStyleGuide.Dependencies.js'))
         .pipe(gulp.dest('./dist/js'))
         .pipe(gulpif(useMinifiedSources, uglify()))
