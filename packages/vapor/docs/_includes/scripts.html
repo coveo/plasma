@@ -17,6 +17,9 @@
                 var selectedTabParend = $('.navigation-menu-section-item-link[href*="' + window.location.pathname + '"]');
                 selectedTab = $(selectedTabParend[0]).parent().addClass('state-active');
             }
+
+            /* chosen select initialisation */
+            $('.chosen').chosen();
         };
 
         $('.navigation-menu-section-item').click(function() {

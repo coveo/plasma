@@ -1,0 +1,235 @@
+.chosen-container {
+  position: relative;
+
+  display: inline-block;
+
+  font-size: 13px;
+  vertical-align: middle;
+
+  user-select: none;
+
+  &:focus {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .chosen-drop {
+    position: absolute;
+    top: 100%;
+    left: -9999px;
+    z-index: 1010;
+
+    width: 100%;
+
+    background: $pure-white;
+    border: 1px solid #aaaaaa;
+    border-top: 0;
+  }
+
+  &.chosen-with-drop {
+    .chosen-single {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .chosen-drop {
+      left: 0;
+    }
+  }
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.chosen-container-single {
+  .chosen-single {
+    position: relative;
+    align-items: center;
+
+    display: flex;
+    height: 34px;
+    padding: 0 10px;
+    overflow: hidden;
+
+    color: $medium-blue;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+
+    background-color: $pure-white;
+    background-clip: padding-box;
+    border: 1px solid $medium-grey;
+    border-radius: 2px;
+
+    span {
+      width: 100%;
+      padding-right: 10px;
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    div {
+      top: 0;
+      right: 0;
+      align-items: center;
+
+      display: flex;
+      height: 100%;
+    }
+  }
+
+  .chosen-default {
+    color: #999999;
+  }
+
+  .chosen-single-with-deselect span {
+    margin-right: 38px;
+  }
+
+  .chosen-search {
+    position: relative;
+    z-index: 1010;
+
+    padding: 3px 4px;
+    margin: 0;
+
+    white-space: nowrap;
+
+    input[type='text'] {
+      width: 100%;
+      height: 32px;
+      padding: 4px 24px 4px 5px;
+      margin: 1px 0;
+
+      font-size: 13px;
+      line-height: normal;
+
+      border: 1px solid $medium-grey;
+      border-radius: 2px;
+      outline: 0;
+    }
+  }
+
+  .chosen-drop {
+    margin-top: -2px;
+
+    background-clip: padding-box;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4);
+    border: 1px solid $medium-blue;
+    border-radius: 2px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  &.chosen-container-single-nosearch .chosen-search {
+    position: absolute;
+    left: -9999px;
+  }
+}
+
+.chosen-container .chosen-results {
+  position: relative;
+
+  max-height: 240px;
+  margin-bottom: 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  $text-color: #000000;
+  -webkit-overflow-scrolling: touch;
+
+  li {
+    display: none;
+    padding: 8px 12px;
+    margin: 0;
+
+    color: #000000;
+    font-size: 13px;
+    line-height: 16px;
+    word-wrap: break-word;
+    list-style: none;
+
+    -webkit-touch-callout: none;
+
+    &.active-result {
+      display: list-item;
+
+      cursor: pointer;
+    }
+
+    &.disabled-result {
+      display: list-item;
+
+      color: #cccccc;
+
+      cursor: default;
+    }
+
+    &.highlighted {
+      background-color: $light-grey;
+    }
+
+    &.no-results {
+      display: list-item;
+
+      background: $pure-white;
+
+      $text-color: #000000;
+    }
+
+    &.result-selected {
+      color: $medium-blue;
+      font-weight: bold;
+    }
+
+    em {
+      color: #000000;
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+}
+
+/* svg */
+.chosen-search {
+  input[type='text'] {
+    background-image: url('data:image/svg+xml, %3Csvg%20fill%3D%22%23bcc3ca%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%0A%09%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%20%3E%0A%3Cg%20display%3D%22none%22%20opacity%3D%220.3%22%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2248%22%20y1%3D%220%22%20x2%3D%2248%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2280%22%20y1%3D%220%22%20x2%3D%2280%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22112%22%20y1%3D%220%22%20x2%3D%22112%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22144%22%20y1%3D%220%22%20x2%3D%22144%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22176%22%20y1%3D%220%22%20x2%3D%22176%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22208%22%20y1%3D%220%22%20x2%3D%22208%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22240%22%20y1%3D%220%22%20x2%3D%22240%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22272%22%20y1%3D%220%22%20x2%3D%22272%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22304%22%20y1%3D%220%22%20x2%3D%22304%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22336%22%20y1%3D%220%22%20x2%3D%22336%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22368%22%20y1%3D%220%22%20x2%3D%22368%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22400%22%20y1%3D%220%22%20x2%3D%22400%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22432%22%20y1%3D%220%22%20x2%3D%22432%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22464%22%20y1%3D%220%22%20x2%3D%22464%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22496%22%20y1%3D%220%22%20x2%3D%22496%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2248%22%20x2%3D%22512%22%20y2%3D%2248%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2280%22%20x2%3D%22512%22%20y2%3D%2280%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22112%22%20x2%3D%22512%22%20y2%3D%22112%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22144%22%20x2%3D%22512%22%20y2%3D%22144%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22176%22%20x2%3D%22512%22%20y2%3D%22176%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22208%22%20x2%3D%22512%22%20y2%3D%22208%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22240%22%20x2%3D%22512%22%20y2%3D%22240%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22272%22%20x2%3D%22512%22%20y2%3D%22272%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22304%22%20x2%3D%22512%22%20y2%3D%22304%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22336%22%20x2%3D%22512%22%20y2%3D%22336%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22368%22%20x2%3D%22512%22%20y2%3D%22368%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22400%22%20x2%3D%22512%22%20y2%3D%22400%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22432%22%20x2%3D%22512%22%20y2%3D%22432%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22464%22%20x2%3D%22512%22%20y2%3D%22464%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22496%22%20x2%3D%22512%22%20y2%3D%22496%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2216%22%20x2%3D%22512%22%20y2%3D%2216%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2216%22%20y1%3D%220%22%20x2%3D%2216%22%20y2%3D%22512%22/%3E%0A%3C/g%3E%0A%3Cg%20display%3D%22none%22%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2232%22%20y1%3D%220%22%20x2%3D%2232%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2264%22%20y1%3D%220%22%20x2%3D%2264%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2296%22%20y1%3D%220%22%20x2%3D%2296%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22128%22%20y1%3D%220%22%20x2%3D%22128%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22160%22%20y1%3D%220%22%20x2%3D%22160%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22192%22%20y1%3D%220%22%20x2%3D%22192%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22224%22%20y1%3D%220%22%20x2%3D%22224%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22256%22%20y1%3D%220%22%20x2%3D%22256%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22288%22%20y1%3D%220%22%20x2%3D%22288%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22320%22%20y1%3D%220%22%20x2%3D%22320%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22352%22%20y1%3D%220%22%20x2%3D%22352%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22384%22%20y1%3D%220%22%20x2%3D%22384%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22416%22%20y1%3D%220%22%20x2%3D%22416%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22448%22%20y1%3D%220%22%20x2%3D%22448%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22480%22%20y1%3D%220%22%20x2%3D%22480%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2232%22%20x2%3D%22512%22%20y2%3D%2232%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2264%22%20x2%3D%22512%22%20y2%3D%2264%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2296%22%20x2%3D%22512%22%20y2%3D%2296%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22128%22%20x2%3D%22512%22%20y2%3D%22128%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22160%22%20x2%3D%22512%22%20y2%3D%22160%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22192%22%20x2%3D%22512%22%20y2%3D%22192%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22224%22%20x2%3D%22512%22%20y2%3D%22224%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22256%22%20x2%3D%22512%22%20y2%3D%22256%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22288%22%20x2%3D%22512%22%20y2%3D%22288%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22320%22%20x2%3D%22512%22%20y2%3D%22320%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22352%22%20x2%3D%22512%22%20y2%3D%22352%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22384%22%20x2%3D%22512%22%20y2%3D%22384%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22416%22%20x2%3D%22512%22%20y2%3D%22416%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22448%22%20x2%3D%22512%22%20y2%3D%22448%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22480%22%20x2%3D%22512%22%20y2%3D%22480%22/%3E%0A%09%3Crect%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20width%3D%22512%22%20height%3D%22512%22/%3E%0A%3C/g%3E%0A%3Cpath%20d%3D%22M512%2C448L355.955%2C291.955C373.744%2C262.839%2C384%2C228.618%2C384%2C192C384%2C85.961%2C298.037%2C0%2C192%2C0C85.961%2C0%2C0%2C85.961%2C0%2C192%0A%09c0%2C106.037%2C85.961%2C192%2C192%2C192c36.618%2C0%2C70.839-10.256%2C99.955-28.045L448%2C512L512%2C448z%20M192%2C320c-70.693%2C0-128-57.309-128-128%0A%09c0-70.693%2C57.308-128%2C128-128c70.689%2C0%2C128%2C57.307%2C128%2C128C320%2C262.691%2C262.689%2C320%2C192%2C320z%22/%3E%0A%3C/svg%3E%0A');
+    background-repeat: no-repeat;
+    background-position: right -18px top;
+    background-position-y: center;
+    background-size: 14px;
+  }
+}
+
+.chosen-container-single {
+  .chosen-single {
+    div {
+      b {
+        width: 10px;
+        height: 100%;
+
+        background-image: url('data:image/svg+xml;utf8,%3Csvg%20fill%3D%22%231d4f76%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%0A%09%20width%3D%22512px%22%20height%3D%22512px%22%20viewBox%3D%220%200%20512%20512%22%3E%0A%3Cg%20display%3D%22none%22%20opacity%3D%220.3%22%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2248%22%20y1%3D%220%22%20x2%3D%2248%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2280%22%20y1%3D%220%22%20x2%3D%2280%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22112%22%20y1%3D%220%22%20x2%3D%22112%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22144%22%20y1%3D%220%22%20x2%3D%22144%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22176%22%20y1%3D%220%22%20x2%3D%22176%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22208%22%20y1%3D%220%22%20x2%3D%22208%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22240%22%20y1%3D%220%22%20x2%3D%22240%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22272%22%20y1%3D%220%22%20x2%3D%22272%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22304%22%20y1%3D%220%22%20x2%3D%22304%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22336%22%20y1%3D%220%22%20x2%3D%22336%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22368%22%20y1%3D%220%22%20x2%3D%22368%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22400%22%20y1%3D%220%22%20x2%3D%22400%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22432%22%20y1%3D%220%22%20x2%3D%22432%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22464%22%20y1%3D%220%22%20x2%3D%22464%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22496%22%20y1%3D%220%22%20x2%3D%22496%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2248%22%20x2%3D%22512%22%20y2%3D%2248%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2280%22%20x2%3D%22512%22%20y2%3D%2280%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22112%22%20x2%3D%22512%22%20y2%3D%22112%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22144%22%20x2%3D%22512%22%20y2%3D%22144%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22176%22%20x2%3D%22512%22%20y2%3D%22176%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22208%22%20x2%3D%22512%22%20y2%3D%22208%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22240%22%20x2%3D%22512%22%20y2%3D%22240%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22272%22%20x2%3D%22512%22%20y2%3D%22272%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22304%22%20x2%3D%22512%22%20y2%3D%22304%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22336%22%20x2%3D%22512%22%20y2%3D%22336%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22368%22%20x2%3D%22512%22%20y2%3D%22368%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22400%22%20x2%3D%22512%22%20y2%3D%22400%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22432%22%20x2%3D%22512%22%20y2%3D%22432%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22464%22%20x2%3D%22512%22%20y2%3D%22464%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22496%22%20x2%3D%22512%22%20y2%3D%22496%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2216%22%20x2%3D%22512%22%20y2%3D%2216%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2216%22%20y1%3D%220%22%20x2%3D%2216%22%20y2%3D%22512%22/%3E%0A%3C/g%3E%0A%3Cg%20display%3D%22none%22%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2232%22%20y1%3D%220%22%20x2%3D%2232%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2264%22%20y1%3D%220%22%20x2%3D%2264%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2296%22%20y1%3D%220%22%20x2%3D%2296%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22128%22%20y1%3D%220%22%20x2%3D%22128%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22160%22%20y1%3D%220%22%20x2%3D%22160%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22192%22%20y1%3D%220%22%20x2%3D%22192%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22224%22%20y1%3D%220%22%20x2%3D%22224%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22256%22%20y1%3D%220%22%20x2%3D%22256%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22288%22%20y1%3D%220%22%20x2%3D%22288%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22320%22%20y1%3D%220%22%20x2%3D%22320%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22352%22%20y1%3D%220%22%20x2%3D%22352%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22384%22%20y1%3D%220%22%20x2%3D%22384%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22416%22%20y1%3D%220%22%20x2%3D%22416%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22448%22%20y1%3D%220%22%20x2%3D%22448%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22480%22%20y1%3D%220%22%20x2%3D%22480%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2232%22%20x2%3D%22512%22%20y2%3D%2232%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2264%22%20x2%3D%22512%22%20y2%3D%2264%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2296%22%20x2%3D%22512%22%20y2%3D%2296%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22128%22%20x2%3D%22512%22%20y2%3D%22128%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22160%22%20x2%3D%22512%22%20y2%3D%22160%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22192%22%20x2%3D%22512%22%20y2%3D%22192%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22224%22%20x2%3D%22512%22%20y2%3D%22224%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22256%22%20x2%3D%22512%22%20y2%3D%22256%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22288%22%20x2%3D%22512%22%20y2%3D%22288%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22320%22%20x2%3D%22512%22%20y2%3D%22320%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22352%22%20x2%3D%22512%22%20y2%3D%22352%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22384%22%20x2%3D%22512%22%20y2%3D%22384%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22416%22%20x2%3D%22512%22%20y2%3D%22416%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22448%22%20x2%3D%22512%22%20y2%3D%22448%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22480%22%20x2%3D%22512%22%20y2%3D%22480%22/%3E%0A%09%3Crect%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20width%3D%22512%22%20height%3D%22512%22/%3E%0A%3C/g%3E%0A%3Cpolyline%20points%3D%220%2C128%20512%2C128%20256%2C384%20%22/%3E%0A%3C/svg%3E%0A');
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-position-y: center;
+        background-size: 10px;
+      }
+    }
+  }
+
+  &.chosen-with-drop {
+    .chosen-single {
+      div {
+        b {
+          background-image: url('data:image/svg+xml, %3Csvg%20fill%3D%22%231d4f76%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%0A%09%20width%3D%22512px%22%20height%3D%22512px%22%20viewBox%3D%220%200%20512%20512%22%20%3E%0A%3Cg%20display%3D%22none%22%20opacity%3D%220.3%22%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2248%22%20y1%3D%220%22%20x2%3D%2248%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2280%22%20y1%3D%220%22%20x2%3D%2280%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22112%22%20y1%3D%220%22%20x2%3D%22112%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22144%22%20y1%3D%220%22%20x2%3D%22144%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22176%22%20y1%3D%220%22%20x2%3D%22176%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22208%22%20y1%3D%220%22%20x2%3D%22208%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22240%22%20y1%3D%220%22%20x2%3D%22240%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22272%22%20y1%3D%220%22%20x2%3D%22272%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22304%22%20y1%3D%220%22%20x2%3D%22304%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22336%22%20y1%3D%220%22%20x2%3D%22336%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22368%22%20y1%3D%220%22%20x2%3D%22368%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22400%22%20y1%3D%220%22%20x2%3D%22400%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22432%22%20y1%3D%220%22%20x2%3D%22432%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22464%22%20y1%3D%220%22%20x2%3D%22464%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22496%22%20y1%3D%220%22%20x2%3D%22496%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2248%22%20x2%3D%22512%22%20y2%3D%2248%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2280%22%20x2%3D%22512%22%20y2%3D%2280%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22112%22%20x2%3D%22512%22%20y2%3D%22112%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22144%22%20x2%3D%22512%22%20y2%3D%22144%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22176%22%20x2%3D%22512%22%20y2%3D%22176%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22208%22%20x2%3D%22512%22%20y2%3D%22208%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22240%22%20x2%3D%22512%22%20y2%3D%22240%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22272%22%20x2%3D%22512%22%20y2%3D%22272%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22304%22%20x2%3D%22512%22%20y2%3D%22304%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22336%22%20x2%3D%22512%22%20y2%3D%22336%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22368%22%20x2%3D%22512%22%20y2%3D%22368%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22400%22%20x2%3D%22512%22%20y2%3D%22400%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22432%22%20x2%3D%22512%22%20y2%3D%22432%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22464%22%20x2%3D%22512%22%20y2%3D%22464%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22496%22%20x2%3D%22512%22%20y2%3D%22496%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2216%22%20x2%3D%22512%22%20y2%3D%2216%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2216%22%20y1%3D%220%22%20x2%3D%2216%22%20y2%3D%22512%22/%3E%0A%3C/g%3E%0A%3Cg%20display%3D%22none%22%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2232%22%20y1%3D%220%22%20x2%3D%2232%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2264%22%20y1%3D%220%22%20x2%3D%2264%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%2296%22%20y1%3D%220%22%20x2%3D%2296%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22128%22%20y1%3D%220%22%20x2%3D%22128%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22160%22%20y1%3D%220%22%20x2%3D%22160%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22192%22%20y1%3D%220%22%20x2%3D%22192%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22224%22%20y1%3D%220%22%20x2%3D%22224%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22256%22%20y1%3D%220%22%20x2%3D%22256%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22288%22%20y1%3D%220%22%20x2%3D%22288%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22320%22%20y1%3D%220%22%20x2%3D%22320%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22352%22%20y1%3D%220%22%20x2%3D%22352%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22384%22%20y1%3D%220%22%20x2%3D%22384%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22416%22%20y1%3D%220%22%20x2%3D%22416%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22448%22%20y1%3D%220%22%20x2%3D%22448%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%22480%22%20y1%3D%220%22%20x2%3D%22480%22%20y2%3D%22512%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2232%22%20x2%3D%22512%22%20y2%3D%2232%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2264%22%20x2%3D%22512%22%20y2%3D%2264%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%2296%22%20x2%3D%22512%22%20y2%3D%2296%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22128%22%20x2%3D%22512%22%20y2%3D%22128%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22160%22%20x2%3D%22512%22%20y2%3D%22160%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22192%22%20x2%3D%22512%22%20y2%3D%22192%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22224%22%20x2%3D%22512%22%20y2%3D%22224%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22256%22%20x2%3D%22512%22%20y2%3D%22256%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22288%22%20x2%3D%22512%22%20y2%3D%22288%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22320%22%20x2%3D%22512%22%20y2%3D%22320%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22352%22%20x2%3D%22512%22%20y2%3D%22352%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22384%22%20x2%3D%22512%22%20y2%3D%22384%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22416%22%20x2%3D%22512%22%20y2%3D%22416%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22448%22%20x2%3D%22512%22%20y2%3D%22448%22/%3E%0A%09%3Cline%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20x1%3D%220%22%20y1%3D%22480%22%20x2%3D%22512%22%20y2%3D%22480%22/%3E%0A%09%3Crect%20display%3D%22inline%22%20fill%3D%22none%22%20stroke%3D%22%23B35047%22%20width%3D%22512%22%20height%3D%22512%22/%3E%0A%3C/g%3E%0A%3Cpolyline%20points%3D%22512%2C384%200%2C384%20256%2C128%20%22/%3E%0A%3C/svg%3E');
+        }
+      }
+    }
+  }
+}
