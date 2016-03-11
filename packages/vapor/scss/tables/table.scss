@@ -7,6 +7,8 @@ table {
   border-spacing: 0;
 
   th, td {
+    position: relative;
+
     padding: 5px 15px;
 
     text-align: left;
@@ -24,16 +26,6 @@ table {
 
   th:first-child {
     padding-left: 20px;
-  }
-
-  &.mod-align-header {
-    th:first-child {
-      padding-left: $header-padding;
-    }
-
-    tbody tr td:first-child {
-      padding-left: $table-first-column-padding-left;
-    }
   }
 
   thead tr {

@@ -1,0 +1,11 @@
+table {
+  &.mod-align-header {
+    th:first-child {
+      padding-left: $header-padding;
+    }
+
+    tbody tr td:first-child {
+      padding-left: $table-first-column-padding-left;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+table {
+  &.mod-collapsible-rows {
+    tr {
+      height: $table-collapsible-row-height;
+
+      td {
+        [data-collapse-state='collapsed'] {
+          .state-expanded {
+            display: none;
+          }
+          .state-collapsed {
+            display: inline;
+          }
+        }
+
+        [data-collapse-state='expanded'] {
+          .state-expanded {
+            display: inline;
+          }
+          .state-collapsed {
+            display: none;
+          }
+        }
+      }
+
+      &.heading-row {
+        &.opened td {
+          background-color: $light-grey;
+        }
+      }
+
+      &.collapsible-row {
+        height: 0;
+
+        td {
+          padding: 0;
+
+          border-bottom: 0;
+
+          .container {
+            display: none;
+          }
+        }
+
+        &.in td {
+          border-bottom: $table-border;
+        }
+
+        td {
+          background-color: $light-grey;
+        }
+
+        .box {
+          margin: 0 10px;
+
+          &.padded {
+            padding: 5px 10px;
+          }
+
+          .label, .value {
+            padding: 5px;
+            overflow: hidden;
+
+            font-size: 12px;
+            text-overflow: ellipsis;
+          }
+
+          .label {
+            font-weight: bold;
+          }
+        }
+
+        .columns {
+          column-count: 3;
+
+          .box {
+            page-break-inside: avoid; /* Theoretically FF 20+ */
+
+            -webkit-column-break-inside: avoid; /* Chrome, Safari */
+            break-inside: avoid-column; /* IE 11 */
+          }
+        }
+      }
+    }
+  }
+}
