@@ -1,14 +1,13 @@
 .flat-select {
+  display: flex;
+
   background-color: $pure-white;
-  border-radius: 2px;
+  border-radius: $border-radius;
 
   .flat-select-option {
-    display: inline-block;
-    float: left; // Prevent unwanted spacing between anchor-tag elements
     height: $flat-select-option-size;
     min-width: $flat-select-option-size;
     padding: 0 4px;
-    margin-right: 10px;
 
     color: $pure-white;
     font-size: 13px;
@@ -17,9 +16,28 @@
 
     background-color: $medium-blue;
     border: 1px solid $medium-blue;
-    border-radius: 2px;
+    border-radius: $border-radius;
 
     cursor: default;
+
+    .icon-container {
+      margin-right: 5px;
+
+      vertical-align: -3px;
+
+      &, .icon {
+        width: 13px;
+        height: 13px;
+      }
+
+      .icon {
+        fill: $pure-white;
+      }
+    }
+
+    & + .flat-select-option {
+      margin-left: 10px;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -36,6 +54,10 @@
       border: 1px solid $medium-grey;
 
       cursor: pointer;
+
+      .icon {
+        fill: $medium-blue;
+      }
     }
 
     &:empty {
@@ -62,6 +84,30 @@
           fill: $medium-grey;
         }
       }
+    }
+  }
+
+  &.mod-btn-group .flat-select-option {
+    height: $button-height;
+    padding: $button-padding-y $button-padding-x;
+
+    font-size: $button-font-size;
+    font-weight: 700;
+    line-height: $button-line-height;
+    text-transform: uppercase;
+
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    &:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+
+    & + .flat-select-option {
+      margin-left: 0;
     }
   }
 }
