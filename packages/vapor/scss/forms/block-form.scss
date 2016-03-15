@@ -1,7 +1,6 @@
+// DEPRECATED, replaced by the coveo-form
 form {
   .coveo-block-form {
-    // TODO implement a correct base form (need to implement base inputs first)
-
     .form-group + .form-group {
       margin-top: 10px;
     }
@@ -9,5 +8,12 @@ form {
     .form-group.sub {
       margin-left: 10px;
     }
+  }
+}
+
+// New simple form, scoped under coveo-form to prevent breaking the table-form
+.coveo-form {
+  .form-group + .form-group {
+    margin-top: 20px;
   }
 }
