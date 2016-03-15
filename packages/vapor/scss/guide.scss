@@ -6,20 +6,16 @@
 @import 'common/font';
 @import 'sprites';
 @import 'variables';
-
 // Typography
 @import 'typography/headings';
 @import 'elements/labels';
 @import 'elements/links';
-
 // Icons
 @import 'elements/icons';
 @import 'elements/color-dot';
-
 // Buttons
 @import 'elements/btn';
 @import 'elements/btn-prepend';
-
 // Controls
 @import 'controls/checkboxes';
 @import 'controls/collapsable';
@@ -52,7 +48,8 @@
   @import 'components/modal';
   @import 'components/blankslate';
   // Forms
-  @import 'forms/forms';
+  @import 'forms/form-validation';
+  @import 'forms/form-sections';
   @import 'forms/table-form';
   @import 'forms/block-form';
   @import 'forms/flex-form';
