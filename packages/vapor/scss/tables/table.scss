@@ -307,4 +307,12 @@ table {
       transition: background-color 300ms;
     }
   }
+
+  &.mod-deleting {
+    tbody {
+      tr.selected {
+        background-color: rgba($red, 0.1);
+      }
+    }
+  }
 }
