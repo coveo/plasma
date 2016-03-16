@@ -41,7 +41,7 @@ form {
         font-family: $base-font-family;
         font-size: 16px;
 
-        background-color: $body-background-color;
+        background-color: $pure-white;
       }
 
       .context-help {
@@ -103,7 +103,7 @@ form {
         &.admin-non-editable {
           padding-left: 9px;
 
-          background-color: $body-background-color;
+          background-color: $pure-white;
 
           i {
             margin-right: 5px;
@@ -198,7 +198,7 @@ form {
         }
 
         label {
-          color: $error-color;
+          color: $red;
         }
 
         label, .value {
