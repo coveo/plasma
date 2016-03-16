@@ -1,5 +1,7 @@
 label.coveo-slide-toggle-label {
-  display: inline-block;
+  align-items: center;
+
+  display: inline-flex;
 
   line-height: 20px;
 
@@ -20,15 +22,10 @@ label.coveo-slide-toggle-label {
   }
 
   &.boxed {
+    display: inline-block; // Required for the float button placement.
     padding: 8px 10px;
 
     border: solid 1px $medium-grey;
-
-    .toggle-label {
-      margin-right: 20px;
-
-      line-height: 20px;
-    }
 
     .toggle-description {
       display: block;
@@ -49,7 +46,7 @@ label.coveo-slide-toggle-label {
 
     &:checked {
       + button:before {
-        background-color: $coveo-green;
+        background-color: $green;
       }
 
       + button:after {
@@ -79,9 +76,9 @@ label.coveo-slide-toggle-label {
 
       content: ' ';
 
-      background-color: $checkbox-slide-background-color;
+      background-color: $medium-grey;
 
-      transition: all 0.35s ease;
+      transition: all 0.2s linear;
     }
 
     &:after {
@@ -91,12 +88,15 @@ label.coveo-slide-toggle-label {
       width: 18px;
       margin-left: 2px;
 
-      background-color: $block-background-color;
+      background-color: $white;
     }
   }
 
   span.toggle-label {
     font-size: 16px;
-    vertical-align: text-top;
+  }
+
+  button + .toggle-label, span + .coveo-slide-toggle + button {
+    margin-left: 10px;
   }
 }

@@ -15,7 +15,7 @@
     }
   }
   .datepicker {
-    background-color: $body-background-color;
+    background-color: $pure-white;
 
     .datepickerBlock {
       border: none !important;
@@ -95,7 +95,7 @@
             font-size: 11px;
             text-align: center;
 
-            background-color: $body-background-color;
+            background-color: $pure-white;
             border: 1px solid $datepicker-border-color;
 
             a {
