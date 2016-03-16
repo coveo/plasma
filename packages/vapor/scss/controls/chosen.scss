@@ -8,8 +8,10 @@
 
   user-select: none;
 
-  &:focus {
-    outline: -webkit-focus-ring-color auto 5px;
+  &.chosen-container-active {
+    a.chosen-single {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
   }
 
   * {

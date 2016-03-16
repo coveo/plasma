@@ -1,7 +1,20 @@
 .prompt .prompt-danger {
+  .label-confirmation {
+    margin-right: 20px;
+
+    .prompt-icon {
+      padding-right: 5px;
+    }
+  }
+
   & > span {
     &.prompt-icon {
       padding-right: 5px;
+    }
+
+    &.description {
+      color: $medium-blue;
+      font-weight: bold;
     }
 
     &.prompt-action {
