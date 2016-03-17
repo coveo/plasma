@@ -7,9 +7,6 @@ input[type=checkbox].coveo-checkbox {
     width: 16px;
     height: 16px;
     padding: 0;
-    margin-top: -2px;
-
-    vertical-align: middle;
 
     background: $pure-white none 0 0;
     border: 1px solid $medium-blue;
@@ -65,7 +62,7 @@ input[type=checkbox].coveo-checkbox {
 
       content: '';
 
-      border: solid white; // Add a white border on the bottom and left, creating that 'L'
+      border: solid $pure-white; // Add a white border on the bottom and left, creating that 'L'
       border-width: 0 2px 2px 0;
       transform: rotate(40deg); // Rotate the L 40 degrees to turn it into a checkmark
     }
@@ -95,29 +92,35 @@ input[type=checkbox].coveo-checkbox {
     }
   }
 
+  &:indeterminate:disabled + button:before {
+    border-color: $pure-white;
+  }
+
   &:disabled + button {
     background-color: $dark-grey;
-    border: none;
 
     cursor: default;
     opacity: 0.2;
   }
 }
 
-label.coveo-checkbox-label {
-  display: inline;
+.coveo-checkbox-label {
+  align-items: center;
+
+  display: inline-flex;
 
   line-height: 16px;
+  vertical-align: middle; // Required to properly position checkboxes into tables.
 
-  & + label.coveo-checkbox-label {
-    margin-top: 5px;
-  }
-
-  & span {
-    margin-left: 5px;
-  }
-
-  &.disabled span {
+  &.disabled .label {
     opacity: 0.4;
   }
+
+  button + .label, .label + .coveo-checkbox + button {
+    margin-left: 10px;
+  }
+}
+
+label[for].coveo-checkbox-label {
+  cursor: pointer;
 }

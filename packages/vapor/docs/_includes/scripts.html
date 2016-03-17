@@ -101,8 +101,8 @@
             $el.find('[data-collapse-state]').attr('data-collapse-state', 'collapsed');
         }
 
-        $('tr.heading-row').click(function(el) {
-            var $el = $(el.currentTarget);
+        $('tr.heading-row').click(function(jQueryEventObject) {
+            var $el = $(jQueryEventObject.currentTarget);
             if ($el.hasClass('opened')) {
                 collapseRowView($el.parent());
             } else {
