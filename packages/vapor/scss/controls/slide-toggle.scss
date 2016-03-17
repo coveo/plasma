@@ -1,61 +1,7 @@
-label.coveo-slide-toggle-label {
-  align-items: center;
+input[type=checkbox].coveo-slide-toggle {
+  display: none;
 
-  display: inline-flex;
-
-  line-height: 20px;
-
-  transition: opacity 0.35s ease;
-
-  cursor: pointer;
-  user-select: none;
-
-  &.disabled, &[for].disabled {
-    cursor: default;
-    opacity: 0.4;
-
-    button {
-      outline: none;
-
-      cursor: default;
-    }
-  }
-
-  &.boxed {
-    display: inline-block; // Required for the float button placement.
-    padding: 8px 10px;
-
-    border: solid 1px $medium-grey;
-
-    .toggle-description {
-      display: block;
-      margin-top: 8px;
-
-      color: $text-color;
-      font-size: 13px;
-      line-height: 16px;
-    }
-
-    button {
-      float: right;
-    }
-  }
-
-  input[type=checkbox].coveo-slide-toggle {
-    display: none;
-
-    &:checked {
-      + button:before {
-        background-color: $green;
-      }
-
-      + button:after {
-        margin-left: 12px;
-      }
-    }
-  }
-
-  button {
+  & + button {
     position: relative;
 
     width: 32px;
@@ -92,11 +38,68 @@ label.coveo-slide-toggle-label {
     }
   }
 
-  span.toggle-label {
+  &:checked {
+    + button:before {
+      background-color: $green;
+    }
+
+    + button:after {
+      margin-left: 12px;
+    }
+  }
+
+  &:disabled + button {
+    outline: none;
+
+    cursor: default;
+  }
+}
+
+.coveo-slide-toggle-label {
+  align-items: center;
+
+  display: inline-flex;
+
+  line-height: 20px;
+
+  transition: opacity 0.35s ease;
+
+  user-select: none;
+
+  &.disabled, &[for].disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  &.boxed {
+    display: inline-block; // Required for the float button placement.
+    padding: 8px 10px;
+
+    border: solid 1px $medium-grey;
+
+    .toggle-description {
+      display: block;
+      margin-top: 8px;
+
+      color: $text-color;
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    button {
+      float: right;
+    }
+  }
+
+  .toggle-label {
     font-size: 16px;
   }
 
-  button + .toggle-label, span + .coveo-slide-toggle + button {
+  button + .toggle-label, .toggle-label + .coveo-slide-toggle + button {
     margin-left: 10px;
   }
+}
+
+label[for].coveo-slide-toggle-label {
+  cursor: pointer;
 }
