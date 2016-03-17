@@ -1,8 +1,14 @@
 .application-container {
-  min-height: $application-container-min-height;
-  margin-top: $header-height;
-  margin-left: $navigation-width;
-  overflow: hidden;
+  flex: 1;
+  order: 2;
+
+  overflow: auto;
 
   border-top-left-radius: 2px;
+}
+
+.application-wrapper {
+  align-content: flex-start;
+  flex: 1;
+  flex-flow: row nowrap;
 }
