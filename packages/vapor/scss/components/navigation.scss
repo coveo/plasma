@@ -1,13 +1,12 @@
 .navigation {
-  z-index: 50;
-
   width: $navigation-width;
-  height: 100%;
-  margin-top: $header-height;
+  overflow: auto;
 
   background-color: $navigation-background-color;
 
   user-select: none;
+
+  @include slim-scroll($dark-grey, $medium-grey);
 
   *, *:before, *:after {
     -webkit-font-smoothing: subpixel-antialiased;
@@ -15,16 +14,13 @@
 
   .navigation-menu {
     position: relative;
-    z-index: 51;
 
-    height: calc(100vh - #{$header-height});
+    height: 100%;
     overflow: auto;
 
     color: $white;
 
     background-color: $navigation-background-color;
-
-    @include slim-scroll($dark-grey, $medium-grey);
 
     .navigation-menu-sections {
       .navigation-menu-section {

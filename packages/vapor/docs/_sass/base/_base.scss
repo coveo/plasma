@@ -13,6 +13,9 @@ dl, dd, ol, ul, figure {
  */
 body {
   background-color: $background-color;
+  flex-flow: column nowrap;
+  display: flex;
+  overflow: hidden;
 }
 
 .page-content {

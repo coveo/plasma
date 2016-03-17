@@ -7,12 +7,16 @@
 
 {% include header.html %}
 
-<div class="page-content application-container">
-    <div class="wrapper">
-        {{ content }}
-    </div>
+<div class="flex flex-row application-wrapper">
+    {% include navigation.html %}
 
-    {% include footer.html %}
+    <div class="page-content application-container">
+        <div class="wrapper">
+            {{ content }}
+        </div>
+
+        {% include footer.html %}
+    </div>
 </div>
 
 {% include scripts.html %}

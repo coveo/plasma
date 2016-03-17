@@ -33,31 +33,3 @@
         <a class="h1 text-white" href="{{ site.baseurl }}/">{{ site.title }}</a>
     </div>
 </header>
-
-<nav class="navigation fixed">
-    <div class="navigation-menu">
-        <ul class="navigation-menu-sections">
-            <li class="block navigation-menu-section">
-                {% for pageInformation in site.pages %}
-                {% if pageInformation.title %}
-                <a href="{{ pageInformation.url | prepend: site.baseurl }}" class="navigation-menu-section-header text-white">
-                    <span class="navigation-menu-section-header-icon"></span>
-                    {{ pageInformation.title }}
-                </a>
-                <ul class="navigation-menu-section-items">
-                    {% for subMenu in site.components %}
-                    {% if subMenu.type == pageInformation.type %}
-                    <li class="navigation-menu-section-item  ">
-                        <a href="{{ pageInformation.url | prepend: site.baseurl }}#{{subMenu.title | slugify }}" class="block navigation-menu-section-item-link">
-                            {{ subMenu.title }}
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                {% endfor %}
-            </li>
-        </ul>
-    </div>
-</nav>
