@@ -25,5 +25,7 @@
     font-family: $font-family;
     font-size: inherit;
     text-transform: none;
+
+    transition: color 0.2s ease;
   }
 }

@@ -109,5 +109,20 @@
                 expandRowView($el.parent());
             }
         });
+
+        // Handle open/close dropdown
+        $('button.dropdown-toggle').click(function(event) {
+            var dropdownEl = $(event.currentTarget).parent();
+            dropdownEl.toggleClass('open', !dropdownEl.hasClass('open'));
+        });
+
+        // Handle selection in flat-select
+        $('.flat-select-option').click(function(event) {
+            var optionEl = $(event.currentTarget);
+            var flatSelectEl = optionEl.parent();
+
+            flatSelectEl.find('.flat-select-option:not(.selectable)').addClass('selectable');
+            optionEl.removeClass('selectable');
+        });
     });
 </script>

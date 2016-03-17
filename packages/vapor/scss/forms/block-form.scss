@@ -1,4 +1,4 @@
-// DEPRECATED, replaced by the coveo-form
+// DEPRECATED, won't be used once Salesforce panel will have been refactored and once coveo-form will be completed.
 form {
   .coveo-block-form {
     .form-group + .form-group {
@@ -13,7 +13,24 @@ form {
 
 // New simple form, scoped under coveo-form to prevent breaking the table-form
 .coveo-form {
-  .form-group + .form-group {
-    margin-top: 20px;
+  .form-control-label {
+    display: inline-block;
+    margin-bottom: $form-control-label-margin;
+
+    color: $medium-blue;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .form-group {
+    display: block;
+
+    & + .form-group {
+      margin-top: $form-group-margin;
+
+      &.textbox {
+        margin-top: $form-group-margin + $textbox-margin-top;
+      }
+    }
   }
 }
