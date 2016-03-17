@@ -120,6 +120,17 @@ $base-modal-z-index: 1050;
       overflow: auto;
 
       background-color: $pure-white;
+
+      &.mod-align-header {
+        padding-right: $header-padding;
+        padding-left: $header-padding;
+
+        // Use mod-full-width to cancel the header-padding for tables inside a modal
+        .mod-full-width {
+          width: calc(100% + 2 * #{$header-padding});
+          margin-left: -$header-padding;
+        }
+      }
     }
 
     .modal-footer {
