@@ -1,10 +1,4 @@
 form {
-  .form-section, .section-heading {
-    &.mod-align-header {
-      padding-left: $header-padding;
-    }
-  }
-
   .form-section {
     margin-top: 10px;
 
@@ -86,9 +80,4 @@ form {
       }
     }
   }
-}
-
-form.mod-align-header {
-  padding-right: $header-padding;
-  padding-left: $header-padding;
 }
