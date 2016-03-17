@@ -32,5 +32,9 @@ form {
         margin-top: $form-group-margin + $textbox-margin-top;
       }
     }
+
+    &.coveo-checkbox-label, &.coveo-slide-toggle-label {
+      display: flex;
+    }
   }
 }
