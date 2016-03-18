@@ -96,7 +96,7 @@ input[type=checkbox].coveo-slide-toggle {
   }
 
   button + .toggle-label, .toggle-label + .coveo-slide-toggle + button {
-    margin-left: 10px;
+    margin-left: $checkbox-label-margin;
   }
 }
 

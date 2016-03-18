@@ -117,7 +117,7 @@ input[type=checkbox].coveo-checkbox {
   }
 
   button + .label, .label + .coveo-checkbox + button {
-    margin-left: 10px;
+    margin-left: $checkbox-label-margin;
   }
 }
 
