@@ -35,11 +35,14 @@ $navigation-locked-color: $medium-grey;
 // Table
 $table-first-column-padding-left: 35px;
 $table-header-height: 32px;
-$table-actions-container-height: 52px;
 $table-border-width: 1px;
 $table-border: $table-border-width solid $medium-grey;
 $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
+// Table actions
+$table-actions-container-height: 52px;
+$table-actions-margin: 30px;
+$table-actions-dropdown-padding-x: 10px;
 // Table collapsible rows
 $table-collapsible-row-height: 45px;
 // Form elements

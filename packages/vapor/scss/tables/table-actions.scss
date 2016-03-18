@@ -6,16 +6,18 @@
   min-height: $table-actions-container-height;
 
   .coveo-table-actions {
-    padding: 10px 19px 10px 30px;
+    align-items: center;
+
+    display: flex;
+    padding: 0 $table-actions-margin;
 
     .actions-row {
+      align-items: center;
+
       display: flex;
     }
 
     .action {
-      padding: 3px 10px;
-      margin-left: 10px;
-
       border: 1px solid transparent;
       border-radius: 2px;
 
@@ -27,7 +29,15 @@
         opacity: 0.3;
       }
 
+      & + .action {
+        margin-left: $table-actions-margin;
+      }
+
       &.dropdown {
+        padding: 3px $table-actions-dropdown-padding-x;
+        margin-right: -$table-actions-dropdown-padding-x;
+        margin-left: calc(#{$table-actions-margin} - #{$table-actions-dropdown-padding-x});
+
         &.open {
           background-color: $light-grey;
           border-color: $medium-grey;
@@ -51,5 +61,9 @@
 
   &.mod-border-top {
     border-top: $table-border;
+  }
+
+  &.mod-align-header .coveo-table-actions:last-child {
+    padding-right: $header-padding;
   }
 }
