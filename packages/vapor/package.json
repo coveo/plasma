@@ -51,6 +51,7 @@
     "gulp-svgstore": "5.0.5",
     "gulp-uglify": "1.4.1",
     "gulp-util": "3.0.6",
+    "guppy-pre-commit": "0.3.0",
     "png-sprite": "0.1.1",
     "require-dir": "0.3.0"
   },
