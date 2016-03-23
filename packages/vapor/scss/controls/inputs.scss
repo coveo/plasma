@@ -44,6 +44,7 @@ input[type='text'], textarea {
 .textbox {
   position: relative;
 
+  max-width: $textbox-max-width;
   margin-top: $textbox-margin-top;
 
   font-size: 15px;
@@ -64,7 +65,7 @@ input[type='text'], textarea {
 
     @include placeholder(transparent);
 
-    &:focus, &:valid {
+    &:focus, &:valid, &:disabled {
       border-bottom-color: $medium-blue;
 
       @include placeholder();
@@ -77,11 +78,22 @@ input[type='text'], textarea {
         font-weight: bold;
       }
     }
+
+    &:disabled {
+      color: $medium-grey;
+
+      border-bottom-color: $medium-grey;
+
+      & + .textbox-label {
+        color: $medium-grey;
+      }
+    }
   }
 
   .textbox-label {
     position: absolute;
     top: 10px;
+    left: 0;
 
     transition: 0.2s ease all;
 
