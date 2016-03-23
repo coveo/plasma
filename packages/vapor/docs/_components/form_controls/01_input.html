@@ -1,10 +1,27 @@
 ---
 type: formControls
 title: Text input
-usage: This is the standard single-line input textbox.
+usage: This is the standard single-line input textbox. The animation is done in pure css by leveraging "required" and "valid" states.
 stylesheet: '/scss/elements/inputs.scss'
 ---
-<div class="textbox">
-    <input class="textbox-input" type="text" required placeholder="Placeholder text"/>
-    <label class="textbox-label">Name</label>
+<div class="coveo-form">
+    <div class="textbox form-group">
+        <input class="textbox-input" type="text" value="My valid value" required placeholder="Placeholder text"/>
+        <label class="textbox-label">Enabled valid input</label>
+    </div>
+
+    <div class="textbox form-group">
+        <input class="textbox-input" type="text" required placeholder="Placeholder text"/>
+        <label class="textbox-label">Enabled invalid input</label>
+    </div>
+
+    <div class="textbox form-group">
+        <input class="textbox-input" type="text" value="My valid value" required disabled/>
+        <label class="textbox-label">Disabled valid input</label>
+    </div>
+
+    <div class="textbox form-group">
+        <input class="textbox-input" type="text" required disabled/>
+        <label class="textbox-label">Disabled invalid input</label>
+    </div>
 </div>
