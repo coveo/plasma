@@ -14,6 +14,8 @@ gulp.task('default', 'Build sass, libs and sprites to the dist folder', [
     'svg'
 ]);
 
+gulp.task('pre-commit', ['sass:format']);
+
 gulp.task('watch', function () {
     gulp.watch('./scss/**/*', ['docs']);
 });

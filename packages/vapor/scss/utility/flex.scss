@@ -15,7 +15,8 @@
 }
 
 .flex-auto {
-  flex: 1 1 auto;
+  flex-basis: auto;
+  flex-grow: 1;
 }
 
 .center-align {

@@ -1,5 +1,6 @@
 .application-container {
-  flex: 1;
+  flex-basis: 0;
+  flex-grow: 1;
   order: 2;
 
   overflow: auto;
@@ -9,6 +10,7 @@
 
 .application-wrapper {
   align-content: flex-start;
-  flex: 1;
+  flex-basis: 0;
   flex-flow: row nowrap;
+  flex-grow: 1;
 }
