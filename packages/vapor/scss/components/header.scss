@@ -21,8 +21,8 @@
 }
 
 .panel-header {
-  height: 110px;
-  padding: 0 $header-padding;
+  min-height: 110px;
+  padding: $header-padding-y $header-padding;
 
   background-color: $white;
   border-bottom: solid 1px $medium-grey;
