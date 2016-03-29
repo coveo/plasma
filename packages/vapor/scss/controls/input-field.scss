@@ -1,0 +1,118 @@
+.input-field {
+  position: relative;
+
+  max-width: $input-field-max-width;
+  margin-top: $input-field-margin-top;
+
+  input {
+    width: 100%;
+    height: $input-field-height;
+    padding: $input-field-vertical-padding 0;
+
+    color: transparent; // Make the input text color transparent when input is invalid (closed).
+    font-size: $input-field-font-size;
+
+    background-color: transparent;
+    box-shadow: none; // Remove firefox invalid input box shadow.
+    border: 0;
+    border-bottom: solid 1px $medium-grey;
+    border-radius: 0;
+    outline: 0;
+
+    transition: 0.2s color ease;
+
+    @include placeholder(transparent);
+
+    &:focus, &:valid, &:disabled {
+      color: $dark-grey;
+
+      border-bottom-color: $medium-blue;
+
+      @include placeholder();
+
+      & + label {
+        top: -1 * $input-field-margin-top;
+
+        color: $medium-blue;
+        font-size: $form-control-label-font-size;
+        font-weight: bold;
+      }
+    }
+
+    &:disabled {
+      color: $medium-grey;
+
+      border-bottom-color: $medium-grey;
+
+      & + label {
+        color: $medium-grey;
+      }
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+
+    transition: 0.2s all ease;
+
+    pointer-events: none;
+  }
+
+  // Validation feedback
+  &.validate input {
+    transition: 0.2s margin-bottom ease, 0.2s color ease;
+
+    &.valid, &.invalid {
+      margin-bottom: 20px;
+    }
+
+    &.valid {
+      border-bottom-color: $green;
+
+      & + label:after {
+        color: $green;
+        content: attr(data-valid-message);
+
+        opacity: 1;
+      }
+    }
+
+    &.invalid {
+      border-bottom-color: $red;
+
+      & + label:after {
+        color: $red;
+        content: attr(data-invalid-message);
+
+        opacity: 1;
+      }
+    }
+
+    & + label {
+      width: 100%;
+
+      &:after {
+        position: absolute;
+        top: 30.1px; // The .1 is a fix for Chrome. Without it, Chrome makes the element bounce... Works in all other browsers.
+
+        display: block;
+
+        content: '';
+        font-size: 13px;
+        font-weight: bold;
+
+        transition: 0.2s all ease;
+
+        opacity: 0;
+      }
+    }
+
+    &:valid, &:focus {
+      & + label:after {
+        top: 55px;
+      }
+    }
+  }
+}

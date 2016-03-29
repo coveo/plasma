@@ -18,7 +18,7 @@ form {
     margin-bottom: $form-control-label-margin;
 
     color: $medium-blue;
-    font-size: 13px;
+    font-size: $form-control-label-font-size;
     font-weight: bold;
   }
 
@@ -28,8 +28,8 @@ form {
     & + .form-group {
       margin-top: $form-group-margin;
 
-      &.textbox {
-        margin-top: $form-group-margin + $textbox-margin-top;
+      &.input-field {
+        margin-top: $form-group-margin + $input-field-margin-top;
       }
     }
 
