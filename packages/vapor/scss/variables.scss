@@ -11,9 +11,12 @@ $button-height: 34px;
 $button-large-height: 50px;
 // Checkboxes and radios
 $checkbox-label-margin: 24px;
-// Text box
-$textbox-margin-top: 15px;
-$textbox-max-width: 440px;
+// Input field
+$input-field-margin-top: 15px;
+$input-field-vertical-padding: 3px;
+$input-field-height: 34px;
+$input-field-max-width: 440px;
+$input-field-font-size: 15px;
 // Filter Box
 $filter-box-height: 34px;
 // Flat select
@@ -51,3 +54,4 @@ $table-collapsible-row-height: 45px;
 $form-elements-margin: 10px;
 $form-group-margin: 30px;
 $form-control-label-margin: 10px;
+$form-control-label-font-size: 13px;
