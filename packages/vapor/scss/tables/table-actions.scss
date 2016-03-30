@@ -2,13 +2,16 @@
   flex-flow: row wrap;
   justify-content: flex-end;
 
+  box-sizing: content-box; // Make sure $table-actions-container-height is respected with or without the mod-border-top class.
   display: flex;
   min-height: $table-actions-container-height;
 
   .coveo-table-actions {
     align-items: center;
 
+    box-sizing: border-box; // Cancel the box-sizing: content-box for coveo-table-actions-container children.
     display: flex;
+    height: $table-actions-container-height;
     padding: 0 $table-actions-margin;
 
     .actions-row {

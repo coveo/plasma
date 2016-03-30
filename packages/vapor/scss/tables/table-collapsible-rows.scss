@@ -1,6 +1,6 @@
 table {
   &.mod-collapsible-rows {
-    tr {
+    tbody tr {
       height: $table-collapsible-row-height;
 
       td {
