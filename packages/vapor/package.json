@@ -22,6 +22,7 @@
     "lint": "csscomb -l scss/**/*.scss",
     "prepublish": "npm run compile"
   },
+  "pre-commit": ["lint", "compile"],
   "repository": {
     "type": "git",
     "url": "https://github.com/Coveo/styleguide.git"
@@ -51,8 +52,8 @@
     "gulp-svgstore": "5.0.5",
     "gulp-uglify": "1.4.1",
     "gulp-util": "3.0.6",
-    "guppy-pre-commit": "0.3.0",
     "png-sprite": "0.1.1",
+    "pre-commit": "1.1.2",
     "require-dir": "0.3.0"
   },
   "files": [
