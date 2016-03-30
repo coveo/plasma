@@ -24,9 +24,19 @@ $flat-select-option-size: 26px;
 // Header
 $header-height: 65px;
 $header-padding: 40px;
+$header-height-padding: 20px;
 $header-padding-y: 5px;
 // Modal
 $modal-header-height: 100px;
+// Prompt modal
+$modal-prompt-text-padding-y: 24px;
+$modal-prompt-body-max-height: 120px;
+$modal-prompt-body-min-height: 80px;
+$modal-prompt-header-height: 80px;
+$modal-prompt-max-height: 350px;
+$modal-prompt-min-height: 300px;
+$modal-prompt-min-width: 500px;
+$modal-prompt-max-width: 550px;
 // Application
 $application-container-min-height: 400px;
 // Navigation

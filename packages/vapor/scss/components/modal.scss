@@ -91,6 +91,18 @@ $base-modal-z-index: 1050;
       background-color: $dark-blue;
       border-radius: 2px 2px 0 0;
 
+      &.mod-confirmation {
+        background-color: $yellow;
+      }
+
+      &.mod-warning {
+        background-color: $red;
+      }
+
+      &.mod-info {
+        background-color: $medium-blue;
+      }
+
       h1 {
         flex-grow: 1;
 
