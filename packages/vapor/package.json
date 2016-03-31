@@ -1,6 +1,6 @@
 {
   "name": "coveo-styleguide",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
   "keywords": [
     "coveo",
@@ -22,7 +22,10 @@
     "lint": "csscomb -l scss/**/*.scss",
     "prepublish": "npm run compile"
   },
-  "pre-commit": ["lint", "compile"],
+  "pre-commit": [
+    "lint",
+    "compile"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Coveo/styleguide.git"
