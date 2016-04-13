@@ -8,6 +8,7 @@ description:
 baseurl: ""
 twitter_username: coveo
 github_username:  Coveo
+github_repo: https://github.com/coveo/styleguide/blob/master
 
 # Collections
 collections:

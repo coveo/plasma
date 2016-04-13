@@ -9,7 +9,8 @@
 
     {% if entry.stylesheet %}
     <p class="sg-component-stylesheet">
-        <strong>Style sheet:</strong> {{ entry.stylesheet }}
+        <strong>Style sheet:</strong>
+        <a href="{{ site.github_repo }}{{ entry.stylesheet }}">{{ entry.stylesheet }}</a>
     </p>
     {% endif %}
 </header>
