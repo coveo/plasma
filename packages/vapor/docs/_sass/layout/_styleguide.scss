@@ -66,3 +66,11 @@
   }
 }
 
+.progress-bar-example-container {
+  display: flex;
+  padding: 30px 0px;
+
+  .progress-bar {
+    margin: auto;
+  }
+}
