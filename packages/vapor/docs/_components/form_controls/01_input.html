@@ -12,7 +12,14 @@ stylesheet: '/scss/controls/input-field.scss'
 
     <div class="input-field form-group">
         <input type="text" required placeholder="Placeholder text"/>
-        <label>Enabled invalid input</label>
+        <label>
+            Enabled invalid input
+            <span class="inline-help-tooltip" title="A simple inline help text." data-placement="right">
+                <span class="inline-help-icon">
+                    {{ site.data.icons['help'] }}
+                </span>
+            </span>
+        </label>
     </div>
 
     <div class="input-field form-group">

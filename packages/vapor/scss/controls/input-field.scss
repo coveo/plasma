@@ -35,7 +35,6 @@
 
         color: $medium-blue;
         font-size: $form-control-label-font-size;
-        font-weight: bold;
       }
     }
 
@@ -54,6 +53,12 @@
     position: absolute;
     top: 10px;
     left: 0;
+    align-items: center;
+
+    display: flex; // Used for inline-help-tooltip placement
+
+    color: $dark-grey;
+    font-size: $input-field-font-size;
 
     transition: 0.2s all ease;
 
@@ -96,12 +101,12 @@
       &:after {
         position: absolute;
         top: 30.1px; // The .1 is a fix for Chrome. Without it, Chrome makes the element bounce... Works in all other browsers.
+        left: 0;
 
         display: block;
 
         content: '';
-        font-size: 13px;
-        font-weight: bold;
+        font-size: 12px;
 
         transition: 0.2s all ease;
 

@@ -6,7 +6,9 @@
             inline: true,
             date: new Date()
         });
-        $('[title]').tooltip();
+        $('[title]').tooltip({
+            container: 'body'
+        });
 
         var selectedTab;
         window.onload = function() {
