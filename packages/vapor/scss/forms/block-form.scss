@@ -19,7 +19,6 @@ form {
 
     color: $medium-blue;
     font-size: $form-control-label-font-size;
-    font-weight: bold;
   }
 
   .form-group {
@@ -35,6 +34,31 @@ form {
 
     &.coveo-checkbox-label, &.coveo-slide-toggle-label {
       display: flex;
+    }
+
+    &.collapsable-panel-group {
+      .panel-heading a {
+        padding-left: 18px;
+      }
+      .toggle-icon {
+        left: 0;
+      }
+    }
+  }
+
+  .inline-help-tooltip {
+    margin-left: 10px;
+
+    pointer-events: visible; // Very useful for input-fields
+
+    &, .inline-help-icon, .inline-help-icon > svg {
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+    }
+
+    .inline-help-icon > svg {
+      fill: $medium-grey;
     }
   }
 }

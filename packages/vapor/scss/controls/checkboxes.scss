@@ -124,3 +124,16 @@ input[type=checkbox].coveo-checkbox {
 label[for].coveo-checkbox-label {
   cursor: pointer;
 }
+
+.coveo-checkbox-labels-group {
+  @extend .clearfix;
+
+  .coveo-checkbox-label {
+    float: left;
+    clear: left;
+
+    & + .coveo-checkbox-label {
+      margin-top: 18px;
+    }
+  }
+}
