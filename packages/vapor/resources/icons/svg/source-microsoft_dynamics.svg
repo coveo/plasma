@@ -1,21 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>MicrosoftDynamics</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <rect id="path-1" x="0" y="0" width="32" height="32" rx="2"></rect>
-    </defs>
-    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="MicrosoftDynamics" sketch:type="MSArtboardGroup">
-            <g id="source-dynamics" sketch:type="MSLayerGroup">
-                <mask id="mask-2" sketch:name="BG" fill="white">
-                    <use xlink:href="#path-1"></use>
-                </mask>
-                <use id="BG" fill="#2B67A3" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
-                <path d="M14.5182009,5.11180205 C14.7314558,5.11180205 14.9842033,5.11180205 14.9842033,5.11180205 L14.9842033,19.8915393 C14.9842033,19.8915393 9.2714285,20.5365565 6.475,23.037162 C6.47500602,23.0370741 10.9107142,20.586052 15.4187499,20.4622584 L15.4187499,15.8323839 C17.6130667,13.5559404 19.1278184,9.79560534 19.8173075,8.50381274 C20.1225461,8.43776471 20.408929,8.50381274 20.408929,8.50381274 L20.408929,21.5268826 C13.634821,20.3879828 7.23659487,22.8039351 7.39107141,22.7648164 C10.14603,22.067167 16.1226172,21.0577946 20.8287602,22.1458495 C20.8287602,21.2545369 20.8287604,15.1563627 20.8287604,15.1563627 C20.8287604,15.1563627 23.9658646,12.7288318 24.675892,11.6729248 C24.8441373,11.5690134 24.9651776,11.6729248 24.9651776,11.6729248 C24.9651776,11.6729248 25.01826,24.0227911 24.9651776,24.0027502 C15.5874997,20.4622584 5.04292582,24.0027502 5.04292582,24.0027502 L5.04292582,22.5116582 C5.04292582,22.5116582 12.6057692,14.5596376 14.5182009,5.11180205 Z" id="logo-dynamics" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
-                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32">
+  <path fill="#1c6db5"
+        d="m9.5.1c.2 0 .5 0 .5 0v14.8c0 0-5.7.6-8.5 3.1 0 0 4.4-2.5 8.9-2.6v-4.6c2.2-2.3 3.7-6 4.4-7.3.3-.1.6 0 .6 0v13c-6.8-1.1-13.2 1.3-13 1.2 2.8-.7 8.7-1.7 13.4-.6 0-.9 0-7 0-7s3.1-2.4 3.8-3.5c.2-.1.3 0 .3 0s.1 12.3 0 12.3c-9.4-3.5-19.9 0-19.9 0v-1.5c0 .1 7.6-7.9 9.5-17.3"
+        transform="translate(5 5)"/>
+  <path fill="#bcc3ca" d="m30 2v28h-28v-28h28m0-2h-28c-1.1 0-2 .9-2 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-28c0-1.1-.9-2-2-2z"/>
 </svg>
