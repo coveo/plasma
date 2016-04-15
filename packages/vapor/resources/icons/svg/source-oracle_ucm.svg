@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <defs>
-        <rect id="path-1" x="0" y="0" width="32" height="32" rx="2"></rect>
-    </defs>
-    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="OracleUCM" sketch:type="MSArtboardGroup">
-            <g id="source-oracle-ucm" sketch:type="MSLayerGroup">
-                <mask id="mask-2" sketch:name="BG" fill="white">
-                    <use xlink:href="#path-1"></use>
-                </mask>
-                <use id="BG" fill="#DB3C2E" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
-                <path d="M21.2338168,21.3943807 L10.7664176,21.3943807 C8.01512088,21.3943807 6.40691575,18.9791379 6.40691575,16.0001269 C6.40691575,13.0211159 8.01512088,10.6058731 10.7664176,10.6058731 L21.2338168,10.6058731 C23.9851136,10.6058731 25.5933187,13.0211159 25.5933187,16.0001269 C25.5933187,18.9791379 23.9851136,21.3943807 21.2338168,21.3943807 L21.2338168,21.3943807 Z M21.2338168,8 L10.7664176,8 C6.68589011,8 4,11.5818698 4,16.0001269 C4,20.418384 6.68589011,24 10.7664176,24 L21.2338168,24 C25.3143443,24 28,20.418384 28,16.0001269 C28,11.5818698 25.3143443,8 21.2338168,8 L21.2338168,8 Z" id="logo-oracle" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
-                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32">
+  <defs>
+    <filter id="1" filterUnits="userSpaceOnUse" x="4" y="8" width="23.9" height="16">
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+    </filter>
+    <mask maskUnits="userSpaceOnUse" x="4" y="8" width="23.9" height="16" id="0">
+      <g filter="url(#1)">
+        <path fill="#fff" d="m2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2h-28c-1.1 0-2-.9-2-2v-28c0-1.1.9-2 2-2"/>
+      </g>
+    </mask>
+  </defs>
+  <path fill="#db3c2e" d="m2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2h-28c-1.1 0-2-.9-2-2v-28c0-1.1.9-2 2-2"/>
+  <path mask="url(#0)" fill="#fff"
+        d="m21.2 21.4h-10.4c-2.8 0-4.4-2.4-4.4-5.4s1.6-5.4 4.3-5.4h10.4c2.7 0 4.3 2.4 4.3 5.4s-1.4 5.4-4.2 5.4m0-13.4h-10.4c-4.1 0-6.8 3.6-6.8 8s2.7 8 6.7 8h10.4c4.1 0 6.7-3.6 6.7-8s-2.5-8-6.6-8"/>
 </svg>

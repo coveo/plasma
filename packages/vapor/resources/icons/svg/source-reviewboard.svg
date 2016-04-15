@@ -1,50 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <defs>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="98.4693878%" id="linearGradient-1">
-            <stop stop-color="#F2CC8A" offset="0%"></stop>
-            <stop stop-color="#EBB554" offset="100%"></stop>
-        </linearGradient>
-        <rect id="path-2" x="0" y="0" width="32" height="32" rx="2"></rect>
-        <radialGradient cx="36.9019311%" cy="32.071576%" fx="36.9019311%" fy="32.071576%" r="33.5376278%" id="radialGradient-4">
-            <stop stop-color="#7E9FCE" offset="0%"></stop>
-            <stop stop-color="#3163A6" offset="100%"></stop>
-        </radialGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
-            <stop stop-color="#EBDB3D" offset="0%"></stop>
-            <stop stop-color="#F1E03E" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.9860499%" id="linearGradient-6">
-            <stop stop-color="#F3E23D" offset="0%"></stop>
-            <stop stop-color="#EBDB3D" offset="48.4673948%"></stop>
-            <stop stop-color="#F9E73D" offset="99.998007%"></stop>
-        </linearGradient>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.998007%" id="linearGradient-7">
-            <stop stop-color="#F5E43D" offset="0%"></stop>
-            <stop stop-color="#EBDB3D" offset="48.4673948%"></stop>
-            <stop stop-color="#F7E53C" offset="99.998007%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="ReviewBoard" sketch:type="MSArtboardGroup">
-            <g id="source-reviewboard" sketch:type="MSLayerGroup">
-                <mask id="mask-3" sketch:name="BG" fill="white">
-                    <use xlink:href="#path-2"></use>
-                </mask>
-                <use id="BG" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup" xlink:href="#path-2"></use>
-                <g id="logo" mask="url(#mask-3)" sketch:type="MSShapeGroup">
-                    <g transform="translate(4.000000, 4.000000)">
-                        <path d="M2,18.8784656 L2,2 L22,2 L22,22 L4,22 L1.99980749,22 C1.44371665,22 1,21.5527519 1,21.0010434 L1,20.5 C1,19.8354917 1.41850248,19.1941426 2,18.8784656 Z" id="Rectangle-205" stroke="#A58419" stroke-width="1" fill="#FDEB3C"></path>
-                        <path d="M4,6 L7.04104947,9 L8,8.01629445 L6,4 L4,6 Z" id="Rectangle-211" stroke="none" fill="#9E9A56"></path>
-                        <circle id="Oval-31" stroke="#365E94" stroke-width="1" fill="url(#radialGradient-4)" cx="4" cy="4" r="4"></circle>
-                        <rect id="Rectangle-207" stroke="none" fill="url(#linearGradient-5)" x="9" y="5" width="10" height="2"></rect>
-                        <rect id="Rectangle-208" stroke="none" fill="url(#linearGradient-6)" x="9" y="8" width="10" height="3"></rect>
-                        <rect id="Rectangle-209" stroke="none" fill="#EBDB3D" x="5" y="12" width="14" height="2"></rect>
-                        <rect id="Rectangle-210" stroke="none" fill="url(#linearGradient-7)" x="5" y="15" width="14" height="3"></rect>
-                    </g>
-                </g>
-                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup" mask="url(#mask-3)"></path>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32">
+  <defs>
+    <linearGradient id="1" gradientUnits="userSpaceOnUse" y1="-809.72" x2="0" y2="-808.72"
+                    gradientTransform="matrix(10 0 0 2 5147 1624.45)">
+      <stop stop-color="#ebdb3d"/>
+      <stop offset="1" stop-color="#f1e03e"/>
+    </linearGradient>
+    <linearGradient id="2" gradientUnits="userSpaceOnUse" y1="-809.74" x2="0" y2="-808.75"
+                    gradientTransform="matrix(10 0 0 3 5147 2437.23)">
+      <stop stop-color="#f3e23d"/>
+      <stop offset=".485" stop-color="#ebdb3d"/>
+      <stop offset="1" stop-color="#f9e73d"/>
+    </linearGradient>
+    <linearGradient id="3" gradientUnits="userSpaceOnUse" y1="-809.75" x2="0" y2="-808.75"
+                    gradientTransform="matrix(14 0 0 3 7423 2444.23)">
+      <stop stop-color="#f5e43d"/>
+      <stop offset=".485" stop-color="#ebdb3d"/>
+      <stop offset="1" stop-color="#f7e53c"/>
+    </linearGradient>
+    <radialGradient id="0" cx="2.975" cy="2.579" r="2.677" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7e9fce"/>
+      <stop offset="1" stop-color="#3163a6"/>
+    </radialGradient>
+  </defs>
+  <path fill="#fff" d="m2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2h-28c-1.1 0-2-.9-2-2v-28c0-1.1.9-2 2-2"/>
+  <path fill="#ebb554" d="m2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2h-28c-1.1 0-2-.9-2-2v-28c0-1.1.9-2 2-2"/>
+  <g transform="translate(4 4)">
+    <path fill="#fdeb3c" stroke="#a58419" d="m2 18.9v-16.9h20v20h-18-2c-.6 0-1-.4-1-1v-.5c0-.7.4-1.3 1-1.6z"/>
+    <path fill="#9e9a56" d="m4 6l3 3 1-1-2-4-2 2"/>
+    <circle fill="url(#0)" stroke="#365e94" cx="4" cy="4" r="4"/>
+    <path fill="url(#1)" d="m9 5h10v2h-10z"/>
+    <path fill="url(#2)" d="m9 8h10v3h-10z"/>
+    <path fill="#ebdb3d" d="m5 12h14v2h-14z"/>
+    <path fill="url(#3)" d="m5 15h14v3h-14z"/>
+  </g>
 </svg>

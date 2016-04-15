@@ -1,24 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <defs></defs>
-    <g id="Sources-Icons-32px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="GoogleSite" sketch:type="MSArtboardGroup">
-            <g id="source-google_site" sketch:type="MSLayerGroup">
-                <rect id="BG-2" fill="#D2D0D1" sketch:type="MSShapeGroup" transform="translate(16.000000, 20.500000) scale(1, -1) translate(-16.000000, -20.500000) " x="0" y="9" width="32" height="23" rx="3"></rect>
-                <rect id="BG" fill="#991514" sketch:type="MSShapeGroup" x="0" y="0" width="32" height="10" rx="3"></rect>
-                <path d="M3.00591905,1 C1.89808055,1 1,1.88670635 1,2.99810135 L1,9 L3,9 L3,3.14667066 C3,2.59662652 3.44371665,2.04860825 3.97591989,1.92612405 L8,1 L3.00591905,1 Z" id="Rectangle-119" fill="#C15055" sketch:type="MSShapeGroup"></path>
-                <path d="M26.0059191,1 C24.8980806,1 24,1.88670635 24,2.99810135 L24,9 L26,9 L26,3.14667066 C26,2.59662652 26.4437166,2.04860825 26.9759199,1.92612405 L31,1 L26.0059191,1 Z" id="Rectangle-120" fill="#6B1010" sketch:type="MSShapeGroup" transform="translate(27.500000, 5.000000) scale(-1, 1) translate(-27.500000, -5.000000) "></path>
-                <rect id="Rectangle-109" fill="#828284" sketch:type="MSShapeGroup" x="4" y="13" width="14" height="8"></rect>
-                <rect id="Rectangle-110" fill="#828284" sketch:type="MSShapeGroup" x="4" y="23" width="14" height="1"></rect>
-                <rect id="Rectangle-111" fill="#828284" sketch:type="MSShapeGroup" x="4" y="25" width="14" height="1"></rect>
-                <rect id="Rectangle-112" fill="#828284" sketch:type="MSShapeGroup" x="4" y="27" width="14" height="1"></rect>
-                <rect id="Rectangle-114" fill="#5EA0D9" sketch:type="MSShapeGroup" x="20" y="13" width="8" height="8"></rect>
-                <rect id="Rectangle-118" fill-opacity="0.5" fill="#FFFFFF" sketch:type="MSShapeGroup" x="22" y="15" width="1" height="1"></rect>
-                <rect id="Rectangle-115" fill="#A3A1A2" sketch:type="MSShapeGroup" x="20" y="23" width="8" height="5"></rect>
-                <rect id="Rectangle-116" opacity="0.5" fill="#D2D0D1" sketch:type="MSShapeGroup" x="21" y="24" width="6" height="1"></rect>
-                <rect id="Rectangle-117" opacity="0.5" fill="#D2D0D1" sketch:type="MSShapeGroup" x="21" y="26" width="6" height="1"></rect>
-                <path d="M29,0 L8,32 L32,32 L32,0 L29,0 Z" id="shadow" opacity="0.102203825" fill="#000000" sketch:type="MSShapeGroup"></path>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32">
+  <path fill="#004990" d="m2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2h-28c-1.1 0-2-.9-2-2v-28c0-1.1.9-2 2-2"/>
+  <g transform="translate(5 5)" fill="#fff">
+    <path d="m21 0h-20c-.6 0-1 .4-1 1v21h22v-21c0-.6-.4-1-1-1m0 21h-20v-15h20v15m0-16h-20v-2h20v2"/>
+    <path
+        d="m15.2 17c-1.4 1.9-4.1 2.5-6.2 1.7-2.1-.8-3.7-3.1-3.5-5.4 0-2.8 2.6-5.3 5.5-5.2 1.3-.1 2.6.5 3.7 1.3-.4.5-.9 1-1.4 1.4-1.2-.9-3-1.1-4.3-.1-1.8 1.2-1.9 4.1-.1 5.5 1.7 1.5 4.8.8 5.3-1.6h-3.1v-1.9h5.2c0 1.5-.2 3.1-1.1 4.3"/>
+  </g>
 </svg>
