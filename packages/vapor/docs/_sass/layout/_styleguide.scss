@@ -23,6 +23,7 @@
 
 .sg-component-body {
   padding: 1.5em;
+  position: relative;
 }
 
 // Icons
@@ -68,9 +69,15 @@
 
 .progress-bar-example-container {
   display: flex;
-  padding: 30px 0px;
+  padding: 30px 0;
 
   .progress-bar {
     margin: auto;
   }
+}
+
+.codepen-form {
+  position: absolute;
+  bottom: 2.4rem;
+  right: 1.5rem;
 }
