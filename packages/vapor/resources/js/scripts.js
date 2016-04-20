@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    // manually reset the hash to force the browser to go to the selected menu item on page refresh
+    var hash = window.location.hash;
+    window.location.hash = "";
+    window.location.hash = hash;
+    
     $('.coveo-slider-input').slider();
     $('.coveo-datepicker').DatePicker({
         mode: 'single',
@@ -10,18 +15,16 @@ $(document).ready(function() {
     });
 
     var selectedTab;
-    window.onload = function() {
-        if (window.location.hash) {
-            var selectedTabChild = $('.navigation-menu-section-item-link[href="' + window.location.pathname + window.location.hash + '"]');
-            selectedTab = selectedTabChild.parent().addClass('state-active');
-        } else {
-            var selectedTabParend = $('.navigation-menu-section-item-link[href*="' + window.location.pathname + '"]');
-            selectedTab = $(selectedTabParend[0]).parent().addClass('state-active');
-        }
+    if (window.location.hash) {
+        var selectedTabChild = $('.navigation-menu-section-item-link[href="' + window.location.pathname + window.location.hash + '"]');
+        selectedTab = selectedTabChild.parent().addClass('state-active');
+    } else {
+        var selectedTabParend = $('.navigation-menu-section-item-link[href*="' + window.location.pathname + '"]');
+        selectedTab = $(selectedTabParend[0]).parent().addClass('state-active');
+    }
 
-        /* chosen select initialisation */
-        $('.chosen').chosen();
-    };
+    /* chosen select initialisation */
+    $('.chosen').chosen();
 
     $('.navigation-menu-section-item').click(function() {
         if (selectedTab) {
