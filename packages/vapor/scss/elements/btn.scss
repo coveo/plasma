@@ -86,4 +86,94 @@
   & + .btn {
     margin-left: $button-margin-width;
   }
+
+  .confirm-icon-error, .confirm-icon-success {
+    display: none;
+  }
+
+  &.mod-confirm-success, &.mod-confirm-error {
+    position: relative;
+
+    color: transparent;
+
+    outline: 0;
+
+    transition: background-color 0.2s ease;
+
+    user-select: none;
+
+    &:before {
+      position: absolute;
+      top: $button-height + 6px;
+
+      font-size: 11px;
+      text-transform: initial;
+
+      animation: fadeIn ease-in 1;
+      animation-duration: 0.3s;
+      animation-fill-mode: forwards;
+
+      opacity: 0;
+    }
+
+    &.mod-confirm-right:before {
+      right: 0;
+    }
+
+    &.mod-confirm-left:before {
+      left: 0;
+    }
+
+    .confirm-icon-error, .confirm-icon-success {
+      position: absolute;
+      top: calc(50% - #{$button-confirm-icon-width}/2);
+      right: calc(50% - #{$button-confirm-icon-width}/2);
+
+      display: inline-block;
+
+      font-size: $button-confirm-icon-width;
+
+      fill: $pure-white;
+    }
+  }
+
+  &.mod-confirm {
+    margin-bottom: $button-confirm-margin-bottom;
+  }
+
+  &.mod-confirm-success {
+    background-color: $green;
+    border: $button-border-width solid $green;
+
+    &:focus, &:hover {
+      background-color: $green;
+    }
+
+    &:before {
+      color: $green;
+      content: attr(data-confirm-success);
+    }
+
+    .confirm-icon-error {
+      display: none;
+    }
+  }
+
+  &.mod-confirm-error {
+    background-color: $red;
+    border: $button-border-width solid $red;
+
+    &:focus, &:hover {
+      background-color: $red;
+    }
+
+    &:before {
+      color: $red;
+      content: attr(data-confirm-error);
+    }
+
+    .confirm-icon-success {
+      display: none;
+    }
+  }
 }
