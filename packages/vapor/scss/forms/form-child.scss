@@ -1,0 +1,22 @@
+$child-padding-y: 10px;
+$child-padding-x: 25px;
+
+.coveo-child {
+  padding: 0 $child-padding-x $child-padding-y;
+
+  background-color: $light-grey;
+  border-radius: $border-radius;
+
+  &:before {
+    display: block;
+    width: calc(100% + ($child-padding-x * 2));
+    height: $child-padding-y;
+    margin: 3px (-1 * $child-padding-x) ($child-padding-y / 2);
+
+    content: '';
+
+    background-color: $light-grey;
+    border-top: ($child-padding-y / 4) * 3 solid $pure-white;
+    border-left: ($child-padding-y / 4) * 3 solid $light-grey;
+  }
+}
