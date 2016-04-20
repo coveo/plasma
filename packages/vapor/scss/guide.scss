@@ -6,6 +6,13 @@
 @import 'common/font';
 @import 'sprites';
 @import 'variables';
+@import 'animations';
+
+//Progress bar
+@import 'elements/progress-bar';
+// Buttons
+@import 'elements/btn';
+@import 'elements/btn-prepend';
 // Typography
 @import 'typography/headings';
 @import 'elements/labels';
@@ -13,11 +20,6 @@
 // Icons
 @import 'elements/icons';
 @import 'elements/color-dot';
-// Buttons
-@import 'elements/btn';
-@import 'elements/btn-prepend';
-//Progress bar
-@import 'elements/progress-bar';
 // Controls
 @import 'controls/checkboxes';
 @import 'controls/collapsable';
