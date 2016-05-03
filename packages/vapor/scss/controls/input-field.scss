@@ -65,6 +65,10 @@
     pointer-events: none;
   }
 
+  &.mod-full-width {
+    max-width: none;
+  }
+
   // Validation feedback
   &.validate input {
     transition: 0.2s margin-bottom ease, 0.2s color ease;
