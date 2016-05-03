@@ -6,6 +6,7 @@ stylesheet: '/scss/components/modal.scss'
 ---
 <!-- Modal triggers -->
 <button class="btn js-modal-trigger" data-modal="BaseModal">Basic modal</button>
+<button class="btn js-modal-trigger" data-modal="ModSmall">Mod small</button>
 <button class="btn js-modal-trigger" data-modal="FadeInScaleModal">Mod medium & mod fade in scale</button>
 <button class="btn js-modal-trigger" data-modal="SlideInBottomModal">Mod big & mod stick bottom & mod slide in bottom</button>
 <button class="btn js-modal-trigger" data-modal="ModalWithInnerBackdrop">Modal with a prompt</button>
@@ -31,6 +32,27 @@ stylesheet: '/scss/components/modal.scss'
         </footer>
     </div>
 </div>
+<div class="modal-container mod-width-small" id="ModSmall">
+    <div class="modal-content">
+        <header class="modal-header">
+            <h1>Mod small</h1>
+            <span class="small-close js-modal-close">
+                <svg width="512" height="512" viewBox="0 0 512 512" class="icon fill-pure-white">
+                    <path d="M480.002 96l-64-63.998-160 159.998-160-160-64 63.998L192.004 256l-160 159.998 64 64 160-159.998 159.994 159.994 64-64L320.003 256"></path>
+                </svg>
+            </span>
+        </header>
+        <div class="modal-body">
+            <div class="p2">
+                A small modal to create a basic form without extra space for inputs.
+            </div>
+        </div>
+        <footer class="modal-footer">
+            <button class="btn js-modal-close">Close</button>
+        </footer>
+    </div>
+</div>
+
 <div class="modal-container mod-medium mod-fade-in-scale" id="FadeInScaleModal">
     <div class="modal-content">
         <header class="modal-header">

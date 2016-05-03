@@ -144,6 +144,11 @@ $base-modal-z-index: 1050;
           margin-left: -$header-padding;
         }
       }
+
+      &.mod-align-form {
+        padding-top: $modal-content-padding-form-top;
+        padding-bottom: $modal-content-padding-form-bottom;
+      }
     }
 
     .modal-footer {
@@ -158,6 +163,10 @@ $base-modal-z-index: 1050;
       border-top: solid 1px $medium-grey;
       border-radius: 0 0 2px 2px;
     }
+  }
+
+  &.mod-width-small > .modal-content {
+    width: $modal-form-width-small + 2 * $header-padding;
   }
 
   &.mod-medium > .modal-content {
