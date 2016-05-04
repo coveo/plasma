@@ -1,0 +1,45 @@
+---
+type: component
+title: Panel Header
+usage: Panel Header styling
+stylesheet: '/scss/components/panel-header.scss'
+---
+<div class="panel-header flex flex-center">
+    <div>
+        <h1 class="inline bold text-medium-blue">Panel Header</h1>
+        <h4 class="admin-description text-dark-grey">Panel description</h4>
+    </div>
+    <div class="flex-auto"></div>
+    <div class="js-action-bar action-bar">
+        <div class="actions-row">
+            <div class="enabled action primary-action">
+                <span class="enabled" data-trigger="ua:toggleEditMode" data-requires-confirmation="" data-icon="edit" data-unrepeatable="">
+                    <span class="" title="Edit">{{ site.data.icons['edit'] }}</span>
+                    <span class="action-label caps">Edit</span>
+                </span>
+            </div>
+            <div class="enabled action primary-action">
+                <span class="enabled" data-trigger="ua:export" data-requires-confirmation="" data-icon="export" data-unrepeatable="">
+                    <span class="" title="Export">{{ site.data.icons['export'] }}</span>
+                    <span class="action-label caps">Export</span>
+                </span>
+            </div>
+            <div class="dropdown action primary-action">
+                <span class="dropdown-toggle" id="options" data-toggle="dropdown">
+                    <span title=""><span class="" title="More">{{ site.data.icons['more'] }}</span></span>
+                    <span class="action-label caps">More</span>
+                </span>
+                <ul class="dropdown-menu mod-right">
+                    <li><span class="enabled" data-trigger="ua:resetDashboard">Secondary Action 1</span></li>
+                    <li><span class="enabled" data-trigger="ua:deleteExplorer">Secondary Action 2</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.js-action-bar .dropdown').off('click').click(function(e) {
+        $(this).toggleClass('open');
+    });
+</script>
