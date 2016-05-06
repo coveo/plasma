@@ -1,3 +1,5 @@
+// DEPRECATED!!! Replaced by collapsible.js from Dogfalo/materialize
+
 /* ========================================================================
  * Bootstrap: collapse.js v3.3.5
  * http://getbootstrap.com/javascript/#collapse

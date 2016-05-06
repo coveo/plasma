@@ -32,7 +32,8 @@
   },
   "dependencies": {
     "chosen-npm": "1.4.2",
-    "coveo-slider": "0.9.8"
+    "coveo-slider": "0.9.8",
+    "materialize-css": "0.97.6"
   },
   "devDependencies": {
     "csscomb": "3.1.8",

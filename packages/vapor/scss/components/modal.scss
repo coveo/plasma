@@ -134,20 +134,10 @@ $base-modal-z-index: 1050;
 
       background-color: $pure-white;
 
-      &.mod-align-header {
-        padding-right: $header-padding;
-        padding-left: $header-padding;
-
-        // Use mod-full-width to cancel the header-padding for tables inside a modal
-        .mod-full-width {
-          width: calc(100% + 2 * #{$header-padding});
-          margin-left: -$header-padding;
-        }
-      }
-
+      // TODO remove mod-align-form, replaced by mod-form-top-bottom-padding in coveo-form.
       &.mod-align-form {
-        padding-top: $modal-content-padding-form-top;
-        padding-bottom: $modal-content-padding-form-bottom;
+        padding-top: $form-top-padding;
+        padding-bottom: $form-bottom-padding;
       }
     }
 
