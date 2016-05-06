@@ -1,8 +1,8 @@
 # Site settings
-title: Coveo StyleGuide
+title: Vapor CSS
 email: styleguide@coveo.com
 description:
-  Coveo StyleGuide is a collection of UI components used in Coveo's Administration Console.
+  Vapor CSS is a collection of UI components used in Coveo's Administration Console.
   It is widely inspired by Bootstrap 3.0 and borrows some of its components.
   The project is at its early stages, some components can still have lots of breaking changes.
 baseurl: ""
@@ -27,5 +27,5 @@ sass:
 # Server
 source: docs
 destination: _gh_pages
-baseurl: "/styleguide"
-url: "http://coveo.github.io/styleguide/"
+baseurl: "/vapor"
+url: "http://coveo.github.io/vapor/"
