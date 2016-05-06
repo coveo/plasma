@@ -1,9 +1,9 @@
 <nav class="navigation">
     <div class="navigation-menu">
         <ul class="navigation-menu-sections">
+            {% for pageInformation in site.pages %}
+            {% if pageInformation.title %}
             <li class="block navigation-menu-section">
-                {% for pageInformation in site.pages %}
-                {% if pageInformation.title %}
                 <a href="{{ pageInformation.url | prepend: site.baseurl }}" class="navigation-menu-section-header text-white">
                     <span class="navigation-menu-section-header-icon"></span>
                     {{ pageInformation.title }}
@@ -19,9 +19,9 @@
                     {% endif %}
                     {% endfor %}
                 </ul>
-                {% endif %}
-                {% endfor %}
             </li>
+            {% endif %}
+            {% endfor %}
         </ul>
     </div>
 </nav>

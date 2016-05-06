@@ -33,8 +33,6 @@ $header-height-padding: 20px;
 $header-padding-y: 5px;
 // Modal
 $modal-header-height: 100px;
-$modal-content-padding-form-bottom: 30px;
-$modal-content-padding-form-top: 20px;
 $modal-form-width-small: 440px;
 // Prompt modal
 $modal-prompt-text-padding-y: 24px;
@@ -69,6 +67,8 @@ $table-actions-dropdown-padding-x: 10px;
 // Table collapsible rows
 $table-collapsible-row-height: 45px;
 // Form elements
+$form-bottom-padding: 30px;
+$form-top-padding: 20px;
 $form-elements-margin: 10px;
 $form-group-margin: 30px;
 $form-control-label-margin: 10px;
@@ -79,3 +79,8 @@ $blankslate-padding: 30px;
 // Progress bar
 $progress-bar-border-radius: 12px;
 $progress-bar-default-height: 20px;
+// Collapsible
+$collapsible-height: 50px;
+$collapsible-border-width: 1px;
+$collapsible-header-font-size: 13px;
+$collapsible-header-icon-size: 10px;

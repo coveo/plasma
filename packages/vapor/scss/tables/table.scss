@@ -118,6 +118,10 @@ table {
     }
   }
 
+  thead.mod-no-border-top tr th {
+    border-top: none;
+  }
+
   tbody.table-loading {
     opacity: 0.3;
   }

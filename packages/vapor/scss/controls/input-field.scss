@@ -1,7 +1,6 @@
 .input-field {
   position: relative;
 
-  max-width: $input-field-max-width;
   margin-top: $input-field-margin-top;
 
   input {
@@ -65,8 +64,8 @@
     pointer-events: none;
   }
 
-  &.mod-full-width {
-    max-width: none;
+  &.mod-fixed-width {
+    max-width: $input-field-max-width;
   }
 
   // Validation feedback
