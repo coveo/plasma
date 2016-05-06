@@ -1,4 +1,4 @@
-![logo](vapor.png)
+![logo](vapor.gif)
 
 [![Build Status](https://img.shields.io/travis/coveo/vapor.svg?style=flat-square)](https://travis-ci.org/coveo/styleguide)
 [![dev-dependencies](https://img.shields.io/david/dev/coveo/vapor.svg?style=flat-square)](https://github.com/coveo/vapor/blob/master/package.json)
