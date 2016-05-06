@@ -133,12 +133,6 @@ $base-modal-z-index: 1050;
       overflow: auto;
 
       background-color: $pure-white;
-
-      // TODO remove mod-align-form, replaced by mod-form-top-bottom-padding in coveo-form.
-      &.mod-align-form {
-        padding-top: $form-top-padding;
-        padding-bottom: $form-bottom-padding;
-      }
     }
 
     .modal-footer {
