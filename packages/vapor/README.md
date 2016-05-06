@@ -1,6 +1,6 @@
 ![logo](vapor.gif)
 
-[![Build Status](https://img.shields.io/travis/coveo/vapor.svg?style=flat-square)](https://travis-ci.org/coveo/styleguide)
+[![Build Status](https://img.shields.io/travis/coveo/vapor.svg?style=flat-square)](https://travis-ci.org/coveo/vapor)
 [![dev-dependencies](https://img.shields.io/david/dev/coveo/vapor.svg?style=flat-square)](https://github.com/coveo/vapor/blob/master/package.json)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/coveo/vapor/blob/master/LICENSE)
 
