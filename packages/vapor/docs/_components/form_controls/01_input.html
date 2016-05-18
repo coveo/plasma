@@ -46,6 +46,42 @@ stylesheet: '/scss/controls/input-field.scss'
         <input class="js-validated-input" type="email" required/>
         <label data-valid-message="You dit it right!" data-invalid-message="Value must be a valid email address.">Validated email</label>
     </div>
+
+    <div class="input-field multiline-field form-group">
+        <ul>
+            <li class="input-wrapper">
+                <input type="text" class="js-new-value-input" required placeholder="">
+                <label>Multiline empty</label>
+                <div class="input-actions">
+                    <span class="js-add-value-button">
+                        <i class="add-action" title="Add a new entry"></i>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="input-field multiline-field form-group">
+        <ul>
+            <li class="input-wrapper">
+                <input type="text" class="js-value-input" required value="First multiline value">
+                <label>Multiline one value entered</label>
+                <div class="input-actions">
+                    <button class="js-delete-value-button" type="button">
+                        <i class="delete-action" title="Delete this entry"></i>
+                    </button>
+                </div>
+            </li>
+        </ul>
+        <div class="input-wrapper">
+            <input type="text" class="js-new-value-input" placeholder="">
+            <div class="input-actions">
+                <button class="js-add-value-button">
+                    <i class="add-action" title="Add a new entry"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>

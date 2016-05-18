@@ -1,0 +1,17 @@
+.multiline-field {
+  li {
+    margin-bottom: 30px;
+
+    label {
+      display: none;
+    }
+
+    &:first-child label {
+      display: flex;
+    }
+  }
+
+  input {
+    padding-right: 20px;
+  }
+}
