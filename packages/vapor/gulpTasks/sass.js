@@ -19,7 +19,7 @@ var gzipOptions = config.gzipOptions;
 var useMinifiedSources = gutil.env.min;
 var useGzippedSources = gutil.env.gzip;
 
-gulp.task('sass', 'Compile sass files to dist folder', ['sprites'], function () {
+gulp.task('sass', 'Compile sass files to dist folder', ['sprites'], function() {
     return gulp.src('./scss/guide.scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -37,7 +37,7 @@ gulp.task('sass', 'Compile sass files to dist folder', ['sprites'], function () 
 });
 
 gulp.task('sass:format', function() {
-    return gulp.src(['./scss/**/*.scss', '!./scss/sprites.scss', '!./scss/utility/colors.scss'])
+    return gulp.src(['./scss/**/*.scss', '!./scss/sprites.scss', '!./scss/utility/colors.scss', '!./scss/utility/border.scss'])
         .pipe(csscomb())
         .pipe(gulp.dest('./scss'));
 });

@@ -1,7 +1,14 @@
-.mod-border-top {
-  border-top: 1px solid $medium-grey;
+$borders: border-top border-bottom border-left border-right;
+$default-border: 1px solid $medium-grey;
+
+@each $border in $borders {
+  .mod-#{$border} {
+    #{$border}: $default-border;
+  }
 }
 
-.mod-no-border-top {
-  border-top: none;
+@each $border in $borders {
+  .mod-no-#{$border} {
+    #{$border}: none;
+  }
 }
