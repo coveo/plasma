@@ -10,6 +10,10 @@
     display: flex;
   }
 
+  .admin-description {
+    margin-top: $description-margin-top;
+  }
+
   .action {
     display: inline-block;
     padding: 4px 5px;
