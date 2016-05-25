@@ -9,11 +9,11 @@
   border-radius: $border-radius;
 
   h1, h2, h3, h4, h5, h6 {
-    margin: blankslate-margin 0 blankslate-margin 0;
+    margin: $blankslate-margin 0 $blankslate-title-margin-bottom 0;
   }
 
   p {
-    margin-bottom: blankslate-margin;
+    margin-bottom: $blankslate-paragraph-margin-bottom;
 
     color: $medium-blue;
   }
