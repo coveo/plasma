@@ -1,6 +1,7 @@
 var config = require('./configuration');
 
 var gulp = require('gulp-help')(require('gulp'));
+var fs = require('fs');
 var gulpif = require('gulp-if');
 var gutil = require('gulp-util');
 var gzip = require('gulp-gzip');
@@ -14,13 +15,25 @@ var useMinifiedSources = gutil.env.min;
 var useGzippedSources = gutil.env.gzip;
 
 gulp.task('lib', 'Concat and export libs to dist folder', function() {
-    return gulp.src([
-            './lib/js/*',
-            './node_modules/coveo-slider/dist/js/Coveo.Slider.js',
-            './node_modules/chosen-npm/public/chosen.jquery.js',
-            './node_modules/materialize-css/js/jquery.easing.1.3.js',
-            './node_modules/materialize-css/js/collapsible.js'
-        ])
+    var dependencies = [
+        './node_modules/coveo-slider/dist/js/Coveo.Slider.js',
+        './node_modules/chosen-npm/public/chosen.jquery.js',
+        './node_modules/materialize-css/js/jquery.easing.1.3.js',
+        './node_modules/materialize-css/js/collapsible.js',
+        './lib/js/*'
+    ];
+    dependencies.forEach(function(path) {
+        fs.exists(path, function(exists) {
+            if (!exists) {
+                if (path.indexOf('*') == -1) {
+                    gutil.log(gutil.colors.red('File not found: ', path));
+                    process.exit(1);
+                }
+            }
+        });
+    });
+
+    return gulp.src(dependencies)
         .pipe(concat('CoveoStyleGuide.Dependencies.js'))
         .pipe(gulp.dest('./dist/js'))
         .pipe(gulpif(useMinifiedSources, uglify()))
