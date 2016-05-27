@@ -12,8 +12,6 @@
   &:disabled, &.state-disabled {
     background-color: lighten($background, 20%);
     border: $button-border-width solid lighten($background, 20%);
-
-    cursor: default;
   }
 
   .icon {
@@ -61,9 +59,7 @@
   &:disabled, &.state-disabled {
     color: $medium-grey;
 
-    &:hover, &:focus {
-      background-color: inherit;
-    }
+    cursor: default;
   }
 
   &.mod-large {
@@ -126,8 +122,8 @@
 
     .confirm-icon-error, .confirm-icon-success {
       position: absolute;
-      top: calc(50% - #{$button-confirm-icon-width}/2);
-      right: calc(50% - #{$button-confirm-icon-width}/2);
+      top: calc(50% - #{$button-confirm-icon-width} / 2);
+      right: calc(50% - #{$button-confirm-icon-width} / 2);
 
       display: inline-block;
 
