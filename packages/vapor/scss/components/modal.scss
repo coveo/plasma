@@ -149,10 +149,6 @@ $base-modal-z-index: 1050;
     }
   }
 
-  &.mod-width-small > .modal-content {
-    width: $modal-form-width-small + 2 * $header-padding;
-  }
-
   &.mod-medium > .modal-content {
     width: 65%;
     height: 70%;
@@ -161,6 +157,11 @@ $base-modal-z-index: 1050;
   &.mod-big > .modal-content {
     width: 85%;
     height: 90%;
+  }
+
+  // need to be after other mod to combine with other below
+  &.mod-width-small > .modal-content {
+    width: $modal-form-width-small + 2 * $header-padding;
   }
 
   &.mod-stick-bottom {
