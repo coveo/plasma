@@ -33,14 +33,14 @@
 
       background-color: $white;
     }
+
+    .autocomplete-value {
+      display: block;
+      padding: 10px 20px;
+
+      font-size: 1.8rem;
+
+      border-top: 1px solid $light-grey;
+    }
   }
-}
-
-.autocomplete-value {
-  display: block;
-  padding: 10px 20px;
-
-  font-size: 1.8rem;
-
-  border-top: 1px solid $light-grey;
 }
