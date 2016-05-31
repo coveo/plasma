@@ -60,8 +60,7 @@
         &:hover, &:focus {
           color: $dark-blue;
 
-          background: none;
-          background-color: $light-grey;
+          background: $light-grey;
         }
 
         &.state-selected {
@@ -73,6 +72,12 @@
 
           cursor: default;
         }
+      }
+
+      &.active {
+        color: $dark-blue;
+
+        background-color: $medium-grey;
       }
 
       &.divider {
