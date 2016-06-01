@@ -7,7 +7,6 @@
 @import 'sprites';
 @import 'variables';
 @import 'animations';
-
 //Progress bar
 @import 'elements/progress-bar';
 // Buttons
@@ -59,12 +58,12 @@
   @import 'components/collapsible';
   @import 'components/panel-header';
   // Forms
-  @import 'forms/form-validation';
   @import 'forms/form-sections';
   @import 'forms/form-child';
-  @import 'forms/table-form';
   @import 'forms/block-form';
   @import 'forms/flex-form';
+  @import 'forms/table-form';
+  @import 'forms/form-validation';
   // Utility
   @import 'typography/utility';
   @import 'utility/align';
