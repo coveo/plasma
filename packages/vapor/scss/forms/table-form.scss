@@ -180,41 +180,6 @@ form {
           @include slim-scroll();
         }
       }
-
-      &.input-validation-error, &.multiline-input-validation-error {
-        .input-validation-error-details {
-          display: block;
-          padding: 0 10px;
-
-          color: white;
-          font-size: 11px;
-          line-height: 15px;
-
-          background-color: $invalid-message-background-color;
-
-          i {
-            vertical-align: -2px;
-          }
-        }
-
-        label {
-          color: $red;
-        }
-
-        label, .value {
-          border-bottom: solid 1px $invalid-message-background-color;
-        }
-      }
-
-      &.input-validation-error {
-        .value {
-          background-color: $invalid-background-color;
-        }
-      }
-
-      &.multiline-input-validation-error .erroneous-input {
-        background-color: $invalid-background-color;
-      }
     }
 
     &.disabled {

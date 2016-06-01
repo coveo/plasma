@@ -5,36 +5,53 @@
 
   &.input-validation-error {
     .value {
-      background-color: $invalid-background-color;
+      background-color: $pure-white;
     }
   }
 
   &.input-validation-error, &.multiline-input-validation-error {
     .input-validation-error-details {
-      display: block;
+      align-items: center;
+
+      display: flex;
       padding: 0 10px;
 
       color: white;
-      font-size: 11px;
-      line-height: 15px;
+      font-size: 12px;
+      line-height: 16px;
 
-      background-color: $invalid-message-background-color;
+      background-color: $red;
 
-      i {
-        vertical-align: -2px;
+      .input-validation-error-icon {
+        &, svg.icon {
+          width: 12px;
+          height: 12px;
+        }
+
+        svg {
+          fill: $red;
+        }
+      }
+
+      .input-validation-error-message {
+        margin-left: 5px;
       }
     }
 
     label {
       color: $red;
     }
-
-    label, .value {
-      border-bottom: solid 1px $invalid-message-background-color;
-    }
   }
 
   &.multiline-input-validation-error .erroneous-input {
-    background-color: $invalid-background-color;
+    background-color: $pure-white;
+  }
+}
+
+.coveo-table-form .form-group {
+  &.input-validation-error, &.multiline-input-validation-error {
+    label, .value {
+      border-bottom: solid 1px $red;
+    }
   }
 }
