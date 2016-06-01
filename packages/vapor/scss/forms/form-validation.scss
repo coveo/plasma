@@ -3,12 +3,6 @@
     display: none;
   }
 
-  &.input-validation-error {
-    .value {
-      background-color: $pure-white;
-    }
-  }
-
   &.input-validation-error, &.multiline-input-validation-error {
     .input-validation-error-details {
       align-items: center;
@@ -48,10 +42,15 @@
   }
 }
 
+// TODO remove when removing the table-form
 .coveo-table-form .form-group {
   &.input-validation-error, &.multiline-input-validation-error {
     label, .value {
       border-bottom: solid 1px $red;
+    }
+
+    & > label:first-child {
+      color: $red;
     }
   }
 }

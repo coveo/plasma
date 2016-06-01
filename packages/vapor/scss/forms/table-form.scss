@@ -1,197 +1,195 @@
-form {
-  // DEPRECATED, will be removed summer 2016 (we hope).
-  .coveo-table-form {
-    display: table;
-    width: 100%;
+// DEPRECATED, will be removed summer 2016 (we hope).
+.coveo-table-form {
+  display: table;
+  width: 100%;
 
-    text-align: left;
+  text-align: left;
 
-    table-layout: fixed;
+  table-layout: fixed;
 
-    transition: opacity 0.35s ease;
+  transition: opacity 0.35s ease;
 
-    .form-group {
-      display: table-row;
-      height: 36px;
+  .form-group {
+    display: table-row;
+    height: 36px;
 
-      color: $block-text-color;
+    color: $block-text-color;
 
-      &.hidden {
-        display: none;
-      }
+    &.hidden {
+      display: none;
+    }
 
-      &.disabled .value {
-        background-color: transparent;
-      }
+    &.disabled .value {
+      background-color: transparent;
+    }
 
-      & > label:first-child, .value {
-        display: table-cell;
+    & > label:first-child, .value {
+      display: table-cell;
 
-        vertical-align: middle;
+      vertical-align: middle;
 
-        border-top: 2px solid white;
-        border-bottom: $table-border;
-      }
+      border-top: 2px solid white;
+      border-bottom: $table-border;
+    }
 
-      & > label:first-child {
-        width: 30%;
-        padding: 0 10px;
+    & > label:first-child {
+      width: 30%;
+      padding: 0 10px;
 
-        color: $medium-blue;
+      color: $medium-blue;
+      font-family: $base-font-family;
+      font-size: 16px;
+
+      background-color: $pure-white;
+    }
+
+    .context-help {
+      float: right;
+    }
+
+    .coveo-checkbox + span, .coveo-checkbox + button {
+      margin-left: 10px;
+    }
+
+    .value {
+      height: 39px;
+
+      font-size: 16px;
+
+      background-color: $table-editable-cell-color;
+
+      input:disabled {
+        color: black;
         font-family: $base-font-family;
         font-size: 16px;
+        font-weight: 600;
 
-        background-color: $pure-white;
+        background-color: white;
       }
 
-      .context-help {
-        float: right;
+      &.disabled {
+        background-color: white;
       }
 
-      .coveo-checkbox + span, .coveo-checkbox + button {
-        margin-left: 10px;
+      input, textarea, .admin-select {
+        box-sizing: border-box;
+        padding: 6px 10px;
       }
 
-      .value {
+      input {
+        width: 100%;
         height: 39px;
 
-        font-size: 16px;
+        background-color: transparent;
+        box-shadow: none;
+        border-width: 0;
 
-        background-color: $table-editable-cell-color;
+        resize: none;
+      }
 
-        input:disabled {
-          color: black;
-          font-family: $base-font-family;
-          font-size: 16px;
-          font-weight: 600;
+      input[type='file'] {
+        padding: 9px 10px;
+      }
 
-          background-color: white;
+      &.coveo-slide-toggle-label {
+        padding: 0 10px;
+      }
+
+      &.admin-editable:hover {
+        background-color: $light-grey;
+      }
+
+      &.admin-non-editable {
+        padding-left: 9px;
+
+        background-color: $pure-white;
+
+        i {
+          margin-right: 5px;
+
+          vertical-align: text-bottom;
         }
+      }
 
-        &.disabled {
-          background-color: white;
-        }
+      .admin-multiline {
+        margin-bottom: 0;
 
-        input, textarea, .admin-select {
+        border: none;
+      }
+
+      .admin-select {
+        width: 100%;
+
+        .dropdown-toggle {
           box-sizing: border-box;
-          padding: 6px 10px;
-        }
-
-        input {
           width: 100%;
-          height: 39px;
+          padding-right: 6px;
+          padding-left: 0;
 
-          background-color: transparent;
-          box-shadow: none;
-          border-width: 0;
-
-          resize: none;
-        }
-
-        input[type='file'] {
-          padding: 9px 10px;
-        }
-
-        &.coveo-slide-toggle-label {
-          padding: 0 10px;
-        }
-
-        &.admin-editable:hover {
-          background-color: $light-grey;
-        }
-
-        &.admin-non-editable {
-          padding-left: 9px;
-
-          background-color: $pure-white;
-
-          i {
-            margin-right: 5px;
-
-            vertical-align: text-bottom;
-          }
-        }
-
-        .admin-multiline {
-          margin-bottom: 0;
-
-          border: none;
-        }
-
-        .admin-select {
-          width: 100%;
-
-          .dropdown-toggle {
-            box-sizing: border-box;
-            width: 100%;
-            padding-right: 6px;
-            padding-left: 0;
-
-            font-size: 16px;
-            text-align: left;
-
-            background-color: transparent;
-            box-shadow: none;
-            border: none;
-
-            cursor: pointer;
-            opacity: 1;
-
-            .dropdown-toggle-arrow {
-              margin-top: -8px;
-            }
-          }
-
-          .dropdown-menu {
-            box-sizing: border-box;
-            width: 100%;
-            max-height: 250px;
-            overflow-y: auto;
-
-            text-align: left;
-
-            @include slim-scroll();
-
-            li {
-              a i {
-                margin-top: 0;
-                margin-bottom: 0;
-
-                vertical-align: text-top;
-              }
-
-              > a, > span {
-                padding-left: 9px;
-              }
-            }
-          }
-        }
-
-        textarea {
-          width: 100%;
-          margin-bottom: 0;
+          font-size: 16px;
+          text-align: left;
 
           background-color: transparent;
           box-shadow: none;
           border: none;
 
-          resize: vertical;
+          cursor: pointer;
+          opacity: 1;
+
+          .dropdown-toggle-arrow {
+            margin-top: -8px;
+          }
+        }
+
+        .dropdown-menu {
+          box-sizing: border-box;
+          width: 100%;
+          max-height: 250px;
+          overflow-y: auto;
+
+          text-align: left;
 
           @include slim-scroll();
+
+          li {
+            a i {
+              margin-top: 0;
+              margin-bottom: 0;
+
+              vertical-align: text-top;
+            }
+
+            > a, > span {
+              padding-left: 9px;
+            }
+          }
         }
       }
-    }
 
-    &.disabled {
-      opacity: 0.4;
+      textarea {
+        width: 100%;
+        margin-bottom: 0;
 
-      .form-group label {
-        cursor: default;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+
+        resize: vertical;
+
+        @include slim-scroll();
       }
     }
+  }
 
-    & + .coveo-table-form, & + .coveo-block-form {
-      margin-top: 10px;
+  &.disabled {
+    opacity: 0.4;
+
+    .form-group label {
+      cursor: default;
     }
+  }
+
+  & + .coveo-table-form, & + .coveo-block-form {
+    margin-top: 10px;
   }
 }
