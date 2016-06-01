@@ -53,4 +53,4 @@ deploy:
     acl: public_read
     on:
       tags: true
-      repo: coveo/styleguide
+      repo: coveo/vapor
