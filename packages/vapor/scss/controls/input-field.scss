@@ -30,10 +30,7 @@
       @include placeholder();
 
       & + label {
-        top: -1 * $input-field-margin-top;
-
-        color: $medium-blue;
-        font-size: $form-control-label-font-size;
+        @extend .active;
       }
     }
 
@@ -62,6 +59,13 @@
     transition: 0.2s all ease;
 
     pointer-events: none;
+
+    &.active {
+      top: -1 * $input-field-margin-top;
+
+      color: $medium-blue;
+      font-size: $form-control-label-font-size;
+    }
   }
 
   &.mod-fixed-width {
