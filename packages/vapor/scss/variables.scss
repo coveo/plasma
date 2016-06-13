@@ -16,7 +16,14 @@ $button-confirm-margin-bottom: 20px;
 $checkbox-label-margin: 24px;
 $radio-button-option-height: 16px;
 $radio-button-size: 16px;
-// Input field
+// Input and textarea
+$input-border: 1px solid $medium-grey;
+$input-height: 34px;
+$input-font-size: 15px;
+$input-margin: 0 0 15px 0 !default;
+$input-padding: 0 !default;
+$input-transition: all 0.2s ease !default;
+$input-color-transition: color 0.2s ease;
 $input-field-margin-top: 15px;
 $input-field-vertical-padding: 3px;
 $input-field-height: 34px;
