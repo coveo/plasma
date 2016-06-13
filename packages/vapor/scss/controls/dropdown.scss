@@ -3,6 +3,12 @@
 
   display: inline-block;
 
+  .dropdown-prepend {
+    padding-right: 5px;
+
+    color: $medium-grey;
+  }
+
   .dropdown-toggle {
     display: inline-block;
     overflow: hidden;
