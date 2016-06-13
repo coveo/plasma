@@ -1,11 +1,12 @@
 ---
 type: formControls
 title: Dropdown
-usage: A dropdown control. Basically, it replaces the HTML select tag.
+usage: A dropdown control. Basically, it replaces the HTML select tag. The dropdown prepend is optional.
 stylesheet: '/scss/controls/dropdown.scss'
 ---
 <div class="dropdown">
     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+        <span class="dropdown-prepend">Option: </span>
         <span class="dropdown-toggle-arrow">
             <svg class="fill-medium-blue" viewBox="0 0 512 512" style="height: 16px; width: 16px">
                 <g style="pointer-events: none;">
@@ -13,8 +14,7 @@ stylesheet: '/scss/controls/dropdown.scss'
                 </g>
             </svg>
         </span>
-
-        Option 3
+        <span class="dropdown-selected-value">Option 3</span>
 
     </button>
 
