@@ -36,10 +36,10 @@
           th {
             padding: 2px 0;
 
-            border-bottom: 1px solid $datepicker-border-color;
+            border-bottom: 1px solid $medium-grey;
           }
           span {
-            color: $datepicker-dayofweeks-color;
+            color: $medium-grey;
             font-size: 9px;
 
             border-top: none;
@@ -53,7 +53,7 @@
         a:hover {
           text-decoration: none;
 
-          background: $datepicker-day-hover-background-color;
+          background: $medium-grey;
 
           cursor: pointer;
         }
@@ -91,18 +91,15 @@
         td {
           padding: 0;
 
-          color: $datepicker-day-color;
           font-size: 11px;
           text-align: center;
 
-          background-color: $pure-white;
-          border: 1px solid $datepicker-border-color;
+          border: 1px solid $white;
 
           a {
             box-sizing: border-box;
-            width: 100%;
+            width: 37px;
             height: 26px;
-            min-width: 38px;
 
             line-height: 26px;
             text-decoration: none;
@@ -111,38 +108,43 @@
           }
 
           &.datepickerSelected {
-            background-color: $medium-blue;
+            background-color: $light-blue;
 
             &.datepickerNotInMonth {
-              background-color: $datepicker-day-selected-notinmonth-background-color;
+              background-color: $medium-grey;
               a {
-                color: $datepicker-day-selected-notinmonth-color;
+                color: $dark-grey;
               }
             }
           }
 
           &.datepickerNotInMonth {
-            background-color: $datepicker-day-notinmonth-background-color;
+            background-color: $light-grey;
           }
 
           &.datepickerFuture {
             &.datepickerNotInMonth {
-              background-color: $datepicker-day-notinmonth-background-color;
+              background-color: $light-grey;
               a {
                 cursor: default;
               }
 
               &.datepickerDisabled {
-                background-color: $datepicker-day-disabled-background-color;
+                background-color: $light-grey;
+                a {
+                  color: $medium-grey;
+
+                  cursor: default;
+                }
               }
             }
           }
 
           &.datepickerDisabled {
-            background-color: $datepicker-day-disabled-background-color;
+            background-color: $light-grey;
 
             a {
-              color: $datepicker-day-disabled-color;
+              color: $medium-grey;
 
               cursor: default;
             }
