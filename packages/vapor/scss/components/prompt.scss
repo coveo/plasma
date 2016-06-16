@@ -31,4 +31,15 @@
       }
     }
   }
+
+  &.mod-medium {
+    .modal-content {
+      max-height: initial;
+
+      .modal-body {
+        max-height: initial;
+        min-height: initial;
+      }
+    }
+  }
 }
