@@ -173,3 +173,12 @@
     }
   }
 }
+
+.btn-container {
+  display: inline-block;
+  margin: 0;
+
+  .btn[disabled] {
+    pointer-events: none;
+  }
+}
