@@ -23,9 +23,6 @@ $(document).ready(function() {
         selectedTab = $(selectedTabParend[0]).parent().addClass('state-active');
     }
 
-    /* chosen select initialisation */
-    $('.chosen').chosen();
-
     $('.navigation-menu-section-item').click(function() {
         if (selectedTab) {
             selectedTab.removeClass('state-active');
