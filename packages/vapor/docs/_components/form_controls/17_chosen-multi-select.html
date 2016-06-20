@@ -1,12 +1,11 @@
 ---
 type: formControls
-title: Chosen single select
+title: Chosen multi select
 usage: Controls using chosen library with a custom style to search result in a list inside a select.
 stylesheet: '/scss/controls/chosen.scss'
 ---
 
-<select class="chosen js-chosen-single-select">
-    <option value=""></option>
+<select class="chosen js-chosen-multi-select" multiple style="width: 440px" data-placeholder="Choose a Country...">
     <option value="United States">United States</option>
     <option value="United Kingdom">United Kingdom</option>
     <option value="Afghanistan">Afghanistan</option>
@@ -22,7 +21,5 @@ stylesheet: '/scss/controls/chosen.scss'
     <option value="Argentina">Argentina</option>
 </select>
 <script>
-    $('.js-chosen-single-select').chosen({
-        allow_single_deselect: true
-    });
+    $('.js-chosen-multi-select').chosen();
 </script>
