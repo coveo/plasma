@@ -85,7 +85,7 @@
     border-left: $table-border;
   }
 
-  .predicate-filters-container + .coveo-table-actions:last-child {
+  .coveo-table-actions.predicate-filters + .coveo-table-actions:last-child {
     padding-left: 0;
 
     border-left: none;
