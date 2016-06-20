@@ -47,40 +47,25 @@ stylesheet: '/scss/controls/input-field.scss'
         <label data-valid-message="You dit it right!" data-invalid-message="Value must be a valid email address.">Validated email</label>
     </div>
 
-    <div class="input-field multiline-field form-group">
-        <ul>
-            <li class="input-wrapper">
-                <input type="text" class="js-new-value-input" required placeholder="">
-                <label>Multiline empty</label>
-                <div class="input-actions">
-                    <span class="js-add-value-button">
-                        <i class="add-action" title="Add a new entry"></i>
-                    </span>
-                </div>
-            </li>
-        </ul>
+    <div id="textarea1" class="input-field form-group">
+        <textarea required></textarea>
+        <label for="textarea1">
+            Textarea empty
+        </label>
     </div>
 
-    <div class="input-field multiline-field form-group">
-        <ul>
-            <li class="input-wrapper">
-                <input type="text" class="js-value-input" required value="First multiline value">
-                <label>Multiline one value entered</label>
-                <div class="input-actions">
-                    <button class="js-delete-value-button" type="button">
-                        <i class="delete-action" title="Delete this entry"></i>
-                    </button>
-                </div>
-            </li>
-        </ul>
-        <div class="input-wrapper">
-            <input type="text" class="js-new-value-input" placeholder="">
-            <div class="input-actions">
-                <button class="js-add-value-button">
-                    <i class="add-action" title="Add a new entry"></i>
-                </button>
-            </div>
-        </div>
+    <div id="textarea2" class="input-field form-group">
+        <textarea placeholder="Placeholder text" required></textarea>
+        <label for="textarea2">
+            Textarea with placeholder
+        </label>
+    </div>
+
+    <div id="textarea3" class="input-field form-group">
+        <textarea required>Lorem ipsum dolor sit amet, interdum est eu. A tellus condimentum hendrerit enim, ligula fusce vitae, leo et fusce mauris lorem suscipit scelerisque. Vel arcu, non vestibulum suspendisse non lectus magnis suspendisse, aliquam magna commodo. Nascetur eleifend at faucibus faucibus, nulla fringilla, mauris ultrices posuere in, ut dolor cras rhoncus.</textarea>
+        <label for="textarea3">
+            Textarea
+        </label>
     </div>
 </div>
 
@@ -95,4 +80,6 @@ stylesheet: '/scss/controls/input-field.scss'
             $input.addClass('invalid');
         }
     });
+
+    autosize($('textarea'));
 </script>

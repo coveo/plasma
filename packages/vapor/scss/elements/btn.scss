@@ -19,6 +19,13 @@
   }
 }
 
+@mixin button-focus($offset) {
+  background-color: $light-grey;
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: $offset;
+}
+
 .btn {
   display: inline-block;
   height: $button-height;
@@ -50,10 +57,7 @@
   }
 
   &:focus {
-    background-color: $light-grey;
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
+    @include button-focus(-2px);
   }
 
   &:disabled, &.state-disabled {

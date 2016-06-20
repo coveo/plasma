@@ -16,12 +16,18 @@ $button-confirm-margin-bottom: 20px;
 $checkbox-label-margin: 24px;
 $radio-button-option-height: 16px;
 $radio-button-size: 16px;
-// Input field
-$input-field-margin-top: 15px;
-$input-field-vertical-padding: 3px;
-$input-field-height: 34px;
-$input-field-max-width: 440px;
-$input-field-font-size: 15px;
+// Input and textarea
+$input-border: 1px solid rgba($medium-grey, 0.4);
+$input-height: 34px;
+$input-font-size: 15px;
+$input-margin: 0 0 15px 0 !default;
+$input-padding: 0 !default;
+$input-transition: all 0.2s ease !default;
+$input-color-transition: color 0.2s ease;
+$input-margin-top: 15px;
+$input-vertical-padding: 3px;
+$input-height: 34px;
+$input-max-width: 440px;
 // Filter Box
 $filter-box-height: 34px;
 // Flat select

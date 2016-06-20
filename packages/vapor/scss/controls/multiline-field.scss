@@ -1,17 +1,129 @@
 .multiline-field {
-  li {
-    margin-bottom: 30px;
+  .input-wrapper {
+    position: relative;
+
+    padding-bottom: 8px;
 
     label {
-      display: none;
+      visibility: hidden;
+      &:after {
+        visibility: visible;
+      }
+
+      &.first-label {
+        visibility: visible;
+      }
     }
 
-    &:first-child label {
-      display: flex;
+    &:nth-child(1) label {
+      visibility: visible;
     }
   }
 
-  input {
-    padding-right: 20px;
+  ul {
+    li {
+      &:first-child label {
+        display: flex;
+      }
+
+      input {
+        margin-bottom: 10px;
+
+        &::-ms-clear {
+          // ie: remove the X on right
+          display: none;
+        }
+      }
+    }
+
+    &:not(:empty) + .input-wrapper {
+      input {
+        @include placeholder();
+      }
+
+      label.first-label {
+        visibility: hidden;
+      }
+    }
+  }
+
+  // Action icons
+  .input-actions {
+    position: absolute;
+    top: 4px;
+    right: -2px;
+
+    .js-add-value-button, .js-delete-value-button {
+      position: relative;
+
+      padding: 4px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        i {
+          box-shadow: 0 0 6px 1px $medium-blue;
+        }
+      }
+    }
+
+    button {
+      width: auto;
+
+      background: none;
+      border: none;
+      outline: none;
+    }
+
+    i {
+      position: relative;
+
+      display: block;
+      width: 18px;
+      height: 18px;
+
+      border: 2px solid $medium-blue;
+      border-radius: 18px;
+
+      &.add-action, &.delete-action {
+        &:before {
+          position: relative;
+          top: 6px;
+          left: 2px;
+
+          display: block;
+          width: 10px;
+          height: 2px;
+
+          content: '';
+
+          background-color: $medium-blue;
+        }
+      }
+
+      &.add-action {
+        border-color: $orange;
+
+        &:before {
+          background-color: $orange;
+        }
+
+        &:after {
+          position: absolute;
+          top: 2px;
+          left: 6px;
+
+          display: block;
+          width: 2px;
+          height: 10px;
+
+          content: '';
+
+          background-color: $orange;
+        }
+      }
+    }
   }
 }
