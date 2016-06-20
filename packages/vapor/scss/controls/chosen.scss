@@ -170,8 +170,8 @@
         width: $chosen-arrow-icon-size;
         height: $chosen-arrow-icon-size;
 
-        background-position: right center;
-        background-size: $chosen-arrow-icon-size;
+        background-position: center;
+        background-size: $chosen-arrow-icon-size $chosen-arrow-icon-size;
 
         @include arrow-down-icon();
       }
@@ -213,7 +213,8 @@
       line-height: normal;
 
       background-position: right 8px center;
-      background-size: $chosen-filter-icon-size;
+      background-origin: border-box;
+      background-size: $chosen-filter-icon-size $chosen-filter-icon-size;
       border: 1px solid $medium-grey;
       border-radius: 2px;
       outline: 0;
