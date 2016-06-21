@@ -19,10 +19,12 @@ var gzipOptions = config.gzipOptions;
 var useMinifiedSources = gutil.env.min;
 var useGzippedSources = gutil.env.gzip;
 
-gulp.task('sass', 'Compile sass files to dist folder', ['sprites'], function() {
+gulp.task('sass', 'Compile sass files to dist folder', ['sprites'], function(done) {
     return gulp.src('./scss/guide.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass().on('error', function(err) {
+            sassError(err, done);
+        }))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(rename('CoveoStyleGuide.css'))
         .pipe(sourcemaps.write('../css'))
@@ -41,3 +43,8 @@ gulp.task('sass:format', function() {
         .pipe(csscomb())
         .pipe(gulp.dest('./scss'));
 });
+
+function sassError(err, doneCallback) {
+    process.stderr.write(new gutil.PluginError('sass', err.messageFormatted).toString() + '\n');
+    doneCallback(1);
+}
