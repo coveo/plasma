@@ -1,4 +1,9 @@
 a {
   color: $hyperlink-color;
   text-decoration: none;
+
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+  }
 }
