@@ -306,8 +306,8 @@ table {
 
   &.confirm-delete {
     .row-selected td, &.row-selected:hover td {
-      background-color: $invalid-background-color;
-      border-color: $invalid-message-background-color;
+      background-color: rgba($red, 0.1);
+      border-color: $red;
 
       transition: background-color 300ms;
     }
