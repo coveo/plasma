@@ -39,7 +39,7 @@ gulp.task('sass', 'Compile sass files to dist folder', ['sprites'], function(don
 });
 
 gulp.task('sass:format', function() {
-    return gulp.src(['./scss/**/*.scss', '!./scss/sprites.scss', '!./scss/utility/colors.scss', '!./scss/utility/border.scss'])
+    return gulp.src(['./scss/**/*.scss', '!./scss/icons/svgs.scss', '!./scss/sprites.scss', '!./scss/utility/colors.scss', '!./scss/utility/border.scss'])
         .pipe(csscomb())
         .pipe(gulp.dest('./scss'));
 });

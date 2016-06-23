@@ -1,6 +1,7 @@
 .dropdown.mod-menu {
   .dropdown-toggle {
     height: auto;
+    min-height: $button-height;
 
     text-transform: none;
 
@@ -8,6 +9,14 @@
     border: none;
 
     cursor: pointer;
+
+    .dropdown-toggle-arrow {
+      @include arrow-down-icon($pure-white);
+    }
+  }
+
+  &.open > .dropdown-toggle .dropdown-toggle-arrow {
+    @include arrow-up-icon($pure-white);
   }
 
   .dropdown-menu {

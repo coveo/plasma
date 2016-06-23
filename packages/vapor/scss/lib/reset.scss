@@ -57,3 +57,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
   border: 0;
 }
+
+// For Safari
+button {
+  margin: 0;
+}

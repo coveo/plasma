@@ -11,23 +11,39 @@
 
   .dropdown-toggle {
     display: inline-block;
+    padding: 0 ($button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing) 0 $button-padding-x;
     overflow: hidden;
 
+    font-size: $dropdown-button-font-size;
+    line-height: 16px;
     text-overflow: ellipsis;
     text-transform: none;
     white-space: nowrap;
 
     .dropdown-toggle-arrow {
-      float: right;
-      margin-top: 1px;
-      margin-left: 10px;
+      position: absolute;
+      top: calc(50% - #{$dropdown-arrow-icon-size} / 2);
+      right: $button-padding-x;
+
+      width: $dropdown-arrow-icon-size;
+      height: $dropdown-arrow-icon-size;
+
+      @include arrow-down-icon($medium-blue);
     }
   }
 
+  &.open > .dropdown-toggle .dropdown-toggle-arrow {
+    @include arrow-up-icon($medium-blue);
+  }
+
   .dropdown-toggle .value-icon, .dropdown-menu li .value-icon {
+    display: inline-flex;
     margin-right: 3px;
 
-    vertical-align: middle;
+    &, & svg {
+      width: 0.8em;
+      height: 0.8em;
+    }
   }
 
   .dropdown-menu {
@@ -49,7 +65,7 @@
 
     background-color: $pure-white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
-    border: 1px solid $dark-blue;
+    border: 1px solid $medium-grey;
     border-radius: 0 0 2px 2px;
 
     &.mod-right {
@@ -60,10 +76,11 @@
     li {
       > a, > span {
         display: block;
-        padding: $button-padding-y $button-padding-x;
+        padding: 8px $button-padding-x;
         overflow: hidden;
 
         color: $dark-grey;
+        font-size: $dropdown-choice-font-size;
         line-height: 16px;
         text-overflow: ellipsis;
         white-space: nowrap;
