@@ -4,6 +4,10 @@
 
     padding-bottom: 8px;
 
+    input {
+      padding-right: 22px;
+    }
+
     label {
       visibility: hidden;
       &:after {
