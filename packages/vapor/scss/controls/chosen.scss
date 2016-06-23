@@ -33,7 +33,7 @@
     .chosen-results {
       position: relative;
 
-      max-height: 240px;
+      max-height: $dropdown-menu-max-height;
       overflow-x: hidden;
       overflow-y: auto;
 
