@@ -51,6 +51,10 @@
         margin-right: -$table-actions-dropdown-padding-x;
         margin-left: calc(#{$table-actions-margin} - #{$table-actions-dropdown-padding-x});
 
+        .dropdown-toggle {
+          padding: 0;
+        }
+
         &.open {
           background-color: $light-grey;
           border-color: $medium-grey;
