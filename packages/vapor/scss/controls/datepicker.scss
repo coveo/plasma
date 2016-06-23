@@ -1,3 +1,14 @@
+$datepicker-border-color: #f6f6f6;
+$datepicker-dayofweeks-color: $dark-grey;
+$datepicker-day-hover-background-color: #eeeeee;
+$datepicker-day-color: $dark-grey;
+$datepicker-day-selected-notinmonth-color: $dark-grey;
+$datepicker-day-selected-notinmonth-background-color: #d2dce6;
+$datepicker-day-selected-background-color: lighten($medium-blue, 5%);
+$datepicker-day-notinmonth-background-color: $dark-grey;
+$datepicker-day-disabled-background-color: #e6e6e6;
+$datepicker-day-disabled-color: #666666;
+
 .inline .datepicker {
   box-sizing: border-box;
   width: 100% !important;
