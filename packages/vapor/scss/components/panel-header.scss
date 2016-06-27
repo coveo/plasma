@@ -42,5 +42,9 @@
     .action-label {
       display: none;
     }
+
+    &.dropdown .dropdown-toggle {
+      padding: 0;
+    }
   }
 }
