@@ -42,6 +42,14 @@
   }
 }
 
+.generic-form-error {
+  display: inline-block;
+  margin-bottom: 10px;
+
+  color: $red;
+  font-size: 12px;
+}
+
 // TODO remove when removing the table-form
 .coveo-table-form .form-group {
   &.input-validation-error, &.multiline-input-validation-error {
