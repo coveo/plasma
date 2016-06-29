@@ -2,129 +2,129 @@
   position: relative;
 
   display: inline-block;
+}
 
-  .dropdown-prepend {
-    padding-right: 5px;
+.dropdown-prepend {
+  padding-right: 5px;
 
-    color: $medium-grey;
-  }
+  color: $medium-grey;
+}
 
-  .dropdown-toggle {
-    display: inline-block;
-    padding: 0 ($button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing) 0 $button-padding-x;
-    overflow: hidden;
+.dropdown-toggle {
+  display: inline-block;
+  padding: 0 ($button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing) 0 $button-padding-x;
+  overflow: hidden;
 
-    font-size: $dropdown-button-font-size;
-    line-height: 16px;
-    text-overflow: ellipsis;
-    text-transform: none;
-    white-space: nowrap;
+  font-size: $dropdown-button-font-size;
+  line-height: 16px;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: nowrap;
 
-    .dropdown-toggle-arrow {
-      position: absolute;
-      top: calc(50% - #{$dropdown-arrow-icon-size} / 2);
-      right: $button-padding-x;
-
-      width: $dropdown-arrow-icon-size;
-      height: $dropdown-arrow-icon-size;
-
-      @include arrow-down-icon($medium-blue);
-    }
-  }
-
-  &.open > .dropdown-toggle .dropdown-toggle-arrow {
-    @include arrow-up-icon($medium-blue);
-  }
-
-  .dropdown-toggle .value-icon, .dropdown-menu li .value-icon {
-    display: inline-flex;
-    margin-right: 3px;
-
-    &, & svg {
-      width: 0.8em;
-      height: 0.8em;
-    }
-  }
-
-  .dropdown-menu {
+  .dropdown-toggle-arrow {
     position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
+    top: calc(50% - #{$dropdown-arrow-icon-size} / 2);
+    right: $button-padding-x;
 
-    display: none;
-    float: left;
-    max-height: $dropdown-menu-max-height;
-    min-width: 100%;
-    padding: $dropdown-choices-top-bottom-margin 0;
-    margin: 0;
-    overflow-y: auto;
+    width: $dropdown-arrow-icon-size;
+    height: $dropdown-arrow-icon-size;
 
-    color: $dark-blue;
-    list-style: none;
+    @include arrow-down-icon($medium-blue);
+  }
+}
 
-    background-color: $pure-white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
-    border: 1px solid $medium-grey;
-    border-radius: 0 0 2px 2px;
+&.open > .dropdown-toggle .dropdown-toggle-arrow {
+  @include arrow-up-icon($medium-blue);
+}
 
-    @include slim-scroll($light-grey, $medium-grey);
+.dropdown-toggle .value-icon, .dropdown-menu li .value-icon {
+  display: inline-flex;
+  margin-right: 3px;
 
-    &.mod-right {
-      right: 0;
-      left: auto;
-    }
+  &, & svg {
+    width: 0.8em;
+    height: 0.8em;
+  }
+}
 
-    li {
-      > a, > span {
-        display: block;
-        padding: 8px $button-padding-x;
-        overflow: hidden;
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
 
-        color: $dark-grey;
-        font-size: $dropdown-choice-font-size;
-        line-height: 16px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+  display: none;
+  float: left;
+  max-height: $dropdown-menu-max-height;
+  min-width: 100%;
+  padding: $dropdown-choices-top-bottom-margin 0;
+  margin: 0;
+  overflow-y: auto;
 
-        cursor: pointer;
+  color: $dark-blue;
+  list-style: none;
 
-        &:hover, &:focus {
-          color: $dark-blue;
+  background-color: $pure-white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
+  border: 1px solid $medium-grey;
+  border-radius: 0 0 2px 2px;
 
-          background: $light-grey;
-        }
+  @include slim-scroll($light-grey, $medium-grey);
 
-        &.state-selected {
-          font-weight: bold;
-        }
+  &.mod-right {
+    right: 0;
+    left: auto;
+  }
 
-        &.disabled {
-          color: $medium-grey;
+  li {
+    > a, > span {
+      display: block;
+      padding: 8px $button-padding-x;
+      overflow: hidden;
 
-          cursor: default;
-        }
-      }
+      color: $dark-grey;
+      font-size: $dropdown-choice-font-size;
+      line-height: 16px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-      &.active {
+      cursor: pointer;
+
+      &:hover, &:focus {
         color: $dark-blue;
 
-        background-color: $medium-grey;
+        background: $light-grey;
       }
 
-      &.divider {
-        height: 1px;
-        margin: 8px 0;
+      &.state-selected {
+        font-weight: bold;
+      }
 
-        background-color: $medium-grey;
+      &.disabled {
+        color: $medium-grey;
 
         cursor: default;
       }
     }
-  }
 
-  &.open > .dropdown-menu {
-    display: block;
-    margin-bottom: $form-bottom-padding;
+    &.active {
+      color: $dark-blue;
+
+      background-color: $medium-grey;
+    }
+
+    &.divider {
+      height: 1px;
+      margin: 8px 0;
+
+      background-color: $medium-grey;
+
+      cursor: default;
+    }
   }
+}
+
+&.open > .dropdown-menu {
+  display: block;
+  margin-bottom: $form-bottom-padding;
 }
