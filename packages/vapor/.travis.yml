@@ -4,7 +4,11 @@ language: node_js
 
 node_js:
   - '0.12'
-
+  
+branches:
+  only: 
+    - master
+    
 before_install:
   - rvm install 2.2.2 && rvm use 2.2.2
 
