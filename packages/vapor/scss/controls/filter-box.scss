@@ -1,12 +1,40 @@
 .coveo-filter-container {
   position: relative;
 
-  width: 336px;
+  @media only screen and (max-width: 1600px) {
+    width: 260px;
 
+    .filter-icon {
+      right: 0;
+    }
+
+    input.filter-box {
+      width: 275px;
+
+      & + span {
+        right: 0;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1600px) {
+    width: 336px;
+
+    .filter-icon {
+      right: 20px;
+    }
+
+    input.filter-box {
+      width: 336px;
+
+      & + span {
+        right: 20px;
+      }
+    }
+  }
   .filter-icon {
     position: absolute;
     top: 8px;
-    right: 20px;
 
     display: none;
 
@@ -14,7 +42,6 @@
   }
 
   input.filter-box {
-    width: 336px;
     height: $filter-box-height;
     padding-right: 40px;
     padding-left: 20px;
@@ -23,7 +50,6 @@
     & + span {
       position: absolute;
       top: 8px;
-      right: 20px;
 
       &.hide, &.hidden {
         display: none;
