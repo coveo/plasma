@@ -269,7 +269,7 @@ table {
       padding-left: 10px;
     }
 
-    &:hover {
+    &:hover td {
       background-color: $light-grey;
     }
 
@@ -290,7 +290,7 @@ table {
     }
 
     &.selected {
-      &:not(:hover) {
+      &:not(:hover) td {
         background-color: $white;
       }
 
