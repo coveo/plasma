@@ -7,5 +7,22 @@ table {
     tbody tr td:first-child {
       padding-left: $table-first-column-padding-left;
     }
+
+    &.mod-collapsible-rows tbody tr.collapsible-row td:first-child {
+      padding-left: $table-first-column-padding-left;
+
+      .box.padded {
+        padding-left: 0;
+      }
+
+      .box .label, .box .value {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+
+    &.mod-collapsible-rows tbody tr.collapsible-row td:last-child {
+      padding-right: $table-first-column-padding-left;
+    }
   }
 }
