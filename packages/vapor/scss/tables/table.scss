@@ -9,8 +9,6 @@ table {
   th, td {
     position: relative;
 
-    padding: 5px 15px;
-
     text-align: left;
     vertical-align: middle;
 
@@ -22,104 +20,82 @@ table {
     &:last-child {
       padding-right: 20px;
     }
-  }
 
-  th:first-child {
-    padding-left: 20px;
+    .coveo-checkbox-label + .cell-content {
+      margin-left: 10px;
+    }
   }
 
   thead tr {
     height: $table-header-height;
 
     color: $medium-blue;
-    font-size: 12px;
+    font-size: $table-header-font-size;
     font-weight: bold;
+    line-height: $table-header-line-height;
 
     background-color: transparent;
+  }
 
-    th {
-      line-height: normal;
-      white-space: nowrap;
+  th {
+    padding: $table-header-top-bottom-padding $table-cell-left-right-padding;
 
-      border-top: $table-border;
-      border-bottom: $table-border;
+    white-space: nowrap;
 
-      &.admin-sort {
-        position: relative;
+    border-top: $table-border;
+    border-bottom: $table-border;
 
-        cursor: pointer;
+    &.admin-sort {
+      position: relative;
 
-        .admin-sort-icon {
-          display: inline-flex;
+      cursor: pointer;
 
-          .tables-sort {
-            width: 7px;
-            height: 15px;
-            margin-left: 5px;
+      .admin-sort-icon {
+        display: inline-flex;
 
-            vertical-align: middle;
+        .tables-sort {
+          width: 7px;
+          height: 12px;
+          margin-left: 5px;
 
-            fill: $medium-blue;
+          vertical-align: -2px;
 
-            .asc-arrow, .desc-arrow {
-              cursor: pointer;
-              opacity: 0.3;
+          fill: $medium-blue;
 
-              &:hover {
-                opacity: 0.6;
-              }
-            }
-          }
-        }
+          .asc-arrow, .desc-arrow {
+            cursor: pointer;
+            opacity: 0.3;
 
-        &.admin-sort-descending {
-          .admin-sort-icon {
-            .desc-arrow {
-              opacity: 1;
-            }
-          }
-        }
-
-        &.admin-sort-ascending {
-          .admin-sort-icon {
-            .asc-arrow {
-              opacity: 1;
+            &:hover {
+              opacity: 0.6;
             }
           }
         }
       }
 
-      &.sorting_asc {
+      &.admin-sort-descending .admin-sort-icon .desc-arrow {
+        opacity: 1;
+      }
+
+      &.admin-sort-ascending .admin-sort-icon .asc-arrow {
+        opacity: 1;
+      }
+
+      &:hover {
         background-color: $light-grey;
-        background-image: none;
-
-        cursor: pointer;
       }
+    }
 
-      &.sorting_desc {
-        background-color: $light-grey;
-        background-image: none;
+    &:first-child {
+      padding-left: 20px;
+    }
 
-        cursor: pointer;
-      }
-
-      &.sorting {
-        cursor: pointer;
-      }
-
-      &.sorting_disabled {
-        cursor: default;
-      }
-
-      &.sorting, &.sorting_asc, &.sorting_desc, &.admin-sort {
-        &:hover {
-          background-color: $light-grey;
-        }
-      }
+    .coveo-checkbox-label {
+      vertical-align: text-top;
     }
   }
 
-  thead.mod-no-border-top tr th {
+  thead.mod-no-border-top th {
     border-top: none;
   }
 
@@ -128,141 +104,13 @@ table {
   }
 
   tr {
-    height: 36px;
+    height: $table-row-height;
 
-    font-size: 15px;
+    font-size: $table-row-font-size;
+    line-height: $table-row-line-height;
 
-    &.disabled {
-      div.wrapper {
-        opacity: 0.4;
-      }
-    }
-
-    td {
-      margin-left: 15px;
-
-      text-align: left;
-
-      border-bottom: $table-border;
-
-      &:first-child {
-        border-left: $table-selected-border-width solid transparent;
-      }
-
-      &.edit.enabled {
-        color: $medium-blue;
-
-        cursor: pointer;
-      }
-
-      .btn-icon, .dropdown-toggle {
-        cursor: default;
-        opacity: 0.3;
-
-        &.enabled:active:hover {
-          border-radius: 4px;
-        }
-
-        &.disabled {
-          cursor: default;
-          opacity: 0.2;
-        }
-
-        &.enabled {
-          cursor: pointer;
-          opacity: 1;
-        }
-      }
-
-      &.actions {
-        position: relative;
-
-        overflow: visible;
-
-        text-align: right;
-        white-space: nowrap;
-
-        background-clip: padding-box; // Fix for FF and IE
-
-        user-select: none;
-
-        & > div {
-          display: inline-block;
-
-          font-size: inherit;
-        }
-
-        &.group-collapse {
-          cursor: pointer;
-
-          i {
-            margin-right: 2px;
-
-            vertical-align: -1px;
-          }
-
-          .group-count {
-            margin-right: 5px;
-          }
-        }
-
-        #actions {
-          min-height: 16px;
-        }
-
-        .btn-group {
-          .dropdown-toggle {
-            height: 20px;
-            padding: 2px;
-
-            span.menu {
-              vertical-align: 1px;
-              svg {
-                fill: $medium-blue;
-              }
-            }
-          }
-
-          &.open .dropdown-toggle.enabled {
-            border-radius: 4px;
-          }
-
-          .dropdown-menu {
-            right: 0;
-            left: inherit;
-
-            min-width: 135px;
-
-            text-align: left;
-
-            .arrow-up {
-              right: 4px;
-            }
-
-            .dropdown-label {
-              padding-left: 15px;
-
-              font-size: 12px;
-
-              &:hover {
-                background: none;
-              }
-            }
-
-            .hide {
-              display: none;
-            }
-          }
-        }
-
-        .btn-icon span.delete {
-          vertical-align: -3px;
-
-          svg {
-            fill: $medium-blue;
-          }
-        }
-      }
+    &.disabled div.wrapper {
+      opacity: 0.4;
     }
 
     &:first-child {
@@ -279,16 +127,6 @@ table {
       text-align: center;
     }
 
-    &.admin-focus {
-      td {
-        background-color: #f5f9fd;
-
-        &.admin-focus-cell {
-          background-color: #ebf3fb;
-        }
-      }
-    }
-
     &.selected {
       &:not(:hover) td {
         background-color: $white;
@@ -297,6 +135,51 @@ table {
       td:first-child {
         border-left-color: $orange;
       }
+    }
+  }
+
+  td {
+    padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
+    margin-left: 15px;
+
+    text-align: left;
+
+    border-bottom: $table-border;
+
+    &:first-child {
+      border-left: $table-selected-border-width solid transparent;
+    }
+
+    &.edit.enabled {
+      color: $medium-blue;
+
+      cursor: pointer;
+    }
+
+    .btn-icon, .dropdown-toggle {
+      cursor: default;
+      opacity: 0.3;
+
+      &.enabled:active:hover {
+        border-radius: $border-radius;
+      }
+
+      &.disabled {
+        cursor: default;
+        opacity: 0.2;
+      }
+
+      &.enabled {
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+
+    .coveo-checkbox-label {
+      position: relative;
+      top: -1px; // Small hack to make it work in all browsers...
+
+      vertical-align: text-bottom;
     }
   }
 
@@ -313,11 +196,7 @@ table {
     }
   }
 
-  &.mod-deleting {
-    tbody {
-      tr.selected {
-        background-color: rgba($red, 0.1);
-      }
-    }
+  &.mod-deleting tbody tr.selected {
+    background-color: rgba($red, 0.1);
   }
 }
