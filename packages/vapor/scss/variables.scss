@@ -1,5 +1,6 @@
 // General
 $border-radius: 2px;
+
 // Button
 $button-font-size: 12px;
 $button-line-height: 15px;
@@ -12,10 +13,13 @@ $button-large-height: 50px;
 $button-margin-width: 15px;
 $button-confirm-icon-width: 15px;
 $button-confirm-margin-bottom: 20px;
+
 // Checkboxes and radios
+$checkbox-size: 16px;
 $checkbox-label-margin: 24px;
 $radio-button-option-height: 16px;
 $radio-button-size: 16px;
+
 // Input and textarea
 $input-border: 1px solid rgba($medium-grey, 0.4);
 $input-height: 34px;
@@ -28,22 +32,28 @@ $input-margin-top: 15px;
 $input-vertical-padding: 3px;
 $input-height: 34px;
 $input-max-width: 440px;
+
 // Links
 $links-color: #009ddc;
+
 // Filter Box
 $filter-box-height: 34px;
 $clear-icon-height: 12px;
+
 // Flat select
 $flat-select-option-size: 26px;
+
 // Header
 $header-height: 65px;
 $header-padding: 40px;
 $header-height-padding: 20px;
 $header-padding-y: 5px;
 $description-margin-top: 5px;
+
 // Modal
 $modal-header-height: 100px;
 $modal-form-width-small: 440px;
+
 // Prompt modal
 $modal-prompt-text-padding-y: 24px;
 $modal-prompt-body-max-height: 120px;
@@ -53,8 +63,10 @@ $modal-prompt-max-height: 350px;
 $modal-prompt-min-height: 300px;
 $modal-prompt-min-width: 500px;
 $modal-prompt-max-width: 550px;
+
 // Application
 $application-container-min-height: 400px;
+
 // Navigation
 $navigation-width: 245px;
 $navigation-background-color: $dark-blue;
@@ -63,19 +75,33 @@ $navigation-active-border-width: 3px;
 $navigation-section-icon-size: 16px;
 $navigation-section-icon-margin: 15px;
 $navigation-locked-color: $medium-grey;
+
 // Table
 $table-first-column-padding-left: 35px;
-$table-header-height: 32px;
 $table-border-width: 1px;
+$table-cell-left-right-padding: 15px;
+$table-header-inner-height: 30px;
+$table-header-height: $table-header-inner-height + 2 * $table-border-width;
+$table-header-font-size: 12px;
+$table-header-line-height: 16px;
+$table-header-top-bottom-padding: (($table-header-inner-height - $table-header-line-height) / 2);
+$table-row-inner-height: 36px;
+$table-row-height: $table-row-inner-height + $table-border-width;
+$table-row-font-size: 15px;
+$table-row-line-height: 18px;
+$table-row-top-bottom-padding: (($table-row-inner-height - $table-row-line-height) / 2);
 $table-border: $table-border-width solid $medium-grey;
 $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
+
 // Table actions
 $table-actions-container-height: 52px;
 $table-actions-margin: 30px;
 $table-actions-dropdown-padding-x: 10px;
+
 // Table collapsible rows
 $table-collapsible-row-height: 45px;
+
 // Form elements
 $form-bottom-padding: 30px;
 $form-top-padding: 20px;
@@ -83,19 +109,25 @@ $form-elements-margin: 10px;
 $form-group-margin: 30px;
 $form-control-label-margin: 10px;
 $form-control-label-font-size: 13px;
+$form-section-header-margin-bottom: 20px;
+$form-heading-description-margin-top: 10px;
+
 // Blackslate elements
 $blankslate-margin: 15px;
 $blankslate-title-margin-bottom: 24px;
 $blankslate-paragraph-margin-bottom: 20px;
 $blankslate-padding: 30px;
+
 // Progress bar
 $progress-bar-border-radius: 12px;
 $progress-bar-default-height: 20px;
+
 // Collapsible
 $collapsible-height: 50px;
 $collapsible-border-width: 1px;
 $collapsible-header-font-size: 13px;
 $collapsible-header-icon-size: 10px;
+
 // Dropdown
 $dropdown-choices-top-bottom-margin: 8px;
 $dropdown-arrow-icon-size: 10px;
@@ -103,6 +135,7 @@ $dropdown-icon-text-spacing: 10px;
 $dropdown-button-font-size: 13px;
 $dropdown-choice-font-size: 13px;
 $dropdown-menu-max-height: 240px;
+
 // Chosen
 $chosen-clear-icon-size: 10px;
 $chosen-filter-icon-size: 16px;

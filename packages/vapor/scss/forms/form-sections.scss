@@ -1,83 +1,88 @@
-form {
-  .form-section {
-    margin-top: 10px;
+.section-heading {
+  .heading-title {
+    color: $medium-blue;
+    font-size: 16px;
+    font-weight: bold;
+  }
 
-    .section-heading {
-      margin-bottom: 20px;
+  .heading-description {
+    margin-top: $form-heading-description-margin-top;
 
-      .heading-title, .heading-description {
-        color: $medium-blue;
-      }
+    color: $dark-grey;
+    font-size: 12px;
+  }
+}
 
-      .heading-title {
-        font-size: 16px;
-        font-weight: bold;
-      }
+.coveo-form {
+  .form-group + .section-heading {
+    margin-top: $form-group-margin;
+    margin-bottom: $form-section-header-margin-bottom;
+  }
+}
 
-      .heading-description {
-        margin-top: 10px;
+.form-section {
+  margin-top: 10px;
 
-        font-size: 13px;
-      }
+  .section-heading {
+    margin-bottom: $form-section-header-margin-bottom;
+  }
+
+  .form-subsection {
+    + .form-subsection {
+      margin-top: 10px;
     }
 
-    .form-subsection {
-      + .form-subsection {
-        margin-top: 10px;
-      }
+    .subsection-heading {
+      margin: 5px 0;
 
-      .subsection-heading {
-        margin: 5px 0;
+      .heading-title {
+        color: $medium-blue;
+        font-size: 13px;
+        text-transform: uppercase;
 
-        .heading-title {
-          color: $medium-blue;
-          font-size: 13px;
-          text-transform: uppercase;
-
-          svg {
-            fill: $medium-blue;
-          }
+        svg {
+          fill: $medium-blue;
         }
       }
     }
   }
+}
 
-  .form-section-separator {
-    position: relative;
+.form-section-separator {
+  position: relative;
 
-    width: 100%;
-    margin: 20px 0 10px;
+  width: 100%;
+  margin: 20px 0 10px;
 
-    text-align: center;
+  text-align: center;
 
-    span {
-      display: inline-block;
+  span {
+    display: inline-block;
 
-      color: $medium-grey;
-      text-transform: uppercase;
+    color: $medium-grey;
+    text-transform: uppercase;
 
-      &:before, &:after {
-        position: absolute;
-        top: 4px;
+    &:before, &:after {
+      position: absolute;
+      top: 4px;
 
-        width: 235px;
+      width: 235px;
 
-        content: ' ';
+      content: ' ';
 
-        border-top: solid 1px;
-      }
+      border-top: solid 1px;
+    }
 
-      &:before {
-        left: 0;
+    &:before {
+      left: 0;
 
-        border-image: linear-gradient(to left, $medium-grey, white) 1;
-      }
+      border-image: linear-gradient(to left, $medium-grey, white) 1;
+    }
 
-      &:after {
-        left: 265px;
+    &:after {
+      left: 265px;
 
-        border-image: linear-gradient(to right, $medium-grey, white) 1;
-      }
+      border-image: linear-gradient(to right, $medium-grey, white) 1;
     }
   }
 }

@@ -24,13 +24,15 @@ table {
       }
 
       &.heading-row {
-        &.opened td {
-          background-color: $light-grey;
+        &.opened:not(:hover) td {
+          background-color: $white;
         }
       }
 
       &.collapsible-row {
         height: 0;
+
+        line-height: 12px;
 
         td {
           padding: 0;
@@ -47,7 +49,7 @@ table {
         }
 
         td {
-          background-color: $light-grey;
+          background-color: $white;
         }
 
         .box {
