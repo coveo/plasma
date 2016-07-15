@@ -69,6 +69,8 @@
 }
 
 .splitted-layout {
+  min-height: min-content;
+
   @extend .flex;
   @extend .flex-auto;
 
