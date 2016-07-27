@@ -21,6 +21,10 @@
   text-transform: none;
   white-space: nowrap;
 
+  &:disabled .dropdown-toggle-arrow {
+    @include arrow-down-icon($medium-grey);
+  }
+
   .dropdown-toggle-arrow {
     position: absolute;
     top: calc(50% - #{$dropdown-arrow-icon-size} / 2);
