@@ -4,33 +4,38 @@ title: Dropdown
 usage: A dropdown control. Basically, it replaces the HTML select tag. The dropdown prepend is optional.
 stylesheet: '/scss/controls/dropdown.scss'
 ---
-<div class="dropdown">
-    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-        <span class="dropdown-prepend">Option:</span>
-        <span class="value-icon">{{ site.data.icons['domain-google'] }}</span>
-        <span class="dropdown-selected-value">Option 3</span>
-        <span class="dropdown-toggle-arrow"></span>
-    </button>
-
-    <ul class="dropdown-menu">
-        <li><span class="enabled">Option 1</span></li>
-        <li><span class="enabled">Option 2</span></li>
-        <li>
-            <span class="enabled">
+<div class="coveo-form">
+    <label class="form-control-label">Dropdown Example</label>
+    <div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="dropdown-prepend">Option:</span>
                 <span class="value-icon">{{ site.data.icons['domain-google'] }}</span>
-                Option 3
-            </span>
-        </li>
-        <li><span class="enabled">Option 4</span></li>
-        <li><span class="enabled">Option 5</span></li>
-        <li><span class="enabled">Option 6</span></li>
-        <li><span class="enabled">Option 7</span></li>
-        <li><span class="enabled">Option 8</span></li>
-        <li><span class="enabled">Option 9</span></li>
-        <li><span class="enabled">Option 10</span></li>
-        <li><span class="enabled">Option 11</span></li>
-        <li><span class="enabled">Option 12</span></li>
-        <li><span class="enabled">Option 13</span></li>
-        <li><span class="enabled">Option 14</span></li>
-    </ul>
+                <span class="dropdown-selected-value">Option 3</span>
+                <span class="dropdown-toggle-arrow"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+                <li><span class="enabled">Option 1</span></li>
+                <li><span class="enabled">Option 2</span></li>
+                <li>
+                    <span class="enabled">
+                        <span class="value-icon">{{ site.data.icons['domain-google'] }}</span>
+                        Option 3
+                    </span>
+                </li>
+                <li><span class="enabled">Option 4</span></li>
+                <li><span class="enabled">Option 5</span></li>
+                <li><span class="enabled">Option 6</span></li>
+                <li><span class="enabled">Option 7</span></li>
+                <li><span class="enabled">Option 8</span></li>
+                <li><span class="enabled">Option 9</span></li>
+                <li><span class="enabled">Option 10</span></li>
+                <li><span class="enabled">Option 11</span></li>
+                <li><span class="enabled">Option 12</span></li>
+                <li><span class="enabled">Option 13</span></li>
+                <li><span class="enabled">Option 14</span></li>
+            </ul>
+        </div>
+    </div>
 </div>
