@@ -1,0 +1,174 @@
+---
+type: component
+title: Facet
+usage: Facet styling
+stylesheet: '/scss/components/facet.scss'
+---
+<div class="flex">
+    <div class="facet-column">
+        <div class="facet">
+            <div class="facet-header">
+                <div class="facet-header-eraser hidden">
+                    <span class="icon fill-medium-grey">
+                        {{ site.data.icons['clear'] }}
+                    </span>
+                </div>
+                <div class="facet-header-title text-medium-blue bold">Facet title</div>
+                <div class="facet-header-wait-animation" style="display: none;"></div>
+            </div>
+            <ul class="facet-values">
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">10</span>
+                            <span class="facet-value-caption">First facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">100</span>
+                            <span class="facet-value-caption">Second facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">1</span>
+                            <span class="facet-value-caption">Third facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">4</span>
+                            <span class="facet-value-caption">Fourth facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="facet-column">
+        <div class="facet">
+            <div class="facet-header">
+                <div class="facet-header-eraser">
+                    <span class="icon fill-medium-grey">
+                        {{ site.data.icons['clear'] }}
+                    </span>
+                </div>
+                <div class="facet-header-title text-medium-blue bold">Facet title</div>
+            </div>
+            <ul class="facet-values">
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" checked class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">10</span>
+                            <span class="facet-value-caption">First facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">100</span>
+                            <span class="facet-value-caption">Second facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">1</span>
+                            <span class="facet-value-caption">Third facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+                <li class="facet-value facet-selectable">
+                    <label class="facet-value-label">
+                        <div class="facet-value-label-wrapper">
+                            <input type="checkbox" class="facet-checkbox-input">
+                            <div class="facet-value-checkbox">
+                                <span class="icon fill-medium-grey">
+                                    {{ site.data.icons['check'] }}
+                                </span>
+                            </div>
+                            <span class="facet-value-count">4</span>
+                            <span class="facet-value-caption">Fourth facet value</span>
+                        </div>
+                    </label>
+                    <div class="facet-value-exclude">
+                        <span class="icon"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

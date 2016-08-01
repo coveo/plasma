@@ -5,7 +5,7 @@ select, textarea, input[type='text'], input[type='password'], input[type='dateti
 
   color: $dark-grey;
   font-family: $base-font-family;
-  font-size: 16px;
+  font-size: $title-font-size;
 
   border: 1px solid $medium-grey;
   border-radius: 2px;

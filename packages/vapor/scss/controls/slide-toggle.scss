@@ -92,7 +92,7 @@ input[type=checkbox].coveo-slide-toggle {
   }
 
   .toggle-label {
-    font-size: 16px;
+    font-size: $title-font-size;
   }
 
   button + .toggle-label, .toggle-label + .coveo-slide-toggle + button {

@@ -1,0 +1,183 @@
+.facet-column {
+  display: block;
+  width: 30%;
+  max-width: $facet-column-max-width;
+  padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
+  margin-right: 0;
+
+  border-right: 1px solid $medium-grey;
+}
+
+.facet {
+  padding-bottom: 15px;
+  margin: 10px 0;
+
+  background: $white;
+  border: 1px solid $medium-grey;
+  border-radius: $border-radius;
+}
+
+.facet-header {
+  position: relative;
+
+  padding: 20px;
+  overflow: hidden;
+  clear: both;
+
+  background: $pure-white;
+  border-top-right-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+}
+
+.facet-header-eraser {
+  position: absolute;
+  top: 0;
+  right: 25px;
+
+  height: 100%;
+
+  cursor: pointer;
+
+  .icon {
+    position: relative;
+    top: 50%;
+
+    display: block;
+    width: 10px;
+    height: 10px;
+
+    transform: translateY(-50%);
+
+    &:hover {
+      fill: $dark-grey;
+    }
+  }
+}
+
+.facet-header-title {
+  float: left;
+
+  font-family: $base-font-family;
+  font-size: $title-font-size;
+}
+
+.facet-values {
+  padding-top: 5px;
+  margin: 0;
+
+  list-style: none;
+}
+
+.facet-value {
+  position: relative;
+
+  padding: 0 20px;
+  margin: 0;
+
+  line-height: 22px;
+}
+
+.facet-value > * {
+  vertical-align: middle;
+}
+
+.facet-value-label {
+  display: block;
+  padding: 5px 0;
+  overflow: hidden;
+
+  font-family: Helvetica neue, Helvetica, Arial, sans-serif;
+  font-size: $default-font-size;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.facet-value-label-wrapper {
+  overflow: hidden;
+}
+
+.facet-checkbox-input {
+  display: none;
+}
+
+.facet-value-checkbox {
+  position: relative;
+  top: 2px;
+
+  display: inline-block;
+  float: left;
+  width: 18px;
+  height: 18px;
+  margin-right: 15px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  background: $pure-white;
+  border: 1px solid $medium-grey;
+  border-radius: $border-radius;
+}
+
+.facet-value-checkbox > span {
+  box-sizing: border-box;
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    margin: 2px;
+  }
+}
+
+.facet-value-checkbox:hover > span {
+  display: block;
+}
+
+.facet-checkbox-input:checked {
+  + .facet-value-checkbox > span {
+    display: block;
+  }
+
+  + .facet-value-checkbox + .facet-value-count, + .facet-value-checkbox + .facet-value-count + .facet-value-caption {
+    font-weight: bold;
+  }
+}
+
+.facet-value-count {
+  display: inline-block;
+  float: right;
+  margin: 0 5px;
+
+  vertical-align: middle;
+
+  transition: opacity 1s;
+}
+
+.facet-value-caption {
+  display: block;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.facet-value-exclude {
+  position: absolute;
+  top: 9px;
+  right: 5px;
+
+  width: 13px;
+  height: 13px;
+
+  background: $pure-white;
+  border: 1px solid $medium-grey;
+  border-radius: $border-radius;
+
+  cursor: pointer;
+  visibility: hidden;
+}
