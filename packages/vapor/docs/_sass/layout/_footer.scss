@@ -18,7 +18,7 @@
 }
 
 .footer-col-wrapper {
-  font-size: 15px;
+  font-size: $default-font-size;
   color: $grey-color;
   margin-left: -$spacing-unit / 2;
   @extend .clearfix;

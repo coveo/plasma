@@ -68,7 +68,7 @@
       padding: 0;
 
       color: $medium-blue;
-      font-size: 15px;
+      font-size: $default-font-size;
 
       background-color: $pure-white;
       border: none;
@@ -125,7 +125,7 @@
     margin-right: 10px;
 
     color: $medium-grey;
-    font-size: 15px;
+    font-size: $default-font-size;
     line-height: 18px;
   }
 }

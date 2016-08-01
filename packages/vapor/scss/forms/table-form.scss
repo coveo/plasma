@@ -38,7 +38,7 @@
 
       color: $medium-blue;
       font-family: $base-font-family;
-      font-size: 16px;
+      font-size: $title-font-size;
 
       background-color: $pure-white;
     }
@@ -54,14 +54,14 @@
     .value {
       height: 39px;
 
-      font-size: 16px;
+      font-size: $title-font-size;
 
       background-color: $white;
 
       input:disabled {
         color: black;
         font-family: $base-font-family;
-        font-size: 16px;
+        font-size: $title-font-size;
         font-weight: 600;
 
         background-color: $pure-white;
@@ -126,7 +126,7 @@
           padding-right: 30px;
           padding-left: 0;
 
-          font-size: 16px;
+          font-size: $title-font-size;
           text-align: left;
 
           background-color: transparent;
