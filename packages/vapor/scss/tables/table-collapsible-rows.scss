@@ -39,6 +39,10 @@ table {
 
           border-bottom: 0;
 
+          &:first-child {
+            border-left: 0;
+          }
+
           .container {
             display: none;
           }
