@@ -40,6 +40,11 @@ $links-color: #009ddc;
 // Filter Box
 $filter-box-height: 34px;
 $clear-icon-height: 12px;
+$screen-size-break-point: 1600px;
+$filter-box-width-large-screen: 336px;
+$filter-box-width-small-screen: 260px;
+$icon-offset-large-screen: 20px;
+$icon-offset-small-screen: 10px;
 
 // Flat select
 $flat-select-option-size: 26px;
