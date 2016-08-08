@@ -9,6 +9,8 @@
 }
 
 .facet {
+  position: relative;
+
   padding-bottom: 15px;
   margin: 10px 0;
 
@@ -75,6 +77,14 @@
   margin: 0;
 
   line-height: 22px;
+
+  &.facet-more {
+    color: $medium-grey;
+  }
+
+  &:hover {
+    background-color: $light-grey;
+  }
 }
 
 .facet-value > * {
@@ -119,6 +129,39 @@
   border-radius: $border-radius;
 }
 
+.facet-more .facet-value-checkbox {
+  position: relative;
+
+  border-style: dashed;
+
+  &:before, &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    content: '';
+
+    background-color: $medium-grey;
+    transform: translate(-50%, -50%);
+  }
+
+  &:before {
+    width: $facet-checkbox-line-width;
+    height: $facet-checkbox-mark-size;
+  }
+
+  &:after {
+    width: $facet-checkbox-mark-size;
+    height: $facet-checkbox-line-width;
+  }
+}
+
+.facet-value.facet-more:hover .facet-value-checkbox {
+  border-style: solid;
+}
+
 .facet-value-checkbox > span {
   box-sizing: border-box;
   display: none;
@@ -127,13 +170,13 @@
   margin: 0 auto;
 
   svg {
-    width: 12px;
-    height: 12px;
+    width: $facet-checkbox-mark-size;
+    height: $facet-checkbox-mark-size;
     margin: 2px;
   }
 }
 
-.facet-value-checkbox:hover > span {
+.facet-value:hover .facet-value-checkbox > span {
   display: block;
 }
 
@@ -166,18 +209,41 @@
   white-space: nowrap;
 }
 
-.facet-value-exclude {
+.facet-more {
+  margin-top: 10px;
+}
+
+.facet-search {
+  margin: 10px 20px;
+
+  .coveo-filter-container {
+    width: 100%;
+
+    input.filter-box {
+      width: 100%;
+    }
+  }
+}
+
+.facet-search-results {
   position: absolute;
-  top: 9px;
-  right: 5px;
+  top: calc(100% - 25px);
+  left: 20px;
+  z-index: 999;
 
-  width: 13px;
-  height: 13px;
+  width: calc(100% - #{$button-padding-x} * 2);
+  max-height: 200px;
+  padding-bottom: 10px;
+  margin: 3px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-  background: $pure-white;
+  font-size: 12px;
+  list-style: none;
+
+  background-color: $pure-white;
   border: 1px solid $medium-grey;
   border-radius: $border-radius;
 
-  cursor: pointer;
-  visibility: hidden;
+  @include slim-scroll($light-grey, $medium-grey);
 }
