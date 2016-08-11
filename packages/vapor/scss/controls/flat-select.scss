@@ -20,6 +20,11 @@
 
     cursor: default;
 
+    &.disabled, &:disabled {
+      cursor: default;
+      opacity: 0.4;
+    }
+
     .icon-container {
       margin-right: 5px;
 
@@ -54,6 +59,10 @@
       border: 1px solid $medium-grey;
 
       cursor: pointer;
+
+      &.disabled {
+        cursor: default;
+      }
 
       .icon {
         fill: $medium-blue;
