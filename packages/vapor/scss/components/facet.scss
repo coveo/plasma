@@ -22,7 +22,7 @@
 .facet-header {
   position: relative;
 
-  padding: 20px;
+  padding: $button-padding-x;
   overflow: hidden;
   clear: both;
 
@@ -73,7 +73,7 @@
 .facet-value {
   position: relative;
 
-  padding: 0 20px;
+  padding: 0 $button-padding-x;
   margin: 0;
 
   line-height: 22px;
@@ -214,7 +214,7 @@
 }
 
 .facet-search {
-  margin: 10px 20px;
+  margin: 10px $button-padding-x;
 
   .coveo-filter-container {
     width: 100%;
@@ -228,17 +228,16 @@
 .facet-search-results {
   position: absolute;
   top: calc(100% - 25px);
-  left: 20px;
+  left: $button-padding-x;
   z-index: 999;
 
   width: calc(100% - #{$button-padding-x} * 2);
   max-height: 200px;
-  padding-bottom: 10px;
+  padding: $dropdown-choices-top-bottom-margin 0;
   margin: 3px 0;
   overflow-x: hidden;
   overflow-y: auto;
 
-  font-size: 12px;
   list-style: none;
 
   background-color: $pure-white;
