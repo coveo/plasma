@@ -90,6 +90,6 @@
 
 .radio-select {
   .radio-option + .radio-option {
-    margin-top: 18px;
+    margin-top: $checkbox-label-margin-top;
   }
 }
