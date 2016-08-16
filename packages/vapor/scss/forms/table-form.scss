@@ -136,6 +136,10 @@
           cursor: pointer;
           opacity: 1;
 
+          &.disabled {
+            cursor: inherit;
+          }
+
           .dropdown-toggle-arrow {
             right: 21px;
           }
