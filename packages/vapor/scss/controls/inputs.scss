@@ -21,6 +21,15 @@ input[type='text'], textarea {
 
     resize: none;
   }
+
+  &:-ms-input-placeholder {
+    color: $medium-grey;
+    font-family: $base-font-family;
+    font-size: inherit;
+    text-transform: none;
+
+    transition: color 0.2s ease;
+  }
 }
 
 .input-group {
