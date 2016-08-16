@@ -197,7 +197,7 @@ table:not(.datepicker-table) {
     }
   }
 
-  &.mod-deleting tbody tr.selected {
+  &.mod-deleting tbody tr.selected td {
     background-color: rgba($red, 0.1);
   }
 }
