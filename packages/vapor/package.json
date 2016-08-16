@@ -38,7 +38,7 @@
   "devDependencies": {
     "autosize": "3.0.17",
     "csscomb": "3.1.8",
-    "del": "2.2.1",
+    "del": "2.2.2",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.1",
     "gulp-cheerio": "0.6.2",
