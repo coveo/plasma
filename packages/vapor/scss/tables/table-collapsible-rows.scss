@@ -67,7 +67,7 @@ table {
 
         .box {
           &.padded {
-            padding: 5px 10px;
+            padding: 5px $collapsible-box-padding;
           }
 
           .label, .value {
@@ -90,6 +90,10 @@ table {
 
           .box {
             flex-basis: 33%;
+
+            &.padded {
+              flex-basis: calc(33% - #{$collapsible-box-padding});
+            }
           }
         }
       }
