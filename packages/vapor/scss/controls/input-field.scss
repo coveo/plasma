@@ -144,7 +144,7 @@
       }
     }
 
-    &:valid, &:focus {
+    &:valid, &:focus, &:disabled {
       & + label:after {
         top: 55px;
       }
