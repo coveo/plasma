@@ -11,8 +11,9 @@
 
     & + label {
       position: relative;
+      align-items: center;
 
-      display: inline-block;
+      display: inline-flex;
       height: $radio-button-option-height;
       padding-left: $radio-button-size + $checkbox-label-margin;
 
