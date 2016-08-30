@@ -1,0 +1,26 @@
+---
+type: formControls
+title: File input
+stylesheet: '/scss/controls/file-input.scss'
+---
+<div class="coveo-form">
+    <div class="file-input">
+        <div class="input-field file-path-wrapper">
+            <input class="file-path" required placeholder="Placeholder text" type="text">
+            <label>File input</label>
+        </div>
+        <div class="btn">
+            <span>Choose file</span>
+            <input type="file"/>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('input[type=file]').change(function() {
+        var fileValue = this.files.length ? this.files[0].name : '';
+        var $input = $(this).closest('.file-input').find('.file-path');
+        $input.val(fileValue);
+        $input.toggleClass('has-file', !!fileValue);
+    });
+</script>
