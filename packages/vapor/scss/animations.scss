@@ -26,3 +26,14 @@
     opacity: 0;
   }
 }
+
+@keyframes scaleoutCentered {
+  0% {
+    transform: scale(0.0) translateY(-50%);
+  }
+  100% {
+    transform: scale(1.0) translateY(-50%);
+
+    opacity: 0;
+  }
+}
