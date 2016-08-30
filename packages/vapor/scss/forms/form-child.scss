@@ -1,22 +1,36 @@
-$child-padding-y: 10px;
-$child-padding-x: 25px;
+$child-padding-y: 20px;
+$child-padding-x: 20px;
+$child-parent-spacing: 5px;
+$child-arrow-width: 16px;
+$child-arrow-height: 10px;
 
 .coveo-child {
-  padding: 0 $child-padding-x $child-padding-y;
+  position: relative;
 
-  background-color: $light-grey;
+  padding: $child-padding-y $child-padding-x;
+  margin-top: $child-arrow-height + $child-parent-spacing;
+
+  background-color: $white;
   border-radius: $border-radius;
+  border-top-left-radius: 0;
 
   &:before {
+    position: absolute;
+    top: -$child-arrow-height;
+    left: 0;
+
     display: block;
-    width: calc(100% + ($child-padding-x * 2));
-    height: $child-padding-y;
-    margin: 3px (-1 * $child-padding-x) ($child-padding-y / 2);
+    width: 0;
+    height: 0;
 
     content: '';
 
-    background-color: $light-grey;
-    border-top: ($child-padding-y / 4) * 3 solid $pure-white;
-    border-left: ($child-padding-y / 4) * 3 solid $light-grey;
+    border-right: $child-arrow-width / 2 solid transparent;
+    border-bottom: $child-arrow-height solid $white;
+    border-left: $child-arrow-width / 2 solid transparent;
+  }
+
+  &.mod-fixed-width {
+    width: $input-max-width;
   }
 }
