@@ -25,6 +25,10 @@
     @include arrow-down-icon($medium-grey);
   }
 
+  &.mod-primary .dropdown-toggle-arrow {
+    @include arrow-down-icon($pure-white);
+  }
+
   .dropdown-toggle-arrow {
     position: absolute;
     top: calc(50% - #{$dropdown-arrow-icon-size} / 2);
@@ -37,8 +41,14 @@
   }
 }
 
-&.open > .dropdown-toggle .dropdown-toggle-arrow {
-  @include arrow-up-icon($medium-blue);
+&.open > .dropdown-toggle {
+  &.mod-primary .dropdown-toggle-arrow {
+    @include arrow-up-icon($pure-white);
+  }
+
+  .dropdown-toggle-arrow {
+    @include arrow-up-icon($medium-blue);
+  }
 }
 
 .dropdown-toggle .value-icon, .dropdown-menu li .value-icon {
