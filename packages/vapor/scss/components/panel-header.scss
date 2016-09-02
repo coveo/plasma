@@ -14,6 +14,11 @@
     margin-top: $description-margin-top;
   }
 
+  .dropdown-toggle.mod-primary {
+    font-size: $button-font-size;
+    text-transform: uppercase;
+  }
+
   .action {
     display: inline-block;
     height: $button-height;
