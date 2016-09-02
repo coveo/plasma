@@ -16,8 +16,11 @@
 
   .action {
     display: inline-block;
+    height: $button-height;
     padding: 4px 5px;
     margin-left: 5px;
+
+    vertical-align: bottom;
 
     background-color: $pure-white;
     border: 1px solid $medium-grey;
