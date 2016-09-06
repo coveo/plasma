@@ -232,7 +232,7 @@
   z-index: 999;
 
   width: calc(100% - #{$button-padding-x} * 2);
-  max-height: 200px;
+  max-height: $facet-more-height;
   padding: $dropdown-choices-top-bottom-margin 0;
   margin: 3px 0;
   overflow-x: hidden;
@@ -245,4 +245,10 @@
   border-radius: $border-radius;
 
   @include slim-scroll($light-grey, $medium-grey);
+}
+
+.facet:last-child {
+  &.facet-opened {
+    margin-bottom: $facet-more-height;
+  }
 }
