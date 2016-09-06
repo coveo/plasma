@@ -147,6 +147,13 @@ table:not(.datepicker-table) {
 
     border-bottom: $table-border;
 
+    .mod-max-width {
+      max-width: 400px;
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
     &:first-child {
       border-left: $table-selected-border-width solid transparent;
     }
