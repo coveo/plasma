@@ -249,6 +249,9 @@
 
 .facet:last-child {
   &.facet-opened {
-    margin-bottom: $facet-more-height;
+    .facet-search-results {
+      top: auto;
+      bottom: 60px;
+    }
   }
 }
