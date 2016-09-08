@@ -59,12 +59,13 @@
       background-color: $white;
 
       input:disabled {
-        color: black;
         font-family: $base-font-family;
         font-size: $title-font-size;
         font-weight: 600;
 
         background-color: $pure-white;
+
+        opacity: 0.4;
       }
 
       &.disabled {
