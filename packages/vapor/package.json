@@ -43,7 +43,7 @@
     "gulp-autoprefixer": "3.1.1",
     "gulp-cheerio": "0.6.2",
     "gulp-concat": "2.6.0",
-    "gulp-csscomb": "3.0.7",
+    "gulp-csscomb": "3.0.8",
     "gulp-files-to-json": "0.2.1",
     "gulp-gzip": "1.4.0",
     "gulp-help": "1.6.1",
