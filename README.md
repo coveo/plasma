@@ -1,2 +1,3 @@
-# vapor-react
-Coveo / Vapor components implemented with React!
+# React-Vapor
+
+Vapor CSS components implemented with React!

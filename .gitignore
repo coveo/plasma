@@ -1,0 +1,22 @@
+# Ignore compiled files
+dist
+
+# Node files
+node_modules
+
+# OS/editor 
+._*
+.DS_Store
+.idea
+
+# Other various
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
+*~
