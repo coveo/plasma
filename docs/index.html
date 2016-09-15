@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Vapor</title>
+</head>
+<body>
+<div class="header flex" style="min-height: 65px;">
+    <div class="header-section h1 p2 flex flex-center">
+        Will it blend?
+    </div>
+</div>
+<div class="container p2">
+    <h2>Create a new group</h2>
+    <div class="js-simple-view"></div>
+</div>
+<script type="x-template/underscore" id="SimpleView">
+    <div class="coveo-form mod-form-top-bottom-padding">
+        <div class="input-field form-group mod-fixed-width">
+            <input type="text" required placeholder="Fill me!" value="<%- displayName %>"/>
+            <label>Group name</label>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Members</label>
+            <div id="GroupMembers" class="form-control"></div>
+        </div>
+        <button type="button" id="AddGroup" class="btn mod-primary mt2 form-group">Submit</button>
+    </div>
+</script>
+<script src="bundle.js"></script>
+</body>
+</html>

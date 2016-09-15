@@ -4,6 +4,9 @@ dist
 # Node files
 node_modules
 
+# Other generated files
+typings
+
 # OS/editor 
 ._*
 .DS_Store
@@ -18,5 +21,3 @@ node_modules
 *.swo
 *.swp
 *.vi
-*.zip
-*~
