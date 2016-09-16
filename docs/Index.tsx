@@ -1,35 +1,40 @@
-import {Model as BackboneModel} from 'backbone';
-import {Collection as BackboneCollection} from 'backbone';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Redux from 'redux';
-import ReactRedux from 'react-redux';
-import {PopoverComponent} from "../src/components/PopoverComponent";
+import * as Backbone from 'backbone';
+import * as Marionette from 'backbone.marionette';
 
-interface MemberModelAttributes {
+import * as React from 'react';
+import {connect} from 'react-redux';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import {render as ReactDOMRender} from 'react-dom';
+import {unmountComponentAtNode} from 'react-dom';
+
+import {PopoverComponent} from '../src/components/PopoverComponent';
+import './style.scss';
+
+interface IMemberModelAttributes {
   email?: string;
   sendEmail?: boolean;
   id?: string;
 }
 
-interface MemberModelOptions {
+interface IMemberModelOptions {
   newlyCreated?: boolean;
 }
 
-class MemberModel extends BackboneModel {
+class MemberModel extends Backbone.Model {
   newlyCreated: boolean;
 
   get email(): string { return this.get('email'); }
 
   get sendEmail(): boolean { return this.get('sendEmail'); }
 
-  constructor(attributes?: MemberModelAttributes, options: MemberModelOptions = {}) {
+  constructor(attributes?: IMemberModelAttributes, options: IMemberModelOptions = {}) {
     super(attributes, options);
 
     this.newlyCreated = !!options.newlyCreated;
   }
 
-  defaults(): MemberModelAttributes {
+  defaults(): IMemberModelAttributes {
     return {
       email: '',
       sendEmail: false
@@ -41,10 +46,10 @@ class MemberModel extends BackboneModel {
   }
 }
 
-class MemberCollection extends BackboneCollection<MemberModel> {
+class MemberCollection extends Backbone.Collection<MemberModel> {
   onUpdated: Function;
 
-  constructor(members?: MemberModelAttributes[], options?) {
+  constructor(members?: IMemberModelAttributes[], options?) {
     super(members, _.extend(options || {}, {
       model: MemberModel
     }));
@@ -57,39 +62,39 @@ class MemberCollection extends BackboneCollection<MemberModel> {
   }
 }
 
-interface GroupModelAttributes {
+interface IGroupModelAttributes {
   displayName?: string;
-  members?: MemberModelAttributes[];
+  members?: IMemberModelAttributes[];
 }
 
 class GroupModel extends Backbone.Model {
   memberCollection: MemberCollection;
 
-  constructor(attributes?: GroupModelAttributes, options?) {
+  constructor(attributes?: IGroupModelAttributes, options?) {
     super(attributes, options);
 
     this.memberCollection = new MemberCollection(attributes.members);
   }
 
-  toJSON(): GroupModelAttributes {
+  toJSON(): IGroupModelAttributes {
     return _.extend(super.toJSON() || {}, {
       members: this.memberCollection.toJSON()
     });
   }
 }
 
-interface MemberEditViewPropsConnected {
+interface IMemberEditViewPropsConnected {
   memberModel: MemberModel;
   onSaveMember: Function;
 }
 
-interface MemberEditViewStateProps {
+interface IMemberEditViewStateProps {
   isOpen: boolean;
   email?: string;
   sendEmail?: boolean;
 }
 
-interface MemberEditViewProps extends MemberEditViewStateProps, MemberEditViewPropsConnected {
+interface IMemberEditViewProps extends IMemberEditViewStateProps, IMemberEditViewPropsConnected {
   onMount: Function;
   toggleOpenedTetherElement: Function;
   onChangeEmail: Function;
@@ -97,7 +102,7 @@ interface MemberEditViewProps extends MemberEditViewStateProps, MemberEditViewPr
   onClickCancel: Function;
 }
 
-interface MemberEditViewState extends MemberEditViewStateProps {
+interface IMemberEditViewState extends IMemberEditViewStateProps {
   modelCid?: string;
 }
 
@@ -109,7 +114,7 @@ const actions = {
   CancelMemberEdition: 'ON_CANCEL_MEMBER_EDITION'
 };
 
-const memberReducers = (state: MemberEditViewState = {isOpen: false}, action): MemberEditViewState => {
+const memberReducers = (state: IMemberEditViewState = {isOpen: false}, action): IMemberEditViewState => {
   let newState = _.extend({}, state);
   switch (action.type) {
     case actions.AddMemberEditView:
@@ -148,8 +153,8 @@ const memberReducers = (state: MemberEditViewState = {isOpen: false}, action): M
   }
 };
 
-const mapStateToProps = (state: MemberEditViewState[], ownProps: MemberEditViewPropsConnected): MemberEditViewStateProps => {
-  let item = _.find(state, (memberState: MemberEditViewState) => {
+const mapStateToProps = (state: IMemberEditViewState[], ownProps: IMemberEditViewPropsConnected): IMemberEditViewStateProps => {
+  let item = _.find(state, (memberState: IMemberEditViewState) => {
     return memberState.modelCid == ownProps.memberModel.cid;
   });
 
@@ -210,12 +215,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any): MemberEditViewProps => {
+const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any): IMemberEditViewProps => {
   return _.extend({}, stateProps, dispatchProps, ownProps);
 };
 
-class MemberEditView extends React.Component<MemberEditViewProps, MemberEditViewState> {
+class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditViewState> {
   refs: {
+    [key: string]: (Element);
     email?: HTMLInputElement;
     sendEmail?: HTMLInputElement;
   } = {};
@@ -251,7 +257,7 @@ class MemberEditView extends React.Component<MemberEditViewProps, MemberEditView
         <div className='popover-body coveo-form p2'>
           <fieldset className='form-group input-field'>
             <input type='text' required name='email' ref='email' value={this.props.email}
-                   onChange={(event) => this.props.onChangeEmail(event.target.value) }/>
+                   onChange={(event: JQueryEventObject) => this.props.onChangeEmail((event.target as HTMLInputElement).value) }/>
             <label>Email</label>
           </fieldset>
           <fieldset className='form-group'>
@@ -260,7 +266,7 @@ class MemberEditView extends React.Component<MemberEditViewProps, MemberEditView
               <label className='coveo-checkbox-label'>
                 <input type='checkbox' className='coveo-checkbox' name='sendEmail' ref='sendEmail'
                        checked={this.props.sendEmail}
-                       onChange={(event) => this.props.onChangeSendEmail(event.target.checked) }/>
+                       onChange={(event) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked) }/>
                 <button type='button' onClick={(jQueryEventObject) => {
                                     $(jQueryEventObject.currentTarget).prev().click();
                                 } }/>
@@ -287,9 +293,9 @@ class MemberEditView extends React.Component<MemberEditViewProps, MemberEditView
   }
 }
 
-const MemberEditViewConnected = ReactRedux.connect(mapStateToProps, mapDispatchToProps, mergeProps)(MemberEditView);
+const MemberEditViewConnected = connect(mapStateToProps, mapDispatchToProps, mergeProps)(MemberEditView);
 
-const membersReducers = (state: MemberEditViewState[] = [], action): MemberEditViewState[] => {
+const membersReducers = (state: IMemberEditViewState[] = [], action): IMemberEditViewState[] => {
   switch (action.type) {
     case actions.AddMemberEditView:
       return [
@@ -306,13 +312,13 @@ const membersReducers = (state: MemberEditViewState[] = [], action): MemberEditV
   }
 };
 
-interface MembersEditViewProps {
+interface IMembersEditViewProps {
   memberCollection: MemberCollection;
   onSaveMember: Function;
 }
 
-class MembersEditView extends React.Component<MembersEditViewProps> {
-  private store = Redux.createStore(membersReducers);
+class MembersEditView extends React.Component<IMembersEditViewProps, any> {
+  private store = createStore(membersReducers);
 
   componentDidMount() {
     this.props.memberCollection.onUpdated = () => {
@@ -323,7 +329,7 @@ class MembersEditView extends React.Component<MembersEditViewProps> {
   render() {
     let memberEditViews = _.map(this.props.memberCollection.models, (memberModel) => {
       return (
-        <div className="ml1">
+        <div className='ml1'>
           <MemberEditViewConnected
             key={memberModel.cid}
             memberModel={memberModel}
@@ -335,7 +341,7 @@ class MembersEditView extends React.Component<MembersEditViewProps> {
     let newModel = new MemberModel({}, {newlyCreated: true});
 
     return (
-      <ReactRedux.Provider store={this.store}>
+      <Provider store={this.store}>
         <div className='flex'>
           <MemberEditViewConnected
             key={newModel.cid}
@@ -344,7 +350,7 @@ class MembersEditView extends React.Component<MembersEditViewProps> {
           />
           {memberEditViews}
         </div>
-      </ReactRedux.Provider>
+      </Provider>
     );
   }
 }
@@ -354,11 +360,14 @@ class GroupEditView extends Marionette.LayoutView<Backbone.Model> {
 
   constructor(options?) {
     super(_.extend(options || {}, {
-      el: '.js-simple-view',
-      events: {
-        'click #AddGroup': this.onAddGroup
-      }
+      el: '.js-simple-view'
     }));
+  }
+
+  events() {
+    return _.extend(super.events() || {}, {
+      'click #AddGroup': this.onAddGroup
+    });
   }
 
   getTemplate() {
@@ -366,18 +375,20 @@ class GroupEditView extends Marionette.LayoutView<Backbone.Model> {
   }
 
   onRender() {
-    ReactDOM.render(React.createElement(MembersEditView, {
+    ReactDOMRender(React.createElement(MembersEditView, {
       memberCollection: this.model.memberCollection,
-      onSaveMember: (memberModel: MemberModel, memberModelAttributes: MemberModelAttributes) =>
+      onSaveMember: (memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) =>
         this.onSaveMember(memberModel, memberModelAttributes)
     }), document.getElementById('GroupMembers'));
   }
 
   destroy() {
-    ReactDOM.unmountComponentAtNode(document.getElementById('GroupMembers'));
+    unmountComponentAtNode(document.getElementById('GroupMembers'));
+
+    return super.destroy();
   }
 
-  private onSaveMember(memberModel: MemberModel, memberModelAttributes: MemberModelAttributes) {
+  private onSaveMember(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) {
     let existingModel = this.model.memberCollection.get(memberModel);
     if (existingModel) {
       existingModel.set(memberModelAttributes);

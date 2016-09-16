@@ -1,3 +1,3 @@
-import {PopoverComponent} from 'components/PopoverComponent';
+import {PopoverComponent} from './components/PopoverComponent';
 
 export {PopoverComponent};

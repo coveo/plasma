@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {TetherComponent, ITetherComponentProps} from 'react-tether';
+import * as TetherComponent from 'react-tether';
 
-export interface IPopoverComponentProps extends ITetherComponentProps {
+export interface IPopoverComponentProps extends TetherComponent.ITetherComponentProps {
   toggleOpenedTetherElement: Function;
 }
 

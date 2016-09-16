@@ -1,33 +1,31 @@
 const path = require('path');
 const tslintConfig = require(__dirname + '/tslint');
 
-const isJenkins = !!process.env.JENKINS_HOME;
-
 module.exports = {
-  entry: __dirname + '/src/Index.ts',
+  entry: './docs/Index.tsx',
   output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: 'dist/',
-    filename: 'react-vapor.js',
-    library: 'ReactVapor',
-    libraryTarget: 'umd'
+    filename: './docs/bundle.js',
   },
   module: {
     loaders: [
-      {test: /\.ts(x?)$/, loader: 'ts-loader'}
+      {test: /\.ts(x?)$/, loader: 'ts-loader'},
+      {test: /\.scss$/, loaders: ["style", "css", "sass"]}
     ],
     preLoaders: [
       {test: /\.ts(x?)$/i, loader: 'tslint'}
     ]
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['', '.ts', '.tsx', '.js', '.jsx']
   },
   tslint: {
     configuration: tslintConfig,
     emitErrors: true,
-    failOnHint: isJenkins,
+    failOnHint: false,
     formattersDirectory: path.resolve(__dirname, 'node_modules/tslint-loader/formatters/')
+  },
+  devServer: {
+    contentBase: './docs'
   },
   resolveLoader: {
     root: path.resolve(__dirname, 'node_modules')
