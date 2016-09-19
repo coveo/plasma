@@ -39,7 +39,8 @@ let config = {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
-    'tether': 'Tether'
+    'tether': 'Tether',
+    'underscore': '_'
   }
 };
 
@@ -50,7 +51,7 @@ if (TARGET === 'minify') {
       warnings: false
     },
     mangle: {
-      except: ['React', 'ReactDOM', 'Tether']
+      except: ['React', 'ReactDOM', 'Tether', '_']
     }
   }));
 }

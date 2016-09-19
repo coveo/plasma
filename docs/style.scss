@@ -1,22 +1,2 @@
 // You can use this file when developping, but normally, all sass should be in Vapor itself.
 
-.popover {
-  border: 1px solid black;
-  border-radius: 2px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-
-  background-color: #fff;
-}
-
-.popover-footer {
-  align-items: center;
-  justify-content: flex-end;
-
-  display: flex;
-  padding: 1rem;
-  overflow: hidden;
-
-  border-top: solid 1px #bcc3ca;
-
-  background-color: #f1f3f4;
-}

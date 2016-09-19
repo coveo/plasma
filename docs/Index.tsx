@@ -1,13 +1,11 @@
-import * as Backbone from 'backbone';
-import * as Marionette from 'backbone.marionette';
-
+import {Model as BackboneModel} from 'backbone';
+import {Collection as BackboneCollection} from 'backbone';
 import * as React from 'react';
-import {connect} from 'react-redux';
-import {Provider} from 'react-redux';
+import * as _ from 'underscore';
+import * as $ from 'jquery';
 import {createStore} from 'redux';
+import {connect, Provider} from 'react-redux';
 import {render as ReactDOMRender} from 'react-dom';
-import {unmountComponentAtNode} from 'react-dom';
-
 import {PopoverComponent} from '../src/components/PopoverComponent';
 import './style.scss';
 
@@ -21,7 +19,7 @@ interface IMemberModelOptions {
   newlyCreated?: boolean;
 }
 
-class MemberModel extends Backbone.Model {
+class MemberModel extends BackboneModel {
   newlyCreated: boolean;
 
   get email(): string { return this.get('email'); }
@@ -46,7 +44,7 @@ class MemberModel extends Backbone.Model {
   }
 }
 
-class MemberCollection extends Backbone.Collection<MemberModel> {
+class MemberCollection extends BackboneCollection<MemberModel> {
   onUpdated: Function;
 
   constructor(members?: IMemberModelAttributes[], options?) {
@@ -62,44 +60,23 @@ class MemberCollection extends Backbone.Collection<MemberModel> {
   }
 }
 
-interface IGroupModelAttributes {
-  displayName?: string;
-  members?: IMemberModelAttributes[];
-}
-
-class GroupModel extends Backbone.Model {
-  memberCollection: MemberCollection;
-
-  constructor(attributes?: IGroupModelAttributes, options?) {
-    super(attributes, options);
-
-    this.memberCollection = new MemberCollection(attributes.members);
-  }
-
-  toJSON(): IGroupModelAttributes {
-    return _.extend(super.toJSON() || {}, {
-      members: this.memberCollection.toJSON()
-    });
-  }
-}
-
 interface IMemberEditViewPropsConnected {
   memberModel: MemberModel;
   onSaveMember: Function;
 }
 
 interface IMemberEditViewStateProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   email?: string;
   sendEmail?: boolean;
 }
 
 interface IMemberEditViewProps extends IMemberEditViewStateProps, IMemberEditViewPropsConnected {
-  onMount: Function;
-  toggleOpenedTetherElement: Function;
-  onChangeEmail: Function;
-  onChangeSendEmail: Function;
-  onClickCancel: Function;
+  onMount?: Function;
+  toggleOpenedTetherElement?: Function;
+  onChangeEmail?: Function;
+  onChangeSendEmail?: Function;
+  onClickCancel?: Function;
 }
 
 interface IMemberEditViewState extends IMemberEditViewStateProps {
@@ -329,9 +306,8 @@ class MembersEditView extends React.Component<IMembersEditViewProps, any> {
   render() {
     let memberEditViews = _.map(this.props.memberCollection.models, (memberModel) => {
       return (
-        <div className='ml1'>
+        <div className='ml1' key={memberModel.cid}>
           <MemberEditViewConnected
-            key={memberModel.cid}
             memberModel={memberModel}
             onSaveMember={this.props.onSaveMember}
           />
@@ -355,64 +331,40 @@ class MembersEditView extends React.Component<IMembersEditViewProps, any> {
   }
 }
 
-class GroupEditView extends Marionette.LayoutView<Backbone.Model> {
-  model: GroupModel;
+class App extends React.Component<any, any> {
+  memberCollection = new MemberCollection([{
+    id: '1',
+    email: 'test1@coveo.com',
+    sendEmail: true
+  }]);
 
-  constructor(options?) {
-    super(_.extend(options || {}, {
-      el: '.js-simple-view'
-    }));
-  }
-
-  events() {
-    return _.extend(super.events() || {}, {
-      'click #AddGroup': this.onAddGroup
-    });
-  }
-
-  getTemplate() {
-    return '#SimpleView';
-  }
-
-  onRender() {
-    ReactDOMRender(React.createElement(MembersEditView, {
-      memberCollection: this.model.memberCollection,
-      onSaveMember: (memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) =>
-        this.onSaveMember(memberModel, memberModelAttributes)
-    }), document.getElementById('GroupMembers'));
-  }
-
-  destroy() {
-    unmountComponentAtNode(document.getElementById('GroupMembers'));
-
-    return super.destroy();
+  render() {
+    return (
+      <div className='coveo-form'>
+        <label className='form-control-label'>
+          My list of members
+        </label>
+        <div className='form-control'>
+          <MembersEditView
+            memberCollection={this.memberCollection}
+            onSaveMember={(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) =>
+            this.onSaveMember(memberModel, memberModelAttributes)}
+          />
+        </div>
+      </div>
+    );
   }
 
   private onSaveMember(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) {
-    let existingModel = this.model.memberCollection.get(memberModel);
+    let existingModel = this.memberCollection.get(memberModel);
     if (existingModel) {
       existingModel.set(memberModelAttributes);
     } else {
       memberModel.newlyCreated = false;
       memberModel.set(memberModelAttributes, {silent: true}); // Prevent the double forceUpdate
-      this.model.memberCollection.add(memberModel);
+      this.memberCollection.add(memberModel);
     }
-  }
-
-  private onAddGroup() {
-    alert(JSON.stringify(this.model.toJSON()));
   }
 }
 
-let view = new GroupEditView({
-  model: new GroupModel({
-    displayName: 'My test',
-    members: [{
-      id: '1',
-      email: 'test1@coveo.com',
-      sendEmail: true
-    }]
-  })
-});
-
-view.render();
+ReactDOMRender(<App />, document.getElementById('App'));
