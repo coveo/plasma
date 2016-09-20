@@ -66,6 +66,14 @@
     cursor: default;
   }
 
+  &.mod-small {
+    height: $button-small-height;
+    padding: 0 $button-small-padding-x;
+
+    font-size: $button-small-font-size;
+    line-height: $button-small-line-height;
+  }
+
   &.mod-large {
     height: $button-large-height;
   }

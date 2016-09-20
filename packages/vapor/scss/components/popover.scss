@@ -1,0 +1,25 @@
+.popover {
+  min-width: $popover-min-width;
+
+  background-color: $pure-white;
+  box-shadow: 0 2px 4px rgba($stratos, 0.4);
+  border: 1px solid $dark-blue;
+  border-radius: $border-radius;
+}
+
+.popover-body {
+  padding: $button-padding-x;
+}
+
+.popover-footer {
+  align-items: center;
+  justify-content: flex-end;
+
+  display: flex;
+  padding: $popover-footer-y-padding $button-padding-x;
+  overflow: hidden;
+
+  background-color: $white;
+  border-top: solid 1px $medium-grey;
+  border-radius: 0 0 $border-radius $border-radius;
+}
