@@ -11,33 +11,37 @@ const runSequence = require('gulp-sequence');
 const tsconfig = require('tsconfig-glob');
 const webpack = require('webpack');
 
-const environment = gutil.env.env || 'local';
-const isProduction = environment == 'production';
+let webpackConfigFile = require('./webpack.prod.config.js');
+let webpackDocsConfigFile = require('./webpack.config');
 
-const webpackDevConfig = Object.create(require('./webpack.config'));
-const webpackProdConfig = Object.create(require('./webpack.prod.config.js'));
-
-let webpackCompiler = webpack(isProduction ? webpackProdConfig : webpackDevConfig);
+let webpackCompiler = webpack(Object.create(webpackConfigFile));
+let webpackDocsCompiler = webpack(Object.create(webpackDocsConfigFile));
 
 //<editor-fold desc="Dev tools">
-gulp.task('clean', 'Clean project outputs', done => {
-  const toDelete = [];
-  isProduction ? toDelete.push('dist') : toDelete.push('docs/assets');
+gulp.task('clean', 'Clean the dist folder', done => {
+  del(['dist'], {force: true}).then(deletedFiles => {
+    gutil.log(gutil.colors.green('Files deleted:'), deletedFiles.join(', '));
+    done();
+  });
+});
 
-  del(toDelete, {force: true}).then(deletedFiles => {
+gulp.task('clean:docs', 'Clean the docs/assets folder', done => {
+  del(['docs/assets'], {force: true}).then(deletedFiles => {
     gutil.log(gutil.colors.green('Files deleted:'), deletedFiles.join(', '));
     done();
   });
 });
 
 gulp.task('prettify', 'Run the pretty Typescript plugin', () => {
-  let src = gulp.src(['src/**/*.ts', 'src/**/*.tsx'])
+  return gulp.src(['src/**/*.ts', 'src/**/*.tsx'])
     .pipe(prettyTypescript())
     .pipe(gulp.dest('src'));
-  let docs = gulp.src(['docs/**/*.ts', 'docs/**/*.tsx'])
+});
+
+gulp.task('prettify:docs', 'Run the pretty Typescript plugin', () => {
+  return gulp.src(['docs/**/*.ts', 'docs/**/*.tsx'])
     .pipe(prettyTypescript())
     .pipe(gulp.dest('docs'));
-  return merge(src, docs);
 });
 //</editor-fold>
 
@@ -52,30 +56,48 @@ gulp.task('ts:add-file', false, done => {
   });
 });
 
-gulp.task('ts:compile', false, done => {
-  webpackCompiler.run((err, stats) => {
+let webpackCallback =
+  (taskName, done) => (err, stats) => {
     if (err) {
-      throw new gutil.PluginError('ts:webpack', err);
+      throw new gutil.PluginError(taskName, err);
     }
-    gutil.log('ts:webpack', stats.toString({
+    gutil.log(taskName, stats.toString({
       colors: true,
       assets: false,
       chunks: false
     }));
     done();
-  });
+  };
+
+gulp.task('ts:compile', false, done => {
+  webpackCompiler.run(webpackCallback('ts:compile', done));
+});
+
+gulp.task('ts:minify', false, done => {
+  webpackConfigFile.output.filename = 'react-vapor.min.js';
+  webpackConfigFile.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    },
+    mangle: {
+      except: ['React', 'ReactDOM', 'Tether', '_']
+    }
+  }));
+  let webpackMinifier = webpack(Object.create(webpackConfigFile));
+
+  webpackMinifier.run(webpackCallback('ts:minify', done));
 });
 
 gulp.task('ts:definitions', 'Generate the project definition file', done => {
-  if (isProduction) {
-    runSequence('internalDefs', 'cleanDefs', done)
-  } else {
-    done();
-  }
+  runSequence('internalDefs', 'cleanDefs', done)
 });
 
 gulp.task('ts', 'Compile Typescript', ['ts:add-file'], done => {
-  runSequence('ts:compile', 'ts:definitions', done);
+  runSequence('ts:compile', 'ts:minify', 'ts:definitions', done);
+});
+
+gulp.task('ts:docs', 'Compile docs Typescript', ['ts:add-file'], done => {
+  webpackDocsCompiler.run(webpackCallback('ts:compile', done));
 });
 //</editor-fold>
 
@@ -105,6 +127,10 @@ gulp.task('cleanDefs', false, () => {
     .pipe(gulp.dest('dist'))
 });
 //</editor-fold>
+
+gulp.task('docs', 'Build the docs project', done => {
+  runSequence('clean:docs', 'prettify:docs', 'ts:docs', done);
+});
 
 gulp.task('default', 'Clean, prettify and compile the project', done => {
   runSequence('clean', 'prettify', 'ts', done);
