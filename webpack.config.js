@@ -1,15 +1,25 @@
+'use strict';
+
 const path = require('path');
 const tslintConfig = require(__dirname + '/tslint');
 
+/***
+ * Config file for the documentation project
+ */
 module.exports = {
   entry: './docs/Index.tsx',
   output: {
-    filename: './docs/bundle.js',
+    path: __dirname + '/docs/assets',
+    publicPath: '/assets/',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
       {test: /\.ts(x?)$/, loader: 'ts-loader'},
-      {test: /\.scss$/, loaders: ["style", "css", "sass"]}
+      {test: /\.scss$/, loaders: ['style', 'sass']},
+      {test: /\.css$/, loaders: ['style', 'css']},
+      {test: /\.png$/, loader: 'file-loader?mimetype=image/png'},
+      {test: /\.(ttf|eot|woff|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader'}
     ],
     preLoaders: [
       {test: /\.ts(x?)$/i, loader: 'tslint'}

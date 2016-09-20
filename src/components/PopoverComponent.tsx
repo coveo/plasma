@@ -16,7 +16,7 @@ export class PopoverComponent extends React.Component<IPopoverComponentProps, an
 
   // Using a fat arrow function instead of a methot here to bind it to context and to make sure we have the same listener for both
   // addEventListener and removeEventListener and therefore prevent leaking listeners.
-  handleDocumentClick = (event) => {
+  private handleDocumentClick = (event) => {
     const tetherToggle = ReactDOM.findDOMNode(this.refs.tetherToggle);
     const tetherElement = ReactDOM.findDOMNode(this.refs.tetherElement);
 

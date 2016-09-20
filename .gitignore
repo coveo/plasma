@@ -1,6 +1,6 @@
 # Ignore compiled files
 dist
-docs/bundle.js
+docs/assets
 
 # Node files
 node_modules

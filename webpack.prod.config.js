@@ -5,13 +5,17 @@ const webpack = require('webpack');
 
 const tslintConfig = require(__dirname + '/tslint');
 const isJenkins = !!process.env.JENKINS_HOME;
-var TARGET = process.env.TARGET || null;
 
+const TARGET = process.env.TARGET || null;
+
+/***
+ * Config file for the packaged librairy
+ */
 let config = {
   entry: './src/Index.ts',
   output: {
-    publicPath: 'dist/',
-    filename: 'dist/react-vapor.js',
+    path: __dirname + '/dist',
+    filename: 'react-vapor.js',
     library: 'ReactVapor',
     libraryTarget: 'umd'
   },
@@ -45,7 +49,7 @@ let config = {
 };
 
 if (TARGET === 'minify') {
-  config.output.filename = 'dist/react-vapor.min.js';
+  config.output.filename = 'react-vapor.min.js';
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false

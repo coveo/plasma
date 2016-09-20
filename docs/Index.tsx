@@ -8,6 +8,7 @@ import {connect, Provider} from 'react-redux';
 import {render as ReactDOMRender} from 'react-dom';
 import {PopoverComponent} from '../src/components/PopoverComponent';
 import './style.scss';
+import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
 interface IMemberModelAttributes {
   email?: string;
@@ -91,7 +92,7 @@ const actions = {
   CancelMemberEdition: 'ON_CANCEL_MEMBER_EDITION'
 };
 
-const memberReducers = (state: IMemberEditViewState = {isOpen: false}, action): IMemberEditViewState => {
+const memberReducers = (state: IMemberEditViewState = { isOpen: false }, action): IMemberEditViewState => {
   let newState = _.extend({}, state);
   switch (action.type) {
     case actions.AddMemberEditView:
@@ -213,12 +214,12 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
         attachment='top left'
         targetAttachment='bottom left'
         constraints={[{
-                        to: 'scrollParent',
-                        pin: true
-                    }]}
+          to: 'scrollParent',
+          pin: true
+        }]}
         toggleOpenedTetherElement={this.props.toggleOpenedTetherElement}
-      >
-        <button className='btn' onClick={() => this.props.toggleOpenedTetherElement(!this.props.isOpen)}>
+        >
+        <button className='btn' onClick={() => this.props.toggleOpenedTetherElement(!this.props.isOpen) }>
           {this.props.memberModel.isNew() ? 'Add member' : this.props.memberModel.email}
         </button>
         {
@@ -234,7 +235,7 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
         <div className='popover-body coveo-form p2'>
           <fieldset className='form-group input-field'>
             <input type='text' required name='email' ref='email' value={this.props.email}
-                   onChange={(event: JQueryEventObject) => this.props.onChangeEmail((event.target as HTMLInputElement).value) }/>
+              onChange={(event: JQueryEventObject) => this.props.onChangeEmail((event.target as HTMLInputElement).value) }/>
             <label>Email</label>
           </fieldset>
           <fieldset className='form-group'>
@@ -242,20 +243,20 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
             <div className='form-control'>
               <label className='coveo-checkbox-label'>
                 <input type='checkbox' className='coveo-checkbox' name='sendEmail' ref='sendEmail'
-                       checked={this.props.sendEmail}
-                       onChange={(event) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked) }/>
+                  checked={this.props.sendEmail}
+                  onChange={(event) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked) }/>
                 <button type='button' onClick={(jQueryEventObject) => {
-                                    $(jQueryEventObject.currentTarget).prev().click();
-                                } }/>
+                  $(jQueryEventObject.currentTarget).prev().click();
+                } }/>
               </label>
             </div>
           </fieldset>
         </div>
         <div className='popover-footer'>
-          <button type='button' className='btn mod-primary' onClick={() => this.onSaveMember() }>
+          <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember() }>
             {this.props.memberModel.isNew() ? 'Add' : 'Save'}
           </button>
-          <button type='button' className='btn' onClick={this.props.onClickCancel}>Cancel</button>
+          <button type='button' className='btn mod-small' onClick={this.props.onClickCancel}>Cancel</button>
         </div>
       </div>
     );
@@ -310,11 +311,11 @@ class MembersEditView extends React.Component<IMembersEditViewProps, any> {
           <MemberEditViewConnected
             memberModel={memberModel}
             onSaveMember={this.props.onSaveMember}
-          />
+            />
         </div>
       );
     });
-    let newModel = new MemberModel({}, {newlyCreated: true});
+    let newModel = new MemberModel({}, { newlyCreated: true });
 
     return (
       <Provider store={this.store}>
@@ -323,7 +324,7 @@ class MembersEditView extends React.Component<IMembersEditViewProps, any> {
             key={newModel.cid}
             memberModel={newModel}
             onSaveMember={this.props.onSaveMember}
-          />
+            />
           {memberEditViews}
         </div>
       </Provider>
@@ -348,8 +349,8 @@ class App extends React.Component<any, any> {
           <MembersEditView
             memberCollection={this.memberCollection}
             onSaveMember={(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) =>
-            this.onSaveMember(memberModel, memberModelAttributes)}
-          />
+              this.onSaveMember(memberModel, memberModelAttributes) }
+            />
         </div>
       </div>
     );
@@ -361,7 +362,7 @@ class App extends React.Component<any, any> {
       existingModel.set(memberModelAttributes);
     } else {
       memberModel.newlyCreated = false;
-      memberModel.set(memberModelAttributes, {silent: true}); // Prevent the double forceUpdate
+      memberModel.set(memberModelAttributes, { silent: true }); // Prevent the double forceUpdate
       this.memberCollection.add(memberModel);
     }
   }

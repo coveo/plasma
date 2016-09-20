@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "module": "amd",
+    "removeComments": true,
     "target": "ES5",
+    "module": "commonjs",
     "outDir": "./dist/split/",
     "noEmitOnError": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": true,
-    "declaration": true,
     "jsx": "react"
   },
   "filesGlob": [
