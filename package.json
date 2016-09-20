@@ -2,10 +2,19 @@
   "name": "react-vapor",
   "version": "0.0.1",
   "description": "Vapor CSS components implemented with React!",
+  "keywords": [
+    "coveo",
+    "vapor",
+    "css",
+    "react",
+    "front-end",
+    "web"
+  ],
   "homepage": "https://github.com/JPLachance/react-vapor#readme",
   "author": "Coveo",
   "license": "MIT",
-  "main": "",
+  "main": "dist/react-vapor.js",
+  "typings": "dist/react-vapor.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JPLachance/react-vapor.git"
@@ -58,5 +67,13 @@
     "underscore": "1.8.3",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.15.2"
-  }
+  },
+  "files": [
+    "dist",
+    "lib",
+    "src",
+    "gulpfile.js",
+    "webpack.prod.config.js",
+    "LICENSE"
+  ]
 }

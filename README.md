@@ -28,12 +28,12 @@ To easily test the result locally without publishing a new package at each build
 2. In your project, use that link to get the new package `npm link react-vapor`
 3. Rebuild your project, you will then see your changes applied.
 
-# Contributing
+## Contributing
 1. Search the issues, if it is not already there, add one.
 2. Fork the repository
 3. Code Code Code
 4. Submit a pull request
 5. Wait for some nice guy to review and merge
 
-# License
+## License
 Vapor is distributed under [MIT license](LICENSE).

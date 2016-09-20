@@ -107,13 +107,13 @@ gulp.task('internalDefs', false, () => {
     name: 'ReactVapor',
     project: './',
     baseDir: './src/',
-    out: 'dist/ReactVapor.d.ts',
+    out: 'dist/react-vapor.d.ts',
     exclude: ['lib/**/*.d.ts', 'node_modules/**/*.d.ts', 'typings/**/*.d.ts', 'src/Index.ts']
   });
 });
 
 gulp.task('cleanDefs', false, () => {
-  return gulp.src('dist/ReactVapor.d.ts')
+  return gulp.src('dist/react-vapor.d.ts')
     .pipe(replace(/import.*$/gm, ''))
     .pipe(replace(/export .+ from .+$/gm, ''))
     .pipe(replace(/export (?:default )?(.*)$/gm, '$1'))
