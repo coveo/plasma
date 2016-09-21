@@ -12,7 +12,7 @@
   "homepage": "https://coveo.github.io/styleguide",
   "author": "Coveo",
   "license": "MIT",
-  "main": "",
+  "main": "dist/js/VaporSVG",
   "scripts": {
     "test": "",
     "clean": "gulp clean",
