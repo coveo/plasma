@@ -8,6 +8,7 @@ var path = require('path');
 var _ = require('underscore');
 var s = require('underscore.string');
 var gfi = require('gulp-file-insert');
+var del = require('del');
 
 function Dictionary(from) {
     this.json = JSON.parse(fs.readFileSync(from));
@@ -20,9 +21,9 @@ function Dictionary(from) {
         var that = this;
         _.each(_.keys(this.json), function (key) {
             var camelizedKey = s.camelize(key);
-            code += '    ' + camelizedKey + ': { name : \'' + camelizedKey + '\', render : function(svgClass, spanClass, title, attr) { return svgWrapper(' + JSON.stringify(that.json[key]) + ', svgClass, spanClass, title, attr); } }, \n'
+            code += '        ' + camelizedKey + ': { name : \'' + camelizedKey + '\', render : function(svgClass, spanClass, title, attr) { return svgWrapper(' + JSON.stringify(that.json[key]) + ', svgClass, spanClass, title, attr); } }, \n'
         });
-        code += '};';
+        code += '    };';
 
         fs.writeFileSync(to, code);
     };
