@@ -1,8 +1,12 @@
 # Ignore compiled files
 dist
+docs/assets
 
 # Node files
 node_modules
+
+# Other generated files
+typings
 
 # OS/editor 
 ._*
@@ -18,5 +22,3 @@ node_modules
 *.swo
 *.swp
 *.vi
-*.zip
-*~
