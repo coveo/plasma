@@ -48,9 +48,9 @@ gulp.task('prettify:docs', 'Run the pretty Typescript plugin on docs', () => {
 });
 
 gulp.task('prettify:tests', 'Run the pretty Typescript plugin on tests', () => {
-  return gulp.src(['test/**/*.ts', 'test/**/*.tsx'])
+  return gulp.src(['tests/**/*.ts', 'tests/**/*.tsx'])
     .pipe(prettyTypescript())
-    .pipe(gulp.dest('test'));
+    .pipe(gulp.dest('tests'));
 });
 //</editor-fold>
 

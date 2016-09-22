@@ -3,6 +3,8 @@ import React = __React;
 declare class TetherComponent extends React.Component<TetherComponent.ITetherComponentProps, any> {
   props: TetherComponent.ITetherComponentProps;
 
+  static propTypes: TetherComponent.ITetherComponentProps;
+
   static defaultProps: {
     renderElementTag: string;
     renderElementTo: any;

@@ -23,6 +23,7 @@
     "postinstall": "typings install",
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
     "build": "gulp",
+    "pretest": "rm -rf coverage",
     "test": "karma start",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
@@ -39,7 +40,7 @@
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
-    "autoprefixer-loader": "3.2.0",
+    "autoprefixer": "6.4.1",
     "backbone": "1.3.3",
     "coveo-styleguide": "1.5.0",
     "css-loader": "0.25.0",
@@ -67,6 +68,7 @@
     "karma-webpack": "1.8.0",
     "merge-stream": "1.0.0",
     "node-sass": "3.10.0",
+    "postcss-loader": "0.13.0",
     "pretty-typescript": "1.13.0",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",
