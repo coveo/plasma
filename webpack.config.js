@@ -13,6 +13,7 @@ module.exports = {
     publicPath: '/assets/',
     filename: 'bundle.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {test: /\.ts(x?)$/, loader: 'ts-loader'},

@@ -19,12 +19,16 @@ let config = {
     library: 'ReactVapor',
     libraryTarget: 'umd'
   },
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['', '.ts', '.tsx', '.js']
+  },
   module: {
-    loaders: [
-      {test: /\.ts(x?)$/, loader: 'ts-loader'}
-    ],
     preLoaders: [
       {test: /\.ts(x?)$/, loader: 'tslint'}
+    ],
+    loaders: [
+      {test: /\.ts(x?)$/, loader: 'ts-loader'}
     ]
   },
   tslint: {
@@ -33,10 +37,11 @@ let config = {
     failOnHint: isJenkins,
     formattersDirectory: path.resolve(__dirname, 'node_modules/tslint-loader/formatters/')
   },
-  plugins: [],
-  resolve: {
-    extensions: ['', '.ts', '.tsx', '.js', '.jsx']
-  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
+  ],
   resolveLoader: {
     root: path.resolve(__dirname, 'node_modules')
   },
