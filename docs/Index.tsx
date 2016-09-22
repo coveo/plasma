@@ -183,7 +183,7 @@ const onClickCancel = (modelCid: string, email: string, sendEmail: boolean) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch: (action: Redux.Action) => void, ownProps: IMemberEditViewPropsConnected) => {
   return {
     onMount: () => dispatch(addMember(ownProps.memberModel.cid)),
     toggleOpenedTetherElement: (isOpen: boolean) => dispatch(toggleOpenedTetherElement(ownProps.memberModel.cid, isOpen)),
