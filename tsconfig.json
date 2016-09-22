@@ -17,6 +17,8 @@
   "files": [
     "typings/globals/backbone-global/index.d.ts",
     "typings/globals/backbone/index.d.ts",
+    "typings/globals/enzyme/index.d.ts",
+    "typings/globals/jasmine/index.d.ts",
     "typings/globals/jquery/index.d.ts",
     "typings/globals/marionette/index.d.ts",
     "typings/globals/react-dom/index.d.ts",

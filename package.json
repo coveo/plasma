@@ -23,8 +23,7 @@
     "postinstall": "typings install",
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
     "build": "gulp",
-    "prepublish": "npm run build",
-    "add-file": "tsconfig . -i 2"
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "react-tether": "0.5.2"
