@@ -27,9 +27,7 @@ describe('<PopoverComponent>', () => {
   it('should render without error', () => {
     expect(() => {
       shallow(
-        <PopoverComponent
-          {...popoverComponentProps}
-          >
+        <PopoverComponent {...popoverComponentProps}>
           <span>Toggle</span>
           <span>Tether element</span>
         </PopoverComponent>
@@ -40,9 +38,7 @@ describe('<PopoverComponent>', () => {
   it('should mount and unmount/detach without error', () => {
     expect(() => {
       popoverComponentWrapper = mount(
-        <PopoverComponent
-          {...popoverComponentProps}
-          >
+        <PopoverComponent {...popoverComponentProps}>
           <span>Toggle</span>
           <span>Tether element</span>
         </PopoverComponent>,
@@ -60,9 +56,7 @@ describe('<PopoverComponent>', () => {
     it('should not throw when redering a PopoverComponent with only one children', () => {
       expect(() => {
         shallow(
-          <PopoverComponent
-            {...popoverComponentProps}
-            >
+          <PopoverComponent {...popoverComponentProps}>
             <span>Toggle</span>
           </PopoverComponent>
         );
@@ -72,9 +66,7 @@ describe('<PopoverComponent>', () => {
     it('should not throw when redering a PopoverComponent without childrens', () => {
       expect(() => {
         shallow(
-          <PopoverComponent
-            {...popoverComponentProps}
-            />
+          <PopoverComponent {...popoverComponentProps} />
         );
       }).not.toThrow();
     });
@@ -82,9 +74,7 @@ describe('<PopoverComponent>', () => {
     it('should not throw when redering a PopoverComponent with a boolean as second child', () => {
       expect(() => {
         shallow(
-          <PopoverComponent
-            {...popoverComponentProps}
-            >
+          <PopoverComponent {...popoverComponentProps}>
             <span>Toggle</span>
             {false}
           </PopoverComponent>
@@ -98,9 +88,7 @@ describe('<PopoverComponent>', () => {
       popoverComponentWrapper = mount(
         <div>
           <span id='RandomElement'>Test</span>
-          <PopoverComponent
-            {...popoverComponentProps}
-            >
+          <PopoverComponent {...popoverComponentProps}>
             <span id='PopoverToggle'>Toggle</span>
             <span id='PopoverElement'>Tether element</span>
           </PopoverComponent>
@@ -144,9 +132,7 @@ describe('<PopoverComponent>', () => {
       popoverComponentWrapper = mount(
         <div>
           <span id='RandomElement'>Test</span>
-          <PopoverComponent
-            {...popoverComponentProps}
-            >
+          <PopoverComponent {...popoverComponentProps}>
             <span id='PopoverToggle'>Toggle</span>
             {false}
           </PopoverComponent>
