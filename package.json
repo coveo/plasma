@@ -10,14 +10,14 @@
     "front-end",
     "web"
   ],
-  "homepage": "https://github.com/JPLachance/react-vapor#readme",
+  "homepage": "https://github.com/coveo/react-vapor#readme",
   "author": "Coveo",
   "license": "MIT",
   "main": "dist/react-vapor.js",
   "typings": "dist/react-vapor.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JPLachance/react-vapor.git"
+    "url": "git+https://github.com/coveo/react-vapor.git"
   },
   "scripts": {
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
