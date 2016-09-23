@@ -17,7 +17,7 @@ export class PopoverComponent extends React.Component<IPopoverComponentProps, an
     }
   });
 
-refs: {
+          refs: {
     [key: string]: (Element);
     tetherToggle?: HTMLElement;
     tetherElement?: HTMLElement;
