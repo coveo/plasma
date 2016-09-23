@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
-    "lint": "gulp pretiffy",
+    "lint": "gulp prettify",
     "build": "gulp",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
@@ -84,6 +84,7 @@
     "merge-stream": "1.0.0",
     "node-sass": "3.10.0",
     "postcss-loader": "0.13.0",
+    "pre-commit": "1.1.3",
     "pretty-typescript": "1.13.0",
     "react": "15.3.2",
     "react-addons-test-utils": "15.3.2",
