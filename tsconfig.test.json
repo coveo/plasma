@@ -3,18 +3,13 @@
     "removeComments": true,
     "target": "ES5",
     "module": "commonjs",
-    "outDir": "./dist/split/",
     "noEmitOnError": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
+    "sourceMap": false,
+    "inlineSourceMap": true,
     "jsx": "react"
   },
-  "filesGlob": [
-    "typings/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.ts"
-  ],
   "files": [
     "typings/globals/backbone-global/index.d.ts",
     "typings/globals/backbone/index.d.ts",

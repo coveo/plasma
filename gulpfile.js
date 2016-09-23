@@ -4,14 +4,17 @@ const del = require('del');
 const gulp = require('gulp-help')(require('gulp'));
 const gutil = require('gulp-util');
 const insert = require('gulp-insert');
+const karma = require('karma').Server;
 const merge = require('merge-stream');
+const path = require('path');
 const prettyTypescript = require('pretty-typescript');
 const replace = require('gulp-replace');
+const remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 const runSequence = require('gulp-sequence');
 const tsconfig = require('tsconfig-glob');
 const webpack = require('webpack');
 
-let webpackConfigFile = require('./webpack.prod.config.js');
+let webpackConfigFile = require('./webpack.config.prod.js');
 let webpackDocsConfigFile = require('./webpack.config');
 
 let webpackCompiler = webpack(Object.create(webpackConfigFile));
@@ -38,10 +41,16 @@ gulp.task('prettify', 'Run the pretty Typescript plugin', () => {
     .pipe(gulp.dest('src'));
 });
 
-gulp.task('prettify:docs', 'Run the pretty Typescript plugin', () => {
+gulp.task('prettify:docs', 'Run the pretty Typescript plugin on docs', () => {
   return gulp.src(['docs/**/*.ts', 'docs/**/*.tsx'])
     .pipe(prettyTypescript())
     .pipe(gulp.dest('docs'));
+});
+
+gulp.task('prettify:tests', 'Run the pretty Typescript plugin on tests', () => {
+  return gulp.src(['tests/**/*.ts', 'tests/**/*.tsx'])
+    .pipe(prettyTypescript())
+    .pipe(gulp.dest('tests'));
 });
 //</editor-fold>
 
@@ -125,6 +134,42 @@ gulp.task('cleanDefs', false, () => {
     .pipe(insert.append('declare module "react-vapor" {\n\texport = ReactVapor;\n}'))
 
     .pipe(gulp.dest('dist'))
+});
+//</editor-fold>
+
+//<editor-fold desc="Unit tests">
+const runTests = (done, singleRun, browser) => {
+  new karma({
+    configFile: path.resolve('karma.conf.js'),
+    browsers: [browser],
+    singleRun
+  }, done).start();
+};
+
+gulp.task('test:single', false, done => {
+  runTests(done, true, 'PhantomJS');
+});
+
+gulp.task('test:remap', false, () => {
+  return gulp.src('./coverage/coverage.json')
+    .pipe(remapIstanbul({
+      reports: {
+        'html': 'coverage/report'
+      }
+    }));
+});
+
+// TODO find out why it's so slow compare to npm test
+gulp.task('test', 'Run all tests in PhantomJS and exit', done => {
+  runSequence('test:single', 'test:remap', done);
+});
+
+gulp.task('test:browser', 'Run all tests in Chrome and watch', done => {
+  runTests(done, false, 'Chrome');
+});
+
+gulp.task('test:watch', 'Run all tests in PhantomJS and watch', done => {
+  runTests(done, false, 'PhantomJS');
 });
 //</editor-fold>
 

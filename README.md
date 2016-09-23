@@ -21,12 +21,8 @@ Run `npm install` to get the required dependencies and build the librairy.
 ### Running documentation locally
 To build and run the doc locally, simply run `npm start`.
 
-### Test locally without publishing
-To easily test the result locally without publishing a new package at each build:
-
-1. Create a [npm link](https://docs.npmjs.com/cli/link) of your local repository.
-2. In your project, use that link to get the new package `npm link react-vapor`
-3. Rebuild your project, you will then see your changes applied.
+### Running the tests suite
+Run `npm test` to run all tests and get the code coverage!
 
 ## Contributing
 1. Search the issues, if it is not already there, add one.

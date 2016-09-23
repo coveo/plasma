@@ -8,6 +8,15 @@ export interface IPopoverComponentProps extends TetherComponent.ITetherComponent
 }
 
 export class PopoverComponent extends React.Component<IPopoverComponentProps, any> {
+  static propTypes = _.extend(TetherComponent.propTypes, {
+    children: ({children}, propName, componentName) => {
+      if (_.isUndefined(children) || React.Children.count(children) != 2) {
+        return new Error(`${componentName} expects two children to use as target and element.` +
+          `Second child can either be a boolean or a ReactNode.`);
+      }
+    }
+  });
+
   refs: {
     [key: string]: (Element);
     tetherToggle?: HTMLElement;
@@ -20,7 +29,7 @@ export class PopoverComponent extends React.Component<IPopoverComponentProps, an
     const tetherToggle = ReactDOM.findDOMNode(this.refs.tetherToggle);
     const tetherElement = ReactDOM.findDOMNode(this.refs.tetherElement);
 
-    let outsideTetherToggle = tetherToggle ? !tetherToggle.contains(event.target) : true;
+    let outsideTetherToggle = !tetherToggle.contains(event.target);
     let outsideTetherElement = tetherElement ? !tetherElement.contains(event.target) : true;
 
     if (outsideTetherElement && outsideTetherToggle) {
@@ -37,8 +46,8 @@ export class PopoverComponent extends React.Component<IPopoverComponentProps, an
   }
 
   render() {
-    let tetherToggle = this.props.children[0];
-    let tetherElement = this.props.children[1];
+    let tetherToggle = !!this.props.children && this.props.children[0];
+    let tetherElement = !!this.props.children && this.props.children[1];
 
     return (
       <TetherComponent {..._.omit(this.props, 'children') } >

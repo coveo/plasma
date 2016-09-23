@@ -2,6 +2,7 @@
 
 const path = require('path');
 const tslintConfig = require(__dirname + '/tslint');
+const autoprefixer = require('autoprefixer');
 
 /***
  * Config file for the documentation project
@@ -13,10 +14,11 @@ module.exports = {
     publicPath: '/assets/',
     filename: 'bundle.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {test: /\.ts(x?)$/, loader: 'ts-loader'},
-      {test: /\.scss$/, loaders: ['style', 'sass']},
+      {test: /\.scss$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader'},
       {test: /\.css$/, loaders: ['style', 'css']},
       {test: /\.png$/, loader: 'file-loader?mimetype=image/png'},
       {test: /\.(ttf|eot|woff|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader'}
@@ -25,6 +27,18 @@ module.exports = {
       {test: /\.ts(x?)$/i, loader: 'tslint'}
     ]
   },
+  postcss: [
+    autoprefixer({
+      browsers: [
+        'last 3 Chrome versions',
+        'last 3 Firefox versions',
+        'Explorer >= 11',
+        'last 2 Edge versions',
+        'last 3 Opera versions',
+        'Safari >= 8'
+      ]
+    })
+  ],
   resolve: {
     extensions: ['', '.ts', '.tsx', '.js', '.jsx']
   },
