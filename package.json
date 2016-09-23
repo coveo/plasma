@@ -20,11 +20,10 @@
     "url": "git+https://github.com/JPLachance/react-vapor.git"
   },
   "scripts": {
-    "postinstall": "typings install",
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
     "build": "gulp",
     "pretest": "rm -rf coverage",
-    "test": "karma start",
+    "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
     "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,tests,karma.entry.ts",
@@ -40,6 +39,17 @@
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
+    "@types/backbone": "1.3.33",
+    "@types/enzyme": "2.4.34",
+    "@types/jasmine": "2.2.34",
+    "@types/jquery": "2.0.32",
+    "@types/react": "0.14.36",
+    "@types/react-dom": "0.14.17",
+    "@types/react-redux": "4.4.32",
+    "@types/redux": "3.5.30",
+    "@types/tether": "1.1.27",
+    "@types/underscore": "1.7.33",
+    "@types/webpack": "1.12.34",
     "autoprefixer": "6.4.1",
     "backbone": "1.3.3",
     "coveo-styleguide": "1.5.1",
@@ -82,8 +92,7 @@
     "tsconfig-glob": "0.4.3",
     "tslint": "3.15.1",
     "tslint-loader": "2.1.5",
-    "typescript": "1.8.10",
-    "typings": "1.3.3",
+    "typescript": "2.0.3",
     "underscore": "1.8.3",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.1"

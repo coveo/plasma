@@ -35,23 +35,25 @@ gulp.task('clean:docs', 'Clean the docs/assets folder', done => {
   });
 });
 
-gulp.task('prettify', 'Run the pretty Typescript plugin', () => {
-  return gulp.src(['src/**/*.ts', 'src/**/*.tsx'])
+let prettify = (srcPaths, destPath) => {
+  return gulp.src(srcPaths)
     .pipe(prettyTypescript())
-    .pipe(gulp.dest('src'));
+    .pipe(gulp.dest(destPath));
+};
+
+gulp.task('prettify:src', 'Run the pretty Typescript plugin on src', () => {
+  return prettify(['src/**/*.ts', 'src/**/*.tsx'], 'src');
 });
 
 gulp.task('prettify:docs', 'Run the pretty Typescript plugin on docs', () => {
-  return gulp.src(['docs/**/*.ts', 'docs/**/*.tsx'])
-    .pipe(prettyTypescript())
-    .pipe(gulp.dest('docs'));
+  return prettify(['docs/**/*.ts', 'docs/**/*.tsx'], 'docs');
 });
 
 gulp.task('prettify:tests', 'Run the pretty Typescript plugin on tests', () => {
-  return gulp.src(['tests/**/*.ts', 'tests/**/*.tsx'])
-    .pipe(prettyTypescript())
-    .pipe(gulp.dest('tests'));
+  return prettify(['tests/**/*.ts', 'tests/**/*.tsx'], 'tests');
 });
+
+gulp.task('prettify', 'Run the pretty Typescript plugin on the project', ['prettify:src', 'prettify:docs', 'prettify:tests']);
 //</editor-fold>
 
 //<editor-fold desc="Typescript compilation">
@@ -117,7 +119,7 @@ gulp.task('internalDefs', false, () => {
     project: './',
     baseDir: './src/',
     out: 'dist/react-vapor.d.ts',
-    exclude: ['lib/**/*.d.ts', 'node_modules/**/*.d.ts', 'typings/**/*.d.ts', 'src/Index.ts']
+    exclude: ['lib/**/*.d.ts', 'node_modules/**/*.d.ts', 'types/**/*.d.ts', 'src/Index.ts']
   });
 });
 

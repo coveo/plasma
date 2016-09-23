@@ -1,8 +1,13 @@
-import {shallow, mount, ReactWrapper} from 'enzyme';
-import createSpy = jasmine.createSpy;
+///<reference path="../../node_modules/@types/jasmine/index.d.ts"/>
 
+import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as $ from 'jquery';
-import {PopoverComponent, IPopoverComponentProps} from '../../src/components/PopoverComponent';
+import { PopoverComponent, IPopoverComponentProps } from '../../src/components/PopoverComponent';
+
+// Until Webpack provided plugins works with TS 2.0
+/* tslint:disable:no-unused-variable */
+import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 
 describe('<PopoverComponent>', () => {
   let popoverComponentWrapper: ReactWrapper<IPopoverComponentProps, any>;
@@ -11,7 +16,7 @@ describe('<PopoverComponent>', () => {
   let popoverComponentProps: IPopoverComponentProps;
 
   beforeEach(() => {
-    toggleOpenedTetherElementSpy = createSpy('toggleOpenedTetherElement');
+    toggleOpenedTetherElementSpy = jasmine.createSpy('toggleOpenedTetherElement');
 
     popoverComponentProps = {
       attachment: 'top left',
@@ -24,7 +29,7 @@ describe('<PopoverComponent>', () => {
       shallow(
         <PopoverComponent
           {...popoverComponentProps}
-        >
+          >
           <span>Toggle</span>
           <span>Tether element</span>
         </PopoverComponent>
@@ -37,11 +42,11 @@ describe('<PopoverComponent>', () => {
       popoverComponentWrapper = mount(
         <PopoverComponent
           {...popoverComponentProps}
-        >
+          >
           <span>Toggle</span>
           <span>Tether element</span>
         </PopoverComponent>,
-        {attachTo: document.getElementById('App')}
+        { attachTo: document.getElementById('App') }
       );
     }).not.toThrow();
 
@@ -57,7 +62,7 @@ describe('<PopoverComponent>', () => {
         shallow(
           <PopoverComponent
             {...popoverComponentProps}
-          >
+            >
             <span>Toggle</span>
           </PopoverComponent>
         );
@@ -69,7 +74,7 @@ describe('<PopoverComponent>', () => {
         shallow(
           <PopoverComponent
             {...popoverComponentProps}
-          />
+            />
         );
       }).not.toThrow();
     });
@@ -79,7 +84,7 @@ describe('<PopoverComponent>', () => {
         shallow(
           <PopoverComponent
             {...popoverComponentProps}
-          >
+            >
             <span>Toggle</span>
             {false}
           </PopoverComponent>
@@ -95,12 +100,12 @@ describe('<PopoverComponent>', () => {
           <span id='RandomElement'>Test</span>
           <PopoverComponent
             {...popoverComponentProps}
-          >
+            >
             <span id='PopoverToggle'>Toggle</span>
             <span id='PopoverElement'>Tether element</span>
           </PopoverComponent>
         </div>,
-        {attachTo: document.getElementById('App')}
+        { attachTo: document.getElementById('App') }
       );
     });
 
@@ -141,12 +146,12 @@ describe('<PopoverComponent>', () => {
           <span id='RandomElement'>Test</span>
           <PopoverComponent
             {...popoverComponentProps}
-          >
+            >
             <span id='PopoverToggle'>Toggle</span>
             {false}
           </PopoverComponent>
         </div>,
-        {attachTo: document.getElementById('App')}
+        { attachTo: document.getElementById('App') }
       );
     });
 

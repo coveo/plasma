@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const tslintConfig = require(__dirname + '/tslint');
+const tslintConfig = require(path.join(__dirname, '/tslint'));
 const autoprefixer = require('autoprefixer');
 
 /***
@@ -10,7 +10,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   entry: './docs/Index.tsx',
   output: {
-    path: __dirname + '/docs/assets',
+    path: path.join(__dirname, '/docs/assets'),
     publicPath: '/assets/',
     filename: 'bundle.js'
   },

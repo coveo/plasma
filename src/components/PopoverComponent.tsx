@@ -9,7 +9,7 @@ export interface IPopoverComponentProps extends TetherComponent.ITetherComponent
 
 export class PopoverComponent extends React.Component<IPopoverComponentProps, any> {
   static propTypes = _.extend(TetherComponent.propTypes, {
-    children: ({children}, propName, componentName) => {
+    children: ({children}: IPopoverComponentProps, propName: string, componentName: string) => {
       if (_.isUndefined(children) || React.Children.count(children) != 2) {
         return new Error(`${componentName} expects two children to use as target and element.` +
           `Second child can either be a boolean or a ReactNode.`);
@@ -25,12 +25,12 @@ export class PopoverComponent extends React.Component<IPopoverComponentProps, an
 
   // Using a fat arrow function instead of a methot here to bind it to context and to make sure we have the same listener for both
   // addEventListener and removeEventListener and therefore prevent leaking listeners.
-  private handleDocumentClick = (event) => {
-    const tetherToggle = ReactDOM.findDOMNode(this.refs.tetherToggle);
-    const tetherElement = ReactDOM.findDOMNode(this.refs.tetherElement);
+  private handleDocumentClick: EventListener = (event: Event) => {
+    const tetherToggle = ReactDOM.findDOMNode<HTMLElement>(this.refs.tetherToggle);
+    const tetherElement = ReactDOM.findDOMNode<HTMLElement>(this.refs.tetherElement);
 
-    let outsideTetherToggle = !tetherToggle.contains(event.target);
-    let outsideTetherElement = tetherElement ? !tetherElement.contains(event.target) : true;
+    let outsideTetherToggle = !tetherToggle.contains(event.target as Node);
+    let outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
 
     if (outsideTetherElement && outsideTetherToggle) {
       this.props.toggleOpenedTetherElement(false);
