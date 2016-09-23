@@ -1,12 +1,14 @@
-import {Model as BackboneModel} from 'backbone';
-import {Collection as BackboneCollection} from 'backbone';
+///<reference path="../node_modules/@types/redux/index.d.ts"/>
+
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as $ from 'jquery';
-import {createStore} from 'redux';
-import {connect, Provider} from 'react-redux';
-import {render as ReactDOMRender} from 'react-dom';
-import {PopoverComponent} from '../src/components/PopoverComponent';
+import { Model as BackboneModel, Collection as BackboneCollection } from 'backbone';
+import { MouseEventHandler, FormEvent } from 'react';
+import { render as ReactDOMRender } from 'react-dom';
+import { createStore } from 'redux';
+import { connect, Provider } from 'react-redux';
+import { PopoverComponent } from '../src/components/PopoverComponent';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
@@ -48,7 +50,7 @@ class MemberModel extends BackboneModel {
 class MemberCollection extends BackboneCollection<MemberModel> {
   onUpdated: Function;
 
-  constructor(members?: IMemberModelAttributes[], options?) {
+  constructor(members?: IMemberModelAttributes[], options?: any) {
     super(members, _.extend(options || {}, {
       model: MemberModel
     }));
@@ -77,11 +79,15 @@ interface IMemberEditViewProps extends IMemberEditViewStateProps, IMemberEditVie
   toggleOpenedTetherElement?: Function;
   onChangeEmail?: Function;
   onChangeSendEmail?: Function;
-  onClickCancel?: Function;
+  onClickCancel?: MouseEventHandler<HTMLButtonElement>;
 }
 
 interface IMemberEditViewState extends IMemberEditViewStateProps {
   modelCid?: string;
+}
+
+interface IIMemberEditViewAction extends IMemberEditViewState {
+  type: string;
 }
 
 const actions = {
@@ -92,7 +98,7 @@ const actions = {
   CancelMemberEdition: 'ON_CANCEL_MEMBER_EDITION'
 };
 
-const memberReducers = (state: IMemberEditViewState = { isOpen: false }, action): IMemberEditViewState => {
+const memberReducers = (state: IMemberEditViewState = { isOpen: false }, action: IIMemberEditViewAction): IMemberEditViewState => {
   let newState = _.extend({}, state);
   switch (action.type) {
     case actions.AddMemberEditView:
@@ -219,7 +225,7 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
         }]}
         toggleOpenedTetherElement={this.props.toggleOpenedTetherElement}
         >
-        <button className='btn' onClick={() => this.props.toggleOpenedTetherElement(!this.props.isOpen) }>
+        <button className='btn' onClick={() => this.props.toggleOpenedTetherElement(!this.props.isOpen)}>
           {this.props.memberModel.isNew() ? 'Add member' : this.props.memberModel.email}
         </button>
         {
@@ -235,25 +241,24 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
         <div className='popover-body coveo-form p2'>
           <fieldset className='form-group input-field'>
             <input type='text' required name='email' ref='email' value={this.props.email}
-              onChange={(event: JQueryEventObject) => this.props.onChangeEmail((event.target as HTMLInputElement).value) }/>
+              onChange={(event: FormEvent<HTMLInputElement>) => this.props.onChangeEmail((event.target as HTMLInputElement).value)} />
             <label>Email</label>
           </fieldset>
           <fieldset className='form-group'>
             <label className='form-control-label'>Send invite</label>
             <div className='form-control'>
               <label className='coveo-checkbox-label'>
-                <input type='checkbox' className='coveo-checkbox' name='sendEmail' ref='sendEmail'
-                  checked={this.props.sendEmail}
-                  onChange={(event) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked) }/>
+                <input type='checkbox' className='coveo-checkbox' name='sendEmail' ref='sendEmail' checked={this.props.sendEmail}
+                  onChange={(event: FormEvent<HTMLInputElement>) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked)} />
                 <button type='button' onClick={(jQueryEventObject) => {
                   $(jQueryEventObject.currentTarget).prev().click();
-                } }/>
+                } } />
               </label>
             </div>
           </fieldset>
         </div>
         <div className='popover-footer'>
-          <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember() }>
+          <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
             {this.props.memberModel.isNew() ? 'Add' : 'Save'}
           </button>
           <button type='button' className='btn mod-small' onClick={this.props.onClickCancel}>Cancel</button>
@@ -273,7 +278,7 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
 
 const MemberEditViewConnected = connect(mapStateToProps, mapDispatchToProps, mergeProps)(MemberEditView);
 
-const membersReducers = (state: IMemberEditViewState[] = [], action): IMemberEditViewState[] => {
+const membersReducers = (state: IMemberEditViewState[] = [], action: IIMemberEditViewAction): IMemberEditViewState[] => {
   switch (action.type) {
     case actions.AddMemberEditView:
       return [
@@ -349,7 +354,7 @@ class App extends React.Component<any, any> {
           <MembersEditView
             memberCollection={this.memberCollection}
             onSaveMember={(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) =>
-              this.onSaveMember(memberModel, memberModelAttributes) }
+              this.onSaveMember(memberModel, memberModelAttributes)}
             />
         </div>
       </div>

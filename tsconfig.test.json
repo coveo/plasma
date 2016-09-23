@@ -3,6 +3,7 @@
     "removeComments": true,
     "target": "ES5",
     "module": "commonjs",
+    "noImplicitAny": true,
     "noEmitOnError": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -10,23 +11,10 @@
     "inlineSourceMap": true,
     "jsx": "react"
   },
-  "files": [
-    "typings/globals/backbone-global/index.d.ts",
-    "typings/globals/backbone/index.d.ts",
-    "typings/globals/enzyme/index.d.ts",
-    "typings/globals/jasmine/index.d.ts",
-    "typings/globals/jquery/index.d.ts",
-    "typings/globals/marionette/index.d.ts",
-    "typings/globals/react-dom/index.d.ts",
-    "typings/globals/react-redux/index.d.ts",
-    "typings/globals/react-tether/index.d.ts",
-    "typings/globals/react/index.d.ts",
-    "typings/globals/redux/index.d.ts",
-    "typings/globals/tether/index.d.ts",
-    "typings/globals/underscore/index.d.ts",
-    "typings/globals/webpack-env/index.d.ts",
-    "typings/index.d.ts",
-    "src/components/PopoverComponent.tsx",
-    "src/Index.ts"
+  "include": [
+    "node_modules/@types/**/*.d.ts",
+    "types/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.ts"
   ]
 }

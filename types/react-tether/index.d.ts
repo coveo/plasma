@@ -1,4 +1,5 @@
-import React = __React;
+/// <reference types="react" />
+/// <reference types="tether" />
 
 declare class TetherComponent extends React.Component<TetherComponent.ITetherComponentProps, any> {
   props: TetherComponent.ITetherComponentProps;

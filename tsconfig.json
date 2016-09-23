@@ -1,37 +1,20 @@
 {
   "compilerOptions": {
-    "removeComments": true,
-    "target": "ES5",
-    "module": "commonjs",
-    "outDir": "./dist/split/",
-    "noEmitOnError": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "outDir": "./dist/split/",
+    "removeComments": true,
     "sourceMap": true,
-    "jsx": "react"
+    "target": "ES5"
   },
-  "filesGlob": [
-    "typings/**/*.d.ts",
+  "include": [
+    "types/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.ts"
-  ],
-  "files": [
-    "typings/globals/backbone-global/index.d.ts",
-    "typings/globals/backbone/index.d.ts",
-    "typings/globals/enzyme/index.d.ts",
-    "typings/globals/jasmine/index.d.ts",
-    "typings/globals/jquery/index.d.ts",
-    "typings/globals/marionette/index.d.ts",
-    "typings/globals/react-dom/index.d.ts",
-    "typings/globals/react-redux/index.d.ts",
-    "typings/globals/react-tether/index.d.ts",
-    "typings/globals/react/index.d.ts",
-    "typings/globals/redux/index.d.ts",
-    "typings/globals/tether/index.d.ts",
-    "typings/globals/underscore/index.d.ts",
-    "typings/globals/webpack-env/index.d.ts",
-    "typings/index.d.ts",
-    "src/components/PopoverComponent.tsx",
-    "src/Index.ts"
   ]
 }

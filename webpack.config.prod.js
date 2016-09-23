@@ -3,7 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const tslintConfig = require(__dirname + '/tslint');
+const tslintConfig = require(path.join(__dirname, '/tslint'));
 const isJenkins = !!process.env.JENKINS_HOME;
 
 const TARGET = process.env.TARGET || null;
@@ -14,7 +14,7 @@ const TARGET = process.env.TARGET || null;
 let config = {
   entry: './src/Index.ts',
   output: {
-    path: __dirname + '/dist',
+    path: path.join(__dirname, '/dist'),
     filename: 'react-vapor.js',
     library: 'ReactVapor',
     libraryTarget: 'umd'

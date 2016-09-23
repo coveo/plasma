@@ -1,3 +1,5 @@
+///<reference path="node_modules/@types/webpack/webpack-env.d.ts"/>
+
 import * as $ from 'jquery';
 
 beforeEach(() => {
@@ -10,8 +12,8 @@ afterEach(() => {
   $('body > div:not(.jasmine_html-reporter)').remove();
 });
 
-const testsContext = (<{ context?: Function }>require).context('./tests', true, /\.spec\.tsx$/);
+const testsContext = require.context('./tests', true, /\.spec\.tsx$/);
 testsContext.keys().forEach(testsContext);
 
-const coverageContext = (<{ context?: Function }>require).context('./src', true, /.*\.tsx$/);
+const coverageContext = require.context('./src', true, /.*\.tsx$/);
 coverageContext.keys().forEach(coverageContext);

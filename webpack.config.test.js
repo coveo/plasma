@@ -30,9 +30,6 @@ module.exports = {
     }]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      React: 'react'
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('test'),
     })
