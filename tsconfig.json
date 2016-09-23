@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "removeComments": true,
-    "target": "ES5",
-    "module": "commonjs",
-    "outDir": "./dist/split/",
-    "noImplicitAny": true,
-    "noEmitOnError": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "outDir": "./dist/split/",
+    "removeComments": true,
     "sourceMap": true,
-    "jsx": "react"
+    "target": "ES5"
   },
   "include": [
     "types/**/*.d.ts",
