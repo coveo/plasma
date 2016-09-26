@@ -151,7 +151,7 @@ gulp.task('test:single', false, done => {
 });
 
 gulp.task('test:remap', false, () => {
-  return gulp.src('./coverage/coverage-final.json')
+  return gulp.src('./coverage/coverage.json')
     .pipe(remapIstanbul({
       reports: {
         'html': 'coverage/report'
