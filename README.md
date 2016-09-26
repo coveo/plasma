@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/coveo/react-vapor.svg?branch=master)](https://travis-ci.org/coveo/react-vapor)
+[![codecov](https://codecov.io/gh/coveo/react-vapor/branch/master/graph/badge.svg)](https://codecov.io/gh/coveo/react-vapor)
+[![bitHound Overall Score](https://www.bithound.io/github/coveo/react-vapor/badges/score.svg)](https://www.bithound.io/github/coveo/react-vapor)
+
 # React-Vapor
 Vapor CSS components implemented with React!
 
