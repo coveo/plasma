@@ -26,10 +26,11 @@
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
     "posttest": "npm run coverage",
-    "coverage": "npm run coverage:remap && npm run coverage:report",
-    "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,tests,karma.entry.ts",
+    "coverage": "npm run coverage:remap && npm run coverage:report && rm -rf coverage/lcov.info",
+    "coverage:remap": "remap-istanbul -i coverage/coverage-final.json -o coverage/coverage-final.json -t json -e node_modules,tests,karma.entry.ts",
     "coverage:report": "istanbul report",
-    "prepublish": "npm run build && npm test"
+    "prepublish": "npm run build && npm test",
+    "report-coverage": "codecov"
   },
   "pre-commit": [
     "lint",
@@ -57,6 +58,7 @@
     "@types/webpack": "1.12.34",
     "autoprefixer": "6.4.1",
     "backbone": "1.3.3",
+    "codecov": "^1.0.1",
     "coveo-styleguide": "1.5.1",
     "css-loader": "0.25.0",
     "del": "2.2.2",
