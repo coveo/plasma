@@ -1,9 +1,9 @@
 'use strict';
 
 const del = require('del');
+const footer = require('gulp-footer');
 const gulp = require('gulp-help')(require('gulp'));
 const gutil = require('gulp-util');
-const insert = require('gulp-insert');
 const karma = require('karma').Server;
 const merge = require('merge-stream');
 const path = require('path');
@@ -131,7 +131,7 @@ gulp.task('cleanDefs', false, () => {
     .pipe(replace(/\n\t\s*(\n\t\s*)/g, '$1'))
     .pipe(replace(/declare module (.*) {$/gm, 'declare module ReactVapor {'))
 
-    .pipe(insert.append('declare module "react-vapor" {\n\texport = ReactVapor;\n}'))
+    .pipe(footer('declare module "react-vapor" {\n\texport = ReactVapor;\n}'))
 
     .pipe(gulp.dest('dist'))
 });
