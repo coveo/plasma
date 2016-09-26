@@ -1,0 +1,22 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - '5.11'
+
+branches:
+  only:
+    - master
+
+install:
+  - npm install -g gulp
+  - npm install
+
+cache:
+  directories:
+    - node_modules
+
+script:
+ - npm run build
+ - npm run test
