@@ -106,8 +106,8 @@
   },
   "files": [
     "dist",
-    "lib",
     "src",
+    "types",
     "gulpfile.js",
     "webpack.prod.config.js",
     "LICENSE"
