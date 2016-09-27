@@ -37,4 +37,3 @@ Run `npm test` to run all tests and get the code coverage!
 
 ## License
 Vapor is distributed under [MIT license](LICENSE).
-
