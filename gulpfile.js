@@ -117,7 +117,7 @@ gulp.task('internalDefs', false, () => {
     project: './',
     baseDir: './src/',
     out: 'dist/react-vapor.d.ts',
-    exclude: ['lib/**/*.d.ts', 'node_modules/**/*.d.ts', 'types/**/*.d.ts', 'src/Index.ts']
+    exclude: ['node_modules/**/*.d.ts', 'types/**/*.d.ts', 'src/Index.ts']
   });
 });
 

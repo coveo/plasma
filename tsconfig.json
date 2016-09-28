@@ -10,10 +10,16 @@
     "outDir": "./dist/split/",
     "removeComments": true,
     "sourceMap": true,
-    "target": "ES5"
+    "target": "ES5",
+    "typeRoots": [
+      "types"
+    ],
+    // Required for WebPack since typeRoots does not look to be supported, works fine without it when using tsc..
+    "types": [
+      "react-tether"
+    ]
   },
   "include": [
-    "types/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.ts"
   ]

@@ -1,5 +1,3 @@
-///<reference path="../../node_modules/@types/jasmine/index.d.ts"/>
-
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as $ from 'jquery';
 import { PopoverComponent, IPopoverComponentProps } from '../../src/components/PopoverComponent';
