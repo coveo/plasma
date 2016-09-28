@@ -9,11 +9,16 @@
     "experimentalDecorators": true,
     "sourceMap": false,
     "inlineSourceMap": true,
-    "jsx": "react"
+    "jsx": "react",
+    "typeRoots": [
+      "types"
+    ],
+    "types": [
+      "react-tether",
+      "jasmine"
+    ]
   },
   "include": [
-    "node_modules/@types/**/*.d.ts",
-    "types/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.ts"
   ]
