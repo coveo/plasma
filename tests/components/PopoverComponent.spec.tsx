@@ -1,5 +1,6 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import * as Enzyme from 'enzyme';
 import * as $ from 'jquery';
+import * as _ from 'underscore';
 import { PopoverComponent, IPopoverComponentProps } from '../../src/components/PopoverComponent';
 
 // Until Webpack provided plugins works with TS 2.0
@@ -8,23 +9,19 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 describe('<PopoverComponent>', () => {
-  let popoverComponentWrapper: ReactWrapper<IPopoverComponentProps, any>;
-  let toggleOpenedTetherElementSpy: jasmine.Spy;
+  let popoverComponentWrapper: Enzyme.ReactWrapper<IPopoverComponentProps, any>;
 
   let popoverComponentProps: IPopoverComponentProps;
 
   beforeEach(() => {
-    toggleOpenedTetherElementSpy = jasmine.createSpy('toggleOpenedTetherElement');
-
     popoverComponentProps = {
-      attachment: 'top left',
-      toggleOpenedTetherElement: toggleOpenedTetherElementSpy
+      attachment: 'top left'
     };
   });
 
   it('should render without error', () => {
     expect(() => {
-      shallow(
+      Enzyme.shallow(
         <PopoverComponent {...popoverComponentProps}>
           <span>Toggle</span>
           <span>Tether element</span>
@@ -35,7 +32,7 @@ describe('<PopoverComponent>', () => {
 
   it('should mount and unmount/detach without error', () => {
     expect(() => {
-      popoverComponentWrapper = mount(
+      popoverComponentWrapper = Enzyme.mount(
         <PopoverComponent {...popoverComponentProps}>
           <span>Toggle</span>
           <span>Tether element</span>
@@ -53,7 +50,7 @@ describe('<PopoverComponent>', () => {
   describe('Children propTypes', () => {
     it('should not throw when redering a PopoverComponent with only one children', () => {
       expect(() => {
-        shallow(
+        Enzyme.shallow(
           <PopoverComponent {...popoverComponentProps}>
             <span>Toggle</span>
           </PopoverComponent>
@@ -63,34 +60,20 @@ describe('<PopoverComponent>', () => {
 
     it('should not throw when redering a PopoverComponent without childrens', () => {
       expect(() => {
-        shallow(
+        Enzyme.shallow(
           <PopoverComponent {...popoverComponentProps} />
-        );
-      }).not.toThrow();
-    });
-
-    it('should not throw when redering a PopoverComponent with a boolean as second child', () => {
-      expect(() => {
-        shallow(
-          <PopoverComponent {...popoverComponentProps}>
-            <span>Toggle</span>
-            {false}
-          </PopoverComponent>
         );
       }).not.toThrow();
     });
   });
 
-  describe('Document click listener', () => {
+  describe('Tether toggle click handler', () => {
     beforeEach(() => {
-      popoverComponentWrapper = mount(
-        <div>
-          <span id='RandomElement'>Test</span>
-          <PopoverComponent {...popoverComponentProps}>
-            <span id='PopoverToggle'>Toggle</span>
-            <span id='PopoverElement'>Tether element</span>
-          </PopoverComponent>
-        </div>,
+      popoverComponentWrapper = Enzyme.mount(
+        <PopoverComponent {...popoverComponentProps} >
+          <span id='PopoverToggle'>Toggle</span>
+          <span id='PopoverElement'>Tether element</span>
+        </PopoverComponent>,
         { attachTo: document.getElementById('App') }
       );
     });
@@ -100,51 +83,88 @@ describe('<PopoverComponent>', () => {
       popoverComponentWrapper.detach();
     });
 
-    it('should not call toggleOpenedTetherElement on click tether toggle', () => {
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(0);
+    it('should open the popover on click toggle if popover was closed', () => {
+      expect(popoverComponentWrapper.state('isOpen')).toBe(false);
 
       $('#PopoverToggle').click();
 
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(0);
+      expect(popoverComponentWrapper.state('isOpen')).toBe(true);
     });
 
-    it('should not call toggleOpenedTetherElement on click tether element', () => {
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(0);
+    it('should close the popover on click toggle if popover was opened', () => {
+      $('#PopoverToggle').click();
 
-      $('#PopoverElement').click();
+      expect(popoverComponentWrapper.state('isOpen')).toBe(true);
 
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(0);
-    });
+      $('#PopoverToggle').click();
 
-    it('should call toggleOpenedTetherElement when clicking outside PopoverComponent', () => {
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(0);
-
-      $('#RandomElement').click();
-
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(1);
+      expect(popoverComponentWrapper.state('isOpen')).toBe(false);
     });
   });
 
-  describe('Document click handler without PopoverElement in DOM', () => {
+  describe('Document click handler for an opened popover', () => {
     beforeEach(() => {
-      popoverComponentWrapper = mount(
-        <div>
-          <span id='RandomElement'>Test</span>
-          <PopoverComponent {...popoverComponentProps}>
-            <span id='PopoverToggle'>Toggle</span>
-            {false}
-          </PopoverComponent>
-        </div>,
+      popoverComponentProps = _.extend(popoverComponentProps, {
+        isOpen: true
+      });
+
+      popoverComponentWrapper = Enzyme.mount(
+        <PopoverComponent {...popoverComponentProps} >
+          <span id='PopoverToggle'>Toggle</span>
+          <span id='PopoverElement'>Tether element</span>
+        </PopoverComponent>,
         { attachTo: document.getElementById('App') }
       );
     });
 
+    afterEach(() => {
+      popoverComponentWrapper.unmount();
+      popoverComponentWrapper.detach();
+    });
+
+    it('should not close the popover on click tether element', () => {
+      expect(popoverComponentWrapper.state('isOpen')).toBe(true);
+
+      $('#PopoverElement').click();
+
+      expect(popoverComponentWrapper.state('isOpen')).toBe(true);
+    });
+
+    it('should close the popover when clicking outside PopoverComponent', () => {
+      expect(popoverComponentWrapper.state('isOpen')).toBe(true);
+
+      $('body').click();
+
+      expect(popoverComponentWrapper.state('isOpen')).toBe(false);
+    });
+  });
+
+  describe('Document click handler for a closed popover', () => {
+    beforeEach(() => {
+      popoverComponentProps = _.extend(popoverComponentProps, {
+        isOpen: false
+      });
+
+      popoverComponentWrapper = Enzyme.mount(
+        <PopoverComponent {...popoverComponentProps}>
+          <span id='PopoverToggle'>Toggle</span>
+          <span id='PopoverElement'>Tether element</span>
+        </PopoverComponent>,
+        { attachTo: document.getElementById('App') }
+      );
+    });
+
+    afterEach(() => {
+      popoverComponentWrapper.unmount();
+      popoverComponentWrapper.detach();
+    });
+
     it('should not explode', () => {
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(0);
+      expect(popoverComponentWrapper.state('isOpen')).toBe(false);
 
-      $('#RandomElement').click();
+      $('body').click();
 
-      expect(toggleOpenedTetherElementSpy.calls.count()).toBe(1);
+      expect(popoverComponentWrapper.state('isOpen')).toBe(false);
     });
   });
 });

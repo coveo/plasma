@@ -4,11 +4,14 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import * as $ from 'jquery';
 import { Model as BackboneModel, Collection as BackboneCollection } from 'backbone';
-import { MouseEventHandler, FormEvent } from 'react';
+import { FormEvent } from 'react';
 import { render as ReactDOMRender } from 'react-dom';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
+
+import * as ReduxUtils from '../src/utils/ReduxUtils';
 import { PopoverComponent } from '../src/components/PopoverComponent';
+
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
@@ -69,7 +72,6 @@ interface IMemberEditViewPropsConnected {
 }
 
 interface IMemberEditViewStateProps {
-  isOpen?: boolean;
   email?: string;
   sendEmail?: boolean;
 }
@@ -79,7 +81,7 @@ interface IMemberEditViewProps extends IMemberEditViewStateProps, IMemberEditVie
   toggleOpenedTetherElement?: Function;
   onChangeEmail?: Function;
   onChangeSendEmail?: Function;
-  onClickCancel?: MouseEventHandler<HTMLButtonElement>;
+  onClickCancel?: Function;
 }
 
 interface IMemberEditViewState extends IMemberEditViewStateProps {
@@ -92,24 +94,17 @@ interface IIMemberEditViewAction extends IMemberEditViewState {
 
 const actions = {
   AddMemberEditView: 'ADD_MEMBER_EDIT_VIEW',
-  ToggleOpenedTetherElement: 'TOGGLE_OPENED_TETHER_ELEMENT',
   OnChangeMemberEmail: 'ON_CHANGE_MEMBER_EMAIL',
   OnChangeMemberSendEmail: 'ON_CHANGE_MEMBER_SEND_EMAIL',
   CancelMemberEdition: 'ON_CANCEL_MEMBER_EDITION'
 };
 
-const memberReducers = (state: IMemberEditViewState = { isOpen: false }, action: IIMemberEditViewAction): IMemberEditViewState => {
+const memberReducers = (state: IMemberEditViewState = {}, action: IIMemberEditViewAction): IMemberEditViewState => {
   let newState = _.extend({}, state);
   switch (action.type) {
     case actions.AddMemberEditView:
       newState.modelCid = action.modelCid;
       return newState;
-    case actions.ToggleOpenedTetherElement:
-      if (action.modelCid == state.modelCid) {
-        newState.isOpen = action.isOpen;
-        return newState;
-      }
-      return state;
     case actions.OnChangeMemberEmail:
       if (action.modelCid == state.modelCid) {
         newState.email = action.email;
@@ -125,7 +120,6 @@ const memberReducers = (state: IMemberEditViewState = { isOpen: false }, action:
     case actions.CancelMemberEdition:
       if (action.modelCid == state.modelCid) {
         return {
-          isOpen: false,
           modelCid: state.modelCid,
           email: action.email,
           sendEmail: action.sendEmail
@@ -143,7 +137,6 @@ const mapStateToProps = (state: IMemberEditViewState[], ownProps: IMemberEditVie
   });
 
   return {
-    isOpen: item && !_.isUndefined(item.isOpen) ? item.isOpen : false,
     email: item && !_.isUndefined(item.email) ? item.email : ownProps.memberModel.email,
     sendEmail: item && !_.isUndefined(item.sendEmail) ? item.sendEmail : ownProps.memberModel.sendEmail
   };
@@ -153,14 +146,6 @@ const addMember = (modelCid: string) => {
   return {
     type: actions.AddMemberEditView,
     modelCid
-  };
-};
-
-const toggleOpenedTetherElement = (modelCid: string, isOpen: boolean) => {
-  return {
-    type: actions.ToggleOpenedTetherElement,
-    modelCid,
-    isOpen
   };
 };
 
@@ -192,23 +177,19 @@ const onClickCancel = (modelCid: string, email: string, sendEmail: boolean) => {
 const mapDispatchToProps = (dispatch: (action: Redux.Action) => void, ownProps: IMemberEditViewPropsConnected) => {
   return {
     onMount: () => dispatch(addMember(ownProps.memberModel.cid)),
-    toggleOpenedTetherElement: (isOpen: boolean) => dispatch(toggleOpenedTetherElement(ownProps.memberModel.cid, isOpen)),
     onChangeEmail: (email: string) => dispatch(onChangeEmail(ownProps.memberModel.cid, email)),
     onChangeSendEmail: (sendEmail: boolean) => dispatch(onChangeSendEmail(ownProps.memberModel.cid, sendEmail)),
     onClickCancel: () => dispatch(onClickCancel(ownProps.memberModel.cid, ownProps.memberModel.email, ownProps.memberModel.sendEmail))
   };
 };
 
-const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any): IMemberEditViewProps => {
-  return _.extend({}, stateProps, dispatchProps, ownProps);
-};
-
 class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditViewState> {
   refs: {
-    [key: string]: (Element);
-    email?: HTMLInputElement;
-    sendEmail?: HTMLInputElement;
-  } = {};
+    [key: string]: (Element | React.Component<any, any>);
+    email: HTMLInputElement;
+    sendEmail: HTMLInputElement;
+    popover: PopoverComponent;
+  };
 
   componentDidMount() {
     this.props.onMount();
@@ -217,19 +198,19 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
   render() {
     return (
       <PopoverComponent
+        ref='popover'
         attachment='top left'
         targetAttachment='bottom left'
         constraints={[{
           to: 'scrollParent',
           pin: true
         }]}
-        toggleOpenedTetherElement={this.props.toggleOpenedTetherElement}
         >
-        <button className='btn' onClick={() => this.props.toggleOpenedTetherElement(!this.props.isOpen)}>
+        <button className='btn'>
           {this.props.memberModel.isNew() ? 'Add member' : this.props.memberModel.email}
         </button>
         {
-          this.props.isOpen && this.getPopoverContent()
+          this.getPopoverContent()
         }
       </PopoverComponent>
     );
@@ -261,22 +242,29 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
           <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
             {this.props.memberModel.isNew() ? 'Add' : 'Save'}
           </button>
-          <button type='button' className='btn mod-small' onClick={this.props.onClickCancel}>Cancel</button>
+          <button type='button' className='btn mod-small' onClick={() => this.onCancelEdition()}>Cancel</button>
         </div>
       </div>
     );
   }
 
   private onSaveMember() {
-    this.props.toggleOpenedTetherElement(false);
+    this.refs.popover.toggleOpened(false);
+
     this.props.onSaveMember(this.props.memberModel, {
       email: this.refs.email.value,
       sendEmail: this.refs.sendEmail.checked
     });
   }
+
+  private onCancelEdition() {
+    this.refs.popover.toggleOpened(false);
+
+    this.props.onClickCancel();
+  }
 }
 
-const MemberEditViewConnected = connect(mapStateToProps, mapDispatchToProps, mergeProps)(MemberEditView);
+const MemberEditViewConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(MemberEditView);
 
 const membersReducers = (state: IMemberEditViewState[] = [], action: IIMemberEditViewAction): IMemberEditViewState[] => {
   switch (action.type) {
@@ -285,7 +273,6 @@ const membersReducers = (state: IMemberEditViewState[] = [], action: IIMemberEdi
         ...state,
         memberReducers(undefined, action)
       ];
-    case actions.ToggleOpenedTetherElement:
     case actions.OnChangeMemberEmail:
     case actions.OnChangeMemberSendEmail:
     case actions.CancelMemberEdition:
@@ -363,11 +350,13 @@ class App extends React.Component<any, any> {
 
   private onSaveMember(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) {
     let existingModel = this.memberCollection.get(memberModel);
+
     if (existingModel) {
       existingModel.set(memberModelAttributes);
     } else {
       memberModel.newlyCreated = false;
       memberModel.set(memberModelAttributes, { silent: true }); // Prevent the double forceUpdate
+
       this.memberCollection.add(memberModel);
     }
   }
