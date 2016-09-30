@@ -9,7 +9,7 @@ import { render as ReactDOMRender } from 'react-dom';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 
-import * as ReduxUtils from '../src/utils/ReduxUtils';
+import { ReduxUtils } from '../src/utils/ReduxUtils';
 import { PopoverComponent } from '../src/components/PopoverComponent';
 
 import './style.scss';
@@ -204,47 +204,36 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
         constraints={[{
           to: 'scrollParent',
           pin: true
-        }]}
-        >
-        <button className='btn'>
+        }]}>
+        <button type='button' className='btn'>
           {this.props.memberModel.isNew() ? 'Add member' : this.props.memberModel.email}
         </button>
-        {
-          this.getPopoverContent()
-        }
+        <div className='popover'>
+          <div className='popover-body coveo-form p2'>
+            <fieldset className='form-group input-field'>
+              <input type='text' required name='email' ref='email' value={this.props.email}
+                onChange={(event: FormEvent<HTMLInputElement>) => this.props.onChangeEmail((event.target as HTMLInputElement).value)} />
+              <label>Email</label>
+            </fieldset>
+            <fieldset className='form-group'>
+              <label className='form-control-label'>Send invite</label>
+              <div className='form-control'>
+                <label className='coveo-checkbox-label'>
+                  <input type='checkbox' className='coveo-checkbox' name='sendEmail' ref='sendEmail' checked={this.props.sendEmail}
+                    onChange={(event: FormEvent<HTMLInputElement>) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked)} />
+                  <button type='button' onClick={(jQueryEventObject) => { $(jQueryEventObject.currentTarget).prev().click(); } } />
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div className='popover-footer'>
+            <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
+              {this.props.memberModel.isNew() ? 'Add' : 'Save'}
+            </button>
+            <button type='button' className='btn mod-small' onClick={() => this.onCancelEdition()}>Cancel</button>
+          </div>
+        </div>
       </PopoverComponent>
-    );
-  }
-
-  private getPopoverContent() {
-    return (
-      <div className='popover'>
-        <div className='popover-body coveo-form p2'>
-          <fieldset className='form-group input-field'>
-            <input type='text' required name='email' ref='email' value={this.props.email}
-              onChange={(event: FormEvent<HTMLInputElement>) => this.props.onChangeEmail((event.target as HTMLInputElement).value)} />
-            <label>Email</label>
-          </fieldset>
-          <fieldset className='form-group'>
-            <label className='form-control-label'>Send invite</label>
-            <div className='form-control'>
-              <label className='coveo-checkbox-label'>
-                <input type='checkbox' className='coveo-checkbox' name='sendEmail' ref='sendEmail' checked={this.props.sendEmail}
-                  onChange={(event: FormEvent<HTMLInputElement>) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked)} />
-                <button type='button' onClick={(jQueryEventObject) => {
-                  $(jQueryEventObject.currentTarget).prev().click();
-                } } />
-              </label>
-            </div>
-          </fieldset>
-        </div>
-        <div className='popover-footer'>
-          <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
-            {this.props.memberModel.isNew() ? 'Add' : 'Save'}
-          </button>
-          <button type='button' className='btn mod-small' onClick={() => this.onCancelEdition()}>Cancel</button>
-        </div>
-      </div>
     );
   }
 

@@ -5,9 +5,11 @@ import * as _ from 'underscore';
 
 /*
  The children property should be mandatory, but waiting for https://github.com/DefinitelyTyped/DefinitelyTyped/pull/10641 and/or
- https://github.com/Microsoft/TypeScript/issues/8588. After that, we will be allowed to build using the strictNullChecks flag
+ https://github.com/Microsoft/TypeScript/issues/8588. After that, we will be allowed to build using the strictNullChecks flag.
+
+ Extending React.ClassAttributes<PopoverComponent> is required to be compatible with Typescript 1.7.
  */
-export interface IPopoverComponentProps extends TetherComponent.ITetherComponentProps {
+export interface IPopoverComponentProps extends TetherComponent.ITetherComponentProps, React.ClassAttributes<PopoverComponent> {
   isOpen?: boolean;
   children?: [React.ReactNode, React.ReactNode];
 }
