@@ -1,4 +1,4 @@
-import * as Enzyme from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 import { PopoverComponent, IPopoverComponentProps } from '../../src/components/PopoverComponent';
@@ -9,7 +9,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 describe('<PopoverComponent>', () => {
-  let popoverComponentWrapper: Enzyme.ReactWrapper<IPopoverComponentProps, any>;
+  let popoverComponentWrapper: ReactWrapper<IPopoverComponentProps, any>;
 
   let popoverComponentProps: IPopoverComponentProps;
 
@@ -21,7 +21,7 @@ describe('<PopoverComponent>', () => {
 
   it('should render without error', () => {
     expect(() => {
-      Enzyme.shallow(
+      shallow(
         <PopoverComponent {...popoverComponentProps}>
           <span>Toggle</span>
           <span>Tether element</span>
@@ -32,7 +32,7 @@ describe('<PopoverComponent>', () => {
 
   it('should mount and unmount/detach without error', () => {
     expect(() => {
-      popoverComponentWrapper = Enzyme.mount(
+      popoverComponentWrapper = mount(
         <PopoverComponent {...popoverComponentProps}>
           <span>Toggle</span>
           <span>Tether element</span>
@@ -50,7 +50,7 @@ describe('<PopoverComponent>', () => {
   describe('Children propTypes', () => {
     it('should not throw when redering a PopoverComponent with only one children', () => {
       expect(() => {
-        Enzyme.shallow(
+        shallow(
           <PopoverComponent {...popoverComponentProps}>
             <span>Toggle</span>
           </PopoverComponent>
@@ -60,7 +60,7 @@ describe('<PopoverComponent>', () => {
 
     it('should not throw when redering a PopoverComponent without childrens', () => {
       expect(() => {
-        Enzyme.shallow(
+        shallow(
           <PopoverComponent {...popoverComponentProps} />
         );
       }).not.toThrow();
@@ -69,7 +69,7 @@ describe('<PopoverComponent>', () => {
 
   describe('Tether toggle click handler', () => {
     beforeEach(() => {
-      popoverComponentWrapper = Enzyme.mount(
+      popoverComponentWrapper = mount(
         <PopoverComponent {...popoverComponentProps} >
           <span id='PopoverToggle'>Toggle</span>
           <span id='PopoverElement'>Tether element</span>
@@ -108,7 +108,7 @@ describe('<PopoverComponent>', () => {
         isOpen: true
       });
 
-      popoverComponentWrapper = Enzyme.mount(
+      popoverComponentWrapper = mount(
         <PopoverComponent {...popoverComponentProps} >
           <span id='PopoverToggle'>Toggle</span>
           <span id='PopoverElement'>Tether element</span>
@@ -145,7 +145,7 @@ describe('<PopoverComponent>', () => {
         isOpen: false
       });
 
-      popoverComponentWrapper = Enzyme.mount(
+      popoverComponentWrapper = mount(
         <PopoverComponent {...popoverComponentProps}>
           <span id='PopoverToggle'>Toggle</span>
           <span id='PopoverElement'>Tether element</span>
