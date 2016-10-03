@@ -1,3 +1,7 @@
+import { ReduxUtils } from './utils/ReduxUtils';
 import { PopoverComponent } from './components/PopoverComponent';
 
-export { PopoverComponent };
+export {
+  ReduxUtils,
+  PopoverComponent
+};
