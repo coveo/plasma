@@ -45,6 +45,12 @@
       display: inline-block;
 
       vertical-align: middle;
+
+      &.state-disabled {
+        color: $medium-grey;
+
+        cursor: default;
+      }
     }
 
     .action-label {
