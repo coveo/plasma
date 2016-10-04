@@ -85,7 +85,7 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.8.0",
     "merge-stream": "1.0.0",
-    "node-sass": "3.10.0",
+    "node-sass": "3.10.1",
     "postcss-loader": "0.13.0",
     "pre-commit": "1.1.3",
     "pretty-typescript": "1.13.0",
