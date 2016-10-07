@@ -102,7 +102,7 @@
     "tslint-loader": "2.1.5",
     "typescript": "2.0.3",
     "webpack": "1.13.2",
-    "webpack-dev-server": "1.16.1"
+    "webpack-dev-server": "1.16.2"
   },
   "files": [
     "dist",
