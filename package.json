@@ -94,7 +94,7 @@
     "react-dom": "15.3.2",
     "react-redux": "4.4.5",
     "redux": "3.6.0",
-    "remap-istanbul": "0.6.4",
+    "remap-istanbul": "0.7.0",
     "sass-loader": "4.0.2",
     "style-loader": "0.13.1",
     "ts-loader": "0.8.2",
