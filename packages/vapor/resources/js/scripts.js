@@ -3,7 +3,7 @@ $(document).ready(function() {
     var hash = window.location.hash;
     window.location.hash = "";
     window.location.hash = hash;
-    
+
     $('.coveo-slider-input').slider();
     $('.coveo-datepicker').DatePicker({
         mode: 'single',

@@ -11,6 +11,8 @@
 }
 
 .dropdown-toggle {
+  position: relative;
+
   display: inline-block;
   padding: 0 ($button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing) 0 $button-padding-x;
   overflow: hidden;
@@ -31,7 +33,7 @@
 
   .dropdown-toggle-arrow {
     position: absolute;
-    top: calc(50% - #{$dropdown-arrow-icon-size} / 2);
+    top: calc(50% - (#{$dropdown-arrow-icon-size} - 2px) / 2); // Remove the approximated svg inner top/bottom padding
     right: $button-padding-x;
 
     width: $dropdown-arrow-icon-size;
@@ -41,7 +43,7 @@
   }
 }
 
-&.open > .dropdown-toggle {
+&.open > .dropdown-toggle, .dropdown-toggle.open {
   &.mod-primary .dropdown-toggle-arrow {
     @include arrow-up-icon($pure-white);
   }
