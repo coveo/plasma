@@ -1,7 +1,9 @@
+import { Popover } from './components/Popover';
+import { Svg } from './components/Svg';
 import { ReduxUtils } from './utils/ReduxUtils';
-import { PopoverComponent } from './components/PopoverComponent';
 
 export {
-  ReduxUtils,
-  PopoverComponent
+  Popover,
+  Svg,
+  ReduxUtils
 };

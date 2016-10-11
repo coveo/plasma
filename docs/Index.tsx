@@ -10,7 +10,8 @@ import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 
 import { ReduxUtils } from '../src/utils/ReduxUtils';
-import { PopoverComponent } from '../src/components/PopoverComponent';
+import { Popover } from '../src/components/Popover';
+import { Svg } from '../src/components/Svg.tsx';
 
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
@@ -188,7 +189,7 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
     [key: string]: (Element | React.Component<any, any>);
     email: HTMLInputElement;
     sendEmail: HTMLInputElement;
-    popover: PopoverComponent;
+    popover: Popover;
   };
 
   componentDidMount() {
@@ -197,7 +198,7 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
 
   render() {
     return (
-      <PopoverComponent
+      <Popover
         ref='popover'
         attachment='top left'
         targetAttachment='bottom left'
@@ -233,7 +234,7 @@ class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditVi
             <button type='button' className='btn mod-small' onClick={() => this.onCancelEdition()}>Cancel</button>
           </div>
         </div>
-      </PopoverComponent>
+      </Popover>
     );
   }
 
@@ -323,15 +324,25 @@ class App extends React.Component<any, any> {
   render() {
     return (
       <div className='coveo-form'>
-        <label className='form-control-label'>
-          My list of members
-        </label>
-        <div className='form-control'>
-          <MembersEditView
-            memberCollection={this.memberCollection}
-            onSaveMember={(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) =>
-              this.onSaveMember(memberModel, memberModelAttributes)}
-            />
+        <div className='form-group'>
+          <label className='form-control-label'>
+            My list of members
+          </label>
+          <div className='form-control'>
+            <MembersEditView
+              memberCollection={this.memberCollection}
+              onSaveMember={(memberModel: MemberModel, memberModelAttributes: IMemberModelAttributes) =>
+                this.onSaveMember(memberModel, memberModelAttributes)}
+              />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Include an SVG
+          </label>
+          <div className='form-control'>
+            <Svg svgName='domain-google' className='icon mod-2x' />
+          </div>
         </div>
       </div>
     );
