@@ -3,11 +3,11 @@
     line-height: $button-height - $button-border-width;
 
     .btn-append, .btn-prepend {
-      display: inline-block;
+      display: inline-flex;
       height: $button-height - $button-border-width;
       padding: 0 $button-padding-x;
 
-      vertical-align: top;
+      vertical-align: top; // Fix for Edge, otherwise, button text will be misaligned
 
       &.mod-icon {
         padding: 8px;
