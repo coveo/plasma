@@ -350,7 +350,21 @@ class App extends React.Component<any, any> {
             Chosen single select
           </label>
           <div className='form-control'>
-            <ChosenSelect placeholderTextSingle='Choose a country' defaultValue='France'>
+            <ChosenSelect placeholderTextSingle='Choose a country' value='France' width='400px'
+              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
+              <option value='Canada'>Canada</option>
+              <option value='France'>France</option>
+              <option value='United States'>United States</option>
+            </ChosenSelect>
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Chosen multi select
+          </label>
+          <div className='form-control'>
+            <ChosenSelect placeholderTextSingle='Choose a country' defaultValue={['Canada']} multiple width='400px'
+              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
               <option value='Canada'>Canada</option>
               <option value='France'>France</option>
               <option value='United States'>United States</option>
