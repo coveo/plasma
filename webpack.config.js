@@ -1,8 +1,9 @@
 'use strict';
 
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 const tslintConfig = require(path.join(__dirname, '/tslint'));
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 /***
  * Config file for the documentation project
@@ -15,6 +16,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   devtool: 'source-map',
+  resolve: {
+    extensions: ['', '.ts', '.tsx', '.js', '.jsx', '.json']
+  },
   module: {
     loaders: [
       {test: /\.json$/, loader: 'json-loader'},
@@ -40,15 +44,17 @@ module.exports = {
       ]
     })
   ],
-  resolve: {
-    extensions: ['', '.ts', '.tsx', '.js', '.jsx', '.json']
-  },
   tslint: {
     configuration: tslintConfig,
     emitErrors: true,
     failOnHint: false,
     formattersDirectory: path.resolve(__dirname, 'node_modules/tslint-loader/formatters/')
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery' // Required for chosen-js, otherwise, it won't work.
+    })
+  ],
   devServer: {
     contentBase: './docs'
   },

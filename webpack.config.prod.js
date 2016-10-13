@@ -47,6 +47,8 @@ let config = {
     root: path.resolve(__dirname, 'node_modules')
   },
   externals: {
+    'chosen-js': 'chosen-js',
+    'jquery': '$',
     'react': 'React',
     'react-dom': 'ReactDOM',
     'tether': 'Tether',
@@ -61,7 +63,7 @@ if (TARGET === 'minify') {
       warnings: false
     },
     mangle: {
-      except: ['React', 'ReactDOM', 'Tether', '_']
+      except: ['$', 'React', 'ReactDOM', 'Tether', '_']
     }
   }));
 }
