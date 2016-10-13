@@ -7,20 +7,20 @@ import * as _ from 'underscore';
  The children property should be mandatory, but waiting for https://github.com/DefinitelyTyped/DefinitelyTyped/pull/10641 and/or
  https://github.com/Microsoft/TypeScript/issues/8588. After that, we will be allowed to build using the strictNullChecks flag.
 
- Extending React.ClassAttributes<PopoverComponent> is required to be compatible with Typescript 1.7.
+ Extending React.ClassAttributes<Popover> is required to be compatible with Typescript 1.7.
  */
-export interface IPopoverComponentProps extends TetherComponent.ITetherComponentProps, React.ClassAttributes<PopoverComponent> {
+export interface IPopoverProps extends TetherComponent.ITetherComponentProps, React.ClassAttributes<Popover> {
   isOpen?: boolean;
   children?: [React.ReactNode, React.ReactNode];
 }
 
-export interface IPopoverComponentState {
+export interface IPopoverState {
   isOpen: boolean;
 }
 
-export class PopoverComponent extends React.Component<IPopoverComponentProps, IPopoverComponentState> {
+export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   static propTypes = _.extend(TetherComponent.propTypes, {
-    children: ({children}: IPopoverComponentProps, propName: string, componentName: string) => {
+    children: ({children}: IPopoverProps, propName: string, componentName: string) => {
       if (_.isUndefined(children) || React.Children.count(children) != 2) {
         return new Error(`${componentName} expects two children to use as target and element.` +
           `Second child can either be a boolean or a ReactNode.`);
@@ -34,7 +34,7 @@ export class PopoverComponent extends React.Component<IPopoverComponentProps, IP
     tetherElement: HTMLElement;
   };
 
-  constructor(props: IPopoverComponentProps, state: IPopoverComponentState) {
+  constructor(props: IPopoverProps, state: IPopoverState) {
     super(props, state);
 
     this.state = {

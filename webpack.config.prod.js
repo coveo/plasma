@@ -21,13 +21,14 @@ let config = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.ts', '.tsx', '.js']
+    extensions: ['', '.ts', '.tsx', '.js', '.json']
   },
   module: {
     preLoaders: [
       {test: /\.ts(x?)$/, loader: 'tslint'}
     ],
     loaders: [
+      {test: /\.json$/, loader: 'json-loader'},
       {test: /\.ts(x?)$/, loader: 'ts-loader'}
     ]
   },

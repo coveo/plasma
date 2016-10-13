@@ -1,4 +1,4 @@
-///<reference path="node_modules/@types/webpack/webpack-env.d.ts"/>
+///<reference path="node_modules/@types/webpack-env/index.d.ts"/>
 
 import * as $ from 'jquery';
 
