@@ -17,6 +17,7 @@ module.exports = {
   devtool: 'source-map',
   module: {
     loaders: [
+      {test: /\.json$/, loader: 'json-loader'},
       {test: /\.ts(x?)$/, loader: 'ts-loader'},
       {test: /\.scss$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader'},
       {test: /\.css$/, loaders: ['style', 'css']},
@@ -40,7 +41,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['', '.ts', '.tsx', '.js', '.jsx']
+    extensions: ['', '.ts', '.tsx', '.js', '.jsx', '.json']
   },
   tslint: {
     configuration: tslintConfig,
