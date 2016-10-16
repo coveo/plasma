@@ -15,7 +15,8 @@ describe('<Svg>', () => {
   beforeEach(() => {
     svgProps = {
       svgName: 'clear',
-      className: 'icon'
+      className: 'icon',
+      svgClass: 'fill-medium-blue'
     };
   });
 
@@ -65,6 +66,21 @@ describe('<Svg>', () => {
     it('should handle an undefined className', () => {
       svgProps = _.extend(svgProps, {
         className: undefined
+      });
+
+      expect(() => {
+        svgWrapper = mount(
+          <Svg {...svgProps} />,
+          { attachTo: document.getElementById('App') }
+        );
+      }).not.toThrow();
+
+      expect($('#App').find('svg').length).toBe(1);
+    });
+
+    it('should handle an undefined svgClass', () => {
+      svgProps = _.extend(svgProps, {
+        svgClass: undefined
       });
 
       expect(() => {

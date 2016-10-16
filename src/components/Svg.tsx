@@ -1,46 +1,47 @@
 ///<reference path="../../node_modules/@types/webpack-env/index.d.ts"/>
 import * as React from 'react';
 
+import '../utils/Polyfills';
+
 let svgsEnum = require('../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
 
-const parseSVG = (str: string): SVGElement => {
-  let container = document.createElement('div');
+const setSvgClass = (svgString: string, svgClass: string): string => {
+  let parser = document.createElement('div');
+  parser.innerHTML = svgString;
 
-  container.innerHTML = str;
-
-  return container.children[0] as SVGElement;
+  let svgElement: SVGElement = parser.children[0] as SVGElement;
+  svgElement.setAttribute('class', svgClass);
+  return svgElement.outerHTML; // Polyfill required here!
 };
 
-const getElementAttributes = (element: Element): { [key: string]: string } => {
-  let attibutes: { [key: string]: string } = {};
-
-  for (let i = 0; i < element.attributes.length; i++) {
-    let attr: Attr = element.attributes[i];
-    attibutes[attr.name] = attr.value;
-  }
-
-  return attibutes;
-};
-
+/**
+ * Pass the required svgName to get your svg.
+ * Use className to pass the "icon" class and any sizing class.
+ * Use svgClass to pass the svg fill class.
+ */
 export interface ISvgProps extends React.ClassAttributes<Svg> {
-  svgName: string;
   className?: string;
+  svgClass?: string;
+  svgName: string;
 }
 
 export class Svg extends React.Component<ISvgProps, any> {
   render() {
     let className: string = this.props.className ? this.props.className : '';
+    let svgClass: string = this.props.svgClass ? this.props.svgClass : '';
     let svgString: string = svgsEnum[this.props.svgName];
 
     if (svgString) {
-      let parsedSvg: SVGElement = parseSVG(svgString);
+      let svgStringWithClass = setSvgClass(svgString, svgClass);
 
       return (
-        <svg {...getElementAttributes(parsedSvg) } className={className} dangerouslySetInnerHTML={{ __html: parsedSvg.innerHTML }} />
+        <span className={className} dangerouslySetInnerHTML={{ __html: svgStringWithClass }} />
       );
     } else {
       return (
-        <svg className={className} />
+        <span className={className}>
+          <svg className={svgClass} />
+        </span>
       );
     }
   }
