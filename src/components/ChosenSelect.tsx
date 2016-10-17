@@ -6,22 +6,25 @@ import * as _ from 'underscore';
 
 import 'chosen-js'; // Clean way to make Webpack import something that is not a module
 
-export interface IChosenSelectProps extends React.HTMLProps<HTMLSelectElement> {
-  allowSingleDeselect?: boolean;
-  disableSearch?: boolean;
-  disableSearchThreshold?: number;
-  displayDisabledOptions?: boolean;
-  displaySelectedOptions?: boolean;
-  enableSplitWordSearch?: boolean;
-  inheritSelectClasses?: boolean;
-  maxSelectedOptions?: number;
-  noResultsText?: string;
+export interface IChosenSelectProps extends React.HTMLAttributes<HTMLSelectElement>, React.ClassAttributes<ChosenSelect> {
+  allowSingleDeselect?: boolean; // @default: false
+  caseSensitiveSearch?: boolean; // @default: false
+  disableSearch?: boolean; // @default: false
+  disableSearchThreshold?: number; // @default: 0, a.k.a. always enabled
+  displayDisabledOptions?: boolean; // @default: true
+  displaySelectedOptions?: boolean; // @default: true
+  enableSplitWordSearch?: boolean; // @default: true
+  includeGroupLabelInSelected?: boolean; // @default: false
+  inheritSelectClasses?: boolean; // @default: false
+  maxSelectedOptions?: number; // @default: Infinity
+  maxShownResults?: number; // @default: Infinity
+  noResultsText?: string; // @default: "No results match"
   onChosenChange?: (event: JQueryEventObject, args: Chosen.SelectedData) => void;
-  placeholderTextMultiple?: string;
-  placeholderTextSingle?: string;
-  searchContains?: boolean;
-  singleBackstrokeDelete?: boolean;
-  width?: string;
+  placeholderTextMultiple?: string; // @default: "Select Some Options"
+  placeholderTextSingle?: string; // @default: "Select an Option"
+  searchContains?: boolean; // @default: false
+  singleBackstrokeDelete?: boolean; // @default: true
+  width?: string; // @default: the width of the select chosen is replacing
 }
 
 /**
@@ -44,13 +47,16 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
     $(this.refs.select)
       .chosen({
         allow_single_deselect: this.props.allowSingleDeselect,
+        case_sensitive_search: this.props.caseSensitiveSearch,
         disable_search: this.props.disableSearch,
         disable_search_threshold: this.props.disableSearchThreshold,
         display_disabled_options: this.props.displayDisabledOptions,
         display_selected_options: this.props.displaySelectedOptions,
         enable_split_word_search: this.props.enableSplitWordSearch,
+        include_group_label_in_selected: this.props.includeGroupLabelInSelected,
         inherit_select_classes: this.props.inheritSelectClasses,
         max_selected_options: this.props.maxSelectedOptions,
+        max_shown_results: this.props.maxShownResults,
         no_results_text: this.props.noResultsText,
         placeholder_text_multiple: this.props.placeholderTextMultiple,
         placeholder_text_single: this.props.placeholderTextSingle,
