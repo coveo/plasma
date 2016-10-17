@@ -1,17 +1,15 @@
 ///<reference path="../../node_modules/@types/webpack-env/index.d.ts"/>
 import * as React from 'react';
 
-import '../utils/Polyfills';
-
 let svgsEnum = require('../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
 
 const setSvgClass = (svgString: string, svgClass: string): string => {
   let parser = document.createElement('div');
   parser.innerHTML = svgString;
 
-  let svgElement: SVGElement = parser.children[0] as SVGElement;
-  svgElement.setAttribute('class', svgClass);
-  return svgElement.outerHTML; // Polyfill required here!
+  (parser.children[0] as SVGElement).setAttribute('class', svgClass);
+
+  return parser.innerHTML;
 };
 
 /**
