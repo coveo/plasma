@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import 'chosen-js'; // Clean way to make Webpack import something that is not a module
 
-export interface IChosenSelectProps extends React.HTMLAttributes<HTMLSelectElement>, React.ClassAttributes<ChosenSelect> {
+export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
   allowSingleDeselect?: boolean; // @default: false
   caseSensitiveSearch?: boolean; // @default: false
   disableSearch?: boolean; // @default: false

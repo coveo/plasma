@@ -1,5 +1,7 @@
 ///<reference path="../../node_modules/@types/webpack-env/index.d.ts"/>
+
 import * as React from 'react';
+import * as _ from 'underscore';
 
 let svgsEnum = require('../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
 
@@ -14,30 +16,38 @@ const setSvgClass = (svgString: string, svgClass: string): string => {
 
 /**
  * Pass the required svgName to get your svg.
- * Use className to pass the "icon" class and any sizing class.
- * Use svgClass to pass the svg fill class.
+ * Use svgClass to pass the svg fill class (and the icon class if you didn't pass is as className).
  */
-export interface ISvgProps extends React.ClassAttributes<Svg> {
-  className?: string;
+export interface ISvgProps extends React.HTMLProps<Svg> {
   svgClass?: string;
   svgName: string;
 }
 
+/**
+ * List of props that where passed to the <Svg> component but that should not be passed to the <span> element to avoid warnings.
+ * @type {string[]}
+ */
+const svgPropsToOmit = [
+  'svgClass', 'svgName'
+];
+
 export class Svg extends React.Component<ISvgProps, any> {
   render() {
-    let className: string = this.props.className ? this.props.className : '';
     let svgClass: string = this.props.svgClass ? this.props.svgClass : '';
     let svgString: string = svgsEnum[this.props.svgName];
+
+    // Omit Svg props to avoid warnings.
+    let svgSpanProps = _.extend({}, _.omit(this.props, svgPropsToOmit));
 
     if (svgString) {
       let svgStringWithClass = setSvgClass(svgString, svgClass);
 
       return (
-        <span className={className} dangerouslySetInnerHTML={{ __html: svgStringWithClass }} />
+        <span {...svgSpanProps} dangerouslySetInnerHTML={{ __html: svgStringWithClass }} />
       );
     } else {
       return (
-        <span className={className}>
+        <span {...svgSpanProps} >
           <svg className={svgClass} />
         </span>
       );
