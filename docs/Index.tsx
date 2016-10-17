@@ -371,6 +371,14 @@ class App extends React.Component<any, any> {
             </ChosenSelect>
           </div>
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Include another SVG
+          </label>
+          <div className='form-control'>
+            <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
+          </div>
+        </div>
       </div>
     );
   }
