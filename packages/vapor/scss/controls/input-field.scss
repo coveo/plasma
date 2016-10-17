@@ -94,6 +94,10 @@
     @include placeholder(transparent);
   }
 
+  &.mod-resizeable textarea {
+    resize: vertical;
+  }
+
   &.mod-fixed-width {
     max-width: $input-max-width;
   }
