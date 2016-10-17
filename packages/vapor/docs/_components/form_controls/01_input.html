@@ -54,17 +54,17 @@ stylesheet: '/scss/controls/input-field.scss'
         </label>
     </div>
 
-    <div id="textarea2" class="input-field form-group">
+    <div id="textarea2" class="input-field form-group mod-resizeable">
         <textarea placeholder="Placeholder text" required></textarea>
         <label for="textarea2">
-            Textarea with placeholder
+            Resizable textarea
         </label>
     </div>
 
-    <div id="textarea3" class="input-field form-group">
+    <div id="textarea3" class="input-field form-group js-autosized">
         <textarea required>Lorem ipsum dolor sit amet, interdum est eu. A tellus condimentum hendrerit enim, ligula fusce vitae, leo et fusce mauris lorem suscipit scelerisque. Vel arcu, non vestibulum suspendisse non lectus magnis suspendisse, aliquam magna commodo. Nascetur eleifend at faucibus faucibus, nulla fringilla, mauris ultrices posuere in, ut dolor cras rhoncus.</textarea>
         <label for="textarea3">
-            Textarea
+            Autosized textarea using the autosize library
         </label>
     </div>
 </div>
@@ -81,5 +81,5 @@ stylesheet: '/scss/controls/input-field.scss'
         }
     });
 
-    autosize($('textarea'));
+    autosize($('.js-autosized textarea'));
 </script>
