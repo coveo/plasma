@@ -103,7 +103,7 @@
   }
 
   // Validation feedback
-  &.validate input, &.validate textarea, .validate input {
+  &.validate input, .validate input {
     transition: 0.2s margin-bottom ease, 0.2s color ease;
 
     &.valid, &.invalid {
@@ -153,5 +153,17 @@
         top: 55px;
       }
     }
+  }
+
+  // Temp fix for the textarea since using label:after doesn't work (because of textarea variable size)
+  &.validate textarea.invalid {
+    border-bottom-color: $red;
+  }
+
+  &.validate .generic-form-error {
+    display: block;
+    // Make it look like the input > label:after error
+    margin-top: 3px;
+    margin-bottom: 0;
   }
 }
