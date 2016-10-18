@@ -14,7 +14,7 @@
   position: relative;
 
   display: inline-block;
-  padding: 0 ($button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing) 0 $button-padding-x;
+  padding: $button-padding-y ($button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing) $button-padding-y $button-padding-x;
   overflow: hidden;
 
   font-size: $dropdown-button-font-size;
