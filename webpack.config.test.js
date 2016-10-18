@@ -34,7 +34,8 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('test'),
     }),
     new webpack.ProvidePlugin({
-      'React': 'react'
+      React: 'react',
+      jQuery: 'jquery' // Required for chosen-js, otherwise, it won't work.
     })
   ],
   resolveLoader: {

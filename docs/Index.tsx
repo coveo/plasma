@@ -10,8 +10,9 @@ import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 
 import { ReduxUtils } from '../src/utils/ReduxUtils';
+import { ChosenSelect } from '../src/components/ChosenSelect';
 import { Popover } from '../src/components/Popover';
-import { Svg } from '../src/components/Svg.tsx';
+import { Svg } from '../src/components/Svg';
 
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
@@ -350,6 +351,32 @@ class App extends React.Component<any, any> {
           </label>
           <div className='form-control'>
             <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Chosen single select
+          </label>
+          <div className='form-control'>
+            <ChosenSelect placeholderTextSingle='Choose a country' value='France' width='400px'
+              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
+              <option value='Canada'>Canada</option>
+              <option value='France'>France</option>
+              <option value='United States'>United States</option>
+            </ChosenSelect>
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Chosen multi select
+          </label>
+          <div className='form-control'>
+            <ChosenSelect placeholderTextSingle='Choose a country' defaultValue={['Canada']} multiple width='400px'
+              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
+              <option value='Canada'>Canada</option>
+              <option value='France'>France</option>
+              <option value='United States'>United States</option>
+            </ChosenSelect>
           </div>
         </div>
       </div>

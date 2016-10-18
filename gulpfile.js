@@ -98,7 +98,7 @@ gulp.task('ts:minify', false, done => {
 });
 
 gulp.task('ts:definitions', 'Generate the project definition file', done => {
-  runSequence('internalDefs', 'cleanDefs', done)
+  runSequence('internalDefs', 'cleanDefs', done);
 });
 
 gulp.task('ts', 'Compile Typescript', done => {
@@ -133,7 +133,7 @@ gulp.task('cleanDefs', false, () => {
 
     .pipe(footer('declare module "react-vapor" {\n\texport = ReactVapor;\n}'))
 
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist'));
 });
 //</editor-fold>
 

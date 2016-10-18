@@ -28,11 +28,8 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     }
   });
 
-  refs: {
-    [key: string]: (Element);
-    tetherToggle: HTMLElement;
-    tetherElement: HTMLElement;
-  };
+  private tetherToggle: HTMLElement;
+  private tetherElement: HTMLElement;
 
   constructor(props: IPopoverProps, state: IPopoverState) {
     super(props, state);
@@ -56,12 +53,12 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
 
     return (
       <TetherComponent {..._.omit(this.props, 'children') } >
-        <div ref='tetherToggle' onClick={() => this.toggleOpened(!this.state.isOpen)}>
+        <div ref={(toggle: HTMLElement) => this.tetherToggle = toggle} onClick={() => this.toggleOpened(!this.state.isOpen)}>
           {tetherToggle}
         </div>
         {
           this.state.isOpen &&
-          <div ref='tetherElement'>
+          <div ref={(element: HTMLElement) => this.tetherElement = element}>
             {tetherElement}
           </div>
         }
@@ -78,8 +75,8 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   // Using a fat arrow function instead of a methot here to bind it to context and to make sure we have the same listener for both
   // addEventListener and removeEventListener and therefore prevent leaking listeners.
   private handleDocumentClick: EventListener = (event: Event) => {
-    const tetherToggle = ReactDOM.findDOMNode<HTMLElement>(this.refs.tetherToggle);
-    const tetherElement = ReactDOM.findDOMNode<HTMLElement>(this.refs.tetherElement);
+    const tetherToggle = ReactDOM.findDOMNode<HTMLElement>(this.tetherToggle);
+    const tetherElement = ReactDOM.findDOMNode<HTMLElement>(this.tetherElement);
 
     let outsideTetherToggle = !tetherToggle.contains(event.target as Node);
     let outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
