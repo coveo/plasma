@@ -21,11 +21,9 @@ describe('<Svg>', () => {
   });
 
   it('should render without error', () => {
-    expect(() => {
-      shallow(
-        <Svg {...svgProps} />
-      );
-    }).not.toThrow();
+    expect(() => shallow(
+      <Svg {...svgProps} />
+    )).not.toThrow();
   });
 
   it('should mount and unmount/detach without error', () => {

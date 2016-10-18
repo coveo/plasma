@@ -24,7 +24,7 @@ export interface ISvgProps extends React.HTMLProps<Svg> {
 }
 
 /**
- * List of props that where passed to the <Svg> component but that should not be passed to the <span> element to avoid warnings.
+ * List of props that were passed to the <Svg> component but that should not be passed to the <span> element to avoid warnings.
  * @type {string[]}
  */
 const svgPropsToOmit = [

@@ -28,7 +28,7 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
 }
 
 /**
- * List of props that where passed to the <ChosenSelect> component but that should not be passed to the <select> element to avoid warnings.
+ * List of props that were passed to the <ChosenSelect> component but that should not be passed to the <select> element to avoid warnings.
  * @type {string[]}
  */
 const chosenSelectPropsToOmit = [
@@ -38,13 +38,10 @@ const chosenSelectPropsToOmit = [
 ];
 
 export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
-  refs: {
-    [key: string]: (Element);
-    select: HTMLSelectElement;
-  };
+  select: JQuery;
 
   componentDidMount() {
-    $(this.refs.select)
+    this.select
       .chosen({
         allow_single_deselect: this.props.allowSingleDeselect,
         case_sensitive_search: this.props.caseSensitiveSearch,
@@ -68,7 +65,7 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
   }
 
   componentWillUnmount() {
-    $(this.refs.select)
+    this.select
       .off('change')
       .chosen('destroy');
   }
@@ -83,7 +80,7 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
     // Omit ChosenSelect props to avoid warnings.
     let selectProps = _.extend({}, _.omit(this.props, chosenSelectPropsToOmit));
     return (
-      <select {...selectProps} ref='select' onChange={_.noop}>
+      <select {...selectProps} ref={(select: HTMLSelectElement) => this.select = $(select)} onChange={_.noop}>
         {this.props.children}
       </select>
     );

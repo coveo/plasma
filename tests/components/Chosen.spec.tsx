@@ -1,5 +1,4 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import * as $ from 'jquery';
 import { IChosenSelectProps, ChosenSelect } from '../../src/components/ChosenSelect';
 
 // Until Webpack provided plugins works with TS 2.0
@@ -21,15 +20,13 @@ describe('<ChosenSelect>', () => {
   });
 
   it('should render without error', () => {
-    expect(() => {
-      shallow(
-        <ChosenSelect {...chosenSelectProps}>
-          <option value='1'>Option 1</option>
-          <option value='2'>Option 2</option>
-          <option value='3'>Option 3</option>
-        </ChosenSelect>
-      );
-    }).not.toThrow();
+    expect(() => shallow(
+      <ChosenSelect {...chosenSelectProps}>
+        <option value='1'>Option 1</option>
+        <option value='2'>Option 2</option>
+        <option value='3'>Option 3</option>
+      </ChosenSelect>
+    )).not.toThrow();
   });
 
   it('should mount and unmount/detach without error', () => {
@@ -71,7 +68,7 @@ describe('<ChosenSelect>', () => {
       let chosenSelect: ChosenSelect = chosenSelectWrapper.instance() as ChosenSelect;
 
       // Mock the change event
-      $(chosenSelect.refs.select).trigger('change');
+      chosenSelect.select.trigger('change');
 
       expect(onChosenChangeSpy).toHaveBeenCalled();
     });

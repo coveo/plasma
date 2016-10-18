@@ -20,14 +20,12 @@ describe('<Popover>', () => {
   });
 
   it('should render without error', () => {
-    expect(() => {
-      shallow(
-        <Popover {...popoverProps}>
-          <span>Toggle</span>
-          <span>Tether element</span>
-        </Popover>
-      );
-    }).not.toThrow();
+    expect(() => shallow(
+      <Popover {...popoverProps}>
+        <span>Toggle</span>
+        <span>Tether element</span>
+      </Popover>
+    )).not.toThrow();
   });
 
   it('should mount and unmount/detach without error', () => {

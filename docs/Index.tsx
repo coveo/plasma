@@ -10,9 +10,9 @@ import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 
 import { ReduxUtils } from '../src/utils/ReduxUtils';
-import { ChosenSelect } from '../src/components/ChosenSelect.tsx';
+import { ChosenSelect } from '../src/components/ChosenSelect';
 import { Popover } from '../src/components/Popover';
-import { Svg } from '../src/components/Svg.tsx';
+import { Svg } from '../src/components/Svg';
 
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
