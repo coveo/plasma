@@ -4,7 +4,10 @@ title: Base button
 usage: Base style for all buttons and links with the "btn" class.
 stylesheet: '/scss/elements/btn.scss'
 ---
-<a class="btn">Link</a>
-<button type="button" class="btn">Button</button>
-<button type="button" class="btn" disabled>Button disabled</button>
-<button type="button" class="btn state-disabled">Button disabled</button>
+<div class="spaced-boxes-container flex flex-wrap">
+    <a class="btn spaced-box">Link</a>
+    <button type="button" class="btn spaced-box">Button</button>
+    <div class="btn spaced-box">Div button</div>
+    <button type="button" class="btn spaced-box" disabled>Button disabled</button>
+    <button type="button" class="btn state-disabled spaced-box">Button disabled</button>
+</div>
