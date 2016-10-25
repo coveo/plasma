@@ -5,6 +5,7 @@ import { render as ReactDOMRender } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ChosenSelect } from '../src/components/ChosenSelect';
 import { Svg } from '../src/components/Svg';
+import { Tooltip } from '../src/components/Tooltip';
 import { MemberModel, IMemberModelAttributes } from './members-example/models/MemberModel';
 import { MemberCollection } from './members-example/models/MemberCollection';
 import { MembersCompositeView } from './members-example/views/MembersCompositeView';
@@ -80,6 +81,16 @@ class App extends React.Component<any, any> {
               <option value='France'>France</option>
               <option value='United States'>United States</option>
             </ChosenSelect>
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Tooltip example
+          </label>
+          <div className='form-control'>
+            <Tooltip title='I am a tooltip!' placement='right'>
+              <button type='button' className='btn'>Hover me!</button>
+            </Tooltip>
           </div>
         </div>
       </div>
