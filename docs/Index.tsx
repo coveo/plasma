@@ -12,9 +12,9 @@ import { ReduxUtils } from '../src/utils/ReduxUtils';
 import { ChosenSelect } from '../src/components/ChosenSelect';
 import { Popover } from '../src/components/Popover';
 import { Svg } from '../src/components/Svg';
+import { Tooltip } from '../src/components/Tooltip';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
-import { Tooltip } from '../src/components/Tooltip';
 
 interface IMemberModelAttributes {
   email?: string;
