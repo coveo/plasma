@@ -47,6 +47,7 @@ let config = {
     root: path.resolve(__dirname, 'node_modules')
   },
   externals: {
+    'bootstrap': 'bootstrap',
     'chosen-js': 'chosen-js',
     'jquery': '$',
     'react': 'React',

@@ -1,21 +1,20 @@
 ///<reference path="../node_modules/@types/redux/index.d.ts"/>
 
 import * as React from 'react';
+import { FormEvent } from 'react';
 import * as _ from 'underscore';
 import * as $ from 'jquery';
 import { Model as BackboneModel, Collection as BackboneCollection } from 'backbone';
-import { FormEvent } from 'react';
 import { render as ReactDOMRender } from 'react-dom';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
-
 import { ReduxUtils } from '../src/utils/ReduxUtils';
 import { ChosenSelect } from '../src/components/ChosenSelect';
 import { Popover } from '../src/components/Popover';
 import { Svg } from '../src/components/Svg';
-
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import { Tooltip } from '../src/components/Tooltip';
 
 interface IMemberModelAttributes {
   email?: string;
@@ -377,6 +376,16 @@ class App extends React.Component<any, any> {
               <option value='France'>France</option>
               <option value='United States'>United States</option>
             </ChosenSelect>
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Tooltip example
+          </label>
+          <div className='form-control'>
+            <Tooltip title='I am a tooltip!' placement='right'>
+              <button type='button' className='btn'>Hover me!</button>
+            </Tooltip>
           </div>
         </div>
       </div>
