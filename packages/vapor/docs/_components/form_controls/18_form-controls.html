@@ -76,7 +76,12 @@ usage: Almost all form controls grouped in a single coveo-form.
     </fieldset>
 
     <fieldset class="form-group">
-        <label class="form-control-label">A dropdown</label>
+        <label class="form-control-label">
+            A dropdown
+            <span class="inline-help-tooltip" title="A simple inline help text." data-placement="right">
+                <span class="inline-help-icon">{{ site.data.icons['help'] }}</span>
+            </span>
+        </label>
         <div class="form-control">
             <div class="dropdown">
                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">

@@ -95,7 +95,7 @@
   }
 
   &.mod-resizeable textarea {
-    padding: 0;
+    padding: 5px 0 2px; // Tweak to make it look like a normal input-field
 
     resize: vertical;
   }
