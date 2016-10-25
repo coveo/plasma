@@ -14,7 +14,9 @@ form {
 // New simple form, scoped under coveo-form to prevent breaking the table-form
 .coveo-form {
   .form-control-label {
-    display: inline-block;
+    align-items: center;
+
+    display: inline-flex; // Used for inline-help-tooltip placement
     margin-bottom: $form-control-label-margin;
 
     color: $medium-blue;
@@ -49,7 +51,7 @@ form {
   .inline-help-tooltip {
     margin-left: 10px;
 
-    pointer-events: visible; // Very useful for input-fields
+    pointer-events: visible; // Very useful inside an input-field
 
     &, .inline-help-icon, .inline-help-icon > svg {
       display: inline-block;
@@ -57,7 +59,7 @@ form {
       height: 1.2em;
     }
 
-    .inline-help-icon > svg {
+    .inline-help-icon, .inline-help-icon > svg {
       fill: $medium-grey;
     }
   }
