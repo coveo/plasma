@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
-
 import 'bootstrap'; // Usefull since Vapor took the tooltip function from there and since bootstrap has a legit definition file.
 
 export interface ITooltipProps extends React.HTMLProps<Tooltip> {
