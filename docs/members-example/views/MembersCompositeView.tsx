@@ -1,48 +1,42 @@
 import * as _ from 'underscore';
 import * as React from 'react';
-import { MemberModel } from '../models/MemberModel';
-import { MemberCollection } from '../models/MemberCollection';
-import { MemberEditView } from './MemberEditView';
-import { IMembersState } from '../Reducers';
-import { ReduxConnect } from '../../../src/utils/ReduxUtils';
+import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
+import { MemberEditView, IMemberEditViewState } from './MemberEditView';
+import { MembersCompositeActions } from '../actions/MembersActions';
+import { IReactVaporStore } from '../../Reducers';
 
 export interface IMembersCompositeViewStateProps {
-  memberCollection?: MemberCollection;
+  members?: IMemberEditViewState[];
 }
 
-export interface IMembersCompositeViewOwnProps {
-  onSaveMember: Function;
-}
+export interface IMembersCompositeViewProps extends IMembersCompositeViewStateProps, IReduxProps { }
 
-export interface IMembersCompositeViewProps extends IMembersCompositeViewStateProps, IMembersCompositeViewOwnProps { }
-
-const mapStateToProps = (state: IMembersState): IMembersCompositeViewStateProps => {
+const mapStoreToProps = (store: IReactVaporStore): IMembersCompositeViewStateProps => {
   return {
-    memberCollection: state.membersCompositeState.memberCollection
+    members: store.membersCompositeState.members
   };
 };
 
-@ReduxConnect(mapStateToProps)
+@ReduxConnect(mapStoreToProps)
 export class MembersCompositeView extends React.Component<IMembersCompositeViewProps, any> {
   render() {
-    let memberEditViews = _.map(this.props.memberCollection.models, (memberModel) => {
+    let memberEditViews = _.map(this.props.members, (member: IMemberEditViewState) => {
       return (
-        <div className='spaced-box' key={memberModel.cid}>
+        <div className='spaced-box' key={member.id}>
           <MemberEditView
-            memberModel={memberModel}
-            onSaveMember={this.props.onSaveMember}
+            id={member.id}
+            onAddMember={null}
             />
         </div>
       );
     });
-    let newModel = new MemberModel({}, { newlyCreated: true });
 
     return (
       <div className='spaced-boxes-container flex flex-wrap'>
-        <div className='spaced-box' key={newModel.cid}>
+        <div className='spaced-box'>
           <MemberEditView
-            memberModel={newModel}
-            onSaveMember={this.props.onSaveMember}
+            id={null}
+            onAddMember={() => this.props.dispatch(MembersCompositeActions.addMember())}
             />
         </div>
         {memberEditViews}

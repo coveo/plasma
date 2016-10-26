@@ -1,5 +1,4 @@
 import * as _ from 'underscore';
-import * as React from 'react';
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
 
@@ -13,10 +12,10 @@ export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, me
   return target => (connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any);
 }
 
-export interface IReduxAction extends Redux.Action {
-  payload?: any;
+export interface IReduxAction<T> extends Redux.Action {
+  payload?: T;
 }
 
-export interface IReduxProps<T> extends React.ClassAttributes<T> {
-  dispatch?: (action: IReduxAction | JQueryDeferred<any> | JQueryXHR | ((dispatch: Redux.Dispatch<any>) => void)) => void;
+export interface IReduxProps {
+  dispatch?: (action: IReduxAction<any> | JQueryDeferred<any> | JQueryXHR | ((dispatch: Redux.Dispatch<any>) => void)) => void;
 }

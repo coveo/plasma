@@ -1,68 +1,59 @@
 import * as _ from 'underscore';
 import * as $ from 'jquery';
 import * as React from 'react';
-import { ReduxConnect } from '../../../src/utils/ReduxUtils';
+import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
 import { Popover } from '../../../src/components/Popover';
-import { MemberEditActions } from '../actions/MembersActions';
-import { MemberModel } from '../models/MemberModel';
-import { IMembersState } from '../Reducers';
+import { MemberEditActions } from '../actions/MemberEditActions';
+import { IReactVaporStore } from '../../Reducers';
+import { IMemberAttributes } from '../models/Member';
 
-export interface IMemberEditViewStateProps {
-  email?: string;
-  sendEmail?: boolean;
-}
-
-export interface IMemberEditViewDispatchProps {
-  onMount?: Function;
-  onChangeEmail?: Function;
-  onChangeSendEmail?: Function;
-  onClickCancel?: Function;
+export interface IMemberEditViewState {
+  applyedState: IMemberAttributes;
+  editionState: IMemberAttributes;
+  id: string;
 }
 
 export interface IMemberEditViewOwnProps {
-  memberModel: MemberModel;
-  onSaveMember: Function;
+  id: string;
+  onAddMember: () => void;
 }
 
-export interface IMemberEditViewProps extends IMemberEditViewStateProps, IMemberEditViewDispatchProps, IMemberEditViewOwnProps { }
-
-export interface IMemberEditViewState extends IMemberEditViewStateProps {
-  modelCid?: string;
+export interface IMemberEditViewStateProps extends IMemberAttributes {
+  applyedEmail?: string;
 }
 
-const mapStateToProps = (state: IMembersState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
-  let item = _.find(state.membersCompositeState.editionStates, (memberState: IMemberEditViewState) => {
-    return memberState.modelCid == ownProps.memberModel.cid;
-  });
+export interface IMemberEditViewProps extends IMemberEditViewOwnProps,
+  IMemberEditViewStateProps,
+  IReduxProps { }
+
+const mapStoreToProps = (store: IReactVaporStore, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
+  let item: IMemberEditViewState;
+
+  if (_.isNull(ownProps.id)) {
+    item = store.membersCompositeState.addMemberState;
+  } else {
+    item = _.find(store.membersCompositeState.members, (memberState: IMemberEditViewState) => {
+      return memberState.id == ownProps.id;
+    });
+  }
 
   return {
-    email: item && !_.isUndefined(item.email) ? item.email : ownProps.memberModel.email,
-    sendEmail: item && !_.isUndefined(item.sendEmail) ? item.sendEmail : ownProps.memberModel.sendEmail
+    applyedEmail: item.applyedState ? item.applyedState.email : '',
+    email: item.editionState.email,
+    sendEmail: item.editionState.sendEmail
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: Redux.Action) => void, ownProps: IMemberEditViewOwnProps): IMemberEditViewDispatchProps => {
-  return {
-    onMount: () => dispatch(MemberEditActions.mountMemberEditView(ownProps.memberModel.cid)),
-    onChangeEmail: (email: string) => dispatch(MemberEditActions.onChangeMemberEmail(ownProps.memberModel.cid, email)),
-    onChangeSendEmail: (sendEmail: boolean) => dispatch(MemberEditActions.onChangeMemberSendEmail(ownProps.memberModel.cid, sendEmail)),
-    onClickCancel: () => dispatch(MemberEditActions.onClickCancel(ownProps.memberModel.cid, ownProps.memberModel.email,
-      ownProps.memberModel.sendEmail))
-  };
-};
-
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
+@ReduxConnect(mapStoreToProps)
 export class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditViewState> {
   private popover: Popover;
 
   private emailInput: HTMLInputElement;
   private sendEmailCheckbox: HTMLInputElement;
 
-  componentDidMount() {
-    this.props.onMount();
-  }
-
   render() {
+    let isNew = _.isNull(this.props.id);
+
     return (
       <Popover
         ref={(popover: Popover) => this.popover = popover}
@@ -73,13 +64,17 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
           pin: true
         }]}>
         <button type='button' className='btn'>
-          {this.props.memberModel.isNew() ? 'Add member' : this.props.memberModel.email}
+          {isNew ? 'Add member' : this.props.applyedEmail}
         </button>
         <div className='popover'>
           <div className='popover-body coveo-form p2'>
             <fieldset className='form-group input-field'>
-              <input type='text' required name='email' ref={(email) => this.emailInput = email} value={this.props.email}
-                onChange={(event: React.FormEvent<HTMLInputElement>) => this.props.onChangeEmail((event.target as HTMLInputElement).value)} />
+              <input type='text' required name='email'
+                ref={(email) => this.emailInput = email}
+                value={this.props.email}
+                onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                  this.props.dispatch(MemberEditActions.changeMemberEmail(this.props.id, (event.target as HTMLInputElement).value));
+                } } />
               <label>Email</label>
             </fieldset>
             <fieldset className='form-group'>
@@ -87,8 +82,11 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
               <div className='form-control'>
                 <label className='coveo-checkbox-label'>
                   <input type='checkbox' className='coveo-checkbox' name='sendEmail'
-                    ref={(sendEmailCheckbox) => this.sendEmailCheckbox = sendEmailCheckbox} checked={this.props.sendEmail}
-                    onChange={(event: React.FormEvent<HTMLInputElement>) => this.props.onChangeSendEmail((event.target as HTMLInputElement).checked)} />
+                    ref={(sendEmailCheckbox) => this.sendEmailCheckbox = sendEmailCheckbox}
+                    checked={this.props.sendEmail}
+                    onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                      this.props.dispatch(MemberEditActions.changeMemberSendEmail(this.props.id, (event.target as HTMLInputElement).checked));
+                    } } />
                   <button type='button' onClick={(jQueryEventObject) => { $(jQueryEventObject.currentTarget).prev().click(); } } />
                 </label>
               </div>
@@ -96,7 +94,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
           </div>
           <div className='popover-footer'>
             <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
-              {this.props.memberModel.isNew() ? 'Add' : 'Save'}
+              {isNew ? 'Add' : 'Save'}
             </button>
             <button type='button' className='btn mod-small' onClick={() => this.onCancelEdition()}>Cancel</button>
           </div>
@@ -108,15 +106,16 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
   private onSaveMember() {
     this.popover.toggleOpened(false);
 
-    this.props.onSaveMember(this.props.memberModel, {
-      email: this.emailInput.value,
-      sendEmail: this.sendEmailCheckbox.checked
-    });
+    if (_.isNull(this.props.id) && _.isFunction(this.props.onAddMember)) {
+      this.props.onAddMember();
+    } else {
+      this.props.dispatch(MemberEditActions.applyMemberChanges(this.props.id));
+    }
   }
 
   private onCancelEdition() {
     this.popover.toggleOpened(false);
 
-    this.props.onClickCancel();
+    this.props.dispatch(MemberEditActions.cancelMemberChanges(this.props.id));
   }
 }

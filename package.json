@@ -48,7 +48,6 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "@types/backbone": "1.3.33",
     "@types/bootstrap": "3.3.32",
     "@types/chosen": "1.6.32",
     "@types/enzyme": "2.4.36",
@@ -63,7 +62,6 @@
     "@types/webpack": "1.12.35",
     "@types/webpack-env": "1.12.1",
     "autoprefixer": "6.5.1",
-    "backbone": "1.3.3",
     "bootstrap": "3.3.7",
     "chosen-js": "1.6.2",
     "codecov": "1.0.1",
