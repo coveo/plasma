@@ -1,5 +1,5 @@
 import { createStore, Store } from 'redux';
-import { IReactVaporStore, Reducers } from './Reducers';
+import { IReactVaporState, Reducers } from './Reducers';
 
-export const ReactVaporStore: Store<IReactVaporStore> =
-  createStore<IReactVaporStore>(Reducers, (<any>window).devToolsExtension && (<any>window).devToolsExtension.call());
+export const ReactVaporStore: Store<IReactVaporState> =
+  createStore<IReactVaporState>(Reducers, (<any>window).devToolsExtension && (<any>window).devToolsExtension.call());

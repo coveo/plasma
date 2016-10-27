@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
 import { MemberEditView, IMemberEditViewState } from './MemberEditView';
 import { MembersCompositeActions } from '../actions/MembersActions';
-import { IReactVaporStore } from '../../Reducers';
+import { IReactVaporState } from '../../Reducers';
 
 export interface IMembersCompositeViewStateProps {
   members?: IMemberEditViewState[];
@@ -11,13 +11,13 @@ export interface IMembersCompositeViewStateProps {
 
 export interface IMembersCompositeViewProps extends IMembersCompositeViewStateProps, IReduxProps { }
 
-const mapStoreToProps = (store: IReactVaporStore): IMembersCompositeViewStateProps => {
+const mapStateToProps = (state: IReactVaporState): IMembersCompositeViewStateProps => {
   return {
-    members: store.membersCompositeState.members
+    members: state.membersCompositeState.members
   };
 };
 
-@ReduxConnect(mapStoreToProps)
+@ReduxConnect(mapStateToProps)
 export class MembersCompositeView extends React.Component<IMembersCompositeViewProps, any> {
   render() {
     let memberEditViews = _.map(this.props.members, (member: IMemberEditViewState) => {

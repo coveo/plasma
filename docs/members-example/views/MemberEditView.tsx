@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
 import { Popover } from '../../../src/components/Popover';
 import { MemberEditActions } from '../actions/MemberEditActions';
-import { IReactVaporStore } from '../../Reducers';
+import { IReactVaporState } from '../../Reducers';
 import { IMemberAttributes } from '../models/Member';
 
 export interface IMemberEditViewState {
@@ -26,13 +26,13 @@ export interface IMemberEditViewStateProps extends IMemberAttributes {
 
 export interface IMemberEditViewProps extends IMemberEditViewOwnProps, IMemberEditViewStateProps, IReduxProps { }
 
-const mapStoreToProps = (store: IReactVaporStore, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
+const mapStateToProps = (state: IReactVaporState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
   let item: IMemberEditViewState;
 
   if (_.isNull(ownProps.id)) {
-    item = store.membersCompositeState.addMemberState;
+    item = state.membersCompositeState.addMemberState;
   } else {
-    item = _.find(store.membersCompositeState.members, (memberState: IMemberEditViewState) => {
+    item = _.find(state.membersCompositeState.members, (memberState: IMemberEditViewState) => {
       return memberState.id == ownProps.id;
     });
   }
@@ -45,7 +45,7 @@ const mapStoreToProps = (store: IReactVaporStore, ownProps: IMemberEditViewOwnPr
   };
 };
 
-@ReduxConnect(mapStoreToProps)
+@ReduxConnect(mapStateToProps)
 export class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditViewState> {
   private popover: Popover;
 
