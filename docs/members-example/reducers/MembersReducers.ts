@@ -21,9 +21,10 @@ const setMembersReduder = (state: IMembersCompositeState = defaultMembersComposi
   return _.extend({}, state, {
     members: _.map(action.payload.members, (member: IMemberAttributes): IMemberEditViewState => {
       return {
-        applyedState: _.extend({}, member),
+        appliedState: _.extend({}, member),
         editionState: _.extend({}, member),
-        id: _.uniqueId('member')
+        id: _.uniqueId('member'),
+        isOpen: false
       };
     })
   });
@@ -33,10 +34,11 @@ const addMemberReducer = (state: IMembersCompositeState = defaultMembersComposit
   let newState = _.extend({}, state);
 
   // Clone and add the new member
-  let newMember: IMemberAttributes = _.extend({}, state.addMemberState, {
-    applyedState: _.extend({}, state.addMemberState.editionState),
+  let newMember: IMemberAttributes = _.extend({}, {
+    appliedState: _.extend({}, state.addMemberState.editionState),
     editionState: _.extend({}, state.addMemberState.editionState),
-    id: _.uniqueId('member')
+    id: _.uniqueId('member'),
+    isOpen: false
   });
   newState.members = [].concat(state.members, [newMember]);
 
@@ -68,6 +70,7 @@ interface IMembersActionsReducers {
 const membersActionsReducers: IMembersActionsReducers = {
   [MembersActionsType.SetMembers]: setMembersReduder,
   [MembersActionsType.AddMember]: addMemberReducer,
+  [MemberEditActionsType.ToggleMemberOpen]: applyMemberEditReducers,
   [MemberEditActionsType.ChangeMemberEmail]: applyMemberEditReducers,
   [MemberEditActionsType.ChangeMemberSendEmail]: applyMemberEditReducers,
   [MemberEditActionsType.ApplyMemberChanges]: applyMemberEditReducers,

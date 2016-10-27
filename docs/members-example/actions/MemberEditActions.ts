@@ -1,6 +1,7 @@
 import { IReduxAction } from '../../../src/utils/ReduxUtils';
 
 export const MemberEditActionsType = {
+  ToggleMemberOpen: 'TOGGLE_MEMBER_OPEN',
   ChangeMemberEmail: 'CHANGE_MEMBER_EMAIL',
   ChangeMemberSendEmail: 'CHANGE_MEMBER_SEND_EMAIL',
   ApplyMemberChanges: 'APPLY_MEMBER_CHANGES',
@@ -11,6 +12,10 @@ export interface IMemberEditActionPayload {
   id: string;
 }
 
+export interface IToggleMemberOpenPayload extends IMemberEditActionPayload {
+  isOpen: boolean;
+}
+
 export interface IChangeMemberEmailPayload extends IMemberEditActionPayload {
   email: string;
 }
@@ -18,6 +23,16 @@ export interface IChangeMemberEmailPayload extends IMemberEditActionPayload {
 export interface IChangeMemberSendEmailPayload extends IMemberEditActionPayload {
   sendEmail: boolean;
 }
+
+const toggleMemberOpen = (id: string, isOpen: boolean): IReduxAction<IToggleMemberOpenPayload> => {
+  return {
+    type: MemberEditActionsType.ToggleMemberOpen,
+    payload: {
+      id,
+      isOpen
+    }
+  };
+};
 
 const changeMemberEmail = (id: string, email: string): IReduxAction<IChangeMemberEmailPayload> => {
   return {
@@ -58,6 +73,7 @@ const cancelMemberChanges = (id: string): IReduxAction<IMemberEditActionPayload>
 };
 
 export const MemberEditActions = {
+  toggleMemberOpen,
   changeMemberEmail,
   changeMemberSendEmail,
   applyMemberChanges,

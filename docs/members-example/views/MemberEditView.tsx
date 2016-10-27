@@ -8,9 +8,10 @@ import { IReactVaporStore } from '../../Reducers';
 import { IMemberAttributes } from '../models/Member';
 
 export interface IMemberEditViewState {
-  applyedState: IMemberAttributes;
+  appliedState: IMemberAttributes;
   editionState: IMemberAttributes;
   id: string;
+  isOpen: boolean;
 }
 
 export interface IMemberEditViewOwnProps {
@@ -19,12 +20,11 @@ export interface IMemberEditViewOwnProps {
 }
 
 export interface IMemberEditViewStateProps extends IMemberAttributes {
-  applyedEmail?: string;
+  appliedEmail?: string;
+  isOpen?: boolean;
 }
 
-export interface IMemberEditViewProps extends IMemberEditViewOwnProps,
-  IMemberEditViewStateProps,
-  IReduxProps { }
+export interface IMemberEditViewProps extends IMemberEditViewOwnProps, IMemberEditViewStateProps, IReduxProps { }
 
 const mapStoreToProps = (store: IReactVaporStore, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
   let item: IMemberEditViewState;
@@ -38,9 +38,10 @@ const mapStoreToProps = (store: IReactVaporStore, ownProps: IMemberEditViewOwnPr
   }
 
   return {
-    applyedEmail: item.applyedState ? item.applyedState.email : '',
+    appliedEmail: item.appliedState ? item.appliedState.email : '',
     email: item.editionState.email,
-    sendEmail: item.editionState.sendEmail
+    sendEmail: item.editionState.sendEmail,
+    isOpen: item.isOpen
   };
 };
 
@@ -62,9 +63,11 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
         constraints={[{
           to: 'scrollParent',
           pin: true
-        }]}>
+        }]}
+        isOpen={this.props.isOpen}
+        onToggle={(isOpen: boolean) => this.props.dispatch(MemberEditActions.toggleMemberOpen(this.props.id, isOpen))}>
         <button type='button' className='btn'>
-          {isNew ? 'Add member' : this.props.applyedEmail}
+          {isNew ? 'Add member' : this.props.appliedEmail}
         </button>
         <div className='popover'>
           <div className='popover-body coveo-form p2'>
@@ -96,7 +99,10 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
             <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
               {isNew ? 'Add' : 'Save'}
             </button>
-            <button type='button' className='btn mod-small' onClick={() => this.onCancelEdition()}>Cancel</button>
+            <button type='button' className='btn mod-small'
+              onClick={() => this.props.dispatch(MemberEditActions.cancelMemberChanges(this.props.id))}>
+              Cancel
+            </button>
           </div>
         </div>
       </Popover>
@@ -104,18 +110,10 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
   }
 
   private onSaveMember() {
-    this.popover.toggleOpened(false);
-
     if (_.isNull(this.props.id) && _.isFunction(this.props.onAddMember)) {
       this.props.onAddMember();
     } else {
       this.props.dispatch(MemberEditActions.applyMemberChanges(this.props.id));
     }
-  }
-
-  private onCancelEdition() {
-    this.popover.toggleOpened(false);
-
-    this.props.dispatch(MemberEditActions.cancelMemberChanges(this.props.id));
   }
 }

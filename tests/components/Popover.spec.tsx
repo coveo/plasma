@@ -9,14 +9,26 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 describe('<Popover>', () => {
-  let popoverWrapper: ReactWrapper<IPopoverProps, any>;
-
   let popoverProps: IPopoverProps;
+  let popoverWrapper: ReactWrapper<IPopoverProps, any>;
+  let popoverSelector = '#PopoverToggle';
+
+  let toggleOpenedSpy: jasmine.Spy;
+
+  const mountPopover = () => popoverWrapper = mount(
+    <Popover {...popoverProps} >
+      <span id='PopoverToggle'>Toggle</span>
+      <span id='PopoverElement'>Tether element</span>
+    </Popover>,
+    { attachTo: document.getElementById('App') }
+  );
 
   beforeEach(() => {
     popoverProps = {
       attachment: 'top left'
     };
+
+    toggleOpenedSpy = spyOn(Popover.prototype, 'toggleOpened').and.callThrough();
   });
 
   it('should render without error', () => {
@@ -30,13 +42,7 @@ describe('<Popover>', () => {
 
   it('should mount and unmount/detach without error', () => {
     expect(() => {
-      popoverWrapper = mount(
-        <Popover {...popoverProps}>
-          <span>Toggle</span>
-          <span>Tether element</span>
-        </Popover>,
-        { attachTo: document.getElementById('App') }
-      );
+      mountPopover();
     }).not.toThrow();
 
     expect(() => {
@@ -65,104 +71,129 @@ describe('<Popover>', () => {
     });
   });
 
-  describe('Tether toggle click handler', () => {
-    beforeEach(() => {
-      popoverWrapper = mount(
-        <Popover {...popoverProps} >
-          <span id='PopoverToggle'>Toggle</span>
-          <span id='PopoverElement'>Tether element</span>
-        </Popover>,
-        { attachTo: document.getElementById('App') }
-      );
-    });
-
+  describe('Mounted Popover', () => {
     afterEach(() => {
       popoverWrapper.unmount();
       popoverWrapper.detach();
     });
 
-    it('should open the popover on click toggle if popover was closed', () => {
-      expect(popoverWrapper.state('isOpen')).toBe(false);
+    describe('Toggle opened behavior', () => {
+      describe('With an uncontrolled Popover', () => {
+        beforeEach(() => {
+          mountPopover();
+        });
 
-      $('#PopoverToggle').click();
+        it('should set isOpen to true in the state when calling toggleOpened with isOpen: true', () => {
+          expect(popoverWrapper.state('isOpen')).toBe(false);
 
-      expect(popoverWrapper.state('isOpen')).toBe(true);
-    });
+          (popoverWrapper.instance() as Popover).toggleOpened(true);
 
-    it('should close the popover on click toggle if popover was opened', () => {
-      $('#PopoverToggle').click();
+          expect(popoverWrapper.state('isOpen')).toBe(true);
+        });
 
-      expect(popoverWrapper.state('isOpen')).toBe(true);
+        it('should set isOpen to false in the state when calling toggleOpened with isOpen: false', () => {
+          (popoverWrapper.instance() as Popover).toggleOpened(true);
 
-      $('#PopoverToggle').click();
+          (popoverWrapper.instance() as Popover).toggleOpened(false);
 
-      expect(popoverWrapper.state('isOpen')).toBe(false);
-    });
-  });
-
-  describe('Document click handler for an opened popover', () => {
-    beforeEach(() => {
-      popoverProps = _.extend(popoverProps, {
-        isOpen: true
+          expect(popoverWrapper.state('isOpen')).toBe(false);
+        });
       });
 
-      popoverWrapper = mount(
-        <Popover {...popoverProps} >
-          <span id='PopoverToggle'>Toggle</span>
-          <span id='PopoverElement'>Tether element</span>
-        </Popover>,
-        { attachTo: document.getElementById('App') }
-      );
+      describe('With a controlled Popover', () => {
+        let onToggleSpy: jasmine.Spy;
+
+        beforeEach(() => {
+          onToggleSpy = jasmine.createSpy('onToggleSpy');
+
+          popoverProps.onToggle = onToggleSpy;
+
+          mountPopover();
+        });
+
+        it('should call the onToggle prop with true when calling toggleOpened with isOpen: true', () => {
+          (popoverWrapper.instance() as Popover).toggleOpened(true);
+
+          expect(onToggleSpy.calls.count()).toBe(1);
+
+          expect(onToggleSpy).toHaveBeenCalledWith(true);
+        });
+
+        it('should call the onToggle prop with false when calling toggleOpened with isOpen: false', () => {
+          (popoverWrapper.instance() as Popover).toggleOpened(false);
+
+          expect(onToggleSpy.calls.count()).toBe(1);
+
+          expect(onToggleSpy).toHaveBeenCalledWith(false);
+        });
+      });
     });
 
-    afterEach(() => {
-      popoverWrapper.unmount();
-      popoverWrapper.detach();
-    });
-
-    it('should not close the popover on click tether element', () => {
-      expect(popoverWrapper.state('isOpen')).toBe(true);
-
-      $('#PopoverElement').click();
-
-      expect(popoverWrapper.state('isOpen')).toBe(true);
-    });
-
-    it('should close the popover when clicking outside Popover', () => {
-      expect(popoverWrapper.state('isOpen')).toBe(true);
-
-      $('body').click();
-
-      expect(popoverWrapper.state('isOpen')).toBe(false);
-    });
-  });
-
-  describe('Document click handler for a closed popover', () => {
-    beforeEach(() => {
-      popoverProps = _.extend(popoverProps, {
-        isOpen: false
+    describe('Tether toggle click handler', () => {
+      beforeEach(() => {
+        mountPopover();
       });
 
-      popoverWrapper = mount(
-        <Popover {...popoverProps}>
-          <span id='PopoverToggle'>Toggle</span>
-          <span id='PopoverElement'>Tether element</span>
-        </Popover>,
-        { attachTo: document.getElementById('App') }
-      );
+      it('should open the popover on click toggle if popover was closed', () => {
+        $(popoverSelector).click();
+
+        expect(toggleOpenedSpy.calls.count()).toBe(1);
+
+        expect(toggleOpenedSpy).toHaveBeenCalledWith(true);
+      });
+
+      it('should close the popover on click toggle if popover was opened', () => {
+        // First, open the Popover
+        $(popoverSelector).click();
+
+        $(popoverSelector).click();
+
+        expect(toggleOpenedSpy.calls.count()).toBe(2);
+
+        expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
+      });
     });
 
-    afterEach(() => {
-      popoverWrapper.unmount();
-      popoverWrapper.detach();
+    describe('Document click handler for an opened popover', () => {
+      beforeEach(() => {
+        popoverProps = _.extend(popoverProps, {
+          isOpen: true
+        });
+
+        mountPopover();
+      });
+
+      it('should not close the popover on click tether element', () => {
+        $('#PopoverElement').click();
+
+        expect(toggleOpenedSpy.calls.count()).toBe(0);
+      });
+
+      it('should close the popover when clicking outside Popover', () => {
+        $('body').click();
+
+        expect(toggleOpenedSpy.calls.count()).toBe(1);
+
+        expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
+      });
     });
 
-    it('should not explode', () => {
-      expect(popoverWrapper.state('isOpen')).toBe(false);
+    describe('Document click handler for a closed popover', () => {
+      beforeEach(() => {
+        popoverProps = _.extend(popoverProps, {
+          isOpen: false
+        });
 
-      $('body').click();
+        mountPopover();
+      });
 
-      expect(popoverWrapper.state('isOpen')).toBe(false);
+      it('should not explode', () => {
+        $('body').click();
+
+        expect(toggleOpenedSpy.calls.count()).toBe(1);
+
+        expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
+      });
     });
   });
 });
