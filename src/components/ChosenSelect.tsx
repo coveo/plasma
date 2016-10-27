@@ -3,7 +3,6 @@
 import * as React from 'react';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
-
 import 'chosen-js'; // Clean way to make Webpack import something that is not a module
 
 export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
