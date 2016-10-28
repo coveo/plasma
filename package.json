@@ -50,10 +50,10 @@
   "devDependencies": {
     "@types/bootstrap": "3.3.32",
     "@types/chosen": "1.6.32",
-    "@types/enzyme": "2.4.36",
-    "@types/jasmine": "2.5.35",
+    "@types/enzyme": "2.5.37",
+    "@types/jasmine": "2.5.36",
     "@types/jquery": "2.0.33",
-    "@types/react": "0.14.41",
+    "@types/react": "0.14.43",
     "@types/react-dom": "0.14.18",
     "@types/react-redux": "4.4.32",
     "@types/redux": "3.6.31",
@@ -92,7 +92,7 @@
     "karma-webpack": "1.8.0",
     "merge-stream": "1.0.0",
     "node-sass": "3.10.1",
-    "postcss-loader": "0.13.0",
+    "postcss-loader": "1.0.0",
     "pre-commit": "1.1.3",
     "pretty-typescript": "1.13.0",
     "react": "15.3.2",
@@ -107,7 +107,7 @@
     "tslint": "3.15.1",
     "tslint-loader": "2.1.5",
     "typescript": "2.0.3",
-    "webpack": "1.13.2",
+    "webpack": "1.13.3",
     "webpack-dev-server": "1.16.2"
   },
   "files": [

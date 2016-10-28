@@ -1,6 +1,5 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const tslintConfig = require(path.join(__dirname, '/tslint'));
 const webpack = require('webpack');
@@ -32,18 +31,6 @@ module.exports = {
       {test: /\.ts(x?)$/i, loader: 'tslint'}
     ]
   },
-  postcss: [
-    autoprefixer({
-      browsers: [
-        'last 3 Chrome versions',
-        'last 3 Firefox versions',
-        'Explorer >= 11',
-        'last 2 Edge versions',
-        'last 3 Opera versions',
-        'Safari >= 8'
-      ]
-    })
-  ],
   tslint: {
     configuration: tslintConfig,
     emitErrors: true,
