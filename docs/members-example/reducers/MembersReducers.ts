@@ -16,8 +16,7 @@ const defaultMembersCompositeState: IMembersCompositeState = {
   members: []
 };
 
-const setMembersReduder = (state: IMembersCompositeState = defaultMembersCompositeState,
-  action: IReduxAction<ISetMembersPayload>): IMembersCompositeState => {
+const setMembersReduder = (state: IMembersCompositeState, action: IReduxAction<ISetMembersPayload>): IMembersCompositeState => {
   return _.extend({}, state, {
     members: _.map(action.payload.members, (member: IMemberAttributes): IMemberEditViewState => {
       return {
@@ -30,7 +29,7 @@ const setMembersReduder = (state: IMembersCompositeState = defaultMembersComposi
   });
 };
 
-const addMemberReducer = (state: IMembersCompositeState = defaultMembersCompositeState): IMembersCompositeState => {
+const addMemberReducer = (state: IMembersCompositeState): IMembersCompositeState => {
   let newState = _.extend({}, state);
 
   // Clone and add the new member
@@ -48,7 +47,7 @@ const addMemberReducer = (state: IMembersCompositeState = defaultMembersComposit
   return newState;
 };
 
-const applyMemberEditReducers = (state: IMembersCompositeState = defaultMembersCompositeState,
+const applyMemberEditReducers = (state: IMembersCompositeState,
   action: IReduxAction<IMemberEditActionsPayloads>): IMembersCompositeState => {
   let newState = _.extend({}, state);
 

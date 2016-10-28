@@ -24,7 +24,7 @@ export interface IChangeMemberSendEmailPayload extends IMemberEditActionPayload 
   sendEmail: boolean;
 }
 
-const toggleMemberOpen = (id: string, isOpen: boolean): IReduxAction<IToggleMemberOpenPayload> => {
+export const toggleMemberOpen = (id: string, isOpen: boolean): IReduxAction<IToggleMemberOpenPayload> => {
   return {
     type: MemberEditActionsType.ToggleMemberOpen,
     payload: {
@@ -34,7 +34,7 @@ const toggleMemberOpen = (id: string, isOpen: boolean): IReduxAction<IToggleMemb
   };
 };
 
-const changeMemberEmail = (id: string, email: string): IReduxAction<IChangeMemberEmailPayload> => {
+export const changeMemberEmail = (id: string, email: string): IReduxAction<IChangeMemberEmailPayload> => {
   return {
     type: MemberEditActionsType.ChangeMemberEmail,
     payload: {
@@ -44,7 +44,7 @@ const changeMemberEmail = (id: string, email: string): IReduxAction<IChangeMembe
   };
 };
 
-const changeMemberSendEmail = (id: string, sendEmail: boolean): IReduxAction<IChangeMemberSendEmailPayload> => {
+export const changeMemberSendEmail = (id: string, sendEmail: boolean): IReduxAction<IChangeMemberSendEmailPayload> => {
   return {
     type: MemberEditActionsType.ChangeMemberSendEmail,
     payload: {
@@ -54,7 +54,7 @@ const changeMemberSendEmail = (id: string, sendEmail: boolean): IReduxAction<ICh
   };
 };
 
-const applyMemberChanges = (id: string): IReduxAction<IMemberEditActionPayload> => {
+export const applyMemberChanges = (id: string): IReduxAction<IMemberEditActionPayload> => {
   return {
     type: MemberEditActionsType.ApplyMemberChanges,
     payload: {
@@ -63,19 +63,11 @@ const applyMemberChanges = (id: string): IReduxAction<IMemberEditActionPayload> 
   };
 };
 
-const cancelMemberChanges = (id: string): IReduxAction<IMemberEditActionPayload> => {
+export const cancelMemberChanges = (id: string): IReduxAction<IMemberEditActionPayload> => {
   return {
     type: MemberEditActionsType.CancelMemberChanges,
     payload: {
       id
     }
   };
-};
-
-export const MemberEditActions = {
-  toggleMemberOpen,
-  changeMemberEmail,
-  changeMemberSendEmail,
-  applyMemberChanges,
-  cancelMemberChanges
 };

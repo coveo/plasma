@@ -2,7 +2,7 @@ import * as _ from 'underscore';
 import * as React from 'react';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
 import { MemberEditView, IMemberEditViewState } from './MemberEditView';
-import { MembersCompositeActions } from '../actions/MembersActions';
+import { addMember } from '../actions/MembersActions';
 import { IReactVaporState } from '../../Reducers';
 
 export interface IMembersCompositeViewStateProps {
@@ -36,7 +36,7 @@ export class MembersCompositeView extends React.Component<IMembersCompositeViewP
         <div className='spaced-box'>
           <MemberEditView
             id={null}
-            onAddMember={() => this.props.dispatch(MembersCompositeActions.addMember())}
+            onAddMember={() => this.props.dispatch(addMember())}
             />
         </div>
         {memberEditViews}

@@ -17,53 +17,56 @@ export const defaultMemberEditViewState: IMemberEditViewState = {
   isOpen: false
 };
 
-const toggleMemberOpen = (state: IMemberEditViewState = defaultMemberEditViewState,
-  action: IReduxAction<IToggleMemberOpenPayload>): IMemberEditViewState => {
-  let newState: IMemberEditViewState = _.extend({}, state);
-  if (action.payload.id == state.id) {
-    newState.isOpen = action.payload.isOpen;
+const toggleMemberOpen = (state: IMemberEditViewState, action: IReduxAction<IToggleMemberOpenPayload>): IMemberEditViewState => {
+  if (action.payload.id != state.id) {
+    return state;
   }
-  return newState;
+  return _.extend({}, state, {
+    isOpen: action.payload.isOpen
+  });
 };
 
-const changeMemberEmailReducer = (state: IMemberEditViewState = defaultMemberEditViewState,
-  action: IReduxAction<IChangeMemberEmailPayload>): IMemberEditViewState => {
-  let newState: IMemberEditViewState = _.extend({}, state);
-  if (action.payload.id == state.id) {
-    newState.editionState = _.extend({}, state.editionState, { email: action.payload.email });
+const changeMemberEmailReducer = (state: IMemberEditViewState, action: IReduxAction<IChangeMemberEmailPayload>): IMemberEditViewState => {
+  if (action.payload.id != state.id) {
+    return state;
   }
-  return newState;
+  return _.extend({}, state, {
+    editionState: _.extend({}, state.editionState, {
+      email: action.payload.email
+    })
+  });
 };
 
-const changeMemberSendEmailReducer = (state: IMemberEditViewState = defaultMemberEditViewState,
+const changeMemberSendEmailReducer = (state: IMemberEditViewState,
   action: IReduxAction<IChangeMemberSendEmailPayload>): IMemberEditViewState => {
-  let newState: IMemberEditViewState = _.extend({}, state);
-  if (action.payload.id == state.id) {
-    newState.editionState = _.extend({}, state.editionState, { sendEmail: action.payload.sendEmail });
+  if (action.payload.id != state.id) {
+    return state;
   }
-  return newState;
+  return _.extend({}, state, {
+    editionState: _.extend({}, state.editionState, {
+      sendEmail: action.payload.sendEmail
+    })
+  });
 };
 
-const applyMemberChangesReducer = (state: IMemberEditViewState = defaultMemberEditViewState,
-  action: IReduxAction<IMemberEditActionPayload>): IMemberEditViewState => {
-  let newState: IMemberEditViewState = _.extend({}, state);
-  if (action.payload.id == state.id) {
-    newState.appliedState = _.extend({}, state.editionState);
-    newState.isOpen = false;
+const applyMemberChangesReducer = (state: IMemberEditViewState, action: IReduxAction<IMemberEditActionPayload>): IMemberEditViewState => {
+  if (action.payload.id != state.id) {
+    return state;
   }
-  return newState;
+  return _.extend({}, state, {
+    appliedState: _.extend({}, state.editionState),
+    isOpen: false
+  });
 };
 
-const cancelMemberChangesReducer = (state: IMemberEditViewState = defaultMemberEditViewState,
-  action: IReduxAction<IMemberEditActionPayload>): IMemberEditViewState => {
-  let newState: IMemberEditViewState = _.extend({}, state);
-  if (action.payload.id == state.id) {
-    let defaultState = _.isNull(state.appliedState) ? defaultMemberAttributes : state.appliedState;
-
-    newState.editionState = _.extend({}, defaultState);
-    newState.isOpen = false;
+const cancelMemberChangesReducer = (state: IMemberEditViewState, action: IReduxAction<IMemberEditActionPayload>): IMemberEditViewState => {
+  if (action.payload.id != state.id) {
+    return state;
   }
-  return newState;
+  return _.extend({}, state, {
+    editionState: _.extend({}, _.isNull(state.appliedState) ? defaultMemberAttributes : state.appliedState),
+    isOpen: false
+  });
 };
 
 export interface IMemberEditActionsPayloads extends IToggleMemberOpenPayload,
@@ -72,8 +75,7 @@ export interface IMemberEditActionsPayloads extends IToggleMemberOpenPayload,
   IMemberEditActionPayload { }
 
 interface IMemberEditActionsReducers {
-  [id: string]: (state: IMemberEditViewState,
-    action: IReduxAction<IMemberEditActionsPayloads>) => IMemberEditViewState;
+  [id: string]: (state: IMemberEditViewState, action: IReduxAction<IMemberEditActionsPayloads>) => IMemberEditViewState;
 }
 
 const memberEditActionsReducers: IMemberEditActionsReducers = {
@@ -86,11 +88,8 @@ const memberEditActionsReducers: IMemberEditActionsReducers = {
 
 export const memberEditReducers = (state: IMemberEditViewState = defaultMemberEditViewState,
   action: IReduxAction<IMemberEditActionsPayloads>): IMemberEditViewState => {
-  let newState: IMemberEditViewState = state;
-
-  if (!_.isUndefined(memberEditActionsReducers[action.type])) {
-    newState = memberEditActionsReducers[action.type](state, action);
+  if (_.isUndefined(memberEditActionsReducers[action.type])) {
+    return state;
   }
-
-  return newState;
+  return memberEditActionsReducers[action.type](state, action);
 };

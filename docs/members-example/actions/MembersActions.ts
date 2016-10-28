@@ -10,7 +10,7 @@ export interface ISetMembersPayload {
   members: IMemberAttributes[];
 }
 
-const setMembers = (members: IMemberAttributes[]): IReduxAction<ISetMembersPayload> => {
+export const setMembers = (members: IMemberAttributes[]): IReduxAction<ISetMembersPayload> => {
   return {
     type: MembersActionsType.SetMembers,
     payload: {
@@ -19,13 +19,8 @@ const setMembers = (members: IMemberAttributes[]): IReduxAction<ISetMembersPaylo
   };
 };
 
-const addMember = (): IReduxAction<any> => {
+export const addMember = (): IReduxAction<any> => {
   return {
     type: MembersActionsType.AddMember
   };
-};
-
-export const MembersCompositeActions = {
-  setMembers,
-  addMember
 };

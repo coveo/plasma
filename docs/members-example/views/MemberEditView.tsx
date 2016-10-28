@@ -1,9 +1,15 @@
 import * as _ from 'underscore';
-import * as $ from 'jquery';
 import * as React from 'react';
+import { Action } from 'redux';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
 import { Popover } from '../../../src/components/Popover';
-import { MemberEditActions } from '../actions/MemberEditActions';
+import {
+  toggleMemberOpen,
+  changeMemberEmail,
+  changeMemberSendEmail,
+  applyMemberChanges,
+  cancelMemberChanges
+} from '../actions/MemberEditActions';
 import { IReactVaporState } from '../../Reducers';
 import { IMemberAttributes } from '../models/Member';
 
@@ -24,7 +30,18 @@ export interface IMemberEditViewStateProps extends IMemberAttributes {
   isOpen?: boolean;
 }
 
-export interface IMemberEditViewProps extends IMemberEditViewOwnProps, IMemberEditViewStateProps, IReduxProps { }
+export interface IMemberEditViewDispatchProps {
+  toggleMemberOpen?: (isOpen: boolean) => void;
+  changeMemberEmail?: (email: string) => void;
+  changeMemberSendEmail?: (sendEmail: boolean) => void;
+  applyMemberChanges?: () => void;
+  cancelMemberChanges?: () => void;
+}
+
+export interface IMemberEditViewProps extends IMemberEditViewOwnProps,
+  IMemberEditViewStateProps,
+  IMemberEditViewDispatchProps,
+  IReduxProps { }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
   let item: IMemberEditViewState;
@@ -45,7 +62,17 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMemberEditViewOwnPr
   };
 };
 
-@ReduxConnect(mapStateToProps)
+const mapDispatchToProps = (dispatch: (action: Action) => void, ownProps: IMemberEditViewOwnProps) => {
+  return {
+    toggleMemberOpen: (isOpen: boolean) => dispatch(toggleMemberOpen(ownProps.id, isOpen)),
+    changeMemberEmail: (email: string) => dispatch(changeMemberEmail(ownProps.id, email)),
+    changeMemberSendEmail: (sendEmail: boolean) => dispatch(changeMemberSendEmail(ownProps.id, sendEmail)),
+    applyMemberChanges: () => dispatch(applyMemberChanges(ownProps.id)),
+    cancelMemberChanges: () => dispatch(cancelMemberChanges(ownProps.id))
+  };
+};
+
+@ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditViewState> {
   private popover: Popover;
 
@@ -65,18 +92,19 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
           pin: true
         }]}
         isOpen={this.props.isOpen}
-        onToggle={(isOpen: boolean) => this.props.dispatch(MemberEditActions.toggleMemberOpen(this.props.id, isOpen))}>
+        onToggle={(isOpen: boolean) => this.props.toggleMemberOpen(isOpen)}>
         <button type='button' className='btn'>
           {isNew ? 'Add member' : this.props.appliedEmail}
         </button>
         <div className='popover'>
           <div className='popover-body coveo-form p2'>
             <fieldset className='form-group input-field'>
-              <input type='text' required name='email'
+              <input
+                type='text' required name='email'
                 ref={(email) => this.emailInput = email}
                 value={this.props.email}
                 onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                  this.props.dispatch(MemberEditActions.changeMemberEmail(this.props.id, (event.target as HTMLInputElement).value));
+                  this.props.changeMemberEmail((event.target as HTMLInputElement).value);
                 } } />
               <label>Email</label>
             </fieldset>
@@ -84,13 +112,14 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
               <label className='form-control-label'>Send invite</label>
               <div className='form-control'>
                 <label className='coveo-checkbox-label'>
-                  <input type='checkbox' className='coveo-checkbox' name='sendEmail'
+                  <input
+                    type='checkbox' className='coveo-checkbox' name='sendEmail'
                     ref={(sendEmailCheckbox) => this.sendEmailCheckbox = sendEmailCheckbox}
                     checked={this.props.sendEmail}
                     onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                      this.props.dispatch(MemberEditActions.changeMemberSendEmail(this.props.id, (event.target as HTMLInputElement).checked));
+                      this.props.changeMemberSendEmail((event.target as HTMLInputElement).checked);
                     } } />
-                  <button type='button' onClick={(jQueryEventObject) => { $(jQueryEventObject.currentTarget).prev().click(); } } />
+                  <button type='button' onClick={() => this.sendEmailCheckbox.click()} />
                 </label>
               </div>
             </fieldset>
@@ -99,8 +128,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
             <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
               {isNew ? 'Add' : 'Save'}
             </button>
-            <button type='button' className='btn mod-small'
-              onClick={() => this.props.dispatch(MemberEditActions.cancelMemberChanges(this.props.id))}>
+            <button type='button' className='btn mod-small' onClick={() => this.props.cancelMemberChanges()}>
               Cancel
             </button>
           </div>
@@ -113,7 +141,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
     if (_.isNull(this.props.id) && _.isFunction(this.props.onAddMember)) {
       this.props.onAddMember();
     } else {
-      this.props.dispatch(MemberEditActions.applyMemberChanges(this.props.id));
+      this.props.applyMemberChanges();
     }
   }
 }
