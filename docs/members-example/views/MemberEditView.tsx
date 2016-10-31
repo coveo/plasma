@@ -62,7 +62,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMemberEditViewOwnPr
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: Action) => void, ownProps: IMemberEditViewOwnProps) => {
+const mapDispatchToProps = (dispatch: (action: Action) => void, ownProps: IMemberEditViewOwnProps): IMemberEditViewDispatchProps => {
   return {
     toggleMemberOpen: (isOpen: boolean) => dispatch(toggleMemberOpen(ownProps.id, isOpen)),
     changeMemberEmail: (email: string) => dispatch(changeMemberEmail(ownProps.id, email)),
