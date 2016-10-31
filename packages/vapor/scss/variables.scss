@@ -109,6 +109,15 @@ $table-row-top-bottom-padding: (($table-row-inner-height - $table-row-line-heigh
 $table-border: $table-border-width solid $medium-grey;
 $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
+$big-table-blankslate-section-padding: 20px 40px 20px 35px;
+$big-table-row-height:  36px;
+$big-table-icon-margin: 20px;
+$big-table-icon-size: 15px;
+$big-table-first-row-font-size: 15px;
+$big-table-first-row-line-height: 20px;
+$big-table-second-row-font-size: 12px;
+$big-table-second-row-line-height: 17px;
+
 
 // Table actions
 $table-actions-container-height: 52px;
