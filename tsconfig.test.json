@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "removeComments": true,
-    "target": "ES5",
-    "module": "commonjs",
-    "noImplicitAny": true,
-    "noEmitOnError": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": false,
     "inlineSourceMap": true,
     "jsx": "react",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "sourceMap": false,
+    "target": "ES5",
     "typeRoots": [
       "types"
     ],
     "types": [
+      "jasmine",
       "react-tether",
-      "jasmine"
+      "webpack-env"
     ]
   },
   "include": [

@@ -1,9 +1,7 @@
-///<reference path="../../../node_modules/@types/webpack-env/index.d.ts"/>
-
 import * as React from 'react';
-import * as _ from 'underscore';
+import { extend, omit } from 'underscore';
 
-let svgsEnum = require('../../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
+let svgsEnum = require('../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
 
 const setSvgClass = (svgString: string, svgClass: string): string => {
   let parser = document.createElement('div');
@@ -37,7 +35,7 @@ export class Svg extends React.Component<ISvgProps, any> {
     let svgString: string = svgsEnum[this.props.svgName];
 
     // Omit Svg props to avoid warnings.
-    let svgSpanProps = _.extend({}, _.omit(this.props, svgPropsToOmit));
+    let svgSpanProps = extend({}, omit(this.props, svgPropsToOmit));
 
     if (svgString) {
       let svgStringWithClass = setSvgClass(svgString, svgClass);

@@ -16,7 +16,8 @@
     ],
     // Required for WebPack since typeRoots does not look to be supported, works fine without it when using tsc..
     "types": [
-      "react-tether"
+      "react-tether",
+      "webpack-env"
     ]
   },
   "include": [

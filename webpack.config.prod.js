@@ -47,12 +47,11 @@ let config = {
     root: path.resolve(__dirname, 'node_modules')
   },
   externals: {
-    'bootstrap': 'bootstrap',
-    'chosen-js': 'chosen-js',
     'jquery': '$',
     'react': 'React',
     'react-dom': 'ReactDOM',
-    'tether': 'Tether',
+    'react-redux': 'ReactRedux',
+    'redux': 'Redux',
     'underscore': '_'
   }
 };
@@ -64,7 +63,7 @@ if (TARGET === 'minify') {
       warnings: false
     },
     mangle: {
-      except: ['$', 'React', 'ReactDOM', 'Tether', '_']
+      except: ['$', 'React', 'ReactDOM', 'ReactRedux', 'Redux', '_']
     }
   }));
 }
