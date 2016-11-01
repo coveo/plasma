@@ -1,7 +1,9 @@
+/// <reference types="bootstrap" /> Required since bootstrap/js/tooltip.js definition is in bootstrap definition file.
+
 import * as React from 'react';
 import * as $ from 'jquery';
-import * as _ from 'underscore';
-import 'bootstrap'; // Usefull since Vapor took the tooltip function from there and since bootstrap has a legit definition file.
+import { omit } from 'underscore';
+import 'bootstrap/js/tooltip.js'; // Usefull since Vapor took the tooltip function from there and since bootstrap has a legit definition file.
 
 export interface ITooltipProps extends React.HTMLProps<Tooltip> {
   animation?: boolean; // @default: true
@@ -46,7 +48,7 @@ export class Tooltip extends React.Component<ITooltipProps, any> {
 
   render() {
     return (
-      <span {..._.omit(this.props, tooltipPropsToOmit) } ref={(element: HTMLElement) => this.tooltip = $(element)}>
+      <span {...omit(this.props, tooltipPropsToOmit) } ref={(element: HTMLElement) => this.tooltip = $(element)}>
         {this.props.children}
       </span>
     );
