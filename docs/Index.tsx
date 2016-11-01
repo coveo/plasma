@@ -9,7 +9,7 @@ import { MembersExample } from './members-example/MembersExample';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
-import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
+import { LastUpdatedConnectedExamplesConnected } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
 
 class App extends React.Component<any, any> {
   render() {
@@ -77,7 +77,7 @@ class App extends React.Component<any, any> {
             </div>
           </div>
           <LastUpdatedExamples />
-          <LastUpdatedConnectedExamples />
+          <LastUpdatedConnectedExamplesConnected />
         </div>
       </Provider>
     );
