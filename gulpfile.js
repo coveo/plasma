@@ -50,7 +50,7 @@ let prettify = (srcPaths, destPath) => {
 };
 
 gulp.task('prettify:src', false, () => {
-  return prettify(['src/**/*.ts', 'src/**/*.tsx'], 'src');
+  return prettify(['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.spec.*'], 'src');
 });
 
 gulp.task('prettify:docs', false, () => {
@@ -58,7 +58,7 @@ gulp.task('prettify:docs', false, () => {
 });
 
 gulp.task('prettify:tests', false, () => {
-  return prettify(['tests/**/*.ts', 'tests/**/*.tsx'], 'tests');
+  return prettify(['src/**/*.spec.*'], 'src');
 });
 
 gulp.task('prettify', 'Run the pretty Typescript plugin on the project', ['prettify:src', 'prettify:docs', 'prettify:tests']);
@@ -117,7 +117,7 @@ gulp.task('internalDefs', false, () => {
     project: './',
     baseDir: './src/',
     out: 'dist/react-vapor.d.ts',
-    exclude: ['node_modules/**/*.d.ts', 'types/**/*.d.ts', 'src/Index.ts']
+    exclude: ['node_modules/**/*.d.ts', 'types/**/*.d.ts', 'src/Index.ts', 'src/PleasingWebstorm.ts']
   });
 });
 

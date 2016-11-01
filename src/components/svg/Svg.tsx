@@ -1,9 +1,9 @@
-///<reference path="../../node_modules/@types/webpack-env/index.d.ts"/>
+///<reference path="../../../node_modules/@types/webpack-env/index.d.ts"/>
 
 import * as React from 'react';
 import * as _ from 'underscore';
 
-let svgsEnum = require('../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
+let svgsEnum = require('../../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
 
 const setSvgClass = (svgString: string, svgClass: string): string => {
   let parser = document.createElement('div');

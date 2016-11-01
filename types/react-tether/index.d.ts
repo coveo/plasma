@@ -1,5 +1,4 @@
-/// <reference types="react" />
-/// <reference types="tether" />
+/// <reference path="../../node_modules/@types/tether/index.d.ts" />
 
 declare class TetherComponent extends React.Component<TetherComponent.ITetherComponentProps, any> {
   props: TetherComponent.ITetherComponentProps;

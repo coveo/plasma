@@ -2,12 +2,14 @@ import * as React from 'react';
 import { render as ReactDOMRender } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReactVaporStore } from './ReactVaporStore';
-import { ChosenSelect } from '../src/components/ChosenSelect';
-import { Svg } from '../src/components/Svg';
-import { Tooltip } from '../src/components/Tooltip';
+import { ChosenSelect } from '../src/components/chosen/ChosenSelect';
+import { Svg } from '../src/components/svg/Svg';
+import { Tooltip } from '../src/components/tooltip/Tooltip';
 import { MembersExample } from './members-example/MembersExample';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import {LastUpdatedExamples} from '../src/components/lastUpdated/examples/LastUpdatedExamples';
+import {LastUpdatedConnectedExamples} from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
 
 class App extends React.Component<any, any> {
   render() {
@@ -74,6 +76,8 @@ class App extends React.Component<any, any> {
               </Tooltip>
             </div>
           </div>
+          <LastUpdatedExamples/>
+          <LastUpdatedConnectedExamples/>
         </div>
       </Provider>
     );

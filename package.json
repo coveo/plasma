@@ -13,8 +13,7 @@
   "homepage": "https://github.com/coveo/react-vapor#readme",
   "author": "Coveo",
   "license": "MIT",
-  "main": "dist/react-vapor.js",
-  "typings": "dist/react-vapor.d.ts",
+  "main": "./dist/react-vapor.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coveo/react-vapor.git"
@@ -27,7 +26,7 @@
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
-    "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,tests,karma.entry.ts",
+    "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,karma.entry.ts",
     "coverage:report": "istanbul report",
     "prepublish": "npm run build && npm test",
     "report-coverage": "codecov -f coverage/coverage.json"
@@ -59,6 +58,7 @@
     "@types/redux": "3.6.31",
     "@types/tether": "1.1.27",
     "@types/underscore": "1.7.33",
+    "@types/underscore.string": "0.0.30",
     "@types/webpack": "1.12.35",
     "@types/webpack-env": "1.12.1",
     "autoprefixer": "6.5.1",
@@ -91,6 +91,7 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.8.0",
     "merge-stream": "1.0.0",
+    "moment": "2.15.2",
     "node-sass": "3.10.1",
     "postcss-loader": "1.0.0",
     "pre-commit": "1.1.3",
@@ -107,6 +108,7 @@
     "tslint": "3.15.1",
     "tslint-loader": "2.1.5",
     "typescript": "2.0.3",
+    "underscore.string": "3.3.4",
     "webpack": "1.13.3",
     "webpack-dev-server": "1.16.2"
   },
