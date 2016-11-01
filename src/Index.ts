@@ -6,7 +6,7 @@ import { LastUpdated } from './components/lastUpdated/LastUpdated';
 import { LastUpdatedConnected } from './components/lastUpdated/LastUpdatedConnected';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps } from './utils/ReduxUtils';
 
-module.exports  = {
+export {
   ChosenSelect,
   Popover,
   Svg,
