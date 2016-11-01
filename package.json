@@ -107,6 +107,7 @@
     "tslint": "3.15.1",
     "tslint-loader": "2.1.5",
     "typescript": "2.0.3",
+    "underscore": "1.8.3",
     "webpack": "1.13.3",
     "webpack-dev-server": "1.16.2"
   },
