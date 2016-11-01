@@ -1,7 +1,9 @@
+/// <reference path="../../types/react-tether/index.d.ts" /> Required to make dts-generator bundle react-tether definition file.
+
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import * as TetherComponent from 'react-tether';
-import * as _ from 'underscore';
+import { extend, isFunction, isUndefined, omit } from 'underscore';
 
 /*
  The children property should be mandatory, but waiting for https://github.com/DefinitelyTyped/DefinitelyTyped/pull/10641 and/or
@@ -30,9 +32,9 @@ export interface IPopoverState {
 }
 
 export class Popover extends React.Component<IPopoverProps, IPopoverState> {
-  static propTypes = _.extend(TetherComponent.propTypes, {
+  static propTypes = extend(TetherComponent.propTypes, {
     children: ({children}: IPopoverProps, propName: string, componentName: string) => {
-      if (_.isUndefined(children) || React.Children.count(children) != 2) {
+      if (isUndefined(children) || React.Children.count(children) != 2) {
         return new Error(`${componentName} expects two children to use as target and element.` +
           `Second child can either be a boolean or a ReactNode.`);
       }
@@ -48,7 +50,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     super(props, state);
 
     // If onToggle wasn't passed, Popover is uncontrolled and we set an initial state.
-    if (!_.isFunction(this.props.onToggle)) {
+    if (!isFunction(this.props.onToggle)) {
       this.state = {
         isOpen: !!this.props.isOpen
       };
@@ -70,7 +72,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     let isOpen: boolean = this.state && this.state.isOpen ? this.state.isOpen : this.props.isOpen;
 
     return (
-      <TetherComponent {..._.omit(this.props, 'children') } >
+      <TetherComponent {...omit(this.props, 'children') } >
         <div ref={(toggle: HTMLElement) => this.tetherToggle = toggle} onClick={() => this.toggleOpened(!isOpen)}>
           {tetherToggle}
         </div>
@@ -85,7 +87,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   }
 
   toggleOpened(isOpen: boolean) {
-    if (_.isFunction(this.props.onToggle)) {
+    if (isFunction(this.props.onToggle)) {
       this.props.onToggle(isOpen);
     } else {
       this.setState({
@@ -97,8 +99,8 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   // Using a fat arrow function instead of a methot here to bind it to context and to make sure we have the same listener for both
   // addEventListener and removeEventListener and therefore prevent leaking listeners.
   private handleDocumentClick: EventListener = (event: Event) => {
-    const tetherToggle = ReactDOM.findDOMNode<HTMLElement>(this.tetherToggle);
-    const tetherElement = ReactDOM.findDOMNode<HTMLElement>(this.tetherElement);
+    const tetherToggle = findDOMNode<HTMLElement>(this.tetherToggle);
+    const tetherElement = findDOMNode<HTMLElement>(this.tetherElement);
 
     let outsideTetherToggle = !tetherToggle.contains(event.target as Node);
     let outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;

@@ -115,15 +115,15 @@ gulp.task('internalDefs', false, () => {
   return require('dts-generator').default({
     name: 'ReactVapor',
     project: './',
-    baseDir: './src/',
     out: 'dist/react-vapor.d.ts',
-    exclude: ['node_modules/**/*.d.ts', 'types/**/*.d.ts', 'src/Index.ts']
+    exclude: ['node_modules/**/*.d.ts', 'src/Index.ts']
   });
 });
 
 gulp.task('cleanDefs', false, () => {
   return gulp.src('dist/react-vapor.d.ts')
     .pipe(replace(/import.*$/gm, ''))
+    .pipe(replace(/export =.+;$/gm, ''))
     .pipe(replace(/export .+ from .+$/gm, ''))
     .pipe(replace(/export (?:default )?(.*)$/gm, '$1'))
     .pipe(replace(/private .+;$/gm, ''))
@@ -159,7 +159,6 @@ gulp.task('test:remap', false, () => {
     }));
 });
 
-// TODO find out why it's so slow compare to npm test
 gulp.task('test', 'Run all tests in PhantomJS and exit', done => {
   runSequence('prettify:tests', 'test:single', 'test:remap', done);
 });

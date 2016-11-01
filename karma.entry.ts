@@ -1,5 +1,3 @@
-///<reference path="node_modules/@types/webpack-env/index.d.ts"/>
-
 import * as $ from 'jquery';
 
 beforeEach(() => {
