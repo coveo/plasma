@@ -1,9 +1,9 @@
-import {LastUpdatedActions, ILastUpdatedPayload} from '../LastUpdatedActions';
+import { LastUpdatedActions, ILastUpdatedPayload } from '../LastUpdatedActions';
 import {
   ILastUpdatedState, lastUpdatedComposite, lastUpdatedCompositeInitialState,
   lastUpdatedInitialState, lastUpdated
 } from '../LastUpdatedReducers';
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import { IReduxAction } from '../../../utils/ReduxUtils';
 
 describe('Reducers', () => {
 
