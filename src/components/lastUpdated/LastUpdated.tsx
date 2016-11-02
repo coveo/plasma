@@ -3,10 +3,10 @@ import * as moment from 'moment';
 
 export interface ILastUpdatedOwnProps extends React.ClassAttributes<LastUpdated> {
   id: string;
+  label?: string;
 }
 
 export interface ILastUpdatedStateProps {
-  label?: string;
   time?: Date;
 }
 
