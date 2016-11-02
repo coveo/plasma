@@ -1,4 +1,4 @@
-import {  mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { LastUpdated, ILastUpdatedProps } from '../LastUpdated';
 import { LastUpdatedConnected } from '../LastUpdatedConnected';
 import { changeLastUpdated } from '../LastUpdatedActions';
