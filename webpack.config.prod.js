@@ -47,12 +47,12 @@ let config = {
     root: path.resolve(__dirname, 'node_modules')
   },
   externals: {
-    'jquery': '$',
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    'react-redux': 'ReactRedux',
-    'redux': 'Redux',
-    'underscore': '_'
+    'jquery': {root: '$', commonjs2: 'jquery', commonjs: 'jquery', amd: 'jquery'},
+    'react': {root: 'React', commonjs2: 'react', commonjs: 'react', amd: 'react'},
+    'react-dom': {root: 'ReactDOM', commonjs2: 'react-dom', commonjs: 'react-dom', amd: 'react-dom'},
+    'react-redux': {root: 'ReactRedux', commonjs2: 'react-redux', commonjs: 'react-redux', amd: 'react-redux'},
+    'redux': {root: 'Redux', commonjs2: 'redux', commonjs: 'redux', amd: 'redux'},
+    'underscore': {root: '_', commonjs2: 'underscore', commonjs: 'underscore', amd: 'underscore'}
   }
 };
 
