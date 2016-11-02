@@ -208,3 +208,11 @@ table:not(.datepicker-table) {
     background-color: rgba($red, 0.1);
   }
 }
+
+.table-last-update {
+  margin: 10px $header-padding;
+
+  color: rgba($dark-grey, 0.5);
+  font-size: 11px;
+  text-align: right;
+}
