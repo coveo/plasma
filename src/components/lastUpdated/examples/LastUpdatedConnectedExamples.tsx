@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LastUpdatedConnected } from '../LastUpdatedConnected';
-import { changeLastUpdated, ILastUpdatedAction } from '../LastUpdatedActions';
-import { ReduxUtils } from '../../../utils/ReduxUtils';
+import { changeLastUpdated, ILastUpdatedPayload } from '../LastUpdatedActions';
+import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
 import { connect } from 'react-redux';
 
 export interface ILastUpdateConnectedExamplesProps {
@@ -32,7 +32,7 @@ const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: ILastUpdatedAction) => void): ILastUpdateConnectedExamplesProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<ILastUpdatedPayload>) => void): ILastUpdateConnectedExamplesProps => {
   return {
     onRefresh: () => {
       dispatch(changeLastUpdated('LastUpdatedConnectedExampleComponent'));

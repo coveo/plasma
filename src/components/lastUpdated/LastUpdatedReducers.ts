@@ -1,5 +1,6 @@
-import { LastUpdatedActions, ILastUpdatedAction } from './LastUpdatedActions';
+import { LastUpdatedActions, ILastUpdatedPayload } from './LastUpdatedActions';
 import * as _ from 'underscore';
+import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface ILastUpdatedState {
   id: string;
@@ -9,15 +10,15 @@ export interface ILastUpdatedState {
 export const lastUpdatedInitialState: ILastUpdatedState = { id: undefined, time: new Date() };
 export const lastUpdatedCompositeInitialState: ILastUpdatedState[] = [];
 
-export const lastUpdated = (state: ILastUpdatedState = lastUpdatedInitialState, action: ILastUpdatedAction): ILastUpdatedState => {
+export const lastUpdated = (state: ILastUpdatedState = lastUpdatedInitialState, action: IReduxAction<ILastUpdatedPayload>): ILastUpdatedState => {
   switch (action.type) {
     case LastUpdatedActions.addLastUpdated:
       return {
-        id: action.id,
+        id: action.payload.id,
         time: state.time
       };
     case LastUpdatedActions.changeLastUpdated:
-      if (state.id !== action.id) {
+      if (state.id !== action.payload.id) {
         return state;
       }
       return _.extend({}, state, {
@@ -28,7 +29,7 @@ export const lastUpdated = (state: ILastUpdatedState = lastUpdatedInitialState, 
   }
 };
 
-export const lastUpdatedComposite = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: ILastUpdatedAction): ILastUpdatedState[] => {
+export const lastUpdatedComposite = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: IReduxAction<ILastUpdatedPayload>): ILastUpdatedState[] => {
   switch (action.type) {
     case LastUpdatedActions.addLastUpdated:
       return [
@@ -37,7 +38,7 @@ export const lastUpdatedComposite = (state: ILastUpdatedState[] = lastUpdatedCom
       ];
     case LastUpdatedActions.removeLastUpdated:
       return _.reject(state, (time) => {
-        return action.id === time.id;
+        return action.payload.id === time.id;
       });
     case LastUpdatedActions.changeLastUpdated:
       return state.map(time =>

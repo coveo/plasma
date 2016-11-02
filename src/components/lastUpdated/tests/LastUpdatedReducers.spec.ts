@@ -1,15 +1,18 @@
-import { ILastUpdatedAction, LastUpdatedActions } from '../LastUpdatedActions';
+import {LastUpdatedActions, ILastUpdatedPayload} from '../LastUpdatedActions';
 import {
   ILastUpdatedState, lastUpdatedComposite, lastUpdatedCompositeInitialState,
   lastUpdatedInitialState, lastUpdated
 } from '../LastUpdatedReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils';
 
 describe('Reducers', () => {
 
   describe('lastUpdateTime', () => {
-    let genericAction: ILastUpdatedAction = {
+    let genericAction: IReduxAction<ILastUpdatedPayload> = {
       type: 'DO_SOMETHING',
-      id: 'some-timer'
+      payload: {
+        id: 'some-timer'
+      }
     };
     let initialDate: Date = new Date();
 
@@ -43,16 +46,18 @@ describe('Reducers', () => {
 
     it('should return the old state with one more LastUpdateTimeState when the action is "lastUpdatedActions.addLastUpdated"', () => {
       let oldState: ILastUpdatedState[] = lastUpdatedCompositeInitialState;
-      let action: ILastUpdatedAction = {
+      let action: IReduxAction<ILastUpdatedPayload> = {
         type: LastUpdatedActions.addLastUpdated,
-        id: 'some_timer'
+        payload: {
+          id: 'some_timer'
+        }
       };
       let lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedComposite(oldState, action);
 
       expect(lastUpdateTimeState.length).toBe(oldState.length + 1);
 
       oldState = lastUpdateTimeState;
-      action.id = 'some-timer2';
+      action.payload.id = 'some-timer2';
       lastUpdateTimeState = lastUpdatedComposite(oldState, action);
 
       expect(lastUpdateTimeState.length).toBe(oldState.length + 1);
@@ -71,21 +76,23 @@ describe('Reducers', () => {
           time: initialDate
         }
       ];
-      let action: ILastUpdatedAction = {
+      let action: IReduxAction<ILastUpdatedPayload> = {
         type: LastUpdatedActions.removeLastUpdated,
-        id: 'some_timer'
+        payload: {
+          id: 'some_timer'
+        }
       };
       let lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedComposite(oldState, action);
 
       expect(lastUpdateTimeState.length).toBe(oldState.length - 1);
-      expect(lastUpdateTimeState.filter(timer => timer.id === action.id).length).toBe(0);
+      expect(lastUpdateTimeState.filter(timer => timer.id === action.payload.id).length).toBe(0);
 
       oldState = lastUpdateTimeState;
-      action.id = 'some_timer2';
+      action.payload.id = 'some_timer2';
       lastUpdateTimeState = lastUpdatedComposite(oldState, action);
 
       expect(lastUpdateTimeState.length).toBe(oldState.length - 1);
-      expect(lastUpdateTimeState.filter(timer => timer.id === action.id).length).toBe(0);
+      expect(lastUpdateTimeState.filter(timer => timer.id === action.payload.id).length).toBe(0);
     });
 
     it('should return the time of a timer when the action is "lastUpdatedActions.changeLastUpdated"', () => {
@@ -103,9 +110,11 @@ describe('Reducers', () => {
           time: initialDate
         }
       ];
-      let action: ILastUpdatedAction = {
+      let action: IReduxAction<ILastUpdatedPayload> = {
         type: LastUpdatedActions.changeLastUpdated,
-        id: 'some_timer'
+        payload: {
+          id: 'some_timer'
+        }
       };
       let addedTime: number = 20001;
 
@@ -114,7 +123,7 @@ describe('Reducers', () => {
       let lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedComposite(oldState, action);
 
       expect(lastUpdateTimeState.length).toBe(oldState.length);
-      expect(lastUpdateTimeState.filter(timer => timer.id === action.id)[0].time).not.toBe(initialDate);
+      expect(lastUpdateTimeState.filter(timer => timer.id === action.payload.id)[0].time).not.toBe(initialDate);
 
       jasmine.clock().uninstall();
     });
