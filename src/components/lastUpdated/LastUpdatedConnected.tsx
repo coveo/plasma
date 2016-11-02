@@ -1,11 +1,14 @@
-import { ILastUpdatedOwnProps, ILastUpdatedProps, LastUpdated } from './LastUpdated';
+import {
+  ILastUpdatedOwnProps, ILastUpdatedProps, LastUpdated, ILastUpdatedDispatchProps,
+  ILastUpdatedStateProps
+} from './LastUpdated';
 import { IReactVaporState, ReduxUtils } from '../../utils/ReduxUtils';
 import { addLastUpdated, removeLastUpdated, ILastUpdatedAction } from './LastUpdatedActions';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import * as React from 'react';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ILastUpdatedOwnProps) => {
+const mapStateToProps = (state: IReactVaporState, ownProps: ILastUpdatedOwnProps): ILastUpdatedStateProps => {
   let item = _.findWhere(state.lastUpdatedComposite, { id: ownProps.id });
 
   return {
@@ -13,14 +16,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ILastUpdatedOwnProps
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: ILastUpdatedAction) => void, ownProps: ILastUpdatedOwnProps) => {
+const mapDispatchToProps = (dispatch: (action: ILastUpdatedAction) => void, ownProps: ILastUpdatedOwnProps): ILastUpdatedDispatchProps => {
   return {
-    onRender: () => {
-      dispatch(addLastUpdated(ownProps.id));
-    },
-    onDestroy: () => {
-      dispatch(removeLastUpdated(ownProps.id));
-    }
+    onRender: () => { dispatch(addLastUpdated(ownProps.id)); },
+    onDestroy: () => { dispatch(removeLastUpdated(ownProps.id)); }
   };
 };
 

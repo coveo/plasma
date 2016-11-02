@@ -9,9 +9,10 @@ import { MembersExample } from './members-example/MembersExample';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
-import { LastUpdatedConnectedExamplesConnected } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
+import { LastUpdatedExamplesConnected } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
 
 class App extends React.Component<any, any> {
+
   render() {
     return (
       <Provider store={ReactVaporStore}>
@@ -77,7 +78,7 @@ class App extends React.Component<any, any> {
             </div>
           </div>
           <LastUpdatedExamples />
-          <LastUpdatedConnectedExamplesConnected />
+          <LastUpdatedExamplesConnected />
         </div>
       </Provider>
     );

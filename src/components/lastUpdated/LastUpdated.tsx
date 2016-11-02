@@ -5,11 +5,17 @@ export interface ILastUpdatedOwnProps extends React.ClassAttributes<LastUpdated>
   id: string;
 }
 
-export interface ILastUpdatedProps extends ILastUpdatedOwnProps {
+export interface ILastUpdatedStateProps {
   label?: string;
   time?: Date;
+}
+
+export interface ILastUpdatedDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
+}
+
+export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedStateProps, ILastUpdatedDispatchProps {
 }
 
 export const defaultLastUpdateLabel: string = 'Last update:';

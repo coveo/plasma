@@ -1,6 +1,6 @@
 import * as Redux from 'redux';
 
-export const lastUpdatedActions = {
+export const LastUpdatedActions = {
   addLastUpdated: 'ADD_LAST_UPDATED',
   removeLastUpdated: 'REMOVE_LAST_UPDATED',
   changeLastUpdated: 'CHANGE_LAST_UPDATED'
@@ -12,21 +12,21 @@ export interface ILastUpdatedAction extends Redux.Action {
 
 export const addLastUpdated = (id: string): ILastUpdatedAction => {
   return {
-    type: lastUpdatedActions.addLastUpdated,
+    type: LastUpdatedActions.addLastUpdated,
     id
   };
 };
 
 export const removeLastUpdated = (id: string): ILastUpdatedAction => {
   return {
-    type: lastUpdatedActions.removeLastUpdated,
+    type: LastUpdatedActions.removeLastUpdated,
     id
   };
 };
 
 export const changeLastUpdated = (id: string): ILastUpdatedAction => {
   return {
-    type: lastUpdatedActions.changeLastUpdated,
+    type: LastUpdatedActions.changeLastUpdated,
     id
   };
 };

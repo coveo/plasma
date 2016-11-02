@@ -32,7 +32,7 @@ const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: ILastUpdatedAction) => void) => {
+const mapDispatchToProps = (dispatch: (action: ILastUpdatedAction) => void): ILastUpdateConnectedExamplesProps => {
   return {
     onRefresh: () => {
       dispatch(changeLastUpdated('LastUpdatedConnectedExampleComponent'));
@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch: (action: ILastUpdatedAction) => void) => {
   };
 };
 
-export const LastUpdatedConnectedExamplesConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(LastUpdatedConnectedExamples);
+export const LastUpdatedExamplesConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(LastUpdatedConnectedExamples);

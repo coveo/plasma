@@ -1,4 +1,4 @@
-import { ILastUpdatedAction, lastUpdatedActions } from '../LastUpdatedActions';
+import { ILastUpdatedAction, LastUpdatedActions } from '../LastUpdatedActions';
 import {
   ILastUpdatedState, lastUpdatedComposite, lastUpdatedCompositeInitialState,
   lastUpdatedInitialState, lastUpdated
@@ -44,7 +44,7 @@ describe('Reducers', () => {
     it('should return the old state with one more LastUpdateTimeState when the action is "lastUpdatedActions.addLastUpdated"', () => {
       let oldState: ILastUpdatedState[] = lastUpdatedCompositeInitialState;
       let action: ILastUpdatedAction = {
-        type: lastUpdatedActions.addLastUpdated,
+        type: LastUpdatedActions.addLastUpdated,
         id: 'some_timer'
       };
       let lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedComposite(oldState, action);
@@ -72,7 +72,7 @@ describe('Reducers', () => {
         }
       ];
       let action: ILastUpdatedAction = {
-        type: lastUpdatedActions.removeLastUpdated,
+        type: LastUpdatedActions.removeLastUpdated,
         id: 'some_timer'
       };
       let lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedComposite(oldState, action);
@@ -104,7 +104,7 @@ describe('Reducers', () => {
         }
       ];
       let action: ILastUpdatedAction = {
-        type: lastUpdatedActions.changeLastUpdated,
+        type: LastUpdatedActions.changeLastUpdated,
         id: 'some_timer'
       };
       let addedTime: number = 20001;

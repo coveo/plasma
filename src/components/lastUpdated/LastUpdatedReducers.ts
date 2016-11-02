@@ -1,4 +1,4 @@
-import { lastUpdatedActions, ILastUpdatedAction } from './LastUpdatedActions';
+import { LastUpdatedActions, ILastUpdatedAction } from './LastUpdatedActions';
 import * as _ from 'underscore';
 
 export interface ILastUpdatedState {
@@ -11,12 +11,12 @@ export const lastUpdatedCompositeInitialState: ILastUpdatedState[] = [];
 
 export const lastUpdated = (state: ILastUpdatedState = lastUpdatedInitialState, action: ILastUpdatedAction): ILastUpdatedState => {
   switch (action.type) {
-    case lastUpdatedActions.addLastUpdated:
+    case LastUpdatedActions.addLastUpdated:
       return {
         id: action.id,
         time: state.time
       };
-    case lastUpdatedActions.changeLastUpdated:
+    case LastUpdatedActions.changeLastUpdated:
       if (state.id !== action.id) {
         return state;
       }
@@ -30,16 +30,16 @@ export const lastUpdated = (state: ILastUpdatedState = lastUpdatedInitialState, 
 
 export const lastUpdatedComposite = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: ILastUpdatedAction): ILastUpdatedState[] => {
   switch (action.type) {
-    case lastUpdatedActions.addLastUpdated:
+    case LastUpdatedActions.addLastUpdated:
       return [
         ...state,
         lastUpdated(undefined, action)
       ];
-    case lastUpdatedActions.removeLastUpdated:
+    case LastUpdatedActions.removeLastUpdated:
       return _.reject(state, (time) => {
         return action.id === time.id;
       });
-    case lastUpdatedActions.changeLastUpdated:
+    case LastUpdatedActions.changeLastUpdated:
       return state.map(time =>
         lastUpdated(time, action)
       );
