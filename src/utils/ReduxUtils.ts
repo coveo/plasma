@@ -13,13 +13,13 @@ export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
 }
 
-export const commonActions = {
+export const CommonActions = {
   clearState: 'CLEAR_STATE'
 };
 
 export const clearState = (): Redux.Action => {
   return {
-    type: commonActions.clearState
+    type: CommonActions.clearState
   };
 };
 
