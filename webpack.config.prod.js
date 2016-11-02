@@ -29,7 +29,7 @@ let config = {
     ],
     loaders: [
       {test: /\.json$/, loader: 'json-loader'},
-      {test: /\.ts(x?)$/, loader: 'ts-loader', exclude: ['**/*Examples*', '**/*spec.*']}
+      {test: /\.ts(x?)$/, loader: 'ts-loader'}
     ]
   },
   tslint: {
