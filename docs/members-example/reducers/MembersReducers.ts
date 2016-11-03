@@ -1,28 +1,29 @@
 import * as _ from 'underscore';
 import { IReduxAction } from '../../../src/utils/ReduxUtils';
 import { IMemberAttributes } from '../models/Member';
-import { IMemberEditViewState } from '../views/MemberEditView';
-import { MembersActionsType, ISetMembersPayload } from '../actions/MembersActions';
-import { MemberEditActionsType } from '../actions/MemberEditActions';
-import { memberEditReducers, defaultMemberEditViewState, IMemberEditActionsPayloads } from './MemberEditReducers';
+import { MembersActionsType, ISetMembersPayload, IMembersActionsPayloads } from '../actions/MembersActions';
+import { MemberEditionActionsType, IMemberEditionActionsPayloads } from '../actions/MemberEditionActions';
+import { IMemberEditionState, defaultMemberEditionState, memberEditReducers } from './MemberEditionReducers';
 
 export interface IMembersCompositeState {
-  addMemberState: IMemberEditViewState;
-  members: IMemberEditViewState[];
+  addMemberState: IMemberEditionState;
+  members: IMemberEditionState[];
 }
 
 const defaultMembersCompositeState: IMembersCompositeState = {
-  addMemberState: _.extend({}, defaultMemberEditViewState),
+  addMemberState: _.extend({}, defaultMemberEditionState),
   members: []
 };
 
+const generateMemberId = (): string => _.uniqueId('member');
+
 const setMembersReduder = (state: IMembersCompositeState, action: IReduxAction<ISetMembersPayload>): IMembersCompositeState => {
   return _.extend({}, state, {
-    members: _.map(action.payload.members, (member: IMemberAttributes): IMemberEditViewState => {
+    members: _.map(action.payload.members, (member: IMemberAttributes): IMemberEditionState => {
       return {
         appliedState: _.extend({}, member),
         editionState: _.extend({}, member),
-        id: _.uniqueId('member'),
+        id: generateMemberId(),
         isOpen: false
       };
     })
@@ -30,59 +31,54 @@ const setMembersReduder = (state: IMembersCompositeState, action: IReduxAction<I
 };
 
 const addMemberReducer = (state: IMembersCompositeState): IMembersCompositeState => {
-  let newState = _.extend({}, state);
+  let newState: IMembersCompositeState = _.extend({}, state);
 
   // Clone and add the new member
-  let newMember: IMemberAttributes = _.extend({}, {
+  let newMember: IMemberEditionState = _.extend({}, {
     appliedState: _.extend({}, state.addMemberState.editionState),
     editionState: _.extend({}, state.addMemberState.editionState),
-    id: _.uniqueId('member'),
+    id: generateMemberId(),
     isOpen: false
   });
   newState.members = [].concat(state.members, [newMember]);
 
   // Reset the addMemberState
-  newState.addMemberState = _.extend({}, defaultMemberEditViewState);
+  newState.addMemberState = _.extend({}, defaultMemberEditionState);
 
   return newState;
 };
 
-const applyMemberEditReducers = (state: IMembersCompositeState,
-  action: IReduxAction<IMemberEditActionsPayloads>): IMembersCompositeState => {
-  let newState = _.extend({}, state);
+const applyMemberEditionReducers = (state: IMembersCompositeState,
+  action: IReduxAction<IMemberEditionActionsPayloads>): IMembersCompositeState => {
+  let newState: IMembersCompositeState = _.extend({}, state);
 
   if (_.isNull(action.payload.id)) {
     newState.addMemberState = memberEditReducers(newState.addMemberState, action);
   } else {
-    newState.members = _.map(state.members, (member: IMemberEditViewState) => memberEditReducers(member, action));
+    newState.members = _.map(state.members, (member: IMemberEditionState) => memberEditReducers(member, action));
   }
 
   return newState;
 };
 
-export interface IMembersActionsPayloads extends ISetMembersPayload, IMemberEditActionsPayloads { }
-
 interface IMembersActionsReducers {
-  [id: string]: (state: IMembersCompositeState, action: IReduxAction<IMembersActionsPayloads>) => IMembersCompositeState;
+  [key: string]: (state: IMembersCompositeState, action: IReduxAction<IMembersActionsPayloads>) => IMembersCompositeState;
 }
 
 const membersActionsReducers: IMembersActionsReducers = {
   [MembersActionsType.SetMembers]: setMembersReduder,
   [MembersActionsType.AddMember]: addMemberReducer,
-  [MemberEditActionsType.ToggleMemberOpen]: applyMemberEditReducers,
-  [MemberEditActionsType.ChangeMemberEmail]: applyMemberEditReducers,
-  [MemberEditActionsType.ChangeMemberSendEmail]: applyMemberEditReducers,
-  [MemberEditActionsType.ApplyMemberChanges]: applyMemberEditReducers,
-  [MemberEditActionsType.CancelMemberChanges]: applyMemberEditReducers
+  [MemberEditionActionsType.ApplyChanges]: applyMemberEditionReducers,
+  [MemberEditionActionsType.CancelChanges]: applyMemberEditionReducers,
+  [MemberEditionActionsType.ChangeEmail]: applyMemberEditionReducers,
+  [MemberEditionActionsType.ChangeSendEmail]: applyMemberEditionReducers,
+  [MemberEditionActionsType.ToggleOpen]: applyMemberEditionReducers
 };
 
 export const membersReducers = (state: IMembersCompositeState = defaultMembersCompositeState,
   action: IReduxAction<IMembersActionsPayloads>): IMembersCompositeState => {
-  let newState: IMembersCompositeState = state;
-
-  if (!_.isUndefined(membersActionsReducers[action.type])) {
-    newState = membersActionsReducers[action.type](state, action);
+  if (_.isUndefined(membersActionsReducers[action.type])) {
+    return state;
   }
-
-  return newState;
+  return membersActionsReducers[action.type](state, action);
 };
