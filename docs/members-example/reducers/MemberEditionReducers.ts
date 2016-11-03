@@ -24,7 +24,7 @@ export const defaultMemberEditionState: IMemberEditionState = {
   isOpen: false
 };
 
-const applyMemberChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
+const applyChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
   if (action.payload.id != state.id) {
     return state;
   }
@@ -34,7 +34,7 @@ const applyMemberChangesReducer = (state: IMemberEditionState, action: IReduxAct
   });
 };
 
-const cancelMemberChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
+const cancelChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
   if (action.payload.id != state.id) {
     return state;
   }
@@ -44,7 +44,7 @@ const cancelMemberChangesReducer = (state: IMemberEditionState, action: IReduxAc
   });
 };
 
-const changeMemberEmailReducer = (state: IMemberEditionState, action: IReduxAction<IChangeEmailPayload>): IMemberEditionState => {
+const changeEmailReducer = (state: IMemberEditionState, action: IReduxAction<IChangeEmailPayload>): IMemberEditionState => {
   if (action.payload.id != state.id) {
     return state;
   }
@@ -55,8 +55,7 @@ const changeMemberEmailReducer = (state: IMemberEditionState, action: IReduxActi
   });
 };
 
-const changeMemberSendEmailReducer = (state: IMemberEditionState,
-  action: IReduxAction<IChangeSendEmailPayload>): IMemberEditionState => {
+const changeSendEmailReducer = (state: IMemberEditionState, action: IReduxAction<IChangeSendEmailPayload>): IMemberEditionState => {
   if (action.payload.id != state.id) {
     return state;
   }
@@ -67,7 +66,7 @@ const changeMemberSendEmailReducer = (state: IMemberEditionState,
   });
 };
 
-const toggleMemberOpen = (state: IMemberEditionState, action: IReduxAction<IToggleOpenPayload>): IMemberEditionState => {
+const toggleOpen = (state: IMemberEditionState, action: IReduxAction<IToggleOpenPayload>): IMemberEditionState => {
   if (action.payload.id != state.id) {
     return state;
   }
@@ -81,14 +80,14 @@ interface IMemberEditionActionsReducers {
 }
 
 const memberEditionActionsReducers: IMemberEditionActionsReducers = {
-  [MemberEditionActionsType.ApplyChanges]: applyMemberChangesReducer,
-  [MemberEditionActionsType.CancelChanges]: cancelMemberChangesReducer,
-  [MemberEditionActionsType.ChangeEmail]: changeMemberEmailReducer,
-  [MemberEditionActionsType.ChangeSendEmail]: changeMemberSendEmailReducer,
-  [MemberEditionActionsType.ToggleOpen]: toggleMemberOpen
+  [MemberEditionActionsType.ApplyChanges]: applyChangesReducer,
+  [MemberEditionActionsType.CancelChanges]: cancelChangesReducer,
+  [MemberEditionActionsType.ChangeEmail]: changeEmailReducer,
+  [MemberEditionActionsType.ChangeSendEmail]: changeSendEmailReducer,
+  [MemberEditionActionsType.ToggleOpen]: toggleOpen
 };
 
-export const memberEditReducers = (state: IMemberEditionState = defaultMemberEditionState,
+export const memberEditionReducers = (state: IMemberEditionState = defaultMemberEditionState,
   action: IReduxAction<IMemberEditionActionsPayloads>): IMemberEditionState => {
   if (_.isUndefined(memberEditionActionsReducers[action.type])) {
     return state;

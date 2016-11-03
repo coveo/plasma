@@ -3,7 +3,7 @@ import { IReduxAction } from '../../../src/utils/ReduxUtils';
 import { IMemberAttributes } from '../models/Member';
 import { MembersActionsType, ISetMembersPayload, IMembersActionsPayloads } from '../actions/MembersActions';
 import { MemberEditionActionsType, IMemberEditionActionsPayloads } from '../actions/MemberEditionActions';
-import { IMemberEditionState, defaultMemberEditionState, memberEditReducers } from './MemberEditionReducers';
+import { IMemberEditionState, defaultMemberEditionState, memberEditionReducers } from './MemberEditionReducers';
 
 export interface IMembersCompositeState {
   addMemberState: IMemberEditionState;
@@ -53,9 +53,9 @@ const applyMemberEditionReducers = (state: IMembersCompositeState,
   let newState: IMembersCompositeState = _.extend({}, state);
 
   if (_.isNull(action.payload.id)) {
-    newState.addMemberState = memberEditReducers(newState.addMemberState, action);
+    newState.addMemberState = memberEditionReducers(newState.addMemberState, action);
   } else {
-    newState.members = _.map(state.members, (member: IMemberEditionState) => memberEditReducers(member, action));
+    newState.members = _.map(state.members, (member: IMemberEditionState) => memberEditionReducers(member, action));
   }
 
   return newState;
