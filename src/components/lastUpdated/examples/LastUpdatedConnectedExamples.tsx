@@ -1,13 +1,25 @@
 import * as React from 'react';
 import { LastUpdatedConnected } from '../LastUpdatedConnected';
 import { changeLastUpdated, ILastUpdatedPayload } from '../LastUpdatedActions';
-import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
-import { connect } from 'react-redux';
+import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
 
 export interface ILastUpdateConnectedExamplesProps {
   onRefresh?: () => void;
 }
 
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch: (action: IReduxAction<ILastUpdatedPayload>) => void): ILastUpdateConnectedExamplesProps => {
+  return {
+    onRefresh: () => {
+      dispatch(changeLastUpdated('LastUpdatedConnectedExampleComponent'));
+    }
+  };
+};
+
+@ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateConnectedExamplesProps, any> {
 
   componentDidMount() {
@@ -27,17 +39,3 @@ export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateCon
     );
   };
 }
-
-const mapStateToProps = () => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch: (action: IReduxAction<ILastUpdatedPayload>) => void): ILastUpdateConnectedExamplesProps => {
-  return {
-    onRefresh: () => {
-      dispatch(changeLastUpdated('LastUpdatedConnectedExampleComponent'));
-    }
-  };
-};
-
-export const LastUpdatedExamplesConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(LastUpdatedConnectedExamples);

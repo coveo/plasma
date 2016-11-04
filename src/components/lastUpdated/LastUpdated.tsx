@@ -15,8 +15,7 @@ export interface ILastUpdatedDispatchProps {
   onDestroy?: () => void;
 }
 
-export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedStateProps, ILastUpdatedDispatchProps {
-}
+export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedStateProps, ILastUpdatedDispatchProps { }
 
 export const defaultLastUpdateLabel: string = 'Last update:';
 

@@ -10,7 +10,7 @@ import {
   applyMemberChanges,
   cancelMemberChanges
 } from '../actions/MemberEditActions';
-import { IReactVaporState } from '../../Reducers';
+import { IReactVaporExampleState } from '../../Reducers';
 import { IMemberAttributes } from '../models/Member';
 
 export interface IMemberEditViewState {
@@ -43,7 +43,7 @@ export interface IMemberEditViewProps extends IMemberEditViewOwnProps,
   IMemberEditViewDispatchProps,
   IReduxProps { }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
+const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
   let item: IMemberEditViewState;
 
   if (_.isNull(ownProps.id)) {
