@@ -1,5 +1,6 @@
 import { IReduxAction } from '../../../src/utils/ReduxUtils';
 import { IMemberAttributes } from '../models/Member';
+import { IMemberEditionActionsPayloads } from './MemberEditionActions';
 
 export const MembersActionsType = {
   SetMembers: 'SET_MEMBERS',
@@ -9,6 +10,8 @@ export const MembersActionsType = {
 export interface ISetMembersPayload {
   members: IMemberAttributes[];
 }
+
+export interface IMembersActionsPayloads extends IMemberEditionActionsPayloads, ISetMembersPayload { }
 
 export const setMembers = (members: IMemberAttributes[]): IReduxAction<ISetMembersPayload> => {
   return {

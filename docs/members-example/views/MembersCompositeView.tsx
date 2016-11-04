@@ -2,12 +2,13 @@ import * as _ from 'underscore';
 import * as React from 'react';
 import { Action } from 'redux';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
-import { MemberEditView, IMemberEditViewState } from './MemberEditView';
+import { MemberEditView } from './MemberEditView';
 import { addMember } from '../actions/MembersActions';
 import { IReactVaporExampleState } from '../../Reducers';
+import { IMemberEditionState } from '../reducers/MemberEditionReducers';
 
 export interface IMembersCompositeViewStateProps {
-  members?: IMemberEditViewState[];
+  members?: IMemberEditionState[];
 }
 
 export interface IMembersCompositeViewDispatchProps {
@@ -31,7 +32,7 @@ const mapDispatchToProps = (dispatch: (action: Action) => void): IMembersComposi
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MembersCompositeView extends React.Component<IMembersCompositeViewProps, any> {
   render() {
-    let memberEditViews = _.map(this.props.members, (member: IMemberEditViewState) => {
+    let memberEditViews = _.map(this.props.members, (member: IMemberEditionState) => {
       return (
         <div className='spaced-box' key={member.id}>
           <MemberEditView

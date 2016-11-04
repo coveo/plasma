@@ -2,23 +2,11 @@ import * as _ from 'underscore';
 import * as React from 'react';
 import { Action } from 'redux';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
-import { Popover } from '../../../src/components/popover/Popover';
-import {
-  toggleMemberOpen,
-  changeMemberEmail,
-  changeMemberSendEmail,
-  applyMemberChanges,
-  cancelMemberChanges
-} from '../actions/MemberEditActions';
+import { Popover } from '../../../src/components/Popover';
+import { toggleOpen, changeEmail, changeSendEmail, applyChanges, cancelChanges } from '../actions/MemberEditionActions';
 import { IReactVaporExampleState } from '../../Reducers';
 import { IMemberAttributes } from '../models/Member';
-
-export interface IMemberEditViewState {
-  appliedState: IMemberAttributes;
-  editionState: IMemberAttributes;
-  id: string;
-  isOpen: boolean;
-}
+import { IMemberEditionState } from '../reducers/MemberEditionReducers';
 
 export interface IMemberEditViewOwnProps {
   id: string;
@@ -44,12 +32,12 @@ export interface IMemberEditViewProps extends IMemberEditViewOwnProps,
   IReduxProps { }
 
 const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
-  let item: IMemberEditViewState;
+  let item: IMemberEditionState;
 
   if (_.isNull(ownProps.id)) {
     item = state.membersCompositeState.addMemberState;
   } else {
-    item = _.find(state.membersCompositeState.members, (memberState: IMemberEditViewState) => {
+    item = _.find(state.membersCompositeState.members, (memberState: IMemberEditionState) => {
       return memberState.id == ownProps.id;
     });
   }
@@ -64,16 +52,16 @@ const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditVi
 
 const mapDispatchToProps = (dispatch: (action: Action) => void, ownProps: IMemberEditViewOwnProps): IMemberEditViewDispatchProps => {
   return {
-    toggleMemberOpen: (isOpen: boolean) => dispatch(toggleMemberOpen(ownProps.id, isOpen)),
-    changeMemberEmail: (email: string) => dispatch(changeMemberEmail(ownProps.id, email)),
-    changeMemberSendEmail: (sendEmail: boolean) => dispatch(changeMemberSendEmail(ownProps.id, sendEmail)),
-    applyMemberChanges: () => dispatch(applyMemberChanges(ownProps.id)),
-    cancelMemberChanges: () => dispatch(cancelMemberChanges(ownProps.id))
+    toggleMemberOpen: (isOpen: boolean) => dispatch(toggleOpen(ownProps.id, isOpen)),
+    changeMemberEmail: (email: string) => dispatch(changeEmail(ownProps.id, email)),
+    changeMemberSendEmail: (sendEmail: boolean) => dispatch(changeSendEmail(ownProps.id, sendEmail)),
+    applyMemberChanges: () => dispatch(applyChanges(ownProps.id)),
+    cancelMemberChanges: () => dispatch(cancelChanges(ownProps.id))
   };
 };
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditViewState> {
+export class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditionState> {
   private popover: Popover;
 
   private emailInput: HTMLInputElement;
