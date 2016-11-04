@@ -2,7 +2,7 @@ import * as _ from 'underscore';
 import * as React from 'react';
 import { Action } from 'redux';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
-import { Popover } from '../../../src/components/Popover';
+import { Popover } from '../../../src/components/popover/Popover';
 import { toggleOpen, changeEmail, changeSendEmail, applyChanges, cancelChanges } from '../actions/MemberEditionActions';
 import { IReactVaporExampleState } from '../../Reducers';
 import { IMemberAttributes } from '../models/Member';
