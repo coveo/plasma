@@ -1,5 +1,8 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Loading } from './Loading';
+/* tslint:disable:no-unused-variable */
+import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 
 describe('<Loading />', () => {
   it('should render without errors', () => {

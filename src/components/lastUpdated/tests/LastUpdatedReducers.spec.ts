@@ -7,7 +7,7 @@ import { IReduxAction } from '../../../utils/ReduxUtils';
 
 describe('Reducers', () => {
 
-  describe('lastUpdateTime', () => {
+  describe('LastUpdatedReducers', () => {
     let genericAction: IReduxAction<ILastUpdatedPayload> = {
       type: 'DO_SOMETHING',
       payload: {
