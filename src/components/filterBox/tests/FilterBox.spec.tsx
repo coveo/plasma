@@ -1,5 +1,5 @@
-import {shallow, mount, ReactWrapper} from 'enzyme';
-import {FilterBox, IFilterBoxProps} from '../FilterBox';
+import { shallow, mount, ReactWrapper } from 'enzyme';
+import { FilterBox, IFilterBoxProps } from '../FilterBox';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -13,7 +13,7 @@ describe('FilterBox', () => {
         shallow(
           <FilterBox
             id={id}
-          />
+            />
         );
       }).not.toThrow();
     });
@@ -26,7 +26,7 @@ describe('FilterBox', () => {
       filterBox = mount(
         <FilterBox
           id={id}
-        />,
+          />,
         { attachTo: document.getElementById('App') }
       );
     });

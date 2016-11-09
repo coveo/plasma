@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IFilterActionPayload, FilterActions} from '../FilterBoxActions';
-import {IFilterState, filters, filtersInitialState, filterBox, filterBoxInitialState} from '../FilterBoxReducers';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { IFilterActionPayload, FilterActions } from '../FilterBoxActions';
+import { IFilterState, filters, filtersInitialState, filterBox, filterBoxInitialState } from '../FilterBoxReducers';
 describe('Reducers', () => {
 
   describe('FilterBoxReducers', () => {

@@ -11,10 +11,10 @@ import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/exam
 import { LoadingExamples } from '../src/components/loading/LoadingExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
-import {FilterBoxExamples} from '../src/components/filterBox/examples/FilterBoxExamples';
-import {FilterBoxConnectedExamples} from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
-import {FacetConnectedExamples} from '../src/components/facets/examples/FacetConnectedExamples';
-import {FacetExamples} from '../src/components/facets/examples/FacetExamples';
+import { FilterBoxExamples } from '../src/components/filterBox/examples/FilterBoxExamples';
+import { FilterBoxConnectedExamples } from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
+import { FacetConnectedExamples } from '../src/components/facets/examples/FacetConnectedExamples';
+import { FacetExamples } from '../src/components/facets/examples/FacetExamples';
 
 class App extends React.Component<any, any> {
 
