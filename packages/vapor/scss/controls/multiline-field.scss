@@ -81,6 +81,10 @@
       outline: none;
     }
 
+    .tooltip {
+      width: $tooltip-width;
+    }
+
     i {
       position: relative;
 
