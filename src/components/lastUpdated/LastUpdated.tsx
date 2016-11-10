@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as moment from 'moment';
 
 export interface ILastUpdatedOwnProps extends React.ClassAttributes<LastUpdated> {
-  id: string;
+  id?: string;
   label?: string;
 }
 

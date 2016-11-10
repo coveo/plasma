@@ -11,22 +11,13 @@ import * as React from 'react';
 describe('<LastUpdated />', () => {
   let lastUpdatedWrapper: ShallowWrapper<ILastUpdatedProps, any>;
   let lastUpdated: ReactWrapper<ILastUpdatedProps, any>;
-  let id: string;
   let time: Date;
-  let onRender: () => void;
-  let onDestroy: () => void;
 
   it('should render without errors', () => {
-    id = 'last-update';
-    time = new Date();
-    onRender = jasmine.createSpy('onRender');
-    onDestroy = jasmine.createSpy('onDestroy');
 
     expect(() => {
       shallow(
-        <LastUpdated
-          id={id}
-          />
+        <LastUpdated />
       );
     }).not.toThrow();
   });
@@ -38,7 +29,6 @@ describe('<LastUpdated />', () => {
 
     lastUpdatedWrapper = shallow(
       <LastUpdated
-        id={id}
         time={time}
         />
     );
@@ -54,9 +44,7 @@ describe('<LastUpdated />', () => {
     let expectedTime = moment(time).format('LTS');
 
     lastUpdatedWrapper = shallow(
-      <LastUpdated
-        id={id}
-        />
+      <LastUpdated />
     );
 
     expect(s.contains(lastUpdatedWrapper.html(), expectedTime));
@@ -66,27 +54,23 @@ describe('<LastUpdated />', () => {
 
   it('should use the label passed as a prop to display the time, else it uses the default label', () => {
     lastUpdatedWrapper = shallow(
-      <LastUpdated
-        id={id}
-        />
+      <LastUpdated />
     );
     expect(s.contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL));
 
     let expectedLabel = 'Last update was at =>';
-    lastUpdatedWrapper.setProps({ id: id, label: expectedLabel });
+    lastUpdatedWrapper.setProps({ label: expectedLabel });
     expect(s.contains(lastUpdatedWrapper.html(), expectedLabel));
   });
 
   it('should trigger onRender prop when mounting', () => {
     let renderSpy = jasmine.createSpy('onRender');
     lastUpdated = mount(
-      <LastUpdated
-        id={id}
-        />,
+      <LastUpdated />,
       { attachTo: document.getElementById('App') }
     );
     expect(renderSpy.calls.count()).toBe(0);
-    lastUpdated.setProps({ id: id, onRender: renderSpy });
+    lastUpdated.setProps({ onRender: renderSpy });
     lastUpdated.unmount();
     lastUpdated.mount();
     expect(renderSpy.calls.count()).toBe(1);
@@ -95,14 +79,12 @@ describe('<LastUpdated />', () => {
   it('should trigger onDestroy prop when unmounting', () => {
     let destroySpy = jasmine.createSpy('onDestroy');
     lastUpdated = mount(
-      <LastUpdated
-        id={id}
-        />,
+      <LastUpdated />,
       { attachTo: document.getElementById('App') }
     );
     lastUpdated.unmount();
     expect(destroySpy.calls.count()).toBe(0);
-    lastUpdated.setProps({ id: id, onDestroy: destroySpy });
+    lastUpdated.setProps({ onDestroy: destroySpy });
     lastUpdated.mount();
     lastUpdated.unmount();
     expect(destroySpy.calls.count()).toBe(1);
