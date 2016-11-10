@@ -4,7 +4,7 @@ import { Action } from 'redux';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
 import { MemberEditView } from './MemberEditView';
 import { addMember } from '../actions/MembersActions';
-import { IReactVaporState } from '../../Reducers';
+import { IReactVaporExampleState } from '../../Reducers';
 import { IMemberEditionState } from '../reducers/MemberEditionReducers';
 
 export interface IMembersCompositeViewStateProps {
@@ -17,7 +17,7 @@ export interface IMembersCompositeViewDispatchProps {
 
 export interface IMembersCompositeViewProps extends IMembersCompositeViewStateProps, IMembersCompositeViewDispatchProps, IReduxProps { }
 
-const mapStateToProps = (state: IReactVaporState): IMembersCompositeViewStateProps => {
+const mapStateToProps = (state: IReactVaporExampleState): IMembersCompositeViewStateProps => {
   return {
     members: state.membersCompositeState.members
   };

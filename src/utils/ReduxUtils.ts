@@ -1,12 +1,27 @@
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import { extend } from 'underscore';
+import { ILastUpdatedState } from '../components/lastUpdated/LastUpdatedReducers';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
     return extend({}, stateProps, dispatchProps, ownProps);
   }
 }
+
+export interface IReactVaporState {
+  lastUpdatedComposite?: ILastUpdatedState[];
+}
+
+export const CommonActions = {
+  clearState: 'CLEAR_STATE'
+};
+
+export const clearState = (): Redux.Action => {
+  return {
+    type: CommonActions.clearState
+  };
+};
 
 export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, mergeProps?: any, options?: any): (target: any) => any {
   return target => (ReactRedux.connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any);

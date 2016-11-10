@@ -24,7 +24,7 @@ module.exports = {
       loader: 'json'
     }],
     postLoaders: [{
-      test: /src\/(?:(?!Test).)*\..+$/i,
+      test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\..+$/i,
       exclude: /(node_modules)/,
       loader: 'istanbul-instrumenter'
     }]

@@ -9,14 +9,14 @@ const isJenkins = !!process.env.JENKINS_HOME;
 const TARGET = process.env.TARGET || null;
 
 /***
- * Config file for the packaged librairy
+ * Config file for the packaged library
  */
 let config = {
   entry: './src/Index.ts',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'react-vapor.js',
-    library: 'ReactVapor',
+    library: ['ReactVapor'],
     libraryTarget: 'umd'
   },
   devtool: 'source-map',

@@ -1,5 +1,5 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { ITooltipProps, Tooltip } from '../../src/components/Tooltip';
+import { ITooltipProps, Tooltip } from './Tooltip';
 
 // Until Webpack provided plugins works with TS 2.0
 /* tslint:disable:no-unused-variable */

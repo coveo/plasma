@@ -2,9 +2,9 @@ import * as _ from 'underscore';
 import * as React from 'react';
 import { Action } from 'redux';
 import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
-import { Popover } from '../../../src/components/Popover';
+import { Popover } from '../../../src/components/popover/Popover';
 import { toggleOpen, changeEmail, changeSendEmail, applyChanges, cancelChanges } from '../actions/MemberEditionActions';
-import { IReactVaporState } from '../../Reducers';
+import { IReactVaporExampleState } from '../../Reducers';
 import { IMemberAttributes } from '../models/Member';
 import { IMemberEditionState } from '../reducers/MemberEditionReducers';
 
@@ -31,7 +31,7 @@ export interface IMemberEditViewProps extends IMemberEditViewOwnProps,
   IMemberEditViewDispatchProps,
   IReduxProps { }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
+const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
   let item: IMemberEditionState;
 
   if (_.isNull(ownProps.id)) {
