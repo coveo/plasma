@@ -1,6 +1,6 @@
 import { IFacetOwnProps, Facet, IFacetStateProps, IFacetDispatchProps, IFacetProps, IFacet } from './Facet';
 import { IReactVaporState, ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { addFacet, removeFacet, IFacetActionPayload, changeFacetsModel, emptyFacet } from './FacetActions';
+import { addFacet, removeFacet, IFacetActionPayload, changeFacet, emptyFacet } from './FacetActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>
       dispatch(removeFacet(facet));
     },
     onToggleFacet: (facet: string, facetRow: IFacet) => {
-      dispatch(changeFacetsModel(facet, facetRow));
+      dispatch(changeFacet(facet, facetRow));
     },
     onClearFacet: (facet: string) => {
       dispatch(emptyFacet(facet));

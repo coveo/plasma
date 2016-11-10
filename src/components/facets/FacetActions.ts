@@ -33,7 +33,7 @@ export const removeFacet = (facet: string): IReduxAction<IFacetActionPayload> =>
   };
 };
 
-export const changeFacetsModel = (facet: string, facetRow: IFacet): IReduxAction<IFacetActionPayload> => {
+export const changeFacet = (facet: string, facetRow: IFacet): IReduxAction<IFacetActionPayload> => {
   return {
     type: FacetActions.changeFacet,
     payload: {

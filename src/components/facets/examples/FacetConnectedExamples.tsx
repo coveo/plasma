@@ -1,7 +1,7 @@
 import { IFacet } from '../Facet';
 import { FacetConnected } from '../FacetConnected';
 import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
-import { IFacetActionPayload, changeFacetsModel } from '../FacetActions';
+import { IFacetActionPayload, changeFacet } from '../FacetActions';
 import * as React from 'react';
 
 export interface ILastUpdateConnectedExamplesProps {
@@ -21,7 +21,7 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>) => void): ILastUpdateConnectedExamplesProps => {
   return {
     onRender: () => {
-      dispatch(changeFacetsModel(facet2.name, {
+      dispatch(changeFacet(facet2.name, {
         name: 'row2',
         formattedName: 'Row 2'
       }));
