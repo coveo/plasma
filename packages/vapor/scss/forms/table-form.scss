@@ -58,7 +58,7 @@
 
       background-color: $white;
 
-      input:disabled {
+      input:disabled:not([type='radio']) {
         font-family: $base-font-family;
         font-size: $title-font-size;
         font-weight: 600;
