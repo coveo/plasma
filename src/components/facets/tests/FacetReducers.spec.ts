@@ -159,5 +159,100 @@ describe('Reducers', () => {
       expect(facetsState.filter(f => f.opened).length).toBe(0);
       expect(facetsState.filter(f => !f.opened).length).toBe(oldState.length);
     });
+
+    it('should set selected property to an empty array the facet when the action is "EMPTY_FACET', () => {
+      let selectedRows = [
+        {
+          name: 'row',
+          formattedName: 'Row'
+        },
+        {
+          name: 'row2',
+          formattedName: 'Row 2'
+        }
+      ];
+      let oldState: IFacetState[] = [
+        {
+          facet: 'some-facet2',
+          opened: true,
+          selected: selectedRows
+        }, {
+          facet: 'some-facet1',
+          opened: false,
+          selected: selectedRows
+        }, {
+          facet: 'some-facet3',
+          opened: true,
+          selected: selectedRows
+        }
+      ];
+      let action: IReduxAction<IFacetActionPayload> = {
+        type: FacetActions.emptyFacet,
+        payload: {
+          facet: 'some-facet1'
+        }
+      };
+      let facetsState: IFacetState[] = facets(oldState, action);
+
+      expect(facetsState.length).toBe(oldState.length);
+      expect(facetsState.filter(f => f.facet === action.payload.facet)[0].selected.length).toBe(0);
+      expect(facetsState.filter(f => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+    });
+
+    it('should add the row to the beginning selected property of the facet when the action is "CHANGE_FACET" and remove it if it is already there', () => {
+      let selectedRows = [
+        {
+          name: 'row',
+          formattedName: 'Row'
+        },
+        {
+          name: 'row2',
+          formattedName: 'Row 2'
+        }
+      ];
+      let oldState: IFacetState[] = [
+        {
+          facet: 'some-facet2',
+          opened: true,
+          selected: selectedRows
+        }, {
+          facet: 'some-facet1',
+          opened: false,
+          selected: selectedRows
+        }, {
+          facet: 'some-facet3',
+          opened: true,
+          selected: selectedRows
+        }
+      ];
+      let newRow = {
+        name: 'newRow',
+        formattedName: 'A New Row'
+      };
+      let action: IReduxAction<IFacetActionPayload> = {
+        type: FacetActions.changeFacet,
+        payload: {
+          facet: 'some-facet1',
+          facetRow: newRow
+        }
+      };
+      let facetsState: IFacetState[] = facets(oldState, action);
+
+      expect(facetsState.length).toBe(oldState.length);
+      expect(facetsState.filter(f => f.facet === action.payload.facet)[0].selected.length).toBe(selectedRows.length + 1);
+      expect(facetsState.filter(f => f.facet === action.payload.facet)[0].selected[0].name).toBe(newRow.name);
+      expect(facetsState.filter(f => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+
+      action = {
+        type: FacetActions.changeFacet,
+        payload: {
+          facet: 'some-facet1',
+          facetRow: newRow
+        }
+      };
+      facetsState = facets(facetsState, action);
+      expect(facetsState.filter(f => f.facet === action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+      expect(facetsState.filter(f => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+    });
   });
 });

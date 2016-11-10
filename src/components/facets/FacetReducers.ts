@@ -1,7 +1,7 @@
 import { IFacetActionPayload, FacetActions } from './FacetActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
-import * as _ from 'underscore';
 import { IFacet } from './Facet';
+import * as _ from 'underscore';
 
 export interface IFacetState {
   facet: string;

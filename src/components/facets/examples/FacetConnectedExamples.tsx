@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { IFacet } from '../Facet';
 import { FacetConnected } from '../FacetConnected';
 import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
 import { IFacetActionPayload, changeFacetsModel } from '../FacetActions';
+import * as React from 'react';
 
 export interface ILastUpdateConnectedExamplesProps {
   selectedFacets?: IFacet[];

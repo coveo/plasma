@@ -63,18 +63,17 @@ export class Facet extends React.Component<IFacetProps, any> {
   }
 
   render() {
-    let removeSelectedClass = 'facet-header-eraser' + (this.props.selectedFacetRows && this.props.selectedFacetRows.length ? '' : ' hidden');
-    let facetRows = _.uniq(_.union(this.props.selectedFacetRows, this.props.facetRows), false, (item, key, name) => { return item.name; });
+    let selectedRows = this.props.selectedFacetRows || [];
+    let removeSelectedClass = 'facet-header-eraser' + (selectedRows.length ? '' : ' hidden');
+    let facetRows = _.uniq(_.union(selectedRows, this.props.facetRows), false, (item) => { return item.name; });
     let rows = _.map(facetRows, (facetRow: IFacet) => {
-      if (facetRow) {
-        return (<FacetRow
-          key={facetRow.name}
-          facet={this.props.facet.name}
-          facetRow={facetRow}
-          onToggleFacet={this.buildCategoryFacet}
-          isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
-          />);
-      }
+      return (<FacetRow
+        key={facetRow.name}
+        facet={this.props.facet.name}
+        facetRow={facetRow}
+        onToggleFacet={this.buildCategoryFacet}
+        isChecked={_.contains(_.pluck(selectedRows, 'name'), facetRow.name)}
+        />);
     });
     let moreRowsToggle = rows.length > 5 ?
       (this.props.withReduxState ? <FacetMoreToggleConnected facet={this.props.facet.name} /> : <FacetMoreToggle facet={this.props.facet.name} />) :

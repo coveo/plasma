@@ -1,5 +1,5 @@
 import { shallow, mount, ReactWrapper, ShallowWrapper } from 'enzyme';
-import { LastUpdated, ILastUpdatedProps, defaultLastUpdateLabel } from '../LastUpdated';
+import { LastUpdated, ILastUpdatedProps, LAST_UPDATE_LABEL } from '../LastUpdated';
 import { TestUtils } from '../../../utils/TestUtils';
 import * as s from 'underscore.string';
 import * as moment from 'moment';
@@ -70,7 +70,7 @@ describe('<LastUpdated />', () => {
         id={id}
         />
     );
-    expect(s.contains(lastUpdatedWrapper.html(), defaultLastUpdateLabel));
+    expect(s.contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL));
 
     let expectedLabel = 'Last update was at =>';
     lastUpdatedWrapper.setProps({ id: id, label: expectedLabel });

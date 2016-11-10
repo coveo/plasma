@@ -6,8 +6,8 @@ import { IReactVaporState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
 import { FacetConnected } from '../FacetConnected';
 import { FacetRow } from '../FacetRow';
-import { FacetMoreToggle } from '../FacetMoreToggle';
-import { FacetMoreRows } from '../FacetMoreRows';
+import { FacetMoreToggleConnected } from '../FacetMoreToggleConnected';
+import { FacetMoreRowsConnected } from '../FacetMoreRowsConnected';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -15,7 +15,7 @@ import * as React from 'react';
 describe('Facets', () => {
   describe('<FacetConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
-    let facetView: ReactWrapper<IFacetProps, any>;
+    let facetComponent: ReactWrapper<IFacetProps, any>;
     let store: Store<IReactVaporState>;
     let newRow: JSX.Element;
     let facetRows: IFacet[];
@@ -65,7 +65,7 @@ describe('Facets', () => {
         </Provider>,
         { attachTo: document.getElementById('App') }
       );
-      facetView = wrapper.find(Facet);
+      facetComponent = wrapper.find(Facet);
     });
 
     afterEach(() => {
@@ -74,56 +74,56 @@ describe('Facets', () => {
     });
 
     it('should get the facet rows as a prop', () => {
-      let facetRowsProp = facetView.props().facetRows;
+      let facetRowsProp = facetComponent.props().facetRows;
 
       expect(facetRowsProp).toBeDefined();
       expect(facetRowsProp).toEqual(jasmine.arrayContaining(facetRows));
     });
 
     it('should get the facet title as a prop', () => {
-      let facetProp = facetView.props().facet;
+      let facetProp = facetComponent.props().facet;
 
       expect(facetProp).toBeDefined();
       expect(facetProp).toBe(facet);
     });
 
     it('should get the selected facet rows as a prop', () => {
-      let selectedFacetRowsProp = facetView.props().selectedFacetRows;
+      let selectedFacetRowsProp = facetComponent.props().selectedFacetRows;
 
       expect(selectedFacetRowsProp).toBeDefined();
       expect(selectedFacetRowsProp).toBe(selectedFacetRows);
     });
 
     it('should get what to do when toggling a row as a prop', () => {
-      let onToggleFacetProp = facetView.props().onToggleFacet;
+      let onToggleFacetProp = facetComponent.props().onToggleFacet;
 
       expect(onToggleFacetProp).toBeDefined();
     });
 
     it('should get what to do when clearing a facet as a prop', () => {
-      let clearFacetProp = facetView.props().clearFacet;
+      let clearFacetProp = facetComponent.props().clearFacet;
 
       expect(clearFacetProp).toBeDefined();
     });
 
     it('should get what to do when rendering the facet as a prop', () => {
-      let onRenderProp = facetView.props().onRender;
+      let onRenderProp = facetComponent.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should get what to do when destroying the facet as a prop', () => {
-      let onDestroyProp = facetView.props().onDestroy;
+      let onDestroyProp = facetComponent.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should render as many <FacetRow /> components as there are facet rows', () => {
-      expect(facetView.find(FacetRow).length).toBe(facetRows.length);
+      expect(facetComponent.find(FacetRow).length).toBe(facetRows.length);
     });
 
     it('should render a toggle to view more facet rows if there are more than 5 rows', () => {
-      expect(facetView.find(FacetMoreToggle).length).toBe(0);
+      expect(facetComponent.find(FacetMoreToggleConnected).length).toBe(0);
 
       facetRows = facetRows.concat(
         {
@@ -147,11 +147,11 @@ describe('Facets', () => {
         />;
       wrapper.setProps({ children: newRow });
 
-      expect(facetView.find(FacetMoreToggle).length).toBe(1);
+      expect(facetComponent.find(FacetMoreToggleConnected).length).toBe(1);
     });
 
     it('should render more facet rows if there are more than 5 rows', () => {
-      expect(facetView.find(FacetMoreRows).length).toBe(0);
+      expect(facetComponent.find(FacetMoreRowsConnected).length).toBe(0);
 
       facetRows = facetRows.concat(
         {
@@ -175,11 +175,11 @@ describe('Facets', () => {
         />;
       wrapper.setProps({ children: newRow });
 
-      expect(facetView.find(FacetMoreRows).length).toBe(1);
+      expect(facetComponent.find(FacetMoreRowsConnected).length).toBe(1);
     });
 
     it('should show the button to clear the facet if there is a selected row', () => {
-      expect(facetView.find('.facet-header-eraser').hasClass('hidden')).toBe(false);
+      expect(facetComponent.find('.facet-header-eraser').hasClass('hidden')).toBe(false);
 
       selectedFacetRows = [];
 
@@ -192,15 +192,15 @@ describe('Facets', () => {
         />;
       wrapper.setProps({ children: newRow });
 
-      expect(facetView.find('.facet-header-eraser').hasClass('hidden')).toBe(true);
+      expect(facetComponent.find('.facet-header-eraser').hasClass('hidden')).toBe(true);
     });
 
     it('should display the facet title', () => {
-      expect(facetView.html()).toContain(facet.formattedName);
+      expect(facetComponent.html()).toContain(facet.formattedName);
     });
 
     it('should call onToggleFacet when buildCategoryFacet is called', () => {
-      let facetRowInput = facetView.find(FacetRow).first().find('input');
+      let facetRowInput = facetComponent.find(FacetRow).first().find('input');
 
       expect(onToggleFacet).not.toHaveBeenCalled();
 
@@ -211,7 +211,7 @@ describe('Facets', () => {
     });
 
     it('should call clearFacet when clearCategoryFacet is called', () => {
-      let facetEraser = facetView.find('.facet-header-eraser');
+      let facetEraser = facetComponent.find('.facet-header-eraser');
 
       expect(clearFacet).not.toHaveBeenCalled();
 

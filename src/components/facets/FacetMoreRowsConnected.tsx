@@ -4,10 +4,10 @@ import {
   IFacetMoreRowsDispatchProps
 } from './FacetMoreRows';
 import { filterThrough, IFilterActionPayload } from '../filterBox/FilterBoxActions';
+import { closeMoreFacetRows, IFacetActionPayload } from './FacetActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { closeMoreFacetRows, IFacetActionPayload } from './FacetActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsStateProps => {
   let item = _.findWhere(state.facets, { facet: ownProps.facet });
@@ -20,7 +20,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreRowsOwnPro
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IFilterActionPayload | IFacetActionPayload>) => void, ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IFilterActionPayload | IFacetActionPayload>) => void,
+  ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsDispatchProps => {
   return {
     onOpen: () => {
       dispatch(filterThrough('filter-' + ownProps.facet, ''));
@@ -31,4 +32,5 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IFilterActionPayload
   };
 };
 
-export const FacetMoreRowsConnected: React.ComponentClass<IFacetMoreRowsProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(FacetMoreRows);
+export const FacetMoreRowsConnected: React.ComponentClass<IFacetMoreRowsProps> =
+  connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(FacetMoreRows);

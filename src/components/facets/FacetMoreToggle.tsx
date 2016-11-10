@@ -15,6 +15,8 @@ export interface IFacetMoreToggleDispatchProps {
 
 export interface IFacetMoreToggleProps extends IFacetMoreToggleOwnProps, IFacetMoreToggleStateProps, IFacetMoreToggleDispatchProps { }
 
+export const FACET_TOGGLE_MORE_LABEL = 'More';
+
 export class FacetMoreToggle extends React.Component<IFacetMoreToggleProps, any> {
 
   handleOnChange = () => {
@@ -26,10 +28,10 @@ export class FacetMoreToggle extends React.Component<IFacetMoreToggleProps, any>
   render() {
     let isOpened = this.props.isOpened ? this.props.isOpened : false;
     let moreClasses = 'facet-value facet-selectable facet-more' + (isOpened ? ' hidden' : '');
-    let moreLabel = this.props.moreLabel || 'More';
+    let moreLabel = this.props.moreLabel || FACET_TOGGLE_MORE_LABEL;
 
     return (
-      <li className={moreClasses} onClick={(e) => e.stopPropagation()}>
+      <li className={moreClasses} onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
         <label className='facet-value-label'>
           <div className='facet-value-label-wrapper'>
             <input type='checkbox' className='facet-checkbox-input' onChange={() => this.handleOnChange()} />

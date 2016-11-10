@@ -18,6 +18,8 @@ export interface IFilterBoxDispatchProps {
 
 export interface IFilterBoxProps extends IFilterBoxOwnProps, IFilterBoxStateProps, IFilterBoxDispatchProps { }
 
+export const FILTER_PLACEHOLDER = 'Filer';
+
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
   private handleChange(e: React.FormEvent<HTMLInputElement>) {
@@ -40,7 +42,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
   }
 
   render() {
-    let filterPlaceholder = this.props.filterPlaceholder || 'Filter';
+    let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
 
     return (
       <div id={this.props.id} className='coveo-filter-container'>

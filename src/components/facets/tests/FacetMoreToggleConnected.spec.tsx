@@ -15,7 +15,7 @@ describe('Facets', () => {
   describe('<FacetMoreToggleConnected />', () => {
     let facet: string = 'facet title';
     let wrapper: ReactWrapper<any, any>;
-    let facetMoreToggleView: ReactWrapper<IFacetMoreToggleProps, any>;
+    let facetMoreToggle: ReactWrapper<IFacetMoreToggleProps, any>;
     let store: Store<IReactVaporState>;
 
     beforeEach(() => {
@@ -29,7 +29,7 @@ describe('Facets', () => {
         </Provider>,
         { attachTo: document.getElementById('App') }
       );
-      facetMoreToggleView = wrapper.find(FacetMoreToggle);
+      facetMoreToggle = wrapper.find(FacetMoreToggle);
 
       store.dispatch(addFacet(facet));
     });
@@ -40,50 +40,33 @@ describe('Facets', () => {
       wrapper.detach();
     });
 
-    it('should get the facet as a prop', () => {
-      let facetProp = facetMoreToggleView.props().facet;
-
-      expect(facetProp).toBeDefined();
-      expect(facetProp).toBe(facet);
-    });
-
     it('should get its state (opened or not) as a prop', () => {
-      let openedProp = facetMoreToggleView.props().isOpened;
+      let openedProp = facetMoreToggle.props().isOpened;
 
       expect(openedProp).toBeDefined();
       expect(openedProp).toBe(false);
     });
 
     it('should get what to do when toggling it as a prop', () => {
-      let onToggleProp = facetMoreToggleView.props().onToggleMore;
+      let onToggleProp = facetMoreToggle.props().onToggleMore;
 
       expect(onToggleProp).toBeDefined();
     });
 
     it('should call onToggleMore on change', () => {
-      expect(facetMoreToggleView.props().isOpened).toBe(false);
+      expect(facetMoreToggle.props().isOpened).toBe(false);
 
-      facetMoreToggleView.find('input').simulate('change');
+      facetMoreToggle.find('input').simulate('change');
 
-      expect(facetMoreToggleView.props().isOpened).toBe(true);
+      expect(facetMoreToggle.props().isOpened).toBe(true);
     });
 
     it('should be hidden when the other rows are opened', () => {
-      expect(facetMoreToggleView.find('li').hasClass('hidden')).toBe(false);
+      expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(false);
 
       store.dispatch(toggleMoreFacetRows(facet));
 
-      expect(facetMoreToggleView.find('li').hasClass('hidden')).toBe(true);
-    });
-
-    it('should not call onClickElsewhere from application to close the rows when clicking anywhere', () => {
-      facetMoreToggleView.find('input').simulate('change');
-
-      expect(facetMoreToggleView.props().isOpened).toBe(true);
-
-      facetMoreToggleView.simulate('click');
-
-      expect(facetMoreToggleView.props().isOpened).toBe(true);
+      expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(true);
     });
   });
 });

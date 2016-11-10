@@ -28,7 +28,7 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
 
   componentDidMount() {
     if (this.props.onDocumentClick) {
-      document.body.addEventListener('click', this.handleDocumentClick);
+      document.addEventListener('click', this.handleDocumentClick);
     }
   }
 
@@ -40,7 +40,7 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
 
   componentWillUnmount() {
     if (this.props.onDocumentClick) {
-      document.body.removeEventListener('click', this.handleDocumentClick);
+      document.removeEventListener('click', this.handleDocumentClick);
     }
   }
 
