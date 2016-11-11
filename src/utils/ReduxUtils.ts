@@ -4,6 +4,9 @@ import { extend } from 'underscore';
 import { ILastUpdatedState } from '../components/lastUpdated/LastUpdatedReducers';
 import { IFacetState } from '../components/facets/FacetReducers';
 import { IFilterState } from '../components/filterBox/FilterBoxReducers';
+import { IPerPageState } from '../components/navigation/perPage/NavigationPerPageReducers';
+import { ILoadingState } from '../components/loading/LoadingReducers';
+import { IPaginationState } from '../components/navigation/pagination/NavigationPaginationReducers';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
@@ -15,6 +18,9 @@ export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
   facets?: IFacetState[];
   filters?: IFilterState[];
+  perPageComposite?: IPerPageState[];
+  paginationComposite?: IPaginationState[];
+  loadings?: ILoadingState[];
 }
 
 export const CommonActions = {

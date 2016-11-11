@@ -15,6 +15,7 @@ import { FilterBoxExamples } from '../src/components/filterBox/examples/FilterBo
 import { FilterBoxConnectedExamples } from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
 import { FacetConnectedExamples } from '../src/components/facets/examples/FacetConnectedExamples';
 import { FacetExamples } from '../src/components/facets/examples/FacetExamples';
+import { NavigationExamples } from '../src/components/navigation/examples/NavigationExamples';
 
 class App extends React.Component<any, any> {
 
@@ -89,6 +90,7 @@ class App extends React.Component<any, any> {
           <FilterBoxConnectedExamples />
           <FacetExamples />
           <FacetConnectedExamples />
+          <NavigationExamples />
         </div>
       </Provider>
     );
