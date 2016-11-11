@@ -1,0 +1,54 @@
+.spinner {
+  width: $loading-size;
+  margin: 0 auto;
+
+  text-align: center;
+
+  cursor: default;
+
+  &.mod-vertical-margin {
+    margin-top: $loading-vertical-margin;
+    margin-bottom: $loading-vertical-margin;
+  }
+
+  & > div {
+    display: inline-block;
+    width: $bounce-size;
+    height: $bounce-size;
+
+    background-color: $orange;
+    border-radius: 100%;
+
+    animation: bouncedelay 1.7s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    animation-fill-mode: both;
+  }
+
+  .bounce1 {
+    animation-delay: -0.32s;
+  }
+
+  .bounce2 {
+    animation-delay: -0.16s;
+  }
+}
+
+.loading-prompt {
+  margin-top: $loading-prompt-margin-top;
+  margin-bottom: $loading-prompt-margin-bottom;
+
+  font-size: $loading-font-size;
+  text-align: center;
+
+  .spinner {
+    width: $big-loading-size;
+    margin-top: $big-loading-margin-top;
+
+    & > div {
+      width: $big-bounce-size;
+      height: $big-bounce-size;
+
+      background-color: $orange;
+    }
+  }
+}
