@@ -10,29 +10,23 @@ export interface ILastUpdatedPayload {
   id: string;
 }
 
-export const addLastUpdated = (id: string): IReduxAction<ILastUpdatedPayload> => {
-  return {
-    type: LastUpdatedActions.addLastUpdated,
-    payload: {
-      id
-    }
-  };
-};
+export const addLastUpdated = (id: string): IReduxAction<ILastUpdatedPayload> => ({
+  type: LastUpdatedActions.addLastUpdated,
+  payload: {
+    id
+  }
+});
 
-export const removeLastUpdated = (id: string): IReduxAction<ILastUpdatedPayload> => {
-  return {
-    type: LastUpdatedActions.removeLastUpdated,
-    payload: {
-      id
-    }
-  };
-};
+export const removeLastUpdated = (id: string): IReduxAction<ILastUpdatedPayload> => ({
+  type: LastUpdatedActions.removeLastUpdated,
+  payload: {
+    id
+  }
+});
 
-export const changeLastUpdated = (id: string): IReduxAction<ILastUpdatedPayload> => {
-  return {
-    type: LastUpdatedActions.changeLastUpdated,
-    payload: {
-      id
-    }
-  };
-};
+export const changeLastUpdated = (id: string): IReduxAction<ILastUpdatedPayload> => ({
+  type: LastUpdatedActions.changeLastUpdated,
+  payload: {
+    id
+  }
+});

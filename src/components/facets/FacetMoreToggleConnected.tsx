@@ -12,7 +12,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreToggleOwnP
   let item = _.findWhere(state.facets, { facet: ownProps.facet });
 
   return {
-    isOpened: item ? item.opened : false
+    isOpened: item && item.opened
   };
 };
 
