@@ -4,7 +4,7 @@ import { Loading } from '../loading/Loading';
 import { NavigationPaginationConnected } from './pagination/NavigationPaginationConnected';
 import { NavigationPerPageConnected } from './perPage/NavigationPerPageConnected';
 import { NavigationPagination, INavigationPaginationProps } from './pagination/NavigationPagination';
-import {NavigationPerPage, INavigationPerPageProps, PER_PAGE_NUMBERS} from './perPage/NavigationPerPage';
+import { NavigationPerPage, INavigationPerPageProps, PER_PAGE_NUMBERS } from './perPage/NavigationPerPage';
 import * as React from 'react';
 
 export interface INavigationOwnProps extends React.ClassAttributes<Navigation> {

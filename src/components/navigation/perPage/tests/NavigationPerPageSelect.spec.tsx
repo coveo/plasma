@@ -1,5 +1,5 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import {NavigationPerPageSelect, INavigationPerPageSelectProps} from '../NavigationPerPageSelect';
+import { NavigationPerPageSelect, INavigationPerPageSelectProps } from '../NavigationPerPageSelect';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -27,7 +27,7 @@ describe('NavigationPerPageSelect', () => {
 
     beforeEach(() => {
       navigationPerPageSelect = mount(
-          <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />,
+        <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />,
         { attachTo: document.body }
       );
     });
@@ -58,7 +58,7 @@ describe('NavigationPerPageSelect', () => {
     });
 
     it('should have "selectable" class if it is not selected', () => {
-      let newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, {selected: true});
+      let newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, { selected: true });
       let option = navigationPerPageSelect.find('.flat-select-option');
 
       expect(option.hasClass('selectable')).toBe(true);
@@ -69,7 +69,7 @@ describe('NavigationPerPageSelect', () => {
     });
 
     it('should have "selected-value" "state-selected" classes when selected', () => {
-      let newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, {selected: true});
+      let newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, { selected: true });
       let option = navigationPerPageSelect.find('.flat-select-option');
       let optionSpan = option.find('.enabled');
 

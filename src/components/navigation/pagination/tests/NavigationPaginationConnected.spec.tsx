@@ -1,13 +1,13 @@
 import { mount, ReactWrapper } from 'enzyme';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
-import {INavigationPaginationProps, NavigationPagination} from '../NavigationPagination';
-import {IReactVaporState, clearState} from '../../../../utils/ReduxUtils';
-import {NavigationPaginationConnected} from '../NavigationPaginationConnected';
-import {TestUtils} from '../../../../utils/TestUtils';
-import {NavigationPaginationSelect} from '../NavigationPaginationSelect';
-import {changePage, resetPaging} from '../NavigationPaginationActions';
-import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
+import { INavigationPaginationProps, NavigationPagination } from '../NavigationPagination';
+import { IReactVaporState, clearState } from '../../../../utils/ReduxUtils';
+import { NavigationPaginationConnected } from '../NavigationPaginationConnected';
+import { TestUtils } from '../../../../utils/TestUtils';
+import { NavigationPaginationSelect } from '../NavigationPaginationSelect';
+import { changePage, resetPaging } from '../NavigationPaginationActions';
+import { addLoading, turnOffLoading } from '../../../loading/LoadingActions';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -124,19 +124,19 @@ describe('<NavigationPaginationConnected />', () => {
   });
 
   it('should add loading on page click', () => {
-    expect(_.findWhere(store.getState().loadings, {id: loadingId}).isOn).toBe(false);
+    expect(_.findWhere(store.getState().loadings, { id: loadingId }).isOn).toBe(false);
 
     navigationPagination.find('.flat-select-option').last().simulate('click');
 
-    expect(_.findWhere(store.getState().loadings, {id: loadingId}).isOn).toBe(true);
+    expect(_.findWhere(store.getState().loadings, { id: loadingId }).isOn).toBe(true);
   });
 
   it('should change the current page on page click', () => {
-    expect(_.findWhere(store.getState().paginationComposite, {id: navigationPaginationId}).pageNb).toBe(0);
+    expect(_.findWhere(store.getState().paginationComposite, { id: navigationPaginationId }).pageNb).toBe(0);
 
     navigationPagination.find('.flat-select-option').last().simulate('click');
 
-    expect(_.findWhere(store.getState().paginationComposite, {id: navigationPaginationId}).pageNb).not.toBe(0);
+    expect(_.findWhere(store.getState().paginationComposite, { id: navigationPaginationId }).pageNb).not.toBe(0);
   });
 
   it('should return to the first page when resetting the pagination', () => {
@@ -147,4 +147,3 @@ describe('<NavigationPaginationConnected />', () => {
     expect(navigationPagination.props().currentPage).toBe(0);
   });
 });
-

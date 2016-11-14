@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ILoadingActionPayload, LoadingActions} from '../LoadingActions';
-import {loadings, loadingsInitialState, loading, ILoadingState, loadingInitialState} from '../LoadingReducers';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { ILoadingActionPayload, LoadingActions } from '../LoadingActions';
+import { loadings, loadingsInitialState, loading, ILoadingState, loadingInitialState } from '../LoadingReducers';
 import * as _ from 'underscore';
 
 describe('Reducers', () => {
@@ -123,9 +123,9 @@ describe('Reducers', () => {
       };
       let loadingState = loadings(oldState, action);
 
-      expect(_.findWhere(loadingState, {id: 'some-loading'}).isOn).toBe(true);
-      expect(_.findWhere(loadingState, {id: 'some-loading2'}).isOn).toBe(true);
-      expect(_.findWhere(loadingState, {id: 'some-loading1'}).isOn).toBe(false);
+      expect(_.findWhere(loadingState, { id: 'some-loading' }).isOn).toBe(true);
+      expect(_.findWhere(loadingState, { id: 'some-loading2' }).isOn).toBe(true);
+      expect(_.findWhere(loadingState, { id: 'some-loading1' }).isOn).toBe(false);
     });
 
     it('should set isOn to false when the action is "TURN_OFF_LOADING" for the action id', () => {
@@ -151,9 +151,9 @@ describe('Reducers', () => {
       };
       let loadingState = loadings(oldState, action);
 
-      expect(_.findWhere(loadingState, {id: 'some-loading'}).isOn).toBe(false);
-      expect(_.findWhere(loadingState, {id: 'some-loading2'}).isOn).toBe(false);
-      expect(_.findWhere(loadingState, {id: 'some-loading1'}).isOn).toBe(true);
+      expect(_.findWhere(loadingState, { id: 'some-loading' }).isOn).toBe(false);
+      expect(_.findWhere(loadingState, { id: 'some-loading2' }).isOn).toBe(false);
+      expect(_.findWhere(loadingState, { id: 'some-loading1' }).isOn).toBe(true);
     });
   });
 });

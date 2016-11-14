@@ -1,5 +1,5 @@
-import {IPaginationActionPayload, PaginationActions} from '../NavigationPaginationActions';
-import {IReduxAction} from '../../../../utils/ReduxUtils';
+import { IPaginationActionPayload, PaginationActions } from '../NavigationPaginationActions';
+import { IReduxAction } from '../../../../utils/ReduxUtils';
 import {
   paginationComposite, paginationCompositeInitialState, pagination,
   paginationInitialState, IPaginationState

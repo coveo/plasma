@@ -61,7 +61,7 @@ describe('Navigation', () => {
     });
 
     it('should be selectable if not selected', () => {
-      let newNavigationPaginationSelectProps = _.extend(basicNavigationPaginationSelectProps, {selected: true});
+      let newNavigationPaginationSelectProps = _.extend(basicNavigationPaginationSelectProps, { selected: true });
       expect(navigationPaginationSelect.find('.flat-select-option').hasClass('selectable')).toBe(true);
 
       navigationPaginationSelect.setProps(newNavigationPaginationSelectProps);

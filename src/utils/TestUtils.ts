@@ -1,11 +1,11 @@
 import { lastUpdatedComposite } from '../components/lastUpdated/LastUpdatedReducers';
 import { filters } from '../components/filterBox/FilterBoxReducers';
 import { facets } from '../components/facets/FacetReducers';
-import {paginationComposite} from '../components/navigation/pagination/NavigationPaginationReducers';
-import {perPageComposite} from '../components/navigation/perPage/NavigationPerPageReducers';
+import { paginationComposite } from '../components/navigation/pagination/NavigationPaginationReducers';
+import { perPageComposite } from '../components/navigation/perPage/NavigationPerPageReducers';
 import { CommonActions, IReactVaporState } from './ReduxUtils';
 import * as Redux from 'redux';
-import {loadings} from '../components/loading/LoadingReducers';
+import { loadings } from '../components/loading/LoadingReducers';
 
 export class TestUtils {
   static buildStore() {

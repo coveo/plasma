@@ -1,6 +1,6 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import {NavigationPerPage, INavigationPerPageProps, PER_PAGE_LABEL, PER_PAGE_NUMBERS} from '../NavigationPerPage';
-import {NavigationPerPageSelect} from '../NavigationPerPageSelect';
+import { NavigationPerPage, INavigationPerPageProps, PER_PAGE_LABEL, PER_PAGE_NUMBERS } from '../NavigationPerPage';
+import { NavigationPerPageSelect } from '../NavigationPerPageSelect';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -60,7 +60,7 @@ describe('NavigationPerPage', () => {
 
     it('should call onRender if prop is set on mount', () => {
       let onRenderSpy = jasmine.createSpy('onRender');
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {onRender: onRenderSpy});
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { onRender: onRenderSpy });
 
       navigationPerPage.unmount();
       navigationPerPage.setProps(newNavigationPerPageProps);
@@ -70,7 +70,7 @@ describe('NavigationPerPage', () => {
 
     it('should call onDestroy if prop is set when unmounting', () => {
       let onDestroySpy = jasmine.createSpy('onDestroy');
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {onDestroy: onDestroySpy});
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { onDestroy: onDestroySpy });
 
       navigationPerPage.unmount();
       navigationPerPage.setProps(newNavigationPerPageProps);
@@ -81,7 +81,7 @@ describe('NavigationPerPage', () => {
 
     it('should display the per page label if prop is set else it should show the default one', () => {
       let expectedLabel = 'Show this many items per page';
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {label: expectedLabel});
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { label: expectedLabel });
 
       expect(navigationPerPage.html()).toContain(PER_PAGE_LABEL);
 
@@ -92,7 +92,7 @@ describe('NavigationPerPage', () => {
 
     it('should show the custom per page numbers if set as a prop or show the default ones', () => {
       let expectedPerPageNumbers = [2, 3, 4, 5, 10, 30];
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {perPageNumbers: expectedPerPageNumbers});
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { perPageNumbers: expectedPerPageNumbers });
 
       expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(PER_PAGE_NUMBERS.length);
 

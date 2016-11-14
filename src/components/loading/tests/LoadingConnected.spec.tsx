@@ -1,9 +1,9 @@
-import {ReactWrapper, mount} from 'enzyme';
-import {IReactVaporState} from '../../../utils/ReduxUtils';
-import {Store} from 'redux';
-import {TestUtils} from '../../../utils/TestUtils';
-import {LoadingConnected} from '../LoadingConnected';
-import {Provider} from 'react-redux';
+import { ReactWrapper, mount } from 'enzyme';
+import { IReactVaporState } from '../../../utils/ReduxUtils';
+import { Store } from 'redux';
+import { TestUtils } from '../../../utils/TestUtils';
+import { LoadingConnected } from '../LoadingConnected';
+import { Provider } from 'react-redux';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */

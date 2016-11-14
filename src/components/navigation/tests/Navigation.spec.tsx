@@ -1,8 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import {Navigation, INavigationProps} from '../Navigation';
-import {Loading} from '../../loading/Loading';
-import {NavigationPagination} from '../pagination/NavigationPagination';
-import {NavigationPerPage, PER_PAGE_NUMBERS} from '../perPage/NavigationPerPage';
+import { Navigation, INavigationProps } from '../Navigation';
+import { Loading } from '../../loading/Loading';
+import { NavigationPagination } from '../pagination/NavigationPagination';
+import { NavigationPerPage, PER_PAGE_NUMBERS } from '../perPage/NavigationPerPage';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -59,7 +59,7 @@ describe(' navigation', () => {
     });
 
     it('should render a <NavigationPagination /> component if totalPages is higher than 1', () => {
-      let newNavigationProps = _.extend({}, basicNavigationProps, {totalPages: 1});
+      let newNavigationProps = _.extend({}, basicNavigationProps, { totalPages: 1 });
 
       expect(navigation.find(NavigationPagination).length).toBe(1);
 

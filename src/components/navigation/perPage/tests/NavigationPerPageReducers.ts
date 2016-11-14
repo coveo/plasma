@@ -1,5 +1,5 @@
-import {IPerPageActionPayload, PerPageActions} from '../NavigationPerPageActions';
-import {IReduxAction} from '../../../../utils/ReduxUtils';
+import { IPerPageActionPayload, PerPageActions } from '../NavigationPerPageActions';
+import { IReduxAction } from '../../../../utils/ReduxUtils';
 import {
   IPerPageState, perPageComposite, perPageCompositeInitialState, perPage,
   perPageInitialState

@@ -1,4 +1,4 @@
-import {shallow, ReactWrapper, mount} from 'enzyme';
+import { shallow, ReactWrapper, mount } from 'enzyme';
 import {
   NavigationPagination, INavigationPaginationProps, PREVIOUS_LABEL, NEXT_LABEL,
   NUMBER_OF_PAGES_SHOWING
@@ -30,7 +30,7 @@ describe('NavigationPagination', () => {
       navigationPagination = mount(
         <NavigationPagination
           {...basicNavigationPaginationAttributes}
-        />,
+          />,
         { attachTo: document.getElementById('App') }
       );
     });
@@ -114,4 +114,3 @@ describe('NavigationPagination', () => {
     });
   });
 });
-

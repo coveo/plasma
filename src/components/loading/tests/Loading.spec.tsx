@@ -1,5 +1,5 @@
-import {shallow, ShallowWrapper, ReactWrapper, mount} from 'enzyme';
-import {Loading, ILoadingProps} from '../Loading';
+import { shallow, ShallowWrapper, ReactWrapper, mount } from 'enzyme';
+import { Loading, ILoadingProps } from '../Loading';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
