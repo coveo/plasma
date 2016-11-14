@@ -1,157 +1,117 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { clearState } from '../../../src/actions/index';
-import { changePage } from '../../../src/actions/pagination';
-import { Utilities } from '../../TestUtilities';
-import { ActivityBrowserState } from '../../../src/activity-browser/ActivityBrowserLayout';
+import {shallow, ReactWrapper, mount} from 'enzyme';
 import {
-  TableNavigationPaginationView,
-  TableNavigationPaginationViewConnected, TableNavigationPaginationProps
-} from '../../../src/tables/navigation/TableNavigationPaginationView';
-import { TableNavigationPaginationSelectView } from '../../../src/tables/navigation/TableNavigationPaginationSelectView';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
+  NavigationPagination, INavigationPaginationProps, PREVIOUS_LABEL, NEXT_LABEL,
+  NUMBER_OF_PAGES_SHOWING
+} from '../NavigationPagination';
+import * as _ from 'underscore';
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import createSpy = jasmine.createSpy;
+/* tslint:enable:no-unused-variable */
 
-describe('Table navigation', () => {
-  let totalPages: number;
-  let currentPage: number;
-  let onPageClick: (pageNb: number) => void;
+describe('NavigationPagination', () => {
+  let basicNavigationPaginationAttributes: INavigationPaginationProps = {
+    totalPages: 22
+  };
 
-  describe('TableNavigationPaginationView', () => {
+  describe('<NavigationPagination />', () => {
     it('should render without errors', () => {
-      totalPages = 22;
-      currentPage = 2;
-      onPageClick = createSpy('onPageClick');
-
       expect(() => {
         shallow(
-          <TableNavigationPaginationView
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onPageClick={onPageClick}
-            />
+          <NavigationPagination {...basicNavigationPaginationAttributes} />
         );
       }).not.toThrow();
     });
   });
 
-  describe('TableNavigationPaginationView', () => {
-    let wrapper: ReactWrapper<any, any>;
-    let tableNavigationPaginationView: ReactWrapper<TableNavigationPaginationProps, any>;
-    let fewPagesTableNavigationPaginationView: ReactWrapper<TableNavigationPaginationProps, any>;
-    let store: Store<ActivityBrowserState>;
+  describe('<NavigationPagination />', () => {
+    let navigationPagination: ReactWrapper<INavigationPaginationProps, any>;
 
     beforeEach(() => {
-      totalPages = 20;
-
-      store = Utilities.buildStore();
-
-      wrapper = mount(
-        <Provider store={store}>
-          <div>
-            <TableNavigationPaginationViewConnected
-              totalPages={totalPages}
-              />
-            <TableNavigationPaginationViewConnected
-              totalPages={3}
-              />
-          </div>
-        </Provider>,
-        { attachTo: document.body }
+      navigationPagination = mount(
+        <NavigationPagination
+          {...basicNavigationPaginationAttributes}
+        />,
+        { attachTo: document.getElementById('App') }
       );
-      tableNavigationPaginationView = wrapper.find(TableNavigationPaginationView).first();
-      fewPagesTableNavigationPaginationView = wrapper.find(TableNavigationPaginationView).last();
     });
 
     afterEach(() => {
-      store.dispatch(clearState());
-      wrapper.unmount();
-      wrapper.detach();
+      navigationPagination.unmount();
+      navigationPagination.detach();
     });
 
-    it('should get the number of pages as a prop', () => {
-      let totalPagesProp = tableNavigationPaginationView.props().totalPages;
+    it('should call prop onRender on mounting if set', () => {
+      let renderSpy = jasmine.createSpy('onRender');
+      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { onRender: renderSpy });
 
-      expect(totalPagesProp).toBeDefined();
-      expect(totalPagesProp).toBe(totalPages);
+      navigationPagination.unmount();
+      navigationPagination.setProps(newNavigationPaginationAttributes);
+      navigationPagination.mount();
+      expect(renderSpy.calls.count()).toBe(1);
     });
 
-    it('should get the current page as a prop', () => {
-      let currentPageProp = tableNavigationPaginationView.props().currentPage;
+    it('should call prop onDestroy on unmounting if set', () => {
+      let destroySpy = jasmine.createSpy('onDestroy');
+      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { onDestroy: destroySpy });
 
-      expect(currentPageProp).toBeDefined();
-      expect(currentPageProp).toBe(0);
+      navigationPagination.unmount();
+      navigationPagination.setProps(newNavigationPaginationAttributes);
+      navigationPagination.mount();
+      navigationPagination.unmount();
+      expect(destroySpy.calls.count()).toBe(1);
     });
 
-    it('should get what to do on click as a prop', () => {
-      let onPageClickProp = tableNavigationPaginationView.props().onPageClick;
+    it('should call onPageClick prop if set when clicking on next/previous or page number and page number is greater than or is 0', () => {
+      let clickSpy = jasmine.createSpy('onClick');
+      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { onPageClick: clickSpy });
 
-      expect(onPageClickProp).toBeDefined();
+      navigationPagination.setProps(newNavigationPaginationAttributes);
+
+      (navigationPagination.instance() as NavigationPagination).handlePageClick(-2);
+      expect(clickSpy).not.toHaveBeenCalled();
+
+      // Previous button (does not call spy since current page is zero)
+      navigationPagination.find('.mod-link').first().simulate('click');
+      expect(clickSpy).not.toHaveBeenCalled();
+
+      // Number button
+      navigationPagination.find('.selectable').first().simulate('click');
+      expect(clickSpy.calls.count()).toBe(1);
+
+      // Next button
+      navigationPagination.find('.mod-link').last().simulate('click');
+      expect(clickSpy.calls.count()).toBe(2);
     });
 
-    it('should render no more <TableNavigationPaginationSelectView /> than the total number of pages', () => {
-      expect(tableNavigationPaginationView.find(TableNavigationPaginationSelectView).length).toBeLessThan(totalPages + 1);
-      expect(fewPagesTableNavigationPaginationView.find(TableNavigationPaginationSelectView).length).toBeLessThan(totalPages + 1);
+    it('should show the previous label sent as a prop else show the default one', () => {
+      let expectedLabel = 'Previous page';
+      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { previousLabel: expectedLabel });
+
+      expect(navigationPagination.html()).toContain(PREVIOUS_LABEL);
+
+      navigationPagination.setProps(newNavigationPaginationAttributes);
+      expect(navigationPagination.html()).toContain(expectedLabel);
     });
 
-    it('should render no more <TableNavigationPaginationSelectView /> than the maximum of pages shown (7)', () => {
-      expect(tableNavigationPaginationView.find(TableNavigationPaginationSelectView).length).toBeLessThan(8);
-      expect(fewPagesTableNavigationPaginationView.find(TableNavigationPaginationSelectView).length).toBeLessThan(8);
+    it('should show the next label sent as a prop else show the default one', () => {
+      let expectedLabel = 'Next page';
+      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { nextLabel: expectedLabel });
+
+      expect(navigationPagination.html()).toContain(NEXT_LABEL);
+
+      navigationPagination.setProps(newNavigationPaginationAttributes);
+      expect(navigationPagination.html()).toContain(expectedLabel);
     });
 
-    it('should set the previous arrow to disabled if on first page', () => {
-      let previousArrow = tableNavigationPaginationView.find('.flat-select-option').first();
+    it('should show as many pages as numberOfPagesToShow prop else show the default number', () => {
+      let expectedNbOfPagesToShow = 2;
+      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { numberOfPagesToShow: 2 });
 
-      expect(previousArrow.hasClass('disabled')).toBe(true);
+      expect(navigationPagination.find('NavigationPaginationSelect').length).toBe(NUMBER_OF_PAGES_SHOWING);
 
-      store.dispatch(changePage(3));
-
-      expect(previousArrow.hasClass('disabled')).toBe(false);
-    });
-
-    it('should set the next arrow to disabled if on last page', () => {
-      let nextArrow = tableNavigationPaginationView.find('.flat-select-option').last();
-
-      expect(nextArrow.hasClass('disabled')).toBe(false);
-
-      store.dispatch(changePage(3));
-
-      expect(nextArrow.hasClass('disabled')).toBe(false);
-
-      store.dispatch(changePage(totalPages - 1));
-
-      expect(nextArrow.hasClass('disabled')).toBe(true);
-    });
-
-    it('should show the last page if there are less pages left than half maximum number of pages shown (7)', () => {
-      let lastPage = totalPages - 1;
-
-      expect(tableNavigationPaginationView.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(0);
-
-      store.dispatch(changePage(lastPage - 4));
-
-      expect(tableNavigationPaginationView.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(0);
-
-      store.dispatch(changePage(lastPage - 3));
-
-      expect(tableNavigationPaginationView.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(1);
-    });
-
-    it('should add loading on page click', () => {
-      expect(store.getState().loading).toBe(false);
-
-      tableNavigationPaginationView.find('.flat-select-option').first().simulate('click');
-
-      expect(store.getState().loading).toBe(true);
-    });
-
-    it('should change the current page on page click', () => {
-      expect(store.getState().pageNb).toBe(0);
-
-      tableNavigationPaginationView.find('.flat-select-option').last().simulate('click');
-
-      expect(store.getState().pageNb).not.toBe(0);
+      navigationPagination.setProps(newNavigationPaginationAttributes);
+      expect(navigationPagination.find('NavigationPaginationSelect').length).toBe(expectedNbOfPagesToShow);
     });
   });
 });
+

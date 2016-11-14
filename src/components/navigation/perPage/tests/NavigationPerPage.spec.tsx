@@ -1,75 +1,103 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { Utilities } from '../../TestUtilities';
-import { ActivityBrowserState } from '../../../src/activity-browser/ActivityBrowserLayout';
-import {
-  NavigationPerPageView,
-  NavigationPerPageProps
-} from '../../../src/s/navigation/NavigationPerPageView';
-import { NavigationPerPageSelectViewConnected } from '../../../src/s/navigation/NavigationPerPageSelectView';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
+import {NavigationPerPage, INavigationPerPageProps, PER_PAGE_LABEL, PER_PAGE_NUMBERS} from '../NavigationPerPage';
+import {NavigationPerPageSelect} from '../NavigationPerPageSelect';
+import * as _ from 'underscore';
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 
-describe(' navigation', () => {
-  let totalEntries: number;
+describe('NavigationPerPage', () => {
+  let basicNavigationPerPageProps: INavigationPerPageProps = {
+    totalEntries: 50
+  };
 
-  describe('NavigationPerPageView', () => {
+  describe('<NavigationPerPage />', () => {
     it('should render without errors', () => {
-      totalEntries = 12;
-
       expect(() => {
         shallow(
-          <NavigationPerPageView
-            totalEntries={totalEntries}
-            />
+          <NavigationPerPage {...basicNavigationPerPageProps} />
         );
       }).not.toThrow();
     });
   });
 
   describe('NavigationPerPageView', () => {
-    let wrapper: ReactWrapper<any, any>;
-    let NavigationPerPageView: ReactWrapper<NavigationPerPageProps, any>;
-    let fewElementsNavigationPerPageView: ReactWrapper<NavigationPerPageProps, any>;
-    let store: Store<ActivityBrowserState>;
+    let navigationPerPage: ReactWrapper<INavigationPerPageProps, any>;
 
     beforeEach(() => {
-      totalEntries = 50;
 
-      store = Utilities.buildStore();
-
-      wrapper = mount(
-        <Provider store={store}>
-          <div>
-            <NavigationPerPageView
-              totalEntries={totalEntries}
-              />
-            <NavigationPerPageView
-              totalEntries={11}
-              />
-          </div>
-        </Provider>,
-        { attachTo: document.body }
+      navigationPerPage = mount(
+        <NavigationPerPage {...basicNavigationPerPageProps} />,
+        { attachTo: document.getElementById('App') }
       );
-      NavigationPerPageView = wrapper.find(NavigationPerPageView).first();
-      fewElementsNavigationPerPageView = wrapper.find(NavigationPerPageView).last();
     });
 
     afterEach(() => {
-      wrapper.unmount();
-      wrapper.detach();
+      navigationPerPage.unmount();
+      navigationPerPage.detach();
     });
 
     it('should get the number of entries as a prop', () => {
-      let totalEntriesProp = NavigationPerPageView.props().totalEntries;
+      let totalEntriesProp = navigationPerPage.props().totalEntries;
 
       expect(totalEntriesProp).toBeDefined();
-      expect(totalEntriesProp).toBe(totalEntries);
+      expect(totalEntriesProp).toBe(basicNavigationPerPageProps.totalEntries);
     });
 
-    it('should render the <NavigationPerPageSelectViewConnected /> where there are at least 1 element more than the other before', () => {
-      expect(NavigationPerPageView.find(NavigationPerPageSelectViewConnected).length).toBe(3);
-      expect(fewElementsNavigationPerPageView.find(NavigationPerPageSelectViewConnected).length).toBe(2);
+    it('should render the <NavigationPerPageSelect /> where there are at least 1 element more than the previous <NavigationPerPageSelect />', () => {
+
+      // [10, 20, 30]
+      expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(3);
+
+      navigationPerPage = mount(
+        <NavigationPerPage totalEntries={11} />,
+        { attachTo: document.getElementById('App') }
+      );
+
+      // [10, 20]
+      expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(2);
+    });
+
+    it('should call onRender if prop is set on mount', () => {
+      let onRenderSpy = jasmine.createSpy('onRender');
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {onRender: onRenderSpy});
+
+      navigationPerPage.unmount();
+      navigationPerPage.setProps(newNavigationPerPageProps);
+      navigationPerPage.mount();
+      expect(onRenderSpy).toHaveBeenCalled();
+    });
+
+    it('should call onDestroy if prop is set when unmounting', () => {
+      let onDestroySpy = jasmine.createSpy('onDestroy');
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {onDestroy: onDestroySpy});
+
+      navigationPerPage.unmount();
+      navigationPerPage.setProps(newNavigationPerPageProps);
+      navigationPerPage.mount();
+      navigationPerPage.unmount();
+      expect(onDestroySpy).toHaveBeenCalled();
+    });
+
+    it('should display the per page label if prop is set else it should show the default one', () => {
+      let expectedLabel = 'Show this many items per page';
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {label: expectedLabel});
+
+      expect(navigationPerPage.html()).toContain(PER_PAGE_LABEL);
+
+      navigationPerPage.setProps(newNavigationPerPageProps);
+      expect(navigationPerPage.html()).not.toContain(PER_PAGE_LABEL);
+      expect(navigationPerPage.html()).toContain(expectedLabel);
+    });
+
+    it('should show the custom per page numbers if set as a prop or show the default ones', () => {
+      let expectedPerPageNumbers = [2, 3, 4, 5, 10, 30];
+      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, {perPageNumbers: expectedPerPageNumbers});
+
+      expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(PER_PAGE_NUMBERS.length);
+
+      navigationPerPage.setProps(newNavigationPerPageProps);
+      expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(expectedPerPageNumbers.length);
     });
   });
 });

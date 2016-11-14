@@ -44,27 +44,28 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
   }
 
   handlePageClick = (pageNb: number) => {
-    if (this.props.onPageClick) {
+    if (this.props.onPageClick && pageNb >= 0) {
       this.props.onPageClick(pageNb);
     }
   };
 
   render() {
+    let currentPage = this.props.currentPage || 0;
     let showXPages = Math.abs((this.props.numberOfPagesToShow || NUMBER_OF_PAGES_SHOWING) - 1);
     let previousLabel = this.props.previousLabel || PREVIOUS_LABEL;
     let nextLabel = this.props.nextLabel || NEXT_LABEL;
     let start = 0;
     let end = showXPages;
     let lastPage = this.props.totalPages - 1;
-    let previousClasses = 'flat-select-option mod-link ' + (this.props.currentPage === 0 ? 'disabled' : 'selec');
-    let nextClasses = 'flat-select-option mod-link ' + (this.props.currentPage === lastPage ? 'disabled' : 'selec');
+    let previousClasses = 'flat-select-option mod-link ' + (currentPage === 0 ? 'disabled' : 'selectable');
+    let nextClasses = 'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
     let pageSelects: JSX.Element[] = [];
 
-    if (this.props.currentPage + showXPages / 2 > lastPage) {
+    if (currentPage + showXPages / 2 > lastPage) {
       end = lastPage;
       start = Math.max(lastPage - showXPages, 0);
     } else {
-      start = Math.max(Math.floor(this.props.currentPage - showXPages / 2), 0);
+      start = Math.max(Math.floor(currentPage - showXPages / 2), 0);
       end = Math.min(start + showXPages, lastPage);
     }
 
@@ -73,7 +74,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
         key={'page-' + p}
         onPageClick={this.handlePageClick}
         pageNb={p}
-        selected={p === this.props.currentPage}
+        selected={p === currentPage}
         />);
     });
 
@@ -81,15 +82,15 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
       <div className='pagination'>
         <div className='flat-select'>
           <a className={previousClasses}
-            data-page={this.props.currentPage - 1}
-            onClick={() => this.handlePageClick(this.props.currentPage - 1)}>
+            data-page={currentPage - 1}
+            onClick={() => this.handlePageClick(currentPage - 1)}>
             <Svg svgName='arrow-left-rounded' className='pagination-icon' svgClass='icon icon-small mod-lg' />
             {previousLabel}
           </a>
           {pageSelects}
           <a className={nextClasses}
-            data-page={this.props.currentPage + 1}
-            onClick={() => this.handlePageClick(this.props.currentPage + 1)}>
+            data-page={currentPage + 1}
+            onClick={() => this.handlePageClick(currentPage + 1)}>
             {nextLabel}
             <Svg svgName='arrow-right-rounded' className='pagination-icon' svgClass='icon icon-small mod-lg' />
           </a>

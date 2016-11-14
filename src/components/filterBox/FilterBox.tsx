@@ -29,7 +29,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender(this.props.id);
     }

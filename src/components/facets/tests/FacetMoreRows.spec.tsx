@@ -66,7 +66,7 @@ describe('Facets', () => {
 
     it('should add a listener on document on mount and remove it on unmount if prop onDocumentClick is set', () => {
       let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newFacetAttributes = _.extend(basicFacetMoreRowsAttributes, { onDocumentClick: onDocumentClickSpy });
+      let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { onDocumentClick: onDocumentClickSpy });
 
       facetMoreRows.mount();
       $('body').click();
@@ -85,7 +85,7 @@ describe('Facets', () => {
 
     it('should not call onDocumentClick when prop is set and clicking on "facet-search"', () => {
       let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newFacetAttributes = _.extend(basicFacetMoreRowsAttributes, { onDocumentClick: onDocumentClickSpy });
+      let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { onDocumentClick: onDocumentClickSpy });
 
       facetMoreRows = mount(
         <FacetMoreRows

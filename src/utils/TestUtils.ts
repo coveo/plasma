@@ -1,16 +1,21 @@
 import { lastUpdatedComposite } from '../components/lastUpdated/LastUpdatedReducers';
-import { combineReducers, createStore } from 'redux';
-import { CommonActions, IReactVaporState } from './ReduxUtils';
 import { filters } from '../components/filterBox/FilterBoxReducers';
 import { facets } from '../components/facets/FacetReducers';
+import {paginationComposite} from '../components/navigation/pagination/NavigationPaginationReducers';
+import {perPageComposite} from '../components/navigation/perPage/NavigationPerPageReducers';
+import { CommonActions, IReactVaporState } from './ReduxUtils';
 import * as Redux from 'redux';
+import {loadings} from '../components/loading/LoadingReducers';
 
 export class TestUtils {
   static buildStore() {
-    let reactVaporReducers = combineReducers({
+    let reactVaporReducers = Redux.combineReducers({
       lastUpdatedComposite,
       filters,
-      facets
+      facets,
+      paginationComposite,
+      perPageComposite,
+      loadings
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {
@@ -18,7 +23,7 @@ export class TestUtils {
       return reactVaporReducers(state, action as any);
     };
 
-    return createStore(reactVapor);
+    return Redux.createStore(reactVapor);
   }
 
   static randomDate() {

@@ -61,7 +61,7 @@ describe('Reducers', () => {
       expect(facetsState.filter(f => f.facet === action.payload.facet).length).toBe(1);
     });
 
-    it('should return the old state without the FacetState with the timer id when the action is "REMOVE_FACET"', () => {
+    it('should return the old state without the FacetState with the action facet when the action is "REMOVE_FACET"', () => {
       let oldState: IFacetState[] = [
         {
           facet: 'some-facet2',

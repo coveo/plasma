@@ -1,37 +1,22 @@
 import * as React from 'react';
 
 export interface INavigationPerPageSelectOwnProps extends React.ClassAttributes<NavigationPerPageSelect> {
-  perPageNumber: number;
-  id?: string;
-  loadingIds?: string[];
+  perPageNb: number;
+  selected: boolean;
+  onPerPageClick: (perPageNb: number) => void;
 }
 
-export interface INavigationPerPageSelectStateProps {
-  selected?: boolean;
-}
-
-export interface INavigationPerPageSelectDispatchProps {
-  onPerPageClick?: () => void;
-}
-
-export interface INavigationPerPageSelectProps extends INavigationPerPageSelectOwnProps,
-  INavigationPerPageSelectStateProps, INavigationPerPageSelectDispatchProps { }
+export interface INavigationPerPageSelectProps extends INavigationPerPageSelectOwnProps { }
 
 export class NavigationPerPageSelect extends React.Component<INavigationPerPageSelectProps, any> {
-
-  handleClick = () => {
-    if (this.props.onPerPageClick) {
-      this.props.onPerPageClick();
-    }
-  };
 
   render() {
     let selectClasses = 'flat-select-option' + (this.props.selected ? '' : ' selectable');
     let spanClasses = 'enabled' + (this.props.selected ? ' selected-value state-selected' : '');
 
     return (
-      <a className={selectClasses} onClick={() => this.handleClick()}>
-        <span className={spanClasses}>{this.props.perPageNumber}</span>
+      <a className={selectClasses} onClick={() => this.props.onPerPageClick(this.props.perPageNb)}>
+        <span className={spanClasses}>{this.props.perPageNb}</span>
       </a>
     );
   }

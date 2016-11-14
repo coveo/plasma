@@ -1,19 +1,23 @@
-import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
-import { connect } from 'react-redux';
-import * as React from 'react';
+import { ReduxUtils, IReduxAction, IReactVaporState } from '../../../utils/ReduxUtils';
 import {
   INavigationPerPageProps, INavigationPerPageStateProps, NavigationPerPage,
   INavigationPerPageDispatchProps, INavigationPerPageOwnProps
 } from './NavigationPerPage';
-import { IPerPageActionPayload, addPerPage, removePerPage } from './NavigationPerPageActions';
+import { IPerPageActionPayload, addPerPage, removePerPage, changePerPage } from './NavigationPerPageActions';
+import { turnOnLoading, ILoadingActionPayload } from '../../loading/LoadingActions';
+import { connect } from 'react-redux';
+import * as React from 'react';
+import * as _ from 'underscore';
 
-const mapStateToProps = (): INavigationPerPageStateProps => {
+const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPerPageOwnProps): INavigationPerPageStateProps => {
+  let item = _.findWhere(state.perPageComposite, { id: ownProps.id });
+
   return {
-    withReduxState: true
+    currentPerPage: item ? item.perPage : null
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IPerPageActionPayload>) => void, ownProps: INavigationPerPageOwnProps): INavigationPerPageDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IPerPageActionPayload | ILoadingActionPayload>) => void, ownProps: INavigationPerPageOwnProps): INavigationPerPageDispatchProps => {
   return {
     onRender: (perPageNb: number) => {
       dispatch(addPerPage(ownProps.id, perPageNb));
@@ -21,6 +25,10 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IPerPageActionPayloa
     onDestroy: () => {
       dispatch(removePerPage(ownProps.id));
     },
+    onPerPageClick: (perPageNb: number) => {
+      dispatch(turnOnLoading(ownProps.loadingIds));
+      dispatch(changePerPage(ownProps.id, perPageNb));
+    }
   };
 };
 

@@ -6,16 +6,25 @@ import { filters } from '../src/components/filterBox/FilterBoxReducers';
 import { facets } from '../src/components/facets/FacetReducers';
 import { perPageComposite } from '../src/components/navigation/perPage/NavigationPerPageReducers';
 import { paginationComposite } from '../src/components/navigation/pagination/NavigationPaginationReducers';
+import { loadings } from '../src/components/loading/LoadingReducers';
+import * as Redux from 'redux';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
+  lastAction: Redux.Action;
 }
+
+const lastAction = (state: IReactVaporExampleState = null, action: Redux.Action): Redux.Action => {
+  return action;
+};
 
 export const Reducers: Reducer<IReactVaporExampleState> = combineReducers<IReactVaporExampleState>({
   membersCompositeState: membersReducers,
-  lastUpdatedComposite: lastUpdatedComposite,
-  filters: filters,
-  facets: facets,
-  perPageComposite: perPageComposite,
-  paginationComposite: paginationComposite
+  lastUpdatedComposite,
+  filters,
+  facets,
+  perPageComposite,
+  paginationComposite,
+  loadings,
+  lastAction
 });

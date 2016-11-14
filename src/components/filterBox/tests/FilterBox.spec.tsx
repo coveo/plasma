@@ -58,6 +58,9 @@ describe('FilterBox', () => {
       let filterSpy = jasmine.createSpy('onFilter');
       let input = filterBox.find('input');
 
+      input.simulate('change');
+      expect(filterSpy.calls.count()).toBe(0);
+
       filterBox.setProps({ id: id, onFilter: filterSpy });
       filterBox.mount();
       input.simulate('change');

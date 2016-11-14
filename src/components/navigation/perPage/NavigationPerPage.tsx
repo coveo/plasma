@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { IReduxStatePossibleProps } from '../../../utils/ReduxUtils';
-import { NavigationPerPageSelectConnected } from './NavigationPerPageSelectConnected';
 import { NavigationPerPageSelect } from './NavigationPerPageSelect';
+import * as React from 'react';
 import * as _ from 'underscore';
 
 export interface INavigationPerPageOwnProps extends React.ClassAttributes<NavigationPerPage> {
@@ -12,19 +10,18 @@ export interface INavigationPerPageOwnProps extends React.ClassAttributes<Naviga
   loadingIds?: string[];
 }
 
-export interface INavigationPerPageChildrenProps {
-  onPerPageClick?: () => void;
+export interface INavigationPerPageStateProps {
+  currentPerPage?: number;
 }
-
-export interface INavigationPerPageStateProps extends IReduxStatePossibleProps { }
 
 export interface INavigationPerPageDispatchProps {
   onRender?: (perPageNb: number) => void;
   onDestroy?: () => void;
+  onPerPageClick?: (perPageNb: number) => void;
 }
 
-export interface INavigationPerPageProps extends INavigationPerPageOwnProps,
-  INavigationPerPageChildrenProps, INavigationPerPageStateProps, INavigationPerPageDispatchProps { }
+export interface INavigationPerPageProps extends INavigationPerPageOwnProps, INavigationPerPageStateProps,
+  INavigationPerPageDispatchProps { }
 
 export const PER_PAGE_NUMBERS = [10, 20, 30];
 export const PER_PAGE_LABEL = 'Results per page';
@@ -34,9 +31,6 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
 
   componentWillMount() {
     this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
-  }
-
-  componentDidMount() {
     if (this.props.onRender) {
       this.props.onRender(this.perPageNumbers[0]);
     }
@@ -49,16 +43,22 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
   }
 
   render() {
+    this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
+    let currentPerPage = this.props.currentPerPage || this.perPageNumbers[0];
     let topNumber = this.props.totalEntries + 10;
     let label = this.props.label || PER_PAGE_LABEL;
 
     let perPageSelects = _.map(this.perPageNumbers, (number) => {
       if (topNumber > number) {
-        let selectId = 'perpage-' + this.props.id + number;
+        let selectId = 'perpage-' + (this.props.id || '') + number;
+        let isSelected = currentPerPage === number;
         return (
-          this.props.withReduxState ?
-            <NavigationPerPageSelectConnected id={selectId} loadingIds={this.props.loadingIds} perPageNumber={number} key={selectId} /> :
-            <NavigationPerPageSelect onPerPageClick={this.props.onPerPageClick} perPageNumber={number} key={selectId} />
+          <NavigationPerPageSelect
+            onPerPageClick={this.props.onPerPageClick}
+            perPageNb={number}
+            key={selectId}
+            selected={isSelected}
+            />
         );
       }
     });

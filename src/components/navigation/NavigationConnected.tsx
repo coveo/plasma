@@ -19,5 +19,5 @@ const mapDispatchToProps = () => {
   return {};
 };
 
-export const TableNavigationConnected: React.ComponentClass<INavigationProps> =
+export const NavigationConnected: React.ComponentClass<INavigationProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Navigation);

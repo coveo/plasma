@@ -12,40 +12,32 @@ export const PaginationActions = {
   reset: 'RESET_PAGING'
 };
 
-export const addPagination = (id: string): IReduxAction<IPaginationActionPayload> => {
-  return {
-    type: PaginationActions.add,
-    payload: {
-      id
-    }
-  };
-};
+export const addPagination = (id: string): IReduxAction<IPaginationActionPayload> => ({
+  type: PaginationActions.add,
+  payload: {
+    id
+  }
+});
 
-export const removePagination = (id: string): IReduxAction<IPaginationActionPayload> => {
-  return {
-    type: PaginationActions.remove,
-    payload: {
-      id
-    }
-  };
-};
+export const removePagination = (id: string): IReduxAction<IPaginationActionPayload> => ({
+  type: PaginationActions.remove,
+  payload: {
+    id
+  }
+});
 
-export const changePage = (id: string, pageNb: number): IReduxAction<IPaginationActionPayload> => {
-  return {
-    type: PaginationActions.changePage,
-    payload: {
-      id,
-      pageNb
-    }
-  };
-};
+export const changePage = (id: string, pageNb: number): IReduxAction<IPaginationActionPayload> => ({
+  type: PaginationActions.changePage,
+  payload: {
+    id,
+    pageNb
+  }
+});
 
-export const resetPaging = (id: string): IReduxAction<IPaginationActionPayload> => {
-  return {
-    type: PaginationActions.reset,
-    payload: {
-      pageNb: 0,
-      id
-    }
-  };
-};
+export const resetPaging = (id: string): IReduxAction<IPaginationActionPayload> => ({
+  type: PaginationActions.reset,
+  payload: {
+    pageNb: 0,
+    id
+  }
+});

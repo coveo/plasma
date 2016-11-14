@@ -4,7 +4,7 @@ import { Loading } from '../loading/Loading';
 import { NavigationPaginationConnected } from './pagination/NavigationPaginationConnected';
 import { NavigationPerPageConnected } from './perPage/NavigationPerPageConnected';
 import { NavigationPagination, INavigationPaginationProps } from './pagination/NavigationPagination';
-import { NavigationPerPage, INavigationPerPageProps } from './perPage/NavigationPerPage';
+import {NavigationPerPage, INavigationPerPageProps, PER_PAGE_NUMBERS} from './perPage/NavigationPerPage';
 import * as React from 'react';
 
 export interface INavigationOwnProps extends React.ClassAttributes<Navigation> {
@@ -19,6 +19,7 @@ export interface INavigationChildrenProps {
   previousLabel?: string;
   nextLabel?: string;
   currentPage?: number;
+  currentPerPage?: number;
   onPageClick?: (pageNb: number) => void;
   perPageLabel?: string;
   perPageNumbers?: number[];
@@ -48,7 +49,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
     }
 
     let perPage: JSX.Element = null;
-    if (this.props.totalEntries > 10) {
+    let minimumPerPage = (this.props.perPageNumbers || PER_PAGE_NUMBERS);
+    if (minimumPerPage.length && this.props.totalEntries > minimumPerPage[0]) {
       let perPageProps: INavigationPerPageProps = {
         totalEntries: this.props.totalEntries,
         label: this.props.perPageLabel,
@@ -56,7 +58,7 @@ export class Navigation extends React.Component<INavigationProps, any> {
       };
       perPage = this.props.withReduxState ?
         <NavigationPerPageConnected id={this.props.id} loadingIds={this.props.loadingIds} {...perPageProps} /> :
-        <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;
+        <NavigationPerPage onPerPageClick={this.props.onPerPageClick} currentPerPage={this.props.currentPerPage} {...perPageProps} />;
     }
 
     let navigationClasses = 'pagination-container' + (this.props.isLoading ? ' loading-view' : '');

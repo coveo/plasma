@@ -52,7 +52,7 @@ describe('Facets', () => {
 
     it('should call prop onRender on mounting if set', () => {
       let renderSpy = jasmine.createSpy('onRender');
-      let newFacetAttributes = _.extend(facetBasicAttributes, { onRender: renderSpy });
+      let newFacetAttributes = _.extend({}, facetBasicAttributes, { onRender: renderSpy });
 
       facetComponent.unmount();
       facetComponent.setProps(newFacetAttributes);
@@ -62,7 +62,7 @@ describe('Facets', () => {
 
     it('should call prop onDestroy on unmounting if set', () => {
       let destroySpy = jasmine.createSpy('onDestroy');
-      let newFacetAttributes = _.extend(facetBasicAttributes, { onRender: destroySpy });
+      let newFacetAttributes = _.extend({}, facetBasicAttributes, { onRender: destroySpy });
 
       facetComponent.unmount();
       facetComponent.setProps(newFacetAttributes);
@@ -98,7 +98,7 @@ describe('Facets', () => {
           formattedName: '6'
         }
       ];
-      let newFacetAttributes = _.extend(facetBasicAttributes, { facetRows: multipleRows });
+      let newFacetAttributes = _.extend({}, facetBasicAttributes, { facetRows: multipleRows });
 
       expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
       expect(facetComponent.find('FacetMoreRows').length).toBe(0);
@@ -140,7 +140,7 @@ describe('Facets', () => {
           formattedName: '6'
         }
       ];
-      let newFacetAttributes = _.extend(facetBasicAttributes, { facetRows: multipleRows });
+      let newFacetAttributes = _.extend({}, facetBasicAttributes, { facetRows: multipleRows });
 
       expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
       expect(facetComponent.find('FacetMoreToggleConnected').length).toBe(0);
@@ -153,7 +153,7 @@ describe('Facets', () => {
 
     it('should have class "facet-open" if it has isOpened prop set to true', () => {
       let expectedClass = '.facet-opened';
-      let newFacetAttributes = _.extend(facetBasicAttributes, { isOpened: true });
+      let newFacetAttributes = _.extend({}, facetBasicAttributes, { isOpened: true });
 
       expect(facetComponent.find(expectedClass).length).toBe(0);
 
@@ -173,7 +173,7 @@ describe('Facets', () => {
 
     it('should call onToggleFacet when calling buildCategoryFacet and prop is set', () => {
       let onToggleFacetSpy = jasmine.createSpy('onToggleFacet');
-      let newFacetAttributes = _.extend(facetBasicAttributes, { onToggleFacet: onToggleFacetSpy });
+      let newFacetAttributes = _.extend({}, facetBasicAttributes, { onToggleFacet: onToggleFacetSpy });
 
       callBuildCategoryFacet();
       expect(onToggleFacetSpy).not.toHaveBeenCalled();
@@ -195,7 +195,7 @@ describe('Facets', () => {
 
     it('should call onClearFacet when calling buildCategoryFacet and prop is set', () => {
       let onClearFacetSpy = jasmine.createSpy('onClearFacet');
-      let newFacetAttributes = _.extend(facetBasicAttributes, { onClearFacet: onClearFacetSpy });
+      let newFacetAttributes = _.extend({}, facetBasicAttributes, { onClearFacet: onClearFacetSpy });
 
       callClearCategoryFacet();
       expect(onClearFacetSpy).not.toHaveBeenCalled();

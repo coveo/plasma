@@ -13,7 +13,7 @@ export interface ILoadingProps extends ILoadingOwnProps, ILoadingDispatchProps {
 
 export class Loading extends React.Component<ILoadingProps, any> {
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender();
     }
