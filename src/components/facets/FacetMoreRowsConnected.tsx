@@ -14,7 +14,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreRowsOwnPro
   let filterItem = _.findWhere(state.filters, { id: 'filter-' + ownProps.facet });
 
   return {
-    isOpened: item ? item.opened : false,
+    isOpened: item && item.opened,
     filterText: filterItem ? filterItem.filterText : '',
     withReduxState: true
   };

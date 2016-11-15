@@ -11,30 +11,24 @@ export interface IFilterActionPayload {
   filterText?: string;
 }
 
-export const addFilter = (id: string): IReduxAction<IFilterActionPayload> => {
-  return {
-    type: FilterActions.addFilter,
-    payload: {
-      id
-    }
-  };
-};
+export const addFilter = (id: string): IReduxAction<IFilterActionPayload> => ({
+  type: FilterActions.addFilter,
+  payload: {
+    id
+  }
+});
 
-export const removeFilter = (id: string): IReduxAction<IFilterActionPayload> => {
-  return {
-    type: FilterActions.removeFilter,
-    payload: {
-      id
-    }
-  };
-};
+export const removeFilter = (id: string): IReduxAction<IFilterActionPayload> => ({
+  type: FilterActions.removeFilter,
+  payload: {
+    id
+  }
+});
 
-export const filterThrough = (id: string, filterText: string): IReduxAction<IFilterActionPayload> => {
-  return {
-    type: FilterActions.filterThrough,
-    payload: {
-      id,
-      filterText
-    }
-  };
-};
+export const filterThrough = (id: string, filterText: string): IReduxAction<IFilterActionPayload> => ({
+  type: FilterActions.filterThrough,
+  payload: {
+    id,
+    filterText
+  }
+});

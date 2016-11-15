@@ -15,57 +15,45 @@ export interface IFacetActionPayload {
   facetRow?: IFacet;
 }
 
-export const addFacet = (facet: string): IReduxAction<IFacetActionPayload> => {
-  return {
-    type: FacetActions.addFacet,
-    payload: {
-      facet
-    }
-  };
-};
+export const addFacet = (facet: string): IReduxAction<IFacetActionPayload> => ({
+  type: FacetActions.addFacet,
+  payload: {
+    facet
+  }
+});
 
-export const removeFacet = (facet: string): IReduxAction<IFacetActionPayload> => {
-  return {
-    type: FacetActions.removeFacet,
-    payload: {
-      facet
-    }
-  };
-};
+export const removeFacet = (facet: string): IReduxAction<IFacetActionPayload> => ({
+  type: FacetActions.removeFacet,
+  payload: {
+    facet
+  }
+});
 
-export const changeFacet = (facet: string, facetRow: IFacet): IReduxAction<IFacetActionPayload> => {
-  return {
-    type: FacetActions.changeFacet,
-    payload: {
-      facet,
-      facetRow
-    }
-  };
-};
+export const changeFacet = (facet: string, facetRow: IFacet): IReduxAction<IFacetActionPayload> => ({
+  type: FacetActions.changeFacet,
+  payload: {
+    facet,
+    facetRow
+  }
+});
 
-export const emptyFacet = (facet: string): IReduxAction<IFacetActionPayload> => {
-  return {
-    type: FacetActions.emptyFacet,
-    payload: {
-      facet
-    }
-  };
-};
+export const emptyFacet = (facet: string): IReduxAction<IFacetActionPayload> => ({
+  type: FacetActions.emptyFacet,
+  payload: {
+    facet
+  }
+});
 
-export const toggleMoreFacetRows = (facet: string): IReduxAction<IFacetActionPayload> => {
-  return {
-    type: FacetActions.toggleMoreFacetRows,
-    payload: {
-      facet
-    }
-  };
-};
+export const toggleMoreFacetRows = (facet: string): IReduxAction<IFacetActionPayload> => ({
+  type: FacetActions.toggleMoreFacetRows,
+  payload: {
+    facet
+  }
+});
 
-export const closeMoreFacetRows = (): IReduxAction<IFacetActionPayload> => {
-  return {
-    type: FacetActions.closeMoreFacetRows,
-    payload: {
-      facet: ''
-    }
-  };
-};
+export const closeMoreFacetRows = (): IReduxAction<IFacetActionPayload> => ({
+  type: FacetActions.closeMoreFacetRows,
+  payload: {
+    facet: ''
+  }
+});

@@ -65,7 +65,8 @@ export class Facet extends React.Component<IFacetProps, any> {
   render() {
     let selectedRows = this.props.selectedFacetRows || [];
     let removeSelectedClass = 'facet-header-eraser' + (selectedRows.length ? '' : ' hidden');
-    let facetRows = _.uniq(_.union(selectedRows, this.props.facetRows), false, (item) => { return item.name; });
+    let allRows = _.union(selectedRows, this.props.facetRows);
+    let facetRows = _.uniq(allRows, false, item => item.name);
     let rows = _.map(facetRows, (facetRow: IFacet) => {
       return (<FacetRow
         key={facetRow.name}

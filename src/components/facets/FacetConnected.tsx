@@ -9,7 +9,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFa
   let item = _.findWhere(state.facets, { facet: ownProps.facet.name });
 
   return {
-    isOpened: item ? item.opened : false,
+    isOpened: item && item.opened,
     selectedFacetRows: item ? item.selected : [],
     withReduxState: true
   };
