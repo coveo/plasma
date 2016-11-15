@@ -21,7 +21,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPaginatio
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IPaginationActionPayload | ILoadingActionPayload>) => void,
-                            ownProps: INavigationPaginationOwnProps): INavigationPaginationDispatchProps => {
+  ownProps: INavigationPaginationOwnProps): INavigationPaginationDispatchProps => {
   return {
     onRender: () => {
       dispatch(addPagination(ownProps.id));

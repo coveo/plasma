@@ -32,7 +32,7 @@ export class NavigationConnectedExamples extends React.Component<any, any> {
       <div className='mt2'>
         <div className='form-group'>
           <label className='form-control-label'>Navigation with Redux state and loading</label>
-          <NavigationConnected {...navigationProps}  />
+          <NavigationConnected {...navigationProps} />
         </div>
       </div>
     );
