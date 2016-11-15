@@ -11,38 +11,30 @@ export interface ILoadingActionPayload {
   ids: string[];
 }
 
-export const addLoading = (id: string): IReduxAction<ILoadingActionPayload> => {
-  return {
-    type: LoadingActions.add,
-    payload: {
-      ids: [id]
-    }
-  };
-};
+export const addLoading = (id: string): IReduxAction<ILoadingActionPayload> => ({
+  type: LoadingActions.add,
+  payload: {
+    ids: [id]
+  }
+});
 
-export const removeLoading = (id: string): IReduxAction<ILoadingActionPayload> => {
-  return {
-    type: LoadingActions.remove,
-    payload: {
-      ids: [id]
-    }
-  };
-};
+export const removeLoading = (id: string): IReduxAction<ILoadingActionPayload> => ({
+  type: LoadingActions.remove,
+  payload: {
+    ids: [id]
+  }
+});
 
-export const turnOnLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => {
-  return {
-    type: LoadingActions.turnOn,
-    payload: {
-      ids
-    }
-  };
-};
+export const turnOnLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
+  type: LoadingActions.turnOn,
+  payload: {
+    ids
+  }
+});
 
-export const turnOffLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => {
-  return {
-    type: LoadingActions.turnOff,
-    payload: {
-      ids
-    }
-  };
-};
+export const turnOffLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
+  type: LoadingActions.turnOff,
+  payload: {
+    ids
+  }
+});
