@@ -2,6 +2,7 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 import { NavigationPerPage, INavigationPerPageProps, PER_PAGE_LABEL, PER_PAGE_NUMBERS } from '../NavigationPerPage';
 import { NavigationPerPageSelect } from '../NavigationPerPageSelect';
 import * as _ from 'underscore';
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -25,7 +26,6 @@ describe('NavigationPerPage', () => {
     let navigationPerPage: ReactWrapper<INavigationPerPageProps, any>;
 
     beforeEach(() => {
-
       navigationPerPage = mount(
         <NavigationPerPage {...basicNavigationPerPageProps} />,
         { attachTo: document.getElementById('App') }
@@ -60,21 +60,25 @@ describe('NavigationPerPage', () => {
 
     it('should call onRender if prop is set on mount', () => {
       let onRenderSpy = jasmine.createSpy('onRender');
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { onRender: onRenderSpy });
 
-      navigationPerPage.unmount();
-      navigationPerPage.setProps(newNavigationPerPageProps);
-      navigationPerPage.mount();
+      expect(() => { (navigationPerPage.instance() as NavigationPerPage).componentWillMount(); }).not.toThrow();
+
+      navigationPerPage = mount(
+        <NavigationPerPage {...basicNavigationPerPageProps} onRender={onRenderSpy} />,
+        { attachTo: document.getElementById('App') }
+      );
       expect(onRenderSpy).toHaveBeenCalled();
     });
 
     it('should call onDestroy if prop is set when unmounting', () => {
       let onDestroySpy = jasmine.createSpy('onDestroy');
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { onDestroy: onDestroySpy });
 
-      navigationPerPage.unmount();
-      navigationPerPage.setProps(newNavigationPerPageProps);
-      navigationPerPage.mount();
+      expect(() => { (navigationPerPage.instance() as NavigationPerPage).componentWillMount(); }).not.toThrow();
+
+      navigationPerPage = mount(
+        <NavigationPerPage {...basicNavigationPerPageProps} onDestroy={onDestroySpy} />,
+        { attachTo: document.getElementById('App') }
+      );
       navigationPerPage.unmount();
       expect(onDestroySpy).toHaveBeenCalled();
     });

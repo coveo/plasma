@@ -1,6 +1,7 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { NavigationPerPageSelect, INavigationPerPageSelectProps } from '../NavigationPerPageSelect';
 import * as _ from 'underscore';
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -28,7 +29,7 @@ describe('NavigationPerPageSelect', () => {
     beforeEach(() => {
       navigationPerPageSelect = mount(
         <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />,
-        { attachTo: document.body }
+        { attachTo: document.getElementById('App') }
       );
     });
 

@@ -44,6 +44,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
 
   render() {
     this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
+
     let currentPerPage = this.props.currentPerPage || this.perPageNumbers[0];
     let topNumber = this.props.totalEntries + 10;
     let label = this.props.label || PER_PAGE_LABEL;

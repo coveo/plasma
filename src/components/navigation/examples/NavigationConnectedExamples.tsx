@@ -25,13 +25,14 @@ export class NavigationConnectedExamples extends React.Component<any, any> {
     let navigationProps: INavigationOwnProps = {
       id: navigationConnectedExampleId,
       totalPages: 10,
-      totalEntries: 50
+      totalEntries: 50,
+      loadingIds: navigationConnectedExampleLoadingIds
     };
     return (
       <div className='mt2'>
         <div className='form-group'>
           <label className='form-control-label'>Navigation with Redux state and loading</label>
-          <NavigationConnected {...navigationProps} loadingIds={navigationConnectedExampleLoadingIds} />
+          <NavigationConnected {...navigationProps}  />
         </div>
       </div>
     );

@@ -17,7 +17,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPerPageOw
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IPerPageActionPayload | ILoadingActionPayload>) => void, ownProps: INavigationPerPageOwnProps): INavigationPerPageDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IPerPageActionPayload | ILoadingActionPayload>) => void,
+                            ownProps: INavigationPerPageOwnProps): INavigationPerPageDispatchProps => {
   return {
     onRender: (perPageNb: number) => {
       dispatch(addPerPage(ownProps.id, perPageNb));

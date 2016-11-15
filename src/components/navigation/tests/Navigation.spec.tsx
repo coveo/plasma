@@ -4,6 +4,7 @@ import { Loading } from '../../loading/Loading';
 import { NavigationPagination } from '../pagination/NavigationPagination';
 import { NavigationPerPage, PER_PAGE_NUMBERS } from '../perPage/NavigationPerPage';
 import * as _ from 'underscore';
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -28,7 +29,6 @@ describe(' navigation', () => {
     let navigation: ReactWrapper<INavigationProps, any>;
 
     beforeEach(() => {
-
       navigation = mount(
         <Navigation {...basicNavigationProps} />,
         { attachTo: document.getElementById('App') }

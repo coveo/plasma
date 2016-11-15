@@ -31,7 +31,7 @@ export const NEXT_LABEL = 'Next';
 
 export class NavigationPagination extends React.Component<INavigationPaginationProps, any> {
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender();
     }

@@ -4,6 +4,7 @@ import {
   NUMBER_OF_PAGES_SHOWING
 } from '../NavigationPagination';
 import * as _ from 'underscore';
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -31,8 +32,7 @@ describe('NavigationPagination', () => {
         <NavigationPagination
           {...basicNavigationPaginationAttributes}
           />,
-        { attachTo: document.getElementById('App') }
-      );
+        { attachTo: document.getElementById('App') });
     });
 
     afterEach(() => {
@@ -42,21 +42,29 @@ describe('NavigationPagination', () => {
 
     it('should call prop onRender on mounting if set', () => {
       let renderSpy = jasmine.createSpy('onRender');
-      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { onRender: renderSpy });
 
-      navigationPagination.unmount();
-      navigationPagination.setProps(newNavigationPaginationAttributes);
-      navigationPagination.mount();
+      expect(() => { (navigationPagination.instance() as NavigationPagination).componentWillMount(); }).not.toThrow();
+
+      navigationPagination = mount(
+        <NavigationPagination
+          {...basicNavigationPaginationAttributes}
+          onRender={renderSpy}
+        />,
+        { attachTo: document.getElementById('App') });
       expect(renderSpy.calls.count()).toBe(1);
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
       let destroySpy = jasmine.createSpy('onDestroy');
-      let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { onDestroy: destroySpy });
 
-      navigationPagination.unmount();
-      navigationPagination.setProps(newNavigationPaginationAttributes);
-      navigationPagination.mount();
+      expect(() => { (navigationPagination.instance() as NavigationPagination).componentWillUnmount(); }).not.toThrow();
+
+      navigationPagination = mount(
+        <NavigationPagination
+          {...basicNavigationPaginationAttributes}
+          onDestroy={destroySpy}
+        />,
+        { attachTo: document.getElementById('App') });
       navigationPagination.unmount();
       expect(destroySpy.calls.count()).toBe(1);
     });
@@ -64,6 +72,8 @@ describe('NavigationPagination', () => {
     it('should call onPageClick prop if set when clicking on next/previous or page number and page number is greater than or is 0', () => {
       let clickSpy = jasmine.createSpy('onClick');
       let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { onPageClick: clickSpy });
+
+      expect(() => { (navigationPagination.instance() as NavigationPagination).handlePageClick(3); }).not.toThrow();
 
       navigationPagination.setProps(newNavigationPaginationAttributes);
 

@@ -9,21 +9,24 @@ import { NavigationPaginationSelect } from '../NavigationPaginationSelect';
 import { changePage, resetPaging } from '../NavigationPaginationActions';
 import { addLoading, turnOffLoading } from '../../../loading/LoadingActions';
 import * as _ from 'underscore';
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 describe('<NavigationPaginationConnected />', () => {
-  const navigationPaginationId: string = 'navigation-pagination';
-  const loadingId = navigationPaginationId + '-loading';
-  let totalPages: number;
   let wrapper: ReactWrapper<any, any>;
   let navigationPagination: ReactWrapper<INavigationPaginationProps, any>;
   let fewPagesNavigationPagination: ReactWrapper<INavigationPaginationProps, any>;
   let store: Store<IReactVaporState>;
+  let basicNavigationPaginationProps: INavigationPaginationProps = {
+    totalPages: 20,
+    id: 'navigation-pagination'
+  };
+  let loadingId = basicNavigationPaginationProps.id + '-loading';
+  basicNavigationPaginationProps.loadingIds = [loadingId];
 
   beforeEach(() => {
-    totalPages = 20;
 
     store = TestUtils.buildStore();
     store.dispatch(addLoading(loadingId));
@@ -32,11 +35,7 @@ describe('<NavigationPaginationConnected />', () => {
     wrapper = mount(
       <Provider store={store}>
         <div>
-          <NavigationPaginationConnected
-            id={navigationPaginationId}
-            totalPages={totalPages}
-            loadingIds={[loadingId]}
-            />
+          <NavigationPaginationConnected {...basicNavigationPaginationProps} />
           <NavigationPaginationConnected
             id='few-pages-navigation-pagination'
             totalPages={3}
@@ -59,7 +58,7 @@ describe('<NavigationPaginationConnected />', () => {
     let totalPagesProp = navigationPagination.props().totalPages;
 
     expect(totalPagesProp).toBeDefined();
-    expect(totalPagesProp).toBe(totalPages);
+    expect(totalPagesProp).toBe(basicNavigationPaginationProps.totalPages);
   });
 
   it('should get the current page as a prop', () => {
@@ -67,6 +66,12 @@ describe('<NavigationPaginationConnected />', () => {
 
     expect(currentPageProp).toBeDefined();
     expect(currentPageProp).toBe(0);
+
+    store.dispatch(changePage(basicNavigationPaginationProps.id, 3));
+
+    currentPageProp = navigationPagination.props().currentPage;
+
+    expect(currentPageProp).toBe(3);
   });
 
   it('should get what to do on click as a prop', () => {
@@ -75,12 +80,12 @@ describe('<NavigationPaginationConnected />', () => {
     expect(onPageClickProp).toBeDefined();
   });
 
-  it('should render no more <TableNavigationPaginationSelectView /> than the total number of pages', () => {
-    expect(navigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(totalPages + 1);
-    expect(fewPagesNavigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(totalPages + 1);
+  it('should render no more <NavigationPaginationSelect /> than the total number of pages', () => {
+    expect(navigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(basicNavigationPaginationProps.totalPages + 1);
+    expect(fewPagesNavigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(basicNavigationPaginationProps.totalPages + 1);
   });
 
-  it('should render no more <TableNavigationPaginationSelectView /> than the maximum of pages shown (7)', () => {
+  it('should render no more <NavigationPaginationSelect /> than the maximum of pages shown (7)', () => {
     expect(navigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(8);
     expect(fewPagesNavigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(8);
   });
@@ -90,7 +95,7 @@ describe('<NavigationPaginationConnected />', () => {
 
     expect(previousArrow.hasClass('disabled')).toBe(true);
 
-    store.dispatch(changePage(navigationPaginationId, 3));
+    store.dispatch(changePage(basicNavigationPaginationProps.id, 3));
 
     expect(previousArrow.hasClass('disabled')).toBe(false);
   });
@@ -100,25 +105,25 @@ describe('<NavigationPaginationConnected />', () => {
 
     expect(nextArrow.hasClass('disabled')).toBe(false);
 
-    store.dispatch(changePage(navigationPaginationId, 3));
+    store.dispatch(changePage(basicNavigationPaginationProps.id, 3));
 
     expect(nextArrow.hasClass('disabled')).toBe(false);
 
-    store.dispatch(changePage(navigationPaginationId, totalPages - 1));
+    store.dispatch(changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 1));
 
     expect(nextArrow.hasClass('disabled')).toBe(true);
   });
 
   it('should show the last page if there are less pages left than half maximum number of pages shown (7)', () => {
-    let lastPage = totalPages - 1;
+    let lastPage = basicNavigationPaginationProps.totalPages - 1;
 
     expect(navigationPagination.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(0);
 
-    store.dispatch(changePage(navigationPaginationId, lastPage - 4));
+    store.dispatch(changePage(basicNavigationPaginationProps.id, lastPage - 4));
 
     expect(navigationPagination.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(0);
 
-    store.dispatch(changePage(navigationPaginationId, lastPage - 3));
+    store.dispatch(changePage(basicNavigationPaginationProps.id, lastPage - 3));
 
     expect(navigationPagination.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(1);
   });
@@ -132,18 +137,18 @@ describe('<NavigationPaginationConnected />', () => {
   });
 
   it('should change the current page on page click', () => {
-    expect(_.findWhere(store.getState().paginationComposite, { id: navigationPaginationId }).pageNb).toBe(0);
+    expect(_.findWhere(store.getState().paginationComposite, { id: basicNavigationPaginationProps.id }).pageNb).toBe(0);
 
     navigationPagination.find('.flat-select-option').last().simulate('click');
 
-    expect(_.findWhere(store.getState().paginationComposite, { id: navigationPaginationId }).pageNb).not.toBe(0);
+    expect(_.findWhere(store.getState().paginationComposite, { id: basicNavigationPaginationProps.id }).pageNb).not.toBe(0);
   });
 
   it('should return to the first page when resetting the pagination', () => {
-    store.dispatch(store.dispatch(changePage(navigationPaginationId, totalPages - 4)));
+    store.dispatch(store.dispatch(changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 4)));
     expect(navigationPagination.props().currentPage).not.toBe(0);
 
-    store.dispatch(resetPaging(navigationPaginationId));
+    store.dispatch(resetPaging(basicNavigationPaginationProps.id));
     expect(navigationPagination.props().currentPage).toBe(0);
   });
 });
