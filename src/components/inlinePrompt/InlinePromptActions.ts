@@ -1,5 +1,5 @@
-import {IInlinePromptOptions, IUserChoice} from './InlinePrompt';
-import {IReduxAction} from '../../utils/ReduxUtils';
+import { IInlinePromptOptions, IUserChoice } from './InlinePrompt';
+import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface IPromptActionPayload {
   id: string;
