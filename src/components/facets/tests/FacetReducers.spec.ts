@@ -1,6 +1,6 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IFacetActionPayload, FacetActions } from '../FacetActions';
-import { IFacetState, facets, facetsInitialState, facet, facetInitialState } from '../FacetReducers';
+import { IFacetActionPayload, FacetActions, IChangeFacetActionPayload } from '../FacetActions';
+import { IFacetState, facetsReducer, facetsInitialState, facetReducer, facetInitialState } from '../FacetReducers';
 
 describe('Reducers', () => {
 
@@ -14,28 +14,28 @@ describe('Reducers', () => {
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
       let oldState: IFacetState[] = undefined;
-      let facetsState: IFacetState[] = facets(oldState, genericAction);
+      let facetsState: IFacetState[] = facetsReducer(oldState, genericAction);
 
       expect(facetsState).toBe(facetsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one facet', () => {
       let oldState: IFacetState = undefined;
-      let facetState: IFacetState = facet(oldState, genericAction);
+      let facetState: IFacetState = facetReducer(oldState, genericAction);
 
       expect(facetState).toBe(facetInitialState);
     });
 
     it('should return the old state when the action is not defined', () => {
       let oldState: IFacetState[] = [facetInitialState];
-      let facetsState: IFacetState[] = facets(oldState, genericAction);
+      let facetsState: IFacetState[] = facetsReducer(oldState, genericAction);
 
       expect(facetsState).toBe(oldState);
     });
 
     it('should return the old state when the action is not defined for one facet', () => {
       let oldState: IFacetState = facetInitialState;
-      let facetState: IFacetState = facet(oldState, genericAction);
+      let facetState: IFacetState = facetReducer(oldState, genericAction);
 
       expect(facetState).toBe(oldState);
     });
@@ -48,14 +48,14 @@ describe('Reducers', () => {
           facet: 'some-facet'
         }
       };
-      let facetsState: IFacetState[] = facets(oldState, action);
+      let facetsState: IFacetState[] = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length + 1);
       expect(facetsState.filter(f => f.facet === action.payload.facet).length).toBe(1);
 
       oldState = facetsState;
       action.payload.facet = 'some-facet2';
-      facetsState = facets(oldState, action);
+      facetsState = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length + 1);
       expect(facetsState.filter(f => f.facet === action.payload.facet).length).toBe(1);
@@ -83,14 +83,14 @@ describe('Reducers', () => {
           facet: 'some-facet1'
         }
       };
-      let facetsState: IFacetState[] = facets(oldState, action);
+      let facetsState: IFacetState[] = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length - 1);
       expect(facetsState.filter(f => f.facet === action.payload.facet).length).toBe(0);
 
       oldState = facetsState;
       action.payload.facet = 'some-facet2';
-      facetsState = facets(oldState, action);
+      facetsState = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length - 1);
       expect(facetsState.filter(f => f.facet === action.payload.facet).length).toBe(0);
@@ -119,13 +119,13 @@ describe('Reducers', () => {
           facet: 'some-facet1'
         }
       };
-      let facetsState: IFacetState[] = facets(oldState, action);
+      let facetsState: IFacetState[] = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length);
       expect(facetsState.filter(f => f.facet === action.payload.facet)[0].opened).toBe(!openValue);
       expect(facetsState.filter(f => f.facet !== action.payload.facet)[0].opened).toBe(openValue);
 
-      facetsState = facets(facetsState, action);
+      facetsState = facetsReducer(facetsState, action);
 
       expect(facetsState.filter(f => f.facet === action.payload.facet)[0].opened).toBe(openValue);
       expect(facetsState.filter(f => f.facet !== action.payload.facet)[0].opened).toBe(openValue);
@@ -153,7 +153,7 @@ describe('Reducers', () => {
           facet: 'all'
         }
       };
-      let facetsState: IFacetState[] = facets(oldState, action);
+      let facetsState: IFacetState[] = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length);
       expect(facetsState.filter(f => f.opened).length).toBe(0);
@@ -192,7 +192,7 @@ describe('Reducers', () => {
           facet: 'some-facet1'
         }
       };
-      let facetsState: IFacetState[] = facets(oldState, action);
+      let facetsState: IFacetState[] = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length);
       expect(facetsState.filter(f => f.facet === action.payload.facet)[0].selected.length).toBe(0);
@@ -229,14 +229,14 @@ describe('Reducers', () => {
         name: 'newRow',
         formattedName: 'A New Row'
       };
-      let action: IReduxAction<IFacetActionPayload> = {
+      let action: IReduxAction<IChangeFacetActionPayload> = {
         type: FacetActions.changeFacet,
         payload: {
           facet: 'some-facet1',
           facetRow: newRow
         }
       };
-      let facetsState: IFacetState[] = facets(oldState, action);
+      let facetsState: IFacetState[] = facetsReducer(oldState, action);
 
       expect(facetsState.length).toBe(oldState.length);
       expect(facetsState.filter(f => f.facet === action.payload.facet)[0].selected.length).toBe(selectedRows.length + 1);
@@ -250,7 +250,7 @@ describe('Reducers', () => {
           facetRow: newRow
         }
       };
-      facetsState = facets(facetsState, action);
+      facetsState = facetsReducer(facetsState, action);
       expect(facetsState.filter(f => f.facet === action.payload.facet)[0].selected.length).toBe(selectedRows.length);
       expect(facetsState.filter(f => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
     });

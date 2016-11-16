@@ -12,7 +12,10 @@ export const FacetActions = {
 
 export interface IFacetActionPayload {
   facet: string;
-  facetRow?: IFacet;
+}
+
+export interface IChangeFacetActionPayload extends IFacetActionPayload {
+  facetRow: IFacet;
 }
 
 export const addFacet = (facet: string): IReduxAction<IFacetActionPayload> => ({
@@ -29,7 +32,7 @@ export const removeFacet = (facet: string): IReduxAction<IFacetActionPayload> =>
   }
 });
 
-export const changeFacet = (facet: string, facetRow: IFacet): IReduxAction<IFacetActionPayload> => ({
+export const changeFacet = (facet: string, facetRow: IFacet): IReduxAction<IChangeFacetActionPayload> => ({
   type: FacetActions.changeFacet,
   payload: {
     facet,

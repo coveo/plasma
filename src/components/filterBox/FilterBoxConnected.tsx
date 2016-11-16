@@ -1,7 +1,10 @@
-import { filterThrough, removeFilter, addFilter, IFilterActionPayload } from './FilterBoxActions';
-import { ReduxUtils, IReactVaporState, IReduxAction } from '../../utils/ReduxUtils';
+import { filterThrough, removeFilter, addFilter } from './FilterBoxActions';
+import { ReduxUtils, IReactVaporState, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
 import {
-  FilterBox, IFilterBoxOwnProps, IFilterBoxStateProps, IFilterBoxDispatchProps,
+  FilterBox,
+  IFilterBoxOwnProps,
+  IFilterBoxStateProps,
+  IFilterBoxDispatchProps,
   IFilterBoxProps
 } from './FilterBox';
 import { connect } from 'react-redux';
@@ -16,17 +19,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFilterBoxOwnProps):
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IFilterActionPayload>) => void): IFilterBoxDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void): IFilterBoxDispatchProps => {
   return {
-    onRender: (id: string) => {
-      dispatch(addFilter(id));
-    },
-    onDestroy: (id: string) => {
-      dispatch(removeFilter(id));
-    },
-    onFilter: (id: string, filterText: string) => {
-      dispatch(filterThrough(id, filterText));
-    }
+    onRender: (id: string) => dispatch(addFilter(id)),
+    onDestroy: (id: string) => dispatch(removeFilter(id)),
+    onFilter: (id: string, filterText: string) => dispatch(filterThrough(id, filterText))
   };
 };
 

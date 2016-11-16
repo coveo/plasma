@@ -4,6 +4,7 @@ import { extend } from 'underscore';
 import { ILastUpdatedState } from '../components/lastUpdated/LastUpdatedReducers';
 import { IFacetState } from '../components/facets/FacetReducers';
 import { IFilterState } from '../components/filterBox/FilterBoxReducers';
+import { IFacet } from '../components/facets/Facet';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
@@ -33,6 +34,13 @@ export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, me
 
 export interface IReduxAction<T> extends Redux.Action {
   payload?: T;
+}
+
+export interface IReduxActionPayload {
+  id?: string;
+  filterText?: string;
+  facet?: string;
+  facetRow?: IFacet;
 }
 
 export interface IReduxProps {

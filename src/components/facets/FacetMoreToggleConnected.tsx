@@ -1,9 +1,12 @@
 import {
-  FacetMoreToggle, IFacetMoreToggleOwnProps, IFacetMoreToggleProps,
-  IFacetMoreToggleStateProps, IFacetMoreToggleDispatchProps
+  FacetMoreToggle,
+  IFacetMoreToggleOwnProps,
+  IFacetMoreToggleProps,
+  IFacetMoreToggleStateProps,
+  IFacetMoreToggleDispatchProps
 } from './FacetMoreToggle';
-import { ReduxUtils, IReactVaporState, IReduxAction } from '../../utils/ReduxUtils';
-import { toggleMoreFacetRows, IFacetActionPayload } from './FacetActions';
+import { ReduxUtils, IReactVaporState, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { toggleMoreFacetRows } from './FacetActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -16,11 +19,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreToggleOwnP
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>) => void): IFacetMoreToggleDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void): IFacetMoreToggleDispatchProps => {
   return {
-    onToggleMore: (facet: string) => {
-      dispatch(toggleMoreFacetRows(facet));
-    }
+    onToggleMore: (facet: string) => dispatch(toggleMoreFacetRows(facet))
   };
 };
 
