@@ -29,6 +29,7 @@ describe('Facets', () => {
   describe('<Facet />', () => {
     let facetComponent: ReactWrapper<IFacetProps, any>;
     let facetBasicAttributes: IFacetProps;
+    let facetInstance: Facet;
 
     beforeEach(() => {
       facetBasicAttributes = {
@@ -43,6 +44,7 @@ describe('Facets', () => {
           />,
         { attachTo: document.getElementById('App') }
       );
+      facetInstance = facetComponent.instance() as Facet;
     });
 
     afterEach(() => {
@@ -163,7 +165,7 @@ describe('Facets', () => {
     });
 
     const callBuildCategoryFacet = () => {
-      (facetComponent.instance() as Facet).buildFacet({ name: '1', formattedName: '1' });
+      facetInstance['buildFacet'].call(facetInstance, { name: '1', formattedName: '1' });
     };
 
     it('should call toggleFacet when calling buildCategoryFacet', () => {
@@ -185,7 +187,7 @@ describe('Facets', () => {
     });
 
     const callClearCategoryFacet = () => {
-      (facetComponent.instance() as Facet).clearFacet();
+      facetInstance['clearFacet'].call(facetInstance);
     };
 
     it('should call clearFacet when calling clearCategoryFacet', () => {

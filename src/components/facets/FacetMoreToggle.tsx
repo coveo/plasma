@@ -19,7 +19,7 @@ export const FACET_TOGGLE_MORE_LABEL = 'More';
 
 export class FacetMoreToggle extends React.Component<IFacetMoreToggleProps, any> {
 
-  handleOnChange = () => {
+  private handleOnChange = () => {
     if (this.props.onToggleMore) {
       this.props.onToggleMore(this.props.facet);
     }

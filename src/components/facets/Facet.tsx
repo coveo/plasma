@@ -36,14 +36,14 @@ export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDis
 
 export class Facet extends React.Component<IFacetProps, any> {
 
-  buildFacet = (facetRow: IFacet) => {
+  private buildFacet = (facetRow: IFacet) => {
     this.props.toggleFacet(this.props.facet.name, facetRow.name);
     if (this.props.onToggleFacet) {
       this.props.onToggleFacet(this.props.facet.name, facetRow);
     }
   };
 
-  clearFacet = () => {
+  private clearFacet = () => {
     this.props.clearFacet(this.props.facet.name);
     if (this.props.onClearFacet) {
       this.props.onClearFacet(this.props.facet.name);
