@@ -17,7 +17,7 @@ export interface ILastUpdatedDispatchProps {
 
 export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedStateProps, ILastUpdatedDispatchProps { }
 
-export const defaultLastUpdateLabel: string = 'Last update:';
+export const LAST_UPDATE_LABEL: string = 'Last update:';
 
 export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
 
@@ -34,7 +34,7 @@ export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
   }
 
   render() {
-    let label = this.props.label || defaultLastUpdateLabel;
+    let label = this.props.label || LAST_UPDATE_LABEL;
     let time = this.props.time || new Date();
     let lastUpdateTime = moment(time).format('LTS');
 

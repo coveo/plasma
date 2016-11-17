@@ -2,6 +2,9 @@ import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import { extend } from 'underscore';
 import { ILastUpdatedState } from '../components/lastUpdated/LastUpdatedReducers';
+import { IFacetState } from '../components/facets/FacetReducers';
+import { IFilterState } from '../components/filterBox/FilterBoxReducers';
+import { IFacet } from '../components/facets/Facet';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
@@ -11,6 +14,8 @@ export class ReduxUtils {
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
+  facets?: IFacetState[];
+  filters?: IFilterState[];
 }
 
 export const CommonActions = {
@@ -31,6 +36,17 @@ export interface IReduxAction<T> extends Redux.Action {
   payload?: T;
 }
 
+export interface IReduxActionPayload {
+  id?: string;
+  filterText?: string;
+  facet?: string;
+  facetRow?: IFacet;
+}
+
 export interface IReduxProps {
   dispatch?: (action: IReduxAction<any> | JQueryDeferred<any> | JQueryXHR | ((dispatch: Redux.Dispatch<any>) => void)) => void;
+}
+
+export interface IReduxStatePossibleProps {
+  withReduxState?: boolean;
 }

@@ -6,10 +6,15 @@ import { ChosenSelect } from '../src/components/chosen/ChosenSelect';
 import { Svg } from '../src/components/svg/Svg';
 import { Tooltip } from '../src/components/tooltip/Tooltip';
 import { MembersExample } from './members-example/MembersExample';
-import './style.scss';
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
+import { LoadingExamples } from '../src/components/loading/LoadingExamples';
+import './style.scss';
+import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import { FilterBoxExamples } from '../src/components/filterBox/examples/FilterBoxExamples';
+import { FilterBoxConnectedExamples } from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
+import { FacetConnectedExamples } from '../src/components/facets/examples/FacetConnectedExamples';
+import { FacetExamples } from '../src/components/facets/examples/FacetExamples';
 
 class App extends React.Component<any, any> {
 
@@ -79,6 +84,11 @@ class App extends React.Component<any, any> {
           </div>
           <LastUpdatedExamples />
           <LastUpdatedConnectedExamples />
+          <LoadingExamples />
+          <FilterBoxExamples />
+          <FilterBoxConnectedExamples />
+          <FacetExamples />
+          <FacetConnectedExamples />
         </div>
       </Provider>
     );
