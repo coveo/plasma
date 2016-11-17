@@ -3,7 +3,6 @@ import { LastUpdated, ILastUpdatedProps, LAST_UPDATE_LABEL } from '../LastUpdate
 import { TestUtils } from '../../../utils/TestUtils';
 import * as s from 'underscore.string';
 import * as moment from 'moment';
-
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -70,9 +69,11 @@ describe('LastUpdated', () => {
         <LastUpdated />,
         { attachTo: document.getElementById('App') }
       );
-      expect(renderSpy.calls.count()).toBe(0);
-      lastUpdated.setProps({ onRender: renderSpy });
+
+      expect(() => (lastUpdated.instance() as LastUpdated).componentWillMount()).not.toThrow();
+
       lastUpdated.unmount();
+      lastUpdated.setProps({ onRender: renderSpy });
       lastUpdated.mount();
       expect(renderSpy.calls.count()).toBe(1);
     });
@@ -83,8 +84,9 @@ describe('LastUpdated', () => {
         <LastUpdated />,
         { attachTo: document.getElementById('App') }
       );
+      expect(() => (lastUpdated.instance() as LastUpdated).componentWillUnmount()).not.toThrow();
+
       lastUpdated.unmount();
-      expect(destroySpy.calls.count()).toBe(0);
       lastUpdated.setProps({ onDestroy: destroySpy });
       lastUpdated.mount();
       lastUpdated.unmount();

@@ -56,6 +56,8 @@ describe('Facets', () => {
       let renderSpy = jasmine.createSpy('onRender');
       let newFacetAttributes = _.extend({}, facetBasicAttributes, { onRender: renderSpy });
 
+      expect(() => facetInstance.componentWillMount()).not.toThrow();
+
       facetComponent.unmount();
       facetComponent.setProps(newFacetAttributes);
       facetComponent.mount();
@@ -65,6 +67,8 @@ describe('Facets', () => {
     it('should call prop onDestroy on unmounting if set', () => {
       let destroySpy = jasmine.createSpy('onDestroy');
       let newFacetAttributes = _.extend({}, facetBasicAttributes, { onRender: destroySpy });
+
+      expect(() => facetInstance.componentWillUnmount()).not.toThrow();
 
       facetComponent.unmount();
       facetComponent.setProps(newFacetAttributes);

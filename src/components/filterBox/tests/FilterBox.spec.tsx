@@ -21,6 +21,7 @@ describe('FilterBox', () => {
 
   describe('<FilterBox />', () => {
     let filterBox: ReactWrapper<IFilterBoxProps, any>;
+    let filterBoxInstance: FilterBox;
 
     beforeEach(() => {
       filterBox = mount(
@@ -29,6 +30,7 @@ describe('FilterBox', () => {
           />,
         { attachTo: document.getElementById('App') }
       );
+      filterBoxInstance = filterBox.instance() as FilterBox;
     });
 
     afterEach(() => {
@@ -39,6 +41,8 @@ describe('FilterBox', () => {
     it('should call prop onRender on mounting if set', () => {
       let renderSpy = jasmine.createSpy('onRender');
 
+      expect(() => filterBoxInstance.componentWillMount()).not.toThrow();
+
       filterBox.setProps({ id: id, onRender: renderSpy });
       filterBox.unmount();
       filterBox.mount();
@@ -47,6 +51,8 @@ describe('FilterBox', () => {
 
     it('should call prop onDestroy on unmounting if set', () => {
       let destroySpy = jasmine.createSpy('onDestroy');
+
+      expect(() => filterBoxInstance.componentWillUnmount()).not.toThrow();
 
       filterBox.setProps({ id: id, onDestroy: destroySpy });
       filterBox.mount();
