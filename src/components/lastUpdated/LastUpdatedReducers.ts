@@ -37,12 +37,12 @@ export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpd
         lastUpdatedReducer(undefined, action)
       ];
     case LastUpdatedActions.removeLastUpdated:
-      return _.reject(state, (time) => {
-        return action.payload.id === time.id;
+      return _.reject(state, (lastUpdated: ILastUpdatedState) => {
+        return action.payload.id === lastUpdated.id;
       });
     case LastUpdatedActions.changeLastUpdated:
-      return state.map(time =>
-        lastUpdatedReducer(time, action)
+      return state.map(lastUpdated =>
+        lastUpdatedReducer(lastUpdated, action)
       );
     default:
       return state;

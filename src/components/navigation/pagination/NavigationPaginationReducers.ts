@@ -44,8 +44,8 @@ export const paginationCompositeReducer = (state: IPaginationState[] = paginatio
         paginationReducer(undefined, action)
       ];
     case PaginationActions.remove:
-      return _.reject(state, (p) => {
-        return p.id === action.payload.id;
+      return _.reject(state, (pagination: IPaginationState) => {
+        return pagination.id === action.payload.id;
       });
     case PaginationActions.changePage:
     case PaginationActions.reset:

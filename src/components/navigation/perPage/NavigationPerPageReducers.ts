@@ -39,8 +39,8 @@ export const perPageCompositeReducer = (state: IPerPageState[] = perPageComposit
         perPageReducer(undefined, action)
       ];
     case PerPageActions.remove:
-      return _.reject(state, (p) => {
-        return p.id === action.payload.id;
+      return _.reject(state, (perPage: IPerPageState) => {
+        return perPage.id === action.payload.id;
       });
     case PerPageActions.change:
       return state.map(p => perPageReducer(p, action));

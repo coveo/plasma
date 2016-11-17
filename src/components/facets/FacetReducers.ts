@@ -87,7 +87,7 @@ export const facetsReducer = (state: IFacetState[] = facetsInitialState,
         facetReducer(undefined, action)
       ];
     case FacetActions.removeFacet:
-      return _.reject(state, (facet) => {
+      return _.reject(state, (facet: IFacetState) => {
         return action.payload.facet === facet.facet;
       });
     default:

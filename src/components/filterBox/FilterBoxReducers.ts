@@ -41,7 +41,7 @@ export const filterBoxesReducer = (state: IFilterState[] = filtersInitialState, 
         filterBoxReducer(undefined, action)
       ];
     case FilterActions.removeFilter:
-      return _.reject(state, (filterBox) => {
+      return _.reject(state, (filterBox: IFilterState) => {
         return action.payload.id === filterBox.id;
       });
     default:
