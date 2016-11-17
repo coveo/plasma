@@ -5,6 +5,7 @@ import { facetsReducer } from '../components/facets/FacetReducers';
 import { paginationCompositeReducer } from '../components/navigation/pagination/NavigationPaginationReducers';
 import { perPageCompositeReducer } from '../components/navigation/perPage/NavigationPerPageReducers';
 import { loadingsReducer } from '../components/loading/LoadingReducers';
+import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers';
 import * as Redux from 'redux';
 
 export class TestUtils {
@@ -15,7 +16,8 @@ export class TestUtils {
       facets: facetsReducer,
       paginationComposite: paginationCompositeReducer,
       perPageComposite: perPageCompositeReducer,
-      loadings: loadingsReducer
+      loadings: loadingsReducer,
+      prompts: promptsReducer
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {

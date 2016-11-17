@@ -1,31 +1,29 @@
-import { IInlinePromptOptions, IUserChoice } from './InlinePrompt';
+import { IInlinePromptOptions } from './InlinePrompt';
 import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface IPromptActionPayload {
   id: string;
-  options?: IInlinePromptOptions;
 }
 
-export const promptActions = {
+export interface IAddPromptActionPayload extends IPromptActionPayload {
+  options: IInlinePromptOptions;
+}
+
+export const PromptActions = {
   add: 'ADD_PROMPT',
   remove: 'REMOVE_PROMPT'
 };
 
-export const addPrompt = (id: string, onClick: () => void, userChoice: IUserChoice, isOpened: boolean, className: string): IReduxAction<IPromptActionPayload> => ({
-  type: promptActions.add,
+export const addPrompt = (id: string, options: IInlinePromptOptions): IReduxAction<IAddPromptActionPayload> => ({
+  type: PromptActions.add,
   payload: {
     id,
-    options: {
-      onClick,
-      userChoice,
-      isOpened,
-      className
-    }
+    options
   }
 });
 
 export const removePrompt = (id: string): IReduxAction<IPromptActionPayload> => ({
-  type: promptActions.remove,
+  type: PromptActions.remove,
   payload: {
     id
   }

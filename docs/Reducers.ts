@@ -6,6 +6,8 @@ import { facetsReducer } from '../src/components/facets/FacetReducers';
 import { perPageCompositeReducer } from '../src/components/navigation/perPage/NavigationPerPageReducers';
 import { paginationCompositeReducer } from '../src/components/navigation/pagination/NavigationPaginationReducers';
 import { loadingsReducer } from '../src/components/loading/LoadingReducers';
+import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReducers';
+import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import * as Redux from 'redux';
 
 export interface IReactVaporExampleState extends IReactVaporState {
@@ -25,5 +27,7 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   perPageComposite: perPageCompositeReducer,
   paginationComposite: paginationCompositeReducer,
   loadings: loadingsReducer,
+  prompts: promptsReducer,
+  actionsBars: actionBarsReducer,
   lastAction
 });

@@ -1,20 +1,17 @@
 import { IInlinePromptProps, IInlinePromptViewDispatchProps, InlinePrompt, IInlinePromptOwnProps } from './InlinePrompt';
-import { ReduxUtils } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
 import { removePrompt } from './InlinePromptActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
-import * as Redux from 'redux';
 
 const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: Redux.Action) => void,
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
   ownProps: IInlinePromptOwnProps): IInlinePromptViewDispatchProps => {
   return {
-    onCancel: () => {
-      dispatch(removePrompt(ownProps.id));
-    }
+    onCancel: () => dispatch(removePrompt(ownProps.id))
   };
 };
 
