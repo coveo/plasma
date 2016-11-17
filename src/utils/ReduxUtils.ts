@@ -4,6 +4,7 @@ import { extend } from 'underscore';
 import { ILastUpdatedState } from '../components/lastUpdated/LastUpdatedReducers';
 import { IFacetState } from '../components/facets/FacetReducers';
 import { IFilterState } from '../components/filterBox/FilterBoxReducers';
+import { IFacet } from '../components/facets/Facet';
 import { IPerPageState } from '../components/navigation/perPage/NavigationPerPageReducers';
 import { ILoadingState } from '../components/loading/LoadingReducers';
 import { IPaginationState } from '../components/navigation/pagination/NavigationPaginationReducers';
@@ -39,6 +40,13 @@ export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, me
 
 export interface IReduxAction<T> extends Redux.Action {
   payload?: T;
+}
+
+export interface IReduxActionPayload {
+  id?: string;
+  filterText?: string;
+  facet?: string;
+  facetRow?: IFacet;
 }
 
 export interface IReduxProps {

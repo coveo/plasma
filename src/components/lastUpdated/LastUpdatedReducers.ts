@@ -1,6 +1,6 @@
-import { LastUpdatedActions, ILastUpdatedPayload } from './LastUpdatedActions';
+import { LastUpdatedActions } from './LastUpdatedActions';
+import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
 import * as _ from 'underscore';
-import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface ILastUpdatedState {
   id: string;
@@ -10,7 +10,7 @@ export interface ILastUpdatedState {
 export const lastUpdatedInitialState: ILastUpdatedState = { id: undefined, time: new Date() };
 export const lastUpdatedCompositeInitialState: ILastUpdatedState[] = [];
 
-export const lastUpdated = (state: ILastUpdatedState = lastUpdatedInitialState, action: IReduxAction<ILastUpdatedPayload>): ILastUpdatedState => {
+export const lastUpdatedReducer = (state: ILastUpdatedState = lastUpdatedInitialState, action: IReduxAction<IReduxActionPayload>): ILastUpdatedState => {
   switch (action.type) {
     case LastUpdatedActions.addLastUpdated:
       return {
@@ -29,12 +29,12 @@ export const lastUpdated = (state: ILastUpdatedState = lastUpdatedInitialState, 
   }
 };
 
-export const lastUpdatedComposite = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: IReduxAction<ILastUpdatedPayload>): ILastUpdatedState[] => {
+export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: IReduxAction<IReduxActionPayload>): ILastUpdatedState[] => {
   switch (action.type) {
     case LastUpdatedActions.addLastUpdated:
       return [
         ...state,
-        lastUpdated(undefined, action)
+        lastUpdatedReducer(undefined, action)
       ];
     case LastUpdatedActions.removeLastUpdated:
       return _.reject(state, (time) => {
@@ -42,7 +42,7 @@ export const lastUpdatedComposite = (state: ILastUpdatedState[] = lastUpdatedCom
       });
     case LastUpdatedActions.changeLastUpdated:
       return state.map(time =>
-        lastUpdated(time, action)
+        lastUpdatedReducer(time, action)
       );
     default:
       return state;

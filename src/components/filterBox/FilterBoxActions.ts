@@ -8,7 +8,10 @@ export const FilterActions = {
 
 export interface IFilterActionPayload {
   id: string;
-  filterText?: string;
+}
+
+export interface IChangeFilterActionPayload extends IFilterActionPayload {
+  filterText: string;
 }
 
 export const addFilter = (id: string): IReduxAction<IFilterActionPayload> => ({
@@ -25,7 +28,7 @@ export const removeFilter = (id: string): IReduxAction<IFilterActionPayload> => 
   }
 });
 
-export const filterThrough = (id: string, filterText: string): IReduxAction<IFilterActionPayload> => ({
+export const filterThrough = (id: string, filterText: string): IReduxAction<IChangeFilterActionPayload> => ({
   type: FilterActions.filterThrough,
   payload: {
     id,

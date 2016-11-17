@@ -1,5 +1,5 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IFilterActionPayload, FilterActions } from './FilterBoxActions';
+import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { FilterActions } from './FilterBoxActions';
 import * as _ from 'underscore';
 
 export interface IFilterState {
@@ -10,7 +10,7 @@ export interface IFilterState {
 export const filterBoxInitialState: IFilterState = { id: undefined, filterText: undefined };
 export const filtersInitialState: IFilterState[] = [];
 
-export const filterBox = (state: IFilterState = filterBoxInitialState, action: IReduxAction<IFilterActionPayload>): IFilterState => {
+export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, action: IReduxAction<IReduxActionPayload>): IFilterState => {
   switch (action.type) {
     case FilterActions.filterThrough:
       if (state.id !== action.payload.id) {
@@ -31,18 +31,18 @@ export const filterBox = (state: IFilterState = filterBoxInitialState, action: I
   }
 };
 
-export const filters = (state: IFilterState[] = filtersInitialState, action: IReduxAction<IFilterActionPayload>): IFilterState[] => {
+export const filterBoxesReducer = (state: IFilterState[] = filtersInitialState, action: IReduxAction<IReduxActionPayload>): IFilterState[] => {
   switch (action.type) {
     case FilterActions.filterThrough:
-      return state.map(f => filterBox(f, action));
+      return state.map(filterBox => filterBoxReducer(filterBox, action));
     case FilterActions.addFilter:
       return [
         ...state,
-        filterBox(undefined, action)
+        filterBoxReducer(undefined, action)
       ];
     case FilterActions.removeFilter:
-      return _.reject(state, (f) => {
-        return action.payload.id === f.id;
+      return _.reject(state, (filterBox) => {
+        return action.payload.id === filterBox.id;
       });
     default:
       return state;
