@@ -1,14 +1,17 @@
-import { IPerPageActionPayload, PerPageActions } from '../NavigationPerPageActions';
+import { IPerPageActionPayload, PerPageActions, IChangePerPageActionPayload } from '../NavigationPerPageActions';
 import { IReduxAction } from '../../../../utils/ReduxUtils';
 import {
-  IPerPageState, perPageComposite, perPageCompositeInitialState, perPage,
+  IPerPageState,
+  perPageCompositeReducer,
+  perPageCompositeInitialState,
+  perPageReducer,
   perPageInitialState
 } from '../NavigationPerPageReducers';
 
 describe('Reducers', () => {
 
   describe('NavigationPerPageReducers', () => {
-    let genericAction: IReduxAction<IPerPageActionPayload> = {
+    let genericAction: IReduxAction<IChangePerPageActionPayload> = {
       type: 'DO_SOMETHING',
       payload: {
         id: 'per-page',
@@ -18,21 +21,21 @@ describe('Reducers', () => {
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
       let oldState: IPerPageState[] = undefined;
-      let perPageCompositeState = perPageComposite(oldState, genericAction);
+      let perPageCompositeState = perPageCompositeReducer(oldState, genericAction);
 
       expect(perPageCompositeState).toBe(perPageCompositeInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for a specific perPage', () => {
       let oldState: IPerPageState = undefined;
-      let perPageState = perPage(oldState, genericAction);
+      let perPageState = perPageReducer(oldState, genericAction);
 
       expect(perPageState).toBe(perPageInitialState);
     });
 
     it('should return the old state when the action is not defined', () => {
       let oldState: IPerPageState[] = [perPageInitialState];
-      let perPageCompositeState: IPerPageState[] = perPageComposite(oldState, genericAction);
+      let perPageCompositeState: IPerPageState[] = perPageCompositeReducer(oldState, genericAction);
 
       expect(perPageCompositeState).toBe(oldState);
     });
@@ -42,28 +45,28 @@ describe('Reducers', () => {
         id: 'per-page',
         perPage: 20
       };
-      let pageNbState = perPage(oldState, genericAction);
+      let pageNbState = perPageReducer(oldState, genericAction);
 
       expect(pageNbState).toBe(oldState);
     });
 
     it('should return the old state with one more PerPageState when the action is "ADD_PER_PAGE"', () => {
       let oldState: IPerPageState[] = perPageCompositeInitialState;
-      let action: IReduxAction<IPerPageActionPayload> = {
+      let action: IReduxAction<IChangePerPageActionPayload> = {
         type: PerPageActions.add,
         payload: {
           id: 'per-page',
           perPage: 30
         }
       };
-      let perPageCompositeState: IPerPageState[] = perPageComposite(oldState, action);
+      let perPageCompositeState: IPerPageState[] = perPageCompositeReducer(oldState, action);
 
       expect(perPageCompositeState.length).toBe(oldState.length + 1);
       expect(perPageCompositeState.filter(p => p.id === action.payload.id).length).toBe(1);
 
       oldState = perPageCompositeState;
       action.payload.id = 'per-page2';
-      perPageCompositeState = perPageComposite(oldState, action);
+      perPageCompositeState = perPageCompositeReducer(oldState, action);
 
       expect(perPageCompositeState.length).toBe(oldState.length + 1);
       expect(perPageCompositeState.filter(p => p.id === action.payload.id).length).toBe(1);
@@ -88,14 +91,14 @@ describe('Reducers', () => {
           id: 'per-page2'
         }
       };
-      let perPageCompositeState: IPerPageState[] = perPageComposite(oldState, action);
+      let perPageCompositeState: IPerPageState[] = perPageCompositeReducer(oldState, action);
 
       expect(perPageCompositeState.length).toBe(oldState.length - 1);
       expect(perPageCompositeState.filter(p => p.id === action.payload.id).length).toBe(0);
 
       oldState = perPageCompositeState;
       action.payload.id = 'per-page';
-      perPageCompositeState = perPageComposite(oldState, action);
+      perPageCompositeState = perPageCompositeReducer(oldState, action);
 
       expect(perPageCompositeState.length).toBe(oldState.length - 1);
       expect(perPageCompositeState.filter(p => p.id === action.payload.id).length).toBe(0);
@@ -114,7 +117,7 @@ describe('Reducers', () => {
         type: PerPageActions.change,
         payload: newState
       };
-      let perPageCompositeState = perPageComposite([oldState], action);
+      let perPageCompositeState = perPageCompositeReducer([oldState], action);
 
       expect(perPageCompositeState[0]).toEqual(jasmine.objectContaining(newState));
     });

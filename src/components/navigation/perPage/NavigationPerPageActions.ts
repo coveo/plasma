@@ -2,7 +2,10 @@ import { IReduxAction } from '../../../utils/ReduxUtils';
 
 export interface IPerPageActionPayload {
   id: string;
-  perPage?: number;
+}
+
+export interface IChangePerPageActionPayload extends IPerPageActionPayload {
+  perPage: number;
 }
 
 export const PerPageActions = {
@@ -11,7 +14,7 @@ export const PerPageActions = {
   change: 'CHANGE_PER_PAGE'
 };
 
-export const addPerPage = (id: string, perPage: number): IReduxAction<IPerPageActionPayload> => ({
+export const addPerPage = (id: string, perPage: number): IReduxAction<IChangePerPageActionPayload> => ({
   type: PerPageActions.add,
   payload: {
     id,
@@ -26,7 +29,7 @@ export const removePerPage = (id: string): IReduxAction<IPerPageActionPayload> =
   }
 });
 
-export const changePerPage = (id: string, perPage: number): IReduxAction<IPerPageActionPayload> => ({
+export const changePerPage = (id: string, perPage: number): IReduxAction<IChangePerPageActionPayload> => ({
   type: PerPageActions.change,
   payload: {
     id,

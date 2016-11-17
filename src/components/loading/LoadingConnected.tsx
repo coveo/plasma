@@ -8,14 +8,11 @@ const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<ILoadingActionPayload>) => void, ownProps: ILoadingOwnProps): ILoadingDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<ILoadingActionPayload>) => void,
+  ownProps: ILoadingOwnProps): ILoadingDispatchProps => {
   return {
-    onRender: () => {
-      dispatch(addLoading(ownProps.id));
-    },
-    onDestroy: () => {
-      dispatch(removeLoading(ownProps.id));
-    }
+    onRender: () => dispatch(addLoading(ownProps.id)),
+    onDestroy: () => dispatch(removeLoading(ownProps.id))
   };
 };
 

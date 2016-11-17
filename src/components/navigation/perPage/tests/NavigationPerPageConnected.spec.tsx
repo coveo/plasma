@@ -8,7 +8,6 @@ import { NavigationPerPage, INavigationPerPageProps } from '../NavigationPerPage
 import { addLoading, turnOffLoading } from '../../../loading/LoadingActions';
 import { changePerPage } from '../NavigationPerPageActions';
 import * as _ from 'underscore';
-
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */

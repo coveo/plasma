@@ -1,10 +1,12 @@
 import { shallow, ReactWrapper, mount } from 'enzyme';
 import {
-  NavigationPagination, INavigationPaginationProps, PREVIOUS_LABEL, NEXT_LABEL,
+  NavigationPagination,
+  INavigationPaginationProps,
+  PREVIOUS_LABEL,
+  NEXT_LABEL,
   NUMBER_OF_PAGES_SHOWING
 } from '../NavigationPagination';
 import * as _ from 'underscore';
-
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -26,6 +28,7 @@ describe('NavigationPagination', () => {
 
   describe('<NavigationPagination />', () => {
     let navigationPagination: ReactWrapper<INavigationPaginationProps, any>;
+    let navigationPaginationInstance: NavigationPagination;
 
     beforeEach(() => {
       navigationPagination = mount(
@@ -33,6 +36,7 @@ describe('NavigationPagination', () => {
           {...basicNavigationPaginationAttributes}
           />,
         { attachTo: document.getElementById('App') });
+      navigationPaginationInstance = navigationPagination.instance() as NavigationPagination;
     });
 
     afterEach(() => {
@@ -43,7 +47,7 @@ describe('NavigationPagination', () => {
     it('should call prop onRender on mounting if set', () => {
       let renderSpy = jasmine.createSpy('onRender');
 
-      expect(() => { (navigationPagination.instance() as NavigationPagination).componentWillMount(); }).not.toThrow();
+      expect(() => { navigationPaginationInstance.componentWillMount(); }).not.toThrow();
 
       navigationPagination = mount(
         <NavigationPagination
@@ -57,7 +61,7 @@ describe('NavigationPagination', () => {
     it('should call prop onDestroy on unmounting if set', () => {
       let destroySpy = jasmine.createSpy('onDestroy');
 
-      expect(() => { (navigationPagination.instance() as NavigationPagination).componentWillUnmount(); }).not.toThrow();
+      expect(() => { navigationPaginationInstance.componentWillUnmount(); }).not.toThrow();
 
       navigationPagination = mount(
         <NavigationPagination
@@ -73,11 +77,11 @@ describe('NavigationPagination', () => {
       let clickSpy = jasmine.createSpy('onClick');
       let newNavigationPaginationAttributes = _.extend({}, basicNavigationPaginationAttributes, { onPageClick: clickSpy });
 
-      expect(() => { (navigationPagination.instance() as NavigationPagination).handlePageClick(3); }).not.toThrow();
+      expect(() => { navigationPaginationInstance['handlePageClick'].call(navigationPaginationInstance, 3); }).not.toThrow();
 
       navigationPagination.setProps(newNavigationPaginationAttributes);
 
-      (navigationPagination.instance() as NavigationPagination).handlePageClick(-2);
+      navigationPaginationInstance['handlePageClick'].call(navigationPaginationInstance, -2);
       expect(clickSpy).not.toHaveBeenCalled();
 
       // Previous button (does not call spy since current page is zero)

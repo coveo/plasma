@@ -2,7 +2,6 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 import { NavigationPerPage, INavigationPerPageProps, PER_PAGE_LABEL, PER_PAGE_NUMBERS } from '../NavigationPerPage';
 import { NavigationPerPageSelect } from '../NavigationPerPageSelect';
 import * as _ from 'underscore';
-
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -24,12 +23,14 @@ describe('NavigationPerPage', () => {
 
   describe('NavigationPerPageView', () => {
     let navigationPerPage: ReactWrapper<INavigationPerPageProps, any>;
+    let navigationPerPageInstance: NavigationPerPage;
 
     beforeEach(() => {
       navigationPerPage = mount(
         <NavigationPerPage {...basicNavigationPerPageProps} />,
         { attachTo: document.getElementById('App') }
       );
+      navigationPerPageInstance = navigationPerPage.instance() as NavigationPerPage;
     });
 
     afterEach(() => {
@@ -61,7 +62,7 @@ describe('NavigationPerPage', () => {
     it('should call onRender if prop is set on mount', () => {
       let onRenderSpy = jasmine.createSpy('onRender');
 
-      expect(() => { (navigationPerPage.instance() as NavigationPerPage).componentWillMount(); }).not.toThrow();
+      expect(() => { navigationPerPageInstance.componentWillMount(); }).not.toThrow();
 
       navigationPerPage = mount(
         <NavigationPerPage {...basicNavigationPerPageProps} onRender={onRenderSpy} />,
@@ -73,7 +74,7 @@ describe('NavigationPerPage', () => {
     it('should call onDestroy if prop is set when unmounting', () => {
       let onDestroySpy = jasmine.createSpy('onDestroy');
 
-      expect(() => { (navigationPerPage.instance() as NavigationPerPage).componentWillMount(); }).not.toThrow();
+      expect(() => { navigationPerPageInstance.componentWillMount(); }).not.toThrow();
 
       navigationPerPage = mount(
         <NavigationPerPage {...basicNavigationPerPageProps} onDestroy={onDestroySpy} />,

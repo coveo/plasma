@@ -1,5 +1,5 @@
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IPerPageActionPayload, PerPageActions } from './NavigationPerPageActions';
+import { IReduxAction, IReduxActionPayload } from '../../../utils/ReduxUtils';
+import { PerPageActions } from './NavigationPerPageActions';
 import * as _ from 'underscore';
 
 export interface IPerPageState {
@@ -14,7 +14,7 @@ export const perPageInitialState: IPerPageState = {
 
 export const perPageCompositeInitialState: IPerPageState[] = [];
 
-export const perPage = (state: IPerPageState = perPageInitialState, action: IReduxAction<IPerPageActionPayload>): IPerPageState => {
+export const perPageReducer = (state: IPerPageState = perPageInitialState, action: IReduxAction<IReduxActionPayload>): IPerPageState => {
   switch (action.type) {
     case PerPageActions.add:
       return {
@@ -31,19 +31,19 @@ export const perPage = (state: IPerPageState = perPageInitialState, action: IRed
   }
 };
 
-export const perPageComposite = (state: IPerPageState[] = perPageCompositeInitialState, action: IReduxAction<IPerPageActionPayload>): IPerPageState[] => {
+export const perPageCompositeReducer = (state: IPerPageState[] = perPageCompositeInitialState, action: IReduxAction<IReduxActionPayload>): IPerPageState[] => {
   switch (action.type) {
     case PerPageActions.add:
       return [
         ...state,
-        perPage(undefined, action)
+        perPageReducer(undefined, action)
       ];
     case PerPageActions.remove:
       return _.reject(state, (p) => {
         return p.id === action.payload.id;
       });
     case PerPageActions.change:
-      return state.map(p => perPage(p, action));
+      return state.map(p => perPageReducer(p, action));
     default:
       return state;
   }

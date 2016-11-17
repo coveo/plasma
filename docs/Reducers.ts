@@ -1,11 +1,11 @@
-import { membersReducers, IMembersCompositeState } from './members-example/reducers/MembersReducers';
-import { IReactVaporState } from '../src/utils/ReduxUtils';
-import { lastUpdatedCompositeReducer } from '../src/components/lastUpdated/LastUpdatedReducers';
-import { filterBoxesReducer } from '../src/components/filterBox/FilterBoxReducers';
-import { facetsReducer } from '../src/components/facets/FacetReducers';
-import { perPageComposite } from '../src/components/navigation/perPage/NavigationPerPageReducers';
-import { paginationComposite } from '../src/components/navigation/pagination/NavigationPaginationReducers';
-import { loadings } from '../src/components/loading/LoadingReducers';
+import {membersReducers, IMembersCompositeState} from './members-example/reducers/MembersReducers';
+import {IReactVaporState} from '../src/utils/ReduxUtils';
+import {lastUpdatedCompositeReducer} from '../src/components/lastUpdated/LastUpdatedReducers';
+import {filterBoxesReducer} from '../src/components/filterBox/FilterBoxReducers';
+import {facetsReducer} from '../src/components/facets/FacetReducers';
+import {perPageCompositeReducer} from '../src/components/navigation/perPage/NavigationPerPageReducers';
+import {paginationCompositeReducer} from '../src/components/navigation/pagination/NavigationPaginationReducers';
+import {loadingsReducer} from '../src/components/loading/LoadingReducers';
 import * as Redux from 'redux';
 
 export interface IReactVaporExampleState extends IReactVaporState {
@@ -22,8 +22,8 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   lastUpdatedComposite: lastUpdatedCompositeReducer,
   filters: filterBoxesReducer,
   facets: facetsReducer,
-  perPageComposite,
-  paginationComposite,
-  loadings,
+  perPageComposite: perPageCompositeReducer,
+  paginationComposite: paginationCompositeReducer,
+  loadings: loadingsReducer,
   lastAction
 });

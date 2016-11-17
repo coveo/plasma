@@ -44,9 +44,12 @@ export interface IReduxAction<T> extends Redux.Action {
 
 export interface IReduxActionPayload {
   id?: string;
-  filterText?: string;
+  ids?: string[];
   facet?: string;
   facetRow?: IFacet;
+  filterText?: string;
+  pageNb?: number;
+  perPage?: number;
 }
 
 export interface IReduxProps {

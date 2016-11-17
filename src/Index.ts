@@ -16,7 +16,7 @@ import { facetsReducer } from './components/facets/FacetReducers';
 import { changeFacet, emptyFacet } from './components/facets/FacetActions';
 import { Loading } from './components/loading/Loading';
 import { LoadingConnected } from './components/loading/LoadingConnected';
-import { loadings } from './components/loading/LoadingReducers';
+import { loadingsReducer } from './components/loading/LoadingReducers';
 import { turnOnLoading, turnOffLoading } from './components/loading/LoadingActions';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
@@ -24,8 +24,8 @@ import { NavigationPagination } from './components/navigation/pagination/Navigat
 import { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
 import { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
 import { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
-import { paginationComposite } from './components/navigation/pagination/NavigationPaginationReducers';
-import { perPageComposite } from './components/navigation/perPage/NavigationPerPageReducers';
+import { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
+import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
 import { changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 import { changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
 import {
@@ -65,7 +65,7 @@ export {
   // Loading
   Loading,
   LoadingConnected,
-  loadings,
+  loadingsReducer,
   turnOnLoading,
   turnOffLoading,
 
@@ -76,8 +76,8 @@ export {
   NavigationPaginationConnected,
   NavigationPerPage,
   NavigationPerPageConnected,
-  paginationComposite,
-  perPageComposite,
+  paginationCompositeReducer,
+  perPageCompositeReducer,
   changePage,
   resetPaging,
   changePerPage,

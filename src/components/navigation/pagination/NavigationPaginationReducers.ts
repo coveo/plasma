@@ -1,5 +1,5 @@
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IPaginationActionPayload, PaginationActions } from './NavigationPaginationActions';
+import { IReduxAction, IReduxActionPayload } from '../../../utils/ReduxUtils';
+import { PaginationActions } from './NavigationPaginationActions';
 import * as _ from 'underscore';
 
 export interface IPaginationState {
@@ -14,7 +14,7 @@ export const paginationInitialState: IPaginationState = {
 
 export const paginationCompositeInitialState: IPaginationState[] = [];
 
-export const pagination = (state: IPaginationState = paginationInitialState, action: IReduxAction<IPaginationActionPayload>): IPaginationState => {
+export const paginationReducer = (state: IPaginationState = paginationInitialState, action: IReduxAction<IReduxActionPayload>): IPaginationState => {
   switch (action.type) {
     case PaginationActions.add:
       return {
@@ -36,12 +36,12 @@ export const pagination = (state: IPaginationState = paginationInitialState, act
 };
 
 
-export const paginationComposite = (state: IPaginationState[] = paginationCompositeInitialState, action: IReduxAction<IPaginationActionPayload>): IPaginationState[] => {
+export const paginationCompositeReducer = (state: IPaginationState[] = paginationCompositeInitialState, action: IReduxAction<IReduxActionPayload>): IPaginationState[] => {
   switch (action.type) {
     case PaginationActions.add:
       return [
         ...state,
-        pagination(undefined, action)
+        paginationReducer(undefined, action)
       ];
     case PaginationActions.remove:
       return _.reject(state, (p) => {
@@ -49,7 +49,7 @@ export const paginationComposite = (state: IPaginationState[] = paginationCompos
       });
     case PaginationActions.changePage:
     case PaginationActions.reset:
-      return state.map(p => pagination(p, action));
+      return state.map(p => paginationReducer(p, action));
     default:
       return state;
   }

@@ -1,7 +1,6 @@
 import { Navigation, INavigationProps } from '../Navigation';
 import * as React from 'react';
 
-
 export class NavigationExamples extends React.Component<any, any> {
 
   render() {
