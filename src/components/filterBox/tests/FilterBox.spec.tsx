@@ -83,5 +83,29 @@ describe('FilterBox', () => {
       expect(filterBox.html()).not.toContain(FILTER_PLACEHOLDER);
       expect(filterBox.html()).toContain(expectedPlaceholder);
     });
+
+    it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', () => {
+      let filterInput = filterBox.find('input');
+      let clearIcon = filterBox.find('span').first();
+
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+
+      filterBoxInstance.filterInput.value = 'something';
+      filterInput.simulate('change');
+      expect(clearIcon.hasClass('hidden')).toBe(false);
+
+      filterBoxInstance.filterInput.value = '';
+      filterInput.simulate('change');
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+    });
+
+    it('should clear the filter input when clicking the clear icon', () => {
+      let clearIcon = filterBox.find('span').first();
+
+      filterBoxInstance.filterInput.value = 'something';
+
+      clearIcon.simulate('click');
+      expect(filterBoxInstance.filterInput.value).toBe('');
+    });
   });
 });
