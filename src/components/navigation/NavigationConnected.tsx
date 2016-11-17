@@ -1,7 +1,5 @@
 import { IReactVaporState, ReduxUtils } from '../../utils/ReduxUtils';
-import {
-  Navigation, INavigationOwnProps, INavigationStateProps, INavigationProps
-} from './Navigation';
+import { Navigation, INavigationOwnProps, INavigationStateProps, INavigationProps } from './Navigation';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -10,7 +8,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationOwnProps)
   let item = _.findWhere(state.loadings, { id: 'loading-' + ownProps.id });
 
   return {
-    isLoading: item ? item.isOn : false,
+    isLoading: item && item.isOn || false,
     withReduxState: true
   };
 };

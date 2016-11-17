@@ -1,5 +1,5 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { ILoadingActionPayload, LoadingActions } from './LoadingActions';
+import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { LoadingActions } from './LoadingActions';
 import * as _ from 'underscore';
 
 export interface ILoadingState {
@@ -14,7 +14,7 @@ export const loadingInitialState: ILoadingState = {
 
 export const loadingsInitialState: ILoadingState[] = [];
 
-export const loading = (state: ILoadingState = loadingInitialState, action: IReduxAction<ILoadingActionPayload>): ILoadingState => {
+export const loadingReducer = (state: ILoadingState = loadingInitialState, action: IReduxAction<IReduxActionPayload>): ILoadingState => {
   switch (action.type) {
     case LoadingActions.add:
       return {
@@ -44,12 +44,12 @@ export const loading = (state: ILoadingState = loadingInitialState, action: IRed
   }
 };
 
-export const loadings = (state: ILoadingState[] = loadingsInitialState, action: IReduxAction<ILoadingActionPayload>): ILoadingState[] => {
+export const loadingsReducer = (state: ILoadingState[] = loadingsInitialState, action: IReduxAction<IReduxActionPayload>): ILoadingState[] => {
   switch (action.type) {
     case LoadingActions.add:
       return [
         ...state,
-        loading(undefined, action)
+        loadingReducer(undefined, action)
       ];
     case LoadingActions.remove:
       return _.reject(state, (l) => {
@@ -57,7 +57,7 @@ export const loadings = (state: ILoadingState[] = loadingsInitialState, action: 
       });
     case LoadingActions.turnOn:
     case LoadingActions.turnOff:
-      return state.map(l => loading(l, action));
+      return state.map(l => loadingReducer(l, action));
     default:
       return state;
   }

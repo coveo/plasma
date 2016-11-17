@@ -1,13 +1,13 @@
-import { IReactVaporState, ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
+import { IReactVaporState, ReduxUtils, IReduxAction, IReduxActionPayload } from '../../../utils/ReduxUtils';
 import {
-  NavigationPagination, INavigationPaginationProps,
-  INavigationPaginationOwnProps, INavigationPaginationStateProps, INavigationPaginationDispatchProps
+  NavigationPagination,
+  INavigationPaginationProps,
+  INavigationPaginationOwnProps,
+  INavigationPaginationStateProps,
+  INavigationPaginationDispatchProps
 } from './NavigationPagination';
-import {
-  IPaginationActionPayload, addPagination, removePagination,
-  changePage
-} from './NavigationPaginationActions';
-import { turnOnLoading, ILoadingActionPayload } from '../../loading/LoadingActions';
+import { addPagination, removePagination, changePage } from './NavigationPaginationActions';
+import { turnOnLoading } from '../../loading/LoadingActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -20,15 +20,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPaginatio
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IPaginationActionPayload | ILoadingActionPayload>) => void,
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
   ownProps: INavigationPaginationOwnProps): INavigationPaginationDispatchProps => {
   return {
-    onRender: () => {
-      dispatch(addPagination(ownProps.id));
-    },
-    onDestroy: () => {
-      dispatch(removePagination(ownProps.id));
-    },
+    onRender: () => dispatch(addPagination(ownProps.id)),
+    onDestroy: () => dispatch(removePagination(ownProps.id)),
     onPageClick: (pageNb: number) => {
       dispatch(turnOnLoading(ownProps.loadingIds));
       dispatch(changePage(ownProps.id, pageNb));

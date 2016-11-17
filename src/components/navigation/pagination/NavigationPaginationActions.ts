@@ -2,7 +2,10 @@ import { IReduxAction } from '../../../utils/ReduxUtils';
 
 export interface IPaginationActionPayload {
   id: string;
-  pageNb?: number;
+}
+
+export interface IChangePaginationActionPayload extends IPaginationActionPayload {
+  pageNb: number;
 }
 
 export const PaginationActions = {
@@ -26,7 +29,7 @@ export const removePagination = (id: string): IReduxAction<IPaginationActionPayl
   }
 });
 
-export const changePage = (id: string, pageNb: number): IReduxAction<IPaginationActionPayload> => ({
+export const changePage = (id: string, pageNb: number): IReduxAction<IChangePaginationActionPayload> => ({
   type: PaginationActions.changePage,
   payload: {
     id,
@@ -34,10 +37,10 @@ export const changePage = (id: string, pageNb: number): IReduxAction<IPagination
   }
 });
 
-export const resetPaging = (id: string): IReduxAction<IPaginationActionPayload> => ({
+export const resetPaging = (id: string): IReduxAction<IChangePaginationActionPayload> => ({
   type: PaginationActions.reset,
   payload: {
-    pageNb: 0,
-    id
+    id,
+    pageNb: 0
   }
 });

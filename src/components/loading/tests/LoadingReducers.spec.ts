@@ -1,6 +1,6 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { ILoadingActionPayload, LoadingActions } from '../LoadingActions';
-import { loadings, loadingsInitialState, loading, ILoadingState, loadingInitialState } from '../LoadingReducers';
+import { loadingsReducer, loadingsInitialState, loadingReducer, ILoadingState, loadingInitialState } from '../LoadingReducers';
 import * as _ from 'underscore';
 
 describe('Reducers', () => {
@@ -15,14 +15,14 @@ describe('Reducers', () => {
 
     it('should return the default state if the action is not defined and the state is undefined ', () => {
       let oldState: ILoadingState[] = undefined;
-      let loadingState: ILoadingState[] = loadings(oldState, genericAction);
+      let loadingState: ILoadingState[] = loadingsReducer(oldState, genericAction);
 
       expect(loadingState).toBe(loadingsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one loading state', () => {
       let oldState: ILoadingState = undefined;
-      let loadingState: ILoadingState = loading(oldState, genericAction);
+      let loadingState: ILoadingState = loadingReducer(oldState, genericAction);
 
       expect(loadingState).toBe(loadingInitialState);
     });
@@ -32,7 +32,7 @@ describe('Reducers', () => {
         id: 'some-loading',
         isOn: false
       }];
-      let loadingState: ILoadingState[] = loadings(oldState, genericAction);
+      let loadingState: ILoadingState[] = loadingsReducer(oldState, genericAction);
 
       expect(loadingState).toBe(oldState);
     });
@@ -42,7 +42,7 @@ describe('Reducers', () => {
         id: 'some-loading',
         isOn: false
       };
-      let loadingState: ILoadingState = loading(oldState, genericAction);
+      let loadingState: ILoadingState = loadingReducer(oldState, genericAction);
 
       expect(loadingState).toBe(oldState);
     });
@@ -55,14 +55,14 @@ describe('Reducers', () => {
           ids: ['some-new-loading']
         }
       };
-      let loadingsState: ILoadingState[] = loadings(oldState, action);
+      let loadingsState: ILoadingState[] = loadingsReducer(oldState, action);
 
       expect(loadingsState.length).toBe(oldState.length + 1);
       expect(loadingsState.filter(l => l.id === action.payload.ids[0]).length).toBe(1);
 
       oldState = loadingsState;
       action.payload.ids = ['other-loading'];
-      loadingsState = loadings(oldState, action);
+      loadingsState = loadingsReducer(oldState, action);
 
       expect(loadingsState.length).toBe(oldState.length + 1);
       expect(loadingsState.filter(l => l.id === action.payload.ids[0]).length).toBe(1);
@@ -87,14 +87,14 @@ describe('Reducers', () => {
           ids: ['some-loading2']
         }
       };
-      let loadingsState: ILoadingState[] = loadings(oldState, action);
+      let loadingsState: ILoadingState[] = loadingsReducer(oldState, action);
 
       expect(loadingsState.length).toBe(oldState.length - 1);
       expect(loadingsState.filter(l => l.id === action.payload.ids[0]).length).toBe(0);
 
       oldState = loadingsState;
       action.payload.ids = ['some-loading'];
-      loadingsState = loadings(oldState, action);
+      loadingsState = loadingsReducer(oldState, action);
 
       expect(loadingsState.length).toBe(oldState.length - 1);
       expect(loadingsState.filter(p => p.id === action.payload.ids[0]).length).toBe(0);
@@ -121,7 +121,7 @@ describe('Reducers', () => {
           ids: ['some-loading', 'some-loading2']
         }
       };
-      let loadingState = loadings(oldState, action);
+      let loadingState = loadingsReducer(oldState, action);
 
       expect(_.findWhere(loadingState, { id: 'some-loading' }).isOn).toBe(true);
       expect(_.findWhere(loadingState, { id: 'some-loading2' }).isOn).toBe(true);
@@ -149,7 +149,7 @@ describe('Reducers', () => {
           ids: ['some-loading', 'some-loading2']
         }
       };
-      let loadingState = loadings(oldState, action);
+      let loadingState = loadingsReducer(oldState, action);
 
       expect(_.findWhere(loadingState, { id: 'some-loading' }).isOn).toBe(false);
       expect(_.findWhere(loadingState, { id: 'some-loading2' }).isOn).toBe(false);

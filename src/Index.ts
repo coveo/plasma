@@ -4,19 +4,19 @@ import { Svg } from './components/svg/Svg';
 import { Tooltip } from './components/tooltip/Tooltip';
 import { LastUpdated } from './components/lastUpdated/LastUpdated';
 import { LastUpdatedConnected } from './components/lastUpdated/LastUpdatedConnected';
-import { lastUpdatedComposite } from './components/lastUpdated/LastUpdatedReducers';
+import { lastUpdatedCompositeReducer } from './components/lastUpdated/LastUpdatedReducers';
 import { changeLastUpdated } from './components/lastUpdated/LastUpdatedActions';
 import { FilterBox } from './components/filterBox/FilterBox';
 import { FilterBoxConnected } from './components/filterBox/FilterBoxConnected';
-import { filters } from './components/filterBox/FilterBoxReducers';
+import { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
 import { filterThrough } from './components/filterBox/FilterBoxActions';
 import { Facet } from './components/facets/Facet';
 import { FacetConnected } from './components/facets/FacetConnected';
-import { facets } from './components/facets/FacetReducers';
+import { facetsReducer } from './components/facets/FacetReducers';
 import { changeFacet, emptyFacet } from './components/facets/FacetActions';
 import { Loading } from './components/loading/Loading';
 import { LoadingConnected } from './components/loading/LoadingConnected';
-import { loadings } from './components/loading/LoadingReducers';
+import { loadingsReducer } from './components/loading/LoadingReducers';
 import { turnOnLoading, turnOffLoading } from './components/loading/LoadingActions';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
@@ -24,11 +24,18 @@ import { NavigationPagination } from './components/navigation/pagination/Navigat
 import { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
 import { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
 import { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
-import { paginationComposite } from './components/navigation/pagination/NavigationPaginationReducers';
-import { perPageComposite } from './components/navigation/perPage/NavigationPerPageReducers';
+import { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
+import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
 import { changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 import { changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
-import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, IReactVaporState } from './utils/ReduxUtils';
+import {
+  ReduxUtils,
+  ReduxConnect,
+  IReduxAction,
+  IReduxProps,
+  IReactVaporState,
+  IReduxActionPayload
+} from './utils/ReduxUtils';
 
 export {
   ChosenSelect,
@@ -39,26 +46,26 @@ export {
   // LastUpdated
   LastUpdated,
   LastUpdatedConnected,
-  lastUpdatedComposite,
+  lastUpdatedCompositeReducer,
   changeLastUpdated,
 
   // FilterBox
   FilterBox,
   FilterBoxConnected,
-  filters,
+  filterBoxesReducer,
   filterThrough,
 
   // Facet
   Facet,
   FacetConnected,
-  facets,
+  facetsReducer,
   changeFacet,
   emptyFacet,
 
   // Loading
   Loading,
   LoadingConnected,
-  loadings,
+  loadingsReducer,
   turnOnLoading,
   turnOffLoading,
 
@@ -69,8 +76,8 @@ export {
   NavigationPaginationConnected,
   NavigationPerPage,
   NavigationPerPageConnected,
-  paginationComposite,
-  perPageComposite,
+  paginationCompositeReducer,
+  perPageCompositeReducer,
   changePage,
   resetPaging,
   changePerPage,
@@ -79,6 +86,7 @@ export {
   ReduxUtils,
   ReduxConnect,
   IReduxAction,
+  IReduxActionPayload,
   IReduxProps,
   IReactVaporState
 };

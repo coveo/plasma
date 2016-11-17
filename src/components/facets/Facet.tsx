@@ -36,14 +36,14 @@ export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDis
 
 export class Facet extends React.Component<IFacetProps, any> {
 
-  buildCategoryFacet = (facetRow: IFacet) => {
+  private buildFacet = (facetRow: IFacet) => {
     this.props.toggleFacet(this.props.facet.name, facetRow.name);
     if (this.props.onToggleFacet) {
       this.props.onToggleFacet(this.props.facet.name, facetRow);
     }
   };
 
-  clearCategoryFacet = () => {
+  private clearFacet = () => {
     this.props.clearFacet(this.props.facet.name);
     if (this.props.onClearFacet) {
       this.props.onClearFacet(this.props.facet.name);
@@ -72,7 +72,7 @@ export class Facet extends React.Component<IFacetProps, any> {
         key={facetRow.name}
         facet={this.props.facet.name}
         facetRow={facetRow}
-        onToggleFacet={this.buildCategoryFacet}
+        onToggleFacet={this.buildFacet}
         isChecked={_.contains(_.pluck(selectedRows, 'name'), facetRow.name)}
         />);
     });
@@ -89,7 +89,7 @@ export class Facet extends React.Component<IFacetProps, any> {
         <div className='facet-header'>
           <div
             className={removeSelectedClass}
-            onClick={() => this.clearCategoryFacet()}>
+            onClick={() => this.clearFacet()}>
             <Svg svgName='clear' className='icon fill-medium-grey' />
           </div>
           <div className='facet-header-title bold text-medium-blue'>{this.props.facet.formattedName}</div>
