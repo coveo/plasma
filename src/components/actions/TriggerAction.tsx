@@ -2,33 +2,37 @@ import { IUserChoice } from '../inlinePrompt/InlinePrompt';
 import { IBasicActionProps, Action } from './Action';
 import * as React from 'react';
 
-export interface IActionTriggerOwnProps extends React.ClassAttributes<ActionTrigger>, IBasicActionProps {
+export interface ITriggerActionOwnProps extends React.ClassAttributes<TriggerAction>, IBasicActionProps {
   confirmLabel?: string;
   parentId?: string;
 }
 
-export interface IActionTriggerDispatchProps {
+export interface ITriggerActionDispatchProps {
   onTriggerConfirm?: (onClick: () => void, userChoice: IUserChoice, className: string) => void;
   onConfirm?: () => void;
 }
 
-export interface IActionTriggerProps extends IActionTriggerOwnProps, IActionTriggerDispatchProps { }
+export interface ITriggerActionProps extends ITriggerActionOwnProps, ITriggerActionDispatchProps { }
 
 export const CONFIRM_LABEL = 'Are you sure?';
 
-export class ActionTrigger extends React.Component<IActionTriggerProps, any> {
+export class TriggerAction extends React.Component<ITriggerActionProps, any> {
 
   private onTriggerAction() {
     let confirmData = this.props.action.requiresConfirmation;
 
-    if (confirmData) {
+    if (confirmData && this.props.onTriggerConfirm) {
       let confirmLabel = this.props.confirmLabel || CONFIRM_LABEL;
       let icon = this.props.action.icon;
 
       this.props.onTriggerConfirm(
         () => {
-          this.props.action.trigger();
-          this.props.onConfirm();
+          if (this.props.action.trigger) {
+            this.props.action.trigger();
+          }
+          if (this.props.onConfirm) {
+            this.props.onConfirm();
+          }
         },
         {
           icon: icon,
@@ -41,7 +45,9 @@ export class ActionTrigger extends React.Component<IActionTriggerProps, any> {
         confirmData.confirmType
       );
     } else {
-      this.props.action.trigger();
+      if (this.props.action.trigger) {
+        this.props.action.trigger();
+      }
     }
   }
 

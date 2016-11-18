@@ -1,10 +1,11 @@
-import * as React from 'react';
 import { IActionOptions } from './Action';
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 import { Svg } from '../svg/Svg';
-import { ActionLink } from './ActionLink';
-import { ActionTrigger } from './ActionTrigger';
-import { ActionTriggerConnected } from './ActionTriggerConnected';
+import { LinkAction } from './LinkAction';
+import { TriggerAction } from './TriggerAction';
+import { TriggerActionConnected } from './TriggerActionConnected';
+import * as React from 'react';
+import * as _ from 'underscore';
 
 export interface IActionsDropdownOwnProps extends React.ClassAttributes<ActionsDropdown> {
   actions: IActionOptions[];
@@ -28,13 +29,13 @@ export class ActionsDropdown extends React.Component<IActionsDropdownProps, any>
       }
 
       if (action.link) {
-        return <li><ActionLink action={action} simple={true} /></li>;
+        return <li><LinkAction action={action} simple={true} /></li>;
       }
 
       if (this.props.withReduxState) {
-        return <li><ActionTriggerConnected action={action} simple={true} parentId={this.props.id} /></li>;
+        return <li><TriggerActionConnected action={action} simple={true} parentId={this.props.id} /></li>;
       }
-      return <li><ActionTrigger action={action} simple={true} /></li>;
+      return <li><TriggerAction action={action} simple={true} /></li>;
     });
 
     return (

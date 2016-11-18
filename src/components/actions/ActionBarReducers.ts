@@ -1,7 +1,7 @@
-
 import { IActionOptions } from './Action';
 import { ActionBarActions } from './ActionBarActions';
 import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import * as _ from 'underscore';
 
 export interface IActionBarState {
   id: string;

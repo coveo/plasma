@@ -1,5 +1,5 @@
 import { ReduxUtils, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
-import { ActionTrigger, IActionTriggerProps, IActionTriggerOwnProps, IActionTriggerDispatchProps } from './ActionTrigger';
+import { TriggerAction, ITriggerActionProps, ITriggerActionOwnProps, ITriggerActionDispatchProps } from './TriggerAction';
 import { IUserChoice } from '../inlinePrompt/InlinePrompt';
 import { addPrompt, removePrompt } from '../inlinePrompt/InlinePromptActions';
 import { connect } from 'react-redux';
@@ -10,7 +10,7 @@ const mapStateToProps = () => {
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
-  ownProps: IActionTriggerOwnProps): IActionTriggerDispatchProps => {
+  ownProps: ITriggerActionOwnProps): ITriggerActionDispatchProps => {
   return {
     onTriggerConfirm: (onClick: () => void, userChoice: IUserChoice, className: string) => {
       dispatch(addPrompt(ownProps.parentId, { onClick, userChoice, isOpened: false, className }));
@@ -19,5 +19,5 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>
   };
 };
 
-export const ActionTriggerConnected: React.ComponentClass<IActionTriggerProps> =
-  connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ActionTrigger);
+export const TriggerActionConnected: React.ComponentClass<ITriggerActionProps> =
+  connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TriggerAction);

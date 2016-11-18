@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Action, IBasicActionProps } from './Action';
 
-export interface IActionLinkProps extends React.ClassAttributes<ActionLink>, IBasicActionProps { }
+export interface ILinkActionProps extends React.ClassAttributes<LinkAction>, IBasicActionProps { }
 
-export class ActionLink extends React.Component<IActionLinkProps, any> {
+export class LinkAction extends React.Component<ILinkActionProps, any> {
 
   render() {
     let actionClasses = 'enabled' + (this.props.simple ? '' : ' inline-flex flex-center');
