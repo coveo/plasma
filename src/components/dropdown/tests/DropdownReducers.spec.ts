@@ -1,7 +1,10 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { IDropdownActionPayload, DropdownActions } from '../DropdownActions';
 import {
-  IDropdownState, dropdownsReducer, dropdownsInitialState, dropdownInitialState,
+  IDropdownState,
+  dropdownsReducer,
+  dropdownsInitialState,
+  dropdownInitialState,
   dropdownReducer
 } from '../DropdownReducers';
 

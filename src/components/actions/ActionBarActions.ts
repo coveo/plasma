@@ -15,30 +15,24 @@ export const ActionBarActions = {
   addActions: 'ADD_ACTIONS'
 };
 
-export const addActionBar = (id: string): IReduxAction<IActionBarPayload> => {
-  return {
-    type: ActionBarActions.add,
-    payload: {
-      id
-    }
-  };
-};
+export const addActionBar = (id: string): IReduxAction<IActionBarPayload> => ({
+  type: ActionBarActions.add,
+  payload: {
+    id
+  }
+});
 
-export const removeActionBar = (id: string): IReduxAction<IActionBarPayload> => {
-  return {
-    type: ActionBarActions.remove,
-    payload: {
-      id
-    }
-  };
-};
+export const removeActionBar = (id: string): IReduxAction<IActionBarPayload> => ({
+  type: ActionBarActions.remove,
+  payload: {
+    id
+  }
+});
 
-export const addActionsToActionBar = (id: string, actions: IActionOptions[]): IReduxAction<IChangeActionBarActionsPayload> => {
-  return {
-    type: ActionBarActions.addActions,
-    payload: {
-      id,
-      actions
-    }
-  };
-};
+export const addActionsToActionBar = (id: string, actions: IActionOptions[]): IReduxAction<IChangeActionBarActionsPayload> => ({
+  type: ActionBarActions.addActions,
+  payload: {
+    id,
+    actions
+  }
+});

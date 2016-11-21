@@ -4,10 +4,10 @@ import { Svg } from '../svg/Svg';
 import { LinkAction } from './LinkAction';
 import { TriggerAction } from './TriggerAction';
 import { TriggerActionConnected } from './TriggerActionConnected';
-import * as React from 'react';
-import * as _ from 'underscore';
 import { DropdownConnected } from '../dropdown/DropdownConnected';
 import { Dropdown } from '../dropdown/Dropdown';
+import * as React from 'react';
+import * as _ from 'underscore';
 
 export interface IActionsDropdownOwnProps extends React.ClassAttributes<ActionsDropdown> {
   actions: IActionOptions[];
