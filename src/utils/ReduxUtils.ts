@@ -12,6 +12,7 @@ import { IActionBarState } from '../components/actions/ActionBarReducers';
 import { extend } from 'underscore';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
+import { IDropdownState } from '../components/dropdown/DropdownReducers';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
@@ -28,17 +29,16 @@ export interface IReactVaporState {
   loadings?: ILoadingState[];
   prompts?: IPromptState[];
   actionBars?: IActionBarState[];
+  dropdowns?: IDropdownState[];
 }
 
 export const CommonActions = {
   clearState: 'CLEAR_STATE'
 };
 
-export const clearState = (): Redux.Action => {
-  return {
-    type: CommonActions.clearState
-  };
-};
+export const clearState = (): Redux.Action => ({
+  type: CommonActions.clearState
+});
 
 export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, mergeProps?: any, options?: any): (target: any) => any {
   return target => (ReactRedux.connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any);

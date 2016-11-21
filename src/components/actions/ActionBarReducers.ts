@@ -17,13 +17,15 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
       if (state.id !== action.payload.id) {
         return state;
       }
-      return _.extend({}, state, {
+      return {
+        id: state.id,
         actions: action.payload.actions
-      });
+      };
     case ActionBarActions.add:
-      return _.extend({}, state, {
-        id: action.payload.id
-      });
+      return {
+        id: action.payload.id,
+        actions: []
+      };
     default:
       return state;
   }

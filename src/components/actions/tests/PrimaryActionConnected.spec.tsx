@@ -6,10 +6,9 @@ import { IReactVaporState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
 import { Provider } from 'react-redux';
 import { PrimaryActionConnected } from '../PrimaryActionConnected';
+import { TriggerActionConnected } from '../TriggerActionConnected';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import { TriggerActionConnected } from '../TriggerActionConnected';
-import { TriggerAction } from '../TriggerAction';
 /* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {

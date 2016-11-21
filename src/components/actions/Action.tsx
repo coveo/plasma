@@ -12,12 +12,12 @@ export interface IConfirmData {
 }
 
 export interface IActionOptions {
+  enabled: boolean;
   primary?: boolean;
   icon?: string;
   iconClass?: string;
   name?: string;
   id?: string;
-  enabled: boolean;
   unrepeatable?: boolean;
   callOnDoubleClick?: boolean;
   trigger?: () => void;

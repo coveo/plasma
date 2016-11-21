@@ -14,13 +14,8 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarOwnProps): IActionBarStateProps => {
-  let actionBar = _.find(state.actionBars, (actionBar) => {
-    return actionBar.id === ownProps.id;
-  });
-
-  let prompt = _.find(state.prompts, (prompt) => {
-    return prompt.id === ownProps.id;
-  });
+  let actionBar = _.findWhere(state.actionBars, { id: ownProps.id });
+  let prompt = _.findWhere(state.prompts, { id: ownProps.id });
 
   return {
     withReduxState: true,

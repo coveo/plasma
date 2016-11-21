@@ -1,12 +1,14 @@
-import { lastUpdatedCompositeReducer } from '../components/lastUpdated/LastUpdatedReducers';
 import { CommonActions, IReactVaporState } from './ReduxUtils';
+import { lastUpdatedCompositeReducer } from '../components/lastUpdated/LastUpdatedReducers';
 import { filterBoxesReducer } from '../components/filterBox/FilterBoxReducers';
 import { facetsReducer } from '../components/facets/FacetReducers';
 import { paginationCompositeReducer } from '../components/navigation/pagination/NavigationPaginationReducers';
 import { perPageCompositeReducer } from '../components/navigation/perPage/NavigationPerPageReducers';
 import { loadingsReducer } from '../components/loading/LoadingReducers';
 import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers';
+import { actionBarsReducer } from '../components/actions/ActionBarReducers';
 import * as Redux from 'redux';
+import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
 
 export class TestUtils {
   static buildStore() {
@@ -17,7 +19,9 @@ export class TestUtils {
       paginationComposite: paginationCompositeReducer,
       perPageComposite: perPageCompositeReducer,
       loadings: loadingsReducer,
-      prompts: promptsReducer
+      prompts: promptsReducer,
+      actionBars: actionBarsReducer,
+      dropdowns: dropdownsReducer
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {

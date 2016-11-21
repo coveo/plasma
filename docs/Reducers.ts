@@ -9,6 +9,7 @@ import { loadingsReducer } from '../src/components/loading/LoadingReducers';
 import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReducers';
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import * as Redux from 'redux';
+import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -28,6 +29,7 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   paginationComposite: paginationCompositeReducer,
   loadings: loadingsReducer,
   prompts: promptsReducer,
-  actionsBars: actionBarsReducer,
+  actionBars: actionBarsReducer,
+  dropdowns: dropdownsReducer,
   lastAction
 });
