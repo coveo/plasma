@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { IFacet, IFacetProps, Facet } from '../Facet';
-import { IReactVaporState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { FacetConnected } from '../FacetConnected';
 import { FacetRow } from '../FacetRow';

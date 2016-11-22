@@ -50,7 +50,7 @@ export class Facet extends React.Component<IFacetProps, any> {
     }
   };
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender(this.props.facet.name);
     }

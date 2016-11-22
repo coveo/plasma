@@ -9,12 +9,14 @@ import { MembersExample } from './members-example/MembersExample';
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
 import { LoadingExamples } from '../src/components/loading/LoadingExamples';
-import './style.scss';
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { FilterBoxExamples } from '../src/components/filterBox/examples/FilterBoxExamples';
 import { FilterBoxConnectedExamples } from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
 import { FacetConnectedExamples } from '../src/components/facets/examples/FacetConnectedExamples';
 import { FacetExamples } from '../src/components/facets/examples/FacetExamples';
+import { NavigationExamples } from '../src/components/navigation/examples/NavigationExamples';
+import { NavigationConnectedExamples } from '../src/components/navigation/examples/NavigationConnectedExamples';
+import './style.scss';
+import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
 class App extends React.Component<any, any> {
 
@@ -89,6 +91,8 @@ class App extends React.Component<any, any> {
           <FilterBoxConnectedExamples />
           <FacetExamples />
           <FacetConnectedExamples />
+          <NavigationExamples />
+          <NavigationConnectedExamples />
         </div>
       </Provider>
     );

@@ -21,7 +21,7 @@ export const LAST_UPDATE_LABEL: string = 'Last update:';
 
 export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender();
     }

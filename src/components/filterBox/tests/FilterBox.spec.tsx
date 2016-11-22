@@ -21,6 +21,7 @@ describe('FilterBox', () => {
 
   describe('<FilterBox />', () => {
     let filterBox: ReactWrapper<IFilterBoxProps, any>;
+    let filterBoxInstance: FilterBox;
 
     beforeEach(() => {
       filterBox = mount(
@@ -29,6 +30,7 @@ describe('FilterBox', () => {
           />,
         { attachTo: document.getElementById('App') }
       );
+      filterBoxInstance = filterBox.instance() as FilterBox;
     });
 
     afterEach(() => {
@@ -39,6 +41,8 @@ describe('FilterBox', () => {
     it('should call prop onRender on mounting if set', () => {
       let renderSpy = jasmine.createSpy('onRender');
 
+      expect(() => filterBoxInstance.componentWillMount()).not.toThrow();
+
       filterBox.setProps({ id: id, onRender: renderSpy });
       filterBox.unmount();
       filterBox.mount();
@@ -47,6 +51,8 @@ describe('FilterBox', () => {
 
     it('should call prop onDestroy on unmounting if set', () => {
       let destroySpy = jasmine.createSpy('onDestroy');
+
+      expect(() => filterBoxInstance.componentWillUnmount()).not.toThrow();
 
       filterBox.setProps({ id: id, onDestroy: destroySpy });
       filterBox.mount();
@@ -57,6 +63,9 @@ describe('FilterBox', () => {
     it('should call prop onFilter when filter input input value changes and prop is set', () => {
       let filterSpy = jasmine.createSpy('onFilter');
       let input = filterBox.find('input');
+
+      input.simulate('change');
+      expect(filterSpy.calls.count()).toBe(0);
 
       filterBox.setProps({ id: id, onFilter: filterSpy });
       filterBox.mount();
@@ -73,6 +82,30 @@ describe('FilterBox', () => {
       filterBox.mount();
       expect(filterBox.html()).not.toContain(FILTER_PLACEHOLDER);
       expect(filterBox.html()).toContain(expectedPlaceholder);
+    });
+
+    it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', () => {
+      let filterInput = filterBox.find('input');
+      let clearIcon = filterBox.find('span').first();
+
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+
+      filterBoxInstance.filterInput.value = 'something';
+      filterInput.simulate('change');
+      expect(clearIcon.hasClass('hidden')).toBe(false);
+
+      filterBoxInstance.filterInput.value = '';
+      filterInput.simulate('change');
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+    });
+
+    it('should clear the filter input when clicking the clear icon', () => {
+      let clearIcon = filterBox.find('span').first();
+
+      filterBoxInstance.filterInput.value = 'something';
+
+      clearIcon.simulate('click');
+      expect(filterBoxInstance.filterInput.value).toBe('');
     });
   });
 });

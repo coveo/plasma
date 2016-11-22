@@ -21,15 +21,24 @@ export interface IFilterBoxProps extends IFilterBoxOwnProps, IFilterBoxStateProp
 export const FILTER_PLACEHOLDER = 'Filer';
 
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
+  filterInput: HTMLInputElement;
 
-  private handleChange(e: React.FormEvent<HTMLInputElement>) {
+  private handleChange = () => {
+    let clearClass = this.filterInput.value.length ? '' : 'hidden';
+
+    this.filterInput.nextElementSibling.setAttribute('class', clearClass);
+
     if (this.props.onFilter) {
-      let filterBox = e.target as HTMLInputElement;
-      this.props.onFilter(this.props.id, filterBox.value);
+      this.props.onFilter(this.props.id, this.filterInput.value);
     }
-  }
+  };
 
-  componentDidMount() {
+  private clearValue = () => {
+    this.filterInput.value = '';
+    this.handleChange();
+  };
+
+  componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender(this.props.id);
     }
@@ -47,13 +56,14 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     return (
       <div id={this.props.id} className='coveo-filter-container'>
         <input
+          ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
           className='filter-box'
           placeholder={filterPlaceholder}
-          onChange={(e) => this.handleChange(e)}
+          onChange={() => this.handleChange()}
           value={this.props.filterText}
           />
-        <span className='hidden'></span>
+        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
         <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey icon mod-lg' />
       </div>
     );

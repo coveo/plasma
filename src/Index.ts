@@ -14,14 +14,22 @@ import { Facet } from './components/facets/Facet';
 import { FacetConnected } from './components/facets/FacetConnected';
 import { facetsReducer } from './components/facets/FacetReducers';
 import { changeFacet, emptyFacet } from './components/facets/FacetActions';
-import {
-  ReduxUtils,
-  ReduxConnect,
-  IReduxAction,
-  IReduxProps,
-  IReactVaporState,
-  IReduxActionPayload
-} from './utils/ReduxUtils';
+import { Loading } from './components/loading/Loading';
+import { LoadingConnected } from './components/loading/LoadingConnected';
+import { loadingsReducer } from './components/loading/LoadingReducers';
+import { turnOnLoading, turnOffLoading } from './components/loading/LoadingActions';
+import { Navigation } from './components/navigation/Navigation';
+import { NavigationConnected } from './components/navigation/NavigationConnected';
+import { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
+import { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
+import { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
+import { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
+import { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
+import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
+import { changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
+import { changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
+import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps } from './utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from './ReactVapor';
 
 export {
   ChosenSelect,
@@ -47,6 +55,26 @@ export {
   facetsReducer,
   changeFacet,
   emptyFacet,
+
+  // Loading
+  Loading,
+  LoadingConnected,
+  loadingsReducer,
+  turnOnLoading,
+  turnOffLoading,
+
+  // Navigation
+  Navigation,
+  NavigationConnected,
+  NavigationPagination,
+  NavigationPaginationConnected,
+  NavigationPerPage,
+  NavigationPerPageConnected,
+  paginationCompositeReducer,
+  perPageCompositeReducer,
+  changePage,
+  resetPaging,
+  changePerPage,
 
   // Redux
   ReduxUtils,

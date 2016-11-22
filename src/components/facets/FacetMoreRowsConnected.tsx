@@ -1,4 +1,5 @@
-import { IReactVaporState, ReduxUtils, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
 import {
   IFacetMoreRowsOwnProps,
   FacetMoreRows,

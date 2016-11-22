@@ -47,7 +47,7 @@ describe('Facets', () => {
 
     it('should display the moreLabel if passed as a prop else use the default label', () => {
       let expectedMoreLabel = 'Show more rows';
-      let newFacetMoreToggleProps = _.extend(basicFacetMoreToggleProps, { moreLabel: expectedMoreLabel });
+      let newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, { moreLabel: expectedMoreLabel });
 
       expect(facetMoreToggle.html()).toContain(FACET_TOGGLE_MORE_LABEL);
 
@@ -60,7 +60,7 @@ describe('Facets', () => {
     it('should call onToggleMore on change if prop is set', () => {
       let onToggleMoreSpy = jasmine.createSpy('onToggleMore');
       let handleOnChangeSpy = spyOn(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
-      let newFacetMoreToggleProps = _.extend(basicFacetMoreToggleProps, { onToggleMore: onToggleMoreSpy });
+      let newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, { onToggleMore: onToggleMoreSpy });
 
       facetMoreToggle.find('input').simulate('change');
       expect(handleOnChangeSpy).toHaveBeenCalled();

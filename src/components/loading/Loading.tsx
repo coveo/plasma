@@ -1,6 +1,29 @@
 import * as React from 'react';
 
-export class Loading extends React.Component<any, any> {
+export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
+  id?: string;
+}
+
+export interface ILoadingDispatchProps {
+  onRender?: () => void;
+  onDestroy?: () => void;
+}
+
+export interface ILoadingProps extends ILoadingOwnProps, ILoadingDispatchProps { }
+
+export class Loading extends React.Component<ILoadingProps, any> {
+
+  componentWillMount() {
+    if (this.props.onRender) {
+      this.props.onRender();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.onDestroy) {
+      this.props.onDestroy();
+    }
+  }
 
   render() {
     return (
