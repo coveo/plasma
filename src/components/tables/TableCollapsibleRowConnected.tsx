@@ -1,4 +1,5 @@
-import { IReactVaporState, ReduxUtils } from '../../utils/ReduxUtils';
+import { ReduxUtils } from '../../utils/ReduxUtils';
+import { IReactVaporState } from '../../ReactVapor';
 import { ITableCollapsibleRowOwnProps, TableCollapsibleRow, ITableCollapsibleRowProps } from './TableCollapsibleRow';
 import { connect } from 'react-redux';
 import * as React from 'react';

@@ -1,4 +1,5 @@
-import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { IReduxActionPayload } from '../../ReactVapor';
 import { FilterActions } from './FilterBoxActions';
 import * as _ from 'underscore';
 
@@ -41,7 +42,7 @@ export const filterBoxesReducer = (state: IFilterState[] = filtersInitialState, 
         filterBoxReducer(undefined, action)
       ];
     case FilterActions.removeFilter:
-      return _.reject(state, (filterBox) => {
+      return _.reject(state, (filterBox: IFilterState) => {
         return action.payload.id === filterBox.id;
       });
     default:

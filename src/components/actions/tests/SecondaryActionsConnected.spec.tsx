@@ -1,7 +1,7 @@
 import { mount, ReactWrapper } from 'enzyme';
 import { IActionOptions } from '../Action';
 import { ISecondaryActionsProps, SecondaryActions } from '../SecondaryActions';
-import { IReactVaporState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { Provider } from 'react-redux';
 import { SecondaryActionsConnected } from '../SecondaryActionsConnected';

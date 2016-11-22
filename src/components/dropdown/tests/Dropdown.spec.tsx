@@ -7,10 +7,10 @@ import * as React from 'react';
 
 describe('Dropdown', () => {
   let basicDropdownProps: IDropdownProps = {
-    toggleContent: [<span>Toggle</span>],
+    toggleContent: [<span key='toggle'>Toggle</span>],
     dropdownItems: [
-      <li>Option 1</li>,
-      <li>Option 2</li>
+      <li key='option1'>Option 1</li>,
+      <li key='option2'>Option 2</li>
     ]
   };
 

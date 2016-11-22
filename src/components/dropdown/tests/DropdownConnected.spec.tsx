@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { IDropdownProps, Dropdown } from '../Dropdown';
-import { IReactVaporState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { DropdownConnected } from '../DropdownConnected';
 import { toggleDropdown } from '../DropdownActions';
@@ -18,10 +18,10 @@ describe('Dropdown', () => {
     let store: Store<IReactVaporState>;
     let basicDropdownProps: IDropdownProps = {
       id: 'dropdown-id',
-      toggleContent: [<span>Toggle</span>],
+      toggleContent: [<span key='toggle'>Toggle</span>],
       dropdownItems: [
-        <li>Option 1</li>,
-        <li>Option 2</li>
+        <li key='option1'>Option 1</li>,
+        <li key='options2'>Option 2</li>
       ]
     };
 

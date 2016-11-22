@@ -1,5 +1,6 @@
 import { IFacetOwnProps, Facet, IFacetStateProps, IFacetDispatchProps, IFacetProps, IFacet } from './Facet';
-import { IReactVaporState, ReduxUtils, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
 import { addFacet, removeFacet, changeFacet, emptyFacet } from './FacetActions';
 import { connect } from 'react-redux';
 import * as React from 'react';

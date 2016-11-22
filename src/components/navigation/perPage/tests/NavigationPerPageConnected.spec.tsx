@@ -1,7 +1,8 @@
 import { mount, ReactWrapper } from 'enzyme';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
-import { IReactVaporState, clearState } from '../../../../utils/ReduxUtils';
+import { clearState } from '../../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../../ReactVapor';
 import { NavigationPerPageConnected } from '../NavigationPerPageConnected';
 import { TestUtils } from '../../../../utils/TestUtils';
 import { NavigationPerPage, INavigationPerPageProps } from '../NavigationPerPage';

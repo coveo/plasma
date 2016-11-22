@@ -2,7 +2,8 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { FilterBox, IFilterBoxProps } from '../FilterBox';
-import { IReactVaporState, clearState } from '../../../utils/ReduxUtils';
+import { clearState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { FilterBoxConnected } from '../FilterBoxConnected';
 /* tslint:disable:no-unused-variable */

@@ -1,5 +1,6 @@
 import { filterThrough, removeFilter, addFilter } from './FilterBoxActions';
-import { ReduxUtils, IReactVaporState, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
 import {
   FilterBox,
   IFilterBoxOwnProps,

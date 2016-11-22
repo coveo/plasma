@@ -1,4 +1,5 @@
-import { ReduxUtils, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReduxActionPayload } from '../../ReactVapor';
 import { TriggerAction, ITriggerActionProps, ITriggerActionOwnProps, ITriggerActionDispatchProps } from './TriggerAction';
 import { IUserChoice } from '../inlinePrompt/InlinePrompt';
 import { addPrompt, removePrompt } from '../inlinePrompt/InlinePromptActions';
