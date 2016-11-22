@@ -4,13 +4,13 @@ input[type=checkbox].coveo-checkbox {
   & + button {
     position: relative;
 
-    width: 16px;
-    height: 16px;
+    width: $checkbox-size;
+    height: $checkbox-size;
     padding: 0;
 
     background: $pure-white none 0 0;
-    border: 1px solid $medium-blue;
-    border-radius: 2px;
+    border: 2px solid $medium-blue;
+    border-radius: $border-radius;
     outline: none;
 
     transition: all 200ms;
