@@ -1,35 +1,11 @@
-import { ILastUpdatedState } from '../components/lastUpdated/LastUpdatedReducers';
-import { IFacetState } from '../components/facets/FacetReducers';
-import { IFilterState } from '../components/filterBox/FilterBoxReducers';
-import { IFacet } from '../components/facets/Facet';
-import { IPerPageState } from '../components/navigation/perPage/NavigationPerPageReducers';
-import { ILoadingState } from '../components/loading/LoadingReducers';
-import { IPaginationState } from '../components/navigation/pagination/NavigationPaginationReducers';
-import { IInlinePromptOptions } from '../components/inlinePrompt/InlinePrompt';
-import { IPromptState } from '../components/inlinePrompt/InlinePromptReducers';
-import { IActionOptions } from '../components/actions/Action';
-import { IActionBarState } from '../components/actions/ActionBarReducers';
 import { extend } from 'underscore';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
-import { IDropdownState } from '../components/dropdown/DropdownReducers';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
     return extend({}, stateProps, dispatchProps, ownProps);
   }
-}
-
-export interface IReactVaporState {
-  lastUpdatedComposite?: ILastUpdatedState[];
-  facets?: IFacetState[];
-  filters?: IFilterState[];
-  perPageComposite?: IPerPageState[];
-  paginationComposite?: IPaginationState[];
-  loadings?: ILoadingState[];
-  prompts?: IPromptState[];
-  actionBars?: IActionBarState[];
-  dropdowns?: IDropdownState[];
 }
 
 export const CommonActions = {
@@ -46,18 +22,6 @@ export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, me
 
 export interface IReduxAction<T> extends Redux.Action {
   payload?: T;
-}
-
-export interface IReduxActionPayload {
-  id?: string;
-  ids?: string[];
-  facet?: string;
-  facetRow?: IFacet;
-  filterText?: string;
-  pageNb?: number;
-  perPage?: number;
-  options?: IInlinePromptOptions;
-  actions?: IActionOptions[];
 }
 
 export interface IReduxProps {

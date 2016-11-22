@@ -10,6 +10,7 @@ import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReduc
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 import * as Redux from 'redux';
+import { tableRowReducers } from '../src/components/tables/TableRowReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -31,5 +32,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   prompts: promptsReducer,
   actionBars: actionBarsReducer,
   dropdowns: dropdownsReducer,
+  rows: tableRowReducers,
   lastAction
 });
