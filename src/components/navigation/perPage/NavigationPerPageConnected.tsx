@@ -1,4 +1,5 @@
-import { ReduxUtils, IReduxAction, IReactVaporState, IReduxActionPayload } from '../../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../../ReactVapor';
 import {
   INavigationPerPageProps,
   INavigationPerPageStateProps,

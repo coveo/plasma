@@ -1,5 +1,6 @@
+import { CommonActions } from './ReduxUtils';
+import { IReactVaporState } from '../ReactVapor';
 import { lastUpdatedCompositeReducer } from '../components/lastUpdated/LastUpdatedReducers';
-import { CommonActions, IReactVaporState } from './ReduxUtils';
 import { filterBoxesReducer } from '../components/filterBox/FilterBoxReducers';
 import { facetsReducer } from '../components/facets/FacetReducers';
 import { paginationCompositeReducer } from '../components/navigation/pagination/NavigationPaginationReducers';

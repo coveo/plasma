@@ -5,7 +5,8 @@ import {
   ILastUpdatedDispatchProps,
   ILastUpdatedStateProps
 } from './LastUpdated';
-import { IReactVaporState, ReduxUtils, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
 import { addLastUpdated, removeLastUpdated } from './LastUpdatedActions';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';

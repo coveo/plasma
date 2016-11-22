@@ -1,4 +1,5 @@
-import { IReduxAction, IReduxActionPayload } from '../../../utils/ReduxUtils';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { IReduxActionPayload } from '../../../ReactVapor';
 import { PerPageActions } from './NavigationPerPageActions';
 import * as _ from 'underscore';
 

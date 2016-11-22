@@ -1,5 +1,6 @@
 import { LastUpdatedActions } from './LastUpdatedActions';
-import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { IReduxActionPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
 
 export interface ILastUpdatedState {

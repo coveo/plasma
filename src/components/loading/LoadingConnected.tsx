@@ -1,14 +1,15 @@
-import { connect } from 'react-redux';
-import * as React from 'react';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { ILoadingProps, Loading, ILoadingOwnProps, ILoadingDispatchProps } from './Loading';
-import { ILoadingActionPayload, addLoading, removeLoading } from './LoadingActions';
+import { addLoading, removeLoading } from './LoadingActions';
+import { IReduxActionPayload } from '../../ReactVapor';
+import { connect } from 'react-redux';
+import * as React from 'react';
 
 const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<ILoadingActionPayload>) => void,
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
   ownProps: ILoadingOwnProps): ILoadingDispatchProps => {
   return {
     onRender: () => dispatch(addLoading(ownProps.id)),

@@ -28,14 +28,8 @@ import { paginationCompositeReducer } from './components/navigation/pagination/N
 import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
 import { changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 import { changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
-import {
-  ReduxUtils,
-  ReduxConnect,
-  IReduxAction,
-  IReduxProps,
-  IReactVaporState,
-  IReduxActionPayload
-} from './utils/ReduxUtils';
+import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps } from './utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from './ReactVapor';
 
 export {
   ChosenSelect,

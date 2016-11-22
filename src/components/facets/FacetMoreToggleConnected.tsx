@@ -5,7 +5,8 @@ import {
   IFacetMoreToggleStateProps,
   IFacetMoreToggleDispatchProps
 } from './FacetMoreToggle';
-import { ReduxUtils, IReactVaporState, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
 import { toggleMoreFacetRows } from './FacetActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
