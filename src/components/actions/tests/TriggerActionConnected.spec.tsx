@@ -4,11 +4,12 @@ import { Provider } from 'react-redux';
 import { IActionOptions } from '../Action';
 import { TriggerActionConnected } from '../TriggerActionConnected';
 import { TestUtils } from '../../../utils/TestUtils';
-import { IReactVaporState, clearState } from '../../../utils/ReduxUtils';
+import { clearState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { ITriggerActionProps, TriggerAction } from '../TriggerAction';
+import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
 /* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {

@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { IDropdownProps, Dropdown } from '../Dropdown';
-import { IReactVaporState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { DropdownConnected } from '../DropdownConnected';
 import { toggleDropdown } from '../DropdownActions';

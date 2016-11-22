@@ -1,5 +1,6 @@
-import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { IReduxAction } from '../../utils/ReduxUtils';
 import { DropdownActions } from './DropdownActions';
+import { IReduxActionPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
 
 export interface IDropdownState {

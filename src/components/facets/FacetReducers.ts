@@ -1,5 +1,6 @@
 import { FacetActions } from './FacetActions';
-import { IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { IReduxActionPayload } from '../../ReactVapor';
 import { IFacet } from './Facet';
 import * as _ from 'underscore';
 
@@ -87,7 +88,7 @@ export const facetsReducer = (state: IFacetState[] = facetsInitialState,
         facetReducer(undefined, action)
       ];
     case FacetActions.removeFacet:
-      return _.reject(state, (facet) => {
+      return _.reject(state, (facet: IFacetState) => {
         return action.payload.facet === facet.facet;
       });
     default:

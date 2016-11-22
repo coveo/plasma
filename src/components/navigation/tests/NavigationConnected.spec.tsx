@@ -2,13 +2,13 @@ import { mount, ReactWrapper } from 'enzyme';
 import { INavigationProps, Navigation } from '../Navigation';
 import { NavigationConnected } from '../NavigationConnected';
 import { TestUtils } from '../../../utils/TestUtils';
-import { IReactVaporState, clearState } from '../../../utils/ReduxUtils';
+import { clearState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { LoadingConnected } from '../../loading/LoadingConnected';
 import { NavigationPaginationConnected } from '../pagination/NavigationPaginationConnected';
 import { NavigationPerPageConnected } from '../perPage/NavigationPerPageConnected';
-
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */

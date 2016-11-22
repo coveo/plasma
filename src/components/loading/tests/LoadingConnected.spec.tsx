@@ -1,5 +1,5 @@
 import { ReactWrapper, mount } from 'enzyme';
-import { IReactVaporState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
 import { Store } from 'redux';
 import { TestUtils } from '../../../utils/TestUtils';
 import { LoadingConnected } from '../LoadingConnected';

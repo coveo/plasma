@@ -1,4 +1,5 @@
-import { ReduxUtils, IReactVaporState, IReduxActionPayload, IReduxAction } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
 import { IDropdownProps, IDropdownStateProps, Dropdown, IDropdownOwnProps, IDropdownDispatchProps } from './Dropdown';
 import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from './DropdownActions';
 import { connect } from 'react-redux';

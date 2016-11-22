@@ -1,5 +1,6 @@
 import { IInlinePromptProps, IInlinePromptViewDispatchProps, InlinePrompt, IInlinePromptOwnProps } from './InlinePrompt';
-import { ReduxUtils, IReduxAction, IReduxActionPayload } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReduxActionPayload } from '../../ReactVapor';
 import { removePrompt } from './InlinePromptActions';
 import { connect } from 'react-redux';
 import * as React from 'react';

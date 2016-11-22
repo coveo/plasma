@@ -1,11 +1,11 @@
 import { membersReducers, IMembersCompositeState } from './members-example/reducers/MembersReducers';
-import { IReactVaporState } from '../src/utils/ReduxUtils';
 import { lastUpdatedCompositeReducer } from '../src/components/lastUpdated/LastUpdatedReducers';
 import { filterBoxesReducer } from '../src/components/filterBox/FilterBoxReducers';
 import { facetsReducer } from '../src/components/facets/FacetReducers';
 import { perPageCompositeReducer } from '../src/components/navigation/perPage/NavigationPerPageReducers';
 import { paginationCompositeReducer } from '../src/components/navigation/pagination/NavigationPaginationReducers';
 import { loadingsReducer } from '../src/components/loading/LoadingReducers';
+import { IReactVaporState } from '../src/ReactVapor';
 import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReducers';
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';

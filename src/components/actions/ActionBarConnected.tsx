@@ -5,7 +5,8 @@ import {
   IActionBarDispatchProps,
   IActionBarStateProps
 } from './ActionBar';
-import { ReduxUtils, IReduxAction, IReduxActionPayload, IReactVaporState } from '../../utils/ReduxUtils';
+import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
 import { addActionBar, removeActionBar } from './ActionBarActions';
 import { InlinePromptConnected } from '../inlinePrompt/InlinePromptConnected';
 import { IActionOptions } from './Action';

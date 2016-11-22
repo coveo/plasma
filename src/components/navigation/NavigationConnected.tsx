@@ -1,4 +1,5 @@
-import { IReactVaporState, ReduxUtils } from '../../utils/ReduxUtils';
+import { ReduxUtils } from '../../utils/ReduxUtils';
+import { IReactVaporState } from '../../ReactVapor';
 import { Navigation, INavigationOwnProps, INavigationStateProps, INavigationProps } from './Navigation';
 import { connect } from 'react-redux';
 import * as React from 'react';
