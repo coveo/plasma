@@ -13,7 +13,7 @@ export class TableHeader extends React.Component<ITableHeaderProps, any> {
     let colNb = 0;
     let columns = _.map(this.props.columns, (column: ITableHeaderCellProps) => {
       colNb++;
-      return (<TableHeaderCell key={'th-' + colNb} title={column.title} className={column.className} />);
+      return <TableHeaderCell key={'th-' + colNb} title={column.title} className={column.className} />;
     });
 
     return (

@@ -1,8 +1,9 @@
 import { IErrorSection, TableError } from './TableError';
 import * as React from 'react';
+import * as $ from 'jquery';
 
 export interface ITableCollapsibleRowOwnProps extends React.ClassAttributes<TableCollapsibleRow> {
-  id?: string;
+  id: string;
   isInError?: boolean;
   nbColumns: number;
 }
@@ -12,7 +13,7 @@ export interface ITableCollapsibleRowStateProps {
 }
 
 export interface ITableCollapsibleRowChildrenProps {
-  error: IErrorSection;
+  error?: IErrorSection;
   descriptionLabel?: string;
   troubleshootingLabel?: string;
   errorCodeLabel?: string;
@@ -28,12 +29,10 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
     let $e = $('.' + this.props.id);
     let $container = $e.find('.container');
 
-    if ($e) {
-      if (nextProps.opened) {
-        $container.slideDown(animationTime);
-      } else {
-        $container.slideUp(animationTime);
-      }
+    if (nextProps.opened) {
+      $container.slideDown(animationTime);
+    } else {
+      $container.slideUp(animationTime);
     }
   }
 

@@ -21,32 +21,24 @@ describe('Tables', () => {
   });
 
   describe('<TableHeaderCell />', () => {
-    let wrapper: ReactWrapper<any, any>;
     let tableHeaderCell: ReactWrapper<ITableHeaderCellProps, any>;
 
     beforeEach(() => {
       title = 'Header 1';
       className = 'special';
 
-      wrapper = mount(
-        <table>
-          <thead>
-            <tr>
-              <TableHeaderCell
-                title={title}
-                className={className}
-                />
-            </tr>
-          </thead>
-        </table>,
-        { attachTo: document.getElementById('App') }
+      tableHeaderCell = mount(
+        <TableHeaderCell
+          title={title}
+          className={className}
+          />,
+        { attachTo: document.getElementById('AppTableHeadRow') }
       );
-      tableHeaderCell = wrapper.find(TableHeaderCell);
     });
 
     afterEach(() => {
-      wrapper.unmount();
-      wrapper.detach();
+      tableHeaderCell.unmount();
+      tableHeaderCell.detach();
     });
 
     it('should get its title as a prop', () => {

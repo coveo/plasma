@@ -2,11 +2,11 @@ import { Svg } from '../svg/Svg';
 import * as React from 'react';
 
 
-export interface ITableCollapsibleRowToggle extends React.ClassAttributes<TableCollapsibleRowToggle> {
+export interface ITableCollapsibleRowToggleProps extends React.ClassAttributes<TableCollapsibleRowToggle> {
   isExpanded: boolean;
 }
 
-export class TableCollapsibleRowToggle extends React.Component<ITableCollapsibleRowToggle, any> {
+export class TableCollapsibleRowToggle extends React.Component<ITableCollapsibleRowToggleProps, any> {
 
   render() {
     let collapseState = this.props.isExpanded ? 'expanded' : 'collapsed';

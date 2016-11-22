@@ -5,12 +5,12 @@ import { facetsReducer } from '../src/components/facets/FacetReducers';
 import { perPageCompositeReducer } from '../src/components/navigation/perPage/NavigationPerPageReducers';
 import { paginationCompositeReducer } from '../src/components/navigation/pagination/NavigationPaginationReducers';
 import { loadingsReducer } from '../src/components/loading/LoadingReducers';
-import { IReactVaporState } from '../src/ReactVapor';
 import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReducers';
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
+import { tableRowsReducer } from '../src/components/tables/TableRowReducers';
+import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
-import { tableRowReducers } from '../src/components/tables/TableRowReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -32,6 +32,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   prompts: promptsReducer,
   actionBars: actionBarsReducer,
   dropdowns: dropdownsReducer,
-  rows: tableRowReducers,
+  rows: tableRowsReducer,
   lastAction
 });

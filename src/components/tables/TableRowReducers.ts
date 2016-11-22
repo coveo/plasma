@@ -32,7 +32,7 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
   }
 };
 
-export const tableRowReducers = (state: ITableRowState[] = tableRowsInitialState, action: IReduxAction<IReduxActionPayload>): ITableRowState[] => {
+export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState, action: IReduxAction<IReduxActionPayload>): ITableRowState[] => {
   switch (action.type) {
     case TableRowActions.add:
       return [

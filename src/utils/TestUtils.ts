@@ -10,6 +10,7 @@ import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers'
 import { actionBarsReducer } from '../components/actions/ActionBarReducers';
 import * as Redux from 'redux';
 import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
+import { tableRowsReducer } from '../components/tables/TableRowReducers';
 
 export class TestUtils {
   static buildStore() {
@@ -22,7 +23,8 @@ export class TestUtils {
       loadings: loadingsReducer,
       prompts: promptsReducer,
       actionBars: actionBarsReducer,
-      dropdowns: dropdownsReducer
+      dropdowns: dropdownsReducer,
+      rows: tableRowsReducer
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {

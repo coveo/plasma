@@ -10,7 +10,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
   let item = _.findWhere(state.rows, { id: ownProps.id });
 
   return {
-    opened: item ? item.opened : false
+    opened: item && item.opened
   };
 };
 
