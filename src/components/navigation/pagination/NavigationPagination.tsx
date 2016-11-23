@@ -25,9 +25,9 @@ export interface INavigationPaginationDispatchProps {
 export interface INavigationPaginationProps extends INavigationPaginationOwnProps,
   INavigationPaginationStateProps, INavigationPaginationDispatchProps { }
 
-export const NUMBER_OF_PAGES_SHOWING = 7;
-export const PREVIOUS_LABEL = 'Previous';
-export const NEXT_LABEL = 'Next';
+export const NUMBER_OF_PAGES_SHOWING: number = 7;
+export const PREVIOUS_LABEL: string = 'Previous';
+export const NEXT_LABEL: string = 'Next';
 
 export class NavigationPagination extends React.Component<INavigationPaginationProps, any> {
 
@@ -50,15 +50,15 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
   }
 
   render() {
-    let currentPage = this.props.currentPage || 0;
-    let showXPages = Math.abs((this.props.numberOfPagesToShow || NUMBER_OF_PAGES_SHOWING) - 1);
-    let previousLabel = this.props.previousLabel || PREVIOUS_LABEL;
-    let nextLabel = this.props.nextLabel || NEXT_LABEL;
-    let start = 0;
-    let end = showXPages;
-    let lastPage = this.props.totalPages - 1;
-    let previousClasses = 'flat-select-option mod-link ' + (currentPage === 0 ? 'disabled' : 'selectable');
-    let nextClasses = 'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
+    let currentPage: number = this.props.currentPage || 0;
+    let showXPages: number = Math.abs((this.props.numberOfPagesToShow || NUMBER_OF_PAGES_SHOWING) - 1);
+    let previousLabel: string = this.props.previousLabel || PREVIOUS_LABEL;
+    let nextLabel: string = this.props.nextLabel || NEXT_LABEL;
+    let start: number = 0;
+    let end: number = showXPages;
+    let lastPage: number = this.props.totalPages - 1;
+    let previousClasses: string = 'flat-select-option mod-link ' + (currentPage === 0 ? 'disabled' : 'selectable');
+    let nextClasses: string = 'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
     let pageSelects: JSX.Element[] = [];
 
     if (currentPage + showXPages / 2 > lastPage) {
@@ -69,7 +69,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
       end = Math.min(start + showXPages, lastPage);
     }
 
-    _.each(_.range(start, end + 1), (p) => {
+    _.each(_.range(start, end + 1), (p: number): void => {
       pageSelects.push(<NavigationPaginationSelect
         key={'page-' + p}
         onPageClick={this.handlePageClick}

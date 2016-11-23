@@ -47,14 +47,14 @@ export const dropdownsReducer = (state: IDropdownState[] = dropdownsInitialState
   switch (action.type) {
     case DropdownActions.toggle:
     case DropdownActions.close:
-      return state.map(dropdown => dropdownReducer(dropdown, action));
+      return state.map((dropdown: IDropdownState) => dropdownReducer(dropdown, action));
     case DropdownActions.add:
       return [
         ...state,
         dropdownReducer(undefined, action)
       ];
     case DropdownActions.remove:
-      return _.reject(state, (dropdown) => {
+      return _.reject(state, (dropdown: IDropdownState) => {
         return action.payload.id === dropdown.id;
       });
     default:

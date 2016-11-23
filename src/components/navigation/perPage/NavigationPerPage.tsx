@@ -23,8 +23,8 @@ export interface INavigationPerPageDispatchProps {
 export interface INavigationPerPageProps extends INavigationPerPageOwnProps, INavigationPerPageStateProps,
   INavigationPerPageDispatchProps { }
 
-export const PER_PAGE_NUMBERS = [10, 20, 30];
-export const PER_PAGE_LABEL = 'Results per page';
+export const PER_PAGE_NUMBERS: number[] = [10, 20, 30];
+export const PER_PAGE_LABEL: string = 'Results per page';
 
 export class NavigationPerPage extends React.Component<INavigationPerPageProps, any> {
   private perPageNumbers: number[];
@@ -45,14 +45,14 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
   render() {
     this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
 
-    let currentPerPage = this.props.currentPerPage || this.perPageNumbers[0];
-    let topNumber = this.props.totalEntries + 10;
-    let label = this.props.label || PER_PAGE_LABEL;
+    let currentPerPage: number = this.props.currentPerPage || this.perPageNumbers[0];
+    let topNumber: number = this.props.totalEntries + 10;
+    let label: string = this.props.label || PER_PAGE_LABEL;
 
-    let perPageSelects = _.map(this.perPageNumbers, (number) => {
+    let perPageSelects: JSX.Element[] = _.map(this.perPageNumbers, (number: number): JSX.Element => {
       if (topNumber > number) {
-        let selectId = 'perpage-' + (this.props.id || '') + number;
-        let isSelected = currentPerPage === number;
+        let selectId: string = 'perpage-' + (this.props.id || '') + number;
+        let isSelected: boolean = currentPerPage === number;
         return (
           <NavigationPerPageSelect
             onPerPageClick={this.props.onPerPageClick}

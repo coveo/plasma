@@ -9,7 +9,7 @@ export interface INavigationPaginationSelectProps extends React.ClassAttributes<
 export class NavigationPaginationSelect extends React.Component<INavigationPaginationSelectProps, any> {
 
   render() {
-    let linkClasses = 'flat-select-option' + (this.props.selected ? '' : ' selectable');
+    let linkClasses: string = 'flat-select-option' + (this.props.selected ? '' : ' selectable');
 
     return (
       <a className={linkClasses}

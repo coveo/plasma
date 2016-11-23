@@ -7,6 +7,7 @@ import {
   INavigationPerPageDispatchProps,
   INavigationPerPageOwnProps
 } from './NavigationPerPage';
+import { IPerPageState } from './NavigationPerPageReducers';
 import { addPerPage, removePerPage, changePerPage } from './NavigationPerPageActions';
 import { turnOnLoading } from '../../loading/LoadingActions';
 import { connect } from 'react-redux';
@@ -14,7 +15,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPerPageOwnProps): INavigationPerPageStateProps => {
-  let item = _.findWhere(state.perPageComposite, { id: ownProps.id });
+  let item: IPerPageState = _.findWhere(state.perPageComposite, { id: ownProps.id });
 
   return {
     currentPerPage: item ? item.perPage : null

@@ -7,6 +7,7 @@ import {
   INavigationPaginationStateProps,
   INavigationPaginationDispatchProps
 } from './NavigationPagination';
+import { IPaginationState } from './NavigationPaginationReducers';
 import { addPagination, removePagination, changePage } from './NavigationPaginationActions';
 import { turnOnLoading } from '../../loading/LoadingActions';
 import { connect } from 'react-redux';
@@ -14,7 +15,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPaginationOwnProps): INavigationPaginationStateProps => {
-  let item = _.findWhere(state.paginationComposite, { id: ownProps.id });
+  let item: IPaginationState = _.findWhere(state.paginationComposite, { id: ownProps.id });
 
   return {
     currentPage: item ? item.pageNb : 0

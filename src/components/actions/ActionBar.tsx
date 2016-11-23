@@ -38,7 +38,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
   }
 
   render() {
-    let primaryActions = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number) => {
+    let primaryActions: JSX.Element[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {
       if (action.primary) {
         let primaryAction = this.props.withReduxState ?
           <PrimaryActionConnected action={action} parentId={this.props.id} /> :
@@ -46,12 +46,14 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
         return <div className='dropdown action primary-action' key={'primary-' + index}>{primaryAction}</div>;
       }
     });
-    let secondaryActions = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions) => {
+
+    let secondaryActions: IActionOptions[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions) => {
       if (!action.primary) {
         return action;
       }
     }).filter(Boolean);
-    let secondaryActionsView = secondaryActions.length ?
+
+    let secondaryActionsView: JSX.Element = secondaryActions.length ?
       (this.props.withReduxState ?
         <SecondaryActionsConnected actions={secondaryActions} id={this.props.id} /> :
         <SecondaryActions actions={secondaryActions} />

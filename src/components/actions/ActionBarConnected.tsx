@@ -10,13 +10,15 @@ import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { addActionBar, removeActionBar } from './ActionBarActions';
 import { InlinePromptConnected } from '../inlinePrompt/InlinePromptConnected';
 import { IActionOptions } from './Action';
+import { IActionBarState } from './ActionBarReducers';
+import { IPromptState } from '../inlinePrompt/InlinePromptReducers';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarOwnProps): IActionBarStateProps => {
-  let actionBar = _.findWhere(state.actionBars, { id: ownProps.id });
-  let prompt = _.findWhere(state.prompts, { id: ownProps.id });
+  let actionBar: IActionBarState = _.findWhere(state.actionBars, { id: ownProps.id });
+  let prompt: IPromptState = _.findWhere(state.prompts, { id: ownProps.id });
 
   return {
     withReduxState: true,

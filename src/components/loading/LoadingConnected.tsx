@@ -5,9 +5,7 @@ import { IReduxActionsPayload } from '../../ReactVapor';
 import { connect } from 'react-redux';
 import * as React from 'react';
 
-const mapStateToProps = () => {
-  return {};
-};
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ILoadingOwnProps): ILoadingDispatchProps => ({

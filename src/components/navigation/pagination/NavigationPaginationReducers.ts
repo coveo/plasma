@@ -50,7 +50,7 @@ export const paginationCompositeReducer = (state: IPaginationState[] = paginatio
       });
     case PaginationActions.changePage:
     case PaginationActions.reset:
-      return state.map(p => paginationReducer(p, action));
+      return state.map((pagination: IPaginationState) => paginationReducer(pagination, action));
     default:
       return state;
   }

@@ -1,5 +1,7 @@
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IFacetState } from './FacetReducers';
+import { IFilterState } from '../filterBox/FilterBoxReducers';
 import {
   IFacetMoreRowsOwnProps,
   FacetMoreRows,
@@ -14,8 +16,8 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsStateProps => {
-  let item = _.findWhere(state.facets, { facet: ownProps.facet });
-  let filterItem = _.findWhere(state.filters, { id: 'filter-' + ownProps.facet });
+  let item: IFacetState = _.findWhere(state.facets, { facet: ownProps.facet });
+  let filterItem: IFilterState = _.findWhere(state.filters, { id: 'filter-' + ownProps.facet });
 
   return {
     isOpened: item && item.opened,

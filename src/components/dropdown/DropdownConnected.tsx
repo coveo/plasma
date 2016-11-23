@@ -2,12 +2,13 @@ import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IDropdownProps, IDropdownStateProps, Dropdown, IDropdownOwnProps, IDropdownDispatchProps } from './Dropdown';
 import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from './DropdownActions';
+import { IDropdownState } from './DropdownReducers';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownOwnProps): IDropdownStateProps => {
-  let item = _.findWhere(state.dropdowns, { id: ownProps.id });
+  let item: IDropdownState = _.findWhere(state.dropdowns, { id: ownProps.id });
 
   return {
     isOpened: item && item.opened

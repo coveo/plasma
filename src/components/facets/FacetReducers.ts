@@ -81,7 +81,7 @@ export const facetsReducer = (state: IFacetState[] = facetsInitialState,
     case FacetActions.emptyFacet:
     case FacetActions.toggleMoreFacetRows:
     case FacetActions.closeMoreFacetRows:
-      return state.map(facet => facetReducer(facet, action));
+      return state.map((facet: IFacetState) => facetReducer(facet, action));
     case FacetActions.addFacet:
       return [
         ...state,

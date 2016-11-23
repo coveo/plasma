@@ -36,14 +36,14 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
   };
 
   render() {
-    let className = `prompt-${this.props.options.className ? this.props.options.className : 'info'}`;
+    let className: string = `prompt-${this.props.options.className ? this.props.options.className : 'info'}`;
     className += this.props.options.isOpened ? ' opened' : '';
 
-    let icon = this.props.options.userChoice.icon ?
+    let icon: JSX.Element = this.props.options.userChoice.icon ?
       <Svg svgName={this.props.options.userChoice.icon} className='prompt-icon' svgClass='icon mod-2x fill-medium-blue' />
       : null;
 
-    let choices = _.map(this.props.options.userChoice.choices, (choice: string, index: string) => {
+    let choices: JSX.Element[] = _.map(this.props.options.userChoice.choices, (choice: string, index: string) => {
       return (
         <button
           type='button'
@@ -55,11 +55,11 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
       );
     });
 
-    let description = this.props.options.userChoice.description ?
+    let description: JSX.Element = this.props.options.userChoice.description ?
       <span className='description'>{this.props.options.userChoice.description}</span> :
       null;
 
-    let cancel = this.props.options.userChoice.cancel ?
+    let cancel: JSX.Element = this.props.options.userChoice.cancel ?
       <button type='button' className='btn cancel prompt-action enabled' onClick={() => { this.onCancelClick(); } }>
         {this.props.options.userChoice.cancel}
       </button> :

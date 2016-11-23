@@ -18,7 +18,7 @@ export interface ISecondaryActionsProps extends ISecondaryActionsOwnProps, ISeco
 export class SecondaryActions extends React.Component<ISecondaryActionsProps, any> {
 
   render() {
-    let actions = this.props.actions.length === 1 ?
+    let actions: JSX.Element = this.props.actions.length === 1 ?
       (this.props.withReduxState ?
         <PrimaryActionConnected action={this.props.actions[0]} parentId={this.props.id} /> :
         <PrimaryAction action={this.props.actions[0]} />

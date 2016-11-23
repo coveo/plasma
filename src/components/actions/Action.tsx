@@ -40,10 +40,10 @@ export interface IActionProps extends React.ClassAttributes<Action>, IBasicActio
 export class Action extends React.Component<IActionProps, any> {
 
   render() {
-    let actionIcon = this.props.action.icon ?
+    let actionIcon: JSX.Element = this.props.action.icon ?
       <Svg svgName={this.props.action.icon} className='action-icon' svgClass='icon fill-medium-blue' /> :
       <Svg svgName='more' className='action-icon action-icon-more' svgClass='icon icon-medium fill-medium-blue' />;
-    let inside = this.props.simple ? this.props.action.name :
+    let inside: string | JSX.Element = this.props.simple ? this.props.action.name :
       <span className='inline-flex flex-center'>
         {actionIcon}
         <span className='action-label'>{this.props.action.name}</span>

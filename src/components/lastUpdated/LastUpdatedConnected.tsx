@@ -7,13 +7,14 @@ import {
 } from './LastUpdated';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { ILastUpdatedState } from './LastUpdatedReducers';
 import { addLastUpdated, removeLastUpdated } from './LastUpdatedActions';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import * as React from 'react';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ILastUpdatedOwnProps): ILastUpdatedStateProps => {
-  let item = _.findWhere(state.lastUpdatedComposite, { id: ownProps.id });
+  let item: ILastUpdatedState = _.findWhere(state.lastUpdatedComposite, { id: ownProps.id });
 
   return {
     time: item ? item.time : new Date()

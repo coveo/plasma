@@ -49,8 +49,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
     }
 
     let perPage: JSX.Element = null;
-    let minimumPerPage = (this.props.perPageNumbers || PER_PAGE_NUMBERS);
-    if (minimumPerPage.length && this.props.totalEntries > minimumPerPage[0]) {
+    let perPageNumbers: number[] = (this.props.perPageNumbers || PER_PAGE_NUMBERS);
+    if (perPageNumbers.length && this.props.totalEntries > perPageNumbers[0]) {
       let perPageProps: INavigationPerPageProps = {
         totalEntries: this.props.totalEntries,
         label: this.props.perPageLabel,
@@ -61,8 +61,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
         <NavigationPerPage onPerPageClick={this.props.onPerPageClick} currentPerPage={this.props.currentPerPage} {...perPageProps} />;
     }
 
-    let navigationClasses = 'pagination-container' + (this.props.isLoading ? ' loading-view' : '');
-    let loading = this.props.withReduxState ? <LoadingConnected id={'loading-' + this.props.id} /> : <Loading />;
+    let navigationClasses: string = 'pagination-container' + (this.props.isLoading ? ' loading-view' : '');
+    let loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={'loading-' + this.props.id} /> : <Loading />;
 
     return (
       <div className={navigationClasses}>

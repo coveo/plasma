@@ -58,7 +58,7 @@ export const loadingsReducer = (state: ILoadingState[] = loadingsInitialState, a
       });
     case LoadingActions.turnOn:
     case LoadingActions.turnOff:
-      return state.map(l => loadingReducer(l, action));
+      return state.map((loading: ILoadingState) => loadingReducer(loading, action));
     default:
       return state;
   }
