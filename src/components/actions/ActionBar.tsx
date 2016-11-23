@@ -38,14 +38,12 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
   }
 
   render() {
-    let primaryActionNo = 0;
-    let primaryActions = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions) => {
+    let primaryActions = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number) => {
       if (action.primary) {
-        primaryActionNo++;
         let primaryAction = this.props.withReduxState ?
           <PrimaryActionConnected action={action} parentId={this.props.id} /> :
           <PrimaryAction action={action} />;
-        return <div className='dropdown action primary-action' key={'primary-' + primaryActionNo}>{primaryAction}</div>;
+        return <div className='dropdown action primary-action' key={'primary-' + index}>{primaryAction}</div>;
       }
     });
     let secondaryActions = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions) => {

@@ -36,7 +36,7 @@ import { ActionBarConnected } from './components/actions/ActionBarConnected';
 import { actionBarsReducer } from './components/actions/ActionBarReducers';
 import { addActionsToActionBar } from './components/actions/ActionBarActions';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps } from './utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from './ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
 export {
   ChosenSelect,
@@ -98,7 +98,7 @@ export {
   ReduxUtils,
   ReduxConnect,
   IReduxAction,
-  IReduxActionPayload,
+  IReduxActionsPayload,
   IReduxProps,
   IReactVaporState
 };

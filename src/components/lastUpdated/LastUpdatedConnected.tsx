@@ -6,7 +6,7 @@ import {
   ILastUpdatedStateProps
 } from './LastUpdated';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { addLastUpdated, removeLastUpdated } from './LastUpdatedActions';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
@@ -20,12 +20,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ILastUpdatedOwnProps
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void, ownProps: ILastUpdatedOwnProps): ILastUpdatedDispatchProps => {
-  return {
-    onRender: () => dispatch(addLastUpdated(ownProps.id)),
-    onDestroy: () => dispatch(removeLastUpdated(ownProps.id))
-  };
-};
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void, ownProps: ILastUpdatedOwnProps): ILastUpdatedDispatchProps => ({
+  onRender: () => dispatch(addLastUpdated(ownProps.id)),
+  onDestroy: () => dispatch(removeLastUpdated(ownProps.id))
+});
 
 export const LastUpdatedConnected: React.ComponentClass<ILastUpdatedProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(LastUpdated);

@@ -1,5 +1,5 @@
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IDropdownProps, IDropdownStateProps, Dropdown, IDropdownOwnProps, IDropdownDispatchProps } from './Dropdown';
 import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from './DropdownActions';
 import { connect } from 'react-redux';
@@ -14,14 +14,12 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownOwnProps): 
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void, ownProps: IDropdownOwnProps): IDropdownDispatchProps => {
-  return {
-    onRender: () => dispatch(addDropdown(ownProps.id)),
-    onDestroy: () => dispatch(removeDropdown(ownProps.id)),
-    onClick: () => dispatch(toggleDropdown(ownProps.id)),
-    onDocumentClick: () => dispatch(closeDropdown(ownProps.id))
-  };
-};
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void, ownProps: IDropdownOwnProps): IDropdownDispatchProps => ({
+  onRender: () => dispatch(addDropdown(ownProps.id)),
+  onDestroy: () => dispatch(removeDropdown(ownProps.id)),
+  onClick: () => dispatch(toggleDropdown(ownProps.id)),
+  onDocumentClick: () => dispatch(closeDropdown(ownProps.id))
+});
 
 export const DropdownConnected: React.ComponentClass<IDropdownProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Dropdown);

@@ -1,5 +1,5 @@
 import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../../ReactVapor';
 import {
   NavigationPagination,
   INavigationPaginationProps,
@@ -21,17 +21,15 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPaginatio
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
-  ownProps: INavigationPaginationOwnProps): INavigationPaginationDispatchProps => {
-  return {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+  ownProps: INavigationPaginationOwnProps): INavigationPaginationDispatchProps => ({
     onRender: () => dispatch(addPagination(ownProps.id)),
     onDestroy: () => dispatch(removePagination(ownProps.id)),
     onPageClick: (pageNb: number) => {
       dispatch(turnOnLoading(ownProps.loadingIds));
       dispatch(changePage(ownProps.id, pageNb));
     }
-  };
-};
+  });
 
 export const NavigationPaginationConnected: React.ComponentClass<INavigationPaginationProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(NavigationPagination);

@@ -43,15 +43,13 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
       <Svg svgName={this.props.options.userChoice.icon} className='prompt-icon' svgClass='icon mod-2x fill-medium-blue' />
       : null;
 
-    let choiceNb = 0;
-    let choices = _.map(this.props.options.userChoice.choices, (choice) => {
-      choiceNb++;
+    let choices = _.map(this.props.options.userChoice.choices, (choice: string, index: string) => {
       return (
         <button
           type='button'
           className='btn action mod-danger prompt-action enabled'
           onClick={() => { this.props.options.onClick(); } }
-          key={'choice-' + choiceNb}>
+          key={'choice-' + index}>
           {choice}
         </button>
       );

@@ -3,15 +3,11 @@ import { ISecondaryActionsStateProps, ISecondaryActionsProps, SecondaryActions }
 import { connect } from 'react-redux';
 import * as React from 'react';
 
-const mapStateToProps = (): ISecondaryActionsStateProps => {
-  return {
-    withReduxState: true
-  };
-};
+const mapStateToProps = (): ISecondaryActionsStateProps => ({
+  withReduxState: true
+});
 
-const mapDispatchToProps = () => {
-  return {};
-};
+const mapDispatchToProps = () => ({});
 
 export const SecondaryActionsConnected: React.ComponentClass<ISecondaryActionsProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SecondaryActions);

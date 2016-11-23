@@ -23,7 +23,7 @@ export interface IReactVaporState {
   dropdowns?: IDropdownState[];
 }
 
-export interface IReduxActionPayload {
+export interface IReduxActionsPayload {
   id?: string;
   ids?: string[];
   facet?: string;

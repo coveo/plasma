@@ -1,5 +1,5 @@
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import {
   IFacetMoreRowsOwnProps,
   FacetMoreRows,
@@ -24,13 +24,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreRowsOwnPro
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
-  ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsDispatchProps => {
-  return {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+  ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsDispatchProps => ({
     onOpen: () => dispatch(filterThrough('filter-' + ownProps.facet, '')),
     onDocumentClick: () => dispatch(closeMoreFacetRows())
-  };
-};
+  });
 
 export const FacetMoreRowsConnected: React.ComponentClass<IFacetMoreRowsProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(FacetMoreRows);
