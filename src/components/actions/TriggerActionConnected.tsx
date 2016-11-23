@@ -1,5 +1,5 @@
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionPayload } from '../../ReactVapor';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import { TriggerAction, ITriggerActionProps, ITriggerActionOwnProps, ITriggerActionDispatchProps } from './TriggerAction';
 import { IUserChoice } from '../inlinePrompt/InlinePrompt';
 import { addPrompt, removePrompt } from '../inlinePrompt/InlinePromptActions';
@@ -10,7 +10,7 @@ const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ITriggerActionOwnProps): ITriggerActionDispatchProps => {
   return {
     onTriggerConfirm: (onClick: () => void, userChoice: IUserChoice, className: string) => {

@@ -1,6 +1,6 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { DropdownActions } from './DropdownActions';
-import { IReduxActionPayload } from '../../ReactVapor';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
 
 export interface IDropdownState {
@@ -12,7 +12,7 @@ export const dropdownInitialState: IDropdownState = { id: undefined, opened: fal
 export const dropdownsInitialState: IDropdownState[] = [];
 
 export const dropdownReducer = (state: IDropdownState = dropdownInitialState,
-  action: (IReduxAction<IReduxActionPayload>)): IDropdownState => {
+  action: (IReduxAction<IReduxActionsPayload>)): IDropdownState => {
   switch (action.type) {
     case DropdownActions.toggle:
       if (state.id !== action.payload.id) {
@@ -43,7 +43,7 @@ export const dropdownReducer = (state: IDropdownState = dropdownInitialState,
 };
 
 export const dropdownsReducer = (state: IDropdownState[] = dropdownsInitialState,
-  action: IReduxAction<IReduxActionPayload>): IDropdownState[] => {
+  action: IReduxAction<IReduxActionsPayload>): IDropdownState[] => {
   switch (action.type) {
     case DropdownActions.toggle:
     case DropdownActions.close:

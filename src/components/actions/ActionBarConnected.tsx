@@ -6,7 +6,7 @@ import {
   IActionBarStateProps
 } from './ActionBar';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { addActionBar, removeActionBar } from './ActionBarActions';
 import { InlinePromptConnected } from '../inlinePrompt/InlinePromptConnected';
 import { IActionOptions } from './Action';
@@ -32,7 +32,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarOwnProps):
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void, ownProps: IActionBarOwnProps): IActionBarDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void, ownProps: IActionBarOwnProps): IActionBarDispatchProps => {
   return {
     onRender: () => dispatch(addActionBar(ownProps.id)),
     onDestroy: () => dispatch(removeActionBar(ownProps.id))

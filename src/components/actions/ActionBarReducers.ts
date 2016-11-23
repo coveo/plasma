@@ -1,7 +1,7 @@
 import { IActionOptions } from './Action';
 import { ActionBarActions } from './ActionBarActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionPayload } from '../../ReactVapor';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
 
 export interface IActionBarState {
@@ -12,7 +12,7 @@ export interface IActionBarState {
 export const actionBarInitialState: IActionBarState = { id: undefined, actions: [] };
 export const actionBarsInitialState: IActionBarState[] = [];
 
-export const actionBarReducer = (state: IActionBarState = actionBarInitialState, action: IReduxAction<IReduxActionPayload>): IActionBarState => {
+export const actionBarReducer = (state: IActionBarState = actionBarInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState => {
   switch (action.type) {
     case ActionBarActions.addActions:
       if (state.id !== action.payload.id) {
@@ -32,7 +32,7 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
   }
 };
 
-export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialState, action: IReduxAction<IReduxActionPayload>): IActionBarState[] => {
+export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState[] => {
   switch (action.type) {
     case ActionBarActions.addActions:
       return state.map(bar =>

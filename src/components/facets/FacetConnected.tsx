@@ -1,6 +1,6 @@
 import { IFacetOwnProps, Facet, IFacetStateProps, IFacetDispatchProps, IFacetProps, IFacet } from './Facet';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { addFacet, removeFacet, changeFacet, emptyFacet } from './FacetActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
@@ -16,7 +16,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFa
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void): IFacetDispatchProps => {
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IFacetDispatchProps => {
   return {
     onRender: (facet: string) => dispatch(addFacet(facet)),
     onDestroy: (facet: string) => dispatch(removeFacet(facet)),

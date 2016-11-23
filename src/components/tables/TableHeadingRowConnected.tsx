@@ -1,5 +1,5 @@
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { IReduxActionPayload, IReactVaporState } from '../../ReactVapor';
+import { IReduxActionsPayload, IReactVaporState } from '../../ReactVapor';
 import { ITableHeadingRowOwnProps, TableHeadingRow, ITableHeadingRowProps } from './TableHeadingRow';
 import { toggleRow, addRow, removeRow } from './TableRowActions';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ITableHeadingRowOwnProps) => {
   return {
     onClick: () => {

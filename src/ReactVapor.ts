@@ -25,7 +25,7 @@ export interface IReactVaporState {
   rows?: ITableRowState[];
 }
 
-export interface IReduxActionPayload {
+export interface IReduxActionsPayload {
   id?: string;
   ids?: string[];
   facet?: string;

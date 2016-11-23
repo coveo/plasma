@@ -35,8 +35,15 @@ import { ActionBar } from './components/actions/ActionBar';
 import { ActionBarConnected } from './components/actions/ActionBarConnected';
 import { actionBarsReducer } from './components/actions/ActionBarReducers';
 import { addActionsToActionBar } from './components/actions/ActionBarActions';
+import { TableHeader } from './components/tables/TableHeader';
+import { TableHeadingRow } from './components/tables/TableHeadingRow';
+import { TableHeadingRowConnected } from './components/tables/TableHeadingRowConnected';
+import { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
+import { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
+import { tableRowsReducer } from './components/tables/TableRowReducers';
+import { toggleRow } from './components/tables/TableRowActions';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps } from './utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from './ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
 export {
   ChosenSelect,
@@ -94,11 +101,20 @@ export {
   actionBarsReducer,
   addActionsToActionBar,
 
+  // Tables
+  TableHeader,
+  TableHeadingRow,
+  TableHeadingRowConnected,
+  TableCollapsibleRow,
+  TableCollapsibleRowConnected,
+  tableRowsReducer,
+  toggleRow,
+
   // Redux
   ReduxUtils,
   ReduxConnect,
   IReduxAction,
-  IReduxActionPayload,
+  IReduxActionsPayload,
   IReduxProps,
   IReactVaporState
 };

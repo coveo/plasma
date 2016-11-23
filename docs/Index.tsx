@@ -17,11 +17,11 @@ import { NavigationExamples } from '../src/components/navigation/examples/Naviga
 import { NavigationConnectedExamples } from '../src/components/navigation/examples/NavigationConnectedExamples';
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ActionBarConnectedExamples } from '../src/components/actions/examples/ActionBarConnectedExamples';
-import './style.scss';
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { TableRowExamples } from '../src/components/tables/examples/TableRowExamples';
 import { TableRowConnectedExamples } from '../src/components/tables/examples/TableRowConnectedExamples';
 import { TableHeaderExamples } from '../src/components/tables/examples/TableHeaderExamples';
+import './style.scss';
+import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
 class App extends React.Component<any, any> {
 

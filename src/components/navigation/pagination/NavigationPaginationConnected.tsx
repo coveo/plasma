@@ -1,5 +1,5 @@
 import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../../ReactVapor';
 import {
   NavigationPagination,
   INavigationPaginationProps,
@@ -21,7 +21,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPaginatio
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: INavigationPaginationOwnProps): INavigationPaginationDispatchProps => {
   return {
     onRender: () => dispatch(addPagination(ownProps.id)),

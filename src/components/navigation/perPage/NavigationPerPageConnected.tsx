@@ -1,5 +1,5 @@
 import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from '../../../ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from '../../../ReactVapor';
 import {
   INavigationPerPageProps,
   INavigationPerPageStateProps,
@@ -21,7 +21,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPerPageOw
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionPayload>) => void,
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: INavigationPerPageOwnProps): INavigationPerPageDispatchProps => {
   return {
     onRender: (perPageNb: number) => dispatch(addPerPage(ownProps.id, perPageNb)),
