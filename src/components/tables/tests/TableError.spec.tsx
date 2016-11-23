@@ -1,5 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IErrorSection, TableError, ITableErrorProps } from '../TableError';
+import {
+  IErrorSection, TableError, ITableErrorProps, DESCRIPTION_LABEL, TROUBLESHOOTING_LABEL,
+  ERROR_CODE_LABEL
+} from '../TableError';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -84,6 +87,39 @@ describe('Tables', () => {
 
     it('should display the error code', () => {
       expect(tableError.html()).toContain(error.errorCode);
+    });
+
+    it('should display the description label passed as a prop or the default one', () => {
+      let expectedLabel = 'expected label';
+
+      expect(tableError.html()).toContain(DESCRIPTION_LABEL);
+      expect(tableError.html()).not.toContain(expectedLabel);
+
+      tableError.setProps({ error: error, descriptionLabel: expectedLabel });
+      expect(tableError.html()).toContain(expectedLabel);
+      expect(tableError.html()).not.toContain(DESCRIPTION_LABEL);
+    });
+
+    it('should display the troubleshooting label passed as a prop or the default one', () => {
+      let expectedLabel = 'expected label';
+
+      expect(tableError.html()).toContain(TROUBLESHOOTING_LABEL);
+      expect(tableError.html()).not.toContain(expectedLabel);
+
+      tableError.setProps({ error: error, troubleshootingLabel: expectedLabel });
+      expect(tableError.html()).toContain(expectedLabel);
+      expect(tableError.html()).not.toContain(TROUBLESHOOTING_LABEL);
+    });
+
+    it('should display the error code label passed as a prop or the default one', () => {
+      let expectedLabel = 'expected label';
+
+      expect(tableError.html()).toContain(ERROR_CODE_LABEL);
+      expect(tableError.html()).not.toContain(expectedLabel);
+
+      tableError.setProps({ error: error, errorCodeLabel: expectedLabel });
+      expect(tableError.html()).toContain(expectedLabel);
+      expect(tableError.html()).not.toContain(ERROR_CODE_LABEL);
     });
   });
 });

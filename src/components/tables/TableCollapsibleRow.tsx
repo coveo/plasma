@@ -24,16 +24,24 @@ export interface ITableCollapsibleRowProps extends ITableCollapsibleRowOwnProps,
 
 export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowProps, any> {
 
-  componentWillReceiveProps(nextProps: ITableCollapsibleRowProps) {
+  private toggleRow(opened: boolean) {
     let animationTime = 400;
     let $e = $('.' + this.props.id);
     let $container = $e.find('.container');
 
-    if (nextProps.opened) {
+    if (opened) {
       $container.slideDown(animationTime);
     } else {
       $container.slideUp(animationTime);
     }
+  }
+
+  componentDidMount() {
+    this.toggleRow(this.props.opened);
+  }
+
+  componentWillReceiveProps(nextProps: ITableCollapsibleRowProps) {
+    this.toggleRow(nextProps.opened);
   }
 
   render() {

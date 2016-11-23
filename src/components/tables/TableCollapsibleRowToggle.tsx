@@ -9,15 +9,12 @@ export interface ITableCollapsibleRowToggleProps extends React.ClassAttributes<T
 export class TableCollapsibleRowToggle extends React.Component<ITableCollapsibleRowToggleProps, any> {
 
   render() {
-    let collapseState = this.props.isExpanded ? 'expanded' : 'collapsed';
+    let arrowIcon = this.props.isExpanded ?
+      <Svg svgName='arrow-top' className='state-expanded' svgClass='icon' /> :
+      <Svg svgName='arrow-bottom' className='state-collapsed' svgClass='icon' />;
 
     return (
-      <td>
-        <span data-collapse-state={collapseState}>
-          <Svg svgName='arrowBottom' className='state-collapsed' svgClass='icon' />
-          <Svg svgName='arrowTop' className='state-expanded' svgClass='icon' />
-        </span>
-      </td>
+      <td>{arrowIcon}</td>
     );
   }
 }

@@ -19,6 +19,9 @@ import { ActionBarExamples } from '../src/components/actions/examples/ActionBarE
 import { ActionBarConnectedExamples } from '../src/components/actions/examples/ActionBarConnectedExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import { TableRowExamples } from '../src/components/tables/examples/TableRowExamples';
+import { TableRowConnectedExamples } from '../src/components/tables/examples/TableRowConnectedExamples';
+import { TableHeaderExamples } from '../src/components/tables/examples/TableHeaderExamples';
 
 class App extends React.Component<any, any> {
 
@@ -97,6 +100,9 @@ class App extends React.Component<any, any> {
           <NavigationConnectedExamples />
           <ActionBarExamples />
           <ActionBarConnectedExamples />
+          <TableRowExamples />
+          <TableRowConnectedExamples />
+          <TableHeaderExamples />
         </div>
       </Provider>
     );
