@@ -15,18 +15,18 @@ export interface ITableErrorProps extends React.ClassAttributes<TableError> {
   errorCodeLabel?: string;
 }
 
-export const DESCRIPTION_LABEL = 'Description';
-export const TROUBLESHOOTING_LABEL = 'Troubleshooting';
-export const ERROR_CODE_LABEL = 'Error code';
+export const DESCRIPTION_LABEL: string = 'Description';
+export const TROUBLESHOOTING_LABEL: string = 'Troubleshooting';
+export const ERROR_CODE_LABEL: string = 'Error code';
 
 export class TableError extends React.Component<ITableErrorProps, any> {
 
   render() {
-    let descriptionLabel = this.props.descriptionLabel || DESCRIPTION_LABEL;
-    let troubleshootingLabel = this.props.troubleshootingLabel || TROUBLESHOOTING_LABEL;
-    let errorCodeLabel = this.props.errorCodeLabel || ERROR_CODE_LABEL;
+    let descriptionLabel: string = this.props.descriptionLabel || DESCRIPTION_LABEL;
+    let troubleshootingLabel: string = this.props.troubleshootingLabel || TROUBLESHOOTING_LABEL;
+    let errorCodeLabel: string = this.props.errorCodeLabel || ERROR_CODE_LABEL;
 
-    let errorPrecision = this.props.error.errorPrecision ?
+    let errorPrecision: JSX.Element = this.props.error.errorPrecision ?
       <div className='error-description error-description-precision' dangerouslySetInnerHTML={{ __html: this.props.error.errorPrecision }}></div> :
       null;
 

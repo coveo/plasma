@@ -40,11 +40,11 @@ export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState
         tableRowReducer(undefined, action)
       ];
     case TableRowActions.remove:
-      return _.reject(state, (row) => {
+      return _.reject(state, (row: ITableRowState) => {
         return action.payload.id === row.id;
       });
     case TableRowActions.toggle:
-      return state.map(row => tableRowReducer(row, action));
+      return state.map((row: ITableRowState) => tableRowReducer(row, action));
     default:
       return state;
   }

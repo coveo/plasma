@@ -10,10 +10,8 @@ export interface ITableHeaderProps extends React.ClassAttributes<TableHeader> {
 export class TableHeader extends React.Component<ITableHeaderProps, any> {
 
   render() {
-    let colNb = 0;
-    let columns = _.map(this.props.columns, (column: ITableHeaderCellProps) => {
-      colNb++;
-      return <TableHeaderCell key={'th-' + colNb} title={column.title} className={column.className} />;
+    let columns: JSX.Element[] = _.map(this.props.columns, (column: ITableHeaderCellProps, index: number): JSX.Element => {
+      return <TableHeaderCell key={'th-' + index} title={column.title} className={column.className} />;
     });
 
     return (

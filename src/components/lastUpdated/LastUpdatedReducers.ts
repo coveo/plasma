@@ -42,7 +42,7 @@ export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpd
         return action.payload.id === lastUpdated.id;
       });
     case LastUpdatedActions.changeLastUpdated:
-      return state.map(lastUpdated =>
+      return state.map((lastUpdated: ILastUpdatedState) =>
         lastUpdatedReducer(lastUpdated, action)
       );
     default:

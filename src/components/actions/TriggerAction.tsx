@@ -1,5 +1,5 @@
 import { IUserChoice } from '../inlinePrompt/InlinePrompt';
-import { IBasicActionProps, Action } from './Action';
+import { IBasicActionProps, Action, IConfirmData } from './Action';
 import * as React from 'react';
 
 export interface ITriggerActionOwnProps extends React.ClassAttributes<TriggerAction>, IBasicActionProps {
@@ -19,11 +19,11 @@ export const CONFIRM_LABEL = 'Are you sure?';
 export class TriggerAction extends React.Component<ITriggerActionProps, any> {
 
   private onTriggerAction() {
-    let confirmData = this.props.action.requiresConfirmation;
+    let confirmData: IConfirmData = this.props.action.requiresConfirmation;
 
     if (confirmData && this.props.onTriggerConfirm) {
-      let confirmLabel = this.props.confirmLabel || CONFIRM_LABEL;
-      let icon = this.props.action.icon;
+      let confirmLabel: string = this.props.confirmLabel || CONFIRM_LABEL;
+      let icon: string = this.props.action.icon;
 
       this.props.onTriggerConfirm(
         () => {
@@ -52,7 +52,7 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
   }
 
   render() {
-    let actionClasses = this.props.action.enabled ? 'enabled' : (this.props.simple ? 'state-disabled' : 'disabled');
+    let actionClasses: string = this.props.action.enabled ? 'enabled' : (this.props.simple ? 'state-disabled' : 'disabled');
 
     return (
       <span onClick={() => this.onTriggerAction()} className={actionClasses} title={this.props.action.name}>

@@ -3,15 +3,11 @@ import { IPrimaryActionStateProps, IPrimaryActionProps, PrimaryAction } from './
 import { connect } from 'react-redux';
 import * as React from 'react';
 
-const mapStateToProps = (): IPrimaryActionStateProps => {
-  return {
-    withReduxState: true
-  };
-};
+const mapStateToProps = (): IPrimaryActionStateProps => ({
+  withReduxState: true
+});
 
-const mapDispatchToProps = () => {
-  return {};
-};
+const mapDispatchToProps = () => ({});
 
 export const PrimaryActionConnected: React.ComponentClass<IPrimaryActionProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(PrimaryAction);

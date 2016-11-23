@@ -8,7 +8,7 @@ import * as React from 'react';
 describe('Facets', () => {
   let facetRows: IFacet[] = [];
   let facet: IFacet = { name: '', formattedName: '' };
-  let toggleFacet: (facet: string, facetRow: string) => void = jasmine.createSpy('toggleFacet');
+  let toggleFacet: (facet: string, facetRow: IFacet) => void = jasmine.createSpy('toggleFacet');
   let clearFacet: (facet: string) => void = jasmine.createSpy('clearFacet');
 
   describe('<Facet />', () => {

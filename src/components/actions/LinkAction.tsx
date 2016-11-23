@@ -6,7 +6,7 @@ export interface ILinkActionProps extends React.ClassAttributes<LinkAction>, IBa
 export class LinkAction extends React.Component<ILinkActionProps, any> {
 
   render() {
-    let actionClasses = 'enabled' + (this.props.simple ? '' : ' inline-flex flex-center');
+    let actionClasses: string = 'enabled' + (this.props.simple ? '' : ' inline-flex flex-center');
     let opts: React.HTMLAttributes<HTMLAnchorElement> = {};
     if (this.props.action.target) {
       opts.target = this.props.action.target;

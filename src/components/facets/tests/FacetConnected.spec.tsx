@@ -21,7 +21,7 @@ describe('Facets', () => {
     let facetRows: IFacet[];
     let facet: IFacet;
     let selectedFacetRows: IFacet[];
-    let onToggleFacet: (facet: string, facetRow: string) => void;
+    let onToggleFacet: (facet: string, facetRow: IFacet) => void;
     let clearFacet: (facet: string) => void;
 
 

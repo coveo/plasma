@@ -3,15 +3,11 @@ import { ActionsDropdown, IActionsDropdownProps, IActionsDropdownStateProps } fr
 import { connect } from 'react-redux';
 import * as React from 'react';
 
-const mapStateToProps = (): IActionsDropdownStateProps => {
-  return {
-    withReduxState: true
-  };
-};
+const mapStateToProps = (): IActionsDropdownStateProps => ({
+  withReduxState: true
+});
 
-const mapDispatchToProps = () => {
-  return {};
-};
+const mapDispatchToProps = () => ({});
 
 export const ActionsDropdownConnected: React.ComponentClass<IActionsDropdownProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ActionsDropdown);

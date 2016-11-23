@@ -72,7 +72,7 @@ export {
   // Facet
   Facet,
   FacetConnected,
-  FacetActions
+  FacetActions,
   facetsReducer,
   changeFacet,
   emptyFacet,

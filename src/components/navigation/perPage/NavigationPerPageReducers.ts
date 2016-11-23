@@ -44,7 +44,7 @@ export const perPageCompositeReducer = (state: IPerPageState[] = perPageComposit
         return perPage.id === action.payload.id;
       });
     case PerPageActions.change:
-      return state.map(p => perPageReducer(p, action));
+      return state.map((perPage: IPerPageState) => perPageReducer(perPage, action));
     default:
       return state;
   }

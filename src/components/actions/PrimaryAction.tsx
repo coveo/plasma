@@ -16,7 +16,7 @@ export interface IPrimaryActionProps extends IPrimaryActionOwnProps, IPrimaryAct
 export class PrimaryAction extends React.Component<IPrimaryActionProps, any> {
 
   render() {
-    let action = this.props.action.link ?
+    let action: JSX.Element = this.props.action.link ?
       <LinkAction action={this.props.action} /> :
       (this.props.withReduxState ?
         <TriggerActionConnected action={this.props.action} parentId={this.props.parentId} /> :

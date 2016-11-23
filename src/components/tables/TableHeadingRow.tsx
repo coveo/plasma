@@ -41,8 +41,8 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
 
   render() {
 
-    let toggle = this.props.isCollapsible ? <TableCollapsibleRowToggle isExpanded={this.props.opened} /> : <td></td>;
-    let rowClasses = this.props.isCollapsible ? 'heading-row ' : '';
+    let toggle: JSX.Element = this.props.isCollapsible ? <TableCollapsibleRowToggle isExpanded={this.props.opened} /> : <td></td>;
+    let rowClasses: string = this.props.isCollapsible ? 'heading-row ' : '';
     rowClasses += this.props.opened ? 'opened' : '';
 
     return (

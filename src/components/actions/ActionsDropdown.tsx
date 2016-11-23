@@ -26,11 +26,9 @@ export const MORE_LABEL = 'More';
 export class ActionsDropdown extends React.Component<IActionsDropdownProps, any> {
 
   render() {
-    let moreLabel = this.props.moreLabel || MORE_LABEL;
-    let actionNo = 0;
-    let actions = _.map(this.props.actions, (action) => {
-      actionNo++;
-      let actionKey = 'action-' + actionNo;
+    let moreLabel: string = this.props.moreLabel || MORE_LABEL;
+    let actions: JSX.Element[] = _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {
+      let actionKey: string = 'action-' + index;
       if (action.separator) {
         return <li className='divider' key={actionKey}></li>;
       }
@@ -44,18 +42,15 @@ export class ActionsDropdown extends React.Component<IActionsDropdownProps, any>
       }
       return <li key={actionKey}><TriggerAction action={action} simple={true} /></li>;
     });
-    let toggleContent = [
+    let toggleContent: JSX.Element[] = [
       <Svg key='action-dropdown-toggle-icon' svgName='more' className='action-icon' svgClass='icon icon-medium fill-medium-blue' />,
       <span key='action-dropdown-toggle-label' className='action-label'>{moreLabel}</span>
     ];
-    let dropDown = this.props.withReduxState ?
-      <DropdownConnected toggleContent={toggleContent} dropdownItems={actions} /> :
-      <Dropdown toggleContent={toggleContent} dropdownItems={actions} />;
 
     return (
-      <div>
-        {dropDown}
-      </div>
+      this.props.withReduxState ?
+        <DropdownConnected toggleContent={toggleContent} dropdownItems={actions} /> :
+        <Dropdown toggleContent={toggleContent} dropdownItems={actions} />
     );
   }
 }

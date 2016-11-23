@@ -10,11 +10,9 @@ const mapStateToProps = () => {
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-  ownProps: IInlinePromptOwnProps): IInlinePromptViewDispatchProps => {
-  return {
+  ownProps: IInlinePromptOwnProps): IInlinePromptViewDispatchProps => ({
     onCancel: () => dispatch(removePrompt(ownProps.id))
-  };
-};
+  });
 
 export const InlinePromptConnected: React.ComponentClass<IInlinePromptProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(InlinePrompt);
