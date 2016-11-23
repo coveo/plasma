@@ -39,7 +39,7 @@ export class FacetExamples extends React.Component<any, any> {
         formattedName: 'Row 7'
       }
     );
-    let onToggleFacet: (facet: string, facetRow: string) => void = () => { return; };
+    let onToggleFacet: (facet: string, facetRow: IFacet) => void = () => { return; };
     let clearFacet: (facet: string) => void = () => { return; };
     return (
       <div className='mt2' style={{ width: 400 }}>
