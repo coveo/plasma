@@ -12,13 +12,14 @@ import { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
 import { filterThrough } from './components/filterBox/FilterBoxActions';
 import { Facet } from './components/facets/Facet';
 import { FacetConnected } from './components/facets/FacetConnected';
+import { IFacet } from './components/facets/Facet';
 import { facetsReducer } from './components/facets/FacetReducers';
 import { changeFacet, emptyFacet } from './components/facets/FacetActions';
 import { FacetActions } from './components/facets/FacetActions';
 import { Loading } from './components/loading/Loading';
 import { LoadingConnected } from './components/loading/LoadingConnected';
 import { loadingsReducer } from './components/loading/LoadingReducers';
-import { turnOnLoading, turnOffLoading } from './components/loading/LoadingActions';
+import { addLoading, removeLoading, turnOnLoading, turnOffLoading } from './components/loading/LoadingActions';
 import { LoadingActions } from './components/loading/LoadingActions';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
@@ -37,6 +38,7 @@ import { DropdownConnected } from './components/dropdown/DropdownConnected';
 import { dropdownsReducer } from './components/dropdown/DropdownReducers';
 import { ActionBar } from './components/actions/ActionBar';
 import { ActionBarConnected } from './components/actions/ActionBarConnected';
+import { IActionOptions } from './components/actions/Action';
 import { actionBarsReducer } from './components/actions/ActionBarReducers';
 import { addActionsToActionBar } from './components/actions/ActionBarActions';
 import { ActionBarActions } from './components/actions/ActionBarActions';
@@ -48,7 +50,7 @@ import { TableCollapsibleRowConnected } from './components/tables/TableCollapsib
 import { tableRowsReducer } from './components/tables/TableRowReducers';
 import { toggleRow } from './components/tables/TableRowActions';
 import { TableRowActions } from './components/tables/TableRowActions';
-import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions } from './utils/ReduxUtils';
+import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
 export {
@@ -73,6 +75,7 @@ export {
   Facet,
   FacetConnected,
   FacetActions,
+  IFacet,
   facetsReducer,
   changeFacet,
   emptyFacet,
@@ -84,6 +87,8 @@ export {
   loadingsReducer,
   turnOnLoading,
   turnOffLoading,
+  addLoading,
+  removeLoading,
 
   // Navigation
   Navigation,
@@ -109,6 +114,7 @@ export {
   ActionBar,
   ActionBarConnected,
   ActionBarActions,
+  IActionOptions,
   actionBarsReducer,
   addActionsToActionBar,
 
@@ -129,5 +135,6 @@ export {
   IReduxActionsPayload,
   IReduxProps,
   IReactVaporState,
-  CommonActions
+  CommonActions,
+  clearState
 };
