@@ -21,7 +21,12 @@ export interface IFacetMoreRowsDispatchProps {
   onDocumentClick?: () => void;
 }
 
-export interface IFacetMoreRowsProps extends IFacetMoreRowsOwnProps, IFacetMoreRowsDispatchProps, IFacetMoreRowsStateProps { }
+export interface IFacetMoreRowsChildrenProps {
+  filterPlaceholder?: string;
+}
+
+export interface IFacetMoreRowsProps extends IFacetMoreRowsOwnProps, IFacetMoreRowsDispatchProps,
+  IFacetMoreRowsStateProps, IFacetMoreRowsChildrenProps { }
 
 export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
   private facetSearch: HTMLDivElement;
@@ -62,7 +67,9 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
     }).filter(Boolean) : this.props.facetRows;
     let resultsClass: string = 'facet-search-results' + (!rowsFiltered.length ? ' hidden' : '');
     let filterBoxId: string = 'filter-' + this.props.facet;
-    let filterBox: JSX.Element = this.props.withReduxState ? <FilterBoxConnected id={filterBoxId} /> : <FilterBox id={filterBoxId} />;
+    let filterBox: JSX.Element = this.props.withReduxState ?
+      <FilterBoxConnected id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} /> :
+      <FilterBox id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} />;
 
     return (
       <div className={moreSearchClasses}>
