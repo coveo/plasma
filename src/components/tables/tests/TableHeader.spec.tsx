@@ -27,6 +27,8 @@ describe('Tables', () => {
     let tableHeader: ReactWrapper<ITableHeaderProps, any>;
 
     beforeEach(() => {
+      document.getElementById('App').innerHTML = '<table id="AppTable"></table>';
+
       columns = [{
         title: 'Header 1',
         className: 'special'

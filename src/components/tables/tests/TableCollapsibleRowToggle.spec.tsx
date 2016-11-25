@@ -22,6 +22,7 @@ describe('Tables', () => {
     let tableCollapsibleRowToggle: ReactWrapper<ITableCollapsibleRowToggleProps, any>;
 
     beforeEach(() => {
+      document.getElementById('App').innerHTML = '<table><tbody><tr id="AppTableBodyRow"></tr></tbody></table>';
       isExpanded = false;
 
       tableCollapsibleRowToggle = mount(

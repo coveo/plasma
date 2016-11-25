@@ -3,11 +3,7 @@ import * as s from 'underscore.string';
 
 beforeEach(() => {
   if (!$('#App').length) {
-    $('body').append('<div id="App" class="coveo-styleguide">' +
-      '<table id="AppTable">' +
-      '<thead id="AppTableHead"><tr id="AppTableHeadRow"></tr></thead>' +
-      '<tbody id="AppTableBody"><tr id="AppTableBodyRow"></tr></tbody>' +
-      '</table></div>');
+    $('body').append('<div id="App" class="coveo-styleguide"></div>');
   }
 });
 

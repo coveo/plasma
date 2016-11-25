@@ -23,6 +23,8 @@ describe('Tables', () => {
     let basicTableCollapsibleRowProps: ITableCollapsibleRowProps;
 
     beforeEach(() => {
+      document.getElementById('App').innerHTML = '<table><tbody id="AppTableBody"></tbody></table>';
+
       basicTableCollapsibleRowProps = {
         id: 'collapsible-row',
         nbColumns: 6,

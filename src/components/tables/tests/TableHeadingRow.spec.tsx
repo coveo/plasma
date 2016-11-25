@@ -28,6 +28,8 @@ describe('Tables', () => {
     let tableHeadingRowInstance: TableHeadingRow;
 
     beforeEach(() => {
+      document.getElementById('App').innerHTML = '<table><tbody id="AppTableBody"></tbody></table>';
+
       basicTableHeadingRowProps = {
         isCollapsible: true
       };
