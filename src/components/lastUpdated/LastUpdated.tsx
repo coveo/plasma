@@ -34,9 +34,9 @@ export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
   }
 
   render() {
-    let label = this.props.label || LAST_UPDATE_LABEL;
-    let time = this.props.time || new Date();
-    let lastUpdateTime = moment(time).format('LTS');
+    let label: string = this.props.label || LAST_UPDATE_LABEL;
+    let time: Date = this.props.time || new Date();
+    let lastUpdateTime: string = moment(time).format('LTS');
 
     return (
       <div className='table-last-update'>{label} {lastUpdateTime}</div>

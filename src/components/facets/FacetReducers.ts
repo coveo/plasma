@@ -1,6 +1,6 @@
 import { FacetActions } from './FacetActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionPayload } from '../../ReactVapor';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import { IFacet } from './Facet';
 import * as _ from 'underscore';
 
@@ -14,7 +14,7 @@ export const facetInitialState: IFacetState = { facet: undefined, opened: false,
 export const facetsInitialState: IFacetState[] = [];
 
 export const facetReducer = (state: IFacetState = facetInitialState,
-  action: (IReduxAction<IReduxActionPayload>)): IFacetState => {
+  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
   switch (action.type) {
     case FacetActions.toggleMoreFacetRows:
       if (state.facet !== action.payload.facet) {
@@ -75,13 +75,13 @@ export const facetReducer = (state: IFacetState = facetInitialState,
 };
 
 export const facetsReducer = (state: IFacetState[] = facetsInitialState,
-  action: IReduxAction<IReduxActionPayload>): IFacetState[] => {
+  action: IReduxAction<IReduxActionsPayload>): IFacetState[] => {
   switch (action.type) {
     case FacetActions.changeFacet:
     case FacetActions.emptyFacet:
     case FacetActions.toggleMoreFacetRows:
     case FacetActions.closeMoreFacetRows:
-      return state.map(facet => facetReducer(facet, action));
+      return state.map((facet: IFacetState) => facetReducer(facet, action));
     case FacetActions.addFacet:
       return [
         ...state,

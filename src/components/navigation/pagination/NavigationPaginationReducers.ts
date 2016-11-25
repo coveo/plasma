@@ -1,5 +1,5 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionPayload } from '../../../ReactVapor';
+import { IReduxActionsPayload } from '../../../ReactVapor';
 import { PaginationActions } from './NavigationPaginationActions';
 import * as _ from 'underscore';
 
@@ -15,7 +15,7 @@ export const paginationInitialState: IPaginationState = {
 
 export const paginationCompositeInitialState: IPaginationState[] = [];
 
-export const paginationReducer = (state: IPaginationState = paginationInitialState, action: IReduxAction<IReduxActionPayload>): IPaginationState => {
+export const paginationReducer = (state: IPaginationState = paginationInitialState, action: IReduxAction<IReduxActionsPayload>): IPaginationState => {
   switch (action.type) {
     case PaginationActions.add:
       return {
@@ -37,7 +37,7 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
 };
 
 
-export const paginationCompositeReducer = (state: IPaginationState[] = paginationCompositeInitialState, action: IReduxAction<IReduxActionPayload>): IPaginationState[] => {
+export const paginationCompositeReducer = (state: IPaginationState[] = paginationCompositeInitialState, action: IReduxAction<IReduxActionsPayload>): IPaginationState[] => {
   switch (action.type) {
     case PaginationActions.add:
       return [
@@ -50,7 +50,7 @@ export const paginationCompositeReducer = (state: IPaginationState[] = paginatio
       });
     case PaginationActions.changePage:
     case PaginationActions.reset:
-      return state.map(p => paginationReducer(p, action));
+      return state.map((pagination: IPaginationState) => paginationReducer(pagination, action));
     default:
       return state;
   }

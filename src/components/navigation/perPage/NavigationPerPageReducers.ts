@@ -1,5 +1,5 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionPayload } from '../../../ReactVapor';
+import { IReduxActionsPayload } from '../../../ReactVapor';
 import { PerPageActions } from './NavigationPerPageActions';
 import * as _ from 'underscore';
 
@@ -15,7 +15,7 @@ export const perPageInitialState: IPerPageState = {
 
 export const perPageCompositeInitialState: IPerPageState[] = [];
 
-export const perPageReducer = (state: IPerPageState = perPageInitialState, action: IReduxAction<IReduxActionPayload>): IPerPageState => {
+export const perPageReducer = (state: IPerPageState = perPageInitialState, action: IReduxAction<IReduxActionsPayload>): IPerPageState => {
   switch (action.type) {
     case PerPageActions.add:
       return {
@@ -32,7 +32,7 @@ export const perPageReducer = (state: IPerPageState = perPageInitialState, actio
   }
 };
 
-export const perPageCompositeReducer = (state: IPerPageState[] = perPageCompositeInitialState, action: IReduxAction<IReduxActionPayload>): IPerPageState[] => {
+export const perPageCompositeReducer = (state: IPerPageState[] = perPageCompositeInitialState, action: IReduxAction<IReduxActionsPayload>): IPerPageState[] => {
   switch (action.type) {
     case PerPageActions.add:
       return [
@@ -44,7 +44,7 @@ export const perPageCompositeReducer = (state: IPerPageState[] = perPageComposit
         return perPage.id === action.payload.id;
       });
     case PerPageActions.change:
-      return state.map(p => perPageReducer(p, action));
+      return state.map((perPage: IPerPageState) => perPageReducer(perPage, action));
     default:
       return state;
   }

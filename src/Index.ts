@@ -28,8 +28,15 @@ import { paginationCompositeReducer } from './components/navigation/pagination/N
 import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
 import { changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 import { changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
+import { Dropdown } from './components/dropdown/Dropdown';
+import { DropdownConnected } from './components/dropdown/DropdownConnected';
+import { dropdownsReducer } from './components/dropdown/DropdownReducers';
+import { ActionBar } from './components/actions/ActionBar';
+import { ActionBarConnected } from './components/actions/ActionBarConnected';
+import { actionBarsReducer } from './components/actions/ActionBarReducers';
+import { addActionsToActionBar } from './components/actions/ActionBarActions';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps } from './utils/ReduxUtils';
-import { IReactVaporState, IReduxActionPayload } from './ReactVapor';
+import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
 export {
   ChosenSelect,
@@ -76,11 +83,22 @@ export {
   resetPaging,
   changePerPage,
 
+  // Dropdown
+  Dropdown,
+  DropdownConnected,
+  dropdownsReducer,
+
+  // Actions
+  ActionBar,
+  ActionBarConnected,
+  actionBarsReducer,
+  addActionsToActionBar,
+
   // Redux
   ReduxUtils,
   ReduxConnect,
   IReduxAction,
-  IReduxActionPayload,
+  IReduxActionsPayload,
   IReduxProps,
   IReactVaporState
 };

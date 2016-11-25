@@ -1,6 +1,6 @@
 import { LastUpdatedActions } from './LastUpdatedActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionPayload } from '../../ReactVapor';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
 
 export interface ILastUpdatedState {
@@ -11,7 +11,7 @@ export interface ILastUpdatedState {
 export const lastUpdatedInitialState: ILastUpdatedState = { id: undefined, time: new Date() };
 export const lastUpdatedCompositeInitialState: ILastUpdatedState[] = [];
 
-export const lastUpdatedReducer = (state: ILastUpdatedState = lastUpdatedInitialState, action: IReduxAction<IReduxActionPayload>): ILastUpdatedState => {
+export const lastUpdatedReducer = (state: ILastUpdatedState = lastUpdatedInitialState, action: IReduxAction<IReduxActionsPayload>): ILastUpdatedState => {
   switch (action.type) {
     case LastUpdatedActions.addLastUpdated:
       return {
@@ -30,7 +30,7 @@ export const lastUpdatedReducer = (state: ILastUpdatedState = lastUpdatedInitial
   }
 };
 
-export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: IReduxAction<IReduxActionPayload>): ILastUpdatedState[] => {
+export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: IReduxAction<IReduxActionsPayload>): ILastUpdatedState[] => {
   switch (action.type) {
     case LastUpdatedActions.addLastUpdated:
       return [
@@ -42,7 +42,7 @@ export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpd
         return action.payload.id === lastUpdated.id;
       });
     case LastUpdatedActions.changeLastUpdated:
-      return state.map(lastUpdated =>
+      return state.map((lastUpdated: ILastUpdatedState) =>
         lastUpdatedReducer(lastUpdated, action)
       );
     default:

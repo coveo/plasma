@@ -12,11 +12,9 @@ export const CommonActions = {
   clearState: 'CLEAR_STATE'
 };
 
-export const clearState = (): Redux.Action => {
-  return {
-    type: CommonActions.clearState
-  };
-};
+export const clearState = (): Redux.Action => ({
+  type: CommonActions.clearState
+});
 
 export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, mergeProps?: any, options?: any): (target: any) => any {
   return target => (ReactRedux.connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any);

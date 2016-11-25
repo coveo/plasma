@@ -5,6 +5,11 @@ import { IFacet } from './components/facets/Facet';
 import { IPerPageState } from './components/navigation/perPage/NavigationPerPageReducers';
 import { ILoadingState } from './components/loading/LoadingReducers';
 import { IPaginationState } from './components/navigation/pagination/NavigationPaginationReducers';
+import { IPromptState } from './components/inlinePrompt/InlinePromptReducers';
+import { IActionBarState } from './components/actions/ActionBarReducers';
+import { IDropdownState } from './components/dropdown/DropdownReducers';
+import { IActionOptions } from './components/actions/Action';
+import { IInlinePromptOptions } from './components/inlinePrompt/InlinePrompt';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -13,9 +18,12 @@ export interface IReactVaporState {
   perPageComposite?: IPerPageState[];
   paginationComposite?: IPaginationState[];
   loadings?: ILoadingState[];
+  prompts?: IPromptState[];
+  actionBars?: IActionBarState[];
+  dropdowns?: IDropdownState[];
 }
 
-export interface IReduxActionPayload {
+export interface IReduxActionsPayload {
   id?: string;
   ids?: string[];
   facet?: string;
@@ -23,4 +31,6 @@ export interface IReduxActionPayload {
   filterText?: string;
   pageNb?: number;
   perPage?: number;
+  actions?: IActionOptions[];
+  options?: IInlinePromptOptions;
 }

@@ -63,11 +63,11 @@ export class Facet extends React.Component<IFacetProps, any> {
   }
 
   render() {
-    let selectedRows = this.props.selectedFacetRows || [];
-    let removeSelectedClass = 'facet-header-eraser' + (selectedRows.length ? '' : ' hidden');
-    let allRows = _.union(selectedRows, this.props.facetRows);
-    let facetRows = _.uniq(allRows, false, item => item.name);
-    let rows = _.map(facetRows, (facetRow: IFacet) => {
+    let selectedRows: IFacet[] = this.props.selectedFacetRows || [];
+    let removeSelectedClass: string = 'facet-header-eraser' + (selectedRows.length ? '' : ' hidden');
+    let allRows: IFacet[] = _.union(selectedRows, this.props.facetRows);
+    let facetRows: IFacet[] = _.uniq(allRows, false, item => item.name);
+    let rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
       return (<FacetRow
         key={facetRow.name}
         facet={this.props.facet.name}
@@ -76,13 +76,13 @@ export class Facet extends React.Component<IFacetProps, any> {
         isChecked={_.contains(_.pluck(selectedRows, 'name'), facetRow.name)}
         />);
     });
-    let moreRowsToggle = rows.length > 5 ?
+    let moreRowsToggle: JSX.Element = rows.length > 5 ?
       (this.props.withReduxState ? <FacetMoreToggleConnected facet={this.props.facet.name} /> : <FacetMoreToggle facet={this.props.facet.name} />) :
       null;
-    let moreRows = moreRowsToggle ?
+    let moreRows: JSX.Element = moreRowsToggle ?
       (this.props.withReduxState ? <FacetMoreRowsConnected facet={this.props.facet.name} facetRows={rows.splice(5)} /> : <FacetMoreRows facet={this.props.facet.name} facetRows={rows.splice(5)} />) :
       null;
-    let facetClasses = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
+    let facetClasses: string = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
 
     return (
       <div className={facetClasses}>

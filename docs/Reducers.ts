@@ -6,6 +6,9 @@ import { perPageCompositeReducer } from '../src/components/navigation/perPage/Na
 import { paginationCompositeReducer } from '../src/components/navigation/pagination/NavigationPaginationReducers';
 import { loadingsReducer } from '../src/components/loading/LoadingReducers';
 import { IReactVaporState } from '../src/ReactVapor';
+import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReducers';
+import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
+import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 import * as Redux from 'redux';
 
 export interface IReactVaporExampleState extends IReactVaporState {
@@ -25,5 +28,8 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   perPageComposite: perPageCompositeReducer,
   paginationComposite: paginationCompositeReducer,
   loadings: loadingsReducer,
+  prompts: promptsReducer,
+  actionBars: actionBarsReducer,
+  dropdowns: dropdownsReducer,
   lastAction
 });

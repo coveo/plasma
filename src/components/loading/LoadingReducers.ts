@@ -1,5 +1,5 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionPayload } from '../../ReactVapor';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import { LoadingActions } from './LoadingActions';
 import * as _ from 'underscore';
 
@@ -15,7 +15,7 @@ export const loadingInitialState: ILoadingState = {
 
 export const loadingsInitialState: ILoadingState[] = [];
 
-export const loadingReducer = (state: ILoadingState = loadingInitialState, action: IReduxAction<IReduxActionPayload>): ILoadingState => {
+export const loadingReducer = (state: ILoadingState = loadingInitialState, action: IReduxAction<IReduxActionsPayload>): ILoadingState => {
   switch (action.type) {
     case LoadingActions.add:
       return {
@@ -45,7 +45,7 @@ export const loadingReducer = (state: ILoadingState = loadingInitialState, actio
   }
 };
 
-export const loadingsReducer = (state: ILoadingState[] = loadingsInitialState, action: IReduxAction<IReduxActionPayload>): ILoadingState[] => {
+export const loadingsReducer = (state: ILoadingState[] = loadingsInitialState, action: IReduxAction<IReduxActionsPayload>): ILoadingState[] => {
   switch (action.type) {
     case LoadingActions.add:
       return [
@@ -58,7 +58,7 @@ export const loadingsReducer = (state: ILoadingState[] = loadingsInitialState, a
       });
     case LoadingActions.turnOn:
     case LoadingActions.turnOff:
-      return state.map(l => loadingReducer(l, action));
+      return state.map((loading: ILoadingState) => loadingReducer(loading, action));
     default:
       return state;
   }
