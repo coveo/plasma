@@ -1,6 +1,6 @@
+import { extend } from 'underscore';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
-import { extend } from 'underscore';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {

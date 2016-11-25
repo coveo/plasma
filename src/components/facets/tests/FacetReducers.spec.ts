@@ -2,9 +2,9 @@ import { IReduxAction } from '../../../utils/ReduxUtils';
 import { IFacetActionPayload, FacetActions, IChangeFacetActionPayload } from '../FacetActions';
 import { IFacetState, facetsReducer, facetsInitialState, facetReducer, facetInitialState } from '../FacetReducers';
 
-describe('Reducers', () => {
+describe('Facets', () => {
 
-  describe('facets', () => {
+  describe('FacetReducers', () => {
     let genericAction: IReduxAction<IFacetActionPayload> = {
       type: 'DO_SOMETHING',
       payload: {

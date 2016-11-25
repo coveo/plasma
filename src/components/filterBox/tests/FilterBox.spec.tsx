@@ -74,7 +74,7 @@ describe('FilterBox', () => {
     });
 
     it('should display the filterPlaceholder if set as a prop else, display the default one', () => {
-      let expectedPlaceholder = 'Filter through rows';
+      let expectedPlaceholder = 'new placeholder';
 
       expect(filterBox.html()).toContain(FILTER_PLACEHOLDER);
 

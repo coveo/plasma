@@ -12,12 +12,15 @@ import { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
 import { filterThrough } from './components/filterBox/FilterBoxActions';
 import { Facet } from './components/facets/Facet';
 import { FacetConnected } from './components/facets/FacetConnected';
+import { IFacet } from './components/facets/Facet';
 import { facetsReducer } from './components/facets/FacetReducers';
 import { changeFacet, emptyFacet } from './components/facets/FacetActions';
+import { FacetActions } from './components/facets/FacetActions';
 import { Loading } from './components/loading/Loading';
 import { LoadingConnected } from './components/loading/LoadingConnected';
 import { loadingsReducer } from './components/loading/LoadingReducers';
-import { turnOnLoading, turnOffLoading } from './components/loading/LoadingActions';
+import { addLoading, removeLoading, turnOnLoading, turnOffLoading } from './components/loading/LoadingActions';
+import { LoadingActions } from './components/loading/LoadingActions';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
 import { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
@@ -26,16 +29,28 @@ import { NavigationPerPage } from './components/navigation/perPage/NavigationPer
 import { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
 import { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
 import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
-import { changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
+import { addPagination, changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
+import { PaginationActions } from './components/navigation/pagination/NavigationPaginationActions';
 import { changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
+import { PerPageActions } from './components/navigation/perPage/NavigationPerPageActions';
 import { Dropdown } from './components/dropdown/Dropdown';
 import { DropdownConnected } from './components/dropdown/DropdownConnected';
 import { dropdownsReducer } from './components/dropdown/DropdownReducers';
 import { ActionBar } from './components/actions/ActionBar';
 import { ActionBarConnected } from './components/actions/ActionBarConnected';
+import { IActionOptions } from './components/actions/Action';
 import { actionBarsReducer } from './components/actions/ActionBarReducers';
 import { addActionsToActionBar } from './components/actions/ActionBarActions';
-import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps } from './utils/ReduxUtils';
+import { ActionBarActions } from './components/actions/ActionBarActions';
+import { TableHeader } from './components/tables/TableHeader';
+import { TableHeadingRow } from './components/tables/TableHeadingRow';
+import { TableHeadingRowConnected } from './components/tables/TableHeadingRowConnected';
+import { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
+import { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
+import { tableRowsReducer } from './components/tables/TableRowReducers';
+import { toggleRow } from './components/tables/TableRowActions';
+import { TableRowActions } from './components/tables/TableRowActions';
+import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
 export {
@@ -59,6 +74,8 @@ export {
   // Facet
   Facet,
   FacetConnected,
+  FacetActions,
+  IFacet,
   facetsReducer,
   changeFacet,
   emptyFacet,
@@ -66,9 +83,12 @@ export {
   // Loading
   Loading,
   LoadingConnected,
+  LoadingActions,
   loadingsReducer,
   turnOnLoading,
   turnOffLoading,
+  addLoading,
+  removeLoading,
 
   // Navigation
   Navigation,
@@ -77,11 +97,14 @@ export {
   NavigationPaginationConnected,
   NavigationPerPage,
   NavigationPerPageConnected,
+  PaginationActions,
+  PerPageActions,
   paginationCompositeReducer,
   perPageCompositeReducer,
   changePage,
   resetPaging,
   changePerPage,
+  addPagination,
 
   // Dropdown
   Dropdown,
@@ -91,8 +114,20 @@ export {
   // Actions
   ActionBar,
   ActionBarConnected,
+  ActionBarActions,
+  IActionOptions,
   actionBarsReducer,
   addActionsToActionBar,
+
+  // Tables
+  TableHeader,
+  TableHeadingRow,
+  TableHeadingRowConnected,
+  TableCollapsibleRow,
+  TableCollapsibleRowConnected,
+  TableRowActions,
+  tableRowsReducer,
+  toggleRow,
 
   // Redux
   ReduxUtils,
@@ -100,5 +135,7 @@ export {
   IReduxAction,
   IReduxActionsPayload,
   IReduxProps,
-  IReactVaporState
+  IReactVaporState,
+  CommonActions,
+  clearState
 };

@@ -5,11 +5,12 @@ import { IFacet } from './components/facets/Facet';
 import { IPerPageState } from './components/navigation/perPage/NavigationPerPageReducers';
 import { ILoadingState } from './components/loading/LoadingReducers';
 import { IPaginationState } from './components/navigation/pagination/NavigationPaginationReducers';
+import { IInlinePromptOptions } from './components/inlinePrompt/InlinePrompt';
 import { IPromptState } from './components/inlinePrompt/InlinePromptReducers';
+import { IActionOptions } from './components/actions/Action';
 import { IActionBarState } from './components/actions/ActionBarReducers';
 import { IDropdownState } from './components/dropdown/DropdownReducers';
-import { IActionOptions } from './components/actions/Action';
-import { IInlinePromptOptions } from './components/inlinePrompt/InlinePrompt';
+import { ITableRowState } from './components/tables/TableRowReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -21,6 +22,7 @@ export interface IReactVaporState {
   prompts?: IPromptState[];
   actionBars?: IActionBarState[];
   dropdowns?: IDropdownState[];
+  rows?: ITableRowState[];
 }
 
 export interface IReduxActionsPayload {
@@ -31,6 +33,6 @@ export interface IReduxActionsPayload {
   filterText?: string;
   pageNb?: number;
   perPage?: number;
-  actions?: IActionOptions[];
   options?: IInlinePromptOptions;
+  actions?: IActionOptions[];
 }

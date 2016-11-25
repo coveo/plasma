@@ -21,7 +21,12 @@ export interface IActionBarDispatchProps {
   onDestroy?: () => void;
 }
 
-export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProps, IActionBarDispatchProps { }
+export interface IActionBarChildrenProps {
+  moreLabel?: string;
+}
+
+export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProps, IActionBarDispatchProps,
+  IActionBarChildrenProps { }
 
 export class ActionBar extends React.Component<IActionBarProps, any> {
 
@@ -55,8 +60,8 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
 
     let secondaryActionsView: JSX.Element = secondaryActions.length ?
       (this.props.withReduxState ?
-        <SecondaryActionsConnected actions={secondaryActions} id={this.props.id} /> :
-        <SecondaryActions actions={secondaryActions} />
+        <SecondaryActionsConnected moreLabel={this.props.moreLabel} actions={secondaryActions} id={this.props.id} /> :
+        <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />
       ) :
       null;
 

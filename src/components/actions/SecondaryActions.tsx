@@ -13,7 +13,11 @@ export interface ISecondaryActionsOwnProps extends React.ClassAttributes<Seconda
 
 export interface ISecondaryActionsStateProps extends IReduxStatePossibleProps { }
 
-export interface ISecondaryActionsProps extends ISecondaryActionsOwnProps, ISecondaryActionsStateProps { }
+export interface ISecondaryActionChildrenProps {
+  moreLabel?: string;
+}
+
+export interface ISecondaryActionsProps extends ISecondaryActionsOwnProps, ISecondaryActionsStateProps, ISecondaryActionChildrenProps { }
 
 export class SecondaryActions extends React.Component<ISecondaryActionsProps, any> {
 
@@ -24,8 +28,8 @@ export class SecondaryActions extends React.Component<ISecondaryActionsProps, an
         <PrimaryAction action={this.props.actions[0]} />
       ) :
       (this.props.withReduxState ?
-        <ActionsDropdownConnected actions={this.props.actions} id={this.props.id} /> :
-        <ActionsDropdown actions={this.props.actions} />
+        <ActionsDropdownConnected moreLabel={this.props.moreLabel} actions={this.props.actions} id={this.props.id} /> :
+        <ActionsDropdown moreLabel={this.props.moreLabel} actions={this.props.actions} />
       );
 
     return (

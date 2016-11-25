@@ -16,7 +16,7 @@ export interface IFacet {
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
   facet: IFacet;
   facetRows: IFacet[];
-  toggleFacet: (facet: string, facetRow: string) => void;
+  toggleFacet: (facet: string, facetRow: IFacet) => void;
   clearFacet: (facet: string) => void;
 }
 
@@ -32,12 +32,17 @@ export interface IFacetDispatchProps {
   onClearFacet?: (facet: string) => void;
 }
 
-export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps { }
+export interface IFacetChildrenProps {
+  moreLabel?: string;
+  filterPlaceholder?: string;
+}
+
+export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps, IFacetChildrenProps { }
 
 export class Facet extends React.Component<IFacetProps, any> {
 
   private buildFacet = (facetRow: IFacet) => {
-    this.props.toggleFacet(this.props.facet.name, facetRow.name);
+    this.props.toggleFacet(this.props.facet.name, facetRow);
     if (this.props.onToggleFacet) {
       this.props.onToggleFacet(this.props.facet.name, facetRow);
     }
@@ -77,10 +82,16 @@ export class Facet extends React.Component<IFacetProps, any> {
         />);
     });
     let moreRowsToggle: JSX.Element = rows.length > 5 ?
-      (this.props.withReduxState ? <FacetMoreToggleConnected facet={this.props.facet.name} /> : <FacetMoreToggle facet={this.props.facet.name} />) :
+      (this.props.withReduxState ?
+        <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} /> :
+        <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
+      ) :
       null;
     let moreRows: JSX.Element = moreRowsToggle ?
-      (this.props.withReduxState ? <FacetMoreRowsConnected facet={this.props.facet.name} facetRows={rows.splice(5)} /> : <FacetMoreRows facet={this.props.facet.name} facetRows={rows.splice(5)} />) :
+      (this.props.withReduxState ?
+        <FacetMoreRowsConnected facet={this.props.facet.name} facetRows={rows.splice(5)} filterPlaceholder={this.props.filterPlaceholder} /> :
+        <FacetMoreRows facet={this.props.facet.name} facetRows={rows.splice(5)} filterPlaceholder={this.props.filterPlaceholder} />
+      ) :
       null;
     let facetClasses: string = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
 
