@@ -14,7 +14,7 @@
   padding-bottom: 15px;
   margin: 10px 0;
 
-  background: $white;
+  background: $pure-white;
   border: 1px solid $medium-grey;
   border-radius: $border-radius;
 }
@@ -26,7 +26,7 @@
   overflow: hidden;
   clear: both;
 
-  background: $pure-white;
+  background: $white;
   border-top-right-radius: $border-radius;
   border-top-left-radius: $border-radius;
 }
@@ -60,7 +60,7 @@
   float: left;
 
   font-family: $base-font-family;
-  font-size: $title-font-size;
+  font-size: $default-font-size;
 }
 
 .facet-values {
@@ -76,19 +76,9 @@
   padding: 0 $button-padding-x;
   margin: 0;
 
-  line-height: 22px;
-
-  &.facet-more {
-    color: $medium-grey;
-  }
-
   &:hover {
     background-color: $light-grey;
   }
-}
-
-.facet-value > * {
-  vertical-align: middle;
 }
 
 .facet-value-label {
@@ -96,43 +86,29 @@
   padding: 5px 0;
   overflow: hidden;
 
-  font-family: Helvetica neue, Helvetica, Arial, sans-serif;
   font-size: $default-font-size;
   white-space: nowrap;
 
   cursor: pointer;
 }
 
-.facet-value-label-wrapper {
-  overflow: hidden;
-}
-
-.facet-checkbox-input {
-  display: none;
-}
-
-.facet-value-checkbox {
+.facet-value .label {
   position: relative;
-  top: 2px;
+  top: -1px;
+}
 
+.facet-more .facet-more-button {
   display: inline-block;
-  float: left;
-  width: 18px;
-  height: 18px;
-  margin-right: 15px;
 
-  text-align: center;
-  vertical-align: middle;
+  border: 2px dashed $medium-grey;
 
-  background: $pure-white;
-  border: 1px solid $medium-grey;
-  border-radius: $border-radius;
-}
+  @extend .coveo-checkbox-button;
 
-.facet-more .facet-value-checkbox {
-  position: relative;
+  & + .label {
+    top: -3px;
 
-  border-style: dashed;
+    margin-left: $checkbox-label-margin;
+  }
 
   &:before, &:after {
     position: absolute;
@@ -158,59 +134,12 @@
   }
 }
 
-.facet-value.facet-more:hover .facet-value-checkbox {
+.facet-more .label {
+  color: $blue;
+}
+
+.facet-value.facet-more:hover .facet-more-button {
   border-style: solid;
-}
-
-.facet-value-checkbox > span {
-  box-sizing: border-box;
-  display: none;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-
-  svg {
-    width: $facet-checkbox-mark-size;
-    height: $facet-checkbox-mark-size;
-    margin: 2px;
-  }
-}
-
-.facet-value:hover .facet-value-checkbox > span {
-  display: block;
-}
-
-.facet-checkbox-input:checked {
-  + .facet-value-checkbox > span {
-    display: block;
-  }
-
-  + .facet-value-checkbox + .facet-value-count, + .facet-value-checkbox + .facet-value-count + .facet-value-caption {
-    font-weight: bold;
-  }
-}
-
-.facet-value-count {
-  display: inline-block;
-  float: right;
-  margin: 0 5px;
-
-  vertical-align: middle;
-
-  transition: opacity 1s;
-}
-
-.facet-value-caption {
-  display: block;
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.facet-more {
-  margin-top: 10px;
 }
 
 .facet-search {
