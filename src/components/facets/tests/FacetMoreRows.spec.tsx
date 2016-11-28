@@ -30,6 +30,7 @@ describe('Facets', () => {
 
   describe('<FacetMoreRows />', () => {
     let facetMoreRows: ReactWrapper<IFacetMoreRowsProps, any>;
+    let facetMoreRowsInstance: FacetMoreRows;
 
     beforeEach(() => {
       facetMoreRows = mount(
@@ -38,6 +39,7 @@ describe('Facets', () => {
           />,
         { attachTo: document.getElementById('App') }
       );
+      facetMoreRowsInstance = facetMoreRows.instance() as FacetMoreRows;
     });
 
     afterEach(() => {
@@ -99,6 +101,15 @@ describe('Facets', () => {
 
       document.getElementById('App').click();
       expect(onDocumentClickSpy).toHaveBeenCalled();
+    });
+
+    it('should focus on the filter box input when opening', () => {
+      let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { isOpened: true });
+
+      expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).not.toBe(document.activeElement);
+
+      facetMoreRows.setProps(newFacetAttributes);
+      expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).toBe(document.activeElement);
     });
   });
 });
