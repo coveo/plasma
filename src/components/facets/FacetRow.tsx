@@ -1,5 +1,4 @@
 import { IFacet } from './Facet';
-import { Svg } from '../svg/Svg';
 import * as React from 'react';
 
 export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
@@ -14,21 +13,16 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
   render() {
     return (
       <li className='facet-value facet-selectable'>
-        <label className='facet-value-label'>
-          <div className='facet-value-label-wrapper'>
-            <input
-              type='checkbox'
-              name={this.props.facetRow.name}
-              className='facet-checkbox-input'
-              checked={this.props.isChecked}
-              onChange={() => this.props.onToggleFacet(this.props.facetRow)}
-              />
-            <div className='facet-value-checkbox'>
-              <Svg svgName='check' svgClass='icon fill-medium-grey' />
-            </div>
-            <span className='facet-value-count'></span>
-            <div className='facet-value-caption'>{this.props.facetRow.formattedName}</div>
-          </div>
+        <label className='coveo-checkbox-label facet-value-label'>
+          <input
+            type='checkbox'
+            name={this.props.facetRow.name}
+            className='coveo-checkbox facet-checkbox-input'
+            checked={this.props.isChecked}
+            onChange={() => this.props.onToggleFacet(this.props.facetRow)}
+            />
+          <button type='button'></button>
+          <span className='label'>{this.props.facetRow.formattedName}</span>
         </label>
       </li>
     );
