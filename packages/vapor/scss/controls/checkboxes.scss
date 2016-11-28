@@ -1,21 +1,25 @@
+.coveo-checkbox-button {
+  position: relative;
+
+  width: $checkbox-size;
+  height: $checkbox-size;
+  padding: 0;
+
+  background: $pure-white;
+  border: 2px solid $medium-blue;
+  border-radius: $border-radius;
+  outline: none;
+
+  transition: all 200ms;
+
+  cursor: pointer;
+}
+
 input[type=checkbox].coveo-checkbox {
   display: none;
 
   & + button {
-    position: relative;
-
-    width: $checkbox-size;
-    height: $checkbox-size;
-    padding: 0;
-
-    background: $pure-white none 0 0;
-    border: 2px solid $medium-blue;
-    border-radius: $border-radius;
-    outline: none;
-
-    transition: all 200ms;
-
-    cursor: pointer;
+    @extend .coveo-checkbox-button;
 
     &:after {
       position: absolute;
