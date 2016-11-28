@@ -107,5 +107,14 @@ describe('FilterBox', () => {
       clearIcon.simulate('click');
       expect(filterBoxInstance.filterInput.value).toBe('');
     });
+
+    it('should focus the filter box input when clicking the clear icon', () => {
+      let clearIcon = filterBox.find('span').first();
+
+      expect(filterBoxInstance.filterInput).not.toBe(document.activeElement);
+
+      clearIcon.simulate('click');
+      expect(filterBoxInstance.filterInput).toBe(document.activeElement);
+    });
   });
 });

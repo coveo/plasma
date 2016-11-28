@@ -49,6 +49,12 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
     }
   }
 
+  componentDidUpdate() {
+    if (this.props.isOpened) {
+      this.facetSearch.getElementsByTagName('input')[0].focus();
+    }
+  }
+
   private handleDocumentClick = (e: MouseEvent) => {
     let facetSearch: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.facetSearch);
 
