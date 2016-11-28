@@ -35,6 +35,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
   private clearValue = () => {
     this.filterInput.value = '';
+    this.filterInput.focus();
     this.handleChange();
   };
 
