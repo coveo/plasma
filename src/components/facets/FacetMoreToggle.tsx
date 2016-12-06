@@ -32,14 +32,10 @@ export class FacetMoreToggle extends React.Component<IFacetMoreToggleProps, any>
 
     return (
       <li className={moreClasses} onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>
-        <label className='facet-value-label'>
-          <div className='facet-value-label-wrapper'>
-            <input type='checkbox' className='facet-checkbox-input' onChange={() => this.handleOnChange()} />
-            <div className='facet-value-checkbox'>
-              <span></span>
-            </div>
-            <span>{moreLabel}</span>
-          </div>
+        <label className='coveo-checkbox-label facet-value-label'>
+          <input type='checkbox' className='coveo-checkbox facet-checkbox-input' onChange={() => this.handleOnChange()} />
+          <span className='facet-more-button'></span>
+          <span className='label'>{moreLabel}</span>
         </label>
       </li>
     );
