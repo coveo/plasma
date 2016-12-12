@@ -14,7 +14,7 @@ export class TableHeaderExamples extends React.Component<any, any> {
       {
         title: 'Second col'
       },
-      new SortExample(SortTypes.None, () => {}),
+      new SortExample(SortTypes.None, () => { }),
       {
         title: 'Fourth col',
         className: 'text-dark-grey'
