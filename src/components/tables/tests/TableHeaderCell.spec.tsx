@@ -7,6 +7,8 @@ import * as React from 'react';
 describe('Tables', () => {
   let title: string;
   let className: string;
+  let cellContent: JSX.Element;
+  let onClickFunction: () => void = jasmine.createSpy('onClick');
 
   describe('<TableHeaderCell />', () => {
     it('should render without errors', () => {
@@ -28,11 +30,14 @@ describe('Tables', () => {
 
       title = 'Header 1';
       className = 'special';
+      cellContent = <div></div>;
 
       tableHeaderCell = mount(
         <TableHeaderCell
           title={title}
           className={className}
+          cellContent={cellContent}
+          onClick={onClickFunction}
           />,
         { attachTo: document.getElementById('AppTableHeadRow') }
       );
@@ -57,12 +62,33 @@ describe('Tables', () => {
       expect(classNameProp).toBe(className);
     });
 
+    it('should get its cell content as a prop', () => {
+      let cellContentProp = tableHeaderCell.props().cellContent;
+
+      expect(cellContentProp).toBeDefined();
+      expect(cellContentProp).toBe(cellContent);
+    });
+
+    it('should get its onClick as a prop', () => {
+      let onClickProp = tableHeaderCell.props().onClick;
+
+      expect(onClickProp).toBeDefined();
+    });
+
     it('should have the class sent as a prop', () => {
       expect(tableHeaderCell.find('th').hasClass(className)).toBe(true);
     });
 
     it('should display the title sent as a prop', () => {
       expect(tableHeaderCell.html()).toContain(title);
+    });
+
+    it('should should call onClick on click', () => {
+      expect(onClickFunction).not.toHaveBeenCalled();
+
+      tableHeaderCell.simulate('click');
+
+      expect(onClickFunction).toHaveBeenCalled();
     });
   });
 });

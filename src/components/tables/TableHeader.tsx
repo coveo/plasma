@@ -11,7 +11,7 @@ export class TableHeader extends React.Component<ITableHeaderProps, any> {
 
   render() {
     let columns: JSX.Element[] = _.map(this.props.columns, (column: ITableHeaderCellProps, index: number): JSX.Element => {
-      return <TableHeaderCell key={'th-' + index} title={column.title} className={column.className} />;
+      return <TableHeaderCell key={'th-' + index} title={column.title} className={column.className} cellContent={column.cellContent} onClick={column.onClick} />;
     });
 
     return (
