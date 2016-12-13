@@ -12,6 +12,18 @@
     -webkit-font-smoothing: subpixel-antialiased;
   }
 
+  .tooltip {
+    &.right {
+      .tooltip-arrow {
+        border-right-color: $orange;
+      }
+    }
+
+    .tooltip-inner {
+      background-color: $orange;
+    }
+  }
+
   .navigation-menu {
     position: relative;
 
@@ -51,23 +63,21 @@
 
             .navigation-menu-section-item-link {
               align-items: center;
+              justify-content: space-between;
 
               display: flex;
               height: 30px;
               padding-left: 2 * $navigation-section-icon-margin + $navigation-section-icon-size - $navigation-active-border-width;
+              margin-right: 2 * $navigation-section-icon-margin + $navigation-section-icon-size - $navigation-active-border-width;
 
               color: $white;
 
-              .navigation-menu-section-item-link-icon {
-                margin-right: 10px;
+              &.state-locked {
+                color: $navigation-locked-color;
               }
             }
 
             &.state-locked {
-              .navigation-menu-section-item-link {
-                color: $navigation-locked-color;
-              }
-
               .icon-folder-locked {
                 display: inline-block;
 
