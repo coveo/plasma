@@ -140,7 +140,7 @@ $base-modal-z-index: 1050;
       justify-content: flex-end;
 
       display: flex;
-      padding: 24px 40px;
+      padding: $modal-footer-padding;
       overflow: hidden;
 
       background-color: $white;

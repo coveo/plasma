@@ -69,6 +69,7 @@ $popover-footer-y-padding: 12px;
 // Modal
 $modal-header-height: 100px;
 $modal-form-width-small: 440px;
+$modal-footer-padding: 24px 40px;
 
 // Prompt modal
 $modal-prompt-text-padding-y: 24px;
@@ -81,6 +82,13 @@ $modal-prompt-min-width: 500px;
 $modal-prompt-max-width: 550px;
 $modal-prompt-close-icon-size: 14px;
 $modal-prompt-horizontal-padding: 30px;
+
+// Wizard card
+$wizard-card-width: 490px;
+$wizard-card-small-width: 365px;
+$wizard-card-large-width: 1095px;
+$wizard-card-form-padding: 30px;
+$wizard-card-footer-padding: 20px 30px;
 
 // Application
 $application-container-min-height: 400px;
@@ -200,3 +208,10 @@ $loading-font-size: 16px;
 $loading-prompt-margin-top: 60px;
 $loading-prompt-margin-bottom: 50px;
 $big-loading-margin-top: 30px;
+
+// Splash
+$splash-default-height: 30vh;
+$splash-medium-height: 45vh;
+$splash-wizard-width: 1025px;
+$splash-wizard-padding-top: 145px;
+$splash-large-wizard-width: 1400px;
