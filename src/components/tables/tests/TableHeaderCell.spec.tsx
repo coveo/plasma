@@ -8,7 +8,6 @@ describe('Tables', () => {
   let title: string;
   let className: string;
   let cellContent: JSX.Element;
-  let onClickFunction: () => void = jasmine.createSpy('onClick');
 
   describe('<TableHeaderCell />', () => {
     it('should render without errors', () => {
@@ -37,7 +36,6 @@ describe('Tables', () => {
           title={title}
           className={className}
           cellContent={cellContent}
-          onClick={onClickFunction}
           />,
         { attachTo: document.getElementById('AppTableHeadRow') }
       );
@@ -70,6 +68,13 @@ describe('Tables', () => {
     });
 
     it('should get its onClick as a prop', () => {
+      let onClickFunction = jasmine.createSpy('onClick');
+      tableHeaderCell.setProps({
+        title: title,
+        onClick: onClickFunction
+      });
+      tableHeaderCell.mount();
+
       let onClickProp = tableHeaderCell.props().onClick;
 
       expect(onClickProp).toBeDefined();
@@ -84,11 +89,20 @@ describe('Tables', () => {
     });
 
     it('should should call onClick on click', () => {
-      expect(onClickFunction).not.toHaveBeenCalled();
+      let onClickFunction = jasmine.createSpy('onClick');
+      tableHeaderCell.setProps({
+        title: title,
+        onClick: onClickFunction
+      });
+      tableHeaderCell.mount();
 
       tableHeaderCell.simulate('click');
 
       expect(onClickFunction).toHaveBeenCalled();
+    });
+
+    it('should not throw when clicked and onClick prop not set', () => {
+      expect(() => { tableHeaderCell.simulate('click') }).not.toThrow();
     });
   });
 });

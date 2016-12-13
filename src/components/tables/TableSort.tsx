@@ -11,10 +11,10 @@ export enum SortTypes {
 
 export interface ITableSortProps extends ITableHeaderCellProps {
   sortType: SortTypes;
-  isFixedHeader: boolean;
+  isFixedHeader?: boolean;
 }
 
-export abstract class TableSort implements ITableHeaderCellProps {
+export class TableSort implements ITableHeaderCellProps {
   title: string;
   className: string;
   cellContent: JSX.Element;
@@ -31,13 +31,12 @@ export abstract class TableSort implements ITableHeaderCellProps {
 
   private computeClassName(sortType: SortTypes): string {
     let className: string;
-    switch (sortType) {
-      case SortTypes.Ascending:
-        className = 'admin-sort admin-sort-ascending';
-      case SortTypes.Descending:
-        className = 'admin-sort admin-sort-descending';
-      default:
-        className = 'admin-sort';
+    if (sortType === SortTypes.Ascending) {
+      className = 'admin-sort admin-sort-ascending';
+    } else if (sortType === SortTypes.Descending) {
+      className = 'admin-sort admin-sort-descending';
+    } else {
+      className = 'admin-sort';
     }
 
     return className;
