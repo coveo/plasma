@@ -2,8 +2,12 @@
   position: absolute;
 
   width: 100%;
-  height: 30vh;
+  height: $splash-default-height;
   min-height: 230px;
+
+  .splash-header-medium {
+    height: $splash-medium-height;
+  }
 }
 
 @media (max-width: 495px) {
@@ -23,6 +27,16 @@
   width: 495px;
   padding-top: 50px;
   padding-bottom: 50px;
+
+  &.mod-wizard-container {
+    width: $splash-wizard-width;
+    padding-top: $splash-wizard-padding-top;
+  }
+
+  &.mod-large-wizard-container {
+    width: $splash-large-wizard-width;
+    padding-top: $splash-wizard-padding-top;
+  }
 }
 
 .splash-logo {
