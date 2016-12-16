@@ -27,8 +27,13 @@
     @include arrow-down-icon($medium-grey);
   }
 
-  &.mod-primary .dropdown-toggle-arrow {
-    @include arrow-down-icon($pure-white);
+  &.mod-primary {
+    font-size: $button-font-size;
+    text-transform: uppercase;
+
+    .dropdown-toggle-arrow {
+      @include arrow-down-icon($pure-white);
+    }
   }
 
   .dropdown-toggle-arrow {
