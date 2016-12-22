@@ -50,6 +50,7 @@ import { TableCollapsibleRowConnected } from './components/tables/TableCollapsib
 import { tableRowsReducer } from './components/tables/TableRowReducers';
 import { toggleRow } from './components/tables/TableRowActions';
 import { TableRowActions } from './components/tables/TableRowActions';
+import { promptsReducer } from './components/inlinePrompt/InlinePromptReducers';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
@@ -118,6 +119,7 @@ export {
   IActionOptions,
   actionBarsReducer,
   addActionsToActionBar,
+  promptsReducer,
 
   // Tables
   TableHeader,
