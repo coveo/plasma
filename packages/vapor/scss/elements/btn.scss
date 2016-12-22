@@ -91,7 +91,7 @@
     border: none;
   }
 
-  & + .btn {
+  & + .btn, + .btn-container {
     margin-left: $button-margin-width;
   }
 
@@ -192,5 +192,9 @@
 
   .btn[disabled] {
     pointer-events: none;
+  }
+
+  & + .btn, + .btn-container {
+    margin-left: $button-margin-width;
   }
 }
