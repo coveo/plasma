@@ -1,5 +1,5 @@
 .panel-header {
-  min-height: 90px;
+  min-height: $panel-header-height;
   padding: $header-padding-y $header-padding;
 
   border-bottom: solid 1px $medium-grey;
@@ -11,6 +11,7 @@
   }
 
   .admin-description {
+    min-height: $description-min-height;
     margin-top: $description-margin-top;
   }
 
