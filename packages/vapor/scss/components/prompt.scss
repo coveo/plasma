@@ -14,6 +14,10 @@
           width: $modal-prompt-close-icon-size;
           height: $modal-prompt-close-icon-size;
         }
+
+        h1 {
+          white-space: inherit;
+        }
       }
 
       .modal-body {
