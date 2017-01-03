@@ -31,7 +31,7 @@ import { paginationCompositeReducer } from './components/navigation/pagination/N
 import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
 import { addPagination, changePage, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 import { PaginationActions } from './components/navigation/pagination/NavigationPaginationActions';
-import { changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
+import { addPerPage, changePerPage } from './components/navigation/perPage/NavigationPerPageActions';
 import { PerPageActions } from './components/navigation/perPage/NavigationPerPageActions';
 import { Dropdown } from './components/dropdown/Dropdown';
 import { DropdownConnected } from './components/dropdown/DropdownConnected';
@@ -106,6 +106,7 @@ export {
   resetPaging,
   changePerPage,
   addPagination,
+  addPerPage,
 
   // Dropdown
   Dropdown,
