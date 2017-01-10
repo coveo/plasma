@@ -98,5 +98,11 @@ table {
         }
       }
     }
+
+    &.mod-slim {
+      tbody:not(.loading-row) tr {
+        height: auto;
+      }
+    }
   }
 }
