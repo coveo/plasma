@@ -1,0 +1,17 @@
+table.mod-alternate {
+  tbody {
+    tr, tr:hover {
+      td {
+        background-color: $white;
+      }
+    }
+  }
+
+  tbody:nth-child(2n) {
+    tr, tr:hover {
+      td {
+        background-color: $light-grey;
+      }
+    }
+  }
+}
