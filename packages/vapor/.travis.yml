@@ -11,6 +11,7 @@ branches:
     
 before_install:
   - rvm install 2.2.2 && rvm use 2.2.2
+  - openssl aes-256-cbc -K $encrypted_a1124e12070d_key -iv $encrypted_a1124e12070d_iv -in travis-deploy-key.enc -out travis-deploy-key -d
 
 install:
   - bundle install
@@ -26,11 +27,7 @@ script:
  - npm run-script lint
  - npm run-script compile
  - npm run-script buildpages
-
-env:
-  global:
-  - secure: WJ3lMQmoZKhHGbMz26gq3ZeLqVCKZuFT/7EkG93PHhrS5fkr3HViOxqf2ld+M33L1yUq/L7jv2mmPKF2jfw76uQDACvcwlaoDFmS/UGVU6BLRAFKyovLCRX2EILQN0p1LJ2YyS2Y9oAak97QV6Eck7aSpjmUsxCWT5kgNikWYko=
-
+ 
 notifications:
   email:
     on_success: never
@@ -39,6 +36,9 @@ notifications:
 after_success:
 - mkdir -p "deploy/$TRAVIS_TAG"
 - cp -a dist/. "deploy/$TRAVIS_TAG"
+- eval "$(ssh-agent -s)" #start the ssh agent
+- chmod 600 travis-deploy-key # this key should have push access
+- ssh-add travis-deploy-key
 
 deploy:
   - provider: script
