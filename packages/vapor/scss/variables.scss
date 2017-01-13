@@ -78,15 +78,15 @@ $modal-footer-padding: 24px 40px;
 
 // Prompt modal
 $modal-prompt-text-padding-y: 24px;
-$modal-prompt-body-max-height: 120px;
-$modal-prompt-body-min-height: 80px;
-$modal-prompt-header-height: 90px;
-$modal-prompt-max-height: 350px;
-$modal-prompt-min-height: 300px;
-$modal-prompt-min-width: 500px;
-$modal-prompt-max-width: 550px;
 $modal-prompt-close-icon-size: 14px;
 $modal-prompt-horizontal-padding: 30px;
+$modal-prompt-max-height: 350px;
+$modal-prompt-min-height: 280px;
+$modal-prompt-min-width: 500px;
+$modal-prompt-max-width: 550px;
+$modal-prompt-header-height: 90px;
+$modal-prompt-footer-height: calc(2 * 24px + #{$button-height} + 2 * #{$button-border-width}); // Calculate the button height + 2 border top and bottom and the space below the button for the max height
+$modal-prompt-body-min-height: calc(#{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height});
 
 // Wizard card
 $wizard-card-width: 490px;
@@ -125,7 +125,7 @@ $table-border: $table-border-width solid $medium-grey;
 $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
 $big-table-blankslate-section-padding: 20px 40px 20px 35px;
-$big-table-row-height:  36px;
+$big-table-row-height: 36px;
 $big-table-icon-margin: 20px;
 $big-table-icon-size: 15px;
 $big-table-first-row-font-size: 15px;

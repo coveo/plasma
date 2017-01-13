@@ -1,6 +1,7 @@
 .modal-container {
   &.mod-prompt {
     .modal-content {
+      height: auto; // Required or modal-content height is always equal to $modal-prompt-max-height.
       max-width: $modal-prompt-max-width;
       max-height: $modal-prompt-max-height;
       min-width: $modal-prompt-min-width;
@@ -21,7 +22,10 @@
       }
 
       .modal-body {
-        max-height: $modal-prompt-body-max-height;
+        // Reset flex-basis and flex-grow values so autosize based on content can work.
+        flex-basis: initial;
+        flex-grow: initial;
+
         min-height: $modal-prompt-body-min-height;
 
         &.mod-header-padding {
@@ -37,8 +41,7 @@
       }
 
       .modal-footer {
-        // calculate the button height + 2 border top and bottom and the space below the button for the max height
-        height: calc(2 * 24px +  #{$button-height} + 2 * #{$button-border-width});
+        height: $modal-prompt-footer-height;
         padding: $header-height-padding $modal-prompt-horizontal-padding;
 
         background-color: $pure-white;
