@@ -1,16 +1,22 @@
 table.mod-alternate {
-  tbody {
-    tr, tr:hover {
-      td {
-        background-color: $white;
+  tbody, tbody:hover {
+    tr, tr:hover, tr.collapsible-row, tr.collapsible-row:hover {
+      td, td:hover {
+        background-color: $pure-white;
+      }
+
+      &.selected {
+        td, td:hover {
+          background-color: $white;
+        }
       }
     }
-  }
 
-  tbody:nth-child(2n) {
-    tr, tr:hover {
-      td {
-        background-color: $light-grey;
+    &:nth-child(2n) {
+      tr, tr:hover, tr.collapsible-row, tr.collapsible-row:hover {
+        td, td:hover {
+          background-color: $white;
+        }
       }
     }
   }
