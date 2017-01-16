@@ -43,7 +43,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
 
     let toggle: JSX.Element = this.props.isCollapsible ? <TableCollapsibleRowToggle isExpanded={this.props.opened} /> : <td></td>;
     let rowClasses: string = this.props.isCollapsible ? 'heading-row ' : '';
-    rowClasses += this.props.opened ? 'opened' : '';
+    rowClasses += this.props.opened ? 'opened selected' : '';
 
     return (
       <tr className={rowClasses} onClick={() => this.handleClick()}>
