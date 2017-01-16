@@ -1,5 +1,4 @@
 # Ignore compiled files
-dist
 docs/assets
 coverage
 
