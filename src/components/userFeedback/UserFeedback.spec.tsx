@@ -10,8 +10,8 @@ describe('<UserFeedback>', () => {
   const defaultTextColorClass: string = TextColorClasses.default;
   const errorTextColorClass: string = TextColorClasses.error;
 
-  const generateProps = (feedbackText: string, state: string, constantClasses?: string, displayOnShow?: string): IUserFeedbackProps => {
-    return displayOnShow ? { feedbackText, state, constantClasses, displayOnShow } : { feedbackText, state, constantClasses };
+  const generateProps = (feedbackText: string, state: string, extraClasses?: string, displayOnShow?: string): IUserFeedbackProps => {
+    return displayOnShow ? { feedbackText, state, extraClasses, displayOnShow } : { feedbackText, state, extraClasses };
   };
 
   const defaultProps: IUserFeedbackProps = generateProps('', '', '');
@@ -59,32 +59,30 @@ describe('<UserFeedback>', () => {
           let nonExistentState = 'NON_EXISTENT_STATE';
           let emptyState = '';
 
-          expect(/display:none/.test(getShallowOutput(generateProps('', nonExistentState, '')).html())).toBe(true);
-          expect(/display:none/.test(getShallowOutput(generateProps('', emptyState, '')).html())).toBe(true);
+          expect(getShallowOutput(generateProps('', nonExistentState, '')).hasClass('hidden')).toBe(true);
+          expect(getShallowOutput(generateProps('', emptyState, '')).hasClass('hidden')).toBe(true);
         });
       });
 
       describe('VALID state', () => {
         it('should be invisible on state VALID without displayOnShow prop', () => {
-          expect(/display:none/.test(getShallowOutput(generateProps('', UserFeedbackState.VALID, '')).html())).toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.VALID, '')).hasClass('hidden')).toBe(true);
         });
 
         it('should be invisible on state VALID, even with prop displayOnShow provided', () => {
-          expect(/display:none/.test(getShallowOutput(generateProps('', UserFeedbackState.VALID, '', 'block')).html())).toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.VALID, '')).hasClass('hidden')).toBe(true);
         });
       });
 
       describe('WARNING state', () => {
         it('should be visible (without prop displayOnShow)', () => {
-          let componentOnStateWarning = getShallowOutput(generateProps('', UserFeedbackState.WARNING, ''));
-          expect(/display:block/.test(componentOnStateWarning.html()))
-            .toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.WARNING, '')).hasClass('block')).toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.WARNING, '')).hasClass('hidden')).toBe(false);
         });
 
         it('the display value should be the value of the displayOnShow prop', () => {
-          let componentOnStateWarning = getShallowOutput(generateProps('', UserFeedbackState.WARNING, '', 'inline-block'));
-          expect(/display:inline\-block/.test(componentOnStateWarning.html()))
-            .toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.WARNING, 'inline-block')).hasClass('inline-block')).toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.WARNING, 'inline-block')).hasClass('hidden')).toBe(false);
         });
 
         it('the text should be dark-grey', () => {
@@ -95,15 +93,13 @@ describe('<UserFeedback>', () => {
 
       describe('ERROR state', () => {
         it('should be visible (without prop displayOnShow)', () => {
-          let componentOnStateError = getShallowOutput(generateProps('', UserFeedbackState.ERROR, ''));
-          expect(/display:block/.test(componentOnStateError.html()))
-            .toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.ERROR, '')).hasClass('block')).toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.ERROR, '')).hasClass('hidden')).toBe(false);
         });
 
         it('the display value should be the value of the displayOnShow prop', () => {
-          let componentOnStateError = getShallowOutput(generateProps('', UserFeedbackState.ERROR, '', 'inline-block'));
-          expect(/display:inline-block/.test(componentOnStateError.html()))
-            .toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.ERROR, 'inline-block')).hasClass('inline-block')).toBe(true);
+          expect(getShallowOutput(generateProps('', UserFeedbackState.ERROR, 'inline-block')).hasClass('hidden')).toBe(false);
         });
 
         it('the text should be red', () => {
@@ -114,33 +110,33 @@ describe('<UserFeedback>', () => {
     });
 
     describe('constant classes', () => {
-      it('should only have the text-[color] class if no constantClasses are passed as prop', () => {
+      it('should only have the text-[color] and display classes if no extraClasses are passed as prop', () => {
         let testComponentValid = getShallowOutput(generateProps('', UserFeedbackState.VALID, ''));
         let testComponentWarning = getShallowOutput(generateProps('', UserFeedbackState.WARNING, ''));
         let testComponentError = getShallowOutput(generateProps('', UserFeedbackState.ERROR, ''));
 
-        expect(/class=\"text-dark-grey\"/.test(testComponentValid.html())).toBe(true);
-        expect(/class=\"text-dark-grey\"/.test(testComponentWarning.html())).toBe(true);
-        expect(/class=\"text-red\"/.test(testComponentError.html())).toBe(true);
+        expect(/class=\"text-dark-grey hidden\"/.test(testComponentValid.html())).toBe(true);
+        expect(/class=\"text-dark-grey block\"/.test(testComponentWarning.html())).toBe(true);
+        expect(/class=\"text-red block\"/.test(testComponentError.html())).toBe(true);
       });
 
-      it('should contain all classes passed through constantClasses, along with the text-[color] class', () => {
-        let constantClass: string[] = ['onlyoneclass'];
-        let constantClasses: string[] = ['each', 'word', 'represent', 'a', 'class'];
-        let constantClassesRealLife: string[] = ['mt1', 'mb2'];
-        let testComponent: ShallowWrapper<IUserFeedbackProps, any> = getShallowOutput(generateProps('', '', constantClass.join(' ')));
+      it('should contain all classes passed through extraClasses, along with the text-[color] class', () => {
+        let extraClass: string[] = ['onlyoneclass'];
+        let extraClasses: string[] = ['each', 'word', 'represent', 'a', 'class'];
+        let extraClassesRealLife: string[] = ['mt1', 'mb2'];
+        let testComponent: ShallowWrapper<IUserFeedbackProps, any> = getShallowOutput(generateProps('', '', extraClass.join(' ')));
 
-        const areClassesAddedToElement = (constClasses: string[], shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>): boolean => {
-          return constClasses.reduce((hasClass: boolean, className: string) => !hasClass ? false : shallowWrapper.hasClass(className), true);
+        const areClassesAddedToElement = (extraClasses: string[], shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>): boolean => {
+          return extraClasses.reduce((hasClass: boolean, className: string) => !hasClass ? false : shallowWrapper.hasClass(className), true);
         };
 
-        expect(areClassesAddedToElement(constantClass, testComponent) && testComponent.hasClass(defaultTextColorClass)).toBe(true);
+        expect(areClassesAddedToElement(extraClass, testComponent) && testComponent.hasClass(defaultTextColorClass)).toBe(true);
 
-        testComponent = getShallowOutput(generateProps('', '', constantClasses.join(' ')));
-        expect(areClassesAddedToElement(constantClasses, testComponent) && testComponent.hasClass(defaultTextColorClass)).toBe(true);
+        testComponent = getShallowOutput(generateProps('', '', extraClasses.join(' ')));
+        expect(areClassesAddedToElement(extraClasses, testComponent) && testComponent.hasClass(defaultTextColorClass)).toBe(true);
 
-        testComponent = getShallowOutput(generateProps('', '', constantClassesRealLife.join(' ')));
-        expect(areClassesAddedToElement(constantClassesRealLife, testComponent) && testComponent.hasClass(defaultTextColorClass)).toBe(true);
+        testComponent = getShallowOutput(generateProps('', '', extraClassesRealLife.join(' ')));
+        expect(areClassesAddedToElement(extraClassesRealLife, testComponent) && testComponent.hasClass(defaultTextColorClass)).toBe(true);
       });
     });
   });

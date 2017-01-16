@@ -4,13 +4,14 @@ import { extend } from 'underscore';
 export interface IUserFeedbackProps {
   feedbackText: string;
   state: string;
-  constantClasses?: string;
+  extraClasses?: string;
   displayOnShow?: string;
 }
 
 export interface IUserFeedbackStyle {
-  display: string;
-  className: string;
+  displayClass: string;
+  textColorClass: string;
+  extraClasses?: string;
 }
 
 export const UserFeedbackState = {
@@ -28,8 +29,9 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
 
   private getDefaultUserFeedbackStyle(): IUserFeedbackStyle {
     return {
-      display: 'none',
-      className: TextColorClasses.default + (this.props.constantClasses ? ' ' + this.props.constantClasses : '')
+      displayClass: 'hidden',
+      textColorClass: TextColorClasses.default,
+      extraClasses: this.props.extraClasses ? ' ' + this.props.extraClasses : ''
     };
   }
 
@@ -39,12 +41,12 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
         return this.getDefaultUserFeedbackStyle();
 
       case UserFeedbackState.WARNING:
-        return extend(this.getDefaultUserFeedbackStyle(), { display: this.props.displayOnShow || 'block' });
+        return extend(this.getDefaultUserFeedbackStyle(), { displayClass: this.props.displayOnShow || 'block' });
 
       case UserFeedbackState.ERROR:
         let newDisplayAndClassName: IUserFeedbackStyle = {
-          display: this.props.displayOnShow || 'block',
-          className: TextColorClasses.error + (this.props.constantClasses ? ' ' + this.props.constantClasses : '')
+          displayClass: this.props.displayOnShow || 'block',
+          textColorClass: TextColorClasses.error,
         };
 
         return extend(this.getDefaultUserFeedbackStyle(), newDisplayAndClassName);
@@ -57,8 +59,8 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
   render() {
     let style = this.adjustStyle(this.props.state);
     return (
-      <div style={{ display: style.display }}
-        className={style.className}>
+      <div
+        className={`${style.textColorClass} ${style.displayClass}${style.extraClasses}`}>
         {this.props.feedbackText}
       </div>
     );
