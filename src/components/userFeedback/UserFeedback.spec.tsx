@@ -120,7 +120,7 @@ describe('<UserFeedback>', () => {
         expect(/class=\"text-red block\"/.test(testComponentError.html())).toBe(true);
       });
 
-      it('should contain all classes passed through extraClasses, along with the text-[color] class', () => {
+      it('should contain all classes passed through extraClasses, along with the text-[color] and display classes', () => {
         let extraClass: string[] = ['onlyoneclass'];
         let extraClasses: string[] = ['each', 'word', 'represent', 'a', 'class'];
         let extraClassesRealLife: string[] = ['mt1', 'mb2'];
