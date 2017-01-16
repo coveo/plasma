@@ -1,5 +1,3 @@
-/// <reference path="../../../types/react-tether/index.d.ts" /> Required to make dts-generator bundle react-tether definition file.
-
 import * as React from 'react';
 import { extend } from 'underscore';
 
@@ -15,10 +13,15 @@ export interface IUserFeedbackStyle {
   className: string;
 }
 
-export const userFeedbackState = {
+export const UserFeedbackState = {
   VALID: 'VALID',
   WARNING: 'WARNING',
   ERROR: 'ERROR',
+};
+
+export const TextColorClasses = {
+  default: 'text-dark-grey',
+  error: 'text-red'
 };
 
 export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
@@ -26,22 +29,22 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
   private getDefaultUserFeedbackStyle(): IUserFeedbackStyle {
     return {
       display: 'none',
-      className: this.props.constantClasses ? this.props.constantClasses + ' text-dark-grey' : 'text-dark-grey'
+      className: TextColorClasses.default + (this.props.constantClasses ? ' ' + this.props.constantClasses : '')
     };
   }
 
   private adjustStyle(state: string): IUserFeedbackStyle {
     switch (state) {
-      case userFeedbackState.VALID:
+      case UserFeedbackState.VALID:
         return this.getDefaultUserFeedbackStyle();
 
-      case userFeedbackState.WARNING:
+      case UserFeedbackState.WARNING:
         return extend(this.getDefaultUserFeedbackStyle(), { display: this.props.displayOnShow || 'block' });
 
-      case userFeedbackState.ERROR:
+      case UserFeedbackState.ERROR:
         let newDisplayAndClassName: IUserFeedbackStyle = {
           display: this.props.displayOnShow || 'block',
-          className: this.props.constantClasses ? this.props.constantClasses + ' text-red' : 'text-red'
+          className: TextColorClasses.error + (this.props.constantClasses ? ' ' + this.props.constantClasses : '')
         };
 
         return extend(this.getDefaultUserFeedbackStyle(), newDisplayAndClassName);

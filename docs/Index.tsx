@@ -5,7 +5,7 @@ import { ReactVaporStore } from './ReactVaporStore';
 import { ChosenSelect } from '../src/components/chosen/ChosenSelect';
 import { Svg } from '../src/components/svg/Svg';
 import { Tooltip } from '../src/components/tooltip/Tooltip';
-import { UserFeedback } from '../src/components/userFeedback/UserFeedback';
+import { UserFeedbackExample } from '../src/components/userFeedback/UserFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
@@ -90,44 +90,7 @@ class App extends React.Component<any, any> {
               </Tooltip>
             </div>
           </div>
-          <div className='form-group'>
-            <label className='form-control-label'>
-              UserFeedback
-            </label>
-            <div className='form-control'>
-              <button type='button' className='btn'>UserFeedback 1</button>
-              <UserFeedback
-                constantClasses='mt1 mb2'
-                state='WARNING'
-                displayOnShow='block'
-                feedbackText='This message is a UserFeedback component on state WARNING' />
-              <button type='button' className='btn'>UserFeedback 2</button>
-              <UserFeedback
-                constantClasses='mt1 mb2'
-                state='ERROR'
-                displayOnShow='block'
-                feedbackText='This message is a UserFeedback component on state ERROR' />
-              <div className='mb2'>
-                <button type='button' className='btn'>UserFeedback 3</button>
-                <UserFeedback
-                  constantClasses='ml1'
-                  state='WARNING'
-                  displayOnShow='inline-block'
-                  feedbackText='This message is a UserFeedback component placed beside its related element' />
-              </div>
-              <div className='mb2'>
-                <button type='button' className='btn'>UserFeedback 4</button>
-                <UserFeedback
-                  constantClasses='ml2 bold italic'
-                  state='WARNING'
-                  displayOnShow='inline-block'
-                  feedbackText='extra classes for styling can be passed to the constantClasses prop' />
-              </div>
-              <div className='mb2'>
-                A UserFeedback component on state VALID is invisible.
-              </div>
-            </div>
-          </div>
+          <UserFeedbackExample />
           <LastUpdatedExamples />
           <LastUpdatedConnectedExamples />
           <LoadingExamples />
