@@ -2,6 +2,7 @@ import { ChosenSelect } from './components/chosen/ChosenSelect';
 import { Popover } from './components/popover/Popover';
 import { Svg } from './components/svg/Svg';
 import { Tooltip } from './components/tooltip/Tooltip';
+import { UserFeedback } from './components/userFeedback/UserFeedback';
 import { LastUpdated } from './components/lastUpdated/LastUpdated';
 import { LastUpdatedConnected } from './components/lastUpdated/LastUpdatedConnected';
 import { lastUpdatedCompositeReducer } from './components/lastUpdated/LastUpdatedReducers';
@@ -59,6 +60,7 @@ export {
   Popover,
   Svg,
   Tooltip,
+  UserFeedback,
 
   // LastUpdated
   LastUpdated,
