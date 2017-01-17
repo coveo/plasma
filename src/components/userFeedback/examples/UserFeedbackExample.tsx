@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UserFeedback } from './UserFeedback';
+import { UserFeedback } from '../UserFeedback';
 
 export class UserFeedbackExample extends React.Component<any, any> {
   render() {
