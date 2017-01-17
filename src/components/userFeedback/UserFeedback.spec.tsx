@@ -37,10 +37,6 @@ describe('<UserFeedback>', () => {
 
         expect(getShallowOutput(generateProps(testText, '', '')).text()).toBe(testText);
 
-        testText = 'hello this is a longer test string over here';
-        expect(getShallowOutput(generateProps(testText, '', '')).text()).toBe(testText);
-
-
         testText = 'hello this is a test over here';
         wrongText = 'hello this is the wrong text over here';
         expect(getShallowOutput(generateProps(testText, '', '')).text()).not.toBe(wrongText);

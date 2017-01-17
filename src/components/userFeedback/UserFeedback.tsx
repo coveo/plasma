@@ -26,6 +26,14 @@ export const TextColorClasses = {
 };
 
 export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
+  render() {
+    let style = this.adjustStyle(this.props.state);
+    return (
+      <div className={`${style.textColorClass} ${style.displayClass}${style.extraClasses}`}>
+        {this.props.feedbackText}
+      </div>
+    );
+  }
 
   private getDefaultUserFeedbackStyle(): IUserFeedbackStyle {
     return {
@@ -54,14 +62,5 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
       default:
         return this.getDefaultUserFeedbackStyle();
     }
-  }
-
-  render() {
-    let style = this.adjustStyle(this.props.state);
-    return (
-      <div className={`${style.textColorClass} ${style.displayClass}${style.extraClasses}`}>
-        {this.props.feedbackText}
-      </div>
-    );
   }
 }
