@@ -116,5 +116,15 @@ describe('FilterBox', () => {
       clearIcon.simulate('click');
       expect(filterBoxInstance.filterInput).toBe(document.activeElement);
     });
+
+    it('should set container class when the container class is specified', () => {
+      let containerClass = 'mod-small';
+      let container = filterBox.find('div').first();
+      expect(container.hasClass(containerClass)).toBe(false);
+
+      filterBox.setProps({ id: id, containerClass });
+      filterBox.mount();
+      expect(container.hasClass(containerClass)).toBe(true);
+    });
   });
 });

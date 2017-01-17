@@ -3,6 +3,7 @@ import { Svg } from '../svg/Svg';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   id: string;
+  containerClass?: string;
   filterPlaceholder?: string;
 }
 
@@ -53,18 +54,19 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
   render() {
     let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
+    let filterBoxContainerClasses: string = `coveo-filter-container ${this.props.containerClass ? this.props.containerClass : ''}`;
 
     return (
-      <div id={this.props.id} className='coveo-filter-container'>
+      <div id={this.props.id} className={filterBoxContainerClasses}>
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
           className='filter-box'
           placeholder={filterPlaceholder}
-          onChange={() => this.handleChange()}
+          onChange={() => this.handleChange() }
           value={this.props.filterText}
           />
-        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
+        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue() } />
         <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey icon mod-lg' />
       </div>
     );
