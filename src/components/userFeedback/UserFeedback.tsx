@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { extend } from 'underscore';
+import { DisplayClass } from '../../utils/ComponentUtils';
 
 export interface IUserFeedbackProps {
   feedbackText: string;
@@ -20,7 +21,7 @@ export const UserFeedbackState = {
   ERROR: 'ERROR',
 };
 
-export const TextColorClasses = {
+export const TextColorClass = {
   default: 'text-dark-grey',
   error: 'text-red'
 };
@@ -29,38 +30,40 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
   render() {
     let style = this.adjustStyle(this.props.state);
     return (
-      <div className={`${style.textColorClass} ${style.displayClass}${style.extraClasses}`}>
+      <div className={`${style.textColorClass} ${style.displayClass} ${style.extraClasses}`}>
         {this.props.feedbackText}
       </div>
     );
   }
 
-  private getDefaultUserFeedbackStyle(): IUserFeedbackStyle {
+  private getUserFeedbackStyleOnStateValid(): IUserFeedbackStyle {
     return {
-      displayClass: 'hidden',
-      textColorClass: TextColorClasses.default,
-      extraClasses: this.props.extraClasses ? ' ' + this.props.extraClasses : ''
+      displayClass: DisplayClass.HIDDEN,
+      textColorClass: TextColorClass.default,
+      extraClasses: this.props.extraClasses ? this.props.extraClasses : ''
     };
   }
 
   private adjustStyle(state: string): IUserFeedbackStyle {
+    let displayClassOnShow = this.props.displayOnShow || DisplayClass.BLOCK;
+
     switch (state) {
       case UserFeedbackState.VALID:
-        return this.getDefaultUserFeedbackStyle();
+        return this.getUserFeedbackStyleOnStateValid();
 
       case UserFeedbackState.WARNING:
-        return extend(this.getDefaultUserFeedbackStyle(), { displayClass: this.props.displayOnShow || 'block' });
+        return extend(this.getUserFeedbackStyleOnStateValid(), { displayClass: displayClassOnShow });
 
       case UserFeedbackState.ERROR:
         let newDisplayAndClassName: IUserFeedbackStyle = {
-          displayClass: this.props.displayOnShow || 'block',
-          textColorClass: TextColorClasses.error,
+          displayClass: displayClassOnShow,
+          textColorClass: TextColorClass.error,
         };
 
-        return extend(this.getDefaultUserFeedbackStyle(), newDisplayAndClassName);
+        return extend(this.getUserFeedbackStyleOnStateValid(), newDisplayAndClassName);
 
       default:
-        return this.getDefaultUserFeedbackStyle();
+        return this.getUserFeedbackStyleOnStateValid();
     }
   }
 }
