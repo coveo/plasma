@@ -119,10 +119,11 @@ describe('FilterBox', () => {
 
     it('should set container class when the container class is specified', () => {
       let containerClass = 'mod-small';
+      let containerClasses = [containerClass];
       let container = filterBox.find('div').first();
       expect(container.hasClass(containerClass)).toBe(false);
 
-      filterBox.setProps({ id: id, containerClass });
+      filterBox.setProps({ id: id, containerClasses });
       filterBox.mount();
       expect(container.hasClass(containerClass)).toBe(true);
     });
