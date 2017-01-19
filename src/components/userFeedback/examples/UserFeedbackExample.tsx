@@ -11,20 +11,20 @@ export class UserFeedbackExample extends React.Component<any, any> {
         <div className='form-control'>
           <button type='button' className='btn'>UserFeedback 1</button>
           <UserFeedback
-            extraClasses='mt1 mb2'
+            extraClasses={['mt1', 'mb2']}
             state='WARNING'
             displayOnShow='block'
             feedbackText='This message is a UserFeedback component on state WARNING' />
           <button type='button' className='btn'>UserFeedback 2</button>
           <UserFeedback
-            extraClasses='mt1 mb2'
+            extraClasses={['mt1', 'mb2']}
             state='ERROR'
             displayOnShow='block'
             feedbackText='This message is a UserFeedback component on state ERROR' />
           <div className='mb2'>
             <button type='button' className='btn'>UserFeedback 3</button>
             <UserFeedback
-              extraClasses='ml1'
+              extraClasses={['ml1']}
               state='WARNING'
               displayOnShow='inline-block'
               feedbackText='This message is a UserFeedback component placed beside its related element' />
@@ -32,7 +32,7 @@ export class UserFeedbackExample extends React.Component<any, any> {
           <div className='mb2'>
             <button type='button' className='btn'>UserFeedback 4</button>
             <UserFeedback
-              extraClasses='ml2 bold italic'
+              extraClasses={['ml2', 'bold', 'italic']}
               state='WARNING'
               displayOnShow='inline-block'
               feedbackText='extra classes for styling can be passed to the extraClasses prop' />

@@ -9,7 +9,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 describe('<UserFeedback>', () => {
-  const getShallowOutput = (feedbackText: string, state: string, extraClasses?: string, displayOnShow?: string): ShallowWrapper<IUserFeedbackProps, any> => {
+  const getShallowOutput = (feedbackText: string, state: string, extraClasses?: string[], displayOnShow?: string): ShallowWrapper<IUserFeedbackProps, any> => {
 
     let props: IUserFeedbackProps = {
       feedbackText,
@@ -25,15 +25,15 @@ describe('<UserFeedback>', () => {
   describe('"Shallow rendered" component', () => {
     describe('rendering', () => {
       it('should render without errors', () => {
-        expect(() => getShallowOutput('', '', '')).not.toThrow();
-        expect(() => getShallowOutput('', '', '', 'block')).not.toThrow();
-        expect(() => getShallowOutput('', '', '')).not.toThrow();
-        expect(() => getShallowOutput('hello', UserFeedbackState.VALID, 'm1')).not.toThrow();
-        expect(() => getShallowOutput('hello', UserFeedbackState.WARNING, 'm1')).not.toThrow();
-        expect(() => getShallowOutput('hello', UserFeedbackState.ERROR, 'm1')).not.toThrow();
-        expect(() => getShallowOutput('hello', UserFeedbackState.VALID, 'm1', 'block')).not.toThrow();
-        expect(() => getShallowOutput('hello', UserFeedbackState.WARNING, 'm1', 'block')).not.toThrow();
-        expect(() => getShallowOutput('hello', UserFeedbackState.ERROR, 'm1', 'block')).not.toThrow();
+        expect(() => getShallowOutput('', '')).not.toThrow();
+        expect(() => getShallowOutput('', '', [], DisplayClass.BLOCK)).not.toThrow();
+        expect(() => getShallowOutput('', '')).not.toThrow();
+        expect(() => getShallowOutput('hello', UserFeedbackState.VALID, ['m1'])).not.toThrow();
+        expect(() => getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'])).not.toThrow();
+        expect(() => getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'])).not.toThrow();
+        expect(() => getShallowOutput('hello', UserFeedbackState.VALID, ['m1'], DisplayClass.BLOCK)).not.toThrow();
+        expect(() => getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'], DisplayClass.BLOCK)).not.toThrow();
+        expect(() => getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'], DisplayClass.BLOCK)).not.toThrow();
       });
     });
 
@@ -42,11 +42,11 @@ describe('<UserFeedback>', () => {
         let testText = 'testing';
         let wrongText: string;
 
-        expect(getShallowOutput(testText, '', '').text()).toBe(testText);
+        expect(getShallowOutput(testText, '').text()).toBe(testText);
 
         testText = 'hello this is a test over here';
         wrongText = 'hello this is the wrong text over here';
-        expect(getShallowOutput(testText, '', '').text()).not.toBe(wrongText);
+        expect(getShallowOutput(testText, '').text()).not.toBe(wrongText);
       });
     });
 
@@ -56,52 +56,52 @@ describe('<UserFeedback>', () => {
           let nonExistentState = 'NON_EXISTENT_STATE';
           let emptyState = '';
 
-          expect(getShallowOutput('', nonExistentState, '').hasClass('hidden')).toBe(true);
-          expect(getShallowOutput('', emptyState, '').hasClass('hidden')).toBe(true);
+          expect(getShallowOutput('', nonExistentState).hasClass(DisplayClass.HIDDEN)).toBe(true);
+          expect(getShallowOutput('', emptyState).hasClass(DisplayClass.HIDDEN)).toBe(true);
         });
       });
 
       describe('VALID state', () => {
         it('should be invisible on state VALID without displayOnShow prop', () => {
-          expect(getShallowOutput('', UserFeedbackState.VALID, '').hasClass('hidden')).toBe(true);
+          expect(getShallowOutput('', UserFeedbackState.VALID).hasClass(DisplayClass.HIDDEN)).toBe(true);
         });
 
         it('should be invisible on state VALID, even with prop displayOnShow provided', () => {
-          expect(getShallowOutput('', UserFeedbackState.VALID, '', 'block').hasClass('hidden')).toBe(true);
-          expect(getShallowOutput('', UserFeedbackState.VALID, '', 'block').hasClass('block')).toBe(false);
+          expect(getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(DisplayClass.HIDDEN)).toBe(true);
+          expect(getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(DisplayClass.BLOCK)).toBe(false);
         });
       });
 
       describe('WARNING state', () => {
         it('should be visible (without prop displayOnShow)', () => {
-          expect(getShallowOutput('', UserFeedbackState.WARNING, '').hasClass('block')).toBe(true);
-          expect(getShallowOutput('', UserFeedbackState.WARNING, '').hasClass('hidden')).toBe(false);
+          expect(getShallowOutput('', UserFeedbackState.WARNING).hasClass(DisplayClass.BLOCK)).toBe(true);
+          expect(getShallowOutput('', UserFeedbackState.WARNING).hasClass(DisplayClass.HIDDEN)).toBe(false);
         });
 
         it('should have a display class equal to the value of the displayOnShow prop', () => {
-          expect(getShallowOutput('', UserFeedbackState.WARNING, 'inline-block').hasClass('inline-block')).toBe(true);
-          expect(getShallowOutput('', UserFeedbackState.WARNING, 'inline-block').hasClass('hidden')).toBe(false);
+          expect(getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.INLINE_BLOCK)).toBe(true);
+          expect(getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.HIDDEN)).toBe(false);
         });
 
         it('should have the default text color class', () => {
-          let componentOnStateWarning = getShallowOutput('', UserFeedbackState.WARNING, '');
+          let componentOnStateWarning = getShallowOutput('', UserFeedbackState.WARNING);
           expect(componentOnStateWarning.hasClass(TextColorClass.default));
         });
       });
 
       describe('ERROR state', () => {
         it('should be visible (without prop displayOnShow)', () => {
-          expect(getShallowOutput('', UserFeedbackState.ERROR, '').hasClass('block')).toBe(true);
-          expect(getShallowOutput('', UserFeedbackState.ERROR, '').hasClass('hidden')).toBe(false);
+          expect(getShallowOutput('', UserFeedbackState.ERROR).hasClass(DisplayClass.BLOCK)).toBe(true);
+          expect(getShallowOutput('', UserFeedbackState.ERROR).hasClass(DisplayClass.HIDDEN)).toBe(false);
         });
 
         it('should have a display class equal to the value of the displayOnShow prop', () => {
-          expect(getShallowOutput('', UserFeedbackState.ERROR, 'inline-block').hasClass('inline-block')).toBe(true);
-          expect(getShallowOutput('', UserFeedbackState.ERROR, 'inline-block').hasClass('hidden')).toBe(false);
+          expect(getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.INLINE_BLOCK)).toBe(true);
+          expect(getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.HIDDEN)).toBe(false);
         });
 
         it('should have the error text color class', () => {
-          let componentOnStateError = getShallowOutput('', UserFeedbackState.ERROR, '');
+          let componentOnStateError = getShallowOutput('', UserFeedbackState.ERROR);
           expect(componentOnStateError.hasClass(TextColorClass.error));
         });
       });
@@ -109,21 +109,21 @@ describe('<UserFeedback>', () => {
 
     describe('constant classes', () => {
       it('should only have the text-[color] and display classes if no extraClasses are passed as prop', () => {
-        let testComponentValid = getShallowOutput('', UserFeedbackState.VALID, '');
-        let testComponentWarning = getShallowOutput('', UserFeedbackState.WARNING, '');
-        let testComponentError = getShallowOutput('', UserFeedbackState.ERROR, '');
+        let testComponentValid = getShallowOutput('', UserFeedbackState.VALID);
+        let testComponentWarning = getShallowOutput('', UserFeedbackState.WARNING);
+        let testComponentError = getShallowOutput('', UserFeedbackState.ERROR);
 
         // a trailing space will be left at the end of the class property if no extraClasses are passed as prop
-        expect(/class=\"text-dark-grey hidden \"/.test(testComponentValid.html())).toBe(true);
-        expect(/class=\"text-dark-grey block \"/.test(testComponentWarning.html())).toBe(true);
-        expect(/class=\"text-red block \"/.test(testComponentError.html())).toBe(true);
+        expect(/class=\"text-dark-grey hidden\"/.test(testComponentValid.html())).toBe(true);
+        expect(/class=\"text-dark-grey block\"/.test(testComponentWarning.html())).toBe(true);
+        expect(/class=\"text-red block\"/.test(testComponentError.html())).toBe(true);
       });
 
       it('should contain all classes passed through extraClasses, along with the text-[color] and display classes', () => {
         let extraClass: string[] = ['onlyoneclass'];
         let extraClasses: string[] = ['each', 'word', 'represents', 'a', 'class'];
         let extraClassesRealLife: string[] = ['mt1', 'mb2'];
-        let testComponent: ShallowWrapper<IUserFeedbackProps, any> = getShallowOutput('', '', extraClass.join(' '));
+        let testComponent: ShallowWrapper<IUserFeedbackProps, any> = getShallowOutput('', '', extraClass);
 
         const areClassesAddedToElement = (extraClasses: string[], shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>): boolean => {
           let allClasses: string[] = extraClasses;
@@ -134,10 +134,10 @@ describe('<UserFeedback>', () => {
 
         expect(areClassesAddedToElement(extraClass, testComponent)).toBe(true);
 
-        testComponent = getShallowOutput('', '', extraClasses.join(' '));
+        testComponent = getShallowOutput('', '', extraClasses);
         expect(areClassesAddedToElement(extraClasses, testComponent)).toBe(true);
 
-        testComponent = getShallowOutput('', '', extraClassesRealLife.join(' '));
+        testComponent = getShallowOutput('', '', extraClassesRealLife);
         expect(areClassesAddedToElement(extraClassesRealLife, testComponent)).toBe(true);
       });
     });
