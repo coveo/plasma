@@ -5,6 +5,7 @@ import { ReactVaporStore } from './ReactVaporStore';
 import { ChosenSelect } from '../src/components/chosen/ChosenSelect';
 import { Svg } from '../src/components/svg/Svg';
 import { Tooltip } from '../src/components/tooltip/Tooltip';
+import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
@@ -89,6 +90,7 @@ class App extends React.Component<any, any> {
               </Tooltip>
             </div>
           </div>
+          <UserFeedbackExample />
           <LastUpdatedExamples />
           <LastUpdatedConnectedExamples />
           <LoadingExamples />
