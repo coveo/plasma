@@ -46,11 +46,20 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
     this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
 
     let currentPerPage: number = this.props.currentPerPage || this.perPageNumbers[0];
-    let topNumber: number = this.props.totalEntries + 10;
+    let topNumber: number = this.props.totalEntries;
     let label: string = this.props.label || PER_PAGE_LABEL;
 
-    let perPageSelects: JSX.Element[] = _.map(this.perPageNumbers, (number: number): JSX.Element => {
-      if (topNumber > number) {
+    let perPageSelects: JSX.Element[] = _.map(this.perPageNumbers, (number: number, index: number): JSX.Element => {
+      let isTopNumberBetweenPreviousAndCurrentPerPageSelect: boolean =
+        index > 0 &&
+        topNumber < number &&
+        topNumber > this.perPageNumbers[index - 1];
+
+      let shouldShowPerPageSelect: boolean =
+        topNumber > number ||
+        isTopNumberBetweenPreviousAndCurrentPerPageSelect;
+
+      if (shouldShowPerPageSelect) {
         let selectId: string = 'perpage-' + (this.props.id || '') + number;
         let isSelected: boolean = currentPerPage === number;
         return (
