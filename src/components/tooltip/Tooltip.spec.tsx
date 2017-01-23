@@ -49,7 +49,7 @@ describe('<Tooltip>', () => {
       { attachTo: document.getElementById('App') }
     );
 
-    let tooltip = (tooltipWrapper.instance()as Tooltip)['tooltip'];
+    let tooltip = (tooltipWrapper.instance() as Tooltip)['tooltip'];
     tooltip = $('.new');
 
     expect(tooltip[0]).toBeFalsy();
@@ -65,7 +65,7 @@ describe('<Tooltip>', () => {
       </Tooltip>,
       { attachTo: document.getElementById('App') }
     );
-    (tooltipWrapper.instance()as Tooltip)['tooltip'] = null;
+    (tooltipWrapper.instance() as Tooltip)['tooltip'] = null;
 
     expect(() => {
       tooltipWrapper.unmount();
