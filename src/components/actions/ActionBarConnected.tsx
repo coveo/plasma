@@ -21,7 +21,7 @@ import * as _ from 'underscore';
 const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarOwnProps): IActionBarStateProps => {
   let actionBar: IActionBarState = _.findWhere(state.actionBars, { id: ownProps.id });
   let prompt: IPromptState = _.findWhere(state.prompts, { id: ownProps.id });
-  let itemFilter: IItemFilterState = _.findWhere(state.itemFilters, { id: ownProps.id + ownProps.itemFilterLabel });
+  let itemFilter: IItemFilterState = _.findWhere(state.itemFilters, { id: ownProps.id });
 
   return {
     withReduxState: true,
@@ -42,18 +42,18 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   onRender: () => {
     dispatch(addActionBar(ownProps.id));
     if (ownProps.itemFilterLabel) {
-      dispatch(addItemFilter(ownProps.id + ownProps.itemFilterLabel));
+      dispatch(addItemFilter(ownProps.id));
     }
   },
   onDestroy: () => {
     dispatch(removeActionBar(ownProps.id));
-    dispatch(removeItemFilter(ownProps.id + ownProps.itemFilterLabel));
+    dispatch(removeItemFilter(ownProps.id));
   },
   clearItemFilter: () => {
     if (ownProps.onClearItemFilter) {
       ownProps.onClearItemFilter();
     }
-    dispatch(filterItems(ownProps.id + ownProps.itemFilterLabel, ''));
+    dispatch(filterItems(ownProps.id, ''));
   }
 });
 

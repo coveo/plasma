@@ -33,7 +33,6 @@ describe('Actions', () => {
   }];
   const itemFilter: string = 'the item';
   const itemFilterLabel: string = 'Item filter';
-  const itemFilterId: string = id + itemFilterLabel;
 
   describe('<ActionBarConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
@@ -52,7 +51,7 @@ describe('Actions', () => {
       actionBar = wrapper.find(ActionBar).first();
 
       store.dispatch(addActionsToActionBar(id, actions));
-      store.dispatch(filterItems(itemFilterId, itemFilter));
+      store.dispatch(filterItems(id, itemFilter));
     });
 
     afterEach(() => {
@@ -185,11 +184,11 @@ describe('Actions', () => {
     });
 
     it('should clear the item filter when calling clearItemFilter', () => {
-      expect(_.findWhere(store.getState().itemFilters, { id: itemFilterId }).item).toBe(itemFilter);
+      expect(_.findWhere(store.getState().itemFilters, { id: id }).item).toBe(itemFilter);
 
       actionBar.props().clearItemFilter();
 
-      expect(_.findWhere(store.getState().itemFilters, { id: itemFilterId }).item).toBe('');
+      expect(_.findWhere(store.getState().itemFilters, { id: id }).item).toBe('');
     });
   });
 });
