@@ -2,8 +2,8 @@ import {
   IItemFilterState, itemFiltersReducer, itemFiltersOriginalState, itemFilterReducer,
   itemFilterOriginalState
 } from '../ItemFilterReducers';
-import {IReduxAction} from '../../../../utils/ReduxUtils';
-import {IItemFilterActionPayload, ItemFilterActions, IItemFilteringActionPayload} from '../ItemFilterActions';
+import { IReduxAction } from '../../../../utils/ReduxUtils';
+import { IItemFilterActionPayload, ItemFilterActions, IItemFilteringActionPayload } from '../ItemFilterActions';
 import * as _ from 'underscore';
 
 describe('Item filters', () => {
@@ -24,7 +24,7 @@ describe('Item filters', () => {
     });
 
     it('should return the old state when the action is not defined', () => {
-      let oldState: IItemFilterState[] = [{ id: 'some-filter', item: ''}];
+      let oldState: IItemFilterState[] = [{ id: 'some-filter', item: '' }];
       let itemFilterState: IItemFilterState[] = itemFiltersReducer(oldState, genericAction);
 
       expect(itemFilterState).toBe(oldState);
@@ -129,7 +129,7 @@ describe('Item filters', () => {
         }
       };
       let itemFilterState: IItemFilterState[] = itemFiltersReducer(oldState, action);
-      expect(_.findWhere(itemFilterState, {id: action.payload.id}).item).toBe(action.payload.item);
+      expect(_.findWhere(itemFilterState, { id: action.payload.id }).item).toBe(action.payload.item);
       expect(itemFilterState.filter(itemFilter => itemFilter.id !== action.payload.id).length).toBe(2);
     });
 
@@ -156,7 +156,7 @@ describe('Item filters', () => {
     });
 
     it('should return the old state when the action is not defined', () => {
-      let oldState: IItemFilterState = { id: 'some-filter', item: ''};
+      let oldState: IItemFilterState = { id: 'some-filter', item: '' };
       let itemFilterState: IItemFilterState = itemFilterReducer(oldState, genericAction);
 
       expect(itemFilterState).toBe(oldState);

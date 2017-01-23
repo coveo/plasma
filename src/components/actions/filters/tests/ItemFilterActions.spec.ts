@@ -1,6 +1,6 @@
 import { IReduxAction } from '../../../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../../../ReactVapor';
-import {ItemFilterActions, addItemFilter, filterItems, removeItemFilter} from '../ItemFilterActions';
+import { ItemFilterActions, addItemFilter, filterItems, removeItemFilter } from '../ItemFilterActions';
 
 const ITEM_FILTER_ID: string = 'the-item-filter';
 

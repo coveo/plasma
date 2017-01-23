@@ -9,7 +9,7 @@ import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReduc
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../src/components/tables/TableRowReducers';
-import {itemFiltersReducer} from '../src/components/actions/filters/ItemFilterReducers';
+import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilterReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
 

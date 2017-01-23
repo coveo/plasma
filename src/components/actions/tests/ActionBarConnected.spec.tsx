@@ -12,7 +12,7 @@ import { PrimaryActionConnected } from '../PrimaryActionConnected';
 import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
 import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
 import { IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
-import {filterItems} from '../filters/ItemFilterActions';
+import { filterItems } from '../filters/ItemFilterActions';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -185,11 +185,11 @@ describe('Actions', () => {
     });
 
     it('should clear the item filter when calling clearItemFilter', () => {
-      expect(_.findWhere(store.getState().itemFilters, {id: itemFilterId}).item).toBe(itemFilter);
+      expect(_.findWhere(store.getState().itemFilters, { id: itemFilterId }).item).toBe(itemFilter);
 
       actionBar.props().clearItemFilter();
 
-      expect(_.findWhere(store.getState().itemFilters, {id: itemFilterId}).item).toBe('');
+      expect(_.findWhere(store.getState().itemFilters, { id: itemFilterId }).item).toBe('');
     });
   });
 });

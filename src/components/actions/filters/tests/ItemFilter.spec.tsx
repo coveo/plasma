@@ -1,5 +1,5 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import {ItemFilter, IItemFilterProps} from '../ItemFilter';
+import { ItemFilter, IItemFilterProps } from '../ItemFilter';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -63,7 +63,7 @@ describe('Item filter', () => {
     });
 
     it('should display the item', () => {
-      let newItemFilterProps = _.extend({}, itemFilterBasicProps, {item: 'an item'});
+      let newItemFilterProps = _.extend({}, itemFilterBasicProps, { item: 'an item' });
       itemFilterComponent.setProps(newItemFilterProps);
 
       expect(itemFilterComponent.html()).toContain(newItemFilterProps.item);
