@@ -106,5 +106,32 @@ describe('Actions', () => {
       expect(actionBar.find('SecondaryActions').length).toBe(0);
       expect(actionBar.find('PrimaryAction').length).toBe(0);
     });
+
+    it('should display an <ItemFilter /> if there is an itemFilter prop', () => {
+      expect(actionBar.find('ItemFilter').length).toBe(0);
+
+      actionBar.setProps({ itemFilter: 'an item' });
+
+      expect(actionBar.find('ItemFilter').length).toBe(1);
+    });
+
+    it('should not throw when handling the clear of the item filter when clearItemFilter is not defined', () => {
+      let handleClearSpy: jasmine.Spy = spyOn(actionBar.instance(), 'handleClear').and.callThrough();
+      actionBar.setProps({ itemFilter: 'an item' });
+      expect(() => {
+        actionBar.find('.coveo-item-filter-clear').simulate('click');
+      }).not.toThrow();
+
+      expect(handleClearSpy).toHaveBeenCalled();
+    });
+
+    it('should call clearItemFilter if defined when clicking the "coveo-item-filter-clear" button', () => {
+      let clearItemFilter = jasmine.createSpy('clearItemFilter');
+      actionBar.setProps({ itemFilter: 'an item', clearItemFilter });
+
+      actionBar.find('.coveo-item-filter-clear').simulate('click');
+
+      expect(clearItemFilter).toHaveBeenCalled();
+    });
   });
 });

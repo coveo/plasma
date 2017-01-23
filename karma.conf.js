@@ -13,6 +13,10 @@ module.exports = config => {
       './karma.entry.ts': ['webpack']
     },
 
+    mime: {
+      'text/x-typescript': ['ts','tsx']
+    },
+
     webpack: webpackConfig,
 
     webpackServer: {

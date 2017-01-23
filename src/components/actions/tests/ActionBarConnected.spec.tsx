@@ -12,13 +12,15 @@ import { PrimaryActionConnected } from '../PrimaryActionConnected';
 import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
 import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
 import { IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
+import {filterItems} from '../filters/ItemFilterActions';
+import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {
-  let id: string = 'secondary-actions';
-  let actions: IActionOptions[] = [{
+  const id: string = 'secondary-actions';
+  const actions: IActionOptions[] = [{
     name: 'action',
     link: 'http://coveo.com',
     target: '_blank',
@@ -29,8 +31,11 @@ describe('Actions', () => {
     trigger: jasmine.createSpy('triggerMethod'),
     enabled: true
   }];
+  const itemFilter: string = 'the item';
+  const itemFilterLabel: string = 'Item filter';
+  const itemFilterId: string = id + itemFilterLabel;
 
-  describe('TableActionsView', () => {
+  describe('<ActionBarConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let actionBar: ReactWrapper<IActionBarProps, any>;
     let store: Store<IReactVaporState>;
@@ -40,13 +45,14 @@ describe('Actions', () => {
 
       wrapper = mount(
         <Provider store={store}>
-          <ActionBarConnected id={id} />
+          <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );
       actionBar = wrapper.find(ActionBar).first();
 
       store.dispatch(addActionsToActionBar(id, actions));
+      store.dispatch(filterItems(itemFilterId, itemFilter));
     });
 
     afterEach(() => {
@@ -70,7 +76,14 @@ describe('Actions', () => {
       expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
     });
 
-    it('should what to do on render as a prop', () => {
+    it('should get the item filter as a prop', () => {
+      let itemFilterProp = actionBar.props().itemFilter;
+
+      expect(itemFilterProp).toBeDefined();
+      expect(itemFilterProp).toBe(itemFilter);
+    });
+
+    it('should get what to do on render as a prop', () => {
       let onRenderProp = actionBar.props().onRender;
 
       expect(onRenderProp).toBeDefined();
@@ -80,6 +93,12 @@ describe('Actions', () => {
       let onDestroyProp = actionBar.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
+    });
+
+    it('should get what to do on clearItemFilter as a prop', () => {
+      let clearItemFilterProp = actionBar.props().clearItemFilter;
+
+      expect(clearItemFilterProp).toBeDefined();
     });
 
     it('should get withReduxState as a prop', () => {
@@ -94,9 +113,25 @@ describe('Actions', () => {
       wrapper.unmount();
       store.dispatch(clearState());
       expect(store.getState().actionBars.length).toBe(0);
+      expect(store.getState().itemFilters.length).toBe(0);
 
       wrapper.mount();
       expect(store.getState().actionBars.length).toBe(1);
+      expect(store.getState().itemFilters.length).toBe(1);
+    });
+
+    it('should should not add an item filter on mount if there is no item filter label sent as prop', () => {
+      expect(store.getState().itemFilters.length).toBe(1);
+
+      wrapper = mount(
+        <Provider store={store}>
+          <ActionBarConnected id={id} />
+        </Provider>,
+        { attachTo: document.getElementById('App') }
+      );
+      actionBar = wrapper.find(ActionBar).first();
+
+      expect(store.getState().itemFilters.length).toBe(0);
     });
 
     it('should call onDestroy prop when will unmount', () => {
@@ -125,6 +160,36 @@ describe('Actions', () => {
       expect(promptProp).toBeDefined();
 
       expect(actionBar.find('.prompt-' + expectedClass).length).toBe(1);
+    });
+
+    it('should call onClearItemFilter when calling clearItemFilter', () => {
+      let onClearItemFilterSpy = jasmine.createSpy('onClearItemFilter');
+
+      wrapper = mount(
+        <Provider store={store}>
+          <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} onClearItemFilter={onClearItemFilterSpy} />
+        </Provider>,
+        { attachTo: document.getElementById('App') }
+      );
+      actionBar = wrapper.find(ActionBar).first();
+
+      actionBar.props().clearItemFilter();
+
+      expect(onClearItemFilterSpy).toHaveBeenCalled();
+    });
+
+    it('should not throw on clearItemFilter if there is no onClearItemFilter prop', () => {
+      expect(() => {
+        actionBar.props().clearItemFilter();
+      }).not.toThrow();
+    });
+
+    it('should clear the item filter when calling clearItemFilter', () => {
+      expect(_.findWhere(store.getState().itemFilters, {id: itemFilterId}).item).toBe(itemFilter);
+
+      actionBar.props().clearItemFilter();
+
+      expect(_.findWhere(store.getState().itemFilters, {id: itemFilterId}).item).toBe('');
     });
   });
 });

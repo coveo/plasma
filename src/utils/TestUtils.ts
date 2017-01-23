@@ -8,9 +8,10 @@ import { perPageCompositeReducer } from '../components/navigation/perPage/Naviga
 import { loadingsReducer } from '../components/loading/LoadingReducers';
 import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers';
 import { actionBarsReducer } from '../components/actions/ActionBarReducers';
-import * as Redux from 'redux';
 import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../components/tables/TableRowReducers';
+import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReducers';
+import * as Redux from 'redux';
 
 export class TestUtils {
   static buildStore() {
@@ -24,7 +25,8 @@ export class TestUtils {
       prompts: promptsReducer,
       actionBars: actionBarsReducer,
       dropdowns: dropdownsReducer,
-      rows: tableRowsReducer
+      rows: tableRowsReducer,
+      itemFilters: itemFiltersReducer
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {

@@ -6,19 +6,24 @@ import { SecondaryActionsConnected } from './SecondaryActionsConnected';
 import { SecondaryActions } from './SecondaryActions';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { ItemFilter } from './filters/ItemFilter';
 
 export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
   id?: string;
+  itemFilterLabel?: string;
+  onClearItemFilter?: () => void;
 }
 
 export interface IActionBarStateProps extends IReduxStatePossibleProps {
   actions?: IActionOptions[];
   prompt?: JSX.Element;
+  itemFilter?: string;
 }
 
 export interface IActionBarDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
+  clearItemFilter?: () => void;
 }
 
 export interface IActionBarChildrenProps {
@@ -29,6 +34,12 @@ export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProp
   IActionBarChildrenProps { }
 
 export class ActionBar extends React.Component<IActionBarProps, any> {
+
+  private handleClear() {
+    if (this.props.clearItemFilter) {
+      this.props.clearItemFilter();
+    }
+  }
 
   componentWillMount() {
     if (this.props.onRender) {
@@ -43,11 +54,15 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
   }
 
   render() {
+    let itemFilter: JSX.Element = this.props.itemFilter
+      ? <ItemFilter label={this.props.itemFilterLabel} item={this.props.itemFilter} onClear={() => this.handleClear()} />
+      : null;
+
     let primaryActions: JSX.Element[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {
       if (action.primary) {
-        let primaryAction = this.props.withReduxState ?
-          <PrimaryActionConnected action={action} parentId={this.props.id} /> :
-          <PrimaryAction action={action} />;
+        let primaryAction = this.props.withReduxState
+          ? <PrimaryActionConnected action={action} parentId={this.props.id} />
+          : <PrimaryAction action={action} />;
         return <div className='dropdown action primary-action' key={'primary-' + index}>{primaryAction}</div>;
       }
     });
@@ -58,20 +73,25 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       }
     }).filter(Boolean);
 
-    let secondaryActionsView: JSX.Element = secondaryActions.length ?
-      (this.props.withReduxState ?
-        <SecondaryActionsConnected moreLabel={this.props.moreLabel} actions={secondaryActions} id={this.props.id} /> :
-        <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />
-      ) :
-      null;
+    let secondaryActionsView: JSX.Element = secondaryActions.length
+      ? (this.props.withReduxState
+        ? <SecondaryActionsConnected moreLabel={this.props.moreLabel} actions={secondaryActions} id={this.props.id} />
+        : <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />
+      )
+      : null;
+
+    let actions = primaryActions.length || secondaryActionsView || this.props.prompt
+      ? (<div className='coveo-table-actions'>
+        {primaryActions}
+        {secondaryActionsView}
+        {this.props.prompt}
+      </div>)
+      : null;
 
     return (
       <div className='coveo-table-actions-container mod-cancel-header-padding mod-border-bottom mod-align-header'>
-        <div className='coveo-table-actions'>
-          {primaryActions}
-          {secondaryActionsView}
-          {this.props.prompt}
-        </div>
+        {itemFilter}
+        {actions}
       </div>
     );
   }
