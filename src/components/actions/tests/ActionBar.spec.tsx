@@ -119,17 +119,17 @@ describe('Actions', () => {
       let handleClearSpy: jasmine.Spy = spyOn(actionBar.instance(), 'handleClear').and.callThrough();
       actionBar.setProps({ itemFilter: 'an item' });
       expect(() => {
-        actionBar.find('.coveo-item-filter-clear').simulate('click');
+        actionBar.find('.item-filter-clear').simulate('click');
       }).not.toThrow();
 
       expect(handleClearSpy).toHaveBeenCalled();
     });
 
-    it('should call clearItemFilter if defined when clicking the "coveo-item-filter-clear" button', () => {
+    it('should call clearItemFilter if defined when clicking the "item-filter-clear" button', () => {
       let clearItemFilter = jasmine.createSpy('clearItemFilter');
       actionBar.setProps({ itemFilter: 'an item', clearItemFilter });
 
-      actionBar.find('.coveo-item-filter-clear').simulate('click');
+      actionBar.find('.item-filter-clear').simulate('click');
 
       expect(clearItemFilter).toHaveBeenCalled();
     });

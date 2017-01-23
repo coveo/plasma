@@ -69,8 +69,8 @@ describe('Item filter', () => {
       expect(itemFilterComponent.html()).toContain(newItemFilterProps.item);
     });
 
-    it('should call onClear when clicking the "coveo-item-filter-clear" button', () => {
-      itemFilterComponent.find('.coveo-item-filter-clear').simulate('click');
+    it('should call onClear when clicking the "item-filter-clear" button', () => {
+      itemFilterComponent.find('.item-filter-clear').simulate('click');
 
       expect(itemFilterBasicProps.onClear).toHaveBeenCalled();
     });
