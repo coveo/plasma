@@ -99,3 +99,24 @@
     padding-right: $header-padding;
   }
 }
+
+.item-filter {
+  flex-grow: 1;
+}
+
+.item-filter-item {
+  display: inline-block;
+  margin: 0 $table-item-filter-padding-x;
+
+  color: $blue;
+}
+
+.item-filter-clear {
+  padding: 0;
+
+  background: none;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
