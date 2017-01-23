@@ -72,6 +72,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
           {secondaryActionsView}
           {this.props.prompt}
         </div>
+        {this.props.children}
       </div>
     );
   }
