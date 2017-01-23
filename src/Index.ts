@@ -43,7 +43,7 @@ import { IActionOptions } from './components/actions/Action';
 import { actionBarsReducer } from './components/actions/ActionBarReducers';
 import { addActionsToActionBar } from './components/actions/ActionBarActions';
 import { ActionBarActions } from './components/actions/ActionBarActions';
-import { filterItems } from './components/actions/filters/ItemFilterActions';
+import { ItemFilterActions, filterItems } from './components/actions/filters/ItemFilterActions';
 import { itemFiltersReducer } from './components/actions/filters/ItemFilterReducers';
 import { TableHeader } from './components/tables/TableHeader';
 import { TableHeadingRow } from './components/tables/TableHeadingRow';
@@ -126,6 +126,7 @@ export {
   actionBarsReducer,
   addActionsToActionBar,
   promptsReducer,
+  ItemFilterActions,
   filterItems,
   itemFiltersReducer,
 
