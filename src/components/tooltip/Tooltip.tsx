@@ -43,7 +43,9 @@ export class Tooltip extends React.Component<ITooltipProps, any> {
   }
 
   componentWillUnmount() {
-    this.tooltip.tooltip('destroy');
+    if (this.tooltip) {
+      this.tooltip.tooltip('destroy');
+    }
   }
 
   render() {
