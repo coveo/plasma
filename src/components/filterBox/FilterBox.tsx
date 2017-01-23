@@ -3,6 +3,7 @@ import { Svg } from '../svg/Svg';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   id: string;
+  containerClasses?: string[];
   filterPlaceholder?: string;
 }
 
@@ -53,9 +54,10 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
   render() {
     let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
+    let filterBoxContainerClasses = ['coveo-filter-container'].concat(this.props.containerClasses);
 
     return (
-      <div id={this.props.id} className='coveo-filter-container'>
+      <div id={this.props.id} className={filterBoxContainerClasses.join(' ')}>
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'

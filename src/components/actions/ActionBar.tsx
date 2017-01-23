@@ -92,6 +92,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       <div className='coveo-table-actions-container mod-cancel-header-padding mod-border-bottom mod-align-header'>
         {itemFilter}
         {actions}
+		{this.props.children}
       </div>
     );
   }
