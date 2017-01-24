@@ -23,6 +23,7 @@ import { TableRowConnectedExamples } from '../src/components/tables/examples/Tab
 import { TableHeaderExamples } from '../src/components/tables/examples/TableHeaderExamples';
 import { ItemFilterExamples } from '../src/components/actions/filters/examples/ItemFilterExamples';
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
+import { TableEmptyRowExamples } from '../src/components/tables/examples/TableEmptyRowExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
@@ -108,6 +109,7 @@ class App extends React.Component<any, any> {
           <ItemFilterConnectedExamples />
           <TableRowExamples />
           <TableRowConnectedExamples />
+          <TableEmptyRowExamples />
           <TableHeaderExamples />
         </div>
       </Provider>

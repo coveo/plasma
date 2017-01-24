@@ -50,6 +50,7 @@ import { TableHeadingRow } from './components/tables/TableHeadingRow';
 import { TableHeadingRowConnected } from './components/tables/TableHeadingRowConnected';
 import { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
 import { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
+import { TableEmptyRow } from './components/tables/TableEmptyRow';
 import { tableRowsReducer } from './components/tables/TableRowReducers';
 import { toggleRow } from './components/tables/TableRowActions';
 import { TableRowActions } from './components/tables/TableRowActions';
@@ -138,6 +139,7 @@ export {
   TableHeadingRowConnected,
   TableCollapsibleRow,
   TableCollapsibleRowConnected,
+  TableEmptyRow,
   TableRowActions,
   tableRowsReducer,
   toggleRow,
