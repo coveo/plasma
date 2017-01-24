@@ -71,7 +71,7 @@ describe('<NavigationConnected />', () => {
     expect(navigation.find(NavigationPerPageConnected).length).toBe(1);
   });
 
-  it('should update the currentPerPage prop if an already <NavigationPerPageSelect /> is clicked', () => {
+  it('should not update the currentPerPage prop if a selected <NavigationPerPageSelect /> is clicked', () => {
     expect(store.getState().perPageComposite[0].perPage).toBe(10);
     let secondNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(0);
     secondNavPerPageSelect.find('a').simulate('click');
