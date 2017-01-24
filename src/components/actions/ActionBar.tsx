@@ -73,12 +73,12 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       }
     }).filter(Boolean);
 
-    let secondaryActionsView: JSX.Element = secondaryActions.length
-      ? (this.props.withReduxState
+    let secondaryActionsView: JSX.Element = null;
+    if (secondaryActions.length) {
+      secondaryActionsView = this.props.withReduxState
         ? <SecondaryActionsConnected moreLabel={this.props.moreLabel} actions={secondaryActions} id={this.props.id} />
-        : <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />
-      )
-      : null;
+        : <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />;
+    }
 
     let actions = primaryActions.length || secondaryActionsView || this.props.prompt
       ? (<div className='coveo-table-actions'>
