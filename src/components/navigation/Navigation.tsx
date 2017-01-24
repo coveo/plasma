@@ -52,13 +52,15 @@ export class Navigation extends React.Component<INavigationProps, any> {
     let perPageNumbers: number[] = (this.props.perPageNumbers || PER_PAGE_NUMBERS);
     if (perPageNumbers.length && this.props.totalEntries > perPageNumbers[0]) {
       let perPageProps: INavigationPerPageProps = {
-        totalEntries: this.props.totalEntries,
         label: this.props.perPageLabel,
-        perPageNumbers: this.props.perPageNumbers
+        perPageNumbers: this.props.perPageNumbers,
+        totalEntries: this.props.totalEntries,
+        currentPerPage: this.props.currentPerPage,
+        currentPage: this.props.currentPage
       };
       perPage = this.props.withReduxState ?
         <NavigationPerPageConnected id={this.props.id} loadingIds={this.props.loadingIds} {...perPageProps} /> :
-        <NavigationPerPage onPerPageClick={this.props.onPerPageClick} currentPerPage={this.props.currentPerPage} {...perPageProps} />;
+        <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;
     }
 
     let navigationClasses: string = 'pagination-container' + (this.props.isLoading ? ' loading-view' : '');

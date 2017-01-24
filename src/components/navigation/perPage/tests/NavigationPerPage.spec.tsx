@@ -45,7 +45,35 @@ describe('NavigationPerPage', () => {
       expect(totalEntriesProp).toBe(basicNavigationPerPageProps.totalEntries);
     });
 
-    it('should render the <NavigationPerPageSelect /> where there are at least 1 element more than the previous <NavigationPerPageSelect />', () => {
+    it('should render zero <NavigationPerPageSelect /> if the total entries are equal to zero', () => {
+
+      // [10, 20, 30]
+      expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(3);
+
+      navigationPerPage = mount(
+        <NavigationPerPage totalEntries={0} />,
+        { attachTo: document.getElementById('App') }
+      );
+
+      // []
+      expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(0);
+    });
+
+    it('should render one <NavigationPerPageSelect /> if the total entries are of at least one over zero', () => {
+
+      // [10, 20, 30]
+      expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(3);
+
+      navigationPerPage = mount(
+        <NavigationPerPage totalEntries={1} />,
+        { attachTo: document.getElementById('App') }
+      );
+
+      // [10]
+      expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(1);
+    });
+
+    it('should render all <NavigationPerPageSelect />s where there are at least 1 element more than the previous <NavigationPerPageSelect />', () => {
 
       // [10, 20, 30]
       expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(3);
@@ -54,9 +82,13 @@ describe('NavigationPerPage', () => {
         <NavigationPerPage totalEntries={11} />,
         { attachTo: document.getElementById('App') }
       );
-
-      // [10, 20]
       expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(2);
+
+      navigationPerPage = mount(
+        <NavigationPerPage totalEntries={21} />,
+        { attachTo: document.getElementById('App') }
+      );
+      expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(3);
     });
 
     it('should call onRender if prop is set on mount', () => {

@@ -6,6 +6,8 @@ export interface INavigationPerPageOwnProps extends React.ClassAttributes<Naviga
   id?: string;
   totalEntries: number;
   label?: string;
+  currentPage?: number;
+  currentPerPage?: number;
   perPageNumbers?: number[];
   loadingIds?: string[];
 }
@@ -50,14 +52,8 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
     let label: string = this.props.label || PER_PAGE_LABEL;
 
     let perPageSelects: JSX.Element[] = _.map(this.perPageNumbers, (number: number, index: number): JSX.Element => {
-      let isTopNumberBetweenPreviousAndCurrentPerPageSelect: boolean =
-        index > 0 &&
-        topNumber < number &&
-        topNumber > this.perPageNumbers[index - 1];
-
       let shouldShowPerPageSelect: boolean =
-        topNumber > number ||
-        isTopNumberBetweenPreviousAndCurrentPerPageSelect;
+        topNumber > (this.perPageNumbers[index - 1] || 0);
 
       if (shouldShowPerPageSelect) {
         let selectId: string = 'perpage-' + (this.props.id || '') + number;

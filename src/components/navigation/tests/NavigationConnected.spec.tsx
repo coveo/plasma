@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { LoadingConnected } from '../../loading/LoadingConnected';
 import { NavigationPaginationConnected } from '../pagination/NavigationPaginationConnected';
 import { NavigationPerPageConnected } from '../perPage/NavigationPerPageConnected';
+import { NavigationPerPageSelect } from '../perPage/NavigationPerPageSelect';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -67,5 +68,19 @@ describe('<NavigationConnected />', () => {
 
   it('should render a <NavigationPerPageConnected /> component if totalEntries is higher than the first perPageNumber', () => {
     expect(navigation.find(NavigationPerPageConnected).length).toBe(1);
+  });
+
+  it('should update the currentPerPage prop if an already <NavigationPerPageSelect /> is clicked', () => {
+    expect(store.getState().perPageComposite[0].perPage).toBe(10);
+    let secondNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(0);
+    secondNavPerPageSelect.find('a').simulate('click');
+    expect(store.getState().perPageComposite[0].perPage).toBe(10);
+  });
+
+  it('should update the currentPerPage prop if an unselected <NavigationPerPageSelect /> is clicked', () => {
+    expect(store.getState().perPageComposite[0].perPage).toBe(10);
+    let firstNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(1);
+    firstNavPerPageSelect.find('a').simulate('click');
+    expect(store.getState().perPageComposite[0].perPage).toBe(20);
   });
 });
