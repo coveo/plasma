@@ -32,6 +32,18 @@
       }
     }
   }
+
+  &.mod-small {
+    width: $filter-box-width-mod-small;
+
+    input.filter-box {
+      width: $filter-box-width-mod-small;
+      height: $filter-box-small-height;
+
+      font-size: $filter-box-small-font-size;
+    }
+  }
+
   .filter-icon {
     position: absolute;
     top: 8px;
@@ -50,7 +62,6 @@
     & + span {
       position: absolute;
       top: calc(50% - #{$clear-icon-height} / 2);
-      right: 20px;
 
       line-height: 0;
 
