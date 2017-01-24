@@ -10,6 +10,7 @@ import { LoadingConnected } from '../../loading/LoadingConnected';
 import { NavigationPaginationConnected } from '../pagination/NavigationPaginationConnected';
 import { NavigationPerPageConnected } from '../perPage/NavigationPerPageConnected';
 import { NavigationPerPageSelect } from '../perPage/NavigationPerPageSelect';
+import { NavigationPaginationSelect } from '../pagination/NavigationPaginationSelect';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -17,8 +18,8 @@ import * as React from 'react';
 describe('<NavigationConnected />', () => {
   let basicNavigationProps: INavigationProps = {
     id: 'navigation',
-    totalPages: 4,
-    totalEntries: 12
+    totalPages: 10,
+    totalEntries: 105
   };
   let store: Store<IReactVaporState>;
   let wrapper: ReactWrapper<any, any>;
@@ -82,5 +83,20 @@ describe('<NavigationConnected />', () => {
     let firstNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(1);
     firstNavPerPageSelect.find('a').simulate('click');
     expect(store.getState().perPageComposite[0].perPage).toBe(20);
+  });
+
+  it('should reset selected page to 0 when a <NavigationPerPageSelect/> is clicked and currentPerPage and currentPage are not passed as props', () => {
+    let fourthPage = navigation.find(NavigationPaginationSelect).at(3);
+    fourthPage.find('a').simulate('click');
+    expect(store.getState().paginationComposite[0].pageNb).toBe(3);
+
+    let secondNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(1);
+    secondNavPerPageSelect.find('a').simulate('click');
+    expect(store.getState().paginationComposite[0].pageNb).toBe(0);
+
+    fourthPage.find('a').simulate('click');
+    let firstNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(0);
+    firstNavPerPageSelect.find('a').simulate('click');
+    expect(store.getState().paginationComposite[0].pageNb).toBe(0);
   });
 });
