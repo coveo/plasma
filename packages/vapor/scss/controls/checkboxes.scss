@@ -117,12 +117,7 @@ input[type=checkbox].coveo-checkbox {
   line-height: 16px;
   vertical-align: middle; // Required to properly position checkboxes into tables.
 
-  .label {
-    cursor: pointer;
-  }
-
   &.disabled .label {
-    cursor: default;
     opacity: 0.4;
   }
 
