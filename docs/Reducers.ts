@@ -11,6 +11,7 @@ import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../src/components/tables/TableRowReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
+import { optionsCyclesReducer } from '../src/components/optionsCycle/OptionsCycleReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -33,5 +34,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   actionBars: actionBarsReducer,
   dropdowns: dropdownsReducer,
   rows: tableRowsReducer,
+  optionsCycles: optionsCyclesReducer,
   lastAction
 });

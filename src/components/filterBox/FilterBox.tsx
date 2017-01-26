@@ -67,7 +67,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           value={this.props.filterText}
           />
         <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
-        <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey icon mod-lg' />
+        <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
       </div>
     );
   }

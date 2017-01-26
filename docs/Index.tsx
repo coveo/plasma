@@ -22,6 +22,10 @@ import { TableRowExamples } from '../src/components/tables/examples/TableRowExam
 import { TableRowConnectedExamples } from '../src/components/tables/examples/TableRowConnectedExamples';
 import { TableHeaderExamples } from '../src/components/tables/examples/TableHeaderExamples';
 import { TableEmptyRowExamples } from '../src/components/tables/examples/TableEmptyRowExamples';
+import { OptionsCycleExamples } from '../src/components/optionsCycle/examples/OptionsCycleExamples';
+import { OptionsCycleConnectedExamples } from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
+import { CalendarConnectedExamples } from '../src/components/calendar/examples/CalendarConnectedExamples';
+import { DatePickerBoxExamples } from '../src/components/datePicker/Examples/DatePickerBoxExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
@@ -107,6 +111,10 @@ class App extends React.Component<any, any> {
           <TableRowConnectedExamples />
           <TableEmptyRowExamples />
           <TableHeaderExamples />
+          <OptionsCycleExamples />
+          <OptionsCycleConnectedExamples />
+          <CalendarConnectedExamples />
+          <DatePickerBoxExamples />
         </div>
       </Provider>
     );

@@ -11,6 +11,7 @@ import { IActionOptions } from './components/actions/Action';
 import { IActionBarState } from './components/actions/ActionBarReducers';
 import { IDropdownState } from './components/dropdown/DropdownReducers';
 import { ITableRowState } from './components/tables/TableRowReducers';
+import { IOptionsCycleState } from './components/optionsCycle/OptionsCycleReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -23,6 +24,7 @@ export interface IReactVaporState {
   actionBars?: IActionBarState[];
   dropdowns?: IDropdownState[];
   rows?: ITableRowState[];
+  optionsCycles?: IOptionsCycleState[];
 }
 
 export interface IReduxActionsPayload {
@@ -35,4 +37,5 @@ export interface IReduxActionsPayload {
   perPage?: number;
   options?: IInlinePromptOptions;
   actions?: IActionOptions[];
+  currentOption?: number;
 }
