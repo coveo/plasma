@@ -1,12 +1,12 @@
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {OptionsCycle, IOptionsCycleProps} from '../optionsCycle/OptionsCycle';
-import {OptionsCycleConnected} from '../optionsCycle/OptionsCycleConnected';
-import {DateUtils} from '../../utils/DateUtils';
-import {ITableHeaderCellProps} from '../tables/TableHeaderCell';
-import {TableHeader} from '../tables/TableHeader';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { OptionsCycle, IOptionsCycleProps } from '../optionsCycle/OptionsCycle';
+import { OptionsCycleConnected } from '../optionsCycle/OptionsCycleConnected';
+import { DateUtils } from '../../utils/DateUtils';
+import { ITableHeaderCellProps } from '../tables/TableHeaderCell';
+import { TableHeader } from '../tables/TableHeader';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {CalendarDay} from './CalendarDay';
+import { CalendarDay } from './CalendarDay';
 
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
   months?: string[];
@@ -22,7 +22,7 @@ export interface ICalendarStateProps extends IReduxStatePossibleProps {
   selectedYear?: number;
 }
 
-export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps {}
+export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps { }
 
 export const DEFAULT_MONTHS: string[] = [
   'January',
@@ -113,7 +113,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         <table>
           <TableHeader columns={daysHeaderColumns} />
           <tbody>
-          {weeks}
+            {weeks}
           </tbody>
         </table>
       </div>

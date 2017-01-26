@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CalendarConnected} from '../CalendarConnected';
+import { CalendarConnected } from '../CalendarConnected';
 
 export class CalendarConnectedExamples extends React.Component<any, any> {
 

@@ -1,10 +1,10 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import { IReduxAction } from '../../../utils/ReduxUtils';
 import {
   IOptionsCycleState, optionsCyclesInitialState, optionsCyclesReducer,
   optionsCycleReducer, optionsCycleInitialState
 } from '../OptionsCycleReducers';
-import {IOptionsCycleOptions, OptionsCycleActions, IChangeOptionsCycleOptions} from '../OptionsCycleActions';
+import { IOptionsCycleOptions, OptionsCycleActions, IChangeOptionsCycleOptions } from '../OptionsCycleActions';
 
 describe('Options cycle', () => {
 

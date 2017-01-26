@@ -10,7 +10,7 @@ import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers'
 import { actionBarsReducer } from '../components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../components/tables/TableRowReducers';
-import {optionsCyclesReducer} from '../components/optionsCycle/OptionsCycleReducers';
+import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleReducers';
 import * as Redux from 'redux';
 
 export class TestUtils {

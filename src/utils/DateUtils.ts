@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {IDay} from '../components/calendar/CalendarDay';
+import { IDay } from '../components/calendar/CalendarDay';
 
 export class DateUtils {
   static currentDate: Date = new Date();

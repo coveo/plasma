@@ -4,12 +4,12 @@ import { clearState } from '../../../utils/ReduxUtils';
 import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { Provider } from 'react-redux';
-import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
-import {OptionsCycleConnected} from '../OptionsCycleConnected';
+import { IOptionsCycleProps, OptionsCycle } from '../OptionsCycle';
+import { OptionsCycleConnected } from '../OptionsCycleConnected';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import {changeOptionsCycle} from '../OptionsCycleActions';
+import { changeOptionsCycle } from '../OptionsCycleActions';
 /* tslint:enable:no-unused-variable */
 
 describe('Options cycle', () => {
@@ -101,7 +101,7 @@ describe('Options cycle', () => {
 
     it('should set the currentOption to the startAt prop', () => {
       let expectedCurrentOption: number = 3;
-      let newProps = _.extend({}, optionsCycleBasicProps, {startAt: expectedCurrentOption});
+      let newProps = _.extend({}, optionsCycleBasicProps, { startAt: expectedCurrentOption });
       wrapper.unmount();
       store.dispatch(clearState());
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {OptionsCycleConnected} from '../OptionsCycleConnected';
+import { OptionsCycleConnected } from '../OptionsCycleConnected';
 
 const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 

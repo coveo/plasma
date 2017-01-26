@@ -1,5 +1,5 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import {OptionsCycle, IOptionsCycleProps} from '../OptionsCycle';
+import { OptionsCycle, IOptionsCycleProps } from '../OptionsCycle';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
