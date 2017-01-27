@@ -144,5 +144,27 @@ describe('Options cycle', () => {
 
       expect(onChangeSpy).toHaveBeenCalledWith(3);
     });
+
+    it('should have the class "mod-inline" if isInline prop is set to true', () => {
+      expect(optionsCycle.find('.mod-inline').length).toBe(0);
+
+      optionsCycle.setProps({ options: OPTIONS, isInline: true });
+
+      expect(optionsCycle.find('.mod-inline').length).toBe(1);
+    });
+
+    it('should show the option which is at index startAt if it is defined as a prop on mount or just show the first one', () => {
+      let startAt: number = 3;
+
+      expect(optionsCycle.html()).toContain(OPTIONS[0]);
+
+      optionsCycle.unmount();
+      optionsCycle = mount(
+        <OptionsCycle options={OPTIONS} startAt={startAt} />,
+        { attachTo: document.getElementById('App') }
+      );
+
+      expect(optionsCycle.html()).toContain(OPTIONS[startAt]);
+    });
   });
 });

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { CalendarConnected } from '../CalendarConnected';
+import { Calendar } from '../Calendar';
 
 export class CalendarConnectedExamples extends React.Component<any, any> {
 
@@ -8,7 +9,8 @@ export class CalendarConnectedExamples extends React.Component<any, any> {
       <div className='mt2'>
         <div className='form-group'>
           <label className='form-control-label'>Calendar with Redux state</label>
-          <CalendarConnected />
+          <CalendarConnected id='calendar' />
+          <Calendar />
         </div>
       </div>
     );

@@ -6,10 +6,10 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { Provider } from 'react-redux';
 import { IOptionsCycleProps, OptionsCycle } from '../OptionsCycle';
 import { OptionsCycleConnected } from '../OptionsCycleConnected';
+import { changeOptionsCycle } from '../OptionsCycleActions';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import { changeOptionsCycle } from '../OptionsCycleActions';
 /* tslint:enable:no-unused-variable */
 
 describe('Options cycle', () => {

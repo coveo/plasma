@@ -9,6 +9,7 @@ import * as _ from 'underscore';
 import { CalendarDay } from './CalendarDay';
 
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
+  id?: string;
   months?: string[];
   startingMonth?: number;
   years?: string[];
@@ -66,14 +67,16 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     let startingMonth: number = this.props.startingMonth || DateUtils.currentMonth;
     let monthPickerProps: IOptionsCycleProps = {
       options: months,
-      startAt: startingMonth
+      startAt: startingMonth,
+      isInline: true
     };
 
     let years: string[] = this.props.years || DEFAULT_YEARS;
     let startingYear: number = this.props.startingYear || years.indexOf(DateUtils.currentYear.toString());
     let yearPickerProps: IOptionsCycleProps = {
       options: years,
-      startAt: startingYear
+      startAt: startingYear,
+      isInline: true
     };
 
     let days: string[] = this.props.days || DEFAULT_DAYS;
@@ -86,16 +89,16 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     let daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({ title: day }));
 
     let monthPicker = this.props.withReduxState
-      ? <OptionsCycleConnected id={MONTH_PICKER_ID} {...monthPickerProps} />
+      ? <OptionsCycleConnected id={this.props.id + MONTH_PICKER_ID} {...monthPickerProps} />
       : <OptionsCycle {...monthPickerProps} />;
 
     let yearPicker = this.props.withReduxState
-      ? <OptionsCycleConnected id={YEAR_PICKER_ID} {...yearPickerProps} />
+      ? <OptionsCycleConnected id={this.props.id + YEAR_PICKER_ID} {...yearPickerProps} />
       : <OptionsCycle {...yearPickerProps} />;
 
-    let sectedYearOption = this.props.selectedYear || this.props.startingYear || 0;
+    let sectedYearOption = this.props.selectedYear || startingYear;
     let year = parseInt(years[sectedYearOption]);
-    let selectedMonth = this.props.selectedMonth || this.props.startingMonth || 0;
+    let selectedMonth = this.props.selectedMonth || startingMonth;
 
     let month = DateUtils.getMonthWeeks(new Date(year, selectedMonth), startingDay);
     let weeks = _.map(month, (week) => {
@@ -107,11 +110,11 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     });
 
     return (
-      <div>
+      <div className='calendar'>
         {monthPicker}
         {yearPicker}
-        <table>
-          <TableHeader columns={daysHeaderColumns} />
+        <table className='calendar-grid'>
+          <TableHeader columns={daysHeaderColumns} headerClass='mod-no-border-top' />
           <tbody>
             {weeks}
           </tbody>

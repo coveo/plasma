@@ -5,6 +5,7 @@ export interface IOptionsCycleOwnProps extends React.ClassAttributes<OptionsCycl
   options: string[];
   id?: string;
   startAt?: number;
+  isInline?: boolean;
 }
 
 export interface IOptionsCycleStateProps {
@@ -43,8 +44,9 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps, any> {
   componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender(this.props.startAt);
+      this.setSelectedOption(this.props.currentOption);
     }
-    this.setSelectedOption(this.props.currentOption);
+    this.setSelectedOption(this.props.startAt);
   }
 
   componentWillUnmount() {
@@ -58,13 +60,19 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps, any> {
   }
 
   render() {
+    let optionsCycleClasses = ['options-cycle', 'text-medium-blue'];
+
+    if (this.props.isInline) {
+      optionsCycleClasses.push('mod-inline');
+    }
+
     return (
-      <div>
-        <button className='previous-option' onClick={() => this.goToPreviousOption()}>
+      <div className={optionsCycleClasses.join(' ')}>
+        <button className='options-cycle-button previous-option' onClick={() => this.goToPreviousOption()}>
           <Svg svgName='arrow-left-rounded' svgClass='icon fill-dark-blue' />
         </button>
-        <span>{this.selectedOption}</span>
-        <button className='next-option' onClick={() => this.goToNextOption()}>
+        <span className='options-cycle-option'>{this.selectedOption}</span>
+        <button className='options-cycle-button next-option' onClick={() => this.goToNextOption()}>
           <Svg svgName='arrow-right-rounded' svgClass='icon fill-dark-blue' />
         </button>
       </div>
