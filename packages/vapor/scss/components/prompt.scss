@@ -1,3 +1,5 @@
+$prompt-message-line-height: 20px;
+
 .modal-container {
   &.mod-prompt {
     .modal-content {
@@ -17,6 +19,7 @@
         }
 
         h1 {
+          color: $pure-white;
           white-space: inherit;
         }
       }
@@ -36,7 +39,7 @@
         .pompt-message {
           padding-top: $modal-prompt-text-padding-y;
 
-          line-height: 20px;
+          line-height: $prompt-message-line-height;
         }
       }
 
