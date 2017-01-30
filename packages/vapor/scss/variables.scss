@@ -89,7 +89,9 @@ $modal-prompt-min-width: 500px;
 $modal-prompt-max-width: 550px;
 $modal-prompt-header-height: 90px;
 $modal-prompt-footer-height: calc(2 * 24px + #{$button-height} + 2 * #{$button-border-width}); // Calculate the button height + 2 border top and bottom and the space below the button for the max height
+$modal-prompt-footer-height-ie: 84px;
 $modal-prompt-body-min-height: calc(#{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height});
+$modal-prompt-body-min-height-ie: calc(#{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height-ie});
 
 // Wizard card
 $wizard-card-width: 490px;
