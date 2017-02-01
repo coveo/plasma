@@ -110,9 +110,11 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     });
 
     return (
-      <div className='calendar'>
-        {monthPicker}
-        {yearPicker}
+      <div className='calendar column'>
+        <div className='calendar-header p2'>
+          {monthPicker}
+          {yearPicker}
+        </div>
         <table className='calendar-grid'>
           <TableHeader columns={daysHeaderColumns} headerClass='mod-no-border-top' />
           <tbody>

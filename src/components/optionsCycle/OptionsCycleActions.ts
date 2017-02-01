@@ -6,15 +6,15 @@ export const OptionsCycleActions = {
   change: 'CHANGE_OPTIONS_CYCLE'
 };
 
-export interface IOptionsCycleOptions {
+export interface IOptionsCyclePayload {
   id: string;
 }
 
-export interface IChangeOptionsCycleOptions extends IOptionsCycleOptions {
+export interface IChangeOptionsCyclePayload extends IOptionsCyclePayload {
   currentOption: number;
 }
 
-export const addOptionsCycle = (id: string, currentOption: number = 0): IReduxAction<IChangeOptionsCycleOptions> => ({
+export const addOptionsCycle = (id: string, currentOption: number = 0): IReduxAction<IChangeOptionsCyclePayload> => ({
   type: OptionsCycleActions.add,
   payload: {
     id,
@@ -22,14 +22,14 @@ export const addOptionsCycle = (id: string, currentOption: number = 0): IReduxAc
   }
 });
 
-export const removeOptionsCycle = (id: string): IReduxAction<IOptionsCycleOptions> => ({
+export const removeOptionsCycle = (id: string): IReduxAction<IOptionsCyclePayload> => ({
   type: OptionsCycleActions.remove,
   payload: {
     id
   }
 });
 
-export const changeOptionsCycle = (id: string, currentOption: number): IReduxAction<IChangeOptionsCycleOptions> => ({
+export const changeOptionsCycle = (id: string, currentOption: number): IReduxAction<IChangeOptionsCyclePayload> => ({
   type: OptionsCycleActions.change,
   payload: {
     id,

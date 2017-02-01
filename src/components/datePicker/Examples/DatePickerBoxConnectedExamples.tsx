@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DatePickerBox } from '../DatePickerBox';
 import { DateUtils, DATES_SEPARATOR } from '../../../utils/DateUtils';
 
-export class DatePickerBoxExamples extends React.Component<any, any> {
+export class DatePickerBoxConnectedExamples extends React.Component<any, any> {
 
   render() {
     let selectionBoxes = [
@@ -40,11 +40,12 @@ export class DatePickerBoxExamples extends React.Component<any, any> {
         color: 'blue'
       }
     ];
+
     return (
       <div className='mt2'>
         <div className='form-group'>
-          <label className='form-control-label'>Date picker</label>
-          <DatePickerBox datesSelectionBoxes={selectionBoxes} />
+          <label className='form-control-label'>Date picker with Redux state</label>
+          <DatePickerBox id='date-picker-box' withReduxState datesSelectionBoxes={selectionBoxes} />
         </div>
       </div>
     );
