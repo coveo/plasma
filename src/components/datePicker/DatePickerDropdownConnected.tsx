@@ -13,7 +13,7 @@ import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {resetOptionPickers} from '../optionsPicker/OptionPickerActions';
+import { resetOptionPickers } from '../optionsPicker/OptionPickerActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
   let item: IDropdownState = _.findWhere(state.dropdowns, { id: ownProps.id });
