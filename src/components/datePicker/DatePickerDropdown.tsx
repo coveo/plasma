@@ -2,12 +2,15 @@ import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 import { DatePickerBox, IDatesSelectionBox, IDatePickerBoxProps } from './DatePickerBox';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { IDatePickerState } from './DatePickerReducers';
+import { DateUtils } from '../../utils/DateUtils';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
   label?: string;
   id?: string;
   applyLabel?: string;
   cancelLabel?: string;
+  toLabel?: string;
 }
 
 export interface IDatePickerDropdownChildrenProps {
@@ -17,6 +20,7 @@ export interface IDatePickerDropdownChildrenProps {
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
   isOpened?: boolean;
+  datePicker?: IDatePickerState;
 }
 
 export interface IDatePickerDropdownDispatchProps {
@@ -34,6 +38,7 @@ export interface IDatePickerDropdownProps extends IDatePickerDropdownOwnProps, I
 export const DEFAULT_DATE_PICKER_DROPDOWN_LABEL: string = 'Select date';
 export const DEFAULT_APPLY_DATE_LABEL: string = 'Apply';
 export const DEFAULT_CANCEL_DATE_LABEL: string = 'Cancel';
+export const DEFAULT_TO_LABEL: string = 'to';
 
 export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
   private dropdown: HTMLDivElement;
@@ -85,6 +90,15 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     }
   }
 
+  private formatDate(date: Date): string {
+    if (this.props.datesSelectionBoxes.length) {
+      return this.props.datesSelectionBoxes[0].withTime
+        ? DateUtils.getDateWithTimeString(date)
+        : DateUtils.getSimpleDate(date);
+    }
+    return '';
+  }
+
   render() {
     let datePickerBoxProps: IDatePickerBoxProps = {
       setToNowTooltip: this.props.setToNowTooltip,
@@ -109,12 +123,27 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       dropdownClasses.push('open');
     }
 
+    let label: string = this.props.label || DEFAULT_DATE_PICKER_DROPDOWN_LABEL;
+    let toLabel: JSX.Element = null;
+    let labelSecondPart: string;
+    if (this.props.datePicker) {
+      label = this.formatDate(this.props.datePicker.appliedLowerLimit);
+      if (this.props.datePicker.isRange) {
+        toLabel = <span className='to-label'> {(this.props.toLabel || DEFAULT_TO_LABEL)} </span>;
+        labelSecondPart = this.formatDate(this.props.datePicker.appliedUpperLimit);
+      }
+    }
+
     return (
       <div className='date-picker-dropdown'>
         <div className={dropdownClasses.join(' ')} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
           <span className='dropdown-toggle btn inline-flex flex-center' onClick={() => this.handleClick()}>
             <span className='dropdown-selected-value'>
-              <label>{this.props.label || DEFAULT_DATE_PICKER_DROPDOWN_LABEL}</label>
+              <label>
+                {label}
+                {toLabel}
+                {labelSecondPart}
+              </label>
             </span>
             <span className='dropdown-toggle-arrow'></span>
           </span>

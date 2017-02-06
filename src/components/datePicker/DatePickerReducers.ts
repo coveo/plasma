@@ -104,16 +104,9 @@ export const datePickersReducer = (state: IDatePickerState[] = datePickersInitia
         return action.payload.id === datePicker.id;
       });
     case DatePickerActions.reset:
-      let resetPickers = state.map((datePicker: IDatePickerState) =>
+      return state.map((datePicker: IDatePickerState) =>
         datePickerReducer(datePicker, action)
       );
-      let listWithRemovedPicker = _.reject(state, (datePicker: IDatePickerState) => {
-        return datePicker.id.indexOf(action.payload.id) === 0;
-      });
-      return [
-        ...listWithRemovedPicker,
-        ...resetPickers
-      ];
     case DatePickerActions.changeLowerLimit:
     case DatePickerActions.changeUpperLimit:
     case DatePickerActions.select:

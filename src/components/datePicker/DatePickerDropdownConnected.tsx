@@ -8,18 +8,25 @@ import {
 import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from '../dropdown/DropdownActions';
 import { IDropdownState } from '../dropdown/DropdownReducers';
 import { applyDatePicker, resetDatePickers } from './DatePickerActions';
+import { resetOptionPickers } from '../optionsPicker/OptionPickerActions';
+import { IDatePickerState } from './DatePickerReducers';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { resetOptionPickers } from '../optionsPicker/OptionPickerActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
   let item: IDropdownState = _.findWhere(state.dropdowns, { id: ownProps.id });
+  let datePickers: IDatePickerState[] = _.map(state.datePickers, (datePicker: IDatePickerState) => {
+    if (datePicker.id.indexOf(ownProps.id) === 0) {
+      return datePicker;
+    }
+  }).filter(Boolean);
 
   return {
     isOpened: item && item.opened,
+    datePicker: datePickers.length ? datePickers[0] : null,
     withReduxState: true
   };
 };

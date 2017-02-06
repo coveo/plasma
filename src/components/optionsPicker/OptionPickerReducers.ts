@@ -58,16 +58,9 @@ export const optionPickersReducer = (state: IOptionPickerState[] = optionPickers
         optionPickerReducer(optionPicker, action)
       );
     case OptionPickerActions.reset:
-      let resetPickers = state.map((optionPicker: IOptionPickerState) =>
+      return state.map((optionPicker: IOptionPickerState) =>
         optionPickerReducer(optionPicker, action)
       );
-      let listWithRemovedPicker = _.reject(state, (optionPicker: IOptionPickerState) => {
-        return optionPicker.id.indexOf(action.payload.id) === 0;
-      });
-      return [
-        ...listWithRemovedPicker,
-        ...resetPickers
-      ];
     default:
       return state;
   }
