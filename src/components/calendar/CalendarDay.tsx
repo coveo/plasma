@@ -1,11 +1,15 @@
-import * as React from 'react';
 import { Moment } from 'moment';
+import * as React from 'react';
 
 export interface IDay {
   number: number;
   isCurrentMonth: boolean;
   isToday: boolean;
   date: Moment;
+  isSelected?: boolean;
+  isLowerLimit?: boolean;
+  isUpperLimit?: boolean;
+  color?: string;
 }
 
 export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
@@ -32,8 +36,30 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
       dayClasses.push('todays-date');
     }
 
+    if (this.props.day.isSelected) {
+      dayClasses.push('selected-date');
+      dayClasses.push('bg-' + this.props.day.color);
+
+      if (this.props.day.isLowerLimit) {
+        dayClasses.push('lower-limit');
+      }
+
+      if (this.props.day.isUpperLimit) {
+        dayClasses.push('upper-limit');
+      }
+    }
+
+    let bothLimitsElement: JSX.Element = this.props.day.isLowerLimit && this.props.day.isUpperLimit
+      ? <span></span>
+      : null;
+
     return (
-      <td className={dayClasses.join(' ')} onClick={() => this.handleClick()}>{this.props.day.number}</td>
+      <td onClick={() => this.handleClick()}>
+        <span className={dayClasses.join(' ')}>
+          {this.props.day.number}
+          {bothLimitsElement}
+        </span>
+      </td>
     );
   }
 }

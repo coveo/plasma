@@ -4,9 +4,11 @@ import { OptionsCycleConnected } from '../optionsCycle/OptionsCycleConnected';
 import { DateUtils } from '../../utils/DateUtils';
 import { ITableHeaderCellProps } from '../tables/TableHeaderCell';
 import { TableHeader } from '../tables/TableHeader';
+import { CalendarDay, IDay } from './CalendarDay';
+import { IDatePickerState } from '../datePicker/DatePickerReducers';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { CalendarDay } from './CalendarDay';
+import * as moment from 'moment';
 
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
   id?: string;
@@ -21,6 +23,7 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
 export interface ICalendarStateProps extends IReduxStatePossibleProps {
   selectedMonth?: number;
   selectedYear?: number;
+  calendarSelection?: IDatePickerState[];
 }
 
 export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps { }
@@ -100,9 +103,24 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     let year = parseInt(years[sectedYearOption]);
     let selectedMonth = this.props.selectedMonth || startingMonth;
 
-    let month = DateUtils.getMonthWeeks(new Date(year, selectedMonth), startingDay);
-    let weeks = _.map(month, (week) => {
-      let days = _.map(week, (day) => {
+    let month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), startingDay);
+    let weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
+      let days: JSX.Element[] = _.map(week, (day: IDay) => {
+        _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
+          let selectionStart = moment(calendarSelection.lowerLimit).startOf('day');
+          let selectionEnd = calendarSelection.isRange
+            ? moment(calendarSelection.upperLimit).startOf('day')
+            : selectionStart;
+          let isSelected = day.date >= selectionStart && day.date <= selectionEnd;
+
+          day.isSelected = isSelected || day.isSelected;
+          day.isLowerLimit = calendarSelection.isRange && !day.date.diff(selectionStart) || day.isLowerLimit;
+          day.isUpperLimit = calendarSelection.isRange && !day.date.diff(selectionEnd) || day.isUpperLimit;
+
+          if (isSelected) {
+            day.color = calendarSelection.color || day.color;
+          }
+        });
         return <CalendarDay key={day.date.toString()} day={day} />;
       });
 

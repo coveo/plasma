@@ -31,6 +31,7 @@ import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { DatesSelectionExamples } from '../src/components/datePicker/Examples/DatesSelectionExamples';
 import { DatesSelectionConnectedExamples } from '../src/components/datePicker/Examples/DatesSelectionConnectedExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/Examples/DatePickerBoxConnectedExamples';
+import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/Examples/DatePickerDropdownConnectedExamples';
 
 class App extends React.Component<any, any> {
 
@@ -121,6 +122,7 @@ class App extends React.Component<any, any> {
           <DatesSelectionConnectedExamples />
           <DatePickerBoxExamples />
           <DatePickerBoxConnectedExamples />
+          <DatePickerDropdownConnectedExamples />
         </div>
       </Provider>
     );

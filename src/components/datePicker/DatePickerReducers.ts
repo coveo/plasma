@@ -5,16 +5,24 @@ import * as _ from 'underscore';
 
 export interface IDatePickerState {
   id: string;
+  calendarId: string;
   color: string;
   lowerLimit: Date;
   upperLimit: Date;
+  isRange: boolean;
+  selected: string;
+  applied: boolean;
 }
 
 export const datePickerInitialState: IDatePickerState = {
   id: undefined,
-  color: 'blue',
+  calendarId: undefined,
+  color: undefined,
+  isRange: false,
   lowerLimit: new Date(new Date().setHours(0, 0, 0, 0)),
-  upperLimit: new Date(new Date().setHours(23, 59, 59, 999))
+  upperLimit: new Date(new Date().setHours(23, 59, 59, 999)),
+  selected: '',
+  applied: false
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 
@@ -24,9 +32,13 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
     case DatePickerActions.add:
       return {
         id: action.payload.id,
+        calendarId: action.payload.calendarId,
         color: action.payload.color,
+        isRange: action.payload.isRange,
         lowerLimit: state.lowerLimit,
-        upperLimit: state.upperLimit
+        upperLimit: state.upperLimit,
+        selected: state.selected,
+        applied: state.applied
       };
     case DatePickerActions.changeLowerLimit:
       if (state.id !== action.payload.id) {
@@ -41,6 +53,30 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
       }
       return _.extend({}, state, {
         upperLimit: action.payload.date
+      });
+    case DatePickerActions.select:
+      if (state.id !== action.payload.id) {
+        return state;
+      }
+      return _.extend({}, state, {
+        selected: action.payload.limit
+      });
+    case DatePickerActions.apply:
+      if (state.id !== action.payload.id) {
+        return state;
+      }
+      return _.extend({}, state, {
+        applied: true
+      });
+    case DatePickerActions.reset:
+      if (state.id.indexOf(action.payload.id) !== 0) {
+        return state;
+      }
+      return _.extend({}, datePickerInitialState, {
+        id: state.id,
+        calendarId: state.calendarId,
+        color: state.color,
+        isRange: state.isRange
       });
     default:
       return state;
@@ -59,8 +95,21 @@ export const datePickersReducer = (state: IDatePickerState[] = datePickersInitia
       return _.reject(state, (datePicker: IDatePickerState) => {
         return action.payload.id === datePicker.id;
       });
+    case DatePickerActions.reset:
+      let resetPickers = state.map((datePicker: IDatePickerState) =>
+        datePickerReducer(datePicker, action)
+      );
+      let listWithRemovedPicker = _.reject(state, (datePicker: IDatePickerState) => {
+        return datePicker.id.indexOf(action.payload.id) === 0;
+      });
+      return [
+        ...listWithRemovedPicker,
+        ...resetPickers
+      ];
     case DatePickerActions.changeLowerLimit:
     case DatePickerActions.changeUpperLimit:
+    case DatePickerActions.select:
+    case DatePickerActions.apply:
       return state.map((datePicker: IDatePickerState) =>
         datePickerReducer(datePicker, action)
       );

@@ -15,7 +15,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): 
   return {
     withReduxState: true,
     selectedMonth: selectedMonth ? selectedMonth.currentOption : 0,
-    selectedYear: selectedYear ? selectedYear.currentOption : 0
+    selectedYear: selectedYear ? selectedYear.currentOption : 0,
+    calendarSelection: state.datePickers ? _.where(state.datePickers, { calendarId: ownProps.id }) : []
   };
 };
 

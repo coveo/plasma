@@ -1,10 +1,14 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
+import { DEFAULT_DATE_PICKER_COLOR } from './DatePicker';
 
 export const DatePickerActions = {
   add: 'ADD_DATE_PICKER',
   remove: 'REMOVE_DATE_PICKER',
   changeLowerLimit: 'CHANGE_LOWER_LIMIT',
-  changeUpperLimit: 'CHANGE_UPPER_LIMIT'
+  changeUpperLimit: 'CHANGE_UPPER_LIMIT',
+  select: 'SELECT_DATE',
+  reset: 'RESET_DATE_PICKERS',
+  apply: 'APPLY_DATE'
 };
 
 export interface IDatePickerPayload {
@@ -13,23 +17,50 @@ export interface IDatePickerPayload {
 
 export interface IAddDatePickerPayload extends IDatePickerPayload {
   color: string;
+  calendarId: string;
+  isRange: boolean;
 }
 
 export interface IChangeDatePickerPayload extends IDatePickerPayload {
   date: Date;
 }
 
-export const addDatePicker = (id: string, color: string = 'blue',
+export interface ISelectDatePickerPayload extends IDatePickerPayload {
+  limit: string;
+}
+
+export const DateLimits = {
+  lower: 'lower',
+  upper: 'upper'
+};
+
+export const addDatePicker = (id: string, isRange: boolean, color: string = DEFAULT_DATE_PICKER_COLOR,
   calendarId: string = ''): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {
       id,
-      color
+      color,
+      calendarId,
+      isRange
     }
   });
 
 export const removeDatePicker = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.remove,
+  payload: {
+    id
+  }
+});
+
+export const resetDatePickers = (id: string): IReduxAction<IDatePickerPayload> => ({
+  type: DatePickerActions.reset,
+  payload: {
+    id
+  }
+});
+
+export const applyDatePicker = (id: string): IReduxAction<IDatePickerPayload> => ({
+  type: DatePickerActions.apply,
   payload: {
     id
   }
@@ -48,5 +79,13 @@ export const changeDatePickerUpperLimit = (id: string, date: Date): IReduxAction
   payload: {
     id,
     date
+  }
+});
+
+export const selectDate = (id: string, limit: string): IReduxAction<ISelectDatePickerPayload> => ({
+  type: DatePickerActions.changeUpperLimit,
+  payload: {
+    id,
+    limit
   }
 });

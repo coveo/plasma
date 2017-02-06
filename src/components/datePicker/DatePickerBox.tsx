@@ -23,6 +23,7 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
   id?: string;
   datesSelectionBoxes: IDatesSelectionBox[];
   setToNowTooltip?: string;
+  footer?: JSX.Element;
 }
 
 export interface IDatePickerBoxStateProps extends IReduxStatePossibleProps { }
@@ -51,7 +52,8 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
         hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
         setToNowTooltip: this.props.setToNowTooltip,
         isRange: datesSelectionBox.isRange,
-        color: datesSelectionBox.color
+        color: datesSelectionBox.color,
+        calendarId: calendarId
       };
       let dateSelection: JSX.Element = this.props.withReduxState
         ? <DatesSelectionConnected {...datesSelectionProps} />
@@ -74,6 +76,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
             {datesSelectionBoxes}
           </div>
         </div>
+        {this.props.footer}
       </div>
     );
   }

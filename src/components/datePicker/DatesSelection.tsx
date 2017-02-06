@@ -8,18 +8,21 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
   hasSetToNowButton?: boolean;
   isRange?: boolean;
   color?: string;
+  calendarId?: string;
 }
 
 export interface IDatesSelectionStateProps {
   lowerLimit?: Date;
   upperLimit?: Date;
   quickOption?: string;
+  isSelecting?: string;
 }
 
 export interface IDatesSelectionDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
   onChange?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
+  onClick?: (isUpperLimit: boolean) => void;
 }
 
 export interface IDatesSelectionChildrenProps {
@@ -34,6 +37,12 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
   private onDateChange(date: Date, isUpperLimit: boolean, datePicker?: boolean) {
     if (this.props.onChange) {
       this.props.onChange(date, isUpperLimit, datePicker);
+    }
+  }
+
+  private onDateClick(isUpperLimit: boolean) {
+    if (this.props.onClick) {
+      this.props.onClick(isUpperLimit);
     }
   }
 
@@ -66,7 +75,8 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
       withTime: this.props.withTime,
       hasSetToNowButton: this.props.hasSetToNowButton,
       setToNowTooltip: this.props.setToNowTooltip,
-      onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit)
+      onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
+      onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit)
     };
     let separatorClasses: string[] = ['date-separator'];
     if (this.props.withTime) {

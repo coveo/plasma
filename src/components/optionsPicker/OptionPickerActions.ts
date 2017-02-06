@@ -3,7 +3,8 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 export const OptionPickerActions = {
   add: 'ADD_OPTION_PICKER',
   remove: 'REMOVE_OPTION_PICKER',
-  change: 'CHANGE_OPTION'
+  change: 'CHANGE_OPTION',
+  reset: 'RESET_OPTION_PICKERS'
 };
 
 export interface IOptionPickerPayload {
@@ -33,5 +34,12 @@ export const changeOptionPicker = (id: string, value: string): IReduxAction<ICha
   payload: {
     id,
     value
+  }
+});
+
+export const resetOptionPickers = (id: string): IReduxAction<IOptionPickerPayload> => ({
+  type: OptionPickerActions.reset,
+  payload: {
+    id
   }
 });

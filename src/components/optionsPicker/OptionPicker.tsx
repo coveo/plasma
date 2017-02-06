@@ -40,13 +40,14 @@ export class OptionPicker extends React.Component<IOptionPickerProps, any> {
   }
 
   render() {
-    let options: JSX.Element[] = _.map(this.props.options, (option: IOption) => {
-      return <Option
-        key={option.value()}
+    let options: JSX.Element[] = _.map(this.props.options, (option: IOption, index: number) => {
+      return <li key={`option-${this.props.id}-${index}`}>
+        <Option
         option={option}
         onClick={(value) => this.handleClick(value)}
         isActive={option.value() === this.props.activeValue}
-        />;
+        />
+      </li>;
     });
 
     return (
