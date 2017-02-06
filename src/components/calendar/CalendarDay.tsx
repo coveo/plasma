@@ -14,16 +14,10 @@ export interface IDay {
 
 export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   day: IDay;
-  onClick?: (date: Moment) => void;
+  onClick: (value: Date) => void;
 }
 
 export class CalendarDay extends React.Component<ICalendarDayProps, any> {
-
-  private handleClick() {
-    if (this.props.onClick) {
-      this.props.onClick(this.props.day.date);
-    }
-  }
 
   render() {
     let dayClasses: string[] = [];
@@ -54,7 +48,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
       : null;
 
     return (
-      <td onClick={() => this.handleClick()}>
+      <td onClick={() => this.props.onClick(this.props.day.date.toDate())}>
         <span className={dayClasses.join(' ')}>
           {this.props.day.number}
           {bothLimitsElement}

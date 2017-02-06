@@ -59,7 +59,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
 
     let inputClasses: string[] = [`border-${color}`];
     if (this.props.isSelecting === DateLimits.upper && this.props.upperLimit
-      || this.props.isSelecting === DateLimits.upper && !this.props.upperLimit) {
+      || this.props.isSelecting === DateLimits.lower && !this.props.upperLimit) {
       inputClasses.push('picking-date');
     } else if (this.dateInput && this.dateInput.value) {
       inputClasses.push('date-picked');
@@ -72,6 +72,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
           className={inputClasses.join(' ')}
           ref={(dateInput: HTMLInputElement) => this.dateInput = dateInput}
           onChange={() => this.handleChange()}
+          onClick={() => this.props.onClick(this.props.upperLimit)}
           />
         {nowButton}
       </div>

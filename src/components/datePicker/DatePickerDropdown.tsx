@@ -49,6 +49,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
     if (!dropdown.contains(e.toElement)) {
       this.props.onDocumentClick();
+      this.handleCancel();
     }
   };
 

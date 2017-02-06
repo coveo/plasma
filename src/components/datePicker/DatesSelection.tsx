@@ -75,6 +75,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
       withTime: this.props.withTime,
       hasSetToNowButton: this.props.hasSetToNowButton,
       setToNowTooltip: this.props.setToNowTooltip,
+      isSelecting: this.props.isSelecting,
       onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
       onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit)
     };

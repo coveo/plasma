@@ -83,7 +83,7 @@ export const changeDatePickerUpperLimit = (id: string, date: Date): IReduxAction
 });
 
 export const selectDate = (id: string, limit: string): IReduxAction<ISelectDatePickerPayload> => ({
-  type: DatePickerActions.changeUpperLimit,
+  type: DatePickerActions.select,
   payload: {
     id,
     limit

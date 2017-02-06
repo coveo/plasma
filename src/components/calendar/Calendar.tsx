@@ -9,6 +9,7 @@ import { IDatePickerState } from '../datePicker/DatePickerReducers';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';
+import { DateLimits } from '../datePicker/DatePickerActions';
 
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
   id?: string;
@@ -26,7 +27,11 @@ export interface ICalendarStateProps extends IReduxStatePossibleProps {
   calendarSelection?: IDatePickerState[];
 }
 
-export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps { }
+export interface ICalendarDispatchProps {
+  onClick?: (pickerId: string, isUpperLimit: boolean, value: Date) => void;
+}
+
+export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps, ICalendarDispatchProps { }
 
 export const DEFAULT_MONTHS: string[] = [
   'January',
@@ -64,6 +69,23 @@ export const MONTH_PICKER_ID: string = 'calendar-months';
 export const YEAR_PICKER_ID: string = 'calendar-years';
 
 export class Calendar extends React.Component<ICalendarProps, any> {
+
+  private handleClick(value: Date) {
+    if (this.props.onClick) {
+      let selectedDatePickers: IDatePickerState[] = _.map(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
+        if (calendarSelection.selected) {
+          return calendarSelection;
+        }
+      }).filter(Boolean);
+
+      if (selectedDatePickers.length) {
+        let selectedDatePicker: IDatePickerState = selectedDatePickers[0];
+        this.props.onClick(selectedDatePicker.id, selectedDatePicker.selected === DateLimits.upper, value);
+      }
+
+
+    }
+  }
 
   render() {
     let months: string[] = this.props.months || DEFAULT_MONTHS;
@@ -121,7 +143,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
             day.color = calendarSelection.color || day.color;
           }
         });
-        return <CalendarDay key={day.date.toString()} day={day} />;
+        return <CalendarDay key={day.date.toString()} day={day} onClick={(value: Date) => this.handleClick(value)} />;
       });
 
       return <tr key={`week-${days[0].key}`}>{days}</tr>;

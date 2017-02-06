@@ -11,7 +11,8 @@ export interface IDatePickerState {
   upperLimit: Date;
   isRange: boolean;
   selected: string;
-  applied: boolean;
+  appliedLowerLimit: Date;
+  appliedUpperLimit: Date;
 }
 
 export const datePickerInitialState: IDatePickerState = {
@@ -22,7 +23,8 @@ export const datePickerInitialState: IDatePickerState = {
   lowerLimit: new Date(new Date().setHours(0, 0, 0, 0)),
   upperLimit: new Date(new Date().setHours(23, 59, 59, 999)),
   selected: '',
-  applied: false
+  appliedLowerLimit: new Date(new Date().setHours(0, 0, 0, 0)),
+  appliedUpperLimit: new Date(new Date().setHours(23, 59, 59, 999))
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 
@@ -38,7 +40,8 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
         lowerLimit: state.lowerLimit,
         upperLimit: state.upperLimit,
         selected: state.selected,
-        applied: state.applied
+        appliedLowerLimit: state.appliedLowerLimit,
+        appliedUpperLimit: state.appliedUpperLimit
       };
     case DatePickerActions.changeLowerLimit:
       if (state.id !== action.payload.id) {
@@ -62,11 +65,12 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
         selected: action.payload.limit
       });
     case DatePickerActions.apply:
-      if (state.id !== action.payload.id) {
+      if (state.id.indexOf(action.payload.id) !== 0) {
         return state;
       }
       return _.extend({}, state, {
-        applied: true
+        appliedLowerLimit: state.lowerLimit,
+        appliedUpperLimit: state.upperLimit
       });
     case DatePickerActions.reset:
       if (state.id.indexOf(action.payload.id) !== 0) {
@@ -76,7 +80,11 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
         id: state.id,
         calendarId: state.calendarId,
         color: state.color,
-        isRange: state.isRange
+        isRange: state.isRange,
+        lowerLimit: state.appliedLowerLimit,
+        upperLimit: state.appliedUpperLimit,
+        appliedLowerLimit: state.appliedLowerLimit,
+        appliedUpperLimit: state.appliedUpperLimit
       });
     default:
       return state;
