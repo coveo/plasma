@@ -17,7 +17,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IOptionPickerOwnProp
   let item: IOptionPickerState = _.findWhere(state.optionPickers, { id: ownProps.id });
 
   return {
-    activeValue: item ? item.selectedValue : '',
+    activeValue: item && item.selectedValue ? item.selectedValue : '',
   };
 };
 

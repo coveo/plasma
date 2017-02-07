@@ -20,7 +20,7 @@ export const optionPickerReducer = (state: IOptionPickerState = optionPickerInit
     case OptionPickerActions.add:
       return {
         id: action.payload.id,
-        selectedValue: action.payload.value
+        selectedValue: state.selectedValue
       };
     case OptionPickerActions.change:
       if (state.id !== action.payload.id) {

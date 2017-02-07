@@ -80,7 +80,7 @@ describe('Options cycle', () => {
       expect(optionsCycle.props().currentOption).toBe(0);
     });
 
-    it('should the currentOption from the state when the options cycle exists in the state', () => {
+    it('should return  the currentOption from the state when the options cycle exists in the state', () => {
       let expectedCurrentOption = 5;
 
       store.dispatch(changeOptionsCycle(optionsCycleBasicProps.id, expectedCurrentOption));

@@ -3,12 +3,12 @@ import { IReduxActionsPayload } from '../../../ReactVapor';
 import { OptionsCycleActions, addOptionsCycle, changeOptionsCycle, removeOptionsCycle } from '../OptionsCycleActions';
 describe('Options cycle', () => {
 
-  describe('OptionsCycleOptions', () => {
+  describe('OptionsCycleActions', () => {
 
     const OPTIONS_CYCLE_ID: string = 'option-cycle';
     const CURRENT_OPTION: number = 3;
 
-    it('should create an action to add the item options cycle', () => {
+    it('should create an action to add the options cycle', () => {
       let expectedAction: IReduxAction<IReduxActionsPayload> = {
         type: OptionsCycleActions.add,
         payload: {
@@ -32,7 +32,7 @@ describe('Options cycle', () => {
       expect(changeOptionsCycle(OPTIONS_CYCLE_ID, CURRENT_OPTION)).toEqual(expectedAction);
     });
 
-    it('should create an action to remove the item filter', () => {
+    it('should create an action to remove the options cycle', () => {
       let expectedAction: IReduxAction<IReduxActionsPayload> = {
         type: OptionsCycleActions.remove,
         payload: {

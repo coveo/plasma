@@ -8,6 +8,7 @@ import { ICalendarProps, Calendar, MONTH_PICKER_ID, YEAR_PICKER_ID } from '../Ca
 import { CalendarConnected } from '../CalendarConnected';
 import { changeOptionsCycle } from '../../optionsCycle/OptionsCycleActions';
 import { OptionsCycleConnected } from '../../optionsCycle/OptionsCycleConnected';
+import { DateUtils } from '../../../utils/DateUtils';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -57,7 +58,7 @@ describe('Calendar', () => {
       let expectedSelectedMonth: number = 3;
 
       expect(selectedMonthProp).toBeDefined();
-      expect(selectedMonthProp).toBe(0);
+      expect(selectedMonthProp).toBe(DateUtils.currentMonth);
 
       store.dispatch(changeOptionsCycle(CALENDAR_ID + MONTH_PICKER_ID, expectedSelectedMonth));
       selectedMonthProp = calendar.props().selectedMonth;

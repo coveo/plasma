@@ -1,14 +1,17 @@
-import * as _ from 'underscore';
-import { IReduxAction } from '../../../utils/ReduxUtils';
 import {
-  IOptionsCycleState, optionsCyclesInitialState, optionsCyclesReducer,
-  optionsCycleReducer, optionsCycleInitialState
+  IOptionsCycleState,
+  optionsCyclesInitialState,
+  optionsCyclesReducer,
+  optionsCycleReducer,
+  optionsCycleInitialState
 } from '../OptionsCycleReducers';
-import { IOptionsCycleOptions, OptionsCycleActions, IChangeOptionsCycleOptions } from '../OptionsCycleActions';
+import { OptionsCycleActions, IChangeOptionsCyclePayload, IOptionsCyclePayload } from '../OptionsCycleActions';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import * as _ from 'underscore';
 
 describe('Options cycle', () => {
 
-  const genericAction: IReduxAction<IOptionsCycleOptions> = {
+  const genericAction: IReduxAction<IOptionsCyclePayload> = {
     type: 'DO_SOMETHING',
     payload: {
       id: 'some-options-cycle'
@@ -30,9 +33,9 @@ describe('Options cycle', () => {
       expect(optionsCyclesState).toBe(oldState);
     });
 
-    it('should return the old state with one more ItemFilterState when the action is "ADD_OPTIONS_CYCLE"', () => {
+    it('should return the old state with one more IOptionsCycleState when the action is "ADD_OPTIONS_CYCLE"', () => {
       let oldState: IOptionsCycleState[] = optionsCyclesInitialState;
-      let action: IReduxAction<IChangeOptionsCycleOptions> = {
+      let action: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.add,
         payload: {
           id: 'some-options-cycle',
@@ -52,7 +55,7 @@ describe('Options cycle', () => {
       expect(optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id).length).toBe(1);
     });
 
-    it('should return the old state without the ItemFilterState when the action is "REMOVE_OPTIONS_CYCLE', () => {
+    it('should return the old state without the IOptionsCycleState when the action is "REMOVE_OPTIONS_CYCLE', () => {
       let oldState: IOptionsCycleState[] = [
         {
           id: 'some-options-cycle2',
@@ -65,7 +68,7 @@ describe('Options cycle', () => {
           currentOption: 2
         }
       ];
-      let action: IReduxAction<IOptionsCycleOptions> = {
+      let action: IReduxAction<IOptionsCyclePayload> = {
         type: OptionsCycleActions.remove,
         payload: {
           id: 'some-options-cycle'
@@ -97,7 +100,7 @@ describe('Options cycle', () => {
           currentOption: 1
         }
       ];
-      let action: IReduxAction<IOptionsCycleOptions> = {
+      let action: IReduxAction<IOptionsCyclePayload> = {
         type: OptionsCycleActions.remove,
         payload: {
           id: 'some-option-cycle4'
@@ -122,7 +125,7 @@ describe('Options cycle', () => {
           currentOption: 3
         }
       ];
-      let action: IReduxAction<IChangeOptionsCycleOptions> = {
+      let action: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.change,
         payload: {
           id: 'some-options-cycle',
@@ -136,7 +139,7 @@ describe('Options cycle', () => {
 
     it('should not change the original state', () => {
       let expectedState = optionsCyclesInitialState.slice(0);
-      let action: IReduxAction<IOptionsCycleOptions> = {
+      let action: IReduxAction<IOptionsCyclePayload> = {
         type: OptionsCycleActions.add,
         payload: {
           id: 'some-options-cycle'
@@ -165,7 +168,7 @@ describe('Options cycle', () => {
 
     it('should return a new options cycle with the specified id and current option when the action is "ADD_OPTIONS_CYCLE"', () => {
       let oldState: IOptionsCycleState = optionsCycleInitialState;
-      let action: IReduxAction<IChangeOptionsCycleOptions> = {
+      let action: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.add,
         payload: {
           id: 'some-options-cycle',
@@ -183,7 +186,7 @@ describe('Options cycle', () => {
         id: 'some-options-cycle',
         currentOption: 7
       };
-      let action: IReduxAction<IChangeOptionsCycleOptions> = {
+      let action: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.change,
         payload: {
           id: 'some-options-cycle5',
@@ -200,7 +203,7 @@ describe('Options cycle', () => {
         id: 'some-options-cycle',
         currentOption: 2
       };
-      let action: IReduxAction<IChangeOptionsCycleOptions> = {
+      let action: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.change,
         payload: {
           id: 'some-options-cycle',
@@ -214,7 +217,7 @@ describe('Options cycle', () => {
 
     it('should not change the original state', () => {
       let expectedState = _.extend({}, optionsCycleInitialState);
-      let action: IReduxAction<IChangeOptionsCycleOptions> = {
+      let action: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.change,
         payload: {
           id: 'some-options-cycle',
