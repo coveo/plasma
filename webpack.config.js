@@ -25,7 +25,11 @@ module.exports = {
       {test: /\.scss$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader'},
       {test: /\.css$/, loaders: ['style', 'css']},
       {test: /\.png$/, loader: 'file-loader?mimetype=image/png'},
-      {test: /\.(ttf|eot|woff|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader'}
+      {test: /\.(ttf|eot|woff|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader'},
+      // provide jQuery=require('jquery') to use the same jquery instance
+      // See http://reactkungfu.com/2015/10/integrating-jquery-chosen-with-webpack-using-imports-loader/ for more infos
+      {test: require.resolve('chosen-js'), loader: 'imports-loader?jQuery=jquery'},
+      {test: require.resolve('bootstrap/js/tooltip.js'), loader: 'imports-loader?jQuery=jquery'}
     ],
     preLoaders: [
       {test: /\.ts(x?)$/i, loader: 'tslint'}
@@ -37,11 +41,6 @@ module.exports = {
     failOnHint: false,
     formattersDirectory: path.resolve(__dirname, 'node_modules/tslint-loader/formatters/')
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery' // Required for chosen-js, otherwise, it won't work.
-    })
-  ],
   devServer: {
     contentBase: './docs'
   },
