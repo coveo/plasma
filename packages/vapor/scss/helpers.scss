@@ -1,4 +1,0 @@
-$browser-context: 13; // Default
-@function pxtoem($target, $context: $browser-context) {
-  @return ($target/$context)+0em;
-}

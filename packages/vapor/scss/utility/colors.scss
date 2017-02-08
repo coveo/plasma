@@ -15,4 +15,8 @@ $palette-secondary: red $red, yellow $yellow, green $green, blue $blue, salesfor
   .text-#{nth($color, 1)} {
     color: nth($color, 2);
   }
+
+  .border-#{nth($color, 1)} {
+    border-color: nth($color, 2);
+  }
 }
