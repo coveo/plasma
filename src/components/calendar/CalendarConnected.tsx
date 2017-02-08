@@ -1,14 +1,19 @@
+import {
+  ICalendarStateProps,
+  ICalendarProps,
+  Calendar,
+  MONTH_PICKER_ID,
+  YEAR_PICKER_ID,
+  ICalendarOwnProps,
+  ICalendarDispatchProps
+} from './Calendar';
+import { changeDatePickerUpperLimit, changeDatePickerLowerLimit, selectDate } from '../datePicker/DatePickerActions';
+import { changeOptionPicker } from '../optionsPicker/OptionPickerActions';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import {
-  ICalendarStateProps, ICalendarProps, Calendar, MONTH_PICKER_ID, YEAR_PICKER_ID,
-  ICalendarOwnProps, ICalendarDispatchProps
-} from './Calendar';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { changeDatePickerUpperLimit, changeDatePickerLowerLimit, selectDate } from '../datePicker/DatePickerActions';
-import { changeOptionPicker } from '../optionsPicker/OptionPickerActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): ICalendarStateProps => {
   let selectedMonth = _.findWhere(state.optionsCycles, { id: ownProps.id + MONTH_PICKER_ID });
@@ -18,7 +23,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): 
     withReduxState: true,
     selectedMonth: selectedMonth ? selectedMonth.currentOption : 0,
     selectedYear: selectedYear ? selectedYear.currentOption : 0,
-    calendarSelection: state.datePickers ? _.where(state.datePickers, { calendarId: ownProps.id }) : []
+    calendarSelection: _.where(state.datePickers, { calendarId: ownProps.id })
   };
 };
 

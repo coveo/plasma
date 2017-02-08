@@ -56,6 +56,12 @@ describe('Calendar day', () => {
       expect(dayProp).toEqual(DAY);
     });
 
+    it('should get what to do onClick as a prop', () => {
+      let onClickProp = calendarDay.props().onClick;
+
+      expect(onClickProp).toBeDefined;
+    });
+
     it('should display the number of the day', () => {
       expect(calendarDay.html()).toContain(DAY.number);
     });
@@ -80,6 +86,53 @@ describe('Calendar day', () => {
       calendarDay.setProps(newProps);
 
       expect(calendarDay.find('.todays-date').length).toBe(1);
+    });
+
+    it('should have the classes "selected-date" and "bg-${color}" when the day is selected', () => {
+      let selectedDate: IDay = _.extend({}, DAY, { isSelected: true, color: 'pink' });
+      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: selectedDate });
+
+      expect(calendarDay.find('.selected-date').length).toBe(0);
+      expect(calendarDay.find('span').props().className).not.toContain('bg-');
+
+      calendarDay.setProps(newProps);
+
+      expect(calendarDay.find('.selected-date').length).toBe(1, '.selected-date');
+      expect(calendarDay.find('span').props().className).toContain('bg-');
+      expect(calendarDay.find('.bg-pink').length).toBe(1, '.bg-pink');
+    });
+
+    it('should have the class "lower-limit" if the day is selected and isLowerLimit', () => {
+      let lowerLimitDay: IDay = _.extend({}, DAY, { isLowerLimit: true, isSelected: true });
+      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: lowerLimitDay });
+
+      expect(calendarDay.find('.lower-limit').length).toBe(0);
+
+      calendarDay.setProps(newProps);
+
+      expect(calendarDay.find('.lower-limit').length).toBe(1);
+    });
+
+    it('should have the class "upper-limit" if the day is selected isUpperLimit', () => {
+      let upperLimitDay: IDay = _.extend({}, DAY, { isUpperLimit: true, isSelected: true });
+      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: upperLimitDay });
+
+      expect(calendarDay.find('.upper-limit').length).toBe(0);
+
+      calendarDay.setProps(newProps);
+
+      expect(calendarDay.find('.upper-limit').length).toBe(1);
+    });
+
+    it('should add another span if the day is selected and both isLowerLimit and upperLimit', () => {
+      let limitDay: IDay = _.extend({}, DAY, { isLowerLimit: true, isUpperLimit: true, isSelected: true });
+      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: limitDay });
+
+      expect(calendarDay.find('span').length).toBe(1);
+
+      calendarDay.setProps(newProps);
+
+      expect(calendarDay.find('span').length).toBe(2);
     });
 
     it('should call onClick when clicking the day', () => {

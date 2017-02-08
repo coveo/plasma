@@ -12,6 +12,7 @@ import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../components/tables/TableRowReducers';
 import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleReducers';
 import { optionPickersReducer } from '../components/optionsPicker/OptionPickerReducers';
+import { datePickersReducer } from '../components/datePicker/DatePickerReducers';
 import * as Redux from 'redux';
 
 export class TestUtils {
@@ -28,7 +29,8 @@ export class TestUtils {
       dropdowns: dropdownsReducer,
       rows: tableRowsReducer,
       optionsCycles: optionsCyclesReducer,
-      optionPickers: optionPickersReducer
+      optionPickers: optionPickersReducer,
+      datePickers: datePickersReducer
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {

@@ -6,10 +6,10 @@ import { ITableHeaderCellProps } from '../tables/TableHeaderCell';
 import { TableHeader } from '../tables/TableHeader';
 import { CalendarDay, IDay } from './CalendarDay';
 import { IDatePickerState } from '../datePicker/DatePickerReducers';
+import { DateLimits } from '../datePicker/DatePickerActions';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';
-import { DateLimits } from '../datePicker/DatePickerActions';
 
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
   id?: string;
@@ -82,9 +82,26 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         let selectedDatePicker: IDatePickerState = selectedDatePickers[0];
         this.props.onClick(selectedDatePicker.id, selectedDatePicker.selected === DateLimits.upper, value);
       }
-
-
     }
+  }
+
+  fillInDayInfos(day: IDay): IDay {
+    let dayStart: moment.Moment = day.date.startOf('day');
+
+    _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
+      let selectionStart: moment.Moment = moment(calendarSelection.lowerLimit).startOf('day');
+      let selectionEnd: moment.Moment = calendarSelection.isRange
+        ? moment(calendarSelection.upperLimit).startOf('day')
+        : selectionStart;
+      let isSelected = dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
+
+      day.isSelected = isSelected || day.isSelected;
+      day.isLowerLimit = calendarSelection.isRange && !dayStart.diff(selectionStart) || day.isLowerLimit;
+      day.isUpperLimit = calendarSelection.isRange && !dayStart.diff(selectionEnd) || day.isUpperLimit;
+      day.color = isSelected ? calendarSelection.color : day.color;
+    });
+
+    return day;
   }
 
   render() {
@@ -128,21 +145,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     let month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), startingDay);
     let weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
       let days: JSX.Element[] = _.map(week, (day: IDay) => {
-        _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
-          let selectionStart = moment(calendarSelection.lowerLimit).startOf('day');
-          let selectionEnd = calendarSelection.isRange
-            ? moment(calendarSelection.upperLimit).startOf('day')
-            : selectionStart;
-          let isSelected = day.date >= selectionStart && day.date <= selectionEnd;
-
-          day.isSelected = isSelected || day.isSelected;
-          day.isLowerLimit = calendarSelection.isRange && !day.date.diff(selectionStart) || day.isLowerLimit;
-          day.isUpperLimit = calendarSelection.isRange && !day.date.diff(selectionEnd) || day.isUpperLimit;
-
-          if (isSelected) {
-            day.color = calendarSelection.color || day.color;
-          }
-        });
+        day = this.fillInDayInfos(day);
         return <CalendarDay key={day.date.toString()} day={day} onClick={(value: Date) => this.handleClick(value)} />;
       });
 
