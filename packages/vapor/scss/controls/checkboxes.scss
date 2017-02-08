@@ -136,14 +136,16 @@ label[for].coveo-checkbox-label {
 }
 
 .coveo-checkbox-labels-group {
-  @extend .clearfix;
-
   .coveo-checkbox-label {
-    float: left;
-    clear: left;
+    display: flex;
 
+    // Deprecated, use the coveo-checkbox-group-option class instead.
     & + .coveo-checkbox-label {
       margin-top: $checkbox-label-margin-top;
     }
+  }
+
+  .coveo-checkbox-group-option + .coveo-checkbox-group-option {
+    margin-top: $checkbox-label-margin-top;
   }
 }
