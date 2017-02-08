@@ -80,79 +80,6 @@ $icon-size: (4em / 3);
 
     opacity: 0;
     pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
-
-    .modal-header {
-      align-items: center;
-
-      display: flex;
-      height: $modal-header-height;
-      padding: 0 $header-padding;
-
-      color: $pure-white;
-
-      background-color: $pure-white;
-      border-bottom: $default-border;
-      border-radius: $border-radius $border-radius 0 0;
-
-      &.mod-confirmation {
-        background-color: $yellow;
-      }
-
-      &.mod-warning {
-        background-color: $red;
-      }
-
-      &.mod-info {
-        background-color: $medium-blue;
-      }
-
-      h1 {
-        flex-grow: 1;
-
-        overflow: hidden;
-
-        color: $medium-blue;
-        line-height: 30px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .small-close {
-        position: absolute;
-        top: -($icon-size + pxtoem(10));
-        right: 0;
-
-        cursor: pointer;
-
-        // Make both the icon and his containing span the same size.
-        &, & .icon {
-          width: $icon-size;
-          height: $icon-size;
-        }
-      }
-    }
-
-    .modal-body {
-      flex-basis: 0;
-      flex-grow: 1;
-
-      overflow: auto;
-
-      background-color: $pure-white;
-    }
-
-    .modal-footer {
-      align-items: center;
-      justify-content: flex-end;
-
-      display: flex;
-      padding: $modal-footer-padding;
-      overflow: hidden;
-
-      background-color: $white;
-      border-top: $default-border;
-      border-radius: 0 0 $border-radius $border-radius;
-    }
   }
 
   &.mod-medium > .modal-content {
@@ -208,5 +135,82 @@ $icon-size: (4em / 3);
 
   &.opened.mod-slide-in-bottom > .modal-content {
     transform: translate3d(0, 0, 0);
+  }
+}
+
+.modal-header {
+  align-items: center;
+
+  display: flex;
+  height: $modal-header-height;
+  padding: 0 $header-padding;
+
+  color: $pure-white;
+
+  background-color: $pure-white;
+  border-bottom: $default-border;
+  border-radius: $border-radius $border-radius 0 0;
+
+  &.mod-confirmation {
+    background-color: $yellow;
+  }
+
+  &.mod-warning {
+    background-color: $red;
+  }
+
+  &.mod-info {
+    background-color: $medium-blue;
+  }
+
+  h1 {
+    flex-grow: 1;
+
+    overflow: hidden;
+
+    color: $medium-blue;
+    line-height: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .small-close {
+    position: absolute;
+    top: -($icon-size + pxtoem(10));
+    right: 0;
+
+    cursor: pointer;
+
+    // Make both the icon and his containing span the same size.
+    &, & .icon {
+      width: $icon-size;
+      height: $icon-size;
+    }
+  }
+}
+
+.modal-body {
+  flex-basis: 0;
+  flex-grow: 1;
+
+  overflow: auto;
+
+  background-color: $pure-white;
+}
+
+.modal-footer {
+  align-items: center;
+  justify-content: flex-end;
+
+  display: flex;
+  padding: $modal-footer-padding;
+  overflow: hidden;
+
+  background-color: $white;
+  border-top: $default-border;
+  border-radius: 0 0 $border-radius $border-radius;
+
+  &.mod-small {
+    padding: $modal-footer-small-padding;
   }
 }

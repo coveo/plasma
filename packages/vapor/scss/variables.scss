@@ -3,6 +3,7 @@ $border-radius: 2px;
 $title-font-size: 16px;
 $default-font-size: 15px;
 $default-border: 1px solid $medium-grey;
+$big-title-font-size: 24px;
 
 //Typography
 $big-line-height: 21px;
@@ -78,6 +79,7 @@ $popover-footer-y-padding: 12px;
 $modal-header-height: 100px;
 $modal-form-width-small: 440px;
 $modal-footer-padding: 24px 40px;
+$modal-footer-small-padding: 12px 20px;
 
 // Prompt modal
 $modal-prompt-text-padding-y: 24px;
@@ -227,3 +229,15 @@ $splash-medium-height: 45vh;
 $splash-wizard-width: 1025px;
 $splash-wizard-padding-top: 145px;
 $splash-large-wizard-width: 1400px;
+
+// Calendar & Date Picker
+$date-picker-width: 562px;
+$date-picker-dimension: 36px;
+$calendar-width: 280px;
+$calendar-cell-dimensions: 40px;
+$calendar-border-width: 1px;
+$calendar-border: $calendar-border-width solid $light-grey;
+$selected-date-offset: 2px;
+$selected-date-height: 28px;
+$calendar-limit-border-width: 2px;
+$calendar-limit-border-length: 5px;
