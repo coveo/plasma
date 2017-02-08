@@ -31,6 +31,6 @@ $child-arrow-height: 10px;
   }
 
   &.mod-fixed-width {
-    width: $input-max-width;
+    max-width: $input-max-width;
   }
 }
