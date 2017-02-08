@@ -1,20 +1,20 @@
-import {mount, ReactWrapper} from 'enzyme';
-import {Store, Provider} from 'react-redux';
-import {clearState} from '../../../utils/ReduxUtils';
-import {IReactVaporState} from '../../../ReactVapor';
-import {TestUtils} from '../../../utils/TestUtils';
-import {ICalendarProps, Calendar, MONTH_PICKER_ID, YEAR_PICKER_ID} from '../Calendar';
-import {CalendarConnected} from '../CalendarConnected';
-import {changeOptionsCycle} from '../../optionsCycle/OptionsCycleActions';
-import {OptionsCycleConnected} from '../../optionsCycle/OptionsCycleConnected';
-import {DateUtils} from '../../../utils/DateUtils';
+import { mount, ReactWrapper } from 'enzyme';
+import { Store, Provider } from 'react-redux';
+import { clearState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
+import { TestUtils } from '../../../utils/TestUtils';
+import { ICalendarProps, Calendar, MONTH_PICKER_ID, YEAR_PICKER_ID } from '../Calendar';
+import { CalendarConnected } from '../CalendarConnected';
+import { changeOptionsCycle } from '../../optionsCycle/OptionsCycleActions';
+import { OptionsCycleConnected } from '../../optionsCycle/OptionsCycleConnected';
+import { DateUtils } from '../../../utils/DateUtils';
 import {
   addDatePicker,
   selectDate,
   changeDatePickerUpperLimit,
   changeDatePickerLowerLimit
 } from '../../datePicker/DatePickerActions';
-import {addOptionPicker, changeOptionPicker} from '../../optionsPicker/OptionPickerActions';
+import { addOptionPicker, changeOptionPicker } from '../../optionsPicker/OptionPickerActions';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 /* tslint:disable:no-unused-variable */
