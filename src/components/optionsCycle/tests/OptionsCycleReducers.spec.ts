@@ -134,7 +134,6 @@ describe('Options cycle', () => {
       };
       let optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(oldState, action);
       expect(_.findWhere(optionsCyclesState, { id: action.payload.id }).currentOption).toBe(action.payload.currentOption);
-      expect(optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id !== action.payload.id).length).toBe(2);
     });
 
     it('should not change the original state', () => {

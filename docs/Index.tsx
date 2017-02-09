@@ -25,13 +25,13 @@ import { TableEmptyRowExamples } from '../src/components/tables/examples/TableEm
 import { OptionsCycleExamples } from '../src/components/optionsCycle/examples/OptionsCycleExamples';
 import { OptionsCycleConnectedExamples } from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import { CalendarConnectedExamples } from '../src/components/calendar/examples/CalendarConnectedExamples';
-import { DatePickerBoxExamples } from '../src/components/datePicker/Examples/DatePickerBoxExamples';
+import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
-import { DatesSelectionExamples } from '../src/components/datePicker/Examples/DatesSelectionExamples';
-import { DatesSelectionConnectedExamples } from '../src/components/datePicker/Examples/DatesSelectionConnectedExamples';
-import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/Examples/DatePickerBoxConnectedExamples';
-import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/Examples/DatePickerDropdownConnectedExamples';
+import { DatesSelectionExamples } from '../src/components/datePicker/examples/DatesSelectionExamples';
+import { DatesSelectionConnectedExamples } from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
+import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
+import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 
 class App extends React.Component<any, any> {
 

@@ -76,6 +76,10 @@ export class DateUtils {
     return dateMoment.format(LONG_DATE_FORMAT);
   }
 
+  static getDateFromTimeString(date: string): Date {
+    return moment(date, LONG_DATE_FORMAT, true).toDate();
+  }
+
   static getSimpleDate(date: Date): string {
     let dateMoment = moment(date);
     if (!date || !dateMoment.isValid()) {

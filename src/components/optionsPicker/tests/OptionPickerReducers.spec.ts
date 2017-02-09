@@ -14,7 +14,7 @@ describe('Option picker', () => {
   const genericAction: IReduxAction<IOptionPickerPayload> = {
     type: 'DO_SOMETHING',
     payload: {
-      id: 'some-options-cycle'
+      id: 'some-option-picker'
     }
   };
 
@@ -27,7 +27,7 @@ describe('Option picker', () => {
     });
 
     it('should return the old state when the action is not defined', () => {
-      let oldState: IOptionPickerState[] = [{ id: 'some-options-cycle', selectedValue: 'anything' }];
+      let oldState: IOptionPickerState[] = [{ id: 'some-option-picker', selectedValue: 'anything' }];
       let optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, genericAction);
 
       expect(optionPickersState).toBe(oldState);
@@ -54,7 +54,7 @@ describe('Option picker', () => {
       expect(optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id).length).toBe(1);
     });
 
-    it('should return the old state without the ItemFilterState when the action is "REMOVE_OPTION_PICKER', () => {
+    it('should return the old state without the IOptionPickerState when the action is "REMOVE_OPTION_PICKER', () => {
       let oldState: IOptionPickerState[] = [
         {
           id: 'some-option-picker2',
@@ -133,7 +133,6 @@ describe('Option picker', () => {
       };
       let optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, action);
       expect(_.findWhere(optionPickersState, { id: action.payload.id }).selectedValue).toBe(action.payload.value);
-      expect(optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id !== action.payload.id).length).toBe(2);
     });
 
     it('should reset all option pickers starting with the action id if the action is "RESET_OPTION_PICKERS"', () => {

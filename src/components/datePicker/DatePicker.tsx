@@ -4,15 +4,15 @@ import * as React from 'react';
 import { DateLimits } from './DatePickerActions';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
+  onChange: (date: Date, isUpperLimit: boolean) => void;
+  onClick: (isUpperLimit: boolean) => void;
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   upperLimit?: boolean;
-  onChange: (date: Date, isUpperLimit: boolean) => void;
   date?: Date;
   setToNowTooltip?: string;
   isSelecting?: string;
   color?: string;
-  onClick?: (isUpperLimit: boolean) => void;
 }
 
 export const DEFAULT_DATE_PICKER_COLOR: string = 'blue';
@@ -20,32 +20,37 @@ export const DEFAULT_DATE_PICKER_COLOR: string = 'blue';
 export class DatePicker extends React.Component<IDatePickerProps, any> {
   private dateInput: HTMLInputElement;
 
-  private setToToday() {
-    let date = new Date();
-    this.dateInput.value = this.props.withTime
+  private getDateFromString(dateValue: string): Date {
+    return this.props.withTime
+      ? DateUtils.getDateFromTimeString(dateValue)
+      : DateUtils.getDateFromSimpleDateString(dateValue);
+  }
+
+  private getStringFromDate(date: Date): string {
+    return this.props.withTime
       ? DateUtils.getDateWithTimeString(date)
       : DateUtils.getSimpleDate(date);
+  }
+
+  private setToToday() {
+    let date = new Date();
+    this.dateInput.value = this.getStringFromDate(date);
     this.handleChange();
   }
 
   private handleChange() {
-    if (this.props.onChange) {
-      let dateValue: string = this.dateInput.value;
-      let date: Date = this.props.withTime ? new Date(dateValue) : DateUtils.getDateFromSimpleDateString(dateValue);
+    let date: Date = this.getDateFromString(this.dateInput.value);
 
-      if (date.getDate()) {
-        this.props.onChange(date, this.props.upperLimit);
-      }
+    if (date.getDate()) {
+      this.props.onChange(date, this.props.upperLimit);
     }
   }
 
   componentWillReceiveProps(nextProps: IDatePickerProps) {
     if (nextProps.date && nextProps.date !== this.props.date) {
-      let dateValue: string = this.props.withTime
-        ? DateUtils.getDateWithTimeString(nextProps.date)
-        : DateUtils.getSimpleDate(nextProps.date);
+      let dateValue: string = this.getStringFromDate(nextProps.date);
 
-      if (new Date(this.dateInput.value) !== new Date(dateValue)) {
+      if (this.dateInput.value !== dateValue) {
         this.dateInput.value = dateValue;
       }
     }

@@ -91,12 +91,9 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
   }
 
   private formatDate(date: Date): string {
-    if (this.props.datesSelectionBoxes.length) {
-      return this.props.datesSelectionBoxes[0].withTime
-        ? DateUtils.getDateWithTimeString(date)
-        : DateUtils.getSimpleDate(date);
-    }
-    return '';
+    return this.props.datesSelectionBoxes.length && this.props.datesSelectionBoxes[0].withTime
+      ? DateUtils.getDateWithTimeString(date)
+      : DateUtils.getSimpleDate(date);
   }
 
   render() {
