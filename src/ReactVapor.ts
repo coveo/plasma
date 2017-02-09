@@ -13,7 +13,7 @@ import { IDropdownState } from './components/dropdown/DropdownReducers';
 import { ITableRowState } from './components/tables/TableRowReducers';
 import { IOptionsCycleState } from './components/optionsCycle/OptionsCycleReducers';
 import { IDatePickerState } from './components/datePicker/DatePickerReducers';
-import { IOptionPickerState } from './components/optionsPicker/OptionPickerReducers';
+import { IOptionPickerState } from './components/optionPicker/OptionPickerReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];

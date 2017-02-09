@@ -9,7 +9,7 @@ import { IDatePickerDropdownProps, DatePickerDropdown } from '../DatePickerDropd
 import { toggleDropdown, closeDropdown } from '../../dropdown/DropdownActions';
 import { addDatePicker, changeDatePickerLowerLimit } from '../DatePickerActions';
 import { IDatePickerState } from '../DatePickerReducers';
-import { addOptionPicker, changeOptionPicker } from '../../optionsPicker/OptionPickerActions';
+import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import { DatePickerBox } from '../DatePickerBox';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */

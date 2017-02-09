@@ -14,8 +14,8 @@ import {
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IDatePickerState } from './DatePickerReducers';
-import { IOptionPickerState } from '../optionsPicker/OptionPickerReducers';
-import { changeOptionPicker } from '../optionsPicker/OptionPickerActions';
+import { IOptionPickerState } from '../optionPicker/OptionPickerReducers';
+import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import * as React from 'react';

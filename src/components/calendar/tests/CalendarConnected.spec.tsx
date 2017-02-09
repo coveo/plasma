@@ -14,7 +14,7 @@ import {
   changeDatePickerUpperLimit,
   changeDatePickerLowerLimit
 } from '../../datePicker/DatePickerActions';
-import { addOptionPicker, changeOptionPicker } from '../../optionsPicker/OptionPickerActions';
+import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 /* tslint:disable:no-unused-variable */

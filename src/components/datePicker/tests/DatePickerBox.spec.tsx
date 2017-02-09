@@ -4,7 +4,7 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { DatePickerBox, IDatePickerBoxProps } from '../DatePickerBox';
 import { CalendarConnected } from '../../calendar/CalendarConnected';
 import { DatesSelectionConnected } from '../DatesSelectionConnected';
-import { OptionPickerConnected } from '../../optionsPicker/OptionPickerConnected';
+import { OptionPickerConnected } from '../../optionPicker/OptionPickerConnected';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';

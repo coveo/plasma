@@ -11,7 +11,7 @@ import { actionBarsReducer } from '../components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../components/tables/TableRowReducers';
 import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleReducers';
-import { optionPickersReducer } from '../components/optionsPicker/OptionPickerReducers';
+import { optionPickersReducer } from '../components/optionPicker/OptionPickerReducers';
 import { datePickersReducer } from '../components/datePicker/DatePickerReducers';
 import * as Redux from 'redux';
 

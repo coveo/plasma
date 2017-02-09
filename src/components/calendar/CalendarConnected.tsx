@@ -8,7 +8,7 @@ import {
   ICalendarDispatchProps
 } from './Calendar';
 import { changeDatePickerUpperLimit, changeDatePickerLowerLimit, selectDate } from '../datePicker/DatePickerActions';
-import { changeOptionPicker } from '../optionsPicker/OptionPickerActions';
+import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { connect } from 'react-redux';

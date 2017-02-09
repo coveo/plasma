@@ -13,7 +13,7 @@ import { optionsCyclesReducer } from '../src/components/optionsCycle/OptionsCycl
 import { datePickersReducer } from '../src/components/datePicker/DatePickerReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
-import { optionPickersReducer } from '../src/components/optionsPicker/OptionPickerReducers';
+import { optionPickersReducer } from '../src/components/optionPicker/OptionPickerReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;

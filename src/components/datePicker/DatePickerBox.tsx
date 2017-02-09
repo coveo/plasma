@@ -1,11 +1,11 @@
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 import { Calendar } from '../calendar/Calendar';
 import { CalendarConnected } from '../calendar/CalendarConnected';
-import { IOption } from '../optionsPicker/Option';
+import { IOption } from '../optionPicker/Option';
 import { DatesSelection, IDatesSelectionProps } from './DatesSelection';
 import { DatesSelectionConnected } from './DatesSelectionConnected';
-import { IOptionPickerProps, OptionPicker } from '../optionsPicker/OptionPicker';
-import { OptionPickerConnected } from '../optionsPicker/OptionPickerConnected';
+import { IOptionPickerProps, OptionPicker } from '../optionPicker/OptionPicker';
+import { OptionPickerConnected } from '../optionPicker/OptionPickerConnected';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as  s from 'underscore.string';

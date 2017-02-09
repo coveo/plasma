@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { IDatesSelectionProps, DatesSelection } from '../DatesSelection';
 import { DatesSelectionConnected } from '../DatesSelectionConnected';
 import { changeDatePickerLowerLimit, changeDatePickerUpperLimit, selectDate, DateLimits } from '../DatePickerActions';
-import { addOptionPicker, changeOptionPicker } from '../../optionsPicker/OptionPickerActions';
+import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';

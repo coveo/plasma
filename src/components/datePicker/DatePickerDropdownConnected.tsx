@@ -8,7 +8,7 @@ import {
 import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from '../dropdown/DropdownActions';
 import { IDropdownState } from '../dropdown/DropdownReducers';
 import { applyDatePicker, resetDatePickers } from './DatePickerActions';
-import { resetOptionPickers } from '../optionsPicker/OptionPickerActions';
+import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { IDatePickerState } from './DatePickerReducers';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
