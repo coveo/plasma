@@ -9,6 +9,7 @@ import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReduc
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../src/components/tables/TableRowReducers';
+import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilterReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
 
@@ -33,5 +34,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   actionBars: actionBarsReducer,
   dropdowns: dropdownsReducer,
   rows: tableRowsReducer,
+  itemFilters: itemFiltersReducer,
   lastAction
 });
