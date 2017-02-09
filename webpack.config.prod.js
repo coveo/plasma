@@ -29,7 +29,11 @@ let config = {
     ],
     loaders: [
       {test: /\.json$/, loader: 'json-loader'},
-      {test: /\.ts(x?)$/, loader: 'ts-loader'}
+      {test: /\.ts(x?)$/, loader: 'ts-loader'},
+      // provide jQuery=require('jquery') to use the same jquery instance
+      // See http://reactkungfu.com/2015/10/integrating-jquery-chosen-with-webpack-using-imports-loader/ for more infos
+      {test: require.resolve('chosen-js'), loader: 'imports-loader?jQuery=jquery'},
+      {test: require.resolve('bootstrap/js/tooltip.js'), loader: 'imports-loader?jQuery=jquery'}
     ]
   },
   tslint: {
