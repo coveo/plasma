@@ -9,6 +9,7 @@ import {
 } from './NavigationPerPage';
 import { IPerPageState } from './NavigationPerPageReducers';
 import { addPerPage, removePerPage, changePerPage } from './NavigationPerPageActions';
+import { changePage } from '../pagination/NavigationPaginationActions';
 import { turnOnLoading } from '../../loading/LoadingActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
@@ -27,8 +28,12 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onRender: (perPageNb: number) => dispatch(addPerPage(ownProps.id, perPageNb)),
     onDestroy: () => dispatch(removePerPage(ownProps.id)),
     onPerPageClick: (perPageNb: number) => {
+      let newCurrentPage = ownProps.currentPage && ownProps.currentPerPage ?
+        Math.floor(ownProps.currentPage * ownProps.currentPerPage / perPageNb) : 0;
+
       dispatch(turnOnLoading(ownProps.loadingIds));
       dispatch(changePerPage(ownProps.id, perPageNb));
+      dispatch(changePage(`pagination-${ownProps.id}`, newCurrentPage));
     }
   });
 
