@@ -10,7 +10,6 @@ export interface IItemFilterProps extends React.ClassAttributes<ItemFilter> {
 export class ItemFilter extends React.Component<IItemFilterProps, any> {
 
   render() {
-
     return (
       <div className='coveo-table-actions item-filter'>
         <span className='item-filter-label'>{this.props.label}: </span>
