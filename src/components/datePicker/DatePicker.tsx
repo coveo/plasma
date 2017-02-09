@@ -1,7 +1,7 @@
 import { SetToNowButton } from './SetToNowButton';
 import { DateUtils } from '../../utils/DateUtils';
-import * as React from 'react';
 import { DateLimits } from './DatePickerActions';
+import * as React from 'react';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
   onChange: (date: Date, isUpperLimit: boolean) => void;

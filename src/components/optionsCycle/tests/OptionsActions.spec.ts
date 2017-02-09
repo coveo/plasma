@@ -1,6 +1,7 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../../ReactVapor';
 import { OptionsCycleActions, addOptionsCycle, changeOptionsCycle, removeOptionsCycle } from '../OptionsCycleActions';
+
 describe('Options cycle', () => {
 
   describe('OptionsCycleActions', () => {

@@ -1,7 +1,6 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { CalendarDay, IDay, ICalendarDayProps } from '../CalendarDay';
 import { DateUtils } from '../../../utils/DateUtils';
-
 import * as moment from 'moment';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */

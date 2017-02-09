@@ -1,9 +1,9 @@
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 import { DatePickerBox, IDatesSelectionBox, IDatePickerBoxProps } from './DatePickerBox';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { IDatePickerState } from './DatePickerReducers';
 import { DateUtils } from '../../utils/DateUtils';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
   label?: string;

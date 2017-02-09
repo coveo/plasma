@@ -1,9 +1,9 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { DatesSelection, IDatesSelectionProps } from '../DatesSelection';
-/* tslint:disable:no-unused-variable */
-import * as React from 'react';
 import { DatePicker } from '../DatePicker';
 import { DATES_SEPARATOR } from '../../../utils/DateUtils';
+/* tslint:disable:no-unused-variable */
+import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {

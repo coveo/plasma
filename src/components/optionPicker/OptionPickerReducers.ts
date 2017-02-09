@@ -1,7 +1,7 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../ReactVapor';
-import * as _ from 'underscore';
 import { OptionPickerActions } from './OptionPickerActions';
+import * as _ from 'underscore';
 
 export interface IOptionPickerState {
   id: string;

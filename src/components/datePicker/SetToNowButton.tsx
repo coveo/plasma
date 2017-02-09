@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { Tooltip } from '../tooltip/Tooltip';
 import { Svg } from '../svg/Svg';
+import * as React from 'react';
 
 export interface ISetToNowProps extends React.ClassAttributes<SetToNowButton> {
   onClick: () => void;
