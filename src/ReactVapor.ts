@@ -14,6 +14,7 @@ import { ITableRowState } from './components/tables/TableRowReducers';
 import { IOptionsCycleState } from './components/optionsCycle/OptionsCycleReducers';
 import { IDatePickerState } from './components/datePicker/DatePickerReducers';
 import { IOptionPickerState } from './components/optionPicker/OptionPickerReducers';
+import { IItemFilterState } from './components/actions/filters/ItemFilterReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -29,6 +30,7 @@ export interface IReactVaporState {
   optionsCycles?: IOptionsCycleState[];
   datePickers?: IDatePickerState[];
   optionPickers?: IOptionPickerState[];
+  itemFilters?: IItemFilterState[];
 }
 
 export interface IReduxActionsPayload {
@@ -48,4 +50,5 @@ export interface IReduxActionsPayload {
   value?: string;
   isRange?: boolean;
   limit?: string;
+  item?: string;
 }
