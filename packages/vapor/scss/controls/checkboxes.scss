@@ -50,10 +50,6 @@ input[type=checkbox].coveo-checkbox {
     }
   }
 
-  & + button:disabled {
-    border-color: $dark-grey;
-  }
-
   &:checked + button {
     background-color: $green;
     border-color: $green;
@@ -76,7 +72,7 @@ input[type=checkbox].coveo-checkbox {
     }
   }
 
-  &:checked:disabled + button {
+  &:disabled + button {
     background-color: $dark-grey;
     border-color: $dark-grey;
   }
@@ -119,7 +115,7 @@ input[type=checkbox].coveo-checkbox {
 
   color: $dark-grey;
   line-height: 16px;
-  vertical-align: middle; // Required to properly position checkboxes into tables.
+  vertical-align: middle; // Required to properly position checkboxes into tables
 
   .label {
     cursor: pointer;
