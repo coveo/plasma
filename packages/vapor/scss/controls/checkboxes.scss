@@ -50,6 +50,10 @@ input[type=checkbox].coveo-checkbox {
     }
   }
 
+  & + button:disabled {
+    border-color: $dark-grey;
+  }
+
   &:checked + button {
     background-color: $green;
     border-color: $green;
