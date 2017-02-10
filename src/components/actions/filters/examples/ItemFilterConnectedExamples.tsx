@@ -9,7 +9,9 @@ const ITEM_FILTER_LABEL = 'Item filter';
 export class ItemFilterConnectedExamples extends React.Component<any, any> {
 
   componentDidMount() {
-    ReactVaporStore.dispatch(filterItems(ACTION_BAR_ID + ITEM_FILTER_LABEL, 'Item'));
+    ReactVaporStore.dispatch(filterItems(ACTION_BAR_ID, 'Item'));
+    ReactVaporStore.dispatch(filterItems(ACTION_BAR_ID + '1', 'Very looooooooooooong item'));
+    ReactVaporStore.dispatch(filterItems(ACTION_BAR_ID + '2', 'Very looooooooooooong item'));
   }
 
   render() {
@@ -20,6 +22,24 @@ export class ItemFilterConnectedExamples extends React.Component<any, any> {
           <ActionBarConnected
             id={ACTION_BAR_ID}
             itemFilterLabel={ITEM_FILTER_LABEL}
+            onClearItemFilter={() => alert('Item filter was cleared')}
+            />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Action bar with an item filter cropped on the right and with Redux state</label>
+          <ActionBarConnected
+            id={ACTION_BAR_ID + '1'}
+            itemFilterLabel={ITEM_FILTER_LABEL}
+            itemFilterCropLength={10}
+            onClearItemFilter={() => alert('Item filter was cleared')}
+            />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Action bar with an item filter cropped on the left and with Redux state</label>
+          <ActionBarConnected
+            id={ACTION_BAR_ID + '2'}
+            itemFilterLabel={ITEM_FILTER_LABEL}
+            itemFilterCropLength={-10}
             onClearItemFilter={() => alert('Item filter was cleared')}
             />
         </div>
