@@ -28,45 +28,56 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
 
 export interface IDatePickerBoxStateProps extends IReduxStatePossibleProps { }
 
-export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps { }
+export interface IDatePickerBoxChildrenProps {
+  months?: string[];
+  startingMonth?: number;
+  years?: string[];
+  startingYear?: number;
+  days?: string[];
+  startingDay?: number;
+}
+
+export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps,
+  IDatePickerBoxChildrenProps { }
 
 export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
   render() {
     let calendarId: string = `calendar-${this.props.id}`;
     let calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected id={calendarId} /> : <Calendar />;
-    let datesSelectionBoxes: JSX.Element[] = _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
-      let boxId: string = this.props.id + '-' + s.slugify(datesSelectionBox.title);
+    let datesSelectionBoxes: JSX.Element[] =
+      _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
+        let boxId: string = this.props.id + '-' + s.slugify(datesSelectionBox.title);
 
-      let quickOptionsProps: IOptionPickerProps = {
-        id: boxId,
-        options: datesSelectionBox.quickOptions
-      };
-      let optionPicker: JSX.Element = this.props.withReduxState
-        ? <OptionPickerConnected {...quickOptionsProps} />
-        : <OptionPicker {...quickOptionsProps} />;
+        let quickOptionsProps: IOptionPickerProps = {
+          id: boxId,
+          options: datesSelectionBox.quickOptions
+        };
+        let optionPicker: JSX.Element = this.props.withReduxState
+          ? <OptionPickerConnected {...quickOptionsProps} />
+          : <OptionPicker {...quickOptionsProps} />;
 
-      let datesSelectionProps: IDatesSelectionProps = {
-        id: boxId,
-        withTime: datesSelectionBox.withTime,
-        hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
-        setToNowTooltip: this.props.setToNowTooltip,
-        isRange: datesSelectionBox.isRange,
-        color: datesSelectionBox.color,
-        calendarId: calendarId
-      };
-      let dateSelection: JSX.Element = this.props.withReduxState
-        ? <DatesSelectionConnected {...datesSelectionProps} />
-        : <DatesSelection {...datesSelectionProps} />;
+        let datesSelectionProps: IDatesSelectionProps = {
+          id: boxId,
+          withTime: datesSelectionBox.withTime,
+          hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
+          setToNowTooltip: this.props.setToNowTooltip,
+          isRange: datesSelectionBox.isRange,
+          color: datesSelectionBox.color,
+          calendarId: calendarId
+        };
+        let dateSelection: JSX.Element = this.props.withReduxState
+          ? <DatesSelectionConnected {...datesSelectionProps} />
+          : <DatesSelection {...datesSelectionProps} />;
 
-      return (
-        <div key={boxId}>
-          <h3 className='bold text-medium-blue'>{datesSelectionBox.title}</h3>
-          {optionPicker}
-          {dateSelection}
-        </div>
-      );
-    });
+        return (
+          <div key={boxId}>
+            <h3 className='bold text-medium-blue'>{datesSelectionBox.title}</h3>
+            {optionPicker}
+            {dateSelection}
+          </div>
+        );
+      });
 
     return (
       <div className='date-picker-box flex flex-column'>

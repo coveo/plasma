@@ -1,9 +1,10 @@
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { DatePickerBox, IDatesSelectionBox, IDatePickerBoxProps } from './DatePickerBox';
+import { DatePickerBox, IDatesSelectionBox, IDatePickerBoxProps, IDatePickerBoxChildrenProps } from './DatePickerBox';
 import { IDatePickerState } from './DatePickerReducers';
 import { DateUtils } from '../../utils/DateUtils';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { DEFAULT_YEARS } from '../calendar/Calendar';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
   label?: string;
@@ -14,7 +15,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   onRight?: boolean;
 }
 
-export interface IDatePickerDropdownChildrenProps {
+export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
   datesSelectionBoxes: IDatesSelectionBox[];
   setToNowTooltip?: string;
 }
@@ -26,7 +27,7 @@ export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps 
 
 export interface IDatePickerDropdownDispatchProps {
   onApply?: () => void;
-  onCancel?: () => void;
+  onCancel?: (currentMonth: number, currentYear: number) => void;
   onRender?: () => void;
   onDestroy?: () => void;
   onClick?: () => void;
@@ -87,7 +88,14 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private handleCancel() {
     if (this.props.onCancel) {
-      this.props.onCancel();
+      let currentMonth: number = this.props.datePicker
+        ? this.props.datePicker.appliedLowerLimit.getMonth()
+        : DateUtils.currentMonth;
+      let years: string[] = this.props.years || DEFAULT_YEARS;
+      let currentYear: number = this.props.datePicker
+        ? this.props.datePicker.appliedLowerLimit.getFullYear()
+        : DateUtils.currentYear;
+      this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()));
     }
   }
 

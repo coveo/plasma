@@ -10,6 +10,8 @@ import { IDropdownState } from '../dropdown/DropdownReducers';
 import { applyDatePicker, resetDatePickers } from './DatePickerActions';
 import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { IDatePickerState } from './DatePickerReducers';
+import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
+import { MONTH_PICKER_ID, YEAR_PICKER_ID } from '../calendar/Calendar';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { connect } from 'react-redux';
@@ -40,7 +42,9 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     dispatch(applyDatePicker(ownProps.id));
     dispatch(closeDropdown(ownProps.id));
   },
-  onCancel: () => {
+  onCancel: (currentMonth: number, currentYear: number) => {
+    dispatch(changeOptionsCycle(`calendar-${ownProps.id}${MONTH_PICKER_ID}`, currentMonth));
+    dispatch(changeOptionsCycle(`calendar-${ownProps.id}${YEAR_PICKER_ID}`, currentYear));
     dispatch(resetDatePickers(ownProps.id));
     dispatch(resetOptionPickers(ownProps.id));
     dispatch(closeDropdown(ownProps.id));

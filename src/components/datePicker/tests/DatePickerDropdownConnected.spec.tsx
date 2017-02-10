@@ -7,13 +7,16 @@ import { Provider } from 'react-redux';
 import { DatePickerDropdownConnected } from '../DatePickerDropdownConnected';
 import { IDatePickerDropdownProps, DatePickerDropdown } from '../DatePickerDropdown';
 import { toggleDropdown, closeDropdown } from '../../dropdown/DropdownActions';
-import { addDatePicker, changeDatePickerLowerLimit } from '../DatePickerActions';
+import { addDatePicker, changeDatePickerLowerLimit, applyDatePicker } from '../DatePickerActions';
 import { IDatePickerState } from '../DatePickerReducers';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import { DatePickerBox } from '../DatePickerBox';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
+import { MONTH_PICKER_ID, YEAR_PICKER_ID, DEFAULT_YEARS } from '../../calendar/Calendar';
+import { addOptionsCycle, changeOptionsCycle } from '../../optionsCycle/OptionsCycleActions';
+import { DateUtils } from '../../../utils/DateUtils';
 /* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {
@@ -179,7 +182,7 @@ describe('Date picker', () => {
       store.dispatch(addDatePicker(pickerId, false));
       store.dispatch(changeDatePickerLowerLimit(pickerId, newLowerLimit));
 
-      datePickerDropdown.props().onCancel();
+      datePickerDropdown.props().onCancel(0, 0);
 
       let datePicker: IDatePickerState = _.findWhere(store.getState().datePickers, { id: pickerId });
       expect(datePicker.appliedLowerLimit).not.toEqual(newLowerLimit);
@@ -198,7 +201,7 @@ describe('Date picker', () => {
       store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
       expect(_.findWhere(store.getState().dropdowns, { id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id }).opened).toBe(true);
 
-      datePickerDropdown.props().onCancel();
+      datePickerDropdown.props().onCancel(1, 1);
       expect(_.findWhere(store.getState().dropdowns, { id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id }).opened).toBe(false);
     });
 
@@ -211,9 +214,54 @@ describe('Date picker', () => {
 
       expect(_.findWhere(store.getState().optionPickers, { id: pickerId }).selectedValue).toBe(newValue);
 
-      datePickerDropdown.props().onCancel();
+      datePickerDropdown.props().onCancel(1, 1);
 
       expect(_.findWhere(store.getState().optionPickers, { id: pickerId }).selectedValue).toBeUndefined();
+    });
+
+    it('should reset the month when calling onCancel prop', () => {
+      let cycleId: string = `calendar-${DATE_PICKER_DROPDOWN_BASIC_PROPS.id}${MONTH_PICKER_ID}`;
+
+      store.dispatch(addOptionsCycle(cycleId));
+      store.dispatch(changeOptionsCycle(cycleId, DateUtils.currentMonth + 1));
+
+      datePickerDropdown.find('footer').find('button').last().simulate('click');
+
+      expect(_.findWhere(store.getState().optionsCycles, { id: cycleId }).currentOption)
+        .toBe(DateUtils.currentMonth);
+    });
+
+    it('should reset the year when calling onCancel prop', () => {
+      let cycleId: string = `calendar-${DATE_PICKER_DROPDOWN_BASIC_PROPS.id}${YEAR_PICKER_ID}`;
+
+      store.dispatch(addOptionsCycle(cycleId));
+      store.dispatch(changeOptionsCycle(cycleId, DateUtils.currentYear + 1));
+
+      datePickerDropdown.find('footer').find('button').last().simulate('click');
+
+      expect(_.findWhere(store.getState().optionsCycles, { id: cycleId }).currentOption)
+        .toBe(DEFAULT_YEARS.indexOf(DateUtils.currentYear.toString()));
+    });
+
+    it('should reset the month to the datepicker\'s lower limit when calling onCancelProp', () => {
+      let pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
+      let newLowerLimit: Date = new Date(new Date().setDate(new Date().getDate() - 700));
+      let yearCycleId: string = `calendar-${DATE_PICKER_DROPDOWN_BASIC_PROPS.id}${YEAR_PICKER_ID}`;
+      let monthCycleId: string = `calendar-${DATE_PICKER_DROPDOWN_BASIC_PROPS.id}${MONTH_PICKER_ID}`;
+
+      store.dispatch(addDatePicker(pickerId, false));
+      store.dispatch(changeDatePickerLowerLimit(pickerId, newLowerLimit));
+      store.dispatch(applyDatePicker(pickerId));
+
+      store.dispatch(addOptionsCycle(monthCycleId));
+      store.dispatch(addOptionsCycle(yearCycleId));
+
+      datePickerDropdown.find('footer').find('button').last().simulate('click');
+
+      expect(_.findWhere(store.getState().optionsCycles, { id: monthCycleId }).currentOption)
+        .toBe(newLowerLimit.getMonth());
+      expect(_.findWhere(store.getState().optionsCycles, { id: yearCycleId }).currentOption)
+        .toBe(DEFAULT_YEARS.indexOf(newLowerLimit.getFullYear().toString()));
     });
 
     it('should display a <DatePickerBox /> with a redux state a prop', () => {
