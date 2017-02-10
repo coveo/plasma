@@ -85,6 +85,7 @@ import { OptionsCycle } from './components/optionsCycle/OptionsCycle';
 import { OptionsCycleConnected } from './components/optionsCycle/OptionsCycleConnected';
 import { OptionsCycleActions, addOptionsCycle, changeOptionsCycle } from './components/optionsCycle/OptionsCycleActions';
 import { optionsCyclesReducer } from './components/optionsCycle/OptionsCycleReducers';
+import { IOption } from './components/optionPicker/Option';
 import { OptionPicker } from './components/optionPicker/OptionPicker';
 import { OptionPickerConnected } from './components/optionPicker/OptionPickerConnected';
 import {
@@ -97,6 +98,7 @@ import { optionPickersReducer } from './components/optionPicker/OptionPickerRedu
 import { Calendar } from './components/calendar/Calendar';
 import { CalendarConnected } from './components/calendar/CalendarConnected';
 import { DisplayClass } from './utils/ComponentUtils';
+import { DateUtils, DATES_SEPARATOR } from './utils/DateUtils';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
@@ -218,6 +220,7 @@ export {
   OptionPicker,
   OptionPickerConnected,
   OptionPickerActions,
+  IOption,
   addOptionPicker,
   changeOptionPicker,
   resetOptionPickers,
@@ -233,6 +236,8 @@ export {
   CommonActions,
   clearState,
 
-  // ComponentUtils
-  DisplayClass
+  // Utils
+  DisplayClass,
+  DateUtils,
+  DATES_SEPARATOR
 };

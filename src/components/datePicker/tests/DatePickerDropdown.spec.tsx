@@ -317,5 +317,16 @@ describe('Date picker', () => {
 
       expect(onCancelSpy).toHaveBeenCalled();
     });
+
+    it('should have class "on-right" on menu if onRight prop is set to true', () => {
+      let expectedClass: string = 'on-right';
+      let onRightProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onRight: true });
+
+      expect(datePickerDropdown.find('.dropdown-menu').hasClass(expectedClass)).toBe(false);
+
+      datePickerDropdown.setProps(onRightProps);
+
+      expect(datePickerDropdown.find('.dropdown-menu').hasClass(expectedClass)).toBe(true);
+    });
   });
 });

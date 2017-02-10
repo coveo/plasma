@@ -11,6 +11,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   applyLabel?: string;
   cancelLabel?: string;
   toLabel?: string;
+  onRight?: boolean;
 }
 
 export interface IDatePickerDropdownChildrenProps {
@@ -131,6 +132,11 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       }
     }
 
+    let menuClasses: string[] = ['dropdown-menu', 'normal-height'];
+    if (this.props.onRight) {
+      menuClasses.push('on-right');
+    }
+
     return (
       <div className='date-picker-dropdown'>
         <div className={dropdownClasses.join(' ')} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
@@ -144,7 +150,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
             </span>
             <span className='dropdown-toggle-arrow'></span>
           </span>
-          <div className='dropdown-menu normal-height'>
+          <div className={menuClasses.join(' ')}>
             {datePickerBox}
           </div>
         </div>
