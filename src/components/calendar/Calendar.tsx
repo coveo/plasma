@@ -140,7 +140,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
 
     let sectedYearOption = this.props.selectedYear || startingYear;
     let year = parseInt(years[sectedYearOption]);
-    let selectedMonth = this.props.selectedMonth || startingMonth;
+    let selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : startingMonth;
 
     let month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), startingDay);
     let weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
