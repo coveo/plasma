@@ -13,7 +13,7 @@ export interface IDateComponents {
 }
 
 export const SIMPLE_DATE_FORMAT: string = 'MMM DD, YYYY';
-export const LONG_DATE_FORMAT: string = 'YYYY-MM-DD HH:mm:ss:SSS';
+export const LONG_DATE_FORMAT: string = 'YYYY-MM-DD HH:mm:ss';
 export const DATES_SEPARATOR: string = '%';
 
 export class DateUtils {
