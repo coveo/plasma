@@ -37,7 +37,7 @@ describe('Option picker', () => {
     });
 
     it('should create an action to change the option picker value', () => {
-      let expectedValue: string = 'any value we want';
+      let expectedValue: () => string = () => 'any value we want';
       let expectedAction: IReduxAction<IReduxActionsPayload> = {
         type: OptionPickerActions.change,
         payload: {

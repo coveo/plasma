@@ -12,7 +12,7 @@ export interface IOptionPickerPayload {
 }
 
 export interface IChangeOptionPayload extends IOptionPickerPayload {
-  value: string;
+  value: () => string;
 }
 
 export const addOptionPicker = (id: string): IReduxAction<IOptionPickerPayload> => ({
@@ -29,7 +29,7 @@ export const removeOptionPicker = (id: string): IReduxAction<IOptionPickerPayloa
   }
 });
 
-export const changeOptionPicker = (id: string, value: string): IReduxAction<IChangeOptionPayload> => ({
+export const changeOptionPicker = (id: string, value: () => string): IReduxAction<IChangeOptionPayload> => ({
   type: OptionPickerActions.change,
   payload: {
     id,

@@ -8,20 +8,20 @@ export interface IOptionPickerOwnProps extends React.ClassAttributes<OptionPicke
 }
 
 export interface IOptionPickerStateProps {
-  activeValue?: string;
+  activeValue?: () => string;
 }
 
 export interface IOptionPickerDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
-  onClick?: (value: string) => void;
+  onClick?: (value: () => string) => void;
 }
 
 export interface IOptionPickerProps extends IOptionPickerOwnProps, IOptionPickerStateProps, IOptionPickerDispatchProps { }
 
 export class OptionPicker extends React.Component<IOptionPickerProps, any> {
 
-  private handleClick(value: string) {
+  private handleClick(value: () => string) {
     if (this.props.onClick) {
       this.props.onClick(value);
     }
@@ -41,11 +41,12 @@ export class OptionPicker extends React.Component<IOptionPickerProps, any> {
 
   render() {
     let options: JSX.Element[] = _.map(this.props.options, (option: IOption, index: number) => {
+
       return <li key={`option-${this.props.id}-${index}`}>
         <Option
           option={option}
           onClick={(value) => this.handleClick(value)}
-          isActive={option.value() === this.props.activeValue}
+          isActive={this.props.activeValue && option.value() === this.props.activeValue()}
           />
       </li>;
     });

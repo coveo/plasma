@@ -5,7 +5,7 @@ import * as _ from 'underscore';
 
 export interface IOptionPickerState {
   id: string;
-  selectedValue: string;
+  selectedValue: () => string;
 }
 
 export const optionPickerInitialState: IOptionPickerState = {

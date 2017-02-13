@@ -27,7 +27,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnPr
   return {
     lowerLimit: item ? item.lowerLimit : new Date(),
     upperLimit: item ? item.upperLimit : new Date(),
-    quickOption: optionPicker ? optionPicker.selectedValue : '',
+    quickOption: optionPicker && optionPicker.selectedValue ? optionPicker.selectedValue() : '',
     isSelecting: item ? item.selected : ''
   };
 };
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
       }
 
       if (!optionPicker) {
-        dispatch(changeOptionPicker(ownProps.id, ''));
+        dispatch(changeOptionPicker(ownProps.id, () => ''));
       }
     },
     onClick: (isUpperLimit: boolean) => dispatch(selectDate(ownProps.id, (isUpperLimit ? DateLimits.upper : DateLimits.lower)))

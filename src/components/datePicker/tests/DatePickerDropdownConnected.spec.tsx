@@ -20,7 +20,7 @@ import { DateUtils } from '../../../utils/DateUtils';
 /* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {
-  describe('<DatesSelectionConnected />', () => {
+  describe('<DatePickerDropdownConnected />', () => {
     const DATE_PICKER_DROPDOWN_BASIC_PROPS: IDatePickerDropdownProps = {
       id: 'dropdown',
       datesSelectionBoxes: []
@@ -70,10 +70,10 @@ describe('Date picker', () => {
     });
 
     it('should get if it has a redux state as a prop', () => {
-      let withReduxSatteProp = datePickerDropdown.props().withReduxState;
+      let withReduxStateProp = datePickerDropdown.props().withReduxState;
 
-      expect(withReduxSatteProp).toBeDefined();
-      expect(withReduxSatteProp).toBe(true);
+      expect(withReduxStateProp).toBeDefined();
+      expect(withReduxStateProp).toBe(true);
     });
 
     it('should get what to do on render as a prop', () => {
@@ -207,12 +207,12 @@ describe('Date picker', () => {
 
     it('should reset the option picker when calling onCancel prop', () => {
       let pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
-      let newValue: string = 'selected value';
+      let newValue: () => string = () => 'selected value';
 
       store.dispatch(addOptionPicker(pickerId));
       store.dispatch(changeOptionPicker(pickerId, newValue));
 
-      expect(_.findWhere(store.getState().optionPickers, { id: pickerId }).selectedValue).toBe(newValue);
+      expect(_.findWhere(store.getState().optionPickers, { id: pickerId }).selectedValue()).toBe(newValue());
 
       datePickerDropdown.props().onCancel(1, 1);
 

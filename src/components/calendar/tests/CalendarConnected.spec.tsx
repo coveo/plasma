@@ -126,16 +126,16 @@ describe('Calendar', () => {
     });
 
     it('should unselected any option from the option picker when calling onClick', () => {
-      let pickerSelected: string = 'soemthing-selected';
+      let pickerSelected: () => string = () => 'something-selected';
 
       store.dispatch(addOptionPicker(PICKER_ID));
       store.dispatch(changeOptionPicker(PICKER_ID, pickerSelected));
 
-      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue).toBe(pickerSelected);
+      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue()).toBe(pickerSelected());
 
       calendar.props().onClick(PICKER_ID, false, new Date());
 
-      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue).toBe('');
+      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue()).toBe('');
     });
 
     it('should change the upper limit if the onClick was called on an upper limit', () => {

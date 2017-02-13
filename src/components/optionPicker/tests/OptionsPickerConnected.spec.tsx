@@ -27,7 +27,7 @@ describe('Option picker', () => {
     ]
   };
 
-  describe('<OptionsCycleConnected />', () => {
+  describe('<OptionPickerConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let optionPicker: ReactWrapper<IOptionPickerProps, any>;
     let store: Store<IReactVaporState>;
@@ -61,7 +61,7 @@ describe('Option picker', () => {
       let activeValueProp = optionPicker.props().activeValue;
 
       expect(activeValueProp).toBeDefined();
-      expect(activeValueProp).toBe('');
+      expect(activeValueProp()).toBe('');
     });
 
     it('should get what to do on render as a prop', () => {
@@ -86,15 +86,15 @@ describe('Option picker', () => {
       store.dispatch(clearState());
 
       expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id })).toBeUndefined();
-      expect(optionPicker.props().activeValue).toBe('');
+      expect(optionPicker.props().activeValue()).toBe('');
     });
 
     it('should return the selectedValue from the state when the option picker exists in the state', () => {
-      let expectedSelectedValue: string = 'our value';
+      let expectedSelectedValue: () => string = () => 'our value';
 
       store.dispatch(changeOptionPicker(OPTION_PICKER_BASIC_PROPS.id, expectedSelectedValue));
 
-      expect(optionPicker.props().activeValue).toBe(expectedSelectedValue);
+      expect(optionPicker.props().activeValue()).toBe(expectedSelectedValue());
     });
 
     it('should call onRender prop when mounted', () => {
@@ -115,17 +115,19 @@ describe('Option picker', () => {
     });
 
     it('should set the selected value to the one sent when calling the onClick prop', () => {
-      let expectedSelectedValue: string = 'our value';
+      let expectedSelectedValue: () => string = () => 'our value';
 
       optionPicker.props().onClick(expectedSelectedValue);
 
-      expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id }).selectedValue).toBe(expectedSelectedValue);
+      expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id }).selectedValue())
+        .toBe(expectedSelectedValue());
 
-      expectedSelectedValue = 'new value';
+      expectedSelectedValue = () => 'new value';
 
       optionPicker.props().onClick(expectedSelectedValue);
 
-      expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id }).selectedValue).toBe(expectedSelectedValue);
+      expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id }).selectedValue())
+        .toBe(expectedSelectedValue());
     });
   });
 });

@@ -118,7 +118,7 @@ describe('Option picker', () => {
 
       optionPicker.find('Option').first().find('button').simulate('click');
 
-      expect(handleClickSpy).toHaveBeenCalledWith(OPTION_PICKER_BASIC_PROPS.options[0].value());
+      expect(handleClickSpy).toHaveBeenCalledWith(OPTION_PICKER_BASIC_PROPS.options[0].value);
     });
   });
 });
