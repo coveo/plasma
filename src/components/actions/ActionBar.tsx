@@ -28,6 +28,7 @@ export interface IActionBarDispatchProps {
 
 export interface IActionBarChildrenProps {
   moreLabel?: string;
+  itemFilterCropLength?: number;
 }
 
 export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProps, IActionBarDispatchProps,
@@ -55,7 +56,11 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
 
   render() {
     let itemFilter: JSX.Element = this.props.itemFilter
-      ? <ItemFilter label={this.props.itemFilterLabel} item={this.props.itemFilter} onClear={() => this.handleClear()} />
+      ? <ItemFilter
+        label={this.props.itemFilterLabel}
+        item={this.props.itemFilter}
+        onClear={() => this.handleClear()} crop={this.props.itemFilterCropLength}
+        />
       : null;
 
     let primaryActions: JSX.Element[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {
