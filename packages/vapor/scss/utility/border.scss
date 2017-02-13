@@ -11,13 +11,3 @@ $borders: border-top border-bottom border-left border-right;
     #{$border}: none;
   }
 }
-
-@mixin button-border($vertical, $horizontal, $border: false) {
-  $property: border-#{$vertical}-#{$horizontal}-radius;
-  button {
-    #{$property}: $border-radius;
-    @if $border {
-      border-top: $default-border;
-    }
-  }
-}

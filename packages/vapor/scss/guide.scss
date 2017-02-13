@@ -9,15 +9,18 @@
 @import 'animations';
 @import 'helpers';
 // Utility
-@import 'typography/utility';
-@import 'utility/align';
-@import 'utility/border';
-@import 'utility/flex';
-@import 'utility/layout';
-@import 'utility/position';
-@import 'utility/white-space';
-@import 'utility/spaced-boxes';
-@import 'utility/colors';
+.coveo-styleguide {
+  @import 'typography/utility';
+  @import 'utility/align';
+  @import 'utility/border';
+  @import 'utility/flex';
+  @import 'utility/layout';
+  @import 'utility/position';
+  @import 'utility/white-space';
+  @import 'utility/spaced-boxes';
+  @import 'utility/colors';
+}
+
 //Progress bar
 @import 'elements/progress-bar';
 // Buttons
