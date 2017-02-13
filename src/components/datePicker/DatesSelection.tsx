@@ -9,6 +9,8 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
   isRange?: boolean;
   color?: string;
   calendarId?: string;
+  defaultLowerLimit?: Date;
+  defaultUpperLimit?: Date;
 }
 
 export interface IDatesSelectionStateProps {

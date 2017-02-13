@@ -39,8 +39,8 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   onClick: () => dispatch(toggleDropdown(ownProps.id)),
   onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
   onApply: () => {
-    dispatch(applyDatePicker(ownProps.id));
     dispatch(closeDropdown(ownProps.id));
+    dispatch(applyDatePicker(ownProps.id));
   },
   onCancel: (currentMonth: number, currentYear: number) => {
     dispatch(changeOptionsCycle(`calendar-${ownProps.id}${MONTH_PICKER_ID}`, currentMonth));

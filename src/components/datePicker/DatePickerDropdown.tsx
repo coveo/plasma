@@ -13,6 +13,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   cancelLabel?: string;
   toLabel?: string;
   onRight?: boolean;
+  onBeforeApply?: () => void;
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -81,6 +82,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
   }
 
   private handleApply() {
+    if (this.props.onBeforeApply) {
+      this.props.onBeforeApply();
+    }
+
     if (this.props.onApply) {
       this.props.onApply();
     }

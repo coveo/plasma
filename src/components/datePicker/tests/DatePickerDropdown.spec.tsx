@@ -291,6 +291,21 @@ describe('Date picker', () => {
     });
 
     it('should call onApply prop if set when calling handleApply', () => {
+      let onBeforeApplySpy: jasmine.Spy = jasmine.createSpy('onBeforeApply');
+      let onBeforeApplyProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS,
+        { onBeforeApply: onBeforeApplySpy });
+
+      expect(() => {
+        datePickerDropdownInstance['handleApply'].call(datePickerDropdownInstance);
+      }).not.toThrow();
+
+      datePickerDropdown.setProps(onBeforeApplyProps);
+      datePickerDropdownInstance['handleApply'].call(datePickerDropdownInstance);
+
+      expect(onBeforeApplySpy).toHaveBeenCalled();
+    });
+
+    it('should call onApply prop if set when calling handleApply', () => {
       let onApplySpy: jasmine.Spy = jasmine.createSpy('onApply');
       let onApplyProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onApply: onApplySpy });
 
