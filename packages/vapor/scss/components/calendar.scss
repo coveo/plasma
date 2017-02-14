@@ -5,6 +5,11 @@
     max-height: none;
     min-width: 0;
     padding: 0;
+
+    &.on-right {
+      right: 0;
+      left: auto;
+    }
   }
 
   .dropdown-selected-value {
@@ -182,6 +187,7 @@
     width: 50%;
 
     button {
+      box-sizing: border-box;
       display: block;
       width: 100%;
       padding: $dropdown-choices-top-bottom-margin;
@@ -279,6 +285,7 @@
 }
 
 .date-button {
+  box-sizing: border-box;
   display: block;
   width: $date-picker-dimension;
   height: $date-picker-dimension;
