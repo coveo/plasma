@@ -24,6 +24,7 @@ export interface INavigationChildrenProps {
   perPageLabel?: string;
   perPageNumbers?: number[];
   onPerPageClick?: () => void;
+  hidePages?: boolean;
 }
 
 export interface INavigationStateProps extends IReduxStatePossibleProps {
@@ -41,7 +42,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
         totalPages: this.props.totalPages,
         numberOfPagesToShow: this.props.numberOfPagesToShow,
         previousLabel: this.props.previousLabel,
-        nextLabel: this.props.nextLabel
+        nextLabel: this.props.nextLabel,
+        hidePages: this.props.hidePages
       };
       pagination = this.props.withReduxState ?
         <NavigationPaginationConnected id={'pagination-' + this.props.id} loadingIds={this.props.loadingIds} {...paginationProps} /> :

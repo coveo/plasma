@@ -10,6 +10,7 @@ export interface INavigationPaginationOwnProps extends React.ClassAttributes<Nav
   previousLabel?: string;
   nextLabel?: string;
   loadingIds?: string[];
+  hidePages?: boolean;
 }
 
 export interface INavigationPaginationStateProps {
@@ -61,22 +62,24 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
     let nextClasses: string = 'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
     let pageSelects: JSX.Element[] = [];
 
-    if (currentPage + showXPages / 2 > lastPage) {
-      end = lastPage;
-      start = Math.max(lastPage - showXPages, 0);
-    } else {
-      start = Math.max(Math.floor(currentPage - showXPages / 2), 0);
-      end = Math.min(start + showXPages, lastPage);
-    }
+    if (!this.props.hidePages) {
+      if (currentPage + showXPages / 2 > lastPage) {
+        end = lastPage;
+        start = Math.max(lastPage - showXPages, 0);
+      } else {
+        start = Math.max(Math.floor(currentPage - showXPages / 2), 0);
+        end = Math.min(start + showXPages, lastPage);
+      }
 
-    _.each(_.range(start, end + 1), (p: number): void => {
-      pageSelects.push(<NavigationPaginationSelect
-        key={'page-' + p}
-        onPageClick={this.handlePageClick}
-        pageNb={p}
-        selected={p === currentPage}
-        />);
-    });
+      _.each(_.range(start, end + 1), (p: number): void => {
+        pageSelects.push(<NavigationPaginationSelect
+          key={'page-' + p}
+          onPageClick={this.handlePageClick}
+          pageNb={p}
+          selected={p === currentPage}
+          />);
+      });
+    }
 
     return (
       <div className='pagination'>
