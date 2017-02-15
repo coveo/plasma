@@ -8,10 +8,8 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import * as s from 'underscore.string';
-
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('LastUpdated', () => {
   describe('<LastUpdatedConnected />', () => {

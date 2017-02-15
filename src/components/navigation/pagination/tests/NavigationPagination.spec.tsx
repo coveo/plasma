@@ -7,9 +7,8 @@ import {
   NUMBER_OF_PAGES_SHOWING
 } from '../NavigationPagination';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('NavigationPagination', () => {
   let basicNavigationPaginationAttributes: INavigationPaginationProps = {

@@ -8,9 +8,8 @@ import { clearState } from '../../../utils/ReduxUtils';
 import { IReactVaporState } from '../../../ReactVapor';
 import { ITriggerActionProps, TriggerAction } from '../TriggerAction';
 import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {
   describe('<TriggerActionConnected />', () => {

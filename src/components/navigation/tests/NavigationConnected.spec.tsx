@@ -11,9 +11,8 @@ import { NavigationPaginationConnected } from '../pagination/NavigationPaginatio
 import { NavigationPerPageConnected } from '../perPage/NavigationPerPageConnected';
 import { NavigationPerPageSelect } from '../perPage/NavigationPerPageSelect';
 import { NavigationPaginationSelect } from '../pagination/NavigationPaginationSelect';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('<NavigationConnected />', () => {
   let basicNavigationProps: INavigationProps = {

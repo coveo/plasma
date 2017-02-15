@@ -9,9 +9,8 @@ import { DatesSelectionConnected } from '../DatesSelectionConnected';
 import { changeDatePickerLowerLimit, changeDatePickerUpperLimit, selectDate, DateLimits } from '../DatePickerActions';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {
   describe('<DatesSelectionConnected />', () => {

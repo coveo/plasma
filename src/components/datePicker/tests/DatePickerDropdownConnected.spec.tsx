@@ -12,12 +12,11 @@ import { IDatePickerState } from '../DatePickerReducers';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import { DatePickerBox } from '../DatePickerBox';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { MONTH_PICKER_ID, YEAR_PICKER_ID, DEFAULT_YEARS } from '../../calendar/Calendar';
 import { addOptionsCycle, changeOptionsCycle } from '../../optionsCycle/OptionsCycleActions';
 import { DateUtils } from '../../../utils/DateUtils';
-/* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {
   describe('<DatePickerDropdownConnected />', () => {

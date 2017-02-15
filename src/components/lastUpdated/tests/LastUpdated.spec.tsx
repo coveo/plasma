@@ -3,9 +3,8 @@ import { LastUpdated, ILastUpdatedProps, LAST_UPDATE_LABEL } from '../LastUpdate
 import { TestUtils } from '../../../utils/TestUtils';
 import * as s from 'underscore.string';
 import * as moment from 'moment';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('LastUpdated', () => {
   describe('<LastUpdated />', () => {

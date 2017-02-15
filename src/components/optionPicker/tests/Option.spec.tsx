@@ -1,9 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { IOptionProps, Option } from '../Option';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Option picker', () => {
   const OPTION_BASIC_PROPS: IOptionProps = {

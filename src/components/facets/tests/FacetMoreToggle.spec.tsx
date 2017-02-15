@@ -1,9 +1,8 @@
 import { shallow, ReactWrapper, mount } from 'enzyme';
 import { FacetMoreToggle, IFacetMoreToggleProps, FACET_TOGGLE_MORE_LABEL } from '../FacetMoreToggle';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Facets', () => {
   let basicFacetMoreToggleProps: IFacetMoreToggleProps = {

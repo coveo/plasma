@@ -6,9 +6,8 @@ import { ICalendarDayProps, CalendarDay, IDay } from '../CalendarDay';
 import { IDatePickerState } from '../../datePicker/DatePickerReducers';
 import * as _ from 'underscore';
 import * as moment from 'moment';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Calendar', () => {
 

@@ -2,6 +2,7 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../ReactVapor';
 import { DatePickerActions } from './DatePickerActions';
 import * as _ from 'underscore';
+import * as moment from 'moment';
 
 export interface IDatePickerState {
   id: string;
@@ -20,11 +21,11 @@ export const datePickerInitialState: IDatePickerState = {
   calendarId: undefined,
   color: undefined,
   isRange: false,
-  lowerLimit: new Date(new Date().setHours(0, 0, 0, 0)),
-  upperLimit: new Date(new Date().setHours(23, 59, 59, 999)),
+  lowerLimit: moment().startOf('day').toDate(),
+  upperLimit: moment().endOf('day').toDate(),
   selected: '',
-  appliedLowerLimit: new Date(new Date().setHours(0, 0, 0, 0)),
-  appliedUpperLimit: new Date(new Date().setHours(23, 59, 59, 999))
+  appliedLowerLimit: moment().startOf('day').toDate(),
+  appliedUpperLimit: moment().endOf('day').toDate()
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 

@@ -1,9 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { ITableHeaderCellProps, TableHeaderCell } from '../TableHeaderCell';
 import { TableHeader, ITableHeaderProps } from '../TableHeader';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Tables', () => {
   let columns: ITableHeaderCellProps[];

@@ -3,9 +3,8 @@ import { CalendarDay, IDay, ICalendarDayProps } from '../CalendarDay';
 import { DateUtils } from '../../../utils/DateUtils';
 import * as moment from 'moment';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Calendar day', () => {
   let newMonth = DateUtils.currentMonth < 11 ? DateUtils.currentMonth + 1 : 0;

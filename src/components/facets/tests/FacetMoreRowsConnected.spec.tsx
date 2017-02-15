@@ -11,9 +11,8 @@ import { addFacet, toggleMoreFacetRows } from '../FacetActions';
 import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
 import { addFilter, filterThrough } from '../../filterBox/FilterBoxActions';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Facets', () => {
 

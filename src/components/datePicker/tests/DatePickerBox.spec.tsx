@@ -6,9 +6,8 @@ import { CalendarConnected } from '../../calendar/CalendarConnected';
 import { DatesSelectionConnected } from '../DatesSelectionConnected';
 import { OptionPickerConnected } from '../../optionPicker/OptionPickerConnected';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {
   const DATE_PICKER_BOX_BASIC_PROPS: IDatePickerBoxProps = {

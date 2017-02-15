@@ -22,23 +22,11 @@ export class DateUtils {
   static currentYear: number = DateUtils.currentDate.getFullYear();
 
   static getPreviousYears(numberOfYears: number): string[] {
-    let years: string[] = [];
-
-    for (let year = DateUtils.currentYear - 1; year >= DateUtils.currentYear - numberOfYears; year--) {
-      years.push(year.toString());
-    }
-
-    return years.reverse();
+    return _.range(DateUtils.currentYear - numberOfYears - 1, DateUtils.currentYear).map(String);
   }
 
   static getNextYears(numberOfYears: number): string[] {
-    let years: string[] = [];
-
-    for (let year = DateUtils.currentYear + 1; year <= DateUtils.currentYear + numberOfYears; year++) {
-      years.push(year.toString());
-    }
-
-    return years;
+    return _.range(DateUtils.currentYear, DateUtils.currentYear + numberOfYears + 1).map(String);
   }
 
   static getMonthWeeks(firstDay: Date, startingDay: number): IDay[][] {
@@ -90,27 +78,5 @@ export class DateUtils {
 
   static getDateFromSimpleDateString(date: string): Date {
     return moment(date, SIMPLE_DATE_FORMAT, true).toDate();
-  }
-
-  static getRelativeDate(startingDate: Date, dateModifiers: IDateComponents): Date {
-    _.defaults(dateModifiers, {
-      year: 0,
-      month: 0,
-      date: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-      milliseconds: 0
-    });
-
-    let year: number = startingDate.getFullYear() + dateModifiers.year;
-    let month: number = startingDate.getMonth() + dateModifiers.month;
-    let date: number = startingDate.getDate() + dateModifiers.date;
-    let hours: number = startingDate.getHours() + dateModifiers.hours;
-    let minutes: number = startingDate.getMinutes() + dateModifiers.minutes;
-    let seconds: number = startingDate.getSeconds() + dateModifiers.seconds;
-    let milliseconds: number = startingDate.getMilliseconds() + dateModifiers.milliseconds;
-
-    return new Date(year, month, date, hours, minutes, seconds, milliseconds);
   }
 }

@@ -10,9 +10,8 @@ import {
 import { IDatePickerState } from '../DatePickerReducers';
 import { DateUtils } from '../../../utils/DateUtils';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {
   const DATE_PICKER_DROPDOWN_BASIC_PROPS: IDatePickerDropdownProps = {

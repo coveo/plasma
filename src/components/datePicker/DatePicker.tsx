@@ -15,7 +15,15 @@ export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
   color?: string;
 }
 
-export const DEFAULT_DATE_PICKER_COLOR: string = 'blue';
+export const DatePickerColors = {
+  blue: 'blue',
+  green: 'green',
+  yellow: 'yellow',
+  red: 'red',
+  orange: 'orange'
+};
+
+export const DEFAULT_DATE_PICKER_COLOR: string = DatePickerColors.blue;
 
 export class DatePicker extends React.Component<IDatePickerProps, any> {
   private dateInput: HTMLInputElement;
@@ -67,8 +75,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
       || this.props.isSelecting === DateLimits.lower && !this.props.upperLimit) {
       inputClasses.push('picking-date');
     } else if (this.dateInput && this.dateInput.value) {
-      inputClasses.push('date-picked');
-      inputClasses.push(`bg-${color}`);
+      inputClasses.push('date-picked', `bg-${color}`);
     }
 
     return (

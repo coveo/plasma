@@ -1,8 +1,7 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { OptionsCycle, IOptionsCycleProps } from '../OptionsCycle';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Options cycle', () => {
   const OPTIONS = ['option 1', 'option 2', 'option 3', 'option 4'];

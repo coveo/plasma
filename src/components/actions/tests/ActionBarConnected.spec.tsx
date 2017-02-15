@@ -14,9 +14,8 @@ import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
 import { IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
 import { filterItems } from '../filters/ItemFilterActions';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {
   const id: string = 'secondary-actions';

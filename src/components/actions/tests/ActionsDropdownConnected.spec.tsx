@@ -8,9 +8,8 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { Provider } from 'react-redux';
 import { TriggerActionConnected } from '../TriggerActionConnected';
 import { Store } from 'react-redux';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {
   const actionTrigger: jasmine.Spy = jasmine.createSpy('triggerMethod');

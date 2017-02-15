@@ -1,9 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { SetToNowButton, ISetToNowProps, SET_TO_NOW_DEFAULT_TOOLTIP } from '../SetToNowButton';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Date picker', () => {
   const BUTTON_BASIC_PROPS: ISetToNowProps = {
