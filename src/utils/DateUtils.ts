@@ -22,7 +22,7 @@ export class DateUtils {
   static currentYear: number = DateUtils.currentDate.getFullYear();
 
   static getPreviousYears(numberOfYears: number): string[] {
-    return _.range(DateUtils.currentYear - numberOfYears - 1, DateUtils.currentYear).map(String);
+    return _.range(DateUtils.currentYear - numberOfYears, DateUtils.currentYear).map(String);
   }
 
   static getNextYears(numberOfYears: number): string[] {
