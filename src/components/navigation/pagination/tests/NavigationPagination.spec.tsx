@@ -81,7 +81,7 @@ describe('NavigationPagination', () => {
 
         expect(() => {
           navigationPaginationInstance['handlePageClick']
-          .call(navigationPaginationInstance, 3);
+            .call(navigationPaginationInstance, 3);
         }).not.toThrow();
 
         navigationPagination.setProps(newNavigationPaginationProps);
