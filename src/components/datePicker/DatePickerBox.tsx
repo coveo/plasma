@@ -1,5 +1,5 @@
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { Calendar } from '../calendar/Calendar';
+import { Calendar, ICalendarProps } from '../calendar/Calendar';
 import { CalendarConnected } from '../calendar/CalendarConnected';
 import { IOption } from '../optionPicker/Option';
 import { DatesSelection, IDatesSelectionProps } from './DatesSelection';
@@ -43,8 +43,16 @@ export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePicker
 export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
   render() {
-    let calendarId: string = `calendar-${this.props.id}`;
-    let calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected id={calendarId} /> : <Calendar />;
+    let calendarProps: ICalendarProps = {
+      id: `calendar-${this.props.id}`,
+      months: this.props.months,
+      startingMonth: this.props.startingMonth,
+      years: this.props.years,
+      startingYear: this.props.startingYear,
+      days: this.props.days,
+      startingDay: this.props.startingDay
+    };
+    let calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected {...calendarProps} /> : <Calendar />;
     let datesSelectionBoxes: JSX.Element[] =
       _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
         let boxId: string = this.props.id + '-' + s.slugify(datesSelectionBox.title);
@@ -64,7 +72,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           setToNowTooltip: this.props.setToNowTooltip,
           isRange: datesSelectionBox.isRange,
           color: datesSelectionBox.color,
-          calendarId: calendarId
+          calendarId: calendarProps.id
         };
         let dateSelection: JSX.Element = this.props.withReduxState
           ? <DatesSelectionConnected {...datesSelectionProps} />

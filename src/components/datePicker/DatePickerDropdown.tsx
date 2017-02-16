@@ -19,6 +19,12 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
   datesSelectionBoxes: IDatesSelectionBox[];
   setToNowTooltip?: string;
+  months?: string[];
+  startingMonth?: number;
+  years?: string[];
+  startingYear?: number;
+  days?: string[];
+  startingDay?: number;
 }
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
@@ -114,6 +120,12 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     let datePickerBoxProps: IDatePickerBoxProps = {
       setToNowTooltip: this.props.setToNowTooltip,
       datesSelectionBoxes: this.props.datesSelectionBoxes,
+      months: this.props.months,
+      startingMonth: this.props.startingMonth,
+      years: this.props.years,
+      startingYear: this.props.startingYear,
+      days: this.props.days,
+      startingDay: this.props.startingDay,
       footer: (
         <footer className='modal-footer mod-small'>
           <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
