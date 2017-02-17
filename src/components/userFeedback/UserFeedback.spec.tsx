@@ -2,11 +2,8 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { extend, all } from 'underscore';
 import { UserFeedback, UserFeedbackState, IUserFeedbackProps, TextColorClass } from './UserFeedback';
 import { DisplayClass } from '../../utils/ComponentUtils';
-
-// Until Webpack provided plugins works with TS 2.0
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('<UserFeedback>', () => {
   const getShallowOutput = (feedbackText: string, state: string, extraClasses?: string[], displayOnShow?: string): ShallowWrapper<IUserFeedbackProps, any> => {

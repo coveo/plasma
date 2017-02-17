@@ -7,9 +7,8 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
 import { clearState } from '../../../utils/ReduxUtils';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Tables', () => {
   let basicTableHeadingRowProps: ITableHeadingRowOwnProps;

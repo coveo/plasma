@@ -7,9 +7,8 @@ import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { FacetMoreToggleConnected } from '../FacetMoreToggleConnected';
 import { addFacet, toggleMoreFacetRows } from '../FacetActions';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Facets', () => {
 

@@ -2,11 +2,8 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 import { ISvgProps, Svg } from './Svg';
-
-// Until Webpack provided plugins works with TS 2.0
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('<Svg>', () => {
   let svgWrapper: ReactWrapper<ISvgProps, any>;

@@ -4,9 +4,8 @@ import { Store } from 'redux';
 import { TestUtils } from '../../../utils/TestUtils';
 import { LoadingConnected } from '../LoadingConnected';
 import { Provider } from 'react-redux';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('<LoadingConnected />', () => {
   it('should render without errors', () => {

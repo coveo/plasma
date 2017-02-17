@@ -8,9 +8,8 @@ import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
 import { ActionsDropdownConnected } from '../ActionsDropdownConnected';
 import { PrimaryActionConnected } from '../PrimaryActionConnected';
 import { Store } from 'react-redux';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {
   let id: string = 'secondary-actions';

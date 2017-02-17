@@ -24,8 +24,16 @@ import { TableHeaderExamples } from '../src/components/tables/examples/TableHead
 import { ItemFilterExamples } from '../src/components/actions/filters/examples/ItemFilterExamples';
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import { TableEmptyRowExamples } from '../src/components/tables/examples/TableEmptyRowExamples';
+import { OptionsCycleExamples } from '../src/components/optionsCycle/examples/OptionsCycleExamples';
+import { OptionsCycleConnectedExamples } from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
+import { CalendarConnectedExamples } from '../src/components/calendar/examples/CalendarConnectedExamples';
+import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import { DatesSelectionExamples } from '../src/components/datePicker/examples/DatesSelectionExamples';
+import { DatesSelectionConnectedExamples } from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
+import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
+import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 
 class App extends React.Component<any, any> {
 
@@ -111,6 +119,14 @@ class App extends React.Component<any, any> {
           <TableRowConnectedExamples />
           <TableEmptyRowExamples />
           <TableHeaderExamples />
+          <OptionsCycleExamples />
+          <OptionsCycleConnectedExamples />
+          <CalendarConnectedExamples />
+          <DatesSelectionExamples />
+          <DatesSelectionConnectedExamples />
+          <DatePickerBoxExamples />
+          <DatePickerBoxConnectedExamples />
+          <DatePickerDropdownConnectedExamples />
         </div>
       </Provider>
     );

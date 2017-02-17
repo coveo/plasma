@@ -1,11 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as _ from 'underscore';
 import { Popover, IPopoverProps } from './Popover';
-
-// Until Webpack provided plugins works with TS 2.0
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('<Popover>', () => {
   let popoverProps: IPopoverProps;

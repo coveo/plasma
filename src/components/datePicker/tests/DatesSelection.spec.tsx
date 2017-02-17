@@ -1,0 +1,163 @@
+import { shallow, mount, ReactWrapper } from 'enzyme';
+import { DatesSelection, IDatesSelectionProps } from '../DatesSelection';
+import { DatePicker } from '../DatePicker';
+import { DATES_SEPARATOR } from '../../../utils/DateUtils';
+// tslint:disable-next-line:no-unused-variable
+import * as React from 'react';
+
+describe('Date picker', () => {
+
+  describe('<DatesSelection />', () => {
+    it('should render without errors', () => {
+      expect(() => {
+        shallow(
+          <DatesSelection />
+        );
+      }).not.toThrow();
+    });
+  });
+
+  describe('<DatesSelection />', () => {
+    let datesSelection: ReactWrapper<IDatesSelectionProps, any>;
+    let datesSelectionInstance: DatesSelection;
+
+    beforeEach(() => {
+      datesSelection = mount(
+        <DatesSelection />,
+        { attachTo: document.getElementById('App') }
+      );
+      datesSelectionInstance = datesSelection.instance() as DatesSelection;
+    });
+
+    afterEach(() => {
+      datesSelection.unmount();
+      datesSelection.detach();
+    });
+
+    it('should display one <DatePicker /> by default and two if isRange prop is set to true', () => {
+      expect(datesSelection.find('DatePicker').length).toBe(1);
+
+      datesSelection.setProps({ isRange: true });
+
+      expect(datesSelection.find('DatePicker').length).toBe(2);
+    });
+
+    it('should display a separator between the two date pickers if isRange prop is set to true', () => {
+      expect(datesSelection.find('.date-separator').length).toBe(0);
+
+      datesSelection.setProps({ isRange: true });
+
+      expect(datesSelection.find('.date-separator').length).toBe(1);
+    });
+
+    it('should add the class "mod-vertical" on the separator if the pickers display the time', () => {
+      datesSelection.setProps({ isRange: true });
+
+      expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(false);
+
+      datesSelection.setProps({ isRange: true, withTime: true });
+
+      expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(true);
+    });
+
+    it('should have the classes "mod-inline" and "flex" if the pickers do not display the time', () => {
+      expect(datesSelection.find('.mod-inline').hasClass('flex')).toBe(true);
+
+      datesSelection.setProps({ withTime: true });
+
+      expect(datesSelection.find('.mod-inline').length).toBe(0);
+      expect(datesSelection.find('.flex').hasClass('mod-inline')).toBe(false);
+    });
+
+    it('should call onDateChange with the date and whether or not the picker is the upper limit when calling the ' +
+      'onChange prop on the picker', () => {
+        let expectedDate: Date = new Date();
+        let expectedIsUpperLimit: boolean = true;
+        let onDateChangeSpy: jasmine.Spy = spyOn(datesSelectionInstance, 'onDateChange');
+
+        datesSelection.find(DatePicker).first().props().onChange(expectedDate, expectedIsUpperLimit);
+
+        expect(onDateChangeSpy).toHaveBeenCalledWith(expectedDate, expectedIsUpperLimit);
+      });
+
+    it('should call onDateClick with and whether or not the picker is the upper limit when calling the onClick prop ' +
+      'on the picker', () => {
+        let expectedIsUpperLimit: boolean = true;
+        let onDateClickSpy: jasmine.Spy = spyOn(datesSelectionInstance, 'onDateClick');
+
+        datesSelection.find(DatePicker).first().props().onClick(expectedIsUpperLimit);
+
+        expect(onDateClickSpy).toHaveBeenCalledWith(expectedIsUpperLimit);
+      });
+
+    it('should call onChange prop if defined when calling onDateChange', () => {
+      let onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
+
+      expect(() => {
+        datesSelectionInstance['onDateChange'].call(datesSelectionInstance, new Date(), false);
+      }).not.toThrow();
+
+      datesSelection.setProps({ onChange: onChangeSpy });
+      datesSelectionInstance['onDateChange'].call(datesSelectionInstance, new Date(), false);
+
+      expect(onChangeSpy).toHaveBeenCalled();
+    });
+
+    it('should not throw on date click if the onClick prop is not defined', () => {
+      let onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
+
+      expect(() => {
+        datesSelectionInstance['onDateClick'].call(datesSelectionInstance, false);
+      }).not.toThrow();
+
+      datesSelection.setProps({ onClick: onClickSpy });
+      datesSelectionInstance['onDateClick'].call(datesSelectionInstance, false);
+
+      expect(onClickSpy).toHaveBeenCalled();
+    });
+
+    it('should call onRender prop if set when mounting', () => {
+      let onRenderSpy: jasmine.Spy = jasmine.createSpy('onRender');
+
+      expect(() => datesSelectionInstance.componentWillMount()).not.toThrow();
+
+      datesSelection.unmount();
+      datesSelection.setProps({ onRender: onRenderSpy });
+      datesSelection.mount();
+      expect(onRenderSpy).toHaveBeenCalled();
+    });
+
+    it('should call onDestroy prop if set when will unmount', () => {
+      let onDestroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
+
+      expect(() => datesSelectionInstance.componentWillUnmount()).not.toThrow();
+
+      datesSelection.setProps({ onDestroy: onDestroySpy });
+      datesSelection.unmount();
+      expect(onDestroySpy).toHaveBeenCalled();
+    });
+
+    it('should call onDateChange for each picker if the quick option has changed', () => {
+      let onDateChangeSpy: jasmine.Spy = spyOn(datesSelectionInstance, 'onDateChange');
+      let now: Date = new Date();
+
+      datesSelection.setProps({ quickOption: now.toString() });
+
+      expect(onDateChangeSpy).toHaveBeenCalledTimes(1);
+
+      datesSelection.setProps({ quickOption: now.toString() });
+
+      expect(onDateChangeSpy).toHaveBeenCalledTimes(1);
+
+      expect(onDateChangeSpy).toHaveBeenCalledTimes(1);
+
+      datesSelection.setProps({ quickOption: new Date(now.setHours(4, 4, 4, 4)).toString() });
+
+      expect(onDateChangeSpy).toHaveBeenCalledTimes(2);
+
+      datesSelection.setProps({ quickOption: new Date().toString() + DATES_SEPARATOR + new Date().toString() });
+
+      expect(onDateChangeSpy).toHaveBeenCalledTimes(4);
+    });
+  });
+});

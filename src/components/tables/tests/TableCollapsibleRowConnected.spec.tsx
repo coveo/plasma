@@ -6,11 +6,9 @@ import { IReactVaporState } from '../../../ReactVapor';
 import { Provider } from 'react-redux';
 import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
 import { clearState } from '../../../utils/ReduxUtils';
-/* tslint:disable:no-unused-variable */
-import * as React from 'react';
 import { addRow } from '../TableRowActions';
-/* tslint:enable:no-unused-variable */
-
+// tslint:disable-next-line:no-unused-variable
+import * as React from 'react';
 
 describe('Tables', () => {
 

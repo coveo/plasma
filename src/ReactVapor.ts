@@ -11,6 +11,9 @@ import { IActionOptions } from './components/actions/Action';
 import { IActionBarState } from './components/actions/ActionBarReducers';
 import { IDropdownState } from './components/dropdown/DropdownReducers';
 import { ITableRowState } from './components/tables/TableRowReducers';
+import { IOptionsCycleState } from './components/optionsCycle/OptionsCycleReducers';
+import { IDatePickerState } from './components/datePicker/DatePickerReducers';
+import { IOptionPickerState } from './components/optionPicker/OptionPickerReducers';
 import { IItemFilterState } from './components/actions/filters/ItemFilterReducers';
 
 export interface IReactVaporState {
@@ -24,6 +27,9 @@ export interface IReactVaporState {
   actionBars?: IActionBarState[];
   dropdowns?: IDropdownState[];
   rows?: ITableRowState[];
+  optionsCycles?: IOptionsCycleState[];
+  datePickers?: IDatePickerState[];
+  optionPickers?: IOptionPickerState[];
   itemFilters?: IItemFilterState[];
 }
 
@@ -37,5 +43,12 @@ export interface IReduxActionsPayload {
   perPage?: number;
   options?: IInlinePromptOptions;
   actions?: IActionOptions[];
+  currentOption?: number;
+  color?: string;
+  date?: Date;
+  calendarId?: string;
+  value?: () => string | string;
+  isRange?: boolean;
+  limit?: string;
   item?: string;
 }

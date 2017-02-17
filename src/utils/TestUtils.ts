@@ -10,6 +10,9 @@ import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers'
 import { actionBarsReducer } from '../components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../components/tables/TableRowReducers';
+import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleReducers';
+import { optionPickersReducer } from '../components/optionPicker/OptionPickerReducers';
+import { datePickersReducer } from '../components/datePicker/DatePickerReducers';
 import { itemFiltersReducer } from '../components/actions/filters/ItemFilterReducers';
 import * as Redux from 'redux';
 
@@ -26,6 +29,9 @@ export class TestUtils {
       actionBars: actionBarsReducer,
       dropdowns: dropdownsReducer,
       rows: tableRowsReducer,
+      optionsCycles: optionsCyclesReducer,
+      optionPickers: optionPickersReducer,
+      datePickers: datePickersReducer,
       itemFilters: itemFiltersReducer
     });
 

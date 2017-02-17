@@ -8,9 +8,8 @@ import { IReactVaporState } from '../../../ReactVapor';
 import { IInlinePromptProps, InlinePrompt, IInlinePromptOptions } from '../InlinePrompt';
 import { addPrompt } from '../InlinePromptActions';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('InlinePrompt', () => {
   let id: string;

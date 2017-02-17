@@ -4,9 +4,8 @@ import {
   ERROR_CODE_LABEL
 } from '../TableError';
 import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Tables', () => {
   let error: IErrorSection = {

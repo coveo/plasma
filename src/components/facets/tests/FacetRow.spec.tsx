@@ -1,9 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { FacetRow, IFacetRowProps } from '../FacetRow';
 import { IFacet } from '../Facet';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Facets', () => {
   let facetRow: IFacet = {

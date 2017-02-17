@@ -7,9 +7,8 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { Provider } from 'react-redux';
 import { PrimaryActionConnected } from '../PrimaryActionConnected';
 import { TriggerActionConnected } from '../TriggerActionConnected';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('Actions', () => {
 

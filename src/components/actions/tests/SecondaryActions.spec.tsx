@@ -1,9 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { IActionOptions } from '../Action';
-/* tslint:disable:no-unused-variable */
-import * as React from 'react';
 import { SecondaryActions, ISecondaryActionsProps } from '../SecondaryActions';
-/* tslint:enable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
+import * as React from 'react';
 
 describe('Actions', () => {
   let actions: IActionOptions[] = [{

@@ -9,7 +9,10 @@ import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReduc
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../src/components/tables/TableRowReducers';
+import { optionsCyclesReducer } from '../src/components/optionsCycle/OptionsCycleReducers';
+import { datePickersReducer } from '../src/components/datePicker/DatePickerReducers';
 import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilterReducers';
+import { optionPickersReducer } from '../src/components/optionPicker/OptionPickerReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
 
@@ -35,5 +38,8 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   dropdowns: dropdownsReducer,
   rows: tableRowsReducer,
   itemFilters: itemFiltersReducer,
+  optionsCycles: optionsCyclesReducer,
+  optionPickers: optionPickersReducer,
+  datePickers: datePickersReducer,
   lastAction
 });

@@ -6,9 +6,8 @@ import { clearState } from '../../../utils/ReduxUtils';
 import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { FilterBoxConnected } from '../FilterBoxConnected';
-/* tslint:disable:no-unused-variable */
+// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
 describe('FilterBox', () => {
   describe('<FilterBoxConnected />', () => {

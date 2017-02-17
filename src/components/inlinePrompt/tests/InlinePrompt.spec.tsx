@@ -1,10 +1,9 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { IInlinePromptOptions, InlinePrompt, IInlinePromptProps } from '../InlinePrompt';
-import * as _ from 'underscore';
-/* tslint:disable:no-unused-variable */
-import * as React from 'react';
 import { Svg } from '../../svg/Svg';
-/* tslint:enable:no-unused-variable */
+import * as _ from 'underscore';
+// tslint:disable-next-line:no-unused-variable
+import * as React from 'react';
 
 describe('InlinePrompt', () => {
   let options: IInlinePromptOptions;
