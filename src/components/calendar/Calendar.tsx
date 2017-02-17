@@ -92,9 +92,9 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         let limitToChange: Date;
 
         if (this.props.calendarSelection[index]) {
-          if (calendarSelection.lowerLimit !== this.props.calendarSelection[index].lowerLimit) {
+          if (moment(calendarSelection.lowerLimit).diff(moment(this.props.calendarSelection[index].lowerLimit), 'minute')) {
             limitToChange = calendarSelection.lowerLimit;
-          } else if (calendarSelection.upperLimit !== this.props.calendarSelection[index].upperLimit) {
+          } else if (moment(calendarSelection.upperLimit).diff(moment(this.props.calendarSelection[index].upperLimit), 'minute')) {
             limitToChange = calendarSelection.upperLimit;
           }
 
