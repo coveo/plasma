@@ -55,12 +55,10 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
   }
 
   componentWillReceiveProps(nextProps: IDatePickerProps) {
-    if (nextProps.date && nextProps.date !== this.props.date) {
-      let dateValue: string = this.getStringFromDate(nextProps.date);
+    let dateValue: string = this.getStringFromDate(nextProps.date);
 
-      if (this.dateInput.value !== dateValue) {
-        this.dateInput.value = dateValue;
-      }
+    if (this.dateInput.value !== dateValue) {
+      this.dateInput.value = dateValue;
     }
   }
 

@@ -71,13 +71,14 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
       }
       return _.extend({}, state, {
         appliedLowerLimit: state.lowerLimit,
-        appliedUpperLimit: state.upperLimit
+        appliedUpperLimit: state.upperLimit >= state.lowerLimit ? state.upperLimit : state.lowerLimit
       });
     case DatePickerActions.reset:
       if (state.id.indexOf(action.payload.id) !== 0) {
         return state;
       }
       return _.extend({}, state, {
+        selected: '',
         lowerLimit: state.appliedLowerLimit,
         upperLimit: state.appliedUpperLimit
       });

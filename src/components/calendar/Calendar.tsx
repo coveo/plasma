@@ -29,6 +29,7 @@ export interface ICalendarStateProps extends IReduxStatePossibleProps {
 
 export interface ICalendarDispatchProps {
   onClick?: (pickerId: string, isUpperLimit: boolean, value: Date) => void;
+  onDateChange?: (cycleId: string, newValue: number) => void;
 }
 
 export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps, ICalendarDispatchProps { }
@@ -85,6 +86,28 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     }
   }
 
+  componentWillReceiveProps(nextProps: ICalendarProps) {
+    if (this.props.onDateChange && this.props.calendarSelection.length) {
+      _.each(nextProps.calendarSelection, (calendarSelection: IDatePickerState, index: number) => {
+        let limitToChange: Date;
+
+        if (this.props.calendarSelection[index]) {
+          if (calendarSelection.lowerLimit !== this.props.calendarSelection[index].lowerLimit) {
+            limitToChange = calendarSelection.lowerLimit;
+          } else if (calendarSelection.upperLimit !== this.props.calendarSelection[index].upperLimit) {
+            limitToChange = calendarSelection.upperLimit;
+          }
+
+          if (limitToChange) {
+            this.props.onDateChange(this.props.id + MONTH_PICKER_ID, limitToChange.getMonth());
+            this.props.onDateChange(this.props.id + YEAR_PICKER_ID,
+              this.getYears().indexOf(limitToChange.getFullYear().toString()));
+          }
+        }
+      });
+    }
+  }
+
   fillInDayInfos(day: IDay): IDay {
     let dayStart: moment.Moment = day.date.startOf('day');
 
@@ -104,6 +127,10 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     return day;
   }
 
+  getYears(): string[] {
+    return this.props.years || DEFAULT_YEARS;
+  }
+
   render() {
     let months: string[] = this.props.months || DEFAULT_MONTHS;
     let startingMonth: number = this.props.startingMonth || DateUtils.currentMonth;
@@ -113,7 +140,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       isInline: true
     };
 
-    let years: string[] = this.props.years || DEFAULT_YEARS;
+    let years: string[] = this.getYears();
     let startingYear: number = this.props.startingYear || years.indexOf(DateUtils.currentYear.toString());
     let yearPickerProps: IOptionsCycleProps = {
       options: years,
@@ -138,7 +165,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       ? <OptionsCycleConnected id={this.props.id + YEAR_PICKER_ID} {...yearPickerProps} />
       : <OptionsCycle {...yearPickerProps} />;
 
-    let sectedYearOption = this.props.selectedYear || startingYear;
+    let sectedYearOption = this.props.selectedYear ? this.props.selectedYear : startingYear;
     let year = parseInt(years[sectedYearOption]);
     let selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : startingMonth;
 

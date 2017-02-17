@@ -19,6 +19,8 @@ import * as _ from 'underscore';
 import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import {IDatePickerState} from '../../datePicker/DatePickerReducers';
+import moment = require('moment');
 
 describe('Calendar', () => {
   const CALENDAR_ID: string = 'calendar';
@@ -163,6 +165,30 @@ describe('Calendar', () => {
       calendar.props().onClick(PICKER_ID, false, newLimit);
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).lowerLimit).toBe(newLimit);
+    });
+
+    it('should change the selected month and year if one of the calendar selection changed a limit', () => {
+      let ridiculousYear: number = 500;
+      let monthId: string = CALENDAR_ID + MONTH_PICKER_ID;
+      let yearId: string = CALENDAR_ID + YEAR_PICKER_ID;
+
+      store.dispatch(changeOptionsCycle(monthId, 13));
+      store.dispatch(changeOptionsCycle(yearId, ridiculousYear));
+
+      store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
+      store.dispatch(changeDatePickerLowerLimit(PICKER_ID, moment().endOf('hour').toDate()));
+
+      expect(_.findWhere(store.getState().optionsCycles, {id: monthId}).currentOption).toBe(DateUtils.currentMonth);
+      expect(_.findWhere(store.getState().optionsCycles, {id: yearId}).currentOption).not.toBe(ridiculousYear);
+
+      store.dispatch(changeOptionsCycle(monthId, 13));
+      store.dispatch(changeOptionsCycle(yearId, ridiculousYear));
+
+      store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
+      store.dispatch(changeDatePickerUpperLimit(PICKER_ID, moment().endOf('year').toDate()));
+
+      expect(_.findWhere(store.getState().optionsCycles, {id: monthId}).currentOption).toBe(11);
+      expect(_.findWhere(store.getState().optionsCycles, {id: yearId}).currentOption).not.toBe(ridiculousYear);
     });
   });
 });
