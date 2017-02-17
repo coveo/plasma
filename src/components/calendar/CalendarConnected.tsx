@@ -14,7 +14,7 @@ import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
+import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): ICalendarStateProps => {
   let selectedMonth = _.findWhere(state.optionsCycles, { id: ownProps.id + MONTH_PICKER_ID });
