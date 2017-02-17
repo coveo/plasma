@@ -52,9 +52,9 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
         lowerLimit: action.payload.date
       });
     case DatePickerActions.changeUpperLimit:
-     return state.id !== action.payload.id ? state : _.extend({}, state, {upperLimit: action.payload.date});
+      return state.id !== action.payload.id ? state : _.extend({}, state, { upperLimit: action.payload.date });
     case DatePickerActions.select:
-      return state.id !== action.payload.id ? state : _.extend({}, state, {selected: action.payload.limit});
+      return state.id !== action.payload.id ? state : _.extend({}, state, { selected: action.payload.limit });
     case DatePickerActions.apply:
       return state.id.indexOf(action.payload.id) !== 0
         ? state
@@ -64,12 +64,12 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
         });
     case DatePickerActions.reset:
       return state.id.indexOf(action.payload.id) !== 0
-      ? state
-      : _.extend({}, state, {
-        selected: '',
-        lowerLimit: state.appliedLowerLimit,
-        upperLimit: state.appliedUpperLimit
-      });
+        ? state
+        : _.extend({}, state, {
+          selected: '',
+          lowerLimit: state.appliedLowerLimit,
+          upperLimit: state.appliedUpperLimit
+        });
     default:
       return state;
   }
