@@ -166,7 +166,17 @@
   font-size: $big-title-font-size;
 
   &.mod-inline {
+    display: inline-flex;
+  }
+
+  .options-cycle-option {
     display: inline-block;
+  }
+
+  &:first-child .options-cycle-option {
+    min-width: 120px;
+
+    text-align: center;
   }
 }
 
@@ -174,6 +184,7 @@
   padding: 0;
 
   font-size: 0.8em;
+  line-height: 1.5;
 
   background: none;
   border: none;
