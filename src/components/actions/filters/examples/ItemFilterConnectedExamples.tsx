@@ -23,7 +23,7 @@ export class ItemFilterConnectedExamples extends React.Component<any, any> {
             id={ACTION_BAR_ID}
             itemFilterLabel={ITEM_FILTER_LABEL}
             onClearItemFilter={() => alert('Item filter was cleared')}
-            />
+          />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Action bar with an item filter cropped on the right and with Redux state</label>
@@ -32,7 +32,7 @@ export class ItemFilterConnectedExamples extends React.Component<any, any> {
             itemFilterLabel={ITEM_FILTER_LABEL}
             itemFilterCropLength={10}
             onClearItemFilter={() => alert('Item filter was cleared')}
-            />
+          />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Action bar with an item filter cropped on the left and with Redux state</label>
@@ -41,7 +41,7 @@ export class ItemFilterConnectedExamples extends React.Component<any, any> {
             itemFilterLabel={ITEM_FILTER_LABEL}
             itemFilterCropLength={-10}
             onClearItemFilter={() => alert('Item filter was cleared')}
-            />
+          />
         </div>
       </div>
     );

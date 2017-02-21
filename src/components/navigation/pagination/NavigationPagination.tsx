@@ -36,7 +36,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
     if (this.props.onPageClick && pageNb >= 0) {
       this.props.onPageClick(pageNb);
     }
-  };
+  }
 
   componentWillMount() {
     if (this.props.onRender) {
@@ -77,7 +77,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
           onPageClick={this.handlePageClick}
           pageNb={p}
           selected={p === currentPage}
-          />);
+        />);
       });
     }
 

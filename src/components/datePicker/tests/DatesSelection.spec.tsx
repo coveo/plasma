@@ -73,7 +73,7 @@ describe('Date picker', () => {
       'onChange prop on the picker', () => {
         let expectedDate: Date = new Date();
         let expectedIsUpperLimit: boolean = true;
-        let onDateChangeSpy: jasmine.Spy = spyOn(datesSelectionInstance, 'onDateChange');
+        let onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
 
         datesSelection.find(DatePicker).first().props().onChange(expectedDate, expectedIsUpperLimit);
 
@@ -83,7 +83,7 @@ describe('Date picker', () => {
     it('should call onDateClick with and whether or not the picker is the upper limit when calling the onClick prop ' +
       'on the picker', () => {
         let expectedIsUpperLimit: boolean = true;
-        let onDateClickSpy: jasmine.Spy = spyOn(datesSelectionInstance, 'onDateClick');
+        let onDateClickSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateClick');
 
         datesSelection.find(DatePicker).first().props().onClick(expectedIsUpperLimit);
 
@@ -138,7 +138,7 @@ describe('Date picker', () => {
     });
 
     it('should call onDateChange for each picker if the quick option has changed', () => {
-      let onDateChangeSpy: jasmine.Spy = spyOn(datesSelectionInstance, 'onDateChange');
+      let onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
       let now: Date = new Date();
 
       datesSelection.setProps({ quickOption: now.toString() });

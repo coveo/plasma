@@ -29,7 +29,7 @@ describe('LastUpdated', () => {
       lastUpdatedWrapper = shallow(
         <LastUpdated
           time={time}
-          />
+        />
       );
 
       expect(s.contains(lastUpdatedWrapper.html(), expectedTime));

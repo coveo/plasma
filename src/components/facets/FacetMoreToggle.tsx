@@ -23,7 +23,7 @@ export class FacetMoreToggle extends React.Component<IFacetMoreToggleProps, any>
     if (this.props.onToggleMore) {
       this.props.onToggleMore(this.props.facet);
     }
-  };
+  }
 
   render() {
     let isOpened: boolean = this.props.isOpened ? this.props.isOpened : false;

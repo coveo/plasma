@@ -52,7 +52,7 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
         descriptionLabel={this.props.descriptionLabel}
         troubleshootingLabel={this.props.troubleshootingLabel}
         errorCodeLabel={this.props.errorCodeLabel}
-        /> :
+      /> :
       null;
 
     return (

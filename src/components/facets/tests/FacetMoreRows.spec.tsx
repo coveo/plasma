@@ -21,7 +21,7 @@ describe('Facets', () => {
           <FacetMoreRows
             facet={facet}
             facetRows={facetRows}
-            />
+          />
         );
       }).not.toThrow();
     });
@@ -35,7 +35,7 @@ describe('Facets', () => {
       facetMoreRows = mount(
         <FacetMoreRows
           {...basicFacetMoreRowsAttributes}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
       facetMoreRowsInstance = facetMoreRows.instance() as FacetMoreRows;
@@ -91,7 +91,7 @@ describe('Facets', () => {
       facetMoreRows = mount(
         <FacetMoreRows
           {...newFacetAttributes}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
 

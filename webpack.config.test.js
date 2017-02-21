@@ -1,33 +1,49 @@
-'use strict';
-
 const path = require('path');
 const webpack = require('webpack');
+
+const tslintConfig = require('./tslint');
 
 module.exports = {
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['', '.ts', '.tsx', '.js', '.json']
-  },
-  ts: {
-    configFileName: 'tsconfig.test.json'
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {
-    preLoaders: [{
-      test: /\.ts(x?)$/,
-      loader: 'tslint'
-    }],
-    loaders: [{
-      test: /\.ts(x?)$/,
-      loader: 'ts-loader'
-    }, {
-      test: /\.json$/,
-      loader: 'json'
-    }],
-    postLoaders: [{
-      test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\..+$/i,
-      exclude: /(node_modules)/,
-      loader: 'istanbul-instrumenter'
-    }]
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.ts(x?)$/i,
+        exclude: [/node_modules/],
+        use: {
+          loader: 'tslint-loader',
+          options: {
+            configuration: tslintConfig,
+            emitErrors: true,
+            failOnHint: false,
+            formattersDirectory: path.resolve(__dirname, 'node_modules/tslint-loader/formatters/'),
+          },
+        },
+      },
+      {
+        test: /\.ts(x?)$/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            configFileName: 'tsconfig.test.json',
+          },
+        },
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
+      {
+        enforce: 'post',
+        test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\..+$/i,
+        exclude: /(node_modules)/,
+        loader: 'istanbul-instrumenter-loader',
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -35,16 +51,13 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       React: 'react',
-      jQuery: 'jquery' // Required for chosen-js, otherwise, it won't work.
-    })
+      jQuery: 'jquery', // Required for chosen-js, otherwise, it won't work.
+    }),
   ],
-  resolveLoader: {
-    root: path.resolve(__dirname, 'node_modules')
-  },
   externals: {
-    'cheerio': 'window',
+    cheerio: 'window',
     'react/addons': true,
     'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
-  }
+    'react/lib/ReactContext': true,
+  },
 };

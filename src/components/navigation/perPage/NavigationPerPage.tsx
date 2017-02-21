@@ -64,7 +64,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
             perPageNb={number}
             key={selectId}
             selected={isSelected}
-            />
+          />
         );
       }
     });

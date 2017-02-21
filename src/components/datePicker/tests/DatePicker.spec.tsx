@@ -120,7 +120,7 @@ describe('Date picker', () => {
 
     it('should call setToToday when clicking the set to now button', () => {
       let withButtonProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { hasSetToNowButton: true });
-      let setToNowSpy: jasmine.Spy = spyOn(datePickerInstance, 'setToToday');
+      let setToNowSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'setToToday');
       datePicker.setProps(withButtonProps);
 
       datePicker.find('button').simulate('click');
@@ -164,7 +164,7 @@ describe('Date picker', () => {
 
     it('should call handleChange when calling setToToday', () => {
       let withButtonProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { hasSetToNowButton: true });
-      let handleChangeSpy: jasmine.Spy = spyOn(datePickerInstance, 'handleChange');
+      let handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
       datePicker.setProps(withButtonProps);
 
       datePicker.find('button').simulate('click');
@@ -238,7 +238,7 @@ describe('Date picker', () => {
     });
 
     it('should call handleChange on input change', () => {
-      let handleChangeSpy: jasmine.Spy = spyOn(datePickerInstance, 'handleChange');
+      let handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
 
       datePicker.find('input').simulate('change');
 

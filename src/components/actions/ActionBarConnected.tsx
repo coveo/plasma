@@ -31,7 +31,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarOwnProps):
         <InlinePromptConnected
           id={prompt.id}
           options={prompt.options}
-          />
+        />
       </div> :
       null,
     itemFilter: itemFilter ? itemFilter.item : ''

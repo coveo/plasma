@@ -56,7 +56,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     if (this.props.onClick) {
       this.props.onClick();
     }
-  };
+  }
 
   private handleDocumentClick = (e: MouseEvent) => {
     let dropdown: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
@@ -65,7 +65,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       this.props.onDocumentClick();
       this.handleCancel();
     }
-  };
+  }
 
   componentWillMount() {
     if (this.props.onRender) {

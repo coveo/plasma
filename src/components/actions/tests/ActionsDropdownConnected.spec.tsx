@@ -34,7 +34,7 @@ describe('Actions', () => {
           <ActionsDropdownConnected
             actions={actions}
             id={id}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );

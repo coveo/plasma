@@ -19,7 +19,7 @@ describe('Facets', () => {
             facet={facet}
             toggleFacet={toggleFacet}
             clearFacet={clearFacet}
-            />
+          />
         );
       }).not.toThrow();
     });
@@ -40,7 +40,7 @@ describe('Facets', () => {
       facetComponent = mount(
         <Facet
           {...facetBasicAttributes}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
       facetInstance = facetComponent.instance() as Facet;

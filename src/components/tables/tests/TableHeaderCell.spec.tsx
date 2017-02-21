@@ -32,7 +32,7 @@ describe('Tables', () => {
         <TableHeaderCell
           title={title}
           className={className}
-          />,
+        />,
         { attachTo: document.getElementById('AppTableHeadRow') }
       );
     });

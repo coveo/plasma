@@ -20,7 +20,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             className='coveo-checkbox facet-checkbox-input'
             checked={this.props.isChecked}
             onChange={() => this.props.onToggleFacet(this.props.facetRow)}
-            />
+          />
           <button type='button'></button>
           <span className='label'>{this.props.facetRow.formattedName}</span>
         </label>

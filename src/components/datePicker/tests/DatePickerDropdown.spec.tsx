@@ -165,7 +165,7 @@ describe('Date picker', () => {
       });
 
     it('should call handleClick when clicking the dropdown toggle', () => {
-      let handleClickSpy: jasmine.Spy = spyOn(datePickerDropdownInstance, 'handleClick');
+      let handleClickSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleClick');
 
       datePickerDropdown.find('.dropdown-toggle').simulate('click');
 
@@ -274,7 +274,7 @@ describe('Date picker', () => {
     });
 
     it('should call handleApply when clicking on the apply button', () => {
-      let handleApplySpy: jasmine.Spy = spyOn(datePickerDropdownInstance, 'handleApply');
+      let handleApplySpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleApply');
 
       datePickerDropdown.find('footer').find('button').first().simulate('click');
 
@@ -282,7 +282,7 @@ describe('Date picker', () => {
     });
 
     it('should call handleCancel when clicking on the cancel button', () => {
-      let handleCancelSpy: jasmine.Spy = spyOn(datePickerDropdownInstance, 'handleCancel');
+      let handleCancelSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleCancel');
 
       datePickerDropdown.find('footer').find('button').last().simulate('click');
 

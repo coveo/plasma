@@ -8,18 +8,12 @@ import { CalendarConnected } from '../CalendarConnected';
 import { changeOptionsCycle } from '../../optionsCycle/OptionsCycleActions';
 import { OptionsCycleConnected } from '../../optionsCycle/OptionsCycleConnected';
 import { DateUtils } from '../../../utils/DateUtils';
-import {
-  addDatePicker,
-  selectDate,
-  changeDatePickerUpperLimit,
-  changeDatePickerLowerLimit
-} from '../../datePicker/DatePickerActions';
+import { addDatePicker, selectDate, changeDatePickerUpperLimit, changeDatePickerLowerLimit } from '../../datePicker/DatePickerActions';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import * as _ from 'underscore';
-import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { IDatePickerState } from '../../datePicker/DatePickerReducers';
+
 import moment = require('moment');
 
 describe('Calendar', () => {

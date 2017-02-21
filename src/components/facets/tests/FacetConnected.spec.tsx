@@ -60,7 +60,7 @@ describe('Facets', () => {
             selectedFacetRows={selectedFacetRows}
             toggleFacet={onToggleFacet}
             clearFacet={clearFacet}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );
@@ -143,7 +143,7 @@ describe('Facets', () => {
         selectedFacetRows={selectedFacetRows}
         toggleFacet={onToggleFacet}
         clearFacet={clearFacet}
-        />;
+      />;
       wrapper.setProps({ children: newRow });
 
       expect(facetComponent.find(FacetMoreToggleConnected).length).toBe(1);
@@ -171,7 +171,7 @@ describe('Facets', () => {
         selectedFacetRows={selectedFacetRows}
         toggleFacet={onToggleFacet}
         clearFacet={clearFacet}
-        />;
+      />;
       wrapper.setProps({ children: newRow });
 
       expect(facetComponent.find(FacetMoreRowsConnected).length).toBe(1);
@@ -188,7 +188,7 @@ describe('Facets', () => {
         selectedFacetRows={selectedFacetRows}
         toggleFacet={onToggleFacet}
         clearFacet={clearFacet}
-        />;
+      />;
       wrapper.setProps({ children: newRow });
 
       expect(facetComponent.find('.facet-header-eraser').hasClass('hidden')).toBe(true);

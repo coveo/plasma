@@ -14,7 +14,7 @@ describe('Facets', () => {
         shallow(
           <FacetMoreToggle
             {...basicFacetMoreToggleProps}
-            />
+          />
         );
       }).not.toThrow();
     });
@@ -27,7 +27,7 @@ describe('Facets', () => {
       facetMoreToggle = mount(
         <FacetMoreToggle
           {...basicFacetMoreToggleProps}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
     });
@@ -58,7 +58,7 @@ describe('Facets', () => {
 
     it('should call onToggleMore on change if prop is set', () => {
       let onToggleMoreSpy = jasmine.createSpy('onToggleMore');
-      let handleOnChangeSpy = spyOn(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
+      let handleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
       let newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, { onToggleMore: onToggleMoreSpy });
 
       facetMoreToggle.find('input').simulate('change');
@@ -67,10 +67,10 @@ describe('Facets', () => {
       facetMoreToggle = mount(
         <FacetMoreToggle
           {...newFacetMoreToggleProps}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
-      let newHandleOnChangeSpy = spyOn(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
+      let newHandleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
 
       facetMoreToggle.find('input').simulate('change');
       expect(newHandleOnChangeSpy).toHaveBeenCalled();

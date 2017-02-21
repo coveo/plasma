@@ -25,7 +25,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     if (this.props.onClick) {
       this.props.onClick();
     }
-  };
+  }
 
   componentWillMount() {
     if (this.props.onRender) {

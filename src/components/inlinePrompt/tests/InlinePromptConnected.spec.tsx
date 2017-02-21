@@ -45,7 +45,7 @@ describe('InlinePrompt', () => {
           <InlinePromptConnected
             id={id}
             options={options}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );

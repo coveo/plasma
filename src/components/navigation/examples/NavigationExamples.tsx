@@ -29,7 +29,7 @@ export class NavigationExamples extends React.Component<any, any> {
             currentPage={1}
             perPageLabel='Items par page'
             perPageNumbers={[2, 10, 25, 50]}
-            />
+          />
         </div>
       </div>
     );

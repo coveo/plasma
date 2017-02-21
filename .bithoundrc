@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    "coverage/**",
+    "dist/**",
+    "node_modules/**"
+  ],
+  "test": [
+    "src/**/*.spec.tsx",
+    "src/**/*.spec.ts"
+  ]
+}

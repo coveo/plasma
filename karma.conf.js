@@ -1,40 +1,37 @@
-'use strict';
-
-const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.test.js');
 
-module.exports = config => {
+module.exports = (config) => {
   config.set({
     frameworks: ['jasmine', 'source-map-support'],
 
     files: ['./karma.entry.ts'],
 
     preprocessors: {
-      './karma.entry.ts': ['webpack']
+      './karma.entry.ts': ['webpack'],
     },
 
     mime: {
-      'text/x-typescript': ['ts','tsx']
+      'text/x-typescript': ['ts', 'tsx'],
     },
 
     webpack: webpackConfig,
 
     webpackServer: {
-      noInfo: true
+      noInfo: true,
     },
 
     reporters: ['mocha', 'coverage'],
 
     mochaReporter: {
-      ignoreSkipped: true
+      ignoreSkipped: true,
     },
 
     coverageReporter: {
       dir: 'coverage',
       reporters: [
-        {type: 'json', subdir: '.', file: 'coverage.json'},
-        {type: 'text-summary'}
-      ]
+        { type: 'json', subdir: '.', file: 'coverage.json' },
+        { type: 'text-summary' },
+      ],
     },
 
     port: 9876,
@@ -45,6 +42,6 @@ module.exports = config => {
     autoWatch: true,
     singleRun: true,
 
-    browserNoActivityTimeout: 10000
+    browserNoActivityTimeout: 10000,
   });
 };
