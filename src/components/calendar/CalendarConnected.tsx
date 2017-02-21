@@ -7,7 +7,10 @@ import {
   ICalendarOwnProps,
   ICalendarDispatchProps
 } from './Calendar';
-import { changeDatePickerUpperLimit, changeDatePickerLowerLimit, selectDate } from '../datePicker/DatePickerActions';
+import {
+  changeDatePickerUpperLimit, changeDatePickerLowerLimit, selectDate,
+  DateLimits
+} from '../datePicker/DatePickerActions';
 import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
@@ -37,6 +40,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
         dispatch(changeDatePickerUpperLimit(pickerId, value));
       } else {
         dispatch(changeDatePickerLowerLimit(pickerId, value));
+        dispatch(selectDate(pickerId, DateLimits.upper));
       }
     },
     onDateChange: (pickerId: string, newValue: number) => dispatch(changeOptionsCycle(pickerId, newValue))

@@ -12,7 +12,7 @@ import {
   addDatePicker,
   selectDate,
   changeDatePickerUpperLimit,
-  changeDatePickerLowerLimit
+  changeDatePickerLowerLimit, DateLimits
 } from '../../datePicker/DatePickerActions';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import * as _ from 'underscore';
@@ -111,8 +111,23 @@ describe('Calendar', () => {
       expect(calendar.find(OptionsCycleConnected).length).toBe(2);
     });
 
-    it('should set the selected value of the picker to an empty string when calling onClick', () => {
-      let pickerSelected: string = 'soemthing-selected';
+    it('should set the selected value of the picker to an empty string when calling onClick and the limit selected ' +
+      'is the upper one', () => {
+      let pickerSelected: string = DateLimits.upper;
+
+      store.dispatch(addDatePicker(PICKER_ID, false, 'any', CALENDAR_ID));
+      store.dispatch(selectDate(PICKER_ID, pickerSelected));
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(pickerSelected);
+
+      calendar.props().onClick(PICKER_ID, true, new Date());
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe('');
+    });
+
+    it('should set the selected value of the picker to the upper limit when calling onClick and the limit selected ' +
+      'is the lower one', () => {
+      let pickerSelected: string = DateLimits.lower;
 
       store.dispatch(addDatePicker(PICKER_ID, false, 'any', CALENDAR_ID));
       store.dispatch(selectDate(PICKER_ID, pickerSelected));
@@ -121,7 +136,7 @@ describe('Calendar', () => {
 
       calendar.props().onClick(PICKER_ID, false, new Date());
 
-      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe('');
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(DateLimits.upper);
     });
 
     it('should unselected any option from the option picker when calling onClick', () => {
@@ -156,7 +171,7 @@ describe('Calendar', () => {
 
     it('should change the lower limit if the onClick was called on a lower limit', () => {
       let currentLowerLimit: Date = moment(new Date()).add(10, 'day').toDate();
-      let newLimit: Date = moment(new Date()).add(5, 'day').toDate();
+      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
       store.dispatch(changeDatePickerLowerLimit(PICKER_ID, currentLowerLimit));
@@ -169,27 +184,27 @@ describe('Calendar', () => {
     });
 
     it('should change the selected month and year if one of the calendar selection changed a limit', () => {
-      let ridiculousYear: number = 500;
+      let secondYear: number = 1;
       let monthId: string = CALENDAR_ID + MONTH_PICKER_ID;
       let yearId: string = CALENDAR_ID + YEAR_PICKER_ID;
 
       store.dispatch(changeOptionsCycle(monthId, 13));
-      store.dispatch(changeOptionsCycle(yearId, ridiculousYear));
+      store.dispatch(changeOptionsCycle(yearId, secondYear));
 
       store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
       store.dispatch(changeDatePickerLowerLimit(PICKER_ID, moment().endOf('hour').toDate()));
 
       expect(_.findWhere(store.getState().optionsCycles, { id: monthId }).currentOption).toBe(DateUtils.currentMonth);
-      expect(_.findWhere(store.getState().optionsCycles, { id: yearId }).currentOption).not.toBe(ridiculousYear);
+      expect(_.findWhere(store.getState().optionsCycles, { id: yearId }).currentOption).not.toBe(secondYear);
 
       store.dispatch(changeOptionsCycle(monthId, 13));
-      store.dispatch(changeOptionsCycle(yearId, ridiculousYear));
+      store.dispatch(changeOptionsCycle(yearId, secondYear));
 
       store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, moment().endOf('year').toDate()));
 
       expect(_.findWhere(store.getState().optionsCycles, { id: monthId }).currentOption).toBe(11);
-      expect(_.findWhere(store.getState().optionsCycles, { id: yearId }).currentOption).not.toBe(ridiculousYear);
+      expect(_.findWhere(store.getState().optionsCycles, { id: yearId }).currentOption).not.toBe(secondYear);
     });
   });
 });

@@ -37,7 +37,7 @@ export interface IDatePickerDropdownDispatchProps {
   onCancel?: (currentMonth: number, currentYear: number, isOpened: boolean) => void;
   onRender?: () => void;
   onDestroy?: () => void;
-  onClick?: () => void;
+  onClick?: (datePicker: IDatePickerState) => void;
   onDocumentClick?: () => void;
 }
 
@@ -54,7 +54,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private handleClick = () => {
     if (this.props.onClick) {
-      this.props.onClick();
+      this.props.onClick(this.props.datePicker);
     }
   };
 

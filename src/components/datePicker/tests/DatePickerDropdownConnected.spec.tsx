@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { DatePickerDropdownConnected } from '../DatePickerDropdownConnected';
 import { IDatePickerDropdownProps, DatePickerDropdown } from '../DatePickerDropdown';
 import { toggleDropdown, closeDropdown } from '../../dropdown/DropdownActions';
-import { addDatePicker, changeDatePickerLowerLimit, applyDatePicker } from '../DatePickerActions';
+import {addDatePicker, changeDatePickerLowerLimit, applyDatePicker, DateLimits} from '../DatePickerActions';
 import { IDatePickerState } from '../DatePickerReducers';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import { DatePickerBox } from '../DatePickerBox';
@@ -149,8 +149,20 @@ describe('Date picker', () => {
     it('should toggle the open property of the dropdown when calling the onClick prop', () => {
       expect(_.findWhere(store.getState().dropdowns, { id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id }).opened).toBe(false);
 
-      datePickerDropdown.props().onClick();
+      datePickerDropdown.props().onClick(datePickerDropdown.props().datePicker);
       expect(_.findWhere(store.getState().dropdowns, { id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id }).opened).toBe(true);
+    });
+
+    it('should select the date picker\'s lower limit when calling the onClick prop', () => {
+      let pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
+
+      store.dispatch(addDatePicker(pickerId, false));
+
+      expect(_.findWhere(store.getState().datePickers, { id: pickerId }).selected).toBe('');
+
+      datePickerDropdown.props().onClick(datePickerDropdown.props().datePicker);
+
+      expect(_.findWhere(store.getState().datePickers, { id: pickerId }).selected).toBe(DateLimits.lower);
     });
 
     it('should close the dropdown menu when calling onDocumentClick prop', () => {
