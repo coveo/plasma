@@ -165,7 +165,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       ? <OptionsCycleConnected id={this.props.id + YEAR_PICKER_ID} {...yearPickerProps} />
       : <OptionsCycle {...yearPickerProps} />;
 
-    let sectedYearOption = this.props.selectedYear ? this.props.selectedYear : startingYear;
+    let sectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
     let year = parseInt(years[sectedYearOption]);
     let selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : startingMonth;
 
