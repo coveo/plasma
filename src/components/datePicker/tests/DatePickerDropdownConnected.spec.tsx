@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { DatePickerDropdownConnected } from '../DatePickerDropdownConnected';
 import { IDatePickerDropdownProps, DatePickerDropdown } from '../DatePickerDropdown';
 import { toggleDropdown, closeDropdown } from '../../dropdown/DropdownActions';
-import {addDatePicker, changeDatePickerLowerLimit, applyDatePicker, DateLimits} from '../DatePickerActions';
+import { addDatePicker, changeDatePickerLowerLimit, applyDatePicker, DateLimits } from '../DatePickerActions';
 import { IDatePickerState } from '../DatePickerReducers';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import { DatePickerBox } from '../DatePickerBox';

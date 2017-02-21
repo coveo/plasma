@@ -12,12 +12,13 @@ import {
   DateLimits
 } from '../datePicker/DatePickerActions';
 import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
+import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
+import * as moment from 'moment';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): ICalendarStateProps => {
   let selectedMonth = _.findWhere(state.optionsCycles, { id: ownProps.id + MONTH_PICKER_ID });
@@ -37,7 +38,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
       dispatch(selectDate(pickerId, ''));
       dispatch(changeOptionPicker(pickerId, '', ''));
       if (isUpperLimit) {
-        dispatch(changeDatePickerUpperLimit(pickerId, value));
+        dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
       } else {
         dispatch(changeDatePickerLowerLimit(pickerId, value));
         dispatch(selectDate(pickerId, DateLimits.upper));
