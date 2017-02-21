@@ -16,11 +16,9 @@ import {
 } from '../../datePicker/DatePickerActions';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import * as _ from 'underscore';
-import * as moment from 'moment';
+import moment = require('moment');
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { IDatePickerState } from '../../datePicker/DatePickerReducers';
-import moment = require('moment');
 
 describe('Calendar', () => {
   const CALENDAR_ID: string = 'calendar';
@@ -127,16 +125,19 @@ describe('Calendar', () => {
     });
 
     it('should unselected any option from the option picker when calling onClick', () => {
-      let pickerSelected: () => string = () => 'something-selected';
+      let pickerSelected: string = 'something-selected';
+      let pickerLabelSelected: string = 'the label';
 
       store.dispatch(addOptionPicker(PICKER_ID));
-      store.dispatch(changeOptionPicker(PICKER_ID, pickerSelected));
+      store.dispatch(changeOptionPicker(PICKER_ID, pickerLabelSelected, pickerSelected));
 
-      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue()).toBe(pickerSelected());
+      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue).toBe(pickerSelected);
+      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedLabel).toBe(pickerLabelSelected);
 
       calendar.props().onClick(PICKER_ID, false, new Date());
 
-      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue()).toBe('');
+      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedValue).toBe('');
+      expect(_.findWhere(store.getState().optionPickers, { id: PICKER_ID }).selectedLabel).toBe('');
     });
 
     it('should change the upper limit if the onClick was called on an upper limit', () => {

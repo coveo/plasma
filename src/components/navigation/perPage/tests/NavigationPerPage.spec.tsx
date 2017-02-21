@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 import * as React from 'react';
 
 describe('NavigationPerPage', () => {
-  let basicNavigationPerPageProps: INavigationPerPageProps = {
+  const NAVIGATION_PER_PAGE_BASIC_PROPS: INavigationPerPageProps = {
     totalEntries: 50
   };
 
@@ -14,19 +14,19 @@ describe('NavigationPerPage', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <NavigationPerPage {...basicNavigationPerPageProps} />
+          <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} />
         );
       }).not.toThrow();
     });
   });
 
-  describe('NavigationPerPageView', () => {
+  describe('<NavigationPerPage />', () => {
     let navigationPerPage: ReactWrapper<INavigationPerPageProps, any>;
     let navigationPerPageInstance: NavigationPerPage;
 
     beforeEach(() => {
       navigationPerPage = mount(
-        <NavigationPerPage {...basicNavigationPerPageProps} />,
+        <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} />,
         { attachTo: document.getElementById('App') }
       );
       navigationPerPageInstance = navigationPerPage.instance() as NavigationPerPage;
@@ -41,7 +41,7 @@ describe('NavigationPerPage', () => {
       let totalEntriesProp = navigationPerPage.props().totalEntries;
 
       expect(totalEntriesProp).toBeDefined();
-      expect(totalEntriesProp).toBe(basicNavigationPerPageProps.totalEntries);
+      expect(totalEntriesProp).toBe(NAVIGATION_PER_PAGE_BASIC_PROPS.totalEntries);
     });
 
     it('should render zero <NavigationPerPageSelect /> if the total entries are equal to zero', () => {
@@ -96,7 +96,7 @@ describe('NavigationPerPage', () => {
       expect(() => { navigationPerPageInstance.componentWillMount(); }).not.toThrow();
 
       navigationPerPage = mount(
-        <NavigationPerPage {...basicNavigationPerPageProps} onRender={onRenderSpy} />,
+        <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onRender={onRenderSpy} />,
         { attachTo: document.getElementById('App') }
       );
       expect(onRenderSpy).toHaveBeenCalled();
@@ -108,7 +108,7 @@ describe('NavigationPerPage', () => {
       expect(() => { navigationPerPageInstance.componentWillMount(); }).not.toThrow();
 
       navigationPerPage = mount(
-        <NavigationPerPage {...basicNavigationPerPageProps} onDestroy={onDestroySpy} />,
+        <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onDestroy={onDestroySpy} />,
         { attachTo: document.getElementById('App') }
       );
       navigationPerPage.unmount();
@@ -117,7 +117,7 @@ describe('NavigationPerPage', () => {
 
     it('should display the per page label if prop is set else it should show the default one', () => {
       let expectedLabel = 'Show this many items per page';
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { label: expectedLabel });
+      let newNavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS, { label: expectedLabel });
 
       expect(navigationPerPage.html()).toContain(PER_PAGE_LABEL);
 
@@ -128,12 +128,25 @@ describe('NavigationPerPage', () => {
 
     it('should show the custom per page numbers if set as a prop or show the default ones', () => {
       let expectedPerPageNumbers = [2, 3, 4, 5, 10, 30];
-      let newNavigationPerPageProps = _.extend({}, basicNavigationPerPageProps, { perPageNumbers: expectedPerPageNumbers });
+      let newNavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS, { perPageNumbers: expectedPerPageNumbers });
 
       expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(PER_PAGE_NUMBERS.length);
 
       navigationPerPage.setProps(newNavigationPerPageProps);
       expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(expectedPerPageNumbers.length);
+    });
+
+    it('should call onPerPageClick prop if it is set when calling handleClick', () => {
+      let newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS,
+        { onPerPageClick: jasmine.createSpy('onPerPageClick') });
+      let expectedPerPage: number = 22;
+
+      expect(() => navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage)).not.toThrow();
+
+      navigationPerPage.setProps(newProps);
+      navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage);
+
+      expect(newProps.onPerPageClick).toHaveBeenCalled();
     });
   });
 });

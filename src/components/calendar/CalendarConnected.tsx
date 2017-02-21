@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   ownProps: ICalendarOwnProps): ICalendarDispatchProps => ({
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
       dispatch(selectDate(pickerId, ''));
-      dispatch(changeOptionPicker(pickerId, () => ''));
+      dispatch(changeOptionPicker(pickerId, '', ''));
       if (isUpperLimit) {
         dispatch(changeDatePickerUpperLimit(pickerId, value));
       } else {

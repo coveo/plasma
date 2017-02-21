@@ -2,7 +2,7 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 import { Navigation, INavigationProps } from '../Navigation';
 import { Loading } from '../../loading/Loading';
 import { NavigationPagination } from '../pagination/NavigationPagination';
-import { NavigationPerPage, PER_PAGE_NUMBERS } from '../perPage/NavigationPerPage';
+import { NavigationPerPage, PER_PAGE_NUMBERS, INavigationPerPageProps } from '../perPage/NavigationPerPage';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
@@ -72,6 +72,17 @@ describe(' navigation', () => {
 
       navigation.setProps(newNavigationProps);
       expect(navigation.find(NavigationPerPage).length).toBe(0);
+    });
+
+    it('should pass on the currentPerPage prop if it is set (used without Redux)', () => {
+      let perPageNav: ReactWrapper<INavigationPerPageProps, any> = navigation.find(NavigationPerPage);
+      let expectedPerPage: number = 33;
+      let newNavigationProps: INavigationProps = _.extend({}, basicNavigationProps, { currentPerPage: expectedPerPage });
+
+      expect(perPageNav.props().currentPerPage).toBeUndefined();
+
+      navigation.setProps(newNavigationProps);
+      expect(perPageNav.props().currentPerPage).toBe(expectedPerPage);
     });
   });
 });

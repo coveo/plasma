@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { IOptionPickerProps, OptionPicker } from '../OptionPicker';
 import { OptionPickerConnected } from '../OptionPickerConnected';
 import { changeOptionPicker } from '../OptionPickerActions';
+import { IOptionPickerState } from '../OptionPickerReducers';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
@@ -56,11 +57,11 @@ describe('Option picker', () => {
       expect(idProp).toBe(OPTION_PICKER_BASIC_PROPS.id);
     });
 
-    it('should get the active value as a prop', () => {
-      let activeValueProp = optionPicker.props().activeValue;
+    it('should get the active label as a prop', () => {
+      let activeLabelProp = optionPicker.props().activeLabel;
 
-      expect(activeValueProp).toBeDefined();
-      expect(activeValueProp()).toBe('');
+      expect(activeLabelProp).toBeDefined();
+      expect(activeLabelProp).toBe('');
     });
 
     it('should get what to do on render as a prop', () => {
@@ -81,19 +82,20 @@ describe('Option picker', () => {
       expect(onChangeProp).toBeDefined();
     });
 
-    it('should return an empty string for the activeValue when the option picker does not exist in the state', () => {
+    it('should return an empty string for the activeLabel when the option picker does not exist in the state', () => {
       store.dispatch(clearState());
 
       expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id })).toBeUndefined();
-      expect(optionPicker.props().activeValue()).toBe('');
+      expect(optionPicker.props().activeLabel).toBe('');
     });
 
-    it('should return the selectedValue from the state when the option picker exists in the state', () => {
-      let expectedSelectedValue: () => string = () => 'our value';
+    it('should return the activeLabel from the state when the option picker exists in the state', () => {
+      let expectedSelectedValue: string = 'our value';
+      let expectedSelectedLabel: string = 'our label';
 
-      store.dispatch(changeOptionPicker(OPTION_PICKER_BASIC_PROPS.id, expectedSelectedValue));
+      store.dispatch(changeOptionPicker(OPTION_PICKER_BASIC_PROPS.id, expectedSelectedLabel, expectedSelectedValue));
 
-      expect(optionPicker.props().activeValue()).toBe(expectedSelectedValue());
+      expect(optionPicker.props().activeLabel).toBe(expectedSelectedLabel);
     });
 
     it('should call onRender prop when mounted', () => {
@@ -114,19 +116,24 @@ describe('Option picker', () => {
     });
 
     it('should set the selected value to the one sent when calling the onClick prop', () => {
-      let expectedSelectedValue: () => string = () => 'our value';
+      let expectedSelectedValue: string = 'our value';
+      let expectedSelectedLabel: string = 'our label';
+      let optionPickerState: IOptionPickerState;
 
-      optionPicker.props().onClick(expectedSelectedValue);
+      optionPicker.props().onClick(expectedSelectedValue, expectedSelectedLabel);
 
-      expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id }).selectedValue())
-        .toBe(expectedSelectedValue());
+      optionPickerState = _.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id });
+      expect(optionPickerState.selectedValue).toBe(expectedSelectedValue);
+      expect(optionPickerState.selectedLabel).toBe(expectedSelectedLabel);
 
-      expectedSelectedValue = () => 'new value';
+      expectedSelectedValue = 'new value';
+      expectedSelectedLabel = 'new label';
 
-      optionPicker.props().onClick(expectedSelectedValue);
+      optionPicker.props().onClick(expectedSelectedValue, expectedSelectedLabel);
 
-      expect(_.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id }).selectedValue())
-        .toBe(expectedSelectedValue());
+      optionPickerState = _.findWhere(store.getState().optionPickers, { id: OPTION_PICKER_BASIC_PROPS.id });
+      expect(optionPickerState.selectedValue).toBe(expectedSelectedValue);
+      expect(optionPickerState.selectedLabel).toBe(expectedSelectedLabel);
     });
   });
 });

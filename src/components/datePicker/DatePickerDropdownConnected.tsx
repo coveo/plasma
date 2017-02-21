@@ -43,12 +43,14 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     dispatch(applyDatePicker(ownProps.id));
     dispatch(resetDatePickers(ownProps.id));
   },
-  onCancel: (currentMonth: number, currentYear: number) => {
-    dispatch(changeOptionsCycle(`calendar-${ownProps.id}${MONTH_PICKER_ID}`, currentMonth));
-    dispatch(changeOptionsCycle(`calendar-${ownProps.id}${YEAR_PICKER_ID}`, currentYear));
-    dispatch(resetDatePickers(ownProps.id));
-    dispatch(resetOptionPickers(ownProps.id));
-    dispatch(closeDropdown(ownProps.id));
+  onCancel: (currentMonth: number, currentYear: number, isOpened: boolean) => {
+    if (isOpened) {
+      dispatch(changeOptionsCycle(`calendar-${ownProps.id}${MONTH_PICKER_ID}`, currentMonth));
+      dispatch(changeOptionsCycle(`calendar-${ownProps.id}${YEAR_PICKER_ID}`, currentYear));
+      dispatch(resetDatePickers(ownProps.id));
+      dispatch(resetOptionPickers(ownProps.id));
+      dispatch(closeDropdown(ownProps.id));
+    }
   }
 });
 

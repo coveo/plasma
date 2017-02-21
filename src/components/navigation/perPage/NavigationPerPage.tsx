@@ -6,20 +6,19 @@ export interface INavigationPerPageOwnProps extends React.ClassAttributes<Naviga
   id?: string;
   totalEntries: number;
   label?: string;
-  currentPage?: number;
-  currentPerPage?: number;
   perPageNumbers?: number[];
   loadingIds?: string[];
 }
 
 export interface INavigationPerPageStateProps {
   currentPerPage?: number;
+  currentPage?: number;
 }
 
 export interface INavigationPerPageDispatchProps {
   onRender?: (perPageNb: number) => void;
   onDestroy?: () => void;
-  onPerPageClick?: (perPageNb: number) => void;
+  onPerPageClick?: (perPageNb: number, oldPerPageNb: number, currentPage: number) => void;
 }
 
 export interface INavigationPerPageProps extends INavigationPerPageOwnProps, INavigationPerPageStateProps,
@@ -30,6 +29,12 @@ export const PER_PAGE_LABEL: string = 'Results per page';
 
 export class NavigationPerPage extends React.Component<INavigationPerPageProps, any> {
   private perPageNumbers: number[];
+
+  private handleClick(newPerPage: number) {
+    if (this.props.onPerPageClick) {
+      this.props.onPerPageClick(newPerPage, this.props.currentPerPage, this.props.currentPage);
+    }
+  }
 
   componentWillMount() {
     this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
@@ -60,7 +65,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
         let isSelected: boolean = currentPerPage === number;
         return (
           <NavigationPerPageSelect
-            onPerPageClick={this.props.onPerPageClick}
+            onPerPageClick={(newPerPageNb: number) => this.handleClick(newPerPageNb)}
             perPageNb={number}
             key={selectId}
             selected={isSelected}
