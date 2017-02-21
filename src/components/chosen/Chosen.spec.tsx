@@ -1,7 +1,5 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { IChosenSelectProps, ChosenSelect } from './ChosenSelect';
-
-// Until Webpack provided plugins works with TS 2.0
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 
