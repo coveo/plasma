@@ -157,19 +157,19 @@ describe('Calendar', () => {
 
     it('should change the upper limit to the end of the day selected if the onClick was called on an upper limit',
       () => {
-      let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
-      let newLimit: Date = moment(new Date()).add(5, 'day').toDate();
+        let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+        let newLimit: Date = moment(new Date()).add(5, 'day').toDate();
 
-      store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
-      store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
+        store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
+        store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
-      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
+        expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
 
-      calendar.props().onClick(PICKER_ID, true, newLimit);
+        calendar.props().onClick(PICKER_ID, true, newLimit);
 
-      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit)
-        .toEqual(moment(newLimit).endOf('day').toDate());
-    });
+        expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit)
+          .toEqual(moment(newLimit).endOf('day').toDate());
+      });
 
     it('should change the lower limit if the onClick was called on a lower limit', () => {
       let currentLowerLimit: Date = moment(new Date()).add(10, 'day').toDate();
