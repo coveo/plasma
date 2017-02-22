@@ -19,7 +19,7 @@ export interface IFilterBoxDispatchProps {
 
 export interface IFilterBoxProps extends IFilterBoxOwnProps, IFilterBoxStateProps, IFilterBoxDispatchProps { }
 
-export const FILTER_PLACEHOLDER = 'Filter';
+export const FILTER_PLACEHOLDER: string = 'Filter';
 
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
   filterInput: HTMLInputElement;

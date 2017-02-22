@@ -111,6 +111,7 @@ gulp.task('cleanDefs', false, () =>
   gulp.src('dist/react-vapor.d.ts')
     .pipe(replace(/import.*$/gm, ''))
     .pipe(replace(/export =.+;$/gm, ''))
+    .pipe(replace(/export default.+;$/gm, ''))
     .pipe(replace(/export .+ from .+$/gm, ''))
     .pipe(replace(/export (?:default )?(.*)$/gm, '$1'))
     .pipe(replace(/private .+;$/gm, ''))

@@ -14,7 +14,7 @@ export interface ITriggerActionDispatchProps {
 
 export interface ITriggerActionProps extends ITriggerActionOwnProps, ITriggerActionDispatchProps { }
 
-export const CONFIRM_LABEL = 'Are you sure?';
+export const CONFIRM_LABEL: string = 'Are you sure?';
 
 export class TriggerAction extends React.Component<ITriggerActionProps, any> {
 
