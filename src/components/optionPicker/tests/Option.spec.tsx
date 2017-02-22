@@ -76,7 +76,10 @@ describe('Option picker', () => {
     it('should call the onClick prop with the result of the option value when clicking the button', () => {
       option.find('button').simulate('click');
 
-      expect(OPTION_BASIC_PROPS.onClick).toHaveBeenCalledWith(OPTION_BASIC_PROPS.option.value);
+      expect(OPTION_BASIC_PROPS.onClick).toHaveBeenCalledWith(
+        OPTION_BASIC_PROPS.option.value(),
+        OPTION_BASIC_PROPS.option.label
+      );
     });
   });
 });

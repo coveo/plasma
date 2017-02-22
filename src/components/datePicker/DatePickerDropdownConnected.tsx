@@ -7,7 +7,7 @@ import {
 } from './DatePickerDropdown';
 import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from '../dropdown/DropdownActions';
 import { IDropdownState } from '../dropdown/DropdownReducers';
-import { applyDatePicker, resetDatePickers } from './DatePickerActions';
+import { applyDatePicker, resetDatePickers, selectDate, DateLimits } from './DatePickerActions';
 import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { IDatePickerState } from './DatePickerReducers';
 import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
@@ -36,19 +36,26 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownO
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownDispatchProps => ({
   onRender: () => dispatch(addDropdown(ownProps.id)),
   onDestroy: () => dispatch(removeDropdown(ownProps.id)),
-  onClick: () => dispatch(toggleDropdown(ownProps.id)),
+  onClick: (datePicker: IDatePickerState) => {
+    dispatch(toggleDropdown(ownProps.id));
+    if (datePicker) {
+      dispatch(selectDate(datePicker.id, DateLimits.lower));
+    }
+  },
   onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
   onApply: () => {
     dispatch(closeDropdown(ownProps.id));
     dispatch(applyDatePicker(ownProps.id));
     dispatch(resetDatePickers(ownProps.id));
   },
-  onCancel: (currentMonth: number, currentYear: number) => {
-    dispatch(changeOptionsCycle(`calendar-${ownProps.id}${MONTH_PICKER_ID}`, currentMonth));
-    dispatch(changeOptionsCycle(`calendar-${ownProps.id}${YEAR_PICKER_ID}`, currentYear));
-    dispatch(resetDatePickers(ownProps.id));
-    dispatch(resetOptionPickers(ownProps.id));
-    dispatch(closeDropdown(ownProps.id));
+  onCancel: (currentMonth: number, currentYear: number, isOpened: boolean) => {
+    if (isOpened) {
+      dispatch(changeOptionsCycle(`calendar-${ownProps.id}${MONTH_PICKER_ID}`, currentMonth));
+      dispatch(changeOptionsCycle(`calendar-${ownProps.id}${YEAR_PICKER_ID}`, currentYear));
+      dispatch(resetDatePickers(ownProps.id));
+      dispatch(resetOptionPickers(ownProps.id));
+      dispatch(closeDropdown(ownProps.id));
+    }
   }
 });
 

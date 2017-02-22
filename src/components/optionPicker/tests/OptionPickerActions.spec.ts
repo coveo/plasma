@@ -37,16 +37,18 @@ describe('Option picker', () => {
     });
 
     it('should create an action to change the option picker value', () => {
-      let expectedValue: () => string = () => 'any value we want';
+      let expectedValue: string = 'any value we want';
+      let expectedLabel: string = 'any label';
       let expectedAction: IReduxAction<IReduxActionsPayload> = {
         type: OptionPickerActions.change,
         payload: {
           id: OPTION_PICKER_ID,
-          value: expectedValue
+          value: expectedValue,
+          label: expectedLabel
         }
       };
 
-      expect(changeOptionPicker(OPTION_PICKER_ID, expectedValue)).toEqual(expectedAction);
+      expect(changeOptionPicker(OPTION_PICKER_ID, expectedLabel, expectedValue)).toEqual(expectedAction);
     });
 
     it('should create an action to reset the option pickers', () => {

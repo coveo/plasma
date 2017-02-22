@@ -144,12 +144,12 @@ describe('Date picker', () => {
     });
 
     it('should return the selected value if the option picker exists in the state', () => {
-      let expectedValue: () => string = () => 'this option';
+      let expectedValue: string = 'this option';
 
       store.dispatch(addOptionPicker(DATES_SELECTION_ID));
-      store.dispatch(changeOptionPicker(DATES_SELECTION_ID, expectedValue));
+      store.dispatch(changeOptionPicker(DATES_SELECTION_ID, 'this label', expectedValue));
 
-      expect(datesSelection.props().quickOption).toBe(expectedValue());
+      expect(datesSelection.props().quickOption).toBe(expectedValue);
     });
 
     it('should call onRender prop when mounted', () => {
@@ -201,17 +201,20 @@ describe('Date picker', () => {
 
     it('should deselect the quick option when calling onChange prop if the call does not come from the option picker',
       () => {
-        let expectedValue: () => string = () => 'anything';
+        let expectedValue: string = 'anything';
+        let expectedLabel: string = 'something';
 
         store.dispatch(addOptionPicker(DATES_SELECTION_ID));
-        store.dispatch(changeOptionPicker(DATES_SELECTION_ID, expectedValue));
+        store.dispatch(changeOptionPicker(DATES_SELECTION_ID, expectedLabel, expectedValue));
 
         datesSelection.props().onChange(new Date(), true, true);
 
-        expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedValue()).toBe(expectedValue());
+        expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedValue).toBe(expectedValue);
+        expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedLabel).toBe(expectedLabel);
 
         datesSelection.props().onChange(new Date(), true, false);
-        expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedValue()).toBe('');
+        expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedValue).toBe('');
+        expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedLabel).toBe('');
       });
   });
 });

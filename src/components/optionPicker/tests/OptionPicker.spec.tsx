@@ -101,15 +101,16 @@ describe('Option picker', () => {
     it('should call prop onClick on mounting if set when calling handleClick', () => {
       let onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
       let expectedValue: string = 'value';
+      let expectedLabel: string = 'label';
       let withOnClickProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, { onClick: onClickSpy });
 
-      expect(() => optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue)).not.toThrow();
+      expect(() => optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue, expectedLabel)).not.toThrow();
       expect(onClickSpy).not.toHaveBeenCalled();
 
       optionPicker.setProps(withOnClickProps);
-      optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue);
+      optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue, expectedLabel);
 
-      expect(onClickSpy).toHaveBeenCalledWith(expectedValue);
+      expect(onClickSpy).toHaveBeenCalledWith(expectedValue, expectedLabel);
     });
 
     it('should call handleClick when clicking an option', () => {
@@ -117,7 +118,10 @@ describe('Option picker', () => {
 
       optionPicker.find('Option').first().find('button').simulate('click');
 
-      expect(handleClickSpy).toHaveBeenCalledWith(OPTION_PICKER_BASIC_PROPS.options[0].value);
+      expect(handleClickSpy).toHaveBeenCalledWith(
+        OPTION_PICKER_BASIC_PROPS.options[0].value(),
+        OPTION_PICKER_BASIC_PROPS.options[0].label
+      );
     });
   });
 });

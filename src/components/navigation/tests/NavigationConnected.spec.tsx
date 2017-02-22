@@ -9,8 +9,6 @@ import { Provider } from 'react-redux';
 import { LoadingConnected } from '../../loading/LoadingConnected';
 import { NavigationPaginationConnected } from '../pagination/NavigationPaginationConnected';
 import { NavigationPerPageConnected } from '../perPage/NavigationPerPageConnected';
-import { NavigationPerPageSelect } from '../perPage/NavigationPerPageSelect';
-import { NavigationPaginationSelect } from '../pagination/NavigationPaginationSelect';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 
@@ -68,34 +66,5 @@ describe('<NavigationConnected />', () => {
 
   it('should render a <NavigationPerPageConnected /> component if totalEntries is higher than the first perPageNumber', () => {
     expect(navigation.find(NavigationPerPageConnected).length).toBe(1);
-  });
-
-  it('should not update the currentPerPage prop if a selected <NavigationPerPageSelect /> is clicked', () => {
-    expect(store.getState().perPageComposite[0].perPage).toBe(10);
-    let secondNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(0);
-    secondNavPerPageSelect.find('a').simulate('click');
-    expect(store.getState().perPageComposite[0].perPage).toBe(10);
-  });
-
-  it('should update the currentPerPage prop if an unselected <NavigationPerPageSelect /> is clicked', () => {
-    expect(store.getState().perPageComposite[0].perPage).toBe(10);
-    let firstNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(1);
-    firstNavPerPageSelect.find('a').simulate('click');
-    expect(store.getState().perPageComposite[0].perPage).toBe(20);
-  });
-
-  it('should reset selected page to 0 when a <NavigationPerPageSelect/> is clicked and currentPerPage and currentPage are not passed as props', () => {
-    let fourthPage = navigation.find(NavigationPaginationSelect).at(3);
-    fourthPage.find('a').simulate('click');
-    expect(store.getState().paginationComposite[0].pageNb).toBe(3);
-
-    let secondNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(1);
-    secondNavPerPageSelect.find('a').simulate('click');
-    expect(store.getState().paginationComposite[0].pageNb).toBe(0);
-
-    fourthPage.find('a').simulate('click');
-    let firstNavPerPageSelect = navigation.find(NavigationPerPageSelect).at(0);
-    firstNavPerPageSelect.find('a').simulate('click');
-    expect(store.getState().paginationComposite[0].pageNb).toBe(0);
   });
 });

@@ -13,62 +13,86 @@ export interface IFacetState {
 export const facetInitialState: IFacetState = { facet: undefined, opened: false, selected: [] };
 export const facetsInitialState: IFacetState[] = [];
 
+const toggleMore = (state: IFacetState = facetInitialState,
+  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+  if (state.facet !== action.payload.facet) {
+    return state;
+  }
+
+  return {
+    facet: state.facet,
+    opened: !state.opened,
+    selected: state.selected
+  };
+};
+
+const closeMore = (state: IFacetState = facetInitialState): IFacetState => {
+  return {
+    facet: state.facet,
+    opened: false,
+    selected: state.selected
+  };
+};
+
+const addFacet = (state: IFacetState = facetInitialState,
+  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+  return {
+    facet: action.payload.facet,
+    opened: false,
+    selected: []
+  };
+};
+
+const changeFacet = (state: IFacetState = facetInitialState,
+  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+  if (state.facet !== action.payload.facet) {
+    return state;
+  }
+
+  let selected = state.selected;
+  if (_.some(state.selected, (facetRow: IFacet) => { return facetRow.name === action.payload.facetRow.name; })) {
+    selected = _.reject(state.selected, (facetRow: IFacet) => {
+      return facetRow.name === action.payload.facetRow.name;
+    });
+  } else {
+    selected = [
+      action.payload.facetRow,
+      ...state.selected
+    ];
+  }
+  return {
+    facet: state.facet,
+    opened: state.opened,
+    selected: selected
+  };
+};
+
+const emptyFacet = (state: IFacetState = facetInitialState,
+  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+  if (state.facet !== action.payload.facet) {
+    return state;
+  }
+
+  return {
+    facet: state.facet,
+    opened: state.opened,
+    selected: []
+  };
+};
+
 export const facetReducer = (state: IFacetState = facetInitialState,
   action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
   switch (action.type) {
     case FacetActions.toggleMoreFacetRows:
-      if (state.facet !== action.payload.facet) {
-        return state;
-      }
-
-      return {
-        facet: state.facet,
-        opened: !state.opened,
-        selected: state.selected
-      };
+      return toggleMore(state, action);
     case FacetActions.closeMoreFacetRows:
-      return {
-        facet: state.facet,
-        opened: false,
-        selected: state.selected
-      };
+      return closeMore(state);
     case FacetActions.addFacet:
-      return {
-        facet: action.payload.facet,
-        opened: false,
-        selected: []
-      };
+      return addFacet(state, action);
     case FacetActions.changeFacet:
-      if (state.facet !== action.payload.facet) {
-        return state;
-      }
-
-      let selected = state.selected;
-      if (_.some(state.selected, (facetRow: IFacet) => { return facetRow.name === action.payload.facetRow.name; })) {
-        selected = _.reject(state.selected, (facetRow: IFacet) => {
-          return facetRow.name === action.payload.facetRow.name;
-        });
-      } else {
-        selected = [
-          action.payload.facetRow,
-          ...state.selected
-        ];
-      }
-      return {
-        facet: state.facet,
-        opened: state.opened,
-        selected: selected
-      };
+      return changeFacet(state, action);
     case FacetActions.emptyFacet:
-      if (state.facet !== action.payload.facet) {
-        return state;
-      }
-
-      return {
-        facet: state.facet,
-        opened: state.opened,
-        selected: []
-      };
+      return emptyFacet(state, action);
     default:
       return state;
   }
