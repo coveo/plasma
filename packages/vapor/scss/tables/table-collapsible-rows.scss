@@ -55,6 +55,72 @@ table {
             font-weight: bold;
             text-transform: uppercase;
           }
+
+          .row-error-container {
+            padding: 15px $table-first-column-padding-left;
+            margin-right: -$table-first-column-padding-left;
+            margin-left: -$table-first-column-padding-left;
+
+            background: $pure-white;
+            border-bottom: 1px solid;
+            border-bottom-color: $medium-grey;
+
+            .details-container {
+              padding-right: $details-container-padding;
+            }
+
+            .value {
+              padding: 5px 0;
+
+              font-size: 14px;
+              line-height: 15px;
+
+              b {
+                font-weight: bold;
+              }
+
+              i {
+                font-style: italic;
+              }
+
+              ul {
+                padding-left: 20px;
+
+                list-style-type: disc;
+              }
+            }
+
+            .label {
+              padding: 5px 0;
+
+              font-size: 12px;
+              font-weight: normal;
+            }
+
+            .error-title {
+              padding: 0;
+
+              color: $red;
+            }
+
+            .error-description-container {
+              flex-basis: calc(33% - #{$details-container-padding});
+
+              li {
+                padding-bottom: 5px;
+              }
+
+              .error-description {
+                padding-top: 5px;
+
+                color: $red;
+              }
+            }
+
+            .troubleshooting-container {
+              flex-basis: calc(66% - #{$details-container-padding});
+            }
+          }
         }
 
         &.in td {
