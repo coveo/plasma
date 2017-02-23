@@ -21,7 +21,7 @@ export interface IActionsDropdownStateProps extends IReduxStatePossibleProps {
 
 export interface IActionsDropdownProps extends IActionsDropdownOwnProps, IActionsDropdownStateProps { }
 
-export const MORE_LABEL = 'More';
+export const MORE_LABEL: string = 'More';
 
 export class ActionsDropdown extends React.Component<IActionsDropdownProps, any> {
 

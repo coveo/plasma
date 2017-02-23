@@ -38,7 +38,7 @@ describe('<NavigationPaginationConnected />', () => {
           <NavigationPaginationConnected
             id='few-pages-navigation-pagination'
             totalPages={3}
-            />
+          />
         </div>
       </Provider>,
       { attachTo: document.getElementById('App') }

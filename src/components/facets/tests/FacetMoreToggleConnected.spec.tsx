@@ -25,7 +25,7 @@ describe('Facets', () => {
         <Provider store={store}>
           <FacetMoreToggleConnected
             facet={facet}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );

@@ -33,7 +33,7 @@ describe('NavigationPagination', () => {
       navigationPagination = mount(
         <NavigationPagination
           {...NAVIGATION_PAGINATION_BASIC_PROPS}
-          />,
+        />,
         { attachTo: document.getElementById('App') });
       navigationPaginationInstance = navigationPagination.instance() as NavigationPagination;
     });
@@ -52,7 +52,7 @@ describe('NavigationPagination', () => {
         <NavigationPagination
           {...NAVIGATION_PAGINATION_BASIC_PROPS}
           onRender={renderSpy}
-          />,
+        />,
         { attachTo: document.getElementById('App') });
       expect(renderSpy.calls.count()).toBe(1);
     });
@@ -66,7 +66,7 @@ describe('NavigationPagination', () => {
         <NavigationPagination
           {...NAVIGATION_PAGINATION_BASIC_PROPS}
           onDestroy={destroySpy}
-          />,
+        />,
         { attachTo: document.getElementById('App') });
       navigationPagination.unmount();
       expect(destroySpy.calls.count()).toBe(1);

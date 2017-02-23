@@ -81,14 +81,14 @@ describe('Options cycle', () => {
     });
 
     it('should call goToPreviousOption when clicking the previous arrow', () => {
-      let goToPreviousOptionSpy = spyOn(optionsCycleInstance, 'goToPreviousOption');
+      let goToPreviousOptionSpy = spyOn<any>(optionsCycleInstance, 'goToPreviousOption');
 
       optionsCycle.find('.previous-option').simulate('click');
       expect(goToPreviousOptionSpy.calls.count()).toBe(1);
     });
 
     it('should call goToNextOption when clicking the previous arrow', () => {
-      let goToNextOptionSpy = spyOn(optionsCycleInstance, 'goToNextOption');
+      let goToNextOptionSpy = spyOn<any>(optionsCycleInstance, 'goToNextOption');
 
       optionsCycle.find('.next-option').simulate('click');
       expect(goToNextOptionSpy.calls.count()).toBe(1);
@@ -117,14 +117,15 @@ describe('Options cycle', () => {
       expect(onChangeSpy).toHaveBeenCalledWith((OPTIONS.length - 1));
     });
 
-    it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one', () => {
-      let onChangeSpy = jasmine.createSpy('onChange');
+    it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one',
+      () => {
+        let onChangeSpy = jasmine.createSpy('onChange');
 
-      optionsCycle.setProps({ options: OPTIONS, onChange: onChangeSpy, currentOption: 2 });
-      optionsCycle.find('.previous-option').simulate('click');
+        optionsCycle.setProps({ options: OPTIONS, onChange: onChangeSpy, currentOption: 2 });
+        optionsCycle.find('.previous-option').simulate('click');
 
-      expect(onChangeSpy).toHaveBeenCalledWith(1);
-    });
+        expect(onChangeSpy).toHaveBeenCalledWith(1);
+      });
 
     it('should call onChange with the first option when clicking on the next arrow if the current option is the last one', () => {
       let onChangeSpy = jasmine.createSpy('onChange');

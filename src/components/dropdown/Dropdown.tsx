@@ -27,7 +27,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     if (this.props.onClick) {
       this.props.onClick();
     }
-  };
+  }
 
   private handleDocumentClick = (e: MouseEvent) => {
     let facetSearch: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
@@ -35,7 +35,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     if (!facetSearch.contains(e.target as Node)) {
       this.props.onDocumentClick();
     }
-  };
+  }
 
   componentWillMount() {
     if (this.props.onRender) {

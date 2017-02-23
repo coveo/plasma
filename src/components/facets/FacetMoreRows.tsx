@@ -61,16 +61,18 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
     if (!facetSearch.contains(e.target as Node)) {
       this.props.onDocumentClick();
     }
-  };
+  }
 
   render() {
     let moreSearchClasses: string = 'facet-more-search' + (!this.props.isOpened ? ' hidden' : '');
-    let rowsFiltered: JSX.Element[] = this.props.filterText && this.props.filterText.length ? _.map(this.props.facetRows, (facetRow: JSX.Element) => {
-      let facetText = facetRow.props.facetRow.formattedName;
-      if (s.contains(facetText.toLowerCase(), this.props.filterText.toLowerCase())) {
-        return facetRow;
-      }
-    }).filter(Boolean) : this.props.facetRows;
+    let rowsFiltered: JSX.Element[] = this.props.filterText && this.props.filterText.length
+      ? _.map(this.props.facetRows, (facetRow: JSX.Element) => {
+        let facetText = facetRow.props.facetRow.formattedName;
+        if (s.contains(facetText.toLowerCase(), this.props.filterText.toLowerCase())) {
+          return facetRow;
+        }
+      }).filter(Boolean)
+      : this.props.facetRows;
     let resultsClass: string = 'facet-search-results' + (!rowsFiltered.length ? ' hidden' : '');
     let filterBoxId: string = 'filter-' + this.props.facet;
     let filterBox: JSX.Element = this.props.withReduxState ?

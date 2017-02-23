@@ -200,7 +200,7 @@ describe('Calendar', () => {
     });
 
     it('should call handleClick on <CalendarDay /> click', () => {
-      let handleClickSpy: jasmine.Spy = spyOn(calendarInstance, 'handleClick');
+      let handleClickSpy: jasmine.Spy = spyOn<any>(calendarInstance, 'handleClick');
       let firstCalendarDay: ReactWrapper<ICalendarDayProps, any> = calendar.find(CalendarDay).first();
       firstCalendarDay.find('td').simulate('click');
 

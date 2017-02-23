@@ -40,7 +40,7 @@ describe('Actions', () => {
           <SecondaryActionsConnected
             actions={actions}
             id={id}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );
@@ -76,7 +76,7 @@ describe('Actions', () => {
           <SecondaryActionsConnected
             actions={[actions[0]]}
             id={id}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );

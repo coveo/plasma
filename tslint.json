@@ -34,19 +34,18 @@
     "member-access": false,
     "member-ordering": [
       false,
-      { "order": "fields-first" }
+      {
+        "order": "fields-first"
+      }
     ],
     "new-parens": true,
     "no-arg": false,
     "no-default-export": true,
-    "no-duplicate-key": true,
     "no-duplicate-variable": true,
     "no-inferrable-types": false,
     "no-shadowed-variable": false,
     "no-trailing-whitespace": true,
-    "no-unreachable": false,
     "no-unused-expression": false,
-    "no-unused-variable": true,
     "no-use-before-declare": true,
     "one-line": [
       true,
@@ -93,11 +92,6 @@
       }
     ],
     "use-isnan": true,
-    "use-strict": [
-      false,
-      "check-module",
-      "check-function"
-    ],
     "variable-name": [
       false,
       "check-format",

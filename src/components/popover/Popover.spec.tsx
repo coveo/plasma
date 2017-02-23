@@ -27,7 +27,7 @@ describe('<Popover>', () => {
       attachment: 'top left'
     };
 
-    toggleOpenedSpy = spyOn(Popover.prototype, 'toggleOpened').and.callThrough();
+    toggleOpenedSpy = spyOn<any>(Popover.prototype, 'toggleOpened').and.callThrough();
   });
 
   it('should render without error', () => {

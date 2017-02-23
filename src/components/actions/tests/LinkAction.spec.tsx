@@ -32,7 +32,7 @@ describe('Actions', () => {
         <LinkAction
           action={action}
           simple={simple}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
     });

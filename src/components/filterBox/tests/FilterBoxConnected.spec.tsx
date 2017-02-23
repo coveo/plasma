@@ -25,7 +25,7 @@ describe('FilterBox', () => {
         <Provider store={store}>
           <FilterBoxConnected
             id={id}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );

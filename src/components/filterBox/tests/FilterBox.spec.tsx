@@ -12,7 +12,7 @@ describe('FilterBox', () => {
         shallow(
           <FilterBox
             id={id}
-            />
+          />
         );
       }).not.toThrow();
     });
@@ -26,7 +26,7 @@ describe('FilterBox', () => {
       filterBox = mount(
         <FilterBox
           id={id}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
       filterBoxInstance = filterBox.instance() as FilterBox;

@@ -22,7 +22,7 @@ describe('Facets', () => {
             facet={facet}
             onToggleFacet={onToggleFacet}
             isChecked={isChecked}
-            />
+          />
         );
       }).not.toThrow();
     });
@@ -39,7 +39,7 @@ describe('Facets', () => {
           facet={facet}
           onToggleFacet={onToggleFacet}
           isChecked={isChecked}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
     });

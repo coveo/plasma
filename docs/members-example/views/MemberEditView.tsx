@@ -93,7 +93,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
                 value={this.props.email}
                 onChange={(event: React.FormEvent<HTMLInputElement>) => {
                   this.props.changeMemberEmail((event.target as HTMLInputElement).value);
-                } } />
+                }} />
               <label>Email</label>
             </fieldset>
             <fieldset className='form-group'>
@@ -106,7 +106,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
                     checked={this.props.sendEmail}
                     onChange={(event: React.FormEvent<HTMLInputElement>) => {
                       this.props.changeMemberSendEmail((event.target as HTMLInputElement).checked);
-                    } } />
+                    }} />
                   <button type='button' onClick={() => this.sendEmailCheckbox.click()} />
                 </label>
               </div>

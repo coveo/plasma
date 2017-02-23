@@ -38,7 +38,7 @@ export class MembersCompositeView extends React.Component<IMembersCompositeViewP
           <MemberEditView
             id={member.id}
             onAddMember={null}
-            />
+          />
         </div>
       );
     });
@@ -49,7 +49,7 @@ export class MembersCompositeView extends React.Component<IMembersCompositeViewP
           <MemberEditView
             id={null}
             onAddMember={() => this.props.addMember()}
-            />
+          />
         </div>
         {memberEditViews}
       </div>

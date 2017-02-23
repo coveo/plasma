@@ -47,7 +47,7 @@ export class OptionPicker extends React.Component<IOptionPickerProps, any> {
           option={option}
           onClick={(value: string, label: string) => this.handleClick(value, label)}
           isActive={this.props.activeLabel && option.label === this.props.activeLabel}
-          />
+        />
       </li>;
     });
 

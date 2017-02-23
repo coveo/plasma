@@ -46,14 +46,14 @@ export class Facet extends React.Component<IFacetProps, any> {
     if (this.props.onToggleFacet) {
       this.props.onToggleFacet(this.props.facet.name, facetRow);
     }
-  };
+  }
 
   private clearFacet = () => {
     this.props.clearFacet(this.props.facet.name);
     if (this.props.onClearFacet) {
       this.props.onClearFacet(this.props.facet.name);
     }
-  };
+  }
 
   componentWillMount() {
     if (this.props.onRender) {
@@ -79,7 +79,7 @@ export class Facet extends React.Component<IFacetProps, any> {
         facetRow={facetRow}
         onToggleFacet={this.buildFacet}
         isChecked={_.contains(_.pluck(selectedRows, 'name'), facetRow.name)}
-        />);
+      />);
     });
     let moreRowsToggle: JSX.Element = rows.length > 5 ?
       (this.props.withReduxState ?

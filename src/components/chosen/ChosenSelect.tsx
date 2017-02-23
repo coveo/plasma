@@ -1,5 +1,3 @@
-/// <reference types="chosen" /> Required since typings name (@types/chosen) is not the same as the npm package name (chosen-js)
-
 import * as React from 'react';
 import * as $ from 'jquery';
 import { extend, noop, omit } from 'underscore';

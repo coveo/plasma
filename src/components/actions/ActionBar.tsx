@@ -60,7 +60,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
         label={this.props.itemFilterLabel}
         item={this.props.itemFilter}
         onClear={() => this.handleClear()} crop={this.props.itemFilterCropLength}
-        />
+      />
       : null;
 
     let primaryActions: JSX.Element[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {

@@ -34,7 +34,7 @@ describe('Actions', () => {
             action={action}
             simple={simple}
             parentId={parentId}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );

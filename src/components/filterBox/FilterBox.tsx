@@ -19,7 +19,7 @@ export interface IFilterBoxDispatchProps {
 
 export interface IFilterBoxProps extends IFilterBoxOwnProps, IFilterBoxStateProps, IFilterBoxDispatchProps { }
 
-export const FILTER_PLACEHOLDER = 'Filter';
+export const FILTER_PLACEHOLDER: string = 'Filter';
 
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
   filterInput: HTMLInputElement;
@@ -32,13 +32,13 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     if (this.props.onFilter) {
       this.props.onFilter(this.props.id, this.filterInput.value);
     }
-  };
+  }
 
   private clearValue = () => {
     this.filterInput.value = '';
     this.filterInput.focus();
     this.handleChange();
-  };
+  }
 
   componentWillMount() {
     if (this.props.onRender) {
@@ -65,7 +65,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           placeholder={filterPlaceholder}
           onChange={() => this.handleChange()}
           value={this.props.filterText}
-          />
+        />
         <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
         <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
       </div>

@@ -9,8 +9,8 @@ module.exports = {
         'Explorer >= 11',
         'last 2 Edge versions',
         'last 3 Opera versions',
-        'Safari >= 8'
-      ]
-    })
-  ]
+        'Safari >= 8',
+      ],
+    }),
+  ],
 };

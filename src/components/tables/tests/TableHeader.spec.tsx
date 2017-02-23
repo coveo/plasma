@@ -16,7 +16,7 @@ describe('Tables', () => {
         shallow(
           <TableHeader
             columns={columns}
-            />
+          />
         );
       }).not.toThrow();
     });
@@ -43,7 +43,7 @@ describe('Tables', () => {
         <TableHeader
           columns={columns}
           headerClass={headerClass}
-          />,
+        />,
         { attachTo: document.getElementById('AppTable') }
       );
     });

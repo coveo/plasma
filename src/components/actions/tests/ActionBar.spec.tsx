@@ -115,7 +115,7 @@ describe('Actions', () => {
     });
 
     it('should not throw when handling the clear of the item filter when clearItemFilter is not defined', () => {
-      let handleClearSpy: jasmine.Spy = spyOn(actionBar.instance(), 'handleClear').and.callThrough();
+      let handleClearSpy: jasmine.Spy = spyOn<any>(actionBar.instance(), 'handleClear').and.callThrough();
       actionBar.setProps({ itemFilter: 'an item' });
       expect(() => {
         actionBar.find('.item-filter-clear').simulate('click');

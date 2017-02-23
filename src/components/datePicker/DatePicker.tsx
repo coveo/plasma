@@ -83,7 +83,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
           ref={(dateInput: HTMLInputElement) => this.dateInput = dateInput}
           onChange={() => this.handleChange()}
           onClick={() => this.props.onClick(this.props.upperLimit)}
-          />
+        />
         {nowButton}
       </div>
     );

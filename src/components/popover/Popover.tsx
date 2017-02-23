@@ -1,8 +1,7 @@
 /// <reference path="../../../types/react-tether/index.d.ts" /> Required to make dts-generator bundle react-tether definition file.
-
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import * as TetherComponent from 'react-tether';
+import TetherComponent from 'react-tether';
 import { extend, isFunction, isUndefined, omit } from 'underscore';
 
 /*
@@ -33,7 +32,7 @@ export interface IPopoverState {
 
 export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   static propTypes = extend(TetherComponent.propTypes, {
-    children: ({children}: IPopoverProps, propName: string, componentName: string) => {
+    children: ({ children }: IPopoverProps, propName: string, componentName: string) => {
       if (isUndefined(children) || React.Children.count(children) != 2) {
         return new Error(`${componentName} expects two children to use as target and element.` +
           `Second child can either be a boolean or a ReactNode.`);
@@ -108,5 +107,5 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     if (outsideTetherElement && outsideTetherToggle) {
       this.toggleOpened(false);
     }
-  };
+  }
 }

@@ -22,7 +22,7 @@ describe('Tables', () => {
         shallow(
           <TableError
             error={error}
-            />
+          />
         );
       }).not.toThrow();
     });
@@ -35,7 +35,7 @@ describe('Tables', () => {
       tableError = mount(
         <TableError
           error={error}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
     });

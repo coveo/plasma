@@ -57,5 +57,6 @@ declare namespace TetherComponent {
 }
 
 declare module 'react-tether' {
-  export = TetherComponent;
+  // tslint:disable-next-line:no-default-export
+  export default TetherComponent;
 }

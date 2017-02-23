@@ -27,7 +27,7 @@ describe('LastUpdated', () => {
         <Provider store={store}>
           <LastUpdatedConnected
             id={id}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );

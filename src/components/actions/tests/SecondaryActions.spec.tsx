@@ -36,7 +36,7 @@ describe('Actions', () => {
       secondaryActions = mount(
         <SecondaryActions
           actions={actions}
-          />,
+        />,
         { attachTo: document.getElementById('App') }
       );
     });

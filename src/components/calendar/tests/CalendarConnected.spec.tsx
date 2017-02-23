@@ -12,11 +12,12 @@ import {
   addDatePicker,
   selectDate,
   changeDatePickerUpperLimit,
-  changeDatePickerLowerLimit, DateLimits
+  changeDatePickerLowerLimit,
+  DateLimits
 } from '../../datePicker/DatePickerActions';
 import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
 import * as _ from 'underscore';
-import moment = require('moment');
+import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 

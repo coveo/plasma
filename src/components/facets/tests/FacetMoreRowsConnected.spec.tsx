@@ -32,13 +32,13 @@ describe('Facets', () => {
         facetRow={{ name: 'row1', formattedName: 'Row 1' }}
         onToggleFacet={onToggleFacet}
         isChecked={false}
-        />, <FacetRow
+      />, <FacetRow
         key='row2'
         facet={facet}
         facetRow={{ name: 'row2', formattedName: 'Row 2' }}
         onToggleFacet={onToggleFacet}
         isChecked={false}
-        />];
+      />];
 
       store = TestUtils.buildStore();
 
@@ -47,7 +47,7 @@ describe('Facets', () => {
           <FacetMoreRowsConnected
             facet={facet}
             facetRows={facetRows}
-            />
+          />
         </Provider>,
         { attachTo: document.getElementById('App') }
       );
