@@ -29,8 +29,7 @@ export const datePickerInitialState: IDatePickerState = {
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 
-const addDatePicker = (state: IDatePickerState = datePickerInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+const addDatePicker = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return {
     id: action.payload.id,
     calendarId: action.payload.calendarId,
@@ -44,23 +43,19 @@ const addDatePicker = (state: IDatePickerState = datePickerInitialState,
   };
 };
 
-const changeLowerLimit = (state: IDatePickerState = datePickerInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+const changeLowerLimit = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return state.id !== action.payload.id ? state : _.extend({}, state, { lowerLimit: action.payload.date });
 };
 
-const changeUpperLimit = (state: IDatePickerState = datePickerInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return state.id !== action.payload.id ? state : _.extend({}, state, { upperLimit: action.payload.date });
 };
 
-const selectDate = (state: IDatePickerState = datePickerInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return state.id !== action.payload.id ? state : _.extend({}, state, { selected: action.payload.limit });
 };
 
-const applyDates = (state: IDatePickerState = datePickerInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return state.id.indexOf(action.payload.id) !== 0
     ? state
     : _.extend({}, state, {
@@ -69,8 +64,7 @@ const applyDates = (state: IDatePickerState = datePickerInitialState,
     });
 };
 
-const resetDates = (state: IDatePickerState = datePickerInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return state.id.indexOf(action.payload.id) !== 0
     ? state
     : _.extend({}, state, {
