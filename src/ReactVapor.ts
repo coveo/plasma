@@ -47,8 +47,9 @@ export interface IReduxActionsPayload {
   color?: string;
   date?: Date;
   calendarId?: string;
-  value?: () => string | string;
+  value?: string;
   isRange?: boolean;
   limit?: string;
   item?: string;
+  label?: string;
 }

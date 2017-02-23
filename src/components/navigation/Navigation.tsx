@@ -18,13 +18,13 @@ export interface INavigationChildrenProps {
   numberOfPagesToShow?: number;
   previousLabel?: string;
   nextLabel?: string;
-  currentPage?: number;
-  currentPerPage?: number;
   onPageClick?: (pageNb: number) => void;
   perPageLabel?: string;
   perPageNumbers?: number[];
   onPerPageClick?: () => void;
   hidePages?: boolean;
+  currentPerPage?: number;
+  currentPage?: number;
 }
 
 export interface INavigationStateProps extends IReduxStatePossibleProps {
@@ -56,10 +56,11 @@ export class Navigation extends React.Component<INavigationProps, any> {
       let perPageProps: INavigationPerPageProps = {
         label: this.props.perPageLabel,
         perPageNumbers: this.props.perPageNumbers,
-        totalEntries: this.props.totalEntries,
-        currentPerPage: this.props.currentPerPage,
-        currentPage: this.props.currentPage
+        totalEntries: this.props.totalEntries
       };
+      if (this.props.currentPerPage) {
+        perPageProps.currentPerPage = this.props.currentPerPage;
+      }
       perPage = this.props.withReduxState ?
         <NavigationPerPageConnected id={this.props.id} loadingIds={this.props.loadingIds} {...perPageProps} /> :
         <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;

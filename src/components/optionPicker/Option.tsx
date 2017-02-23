@@ -8,7 +8,7 @@ export interface IOption {
 export interface IOptionProps extends React.ClassAttributes<Option> {
   option: IOption;
   isActive: boolean;
-  onClick: (value: () => string) => void;
+  onClick: (value: string, label: string) => void;
 }
 
 export class Option extends React.Component<IOptionProps, any> {
@@ -17,7 +17,7 @@ export class Option extends React.Component<IOptionProps, any> {
     let buttonClass = this.props.isActive ? 'active' : '';
 
     return (
-      <button className={buttonClass} onClick={() => this.props.onClick(this.props.option.value)}>
+      <button className={buttonClass} onClick={() => this.props.onClick(this.props.option.value(), this.props.option.label)}>
         {this.props.option.label}
       </button>
     );

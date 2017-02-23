@@ -29,47 +29,72 @@ export const datePickerInitialState: IDatePickerState = {
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 
+const addDatePicker = (state: IDatePickerState = datePickerInitialState,
+  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+  return {
+    id: action.payload.id,
+    calendarId: action.payload.calendarId,
+    color: action.payload.color,
+    isRange: action.payload.isRange,
+    lowerLimit: state.lowerLimit,
+    upperLimit: state.upperLimit,
+    selected: state.selected,
+    appliedLowerLimit: state.appliedLowerLimit,
+    appliedUpperLimit: state.appliedUpperLimit
+  };
+};
+
+const changeLowerLimit = (state: IDatePickerState = datePickerInitialState,
+  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+  return state.id !== action.payload.id ? state : _.extend({}, state, { lowerLimit: action.payload.date });
+};
+
+const changeUpperLimit = (state: IDatePickerState = datePickerInitialState,
+  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+  return state.id !== action.payload.id ? state : _.extend({}, state, { upperLimit: action.payload.date });
+};
+
+const selectDate = (state: IDatePickerState = datePickerInitialState,
+  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+  return state.id !== action.payload.id ? state : _.extend({}, state, { selected: action.payload.limit });
+};
+
+const applyDates = (state: IDatePickerState = datePickerInitialState,
+  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+  return state.id.indexOf(action.payload.id) !== 0
+    ? state
+    : _.extend({}, state, {
+      appliedLowerLimit: state.lowerLimit,
+      appliedUpperLimit: state.upperLimit >= state.lowerLimit ? state.upperLimit : state.lowerLimit
+    });
+};
+
+const resetDates = (state: IDatePickerState = datePickerInitialState,
+  action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+  return state.id.indexOf(action.payload.id) !== 0
+    ? state
+    : _.extend({}, state, {
+      selected: '',
+      lowerLimit: state.appliedLowerLimit,
+      upperLimit: state.appliedUpperLimit
+    });
+};
+
 export const datePickerReducer = (state: IDatePickerState = datePickerInitialState,
   action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   switch (action.type) {
     case DatePickerActions.add:
-      return {
-        id: action.payload.id,
-        calendarId: action.payload.calendarId,
-        color: action.payload.color,
-        isRange: action.payload.isRange,
-        lowerLimit: state.lowerLimit,
-        upperLimit: state.upperLimit,
-        selected: state.selected,
-        appliedLowerLimit: state.appliedLowerLimit,
-        appliedUpperLimit: state.appliedUpperLimit
-      };
+      return addDatePicker(state, action);
     case DatePickerActions.changeLowerLimit:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
-      return _.extend({}, state, {
-        lowerLimit: action.payload.date
-      });
+      return changeLowerLimit(state, action);
     case DatePickerActions.changeUpperLimit:
-      return state.id !== action.payload.id ? state : _.extend({}, state, { upperLimit: action.payload.date });
+      return changeUpperLimit(state, action);
     case DatePickerActions.select:
-      return state.id !== action.payload.id ? state : _.extend({}, state, { selected: action.payload.limit });
+      return selectDate(state, action);
     case DatePickerActions.apply:
-      return state.id.indexOf(action.payload.id) !== 0
-        ? state
-        : _.extend({}, state, {
-          appliedLowerLimit: state.lowerLimit,
-          appliedUpperLimit: state.upperLimit >= state.lowerLimit ? state.upperLimit : state.lowerLimit
-        });
+      return applyDates(state, action);
     case DatePickerActions.reset:
-      return state.id.indexOf(action.payload.id) !== 0
-        ? state
-        : _.extend({}, state, {
-          selected: '',
-          lowerLimit: state.appliedLowerLimit,
-          upperLimit: state.appliedUpperLimit
-        });
+      return resetDates(state, action);
     default:
       return state;
   }

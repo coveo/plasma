@@ -34,10 +34,10 @@ export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps 
 
 export interface IDatePickerDropdownDispatchProps {
   onApply?: () => void;
-  onCancel?: (currentMonth: number, currentYear: number) => void;
+  onCancel?: (currentMonth: number, currentYear: number, isOpened: boolean) => void;
   onRender?: () => void;
   onDestroy?: () => void;
-  onClick?: () => void;
+  onClick?: (datePicker: IDatePickerState) => void;
   onDocumentClick?: () => void;
 }
 
@@ -54,7 +54,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private handleClick = () => {
     if (this.props.onClick) {
-      this.props.onClick();
+      this.props.onClick(this.props.datePicker);
     }
   }
 
@@ -106,7 +106,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       let currentYear: number = this.props.datePicker
         ? this.props.datePicker.appliedLowerLimit.getFullYear()
         : DateUtils.currentYear;
-      this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()));
+      this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()), this.props.isOpened);
     }
   }
 

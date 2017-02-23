@@ -5,12 +5,14 @@ import * as _ from 'underscore';
 
 export interface IOptionPickerState {
   id: string;
-  selectedValue: () => string;
+  selectedLabel: string;
+  selectedValue: string;
 }
 
 export const optionPickerInitialState: IOptionPickerState = {
   id: undefined,
-  selectedValue: undefined
+  selectedLabel: '',
+  selectedValue: ''
 };
 export const optionPickersInitialState: IOptionPickerState[] = [];
 
@@ -20,6 +22,7 @@ export const optionPickerReducer = (state: IOptionPickerState = optionPickerInit
     case OptionPickerActions.add:
       return {
         id: action.payload.id,
+        selectedLabel: state.selectedLabel,
         selectedValue: state.selectedValue
       };
     case OptionPickerActions.change:
@@ -27,6 +30,7 @@ export const optionPickerReducer = (state: IOptionPickerState = optionPickerInit
         return state;
       }
       return _.extend({}, state, {
+        selectedLabel: action.payload.label,
         selectedValue: action.payload.value
       });
     case OptionPickerActions.reset:
