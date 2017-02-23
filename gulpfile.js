@@ -146,7 +146,7 @@ gulp.task('test:remap', false, () =>
     })));
 
 gulp.task('test', 'Run all tests in PhantomJS and exit', (done) => {
-  runSequence('prettify:tests', 'test:single', 'test:remap', done);
+  runSequence('prettify:src', 'test:single', 'test:remap', done);
 });
 
 gulp.task('test:browser', 'Run all tests in Chrome and watch', (done) => {
