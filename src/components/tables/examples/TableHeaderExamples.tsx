@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { TableHeader } from '../TableHeader';
+import { SortExample } from './SortExample';
+import { SortTypes } from '../TableSort';
 import { ITableHeaderCellProps } from '../TableHeaderCell';
 
 export class TableHeaderExamples extends React.Component<any, any> {
@@ -12,9 +14,7 @@ export class TableHeaderExamples extends React.Component<any, any> {
       {
         title: 'Second col'
       },
-      {
-        title: 'Third col'
-      },
+      new SortExample(SortTypes.None, () => { }),
       {
         title: 'Fourth col',
         className: 'text-dark-grey'

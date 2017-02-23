@@ -6,6 +6,7 @@ import * as React from 'react';
 describe('Tables', () => {
   let title: string;
   let className: string;
+  let cellContent: JSX.Element;
 
   describe('<TableHeaderCell />', () => {
     it('should render without errors', () => {
@@ -27,11 +28,13 @@ describe('Tables', () => {
 
       title = 'Header 1';
       className = 'special';
+      cellContent = <div></div>;
 
       tableHeaderCell = mount(
         <TableHeaderCell
           title={title}
           className={className}
+          cellContent={cellContent}
           />,
         { attachTo: document.getElementById('AppTableHeadRow') }
       );
@@ -56,12 +59,49 @@ describe('Tables', () => {
       expect(classNameProp).toBe(className);
     });
 
+    it('should get its cell content as a prop', () => {
+      let cellContentProp = tableHeaderCell.props().cellContent;
+
+      expect(cellContentProp).toBeDefined();
+      expect(cellContentProp).toBe(cellContent);
+    });
+
+    it('should get its onClick as a prop', () => {
+      let onClickFunction = jasmine.createSpy('onClick');
+      tableHeaderCell.setProps({
+        title: title,
+        onClick: onClickFunction
+      });
+      tableHeaderCell.mount();
+
+      let onClickProp = tableHeaderCell.props().onClick;
+
+      expect(onClickProp).toBeDefined();
+    });
+
     it('should have the class sent as a prop', () => {
       expect(tableHeaderCell.find('th').hasClass(className)).toBe(true);
     });
 
     it('should display the title sent as a prop', () => {
       expect(tableHeaderCell.html()).toContain(title);
+    });
+
+    it('should should call onClick on click', () => {
+      let onClickFunction = jasmine.createSpy('onClick');
+      tableHeaderCell.setProps({
+        title: title,
+        onClick: onClickFunction
+      });
+      tableHeaderCell.mount();
+
+      tableHeaderCell.simulate('click');
+
+      expect(onClickFunction).toHaveBeenCalled();
+    });
+
+    it('should not throw when clicked and onClick prop not set', () => {
+      expect(() => { tableHeaderCell.simulate('click') }).not.toThrow();
     });
   });
 });
