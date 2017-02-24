@@ -13,8 +13,7 @@ export interface IFacetState {
 export const facetInitialState: IFacetState = { facet: undefined, opened: false, selected: [] };
 export const facetsInitialState: IFacetState[] = [];
 
-const toggleMore = (state: IFacetState = facetInitialState,
-  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+const toggleMore = (state: IFacetState, action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
   if (state.facet !== action.payload.facet) {
     return state;
   }
@@ -26,7 +25,7 @@ const toggleMore = (state: IFacetState = facetInitialState,
   };
 };
 
-const closeMore = (state: IFacetState = facetInitialState): IFacetState => {
+const closeMore = (state: IFacetState): IFacetState => {
   return {
     facet: state.facet,
     opened: false,
@@ -34,8 +33,7 @@ const closeMore = (state: IFacetState = facetInitialState): IFacetState => {
   };
 };
 
-const addFacet = (state: IFacetState = facetInitialState,
-  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+const addFacet = (state: IFacetState, action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
   return {
     facet: action.payload.facet,
     opened: false,
@@ -43,8 +41,7 @@ const addFacet = (state: IFacetState = facetInitialState,
   };
 };
 
-const changeFacet = (state: IFacetState = facetInitialState,
-  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+const changeFacet = (state: IFacetState, action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
   if (state.facet !== action.payload.facet) {
     return state;
   }
@@ -67,8 +64,7 @@ const changeFacet = (state: IFacetState = facetInitialState,
   };
 };
 
-const emptyFacet = (state: IFacetState = facetInitialState,
-  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+const emptyFacet = (state: IFacetState, action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
   if (state.facet !== action.payload.facet) {
     return state;
   }

@@ -80,8 +80,14 @@ describe('Tables', () => {
       expect(tableError.html()).toContain(error.errorDescription);
     });
 
-    it('should display the error troubleshoot', () => {
+    it('should display the error troubleshoot if there is an erro troubleshoot in the error', () => {
+      let errorNoTroubleshoot = _.extend({}, error, { errorTroubleshoot: undefined });
+
       expect(tableError.html()).toContain(error.errorTroubleshoot);
+
+      tableError.setProps({ error: errorNoTroubleshoot });
+
+      expect(tableError.html()).not.toContain(error.errorTroubleshoot);
     });
 
     it('should display the error code', () => {
