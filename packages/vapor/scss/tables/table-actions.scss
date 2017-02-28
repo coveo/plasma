@@ -59,6 +59,10 @@
           background-color: $light-grey;
           border-color: $medium-grey;
         }
+
+        &:first-child {
+          margin-left: -$table-actions-dropdown-padding-x;
+        }
       }
 
       .action-label {
