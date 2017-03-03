@@ -39,6 +39,12 @@
 
     table-layout: fixed;
 
+    &.selecting {
+      td {
+        cursor: pointer;
+      }
+    }
+
     td, th, td:first-child, td:last-child, th:first-child, th:last-child {
       width: $calendar-cell-dimensions;
       height: $calendar-cell-dimensions;
