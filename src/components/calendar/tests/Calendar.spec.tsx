@@ -207,6 +207,48 @@ describe('Calendar', () => {
       expect(handleClickSpy).toHaveBeenCalledWith(firstCalendarDay.props().day.date.toDate());
     });
 
+    it('should have the class selecting if we are currently selecting a date', () => {
+      let now = new Date();
+
+      expect(calendar.find('.calendar-grid').hasClass('selecting')).toBe(false);
+
+      calendar.setProps({
+        calendarSelection: [
+          {
+            id: 'id',
+            calendarId: 'any',
+            color: 'any',
+            lowerLimit: now,
+            upperLimit: now,
+            isRange: true,
+            selected: 'the name of the limit',
+            appliedLowerLimit: now,
+            appliedUpperLimit: now
+          }
+        ]
+      });
+
+      expect(calendar.find('.calendar-grid').hasClass('selecting')).toBe(true);
+
+      calendar.setProps({
+        calendarSelection: [
+          {
+            id: 'id',
+            calendarId: 'any',
+            color: 'any',
+            lowerLimit: now,
+            upperLimit: now,
+            isRange: true,
+            selected: undefined,
+            appliedLowerLimit: now,
+            appliedUpperLimit: now
+          }
+        ]
+      });
+
+      expect(calendar.find('.calendar-grid').hasClass('selecting')).toBe(false);
+    });
+
     describe('fillInDayInfos', () => {
       let now: Date = new Date();
       const DAY: IDay = {
