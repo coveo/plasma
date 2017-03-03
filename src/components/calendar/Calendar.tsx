@@ -71,16 +71,21 @@ export const YEAR_PICKER_ID: string = 'calendar-years';
 
 export class Calendar extends React.Component<ICalendarProps, any> {
 
+  private getSelectedDatePicker(): IDatePickerState {
+    let selectedDatePickers: IDatePickerState[] = _.map(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
+      if (calendarSelection.selected) {
+        return calendarSelection;
+      }
+    }).filter(Boolean);
+
+    return selectedDatePickers.length ? selectedDatePickers[0] : null;
+  }
+
   private handleClick(value: Date) {
     if (this.props.onClick) {
-      let selectedDatePickers: IDatePickerState[] = _.map(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
-        if (calendarSelection.selected) {
-          return calendarSelection;
-        }
-      }).filter(Boolean);
+      let selectedDatePicker: IDatePickerState = this.getSelectedDatePicker();
 
-      if (selectedDatePickers.length) {
-        let selectedDatePicker: IDatePickerState = selectedDatePickers[0];
+      if (selectedDatePicker) {
         this.props.onClick(selectedDatePicker.id, selectedDatePicker.selected === DateLimits.upper, value);
       }
     }
@@ -179,13 +184,18 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       return <tr key={`week-${days[0].key}`}>{days}</tr>;
     });
 
+    let tableClasses: string[] = ['calendar-grid'];
+    if (this.getSelectedDatePicker()) {
+      tableClasses.push('selecting');
+    }
+
     return (
       <div className='calendar column'>
         <div className='calendar-header p2'>
           {monthPicker}
           {yearPicker}
         </div>
-        <table className='calendar-grid'>
+        <table className={tableClasses.join(' ')}>
           <TableHeader columns={daysHeaderColumns} headerClass='mod-no-border-top' />
           <tbody>
             {weeks}
