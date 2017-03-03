@@ -5,6 +5,8 @@
 [![bitHound Dev Dependencies](https://www.bithound.io/github/coveo/react-vapor/badges/devDependencies.svg)](https://www.bithound.io/github/coveo/react-vapor/master/dependencies/npm)
 
 # React-Vapor
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/coveo/react-vapor.svg)](https://greenkeeper.io/)
 Vapor CSS components implemented with React!
 
 ## Install
