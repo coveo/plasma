@@ -68,6 +68,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
       ? <SetToNowButton onClick={() => this.setToToday()} tooltip={this.props.setToNowTooltip} />
       : null;
 
+
     let inputClasses: string[] = [`border-${color}`];
     if (this.props.isSelecting === DateLimits.upper && this.props.upperLimit
       || this.props.isSelecting === DateLimits.lower && !this.props.upperLimit) {
@@ -83,6 +84,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
           ref={(dateInput: HTMLInputElement) => this.dateInput = dateInput}
           onChange={() => this.handleChange()}
           onClick={() => this.props.onClick(this.props.upperLimit)}
+          required
         />
         {nowButton}
       </div>

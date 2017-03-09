@@ -50,6 +50,13 @@ export const DEFAULT_CANCEL_DATE_LABEL: string = 'Cancel';
 export const DEFAULT_TO_LABEL: string = 'to';
 
 export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
+  static defaultProps: Partial<IDatePickerDropdownProps> = {
+    label: DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
+    applyLabel: DEFAULT_APPLY_DATE_LABEL,
+    cancelLabel: DEFAULT_CANCEL_DATE_LABEL,
+    toLabel: DEFAULT_TO_LABEL
+  };
+
   private dropdown: HTMLDivElement;
 
   private handleClick = () => {
@@ -128,10 +135,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       footer: (
         <footer className='modal-footer mod-small'>
           <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
-            {this.props.applyLabel || DEFAULT_APPLY_DATE_LABEL}
+            {this.props.applyLabel}
           </button>
           <button className='btn mod-small' onClick={() => this.handleCancel()}>
-            {this.props.cancelLabel || DEFAULT_CANCEL_DATE_LABEL}
+            {this.props.cancelLabel}
           </button>
         </footer>
       )
@@ -145,13 +152,13 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       dropdownClasses.push('open');
     }
 
-    let label: string = this.props.label || DEFAULT_DATE_PICKER_DROPDOWN_LABEL;
+    let label: string = this.props.label;
     let toLabel: JSX.Element = null;
     let labelSecondPart: string;
     if (this.props.datePicker) {
       label = this.formatDate(this.props.datePicker.appliedLowerLimit);
       if (this.props.datePicker.isRange) {
-        toLabel = <span className='to-label'> {(this.props.toLabel || DEFAULT_TO_LABEL)} </span>;
+        toLabel = <span className='to-label'> {this.props.toLabel} </span>;
         labelSecondPart = this.formatDate(this.props.datePicker.appliedUpperLimit);
       }
     }

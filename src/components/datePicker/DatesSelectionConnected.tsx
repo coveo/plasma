@@ -26,7 +26,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnPr
 
   return {
     lowerLimit: item ? item.lowerLimit : new Date(),
+    lowerLimitError: item ? item.lowerLimitError : '',
     upperLimit: item ? item.upperLimit : new Date(),
+    upperLimitError: item ? item.upperLimitError : '',
     quickOption: optionPicker && optionPicker.selectedValue ? optionPicker.selectedValue : '',
     isSelecting: item ? item.selected : ''
   };
@@ -34,7 +36,13 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnPr
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: IDatesSelectionOwnProps): IDatesSelectionDispatchProps => ({
-    onRender: () => dispatch(addDatePicker(ownProps.id, ownProps.isRange, ownProps.color, ownProps.calendarId)),
+    onRender: () => {
+      dispatch(addDatePicker(ownProps.id,
+        ownProps.isRange,
+        ownProps.color,
+        ownProps.calendarId,
+        ownProps.datePickerValidation));
+    },
     onDestroy: () => dispatch(removeDatePicker(ownProps.id)),
     onChange: (date: Date, isUpperLimit: boolean, optionPicker = false) => {
       if (isUpperLimit) {
@@ -47,7 +55,9 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
         dispatch(changeOptionPicker(ownProps.id, '', ''));
       }
     },
-    onClick: (isUpperLimit: boolean) => dispatch(selectDate(ownProps.id, (isUpperLimit ? DateLimits.upper : DateLimits.lower)))
+    onClick: (isUpperLimit: boolean) => {
+      dispatch(selectDate(ownProps.id, (isUpperLimit ? DateLimits.upper : DateLimits.lower)));
+    }
   });
 
 export const DatesSelectionConnected: React.ComponentClass<IDatesSelectionProps> =

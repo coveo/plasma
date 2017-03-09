@@ -6,6 +6,7 @@ import { DatesSelection, IDatesSelectionProps } from './DatesSelection';
 import { DatesSelectionConnected } from './DatesSelectionConnected';
 import { IOptionPickerProps, OptionPicker } from '../optionPicker/OptionPicker';
 import { OptionPickerConnected } from '../optionPicker/OptionPickerConnected';
+import { IDatePickerValidation } from './DatePickerReducers';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as  s from 'underscore.string';
@@ -17,6 +18,7 @@ export interface IDatesSelectionBox {
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   color?: string;
+  datePickerValidation?: IDatePickerValidation[];
 }
 
 export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePickerBox> {
@@ -72,7 +74,8 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           setToNowTooltip: this.props.setToNowTooltip,
           isRange: datesSelectionBox.isRange,
           color: datesSelectionBox.color,
-          calendarId: calendarProps.id
+          calendarId: calendarProps.id,
+          datePickerValidation: datesSelectionBox.datePickerValidation
         };
         let dateSelection: JSX.Element = this.props.withReduxState
           ? <DatesSelectionConnected {...datesSelectionProps} />
