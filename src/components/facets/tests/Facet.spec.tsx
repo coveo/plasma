@@ -156,6 +156,46 @@ describe('Facets', () => {
       expect(facetComponent.find('FacetMoreToggleConnected').length).toBe(0);
     });
 
+    it('should not display <FacetMoreToggle /> and <FacetMoreRows /> if it has more than 5 rows and they are all selected', () => {
+      let multipleRows = [
+        {
+          name: '1',
+          formattedName: '1'
+        },
+        {
+          name: '2',
+          formattedName: '2'
+        },
+        {
+          name: '3',
+          formattedName: '3'
+        },
+        {
+          name: '4',
+          formattedName: '4'
+        },
+        {
+          name: '5',
+          formattedName: '5'
+        },
+        {
+          name: '6',
+          formattedName: '6'
+        }
+      ];
+      let newFacetAttributes = _.extend({}, facetBasicAttributes,
+        { facetRows: multipleRows, selectedFacetRows: multipleRows });
+
+      expect(facetComponent.find('FacetMoreRows').length).toBe(0);
+      expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
+
+      facetComponent.setProps(newFacetAttributes);
+      facetComponent.mount();
+
+      expect(facetComponent.find('FacetMoreRows').length).toBe(0);
+      expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
+    });
+
     it('should have class "facet-open" if it has isOpened prop set to true', () => {
       let expectedClass = '.facet-opened';
       let newFacetAttributes = _.extend({}, facetBasicAttributes, { isOpened: true });

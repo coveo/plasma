@@ -5,9 +5,9 @@ import { FacetMoreToggle } from './FacetMoreToggle';
 import { FacetMoreRowsConnected } from './FacetMoreRowsConnected';
 import { FacetMoreRows } from './FacetMoreRows';
 import { FacetRow } from './FacetRow';
+import { Tooltip } from '../tooltip/Tooltip';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { Tooltip } from '../tooltip/Tooltip';
 
 export interface IFacet {
   name: string;
@@ -45,7 +45,8 @@ export const CLEAR_FACET_LABEL: string = 'Clear';
 
 export class Facet extends React.Component<IFacetProps, any> {
   static defaultProps: Partial<IFacetProps> = {
-    clearFacetLabel: CLEAR_FACET_LABEL
+    clearFacetLabel: CLEAR_FACET_LABEL,
+    selectedFacetRows: []
   };
 
   private buildFacet = (facetRow: IFacet) => {
@@ -75,32 +76,38 @@ export class Facet extends React.Component<IFacetProps, any> {
   }
 
   render() {
-    let selectedRows: IFacet[] = this.props.selectedFacetRows || [];
-    let removeSelectedClass: string = 'facet-header-eraser' + (selectedRows.length ? '' : ' hidden');
-    let allRows: IFacet[] = _.union(selectedRows, this.props.facetRows);
-    let facetRows: IFacet[] = _.uniq(allRows, false, item => item.name);
-    let rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
+    const removeSelectedClass: string = 'facet-header-eraser' + (this.props.selectedFacetRows.length ? '' : ' hidden');
+    const allRows: IFacet[] = _.union(this.props.selectedFacetRows, this.props.facetRows);
+    const facetRows: IFacet[] = _.uniq(allRows, false, item => item.name);
+    const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
       return (<FacetRow
         key={facetRow.name}
         facet={this.props.facet.name}
         facetRow={facetRow}
         onToggleFacet={this.buildFacet}
-        isChecked={_.contains(_.pluck(selectedRows, 'name'), facetRow.name)}
+        isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
       />);
     });
-    let moreRowsToggle: JSX.Element = rows.length > 5 ?
-      (this.props.withReduxState ?
-        <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} /> :
-        <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
-      ) :
-      null;
-    let moreRows: JSX.Element = moreRowsToggle ?
-      (this.props.withReduxState ?
-        <FacetMoreRowsConnected facet={this.props.facet.name} facetRows={rows.splice(5)} filterPlaceholder={this.props.filterPlaceholder} /> :
-        <FacetMoreRows facet={this.props.facet.name} facetRows={rows.splice(5)} filterPlaceholder={this.props.filterPlaceholder} />
-      ) :
-      null;
-    let facetClasses: string = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
+    const rowsToShow: number = Math.max(this.props.selectedFacetRows.length, 5);
+    const moreRowsToggle: JSX.Element = rows.length > rowsToShow
+      ? (this.props.withReduxState
+        ? <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
+        : <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
+      )
+      : null;
+    const moreRows: JSX.Element = moreRowsToggle
+      ? (this.props.withReduxState
+        ? <FacetMoreRowsConnected
+          facet={this.props.facet.name}
+          facetRows={rows.splice(rowsToShow)}
+          filterPlaceholder={this.props.filterPlaceholder} />
+        : <FacetMoreRows
+          facet={this.props.facet.name}
+          facetRows={rows.splice(rowsToShow)}
+          filterPlaceholder={this.props.filterPlaceholder} />
+      )
+      : null;
+    const facetClasses: string = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
 
     return (
       <div className={facetClasses}>
