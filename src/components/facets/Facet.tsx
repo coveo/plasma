@@ -7,6 +7,7 @@ import { FacetMoreRows } from './FacetMoreRows';
 import { FacetRow } from './FacetRow';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { Tooltip } from '../tooltip/Tooltip';
 
 export interface IFacet {
   name: string;
@@ -18,6 +19,7 @@ export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
   facetRows: IFacet[];
   toggleFacet: (facet: string, facetRow: IFacet) => void;
   clearFacet: (facet: string) => void;
+  clearFacetLabel?: string;
 }
 
 export interface IFacetStateProps extends IReduxStatePossibleProps {
@@ -39,7 +41,12 @@ export interface IFacetChildrenProps {
 
 export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps, IFacetChildrenProps { }
 
+export const CLEAR_FACET_LABEL: string = 'Clear';
+
 export class Facet extends React.Component<IFacetProps, any> {
+  static defaultProps: Partial<IFacetProps> = {
+    clearFacetLabel: CLEAR_FACET_LABEL
+  };
 
   private buildFacet = (facetRow: IFacet) => {
     this.props.toggleFacet(this.props.facet.name, facetRow);
@@ -98,11 +105,13 @@ export class Facet extends React.Component<IFacetProps, any> {
     return (
       <div className={facetClasses}>
         <div className='facet-header'>
-          <div
-            className={removeSelectedClass}
-            onClick={() => this.clearFacet()}>
-            <Svg svgName='clear' className='icon fill-medium-grey' />
-          </div>
+            <div
+              className={removeSelectedClass}
+              onClick={() => this.clearFacet()}>
+              <Tooltip className='remove-selected-tooltip' title={`${this.props.clearFacetLabel} ${this.props.facet.formattedName}`}>
+              <Svg svgName='clear' className='icon fill-medium-grey' />
+              </Tooltip>
+            </div>
           <div className='facet-header-title bold text-medium-blue'>{this.props.facet.formattedName}</div>
         </div>
         <ul className='facet-values'>
