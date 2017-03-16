@@ -11,6 +11,18 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 
+export const CalendarSelectionRuleType = {
+  all: 'ALL',
+  lower: 'LOWER',
+  upper: 'UPPER',
+  range: 'RANGE'
+};
+
+export interface ICalendarSelectionRule {
+  test: (date: Date, secondDate?: Date) => boolean;
+  isFor: string;
+}
+
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
   id?: string;
   months?: string[];
@@ -19,6 +31,7 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
   startingYear?: number;
   days?: string[];
   startingDay?: number;
+  selectionRules?: ICalendarSelectionRule[];
 }
 
 export interface ICalendarStateProps extends IReduxStatePossibleProps {
@@ -70,6 +83,14 @@ export const MONTH_PICKER_ID: string = 'calendar-months';
 export const YEAR_PICKER_ID: string = 'calendar-years';
 
 export class Calendar extends React.Component<ICalendarProps, any> {
+  static defaultProps: Partial<ICalendarProps> = {
+    selectionRules: [],
+    years: DEFAULT_YEARS,
+    months: DEFAULT_MONTHS,
+    days: DEFAULT_DAYS,
+    startingMonth: DateUtils.currentMonth,
+    startingDay: 0
+  };
 
   private getSelectedDatePicker(): IDatePickerState {
     let selectedDatePickers: IDatePickerState[] = _.map(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
@@ -106,7 +127,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
           if (limitToChange) {
             this.props.onDateChange(this.props.id + MONTH_PICKER_ID, limitToChange.getMonth());
             this.props.onDateChange(this.props.id + YEAR_PICKER_ID,
-              this.getYears().indexOf(limitToChange.getFullYear().toString()));
+              this.props.years.indexOf(limitToChange.getFullYear().toString()));
           }
         }
       });
@@ -114,51 +135,55 @@ export class Calendar extends React.Component<ICalendarProps, any> {
   }
 
   fillInDayInfos(day: IDay): IDay {
-    let dayStart: moment.Moment = day.date.startOf('day');
+    const dayStart: moment.Moment = day.date.startOf('day');
+    day.isSelectable = true;
 
     _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
-      let selectionStart: moment.Moment = moment(calendarSelection.lowerLimit).startOf('day');
-      let selectionEnd: moment.Moment = calendarSelection.isRange
+      const selectionStart: moment.Moment = moment(calendarSelection.lowerLimit).startOf('day');
+      const selectionEnd: moment.Moment = calendarSelection.isRange
         ? moment(calendarSelection.upperLimit).startOf('day')
         : selectionStart;
-      let isSelected = dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
+      const isSelected = dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
 
       day.isSelected = isSelected || day.isSelected;
       day.isLowerLimit = calendarSelection.isRange && !dayStart.diff(selectionStart) || day.isLowerLimit;
       day.isUpperLimit = calendarSelection.isRange && !dayStart.diff(selectionEnd) || day.isUpperLimit;
       day.color = isSelected ? calendarSelection.color : day.color;
+
+      _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {
+        if (day.isSelectable) {
+          if (rule.isFor == CalendarSelectionRuleType.all
+            || (rule.isFor === CalendarSelectionRuleType.lower && calendarSelection.selected === DateLimits.lower)
+            || (rule.isFor === CalendarSelectionRuleType.upper && calendarSelection.selected === DateLimits.upper)) {
+            day.isSelectable = rule.test(day.date.toDate());
+          } else if (rule.isFor === CalendarSelectionRuleType.range && calendarSelection.selected === DateLimits.upper) {
+            day.isSelectable = rule.test(calendarSelection.lowerLimit, day.date.toDate());
+          }
+        }
+      });
     });
 
     return day;
   }
 
-  getYears(): string[] {
-    return this.props.years || DEFAULT_YEARS;
-  }
-
   render() {
-    let months: string[] = this.props.months || DEFAULT_MONTHS;
-    let startingMonth: number = this.props.startingMonth || DateUtils.currentMonth;
     let monthPickerProps: IOptionsCycleProps = {
-      options: months,
-      startAt: startingMonth,
+      options: this.props.months,
+      startAt: this.props.startingMonth,
       isInline: true
     };
 
-    let years: string[] = this.getYears();
-    let startingYear: number = this.props.startingYear || years.indexOf(DateUtils.currentYear.toString());
+    let startingYear: number = this.props.startingYear || this.props.years.indexOf(DateUtils.currentYear.toString());
     let yearPickerProps: IOptionsCycleProps = {
-      options: years,
+      options: this.props.years,
       startAt: startingYear,
       isInline: true
     };
 
-    let days: string[] = this.props.days || DEFAULT_DAYS;
-    let startingDay: number = this.props.startingDay || 0;
     let orderedDays: string[] = [
-      days[startingDay],
-      ...days.slice(startingDay + 1),
-      ...days.slice(0, startingDay)
+      this.props.days[this.props.startingDay],
+      ...this.props.days.slice(this.props.startingDay + 1),
+      ...this.props.days.slice(0, this.props.startingDay)
     ];
     let daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({ title: day }));
 
@@ -171,10 +196,10 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       : <OptionsCycle {...yearPickerProps} />;
 
     let sectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
-    let year = parseInt(years[sectedYearOption]);
-    let selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : startingMonth;
+    let year = parseInt(this.props.years[sectedYearOption]);
+    let selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : this.props.startingMonth;
 
-    let month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), startingDay);
+    let month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), this.props.startingDay);
     let weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
       let days: JSX.Element[] = _.map(week, (day: IDay) => {
         day = this.fillInDayInfos(day);
