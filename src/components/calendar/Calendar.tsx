@@ -20,7 +20,7 @@ export const CalendarSelectionRuleType = {
 
 export interface ICalendarSelectionRule {
   test: (date: Date, secondDate?: Date) => boolean;
-  isFor: 'ALL' | 'LOWER' | 'UPPER' | 'RANGE';
+  isFor: string;
 }
 
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {

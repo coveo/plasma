@@ -95,9 +95,8 @@ import {
   resetOptionPickers
 } from './components/optionPicker/OptionPickerActions';
 import { optionPickersReducer } from './components/optionPicker/OptionPickerReducers';
-import { Calendar } from './components/calendar/Calendar';
+import { Calendar, ICalendarSelectionRule, CalendarSelectionRuleType } from './components/calendar/Calendar';
 import { CalendarConnected } from './components/calendar/CalendarConnected';
-import { ICalendarSelectionRule } from './components/calendar/Calendar';
 import { DisplayClass } from './utils/ComponentUtils';
 import { DateUtils, DATES_SEPARATOR } from './utils/DateUtils';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
@@ -209,6 +208,7 @@ export {
   Calendar,
   CalendarConnected,
   ICalendarSelectionRule,
+  CalendarSelectionRuleType,
 
   // Option cycle
   OptionsCycle,
