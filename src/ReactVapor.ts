@@ -15,6 +15,7 @@ import { IOptionsCycleState } from './components/optionsCycle/OptionsCycleReduce
 import { IDatePickerState } from './components/datePicker/DatePickerReducers';
 import { IOptionPickerState } from './components/optionPicker/OptionPickerReducers';
 import { IItemFilterState } from './components/actions/filters/ItemFilterReducers';
+import { ISubNavigationState } from './components/subNavigation/SubNavigationReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -31,6 +32,7 @@ export interface IReactVaporState {
   datePickers?: IDatePickerState[];
   optionPickers?: IOptionPickerState[];
   itemFilters?: IItemFilterState[];
+  subNavigations?: ISubNavigationState[];
 }
 
 export interface IReduxActionsPayload {
@@ -52,4 +54,5 @@ export interface IReduxActionsPayload {
   limit?: string;
   item?: string;
   label?: string;
+  selected?: string;
 }

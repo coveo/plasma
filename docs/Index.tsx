@@ -25,6 +25,8 @@ import { ItemFilterExamples } from '../src/components/actions/filters/examples/I
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import { TableEmptyRowExamples } from '../src/components/tables/examples/TableEmptyRowExamples';
 import { OptionsCycleExamples } from '../src/components/optionsCycle/examples/OptionsCycleExamples';
+import { SubNavigationExamples } from '../src/components/subNavigation/examples/SubNavigationExamples';
+import { SubNavigationConnectedExamples } from '../src/components/subNavigation/examples/SubNavigationConnectedExamples';
 import { OptionsCycleConnectedExamples } from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import { CalendarConnectedExamples } from '../src/components/calendar/examples/CalendarConnectedExamples';
 import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
@@ -111,6 +113,8 @@ class App extends React.Component<any, any> {
           <FacetConnectedExamples />
           <NavigationExamples />
           <NavigationConnectedExamples />
+          <SubNavigationExamples />
+          <SubNavigationConnectedExamples />
           <ActionBarExamples />
           <ActionBarConnectedExamples />
           <ItemFilterExamples />
