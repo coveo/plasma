@@ -23,7 +23,6 @@
   position: relative;
 
   padding: $button-padding-x;
-  overflow: hidden;
   clear: both;
 
   background: $white;
@@ -56,9 +55,12 @@
   }
 }
 
-.facet-header-title {
-  float: left;
+.remove-selected-tooltip {
+  display: block;
+  height: 100%;
+}
 
+.facet-header-title {
   font-family: $base-font-family;
   font-size: $default-font-size;
 }
