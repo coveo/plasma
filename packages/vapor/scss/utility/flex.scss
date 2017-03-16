@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.flex-stretch {
+  align-items: stretch;
+}
+
 .flex-auto {
   flex-basis: auto;
   flex-grow: 1;
