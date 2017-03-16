@@ -40,7 +40,7 @@
     table-layout: fixed;
 
     &.selecting {
-      td {
+      td:not(.un-selectable) {
         cursor: pointer;
       }
     }
@@ -70,7 +70,7 @@
       }
     }
 
-    .other-month-date {
+    .other-month-date, .un-selectable {
       color: $medium-grey;
     }
 
