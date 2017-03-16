@@ -26,6 +26,10 @@ export const DatePickerColors = {
 export const DEFAULT_DATE_PICKER_COLOR: string = DatePickerColors.blue;
 
 export class DatePicker extends React.Component<IDatePickerProps, any> {
+  static defaultProps: Partial<IDatePickerProps> = {
+    color: DEFAULT_DATE_PICKER_COLOR
+  };
+
   private dateInput: HTMLInputElement;
 
   private getDateFromString(dateValue: string): Date {
@@ -63,18 +67,17 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
   }
 
   render() {
-    let color: string = this.props.color || DEFAULT_DATE_PICKER_COLOR;
     let nowButton: JSX.Element = this.props.hasSetToNowButton
       ? <SetToNowButton onClick={() => this.setToToday()} tooltip={this.props.setToNowTooltip} />
       : null;
 
 
-    let inputClasses: string[] = [`border-${color}`];
+    let inputClasses: string[] = [`border-${this.props.color}`];
     if (this.props.isSelecting === DateLimits.upper && this.props.upperLimit
       || this.props.isSelecting === DateLimits.lower && !this.props.upperLimit) {
       inputClasses.push('picking-date');
     } else if (this.dateInput && this.dateInput.value) {
-      inputClasses.push('date-picked', `bg-${color}`);
+      inputClasses.push('date-picked', `bg-${this.props.color}`);
     }
 
     return (

@@ -1,12 +1,11 @@
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { Calendar, ICalendarProps } from '../calendar/Calendar';
+import { Calendar, ICalendarProps, ICalendarSelectionRule } from '../calendar/Calendar';
 import { CalendarConnected } from '../calendar/CalendarConnected';
 import { IOption } from '../optionPicker/Option';
 import { DatesSelection, IDatesSelectionProps } from './DatesSelection';
 import { DatesSelectionConnected } from './DatesSelectionConnected';
 import { IOptionPickerProps, OptionPicker } from '../optionPicker/OptionPicker';
 import { OptionPickerConnected } from '../optionPicker/OptionPickerConnected';
-import { IDatePickerValidation } from './DatePickerReducers';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as  s from 'underscore.string';
@@ -18,7 +17,6 @@ export interface IDatesSelectionBox {
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   color?: string;
-  datePickerValidation?: IDatePickerValidation[];
 }
 
 export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePickerBox> {
@@ -37,6 +35,7 @@ export interface IDatePickerBoxChildrenProps {
   startingYear?: number;
   days?: string[];
   startingDay?: number;
+  selectionRules?: ICalendarSelectionRule[];
 }
 
 export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps,
@@ -52,7 +51,8 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
       years: this.props.years,
       startingYear: this.props.startingYear,
       days: this.props.days,
-      startingDay: this.props.startingDay
+      startingDay: this.props.startingDay,
+      selectionRules: this.props.selectionRules
     };
     let calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected {...calendarProps} /> : <Calendar />;
     let datesSelectionBoxes: JSX.Element[] =
@@ -75,7 +75,6 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           isRange: datesSelectionBox.isRange,
           color: datesSelectionBox.color,
           calendarId: calendarProps.id,
-          datePickerValidation: datesSelectionBox.datePickerValidation
         };
         let dateSelection: JSX.Element = this.props.withReduxState
           ? <DatesSelectionConnected {...datesSelectionProps} />

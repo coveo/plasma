@@ -1,5 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { Calendar, ICalendarProps, DEFAULT_DAYS, DEFAULT_MONTHS, DEFAULT_YEARS } from '../Calendar';
+import {
+  Calendar, ICalendarProps, DEFAULT_DAYS, DEFAULT_MONTHS, DEFAULT_YEARS,
+  ICalendarSelectionRule
+} from '../Calendar';
 import { OptionsCycle, IOptionsCycleProps } from '../../optionsCycle/OptionsCycle';
 import { DateUtils } from '../../../utils/DateUtils';
 import { ICalendarDayProps, CalendarDay, IDay } from '../CalendarDay';
@@ -8,6 +11,7 @@ import * as _ from 'underscore';
 import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { DateLimits } from '../../datePicker/DatePickerActions';
 
 describe('Calendar', () => {
 
@@ -261,18 +265,41 @@ describe('Calendar', () => {
         id: 'id',
         calendarId: 'any',
         color: 'any',
-        lowerLimit: moment(now).subtract(1, 'day').toDate(),
-        upperLimit: moment(now).add(1, 'day').toDate(),
+        lowerLimit: moment().subtract(1, 'day').toDate(),
+        upperLimit: moment().add(1, 'day').toDate(),
         isRange: true,
         selected: undefined,
         appliedLowerLimit: now,
         appliedUpperLimit: now
       };
+      const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
+        {
+          test: (date: Date) => date >= new Date(), // You cannot select a date in the past
+          isFor: 'ALL'
+        },
+        {
+          test: (date: Date) => date.getDay() !== 6, // You cannot start your selection on a Saturday
+          isFor: 'LOWER'
+        },
+        {
+          test: (date: Date) => date.getDay() !== 0, // You cannot end your selection on a Sunday
+          isFor: 'UPPER'
+        },
+        {
+          test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') >= 0, // The end of your selection cannot be before the start of your selection
+          isFor: 'RANGE'
+        },
+        {
+          test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') <= 7, // You cannot select more than 7 days at a time
+          isFor: 'RANGE'
+        }
+      ];
       let day: IDay;
 
       beforeEach(() => {
         calendar.setProps({
-          calendarSelection: [CALENDAR_SELECTION]
+          calendarSelection: [CALENDAR_SELECTION],
+          selectionRules: CALENDAR_SELECTION_RULES
         });
 
         day = calendarInstance.fillInDayInfos(_.extend({}, DAY));
@@ -365,6 +392,73 @@ describe('Calendar', () => {
         expect(day.isLowerLimit).toBe(true);
         expect(day.isUpperLimit).toBe(true);
         expect(day.color).toBe(selectionAll.color);
+      });
+
+      it('should return day isSelectable if the day comes after today', () => {
+        let pastDay: IDay = _.extend({}, DAY, { date: moment().subtract(1, 'day') });
+        let futureDay: IDay = _.extend({}, DAY, { date: moment().add(1, 'day') });
+
+        day = calendarInstance.fillInDayInfos(pastDay);
+
+        expect(day.isSelectable).toBe(false);
+
+        day = calendarInstance.fillInDayInfos(futureDay);
+
+        expect(day.isSelectable).toBe(true);
+      });
+
+      it('should return day isSelectable if the day is not a Saturday and selecting lower limit', () => {
+        let otherDay: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'day') });
+        let saturday: IDay = _.extend({}, DAY, { date: moment().endOf('week') });
+        let selectionLowerLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.lower });
+
+        day = calendarInstance.fillInDayInfos(otherDay);
+
+        expect(day.isSelectable).toBe(true, 'otherDay');
+
+        day = calendarInstance.fillInDayInfos(saturday);
+
+        expect(day.isSelectable).toBe(true, 'saturday');
+
+        calendar.setProps({
+          calendarSelection: [selectionLowerLimit],
+          selectionRules: CALENDAR_SELECTION_RULES
+        });
+
+        day = calendarInstance.fillInDayInfos(otherDay);
+
+        expect(day.isSelectable).toBe(true, 'otherDay');
+
+        day = calendarInstance.fillInDayInfos(saturday);
+
+        expect(day.isSelectable).toBe(false, 'saturday');
+      });
+
+      it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
+        let otherDay: IDay = _.extend({}, DAY, { date: moment().startOf('week').add(9, 'day') });
+        let sunday: IDay = _.extend({}, DAY, { date: moment().startOf('week').add(1, 'week') });
+        let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
+
+        day = calendarInstance.fillInDayInfos(otherDay);
+
+        expect(day.isSelectable).toBe(true, 'otherDay');
+
+        day = calendarInstance.fillInDayInfos(sunday);
+
+        expect(day.isSelectable).toBe(true, 'sunday');
+
+        calendar.setProps({
+          calendarSelection: [selectionUpperLimit],
+          selectionRules: CALENDAR_SELECTION_RULES
+        });
+
+        day = calendarInstance.fillInDayInfos(otherDay);
+
+        expect(day.isSelectable).toBe(true, 'otherDay');
+
+        day = calendarInstance.fillInDayInfos(sunday);
+
+        expect(day.isSelectable).toBe(false, 'sunday');
       });
     });
   });

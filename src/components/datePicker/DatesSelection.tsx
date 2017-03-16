@@ -1,6 +1,5 @@
 import { DatePicker, IDatePickerProps } from './DatePicker';
 import { DATES_SEPARATOR } from '../../utils/DateUtils';
-import { IDatePickerValidation } from './DatePickerReducers';
 import * as React from 'react';
 
 export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSelection> {
@@ -12,14 +11,11 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
   calendarId?: string;
   defaultLowerLimit?: Date;
   defaultUpperLimit?: Date;
-  datePickerValidation?: IDatePickerValidation[];
 }
 
 export interface IDatesSelectionStateProps {
   lowerLimit?: Date;
-  lowerLimitError?: string;
   upperLimit?: Date;
-  upperLimitError?: string;
   quickOption?: string;
   isSelecting?: string;
 }
@@ -97,21 +93,12 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
     let toDate: JSX.Element = this.props.isRange
       ? <DatePicker upperLimit date={this.props.upperLimit} {...datePickerProps} />
       : null;
-    let lowerLimitError: JSX.Element = this.props.lowerLimitError ? <li>{this.props.lowerLimitError}</li> : null;
-    let upperLimitError: JSX.Element = this.props.lowerLimitError ? <li>{this.props.upperLimitError}</li> : null;
-    let errors: JSX.Element = lowerLimitError || upperLimitError
-      ? <ul className='date-picker-errors'>
-        {upperLimitError}
-        {lowerLimitError}
-      </ul>
-      : null;
 
     return (
       <div className={wrapperClasses}>
         <DatePicker date={this.props.lowerLimit} {...datePickerProps} />
         {separator}
         {toDate}
-        {errors}
       </div>
     );
   }

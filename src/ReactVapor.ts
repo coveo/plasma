@@ -12,7 +12,7 @@ import { IActionBarState } from './components/actions/ActionBarReducers';
 import { IDropdownState } from './components/dropdown/DropdownReducers';
 import { ITableRowState } from './components/tables/TableRowReducers';
 import { IOptionsCycleState } from './components/optionsCycle/OptionsCycleReducers';
-import { IDatePickerState, IDatePickerValidation } from './components/datePicker/DatePickerReducers';
+import { IDatePickerState } from './components/datePicker/DatePickerReducers';
 import { IOptionPickerState } from './components/optionPicker/OptionPickerReducers';
 import { IItemFilterState } from './components/actions/filters/ItemFilterReducers';
 
@@ -52,5 +52,4 @@ export interface IReduxActionsPayload {
   limit?: string;
   item?: string;
   label?: string;
-  validation?: IDatePickerValidation[];
 }

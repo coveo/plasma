@@ -4,7 +4,7 @@ import { IDatePickerState } from './DatePickerReducers';
 import { DateUtils } from '../../utils/DateUtils';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { DEFAULT_YEARS } from '../calendar/Calendar';
+import { DEFAULT_YEARS, ICalendarSelectionRule } from '../calendar/Calendar';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
   label?: string;
@@ -25,6 +25,7 @@ export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildren
   startingYear?: number;
   days?: string[];
   startingDay?: number;
+  selectionRules?: ICalendarSelectionRule[];
 }
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
@@ -132,6 +133,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       startingYear: this.props.startingYear,
       days: this.props.days,
       startingDay: this.props.startingDay,
+      selectionRules: this.props.selectionRules,
       footer: (
         <footer className='modal-footer mod-small'>
           <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
