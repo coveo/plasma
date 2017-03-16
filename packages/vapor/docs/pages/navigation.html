@@ -1,0 +1,11 @@
+---
+layout: default
+title: Navigation
+type: navigation
+permalink: /navigation/
+---
+
+{% assign entries = site.components | where:"type", page.type %}
+{% for entry in entries %}
+{% include component.html %}
+{% endfor %}
