@@ -100,6 +100,7 @@ import { CalendarConnected } from './components/calendar/CalendarConnected';
 import { SubNavigation, ISubNavigationItem } from './components/subNavigation/SubNavigation';
 import { SubNavigationConnected } from './components/subNavigation/SubNavigationConnected';
 import { subNavigationsReducer } from './components/subNavigation/SubNavigationReducers';
+import { SubNavigationActions } from './components/subNavigation/SubNavigationActions';
 import { DisplayClass } from './utils/ComponentUtils';
 import { DateUtils, DATES_SEPARATOR } from './utils/DateUtils';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
@@ -234,6 +235,7 @@ export {
   ISubNavigationItem,
   SubNavigationConnected,
   subNavigationsReducer,
+  SubNavigationActions,
 
   // Redux
   ReduxUtils,

@@ -54,7 +54,11 @@ export class SubNavigation extends React.Component<ISubNavigationProps, any> {
       }
       return (
         <li key={item.id} className={classes.join(' ')}>
-          <a href={item.link || '#'} className='sub-navigation-item-link' onClick={() => this.handleItemClick(item.id)}>{item.label}</a>
+          <a href={item.link || '#'} className='sub-navigation-item-link'
+            onClick={e => {
+              e.preventDefault();
+              this.handleItemClick(item.id);
+            }}>{item.label}</a>
         </li>
       );
     });
