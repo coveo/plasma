@@ -34,7 +34,7 @@
         svgClass = svgClass || '';
         attr = attr || {};
 
-        if (svgString) {
+        if (svgString && isSvgStringValid(svgString)) {
             var svgHTML = $($.parseHTML(svgString));
             svgHTML[0].setAttribute('class', svgClass);
             _.mapObject(attr, function (value, key) {
@@ -47,6 +47,10 @@
 
     function formatSvgName(svgName) {
         return s.camelize(s.humanize(svgName), true);
+    }
+
+    function isSvgStringValid(svgString) {
+        return /^<svg(\s.+)?>.*<\/svg>$/i.test(svgString);
     }
 
     var VaporSVG = {};
