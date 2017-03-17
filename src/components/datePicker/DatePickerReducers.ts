@@ -25,7 +25,7 @@ export const datePickerInitialState: IDatePickerState = {
   upperLimit: moment().endOf('day').toDate(),
   selected: '',
   appliedLowerLimit: moment().startOf('day').toDate(),
-  appliedUpperLimit: moment().endOf('day').toDate()
+  appliedUpperLimit: moment().endOf('day').toDate(),
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 
@@ -39,7 +39,7 @@ const addDatePicker = (state: IDatePickerState, action: IReduxAction<IReduxActio
     upperLimit: state.upperLimit,
     selected: state.selected,
     appliedLowerLimit: state.appliedLowerLimit,
-    appliedUpperLimit: state.appliedUpperLimit
+    appliedUpperLimit: state.appliedUpperLimit,
   };
 };
 

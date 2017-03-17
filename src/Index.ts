@@ -95,7 +95,7 @@ import {
   resetOptionPickers
 } from './components/optionPicker/OptionPickerActions';
 import { optionPickersReducer } from './components/optionPicker/OptionPickerReducers';
-import { Calendar } from './components/calendar/Calendar';
+import { Calendar, ICalendarSelectionRule, CalendarSelectionRuleType } from './components/calendar/Calendar';
 import { CalendarConnected } from './components/calendar/CalendarConnected';
 import { SubNavigation, ISubNavigationItem } from './components/subNavigation/SubNavigation';
 import { SubNavigationConnected } from './components/subNavigation/SubNavigationConnected';
@@ -211,6 +211,8 @@ export {
   // Calendar
   Calendar,
   CalendarConnected,
+  ICalendarSelectionRule,
+  CalendarSelectionRuleType,
 
   // Option cycle
   OptionsCycle,
@@ -250,5 +252,5 @@ export {
   // Utils
   DisplayClass,
   DateUtils,
-  DATES_SEPARATOR
+  DATES_SEPARATOR,
 };

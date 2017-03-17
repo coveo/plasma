@@ -12,7 +12,8 @@ describe('Calendar day', () => {
     number: 2,
     isCurrentMonth: true,
     isToday: false,
-    date: moment(new Date(2017, newMonth, 2))
+    date: moment(new Date(2017, newMonth, 2)),
+    isSelectable: true
   };
 
   const BASIC_CALENDAR_DAY_PROPS: ICalendarDayProps = {
@@ -32,6 +33,7 @@ describe('Calendar day', () => {
 
   describe('<CalendarDay />', () => {
     let calendarDay: ReactWrapper<ICalendarDayProps, any>;
+    let calendarDayInstance: CalendarDay;
 
     beforeEach(() => {
       document.getElementById('App').innerHTML = '<table><tbody><tr id="AppTableRow"></tr></tbody></table>';
@@ -40,6 +42,7 @@ describe('Calendar day', () => {
         <CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />,
         { attachTo: document.getElementById('AppTableRow') }
       );
+      calendarDayInstance = calendarDay.instance() as CalendarDay;
     });
 
     afterEach(() => {
@@ -122,6 +125,17 @@ describe('Calendar day', () => {
       expect(calendarDay.find('.upper-limit').length).toBe(1);
     });
 
+    it('should have the class "un-selectable" if the day is not selectable', () => {
+      let unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false });
+      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay });
+
+      expect(calendarDay.find('.un-selectable').length).toBe(0);
+
+      calendarDay.setProps(newProps);
+
+      expect(calendarDay.find('.un-selectable').length).toBe(1);
+    });
+
     it('should add another span if the day is selected and both isLowerLimit and upperLimit', () => {
       let limitDay: IDay = _.extend({}, DAY, { isLowerLimit: true, isUpperLimit: true, isSelected: true });
       let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: limitDay });
@@ -133,10 +147,27 @@ describe('Calendar day', () => {
       expect(calendarDay.find('span').length).toBe(2);
     });
 
-    it('should call onClick when clicking the day', () => {
+    it('should call handleClick when clicking the day', () => {
+      let handleClickSpy: jasmine.Spy = spyOn<any>(calendarDayInstance, 'handleClick');
+
       calendarDay.find('td').simulate('click');
 
-      expect(BASIC_CALENDAR_DAY_PROPS.onClick).toHaveBeenCalled();
+      expect(handleClickSpy).toHaveBeenCalled();
+    });
+
+    it('should call onClick when clicking a selectable day', () => {
+      let unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false });
+      let unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay });
+
+      calendarDay.find('td').simulate('click');
+
+      expect(BASIC_CALENDAR_DAY_PROPS.onClick).toHaveBeenCalledTimes(1);
+
+      calendarDay.setProps(unSelectableDayProps);
+
+      calendarDay.find('td').simulate('click');
+
+      expect(BASIC_CALENDAR_DAY_PROPS.onClick).toHaveBeenCalledTimes(1);
     });
   });
 });

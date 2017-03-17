@@ -1,10 +1,10 @@
-
-
 import { DATES_SEPARATOR } from '../../../utils/DateUtils';
 import { DatePickerColors } from '../DatePicker';
+import { IDatesSelectionBox } from '../DatePickerBox';
+import { ICalendarSelectionRule, CalendarSelectionRuleType } from '../../calendar/Calendar';
 import * as moment from 'moment';
 
-export const SELECTION_BOXES = [
+export const SELECTION_BOXES: IDatesSelectionBox[] = [
   {
     title: 'Date range',
     quickOptions: [
@@ -37,5 +37,28 @@ export const SELECTION_BOXES = [
     withTime: true,
     hasSetToNowButton: true,
     color: DatePickerColors.blue
+  }
+];
+
+export const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
+  {
+    test: (date: Date) => date >= new Date(), // You cannot select a date in the past
+    isFor: CalendarSelectionRuleType.all
+  },
+  {
+    test: (date: Date) => date.getDay() !== 6, // You cannot start your selection on a Saturday
+    isFor: CalendarSelectionRuleType.lower
+  },
+  {
+    test: (date: Date) => date.getDay() !== 0, // You cannot end your selection on a Sunday
+    isFor: CalendarSelectionRuleType.upper
+  },
+  {
+    test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') >= 0, // The end of your selection cannot be before the start of your selection
+    isFor: CalendarSelectionRuleType.range
+  },
+  {
+    test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') <= 7, // You cannot select more than 7 days at a time
+    isFor: CalendarSelectionRuleType.range
   }
 ];
