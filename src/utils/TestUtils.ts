@@ -14,6 +14,7 @@ import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleRed
 import { optionPickersReducer } from '../components/optionPicker/OptionPickerReducers';
 import { datePickersReducer } from '../components/datePicker/DatePickerReducers';
 import { itemFiltersReducer } from '../components/actions/filters/ItemFilterReducers';
+import { modalsReducer } from '../components/modal/ModalReducers';
 import * as Redux from 'redux';
 
 export class TestUtils {
@@ -32,7 +33,8 @@ export class TestUtils {
       optionsCycles: optionsCyclesReducer,
       optionPickers: optionPickersReducer,
       datePickers: datePickersReducer,
-      itemFilters: itemFiltersReducer
+      itemFilters: itemFiltersReducer,
+      modals: modalsReducer
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {
