@@ -11,6 +11,7 @@ import { dropdownsReducer } from '../src/components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../src/components/tables/TableRowReducers';
 import { optionsCyclesReducer } from '../src/components/optionsCycle/OptionsCycleReducers';
 import { datePickersReducer } from '../src/components/datePicker/DatePickerReducers';
+import { modalsReducer } from '../src/components/modal/ModalReducers';
 import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilterReducers';
 import { optionPickersReducer } from '../src/components/optionPicker/OptionPickerReducers';
 import { IReactVaporState } from '../src/ReactVapor';
@@ -41,5 +42,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   optionsCycles: optionsCyclesReducer,
   optionPickers: optionPickersReducer,
   datePickers: datePickersReducer,
+  modals: modalsReducer,
   lastAction
 });

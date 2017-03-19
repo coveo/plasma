@@ -25,6 +25,20 @@ import {
   turnOffLoading,
   LoadingActions
 } from './components/loading/LoadingActions';
+import { Modal } from './components/modal/Modal';
+import { ModalConnected } from './components/modal/ModalConnected';
+import { ModalBackdrop } from './components/modal/ModalBackdrop';
+import { ModalBackdropConnected } from './components/modal/ModalBackdropConnected';
+import { ModalBody } from './components/modal/ModalBody';
+import { ModalFooter } from './components/modal/ModalFooter';
+import { modalsReducer } from './components/modal/ModalReducers';
+import {
+  ModalAction,
+  addModal,
+  removeModal,
+  openModal,
+  closeModal
+} from './components/modal/ModalActions';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
 import { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
@@ -139,6 +153,20 @@ export {
   turnOffLoading,
   addLoading,
   removeLoading,
+
+  // Modal
+  Modal,
+  ModalConnected,
+  ModalAction,
+  ModalBackdrop,
+  ModalBackdropConnected,
+  ModalBody,
+  ModalFooter,
+  modalsReducer,
+  addModal,
+  removeModal,
+  openModal,
+  closeModal,
 
   // Navigation
   Navigation,
