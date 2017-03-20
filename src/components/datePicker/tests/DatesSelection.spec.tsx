@@ -142,7 +142,7 @@ describe('Date picker', () => {
       expect(onDestroySpy).toHaveBeenCalled();
     });
 
-    it('should display the lower limit placeholder sent as a prop or used the default one', () => {
+    it('should display the lower limit placeholder sent as a prop or use the default one', () => {
       const expectedPlaceholder: string = 'Choisir une date';
 
       datesSelection.setProps({ isRange: true });
@@ -155,7 +155,7 @@ describe('Date picker', () => {
       expect(datesSelection.html()).toContain(expectedPlaceholder);
     });
 
-    it('should display the upper limit placeholder sent as a prop or used the default one', () => {
+    it('should display the upper limit placeholder sent as a prop or use the default one', () => {
       const expectedPlaceholder: string = 'Choisir une date';
 
       datesSelection.setProps({ isRange: true });
