@@ -1,5 +1,10 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { DatesSelection, IDatesSelectionProps } from '../DatesSelection';
+import {
+  DatesSelection,
+  IDatesSelectionProps,
+  LOWER_LIMIT_PLACEHOLDER,
+  UPPER_LIMIT_PLACEHOLDER
+} from '../DatesSelection';
 import { DatePicker } from '../DatePicker';
 import { DATES_SEPARATOR } from '../../../utils/DateUtils';
 // tslint:disable-next-line:no-unused-variable
@@ -135,6 +140,32 @@ describe('Date picker', () => {
       datesSelection.setProps({ onDestroy: onDestroySpy });
       datesSelection.unmount();
       expect(onDestroySpy).toHaveBeenCalled();
+    });
+
+    it('should display the lower limit placeholder sent as a prop or use the default one', () => {
+      const expectedPlaceholder: string = 'Choisir une date';
+
+      datesSelection.setProps({ isRange: true });
+
+      expect(datesSelection.html()).toContain(LOWER_LIMIT_PLACEHOLDER);
+
+      datesSelection.setProps({ isRange: true, lowerLimitPlaceholder: expectedPlaceholder });
+
+      expect(datesSelection.html()).not.toContain(LOWER_LIMIT_PLACEHOLDER);
+      expect(datesSelection.html()).toContain(expectedPlaceholder);
+    });
+
+    it('should display the upper limit placeholder sent as a prop or use the default one', () => {
+      const expectedPlaceholder: string = 'Choisir une date';
+
+      datesSelection.setProps({ isRange: true });
+
+      expect(datesSelection.html()).toContain(UPPER_LIMIT_PLACEHOLDER);
+
+      datesSelection.setProps({ isRange: true, upperLimitPlaceholder: expectedPlaceholder });
+
+      expect(datesSelection.html()).not.toContain(UPPER_LIMIT_PLACEHOLDER);
+      expect(datesSelection.html()).toContain(expectedPlaceholder);
     });
 
     it('should call onDateChange for each picker if the quick option has changed', () => {
