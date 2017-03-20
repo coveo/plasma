@@ -1,13 +1,20 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import * as _ from 'underscore';
 import {
-  IDatePickerPayload, IAddDatePickerPayload, DatePickerActions,
-  IChangeDatePickerPayload, DateLimits, ISelectDatePickerPayload
+  IDatePickerPayload,
+  IAddDatePickerPayload,
+  DatePickerActions,
+  IChangeDatePickerPayload,
+  DateLimits,
+  ISelectDatePickerPayload
 } from '../DatePickerActions';
 import {
-  IDatePickerState, datePickersReducer, datePickersInitialState,
-  datePickerInitialState, datePickerReducer
+  IDatePickerState,
+  datePickersReducer,
+  datePickersInitialState,
+  datePickerInitialState,
+  datePickerReducer
 } from '../DatePickerReducers';
+import * as _ from 'underscore';
 
 describe('Date picker', () => {
 
@@ -200,7 +207,7 @@ describe('Date picker', () => {
       expect(_.findWhere(datePickersState, { id: action.payload.id }).upperLimit).toBe(action.payload.date);
     });
 
-    it('should return the state with the new selected limit for the date picker with the action id when the action is "SELECT_DATE"', () => {
+    it('should return the state with the new selected limit and the limit date set to undefined for the date picker with the action id when the action is "SELECT_DATE"', () => {
       let oldState: IDatePickerState[] = [
         _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
         _.extend({}, BASE_DATE_PICKER_STATE),
@@ -215,6 +222,7 @@ describe('Date picker', () => {
       };
       let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
       expect(_.findWhere(datePickersState, { id: action.payload.id }).selected).toBe(action.payload.limit);
+      expect(_.findWhere(datePickersState, { id: action.payload.id }).upperLimit).toBeUndefined();
     });
 
     it('should not change the original state', () => {
@@ -412,10 +420,11 @@ describe('Date picker', () => {
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
         expect(datePickerState.selected).toBe(oldState.selected);
+        expect(datePickerState.upperLimit).toBeDefined();
       });
 
-    it('should return the date picker with the new selected limit if the action is "SELECT_DATE" and the id is the' +
-      'one specified', () => {
+    it('should return the date picker with the new selected limit and the limit date undefined if the action is' +
+      '"SELECT_DATE" and the id is the one specified', () => {
         let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE);
         let action: IReduxAction<ISelectDatePickerPayload> = {
           type: DatePickerActions.select,
@@ -427,6 +436,7 @@ describe('Date picker', () => {
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
         expect(datePickerState.selected).toBe(action.payload.limit);
+        expect(datePickerState.upperLimit).toBeUndefined();
       });
 
     it('should not change the original state', () => {
