@@ -139,11 +139,16 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     day.isSelectable = true;
 
     _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
-      const selectionStart: moment.Moment = moment(calendarSelection.lowerLimit).startOf('day');
-      const selectionEnd: moment.Moment = calendarSelection.isRange
-        ? moment(calendarSelection.upperLimit).startOf('day')
-        : selectionStart;
-      const isSelected = dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
+      const selectionStart: moment.Moment = calendarSelection.lowerLimit
+        ? moment(calendarSelection.lowerLimit).startOf('day')
+        : undefined;
+      const selectionEnd: moment.Moment = calendarSelection.upperLimit
+        ? (calendarSelection.isRange
+          ? moment(calendarSelection.upperLimit).startOf('day')
+          : selectionStart)
+        : undefined;
+      const isSelected = selectionStart && selectionEnd
+        && dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
 
       day.isSelected = isSelected || day.isSelected;
       day.isLowerLimit = calendarSelection.isRange && !dayStart.diff(selectionStart) || day.isLowerLimit;

@@ -26,6 +26,8 @@ export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildren
   days?: string[];
   startingDay?: number;
   selectionRules?: ICalendarSelectionRule[];
+  lowerLimitPlaceholder?: string;
+  upperLimitPlaceholder?: string;
 }
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
@@ -134,6 +136,8 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       days: this.props.days,
       startingDay: this.props.startingDay,
       selectionRules: this.props.selectionRules,
+      lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
+      upperLimitPlaceholder: this.props.upperLimitPlaceholder,
       footer: (
         <footer className='modal-footer mod-small'>
           <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>

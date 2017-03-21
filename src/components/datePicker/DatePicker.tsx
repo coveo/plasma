@@ -6,6 +6,7 @@ import * as React from 'react';
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
   onChange: (date: Date, isUpperLimit: boolean) => void;
   onClick: (isUpperLimit: boolean) => void;
+  placeholder: string;
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   upperLimit?: boolean;
@@ -87,6 +88,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
           ref={(dateInput: HTMLInputElement) => this.dateInput = dateInput}
           onChange={() => this.handleChange()}
           onClick={() => this.props.onClick(this.props.upperLimit)}
+          placeholder={this.props.placeholder}
           required
         />
         {nowButton}
