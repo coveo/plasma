@@ -3,11 +3,12 @@ sudo: false
 language: node_js
 
 node_js:
-  - '6.9'
+  - '6.10'
 
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
 
 install:
   - npm install -g gulp
