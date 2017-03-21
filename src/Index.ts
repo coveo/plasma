@@ -101,6 +101,7 @@ import { DisplayClass } from './utils/ComponentUtils';
 import { DateUtils, DATES_SEPARATOR } from './utils/DateUtils';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
+export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 export {
   ChosenSelect,
