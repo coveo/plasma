@@ -2,6 +2,21 @@
   position: relative;
 
   display: inline-block;
+
+  &.open > .dropdown-toggle, .dropdown-toggle.open {
+    &.mod-primary .dropdown-toggle-arrow {
+      @include arrow-up-icon($pure-white);
+    }
+
+    .dropdown-toggle-arrow {
+      @include arrow-up-icon($medium-blue);
+    }
+  }
+
+  &.open > .dropdown-menu {
+    display: block;
+    margin-bottom: $form-bottom-padding;
+  }
 }
 
 .dropdown-prepend {
@@ -45,16 +60,6 @@
     height: $dropdown-arrow-icon-size;
 
     @include arrow-down-icon($medium-blue);
-  }
-}
-
-&.open > .dropdown-toggle, .dropdown-toggle.open {
-  &.mod-primary .dropdown-toggle-arrow {
-    @include arrow-up-icon($pure-white);
-  }
-
-  .dropdown-toggle-arrow {
-    @include arrow-up-icon($medium-blue);
   }
 }
 
@@ -144,9 +149,4 @@
       cursor: default;
     }
   }
-}
-
-&.open > .dropdown-menu {
-  display: block;
-  margin-bottom: $form-bottom-padding;
 }
