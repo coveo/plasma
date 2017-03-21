@@ -1,12 +1,12 @@
+# React-Vapor
+
 [![Build Status](https://travis-ci.org/coveo/react-vapor.svg?branch=master)](https://travis-ci.org/coveo/react-vapor)
 [![codecov](https://codecov.io/gh/coveo/react-vapor/branch/master/graph/badge.svg)](https://codecov.io/gh/coveo/react-vapor)
 [![bitHound Overall Score](https://www.bithound.io/github/coveo/react-vapor/badges/score.svg)](https://www.bithound.io/github/coveo/react-vapor)
 [![bitHound Dependencies](https://www.bithound.io/github/coveo/react-vapor/badges/dependencies.svg)](https://www.bithound.io/github/coveo/react-vapor/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/coveo/react-vapor/badges/devDependencies.svg)](https://www.bithound.io/github/coveo/react-vapor/master/dependencies/npm)
-
-# React-Vapor
-
 [![Greenkeeper badge](https://badges.greenkeeper.io/coveo/react-vapor.svg)](https://greenkeeper.io/)
+
 Vapor CSS components implemented with React!
 
 ## Install

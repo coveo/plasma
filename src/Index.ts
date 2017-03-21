@@ -95,12 +95,17 @@ import {
   resetOptionPickers
 } from './components/optionPicker/OptionPickerActions';
 import { optionPickersReducer } from './components/optionPicker/OptionPickerReducers';
-import { Calendar } from './components/calendar/Calendar';
+import { Calendar, ICalendarSelectionRule, CalendarSelectionRuleType } from './components/calendar/Calendar';
 import { CalendarConnected } from './components/calendar/CalendarConnected';
+import { SubNavigation, ISubNavigationItem } from './components/subNavigation/SubNavigation';
+import { SubNavigationConnected } from './components/subNavigation/SubNavigationConnected';
+import { subNavigationsReducer } from './components/subNavigation/SubNavigationReducers';
+import { SubNavigationActions } from './components/subNavigation/SubNavigationActions';
 import { DisplayClass } from './utils/ComponentUtils';
 import { DateUtils, DATES_SEPARATOR } from './utils/DateUtils';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
+export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 export {
   ChosenSelect,
@@ -207,6 +212,8 @@ export {
   // Calendar
   Calendar,
   CalendarConnected,
+  ICalendarSelectionRule,
+  CalendarSelectionRuleType,
 
   // Option cycle
   OptionsCycle,
@@ -226,6 +233,13 @@ export {
   resetOptionPickers,
   optionPickersReducer,
 
+  // SubNavigation
+  SubNavigation,
+  ISubNavigationItem,
+  SubNavigationConnected,
+  subNavigationsReducer,
+  SubNavigationActions,
+
   // Redux
   ReduxUtils,
   ReduxConnect,
@@ -239,5 +253,5 @@ export {
   // Utils
   DisplayClass,
   DateUtils,
-  DATES_SEPARATOR
+  DATES_SEPARATOR,
 };

@@ -1,7 +1,7 @@
 /// <reference path="../../../types/react-tether/index.d.ts" /> Required to make dts-generator bundle react-tether definition file.
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import TetherComponent from 'react-tether';
+import * as TetherComponent from 'react-tether';
 import { extend, isFunction, isUndefined, omit } from 'underscore';
 
 /*

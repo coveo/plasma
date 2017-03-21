@@ -76,5 +76,14 @@ describe('Actions', () => {
     it('should display the action name', () => {
       expect(actionComponent.html()).toContain(action.name);
     });
+
+    it('should display a <Tooltip /> if the action has a tooltip', () => {
+      expect(actionComponent.find('Tooltip').length).toBe(0);
+
+      let newAction = _.extend({}, action, { tooltip: 'A useful tooltip' });
+      actionComponent.setProps({ action: newAction, simple: false });
+
+      expect(actionComponent.find('Tooltip').length).toBe(1);
+    });
   });
 });

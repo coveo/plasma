@@ -10,6 +10,7 @@ export interface IDay {
   isLowerLimit?: boolean;
   isUpperLimit?: boolean;
   color?: string;
+  isSelectable?: boolean;
 }
 
 export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
@@ -19,11 +20,22 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
 
 export class CalendarDay extends React.Component<ICalendarDayProps, any> {
 
+  private handleClick() {
+    if (this.props.day.isSelectable) {
+      this.props.onClick(this.props.day.date.toDate());
+    }
+  }
+
   render() {
     let dayClasses: string[] = [];
+    let dayCellClasses: string[] = [];
 
     if (!this.props.day.isCurrentMonth) {
       dayClasses.push('other-month-date');
+    }
+
+    if (!this.props.day.isSelectable) {
+      dayCellClasses.push('un-selectable');
     }
 
     if (this.props.day.isToday) {
@@ -48,7 +60,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
       : null;
 
     return (
-      <td onClick={() => this.props.onClick(this.props.day.date.toDate())}>
+      <td className={dayCellClasses.join(' ')} onClick={() => this.handleClick()}>
         <span className={dayClasses.join(' ')}>
           {this.props.day.number}
           {bothLimitsElement}
