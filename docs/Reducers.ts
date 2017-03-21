@@ -13,6 +13,7 @@ import { optionsCyclesReducer } from '../src/components/optionsCycle/OptionsCycl
 import { datePickersReducer } from '../src/components/datePicker/DatePickerReducers';
 import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilterReducers';
 import { optionPickersReducer } from '../src/components/optionPicker/OptionPickerReducers';
+import { subNavigationsReducer } from '../src/components/subNavigation/SubNavigationReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
 
@@ -41,5 +42,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   optionsCycles: optionsCyclesReducer,
   optionPickers: optionPickersReducer,
   datePickers: datePickersReducer,
+  subNavigations: subNavigationsReducer,
   lastAction
 });

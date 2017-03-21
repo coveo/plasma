@@ -65,7 +65,7 @@
     "bootstrap": "3.3.7",
     "chosen-js": "1.6.2",
     "codecov": "2.0.2",
-    "coveo-styleguide": "1.9.x",
+    "coveo-styleguide": "1.10.x",
     "css-loader": "0.27.3",
     "del": "2.2.2",
     "dts-generator": "2.1.0",
