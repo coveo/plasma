@@ -52,7 +52,7 @@
     "@types/enzyme": "2.7.6",
     "@types/jasmine": "2.5.43",
     "@types/jquery": "2.0.41",
-    "@types/react": "15.0.17",
+    "@types/react": "15.0.18",
     "@types/react-dom": "0.14.23",
     "@types/react-redux": "4.4.37",
     "@types/tether": "1.4.1",
