@@ -15,14 +15,12 @@ export const subNavigationReducer = (state: ISubNavigationState = subNavigationI
   action: (IReduxAction<IReduxActionsPayload>)): ISubNavigationState => {
   switch (action.type) {
     case SubNavigationActions.select:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
-
-      return {
-        id: state.id,
-        selected: action.payload.selected,
-      };
+      return state.id !== action.payload.id
+        ? state
+        : {
+          id: state.id,
+          selected: action.payload.selected,
+        };
     case SubNavigationActions.add:
       return {
         id: action.payload.id,

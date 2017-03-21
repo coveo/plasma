@@ -27,7 +27,8 @@ export interface ISubNavigationProps extends ISubNavigationOwnProps, ISubNavigat
 
 export class SubNavigation extends React.Component<ISubNavigationProps, any> {
 
-  private handleItemClick = (id: string) => {
+  private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
     if (this.props.onClickItem) {
       this.props.onClickItem(id);
     }
@@ -55,10 +56,7 @@ export class SubNavigation extends React.Component<ISubNavigationProps, any> {
       return (
         <li key={item.id} className={classes.join(' ')}>
           <a href={item.link || '#'} className='sub-navigation-item-link'
-            onClick={e => {
-              e.preventDefault();
-              this.handleItemClick(item.id);
-            }}>{item.label}</a>
+            onClick={e => this.handleItemClick(e, item.id)}>{item.label}</a>
         </li>
       );
     });
