@@ -1,11 +1,13 @@
 ![logo](vapor.gif)
-[![npm](https://img.shields.io/npm/v/coveo-styleguide.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/coveo-styleguide)
-[![Build Status](https://img.shields.io/travis/coveo/vapor.svg?style=flat-square)](https://travis-ci.org/coveo/vapor)
-[![dependencies](https://img.shields.io/david/coveo/vapor.svg?style=flat-square)](https://david-dm.org/coveo/vapor#info=dependencies&view=list)
-[![dev-dependencies](https://img.shields.io/david/dev/coveo/vapor.svg?style=flat-square)](https://david-dm.org/coveo/vapor#info=devDependencies&view=table)
-[![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 # Vapor CSS
+
+[![Build Status](https://img.shields.io/travis/coveo/vapor.svg?style=flat-square)](https://travis-ci.org/coveo/vapor)
+[![npm](https://img.shields.io/npm/v/coveo-styleguide.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/coveo-styleguide)
+[![dependencies](https://img.shields.io/david/coveo/vapor.svg?style=flat-square)](https://david-dm.org/coveo/vapor#info=dependencies&view=list)
+[![dev-dependencies](https://img.shields.io/david/dev/coveo/vapor.svg?style=flat-square)](https://david-dm.org/coveo/vapor#info=devDependencies&view=table)
+[![Greenkeeper badge](https://badges.greenkeeper.io/coveo/vapor.svg)](https://greenkeeper.io/)
+[![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 Vapor CSS is Coveo's collection of UI components used in Coveo's Administration Console. All components and their documentation is [available here](http://coveo.github.io/vapor/)
 

@@ -2,8 +2,8 @@
   "exclude": [
     "node_modules/**",
     "scss/icons/svgs.scss",
-    "scss/utility/colors.scss",
     "scss/utility/border.scss",
+    "scss/utility/colors.scss",
     "scss/sprites.scss"
   ],
   "remove-empty-rulesets": true,
@@ -25,7 +25,7 @@
   "space-before-selector-delimiter": "",
   "space-before-closing-brace": "\n",
   "strip-spaces": true,
-  "tab-size": true,
+  "tab-size": 2,
   "unitless-zero": true,
   "sort-order": [
     [
