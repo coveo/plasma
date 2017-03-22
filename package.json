@@ -54,7 +54,7 @@
     "@types/jquery": "2.0.41",
     "@types/react": "15.0.18",
     "@types/react-dom": "0.14.23",
-    "@types/react-redux": "4.4.37",
+    "@types/react-redux": "4.4.38",
     "@types/tether": "1.4.1",
     "@types/underscore": "1.8.0",
     "@types/underscore.string": "0.0.30",
