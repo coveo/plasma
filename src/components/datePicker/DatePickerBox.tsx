@@ -36,6 +36,8 @@ export interface IDatePickerBoxChildrenProps {
   days?: string[];
   startingDay?: number;
   selectionRules?: ICalendarSelectionRule[];
+  lowerLimitPlaceholder?: string;
+  upperLimitPlaceholder?: string;
 }
 
 export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps,
@@ -75,6 +77,8 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           isRange: datesSelectionBox.isRange,
           color: datesSelectionBox.color,
           calendarId: calendarProps.id,
+          lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
+          upperLimitPlaceholder: this.props.upperLimitPlaceholder,
         };
         let dateSelection: JSX.Element = this.props.withReduxState
           ? <DatesSelectionConnected {...datesSelectionProps} />

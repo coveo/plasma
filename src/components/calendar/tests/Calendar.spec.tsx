@@ -440,8 +440,8 @@ describe('Calendar', () => {
       });
 
       it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
-        let otherDay: IDay = _.extend({}, DAY, { date: moment().startOf('week').add(9, 'day') });
-        let sunday: IDay = _.extend({}, DAY, { date: moment().startOf('week').add(1, 'week') });
+        let otherDay: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(2, 'day') });
+        let sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
         let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
 
         day = calendarInstance.fillInDayInfos(otherDay);

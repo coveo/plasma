@@ -14,6 +14,7 @@ import { datePickersReducer } from '../src/components/datePicker/DatePickerReduc
 import { modalsReducer } from '../src/components/modal/ModalReducers';
 import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilterReducers';
 import { optionPickersReducer } from '../src/components/optionPicker/OptionPickerReducers';
+import { subNavigationsReducer } from '../src/components/subNavigation/SubNavigationReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
 
@@ -43,5 +44,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   optionPickers: optionPickersReducer,
   datePickers: datePickersReducer,
   modals: modalsReducer,
+  subNavigations: subNavigationsReducer,
   lastAction
 });

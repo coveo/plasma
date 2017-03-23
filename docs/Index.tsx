@@ -6,6 +6,7 @@ import { ChosenSelect } from '../src/components/chosen/ChosenSelect';
 import { Svg } from '../src/components/svg/Svg';
 import { Tooltip } from '../src/components/tooltip/Tooltip';
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
+import { SyncFeedbackExample } from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
@@ -26,6 +27,8 @@ import { ItemFilterExamples } from '../src/components/actions/filters/examples/I
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import { TableEmptyRowExamples } from '../src/components/tables/examples/TableEmptyRowExamples';
 import { OptionsCycleExamples } from '../src/components/optionsCycle/examples/OptionsCycleExamples';
+import { SubNavigationExamples } from '../src/components/subNavigation/examples/SubNavigationExamples';
+import { SubNavigationConnectedExamples } from '../src/components/subNavigation/examples/SubNavigationConnectedExamples';
 import { OptionsCycleConnectedExamples } from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import { CalendarConnectedExamples } from '../src/components/calendar/examples/CalendarConnectedExamples';
 import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
@@ -103,6 +106,7 @@ class App extends React.Component<any, any> {
             </div>
           </div>
           <UserFeedbackExample />
+          <SyncFeedbackExample />
           <LastUpdatedExamples />
           <LastUpdatedConnectedExamples />
           <LoadingExamples />
@@ -113,6 +117,8 @@ class App extends React.Component<any, any> {
           <ModalConnectedExamples />
           <NavigationExamples />
           <NavigationConnectedExamples />
+          <SubNavigationExamples />
+          <SubNavigationConnectedExamples />
           <ActionBarExamples />
           <ActionBarConnectedExamples />
           <ItemFilterExamples />

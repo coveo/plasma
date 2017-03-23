@@ -9,7 +9,8 @@ import * as React from 'react';
 describe('Date picker', () => {
   const DATE_PICKER_BASIC_PROPS: IDatePickerProps = {
     onChange: jasmine.createSpy('onChange'),
-    onClick: jasmine.createSpy('onClick')
+    onClick: jasmine.createSpy('onClick'),
+    placeholder: 'Pick a date'
   };
 
   describe('<DatePicker />', () => {
