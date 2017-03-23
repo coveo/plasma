@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface IModalBackDropOwnProps {
+export interface IModalBackdropOwnProps {
   displayFor?: string[];
 }
 
@@ -11,7 +11,7 @@ export interface IModalBackdropStateProps {
 export interface IModalBackdropDispatchProps {
 }
 
-export interface IModalBackdropProps extends IModalBackDropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {
+export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {
 }
 
 export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {

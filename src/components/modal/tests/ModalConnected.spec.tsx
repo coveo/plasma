@@ -102,6 +102,15 @@ describe('Modal', () => {
       expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(false);
     });
 
+    it('should close the modal in the store when clicking on modal x', () => {
+      expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(false);
+      store.dispatch(openModal(id));
+      expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(true);
+
+      modal.find('.small-close').simulate('click');
+      expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(false);
+    });
+
     it('should remove the modal in the store on destroy', () => {
       wrapper.unmount();
       expect(store.getState().modals.filter(modals => modals.id === id).length).toBe(0);

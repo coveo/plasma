@@ -15,7 +15,7 @@ describe('ModalBody', () => {
     });
   });
 
-  describe('<Modal />', () => {
+  describe('<ModalBody />', () => {
     let modalBody: ReactWrapper<IModalBodyProps, any>;
 
     beforeEach(() => {

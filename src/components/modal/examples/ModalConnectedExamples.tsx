@@ -10,9 +10,7 @@ export interface IModalExamplesProps {
   openModal?: (id: string) => void;
 }
 
-const mapStateToProps = () => {
-  return {};
-};
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => {
   return {
@@ -26,9 +24,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>
 export class ModalConnectedExamples extends React.Component<IModalExamplesProps, any> {
 
   openModal(id: string) {
-    if (this.props.openModal) {
-      this.props.openModal(id);
-    }
+    this.props.openModal(id);
   }
 
   render() {

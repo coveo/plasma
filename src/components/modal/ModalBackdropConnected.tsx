@@ -1,14 +1,15 @@
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { IModalBackDropOwnProps, IModalBackdropStateProps, IModalBackdropProps, IModalBackdropDispatchProps, ModalBackdrop } from './ModalBackdrop';
+import { IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropProps, IModalBackdropDispatchProps, ModalBackdrop } from './ModalBackdrop';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { connect } from 'react-redux';
+import * as _ from 'underscore';
 
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackDropOwnProps): IModalBackdropStateProps => {
+const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnProps): IModalBackdropStateProps => {
   let modals = state.modals;
   if (ownProps.displayFor && ownProps.displayFor.length > 0) {
     modals = modals.filter(modal => {
-      return ownProps.displayFor.indexOf(modal.id) > -1;
+      return _.contains(ownProps.displayFor, modal.id);
     });
   }
 
@@ -19,7 +20,6 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackDropOwnPro
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IModalBackdropDispatchProps => ({
-});
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IModalBackdropDispatchProps => ({});
 
 export const ModalBackdropConnected: React.ComponentClass<IModalBackdropProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalBackdrop);

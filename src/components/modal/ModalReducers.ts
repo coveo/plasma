@@ -55,7 +55,7 @@ export const modalsReducer = (state: IModalState[] = modalsInitialState,
       });
     case ModalAction.closeModal:
     case ModalAction.openModal:
-      return state.map(modal => modalReducer(modal, action));
+      return state.map((modal: IModalState) => modalReducer(modal, action));
     default:
       return state;
   }
