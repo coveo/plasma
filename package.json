@@ -14,6 +14,7 @@
   "author": "Coveo",
   "license": "MIT",
   "main": "dist/react-vapor.js",
+  "types": "dist/react-vapor.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coveo/react-vapor.git"
