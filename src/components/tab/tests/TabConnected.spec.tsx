@@ -98,6 +98,20 @@ describe('Tab', () => {
       expect(store.getState().tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(true);
     });
 
+    it('should select the tab when clicking on it', () => {
+      let tab2Id = 'tab2Id';
+      store.dispatch(addTab(tab2Id));
+      expect(store.getState().tabs.filter(tab => tab.id === id).length).toBe(1);
+      expect(store.getState().tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
+      expect(store.getState().tabs.filter(tab => tab.id === tab2Id).length).toBe(1);
+      expect(store.getState().tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
+
+      store.dispatch(selectTab(tab2Id));
+      tab.simulate('click');
+      expect(store.getState().tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
+      expect(store.getState().tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
+    });
+
     it('should remove the tab in the store on destroy', () => {
       wrapper.unmount();
       expect(store.getState().tabs.filter(tabs => tabs.id === id).length).toBe(0);
