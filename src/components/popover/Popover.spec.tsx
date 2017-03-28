@@ -192,13 +192,13 @@ describe('<Popover>', () => {
         // Using getElementById here since the Tether element is being rendered outside the popoverWrapper.
         document.getElementById(popoverElementId).click();
 
-        expect(toggleOpenedSpy.calls.count()).toBe(0);
+        expect(toggleOpenedSpy).not.toHaveBeenCalled();
       });
 
       it('should close the popover when clicking outside Popover', () => {
         document.getElementById('App').click();
 
-        expect(toggleOpenedSpy.calls.count()).toBe(1);
+        expect(toggleOpenedSpy).toHaveBeenCalledTimes(1);
 
         expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
       });
@@ -216,13 +216,13 @@ describe('<Popover>', () => {
       it('should not explode', () => {
         document.getElementById('App').click();
 
-        expect(toggleOpenedSpy.calls.count()).toBe(1);
+        expect(toggleOpenedSpy).toHaveBeenCalledTimes(1);
 
         expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
       });
     });
 
-    describe('Document click handler for a closed popover', () => {
+    describe('Document click handler for a closed popover behaving as a modal', () => {
       beforeEach(() => {
         popoverProps = _.extend(popoverProps, {
           isOpen: false,
@@ -235,7 +235,7 @@ describe('<Popover>', () => {
       it('should not explode', () => {
         document.getElementById('App').click();
 
-        expect(toggleOpenedSpy.calls.count()).toBe(1);
+        expect(toggleOpenedSpy).toHaveBeenCalledTimes(1);
 
         expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
       });
