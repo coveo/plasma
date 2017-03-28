@@ -46,3 +46,19 @@
     transform: scale(1.0);
   }
 }
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-2000px);
+
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slideInLeft {
+  animation-name: slideInLeft;
+}
