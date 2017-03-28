@@ -24,6 +24,12 @@ export interface IPopoverProps extends TetherComponent.ITetherComponentProps, Re
    * you want to control the Popover state. Let it undefined if you want the Popover to control his state itself.
    */
   onToggle?: (isOpen: boolean) => void;
+
+  /**
+   * Optionnal, use it to prevent default when the Popover isOpen and the user clicks outside.
+   * @default: false
+   */
+  isModal?: boolean;
 }
 
 export interface IPopoverState {
@@ -39,7 +45,8 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
       }
     },
     isOpen: React.PropTypes.bool,
-    onToggle: React.PropTypes.func
+    onToggle: React.PropTypes.func,
+    isModal: React.PropTypes.bool,
   });
 
   private tetherToggle: HTMLElement;
@@ -105,6 +112,11 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     let outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
 
     if (outsideTetherElement && outsideTetherToggle) {
+      if (this.props.isOpen && this.props.isModal) {
+        event.stopImmediatePropagation();
+        event.preventDefault();
+      }
+
       this.toggleOpened(false);
     }
   }
