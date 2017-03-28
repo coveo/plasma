@@ -80,7 +80,8 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
           pin: true
         }]}
         isOpen={this.props.isOpen}
-        onToggle={(isOpen: boolean) => this.props.toggleMemberOpen(isOpen)}>
+        onToggle={(isOpen: boolean) => this.props.toggleMemberOpen(isOpen)}
+        isModal>
         <button type='button' className='btn'>
           {isNew ? 'Add member' : this.props.appliedEmail}
         </button>
