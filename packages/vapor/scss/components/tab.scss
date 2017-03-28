@@ -1,0 +1,71 @@
+.tab-navigation {
+  min-height: $tab-navigation-min-height;
+  padding: 0 $header-padding;
+
+  border-bottom: $default-border;
+
+  .tab {
+    position: relative;
+    bottom: -1px;
+
+    display: inline-block;
+    padding: $tab-padding;
+    margin-right: $tab-margin-right;
+
+    color: $medium-blue;
+    font-size: $tab-font-size;
+    font-weight: bold;
+    line-height: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+
+    border-bottom: $tab-bottom-border-height solid transparent;
+
+    transition: all 0.2s ease;
+
+    cursor: pointer;
+
+    &.active {
+      color: $medium-blue;
+
+      border-bottom: $tab-bottom-border-height solid $medium-blue;
+    }
+
+    &.disabled {
+      color: $medium-grey;
+
+      cursor: default;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &.sub-tabs {
+    .tab {
+      font-size: $sub-tab-font-size;
+      font-weight: 400;
+
+      border-bottom-width: 2px;
+    }
+  }
+}
+
+.tab-pane {
+  display: none;
+
+  visibility: hidden;
+
+  &.active {
+    display: block;
+
+    visibility: visible;
+
+    @extend .slideInLeft;
+  }
+
+  .loading, & > .spinner {
+    margin-top: $tab-pane-loading-margin-top;
+  }
+}
