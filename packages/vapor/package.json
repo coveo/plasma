@@ -33,7 +33,7 @@
   "dependencies": {
     "chosen-npm": "1.4.2",
     "coveo-slider": "0.9.8",
-    "materialize-css": "0.98.0"
+    "materialize-css": "0.98.1"
   },
   "devDependencies": {
     "autosize": "3.0.20",
