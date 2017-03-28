@@ -1,6 +1,6 @@
 {
   "name": "react-vapor",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Vapor CSS components implemented with React!",
   "keywords": [
     "coveo",
@@ -52,7 +52,7 @@
     "@types/enzyme": "2.7.6",
     "@types/jasmine": "2.5.43",
     "@types/jquery": "2.0.41",
-    "@types/react": "15.0.18",
+    "@types/react": "15.0.19",
     "@types/react-dom": "0.14.23",
     "@types/react-redux": "4.4.38",
     "@types/tether": "1.4.1",
@@ -63,7 +63,7 @@
     "autoprefixer": "6.7.7",
     "bithound": "1.7.0",
     "bootstrap": "3.3.7",
-    "chosen-js": "1.6.2",
+    "chosen-js": "1.7.0",
     "codecov": "2.1.0",
     "coveo-styleguide": "1.11.x",
     "css-loader": "0.27.3",
@@ -109,14 +109,14 @@
     "redux": "3.6.0",
     "remap-istanbul": "0.9.2",
     "sass-loader": "6.0.3",
-    "style-loader": "0.15.0",
-    "ts-loader": "2.0.2",
+    "style-loader": "0.16.0",
+    "ts-loader": "2.0.3",
     "tslint": "4.5.1",
     "tslint-loader": "3.4.3",
     "typescript": "2.2.1",
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
-    "webpack": "2.3.0",
+    "webpack": "2.3.1",
     "webpack-dev-server": "2.4.2"
   },
   "files": [
