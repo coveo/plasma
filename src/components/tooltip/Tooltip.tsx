@@ -5,8 +5,6 @@ import * as React from 'react';
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
 export interface IOverlayTriggerProps {
   animation?: any;
-  container?: any;
-  containerPadding?: number;
   defaultOverlayShown?: boolean;
   delay?: number;
   delayHide?: number;
