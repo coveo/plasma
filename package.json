@@ -36,7 +36,8 @@
     "build"
   ],
   "dependencies": {
-    "react-tether": "0.5.6"
+    "react-tether": "0.5.6",
+    "react-bootstrap": "0.30.8"
   },
   "peerDependencies": {
     "jquery": ">= 2.0.0 =< 3",
@@ -47,12 +48,12 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "@types/bootstrap": "3.3.32",
     "@types/chosen-js": "1.6.0",
     "@types/enzyme": "2.7.6",
     "@types/jasmine": "2.5.43",
     "@types/jquery": "2.0.41",
     "@types/react": "15.0.19",
+    "@types/react-bootstrap": "0.0.47",
     "@types/react-dom": "0.14.23",
     "@types/react-redux": "4.4.38",
     "@types/tether": "1.4.1",
@@ -62,7 +63,6 @@
     "@types/webpack-env": "1.13.0",
     "autoprefixer": "6.7.7",
     "bithound": "1.7.0",
-    "bootstrap": "3.3.7",
     "chosen-js": "1.7.0",
     "codecov": "2.1.0",
     "coveo-styleguide": "1.12.1",

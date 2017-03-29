@@ -1,58 +1,87 @@
-/// <reference types="bootstrap" /> Required since bootstrap/js/tooltip.js definition is in bootstrap definition file.
-
+import { Tooltip as BootstrapTooltip, OverlayTrigger } from 'react-bootstrap';
+import * as _ from 'underscore';
 import * as React from 'react';
-import * as $ from 'jquery';
-import { omit } from 'underscore';
-import 'bootstrap/js/tooltip.js'; // Usefull since Vapor took the tooltip function from there and since bootstrap has a legit definition file.
 
-export interface ITooltipProps extends React.HTMLProps<Tooltip> {
-  animation?: boolean; // @default: true
-  container?: string | boolean; // @default: false
-  delay?: number | Object; // @default: 0
-  html?: boolean; // @default: false
-  placement?: string | Function; // @default: 'top'
-  selector?: string; // @default: ?
-  template?: string; // @default: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
-  title: string;
-  trigger?: string; // @default: 'hover focus'
-  viewport?: string | Function | Object; // @default: { selector: 'body', padding: 0 }
+// Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
+export interface IOverlayTriggerProps {
+  animation?: any;
+  container?: any;
+  containerPadding?: number;
+  defaultOverlayShown?: boolean;
+  delay?: number;
+  delayHide?: number;
+  delayShow?: number;
+  onEnter?: Function;
+  onEntered?: Function;
+  onEntering?: Function;
+  onExit?: Function;
+  onExited?: Function;
+  onExiting?: Function;
+  placement?: string;
+  rootClose?: boolean;
+  trigger?: string | string[];
 }
 
-const tooltipPropsToOmit = ['animation', 'container', 'delay', 'html', 'placement', 'selector', 'template', 'trigger', 'viewport',
-  'children'];
+export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttributes<Tooltip> {
+  title: string;
+  className?: string;
+  arrowOffsetLeft?: number | string;
+  arrowOffsetTop?: number | string;
+  bsStyle?: string;
+  placement?: string;
+  positionLeft?: number;
+  positionTop?: number;
+}
 
-/**
- * Simple react component wrapping Bootstrap jQuery tooltip. Include CoveoStyleGuide.Dependencies.js in order for this to work.
- */
+const PROPS_TO_OMIT: string[] = [
+  'title',
+  'className',
+  'children',
+];
+
+const TOOLTIP_PROPS_TO_OMIT: string[] = [
+  ...PROPS_TO_OMIT,
+  'animation',
+  'defaultOverlayShown',
+  'delay',
+  'delayShow',
+  'onEnter',
+  'onEntered',
+  'onEntering',
+  'onExit',
+  'onExited',
+  'onExiting',
+  'overlay',
+  'rootClose',
+  'trigger',
+];
+const OVERLAY_PROPS_TO_OMIT: string[] = [
+  ...PROPS_TO_OMIT,
+  'arrowOffsetLeft',
+  'arrowOffsetTop',
+  'bsClass',
+  'positionTop',
+  'positionLeft',
+];
+
 export class Tooltip extends React.Component<ITooltipProps, any> {
-  private tooltip: JQuery;
-
-  componentDidMount() {
-    this.tooltip.tooltip({
-      animation: this.props.animation,
-      container: this.props.container,
-      delay: this.props.delay,
-      html: this.props.html,
-      placement: this.props.placement,
-      selector: this.props.selector,
-      template: this.props.template,
-      title: this.props.title,
-      trigger: this.props.trigger,
-      viewport: this.props.viewport
-    });
-  }
-
-  componentWillUnmount() {
-    if (this.tooltip) {
-      this.tooltip.tooltip('destroy');
-    }
-  }
+  static defaultProps: Partial<ITooltipProps> = {
+    className: '',
+  };
 
   render() {
+    const tooltip = <BootstrapTooltip
+      id={_.uniqueId('tooltip-')}
+      {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT) }>
+      {this.props.title}
+    </BootstrapTooltip>;
+
     return (
-      <span {...omit(this.props, tooltipPropsToOmit) } ref={(element: HTMLElement) => this.tooltip = $(element)}>
-        {this.props.children}
-      </span>
+      <OverlayTrigger {..._.omit(this.props, OVERLAY_PROPS_TO_OMIT) } overlay={tooltip}>
+        <span className={this.props.className}>
+          {this.props.children}
+        </span>
+      </OverlayTrigger>
     );
   }
 }
