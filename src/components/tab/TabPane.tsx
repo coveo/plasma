@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ITabPaneOwnProps {
-  id: string;
+  id?: string;
 }
 
 export interface ITabPaneStateProps {

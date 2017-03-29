@@ -20,7 +20,6 @@ describe('TabPane', () => {
 
   describe('<Tab />', () => {
     let tab: ReactWrapper<ITabPaneProps, any>;
-    let tabPaneInstance: TabPane;
 
     beforeEach(() => {
       tab = mount(
@@ -29,7 +28,6 @@ describe('TabPane', () => {
         />,
         { attachTo: document.getElementById('App') }
       );
-      tabPaneInstance = tab.instance() as TabPane;
     });
 
     afterEach(() => {

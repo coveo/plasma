@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ITabOwnProps {
-  id: string;
+  id?: string;
   title: string;
 }
 

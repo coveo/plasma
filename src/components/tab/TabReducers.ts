@@ -45,7 +45,7 @@ export const tabsReducer = (state: ITabState[] = tabsInitialState,
         return action.payload.id === tab.id;
       });
     case TabAction.selectTab:
-      return state.map(tab => tabReducer(tab, action));
+      return state.map((tab: ITabState) => tabReducer(tab, action));
     default:
       return state;
   }

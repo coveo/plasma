@@ -82,7 +82,7 @@ describe('Tab', () => {
     });
 
     it('should add the tab in the store on render', () => {
-      expect(store.getState().tabs.filter(tab => tab.id === id).length).toBe(1);
+      expect(store.getState().tabs.filter((tab: ITabState) => tab.id === id).length).toBe(1);
     });
 
     it('should select the tab in the store when dispatching a "selectTab" action', () => {
