@@ -1,4 +1,5 @@
 import { IFacet } from './Facet';
+import { Tooltip } from '../tooltip/Tooltip';
 import * as React from 'react';
 
 export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
@@ -11,6 +12,10 @@ export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
 export class FacetRow extends React.Component<IFacetRowProps, any> {
 
   render() {
+    const label: JSX.Element = this.props.facetRow.formattedName.length > 25
+      ? <Tooltip title={this.props.facetRow.formattedName}>{this.props.facetRow.formattedName}</Tooltip>
+      : <span>{this.props.facetRow.formattedName}</span>;
+
     return (
       <li className='facet-value facet-selectable'>
         <label className='coveo-checkbox-label facet-value-label'>
@@ -22,7 +27,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             onChange={() => this.props.onToggleFacet(this.props.facetRow)}
           />
           <button type='button'></button>
-          <span className='label'>{this.props.facetRow.formattedName}</span>
+          <span className='label'>{label}</span>
         </label>
       </li>
     );

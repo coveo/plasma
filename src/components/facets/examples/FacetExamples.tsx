@@ -14,7 +14,7 @@ export class FacetExamples extends React.Component<any, any> {
         formattedName: 'Row 2'
       }, {
         name: 'row3',
-        formattedName: 'Row 3'
+        formattedName: 'Much longer name that gets cut'
       }
     ];
     let selectedFacetRows: IFacet[] = [{
