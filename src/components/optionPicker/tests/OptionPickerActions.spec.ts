@@ -1,5 +1,5 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../../ReactVapor';
+import { IOptionPickerPayload, IChangeOptionPayload } from '../OptionPickerActions';
 import {
   changeOptionPicker,
   removeOptionPicker,
@@ -15,7 +15,7 @@ describe('Option picker', () => {
     const OPTION_PICKER_ID: string = 'option-picker';
 
     it('should create an action to add the option picker', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IOptionPickerPayload> = {
         type: OptionPickerActions.add,
         payload: {
           id: OPTION_PICKER_ID
@@ -26,7 +26,7 @@ describe('Option picker', () => {
     });
 
     it('should create an action to remove the option picker', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IOptionPickerPayload> = {
         type: OptionPickerActions.remove,
         payload: {
           id: OPTION_PICKER_ID
@@ -39,7 +39,7 @@ describe('Option picker', () => {
     it('should create an action to change the option picker value', () => {
       let expectedValue: string = 'any value we want';
       let expectedLabel: string = 'any label';
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IChangeOptionPayload> = {
         type: OptionPickerActions.change,
         payload: {
           id: OPTION_PICKER_ID,
@@ -52,7 +52,7 @@ describe('Option picker', () => {
     });
 
     it('should create an action to reset the option pickers', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IOptionPickerPayload> = {
         type: OptionPickerActions.reset,
         payload: {
           id: OPTION_PICKER_ID

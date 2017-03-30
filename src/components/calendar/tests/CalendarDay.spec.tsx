@@ -64,7 +64,7 @@ describe('Calendar day', () => {
     });
 
     it('should display the number of the day', () => {
-      expect(calendarDay.html()).toContain(DAY.number);
+      expect(calendarDay.html()).toContain(DAY.number.toString());
     });
 
     it('should have the class "other-month-date" is the isCurrentMonth of the day prop is set to false', () => {

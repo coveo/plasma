@@ -76,7 +76,7 @@ describe('Facets', () => {
       let facetRowsProp = facetComponent.props().facetRows;
 
       expect(facetRowsProp).toBeDefined();
-      expect(facetRowsProp).toEqual(jasmine.arrayContaining(facetRows));
+      expect(jasmine.arrayContaining(facetRowsProp)).toEqual(jasmine.arrayContaining(facetRows));
     });
 
     it('should get the facet title as a prop', () => {

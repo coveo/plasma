@@ -132,7 +132,7 @@ describe('Calendar', () => {
     it('should use the startingYear prop to set the year picker at the desired year or use the current one', () => {
       let startingYear: number = 2;
 
-      expect(calendar.html()).toContain(DateUtils.currentYear);
+      expect(calendar.html()).toContain(DateUtils.currentYear.toString());
 
       calendar.unmount();
       calendar = mount(

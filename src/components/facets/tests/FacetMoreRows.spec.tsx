@@ -105,10 +105,10 @@ describe('Facets', () => {
     it('should focus on the filter box input when opening', () => {
       let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { isOpened: true });
 
-      expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).not.toBe(document.activeElement);
+      expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).not.toBe(document.activeElement as HTMLInputElement);
 
       facetMoreRows.setProps(newFacetAttributes);
-      expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).toBe(document.activeElement);
+      expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).toBe(document.activeElement as HTMLInputElement);
     });
   });
 });

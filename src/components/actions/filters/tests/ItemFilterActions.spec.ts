@@ -1,6 +1,5 @@
 import { IReduxAction } from '../../../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../../../ReactVapor';
-import { ItemFilterActions, addItemFilter, filterItems, removeItemFilter } from '../ItemFilterActions';
+import { ItemFilterActions, addItemFilter, filterItems, removeItemFilter, IItemFilterActionPayload, IItemFilteringActionPayload } from '../ItemFilterActions';
 
 const ITEM_FILTER_ID: string = 'the-item-filter';
 
@@ -9,7 +8,7 @@ describe('Item filter', () => {
   describe('ItemFilterActions', () => {
 
     it('should create an action to add the item filter', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IItemFilterActionPayload> = {
         type: ItemFilterActions.add,
         payload: {
           id: ITEM_FILTER_ID
@@ -21,7 +20,7 @@ describe('Item filter', () => {
 
     it('should create an action to change the item filter', () => {
       let item: string = 'the item';
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IItemFilteringActionPayload> = {
         type: ItemFilterActions.filter,
         payload: {
           id: ITEM_FILTER_ID,
@@ -33,7 +32,7 @@ describe('Item filter', () => {
     });
 
     it('should create an action to remove the item filter', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IItemFilterActionPayload> = {
         type: ItemFilterActions.remove,
         payload: {
           id: ITEM_FILTER_ID
