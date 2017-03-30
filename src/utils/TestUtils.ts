@@ -16,6 +16,7 @@ import { datePickersReducer } from '../components/datePicker/DatePickerReducers'
 import { itemFiltersReducer } from '../components/actions/filters/ItemFilterReducers';
 import { modalsReducer } from '../components/modal/ModalReducers';
 import { subNavigationsReducer } from '../components/subNavigation/SubNavigationReducers';
+import { tabsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
 
 export class TestUtils {
@@ -36,7 +37,8 @@ export class TestUtils {
       datePickers: datePickersReducer,
       itemFilters: itemFiltersReducer,
       modals: modalsReducer,
-      subNavigations: subNavigationsReducer
+      subNavigations: subNavigationsReducer,
+      tabs: tabsReducer
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {

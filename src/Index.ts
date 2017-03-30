@@ -119,6 +119,14 @@ import { DisplayClass } from './utils/ComponentUtils';
 import { DateUtils, DATES_SEPARATOR } from './utils/DateUtils';
 import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
+import { TabAction, addTab, removeTab, selectTab } from './components/tab/TabActions';
+import { Tab } from './components/tab/Tab';
+import { TabConnected } from './components/tab/TabConnected';
+import { TabContent } from './components/tab/TabContent';
+import { TabNavigation } from './components/tab/TabNavigation';
+import { TabPane } from './components/tab/TabPane';
+import { TabPaneConnected } from './components/tab/TabPaneConnected';
+import { tabsReducer } from './components/tab/TabReducers';
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 export {
@@ -208,6 +216,19 @@ export {
   itemFiltersReducer,
   addItemFilter,
   removeItemFilter,
+
+  // Tabs
+  Tab,
+  TabConnected,
+  TabAction,
+  TabContent,
+  TabNavigation,
+  TabPane,
+  TabPaneConnected,
+  tabsReducer,
+  addTab,
+  removeTab,
+  selectTab,
 
   // Tables
   TableHeader,
