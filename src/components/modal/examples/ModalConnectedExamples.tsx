@@ -31,12 +31,12 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
     return (
       <div className='mt2'>
         <div className='form-group'>
-          <label className='form-control-label'>Modal</label>
+          <label className='form-control-label'>Modal Connected</label>
           <div>
             <button className='btn' onClick={() => { this.openModal('modal1'); }}>Open Modal 1</button>
             <ModalConnected id='modal1' title='Simple Modal' classes={['mod-big']}>
               <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
-                Modal content
+                Connected modal content
                 <ModalConnected id='modal2' title='Modal 2'>
                   <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
                     A modal in a modal

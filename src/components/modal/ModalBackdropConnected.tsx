@@ -8,15 +8,11 @@ import * as _ from 'underscore';
 const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnProps): IModalBackdropStateProps => {
   let modals = state.modals;
   if (ownProps.displayFor && ownProps.displayFor.length > 0) {
-    modals = modals.filter(modal => {
-      return _.contains(ownProps.displayFor, modal.id);
-    });
+    modals = modals.filter(modal => _.contains(ownProps.displayFor, modal.id));
   }
 
   return {
-    display: modals.some(modal => {
-      return modal.isOpened;
-    })
+    display: modals.some(modal => modal.isOpened)
   };
 };
 

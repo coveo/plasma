@@ -19,14 +19,12 @@ export const modalReducer = (state: IModalState = modalInitialState,
         isOpened: false
       };
     case ModalAction.closeModal:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
-
-      return {
-        id: state.id,
-        isOpened: false
-      };
+      return state.id !== action.payload.id
+        ? state
+        : {
+          id: state.id,
+          isOpened: false
+        };
     case ModalAction.openModal:
       if (state.id !== action.payload.id) {
         return state;

@@ -7,9 +7,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state: IReactVaporState,
   ownProps: IModalOwnProps): IModalStateProps => {
   return {
-    isOpened: state.modals.some(modal => {
-      return modal.id === ownProps.id && modal.isOpened;
-    })
+    isOpened: state.modals.some(modal => modal.id === ownProps.id && modal.isOpened)
   };
 };
 

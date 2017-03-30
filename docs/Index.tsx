@@ -38,6 +38,7 @@ import { DatesSelectionExamples } from '../src/components/datePicker/examples/Da
 import { DatesSelectionConnectedExamples } from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 
 class App extends React.Component<any, any> {
 
@@ -114,6 +115,7 @@ class App extends React.Component<any, any> {
           <FilterBoxConnectedExamples />
           <FacetExamples />
           <FacetConnectedExamples />
+          <ModalExamples />
           <ModalConnectedExamples />
           <NavigationExamples />
           <NavigationConnectedExamples />
