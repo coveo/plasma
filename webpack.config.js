@@ -67,10 +67,6 @@ module.exports = {
         test: require.resolve('chosen-js'),
         loader: 'imports-loader?jQuery=jquery',
       },
-      {
-        test: require.resolve('bootstrap/js/tooltip.js'),
-        loader: 'imports-loader?jQuery=jquery',
-      },
     ],
   },
   devServer: {
