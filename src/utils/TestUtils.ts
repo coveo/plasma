@@ -14,6 +14,7 @@ import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleRed
 import { optionPickersReducer } from '../components/optionPicker/OptionPickerReducers';
 import { datePickersReducer } from '../components/datePicker/DatePickerReducers';
 import { itemFiltersReducer } from '../components/actions/filters/ItemFilterReducers';
+import { modalsReducer } from '../components/modal/ModalReducers';
 import { subNavigationsReducer } from '../components/subNavigation/SubNavigationReducers';
 import { tabsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
@@ -35,6 +36,7 @@ export class TestUtils {
       optionPickers: optionPickersReducer,
       datePickers: datePickersReducer,
       itemFilters: itemFiltersReducer,
+      modals: modalsReducer,
       subNavigations: subNavigationsReducer,
       tabs: tabsReducer
     });

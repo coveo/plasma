@@ -15,6 +15,7 @@ import { IOptionsCycleState } from './components/optionsCycle/OptionsCycleReduce
 import { IDatePickerState } from './components/datePicker/DatePickerReducers';
 import { IOptionPickerState } from './components/optionPicker/OptionPickerReducers';
 import { IItemFilterState } from './components/actions/filters/ItemFilterReducers';
+import { IModalState } from './components/modal/ModalReducers';
 import { ISubNavigationState } from './components/subNavigation/SubNavigationReducers';
 import { ITabState } from './components/tab/TabReducers';
 
@@ -33,6 +34,7 @@ export interface IReactVaporState {
   datePickers?: IDatePickerState[];
   optionPickers?: IOptionPickerState[];
   itemFilters?: IItemFilterState[];
+  modals?: IModalState[];
   subNavigations?: ISubNavigationState[];
   tabs?: ITabState[];
 }

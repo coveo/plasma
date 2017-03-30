@@ -15,6 +15,7 @@ import { FilterBoxExamples } from '../src/components/filterBox/examples/FilterBo
 import { FilterBoxConnectedExamples } from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
 import { FacetConnectedExamples } from '../src/components/facets/examples/FacetConnectedExamples';
 import { FacetExamples } from '../src/components/facets/examples/FacetExamples';
+import { ModalConnectedExamples } from '../src/components/modal/examples/ModalConnectedExamples';
 import { NavigationExamples } from '../src/components/navigation/examples/NavigationExamples';
 import { NavigationConnectedExamples } from '../src/components/navigation/examples/NavigationConnectedExamples';
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
@@ -37,6 +38,7 @@ import { DatesSelectionExamples } from '../src/components/datePicker/examples/Da
 import { DatesSelectionConnectedExamples } from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
 
 class App extends React.Component<any, any> {
@@ -114,6 +116,8 @@ class App extends React.Component<any, any> {
           <FilterBoxConnectedExamples />
           <FacetExamples />
           <FacetConnectedExamples />
+          <ModalExamples />
+          <ModalConnectedExamples />
           <NavigationExamples />
           <NavigationConnectedExamples />
           <SubNavigationExamples />

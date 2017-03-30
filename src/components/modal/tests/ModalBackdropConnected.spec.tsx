@@ -1,0 +1,113 @@
+import { mount, ReactWrapper } from 'enzyme';
+import { clearState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
+import { TestUtils } from '../../../utils/TestUtils';
+import { Store } from 'redux';
+import { Provider } from 'react-redux';
+import { openModal, addModal } from '../ModalActions';
+// tslint:disable-next-line:no-unused-variable
+import * as React from 'react';
+import { IModalBackdropProps, ModalBackdrop } from '../ModalBackdrop';
+import { ModalBackdropConnected } from '../ModalBackdropConnected';
+
+describe('ModalBackdrop', () => {
+  describe('<ModalBackdropConnected />', () => {
+    let modalBackdrop: ReactWrapper<IModalBackdropProps, any>;
+    let wrapper: ReactWrapper<any, any>;
+    let store: Store<IReactVaporState>;
+    let modal1Id: string;
+
+    beforeEach(() => {
+      modal1Id = 'modal1';
+
+      store = TestUtils.buildStore();
+      store.dispatch(addModal(modal1Id));
+
+      wrapper = mount(
+        <Provider store={store}>
+          <ModalBackdropConnected />
+        </Provider>,
+        { attachTo: document.getElementById('App') }
+      );
+      modalBackdrop = wrapper.find(ModalBackdrop).first();
+    });
+
+    afterEach(() => {
+      store.dispatch(clearState());
+      wrapper.unmount();
+      wrapper.detach();
+    });
+
+    it('should get display false as a prop', () => {
+      let displayProp = modalBackdrop.props().display;
+
+      expect(displayProp).toBeDefined();
+      expect(displayProp).toBe(false);
+    });
+
+    it('should get display true as a prop when modal is opened', () => {
+      store.dispatch(openModal(modal1Id));
+
+      let displayProp = modalBackdrop.props().display;
+
+      expect(displayProp).toBe(true);
+    });
+  });
+
+  describe('<ModalBackdropConnected /> with displayFor', () => {
+    let modalBackdrop: ReactWrapper<IModalBackdropProps, any>;
+    let wrapper: ReactWrapper<any, any>;
+    let store: Store<IReactVaporState>;
+    let modal1Id: string;
+    let modal2Id: string;
+
+    beforeEach(() => {
+      modal1Id = 'modal1';
+      modal2Id = 'modal2';
+
+      store = TestUtils.buildStore();
+      store.dispatch(addModal(modal1Id));
+      store.dispatch(addModal(modal2Id));
+
+      wrapper = mount(
+        <Provider store={store}>
+          <ModalBackdropConnected displayFor={[modal1Id]} />
+        </Provider>,
+        { attachTo: document.getElementById('App') }
+      );
+      modalBackdrop = wrapper.find(ModalBackdrop).first();
+    });
+
+    afterEach(() => {
+      store.dispatch(clearState());
+      wrapper.unmount();
+      wrapper.detach();
+    });
+
+    it('should get display false as a prop', () => {
+      let displayProp = modalBackdrop.props().display;
+
+      expect(displayProp).toBeDefined();
+      expect(displayProp).toBe(false);
+    });
+
+    it('should get display true as a prop when modal displayed for is opened', () => {
+      store.dispatch(openModal(modal1Id));
+
+      expect(store.getState().modals.filter(modal => modal.id === modal1Id)[0].isOpened).toBe(true);
+      let displayProp = modalBackdrop.props().display;
+
+      expect(displayProp).toBe(true);
+    });
+
+    it('should get display false as a prop when modal not displayed for is opened', () => {
+      store.dispatch(openModal(modal2Id));
+
+      expect(store.getState().modals.filter(modal => modal.id === modal1Id)[0].isOpened).toBe(false);
+      expect(store.getState().modals.filter(modal => modal.id === modal2Id)[0].isOpened).toBe(true);
+      let displayProp = modalBackdrop.props().display;
+
+      expect(displayProp).toBe(false);
+    });
+  });
+});
