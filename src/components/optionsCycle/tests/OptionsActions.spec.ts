@@ -1,6 +1,5 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../../ReactVapor';
-import { OptionsCycleActions, addOptionsCycle, changeOptionsCycle, removeOptionsCycle } from '../OptionsCycleActions';
+import { OptionsCycleActions, addOptionsCycle, changeOptionsCycle, removeOptionsCycle, IChangeOptionsCyclePayload, IOptionsCyclePayload } from '../OptionsCycleActions';
 
 describe('Options cycle', () => {
 
@@ -10,7 +9,7 @@ describe('Options cycle', () => {
     const CURRENT_OPTION: number = 3;
 
     it('should create an action to add the options cycle', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.add,
         payload: {
           id: OPTIONS_CYCLE_ID,
@@ -22,7 +21,7 @@ describe('Options cycle', () => {
     });
 
     it('should create an action to change the options cycle', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.change,
         payload: {
           id: OPTIONS_CYCLE_ID,
@@ -34,7 +33,7 @@ describe('Options cycle', () => {
     });
 
     it('should create an action to remove the options cycle', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IOptionsCyclePayload> = {
         type: OptionsCycleActions.remove,
         payload: {
           id: OPTIONS_CYCLE_ID

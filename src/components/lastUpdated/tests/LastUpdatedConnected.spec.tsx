@@ -78,7 +78,7 @@ describe('LastUpdated', () => {
 
       let storedTime = store.getState().lastUpdatedComposite.filter(timer => timer.id === id)[0].time;
       store.dispatch(changeLastUpdated(id));
-      expect(store.getState().lastUpdatedComposite.filter(timer => timer.id === id)[0]).not.toBe(storedTime);
+      expect(store.getState().lastUpdatedComposite.filter(timer => timer.id === id)[0].time).not.toBe(storedTime);
     });
 
     it('should remove the last update time in the store on destroy', () => {

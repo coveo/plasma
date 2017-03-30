@@ -110,10 +110,10 @@ describe('FilterBox', () => {
     it('should focus the filter box input when clicking the clear icon', () => {
       let clearIcon = filterBox.find('span').first();
 
-      expect(filterBoxInstance.filterInput).not.toBe(document.activeElement);
+      expect(filterBoxInstance.filterInput).not.toBe(document.activeElement as HTMLInputElement);
 
       clearIcon.simulate('click');
-      expect(filterBoxInstance.filterInput).toBe(document.activeElement);
+      expect(filterBoxInstance.filterInput).toBe(document.activeElement as HTMLInputElement);
     });
 
     it('should set container class when the container class is specified', () => {

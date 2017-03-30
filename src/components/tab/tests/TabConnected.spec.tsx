@@ -9,6 +9,7 @@ import { TabConnected } from '../TabConnected';
 import { selectTab, addTab } from '../TabActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ITabState } from '../TabReducers';
 
 describe('Tab', () => {
   describe('<TabConnected />', () => {

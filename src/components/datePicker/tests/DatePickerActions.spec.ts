@@ -1,5 +1,4 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../../ReactVapor';
 import {
   DatePickerActions,
   addDatePicker,
@@ -10,6 +9,7 @@ import {
   changeDatePickerUpperLimit, DateLimits, selectDate
 } from '../DatePickerActions';
 import { DEFAULT_DATE_PICKER_COLOR } from '../DatePicker';
+import { IAddDatePickerPayload, IDatePickerPayload, IChangeDatePickerPayload, ISelectDatePickerPayload } from '../DatePickerActions';
 
 describe('Date picker', () => {
 
@@ -21,7 +21,7 @@ describe('Date picker', () => {
     const IS_RANGE: boolean = true;
 
     it('should create an action to add the date picker', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IAddDatePickerPayload> = {
         type: DatePickerActions.add,
         payload: {
           id: DATE_PICKER_ID,
@@ -35,7 +35,7 @@ describe('Date picker', () => {
     });
 
     it('should create an action to add the date picker with default values if the color or the calendar id are not defined', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IAddDatePickerPayload> = {
         type: DatePickerActions.add,
         payload: {
           id: DATE_PICKER_ID,
@@ -49,7 +49,7 @@ describe('Date picker', () => {
     });
 
     it('should create an action to remove the date picker', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.remove,
         payload: {
           id: DATE_PICKER_ID
@@ -60,7 +60,7 @@ describe('Date picker', () => {
     });
 
     it('should create an action to reset the date pickers', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.reset,
         payload: {
           id: DATE_PICKER_ID
@@ -71,7 +71,7 @@ describe('Date picker', () => {
     });
 
     it('should create an action to apply the date picker', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.apply,
         payload: {
           id: DATE_PICKER_ID
@@ -83,7 +83,7 @@ describe('Date picker', () => {
 
     it('should create an action to change the lower limit of the date picker', () => {
       let expectedDate: Date = new Date();
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IChangeDatePickerPayload> = {
         type: DatePickerActions.changeLowerLimit,
         payload: {
           id: DATE_PICKER_ID,
@@ -96,7 +96,7 @@ describe('Date picker', () => {
 
     it('should create an action to change the upper limit of the date picker', () => {
       let expectedDate: Date = new Date();
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<IChangeDatePickerPayload> = {
         type: DatePickerActions.changeUpperLimit,
         payload: {
           id: DATE_PICKER_ID,
@@ -108,7 +108,7 @@ describe('Date picker', () => {
     });
 
     it('should create an action to select a limit of the date picker', () => {
-      let expectedAction: IReduxAction<IReduxActionsPayload> = {
+      let expectedAction: IReduxAction<ISelectDatePickerPayload> = {
         type: DatePickerActions.select,
         payload: {
           id: DATE_PICKER_ID,
