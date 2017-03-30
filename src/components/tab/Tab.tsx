@@ -44,7 +44,7 @@ export class Tab extends React.Component<ITabProps, any> {
     }
 
     return (
-      <div className={classes.join(' ')} onClick={() => { this.select(); }}>
+      <div className={classes.join(' ')} onClick={() => this.select() }>
         {this.props.title}
       </div>
     );

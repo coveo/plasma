@@ -6,9 +6,7 @@ import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
 const mapStateToProps = (state: IReactVaporState,
   ownProps: ITabPaneOwnProps): ITabPaneStateProps => {
   return {
-    isActive: state.tabs.some(tab => {
-      return tab.id === ownProps.id && tab.isSelected;
-    })
+    isActive: state.tabs.some(tab => tab.id === ownProps.id && tab.isSelected)
   };
 };
 
