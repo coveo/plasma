@@ -8,24 +8,16 @@ describe('Tooltip', () => {
   const TOOLTIP_PROPS: ITooltipProps = {
     title: 'My test tooltip!'
   };
+  const TOOLTIP: JSX.Element = <Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>;
 
   describe('<Tooltip />', () => {
     it('should render without error', () => {
-      expect(() => shallow(
-        <Tooltip {...TOOLTIP_PROPS}>
-          Hover me!
-        </Tooltip>
-      )).not.toThrow();
+      expect(() => shallow(TOOLTIP)).not.toThrow();
     });
 
     it('should mount and unmount/detach without error', () => {
       expect(() => {
-        tooltipWrapper = mount(
-          <Tooltip {...TOOLTIP_PROPS}>
-            Hover me!
-          </Tooltip>,
-          { attachTo: document.getElementById('App') }
-        );
+        tooltipWrapper = mount(TOOLTIP, { attachTo: document.getElementById('App') });
       }).not.toThrow();
 
       expect(() => {
@@ -37,12 +29,7 @@ describe('Tooltip', () => {
 
   describe('<Tooltip />', () => {
     beforeEach(() => {
-      tooltipWrapper = mount(
-        <Tooltip {...TOOLTIP_PROPS}>
-          Hover me!
-        </Tooltip>,
-        { attachTo: document.getElementById('App') }
-      );
+      tooltipWrapper = mount(TOOLTIP, { attachTo: document.getElementById('App') });
 
       afterEach(() => {
         tooltipWrapper.unmount();
