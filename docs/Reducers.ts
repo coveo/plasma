@@ -16,6 +16,7 @@ import { optionPickersReducer } from '../src/components/optionPicker/OptionPicke
 import { subNavigationsReducer } from '../src/components/subNavigation/SubNavigationReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
+import { tabsReducer } from '../src/components/tab/TabReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -43,5 +44,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   optionPickers: optionPickersReducer,
   datePickers: datePickersReducer,
   subNavigations: subNavigationsReducer,
+  tabs: tabsReducer,
   lastAction
 });
