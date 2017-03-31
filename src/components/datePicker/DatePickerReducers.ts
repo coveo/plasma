@@ -65,8 +65,8 @@ const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
   return state.id.indexOf(action.payload.id) !== 0
     ? state
     : _.extend({}, state, {
-      appliedLowerLimit: state.lowerLimit,
-      appliedUpperLimit: state.upperLimit >= state.lowerLimit ? state.upperLimit : state.lowerLimit
+      appliedLowerLimit: state.lowerLimit || state.appliedLowerLimit,
+      appliedUpperLimit: (state.upperLimit >= state.lowerLimit ? state.upperLimit : state.lowerLimit) || state.appliedUpperLimit
     });
 };
 
