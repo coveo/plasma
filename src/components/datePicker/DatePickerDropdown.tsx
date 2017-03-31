@@ -153,7 +153,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
       : <DatePickerBox {...datePickerBoxProps} />;
 
-    let dropdownClasses: string[] = ['dropdown-wrapper'];
+    let dropdownClasses: string[] = ['dropdown-wrapper', 'dropdown'];
     if (this.props.isOpened) {
       dropdownClasses.push('open');
     }
