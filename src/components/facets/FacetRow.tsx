@@ -9,11 +9,13 @@ export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
   isChecked: boolean;
 }
 
+export const MAX_NAME_LENGTH: number = 25;
+
 export class FacetRow extends React.Component<IFacetRowProps, any> {
 
   render() {
-    const label: JSX.Element = this.props.facetRow.formattedName.length > 25
-      ? <Tooltip title={this.props.facetRow.formattedName}>{this.props.facetRow.formattedName}</Tooltip>
+    const label: JSX.Element = this.props.facetRow.formattedName.length > MAX_NAME_LENGTH
+      ? <Tooltip title={this.props.facetRow.formattedName} placement='top'>{this.props.facetRow.formattedName}</Tooltip>
       : <span>{this.props.facetRow.formattedName}</span>;
 
     return (

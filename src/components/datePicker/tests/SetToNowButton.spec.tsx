@@ -3,6 +3,7 @@ import { SetToNowButton, ISetToNowProps, SET_TO_NOW_DEFAULT_TOOLTIP } from '../S
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Tooltip } from '../../tooltip/Tooltip';
 
 describe('Date picker', () => {
   const BUTTON_BASIC_PROPS: ISetToNowProps = {
@@ -49,13 +50,13 @@ describe('Date picker', () => {
     });
 
     it('should use the tooltip passed as a prop or the default one', () => {
-      let propsWithTooltip: ISetToNowProps = _.extend({}, BUTTON_BASIC_PROPS, { tooltip: 'We now have a custom tooltip' });
-
-      expect(setToNowButton.html()).toContain(SET_TO_NOW_DEFAULT_TOOLTIP);
+      const propsWithTooltip: ISetToNowProps = _.extend({}, BUTTON_BASIC_PROPS,
+        { tooltip: 'We now have a custom tooltip' });
+      expect(setToNowButton.find(Tooltip).props().title).toBe(SET_TO_NOW_DEFAULT_TOOLTIP);
 
       setToNowButton.setProps(propsWithTooltip);
 
-      expect(setToNowButton.html()).toContain(propsWithTooltip.tooltip);
+      expect(setToNowButton.find(Tooltip).props().title).toBe(propsWithTooltip.tooltip);
     });
 
     it('should call the onClick prop when clicking the button', () => {
