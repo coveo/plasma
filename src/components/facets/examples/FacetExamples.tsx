@@ -14,7 +14,7 @@ export class FacetExamples extends React.Component<any, any> {
         formattedName: 'Row 2'
       }, {
         name: 'row3',
-        formattedName: 'Row 3'
+        formattedName: 'Very very long facet name that will get cut'
       }
     ];
     let selectedFacetRows: IFacet[] = [{
@@ -42,7 +42,7 @@ export class FacetExamples extends React.Component<any, any> {
     let onToggleFacet: (facet: string, facetRow: IFacet) => void = () => { return; };
     let clearFacet: (facet: string) => void = () => { return; };
     return (
-      <div className='mt2' style={{ width: 400 }}>
+      <div className='mt2' style={{ width: 300 }}>
         <div className='form-group'>
           <label className='form-control-label'>Facet</label>
           <Facet facet={facet} facetRows={facetRows} clearFacet={clearFacet} toggleFacet={onToggleFacet} />

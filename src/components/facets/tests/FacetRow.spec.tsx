@@ -1,30 +1,25 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { FacetRow, IFacetRowProps } from '../FacetRow';
+import { FacetRow, IFacetRowProps, MAX_NAME_LENGTH } from '../FacetRow';
 import { IFacet } from '../Facet';
+import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 
 describe('Facets', () => {
-  let facetRow: IFacet = {
-    name: 'row',
-    formattedName: 'Row'
+  const FACET_ROW_PROPS: IFacetRowProps = {
+    facetRow: {
+      name: 'row',
+      formattedName: 'Row'
+    },
+    facet: 'facetTitle',
+    onToggleFacet: jasmine.createSpy('onToggleFacet'),
+    isChecked: false,
   };
-  let facet: string = 'facetTitle';
-  let onToggleFacet: (facetRow: IFacet) => void = jasmine.createSpy('onToggleFacet');
-  let isChecked: boolean = false;
+  const FACET_ROW: JSX.Element = <FacetRow {...FACET_ROW_PROPS} />;
 
   describe('<FacetRow />', () => {
     it('should render without errors', () => {
-      expect(() => {
-        shallow(
-          <FacetRow
-            facetRow={facetRow}
-            facet={facet}
-            onToggleFacet={onToggleFacet}
-            isChecked={isChecked}
-          />
-        );
-      }).not.toThrow();
+      expect(() => shallow(FACET_ROW)).not.toThrow();
     });
   });
 
@@ -32,16 +27,7 @@ describe('Facets', () => {
     let facetRowView: ReactWrapper<IFacetRowProps, any>;
 
     beforeEach(() => {
-
-      facetRowView = mount(
-        <FacetRow
-          facetRow={facetRow}
-          facet={facet}
-          onToggleFacet={onToggleFacet}
-          isChecked={isChecked}
-        />,
-        { attachTo: document.getElementById('App') }
-      );
+      facetRowView = mount(FACET_ROW, { attachTo: document.getElementById('App') });
     });
 
     afterEach(() => {
@@ -53,21 +39,21 @@ describe('Facets', () => {
       let facetRowProp = facetRowView.props().facetRow;
 
       expect(facetRowProp).toBeDefined();
-      expect(facetRowProp).toBe(facetRow);
+      expect(facetRowProp).toBe(FACET_ROW_PROPS.facetRow);
     });
 
     it('should get the facet as a prop', () => {
       let facetProp = facetRowView.props().facet;
 
       expect(facetProp).toBeDefined();
-      expect(facetProp).toBe(facet);
+      expect(facetProp).toBe(FACET_ROW_PROPS.facet);
     });
 
     it('should get the facet as a prop', () => {
       let facetProp = facetRowView.props().facet;
 
       expect(facetProp).toBeDefined();
-      expect(facetProp).toBe(facet);
+      expect(facetProp).toBe(FACET_ROW_PROPS.facet);
     });
 
     it('should get what to do when toggling a row as a prop', () => {
@@ -80,19 +66,33 @@ describe('Facets', () => {
       let checkedProp = facetRowView.props().isChecked;
 
       expect(checkedProp).toBeDefined();
-      expect(checkedProp).toBe(isChecked);
+      expect(checkedProp).toBe(FACET_ROW_PROPS.isChecked);
     });
 
     it('should display the facet row value', () => {
-      expect(facetRowView.html()).toContain(facetRow.formattedName);
+      expect(facetRowView.html()).toContain(FACET_ROW_PROPS.facetRow.formattedName);
     });
 
     it('should should call onToggleFacet on change', () => {
-      expect(onToggleFacet).not.toHaveBeenCalled();
+      expect(FACET_ROW_PROPS.onToggleFacet).not.toHaveBeenCalled();
 
       facetRowView.find('input').simulate('change');
 
-      expect(onToggleFacet).toHaveBeenCalled();
+      expect(FACET_ROW_PROPS.onToggleFacet).toHaveBeenCalled();
+    });
+
+    it('should display a <Tooltip /> if the formatted name is longer than 25', () => {
+      const longerFormattedNameFacetRow: IFacet = {
+        name: 'something',
+        formattedName: new Array(MAX_NAME_LENGTH + 2).join('a')
+      };
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, { facetRow: longerFormattedNameFacetRow });
+
+      expect(facetRowView.find('Tooltip').length).toBe(0);
+
+      facetRowView.setProps(newProps);
+
+      expect(facetRowView.find('Tooltip').length).toBe(1);
     });
   });
 });

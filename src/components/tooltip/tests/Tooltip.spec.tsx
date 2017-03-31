@@ -1,5 +1,6 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { ITooltipProps, Tooltip } from '../Tooltip';
+import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 
