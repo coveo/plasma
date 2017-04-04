@@ -1,5 +1,3 @@
-'use strict';
-
 const del = require('del');
 const dtsGenerator = require('dts-generator');
 const footer = require('gulp-footer');
