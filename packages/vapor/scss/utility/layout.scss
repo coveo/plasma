@@ -68,7 +68,7 @@
   visibility: hidden;
 }
 
-.splitted-layout {
+.split-layout {
   min-height: min-content;
 
   @extend .flex;
@@ -83,6 +83,11 @@
   .column + .column {
     border-left: 1px solid $medium-grey;
   }
+}
+
+.splitted-layout {
+  // Deprecated use .split-layout instead
+  @extend .split-layout;
 }
 
 .normal-height {

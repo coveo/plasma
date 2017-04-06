@@ -37,10 +37,15 @@ $prompt-message-line-height: 20px;
           padding-left: $modal-prompt-horizontal-padding;
         }
 
-        .pompt-message {
+        .prompt-message {
           padding-top: $modal-prompt-text-padding-y;
 
           line-height: $prompt-message-line-height;
+        }
+
+        .pompt-message {
+          // Deprecated use .prompt-message instead
+          @extend .prompt-message;
         }
       }
 
