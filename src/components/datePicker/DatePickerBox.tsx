@@ -95,7 +95,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     return (
       <div className='date-picker-box flex flex-column'>
-        <div className='splitted-layout'>
+        <div className='split-layout'>
           {calendar}
           <div className='date-selection column p2'>
             {datesSelectionBoxes}
