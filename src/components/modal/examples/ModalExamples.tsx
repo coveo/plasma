@@ -1,4 +1,4 @@
-import * as React from 'React';
+import * as React from 'react';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
 import { ModalBackdrop } from '../ModalBackdrop';
