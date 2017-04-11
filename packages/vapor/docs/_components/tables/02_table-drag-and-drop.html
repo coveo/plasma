@@ -156,8 +156,9 @@ stylesheet: '/scss/tables/table.scss'
         if (elementDragged.previousElementSibling === e.currentTarget) {
             table.insertBefore(elementDragged, e.currentTarget);
         } else {
+            const previousElement = e.currentTarget.nextElementSibling;
             table.insertBefore(e.currentTarget, elementDragged);
-            table.insertBefore(elementDragged, e.currentTarget.nextElementSibling);
+            table.insertBefore(elementDragged, previousElement);
         }
     });
 
