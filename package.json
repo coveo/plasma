@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@types/chosen-js": "1.6.0",
-    "@types/enzyme": "2.7.7",
+    "@types/enzyme": "2.7.8",
     "@types/jasmine": "2.5.47",
     "@types/jquery": "2.0.41",
     "@types/react": "15.0.21",
