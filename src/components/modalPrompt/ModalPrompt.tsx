@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Modal} from '../modal/Modal';
-import {ModalBody} from '../modal/ModalBody';
-import {ModalFooter} from '../modal/ModalFooter';
-import {ModalBackdrop} from '../modal/ModalBackdrop';
+import { Modal } from '../modal/Modal';
+import { ModalBody } from '../modal/ModalBody';
+import { ModalFooter } from '../modal/ModalFooter';
+import { ModalBackdrop } from '../modal/ModalBackdrop';
 
 export interface IModalPromptOwnProps {
   id: string;
@@ -69,7 +69,7 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
             <button className='btn mod-small' onClick={() => this.cancel()}>{this.props.cancelLabel}</button>
           </ModalFooter>
         </Modal>
-        <ModalBackdrop display={this.props.isOpened} displayFor={[modalId]} onClick={() => this.cancel()}/>
+        <ModalBackdrop display={this.props.isOpened} displayFor={[modalId]} onClick={() => this.cancel()} />
       </div>
     );
   }

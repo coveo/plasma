@@ -1,11 +1,11 @@
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IModalPromptOwnProps, IModalPromptStateProps, IModalPromptDispatchProps, IModalPromptProps, ModalPrompt } from './ModalPrompt';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import {addModalPrompt, removeModalPrompt, cancelModalPrompt, confirmModalPrompt} from './ModalPromptActions';
+import { addModalPrompt, removeModalPrompt, cancelModalPrompt, confirmModalPrompt } from './ModalPromptActions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state: IReactVaporState,
-                         ownProps: IModalPromptOwnProps): IModalPromptStateProps => {
+  ownProps: IModalPromptOwnProps): IModalPromptStateProps => {
   return {
     isOpened: state.modalPrompts.some(modalPrompt => modalPrompt.id === ownProps.id && modalPrompt.isOpened)
   };

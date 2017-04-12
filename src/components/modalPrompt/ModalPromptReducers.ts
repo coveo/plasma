@@ -12,7 +12,7 @@ export const modalPromptInitialState: IModalPromptState = { id: undefined, isOpe
 export const modalPromptsInitialState: IModalPromptState[] = [];
 
 export const modalPromptReducer = (state: IModalPromptState = modalPromptInitialState,
-                                   action: IReduxAction<IModalPromptActionPayload>): IModalPromptState => {
+  action: IReduxAction<IModalPromptActionPayload>): IModalPromptState => {
   switch (action.type) {
     case ModalPromptAction.addModalPrompt:
       return {
@@ -50,7 +50,7 @@ export const modalPromptReducer = (state: IModalPromptState = modalPromptInitial
 };
 
 export const modalPromptsReducer = (state: IModalPromptState[] = modalPromptsInitialState,
-                                    action: IReduxAction<IModalPromptActionPayload>): IModalPromptState[] => {
+  action: IReduxAction<IModalPromptActionPayload>): IModalPromptState[] => {
   switch (action.type) {
     case ModalPromptAction.addModalPrompt:
       return [

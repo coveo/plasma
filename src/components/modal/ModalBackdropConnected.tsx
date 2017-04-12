@@ -3,7 +3,7 @@ import { IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropProps, 
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
-import {closeModal} from './ModalActions';
+import { closeModal } from './ModalActions';
 
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnProps): IModalBackdropStateProps => {
