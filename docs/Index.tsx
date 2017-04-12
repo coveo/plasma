@@ -40,11 +40,14 @@ import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/exa
 import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
+import { PromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
+import { PromptConnectedExamples } from '../src/components/modalPrompt/exemples/ModalPromptConnectedExamples';
 
 class App extends React.Component<any, any> {
 
   render() {
     return (
+
       <Provider store={ReactVaporStore}>
         <div className='coveo-form'>
           <div className='form-group'>
@@ -118,6 +121,8 @@ class App extends React.Component<any, any> {
           <FacetConnectedExamples />
           <ModalExamples />
           <ModalConnectedExamples />
+          <PromptExamples />
+          <PromptConnectedExamples />
           <NavigationExamples />
           <NavigationConnectedExamples />
           <SubNavigationExamples />

@@ -78,7 +78,7 @@ describe('InlinePrompt', () => {
       expect(onCancelProp).toBeDefined();
     });
 
-    it('should remove the prompt from the store on cancel', () => {
+    it('should remove the modalPrompt from the store on cancel', () => {
       store.dispatch(addPrompt(id, options));
       expect(_.findWhere(store.getState().prompts, { id: id })).toBeDefined();
 

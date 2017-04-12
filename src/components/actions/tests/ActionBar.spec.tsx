@@ -91,7 +91,7 @@ describe('Actions', () => {
       expect(actionBar.find('SecondaryActions').length).toBe(0);
     });
 
-    it('should display an <InlinePrompt /> and no actions if there is a prompt if there is a prompt', () => {
+    it('should display an <InlinePrompt /> and no actions if there is a modalPrompt if there is a modalPrompt', () => {
       let inlinePromptOptions: IInlinePromptOptions = {
         onClick: jasmine.createSpy('onClick'),
         userChoice: {}

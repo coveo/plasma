@@ -3,6 +3,7 @@ import { IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropProps, 
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
+import {closeModal} from './ModalActions';
 
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnProps): IModalBackdropStateProps => {
@@ -16,6 +17,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnPro
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IModalBackdropDispatchProps => ({});
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IModalBackdropDispatchProps => ({
+  onClick: (id: string) => dispatch(closeModal(id))
+});
 
 export const ModalBackdropConnected: React.ComponentClass<IModalBackdropProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalBackdrop);

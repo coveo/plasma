@@ -1,4 +1,4 @@
-import * as React from 'React';
+import * as React from 'react';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
 import { ModalBackdrop } from '../ModalBackdrop';
@@ -38,7 +38,7 @@ export class ModalExamples extends React.Component<any, IModalExamplesState> {
                 <button className='btn' onClick={() => this.closeModal()}>Close</button>
               </ModalFooter>
             </Modal>
-            <ModalBackdrop display={this.state.isOpened} />
+            <ModalBackdrop display={this.state.isOpened} onClick={() => this.closeModal()}/>
           </div>
         </div>
       </div>

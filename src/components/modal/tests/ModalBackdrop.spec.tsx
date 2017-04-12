@@ -48,13 +48,13 @@ describe('ModalBackdrop', () => {
       expect(container.hasClass('closed')).toBe(false);
     });
 
-    it('should set "prompt-backdrop" class when displayFor prop length is higher than 0', () => {
+    it('should set "modalPrompt-backdrop" class when displayFor prop length is higher than 0', () => {
       let container = modalBackdrop.find('div').first();
-      expect(container.hasClass('prompt-backdrop')).toBe(false);
+      expect(container.hasClass('modalPrompt-backdrop')).toBe(false);
 
       modalBackdrop.setProps({ displayFor: ['a-modal'] });
       modalBackdrop.mount();
-      expect(container.hasClass('prompt-backdrop')).toBe(true);
+      expect(container.hasClass('modalPrompt-backdrop')).toBe(true);
     });
   });
 });

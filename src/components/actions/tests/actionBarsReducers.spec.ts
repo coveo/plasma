@@ -67,7 +67,7 @@ describe('Actions', () => {
       expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(1);
     });
 
-    it('should return the old state without the PromptState with the prompt id when the action is "REMOVE_ACTION_BAR', () => {
+    it('should return the old state without the PromptState with the modalPrompt id when the action is "REMOVE_ACTION_BAR', () => {
       let oldState: IActionBarState[] = [
         {
           id: 'some-action-bar2',
@@ -99,7 +99,7 @@ describe('Actions', () => {
       expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
     });
 
-    it('should return the old state when the action is "REMOVE_ACTION_BAR" and the prompt id does not exist', () => {
+    it('should return the old state when the action is "REMOVE_ACTION_BAR" and the modalPrompt id does not exist', () => {
       let oldState: IActionBarState[] = [
         {
           id: 'some-action-bar2',

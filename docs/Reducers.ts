@@ -18,6 +18,7 @@ import { subNavigationsReducer } from '../src/components/subNavigation/SubNaviga
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
 import { tabsReducer } from '../src/components/tab/TabReducers';
+import { modalPromptsReducer } from '../src/components/modalPrompt/ModalPromptReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -37,6 +38,7 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   paginationComposite: paginationCompositeReducer,
   loadings: loadingsReducer,
   prompts: promptsReducer,
+  modalPrompts: modalPromptsReducer,
   actionBars: actionBarsReducer,
   dropdowns: dropdownsReducer,
   rows: tableRowsReducer,
