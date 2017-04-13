@@ -72,7 +72,7 @@ describe('ModalPrompt', () => {
     });
 
     it('should call prop onCancel when modalPrompt x is clicked and prop is set', () => {
-      const cancelSpy = jasmine.createSpy('onClose');
+      const cancelSpy = jasmine.createSpy('onCancel');
       const input = modalPrompt.find('.small-close');
 
       input.simulate('click');
@@ -84,5 +84,52 @@ describe('ModalPrompt', () => {
       expect(cancelSpy.calls.count()).toBe(1);
     });
 
+    it('should call prop onCancel when modalPrompt cancel button is clicked and prop is set', () => {
+      const cancelSpy = jasmine.createSpy('onCancel');
+      const input = modalPrompt.find('.mod-small').not('.mod-primary');
+
+      input.simulate('click');
+      expect(cancelSpy.calls.count()).toBe(0);
+
+      modalPrompt.setProps({ id: id, title: title, onCancel: cancelSpy });
+      modalPrompt.mount();
+      input.simulate('click');
+      expect(cancelSpy.calls.count()).toBe(1);
+    });
+
+    it('should call prop onCancel when modalPrompt backdrop is clicked and prop is set', () => {
+      const cancelSpy = jasmine.createSpy('onCancel');
+      const input = modalPrompt.find('.modal-backdrop');
+
+      input.simulate('click');
+      expect(cancelSpy.calls.count()).toBe(0);
+
+      modalPrompt.setProps({ id: id, title: title, onCancel: cancelSpy });
+      modalPrompt.mount();
+      input.simulate('click');
+      expect(cancelSpy.calls.count()).toBe(1);
+    });
+
+    it('should call prop onConfirm when modalPrompt Confirm button is clicked and prop is set', () => {
+      const confirmSpy = jasmine.createSpy('onConfirm');
+      const input = modalPrompt.find('.mod-primary');
+
+      input.simulate('click');
+      expect(confirmSpy.calls.count()).toBe(0);
+
+      modalPrompt.setProps({ id: id, title: title, onConfirm: confirmSpy });
+      modalPrompt.mount();
+      input.simulate('click');
+      expect(confirmSpy.calls.count()).toBe(1);
+    });
+
+    it('should set opened class on container when isOpened is true', () => {
+      let container = modalPrompt.find('.modal-container');
+      expect(container.hasClass('opened')).toBe(false);
+
+      modalPrompt.setProps({ id, title, isOpened: true });
+      modalPrompt.mount();
+      expect(container.hasClass('opened')).toBe(true);
+    });
   });
 });
