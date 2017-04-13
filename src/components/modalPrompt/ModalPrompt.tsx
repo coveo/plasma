@@ -40,7 +40,7 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
   }
 
   confirm() {
-    if(this.props.onConfirm) {
+    if (this.props.onConfirm) {
       this.props.onConfirm(this.props.id);
     }
   }
