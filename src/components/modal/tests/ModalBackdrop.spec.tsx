@@ -56,5 +56,17 @@ describe('ModalBackdrop', () => {
       modalBackdrop.mount();
       expect(container.hasClass('prompt-backdrop')).toBe(true);
     });
+
+    it('should call onClick on click when onClick prop is set', () => {
+      const clickSpy = jasmine.createSpy('onClick');
+
+      modalBackdrop.simulate('click');
+      expect(clickSpy.calls.count()).toBe(0);
+
+      modalBackdrop.setProps({ onClick: clickSpy });
+      modalBackdrop.mount();
+      modalBackdrop.simulate('click');
+      expect(clickSpy.calls.count()).toBe(1);
+    });
   });
 });

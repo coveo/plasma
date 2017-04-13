@@ -17,6 +17,12 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 
 export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
 
+  click(id: string) {
+    if(this.props.onClick) {
+      this.props.onClick(id)
+    }
+  }
+
   render() {
     let classes = ['modal-backdrop'];
     if (!this.props.display) {
@@ -29,7 +35,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
     }
 
     return (
-      <div className={classes.join(' ')} onClick={() => this.props.onClick(modalId)}></div>
+      <div className={classes.join(' ')} onClick={() => this.click(modalId)}></div>
     );
   };
 }
