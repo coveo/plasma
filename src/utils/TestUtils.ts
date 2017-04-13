@@ -18,6 +18,7 @@ import { modalsReducer } from '../components/modal/ModalReducers';
 import { subNavigationsReducer } from '../components/subNavigation/SubNavigationReducers';
 import { tabsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
+import {modalPromptsReducer} from '../components/modalPrompt/ModalPromptReducers';
 
 export class TestUtils {
   static buildStore() {
@@ -37,6 +38,7 @@ export class TestUtils {
       datePickers: datePickersReducer,
       itemFilters: itemFiltersReducer,
       modals: modalsReducer,
+      modalPrompts: modalPromptsReducer,
       subNavigations: subNavigationsReducer,
       tabs: tabsReducer
     });

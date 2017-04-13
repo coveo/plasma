@@ -18,7 +18,7 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
 
   click(id: string) {
-    if(this.props.onClick) {
+    if (this.props.onClick) {
       this.props.onClick(id)
     }
   }
