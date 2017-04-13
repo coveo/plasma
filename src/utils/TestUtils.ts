@@ -18,7 +18,7 @@ import { modalsReducer } from '../components/modal/ModalReducers';
 import { subNavigationsReducer } from '../components/subNavigation/SubNavigationReducers';
 import { tabsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
-import {modalPromptsReducer} from '../components/modalPrompt/ModalPromptReducers';
+import { modalPromptsReducer } from '../components/modalPrompt/ModalPromptReducers';
 
 export class TestUtils {
   static buildStore() {
