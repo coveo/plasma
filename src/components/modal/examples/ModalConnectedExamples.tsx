@@ -34,7 +34,7 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
           <label className='form-control-label'>Modal Connected</label>
           <div>
             <button className='btn' onClick={() => { this.openModal('modal1'); }}>Open Modal 1</button>
-            <ModalConnected id={'modal1'} title='Simple Modal' classes={['mod-big']}>
+            <ModalConnected id='modal1' title='Simple Modal' classes={['mod-big']}>
               <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
                 Connected modal content
                 <ModalConnected id='modal2' title='Modal 2'>

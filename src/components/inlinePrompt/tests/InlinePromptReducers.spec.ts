@@ -39,7 +39,7 @@ describe('InlinePrompt', () => {
       expect(promptsState).toBe(oldState);
     });
 
-    it('should return the old state when the action is not defined for one modalPrompt', () => {
+    it('should return the old state when the action is not defined for one prompt', () => {
       let oldState: IPromptState = promptInitialState;
       let promptState: IPromptState = promptReducer(oldState, genericAction);
 
@@ -51,7 +51,7 @@ describe('InlinePrompt', () => {
       let action: IReduxAction<IAddPromptActionPayload> = {
         type: PromptActions.add,
         payload: {
-          id: 'some-modalPrompt',
+          id: 'some-prompt',
           options: { userChoice: undefined, onClick: undefined }
         }
       };
@@ -68,13 +68,13 @@ describe('InlinePrompt', () => {
       expect(promptsState.filter(prompt => prompt.id === action.payload.id).length).toBe(1);
     });
 
-    it('should return the old state without the PromptState with the modalPrompt id when the action is "REMOVE_PROMPT', () => {
+    it('should return the old state without the PromptState with the prompt id when the action is "REMOVE_PROMPT', () => {
       let oldState: IPromptState[] = [
         {
           id: 'some-prompt2',
           options: { userChoice: undefined, onClick: undefined }
         }, {
-          id: 'some-modalPrompt',
+          id: 'some-prompt',
           options: { userChoice: undefined, onClick: undefined }
         }, {
           id: 'some-prompt3',
@@ -84,7 +84,7 @@ describe('InlinePrompt', () => {
       let action: IReduxAction<IPromptActionPayload> = {
         type: PromptActions.remove,
         payload: {
-          id: 'some-modalPrompt'
+          id: 'some-prompt'
         }
       };
       let promptsState: IPromptState[] = promptsReducer(oldState, action);
@@ -100,13 +100,13 @@ describe('InlinePrompt', () => {
       expect(promptsState.filter(prompt => prompt.id === action.payload.id).length).toBe(0);
     });
 
-    it('should return the old state when the action is "REMOVE_PROMPT" and the modalPrompt id does not exist', () => {
+    it('should return the old state when the action is "REMOVE_PROMPT" and the prompt id does not exist', () => {
       let oldState: IPromptState[] = [
         {
           id: 'some-prompt2',
           options: { userChoice: undefined, onClick: undefined }
         }, {
-          id: 'some-modalPrompt',
+          id: 'some-prompt',
           options: { userChoice: undefined, onClick: undefined }
         }, {
           id: 'some-prompt3',

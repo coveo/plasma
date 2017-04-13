@@ -66,13 +66,13 @@ describe('Actions', () => {
       expect(onConfirmProp).toBeDefined();
     });
 
-    it('should add a modalPrompt onTriggerConfirm', () => {
+    it('should add a prompt onTriggerConfirm', () => {
       expect(store.getState().prompts.length).toBe(0);
       triggerAction.props().onTriggerConfirm(jasmine.createSpy('onClick'), {}, 'someClass');
       expect(store.getState().prompts.length).toBe(1);
     });
 
-    it('should remove the modalPrompt onConfirm', () => {
+    it('should remove the prompt onConfirm', () => {
       store.dispatch(addPrompt(parentId,
         { onClick: jasmine.createSpy('onClick'), userChoice: {}, isOpened: false, className: 'someClass' }));
       expect(store.getState().prompts.length).toBe(1);

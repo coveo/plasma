@@ -157,7 +157,7 @@ describe('Actions', () => {
       let promptProp = actionBar.props().prompt;
       expect(promptProp).toBeDefined();
 
-      expect(actionBar.find('.modalPrompt-' + expectedClass).length).toBe(1);
+      expect(actionBar.find('.prompt-' + expectedClass).length).toBe(1);
     });
 
     it('should call onClearItemFilter when calling clearItemFilter', () => {

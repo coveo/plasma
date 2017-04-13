@@ -66,11 +66,11 @@ describe('InlinePrompt', () => {
     it('should have the className as a class if defined', () => {
       let newOptions: IInlinePromptOptions = _.extend({}, options, { className: undefined });
 
-      expect(inlinePrompt.find('.modalPrompt-' + options.className).length).toBe(1);
+      expect(inlinePrompt.find('.prompt-' + options.className).length).toBe(1);
 
       inlinePrompt.setProps({ options: newOptions });
-      expect(inlinePrompt.find('.modalPrompt-' + options.className).length).toBe(0);
-      expect(inlinePrompt.find('.modalPrompt-info').length).toBe(1);
+      expect(inlinePrompt.find('.prompt-' + options.className).length).toBe(0);
+      expect(inlinePrompt.find('.prompt-info').length).toBe(1);
     });
 
     it('should have the opened as a class if opened', () => {
@@ -93,7 +93,7 @@ describe('InlinePrompt', () => {
     });
 
     it('should render as many choice buttons as there are choices', () => {
-      expect(inlinePrompt.find('.modalPrompt-action.action').length).toBe(_.size(options.userChoice.choices));
+      expect(inlinePrompt.find('.prompt-action.action').length).toBe(_.size(options.userChoice.choices));
     });
 
     it('should display the description if there is one set in the user choice', () => {
@@ -117,7 +117,7 @@ describe('InlinePrompt', () => {
     });
 
     it('should call the onClick prop when choice is clicked', () => {
-      inlinePrompt.find('.modalPrompt-action').first().simulate('click');
+      inlinePrompt.find('.prompt-action').first().simulate('click');
       expect(onClickSpy.calls.count()).toBe(1);
     });
 

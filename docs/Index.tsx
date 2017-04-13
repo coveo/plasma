@@ -47,7 +47,6 @@ class App extends React.Component<any, any> {
 
   render() {
     return (
-
       <Provider store={ReactVaporStore}>
         <div className='coveo-form'>
           <div className='form-group'>
