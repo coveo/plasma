@@ -14,7 +14,7 @@ describe('InlinePrompt', () => {
     let genericAction: IReduxAction<IPromptActionPayload> = {
       type: 'DO_SOMETHING',
       payload: {
-        id: 'some-modalPrompt'
+        id: 'some-prompt'
       }
     };
 
@@ -25,7 +25,7 @@ describe('InlinePrompt', () => {
       expect(promptsState).toBe(promptsInitialState);
     });
 
-    it('should return the default state if the action is not defined and the state is undefined for one modalPrompt', () => {
+    it('should return the default state if the action is not defined and the state is undefined for one prompt', () => {
       let oldState: IPromptState = undefined;
       let promptState: IPromptState = promptReducer(oldState, genericAction);
 
