@@ -19,7 +19,7 @@ describe('ModalPrompt', () => {
       return state.filter(modalPrompt => modalPrompt.id === id);
     };
 
-    const findOneInState= (state: IModalPromptState[], id: string): IModalPromptState => {
+    const findOneInState = (state: IModalPromptState[], id: string): IModalPromptState => {
       return findInState(state, id)[0];
     };
 
