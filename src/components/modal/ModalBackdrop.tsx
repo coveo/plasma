@@ -18,7 +18,7 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
 
   render() {
-    let classes = [];
+    let classes = ['modal-backdrop'];
     if (!this.props.display) {
       classes.push('closed');
     }
