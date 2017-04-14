@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { Modal } from '../modal/Modal';
-import { ModalBody } from '../modal/ModalBody';
-import { ModalFooter } from '../modal/ModalFooter';
-import { ModalBackdrop } from '../modal/ModalBackdrop';
+import {ModalPromptBody} from './ModalPromptBody';
 
 export interface IModalPromptOwnProps {
   id: string;
   title: string;
   message: string;
-  confirmLabel: string;
-  cancelLabel: string;
+  confirmLabel?: string;
+  cancelLabel?: string;
 }
 
 export interface IModalPromptStateProps {
@@ -27,52 +25,43 @@ export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptSta
 
 export class ModalPrompt extends React.Component<IModalPromptProps, any> {
 
-  componentDidMount() {
-    if (this.props.onRender) {
-      this.props.onRender(this.props.id);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.onDestroy) {
-      this.props.onDestroy(this.props.id);
-    }
-  }
-
-  confirm() {
+  private confirm() {
     if (this.props.onConfirm) {
       this.props.onConfirm(this.props.id);
     }
   }
 
-  cancel() {
+  private cancel() {
     if (this.props.onCancel) {
       this.props.onCancel(this.props.id);
     }
   }
 
-  render() {
-    let classes = ['modal-container', 'mod-prompt'];
-    if (this.props.isOpened) {
-      classes.push('opened');
-    }
-    let modalId = 'modal-prompt-' + this.props.id;
-
+  private getModal(): JSX.Element {
     return (
-      <div>
-        <Modal id={modalId} isOpened={this.props.isOpened} title={this.props.title} classes={['mod-prompt']} headerClasses={['mod-confirmation']} onClose={() => this.cancel()}>
-          <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
-            <div className='prompt-message'>
-              {this.props.message}
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <button className='btn mod-small mod-primary' onClick={() => this.confirm()}>{this.props.confirmLabel}</button>
-            <button className='btn mod-small' onClick={() => this.cancel()}>{this.props.cancelLabel}</button>
-          </ModalFooter>
-        </Modal>
-        <ModalBackdrop display={this.props.isOpened} displayFor={[modalId]} onClick={() => this.cancel()} />
-      </div>
+      <Modal
+        id={this.props.id}
+        isOpened={this.props.isOpened}
+        title={this.props.title}
+        classes={['mod-prompt']}
+        headerClasses={['mod-confirmation']}
+        onClose={() => this.cancel()}>
+        {this.getBody()}
+      </Modal>
     );
+  }
+
+  private getBody(): JSX.Element {
+    return <ModalPromptBody
+        message={this.props.message}
+        cancelLabel={this.props.cancelLabel}
+        onCancel={() => this.cancel()}
+        confirmLabel={this.props.confirmLabel}
+        onConfirm={() => this.confirm()}
+      />;
+  }
+
+  render() {
+    return this.getModal();
   }
 }

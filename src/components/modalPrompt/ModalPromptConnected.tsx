@@ -1,21 +1,66 @@
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { IModalPromptOwnProps, IModalPromptStateProps, IModalPromptDispatchProps, IModalPromptProps, ModalPrompt } from './ModalPrompt';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { addModalPrompt, removeModalPrompt, cancelModalPrompt, confirmModalPrompt } from './ModalPromptActions';
-import { connect } from 'react-redux';
+import * as React from 'react';
+import {ModalPromptBody} from './ModalPromptBody';
+import {ModalConnected} from '../modal/ModalConnected';
 
-const mapStateToProps = (state: IReactVaporState,
-  ownProps: IModalPromptOwnProps): IModalPromptStateProps => {
-  return {
-    isOpened: state.modalPrompts.some(modalPrompt => modalPrompt.id === ownProps.id && modalPrompt.isOpened)
-  };
-};
+export interface IModalPromptOwnProps {
+  id: string;
+  title: string;
+  message: string;
+  confirmLabel?: string;
+  cancelLabel?: string;
+}
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IModalPromptDispatchProps => ({
-  onRender: (id: string) => dispatch(addModalPrompt(id)),
-  onDestroy: (id: string) => dispatch(removeModalPrompt(id)),
-  onCancel: (id: string) => dispatch(cancelModalPrompt(id)),
-  onConfirm: (id: string) => dispatch(confirmModalPrompt(id)),
-});
+export interface IModalPromptStateProps {
+  isOpened?: boolean;
+}
 
-export const ModalPromptConnected: React.ComponentClass<IModalPromptProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalPrompt);
+export interface IModalPromptDispatchProps {
+  onCancel?: (id: string) => void;
+  onDestroy?: (id: string) => void;
+  onRender?: (id: string) => void;
+  onConfirm?: (id: string) => void;
+}
+
+export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptStateProps, IModalPromptDispatchProps { }
+
+export class ModalPromptConnected extends React.Component<IModalPromptProps, any> {
+
+  private confirm() {
+    if (this.props.onConfirm) {
+      this.props.onConfirm(this.props.id);
+    }
+  }
+
+  private cancel() {
+    if (this.props.onCancel) {
+      this.props.onCancel(this.props.id);
+    }
+  }
+
+  private getModal(): JSX.Element {
+    return (
+      <ModalConnected
+        id={this.props.id}
+        title={this.props.title}
+        classes={['mod-prompt']}
+        headerClasses={['mod-confirmation']}
+        onClose={() => this.cancel()}>
+        {this.getBody()}
+      </ModalConnected>
+    );
+  }
+
+  private getBody(): JSX.Element {
+    return <ModalPromptBody
+      message={this.props.message}
+      cancelLabel={this.props.cancelLabel}
+      onCancel={() => this.cancel()}
+      confirmLabel={this.props.confirmLabel}
+      onConfirm={() => this.confirm()}
+    />;
+  }
+
+  render() {
+    return this.getModal();
+  }
+}

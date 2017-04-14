@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ModalPrompt } from '../ModalPrompt';
+import { ModalBackdrop } from '../../modal/ModalBackdrop';
 
 export interface IPromptExamplesState {
   isOpened: boolean;
@@ -22,6 +23,7 @@ export class PromptExamples extends React.Component<any, IPromptExamplesState> {
 
   confirm() {
     this.setState({ isOpened: false });
+    alert('Confirmed');
   }
 
   render() {
@@ -44,6 +46,11 @@ export class PromptExamples extends React.Component<any, IPromptExamplesState> {
               onCancel={() => this.cancel()}
               onConfirm={() => this.confirm()}
               cancelLabel='Cancel'
+            />
+            <ModalBackdrop
+              display={this.state.isOpened}
+              displayFor={['prompt-confirmation']}
+              onClick={() => this.cancel()}
             />
           </div>
         </div>
