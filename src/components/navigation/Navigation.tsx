@@ -47,7 +47,7 @@ export class Navigation extends React.Component<INavigationProps, any> {
       hidePages: this.props.hidePages || !this.props.totalPages || this.props.totalPages === 1
     };
     const pagination: JSX.Element = this.props.withReduxState
-      ? <NavigationPaginationConnected id={'pagination-' + this.props.id} loadingIds={this.props.loadingIds} {...paginationProps} />
+      ? <NavigationPaginationConnected id={`pagination-${this.props.id}`} loadingIds={this.props.loadingIds} {...paginationProps} />
       : <NavigationPagination currentPage={this.props.currentPage} onPageClick={this.props.onPageClick} {...paginationProps} />;
     const paginationClass: string = this.props.totalPages > 1 ? '' : 'hidden';
 
@@ -64,8 +64,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
       : <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;
     const perPageClass = this.props.perPageNumbers.length && this.props.totalEntries > this.props.perPageNumbers[0] ? '' : 'hidden';
 
-    let navigationClasses: string = 'pagination-container' + (this.props.isLoading ? ' loading-view' : '');
-    let loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={'loading-' + this.props.id} /> : <Loading />;
+    let navigationClasses: string = `pagination-container${this.props.isLoading ? ' loading-view' : ''}`;
+    let loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={`loading-${this.props.id}`} /> : <Loading />;
 
     return (
       <div className={navigationClasses}>
