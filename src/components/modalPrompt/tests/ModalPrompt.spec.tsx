@@ -39,7 +39,7 @@ describe('ModalPrompt', () => {
           title={title}
           message={message}
         />,
-        {attachTo: document.getElementById('App')}
+        { attachTo: document.getElementById('App') }
       );
       modalPromptInstance = modalPrompt.instance() as ModalPrompt;
     });

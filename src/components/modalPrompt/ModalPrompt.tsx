@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Modal } from '../modal/Modal';
-import {ModalFooter} from '../modal/ModalFooter';
-import {ModalBody} from '../modal/ModalBody';
+import { ModalFooter } from '../modal/ModalFooter';
+import { ModalBody } from '../modal/ModalBody';
 
 export interface IModalPromptOwnProps {
   id: string;
@@ -47,23 +47,23 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
         classes={['mod-prompt']}
         headerClasses={['mod-confirmation']}
         onClose={() => this.cancel()}>
-          <ModalBody classes={['mod-header-padding', 'mod-form-top-bottom-padding']}>
-            <div className='prompt-message'>
-              {this.props.message}
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <button
-              className='btn mod-small mod-primary js-confirm'
-              onClick={() => this.confirm()}>
-              {this.props.confirmLabel || 'Confirm'}
-            </button>
-            <button
-              className='btn mod-small js-cancel'
-              onClick={() => this.cancel()}>
-              {this.props.cancelLabel || 'Cancel'}
-            </button>
-          </ModalFooter>
-    </Modal>);
+        <ModalBody classes={['mod-header-padding', 'mod-form-top-bottom-padding']}>
+          <div className='prompt-message'>
+            {this.props.message}
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <button
+            className='btn mod-small mod-primary js-confirm'
+            onClick={() => this.confirm()}>
+            {this.props.confirmLabel || 'Confirm'}
+          </button>
+          <button
+            className='btn mod-small js-cancel'
+            onClick={() => this.cancel()}>
+            {this.props.cancelLabel || 'Cancel'}
+          </button>
+        </ModalFooter>
+      </Modal>);
   }
 }
