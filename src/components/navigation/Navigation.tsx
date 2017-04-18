@@ -34,48 +34,50 @@ export interface INavigationStateProps extends IReduxStatePossibleProps {
 export interface INavigationProps extends INavigationOwnProps, INavigationChildrenProps, INavigationStateProps { }
 
 export class Navigation extends React.Component<INavigationProps, any> {
+  static defaultProps: Partial<INavigationProps> = {
+    perPageNumbers: PER_PAGE_NUMBERS,
+  };
 
   render() {
-    let pagination: JSX.Element = null;
-    if (this.props.totalPages > 1) {
-      let paginationProps: INavigationPaginationProps = {
-        totalPages: this.props.totalPages,
-        numberOfPagesToShow: this.props.numberOfPagesToShow,
-        previousLabel: this.props.previousLabel,
-        nextLabel: this.props.nextLabel,
-        hidePages: this.props.hidePages
-      };
-      pagination = this.props.withReduxState ?
-        <NavigationPaginationConnected id={'pagination-' + this.props.id} loadingIds={this.props.loadingIds} {...paginationProps} /> :
-        <NavigationPagination currentPage={this.props.currentPage} onPageClick={this.props.onPageClick} {...paginationProps} />;
-    }
+    const paginationProps: INavigationPaginationProps = {
+      totalPages: this.props.totalPages,
+      numberOfPagesToShow: this.props.numberOfPagesToShow,
+      previousLabel: this.props.previousLabel,
+      nextLabel: this.props.nextLabel,
+      hidePages: this.props.hidePages || !this.props.totalPages || this.props.totalPages === 1
+    };
+    const pagination: JSX.Element = this.props.withReduxState
+      ? <NavigationPaginationConnected id={`pagination-${this.props.id}`} loadingIds={this.props.loadingIds} {...paginationProps} />
+      : <NavigationPagination currentPage={this.props.currentPage} onPageClick={this.props.onPageClick} {...paginationProps} />;
+    const paginationClass: string = this.props.totalPages > 1 ? '' : 'hidden';
 
-    let perPage: JSX.Element = null;
-    let perPageNumbers: number[] = (this.props.perPageNumbers || PER_PAGE_NUMBERS);
-    if (perPageNumbers.length && this.props.totalEntries > perPageNumbers[0]) {
-      let perPageProps: INavigationPerPageProps = {
-        label: this.props.perPageLabel,
-        perPageNumbers: this.props.perPageNumbers,
-        totalEntries: this.props.totalEntries
-      };
-      if (this.props.currentPerPage) {
-        perPageProps.currentPerPage = this.props.currentPerPage;
-      }
-      perPage = this.props.withReduxState ?
-        <NavigationPerPageConnected id={this.props.id} loadingIds={this.props.loadingIds} {...perPageProps} /> :
-        <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;
+    const perPageProps: INavigationPerPageProps = {
+      label: this.props.perPageLabel,
+      perPageNumbers: this.props.perPageNumbers,
+      totalEntries: this.props.totalEntries
+    };
+    if (this.props.currentPerPage) {
+      perPageProps.currentPerPage = this.props.currentPerPage;
     }
+    const perPage: JSX.Element = this.props.withReduxState
+      ? <NavigationPerPageConnected id={this.props.id} loadingIds={this.props.loadingIds} {...perPageProps} />
+      : <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;
+    const perPageClass = this.props.perPageNumbers.length && this.props.totalEntries > this.props.perPageNumbers[0] ? '' : 'hidden';
 
-    let navigationClasses: string = 'pagination-container' + (this.props.isLoading ? ' loading-view' : '');
-    let loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={'loading-' + this.props.id} /> : <Loading />;
+    const navigationClasses: string = `pagination-container${this.props.isLoading ? ' loading-view' : ''}`;
+    const loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={`loading-${this.props.id}`} /> : <Loading />;
 
     return (
       <div className={navigationClasses}>
-        {perPage}
+        <div className={perPageClass}>
+          {perPage}
+        </div>
         <div className='flex-auto'>
           {loading}
         </div>
-        {pagination}
+        <div className={paginationClass}>
+          {pagination}
+        </div>
       </div>
     );
   }
