@@ -64,8 +64,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
       : <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;
     const perPageClass = this.props.perPageNumbers.length && this.props.totalEntries > this.props.perPageNumbers[0] ? '' : 'hidden';
 
-    let navigationClasses: string = `pagination-container${this.props.isLoading ? ' loading-view' : ''}`;
-    let loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={`loading-${this.props.id}`} /> : <Loading />;
+    const navigationClasses: string = `pagination-container${this.props.isLoading ? ' loading-view' : ''}`;
+    const loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={`loading-${this.props.id}`} /> : <Loading />;
 
     return (
       <div className={navigationClasses}>
