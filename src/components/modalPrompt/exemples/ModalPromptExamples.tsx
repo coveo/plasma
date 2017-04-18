@@ -6,7 +6,7 @@ export interface IPromptExamplesState {
   isOpened: boolean;
 }
 
-export class PromptExamples extends React.Component<any, IPromptExamplesState> {
+export class ModalPromptExamples extends React.Component<any, IPromptExamplesState> {
 
   constructor(props: any) {
     super(props);
@@ -49,7 +49,6 @@ export class PromptExamples extends React.Component<any, IPromptExamplesState> {
             />
             <ModalBackdrop
               display={this.state.isOpened}
-              displayFor={['prompt-confirmation']}
               onClick={() => this.cancel()}
             />
           </div>

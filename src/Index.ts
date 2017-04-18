@@ -39,17 +39,7 @@ import {
   openModal,
   closeModal
 } from './components/modal/ModalActions';
-
 import { ModalPrompt } from './components/modalPrompt/ModalPrompt';
-import { ModalPromptConnected } from './components/modalPrompt/ModalPromptConnected';
-import { modalPromptsReducer } from './components/modalPrompt/ModalPromptReducers';
-import {
-  ModalPromptAction,
-  addModalPrompt,
-  removeModalPrompt,
-  openModalPrompt,
-  cancelModalPrompt
-} from './components/modalPrompt/ModalPromptActions';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
 import { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
@@ -194,13 +184,6 @@ export {
 
   // ModalPrompt
   ModalPrompt,
-  ModalPromptConnected,
-  ModalPromptAction,
-  modalPromptsReducer,
-  addModalPrompt,
-  removeModalPrompt,
-  openModalPrompt,
-  cancelModalPrompt,
 
   // Navigation
   Navigation,

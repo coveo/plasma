@@ -1,14 +1,16 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface IModalActionPayload {
-  id: string;
+  id?: string;
+  ids?: string[];
 }
 
 export const ModalAction = {
   closeModal: 'CLOSE_MODAL',
   openModal: 'OPEN_MODAL',
   addModal: 'ADD_MODAL',
-  removeModal: 'REMOVE_MODAL'
+  removeModal: 'REMOVE_MODAL',
+  closeModals: 'CLOSE_MODALS'
 };
 
 export const closeModal = (id: string): IReduxAction<IModalActionPayload> => ({
@@ -36,5 +38,12 @@ export const removeModal = (id: string): IReduxAction<IModalActionPayload> => ({
   type: ModalAction.removeModal,
   payload: {
     id
+  }
+});
+
+export const closeModals = (ids: string[]): IReduxAction<IModalActionPayload> => ({
+  type: ModalAction.closeModals,
+  payload: {
+    ids
   }
 });

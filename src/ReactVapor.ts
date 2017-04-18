@@ -18,7 +18,6 @@ import { IItemFilterState } from './components/actions/filters/ItemFilterReducer
 import { IModalState } from './components/modal/ModalReducers';
 import { ISubNavigationState } from './components/subNavigation/SubNavigationReducers';
 import { ITabState } from './components/tab/TabReducers';
-import { IModalPromptState } from './components/modalPrompt/ModalPromptReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -28,7 +27,6 @@ export interface IReactVaporState {
   paginationComposite?: IPaginationState[];
   loadings?: ILoadingState[];
   prompts?: IPromptState[];
-  modalPrompts?: IModalPromptState[];
   actionBars?: IActionBarState[];
   dropdowns?: IDropdownState[];
   rows?: ITableRowState[];

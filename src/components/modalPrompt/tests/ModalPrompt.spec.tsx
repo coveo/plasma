@@ -27,6 +27,42 @@ describe('ModalPrompt', () => {
   });
 
   describe('<ModalPrompt />', () => {
+    const defaultConfirmLabel: string = 'Confirm';
+    const defaultCancelLabel: string = 'Cancel';
+    let modalPrompt: ReactWrapper<IModalPromptProps, any>;
+    let modalPromptInstance: ModalPrompt;
+
+    beforeEach(() => {
+      modalPrompt = mount(
+        <ModalPrompt
+          id={id}
+          title={title}
+          message={message}
+        />,
+        {attachTo: document.getElementById('App')}
+      );
+      modalPromptInstance = modalPrompt.instance() as ModalPrompt;
+    });
+
+    afterEach(() => {
+      modalPrompt.unmount();
+      modalPrompt.detach();
+    });
+
+    it('should set default value for cancel label when not set', () => {
+      const cancelButton = modalPrompt.find('.js-cancel');
+
+      expect(cancelButton.text()).toBe(defaultCancelLabel);
+    });
+
+    it('should set default value for confirm label when not set', () => {
+      const confirmButton = modalPrompt.find('.js-confirm');
+
+      expect(confirmButton.text()).toBe(defaultConfirmLabel);
+    });
+  });
+
+  describe('<ModalPrompt />', () => {
     let modalPrompt: ReactWrapper<IModalPromptProps, any>;
     let modalPromptInstance: ModalPrompt;
 
@@ -49,87 +85,85 @@ describe('ModalPrompt', () => {
       modalPrompt.detach();
     });
 
-    it('should call prop onRender on mounting if set', () => {
-      const renderSpy = jasmine.createSpy('onRender');
-
-      expect(() => modalPromptInstance.componentDidMount()).not.toThrow();
-
-      modalPrompt.setProps({ id: id, title: title, onRender: renderSpy });
-      modalPrompt.unmount();
-      modalPrompt.mount();
-      expect(renderSpy.calls.count()).toBe(1);
-    });
-
-    it('should call prop onDestroy on unmounting if set', () => {
-      const destroySpy = jasmine.createSpy('onDestroy');
-
-      expect(() => modalPromptInstance.componentWillUnmount()).not.toThrow();
-
-      modalPrompt.setProps({ id: id, title: title, onDestroy: destroySpy });
-      modalPrompt.mount();
-      modalPrompt.unmount();
-      expect(destroySpy.calls.count()).toBe(1);
-    });
-
     it('should call prop onCancel when modalPrompt x is clicked and prop is set', () => {
       const cancelSpy = jasmine.createSpy('onCancel');
-      const input = modalPrompt.find('.small-close');
+      const closeButton = modalPrompt.find('.small-close');
 
-      input.simulate('click');
-      expect(cancelSpy.calls.count()).toBe(0);
+      closeButton.simulate('click');
+      expect(cancelSpy).not.toHaveBeenCalled();
 
-      modalPrompt.setProps({ id: id, title: title, onCancel: cancelSpy });
+      modalPrompt.setProps({ id, title, onCancel: cancelSpy });
       modalPrompt.mount();
-      input.simulate('click');
-      expect(cancelSpy.calls.count()).toBe(1);
+      closeButton.simulate('click');
+
+      expect(cancelSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call prop onCancel when modalPrompt cancel button is clicked and prop is set', () => {
       const cancelSpy = jasmine.createSpy('onCancel');
-      const input = modalPrompt.find('.mod-small').not('.mod-primary');
+      const cancelButton = modalPrompt.find('.js-cancel');
 
-      input.simulate('click');
-      expect(cancelSpy.calls.count()).toBe(0);
+      cancelButton.simulate('click');
+      expect(cancelSpy).not.toHaveBeenCalled();
 
-      modalPrompt.setProps({ id: id, title: title, onCancel: cancelSpy });
+      modalPrompt.setProps({ id, title, onCancel: cancelSpy });
       modalPrompt.mount();
-      input.simulate('click');
-      expect(cancelSpy.calls.count()).toBe(1);
-    });
+      cancelButton.simulate('click');
 
-    it('should call prop onCancel when modalPrompt backdrop is clicked and prop is set', () => {
-      const cancelSpy = jasmine.createSpy('onCancel');
-      const input = modalPrompt.find('.modal-backdrop');
-
-      input.simulate('click');
-      expect(cancelSpy.calls.count()).toBe(0);
-
-      modalPrompt.setProps({ id: id, title: title, onCancel: cancelSpy });
-      modalPrompt.mount();
-      input.simulate('click');
-      expect(cancelSpy.calls.count()).toBe(1);
+      expect(cancelSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call prop onConfirm when modalPrompt Confirm button is clicked and prop is set', () => {
       const confirmSpy = jasmine.createSpy('onConfirm');
-      const input = modalPrompt.find('.mod-primary');
+      const confirmButton = modalPrompt.find('.js-confirm');
 
-      input.simulate('click');
-      expect(confirmSpy.calls.count()).toBe(0);
+      confirmButton.simulate('click');
 
-      modalPrompt.setProps({ id: id, title: title, onConfirm: confirmSpy });
+      expect(confirmSpy).not.toHaveBeenCalled();
+
+      modalPrompt.setProps({ id, title, onConfirm: confirmSpy });
       modalPrompt.mount();
-      input.simulate('click');
-      expect(confirmSpy.calls.count()).toBe(1);
+      confirmButton.simulate('click');
+
+      expect(confirmSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should set opened class on container when isOpened is true', () => {
-      let container = modalPrompt.find('.modal-container');
+      const container = modalPrompt.find('.modal-container');
       expect(container.hasClass('opened')).toBe(false);
 
       modalPrompt.setProps({ id, title, isOpened: true });
       modalPrompt.mount();
+
       expect(container.hasClass('opened')).toBe(true);
+    });
+
+    it('should call prop onCancel when concreteModalPrompt cancel button is clicked and prop is set', () => {
+      const cancelSpy = jasmine.createSpy('onCancel');
+      const cancelButton = modalPrompt.find('.js-cancel');
+
+      cancelButton.simulate('click');
+      expect(cancelSpy).not.toHaveBeenCalled();
+
+      modalPrompt.setProps({ id, title, onCancel: cancelSpy });
+      modalPrompt.mount();
+      cancelButton.simulate('click');
+
+      expect(cancelSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call prop onConfirm when modalPrompt Confirm button is clicked and prop is set', () => {
+      const confirmSpy = jasmine.createSpy('onConfirm');
+      const confirmButton = modalPrompt.find('.js-confirm');
+
+      confirmButton.simulate('click');
+      expect(confirmSpy).not.toHaveBeenCalled();
+
+      modalPrompt.setProps({ id, title, onConfirm: confirmSpy });
+      modalPrompt.mount();
+      confirmButton.simulate('click');
+
+      expect(confirmSpy).toHaveBeenCalledTimes(1);
     });
   });
 });
