@@ -59,19 +59,19 @@ describe(' navigation', () => {
     it('should render a <NavigationPagination /> component if totalPages is higher than 1', () => {
       let newNavigationProps = _.extend({}, basicNavigationProps, { totalPages: 1 });
 
-      expect(navigation.find(NavigationPagination).length).toBe(1);
+      expect(navigation.find(NavigationPagination).closest('div').hasClass('hidden')).toBe(false);
 
       navigation.setProps(newNavigationProps);
-      expect(navigation.find(NavigationPagination).length).toBe(0);
+      expect(navigation.find(NavigationPagination).closest('div').hasClass('hidden')).toBe(true);
     });
 
     it('should render a <NavigationPerPage /> component if totalEntries is higher than the first perPageNumber', () => {
       let newNavigationProps = _.extend({}, basicNavigationProps, { totalEntries: PER_PAGE_NUMBERS[0] });
 
-      expect(navigation.find(NavigationPerPage).length).toBe(1);
+      expect(navigation.find(NavigationPerPage).closest('div').hasClass('hidden')).toBe(false);
 
       navigation.setProps(newNavigationProps);
-      expect(navigation.find(NavigationPerPage).length).toBe(0);
+      expect(navigation.find(NavigationPerPage).closest('div').hasClass('hidden')).toBe(true);
     });
 
     it('should pass on the currentPerPage prop if it is set (used without Redux)', () => {
