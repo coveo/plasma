@@ -56,7 +56,7 @@
     "@types/react": "15.0.21",
     "@types/react-bootstrap": "0.0.47",
     "@types/react-dom": "0.14.23",
-    "@types/react-redux": "4.4.38",
+    "@types/react-redux": "4.4.39",
     "@types/tether": "1.4.1",
     "@types/underscore": "1.8.0",
     "@types/underscore.string": "0.0.30",
