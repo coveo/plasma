@@ -63,6 +63,10 @@ export class Facet extends React.Component<IFacetProps, any> {
     }
   }
 
+  private sortFacetRows(facetRows: IFacet[]) {
+    return _.sortBy(facetRows, (facetRow: IFacet) => facetRow.formattedName.toLowerCase());
+  }
+
   componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender(this.props.facet.name);
@@ -77,7 +81,9 @@ export class Facet extends React.Component<IFacetProps, any> {
 
   render() {
     const removeSelectedClass: string = 'facet-header-eraser' + (this.props.selectedFacetRows.length ? '' : ' hidden');
-    const allRows: IFacet[] = _.union(this.props.selectedFacetRows, this.props.facetRows);
+    const selected: IFacet[] = this.sortFacetRows(this.props.selectedFacetRows);
+    const unselected: IFacet[] = this.sortFacetRows(this.props.facetRows);
+    const allRows: IFacet[] = _.union(selected, unselected);
     const facetRows: IFacet[] = _.uniq(allRows, false, item => item.name);
     const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
       return (<FacetRow
