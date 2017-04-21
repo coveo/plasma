@@ -17,11 +17,11 @@ export class ModalPromptExamples extends React.Component<any, IPromptExamplesSta
     this.setState({ isOpened: true });
   }
 
-  cancel() {
+  private cancel() {
     this.setState({ isOpened: false });
   }
 
-  confirm() {
+  private confirm() {
     this.setState({ isOpened: false });
     alert('Confirmed');
   }

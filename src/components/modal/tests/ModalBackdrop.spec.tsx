@@ -61,12 +61,12 @@ describe('ModalBackdrop', () => {
       const clickSpy = jasmine.createSpy('onClick');
 
       modalBackdrop.simulate('click');
-      expect(clickSpy.calls.count()).toBe(0);
+      expect(clickSpy).not.toHaveBeenCalled();
 
       modalBackdrop.setProps({ onClick: clickSpy });
       modalBackdrop.mount();
       modalBackdrop.simulate('click');
-      expect(clickSpy.calls.count()).toBe(1);
+      expect(clickSpy).toHaveBeenCalledTimes(1);
     });
   });
 });
