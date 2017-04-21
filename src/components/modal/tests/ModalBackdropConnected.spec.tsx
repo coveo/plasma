@@ -110,7 +110,7 @@ describe('ModalBackdrop', () => {
       expect(displayProp).toBe(false);
     });
 
-    it('should call onClick when we click on it', () => {
+    it('should call onClick when clicked', () => {
       store.dispatch(openModal(modal1Id));
       expect(store.getState().modals.filter(modal => modal.id === modal1Id && modal.isOpened).length).toBe(1);
 

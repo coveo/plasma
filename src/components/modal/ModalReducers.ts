@@ -33,8 +33,7 @@ export const modalReducer = (state: IModalState = modalInitialState,
           isOpened: true
         };
     case ModalAction.closeModals:
-      console.log(action, state.id);
-      return action.payload.ids && !_.contains(action.payload.ids, state.id)
+      return action.payload.ids && action.payload.ids.length !== 0 && !_.contains(action.payload.ids, state.id)
         ? state
         : {
           ...state,

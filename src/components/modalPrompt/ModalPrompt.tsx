@@ -19,7 +19,7 @@ export interface IModalPromptDispatchProps {
   onCancel?: (id: string) => void;
   onDestroy?: (id: string) => void;
   onRender?: (id: string) => void;
-  onConfirm?: (id: string) => void;
+  onConfirm: (id: string) => void;
 }
 
 export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptStateProps, IModalPromptDispatchProps { }
