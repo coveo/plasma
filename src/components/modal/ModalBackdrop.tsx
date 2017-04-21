@@ -9,12 +9,19 @@ export interface IModalBackdropStateProps {
 }
 
 export interface IModalBackdropDispatchProps {
+  onClick?: (id?: string) => void;
 }
 
 export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {
 }
 
 export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
+
+  handleClick() {
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
+  }
 
   render() {
     let classes = ['modal-backdrop'];
@@ -26,7 +33,9 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
     }
 
     return (
-      <div className={classes.join(' ')}></div>
+      <div className={classes.join(' ')} onClick={() => this.handleClick()}>
+        <div className='mask'></div>
+      </div>
     );
   };
 }

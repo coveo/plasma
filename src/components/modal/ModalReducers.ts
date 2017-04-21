@@ -22,18 +22,24 @@ export const modalReducer = (state: IModalState = modalInitialState,
       return state.id !== action.payload.id
         ? state
         : {
-          id: state.id,
+          ...state,
           isOpened: false
         };
     case ModalAction.openModal:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
+      return state.id !== action.payload.id
+        ? state
+        : {
+          ...state,
+          isOpened: true
+        };
+    case ModalAction.closeModals:
+      return action.payload.ids && action.payload.ids.length !== 0 && !_.contains(action.payload.ids, state.id)
+        ? state
+        : {
+          ...state,
+          isOpened: false
+        };
 
-      return {
-        id: state.id,
-        isOpened: true
-      };
     default:
       return state;
   }
@@ -51,6 +57,7 @@ export const modalsReducer = (state: IModalState[] = modalsInitialState,
       return _.reject(state, (modal: IModalState) => {
         return action.payload.id === modal.id;
       });
+    case ModalAction.closeModals:
     case ModalAction.closeModal:
     case ModalAction.openModal:
       return state.map((modal: IModalState) => modalReducer(modal, action));

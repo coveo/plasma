@@ -40,6 +40,7 @@ import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/exa
 import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
+import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
 
 class App extends React.Component<any, any> {
 
@@ -118,6 +119,7 @@ class App extends React.Component<any, any> {
           <FacetConnectedExamples />
           <ModalExamples />
           <ModalConnectedExamples />
+          <ModalPromptExamples />
           <NavigationExamples />
           <NavigationConnectedExamples />
           <SubNavigationExamples />

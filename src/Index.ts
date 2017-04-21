@@ -39,6 +39,7 @@ import {
   openModal,
   closeModal
 } from './components/modal/ModalActions';
+import { ModalPrompt } from './components/modalPrompt/ModalPrompt';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
 import { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
@@ -180,6 +181,9 @@ export {
   removeModal,
   openModal,
   closeModal,
+
+  // ModalPrompt
+  ModalPrompt,
 
   // Navigation
   Navigation,
