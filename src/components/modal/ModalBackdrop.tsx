@@ -2,7 +2,6 @@ import * as React from 'react';
 
 export interface IModalBackdropOwnProps {
   displayFor?: string[];
-  onClick?: (id?: string) => void;
 }
 
 export interface IModalBackdropStateProps {
@@ -10,6 +9,7 @@ export interface IModalBackdropStateProps {
 }
 
 export interface IModalBackdropDispatchProps {
+  onClick?: (id?: string) => void;
 }
 
 export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {

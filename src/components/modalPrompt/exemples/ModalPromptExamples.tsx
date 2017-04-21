@@ -8,8 +8,7 @@ export interface IPromptExamplesState {
 
 export class ModalPromptExamples extends React.Component<any, IPromptExamplesState> {
 
-  constructor(props: any) {
-    super(props);
+  componentWillMount() {
     this.state = { isOpened: false };
   }
 

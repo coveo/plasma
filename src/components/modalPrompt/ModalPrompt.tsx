@@ -22,9 +22,17 @@ export interface IModalPromptDispatchProps {
   onConfirm: (id: string) => void;
 }
 
+export const DEFAULT_MODAL_PROMPT_CONFIRM_LABEL: string = 'Confirm';
+export const DEFAULT_MODAL_PROMPT_CANCEL_LABEL: string = 'Cancel';
+
 export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptStateProps, IModalPromptDispatchProps { }
 
 export class ModalPrompt extends React.Component<IModalPromptProps, any> {
+
+  static defaultProps: Partial<IModalPromptProps> = {
+    cancelLabel: DEFAULT_MODAL_PROMPT_CANCEL_LABEL,
+    confirmLabel: DEFAULT_MODAL_PROMPT_CONFIRM_LABEL,
+  };
 
   private confirm() {
     if (this.props.onConfirm) {
@@ -56,12 +64,12 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
           <button
             className='btn mod-small mod-primary js-confirm'
             onClick={() => this.confirm()}>
-            {this.props.confirmLabel || 'Confirm'}
+            {this.props.confirmLabel}
           </button>
           <button
             className='btn mod-small js-cancel'
             onClick={() => this.cancel()}>
-            {this.props.cancelLabel || 'Cancel'}
+            {this.props.cancelLabel}
           </button>
         </ModalFooter>
       </Modal>);
