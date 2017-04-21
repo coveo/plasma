@@ -3,6 +3,7 @@ import { IFacet, Facet, IFacetProps } from '../Facet';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { FacetRow } from '../FacetRow';
 
 describe('Facets', () => {
   let facetRows: IFacet[] = [];
@@ -249,6 +250,43 @@ describe('Facets', () => {
       facetComponent.mount();
       callClearCategoryFacet();
       expect(onClearFacetSpy).toHaveBeenCalled();
+    });
+
+    it('should sort the rows alphabetically (selected first)', () => {
+      let unselected: IFacet[] = [
+        {
+          name: 'aaa',
+          formattedName: 'Aaa'
+        },
+        {
+          name: 'zzz',
+          formattedName: 'ZZZ'
+        },
+        {
+          name: '222',
+          formattedName: '2'
+        },
+      ];
+      let selected: IFacet[] = [
+        {
+          name: 'ttt',
+          formattedName: 'ttt'
+        },
+        {
+          name: 'sss',
+          formattedName: 'sss'
+        },
+      ];
+      let newAttributes = _.extend({}, facetBasicAttributes, { facetRows: unselected, selectedFacetRows: selected });
+
+      facetComponent.setProps(newAttributes);
+      facetComponent.mount();
+
+      expect(facetComponent.find(FacetRow).at(0).props().facetRow).toEqual(jasmine.objectContaining(selected[1]));
+      expect(facetComponent.find(FacetRow).at(1).props().facetRow).toEqual(jasmine.objectContaining(selected[0]));
+      expect(facetComponent.find(FacetRow).at(2).props().facetRow).toEqual(jasmine.objectContaining(unselected[2]));
+      expect(facetComponent.find(FacetRow).at(3).props().facetRow).toEqual(jasmine.objectContaining(unselected[0]));
+      expect(facetComponent.find(FacetRow).at(4).props().facetRow).toEqual(jasmine.objectContaining(unselected[1]));
     });
   });
 });
