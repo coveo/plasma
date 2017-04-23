@@ -43,7 +43,7 @@
   "peerDependencies": {
     "jquery": ">= 2.0.0 =< 3",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react-dom": "^15.5.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "underscore": "^1.8.3"
