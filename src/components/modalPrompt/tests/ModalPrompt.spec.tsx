@@ -1,7 +1,7 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
+import { ModalPrompt, IModalPromptProps, DEFAULT_MODAL_PROMPT_CONFIRM_LABEL, DEFAULT_MODAL_PROMPT_CANCEL_LABEL } from '../ModalPrompt';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { ModalPrompt, IModalPromptProps, DEFAULT_MODAL_PROMPT_CONFIRM_LABEL, DEFAULT_MODAL_PROMPT_CANCEL_LABEL } from '../ModalPrompt';
 
 describe('ModalPrompt', () => {
   const id: string = 'modalPrompt';
@@ -94,8 +94,8 @@ describe('ModalPrompt', () => {
     });
 
     describe('with a confirm spy', () => {
-      let confirmSpy;
-      let confirmButton;
+      let confirmSpy: jasmine.Spy;
+      let confirmButton: ReactWrapper<React.HTMLAttributes<HTMLButtonElement>, void>;
 
       beforeEach(() => {
         confirmSpy = jasmine.createSpy('onConfirm');
@@ -125,7 +125,7 @@ describe('ModalPrompt', () => {
     });
 
     describe('with a cancel spy', () => {
-      let cancelSpy;
+      let cancelSpy: jasmine.Spy;
 
       beforeEach(() => {
         cancelSpy = jasmine.createSpy('onCancel');
