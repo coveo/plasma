@@ -33,7 +33,7 @@
   "dependencies": {
     "chosen-npm": "1.4.2",
     "coveo-slider": "0.9.8",
-    "materialize-css": "0.98.1"
+    "materialize-css": "0.98.2"
   },
   "devDependencies": {
     "autosize": "3.0.20",
@@ -52,7 +52,7 @@
     "gulp-if": "2.0.2",
     "gulp-rename": "1.2.2",
     "gulp-sass": "3.1.0",
-    "gulp-sourcemaps": "2.5.1",
+    "gulp-sourcemaps": "2.6.0",
     "gulp-svgmin": "1.2.3",
     "gulp-uglify": "2.1.2",
     "gulp-util": "3.0.8",
