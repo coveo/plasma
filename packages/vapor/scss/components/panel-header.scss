@@ -2,7 +2,9 @@
   min-height: $panel-header-height;
   padding: $header-padding-y $header-padding;
 
-  border-bottom: solid 1px $medium-grey;
+  &:not(.mod-no-border-bottom) {
+    border-bottom: $default-border;
+  }
 
   .action-bar {
     flex-flow: row nowrap;

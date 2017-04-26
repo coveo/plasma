@@ -155,8 +155,11 @@ $icon-size: (4em / 3);
   color: $pure-white;
 
   background-color: $pure-white;
-  border-bottom: $default-border;
   border-radius: $border-radius $border-radius 0 0;
+
+  &:not(.mod-no-border-bottom) {
+    border-bottom: $default-border;
+  }
 
   &.mod-confirmation {
     background-color: $yellow;
