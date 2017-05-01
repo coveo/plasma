@@ -48,7 +48,7 @@
 
   cursor: pointer;
 
-  .icon {
+  .icon:not([class*="fill-"]) {
     fill: $medium-blue;
   }
 
