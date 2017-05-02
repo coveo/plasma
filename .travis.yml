@@ -22,5 +22,4 @@ script:
  - npm run test
 
 after_success:
- - bithound check git@github.com:coveo/react-vapor.git
  - npm run report-coverage

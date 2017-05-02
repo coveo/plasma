@@ -51,6 +51,7 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       React: 'react',
+      $: 'jquery',
       jQuery: 'jquery', // Required for chosen-js, otherwise, it won't work.
     }),
   ],
