@@ -22,5 +22,5 @@ script:
  - npm run test
 
 after_success:
- - travis_wait bithound check git@github.com:coveo/react-vapor.git
+ - bithound check git@github.com:coveo/react-vapor.git
  - npm run report-coverage
