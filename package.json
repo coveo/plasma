@@ -67,7 +67,7 @@
     "chosen-js": "1.7.0",
     "codecov": "2.1.0",
     "coveo-styleguide": "1.13.6",
-    "css-loader": "0.28.0",
+    "css-loader": "0.28.1",
     "del": "2.2.2",
     "dts-generator": "2.1.0",
     "enzyme": "2.8.2",
