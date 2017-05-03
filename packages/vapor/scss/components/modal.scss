@@ -206,6 +206,10 @@ $icon-size: (4em / 3);
   overflow: auto;
 
   background-color: $pure-white;
+
+  .tab-content {
+    height: 100%;
+  }
 }
 
 .modal-footer {
