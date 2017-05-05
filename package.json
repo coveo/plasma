@@ -53,7 +53,7 @@
     "@types/enzyme": "2.8.0",
     "@types/jasmine": "2.5.47",
     "@types/jquery": "2.0.43",
-    "@types/react": "15.0.23",
+    "@types/react": "15.0.24",
     "@types/react-bootstrap": "0.0.49",
     "@types/react-dom": "15.5.0",
     "@types/react-redux": "4.4.40",
@@ -66,7 +66,7 @@
     "bithound": "1.7.0",
     "chosen-js": "1.7.0",
     "codecov": "2.1.0",
-    "coveo-styleguide": "1.13.6",
+    "coveo-styleguide": "1.13.7",
     "css-loader": "0.28.1",
     "del": "2.2.2",
     "dts-generator": "2.1.0",
@@ -118,7 +118,7 @@
     "typescript": "2.3.2",
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
-    "webpack": "2.4.1",
+    "webpack": "2.5.0",
     "webpack-dev-server": "2.4.5"
   },
   "files": [
