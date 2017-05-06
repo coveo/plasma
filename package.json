@@ -62,7 +62,7 @@
     "@types/underscore.string": "0.0.30",
     "@types/webpack": "2.2.15",
     "@types/webpack-env": "1.13.0",
-    "autoprefixer": "6.7.7",
+    "autoprefixer": "7.0.0",
     "bithound": "1.7.0",
     "chosen-js": "1.7.0",
     "codecov": "2.1.0",
