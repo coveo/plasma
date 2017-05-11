@@ -93,3 +93,7 @@
 .normal-height {
   max-height: none;
 }
+
+.full-height {
+  min-height: min-content;
+}
