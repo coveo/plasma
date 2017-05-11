@@ -114,12 +114,13 @@ $navigation-section-icon-size: 16px;
 $navigation-section-icon-margin: 15px;
 $navigation-locked-color: $medium-grey;
 
-// Navigation
+// Sub Navigation
 $sub-navigation-padding-top: 26px;
 $sub-navigation-border: $default-border;
 $sub-navigation-item-padding: 7px 37px;
 $sub-navigation-selected-border-width: $navigation-active-border-width;
 $sub-navigation-line-height: 16px;
+$sub-navigation-min-width: 200px;
 
 // Tabs
 $tab-bottom-border-height: 4px;
