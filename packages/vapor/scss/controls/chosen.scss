@@ -102,6 +102,18 @@
   &.chosen-with-drop .chosen-drop {
     left: 0;
   }
+
+  &.chosen-disabled {
+    .chosen-single {
+      color: $medium-grey;
+
+      border-color: $medium-grey;
+    }
+
+    b {
+      visibility: hidden;
+    }
+  }
 }
 
 .chosen-container-single {
