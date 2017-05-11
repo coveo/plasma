@@ -64,6 +64,10 @@
     color: $medium-grey;
 
     cursor: default;
+
+    .icon {
+      fill: $medium-grey;
+    }
   }
 
   &.mod-small {
