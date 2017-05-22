@@ -111,7 +111,7 @@
     "redux": "3.6.0",
     "remap-istanbul": "0.9.5",
     "sass-loader": "6.0.3",
-    "style-loader": "0.17.0",
+    "style-loader": "0.18.0",
     "ts-loader": "2.0.3",
     "tslint": "4.5.1",
     "tslint-loader": "3.5.3",
