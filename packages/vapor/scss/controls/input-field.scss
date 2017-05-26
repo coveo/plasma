@@ -38,6 +38,8 @@
 
       border-bottom-color: $medium-grey;
 
+      -webkit-text-fill-color: $medium-grey;
+
       & + label {
         color: $medium-grey;
       }
