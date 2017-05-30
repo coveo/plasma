@@ -66,3 +66,13 @@
 
   list-style: none;
 }
+
+.bullet-list {
+  padding-left: $bullet-list-padding;
+
+  list-style: disc;
+
+  li {
+    margin-bottom: $box-spacing;
+  }
+}
