@@ -1,16 +1,7 @@
 import * as React from 'react';
 import { extend, omit } from 'underscore';
 
-let svgsEnum = require('../../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
-
-const setSvgClass = (svgString: string, svgClass: string): string => {
-  let parser = document.createElement('div');
-  parser.innerHTML = svgString;
-
-  (parser.children[0] as SVGElement).setAttribute('class', svgClass);
-
-  return parser.innerHTML;
-};
+const svgsEnum = require('../../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
 
 /**
  * Pass the required svgName to get your svg.
@@ -26,27 +17,37 @@ export interface ISvgProps extends React.HTMLProps<Svg> {
  * @type {string[]}
  */
 const svgPropsToOmit = [
-  'svgClass', 'svgName'
+  'svgClass', 'svgName',
 ];
 
 export class Svg extends React.Component<ISvgProps, any> {
+  static defaultProps: Partial<ISvgProps> = {
+    svgClass: '',
+  };
+
+  private setSvgClass = (svgString: string, svgClass: string): string => {
+    const parser = document.createElement('div');
+    parser.innerHTML = svgString;
+
+    (parser.children[0] as SVGElement).setAttribute('class', svgClass);
+
+    return parser.innerHTML;
+  }
+
   render() {
-    let svgClass: string = this.props.svgClass ? this.props.svgClass : '';
-    let svgString: string = svgsEnum[this.props.svgName];
+    const svgString: string = svgsEnum[this.props.svgName];
 
     // Omit Svg props to avoid warnings.
-    let svgSpanProps = extend({}, omit(this.props, svgPropsToOmit));
+    const svgSpanProps = extend({}, omit(this.props, svgPropsToOmit));
 
     if (svgString) {
-      let svgStringWithClass = setSvgClass(svgString, svgClass);
-
       return (
-        <span {...svgSpanProps} dangerouslySetInnerHTML={{ __html: svgStringWithClass }} />
+        <span {...svgSpanProps} dangerouslySetInnerHTML={{ __html: this.setSvgClass(svgString, this.props.svgClass) }} />
       );
     } else {
       return (
         <span {...svgSpanProps} >
-          <svg className={svgClass} />
+          <svg className={this.props.svgClass} />
         </span>
       );
     }

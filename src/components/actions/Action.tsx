@@ -30,6 +30,7 @@ export interface IActionOptions {
   subActions?: IActionOptions[];
   hidden?: boolean;
   tooltip?: string;
+  tooltipPlacement?: string;
 }
 
 export interface IBasicActionProps {
@@ -50,8 +51,9 @@ export class Action extends React.Component<IActionProps, any> {
         {actionIcon}
         <span className='action-label'>{this.props.action.name}</span>
       </span>;
+    const tooltipPlacement: string = this.props.action.tooltipPlacement || 'right';
     const wholeAction: JSX.Element = this.props.action.tooltip
-      ? <Tooltip title={this.props.action.tooltip}>
+      ? <Tooltip title={this.props.action.tooltip} placement={tooltipPlacement}>
         {inside}
       </Tooltip>
       : <span>
