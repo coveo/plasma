@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Modal } from '../modal/Modal';
 import { ModalFooter } from '../modal/ModalFooter';
 import { ModalBody } from '../modal/ModalBody';
+import { ModalHeader } from '../modal/ModalHeader';
 
 export interface IModalPromptOwnProps {
   id: string;
@@ -51,10 +52,11 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
       <Modal
         id={this.props.id}
         isOpened={this.props.isOpened}
-        title={this.props.title}
-        classes={['mod-prompt', 'mod-fade-in-scale']}
-        headerClasses={['mod-confirmation']}
-        onClose={() => this.cancel()}>
+        classes={['mod-prompt', 'mod-fade-in-scale']}>
+        <ModalHeader title={this.props.title}
+          classes={['mod-confirmation']}
+          onClose={() => this.cancel()}>
+        </ModalHeader>
         <ModalBody classes={['mod-header-padding', 'mod-form-top-bottom-padding']}>
           <div className='prompt-message'>
             {this.props.message}
