@@ -55,7 +55,7 @@
   border-radius: $border-radius;
 
   .splash-box-title {
-    padding: 70px 0 40px;
+    padding: $splash-vertical-padding 0 40px;
   }
 
   .splash-box-section {
@@ -80,6 +80,10 @@
 
   .splash-box-footer {
     margin-top: 50px;
+  }
+
+  .splash-box-section-center-with-title {
+    padding-bottom: $splash-vertical-padding;
   }
 }
 
