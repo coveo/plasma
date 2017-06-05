@@ -8,6 +8,11 @@ stylesheet: '/scss/controls/file-input.scss'
         <div class="input-field file-path-wrapper">
             <input class="file-path" required placeholder="Placeholder text" type="text">
             <label>File input</label>
+            <span class="hidden clear-file" title="Clear file">
+                <span class="icon fill-medium-grey">
+                {{ site.data.icons['clear'] }}
+                </span>
+            </span>
         </div>
         <div class="btn">
             <span>Choose file</span>
@@ -22,5 +27,15 @@ stylesheet: '/scss/controls/file-input.scss'
         var $input = $(this).closest('.file-input').find('.file-path');
         $input.val(fileValue);
         $input.toggleClass('has-file', !!fileValue);
+        $(this).closest('.file-input').find('.clear-file').toggleClass('hidden', !fileValue);
+    });
+    $('.clear-file').click(function() {
+        var $input = $(this).closest('.file-input');
+        var $path = $input.find('.file-path');
+
+        $input.find('input[type=file]').val('');
+        $path.val('');
+        $path.removeClass('hasFile');
+        $(this).addClass('hidden');
     });
 </script>
