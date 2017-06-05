@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { ReactVaporStore } from './ReactVaporStore';
 import { ChosenSelect } from '../src/components/chosen/ChosenSelect';
 import { Svg } from '../src/components/svg/Svg';
-import { Tooltip } from '../src/components/tooltip/Tooltip';
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { SyncFeedbackExample } from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
@@ -32,8 +31,6 @@ import { SubNavigationConnectedExamples } from '../src/components/subNavigation/
 import { OptionsCycleConnectedExamples } from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import { CalendarConnectedExamples } from '../src/components/calendar/examples/CalendarConnectedExamples';
 import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import './style.scss';
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { DatesSelectionExamples } from '../src/components/datePicker/examples/DatesSelectionExamples';
 import { DatesSelectionConnectedExamples } from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
@@ -41,6 +38,9 @@ import { DatePickerDropdownConnectedExamples } from '../src/components/datePicke
 import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
 import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
+import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
+import './style.scss';
+import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
 class App extends React.Component<any, any> {
 
@@ -98,16 +98,7 @@ class App extends React.Component<any, any> {
               </ChosenSelect>
             </div>
           </div>
-          <div className='form-group'>
-            <label className='form-control-label'>
-              Tooltip example
-            </label>
-            <div className='form-control'>
-              <Tooltip title='I am a tooltip!' placement='right'>
-                <button type='button' className='btn'>Hover me!</button>
-              </Tooltip>
-            </div>
-          </div>
+          <TooltipExamples />
           <UserFeedbackExample />
           <SyncFeedbackExample />
           <LastUpdatedExamples />
