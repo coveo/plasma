@@ -38,7 +38,7 @@ import { DatePickerDropdownConnectedExamples } from '../src/components/datePicke
 import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
 import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
-import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
+import { TooltipExamples } from '../src/components/tooltip/examples/TooltipExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
