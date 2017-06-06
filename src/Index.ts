@@ -128,6 +128,7 @@ import { TabNavigation } from './components/tab/TabNavigation';
 import { TabPane } from './components/tab/TabPane';
 import { TabPaneConnected } from './components/tab/TabPaneConnected';
 import { tabsReducer } from './components/tab/TabReducers';
+import { MultilineInput } from './components/multilineInput/MultilineInput';
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 export {
@@ -184,6 +185,9 @@ export {
 
   // ModalPrompt
   ModalPrompt,
+
+  // MultilineInput
+  MultilineInput,
 
   // Navigation
   Navigation,
