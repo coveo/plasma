@@ -3,6 +3,7 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { MultilineInput, IMultilineInputProps, IMultilineInputValue } from '../MultilineInput';
 import { AddInput } from '../AddInput';
+import { DeleteInput } from '../DeleteInput';
 
 describe('MultilineInput', () => {
 
@@ -18,8 +19,8 @@ describe('MultilineInput', () => {
 
   describe('<MultilineInput />', () => {
     let multilineInput: ReactWrapper<IMultilineInputProps, any>;
-    let valueId: 'an-id';
-    let valueValue: 'a-value';
+    let valueId = 'an-id';
+    let valueValue = 'a-value';
     let multilineInputValue: IMultilineInputValue = {
       id: valueId,
       value: valueValue
@@ -70,6 +71,34 @@ describe('MultilineInput', () => {
 
       expect(changeSpy.calls.count()).toBe(1);
       expect(changeSpy.calls.first().args[0][0].value).toBe(aNewValue);
+    });
+
+    it('should call prop onChange with updated value when delete input changes', () => {
+      let changeSpy = jasmine.createSpy('onChange');
+      multilineInput.setProps({ onChange: changeSpy, values: [multilineInputValue] });
+      multilineInput.mount();
+
+      let innerDeleteInput = multilineInput.find(DeleteInput);
+      expect(innerDeleteInput.length).toBe(1);
+
+      innerDeleteInput.props().onChange(aNewValue);
+
+      expect(changeSpy.calls.count()).toBe(1);
+      expect(changeSpy.calls.first().args[0][0].value).toBe(aNewValue);
+    });
+
+    it('should call prop onChange with removed value when delete input changes for something empty', () => {
+      let changeSpy = jasmine.createSpy('onChange');
+      multilineInput.setProps({ onChange: changeSpy, values: [multilineInputValue] });
+      multilineInput.mount();
+
+      let innerDeleteInput = multilineInput.find(DeleteInput);
+      expect(innerDeleteInput.length).toBe(1);
+
+      innerDeleteInput.props().onChange('');
+
+      expect(changeSpy.calls.count()).toBe(1);
+      expect(changeSpy.calls.first().args[0].length).toBe(0);
     });
   });
 });

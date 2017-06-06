@@ -47,7 +47,7 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
   }
 
   private updateValue(id: string, value: string) {
-    let inputIndex = _.indexOf(this.props.values, { id });
+    let inputIndex = _.findIndex(this.props.values, { id });
     let nextValues = this.props.values;
     nextValues[inputIndex] = {
       id,
