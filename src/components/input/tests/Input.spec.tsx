@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Input, IInputProps } from '../Input';
 
 describe('Input', () => {
-  //let title: string = 'Title';
+  // let title: string = 'Title';
 
   describe('<Input />', () => {
     it('should render without errors', () => {
