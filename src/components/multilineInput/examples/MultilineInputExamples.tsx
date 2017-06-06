@@ -1,5 +1,5 @@
 import { MultilineInput, IMultilineInputValue } from '../MultilineInput';
-import * as React from 'React';
+import * as React from 'react';
 
 export interface IMultilineInputExampleProps { }
 

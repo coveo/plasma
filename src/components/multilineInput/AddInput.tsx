@@ -1,4 +1,4 @@
-import * as React from 'React';
+import * as React from 'react';
 import * as _ from 'underscore';
 import { AddInputAction } from './AddInputAction';
 import { IInputProps, Input } from '../input/Input';
