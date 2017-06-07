@@ -2,17 +2,26 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import * as TetherComponent from 'react-tether';
-import { extend, isFunction, isUndefined, omit } from 'underscore';
+import * as _ from 'underscore';
 
-/*
- The children property should be mandatory, but waiting for https://github.com/DefinitelyTyped/DefinitelyTyped/pull/10641 and/or
- https://github.com/Microsoft/TypeScript/issues/8588. After that, we will be allowed to build using the strictNullChecks flag.
+export interface ITetherComponentCopiedProps {
+  renderElementTag?: string;
+  renderElementTo?: Element | string;
+  attachment: string;
+  targetAttachment?: string;
+  offset?: string;
+  targetOffset?: string;
+  targetModifier?: string;
+  enabled?: boolean;
+  classes?: any;
+  classPrefix?: string;
+  optimizations?: Object;
+  constraints?: any[];
+  onUpdate?: Function;
+  onRepositioned?: Function;
+}
 
- Extending React.ClassAttributes<Popover> is required to be compatible with Typescript 1.7.
- */
-export interface IPopoverProps extends TetherComponent.ITetherComponentProps, React.ClassAttributes<Popover> {
-  children?: [React.ReactNode, React.ReactNode];
-
+export interface IPopoverProps extends ITetherComponentCopiedProps, React.ClassAttributes<Popover> {
   /**
    * Optionnal, use it to specify the isOpen state of the Popover.
    * @default: false
@@ -37,18 +46,6 @@ export interface IPopoverState {
 }
 
 export class Popover extends React.Component<IPopoverProps, IPopoverState> {
-  static propTypes = extend(TetherComponent.propTypes, {
-    children: ({ children }: IPopoverProps, propName: string, componentName: string) => {
-      if (isUndefined(children) || React.Children.count(children) != 2) {
-        return new Error(`${componentName} expects two children to use as target and element.` +
-          `Second child can either be a boolean or a ReactNode.`);
-      }
-    },
-    isOpen: React.PropTypes.bool,
-    onToggle: React.PropTypes.func,
-    isModal: React.PropTypes.bool,
-  });
-
   private tetherToggle: HTMLElement;
   private tetherElement: HTMLElement;
 
@@ -56,7 +53,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     super(props, state);
 
     // If onToggle wasn't passed, Popover is uncontrolled and we set an initial state.
-    if (!isFunction(this.props.onToggle)) {
+    if (!_.isFunction(this.props.onToggle)) {
       this.state = {
         isOpen: !!this.props.isOpen
       };
@@ -72,13 +69,13 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   }
 
   render() {
-    let tetherToggle = !!this.props.children && this.props.children[0];
-    let tetherElement = !!this.props.children && this.props.children[1];
+    const tetherToggle = !!this.props.children && (this.props.children as JSX.Element[])[0];
+    const tetherElement = !!this.props.children && (this.props.children as JSX.Element[])[1];
 
-    let isOpen: boolean = this.state && this.state.isOpen ? this.state.isOpen : this.props.isOpen;
+    const isOpen: boolean = this.state && this.state.isOpen || this.props.isOpen;
 
     return (
-      <TetherComponent {...omit(this.props, 'children') } >
+      <TetherComponent {..._.omit(this.props, 'children') } >
         <div ref={(toggle: HTMLElement) => this.tetherToggle = toggle} onClick={() => this.toggleOpened(!isOpen)}>
           {tetherToggle}
         </div>
@@ -93,7 +90,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   }
 
   toggleOpened(isOpen: boolean) {
-    if (isFunction(this.props.onToggle)) {
+    if (_.isFunction(this.props.onToggle)) {
       this.props.onToggle(isOpen);
     } else {
       this.setState({
@@ -102,14 +99,14 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     }
   }
 
-  // Using a fat arrow function instead of a methot here to bind it to context and to make sure we have the same listener for both
+  // Using a fat arrow function instead of a method here to bind it to context and to make sure we have the same listener for both
   // addEventListener and removeEventListener and therefore prevent leaking listeners.
   private handleDocumentClick: EventListener = (event: Event) => {
     const tetherToggle = findDOMNode<HTMLElement>(this.tetherToggle);
     const tetherElement = findDOMNode<HTMLElement>(this.tetherElement);
 
-    let outsideTetherToggle = !tetherToggle.contains(event.target as Node);
-    let outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
+    const outsideTetherToggle = !tetherToggle.contains(event.target as Node);
+    const outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
 
     if (outsideTetherElement && outsideTetherToggle) {
       if (this.props.isOpen && this.props.isModal) {
