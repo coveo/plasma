@@ -119,7 +119,7 @@
     "typescript": "2.3.3",
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
-    "webpack": "2.6.1",
+    "webpack": "3.0.0-rc.1",
     "webpack-dev-server": "2.4.5"
   },
   "files": [
