@@ -69,7 +69,7 @@ describe('Tooltip', () => {
 
       tooltipWrapper.setProps(newProps);
 
-      expect(tooltipWrapper.find(OverlayTrigger).props().overlay.props.children[1].toString()).not.toContain('tooltip-footer');
+      expect(tooltipWrapper.find(OverlayTrigger).props().overlay.props.children[1].props.className).toBe('tooltip-footer');
     });
   });
 });
