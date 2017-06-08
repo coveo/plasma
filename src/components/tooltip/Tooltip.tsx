@@ -29,6 +29,7 @@ export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttribut
   placement?: string;
   positionLeft?: number;
   positionTop?: number;
+  footer?: string;
 }
 
 const PROPS_TO_OMIT: string[] = [
@@ -68,10 +69,15 @@ export class Tooltip extends React.Component<ITooltipProps, any> {
   };
 
   render() {
-    const tooltip = <BootstrapTooltip
+    const tooltipFooter: JSX.Element = this.props.footer
+      ? <div className='tooltip-footer'>{this.props.footer}</div>
+      : null;
+
+    const tooltip: JSX.Element = <BootstrapTooltip
       id={_.uniqueId('tooltip-')}
       {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT) }>
       {this.props.title}
+      {tooltipFooter}
     </BootstrapTooltip>;
 
     return (
