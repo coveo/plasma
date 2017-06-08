@@ -2,6 +2,8 @@ import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import { Button } from '../Button';
 import { IBaseActionOptions } from '../../actions/Action';
+import { Tooltip } from '../../tooltip/Tooltip';
+import * as _ from 'underscore';
 
 describe('Button', () => {
 
@@ -25,20 +27,23 @@ describe('Button', () => {
     it('should render the default name', () => {
       expect(buttonComponent.find('button').text()).toEqual('');
     });
+
+    it('should render the button not primary', () => {
+      expect(buttonComponent.find('button').hasClass('mod-primary')).toBe(false);
+    });
   });
 
   describe('<Button /> with custom props', () => {
 
-    const showButton = (props: IBaseActionOptions) => {
+    const showButton = (props: Partial<IBaseActionOptions>) => {
       buttonComponent = mount(
-        <Button {...props} />,
+        <Button {..._.defaults(props, { enabled: true }) } />,
         { attachTo: document.getElementById('App') },
       );
     };
 
     it('should render the custom name', () => {
       showButton({
-        enabled: true,
         name: 'test',
       });
 
@@ -54,21 +59,10 @@ describe('Button', () => {
       expect(buttonComponent.find('button').hasClass('disabled')).toBe(true);
     });
 
-    it('should render the link button disabled with enabled at false', () => {
-      showButton({
-        enabled: false,
-        link: 'test',
-      });
-
-      expect(buttonComponent.find('a').prop('disabled')).toBe(true);
-      expect(buttonComponent.find('a').hasClass('disabled')).toBe(true);
-    });
-
     it('should call the onClick props on click', () => {
       const spyOnClick = jasmine.createSpy('onClick');
 
       showButton({
-        enabled: true,
         onClick: spyOnClick,
       });
       buttonComponent.find('button').simulate('click');
@@ -76,32 +70,95 @@ describe('Button', () => {
       expect(spyOnClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should add title on element if tooltip is defined', () => {
+    it('should add <Tooltip/> if tooltip is defined', () => {
       showButton({
-        enabled: true,
-        tooltip: 'test',
+        tooltip: 'tooltip test',
       });
-      expect(buttonComponent.find('button').prop('title')).toBe('test');
-    });
 
-    it('should add placement on element if tooltipPlacement is defined', () => {
-      showButton({
-        enabled: true,
-        tooltip: 'test',
-        tooltipPlacement: 'bottom',
-      });
-      expect(buttonComponent.find('button').prop('placement')).toBe('bottom');
+      expect(buttonComponent.find(Tooltip).length).toBe(1);
     });
 
     describe('with the link button', () => {
 
+      const link: string = 'link';
+
+      it('should render the custom name', () => {
+        showButton({
+          name: 'test',
+          link,
+        });
+
+        expect(buttonComponent.find('a').text()).toEqual('test');
+      });
+
+      it('should render the link button disabled with enabled at false', () => {
+        showButton({
+          enabled: false,
+          link,
+        });
+
+        expect(buttonComponent.find('a').prop('disabled')).toBe(true);
+        expect(buttonComponent.find('a').hasClass('disabled')).toBe(true);
+        expect(buttonComponent.find('a').hasClass('text-medium-grey')).toBe(true);
+      });
+
+      it('should add the link in a href', () => {
+        showButton({
+          link,
+        });
+        expect(buttonComponent.find('a').prop('href')).toEqual(link);
+      });
+
       it('should have the class btn-container', () => {
         showButton({
-          enabled: true,
-          link: 'test',
+          link,
         });
 
         expect(buttonComponent.find('.btn-container').length).toBe(1);
+      });
+
+      it('should add the rel default value', () => {
+        showButton({
+          link,
+        });
+        expect(buttonComponent.find('a').prop('rel')).toEqual('noopener noreferrer');
+      });
+
+      it('should add empty target by default', () => {
+        showButton({
+          link,
+        });
+        expect(buttonComponent.find('a').prop('target')).toEqual('');
+      });
+
+      it('should use the target send in options', () => {
+        const target: string = 'target';
+        showButton({
+          link,
+          target,
+        });
+        expect(buttonComponent.find('a').prop('target')).toEqual(target);
+      });
+
+      it('should add <Tooltip/> on link button if tooltip is defined', () => {
+        showButton({
+          tooltip: 'tooltip test',
+          link,
+        });
+
+        expect(buttonComponent.find(Tooltip).length).toBe(1);
+      });
+
+      it('should call the onClick props on click', () => {
+        const spyOnClick = jasmine.createSpy('onClick');
+
+        showButton({
+          onClick: spyOnClick,
+          link,
+        });
+        buttonComponent.find('a').simulate('click');
+
+        expect(spyOnClick).toHaveBeenCalledTimes(1);
       });
     });
   });

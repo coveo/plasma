@@ -20,7 +20,6 @@ export interface IBaseActionOptions {
   primary?: boolean;
   tooltip?: string;
   tooltipPlacement?: string;
-  onClickLink?: () => void;
   onClick?: () => void;
 }
 
