@@ -41,6 +41,8 @@ import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/Moda
 import { TooltipExamples } from '../src/components/tooltip/examples/TooltipExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
+import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 
 class App extends React.Component<any, any> {
 
@@ -98,6 +100,7 @@ class App extends React.Component<any, any> {
               </ChosenSelect>
             </div>
           </div>
+          <ButtonExamples />
           <TooltipExamples />
           <UserFeedbackExample />
           <SyncFeedbackExample />
@@ -132,6 +135,7 @@ class App extends React.Component<any, any> {
           <DatePickerBoxExamples />
           <DatePickerBoxConnectedExamples />
           <DatePickerDropdownConnectedExamples />
+          <BlankSlateExample />
         </div>
       </Provider>
     );

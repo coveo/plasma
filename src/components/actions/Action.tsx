@@ -12,25 +12,29 @@ export interface IConfirmData {
   buttonLabels?: IConfirmButtonLabel;
 }
 
-export interface IActionOptions {
+export interface IBaseActionOptions {
   enabled: boolean;
-  primary?: boolean;
-  icon?: string;
-  iconClass?: string;
   name?: string;
-  id?: string;
-  unrepeatable?: boolean;
-  callOnDoubleClick?: boolean;
-  trigger?: () => void;
-  requiresConfirmation?: IConfirmData;
   link?: string;
   target?: string;
+  primary?: boolean;
+  tooltip?: string;
+  tooltipPlacement?: string;
+  onClick?: () => void;
+}
+
+export interface IActionOptions extends IBaseActionOptions {
+  icon?: string;
+  iconClass?: string;
+  id?: string;
+  trigger?: () => void;
+  unrepeatable?: boolean;
+  callOnDoubleClick?: boolean;
+  requiresConfirmation?: IConfirmData;
   separator?: boolean;
   grouped?: boolean;
   subActions?: IActionOptions[];
   hidden?: boolean;
-  tooltip?: string;
-  tooltipPlacement?: string;
 }
 
 export interface IBasicActionProps {
