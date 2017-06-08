@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '../Button';
+import {Button} from '../Button';
 
 export class ButtonExamples extends React.Component<any, any> {
 
@@ -10,82 +10,91 @@ export class ButtonExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Default Button</label>
           <div className='form-control'>
-            <Button enabled={true} />
+            <Button enabled={true}/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Primary Button</label>
           <div className='form-control'>
-            <Button enabled={true} primary={true} name='Primary Button' />
+            <Button enabled={true} primary={true} name='Primary Button'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Link Button</label>
           <div className='form-control'>
-            <Button enabled={true} name='Link Button' />
+            <Button enabled={true} name='Link Button' link='http://perdu.com/' target='_blank'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Button with a callback on click</label>
           <div className='form-control'>
-            <Button enabled={true} name='Button click me!' onClick={() => alert('Hello')} />
+            <Button enabled={true} name='Button click me!' onClick={() => alert('Hello')}/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Button with tooltip</label>
           <div className='form-control'>
-            <Button enabled={true} name='Button with tooltip' tooltip='Tooltip test' />
+            <Button enabled={true} name='Button with tooltip' tooltip='Tooltip test'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Button with tooltip and placement</label>
           <div className='form-control'>
-            <Button enabled={true} name='Button with tooltip top' tooltip='Tooltip test' tooltipPlacement='top' />
+            <Button enabled={true} name='Button with tooltip top' tooltip='Tooltip test' tooltipPlacement='top'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Button link with tooltip</label>
           <div className='form-control'>
-            <Button enabled={true} name='Button link with tooltip' link='http://perdu.com/' target='_blank' tooltip='Tooltip test' />
+            <Button enabled={true} name='Button link with tooltip' link='http://perdu.com/' target='_blank' tooltip='Tooltip test'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Button link with a callback on click</label>
           <div className='form-control'>
             <Button enabled={true} name='Link Button click me!' link='http://perdu.com/' target='_blank'
-              onClick={() => alert('Hello')} />
+                    onClick={() => alert('Hello')}/>
           </div>
         </div>
 
         <div className='form-group'>
           <label className='form-control-label'>Disabled Button</label>
           <div className='form-control'>
-            <Button enabled={false} name='Disabled Button' />
+            <Button enabled={false} name='Disabled Button'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Disabled Button with tooltip</label>
           <div className='form-control'>
-            <Button enabled={false} name='Disabled Button with tooltip' tooltip='Tooltip test' />
+            <Button enabled={false} name='Disabled Button with tooltip' tooltip='Tooltip test'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Disabled Button link</label>
           <div className='form-control'>
-            <Button enabled={false} name='Disabled Button link' link='http://perdu.com/' target='_blank' />
+            <Button enabled={false} name='Disabled Button link' link='http://perdu.com/' target='_blank'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Disabled Button link with tooltip</label>
           <div className='form-control'>
-            <Button enabled={false} name='Disabled Button link with tooltip' tooltip='Tooltip test' link='http://perdu.com/' target='_blank' />
+            <Button enabled={false} name='Disabled Button link with tooltip' tooltip='Tooltip test' link='http://perdu.com/'
+                    target='_blank'/>
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Disabled Button link with tooltip placement top</label>
           <div className='form-control'>
-            <Button enabled={false} name='Disabled Button link with tooltip top' tooltip='Tooltip test' tooltipPlacement='top' link='http://perdu.com/'
-              target='_blank' />
+            <Button enabled={false} name='Disabled Button link with tooltip top' tooltip='Tooltip test' tooltipPlacement='top'
+                    link='http://perdu.com/'
+                    target='_blank'/>
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Disabled Button link with onClick</label>
+          <div className='form-control'>
+            <Button enabled={false} name='Disabled Button link with onClick' link='http://perdu.com/' target='_blank'
+                    onClick={() => alert('Hello')}/>
           </div>
         </div>
       </div>

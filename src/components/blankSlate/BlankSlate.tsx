@@ -10,7 +10,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
   withModal?: boolean;
 }
 
-export class BlankSlate extends React.Component<IBlankSlateProps, any> {
+export class BlankSlate extends React.Component<IBlankSlateProps, void> {
 
   static defaultProps: Partial<IBlankSlateProps> = {
     title: '',
@@ -20,17 +20,14 @@ export class BlankSlate extends React.Component<IBlankSlateProps, any> {
 
   getDescriptionTemplate(): JSX.Element {
     return this.props.description
-      ? (<p>{this.props.description}</p>)
+      ? <p>{this.props.description}</p>
       : null;
   }
 
   getButtonsTemplate(): JSX.Element[] {
-    let buttonElements: Array<JSX.Element> = [];
-    _.each(this.props.buttons, (buttonProps: IBaseActionOptions) => {
-      buttonElements.push((<Button {...buttonProps} />));
+    return _.map(this.props.buttons, (buttonProps: IBaseActionOptions) => {
+      return <Button {...buttonProps} />;
     });
-
-    return buttonElements;
   }
 
   render() {

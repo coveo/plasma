@@ -17,7 +17,7 @@ export class BlankSlateExample extends React.Component<any, any> {
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with title</label>
-          <BlankSlate title='description test' />
+          <BlankSlate title='title test' />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with title and description</label>

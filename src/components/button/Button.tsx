@@ -3,17 +3,19 @@ import * as _ from 'underscore';
 import { IBaseActionOptions } from '../actions/Action';
 import { Tooltip } from '../tooltip/Tooltip';
 
-export class Button extends React.Component<IBaseActionOptions, any> {
+export class Button extends React.Component<IBaseActionOptions, void> {
 
   static defaultProps: Partial<IBaseActionOptions> = {
     enabled: true,
     name: '',
     tooltip: '',
     primary: false,
+    tooltipPlacement: 'right',
+    target: '',
   };
 
   private onClick() {
-    if (this.props.onClick) {
+    if (this.props.onClick && this.props.enabled) {
       this.props.onClick();
     }
   }
@@ -22,32 +24,34 @@ export class Button extends React.Component<IBaseActionOptions, any> {
     let buttonElement: JSX.Element;
 
     const disabled: boolean = !this.props.enabled;
+    const onClick = () => this.onClick();
+    let buttonAttrs = {
+      disabled,
+      onClick,
+    };
 
     if (this.props.link) {
-      const target = this.props.target ? this.props.target : '';
-      const rel = 'noopener noreferrer';
-      const buttonAttrs = { disabled, target, rel };
+      buttonAttrs = _.extend(buttonAttrs, {
+        target: this.props.target,
+        rel: 'noopener noreferrer',
+        href: this.props.link,
+      });
+
       buttonElement = (
         <a className={`${buttonClass} btn-container`}
-          href={this.props.link}
-          onClick={() => this.onClick()}
           {...buttonAttrs}>
           {this.props.name}
         </a>);
     } else {
-      const buttonAttrs = { disabled };
       buttonElement = (
         <button className={buttonClass}
-          onClick={() => this.onClick()}
           {...buttonAttrs}>
           {this.props.name}
         </button>);
     }
 
-    const tooltipPlacement: string = this.props.tooltipPlacement || 'right';
     return !_.isEmpty(this.props.tooltip)
-      ? <Tooltip title={this.props.tooltip}
-        placement={tooltipPlacement}>
+      ? <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement}>
         <span>
           {buttonElement}
         </span>
@@ -56,12 +60,12 @@ export class Button extends React.Component<IBaseActionOptions, any> {
   }
 
   render() {
-    let buttonClasses = ['btn'];
+    const buttonClasses = ['btn'];
     if (this.props.primary) {
       buttonClasses.push('mod-primary');
     }
     if (!this.props.enabled) {
-      buttonClasses = buttonClasses.concat(['state-disabled', 'disabled', 'text-medium-grey']);
+      buttonClasses.push('state-disabled', 'disabled', 'text-medium-grey');
     }
 
     return this.getTemplate(buttonClasses.join(' '));
