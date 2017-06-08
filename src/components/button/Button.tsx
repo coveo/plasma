@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {IBaseActionOptions} from '../actions/Action';
-import {Tooltip} from '../tooltip/Tooltip';
+import { IBaseActionOptions } from '../actions/Action';
+import { Tooltip } from '../tooltip/Tooltip';
 
 export class Button extends React.Component<IBaseActionOptions, any> {
 
@@ -26,20 +26,20 @@ export class Button extends React.Component<IBaseActionOptions, any> {
     if (this.props.link) {
       const target = this.props.target ? this.props.target : '';
       const rel = 'noopener noreferrer';
-      const buttonAttrs = {disabled, target, rel};
+      const buttonAttrs = { disabled, target, rel };
       buttonElement = (
         <a className={`${buttonClass} btn-container`}
-           href={this.props.link}
-           onClick={() => this.onClick()}
-           {...buttonAttrs}>
+          href={this.props.link}
+          onClick={() => this.onClick()}
+          {...buttonAttrs}>
           {this.props.name}
         </a>);
     } else {
-      const buttonAttrs = {disabled};
+      const buttonAttrs = { disabled };
       buttonElement = (
         <button className={buttonClass}
-                onClick={() => this.onClick()}
-                {...buttonAttrs}>
+          onClick={() => this.onClick()}
+          {...buttonAttrs}>
           {this.props.name}
         </button>);
     }
@@ -47,11 +47,11 @@ export class Button extends React.Component<IBaseActionOptions, any> {
     const tooltipPlacement: string = this.props.tooltipPlacement || 'right';
     return !_.isEmpty(this.props.tooltip)
       ? <Tooltip title={this.props.tooltip}
-                 placement={tooltipPlacement}>
+        placement={tooltipPlacement}>
         <span>
           {buttonElement}
         </span>
-           </Tooltip>
+      </Tooltip>
       : buttonElement;
   }
 

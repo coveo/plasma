@@ -76,15 +76,15 @@ export class ButtonExamples extends React.Component<any, any> {
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Disabled Button link with tooltips</label>
+          <label className='form-control-label'>Disabled Button link with tooltip</label>
           <div className='form-control'>
-            <Button enabled={false} name='Disabled Button link' tooltip='Tooltip test' link='http://perdu.com/' target='_blank' />
+            <Button enabled={false} name='Disabled Button link with tooltip' tooltip='Tooltip test' link='http://perdu.com/' target='_blank' />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Disabled Button link with tooltips placement top</label>
+          <label className='form-control-label'>Disabled Button link with tooltip placement top</label>
           <div className='form-control'>
-            <Button enabled={false} name='Disabled Button link' tooltip='Tooltip test' tooltipPlacement='top' link='http://perdu.com/'
+            <Button enabled={false} name='Disabled Button link with tooltip top' tooltip='Tooltip test' tooltipPlacement='top' link='http://perdu.com/'
               target='_blank' />
           </div>
         </div>

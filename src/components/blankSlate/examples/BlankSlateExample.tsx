@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {BlankSlate} from '../BlankSlate';
+import { BlankSlate } from '../BlankSlate';
 
 export class BlankSlateExample extends React.Component<any, any> {
 
@@ -13,49 +13,45 @@ export class BlankSlateExample extends React.Component<any, any> {
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with title</label>
-          <BlankSlate title='Title test'/>
+          <BlankSlate title='Title test' />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with title</label>
-          <BlankSlate title='description test'/>
+          <BlankSlate title='description test' />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with title and description</label>
-          <BlankSlate title='title test' description='description test'/>
+          <BlankSlate title='title test' description='description test' />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate to fit in a modal</label>
-          <BlankSlate title='title test' description='description test' withModal={true}/>
-        </div>
-        <div className='form-group'>
-          <label className='form-control-label'>BlankSlate with title and description</label>
-          <BlankSlate title='title test' description='description test'/>
+          <BlankSlate title='title test' description='description test' withModal={true} />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with a button</label>
           <BlankSlate title='title test'
-                      buttons={[
-                        {
-                          name: 'button',
-                          primary: true,
-                          enabled: true,
-                        },
-                      ]}/>
+            buttons={[
+              {
+                name: 'button',
+                primary: true,
+                enabled: true,
+              },
+            ]} />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with two button</label>
           <BlankSlate title='title test'
-                      buttons={[
-                        {
-                          name: 'button 1',
-                          primary: true,
-                          enabled: false,
-                        }, {
-                          name: 'button 2',
-                          enabled: false,
-                          link: 'link',
-                        },
-                      ]}/>
+            buttons={[
+              {
+                name: 'button 1',
+                primary: true,
+                enabled: false,
+              }, {
+                name: 'button 2',
+                enabled: false,
+                link: 'link',
+              },
+            ]} />
         </div>
       </div>
     );
