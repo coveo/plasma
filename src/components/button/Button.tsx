@@ -21,22 +21,28 @@ export class Button extends React.Component<IBaseActionOptions, any> {
   getTemplate(buttonClass: string): JSX.Element {
     let buttonElement: JSX.Element;
 
+    const disabled: boolean = !this.props.enabled;
+
     if (this.props.link) {
-      const target = this.props.target ? `target="${this.props.target}" rel="noopener noreferrer"` : '';
+      const target = this.props.target ? this.props.target : '';
+      const rel = 'noopener noreferrer';
+      const buttonAttrs = { disabled, target, rel };
       buttonElement = (
         <span className='btn-container' title={this.props.tooltip}>
           <a className={buttonClass}
             href={this.props.link}
             onClick={() => this.onClick()}
-            {...target} >
+            {...buttonAttrs}>
             {this.props.name}
           </a>
         </span>);
     } else {
+      const buttonAttrs = { disabled };
       buttonElement = (
         <button className={buttonClass}
           title={this.props.tooltip}
-          onClick={() => this.onClick()}>
+          onClick={() => this.onClick()}
+          {...buttonAttrs}>
           {this.props.name}
         </button>);
     }
@@ -47,16 +53,16 @@ export class Button extends React.Component<IBaseActionOptions, any> {
         placement={tooltipPlacement}>
         {buttonElement}
       </Tooltip>
-      : <span>
-        {buttonElement}
-      </span>;
+      : buttonElement;
   }
 
   render() {
-
     let buttonClasses = ['btn'];
     if (this.props.primary) {
       buttonClasses.push('mod-primary');
+    }
+    if (!this.props.enabled) {
+      buttonClasses.push('disabled');
     }
 
     return this.getTemplate(buttonClasses.join(' '));

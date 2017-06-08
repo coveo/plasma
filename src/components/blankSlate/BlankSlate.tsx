@@ -4,7 +4,7 @@ import { IBaseActionOptions } from '../actions/Action';
 import { Button } from '../button/Button';
 
 export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
-  title: string;
+  title?: string;
   description?: string;
   buttons?: IBaseActionOptions[];
   withModal?: boolean;
@@ -27,15 +27,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, any> {
   getButtonsTemplate(): JSX.Element[] {
     let buttonElements: Array<JSX.Element> = [];
     _.each(this.props.buttons, (buttonProps: IBaseActionOptions) => {
-      buttonElements.push((<Button
-        enabled={buttonProps.enabled}
-        name={buttonProps.name}
-        link={buttonProps.link}
-        target={buttonProps.target}
-        primary={buttonProps.primary}
-        tooltip={buttonProps.tooltip}
-        tooltipPlacement={buttonProps.tooltipPlacement}
-        onClick={buttonProps.onClick} />));
+      buttonElements.push((<Button {...buttonProps} />));
     });
 
     return buttonElements;
