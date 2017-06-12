@@ -1,34 +1,36 @@
 import {
-  ICalendarStateProps,
-  ICalendarProps,
   Calendar,
+  ICalendarDispatchProps,
+  ICalendarOwnProps,
+  ICalendarProps,
+  ICalendarStateProps,
   MONTH_PICKER_ID,
   YEAR_PICKER_ID,
-  ICalendarOwnProps,
-  ICalendarDispatchProps
 } from './Calendar';
 import {
-  changeDatePickerUpperLimit, changeDatePickerLowerLimit, selectDate,
-  DateLimits
+  changeDatePickerLowerLimit,
+  changeDatePickerUpperLimit,
+  DateLimits, resetDatePickers,
+  selectDate,
 } from '../datePicker/DatePickerActions';
-import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
-import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { connect } from 'react-redux';
+import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
+import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {connect} from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): ICalendarStateProps => {
-  let selectedMonth = _.findWhere(state.optionsCycles, { id: ownProps.id + MONTH_PICKER_ID });
-  let selectedYear = _.findWhere(state.optionsCycles, { id: ownProps.id + YEAR_PICKER_ID });
+  const selectedMonth = _.findWhere(state.optionsCycles, { id: ownProps.id + MONTH_PICKER_ID });
+  const selectedYear = _.findWhere(state.optionsCycles, { id: ownProps.id + YEAR_PICKER_ID });
 
   return {
     withReduxState: true,
-    selectedMonth: selectedMonth ? selectedMonth.currentOption : 0,
-    selectedYear: selectedYear ? selectedYear.currentOption : 0,
-    calendarSelection: _.where(state.datePickers, { calendarId: ownProps.id })
+    selectedMonth: selectedMonth && selectedMonth.currentOption,
+    selectedYear: selectedYear && selectedYear.currentOption,
+    calendarSelection: _.where(state.datePickers, { calendarId: ownProps.id }),
   };
 };
 
@@ -37,14 +39,18 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
       dispatch(selectDate(pickerId, ''));
       dispatch(changeOptionPicker(pickerId, '', ''));
-      if (isUpperLimit) {
-        dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
+      if (!value) {
+        dispatch(resetDatePickers(pickerId));
       } else {
-        dispatch(changeDatePickerLowerLimit(pickerId, value));
-        dispatch(selectDate(pickerId, DateLimits.upper));
+        if (isUpperLimit) {
+          dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
+        } else {
+          dispatch(changeDatePickerLowerLimit(pickerId, value));
+          dispatch(selectDate(pickerId, DateLimits.upper));
+        }
       }
     },
-    onDateChange: (pickerId: string, newValue: number) => dispatch(changeOptionsCycle(pickerId, newValue))
+    onDateChange: (pickerId: string, newValue: number) => dispatch(changeOptionsCycle(pickerId, newValue)),
   });
 
 export const CalendarConnected: React.ComponentClass<ICalendarProps> =

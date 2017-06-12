@@ -15,7 +15,7 @@ export const CalendarSelectionRuleType = {
   all: 'ALL',
   lower: 'LOWER',
   upper: 'UPPER',
-  range: 'RANGE'
+  range: 'RANGE',
 };
 
 export interface ICalendarSelectionRule {
@@ -59,13 +59,13 @@ export const DEFAULT_MONTHS: string[] = [
   'September',
   'October',
   'November',
-  'December'
+  'December',
 ];
 
 export const DEFAULT_YEARS: string[] = [
   ...DateUtils.getPreviousYears(10),
   DateUtils.currentYear.toString(),
-  ...DateUtils.getNextYears(10)
+  ...DateUtils.getNextYears(10),
 ];
 
 export const DEFAULT_DAYS: string[] = [
@@ -75,7 +75,7 @@ export const DEFAULT_DAYS: string[] = [
   'Wed',
   'Thu',
   'Fri',
-  'Sat'
+  'Sat',
 ];
 
 export const MONTH_PICKER_ID: string = 'calendar-months';
@@ -89,11 +89,13 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     months: DEFAULT_MONTHS,
     days: DEFAULT_DAYS,
     startingMonth: DateUtils.currentMonth,
-    startingDay: 0
+    startingDay: 0,
+    selectedMonth: 0,
+    selectedYear: 0,
   };
 
   private getSelectedDatePicker(): IDatePickerState {
-    let selectedDatePickers: IDatePickerState[] = _.map(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
+    const selectedDatePickers: IDatePickerState[] = _.map(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
       if (calendarSelection.selected) {
         return calendarSelection;
       }
@@ -104,7 +106,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
 
   private handleClick(value: Date) {
     if (this.props.onClick) {
-      let selectedDatePicker: IDatePickerState = this.getSelectedDatePicker();
+      const selectedDatePicker: IDatePickerState = this.getSelectedDatePicker();
 
       if (selectedDatePicker) {
         this.props.onClick(selectedDatePicker.id, selectedDatePicker.selected === DateLimits.upper, value);
@@ -172,49 +174,53 @@ export class Calendar extends React.Component<ICalendarProps, any> {
   }
 
   render() {
-    let monthPickerProps: IOptionsCycleProps = {
+    const monthPickerProps: IOptionsCycleProps = {
       options: this.props.months,
       startAt: this.props.startingMonth,
-      isInline: true
+      isInline: true,
     };
 
-    let startingYear: number = this.props.startingYear || this.props.years.indexOf(DateUtils.currentYear.toString());
-    let yearPickerProps: IOptionsCycleProps = {
+    const startingYear: number = this.props.startingYear || this.props.years.indexOf(DateUtils.currentYear.toString());
+    const yearPickerProps: IOptionsCycleProps = {
       options: this.props.years,
       startAt: startingYear,
-      isInline: true
+      isInline: true,
     };
 
-    let orderedDays: string[] = [
+    const orderedDays: string[] = [
       this.props.days[this.props.startingDay],
       ...this.props.days.slice(this.props.startingDay + 1),
-      ...this.props.days.slice(0, this.props.startingDay)
+      ...this.props.days.slice(0, this.props.startingDay),
     ];
-    let daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({ title: day }));
+    const daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({ title: day }));
 
-    let monthPicker = this.props.withReduxState
+    const monthPicker = this.props.withReduxState
       ? <OptionsCycleConnected id={this.props.id + MONTH_PICKER_ID} {...monthPickerProps} />
       : <OptionsCycle {...monthPickerProps} />;
 
-    let yearPicker = this.props.withReduxState
+    const yearPicker = this.props.withReduxState
       ? <OptionsCycleConnected id={this.props.id + YEAR_PICKER_ID} {...yearPickerProps} />
       : <OptionsCycle {...yearPickerProps} />;
 
-    let sectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
-    let year = parseInt(this.props.years[sectedYearOption]);
-    let selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : this.props.startingMonth;
+    const sectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
+    const year = parseInt(this.props.years[sectedYearOption]);
+    const selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : this.props.startingMonth;
 
-    let month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), this.props.startingDay);
-    let weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
-      let days: JSX.Element[] = _.map(week, (day: IDay) => {
-        day = this.fillInDayInfos(day);
-        return <CalendarDay key={day.date.toString()} day={day} onClick={(value: Date) => this.handleClick(value)} />;
+    const month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), this.props.startingDay);
+    const weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
+      const days: JSX.Element[] = _.map(week, (day: IDay) => {
+        const dayFilled = this.fillInDayInfos(day);
+        return <CalendarDay
+          key={dayFilled.date.toString()}
+          day={dayFilled}
+          onClick={(value: Date) => this.handleClick(value)}
+          onUnselectable={() => this.handleClick(null)} />;
       });
 
       return <tr key={`week-${days[0].key}`}>{days}</tr>;
     });
 
-    let tableClasses: string[] = ['calendar-grid'];
+    const tableClasses: string[] = ['calendar-grid'];
     if (this.getSelectedDatePicker()) {
       tableClasses.push('selecting');
     }

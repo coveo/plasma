@@ -21,14 +21,14 @@ import * as _ from 'underscore';
 import * as React from 'react';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnProps): IDatesSelectionStateProps => {
-  let item: IDatePickerState = _.findWhere(state.datePickers, { id: ownProps.id });
-  let optionPicker: IOptionPickerState = _.findWhere(state.optionPickers, { id: ownProps.id });
+  const item: IDatePickerState = _.findWhere(state.datePickers, { id: ownProps.id });
+  const optionPicker: IOptionPickerState = _.findWhere(state.optionPickers, { id: ownProps.id });
 
   return {
     lowerLimit: item ? item.lowerLimit : new Date(),
     upperLimit: item ? item.upperLimit : new Date(),
-    quickOption: optionPicker && optionPicker.selectedValue ? optionPicker.selectedValue : '',
-    isSelecting: item ? item.selected : ''
+    quickOption: optionPicker && optionPicker.selectedValue,
+    isSelecting: item && item.selected,
   };
 };
 
@@ -54,7 +54,8 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     },
     onClick: (isUpperLimit: boolean) => {
       dispatch(selectDate(ownProps.id, (isUpperLimit ? DateLimits.upper : DateLimits.lower)));
-    }
+    },
+    onBlur: () => dispatch(selectDate(ownProps.id, '')),
   });
 
 export const DatesSelectionConnected: React.ComponentClass<IDatesSelectionProps> =
