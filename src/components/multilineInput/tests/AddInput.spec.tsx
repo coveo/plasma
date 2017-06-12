@@ -36,13 +36,13 @@ describe('AddInput', () => {
       let innerInput = addInput.find('input');
 
       innerInput.simulate('blur');
-      expect(blurSpy.calls.count()).toBe(0);
+      expect(blurSpy).not.toHaveBeenCalled();
 
       addInput.setProps({ onChange: blurSpy });
       addInput.mount();
 
       innerInput.simulate('blur');
-      expect(blurSpy.calls.count()).toBe(1);
+      expect(blurSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call property onChange when inner input has focus and Enter key is released', () => {
@@ -52,7 +52,7 @@ describe('AddInput', () => {
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
-      expect(changeSpy.calls.count()).toBe(0);
+      expect(changeSpy).not.toHaveBeenCalled();
 
       addInput.setProps({ onChange: changeSpy });
       addInput.mount();
@@ -60,7 +60,7 @@ describe('AddInput', () => {
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
-      expect(changeSpy.calls.count()).toBe(1);
+      expect(changeSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

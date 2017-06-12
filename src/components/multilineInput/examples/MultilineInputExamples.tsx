@@ -8,8 +8,9 @@ export interface IMultilineInputExampleStateProps {
 }
 
 export class MultilineInputExamples extends React.Component<IMultilineInputExampleProps, IMultilineInputExampleStateProps> {
-  constructor(props: IMultilineInputExampleProps) {
-    super(props);
+  constructor(props: IMultilineInputExampleProps,
+    state: IMultilineInputExampleStateProps) {
+    super(props, state);
     this.state = {
       values: []
     };

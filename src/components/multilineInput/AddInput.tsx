@@ -8,7 +8,7 @@ export class AddInput extends React.Component<IInputProps, any> {
 
   private onAdd(): void {
     if (this.props.onChange) {
-      this.props.onChange(this.innerInput.innerValue());
+      this.props.onChange(this.innerInput.getInnerValue());
       this.innerInput.reset();
     }
   }
@@ -20,7 +20,7 @@ export class AddInput extends React.Component<IInputProps, any> {
   }
 
   render() {
-    let props: IInputProps = _.omit(this.props, ['children']);
+    const props: IInputProps = _.omit(this.props, ['children']);
     props.onChange = () => this.onAdd();
     props.onKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => this.handleAddKeys(event);
     return (

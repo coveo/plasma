@@ -3,7 +3,7 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { MultilineInput, IMultilineInputProps, IMultilineInputValue } from '../MultilineInput';
 import { AddInput } from '../AddInput';
-import { DeleteInput } from '../DeleteInput';
+import { DeletableInput } from '../DeletableInput';
 
 describe('MultilineInput', () => {
 
@@ -45,16 +45,16 @@ describe('MultilineInput', () => {
       expect(innerAddInput.length).toBe(1);
     });
 
-    it('should render no DeleteInput when no values are specifie.', () => {
-      let innerDeleteInput = multilineInput.find('DeleteInput');
+    it('should render no DeletableInput when no values are specifie.', () => {
+      let innerDeleteInput = multilineInput.find(DeletableInput);
 
       expect(innerDeleteInput.length).toBe(0);
     });
 
-    it('should render one DeleteInput when one value is specified', () => {
+    it('should render one DeletableInput when one value is specified', () => {
       multilineInput.setProps({ values: [multilineInputValue] });
       multilineInput.mount();
-      let innerDeleteInput = multilineInput.find('DeleteInput');
+      let innerDeleteInput = multilineInput.find(DeletableInput);
 
       expect(innerDeleteInput.length).toBe(1);
     });
@@ -78,7 +78,7 @@ describe('MultilineInput', () => {
       multilineInput.setProps({ onChange: changeSpy, values: [multilineInputValue] });
       multilineInput.mount();
 
-      let innerDeleteInput = multilineInput.find(DeleteInput);
+      let innerDeleteInput = multilineInput.find(DeletableInput);
       expect(innerDeleteInput.length).toBe(1);
 
       innerDeleteInput.props().onChange(aNewValue);
@@ -92,7 +92,7 @@ describe('MultilineInput', () => {
       multilineInput.setProps({ onChange: changeSpy, values: [multilineInputValue] });
       multilineInput.mount();
 
-      let innerDeleteInput = multilineInput.find(DeleteInput);
+      let innerDeleteInput = multilineInput.find(DeletableInput);
       expect(innerDeleteInput.length).toBe(1);
 
       innerDeleteInput.props().onChange('');

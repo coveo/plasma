@@ -4,8 +4,6 @@ import * as React from 'react';
 import { Input, IInputProps } from '../Input';
 
 describe('Input', () => {
-  // let title: string = 'Title';
-
   describe('<Input />', () => {
     it('should render without errors', () => {
       expect(() => {
@@ -16,7 +14,7 @@ describe('Input', () => {
     });
   });
 
-  describe('<Modal />', () => {
+  describe('<Input />', () => {
     let input: ReactWrapper<IInputProps, any>;
     let inputInstance: Input;
 
@@ -34,8 +32,8 @@ describe('Input', () => {
     });
 
     it('should call prop onChange on inner input blur', () => {
-      let changeSpy = jasmine.createSpy('onChange');
-      let innerInput = input.find('input');
+      const changeSpy = jasmine.createSpy('onChange');
+      const innerInput = input.find('input');
 
       input.setProps({ onChange: changeSpy });
       input.mount();
@@ -45,8 +43,8 @@ describe('Input', () => {
     });
 
     it('should call prop onKeyUp on key up', () => {
-      let keyUpSpy = jasmine.createSpy('onKeyUp');
-      let innerInput = input.find('input');
+      const keyUpSpy = jasmine.createSpy('onKeyUp');
+      const innerInput = input.find('input');
 
       input.setProps({ onKeyUp: keyUpSpy });
       input.mount();
