@@ -4,8 +4,8 @@ import * as React from 'react';
 import { ModalHeader, IModalHeaderProps } from '../ModalHeader';
 
 describe('ModalHeader', () => {
-  let id: string = 'modal';
-  let title: string = 'Title';
+  const id: string = 'modal';
+  const title: string = 'Title';
 
   describe('<ModalHeader />', () => {
     it('should render without errors', () => {
@@ -39,19 +39,19 @@ describe('ModalHeader', () => {
     });
 
     it('should call prop onClose when modal x clicked and prop is set', () => {
-      let closeSpy = jasmine.createSpy('onClose');
+      const closeSpy = jasmine.createSpy('onClose');
 
       modal.setProps({ id: id, title: title, onClose: closeSpy });
       modal.mount();
-      let input = modal.find('.small-close');
+      const input = modal.find('.small-close');
       input.simulate('click');
       expect(closeSpy.calls.count()).toBe(1);
     });
 
     it('should set class when the class is specified', () => {
-      let headerClass = 'mod-big';
-      let classes = [headerClass];
-      let header = modal.find('header').first();
+      const headerClass = 'mod-big';
+      const classes = [headerClass];
+      const header = modal.find('header').first();
       expect(header.hasClass(headerClass)).toBe(false);
 
       modal.setProps({ id, title, classes });

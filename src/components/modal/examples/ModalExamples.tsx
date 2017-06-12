@@ -36,7 +36,7 @@ export class ModalExamples extends React.Component<any, IModalExamplesState> {
             <Modal id='modal1' isOpened={this.state.isOpened}>
               <ModalHeader title='Simple Modal' onClose={() => this.closeModal()}>
                 <Tooltip title='I am a tooltip'>
-                  <Svg svgName='help' className='icon mod-2x ml1' svgClass='fill-orange' />/>
+                  <Svg svgName='help' className='icon mod-2x ml1' svgClass='fill-orange' />
                 </Tooltip>
               </ModalHeader>
               <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>

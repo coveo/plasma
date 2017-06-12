@@ -18,17 +18,19 @@ export interface IModalHeaderProps extends IModalHeaderOwnProps, IModalHeaderSta
 export class ModalHeader extends React.Component<IModalHeaderProps, any> {
 
   close() {
-    this.props.onClose();
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
   }
 
   render() {
-    let classes = ['modal-header'].concat(this.props.classes);
+    const classes = ['modal-header'].concat(this.props.classes);
 
     let closeComponent: JSX.Element = null;
     if (this.props.onClose) {
       closeComponent = (
         <span className='small-close' onClick={() => { this.close(); }}>
-          <Svg svgName='close' className='icon mod-lg fill-pure-white'></Svg>
+          <Svg svgName='close' className='icon mod-lg fill-pure-white' />
         </span>
       );
     }
