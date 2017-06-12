@@ -90,8 +90,6 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     days: DEFAULT_DAYS,
     startingMonth: DateUtils.currentMonth,
     startingDay: 0,
-    selectedMonth: 0,
-    selectedYear: 0,
   };
 
   private getSelectedDatePicker(): IDatePickerState {

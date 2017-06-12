@@ -56,14 +56,14 @@ describe('Calendar', () => {
     });
 
     it('should display the days set as props or the default ones', () => {
-      let days: string[] = [
+      const days: string[] = [
         'lun',
         'mar',
         'mer',
         'jeu',
         'ven',
         'sam',
-        'dim'
+        'dim',
       ];
 
       _.each(DEFAULT_DAYS, (day: string) => {
@@ -78,7 +78,7 @@ describe('Calendar', () => {
     });
 
     it('should send the months sent as props or the default ones to the month picker <OptionsCycle />', () => {
-      let months: string[] = [
+      const months: string[] = [
         'janvier',
         'février',
         'mars',
@@ -89,9 +89,9 @@ describe('Calendar', () => {
         'septembre',
         'octobre',
         'novembre',
-        'décembre'
+        'décembre',
       ];
-      let monthPicker: ReactWrapper<IOptionsCycleProps, any> = calendar.find(OptionsCycle).first();
+      const monthPicker: ReactWrapper<IOptionsCycleProps, any> = calendar.find(OptionsCycle).first();
 
       expect(monthPicker.props().options).toEqual(DEFAULT_MONTHS);
 
@@ -101,12 +101,12 @@ describe('Calendar', () => {
     });
 
     it('should send the years sent as props or the default ones to the year picker <OptionsCycle />', () => {
-      let years: string[] = [
+      const years: string[] = [
         '2015',
         '2016',
-        '2017'
+        '2017',
       ];
-      let yearPicker: ReactWrapper<IOptionsCycleProps, any> = calendar.find(OptionsCycle).last();
+      const yearPicker: ReactWrapper<IOptionsCycleProps, any> = calendar.find(OptionsCycle).last();
 
       expect(yearPicker.props().options).toEqual(DEFAULT_YEARS);
 
@@ -116,7 +116,7 @@ describe('Calendar', () => {
     });
 
     it('should use the startingMonth prop to set the month picker at the desired month or use the current one', () => {
-      let startingMonth: number = 5;
+      const startingMonth: number = 5;
 
       expect(calendar.html()).toContain(DEFAULT_MONTHS[DateUtils.currentMonth]);
 
@@ -130,7 +130,7 @@ describe('Calendar', () => {
     });
 
     it('should use the startingYear prop to set the year picker at the desired year or use the current one', () => {
-      let startingYear: number = 2;
+      const startingYear: number = 2;
 
       expect(calendar.html()).toContain(DateUtils.currentYear.toString());
 
@@ -144,10 +144,11 @@ describe('Calendar', () => {
     });
 
     it('should start the week on the startingDay sent as prop or simply use the first one (assumed to be Sunday)', () => {
-      let startingDay: number = 3;
+      const startingDay: number = 3;
       let firstDayOfSecondWeek: number = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text());
 
       expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[0]);
+      debugger;
       expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(0);
 
       calendar.setProps({ startingDay });

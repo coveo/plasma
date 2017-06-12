@@ -13,11 +13,11 @@ import {
   DateLimits, resetDatePickers,
   selectDate,
 } from '../datePicker/DatePickerActions';
-import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
-import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {connect} from 'react-redux';
+import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
+import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';
@@ -28,8 +28,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): 
 
   return {
     withReduxState: true,
-    selectedMonth: selectedMonth && selectedMonth.currentOption,
-    selectedYear: selectedYear && selectedYear.currentOption,
+    selectedMonth: selectedMonth ? selectedMonth.currentOption : 0,
+    selectedYear: selectedYear ? selectedYear.currentOption : 0,
     calendarSelection: _.where(state.datePickers, { calendarId: ownProps.id }),
   };
 };

@@ -20,6 +20,7 @@ import * as _ from 'underscore';
 import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { IDatePickerState } from '../../datePicker/DatePickerReducers';
 
 describe('Calendar', () => {
   const CALENDAR_ID: string = 'calendar';
@@ -49,14 +50,14 @@ describe('Calendar', () => {
     });
 
     it('should get an id as a prop', () => {
-      let idProp = calendar.props().id;
+      const idProp = calendar.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(CALENDAR_ID);
     });
 
     it('should get if it has a redux state as a prop', () => {
-      let withReduxStateProp = calendar.props().withReduxState;
+      const withReduxStateProp = calendar.props().withReduxState;
 
       expect(withReduxStateProp).toBeDefined();
       expect(withReduxStateProp).toBe(true);
@@ -64,7 +65,7 @@ describe('Calendar', () => {
 
     it('should get the selected month as a prop', () => {
       let selectedMonthProp: number = calendar.props().selectedMonth;
-      let expectedSelectedMonth: number = 3;
+      const expectedSelectedMonth: number = 3;
 
       expect(selectedMonthProp).toBeDefined();
       expect(selectedMonthProp).toBe(DateUtils.currentMonth);
@@ -77,7 +78,7 @@ describe('Calendar', () => {
 
     it('should get the selected year as a prop', () => {
       let selectedYearProp: number = calendar.props().selectedYear;
-      let expectedSelectedYear: number = 3;
+      const expectedSelectedYear: number = 3;
 
       expect(selectedYearProp).toBeDefined();
       expect(selectedYearProp).toBe(10);
@@ -103,7 +104,7 @@ describe('Calendar', () => {
     });
 
     it('should get what to do on click as a prop', () => {
-      let onClickProp = calendar.props().onClick;
+      const onClickProp = calendar.props().onClick;
 
       expect(onClickProp).toBeDefined();
     });
@@ -114,7 +115,7 @@ describe('Calendar', () => {
 
     it('should set the selected value of the picker to an empty string when calling onClick and the limit selected ' +
       'is the upper one', () => {
-        let pickerSelected: string = DateLimits.upper;
+        const pickerSelected: string = DateLimits.upper;
 
         store.dispatch(addDatePicker(PICKER_ID, false, 'any', CALENDAR_ID));
         store.dispatch(selectDate(PICKER_ID, pickerSelected));
@@ -128,7 +129,7 @@ describe('Calendar', () => {
 
     it('should set the selected value of the picker to the upper limit when calling onClick and the limit selected ' +
       'is the lower one', () => {
-        let pickerSelected: string = DateLimits.lower;
+        const pickerSelected: string = DateLimits.lower;
 
         store.dispatch(addDatePicker(PICKER_ID, false, 'any', CALENDAR_ID));
         store.dispatch(selectDate(PICKER_ID, pickerSelected));
@@ -139,6 +140,22 @@ describe('Calendar', () => {
 
         expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(DateLimits.upper);
       });
+
+    it('should reset the date picker if on click is called without a value', () => {
+      store.dispatch(addDatePicker(PICKER_ID, false, 'any', CALENDAR_ID));
+      store.dispatch(selectDate(PICKER_ID, DateLimits.lower));
+
+      calendar.props().onClick(PICKER_ID, false, new Date());
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).lowerLimit).toBeDefined();
+
+      calendar.props().onClick(PICKER_ID, false, null);
+
+      const datePicker: IDatePickerState = _.findWhere(store.getState().datePickers, { id: PICKER_ID });
+
+      expect(datePicker.lowerLimit).toBe(datePicker.appliedLowerLimit);
+      expect(datePicker.selected).toBe('');
+    });
 
     it('should unselected any option from the option picker when calling onClick', () => {
       let pickerSelected: string = 'something-selected';

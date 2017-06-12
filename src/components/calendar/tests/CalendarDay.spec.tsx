@@ -7,18 +7,19 @@ import * as _ from 'underscore';
 import * as React from 'react';
 
 describe('Calendar day', () => {
-  let newMonth = DateUtils.currentMonth < 11 ? DateUtils.currentMonth + 1 : 0;
+  const newMonth = DateUtils.currentMonth < 11 ? DateUtils.currentMonth + 1 : 0;
   const DAY: IDay = {
     number: 2,
     isCurrentMonth: true,
     isToday: false,
     date: moment(new Date(2017, newMonth, 2)),
-    isSelectable: true
+    isSelectable: true,
   };
 
   const BASIC_CALENDAR_DAY_PROPS: ICalendarDayProps = {
     day: DAY,
-    onClick: jasmine.createSpy('onClick')
+    onClick: jasmine.createSpy('onClick'),
+    onUnselectable: jasmine.createSpy('onUnselectable'),
   };
 
   describe('<CalendarDay />', () => {
@@ -168,6 +169,15 @@ describe('Calendar day', () => {
       calendarDay.find('td').simulate('click');
 
       expect(BASIC_CALENDAR_DAY_PROPS.onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call onUnselectable when the day is supposed to be selected and unselectable at the same time', () => {
+      const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false, isSelected: true });
+      const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay, onUnselectable: jasmine.createSpy('onUnselectable') });
+
+      calendarDay.setProps(unSelectableDayProps);
+
+      expect(unSelectableDayProps.onUnselectable).toHaveBeenCalledTimes(1);
     });
   });
 });
