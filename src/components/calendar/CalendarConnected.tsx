@@ -14,11 +14,11 @@ import {
   resetDatePickers,
   selectDate
 } from '../datePicker/DatePickerActions';
-import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
-import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {connect} from 'react-redux';
+import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
+import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';
