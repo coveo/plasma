@@ -1,8 +1,8 @@
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { closeModal } from './ModalActions';
 import { connect } from 'react-redux';
-import { ModalHeader, IModalHeaderProps, IModalHeaderOwnProps, IModalHeaderDispatchProps, IModalHeaderStateProps } from './ModalHeader';
+import { ModalHeader, IModalHeaderProps, IModalHeaderOwnProps, IModalHeaderDispatchProps } from './ModalHeader';
 
 const mapStateToProps = () => { };
 

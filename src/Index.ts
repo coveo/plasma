@@ -129,6 +129,7 @@ import { TabNavigation } from './components/tab/TabNavigation';
 import { TabPane } from './components/tab/TabPane';
 import { TabPaneConnected } from './components/tab/TabPaneConnected';
 import { tabsReducer } from './components/tab/TabReducers';
+import { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 export {
@@ -178,6 +179,7 @@ export {
   ModalBody,
   ModalFooter,
   ModalHeader,
+  ModalHeaderConnected,
   modalsReducer,
   addModal,
   removeModal,
