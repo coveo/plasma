@@ -31,6 +31,7 @@ import { ModalBackdrop } from './components/modal/ModalBackdrop';
 import { ModalBackdropConnected } from './components/modal/ModalBackdropConnected';
 import { ModalBody } from './components/modal/ModalBody';
 import { ModalFooter } from './components/modal/ModalFooter';
+import { ModalHeader } from './components/modal/ModalHeader';
 import { modalsReducer } from './components/modal/ModalReducers';
 import {
   ModalAction,
@@ -176,6 +177,7 @@ export {
   ModalBackdropConnected,
   ModalBody,
   ModalFooter,
+  ModalHeader,
   modalsReducer,
   addModal,
   removeModal,
