@@ -148,7 +148,6 @@ describe('Calendar', () => {
       let firstDayOfSecondWeek: number = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text());
 
       expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[0]);
-      debugger;
       expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(0);
 
       calendar.setProps({ startingDay });

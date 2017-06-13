@@ -16,7 +16,7 @@ export interface IDay {
 export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   day: IDay;
   onClick: (value: Date) => void;
-  onUnselectable: () => void;
+  onSelectUnselectable: () => void;
 }
 
 export class CalendarDay extends React.Component<ICalendarDayProps, any> {
@@ -29,7 +29,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
 
   componentWillReceiveProps(nextProps: ICalendarDayProps) {
     if (!nextProps.day.isSelectable && nextProps.day.isSelected) {
-      nextProps.onUnselectable();
+      nextProps.onSelectUnselectable();
     }
   }
 

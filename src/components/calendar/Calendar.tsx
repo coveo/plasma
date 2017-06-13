@@ -212,7 +212,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
           key={dayFilled.date.toString()}
           day={dayFilled}
           onClick={(value: Date) => this.handleClick(value)}
-          onUnselectable={() => this.handleClick(null)} />;
+          onSelectUnselectable={() => this.handleClick(null)} />;
       });
 
       return <tr key={`week-${days[0].key}`}>{days}</tr>;

@@ -5,19 +5,20 @@ import {
   ICalendarProps,
   ICalendarStateProps,
   MONTH_PICKER_ID,
-  YEAR_PICKER_ID,
+  YEAR_PICKER_ID
 } from './Calendar';
 import {
   changeDatePickerLowerLimit,
   changeDatePickerUpperLimit,
-  DateLimits, resetDatePickers,
-  selectDate,
+  DateLimits,
+  resetDatePickers,
+  selectDate
 } from '../datePicker/DatePickerActions';
-import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
-import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { connect } from 'react-redux';
+import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
+import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {connect} from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';

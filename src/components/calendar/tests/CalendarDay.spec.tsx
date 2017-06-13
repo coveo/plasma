@@ -19,7 +19,7 @@ describe('Calendar day', () => {
   const BASIC_CALENDAR_DAY_PROPS: ICalendarDayProps = {
     day: DAY,
     onClick: jasmine.createSpy('onClick'),
-    onUnselectable: jasmine.createSpy('onUnselectable'),
+    onSelectUnselectable: jasmine.createSpy('onSelectUnselectable'),
   };
 
   describe('<CalendarDay />', () => {
@@ -171,13 +171,13 @@ describe('Calendar day', () => {
       expect(BASIC_CALENDAR_DAY_PROPS.onClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should call onUnselectable when the day is supposed to be selected and unselectable at the same time', () => {
+    it('should call onSelectUnselectable when the day is supposed to be selected and unselectable at the same time', () => {
       const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false, isSelected: true });
-      const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay, onUnselectable: jasmine.createSpy('onUnselectable') });
+      const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay, onSelectUnselectable: jasmine.createSpy('onSelectUnselectable') });
 
       calendarDay.setProps(unSelectableDayProps);
 
-      expect(unSelectableDayProps.onUnselectable).toHaveBeenCalledTimes(1);
+      expect(unSelectableDayProps.onSelectUnselectable).toHaveBeenCalledTimes(1);
     });
   });
 });
