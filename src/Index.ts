@@ -100,7 +100,7 @@ import { TabContent } from './components/tab/TabContent';
 import { TabNavigation } from './components/tab/TabNavigation';
 import { TabPane } from './components/tab/TabPane';
 import { TabPaneConnected } from './components/tab/TabPaneConnected';
-import { tabsReducer } from './components/tab/TabReducers';
+import { tabsReducer, tabGroupsReducer } from './components/tab/TabReducers';
 import { Button } from './components/button/Button';
 import { BlankSlate } from './components/blankSlate/BlankSlate';
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
@@ -210,6 +210,7 @@ export {
   TabNavigation,
   TabPane,
   TabPaneConnected,
+  tabGroupsReducer,
   tabsReducer,
   addTab,
   removeTab,
