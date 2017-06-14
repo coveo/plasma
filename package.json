@@ -111,7 +111,7 @@
     "react-test-renderer": "15.5.4",
     "redux": "3.6.0",
     "remap-istanbul": "0.9.5",
-    "sass-loader": "6.0.5",
+    "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
     "ts-loader": "2.1.0",
     "tslint": "4.5.1",
