@@ -7,7 +7,7 @@ export class ChosenSelectExamples extends React.Component<any, any> {
   getNumberOfOptions(number: number) {
     return _.times(number, (index: number) => {
       const indexShow = index + 1;
-      return <option value={indexShow}>Option {indexShow}</option>;
+      return <option key={index} value={indexShow}>Option {indexShow}</option>;
     });
   }
 
