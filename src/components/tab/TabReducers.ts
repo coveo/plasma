@@ -2,13 +2,22 @@ import { IReduxAction } from '../../Index';
 import { ITabActionPayload, TabAction } from './TabActions';
 import * as _ from 'underscore';
 
+export const DEFAULT_GROUP_ID = 'default';
+
 export interface ITabState {
   id: string;
   isSelected: boolean;
 }
 
+export interface ITabGroupState {
+  id: string;
+  tabs: ITabState[];
+}
+
 export const tabInitialState: ITabState = { id: undefined, isSelected: false };
 export const tabsInitialState: ITabState[] = [];
+export const tabGroupInitialState: ITabGroupState = { id: undefined, tabs: [] };
+export const tabGroupsInitialState: ITabGroupState[] = [];
 
 export const tabReducer = (state: ITabState = tabInitialState,
   action: IReduxAction<ITabActionPayload>): ITabState => {
@@ -46,6 +55,57 @@ export const tabsReducer = (state: ITabState[] = tabsInitialState,
       });
     case TabAction.selectTab:
       return state.map((tab: ITabState) => tabReducer(tab, action));
+    default:
+      return state;
+  }
+};
+
+export const tabGroupReducer = (state: ITabGroupState = tabGroupInitialState,
+  action: IReduxAction<ITabActionPayload>): ITabGroupState => {
+  switch (action.type) {
+    case TabAction.addTab:
+    case TabAction.removeTab:
+    case TabAction.selectTab:
+      const groupId = action.payload.groupId ? action.payload.groupId : DEFAULT_GROUP_ID;
+      if (state.id === groupId) {
+        return {
+          id: groupId,
+          tabs: tabsReducer(state.tabs, action)
+        };
+      }
+      return state;
+    default:
+      return state;
+  }
+};
+
+const findGroup = (state: ITabGroupState[], id: string) => {
+  return _.find(state, (group: ITabGroupState) => group.id === id);
+};
+
+export const tabGroupsReducer = (state: ITabGroupState[] = tabGroupsInitialState,
+  action: IReduxAction<ITabActionPayload>): ITabGroupState[] => {
+  switch (action.type) {
+    case TabAction.addTab:
+      const addgroupId = action.payload.groupId ? action.payload.groupId : DEFAULT_GROUP_ID;
+      const addgroup = findGroup(state, addgroupId);
+      if (addgroup) {
+        return state.map((tabGroup: ITabGroupState) => tabGroupReducer(tabGroup, action));
+      }
+      return [
+        ...state,
+        tabGroupReducer({ id: addgroupId, tabs: [] }, action)
+      ];
+    case TabAction.removeTab:
+      const groupId = action.payload.groupId ? action.payload.groupId : DEFAULT_GROUP_ID;
+      const group = findGroup(state, groupId);
+      if (group) {
+        const groups = state.map((tabGroup: ITabGroupState) => tabGroupReducer(tabGroup, action));
+        return _.reject(groups, (tabGroup: ITabGroupState) => tabGroup.tabs.length === 0);
+      }
+      return state;
+    case TabAction.selectTab:
+      return state.map((tabGroup: ITabGroupState) => tabGroupReducer(tabGroup, action));
     default:
       return state;
   }
