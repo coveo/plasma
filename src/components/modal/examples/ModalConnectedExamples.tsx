@@ -5,11 +5,15 @@ import { ModalConnected } from '../ModalConnected';
 import { ModalBody } from '../ModalBody';
 import { ModalFooter } from '../ModalFooter';
 import { ModalBackdropConnected } from '../ModalBackdropConnected';
+import { ModalHeaderConnected } from '../ModalHeaderConnected';
 
 export interface IModalExamplesProps {
   openModal?: (id: string) => void;
   closeModal?: (id: string) => void;
 }
+
+const modal1Id = 'modal1';
+const modal2Id = 'modal2';
 
 const mapStateToProps = () => ({});
 
@@ -36,10 +40,12 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
         <div>
           <div className='form-group'>
             <button className='btn' onClick={() => { this.openModal('modal1'); }}>Open Modal 1</button>
-            <ModalConnected id='modal1' title='Simple Modal' classes={['mod-big']}>
+            <ModalConnected id={modal1Id} classes={['mod-big']}>
+              <ModalHeaderConnected id={modal1Id} title='Simple Modal' />
               <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
                 Connected modal content
-                <ModalConnected id='modal2' title='Modal 2'>
+                <ModalConnected id={modal2Id}>
+                  <ModalHeaderConnected id={modal2Id} title='Modal 2' />
                   <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
                     A modal in a modal
                   </ModalBody>

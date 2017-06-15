@@ -25,6 +25,7 @@ import { ModalBackdrop } from './components/modal/ModalBackdrop';
 import { ModalBackdropConnected } from './components/modal/ModalBackdropConnected';
 import { ModalBody } from './components/modal/ModalBody';
 import { ModalFooter } from './components/modal/ModalFooter';
+import { ModalHeader } from './components/modal/ModalHeader';
 import { modalsReducer } from './components/modal/ModalReducers';
 import { addModal, closeModal, ModalAction, openModal, removeModal } from './components/modal/ModalActions';
 import { ModalPrompt } from './components/modalPrompt/ModalPrompt';
@@ -101,8 +102,10 @@ import { TabNavigation } from './components/tab/TabNavigation';
 import { TabPane } from './components/tab/TabPane';
 import { TabPaneConnected } from './components/tab/TabPaneConnected';
 import { tabsReducer } from './components/tab/TabReducers';
+import { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 import { Button } from './components/button/Button';
 import { BlankSlate } from './components/blankSlate/BlankSlate';
+
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 export {
@@ -151,6 +154,8 @@ export {
   ModalBackdropConnected,
   ModalBody,
   ModalFooter,
+  ModalHeader,
+  ModalHeaderConnected,
   modalsReducer,
   addModal,
   removeModal,
