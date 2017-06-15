@@ -9,7 +9,8 @@ import { TabConnected } from '../TabConnected';
 import { selectTab, addTab } from '../TabActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { ITabState } from '../TabReducers';
+import { ITabState, ITabGroupState, DEFAULT_GROUP_ID } from '../TabReducers';
+import * as _ from 'underscore';
 
 describe('Tab', () => {
   describe('<TabConnected />', () => {
@@ -83,39 +84,44 @@ describe('Tab', () => {
     });
 
     it('should add the tab in the store on render', () => {
-      expect(store.getState().tabs.filter((tab: ITabState) => tab.id === id).length).toBe(1);
+      const tabGroup = _.find(store.getState().tabs, ((tabGroup: ITabGroupState) => tabGroup.id === DEFAULT_GROUP_ID));
+      expect(tabGroup.tabs.filter((tab: ITabState) => tab.id === id).length).toBe(1);
     });
 
     it('should select the tab in the store when dispatching a "selectTab" action', () => {
-      let tab2Id = 'tab2Id';
+      const tab2Id = 'tab2Id';
       store.dispatch(addTab(tab2Id));
-      expect(store.getState().tabs.filter(tab => tab.id === id).length).toBe(1);
-      expect(store.getState().tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
-      expect(store.getState().tabs.filter(tab => tab.id === tab2Id).length).toBe(1);
-      expect(store.getState().tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
+      let tabGroup = _.find(store.getState().tabs, ((tabGroup: ITabGroupState) => tabGroup.id === DEFAULT_GROUP_ID));
+      expect(tabGroup.tabs.filter(tab => tab.id === id).length).toBe(1);
+      expect(tabGroup.tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
+      expect(tabGroup.tabs.filter(tab => tab.id === tab2Id).length).toBe(1);
+      expect(tabGroup.tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
 
       store.dispatch(selectTab(tab2Id));
-      expect(store.getState().tabs.filter(tab => tab.id === id)[0].isSelected).toBe(false);
-      expect(store.getState().tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(true);
+      tabGroup = _.find(store.getState().tabs, ((tabGroup: ITabGroupState) => tabGroup.id === DEFAULT_GROUP_ID));
+      expect(tabGroup.tabs.filter(tab => tab.id === id)[0].isSelected).toBe(false);
+      expect(tabGroup.tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(true);
     });
 
     it('should select the tab when clicking on it', () => {
-      let tab2Id = 'tab2Id';
+      const tab2Id = 'tab2Id';
       store.dispatch(addTab(tab2Id));
-      expect(store.getState().tabs.filter(tab => tab.id === id).length).toBe(1);
-      expect(store.getState().tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
-      expect(store.getState().tabs.filter(tab => tab.id === tab2Id).length).toBe(1);
-      expect(store.getState().tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
+      let tabGroup = _.find(store.getState().tabs, ((tabGroup: ITabGroupState) => tabGroup.id === DEFAULT_GROUP_ID));
+      expect(tabGroup.tabs.filter(tab => tab.id === id).length).toBe(1);
+      expect(tabGroup.tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
+      expect(tabGroup.tabs.filter(tab => tab.id === tab2Id).length).toBe(1);
+      expect(tabGroup.tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
 
       store.dispatch(selectTab(tab2Id));
       tab.simulate('click');
-      expect(store.getState().tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
-      expect(store.getState().tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
+      tabGroup = _.find(store.getState().tabs, ((tabGroup: ITabGroupState) => tabGroup.id === DEFAULT_GROUP_ID));
+      expect(tabGroup.tabs.filter(tab => tab.id === id)[0].isSelected).toBe(true);
+      expect(tabGroup.tabs.filter(tab => tab.id === tab2Id)[0].isSelected).toBe(false);
     });
 
     it('should remove the tab in the store on destroy', () => {
       wrapper.unmount();
-      expect(store.getState().tabs.filter(tabs => tabs.id === id).length).toBe(0);
+      expect(store.getState().tabs.filter(tabGroup => tabGroup.id === DEFAULT_GROUP_ID).length).toBe(0);
     });
   });
 });

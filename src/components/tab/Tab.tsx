@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export interface ITabOwnProps {
+  groupId?: string;
   id?: string;
   title: string;
 }

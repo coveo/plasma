@@ -18,27 +18,16 @@ import { changeFacet, emptyFacet, FacetActions } from './components/facets/Facet
 import { Loading } from './components/loading/Loading';
 import { LoadingConnected } from './components/loading/LoadingConnected';
 import { loadingsReducer } from './components/loading/LoadingReducers';
-import {
-  addLoading,
-  removeLoading,
-  turnOnLoading,
-  turnOffLoading,
-  LoadingActions
-} from './components/loading/LoadingActions';
+import { addLoading, LoadingActions, removeLoading, turnOffLoading, turnOnLoading } from './components/loading/LoadingActions';
 import { Modal } from './components/modal/Modal';
 import { ModalConnected } from './components/modal/ModalConnected';
 import { ModalBackdrop } from './components/modal/ModalBackdrop';
 import { ModalBackdropConnected } from './components/modal/ModalBackdropConnected';
 import { ModalBody } from './components/modal/ModalBody';
 import { ModalFooter } from './components/modal/ModalFooter';
+import { ModalHeader } from './components/modal/ModalHeader';
 import { modalsReducer } from './components/modal/ModalReducers';
-import {
-  ModalAction,
-  addModal,
-  removeModal,
-  openModal,
-  closeModal
-} from './components/modal/ModalActions';
+import { addModal, closeModal, ModalAction, openModal, removeModal } from './components/modal/ModalActions';
 import { ModalPrompt } from './components/modalPrompt/ModalPrompt';
 import { Navigation } from './components/navigation/Navigation';
 import { NavigationConnected } from './components/navigation/NavigationConnected';
@@ -48,12 +37,7 @@ import { NavigationPerPage } from './components/navigation/perPage/NavigationPer
 import { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
 import { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
 import { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
-import {
-  addPagination,
-  changePage,
-  resetPaging,
-  PaginationActions
-} from './components/navigation/pagination/NavigationPaginationActions';
+import { addPagination, changePage, PaginationActions, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 import { addPerPage, changePerPage, PerPageActions } from './components/navigation/perPage/NavigationPerPageActions';
 import { Dropdown } from './components/dropdown/Dropdown';
 import { DropdownConnected } from './components/dropdown/DropdownConnected';
@@ -62,13 +46,8 @@ import { ActionBar } from './components/actions/ActionBar';
 import { ActionBarConnected } from './components/actions/ActionBarConnected';
 import { IActionOptions } from './components/actions/Action';
 import { actionBarsReducer } from './components/actions/ActionBarReducers';
-import { addActionsToActionBar, ActionBarActions } from './components/actions/ActionBarActions';
-import {
-  ItemFilterActions,
-  filterItems,
-  addItemFilter,
-  removeItemFilter
-} from './components/actions/filters/ItemFilterActions';
+import { ActionBarActions, addActionsToActionBar } from './components/actions/ActionBarActions';
+import { addItemFilter, filterItems, ItemFilterActions, removeItemFilter } from './components/actions/filters/ItemFilterActions';
 import { itemFiltersReducer } from './components/actions/filters/ItemFilterReducers';
 import { TableHeader } from './components/tables/TableHeader';
 import { TableHeadingRow } from './components/tables/TableHeadingRow';
@@ -77,7 +56,7 @@ import { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
 import { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
 import { TableEmptyRow } from './components/tables/TableEmptyRow';
 import { tableRowsReducer } from './components/tables/TableRowReducers';
-import { toggleRow, TableRowActions } from './components/tables/TableRowActions';
+import { TableRowActions, toggleRow } from './components/tables/TableRowActions';
 import { promptsReducer } from './components/inlinePrompt/InlinePromptReducers';
 import { DatePickerDropdown } from './components/datePicker/DatePickerDropdown';
 import { DatePickerDropdownConnected } from './components/datePicker/DatePickerDropdownConnected';
@@ -86,49 +65,48 @@ import { DatesSelection } from './components/datePicker/DatesSelection';
 import { DatesSelectionConnected } from './components/datePicker/DatesSelectionConnected';
 import { DatePicker } from './components/datePicker/DatePicker';
 import {
-  DatePickerActions,
-  DateLimits,
   addDatePicker,
-  resetDatePickers,
   applyDatePicker,
   changeDatePickerLowerLimit,
   changeDatePickerUpperLimit,
+  DateLimits,
+  DatePickerActions,
+  resetDatePickers,
   selectDate
 } from './components/datePicker/DatePickerActions';
 import { datePickersReducer } from './components/datePicker/DatePickerReducers';
 import { OptionsCycle } from './components/optionsCycle/OptionsCycle';
 import { OptionsCycleConnected } from './components/optionsCycle/OptionsCycleConnected';
-import { OptionsCycleActions, addOptionsCycle, changeOptionsCycle } from './components/optionsCycle/OptionsCycleActions';
+import { addOptionsCycle, changeOptionsCycle, OptionsCycleActions } from './components/optionsCycle/OptionsCycleActions';
 import { optionsCyclesReducer } from './components/optionsCycle/OptionsCycleReducers';
 import { IOption } from './components/optionPicker/Option';
 import { OptionPicker } from './components/optionPicker/OptionPicker';
 import { OptionPickerConnected } from './components/optionPicker/OptionPickerConnected';
-import {
-  OptionPickerActions,
-  addOptionPicker,
-  changeOptionPicker,
-  resetOptionPickers
-} from './components/optionPicker/OptionPickerActions';
+import { addOptionPicker, changeOptionPicker, OptionPickerActions, resetOptionPickers } from './components/optionPicker/OptionPickerActions';
 import { optionPickersReducer } from './components/optionPicker/OptionPickerReducers';
-import { Calendar, ICalendarSelectionRule, CalendarSelectionRuleType } from './components/calendar/Calendar';
+import { Calendar, CalendarSelectionRuleType, ICalendarSelectionRule } from './components/calendar/Calendar';
 import { CalendarConnected } from './components/calendar/CalendarConnected';
-import { SubNavigation, ISubNavigationItem } from './components/subNavigation/SubNavigation';
+import { ISubNavigationItem, SubNavigation } from './components/subNavigation/SubNavigation';
 import { SubNavigationConnected } from './components/subNavigation/SubNavigationConnected';
 import { subNavigationsReducer } from './components/subNavigation/SubNavigationReducers';
 import { SubNavigationActions } from './components/subNavigation/SubNavigationActions';
 import { DisplayClass } from './utils/ComponentUtils';
-import { DateUtils, DATES_SEPARATOR } from './utils/DateUtils';
-import { ReduxUtils, ReduxConnect, IReduxAction, IReduxProps, CommonActions, clearState } from './utils/ReduxUtils';
+import { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
+import { clearState, CommonActions, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
-import { TabAction, addTab, removeTab, selectTab } from './components/tab/TabActions';
+import { addTab, removeTab, selectTab, TabAction } from './components/tab/TabActions';
 import { Tab } from './components/tab/Tab';
 import { TabConnected } from './components/tab/TabConnected';
 import { TabContent } from './components/tab/TabContent';
 import { TabNavigation } from './components/tab/TabNavigation';
 import { TabPane } from './components/tab/TabPane';
 import { TabPaneConnected } from './components/tab/TabPaneConnected';
-import { tabsReducer } from './components/tab/TabReducers';
 import { MultilineInput } from './components/multilineInput/MultilineInput';
+import { tabsReducer, tabGroupsReducer } from './components/tab/TabReducers';
+import { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
+import { Button } from './components/button/Button';
+import { BlankSlate } from './components/blankSlate/BlankSlate';
+
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 export {
@@ -177,6 +155,8 @@ export {
   ModalBackdropConnected,
   ModalBody,
   ModalFooter,
+  ModalHeader,
+  ModalHeaderConnected,
   modalsReducer,
   addModal,
   removeModal,
@@ -225,6 +205,12 @@ export {
   addItemFilter,
   removeItemFilter,
 
+  // Button
+  Button,
+
+  // BlankSlate
+  BlankSlate,
+
   // Tabs
   Tab,
   TabConnected,
@@ -233,6 +219,7 @@ export {
   TabNavigation,
   TabPane,
   TabPaneConnected,
+  tabGroupsReducer,
   tabsReducer,
   addTab,
   removeTab,
