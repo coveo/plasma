@@ -37,6 +37,7 @@ import { DatePickerDropdownConnectedExamples } from '../src/components/datePicke
 import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
 import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
+import { MultilineInputExamples } from '../src/components/multilineInput/examples/MultilineInputExamples';
 import { TooltipExamples } from '../src/components/tooltip/examples/TooltipExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
@@ -110,6 +111,7 @@ class App extends React.Component<any, any> {
           <DatePickerBoxExamples />
           <DatePickerBoxConnectedExamples />
           <DatePickerDropdownConnectedExamples />
+          <MultilineInputExamples />
           <BlankSlateExample />
         </div>
       </Provider>
