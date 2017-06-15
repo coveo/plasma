@@ -5,6 +5,7 @@ import * as React from 'react';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
   onChange: (date: Date, isUpperLimit: boolean) => void;
+  onBlur: () => void;
   onClick: (isUpperLimit: boolean) => void;
   placeholder: string;
   withTime?: boolean;
@@ -21,14 +22,14 @@ export const DatePickerColors = {
   green: 'green',
   yellow: 'yellow',
   red: 'red',
-  orange: 'orange'
+  orange: 'orange',
 };
 
 export const DEFAULT_DATE_PICKER_COLOR: string = DatePickerColors.blue;
 
 export class DatePicker extends React.Component<IDatePickerProps, any> {
   static defaultProps: Partial<IDatePickerProps> = {
-    color: DEFAULT_DATE_PICKER_COLOR
+    color: DEFAULT_DATE_PICKER_COLOR,
   };
 
   private dateInput: HTMLInputElement;
@@ -46,34 +47,39 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
   }
 
   private setToToday() {
-    let date = new Date();
+    const date = new Date();
     this.dateInput.value = this.getStringFromDate(date);
     this.handleChange();
   }
 
   private handleChange() {
-    let date: Date = this.getDateFromString(this.dateInput.value);
+    const date: Date = this.getDateFromString(this.dateInput.value);
 
     if (date.getDate()) {
       this.props.onChange(date, this.props.upperLimit);
     }
   }
 
-  componentWillReceiveProps(nextProps: IDatePickerProps) {
-    let dateValue: string = this.getStringFromDate(nextProps.date);
+  private handleBlur() {
+    this.handleChange();
+    this.props.onBlur();
+  }
 
-    if (this.dateInput.value !== dateValue) {
+  componentWillReceiveProps(nextProps: IDatePickerProps) {
+    const dateValue: string = this.getStringFromDate(nextProps.date);
+
+    if (nextProps.date && this.dateInput.value !== dateValue) {
       this.dateInput.value = dateValue;
     }
   }
 
   render() {
-    let nowButton: JSX.Element = this.props.hasSetToNowButton
+    const nowButton: JSX.Element = this.props.hasSetToNowButton
       ? <SetToNowButton onClick={() => this.setToToday()} tooltip={this.props.setToNowTooltip} />
       : null;
 
 
-    let inputClasses: string[] = [`border-${this.props.color}`];
+    const inputClasses: string[] = [`border-${this.props.color}`];
     if (this.props.isSelecting === DateLimits.upper && this.props.upperLimit
       || this.props.isSelecting === DateLimits.lower && !this.props.upperLimit) {
       inputClasses.push('picking-date');
@@ -88,6 +94,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
           ref={(dateInput: HTMLInputElement) => this.dateInput = dateInput}
           onChange={() => this.handleChange()}
           onClick={() => this.props.onClick(this.props.upperLimit)}
+          onBlur={() => this.handleBlur()}
           placeholder={this.props.placeholder}
           required
         />

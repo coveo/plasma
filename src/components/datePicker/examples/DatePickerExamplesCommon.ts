@@ -42,7 +42,7 @@ export const SELECTION_BOXES: IDatesSelectionBox[] = [
 
 export const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
   {
-    test: (date: Date) => date >= new Date(), // You cannot select a date in the past
+    test: (date: Date) => date >= moment().startOf('day').toDate(), // You cannot select a date in the past
     isFor: CalendarSelectionRuleType.all
   },
   {

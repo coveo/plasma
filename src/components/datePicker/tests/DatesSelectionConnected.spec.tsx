@@ -216,5 +216,15 @@ describe('Date picker', () => {
         expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedValue).toBe('');
         expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedLabel).toBe('');
       });
+
+    it('should remove the selected limit on blur', () => {
+      store.dispatch(selectDate(DATES_SELECTION_ID, DateLimits.lower));
+
+      expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).selected).toBe(DateLimits.lower);
+
+      datesSelection.props().onBlur();
+
+      expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).selected).toBe('');
+    });
   });
 });

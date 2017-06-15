@@ -27,6 +27,7 @@ export interface IDatesSelectionDispatchProps {
   onDestroy?: () => void;
   onChange?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
   onClick?: (isUpperLimit: boolean) => void;
+  onBlur?: () => void;
 }
 
 export interface IDatesSelectionChildrenProps {
@@ -43,6 +44,8 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
   static defaultProps: Partial<IDatesSelectionProps> = {
     lowerLimitPlaceholder: LOWER_LIMIT_PLACEHOLDER,
     upperLimitPlaceholder: UPPER_LIMIT_PLACEHOLDER,
+    quickOption: '',
+    isSelecting: '',
   };
 
   private onDateChange(date: Date, isUpperLimit: boolean, datePicker?: boolean) {
@@ -71,7 +74,8 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
 
   componentWillReceiveProps(nextProps: IDatesSelectionProps) {
     if (nextProps.quickOption && nextProps.quickOption !== this.props.quickOption) {
-      let dates: string[] = nextProps.quickOption.split(DATES_SEPARATOR);
+      const dates: string[] = nextProps.quickOption.split(DATES_SEPARATOR);
+
       this.onDateChange(new Date(dates[0]), false, true);
 
       if (dates.length > 1) {
@@ -81,26 +85,27 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
   }
 
   render() {
-    let wrapperClasses: string = !this.props.withTime ? 'mod-inline flex' : '';
-    let datePickerProps: IDatePickerProps = {
+    const wrapperClasses: string = !this.props.withTime ? 'mod-inline flex' : '';
+    const datePickerProps: IDatePickerProps = {
       withTime: this.props.withTime,
       hasSetToNowButton: this.props.hasSetToNowButton,
       setToNowTooltip: this.props.setToNowTooltip,
       isSelecting: this.props.isSelecting,
       onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
       onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit),
+      onBlur: this.props.onBlur,
       placeholder: ''
     };
-    let separatorClasses: string[] = ['date-separator'];
+    const separatorClasses: string[] = ['date-separator'];
     if (this.props.withTime) {
       separatorClasses.push('mod-vertical');
     }
-    let separator: JSX.Element = this.props.isRange
+    const separator: JSX.Element = this.props.isRange
       ? <span className={separatorClasses.join(' ')}>
         <span>-</span>
       </span>
       : null;
-    let toDate: JSX.Element = this.props.isRange
+    const toDate: JSX.Element = this.props.isRange
       ? <DatePicker
         upperLimit
         date={this.props.upperLimit}

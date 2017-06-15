@@ -16,6 +16,7 @@ export interface IDay {
 export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   day: IDay;
   onClick: (value: Date) => void;
+  onSelectUnselectable: () => void;
 }
 
 export class CalendarDay extends React.Component<ICalendarDayProps, any> {
@@ -26,9 +27,15 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
     }
   }
 
+  componentWillReceiveProps(nextProps: ICalendarDayProps) {
+    if (!nextProps.day.isSelectable && nextProps.day.isSelected) {
+      nextProps.onSelectUnselectable();
+    }
+  }
+
   render() {
-    let dayClasses: string[] = [];
-    let dayCellClasses: string[] = [];
+    const dayClasses: string[] = [];
+    const dayCellClasses: string[] = [];
 
     if (!this.props.day.isCurrentMonth) {
       dayClasses.push('other-month-date');
@@ -42,7 +49,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
       dayClasses.push('todays-date');
     }
 
-    if (this.props.day.isSelected) {
+    if (this.props.day.isSelected && this.props.day.isSelectable) {
       dayClasses.push('selected-date');
       dayClasses.push('bg-' + this.props.day.color);
 
@@ -55,7 +62,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
       }
     }
 
-    let bothLimitsElement: JSX.Element = this.props.day.isLowerLimit && this.props.day.isUpperLimit
+    const bothLimitsElement: JSX.Element = this.props.day.isLowerLimit && this.props.day.isUpperLimit
       ? <span></span>
       : null;
 

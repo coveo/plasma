@@ -67,7 +67,7 @@
     "bithound": "1.7.0",
     "chosen-js": "1.7.0",
     "codecov": "2.2.0",
-    "coveo-styleguide": "1.14.8",
+    "coveo-styleguide": "1.14.x",
     "css-loader": "0.28.4",
     "del": "3.0.0",
     "dts-generator": "2.1.0",

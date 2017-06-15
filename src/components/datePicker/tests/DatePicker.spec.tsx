@@ -10,7 +10,8 @@ describe('Date picker', () => {
   const DATE_PICKER_BASIC_PROPS: IDatePickerProps = {
     onChange: jasmine.createSpy('onChange'),
     onClick: jasmine.createSpy('onClick'),
-    placeholder: 'Pick a date'
+    onBlur: jasmine.createSpy('onBlur'),
+    placeholder: 'Pick a date',
   };
 
   describe('<DatePicker />', () => {
@@ -244,6 +245,32 @@ describe('Date picker', () => {
       datePicker.find('input').simulate('change');
 
       expect(handleChangeSpy).toHaveBeenCalled();
+    });
+
+    it('should call handleBlur on blur of the input', () => {
+      const handleBlurSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleBlur');
+
+      datePicker.find('input').simulate('focus');
+      datePicker.find('input').simulate('blur');
+
+      expect(handleBlurSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call handleChange on blur of the input', () => {
+      const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
+
+      datePicker.find('input').simulate('focus');
+      datePicker.find('input').simulate('blur');
+
+      expect(handleChangeSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call onBlur on blur of the input', () => {
+      const callsNb: number = (DATE_PICKER_BASIC_PROPS.onBlur as any).calls.count();
+      datePicker.find('input').simulate('focus');
+      datePicker.find('input').simulate('blur');
+
+      expect(DATE_PICKER_BASIC_PROPS.onBlur).toHaveBeenCalledTimes(callsNb + 1);
     });
   });
 });
