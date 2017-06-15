@@ -14,13 +14,11 @@ describe('Modal', () => {
   describe('<ModalConnected />', () => {
     let modal: ReactWrapper<IModalProps, any>;
     let id: string;
-    let title: string;
     let wrapper: ReactWrapper<any, any>;
     let store: Store<IReactVaporState>;
 
     beforeEach(() => {
       id = 'modal';
-      title = 'Title';
 
       store = TestUtils.buildStore();
 
@@ -28,7 +26,6 @@ describe('Modal', () => {
         <Provider store={store}>
           <ModalConnected
             id={id}
-            title={title}
           />
         </Provider>,
         { attachTo: document.getElementById('App') }
@@ -47,13 +44,6 @@ describe('Modal', () => {
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
-    });
-
-    it('should get its title as a prop', () => {
-      let titleProp = modal.props().title;
-
-      expect(titleProp).toBeDefined();
-      expect(titleProp).toBe(title);
     });
 
     it('should get isOpened false as a prop', () => {
@@ -75,12 +65,6 @@ describe('Modal', () => {
       expect(onDestroyProp).toBeDefined();
     });
 
-    it('should get what to do on close as a prop', () => {
-      let onCloseProp = modal.props().onClose;
-
-      expect(onCloseProp).toBeDefined();
-    });
-
     it('should add the modal in the store on render', () => {
       expect(store.getState().modals.filter(modal => modal.id === id).length).toBe(1);
     });
@@ -99,15 +83,6 @@ describe('Modal', () => {
       expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(true);
 
       store.dispatch(closeModal(id));
-      expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(false);
-    });
-
-    it('should close the modal in the store when clicking on modal x', () => {
-      expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(false);
-      store.dispatch(openModal(id));
-      expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(true);
-
-      modal.find('.small-close').simulate('click');
       expect(store.getState().modals.filter(modal => modal.id === id)[0].isOpened).toBe(false);
     });
 

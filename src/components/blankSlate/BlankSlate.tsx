@@ -26,7 +26,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, void> {
 
   getButtonsTemplate(): JSX.Element[] {
     return _.map(this.props.buttons, (buttonProps: IBaseActionOptions) => {
-      return <Button {...buttonProps} />;
+      return <Button key={buttonProps.name} {...buttonProps} />;
     });
   }
 
