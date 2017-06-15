@@ -17,7 +17,7 @@ import { IOptionPickerState } from './components/optionPicker/OptionPickerReduce
 import { IItemFilterState } from './components/actions/filters/ItemFilterReducers';
 import { IModalState } from './components/modal/ModalReducers';
 import { ISubNavigationState } from './components/subNavigation/SubNavigationReducers';
-import { ITabState } from './components/tab/TabReducers';
+import { ITabGroupState } from './components/tab/TabReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -36,7 +36,7 @@ export interface IReactVaporState {
   itemFilters?: IItemFilterState[];
   modals?: IModalState[];
   subNavigations?: ISubNavigationState[];
-  tabs?: ITabState[];
+  tabs?: ITabGroupState[];
 }
 
 export interface IReduxActionsPayload {

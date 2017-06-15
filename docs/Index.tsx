@@ -2,7 +2,6 @@ import * as React from 'react';
 import { render as ReactDOMRender } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReactVaporStore } from './ReactVaporStore';
-import { ChosenSelect } from '../src/components/chosen/ChosenSelect';
 import { Svg } from '../src/components/svg/Svg';
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { SyncFeedbackExample } from '../src/components/syncFeedback/examples/SyncFeedbackExample';
@@ -38,11 +37,13 @@ import { DatePickerDropdownConnectedExamples } from '../src/components/datePicke
 import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
 import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
+import { MultilineInputExamples } from '../src/components/multilineInput/examples/MultilineInputExamples';
 import { TooltipExamples } from '../src/components/tooltip/examples/TooltipExamples';
 import './style.scss';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
+import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 
 class App extends React.Component<any, any> {
 
@@ -74,34 +75,9 @@ class App extends React.Component<any, any> {
               <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
             </div>
           </div>
-          <div className='form-group'>
-            <label className='form-control-label'>
-              Chosen single select
-            </label>
-            <div className='form-control'>
-              <ChosenSelect placeholderTextSingle='Choose a country' value='France' width='400px'
-                onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
-                <option value='Canada'>Canada</option>
-                <option value='France'>France</option>
-                <option value='United States'>United States</option>
-              </ChosenSelect>
-            </div>
-          </div>
-          <div className='form-group'>
-            <label className='form-control-label'>
-              Chosen multi select
-            </label>
-            <div className='form-control'>
-              <ChosenSelect placeholderTextSingle='Choose a country' defaultValue={['Canada']} multiple width='400px'
-                onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
-                <option value='Canada'>Canada</option>
-                <option value='France'>France</option>
-                <option value='United States'>United States</option>
-              </ChosenSelect>
-            </div>
-          </div>
           <ButtonExamples />
           <TooltipExamples />
+          <ChosenSelectExamples />
           <UserFeedbackExample />
           <SyncFeedbackExample />
           <LastUpdatedExamples />
@@ -135,6 +111,7 @@ class App extends React.Component<any, any> {
           <DatePickerBoxExamples />
           <DatePickerBoxConnectedExamples />
           <DatePickerDropdownConnectedExamples />
+          <MultilineInputExamples />
           <BlankSlateExample />
         </div>
       </Provider>
