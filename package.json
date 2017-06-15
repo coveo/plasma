@@ -49,7 +49,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "@types/chosen-js": "1.6.0",
+    "@types/chosen-js": "1.6.1",
     "@types/enzyme": "2.8.0",
     "@types/jasmine": "2.5.51",
     "@types/jquery": "2.0.43",
