@@ -4,7 +4,7 @@ import { closeModal } from './ModalActions';
 import { connect } from 'react-redux';
 import { ModalHeader, IModalHeaderProps, IModalHeaderOwnProps, IModalHeaderDispatchProps } from './ModalHeader';
 
-const mapStateToProps = () => { };
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: IModalHeaderOwnProps): IModalHeaderDispatchProps => ({
