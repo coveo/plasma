@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const DEFAULT_TITLE = 'Add a new entry';
+const DEFAULT_TITLE = 'Add a new entry';
 
 export interface IAddInputActionProps {
   title?: string;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const DEFAULT_TITLE = 'Delete this entry';
+const DEFAULT_TITLE = 'Delete this entry';
 
 export interface IDeleteInputActionProps {
   title?: string;
