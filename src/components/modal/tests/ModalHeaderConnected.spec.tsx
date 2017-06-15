@@ -6,10 +6,11 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { IModalHeaderProps, ModalHeader } from '../ModalHeader';
 import { ModalHeaderConnected } from '../ModalHeaderConnected';
-import { openModal, closeModal, addModal } from '../ModalActions';
+import { openModal, addModal } from '../ModalActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+import { IModalState } from '../ModalReducers';
 
 describe('ModalHeader', () => {
   describe('<ModalHeaderConnected />', () => {
@@ -65,12 +66,12 @@ describe('ModalHeader', () => {
 
     it('should close the modalHeader in the store when clicking on modalHeader x', () => {
       store.dispatch(addModal(id));
-      expect(_.findWhere(store.getState().modals, (modal => modal.id === id)).isOpened).toBe(false);
+      expect(_.findWhere(store.getState().modals, ((modal: IModalState) => modal.id === id)).isOpened).toBe(false);
       store.dispatch(openModal(id));
-      expect(_.findWhere(store.getState().modals, (modal => modal.id === id)).isOpened).toBe(true);
+      expect(_.findWhere(store.getState().modals, ((modal: IModalState) => modal.id === id)).isOpened).toBe(true);
 
       modalHeader.find('.small-close').simulate('click');
-      expect(_.findWhere(store.getState().modals, (modal => modal.id === id)).isOpened).toBe(false);
+      expect(_.findWhere(store.getState().modals, ((modal: IModalState) => modal.id === id)).isOpened).toBe(false);
     });
   });
 });
