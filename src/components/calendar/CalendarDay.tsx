@@ -28,7 +28,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
   }
 
   componentWillReceiveProps(nextProps: ICalendarDayProps) {
-    if (!nextProps.day.isSelectable && nextProps.day.isSelected) {
+    if (!nextProps.day.isSelectable && (nextProps.day.isLowerLimit || nextProps.day.isUpperLimit)) {
       nextProps.onSelectUnselectable();
     }
   }

@@ -52,14 +52,14 @@ describe('Calendar day', () => {
     });
 
     it('should get the day as a prop', () => {
-      let dayProp = calendarDay.props().day;
+      const dayProp = calendarDay.props().day;
 
       expect(dayProp).toBeDefined();
       expect(dayProp).toEqual(DAY);
     });
 
     it('should get what to do onClick as a prop', () => {
-      let onClickProp = calendarDay.props().onClick;
+      const onClickProp = calendarDay.props().onClick;
 
       expect(onClickProp).toBeDefined;
     });
@@ -69,8 +69,8 @@ describe('Calendar day', () => {
     });
 
     it('should have the class "other-month-date" is the isCurrentMonth of the day prop is set to false', () => {
-      let dayFromOtherMonth: IDay = _.extend({}, DAY, { isCurrentMonth: false });
-      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: dayFromOtherMonth });
+      const dayFromOtherMonth: IDay = _.extend({}, DAY, { isCurrentMonth: false });
+      const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: dayFromOtherMonth });
 
       expect(calendarDay.find('.other-month-date').length).toBe(0);
 
@@ -80,8 +80,8 @@ describe('Calendar day', () => {
     });
 
     it('should have the class "todays-date" is the isToday of the day prop is set to true', () => {
-      let today: IDay = _.extend({}, DAY, { isToday: true });
-      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: today });
+      const today: IDay = _.extend({}, DAY, { isToday: true });
+      const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: today });
 
       expect(calendarDay.find('.todays-date').length).toBe(0);
 
@@ -91,8 +91,8 @@ describe('Calendar day', () => {
     });
 
     it('should have the classes "selected-date" and "bg-${color}" when the day is selected', () => {
-      let selectedDate: IDay = _.extend({}, DAY, { isSelected: true, color: 'pink' });
-      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: selectedDate });
+      const selectedDate: IDay = _.extend({}, DAY, { isSelected: true, color: 'pink' });
+      const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: selectedDate });
 
       expect(calendarDay.find('.selected-date').length).toBe(0);
       expect(calendarDay.find('span').props().className).not.toContain('bg-');
@@ -105,8 +105,8 @@ describe('Calendar day', () => {
     });
 
     it('should have the class "lower-limit" if the day is selected and isLowerLimit', () => {
-      let lowerLimitDay: IDay = _.extend({}, DAY, { isLowerLimit: true, isSelected: true });
-      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: lowerLimitDay });
+      const lowerLimitDay: IDay = _.extend({}, DAY, { isLowerLimit: true, isSelected: true });
+      const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: lowerLimitDay });
 
       expect(calendarDay.find('.lower-limit').length).toBe(0);
 
@@ -116,8 +116,8 @@ describe('Calendar day', () => {
     });
 
     it('should have the class "upper-limit" if the day is selected isUpperLimit', () => {
-      let upperLimitDay: IDay = _.extend({}, DAY, { isUpperLimit: true, isSelected: true });
-      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: upperLimitDay });
+      const upperLimitDay: IDay = _.extend({}, DAY, { isUpperLimit: true, isSelected: true });
+      const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: upperLimitDay });
 
       expect(calendarDay.find('.upper-limit').length).toBe(0);
 
@@ -127,8 +127,8 @@ describe('Calendar day', () => {
     });
 
     it('should have the class "un-selectable" if the day is not selectable', () => {
-      let unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false });
-      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay });
+      const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false });
+      const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay });
 
       expect(calendarDay.find('.un-selectable').length).toBe(0);
 
@@ -138,8 +138,8 @@ describe('Calendar day', () => {
     });
 
     it('should add another span if the day is selected and both isLowerLimit and upperLimit', () => {
-      let limitDay: IDay = _.extend({}, DAY, { isLowerLimit: true, isUpperLimit: true, isSelected: true });
-      let newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: limitDay });
+      const limitDay: IDay = _.extend({}, DAY, { isLowerLimit: true, isUpperLimit: true, isSelected: true });
+      const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: limitDay });
 
       expect(calendarDay.find('span').length).toBe(1);
 
@@ -149,7 +149,7 @@ describe('Calendar day', () => {
     });
 
     it('should call handleClick when clicking the day', () => {
-      let handleClickSpy: jasmine.Spy = spyOn<any>(calendarDayInstance, 'handleClick');
+      const handleClickSpy: jasmine.Spy = spyOn<any>(calendarDayInstance, 'handleClick');
 
       calendarDay.find('td').simulate('click');
 
@@ -157,8 +157,8 @@ describe('Calendar day', () => {
     });
 
     it('should call onClick when clicking a selectable day', () => {
-      let unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false });
-      let unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay });
+      const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false });
+      const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay });
 
       calendarDay.find('td').simulate('click');
 
@@ -172,7 +172,7 @@ describe('Calendar day', () => {
     });
 
     it('should call onSelectUnselectable when the day is supposed to be selected and unselectable at the same time', () => {
-      const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false, isSelected: true });
+      const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false, isUpperLimit: true });
       const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay, onSelectUnselectable: jasmine.createSpy('onSelectUnselectable') });
 
       calendarDay.setProps(unSelectableDayProps);
