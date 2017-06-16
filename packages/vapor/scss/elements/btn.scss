@@ -27,6 +27,7 @@
 }
 
 .btn {
+  box-sizing: border-box;
   display: inline-block;
   height: $button-height;
   padding: $button-padding-y $button-padding-x;
