@@ -100,5 +100,12 @@ describe('BlankSlate', () => {
       });
       expect(blankSlateComponent.find('button').length).toBe(2);
     });
+
+    it('should render the icon', () => {
+      renderBlankSlate({
+        svgName: 'tips',
+      });
+      expect(blankSlateComponent.find('svg').length).toBe(1);
+    });
   });
 });
