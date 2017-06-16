@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { IBaseActionOptions } from '../actions/Action';
 import { Button } from '../button/Button';
-import {Svg} from '../svg/Svg';
+import { Svg } from '../svg/Svg';
 
 export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
   title?: string;

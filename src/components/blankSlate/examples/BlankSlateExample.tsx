@@ -55,7 +55,7 @@ export class BlankSlateExample extends React.Component<any, any> {
         </div>
         <div className='form-group'>
           <label className='form-control-label'>BlankSlate with an icon</label>
-          <BlankSlate title='Title test' description='description test'  svgName='tips' svgClass='fill-orange' />
+          <BlankSlate title='Title test' description='description test' svgName='tips' svgClass='fill-orange' />
         </div>
       </div>
     );

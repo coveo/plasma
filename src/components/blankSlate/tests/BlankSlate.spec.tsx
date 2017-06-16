@@ -2,6 +2,7 @@ import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import { BlankSlate, IBlankSlateProps } from '../BlankSlate';
 import * as _ from 'underscore';
+import {Svg} from '../../svg/Svg';
 
 describe('BlankSlate', () => {
 
@@ -52,6 +53,7 @@ describe('BlankSlate', () => {
         },
       ],
       withModal: false,
+      svgName: 'tips',
     };
 
     const renderBlankSlate = (props: IBlankSlateProps = {}) => {
@@ -102,10 +104,8 @@ describe('BlankSlate', () => {
     });
 
     it('should render the icon', () => {
-      renderBlankSlate({
-        svgName: 'tips',
-      });
-      expect(blankSlateComponent.find('svg').length).toBe(1);
+      renderBlankSlate();
+      expect(blankSlateComponent.find(Svg).length).toBe(1);
     });
   });
 });
