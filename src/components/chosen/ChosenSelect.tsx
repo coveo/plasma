@@ -17,6 +17,7 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
   maxShownResults?: number; // @default: Infinity
   noResultsText?: string; // @default: "No results match"
   onChosenChange?: (event: JQueryEventObject, args: Chosen.SelectedData) => void;
+  onChosenClick?: (event: JQueryEventObject, args: Chosen.SelectedData) => void;
   placeholderTextMultiple?: string; // @default: "Select Some Options"
   placeholderTextSingle?: string; // @default: "Select an Option"
   searchContains?: boolean; // @default: false
@@ -31,7 +32,7 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
 const chosenSelectPropsToOmit = [
   'allowSingleDeselect', 'children', 'disableSearch', 'disableSearchThreshold', 'displayDisabledOptions', 'displaySelectedOptions',
   'enableSplitWordSearch', 'inheritSelectClasses', 'maxSelectedOptions', 'noResultsText', 'onChosenChange', 'placeholderTextMultiple',
-  'placeholderTextSingle', 'searchContains', 'singleBackstrokeDelete', 'width'
+  'placeholderTextSingle', 'searchContains', 'singleBackstrokeDelete', 'width',
 ];
 
 export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
@@ -56,14 +57,16 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
         placeholder_text_single: this.props.placeholderTextSingle,
         search_contains: this.props.searchContains,
         single_backstroke_delete: this.props.singleBackstrokeDelete,
-        width: this.props.width
+        width: this.props.width,
       })
-      .change((event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenChange && this.props.onChosenChange(event, args));
+      .change((event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenChange && this.props.onChosenChange(event, args))
+      .click((event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenClick && this.props.onChosenChange(event, args));
   }
 
   componentWillUnmount() {
     this.select
       .off('change')
+      .off('click')
       .chosen('destroy');
   }
 
