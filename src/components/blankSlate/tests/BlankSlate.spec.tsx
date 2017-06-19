@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import { BlankSlate, IBlankSlateProps } from '../BlankSlate';
 import * as _ from 'underscore';
-import {Svg} from '../../svg/Svg';
+import { Svg } from '../../svg/Svg';
 
 describe('BlankSlate', () => {
 

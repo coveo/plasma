@@ -9,7 +9,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
   description?: string;
   buttons?: IBaseActionOptions[];
   withModal?: boolean;
-  classes?: string;
+  classes?: string[];
   svgName?: string;
   svgClass?: string;
 }
@@ -20,7 +20,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, void> {
     title: '',
     buttons: [],
     withModal: false,
-    classes: '',
+    classes: [],
     svgName: '',
     svgClass: '',
   };
@@ -45,7 +45,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, void> {
 
   render() {
     const marginClasses: string = this.props.withModal ? 'mt2 mb2' : 'm2';
-    const blankSlateClasses: string = `blankslate ${marginClasses} ${this.props.classes}`;
+    const blankSlateClasses: string = `blankslate ${marginClasses} ${this.props.classes.join(' ')}`;
     const modalClasses: string = this.props.withModal ? 'mod-header-padding' : '';
 
     return (
