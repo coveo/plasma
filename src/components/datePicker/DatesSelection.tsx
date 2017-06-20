@@ -1,6 +1,7 @@
 import { DatePicker, IDatePickerProps } from './DatePicker';
 import { DATES_SEPARATOR } from '../../utils/DateUtils';
 import * as React from 'react';
+import { DateLimits } from './DatePickerActions';
 
 export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSelection> {
   id?: string;
@@ -93,7 +94,11 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
       isSelecting: this.props.isSelecting,
       onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
       onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit),
-      onBlur: this.props.onBlur,
+      onBlur: (isUpperLimit: boolean) => {
+        if (this.props.isSelecting === DateLimits.upper && isUpperLimit || this.props.isSelecting === DateLimits.lower && !isUpperLimit) {
+          this.props.onBlur();
+        }
+      },
       placeholder: ''
     };
     const separatorClasses: string[] = ['date-separator'];

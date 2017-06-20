@@ -5,7 +5,7 @@ import * as React from 'react';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
   onChange: (date: Date, isUpperLimit: boolean) => void;
-  onBlur: () => void;
+  onBlur: (isUpperLimit: boolean) => void;
   onClick: (isUpperLimit: boolean) => void;
   placeholder: string;
   withTime?: boolean;
@@ -62,7 +62,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
 
   private handleBlur() {
     this.handleChange();
-    this.props.onBlur();
+    this.props.onBlur(this.props.upperLimit);
   }
 
   componentWillReceiveProps(nextProps: IDatePickerProps) {
