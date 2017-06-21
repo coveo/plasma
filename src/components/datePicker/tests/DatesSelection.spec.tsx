@@ -9,6 +9,7 @@ import { DatePicker } from '../DatePicker';
 import { DATES_SEPARATOR } from '../../../utils/DateUtils';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { DateLimits } from '../DatePickerActions';
 
 describe('Date picker', () => {
 
@@ -119,6 +120,30 @@ describe('Date picker', () => {
       datesSelectionInstance['onDateClick'].call(datesSelectionInstance, false);
 
       expect(onClickSpy).toHaveBeenCalled();
+    });
+
+    it('should call onBlur on date picker blur when the limit is the same as the one selected in the date picker', () => {
+      const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
+
+      datesSelection.setProps({ onBlur: onBlurSpy, isSelecting: DateLimits.upper });
+      datesSelection.find(DatePicker).props().onBlur(true);
+
+      expect(onBlurSpy).toHaveBeenCalledTimes(1);
+
+      datesSelection.setProps({ onBlur: onBlurSpy, isSelecting: DateLimits.lower });
+      datesSelection.find(DatePicker).props().onBlur(true);
+
+      expect(onBlurSpy).toHaveBeenCalledTimes(1);
+
+      datesSelection.setProps({ onBlur: onBlurSpy, isSelecting: DateLimits.lower });
+      datesSelection.find(DatePicker).props().onBlur(false);
+
+      expect(onBlurSpy).toHaveBeenCalledTimes(2);
+
+      datesSelection.setProps({ onBlur: onBlurSpy, isSelecting: DateLimits.upper });
+      datesSelection.find(DatePicker).props().onBlur(false);
+
+      expect(onBlurSpy).toHaveBeenCalledTimes(2);
     });
 
     it('should call onRender prop if set when mounting', () => {
