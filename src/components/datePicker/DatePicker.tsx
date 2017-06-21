@@ -1,6 +1,7 @@
 import { SetToNowButton } from './SetToNowButton';
 import { DateUtils } from '../../utils/DateUtils';
 import { DateLimits } from './DatePickerActions';
+import * as $ from 'jquery';
 import * as React from 'react';
 import { CalendarDay } from '../calendar/CalendarDay';
 
