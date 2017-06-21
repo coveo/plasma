@@ -247,30 +247,67 @@ describe('Date picker', () => {
       expect(handleChangeSpy).toHaveBeenCalled();
     });
 
-    it('should call handleBlur on blur of the input', () => {
-      const handleBlurSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleBlur');
+    it('should call prop onBlur when clicking elsewhere than the date picker or a calendar day', () => {
+      const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower, onBlur: jasmine.createSpy('onBlur') });
+      datePicker.setProps(dateProps);
 
-      datePicker.find('input').simulate('focus');
-      datePicker.find('input').simulate('blur');
-
-      expect(handleBlurSpy).toHaveBeenCalledTimes(1);
+      document.getElementById('App').click();
+      expect(dateProps.onBlur).toHaveBeenCalledTimes(1);
     });
 
-    it('should call handleChange on blur of the input', () => {
+    it('should call handleChange when clicking elsewhere than the date picker or a calendar day', () => {
+      const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
       const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
 
-      datePicker.find('input').simulate('focus');
-      datePicker.find('input').simulate('blur');
+      datePicker.setProps(dateProps);
 
+      document.getElementById('App').click();
+      expect(handleChangeSpy).toHaveBeenCalledTimes(1);
+
+      datePicker.unmount();
+      document.getElementById('App').click();
       expect(handleChangeSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should call onBlur on blur of the input', () => {
-      const callsNb: number = (DATE_PICKER_BASIC_PROPS.onBlur as any).calls.count();
-      datePicker.find('input').simulate('focus');
-      datePicker.find('input').simulate('blur');
+    it('should  not call handleChange when clicking the date picker', () => {
+      const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
+      const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
 
-      expect(DATE_PICKER_BASIC_PROPS.onBlur).toHaveBeenCalledTimes(callsNb + 1);
+      datePicker.setProps(dateProps);
+
+      datePicker.simulate('click');
+      expect(handleChangeSpy).not.toHaveBeenCalled();
+    });
+
+    describe('On calendar day click', () => {
+      beforeEach(() => {
+        const calendarDayElement: HTMLDivElement = document.createElement('div');
+        calendarDayElement.setAttribute('id', 'CalendarDay');
+        calendarDayElement.setAttribute('class', 'calendar-day');
+        document.body.appendChild(calendarDayElement);
+      });
+
+      it('should  not call handleChange when clicking the a calendar day', () => {
+        const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
+        const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
+
+        datePicker.setProps(dateProps);
+
+        document.createElement('div').setAttribute('id', 'CalendarDay');
+        document.getElementById('CalendarDay').setAttribute('class', 'calendar-day');
+        document.getElementById('CalendarDay').click();
+
+        expect(handleChangeSpy).not.toHaveBeenCalled();
+      });
+
+      it('should not call prop onBlur when clicking a calendar day', () => {
+        const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower, onBlur: jasmine.createSpy('onBlur') });
+
+        datePicker.setProps(dateProps);
+        document.getElementById('CalendarDay').click();
+
+        expect(dateProps.onBlur).not.toHaveBeenCalled();
+      });
     });
   });
 });

@@ -19,7 +19,8 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   onSelectUnselectable: () => void;
 }
 
-export class CalendarDay extends React.Component<ICalendarDayProps, any> {
+export class CalendarDay extends React.Component<ICalendarDayProps, void> {
+  static DEFAULT_DATE_CLASS: string = 'calendar-day';
 
   private handleClick() {
     if (this.props.day.isSelectable) {
@@ -35,7 +36,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps, any> {
 
   render() {
     const dayClasses: string[] = [];
-    const dayCellClasses: string[] = [];
+    const dayCellClasses: string[] = [CalendarDay.DEFAULT_DATE_CLASS];
 
     if (!this.props.day.isCurrentMonth) {
       dayClasses.push('other-month-date');

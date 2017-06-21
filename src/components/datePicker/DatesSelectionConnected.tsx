@@ -1,17 +1,19 @@
 import {
   DatesSelection,
-  IDatesSelectionProps,
+  IDatesSelectionDispatchProps,
   IDatesSelectionOwnProps,
-  IDatesSelectionStateProps,
-  IDatesSelectionDispatchProps
+  IDatesSelectionProps,
+  IDatesSelectionStateProps
 } from './DatesSelection';
 import {
   addDatePicker,
-  removeDatePicker,
+  changeDatePickerLowerLimit,
   changeDatePickerUpperLimit,
-  changeDatePickerLowerLimit, selectDate, DateLimits
+  DateLimits,
+  removeDatePicker,
+  selectDate
 } from './DatePickerActions';
-import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IDatePickerState } from './DatePickerReducers';
 import { IOptionPickerState } from '../optionPicker/OptionPickerReducers';
