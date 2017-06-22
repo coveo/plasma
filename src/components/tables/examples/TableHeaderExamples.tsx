@@ -31,5 +31,5 @@ export class TableHeaderExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

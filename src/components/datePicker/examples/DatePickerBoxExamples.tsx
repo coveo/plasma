@@ -13,5 +13,5 @@ export class DatePickerBoxExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

@@ -64,7 +64,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
   }
 
   handleDocumentClick = (e: MouseEvent) => {
-    const target: any = $(e.target) as any;
+    const target = $(e.target);
     if (this.isPicked && !target.closest('.date-picker').length && !target.closest(`.${CalendarDay.DEFAULT_DATE_CLASS}`).length) {
       this.handleChange();
       this.props.onBlur();

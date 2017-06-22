@@ -37,5 +37,5 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
         <div className='mask'></div>
       </div>
     );
-  };
+  }
 }

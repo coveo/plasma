@@ -36,5 +36,5 @@ export class NavigationConnectedExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

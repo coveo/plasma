@@ -14,5 +14,5 @@ export class CalendarConnectedExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

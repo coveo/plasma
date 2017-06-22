@@ -13,5 +13,5 @@ export class ItemFilterExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

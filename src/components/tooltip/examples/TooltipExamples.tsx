@@ -28,5 +28,5 @@ export class TooltipExamples extends React.Component<any, void> {
         </div>
       </div>
     );
-  };
+  }
 }

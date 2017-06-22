@@ -57,5 +57,5 @@ export class FacetExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

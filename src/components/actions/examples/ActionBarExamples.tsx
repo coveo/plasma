@@ -38,5 +38,5 @@ export class ActionBarExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

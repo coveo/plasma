@@ -11,5 +11,5 @@ export class TabContent extends React.Component<ITabContentProps, any> {
         {this.props.children}
       </div>
     );
-  };
+  }
 }

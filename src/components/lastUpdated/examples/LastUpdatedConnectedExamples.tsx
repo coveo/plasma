@@ -37,5 +37,5 @@ export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateCon
         </div>
       </div>
     );
-  };
+  }
 }

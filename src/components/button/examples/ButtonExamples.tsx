@@ -99,5 +99,5 @@ export class ButtonExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

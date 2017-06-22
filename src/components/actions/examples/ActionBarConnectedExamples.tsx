@@ -57,5 +57,5 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }
