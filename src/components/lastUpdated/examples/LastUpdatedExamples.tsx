@@ -20,5 +20,5 @@ export class LastUpdatedExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

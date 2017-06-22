@@ -14,5 +14,5 @@ export class OptionsCycleExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

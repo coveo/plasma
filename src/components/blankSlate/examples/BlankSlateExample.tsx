@@ -59,5 +59,5 @@ export class BlankSlateExample extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

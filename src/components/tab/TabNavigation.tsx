@@ -11,5 +11,5 @@ export class TabNavigation extends React.Component<ITabNavigationProps, any> {
         {this.props.children}
       </div>
     );
-  };
+  }
 }

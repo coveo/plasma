@@ -54,5 +54,5 @@ export class ModalPromptExamples extends React.Component<any, IPromptExamplesSta
         </div>
       </div>
     );
-  };
+  }
 }

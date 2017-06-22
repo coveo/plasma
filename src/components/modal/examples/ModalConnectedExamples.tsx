@@ -61,5 +61,5 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
         </div>
       </div>
     );
-  };
+  }
 }

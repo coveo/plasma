@@ -85,5 +85,5 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
         </div>
       </div>
     );
-  };
+  }
 }

@@ -41,5 +41,5 @@ export class TableRowExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

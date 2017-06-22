@@ -33,5 +33,5 @@ export class TableRowConnectedExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

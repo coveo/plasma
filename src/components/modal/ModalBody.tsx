@@ -14,5 +14,5 @@ export class ModalBody extends React.Component<IModalBodyProps, any> {
         {this.props.children}
       </div>
     );
-  };
+  }
 }

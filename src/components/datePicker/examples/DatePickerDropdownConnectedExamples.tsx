@@ -16,5 +16,5 @@ export class DatePickerDropdownConnectedExamples extends React.Component<any, an
         </div>
       </div>
     );
-  };
+  }
 }

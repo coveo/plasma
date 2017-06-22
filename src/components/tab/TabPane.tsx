@@ -26,5 +26,5 @@ export class TabPane extends React.Component<ITabPaneProps, any> {
         {this.props.children}
       </div>
     );
-  };
+  }
 }
