@@ -31,8 +31,8 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
  */
 const chosenSelectPropsToOmit = [
   'allowSingleDeselect', 'children', 'disableSearch', 'disableSearchThreshold', 'displayDisabledOptions', 'displaySelectedOptions',
-  'enableSplitWordSearch', 'inheritSelectClasses', 'maxSelectedOptions', 'noResultsText', 'onChosenChange', 'placeholderTextMultiple',
-  'placeholderTextSingle', 'searchContains', 'singleBackstrokeDelete', 'width',
+  'enableSplitWordSearch', 'inheritSelectClasses', 'maxSelectedOptions', 'noResultsText', 'onChosenChange', 'onChosenClick',
+  'placeholderTextMultiple', 'placeholderTextSingle', 'searchContains', 'singleBackstrokeDelete', 'width',
 ];
 
 export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
@@ -59,14 +59,22 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
         single_backstroke_delete: this.props.singleBackstrokeDelete,
         width: this.props.width,
       })
-      .change((event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenChange && this.props.onChosenChange(event, args))
-      .click((event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenClick && this.props.onChosenChange(event, args));
+      .change(
+      (event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenChange && this.props.onChosenChange(event, args))
+      .on('chosen:showing_dropdown',
+      (event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenClick && this.props.onChosenClick(event, args));
+  }
+
+  componentDidUpdate() {
+    if (this.select) {
+      this.select.trigger('chosen:updated');
+    }
   }
 
   componentWillUnmount() {
     this.select
       .off('change')
-      .off('click')
+      .off('chosen:showing_dropdown')
       .chosen('destroy');
   }
 

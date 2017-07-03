@@ -72,7 +72,7 @@ import {
   DateLimits,
   DatePickerActions,
   resetDatePickers,
-  selectDate
+  selectDate,
 } from './components/datePicker/DatePickerActions';
 import { datePickersReducer } from './components/datePicker/DatePickerReducers';
 import { OptionsCycle } from './components/optionsCycle/OptionsCycle';
@@ -102,10 +102,14 @@ import { TabNavigation } from './components/tab/TabNavigation';
 import { TabPane } from './components/tab/TabPane';
 import { TabPaneConnected } from './components/tab/TabPaneConnected';
 import { MultilineInput } from './components/multilineInput/MultilineInput';
-import { tabsReducer, tabGroupsReducer } from './components/tab/TabReducers';
+import { tabGroupsReducer, tabsReducer } from './components/tab/TabReducers';
 import { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 import { Button } from './components/button/Button';
 import { BlankSlate } from './components/blankSlate/BlankSlate';
+import { DropdownSearchConnected } from './components/dropdownSearch/DropdownSearchConnected';
+import { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
+import { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
+import { updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
@@ -190,6 +194,12 @@ export {
   Dropdown,
   DropdownConnected,
   dropdownsReducer,
+
+  // Dropdown search
+  DropdownSearch,
+  DropdownSearchConnected,
+  dropdownsSearchReducer,
+  updateOptionsDropdownSearch,
 
   // Actions
   ActionBar,

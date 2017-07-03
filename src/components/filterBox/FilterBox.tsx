@@ -5,6 +5,8 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   id: string;
   containerClasses?: string[];
   filterPlaceholder?: string;
+  onBlur?: () => void;
+  isAutoFocus?: boolean;
 }
 
 export interface IFilterBoxStateProps {
@@ -24,6 +26,10 @@ export const FILTER_PLACEHOLDER: string = 'Filter';
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
   filterInput: HTMLInputElement;
 
+  static defaultProps: Partial<IFilterBoxProps> = {
+    isAutoFocus: false,
+  };
+
   private handleChange = () => {
     let clearClass = this.filterInput.value.length ? '' : 'hidden';
 
@@ -31,6 +37,12 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
     if (this.props.onFilter) {
       this.props.onFilter(this.props.id, this.filterInput.value);
+    }
+  }
+
+  private handleOnBlur() {
+    if (this.props.onBlur) {
+      this.props.onBlur();
     }
   }
 
@@ -54,7 +66,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
   render() {
     let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-    let filterBoxContainerClasses = ['coveo-filter-container'].concat(this.props.containerClasses);
+    let filterBoxContainerClasses = ['filter-container'].concat(this.props.containerClasses);
 
     return (
       <div id={this.props.id} className={filterBoxContainerClasses.join(' ')}>
@@ -64,7 +76,9 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           className='filter-box'
           placeholder={filterPlaceholder}
           onChange={() => this.handleChange()}
+          onBlur={() => this.handleOnBlur()}
           value={this.props.filterText}
+          autoFocus={this.props.isAutoFocus}
         />
         <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
         <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
