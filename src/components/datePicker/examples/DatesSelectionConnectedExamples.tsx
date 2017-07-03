@@ -14,5 +14,5 @@ export class DatesSelectionConnectedExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

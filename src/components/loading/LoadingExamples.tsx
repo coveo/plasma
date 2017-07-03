@@ -12,5 +12,5 @@ export class LoadingExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

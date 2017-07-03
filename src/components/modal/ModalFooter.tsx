@@ -14,5 +14,5 @@ export class ModalFooter extends React.Component<IModalFooterProps, any> {
         {this.props.children}
       </div>
     );
-  };
+  }
 }

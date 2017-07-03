@@ -190,5 +190,18 @@ describe('Date picker', () => {
 
       expect(onDateChangeSpy).toHaveBeenCalledTimes(4);
     });
+
+    it('should call onBlur prop on blur of the date picker if the prop is defined', () => {
+      const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
+
+      expect(() => {
+        datesSelection.find(DatePicker).props().onBlur();
+      }).not.toThrow();
+
+      datesSelection.setProps({ onBlur: onBlurSpy });
+      datesSelection.find(DatePicker).props().onBlur();
+
+      expect(onBlurSpy).toHaveBeenCalledTimes(1);
+    });
   });
 });

@@ -93,8 +93,12 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
       isSelecting: this.props.isSelecting,
       onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
       onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit),
-      onBlur: this.props.onBlur,
-      placeholder: ''
+      onBlur: () => {
+        if (this.props.onBlur) {
+          this.props.onBlur();
+        }
+      },
+      placeholder: '',
     };
     const separatorClasses: string[] = ['date-separator'];
     if (this.props.withTime) {

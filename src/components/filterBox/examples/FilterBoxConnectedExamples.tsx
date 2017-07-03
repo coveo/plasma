@@ -13,5 +13,5 @@ export class FilterBoxConnectedExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

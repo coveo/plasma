@@ -49,5 +49,5 @@ export class Tab extends React.Component<ITabProps, any> {
         {this.props.title}
       </div>
     );
-  };
+  }
 }

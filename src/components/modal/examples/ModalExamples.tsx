@@ -51,5 +51,5 @@ export class ModalExamples extends React.Component<any, IModalExamplesState> {
         </div>
       </div>
     );
-  };
+  }
 }
