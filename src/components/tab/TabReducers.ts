@@ -2,7 +2,7 @@ import { IReduxAction } from '../../Index';
 import { ITabActionPayload, TabAction } from './TabActions';
 import * as _ from 'underscore';
 
-export const DEFAULT_GROUP_ID = 'default';
+export const DEFAULT_GROUP_ID: string = 'default';
 
 export interface ITabState {
   id: string;
