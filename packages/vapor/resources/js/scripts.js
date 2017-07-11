@@ -8,10 +8,10 @@ $(document).ready(function() {
     $('.coveo-datepicker').DatePicker({
         mode: 'single',
         inline: true,
-        date: new Date()
+        date: new Date(),
     });
     $('[title]').tooltip({
-        container: 'body'
+        container: 'body',
     });
 
     var selectedTab;
@@ -115,6 +115,28 @@ $(document).ready(function() {
     $('button.dropdown-toggle').click(function(event) {
         var dropdownEl = $(event.currentTarget).parent();
         dropdownEl.toggleClass('open', !dropdownEl.hasClass('open'));
+    });
+
+
+    // Handle open/close dropdown search
+    $('.mod-search button.dropdown-toggle').click(function(event) {
+        var buttonEl = $(event.currentTarget);
+        var dropdownEl = $(event.currentTarget).parent();
+        buttonEl.toggleClass('open', !dropdownEl.hasClass('open'));
+        buttonEl.toggleClass('hidden', !dropdownEl.hasClass('hidden'));
+
+        dropdownEl.find('.coveo-filter-container').toggleClass('hidden');
+        dropdownEl.find('.filter-box').focus();
+    });
+
+    $('.mod-search .filter-box').blur(function(event) {
+        var filterElement = $(event.currentTarget).parent();
+        var dropdownEl = filterElement.parent();
+        filterElement.find('filter-box').context.value = '';
+        filterElement.addClass('hidden');
+
+        dropdownEl.removeClass('open');
+        dropdownEl.find('button.dropdown-button-search-container').removeClass('hidden');
     });
 
     // Handle selection in flat-select
