@@ -17,9 +17,6 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
   switch (action.type) {
     case DropdownSearchActions.toggle:
-      if (action.payload.id !== state.id) {
-        return state;
-      }
       return {
         ...state,
         isOpened: !state.isOpened,
@@ -37,12 +34,6 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         id: action.payload.id,
         filterText: action.payload.filterText,
       };
-    case DropdownSearchActions.update:
-      return {
-        ...state,
-        id: action.payload.id,
-        selectedOption: action.payload.selectedOption,
-      };
     case DropdownSearchActions.select:
       return {
         ...state,
@@ -55,6 +46,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         id: action.payload.id,
         options: action.payload.optionsDropDown,
         selectedOption: action.payload.selectedOption,
+        filterText: action.payload.filterText,
         isOpened: false,
       };
     default:

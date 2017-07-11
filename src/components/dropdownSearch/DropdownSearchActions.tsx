@@ -9,6 +9,7 @@ export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPay
   optionsDropDown?: IDropdownOption[];
   filterText?: string;
   selectedOption?: IDropdownOption;
+  isOpened?: boolean;
 }
 
 export const DropdownSearchActions = {

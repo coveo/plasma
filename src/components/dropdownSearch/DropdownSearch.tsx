@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ISvgProps } from '../svg/Svg';
+import { ISvgProps, Svg } from '../svg/Svg';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
-import { UUID } from '../../utils/UUID';
 import { FilterBox } from '../filterBox/FilterBox';
+import { UUID } from '../../utils/UUID';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -18,10 +18,12 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   defaultOptions?: IDropdownOption[];
   defaultSelectedOption?: IDropdownOption;
   filterPlaceholder?: string;
-  maxWidth?: string;
-  width?: string;
+  maxWidth?: number;
+  width?: number;
   hasFilterSuggestionBoxWidthFixed?: boolean;
-  isDisabled: boolean;
+  highlightThreshold?: number;
+  highlightAllFilterResult?: boolean;
+  isDisabled?: boolean;
 }
 
 export interface IDropdownSearchStateProps {
@@ -54,6 +56,12 @@ export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdown
 
 export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
   filterInput: HTMLDivElement;
+  private textIndex = 0;
+
+  static defaultProps: Partial<IDropdownSearchProps> = {
+    highlightThreshold: 100,
+    highlightAllFilterResult: false,
+  };
 
   private getSelectedOption(): JSX.Element {
     return <span key={this.props.selectedOption.value} className='dropdown-selected-value'
@@ -64,57 +72,77 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
   private getDropdownOptions(): JSX.Element[] {
     const options = _.chain(this.props.options)
       .filter(
-      (item: IDropdownOption) => !_.isEmpty(this.props.filterText)
-        ? s.contains(item.value.toLowerCase(), this.props.filterText.toLowerCase())
-        : true,
+      (option: IDropdownOption) => {
+        const value = option.displayValue || option.value;
+        return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
+      },
     )
-      .map((option: IDropdownOption) => {
+      .map((option: IDropdownOption, index, options: IDropdownOption[]) => {
         const optionClasses: string = option.value === this.props.selectedOption.value ? 'state-selected' : '';
-        return <li key={UUID.generate()}><span className={optionClasses} onMouseDown={(e: any) => this.handleOnOptionClick(e)}
-          key={option.value} data-value={option.value}>{this.getTextFiltered(
-            option.displayValue || option.value)}</span></li>;
+        const value = option.displayValue || option.value;
+        const valueToShow = !!this.props.highlightAllFilterResult || options.length <= this.props.highlightThreshold
+          ? this.getTextFiltered(value)
+          : value;
+        return <li key={option.value}>
+          <span className={optionClasses} onMouseDown={(e: any) => this.handleOnOptionClick(e)} data-value={option.value}>
+            {this.getDropdownPrepend(option)}
+            {this.getSvg(option)}
+            {valueToShow}
+          </span>
+        </li>;
       })
       .value();
 
     if (!options.length) {
-      return [<li key={UUID.generate()}><span key={UUID.generate()}>No results</span></li>];
+      return [<li key={UUID.generate()}><span>No results</span></li>];
     }
 
     return options;
   }
 
+  private getSvg(option: IDropdownOption): JSX.Element {
+    if (option && option.svg) {
+      return <span key={option.svg.name} className='value-icon'>
+        <Svg {...option.svg} />
+      </span>;
+    }
+    return null;
+  }
+
   private getTextFiltered(text: string): (JSX.Element | string)[] | string {
-    let textFilterElements: (JSX.Element | string)[] = [''];
-    let index: number = 0;
-    let canFilter = true;
-    const initialText: string = new String(text).toString();
-    while (canFilter) {
+    this.textIndex = 0;
+    let index: number;
+    const originalText = new String(text).toString();
+    if (!_.isEmpty(this.props.filterText)) {
+      const textFilterElements: (JSX.Element | string)[] = [''];
       index = text.toLowerCase().indexOf(this.props.filterText.toLowerCase());
-      if (index !== -1) {
+      while (index !== -1) {
         if (index > 0) {
-          textFilterElements = textFilterElements.concat(
-            this.getTextElement(initialText, text.substring(0, index)));
+          textFilterElements.push(text.substring(0, index));
         }
-        textFilterElements = textFilterElements.concat(
-          this.getTextElement(initialText, text.substring(index, index + this.props.filterText.length), 'bold'));
+        textFilterElements.push(this.getTextElement(text.substring(index, index + this.props.filterText.length), originalText, 'bold'));
         text = text.substring(index + this.props.filterText.length);
-      } else {
-        textFilterElements = textFilterElements.concat(this.getTextElement(initialText, text));
-        canFilter = false;
+        index = text.toLowerCase().indexOf(this.props.filterText.toLowerCase());
       }
+      textFilterElements.push(text);
+
+      this.textIndex = 0;
+      return textFilterElements;
     }
 
-    return textFilterElements;
+    return text;
   }
 
-  private getTextElement(text: string, subText: string, className: string = ''): JSX.Element[] {
-    return _.map(subText.split(''),
-      ((char: string, index: number) => <span key={`${text} + ${char} + ${index}`} className={className}>{char}</span>));
+  private getTextElement(subText: string, text: string, className: string = ''): JSX.Element {
+    this.textIndex = this.textIndex + 1;
+    return <span key={`${text}-${this.textIndex}`} className={className}>{subText}</span>;
   }
 
-  private getDropdownPrepend(): JSX.Element {
-    const prefix = this.props.selectedOption.prefix;
-    return prefix ? <span key={prefix} className='dropdown-prepend'>{prefix}</span> : null;
+  private getDropdownPrepend(option: IDropdownOption): JSX.Element {
+    if (option && option.prefix) {
+      return <span key={option.prefix} className='dropdown-prepend'>{option.prefix}</span>;
+    }
+    return null;
   }
 
   private getMainInput(): JSX.Element {
@@ -126,15 +154,14 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
           this.props.selectedOption.value}
         isAutoFocus={true} />;
     } else {
-      const style = {
-        maxWidth: this.props.maxWidth,
-      };
       return <button className='btn dropdown-toggle dropdown-button-search-container mod-search' type='button' data-toggle='dropdown'
         onClick={() => this.handleOnClick()}
-        onBlur={() => this.handleOnBlur()}
-        style={style}
+        style={{
+          maxWidth: this.props.maxWidth,
+        }}
         disabled={!!this.props.isDisabled}>
-        {this.getDropdownPrepend()}
+        {this.getDropdownPrepend(this.props.selectedOption)}
+        {this.getSvg(this.props.selectedOption)}
         {this.getSelectedOption()}
         <span className='dropdown-toggle-arrow'></span>
       </button>;

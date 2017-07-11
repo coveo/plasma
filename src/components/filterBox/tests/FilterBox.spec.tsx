@@ -126,5 +126,16 @@ describe('FilterBox', () => {
       filterBox.mount();
       expect(container.hasClass(containerClass)).toBe(true);
     });
+
+    it('should call onBlur when the input lost focus', () => {
+      const onBlur = jasmine.createSpy('onBlur');
+      filterBox.setProps({ onBlur });
+
+      const element = filterBox.find('.filter-box');
+      element.simulate('focus');
+      element.simulate('blur');
+
+      expect(onBlur).toHaveBeenCalled();
+    });
   });
 });
