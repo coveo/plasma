@@ -65,12 +65,6 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
       (event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenClick && this.props.onChosenClick(event, args));
   }
 
-  componentDidUpdate() {
-    if (this.select) {
-      this.select.trigger('chosen:updated');
-    }
-  }
-
   componentWillUnmount() {
     this.select
       .off('change')

@@ -1,15 +1,15 @@
-import {mount, ReactWrapper} from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {UUID} from '../../../utils/UUID';
-import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
+import { UUID } from '../../../utils/UUID';
+import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
 import * as _ from 'underscore';
-import {FilterBox} from '../../filterBox/FilterBox';
-import {Svg} from '../../svg/Svg';
+import { FilterBox } from '../../filterBox/FilterBox';
+import { Svg } from '../../svg/Svg';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
-  const options = [{value: 'test a'}, {value: 'test b'}, {value: 'test c'}];
+  const options = [{ value: 'test a' }, { value: 'test b' }, { value: 'test c' }];
   const defaultProps: IDropdownSearchProps = {
     highlightThreshold: 100,
     highlightAllFilterResult: false,
@@ -18,7 +18,7 @@ describe('DropdownSearch', () => {
     id,
     modMenu: false,
     options,
-    selectedOption: {value: 'test a'},
+    selectedOption: { value: 'test a' },
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,
@@ -34,7 +34,7 @@ describe('DropdownSearch', () => {
     const renderDropdownSearch = (props?: IDropdownSearchProps) => {
       dropdownSearch = mount(
         <DropdownSearch {...props} />,
-        {attachTo: document.getElementById('App')},
+        { attachTo: document.getElementById('App') },
       );
       dropdownSearchInstance = dropdownSearch.instance() as DropdownSearch;
     };
@@ -67,7 +67,7 @@ describe('DropdownSearch', () => {
         expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
 
         dropdownSearch.unmount();
-        dropdownSearch.setProps({onRender});
+        dropdownSearch.setProps({ onRender });
         dropdownSearch.mount();
 
         expect(onRender).toHaveBeenCalled();
@@ -80,7 +80,7 @@ describe('DropdownSearch', () => {
         expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
 
         dropdownSearch.unmount();
-        dropdownSearch.setProps({onMount: onMountSpy});
+        dropdownSearch.setProps({ onMount: onMountSpy });
         dropdownSearch.mount();
 
         expect(onMountSpy).toHaveBeenCalled();
@@ -92,7 +92,7 @@ describe('DropdownSearch', () => {
 
         expect(() => dropdownSearchInstance.componentWillUnmount()).not.toThrow();
 
-        dropdownSearch.setProps({onDestroy: onDestroySpy});
+        dropdownSearch.setProps({ onDestroy: onDestroySpy });
         dropdownSearch.unmount();
 
         expect(onDestroySpy).toHaveBeenCalled();
@@ -100,7 +100,7 @@ describe('DropdownSearch', () => {
 
       it('should call onFilterClick if defined when onChange the "filter-box" input', () => {
         const onFilterClick = jasmine.createSpy('onFilterClick');
-        dropdownSearch.setProps({isOpened: true, onFilterClick});
+        dropdownSearch.setProps({ isOpened: true, onFilterClick });
         dropdownSearch.find('input.filter-box').simulate('change');
 
         expect(onFilterClick).toHaveBeenCalled();
@@ -108,7 +108,7 @@ describe('DropdownSearch', () => {
 
       it('should call onBlur if defined when we lost focus on "filter-box" input', () => {
         const onBlur = jasmine.createSpy('onBlur');
-        dropdownSearch.setProps({onBlur, isOpened: true});
+        dropdownSearch.setProps({ onBlur, isOpened: true });
 
         const element = dropdownSearch.find('.filter-box');
         element.simulate('focus');
@@ -119,7 +119,7 @@ describe('DropdownSearch', () => {
 
       it('should call onToggleDropdown if defined when click the "dropdown-toggle" button', () => {
         const onToggleDropdown = jasmine.createSpy('onToggleDropdown');
-        dropdownSearch.setProps({onToggleDropdown});
+        dropdownSearch.setProps({ onToggleDropdown });
 
         dropdownSearch.find('button.dropdown-toggle').simulate('click');
 
@@ -128,7 +128,7 @@ describe('DropdownSearch', () => {
 
       it('should call onClick if defined when click the "dropdown-toggle" button', () => {
         const onClick = jasmine.createSpy('onClick');
-        dropdownSearch.setProps({onClick});
+        dropdownSearch.setProps({ onClick });
 
         dropdownSearch.find('button.dropdown-toggle').simulate('click');
 
@@ -138,7 +138,7 @@ describe('DropdownSearch', () => {
 
     describe('Props functionality', () => {
 
-      const selectedOption = {prefix: 'test', value: 'test1', displayValue: 'test 2'};
+      const selectedOption = { prefix: 'test', value: 'test1', displayValue: 'test 2' };
 
       it('should show the filterBox if the dropdown is open', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
@@ -157,7 +157,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the drodown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {selectedOption}));
+        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
@@ -176,7 +176,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the drodown displayValue if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {selectedOption}));
+        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
       });
