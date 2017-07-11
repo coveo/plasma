@@ -60,7 +60,7 @@ describe('DropdownSearch', () => {
       });
     });
 
-    describe('props', () => {
+    describe('mapStateToProps', () => {
 
       beforeEach(() => {
         renderDropdownSearchConnected();
@@ -103,13 +103,13 @@ describe('DropdownSearch', () => {
 
     });
 
-    describe('dispatch', () => {
+    describe('mapDispatchToProps', () => {
 
       beforeEach(() => {
         renderDropdownSearchConnected();
       });
 
-      it('should what to do on destroy as a prop', () => {
+      it('should get what to do on destroy as a prop', () => {
         let onDestroyProp = dropdownSearch.props().onDestroy;
 
         expect(onDestroyProp).toBeDefined();
@@ -138,7 +138,7 @@ describe('DropdownSearch', () => {
         expect(onFilterClickProp).toBeDefined();
       });
 
-      it('should toggle the dropdown class to open and close on click on dropdown button', () => {
+      it('should toggle the dropdown class to open and close on click on the dropdown button', () => {
         let dropdown = wrapper.find('.dropdown');
         let button = wrapper.find('.dropdown-toggle');
 
