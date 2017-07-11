@@ -23,6 +23,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   hasFilterSuggestionBoxWidthFixed?: boolean;
   highlightThreshold?: number;
   highlightAllFilterResult?: boolean;
+  noResultText?: string;
   isDisabled?: boolean;
 }
 
@@ -61,6 +62,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
   static defaultProps: Partial<IDropdownSearchProps> = {
     highlightThreshold: 100,
     highlightAllFilterResult: false,
+    noResultText: 'No results',
   };
 
   private getSelectedOption(): JSX.Element {
@@ -94,7 +96,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
       .value();
 
     if (!options.length) {
-      return [<li key={UUID.generate()}><span>No results</span></li>];
+      return [<li key={UUID.generate()}><span>{this.props.noResultText}</span></li>];
     }
 
     return options;
