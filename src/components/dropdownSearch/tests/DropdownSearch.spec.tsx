@@ -10,10 +10,6 @@ import { Svg } from '../../svg/Svg';
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
   const options = [{ value: 'test a' }, { value: 'test b' }, { value: 'test c' }];
-  const defaultProps: IDropdownSearchProps = {
-    highlightThreshold: 100,
-    highlightAllFilterResult: false,
-  };
   const ownProps: IDropdownSearchProps = {
     id,
     modMenu: false,
@@ -51,7 +47,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should have the same object send has parameter than the component props', () => {
-        expect(dropdownSearch.props()).toEqual(_.extend({}, ownProps, defaultProps));
+        expect(dropdownSearch.props()).toEqual(_.extend({}, ownProps, DropdownSearch.defaultProps));
       });
     });
 
