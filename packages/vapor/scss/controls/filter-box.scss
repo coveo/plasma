@@ -1,4 +1,5 @@
-.coveo-filter-container {
+/// @deprecated the prefix coveo is no longer used.
+.coveo-filter-container, .filter-container {
   position: relative;
 
   @media only screen and (max-width: $screen-size-break-point) {
