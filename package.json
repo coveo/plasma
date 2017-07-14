@@ -52,7 +52,7 @@
     "@types/chosen-js": "1.6.1",
     "@types/enzyme": "2.8.0",
     "@types/jasmine": "2.5.52",
-    "@types/jquery": "2.0.43",
+    "@types/jquery": "3.2.8",
     "@types/react": "15.0.30",
     "@types/react-bootstrap": "0.0.50",
     "@types/react-dom": "15.5.0",
