@@ -1,0 +1,33 @@
+.filter-expression-picker {
+  .edit-filter-values {
+    position: relative;
+
+    overflow: visible;
+
+    .popup-main-section {
+      width: 100%;
+
+      .popup-header {
+        background-color: $pure-white;
+      }
+
+      .selected-filter {
+        height: $selected-filter-height;
+        padding-left: $selected-filter-padding-left;
+
+        color: $medium-blue;
+        font-size: $default-font-size;
+        font-weight: bold;
+        line-height: $selected-filter-height;
+      }
+
+      .popover-body .string-filters {
+        padding-top: $string-filter-padding-top;
+
+        label {
+          line-height: $filter-string-filter-label-line-height;
+        }
+      }
+    }
+  }
+}

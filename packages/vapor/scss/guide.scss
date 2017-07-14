@@ -52,6 +52,12 @@
 @import 'controls/multiline-field';
 @import 'controls/file-input';
 
+// filters
+@import 'controls/filtering/filter-picker';
+@import 'controls/filtering/filters-list';
+@import 'controls/filtering/filters-values';
+@import 'controls/filtering/multi-filter-picker';
+
 .coveo-styleguide {
   // Tables
   @import 'tables/table';

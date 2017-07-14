@@ -1,0 +1,11 @@
+---
+layout: default
+title: Filtering Controls
+type: filter
+permalink: /filters/
+---
+
+{% assign entries = site.components | where:"type", page.type %}
+{% for entry in entries %}
+{% include component.html %}
+{% endfor %}
