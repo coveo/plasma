@@ -30,6 +30,14 @@
         height: $button-large-height - $button-border-width;
       }
     }
+
+    &.mod-on-hover:not(:hover) {
+      padding: 0 $button-padding-x 0 $button-padding-x;
+
+      .btn-append, .btn-prepend {
+        display: none;
+      }
+    }
   }
 
   &.mod-append {

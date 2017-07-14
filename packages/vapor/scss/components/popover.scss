@@ -23,3 +23,21 @@
   border-top: solid 1px $medium-grey;
   border-radius: 0 0 $border-radius $border-radius;
 }
+
+.popover-navigation-section {
+  align-items: center;
+  flex-direction: column;
+
+  display: flex;
+  width: $popover-navigation-section-width;
+
+  background-color: $white;
+  border-right: $default-border;
+  border-radius: $popover-navigation-section-border-radius;
+
+  cursor: pointer;
+
+  .back {
+    margin-top: $popover-back-margin-top;
+  }
+}

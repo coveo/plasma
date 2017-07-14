@@ -64,6 +64,50 @@ $filter-box-width-mod-small: 200px;
 $icon-offset-large-screen: 20px;
 $icon-offset-small-screen: 10px;
 
+// Filter Picker
+// Component
+$filterpickerbox-padding: 20px;
+$filterpickerbox-margin-bottom: 1px;
+$filterpickerbox-small-padding: 13px 20px;
+$multi-filterpickerbox-add-padding: 10px 20px;
+$multi-filter-picker-margin-bottom: 20px;
+$multi-filter-picker-border-bottom: 2px solid $pure-white;
+$multi-filter-picker-add-icon-width: 20px;
+$filters-margin-right: 5px;
+$filterbox-filters-container-padding: 4px 4px 3px;
+// Single filter variables
+$filter-padding: 6px 25px;
+$string-filter-padding-top: 30px;
+$selected-filter-padding-left: 20px;
+$selected-filter-height: 50px;
+$filter-badge-height: 34px;
+$filter-badge-margin-left: 3px;
+$filter-badge-font-size: 13px;
+$edit-filter-content-line-height: 16px;
+$pre-operator-padding: 2px 0 0 2px;
+$pre-operator-margin: 0 6px 0 0;
+$pre-operator-font-size: 12px;
+$pre-operator-line-height: 33px;
+$filter-where-padding: 0 4px;
+$filter-where-margin-right: 5px;
+$filter-where-margin-bottom: 0;
+$filter-where-margin-left: 4px;
+$filter-where-line-height: 34px;
+// filter form
+$filter-pop-up-width: 292px;
+$filter-pop-up-search-input-height: 30px;
+$add-filter-popup-right: 35px;
+$edit-filter-popup-right: 3px;
+$filter-choices-section-padding-left: 15px;
+$filter-choices-section-margin-top: 7px;
+$filter-event-type-width: 224px;
+$filter-event-type-margin-bottom: 16px;
+$filter-not-selected-min-height: 20px;
+$filter-not-selected-margin-right: 1px;
+$filter-not-selected-line-height: 18px;
+$filter-type-font-size: 10px;
+$filter-string-filter-label-line-height: 18px;
+
 // Flat select
 $flat-select-option-size: 26px;
 
@@ -78,6 +122,9 @@ $description-margin-top: 5px;
 // Popover
 $popover-min-width: 320px;
 $popover-footer-y-padding: 12px;
+$popover-back-margin-top: 15px;
+$popover-navigation-section-border-radius: 1px 0 0 1px;
+$popover-navigation-section-width: 30px;
 
 // Modal
 $modal-header-height: 100px;
