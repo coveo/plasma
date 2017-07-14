@@ -37,7 +37,7 @@
     "build"
   ],
   "dependencies": {
-    "react-bootstrap": "0.31.0",
+    "react-bootstrap": "0.31.1",
     "react-tether": "0.5.7"
   },
   "peerDependencies": {
