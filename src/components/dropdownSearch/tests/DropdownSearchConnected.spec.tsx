@@ -1,16 +1,16 @@
-import {mount, ReactWrapper} from 'enzyme';
-import {Provider, Store} from 'react-redux';
-import {clearState} from '../../../utils/ReduxUtils';
-import {IReactVaporState} from '../../../ReactVapor';
-import {TestUtils} from '../../../utils/TestUtils';
+import { mount, ReactWrapper } from 'enzyme';
+import { Provider, Store } from 'react-redux';
+import { clearState } from '../../../utils/ReduxUtils';
+import { IReactVaporState } from '../../../ReactVapor';
+import { TestUtils } from '../../../utils/TestUtils';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {DropdownSearchConnected} from '../DropdownSearchConnected';
-import {UUID} from '../../../utils/UUID';
-import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
-import {defaultSelectedOption} from '../DropdownSearchReducers';
-import {toggleDropdownSearch, updateActiveOptionDropdownSearch, updateOptionsDropdownSearch} from '../DropdownSearchActions';
-import {keyCode} from '../../../utils/InputUtils';
+import { DropdownSearchConnected } from '../DropdownSearchConnected';
+import { UUID } from '../../../utils/UUID';
+import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
+import { defaultSelectedOption } from '../DropdownSearchReducers';
+import { toggleDropdownSearch, updateActiveOptionDropdownSearch, updateOptionsDropdownSearch } from '../DropdownSearchActions';
+import { keyCode } from '../../../utils/InputUtils';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -20,14 +20,14 @@ describe('DropdownSearch', () => {
     let dropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
     let store: Store<IReactVaporState>;
 
-    const defaultOptions = [{value: 'a'}, {value: 'b'}];
+    const defaultOptions = [{ value: 'a' }, { value: 'b' }];
 
     const renderDropdownSearchConnected = () => {
       wrapper = mount(
         <Provider store={store}>
-          <DropdownSearchConnected id={id} defaultOptions={defaultOptions}/>
+          <DropdownSearchConnected id={id} defaultOptions={defaultOptions} />
         </Provider>,
-        {attachTo: document.getElementById('App')},
+        { attachTo: document.getElementById('App') },
       );
       dropdownSearch = wrapper.find(DropdownSearch).first();
     };
@@ -191,7 +191,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should add the selected value in the state on click an option', () => {
-        store.dispatch(updateOptionsDropdownSearch(id, [{value: 'test 1'}, {value: 'test 2'}]));
+        store.dispatch(updateOptionsDropdownSearch(id, [{ value: 'test 1' }, { value: 'test 2' }]));
         store.dispatch(toggleDropdownSearch(id));
 
         wrapper.find('li span').first().simulate('mouseDown');

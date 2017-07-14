@@ -28,9 +28,9 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   let index: number = array.indexOf(item);
   if (item) {
     if (key === keyCode.upArrow) {
-      index = index - 1;
+      index -= 1;
     } else if (key === keyCode.downArrow) {
-      index = index + 1;
+      index += 1;
     }
   }
   if (index === -1) {

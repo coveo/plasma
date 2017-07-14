@@ -16,10 +16,11 @@ import { defaultSelectedOption, IDropdownSearchState } from './DropdownSearchRed
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
   const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, { id: ownProps.id });
   const selectedOption = ownProps.defaultSelectedOption || defaultSelectedOption;
+
   if (dropdownSearch) {
     return {
-      isOpened: dropdownSearch.isOpened || false,
-      options: dropdownSearch.options || [],
+      isOpened: dropdownSearch.isOpened,
+      options: dropdownSearch.options,
       selectedOption: dropdownSearch.selectedOption || selectedOption,
       filterText: dropdownSearch.filterText || '',
       activeOption: dropdownSearch.activeOption,
@@ -28,10 +29,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
   }
 
   return {
-    isOpened: false,
-    options: ownProps.defaultOptions || [],
-    selectedOption,
-    filterText: '',
+    options: ownProps.defaultOptions,
+    selectedOption
   };
 };
 
