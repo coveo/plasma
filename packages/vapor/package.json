@@ -36,7 +36,7 @@
     "materialize-css": "0.98.2"
   },
   "devDependencies": {
-    "autosize": "3.0.20",
+    "autosize": "3.0.21",
     "csscomb": "3.1.7",
     "del": "2.2.2",
     "gulp": "3.9.1",
