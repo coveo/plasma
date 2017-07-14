@@ -110,6 +110,7 @@ import { DropdownSearchConnected } from './components/dropdownSearch/DropdownSea
 import { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 import { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
 import { updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
+import { Input } from './components/input/Input';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
@@ -169,6 +170,9 @@ export {
 
   // ModalPrompt
   ModalPrompt,
+
+  // Input
+  Input,
 
   // MultilineInput
   MultilineInput,
