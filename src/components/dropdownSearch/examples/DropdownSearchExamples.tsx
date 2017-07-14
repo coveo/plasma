@@ -1,18 +1,8 @@
 import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
-import { ReduxConnect } from '../../../utils/ReduxUtils';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
 
-const mapStateToProps = () => {
-  return {};
-};
-
-const mapDispatchToProps = () => {
-  return {};
-};
-
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class DropdownSearchExamples extends React.Component<any, any> {
 
   render() {

@@ -1,15 +1,16 @@
-import { mount, ReactWrapper } from 'enzyme';
-import { Provider, Store } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
+import {mount, ReactWrapper} from 'enzyme';
+import {Provider, Store} from 'react-redux';
+import {clearState} from '../../../utils/ReduxUtils';
+import {IReactVaporState} from '../../../ReactVapor';
+import {TestUtils} from '../../../utils/TestUtils';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { DropdownSearchConnected } from '../DropdownSearchConnected';
-import { UUID } from '../../../utils/UUID';
-import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
-import { defaultSelectedOption } from '../DropdownSearchReducers';
-import { toggleDropdownSearch, updateOptionsDropdownSearch } from '../DropdownSearchActions';
+import {DropdownSearchConnected} from '../DropdownSearchConnected';
+import {UUID} from '../../../utils/UUID';
+import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
+import {defaultSelectedOption} from '../DropdownSearchReducers';
+import {toggleDropdownSearch, updateActiveOptionDropdownSearch, updateOptionsDropdownSearch} from '../DropdownSearchActions';
+import {keyCode} from '../../../utils/InputUtils';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -19,12 +20,14 @@ describe('DropdownSearch', () => {
     let dropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
     let store: Store<IReactVaporState>;
 
+    const defaultOptions = [{value: 'a'}, {value: 'b'}];
+
     const renderDropdownSearchConnected = () => {
       wrapper = mount(
         <Provider store={store}>
-          <DropdownSearchConnected id={id} />
+          <DropdownSearchConnected id={id} defaultOptions={defaultOptions}/>
         </Provider>,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
       dropdownSearch = wrapper.find(DropdownSearch).first();
     };
@@ -74,7 +77,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should get the isOpened as a prop', () => {
-        let isOpenedProp = dropdownSearch.props().isOpened;
+        const isOpenedProp = dropdownSearch.props().isOpened;
 
         expect(isOpenedProp).toBeDefined();
         expect(isOpenedProp).toBe(false);
@@ -84,21 +87,33 @@ describe('DropdownSearch', () => {
         const optionsProp = dropdownSearch.props().options;
 
         expect(optionsProp).toBeDefined();
-        expect(optionsProp.length).toBe(0);
+        expect(optionsProp.length).toBe(2);
       });
 
       it('should get the default selected option as a prop', () => {
-        let defaultSelectedOptionProp = dropdownSearch.props().selectedOption;
+        const defaultSelectedOptionProp = dropdownSearch.props().selectedOption;
 
         expect(defaultSelectedOptionProp).toBeDefined();
         expect(defaultSelectedOptionProp).toBe(defaultSelectedOption);
       });
 
       it('should get the filterText as a prop', () => {
-        let filterTextProp = dropdownSearch.props().filterText;
+        const filterTextProp = dropdownSearch.props().filterText;
 
         expect(filterTextProp).toBeDefined();
         expect(filterTextProp).toBe('');
+      });
+
+      it('should get the setFocusOnDropdownButton undefined as a prop on mount', () => {
+        const setFocusOnDropdownButtonProp = dropdownSearch.props().setFocusOnDropdownButton;
+
+        expect(setFocusOnDropdownButtonProp).toBeUndefined();
+      });
+
+      it('should get the activeOption undefined as a prop on mount', () => {
+        const activeOptionProp = dropdownSearch.props().activeOption;
+
+        expect(activeOptionProp).toBeUndefined();
       });
 
     });
@@ -110,37 +125,55 @@ describe('DropdownSearch', () => {
       });
 
       it('should get what to do on destroy as a prop', () => {
-        let onDestroyProp = dropdownSearch.props().onDestroy;
+        const onDestroyProp = dropdownSearch.props().onDestroy;
 
         expect(onDestroyProp).toBeDefined();
       });
 
       it('should get what to do on onMount as a prop', () => {
-        let onMountProp = dropdownSearch.props().onMount;
+        const onMountProp = dropdownSearch.props().onMount;
 
         expect(onMountProp).toBeDefined();
       });
 
       it('should get what to do on onBlur as a prop', () => {
-        let onBlurProp = dropdownSearch.props().onBlur;
+        const onBlurProp = dropdownSearch.props().onBlur;
 
         expect(onBlurProp).toBeDefined();
       });
       it('should get what to do on onOptionClick as a prop', () => {
-        let onOptionClickProp = dropdownSearch.props().onOptionClick;
+        const onOptionClickProp = dropdownSearch.props().onOptionClick;
 
         expect(onOptionClickProp).toBeDefined();
       });
 
       it('should get what to do on onFilterClick as a prop', () => {
-        let onFilterClickProp = dropdownSearch.props().onFilterClick;
+        const onFilterClickProp = dropdownSearch.props().onFilterClick;
 
         expect(onFilterClickProp).toBeDefined();
       });
 
+      it('should get what to do on onKeyDownFilterBox as a prop', () => {
+        const onKeyDownFilterBox = dropdownSearch.props().onKeyDownFilterBox;
+
+        expect(onKeyDownFilterBox).toBeDefined();
+      });
+
+      it('should get what to do on onKeyDownDropdownButton as a prop', () => {
+        const onKeyDownDropdownButton = dropdownSearch.props().onKeyDownDropdownButton;
+
+        expect(onKeyDownDropdownButton).toBeDefined();
+      });
+
+      it('should get what to do on onMouseEnterDropdown as a prop', () => {
+        const onMouseEnterDropdown = dropdownSearch.props().onMouseEnterDropdown;
+
+        expect(onMouseEnterDropdown).toBeDefined();
+      });
+
       it('should toggle the dropdown class to open and close on click on the dropdown button', () => {
-        let dropdown = wrapper.find('.dropdown');
-        let button = wrapper.find('.dropdown-toggle');
+        const dropdown = wrapper.find('.dropdown');
+        const button = wrapper.find('.dropdown-toggle');
 
         expect(dropdown.hasClass('open')).toBe(false, 'start closed');
         button.simulate('click');
@@ -148,7 +181,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should toggle the close dropdown on blur', () => {
-        let dropdown = wrapper.find('.dropdown');
+        const dropdown = wrapper.find('.dropdown');
 
         store.dispatch(toggleDropdownSearch(id));
 
@@ -158,7 +191,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should add the selected value in the state on click an option', () => {
-        store.dispatch(updateOptionsDropdownSearch(id, [{ value: 'test 1' }, { value: 'test 2' }]));
+        store.dispatch(updateOptionsDropdownSearch(id, [{value: 'test 1'}, {value: 'test 2'}]));
         store.dispatch(toggleDropdownSearch(id));
 
         wrapper.find('li span').first().simulate('mouseDown');
@@ -170,12 +203,99 @@ describe('DropdownSearch', () => {
 
       it('should add the filterText in the state on onFilterClick', () => {
         const filter: string = 't';
-
         expect(store.getState().dropdownSearch[0].filterText).toBe('');
 
         dropdownSearch.props().onFilterClick(filter);
-
         expect(store.getState().dropdownSearch[0].filterText).toBe(filter);
+      });
+
+      it('should set the setFocusOnDropdownButton to true if the keyCode send on onKeyDownDropdownButton is "Enter"', () => {
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBeUndefined();
+
+        store.dispatch(updateActiveOptionDropdownSearch(id, keyCode.downArrow));
+
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.enter);
+
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
+      });
+
+      it('should set the setFocusOnDropdownButton to true if the keyCode send on onKeyDownDropdownButton is "Tab"', () => {
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBeUndefined();
+
+        store.dispatch(updateActiveOptionDropdownSearch(id, keyCode.downArrow));
+
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.tab);
+
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
+      });
+
+      it('should set the setFocusOnDropdownButton to true if the keyCode send on onKeyDownFilterBox is "Tab"', () => {
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBeUndefined();
+
+        store.dispatch(updateActiveOptionDropdownSearch(id, keyCode.downArrow));
+
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+
+        dropdownSearch.props().onKeyDownFilterBox(keyCode.tab);
+
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
+      });
+
+      it('should update the activeOption on "upArrow" and set the setFocusOnDropdownButton to false', () => {
+        expect(dropdownSearch.props().activeOption).toBeUndefined();
+
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.upArrow);
+
+        expect(dropdownSearch.props().activeOption).toBeDefined();
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+      });
+
+      it('should update the activeOption on "upArrow" for the first element if not defined', () => {
+        expect(dropdownSearch.props().activeOption).toBeUndefined();
+
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.upArrow);
+
+        expect(dropdownSearch.props().activeOption).toEqual(defaultOptions[0]);
+      });
+
+      it('should update the activeOption on "downArrow" and set the setFocusOnDropdownButton to false', () => {
+        expect(dropdownSearch.props().activeOption).toBeUndefined();
+
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.downArrow);
+
+        expect(dropdownSearch.props().activeOption).toBeDefined();
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+      });
+
+      it('should update the activeOption on "downArrow" for the first element if not defined', () => {
+        expect(dropdownSearch.props().activeOption).toBeUndefined();
+
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.downArrow);
+
+        expect(dropdownSearch.props().activeOption).toEqual(defaultOptions[0]);
+      });
+
+      it('should update the activeOption on "downArrow" for the first element if not defined', () => {
+        expect(dropdownSearch.props().activeOption).toBeUndefined();
+
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.downArrow);
+
+        expect(dropdownSearch.props().activeOption).toEqual(defaultOptions[0]);
+      });
+
+      it('should reset the activeOption and remove focus on dropdown on onMouseEnterDropdown', () => {
+        dropdownSearch.props().onKeyDownDropdownButton(keyCode.upArrow);
+
+        expect(dropdownSearch.props().activeOption).toBeDefined();
+
+        dropdownSearch.props().onMouseEnterDropdown();
+
+        expect(dropdownSearch.props().activeOption).toBeUndefined();
+        expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
       });
     });
   });

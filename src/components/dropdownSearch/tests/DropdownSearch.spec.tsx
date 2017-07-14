@@ -57,21 +57,20 @@ describe('DropdownSearch', () => {
         renderDropdownSearch(ownProps);
       });
 
-      it('should call onRender prop if set when mounting', () => {
-        let onRender = jasmine.createSpy('onRender');
+      it('should call onMountCallBack prop if set when mounting', () => {
+        const onMountCallBack = jasmine.createSpy('onMountCallBack');
 
         expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
 
         dropdownSearch.unmount();
-        dropdownSearch.setProps({onRender});
+        dropdownSearch.setProps({onMountCallBack});
         dropdownSearch.mount();
 
-        expect(onRender).toHaveBeenCalled();
-        expect(onRender).toHaveBeenCalledWith(ownProps.id);
+        expect(onMountCallBack).toHaveBeenCalled();
       });
 
-      it('should call onMount prop if set when mounting with the prop id', () => {
-        let onMountSpy = jasmine.createSpy('onMount');
+      it('should call onMount prop if set when mounting', () => {
+        const onMountSpy = jasmine.createSpy('onMount');
 
         expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
 
@@ -80,11 +79,10 @@ describe('DropdownSearch', () => {
         dropdownSearch.mount();
 
         expect(onMountSpy).toHaveBeenCalled();
-        expect(onMountSpy).toHaveBeenCalledWith(ownProps.id);
       });
 
       it('should call onDestroy prop if set when will unmount', () => {
-        let onDestroy = jasmine.createSpy('onDestroy');
+        const onDestroy = jasmine.createSpy('onDestroy');
 
         expect(() => dropdownSearchInstance.componentWillUnmount()).not.toThrow();
 
@@ -122,13 +120,49 @@ describe('DropdownSearch', () => {
         expect(onToggleDropdown).toHaveBeenCalled();
       });
 
-      it('should call onClick if defined when click the "dropdown-toggle" button', () => {
-        const onClick = jasmine.createSpy('onClick');
-        dropdownSearch.setProps({onClick});
+      it('should call onClickCallBack if defined when click the "dropdown-toggle" button', () => {
+        const onClickCallBack = jasmine.createSpy('onClickCallBack');
+        dropdownSearch.setProps({onClickCallBack});
 
         dropdownSearch.find('button.dropdown-toggle').simulate('click');
 
-        expect(onClick).toHaveBeenCalled();
+        expect(onClickCallBack).toHaveBeenCalled();
+      });
+
+      it('should call onOptionClickCallBack if defined when click an option "dropdown-toggle" button', () => {
+        const onOptionClickCallBack = jasmine.createSpy('onOptionClickCallBack');
+        dropdownSearch.setProps({isOpened: true, onOptionClickCallBack});
+
+        dropdownSearch.find('[data-value="test a"]').simulate('mousedown');
+
+        expect(onOptionClickCallBack).toHaveBeenCalled();
+      });
+
+      it('should call onMouseEnterDropdown if defined when enter over the ul element', () => {
+        const onMouseEnterDropdown = jasmine.createSpy('onMouseEnterDropdown');
+        dropdownSearch.setProps({onMouseEnterDropdown});
+
+        dropdownSearch.find('ul.dropdown-menu').simulate('mouseenter');
+
+        expect(onMouseEnterDropdown).toHaveBeenCalled();
+      });
+
+      it('should call onKeyDownFilterBox if defined when key down on "filter-box"', () => {
+        const onKeyDownFilterBox = jasmine.createSpy('onKeyDownFilterBox');
+        dropdownSearch.setProps({isOpened: true, onKeyDownFilterBox});
+
+        dropdownSearch.find('input.filter-box').simulate('keydown');
+
+        expect(onKeyDownFilterBox).toHaveBeenCalled();
+      });
+
+      it('should call onKeyDownDropdownButton if defined when key down on button "dropdown-toggle"', () => {
+        const onKeyDownDropdownButton = jasmine.createSpy('onKeyDownDropdownButton');
+        dropdownSearch.setProps({onKeyDownDropdownButton});
+
+        dropdownSearch.find('button.dropdown-toggle').simulate('keydown');
+
+        expect(onKeyDownDropdownButton).toHaveBeenCalled();
       });
     });
 
@@ -224,6 +258,28 @@ describe('DropdownSearch', () => {
         }));
 
         expect(dropdownSearch.find('.dropdown-toggle').prop('disabled')).toBe(true);
+      });
+
+      xit('should scroll down if the active option is not visible by the user inside the dropdown list', () => {
+        spyOn(DropdownSearch.prototype, 'isScrolledIntoView').and.returnValue(false);
+        const spy = spyOn(DropdownSearch.prototype, 'updateScollPostionBasedOnActiveElement').and.callThrough();
+        const options = _.times(20, (n: number) => {
+          return {value: `test ${n}`};
+        });
+
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOption: 'test 1',
+          isOpened: true,
+          options,
+        }));
+
+        const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
+        const activeLi: Element = ul.getElementsByClassName('active')[0];
+        spyOn(ul, 'getBoundingClientRect').and.returnValue({bottom: 10});
+        spyOn(activeLi, 'getBoundingClientRect').and.returnValue({bottom: 20});
+
+        dropdownSearch.setProps({activeOption: {value: 'test 15'}});
+        expect(spy).toHaveBeenCalledTimes(1);
       });
     });
   });

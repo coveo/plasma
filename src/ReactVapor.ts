@@ -18,7 +18,7 @@ import { IItemFilterState } from './components/actions/filters/ItemFilterReducer
 import { IModalState } from './components/modal/ModalReducers';
 import { ISubNavigationState } from './components/subNavigation/SubNavigationReducers';
 import { ITabGroupState } from './components/tab/TabReducers';
-import { IDropdownSearchState } from './components/dropdownSearch/DropdownSearch';
+import { IDropdownSearchState } from './components/dropdownSearch/DropdownSearchReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];

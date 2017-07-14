@@ -5,8 +5,12 @@ export interface IDefaultDropdownSearchPayload {
   id: string;
 }
 
-export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPayload {
-  optionsDropDown?: IDropdownOption[];
+export interface IInputDrodownSearchPayload extends IDefaultDropdownSearchPayload {
+  keyCode?: number;
+}
+
+export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPayload, IInputDrodownSearchPayload {
+  optionsDropdown?: IDropdownOption[];
   filterText?: string;
   selectedOption?: IDropdownOption;
   isOpened?: boolean;
@@ -19,6 +23,7 @@ export const DropdownSearchActions = {
   update: 'UPDATE_DROPDOWN_SEARCH',
   filter: 'FILTER_DROPDOWN_SEARCH',
   select: 'SELECT_DROPDOWN_SEARCH',
+  active: 'ACTIVE_DROPDOWN_SEARCH',
 };
 
 export const applyFilterDropdownSearch = (id: string, filterText: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
@@ -30,11 +35,11 @@ export const applyFilterDropdownSearch = (id: string, filterText: string): IRedu
 });
 
 export const updateOptionsDropdownSearch = (id: string,
-  optionsDropDown: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  optionsDropdown: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.update,
     payload: {
       id,
-      optionsDropDown,
+      optionsDropdown,
     },
   });
 
@@ -45,11 +50,19 @@ export const toggleDropdownSearch = (id: string): IReduxAction<IDefaultDropdownS
   },
 });
 
-export const addDropdownSearch = (id: string, optionsDropDown: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const updateActiveOptionDropdownSearch = (id: string, keyCode: number): IReduxAction<IInputDrodownSearchPayload> => ({
+  type: DropdownSearchActions.active,
+  payload: {
+    id,
+    keyCode,
+  },
+});
+
+export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.add,
   payload: {
     id,
-    optionsDropDown,
+    optionsDropdown,
     filterText: '',
   },
 });

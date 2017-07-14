@@ -59,16 +59,12 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
         single_backstroke_delete: this.props.singleBackstrokeDelete,
         width: this.props.width,
       })
-      .change(
-      (event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenChange && this.props.onChosenChange(event, args))
-      .on('chosen:showing_dropdown',
-      (event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenClick && this.props.onChosenClick(event, args));
+      .change((event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenChange && this.props.onChosenChange(event, args));
   }
 
   componentWillUnmount() {
     this.select
       .off('change')
-      .off('chosen:showing_dropdown')
       .chosen('destroy');
   }
 
