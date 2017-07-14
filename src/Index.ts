@@ -106,6 +106,7 @@ import { tabsReducer, tabGroupsReducer } from './components/tab/TabReducers';
 import { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 import { Button } from './components/button/Button';
 import { BlankSlate } from './components/blankSlate/BlankSlate';
+import { Input } from './components/input/Input';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
@@ -165,6 +166,9 @@ export {
 
   // ModalPrompt
   ModalPrompt,
+
+  // Input
+  Input,
 
   // MultilineInput
   MultilineInput,
