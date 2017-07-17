@@ -99,5 +99,5 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         </div>
       </div>
     );
-  };
+  }
 }

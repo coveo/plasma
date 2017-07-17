@@ -90,11 +90,13 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       };
     case DropdownSearchActions.active:
       if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
+        const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
         return {
           ...state,
-          isOpened: true,
-          activeOption: state.options[getNextIndexPosition(state.options, state.activeOption, action.payload.keyCode)],
-          setFocusOnDropdownButton: false,
+          isOpened: !isFirstSelectedOption,
+          activeOption: !isFirstSelectedOption ?
+            state.options[getNextIndexPosition(state.options, state.activeOption, action.payload.keyCode)] : undefined,
+          setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
         return {

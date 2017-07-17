@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ISvgProps, Svg } from '../svg/Svg';
+import {ISvgProps, Svg} from '../svg/Svg';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
 import * as classNames from 'classnames';
-import { FilterBox } from '../filterBox/FilterBox';
+import {FilterBox} from '../filterBox/FilterBox';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -34,7 +34,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   highlightAllFilterResult?: boolean;
   noResultText?: string;
   isDisabled?: boolean;
-  onOptionClickCallBack?: () => void;
+  onOptionClickCallBack?: (option: IDropdownOption) => void;
   onMountCallBack?: () => void;
   onClickCallBack?: () => void;
 }
@@ -85,23 +85,28 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   private getDropdownOptions(): JSX.Element[] {
     const options = _.chain(this.props.options)
       .filter(
-      (option: IDropdownOption) => {
-        const value = option.displayValue || option.value;
+        (option: IDropdownOption) => {
+          const value = option.displayValue || option.value;
+          return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
+        },
+      )
+      .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
+        const optionClasses = classNames({
+          'state-selected': this.props.selectedOptions[0] && option.value === this.props.selectedOptions[0].value,
+        });
+        const liClasses = classNames({
+          'active': JSON.stringify(option) === JSON.stringify(this.props.activeOption),
+        });
 
-        return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
-      },
-    )
-      .map((option: IDropdownOption, index, options: IDropdownOption[]) => {
-        const optionClasses: string = option.value === this.props.selectedOptions[0].value ? 'state-selected' : '';
         const value = option.displayValue || option.value;
         const valueToShow = !!this.props.highlightAllFilterResult || options.length <= this.props.highlightThreshold
           ? this.getTextFiltered(value)
           : value;
 
         return <li key={option.value}
-          className={option === this.props.activeOption ? 'active' : ''}>
+                   className={liClasses}>
           <span className={optionClasses}
-            onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)} data-value={option.value}>
+                onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)} data-value={option.value}>
             {this.getDropdownPrepend(option)}
             {this.getSvg(option)}
             {valueToShow}
@@ -122,9 +127,9 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   private getSvg(option: IDropdownOption): JSX.Element {
-    if (option.svg) {
+    if (option && option.svg) {
       return <span key={option.svg.name}
-        className='value-icon'>
+                   className='value-icon'>
         <Svg {...option.svg} />
       </span>;
     }
@@ -157,15 +162,15 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   private getTextElement(subText: string, text: string, className: string = ''): JSX.Element {
     this.textIndex += 1;
     return <span key={`${text}-${this.textIndex}`}
-      className={className}>
+                 className={className}>
       {subText}
     </span>;
   }
 
   private getDropdownPrepend(option: IDropdownOption): JSX.Element {
-    if (option.prefix) {
+    if (option && option.prefix) {
       return <span key={option.prefix}
-        className='dropdown-prepend'>
+                   className='dropdown-prepend'>
         {option.prefix}
       </span>;
     }
@@ -237,13 +242,16 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   handleOnOptionClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    if (e.target && this.props.onOptionClick) {
-      const option = _.findWhere(this.props.options, { value: e.currentTarget.dataset.value });
-      this.props.onOptionClick(option);
-    }
+    if (e.target) {
+      const option = _.findWhere(this.props.options, {value: e.currentTarget.dataset.value});
 
-    if (this.props.onOptionClickCallBack) {
-      this.props.onOptionClickCallBack();
+      if (this.props.onOptionClick) {
+        this.props.onOptionClick(option);
+      }
+
+      if (this.props.onOptionClickCallBack) {
+        this.props.onOptionClickCallBack(option);
+      }
     }
   }
 
@@ -297,7 +305,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   render() {
-    const classes: string = classNames(
+    const dropdownSearchClasses: string = classNames(
       'dropdown',
       'mod-search',
       {
@@ -305,16 +313,16 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
         'mod-menu': this.props.modMenu,
       });
 
-    const style = {
+    const dropdownSearchStyles = {
       width: this.props.width,
     };
 
     return (
-      <div className={classes} style={style}>
+      <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
         {this.getMainInput()}
         <ul className='dropdown-menu'
-          ref={(input: HTMLUListElement) => { this.ulElement = input; }}
-          onMouseEnter={() => this.handleOnMouseEnter()}>
+            ref={(input: HTMLUListElement) => { this.ulElement = input; }}
+            onMouseEnter={() => this.handleOnMouseEnter()}>
           {this.getDropdownOptions()}
         </ul>
       </div>
