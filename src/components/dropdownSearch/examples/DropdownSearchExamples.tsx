@@ -7,9 +7,11 @@ export class DropdownSearchExamples extends React.Component<any, any> {
 
   render() {
     const defaultOptions = {
-      defaultOptions: [{ value: 'test 1', displayValue: 'TEST 22' }, { value: 'very long name name name name name name name name' },
-      { value: 'test 3' }, { value: 'test 4' },
-      { value: 'test 5' }, { value: 'test 6' },
+      defaultOptions: [
+        { value: 'test 1', displayValue: 'test 1', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
+        { value: 'test 2', displayValue: 'TEST 22', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
+        { value: 'test 3', displayValue: 'test 3', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
+        { value: 'value with very very very very very very very very very very long name', displayValue: 'test 1', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
       ],
     };
 
@@ -35,7 +37,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
       }),
     };
 
-    const selectedOption = _.defaults({
+    const selectedOptions = _.defaults({
       defaultSelectedOption: { value: 'test 3' },
     }, defaultOptions);
 
@@ -57,7 +59,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Dropdown with selected option</label>
           <div className='form-control'>
-            <DropdownSearchConnected {..._.extend({}, selectedOption, { id: UUID.generate() }) } />
+            <DropdownSearchConnected {..._.extend({}, selectedOptions, { id: UUID.generate() }) } />
           </div>
         </div>
         <div className='form-group'>

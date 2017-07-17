@@ -69,14 +69,16 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   private getSelectedOptions(): JSX.Element[] {
     const selectedOptions: JSX.Element[] = [];
     for (const selectedOption of this.props.selectedOptions) {
-      selectedOptions.push(
-        this.getDropdownPrepend(selectedOption),
-        this.getSvg(selectedOption),
-        <span key={selectedOption.value}
-          className='dropdown-selected-value'
-          data-value={selectedOption.value}>
-          selectedOption.displayValue || selectedOption.value}
-          </span>);
+      if (selectedOption) {
+        selectedOptions.push(
+          this.getDropdownPrepend(selectedOption),
+          this.getSvg(selectedOption),
+          <span key={selectedOption.value}
+            className='dropdown-selected-value'
+            data-value={selectedOption.value}>
+              {selectedOption.displayValue || selectedOption.value}
+            </span>);
+      }
     }
 
     return selectedOptions;
