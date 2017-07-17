@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Svg} from '../svg/Svg';
+import { Svg } from '../svg/Svg';
 import * as classNames from 'classnames';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
@@ -87,8 +87,8 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           value={this.props.filterText}
           autoFocus={this.props.isAutoFocus}
         />
-        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()}/>
-        <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg'/>
+        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
+        <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
       </div>
     );
   }
