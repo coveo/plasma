@@ -1,20 +1,20 @@
-import {mount, ReactWrapper} from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {UUID} from '../../../utils/UUID';
-import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
+import { UUID } from '../../../utils/UUID';
+import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
 import * as _ from 'underscore';
-import {FilterBox} from '../../filterBox/FilterBox';
-import {Svg} from '../../svg/Svg';
+import { FilterBox } from '../../filterBox/FilterBox';
+import { Svg } from '../../svg/Svg';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
-  const options = [{value: 'test a'}, {value: 'test b'}, {value: 'test c'}];
+  const options = [{ value: 'test a' }, { value: 'test b' }, { value: 'test c' }];
   const ownProps: IDropdownSearchProps = {
     id,
     modMenu: false,
     options,
-    selectedOptions: {value: 'test a'},
+    selectedOptions: { value: 'test a' },
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,
@@ -30,7 +30,7 @@ describe('DropdownSearch', () => {
     const renderDropdownSearch = (props?: IDropdownSearchProps) => {
       dropdownSearch = mount(
         <DropdownSearch {...props} />,
-        {attachTo: document.getElementById('App')},
+        { attachTo: document.getElementById('App') },
       );
       dropdownSearchInstance = dropdownSearch.instance() as DropdownSearch;
     };
@@ -63,7 +63,7 @@ describe('DropdownSearch', () => {
         expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
 
         dropdownSearch.unmount();
-        dropdownSearch.setProps({onMountCallBack});
+        dropdownSearch.setProps({ onMountCallBack });
         dropdownSearch.mount();
 
         expect(onMountCallBack).toHaveBeenCalled();
@@ -75,7 +75,7 @@ describe('DropdownSearch', () => {
         expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
 
         dropdownSearch.unmount();
-        dropdownSearch.setProps({onMount: onMountSpy});
+        dropdownSearch.setProps({ onMount: onMountSpy });
         dropdownSearch.mount();
 
         expect(onMountSpy).toHaveBeenCalled();
@@ -86,7 +86,7 @@ describe('DropdownSearch', () => {
 
         expect(() => dropdownSearchInstance.componentWillUnmount()).not.toThrow();
 
-        dropdownSearch.setProps({onDestroy});
+        dropdownSearch.setProps({ onDestroy });
         dropdownSearch.unmount();
 
         expect(onDestroy).toHaveBeenCalled();
@@ -94,7 +94,7 @@ describe('DropdownSearch', () => {
 
       it('should call onFilterClick if defined when onChange the "filter-box" input', () => {
         const onFilterClick = jasmine.createSpy('onFilterClick');
-        dropdownSearch.setProps({isOpened: true, onFilterClick});
+        dropdownSearch.setProps({ isOpened: true, onFilterClick });
         dropdownSearch.find('input.filter-box').simulate('change');
 
         expect(onFilterClick).toHaveBeenCalled();
@@ -102,7 +102,7 @@ describe('DropdownSearch', () => {
 
       it('should call onBlur if defined when we lost focus on "filter-box" input', () => {
         const onBlur = jasmine.createSpy('onBlur');
-        dropdownSearch.setProps({onBlur, isOpened: true});
+        dropdownSearch.setProps({ onBlur, isOpened: true });
 
         const element = dropdownSearch.find('.filter-box');
         element.simulate('focus');
@@ -113,7 +113,7 @@ describe('DropdownSearch', () => {
 
       it('should call onToggleDropdown if defined when click the "dropdown-toggle" button', () => {
         const onToggleDropdown = jasmine.createSpy('onToggleDropdown');
-        dropdownSearch.setProps({onToggleDropdown});
+        dropdownSearch.setProps({ onToggleDropdown });
 
         dropdownSearch.find('button.dropdown-toggle').simulate('click');
 
@@ -122,7 +122,7 @@ describe('DropdownSearch', () => {
 
       it('should call onClickCallBack if defined when click the "dropdown-toggle" button', () => {
         const onClickCallBack = jasmine.createSpy('onClickCallBack');
-        dropdownSearch.setProps({onClickCallBack});
+        dropdownSearch.setProps({ onClickCallBack });
 
         dropdownSearch.find('button.dropdown-toggle').simulate('click');
 
@@ -131,7 +131,7 @@ describe('DropdownSearch', () => {
 
       it('should call onOptionClickCallBack if defined when click an option "dropdown-toggle" button', () => {
         const onOptionClickCallBack = jasmine.createSpy('onOptionClickCallBack');
-        dropdownSearch.setProps({isOpened: true, onOptionClickCallBack});
+        dropdownSearch.setProps({ isOpened: true, onOptionClickCallBack });
 
         dropdownSearch.find('[data-value="test a"]').simulate('mousedown');
 
@@ -140,7 +140,7 @@ describe('DropdownSearch', () => {
 
       it('should call onMouseEnterDropdown if defined when enter over the ul element', () => {
         const onMouseEnterDropdown = jasmine.createSpy('onMouseEnterDropdown');
-        dropdownSearch.setProps({onMouseEnterDropdown});
+        dropdownSearch.setProps({ onMouseEnterDropdown });
 
         dropdownSearch.find('ul.dropdown-menu').simulate('mouseenter');
 
@@ -149,7 +149,7 @@ describe('DropdownSearch', () => {
 
       it('should call onKeyDownFilterBox if defined when key down on "filter-box"', () => {
         const onKeyDownFilterBox = jasmine.createSpy('onKeyDownFilterBox');
-        dropdownSearch.setProps({isOpened: true, onKeyDownFilterBox});
+        dropdownSearch.setProps({ isOpened: true, onKeyDownFilterBox });
 
         dropdownSearch.find('input.filter-box').simulate('keydown');
 
@@ -158,7 +158,7 @@ describe('DropdownSearch', () => {
 
       it('should call onKeyDownDropdownButton if defined when key down on button "dropdown-toggle"', () => {
         const onKeyDownDropdownButton = jasmine.createSpy('onKeyDownDropdownButton');
-        dropdownSearch.setProps({onKeyDownDropdownButton});
+        dropdownSearch.setProps({ onKeyDownDropdownButton });
 
         dropdownSearch.find('button.dropdown-toggle').simulate('keydown');
 
@@ -168,7 +168,7 @@ describe('DropdownSearch', () => {
 
     describe('Props functionality', () => {
 
-      const selectedOption = {prefix: 'test', value: 'test1', displayValue: 'test 2'};
+      const selectedOption = { prefix: 'test', value: 'test1', displayValue: 'test 2' };
 
       it('should show the filterBox if the dropdown is open', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
@@ -187,7 +187,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {selectedOption}));
+        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
@@ -206,7 +206,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown displayValue if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {selectedOption}));
+        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
       });
@@ -264,7 +264,7 @@ describe('DropdownSearch', () => {
         spyOn(DropdownSearch.prototype, 'isScrolledIntoView').and.returnValue(false);
         const spy = spyOn(DropdownSearch.prototype, 'updateScollPostionBasedOnActiveElement').and.callThrough();
         const options = _.times(20, (n: number) => {
-          return {value: `test ${n}`};
+          return { value: `test ${n}` };
         });
 
         renderDropdownSearch(_.extend({}, ownProps, {
@@ -275,10 +275,10 @@ describe('DropdownSearch', () => {
 
         const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
         const activeLi: Element = ul.getElementsByClassName('active')[0];
-        spyOn(ul, 'getBoundingClientRect').and.returnValue({bottom: 10});
-        spyOn(activeLi, 'getBoundingClientRect').and.returnValue({bottom: 20});
+        spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 10 });
+        spyOn(activeLi, 'getBoundingClientRect').and.returnValue({ bottom: 20 });
 
-        dropdownSearch.setProps({activeOption: {value: 'test 15'}});
+        dropdownSearch.setProps({ activeOption: { value: 'test 15' } });
         expect(spy).toHaveBeenCalledTimes(1);
       });
     });

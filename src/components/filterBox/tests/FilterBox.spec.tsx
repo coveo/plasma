@@ -1,5 +1,5 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
-import {FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps} from '../FilterBox';
+import { mount, ReactWrapper, shallow } from 'enzyme';
+import { FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps } from '../FilterBox';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 
@@ -27,7 +27,7 @@ describe('FilterBox', () => {
         <FilterBox
           id={id}
         />,
-        {attachTo: document.getElementById('App')},
+        { attachTo: document.getElementById('App') },
       );
       filterBoxInstance = filterBox.instance() as FilterBox;
     });
@@ -42,7 +42,7 @@ describe('FilterBox', () => {
 
       expect(() => filterBoxInstance.componentWillMount()).not.toThrow();
 
-      filterBox.setProps({id: id, onRender: renderSpy});
+      filterBox.setProps({ id: id, onRender: renderSpy });
       filterBox.unmount();
       filterBox.mount();
       expect(renderSpy.calls.count()).toBe(1);
@@ -53,7 +53,7 @@ describe('FilterBox', () => {
 
       expect(() => filterBoxInstance.componentWillUnmount()).not.toThrow();
 
-      filterBox.setProps({id: id, onDestroy: destroySpy});
+      filterBox.setProps({ id: id, onDestroy: destroySpy });
       filterBox.mount();
       filterBox.unmount();
       expect(destroySpy.calls.count()).toBe(1);
@@ -66,7 +66,7 @@ describe('FilterBox', () => {
       input.simulate('change');
       expect(filterSpy.calls.count()).toBe(0);
 
-      filterBox.setProps({id: id, onFilter: filterSpy});
+      filterBox.setProps({ id: id, onFilter: filterSpy });
       filterBox.mount();
       input.simulate('change');
       expect(filterSpy.calls.count()).toBe(1);
@@ -77,7 +77,7 @@ describe('FilterBox', () => {
 
       expect(filterBox.html()).toContain(FILTER_PLACEHOLDER);
 
-      filterBox.setProps({id: id, filterPlaceholder: expectedPlaceholder});
+      filterBox.setProps({ id: id, filterPlaceholder: expectedPlaceholder });
       filterBox.mount();
       expect(filterBox.html()).not.toContain(FILTER_PLACEHOLDER);
       expect(filterBox.html()).toContain(expectedPlaceholder);
@@ -122,14 +122,14 @@ describe('FilterBox', () => {
       let container = filterBox.find('div').first();
       expect(container.hasClass(containerClass)).toBe(false);
 
-      filterBox.setProps({id: id, containerClasses});
+      filterBox.setProps({ id: id, containerClasses });
       filterBox.mount();
       expect(container.hasClass(containerClass)).toBe(true);
     });
 
     it('should call onBlur when the input lost focus', () => {
       const onBlur = jasmine.createSpy('onBlur');
-      filterBox.setProps({onBlur});
+      filterBox.setProps({ onBlur });
 
       const element = filterBox.find('.filter-box');
       element.simulate('focus');
@@ -140,7 +140,7 @@ describe('FilterBox', () => {
 
     it('should call onKeyDown when the input get a key down event', () => {
       const onKeyDown = jasmine.createSpy('onKeyDown');
-      filterBox.setProps({onKeyDown});
+      filterBox.setProps({ onKeyDown });
 
       const element = filterBox.find('.filter-box');
       element.simulate('keydown');

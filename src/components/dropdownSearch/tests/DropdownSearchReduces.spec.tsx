@@ -1,5 +1,5 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {IDropdownOption} from '../DropdownSearch';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { IDropdownOption } from '../DropdownSearch';
 import {
   dropdownSearchInitialState,
   dropdownSearchReducer,
@@ -7,9 +7,9 @@ import {
   dropdownsSearchReducer,
   IDropdownSearchState,
 } from '../DropdownSearchReducers';
-import {DropdownSearchActions, IOptionsDropdownSearchPayload} from '../DropdownSearchActions';
+import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
-import {keyCode} from '../../../utils/InputUtils';
+import { keyCode } from '../../../utils/InputUtils';
 
 describe('DropdownSearch', () => {
 
@@ -31,9 +31,9 @@ describe('DropdownSearch', () => {
         isOpened: true,
       },
     ];
-    const defaultPayload = {id: 'new-dropdown-search'};
+    const defaultPayload = { id: 'new-dropdown-search' };
 
-    const options = [{value: 'test 1'}, {value: 'test 2'}];
+    const options = [{ value: 'test 1' }, { value: 'test 2' }];
     const oldState: IDropdownSearchState[] = [
       {
         id: 'new-dropdown-search',
@@ -113,7 +113,7 @@ describe('DropdownSearch', () => {
       const oldState: IDropdownSearchState[] = defaultState.slice();
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.remove,
-        payload: {id: 'not a id'},
+        payload: { id: 'not a id' },
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
@@ -131,12 +131,12 @@ describe('DropdownSearch', () => {
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter((dropdownSearch: IDropdownSearchState) =>
-      dropdownSearch.id === action.payload.id && _.isEmpty(dropdownSearch.filterText) && dropdownSearch.isOpened).length).toBe(1);
+        dropdownSearch.id === action.payload.id && _.isEmpty(dropdownSearch.filterText) && dropdownSearch.isOpened).length).toBe(1);
     });
 
     it('should return the new state with the isOpened toggle and the filterText reset to empty string on "UPDATE_DROPDOWN_SEARCH"', () => {
-      const dropdownOption = [{value: 'test'}, {value: 'test 1'}, {value: 'test 2'}];
-      const newDropdownOption = [{value: 'test 4'}];
+      const dropdownOption = [{ value: 'test' }, { value: 'test 1' }, { value: 'test 2' }];
+      const newDropdownOption = [{ value: 'test 4' }];
       const oldState: IDropdownSearchState[] = [
         {
           id: 'new-dropdown-search',
@@ -147,13 +147,13 @@ describe('DropdownSearch', () => {
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.update,
-        payload: _.extend({}, defaultPayload, {optionsDropdown: newDropdownOption}),
+        payload: _.extend({}, defaultPayload, { optionsDropdown: newDropdownOption }),
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter((dropdownSearch: IDropdownSearchState) =>
-      dropdownSearch.id === action.payload.id && dropdownSearch.options === newDropdownOption).length).toBe(1);
+        dropdownSearch.id === action.payload.id && dropdownSearch.options === newDropdownOption).length).toBe(1);
     });
 
     it('should return the new state with the isOpened toggle and the filterText reset to empty string on "FILTER_DROPDOWN_SEARCH"', () => {
@@ -168,36 +168,36 @@ describe('DropdownSearch', () => {
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.filter,
-        payload: _.extend({}, defaultPayload, {filterText: newFilterText}),
+        payload: _.extend({}, defaultPayload, { filterText: newFilterText }),
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-                                                  dropdownSearch.filterText === newFilterText).length).toBe(1);
+          dropdownSearch.filterText === newFilterText).length).toBe(1);
     });
 
     it('should return the new state with the selectedOptions modified on "SELECT_DROPDOWN_SEARCH"', () => {
-      const selectedOption: IDropdownOption = {value: 'test', displayValue: 'yolo test'};
+      const selectedOption: IDropdownOption = { value: 'test', displayValue: 'yolo test' };
       const oldState: IDropdownSearchState[] = [
         {
           id: 'new-dropdown-search',
           isOpened: true,
-          selectedOption: {value: 'test 1'},
+          selectedOption: { value: 'test 1' },
         },
       ];
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.select,
-        payload: _.extend({}, defaultPayload, {selectedOption}),
+        payload: _.extend({}, defaultPayload, { selectedOption }),
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-                                                  dropdownSearch.selectedOption.value === selectedOption.value).length).toBe(1);
+          dropdownSearch.selectedOption.value === selectedOption.value).length).toBe(1);
     });
 
     it(
@@ -205,16 +205,16 @@ describe('DropdownSearch', () => {
       () => {
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: keyCode.downArrow}),
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.downArrow }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                    && dropdownSearch.activeOption.value === options[0].value
-                                                    && !dropdownSearch.setFocusOnDropdownButton
-                                                    && dropdownSearch.isOpened).length).toBe(1);
+            && dropdownSearch.activeOption.value === options[0].value
+            && !dropdownSearch.setFocusOnDropdownButton
+            && dropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -222,16 +222,16 @@ describe('DropdownSearch', () => {
       () => {
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: keyCode.upArrow}),
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.upArrow }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                    && dropdownSearch.activeOption.value === options[0].value
-                                                    && !dropdownSearch.setFocusOnDropdownButton
-                                                    && dropdownSearch.isOpened).length).toBe(1);
+            && dropdownSearch.activeOption.value === options[0].value
+            && !dropdownSearch.setFocusOnDropdownButton
+            && dropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -247,16 +247,16 @@ describe('DropdownSearch', () => {
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: keyCode.downArrow}),
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.downArrow }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                    && dropdownSearch.activeOption.value === options[1].value
-                                                    && !dropdownSearch.setFocusOnDropdownButton
-                                                    && dropdownSearch.isOpened).length).toBe(1);
+            && dropdownSearch.activeOption.value === options[1].value
+            && !dropdownSearch.setFocusOnDropdownButton
+            && dropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -272,16 +272,16 @@ describe('DropdownSearch', () => {
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: keyCode.upArrow}),
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.upArrow }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                    && dropdownSearch.activeOption.value === options[0].value
-                                                    && !dropdownSearch.setFocusOnDropdownButton
-                                                    && dropdownSearch.isOpened).length).toBe(1);
+            && dropdownSearch.activeOption.value === options[0].value
+            && !dropdownSearch.setFocusOnDropdownButton
+            && dropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -297,16 +297,16 @@ describe('DropdownSearch', () => {
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: keyCode.enter}),
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                    && _.isUndefined(dropdownSearch.activeOption)
-                                                    && dropdownSearch.setFocusOnDropdownButton
-                                                    && !dropdownSearch.isOpened).length).toBe(1);
+            && _.isUndefined(dropdownSearch.activeOption)
+            && dropdownSearch.setFocusOnDropdownButton
+            && !dropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -322,16 +322,16 @@ describe('DropdownSearch', () => {
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: keyCode.tab}),
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                    && _.isUndefined(dropdownSearch.activeOption)
-                                                    && dropdownSearch.setFocusOnDropdownButton
-                                                    && !dropdownSearch.isOpened).length).toBe(1);
+            && _.isUndefined(dropdownSearch.activeOption)
+            && dropdownSearch.setFocusOnDropdownButton
+            && !dropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -347,7 +347,7 @@ describe('DropdownSearch', () => {
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: -1}),
+          payload: _.extend({}, defaultPayload, { keyCode: -1 }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
@@ -371,7 +371,7 @@ describe('DropdownSearch', () => {
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, {keyCode: 1231}),
+          payload: _.extend({}, defaultPayload, { keyCode: 1231 }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
