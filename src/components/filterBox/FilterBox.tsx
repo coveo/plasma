@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Svg } from '../svg/Svg';
+import {Svg} from '../svg/Svg';
+import * as classNames from 'classnames';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   id: string;
@@ -71,10 +72,10 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
   render() {
     let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-    let filterBoxContainerClasses = ['filter-container'].concat(this.props.containerClasses);
+    let filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
 
     return (
-      <div id={this.props.id} className={filterBoxContainerClasses.join(' ')}>
+      <div id={this.props.id} className={filterBoxContainerClasses}>
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
@@ -86,8 +87,8 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           value={this.props.filterText}
           autoFocus={this.props.isAutoFocus}
         />
-        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
-        <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
+        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()}/>
+        <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg'/>
       </div>
     );
   }

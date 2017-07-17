@@ -30,7 +30,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
 
   return {
     options: ownProps.defaultOptions,
-    selectedOption
+    selectedOption,
   };
 };
 
