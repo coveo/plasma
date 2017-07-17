@@ -16,6 +16,7 @@ import { defaultSelectedOption, IDropdownSearchState } from './DropdownSearchRed
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
   const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, { id: ownProps.id });
   const selectedOption = ownProps.defaultSelectedOption || defaultSelectedOption;
+
   if (dropdownSearch) {
     return {
       isOpened: dropdownSearch.isOpened || false,

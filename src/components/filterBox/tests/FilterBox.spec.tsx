@@ -127,7 +127,7 @@ describe('FilterBox', () => {
       expect(container.hasClass(containerClass)).toBe(true);
     });
 
-    it('should call onBlur when the input lost focus', () => {
+    it('should call onBlur when the input loose focus', () => {
       const onBlur = jasmine.createSpy('onBlur');
       filterBox.setProps({ onBlur });
 

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ISvgProps, Svg } from '../svg/Svg';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
+import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 
 export interface IDropdownOption {
@@ -59,6 +60,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   private dropdownButton: HTMLElement;
 
   static defaultProps: Partial<IDropdownSearchProps> = {
+    isOpened: false,
     highlightThreshold: 100,
     highlightAllFilterResult: false,
     noResultText: 'No results',
@@ -95,6 +97,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
         const valueToShow = !!this.props.highlightAllFilterResult || options.length <= this.props.highlightThreshold
           ? this.getTextFiltered(value)
           : value;
+
         return <li key={option.value}
           className={option === this.props.activeOption ? 'active' : ''}>
           <span className={optionClasses}
@@ -193,7 +196,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
     </button>;
   }
 
-  isScrolledIntoView(el: Element) {
+  private isScrolledIntoView(el: Element) {
     const boxTop = this.ulElement.getBoundingClientRect().top;
     const boxBottom = this.ulElement.getBoundingClientRect().bottom;
     const elTop = el.getBoundingClientRect().top;
@@ -202,14 +205,15 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
     return (elTop >= boxTop) && (elBottom <= boxBottom);
   }
 
-  updateScollPostionBasedOnActiveElement() {
+  private updateScrollPositionBasedOnActiveElement() {
     const activeLi: NodeListOf<Element> = this.ulElement.getElementsByClassName('active');
     if (activeLi.length) {
       const el: Element = activeLi[0];
       if (!this.isScrolledIntoView(el)) {
         if (el.getBoundingClientRect().bottom > this.ulElement.getBoundingClientRect().bottom) {
           this.ulElement.scrollTop += el.getBoundingClientRect().bottom - this.ulElement.getBoundingClientRect().bottom;
-        } else if (el.getBoundingClientRect().top < this.ulElement.getBoundingClientRect().top) {
+        }
+        if (el.getBoundingClientRect().top < this.ulElement.getBoundingClientRect().top) {
           this.ulElement.scrollTop -= this.ulElement.getBoundingClientRect().top - el.getBoundingClientRect().top;
         }
       }
@@ -269,7 +273,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   componentDidUpdate() {
-    this.updateScollPostionBasedOnActiveElement();
+    this.updateScrollPositionBasedOnActiveElement();
 
     if (this.dropdownButton && this.props.setFocusOnDropdownButton) {
       this.dropdownButton.focus();
@@ -293,23 +297,23 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   render() {
-    const dropdownClasses: string[] = ['dropdown', 'mod-search'];
-    if (this.props.isOpened) {
-      dropdownClasses.push('open');
-    }
-    if (this.props.modMenu) {
-      dropdownClasses.push('mod-menu');
-    }
+    const classes: string = classNames(
+      'dropdown',
+      'mod-search',
+      {
+        'open': this.props.isOpened,
+        'mod-menu': this.props.modMenu,
+      });
 
     const style = {
       width: this.props.width,
     };
 
     return (
-      <div className={dropdownClasses.join(' ')} style={style}>
+      <div className={classes} style={style}>
         {this.getMainInput()}
         <ul className='dropdown-menu'
-          ref={(input: any) => { this.ulElement = input; }}
+          ref={(input: HTMLUListElement) => { this.ulElement = input; }}
           onMouseEnter={() => this.handleOnMouseEnter()}>
           {this.getDropdownOptions()}
         </ul>

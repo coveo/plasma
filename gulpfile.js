@@ -43,7 +43,7 @@ gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests']);
 // <editor-fold desc="Prettify">
 const prettify = (srcPaths, destPath) =>
   gulp.src(srcPaths)
-    .pipe(prettyTypescript())
+    .pipe(prettyTypescript ())
     .pipe(gulp.dest(destPath));
 
 gulp.task('prettify:src', false, () => prettify(['src/**/*.ts', 'src/**/*.tsx'], 'src'));

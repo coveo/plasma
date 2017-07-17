@@ -260,25 +260,55 @@ describe('DropdownSearch', () => {
         expect(dropdownSearch.find('.dropdown-toggle').prop('disabled')).toBe(true);
       });
 
-      xit('should scroll down if the active option is not visible by the user inside the dropdown list', () => {
-        spyOn(DropdownSearch.prototype, 'isScrolledIntoView').and.returnValue(false);
-        const spy = spyOn(DropdownSearch.prototype, 'updateScollPostionBasedOnActiveElement').and.callThrough();
+      it('should scroll down if the active option is not visible by the user inside the dropdown list', () => {
         const options = _.times(20, (n: number) => {
           return { value: `test ${n}` };
         });
 
         renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOption: 'test 1',
+          selectedOption: { value: 'test 1' },
           isOpened: true,
           options,
+          activeOption: { value: 'test 1' },
         }));
 
+        spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
+        const spy = spyOn((dropdownSearch.instance() as any), 'updateScrollPositionBasedOnActiveElement').and.callThrough();
+
         const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
+        spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 10, top: 10 });
+
+        dropdownSearch.setProps({ activeOption: { value: 'test 15' } });
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should scroll up if the active option is not visible by the user inside the dropdown list', () => {
+        const options = _.times(20, (n: number) => {
+          return { value: `test ${n}` };
+        });
+
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOption: { value: 'test 1' },
+          isOpened: true,
+          options,
+          activeOption: { value: 'test 15' },
+        }));
+
+        spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
+        const spy = spyOn((dropdownSearch.instance() as any), 'updateScrollPositionBasedOnActiveElement').and.callThrough();
+
+        const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
+<<<<<<< HEAD
         const activeLi: Element = ul.getElementsByClassName('active')[0];
         spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 10 });
         spyOn(activeLi, 'getBoundingClientRect').and.returnValue({ bottom: 20 });
 
         dropdownSearch.setProps({ activeOption: { value: 'test 15' } });
+=======
+        spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 200000, top: 200000 });
+
+        dropdownSearch.setProps({ activeOption: { value: 'test 2' } });
+>>>>>>> add-dropdown-search
         expect(spy).toHaveBeenCalledTimes(1);
       });
     });
