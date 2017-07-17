@@ -70,12 +70,11 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
-      const newSelectedOptions: IDropdownOption[] = action.payload.selectedOptions || [];
-      newSelectedOptions.push(action.payload.addedSelectedOption);
+      state.selectedOptions.push(action.payload.addedSelectedOption);
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: newSelectedOptions,
+        selectedOptions: state.selectedOptions,
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
