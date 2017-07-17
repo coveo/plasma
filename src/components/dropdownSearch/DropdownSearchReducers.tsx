@@ -1,8 +1,8 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IDropdownOption } from './DropdownSearch';
-import { DropdownSearchActions, IOptionsDropdownSearchPayload } from './DropdownSearchActions';
+import {IReduxAction} from '../../utils/ReduxUtils';
+import {IDropdownOption} from './DropdownSearch';
+import {DropdownSearchActions, IOptionsDropdownSearchPayload} from './DropdownSearchActions';
 import * as _ from 'underscore';
-import { keyCode } from '../../utils/InputUtils';
+import {keyCode} from '../../utils/InputUtils';
 
 export interface IDropdownSearchState {
   id: string;
@@ -43,7 +43,7 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
 };
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
-  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
+                                      action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
   switch (action.type) {
     case DropdownSearchActions.toggle:
       return {
@@ -87,11 +87,13 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       };
     case DropdownSearchActions.active:
       if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
+        const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
         return {
           ...state,
-          isOpened: true,
-          activeOption: state.options[getNextIndexPosition(state.options, state.activeOption, action.payload.keyCode)],
-          setFocusOnDropdownButton: false,
+          isOpened: !isFirstSelectedOption,
+          activeOption: !isFirstSelectedOption ?
+                        state.options[getNextIndexPosition(state.options, state.activeOption, action.payload.keyCode)] : undefined,
+          setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
         return {
@@ -118,7 +120,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
 };
 
 export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdownsSearchInitialState,
-  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState[] => {
+                                       action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState[] => {
   switch (action.type) {
     case DropdownSearchActions.update:
     case DropdownSearchActions.filter:
