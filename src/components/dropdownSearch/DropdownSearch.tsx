@@ -79,7 +79,6 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       .filter(
         (option: IDropdownOption) => {
           const value = option.displayValue || option.value;
-
           return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
         },
       )
@@ -301,7 +300,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   render() {
-    const classes: string = classNames(
+    const dropdownSearchClasses: string = classNames(
       'dropdown',
       'mod-search',
       {
@@ -309,12 +308,12 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
         'mod-menu': this.props.modMenu,
       });
 
-    const style = {
+    const dropdownSearchStyles = {
       width: this.props.width,
     };
 
     return (
-      <div className={classes} style={style}>
+      <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
         {this.getMainInput()}
         <ul className='dropdown-menu'
             ref={(input: HTMLUListElement) => { this.ulElement = input; }}
