@@ -9,6 +9,7 @@ export interface IDropdownSearchState {
   isOpened?: boolean;
   filterText?: string;
   options?: IDropdownOption[];
+  selectedOptions?: IDropdownOption[];
   selectedOption?: IDropdownOption;
   activeOption?: IDropdownOption;
   setFocusOnDropdownButton?: boolean;
@@ -78,10 +79,12 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.add:
+      const selectedOptions: IDropdownOption[] = action.payload.selectedOptions || [];
+      selectedOptions.push(action.payload.addedSelectedOption);
       return {
         id: action.payload.id,
         options: action.payload.optionsDropdown,
-        selectedOption: action.payload.selectedOption,
+        selectedOptions: selectedOptions,
         filterText: action.payload.filterText,
         isOpened: false,
       };

@@ -91,7 +91,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should get the default selected option as a prop', () => {
-        const defaultSelectedOptionProp = dropdownSearch.props().selectedOption;
+        const defaultSelectedOptionProp = dropdownSearch.props().selectedOptions;
 
         expect(defaultSelectedOptionProp).toBeDefined();
         expect(defaultSelectedOptionProp).toBe(defaultSelectedOption);

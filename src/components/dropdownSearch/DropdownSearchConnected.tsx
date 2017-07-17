@@ -20,7 +20,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
     return {
       isOpened: dropdownSearch.isOpened || false,
       options: dropdownSearch.options || [],
-      selectedOption: dropdownSearch.selectedOption || selectedOption,
+      selectedOptions: dropdownSearch.selectedOptions || [selectedOption],
       filterText: dropdownSearch.filterText || '',
       activeOption: dropdownSearch.activeOption,
       setFocusOnDropdownButton: dropdownSearch.setFocusOnDropdownButton,
@@ -30,7 +30,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
   return {
     isOpened: false,
     options: ownProps.defaultOptions || [],
-    selectedOption,
+    selectedOptions: [],
     filterText: '',
   };
 };

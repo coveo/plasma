@@ -77,6 +77,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
     return (
       <div id={this.props.id} className={filterBoxContainerClasses.join(' ')}>
+        {this.props.children}
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'

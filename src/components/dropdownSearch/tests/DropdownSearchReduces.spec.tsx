@@ -178,7 +178,7 @@ describe('DropdownSearch', () => {
                                                   dropdownSearch.filterText === newFilterText).length).toBe(1);
     });
 
-    it('should return the new state with the selectedOption modified on "SELECT_DROPDOWN_SEARCH"', () => {
+    it('should return the new state with the selectedOptions modified on "SELECT_DROPDOWN_SEARCH"', () => {
       const selectedOption: IDropdownOption = {value: 'test', displayValue: 'yolo test'};
       const oldState: IDropdownSearchState[] = [
         {

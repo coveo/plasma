@@ -14,7 +14,7 @@ describe('DropdownSearch', () => {
     id,
     modMenu: false,
     options,
-    selectedOption: {value: 'test a'},
+    selectedOptions: {value: 'test a'},
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,
@@ -214,7 +214,7 @@ describe('DropdownSearch', () => {
       it('should show the dropdown value if the selected option has no displayValue', () => {
         renderDropdownSearch(_.extend({}, ownProps));
 
-        expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(ownProps.selectedOption.value);
+        expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(ownProps.selectedOptions.value);
       });
 
       it('should add the mod-menu class if the modMenu is set to true', () => {
