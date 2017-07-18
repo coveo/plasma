@@ -16,13 +16,13 @@ import {FixedQueue} from '../../utils/FixedQueue';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
   const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, { id: ownProps.id });
-  const selectedOption = ownProps.defaultSelectedOption || defaultSelectedOption;
+  const selectedOption = ownProps.defaultSelectedOptions || defaultSelectedOption;
 
   if (dropdownSearch) {
     return {
       isOpened: dropdownSearch.isOpened || false,
       options: dropdownSearch.options || [],
-      selectedOptions: dropdownSearch.selectedOptions || new FixedQueue<IDropdownOption>([selectedOption]),
+      selectedOptions: dropdownSearch.selectedOptions || new FixedQueue<IDropdownOption>([selectedOption], 1),
       filterText: dropdownSearch.filterText || '',
       activeOption: dropdownSearch.activeOption,
       setFocusOnDropdownButton: dropdownSearch.setFocusOnDropdownButton,
@@ -32,7 +32,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
   return {
     isOpened: false,
     options: ownProps.defaultOptions || [],
-    selectedOptions: new FixedQueue<IDropdownOption>(),
+    selectedOptions: new FixedQueue<IDropdownOption>([selectedOption], 1),
     filterText: '',
   };
 };

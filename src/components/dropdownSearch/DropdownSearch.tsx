@@ -27,7 +27,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   id: string;
   modMenu?: boolean;
   defaultOptions?: IDropdownOption[];
-  defaultSelectedOption?: IDropdownOption;
+  defaultSelectedOptions?: FixedQueue<IDropdownOption>;
   filterPlaceholder?: string;
   maxWidth?: number;
   width?: number;
