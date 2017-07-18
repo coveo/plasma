@@ -6,6 +6,7 @@ import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
 import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
 import { Svg } from '../../svg/Svg';
+import { keyCode } from '../../../utils/InputUtils';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -154,6 +155,32 @@ describe('DropdownSearch', () => {
         dropdownSearch.find('input.filter-box').simulate('keydown');
 
         expect(onKeyDownFilterBox).toHaveBeenCalled();
+      });
+
+      it('should call onOptionClickCallBack if defined and they key is enter when key down on "filter-box"', () => {
+        const onOptionClickCallBack = jasmine.createSpy('onOptionClickCallBack');
+        dropdownSearch.setProps({
+          isOpened: true,
+          activeOption: { value: 'test a' },
+          onOptionClickCallBack,
+        });
+
+        dropdownSearch.find('input.filter-box').simulate('keydown', { keyCode: keyCode.enter);
+
+        expect(onOptionClickCallBack).toHaveBeenCalled();
+      });
+
+      it('should call onOptionClickCallBack if defined and they key is tab when key down on "filter-box"', () => {
+        const onOptionClickCallBack = jasmine.createSpy('onOptionClickCallBack');
+        dropdownSearch.setProps({
+          isOpened: true,
+          activeOption: { value: 'test a' },
+          onOptionClickCallBack,
+        });
+
+        dropdownSearch.find('input.filter-box').simulate('keydown', { keyCode: keyCode.tab });
+
+        expect(onOptionClickCallBack).toHaveBeenCalled();
       });
 
       it('should call onKeyDownDropdownButton if defined when key down on button "dropdown-toggle"', () => {

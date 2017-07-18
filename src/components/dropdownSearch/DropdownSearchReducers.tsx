@@ -2,6 +2,7 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 import { IDropdownOption } from './DropdownSearch';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from './DropdownSearchActions';
 import * as _ from 'underscore';
+import * as s from 'underscore.string';
 import { keyCode } from '../../utils/InputUtils';
 
 export interface IDropdownSearchState {
@@ -27,20 +28,30 @@ export const dropdownsSearchInitialState: IDropdownSearchState[] = [];
 
 export const getNextIndexPosition = (array: any[], item: any, key: number): number => {
   let index: number = array.indexOf(item);
-  if (item) {
+
+  if (index === -1) {
+    return 0;
+  } else if (item) {
     if (key === keyCode.upArrow) {
       index -= 1;
     } else if (key === keyCode.downArrow) {
       index += 1;
     }
   }
-  if (index === -1) {
-    return 0;
-  } else if (index >= array.length - 1) {
+  if (index >= array.length - 1) {
     return array.length - 1;
   }
 
   return index;
+};
+
+export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
+  const currentFilterText: string = filterText || state.filterText;
+  return _.filter(state.options,
+    (option: IDropdownOption) => {
+      const value = option.displayValue || option.value;
+      return _.isEmpty(currentFilterText) || s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
+    });
 };
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
@@ -66,7 +77,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ...state,
         id: action.payload.id,
         filterText: action.payload.filterText,
-        activeOption: undefined,
+        activeOption: getOptionsFiltered(state, action.payload.filterText)[0] || state.activeOption,
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
@@ -92,11 +103,12 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
     case DropdownSearchActions.active:
       if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
         const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
+        const optionsFiltered = getOptionsFiltered(state);
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
           activeOption: !isFirstSelectedOption ?
-            state.options[getNextIndexPosition(state.options, state.activeOption, action.payload.keyCode)] : undefined,
+            optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, action.payload.keyCode)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {

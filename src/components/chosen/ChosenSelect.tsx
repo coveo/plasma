@@ -17,7 +17,6 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
   maxShownResults?: number; // @default: Infinity
   noResultsText?: string; // @default: "No results match"
   onChosenChange?: (event: JQueryEventObject, args: Chosen.SelectedData) => void;
-  onChosenClick?: (event: JQueryEventObject, args: Chosen.SelectedData) => void;
   placeholderTextMultiple?: string; // @default: "Select Some Options"
   placeholderTextSingle?: string; // @default: "Select an Option"
   searchContains?: boolean; // @default: false
@@ -31,7 +30,7 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
  */
 const chosenSelectPropsToOmit = [
   'allowSingleDeselect', 'children', 'disableSearch', 'disableSearchThreshold', 'displayDisabledOptions', 'displaySelectedOptions',
-  'enableSplitWordSearch', 'inheritSelectClasses', 'maxSelectedOptions', 'noResultsText', 'onChosenChange', 'onChosenClick',
+  'enableSplitWordSearch', 'inheritSelectClasses', 'maxSelectedOptions', 'noResultsText', 'onChosenChange',
   'placeholderTextMultiple', 'placeholderTextSingle', 'searchContains', 'singleBackstrokeDelete', 'width',
 ];
 
