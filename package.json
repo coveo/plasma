@@ -49,6 +49,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "@types/classnames": "2.2.0",
     "@types/chosen-js": "1.6.1",
     "@types/enzyme": "2.8.2",
     "@types/jasmine": "2.5.53",
@@ -66,6 +67,7 @@
     "autoprefixer": "7.1.2",
     "bithound": "1.7.0",
     "chosen-js": "1.7.0",
+    "classnames": "2.2.5",
     "codecov": "2.2.0",
     "coveo-styleguide": "1.14.x",
     "css-loader": "0.28.4",

@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { Svg } from '../svg/Svg';
+import * as classNames from 'classnames';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   id: string;
   containerClasses?: string[];
   filterPlaceholder?: string;
+  onBlur?: () => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  isAutoFocus?: boolean;
 }
 
 export interface IFilterBoxStateProps {
@@ -24,13 +28,27 @@ export const FILTER_PLACEHOLDER: string = 'Filter';
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
   filterInput: HTMLInputElement;
 
-  private handleChange = () => {
-    let clearClass = this.filterInput.value.length ? '' : 'hidden';
+  static defaultProps: Partial<IFilterBoxProps> = {
+    isAutoFocus: false,
+  };
 
-    this.filterInput.nextElementSibling.setAttribute('class', clearClass);
+  private handleChange = () => {
+    this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
 
     if (this.props.onFilter) {
       this.props.onFilter(this.props.id, this.filterInput.value);
+    }
+  }
+
+  private handleOnBlur() {
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
+  }
+
+  private handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(e);
     }
   }
 
@@ -54,17 +72,20 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
   render() {
     let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-    let filterBoxContainerClasses = ['coveo-filter-container'].concat(this.props.containerClasses);
+    let filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
 
     return (
-      <div id={this.props.id} className={filterBoxContainerClasses.join(' ')}>
+      <div id={this.props.id} className={filterBoxContainerClasses}>
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
           className='filter-box'
           placeholder={filterPlaceholder}
           onChange={() => this.handleChange()}
+          onBlur={() => this.handleOnBlur()}
+          onKeyDown={(e) => this.handleOnKeyDown(e)}
           value={this.props.filterText}
+          autoFocus={this.props.isAutoFocus}
         />
         <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
         <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />

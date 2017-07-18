@@ -1,5 +1,5 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { FilterBox, IFilterBoxProps, FILTER_PLACEHOLDER } from '../FilterBox';
+import { mount, ReactWrapper, shallow } from 'enzyme';
+import { FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps } from '../FilterBox';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 
@@ -12,7 +12,7 @@ describe('FilterBox', () => {
         shallow(
           <FilterBox
             id={id}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -27,7 +27,7 @@ describe('FilterBox', () => {
         <FilterBox
           id={id}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       filterBoxInstance = filterBox.instance() as FilterBox;
     });
@@ -125,6 +125,27 @@ describe('FilterBox', () => {
       filterBox.setProps({ id: id, containerClasses });
       filterBox.mount();
       expect(container.hasClass(containerClass)).toBe(true);
+    });
+
+    it('should call onBlur when the input loose focus', () => {
+      const onBlur = jasmine.createSpy('onBlur');
+      filterBox.setProps({ onBlur });
+
+      const element = filterBox.find('.filter-box');
+      element.simulate('focus');
+      element.simulate('blur');
+
+      expect(onBlur).toHaveBeenCalled();
+    });
+
+    it('should call onKeyDown when the input get a key down event', () => {
+      const onKeyDown = jasmine.createSpy('onKeyDown');
+      filterBox.setProps({ onKeyDown });
+
+      const element = filterBox.find('.filter-box');
+      element.simulate('keydown');
+
+      expect(onKeyDown).toHaveBeenCalled();
     });
   });
 });

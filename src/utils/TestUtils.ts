@@ -18,6 +18,7 @@ import { modalsReducer } from '../components/modal/ModalReducers';
 import { subNavigationsReducer } from '../components/subNavigation/SubNavigationReducers';
 import { tabGroupsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
+import { dropdownsSearchReducer } from '../components/dropdownSearch/DropdownSearchReducers';
 
 export class TestUtils {
   static buildStore() {
@@ -31,6 +32,7 @@ export class TestUtils {
       prompts: promptsReducer,
       actionBars: actionBarsReducer,
       dropdowns: dropdownsReducer,
+      dropdownSearch: dropdownsSearchReducer,
       rows: tableRowsReducer,
       optionsCycles: optionsCyclesReducer,
       optionPickers: optionPickersReducer,
@@ -38,7 +40,7 @@ export class TestUtils {
       itemFilters: itemFiltersReducer,
       modals: modalsReducer,
       subNavigations: subNavigationsReducer,
-      tabs: tabGroupsReducer
+      tabs: tabGroupsReducer,
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {

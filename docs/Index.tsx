@@ -44,6 +44,7 @@ import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
+import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 
 class App extends React.Component<any, any> {
 
@@ -76,6 +77,7 @@ class App extends React.Component<any, any> {
             </div>
           </div>
           <ButtonExamples />
+          <DropdownSearchExamples />
           <TooltipExamples />
           <ChosenSelectExamples />
           <UserFeedbackExample />
