@@ -1,9 +1,9 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IDropdownOption} from './DropdownSearch';
-import {DropdownSearchActions, IOptionsDropdownSearchPayload} from './DropdownSearchActions';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { IDropdownOption } from './DropdownSearch';
+import { DropdownSearchActions, IOptionsDropdownSearchPayload } from './DropdownSearchActions';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
-import {keyCode} from '../../utils/InputUtils';
+import { keyCode } from '../../utils/InputUtils';
 
 export interface IDropdownSearchState {
   id: string;
@@ -53,7 +53,7 @@ export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: str
 };
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
-                                      action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
+  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
   switch (action.type) {
     case DropdownSearchActions.toggle:
       return {
@@ -103,7 +103,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           ...state,
           isOpened: !isFirstSelectedOption,
           activeOption: !isFirstSelectedOption ?
-                        optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, action.payload.keyCode)] : undefined,
+            optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, action.payload.keyCode)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
@@ -131,7 +131,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
 };
 
 export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdownsSearchInitialState,
-                                       action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState[] => {
+  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState[] => {
   switch (action.type) {
     case DropdownSearchActions.update:
     case DropdownSearchActions.filter:
