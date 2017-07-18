@@ -4,13 +4,14 @@ import { DropdownSearchActions, IOptionsDropdownSearchPayload } from './Dropdown
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
 import { keyCode } from '../../utils/InputUtils';
+import {FixedQueue} from '../../utils/FixedQueue';
 
 export interface IDropdownSearchState {
   id: string;
   isOpened?: boolean;
   filterText?: string;
   options?: IDropdownOption[];
-  selectedOptions?: IDropdownOption[];
+  selectedOptions?: FixedQueue<IDropdownOption>;
   selectedOption?: IDropdownOption;
   activeOption?: IDropdownOption;
   setFocusOnDropdownButton?: boolean;
@@ -91,7 +92,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.add:
-      const selectedOptions: IDropdownOption[] = action.payload.selectedOptions || [];
+      const selectedOptions: FixedQueue<IDropdownOption> = action.payload.selectedOptions || new FixedQueue<IDropdownOption>();
       selectedOptions.push(action.payload.addedSelectedOption);
       return {
         id: action.payload.id,
