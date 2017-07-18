@@ -37,6 +37,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   onOptionClickCallBack?: (option: IDropdownOption) => void;
   onMountCallBack?: () => void;
   onClickCallBack?: () => void;
+  isMultiselect?: boolean;
 }
 
 export interface IDropdownSearchDispatchProps {
@@ -61,6 +62,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   static defaultProps: Partial<IDropdownSearchProps> = {
     isOpened: false,
+    isMultiselect: false,
     highlightThreshold: 100,
     highlightAllFilterResult: false,
     noResultText: 'No results',
@@ -68,16 +70,31 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   private getSelectedOptions(): JSX.Element[] {
     const selectedOptions: JSX.Element[] = [];
-    for (const selectedOption of this.props.selectedOptions) {
-      if (selectedOption) {
-        selectedOptions.push(
-          this.getDropdownPrepend(selectedOption),
-          this.getSvg(selectedOption),
-          <span key={selectedOption.value}
-            className='dropdown-selected-value'
-            data-value={selectedOption.value}>
-              {selectedOption.displayValue || selectedOption.value}
-            </span>);
+    if (this.props.isMultiselect) {
+      for (const selectedOption of this.props.selectedOptions) {
+        if (selectedOption) {
+          selectedOptions.push(
+            this.getDropdownPrepend(selectedOption),
+            this.getSvg(selectedOption),
+            <span key={selectedOption.value}
+                  className='dropdown-selected-value'
+                  data-value={selectedOption.value}>
+                {selectedOption.displayValue || selectedOption.value}
+              </span>);
+        }
+      }
+    } else {
+        const lastSelectedOption = this.props.selectedOptions[this.props.selectedOptions.length - 1];
+        this.props.selectedOptions.length = 1;
+        if (lastSelectedOption) {
+          selectedOptions.push(
+            this.getDropdownPrepend(lastSelectedOption),
+            this.getSvg(lastSelectedOption),
+            <span key={lastSelectedOption.value}
+                  className='dropdown-selected-value'
+                  data-value={lastSelectedOption.value}>
+                {lastSelectedOption.displayValue || lastSelectedOption.value}
+              </span>);
       }
     }
 

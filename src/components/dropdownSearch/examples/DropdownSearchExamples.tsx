@@ -8,10 +8,10 @@ export class DropdownSearchExamples extends React.Component<any, any> {
   render() {
     const defaultOptions = {
       defaultOptions: [
-        { value: 'test 1', displayValue: 'test 1', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
-        { value: 'test 2', displayValue: 'TEST 22', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
-        { value: 'test 3', displayValue: 'test 3', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
-        { value: 'value with very very very very very very very very very very long name', displayValue: 'test 1', prefix: 'Prefix', svg: { svgName: 'access-private', svgClass: 'icon fill-blue' } },
+        { value: 'test 1', displayValue: 'test 1',  },
+        { value: 'test 2', displayValue: 'TEST 22', },
+        { value: 'test 3', displayValue: 'test 3', },
+        { value: 'value with very very very very very very very very very very long name', displayValue: 'test 212019201', },
       ],
     };
 
@@ -47,7 +47,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Default Dropdown</label>
           <div className='form-control'>
-            <DropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } />
+            <DropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate(), isMultiselect: true }) } />
           </div>
         </div>
         <div className='form-group'>
