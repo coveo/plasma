@@ -36,7 +36,8 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
     } else if (key === keyCode.downArrow) {
       index += 1;
     }
-  } else if (index >= array.length - 1) {
+  }
+  if (index >= array.length - 1) {
     return array.length - 1;
   }
 

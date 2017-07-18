@@ -285,14 +285,16 @@ describe('DropdownSearch', () => {
       });
 
     it(
-      'should stay action on the first element if the keyCode is "Down Arrow" on "ACTIVE_DROPDOWN_SEARCH"',
+      'should stay action on the last element if the keyCode is "Down Arrow" on "ACTIVE_DROPDOWN_SEARCH"',
       () => {
         const oldState: IDropdownSearchState[] = [
           {
             id: 'new-dropdown-search',
             isOpened: true,
             options,
-            activeOption: options[options.length],
+            activeOption: options[options.length - 1],
+            setFocusOnDropdownButton: false,
+            filterText: '',
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -304,7 +306,8 @@ describe('DropdownSearch', () => {
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && dropdownSearch.activeOption.value === options[0].value
+            && dropdownSearch.activeOption &&
+            dropdownSearch.activeOption.value === options[options.length - 1].value
             && !dropdownSearch.setFocusOnDropdownButton
             && dropdownSearch.isOpened).length).toBe(1);
       });
@@ -322,7 +325,7 @@ describe('DropdownSearch', () => {
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.active,
-          payload: _.extend({}, defaultPayload, { keyCode: keyCode.downArrow }),
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.upArrow }),
         };
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
@@ -330,8 +333,7 @@ describe('DropdownSearch', () => {
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
             && !dropdownSearch.isOpened
-            && !dropdownSearch.setFocusOnDropdownButton
-            && dropdownSearch.isOpened).length).toBe(1);
+            && dropdownSearch.setFocusOnDropdownButton).length).toBe(1);
       });
 
     it(
