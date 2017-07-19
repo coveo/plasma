@@ -15,6 +15,7 @@ export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPay
   filterText?: string;
   selectedOptions?: FixedQueue<IDropdownOption>;
   selectedOption?: IDropdownOption;
+  selectedOptionValue?: string;
   addedSelectedOption?: IDropdownOption;
   isOpened?: boolean;
 }
@@ -27,6 +28,7 @@ export const DropdownSearchActions = {
   filter: 'FILTER_DROPDOWN_SEARCH',
   select: 'SELECT_DROPDOWN_SEARCH',
   active: 'ACTIVE_DROPDOWN_SEARCH',
+  removeSelectedOption: 'REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH',
 };
 
 export const applyFilterDropdownSearch = (id: string, filterText: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
@@ -82,5 +84,13 @@ export const selectOptionDropdownSearch = (id: string, addedSelectedOption: IDro
   payload: {
     id,
     addedSelectedOption,
+  },
+});
+
+export const removeSelectedOptionDropdownSearch = (id: string, selectedOptionValue: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  type: DropdownSearchActions.removeSelectedOption,
+  payload: {
+    id,
+    selectedOptionValue,
   },
 });

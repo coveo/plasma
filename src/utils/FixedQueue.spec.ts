@@ -58,7 +58,7 @@ describe('FixedQueue', () => {
       expect(fixedQueue.getQueue()).toEqual(expectedQueue);
     });
 
-    describe('push 3 elements on a fixedQueue of size 2', () => {
+    describe('push 3 elements consecutively on a fixedQueue of size 2', () => {
       const firstElement = 1;
       const secondElement = 2;
       const thirdElement = 3;

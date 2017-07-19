@@ -6,6 +6,7 @@ import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 import { keyCode } from '../../utils/InputUtils';
 import {FixedQueue} from '../../utils/FixedQueue';
+import {SelectedOption} from './SelectedOption';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -51,6 +52,7 @@ export interface IDropdownSearchDispatchProps {
   onKeyDownFilterBox?: (keyCode: number) => void;
   onKeyDownDropdownButton?: (keyCode: number) => void;
   onMouseEnterDropdown?: () => void;
+  onRemoveSelectedOption?: (value: string) => void;
 }
 
 export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdownSearchStateProps, IDropdownSearchDispatchProps { }
@@ -74,11 +76,15 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
         selectedOptions.push(
           this.getDropdownPrepend(selectedOption),
           this.getSvg(selectedOption),
-          <span key={selectedOption.value}
-                className='dropdown-selected-value'
-                data-value={selectedOption.value}>
-              {selectedOption.displayValue || selectedOption.value}
-            </span>);
+          // <span key={selectedOption.value}
+          // className='dropdown-selected-value'
+          // data-value={selectedOption.value}>
+          // {selectedOption.displayValue || selectedOption.value}
+          // </span>);
+        <SelectedOption displayValue={selectedOption.displayValue}
+                        key={selectedOption.value}
+                        onRemoveClick={this.handleRemoveSelectedOption.bind(this)}
+        />);
       }
     }
     return selectedOptions;
@@ -188,18 +194,18 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
         filterPlaceholder={this.props.filterPlaceholder}
         isAutoFocus={true} />;
     }
-    return <button className='btn dropdown-toggle dropdown-button-search-container mod-search'
-      type='button'
-      data-toggle='dropdown'
-      onClick={() => this.handleOnClick()}
-      onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownDropdownButton(e)}
-      style={{
-        maxWidth: this.props.maxWidth,
-      }}
-      ref={(input: any) => { this.dropdownButton = input; }}
-      disabled={!!this.props.isDisabled}>
+    return<button className='btn dropdown-toggle dropdown-button-search-container mod-search'
+              type='button'
+              data-toggle='dropdown'
+              onClick={() => this.handleOnClick()}
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownDropdownButton(e)}
+              style={{
+                maxWidth: this.props.maxWidth,
+              }}
+              ref={(input: any) => { this.dropdownButton = input; }}
+              disabled={!!this.props.isDisabled}>
+        <span className='dropdown-toggle-arrow'></span>
       {this.getSelectedOptions()}
-      <span className='dropdown-toggle-arrow'></span>
     </button>;
   }
 
@@ -293,6 +299,12 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   handleOnMouseEnter() {
     if (this.props.onMouseEnterDropdown) {
       this.props.onMouseEnterDropdown();
+    }
+  }
+
+  handleRemoveSelectedOption(value: string) {
+    if (this.props.onRemoveSelectedOption) {
+      this.props.onRemoveSelectedOption(value);
     }
   }
 

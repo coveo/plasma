@@ -57,6 +57,13 @@ export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: str
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
+  const removeSelectedOption = function () {
+    return new FixedQueue<IDropdownOption>(_.filter(state.selectedOptions.getQueue(),
+      (selectedOption: IDropdownOption) => {
+        return selectedOption.displayValue != action.payload.selectedOptionValue;
+      }
+    ));
+  };
   switch (action.type) {
     case DropdownSearchActions.toggle:
       return {
@@ -87,6 +94,16 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ...state,
         id: action.payload.id,
         selectedOptions: state.selectedOptions,
+        isOpened: false,
+        activeOption: undefined,
+        setFocusOnDropdownButton: false,
+      };
+    case DropdownSearchActions.removeSelectedOption:
+      const selectedOptions = removeSelectedOption();
+      return {
+        ...state,
+        id: action.payload.id,
+        selectedOptions: selectedOptions,
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -143,6 +160,7 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
     case DropdownSearchActions.active:
     case DropdownSearchActions.toggle:
     case DropdownSearchActions.select:
+    case DropdownSearchActions.removeSelectedOption:
       return state.map((dropdownSearch: IDropdownSearchState) => {
         if (dropdownSearch.id === action.payload.id) {
           return dropdownSearchReducer(dropdownSearch, action);
