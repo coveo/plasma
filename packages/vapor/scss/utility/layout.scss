@@ -69,13 +69,16 @@
 }
 
 .split-layout {
+  height: 100%;
   min-height: min-content;
 
   @extend .flex;
   @extend .flex-auto;
 
   .column {
+    height: 100%;
     max-width: 50%;
+    overflow-y: scroll;
 
     @extend .flex-auto;
   }
