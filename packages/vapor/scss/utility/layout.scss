@@ -78,7 +78,7 @@
   .column {
     height: 100%;
     max-width: 50%;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     @extend .flex-auto;
   }
