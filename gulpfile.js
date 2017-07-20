@@ -111,6 +111,7 @@ gulp.task('cleanDefs', false, () =>
   gulp.src('dist/react-vapor.d.ts')
     .pipe(replace(/: Partial<[A-Za-z]+>/gm, ''))
     .pipe(replace(/: React.KeyboardEvent<[A-Za-z]+>/gm, ''))
+    .pipe(replace(/: React.MouseEvent<[A-Za-z]+>/gm, ''))
     .pipe(replace(/import.*$/gm, ''))
     .pipe(replace(/export =.+;$/gm, ''))
     .pipe(replace(/export default.+;$/gm, ''))

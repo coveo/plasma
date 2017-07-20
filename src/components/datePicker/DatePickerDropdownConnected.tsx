@@ -19,8 +19,8 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
-  let item: IDropdownState = _.findWhere(state.dropdowns, { id: ownProps.id });
-  let datePickers: IDatePickerState[] = _.map(state.datePickers, (datePicker: IDatePickerState) => {
+  const item: IDropdownState = _.findWhere(state.dropdowns, { id: ownProps.id });
+  const datePickers: IDatePickerState[] = _.map(state.datePickers, (datePicker: IDatePickerState) => {
     if (datePicker.id.indexOf(ownProps.id) === 0) {
       return datePicker;
     }
