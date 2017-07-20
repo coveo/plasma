@@ -16,13 +16,15 @@ export class SelectedOption extends React.Component<ISelectedOptionProps, any> {
 
   render() {
     return (
-      <div className='selected-option' onClick={() => this.handleOnRemove()} >
+      <div className='selected-option' >
 
         <div className='selected-option-value'>
           {this.props.displayValue}
         </div>
 
-        <div className='remove-option' />
+        <div className='selected-option-separator' />
+
+        <div className='remove-option' onClick={() => this.handleOnRemove()} />
 
       </div>
     );

@@ -3,9 +3,9 @@ export class FixedQueue<T> {
   private queue: Array<T>;
   private maxLength: number;
 
-  constructor(initialValues?: Array<any>, maxLength: number = Number.MAX_VALUE) {
+  constructor(initialValues: Array<any> = [], maxLength: number = Number.MAX_VALUE) {
     this.maxLength = maxLength;
-    this.queue = initialValues ? initialValues : [];
+    this.queue = initialValues;
     this.trimQueue();
   }
 
