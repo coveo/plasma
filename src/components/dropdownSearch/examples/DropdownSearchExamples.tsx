@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
-import {SelectedOption} from '../SelectedOption';
+import {MultiselectInput} from '../MultiselectInput';
 
 export class DropdownSearchExamples extends React.Component<any, any> {
 
@@ -45,7 +45,9 @@ export class DropdownSearchExamples extends React.Component<any, any> {
     return (
       <div className='mt2'>
         <h1 className='text-blue mb1'>Dropdown List</h1>
-        <SelectedOption displayValue='test value' key='key' />
+
+        <MultiselectInput selectedOptions={defaultOptions.defaultOptions} onRemoveClick={() => {console.log('ok'); }} />
+
         <div className='form-group'>
           <label className='form-control-label'>Default Dropdown</label>
           <div className='form-control'>

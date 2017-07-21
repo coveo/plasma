@@ -6,7 +6,6 @@ import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 import { keyCode } from '../../utils/InputUtils';
 import {FixedQueue} from '../../utils/FixedQueue';
-import {SelectedOption} from './SelectedOption';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -76,15 +75,11 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
         selectedOptions.push(
           this.getDropdownPrepend(selectedOption),
           this.getSvg(selectedOption),
-          // <span key={selectedOption.value}
-          // className='dropdown-selected-value'
-          // data-value={selectedOption.value}>
-          // {selectedOption.displayValue || selectedOption.value}
-          // </span>);
-        <SelectedOption displayValue={selectedOption.displayValue}
-                        key={selectedOption.value}
-                        onRemoveClick={this.handleRemoveSelectedOption.bind(this)}
-        />);
+          <span key={selectedOption.value}
+          className='dropdown-selected-value'
+          data-value={selectedOption.value}>
+          {selectedOption.displayValue || selectedOption.value}
+          </span>);
       }
     }
     return selectedOptions;
