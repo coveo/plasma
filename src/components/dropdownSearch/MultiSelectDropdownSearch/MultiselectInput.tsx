@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IDropdownOption} from './DropdownSearch';
+import {IDropdownOption} from '../DropdownSearch';
 import {SelectedOption} from './SelectedOption';
 
 export interface IMultiselectInputProps {

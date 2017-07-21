@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
-import {MultiselectInput} from '../MultiselectInput';
+import {MultiselectInput} from '../MultiSelectDropdownSearch/MultiselectInput';
 
 export class DropdownSearchExamples extends React.Component<any, any> {
 

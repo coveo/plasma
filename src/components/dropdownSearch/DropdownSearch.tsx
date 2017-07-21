@@ -6,7 +6,7 @@ import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 import { keyCode } from '../../utils/InputUtils';
 import {FixedQueue} from '../../utils/FixedQueue';
-import { IMultiSelectDropdownSearchProps } from '../MultiSelectDropdownSearch/MultiSelectDropdownSearch';
+import { IMultiSelectDropdownSearchProps } from './MultiSelectDropdownSearch/MultiSelectDropdownSearch';
 
 export interface IDropdownOption {
   svg?: ISvgProps;

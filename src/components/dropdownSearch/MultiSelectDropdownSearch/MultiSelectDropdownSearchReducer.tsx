@@ -1,6 +1,6 @@
-import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../dropdownSearch/DropdownSearchActions';
-import { dropdownSearchInitialState, dropdownSearchReducer, IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
-import { IReduxAction } from '../../utils/ReduxUtils';
+import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
+import { dropdownSearchInitialState, dropdownSearchReducer, IDropdownSearchState } from '../DropdownSearchReducers';
+import { IReduxAction } from '../../../utils/ReduxUtils';
 export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>) => {
   switch (action.type) {

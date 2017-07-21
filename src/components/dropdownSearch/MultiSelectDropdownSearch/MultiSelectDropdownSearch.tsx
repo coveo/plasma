@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { DropdownSearch, IDropdownOption, IDropdownSearchProps, IDropdownSearchStateProps } from '../dropdownSearch/DropdownSearch';
+import { DropdownSearch, IDropdownOption, IDropdownSearchProps, IDropdownSearchStateProps } from '../DropdownSearch';
 import * as _ from 'underscore';
-import {FixedQueue} from "../../utils/FixedQueue";
+import {FixedQueue} from "../../../utils/FixedQueue";
 
 export interface IMultiSelectDropDownSearchStateProps extends IDropdownSearchStateProps {
   selectedOptions?: FixedQueue<IDropdownOption>;
