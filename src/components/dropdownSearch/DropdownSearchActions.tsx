@@ -23,6 +23,7 @@ export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPay
 export const DropdownSearchActions = {
   toggle: 'TOGGLE_DROPDOWN_SEARCH',
   add: 'ADD_DROPDOWN_SEARCH',
+  addMultiSelect: 'ADD_MULTI_SELECT_DROPDOWN_SEARCH',
   remove: 'REMOVE_DROPDOWN_SEARCH',
   update: 'UPDATE_DROPDOWN_SEARCH',
   filter: 'FILTER_DROPDOWN_SEARCH',
@@ -65,6 +66,15 @@ export const updateActiveOptionDropdownSearch = (id: string, keyCode: number): I
 
 export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.add,
+  payload: {
+    id,
+    optionsDropdown,
+    filterText: '',
+  },
+});
+
+export const addMultiSelectDropdownSearch = (id: string, optionsDropdown: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  type: DropdownSearchActions.addMultiSelect,
   payload: {
     id,
     optionsDropdown,

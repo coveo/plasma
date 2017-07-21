@@ -6,7 +6,6 @@ import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 import { keyCode } from '../../utils/InputUtils';
 import {FixedQueue} from '../../utils/FixedQueue';
-import { IMultiSelectDropdownSearchProps } from './MultiSelectDropdownSearch/MultiSelectDropdownSearch';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -57,7 +56,7 @@ export interface IDropdownSearchDispatchProps {
 
 export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdownSearchStateProps, IDropdownSearchDispatchProps { }
 
-export class DropdownSearch extends React.Component<IMultiSelectDropdownSearchProps, any> {
+export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
   filterInput: HTMLDivElement;
   ulElement: HTMLElement;
   protected dropdownButton: HTMLElement;

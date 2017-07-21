@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
-import {MultiselectInput} from '../MultiSelectDropdownSearch/MultiselectInput';
+import {MultiselectDropdownSearchConnected} from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 
 export class DropdownSearchExamples extends React.Component<any, any> {
 
@@ -38,16 +38,16 @@ export class DropdownSearchExamples extends React.Component<any, any> {
       }),
     };
 
-    const selectedOptions = _.defaults({
-      defaultSelectedOption: { value: 'test 3' },
-    }, defaultOptions);
-
     return (
       <div className='mt2'>
         <h1 className='text-blue mb1'>Dropdown List</h1>
 
-        <MultiselectInput selectedOptions={defaultOptions.defaultOptions} onRemoveClick={() => {console.log('ok'); }} />
-
+        <div className='form-group'>
+          <label className='form-control-label'>Multiselect Dropdown</label>
+          <div className='form-control'>
+            <MultiselectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } />
+          </div>
+        </div>
         <div className='form-group'>
           <label className='form-control-label'>Default Dropdown</label>
           <div className='form-control'>
@@ -63,7 +63,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Dropdown with selected option</label>
           <div className='form-control'>
-            <DropdownSearchConnected {..._.extend({}, selectedOptions, { id: UUID.generate() }) } />
+            <DropdownSearchConnected {..._.extend({}, { id: UUID.generate() }) } />
           </div>
         </div>
         <div className='form-group'>

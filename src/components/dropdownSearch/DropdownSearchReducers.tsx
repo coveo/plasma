@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 import * as s from 'underscore.string';
 import { keyCode } from '../../utils/InputUtils';
 import {FixedQueue} from '../../utils/FixedQueue';
+import {multiSelectDropdownSearchReducer} from './MultiSelectDropdownSearch/MultiSelectDropdownSearchReducer';
 
 export interface IDropdownSearchState {
   id: string;
@@ -171,6 +172,11 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
       return [
         ...state,
         dropdownSearchReducer(undefined, action),
+      ];
+    case DropdownSearchActions.addMultiSelect:
+      return [
+        ...state,
+        multiSelectDropdownSearchReducer(undefined, action),
       ];
     case DropdownSearchActions.remove:
       return _.reject(state, (dropdown: IDropdownSearchState) => {

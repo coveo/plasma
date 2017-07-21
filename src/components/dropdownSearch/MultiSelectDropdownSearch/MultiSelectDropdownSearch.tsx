@@ -1,46 +1,36 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { DropdownSearch, IDropdownOption, IDropdownSearchProps, IDropdownSearchStateProps } from '../DropdownSearch';
-import * as _ from 'underscore';
-import {FixedQueue} from "../../../utils/FixedQueue";
+import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
+import {FixedQueue} from '../../../utils/FixedQueue';
+import {MultiselectInput} from './MultiSelectInput';
 
-export interface IMultiSelectDropDownSearchStateProps extends IDropdownSearchStateProps {
-  selectedOptions?: FixedQueue<IDropdownOption>;
-}
-
-export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps, IMultiSelectDropDownSearchStateProps { }
+// export interface IMultiSelectDropDownSearchStateProps extends IDropdownSearchStateProps {
+//   selectedOptions?: FixedQueue<IDropdownOption>;
+//   onRemoveSelectedOption?: (value: string) => void;
+// }
+//
+// export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps, IMultiSelectDropDownSearchStateProps { }
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
 
-  protected getMainInput(): JSX.Element {
-    if (!this.props.selectedOptions && this.props.isOpened) {
-      return <div>
-        {this.getSelectedOption()}
-        <input type='text' />
-      </div>;
+  static defaultProps: Partial<IDropdownSearchProps> = {
+    selectedOptions: new FixedQueue<IDropdownOption>(),
+  };
+
+  componentWillMount() {
+    if (this.props.onMount) {
+      this.props.onMount();
     }
-    return <button className='btn dropdown-toggle dropdown-button-search-container mod-search'
-      type='button'
-      data-toggle='dropdown'
-      onClick={() => this.handleOnClick()}
-      onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownDropdownButton(e)}
-      style={{
-        maxWidth: this.props.maxWidth,
-      }}
-      ref={(input: HTMLButtonElement) => { this.dropdownButton = input; }}
-      disabled={!!this.props.isDisabled}>
-      {this.getSelectedOption()}
-      <span className='dropdown-toggle-arrow'></span>
-    </button>;
+
+    if (this.props.onMountCallBack) {
+      this.props.onMountCallBack();
+    }
   }
 
-  protected getSelectedOption() {
-    // TODO: Return new component OptionBox
-    return _.map(this.props.selectedOptions.getQueue(), (option: IDropdownOption) => {
-      return <ul>
-        <li>{option.displayValue || option.value}</li>
-      </ul>;
-    });
+  componentWillUnmount() {
+    if (this.props.onDestroy) {
+      this.props.onDestroy();
+    }
   }
 
   render() {
@@ -58,7 +48,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
 
     return (
       <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
-        {this.getMainInput()}
+        <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()} onRemoveClick={this.props.onRemoveSelectedOption} />
         <ul className='dropdown-menu'
           ref={(input: HTMLUListElement) => { this.ulElement = input; }}
           onMouseEnter={() => this.handleOnMouseEnter()}>

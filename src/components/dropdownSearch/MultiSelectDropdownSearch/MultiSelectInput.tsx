@@ -12,7 +12,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
   private getSelectedOptionComponents(): JSX.Element[] {
     const selectedOptionComponents: JSX.Element[] = [];
 
-    for (const selectedOption of this.props.selectedOptions) {
+    for (let selectedOption of this.props.selectedOptions) {
       selectedOptionComponents.push(
         <SelectedOption displayValue={selectedOption.displayValue}
                         key={selectedOption.value}
