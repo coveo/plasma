@@ -71,7 +71,7 @@ export class DropdownSearch extends React.Component<IMultiSelectDropdownSearchPr
   };
 
   protected getSelectedOption(): JSX.Element[] {
-    if (!this.props.selectedOptions.getQueue().length) {
+    if (this.props.selectedOptions.getQueue().length) {
       return _.map(this.props.selectedOptions.getQueue(), (selectedOption: IDropdownOption) => {
         return <span key={selectedOption.value}
           className='dropdown-selected-value'
@@ -185,8 +185,7 @@ export class DropdownSearch extends React.Component<IMultiSelectDropdownSearchPr
         onFilter={(id, filterText) => this.handleOnFilter(id, filterText)}
         onBlur={() => this.handleOnBlur()}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
-        filterPlaceholder={this.props.filterPlaceholder || this.props.selectedOptions.getQueue()[0].displayValue ||
-          this.props.selectedOptions.getQueue()[0].value}
+        filterPlaceholder={this.props.filterPlaceholder}
         isAutoFocus={true} />;
     }
     return <button className='btn dropdown-toggle dropdown-button-search-container mod-search'
