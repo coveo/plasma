@@ -25,7 +25,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
 
   render() {
     return (
-      <div>
+      <div className='multiselect-input'>
         {this.getSelectedOptionComponents()}
         <input/>
       </div>
