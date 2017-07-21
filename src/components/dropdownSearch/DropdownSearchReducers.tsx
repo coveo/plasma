@@ -178,6 +178,13 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
         ...state,
         multiSelectDropdownSearchReducer(undefined, action),
       ];
+    case DropdownSearchActions.removeAllSelectedOptions:
+      return state.map((dropdownSearch: IDropdownSearchState) => {
+        if (dropdownSearch.id === action.payload.id) {
+          return multiSelectDropdownSearchReducer(dropdownSearch, action);
+        }
+        return dropdownSearch;
+      });
     case DropdownSearchActions.remove:
       return _.reject(state, (dropdown: IDropdownSearchState) => {
         return action.payload.id === dropdown.id;

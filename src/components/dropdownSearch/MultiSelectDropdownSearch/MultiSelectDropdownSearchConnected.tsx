@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import {
   addMultiSelectDropdownSearch,
-  applyFilterDropdownSearch,
+  applyFilterDropdownSearch, removeAllSelectedOptionsMultiselectDropdownSearch,
   removeDropdownSearch, removeSelectedOptionDropdownSearch,
   selectOptionDropdownSearch,
   toggleDropdownSearch,
@@ -49,6 +49,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   onKeyDownDropdownButton: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
   onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
   onRemoveSelectedOption: (value: string) => dispatch(removeSelectedOptionDropdownSearch(ownProps.id, value)),
+  onRemoveAllSelectedOptions: () => dispatch(removeAllSelectedOptionsMultiselectDropdownSearch(ownProps.id)),
 });
 
 export const MultiselectDropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =

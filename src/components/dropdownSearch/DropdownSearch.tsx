@@ -52,6 +52,7 @@ export interface IDropdownSearchDispatchProps {
   onKeyDownDropdownButton?: (keyCode: number) => void;
   onMouseEnterDropdown?: () => void;
   onRemoveSelectedOption?: (value: string) => void;
+  onRemoveAllSelectedOptions?: () => void;
 }
 
 export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdownSearchStateProps, IDropdownSearchDispatchProps { }
@@ -294,12 +295,6 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
   handleOnMouseEnter() {
     if (this.props.onMouseEnterDropdown) {
       this.props.onMouseEnterDropdown();
-    }
-  }
-
-  handleRemoveSelectedOption(value: string) {
-    if (this.props.onRemoveSelectedOption) {
-      this.props.onRemoveSelectedOption(value);
     }
   }
 

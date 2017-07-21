@@ -30,6 +30,7 @@ export const DropdownSearchActions = {
   select: 'SELECT_DROPDOWN_SEARCH',
   active: 'ACTIVE_DROPDOWN_SEARCH',
   removeSelectedOption: 'REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH',
+  removeAllSelectedOptions: 'REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH',
 };
 
 export const applyFilterDropdownSearch = (id: string, filterText: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
@@ -102,5 +103,12 @@ export const removeSelectedOptionDropdownSearch = (id: string, selectedOptionVal
   payload: {
     id,
     selectedOptionValue,
+  },
+});
+
+export const removeAllSelectedOptionsMultiselectDropdownSearch = (id: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  type: DropdownSearchActions.removeAllSelectedOptions,
+  payload: {
+    id,
   },
 });

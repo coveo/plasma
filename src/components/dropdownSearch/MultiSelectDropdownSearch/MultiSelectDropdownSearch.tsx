@@ -4,13 +4,6 @@ import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../Dropdo
 import {FixedQueue} from '../../../utils/FixedQueue';
 import {MultiselectInput} from './MultiSelectInput';
 
-// export interface IMultiSelectDropDownSearchStateProps extends IDropdownSearchStateProps {
-//   selectedOptions?: FixedQueue<IDropdownOption>;
-//   onRemoveSelectedOption?: (value: string) => void;
-// }
-//
-// export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps, IMultiSelectDropDownSearchStateProps { }
-
 export class MultiSelectDropdownSearch extends DropdownSearch {
 
   static defaultProps: Partial<IDropdownSearchProps> = {
@@ -48,7 +41,9 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
 
     return (
       <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
-        <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()} onRemoveClick={this.props.onRemoveSelectedOption} />
+        <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()}
+                          onRemoveClick={this.props.onRemoveSelectedOption}
+                          onRemoveAll={this.props.onRemoveAllSelectedOptions} />
         <ul className='dropdown-menu'
           ref={(input: HTMLUListElement) => { this.ulElement = input; }}
           onMouseEnter={() => this.handleOnMouseEnter()}>
