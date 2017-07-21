@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Svg} from '../svg/Svg';
 
 export interface ISelectedOptionProps {
   displayValue: string;
@@ -24,8 +25,9 @@ export class SelectedOption extends React.Component<ISelectedOptionProps, any> {
 
         <div className='selected-option-separator' />
 
-        <div className='remove-option' onClick={() => this.handleOnRemove()} />
-
+        <div className='remove-option' onClick={() => this.handleOnRemove()} >
+          <Svg svgName='clear' svgClass='icon fill-medium-blue' />
+        </div>
       </div>
     );
   }
