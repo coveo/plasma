@@ -8,7 +8,7 @@ import { keyCode } from '../../utils/InputUtils';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
-  value?: string;
+  value: string;
   displayValue?: string;
   prefix?: string;
 }
