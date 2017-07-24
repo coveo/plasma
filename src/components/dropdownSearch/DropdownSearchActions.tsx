@@ -31,6 +31,7 @@ export const DropdownSearchActions = {
   active: 'ACTIVE_DROPDOWN_SEARCH',
   removeSelectedOption: 'REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH',
   removeAllSelectedOptions: 'REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH',
+  multiSelect: 'MULTI_SELECT_OPTION_DROPDOWN_SEARCH',
 };
 
 export const applyFilterDropdownSearch = (id: string, filterText: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
@@ -92,6 +93,14 @@ export const removeDropdownSearch = (id: string): IReduxAction<IDefaultDropdownS
 
 export const selectOptionDropdownSearch = (id: string, addedSelectedOption: IDropdownOption): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.select,
+  payload: {
+    id,
+    addedSelectedOption,
+  },
+});
+
+export const multiSelectOptionDropdownSearch = (id: string, addedSelectedOption: IDropdownOption): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  type: DropdownSearchActions.multiSelect,
   payload: {
     id,
     addedSelectedOption,

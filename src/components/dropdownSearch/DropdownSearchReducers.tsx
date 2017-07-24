@@ -130,10 +130,10 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
+        state.selectedOptions.push(state.activeOption);
         return {
           ...state,
           id: action.payload.id,
-          selectedOption: state.activeOption,
           isOpened: false,
           activeOption: undefined,
           setFocusOnDropdownButton: true,
@@ -179,6 +179,7 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
         multiSelectDropdownSearchReducer(undefined, action),
       ];
     case DropdownSearchActions.removeAllSelectedOptions:
+    case DropdownSearchActions.multiSelect:
       return state.map((dropdownSearch: IDropdownSearchState) => {
         if (dropdownSearch.id === action.payload.id) {
           return multiSelectDropdownSearchReducer(dropdownSearch, action);

@@ -21,22 +21,25 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         id: action.payload.id,
         options: action.payload.optionsDropdown,
         selectedOptions: new FixedQueue<IDropdownOption>([{value: 'VALUE', displayValue: 'Salut'},
-          {value: 'VALUE3', displayValue: 'PO'},
-          {value: 'VALUE4', displayValue: 'ça marche'},
-          {value: 'VALUE5', displayValue: 'en tabarouette'},
-          {value: 'VALUE6', displayValue: 'mon gars'},
         ]),
         filterText: action.payload.filterText,
         isOpened: false,
       };
     case DropdownSearchActions.removeAllSelectedOptions:
-      const selectedOptions = new FixedQueue<IDropdownOption>();
+      let selectedOptions = new FixedQueue<IDropdownOption>();
       return {
         ...state,
         id: action.payload.id,
         selectedOptions: selectedOptions,
         isOpened: false,
         setFocusOnDropdownButton: false,
+      };
+    case DropdownSearchActions.multiSelect:
+      state.selectedOptions.push(action.payload.addedSelectedOption);
+      return {
+        ...state,
+        id: action.payload.id,
+        isOpened: true,
       };
     default:
       return dropdownSearchReducer(state, action);

@@ -47,7 +47,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
                           onFilterClick={this.props.onFilterClick}
                           onBlur={this.props.onBlur}
                           onFocus={this.props.onFocus}
-                          onKeyDownFilterBox={this.props.onKeyDownFilterBox}
+                          onKeyDownFilterBox={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
                           filterPlaceholder={this.props.filterPlaceholder}
         />
         <ul className='dropdown-menu'

@@ -45,7 +45,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Multiselect Dropdown</label>
           <div className='form-control'>
-            <MultiselectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } />
+            <MultiselectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } filterPlaceholder={'Filter'} />
           </div>
         </div>
         <div className='form-group'>

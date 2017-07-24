@@ -10,7 +10,7 @@ export interface IMultiselectInputProps {
   onFilterClick?: (filterText: string) => void;
   onBlur?: () => void;
   onFocus?: () => void;
-  onKeyDownFilterBox?: (keycode: number) => void;
+  onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   filterPlaceholder?: string;
 }
 
@@ -22,7 +22,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
     }
   }
 
-  private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  private handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (this.props.onFilterClick) {
       this.props.onFilterClick(e.target.value);
     }
@@ -43,7 +43,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
 
   private handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (this.props.onKeyDownFilterBox) {
-      this.props.onKeyDownFilterBox(e.keyCode);
+      this.props.onKeyDownFilterBox(e);
     }
   }
 
@@ -77,12 +77,12 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
         <div className='selected-options-container'>
           {this.getSelectedOptionComponents()}
           <input
-            placeholder={'placeholder'}
-            onChange={(e) => this.handleChange(e)}
+            placeholder={this.props.filterPlaceholder}
+            onChange={(e) => this.handleInputChange(e)}
             onBlur={() => this.handleOnBlur()}
             onFocus={() => this.handleOnFocus()}
             onKeyDown={(e) => this.handleOnKeyDown(e)}
-            autoFocus={false}
+            autoFocus={true}
           />
         </div>
         {this.getRemoveAllSelectedOptionsButton()}
