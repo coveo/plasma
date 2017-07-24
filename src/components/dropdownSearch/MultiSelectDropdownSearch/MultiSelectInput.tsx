@@ -2,8 +2,6 @@ import * as React from 'react';
 import {IDropdownOption} from '../DropdownSearch';
 import {SelectedOption} from './SelectedOption';
 import {Svg} from '../../svg/Svg';
-import {FilterBox} from '../../filterBox/FilterBox';
-import {UUID} from '../../../utils/UUID';
 
 export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
@@ -24,7 +22,26 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
     }
   }
 
-  handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
+  private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (this.props.onFilterClick) {
+      this.props.onFilterClick(e.target.value);
+    }
+  }
+
+
+  private handleOnBlur() {
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
+  }
+
+  private handleOnFocus() {
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
+  }
+
+  private handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (this.props.onKeyDownFilterBox) {
       this.props.onKeyDownFilterBox(e.keyCode);
     }
@@ -59,13 +76,14 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
       <div className='multiselect-input'>
         <div className='selected-options-container'>
           {this.getSelectedOptionComponents()}
-          <FilterBox id={UUID.generate()}
-                     onFilter={this.props.onFilterClick}
-                     onFocus={this.props.onBlur}
-                     onBlur={this.props.onBlur}
-                     onKeyDown={(e) => this.handleOnKeyDownFilterBox(e)}
-                     filterPlaceholder={this.props.filterPlaceholder}
-                     isAutoFocus={false} />
+          <input
+            placeholder={'placeholder'}
+            onChange={(e) => this.handleChange(e)}
+            onBlur={() => this.handleOnBlur()}
+            onFocus={() => this.handleOnFocus()}
+            onKeyDown={(e) => this.handleOnKeyDown(e)}
+            autoFocus={false}
+          />
         </div>
         {this.getRemoveAllSelectedOptionsButton()}
       </div>
