@@ -2,11 +2,17 @@ import * as React from 'react';
 import {IDropdownOption} from '../DropdownSearch';
 import {SelectedOption} from './SelectedOption';
 import {Svg} from '../../svg/Svg';
+import {FilterBox} from '../../filterBox/FilterBox';
+import {UUID} from '../../../utils/UUID';
 
 export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
   onRemoveClick?: (value: string) => void;
   onRemoveAll?: () => void;
+  onFilterClick: (filterText: string) => void;
+  onBlur: () => void;
+  onKeyDownFilterBox: (keycode: number) => void;
+  filterPlaceholder: string;
 }
 
 export class MultiselectInput extends React.Component<IMultiselectInputProps, any> {
@@ -14,6 +20,12 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
   handleOnRemoveAll() {
     if (this.props.onRemoveAll) {
       this.props.onRemoveAll();
+    }
+  }
+
+  handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (this.props.onKeyDownFilterBox) {
+      this.props.onKeyDownFilterBox(e.keyCode);
     }
   }
 
@@ -46,7 +58,12 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
       <div className='multiselect-input'>
         <div className='selected-options-container'>
           {this.getSelectedOptionComponents()}
-          <input/>
+          <FilterBox id={UUID.generate()}
+                     onFilter={this.props.onFilterClick}
+                     onBlur={this.props.onBlur}
+                     onKeyDown={() => this.handleOnKeyDownFilterBox}
+                     filterPlaceholder={this.props.filterPlaceholder}
+                     isAutoFocus={true} />
         </div>
         {this.getRemoveAllSelectedOptionsButton()}
       </div>

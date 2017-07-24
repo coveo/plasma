@@ -43,7 +43,12 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
       <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
         <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()}
                           onRemoveClick={this.props.onRemoveSelectedOption}
-                          onRemoveAll={this.props.onRemoveAllSelectedOptions} />
+                          onRemoveAll={this.props.onRemoveAllSelectedOptions}
+                          onFilterClick={this.props.onFilterClick}
+                          onBlur={this.props.onBlur}
+                          onKeyDownFilterBox={this.props.onKeyDownDropdownButton}
+                          filterPlaceholder={this.props.filterPlaceholder}
+        />
         <ul className='dropdown-menu'
           ref={(input: HTMLUListElement) => { this.ulElement = input; }}
           onMouseEnter={() => this.handleOnMouseEnter()}>
