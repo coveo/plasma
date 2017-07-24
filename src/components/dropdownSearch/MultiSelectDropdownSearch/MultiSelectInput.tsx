@@ -9,10 +9,11 @@ export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
   onRemoveClick?: (value: string) => void;
   onRemoveAll?: () => void;
-  onFilterClick: (filterText: string) => void;
-  onBlur: () => void;
-  onKeyDownFilterBox: (keycode: number) => void;
-  filterPlaceholder: string;
+  onFilterClick?: (filterText: string) => void;
+  onBlur?: () => void;
+  onFocus?: () => void;
+  onKeyDownFilterBox?: (keycode: number) => void;
+  filterPlaceholder?: string;
 }
 
 export class MultiselectInput extends React.Component<IMultiselectInputProps, any> {
@@ -60,10 +61,11 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
           {this.getSelectedOptionComponents()}
           <FilterBox id={UUID.generate()}
                      onFilter={this.props.onFilterClick}
+                     onFocus={this.props.onBlur}
                      onBlur={this.props.onBlur}
-                     onKeyDown={() => this.handleOnKeyDownFilterBox}
+                     onKeyDown={(e) => this.handleOnKeyDownFilterBox(e)}
                      filterPlaceholder={this.props.filterPlaceholder}
-                     isAutoFocus={true} />
+                     isAutoFocus={false} />
         </div>
         {this.getRemoveAllSelectedOptionsButton()}
       </div>

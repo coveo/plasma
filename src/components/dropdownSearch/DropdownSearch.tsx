@@ -46,6 +46,7 @@ export interface IDropdownSearchDispatchProps {
   onDestroy?: () => void;
   onToggleDropdown?: () => void;
   onBlur?: () => void;
+  onFocus?: () => void;
   onFilterClick?: (filterText: string) => void;
   onOptionClick?: (option: IDropdownOption) => void;
   onKeyDownFilterBox?: (keyCode: number) => void;
