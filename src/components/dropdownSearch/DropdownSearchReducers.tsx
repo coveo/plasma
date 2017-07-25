@@ -74,6 +74,22 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         activeOption: undefined,
         setFocusOnDropdownButton: false,
       };
+    case DropdownSearchActions.open:
+      return {
+        ...state,
+        isOpened: true,
+        filterText: '',
+        activeOption: undefined,
+        setFocusOnDropdownButton: false,
+      };
+    case DropdownSearchActions.close:
+      return {
+        ...state,
+        isOpened: false,
+        filterText: '',
+        activeOption: undefined,
+        setFocusOnDropdownButton: false,
+      };
     case DropdownSearchActions.update:
       return {
         ...state,
@@ -90,11 +106,10 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
-      state.selectedOptions.push(action.payload.addedSelectedOption);
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: state.selectedOptions,
+        selectedOptions: state.selectedOptions.push(action.payload.addedSelectedOption),
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -119,9 +134,9 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         isOpened: false,
       };
     case DropdownSearchActions.active:
+      const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
+      const optionsFiltered = getOptionsFiltered(state);
       if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
-        const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
-        const optionsFiltered = getOptionsFiltered(state);
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
@@ -130,11 +145,20 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
-        state.selectedOptions.push(state.activeOption);
         return {
           ...state,
           id: action.payload.id,
           isOpened: false,
+          selectedOptions: state.selectedOptions.push(state.activeOption),
+          activeOption: undefined,
+          setFocusOnDropdownButton: true,
+        };
+      } else if (action.payload.keyCode === keyCode.backspace) {
+        return {
+          ...state,
+          id: action.payload.id,
+          isOpened: true,
+          selectedOptions: state.selectedOptions.removeLastElement(),
           activeOption: undefined,
           setFocusOnDropdownButton: true,
         };
@@ -160,6 +184,8 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
     case DropdownSearchActions.filter:
     case DropdownSearchActions.active:
     case DropdownSearchActions.toggle:
+    case DropdownSearchActions.open:
+    case DropdownSearchActions.close:
     case DropdownSearchActions.select:
     case DropdownSearchActions.removeSelectedOption:
       return state.map((dropdownSearch: IDropdownSearchState) => {

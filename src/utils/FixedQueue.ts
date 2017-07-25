@@ -13,9 +13,10 @@ export class FixedQueue<T> {
     return this.queue;
   }
 
-  push(object: any) {
+  push(object: any): FixedQueue<T> {
     this.queue.push(object);
     this.trimQueue();
+    return new FixedQueue<T>(this.queue, this.maxLength);
   }
 
   removeAtIndex(index: number) {
@@ -25,6 +26,13 @@ export class FixedQueue<T> {
   removeElement(element: any) {
     const index = this.queue.indexOf(element);
     this.removeAtIndex(index);
+  }
+
+  removeLastElement(): FixedQueue<T> {
+    if (this.queue.length > 0) {
+      this.queue.pop();
+    }
+    return new FixedQueue<T>(this.queue, this.maxLength);
   }
 
   private trimQueue() {
