@@ -13,6 +13,10 @@ export class FixedQueue<T> {
     return this.queue;
   }
 
+  getMaxLength(): number {
+    return this.maxLength;
+  }
+
   push(object: any): FixedQueue<T> {
     this.queue.push(object);
     this.trimQueue();

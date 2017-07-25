@@ -10,7 +10,6 @@ import {
   removeAllSelectedOptionsMultiselectDropdownSearch,
   removeDropdownSearch,
   removeSelectedOptionDropdownSearch,
-  toggleDropdownSearch,
   updateActiveOptionDropdownSearch,
 } from '../DropdownSearchActions';
 import { IDropdownSearchState } from './../DropdownSearchReducers';
@@ -43,7 +42,6 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
                             ownProps: IDropdownSearchOwnProps) => ({
   onMount: () => dispatch(addMultiSelectDropdownSearch(ownProps.id, ownProps.defaultOptions)),
   onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
-  onToggleDropdown: () => dispatch(toggleDropdownSearch(ownProps.id)),
   onBlur: () => dispatch(closeDropdownSearch(ownProps.id)),
   onFocus: () => dispatch(openDropdownSearch(ownProps.id)),
   onOptionClick: (option: IDropdownOption) => dispatch(multiSelectOptionDropdownSearch(ownProps.id, option)),

@@ -35,11 +35,11 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.multiSelect:
-      state.selectedOptions.push(action.payload.addedSelectedOption);
       return {
         ...state,
         id: action.payload.id,
         isOpened: true,
+        selectedOptions: state.selectedOptions.push(action.payload.addedSelectedOption),
       };
     default:
       return dropdownSearchReducer(state, action);
