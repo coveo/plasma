@@ -3,36 +3,37 @@ import { dropdownSearchInitialState, dropdownSearchReducer, IDropdownSearchState
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import {FixedQueue} from '../../../utils/FixedQueue';
 import {IDropdownOption} from '../DropdownSearch';
+import * as _ from 'underscore';
 export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>) => {
+
+  const getDisplayedOptions = () => {
+    return _.filter(state.options,
+      (option: IDropdownOption) => {
+        return _.findWhere(state.selectedOptions.getQueue(), {displayValue: option.displayValue}) == undefined;
+      });
+  };
+
   switch (action.type) {
-    case DropdownSearchActions.select:
-      return {
-        ...state,
-        id: action.payload.id,
-        selectedOption: action.payload.selectedOption,
-        isOpened: true,
-        activeOption: undefined,
-        setFocusOnDropdownButton: false,
-      };
     case DropdownSearchActions.addMultiSelect:
       return {
         ...state,
         id: action.payload.id,
         options: action.payload.optionsDropdown,
-        selectedOptions: new FixedQueue<IDropdownOption>([{value: 'VALUE', displayValue: 'Salut'},
-        ]),
+        selectedOptions: new FixedQueue<IDropdownOption>(),
         filterText: action.payload.filterText,
         isOpened: false,
       };
     case DropdownSearchActions.removeAllSelectedOptions:
-      let selectedOptions = new FixedQueue<IDropdownOption>();
+      state.selectedOptions = new FixedQueue<IDropdownOption>();
+      const displayedOptions = getDisplayedOptions();
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: selectedOptions,
+        selectedOptions: state.selectedOptions,
         isOpened: false,
         setFocusOnDropdownButton: false,
+        displayedOptions: displayedOptions,
       };
     case DropdownSearchActions.multiSelect:
       return {
@@ -40,6 +41,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         id: action.payload.id,
         isOpened: true,
         selectedOptions: state.selectedOptions.push(action.payload.addedSelectedOption),
+        displayedOptions: getDisplayedOptions(),
       };
     default:
       return dropdownSearchReducer(state, action);

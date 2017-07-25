@@ -13,6 +13,7 @@ export interface IDropdownSearchState {
   isOpened?: boolean;
   filterText?: string;
   options?: IDropdownOption[];
+  displayedOptions?: IDropdownOption[];
   selectedOptions?: FixedQueue<IDropdownOption>;
   selectedOption?: IDropdownOption;
   activeOption?: IDropdownOption;
@@ -48,15 +49,6 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   return index;
 };
 
-export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
-  const currentFilterText: string = filterText || state.filterText;
-  return _.filter(state.options,
-    (option: IDropdownOption) => {
-      const value = option.displayValue || option.value;
-      return _.isEmpty(currentFilterText) || s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
-    });
-};
-
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
 
@@ -70,6 +62,22 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
 
   const addUniqueSelectedOption = (displayValue: string): FixedQueue<IDropdownOption> => {
     return removeSelectedOption(displayValue).push({value: UUID.generate(), displayValue: displayValue});
+  };
+
+  const getDisplayedOptions = () => {
+    return _.filter(state.options,
+      (option: IDropdownOption) => {
+        return _.findWhere(state.selectedOptions.getQueue(), {displayValue: option.displayValue}) == undefined;
+      });
+  };
+
+  const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
+    const currentFilterText: string = filterText || state.filterText;
+    return _.filter(getDisplayedOptions(),
+      (option: IDropdownOption) => {
+        const value = option.displayValue || option.value;
+        return _.isEmpty(currentFilterText) || s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
+      });
   };
 
   switch (action.type) {
@@ -159,6 +167,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
+          displayedOptions: getDisplayedOptions(),
         };
       } else if (((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab ) && !state.activeOption && state.filterText != '' && state.selectedOptions.getMaxLength() > 1)) {
           return {
@@ -169,6 +178,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
             activeOption: undefined,
             filterText: '',
             setFocusOnDropdownButton: true,
+            displayedOptions: getDisplayedOptions(),
           };
       } else if (action.payload.keyCode === keyCode.backspace) {
         if (state.filterText === '') {
@@ -179,6 +189,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
             selectedOptions: state.selectedOptions.removeLastElement(),
             activeOption: undefined,
             setFocusOnDropdownButton: true,
+            displayedOptions: getDisplayedOptions(),
           };
         }
       } else if (action.payload.keyCode === -1) {

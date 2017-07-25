@@ -8,6 +8,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
 
   static defaultProps: Partial<IDropdownSearchProps> = {
     selectedOptions: new FixedQueue<IDropdownOption>(),
+    noResultText: 'Create option'
   };
 
   componentWillMount() {

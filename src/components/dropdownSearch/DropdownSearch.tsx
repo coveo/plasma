@@ -18,6 +18,7 @@ export interface IDropdownSearchStateProps {
   isOpened?: boolean;
   filterText?: string;
   options?: IDropdownOption[];
+  displayedOptions?: IDropdownOption[];
   selectedOptions?: FixedQueue<IDropdownOption>;
   activeOption?: IDropdownOption;
   setFocusOnDropdownButton?: boolean;
@@ -86,7 +87,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
 }
 
   protected getDropdownOptions(): JSX.Element[] {
-    const options = _.chain(this.props.options)
+    const options = _.chain(this.props.displayedOptions)
       .filter(
       (option: IDropdownOption) => {
         const value = option.displayValue || option.value;
