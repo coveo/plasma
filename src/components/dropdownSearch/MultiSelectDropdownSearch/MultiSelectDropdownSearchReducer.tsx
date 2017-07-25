@@ -1,18 +1,16 @@
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
-import { dropdownSearchInitialState, dropdownSearchReducer, IDropdownSearchState } from '../DropdownSearchReducers';
+import {
+  dropdownSearchInitialState,
+  dropdownSearchReducer,
+  getDisplayedOptions,
+  IDropdownSearchState
+} from '../DropdownSearchReducers';
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import {FixedQueue} from '../../../utils/FixedQueue';
 import {IDropdownOption} from '../DropdownSearch';
-import * as _ from 'underscore';
+
 export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>) => {
-
-  const getDisplayedOptions = () => {
-    return _.filter(state.options,
-      (option: IDropdownOption) => {
-        return _.findWhere(state.selectedOptions.getQueue(), {displayValue: option.displayValue}) == undefined;
-      });
-  };
 
   switch (action.type) {
     case DropdownSearchActions.addMultiSelect:
@@ -26,7 +24,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
       };
     case DropdownSearchActions.removeAllSelectedOptions:
       state.selectedOptions = new FixedQueue<IDropdownOption>();
-      const displayedOptions = getDisplayedOptions();
+      const displayedOptions = getDisplayedOptions(state);
       return {
         ...state,
         id: action.payload.id,
@@ -41,7 +39,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         id: action.payload.id,
         isOpened: true,
         selectedOptions: state.selectedOptions.push(action.payload.addedSelectedOption),
-        displayedOptions: getDisplayedOptions(),
+        displayedOptions: getDisplayedOptions(state),
       };
     default:
       return dropdownSearchReducer(state, action);

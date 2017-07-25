@@ -1,6 +1,6 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { IDropdownOption } from './DropdownSearch';
-import { DropdownSearchActions, IOptionsDropdownSearchPayload } from './DropdownSearchActions';
+import {DropdownSearchActions, IOptionsDropdownSearchPayload} from './DropdownSearchActions';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
 import { keyCode } from '../../utils/InputUtils';
@@ -49,36 +49,36 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   return index;
 };
 
+export const removeSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> => {
+  return new FixedQueue<IDropdownOption>(_.filter(state.selectedOptions.getQueue(),
+    (selectedOption: IDropdownOption) => {
+      return selectedOption.displayValue != displayValue;
+    }
+  ));
+};
+
+export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> => {
+  return removeSelectedOption(state, displayValue).push({value: UUID.generate(), displayValue: displayValue});
+};
+
+export const getDisplayedOptions = (state: IDropdownSearchState) => {
+  return _.filter(state.options,
+    (option: IDropdownOption) => {
+      return _.findWhere(state.selectedOptions.getQueue(), {displayValue: option.displayValue}) == undefined;
+    });
+};
+
+const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
+  const currentFilterText: string = filterText || state.filterText;
+  return _.filter(getDisplayedOptions(state),
+    (option: IDropdownOption) => {
+      const value = option.displayValue || option.value;
+      return _.isEmpty(currentFilterText) || s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
+    });
+};
+
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
-
-  const removeSelectedOption = (displayValue: string): FixedQueue<IDropdownOption> => {
-    return new FixedQueue<IDropdownOption>(_.filter(state.selectedOptions.getQueue(),
-      (selectedOption: IDropdownOption) => {
-        return selectedOption.displayValue != displayValue;
-      }
-    ));
-  };
-
-  const addUniqueSelectedOption = (displayValue: string): FixedQueue<IDropdownOption> => {
-    return removeSelectedOption(displayValue).push({value: UUID.generate(), displayValue: displayValue});
-  };
-
-  const getDisplayedOptions = () => {
-    return _.filter(state.options,
-      (option: IDropdownOption) => {
-        return _.findWhere(state.selectedOptions.getQueue(), {displayValue: option.displayValue}) == undefined;
-      });
-  };
-
-  const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
-    const currentFilterText: string = filterText || state.filterText;
-    return _.filter(getDisplayedOptions(),
-      (option: IDropdownOption) => {
-        const value = option.displayValue || option.value;
-        return _.isEmpty(currentFilterText) || s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
-      });
-  };
 
   switch (action.type) {
     case DropdownSearchActions.toggle:
@@ -133,7 +133,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: removeSelectedOption(action.payload.selectedOptionValue),
+        selectedOptions: removeSelectedOption(state, action.payload.selectedOptionValue),
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -167,18 +167,18 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
-          displayedOptions: getDisplayedOptions(),
+          displayedOptions: getDisplayedOptions(state),
         };
       } else if (((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab ) && !state.activeOption && state.filterText != '' && state.selectedOptions.getMaxLength() > 1)) {
           return {
             ...state,
             id: action.payload.id,
             isOpened: false,
-            selectedOptions: addUniqueSelectedOption(state.filterText),
+            selectedOptions: addUniqueSelectedOption(state, state.filterText),
             activeOption: undefined,
             filterText: '',
             setFocusOnDropdownButton: true,
-            displayedOptions: getDisplayedOptions(),
+            displayedOptions: getDisplayedOptions(state),
           };
       } else if (action.payload.keyCode === keyCode.backspace) {
         if (state.filterText === '') {
@@ -189,9 +189,14 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
             selectedOptions: state.selectedOptions.removeLastElement(),
             activeOption: undefined,
             setFocusOnDropdownButton: true,
-            displayedOptions: getDisplayedOptions(),
+            displayedOptions: getDisplayedOptions(state),
           };
         }
+      } else if (action.payload.keyCode === keyCode.escape) {
+        return {
+          ...state,
+          isOpened: false,
+        };
       } else if (action.payload.keyCode === -1) {
         return {
           ...state,
