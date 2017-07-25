@@ -130,13 +130,16 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.removeSelectedOption:
+      state.selectedOptions = removeSelectedOption(state, action.payload.selectedOptionValue);
+      const displayedOptions = getDisplayedOptions(state);
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: removeSelectedOption(state, action.payload.selectedOptionValue),
+        selectedOptions: state.selectedOptions,
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
+        displayedOptions: displayedOptions,
       };
     case DropdownSearchActions.add:
       return {
