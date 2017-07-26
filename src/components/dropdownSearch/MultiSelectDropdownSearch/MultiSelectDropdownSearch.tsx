@@ -9,16 +9,11 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
     if (this.props.filterText.length > 0 && !this.props.selectedOptions.containsElementWithProperties({displayValue: this.props.filterText})) {
       return [
         <li key='noResultDropdownSearch' onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}>
-          <span>{`Create option for "${this.props.filterText}"` }</span>
-        </li>,
-      ];
-    } else {
-      return [
-        <li key='noResultDropdownSearch'>
-          <span>{this.props.noResultText}</span>
+          <span>{`Create option for "${this.props.filterText}"`}</span>
         </li>,
       ];
     }
+    return super.getNoOptions();
   }
 
   render() {
