@@ -21,7 +21,8 @@ export interface IDropdownSearchState {
 }
 
 export const defaultSelectedOption: IDropdownOption = {
-  value: 'Select an option',
+  value: UUID.generate(),
+  displayValue: 'Select an option',
 };
 
 export const dropdownSearchInitialState: IDropdownSearchState = {
@@ -134,7 +135,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ...state,
         id: action.payload.id,
         options: action.payload.optionsDropdown,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        selectedOptions: new FixedQueue<IDropdownOption>([defaultSelectedOption], 1),
         filterText: action.payload.filterText,
         isOpened: false,
       };
