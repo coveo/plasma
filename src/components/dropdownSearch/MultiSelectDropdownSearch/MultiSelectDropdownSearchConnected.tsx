@@ -10,7 +10,7 @@ import {
   removeAllSelectedOptionsMultiselectDropdownSearch,
   removeDropdownSearch,
   removeSelectedOptionDropdownSearch,
-  updateActiveOptionDropdownSearch, keyDownMultiselectDropdownSearch,
+  updateActiveOptionDropdownSearch, keyDownMultiselectDropdownSearch, addCustomSelectedOption,
 } from '../DropdownSearchActions';
 import { IDropdownSearchState } from './../DropdownSearchReducers';
 import { FixedQueue} from '../../../utils/FixedQueue';
@@ -47,6 +47,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   onBlur: () => dispatch(closeDropdownSearch(ownProps.id)),
   onFocus: () => dispatch(openDropdownSearch(ownProps.id)),
   onOptionClick: (option: IDropdownOption) => dispatch(multiSelectOptionDropdownSearch(ownProps.id, option)),
+  onCustomOptionClick: (value: string) => dispatch(addCustomSelectedOption(ownProps.id, value)),
   onFilterClick: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
   onKeyDownFilterBox: (keyCode: number) => dispatch(keyDownMultiselectDropdownSearch(ownProps.id, keyCode)),
   onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),

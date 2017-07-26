@@ -205,6 +205,7 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
       ];
     case DropdownSearchActions.removeAllSelectedOptions:
     case DropdownSearchActions.multiSelect:
+    case DropdownSearchActions.addCustomSelectedOption:
     case DropdownSearchActions.onKeyDownMultiselect:
     case DropdownSearchActions.removeSelectedOption:
       return state.map((dropdownSearch: IDropdownSearchState) => {

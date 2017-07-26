@@ -1,29 +1,23 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
-import {FixedQueue} from '../../../utils/FixedQueue';
+import { DropdownSearch } from '../DropdownSearch';
 import {MultiselectInput} from './MultiSelectInput';
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
 
-  static defaultProps: Partial<IDropdownSearchProps> = {
-    selectedOptions: new FixedQueue<IDropdownOption>(),
-    noResultText: 'Create option'
-  };
-
-  componentWillMount() {
-    if (this.props.onMount) {
-      this.props.onMount();
-    }
-
-    if (this.props.onMountCallBack) {
-      this.props.onMountCallBack();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.onDestroy) {
-      this.props.onDestroy();
+  protected getNoOptions(): JSX.Element[] {
+    if (this.props.filterText.length > 0 && !this.props.selectedOptions.containsElementWithProperties({displayValue: this.props.filterText})) {
+      return [
+        <li key='noResultDropdownSearch' onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}>
+          <span>{`Create option for "${this.props.filterText}"` }</span>
+        </li>,
+      ];
+    } else {
+      return [
+        <li key='noResultDropdownSearch'>
+          <span>{this.props.noResultText}</span>
+        </li>,
+      ];
     }
   }
 

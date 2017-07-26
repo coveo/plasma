@@ -88,22 +88,93 @@ describe('FixedQueue', () => {
   });
 
   describe('remove', () => {
-    it('should remove the element at position x', () => {
-      fixedQueue = new FixedQueue<number>([1, 2, 3]);
-      const expectedQueue = [2, 3];
+    describe('at index', () => {
+      it('should remove the element at position x', () => {
+        fixedQueue = new FixedQueue<number>([1, 2, 3]);
+        const expectedQueue = [2, 3];
 
-      fixedQueue.removeAtIndex(0);
+        fixedQueue.removeAtIndex(0);
 
-      expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+        expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+      });
+
+      it('should not remove an element out of bounds', () => {
+        fixedQueue = new FixedQueue<number>([1, 2, 3]);
+        expect(() => {
+          fixedQueue.removeAtIndex(10);
+        }).not.toThrow();
+      });
     });
 
-    it('should remove a specific element from the queue', () => {
+    describe('specified element', () => {
+
+      it('should remove a specific element from the queue', () => {
+        fixedQueue = new FixedQueue<number>([1, 2, 3]);
+        const expectedQueue = [1, 3];
+
+        fixedQueue.removeElement(2);
+
+        expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+      });
+
+      it('should not remove an element that does not exist', () => {
+        fixedQueue = new FixedQueue<number>([1, 2, 3]);
+        expect(() => {
+          fixedQueue.removeElement(5);
+        }).not.toThrow();
+      });
+    });
+
+    describe('last element', () => {
+
+      it('should remove last element if it exists', () => {
+        fixedQueue = new FixedQueue<number>([1, 2, 3]);
+        const expectedQueue = [1, 2];
+
+        fixedQueue.removeLastElement();
+
+        expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+      });
+
+      it('should not remove last element if the queue is empty', () => {
+        fixedQueue = new FixedQueue<number>();
+        const expectedQueue = [];
+
+        fixedQueue.removeLastElement();
+
+        expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+      });
+    });
+  });
+
+  describe('contains', () => {
+    it('should return true if the element is present in the array', () =>{
       fixedQueue = new FixedQueue<number>([1, 2, 3]);
-      const expectedQueue = [1, 3];
 
-      fixedQueue.removeElement(2);
+      expect(fixedQueue.contains(1)).toBe(true);
+    });
 
-      expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+    it('should return false if the element is not present in the array', () =>{
+      fixedQueue = new FixedQueue<number>([1, 2, 3]);
+
+      expect(fixedQueue.contains(5)).toBe(false);
+    });
+  });
+
+  describe('contains element with properties', () => {
+    it('should return true if an element of the array contains the supplied properties', () => {
+      const elementId = 'element_id';
+      const element = {id: elementId, anotherProperty: true};
+      fixedQueue = new FixedQueue<any>([element]);
+
+      expect(fixedQueue.containsElementWithProperties({id: elementId})).toBe(true);
+    });
+
+    it('should return false if no element of the array contains the supplied properties', () => {
+      const element = {id: 'element_id', anotherProperty: true};
+      fixedQueue = new FixedQueue<any>([element]);
+
+      expect(fixedQueue.containsElementWithProperties({anotherProperty: false})).toBe(false);
     });
   });
 });

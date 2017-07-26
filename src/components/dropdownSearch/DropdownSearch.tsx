@@ -50,6 +50,7 @@ export interface IDropdownSearchDispatchProps {
   onFocus?: () => void;
   onFilterClick?: (filterText: string) => void;
   onOptionClick?: (option: IDropdownOption) => void;
+  onCustomOptionClick?: (displayValue: string) => void;
   onKeyDownFilterBox?: (keyCode: number) => void;
   onKeyDownDropdownButton?: (keyCode: number) => void;
   onMouseEnterDropdown?: () => void;
@@ -84,7 +85,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
     }
 
     return null;
-}
+  }
 
   protected getDropdownOptions(): JSX.Element[] {
     const options = _.chain(this.props.displayedOptions)

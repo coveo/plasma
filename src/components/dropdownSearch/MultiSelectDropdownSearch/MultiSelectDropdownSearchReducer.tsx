@@ -55,6 +55,14 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         selectedOptions: state.selectedOptions.push(action.payload.addedSelectedOption),
         displayedOptions: getDisplayedOptions(state),
       };
+    case DropdownSearchActions.addCustomSelectedOption:
+      return {
+        ...state,
+        id: action.payload.id,
+        isOpened: true,
+        selectedOptions: addUniqueSelectedOption(state, action.payload.selectedOptionValue),
+        displayedOptions: getDisplayedOptions(state),
+      };
     case DropdownSearchActions.onKeyDownMultiselect:
       const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
       const optionsFiltered = getOptionsFiltered(state);

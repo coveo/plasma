@@ -26,6 +26,7 @@ export const DropdownSearchActions = {
   close: 'CLOSE_DROPDOWN_SEARCH',
   add: 'ADD_DROPDOWN_SEARCH',
   addMultiSelect: 'ADD_MULTI_SELECT_DROPDOWN_SEARCH',
+  addCustomSelectedOption: 'ADD_CUSTOM_SELECTED_OPTION',
   remove: 'REMOVE_DROPDOWN_SEARCH',
   update: 'UPDATE_DROPDOWN_SEARCH',
   filter: 'FILTER_DROPDOWN_SEARCH',
@@ -75,14 +76,6 @@ export const closeDropdownSearch = (id: string): IReduxAction<IDefaultDropdownSe
   },
 });
 
-export const updateActiveOptionDropdownSearch = (id: string, keyCode: number): IReduxAction<IInputDrodownSearchPayload> => ({
-  type: DropdownSearchActions.active,
-  payload: {
-    id,
-    keyCode,
-  },
-});
-
 export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.add,
   payload: {
@@ -124,6 +117,14 @@ export const multiSelectOptionDropdownSearch = (id: string, addedSelectedOption:
   },
 });
 
+export const addCustomSelectedOption = (id: string, selectedOptionValue: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  type: DropdownSearchActions.addCustomSelectedOption,
+  payload: {
+    id,
+    selectedOptionValue,
+  },
+});
+
 export const removeSelectedOptionDropdownSearch = (id: string, selectedOptionValue: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.removeSelectedOption,
   payload: {
@@ -136,6 +137,14 @@ export const removeAllSelectedOptionsMultiselectDropdownSearch = (id: string): I
   type: DropdownSearchActions.removeAllSelectedOptions,
   payload: {
     id,
+  },
+});
+
+export const updateActiveOptionDropdownSearch = (id: string, keyCode: number): IReduxAction<IInputDrodownSearchPayload> => ({
+  type: DropdownSearchActions.active,
+  payload: {
+    id,
+    keyCode,
   },
 });
 

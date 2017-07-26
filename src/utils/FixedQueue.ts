@@ -1,3 +1,5 @@
+import * as _ from 'underscore';
+
 export class FixedQueue<T> {
 
   private queue: Array<T>;
@@ -13,14 +15,18 @@ export class FixedQueue<T> {
     return this.queue;
   }
 
-  getMaxLength(): number {
-    return this.maxLength;
-  }
-
   push(object: any): FixedQueue<T> {
     this.queue.push(object);
     this.trimQueue();
     return new FixedQueue<T>(this.queue, this.maxLength);
+  }
+
+  contains(element: T): boolean {
+    return this.queue.indexOf(element) != -1;
+  }
+
+  containsElementWithProperties(properties: any) {
+    return _.findWhere(this.queue, properties) != undefined;
   }
 
   removeAtIndex(index: number) {
