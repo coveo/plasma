@@ -147,8 +147,8 @@ describe('DropdownSearch', () => {
         expect(onOptionClickProp).toBeDefined();
       });
 
-      it('should get what to do on onFilterClick as a prop', () => {
-        const onFilterClickProp = dropdownSearch.props().onFilterClick;
+      it('should get what to do on onFilterTextChange as a prop', () => {
+        const onFilterClickProp = dropdownSearch.props().onFilterTextChange;
 
         expect(onFilterClickProp).toBeDefined();
       });
@@ -201,11 +201,11 @@ describe('DropdownSearch', () => {
         expect(selectedOption.value).toBe('test 1');
       });
 
-      it('should add the filterText in the state on onFilterClick', () => {
+      it('should add the filterText in the state on onFilterTextChange', () => {
         const filter: string = 't';
         expect(store.getState().dropdownSearch[0].filterText).toBe('');
 
-        dropdownSearch.props().onFilterClick(filter);
+        dropdownSearch.props().onFilterTextChange(filter);
         expect(store.getState().dropdownSearch[0].filterText).toBe(filter);
       });
 

@@ -93,9 +93,9 @@ describe('DropdownSearch', () => {
         expect(onDestroy).toHaveBeenCalled();
       });
 
-      it('should call onFilterClick if defined when onChange the "filter-box" input', () => {
-        const onFilterClick = jasmine.createSpy('onFilterClick');
-        dropdownSearch.setProps({ isOpened: true, onFilterClick });
+      it('should call onFilterTextChange if defined when onChange the "filter-box" input', () => {
+        const onFilterClick = jasmine.createSpy('onFilterTextChange');
+        dropdownSearch.setProps({ isOpened: true, onFilterChange });
         dropdownSearch.find('input.filter-box').simulate('change');
 
         expect(onFilterClick).toHaveBeenCalled();

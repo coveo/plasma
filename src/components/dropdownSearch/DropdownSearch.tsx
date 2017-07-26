@@ -48,7 +48,7 @@ export interface IDropdownSearchDispatchProps {
   onToggleDropdown?: () => void;
   onBlur?: () => void;
   onFocus?: () => void;
-  onFilterClick?: (filterText: string) => void;
+  onFilterTextChange?: (filterText: string) => void;
   onOptionClick?: (option: IDropdownOption) => void;
   onCustomOptionClick?: (displayValue: string) => void;
   onKeyDownFilterBox?: (keyCode: number) => void;
@@ -185,7 +185,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
   protected getMainInput(): JSX.Element {
     if (this.props.isOpened) {
       return <FilterBox id={this.props.id}
-        onFilter={(id, filterText) => this.handleOnFilter(id, filterText)}
+        onFilter={(id, filterText) => this.handleOnFilterTextChange(id, filterText)}
         onBlur={() => this.handleOnBlur()}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
         filterPlaceholder={this.props.filterPlaceholder}
@@ -232,9 +232,9 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
     }
   }
 
-  handleOnFilter(id: string, filterText: string) {
-    if (this.props.onFilterClick) {
-      this.props.onFilterClick(filterText);
+  handleOnFilterTextChange(id: string, filterText: string) {
+    if (this.props.onFilterTextChange) {
+      this.props.onFilterTextChange(filterText);
     }
   }
 

@@ -21,7 +21,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
         <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()}
                           onRemoveClick={this.props.onRemoveSelectedOption}
                           onRemoveAll={this.props.onRemoveAllSelectedOptions}
-                          onFilterClick={this.props.onFilterClick}
+                          onFilterTextChange={this.props.onFilterTextChange}
                           onBlur={this.props.onBlur}
                           onFocus={this.props.onFocus}
                           onKeyDownFilterBox={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}

@@ -7,7 +7,7 @@ export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
   onRemoveClick?: (value: string) => void;
   onRemoveAll?: () => void;
-  onFilterClick?: (filterText: string) => void;
+  onFilterTextChange?: (filterText: string) => void;
   onBlur?: () => void;
   onFocus?: () => void;
   onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -24,8 +24,8 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
   }
 
   private handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (this.props.onFilterClick) {
-      this.props.onFilterClick(e.target.value);
+    if (this.props.onFilterTextChange) {
+      this.props.onFilterTextChange(e.target.value);
     }
   }
 
