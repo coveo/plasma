@@ -325,21 +325,25 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
     }
   }
 
-  render() {
-    const dropdownSearchClasses: string = classNames(
+  getClasses() {
+    return classNames(
       'dropdown',
       'mod-search',
       {
         'open': this.props.isOpened,
         'mod-menu': this.props.modMenu,
       });
+  }
 
-    const dropdownSearchStyles = {
+  getStyles() {
+    return {
       width: this.props.width,
     };
+  }
 
+  render() {
     return (
-      <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
+      <div className={this.getClasses()} style={this.getStyles()}>
         {this.getMainInput()}
         <ul className='dropdown-menu'
           ref={(input: HTMLUListElement) => { this.ulElement = input; }}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 import { DropdownSearch } from '../DropdownSearch';
 import {MultiselectInput} from './MultiSelectInput';
 
@@ -17,20 +16,8 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
   }
 
   render() {
-    const dropdownSearchClasses: string = classNames(
-      'dropdown',
-      'mod-search',
-      {
-        'open': this.props.isOpened,
-        'mod-menu': this.props.modMenu,
-      });
-
-    const dropdownSearchStyles = {
-      width: this.props.width,
-    };
-
     return (
-      <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
+      <div className={this.getClasses()} style={this.getStyles()}>
         <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()}
                           onRemoveClick={this.props.onRemoveSelectedOption}
                           onRemoveAll={this.props.onRemoveAllSelectedOptions}
