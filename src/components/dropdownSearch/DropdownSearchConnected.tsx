@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 import {
   addDropdownSearch,
   applyFilterDropdownSearch,
-  removeDropdownSearch, removeSelectedOptionDropdownSearch,
+  removeDropdownSearch,
   selectOptionDropdownSearch,
   toggleDropdownSearch,
   updateActiveOptionDropdownSearch,
@@ -50,7 +50,6 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onKeyDownFilterBox: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
     onKeyDownDropdownButton: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
     onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
-    onRemoveSelectedOption: (value: string) => dispatch(removeSelectedOptionDropdownSearch(ownProps.id, value)),
   });
 
 export const DropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =

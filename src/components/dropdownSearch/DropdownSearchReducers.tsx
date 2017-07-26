@@ -68,7 +68,7 @@ export const getDisplayedOptions = (state: IDropdownSearchState) => {
     });
 };
 
-const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
+export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
   const currentFilterText: string = filterText || state.filterText;
   return _.filter(getDisplayedOptions(state),
     (option: IDropdownOption) => {
@@ -129,18 +129,6 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         activeOption: undefined,
         setFocusOnDropdownButton: false,
       };
-    case DropdownSearchActions.removeSelectedOption:
-      state.selectedOptions = removeSelectedOption(state, action.payload.selectedOptionValue);
-      const displayedOptions = getDisplayedOptions(state);
-      return {
-        ...state,
-        id: action.payload.id,
-        selectedOptions: state.selectedOptions,
-        isOpened: false,
-        activeOption: undefined,
-        setFocusOnDropdownButton: false,
-        displayedOptions: displayedOptions,
-      };
     case DropdownSearchActions.add:
       return {
         ...state,
@@ -170,31 +158,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
-          displayedOptions: getDisplayedOptions(state),
         };
-      } else if (((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab ) && !state.activeOption && state.filterText != '' && state.selectedOptions.getMaxLength() > 1)) {
-          return {
-            ...state,
-            id: action.payload.id,
-            isOpened: false,
-            selectedOptions: addUniqueSelectedOption(state, state.filterText),
-            activeOption: undefined,
-            filterText: '',
-            setFocusOnDropdownButton: true,
-            displayedOptions: getDisplayedOptions(state),
-          };
-      } else if (action.payload.keyCode === keyCode.backspace) {
-        if (state.filterText === '') {
-          return {
-            ...state,
-            id: action.payload.id,
-            isOpened: true,
-            selectedOptions: state.selectedOptions.removeLastElement(),
-            activeOption: undefined,
-            setFocusOnDropdownButton: true,
-            displayedOptions: getDisplayedOptions(state),
-          };
-        }
       } else if (action.payload.keyCode === keyCode.escape) {
         return {
           ...state,
@@ -208,14 +172,6 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           setFocusOnDropdownButton: false,
         };
       }
-
-      return {
-        ...state,
-        id: action.payload.id,
-        activeOption: undefined,
-        isOpened: true,
-        setFocusOnDropdownButton: false,
-      };
     default:
       return state;
   }
@@ -231,7 +187,6 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
     case DropdownSearchActions.open:
     case DropdownSearchActions.close:
     case DropdownSearchActions.select:
-    case DropdownSearchActions.removeSelectedOption:
       return state.map((dropdownSearch: IDropdownSearchState) => {
         if (dropdownSearch.id === action.payload.id) {
           return dropdownSearchReducer(dropdownSearch, action);
@@ -250,6 +205,8 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
       ];
     case DropdownSearchActions.removeAllSelectedOptions:
     case DropdownSearchActions.multiSelect:
+    case DropdownSearchActions.onKeyDownMultiselect:
+    case DropdownSearchActions.removeSelectedOption:
       return state.map((dropdownSearch: IDropdownSearchState) => {
         if (dropdownSearch.id === action.payload.id) {
           return multiSelectDropdownSearchReducer(dropdownSearch, action);

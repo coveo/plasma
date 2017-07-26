@@ -34,6 +34,7 @@ export const DropdownSearchActions = {
   removeSelectedOption: 'REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH',
   removeAllSelectedOptions: 'REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH',
   multiSelect: 'MULTI_SELECT_OPTION_DROPDOWN_SEARCH',
+  onKeyDownMultiselect: 'KEY_DOWN_MULTISELECT',
 };
 
 export const applyFilterDropdownSearch = (id: string, filterText: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
@@ -135,5 +136,13 @@ export const removeAllSelectedOptionsMultiselectDropdownSearch = (id: string): I
   type: DropdownSearchActions.removeAllSelectedOptions,
   payload: {
     id,
+  },
+});
+
+export const keyDownMultiselectDropdownSearch = (id: string, keyCode: number): IReduxAction<IInputDrodownSearchPayload> => ({
+  type: DropdownSearchActions.onKeyDownMultiselect,
+  payload: {
+    id,
+    keyCode,
   },
 });
