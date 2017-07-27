@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
-import {MultiselectDropdownSearchConnected} from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
+import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 
 export class DropdownSearchExamples extends React.Component<any, any> {
 
@@ -47,7 +47,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Multiselect Dropdown</label>
           <div className='form-control'>
-            <MultiselectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } filterPlaceholder={'Select options'} />
+            <MultiSelectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } filterPlaceholder={'Select options'} />
           </div>
         </div>
         <div className='form-group'>
