@@ -7,7 +7,6 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   containerClasses?: string[];
   filterPlaceholder?: string;
   onBlur?: () => void;
-  onFocus?: () => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   isAutoFocus?: boolean;
 }
@@ -47,12 +46,6 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     }
   }
 
-  private handleOnFocus() {
-    if (this.props.onFocus) {
-      this.props.onFocus();
-    }
-  }
-
   private handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(e);
@@ -83,7 +76,6 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
     return (
       <div id={this.props.id} className={filterBoxContainerClasses}>
-        {this.props.children}
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
@@ -91,7 +83,6 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           placeholder={filterPlaceholder}
           onChange={() => this.handleChange()}
           onBlur={() => this.handleOnBlur()}
-          onFocus={() => this.handleOnFocus()}
           onKeyDown={(e) => this.handleOnKeyDown(e)}
           value={this.props.filterText}
           autoFocus={this.props.isAutoFocus}
