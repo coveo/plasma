@@ -10,7 +10,7 @@ import {
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
 import { keyCode } from '../../../utils/InputUtils';
-import {FixedQueue} from "../../../utils/FixedQueue";
+import {FixedQueue} from '../../../utils/FixedQueue';
 
 describe('DropdownSearch', () => {
 
@@ -24,23 +24,27 @@ describe('DropdownSearch', () => {
       {
         id: 'new-dropdown-search',
         isOpened: false,
+        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
       }, {
         id: 'new-dropdown-search-1',
         isOpened: false,
+        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
       }, {
         id: 'new-dropdown-search-2',
         isOpened: true,
+        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
       },
     ];
     const defaultPayload = { id: 'new-dropdown-search' };
 
-    const options = [{ value: 'test 1' }, { value: 'test 2' }];
+    const options = [{ value: 'test 1', displayValue: 'test 1' }, { value: 'test 2', displayValue: 'test 2' }];
     const oldState: IDropdownSearchState[] = [
       {
         id: 'new-dropdown-search',
         isOpened: false,
         options,
         displayedOptions: options,
+        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
       },
     ];
 
@@ -186,17 +190,15 @@ describe('DropdownSearch', () => {
         {
           id: 'new-dropdown-search',
           isOpened: true,
-          selectedOptions: new FixedQueue<IDropdownOption>([selectedOption], 1),
+          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
         },
       ];
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.select,
-        payload: _.extend({}, defaultPayload, { selectedOption }),
+        payload: _.extend({}, defaultPayload, { addedSelectedOption: selectedOption }),
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
-
-      console.log(dropdownSearchState[0].selectedOptions);
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
@@ -247,6 +249,7 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -272,6 +275,7 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[1],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -299,6 +303,7 @@ describe('DropdownSearch', () => {
             activeOption: options[options.length - 1],
             setFocusOnDropdownButton: false,
             filterText: '',
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -325,6 +330,7 @@ describe('DropdownSearch', () => {
             isOpened: true,
             options,
             activeOption: options[0],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -349,6 +355,7 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -374,6 +381,7 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -399,6 +407,7 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -423,6 +432,7 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {

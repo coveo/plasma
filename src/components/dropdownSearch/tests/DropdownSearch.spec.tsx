@@ -330,7 +330,6 @@ describe('DropdownSearch', () => {
         const spy = spyOn((dropdownSearch.instance() as any), 'updateScrollPositionBasedOnActiveElement').and.callThrough();
 
         const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
-        const activeLi: Element = ul.getElementsByClassName('active')[0];
         spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 10 });
 
         dropdownSearch.setProps({ activeOption: { value: 'test 15' } });
