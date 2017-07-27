@@ -10,6 +10,7 @@ import {
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
 import { keyCode } from '../../../utils/InputUtils';
+import {FixedQueue} from "../../../utils/FixedQueue";
 
 describe('DropdownSearch', () => {
 
@@ -39,6 +40,7 @@ describe('DropdownSearch', () => {
         id: 'new-dropdown-search',
         isOpened: false,
         options,
+        displayedOptions: options,
       },
     ];
 
@@ -184,7 +186,7 @@ describe('DropdownSearch', () => {
         {
           id: 'new-dropdown-search',
           isOpened: true,
-          selectedOption: { value: 'test 1' },
+          selectedOptions: new FixedQueue<IDropdownOption>([selectedOption], 1),
         },
       ];
 
@@ -194,10 +196,12 @@ describe('DropdownSearch', () => {
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
+      console.log(dropdownSearchState[0].selectedOptions);
+
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-          dropdownSearch.selectedOption.value === selectedOption.value).length).toBe(1);
+          dropdownSearch.selectedOptions.getQueue()[0].value === selectedOption.value).length).toBe(1);
     });
 
     it(
