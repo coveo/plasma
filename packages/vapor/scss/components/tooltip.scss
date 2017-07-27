@@ -1,6 +1,6 @@
 .tooltip {
   position: absolute;
-  z-index: 1050;
+  z-index: $tooltip-z-index;
 
   display: block;
 
