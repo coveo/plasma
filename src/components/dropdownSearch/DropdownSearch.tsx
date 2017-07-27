@@ -97,7 +97,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
     )
       .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
         const optionClasses = classNames({
-          'state-selected': this.props.selectedOptions.getQueue()[0] && option.value === this.props.selectedOptions.getQueue()[0].value,
+          'state-selected': this.props.selectedOptions.getFirstElement() && option.value === this.props.selectedOptions.getQueue()[0].value,
         });
         const liClasses = classNames({
           'active': JSON.stringify(option) === JSON.stringify(this.props.activeOption),
@@ -201,8 +201,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, any> {
       }}
       ref={(input: HTMLButtonElement) => { this.dropdownButton = input; }}
       disabled={!!this.props.isDisabled}>
-      {this.getDropdownPrepend(this.props.selectedOptions.getQueue()[0])}
-      {this.getSvg(this.props.selectedOptions.getQueue()[0])}
+      {this.getDropdownPrepend(this.props.selectedOptions.getFirstElement())}
+      {this.getSvg(this.props.selectedOptions.getFirstElement())}
       {this.getSelectedOption()}
       <span className='dropdown-toggle-arrow'></span>
     </button>;

@@ -91,7 +91,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should get the default selected option as a prop', () => {
-        const defaultSelectedOptionProp = dropdownSearch.props().selectedOptions.getQueue()[0];
+        const defaultSelectedOptionProp = dropdownSearch.props().selectedOptions.getFirstElement();
 
         expect(defaultSelectedOptionProp).toBeDefined();
         expect(defaultSelectedOptionProp).toBe(defaultSelectedOption);
@@ -196,7 +196,7 @@ describe('DropdownSearch', () => {
 
         wrapper.find('li span').first().simulate('mouseDown');
 
-        const selectedOption = store.getState().dropdownSearch[0].selectedOptions.getQueue()[0];
+        const selectedOption = store.getState().dropdownSearch[0].selectedOptions.getFirstElement();
         expect(selectedOption).not.toBe(defaultSelectedOption);
         expect(selectedOption.value).toBe('test 1');
       });

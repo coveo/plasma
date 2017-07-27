@@ -149,7 +149,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         wrapper.find('li span').first().simulate('mouseDown');
 
-        const selectedOption = store.getState().dropdownSearch[0].selectedOptions.getQueue()[0];
+        const selectedOption = store.getState().dropdownSearch[0].selectedOptions.getFirstElement();
         expect(selectedOption).not.toBe(defaultSelectedOption);
         expect(selectedOption.value).toBe('test 1');
       });

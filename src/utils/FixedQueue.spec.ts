@@ -177,4 +177,20 @@ describe('FixedQueue', () => {
       expect(fixedQueue.containsElementWithProperties({anotherProperty: false})).toBe(false);
     });
   });
+
+  describe('get first element', () => {
+    it('should return the first element in the array', () => {
+      fixedQueue = new FixedQueue<number>([1, 2, 3]);
+
+      expect(fixedQueue.getFirstElement()).toBe(1);
+    });
+
+    it('should not throw if the array is empty', () => {
+      fixedQueue = new FixedQueue<number>([]);
+
+      expect(() => {
+        fixedQueue.getFirstElement();
+      }).not.toThrow();
+    });
+  });
 });

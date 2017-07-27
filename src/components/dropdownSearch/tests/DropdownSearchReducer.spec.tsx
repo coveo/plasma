@@ -203,7 +203,7 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-          dropdownSearch.selectedOptions.getQueue()[0].value === selectedOption.value).length).toBe(1);
+          dropdownSearch.selectedOptions.getFirstElement().value === selectedOption.value).length).toBe(1);
     });
 
     it(

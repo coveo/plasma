@@ -21,6 +21,10 @@ export class FixedQueue<T> {
     return new FixedQueue<T>(this.queue, this.maxLength);
   }
 
+  getFirstElement(): T {
+    return this.queue[0];
+  }
+
   contains(element: T): boolean {
     return this.queue.indexOf(element) != -1;
   }
