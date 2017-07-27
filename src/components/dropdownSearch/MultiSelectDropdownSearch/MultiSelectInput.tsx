@@ -17,7 +17,7 @@ export interface IMultiselectInputProps {
 
 export class MultiselectInput extends React.Component<IMultiselectInputProps, any> {
 
-  handleOnRemoveAll() {
+  private handleOnRemoveAll() {
     if (this.props.onRemoveAll) {
       this.props.onRemoveAll();
     }

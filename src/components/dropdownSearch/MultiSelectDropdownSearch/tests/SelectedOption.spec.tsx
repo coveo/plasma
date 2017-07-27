@@ -2,7 +2,6 @@ import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { UUID } from '../../../../utils/UUID';
-import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
 import {ISelectedOptionProps, SelectedOption} from '../SelectedOption';
 
 describe('SelectedOption', () => {
@@ -10,14 +9,13 @@ describe('SelectedOption', () => {
   const props: ISelectedOptionProps = {
     key,
     displayValue: 'test',
-    onRemoveClick: () => {},
   };
 
   describe('<SelectedOption />', () => {
     let selectedOption: ReactWrapper<ISelectedOptionProps, any>;
     let selectedOptionInstance: SelectedOption;
 
-    const renderSelectedOption = (props?: IDropdownSearchProps) => {
+    const renderSelectedOption = (props?: ISelectedOptionProps) => {
       selectedOption = mount(
         <SelectedOption {...props} />,
         { attachTo: document.getElementById('App') },

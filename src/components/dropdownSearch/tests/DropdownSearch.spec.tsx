@@ -8,7 +8,7 @@ import { FilterBox } from '../../filterBox/FilterBox';
 import { Svg } from '../../svg/Svg';
 import { keyCode } from '../../../utils/InputUtils';
 import {FixedQueue} from '../../../utils/FixedQueue';
-import {defaultSelectedOption} from "../DropdownSearchReducers";
+import {defaultSelectedOption} from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
