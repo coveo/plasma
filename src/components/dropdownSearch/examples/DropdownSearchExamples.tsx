@@ -9,10 +9,12 @@ export class DropdownSearchExamples extends React.Component<any, any> {
   render() {
     const defaultOptions = {
       defaultOptions: [
-        { value: 'test 1', displayValue: 'test 1',  },
-        { value: 'test 2', displayValue: 'TEST 22', },
-        { value: 'test 3', displayValue: 'test 3', },
-        { value: 'value with very very very very very very very very very very long name', displayValue: 'test 212019201', },
+        { value: '5', displayValue: 'This', },
+        { value: '6', displayValue: 'is', },
+        { value: '7', displayValue: 'a',  },
+        { value: '8', displayValue: 'lot', },
+        { value: '9', displayValue: 'of', },
+        { value: '10', displayValue: 'selectables', },
       ],
     };
 
@@ -45,7 +47,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Multiselect Dropdown</label>
           <div className='form-control'>
-            <MultiselectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } filterPlaceholder={'Filter'} />
+            <MultiselectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } filterPlaceholder={'Select options'} />
           </div>
         </div>
         <div className='form-group'>

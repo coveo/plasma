@@ -138,7 +138,7 @@ describe('FixedQueue', () => {
 
       it('should not remove last element if the queue is empty', () => {
         fixedQueue = new FixedQueue<number>();
-        const expectedQueue = [];
+        const expectedQueue: Array<number> = [];
 
         fixedQueue.removeLastElement();
 
@@ -148,13 +148,13 @@ describe('FixedQueue', () => {
   });
 
   describe('contains', () => {
-    it('should return true if the element is present in the array', () =>{
+    it('should return true if the element is present in the array', () => {
       fixedQueue = new FixedQueue<number>([1, 2, 3]);
 
       expect(fixedQueue.contains(1)).toBe(true);
     });
 
-    it('should return false if the element is not present in the array', () =>{
+    it('should return false if the element is not present in the array', () => {
       fixedQueue = new FixedQueue<number>([1, 2, 3]);
 
       expect(fixedQueue.contains(5)).toBe(false);
