@@ -142,11 +142,32 @@ describe('DropdownSearch', () => {
     });
 
     describe('on key down', () => {
+
+      it('should return the new state with the activeOption set with the option before this one set in activeOption in oldState if the keyCode is "Up Arrow"', () => {
+        const oldstate: IDropdownSearchState = _.extend(oldState, {
+          id: 'new-dropdown-search',
+          isOpened: true,
+          options: options,
+          displayedOptions: options,
+          selectedOptions: new FixedQueue<IDropdownOption>(),
+          activeOption: options[1],
+        });
+        const keycode = keyCode.upArrow;
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.onKeyDownMultiselect,
+          payload: _.extend(defaultPayload, { keyCode: keycode }),
+        };
+        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
+
+        expect(updatedState.activeOption.value).toEqual(options[0].value);
+      });
+
       it('should add a custom option on enter if the selected option is not present', () => {
         const keycode = keyCode.enter;
         const customValue: string = 'custom_value';
         const stateWithFilterTextPresent: IDropdownSearchState = _.extend(oldState, {
           filterText: customValue,
+          activeOption: undefined,
         });
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.onKeyDownMultiselect,
@@ -158,6 +179,23 @@ describe('DropdownSearch', () => {
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
 
         expect(updatedState.selectedOptions.containsElementWithProperties({ displayValue: customValue })).toBe(true);
+      });
+
+      it('should add the active option on tab in selected options', () => {
+        const keycode = keyCode.tab;
+        const oldstate: IDropdownSearchState = _.extend(oldState, {
+          activeOption: options[0],
+        });
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.onKeyDownMultiselect,
+          payload: _.extend(defaultPayload, {
+            keyCode: keycode,
+          }),
+        };
+
+        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
+
+        expect(updatedState.selectedOptions.contains(options[0])).toBe(true);
       });
 
       it('should remove last selected option on backspace when the filter text is empty', () => {
@@ -245,26 +283,6 @@ describe('DropdownSearch', () => {
 
         expect(updatedState.activeOption).toBeUndefined();
       });
-    });
-
-    it('should return the new state with the activeOption set with the option before this one set in activeOption in oldState if the keyCode is "Up Arrow"', () => {
-      console.log(oldState);
-      const oldstate: IDropdownSearchState = _.extend(oldState, {
-        id: 'new-dropdown-search',
-        isOpened: true,
-        options: options,
-        displayedOptions: options,
-        selectedOptions: new FixedQueue<IDropdownOption>(),
-        activeOption: options[1],
-      });
-      const keycode = keyCode.upArrow;
-      const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-        type: DropdownSearchActions.onKeyDownMultiselect,
-        payload: _.extend(defaultPayload, { keyCode: keycode }),
-      };
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
-
-      expect(updatedState.activeOption.value === options[0].value).toBe(true);
     });
 
     describe('default action', () => {

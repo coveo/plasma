@@ -65,7 +65,6 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
       };
     case DropdownSearchActions.onKeyDownMultiselect:
       const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
-      console.log(state);
       const filteredOptions = getFilteredOptions(state);
       if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
         return {
