@@ -76,5 +76,69 @@ describe('MultiSelectInput', () => {
         expect(multiSelectInput.find('.remove-all-selected-options').length).toBe(1);
       });
     });
+
+    describe('handle functions', () => {
+
+      it('should handle on remove all', () => {
+        const onRemoveAll = jasmine.createSpy('onRemoveAll');
+
+        multiSelectInput.setProps({
+          selectedOptions,
+          onRemoveAll: onRemoveAll,
+        });
+
+        multiSelectInput.find('.remove-all-selected-options').simulate('click');
+
+        expect(onRemoveAll).toHaveBeenCalled();
+      });
+
+      it('should handle on input change', () => {
+        const onInputChange = jasmine.createSpy('onChange');
+
+        multiSelectInput.setProps({
+          onFilterTextChange: onInputChange,
+        });
+
+        multiSelectInput.find('input').simulate('change', {target: {value: 'input value changed'}});
+
+        expect(onInputChange).toHaveBeenCalled();
+      });
+
+      it('should handle on blur', () => {
+        const onBlur = jasmine.createSpy('onBlur');
+
+        multiSelectInput.setProps({
+          onBlur: onBlur,
+        });
+
+        multiSelectInput.find('input').simulate('blur');
+
+        expect(onBlur).toHaveBeenCalled();
+      });
+
+      it('should handle on focus', () => {
+        const onFocus = jasmine.createSpy('onFocus');
+
+        multiSelectInput.setProps({
+          onFocus: onFocus,
+        });
+
+        multiSelectInput.find('input').simulate('focus');
+
+        expect(onFocus).toHaveBeenCalled();
+      });
+
+      it('should handle on key down', () => {
+        const onKeyDown = jasmine.createSpy('onKeyDown');
+
+        multiSelectInput.setProps({
+          onKeyDownFilterBox: onKeyDown,
+        });
+
+        multiSelectInput.find('input').simulate('keyDown');
+
+        expect(onKeyDown).toHaveBeenCalled();
+      });
+    });
   });
 });
