@@ -451,9 +451,9 @@ describe('DropdownSearch', () => {
         expect(dropdownSearchState[0]).toEqual(oldState[0]);
       });
 
-    describe('get displayed options', () =>  {
+    describe('get displayed options', () => {
 
-      it('should return all the options if selectedOptions is empty', () =>  {
+      it('should return all the options if selectedOptions is empty', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
           options,
@@ -463,7 +463,7 @@ describe('DropdownSearch', () => {
         expect(getDisplayedOptions(state)).toEqual(options);
       });
 
-      it('should return only the options that are not selected', () =>  {
+      it('should return only the options that are not selected', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
           options,
@@ -473,7 +473,7 @@ describe('DropdownSearch', () => {
         expect(getDisplayedOptions(state)).toEqual([options[1], options[2]]);
       });
 
-      it('should return only the options in the right order', () =>  {
+      it('should return only the options in the right order', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
           options,

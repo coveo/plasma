@@ -51,7 +51,7 @@ describe('MultiSelectDropdownSearch', () => {
     });
 
     describe('render', () => {
-      it('should call custom option click function on mousedown when the value is not present in the selected options', () =>  {
+      it('should call custom option click function on mousedown when the value is not present in the selected options', () => {
         const filterText: string = 'customValue';
         const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
         multiSelectDropdownSearch.setProps({
@@ -65,7 +65,7 @@ describe('MultiSelectDropdownSearch', () => {
         expect(onCustomOptionClick).toHaveBeenCalled();
       });
 
-      it('should render a "Create new option" label for the custom value if it is not present in the selected options', () =>  {
+      it('should render a "Create new option" label for the custom value if it is not present in the selected options', () => {
         const filterText: string = 'customValue';
         multiSelectDropdownSearch.setProps({
           filterText,
@@ -75,7 +75,7 @@ describe('MultiSelectDropdownSearch', () => {
         expect(multiSelectDropdownSearch.find('li').find('span').text()).toEqual(`Create option for "${filterText}"`);
       });
 
-      it('should not call custom option click function on mousedown when the value is already present in the selected options', () =>  {
+      it('should not call custom option click function on mousedown when the value is already present in the selected options', () => {
         const filterText: string = 'customValue';
         const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
         multiSelectDropdownSearch.setProps({

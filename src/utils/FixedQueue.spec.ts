@@ -162,7 +162,7 @@ describe('FixedQueue', () => {
   });
 
   describe('contains element with properties', () => {
-    it('should return true if an element of the array contains the supplied properties', () =>  {
+    it('should return true if an element of the array contains the supplied properties', () => {
       const elementId = 'element_id';
       const element = { id: elementId, anotherProperty: true };
       fixedQueue = new FixedQueue<any>([element]);
@@ -170,7 +170,7 @@ describe('FixedQueue', () => {
       expect(fixedQueue.containsElementWithProperties({ id: elementId })).toBe(true);
     });
 
-    it('should return false if no element of the array contains the supplied properties', () =>  {
+    it('should return false if no element of the array contains the supplied properties', () => {
       const element = { id: 'element_id', anotherProperty: true };
       fixedQueue = new FixedQueue<any>([element]);
 
@@ -178,14 +178,14 @@ describe('FixedQueue', () => {
     });
   });
 
-  describe('get first element', () =>  {
-    it('should return the first element in the array', () =>  {
+  describe('get first element', () => {
+    it('should return the first element in the array', () => {
       fixedQueue = new FixedQueue<number>([1, 2, 3]);
 
       expect(fixedQueue.getFirstElement()).toBe(1);
     });
 
-    it('should not throw if the array is empty', () =>  {
+    it('should not throw if the array is empty', () => {
       fixedQueue = new FixedQueue<number>([]);
 
       expect(() => {

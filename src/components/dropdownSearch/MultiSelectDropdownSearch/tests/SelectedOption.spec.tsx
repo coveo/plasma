@@ -33,7 +33,7 @@ describe('SelectedOption', () => {
     });
 
     describe('render', () => {
-      it('should render the display value in the selectedOption', () =>  {
+      it('should render the display value in the selectedOption', () => {
         const displayValue: string = 'displayTest';
         selectedOption.setProps({ displayValue });
 

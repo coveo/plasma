@@ -203,7 +203,7 @@ describe('DropdownSearch', () => {
 
       let selectedOption: IDropdownOption = defaultSelectedOption;
 
-      beforeEach(() =>  {
+      beforeEach(() => {
         selectedOption = {
           prefix: 'test', value: 'test1', displayValue: 'test 2', svg: {
             svgName: 'close',

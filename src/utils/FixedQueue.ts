@@ -15,7 +15,7 @@ export class FixedQueue<T> {
     return this.queue;
   }
 
-  push(object: any): FixedQueue<T>  {
+  push(object: any): FixedQueue<T> {
     this.queue.push(object);
     this.trimQueue();
     return new FixedQueue<T>(this.queue, this.maxLength);
@@ -43,7 +43,7 @@ export class FixedQueue<T> {
   }
 
   removeLastElement(): FixedQueue<T> {
-    if (this.queue.length  > 0) {
+    if (this.queue.length > 0) {
       this.queue.pop();
     }
     return new FixedQueue<T>(this.queue, this.maxLength);

@@ -26,7 +26,7 @@ describe('DropdownSearch', () => {
       selectedOptions: new FixedQueue<IDropdownOption>(),
     };
 
-    it('should add a new multiselect state on "ADD_MULTI_SELECT_DROPDOWN_SEARCH"', () =>  {
+    it('should add a new multiselect state on "ADD_MULTI_SELECT_DROPDOWN_SEARCH"', () => {
       const oldState: IDropdownSearchState = { id: 'new-dropdown-search', };
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.addMultiSelect,
@@ -141,8 +141,8 @@ describe('DropdownSearch', () => {
       expect(updatedState.selectedOptions.containsElementWithProperties({ displayValue: customValue })).toBe(true);
     });
 
-    describe('on key down', () =>  {
-      it('should add a custom option on enter if the selected option is not present', () =>  {
+    describe('on key down', () => {
+      it('should add a custom option on enter if the selected option is not present', () => {
         const keycode = keyCode.enter;
         const customValue: string = 'custom_value';
         const stateWithFilterTextPresent: IDropdownSearchState = _.extend(oldState, {
@@ -160,7 +160,7 @@ describe('DropdownSearch', () => {
         expect(updatedState.selectedOptions.containsElementWithProperties({ displayValue: customValue })).toBe(true);
       });
 
-      it('should remove last selected option on backspace when the filter text is empty', () =>  {
+      it('should remove last selected option on backspace when the filter text is empty', () => {
         const keycode = keyCode.backspace;
         const filterText: string = '';
         const selectedOptions: FixedQueue<IDropdownOption> = new FixedQueue<IDropdownOption>([].concat(options));
@@ -182,7 +182,7 @@ describe('DropdownSearch', () => {
         expect(updatedState.selectedOptions.getQueue()).toEqual(expectedOptions);
       });
 
-      it('should not remove last selected option on backspace when the filter text is not empty', () =>  {
+      it('should not remove last selected option on backspace when the filter text is not empty', () => {
         const keycode = keyCode.backspace;
         const filterText: string = 'not empty filter text';
         const selectedOptions: FixedQueue<IDropdownOption> = new FixedQueue<IDropdownOption>(options);
@@ -204,7 +204,7 @@ describe('DropdownSearch', () => {
         expect(updatedState.selectedOptions.getQueue()).toEqual(expectedOptions);
       });
 
-      it('should close the dropdown on escape', () =>  {
+      it('should close the dropdown on escape', () => {
         const keycode = keyCode.escape;
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.onKeyDownMultiselect,
@@ -218,7 +218,7 @@ describe('DropdownSearch', () => {
         expect(updatedState.isOpened).toBe(false);
       });
 
-      it('should remove focus on unknown key', () =>  {
+      it('should remove focus on unknown key', () => {
         const keycode = -1;
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.onKeyDownMultiselect,
@@ -232,7 +232,7 @@ describe('DropdownSearch', () => {
         expect(updatedState.setFocusOnDropdownButton).toBe(false);
       });
 
-      it('should set no active option on unknown key', () =>  {
+      it('should set no active option on unknown key', () => {
         const keycode = -1;
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.onKeyDownMultiselect,
@@ -247,8 +247,8 @@ describe('DropdownSearch', () => {
       });
     });
 
-    describe('default action', () =>  {
-      it('should return the same state by default', () =>  {
+    describe('default action', () => {
+      it('should return the same state by default', () => {
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: 'default multiselect action',
           payload: defaultPayload,

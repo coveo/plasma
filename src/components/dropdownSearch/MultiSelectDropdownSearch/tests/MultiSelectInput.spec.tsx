@@ -38,21 +38,21 @@ describe('MultiSelectInput', () => {
     });
 
     describe('render', () => {
-      it('should render placeholder text', () =>  {
+      it('should render placeholder text', () => {
         const filterPlaceholder = 'placeholdertext';
         multiSelectInput.setProps({ filterPlaceholder });
 
         expect(multiSelectInput.find(`input[placeholder="${filterPlaceholder}"]`).length).toBe(1);
       });
 
-      it('should render filter text', () =>  {
+      it('should render filter text', () => {
         const filterText = 'text';
         multiSelectInput.setProps({ filterText });
 
         expect(multiSelectInput.find(`input[value="${filterText}"]`).length).toBe(1);
       });
 
-      it('should not render the remove-all button if there are no options given', () =>  {
+      it('should not render the remove-all button if there are no options given', () => {
         expect(multiSelectInput.find('.remove-all-selected-options').length).toBe(0);
       });
 
@@ -66,11 +66,11 @@ describe('MultiSelectInput', () => {
         expect(multiSelectInput.find('SelectedOption').length).toBe(0);
       });
 
-      it('should not render the remove-all button if there are no selected options', () =>  {
+      it('should not render the remove-all button if there are no selected options', () => {
         expect(multiSelectInput.find('.remove-all-selected-options').length).toBe(0);
       });
 
-      it('should render the remove-all button if there are selected options', () =>  {
+      it('should render the remove-all button if there are selected options', () => {
         multiSelectInput.setProps({ selectedOptions });
 
         expect(multiSelectInput.find('.remove-all-selected-options').length).toBe(1);

@@ -50,7 +50,7 @@ export interface IDropdownSearchDispatchProps {
   onFocus?: () => void;
   onFilterTextChange?: (filterText: string) => void;
   onOptionClick?: (option: IDropdownOption) => void;
-  onCustomOptionClick?: (displayValue: string) =>  void;
+  onCustomOptionClick?: (displayValue: string) => void;
   onKeyDownFilterBox?: (keyCode: number) => void;
   onKeyDownDropdownButton?: (keyCode: number) => void;
   onMouseEnterDropdown?: () => void;

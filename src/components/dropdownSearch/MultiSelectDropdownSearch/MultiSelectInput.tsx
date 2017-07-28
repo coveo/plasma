@@ -10,7 +10,7 @@ export interface IMultiselectInputProps {
   onFilterTextChange?: (filterText: string) => void;
   onBlur?: () => void;
   onFocus?: () => void;
-  onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) =>  void;
+  onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   filterPlaceholder?: string;
   filterText?: string;
 }
@@ -82,7 +82,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
             onChange={(e) => this.handleInputChange(e)}
             onBlur={() => this.handleOnBlur()}
             onFocus={() => this.handleOnFocus()}
-            onKeyDown={(e) =>  this.handleOnKeyDown(e)}
+            onKeyDown={(e) => this.handleOnKeyDown(e)}
             autoFocus={true}
             value={this.props.filterText}
           />

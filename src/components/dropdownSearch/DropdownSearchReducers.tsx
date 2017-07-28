@@ -62,7 +62,7 @@ export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValu
   return removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue: displayValue });
 };
 
-export const getDisplayedOptions = (state: IDropdownSearchState) =>  {
+export const getDisplayedOptions = (state: IDropdownSearchState) => {
   return _.filter(state.options,
     (option: IDropdownOption) => {
       return _.findWhere(state.selectedOptions.getQueue(), { displayValue: option.displayValue }) == undefined;
