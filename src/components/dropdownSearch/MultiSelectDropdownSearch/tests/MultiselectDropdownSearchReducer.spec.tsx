@@ -247,6 +247,26 @@ describe('DropdownSearch', () => {
       });
     });
 
+    it('should return the new state with the activeOption set with the option before this one set in activeOption in oldState if the keyCode is "Up Arrow"', () => {
+      console.log(oldState);
+      const oldstate: IDropdownSearchState = _.extend(oldState, {
+        id: 'new-dropdown-search',
+        isOpened: true,
+        options: options,
+        displayedOptions: options,
+        selectedOptions: new FixedQueue<IDropdownOption>(),
+        activeOption: options[1],
+      });
+      const keycode = keyCode.upArrow;
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+        type: DropdownSearchActions.onKeyDownMultiselect,
+        payload: _.extend(defaultPayload, { keyCode: keycode }),
+      };
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
+
+      expect(updatedState.activeOption.value === options[0].value).toBe(true);
+    });
+
     describe('default action', () => {
       it('should return the same state by default', () => {
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
