@@ -74,7 +74,29 @@ describe('DropdownSearch', () => {
       expect(updatedState.displayedOptions.indexOf(addedSelectedOption)).toBe(-1);
     });
 
-    it('should remove the selected option from the selectedOptions when "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
+    it('should remove all from selectedOptions on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+        type: DropdownSearchActions.removeAllSelectedOptions,
+        payload: defaultPayload,
+      };
+
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+
+      expect(updatedState.selectedOptions.getQueue.length).toBe(0);
+    });
+
+    it('should display all options in displayed options on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+        type: DropdownSearchActions.removeAllSelectedOptions,
+        payload: defaultPayload,
+      };
+
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+
+      expect(updatedState.displayedOptions).toEqual(options);
+    });
+
+    it('should remove the selected option from the selectedOptions on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
       const selectedOptionValue: string = options[0].displayValue;
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -89,7 +111,7 @@ describe('DropdownSearch', () => {
       expect(updatedState.selectedOptions.containsElementWithProperties({ displayValue: selectedOptionValue })).toBe(false);
     });
 
-    it('should add the removed option in the displayed options when "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
+    it('should add the removed option in the displayed options on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
       const selectedOptionValue: string = options[0].displayValue;
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
