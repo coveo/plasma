@@ -2,13 +2,13 @@ import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { UUID } from '../../../utils/UUID';
-import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
+import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
 import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
 import { Svg } from '../../svg/Svg';
 import { keyCode } from '../../../utils/InputUtils';
-import {FixedQueue} from '../../../utils/FixedQueue';
-import {defaultSelectedOption} from '../DropdownSearchReducers';
+import { FixedQueue } from '../../../utils/FixedQueue';
+import { defaultSelectedOption } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -203,8 +203,9 @@ describe('DropdownSearch', () => {
 
       let selectedOption: IDropdownOption = defaultSelectedOption;
 
-      beforeEach(() => {
-        selectedOption = { prefix: 'test', value: 'test1', displayValue: 'test 2', svg: {
+      beforeEach(() =>  {
+        selectedOption = {
+          prefix: 'test', value: 'test1', displayValue: 'test 2', svg: {
             svgName: 'close',
             svgClass: 'small',
           },
@@ -298,10 +299,10 @@ describe('DropdownSearch', () => {
         });
 
         renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOption: { value: 'test 1', displayValue: 'test 1'  },
+          selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
           options,
-          activeOption: { value: 'test 1', displayValue: 'test 1'  },
+          activeOption: { value: 'test 1', displayValue: 'test 1' },
         }));
 
         spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
@@ -323,7 +324,7 @@ describe('DropdownSearch', () => {
           selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
           options,
-          activeOption: { value: 'test 15', displayValue: 'test 1'  },
+          activeOption: { value: 'test 15', displayValue: 'test 1' },
         }));
 
         spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);

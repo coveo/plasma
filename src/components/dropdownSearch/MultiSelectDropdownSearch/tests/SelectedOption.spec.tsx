@@ -2,7 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { UUID } from '../../../../utils/UUID';
-import {ISelectedOptionProps, SelectedOption} from '../SelectedOption';
+import { ISelectedOptionProps, SelectedOption } from '../SelectedOption';
 
 describe('SelectedOption', () => {
   const key: string = UUID.generate();
@@ -33,7 +33,7 @@ describe('SelectedOption', () => {
     });
 
     describe('render', () => {
-      it('should render the display value in the selectedOption', () => {
+      it('should render the display value in the selectedOption', () =>  {
         const displayValue: string = 'displayTest';
         selectedOption.setProps({ displayValue });
 

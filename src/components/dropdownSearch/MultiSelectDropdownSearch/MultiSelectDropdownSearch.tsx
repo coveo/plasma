@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { DropdownSearch } from '../DropdownSearch';
-import {MultiselectInput} from './MultiSelectInput';
+import { MultiselectInput } from './MultiSelectInput';
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
 
   protected getNoOptions(): JSX.Element[] {
-    if (this.props.filterText.length > 0 && !this.props.selectedOptions.containsElementWithProperties({displayValue: this.props.filterText})) {
+    if (this.props.filterText.length  > 0 && !this.props.selectedOptions.containsElementWithProperties({ displayValue: this.props.filterText })) {
       return [
         <li key='noResultDropdownSearch' onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}>
           <span>{`Create option for "${this.props.filterText}"`}</span>
@@ -19,14 +19,14 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
     return (
       <div className={this.getClasses()} style={this.getStyles()}>
         <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()}
-                          onRemoveClick={this.props.onRemoveSelectedOption}
-                          onRemoveAll={this.props.onRemoveAllSelectedOptions}
-                          onFilterTextChange={this.props.onFilterTextChange}
-                          onBlur={this.props.onBlur}
-                          onFocus={this.props.onFocus}
-                          onKeyDownFilterBox={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
-                          filterPlaceholder={this.props.filterPlaceholder}
-                          filterText={this.props.filterText}
+          onRemoveClick={this.props.onRemoveSelectedOption}
+          onRemoveAll={this.props.onRemoveAllSelectedOptions}
+          onFilterTextChange={this.props.onFilterTextChange}
+          onBlur={this.props.onBlur}
+          onFocus={this.props.onFocus}
+          onKeyDownFilterBox={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
+          filterPlaceholder={this.props.filterPlaceholder}
+          filterText={this.props.filterText}
         />
         <ul className='dropdown-menu'
           ref={(input: HTMLUListElement) => { this.ulElement = input; }}

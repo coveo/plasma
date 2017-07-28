@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
-import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
+import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 
 export class DropdownSearchExamples extends React.Component<any, any> {
 
@@ -11,7 +11,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
       defaultOptions: [
         { value: '5', displayValue: 'This', },
         { value: '6', displayValue: 'is', },
-        { value: '7', displayValue: 'a',  },
+        { value: '7', displayValue: 'a', },
         { value: '8', displayValue: 'lot', },
         { value: '9', displayValue: 'of', },
         { value: '10', displayValue: 'selectables', },

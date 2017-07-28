@@ -1,12 +1,12 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { IDropdownOption } from './DropdownSearch';
-import {DropdownSearchActions, IOptionsDropdownSearchPayload} from './DropdownSearchActions';
+import { DropdownSearchActions, IOptionsDropdownSearchPayload } from './DropdownSearchActions';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
 import { keyCode } from '../../utils/InputUtils';
-import {FixedQueue} from '../../utils/FixedQueue';
-import {multiSelectDropdownSearchReducer} from './MultiSelectDropdownSearch/MultiSelectDropdownSearchReducer';
-import {UUID} from '../../utils/UUID';
+import { FixedQueue } from '../../utils/FixedQueue';
+import { multiSelectDropdownSearchReducer } from './MultiSelectDropdownSearch/MultiSelectDropdownSearchReducer';
+import { UUID } from '../../utils/UUID';
 
 export interface IDropdownSearchState {
   id: string;
@@ -59,17 +59,17 @@ export const removeSelectedOption = (state: IDropdownSearchState, displayValue: 
 };
 
 export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> => {
-  return removeSelectedOption(state, displayValue).push({value: UUID.generate(), displayValue: displayValue});
+  return removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue: displayValue });
 };
 
-export const getDisplayedOptions = (state: IDropdownSearchState) => {
+export const getDisplayedOptions = (state: IDropdownSearchState) =>  {
   return _.filter(state.options,
     (option: IDropdownOption) => {
-      return _.findWhere(state.selectedOptions.getQueue(), {displayValue: option.displayValue}) == undefined;
+      return _.findWhere(state.selectedOptions.getQueue(), { displayValue: option.displayValue }) == undefined;
     });
 };
 
-export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
+export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
   const currentFilterText: string = filterText || state.filterText;
   return _.filter(getDisplayedOptions(state),
     (option: IDropdownOption) => {
@@ -118,7 +118,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ...state,
         id: action.payload.id,
         filterText: action.payload.filterText,
-        activeOption: getOptionsFiltered(state, action.payload.filterText)[0] || state.activeOption,
+        activeOption: getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption,
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
@@ -141,7 +141,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       };
     case DropdownSearchActions.active:
       const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
-      const optionsFiltered = getOptionsFiltered(state);
+      const optionsFiltered = getFilteredOptions(state);
       if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
         return {
           ...state,

@@ -5,14 +5,14 @@ import {
   dropdownSearchReducer,
   getDisplayedOptions,
   getNextIndexPosition,
-  getOptionsFiltered,
+  getFilteredOptions,
   IDropdownSearchState,
   removeSelectedOption,
 } from '../DropdownSearchReducers';
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import {FixedQueue} from '../../../utils/FixedQueue';
-import {IDropdownOption} from '../DropdownSearch';
-import {keyCode} from '../../../utils/InputUtils';
+import { FixedQueue } from '../../../utils/FixedQueue';
+import { IDropdownOption } from '../DropdownSearch';
+import { keyCode } from '../../../utils/InputUtils';
 
 export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>) => {
@@ -65,13 +65,14 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
       };
     case DropdownSearchActions.onKeyDownMultiselect:
       const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
-      const optionsFiltered = getOptionsFiltered(state);
+      console.log(state);
+      const filteredOptions = getFilteredOptions(state);
       if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
           activeOption: !isFirstSelectedOption ?
-            optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, action.payload.keyCode)] : undefined,
+            filteredOptions[getNextIndexPosition(filteredOptions, state.activeOption, action.payload.keyCode)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
@@ -85,7 +86,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: true,
           displayedOptions: getDisplayedOptions(state),
         };
-      } else if (((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab ) && !state.activeOption && state.filterText)) {
+      } else if (((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && !state.activeOption && state.filterText)) {
         return {
           ...state,
           id: action.payload.id,

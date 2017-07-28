@@ -4,13 +4,13 @@ import {
   dropdownSearchInitialState,
   dropdownSearchReducer,
   dropdownsSearchInitialState,
-  dropdownsSearchReducer,
+  dropdownsSearchReducer, getDisplayedOptions,
   IDropdownSearchState,
 } from '../DropdownSearchReducers';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
 import { keyCode } from '../../../utils/InputUtils';
-import {FixedQueue} from '../../../utils/FixedQueue';
+import { FixedQueue } from '../../../utils/FixedQueue';
 
 describe('DropdownSearch', () => {
 
@@ -35,9 +35,15 @@ describe('DropdownSearch', () => {
         selectedOptions: new FixedQueue<IDropdownOption>([], 1),
       },
     ];
+
     const defaultPayload = { id: 'new-dropdown-search' };
 
-    const options = [{ value: 'test 1', displayValue: 'test 1' }, { value: 'test 2', displayValue: 'test 2' }];
+    const options = [
+      { value: 'test 1', displayValue: 'test 1' },
+      { value: 'test 2', displayValue: 'test 2' },
+      { value: 'test 3', displayValue: 'test 3' }
+    ];
+
     const oldState: IDropdownSearchState[] = [
       {
         id: 'new-dropdown-search',
@@ -444,5 +450,38 @@ describe('DropdownSearch', () => {
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState[0]).toEqual(oldState[0]);
       });
+
+    describe('get displayed options', () =>  {
+
+      it('should return all the options if selectedOptions is empty', () =>  {
+        const state: IDropdownSearchState = {
+          id: 'new-dropdown-search',
+          options,
+          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        };
+
+        expect(getDisplayedOptions(state)).toEqual(options);
+      });
+
+      it('should return only the options that are not selected', () =>  {
+        const state: IDropdownSearchState = {
+          id: 'new-dropdown-search',
+          options,
+          selectedOptions: new FixedQueue<IDropdownOption>([options[0]], 1),
+        };
+
+        expect(getDisplayedOptions(state)).toEqual([options[1], options[2]]);
+      });
+
+      it('should return only the options in the right order', () =>  {
+        const state: IDropdownSearchState = {
+          id: 'new-dropdown-search',
+          options,
+          selectedOptions: new FixedQueue<IDropdownOption>([options[1]], 1),
+        };
+
+        expect(getDisplayedOptions(state)).toEqual([options[0], options[2]]);
+      });
+    });
   });
 });

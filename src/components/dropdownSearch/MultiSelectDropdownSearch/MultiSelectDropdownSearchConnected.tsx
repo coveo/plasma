@@ -13,7 +13,7 @@ import {
   updateActiveOptionDropdownSearch, keyDownMultiselectDropdownSearch, addCustomSelectedOption,
 } from '../DropdownSearchActions';
 import { IDropdownSearchState } from './../DropdownSearchReducers';
-import { FixedQueue} from '../../../utils/FixedQueue';
+import { FixedQueue } from '../../../utils/FixedQueue';
 import { MultiSelectDropdownSearch } from './MultiSelectDropdownSearch';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
@@ -41,19 +41,19 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-                            ownProps: IDropdownSearchOwnProps) => ({
-  onMount: () => dispatch(addMultiSelectDropdownSearch(ownProps.id, ownProps.defaultOptions)),
-  onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
-  onBlur: () => dispatch(closeDropdownSearch(ownProps.id)),
-  onFocus: () => dispatch(openDropdownSearch(ownProps.id)),
-  onOptionClick: (option: IDropdownOption) => dispatch(multiSelectOptionDropdownSearch(ownProps.id, option)),
-  onCustomOptionClick: (value: string) => dispatch(addCustomSelectedOption(ownProps.id, value)),
-  onFilterTextChange: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
-  onKeyDownFilterBox: (keyCode: number) => dispatch(keyDownMultiselectDropdownSearch(ownProps.id, keyCode)),
-  onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
-  onRemoveSelectedOption: (value: string) => dispatch(removeSelectedOptionDropdownSearch(ownProps.id, value)),
-  onRemoveAllSelectedOptions: () => dispatch(removeAllSelectedOptionsMultiselectDropdownSearch(ownProps.id)),
-});
+  ownProps: IDropdownSearchOwnProps) => ({
+    onMount: () => dispatch(addMultiSelectDropdownSearch(ownProps.id, ownProps.defaultOptions)),
+    onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
+    onBlur: () => dispatch(closeDropdownSearch(ownProps.id)),
+    onFocus: () => dispatch(openDropdownSearch(ownProps.id)),
+    onOptionClick: (option: IDropdownOption) => dispatch(multiSelectOptionDropdownSearch(ownProps.id, option)),
+    onCustomOptionClick: (value: string) => dispatch(addCustomSelectedOption(ownProps.id, value)),
+    onFilterTextChange: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
+    onKeyDownFilterBox: (keyCode: number) => dispatch(keyDownMultiselectDropdownSearch(ownProps.id, keyCode)),
+    onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
+    onRemoveSelectedOption: (value: string) => dispatch(removeSelectedOptionDropdownSearch(ownProps.id, value)),
+    onRemoveAllSelectedOptions: () => dispatch(removeAllSelectedOptionsMultiselectDropdownSearch(ownProps.id)),
+  });
 
 export const MultiSelectDropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(MultiSelectDropdownSearch);

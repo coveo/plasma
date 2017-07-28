@@ -5,7 +5,7 @@ import * as s from 'underscore.string';
 import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 import { keyCode } from '../../utils/InputUtils';
-import {FixedQueue} from '../../utils/FixedQueue';
+import { FixedQueue } from '../../utils/FixedQueue';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -50,7 +50,7 @@ export interface IDropdownSearchDispatchProps {
   onFocus?: () => void;
   onFilterTextChange?: (filterText: string) => void;
   onOptionClick?: (option: IDropdownOption) => void;
-  onCustomOptionClick?: (displayValue: string) => void;
+  onCustomOptionClick?: (displayValue: string) =>  void;
   onKeyDownFilterBox?: (keyCode: number) => void;
   onKeyDownDropdownButton?: (keyCode: number) => void;
   onMouseEnterDropdown?: () => void;

@@ -2,9 +2,9 @@ import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { UUID } from '../../../../utils/UUID';
-import {IDropdownOption, IDropdownSearchProps} from '../../DropdownSearch';
-import {FixedQueue} from '../../../../utils/FixedQueue';
-import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';
+import { IDropdownOption, IDropdownSearchProps } from '../../DropdownSearch';
+import { FixedQueue } from '../../../../utils/FixedQueue';
+import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
 
 describe('MultiSelectDropdownSearch', () => {
   const id: string = UUID.generate();
@@ -51,7 +51,7 @@ describe('MultiSelectDropdownSearch', () => {
     });
 
     describe('render', () => {
-      it('should call custom option click function on mousedown when the value is not present in the selected options', () => {
+      it('should call custom option click function on mousedown when the value is not present in the selected options', () =>  {
         const filterText: string = 'customValue';
         const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
         multiSelectDropdownSearch.setProps({
@@ -65,7 +65,7 @@ describe('MultiSelectDropdownSearch', () => {
         expect(onCustomOptionClick).toHaveBeenCalled();
       });
 
-      it('should render a "Create new option" label for the custom value if it is not present in the selected options', () => {
+      it('should render a "Create new option" label for the custom value if it is not present in the selected options', () =>  {
         const filterText: string = 'customValue';
         multiSelectDropdownSearch.setProps({
           filterText,
@@ -75,13 +75,13 @@ describe('MultiSelectDropdownSearch', () => {
         expect(multiSelectDropdownSearch.find('li').find('span').text()).toEqual(`Create option for "${filterText}"`);
       });
 
-      it('should not call custom option click function on mousedown when the value is already present in the selected options', () => {
+      it('should not call custom option click function on mousedown when the value is already present in the selected options', () =>  {
         const filterText: string = 'customValue';
         const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
         multiSelectDropdownSearch.setProps({
           filterText,
           onCustomOptionClick,
-          selectedOptions: props.selectedOptions.push({value: UUID.generate(), displayValue: filterText}),
+          selectedOptions: props.selectedOptions.push({ value: UUID.generate(), displayValue: filterText }),
           isOpened: true,
         });
 

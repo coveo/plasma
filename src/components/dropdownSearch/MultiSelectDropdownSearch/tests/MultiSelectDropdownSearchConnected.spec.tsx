@@ -1,14 +1,14 @@
-import {UUID} from '../../../../utils/UUID';
+import { UUID } from '../../../../utils/UUID';
 import * as React from 'react';
-import {mount, ReactWrapper} from 'enzyme';
-import {IDropdownSearchProps} from '../../DropdownSearch';
-import {Provider, Store} from 'react-redux';
-import {IReactVaporState} from '../../../../ReactVapor';
-import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearchConnected';
-import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';
-import {TestUtils} from '../../../../utils/TestUtils';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {defaultSelectedOption} from '../../DropdownSearchReducers';
+import { mount, ReactWrapper } from 'enzyme';
+import { IDropdownSearchProps } from '../../DropdownSearch';
+import { Provider, Store } from 'react-redux';
+import { IReactVaporState } from '../../../../ReactVapor';
+import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearchConnected';
+import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
+import { TestUtils } from '../../../../utils/TestUtils';
+import { clearState } from '../../../../utils/ReduxUtils';
+import { defaultSelectedOption } from '../../DropdownSearchReducers';
 import {
   closeDropdownSearch,
   openDropdownSearch,

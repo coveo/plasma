@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Svg} from '../../svg/Svg';
+import { Svg } from '../../svg/Svg';
 
 export interface ISelectedOptionProps {
   displayValue: string;

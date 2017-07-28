@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {IDropdownOption} from '../DropdownSearch';
-import {SelectedOption} from './SelectedOption';
-import {Svg} from '../../svg/Svg';
+import { IDropdownOption } from '../DropdownSearch';
+import { SelectedOption } from './SelectedOption';
+import { Svg } from '../../svg/Svg';
 
 export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
@@ -10,7 +10,7 @@ export interface IMultiselectInputProps {
   onFilterTextChange?: (filterText: string) => void;
   onBlur?: () => void;
   onFocus?: () => void;
-  onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) =>  void;
   filterPlaceholder?: string;
   filterText?: string;
 }
@@ -54,8 +54,8 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
     for (let selectedOption of this.props.selectedOptions) {
       selectedOptionComponents.push(
         <SelectedOption displayValue={selectedOption.displayValue}
-                        key={selectedOption.value}
-                        onRemoveClick={this.props.onRemoveClick}
+          key={selectedOption.value}
+          onRemoveClick={this.props.onRemoveClick}
         />);
     }
 
@@ -82,7 +82,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
             onChange={(e) => this.handleInputChange(e)}
             onBlur={() => this.handleOnBlur()}
             onFocus={() => this.handleOnFocus()}
-            onKeyDown={(e) => this.handleOnKeyDown(e)}
+            onKeyDown={(e) =>  this.handleOnKeyDown(e)}
             autoFocus={true}
             value={this.props.filterText}
           />
