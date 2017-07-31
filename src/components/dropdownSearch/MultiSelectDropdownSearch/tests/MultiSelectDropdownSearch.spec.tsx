@@ -89,6 +89,18 @@ describe('MultiSelectDropdownSearch', () => {
 
         expect(onCustomOptionClick).not.toHaveBeenCalled();
       });
+
+      it('should call onKeyDownFilterBox props on key down in input', () => {
+        const onKeyDownFilterBox = jasmine.createSpy('onKeyDownFilterBox');
+
+        multiSelectDropdownSearch.setProps({
+          onKeyDownFilterBox,
+        });
+
+        multiSelectDropdownSearch.find('input').simulate('keyDown');
+
+        expect(onKeyDownFilterBox).toHaveBeenCalled();
+      });
     });
   });
 });

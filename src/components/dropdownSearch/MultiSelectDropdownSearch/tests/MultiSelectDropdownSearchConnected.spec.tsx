@@ -16,13 +16,13 @@ import {
   openDropdownSearch,
   updateOptionsDropdownSearch
 } from '../../DropdownSearchActions';
-import {keyCode} from '../../../../utils/InputUtils';
+import { keyCode } from '../../../../utils/InputUtils';
 
 describe('MultiSelectDropdownSearch', () => {
 
-    const id: string = UUID.generate();
+  const id: string = UUID.generate();
 
-    describe('<MultiSelectDropdownSearchConnected />', () => {
+  describe('<MultiSelectDropdownSearchConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let multiSelectDropdownSearchConnected: ReactWrapper<IDropdownSearchProps, any>;
     let store: Store<IReactVaporState>;
@@ -169,7 +169,7 @@ describe('MultiSelectDropdownSearch', () => {
         const filterText: string = 'filter_text';
         multiSelectDropdownSearchConnected.props().onCustomOptionClick(filterText);
 
-        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({displayValue: filterText})).toBe(true);
+        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({ displayValue: filterText })).toBe(true);
       });
 
       it('should update filterText on key down', () => {
@@ -180,7 +180,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onKeyDownFilterBox(enterKeyCode);
 
-        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({displayValue: filterText})).toBe(true);
+        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({ displayValue: filterText })).toBe(true);
       });
 
       it('should remove selected option', () => {
@@ -190,7 +190,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onRemoveSelectedOption(selectedOptionValue);
 
-        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({displayValue: selectedOptionValue})).toBe(false);
+        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({ displayValue: selectedOptionValue })).toBe(false);
       });
 
       it('should remove all selected option', () => {
