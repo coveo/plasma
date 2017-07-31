@@ -156,7 +156,7 @@ describe('DropdownSearch', () => {
 
       it('should call onKeyDownFilterBox if defined when key down on "filter-box"', () => {
         const onKeyDownFilterBox = jasmine.createSpy('onKeyDownFilterBox');
-        dropdownSearch.setProps({ isOpened: true, onKeyDownFilterBox });
+        dropdownSearch.setProps({ isOpened: true, onKeyDownFilterBox, activeOption: options[0] });
 
         dropdownSearch.find('input.filter-box').simulate('keydown');
 
@@ -302,7 +302,8 @@ describe('DropdownSearch', () => {
           selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
           options,
-          activeOption: { value: 'test 1', displayValue: 'test 1' },
+          displayedOptions: options,
+          activeOption: { value: 'testd 1', displayValue: 'test 1' },
         }));
 
         spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
@@ -324,16 +325,17 @@ describe('DropdownSearch', () => {
           selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
           options,
-          activeOption: { value: 'test 15', displayValue: 'test 1' },
+          displayedOptions: options,
+          activeOption: { value: 'test 19', displayValue: 'test 19' },
         }));
 
         spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
         const spy = spyOn((dropdownSearch.instance() as any), 'updateScrollPositionBasedOnActiveElement').and.callThrough();
 
         const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
-        spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 10 });
+        spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 200000, top: 200000 });
 
-        dropdownSearch.setProps({ activeOption: { value: 'test 15' } });
+        dropdownSearch.setProps({ activeOption: { value: 'test 1', displayValue: 'test 1'  } });
         expect(spy).toHaveBeenCalledTimes(1);
       });
     });

@@ -15,6 +15,18 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         { value: '8', displayValue: 'lot', },
         { value: '9', displayValue: 'of', },
         { value: '10', displayValue: 'selectables', },
+        { value: '15', displayValue: 'This', },
+        { value: '16', displayValue: 'is', },
+        { value: '17', displayValue: 'a', },
+        { value: '18', displayValue: 'lot', },
+        { value: '19', displayValue: 'of', },
+        { value: '110', displayValue: 'selectables', },
+        { value: '25', displayValue: 'This', },
+        { value: '36', displayValue: 'is', },
+        { value: '47', displayValue: 'a', },
+        { value: '58', displayValue: 'lot', },
+        { value: '69', displayValue: 'of', },
+        { value: '710', displayValue: 'selectables', },
       ],
     };
 
