@@ -101,7 +101,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
         const optionClasses = classNames({
           'state-selected': this.props.selectedOptions.getFirstElement() &&
-                            option.value === this.props.selectedOptions.getQueue()[0].value,
+          option.value === this.props.selectedOptions.getQueue()[0].value,
         });
         const liClasses = classNames({
           'active': JSON.stringify(option) === JSON.stringify(this.props.activeOption),

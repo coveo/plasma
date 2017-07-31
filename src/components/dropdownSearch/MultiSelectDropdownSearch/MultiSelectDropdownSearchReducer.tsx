@@ -24,7 +24,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         id: action.payload.id,
         options: action.payload.optionsDropdown,
         selectedOptions: new FixedQueue<IDropdownOption>(),
-        filterText: action.payload.filterText,
+        filterText: '',
         isOpened: false,
       };
     case DropdownSearchActions.removeSelectedOption:

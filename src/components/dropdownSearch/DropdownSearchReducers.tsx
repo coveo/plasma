@@ -136,7 +136,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         id: action.payload.id,
         options: action.payload.optionsDropdown,
         selectedOptions: new FixedQueue<IDropdownOption>([defaultSelectedOption], 1),
-        filterText: action.payload.filterText,
+        filterText: '',
         isOpened: false,
       };
     case DropdownSearchActions.active:

@@ -81,7 +81,6 @@ export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[]
   payload: {
     id,
     optionsDropdown,
-    filterText: '',
   },
 });
 
@@ -90,7 +89,6 @@ export const addMultiSelectDropdownSearch = (id: string, optionsDropdown: IDropd
   payload: {
     id,
     optionsDropdown,
-    filterText: '',
   },
 });
 
