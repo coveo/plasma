@@ -96,8 +96,13 @@ describe('DropdownSearch', () => {
       expect(updatedState.displayedOptions).toEqual(options);
     });
 
-    it('should remove the selected option from the selectedOptions on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
+    it('should only remove the selected option from the selectedOptions on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
       const selectedOptionValue: string = options[0].displayValue;
+
+      const oldstate: IDropdownSearchState = {
+        ...oldState,
+        selectedOptions: new FixedQueue<IDropdownOption>([options[0], options[1]]),
+      };
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.removeSelectedOption,
@@ -106,9 +111,9 @@ describe('DropdownSearch', () => {
         }),
       };
 
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
 
-      expect(updatedState.selectedOptions.containsElementWithProperties({ displayValue: selectedOptionValue })).toBe(false);
+      expect(updatedState.selectedOptions.getQueue()).toEqual([options[1]]);
     });
 
     it('should add the removed option in the displayed options on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
