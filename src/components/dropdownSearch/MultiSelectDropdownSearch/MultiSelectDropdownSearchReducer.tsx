@@ -6,8 +6,7 @@ import {
   getDisplayedOptions,
   getNextIndexPosition,
   getFilteredOptions,
-  IDropdownSearchState,
-  removeSelectedOption,
+  IDropdownSearchState, removeSelectedOption,
 } from '../DropdownSearchReducers';
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { FixedQueue } from '../../../utils/FixedQueue';
@@ -15,7 +14,7 @@ import { IDropdownOption } from '../DropdownSearch';
 import { keyCode } from '../../../utils/InputUtils';
 
 export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
-  action: IReduxAction<IOptionsDropdownSearchPayload>) => {
+  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
 
   switch (action.type) {
     case DropdownSearchActions.addMultiSelect:
@@ -28,24 +27,24 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         isOpened: false,
       };
     case DropdownSearchActions.removeSelectedOption:
-      state.selectedOptions = removeSelectedOption(state, action.payload.selectedOptionValue);
-      state.displayedOptions = getDisplayedOptions(state);
+      let selectedOptions = removeSelectedOption(state, action.payload.selectedOptionValue);
+      let displayedOptions = getDisplayedOptions({...state, selectedOptions});
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: state.selectedOptions,
         isOpened: false,
+        selectedOptions,
         activeOption: undefined,
-        displayedOptions: state.displayedOptions,
+        displayedOptions,
       };
     case DropdownSearchActions.removeAllSelectedOptions:
-      state.selectedOptions = new FixedQueue<IDropdownOption>();
-      state.displayedOptions = getDisplayedOptions(state);
+      selectedOptions = new FixedQueue<IDropdownOption>();
+      displayedOptions = getDisplayedOptions({...state, selectedOptions, });
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: state.selectedOptions,
-        displayedOptions: state.displayedOptions,
+        selectedOptions,
+        displayedOptions,
       };
     case DropdownSearchActions.multiSelect:
       return {
