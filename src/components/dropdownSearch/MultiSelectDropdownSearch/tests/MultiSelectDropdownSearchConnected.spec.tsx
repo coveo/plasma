@@ -146,6 +146,16 @@ describe('MultiSelectDropdownSearch', () => {
         expect(dropdown.hasClass('open')).toBe(false, 'close the dropdown on blur');
       });
 
+      it('should open the dropdown on focus', () => {
+        const dropdown = wrapper.find('.dropdown');
+
+        store.dispatch(closeDropdownSearch(id));
+
+        multiSelectDropdownSearchConnected.props().onFocus();
+
+        expect(dropdown.hasClass('open')).toBe(true);
+      });
+
       it('should add the selected value in the state on click an option', () => {
         store.dispatch(updateOptionsDropdownSearch(id, [{ value: 'test 1' }, { value: 'test 2' }]));
         store.dispatch(openDropdownSearch(id));

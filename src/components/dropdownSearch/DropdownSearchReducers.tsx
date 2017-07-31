@@ -52,21 +52,17 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
 
 export const removeSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> => {
   return new FixedQueue<IDropdownOption>(_.filter(state.selectedOptions.getQueue(),
-    (selectedOption: IDropdownOption) => {
-      return selectedOption.displayValue != displayValue;
-    }
+    (selectedOption: IDropdownOption) => selectedOption.displayValue !== displayValue,
   ));
 };
 
-export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> => {
-  return removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue: displayValue });
-};
+export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> =>
+  removeSelectedOption(state, displayValue).push({value: UUID.generate(), displayValue: displayValue});
 
 export const getDisplayedOptions = (state: IDropdownSearchState) => {
   return _.filter(state.options,
-    (option: IDropdownOption) => {
-      return _.findWhere(state.selectedOptions.getQueue(), { displayValue: option.displayValue }) == undefined;
-    });
+    (option: IDropdownOption) => _.findWhere(state.selectedOptions.getQueue(),
+      {displayValue: option.displayValue}) === undefined);
 };
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
@@ -189,10 +185,9 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
     case DropdownSearchActions.close:
     case DropdownSearchActions.select:
       return state.map((dropdownSearch: IDropdownSearchState) => {
-        if (dropdownSearch.id === action.payload.id) {
-          return dropdownSearchReducer(dropdownSearch, action);
-        }
-        return dropdownSearch;
+        return dropdownSearch.id === action.payload.id
+          ? dropdownSearchReducer(dropdownSearch, action)
+          : dropdownSearch;
       });
     case DropdownSearchActions.add:
       return [
@@ -210,10 +205,9 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
     case DropdownSearchActions.onKeyDownMultiselect:
     case DropdownSearchActions.removeSelectedOption:
       return state.map((dropdownSearch: IDropdownSearchState) => {
-        if (dropdownSearch.id === action.payload.id) {
-          return multiSelectDropdownSearchReducer(dropdownSearch, action);
-        }
-        return dropdownSearch;
+        return dropdownSearch.id === action.payload.id
+          ? multiSelectDropdownSearchReducer(dropdownSearch, action)
+          : dropdownSearch;
       });
     case DropdownSearchActions.remove:
       return _.reject(state, (dropdown: IDropdownSearchState) => {
