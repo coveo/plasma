@@ -83,7 +83,6 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
             onBlur={() => this.handleOnBlur()}
             onFocus={() => this.handleOnFocus()}
             onKeyDown={(e) => this.handleOnKeyDown(e)}
-            autoFocus={true}
             value={this.props.filterText}
           />
         </div>

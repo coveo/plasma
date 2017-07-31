@@ -81,7 +81,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
             key={selectedOption.value}
             className='dropdown-selected-value'
             data-value={selectedOption.value}>
-           {selectedOption.displayValue || selectedOption.value}
+            {selectedOption.displayValue || selectedOption.value}
           </span>
         );
       });
