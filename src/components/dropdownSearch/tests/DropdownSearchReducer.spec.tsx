@@ -424,7 +424,7 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-          && !dropdownSearch.isOpened).length).toBe(1);
+            && !dropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
