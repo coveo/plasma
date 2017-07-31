@@ -12,7 +12,6 @@ import {
   removeSelectedOptionDropdownSearch, keyDownMultiselectDropdownSearch, addCustomSelectedOption,
 } from '../DropdownSearchActions';
 import { IDropdownSearchState } from './../DropdownSearchReducers';
-import { FixedQueue } from '../../../utils/FixedQueue';
 import { MultiSelectDropdownSearch } from './MultiSelectDropdownSearch';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
@@ -30,13 +29,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
     };
   }
 
-  return {
-    isOpened: false,
-    options: ownProps.defaultOptions || [],
-    displayedOptions: ownProps.displayedOptions || ownProps.options,
-    selectedOptions: new FixedQueue<IDropdownOption>(),
-    filterText: '',
-  };
+  return MultiSelectDropdownSearch.defaultProps;
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,

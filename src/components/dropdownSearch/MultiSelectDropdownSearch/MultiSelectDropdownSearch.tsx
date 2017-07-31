@@ -1,12 +1,18 @@
 import * as React from 'react';
-import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
+import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
 import { MultiselectInput } from './MultiSelectInput';
+import { FixedQueue } from '../../../utils/FixedQueue';
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
 
   static defaultProps: Partial<IDropdownSearchProps> = {
     ...DropdownSearch.defaultProps,
     createOptionText: 'Create option for ',
+    isOpened: false,
+    options: [],
+    displayedOptions: [],
+    selectedOptions: new FixedQueue<IDropdownOption>(),
+    filterText: '',
   };
 
   protected getNoOptions(): JSX.Element[] {
@@ -23,7 +29,8 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
   render() {
     return (
       <div className={this.getClasses()} style={this.getStyles()}>
-        <MultiselectInput selectedOptions={this.props.selectedOptions.getQueue()}
+        <MultiselectInput
+          selectedOptions={this.props.selectedOptions.getQueue()}
           onRemoveClick={this.props.onRemoveSelectedOption}
           onRemoveAll={this.props.onRemoveAllSelectedOptions}
           onFilterTextChange={this.props.onFilterTextChange}
@@ -33,8 +40,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
           filterPlaceholder={this.props.filterPlaceholder}
           filterText={this.props.filterText}
         />
-        <ul className='dropdown-menu'
-          ref={(input: HTMLUListElement) => { this.ulElement = input; }} >
+        <ul className='dropdown-menu' ref={(input: HTMLUListElement) => { this.ulElement = input; }}>
           {this.getDropdownOptions()}
         </ul>
       </div>
