@@ -28,7 +28,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
       };
     case DropdownSearchActions.removeSelectedOption:
       let selectedOptions = removeSelectedOption(state, action.payload.selectedOptionValue);
-      let displayedOptions = getDisplayedOptions({...state, selectedOptions});
+      let displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
         id: action.payload.id,
@@ -39,7 +39,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
       };
     case DropdownSearchActions.removeAllSelectedOptions:
       selectedOptions = new FixedQueue<IDropdownOption>();
-      displayedOptions = getDisplayedOptions({...state, selectedOptions, });
+      displayedOptions = getDisplayedOptions({ ...state, selectedOptions, });
       return {
         ...state,
         id: action.payload.id,

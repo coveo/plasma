@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IDropdownOption } from '../DropdownSearch';
 import { SelectedOption } from './SelectedOption';
 import { Svg } from '../../svg/Svg';
+import * as _ from 'underscore';
 
 export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
@@ -51,19 +52,21 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
   private getSelectedOptionComponents(): JSX.Element[] {
     const selectedOptionComponents: JSX.Element[] = [];
 
-    for (let selectedOption of this.props.selectedOptions) {
+    _.map(this.props.selectedOptions, (selectedOption) => {
       selectedOptionComponents.push(
-        <SelectedOption displayValue={selectedOption.displayValue}
+        <SelectedOption
+          displayValue={selectedOption.displayValue}
           key={selectedOption.value}
           onRemoveClick={this.props.onRemoveClick}
-        />);
-    }
+        />
+      );
+    });
 
     return selectedOptionComponents;
   }
 
   private getRemoveAllSelectedOptionsButton(): JSX.Element {
-    if (this.props.selectedOptions.length > 0) {
+    if (this.props.selectedOptions.length) {
       return (
         <div className='remove-all-selected-options' onClick={() => this.handleOnRemoveAll()}>
           <Svg svgName='clear' svgClass='icon fill-medium-blue' />
@@ -79,10 +82,10 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
           {this.getSelectedOptionComponents()}
           <input
             placeholder={this.props.filterPlaceholder}
-            onChange={(e) => this.handleInputChange(e)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange(e)}
             onBlur={() => this.handleOnBlur()}
             onFocus={() => this.handleOnFocus()}
-            onKeyDown={(e) => this.handleOnKeyDown(e)}
+            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDown(e)}
             value={this.props.filterText}
           />
         </div>
