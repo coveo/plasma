@@ -10,25 +10,34 @@ import { TestUtils } from '../../../../utils/TestUtils';
 import { clearState } from '../../../../utils/ReduxUtils';
 import { defaultSelectedOption } from '../../DropdownSearchReducers';
 import {
+  addCustomSelectedOption,
+  applyFilterDropdownSearch,
   closeDropdownSearch,
   openDropdownSearch,
   updateOptionsDropdownSearch
 } from '../../DropdownSearchActions';
+import {keyCode} from '../../../../utils/InputUtils';
 
 describe('MultiSelectDropdownSearch', () => {
-  const id: string = UUID.generate();
 
-  describe('<MultiSelectDropdownSearchConnected />', () => {
+    const id: string = UUID.generate();
+
+    describe('<MultiSelectDropdownSearchConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let multiSelectDropdownSearchConnected: ReactWrapper<IDropdownSearchProps, any>;
     let store: Store<IReactVaporState>;
 
     const defaultOptions = [{ value: 'a', displayValue: 'a' }, { value: 'b', displayValue: 'b' }];
 
-    const renderMultiSelectDropdownSearchConnected = () => {
+    const props: IDropdownSearchProps = {
+      id: id,
+      defaultOptions: defaultOptions,
+    };
+
+    const renderMultiSelectDropdownSearchConnected = (props: IDropdownSearchProps) => {
       wrapper = mount(
         <Provider store={store}>
-          <MultiSelectDropdownSearchConnected id={id} defaultOptions={defaultOptions} />
+          <MultiSelectDropdownSearchConnected {...props} />
         </Provider>,
         { attachTo: document.getElementById('App') },
       );
@@ -48,7 +57,7 @@ describe('MultiSelectDropdownSearch', () => {
     describe('mount and unmount', () => {
 
       beforeEach(() => {
-        renderMultiSelectDropdownSearchConnected();
+        renderMultiSelectDropdownSearchConnected(props);
       });
 
       it('should call onMount prop when mounted', () => {
@@ -69,7 +78,7 @@ describe('MultiSelectDropdownSearch', () => {
     describe('mapDispatchToProps', () => {
 
       beforeEach(() => {
-        renderMultiSelectDropdownSearchConnected();
+        renderMultiSelectDropdownSearchConnected(props);
       });
 
       it('should get what to do on destroy as a prop', () => {
@@ -115,12 +124,6 @@ describe('MultiSelectDropdownSearch', () => {
         expect(onKeyDownFilterBox).toBeDefined();
       });
 
-      it('should get what to do on onMouseEnterDropdown as a prop', () => {
-        const onMouseEnterDropdown = multiSelectDropdownSearchConnected.props().onMouseEnterDropdown;
-
-        expect(onMouseEnterDropdown).toBeDefined();
-      });
-
       it('should get what to do on onRemoveSelectedOption as a prop', () => {
         const onRemoveSelectedOption = multiSelectDropdownSearchConnected.props().onRemoveSelectedOption;
 
@@ -162,6 +165,45 @@ describe('MultiSelectDropdownSearch', () => {
         expect(store.getState().dropdownSearch[0].filterText).toBe(filter);
       });
 
+      it('should add a custom option on custom option click', () => {
+        const filterText: string = 'filter_text';
+        multiSelectDropdownSearchConnected.props().onCustomOptionClick(filterText);
+
+        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({displayValue: filterText})).toBe(true);
+      });
+
+      it('should update filterText on key down', () => {
+        const enterKeyCode: number = keyCode.enter;
+        const filterText: string = 'custom value';
+
+        store.dispatch(applyFilterDropdownSearch(id, filterText));
+
+        multiSelectDropdownSearchConnected.props().onKeyDownFilterBox(enterKeyCode);
+
+        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({displayValue: filterText})).toBe(true);
+      });
+
+      it('should remove selected option', () => {
+        const selectedOptionValue = 'value';
+
+        store.dispatch(addCustomSelectedOption(id, selectedOptionValue));
+
+        multiSelectDropdownSearchConnected.props().onRemoveSelectedOption(selectedOptionValue);
+
+        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({displayValue: selectedOptionValue})).toBe(false);
+      });
+
+      it('should remove all selected option', () => {
+        const selectedOptionValue_1 = 'value_1';
+        const selectedOptionValue_2 = 'value_2';
+
+        store.dispatch(addCustomSelectedOption(id, selectedOptionValue_1));
+        store.dispatch(addCustomSelectedOption(id, selectedOptionValue_2));
+
+        multiSelectDropdownSearchConnected.props().onRemoveAllSelectedOptions();
+
+        expect(store.getState().dropdownSearch[0].selectedOptions.getQueue()).toEqual([]);
+      });
     });
   });
 });

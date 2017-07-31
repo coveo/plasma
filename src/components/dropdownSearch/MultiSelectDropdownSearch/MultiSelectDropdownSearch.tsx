@@ -29,8 +29,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
           filterText={this.props.filterText}
         />
         <ul className='dropdown-menu'
-          ref={(input: HTMLUListElement) => { this.ulElement = input; }}
-          onMouseEnter={() => this.handleOnMouseEnter()}>
+          ref={(input: HTMLUListElement) => { this.ulElement = input; }} >
           {this.getDropdownOptions()}
         </ul>
       </div>

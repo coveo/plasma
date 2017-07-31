@@ -99,7 +99,7 @@ describe('MultiSelectInput', () => {
           onFilterTextChange: onInputChange,
         });
 
-        multiSelectInput.find('input').simulate('change', {target: {value: 'input value changed'}});
+        multiSelectInput.find('input').simulate('change', { target: { value: 'input value changed' } });
 
         expect(onInputChange).toHaveBeenCalled();
       });
