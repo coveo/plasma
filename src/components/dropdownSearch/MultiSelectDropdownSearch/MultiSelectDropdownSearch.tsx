@@ -1,14 +1,19 @@
 import * as React from 'react';
-import { DropdownSearch } from '../DropdownSearch';
+import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
 import { MultiselectInput } from './MultiSelectInput';
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
+
+  static defaultProps: Partial<IDropdownSearchProps> = {
+    ...DropdownSearch.defaultProps,
+    createOptionText: 'Create option for ',
+  };
 
   protected getNoOptions(): JSX.Element[] {
     if (this.props.filterText.length > 0 && !this.props.selectedOptions.containsElementWithProperties({ displayValue: this.props.filterText })) {
       return [
         <li key='noResultDropdownSearch' onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}>
-          <span>{`Create option for "${this.props.filterText}"`}</span>
+          <span>{`${this.props.createOptionText}"${this.props.filterText}"`}</span>
         </li>,
       ];
     }
