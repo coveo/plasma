@@ -11,12 +11,13 @@ describe('MultiSelectDropdownSearch', () => {
   const options = [
     { value: 'test a', displayValue: 'test a' },
     { value: 'test b', displayValue: 'test b' },
-    { value: 'test c', displayValue: 'test c' }];
+    { value: 'test c', displayValue: 'test c' },
+  ];
 
   const props: IDropdownSearchProps = {
     id,
-    modMenu: false,
     options,
+    modMenu: false,
     displayedOptions: options,
     selectedOptions: new FixedQueue<IDropdownOption>(),
     filterPlaceholder: 'fill me',
@@ -60,7 +61,7 @@ describe('MultiSelectDropdownSearch', () => {
           isOpened: true,
         });
 
-        multiSelectDropdownSearch.find('li').find('span').simulate('mouseDown');
+        multiSelectDropdownSearch.find('li span').simulate('mouseDown');
 
         expect(onCustomOptionClick).toHaveBeenCalled();
       });
@@ -72,7 +73,7 @@ describe('MultiSelectDropdownSearch', () => {
           isOpened: true,
         });
 
-        expect(multiSelectDropdownSearch.find('li').find('span').text()).toEqual(`Create option for "${filterText}"`);
+        expect(multiSelectDropdownSearch.find('li span').text()).toEqual(`Create option for "${filterText}"`);
       });
 
       it('should not call custom option click function on mousedown when the value is already present in the selected options', () => {
@@ -85,7 +86,7 @@ describe('MultiSelectDropdownSearch', () => {
           isOpened: true,
         });
 
-        multiSelectDropdownSearch.find('li').find('span').simulate('mouseDown');
+        multiSelectDropdownSearch.find('li span').simulate('mouseDown');
 
         expect(onCustomOptionClick).not.toHaveBeenCalled();
       });

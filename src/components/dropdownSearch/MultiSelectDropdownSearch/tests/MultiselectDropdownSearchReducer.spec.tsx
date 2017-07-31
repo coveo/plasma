@@ -19,9 +19,9 @@ describe('DropdownSearch', () => {
     ];
 
     const oldState: IDropdownSearchState = {
+      options: options,
       id: 'new-dropdown-search',
       isOpened: false,
-      options: options,
       displayedOptions: options,
       selectedOptions: new FixedQueue<IDropdownOption>(),
     };
