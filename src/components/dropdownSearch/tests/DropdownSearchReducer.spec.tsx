@@ -405,7 +405,30 @@ describe('DropdownSearch', () => {
       });
 
     it(
-      'should return  oldstate with activeOption undefined and setFocusOnDropdownButton false if the keyCode is equal to -1 on ACTIVE_DROPDOWN_SEARCH',
+      'should close the dropdown if the keyCode is "Escape" on ACTIVE_DROPDOWN_SEARCH',
+      () => {
+        const oldState: IDropdownSearchState[] = [
+          {
+            id: 'new-dropdown-search',
+            isOpened: true,
+            options,
+            activeOption: options[0],
+            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+          },
+        ];
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.active,
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.escape }),
+        };
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+        expect(dropdownSearchState.filter(
+          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+          && !dropdownSearch.isOpened).length).toBe(1);
+      });
+
+    it(
+      'should return oldstate with activeOption undefined and setFocusOnDropdownButton false if the keyCode is equal to -1 on ACTIVE_DROPDOWN_SEARCH',
       () => {
         const oldState: IDropdownSearchState[] = [
           {
@@ -450,6 +473,26 @@ describe('DropdownSearch', () => {
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState[0]).toEqual(oldState[0]);
       });
+
+    it('should return old state if the id does not match with a multiselect action', () => {
+      const oldState: IDropdownSearchState[] = [
+        {
+          id: 'no-match',
+          isOpened: false,
+          options,
+          displayedOptions: options,
+          activeOption: options[0],
+          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        },
+      ];
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+        type: DropdownSearchActions.multiSelect,
+        payload: _.extend({}, defaultPayload, { addedSelectedOption: options[0] }),
+      };
+      const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+      expect(dropdownSearchState).toEqual(oldState);
+    });
 
     describe('get displayed options', () => {
 

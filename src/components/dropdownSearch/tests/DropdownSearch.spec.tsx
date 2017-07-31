@@ -335,7 +335,7 @@ describe('DropdownSearch', () => {
         const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
         spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 200000, top: 200000 });
 
-        dropdownSearch.setProps({ activeOption: { value: 'test 1', displayValue: 'test 1'  } });
+        dropdownSearch.setProps({ activeOption: { value: 'test 1', displayValue: 'test 1' } });
         expect(spy).toHaveBeenCalledTimes(1);
       });
     });
