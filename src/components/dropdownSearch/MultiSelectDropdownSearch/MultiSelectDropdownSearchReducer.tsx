@@ -86,15 +86,17 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           displayedOptions: getDisplayedOptions(state),
         };
       } else if ((_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && !state.activeOption && state.filterText)) {
+        selectedOptions = addUniqueSelectedOption(state, state.filterText);
+        displayedOptions = getDisplayedOptions({ ...state, selectedOptions, });
         return {
           ...state,
           id: action.payload.id,
           isOpened: true,
-          selectedOptions: addUniqueSelectedOption(state, state.filterText),
+          selectedOptions: selectedOptions,
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
-          displayedOptions: getDisplayedOptions(state),
+          displayedOptions: displayedOptions,
         };
       } else if (action.payload.keyCode === keyCode.backspace) {
         if (state.filterText === '') {
