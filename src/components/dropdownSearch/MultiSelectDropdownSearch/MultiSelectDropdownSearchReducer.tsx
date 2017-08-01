@@ -32,20 +32,20 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
       let displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
+        selectedOptions,
+        displayedOptions,
         id: action.payload.id,
         isOpened: false,
-        selectedOptions,
         activeOption: undefined,
-        displayedOptions,
       };
     case DropdownSearchActions.removeAllSelectedOptions:
       selectedOptions = new FixedQueue<IDropdownOption>();
-      displayedOptions = getDisplayedOptions({ ...state, selectedOptions, });
+      displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
-        id: action.payload.id,
         selectedOptions,
         displayedOptions,
+        id: action.payload.id,
       };
     case DropdownSearchActions.multiSelect:
       return {
@@ -87,16 +87,16 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         };
       } else if ((_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && !state.activeOption && state.filterText)) {
         selectedOptions = addUniqueSelectedOption(state, state.filterText);
-        displayedOptions = getDisplayedOptions({ ...state, selectedOptions, });
+        displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
         return {
           ...state,
+          selectedOptions,
+          displayedOptions,
           id: action.payload.id,
           isOpened: true,
-          selectedOptions: selectedOptions,
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
-          displayedOptions: displayedOptions,
         };
       } else if (action.payload.keyCode === keyCode.backspace) {
         if (state.filterText === '') {

@@ -31,7 +31,7 @@ export class FixedQueue<T> {
 
   removeElementsWithProperties(properties: any): FixedQueue<T> {
     const elementsWithoutProperties: Array<T> = _.reject(this.queue, properties);
-    return new FixedQueue<T> (elementsWithoutProperties);
+    return new FixedQueue<T>(elementsWithoutProperties);
   }
 
   removeLastElement(): FixedQueue<T> {

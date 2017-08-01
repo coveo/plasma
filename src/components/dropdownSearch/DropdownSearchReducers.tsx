@@ -51,15 +51,15 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
 };
 
 export const removeSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> =>
-  state.selectedOptions.removeElementsWithProperties({ displayValue, });
+  state.selectedOptions.removeElementsWithProperties({ displayValue });
 
 export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> =>
-  removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue: displayValue, });
+  removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue});
 
 export const getDisplayedOptions = (state: IDropdownSearchState) => {
   return _.filter(state.options,
     (option: IDropdownOption) => _.findWhere(state.selectedOptions.getQueue(),
-      { displayValue: option.displayValue, }) === undefined);
+      { displayValue: option.displayValue }) === undefined);
 };
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
