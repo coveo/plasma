@@ -82,7 +82,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(updatedState.selectedOptions.getQueue.length).toBe(0);
+      expect(updatedState.selectedOptions.getQueue().length).toBe(0);
     });
 
     it('should display all options in displayed options on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {

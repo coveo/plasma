@@ -88,43 +88,6 @@ describe('FixedQueue', () => {
   });
 
   describe('remove', () => {
-    describe('at index', () => {
-      it('should remove the element at position x', () => {
-        fixedQueue = new FixedQueue<number>([1, 2, 3]);
-        const expectedQueue = [2, 3];
-
-        fixedQueue.removeAtIndex(0);
-
-        expect(fixedQueue.getQueue()).toEqual(expectedQueue);
-      });
-
-      it('should not remove an element out of bounds', () => {
-        fixedQueue = new FixedQueue<number>([1, 2, 3]);
-        expect(() => {
-          fixedQueue.removeAtIndex(10);
-        }).not.toThrow();
-      });
-    });
-
-    describe('specified element', () => {
-
-      it('should remove a specific element from the queue', () => {
-        fixedQueue = new FixedQueue<number>([1, 2, 3]);
-        const expectedQueue = [1, 3];
-
-        fixedQueue.removeElement(2);
-
-        expect(fixedQueue.getQueue()).toEqual(expectedQueue);
-      });
-
-      it('should not remove an element that does not exist', () => {
-        fixedQueue = new FixedQueue<number>([1, 2, 3]);
-        expect(() => {
-          fixedQueue.removeElement(5);
-        }).not.toThrow();
-      });
-    });
-
     describe('last element', () => {
 
       it('should remove last element if it exists', () => {
@@ -143,6 +106,20 @@ describe('FixedQueue', () => {
         fixedQueue.removeLastElement();
 
         expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+      });
+    });
+
+    describe('element with properties', () => {
+      it('should remove all elements with the supplied properties', () => {
+        const element1 = { id: 1, anotherProperty: true };
+        const element2 = { id: 2, anotherProperty: true };
+        const element3 = { id: 3, anotherProperty: false };
+
+        fixedQueue = new FixedQueue<any>([element1, element2, element3]);
+
+        const expectedQueue: Array<any> = [element3];
+
+        expect(fixedQueue.removeElementsWithProperties({ anotherProperty: true }).getQueue()).toEqual(expectedQueue);
       });
     });
   });

@@ -33,13 +33,9 @@ export class FixedQueue<T> {
     return _.findWhere(this.queue, properties) !== undefined;
   }
 
-  removeAtIndex(index: number) {
-    this.queue.splice(index, 1);
-  }
-
-  removeElement(element: any) {
-    const index = this.queue.indexOf(element);
-    this.removeAtIndex(index);
+  removeElementsWithProperties(properties: any): FixedQueue<T> {
+    const elementsWithoutProperties: Array<T> = _.reject(this.queue, properties);
+    return new FixedQueue<T> (elementsWithoutProperties);
   }
 
   removeLastElement(): FixedQueue<T> {
