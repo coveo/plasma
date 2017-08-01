@@ -138,7 +138,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
     case DropdownSearchActions.active:
       const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
       const optionsFiltered = getFilteredOptions(state);
-      if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
+      if (_.contains([keyCode.upArrow, keyCode.downArrow], action.payload.keyCode)) {
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
@@ -146,7 +146,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
             optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, action.payload.keyCode)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
-      } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
+      } else if (_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && state.activeOption) {
         return {
           ...state,
           id: action.payload.id,

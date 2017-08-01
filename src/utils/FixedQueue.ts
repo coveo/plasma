@@ -5,7 +5,7 @@ export class FixedQueue<T> {
   private queue: Array<T>;
   private maxLength: number;
 
-  constructor(initialValues: Array<any> = [], maxLength: number = Number.MAX_VALUE) {
+  constructor(initialValues: Array<T> = [], maxLength: number = Number.MAX_VALUE) {
     this.maxLength = maxLength;
     this.queue = initialValues;
     this.trimQueue();
@@ -26,11 +26,11 @@ export class FixedQueue<T> {
   }
 
   contains(element: T): boolean {
-    return this.queue.indexOf(element) != -1;
+    return this.queue.indexOf(element) !== -1;
   }
 
   containsElementWithProperties(properties: any) {
-    return _.findWhere(this.queue, properties) != undefined;
+    return _.findWhere(this.queue, properties) !== undefined;
   }
 
   removeAtIndex(index: number) {
@@ -50,6 +50,8 @@ export class FixedQueue<T> {
   }
 
   private trimQueue() {
-    this.queue.splice(0, this.queue.length - this.maxLength);
+    if (this.queue.length > this.maxLength) {
+      this.queue.splice(0, this.queue.length - this.maxLength);
+    }
   }
 }

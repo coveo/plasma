@@ -12,6 +12,7 @@ import { IReduxAction } from '../../../utils/ReduxUtils';
 import { FixedQueue } from '../../../utils/FixedQueue';
 import { IDropdownOption } from '../DropdownSearch';
 import { keyCode } from '../../../utils/InputUtils';
+import * as _ from 'underscore';
 
 export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
@@ -65,7 +66,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
     case DropdownSearchActions.onKeyDownMultiselect:
       const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
       const filteredOptions = getFilteredOptions(state);
-      if (action.payload.keyCode === keyCode.upArrow || action.payload.keyCode === keyCode.downArrow) {
+      if (_.contains([keyCode.upArrow, keyCode.downArrow], action.payload.keyCode)) {
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
@@ -73,7 +74,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
             filteredOptions[getNextIndexPosition(filteredOptions, state.activeOption, action.payload.keyCode)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
-      } else if ((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && state.activeOption) {
+      } else if (_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && state.activeOption) {
         return {
           ...state,
           id: action.payload.id,
@@ -84,7 +85,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: true,
           displayedOptions: getDisplayedOptions(state),
         };
-      } else if (((action.payload.keyCode === keyCode.enter || action.payload.keyCode === keyCode.tab) && !state.activeOption && state.filterText)) {
+      } else if ((_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && !state.activeOption && state.filterText)) {
         return {
           ...state,
           id: action.payload.id,

@@ -60,7 +60,7 @@ describe('MultiSelectDropdownSearch', () => {
         renderMultiSelectDropdownSearchConnected(props);
       });
 
-      it('should call onMount prop when mounted', () => {
+      it('should add a new dropdownSearch state in the store when mounted', () => {
         wrapper.unmount();
         store.dispatch(clearState());
         expect(store.getState().dropdownSearch.length).toBe(0);
@@ -111,7 +111,6 @@ describe('MultiSelectDropdownSearch', () => {
         expect(onCustomOptionClickProp).toBeDefined();
       });
 
-
       it('should get what to do on onFilterTextChange as a prop', () => {
         const onFilterClickProp = multiSelectDropdownSearchConnected.props().onFilterTextChange;
 
@@ -143,7 +142,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onBlur();
 
-        expect(dropdown.hasClass('open')).toBe(false, 'close the dropdown on blur');
+        expect(dropdown.hasClass('open')).toBe(false);
       });
 
       it('should open the dropdown on focus', () => {
