@@ -77,12 +77,13 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   protected getSelectedOption(): JSX.Element[] {
     if (this.props.selectedOptions.getQueue().length) {
       return _.map(this.props.selectedOptions.getQueue(), (selectedOption: IDropdownOption) => {
+        const displayValue = selectedOption.displayValue || selectedOption.value;
         return (
-          <span
-            key={selectedOption.value}
+          <span key={selectedOption.value}
             className='dropdown-selected-value'
-            data-value={selectedOption.value}>
-            {selectedOption.displayValue || selectedOption.value}
+            data-value={selectedOption.value}
+            title={displayValue}>
+            {displayValue}
           </span>
         );
       });
@@ -114,7 +115,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
           : value;
 
         return (
-          <li key={option.value} className={liClasses}>
+          <li key={option.value} className={liClasses} title={value}>
             <span className={optionClasses}
               onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)} data-value={option.value}>
               {this.getDropdownPrepend(option)}
