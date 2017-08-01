@@ -140,10 +140,12 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   protected getSvg(option: IDropdownOption): JSX.Element {
     if (option && option.svg) {
-      return <span key={option.svg.name}
-        className='value-icon'>
-        <Svg {...option.svg} />
-      </span>;
+      return (
+        <span key={option.svg.name}
+          className='value-icon'>
+          <Svg {...option.svg} />
+        </span>
+      );
     }
     return null;
   }
