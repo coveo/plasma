@@ -230,7 +230,9 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOptions: ownProps.selectedOptions.push(selectedOption),
+        }));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
@@ -244,7 +246,9 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown displayValue if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOptions: ownProps.selectedOptions.push(selectedOption),
+        }));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
       });

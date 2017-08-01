@@ -11,14 +11,22 @@ export class FixedQueue<T> {
     this.trimQueue();
   }
 
-  getQueue(): Array<T> {
-    return this.queue;
+  push(object: any): FixedQueue<T> {
+    const queue: Array<T> = [...this.queue, object];
+    return new FixedQueue<T>(queue, this.maxLength);
   }
 
-  push(object: any): FixedQueue<T> {
-    this.queue.push(object);
-    this.trimQueue();
-    return new FixedQueue<T>(this.queue, this.maxLength);
+  removeLastElement(): FixedQueue<T> {
+    const queue: Array<T> = [...this.queue];
+    if (this.queue.length > 0) {
+      queue.pop();
+    }
+    return new FixedQueue<T>(queue, this.maxLength);
+  }
+
+  removeElementsWithProperties(properties: any): FixedQueue<T> {
+    const elementsWithoutProperties: Array<T> = _.reject(this.queue, properties);
+    return new FixedQueue<T>(elementsWithoutProperties);
   }
 
   getFirstElement(): T {
@@ -29,16 +37,8 @@ export class FixedQueue<T> {
     return _.findWhere(this.queue, properties) !== undefined;
   }
 
-  removeElementsWithProperties(properties: any): FixedQueue<T> {
-    const elementsWithoutProperties: Array<T> = _.reject(this.queue, properties);
-    return new FixedQueue<T>(elementsWithoutProperties);
-  }
-
-  removeLastElement(): FixedQueue<T> {
-    if (this.queue.length > 0) {
-      this.queue.pop();
-    }
-    return new FixedQueue<T>(this.queue, this.maxLength);
+  getQueue(): Array<T> {
+    return this.queue;
   }
 
   private trimQueue() {

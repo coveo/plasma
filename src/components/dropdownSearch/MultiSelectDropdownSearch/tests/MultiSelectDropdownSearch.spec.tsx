@@ -45,7 +45,6 @@ describe('MultiSelectDropdownSearch', () => {
       renderMultiSelectDropdownSearch(props);
     });
 
-
     afterEach(() => {
       multiSelectDropdownSearch.unmount();
       multiSelectDropdownSearch.detach();

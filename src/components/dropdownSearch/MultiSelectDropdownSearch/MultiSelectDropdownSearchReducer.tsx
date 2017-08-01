@@ -48,20 +48,24 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         id: action.payload.id,
       };
     case DropdownSearchActions.multiSelect:
+      selectedOptions = state.selectedOptions.push(action.payload.addedSelectedOption);
+      displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
+        selectedOptions,
+        displayedOptions,
         id: action.payload.id,
         isOpened: true,
-        selectedOptions: state.selectedOptions.push(action.payload.addedSelectedOption),
-        displayedOptions: getDisplayedOptions(state),
       };
     case DropdownSearchActions.addCustomSelectedOption:
+      selectedOptions = addUniqueSelectedOption(state, action.payload.selectedOptionValue);
+      displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
+        selectedOptions,
+        displayedOptions,
         id: action.payload.id,
         isOpened: true,
-        selectedOptions: addUniqueSelectedOption(state, action.payload.selectedOptionValue),
-        displayedOptions: getDisplayedOptions(state),
       };
     case DropdownSearchActions.onKeyDownMultiselect:
       const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
@@ -75,15 +79,17 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if (_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && state.activeOption) {
+        selectedOptions = state.selectedOptions.push(state.activeOption);
+        displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
         return {
           ...state,
+          selectedOptions,
+          displayedOptions,
           id: action.payload.id,
           isOpened: true,
-          selectedOptions: state.selectedOptions.push(state.activeOption),
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
-          displayedOptions: getDisplayedOptions(state),
         };
       } else if ((_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && !state.activeOption && state.filterText)) {
         selectedOptions = addUniqueSelectedOption(state, state.filterText);
@@ -99,15 +105,17 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: true,
         };
       } else if (action.payload.keyCode === keyCode.backspace) {
+        selectedOptions = state.selectedOptions.removeLastElement();
+        displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
         if (state.filterText === '') {
           return {
             ...state,
+            selectedOptions,
+            displayedOptions,
             id: action.payload.id,
             isOpened: true,
-            selectedOptions: state.selectedOptions.removeLastElement(),
             activeOption: undefined,
             setFocusOnDropdownButton: true,
-            displayedOptions: getDisplayedOptions(state),
           };
         }
       } else if (action.payload.keyCode === keyCode.escape) {

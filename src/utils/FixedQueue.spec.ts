@@ -43,9 +43,9 @@ describe('FixedQueue', () => {
       const element = 0;
       const expectedQueue = [element];
 
-      fixedQueue.push(element);
+      const updatedQueue = fixedQueue.push(element);
 
-      expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+      expect(updatedQueue.getQueue()).toEqual(expectedQueue);
     });
 
     it('should push an object to the end of the queue and remove exceeding elements if the size is over maxsize', () => {
@@ -53,9 +53,9 @@ describe('FixedQueue', () => {
       let element = 0;
       const expectedQueue = [element];
 
-      fixedQueue.push(element);
+      const updatedQueue = fixedQueue.push(element);
 
-      expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+      expect(updatedQueue.getQueue()).toEqual(expectedQueue);
     });
 
     describe('push 3 elements consecutively on a fixedQueue of size 2', () => {
@@ -68,21 +68,21 @@ describe('FixedQueue', () => {
       });
 
       it('should add the first element in the queue', () => {
-        fixedQueue.push(firstElement);
+        const updatedQueue = fixedQueue.push(firstElement);
 
-        expect(fixedQueue.getQueue()).toEqual([firstElement]);
+        expect(updatedQueue.getQueue()).toEqual([firstElement]);
       });
 
       it('should add the second element at the end of the queue', () => {
-        fixedQueue.push(secondElement);
+        const updatedQueue = fixedQueue.push(firstElement).push(secondElement);
 
-        expect(fixedQueue.getQueue()).toEqual([firstElement, secondElement]);
+        expect(updatedQueue.getQueue()).toEqual([firstElement, secondElement]);
       });
 
       it('should add the third element at the end of the queue and remove the first element', () => {
-        fixedQueue.push(thirdElement);
+        const updatedQueue = fixedQueue.push(firstElement).push(secondElement).push(thirdElement);
 
-        expect(fixedQueue.getQueue()).toEqual([secondElement, thirdElement]);
+        expect(updatedQueue.getQueue()).toEqual([secondElement, thirdElement]);
       });
     });
   });
@@ -94,9 +94,9 @@ describe('FixedQueue', () => {
         fixedQueue = new FixedQueue<number>([1, 2, 3]);
         const expectedQueue = [1, 2];
 
-        fixedQueue.removeLastElement();
+        const updatedQueue = fixedQueue.removeLastElement();
 
-        expect(fixedQueue.getQueue()).toEqual(expectedQueue);
+        expect(updatedQueue.getQueue()).toEqual(expectedQueue);
       });
 
       it('should not remove last element if the queue is empty', () => {
