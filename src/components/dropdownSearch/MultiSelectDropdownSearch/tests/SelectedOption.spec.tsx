@@ -58,7 +58,6 @@ describe('SelectedOption', () => {
         selectedOption.simulate('click');
         selectedOption.find('.selected-option').simulate('click');
         selectedOption.find('.selected-option-value').simulate('click');
-        selectedOption.find('.selected-option-separator').simulate('click');
 
         expect(onRemoveOptionClick).not.toHaveBeenCalled();
       });

@@ -23,8 +23,6 @@ export class SelectedOption extends React.Component<ISelectedOptionProps, any> {
           {this.props.displayValue}
         </div>
 
-        <div className='selected-option-separator' />
-
         <div className='remove-option' onClick={() => this.handleOnRemove()} >
           <Svg svgName='clear' svgClass='icon fill-medium-blue mod-small' />
         </div>
