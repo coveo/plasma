@@ -32,7 +32,7 @@
     "prepublish": "npm run build && npm test",
     "report-coverage": "codecov -f coverage/coverage.json"
   },
-  "pre-commit": [
+  "pre-push": [
     "lint",
     "build"
   ],

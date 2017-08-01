@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 export interface IDropdownOwnProps extends React.ClassAttributes<Dropdown> {
   id?: string;
   toggleContent: JSX.Element[];
-  dropdownItems: JSX.Element[];
+  dropdownItems: JSX.Element[];;
 }
 
 export interface IDropdownStateProps {
