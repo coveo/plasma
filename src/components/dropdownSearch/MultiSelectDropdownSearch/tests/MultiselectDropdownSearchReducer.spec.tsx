@@ -56,7 +56,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(updatedState.selectedOptions.contains(addedSelectedOption)).toBe(true);
+      expect(updatedState.selectedOptions.getQueue()).toContain(addedSelectedOption);
     });
 
     it('should remove the selected option from the displayed options on "MULTI_SELECT_OPTION_DROPDOWN_SEARCH"', () => {
@@ -200,7 +200,7 @@ describe('DropdownSearch', () => {
 
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
 
-        expect(updatedState.selectedOptions.contains(options[0])).toBe(true);
+        expect(updatedState.selectedOptions.getQueue()).toContain(options[0]);
       });
 
       it('should remove last selected option on backspace when the filter text is empty', () => {

@@ -25,10 +25,6 @@ export class FixedQueue<T> {
     return this.queue[0];
   }
 
-  contains(element: T): boolean {
-    return this.queue.indexOf(element) !== -1;
-  }
-
   containsElementWithProperties(properties: any) {
     return _.findWhere(this.queue, properties) !== undefined;
   }

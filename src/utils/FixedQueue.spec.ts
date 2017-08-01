@@ -124,20 +124,6 @@ describe('FixedQueue', () => {
     });
   });
 
-  describe('contains', () => {
-    it('should return true if the element is present in the array', () => {
-      fixedQueue = new FixedQueue<number>([1, 2, 3]);
-
-      expect(fixedQueue.contains(1)).toBe(true);
-    });
-
-    it('should return false if the element is not present in the array', () => {
-      fixedQueue = new FixedQueue<number>([1, 2, 3]);
-
-      expect(fixedQueue.contains(5)).toBe(false);
-    });
-  });
-
   describe('contains element with properties', () => {
     it('should return true if an element of the array contains the supplied properties', () => {
       const elementId = 'element_id';
