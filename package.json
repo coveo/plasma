@@ -105,7 +105,7 @@
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.6",
     "pre-commit": "1.2.2",
-    "pre-push": "^0.1.1",
+    "pre-push": "0.1.1",
     "pretty-typescript": "1.15.0",
     "react": "15.6.1",
     "react-addons-test-utils": "15.6.0",
