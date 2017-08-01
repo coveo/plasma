@@ -54,7 +54,7 @@ export const removeSelectedOption = (state: IDropdownSearchState, displayValue: 
   state.selectedOptions.removeElementsWithProperties({ displayValue });
 
 export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> =>
-  removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue});
+  removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue });
 
 export const getDisplayedOptions = (state: IDropdownSearchState) => {
   return _.filter(state.options,
