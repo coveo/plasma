@@ -23,10 +23,10 @@ describe('Date picker', () => {
 
     const mountComponent = (props: Object = {}) => {
       wrapper = mount(
-          <Provider store={store}>
-            <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />
-          </Provider>,
-          { attachTo: document.getElementById('App') }
+        <Provider store={store}>
+          <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />
+        </Provider>,
+        { attachTo: document.getElementById('App') }
       );
       datesSelection = wrapper.find(DatesSelection).first();
     };
@@ -188,7 +188,7 @@ describe('Date picker', () => {
     });
 
     it('should change the lower limit in the state when calling the onChange prop with the lower limit', () => {
-      let expectedValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
+      const expectedValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
 
       datesSelection.props().onChange(expectedValue, false);
 
@@ -196,8 +196,8 @@ describe('Date picker', () => {
     });
 
     it('should change the upper limit in the state to the new lower limit date when calling the onChange prop with the lower limit when isRange prop is false', () => {
-      mountComponent({isRange: false});
-      let expectedValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
+      mountComponent({ isRange: false });
+      const expectedValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
 
       datesSelection.props().onChange(expectedValue, false);
 
@@ -205,9 +205,9 @@ describe('Date picker', () => {
     });
 
     it('should not change the upper limit in the state when calling the onChange prop with the lower limit when isRange prop is true', () => {
-      mountComponent({isRange: true});
-      let newValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
-      let expectedValue: Date = _.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).upperLimit;
+      mountComponent({ isRange: true });
+      const newValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
+      const expectedValue: Date = _.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).upperLimit;
 
       datesSelection.props().onChange(newValue, false);
 

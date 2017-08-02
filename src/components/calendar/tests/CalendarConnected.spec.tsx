@@ -33,10 +33,10 @@ describe('Calendar', () => {
 
     const mountComponent = (props: Object = {}) => {
       wrapper = mount(
-          <Provider store={store}>
-            <CalendarConnected id={CALENDAR_ID} {...props}/>
-          </Provider>,
-          { attachTo: document.getElementById('App') }
+        <Provider store={store}>
+          <CalendarConnected id={CALENDAR_ID} {...props} />
+        </Provider>,
+        { attachTo: document.getElementById('App') }
       );
       calendar = wrapper.find(Calendar).first();
     };
@@ -211,7 +211,7 @@ describe('Calendar', () => {
       let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
-      mountComponent({isLinkedToDateRange: false});
+      mountComponent({ isLinkedToDateRange: false });
       store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
@@ -226,7 +226,7 @@ describe('Calendar', () => {
       let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
-      mountComponent({isLinkedToDateRange: undefined});
+      mountComponent({ isLinkedToDateRange: undefined });
       store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
@@ -241,7 +241,7 @@ describe('Calendar', () => {
       let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
-      mountComponent({isLinkedToDateRange: true});
+      mountComponent({ isLinkedToDateRange: true });
       store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 

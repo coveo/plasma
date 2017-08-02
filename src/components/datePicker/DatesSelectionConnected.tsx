@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
       } else {
         dispatch(changeDatePickerLowerLimit(ownProps.id, date));
         if (!ownProps.isRange) {
-            dispatch(changeDatePickerUpperLimit(ownProps.id, date));
+          dispatch(changeDatePickerUpperLimit(ownProps.id, date));
         }
       }
 
