@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
           dispatch(selectDate(pickerId, DateLimits.upper));
 
           // mirror upper limit to lower limit if not linked with a date range
-          // to allow the display of the selected date in the calendar on selection of the lower limit date
+          // this will cause the selected lower limit date to display in the calendar right after selection of the lower limit date
           if (!ownProps.isLinkedToDateRange && ownProps.isLinkedToDateRange !== undefined) {
             dispatch(changeDatePickerUpperLimit(pickerId, value));
           }
