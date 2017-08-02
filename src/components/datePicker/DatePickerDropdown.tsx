@@ -14,6 +14,8 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   toLabel?: string;
   onRight?: boolean;
   onBeforeApply?: () => void;
+  extraDropdownClasses?: string[];
+  extraDropdownToggleClasses?: string[];
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -51,13 +53,17 @@ export const DEFAULT_DATE_PICKER_DROPDOWN_LABEL: string = 'Select date';
 export const DEFAULT_APPLY_DATE_LABEL: string = 'Apply';
 export const DEFAULT_CANCEL_DATE_LABEL: string = 'Cancel';
 export const DEFAULT_TO_LABEL: string = 'to';
+export const DEFAULT_EXTRA_DROPDOWN_CLASSES: string[] = [];
+export const DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES: string[] = [];
 
 export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
   static defaultProps: Partial<IDatePickerDropdownProps> = {
     label: DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
     applyLabel: DEFAULT_APPLY_DATE_LABEL,
     cancelLabel: DEFAULT_CANCEL_DATE_LABEL,
-    toLabel: DEFAULT_TO_LABEL
+    toLabel: DEFAULT_TO_LABEL,
+    extraDropdownClasses: DEFAULT_EXTRA_DROPDOWN_CLASSES,
+    extraDropdownToggleClasses: DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES,
   };
 
   private dropdown: HTMLDivElement;
@@ -138,6 +144,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       selectionRules: this.props.selectionRules,
       lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
       upperLimitPlaceholder: this.props.upperLimitPlaceholder,
+      isLinkedToDateRange: this.props.isLinkedToDateRange,
       footer: (
         <footer className='modal-footer mod-small'>
           <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
@@ -153,7 +160,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
       : <DatePickerBox {...datePickerBoxProps} />;
 
-    let dropdownClasses: string[] = ['dropdown-wrapper', 'dropdown'];
+    const dropdownClasses: string[] = ['dropdown-wrapper', 'dropdown', ...this.props.extraDropdownClasses];
     if (this.props.isOpened) {
       dropdownClasses.push('open');
     }
@@ -177,7 +184,9 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     return (
       <div className='date-picker-dropdown'>
         <div className={dropdownClasses.join(' ')} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
-          <span className='dropdown-toggle btn inline-flex flex-center' onClick={() => this.handleClick()}>
+          <span
+              className={`dropdown-toggle btn inline-flex flex-center ${this.props.extraDropdownToggleClasses.join(' ')}`}
+              onClick={() => this.handleClick()}>
             <span className='dropdown-selected-value'>
               <label>
                 {label}

@@ -65,13 +65,36 @@ describe('Date picker', () => {
       expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(true);
     });
 
-    it('should have the classes "mod-inline" and "flex" if the pickers do not display the time', () => {
-      expect(datesSelection.find('.mod-inline').hasClass('flex')).toBe(true);
+    it('should have the classes "mod-inline" and "flex" if the pickers do not display the time and isRange prop is set to true', () => {
+      expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
 
-      datesSelection.setProps({ withTime: true });
+      datesSelection.setProps({ withTime: false, isRange: true });
 
+      expect(datesSelection.find('.mod-inline.flex').length).toBe(1);
+    });
+
+    it('should not have the classes "mod-inline" and "flex" if the pickers do not display the time and isRange prop is set to false', () => {
+      expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
+
+      datesSelection.setProps({ withTime: false, isRange: false });
+
+      expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
+    });
+
+    it('should not have the classes "mod-inline" and "flex" if the pickers does display the time and isRange prop is set to true', () => {
       expect(datesSelection.find('.mod-inline').length).toBe(0);
-      expect(datesSelection.find('.flex').hasClass('mod-inline')).toBe(false);
+
+      datesSelection.setProps({ withTime: true, isRange: true });
+
+      expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
+    });
+
+    it('should not have the classes "mod-inline" and "flex" if the pickers does display the time and isRange prop is set to false', () => {
+      expect(datesSelection.find('.mod-inline').length).toBe(0);
+
+      datesSelection.setProps({ withTime: true, isRange: false });
+
+      expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
     });
 
     it('should call onDateChange with the date and whether or not the picker is the upper limit when calling the ' +

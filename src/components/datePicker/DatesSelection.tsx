@@ -85,7 +85,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
   }
 
   render() {
-    const wrapperClasses: string = !this.props.withTime ? 'mod-inline flex' : '';
+    const wrapperClasses: string = !this.props.withTime && this.props.isRange ? 'mod-inline flex' : '';
     const datePickerProps: IDatePickerProps = {
       withTime: this.props.withTime,
       hasSetToNowButton: this.props.hasSetToNowButton,
