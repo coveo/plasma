@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import { deepClone } from '../../CloneUtils';
+import { deepClone } from './CloneUtils';
 
 export class FixedQueue<T> {
 
