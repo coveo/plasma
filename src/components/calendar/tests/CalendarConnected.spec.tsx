@@ -31,16 +31,20 @@ describe('Calendar', () => {
     let calendar: ReactWrapper<ICalendarProps, any>;
     let store: Store<IReactVaporState>;
 
+    const mountComponent = (props: Object = {}) => {
+      wrapper = mount(
+          <Provider store={store}>
+            <CalendarConnected id={CALENDAR_ID} {...props}/>
+          </Provider>,
+          { attachTo: document.getElementById('App') }
+      );
+      calendar = wrapper.find(Calendar).first();
+    };
+
     beforeEach(() => {
       store = TestUtils.buildStore();
 
-      wrapper = mount(
-        <Provider store={store}>
-          <CalendarConnected id={CALENDAR_ID} />
-        </Provider>,
-        { attachTo: document.getElementById('App') }
-      );
-      calendar = wrapper.find(Calendar).first();
+      mountComponent();
     });
 
     afterEach(() => {
@@ -201,6 +205,51 @@ describe('Calendar', () => {
       calendar.props().onClick(PICKER_ID, false, newLimit);
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).lowerLimit).toBe(newLimit);
+    });
+
+    it('should change the upper limit if the onClick was called on a lower limit and isLinkedToDateRange prop is false', () => {
+      let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
+
+      mountComponent({isLinkedToDateRange: false});
+      store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
+      store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
+
+      calendar.props().onClick(PICKER_ID, false, newLimit);
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(newLimit);
+    });
+
+    it('should set the upper limit to undefined if onClick was called on a lower limit and isLinkedToDateRange prop is undefined', () => {
+      let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
+
+      mountComponent({isLinkedToDateRange: undefined});
+      store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
+      store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
+
+      calendar.props().onClick(PICKER_ID, false, newLimit);
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBeUndefined();
+    });
+
+    it('should not change the upper limit if the onClick was called on a lower limit and isLinkedToDateRange prop is true', () => {
+      let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
+
+      mountComponent({isLinkedToDateRange: true});
+      store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
+      store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
+
+      calendar.props().onClick(PICKER_ID, false, newLimit);
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBeUndefined();
     });
 
     it('should change the selected month and year if one of the calendar selection changed a limit', () => {
