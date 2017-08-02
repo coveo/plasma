@@ -14,6 +14,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   toLabel?: string;
   onRight?: boolean;
   onBeforeApply?: () => void;
+  extraDropdownClasses?: string[];
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -51,13 +52,15 @@ export const DEFAULT_DATE_PICKER_DROPDOWN_LABEL: string = 'Select date';
 export const DEFAULT_APPLY_DATE_LABEL: string = 'Apply';
 export const DEFAULT_CANCEL_DATE_LABEL: string = 'Cancel';
 export const DEFAULT_TO_LABEL: string = 'to';
+export const DEFAULT_EXTRA_DROPDOWN_CLASSES: string[] = [];
 
 export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
   static defaultProps: Partial<IDatePickerDropdownProps> = {
     label: DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
     applyLabel: DEFAULT_APPLY_DATE_LABEL,
     cancelLabel: DEFAULT_CANCEL_DATE_LABEL,
-    toLabel: DEFAULT_TO_LABEL
+    toLabel: DEFAULT_TO_LABEL,
+    extraDropdownClasses: DEFAULT_EXTRA_DROPDOWN_CLASSES,
   };
 
   private dropdown: HTMLDivElement;
@@ -138,6 +141,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       selectionRules: this.props.selectionRules,
       lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
       upperLimitPlaceholder: this.props.upperLimitPlaceholder,
+      isLinkedToDateRange: this.props.isLinkedToDateRange,
       footer: (
         <footer className='modal-footer mod-small'>
           <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
@@ -153,7 +157,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
       : <DatePickerBox {...datePickerBoxProps} />;
 
-    let dropdownClasses: string[] = ['dropdown-wrapper', 'dropdown'];
+    let dropdownClasses: string[] = ['dropdown-wrapper', 'dropdown', ...this.props.extraDropdownClasses];
     if (this.props.isOpened) {
       dropdownClasses.push('open');
     }

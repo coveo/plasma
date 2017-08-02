@@ -62,3 +62,38 @@ export const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
     isFor: CalendarSelectionRuleType.range
   }
 ];
+
+export const SELECTION_BOX: IDatesSelectionBox[] = [
+  {
+    title: 'Select date',
+    quickOptions: [
+      {
+        label: 'A year ago',
+        value: () => moment().subtract(1, 'year').toDate().toString()
+      },
+      {
+        label: 'A month ago',
+        value: () => moment().subtract(1, 'month').toDate().toString()
+      },
+      {
+        label: 'A week ago',
+        value: () => moment().subtract(1, 'week').toDate().toString()
+      },
+      {
+        label: 'Yesterday',
+        value: () => moment().subtract(1, 'day').toDate().toString()
+      }
+    ],
+    isRange: false,
+    withTime: false,
+    hasSetToNowButton: true,
+    color: DatePickerColors.blue
+  }
+];
+
+export const CALENDAR_SELECTION_RULES_SINGLE_DATE: ICalendarSelectionRule[] = [
+  {
+    test: (date: Date) => date.getFullYear() > 1700 || date.getFullYear() < 4000, // You cannot select a date before year 1700 and over 4000
+    isFor: CalendarSelectionRuleType.all
+  },
+];
