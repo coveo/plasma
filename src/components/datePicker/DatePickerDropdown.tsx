@@ -30,6 +30,7 @@ export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildren
   selectionRules?: ICalendarSelectionRule[];
   lowerLimitPlaceholder?: string;
   upperLimitPlaceholder?: string;
+  isLinkedToDateRange?: boolean;
 }
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
