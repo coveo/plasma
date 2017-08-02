@@ -147,10 +147,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       isLinkedToDateRange: this.props.isLinkedToDateRange,
       footer: (
         <footer className='modal-footer mod-small'>
-          <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
+          <button type='button' className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
             {this.props.applyLabel}
           </button>
-          <button className='btn mod-small' onClick={() => this.handleCancel()}>
+          <button type='button' className='btn mod-small' onClick={() => this.handleCancel()}>
             {this.props.cancelLabel}
           </button>
         </footer>
@@ -185,8 +185,8 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       <div className='date-picker-dropdown'>
         <div className={dropdownClasses.join(' ')} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
           <span
-              className={`dropdown-toggle btn inline-flex flex-center ${this.props.extraDropdownToggleClasses.join(' ')}`}
-              onClick={() => this.handleClick()}>
+            className={`dropdown-toggle btn inline-flex flex-center ${this.props.extraDropdownToggleClasses.join(' ')}`}
+            onClick={() => this.handleClick()}>
             <span className='dropdown-selected-value'>
               <label>
                 {label}
