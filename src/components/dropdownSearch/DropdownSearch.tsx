@@ -115,7 +115,9 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
           : value;
 
         return (
-          <li key={option.value} className={liClasses} title={value}>
+          <li key={option.value}
+            className={liClasses}
+            title={value}>
             <span className={optionClasses}
               onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)} data-value={option.value}>
               {this.getDropdownPrepend(option)}
