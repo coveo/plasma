@@ -147,10 +147,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       isLinkedToDateRange: this.props.isLinkedToDateRange,
       footer: (
         <footer className='modal-footer mod-small'>
-          <button className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
+          <button type='button' className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
             {this.props.applyLabel}
           </button>
-          <button className='btn mod-small' onClick={() => this.handleCancel()}>
+          <button type='button' className='btn mod-small' onClick={() => this.handleCancel()}>
             {this.props.cancelLabel}
           </button>
         </footer>
