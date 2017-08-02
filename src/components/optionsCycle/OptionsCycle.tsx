@@ -68,11 +68,11 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps, any> {
 
     return (
       <div className={optionsCycleClasses.join(' ')}>
-        <button className='options-cycle-button previous-option' onClick={() => this.goToPreviousOption()}>
+        <button type='button' className='options-cycle-button previous-option' onClick={() => this.goToPreviousOption()}>
           <Svg svgName='arrow-left-rounded' svgClass='icon fill-dark-blue' />
         </button>
         <span className='options-cycle-option'>{this.selectedOption}</span>
-        <button className='options-cycle-button next-option' onClick={() => this.goToNextOption()}>
+        <button type='button' className='options-cycle-button next-option' onClick={() => this.goToNextOption()}>
           <Svg svgName='arrow-right-rounded' svgClass='icon fill-dark-blue' />
         </button>
       </div>
