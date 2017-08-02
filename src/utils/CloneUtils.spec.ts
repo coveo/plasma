@@ -1,12 +1,12 @@
-import {deepClone} from '../../CloneUtils';
+import { deepClone } from '../../CloneUtils';
 
 describe('CloneUtils', () => {
 
   describe('deepClone', () => {
 
     it('should deep clone an array and its element', () => {
-      const object1 = {property: 1};
-      const object2 = {property: 2};
+      const object1 = { property: 1 };
+      const object2 = { property: 2 };
       const array = [object1, object2];
 
       const deepClonedArray = deepClone(array);
