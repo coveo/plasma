@@ -38,27 +38,27 @@ describe('FixedQueue', () => {
   });
 
   describe('push', () => {
-    it('should push an object to the end of the queue', () => {
+    it('should immutablePush an object to the end of the queue', () => {
       fixedQueue = new FixedQueue<number>();
       const element = 0;
       const expectedQueue = [element];
 
-      const updatedQueue = fixedQueue.push(element);
+      const updatedQueue = fixedQueue.immutablePush(element);
 
       expect(updatedQueue.getQueue()).toEqual(expectedQueue);
     });
 
-    it('should push an object to the end of the queue and remove exceeding elements if the size is over maxsize', () => {
+    it('should immutablePush an object to the end of the queue and remove exceeding elements if the size is over maxsize', () => {
       fixedQueue = new FixedQueue<number>([1], 1);
       let element = 0;
       const expectedQueue = [element];
 
-      const updatedQueue = fixedQueue.push(element);
+      const updatedQueue = fixedQueue.immutablePush(element);
 
       expect(updatedQueue.getQueue()).toEqual(expectedQueue);
     });
 
-    describe('push 3 elements consecutively on a fixedQueue of size 2', () => {
+    describe('immutablePush 3 elements consecutively on a fixedQueue of size 2', () => {
       const firstElement = 1;
       const secondElement = 2;
       const thirdElement = 3;
@@ -68,19 +68,19 @@ describe('FixedQueue', () => {
       });
 
       it('should add the first element in the queue', () => {
-        const updatedQueue = fixedQueue.push(firstElement);
+        const updatedQueue = fixedQueue.immutablePush(firstElement);
 
         expect(updatedQueue.getQueue()).toEqual([firstElement]);
       });
 
       it('should add the second element at the end of the queue', () => {
-        const updatedQueue = fixedQueue.push(firstElement).push(secondElement);
+        const updatedQueue = fixedQueue.immutablePush(firstElement).immutablePush(secondElement);
 
         expect(updatedQueue.getQueue()).toEqual([firstElement, secondElement]);
       });
 
       it('should add the third element at the end of the queue and remove the first element', () => {
-        const updatedQueue = fixedQueue.push(firstElement).push(secondElement).push(thirdElement);
+        const updatedQueue = fixedQueue.immutablePush(firstElement).immutablePush(secondElement).immutablePush(thirdElement);
 
         expect(updatedQueue.getQueue()).toEqual([secondElement, thirdElement]);
       });

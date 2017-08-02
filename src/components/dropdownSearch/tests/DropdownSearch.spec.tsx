@@ -215,7 +215,7 @@ describe('DropdownSearch', () => {
       it('should show the filterBox if the dropdown is open', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           isOpened: true,
-          selectedOptions: ownProps.selectedOptions.push(selectedOption),
+          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
         }));
 
         expect(dropdownSearch.find(FilterBox).length).toBe(1);
@@ -231,7 +231,7 @@ describe('DropdownSearch', () => {
 
       it('should show the dropdown prepend if the selected option has one', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.push(selectedOption),
+          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
         }));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
@@ -239,7 +239,7 @@ describe('DropdownSearch', () => {
 
       it('should show the dropdown svg if the selected option has one', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.push(selectedOption),
+          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
         }));
 
         expect(dropdownSearch.find(Svg).length).toBe(1);
@@ -247,7 +247,7 @@ describe('DropdownSearch', () => {
 
       it('should show the dropdown displayValue if the selected option has one', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.push(selectedOption),
+          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
         }));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);

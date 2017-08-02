@@ -54,7 +54,7 @@ export const removeSelectedOption = (state: IDropdownSearchState, displayValue: 
   state.selectedOptions.removeElementsWithProperties({ displayValue });
 
 export const addUniqueSelectedOption = (state: IDropdownSearchState, displayValue: string): FixedQueue<IDropdownOption> =>
-  removeSelectedOption(state, displayValue).push({ value: UUID.generate(), displayValue });
+  removeSelectedOption(state, displayValue).immutablePush({ value: UUID.generate(), displayValue });
 
 export const getDisplayedOptions = (state: IDropdownSearchState) => {
   return _.filter(state.options,
@@ -118,7 +118,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: state.selectedOptions.push(action.payload.addedSelectedOption),
+        selectedOptions: state.selectedOptions.immutablePush(action.payload.addedSelectedOption),
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -148,7 +148,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           ...state,
           id: action.payload.id,
           isOpened: false,
-          selectedOptions: state.selectedOptions.push(state.activeOption),
+          selectedOptions: state.selectedOptions.immutablePush(state.activeOption),
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,

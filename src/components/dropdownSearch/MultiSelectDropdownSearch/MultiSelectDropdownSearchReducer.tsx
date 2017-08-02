@@ -48,7 +48,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         id: action.payload.id,
       };
     case DropdownSearchActions.multiSelect:
-      selectedOptions = state.selectedOptions.push(action.payload.addedSelectedOption);
+      selectedOptions = state.selectedOptions.immutablePush(action.payload.addedSelectedOption);
       displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
@@ -79,7 +79,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if (_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && state.activeOption) {
-        selectedOptions = state.selectedOptions.push(state.activeOption);
+        selectedOptions = state.selectedOptions.immutablePush(state.activeOption);
         displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
         return {
           ...state,

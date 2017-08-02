@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+import {deepClone} from '../../CloneUtils';
 
 export class FixedQueue<T> {
 
@@ -11,13 +12,14 @@ export class FixedQueue<T> {
     this.trimQueue();
   }
 
-  push(object: any): FixedQueue<T> {
-    const queue: Array<T> = [...this.queue, object];
+  immutablePush(object: any): FixedQueue<T> {
+    const queue: Array<T> = deepClone(this.queue);
+    queue.push(object);
     return new FixedQueue<T>(queue, this.maxLength);
   }
 
   removeLastElement(): FixedQueue<T> {
-    const queue: Array<T> = [...this.queue];
+    const queue: Array<T> = deepClone(this.queue);
     if (this.queue.length > 0) {
       queue.pop();
     }
@@ -25,7 +27,8 @@ export class FixedQueue<T> {
   }
 
   removeElementsWithProperties(properties: any): FixedQueue<T> {
-    const elementsWithoutProperties: Array<T> = _.reject(this.queue, properties);
+    const queue: Array<T> = deepClone(this.queue);
+    const elementsWithoutProperties: Array<T> = _.reject(queue, properties);
     return new FixedQueue<T>(elementsWithoutProperties);
   }
 
