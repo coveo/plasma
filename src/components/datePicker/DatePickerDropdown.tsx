@@ -15,6 +15,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   onRight?: boolean;
   onBeforeApply?: () => void;
   extraDropdownClasses?: string[];
+  extraDropdownToggleClasses?: string [];
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -53,6 +54,7 @@ export const DEFAULT_APPLY_DATE_LABEL: string = 'Apply';
 export const DEFAULT_CANCEL_DATE_LABEL: string = 'Cancel';
 export const DEFAULT_TO_LABEL: string = 'to';
 export const DEFAULT_EXTRA_DROPDOWN_CLASSES: string[] = [];
+export const DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES: string[] = [];
 
 export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
   static defaultProps: Partial<IDatePickerDropdownProps> = {
@@ -61,6 +63,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     cancelLabel: DEFAULT_CANCEL_DATE_LABEL,
     toLabel: DEFAULT_TO_LABEL,
     extraDropdownClasses: DEFAULT_EXTRA_DROPDOWN_CLASSES,
+    extraDropdownToggleClasses: DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES,
   };
 
   private dropdown: HTMLDivElement;
@@ -181,7 +184,8 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     return (
       <div className='date-picker-dropdown'>
         <div className={dropdownClasses.join(' ')} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
-          <span className='dropdown-toggle btn inline-flex flex-center' onClick={() => this.handleClick()}>
+          <span className={`dropdown-toggle btn inline-flex flex-center ${this.props.extraDropdownToggleClasses.join(' ')}`}
+                onClick={() => this.handleClick()}>
             <span className='dropdown-selected-value'>
               <label>
                 {label}
