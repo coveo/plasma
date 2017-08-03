@@ -186,9 +186,9 @@ describe('Date picker', () => {
       expect(onClickSpy).toHaveBeenCalled();
     });
 
-    it('should add a listener on document on mount and remove it on unmount if prop onDocumentClick is set', () => {
+    it('should trigger onDocumentClick dispatch on mount and remove it on unmount if prop onDocumentClick is set and isOpened is true', () => {
       let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy });
+      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy, isOpened: true });
 
       datePickerDropdown.mount();
       document.getElementById('App').click();
@@ -205,9 +205,28 @@ describe('Date picker', () => {
       expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
     });
 
+    it('should not trigger onDocumentClick dispatch on mount if prop onDocumentClick is set and isOpened is false', () => {
+      let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy, isOpened: false });
+
+      datePickerDropdown.mount();
+      document.getElementById('App').click();
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+      datePickerDropdown.unmount();
+      datePickerDropdown.setProps(newDropdownProps);
+      datePickerDropdown.mount();
+      document.getElementById('App').click();
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+      datePickerDropdown.unmount();
+      document.getElementById('App').click();
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+    });
+
     it('should not call onDocumentClick when prop is set and clicking on the dropdown', () => {
       let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy });
+      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy, isOpened: true });
 
       datePickerDropdown = mount(
         <DatePickerDropdown {...newDropdownProps} />,

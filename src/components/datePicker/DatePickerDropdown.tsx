@@ -77,7 +77,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private handleDocumentClick = (e: MouseEvent) => {
     let dropdown: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
-    if (!dropdown.contains(e.target as Node)) {
+    if (!dropdown.contains(e.target as Node) && this.props.isOpened) {
       this.props.onDocumentClick();
       this.handleCancel();
     }
