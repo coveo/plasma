@@ -1,6 +1,5 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { IDropdownOption } from './DropdownSearch';
-import { FixedQueue } from '../../utils/FixedQueue';
 
 export interface IDefaultDropdownSearchPayload {
   id: string;
@@ -13,7 +12,7 @@ export interface IInputDrodownSearchPayload extends IDefaultDropdownSearchPayloa
 export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPayload, IInputDrodownSearchPayload {
   optionsDropdown?: IDropdownOption[];
   filterText?: string;
-  selectedOptions?: FixedQueue<IDropdownOption>;
+  selectedOptions?: IDropdownOption[];
   selectedOption?: IDropdownOption;
   selectedOptionValue?: string;
   addedSelectedOption?: IDropdownOption;

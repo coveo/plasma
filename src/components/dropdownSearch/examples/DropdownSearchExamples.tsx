@@ -9,7 +9,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
   render() {
     const defaultOptions = {
       defaultOptions: [
-        { value: '5', displayValue: 'Option 1', },
+        { value: '5', displayValue: 'Option 1', hidden: false },
         { value: '6', displayValue: 'Option 2', },
         { value: '7', displayValue: 'Option 3', },
         { value: '8', displayValue: 'Option 4', },
@@ -31,14 +31,14 @@ export class DropdownSearchExamples extends React.Component<any, any> {
       },
     };
 
-    const manyOptions = {
-      defaultOptions: _.times(5000, (n: number) => {
-        return {
-          displayValue: `Test ${n}`,
-          value: `Test ${n}`,
-        };
-      }),
-    };
+    // const manyOptions = {
+    //   defaultOptions: _.times(5000, (n: number) => {
+    //     return {
+    //       displayValue: `Test ${n}`,
+    //       value: `Test ${n}`,
+    //     };
+    //   }),
+    // };
 
     return (
       <div className='mt2'>
@@ -56,12 +56,12 @@ export class DropdownSearchExamples extends React.Component<any, any> {
             <DropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate() }) } />
           </div>
         </div>
-        <div className='form-group'>
-          <label className='form-control-label'>Dropdown with 5 000 options</label>
-          <div className='form-control'>
-            <DropdownSearchConnected {..._.extend({}, manyOptions, { id: UUID.generate() }) } />
-          </div>
-        </div>
+        {/*<div className='form-group'>*/}
+          {/*<label className='form-control-label'>Dropdown with 5 000 options</label>*/}
+          {/*<div className='form-control'>*/}
+            {/*<DropdownSearchConnected {..._.extend({}, manyOptions, { id: UUID.generate() }) } />*/}
+          {/*</div>*/}
+        {/*</div>*/}
         <div className='form-group'>
           <label className='form-control-label'>Dropdown with selected option</label>
           <div className='form-control'>

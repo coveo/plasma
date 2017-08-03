@@ -3,14 +3,11 @@ import {
   addUniqueSelectedOption,
   dropdownSearchInitialState,
   dropdownSearchReducer,
-  getDisplayedOptions,
   getNextIndexPosition,
   getFilteredOptions,
-  IDropdownSearchState, removeSelectedOption,
+  IDropdownSearchState, removeSelectedOption, removeAllSelectedOption, selectOption, removeLastSelectedOption,
 } from '../DropdownSearchReducers';
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { FixedQueue } from '../../../utils/FixedQueue';
-import { IDropdownOption } from '../DropdownSearch';
 import { keyCode } from '../../../utils/InputUtils';
 import * as _ from 'underscore';
 
@@ -23,47 +20,35 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         ...state,
         id: action.payload.id,
         options: action.payload.optionsDropdown,
-        selectedOptions: new FixedQueue<IDropdownOption>(),
+        selectedOptions: [],
         filterText: '',
         isOpened: false,
       };
     case DropdownSearchActions.removeSelectedOption:
-      let selectedOptions = removeSelectedOption(state, action.payload.selectedOptionValue);
-      let displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
-        selectedOptions,
-        displayedOptions,
+        options: removeSelectedOption(state.options, action.payload.selectedOptionValue),
         id: action.payload.id,
         isOpened: false,
         activeOption: undefined,
       };
     case DropdownSearchActions.removeAllSelectedOptions:
-      selectedOptions = new FixedQueue<IDropdownOption>();
-      displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
-        selectedOptions,
-        displayedOptions,
+        options: removeAllSelectedOption(state.options),
         id: action.payload.id,
       };
     case DropdownSearchActions.multiSelect:
-      selectedOptions = state.selectedOptions.immutablePush(action.payload.addedSelectedOption);
-      displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
-        selectedOptions,
-        displayedOptions,
+        options: selectOption(state.options, action.payload.addedSelectedOption),
         id: action.payload.id,
         isOpened: true,
       };
     case DropdownSearchActions.addCustomSelectedOption:
-      selectedOptions = addUniqueSelectedOption(state, action.payload.selectedOptionValue);
-      displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
       return {
         ...state,
-        selectedOptions,
-        displayedOptions,
+        options: addUniqueSelectedOption(state.options, action.payload.selectedOptionValue),
         id: action.payload.id,
         isOpened: true,
       };
@@ -79,12 +64,10 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if (_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && state.activeOption) {
-        selectedOptions = state.selectedOptions.immutablePush(state.activeOption);
-        displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
+
         return {
           ...state,
-          selectedOptions,
-          displayedOptions,
+          options: selectOption(state.options, state.activeOption),
           id: action.payload.id,
           isOpened: true,
           activeOption: undefined,
@@ -92,12 +75,9 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: true,
         };
       } else if ((_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && !state.activeOption && state.filterText)) {
-        selectedOptions = addUniqueSelectedOption(state, state.filterText);
-        displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
         return {
           ...state,
-          selectedOptions,
-          displayedOptions,
+          options: addUniqueSelectedOption(state.options, state.filterText),
           id: action.payload.id,
           isOpened: true,
           activeOption: undefined,
@@ -105,13 +85,10 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           setFocusOnDropdownButton: true,
         };
       } else if (action.payload.keyCode === keyCode.backspace) {
-        selectedOptions = state.selectedOptions.removeLastElement();
-        displayedOptions = getDisplayedOptions({ ...state, selectedOptions });
         if (state.filterText === '') {
           return {
             ...state,
-            selectedOptions,
-            displayedOptions,
+            options: removeLastSelectedOption(state.options),
             id: action.payload.id,
             isOpened: true,
             activeOption: undefined,

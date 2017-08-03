@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
+import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
 import { MultiselectInput } from './MultiSelectInput';
-import { FixedQueue } from '../../../utils/FixedQueue';
+import * as _ from 'underscore';
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
 
@@ -11,12 +11,12 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
     isOpened: false,
     options: [],
     displayedOptions: [],
-    selectedOptions: new FixedQueue<IDropdownOption>(),
+    selectedOptions: [],
     filterText: '',
   };
 
   protected getNoOptions(): JSX.Element[] {
-    if (this.props.filterText.length > 0 && !this.props.selectedOptions.containsElementWithProperties({ displayValue: this.props.filterText })) {
+    if (this.props.filterText.length > 0 && !_.findWhere(this.getSelectedOptions(), ({ displayValue: this.props.filterText }))) {
       return [
         <li key='noResultDropdownSearch' onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}>
           <span>{`${this.props.createOptionText}"${this.props.filterText}"`}</span>
@@ -30,7 +30,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
     return (
       <div className={this.getClasses()} style={this.getStyles()}>
         <MultiselectInput
-          selectedOptions={this.props.selectedOptions.getQueue()}
+          selectedOptions={this.getSelectedOptions()}
           onRemoveClick={this.props.onRemoveSelectedOption}
           onRemoveAll={this.props.onRemoveAllSelectedOptions}
           onFilterTextChange={this.props.onFilterTextChange}

@@ -10,7 +10,6 @@ import {
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
 import { keyCode } from '../../../utils/InputUtils';
-import { FixedQueue } from '../../../utils/FixedQueue';
 
 describe('DropdownSearch', () => {
 
@@ -24,15 +23,15 @@ describe('DropdownSearch', () => {
       {
         id: 'new-dropdown-search',
         isOpened: false,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        options: [],
       }, {
         id: 'new-dropdown-search-1',
         isOpened: false,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        options: [],
       }, {
         id: 'new-dropdown-search-2',
         isOpened: true,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        options: [],
       },
     ];
 
@@ -49,8 +48,6 @@ describe('DropdownSearch', () => {
         id: 'new-dropdown-search',
         isOpened: false,
         options,
-        displayedOptions: options,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
       },
     ];
 
@@ -494,7 +491,7 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState).toEqual(oldState);
     });
 
-    describe('get displayed options', () => {
+    describe('get hidden options', () => {
 
       it('should return all the options if selectedOptions is empty', () => {
         const state: IDropdownSearchState = {

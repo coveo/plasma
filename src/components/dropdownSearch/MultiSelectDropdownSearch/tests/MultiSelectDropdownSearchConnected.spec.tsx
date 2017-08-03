@@ -17,6 +17,7 @@ import {
   updateOptionsDropdownSearch
 } from '../../DropdownSearchActions';
 import { keyCode } from '../../../../utils/InputUtils';
+import * as _ from 'underscore';
 
 describe('MultiSelectDropdownSearch', () => {
 
@@ -161,7 +162,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         wrapper.find('li span').first().simulate('mouseDown');
 
-        const selectedOption = store.getState().dropdownSearch[0].selectedOptions.getFirstElement();
+        const selectedOption = store.getState().dropdownSearch[0].options[0];
         expect(selectedOption).not.toBe(defaultSelectedOption);
         expect(selectedOption.value).toBe('test 1');
       });
@@ -178,7 +179,7 @@ describe('MultiSelectDropdownSearch', () => {
         const filterText: string = 'filter_text';
         multiSelectDropdownSearchConnected.props().onCustomOptionClick(filterText);
 
-        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({ displayValue: filterText })).toBe(true);
+        expect(_.find(store.getState().dropdownSearch[0].options, { displayValue: filterText })).toBeDefined();
       });
 
       it('should update filterText on key down', () => {
@@ -189,7 +190,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onKeyDownFilterBox(enterKeyCode);
 
-        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({ displayValue: filterText })).toBe(true);
+        expect(_.find(store.getState().dropdownSearch[0].options, { displayValue: filterText })).toBeDefined();
       });
 
       it('should remove selected option', () => {
@@ -199,7 +200,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onRemoveSelectedOption(selectedOptionValue);
 
-        expect(store.getState().dropdownSearch[0].selectedOptions.containsElementWithProperties({ displayValue: selectedOptionValue })).toBe(false);
+        expect(_.find(store.getState().dropdownSearch[0].options, { displayValue: selectedOptionValue, selected: true })).not.toBeDefined();
       });
 
       it('should remove all selected option', () => {
@@ -211,7 +212,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onRemoveAllSelectedOptions();
 
-        expect(store.getState().dropdownSearch[0].selectedOptions.getQueue()).toEqual([]);
+        expect(_.find(store.getState().dropdownSearch[0].options, { selected: false })).not.toBeDefined();
       });
     });
   });

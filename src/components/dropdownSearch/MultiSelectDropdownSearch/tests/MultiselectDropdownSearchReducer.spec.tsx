@@ -59,7 +59,7 @@ describe('DropdownSearch', () => {
       expect(updatedState.selectedOptions.getQueue()).toContain(addedSelectedOption);
     });
 
-    it('should remove the selected option from the displayed options on "MULTI_SELECT_OPTION_DROPDOWN_SEARCH"', () => {
+    it('should remove the selected option from the hidden options on "MULTI_SELECT_OPTION_DROPDOWN_SEARCH"', () => {
       const addedSelectedOption: IDropdownOption = options[0];
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -85,7 +85,7 @@ describe('DropdownSearch', () => {
       expect(updatedState.selectedOptions.getQueue().length).toBe(0);
     });
 
-    it('should display all options in displayed options on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
+    it('should display all options in hidden options on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.removeAllSelectedOptions,
         payload: defaultPayload,
@@ -116,7 +116,7 @@ describe('DropdownSearch', () => {
       expect(updatedState.selectedOptions.getQueue()).toEqual([options[1]]);
     });
 
-    it('should add the removed option in the displayed options on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
+    it('should add the removed option in the hidden options on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
       const selectedOptionValue: string = options[0].displayValue;
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {

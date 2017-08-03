@@ -2,8 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { UUID } from '../../../../utils/UUID';
-import { IDropdownOption, IDropdownSearchProps } from '../../DropdownSearch';
-import { FixedQueue } from '../../../../utils/FixedQueue';
+import { IDropdownSearchProps } from '../../DropdownSearch';
 import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
 
 describe('MultiSelectDropdownSearch', () => {
@@ -18,8 +17,6 @@ describe('MultiSelectDropdownSearch', () => {
     id,
     options,
     modMenu: false,
-    displayedOptions: options,
-    selectedOptions: new FixedQueue<IDropdownOption>(),
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,

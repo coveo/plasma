@@ -7,7 +7,6 @@ import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
 import { Svg } from '../../svg/Svg';
 import { keyCode } from '../../../utils/InputUtils';
-import { FixedQueue } from '../../../utils/FixedQueue';
 import { defaultSelectedOption } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
@@ -20,8 +19,6 @@ describe('DropdownSearch', () => {
     id,
     modMenu: false,
     options,
-    displayedOptions: options,
-    selectedOptions: new FixedQueue<IDropdownOption>([], 1),
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,
@@ -215,7 +212,6 @@ describe('DropdownSearch', () => {
       it('should show the filterBox if the dropdown is open', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           isOpened: true,
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
         }));
 
         expect(dropdownSearch.find(FilterBox).length).toBe(1);
@@ -230,25 +226,19 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
-        }));
+        renderDropdownSearch(_.extend({}, ownProps ));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
 
       it('should show the dropdown svg if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
-        }));
+        renderDropdownSearch(_.extend({}, ownProps ));
 
         expect(dropdownSearch.find(Svg).length).toBe(1);
       });
 
       it('should show the dropdown displayValue if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
-        }));
+        renderDropdownSearch(_.extend({}, ownProps ));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
       });

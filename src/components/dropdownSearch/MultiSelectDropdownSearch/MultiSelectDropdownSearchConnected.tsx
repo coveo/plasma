@@ -24,8 +24,6 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
     return {
       isOpened: dropdownSearch.isOpened || false,
       options: dropdownSearch.options || [],
-      displayedOptions: dropdownSearch.displayedOptions || dropdownSearch.options,
-      selectedOptions: dropdownSearch.selectedOptions,
       filterText: dropdownSearch.filterText || '',
       activeOption: dropdownSearch.activeOption,
       setFocusOnDropdownButton: dropdownSearch.setFocusOnDropdownButton,
