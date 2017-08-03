@@ -48,13 +48,12 @@ export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: str
   const currentFilterText: string = filterText || state.filterText;
   if (_.isEmpty(currentFilterText)) {
     return state.options;
-  } else {
-    return _.filter(state.options,
-      (option: IDropdownOption) => {
-        const value = option.displayValue || option.value;
-        return s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
-      });
   }
+  return _.filter(state.options,
+    (option: IDropdownOption) => {
+      const value = option.displayValue || option.value;
+      return s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
+    });
 };
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
