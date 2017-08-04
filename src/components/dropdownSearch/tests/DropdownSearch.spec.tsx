@@ -139,7 +139,9 @@ describe('DropdownSearch', () => {
         expect(onOptionClickCallBack).toHaveBeenCalled();
       });
 
-      it('should call onMouseEnterDropdown if defined when enter over the ul element', () => {
+      it('should call onMouseEnterDropdown if defined when enter over the ul element and dropdown is opened', () => {
+        renderDropdownSearch(_.extend({}, ownProps, {isOpened: true});
+
         const onMouseEnterDropdown = jasmine.createSpy('onMouseEnterDropdown');
         dropdownSearch.setProps({ onMouseEnterDropdown });
 
@@ -252,10 +254,11 @@ describe('DropdownSearch', () => {
         expect(dropdownSearch.find('.mod-menu').length).toBe(1);
       });
 
-      it('should show options with the highlight set on a span with the class bold ', () => {
+      it('should show options with the highlight set on a span with the class bold when dropdown is opened', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           highlightAllFilterResult: true,
           filterText: 'tes',
+          isOpened: true,
         }));
 
         expect(dropdownSearch.find('span.bold').length).toBe(3);
@@ -265,6 +268,7 @@ describe('DropdownSearch', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           highlightAllFilterResult: true,
           filterText: 'es',
+          isOpened: true,
         }));
 
         expect(dropdownSearch.find('span.bold').length).toBe(3);

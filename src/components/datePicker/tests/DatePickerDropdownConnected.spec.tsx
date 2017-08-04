@@ -28,16 +28,20 @@ describe('Date picker', () => {
     let datePickerDropdown: ReactWrapper<IDatePickerDropdownProps, any>;
     let store: Store<IReactVaporState>;
 
+    const mountWithProps = (props: IDatePickerDropdownProps) => {
+      wrapper = mount(
+          <Provider store={store}>
+            <DatePickerDropdownConnected {...props} />
+          </Provider>,
+          { attachTo: document.getElementById('App') }
+      );
+      datePickerDropdown = wrapper.find(DatePickerDropdown).first();
+    };
+
     beforeEach(() => {
       store = TestUtils.buildStore();
 
-      wrapper = mount(
-        <Provider store={store}>
-          <DatePickerDropdownConnected {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />
-        </Provider>,
-        { attachTo: document.getElementById('App') }
-      );
-      datePickerDropdown = wrapper.find(DatePickerDropdown).first();
+      mountWithProps(DATE_PICKER_DROPDOWN_BASIC_PROPS);
     });
 
     afterEach(() => {
@@ -255,6 +259,9 @@ describe('Date picker', () => {
     });
 
     it('should reset the month to the datepicker\'s lower limit when calling onCancelProp', () => {
+      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      mountWithProps(propsIsOpen);
+
       let pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
       let newLowerLimit: Date = new Date(new Date().setDate(new Date().getDate() - 700));
       let yearCycleId: string = `calendar-${DATE_PICKER_DROPDOWN_BASIC_PROPS.id}${YEAR_PICKER_ID}`;
@@ -302,7 +309,10 @@ describe('Date picker', () => {
       expect(_.findWhere(store.getState().optionPickers, { id: pickerId }).selectedValue).toBe(newValue);
     });
 
-    it('should display a <DatePickerBox /> with a redux state a prop', () => {
+    it('should display a <DatePickerBox /> with a redux state a prop when the dropdown is opened', () => {
+      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      mountWithProps(propsIsOpen);
+
       expect(datePickerDropdown.find(DatePickerBox).props().withReduxState).toBe(true);
     });
   });

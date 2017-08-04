@@ -157,9 +157,13 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         </footer>
       )
     };
-    let datePickerBox: JSX.Element = this.props.withReduxState
-      ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
-      : <DatePickerBox {...datePickerBoxProps} />;
+
+    let datePickerBox: JSX.Element = null;
+    if (this.props.isOpened) {
+      datePickerBox = this.props.withReduxState
+        ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
+        : <DatePickerBox {...datePickerBoxProps} />;
+    }
 
     const dropdownClasses: string[] = ['dropdown-wrapper', 'dropdown', ...this.props.extraDropdownClasses];
     if (this.props.isOpened) {
