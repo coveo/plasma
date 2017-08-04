@@ -6,7 +6,7 @@ import * as s from 'underscore.string';
 import { keyCode } from '../../utils/InputUtils';
 import { multiSelectDropdownSearchReducer } from './MultiSelectDropdownSearch/MultiSelectDropdownSearchReducer';
 import { UUID } from '../../utils/UUID';
-import {deepClone} from '../../utils/CloneUtils';
+import { deepClone } from '../../utils/CloneUtils';
 
 export interface IDropdownSearchState {
   id: string;
@@ -21,6 +21,8 @@ export interface IDropdownSearchState {
 export const defaultSelectedOption: IDropdownOption = {
   value: UUID.generate(),
   displayValue: 'Select an option',
+  selected: true,
+  custom: true,
 };
 
 export const dropdownSearchInitialState: IDropdownSearchState = {
@@ -50,12 +52,13 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
 
 export const removeSelectedOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {
   const nextOptions: IDropdownOption[] = deepClone(options);
-  const selectedOption = _.find(nextOptions, {displayValue});
+  const selectedOption = _.find(nextOptions, { displayValue });
   if (selectedOption) {
-    if (selectedOption.custom) {
+    if (selectedOption.custom) {
       nextOptions.splice(nextOptions.indexOf(selectedOption), 1);
     } else {
       selectedOption.selected = false;
+      selectedOption.hidden = false;
     }
   }
   return nextOptions;
@@ -63,8 +66,12 @@ export const removeSelectedOption = (options: IDropdownOption[], displayValue: s
 
 export const removeLastSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
   const nextOptions: IDropdownOption[] = deepClone(options);
-  const lastSelectedOption: IDropdownOption = _.find(nextOptions.reverse(), {selected: true});
-  return removeSelectedOption(options, lastSelectedOption.displayValue);
+  const lastSelectedOption: IDropdownOption = _.find(nextOptions.reverse(), { selected: true });
+  if (lastSelectedOption) {
+    return removeSelectedOption(options, lastSelectedOption.displayValue);
+  } else {
+    return nextOptions.reverse();
+  }
 };
 
 export const removeAllSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
@@ -90,7 +97,7 @@ export const addUniqueSelectedOption = (options: IDropdownOption[], displayValue
 export const getDisplayedOptions = (options: IDropdownOption[]): IDropdownOption[] => {
   return _.reject(options, (option) => {
     return option.custom || option.hidden;
-  } );
+  });
 };
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
@@ -110,12 +117,13 @@ export const selectSingleOption = (options: IDropdownOption[], selectedOption: I
   });
 };
 
-export const selectOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
+export const multiSelectOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
   return _.map(options, (option: IDropdownOption) => {
-    const nextOption = deepClone(option);
-    nextOption.selected = option.value === selectedOption.value
-      ? true
-      : nextOption.selected;
+    const nextOption: IDropdownOption = deepClone(option);
+    if (nextOption.value === selectedOption.value) {
+      nextOption.selected = true;
+      nextOption.hidden = true;
+    }
     return nextOption;
   });
 };
@@ -167,7 +175,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        selectedOptions: selectSingleOption(state.options, action.payload.addedSelectedOption),
+        options: selectSingleOption(state.options, action.payload.addedSelectedOption),
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -176,8 +184,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        options: action.payload.optionsDropdown,
-        selectedOptions: [],
+        options: action.payload.optionsDropdown.concat(defaultSelectedOption),
         filterText: '',
         isOpened: false,
       };
@@ -197,7 +204,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           ...state,
           id: action.payload.id,
           isOpened: false,
-          selectedOptions: selectSingleOption(state.options, state.activeOption),
+          options: selectSingleOption(state.options, state.activeOption),
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,

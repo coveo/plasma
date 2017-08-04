@@ -57,10 +57,10 @@ export class DropdownSearchExamples extends React.Component<any, any> {
           </div>
         </div>
         {/*<div className='form-group'>*/}
-          {/*<label className='form-control-label'>Dropdown with 5 000 options</label>*/}
-          {/*<div className='form-control'>*/}
-            {/*<DropdownSearchConnected {..._.extend({}, manyOptions, { id: UUID.generate() }) } />*/}
-          {/*</div>*/}
+        {/*<label className='form-control-label'>Dropdown with 5 000 options</label>*/}
+        {/*<div className='form-control'>*/}
+        {/*<DropdownSearchConnected {..._.extend({}, manyOptions, { id: UUID.generate() }) } />*/}
+        {/*</div>*/}
         {/*</div>*/}
         <div className='form-group'>
           <label className='form-control-label'>Dropdown with selected option</label>

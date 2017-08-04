@@ -226,19 +226,19 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps ));
+        renderDropdownSearch(_.extend({}, ownProps));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
 
       it('should show the dropdown svg if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps ));
+        renderDropdownSearch(_.extend({}, ownProps));
 
         expect(dropdownSearch.find(Svg).length).toBe(1);
       });
 
       it('should show the dropdown displayValue if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps ));
+        renderDropdownSearch(_.extend({}, ownProps));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
       });

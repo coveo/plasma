@@ -74,11 +74,11 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   };
 
   protected getSelectedOption(): IDropdownOption {
-    return _.findWhere(this.props.options, {selected: true});
+    return _.findWhere(this.props.options, { selected: true });
   }
 
   protected getSelectedOptions(): IDropdownOption[] {
-    return _.where(this.props.options, {selected: true});
+    return _.where(this.props.options, { selected: true });
   }
 
   protected getDisplayedOptions(): IDropdownOption[] {
@@ -116,7 +116,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
         const optionClasses = classNames({
           'state-selected': this.getSelectedOption() &&
-          option.value ===  this.getSelectedOption().value,
+          option.value === this.getSelectedOption().value,
         });
         const liClasses = classNames({
           'active': JSON.stringify(option) === JSON.stringify(this.props.activeOption),
