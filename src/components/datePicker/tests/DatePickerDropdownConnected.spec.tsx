@@ -30,10 +30,10 @@ describe('Date picker', () => {
 
     const mountWithProps = (props: IDatePickerDropdownProps) => {
       wrapper = mount(
-          <Provider store={store}>
-            <DatePickerDropdownConnected {...props} />
-          </Provider>,
-          { attachTo: document.getElementById('App') }
+        <Provider store={store}>
+          <DatePickerDropdownConnected {...props} />
+        </Provider>,
+        { attachTo: document.getElementById('App') }
       );
       datePickerDropdown = wrapper.find(DatePickerDropdown).first();
     };
