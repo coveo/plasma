@@ -61,18 +61,18 @@ describe('Date picker', () => {
     });
 
     it('should display a <DatePickerBox /> if it is opened', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
-      datePickerDropdown.setProps(propsIsOpen);
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
 
       expect(datePickerDropdown.find('DatePickerBox').length).toBe(1);
     });
 
     it('should have the class "open" if the isOpened prop is set to true', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
 
       expect(datePickerDropdown.find('.dropdown-wrapper').hasClass('open')).toBe(false);
 
-      datePickerDropdown.setProps(propsIsOpen);
+      datePickerDropdown.setProps(propsIsOpened);
 
       expect(datePickerDropdown.find('.dropdown-wrapper').hasClass('open')).toBe(true);
     });
@@ -271,19 +271,19 @@ describe('Date picker', () => {
     });
 
     it('should display a footer with two button if the dropdown is opened', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
-      datePickerDropdown.setProps(propsIsOpen);
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
 
       expect(datePickerDropdown.find('footer').length).toBe(1);
       expect(datePickerDropdown.find('footer').find('button').length).toBe(2);
     });
 
     it('should display the apply label passed as a prop or use the default one if the dropdown is opened', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
-      datePickerDropdown.setProps(propsIsOpen);
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
 
       let applyLabel: string = 'appliquer';
-      let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpen, { applyLabel });
+      let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, { applyLabel });
 
       expect(datePickerDropdown.find('footer').html()).toContain(DEFAULT_APPLY_DATE_LABEL);
 
@@ -294,11 +294,11 @@ describe('Date picker', () => {
     });
 
     it('should display the cancel label passed as a prop or use the default one if the dropdown is opened', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
-      datePickerDropdown.setProps(propsIsOpen);
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
 
       let cancelLabel: string = 'annuler';
-      let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpen, { cancelLabel });
+      let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, { cancelLabel });
 
       expect(datePickerDropdown.find('footer').html()).toContain(DEFAULT_CANCEL_DATE_LABEL);
 
@@ -309,8 +309,8 @@ describe('Date picker', () => {
     });
 
     it('should call handleApply when clicking on the apply button', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
-      datePickerDropdown.setProps(propsIsOpen);
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
 
       let handleApplySpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleApply');
 
@@ -320,8 +320,8 @@ describe('Date picker', () => {
     });
 
     it('should call handleCancel when clicking on the cancel button', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
-      datePickerDropdown.setProps(propsIsOpen);
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
 
       let handleCancelSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleCancel');
 

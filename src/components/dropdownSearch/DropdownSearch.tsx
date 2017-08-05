@@ -331,15 +331,15 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       width: this.props.width,
     };
 
-    const options: JSX.Element = !this.props.isOpened
-      ? null
-      : (
+    const options: JSX.Element = this.props.isOpened
+      ? (
         <ul className='dropdown-menu'
           ref={(input: HTMLUListElement) => { this.ulElement = input; }}
           onMouseEnter={() => this.handleOnMouseEnter()}>
           {this.getDropdownOptions()}
         </ul>
-      );
+      )
+      : null;
 
     return (
       <div className={dropdownSearchClasses} style={dropdownSearchStyles}>

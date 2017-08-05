@@ -309,7 +309,7 @@ describe('Date picker', () => {
       expect(_.findWhere(store.getState().optionPickers, { id: pickerId }).selectedValue).toBe(newValue);
     });
 
-    it('should display a <DatePickerBox /> with a redux state a prop when the dropdown is opened', () => {
+    it('should display a <DatePickerBox /> with a "withReduxState" prop set to true when the dropdown is opened', () => {
       let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
       mountWithProps(propsIsOpen);
 
