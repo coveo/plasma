@@ -358,7 +358,82 @@ describe('DropdownSearch', () => {
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
             && _.isUndefined(dropdownSearch.activeOption)
             && dropdownSearch.setFocusOnDropdownButton
-            && !dropdownSearch.isOpened).length).toBe(1);
+            && !dropdownSearch.isOpened
+            && dropdownSearch.selectedOption === options[0]).length).toBe(1);
+      });
+
+    it(
+      'should return the new state with the activeOption undefined, isOpened at false and setFocusOnDropdownButton at true if the keyCode is "Tab" on "ACTIVE_DROPDOWN_SEARCH"',
+      () => {
+        const oldState: IDropdownSearchState[] = [
+          {
+            id: 'new-dropdown-search',
+            isOpened: false,
+            options,
+            activeOption: options[0],
+          },
+        ];
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.active,
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
+        };
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+        expect(dropdownSearchState.length).toBe(oldState.length);
+        expect(dropdownSearchState.filter(
+          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+            && _.isUndefined(dropdownSearch.activeOption)
+            && dropdownSearch.setFocusOnDropdownButton
+            && !dropdownSearch.isOpened
+            && dropdownSearch.selectedOption === options[0]).length).toBe(1);
+      });
+
+    it(
+      'should not change the selectedOption with an activeOption undefined in the state if the keyCode is "Enter" on "ACTIVE_DROPDOWN_SEARCH"',
+      () => {
+        const oldState: IDropdownSearchState[] = [
+          {
+            id: 'new-dropdown-search',
+            isOpened: false,
+            options,
+            activeOption: undefined,
+          },
+        ];
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.active,
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
+        };
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+        expect(dropdownSearchState.length).toBe(oldState.length);
+        expect(dropdownSearchState.filter(
+          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+            && _.isUndefined(dropdownSearch.activeOption)
+            && _.isUndefined(dropdownSearch.selectedOption)).length).toBe(1);
+      });
+
+    it(
+      'should not change the selectedOption with an activeOption undefined in the state if the keyCode is "Tab" on "ACTIVE_DROPDOWN_SEARCH"',
+      () => {
+        const oldState: IDropdownSearchState[] = [
+          {
+            id: 'new-dropdown-search',
+            isOpened: false,
+            options,
+            activeOption: undefined,
+          },
+        ];
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.active,
+          payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
+        };
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+        expect(dropdownSearchState.length).toBe(oldState.length);
+        expect(dropdownSearchState.filter(
+          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+            && _.isUndefined(dropdownSearch.activeOption)
+            && _.isUndefined(dropdownSearch.selectedOption)).length).toBe(1);
       });
 
     it(

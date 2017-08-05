@@ -44,12 +44,15 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   return index;
 };
 
-export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string) => {
+export const getOptionsFiltered = (state: IDropdownSearchState, filterText?: string): IDropdownOption[] => {
   const currentFilterText: string = filterText || state.filterText;
+  if (_.isEmpty(currentFilterText)) {
+    return state.options;
+  }
   return _.filter(state.options,
     (option: IDropdownOption) => {
       const value = option.displayValue || option.value;
-      return _.isEmpty(currentFilterText) || s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
+      return s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
     });
 };
 
@@ -76,7 +79,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ...state,
         id: action.payload.id,
         filterText: action.payload.filterText,
-        activeOption: getOptionsFiltered(state, action.payload.filterText)[0] || state.activeOption,
+        activeOption: getOptionsFiltered(state, action.payload.filterText)[0] || undefined,
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
