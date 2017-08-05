@@ -1,4 +1,4 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { UUID } from '../../../utils/UUID';
@@ -140,7 +140,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should call onMouseEnterDropdown if defined when enter over the ul element and dropdown is opened', () => {
-        renderDropdownSearch(_.extend({}, ownProps, { isOpened: true });
+        renderDropdownSearch(_.extend({}, ownProps, { isOpened: true }));
 
         const onMouseEnterDropdown = jasmine.createSpy('onMouseEnterDropdown');
         dropdownSearch.setProps({ onMouseEnterDropdown });
@@ -167,7 +167,7 @@ describe('DropdownSearch', () => {
           onOptionClickCallBack,
         });
 
-        dropdownSearch.find('input.filter-box').simulate('keydown', { keyCode: keyCode.enter);
+        dropdownSearch.find('input.filter-box').simulate('keydown', { keyCode: keyCode.enter });
 
         expect(onOptionClickCallBack).toHaveBeenCalled();
       });
@@ -292,7 +292,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should call getNoOptions if no options are in the dropdown', () => {
-        const getNoOptionsSpy = spyOn(DropdownSearch.prototype, 'getNoOptions');
+        const getNoOptionsSpy = spyOn((DropdownSearch.prototype as any), 'getNoOptions');
         renderDropdownSearch(_.extend({}, ownProps, {
           selectedOption: undefined,
           isOpened: true,
@@ -310,7 +310,7 @@ describe('DropdownSearch', () => {
         }));
 
         const dropdownSearchInstance = (dropdownSearch.instance() as any);
-        
+
         expect(JSON.stringify(dropdownSearchInstance.getNoOptions()))
           .toBe(JSON.stringify([
             <li key='noResultDropdownSearch'>
