@@ -75,7 +75,7 @@ export const closeDropdownSearch = (id: string): IReduxAction<IDefaultDropdownSe
   },
 });
 
-export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.add,
   payload: {
     id,
@@ -83,7 +83,7 @@ export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[]
   },
 });
 
-export const addMultiSelectDropdownSearch = (id: string, optionsDropdown: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const addMultiSelectDropdownSearch = (id: string, optionsDropdown: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.addMultiSelect,
   payload: {
     id,

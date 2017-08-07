@@ -55,6 +55,22 @@ describe('DropdownSearch', () => {
       });
     });
 
+    describe('render', () => {
+      it('should render wihtout error', () => {
+        expect(() => {
+          renderDropdownSearch(_.extend({}, ownProps));
+        }).not.toThrow();
+      });
+
+      it('should render wihtout error with no options provided', () => {
+        expect(() => {
+          renderDropdownSearch(_.extend({}, ownProps, {
+            options: [],
+          }));
+        }).not.toThrow();
+      });
+    });
+
     describe('event props', () => {
 
       beforeEach(() => {

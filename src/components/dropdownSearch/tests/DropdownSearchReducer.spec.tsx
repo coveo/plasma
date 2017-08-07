@@ -5,7 +5,7 @@ import {
   dropdownSearchReducer,
   dropdownsSearchInitialState,
   dropdownsSearchReducer, getDisplayedOptions,
-  IDropdownSearchState,
+  IDropdownSearchState, removeLastSelectedOption,
 } from '../DropdownSearchReducers';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
@@ -506,6 +506,27 @@ describe('DropdownSearch', () => {
         };
 
         expect(getDisplayedOptions(state.options)).toEqual([options[0], options[2]]);
+      });
+    });
+
+    describe('remove last selected option', () => {
+      it('should return an array of option without the last one', () => {
+        const optionToBeRemoved: IDropdownOption = {
+          value: 'value', displayValue: 'display', selected: true
+        };
+
+        const selectedOptions: IDropdownOption[] = [
+          ...options, optionToBeRemoved
+        ];
+
+        expect(removeLastSelectedOption(selectedOptions)).toEqual([...options,
+          {...optionToBeRemoved, selected: false, hidden: false} ]);
+      });
+
+      it('should return an array equals to the one passed if there are no selected options', () => {
+        const selectedOptions: IDropdownOption[] = [].concat(options);
+
+        expect(removeLastSelectedOption(selectedOptions)).toEqual(options);
       });
     });
   });

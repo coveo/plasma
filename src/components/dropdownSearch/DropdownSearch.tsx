@@ -87,7 +87,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
     });
   }
 
-  protected getSelectedOptionElement(): JSX.Element[] {
+  private getSelectedOptionElement(): JSX.Element[] {
     if (this.props.options.length) {
       return _.map(this.getSelectedOptions(), (selectedOption: IDropdownOption) => {
         const displayValue = selectedOption.displayValue || selectedOption.value;
@@ -107,12 +107,10 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   protected getDropdownOptions(): JSX.Element[] {
     const options = _.chain(this.getDisplayedOptions())
-      .filter(
-        (option: IDropdownOption) => {
-          const value = option.displayValue || option.value;
-          return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
-        },
-      )
+      .filter((option: IDropdownOption) => {
+        const value = option.displayValue || option.value;
+        return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
+      })
       .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
         const optionClasses = classNames({
           'state-selected': option.selected,
