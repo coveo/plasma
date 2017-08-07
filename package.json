@@ -34,7 +34,9 @@
   },
   "pre-push": [
     "lint",
-    "build"
+    "build",
+    "pre-test",
+    "test"
   ],
   "dependencies": {
     "react-bootstrap": "0.31.1",

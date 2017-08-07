@@ -143,7 +143,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
           textFilterElements.push(text.substring(0, index));
         }
         textFilterElements.push(
-          this.getTextElement(text.substring(index, index + this.props.filterText.length), originalText, highlightIndexKey, 'bold'));
+          this.getTextElement(text.substring(index, index + this.props.filterText.length), originalText, highlightIndexKey,
+            'bold'));
         text = text.substring(index + this.props.filterText.length);
         index = text.toLowerCase().indexOf(this.props.filterText.toLowerCase());
         highlightIndexKey += 1;
@@ -210,8 +211,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   private updateScrollPositionBasedOnActiveElement() {
-    const activeLi: NodeListOf<Element> = this.ulElement.getElementsByClassName('active');
-    if (activeLi.length) {
+    const activeLi: NodeListOf<Element> = this.ulElement ? this.ulElement.getElementsByClassName('active') : undefined;
+    if (activeLi && activeLi.length) {
       const el: Element = activeLi[0];
       if (!this.isScrolledIntoView(el)) {
         if (el.getBoundingClientRect().bottom > this.ulElement.getBoundingClientRect().bottom) {
@@ -330,14 +331,20 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       width: this.props.width,
     };
 
-    return (
-      <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
-        {this.getMainInput()}
+    const options: JSX.Element = this.props.isOpened
+      ? (
         <ul className='dropdown-menu'
           ref={(input: HTMLUListElement) => { this.ulElement = input; }}
           onMouseEnter={() => this.handleOnMouseEnter()}>
           {this.getDropdownOptions()}
         </ul>
+      )
+      : null;
+
+    return (
+      <div className={dropdownSearchClasses} style={dropdownSearchStyles}>
+        {this.getMainInput()}
+        {options}
       </div>
     );
   }

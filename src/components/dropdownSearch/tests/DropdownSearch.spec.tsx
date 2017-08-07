@@ -139,7 +139,9 @@ describe('DropdownSearch', () => {
         expect(onOptionClickCallBack).toHaveBeenCalled();
       });
 
-      it('should call onMouseEnterDropdown if defined when enter over the ul element', () => {
+      it('should call onMouseEnterDropdown if defined when enter over the ul element and dropdown is opened', () => {
+        renderDropdownSearch(_.extend({}, ownProps, { isOpened: true }));
+
         const onMouseEnterDropdown = jasmine.createSpy('onMouseEnterDropdown');
         dropdownSearch.setProps({ onMouseEnterDropdown });
 
@@ -165,7 +167,7 @@ describe('DropdownSearch', () => {
           onOptionClickCallBack,
         });
 
-        dropdownSearch.find('input.filter-box').simulate('keydown', { keyCode: keyCode.enter);
+        dropdownSearch.find('input.filter-box').simulate('keydown', { keyCode: keyCode.enter });
 
         expect(onOptionClickCallBack).toHaveBeenCalled();
       });
@@ -252,10 +254,11 @@ describe('DropdownSearch', () => {
         expect(dropdownSearch.find('.mod-menu').length).toBe(1);
       });
 
-      it('should show options with the highlight set on a span with the class bold ', () => {
+      it('should show options with the highlight set on a span with the class bold when dropdown is opened', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           highlightAllFilterResult: true,
           filterText: 'tes',
+          isOpened: true,
         }));
 
         expect(dropdownSearch.find('span.bold').length).toBe(3);
@@ -265,6 +268,7 @@ describe('DropdownSearch', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           highlightAllFilterResult: true,
           filterText: 'es',
+          isOpened: true,
         }));
 
         expect(dropdownSearch.find('span.bold').length).toBe(3);
@@ -285,6 +289,34 @@ describe('DropdownSearch', () => {
         }));
 
         expect(dropdownSearch.find('.dropdown-toggle').prop('disabled')).toBe(true);
+      });
+
+      it('should call getNoOptions if no options are in the dropdown', () => {
+        const getNoOptionsSpy = spyOn((DropdownSearch.prototype as any), 'getNoOptions');
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOption: undefined,
+          isOpened: true,
+          options: [],
+        }));
+
+        expect(getNoOptionsSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should return a list of one descriptive element when getNoOptions is called', () => {
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOption: undefined,
+          isOpened: true,
+          options: [],
+        }));
+
+        const dropdownSearchInstance = (dropdownSearch.instance() as any);
+
+        expect(JSON.stringify(dropdownSearchInstance.getNoOptions()))
+          .toBe(JSON.stringify([
+            <li key='noResultDropdownSearch'>
+              <span>{dropdownSearchInstance.props.noResultText}</span>
+            </li>,
+          ]));
       });
 
       it('should scroll down if the active option is not visible by the user inside the dropdown list', () => {
