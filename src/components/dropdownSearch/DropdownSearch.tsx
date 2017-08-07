@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ISvgProps, Svg } from '../svg/Svg';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
 import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 import { keyCode } from '../../utils/InputUtils';
+import * as s from 'underscore.string';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -108,15 +108,14 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   protected getDropdownOptions(): JSX.Element[] {
     const options = _.chain(this.getDisplayedOptions())
       .filter(
-      (option: IDropdownOption) => {
-        const value = option.displayValue || option.value;
-        return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
-      },
-    )
+        (option: IDropdownOption) => {
+          const value = option.displayValue || option.value;
+          return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
+        },
+      )
       .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
         const optionClasses = classNames({
-          'state-selected': this.getSelectedOption() &&
-          option.value === this.getSelectedOption().value,
+          'state-selected': option.selected,
         });
         const liClasses = classNames({
           'active': JSON.stringify(option) === JSON.stringify(this.props.activeOption),
