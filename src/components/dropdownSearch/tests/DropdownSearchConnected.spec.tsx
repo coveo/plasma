@@ -1,9 +1,9 @@
+// tslint:disable-next-line:no-unused-variable
 import { mount, ReactWrapper } from 'enzyme';
 import { Provider, Store } from 'react-redux';
 import { clearState } from '../../../utils/ReduxUtils';
 import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import { UUID } from '../../../utils/UUID';
@@ -11,6 +11,7 @@ import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
 import { defaultSelectedOption } from '../DropdownSearchReducers';
 import { toggleDropdownSearch, updateActiveOptionDropdownSearch, updateOptionsDropdownSearch } from '../DropdownSearchActions';
 import { keyCode } from '../../../utils/InputUtils';
+import * as _ from 'underscore';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -86,12 +87,14 @@ describe('DropdownSearch', () => {
       it('should get the options as a prop', () => {
         const optionsProp = dropdownSearch.props().options;
 
+        console.log(optionsProp);
+
         expect(optionsProp).toBeDefined();
-        expect(optionsProp.length).toBe(2);
+        expect(optionsProp.length).toBe(3);
       });
 
       it('should get the default selected option as a prop', () => {
-        const defaultSelectedOptionProp = dropdownSearch.props().options[0];
+        const defaultSelectedOptionProp = _.findWhere(dropdownSearch.props().options, {selected: true});
 
         expect(defaultSelectedOptionProp).toBeDefined();
         expect(defaultSelectedOptionProp).toBe(defaultSelectedOption);

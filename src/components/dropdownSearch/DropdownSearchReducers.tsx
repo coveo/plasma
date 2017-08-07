@@ -184,7 +184,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        options: action.payload.optionsDropdown.concat(defaultSelectedOption),
+        options: action.payload.optionsDropdown ? action.payload.optionsDropdown.concat(defaultSelectedOption) : [defaultSelectedOption],
         filterText: '',
         isOpened: false,
       };

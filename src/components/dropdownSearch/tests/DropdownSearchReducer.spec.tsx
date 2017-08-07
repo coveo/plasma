@@ -205,7 +205,7 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-          _.where(dropdownSearch.options, {value: selectedOption.value})).length).toBe(1);
+          _.where(dropdownSearch.options, { value: selectedOption.value })).length).toBe(1);
     });
 
     it(
@@ -479,7 +479,7 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState).toEqual(oldState);
     });
 
-    describe('get hidden options', () => {
+    describe('get displayed options', () => {
 
       it('should return all the options if selectedOptions is empty', () => {
         const state: IDropdownSearchState = {
@@ -493,7 +493,7 @@ describe('DropdownSearch', () => {
       it('should return only the options that are not selected', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
-          options,
+          options: [{...options[0], selected: true, hidden: true}, options[1], options[2]],
         };
 
         expect(getDisplayedOptions(state.options)).toEqual([options[1], options[2]]);
@@ -502,7 +502,7 @@ describe('DropdownSearch', () => {
       it('should return only the options in the right order', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
-          options,
+          options: [options[0], {...options[1], selected: true, hidden: true}, options[2]],
         };
 
         expect(getDisplayedOptions(state.options)).toEqual([options[0], options[2]]);

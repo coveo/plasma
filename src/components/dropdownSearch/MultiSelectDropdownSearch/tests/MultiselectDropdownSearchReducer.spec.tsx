@@ -14,7 +14,7 @@ describe('DropdownSearch', () => {
     let options: IDropdownOption[] = [];
     let oldState: IDropdownSearchState = { id: 'new-dropdown-search' };
 
-    beforeEach(() => { 
+    beforeEach(() => {
       options = [
         { value: 'test 1', displayValue: 'test 1 display' },
         { value: 'test 2', displayValue: 'test 2 display' },
@@ -40,7 +40,7 @@ describe('DropdownSearch', () => {
       for (let option of options) {
         expect(updatedState.options.indexOf(option)).toBeDefined();
       }
-      expect(updatedState.options).toEqual([]);
+      expect(_.where(updatedState.options, { selected: true })).toEqual([]);
       expect(updatedState.isOpened).toBe(false);
     });
 
@@ -56,7 +56,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(updatedState.options).toContain(addedSelectedOption);
+      expect(_.findWhere(updatedState.options, { ...options[0], selected: true })).toBeDefined();
     });
 
     it('should remove the selected option from the displayed options on "MULTI_SELECT_OPTION_DROPDOWN_SEARCH"', () => {
@@ -71,7 +71,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(_.findWhere(updatedState.options, {value: options[0].value}).selected).toBe(false);
+      expect(_.findWhere(updatedState.options, { ...options[0], selected: true }).hidden).toBe(true);
     });
 
     it('should remove all from selectedOptions on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
@@ -82,7 +82,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(_.where(updatedState.options, {selected: true})).toEqual([]);
+      expect(_.where(updatedState.options, { selected: true })).toEqual([]);
     });
 
     it('should display all options in displayed options on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
@@ -93,7 +93,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(_.where(updatedState.options, {hidden: false})).toEqual(options);
+      expect(_.where(updatedState.options, { hidden: false }).length).toBe(options.length);
     });
 
     it('should only remove the selected option from the selectedOptions on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
@@ -101,7 +101,7 @@ describe('DropdownSearch', () => {
 
       const oldstate: IDropdownSearchState = {
         ...oldState,
-        options: [{...options[0], selected: true}, {...options[1], selected: true}],
+        options: [{ ...options[0], selected: true, hidden: true }, { ...options[1], selected: true, hidden: true }],
       };
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -111,9 +111,14 @@ describe('DropdownSearch', () => {
         }),
       };
 
+      const expectedOptionsState: IDropdownOption[] = [
+        { ...options[0], selected: false, hidden: false },
+        { ...options[1], selected: true, hidden: true},
+      ];
+
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
 
-      expect(_.where(updatedState.options, {selected: true})).toEqual([options[1]]);
+      expect(updatedState.options).toEqual(expectedOptionsState);
     });
 
     it('should add the removed option in the hidden options on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
@@ -145,7 +150,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(_.where(updatedState.options, {selected: true, displayValue: customValue}).length).toBe(1);
+      expect(_.where(updatedState.options, { selected: true, displayValue: customValue }).length).toBe(1);
     });
 
     describe('on key down', () => {
@@ -183,7 +188,7 @@ describe('DropdownSearch', () => {
 
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
 
-        expect(_.where(updatedState.options, {selected: true, displayValue: customValue}).length).toBe(1);
+        expect(_.where(updatedState.options, { selected: true, displayValue: customValue }).length).toBe(1);
       });
 
       it('should add the active option on tab in selected options', () => {
@@ -200,7 +205,7 @@ describe('DropdownSearch', () => {
 
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
 
-        expect(_.where(updatedState.options, {selected: true})).toContain(options[0]);
+        expect(_.findWhere(updatedState.options, {...options[0], selected: true })).toBeDefined();
       });
 
       it('should remove last selected option on backspace when the filter text is empty', () => {
@@ -208,7 +213,10 @@ describe('DropdownSearch', () => {
         const filterText: string = '';
         const stateWithFilterTextPresent: IDropdownSearchState = _.extend(oldState, {
           filterText,
-          options: [].concat(options),
+          options: [
+            { ...options[0], selected: true, hidden: true },
+            { ...options[1], selected: true, hidden: true }
+          ],
         });
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.onKeyDownMultiselect,
@@ -217,11 +225,14 @@ describe('DropdownSearch', () => {
           }),
         };
 
-        const expectedOptions: IDropdownOption[] = [options[0]];
+        const expectedOptions: IDropdownOption[] = [
+          { ...options[0], selected: true, hidden: true },
+          { ...options[1], selected: false, hidden: false },
+        ];
 
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
 
-        expect(_.where(updatedState.options, {selected: true})).toEqual(expectedOptions);
+        expect(updatedState.options).toEqual(expectedOptions);
       });
 
       it('should not remove last selected option on backspace when the filter text is not empty', () => {
@@ -242,7 +253,7 @@ describe('DropdownSearch', () => {
 
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
 
-        expect(_.where(updatedState.options, {selected: true})).toEqual(expectedSelectedOptions);
+        expect(_.where(updatedState.options, { selected: true })).toEqual(expectedSelectedOptions);
       });
 
       it('should close the dropdown on escape', () => {

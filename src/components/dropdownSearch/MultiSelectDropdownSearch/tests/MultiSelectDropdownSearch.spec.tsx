@@ -1,5 +1,5 @@
-import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
+import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { UUID } from '../../../../utils/UUID';
 import { IDropdownSearchProps } from '../../DropdownSearch';
@@ -70,20 +70,6 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         expect(multiSelectDropdownSearch.find('li span').text()).toEqual(`Create option for "${filterText}"`);
-      });
-
-      it('should not call custom option click function on mousedown when the value is already present in the selected options', () => {
-        const filterText: string = 'customValue';
-        const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
-        multiSelectDropdownSearch.setProps({
-          filterText,
-          onCustomOptionClick,
-          isOpened: true,
-        });
-
-        multiSelectDropdownSearch.find('li span').simulate('mouseDown');
-
-        expect(onCustomOptionClick).not.toHaveBeenCalled();
       });
 
       it('should call onKeyDownFilterBox props on key down in input', () => {
