@@ -520,7 +520,7 @@ describe('DropdownSearch', () => {
         ];
 
         expect(removeLastSelectedOption(selectedOptions)).toEqual([...options,
-          {...optionToBeRemoved, selected: false, hidden: false} ]);
+        { ...optionToBeRemoved, selected: false, hidden: false }]);
       });
 
       it('should return an array equals to the one passed if there are no selected options', () => {
