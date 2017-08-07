@@ -78,7 +78,6 @@ describe('MultiSelectDropdownSearch', () => {
         multiSelectDropdownSearch.setProps({
           filterText,
           onCustomOptionClick,
-          selectedOptions: props.selectedOptions.immutablePush({ value: UUID.generate(), displayValue: filterText }),
           isOpened: true,
         });
 

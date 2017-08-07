@@ -19,7 +19,7 @@ describe('DropdownSearch', () => {
       type: 'default',
     };
 
-    const defaultState = [
+    const defaultState: IDropdownSearchState[] = [
       {
         id: 'new-dropdown-search',
         isOpened: false,
@@ -193,7 +193,6 @@ describe('DropdownSearch', () => {
         {
           id: 'new-dropdown-search',
           isOpened: true,
-          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
         },
       ];
 
@@ -206,7 +205,7 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-          dropdownSearch.selectedOptions.getFirstElement().value === selectedOption.value).length).toBe(1);
+          _.where(dropdownSearch.options, {value: selectedOption.value})).length).toBe(1);
     });
 
     it(
@@ -252,7 +251,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -278,7 +276,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[1],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -306,7 +303,6 @@ describe('DropdownSearch', () => {
             activeOption: options[options.length - 1],
             setFocusOnDropdownButton: false,
             filterText: '',
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -333,7 +329,6 @@ describe('DropdownSearch', () => {
             isOpened: true,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -358,7 +353,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -384,7 +378,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -410,7 +403,6 @@ describe('DropdownSearch', () => {
             isOpened: true,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -433,7 +425,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -458,7 +449,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -477,9 +467,7 @@ describe('DropdownSearch', () => {
           id: 'no-match',
           isOpened: false,
           options,
-          displayedOptions: options,
           activeOption: options[0],
-          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
         },
       ];
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -497,30 +485,27 @@ describe('DropdownSearch', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
           options,
-          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
         };
 
-        expect(getDisplayedOptions(state)).toEqual(options);
+        expect(getDisplayedOptions(state.options)).toEqual(options);
       });
 
       it('should return only the options that are not selected', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
           options,
-          selectedOptions: new FixedQueue<IDropdownOption>([options[0]], 1),
         };
 
-        expect(getDisplayedOptions(state)).toEqual([options[1], options[2]]);
+        expect(getDisplayedOptions(state.options)).toEqual([options[1], options[2]]);
       });
 
       it('should return only the options in the right order', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
           options,
-          selectedOptions: new FixedQueue<IDropdownOption>([options[1]], 1),
         };
 
-        expect(getDisplayedOptions(state)).toEqual([options[0], options[2]]);
+        expect(getDisplayedOptions(state.options)).toEqual([options[0], options[2]]);
       });
     });
   });

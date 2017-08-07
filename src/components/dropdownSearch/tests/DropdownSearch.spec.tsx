@@ -17,8 +17,8 @@ describe('DropdownSearch', () => {
     { value: 'test c', displayValue: 'test c' }];
   const ownProps: IDropdownSearchProps = {
     id,
-    modMenu: false,
     options,
+    modMenu: false,
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,
