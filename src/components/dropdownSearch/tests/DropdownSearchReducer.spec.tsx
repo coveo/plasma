@@ -493,7 +493,7 @@ describe('DropdownSearch', () => {
       it('should return only the options that are not selected', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
-          options: [{...options[0], selected: true, hidden: true}, options[1], options[2]],
+          options: [{ ...options[0], selected: true, hidden: true }, options[1], options[2]],
         };
 
         expect(getDisplayedOptions(state.options)).toEqual([options[1], options[2]]);
@@ -502,7 +502,7 @@ describe('DropdownSearch', () => {
       it('should return only the options in the right order', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
-          options: [options[0], {...options[1], selected: true, hidden: true}, options[2]],
+          options: [options[0], { ...options[1], selected: true, hidden: true }, options[2]],
         };
 
         expect(getDisplayedOptions(state.options)).toEqual([options[0], options[2]]);

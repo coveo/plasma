@@ -113,7 +113,7 @@ describe('DropdownSearch', () => {
 
       const expectedOptionsState: IDropdownOption[] = [
         { ...options[0], selected: false, hidden: false },
-        { ...options[1], selected: true, hidden: true},
+        { ...options[1], selected: true, hidden: true },
       ];
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
@@ -205,7 +205,7 @@ describe('DropdownSearch', () => {
 
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
 
-        expect(_.findWhere(updatedState.options, {...options[0], selected: true })).toBeDefined();
+        expect(_.findWhere(updatedState.options, { ...options[0], selected: true })).toBeDefined();
       });
 
       it('should remove last selected option on backspace when the filter text is empty', () => {

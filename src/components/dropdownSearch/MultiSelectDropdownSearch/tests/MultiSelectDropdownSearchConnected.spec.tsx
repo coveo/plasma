@@ -212,7 +212,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onRemoveAllSelectedOptions();
 
-        expect(_.where(store.getState().dropdownSearch[0].options, { selected: true}).length).toBe(0);
+        expect(_.where(store.getState().dropdownSearch[0].options, { selected: true }).length).toBe(0);
       });
     });
   });

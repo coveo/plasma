@@ -12,7 +12,7 @@ import { defaultSelectedOption } from '../DropdownSearchReducers';
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
   const options = [
-    { value: 'test a', displayValue: 'test a', prefix: 'test'},
+    { value: 'test a', displayValue: 'test a', prefix: 'test' },
     { value: 'test b', displayValue: 'test b', svg: { svgClass: 'svg-class', svgName: 'svg-name' } },
     { value: 'test c', displayValue: 'test c' }];
   const ownProps: IDropdownSearchProps = {
@@ -241,9 +241,9 @@ describe('DropdownSearch', () => {
 
       it('should show the dropdown displayValue if the selected option has one', () => {
         renderDropdownSearch(_.extend({}, {
-            ownProps,
-            options: [...options, selectedOption],
-          },
+          ownProps,
+          options: [...options, selectedOption],
+        },
         ));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
