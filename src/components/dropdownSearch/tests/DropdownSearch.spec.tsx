@@ -255,7 +255,7 @@ describe('DropdownSearch', () => {
         expect(dropdownSearch.find(Svg).length).toBe(1);
       });
 
-      it('should show the dropdown displayValue if the selected option has one', () => {
+      it('should show the dropdown value if the selected option has one', () => {
         renderDropdownSearch(_.extend({}, {
           ownProps,
           options: [...options, selectedOption],

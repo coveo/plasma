@@ -16,8 +16,8 @@ describe('DropdownSearch', () => {
 
     beforeEach(() => {
       options = [
-        { value: 'test 1', displayValue: 'test 1 display' },
-        { value: 'test 2', displayValue: 'test 2 display' },
+        { value: 'test 1' },
+        { value: 'test 2' },
       ];
 
       oldState = _.extend(oldState, {
@@ -97,7 +97,7 @@ describe('DropdownSearch', () => {
     });
 
     it('should only remove the selected option from the selectedOptions on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
-      const selectedOptionValue: string = options[0].displayValue;
+      const selectedOptionValue: string = options[0].value;
 
       const oldstate: IDropdownSearchState = {
         ...oldState,
@@ -122,7 +122,7 @@ describe('DropdownSearch', () => {
     });
 
     it('should add the removed option in the hidden options on "REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH"', () => {
-      const selectedOptionValue: string = options[0].displayValue;
+      const selectedOptionValue: string = options[0].value;
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.deselectOption,
@@ -135,7 +135,7 @@ describe('DropdownSearch', () => {
 
       expect(_.findWhere(_.reject(updatedState.options, (option) => {
         return option.custom || option.hidden;
-      }), { displayValue: selectedOptionValue })).toBeDefined();
+      }), { value: selectedOptionValue })).toBeDefined();
     });
 
     it('should add a custom selected option on "ADD_CUSTOM_SELECTED_OPTION"', () => {
@@ -150,7 +150,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      expect(_.where(updatedState.options, { selected: true, displayValue: customValue }).length).toBe(1);
+      expect(_.where(updatedState.options, { selected: true, value: customValue }).length).toBe(1);
     });
 
     describe('on key down', () => {
@@ -188,7 +188,7 @@ describe('DropdownSearch', () => {
 
         const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
 
-        expect(_.where(updatedState.options, { selected: true, displayValue: customValue }).length).toBe(1);
+        expect(_.where(updatedState.options, { selected: true, value: customValue }).length).toBe(1);
       });
 
       it('should add the active option on tab in selected options', () => {

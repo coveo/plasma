@@ -9,12 +9,12 @@ export class DropdownSearchExamples extends React.Component<any, any> {
   render() {
     const defaultOptions = {
       defaultOptions: [
-        { value: '5', displayValue: 'Option 1', hidden: false },
-        { value: '6', displayValue: 'Option 2', },
-        { value: '7', displayValue: 'Option 3', },
-        { value: '8', displayValue: 'Option 4', },
-        { value: '9', displayValue: 'Option 5', },
-        { value: '10', displayValue: 'Option 6', },
+        { value: 'Option 1', displayValue: 'Option 1', hidden: false },
+        { value: 'Option 2', displayValue: 'Option 2', },
+        { value: 'Option 3', displayValue: 'Option 3', },
+        { value: 'Option 4', displayValue: 'Option 4', },
+        { value: 'Option 5', displayValue: 'Option 5', },
+        { value: 'Option 6', displayValue: 'Option 6', },
       ],
     };
 

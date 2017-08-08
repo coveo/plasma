@@ -28,7 +28,7 @@ describe('MultiSelectDropdownSearch', () => {
     let multiSelectDropdownSearchConnected: ReactWrapper<IDropdownSearchProps, any>;
     let store: Store<IReactVaporState>;
 
-    const defaultOptions = [{ value: 'a', displayValue: 'a' }, { value: 'b', displayValue: 'b' }];
+    const defaultOptions = [{ value: 'a' }, { value: 'b' }];
 
     const props: IDropdownSearchProps = {
       id: id,
@@ -179,7 +179,7 @@ describe('MultiSelectDropdownSearch', () => {
         const filterText: string = 'filter_text';
         multiSelectDropdownSearchConnected.props().onCustomOptionClick(filterText);
 
-        expect(_.find(store.getState().dropdownSearch[0].options, { displayValue: filterText })).toBeDefined();
+        expect(_.find(store.getState().dropdownSearch[0].options, { value: filterText })).toBeDefined();
       });
 
       it('should update filterText on key down', () => {
@@ -190,7 +190,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onKeyDownFilterBox(enterKeyCode);
 
-        expect(_.find(store.getState().dropdownSearch[0].options, { displayValue: filterText })).toBeDefined();
+        expect(_.find(store.getState().dropdownSearch[0].options, { value: filterText })).toBeDefined();
       });
 
       it('should remove selected option', () => {
@@ -200,7 +200,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         multiSelectDropdownSearchConnected.props().onRemoveSelectedOption(selectedOptionValue);
 
-        expect(_.find(store.getState().dropdownSearch[0].options, { displayValue: selectedOptionValue, selected: true })).not.toBeDefined();
+        expect(_.find(store.getState().dropdownSearch[0].options, { value: selectedOptionValue })).toBeUndefined();
       });
 
       it('should remove all selected option', () => {

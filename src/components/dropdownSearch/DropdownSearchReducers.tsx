@@ -5,7 +5,6 @@ import * as _ from 'underscore';
 import * as s from 'underscore.string';
 import { keyCode } from '../../utils/InputUtils';
 import { multiSelectDropdownSearchReducer } from './MultiSelectDropdownSearch/MultiSelectDropdownSearchReducer';
-import { UUID } from '../../utils/UUID';
 import { deepClone } from '../../utils/CloneUtils';
 
 export interface IDropdownSearchState {
@@ -19,8 +18,7 @@ export interface IDropdownSearchState {
 }
 
 export const defaultSelectedOption: IDropdownOption = {
-  value: UUID.generate(),
-  displayValue: 'Select an option',
+  value: 'Select an option',
   selected: true,
   custom: true,
 };
@@ -50,9 +48,9 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   return index;
 };
 
-export const deselectOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {
+export const deselectOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
   const nextOptions: IDropdownOption[] = deepClone(options);
-  const selectedOption = _.find(nextOptions, { displayValue });
+  const selectedOption = _.find(nextOptions, { value });
   if (selectedOption) {
     if (selectedOption.custom) {
       nextOptions.splice(nextOptions.indexOf(selectedOption), 1);
@@ -67,7 +65,7 @@ export const deselectOption = (options: IDropdownOption[], displayValue: string)
 export const deselectLastSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
   const lastSelectedOption: IDropdownOption = _.find(options.slice().reverse(), { selected: true });
   return lastSelectedOption
-    ? deselectOption(options, lastSelectedOption.displayValue)
+    ? deselectOption(options, lastSelectedOption.value)
     : deepClone(options);
 };
 
@@ -83,14 +81,13 @@ export const deselectAllOptions = (options: IDropdownOption[]): IDropdownOption[
   return nextOptions;
 };
 
-export const addUniqueSelectedOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {
-  const optionWithSameValueExists = _.findWhere(options, { displayValue }) === undefined;
+export const addUniqueSelectedOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
+  const sameValueDoesNotExist = _.findWhere(options, { value }) === undefined;
 
-  if (optionWithSameValueExists) {
+  if (sameValueDoesNotExist) {
     const nextOptions: IDropdownOption[] = deepClone(options);
     nextOptions.push({
-      displayValue,
-      value: UUID.generate(),
+      value,
       selected: true,
       custom: true,
     });

@@ -8,7 +8,7 @@ describe('SelectedOption', () => {
   const key: string = UUID.generate();
   const props: ISelectedOptionProps = {
     key,
-    displayValue: 'test',
+    value: 'test',
   };
 
   describe('<SelectedOption />', () => {
@@ -34,10 +34,10 @@ describe('SelectedOption', () => {
 
     describe('render', () => {
       it('should render the display value in the selectedOption', () => {
-        const displayValue: string = 'displayTest';
-        selectedOption.setProps({ displayValue });
+        const value: string = 'displayTest';
+        selectedOption.setProps({ value });
 
-        expect(selectedOption.find('.selected-option-value').text()).toBe(displayValue);
+        expect(selectedOption.find('.selected-option-value').text()).toBe(value);
       });
     });
 
