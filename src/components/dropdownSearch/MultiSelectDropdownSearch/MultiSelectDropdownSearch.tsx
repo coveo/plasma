@@ -16,7 +16,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
   };
 
   protected getNoOptions(): JSX.Element[] {
-    if (this.props.filterText.length > 0 && !_.findWhere(this.getSelectedOptions(), ({ displayValue: this.props.filterText }))) {
+    if (this.props.filterText.length > 0 && !_.findWhere(this.getSelectedOptions(), ({ value: this.props.filterText }))) {
       return [
         <li key='noResultDropdownSearch' onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}>
           <span>{`${this.props.createOptionText}"${this.props.filterText}"`}</span>

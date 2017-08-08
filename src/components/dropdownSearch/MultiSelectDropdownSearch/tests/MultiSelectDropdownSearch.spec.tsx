@@ -8,9 +8,9 @@ import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
 describe('MultiSelectDropdownSearch', () => {
   const id: string = UUID.generate();
   const options = [
-    { value: 'test a', displayValue: 'test a' },
-    { value: 'test b', displayValue: 'test b' },
-    { value: 'test c', displayValue: 'test c' },
+    { value: 'test a', },
+    { value: 'test b', },
+    { value: 'test c', },
   ];
 
   const props: IDropdownSearchProps = {
@@ -24,6 +24,7 @@ describe('MultiSelectDropdownSearch', () => {
     isDisabled: false,
     isOpened: false,
     filterText: '',
+    noResultText: 'no result',
   };
 
   describe('<MultiSelectDropdownSearch />', () => {
@@ -47,7 +48,7 @@ describe('MultiSelectDropdownSearch', () => {
       multiSelectDropdownSearch.detach();
     });
 
-    describe('render', () => {
+    fdescribe('render', () => {
       it('should call custom option click function on mousedown when the value is not present in the selected options', () => {
         const filterText: string = 'customValue';
         const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
@@ -70,6 +71,19 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         expect(multiSelectDropdownSearch.find('li span').text()).toEqual(`Create option for "${filterText}"`);
+      });
+
+      it('should render a "No Option" label if the filterText is a value present in the selectedOptions', () => {
+        const filterText: string = 'selectedValue';
+        multiSelectDropdownSearch.setProps({
+          filterText,
+          isOpened: true,
+          options: [...options, {value: filterText, selected: true, custom: true}],
+        });
+
+        console.log(multiSelectDropdownSearch.html());
+
+        expect(multiSelectDropdownSearch.find('li span').text()).toEqual(multiSelectDropdownSearch.props().noResultText);
       });
 
       it('should call onKeyDownFilterBox props on key down in input', () => {
