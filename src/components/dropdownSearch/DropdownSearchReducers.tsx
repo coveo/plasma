@@ -71,13 +71,16 @@ export const deselectLastSelectedOption = (options: IDropdownOption[]): IDropdow
     : deepClone(options);
 };
 
-export const removeAllSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
-  return _.map(options, (option: IDropdownOption) => {
-    const nextOption = deepClone(option);
-    nextOption.selected = false;
-    nextOption.hidden = false;
-    return nextOption;
+export const deselectAllOptions = (options: IDropdownOption[]): IDropdownOption[] => {
+  let nextOptions: IDropdownOption[] = [];
+  _.each(options, (option: IDropdownOption) => {
+    if (!option.custom) {
+      const nextOption = deepClone(option);
+      nextOptions.push({...nextOption, selected: false, hidden: false});
+    }
   });
+
+  return nextOptions;
 };
 
 export const addUniqueSelectedOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {

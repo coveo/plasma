@@ -7,7 +7,7 @@ import {
   getFilteredOptions,
   IDropdownSearchState,
   deselectOption,
-  removeAllSelectedOption,
+  deselectAllOptions,
   multiSelectOption,
   deselectLastSelectedOption,
 } from '../DropdownSearchReducers';
@@ -38,7 +38,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
     case DropdownSearchActions.deselectAllOptions:
       return {
         ...state,
-        options: removeAllSelectedOption(state.options),
+        options: deselectAllOptions(state.options),
         id: action.payload.id,
       };
     case DropdownSearchActions.multiSelect:

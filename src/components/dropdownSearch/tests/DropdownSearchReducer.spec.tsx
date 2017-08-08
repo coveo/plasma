@@ -6,7 +6,7 @@ import {
   dropdownSearchReducer,
   dropdownsSearchInitialState,
   dropdownsSearchReducer, getDisplayedOptions,
-  IDropdownSearchState, deselectLastSelectedOption,
+  IDropdownSearchState, deselectLastSelectedOption, deselectAllOptions, deselectOption,
 } from '../DropdownSearchReducers';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
@@ -543,6 +543,54 @@ describe('DropdownSearch', () => {
         const newOptions: IDropdownOption[] = [options[0]];
 
         expect(addUniqueSelectedOption(newOptions, options[0].displayValue).length).toBe(1);
+      });
+    });
+
+    describe('deselect all options', () => {
+      it('should return an array with all option unselected', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          {...options[0], selected: true},
+          {...options[1], selected: true},
+          {...options[2], selected: true},
+        ];
+
+        expect(_.where(deselectAllOptions(optionsToDeselect), {selected: true}).length).toBe(0);
+      });
+
+      it('should remove the custom options', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          {...options[0], selected: true},
+          {...options[1], selected: true, custom: true},
+          {...options[2], selected: true, custom: true},
+        ];
+
+        const expectedDeselectedOptions: IDropdownOption[] = [{...options[0], selected: false, hidden: false}];
+
+        expect(deselectAllOptions(optionsToDeselect)).toEqual(expectedDeselectedOptions);
+      });
+    });
+
+    describe('deselect option', () => {
+      it('should return an array with the right option unselected', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          {...options[0], selected: true},
+          {...options[1], selected: true},
+          {...options[2], selected: true},
+        ];
+
+        expect(_.where(deselectOption(optionsToDeselect, options[0].displayValue),
+          {displayValue: options[0].displayValue, selected: false, hidden: false}).length).toBe(1);
+      });
+
+      it('should remove the option if it is custom', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          {...options[0], selected: true},
+          {...options[1], selected: true},
+          {...options[2], selected: true, custom: true},
+        ];
+
+        expect(_.find(deselectOption(optionsToDeselect, options[2].displayValue),
+          {displayValue: options[2].displayValue})).toBeUndefined();
       });
     });
   });
