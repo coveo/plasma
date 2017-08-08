@@ -10,9 +10,9 @@ import {
   addMultiSelectDropdownSearch,
   applyFilterDropdownSearch,
   multiSelectOptionDropdownSearch, openDropdownSearch, closeDropdownSearch,
-  removeAllSelectedOptionsMultiselectDropdownSearch,
+  deselectAllOptionsMultiselectDropdownSearch,
   removeDropdownSearch,
-  removeSelectedOptionDropdownSearch, keyDownMultiselectDropdownSearch, addCustomSelectedOption,
+  deselectOptionDropdownSearch, keyDownMultiselectDropdownSearch, addCustomSelectedOption,
 } from '../DropdownSearchActions';
 import { IDropdownSearchState } from './../DropdownSearchReducers';
 import { MultiSelectDropdownSearch } from './MultiSelectDropdownSearch';
@@ -43,8 +43,8 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onCustomOptionClick: (value: string) => dispatch(addCustomSelectedOption(ownProps.id, value)),
     onFilterTextChange: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
     onKeyDownFilterBox: (keyCode: number) => dispatch(keyDownMultiselectDropdownSearch(ownProps.id, keyCode)),
-    onRemoveSelectedOption: (value: string) => dispatch(removeSelectedOptionDropdownSearch(ownProps.id, value)),
-    onRemoveAllSelectedOptions: () => dispatch(removeAllSelectedOptionsMultiselectDropdownSearch(ownProps.id)),
+    onRemoveSelectedOption: (value: string) => dispatch(deselectOptionDropdownSearch(ownProps.id, value)),
+    onRemoveAllSelectedOptions: () => dispatch(deselectAllOptionsMultiselectDropdownSearch(ownProps.id)),
   });
 
 export const MultiSelectDropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =

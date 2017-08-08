@@ -5,7 +5,7 @@ import {
   dropdownSearchReducer,
   getNextIndexPosition,
   getFilteredOptions,
-  IDropdownSearchState, removeSelectedOption, removeAllSelectedOption, multiSelectOption, removeLastSelectedOption,
+  IDropdownSearchState, deselectOption, removeAllSelectedOption, multiSelectOption, deselectLastSelectedOption,
 } from '../DropdownSearchReducers';
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { keyCode } from '../../../utils/InputUtils';
@@ -23,15 +23,15 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         filterText: '',
         isOpened: false,
       };
-    case DropdownSearchActions.removeSelectedOption:
+    case DropdownSearchActions.deselectOption:
       return {
         ...state,
-        options: removeSelectedOption(state.options, action.payload.selectedOptionValue),
+        options: deselectOption(state.options, action.payload.selectedOptionValue),
         id: action.payload.id,
         isOpened: false,
         activeOption: undefined,
       };
-    case DropdownSearchActions.removeAllSelectedOptions:
+    case DropdownSearchActions.deselectAllOptions:
       return {
         ...state,
         options: removeAllSelectedOption(state.options),
@@ -87,7 +87,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         if (state.filterText === '') {
           return {
             ...state,
-            options: removeLastSelectedOption(state.options),
+            options: deselectLastSelectedOption(state.options),
             id: action.payload.id,
             isOpened: true,
             activeOption: undefined,

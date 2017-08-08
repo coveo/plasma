@@ -76,7 +76,7 @@ describe('DropdownSearch', () => {
 
     it('should remove all from selectedOptions on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-        type: DropdownSearchActions.removeAllSelectedOptions,
+        type: DropdownSearchActions.deselectAllOptions,
         payload: defaultPayload,
       };
 
@@ -87,7 +87,7 @@ describe('DropdownSearch', () => {
 
     it('should display all options in displayed options on "REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH"', () => {
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-        type: DropdownSearchActions.removeAllSelectedOptions,
+        type: DropdownSearchActions.deselectAllOptions,
         payload: defaultPayload,
       };
 
@@ -105,7 +105,7 @@ describe('DropdownSearch', () => {
       };
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-        type: DropdownSearchActions.removeSelectedOption,
+        type: DropdownSearchActions.deselectOption,
         payload: _.extend(defaultPayload, {
           selectedOptionValue: selectedOptionValue,
         }),
@@ -125,7 +125,7 @@ describe('DropdownSearch', () => {
       const selectedOptionValue: string = options[0].displayValue;
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-        type: DropdownSearchActions.removeSelectedOption,
+        type: DropdownSearchActions.deselectOption,
         payload: _.extend(defaultPayload, {
           selectedOptionValue: selectedOptionValue,
         }),

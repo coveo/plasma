@@ -50,7 +50,7 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   return index;
 };
 
-export const removeSelectedOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {
+export const deselectOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {
   const nextOptions: IDropdownOption[] = deepClone(options);
   const selectedOption = _.find(nextOptions, { displayValue });
   if (selectedOption) {
@@ -64,14 +64,11 @@ export const removeSelectedOption = (options: IDropdownOption[], displayValue: s
   return nextOptions;
 };
 
-export const removeLastSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
-  const nextOptions: IDropdownOption[] = deepClone(options);
-  const lastSelectedOption: IDropdownOption = _.find(nextOptions.reverse(), { selected: true });
-  if (lastSelectedOption) {
-    return removeSelectedOption(options, lastSelectedOption.displayValue);
-  } else {
-    return nextOptions.reverse();
-  }
+export const deselectLastSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
+  const lastSelectedOption: IDropdownOption = _.find(options.slice().reverse(), { selected: true });
+  return lastSelectedOption
+    ? deselectOption(options, lastSelectedOption.displayValue)
+    : deepClone(options);
 };
 
 export const removeAllSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
@@ -257,11 +254,11 @@ export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdowns
         ...state,
         multiSelectDropdownSearchReducer(undefined, action),
       ];
-    case DropdownSearchActions.removeAllSelectedOptions:
+    case DropdownSearchActions.deselectAllOptions:
     case DropdownSearchActions.multiSelect:
     case DropdownSearchActions.addCustomSelectedOption:
     case DropdownSearchActions.onKeyDownMultiselect:
-    case DropdownSearchActions.removeSelectedOption:
+    case DropdownSearchActions.deselectOption:
       return state.map((dropdownSearch: IDropdownSearchState) => {
         return dropdownSearch.id === action.payload.id
           ? multiSelectDropdownSearchReducer(dropdownSearch, action)

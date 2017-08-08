@@ -31,8 +31,8 @@ export const DropdownSearchActions = {
   filter: 'FILTER_DROPDOWN_SEARCH',
   select: 'SELECT_DROPDOWN_SEARCH',
   active: 'ACTIVE_DROPDOWN_SEARCH',
-  removeSelectedOption: 'REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH',
-  removeAllSelectedOptions: 'REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH',
+  deselectOption: 'REMOVE_SELECTED_OPTION_DROPDOWN_SEARCH',
+  deselectAllOptions: 'REMOVE_ALL_SELECTED_OPTIONS_MULTISELECT_DROPDOWN_SEARCH',
   multiSelect: 'MULTI_SELECT_OPTION_DROPDOWN_SEARCH',
   onKeyDownMultiselect: 'KEY_DOWN_MULTISELECT',
 };
@@ -122,16 +122,16 @@ export const addCustomSelectedOption = (id: string, selectedOptionValue: string)
   },
 });
 
-export const removeSelectedOptionDropdownSearch = (id: string, selectedOptionValue: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
-  type: DropdownSearchActions.removeSelectedOption,
+export const deselectOptionDropdownSearch = (id: string, selectedOptionValue: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  type: DropdownSearchActions.deselectOption,
   payload: {
     id,
     selectedOptionValue,
   },
 });
 
-export const removeAllSelectedOptionsMultiselectDropdownSearch = (id: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
-  type: DropdownSearchActions.removeAllSelectedOptions,
+export const deselectAllOptionsMultiselectDropdownSearch = (id: string): IReduxAction<IOptionsDropdownSearchPayload> => ({
+  type: DropdownSearchActions.deselectAllOptions,
   payload: {
     id,
   },
