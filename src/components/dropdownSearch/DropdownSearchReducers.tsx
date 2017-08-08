@@ -76,7 +76,7 @@ export const deselectAllOptions = (options: IDropdownOption[]): IDropdownOption[
   _.each(options, (option: IDropdownOption) => {
     if (!option.custom) {
       const nextOption = deepClone(option);
-      nextOptions.push({...nextOption, selected: false, hidden: false});
+      nextOptions.push({ ...nextOption, selected: false, hidden: false });
     }
   });
 
