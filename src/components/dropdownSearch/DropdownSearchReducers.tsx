@@ -84,7 +84,7 @@ export const removeAllSelectedOption = (options: IDropdownOption[]): IDropdownOp
 };
 
 export const addUniqueSelectedOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {
-  const optionWithSameValueExists = _.findWhere(options, {displayValue}) === undefined;
+  const optionWithSameValueExists = _.findWhere(options, { displayValue }) === undefined;
 
   if (optionWithSameValueExists) {
     const nextOptions: IDropdownOption[] = deepClone(options);

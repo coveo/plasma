@@ -531,12 +531,12 @@ describe('DropdownSearch', () => {
       });
     });
 
-    describe('add unique selected option', () => { 
+    describe('add unique selected option', () => {
       it('should add a custom selected option', () => {
         const options: IDropdownOption[] = [];
         const displayValue = 'Display value';
 
-        expect(_.findWhere(addUniqueSelectedOption(options, displayValue), {displayValue, selected: true, custom: true})).toBeDefined();
+        expect(_.findWhere(addUniqueSelectedOption(options, displayValue), { displayValue, selected: true, custom: true })).toBeDefined();
       });
 
       it('should not add a custom selected option if another one with the same displayValue is present', () => {
