@@ -4,6 +4,11 @@
   height: 0.9em;
   overflow: visible;
 
+  &.mod-small {
+    width: 0.7em;
+    height: 0.7em;
+  }
+
   &.mod-16 {
     width: 16px;
     height: 16px;

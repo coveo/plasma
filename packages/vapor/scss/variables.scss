@@ -25,6 +25,8 @@ $button-small-height: 24px;
 $button-large-height: 50px;
 $button-confirm-icon-width: 15px;
 $button-confirm-margin-bottom: 20px;
+$button-color-transition: all .05s ease-in;
+
 
 // Checkboxes and radios
 $checkbox-size: 18px;
@@ -258,6 +260,12 @@ $dropdown-button-font-size: 13px;
 $dropdown-choice-font-size: 13px;
 $dropdown-menu-max-height: 240px;
 $dropdown-button-min-width: 260px;
+
+//Dropdown Multiselect
+$drowdown-multiselect-margin: 2px;
+$drowdown-multiselect-items-margin: 4px;
+$dropdown-multiselect-option-height: 24px;
+$selected-option-close-width: 22px;
 
 // Chosen
 $chosen-clear-icon-size: 10px;
