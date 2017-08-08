@@ -1,0 +1,42 @@
+.multiselect-input {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  border: $default-border;
+  border-radius: $border-radius;
+
+  width: $dropdown-button-min-width;
+}
+
+.selected-options-container {
+  flex: 1 1;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  padding: $drowdown-multiselect-margin;
+
+  input {
+    border: none;
+    height: $dropdown-multiselect-option-height;
+    min-width: 100%;
+  }
+
+  input:focus {
+      outline:none;
+  }
+}
+
+.remove-all-selected-options {
+  flex: 0 1;
+  padding: $drowdown-multiselect-items-margin;
+}
+
+.remove-all-selected-options:hover {
+  cursor: pointer;
+}
