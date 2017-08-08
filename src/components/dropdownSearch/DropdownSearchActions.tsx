@@ -46,12 +46,12 @@ export const applyFilterDropdownSearch = (id: string, filterText: string): IRedu
 });
 
 export const updateOptionsDropdownSearch = (id: string, dropdownOptions: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
-    type: DropdownSearchActions.update,
-    payload: {
-      id,
-      dropdownOptions,
-    },
-  });
+  type: DropdownSearchActions.update,
+  payload: {
+    id,
+    dropdownOptions,
+  },
+});
 
 export const toggleDropdownSearch = (id: string): IReduxAction<IDefaultDropdownSearchPayload> => ({
   type: DropdownSearchActions.toggle,
