@@ -1,3 +1,3 @@
-export function deepClone(object: any) {
+export function deepClone(object: any) {
   return JSON.parse(JSON.stringify(object));
 }

@@ -7,21 +7,18 @@ import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
 import { Svg } from '../../svg/Svg';
 import { keyCode } from '../../../utils/InputUtils';
-import { FixedQueue } from '../../../utils/FixedQueue';
 import { defaultSelectedOption } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
   const options = [
-    { value: 'test a', displayValue: 'test a' },
-    { value: 'test b', displayValue: 'test b' },
+    { value: 'test a', displayValue: 'test a', prefix: 'test' },
+    { value: 'test b', displayValue: 'test b', svg: { svgClass: 'svg-class', svgName: 'svg-name' } },
     { value: 'test c', displayValue: 'test c' }];
   const ownProps: IDropdownSearchProps = {
     id,
-    modMenu: false,
     options,
-    displayedOptions: options,
-    selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+    modMenu: false,
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,
@@ -55,6 +52,22 @@ describe('DropdownSearch', () => {
 
       it('should have the same object sent has parameter than the component props', () => {
         expect(dropdownSearch.props()).toEqual(_.extend({}, ownProps, DropdownSearch.defaultProps));
+      });
+    });
+
+    describe('render', () => {
+      it('should render wihtout error', () => {
+        expect(() => {
+          renderDropdownSearch(_.extend({}, ownProps));
+        }).not.toThrow();
+      });
+
+      it('should render wihtout error with no options provided', () => {
+        expect(() => {
+          renderDropdownSearch(_.extend({}, ownProps, {
+            options: [],
+          }));
+        }).not.toThrow();
       });
     });
 
@@ -205,17 +218,18 @@ describe('DropdownSearch', () => {
 
       beforeEach(() => {
         selectedOption = {
-          prefix: 'test', value: 'test1', displayValue: 'test 2', svg: {
+          prefix: 'test', value: 'test1', displayValue: 'test 2',
+          svg: {
             svgName: 'close',
             svgClass: 'small',
           },
+          selected: true,
         };
       });
 
       it('should show the filterBox if the dropdown is open', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           isOpened: true,
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
         }));
 
         expect(dropdownSearch.find(FilterBox).length).toBe(1);
@@ -230,25 +244,23 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
-        }));
+        renderDropdownSearch(_.extend({}, { ...ownProps }));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
 
       it('should show the dropdown svg if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
-        }));
+        renderDropdownSearch(_.extend({}, ownProps));
 
         expect(dropdownSearch.find(Svg).length).toBe(1);
       });
 
-      it('should show the dropdown displayValue if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOptions: ownProps.selectedOptions.immutablePush(selectedOption),
-        }));
+      it('should show the dropdown value if the selected option has one', () => {
+        renderDropdownSearch(_.extend({}, {
+          ownProps,
+          options: [...options, selectedOption],
+        },
+        ));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
       });

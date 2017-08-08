@@ -6,10 +6,10 @@ import { IDropdownOption } from '../../DropdownSearch';
 
 describe('MultiSelectInput', () => {
   const selectedOptions: IDropdownOption[] = [
-    { value: 'test 1', displayValue: 'test 1 display' },
-    { value: 'test 2', displayValue: 'test 2 display' },
-    { value: 'test 3', displayValue: 'test 3 display' },
-    { value: 'test 4', displayValue: 'test 4 display' },
+    { value: 'test 1' },
+    { value: 'test 2' },
+    { value: 'test 3' },
+    { value: 'test 4' },
   ];
   const props: IMultiselectInputProps = {
     selectedOptions: [],

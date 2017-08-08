@@ -1,25 +1,25 @@
 import * as React from 'react';
 import { ISvgProps, Svg } from '../svg/Svg';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
 import * as classNames from 'classnames';
 import { FilterBox } from '../filterBox/FilterBox';
 import { keyCode } from '../../utils/InputUtils';
-import { FixedQueue } from '../../utils/FixedQueue';
+import * as s from 'underscore.string';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
   value: string;
   displayValue?: string;
   prefix?: string;
+  selected?: boolean;
+  custom?: boolean;
+  hidden?: boolean;
 }
 
 export interface IDropdownSearchStateProps {
   isOpened?: boolean;
   filterText?: string;
   options?: IDropdownOption[];
-  displayedOptions?: IDropdownOption[];
-  selectedOptions?: FixedQueue<IDropdownOption>;
   activeOption?: IDropdownOption;
   setFocusOnDropdownButton?: boolean;
 }
@@ -28,7 +28,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   id: string;
   modMenu?: boolean;
   defaultOptions?: IDropdownOption[];
-  defaultSelectedOptions?: FixedQueue<IDropdownOption>;
+  defaultSelectedOption?: IDropdownOption;
   filterPlaceholder?: string;
   maxWidth?: number;
   width?: number;
@@ -71,12 +71,25 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
     highlightThreshold: 100,
     highlightAllFilterResult: false,
     noResultText: 'No results',
-    selectedOptions: new FixedQueue<IDropdownOption>([], 1),
   };
 
-  protected getSelectedOption(): JSX.Element[] {
-    if (this.props.selectedOptions.getQueue().length) {
-      return _.map(this.props.selectedOptions.getQueue(), (selectedOption: IDropdownOption) => {
+  protected getSelectedOption(): IDropdownOption {
+    return _.findWhere(this.props.options, { selected: true });
+  }
+
+  protected getSelectedOptions(): IDropdownOption[] {
+    return _.where(this.props.options, { selected: true });
+  }
+
+  protected getDisplayedOptions(): IDropdownOption[] {
+    return _.reject(this.props.options, (option) => {
+      return option.custom || option.hidden;
+    });
+  }
+
+  private getSelectedOptionElement(): JSX.Element[] {
+    if (this.props.options.length) {
+      return _.map(this.getSelectedOptions(), (selectedOption: IDropdownOption) => {
         const displayValue = selectedOption.displayValue || selectedOption.value;
         return (
           <span key={selectedOption.value}
@@ -93,17 +106,14 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   protected getDropdownOptions(): JSX.Element[] {
-    const options = _.chain(this.props.displayedOptions)
-      .filter(
-      (option: IDropdownOption) => {
+    const options = _.chain(this.getDisplayedOptions())
+      .filter((option: IDropdownOption) => {
         const value = option.displayValue || option.value;
         return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
-      },
-    )
+      })
       .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
         const optionClasses = classNames({
-          'state-selected': this.props.selectedOptions.getFirstElement() &&
-          option.value === this.props.selectedOptions.getFirstElement().value,
+          'state-selected': option.selected,
         });
         const liClasses = classNames({
           'active': JSON.stringify(option) === JSON.stringify(this.props.activeOption),
@@ -212,9 +222,9 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       }}
       ref={(input: HTMLButtonElement) => { this.dropdownButton = input; }}
       disabled={!!this.props.isDisabled}>
-      {this.getDropdownPrepend(this.props.selectedOptions.getFirstElement())}
-      {this.getSvg(this.props.selectedOptions.getFirstElement())}
-      {this.getSelectedOption()}
+      {this.getDropdownPrepend(this.getSelectedOption())}
+      {this.getSvg(this.getSelectedOption())}
+      {this.getSelectedOptionElement()}
       <span className='dropdown-toggle-arrow'></span>
     </button>;
   }

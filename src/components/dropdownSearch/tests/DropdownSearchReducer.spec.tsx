@@ -1,16 +1,16 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { IDropdownOption } from '../DropdownSearch';
 import {
+  addUniqueSelectedOption,
   dropdownSearchInitialState,
   dropdownSearchReducer,
   dropdownsSearchInitialState,
   dropdownsSearchReducer, getDisplayedOptions,
-  IDropdownSearchState,
+  IDropdownSearchState, deselectLastSelectedOption, deselectAllOptions, deselectOption,
 } from '../DropdownSearchReducers';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
 import { keyCode } from '../../../utils/InputUtils';
-import { FixedQueue } from '../../../utils/FixedQueue';
 
 describe('DropdownSearch', () => {
 
@@ -20,28 +20,28 @@ describe('DropdownSearch', () => {
       type: 'default',
     };
 
-    const defaultState = [
+    const defaultState: IDropdownSearchState[] = [
       {
         id: 'new-dropdown-search',
         isOpened: false,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        options: [],
       }, {
         id: 'new-dropdown-search-1',
         isOpened: false,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        options: [],
       }, {
         id: 'new-dropdown-search-2',
         isOpened: true,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
+        options: [],
       },
     ];
 
     const defaultPayload = { id: 'new-dropdown-search' };
 
     const options = [
-      { value: 'test 1', displayValue: 'test 1' },
-      { value: 'test 2', displayValue: 'test 2' },
-      { value: 'test 3', displayValue: 'test 3' }
+      { value: 'test 1', displayValue: 'display 1' },
+      { value: 'test 2', displayValue: 'display 2' },
+      { value: 'test 3', displayValue: 'display 3' }
     ];
 
     const oldState: IDropdownSearchState[] = [
@@ -49,8 +49,6 @@ describe('DropdownSearch', () => {
         id: 'new-dropdown-search',
         isOpened: false,
         options,
-        displayedOptions: options,
-        selectedOptions: new FixedQueue<IDropdownOption>([], 1),
       },
     ];
 
@@ -159,7 +157,7 @@ describe('DropdownSearch', () => {
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.update,
-        payload: _.extend({}, defaultPayload, { optionsDropdown: newDropdownOption }),
+        payload: _.extend({}, defaultPayload, { dropdownOptions: newDropdownOption }),
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
@@ -196,7 +194,6 @@ describe('DropdownSearch', () => {
         {
           id: 'new-dropdown-search',
           isOpened: true,
-          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
         },
       ];
 
@@ -209,7 +206,7 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-          dropdownSearch.selectedOptions.getFirstElement().value === selectedOption.value).length).toBe(1);
+          _.where(dropdownSearch.options, { value: selectedOption.value })).length).toBe(1);
     });
 
     it(
@@ -255,7 +252,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -281,7 +277,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[1],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -309,7 +304,6 @@ describe('DropdownSearch', () => {
             activeOption: options[options.length - 1],
             setFocusOnDropdownButton: false,
             filterText: '',
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -336,7 +330,6 @@ describe('DropdownSearch', () => {
             isOpened: true,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -361,7 +354,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -387,7 +379,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -413,7 +404,6 @@ describe('DropdownSearch', () => {
             isOpened: true,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -436,7 +426,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -461,7 +450,6 @@ describe('DropdownSearch', () => {
             isOpened: false,
             options,
             activeOption: options[0],
-            selectedOptions: new FixedQueue<IDropdownOption>([], 1),
           },
         ];
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -480,9 +468,7 @@ describe('DropdownSearch', () => {
           id: 'no-match',
           isOpened: false,
           options,
-          displayedOptions: options,
           activeOption: options[0],
-          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
         },
       ];
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -500,30 +486,111 @@ describe('DropdownSearch', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
           options,
-          selectedOptions: new FixedQueue<IDropdownOption>([], 1),
         };
 
-        expect(getDisplayedOptions(state)).toEqual(options);
+        expect(getDisplayedOptions(state.options)).toEqual(options);
       });
 
       it('should return only the options that are not selected', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
-          options,
-          selectedOptions: new FixedQueue<IDropdownOption>([options[0]], 1),
+          options: [{ ...options[0], selected: true, hidden: true }, options[1], options[2]],
         };
 
-        expect(getDisplayedOptions(state)).toEqual([options[1], options[2]]);
+        expect(getDisplayedOptions(state.options)).toEqual([options[1], options[2]]);
       });
 
       it('should return only the options in the right order', () => {
         const state: IDropdownSearchState = {
           id: 'new-dropdown-search',
-          options,
-          selectedOptions: new FixedQueue<IDropdownOption>([options[1]], 1),
+          options: [options[0], { ...options[1], selected: true, hidden: true }, options[2]],
         };
 
-        expect(getDisplayedOptions(state)).toEqual([options[0], options[2]]);
+        expect(getDisplayedOptions(state.options)).toEqual([options[0], options[2]]);
+      });
+    });
+
+    describe('deselect last selected option', () => {
+      it('should return an array of option without the last one', () => {
+        const optionToBeRemoved: IDropdownOption = {
+          value: 'value', displayValue: 'display', selected: true
+        };
+
+        const selectedOptions: IDropdownOption[] = [
+          ...options, optionToBeRemoved
+        ];
+
+        expect(deselectLastSelectedOption(selectedOptions)).toEqual([...options,
+        { ...optionToBeRemoved, selected: false, hidden: false }]);
+      });
+
+      it('should return an array equals to the one passed if there are no selected options', () => {
+        const selectedOptions: IDropdownOption[] = [].concat(options);
+
+        expect(deselectLastSelectedOption(selectedOptions)).toEqual(options);
+      });
+    });
+
+    describe('add unique selected option', () => {
+      it('should add a custom selected option', () => {
+        const options: IDropdownOption[] = [];
+        const value = 'Display value';
+
+        expect(_.findWhere(addUniqueSelectedOption(options, value), { value, selected: true, custom: true })).toBeDefined();
+      });
+
+      it('should not add a custom selected option if another one with the same value is present', () => {
+        const newOptions: IDropdownOption[] = [options[0]];
+
+        expect(addUniqueSelectedOption(newOptions, options[0].value).length).toBe(1);
+      });
+    });
+
+    describe('deselect all options', () => {
+      it('should return an array with all option unselected', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          { ...options[0], selected: true },
+          { ...options[1], selected: true },
+          { ...options[2], selected: true },
+        ];
+
+        expect(_.where(deselectAllOptions(optionsToDeselect), { selected: true }).length).toBe(0);
+      });
+
+      it('should remove the custom options', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          { ...options[0], selected: true },
+          { ...options[1], selected: true, custom: true },
+          { ...options[2], selected: true, custom: true },
+        ];
+
+        const expectedDeselectedOptions: IDropdownOption[] = [{ ...options[0], selected: false, hidden: false }];
+
+        expect(deselectAllOptions(optionsToDeselect)).toEqual(expectedDeselectedOptions);
+      });
+    });
+
+    describe('deselect option', () => {
+      it('should return an array with the right option unselected', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          { ...options[0], selected: true },
+          { ...options[1], selected: true },
+          { ...options[2], selected: true },
+        ];
+
+        expect(_.where(deselectOption(optionsToDeselect, options[0].value),
+          { value: options[0].value, selected: false, hidden: false }).length).toBe(1);
+      });
+
+      it('should remove the option if it is custom', () => {
+        const optionsToDeselect: IDropdownOption[] = [
+          { ...options[0], selected: true },
+          { ...options[1], selected: true },
+          { ...options[2], selected: true, custom: true },
+        ];
+
+        expect(_.find(deselectOption(optionsToDeselect, options[2].value),
+          { value: options[2].value })).toBeUndefined();
       });
     });
   });
