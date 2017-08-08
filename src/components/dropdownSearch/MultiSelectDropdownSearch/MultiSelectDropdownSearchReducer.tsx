@@ -23,7 +23,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
       return {
         ...state,
         id: action.payload.id,
-        options: action.payload.optionsDropdown,
+        options: action.payload.dropdownOptions,
         filterText: '',
         isOpened: false,
       };

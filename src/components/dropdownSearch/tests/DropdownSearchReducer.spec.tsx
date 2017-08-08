@@ -157,7 +157,7 @@ describe('DropdownSearch', () => {
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.update,
-        payload: _.extend({}, defaultPayload, { optionsDropdown: newDropdownOption }),
+        payload: _.extend({}, defaultPayload, { dropdownOptions: newDropdownOption }),
       };
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 

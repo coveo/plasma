@@ -10,7 +10,7 @@ export interface IInputDrodownSearchPayload extends IDefaultDropdownSearchPayloa
 }
 
 export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPayload, IInputDrodownSearchPayload {
-  optionsDropdown?: IDropdownOption[];
+  dropdownOptions?: IDropdownOption[];
   filterText?: string;
   selectedOptions?: IDropdownOption[];
   selectedOption?: IDropdownOption;
@@ -45,12 +45,11 @@ export const applyFilterDropdownSearch = (id: string, filterText: string): IRedu
   },
 });
 
-export const updateOptionsDropdownSearch = (id: string,
-  optionsDropdown: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const updateOptionsDropdownSearch = (id: string, dropdownOptions: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.update,
     payload: {
       id,
-      optionsDropdown,
+      dropdownOptions,
     },
   });
 
@@ -75,19 +74,19 @@ export const closeDropdownSearch = (id: string): IReduxAction<IDefaultDropdownSe
   },
 });
 
-export const addDropdownSearch = (id: string, optionsDropdown: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const addDropdownSearch = (id: string, dropdownOptions: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.add,
   payload: {
     id,
-    optionsDropdown,
+    dropdownOptions,
   },
 });
 
-export const addMultiSelectDropdownSearch = (id: string, optionsDropdown: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const addMultiSelectDropdownSearch = (id: string, dropdownOptions: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.addMultiSelect,
   payload: {
     id,
-    optionsDropdown,
+    dropdownOptions,
   },
 });
 

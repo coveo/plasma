@@ -31,7 +31,7 @@ describe('DropdownSearch', () => {
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.addMultiSelect,
         payload: _.extend(defaultPayload, {
-          optionsDropdown: options,
+          dropdownOptions: options,
         }),
       };
 

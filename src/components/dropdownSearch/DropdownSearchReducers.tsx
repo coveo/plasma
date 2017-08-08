@@ -159,7 +159,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        options: action.payload.optionsDropdown,
+        options: action.payload.dropdownOptions,
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.filter:
@@ -183,7 +183,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        options: action.payload.optionsDropdown ? action.payload.optionsDropdown.concat(defaultSelectedOption) : [defaultSelectedOption],
+        options: action.payload.dropdownOptions ? action.payload.dropdownOptions.concat(defaultSelectedOption) : [defaultSelectedOption],
         filterText: '',
         isOpened: false,
       };
