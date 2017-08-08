@@ -1,6 +1,7 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { IDropdownOption } from '../DropdownSearch';
 import {
+  addUniqueSelectedOption,
   dropdownSearchInitialState,
   dropdownSearchReducer,
   dropdownsSearchInitialState,
@@ -527,6 +528,21 @@ describe('DropdownSearch', () => {
         const selectedOptions: IDropdownOption[] = [].concat(options);
 
         expect(removeLastSelectedOption(selectedOptions)).toEqual(options);
+      });
+    });
+
+    describe('add unique selected option', () => { 
+      it('should add a custom selected option', () => {
+        const options: IDropdownOption[] = [];
+        const displayValue = 'Display value';
+
+        expect(_.findWhere(addUniqueSelectedOption(options, displayValue), {displayValue, selected: true, custom: true})).toBeDefined();
+      });
+
+      it('should not add a custom selected option if another one with the same displayValue is present', () => {
+        const newOptions: IDropdownOption[] = [options[0]];
+
+        expect(addUniqueSelectedOption(newOptions, options[0].displayValue).length).toBe(1);
       });
     });
   });

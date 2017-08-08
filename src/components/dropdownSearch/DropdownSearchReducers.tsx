@@ -84,14 +84,19 @@ export const removeAllSelectedOption = (options: IDropdownOption[]): IDropdownOp
 };
 
 export const addUniqueSelectedOption = (options: IDropdownOption[], displayValue: string): IDropdownOption[] => {
-  const nextOptions: IDropdownOption[] = deepClone(options);
-  nextOptions.push({
-    displayValue,
-    value: UUID.generate(),
-    selected: true,
-    custom: true,
-  });
-  return nextOptions;
+  const optionWithSameValueExists = _.findWhere(options, {displayValue}) === undefined;
+
+  if (optionWithSameValueExists) {
+    const nextOptions: IDropdownOption[] = deepClone(options);
+    nextOptions.push({
+      displayValue,
+      value: UUID.generate(),
+      selected: true,
+      custom: true,
+    });
+    return nextOptions;
+  }
+  return deepClone(options);
 };
 
 export const getDisplayedOptions = (options: IDropdownOption[]): IDropdownOption[] => {
