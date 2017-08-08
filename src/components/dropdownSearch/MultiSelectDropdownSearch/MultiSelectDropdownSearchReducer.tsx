@@ -5,7 +5,11 @@ import {
   dropdownSearchReducer,
   getNextIndexPosition,
   getFilteredOptions,
-  IDropdownSearchState, deselectOption, removeAllSelectedOption, multiSelectOption, deselectLastSelectedOption,
+  IDropdownSearchState,
+  deselectOption,
+  removeAllSelectedOption,
+  multiSelectOption,
+  deselectLastSelectedOption,
 } from '../DropdownSearchReducers';
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { keyCode } from '../../../utils/InputUtils';

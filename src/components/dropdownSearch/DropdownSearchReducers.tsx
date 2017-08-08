@@ -112,11 +112,8 @@ export const getFilteredOptions = (state: IDropdownSearchState, filterText?: str
 };
 
 export const selectSingleOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
-  return _.map(options, (option: IDropdownOption) => {
-    const nextOption = deepClone(option);
-    nextOption.selected = option.value === selectedOption.value;
-    return nextOption;
-  });
+  return _.map(options, (option: IDropdownOption) =>
+    _.extend(deepClone(option), { selected: option.value === selectedOption.value }));
 };
 
 export const multiSelectOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
