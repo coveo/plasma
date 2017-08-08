@@ -33,3 +33,7 @@ Thumbs.db
 *.vi
 *.zip
 *~
+
+# npm 5
+package-lock.json
+
