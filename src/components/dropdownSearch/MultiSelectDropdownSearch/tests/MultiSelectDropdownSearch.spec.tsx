@@ -48,7 +48,7 @@ describe('MultiSelectDropdownSearch', () => {
       multiSelectDropdownSearch.detach();
     });
 
-    fdescribe('render', () => {
+    describe('render', () => {
       it('should call custom option click function on mousedown when the value is not present in the selected options', () => {
         const filterText: string = 'customValue';
         const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
@@ -78,10 +78,8 @@ describe('MultiSelectDropdownSearch', () => {
         multiSelectDropdownSearch.setProps({
           filterText,
           isOpened: true,
-          options: [...options, {value: filterText, selected: true, custom: true}],
+          options: [...options, { value: filterText, selected: true, custom: true }],
         });
-
-        console.log(multiSelectDropdownSearch.html());
 
         expect(multiSelectDropdownSearch.find('li span').text()).toEqual(multiSelectDropdownSearch.props().noResultText);
       });

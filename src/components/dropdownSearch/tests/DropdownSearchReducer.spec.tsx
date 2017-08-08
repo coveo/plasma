@@ -39,9 +39,9 @@ describe('DropdownSearch', () => {
     const defaultPayload = { id: 'new-dropdown-search' };
 
     const options = [
-      { value: 'test 1', displayValue: 'test 1' },
-      { value: 'test 2', displayValue: 'test 2' },
-      { value: 'test 3', displayValue: 'test 3' }
+      { value: 'test 1', displayValue: 'display 1' },
+      { value: 'test 2', displayValue: 'display 2' },
+      { value: 'test 3', displayValue: 'display 3' }
     ];
 
     const oldState: IDropdownSearchState[] = [
@@ -542,7 +542,7 @@ describe('DropdownSearch', () => {
       it('should not add a custom selected option if another one with the same value is present', () => {
         const newOptions: IDropdownOption[] = [options[0]];
 
-        expect(addUniqueSelectedOption(newOptions, options[0].displayValue).length).toBe(1);
+        expect(addUniqueSelectedOption(newOptions, options[0].value).length).toBe(1);
       });
     });
 
@@ -578,8 +578,8 @@ describe('DropdownSearch', () => {
           { ...options[2], selected: true },
         ];
 
-        expect(_.where(deselectOption(optionsToDeselect, options[0].displayValue),
-          { displayValue: options[0].displayValue, selected: false, hidden: false }).length).toBe(1);
+        expect(_.where(deselectOption(optionsToDeselect, options[0].value),
+          { value: options[0].value, selected: false, hidden: false }).length).toBe(1);
       });
 
       it('should remove the option if it is custom', () => {
@@ -589,8 +589,8 @@ describe('DropdownSearch', () => {
           { ...options[2], selected: true, custom: true },
         ];
 
-        expect(_.find(deselectOption(optionsToDeselect, options[2].displayValue),
-          { displayValue: options[2].displayValue })).toBeUndefined();
+        expect(_.find(deselectOption(optionsToDeselect, options[2].value),
+          { value: options[2].value })).toBeUndefined();
       });
     });
   });
