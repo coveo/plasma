@@ -11,17 +11,15 @@ import {
   toggleDropdownSearch,
   updateActiveOptionDropdownSearch,
 } from './DropdownSearchActions';
-import { defaultSelectedOption, IDropdownSearchState } from './DropdownSearchReducers';
+import { IDropdownSearchState } from './DropdownSearchReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
   const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, { id: ownProps.id });
-  const selectedOption = ownProps.defaultSelectedOption || defaultSelectedOption;
 
   if (dropdownSearch) {
     return {
-      isOpened: dropdownSearch.isOpened,
-      options: dropdownSearch.options,
-      selectedOption: dropdownSearch.selectedOption || selectedOption,
+      isOpened: dropdownSearch.isOpened || false,
+      options: dropdownSearch.options || [],
       filterText: dropdownSearch.filterText || '',
       activeOption: dropdownSearch.activeOption,
       setFocusOnDropdownButton: dropdownSearch.setFocusOnDropdownButton,
@@ -29,8 +27,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
   }
 
   return {
-    options: ownProps.defaultOptions,
-    selectedOption,
+    isOpened: false,
+    options: ownProps.defaultOptions || [],
+    filterText: '',
   };
 };
 
@@ -41,7 +40,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onToggleDropdown: () => dispatch(toggleDropdownSearch(ownProps.id)),
     onBlur: () => dispatch(toggleDropdownSearch(ownProps.id)),
     onOptionClick: (option: IDropdownOption) => dispatch(selectOptionDropdownSearch(ownProps.id, option)),
-    onFilterClick: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
+    onFilterTextChange: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
     onKeyDownFilterBox: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
     onKeyDownDropdownButton: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
     onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),

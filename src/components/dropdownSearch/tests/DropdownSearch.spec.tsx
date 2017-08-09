@@ -2,20 +2,24 @@ import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { UUID } from '../../../utils/UUID';
-import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
+import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
 import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
-import { Svg } from '../../svg/Svg';
 import { keyCode } from '../../../utils/InputUtils';
+import { defaultSelectedOption } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
-  const options = [{ value: 'test a' }, { value: 'test b' }, { value: 'test c' }];
+  const options = [
+    { value: 'test a', displayValue: 'test a', prefix: 'test' },
+    { value: 'test b', displayValue: 'test b', svg: { svgClass: 'svg-class', svgName: 'svg-name' } },
+    { value: 'test c', displayValue: 'test c' }
+  ];
+
   const ownProps: IDropdownSearchProps = {
     id,
-    modMenu: false,
     options,
-    selectedOption: { value: 'test a' },
+    modMenu: false,
     filterPlaceholder: 'fill me',
     maxWidth: 400,
     width: 300,
@@ -49,6 +53,22 @@ describe('DropdownSearch', () => {
 
       it('should have the same object sent has parameter than the component props', () => {
         expect(dropdownSearch.props()).toEqual(_.extend({}, ownProps, DropdownSearch.defaultProps));
+      });
+    });
+
+    describe('render', () => {
+      it('should render wihtout error', () => {
+        expect(() => {
+          renderDropdownSearch(_.extend({}, ownProps));
+        }).not.toThrow();
+      });
+
+      it('should render wihtout error with no options provided', () => {
+        expect(() => {
+          renderDropdownSearch(_.extend({}, ownProps, {
+            options: [],
+          }));
+        }).not.toThrow();
       });
     });
 
@@ -93,12 +113,12 @@ describe('DropdownSearch', () => {
         expect(onDestroy).toHaveBeenCalled();
       });
 
-      it('should call onFilterClick if defined when onChange the "filter-box" input', () => {
-        const onFilterClick = jasmine.createSpy('onFilterClick');
-        dropdownSearch.setProps({ isOpened: true, onFilterClick });
+      it('should call onFilterTextChange if defined when onChange the "filter-box" input', () => {
+        const onFilterTextChange = jasmine.createSpy('onFilterTextChange');
+        dropdownSearch.setProps({ isOpened: true, onFilterTextChange });
         dropdownSearch.find('input.filter-box').simulate('change');
 
-        expect(onFilterClick).toHaveBeenCalled();
+        expect(onFilterTextChange).toHaveBeenCalled();
       });
 
       it('should call onBlur if defined when we lost focus on "filter-box" input', () => {
@@ -152,7 +172,7 @@ describe('DropdownSearch', () => {
 
       it('should call onKeyDownFilterBox if defined when key down on "filter-box"', () => {
         const onKeyDownFilterBox = jasmine.createSpy('onKeyDownFilterBox');
-        dropdownSearch.setProps({ isOpened: true, onKeyDownFilterBox });
+        dropdownSearch.setProps({ isOpened: true, onKeyDownFilterBox, activeOption: options[0] });
 
         dropdownSearch.find('input.filter-box').simulate('keydown');
 
@@ -197,7 +217,18 @@ describe('DropdownSearch', () => {
 
     describe('Props functionality', () => {
 
-      const selectedOption = { prefix: 'test', value: 'test1', displayValue: 'test 2' };
+      let selectedOption: IDropdownOption = defaultSelectedOption;
+
+      beforeEach(() => {
+        selectedOption = {
+          prefix: 'test', value: 'test1', displayValue: 'test 2',
+          svg: {
+            svgName: 'close',
+            svgClass: 'small',
+          },
+          selected: true,
+        };
+      });
 
       it('should show the filterBox if the dropdown is open', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
@@ -216,34 +247,25 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
+        renderDropdownSearch(_.extend({}, { ...ownProps, isOpened: true }));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
 
       it('should show the dropdown svg if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOption: _.extend({}, selectedOption, {
-            svg: {
-              svgName: 'close',
-              svgClass: 'small',
-            },
-          }),
-        }));
+        renderDropdownSearch(_.extend({}, { ...ownProps, isOpened: true }));
 
-        expect(dropdownSearch.find(Svg).length).toBe(1);
+        expect(dropdownSearch.find('.value-icon').length).toBe(1);
       });
 
-      it('should show the dropdown displayValue if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps, { selectedOption }));
+      it('should show the dropdown value if the selected option has one', () => {
+        renderDropdownSearch(_.extend({}, {
+          ownProps,
+          options: [...options, selectedOption],
+        },
+        ));
 
         expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(selectedOption.displayValue);
-      });
-
-      it('should show the dropdown value if the selected option has no displayValue', () => {
-        renderDropdownSearch(_.extend({}, ownProps));
-
-        expect(dropdownSearch.find('.dropdown-selected-value').text()).toBe(ownProps.selectedOption.value);
       });
 
       it('should add the mod-menu class if the modMenu is set to true', () => {
@@ -325,10 +347,11 @@ describe('DropdownSearch', () => {
         });
 
         renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOption: { value: 'test 1' },
+          selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
           options,
-          activeOption: { value: 'test 1' },
+          displayedOptions: options,
+          activeOption: { value: 'testd 1', displayValue: 'test 1' },
         }));
 
         spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
@@ -343,14 +366,15 @@ describe('DropdownSearch', () => {
 
       it('should scroll up if the active option is not visible by the user inside the dropdown list', () => {
         const options = _.times(20, (n: number) => {
-          return { value: `test ${n}` };
+          return { value: `test ${n}`, displayValue: `test ${n}` };
         });
 
         renderDropdownSearch(_.extend({}, ownProps, {
-          selectedOption: { value: 'test 1' },
+          selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
           options,
-          activeOption: { value: 'test 15' },
+          displayedOptions: options,
+          activeOption: { value: 'test 19', displayValue: 'test 19' },
         }));
 
         spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
@@ -359,7 +383,7 @@ describe('DropdownSearch', () => {
         const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
         spyOn(ul, 'getBoundingClientRect').and.returnValue({ bottom: 200000, top: 200000 });
 
-        dropdownSearch.setProps({ activeOption: { value: 'test 2' } });
+        dropdownSearch.setProps({ activeOption: { value: 'test 1', displayValue: 'test 1' } });
         expect(spy).toHaveBeenCalledTimes(1);
       });
     });

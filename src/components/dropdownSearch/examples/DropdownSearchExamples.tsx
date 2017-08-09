@@ -2,14 +2,19 @@ import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
+import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 
 export class DropdownSearchExamples extends React.Component<any, any> {
 
   render() {
     const defaultOptions = {
-      defaultOptions: [{ value: 'test 1', displayValue: 'TEST 22' }, { value: 'very long name name name name name name name name' },
-      { value: 'test 3' }, { value: 'test 4' },
-      { value: 'test 5' }, { value: 'test 6' },
+      defaultOptions: [
+        { value: 'Option 1', displayValue: 'Option 1', hidden: false },
+        { value: 'Option 2', displayValue: 'Option 2', },
+        { value: 'Option 3', displayValue: 'Option 3', },
+        { value: 'Option 4', displayValue: 'Option 4', },
+        { value: 'Option 5', displayValue: 'Option 5', },
+        { value: 'Option 6', displayValue: 'Option 6', },
       ],
     };
 
@@ -35,13 +40,16 @@ export class DropdownSearchExamples extends React.Component<any, any> {
       }),
     };
 
-    const selectedOption = _.defaults({
-      defaultSelectedOption: { value: 'test 3' },
-    }, defaultOptions);
-
     return (
       <div className='mt2'>
         <h1 className='text-blue mb1'>Dropdown List</h1>
+
+        <div className='form-group'>
+          <label className='form-control-label'>Multiselect Dropdown</label>
+          <div className='form-control'>
+            <MultiSelectDropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate(), deselectAllTooltipText: 'Unselect all' }) } filterPlaceholder={'Select options'} />
+          </div>
+        </div>
         <div className='form-group'>
           <label className='form-control-label'>Default Dropdown</label>
           <div className='form-control'>
@@ -57,7 +65,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Dropdown with selected option</label>
           <div className='form-control'>
-            <DropdownSearchConnected {..._.extend({}, selectedOption, { id: UUID.generate() }) } />
+            <DropdownSearchConnected {..._.extend({}, { id: UUID.generate() }) } />
           </div>
         </div>
         <div className='form-group'>
