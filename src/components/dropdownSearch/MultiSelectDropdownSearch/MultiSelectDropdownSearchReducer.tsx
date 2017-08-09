@@ -56,17 +56,18 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
         isOpened: true,
       };
     case DropdownSearchActions.onKeyDownMultiselect:
-      const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
+        const keyPressed = action.payload.keyCode;
+      const isFirstSelectedOption = keyPressed === keyCode.upArrow && state.activeOption === state.options[0];
       const filteredOptions = getFilteredOptions(state);
-      if (_.contains([keyCode.upArrow, keyCode.downArrow], action.payload.keyCode)) {
+      if (_.contains([keyCode.upArrow, keyCode.downArrow], keyPressed)) {
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
           activeOption: !isFirstSelectedOption ?
-            filteredOptions[getNextIndexPosition(filteredOptions, state.activeOption, action.payload.keyCode)] : undefined,
+            filteredOptions[getNextIndexPosition(filteredOptions, state.activeOption, keyPressed)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
-      } else if (_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && state.activeOption) {
+      } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed) && state.activeOption) {
 
         return {
           ...state,
@@ -77,7 +78,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           filterText: '',
           setFocusOnDropdownButton: true,
         };
-      } else if ((_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && !state.activeOption && state.filterText)) {
+      } else if ((_.contains([keyCode.enter, keyCode.tab], keyPressed) && !state.activeOption && state.filterText)) {
         return {
           ...state,
           options: addUniqueSelectedOption(state.options, state.filterText),
@@ -87,7 +88,7 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
           filterText: '',
           setFocusOnDropdownButton: true,
         };
-      } else if (action.payload.keyCode === keyCode.backspace) {
+      } else if (keyPressed === keyCode.backspace) {
         if (state.filterText === '') {
           return {
             ...state,
@@ -98,12 +99,12 @@ export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = d
             setFocusOnDropdownButton: true,
           };
         }
-      } else if (action.payload.keyCode === keyCode.escape) {
+      } else if (keyPressed === keyCode.escape) {
         return {
           ...state,
           isOpened: false,
         };
-      } else if (action.payload.keyCode === -1) {
+      } else if (keyPressed === -1) {
         return {
           ...state,
           id: action.payload.id,
