@@ -22,6 +22,8 @@
   padding: $drowdown-multiselect-margin;
 
   input {
+    padding: $drowdown-multiselect-margin;
+    font-size: $dropdown-button-font-size;
     border: none;
     height: $dropdown-multiselect-option-height;
     min-width: 100%;
