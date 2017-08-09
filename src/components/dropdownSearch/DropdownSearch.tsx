@@ -131,8 +131,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
             className={liClasses}
             title={value}>
             <span className={optionClasses}
-                  onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
-                  data-value={option.value}>
+              onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
+              data-value={option.value}>
               {this.getDropdownPrepend(option)}
               {this.getSvg(option)}
               {valueToShow}
@@ -192,7 +192,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   protected getTextElement(subText: string, text: string, highlightIndexKey: number, className: string = ''): JSX.Element {
     return (
-        <span key={`${text}-${highlightIndexKey}`}
+      <span key={`${text}-${highlightIndexKey}`}
         className={className}>
         {subText}
       </span>

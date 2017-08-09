@@ -97,7 +97,7 @@ export const addUniqueSelectedOption = (options: IDropdownOption[], value: strin
 };
 
 export const getDisplayedOptions = (options: IDropdownOption[]): IDropdownOption[] => {
-  return _.reject(options, (option) => option.custom || option.hidden );
+  return _.reject(options, (option) => option.custom || option.hidden);
 };
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
