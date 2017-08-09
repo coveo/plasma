@@ -39,6 +39,7 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
           onKeyDownFilterBox={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
           filterPlaceholder={this.props.filterPlaceholder}
           filterText={this.props.filterText}
+          deselectAllTooltipText={this.props.deselectAllTooltipText}
         />
         <ul className='dropdown-menu' ref={(input: HTMLUListElement) => { this.ulElement = input; }}>
           {this.getDropdownOptions()}

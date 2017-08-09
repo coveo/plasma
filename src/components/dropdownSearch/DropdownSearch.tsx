@@ -37,6 +37,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   highlightAllFilterResult?: boolean;
   noResultText?: string;
   createOptionText?: string;
+  deselectAllTooltipText?: string;
   isDisabled?: boolean;
   onOptionClickCallBack?: (option: IDropdownOption) => void;
   onMountCallBack?: () => void;

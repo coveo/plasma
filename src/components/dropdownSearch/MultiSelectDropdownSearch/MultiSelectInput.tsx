@@ -3,6 +3,7 @@ import { IDropdownOption } from '../DropdownSearch';
 import { SelectedOption } from './SelectedOption';
 import { Svg } from '../../svg/Svg';
 import * as _ from 'underscore';
+import { Tooltip } from '../../tooltip/Tooltip';
 
 export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
@@ -14,9 +15,14 @@ export interface IMultiselectInputProps {
   onKeyDownFilterBox?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   filterPlaceholder?: string;
   filterText?: string;
+  deselectAllTooltipText?: string;
 }
 
 export class MultiselectInput extends React.Component<IMultiselectInputProps, any> {
+
+  static defaultProps: Partial<IMultiselectInputProps> = {
+    deselectAllTooltipText: 'Deselect all options',
+  };
 
   private handleOnRemoveAll() {
     if (this.props.onRemoveAll) {
@@ -68,9 +74,11 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
   private getRemoveAllSelectedOptionsButton(): JSX.Element {
     if (this.props.selectedOptions.length) {
       return (
-        <div className='remove-all-selected-options' onClick={() => this.handleOnRemoveAll()}>
-          <Svg svgName='clear' svgClass='icon fill-medium-blue' />
-        </div>
+        <Tooltip title={this.props.deselectAllTooltipText} placement={'top'}>
+          <div className='remove-all-selected-options' onClick={() => this.handleOnRemoveAll()}>
+            <Svg svgName='clear' svgClass='icon fill-medium-blue' />
+          </div>
+        </Tooltip>
       );
     }
   }
