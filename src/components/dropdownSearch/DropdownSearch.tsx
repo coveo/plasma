@@ -110,7 +110,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
     const options = _.chain(this.getDisplayedOptions())
       .filter((option: IDropdownOption) => {
         const value = option.displayValue || option.value;
-        return _.isEmpty(this.props.filterText) || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
+        return _.isEmpty(this.props.filterText)
+          || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
       })
       .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
         const optionClasses = classNames({
@@ -130,7 +131,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
             className={liClasses}
             title={value}>
             <span className={optionClasses}
-              onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)} data-value={option.value}>
+                  onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
+                  data-value={option.value}>
               {this.getDropdownPrepend(option)}
               {this.getSvg(option)}
               {valueToShow}
@@ -189,10 +191,12 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   protected getTextElement(subText: string, text: string, highlightIndexKey: number, className: string = ''): JSX.Element {
-    return <span key={`${text}-${highlightIndexKey}`}
-      className={className}>
-      {subText}
-    </span>;
+    return (
+        <span key={`${text}-${highlightIndexKey}`}
+        className={className}>
+        {subText}
+      </span>
+    );
   }
 
   protected getDropdownPrepend(option: IDropdownOption): JSX.Element {

@@ -97,17 +97,15 @@ export const addUniqueSelectedOption = (options: IDropdownOption[], value: strin
 };
 
 export const getDisplayedOptions = (options: IDropdownOption[]): IDropdownOption[] => {
-  return _.reject(options, (option) => {
-    return option.custom || option.hidden;
-  });
+  return _.reject(options, (option) => option.custom || option.hidden );
 };
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
   const currentFilterText: string = filterText || state.filterText || '';
   return _.filter(getDisplayedOptions(state.options),
     (option: IDropdownOption) => {
-      const value = option.displayValue || option.value;
-      return s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
+      const displayValue = option.displayValue || option.value;
+      return s.contains(displayValue.toLowerCase(), (currentFilterText).toLowerCase());
     });
 };
 
