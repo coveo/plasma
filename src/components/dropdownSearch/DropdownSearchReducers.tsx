@@ -188,17 +188,19 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         isOpened: false,
       };
     case DropdownSearchActions.active:
-      const isFirstSelectedOption = action.payload.keyCode === keyCode.upArrow && state.activeOption === state.options[0];
+      const keyPressed = action.payload.keyCode;
+      const isFirstSelectedOption = keyPressed === keyCode.upArrow && state.activeOption === state.options[0];
       const optionsFiltered = getFilteredOptions(state);
-      if (_.contains([keyCode.upArrow, keyCode.downArrow], action.payload.keyCode)) {
+
+      if (_.contains([keyCode.upArrow, keyCode.downArrow], keyPressed)) {
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
           activeOption: !isFirstSelectedOption ?
-            optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, action.payload.keyCode)] : undefined,
+            optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, keyPressed)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
-      } else if (_.contains([keyCode.enter, keyCode.tab], action.payload.keyCode) && state.activeOption) {
+      } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed) && state.activeOption) {
         return {
           ...state,
           id: action.payload.id,
@@ -208,12 +210,12 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           filterText: '',
           setFocusOnDropdownButton: true,
         };
-      } else if (action.payload.keyCode === keyCode.escape) {
+      } else if (keyPressed === keyCode.escape) {
         return {
           ...state,
           isOpened: false,
         };
-      } else if (action.payload.keyCode === -1) {
+      } else if (keyPressed === -1) {
         return {
           ...state,
           id: action.payload.id,
