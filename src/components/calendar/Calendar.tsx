@@ -32,6 +32,7 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
   days?: string[];
   startingDay?: number;
   selectionRules?: ICalendarSelectionRule[];
+  isLinkedToDateRange?: boolean;
 }
 
 export interface ICalendarStateProps extends IReduxStatePossibleProps {

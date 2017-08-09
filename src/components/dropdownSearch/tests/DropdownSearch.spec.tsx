@@ -5,7 +5,6 @@ import { UUID } from '../../../utils/UUID';
 import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
 import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
-import { Svg } from '../../svg/Svg';
 import { keyCode } from '../../../utils/InputUtils';
 import { defaultSelectedOption } from '../DropdownSearchReducers';
 
@@ -14,7 +13,9 @@ describe('DropdownSearch', () => {
   const options = [
     { value: 'test a', displayValue: 'test a', prefix: 'test' },
     { value: 'test b', displayValue: 'test b', svg: { svgClass: 'svg-class', svgName: 'svg-name' } },
-    { value: 'test c', displayValue: 'test c' }];
+    { value: 'test c', displayValue: 'test c' }
+  ];
+
   const ownProps: IDropdownSearchProps = {
     id,
     options,
@@ -158,7 +159,9 @@ describe('DropdownSearch', () => {
         expect(onOptionClickCallBack).toHaveBeenCalled();
       });
 
-      it('should call onMouseEnterDropdown if defined when enter over the ul element', () => {
+      it('should call onMouseEnterDropdown if defined when enter over the ul element and dropdown is opened', () => {
+        renderDropdownSearch(_.extend({}, ownProps, { isOpened: true }));
+
         const onMouseEnterDropdown = jasmine.createSpy('onMouseEnterDropdown');
         dropdownSearch.setProps({ onMouseEnterDropdown });
 
@@ -244,15 +247,15 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, { ...ownProps }));
+        renderDropdownSearch(_.extend({}, { ...ownProps, isOpened: true }));
 
         expect(dropdownSearch.find('.dropdown-prepend').text()).toBe(selectedOption.prefix);
       });
 
       it('should show the dropdown svg if the selected option has one', () => {
-        renderDropdownSearch(_.extend({}, ownProps));
+        renderDropdownSearch(_.extend({}, { ...ownProps, isOpened: true }));
 
-        expect(dropdownSearch.find(Svg).length).toBe(1);
+        expect(dropdownSearch.find('.value-icon').length).toBe(1);
       });
 
       it('should show the dropdown value if the selected option has one', () => {
@@ -273,7 +276,7 @@ describe('DropdownSearch', () => {
         expect(dropdownSearch.find('.mod-menu').length).toBe(1);
       });
 
-      it('should show options with the highlight set on a span with the class bold ', () => {
+      it('should show options with the highlight set on a span with the class bold when dropdown is opened', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           highlightAllFilterResult: true,
           filterText: 'tes',
@@ -287,6 +290,7 @@ describe('DropdownSearch', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           highlightAllFilterResult: true,
           filterText: 'es',
+          isOpened: true,
         }));
 
         expect(dropdownSearch.find('span.bold').length).toBe(3);
@@ -307,6 +311,34 @@ describe('DropdownSearch', () => {
         }));
 
         expect(dropdownSearch.find('.dropdown-toggle').prop('disabled')).toBe(true);
+      });
+
+      it('should call getNoOptions if no options are in the dropdown', () => {
+        const getNoOptionsSpy = spyOn((DropdownSearch.prototype as any), 'getNoOptions');
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOption: undefined,
+          isOpened: true,
+          options: [],
+        }));
+
+        expect(getNoOptionsSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should return a list of one descriptive element when getNoOptions is called', () => {
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOption: undefined,
+          isOpened: true,
+          options: [],
+        }));
+
+        const dropdownSearchInstance = (dropdownSearch.instance() as any);
+
+        expect(JSON.stringify(dropdownSearchInstance.getNoOptions()))
+          .toBe(JSON.stringify([
+            <li key='noResultDropdownSearch'>
+              <span>{dropdownSearchInstance.props.noResultText}</span>
+            </li>,
+          ]));
       });
 
       it('should scroll down if the active option is not visible by the user inside the dropdown list', () => {

@@ -155,7 +155,7 @@ describe('DropdownSearch', () => {
 
     describe('on key down', () => {
 
-      it('should return the new state with the activeOption set with the option before this one set in activeOption in oldState if the keyCode is "Up Arrow"', () => {
+      it('should return the new state with active option above the last one if the keyCode is "Up Arrow"', () => {
         const oldstate: IDropdownSearchState = _.extend(oldState, {
           id: 'new-dropdown-search',
           isOpened: true,

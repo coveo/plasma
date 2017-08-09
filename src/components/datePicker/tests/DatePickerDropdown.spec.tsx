@@ -56,16 +56,23 @@ describe('Date picker', () => {
       expect(datesSelectionBoxesProps).toEqual(DATE_PICKER_DROPDOWN_BASIC_PROPS.datesSelectionBoxes);
     });
 
-    it('should display a <DatePickerBox />', () => {
+    it('should not display a <DatePickerBox /> if it is not opened', () => {
+      expect(datePickerDropdown.find('DatePickerBox').length).toBe(0);
+    });
+
+    it('should display a <DatePickerBox /> if it is opened', () => {
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
+
       expect(datePickerDropdown.find('DatePickerBox').length).toBe(1);
     });
 
     it('should have the class "open" if the isOpened prop is set to true', () => {
-      let propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
 
       expect(datePickerDropdown.find('.dropdown-wrapper').hasClass('open')).toBe(false);
 
-      datePickerDropdown.setProps(propsIsOpen);
+      datePickerDropdown.setProps(propsIsOpened);
 
       expect(datePickerDropdown.find('.dropdown-wrapper').hasClass('open')).toBe(true);
     });
@@ -186,9 +193,9 @@ describe('Date picker', () => {
       expect(onClickSpy).toHaveBeenCalled();
     });
 
-    it('should add a listener on document on mount and remove it on unmount if prop onDocumentClick is set', () => {
+    it('should trigger onDocumentClick dispatch on mount and remove it on unmount if prop onDocumentClick is set and isOpened is true', () => {
       let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy });
+      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy, isOpened: true });
 
       datePickerDropdown.mount();
       document.getElementById('App').click();
@@ -205,9 +212,28 @@ describe('Date picker', () => {
       expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
     });
 
+    it('should not trigger onDocumentClick dispatch on mount if prop onDocumentClick is set and isOpened is false', () => {
+      let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy, isOpened: false });
+
+      datePickerDropdown.mount();
+      document.getElementById('App').click();
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+      datePickerDropdown.unmount();
+      datePickerDropdown.setProps(newDropdownProps);
+      datePickerDropdown.mount();
+      document.getElementById('App').click();
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+      datePickerDropdown.unmount();
+      document.getElementById('App').click();
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+    });
+
     it('should not call onDocumentClick when prop is set and clicking on the dropdown', () => {
       let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy });
+      let newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onDocumentClick: onDocumentClickSpy, isOpened: true });
 
       datePickerDropdown = mount(
         <DatePickerDropdown {...newDropdownProps} />,
@@ -244,14 +270,20 @@ describe('Date picker', () => {
       expect(onDestroySpy).toHaveBeenCalled();
     });
 
-    it('should display a footer with two button', () => {
+    it('should display a footer with two button if the dropdown is opened', () => {
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
+
       expect(datePickerDropdown.find('footer').length).toBe(1);
       expect(datePickerDropdown.find('footer').find('button').length).toBe(2);
     });
 
-    it('should display the apply label passed as a prop or use the default one', () => {
+    it('should display the apply label passed as a prop or use the default one if the dropdown is opened', () => {
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
+
       let applyLabel: string = 'appliquer';
-      let newProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { applyLabel });
+      let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, { applyLabel });
 
       expect(datePickerDropdown.find('footer').html()).toContain(DEFAULT_APPLY_DATE_LABEL);
 
@@ -261,9 +293,12 @@ describe('Date picker', () => {
       expect(datePickerDropdown.find('footer').html()).toContain(applyLabel);
     });
 
-    it('should display the cancel label passed as a prop or use the default one', () => {
+    it('should display the cancel label passed as a prop or use the default one if the dropdown is opened', () => {
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
+
       let cancelLabel: string = 'annuler';
-      let newProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { cancelLabel });
+      let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, { cancelLabel });
 
       expect(datePickerDropdown.find('footer').html()).toContain(DEFAULT_CANCEL_DATE_LABEL);
 
@@ -274,6 +309,9 @@ describe('Date picker', () => {
     });
 
     it('should call handleApply when clicking on the apply button', () => {
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
+
       let handleApplySpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleApply');
 
       datePickerDropdown.find('footer').find('button').first().simulate('click');
@@ -282,6 +320,9 @@ describe('Date picker', () => {
     });
 
     it('should call handleCancel when clicking on the cancel button', () => {
+      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
+      datePickerDropdown.setProps(propsIsOpened);
+
       let handleCancelSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleCancel');
 
       datePickerDropdown.find('footer').find('button').last().simulate('click');

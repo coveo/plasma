@@ -103,11 +103,11 @@ export const getDisplayedOptions = (options: IDropdownOption[]): IDropdownOption
 };
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
-  const currentFilterText: string = filterText || state.filterText;
+  const currentFilterText: string = filterText || state.filterText || '';
   return _.filter(getDisplayedOptions(state.options),
     (option: IDropdownOption) => {
       const value = option.displayValue || option.value;
-      return _.isEmpty(currentFilterText) || s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
+      return s.contains(value.toLowerCase(), (currentFilterText).toLowerCase());
     });
 };
 

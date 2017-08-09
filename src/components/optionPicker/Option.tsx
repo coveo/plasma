@@ -17,7 +17,7 @@ export class Option extends React.Component<IOptionProps, any> {
     let buttonClass = this.props.isActive ? 'active' : '';
 
     return (
-      <button className={buttonClass} onClick={() => this.props.onClick(this.props.option.value(), this.props.option.label)}>
+      <button type='button' className={buttonClass} onClick={() => this.props.onClick(this.props.option.value(), this.props.option.label)}>
         {this.props.option.label}
       </button>
     );

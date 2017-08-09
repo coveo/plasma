@@ -1,6 +1,6 @@
 {
   "name": "react-vapor",
-  "version": "1.5.4",
+  "version": "1.5.12",
   "description": "Vapor CSS components implemented with React!",
   "keywords": [
     "coveo",
@@ -32,9 +32,11 @@
     "prepublish": "npm run build && npm test",
     "report-coverage": "codecov -f coverage/coverage.json"
   },
-  "pre-commit": [
+  "pre-push": [
     "lint",
-    "build"
+    "build",
+    "pretest",
+    "test"
   ],
   "dependencies": {
     "react-bootstrap": "0.31.1",
@@ -49,8 +51,8 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "@types/classnames": "2.2.0",
     "@types/chosen-js": "1.6.1",
+    "@types/classnames": "2.2.0",
     "@types/enzyme": "2.8.2",
     "@types/jasmine": "2.5.53",
     "@types/jquery": "2.0.43",
@@ -104,7 +106,7 @@
     "moment": "2.18.1",
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.6",
-    "pre-commit": "1.2.2",
+    "pre-push": "0.1.1",
     "pretty-typescript": "1.15.0",
     "react": "15.6.1",
     "react-addons-test-utils": "15.6.0",

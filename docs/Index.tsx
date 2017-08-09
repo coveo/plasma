@@ -34,6 +34,7 @@ import { DatesSelectionExamples } from '../src/components/datePicker/examples/Da
 import { DatesSelectionConnectedExamples } from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import { DatePickerDropdownConnectedSingleDateExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import { ModalExamples } from '../src/components/modal/examples/ModalExamples';
 import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample';
 import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
@@ -55,7 +56,7 @@ class App extends React.Component<any, any> {
           <div className='form-group'>
             <label className='form-control-label'>
               My list of members
-            </label>
+                        </label>
             <div className='form-control'>
               <MembersExample />
             </div>
@@ -63,7 +64,7 @@ class App extends React.Component<any, any> {
           <div className='form-group'>
             <label className='form-control-label'>
               Include an SVG
-            </label>
+                        </label>
             <div className='form-control'>
               <Svg svgName='domain-google' className='icon mod-2x' />
             </div>
@@ -71,7 +72,7 @@ class App extends React.Component<any, any> {
           <div className='form-group'>
             <label className='form-control-label'>
               Include another SVG
-            </label>
+                        </label>
             <div className='form-control'>
               <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
             </div>
@@ -113,6 +114,7 @@ class App extends React.Component<any, any> {
           <DatePickerBoxExamples />
           <DatePickerBoxConnectedExamples />
           <DatePickerDropdownConnectedExamples />
+          <DatePickerDropdownConnectedSingleDateExamples />
           <MultilineInputExamples />
           <BlankSlateExample />
         </div>
