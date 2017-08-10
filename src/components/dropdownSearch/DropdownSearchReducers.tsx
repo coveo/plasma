@@ -180,7 +180,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
     case DropdownSearchActions.add:
       const options = action.payload.dropdownOptions || [];
       const defaultOption = action.payload.defaultSelectedOption
-        ? {...action.payload.defaultSelectedOption, selected: true, custom: true}
+        ? { ...action.payload.defaultSelectedOption, selected: true, custom: true }
         : defaultSelectedOption;
       return {
         ...state,
