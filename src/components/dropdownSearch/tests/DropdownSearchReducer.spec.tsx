@@ -6,7 +6,7 @@ import {
   dropdownSearchReducer,
   dropdownsSearchInitialState,
   dropdownsSearchReducer, getDisplayedOptions,
-  IDropdownSearchState, deselectLastSelectedOption, deselectAllOptions, deselectOption,
+  IDropdownSearchState, deselectLastSelectedOption, deselectAllOptions, deselectOption, defaultSelectedOption,
 } from '../DropdownSearchReducers';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
@@ -80,7 +80,7 @@ describe('DropdownSearch', () => {
       expect(actionBarState).toBe(oldState);
     });
 
-    it('should return a new state with actions payload has parameter on "ADD_DROPDOWN_SEARCH', () => {
+    it('should return a new state with actions payload has parameter on "ADD_DROPDOWN_SEARCH"', () => {
       let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.add,
@@ -100,7 +100,7 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState.filter((dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id).length).toBe(1);
     });
 
-    it('should return a state with a default selected option when defaultSelectedOption is given', () => {
+    it('should return a state with a default selected option when defaultSelectedOption is given on "ADD_DROPDOWN_SEARCH"', () => {
       let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
       const defaultSelectedOption: IDropdownOption = { value: 'Default option' };
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -112,6 +112,19 @@ describe('DropdownSearch', () => {
       const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
 
       expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected).toBe(true);
+    });
+
+    it('should return a state with a default selected option when no options are given on "ADD_DROPDOWN_SEARCH"', () => {
+      let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+        type: DropdownSearchActions.add,
+        payload: _.extend({}, { ...defaultPayload }),
+      };
+      let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+      const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+
+      expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value)).toBeDefined();
     });
 
     it('should return the old state without the dropdownSearch with the payload id when the action is "REMOVE_DROPDOWN_SEARCH"', () => {
