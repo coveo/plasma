@@ -178,10 +178,14 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.add:
+      const options = action.payload.dropdownOptions || [];
+      const defaultOption = action.payload.defaultSelectedOption
+        ? {...action.payload.defaultSelectedOption, selected: true, custom: true}
+        : defaultSelectedOption;
       return {
         ...state,
+        options: [...options, defaultOption],
         id: action.payload.id,
-        options: action.payload.dropdownOptions ? action.payload.dropdownOptions.concat(defaultSelectedOption) : [defaultSelectedOption],
         filterText: '',
         isOpened: false,
       };

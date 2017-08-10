@@ -35,7 +35,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: IDropdownSearchOwnProps) => ({
-    onMount: () => dispatch(addDropdownSearch(ownProps.id, ownProps.defaultOptions)),
+    onMount: () => dispatch(addDropdownSearch(ownProps.id, ownProps.defaultOptions, ownProps.defaultSelectedOption)),
     onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
     onToggleDropdown: () => dispatch(toggleDropdownSearch(ownProps.id)),
     onBlur: () => dispatch(toggleDropdownSearch(ownProps.id)),
