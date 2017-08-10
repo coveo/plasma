@@ -17,7 +17,7 @@ export interface IDropdownSearchState {
   setFocusOnDropdownButton?: boolean;
 }
 
-export const defaultSelectedOption: IDropdownOption = {
+export const defaultSelectedOptionPlaceholder: IDropdownOption = {
   value: 'Select an option',
   selected: true,
   custom: true,
@@ -125,6 +125,22 @@ export const multiSelectOption = (options: IDropdownOption[], selectedOption: ID
   });
 };
 
+export const updateOptions = (options: IDropdownOption[], selectedOption?: IDropdownOption): IDropdownOption[] => {
+  let updatedOptions: IDropdownOption[] = options
+    ? deepClone(options)
+    : [];
+
+  const defaultSelectedOption = selectedOption
+    ? { ...selectedOption, selected: true, custom: true }
+    : defaultSelectedOptionPlaceholder;
+
+  updatedOptions = _.find(updatedOptions, (option) => option.value === defaultSelectedOption.value)
+    ? selectSingleOption(updatedOptions, defaultSelectedOption)
+    : [...updatedOptions, defaultSelectedOption];
+
+  return updatedOptions;
+};
+
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
 
@@ -157,7 +173,8 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        options: action.payload.dropdownOptions,
+        options: updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption),
+        filterText: '',
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.filter:
@@ -178,13 +195,9 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.add:
-      const options = action.payload.dropdownOptions || [];
-      const defaultOption = action.payload.defaultSelectedOption
-        ? { ...action.payload.defaultSelectedOption, selected: true, custom: true }
-        : defaultSelectedOption;
       return {
         ...state,
-        options: [...options, defaultOption],
+        options: updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption),
         id: action.payload.id,
         filterText: '',
         isOpened: false,

@@ -6,7 +6,7 @@ import {
   dropdownSearchReducer,
   dropdownsSearchInitialState,
   dropdownsSearchReducer, getDisplayedOptions,
-  IDropdownSearchState, deselectLastSelectedOption, deselectAllOptions, deselectOption, defaultSelectedOption,
+  IDropdownSearchState, deselectLastSelectedOption, deselectAllOptions, deselectOption, defaultSelectedOptionPlaceholder,
 } from '../DropdownSearchReducers';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import * as _ from 'underscore';
@@ -124,7 +124,21 @@ describe('DropdownSearch', () => {
 
       const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
 
-      expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value)).toBeDefined();
+      expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOptionPlaceholder.value)).toBeDefined();
+    });
+
+    it('should return a state with a selectedOption if the defaultSelectedOption is equal to one option already present "ADD_DROPDOWN_SEARCH"', () => {
+      let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+      const defaultSelectedOption: IDropdownOption = { value: 'Default option', selected: false };
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+        type: DropdownSearchActions.add,
+        payload: _.extend({}, { ...defaultPayload, options: [defaultSelectedOption], defaultSelectedOption }),
+      };
+      let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+      const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+
+      expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected).toBe(true);
     });
 
     it('should return the old state without the dropdownSearch with the payload id when the action is "REMOVE_DROPDOWN_SEARCH"', () => {
@@ -173,7 +187,7 @@ describe('DropdownSearch', () => {
 
     it('should return the new state with the isOpened toggle and the filterText reset to empty string on "UPDATE_DROPDOWN_SEARCH"', () => {
       const dropdownOption = [{ value: 'test' }, { value: 'test 1' }, { value: 'test 2' }];
-      const newDropdownOption = [{ value: 'test 4' }];
+      const newDropdownOption = [{ value: 'test 4', selected: true }];
       const oldState: IDropdownSearchState[] = [
         {
           id: 'new-dropdown-search',
@@ -184,13 +198,14 @@ describe('DropdownSearch', () => {
 
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.update,
-        payload: _.extend({}, defaultPayload, { dropdownOptions: newDropdownOption }),
+        payload: _.extend({}, defaultPayload, { dropdownOptions: newDropdownOption, defaultSelectedOption: newDropdownOption[0] }),
       };
+
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter((dropdownSearch: IDropdownSearchState) =>
-        dropdownSearch.id === action.payload.id && dropdownSearch.options === newDropdownOption).length).toBe(1);
+        dropdownSearch.id === action.payload.id)[0].options).toEqual(newDropdownOption);
     });
 
     it('should return the new state with the isOpened toggle and the filterText reset to empty string on "FILTER_DROPDOWN_SEARCH"', () => {

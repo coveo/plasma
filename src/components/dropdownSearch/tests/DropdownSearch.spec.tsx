@@ -6,7 +6,7 @@ import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../Dropdo
 import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
 import { keyCode } from '../../../utils/InputUtils';
-import { defaultSelectedOption } from '../DropdownSearchReducers';
+import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -217,7 +217,7 @@ describe('DropdownSearch', () => {
 
     describe('Props functionality', () => {
 
-      let selectedOption: IDropdownOption = defaultSelectedOption;
+      let selectedOption: IDropdownOption = defaultSelectedOptionPlaceholder;
 
       beforeEach(() => {
         selectedOption = {

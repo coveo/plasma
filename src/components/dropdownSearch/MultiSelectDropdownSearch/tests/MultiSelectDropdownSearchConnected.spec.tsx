@@ -8,7 +8,7 @@ import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearch
 import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
 import { TestUtils } from '../../../../utils/TestUtils';
 import { clearState } from '../../../../utils/ReduxUtils';
-import { defaultSelectedOption } from '../../DropdownSearchReducers';
+import { defaultSelectedOptionPlaceholder } from '../../DropdownSearchReducers';
 import {
   addCustomSelectedOption,
   applyFilterDropdownSearch,
@@ -163,7 +163,7 @@ describe('MultiSelectDropdownSearch', () => {
         wrapper.find('li span').first().simulate('mouseDown');
 
         const selectedOption = store.getState().dropdownSearch[0].options[0];
-        expect(selectedOption).not.toBe(defaultSelectedOption);
+        expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);
         expect(selectedOption.value).toBe('test 1');
       });
 
