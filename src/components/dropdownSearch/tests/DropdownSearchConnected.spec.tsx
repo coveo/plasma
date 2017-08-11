@@ -8,7 +8,7 @@ import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import { UUID } from '../../../utils/UUID';
 import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
-import { defaultSelectedOption } from '../DropdownSearchReducers';
+import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
 import { toggleDropdownSearch, updateActiveOptionDropdownSearch, updateOptionsDropdownSearch } from '../DropdownSearchActions';
 import { keyCode } from '../../../utils/InputUtils';
 import * as _ from 'underscore';
@@ -87,8 +87,6 @@ describe('DropdownSearch', () => {
       it('should get the options as a prop', () => {
         const optionsProp = dropdownSearch.props().options;
 
-        console.log(optionsProp);
-
         expect(optionsProp).toBeDefined();
         expect(optionsProp.length).toBe(3);
       });
@@ -97,7 +95,7 @@ describe('DropdownSearch', () => {
         const defaultSelectedOptionProp = _.findWhere(dropdownSearch.props().options, { selected: true });
 
         expect(defaultSelectedOptionProp).toBeDefined();
-        expect(defaultSelectedOptionProp).toBe(defaultSelectedOption);
+        expect(defaultSelectedOptionProp).toBe(defaultSelectedOptionPlaceholder);
       });
 
       it('should get the filterText as a prop', () => {
@@ -200,7 +198,7 @@ describe('DropdownSearch', () => {
         wrapper.find('li span').first().simulate('mouseDown');
 
         const selectedOption = store.getState().dropdownSearch[0].options[0];
-        expect(selectedOption).not.toBe(defaultSelectedOption);
+        expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);
         expect(selectedOption.value).toBe('test 1');
       });
 

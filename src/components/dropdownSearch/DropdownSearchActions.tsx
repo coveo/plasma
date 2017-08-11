@@ -13,7 +13,7 @@ export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPay
   dropdownOptions?: IDropdownOption[];
   filterText?: string;
   selectedOptions?: IDropdownOption[];
-  selectedOption?: IDropdownOption;
+  defaultSelectedOption?: IDropdownOption;
   selectedOptionValue?: string;
   addedSelectedOption?: IDropdownOption;
   isOpened?: boolean;
@@ -45,11 +45,12 @@ export const applyFilterDropdownSearch = (id: string, filterText: string): IRedu
   },
 });
 
-export const updateOptionsDropdownSearch = (id: string, dropdownOptions: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const updateOptionsDropdownSearch = (id: string, dropdownOptions: IDropdownOption[], defaultSelectedOption?: IDropdownOption): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.update,
   payload: {
     id,
     dropdownOptions,
+    defaultSelectedOption,
   },
 });
 
@@ -74,11 +75,12 @@ export const closeDropdownSearch = (id: string): IReduxAction<IDefaultDropdownSe
   },
 });
 
-export const addDropdownSearch = (id: string, dropdownOptions: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const addDropdownSearch = (id: string, dropdownOptions: IDropdownOption[], defaultSelectedOption?: IDropdownOption): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.add,
   payload: {
     id,
     dropdownOptions,
+    defaultSelectedOption,
   },
 });
 
