@@ -147,7 +147,8 @@
 .facet-search {
   margin: 10px $button-padding-x;
 
-  .coveo-filter-container {
+  /// @deprecated the prefix coveo is no longer used.
+  .coveo-filter-container, .filter-container {
     width: 100%;
 
     input.filter-box {

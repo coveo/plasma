@@ -60,7 +60,8 @@
   }
 
   .filter-choices .popup-header {
-    .coveo-filter-container {
+    /// @deprecated the prefix coveo is no longer used.
+    .coveo-filter-container, .filter-container {
       width: $filter-box-width-small-screen;
 
       .filter-icon {
