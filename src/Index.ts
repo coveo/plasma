@@ -89,7 +89,7 @@ import { CalendarConnected } from './components/calendar/CalendarConnected';
 import { ISubNavigationItem, SubNavigation } from './components/subNavigation/SubNavigation';
 import { SubNavigationConnected } from './components/subNavigation/SubNavigationConnected';
 import { subNavigationsReducer } from './components/subNavigation/SubNavigationReducers';
-import { SubNavigationActions } from './components/subNavigation/SubNavigationActions';
+import { SubNavigationActions, selectSubNavigation } from './components/subNavigation/SubNavigationActions';
 import { DisplayClass } from './utils/ComponentUtils';
 import { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
 import { clearState, CommonActions, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
@@ -193,6 +193,7 @@ export {
   changePerPage,
   addPagination,
   addPerPage,
+  selectSubNavigation,
 
   // Dropdown
   Dropdown,
