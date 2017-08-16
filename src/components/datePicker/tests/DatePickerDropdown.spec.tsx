@@ -56,13 +56,23 @@ describe('Date picker', () => {
       expect(datesSelectionBoxesProps).toEqual(DATE_PICKER_DROPDOWN_BASIC_PROPS.datesSelectionBoxes);
     });
 
-    it('should not display a <DatePickerBox /> if it is not opened', () => {
+    it('should not display a <DatePickerBox /> if it is not opened and prop renderDatePickerWhenClosed is false', () => {
+      const props: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { renderDatePickerWhenClosed: false });
+      datePickerDropdown.setProps(props);
+
       expect(datePickerDropdown.find('DatePickerBox').length).toBe(0);
     });
 
-    it('should display a <DatePickerBox /> if it is opened', () => {
-      let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
-      datePickerDropdown.setProps(propsIsOpened);
+    it('should display a <DatePickerBox /> if it is not opened but prop renderDatePickerWhenClosed is true', () => {
+      const props: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { open: false, renderDatePickerWhenClosed: true });
+      datePickerDropdown.setProps(props);
+
+      expect(datePickerDropdown.find('DatePickerBox').length).toBe(1);
+    });
+
+    it('should display a <DatePickerBox /> if it is opened regardless of whether prop renderDatePickerWhenClosed is true or false', () => {
+      const props: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true, renderDatePickerWhenClosed: false });
+      datePickerDropdown.setProps(props);
 
       expect(datePickerDropdown.find('DatePickerBox').length).toBe(1);
     });

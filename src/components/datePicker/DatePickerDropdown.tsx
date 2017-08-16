@@ -16,6 +16,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   onBeforeApply?: () => void;
   extraDropdownClasses?: string[];
   extraDropdownToggleClasses?: string[];
+  renderDatePickerWhenClosed?: boolean;
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -56,6 +57,7 @@ export const DEFAULT_CANCEL_DATE_LABEL: string = 'Cancel';
 export const DEFAULT_TO_LABEL: string = 'to';
 export const DEFAULT_EXTRA_DROPDOWN_CLASSES: string[] = [];
 export const DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES: string[] = [];
+export const DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED: boolean = true;
 
 export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
   static defaultProps: Partial<IDatePickerDropdownProps> = {
@@ -65,6 +67,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     toLabel: DEFAULT_TO_LABEL,
     extraDropdownClasses: DEFAULT_EXTRA_DROPDOWN_CLASSES,
     extraDropdownToggleClasses: DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES,
+    renderDatePickerWhenClosed: DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED,
   };
 
   private dropdown: HTMLDivElement;
@@ -159,7 +162,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     };
 
     let datePickerBox: JSX.Element = null;
-    if (this.props.isOpened) {
+    if (this.props.isOpened || this.props.renderDatePickerWhenClosed) {
       datePickerBox = this.props.withReduxState
         ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
         : <DatePickerBox {...datePickerBoxProps} />;
