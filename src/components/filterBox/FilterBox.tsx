@@ -58,6 +58,11 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     this.handleChange();
   }
 
+  placeCursorAtEndOfInputValue(e: React.FocusEvent<any>) {
+    const input = e.target as HTMLInputElement;
+    const temp = input.value; input.value = ''; input.value = temp;
+  }
+
   componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender(this.props.id);
@@ -83,6 +88,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           placeholder={filterPlaceholder}
           onChange={() => this.handleChange()}
           onBlur={() => this.handleOnBlur()}
+          onFocus={(e: React.FocusEvent<any>) => { this.placeCursorAtEndOfInputValue(e); }}
           onKeyDown={(e) => this.handleOnKeyDown(e)}
           value={this.props.filterText}
           autoFocus={this.props.isAutoFocus}

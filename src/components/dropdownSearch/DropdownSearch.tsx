@@ -14,6 +14,7 @@ export interface IDropdownOption {
   selected?: boolean;
   custom?: boolean;
   hidden?: boolean;
+  default?: boolean;
 }
 
 export interface IDropdownSearchStateProps {
@@ -42,6 +43,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   onOptionClickCallBack?: (option: IDropdownOption) => void;
   onMountCallBack?: () => void;
   onClickCallBack?: () => void;
+  supportSingleCustomOption?: boolean;
 }
 
 export interface IDropdownSearchDispatchProps {
@@ -211,14 +213,18 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   protected getMainInput(): JSX.Element {
     if (this.props.isOpened) {
-      return <FilterBox id={this.props.id}
+      return <FilterBox
+          id={this.props.id}
         onFilter={(id, filterText) => this.handleOnFilterTextChange(filterText)}
         onBlur={() => this.handleOnBlur()}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
         filterPlaceholder={this.props.filterPlaceholder}
-        isAutoFocus={true} />;
+        isAutoFocus={true}
+        filterText={this.props.filterText || ''}
+      />;
     }
-    return <button className='btn dropdown-toggle dropdown-button-search-container mod-search'
+    return <button
+        className='btn dropdown-toggle dropdown-button-search-container mod-search'
       type='button'
       data-toggle='dropdown'
       onClick={() => this.handleOnClick()}
