@@ -49081,7 +49081,6 @@ exports.dropdownSearchReducer = function (state, action) {
                 && state.supportSingleCustomOption
                 && (state.activeOption && state.activeOption.value) !== state.filterText
                 && state.filterText !== '') {
-                debugger;
                 return __assign({}, state, { id: action.payload.id, isOpened: false, options: exports.deselectAllOptions(state.options, true).concat([{ value: state.filterText, selected: true, custom: true, hidden: true }]), activeOption: undefined, filterText: exports.getFilterText(state), setFocusOnDropdownButton: true });
             }
             else if (_.contains([InputUtils_1.keyCode.enter, InputUtils_1.keyCode.tab], keyPressed) && state.activeOption) {

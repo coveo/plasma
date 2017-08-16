@@ -149,7 +149,7 @@ export const getSelectedOption = (options: IDropdownOption[]): IDropdownOption =
 };
 
 export const getFilterText = (state: IDropdownSearchState): string => {
-  const selectedOption = getSelectedOption(state.options) || {} as any;
+  const selectedOption = getSelectedOption(state.options) || {} as Partial<IDropdownOption>;
   return selectedOption.custom && !selectedOption.default && state.supportSingleCustomOption
     ? selectedOption.value
     : '';
