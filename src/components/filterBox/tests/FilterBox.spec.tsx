@@ -147,5 +147,14 @@ describe('FilterBox', () => {
 
       expect(onKeyDown).toHaveBeenCalled();
     });
+
+    it('should call placeCursorAtEndOfInputValue when a focus event is triggered on the filter box', () => {
+      const placeCursorAtEndOfInputValueSpy = spyOn(FilterBox.prototype, 'placeCursorAtEndOfInputValue');
+
+      const element = filterBox.find('.filter-box');
+      element.simulate('focus');
+
+      expect(placeCursorAtEndOfInputValueSpy).toHaveBeenCalledTimes(1);
+    });
   });
 });

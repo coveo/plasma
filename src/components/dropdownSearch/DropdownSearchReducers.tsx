@@ -72,10 +72,10 @@ export const deselectLastSelectedOption = (options: IDropdownOption[]): IDropdow
     : deepClone(options);
 };
 
-export const deselectAllOptions = (options: IDropdownOption[]): IDropdownOption[] => {
+export const deselectAllOptions = (options: IDropdownOption[], includeCustom: boolean = false): IDropdownOption[] => {
   let nextOptions: IDropdownOption[] = [];
   _.each(options, (option: IDropdownOption) => {
-    if (!option.custom) {
+    if (!option.custom || includeCustom) {
       const nextOption = deepClone(option);
       nextOptions.push({ ...nextOption, selected: false, hidden: false });
     }
@@ -238,7 +238,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           ...state,
           id: action.payload.id,
           isOpened: false,
-          options: [...deselectAllOptions(state.options), {value: state.filterText, selected: true, custom: true, hidden: true}],
+          options: [...deselectAllOptions(state.options, true), {value: state.filterText, selected: true, custom: true, hidden: true}],
           activeOption: undefined,
           filterText: getFilterText(state),
           setFocusOnDropdownButton: true,
@@ -248,7 +248,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           ...state,
           id: action.payload.id,
           isOpened: false,
-          options: selectSingleOption(state.options, state.activeOption),
+          options: selectSingleOption(deselectAllOptions(state.options, true), state.activeOption),
           activeOption: undefined,
           filterText: getFilterText(state),
           setFocusOnDropdownButton: true,
