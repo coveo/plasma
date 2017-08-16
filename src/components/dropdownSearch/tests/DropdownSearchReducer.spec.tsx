@@ -141,35 +141,35 @@ describe('DropdownSearch', () => {
       expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected).toBe(true);
     });
 
-      it('should return a state with supportSingleCustomOption set to false if the property is not passed to the addDropdownSearch action generator on "ADD_DROPDOWN_SEARCH"', () => {
-          let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
-          const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined);
-          let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+    it('should return a state with supportSingleCustomOption set to false if the property is not passed to the addDropdownSearch action generator on "ADD_DROPDOWN_SEARCH"', () => {
+      let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined);
+      let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-          const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+      const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
 
-          expect(dropdownSearch.supportSingleCustomOption).toBe(false);
-      });
+      expect(dropdownSearch.supportSingleCustomOption).toBe(false);
+    });
 
-      it('should return a state with supportSingleCustomOption set to false if the property is passed with false in the payload on "ADD_DROPDOWN_SEARCH"', () => {
-          let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
-          const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined, false);
-          let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+    it('should return a state with supportSingleCustomOption set to false if the property is passed with false in the payload on "ADD_DROPDOWN_SEARCH"', () => {
+      let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined, false);
+      let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-          const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+      const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
 
-          expect(dropdownSearch.supportSingleCustomOption).toBe(false);
-      });
+      expect(dropdownSearch.supportSingleCustomOption).toBe(false);
+    });
 
-      it('should return a state with supportSingleCustomOption set to true if the property is passed with false in the payload on "ADD_DROPDOWN_SEARCH"', () => {
-          let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
-          const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined, true);
-          let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+    it('should return a state with supportSingleCustomOption set to true if the property is passed with false in the payload on "ADD_DROPDOWN_SEARCH"', () => {
+      let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+      const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined, true);
+      let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-          const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+      const dropdownSearch = _.find(dropdownSearchState, (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
 
-          expect(dropdownSearch.supportSingleCustomOption).toBe(true);
-      });
+      expect(dropdownSearch.supportSingleCustomOption).toBe(true);
+    });
 
     it('should return the old state without the dropdownSearch with the payload id when the action is "REMOVE_DROPDOWN_SEARCH"', () => {
       let oldState: IDropdownSearchState[] = defaultState.slice();
@@ -444,155 +444,155 @@ describe('DropdownSearch', () => {
       });
 
     describe('with supportSingleCustomOption', () => {
-        it(
-            'should return the new state with the filter text empty if the selected option is not custom and keycode is "Enter" on "ACTIVE_DROPDOWN_SEARCH"',
-            () => {
-                const oldState: IDropdownSearchState[] = [
-                    {
-                        id: 'new-dropdown-search',
-                        isOpened: true,
-                        options: [...options, {value: 'selected', selected: true}],
-                        activeOption: options[0],
-                        supportSingleCustomOption: true,
-                    },
-                ];
-                const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-                    type: DropdownSearchActions.active,
-                    payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
-                };
-                const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      it(
+        'should return the new state with the filter text empty if the selected option is not custom and keycode is "Enter" on "ACTIVE_DROPDOWN_SEARCH"',
+        () => {
+          const oldState: IDropdownSearchState[] = [
+            {
+              id: 'new-dropdown-search',
+              isOpened: true,
+              options: [...options, { value: 'selected', selected: true }],
+              activeOption: options[0],
+              supportSingleCustomOption: true,
+            },
+          ];
+          const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+            type: DropdownSearchActions.active,
+            payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
+          };
+          const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-                expect(dropdownSearchState.length).toBe(oldState.length);
-                expect(dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                              && dropdownSearch.filterText === ''
-                ).length).toBe(1);
-            });
+          expect(dropdownSearchState.length).toBe(oldState.length);
+          expect(dropdownSearchState.filter(
+            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+              && dropdownSearch.filterText === ''
+          ).length).toBe(1);
+        });
 
-        it(
-            'should return the new state with the filter text empty if the selected option is not custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
-            () => {
-                const oldState: IDropdownSearchState[] = [
-                    {
-                        id: 'new-dropdown-search',
-                        isOpened: true,
-                        options: [...options, {value: 'selected', selected: true}],
-                        activeOption: options[0],
-                        supportSingleCustomOption: true,
-                    },
-                ];
-                const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-                    type: DropdownSearchActions.active,
-                    payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
-                };
-                const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      it(
+        'should return the new state with the filter text empty if the selected option is not custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
+        () => {
+          const oldState: IDropdownSearchState[] = [
+            {
+              id: 'new-dropdown-search',
+              isOpened: true,
+              options: [...options, { value: 'selected', selected: true }],
+              activeOption: options[0],
+              supportSingleCustomOption: true,
+            },
+          ];
+          const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+            type: DropdownSearchActions.active,
+            payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
+          };
+          const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-                expect(dropdownSearchState.length).toBe(oldState.length);
-                expect(dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                              && dropdownSearch.filterText === ''
-                ).length).toBe(1);
-            });
+          expect(dropdownSearchState.length).toBe(oldState.length);
+          expect(dropdownSearchState.filter(
+            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+              && dropdownSearch.filterText === ''
+          ).length).toBe(1);
+        });
 
-        it(
-            'should return the new state with the filter text empty if the selected option is default and custom and keycode is "Enter" on "ACTIVE_DROPDOWN_SEARCH"',
-            () => {
-                const oldState: IDropdownSearchState[] = [
-                    {
-                        id: 'new-dropdown-search',
-                        isOpened: true,
-                        options: [...options, {value: 'selected', selected: true, default: true, custom: true}],
-                        activeOption: options[0],
-                        supportSingleCustomOption: true,
-                    },
-                ];
-                const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-                    type: DropdownSearchActions.active,
-                    payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
-                };
-                const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      it(
+        'should return the new state with the filter text empty if the selected option is default and custom and keycode is "Enter" on "ACTIVE_DROPDOWN_SEARCH"',
+        () => {
+          const oldState: IDropdownSearchState[] = [
+            {
+              id: 'new-dropdown-search',
+              isOpened: true,
+              options: [...options, { value: 'selected', selected: true, default: true, custom: true }],
+              activeOption: options[0],
+              supportSingleCustomOption: true,
+            },
+          ];
+          const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+            type: DropdownSearchActions.active,
+            payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
+          };
+          const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-                expect(dropdownSearchState.length).toBe(oldState.length);
-                expect(dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                              && dropdownSearch.filterText === ''
-                ).length).toBe(1);
-            });
+          expect(dropdownSearchState.length).toBe(oldState.length);
+          expect(dropdownSearchState.filter(
+            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+              && dropdownSearch.filterText === ''
+          ).length).toBe(1);
+        });
 
-        it(
-            'should return the new state with the filter text empty if the selected option is default and custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
-            () => {
-                const oldState: IDropdownSearchState[] = [
-                    {
-                        id: 'new-dropdown-search',
-                        isOpened: true,
-                        options: [...options, {value: 'selected', selected: true, default: true, custom: true}],
-                        activeOption: options[0],
-                        supportSingleCustomOption: true,
-                    },
-                ];
-                const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-                    type: DropdownSearchActions.active,
-                    payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
-                };
-                const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      it(
+        'should return the new state with the filter text empty if the selected option is default and custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
+        () => {
+          const oldState: IDropdownSearchState[] = [
+            {
+              id: 'new-dropdown-search',
+              isOpened: true,
+              options: [...options, { value: 'selected', selected: true, default: true, custom: true }],
+              activeOption: options[0],
+              supportSingleCustomOption: true,
+            },
+          ];
+          const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+            type: DropdownSearchActions.active,
+            payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
+          };
+          const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-                expect(dropdownSearchState.length).toBe(oldState.length);
-                expect(dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                              && dropdownSearch.filterText === ''
-                ).length).toBe(1);
-            });
+          expect(dropdownSearchState.length).toBe(oldState.length);
+          expect(dropdownSearchState.filter(
+            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+              && dropdownSearch.filterText === ''
+          ).length).toBe(1);
+        });
 
-        it(
-            'should return the new state with the filter text equals to the selected value if the selected option is not default and is custom and keycode is "enter" on "ACTIVE_DROPDOWN_SEARCH"',
-            () => {
-                const oldState: IDropdownSearchState[] = [
-                    {
-                        id: 'new-dropdown-search',
-                        isOpened: true,
-                        options: [...options, {value: 'selected', selected: true, default: false, custom: true}],
-                        activeOption: options[0],
-                        supportSingleCustomOption: true,
-                    },
-                ];
-                const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-                    type: DropdownSearchActions.active,
-                    payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
-                };
-                const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      it(
+        'should return the new state with the filter text equals to the selected value if the selected option is not default and is custom and keycode is "enter" on "ACTIVE_DROPDOWN_SEARCH"',
+        () => {
+          const oldState: IDropdownSearchState[] = [
+            {
+              id: 'new-dropdown-search',
+              isOpened: true,
+              options: [...options, { value: 'selected', selected: true, default: false, custom: true }],
+              activeOption: options[0],
+              supportSingleCustomOption: true,
+            },
+          ];
+          const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+            type: DropdownSearchActions.active,
+            payload: _.extend({}, defaultPayload, { keyCode: keyCode.enter }),
+          };
+          const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-                expect(dropdownSearchState.length).toBe(oldState.length);
-                expect(dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                              && dropdownSearch.filterText === 'selected'
-                ).length).toBe(1);
-            });
+          expect(dropdownSearchState.length).toBe(oldState.length);
+          expect(dropdownSearchState.filter(
+            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+              && dropdownSearch.filterText === 'selected'
+          ).length).toBe(1);
+        });
 
-        it(
-            'should return the new state with the filter text equals to the selected value if the selected option is not default and is custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
-            () => {
-                const oldState: IDropdownSearchState[] = [
-                    {
-                        id: 'new-dropdown-search',
-                        isOpened: true,
-                        options: [...options, {value: 'selected', selected: true, default: false, custom: true}],
-                        activeOption: options[0],
-                        supportSingleCustomOption: true,
-                    },
-                ];
-                const action: IReduxAction<IOptionsDropdownSearchPayload> = {
-                    type: DropdownSearchActions.active,
-                    payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
-                };
-                const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      it(
+        'should return the new state with the filter text equals to the selected value if the selected option is not default and is custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
+        () => {
+          const oldState: IDropdownSearchState[] = [
+            {
+              id: 'new-dropdown-search',
+              isOpened: true,
+              options: [...options, { value: 'selected', selected: true, default: false, custom: true }],
+              activeOption: options[0],
+              supportSingleCustomOption: true,
+            },
+          ];
+          const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+            type: DropdownSearchActions.active,
+            payload: _.extend({}, defaultPayload, { keyCode: keyCode.tab }),
+          };
+          const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
-                expect(dropdownSearchState.length).toBe(oldState.length);
-                expect(dropdownSearchState.filter(
-                    (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-                                                              && dropdownSearch.filterText === 'selected'
-                ).length).toBe(1);
-            });
+          expect(dropdownSearchState.length).toBe(oldState.length);
+          expect(dropdownSearchState.filter(
+            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
+              && dropdownSearch.filterText === 'selected'
+          ).length).toBe(1);
+        });
     });
 
     it(

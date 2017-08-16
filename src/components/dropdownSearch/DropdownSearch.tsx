@@ -214,7 +214,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   protected getMainInput(): JSX.Element {
     if (this.props.isOpened) {
       return <FilterBox
-          id={this.props.id}
+        id={this.props.id}
         onFilter={(id, filterText) => this.handleOnFilterTextChange(filterText)}
         onBlur={() => this.handleOnBlur()}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
@@ -224,7 +224,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       />;
     }
     return <button
-        className='btn dropdown-toggle dropdown-button-search-container mod-search'
+      className='btn dropdown-toggle dropdown-button-search-container mod-search'
       type='button'
       data-toggle='dropdown'
       onClick={() => this.handleOnClick()}

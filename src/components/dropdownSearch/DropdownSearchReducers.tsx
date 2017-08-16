@@ -145,14 +145,14 @@ export const updateOptions = (options: IDropdownOption[], selectedOption?: IDrop
 };
 
 export const getSelectedOption = (options: IDropdownOption[]): IDropdownOption => {
-  return _.findWhere(options, {selected: true});
+  return _.findWhere(options, { selected: true });
 };
 
 export const getFilterText = (state: IDropdownSearchState): string => {
   const selectedOption = getSelectedOption(state.options) || {} as any;
   return selectedOption.custom && !selectedOption.default && state.supportSingleCustomOption
-  ? selectedOption.value
-      : '';
+    ? selectedOption.value
+    : '';
 };
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
@@ -231,14 +231,14 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed)
-                 && state.supportSingleCustomOption
-                 && !state.activeOption
-                 && state.filterText !== '') {
+        && state.supportSingleCustomOption
+        && !state.activeOption
+        && state.filterText !== '') {
         return {
           ...state,
           id: action.payload.id,
           isOpened: false,
-          options: [...deselectAllOptions(state.options, true), {value: state.filterText, selected: true, custom: true, hidden: true}],
+          options: [...deselectAllOptions(state.options, true), { value: state.filterText, selected: true, custom: true, hidden: true }],
           activeOption: undefined,
           filterText: getFilterText(state),
           setFocusOnDropdownButton: true,
