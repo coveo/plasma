@@ -26725,8 +26725,35 @@ exports.changeLastUpdated = function (id) { return ({
 
 /***/ }),
 /* 130 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FilterActions = {
+    addFilter: 'ADD_FILTER',
+    removeFilter: 'REMOVE_FILTER',
+    filterThrough: 'FILTER'
+};
+exports.addFilter = function (id) { return ({
+    type: exports.FilterActions.addFilter,
+    payload: {
+        id: id
+    }
+}); };
+exports.removeFilter = function (id) { return ({
+    type: exports.FilterActions.removeFilter,
+    payload: {
+        id: id
+    }
+}); };
+exports.filterThrough = function (id, filterText) { return ({
+    type: exports.FilterActions.filterThrough,
+    payload: {
+        id: id,
+        filterText: filterText
+    }
+}); };
 
 
 /***/ }),
