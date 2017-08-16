@@ -1,6 +1,5 @@
 # Ignore compiled files
 dist
-docs/assets
 coverage
 
 # Node files
