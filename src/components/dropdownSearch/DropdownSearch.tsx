@@ -150,7 +150,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   protected getNoOptions(): JSX.Element[] {
     return [
       <li key='noResultDropdownSearch'>
-        <span>{this.props.noResultText}</span>
+        <span className='no-search-results'>{this.props.noResultText}</span>
       </li>,
     ];
   }

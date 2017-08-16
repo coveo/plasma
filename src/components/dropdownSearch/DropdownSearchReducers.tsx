@@ -232,7 +232,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         };
       } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed)
         && state.supportSingleCustomOption
-        && !state.activeOption
+        && (state.activeOption && state.activeOption.value) !== state.filterText
         && state.filterText !== '') {
         return {
           ...state,

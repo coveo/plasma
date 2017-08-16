@@ -336,7 +336,7 @@ describe('DropdownSearch', () => {
         expect(JSON.stringify(dropdownSearchInstance.getNoOptions()))
           .toBe(JSON.stringify([
             <li key='noResultDropdownSearch'>
-              <span>{dropdownSearchInstance.props.noResultText}</span>
+              <span className='no-search-results'>{dropdownSearchInstance.props.noResultText}</span>
             </li>,
           ]));
       });
