@@ -26725,35 +26725,8 @@ exports.changeLastUpdated = function (id) { return ({
 
 /***/ }),
 /* 130 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FilterActions = {
-    addFilter: 'ADD_FILTER',
-    removeFilter: 'REMOVE_FILTER',
-    filterThrough: 'FILTER'
-};
-exports.addFilter = function (id) { return ({
-    type: exports.FilterActions.addFilter,
-    payload: {
-        id: id
-    }
-}); };
-exports.removeFilter = function (id) { return ({
-    type: exports.FilterActions.removeFilter,
-    payload: {
-        id: id
-    }
-}); };
-exports.filterThrough = function (id, filterText) { return ({
-    type: exports.FilterActions.filterThrough,
-    payload: {
-        id: id,
-        filterText: filterText
-    }
-}); };
 
 
 /***/ }),
@@ -51693,8 +51666,11 @@ var DropdownSearch = (function (_super) {
     };
     DropdownSearch.prototype.getMainInput = function () {
         var _this = this;
+        var selectedOption = _.findWhere(this.props.options, { selected: true });
+        var filterPlaceHolder = selectedOption && (selectedOption.displayValue || selectedOption.value)
+            || this.props.filterPlaceholder;
         if (this.props.isOpened) {
-            return React.createElement(FilterBox_1.FilterBox, { id: this.props.id, onFilter: function (id, filterText) { return _this.handleOnFilterTextChange(filterText); }, onBlur: function () { return _this.handleOnBlur(); }, onKeyDown: function (e) { return _this.handleOnKeyDownFilterBox(e); }, filterPlaceholder: this.props.filterPlaceholder, isAutoFocus: true, filterText: this.props.filterText || '' });
+            return React.createElement(FilterBox_1.FilterBox, { id: this.props.id, onFilter: function (id, filterText) { return _this.handleOnFilterTextChange(filterText); }, onBlur: function () { return _this.handleOnBlur(); }, onKeyDown: function (e) { return _this.handleOnKeyDownFilterBox(e); }, filterPlaceholder: filterPlaceHolder, isAutoFocus: true, filterText: this.props.filterText || '' });
         }
         return React.createElement("button", { className: 'btn dropdown-toggle dropdown-button-search-container mod-search', type: 'button', "data-toggle": 'dropdown', onClick: function () { return _this.handleOnClick(); }, onKeyDown: function (e) { return _this.handleOnKeyDownDropdownButton(e); }, style: {
                 maxWidth: this.props.maxWidth,

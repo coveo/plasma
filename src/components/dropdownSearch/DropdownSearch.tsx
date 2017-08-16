@@ -212,13 +212,17 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   protected getMainInput(): JSX.Element {
+    const selectedOption: IDropdownOption = _.findWhere(this.props.options, { selected: true });
+    const filterPlaceHolder: string = selectedOption && (selectedOption.displayValue || selectedOption.value)
+      || this.props.filterPlaceholder;
+
     if (this.props.isOpened) {
       return <FilterBox
         id={this.props.id}
         onFilter={(id, filterText) => this.handleOnFilterTextChange(filterText)}
         onBlur={() => this.handleOnBlur()}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
-        filterPlaceholder={this.props.filterPlaceholder}
+        filterPlaceholder={filterPlaceHolder}
         isAutoFocus={true}
         filterText={this.props.filterText || ''}
       />;
