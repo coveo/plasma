@@ -218,23 +218,18 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
-      return !state.supportSingleCustomOption
-        ? {
-          ...state,
-          id: action.payload.id,
-          options: selectSingleOption(state.options, action.payload.addedSelectedOption),
-          isOpened: false,
-          activeOption: undefined,
-          setFocusOnDropdownButton: false,
-        }
-        : {
-          ...state,
-          id: action.payload.id,
-          options: removeCustomOptions(selectSingleOption(state.options, action.payload.addedSelectedOption), state.supportSingleCustomOption, false),
-          isOpened: false,
-          activeOption: undefined,
-          setFocusOnDropdownButton: false,
-        };
+      const nextOptions = !state.supportSingleCustomOption
+        ? selectSingleOption(state.options, action.payload.addedSelectedOption)
+        : removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), action.payload.addedSelectedOption), state.supportSingleCustomOption, false);
+
+      return {
+        ...state,
+        options: nextOptions,
+        id: action.payload.id,
+        isOpened: false,
+        activeOption: undefined,
+        setFocusOnDropdownButton: false,
+      };
     case DropdownSearchActions.add:
       return {
         ...state,

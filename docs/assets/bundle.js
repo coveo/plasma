@@ -49068,17 +49068,20 @@ exports.dropdownSearchReducer = function (state, action) {
         case DropdownSearchActions_1.DropdownSearchActions.update:
             return __assign({}, state, { id: action.payload.id, options: exports.updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption), filterText: '', setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.filter:
-            var shouldReturnNewOptions = state.supportSingleCustomOption && (state.options || [])
+            var options = (state.options || []);
+            var shouldReturnNewOptions = state.supportSingleCustomOption && options
                 .filter(function (option) { return !option.custom && !option.default; })
                 .every(function (option) { return (option.displayValue || option.value).toLowerCase() !== (action.payload.filterText || '').toLowerCase(); });
-            var newOption = action.payload.filterText !== ''
+            var newCustomOption = action.payload.filterText !== ''
                 ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
                 : [];
             return __assign({}, state, { id: action.payload.id, options: shouldReturnNewOptions
-                    ? newOption.concat(exports.removeCustomOptions(state.options || [], state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(state.options || []), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption, setFocusOnDropdownButton: false });
+                    ? newCustomOption.concat(exports.removeCustomOptions(options, state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(options), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.select:
-            return !state.supportSingleCustomOption
-                ? __assign({}, state, { id: action.payload.id, options: exports.selectSingleOption(state.options, action.payload.addedSelectedOption), isOpened: false, activeOption: undefined, setFocusOnDropdownButton: false }) : __assign({}, state, { id: action.payload.id, options: exports.removeCustomOptions(exports.selectSingleOption(state.options, action.payload.addedSelectedOption), state.supportSingleCustomOption, false), isOpened: false, activeOption: undefined, setFocusOnDropdownButton: false });
+            var nextOptions = !state.supportSingleCustomOption
+                ? exports.selectSingleOption(state.options, action.payload.addedSelectedOption)
+                : exports.removeCustomOptions(exports.selectSingleOption(exports.deselectAllOptions(state.options, true), action.payload.addedSelectedOption), state.supportSingleCustomOption, false);
+            return __assign({}, state, { options: nextOptions, id: action.payload.id, isOpened: false, activeOption: undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.add:
             return __assign({}, state, { options: exports.updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption), id: action.payload.id, filterText: '', isOpened: false, supportSingleCustomOption: action.payload.supportSingleCustomOption });
         case DropdownSearchActions_1.DropdownSearchActions.active:
