@@ -86,7 +86,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   protected getDisplayedOptions(): IDropdownOption[] {
     return _.reject(this.props.options, (option) => {
-      return option.custom || option.hidden;
+      return (!this.props.supportSingleCustomOption && option.custom) || option.hidden;
     });
   }
 

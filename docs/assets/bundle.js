@@ -48938,6 +48938,7 @@ exports.defaultSelectedOptionPlaceholder = {
     value: 'Select an option',
     selected: true,
     custom: true,
+    hidden: true,
     default: true,
 };
 exports.dropdownSearchInitialState = {
@@ -48962,6 +48963,15 @@ exports.getNextIndexPosition = function (array, item, key) {
         return array.length - 1;
     }
     return index;
+};
+exports.removeCustomOptions = function (options, supportSingleCustomOption, removeSelected) {
+    if (removeSelected === void 0) { removeSelected = true; }
+    var filterCustomAndDefaultOptions = function (option) { return removeSelected
+        ? !option.custom
+        : !option.custom || option.selected; };
+    return !supportSingleCustomOption
+        ? CloneUtils_1.deepClone(options)
+        : CloneUtils_1.deepClone(options.filter(filterCustomAndDefaultOptions));
 };
 exports.deselectOption = function (options, value) {
     var nextOptions = CloneUtils_1.deepClone(options);
@@ -49007,12 +49017,12 @@ exports.addUniqueSelectedOption = function (options, value) {
     }
     return CloneUtils_1.deepClone(options);
 };
-exports.getDisplayedOptions = function (options) {
-    return _.reject(options, function (option) { return option.custom || option.hidden; });
+exports.getDisplayedOptions = function (state) {
+    return _.reject(state.options, function (option) { return (!state.supportSingleCustomOption && option.custom) || option.hidden; });
 };
 exports.getFilteredOptions = function (state, filterText) {
     var currentFilterText = filterText || state.filterText || '';
-    return _.filter(exports.getDisplayedOptions(state.options), function (option) {
+    return _.filter(exports.getDisplayedOptions(state), function (option) {
         var displayValue = option.displayValue || option.value;
         return s.contains(displayValue.toLowerCase(), (currentFilterText).toLowerCase());
     });
@@ -49037,7 +49047,7 @@ exports.updateOptions = function (options, selectedOption) {
         ? CloneUtils_1.deepClone(options)
         : [];
     var defaultSelectedOption = selectedOption
-        ? __assign({}, selectedOption, { selected: true, custom: true, default: true }) : exports.defaultSelectedOptionPlaceholder;
+        ? __assign({}, selectedOption, { selected: true, custom: true }) : exports.defaultSelectedOptionPlaceholder;
     updatedOptions = _.find(updatedOptions, function (option) { return option.value === defaultSelectedOption.value; })
         ? exports.selectSingleOption(updatedOptions, defaultSelectedOption)
         : updatedOptions.concat([defaultSelectedOption]);
@@ -49046,29 +49056,31 @@ exports.updateOptions = function (options, selectedOption) {
 exports.getSelectedOption = function (options) {
     return _.findWhere(options, { selected: true });
 };
-exports.getFilterText = function (state) {
-    var selectedOption = exports.getSelectedOption(state.options) || {};
-    return selectedOption.custom && !selectedOption.default && state.supportSingleCustomOption
-        ? selectedOption.value
-        : '';
-};
 exports.dropdownSearchReducer = function (state, action) {
     if (state === void 0) { state = exports.dropdownSearchInitialState; }
     switch (action.type) {
         case DropdownSearchActions_1.DropdownSearchActions.toggle:
-            return __assign({}, state, { isOpened: !state.isOpened, filterText: exports.getFilterText(state), activeOption: undefined, setFocusOnDropdownButton: false });
+            return __assign({}, state, { isOpened: !state.isOpened, filterText: '', activeOption: undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.open:
-            return __assign({}, state, { isOpened: true, filterText: exports.getFilterText(state), activeOption: undefined, setFocusOnDropdownButton: false });
+            return __assign({}, state, { isOpened: true, filterText: '', activeOption: undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.close:
-            return __assign({}, state, { isOpened: false, filterText: exports.getFilterText(state), activeOption: undefined, setFocusOnDropdownButton: false });
+            return __assign({}, state, { isOpened: false, filterText: '', activeOption: undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.update:
-            return __assign({}, state, { id: action.payload.id, options: exports.updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption), filterText: exports.getFilterText(state), setFocusOnDropdownButton: false });
+            return __assign({}, state, { id: action.payload.id, options: exports.updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption), filterText: '', setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.filter:
-            return __assign({}, state, { id: action.payload.id, filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption, setFocusOnDropdownButton: false });
+            var shouldReturnNewOptions = state.supportSingleCustomOption && (state.options || [])
+                .filter(function (option) { return !option.custom && !option.default; })
+                .every(function (option) { return (option.displayValue || option.value).toLowerCase() !== (action.payload.filterText || '').toLowerCase(); });
+            var newOption = action.payload.filterText !== ''
+                ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
+                : [];
+            return __assign({}, state, { id: action.payload.id, options: shouldReturnNewOptions
+                    ? newOption.concat(exports.removeCustomOptions(state.options || [], state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(state.options || []), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.select:
-            return __assign({}, state, { id: action.payload.id, options: exports.selectSingleOption(state.options, action.payload.addedSelectedOption), isOpened: false, activeOption: undefined, setFocusOnDropdownButton: false });
+            return !state.supportSingleCustomOption
+                ? __assign({}, state, { id: action.payload.id, options: exports.selectSingleOption(state.options, action.payload.addedSelectedOption), isOpened: false, activeOption: undefined, setFocusOnDropdownButton: false }) : __assign({}, state, { id: action.payload.id, options: exports.removeCustomOptions(exports.selectSingleOption(state.options, action.payload.addedSelectedOption), state.supportSingleCustomOption, false), isOpened: false, activeOption: undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.add:
-            return __assign({}, state, { options: exports.updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption), id: action.payload.id, filterText: exports.getFilterText(state), isOpened: false, supportSingleCustomOption: action.payload.supportSingleCustomOption });
+            return __assign({}, state, { options: exports.updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption), id: action.payload.id, filterText: '', isOpened: false, supportSingleCustomOption: action.payload.supportSingleCustomOption });
         case DropdownSearchActions_1.DropdownSearchActions.active:
             var keyPressed = action.payload.keyCode;
             var isFirstSelectedOption = keyPressed === InputUtils_1.keyCode.upArrow && state.activeOption === state.options[0];
@@ -49081,10 +49093,10 @@ exports.dropdownSearchReducer = function (state, action) {
                 && state.supportSingleCustomOption
                 && (state.activeOption && state.activeOption.value) !== state.filterText
                 && state.filterText !== '') {
-                return __assign({}, state, { id: action.payload.id, isOpened: false, options: exports.deselectAllOptions(state.options, true).concat([{ value: state.filterText, selected: true, custom: true, hidden: true }]), activeOption: undefined, filterText: exports.getFilterText(state), setFocusOnDropdownButton: true });
+                return __assign({}, state, { id: action.payload.id, isOpened: false, options: [{ value: state.filterText, selected: true, custom: true, hidden: false }].concat(exports.deselectAllOptions(exports.removeCustomOptions(state.options, state.supportSingleCustomOption, true))), activeOption: undefined, filterText: '', setFocusOnDropdownButton: true });
             }
             else if (_.contains([InputUtils_1.keyCode.enter, InputUtils_1.keyCode.tab], keyPressed) && state.activeOption) {
-                return __assign({}, state, { id: action.payload.id, isOpened: false, options: exports.selectSingleOption(exports.deselectAllOptions(state.options, true), state.activeOption), activeOption: undefined, filterText: exports.getFilterText(state), setFocusOnDropdownButton: true });
+                return __assign({}, state, { id: action.payload.id, isOpened: false, options: exports.selectSingleOption(exports.deselectAllOptions(state.options, true), state.activeOption), activeOption: undefined, filterText: '', setFocusOnDropdownButton: true });
             }
             else if (keyPressed === InputUtils_1.keyCode.escape) {
                 return __assign({}, state, { isOpened: false });
@@ -51607,8 +51619,9 @@ var DropdownSearch = (function (_super) {
         return _.where(this.props.options, { selected: true });
     };
     DropdownSearch.prototype.getDisplayedOptions = function () {
+        var _this = this;
         return _.reject(this.props.options, function (option) {
-            return option.custom || option.hidden;
+            return (!_this.props.supportSingleCustomOption && option.custom) || option.hidden;
         });
     };
     DropdownSearch.prototype.getSelectedOptionElement = function () {

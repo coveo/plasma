@@ -245,6 +245,7 @@ describe('DropdownSearch', () => {
           id: 'new-dropdown-search',
           isOpened: false,
           filterText: '',
+          options: [],
         },
       ];
 
@@ -545,7 +546,7 @@ describe('DropdownSearch', () => {
         });
 
       it(
-        'should return the new state with the filter text equals to the selected value if the selected option is not default and is custom and keycode is "enter" on "ACTIVE_DROPDOWN_SEARCH"',
+        'should return the new state with the filter text equals to empty string if the selected option is not default and is custom and keycode is "enter" on "ACTIVE_DROPDOWN_SEARCH"',
         () => {
           const oldState: IDropdownSearchState[] = [
             {
@@ -565,12 +566,12 @@ describe('DropdownSearch', () => {
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
             (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === 'selected'
+              && dropdownSearch.filterText === ''
           ).length).toBe(1);
         });
 
       it(
-        'should return the new state with the filter text equals to the selected value if the selected option is not default and is custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
+        'should return the new state with the filter text equals to empty string if the selected option is not default and is custom and keycode is "tab" on "ACTIVE_DROPDOWN_SEARCH"',
         () => {
           const oldState: IDropdownSearchState[] = [
             {
@@ -590,7 +591,7 @@ describe('DropdownSearch', () => {
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
             (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === 'selected'
+              && dropdownSearch.filterText === ''
           ).length).toBe(1);
         });
     });
@@ -787,7 +788,7 @@ describe('DropdownSearch', () => {
           options,
         };
 
-        expect(getDisplayedOptions(state.options)).toEqual(options);
+        expect(getDisplayedOptions(state)).toEqual(options);
       });
 
       it('should return only the options that are not selected', () => {
@@ -796,7 +797,7 @@ describe('DropdownSearch', () => {
           options: [{ ...options[0], selected: true, hidden: true }, options[1], options[2]],
         };
 
-        expect(getDisplayedOptions(state.options)).toEqual([options[1], options[2]]);
+        expect(getDisplayedOptions(state)).toEqual([options[1], options[2]]);
       });
 
       it('should return only the options in the right order', () => {
@@ -805,7 +806,7 @@ describe('DropdownSearch', () => {
           options: [options[0], { ...options[1], selected: true, hidden: true }, options[2]],
         };
 
-        expect(getDisplayedOptions(state.options)).toEqual([options[0], options[2]]);
+        expect(getDisplayedOptions(state)).toEqual([options[0], options[2]]);
       });
     });
 
