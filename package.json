@@ -72,7 +72,7 @@
     "classnames": "2.2.5",
     "codecov": "2.2.0",
     "coveo-styleguide": "1.16.x",
-    "css-loader": "0.28.4",
+    "css-loader": "0.28.5",
     "del": "3.0.0",
     "dts-generator": "2.1.0",
     "enzyme": "2.9.1",
