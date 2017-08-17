@@ -58,7 +58,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   render() {
-    let dropdownClasses: string = 'dropdown-wrapper' + (this.props.isOpened ? ' open' : '');
+    let dropdownClasses: string = 'dropdown' + (this.props.isOpened ? ' open' : '');
 
     return (
       <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
