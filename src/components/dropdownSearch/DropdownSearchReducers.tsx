@@ -248,6 +248,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
+          options: state.supportSingleCustomOption && isFirstSelectedOption ? removeCustomOptions(state.options, false) : state.options,
           activeOption: !isFirstSelectedOption ?
             optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, keyPressed)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,

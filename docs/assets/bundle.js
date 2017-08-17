@@ -49089,7 +49089,7 @@ exports.dropdownSearchReducer = function (state, action) {
             var isFirstSelectedOption = keyPressed === InputUtils_1.keyCode.upArrow && state.activeOption === state.options[0];
             var optionsFiltered = exports.getFilteredOptions(state);
             if (_.contains([InputUtils_1.keyCode.upArrow, InputUtils_1.keyCode.downArrow], keyPressed)) {
-                return __assign({}, state, { isOpened: !isFirstSelectedOption, activeOption: !isFirstSelectedOption ?
+                return __assign({}, state, { isOpened: !isFirstSelectedOption, options: state.supportSingleCustomOption ? exports.removeCustomOptions(options, false) : state.options, activeOption: !isFirstSelectedOption ?
                         optionsFiltered[exports.getNextIndexPosition(optionsFiltered, state.activeOption, keyPressed)] : undefined, setFocusOnDropdownButton: isFirstSelectedOption });
             }
             else if (_.contains([InputUtils_1.keyCode.enter, InputUtils_1.keyCode.tab], keyPressed)
