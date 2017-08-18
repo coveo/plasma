@@ -64,6 +64,8 @@ export const removeCustomOptions = (options: IDropdownOption[], supportSingleCus
     : deepClone(options.filter(filterCustomAndDefaultOptions));
 };
 
+const shouldHideOnFilter = (option: IDropdownOption, filterText: string): boolean => option.default || option.custom && option.value === filterText;
+
 export const deselectOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
   const nextOptions: IDropdownOption[] = deepClone(options);
   const selectedOption = _.find(nextOptions, { value });
@@ -163,12 +165,17 @@ export const getSelectedOption = (options: IDropdownOption[]): IDropdownOption =
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
+  let nextOptions: IDropdownOption[] = [];
 
   switch (action.type) {
     case DropdownSearchActions.toggle:
+      nextOptions = state.supportSingleCustomOption
+        ? removeCustomOptions(state.options, state.supportSingleCustomOption, false)
+        : state.options;
       return {
         ...state,
         isOpened: !state.isOpened,
+        options: nextOptions,
         filterText: '',
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -203,8 +210,8 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         .filter((option: IDropdownOption) => !option.custom && !option.default)
         .every((option: IDropdownOption) => (option.displayValue || option.value).toLowerCase() !== (action.payload.filterText || '').toLowerCase());
 
-      const newOptions = shouldReturnNewOptions
-        ? options.filter((option: IDropdownOption) => !(option.custom && option.value === action.payload.filterText))
+      nextOptions = shouldReturnNewOptions
+        ? options.map((option: IDropdownOption) => _.extend(option, { hidden: shouldHideOnFilter(option, action.payload.filterText) }))
         : options;
 
       const newCustomOption: IDropdownOption[] = action.payload.filterText !== ''
@@ -215,14 +222,14 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ...state,
         id: action.payload.id,
         options: shouldReturnNewOptions
-          ? [...newCustomOption, ...removeCustomOptions(newOptions, state.supportSingleCustomOption, false)]
-          : deepClone(newOptions),
+          ? [...newCustomOption, ...removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)]
+          : deepClone(nextOptions),
         filterText: action.payload.filterText,
         activeOption: getFilteredOptions(state, action.payload.filterText)[0] || undefined,
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
-      const nextOptions = !state.supportSingleCustomOption
+      nextOptions = !state.supportSingleCustomOption
         ? selectSingleOption(state.options, action.payload.addedSelectedOption)
         : removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), action.payload.addedSelectedOption), state.supportSingleCustomOption, false);
 

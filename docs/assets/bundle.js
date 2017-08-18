@@ -48973,6 +48973,7 @@ exports.removeCustomOptions = function (options, supportSingleCustomOption, remo
         ? CloneUtils_1.deepClone(options)
         : CloneUtils_1.deepClone(options.filter(filterCustomAndDefaultOptions));
 };
+var shouldHideOnFilter = function (option, filterText) { return option.default || option.custom && option.value === filterText; };
 exports.deselectOption = function (options, value) {
     var nextOptions = CloneUtils_1.deepClone(options);
     var selectedOption = _.find(nextOptions, { value: value });
@@ -49058,9 +49059,13 @@ exports.getSelectedOption = function (options) {
 };
 exports.dropdownSearchReducer = function (state, action) {
     if (state === void 0) { state = exports.dropdownSearchInitialState; }
+    var nextOptions = [];
     switch (action.type) {
         case DropdownSearchActions_1.DropdownSearchActions.toggle:
-            return __assign({}, state, { isOpened: !state.isOpened, filterText: '', activeOption: undefined, setFocusOnDropdownButton: false });
+            nextOptions = state.supportSingleCustomOption
+                ? exports.removeCustomOptions(state.options, state.supportSingleCustomOption, false)
+                : state.options;
+            return __assign({}, state, { isOpened: !state.isOpened, options: nextOptions, filterText: '', activeOption: undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.open:
             return __assign({}, state, { isOpened: true, filterText: '', activeOption: undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.close:
@@ -49072,16 +49077,16 @@ exports.dropdownSearchReducer = function (state, action) {
             var shouldReturnNewOptions = state.supportSingleCustomOption && options
                 .filter(function (option) { return !option.custom && !option.default; })
                 .every(function (option) { return (option.displayValue || option.value).toLowerCase() !== (action.payload.filterText || '').toLowerCase(); });
-            var newOptions = shouldReturnNewOptions
-                ? options.filter(function (option) { return !(option.custom && option.value === action.payload.filterText); })
+            nextOptions = shouldReturnNewOptions
+                ? options.map(function (option) { return _.extend(option, { hidden: shouldHideOnFilter(option, action.payload.filterText) }); })
                 : options;
             var newCustomOption = action.payload.filterText !== ''
                 ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
                 : [];
             return __assign({}, state, { id: action.payload.id, options: shouldReturnNewOptions
-                    ? newCustomOption.concat(exports.removeCustomOptions(newOptions, state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(newOptions), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || undefined, setFocusOnDropdownButton: false });
+                    ? newCustomOption.concat(exports.removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(nextOptions), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.select:
-            var nextOptions = !state.supportSingleCustomOption
+            nextOptions = !state.supportSingleCustomOption
                 ? exports.selectSingleOption(state.options, action.payload.addedSelectedOption)
                 : exports.removeCustomOptions(exports.selectSingleOption(exports.deselectAllOptions(state.options, true), action.payload.addedSelectedOption), state.supportSingleCustomOption, false);
             return __assign({}, state, { options: nextOptions, id: action.payload.id, isOpened: false, activeOption: undefined, setFocusOnDropdownButton: false });
