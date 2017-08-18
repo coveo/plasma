@@ -49099,7 +49099,7 @@ exports.dropdownSearchReducer = function (state, action) {
                 ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
                 : [];
             return __assign({}, state, { id: action.payload.id, options: shouldReturnNewOptions
-                    ? newCustomOption.concat(exports.removeCustomOptions(options, state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(options), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption, setFocusOnDropdownButton: false });
+                    ? newCustomOption.concat(exports.removeCustomOptions(options, state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(options), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.select:
             var nextOptions = !state.supportSingleCustomOption
                 ? exports.selectSingleOption(state.options, action.payload.addedSelectedOption)
@@ -49115,14 +49115,8 @@ exports.dropdownSearchReducer = function (state, action) {
                 return __assign({}, state, { isOpened: !isFirstSelectedOption, options: state.supportSingleCustomOption && isFirstSelectedOption ? exports.removeCustomOptions(state.options, false) : state.options, activeOption: !isFirstSelectedOption ?
                         optionsFiltered[exports.getNextIndexPosition(optionsFiltered, state.activeOption, keyPressed)] : undefined, setFocusOnDropdownButton: isFirstSelectedOption });
             }
-            else if (_.contains([InputUtils_1.keyCode.enter, InputUtils_1.keyCode.tab], keyPressed)
-                && state.supportSingleCustomOption
-                && (state.activeOption && state.activeOption.value) !== state.filterText
-                && state.filterText !== '') {
-                return __assign({}, state, { id: action.payload.id, isOpened: false, options: [{ value: state.filterText, selected: true, custom: true, hidden: false }].concat(exports.deselectAllOptions(exports.removeCustomOptions(state.options, state.supportSingleCustomOption, true))), activeOption: undefined, filterText: '', setFocusOnDropdownButton: true });
-            }
             else if (_.contains([InputUtils_1.keyCode.enter, InputUtils_1.keyCode.tab], keyPressed) && state.activeOption) {
-                return __assign({}, state, { id: action.payload.id, isOpened: false, options: exports.selectSingleOption(exports.deselectAllOptions(state.options, true), state.activeOption), activeOption: undefined, filterText: '', setFocusOnDropdownButton: true });
+                return __assign({}, state, { id: action.payload.id, isOpened: false, options: exports.removeCustomOptions(exports.selectSingleOption(exports.deselectAllOptions(state.options, true), state.activeOption), state.supportSingleCustomOption, false), activeOption: undefined, filterText: '', setFocusOnDropdownButton: true });
             }
             else if (keyPressed === InputUtils_1.keyCode.escape) {
                 return __assign({}, state, { isOpened: false });

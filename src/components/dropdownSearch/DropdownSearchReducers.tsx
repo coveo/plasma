@@ -214,7 +214,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           ? [...newCustomOption, ...removeCustomOptions(options, state.supportSingleCustomOption, false)]
           : deepClone(options),
         filterText: action.payload.filterText,
-        activeOption: getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption,
+        activeOption: getFilteredOptions(state, action.payload.filterText)[0] || undefined,
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
@@ -253,25 +253,12 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
             optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, keyPressed)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
-      } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed)
-        && state.supportSingleCustomOption
-        && (state.activeOption && state.activeOption.value) !== state.filterText
-        && state.filterText !== '') {
-        return {
-          ...state,
-          id: action.payload.id,
-          isOpened: false,
-          options: [{ value: state.filterText, selected: true, custom: true, hidden: false }, ...deselectAllOptions(removeCustomOptions(state.options, state.supportSingleCustomOption, true))],
-          activeOption: undefined,
-          filterText: '',
-          setFocusOnDropdownButton: true,
-        };
       } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed) && state.activeOption) {
         return {
           ...state,
           id: action.payload.id,
           isOpened: false,
-          options: selectSingleOption(deselectAllOptions(state.options, true), state.activeOption),
+          options: removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), state.activeOption), state.supportSingleCustomOption, false),
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
