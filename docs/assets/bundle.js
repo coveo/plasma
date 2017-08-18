@@ -48964,16 +48964,19 @@ exports.getNextIndexPosition = function (array, item, key) {
     }
     return index;
 };
-exports.removeCustomOptions = function (options, supportSingleCustomOption, removeSelected) {
-    if (removeSelected === void 0) { removeSelected = true; }
-    var filterCustomAndDefaultOptions = function (option) { return removeSelected
+exports.isNotCustomOption = function (option, includeSelected) {
+    if (includeSelected === void 0) { includeSelected = true; }
+    return includeSelected
         ? !option.custom
-        : !option.custom || option.selected; };
+        : !option.custom || option.selected;
+};
+exports.removeCustomOptions = function (options, supportSingleCustomOption, includeSelected) {
+    if (includeSelected === void 0) { includeSelected = true; }
     return !supportSingleCustomOption
         ? CloneUtils_1.deepClone(options)
-        : CloneUtils_1.deepClone(options.filter(filterCustomAndDefaultOptions));
+        : CloneUtils_1.deepClone(options.filter(function (option) { return exports.isNotCustomOption(option, includeSelected); }));
 };
-var shouldHideOnFilter = function (option, filterText) { return option.default || option.custom && option.value === filterText; };
+exports.shouldHideOnFilter = function (option, filterText) { return !!(option.default || (option.custom && option.value === filterText)); };
 exports.deselectOption = function (options, value) {
     var nextOptions = CloneUtils_1.deepClone(options);
     var selectedOption = _.find(nextOptions, { value: value });
@@ -49054,9 +49057,6 @@ exports.updateOptions = function (options, selectedOption) {
         : updatedOptions.concat([defaultSelectedOption]);
     return updatedOptions;
 };
-exports.getSelectedOption = function (options) {
-    return _.findWhere(options, { selected: true });
-};
 exports.dropdownSearchReducer = function (state, action) {
     if (state === void 0) { state = exports.dropdownSearchInitialState; }
     var nextOptions = [];
@@ -49078,7 +49078,7 @@ exports.dropdownSearchReducer = function (state, action) {
                 .filter(function (option) { return !option.custom && !option.default; })
                 .every(function (option) { return (option.displayValue || option.value).toLowerCase() !== (action.payload.filterText || '').toLowerCase(); });
             nextOptions = shouldReturnNewOptions
-                ? options.map(function (option) { return _.extend(option, { hidden: shouldHideOnFilter(option, action.payload.filterText) }); })
+                ? options.map(function (option) { return _.extend(option, { hidden: exports.shouldHideOnFilter(option, action.payload.filterText) }); })
                 : options;
             var newCustomOption = action.payload.filterText !== ''
                 ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]

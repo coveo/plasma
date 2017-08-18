@@ -52,19 +52,18 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   return index;
 };
 
+export const isNotCustomOption = (option: IDropdownOption, includeSelected: boolean = true): boolean => includeSelected
+  ? !option.custom
+  : !option.custom || option.selected;
 
 // removeCustomOptions only utilized in supportSingleCustomOption scenarios, otherwise causes side effects for multiselect
-export const removeCustomOptions = (options: IDropdownOption[], supportSingleCustomOption: boolean, removeSelected: boolean = true) => {
-  const filterCustomAndDefaultOptions = (option: IDropdownOption): boolean => removeSelected
-    ? !option.custom
-    : !option.custom || option.selected;
-
+export const removeCustomOptions = (options: IDropdownOption[], supportSingleCustomOption: boolean, includeSelected: boolean = true) => {
   return !supportSingleCustomOption
     ? deepClone(options)
-    : deepClone(options.filter(filterCustomAndDefaultOptions));
+    : deepClone(options.filter((option: IDropdownOption) => isNotCustomOption(option, includeSelected)));
 };
 
-const shouldHideOnFilter = (option: IDropdownOption, filterText: string): boolean => option.default || option.custom && option.value === filterText;
+export const shouldHideOnFilter = (option: IDropdownOption, filterText: string): boolean => !!(option.default || (option.custom && option.value === filterText));
 
 export const deselectOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
   const nextOptions: IDropdownOption[] = deepClone(options);
@@ -157,10 +156,6 @@ export const updateOptions = (options: IDropdownOption[], selectedOption?: IDrop
     : [...updatedOptions, defaultSelectedOption];
 
   return updatedOptions;
-};
-
-export const getSelectedOption = (options: IDropdownOption[]): IDropdownOption => {
-  return _.findWhere(options, { selected: true });
 };
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,

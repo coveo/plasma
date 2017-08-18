@@ -6,7 +6,14 @@ import {
   dropdownSearchReducer,
   dropdownsSearchInitialState,
   dropdownsSearchReducer, getDisplayedOptions,
-  IDropdownSearchState, deselectLastSelectedOption, deselectAllOptions, deselectOption, defaultSelectedOptionPlaceholder,
+  IDropdownSearchState,
+  deselectLastSelectedOption,
+  deselectAllOptions,
+  deselectOption,
+  defaultSelectedOptionPlaceholder,
+  isNotCustomOption,
+  removeCustomOptions,
+  shouldHideOnFilter,
 } from '../DropdownSearchReducers';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload, addDropdownSearch } from '../DropdownSearchActions';
 import * as _ from 'underscore';
@@ -780,117 +787,250 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState).toEqual(oldState);
     });
 
-    describe('get displayed options', () => {
+    describe('utility functions', () => {
+      describe('get displayed options', () => {
 
-      it('should return all the options if selectedOptions is empty', () => {
-        const state: IDropdownSearchState = {
-          id: 'new-dropdown-search',
-          options,
-        };
+        it('should return all the options if selectedOptions is empty', () => {
+          const state: IDropdownSearchState = {
+            id: 'new-dropdown-search',
+            options,
+          };
 
-        expect(getDisplayedOptions(state)).toEqual(options);
+          expect(getDisplayedOptions(state)).toEqual(options);
+        });
+
+        it('should return only the options that are not selected', () => {
+          const state: IDropdownSearchState = {
+            id: 'new-dropdown-search',
+            options: [{ ...options[0], selected: true, hidden: true }, options[1], options[2]],
+          };
+
+          expect(getDisplayedOptions(state)).toEqual([options[1], options[2]]);
+        });
+
+        it('should return only the options in the right order', () => {
+          const state: IDropdownSearchState = {
+            id: 'new-dropdown-search',
+            options: [options[0], { ...options[1], selected: true, hidden: true }, options[2]],
+          };
+
+          expect(getDisplayedOptions(state)).toEqual([options[0], options[2]]);
+        });
       });
 
-      it('should return only the options that are not selected', () => {
-        const state: IDropdownSearchState = {
-          id: 'new-dropdown-search',
-          options: [{ ...options[0], selected: true, hidden: true }, options[1], options[2]],
-        };
+      describe('deselect last selected option', () => {
+        it('should return an array of option without the last one', () => {
+          const optionToBeRemoved: IDropdownOption = {
+            value: 'value', displayValue: 'display', selected: true
+          };
 
-        expect(getDisplayedOptions(state)).toEqual([options[1], options[2]]);
+          const selectedOptions: IDropdownOption[] = [
+            ...options, optionToBeRemoved
+          ];
+
+          expect(deselectLastSelectedOption(selectedOptions)).toEqual([...options,
+          { ...optionToBeRemoved, selected: false, hidden: false }]);
+        });
+
+        it('should return an array equals to the one passed if there are no selected options', () => {
+          const selectedOptions: IDropdownOption[] = [].concat(options);
+
+          expect(deselectLastSelectedOption(selectedOptions)).toEqual(options);
+        });
       });
 
-      it('should return only the options in the right order', () => {
-        const state: IDropdownSearchState = {
-          id: 'new-dropdown-search',
-          options: [options[0], { ...options[1], selected: true, hidden: true }, options[2]],
-        };
+      describe('add unique selected option', () => {
+        it('should add a custom selected option', () => {
+          const options: IDropdownOption[] = [];
+          const value = 'Display value';
 
-        expect(getDisplayedOptions(state)).toEqual([options[0], options[2]]);
-      });
-    });
+          expect(_.findWhere(addUniqueSelectedOption(options, value), { value, selected: true, custom: true })).toBeDefined();
+        });
 
-    describe('deselect last selected option', () => {
-      it('should return an array of option without the last one', () => {
-        const optionToBeRemoved: IDropdownOption = {
-          value: 'value', displayValue: 'display', selected: true
-        };
+        it('should not add a custom selected option if another one with the same value is present', () => {
+          const newOptions: IDropdownOption[] = [options[0]];
 
-        const selectedOptions: IDropdownOption[] = [
-          ...options, optionToBeRemoved
-        ];
-
-        expect(deselectLastSelectedOption(selectedOptions)).toEqual([...options,
-        { ...optionToBeRemoved, selected: false, hidden: false }]);
+          expect(addUniqueSelectedOption(newOptions, options[0].value).length).toBe(1);
+        });
       });
 
-      it('should return an array equals to the one passed if there are no selected options', () => {
-        const selectedOptions: IDropdownOption[] = [].concat(options);
+      describe('deselect all options', () => {
+        it('should return an array with all option unselected', () => {
+          const optionsToDeselect: IDropdownOption[] = [
+            { ...options[0], selected: true },
+            { ...options[1], selected: true },
+            { ...options[2], selected: true },
+          ];
 
-        expect(deselectLastSelectedOption(selectedOptions)).toEqual(options);
-      });
-    });
+          expect(_.where(deselectAllOptions(optionsToDeselect), { selected: true }).length).toBe(0);
+        });
 
-    describe('add unique selected option', () => {
-      it('should add a custom selected option', () => {
-        const options: IDropdownOption[] = [];
-        const value = 'Display value';
+        it('should remove the custom options', () => {
+          const optionsToDeselect: IDropdownOption[] = [
+            { ...options[0], selected: true },
+            { ...options[1], selected: true, custom: true },
+            { ...options[2], selected: true, custom: true },
+          ];
 
-        expect(_.findWhere(addUniqueSelectedOption(options, value), { value, selected: true, custom: true })).toBeDefined();
-      });
+          const expectedDeselectedOptions: IDropdownOption[] = [{ ...options[0], selected: false, hidden: false }];
 
-      it('should not add a custom selected option if another one with the same value is present', () => {
-        const newOptions: IDropdownOption[] = [options[0]];
-
-        expect(addUniqueSelectedOption(newOptions, options[0].value).length).toBe(1);
-      });
-    });
-
-    describe('deselect all options', () => {
-      it('should return an array with all option unselected', () => {
-        const optionsToDeselect: IDropdownOption[] = [
-          { ...options[0], selected: true },
-          { ...options[1], selected: true },
-          { ...options[2], selected: true },
-        ];
-
-        expect(_.where(deselectAllOptions(optionsToDeselect), { selected: true }).length).toBe(0);
+          expect(deselectAllOptions(optionsToDeselect)).toEqual(expectedDeselectedOptions);
+        });
       });
 
-      it('should remove the custom options', () => {
-        const optionsToDeselect: IDropdownOption[] = [
-          { ...options[0], selected: true },
-          { ...options[1], selected: true, custom: true },
-          { ...options[2], selected: true, custom: true },
-        ];
+      describe('deselect option', () => {
+        it('should return an array with the right option unselected', () => {
+          const optionsToDeselect: IDropdownOption[] = [
+            { ...options[0], selected: true },
+            { ...options[1], selected: true },
+            { ...options[2], selected: true },
+          ];
 
-        const expectedDeselectedOptions: IDropdownOption[] = [{ ...options[0], selected: false, hidden: false }];
+          expect(_.where(deselectOption(optionsToDeselect, options[0].value),
+            { value: options[0].value, selected: false, hidden: false }).length).toBe(1);
+        });
 
-        expect(deselectAllOptions(optionsToDeselect)).toEqual(expectedDeselectedOptions);
+        it('should remove the option if it is custom', () => {
+          const optionsToDeselect: IDropdownOption[] = [
+            { ...options[0], selected: true },
+            { ...options[1], selected: true },
+            { ...options[2], selected: true, custom: true },
+          ];
+
+          expect(_.find(deselectOption(optionsToDeselect, options[2].value),
+            { value: options[2].value })).toBeUndefined();
+        });
       });
-    });
 
-    describe('deselect option', () => {
-      it('should return an array with the right option unselected', () => {
-        const optionsToDeselect: IDropdownOption[] = [
-          { ...options[0], selected: true },
-          { ...options[1], selected: true },
-          { ...options[2], selected: true },
-        ];
+      describe('isNotCustomOption', () => {
+        let customOption: IDropdownOption;
 
-        expect(_.where(deselectOption(optionsToDeselect, options[0].value),
-          { value: options[0].value, selected: false, hidden: false }).length).toBe(1);
+        beforeEach(() => {
+          customOption = { value: 'test', custom: true, selected: false };
+        });
+
+        it('should return false if the option is custom and unselected by default', () => {
+          expect(isNotCustomOption(customOption)).toBe(false);
+        });
+
+        it('should return false if the option is custom and selected by default', () => {
+          customOption.selected = true;
+          expect(isNotCustomOption(customOption)).toBe(false);
+        });
+
+        it('should return false if the option is custom and unselected, and includeSelected is set to false', () => {
+          expect(isNotCustomOption(customOption, false)).toBe(false);
+        });
+
+        it('should return true if the option is custom and selected, and includeSelected is set to false', () => {
+          customOption.selected = true;
+          expect(isNotCustomOption(customOption, false)).toBe(true);
+        });
+
+        it('should return true if the option is not custom', () => {
+          const optionNotCustom = _.extend(customOption, { custom: false });
+          expect(isNotCustomOption(optionNotCustom)).toBe(true);
+          expect(isNotCustomOption(optionNotCustom)).toBe(true);
+        });
       });
 
-      it('should remove the option if it is custom', () => {
-        const optionsToDeselect: IDropdownOption[] = [
-          { ...options[0], selected: true },
-          { ...options[1], selected: true },
-          { ...options[2], selected: true, custom: true },
-        ];
+      describe('removeCustomOptions', () => {
+        const supportSingleCustomOption = true;
 
-        expect(_.find(deselectOption(optionsToDeselect, options[2].value),
-          { value: options[2].value })).toBeUndefined();
+        let testOptions: IDropdownOption[];
+
+        beforeEach(() => {
+          testOptions = [
+            { value: 'test 1', displayValue: 'display 1', custom: true, selected: true },
+            { value: 'test 2', displayValue: 'display 2', custom: true, selected: false },
+            { value: 'test 3', displayValue: 'display 3', custom: false, selected: false },
+            { value: 'test 4', displayValue: 'display 4', custom: false, selected: true },
+          ];
+        });
+
+        it('should return the same options if supportSingleCustomOption is false', () => {
+          expect(removeCustomOptions(testOptions, !supportSingleCustomOption)).toEqual(testOptions);
+        });
+
+        describe('with supportSingleCustomOption', () => {
+          it('should return only the non custom options by default', () => {
+            expect(removeCustomOptions(testOptions, supportSingleCustomOption))
+              .toEqual(testOptions.filter((option: IDropdownOption) => !option.custom));
+          });
+
+          it('should return the non custom options with the selected custom option if includeSelected is set to false', () => {
+            expect(removeCustomOptions(testOptions, supportSingleCustomOption, false))
+              .toEqual(testOptions.filter((option: IDropdownOption) => !option.custom || option.selected));
+          });
+        });
+      });
+
+      describe('removeCustomOptions', () => {
+        const supportSingleCustomOption = true;
+
+        let testOptions: IDropdownOption[];
+
+        beforeEach(() => {
+          testOptions = [
+            { value: 'test 1', displayValue: 'display 1', custom: true, selected: true },
+            { value: 'test 2', displayValue: 'display 2', custom: true, selected: false },
+            { value: 'test 3', displayValue: 'display 3', custom: false, selected: false },
+            { value: 'test 4', displayValue: 'display 4', custom: false, selected: true },
+          ];
+        });
+
+        it('should return the same options if supportSingleCustomOption is false', () => {
+          expect(removeCustomOptions(testOptions, !supportSingleCustomOption)).toEqual(testOptions);
+        });
+
+        describe('with supportSingleCustomOption', () => {
+          it('should return only the non custom options by default', () => {
+            expect(removeCustomOptions(testOptions, supportSingleCustomOption))
+              .toEqual(testOptions.filter((option: IDropdownOption) => !option.custom));
+          });
+
+          it('should return the non custom options with the selected custom option if includeSelected is set to false', () => {
+            expect(removeCustomOptions(testOptions, supportSingleCustomOption, false))
+              .toEqual(testOptions.filter((option: IDropdownOption) => !option.custom || option.selected));
+          });
+        });
+      });
+
+      describe('shouldHideOnFilter', () => {
+        const testFilterText = 'testFilterText';
+
+        let testOption: IDropdownOption;
+
+        beforeEach(() => {
+          testOption = { value: 'test' };
+        });
+
+        it('should return false if the option is not default and not custom, regardless of the filterText', () => {
+          expect(shouldHideOnFilter(testOption, testFilterText)).toBe(false);
+
+          testOption.value = testFilterText;
+          expect(shouldHideOnFilter(testOption, testFilterText)).toBe(false);
+        });
+
+        it('should return true if the option is default regardless of the filterText', () => {
+          testOption.default = true;
+          expect(shouldHideOnFilter(testOption, testFilterText)).toBe(true);
+
+          testOption.default = true;
+          testOption.value = testFilterText;
+          expect(shouldHideOnFilter(testOption, testFilterText)).toBe(true);
+        });
+
+        it('should return false if the option is custom and its value does not equal to the filterText', () => {
+          testOption.custom = true;
+          expect(shouldHideOnFilter(testOption, testFilterText)).toBe(false);
+        });
+
+        it('should return true if the option is custom and its value equals the filterText', () => {
+          testOption.custom = true;
+          testOption.value = testFilterText;
+          expect(shouldHideOnFilter(testOption, testFilterText)).toBe(true);
+        });
       });
     });
   });
