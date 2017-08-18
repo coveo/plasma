@@ -22,6 +22,7 @@
   "scripts": {
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
     "lint": "gulp prettify",
+    "lint-commit": "gulp prettify && git add . && git commit -m 'prettify ts files before push'",
     "build": "gulp",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
@@ -33,7 +34,7 @@
     "report-coverage": "codecov -f coverage/coverage.json"
   },
   "pre-push": [
-    "lint",
+    "lint-commit",
     "build",
     "pretest",
     "test"
