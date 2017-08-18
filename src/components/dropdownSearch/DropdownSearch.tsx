@@ -14,6 +14,7 @@ export interface IDropdownOption {
   selected?: boolean;
   custom?: boolean;
   hidden?: boolean;
+  default?: boolean;
 }
 
 export interface IDropdownSearchStateProps {
@@ -42,6 +43,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
   onOptionClickCallBack?: (option: IDropdownOption) => void;
   onMountCallBack?: () => void;
   onClickCallBack?: () => void;
+  supportSingleCustomOption?: boolean;
 }
 
 export interface IDropdownSearchDispatchProps {
@@ -84,7 +86,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   protected getDisplayedOptions(): IDropdownOption[] {
     return _.reject(this.props.options, (option) => {
-      return option.custom || option.hidden;
+      return (!this.props.supportSingleCustomOption && option.custom) || option.hidden;
     });
   }
 
@@ -148,7 +150,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   protected getNoOptions(): JSX.Element[] {
     return [
       <li key='noResultDropdownSearch'>
-        <span>{this.props.noResultText}</span>
+        <span className='no-search-results'>{this.props.noResultText}</span>
       </li>,
     ];
   }
@@ -210,15 +212,23 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
   }
 
   protected getMainInput(): JSX.Element {
+    const selectedOption: IDropdownOption = _.findWhere(this.props.options, { selected: true });
+    const filterPlaceHolder: string = selectedOption && (selectedOption.displayValue || selectedOption.value)
+      || this.props.filterPlaceholder;
+
     if (this.props.isOpened) {
-      return <FilterBox id={this.props.id}
+      return <FilterBox
+        id={this.props.id}
         onFilter={(id, filterText) => this.handleOnFilterTextChange(filterText)}
         onBlur={() => this.handleOnBlur()}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownFilterBox(e)}
-        filterPlaceholder={this.props.filterPlaceholder}
-        isAutoFocus={true} />;
+        filterPlaceholder={filterPlaceHolder}
+        isAutoFocus={true}
+        filterText={this.props.filterText || ''}
+      />;
     }
-    return <button className='btn dropdown-toggle dropdown-button-search-container mod-search'
+    return <button
+      className='btn dropdown-toggle dropdown-button-search-container mod-search'
       type='button'
       data-toggle='dropdown'
       onClick={() => this.handleOnClick()}

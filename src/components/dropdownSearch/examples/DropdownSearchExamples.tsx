@@ -57,6 +57,12 @@ export class DropdownSearchExamples extends React.Component<any, any> {
           </div>
         </div>
         <div className='form-group'>
+          <label className='form-control-label'>Default Dropdown with single custom option support</label>
+          <div className='form-control'>
+            <DropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate(), supportSingleCustomOption: true, noResultText: 'Press enter or tab to select the above value, or remove it to display all options.' }) } />
+          </div>
+        </div>
+        <div className='form-group'>
           <label className='form-control-label'>Dropdown with default selected option</label>
           <div className='form-control'>
             <DropdownSearchConnected {..._.extend({}, defaultOptions, { id: UUID.generate(), defaultSelectedOption: { value: 'Option 1' } }) } />

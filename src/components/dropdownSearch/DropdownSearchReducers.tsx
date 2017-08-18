@@ -15,12 +15,16 @@ export interface IDropdownSearchState {
   selectedOption?: IDropdownOption;
   activeOption?: IDropdownOption;
   setFocusOnDropdownButton?: boolean;
+  defaultSelectedOptionValue?: string;
+  supportSingleCustomOption?: boolean;
 }
 
 export const defaultSelectedOptionPlaceholder: IDropdownOption = {
   value: 'Select an option',
   selected: true,
   custom: true,
+  hidden: true,
+  default: true,
 };
 
 export const dropdownSearchInitialState: IDropdownSearchState = {
@@ -48,6 +52,19 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
   return index;
 };
 
+export const isNotCustomOption = (option: IDropdownOption, includeSelected: boolean = true): boolean => includeSelected
+  ? !option.custom
+  : !option.custom || option.selected;
+
+// removeCustomOptions only utilized in supportSingleCustomOption scenarios, otherwise causes side effects for multiselect
+export const removeCustomOptions = (options: IDropdownOption[], supportSingleCustomOption: boolean, includeSelected: boolean = true) => {
+  return !supportSingleCustomOption
+    ? deepClone(options)
+    : deepClone(options.filter((option: IDropdownOption) => isNotCustomOption(option, includeSelected)));
+};
+
+export const shouldHideOnFilter = (option: IDropdownOption, filterText: string): boolean => !!(option.default || (option.custom && option.value === filterText));
+
 export const deselectOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
   const nextOptions: IDropdownOption[] = deepClone(options);
   const selectedOption = _.find(nextOptions, { value });
@@ -69,10 +86,10 @@ export const deselectLastSelectedOption = (options: IDropdownOption[]): IDropdow
     : deepClone(options);
 };
 
-export const deselectAllOptions = (options: IDropdownOption[]): IDropdownOption[] => {
+export const deselectAllOptions = (options: IDropdownOption[], includeCustom: boolean = false): IDropdownOption[] => {
   let nextOptions: IDropdownOption[] = [];
   _.each(options, (option: IDropdownOption) => {
-    if (!option.custom) {
+    if (!option.custom || includeCustom) {
       const nextOption = deepClone(option);
       nextOptions.push({ ...nextOption, selected: false, hidden: false });
     }
@@ -96,13 +113,13 @@ export const addUniqueSelectedOption = (options: IDropdownOption[], value: strin
   return deepClone(options);
 };
 
-export const getDisplayedOptions = (options: IDropdownOption[]): IDropdownOption[] => {
-  return _.reject(options, (option) => option.custom || option.hidden);
+export const getDisplayedOptions = (state: IDropdownSearchState): IDropdownOption[] => {
+  return _.reject(state.options, (option) => (!state.supportSingleCustomOption && option.custom) || option.hidden);
 };
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
   const currentFilterText: string = filterText || state.filterText || '';
-  return _.filter(getDisplayedOptions(state.options),
+  return _.filter(getDisplayedOptions(state),
     (option: IDropdownOption) => {
       const displayValue = option.displayValue || option.value;
       return s.contains(displayValue.toLowerCase(), (currentFilterText).toLowerCase());
@@ -143,12 +160,17 @@ export const updateOptions = (options: IDropdownOption[], selectedOption?: IDrop
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
   action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
+  let nextOptions: IDropdownOption[] = [];
 
   switch (action.type) {
     case DropdownSearchActions.toggle:
+      nextOptions = state.supportSingleCustomOption
+        ? removeCustomOptions(state.options, state.supportSingleCustomOption, false)
+        : state.options;
       return {
         ...state,
         isOpened: !state.isOpened,
+        options: nextOptions,
         filterText: '',
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -178,18 +200,38 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.filter:
+      const options = (state.options || []);
+      const shouldReturnNewOptions: boolean = state.supportSingleCustomOption && options
+        .filter((option: IDropdownOption) => !option.custom && !option.default)
+        .every((option: IDropdownOption) => (option.displayValue || option.value).toLowerCase() !== (action.payload.filterText || '').toLowerCase());
+
+      nextOptions = shouldReturnNewOptions
+        ? options.map((option: IDropdownOption) => _.extend(option, { hidden: shouldHideOnFilter(option, action.payload.filterText) }))
+        : options;
+
+      const newCustomOption: IDropdownOption[] = action.payload.filterText !== ''
+        ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
+        : [];
+
       return {
         ...state,
         id: action.payload.id,
+        options: shouldReturnNewOptions
+          ? [...newCustomOption, ...removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)]
+          : deepClone(nextOptions),
         filterText: action.payload.filterText,
-        activeOption: getFilteredOptions(state, action.payload.filterText)[0] || state.activeOption,
+        activeOption: getFilteredOptions(state, action.payload.filterText)[0] || undefined,
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
+      nextOptions = !state.supportSingleCustomOption
+        ? selectSingleOption(state.options, action.payload.addedSelectedOption)
+        : removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), action.payload.addedSelectedOption), state.supportSingleCustomOption, false);
+
       return {
         ...state,
+        options: nextOptions,
         id: action.payload.id,
-        options: selectSingleOption(state.options, action.payload.addedSelectedOption),
         isOpened: false,
         activeOption: undefined,
         setFocusOnDropdownButton: false,
@@ -201,6 +243,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         id: action.payload.id,
         filterText: '',
         isOpened: false,
+        supportSingleCustomOption: action.payload.supportSingleCustomOption,
       };
     case DropdownSearchActions.active:
       const keyPressed = action.payload.keyCode;
@@ -211,6 +254,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         return {
           ...state,
           isOpened: !isFirstSelectedOption,
+          options: state.supportSingleCustomOption && isFirstSelectedOption ? removeCustomOptions(state.options, false) : state.options,
           activeOption: !isFirstSelectedOption ?
             optionsFiltered[getNextIndexPosition(optionsFiltered, state.activeOption, keyPressed)] : undefined,
           setFocusOnDropdownButton: isFirstSelectedOption,
@@ -220,7 +264,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           ...state,
           id: action.payload.id,
           isOpened: false,
-          options: selectSingleOption(state.options, state.activeOption),
+          options: removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), state.activeOption), state.supportSingleCustomOption, false),
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
