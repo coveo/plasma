@@ -6,6 +6,7 @@
 [![bitHound Dependencies](https://www.bithound.io/github/coveo/react-vapor/badges/dependencies.svg)](https://www.bithound.io/github/coveo/react-vapor/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/coveo/react-vapor/badges/devDependencies.svg)](https://www.bithound.io/github/coveo/react-vapor/master/dependencies/npm)
 [![Greenkeeper badge](https://badges.greenkeeper.io/coveo/react-vapor.svg)](https://greenkeeper.io/)
+[![Npm total downloads badge](https://img.shields.io/npm/dt/react-vapor.svg)](https://www.npmjs.com/package/react-vapor)
 
 Vapor CSS components implemented with React!
 
