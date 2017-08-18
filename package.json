@@ -34,7 +34,7 @@
     "report-coverage": "codecov -f coverage/coverage.json"
   },
   "pre-push": [
-    "lint-commit",
+    "lint",
     "build",
     "pretest",
     "test"
