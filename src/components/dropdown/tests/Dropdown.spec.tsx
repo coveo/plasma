@@ -91,7 +91,7 @@ describe('Dropdown', () => {
         { attachTo: document.getElementById('App') }
       );
 
-      (document.getElementsByClassName('dropdown-wrapper')[0] as HTMLDivElement).click();
+      (document.getElementsByClassName('dropdown')[0] as HTMLDivElement).click();
       expect(onDocumentClickSpy).not.toHaveBeenCalled();
 
       document.getElementById('App').click();
