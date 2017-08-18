@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { UUID } from '../../utils/UUID';
 import { ISvgProps, Svg } from '../svg/Svg';
 import * as _ from 'underscore';
 import * as classNames from 'classnames';
@@ -96,7 +95,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
       return _.map(this.getSelectedOptions(), (selectedOption: IDropdownOption) => {
         const displayValue = selectedOption.displayValue || selectedOption.value;
         return (
-          <span key={UUID.generate()}
+          <span key={selectedOption.value}
             className='dropdown-selected-value'
             data-value={selectedOption.value}
             title={displayValue}>
@@ -130,7 +129,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
           : value;
 
         return (
-          <li key={UUID.generate()}
+          <li key={option.value}
             className={liClasses}
             title={value}>
             <span className={optionClasses}
