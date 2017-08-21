@@ -52,7 +52,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "@types/chosen-js": "1.6.1",
+    "@types/chosen-js": "1.6.2",
     "@types/classnames": "2.2.0",
     "@types/enzyme": "2.8.2",
     "@types/jasmine": "2.5.53",
