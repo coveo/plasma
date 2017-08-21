@@ -64,7 +64,7 @@
     "@types/react-redux": "4.4.46",
     "@types/tether": "1.4.2",
     "@types/underscore": "1.8.1",
-    "@types/underscore.string": "0.0.30",
+    "@types/underscore.string": "0.0.31",
     "@types/webpack": "3.0.4",
     "@types/webpack-env": "1.13.0",
     "autoprefixer": "7.1.2",
