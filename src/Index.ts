@@ -106,6 +106,7 @@ import { tabGroupsReducer, tabsReducer } from './components/tab/TabReducers';
 import { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 import { Button } from './components/button/Button';
 import { BlankSlate } from './components/blankSlate/BlankSlate';
+import { MultiSelectDropdownSearchConnected } from './components/dropdownSearch/MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 import { DropdownSearchConnected } from './components/dropdownSearch/DropdownSearchConnected';
 import { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 import { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
@@ -204,6 +205,7 @@ export {
   DropdownSearch,
   DropdownSearchConnected,
   DropdownSearchActions,
+  MultiSelectDropdownSearchConnected,
   dropdownsSearchReducer,
   updateOptionsDropdownSearch,
 
