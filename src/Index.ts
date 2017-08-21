@@ -109,7 +109,7 @@ import { BlankSlate } from './components/blankSlate/BlankSlate';
 import { DropdownSearchConnected } from './components/dropdownSearch/DropdownSearchConnected';
 import { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 import { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
-import { updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
+import { DropdownSearchActions, updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 import { Input } from './components/input/Input';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
@@ -203,6 +203,7 @@ export {
   // Dropdown search
   DropdownSearch,
   DropdownSearchConnected,
+  DropdownSearchActions,
   dropdownsSearchReducer,
   updateOptionsDropdownSearch,
 
