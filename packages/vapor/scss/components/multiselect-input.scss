@@ -1,41 +1,45 @@
 .multiselect-input {
-  display: flex;
+  align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+
+  display: flex;
+  width: $dropdown-button-min-width;
 
   border: $default-border;
   border-radius: $border-radius;
-
-  width: $dropdown-button-min-width;
 }
 
 .selected-options-container {
+  align-items: center;
   flex: 1 1;
-  display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
-  overflow: hidden;
+
+  display: inline-flex;
   padding: $drowdown-multiselect-margin;
+  overflow: hidden;
 
   input {
-    padding: $drowdown-multiselect-margin;
-    font-size: $dropdown-button-font-size;
-    border: none;
     height: $dropdown-multiselect-option-height;
     min-width: 100%;
+    padding: $drowdown-multiselect-margin;
+
+    font-size: $dropdown-button-font-size;
+
+    border: none;
   }
 
   input:focus {
-      outline:none;
+    outline:none;
   }
 }
 
 .remove-all-selected-options {
   flex: 0 1;
+
   padding: $drowdown-multiselect-items-margin;
 }
 

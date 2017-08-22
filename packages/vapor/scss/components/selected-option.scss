@@ -1,58 +1,63 @@
 .selected-option {
+  position: relative;
+  align-items: center;
   flex: 0 1 auto;
-
-  display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
-  position: relative;
 
+  display: inline-flex;
   height: 100%;
-  min-height: $dropdown-multiselect-option-height;
   max-width: 100%;
-
+  min-height: $dropdown-multiselect-option-height;
   margin: $drowdown-multiselect-margin;
+
   color: $medium-blue;
   font-size: $button-small-font-size;
   line-height: $dropdown-multiselect-option-height;
 
+  background-color: $light-grey;
   border: $default-border;
   border-radius: $border-radius;
-
-  background-color: $light-grey;
 
   cursor: default;
 }
 
 .selected-option-item {
-  flex: 0 1 auto;
   align-self: center;
+  flex: 0 1 auto;
 }
 
 .selected-option-value {
-  @extend .selected-option-item;
   margin-left: $drowdown-multiselect-items-margin;
-  text-overflow: ellipsis;
   overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  @extend .selected-option-item;
 }
 
-.remove-option{
-  @extend .selected-option-item;
-  display: flex;
+.remove-option {
+  align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
+
+  display: flex;
   height: 100%;
   min-width: $dropdown-multiselect-option-height;
   margin-left: $drowdown-multiselect-items-margin;
+
   border-left: $default-border;
+
   transition: $button-color-transition;
+
+  @extend .selected-option-item;
 }
 
 .remove-option:hover {
   background-color: darken($light-grey, 5%);
+
   cursor: pointer;
 }
 
