@@ -101,6 +101,10 @@
   min-height: min-content;
 }
 
-.full-width {
+.full-width-min {
   min-width: min-content;
+}
+
+.full-width-max {
+  min-width: max-content;
 }
