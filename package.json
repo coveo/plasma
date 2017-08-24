@@ -98,7 +98,7 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "1.1.1",
     "karma-jasmine": "1.1.0",
-    "karma-mocha-reporter": "2.2.3",
+    "karma-mocha-reporter": "2.2.4",
     "karma-phantomjs-launcher": "1.0.4",
     "karma-source-map-support": "1.2.0",
     "karma-sourcemap-loader": "0.3.7",
