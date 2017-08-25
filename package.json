@@ -72,7 +72,7 @@
     "chosen-js": "1.7.0",
     "classnames": "2.2.5",
     "codecov": "2.2.0",
-    "coveo-styleguide": "1.16.x",
+    "coveo-styleguide": "~1.17.0",
     "css-loader": "0.28.4",
     "del": "3.0.0",
     "dts-generator": "2.1.0",
