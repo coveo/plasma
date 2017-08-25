@@ -8,6 +8,7 @@
 @import 'variables';
 @import 'animations';
 @import 'helpers';
+
 // Utility
 .coveo-styleguide {
   @import 'typography/utility';
@@ -23,9 +24,11 @@
 
 //Progress bar
 @import 'elements/progress-bar';
+
 // Buttons
 @import 'elements/btn';
 @import 'elements/btn-append-prepend';
+
 // Typography
 @import 'typography/headings';
 @import 'typography/elements';
@@ -34,6 +37,7 @@
 // Icons
 @import 'icons/icons';
 @import 'icons/svgs';
+
 // Controls
 @import 'controls/checkboxes';
 @import 'controls/collapsable';
@@ -94,6 +98,7 @@
   @import 'components/sync-feedback';
   @import 'components/selected-option';
   @import 'components/multiselect-input';
+  @import 'components/home-card';
   // Forms
   @import 'forms/form-sections';
   @import 'forms/form-child';

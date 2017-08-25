@@ -27,7 +27,6 @@ $button-confirm-icon-width: 15px;
 $button-confirm-margin-bottom: 20px;
 $button-color-transition: all 0.05s ease-in;
 
-
 // Checkboxes and radios
 $checkbox-size: 18px;
 $checkbox-label-margin: 18px;
@@ -326,3 +325,7 @@ $calendar-limit-border-length: 5px;
 // Tooltip
 $tooltip-z-index: 10000;
 $tooltip-spacing: 10px;
+
+// Home card
+$home-card-padding: 1rem; // Based on white space utility p2 (0.5rem * 2)
+$home-card-margin: 15px;
