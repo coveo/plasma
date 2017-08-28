@@ -9197,6 +9197,7 @@ var PROPS_TO_OMIT = [
 ];
 var TOOLTIP_PROPS_TO_OMIT = PROPS_TO_OMIT.concat([
     'animation',
+    'footer',
     'defaultOverlayShown',
     'delay',
     'delayShow',
