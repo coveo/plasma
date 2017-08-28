@@ -41,6 +41,7 @@ const PROPS_TO_OMIT: string[] = [
 const TOOLTIP_PROPS_TO_OMIT: string[] = [
   ...PROPS_TO_OMIT,
   'animation',
+  'footer',
   'defaultOverlayShown',
   'delay',
   'delayShow',
