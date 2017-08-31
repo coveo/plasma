@@ -21,6 +21,10 @@ form {
 
     color: $medium-blue;
     font-size: $form-control-label-font-size;
+
+    &.flex {
+      display: flex;
+    }
   }
 
   .form-group {
