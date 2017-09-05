@@ -49084,8 +49084,13 @@ exports.dropdownSearchReducer = function (state, action) {
             var newCustomOption = action.payload.filterText !== ''
                 ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
                 : [];
-            return __assign({}, state, { id: action.payload.id, options: shouldReturnNewOptions
-                    ? newCustomOption.concat(exports.removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)) : CloneUtils_1.deepClone(nextOptions), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || undefined, setFocusOnDropdownButton: false });
+            if (shouldReturnNewOptions) {
+                var newState = _.extend(CloneUtils_1.deepClone(state), {
+                    options: newCustomOption.concat(exports.removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)),
+                });
+                return __assign({}, newState, { id: action.payload.id, filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(newState, action.payload.filterText)[0] || undefined, setFocusOnDropdownButton: false });
+            }
+            return __assign({}, state, { id: action.payload.id, options: CloneUtils_1.deepClone(nextOptions), filterText: action.payload.filterText, activeOption: exports.getFilteredOptions(state, action.payload.filterText)[0] || undefined, setFocusOnDropdownButton: false });
         case DropdownSearchActions_1.DropdownSearchActions.select:
             nextOptions = !state.supportSingleCustomOption
                 ? exports.selectSingleOption(state.options, action.payload.addedSelectedOption)

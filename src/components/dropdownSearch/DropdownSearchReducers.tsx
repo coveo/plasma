@@ -213,12 +213,24 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
         : [];
 
+      if (shouldReturnNewOptions) {
+        const newState = _.extend(deepClone(state), {
+          options: [...newCustomOption, ...removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)],
+        });
+
+        return {
+          ...newState,
+          id: action.payload.id,
+          filterText: action.payload.filterText,
+          activeOption: getFilteredOptions(newState, action.payload.filterText)[0] || undefined,
+          setFocusOnDropdownButton: false,
+        };
+      }
+
       return {
         ...state,
         id: action.payload.id,
-        options: shouldReturnNewOptions
-          ? [...newCustomOption, ...removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)]
-          : deepClone(nextOptions),
+        options: deepClone(nextOptions),
         filterText: action.payload.filterText,
         activeOption: getFilteredOptions(state, action.payload.filterText)[0] || undefined,
         setFocusOnDropdownButton: false,
