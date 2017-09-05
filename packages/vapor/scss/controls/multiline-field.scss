@@ -22,6 +22,21 @@
     &:nth-child(1) label {
       visibility: visible;
     }
+
+    .multiline-label .inline-help-tooltip {
+      width: 1em;
+      height: 1em;
+
+      .inline-help-icon {
+        width: 1em;
+        height: 1em;
+
+        svg {
+          width: 1em;
+          height: 1em;
+        }
+      }
+    }
   }
 
   ul {
