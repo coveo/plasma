@@ -85,6 +85,8 @@ $icon-size: (4em / 3);
     width: 45%;
     height: 50%;
 
+    transform: translate3d(0, 0, 0); // Required for drag and drop positioning with dragula inside the modal.
+
     opacity: 0;
     pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
   }
