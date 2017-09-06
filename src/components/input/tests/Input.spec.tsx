@@ -31,6 +31,47 @@ describe('Input', () => {
       input.detach();
     });
 
+    it('should set inner input classes when specified', () => {
+      let innerInputClass = 'valid';
+      let classes = [innerInputClass];
+      let innerInput = input.find('input').first();
+      expect(innerInput.hasClass(innerInputClass)).toBe(false);
+
+      input.setProps({ innerInputClasses: classes });
+      input.mount();
+      expect(innerInput.hasClass(innerInputClass)).toBe(true);
+    });
+
+    it('should set inner input type when specified', () => {
+      let type = 'password';
+      let innerInput = input.find('input').first();
+      expect(innerInput.prop('type')).toBe('text');
+
+      input.setProps({ type });
+      input.mount();
+      expect(innerInput.prop('type')).toBe(type);
+    });
+
+    it('should set inner label valid message when specified', () => {
+      let message = 'salut';
+      let innerLabel = input.find('label').first();
+      expect(innerLabel.prop('data-valid-message')).toBe(undefined);
+
+      input.setProps({ validMessage: message });
+      input.mount();
+      expect(innerLabel.prop('data-valid-message')).toBe(message);
+    });
+
+    it('should set inner label invalid message when specified', () => {
+      let message = 'salut';
+      let innerLabel = input.find('label').first();
+      expect(innerLabel.prop('data-invalid-message')).toBe(undefined);
+
+      input.setProps({ invalidMessage: message });
+      input.mount();
+      expect(innerLabel.prop('data-invalid-message')).toBe(message);
+    });
+
     it('should call prop onChange on inner input blur', () => {
       const changeSpy = jasmine.createSpy('onChange');
       const innerInput = input.find('input');
