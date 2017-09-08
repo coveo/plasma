@@ -209,11 +209,12 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ? options.map((option: IDropdownOption) => _.extend(option, { hidden: shouldHideOnFilter(option, action.payload.filterText) }))
         : options;
 
-      const newCustomOption: IDropdownOption[] = action.payload.filterText !== ''
-        ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
-        : [];
 
       if (shouldReturnNewOptions) {
+        const newCustomOption: IDropdownOption[] = action.payload.filterText !== ''
+          ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
+          : [];
+
         const newState = _.extend(deepClone(state), {
           options: [...newCustomOption, ...removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)],
         });

@@ -245,7 +245,7 @@ describe('DropdownSearch', () => {
         dropdownSearch.id === action.payload.id)[0].options).toEqual(newDropdownOption);
     });
 
-    it('should return the new state with the isOpened toggle and the filterText reset to empty string on "FILTER_DROPDOWN_SEARCH"', () => {
+    it('should return the new state with the filterText set to newFilterText on "FILTER_DROPDOWN_SEARCH"', () => {
       const newFilterText = 'new filter';
       const oldState: IDropdownSearchState[] = [
         {
@@ -266,6 +266,64 @@ describe('DropdownSearch', () => {
       expect(dropdownSearchState.filter(
         (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
           dropdownSearch.filterText === newFilterText).length).toBe(1);
+    });
+
+    describe('FILTER_DROPDOWN_SEARCH with supportSingleCustomOption', () => {
+      let oldState: IDropdownSearchState[];
+
+      beforeEach(() => {
+        oldState = [
+          {
+            id: 'new-dropdown-search',
+            isOpened: false,
+            filterText: '',
+            options: [],
+            supportSingleCustomOption: true,
+          },
+        ];
+      });
+
+      it('should should not add a custom option if the filterText is empty', () => {
+        const newFilterText = '';
+
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.filter,
+          payload: _.extend({}, defaultPayload, { filterText: newFilterText }),
+        };
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+        expect(dropdownSearchState.filter(
+          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
+            dropdownSearch.options[0] === undefined).length).toBe(1);
+      });
+
+      it('should add a custom option if the filterText is not empty', () => {
+        const newFilterText = 'non empty filterText';
+
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.filter,
+          payload: _.extend({}, defaultPayload, { filterText: newFilterText }),
+        };
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+        expect(dropdownSearchState.filter(
+          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
+            dropdownSearch.options[0].custom === true).length).toBe(1);
+      });
+
+      it('should add a custom option if the filterText is not empty with its value being the filterText value', () => {
+        const newFilterText = 'non empty filterText';
+
+        const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+          type: DropdownSearchActions.filter,
+          payload: _.extend({}, defaultPayload, { filterText: newFilterText }),
+        };
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+        expect(dropdownSearchState.filter(
+          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
+            dropdownSearch.options[0].value === newFilterText).length).toBe(1);
+      });
     });
 
     it('should return the new state with the selectedOptions modified on "SELECT_DROPDOWN_SEARCH"', () => {
