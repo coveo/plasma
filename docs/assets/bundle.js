@@ -49081,10 +49081,10 @@ exports.dropdownSearchReducer = function (state, action) {
             nextOptions = shouldReturnNewOptions
                 ? options.map(function (option) { return _.extend(option, { hidden: exports.shouldHideOnFilter(option, action.payload.filterText) }); })
                 : options;
-            var newCustomOption = action.payload.filterText !== ''
-                ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
-                : [];
             if (shouldReturnNewOptions) {
+                var newCustomOption = action.payload.filterText !== ''
+                    ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
+                    : [];
                 var newState = _.extend(CloneUtils_1.deepClone(state), {
                     options: newCustomOption.concat(exports.removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)),
                 });
