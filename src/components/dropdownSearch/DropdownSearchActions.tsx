@@ -69,12 +69,11 @@ export const openDropdownSearch = (id: string): IReduxAction<IDefaultDropdownSea
   },
 });
 
-export const closeDropdownSearch = (id: string, dropdownOptions: IDropdownOption[]): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const closeDropdownSearch = (id: string, dropdownOptions: IDropdownOption[] = []): IReduxAction<IOptionsDropdownSearchPayload> => ({
   type: DropdownSearchActions.close,
   payload: {
     id,
     // passing dropdownOptions on close is useful to give accessibilty to the currently selected/unselected options of a MultiselectDropdownSearch
-    // after a user moves away from the component, which indicates that the state of the component should be final until the user reuses the component
     dropdownOptions,
   },
 });
