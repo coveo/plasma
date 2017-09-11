@@ -186,7 +186,7 @@ describe('DropdownSearch', () => {
 
         store.dispatch(toggleDropdownSearch(id));
 
-        dropdownSearch.props().onBlur();
+        dropdownSearch.props().onBlur([]);
 
         expect(dropdown.hasClass('open')).toBe(false, 'close the dropdown on blur');
       });

@@ -141,7 +141,7 @@ describe('MultiSelectDropdownSearch', () => {
 
         store.dispatch(closeDropdownSearch(id, []));
 
-        multiSelectDropdownSearchConnected.props().onBlur();
+        multiSelectDropdownSearchConnected.props().onBlur([]);
 
         expect(dropdown.hasClass('open')).toBe(false);
       });
