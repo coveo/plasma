@@ -317,3 +317,20 @@ export {
   DateUtils,
   DATES_SEPARATOR,
 };
+
+// Toasts
+export { Toast, ToastType, IToastProps } from './components/toast/Toast';
+export {
+  ToastAction,
+  addToast,
+  addToastContainer,
+  removeToast,
+  removeToastContainer,
+  IToastAddPayload,
+  IToastActionPayload,
+  IToastContainerActionPayload,
+  IToastAddOptionalPayload
+} from './components/toast/ToastActions';
+export { IToastsState, IToastState, toastsContainerInitialState, toastInitialState, toastContainerInitialState, toastsContainerReducer, toastContainerReducer } from './components/toast/ToastReducers';
+export { ToastContainer, IToastContainerDispatchProps, IToastContainerOwnProps, IToastContainerStateProps, IToastContainerProps } from './components/toast/ToastContainer';
+export { ToastContainerConnected } from './components/toast/ToastContainerConnected';

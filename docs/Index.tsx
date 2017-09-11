@@ -46,6 +46,8 @@ import { ButtonExamples } from '../src/components/button/examples/ButtonExamples
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+import { ToastExamples } from '../src/components/toast/examples/ToastExamples';
+import { ToastConnectedExamples } from '../src/components/toast/examples/ToastConnectedExamples';
 
 class App extends React.Component<any, any> {
 
@@ -117,6 +119,8 @@ class App extends React.Component<any, any> {
           <DatePickerDropdownConnectedSingleDateExamples />
           <MultilineInputExamples />
           <BlankSlateExample />
+          <ToastExamples />
+          <ToastConnectedExamples />
         </div>
       </Provider>
     );
