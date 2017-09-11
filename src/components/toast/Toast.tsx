@@ -69,7 +69,7 @@ export class Toast extends React.Component<IToastProps, void> {
 
     return (
       <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
-        <span className='toast-close' onClick={() => { this.close(); }}>
+        <span className='toast-close' onClick={() => this.close()}>
           <Svg svgName='close' className='icon mod-lg fill-pure-white' />
         </span>
         <div className='toast-title'>{this.props.title}</div>

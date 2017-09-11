@@ -38,82 +38,82 @@ describe('Toasts', () => {
       expect(() => toastInstance.componentWillMount()).not.toThrow();
 
       toastComponent.unmount();
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
-      expect(renderSpy.calls.count()).toBe(1);
+      toastComponent.setProps(newToastAttributes).mount();
+
+      expect(renderSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-      let destroySpy = jasmine.createSpy('onDestroy');
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { onDestroy: destroySpy });
+      const destroySpy = jasmine.createSpy('onDestroy');
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { onDestroy: destroySpy });
 
       expect(() => toastInstance.componentWillUnmount()).not.toThrow();
 
       toastComponent.unmount();
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       toastComponent.unmount();
-      expect(destroySpy.calls.count()).toBe(1);
+      expect(destroySpy).toHaveBeenCalledTimes(1);
     });
 
     it('should have class "mod-success" when no type is defined or type is Success', () => {
-      let expectedClass = '.mod-success';
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { type: ToastType.Success });
+      const expectedClass = '.mod-success';
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { type: ToastType.Success });
 
       expect(toastComponent.find(expectedClass).length).toBe(1);
 
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       expect(toastComponent.find(expectedClass).length).toBe(1);
     });
 
     it('should have class "mod-warning" if the type is Warning', () => {
-      let expectedClass = '.mod-warning';
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { type: ToastType.Warning });
+      const expectedClass = '.mod-warning';
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { type: ToastType.Warning });
 
       expect(toastComponent.find(expectedClass).length).toBe(0);
 
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       expect(toastComponent.find(expectedClass).length).toBe(1);
     });
 
     it('should have class "mod-warning" if the type is Error', () => {
-      let expectedClass = '.mod-error';
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { type: ToastType.Error });
+      const expectedClass = '.mod-error';
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { type: ToastType.Error });
 
       expect(toastComponent.find(expectedClass).length).toBe(0);
 
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       expect(toastComponent.find(expectedClass).length).toBe(1);
     });
 
     it('should have class "mod-animated" if the animate props is undefined or true', () => {
-      let expectedClass = '.mod-animated';
+      const expectedClass = '.mod-animated';
       let newToastAttributes = _.extend({}, toastBasicAttributes, { animate: true });
 
       expect(toastComponent.find(expectedClass).length).toBe(1);
 
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       expect(toastComponent.find(expectedClass).length).toBe(1);
 
       newToastAttributes = _.extend({}, toastBasicAttributes, { animate: false });
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       expect(toastComponent.find(expectedClass).length).toBe(0);
     });
 
     it('should have a description when the content is set', () => {
       const descriptionContainer = '.toast-description';
       const expectedDescription = 'description';
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { content: expectedDescription });
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { content: expectedDescription });
 
       expect(toastComponent.find(descriptionContainer).length).toBe(0);
 
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       expect(toastComponent.find(descriptionContainer).length).toBe(1);
       expect(toastComponent.find(descriptionContainer).text()).toBe(expectedDescription);
     });
@@ -121,40 +121,40 @@ describe('Toasts', () => {
     it('should allow JSX in the content', () => {
       const descriptionContainer = '.toast-description';
       const expectedDescription = 'description';
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { content: () => <a href='#'>{expectedDescription}</a> });
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { content: () => <a href='#'>{expectedDescription}</a> });
 
       expect(toastComponent.find(descriptionContainer).length).toBe(0);
 
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
       expect(toastComponent.find(descriptionContainer).length).toBe(1);
       expect(toastComponent.find(descriptionContainer).text()).toBe(expectedDescription);
     });
 
     it('should call onClose when the user clicks on .toast-close', () => {
-      const closeSpy = jasmine.createSpy('onClose');
       const closeSelector = '.toast-close';
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { onClose: closeSpy });
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { onClose: jasmine.createSpy('onClose') });
 
       toastComponent.find(closeSelector).simulate('click');
-      expect(closeSpy).toHaveBeenCalledTimes(0);
+      expect(newToastAttributes.onClose).not.toHaveBeenCalled();
 
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      toastComponent.setProps(newToastAttributes).mount();
+
 
       toastComponent.find(closeSelector).simulate('click');
-      expect(closeSpy).toHaveBeenCalledTimes(1);
+      expect(newToastAttributes.onClose).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('<Toast /> with a dismiss timer', () => {
     const onCloseToast = jasmine.createSpy('onClose');
-    const dimissDelay = 2000;
+    const dismissDelay = 2000;
 
     beforeEach(() => {
       toastBasicAttributes = {
         title: 'some title',
-        dismiss: dimissDelay,
+        // Subtract 1 so the jasmine.tick work as expected
+        dismiss: dismissDelay - 1,
         onClose: onCloseToast,
       };
 
@@ -173,55 +173,54 @@ describe('Toasts', () => {
     });
 
     it('should call onClose when the timer expires', () => {
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
 
-      jasmine.clock().tick(dimissDelay + 1);
+      jasmine.clock().tick(dismissDelay);
       expect(onCloseToast).toHaveBeenCalledTimes(1);
 
-      jasmine.clock().tick(dimissDelay + 1);
+      jasmine.clock().tick(dismissDelay);
       expect(onCloseToast).toHaveBeenCalledTimes(1);
     });
 
     it('should clear the timeout on mouseenter', () => {
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
 
       expect(toastComponent.hasClass('toast')).toBe(true);
       toastComponent.simulate('mouseEnter');
-      jasmine.clock().tick(dimissDelay + 1);
+      jasmine.clock().tick(dismissDelay);
 
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
     });
 
     it('should reset the timeout on mouseleave', () => {
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
 
       toastComponent.simulate('mouseEnter');
-      jasmine.clock().tick(dimissDelay + 1);
+      jasmine.clock().tick(dismissDelay);
 
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
 
       toastComponent.simulate('mouseLeave');
-      jasmine.clock().tick(dimissDelay + 1);
+      jasmine.clock().tick(dismissDelay);
 
       expect(onCloseToast).toHaveBeenCalledTimes(1);
     });
 
     it('should not dismiss the toast if the dismiss is set to 0', () => {
-      let newToastAttributes = _.extend({}, toastBasicAttributes, { dismiss: 0 });
-      toastComponent.setProps(newToastAttributes);
-      toastComponent.mount();
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { dismiss: 0 });
+      toastComponent.setProps(newToastAttributes).mount();
 
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
 
       toastComponent.simulate('mouseEnter');
-      jasmine.clock().tick(dimissDelay + 1);
+      jasmine.clock().tick(dismissDelay);
 
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
 
       toastComponent.simulate('mouseLeave');
-      jasmine.clock().tick(dimissDelay + 1);
+      jasmine.clock().tick(dismissDelay);
 
-      expect(onCloseToast).toHaveBeenCalledTimes(0);
+      expect(onCloseToast).not.toHaveBeenCalled();
     });
   });
 });

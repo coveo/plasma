@@ -50,7 +50,7 @@ describe('Reducers', () => {
       const oldState: IToastsState[] = toastsContainerInitialState;
       const action: IReduxAction<IToastContainerActionPayload> = {
         type: ToastAction.addToastContainer,
-        payload: { id: 'some-id' }
+        payload: { id: 'some-id' },
       };
       const toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
 
@@ -66,7 +66,7 @@ describe('Reducers', () => {
       ];
       const action: IReduxAction<IToastContainerActionPayload> = {
         type: ToastAction.removeToastContainer,
-        payload: { id: oldState[1].id }
+        payload: { id: oldState[1].id },
       };
       const toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
 
@@ -78,7 +78,7 @@ describe('Reducers', () => {
       const oldState: IToastsState[] = [{ id: 'some-id', toasts: [] }];
       const action: IReduxAction<any> = {
         type: ToastAction.addToast,
-        payload: { id: null, containerId: 'some-id' }
+        payload: { id: null, containerId: 'some-id' },
       };
       const toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
       const containerState = _.findWhere(toastContainersState, { id: action.payload.containerId });
@@ -89,14 +89,14 @@ describe('Reducers', () => {
 
     it('should return the old state state without the ToastState when the action is "REMOVE_TOAST"', () => {
       const toastToRemove = 'toast-id';
-      let oldState: IToastsState[] = [{ id: 'some-id', toasts: [_.extend({}, toastInitialState, { id: toastToRemove, title: 'test' })] }];
+      const oldState: IToastsState[] = [{ id: 'some-id', toasts: [_.extend({}, toastInitialState, { id: toastToRemove, title: 'test' })] }];
       const action: IReduxAction<any> = {
         type: ToastAction.removeToast,
-        payload: { id: toastToRemove, containerId: 'some-id' }
+        payload: { id: toastToRemove, containerId: 'some-id' },
       };
-      let toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
+      const toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
 
-      let containerState = _.findWhere(toastContainersState, { id: action.payload.containerId });
+      const containerState = _.findWhere(toastContainersState, { id: action.payload.containerId });
       expect(toastContainersState.length).toBe(oldState.length);
       expect(containerState.toasts.length).toBe(0);
     });

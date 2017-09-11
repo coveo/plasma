@@ -7,6 +7,9 @@ import { IToastState } from './ToastReducers';
 export interface IToastContainerOwnProps {
   id?: string;
   classes?: string[];
+  bottom?: boolean;
+  left?: boolean;
+  right?: boolean;
 }
 
 export interface IToastContainerStateProps {
@@ -42,11 +45,13 @@ export class ToastContainer extends React.Component<IToastContainerProps, void> 
   }
 
   render() {
-    const classes = classNames('toast-container', this.props.classes);
+    const classes = classNames('toast-container', this.props.classes, {
+      'mod-bottom': this.props.bottom,
+      'mod-left': this.props.left,
+      'mod-right': this.props.right,
+    });
     const toasts = this.props.toasts
-      ? _.map(this.props.toasts, (toast: IToastProps) => {
-        return <Toast key={toast.id} {...toast} onClose={() => this.onCloseToast(toast.id)} />;
-      })
+      ? _.map(this.props.toasts, (toast: IToastProps) => <Toast key={toast.id} {...toast} onClose={() => this.onCloseToast(toast.id)} />)
       : this.props.children;
 
     return (

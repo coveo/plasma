@@ -40,26 +40,25 @@ describe('Toasts', () => {
       expect(() => instance.componentWillMount()).not.toThrow();
 
       component.unmount();
-      component.setProps(newToastAttributes);
-      component.mount();
-      expect(renderSpy.calls.count()).toBe(1);
+      component.setProps(newToastAttributes).mount();
+      expect(renderSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-      let destroySpy = jasmine.createSpy('onDestroy');
-      let newToastAttributes = _.extend({}, basicProps, { onDestroy: destroySpy });
+      const destroySpy = jasmine.createSpy('onDestroy');
+      const newToastAttributes = _.extend({}, basicProps, { onDestroy: destroySpy });
 
       expect(() => instance.componentWillUnmount()).not.toThrow();
 
       component.unmount();
-      component.setProps(newToastAttributes);
-      component.mount();
+      component.setProps(newToastAttributes).mount();
+
       component.unmount();
-      expect(destroySpy.calls.count()).toBe(1);
+      expect(destroySpy).toHaveBeenCalledTimes(1);
     });
 
     it('should be possible to pass toasts in props', () => {
-      let newToastAttributes = _.extend({}, basicProps, { toasts: [{ id: 'toast-id', title: 'some toast title' }] });
+      const newToastAttributes = _.extend({}, basicProps, { toasts: [{ id: 'toast-id', title: 'some toast title' }] });
 
       component.setProps(newToastAttributes);
 
@@ -71,15 +70,13 @@ describe('Toasts', () => {
       const onCloseToast = jasmine.createSpy('onCloseToast');
       let newToastAttributes = _.extend({}, basicProps, { toasts: [{ id: 'toast-id', title: 'some toast title' }] });
 
-      component.setProps(newToastAttributes);
-      component.mount();
+      component.setProps(newToastAttributes).mount();
 
       component.find(Toast).props().onClose();
       expect(onCloseToast).toHaveBeenCalledTimes(0);
 
       newToastAttributes = _.extend({}, newToastAttributes, { onCloseToast });
-      component.setProps(newToastAttributes);
-      component.mount();
+      component.setProps(newToastAttributes).mount();
 
       component.find(Toast).props().onClose();
       expect(onCloseToast).toHaveBeenCalledTimes(1);

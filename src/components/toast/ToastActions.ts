@@ -32,9 +32,9 @@ export interface IToastAddPayload extends IToastActionPayload, IToastAddOptional
 export const addToast = (containerId: string, title: string, optionals: IToastAddOptionalPayload = {}): IReduxAction<IToastAddPayload> => ({
   type: ToastAction.addToast,
   payload: {
+    title,
     containerId,
     id: _.uniqueId('toast'),
-    title,
     type: optionals.type,
     dismiss: optionals.dismiss,
     animate: optionals.animate,
