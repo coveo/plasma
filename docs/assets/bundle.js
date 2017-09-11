@@ -24090,10 +24090,11 @@ exports.openDropdownSearch = function (id) { return ({
         id: id,
     },
 }); };
-exports.closeDropdownSearch = function (id) { return ({
+exports.closeDropdownSearch = function (id, dropdownOptions) { return ({
     type: exports.DropdownSearchActions.close,
     payload: {
         id: id,
+        dropdownOptions: dropdownOptions,
     },
 }); };
 exports.addDropdownSearch = function (id, dropdownOptions, defaultSelectedOption, supportSingleCustomOption) { return ({
@@ -87108,7 +87109,7 @@ var mapStateToProps = function (state, ownProps) {
 var mapDispatchToProps = function (dispatch, ownProps) { return ({
     onMount: function () { return dispatch(DropdownSearchActions_1.addMultiSelectDropdownSearch(ownProps.id, ownProps.defaultOptions)); },
     onDestroy: function () { return dispatch(DropdownSearchActions_1.removeDropdownSearch(ownProps.id)); },
-    onBlur: function () { return dispatch(DropdownSearchActions_1.closeDropdownSearch(ownProps.id)); },
+    onBlur: function () { return dispatch(DropdownSearchActions_1.closeDropdownSearch(ownProps.id, ownProps.defaultOptions)); },
     onFocus: function () { return dispatch(DropdownSearchActions_1.openDropdownSearch(ownProps.id)); },
     onOptionClick: function (option) { return dispatch(DropdownSearchActions_1.multiSelectOptionDropdownSearch(ownProps.id, option)); },
     onCustomOptionClick: function (value) { return dispatch(DropdownSearchActions_1.addCustomSelectedOption(ownProps.id, value)); },
