@@ -9,6 +9,7 @@
     "noUnusedLocals": true,
     "outDir": "./dist/split/",
     "removeComments": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "target": "ES5",
     "typeRoots": [
