@@ -6,6 +6,7 @@ export interface IInputProps {
   labelClasses?: string[];
   value?: string;
   placeholder?: string;
+  disabled?: boolean;
   onChange?: (value: string) => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   validate?: (value: string) => string;
@@ -47,6 +48,7 @@ export class Input extends React.Component<IInputProps, any> {
           onBlur={() => this.handleChange()}
           onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
           placeholder={this.props.placeholder}
+          disabled={this.props.disabled}
           required />
         <label className={labelClasses.join(' ')}>{this.props.label}</label>
         {this.props.children}
