@@ -1,4 +1,4 @@
-import { Tooltip as BootstrapTooltip, OverlayTrigger } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip as BootstrapTooltip } from 'react-bootstrap';
 import * as _ from 'underscore';
 import * as React from 'react';
 

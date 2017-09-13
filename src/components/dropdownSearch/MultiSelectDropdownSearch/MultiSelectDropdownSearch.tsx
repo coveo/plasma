@@ -10,8 +10,6 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
     createOptionText: 'Create option for ',
     isOpened: false,
     options: [],
-    displayedOptions: [],
-    selectedOptions: [],
     filterText: '',
   };
 
