@@ -1,15 +1,22 @@
 import * as React from 'react';
-import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
+import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
 import { MultiselectInput } from './MultiSelectInput';
 import * as _ from 'underscore';
 
+export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps {
+  displayedOptions: IDropdownOption[];
+  selectedOptions: IDropdownOption[];
+};
+
 export class MultiSelectDropdownSearch extends DropdownSearch {
 
-  static defaultProps: Partial<IDropdownSearchProps> = {
+  static defaultProps: Partial<IMultiSelectDropdownSearchProps> = {
     ...DropdownSearch.defaultProps,
     createOptionText: 'Create option for ',
     isOpened: false,
     options: [],
+    displayedOptions: [],
+    selectedOptions: [],
     filterText: '',
   };
 
