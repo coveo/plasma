@@ -3,11 +3,11 @@ import { ChildForm } from '../ChildForm';
 import { Input } from '../../input/Input';
 import { Checkbox } from '../../checkbox/Checkbox';
 
-interface ISimpleChildFormExampleProps {
+export interface ISimpleChildFormExampleProps {
   checked?: boolean;
 }
 
-interface ISimpleChildFormExampleState {
+export interface ISimpleChildFormExampleState {
   checked: boolean;
 }
 

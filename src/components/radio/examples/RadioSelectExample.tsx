@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Radio } from '../Radio';
 import { RadioSelect } from '../RadioSelect';
 
-interface IRadioSelectProps {
+export interface IRadioSelectProps {
   defaultValue?: string;
   disabled?: boolean;
 }
 
-interface IRadioSelectState {
+export interface IRadioSelectState {
   value: string;
 }
 

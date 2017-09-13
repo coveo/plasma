@@ -4,11 +4,11 @@ import { RadioSelect } from '../../radio/RadioSelect';
 import { Radio } from '../../radio/Radio';
 import { Input } from '../../input/Input';
 
-interface IChildFormWithRadiosExamplesProps {
+export interface IChildFormWithRadiosExamplesProps {
   defaultValue?: string;
 }
 
-interface IChildFormWithRadiosExamplesState {
+export interface IChildFormWithRadiosExamplesState {
   value: string;
 }
 
