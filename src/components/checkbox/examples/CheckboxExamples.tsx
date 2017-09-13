@@ -9,9 +9,9 @@ export class CheckboxExamples extends React.Component<any, any> {
         <div className='form-group'>
           <CheckboxWithState label='A checkbox unchecked by default' />
           <br />
-          <CheckboxWithState label='A checkbox checked by default' checked={true} />
+          <CheckboxWithState classes={['mt1']} label='A checkbox checked by default' checked={true} />
           <br />
-          <CheckboxWithState label='A disabled checkbox' disabled={true} />
+          <CheckboxWithState classes={['mt1']} label='A disabled checkbox' disabled={true} />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>A checkbox with no label</label>

@@ -29419,7 +29419,7 @@ var RadioSelect = (function (_super) {
             var _a = child.props, value = _a.value, onChange = _a.onChange;
             var handler = function () { return _this.handleToggle(value); };
             return React.cloneElement(child, {
-                name: child.name || name,
+                name: child.props.name || _this.props.name,
                 checked: _this.props.value === value,
                 disabled: _this.props.disabled,
                 onChange: createChainedFunction_1.createChainedFunction(onChange, handler),
@@ -51915,12 +51915,11 @@ var ValidComponentChildren = (function () {
     function ValidComponentChildren() {
     }
     ValidComponentChildren.map = function (children, func, context) {
-        var index = 0;
         return React.Children.map(children, function (child) {
             if (!React.isValidElement(child)) {
                 return child;
             }
-            return func.call(context, child, index++);
+            return func.call(context, child);
         });
     };
     return ValidComponentChildren;
@@ -52009,7 +52008,8 @@ var Checkbox = (function (_super) {
     }
     Checkbox.prototype.render = function () {
         var _this = this;
-        return (React.createElement("label", { className: 'coveo-checkbox-label mt1 js-prop-indeterminate', onClick: function (e) { return _this.handleClick(e); } },
+        var classes = ['coveo-checkbox-label'].concat(this.props.classes);
+        return (React.createElement("label", { className: classes.join(' '), onClick: function (e) { return _this.handleClick(e); } },
             React.createElement("input", { type: 'checkbox', className: 'coveo-checkbox', disabled: !!this.props.disabled, checked: !!this.props.checked, readOnly: true }),
             React.createElement("button", { type: 'button' }),
             React.createElement("span", { className: 'label' }, this.props.label)));
@@ -87561,20 +87561,17 @@ exports.createChainedFunction = function () {
     }
     return funcs
         .filter(function (f) { return f != null; })
-        .reduce(function (acc, f) {
-        if (typeof f !== 'function') {
-            throw new Error('Invalid Argument Type, must only provide functions, undefined, or null.');
-        }
-        if (acc === null) {
-            return f;
+        .reduce(function (accumulator, func) {
+        if (accumulator === null) {
+            return func;
         }
         return function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
             }
-            acc(args);
-            f(args);
+            accumulator(args);
+            func(args);
         };
     }, null);
 };
@@ -87706,9 +87703,9 @@ var ChildFormWithRadiosExamples = (function (_super) {
         return (React.createElement("div", { className: 'form-group' },
             React.createElement("label", { className: 'form-control-label' }, "Child Form Element With Radio Buttons"),
             React.createElement(RadioSelect_1.RadioSelect, { value: this.state.value, onChange: (function (value) { return _this.handleChange(value); }) },
-                React.createElement(Radio_1.Radio, { id: otherRadioValue, label: 'Do not edit properties', value: otherRadioValue, classes: ['mb1'] }),
-                React.createElement(ChildForm_1.ChildForm, { parentControl: React.createElement(Radio_1.Radio, { id: childFormRadioValue, label: 'Edit properties', value: childFormRadioValue }) },
-                    React.createElement(Input_1.Input, { label: 'Child form input', value: 'Some value', classes: ['input-field', 'form-group'] })))));
+                React.createElement(Radio_1.Radio, { id: otherRadioValue, label: 'Option 1', value: otherRadioValue, classes: ['mb1'] }),
+                React.createElement(ChildForm_1.ChildForm, { parentControl: React.createElement(Radio_1.Radio, { id: childFormRadioValue, label: 'Option 2', value: childFormRadioValue }) },
+                    React.createElement(Input_1.Input, { label: 'Dependant Option', value: 'Some value', classes: ['input-field', 'form-group'] })))));
     };
     return ChildFormWithRadiosExamples;
 }(React.Component));
@@ -87792,9 +87789,9 @@ var CheckboxExamples = (function (_super) {
             React.createElement("div", { className: 'form-group' },
                 React.createElement(CheckboxWithStateExample_1.CheckboxWithState, { label: 'A checkbox unchecked by default' }),
                 React.createElement("br", null),
-                React.createElement(CheckboxWithStateExample_1.CheckboxWithState, { label: 'A checkbox checked by default', checked: true }),
+                React.createElement(CheckboxWithStateExample_1.CheckboxWithState, { classes: ['mt1'], label: 'A checkbox checked by default', checked: true }),
                 React.createElement("br", null),
-                React.createElement(CheckboxWithStateExample_1.CheckboxWithState, { label: 'A disabled checkbox', disabled: true })),
+                React.createElement(CheckboxWithStateExample_1.CheckboxWithState, { classes: ['mt1'], label: 'A disabled checkbox', disabled: true })),
             React.createElement("div", { className: 'form-group' },
                 React.createElement("label", { className: 'form-control-label' }, "A checkbox with no label"),
                 React.createElement("br", null),
@@ -87842,7 +87839,7 @@ var CheckboxWithState = (function (_super) {
     };
     CheckboxWithState.prototype.render = function () {
         var _this = this;
-        return (React.createElement(Checkbox_1.Checkbox, { onChange: function () { return _this.handleChange(); }, label: this.props.label, checked: this.state.checked, disabled: this.props.disabled }));
+        return (React.createElement(Checkbox_1.Checkbox, { classes: this.props.classes, onChange: function () { return _this.handleChange(); }, label: this.props.label, checked: this.state.checked, disabled: this.props.disabled }));
     };
     return CheckboxWithState;
 }(React.Component));

@@ -5,6 +5,7 @@ export interface ICheckboxWithStateProps {
   label?: string;
   checked?: boolean;
   disabled?: boolean;
+  classes?: string[];
 }
 
 export interface ICheckboxWithStateState {
@@ -29,7 +30,7 @@ export class CheckboxWithState extends React.Component<ICheckboxWithStateProps, 
 
   render() {
     return (
-      <Checkbox onChange={() => this.handleChange()} label={this.props.label} checked={this.state.checked} disabled={this.props.disabled} />
+      <Checkbox classes={this.props.classes} onChange={() => this.handleChange()} label={this.props.label} checked={this.state.checked} disabled={this.props.disabled} />
     );
   }
 }
