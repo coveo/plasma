@@ -20,12 +20,12 @@ export class RadioSelect extends React.Component<IRadioSelectProps, any> {
     return (
       <div className='form-control radio-select'>
         {
-          ValidComponentChildren.map(this.props.children, (child: any) => {
+          ValidComponentChildren.map(this.props.children, (child: React.ReactElement<any>) => {
             const { value, onChange } = child.props;
             const handler = () => this.handleToggle(value);
 
             return React.cloneElement(child, {
-              name: child.name || name,
+              name: child.props.name || this.props.name,
               checked: this.props.value === value,
               disabled: this.props.disabled,
               onChange: createChainedFunction(onChange, handler),

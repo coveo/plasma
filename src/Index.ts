@@ -112,6 +112,10 @@ import { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 import { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
 import { DropdownSearchActions, updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 import { Input } from './components/input/Input';
+import { RadioSelect } from './components/radio/RadioSelect';
+import { Radio } from './components/radio/Radio';
+import { Checkbox } from './components/checkbox/Checkbox';
+import { ChildForm } from './components/childForm/ChildForm';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
@@ -127,6 +131,12 @@ export {
   LastUpdatedConnected,
   lastUpdatedCompositeReducer,
   changeLastUpdated,
+
+  // Checkbox
+  Checkbox,
+
+  // Child form
+  ChildForm,
 
   // FilterBox
   FilterBox,
@@ -301,6 +311,10 @@ export {
   SubNavigationConnected,
   subNavigationsReducer,
   SubNavigationActions,
+
+  // Radio
+  Radio,
+  RadioSelect,
 
   // Redux
   ReduxUtils,
