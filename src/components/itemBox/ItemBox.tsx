@@ -10,6 +10,7 @@ export interface IItemBoxProps {
   active?: boolean;
   hidden?: boolean;
   disabled?: boolean;
+  divider?: boolean;
   tooltip?: ITooltipProps;
   classes?: string[];
   prepend?: IContentProps;
@@ -32,6 +33,7 @@ export class ItemBox extends React.Component<IItemBoxProps, void> {
         'active': this.props.active,
         'disabled': this.props.disabled,
         'hidden': this.props.hidden,
+        'divider': this.props.divider,
       },
       this.props.classes);
   }
@@ -47,7 +49,7 @@ export class ItemBox extends React.Component<IItemBoxProps, void> {
       <Tooltip {...this.props.tooltip}>
         <li
           className={this.getClasses()}
-          onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
+          onMouseDown={() => this.handleOnOptionClick()}
           data-value={this.props.value}>
           {this.props.prepend ? <Content {...this.props.prepend} /> : null}
           {this.props.displayValue || this.props.value}

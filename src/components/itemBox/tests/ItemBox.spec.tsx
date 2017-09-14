@@ -121,6 +121,13 @@ describe('ItemBox', () => {
       expect(ItemBoxComponent.find('li').hasClass('hidden')).toBe(true);
     });
 
+    it('should render with the class divider if set to true', () => {
+      renderItemBox({
+        divider: true,
+      });
+      expect(ItemBoxComponent.find('li').hasClass('divider')).toBe(true);
+    });
+
     it('should call the onOptionClick on click', () => {
       const onOptionClick: jasmine.Spy = jasmine.createSpy('onOptionClick');
 

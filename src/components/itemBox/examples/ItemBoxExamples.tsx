@@ -82,6 +82,12 @@ export class ItemBoxExamples extends React.Component<any, any> {
           </div>
         </div>
         <div className='form-group'>
+          <label className='form-control-label'>Item Box divider</label>
+          <div className='form-control'>
+            <ItemBox value='test' divider={true} />
+          </div>
+        </div>
+        <div className='form-group'>
           <label className='form-control-label'>Item Box with an onClick event</label>
           <div className='form-control'>
             <ItemBox value='test' onOptionClick={triggerAlertFunction} />
