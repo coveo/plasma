@@ -47,6 +47,7 @@ import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSl
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 import { BoxItemExamples } from '../src/components/boxItem/examples/BoxItemExamples';
+import { ContentExamples } from '../src/components/content/examples/ContentExamples';
 
 class App extends React.Component<any, any> {
 
@@ -78,6 +79,7 @@ class App extends React.Component<any, any> {
               <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
             </div>
           </div>
+          <ContentExamples />
           <BoxItemExamples />
           <ButtonExamples />
           <DropdownSearchExamples />

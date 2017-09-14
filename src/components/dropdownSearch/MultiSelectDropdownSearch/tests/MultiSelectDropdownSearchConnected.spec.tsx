@@ -139,9 +139,9 @@ describe('MultiSelectDropdownSearch', () => {
       it('should toggle the close dropdown on blur', () => {
         const dropdown = wrapper.find('.dropdown');
 
-        store.dispatch(closeDropdownSearch(id));
+        store.dispatch(closeDropdownSearch(id, []));
 
-        multiSelectDropdownSearchConnected.props().onBlur();
+        multiSelectDropdownSearchConnected.props().onBlur([]);
 
         expect(dropdown.hasClass('open')).toBe(false);
       });
@@ -149,7 +149,7 @@ describe('MultiSelectDropdownSearch', () => {
       it('should open the dropdown on focus', () => {
         const dropdown = wrapper.find('.dropdown');
 
-        store.dispatch(closeDropdownSearch(id));
+        store.dispatch(closeDropdownSearch(id, []));
 
         multiSelectDropdownSearchConnected.props().onFocus();
 

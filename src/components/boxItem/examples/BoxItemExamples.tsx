@@ -13,6 +13,7 @@ export class BoxItemExamples extends React.Component<any, any> {
 
     const svg: ISvgProps = {
       svgName: 'domain-google',
+      svgClass: 'icon',
     };
 
     const triggerAlertFunction = () => {
