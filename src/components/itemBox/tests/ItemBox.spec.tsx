@@ -2,44 +2,44 @@ import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as _ from 'underscore';
 import { ISvgProps } from '../../svg/Svg';
-import { BoxItem, IBoxItemProps } from '../BoxItem';
+import { IItemBoxProps, ItemBox } from '../ItemBox';
 import { ITooltipProps, Tooltip } from '../../tooltip/Tooltip';
 import { Content, IContentProps } from '../../content/Content';
 
-describe('BoxItem', () => {
+describe('ItemBox', () => {
 
-  let boxItemComponent: ReactWrapper<IBoxItemProps, any>;
-  const defaultProps: IBoxItemProps = {
+  let ItemBoxComponent: ReactWrapper<IItemBoxProps, any>;
+  const defaultProps: IItemBoxProps = {
     value: 'test',
   };
 
   it('should render without errors', () => {
     expect(() => {
-      shallow(<BoxItem
+      shallow(<ItemBox
         value='test'
       />);
     }).not.toThrow();
   });
 
-  describe('<BoxItem /> with default props', () => {
+  describe('<ItemBox /> with default props', () => {
 
     beforeEach(() => {
-      boxItemComponent = mount(
-        <BoxItem {...defaultProps} />,
+      ItemBoxComponent = mount(
+        <ItemBox {...defaultProps} />,
         { attachTo: document.getElementById('App') },
       );
     });
 
     it('should render with the box-item class', () => {
-      expect(boxItemComponent.find('li').hasClass('box-item')).toBe(true);
+      expect(ItemBoxComponent.find('li').hasClass('item-box')).toBe(true);
     });
 
     it('should render with the data-value set with the value', () => {
-      expect(boxItemComponent.find(`[data-value="${defaultProps.value}"]`).length).toBe(1);
+      expect(ItemBoxComponent.find(`[data-value="${defaultProps.value}"]`).length).toBe(1);
     });
   });
 
-  describe('<BoxItem /> with custom props', () => {
+  describe('<ItemBox /> with custom props', () => {
 
     const content: IContentProps = {
       content: 'Prefix',
@@ -47,7 +47,7 @@ describe('BoxItem', () => {
     };
 
     const tooltip: ITooltipProps = {
-      title: 'title test for the box item',
+      title: 'title test for the item box',
       placement: 'bottom',
       container: 'body',
     };
@@ -56,79 +56,86 @@ describe('BoxItem', () => {
       svgName: 'domain-google',
     };
 
-    const renderBoxItem = (props: Partial<IBoxItemProps> = {}) => {
-      boxItemComponent = mount(
-        <BoxItem {..._.defaults(props, defaultProps) } />,
+    const renderItemBox = (props: Partial<IItemBoxProps> = {}) => {
+      ItemBoxComponent = mount(
+        <ItemBox {..._.defaults(props, defaultProps) } />,
         { attachTo: document.getElementById('App') },
       );
     };
 
     it('should render the display value', () => {
       const displayValue: string = 'display value';
-      renderBoxItem({
+      renderItemBox({
         displayValue,
       });
-      expect(boxItemComponent.find('li').text()).toEqual(displayValue);
+      expect(ItemBoxComponent.find('li').text()).toBe(displayValue);
     });
 
     it('should render a prepend <Content/>', () => {
       const prefix: string = 'prefix';
-      renderBoxItem({
+      renderItemBox({
         prepend: content,
       });
-      expect(boxItemComponent.find(Content).length).toBe(1);
+      expect(ItemBoxComponent.find(Content).length).toBe(1);
     });
 
     it('should render an append <Content/>', () => {
-      renderBoxItem({
+      renderItemBox({
         append: content,
       });
-      expect(boxItemComponent.find(Content).length).toBe(1);
+      expect(ItemBoxComponent.find(Content).length).toBe(1);
     });
 
     it('should render the tooltip', () => {
-      renderBoxItem({
+      renderItemBox({
         tooltip,
       });
-      expect(boxItemComponent.find(Tooltip).length).toBe(1);
+      expect(ItemBoxComponent.find(Tooltip).length).toBe(1);
     });
 
     it('should render with the class active if set to true', () => {
-      renderBoxItem({
+      renderItemBox({
         active: true,
       });
-      expect(boxItemComponent.find('li').hasClass('active')).toBe(true);
+      expect(ItemBoxComponent.find('li').hasClass('active')).toBe(true);
     });
 
     it('should render with the class selected if set to true', () => {
-      renderBoxItem({
+      renderItemBox({
         selected: true,
       });
-      expect(boxItemComponent.find('li').hasClass('selected')).toBe(true);
+      expect(ItemBoxComponent.find('li').hasClass('selected')).toBe(true);
     });
 
     it('should render with the class disabled if set to true', () => {
-      renderBoxItem({
+      renderItemBox({
         disabled: true,
       });
-      expect(boxItemComponent.find('li').hasClass('disabled')).toBe(true);
+      expect(ItemBoxComponent.find('li').hasClass('disabled')).toBe(true);
     });
 
     it('should render with the class hidden if set to true', () => {
-      renderBoxItem({
+      renderItemBox({
         hidden: true,
       });
-      expect(boxItemComponent.find('li').hasClass('hidden')).toBe(true);
+      expect(ItemBoxComponent.find('li').hasClass('hidden')).toBe(true);
+    });
+
+    it('should render with the class divider if set to true', () => {
+      renderItemBox({
+        divider: true,
+      });
+      expect(ItemBoxComponent.find('li').hasClass('divider')).toBe(true);
     });
 
     it('should call the onOptionClick on click', () => {
       const onOptionClick: jasmine.Spy = jasmine.createSpy('onOptionClick');
 
-      renderBoxItem({
+      renderItemBox({
         onOptionClick,
       });
 
-      boxItemComponent.find('li').simulate('mouseDown');
+      ItemBoxComponent.find('li').simulate('mouseDown');
 
       expect(onOptionClick).toHaveBeenCalled();
     });

@@ -112,7 +112,8 @@ import { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 import { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
 import { DropdownSearchActions, updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 import { Input } from './components/input/Input';
-import { BoxItem } from './components/boxItem/BoxItem';
+import { ItemBox } from './components/itemBox/ItemBox';
+import { Content } from './components/content/Content';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 import { ListBox } from "./components/listBox/ListBox";
@@ -123,6 +124,7 @@ export {
   Svg,
   Tooltip,
   UserFeedback,
+  Content,
 
   // LastUpdated
   LastUpdated,
@@ -178,8 +180,8 @@ export {
   Input,
 
   // Box
-  BoxItem,
   ListBox,
+  ItemBox,
 
   // MultilineInput
   MultilineInput,
