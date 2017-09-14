@@ -82,14 +82,19 @@ import { optionsCyclesReducer } from './components/optionsCycle/OptionsCycleRedu
 import { IOption } from './components/optionPicker/Option';
 import { OptionPicker } from './components/optionPicker/OptionPicker';
 import { OptionPickerConnected } from './components/optionPicker/OptionPickerConnected';
-import { addOptionPicker, changeOptionPicker, OptionPickerActions, resetOptionPickers } from './components/optionPicker/OptionPickerActions';
+import {
+  addOptionPicker,
+  changeOptionPicker,
+  OptionPickerActions,
+  resetOptionPickers,
+} from './components/optionPicker/OptionPickerActions';
 import { optionPickersReducer } from './components/optionPicker/OptionPickerReducers';
 import { Calendar, CalendarSelectionRuleType, ICalendarSelectionRule } from './components/calendar/Calendar';
 import { CalendarConnected } from './components/calendar/CalendarConnected';
 import { ISubNavigationItem, SubNavigation } from './components/subNavigation/SubNavigation';
 import { SubNavigationConnected } from './components/subNavigation/SubNavigationConnected';
 import { subNavigationsReducer } from './components/subNavigation/SubNavigationReducers';
-import { SubNavigationActions, selectSubNavigation } from './components/subNavigation/SubNavigationActions';
+import { selectSubNavigation, SubNavigationActions } from './components/subNavigation/SubNavigationActions';
 import { DisplayClass } from './utils/ComponentUtils';
 import { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
 import { clearState, CommonActions, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
@@ -112,11 +117,11 @@ import { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 import { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
 import { DropdownSearchActions, updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 import { Input } from './components/input/Input';
-import { ItemBox } from './components/itemBox/ItemBox';
 import { Content } from './components/content/Content';
+import { ItemBox } from './components/itemBox/ItemBox';
+import { ListBox } from './components/listBox/ListBox';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
-import { ListBox } from "./components/listBox/ListBox";
 
 export {
   ChosenSelect,

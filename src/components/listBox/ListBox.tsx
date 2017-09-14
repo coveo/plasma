@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import * as _ from 'underscore';
-import { BoxItem, IBoxItemProps } from '../boxItem/BoxItem';
+import { IItemBoxProps, ItemBox } from '../itemBox/ItemBox';
 
 export interface IListBoxProps {
-  items: IBoxItemProps[];
-  onOptionClick?: (option: IBoxItemProps) => void;
-  noResultItem?: IBoxItemProps;
+  items: IItemBoxProps[];
+  onOptionClick?: (option: IItemBoxProps) => void;
+  noResultItem?: IItemBoxProps;
   classes?: string[];
 }
 
@@ -24,13 +24,13 @@ export class ListBox extends React.Component<IListBoxProps, void> {
 
   protected getItems(): JSX.Element[] | JSX.Element {
     const items = _.chain(this.props.items)
-      .map((item: IBoxItemProps) => <BoxItem {..._.extend(item, { onOptionClick: this.props.onOptionClick }) } />)
+      .map((item: IItemBoxProps) => <ItemBox {..._.extend(item, { onOptionClick: this.props.onOptionClick }) } />)
       .value();
 
-    return items.length ? items : <BoxItem {..._.extend(this.props.noResultItem, { classes: ['multi-line'] }) } />;
+    return items.length ? items : <ItemBox {..._.extend(this.props.noResultItem, { classes: ['multi-line'] }) } />;
   }
 
-  handleOnOptionClick = (option: IBoxItemProps) => {
+  handleOnOptionClick = (option: IItemBoxProps) => {
     if (this.props.onOptionClick) {
       this.props.onOptionClick(option);
     }

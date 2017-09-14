@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ListBox } from '../ListBox';
-import { IBoxItemProps } from '../../boxItem/BoxItem';
 import { ITooltipProps } from '../../tooltip/Tooltip';
+import { IItemBoxProps } from '../../itemBox/ItemBox';
 
 export class ListBoxExamples extends React.Component<any, any> {
   render() {
@@ -10,7 +10,7 @@ export class ListBoxExamples extends React.Component<any, any> {
       placement: 'bottom',
       container: 'body',
     };
-    const defaultItems: IBoxItemProps[] = [
+    const defaultItems: IItemBoxProps[] = [
       { value: 'test' },
       { value: 'test selected', selected: true },
       { value: 'test disabled', disabled: true },
@@ -21,7 +21,7 @@ export class ListBoxExamples extends React.Component<any, any> {
       { value: 'test7' },
     ];
 
-    const triggerAlertFunction = (item: IBoxItemProps) => {
+    const triggerAlertFunction = (item: IItemBoxProps) => {
       alert(`The item value triggered is ${item.value}`);
     };
 
