@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
 import { Content, IContentProps } from '../content/Content';
 
-export interface IBoxItemProps {
+export interface IItemBoxProps {
   value: string;
   displayValue?: string;
   selected?: boolean;
@@ -14,19 +14,19 @@ export interface IBoxItemProps {
   classes?: string[];
   prepend?: IContentProps;
   append?: IContentProps;
-  onOptionClick?: (option: IBoxItemProps) => void;
+  onOptionClick?: (option: IItemBoxProps) => void;
 }
 
-export class BoxItem extends React.Component<IBoxItemProps, void> {
+export class ItemBox extends React.Component<IItemBoxProps, void> {
 
-  static defaultProps: Partial<IBoxItemProps> = {
+  static defaultProps: Partial<IItemBoxProps> = {
     tooltip: {
       title: '',
     },
   };
 
   getClasses(): string {
-    return classNames('box-item',
+    return classNames('item-box',
       {
         'selected': this.props.selected,
         'active': this.props.active,
@@ -36,11 +36,9 @@ export class BoxItem extends React.Component<IBoxItemProps, void> {
       this.props.classes);
   }
 
-  handleOnOptionClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    if (e.target) {
-      if (this.props.onOptionClick) {
-        this.props.onOptionClick(this.props);
-      }
+  handleOnOptionClick = () => {
+    if (this.props.onOptionClick) {
+      this.props.onOptionClick(this.props);
     }
   }
 

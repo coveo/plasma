@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { BoxItem } from '../BoxItem';
+import { ItemBox } from '../ItemBox';
 import { ITooltipProps } from '../../tooltip/Tooltip';
 import { ISvgProps, Svg } from '../../svg/Svg';
 import { IContentProps } from '../../content/Content';
 
-export class BoxItemExamples extends React.Component<any, any> {
+export class ItemBoxExamples extends React.Component<any, any> {
   render() {
     const tooltip: ITooltipProps = {
-      title: 'title test for the box item',
+      title: 'title test for the item Box',
       placement: 'bottom',
       container: 'body',
     };
@@ -25,66 +25,66 @@ export class BoxItemExamples extends React.Component<any, any> {
 
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>Box Item</h1>
+        <h1 className='text-blue mb1'>Item Box</h1>
 
         <div className='form-group'>
-          <label className='form-control-label'>Default Box Item</label>
+          <label className='form-control-label'>Default Item Box</label>
           <div className='form-control'>
-            <BoxItem value='test' />
+            <ItemBox value='test' />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with an displayValue</label>
+          <label className='form-control-label'>Item Box with an displayValue</label>
           <div className='form-control'>
-            <BoxItem value='test' displayValue='Display test' />
+            <ItemBox value='test' displayValue='Display test' />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with a prepend text</label>
+          <label className='form-control-label'>Item Box with a prepend text</label>
           <div className='form-control'>
-            <BoxItem value='test' prepend={{ content: 'Prefix', classes: ['text-medium-grey', 'mr1'] }} />
+            <ItemBox value='test' prepend={{ content: 'Prefix', classes: ['text-medium-grey', 'mr1'] }} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with a prepend icon</label>
+          <label className='form-control-label'>Item Box with a prepend icon</label>
           <div className='form-control'>
-            <BoxItem value='test' prepend={getSvgPrepend} />
+            <ItemBox value='test' prepend={getSvgPrepend} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with a append icon</label>
+          <label className='form-control-label'>Item Box with a append icon</label>
           <div className='form-control'>
-            <BoxItem value='test' append={getSvgAppend} />
+            <ItemBox value='test' append={getSvgAppend} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with a title</label>
+          <label className='form-control-label'>Item Box with a title</label>
           <div className='form-control'>
-            <BoxItem value='test' tooltip={tooltip} />
+            <ItemBox value='test' tooltip={tooltip} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with selected</label>
+          <label className='form-control-label'>Item Box with selected</label>
           <div className='form-control'>
-            <BoxItem value='test' selected={true} />
+            <ItemBox value='test' selected={true} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with active</label>
+          <label className='form-control-label'>Item Box with active</label>
           <div className='form-control'>
-            <BoxItem value='test' active={true} />
+            <ItemBox value='test' active={true} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item disabled</label>
+          <label className='form-control-label'>Item Box disabled</label>
           <div className='form-control'>
-            <BoxItem value='test' disabled={true} />
+            <ItemBox value='test' disabled={true} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with an onClick event</label>
+          <label className='form-control-label'>Item Box with an onClick event</label>
           <div className='form-control'>
-            <BoxItem value='test' onOptionClick={triggerAlertFunction} />
+            <ItemBox value='test' onOptionClick={triggerAlertFunction} />
           </div>
         </div>
       </div>

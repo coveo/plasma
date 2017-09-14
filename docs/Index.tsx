@@ -46,8 +46,8 @@ import { ButtonExamples } from '../src/components/button/examples/ButtonExamples
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
-import { BoxItemExamples } from '../src/components/boxItem/examples/BoxItemExamples';
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
+import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
 
 class App extends React.Component<any, any> {
 
@@ -80,7 +80,7 @@ class App extends React.Component<any, any> {
             </div>
           </div>
           <ContentExamples />
-          <BoxItemExamples />
+          <ItemBoxExamples />
           <ButtonExamples />
           <DropdownSearchExamples />
           <TooltipExamples />
