@@ -125,7 +125,7 @@
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
     "webpack": "3.5.6",
-    "webpack-dev-server": "2.6.0"
+    "webpack-dev-server": "2.8.2"
   },
   "files": [
     "dist",
