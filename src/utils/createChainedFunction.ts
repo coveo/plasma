@@ -1,7 +1,7 @@
-export const createChainedFunction = (...funcs: Function[]) => {
+export const createChainedFunction = (...funcs: ((...args: any[]) => void)[]) => {
   return funcs
-    .filter(f => f != null)
-    .reduce((accumulator: Function, func: Function) => {
+    .filter((func: Function) => func != null)
+    .reduce((accumulator: (...args: any[]) => void, func: (...args: any[]) => void) => {
       if (accumulator === null) {
         return func;
       }

@@ -15,13 +15,13 @@ export class RadioSelectExample extends React.Component<IRadioSelectProps, IRadi
   constructor(props: IRadioSelectProps, state: IRadioSelectState) {
     super(props, state);
     this.state = {
-      value: this.props.defaultValue
+      value: this.props.defaultValue,
     };
   }
 
   handleChange(value: string) {
     this.setState({
-      value
+      value,
     });
   }
 
@@ -29,7 +29,10 @@ export class RadioSelectExample extends React.Component<IRadioSelectProps, IRadi
     return (
       <div className='form-group'>
         <label className='form-control-label'>A Radio Select</label>
-        <RadioSelect value={this.state.value} onChange={(value => this.handleChange(value))} disabled={this.props.disabled}>
+        <RadioSelect
+          value={this.state.value}
+          onChange={(value => this.handleChange(value))}
+          disabled={this.props.disabled}>
           <Radio id='Option1' name='enabledOptions' label='Blue' value='blue' />
           <Radio id='Option2' name='enabledOptions' label='Green' value='green' />
         </RadioSelect>

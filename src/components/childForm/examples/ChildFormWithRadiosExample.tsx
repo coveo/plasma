@@ -19,13 +19,13 @@ export class ChildFormWithRadiosExamples extends React.Component<IChildFormWithR
   constructor(props: IChildFormWithRadiosExamplesProps, state: IChildFormWithRadiosExamplesState) {
     super(props, state);
     this.state = {
-      value: this.props.defaultValue
+      value: this.props.defaultValue,
     };
   }
 
   handleChange(value: string) {
     this.setState({
-      value
+      value,
     });
   }
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IInputBaseProps } from '../input/InputBase';
+import * as classNames from 'classnames';
 
 export interface ICheckboxProps extends IInputBaseProps {
   classes?: string[];
@@ -10,22 +11,25 @@ export interface ICheckboxProps extends IInputBaseProps {
 export class Checkbox extends React.Component<ICheckboxProps, any> {
 
   private handleClick = (e: React.MouseEvent<HTMLLabelElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
     if (this.props.onChange) {
+      e.preventDefault();
+      e.stopPropagation();
       this.props.onChange();
     }
   }
 
   render() {
-    const classes: string[] = ['coveo-checkbox-label'].concat(this.props.classes);
+    const classes: string = classNames('coveo-checkbox-label', this.props.classes);
     return (
-      <label className={classes.join(' ')} onClick={(e: React.MouseEvent<HTMLLabelElement>) => this.handleClick(e)}>
+      <label
+        className={classes}
+        onClick={(e: React.MouseEvent<HTMLLabelElement>) => this.handleClick(e)}>
         <input type='checkbox'
           className='coveo-checkbox'
           disabled={!!this.props.disabled}
           checked={!!this.props.checked}
-          readOnly />
+          readOnly
+        />
         <button type='button'></button>
         <span className='label'>{this.props.label}</span>
       </label>

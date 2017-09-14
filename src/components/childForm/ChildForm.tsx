@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ValidComponentChildren } from '../../utils/ValidComponentChildren';
+import * as classNames from 'classnames';
 
 export interface IChildFormProps {
   classes?: string[];
@@ -16,9 +17,9 @@ export class ChildForm extends React.Component<IChildFormProps, any> {
   }
 
   render() {
-    const classes: string[] = ['coveo-parent'].concat(this.props.classes);
+    const classes: string = classNames('coveo-parent', this.props.classes);
     return (
-      <div className={classes.join(' ')}>
+      <div className={classes}>
         {
           React.cloneElement(this.props.parentControl, {
             checked: this.props.checked,
@@ -27,7 +28,7 @@ export class ChildForm extends React.Component<IChildFormProps, any> {
         }
         <div className='coveo-child'>
           {
-            ValidComponentChildren.map(this.props.children, (child: any) => {
+            ValidComponentChildren.map(this.props.children, (child: React.ReactElement<any>) => {
               return React.cloneElement(child, {
                 disabled: !this.props.checked
               });

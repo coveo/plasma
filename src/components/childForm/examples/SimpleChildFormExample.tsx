@@ -15,13 +15,13 @@ export class SimpleChildFormExample extends React.Component<ISimpleChildFormExam
   constructor(props: ISimpleChildFormExampleProps, state: ISimpleChildFormExampleState) {
     super(props, state);
     this.state = {
-      checked: this.props.checked
+      checked: this.props.checked,
     };
   }
 
   handleChange() {
     this.setState({
-      checked: !this.state.checked
+      checked: !this.state.checked,
     });
   }
 
@@ -29,8 +29,14 @@ export class SimpleChildFormExample extends React.Component<ISimpleChildFormExam
     return (
       <div className='form-group'>
         <label className='form-control-label'>A Child Form With a chexkbox</label>
-        <ChildForm parentControl={<Checkbox label='Edit properties' />} checked={this.state.checked} onChange={() => this.handleChange()}>
-          <Input label='Child form input' value='Some value' classes={['input-field', 'form-group']} />
+        <ChildForm
+          parentControl={<Checkbox label='Edit properties' />}
+          checked={this.state.checked}
+          onChange={() => this.handleChange()}>
+          <Input
+            label='Child form input'
+            value='Some value'
+            classes={['input-field', 'form-group']} />
         </ChildForm>
       </div>
     );

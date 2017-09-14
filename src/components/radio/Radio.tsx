@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IInputBaseProps } from '../input/InputBase';
+import * as classNames from 'classnames';
 
 export interface IRadioProps extends IInputBaseProps {
   id: string;
@@ -17,9 +18,9 @@ export class Radio extends React.Component<IRadioProps, any> {
   }
 
   render() {
-    const classes: string[] = ['radio-option'].concat(this.props.classes);
+    const classes: string = classNames('radio-option', this.props.classes);
     return (
-      <div className={classes.join(' ')}>
+      <div className={classes}>
         <input id={this.props.id}
           name={this.props.name}
           type='radio'
