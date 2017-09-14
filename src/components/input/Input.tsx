@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 
 export interface IInputProps {
   label?: string;
@@ -16,6 +17,10 @@ export interface IInputProps {
 
 export class Input extends React.Component<IInputProps, any> {
   private innerInput: HTMLInputElement;
+
+  static defaultProps: Partial<IInputProps> = {
+    type: 'text',
+  };
 
   reset() {
     this.innerInput.value = '';
@@ -38,24 +43,26 @@ export class Input extends React.Component<IInputProps, any> {
   }
 
   render() {
-    const classes = ['input-wrapper'].concat(this.props.classes);
-    const labelClasses = [].concat(this.props.labelClasses);
-    const innerInputClasses = [].concat(this.props.innerInputClasses);
+    const classes = classNames('input-wrapper', this.props.classes);
+    const labelClasses = classNames(this.props.labelClasses);
+    const innerInputClasses = classNames(this.props.innerInputClasses);
 
     return (
-      <div className={classes.join(' ')}>
+      <div className={classes}>
         <input
-          className={innerInputClasses.join(' ')}
-          type={this.props.type ? this.props.type : 'text'}
+          className={innerInputClasses}
+          type={this.props.type}
           defaultValue={this.props.value}
           ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
           onBlur={() => this.handleChange()}
           onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
           placeholder={this.props.placeholder}
-          required />
-        <label className={labelClasses.join(' ')}
+          required
+        />
+        <label className={labelClasses}
           data-valid-message={this.props.validMessage}
-          data-invalid-message={this.props.invalidMessage}>{this.props.label}</label>
+          data-invalid-message={this.props.invalidMessage}>{this.props.label}
+        </label>
         {this.props.children}
       </div>
     );

@@ -18,11 +18,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
 
   private onChange() {
     const inputValue = this.innerInput.getInnerValue();
-    if (!inputValue) {
-      this.setInputClasses('invalid');
-    } else {
-      this.setInputClasses('valid');
-    }
+    this.setInputClasses(inputValue ? 'valid' : 'invalid');
   }
 
   setInputClasses(className: string) {
