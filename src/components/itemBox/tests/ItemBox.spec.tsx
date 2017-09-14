@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as _ from 'underscore';
-import { ISvgProps } from '../../svg/Svg';
 import { IItemBoxProps, ItemBox } from '../ItemBox';
 import { ITooltipProps, Tooltip } from '../../tooltip/Tooltip';
 import { Content, IContentProps } from '../../content/Content';
@@ -26,7 +25,7 @@ describe('ItemBox', () => {
     beforeEach(() => {
       ItemBoxComponent = mount(
         <ItemBox {...defaultProps} />,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
     });
 
@@ -55,7 +54,7 @@ describe('ItemBox', () => {
     const renderItemBox = (props: Partial<IItemBoxProps> = {}) => {
       ItemBoxComponent = mount(
         <ItemBox {..._.defaults(props, defaultProps) } />,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
     };
 
