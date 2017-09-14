@@ -48,6 +48,7 @@ import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSe
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 import { BoxItemExamples } from '../src/components/boxItem/examples/BoxItemExamples';
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
+import { ListBoxExamples } from '../src/components/listBox/examples/ListBoxExamples';
 
 class App extends React.Component<any, any> {
 
@@ -58,7 +59,7 @@ class App extends React.Component<any, any> {
           <div className='form-group'>
             <label className='form-control-label'>
               My list of members
-                        </label>
+            </label>
             <div className='form-control'>
               <MembersExample />
             </div>
@@ -66,7 +67,7 @@ class App extends React.Component<any, any> {
           <div className='form-group'>
             <label className='form-control-label'>
               Include an SVG
-                        </label>
+            </label>
             <div className='form-control'>
               <Svg svgName='domain-google' className='icon mod-2x' />
             </div>
@@ -74,13 +75,14 @@ class App extends React.Component<any, any> {
           <div className='form-group'>
             <label className='form-control-label'>
               Include another SVG
-                        </label>
+            </label>
             <div className='form-control'>
               <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
             </div>
           </div>
           <ContentExamples />
           <BoxItemExamples />
+          <ListBoxExamples />
           <ButtonExamples />
           <DropdownSearchExamples />
           <TooltipExamples />

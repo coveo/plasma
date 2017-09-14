@@ -115,6 +115,7 @@ import { Input } from './components/input/Input';
 import { BoxItem } from './components/boxItem/BoxItem';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
+import { ListBox } from "./components/listBox/ListBox";
 
 export {
   ChosenSelect,
@@ -176,8 +177,9 @@ export {
   // Input
   Input,
 
-  // BoxItem
+  // Box
   BoxItem,
+  ListBox,
 
   // MultilineInput
   MultilineInput,
