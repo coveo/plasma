@@ -1,20 +1,19 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { ISvgProps, Svg } from '../svg/Svg';
 import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
-import * as _ from 'underscore';
+import { Content, IContentProps } from '../content/Content';
 
 export interface IBoxItemProps {
-  svg?: ISvgProps;
   value: string;
   displayValue?: string;
-  prefix?: string;
   selected?: boolean;
   active?: boolean;
   hidden?: boolean;
   disabled?: boolean;
   tooltip?: ITooltipProps;
   classes?: string[];
+  prepend?: IContentProps;
+  append?: IContentProps;
   onOptionClick?: (option: IBoxItemProps) => void;
 }
 
@@ -37,20 +36,6 @@ export class BoxItem extends React.Component<IBoxItemProps, void> {
       this.props.classes);
   }
 
-  protected getDropdownPrepend(prefix: string): JSX.Element {
-    if (prefix) {
-      return <span className='text-medium-grey mr1'>{prefix}</span>;
-    }
-    return null;
-  }
-
-  protected getSvg(svg: ISvgProps): JSX.Element {
-    if (svg) {
-      return (<Svg {..._.defaults(svg, { className: 'inline-flex mr1', svgClass: 'icon' }) } />);
-    }
-    return null;
-  }
-
   handleOnOptionClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     if (e.target) {
       if (this.props.onOptionClick) {
@@ -66,9 +51,9 @@ export class BoxItem extends React.Component<IBoxItemProps, void> {
           className={this.getClasses()}
           onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
           data-value={this.props.value}>
-          {this.getDropdownPrepend(this.props.prefix)}
-          {this.getSvg(this.props.svg)}
+          {this.props.prepend ? <Content {...this.props.prepend} /> : null}
           {this.props.displayValue || this.props.value}
+          {this.props.append ? <Content {...this.props.append} /> : null}
         </li>
       </Tooltip>
     );

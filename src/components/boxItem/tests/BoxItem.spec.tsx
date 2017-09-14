@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as _ from 'underscore';
-import { ISvgProps, Svg } from '../../svg/Svg';
+import { ISvgProps } from '../../svg/Svg';
 import { BoxItem, IBoxItemProps } from '../BoxItem';
 import { ITooltipProps, Tooltip } from '../../tooltip/Tooltip';
+import { Content, IContentProps } from '../../content/Content';
 
 describe('BoxItem', () => {
 
@@ -40,6 +41,11 @@ describe('BoxItem', () => {
 
   describe('<BoxItem /> with custom props', () => {
 
+    const content: IContentProps = {
+      content: 'Prefix',
+      classes: ['text-medium-grey', 'mr1'],
+    };
+
     const tooltip: ITooltipProps = {
       title: 'title test for the box item',
       placement: 'bottom',
@@ -65,19 +71,19 @@ describe('BoxItem', () => {
       expect(boxItemComponent.find('li').text()).toEqual(displayValue);
     });
 
-    it('should render the prefix', () => {
+    it('should render a prepend <Content/>', () => {
       const prefix: string = 'prefix';
       renderBoxItem({
-        prefix,
+        prepend: content,
       });
-      expect(boxItemComponent.find('li').text()).toContain(prefix);
+      expect(boxItemComponent.find(Content).length).toBe(1);
     });
 
-    it('should render the svg with the default classes', () => {
+    it('should render an append <Content/>', () => {
       renderBoxItem({
-        svg,
+        append: content,
       });
-      expect(boxItemComponent.find(Svg).length).toBe(1);
+      expect(boxItemComponent.find(Content).length).toBe(1);
     });
 
     it('should render the tooltip', () => {

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { BoxItem } from '../BoxItem';
 import { ITooltipProps } from '../../tooltip/Tooltip';
-import { ISvgProps } from '../../svg/Svg';
+import { ISvgProps, Svg } from '../../svg/Svg';
+import { IContentProps } from '../../content/Content';
 
 export class BoxItemExamples extends React.Component<any, any> {
   render() {
@@ -15,6 +16,8 @@ export class BoxItemExamples extends React.Component<any, any> {
       svgName: 'domain-google',
       svgClass: 'icon',
     };
+    const getSvgPrepend: IContentProps = { content: () => <Svg {...svg} />, classes: ['mr1'] };
+    const getSvgAppend: IContentProps = { content: () => <Svg {...svg} />, classes: ['ml1'] };
 
     const triggerAlertFunction = () => {
       alert('Event onClick triggered');
@@ -37,15 +40,21 @@ export class BoxItemExamples extends React.Component<any, any> {
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with an prefix</label>
+          <label className='form-control-label'>Box Item with a prepend text</label>
           <div className='form-control'>
-            <BoxItem value='test' prefix='Prefix' />
+            <BoxItem value='test' prepend={{ content: 'Prefix', classes: ['text-medium-grey', 'mr1'] }} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Box Item with a icon</label>
+          <label className='form-control-label'>Box Item with a prepend icon</label>
           <div className='form-control'>
-            <BoxItem value='test' svg={svg} />
+            <BoxItem value='test' prepend={getSvgPrepend} />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Box Item with a append icon</label>
+          <div className='form-control'>
+            <BoxItem value='test' append={getSvgAppend} />
           </div>
         </div>
         <div className='form-group'>

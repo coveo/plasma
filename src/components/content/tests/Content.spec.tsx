@@ -9,6 +9,7 @@ describe('Content', () => {
   let contentComponent: ReactWrapper<IContentProps, any>;
   const svg: ISvgProps = {
     svgName: 'domain-google',
+    svgClass: 'icon',
   };
 
   it('should render without errors', () => {
