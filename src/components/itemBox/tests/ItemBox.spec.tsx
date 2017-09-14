@@ -52,10 +52,6 @@ describe('ItemBox', () => {
       container: 'body',
     };
 
-    const svg: ISvgProps = {
-      svgName: 'domain-google',
-    };
-
     const renderItemBox = (props: Partial<IItemBoxProps> = {}) => {
       ItemBoxComponent = mount(
         <ItemBox {..._.defaults(props, defaultProps) } />,
@@ -72,7 +68,6 @@ describe('ItemBox', () => {
     });
 
     it('should render a prepend <Content/>', () => {
-      const prefix: string = 'prefix';
       renderItemBox({
         prepend: content,
       });

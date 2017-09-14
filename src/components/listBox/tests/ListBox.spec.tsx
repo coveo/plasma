@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as _ from 'underscore';
 import { IListBoxProps, ListBox } from '../ListBox';
-import { BoxItem } from '../../boxItem/BoxItem';
+import { ItemBox } from '../../itemBox/ItemBox';
 
 describe('ListBox', () => {
 
@@ -37,7 +37,7 @@ describe('ListBox', () => {
     });
 
     it('should render with the box-item class', () => {
-      expect(listBoxComponent.find(BoxItem).length).toBe(defaultProps.items.length);
+      expect(listBoxComponent.find(ItemBox).length).toBe(defaultProps.items.length);
     });
   });
 
@@ -56,7 +56,7 @@ describe('ListBox', () => {
         onOptionClick,
       });
 
-      listBoxComponent.find(BoxItem).node.handleOnOptionClick({ target: 'target' });
+      listBoxComponent.find(ItemBox).node.handleOnOptionClick({ target: 'target' });
       expect(onOptionClick).toHaveBeenCalled();
     });
 
@@ -65,7 +65,7 @@ describe('ListBox', () => {
         items: [],
       });
 
-      expect(listBoxComponent.find(BoxItem).length).toBe(1);
+      expect(listBoxComponent.find(ItemBox).length).toBe(1);
     });
   });
 });
