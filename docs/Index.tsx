@@ -49,6 +49,7 @@ import { DropdownSearchExamples } from '../src/components/dropdownSearch/example
 import { RadioExamples } from '../src/components/radio/examples/RadioExamples';
 import { ChildFormExamples } from '../src/components/childForm/examples/ChildFormExamples';
 import { CheckboxExamples } from '../src/components/checkbox/examples/CheckboxExamples';
+import { InputExamples } from '../src/components/input/examples/InputExamples';
 
 class App extends React.Component<any, any> {
 
@@ -120,6 +121,7 @@ class App extends React.Component<any, any> {
           <DatePickerDropdownConnectedSingleDateExamples />
           <MultilineInputExamples />
           <BlankSlateExample />
+          <InputExamples />
           <RadioExamples />
           <CheckboxExamples />
           <ChildFormExamples />

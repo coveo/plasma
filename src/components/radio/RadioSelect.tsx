@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ValidComponentChildren } from '../../utils/ValidComponentChildren';
-import { createChainedFunction } from '../../utils/createChainedFunction';
 
 export interface IRadioSelectProps {
   name?: string;
