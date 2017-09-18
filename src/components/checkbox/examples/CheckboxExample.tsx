@@ -12,7 +12,7 @@ export interface ICheckboxWithStateState {
   checked?: boolean;
 }
 
-export class CheckboxWithState extends React.Component<ICheckboxWithStateProps, ICheckboxWithStateState> {
+export class CheckboxExample extends React.Component<ICheckboxWithStateProps, ICheckboxWithStateState> {
   constructor(props: ICheckboxWithStateProps, state: ICheckboxWithStateState) {
     super(props, state);
     this.state = {

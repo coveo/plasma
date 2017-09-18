@@ -19,7 +19,7 @@ export class RadioSelectExample extends React.Component<IRadioSelectProps, IRadi
     };
   }
 
-  handleChange(value: string) {
+  private handleChange(value: string) {
     this.setState({
       value,
     });

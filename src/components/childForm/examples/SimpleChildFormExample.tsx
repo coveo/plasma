@@ -3,35 +3,31 @@ import { ChildForm } from '../ChildForm';
 import { Input } from '../../input/Input';
 import { Checkbox } from '../../checkbox/Checkbox';
 
-export interface ISimpleChildFormExampleProps {
-  checked?: boolean;
-}
-
 export interface ISimpleChildFormExampleState {
-  checked: boolean;
+  active: boolean;
 }
 
-export class SimpleChildFormExample extends React.Component<ISimpleChildFormExampleProps, ISimpleChildFormExampleState> {
-  constructor(props: ISimpleChildFormExampleProps, state: ISimpleChildFormExampleState) {
+export class SimpleChildFormExample extends React.Component<any, ISimpleChildFormExampleState> {
+  constructor(props: any, state: ISimpleChildFormExampleState) {
     super(props, state);
     this.state = {
-      checked: this.props.checked,
+      active: true,
     };
   }
 
   handleChange() {
     this.setState({
-      checked: !this.state.checked,
+      active: !this.state.active,
     });
   }
 
   render() {
     return (
       <div className='form-group'>
-        <label className='form-control-label'>A Child Form With a chexkbox</label>
+        <label className='form-control-label'>A Child Form With a Checkbox</label>
         <ChildForm
           parentControl={<Checkbox label='Edit properties' />}
-          checked={this.state.checked}
+          active={this.state.active}
           onChange={() => this.handleChange()}>
           <Input
             label='Child form input'

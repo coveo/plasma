@@ -49,8 +49,7 @@ describe('Radio', () => {
       const innerInput = radio.find('input').first();
       expect(innerInput.prop('name')).toBe(undefined);
 
-      radio.setProps({ name });
-      radio.mount();
+      radio.setProps({ name }).mount();
       expect(innerInput.prop('name')).toBe(name);
     });
 
@@ -58,8 +57,7 @@ describe('Radio', () => {
       const value = 'blueberry';
       expect(radio.prop('value')).toBe(undefined);
 
-      radio.setProps({ value });
-      radio.mount();
+      radio.setProps({ value }).mount();
       expect(radio.prop('value')).toBe(value);
     });
 
@@ -75,23 +73,19 @@ describe('Radio', () => {
 
     it('should set disabled prop when specified', () => {
       const innerInput = radio.find('input').first();
-      radio.setProps({ disabled: false });
-      radio.mount();
+      radio.setProps({ disabled: false }).mount();
       expect(innerInput.prop('disabled')).toBe(false);
 
-      radio.setProps({ disabled: true });
-      radio.mount();
+      radio.setProps({ disabled: true }).mount();
       expect(innerInput.prop('disabled')).toBe(true);
     });
 
     it('should set checked prop when specified', () => {
       const innerInput = radio.find('input').first();
-      radio.setProps({ checked: false });
-      radio.mount();
+      radio.setProps({ checked: false }).mount();
       expect(innerInput.prop('checked')).toBe(false);
 
-      radio.setProps({ checked: true });
-      radio.mount();
+      radio.setProps({ checked: true }).mount();
       expect(innerInput.prop('checked')).toBe(true);
     });
 
@@ -101,8 +95,7 @@ describe('Radio', () => {
       const innerDiv = radio.find('div').first();
       expect(innerDiv.hasClass(innerClass)).toBe(false);
 
-      radio.setProps({ classes });
-      radio.mount();
+      radio.setProps({ classes }).mount();
       expect(innerDiv.hasClass(innerClass)).toBe(true);
     });
 
@@ -110,8 +103,7 @@ describe('Radio', () => {
       const changeSpy = jasmine.createSpy('onChange');
       const innerInput = radio.find('input');
 
-      radio.setProps({ onChange: changeSpy });
-      radio.mount();
+      radio.setProps({ onChange: changeSpy }).mount();
       innerInput.simulate('change');
 
       expect(changeSpy.calls.count()).toBe(1);

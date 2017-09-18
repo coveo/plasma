@@ -36,8 +36,7 @@ describe('Checkbox', () => {
       const innerLabel = checkbox.find('.label').first();
       expect(innerLabel.text()).toBe('');
 
-      checkbox.setProps({ label });
-      checkbox.mount();
+      checkbox.setProps({ label }).mount();
       expect(innerLabel.text()).toBe(label);
     });
 
@@ -53,23 +52,19 @@ describe('Checkbox', () => {
 
     it('should set disabled prop when specified', () => {
       const innerInput = checkbox.find('input').first();
-      checkbox.setProps({ disabled: false });
-      checkbox.mount();
+      checkbox.setProps({ disabled: false }).mount();
       expect(innerInput.prop('disabled')).toBe(false);
 
-      checkbox.setProps({ disabled: true });
-      checkbox.mount();
+      checkbox.setProps({ disabled: true }).mount();
       expect(innerInput.prop('disabled')).toBe(true);
     });
 
     it('should set checked prop when specified', () => {
       const innerInput = checkbox.find('input').first();
-      checkbox.setProps({ checked: false });
-      checkbox.mount();
+      checkbox.setProps({ checked: false }).mount();
       expect(innerInput.prop('checked')).toBe(false);
 
-      checkbox.setProps({ checked: true });
-      checkbox.mount();
+      checkbox.setProps({ checked: true }).mount();
       expect(innerInput.prop('checked')).toBe(true);
     });
 
@@ -79,8 +74,7 @@ describe('Checkbox', () => {
       const innerLabel = checkbox.find('label').first();
       expect(innerLabel.hasClass(innerClass)).toBe(false);
 
-      checkbox.setProps({ classes });
-      checkbox.mount();
+      checkbox.setProps({ classes }).mount();
       expect(innerLabel.hasClass(innerClass)).toBe(true);
     });
 
@@ -88,8 +82,7 @@ describe('Checkbox', () => {
       const changeSpy = jasmine.createSpy('onChange');
       const innerLabel = checkbox.find('label');
 
-      checkbox.setProps({ onChange: changeSpy });
-      checkbox.mount();
+      checkbox.setProps({ onChange: changeSpy }).mount();
       innerLabel.simulate('click');
 
       expect(changeSpy.calls.count()).toBe(1);

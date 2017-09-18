@@ -10,28 +10,28 @@ export interface IRadioSelectProps {
 }
 
 export class RadioSelect extends React.Component<IRadioSelectProps, any> {
-  handleToggle(value: string) {
+  private handleToggle(value: string) {
     if (this.props.onChange) {
       this.props.onChange(value);
     }
   }
 
   render() {
+    const children = ValidComponentChildren.map(this.props.children, (child: React.ReactElement<any>) => {
+      return React.cloneElement(child, {
+        name: child.props.name || this.props.name,
+        checked: this.props.value === child.props.value,
+        disabled: this.props.disabled,
+        onChange: () => {
+          child.props.onChange && child.props.onChange();
+          this.handleToggle(child.props.value);
+        },
+      });
+    }, null);
+
     return (
       <div className='form-control radio-select'>
-        {
-          ValidComponentChildren.map(this.props.children, (child: React.ReactElement<any>) => {
-            const { value, onChange } = child.props;
-            const handler = () => this.handleToggle(value);
-
-            return React.cloneElement(child, {
-              name: child.props.name || this.props.name,
-              checked: this.props.value === value,
-              disabled: this.props.disabled,
-              onChange: createChainedFunction(onChange, handler),
-            });
-          }, null)
-        }
+        {children}
       </div>
     );
   }

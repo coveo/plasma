@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxWithState } from './CheckboxWithStateExample';
+import { CheckboxExample } from './CheckboxExample';
 
 export class CheckboxExamples extends React.Component<any, any> {
   render() {
@@ -7,16 +7,16 @@ export class CheckboxExamples extends React.Component<any, any> {
       <div className='mt2'>
         <h1 className='text-blue mb1'>Checkboxes</h1>
         <div className='form-group'>
-          <CheckboxWithState label='A checkbox unchecked by default' />
+          <CheckboxExample label='A checkbox unchecked by default' />
           <br />
-          <CheckboxWithState classes={['mt1']} label='A checkbox checked by default' checked={true} />
+          <CheckboxExample classes={['mt1']} label='A checkbox checked by default' checked={true} />
           <br />
-          <CheckboxWithState classes={['mt1']} label='A disabled checkbox' disabled={true} />
+          <CheckboxExample classes={['mt1']} label='A disabled checkbox' disabled={true} />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>A checkbox with no label</label>
           <br />
-          <CheckboxWithState />
+          <CheckboxExample />
         </div>
       </div>
     );

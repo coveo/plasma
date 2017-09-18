@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { IInputBaseProps } from '../input/InputBase';
 import * as classNames from 'classnames';
 
-export interface IRadioProps extends IInputBaseProps {
+export interface IRadioProps {
   id: string;
   name?: string;
   label: string;
+  disabled?: boolean;
+  checked?: boolean;
+  value?: string;
   classes?: string[];
   onChange?: (value: string) => void;
 }

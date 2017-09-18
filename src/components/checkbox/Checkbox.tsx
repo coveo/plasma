@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { IInputBaseProps } from '../input/InputBase';
 import * as classNames from 'classnames';
 
-export interface ICheckboxProps extends IInputBaseProps {
+export interface ICheckboxProps {
   classes?: string[];
+  disabled?: boolean;
+  checked?: boolean;
+  value?: string;
   label?: string;
   onChange?: () => void;
 }
 
 export class Checkbox extends React.Component<ICheckboxProps, any> {
 
-  private handleClick = (e: React.MouseEvent<HTMLLabelElement>) => {
+  private handleClick(e: React.MouseEvent<HTMLLabelElement>) {
     if (this.props.onChange) {
       e.preventDefault();
       e.stopPropagation();

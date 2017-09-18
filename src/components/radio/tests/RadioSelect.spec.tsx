@@ -43,8 +43,7 @@ describe('RadioSelect', () => {
     it('should set value prop when specified', () => {
       expect(radioSelect.prop('value')).toBe(undefined);
 
-      radioSelect.setProps({ value: aRadioValue });
-      radioSelect.mount();
+      radioSelect.setProps({ value: aRadioValue }).mount();
       expect(radioSelect.prop('value')).toBe(aRadioValue);
     });
 
@@ -53,13 +52,11 @@ describe('RadioSelect', () => {
       const innerRadio1 = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
       const innerRadio2 = innerRadios.findWhere(radio => radio.prop('value') === anotherRadioValue).first();
 
-      radioSelect.setProps({ disabled: false });
-      radioSelect.mount();
+      radioSelect.setProps({ disabled: false }).mount();
       expect(innerRadio1.prop('disabled')).toBe(false);
       expect(innerRadio2.prop('disabled')).toBe(false);
 
-      radioSelect.setProps({ disabled: true });
-      radioSelect.mount();
+      radioSelect.setProps({ disabled: true }).mount();
       expect(innerRadio1.prop('disabled')).toBe(true);
       expect(innerRadio2.prop('disabled')).toBe(true);
     });
@@ -69,13 +66,11 @@ describe('RadioSelect', () => {
       const innerRadio1 = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
       const innerRadio2 = innerRadios.findWhere(radio => radio.prop('value') === anotherRadioValue).first();
 
-      radioSelect.setProps({ value: undefined });
-      radioSelect.mount();
+      radioSelect.setProps({ value: undefined }).mount();
       expect(innerRadio1.prop('checked')).toBe(false);
       expect(innerRadio2.prop('checked')).toBe(false);
 
-      radioSelect.setProps({ value: aRadioValue });
-      radioSelect.mount();
+      radioSelect.setProps({ value: aRadioValue }).mount();
       expect(innerRadio1.prop('checked')).toBe(true);
       expect(innerRadio2.prop('checked')).toBe(false);
     });
@@ -86,8 +81,7 @@ describe('RadioSelect', () => {
       const innerRadio1 = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
       const innerRadio2 = innerRadios.findWhere(radio => radio.prop('value') === anotherRadioValue).first();
 
-      radioSelect.setProps({ name });
-      radioSelect.mount();
+      radioSelect.setProps({ name }).mount();
       expect(innerRadio1.prop('name')).toBe(name);
       expect(innerRadio2.prop('name')).toBe(anotherName);
     });
@@ -97,8 +91,7 @@ describe('RadioSelect', () => {
       const innerRadio = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
       const innerRadioInput = innerRadio.find('input').first();
 
-      radioSelect.setProps({ onChange: changeSpy });
-      radioSelect.mount();
+      radioSelect.setProps({ onChange: changeSpy }).mount();
       innerRadioInput.simulate('change');
 
       expect(changeSpy.calls.count()).toBe(2);
