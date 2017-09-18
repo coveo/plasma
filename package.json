@@ -61,7 +61,7 @@
     "@types/react-bootstrap": "0.0.52",
     "@types/react-dom": "15.5.4",
     "@types/react-dropzone": "0.0.35",
-    "@types/react-redux": "5.0.8",
+    "@types/react-redux": "5.0.9",
     "@types/tether": "1.4.3",
     "@types/underscore": "1.8.3",
     "@types/underscore.string": "0.0.31",
