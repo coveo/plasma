@@ -4,12 +4,10 @@ const DEFAULT_TITLE = 'Add a new entry';
 
 export interface IAddInputActionProps {
   title?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export class AddInputAction extends React.Component<IAddInputActionProps, any> {
-  onClick: () => void;
-
   render() {
     const title = this.props.title ? this.props.title : DEFAULT_TITLE;
     return (

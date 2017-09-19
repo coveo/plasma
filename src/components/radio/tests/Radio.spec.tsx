@@ -1,7 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Radio, IRadioProps } from '../Radio';
+import { Radio } from '../Radio';
+import { IInputProps } from '../../input/Input';
 
 describe('Radio', () => {
   const anId = 'patate';
@@ -18,7 +19,7 @@ describe('Radio', () => {
   });
 
   describe('<Radio />', () => {
-    let radio: ReactWrapper<IRadioProps, any>;
+    let radio: ReactWrapper<IInputProps, any>;
     let radioInstance: Radio;
 
     beforeEach(() => {
