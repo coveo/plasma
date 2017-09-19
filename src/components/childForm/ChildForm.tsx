@@ -1,37 +1,36 @@
 import * as React from 'react';
 import { ValidComponentChildren } from '../../utils/ValidComponentChildren';
 import * as classNames from 'classnames';
-
-export interface IChildFormParentProps {
-  checked?: boolean;
-  onChange?: (value?: string) => void;
-}
+import { IInputProps } from '../input/Input';
 
 export interface IChildFormProps {
   classes?: string[];
-  active?: boolean;
-  onChange?: (value?: string) => void;
-  parentControl: JSX.Element;
+  checked?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  parentControl: React.ReactElement<IInputProps>;
+  value?: string;
 }
 
 export class ChildForm extends React.Component<IChildFormProps, any> {
-  private handleChange(value: string) {
-    if (this.props.onChange) {
-      this.props.onChange(value);
+  private handleClick(e: React.MouseEvent<HTMLElement>) {
+    if (this.props.onClick) {
+      this.props.onClick(e);
     }
   }
 
   render() {
     const classes: string = classNames('coveo-parent', this.props.classes);
-    const parentElement = React.cloneElement(this.props.parentControl, {
-      checked: this.props.active,
-      onChange: (value: string) => this.handleChange(value),
+    const parentElement: React.ReactElement<IInputProps> = React.cloneElement(this.props.parentControl as React.ReactElement<any>, {
+      checked: this.props.checked,
+      onClick: (e: React.MouseEvent<HTMLElement>) => this.handleClick(e),
     }, null);
+
     const children = ValidComponentChildren.map(this.props.children, (child: React.ReactElement<any>) => {
       return React.cloneElement(child, {
-        disabled: !this.props.active
+        disabled: !this.props.checked
       });
     }, null);
+
     return (
       <div className={classes}>
         {parentElement}

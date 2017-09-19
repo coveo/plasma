@@ -31,36 +31,36 @@ describe('AddInput', () => {
       addInput.detach();
     });
 
-    it('should call property onChange when input loses focus and prop is specified', () => {
+    it('should call property onBlur when input loses focus and prop is specified', () => {
       let blurSpy = jasmine.createSpy('onBlur');
       let innerInput = addInput.find('input');
 
       innerInput.simulate('blur');
       expect(blurSpy).not.toHaveBeenCalled();
 
-      addInput.setProps({ onChange: blurSpy });
+      addInput.setProps({ onBlur: blurSpy });
       addInput.mount();
 
       innerInput.simulate('blur');
       expect(blurSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should call property onChange when inner input has focus and Enter key is released', () => {
-      let changeSpy = jasmine.createSpy('onChange');
+    it('should call property onBlur when inner input has focus and Enter key is released', () => {
+      let blurSpy = jasmine.createSpy('onBlur');
       let innerInput = addInput.find('input');
 
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
-      expect(changeSpy).not.toHaveBeenCalled();
+      expect(blurSpy).not.toHaveBeenCalled();
 
-      addInput.setProps({ onChange: changeSpy });
+      addInput.setProps({ onBlur: blurSpy });
       addInput.mount();
 
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
-      expect(changeSpy).toHaveBeenCalledTimes(1);
+      expect(blurSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

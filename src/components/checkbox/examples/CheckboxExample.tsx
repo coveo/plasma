@@ -20,7 +20,7 @@ export class CheckboxExample extends React.Component<ICheckboxWithStateProps, IC
     };
   }
 
-  handleChange() {
+  handleClick() {
     if (!this.props.disabled) {
       this.setState({
         checked: !this.state.checked
@@ -30,7 +30,7 @@ export class CheckboxExample extends React.Component<ICheckboxWithStateProps, IC
 
   render() {
     return (
-      <Checkbox classes={this.props.classes} onChange={() => this.handleChange()} label={this.props.label} checked={this.state.checked} disabled={this.props.disabled} />
+      <Checkbox classes={this.props.classes} onClick={() => this.handleClick()} label={this.props.label} checked={this.state.checked} disabled={this.props.disabled} />
     );
   }
 }

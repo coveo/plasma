@@ -27,8 +27,8 @@ export class SimpleChildFormExample extends React.Component<any, ISimpleChildFor
         <label className='form-control-label'>A Child Form With a Checkbox</label>
         <ChildForm
           parentControl={<Checkbox label='Edit properties' />}
-          active={this.state.active}
-          onChange={() => this.handleChange()}>
+          checked={this.state.active}
+          onClick={() => this.handleChange()}>
           <Input
             label='Child form input'
             value='Some value'

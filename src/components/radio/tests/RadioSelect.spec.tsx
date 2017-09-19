@@ -18,16 +18,16 @@ describe('RadioSelect', () => {
   describe('<RadioSelect />', () => {
     let radioSelect: ReactWrapper<IRadioSelectProps, any>;
     let radioSelectInstance: RadioSelect;
-    let changeSpy: jasmine.Spy;
+    let clickSpy: jasmine.Spy;
     const aRadioValue = 'blue';
     const anotherRadioValue = 'red';
     const anotherName = 'Johnny the almighty magic chicken';
 
     beforeEach(() => {
-      changeSpy = jasmine.createSpy('onChange');
+      clickSpy = jasmine.createSpy('onClick');
       radioSelect = mount(
         <RadioSelect>
-          <Radio id='radio1' label='label1' value={aRadioValue} onChange={changeSpy} />
+          <Radio id='radio1' label='label1' value={aRadioValue} onClick={clickSpy} />
           <Radio id='radio2' label='label2' value={anotherRadioValue} name={anotherName} />
         </RadioSelect>,
         { attachTo: document.getElementById('App') }
@@ -86,15 +86,15 @@ describe('RadioSelect', () => {
       expect(innerRadio2.prop('name')).toBe(anotherName);
     });
 
-    it('should chain prop onChange with children onChange prop and call both on children change', () => {
+    it('should chain prop onChange with children onClick prop and call both on children change', () => {
       const innerRadios = radioSelect.find('Radio');
       const innerRadio = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
       const innerRadioInput = innerRadio.find('input').first();
 
-      radioSelect.setProps({ onChange: changeSpy }).mount();
-      innerRadioInput.simulate('change');
+      radioSelect.setProps({ onChange: clickSpy }).mount();
+      innerRadioInput.simulate('click');
 
-      expect(changeSpy.calls.count()).toBe(2);
+      expect(clickSpy.calls.count()).toBe(2);
     });
   });
 });

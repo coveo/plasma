@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/assets/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 444);
+/******/ 	return __webpack_require__(__webpack_require__.s = 443);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
@@ -1906,7 +1906,7 @@ function loadLocale(name) {
             module && module.exports) {
         try {
             oldLocale = globalLocale._abbr;
-            __webpack_require__(725)("./" + name);
+            __webpack_require__(724)("./" + name);
             // because defineLocale currently also sets the global locale, we
             // want to undo that for lazy loaded locales
             getSetGlobalLocale(oldLocale);
@@ -4780,11 +4780,11 @@ exports.default = function (self, call) {
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(616);
+var _setPrototypeOf = __webpack_require__(615);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(620);
+var _create = __webpack_require__(619);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -6502,7 +6502,7 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(545)();
+  module.exports = __webpack_require__(544)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
@@ -6526,7 +6526,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_entries___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_entries__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
@@ -6910,9 +6910,9 @@ module.exports = function makeString(object) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(543);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(548);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(547);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
@@ -7356,7 +7356,7 @@ function createChainedFunction() {
 "use strict";
 
 
-module.exports = __webpack_require__(459);
+module.exports = __webpack_require__(458);
 
 
 /***/ }),
@@ -7386,7 +7386,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var underscore_1 = __webpack_require__(9);
-var svgsEnum = __webpack_require__(724);
+var svgsEnum = __webpack_require__(723);
 var svgPropsToOmit = [
     'svgClass', 'svgName',
 ];
@@ -7714,7 +7714,7 @@ function toArray(children) {
 
 
 
-var _prodInvariant = __webpack_require__(49);
+var _prodInvariant = __webpack_require__(50);
 
 var ReactCurrentOwner = __webpack_require__(31);
 
@@ -8148,7 +8148,7 @@ module.exports = emptyFunction;
 var debugTool = null;
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactDebugTool = __webpack_require__(469);
+  var ReactDebugTool = __webpack_require__(468);
   debugTool = ReactDebugTool;
 }
 
@@ -8280,7 +8280,7 @@ var _prodInvariant = __webpack_require__(17),
 var CallbackQueue = __webpack_require__(197);
 var PooledClass = __webpack_require__(45);
 var ReactFeatureFlags = __webpack_require__(198);
-var ReactReconciler = __webpack_require__(50);
+var ReactReconciler = __webpack_require__(51);
 var Transaction = __webpack_require__(84);
 
 var invariant = __webpack_require__(12);
@@ -9201,7 +9201,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_bootstrap_1 = __webpack_require__(586);
+var react_bootstrap_1 = __webpack_require__(585);
 var _ = __webpack_require__(9);
 var React = __webpack_require__(0);
 var PROPS_TO_OMIT = [
@@ -9262,7 +9262,7 @@ exports.Tooltip = Tooltip;
 var global    = __webpack_require__(41)
   , core      = __webpack_require__(33)
   , ctx       = __webpack_require__(138)
-  , hide      = __webpack_require__(53)
+  , hide      = __webpack_require__(54)
   , PROTOTYPE = 'prototype';
 
 var $export = function(type, name, source){
@@ -9823,12 +9823,12 @@ module.exports = PooledClass;
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject       = __webpack_require__(54)
+var anObject       = __webpack_require__(55)
   , IE8_DOM_DEFINE = __webpack_require__(230)
   , toPrimitive    = __webpack_require__(139)
   , dP             = Object.defineProperty;
 
-exports.f = __webpack_require__(55) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+exports.f = __webpack_require__(56) ? Object.defineProperty : function defineProperty(O, P, Attributes){
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -9854,6 +9854,76 @@ module.exports = function(it, key){
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var classNames = __webpack_require__(8);
+var Input = (function (_super) {
+    __extends(Input, _super);
+    function Input() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Input.prototype.reset = function () {
+        this.innerInput.value = '';
+    };
+    Input.prototype.getInnerValue = function () {
+        return this.innerInput.value;
+    };
+    Input.prototype.handleBlur = function () {
+        if (this.props.onBlur) {
+            this.props.onBlur(this.innerInput.value);
+        }
+    };
+    Input.prototype.handleChange = function () {
+        if (this.props.onChange) {
+            this.props.onChange(this.innerInput.value);
+        }
+    };
+    Input.prototype.handleClick = function (e) {
+        if (this.props.onClick) {
+            this.props.onClick(e);
+        }
+    };
+    Input.prototype.handleKeyUp = function (event) {
+        if (this.props.onKeyUp) {
+            this.props.onKeyUp(event);
+        }
+    };
+    Input.prototype.render = function () {
+        var _this = this;
+        var classes = classNames('input-wrapper', this.props.classes);
+        var labelClasses = classNames(this.props.labelClasses);
+        var innerInputClasses = classNames(this.props.innerInputClasses);
+        var btn = this.props.type === 'checkbox' ? React.createElement("button", null) : null;
+        return (React.createElement("div", { className: classes, onClick: function (e) { return _this.handleClick(e); } },
+            React.createElement("input", { id: this.props.id, className: innerInputClasses, type: this.props.type, defaultValue: this.props.value, ref: function (innerInput) { return _this.innerInput = innerInput; }, onBlur: function () { return _this.handleBlur(); }, onChange: function () { return _this.handleChange(); }, onKeyUp: function (event) { return _this.handleKeyUp(event); }, placeholder: this.props.placeholder, checked: !!this.props.checked, disabled: !!this.props.disabled, name: this.props.name, required: true, readOnly: !!this.props.readOnly }),
+            btn,
+            React.createElement("label", { className: labelClasses, "data-valid-message": this.props.validMessage, "data-invalid-message": this.props.invalidMessage }, this.props.label),
+            this.props.children));
+    };
+    Input.defaultProps = {
+        type: 'text',
+    };
+    return Input;
+}(React.Component));
+exports.Input = Input;
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -9869,14 +9939,14 @@ module.exports = function(it, key){
 var _assign = __webpack_require__(19);
 
 var ReactBaseClasses = __webpack_require__(186);
-var ReactChildren = __webpack_require__(445);
-var ReactDOMFactories = __webpack_require__(449);
+var ReactChildren = __webpack_require__(444);
+var ReactDOMFactories = __webpack_require__(448);
 var ReactElement = __webpack_require__(44);
-var ReactPropTypes = __webpack_require__(453);
-var ReactVersion = __webpack_require__(455);
+var ReactPropTypes = __webpack_require__(452);
+var ReactVersion = __webpack_require__(454);
 
-var createReactClass = __webpack_require__(456);
-var onlyChild = __webpack_require__(458);
+var createReactClass = __webpack_require__(455);
+var onlyChild = __webpack_require__(457);
 
 var createElement = ReactElement.createElement;
 var createFactory = ReactElement.createFactory;
@@ -9988,7 +10058,7 @@ module.exports = React;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10032,7 +10102,7 @@ function reactProdInvariant(code) {
 module.exports = reactProdInvariant;
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10048,7 +10118,7 @@ module.exports = reactProdInvariant;
 
 
 
-var ReactRef = __webpack_require__(467);
+var ReactRef = __webpack_require__(466);
 var ReactInstrumentation = __webpack_require__(29);
 
 var warning = __webpack_require__(13);
@@ -10204,7 +10274,7 @@ module.exports = ReactReconciler;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10327,7 +10397,7 @@ DOMLazyTree.queueText = queueText;
 module.exports = DOMLazyTree;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10402,12 +10472,12 @@ exports.selectDate = function (id, limit) { return ({
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(46)
-  , createDesc = __webpack_require__(72);
-module.exports = __webpack_require__(55) ? function(object, key, value){
+  , createDesc = __webpack_require__(73);
+module.exports = __webpack_require__(56) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
   object[key] = value;
@@ -10415,26 +10485,26 @@ module.exports = __webpack_require__(55) ? function(object, key, value){
 };
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(70);
+var isObject = __webpack_require__(71);
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(71)(function(){
+module.exports = !__webpack_require__(72)(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
@@ -10446,13 +10516,13 @@ module.exports = Object.keys || function keys(O){
 };
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(626), __esModule: true };
+module.exports = { "default": __webpack_require__(625), __esModule: true };
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10468,7 +10538,7 @@ function ownerDocument(node) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10508,7 +10578,7 @@ function fallback(context, node) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10581,7 +10651,7 @@ exports.DateUtils = DateUtils;
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10607,10 +10677,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var OptionsCycle_1 = __webpack_require__(182);
 var OptionsCycleConnected_1 = __webpack_require__(429);
-var DateUtils_1 = __webpack_require__(60);
+var DateUtils_1 = __webpack_require__(61);
 var TableHeader_1 = __webpack_require__(427);
 var CalendarDay_1 = __webpack_require__(390);
-var DatePickerActions_1 = __webpack_require__(52);
+var DatePickerActions_1 = __webpack_require__(53);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 var moment = __webpack_require__(1);
@@ -10783,7 +10853,7 @@ exports.Calendar = Calendar;
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10799,7 +10869,7 @@ exports.Calendar = Calendar;
 
 
 
-var EventPluginHub = __webpack_require__(63);
+var EventPluginHub = __webpack_require__(64);
 var EventPluginUtils = __webpack_require__(109);
 
 var accumulateInto = __webpack_require__(194);
@@ -10923,7 +10993,7 @@ module.exports = EventPropagators;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11203,7 +11273,7 @@ module.exports = EventPluginHub;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11267,7 +11337,7 @@ SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 module.exports = SyntheticUIEvent;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11318,7 +11388,7 @@ var ReactInstanceMap = {
 module.exports = ReactInstanceMap;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11377,19 +11447,19 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var Redux = __webpack_require__(126);
-var Reducers_1 = __webpack_require__(569);
+var Reducers_1 = __webpack_require__(568);
 exports.ReactVaporStore = Redux.createStore(Reducers_1.Reducers, window.devToolsExtension && window.devToolsExtension.call());
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11443,7 +11513,7 @@ exports.closeMoreFacetRows = function () { return ({
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11482,7 +11552,7 @@ exports.turnOffLoading = function (ids) { return ({
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -11490,7 +11560,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 module.exports = function(exec){
@@ -11502,7 +11572,7 @@ module.exports = function(exec){
 };
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 module.exports = function(bitmap, value){
@@ -11515,23 +11585,23 @@ module.exports = function(bitmap, value){
 };
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__);
@@ -11651,7 +11721,7 @@ Button.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__["bsClass"])('btn', Object(__WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__["bsSizes"])([__WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["c" /* Size */].SMALL, __WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["c" /* Size */].XSMALL], Object(__WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__["bsStyles"])([].concat(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(__WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["d" /* State */]), [__WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["e" /* Style */].DEFAULT, __WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["e" /* Style */].PRIMARY, __WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["e" /* Style */].LINK]), __WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["e" /* Style */].DEFAULT, Button))));
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11659,7 +11729,7 @@ Button.defaultProps = defaultProps;
 
 exports.__esModule = true;
 
-var _createUncontrollable = __webpack_require__(644);
+var _createUncontrollable = __webpack_require__(643);
 
 var _createUncontrollable2 = _interopRequireDefault(_createUncontrollable);
 
@@ -11688,7 +11758,7 @@ exports.default = (0, _createUncontrollable2.default)(mixin, set);
 module.exports = exports['default'];
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11706,7 +11776,7 @@ var _reactDom = __webpack_require__(22);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _ownerDocument = __webpack_require__(58);
+var _ownerDocument = __webpack_require__(59);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -11715,7 +11785,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 module.exports = exports['default'];
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11761,7 +11831,7 @@ exports.closeModals = function (ids) { return ({
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11799,64 +11869,6 @@ exports.resetOptionPickers = function (id) { return ({
         id: id
     }
 }); };
-
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var classNames = __webpack_require__(8);
-var Input = (function (_super) {
-    __extends(Input, _super);
-    function Input() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Input.prototype.reset = function () {
-        this.innerInput.value = '';
-    };
-    Input.prototype.getInnerValue = function () {
-        return this.innerInput.value;
-    };
-    Input.prototype.handleChange = function () {
-        if (this.props.onChange) {
-            this.props.onChange(this.innerInput.value);
-        }
-    };
-    Input.prototype.handleKeyUp = function (event) {
-        if (this.props.onKeyUp) {
-            this.props.onKeyUp(event);
-        }
-    };
-    Input.prototype.render = function () {
-        var _this = this;
-        var classes = classNames('input-wrapper', this.props.classes);
-        var labelClasses = classNames(this.props.labelClasses);
-        var innerInputClasses = classNames(this.props.innerInputClasses);
-        return (React.createElement("div", { className: classes },
-            React.createElement("input", { className: innerInputClasses, type: this.props.type, defaultValue: this.props.value, ref: function (innerInput) { return _this.innerInput = innerInput; }, onBlur: function () { return _this.handleChange(); }, onKeyUp: function (event) { return _this.handleKeyUp(event); }, placeholder: this.props.placeholder, disabled: this.props.disabled, required: true }),
-            React.createElement("label", { className: labelClasses, "data-valid-message": this.props.validMessage, "data-invalid-message": this.props.invalidMessage }, this.props.label),
-            this.props.children));
-    };
-    Input.defaultProps = {
-        type: 'text',
-    };
-    return Input;
-}(React.Component));
-exports.Input = Input;
 
 
 /***/ }),
@@ -12427,7 +12439,7 @@ module.exports = TransactionImpl;
 
 
 
-var SyntheticUIEvent = __webpack_require__(64);
+var SyntheticUIEvent = __webpack_require__(65);
 var ViewportMetrics = __webpack_require__(201);
 
 var getEventModifierState = __webpack_require__(113);
@@ -12737,10 +12749,10 @@ module.exports = escapeTextContentForBrowser;
 var _assign = __webpack_require__(19);
 
 var EventPluginRegistry = __webpack_require__(83);
-var ReactEventEmitterMixin = __webpack_require__(493);
+var ReactEventEmitterMixin = __webpack_require__(492);
 var ViewportMetrics = __webpack_require__(201);
 
-var getVendorPrefixedEventName = __webpack_require__(494);
+var getVendorPrefixedEventName = __webpack_require__(493);
 var isEventSupported = __webpack_require__(112);
 
 /**
@@ -13157,21 +13169,21 @@ var _camelizeStyle = __webpack_require__(246);
 
 var _camelizeStyle2 = _interopRequireDefault(_camelizeStyle);
 
-var _hyphenateStyle = __webpack_require__(639);
+var _hyphenateStyle = __webpack_require__(638);
 
 var _hyphenateStyle2 = _interopRequireDefault(_hyphenateStyle);
 
-var _getComputedStyle2 = __webpack_require__(641);
+var _getComputedStyle2 = __webpack_require__(640);
 
 var _getComputedStyle3 = _interopRequireDefault(_getComputedStyle2);
 
-var _removeStyle = __webpack_require__(642);
+var _removeStyle = __webpack_require__(641);
 
 var _removeStyle2 = _interopRequireDefault(_removeStyle);
 
 var _properties = __webpack_require__(247);
 
-var _isTransform = __webpack_require__(643);
+var _isTransform = __webpack_require__(642);
 
 var _isTransform2 = _interopRequireDefault(_isTransform);
 
@@ -13265,7 +13277,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_dom_helpers_activeElement__ = __webpack_require__(249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_dom_helpers_activeElement___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_dom_helpers_activeElement__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_dom_helpers_query_contains__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_dom_helpers_query_contains__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_dom_helpers_query_contains___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_dom_helpers_query_contains__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_keycode__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_keycode___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_keycode__);
@@ -13281,16 +13293,16 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_prop_types_extra_lib_elementType___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_prop_types_extra_lib_elementType__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_prop_types_extra_lib_isRequiredForA11y__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_prop_types_extra_lib_isRequiredForA11y___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_prop_types_extra_lib_isRequiredForA11y__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_uncontrollable__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_uncontrollable__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_uncontrollable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_uncontrollable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_warning__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ButtonGroup__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__DropdownMenu__ = __webpack_require__(646);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__DropdownMenu__ = __webpack_require__(645);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__DropdownToggle__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__utils_bootstrapUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__utils_createChainedFunction__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__utils_PropTypes__ = __webpack_require__(656);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__utils_PropTypes__ = __webpack_require__(655);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__utils_ValidComponentChildren__ = __webpack_require__(26);
 
 
@@ -24253,67 +24265,67 @@ function s(value) {
 s.VERSION = '3.3.4';
 
 s.isBlank          = __webpack_require__(394);
-s.stripTags        = __webpack_require__(730);
+s.stripTags        = __webpack_require__(729);
 s.capitalize       = __webpack_require__(168);
 s.decapitalize     = __webpack_require__(395);
-s.chop             = __webpack_require__(731);
+s.chop             = __webpack_require__(730);
 s.trim             = __webpack_require__(37);
-s.clean            = __webpack_require__(732);
+s.clean            = __webpack_require__(731);
 s.cleanDiacritics  = __webpack_require__(397);
-s.count            = __webpack_require__(733);
+s.count            = __webpack_require__(732);
 s.chars            = __webpack_require__(170);
-s.swapCase         = __webpack_require__(734);
-s.escapeHTML       = __webpack_require__(735);
-s.unescapeHTML     = __webpack_require__(737);
+s.swapCase         = __webpack_require__(733);
+s.escapeHTML       = __webpack_require__(734);
+s.unescapeHTML     = __webpack_require__(736);
 s.splice           = __webpack_require__(398);
-s.insert           = __webpack_require__(739);
-s.replaceAll       = __webpack_require__(740);
-s.include          = __webpack_require__(741);
-s.join             = __webpack_require__(742);
-s.lines            = __webpack_require__(743);
-s.dedent           = __webpack_require__(744);
-s.reverse          = __webpack_require__(745);
-s.startsWith       = __webpack_require__(746);
-s.endsWith         = __webpack_require__(747);
-s.pred             = __webpack_require__(748);
-s.succ             = __webpack_require__(749);
-s.titleize         = __webpack_require__(750);
+s.insert           = __webpack_require__(738);
+s.replaceAll       = __webpack_require__(739);
+s.include          = __webpack_require__(740);
+s.join             = __webpack_require__(741);
+s.lines            = __webpack_require__(742);
+s.dedent           = __webpack_require__(743);
+s.reverse          = __webpack_require__(744);
+s.startsWith       = __webpack_require__(745);
+s.endsWith         = __webpack_require__(746);
+s.pred             = __webpack_require__(747);
+s.succ             = __webpack_require__(748);
+s.titleize         = __webpack_require__(749);
 s.camelize         = __webpack_require__(401);
 s.underscored      = __webpack_require__(402);
 s.dasherize        = __webpack_require__(403);
-s.classify         = __webpack_require__(751);
-s.humanize         = __webpack_require__(752);
-s.ltrim            = __webpack_require__(753);
+s.classify         = __webpack_require__(750);
+s.humanize         = __webpack_require__(751);
+s.ltrim            = __webpack_require__(752);
 s.rtrim            = __webpack_require__(171);
-s.truncate         = __webpack_require__(754);
-s.prune            = __webpack_require__(755);
-s.words            = __webpack_require__(756);
+s.truncate         = __webpack_require__(753);
+s.prune            = __webpack_require__(754);
+s.words            = __webpack_require__(755);
 s.pad              = __webpack_require__(102);
-s.lpad             = __webpack_require__(757);
-s.rpad             = __webpack_require__(758);
-s.lrpad            = __webpack_require__(759);
-s.sprintf          = __webpack_require__(760);
-s.vsprintf         = __webpack_require__(761);
-s.toNumber         = __webpack_require__(762);
-s.numberFormat     = __webpack_require__(763);
-s.strRight         = __webpack_require__(764);
-s.strRightBack     = __webpack_require__(765);
-s.strLeft          = __webpack_require__(766);
-s.strLeftBack      = __webpack_require__(767);
+s.lpad             = __webpack_require__(756);
+s.rpad             = __webpack_require__(757);
+s.lrpad            = __webpack_require__(758);
+s.sprintf          = __webpack_require__(759);
+s.vsprintf         = __webpack_require__(760);
+s.toNumber         = __webpack_require__(761);
+s.numberFormat     = __webpack_require__(762);
+s.strRight         = __webpack_require__(763);
+s.strRightBack     = __webpack_require__(764);
+s.strLeft          = __webpack_require__(765);
+s.strLeftBack      = __webpack_require__(766);
 s.toSentence       = __webpack_require__(407);
-s.toSentenceSerial = __webpack_require__(768);
-s.slugify          = __webpack_require__(769);
+s.toSentenceSerial = __webpack_require__(767);
+s.slugify          = __webpack_require__(768);
 s.surround         = __webpack_require__(408);
-s.quote            = __webpack_require__(770);
-s.unquote          = __webpack_require__(771);
-s.repeat           = __webpack_require__(772);
-s.naturalCmp       = __webpack_require__(773);
-s.levenshtein      = __webpack_require__(774);
-s.toBoolean        = __webpack_require__(775);
-s.exports          = __webpack_require__(776);
+s.quote            = __webpack_require__(769);
+s.unquote          = __webpack_require__(770);
+s.repeat           = __webpack_require__(771);
+s.naturalCmp       = __webpack_require__(772);
+s.levenshtein      = __webpack_require__(773);
+s.toBoolean        = __webpack_require__(774);
+s.exports          = __webpack_require__(775);
 s.escapeRegExp     = __webpack_require__(396);
-s.wrap             = __webpack_require__(777);
-s.map              = __webpack_require__(778);
+s.wrap             = __webpack_require__(776);
+s.map              = __webpack_require__(777);
 
 // Aliases
 s.strip     = s.trim;
@@ -24497,9 +24509,9 @@ exports.FilterBox = FilterBox;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var DateUtils_1 = __webpack_require__(60);
+var DateUtils_1 = __webpack_require__(61);
 var DatePicker_1 = __webpack_require__(137);
-var Calendar_1 = __webpack_require__(61);
+var Calendar_1 = __webpack_require__(62);
 var moment = __webpack_require__(1);
 exports.SELECTION_BOXES = [
     {
@@ -24615,28 +24627,29 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var classNames = __webpack_require__(8);
+var Input_1 = __webpack_require__(48);
 var Radio = (function (_super) {
     __extends(Radio, _super);
     function Radio() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Radio.prototype.handleChange = function () {
-        if (this.props.onChange) {
-            this.props.onChange(this.props.value);
-        }
-    };
     Radio.prototype.render = function () {
-        var _this = this;
         var classes = classNames('radio-option', this.props.classes);
-        return (React.createElement("div", { className: classes },
-            React.createElement("input", { id: this.props.id, name: this.props.name, type: 'radio', onChange: function () { return _this.handleChange(); }, checked: !!this.props.checked, disabled: !!this.props.disabled }),
-            React.createElement("label", { htmlFor: this.props.id }, this.props.label)));
+        return (React.createElement(Input_1.Input, __assign({}, this.props, { classes: [classes], type: 'radio' })));
     };
     return Radio;
-}(React.Component));
+}(Input_1.Input));
 exports.Radio = Radio;
 
 
@@ -25216,8 +25229,8 @@ module.exports = getEventModifierState;
 
 
 
-var DOMLazyTree = __webpack_require__(51);
-var Danger = __webpack_require__(478);
+var DOMLazyTree = __webpack_require__(52);
+var Danger = __webpack_require__(477);
 var ReactDOMComponentTree = __webpack_require__(20);
 var ReactInstrumentation = __webpack_require__(29);
 
@@ -25515,7 +25528,7 @@ var _prodInvariant = __webpack_require__(17);
 var ReactPropTypesSecret = __webpack_require__(206);
 var propTypesFactory = __webpack_require__(191);
 
-var React = __webpack_require__(48);
+var React = __webpack_require__(49);
 var PropTypes = propTypesFactory(React.isValidElement);
 
 var invariant = __webpack_require__(12);
@@ -25891,7 +25904,7 @@ module.exports = KeyEscapeUtils;
 var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(31);
-var ReactInstanceMap = __webpack_require__(65);
+var ReactInstanceMap = __webpack_require__(66);
 var ReactInstrumentation = __webpack_require__(29);
 var ReactUpdates = __webpack_require__(32);
 
@@ -26578,9 +26591,9 @@ function warning(message) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(562);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(563);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(564);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(562);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(563);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(223);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
@@ -26613,9 +26626,9 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(551);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(556);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(558);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(550);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(557);
 
 
 
@@ -27013,9 +27026,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var SetToNowButton_1 = __webpack_require__(585);
-var DateUtils_1 = __webpack_require__(60);
-var DatePickerActions_1 = __webpack_require__(52);
+var SetToNowButton_1 = __webpack_require__(584);
+var DateUtils_1 = __webpack_require__(61);
+var DatePickerActions_1 = __webpack_require__(53);
 var $ = __webpack_require__(99);
 var React = __webpack_require__(0);
 var CalendarDay_1 = __webpack_require__(390);
@@ -27103,7 +27116,7 @@ exports.DatePicker = DatePicker;
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(590);
+var aFunction = __webpack_require__(589);
 module.exports = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -27128,7 +27141,7 @@ module.exports = function(fn, that, length){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(70);
+var isObject = __webpack_require__(71);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function(it, S){
@@ -27226,11 +27239,11 @@ module.exports = function(it){
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(594);
+var _iterator = __webpack_require__(593);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(605);
+var _symbol = __webpack_require__(604);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -27255,8 +27268,8 @@ module.exports = true;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject    = __webpack_require__(54)
-  , dPs         = __webpack_require__(598)
+var anObject    = __webpack_require__(55)
+  , dPs         = __webpack_require__(597)
   , enumBugKeys = __webpack_require__(145)
   , IE_PROTO    = __webpack_require__(143)('IE_PROTO')
   , Empty       = function(){ /* empty */ }
@@ -27271,7 +27284,7 @@ var createDict = function(){
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(599).appendChild(iframe);
+  __webpack_require__(598).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -27473,7 +27486,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_all__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_all___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_all__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Button__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Button__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__ = __webpack_require__(11);
 
 
@@ -28079,12 +28092,12 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types_extra_lib_elementType__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types_extra_lib_elementType___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types_extra_lib_elementType__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__MediaBody__ = __webpack_require__(671);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__MediaHeading__ = __webpack_require__(672);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__MediaLeft__ = __webpack_require__(673);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__MediaList__ = __webpack_require__(674);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__MediaListItem__ = __webpack_require__(675);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__MediaRight__ = __webpack_require__(676);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__MediaBody__ = __webpack_require__(670);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__MediaHeading__ = __webpack_require__(671);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__MediaLeft__ = __webpack_require__(672);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__MediaList__ = __webpack_require__(673);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__MediaListItem__ = __webpack_require__(674);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__MediaRight__ = __webpack_require__(675);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__utils_bootstrapUtils__ = __webpack_require__(11);
 
 
@@ -28231,7 +28244,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prop_types__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uncontrollable__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uncontrollable__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_uncontrollable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_uncontrollable__);
 
 
@@ -29059,11 +29072,11 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var PrimaryActionConnected_1 = __webpack_require__(417);
 var PrimaryAction_1 = __webpack_require__(180);
-var SecondaryActionsConnected_1 = __webpack_require__(818);
+var SecondaryActionsConnected_1 = __webpack_require__(817);
 var SecondaryActions_1 = __webpack_require__(421);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
-var ItemFilter_1 = __webpack_require__(821);
+var ItemFilter_1 = __webpack_require__(820);
 var ActionBar = (function (_super) {
     __extends(ActionBar, _super);
     function ActionBar() {
@@ -29325,12 +29338,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Calendar_1 = __webpack_require__(61);
+var Calendar_1 = __webpack_require__(62);
 var CalendarConnected_1 = __webpack_require__(430);
 var DatesSelection_1 = __webpack_require__(184);
 var DatesSelectionConnected_1 = __webpack_require__(431);
 var OptionPicker_1 = __webpack_require__(432);
-var OptionPickerConnected_1 = __webpack_require__(845);
+var OptionPickerConnected_1 = __webpack_require__(844);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 var s = __webpack_require__(101);
@@ -29418,7 +29431,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var DatePicker_1 = __webpack_require__(137);
-var DateUtils_1 = __webpack_require__(60);
+var DateUtils_1 = __webpack_require__(61);
 var React = __webpack_require__(0);
 exports.LOWER_LIMIT_PLACEHOLDER = 'Select a start date';
 exports.UPPER_LIMIT_PLACEHOLDER = 'Select an end date';
@@ -29518,7 +29531,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ValidComponentChildren_1 = __webpack_require__(441);
 var RadioSelect = (function (_super) {
     __extends(RadioSelect, _super);
     function RadioSelect() {
@@ -29531,17 +29543,17 @@ var RadioSelect = (function (_super) {
     };
     RadioSelect.prototype.render = function () {
         var _this = this;
-        var children = ValidComponentChildren_1.ValidComponentChildren.map(this.props.children, function (child) {
+        var children = React.Children.map(this.props.children, function (child) {
             return React.cloneElement(child, {
                 name: child.props.name || _this.props.name,
                 checked: _this.props.value === child.props.value,
                 disabled: _this.props.disabled,
-                onChange: function () {
-                    child.props.onChange && child.props.onChange();
+                onClick: function (e) {
+                    child.props.onClick && child.props.onClick(e);
                     _this.handleToggle(child.props.value);
                 },
             });
-        }, null);
+        });
         return (React.createElement("div", { className: 'form-control radio-select' }, children));
     };
     return RadioSelect;
@@ -29566,7 +29578,7 @@ exports.RadioSelect = RadioSelect;
 
 
 
-var _prodInvariant = __webpack_require__(49),
+var _prodInvariant = __webpack_require__(50),
     _assign = __webpack_require__(19);
 
 var ReactNoopUpdateQueue = __webpack_require__(187);
@@ -29898,7 +29910,7 @@ var ReactCurrentOwner = __webpack_require__(31);
 var ReactComponentTreeHook = __webpack_require__(27);
 var ReactElement = __webpack_require__(44);
 
-var checkReactTypeSpec = __webpack_require__(450);
+var checkReactTypeSpec = __webpack_require__(449);
 
 var canDefineProperty = __webpack_require__(81);
 var getIteratorFn = __webpack_require__(189);
@@ -30180,7 +30192,7 @@ var invariant = __webpack_require__(12);
 var warning = __webpack_require__(13);
 
 var ReactPropTypesSecret = __webpack_require__(108);
-var checkPropTypes = __webpack_require__(454);
+var checkPropTypes = __webpack_require__(453);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -31475,7 +31487,7 @@ var DOMProperty = __webpack_require__(38);
 var ReactDOMComponentTree = __webpack_require__(20);
 var ReactInstrumentation = __webpack_require__(29);
 
-var quoteAttributeValueForBrowser = __webpack_require__(492);
+var quoteAttributeValueForBrowser = __webpack_require__(491);
 var warning = __webpack_require__(13);
 
 var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + DOMProperty.ATTRIBUTE_NAME_START_CHAR + '][' + DOMProperty.ATTRIBUTE_NAME_CHAR + ']*$');
@@ -31943,11 +31955,11 @@ module.exports = ReactDOMSelect;
 var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(19);
 
-var ReactCompositeComponent = __webpack_require__(500);
+var ReactCompositeComponent = __webpack_require__(499);
 var ReactEmptyComponent = __webpack_require__(210);
 var ReactHostComponent = __webpack_require__(211);
 
-var getNextDebugID = __webpack_require__(503);
+var getNextDebugID = __webpack_require__(502);
 var invariant = __webpack_require__(12);
 var warning = __webpack_require__(13);
 
@@ -32078,7 +32090,7 @@ module.exports = instantiateReactComponent;
 
 var _prodInvariant = __webpack_require__(17);
 
-var React = __webpack_require__(48);
+var React = __webpack_require__(49);
 
 var invariant = __webpack_require__(12);
 
@@ -32233,9 +32245,9 @@ module.exports = ReactHostComponent;
 var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(31);
-var REACT_ELEMENT_TYPE = __webpack_require__(504);
+var REACT_ELEMENT_TYPE = __webpack_require__(503);
 
-var getIteratorFn = __webpack_require__(505);
+var getIteratorFn = __webpack_require__(504);
 var invariant = __webpack_require__(12);
 var KeyEscapeUtils = __webpack_require__(121);
 var warning = __webpack_require__(13);
@@ -32502,9 +32514,9 @@ module.exports = EventListener;
 
 
 
-var ReactDOMSelection = __webpack_require__(517);
+var ReactDOMSelection = __webpack_require__(516);
 
-var containsNode = __webpack_require__(519);
+var containsNode = __webpack_require__(518);
 var focusNode = __webpack_require__(203);
 var getActiveElement = __webpack_require__(215);
 
@@ -32676,19 +32688,19 @@ module.exports = getActiveElement;
 
 var _prodInvariant = __webpack_require__(17);
 
-var DOMLazyTree = __webpack_require__(51);
+var DOMLazyTree = __webpack_require__(52);
 var DOMProperty = __webpack_require__(38);
-var React = __webpack_require__(48);
+var React = __webpack_require__(49);
 var ReactBrowserEventEmitter = __webpack_require__(88);
 var ReactCurrentOwner = __webpack_require__(31);
 var ReactDOMComponentTree = __webpack_require__(20);
-var ReactDOMContainerInfo = __webpack_require__(534);
-var ReactDOMFeatureFlags = __webpack_require__(535);
+var ReactDOMContainerInfo = __webpack_require__(533);
+var ReactDOMFeatureFlags = __webpack_require__(534);
 var ReactFeatureFlags = __webpack_require__(198);
-var ReactInstanceMap = __webpack_require__(65);
+var ReactInstanceMap = __webpack_require__(66);
 var ReactInstrumentation = __webpack_require__(29);
-var ReactMarkupChecksum = __webpack_require__(536);
-var ReactReconciler = __webpack_require__(50);
+var ReactMarkupChecksum = __webpack_require__(535);
+var ReactReconciler = __webpack_require__(51);
 var ReactUpdateQueue = __webpack_require__(122);
 var ReactUpdates = __webpack_require__(32);
 
@@ -33266,13 +33278,13 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = connectAdvanced;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__ = __webpack_require__(545);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(547);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(546);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(218);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -33573,7 +33585,7 @@ selectorFactory) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(558);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_symbol_observable__);
 
 
@@ -33829,7 +33841,7 @@ var ActionTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(552);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(551);
 
 
 /** Built-in value references. */
@@ -34098,13 +34110,13 @@ exports.toggleRow = function (id) { return ({
 /* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(588), __esModule: true };
+module.exports = { "default": __webpack_require__(587), __esModule: true };
 
 /***/ }),
 /* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(55) && !__webpack_require__(71)(function(){
+module.exports = !__webpack_require__(56) && !__webpack_require__(72)(function(){
   return Object.defineProperty(__webpack_require__(231)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
 
@@ -34112,7 +34124,7 @@ module.exports = !__webpack_require__(55) && !__webpack_require__(71)(function()
 /* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(70)
+var isObject = __webpack_require__(71)
   , document = __webpack_require__(41).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
@@ -34126,7 +34138,7 @@ module.exports = function(it){
 
 var has          = __webpack_require__(47)
   , toIObject    = __webpack_require__(42)
-  , arrayIndexOf = __webpack_require__(592)(false)
+  , arrayIndexOf = __webpack_require__(591)(false)
   , IE_PROTO     = __webpack_require__(143)('IE_PROTO');
 
 module.exports = function(object, names){
@@ -34169,7 +34181,7 @@ module.exports = function(it){
 
 "use strict";
 
-var $at  = __webpack_require__(596)(true);
+var $at  = __webpack_require__(595)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(236)(String, 'String', function(iterated){
@@ -34195,12 +34207,12 @@ __webpack_require__(236)(String, 'String', function(iterated){
 var LIBRARY        = __webpack_require__(149)
   , $export        = __webpack_require__(40)
   , redefine       = __webpack_require__(237)
-  , hide           = __webpack_require__(53)
+  , hide           = __webpack_require__(54)
   , has            = __webpack_require__(47)
-  , Iterators      = __webpack_require__(74)
-  , $iterCreate    = __webpack_require__(597)
+  , Iterators      = __webpack_require__(75)
+  , $iterCreate    = __webpack_require__(596)
   , setToStringTag = __webpack_require__(151)
-  , getPrototypeOf = __webpack_require__(600)
+  , getPrototypeOf = __webpack_require__(599)
   , ITERATOR       = __webpack_require__(34)('iterator')
   , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
   , FF_ITERATOR    = '@@iterator'
@@ -34266,7 +34278,7 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
 /* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(54);
 
 /***/ }),
 /* 238 */
@@ -34284,15 +34296,15 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
 /* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE            = __webpack_require__(73)
-  , createDesc     = __webpack_require__(72)
+var pIE            = __webpack_require__(74)
+  , createDesc     = __webpack_require__(73)
   , toIObject      = __webpack_require__(42)
   , toPrimitive    = __webpack_require__(139)
   , has            = __webpack_require__(47)
   , IE8_DOM_DEFINE = __webpack_require__(230)
   , gOPD           = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(55) ? gOPD : function getOwnPropertyDescriptor(O, P){
+exports.f = __webpack_require__(56) ? gOPD : function getOwnPropertyDescriptor(O, P){
   O = toIObject(O);
   P = toPrimitive(P, true);
   if(IE8_DOM_DEFINE)try {
@@ -34444,15 +34456,15 @@ PanelGroup.defaultProps = defaultProps;
 /* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(623), __esModule: true };
+module.exports = { "default": __webpack_require__(622), __esModule: true };
 
 /***/ }),
 /* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getKeys   = __webpack_require__(56)
+var getKeys   = __webpack_require__(57)
   , toIObject = __webpack_require__(42)
-  , isEnum    = __webpack_require__(73).f;
+  , isEnum    = __webpack_require__(74).f;
 module.exports = function(isEntries){
   return function(it){
     var O      = toIObject(it)
@@ -34584,7 +34596,7 @@ BreadcrumbItem.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_TransitionEvents__ = __webpack_require__(633);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_TransitionEvents__ = __webpack_require__(632);
 
 
 
@@ -34739,7 +34751,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = camelizeStyleName;
 
-var _camelize = __webpack_require__(638);
+var _camelize = __webpack_require__(637);
 
 var _camelize2 = _interopRequireDefault(_camelize);
 
@@ -35238,7 +35250,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = activeElement;
 
-var _ownerDocument = __webpack_require__(58);
+var _ownerDocument = __webpack_require__(59);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -35266,7 +35278,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _contains = __webpack_require__(59);
+var _contains = __webpack_require__(60);
 
 var _contains2 = _interopRequireDefault(_contains);
 
@@ -35286,7 +35298,7 @@ var _addEventListener = __webpack_require__(251);
 
 var _addEventListener2 = _interopRequireDefault(_addEventListener);
 
-var _ownerDocument = __webpack_require__(77);
+var _ownerDocument = __webpack_require__(78);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -35487,7 +35499,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_classnames__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Button__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Button__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SafeAnchor__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__ = __webpack_require__(11);
 
@@ -35661,7 +35673,7 @@ Grid.defaultProps = defaultProps;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
@@ -35948,7 +35960,7 @@ var _componentOrElement = __webpack_require__(162);
 
 var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
 
-var _ownerDocument = __webpack_require__(77);
+var _ownerDocument = __webpack_require__(78);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -36108,7 +36120,7 @@ var _isWindow = __webpack_require__(98);
 
 var _isWindow2 = _interopRequireDefault(_isWindow);
 
-var _ownerDocument = __webpack_require__(58);
+var _ownerDocument = __webpack_require__(59);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -37088,7 +37100,7 @@ NavItem.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_overlays_lib_Overlay__ = __webpack_require__(696);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_overlays_lib_Overlay__ = __webpack_require__(695);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_overlays_lib_Overlay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react_overlays_lib_Overlay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_prop_types_extra_lib_elementType__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_prop_types_extra_lib_elementType___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_prop_types_extra_lib_elementType__);
@@ -37226,7 +37238,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = offset;
 
-var _contains = __webpack_require__(59);
+var _contains = __webpack_require__(60);
 
 var _contains2 = _interopRequireDefault(_contains);
 
@@ -37234,7 +37246,7 @@ var _isWindow = __webpack_require__(98);
 
 var _isWindow2 = _interopRequireDefault(_isWindow);
 
-var _ownerDocument = __webpack_require__(58);
+var _ownerDocument = __webpack_require__(59);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -37861,7 +37873,7 @@ TabPane.childContextTypes = childContextTypes;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Button__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Button__ = __webpack_require__(76);
 
 
 
@@ -49190,8 +49202,8 @@ var DropdownSearchActions_1 = __webpack_require__(100);
 var _ = __webpack_require__(9);
 var s = __webpack_require__(101);
 var InputUtils_1 = __webpack_require__(172);
-var MultiSelectDropdownSearchReducer_1 = __webpack_require__(779);
-var CloneUtils_1 = __webpack_require__(780);
+var MultiSelectDropdownSearchReducer_1 = __webpack_require__(778);
+var CloneUtils_1 = __webpack_require__(779);
 exports.defaultSelectedOptionPlaceholder = {
     value: 'Select an option',
     selected: true,
@@ -49988,11 +50000,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Svg_1 = __webpack_require__(23);
-var FacetMoreToggleConnected_1 = __webpack_require__(801);
+var FacetMoreToggleConnected_1 = __webpack_require__(800);
 var FacetMoreToggle_1 = __webpack_require__(412);
-var FacetMoreRowsConnected_1 = __webpack_require__(802);
+var FacetMoreRowsConnected_1 = __webpack_require__(801);
 var FacetMoreRows_1 = __webpack_require__(413);
-var FacetRow_1 = __webpack_require__(803);
+var FacetRow_1 = __webpack_require__(802);
 var Tooltip_1 = __webpack_require__(39);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
@@ -50221,10 +50233,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var LoadingConnected_1 = __webpack_require__(810);
+var LoadingConnected_1 = __webpack_require__(809);
 var Loading_1 = __webpack_require__(173);
-var NavigationPaginationConnected_1 = __webpack_require__(811);
-var NavigationPerPageConnected_1 = __webpack_require__(813);
+var NavigationPaginationConnected_1 = __webpack_require__(810);
+var NavigationPerPageConnected_1 = __webpack_require__(812);
 var NavigationPagination_1 = __webpack_require__(415);
 var NavigationPerPage_1 = __webpack_require__(416);
 var React = __webpack_require__(0);
@@ -50290,7 +50302,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Svg_1 = __webpack_require__(23);
-var NavigationPaginationSelect_1 = __webpack_require__(812);
+var NavigationPaginationSelect_1 = __webpack_require__(811);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 exports.NUMBER_OF_PAGES_SHOWING = 7;
@@ -50374,7 +50386,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var NavigationPerPageSelect_1 = __webpack_require__(814);
+var NavigationPerPageSelect_1 = __webpack_require__(813);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 exports.PER_PAGE_NUMBERS = [10, 20, 30];
@@ -50574,7 +50586,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var PrimaryAction_1 = __webpack_require__(180);
 var PrimaryActionConnected_1 = __webpack_require__(417);
-var ActionsDropdownConnected_1 = __webpack_require__(819);
+var ActionsDropdownConnected_1 = __webpack_require__(818);
 var ActionsDropdown_1 = __webpack_require__(422);
 var React = __webpack_require__(0);
 var SecondaryActions = (function (_super) {
@@ -50618,7 +50630,7 @@ var Svg_1 = __webpack_require__(23);
 var LinkAction_1 = __webpack_require__(418);
 var TriggerAction_1 = __webpack_require__(181);
 var TriggerActionConnected_1 = __webpack_require__(420);
-var DropdownConnected_1 = __webpack_require__(820);
+var DropdownConnected_1 = __webpack_require__(819);
 var Dropdown_1 = __webpack_require__(423);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
@@ -50734,7 +50746,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ActionBar_1 = __webpack_require__(179);
 var ReduxUtils_1 = __webpack_require__(14);
 var ActionBarActions_1 = __webpack_require__(135);
-var InlinePromptConnected_1 = __webpack_require__(823);
+var InlinePromptConnected_1 = __webpack_require__(822);
 var ItemFilterActions_1 = __webpack_require__(166);
 var react_redux_1 = __webpack_require__(16);
 var React = __webpack_require__(0);
@@ -50791,7 +50803,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var TableError_1 = __webpack_require__(826);
+var TableError_1 = __webpack_require__(825);
 var React = __webpack_require__(0);
 var $ = __webpack_require__(99);
 var TableCollapsibleRow = (function (_super) {
@@ -50850,7 +50862,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var TableCollapsibleRowToggle_1 = __webpack_require__(827);
+var TableCollapsibleRowToggle_1 = __webpack_require__(826);
 var React = __webpack_require__(0);
 var TableHeadingRow = (function (_super) {
     __extends(TableHeadingRow, _super);
@@ -50904,7 +50916,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var TableHeaderCell_1 = __webpack_require__(832);
+var TableHeaderCell_1 = __webpack_require__(831);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 var TableHeader = (function (_super) {
@@ -51017,9 +51029,9 @@ exports.OptionsCycleConnected = react_redux_1.connect(mapStateToProps, mapDispat
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Calendar_1 = __webpack_require__(61);
-var DatePickerActions_1 = __webpack_require__(52);
-var OptionPickerActions_1 = __webpack_require__(79);
+var Calendar_1 = __webpack_require__(62);
+var DatePickerActions_1 = __webpack_require__(53);
+var OptionPickerActions_1 = __webpack_require__(80);
 var OptionsCycleActions_1 = __webpack_require__(89);
 var ReduxUtils_1 = __webpack_require__(14);
 var react_redux_1 = __webpack_require__(16);
@@ -51068,9 +51080,9 @@ exports.CalendarConnected = react_redux_1.connect(mapStateToProps, mapDispatchTo
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var DatesSelection_1 = __webpack_require__(184);
-var DatePickerActions_1 = __webpack_require__(52);
+var DatePickerActions_1 = __webpack_require__(53);
 var ReduxUtils_1 = __webpack_require__(14);
-var OptionPickerActions_1 = __webpack_require__(79);
+var OptionPickerActions_1 = __webpack_require__(80);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var mapStateToProps = function (state, ownProps) {
@@ -51128,7 +51140,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Option_1 = __webpack_require__(844);
+var Option_1 = __webpack_require__(843);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 var OptionPicker = (function (_super) {
@@ -51171,12 +51183,12 @@ exports.OptionPicker = OptionPicker;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var DatePickerDropdown_1 = __webpack_require__(850);
+var DatePickerDropdown_1 = __webpack_require__(849);
 var DropdownActions_1 = __webpack_require__(136);
-var DatePickerActions_1 = __webpack_require__(52);
-var OptionPickerActions_1 = __webpack_require__(79);
+var DatePickerActions_1 = __webpack_require__(53);
+var OptionPickerActions_1 = __webpack_require__(80);
 var OptionsCycleActions_1 = __webpack_require__(89);
-var Calendar_1 = __webpack_require__(61);
+var Calendar_1 = __webpack_require__(62);
 var ReduxUtils_1 = __webpack_require__(14);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
@@ -51373,7 +51385,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(871);
+var	fixUrls = __webpack_require__(870);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -52057,17 +52069,49 @@ exports.DropdownSearch = DropdownSearch;
 
 "use strict";
 
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ValidComponentChildren = (function () {
-    function ValidComponentChildren() {
+var ValidComponentChildren_1 = __webpack_require__(894);
+var classNames = __webpack_require__(8);
+var ChildForm = (function (_super) {
+    __extends(ChildForm, _super);
+    function ChildForm() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    ValidComponentChildren.map = function (children, func, context) {
-        return React.Children.map(children, function (child) { return React.isValidElement(child) ? func.call(context, child) : child; });
+    ChildForm.prototype.handleClick = function (e) {
+        if (this.props.onClick) {
+            this.props.onClick(e);
+        }
     };
-    return ValidComponentChildren;
-}());
-exports.ValidComponentChildren = ValidComponentChildren;
+    ChildForm.prototype.render = function () {
+        var _this = this;
+        var classes = classNames('coveo-parent', this.props.classes);
+        var parentElement = React.cloneElement(this.props.parentControl, {
+            checked: this.props.checked,
+            onClick: function (e) { return _this.handleClick(e); },
+        }, null);
+        var children = ValidComponentChildren_1.ValidComponentChildren.map(this.props.children, function (child) {
+            return React.cloneElement(child, {
+                disabled: !_this.props.checked
+            });
+        }, null);
+        return (React.createElement("div", { className: classes },
+            parentElement,
+            React.createElement("div", { className: 'coveo-child' }, children)));
+    };
+    return ChildForm;
+}(React.Component));
+exports.ChildForm = ChildForm;
 
 
 /***/ }),
@@ -52086,39 +52130,41 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ValidComponentChildren_1 = __webpack_require__(441);
 var classNames = __webpack_require__(8);
-var ChildForm = (function (_super) {
-    __extends(ChildForm, _super);
-    function ChildForm() {
+var Input_1 = __webpack_require__(48);
+var Checkbox = (function (_super) {
+    __extends(Checkbox, _super);
+    function Checkbox() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    ChildForm.prototype.handleChange = function (value) {
-        if (this.props.onChange) {
-            this.props.onChange(value);
+    Checkbox.prototype.onClick = function (e) {
+        var onClick = this.props.onClick;
+        if (onClick) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.props.onClick(e);
         }
     };
-    ChildForm.prototype.render = function () {
+    Checkbox.prototype.render = function () {
         var _this = this;
-        var classes = classNames('coveo-parent', this.props.classes);
-        var parentElement = React.cloneElement(this.props.parentControl, {
-            checked: this.props.active,
-            onChange: function (value) { return _this.handleChange(value); },
-        }, null);
-        var children = ValidComponentChildren_1.ValidComponentChildren.map(this.props.children, function (child) {
-            return React.cloneElement(child, {
-                disabled: !_this.props.active
-            });
-        }, null);
-        return (React.createElement("div", { className: classes },
-            parentElement,
-            React.createElement("div", { className: 'coveo-child' }, children)));
+        var classes = classNames('coveo-checkbox-label', this.props.classes);
+        var innerInputClasses = classNames('coveo-checkbox', this.props.innerInputClasses);
+        var labelClasses = classNames('label', this.props.labelClasses);
+        return (React.createElement(Input_1.Input, __assign({}, this.props, { classes: [classes], innerInputClasses: [innerInputClasses], type: 'checkbox', onClick: function (e) { return _this.onClick(e); }, labelClasses: [labelClasses], readOnly: true })));
     };
-    return ChildForm;
-}(React.Component));
-exports.ChildForm = ChildForm;
+    return Checkbox;
+}(Input_1.Input));
+exports.Checkbox = Checkbox;
 
 
 /***/ }),
@@ -52139,99 +52185,55 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var classNames = __webpack_require__(8);
-var Checkbox = (function (_super) {
-    __extends(Checkbox, _super);
-    function Checkbox() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Checkbox.prototype.handleClick = function (e) {
-        if (this.props.onChange) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.props.onChange();
-        }
-    };
-    Checkbox.prototype.render = function () {
-        var _this = this;
-        var classes = classNames('coveo-checkbox-label', this.props.classes);
-        return (React.createElement("label", { className: classes, onClick: function (e) { return _this.handleClick(e); } },
-            React.createElement("input", { type: 'checkbox', className: 'coveo-checkbox', disabled: !!this.props.disabled, checked: !!this.props.checked, readOnly: true }),
-            React.createElement("button", { type: 'button' }),
-            React.createElement("span", { className: 'label' }, this.props.label)));
-    };
-    return Checkbox;
-}(React.Component));
-exports.Checkbox = Checkbox;
-
-
-/***/ }),
-/* 444 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
 var react_dom_1 = __webpack_require__(22);
 var react_redux_1 = __webpack_require__(16);
-var ReactVaporStore_1 = __webpack_require__(67);
+var ReactVaporStore_1 = __webpack_require__(68);
 var Svg_1 = __webpack_require__(23);
-var UserFeedbackExample_1 = __webpack_require__(781);
-var SyncFeedbackExample_1 = __webpack_require__(784);
-var MembersExample_1 = __webpack_require__(786);
-var LastUpdatedExamples_1 = __webpack_require__(793);
-var LastUpdatedConnectedExamples_1 = __webpack_require__(794);
-var LoadingExamples_1 = __webpack_require__(796);
-var FilterBoxExamples_1 = __webpack_require__(797);
-var FilterBoxConnectedExamples_1 = __webpack_require__(798);
-var FacetConnectedExamples_1 = __webpack_require__(799);
-var FacetExamples_1 = __webpack_require__(804);
-var ModalConnectedExamples_1 = __webpack_require__(805);
-var NavigationExamples_1 = __webpack_require__(809);
-var NavigationConnectedExamples_1 = __webpack_require__(815);
-var ActionBarExamples_1 = __webpack_require__(817);
-var ActionBarConnectedExamples_1 = __webpack_require__(822);
-var TableRowExamples_1 = __webpack_require__(825);
-var TableRowConnectedExamples_1 = __webpack_require__(828);
-var TableHeaderExamples_1 = __webpack_require__(831);
-var ItemFilterExamples_1 = __webpack_require__(833);
-var ItemFilterConnectedExamples_1 = __webpack_require__(834);
-var TableEmptyRowExamples_1 = __webpack_require__(835);
-var OptionsCycleExamples_1 = __webpack_require__(837);
-var SubNavigationExamples_1 = __webpack_require__(838);
-var SubNavigationConnectedExamples_1 = __webpack_require__(839);
-var OptionsCycleConnectedExamples_1 = __webpack_require__(841);
-var CalendarConnectedExamples_1 = __webpack_require__(842);
-var DatePickerBoxExamples_1 = __webpack_require__(843);
-var DatesSelectionExamples_1 = __webpack_require__(846);
-var DatesSelectionConnectedExamples_1 = __webpack_require__(847);
-var DatePickerBoxConnectedExamples_1 = __webpack_require__(848);
-var DatePickerDropdownConnectedExamples_1 = __webpack_require__(849);
-var DatePickerDropdownConnectedSingleDateExamples_1 = __webpack_require__(851);
-var ModalExamples_1 = __webpack_require__(852);
-var TabConnectedExample_1 = __webpack_require__(853);
-var ModalPromptExamples_1 = __webpack_require__(860);
-var MultilineInputExamples_1 = __webpack_require__(862);
-var TooltipExamples_1 = __webpack_require__(868);
-__webpack_require__(869);
-__webpack_require__(872);
-var ButtonExamples_1 = __webpack_require__(877);
-var BlankSlateExample_1 = __webpack_require__(878);
-var ChosenSelectExamples_1 = __webpack_require__(880);
-var DropdownSearchExamples_1 = __webpack_require__(883);
-var RadioExamples_1 = __webpack_require__(889);
-var ChildFormExamples_1 = __webpack_require__(893);
+var UserFeedbackExample_1 = __webpack_require__(780);
+var SyncFeedbackExample_1 = __webpack_require__(783);
+var MembersExample_1 = __webpack_require__(785);
+var LastUpdatedExamples_1 = __webpack_require__(792);
+var LastUpdatedConnectedExamples_1 = __webpack_require__(793);
+var LoadingExamples_1 = __webpack_require__(795);
+var FilterBoxExamples_1 = __webpack_require__(796);
+var FilterBoxConnectedExamples_1 = __webpack_require__(797);
+var FacetConnectedExamples_1 = __webpack_require__(798);
+var FacetExamples_1 = __webpack_require__(803);
+var ModalConnectedExamples_1 = __webpack_require__(804);
+var NavigationExamples_1 = __webpack_require__(808);
+var NavigationConnectedExamples_1 = __webpack_require__(814);
+var ActionBarExamples_1 = __webpack_require__(816);
+var ActionBarConnectedExamples_1 = __webpack_require__(821);
+var TableRowExamples_1 = __webpack_require__(824);
+var TableRowConnectedExamples_1 = __webpack_require__(827);
+var TableHeaderExamples_1 = __webpack_require__(830);
+var ItemFilterExamples_1 = __webpack_require__(832);
+var ItemFilterConnectedExamples_1 = __webpack_require__(833);
+var TableEmptyRowExamples_1 = __webpack_require__(834);
+var OptionsCycleExamples_1 = __webpack_require__(836);
+var SubNavigationExamples_1 = __webpack_require__(837);
+var SubNavigationConnectedExamples_1 = __webpack_require__(838);
+var OptionsCycleConnectedExamples_1 = __webpack_require__(840);
+var CalendarConnectedExamples_1 = __webpack_require__(841);
+var DatePickerBoxExamples_1 = __webpack_require__(842);
+var DatesSelectionExamples_1 = __webpack_require__(845);
+var DatesSelectionConnectedExamples_1 = __webpack_require__(846);
+var DatePickerBoxConnectedExamples_1 = __webpack_require__(847);
+var DatePickerDropdownConnectedExamples_1 = __webpack_require__(848);
+var DatePickerDropdownConnectedSingleDateExamples_1 = __webpack_require__(850);
+var ModalExamples_1 = __webpack_require__(851);
+var TabConnectedExample_1 = __webpack_require__(852);
+var ModalPromptExamples_1 = __webpack_require__(859);
+var MultilineInputExamples_1 = __webpack_require__(861);
+var TooltipExamples_1 = __webpack_require__(867);
+__webpack_require__(868);
+__webpack_require__(871);
+var ButtonExamples_1 = __webpack_require__(876);
+var BlankSlateExample_1 = __webpack_require__(877);
+var ChosenSelectExamples_1 = __webpack_require__(879);
+var DropdownSearchExamples_1 = __webpack_require__(882);
+var RadioExamples_1 = __webpack_require__(888);
+var ChildFormExamples_1 = __webpack_require__(892);
 var CheckboxExamples_1 = __webpack_require__(896);
 var InputExamples_1 = __webpack_require__(898);
 var App = (function (_super) {
@@ -52305,7 +52307,7 @@ react_dom_1.render(React.createElement(App, null), document.getElementById('App'
 
 
 /***/ }),
-/* 445 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52321,11 +52323,11 @@ react_dom_1.render(React.createElement(App, null), document.getElementById('App'
 
 
 
-var PooledClass = __webpack_require__(446);
+var PooledClass = __webpack_require__(445);
 var ReactElement = __webpack_require__(44);
 
 var emptyFunction = __webpack_require__(28);
-var traverseAllChildren = __webpack_require__(447);
+var traverseAllChildren = __webpack_require__(446);
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 var fourArgumentPooler = PooledClass.fourArgumentPooler;
@@ -52501,7 +52503,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 /***/ }),
-/* 446 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52518,7 +52520,7 @@ module.exports = ReactChildren;
 
 
 
-var _prodInvariant = __webpack_require__(49);
+var _prodInvariant = __webpack_require__(50);
 
 var invariant = __webpack_require__(12);
 
@@ -52619,7 +52621,7 @@ module.exports = PooledClass;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 447 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52635,14 +52637,14 @@ module.exports = PooledClass;
 
 
 
-var _prodInvariant = __webpack_require__(49);
+var _prodInvariant = __webpack_require__(50);
 
 var ReactCurrentOwner = __webpack_require__(31);
 var REACT_ELEMENT_TYPE = __webpack_require__(188);
 
 var getIteratorFn = __webpack_require__(189);
 var invariant = __webpack_require__(12);
-var KeyEscapeUtils = __webpack_require__(448);
+var KeyEscapeUtils = __webpack_require__(447);
 var warning = __webpack_require__(13);
 
 var SEPARATOR = '.';
@@ -52801,7 +52803,7 @@ module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 448 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52865,7 +52867,7 @@ var KeyEscapeUtils = {
 module.exports = KeyEscapeUtils;
 
 /***/ }),
-/* 449 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53040,7 +53042,7 @@ module.exports = ReactDOMFactories;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 450 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53056,10 +53058,10 @@ module.exports = ReactDOMFactories;
 
 
 
-var _prodInvariant = __webpack_require__(49);
+var _prodInvariant = __webpack_require__(50);
 
-var ReactPropTypeLocationNames = __webpack_require__(451);
-var ReactPropTypesSecret = __webpack_require__(452);
+var ReactPropTypeLocationNames = __webpack_require__(450);
+var ReactPropTypesSecret = __webpack_require__(451);
 
 var invariant = __webpack_require__(12);
 var warning = __webpack_require__(13);
@@ -53133,7 +53135,7 @@ module.exports = checkReactTypeSpec;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 451 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53164,7 +53166,7 @@ module.exports = ReactPropTypeLocationNames;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 452 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53186,7 +53188,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 453 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53210,7 +53212,7 @@ var factory = __webpack_require__(191);
 module.exports = factory(isValidElement);
 
 /***/ }),
-/* 454 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53279,7 +53281,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 455 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53298,7 +53300,7 @@ module.exports = checkPropTypes;
 module.exports = '15.6.1';
 
 /***/ }),
-/* 456 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53321,12 +53323,12 @@ var _require2 = __webpack_require__(44),
     isValidElement = _require2.isValidElement;
 
 var ReactNoopUpdateQueue = __webpack_require__(187);
-var factory = __webpack_require__(457);
+var factory = __webpack_require__(456);
 
 module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
 
 /***/ }),
-/* 457 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54206,7 +54208,7 @@ module.exports = factory;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 458 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54221,7 +54223,7 @@ module.exports = factory;
  */
 
 
-var _prodInvariant = __webpack_require__(49);
+var _prodInvariant = __webpack_require__(50);
 
 var ReactElement = __webpack_require__(44);
 
@@ -54250,7 +54252,7 @@ module.exports = onlyChild;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 459 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54269,15 +54271,15 @@ module.exports = onlyChild;
 
 
 var ReactDOMComponentTree = __webpack_require__(20);
-var ReactDefaultInjection = __webpack_require__(460);
+var ReactDefaultInjection = __webpack_require__(459);
 var ReactMount = __webpack_require__(216);
-var ReactReconciler = __webpack_require__(50);
+var ReactReconciler = __webpack_require__(51);
 var ReactUpdates = __webpack_require__(32);
-var ReactVersion = __webpack_require__(538);
+var ReactVersion = __webpack_require__(537);
 
-var findDOMNode = __webpack_require__(539);
+var findDOMNode = __webpack_require__(538);
 var getHostComponentFromComposite = __webpack_require__(217);
-var renderSubtreeIntoContainer = __webpack_require__(540);
+var renderSubtreeIntoContainer = __webpack_require__(539);
 var warning = __webpack_require__(13);
 
 ReactDefaultInjection.inject();
@@ -54354,9 +54356,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 if (process.env.NODE_ENV !== 'production') {
   var ReactInstrumentation = __webpack_require__(29);
-  var ReactDOMUnknownPropertyHook = __webpack_require__(541);
-  var ReactDOMNullInputValuePropHook = __webpack_require__(542);
-  var ReactDOMInvalidARIAHook = __webpack_require__(543);
+  var ReactDOMUnknownPropertyHook = __webpack_require__(540);
+  var ReactDOMNullInputValuePropHook = __webpack_require__(541);
+  var ReactDOMInvalidARIAHook = __webpack_require__(542);
 
   ReactInstrumentation.debugTool.addHook(ReactDOMUnknownPropertyHook);
   ReactInstrumentation.debugTool.addHook(ReactDOMNullInputValuePropHook);
@@ -54367,7 +54369,7 @@ module.exports = ReactDOM;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 460 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54383,25 +54385,25 @@ module.exports = ReactDOM;
 
 
 
-var ARIADOMPropertyConfig = __webpack_require__(461);
-var BeforeInputEventPlugin = __webpack_require__(462);
-var ChangeEventPlugin = __webpack_require__(466);
-var DefaultEventPluginOrder = __webpack_require__(474);
-var EnterLeaveEventPlugin = __webpack_require__(475);
-var HTMLDOMPropertyConfig = __webpack_require__(476);
-var ReactComponentBrowserEnvironment = __webpack_require__(477);
-var ReactDOMComponent = __webpack_require__(483);
+var ARIADOMPropertyConfig = __webpack_require__(460);
+var BeforeInputEventPlugin = __webpack_require__(461);
+var ChangeEventPlugin = __webpack_require__(465);
+var DefaultEventPluginOrder = __webpack_require__(473);
+var EnterLeaveEventPlugin = __webpack_require__(474);
+var HTMLDOMPropertyConfig = __webpack_require__(475);
+var ReactComponentBrowserEnvironment = __webpack_require__(476);
+var ReactDOMComponent = __webpack_require__(482);
 var ReactDOMComponentTree = __webpack_require__(20);
-var ReactDOMEmptyComponent = __webpack_require__(509);
-var ReactDOMTreeTraversal = __webpack_require__(510);
-var ReactDOMTextComponent = __webpack_require__(511);
-var ReactDefaultBatchingStrategy = __webpack_require__(512);
-var ReactEventListener = __webpack_require__(513);
-var ReactInjection = __webpack_require__(515);
-var ReactReconcileTransaction = __webpack_require__(516);
-var SVGDOMPropertyConfig = __webpack_require__(522);
-var SelectEventPlugin = __webpack_require__(523);
-var SimpleEventPlugin = __webpack_require__(524);
+var ReactDOMEmptyComponent = __webpack_require__(508);
+var ReactDOMTreeTraversal = __webpack_require__(509);
+var ReactDOMTextComponent = __webpack_require__(510);
+var ReactDefaultBatchingStrategy = __webpack_require__(511);
+var ReactEventListener = __webpack_require__(512);
+var ReactInjection = __webpack_require__(514);
+var ReactReconcileTransaction = __webpack_require__(515);
+var SVGDOMPropertyConfig = __webpack_require__(521);
+var SelectEventPlugin = __webpack_require__(522);
+var SimpleEventPlugin = __webpack_require__(523);
 
 var alreadyInjected = false;
 
@@ -54458,7 +54460,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 461 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54537,7 +54539,7 @@ var ARIADOMPropertyConfig = {
 module.exports = ARIADOMPropertyConfig;
 
 /***/ }),
-/* 462 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54553,11 +54555,11 @@ module.exports = ARIADOMPropertyConfig;
 
 
 
-var EventPropagators = __webpack_require__(62);
+var EventPropagators = __webpack_require__(63);
 var ExecutionEnvironment = __webpack_require__(24);
-var FallbackCompositionState = __webpack_require__(463);
-var SyntheticCompositionEvent = __webpack_require__(464);
-var SyntheticInputEvent = __webpack_require__(465);
+var FallbackCompositionState = __webpack_require__(462);
+var SyntheticCompositionEvent = __webpack_require__(463);
+var SyntheticInputEvent = __webpack_require__(464);
 
 var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
 var START_KEYCODE = 229;
@@ -54926,7 +54928,7 @@ var BeforeInputEventPlugin = {
 module.exports = BeforeInputEventPlugin;
 
 /***/ }),
-/* 463 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55026,7 +55028,7 @@ PooledClass.addPoolingTo(FallbackCompositionState);
 module.exports = FallbackCompositionState;
 
 /***/ }),
-/* 464 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55067,7 +55069,7 @@ SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface
 module.exports = SyntheticCompositionEvent;
 
 /***/ }),
-/* 465 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55109,7 +55111,7 @@ SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 module.exports = SyntheticInputEvent;
 
 /***/ }),
-/* 466 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55125,8 +55127,8 @@ module.exports = SyntheticInputEvent;
 
 
 
-var EventPluginHub = __webpack_require__(63);
-var EventPropagators = __webpack_require__(62);
+var EventPluginHub = __webpack_require__(64);
+var EventPropagators = __webpack_require__(63);
 var ExecutionEnvironment = __webpack_require__(24);
 var ReactDOMComponentTree = __webpack_require__(20);
 var ReactUpdates = __webpack_require__(32);
@@ -55426,7 +55428,7 @@ var ChangeEventPlugin = {
 module.exports = ChangeEventPlugin;
 
 /***/ }),
-/* 467 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55443,7 +55445,7 @@ module.exports = ChangeEventPlugin;
 
 
 
-var ReactOwner = __webpack_require__(468);
+var ReactOwner = __webpack_require__(467);
 
 var ReactRef = {};
 
@@ -55520,7 +55522,7 @@ ReactRef.detachRefs = function (instance, element) {
 module.exports = ReactRef;
 
 /***/ }),
-/* 468 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55619,7 +55621,7 @@ module.exports = ReactOwner;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 469 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55636,12 +55638,12 @@ module.exports = ReactOwner;
 
 
 
-var ReactInvalidSetStateWarningHook = __webpack_require__(470);
-var ReactHostOperationHistoryHook = __webpack_require__(471);
+var ReactInvalidSetStateWarningHook = __webpack_require__(469);
+var ReactHostOperationHistoryHook = __webpack_require__(470);
 var ReactComponentTreeHook = __webpack_require__(27);
 var ExecutionEnvironment = __webpack_require__(24);
 
-var performanceNow = __webpack_require__(472);
+var performanceNow = __webpack_require__(471);
 var warning = __webpack_require__(13);
 
 var hooks = [];
@@ -55986,7 +55988,7 @@ module.exports = ReactDebugTool;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 470 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56029,7 +56031,7 @@ module.exports = ReactInvalidSetStateWarningHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 471 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56068,7 +56070,7 @@ var ReactHostOperationHistoryHook = {
 module.exports = ReactHostOperationHistoryHook;
 
 /***/ }),
-/* 472 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56085,7 +56087,7 @@ module.exports = ReactHostOperationHistoryHook;
  * @typechecks
  */
 
-var performance = __webpack_require__(473);
+var performance = __webpack_require__(472);
 
 var performanceNow;
 
@@ -56107,7 +56109,7 @@ if (performance.now) {
 module.exports = performanceNow;
 
 /***/ }),
-/* 473 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56135,7 +56137,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = performance || {};
 
 /***/ }),
-/* 474 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56166,7 +56168,7 @@ var DefaultEventPluginOrder = ['ResponderEventPlugin', 'SimpleEventPlugin', 'Tap
 module.exports = DefaultEventPluginOrder;
 
 /***/ }),
-/* 475 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56182,7 +56184,7 @@ module.exports = DefaultEventPluginOrder;
 
 
 
-var EventPropagators = __webpack_require__(62);
+var EventPropagators = __webpack_require__(63);
 var ReactDOMComponentTree = __webpack_require__(20);
 var SyntheticMouseEvent = __webpack_require__(85);
 
@@ -56269,7 +56271,7 @@ var EnterLeaveEventPlugin = {
 module.exports = EnterLeaveEventPlugin;
 
 /***/ }),
-/* 476 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56510,7 +56512,7 @@ var HTMLDOMPropertyConfig = {
 module.exports = HTMLDOMPropertyConfig;
 
 /***/ }),
-/* 477 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56527,7 +56529,7 @@ module.exports = HTMLDOMPropertyConfig;
 
 
 var DOMChildrenOperations = __webpack_require__(114);
-var ReactDOMIDOperations = __webpack_require__(482);
+var ReactDOMIDOperations = __webpack_require__(481);
 
 /**
  * Abstracts away all functionality of the reconciler that requires knowledge of
@@ -56543,7 +56545,7 @@ var ReactComponentBrowserEnvironment = {
 module.exports = ReactComponentBrowserEnvironment;
 
 /***/ }),
-/* 478 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56561,10 +56563,10 @@ module.exports = ReactComponentBrowserEnvironment;
 
 var _prodInvariant = __webpack_require__(17);
 
-var DOMLazyTree = __webpack_require__(51);
+var DOMLazyTree = __webpack_require__(52);
 var ExecutionEnvironment = __webpack_require__(24);
 
-var createNodesFromMarkup = __webpack_require__(479);
+var createNodesFromMarkup = __webpack_require__(478);
 var emptyFunction = __webpack_require__(28);
 var invariant = __webpack_require__(12);
 
@@ -56595,7 +56597,7 @@ module.exports = Danger;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 479 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56616,8 +56618,8 @@ module.exports = Danger;
 
 var ExecutionEnvironment = __webpack_require__(24);
 
-var createArrayFromMixed = __webpack_require__(480);
-var getMarkupWrap = __webpack_require__(481);
+var createArrayFromMixed = __webpack_require__(479);
+var getMarkupWrap = __webpack_require__(480);
 var invariant = __webpack_require__(12);
 
 /**
@@ -56685,7 +56687,7 @@ module.exports = createNodesFromMarkup;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 480 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56818,7 +56820,7 @@ module.exports = createArrayFromMixed;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 481 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56919,7 +56921,7 @@ module.exports = getMarkupWrap;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 482 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56957,7 +56959,7 @@ var ReactDOMIDOperations = {
 module.exports = ReactDOMIDOperations;
 
 /***/ }),
-/* 483 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56978,24 +56980,24 @@ module.exports = ReactDOMIDOperations;
 var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(19);
 
-var AutoFocusUtils = __webpack_require__(484);
-var CSSPropertyOperations = __webpack_require__(485);
-var DOMLazyTree = __webpack_require__(51);
+var AutoFocusUtils = __webpack_require__(483);
+var CSSPropertyOperations = __webpack_require__(484);
+var DOMLazyTree = __webpack_require__(52);
 var DOMNamespaces = __webpack_require__(115);
 var DOMProperty = __webpack_require__(38);
 var DOMPropertyOperations = __webpack_require__(205);
-var EventPluginHub = __webpack_require__(63);
+var EventPluginHub = __webpack_require__(64);
 var EventPluginRegistry = __webpack_require__(83);
 var ReactBrowserEventEmitter = __webpack_require__(88);
 var ReactDOMComponentFlags = __webpack_require__(193);
 var ReactDOMComponentTree = __webpack_require__(20);
-var ReactDOMInput = __webpack_require__(495);
-var ReactDOMOption = __webpack_require__(496);
+var ReactDOMInput = __webpack_require__(494);
+var ReactDOMOption = __webpack_require__(495);
 var ReactDOMSelect = __webpack_require__(207);
-var ReactDOMTextarea = __webpack_require__(497);
+var ReactDOMTextarea = __webpack_require__(496);
 var ReactInstrumentation = __webpack_require__(29);
-var ReactMultiChild = __webpack_require__(498);
-var ReactServerRenderingTransaction = __webpack_require__(507);
+var ReactMultiChild = __webpack_require__(497);
+var ReactServerRenderingTransaction = __webpack_require__(506);
 
 var emptyFunction = __webpack_require__(28);
 var escapeTextContentForBrowser = __webpack_require__(87);
@@ -57973,7 +57975,7 @@ module.exports = ReactDOMComponent;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 484 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58002,7 +58004,7 @@ var AutoFocusUtils = {
 module.exports = AutoFocusUtils;
 
 /***/ }),
-/* 485 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58022,10 +58024,10 @@ var CSSProperty = __webpack_require__(204);
 var ExecutionEnvironment = __webpack_require__(24);
 var ReactInstrumentation = __webpack_require__(29);
 
-var camelizeStyleName = __webpack_require__(486);
-var dangerousStyleValue = __webpack_require__(488);
-var hyphenateStyleName = __webpack_require__(489);
-var memoizeStringOnly = __webpack_require__(491);
+var camelizeStyleName = __webpack_require__(485);
+var dangerousStyleValue = __webpack_require__(487);
+var hyphenateStyleName = __webpack_require__(488);
+var memoizeStringOnly = __webpack_require__(490);
 var warning = __webpack_require__(13);
 
 var processStyleName = memoizeStringOnly(function (styleName) {
@@ -58223,7 +58225,7 @@ module.exports = CSSPropertyOperations;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 486 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58240,7 +58242,7 @@ module.exports = CSSPropertyOperations;
 
 
 
-var camelize = __webpack_require__(487);
+var camelize = __webpack_require__(486);
 
 var msPattern = /^-ms-/;
 
@@ -58268,7 +58270,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 487 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58305,7 +58307,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 488 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58390,7 +58392,7 @@ module.exports = dangerousStyleValue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 489 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58407,7 +58409,7 @@ module.exports = dangerousStyleValue;
 
 
 
-var hyphenate = __webpack_require__(490);
+var hyphenate = __webpack_require__(489);
 
 var msPattern = /^ms-/;
 
@@ -58434,7 +58436,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 490 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58472,7 +58474,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 491 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58507,7 +58509,7 @@ function memoizeStringOnly(callback) {
 module.exports = memoizeStringOnly;
 
 /***/ }),
-/* 492 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58538,7 +58540,7 @@ function quoteAttributeValueForBrowser(value) {
 module.exports = quoteAttributeValueForBrowser;
 
 /***/ }),
-/* 493 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58554,7 +58556,7 @@ module.exports = quoteAttributeValueForBrowser;
 
 
 
-var EventPluginHub = __webpack_require__(63);
+var EventPluginHub = __webpack_require__(64);
 
 function runEventQueueInBatch(events) {
   EventPluginHub.enqueueEvents(events);
@@ -58575,7 +58577,7 @@ var ReactEventEmitterMixin = {
 module.exports = ReactEventEmitterMixin;
 
 /***/ }),
-/* 494 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58681,7 +58683,7 @@ function getVendorPrefixedEventName(eventName) {
 module.exports = getVendorPrefixedEventName;
 
 /***/ }),
-/* 495 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58974,7 +58976,7 @@ module.exports = ReactDOMInput;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 496 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58992,7 +58994,7 @@ module.exports = ReactDOMInput;
 
 var _assign = __webpack_require__(19);
 
-var React = __webpack_require__(48);
+var React = __webpack_require__(49);
 var ReactDOMComponentTree = __webpack_require__(20);
 var ReactDOMSelect = __webpack_require__(207);
 
@@ -59102,7 +59104,7 @@ module.exports = ReactDOMOption;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 497 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59268,7 +59270,7 @@ module.exports = ReactDOMTextarea;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 498 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59287,15 +59289,15 @@ module.exports = ReactDOMTextarea;
 var _prodInvariant = __webpack_require__(17);
 
 var ReactComponentEnvironment = __webpack_require__(118);
-var ReactInstanceMap = __webpack_require__(65);
+var ReactInstanceMap = __webpack_require__(66);
 var ReactInstrumentation = __webpack_require__(29);
 
 var ReactCurrentOwner = __webpack_require__(31);
-var ReactReconciler = __webpack_require__(50);
-var ReactChildReconciler = __webpack_require__(499);
+var ReactReconciler = __webpack_require__(51);
+var ReactChildReconciler = __webpack_require__(498);
 
 var emptyFunction = __webpack_require__(28);
-var flattenChildren = __webpack_require__(506);
+var flattenChildren = __webpack_require__(505);
 var invariant = __webpack_require__(12);
 
 /**
@@ -59720,7 +59722,7 @@ module.exports = ReactMultiChild;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 499 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59736,7 +59738,7 @@ module.exports = ReactMultiChild;
 
 
 
-var ReactReconciler = __webpack_require__(50);
+var ReactReconciler = __webpack_require__(51);
 
 var instantiateReactComponent = __webpack_require__(208);
 var KeyEscapeUtils = __webpack_require__(121);
@@ -59879,7 +59881,7 @@ module.exports = ReactChildReconciler;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 500 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59898,17 +59900,17 @@ module.exports = ReactChildReconciler;
 var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(19);
 
-var React = __webpack_require__(48);
+var React = __webpack_require__(49);
 var ReactComponentEnvironment = __webpack_require__(118);
 var ReactCurrentOwner = __webpack_require__(31);
 var ReactErrorUtils = __webpack_require__(110);
-var ReactInstanceMap = __webpack_require__(65);
+var ReactInstanceMap = __webpack_require__(66);
 var ReactInstrumentation = __webpack_require__(29);
 var ReactNodeTypes = __webpack_require__(209);
-var ReactReconciler = __webpack_require__(50);
+var ReactReconciler = __webpack_require__(51);
 
 if (process.env.NODE_ENV !== 'production') {
-  var checkReactTypeSpec = __webpack_require__(501);
+  var checkReactTypeSpec = __webpack_require__(500);
 }
 
 var emptyObject = __webpack_require__(82);
@@ -60785,7 +60787,7 @@ module.exports = ReactCompositeComponent;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 501 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60803,7 +60805,7 @@ module.exports = ReactCompositeComponent;
 
 var _prodInvariant = __webpack_require__(17);
 
-var ReactPropTypeLocationNames = __webpack_require__(502);
+var ReactPropTypeLocationNames = __webpack_require__(501);
 var ReactPropTypesSecret = __webpack_require__(206);
 
 var invariant = __webpack_require__(12);
@@ -60878,7 +60880,7 @@ module.exports = checkReactTypeSpec;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 502 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60909,7 +60911,7 @@ module.exports = ReactPropTypeLocationNames;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 503 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60935,7 +60937,7 @@ function getNextDebugID() {
 module.exports = getNextDebugID;
 
 /***/ }),
-/* 504 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60960,7 +60962,7 @@ var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol
 module.exports = REACT_ELEMENT_TYPE;
 
 /***/ }),
-/* 505 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61006,7 +61008,7 @@ function getIteratorFn(maybeIterable) {
 module.exports = getIteratorFn;
 
 /***/ }),
-/* 506 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61088,7 +61090,7 @@ module.exports = flattenChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 507 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61109,7 +61111,7 @@ var _assign = __webpack_require__(19);
 var PooledClass = __webpack_require__(45);
 var Transaction = __webpack_require__(84);
 var ReactInstrumentation = __webpack_require__(29);
-var ReactServerUpdateQueue = __webpack_require__(508);
+var ReactServerUpdateQueue = __webpack_require__(507);
 
 /**
  * Executed within the scope of the `Transaction` instance. Consider these as
@@ -61184,7 +61186,7 @@ module.exports = ReactServerRenderingTransaction;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 508 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61329,7 +61331,7 @@ module.exports = ReactServerUpdateQueue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 509 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61347,7 +61349,7 @@ module.exports = ReactServerUpdateQueue;
 
 var _assign = __webpack_require__(19);
 
-var DOMLazyTree = __webpack_require__(51);
+var DOMLazyTree = __webpack_require__(52);
 var ReactDOMComponentTree = __webpack_require__(20);
 
 var ReactDOMEmptyComponent = function (instantiate) {
@@ -61394,7 +61396,7 @@ _assign(ReactDOMEmptyComponent.prototype, {
 module.exports = ReactDOMEmptyComponent;
 
 /***/ }),
-/* 510 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61536,7 +61538,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 511 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61556,7 +61558,7 @@ var _prodInvariant = __webpack_require__(17),
     _assign = __webpack_require__(19);
 
 var DOMChildrenOperations = __webpack_require__(114);
-var DOMLazyTree = __webpack_require__(51);
+var DOMLazyTree = __webpack_require__(52);
 var ReactDOMComponentTree = __webpack_require__(20);
 
 var escapeTextContentForBrowser = __webpack_require__(87);
@@ -61704,7 +61706,7 @@ module.exports = ReactDOMTextComponent;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 512 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61777,7 +61779,7 @@ var ReactDefaultBatchingStrategy = {
 module.exports = ReactDefaultBatchingStrategy;
 
 /***/ }),
-/* 513 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61802,7 +61804,7 @@ var ReactDOMComponentTree = __webpack_require__(20);
 var ReactUpdates = __webpack_require__(32);
 
 var getEventTarget = __webpack_require__(111);
-var getUnboundedScrollPosition = __webpack_require__(514);
+var getUnboundedScrollPosition = __webpack_require__(513);
 
 /**
  * Find the deepest React component completely containing the root of the
@@ -61937,7 +61939,7 @@ var ReactEventListener = {
 module.exports = ReactEventListener;
 
 /***/ }),
-/* 514 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61981,7 +61983,7 @@ function getUnboundedScrollPosition(scrollable) {
 module.exports = getUnboundedScrollPosition;
 
 /***/ }),
-/* 515 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61998,7 +62000,7 @@ module.exports = getUnboundedScrollPosition;
 
 
 var DOMProperty = __webpack_require__(38);
-var EventPluginHub = __webpack_require__(63);
+var EventPluginHub = __webpack_require__(64);
 var EventPluginUtils = __webpack_require__(109);
 var ReactComponentEnvironment = __webpack_require__(118);
 var ReactEmptyComponent = __webpack_require__(210);
@@ -62020,7 +62022,7 @@ var ReactInjection = {
 module.exports = ReactInjection;
 
 /***/ }),
-/* 516 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62204,7 +62206,7 @@ module.exports = ReactReconcileTransaction;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 517 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62222,7 +62224,7 @@ module.exports = ReactReconcileTransaction;
 
 var ExecutionEnvironment = __webpack_require__(24);
 
-var getNodeForCharacterOffset = __webpack_require__(518);
+var getNodeForCharacterOffset = __webpack_require__(517);
 var getTextContentAccessor = __webpack_require__(196);
 
 /**
@@ -62421,7 +62423,7 @@ var ReactDOMSelection = {
 module.exports = ReactDOMSelection;
 
 /***/ }),
-/* 518 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62500,7 +62502,7 @@ function getNodeForCharacterOffset(root, offset) {
 module.exports = getNodeForCharacterOffset;
 
 /***/ }),
-/* 519 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62517,7 +62519,7 @@ module.exports = getNodeForCharacterOffset;
  * 
  */
 
-var isTextNode = __webpack_require__(520);
+var isTextNode = __webpack_require__(519);
 
 /*eslint-disable no-bitwise */
 
@@ -62545,7 +62547,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 520 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62562,7 +62564,7 @@ module.exports = containsNode;
  * @typechecks
  */
 
-var isNode = __webpack_require__(521);
+var isNode = __webpack_require__(520);
 
 /**
  * @param {*} object The object to check.
@@ -62575,7 +62577,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 521 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62605,7 +62607,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 522 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62912,7 +62914,7 @@ Object.keys(ATTRS).forEach(function (key) {
 module.exports = SVGDOMPropertyConfig;
 
 /***/ }),
-/* 523 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62928,7 +62930,7 @@ module.exports = SVGDOMPropertyConfig;
 
 
 
-var EventPropagators = __webpack_require__(62);
+var EventPropagators = __webpack_require__(63);
 var ExecutionEnvironment = __webpack_require__(24);
 var ReactDOMComponentTree = __webpack_require__(20);
 var ReactInputSelection = __webpack_require__(214);
@@ -63105,7 +63107,7 @@ var SelectEventPlugin = {
 module.exports = SelectEventPlugin;
 
 /***/ }),
-/* 524 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63125,19 +63127,19 @@ module.exports = SelectEventPlugin;
 var _prodInvariant = __webpack_require__(17);
 
 var EventListener = __webpack_require__(213);
-var EventPropagators = __webpack_require__(62);
+var EventPropagators = __webpack_require__(63);
 var ReactDOMComponentTree = __webpack_require__(20);
-var SyntheticAnimationEvent = __webpack_require__(525);
-var SyntheticClipboardEvent = __webpack_require__(526);
+var SyntheticAnimationEvent = __webpack_require__(524);
+var SyntheticClipboardEvent = __webpack_require__(525);
 var SyntheticEvent = __webpack_require__(36);
-var SyntheticFocusEvent = __webpack_require__(527);
-var SyntheticKeyboardEvent = __webpack_require__(528);
+var SyntheticFocusEvent = __webpack_require__(526);
+var SyntheticKeyboardEvent = __webpack_require__(527);
 var SyntheticMouseEvent = __webpack_require__(85);
-var SyntheticDragEvent = __webpack_require__(530);
-var SyntheticTouchEvent = __webpack_require__(531);
-var SyntheticTransitionEvent = __webpack_require__(532);
-var SyntheticUIEvent = __webpack_require__(64);
-var SyntheticWheelEvent = __webpack_require__(533);
+var SyntheticDragEvent = __webpack_require__(529);
+var SyntheticTouchEvent = __webpack_require__(530);
+var SyntheticTransitionEvent = __webpack_require__(531);
+var SyntheticUIEvent = __webpack_require__(65);
+var SyntheticWheelEvent = __webpack_require__(532);
 
 var emptyFunction = __webpack_require__(28);
 var getEventCharCode = __webpack_require__(124);
@@ -63337,7 +63339,7 @@ module.exports = SimpleEventPlugin;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 525 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63381,7 +63383,7 @@ SyntheticEvent.augmentClass(SyntheticAnimationEvent, AnimationEventInterface);
 module.exports = SyntheticAnimationEvent;
 
 /***/ }),
-/* 526 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63424,7 +63426,7 @@ SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 module.exports = SyntheticClipboardEvent;
 
 /***/ }),
-/* 527 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63440,7 +63442,7 @@ module.exports = SyntheticClipboardEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(64);
+var SyntheticUIEvent = __webpack_require__(65);
 
 /**
  * @interface FocusEvent
@@ -63465,7 +63467,7 @@ SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 module.exports = SyntheticFocusEvent;
 
 /***/ }),
-/* 528 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63481,10 +63483,10 @@ module.exports = SyntheticFocusEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(64);
+var SyntheticUIEvent = __webpack_require__(65);
 
 var getEventCharCode = __webpack_require__(124);
-var getEventKey = __webpack_require__(529);
+var getEventKey = __webpack_require__(528);
 var getEventModifierState = __webpack_require__(113);
 
 /**
@@ -63554,7 +63556,7 @@ SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 module.exports = SyntheticKeyboardEvent;
 
 /***/ }),
-/* 529 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63671,7 +63673,7 @@ function getEventKey(nativeEvent) {
 module.exports = getEventKey;
 
 /***/ }),
-/* 530 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63712,7 +63714,7 @@ SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 module.exports = SyntheticDragEvent;
 
 /***/ }),
-/* 531 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63728,7 +63730,7 @@ module.exports = SyntheticDragEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(64);
+var SyntheticUIEvent = __webpack_require__(65);
 
 var getEventModifierState = __webpack_require__(113);
 
@@ -63762,7 +63764,7 @@ SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 module.exports = SyntheticTouchEvent;
 
 /***/ }),
-/* 532 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63806,7 +63808,7 @@ SyntheticEvent.augmentClass(SyntheticTransitionEvent, TransitionEventInterface);
 module.exports = SyntheticTransitionEvent;
 
 /***/ }),
-/* 533 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63862,7 +63864,7 @@ SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 module.exports = SyntheticWheelEvent;
 
 /***/ }),
-/* 534 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63901,7 +63903,7 @@ module.exports = ReactDOMContainerInfo;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 535 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63925,7 +63927,7 @@ var ReactDOMFeatureFlags = {
 module.exports = ReactDOMFeatureFlags;
 
 /***/ }),
-/* 536 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63941,7 +63943,7 @@ module.exports = ReactDOMFeatureFlags;
 
 
 
-var adler32 = __webpack_require__(537);
+var adler32 = __webpack_require__(536);
 
 var TAG_END = /\/?>/;
 var COMMENT_START = /^<\!\-\-/;
@@ -63980,7 +63982,7 @@ var ReactMarkupChecksum = {
 module.exports = ReactMarkupChecksum;
 
 /***/ }),
-/* 537 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64029,7 +64031,7 @@ function adler32(data) {
 module.exports = adler32;
 
 /***/ }),
-/* 538 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64048,7 +64050,7 @@ module.exports = adler32;
 module.exports = '15.6.1';
 
 /***/ }),
-/* 539 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64068,7 +64070,7 @@ var _prodInvariant = __webpack_require__(17);
 
 var ReactCurrentOwner = __webpack_require__(31);
 var ReactDOMComponentTree = __webpack_require__(20);
-var ReactInstanceMap = __webpack_require__(65);
+var ReactInstanceMap = __webpack_require__(66);
 
 var getHostComponentFromComposite = __webpack_require__(217);
 var invariant = __webpack_require__(12);
@@ -64114,7 +64116,7 @@ module.exports = findDOMNode;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 540 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64135,7 +64137,7 @@ var ReactMount = __webpack_require__(216);
 module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ }),
-/* 541 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64253,7 +64255,7 @@ module.exports = ReactDOMUnknownPropertyHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 542 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64302,7 +64304,7 @@ module.exports = ReactDOMNullInputValuePropHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 543 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64401,7 +64403,7 @@ module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 544 */
+/* 543 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64487,7 +64489,7 @@ function createProvider() {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 545 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64553,7 +64555,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 546 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64625,7 +64627,7 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
 
 /***/ }),
-/* 547 */
+/* 546 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64724,17 +64726,17 @@ var Subscription = function () {
 
 
 /***/ }),
-/* 548 */
+/* 547 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export createConnect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_connectAdvanced__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(549);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(550);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(565);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mergeProps__ = __webpack_require__(566);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selectorFactory__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(548);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(549);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(564);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mergeProps__ = __webpack_require__(565);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selectorFactory__ = __webpack_require__(566);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -64840,7 +64842,7 @@ function createConnect() {
 /* harmony default export */ __webpack_exports__["a"] = (createConnect());
 
 /***/ }),
-/* 549 */
+/* 548 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64877,7 +64879,7 @@ function shallowEqual(objA, objB) {
 }
 
 /***/ }),
-/* 550 */
+/* 549 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64908,13 +64910,13 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
 /* harmony default export */ __webpack_exports__["a"] = ([whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject]);
 
 /***/ }),
-/* 551 */
+/* 550 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(554);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(553);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(554);
 
 
 
@@ -64946,11 +64948,11 @@ function baseGetTag(value) {
 
 
 /***/ }),
-/* 552 */
+/* 551 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(553);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(552);
 
 
 /** Detect free variable `self`. */
@@ -64963,7 +64965,7 @@ var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || fr
 
 
 /***/ }),
-/* 553 */
+/* 552 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64975,7 +64977,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(128)))
 
 /***/ }),
-/* 554 */
+/* 553 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65029,7 +65031,7 @@ function getRawTag(value) {
 
 
 /***/ }),
-/* 555 */
+/* 554 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65058,11 +65060,11 @@ function objectToString(value) {
 
 
 /***/ }),
-/* 556 */
+/* 555 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(556);
 
 
 /** Built-in value references. */
@@ -65072,7 +65074,7 @@ var getPrototype = Object(__WEBPACK_IMPORTED_MODULE_0__overArg_js__["a" /* defau
 
 
 /***/ }),
-/* 557 */
+/* 556 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65094,7 +65096,7 @@ function overArg(func, transform) {
 
 
 /***/ }),
-/* 558 */
+/* 557 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65130,14 +65132,14 @@ function isObjectLike(value) {
 
 
 /***/ }),
-/* 559 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(560);
+module.exports = __webpack_require__(559);
 
 
 /***/ }),
-/* 560 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65147,7 +65149,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ponyfill = __webpack_require__(561);
+var _ponyfill = __webpack_require__(560);
 
 var _ponyfill2 = _interopRequireDefault(_ponyfill);
 
@@ -65173,7 +65175,7 @@ exports['default'] = result;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(128), __webpack_require__(222)(module)))
 
 /***/ }),
-/* 561 */
+/* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65202,7 +65204,7 @@ function symbolObservablePonyfill(root) {
 };
 
 /***/ }),
-/* 562 */
+/* 561 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65343,7 +65345,7 @@ function combineReducers(reducers) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 563 */
+/* 562 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65397,7 +65399,7 @@ function bindActionCreators(actionCreators, dispatch) {
 }
 
 /***/ }),
-/* 564 */
+/* 563 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65453,7 +65455,7 @@ function applyMiddleware() {
 }
 
 /***/ }),
-/* 565 */
+/* 564 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65475,7 +65477,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 /* harmony default export */ __webpack_exports__["a"] = ([whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing]);
 
 /***/ }),
-/* 566 */
+/* 565 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65532,14 +65534,14 @@ function whenMergePropsIsOmitted(mergeProps) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 567 */
+/* 566 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* unused harmony export impureFinalPropsSelectorFactory */
 /* unused harmony export pureFinalPropsSelectorFactory */
 /* harmony export (immutable) */ __webpack_exports__["a"] = finalPropsSelectorFactory;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verifySubselectors__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verifySubselectors__ = __webpack_require__(567);
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 
@@ -65645,7 +65647,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 568 */
+/* 567 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65670,29 +65672,29 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 }
 
 /***/ }),
-/* 569 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var MembersReducers_1 = __webpack_require__(570);
-var LastUpdatedReducers_1 = __webpack_require__(573);
-var FilterBoxReducers_1 = __webpack_require__(574);
-var FacetReducers_1 = __webpack_require__(575);
-var NavigationPerPageReducers_1 = __webpack_require__(576);
-var NavigationPaginationReducers_1 = __webpack_require__(577);
-var LoadingReducers_1 = __webpack_require__(578);
-var InlinePromptReducers_1 = __webpack_require__(579);
-var ActionBarReducers_1 = __webpack_require__(580);
-var DropdownReducers_1 = __webpack_require__(581);
-var TableRowReducers_1 = __webpack_require__(582);
-var OptionsCycleReducers_1 = __webpack_require__(583);
-var DatePickerReducers_1 = __webpack_require__(584);
-var ModalReducers_1 = __webpack_require__(726);
-var ItemFilterReducers_1 = __webpack_require__(727);
-var OptionPickerReducers_1 = __webpack_require__(728);
-var SubNavigationReducers_1 = __webpack_require__(729);
+var MembersReducers_1 = __webpack_require__(569);
+var LastUpdatedReducers_1 = __webpack_require__(572);
+var FilterBoxReducers_1 = __webpack_require__(573);
+var FacetReducers_1 = __webpack_require__(574);
+var NavigationPerPageReducers_1 = __webpack_require__(575);
+var NavigationPaginationReducers_1 = __webpack_require__(576);
+var LoadingReducers_1 = __webpack_require__(577);
+var InlinePromptReducers_1 = __webpack_require__(578);
+var ActionBarReducers_1 = __webpack_require__(579);
+var DropdownReducers_1 = __webpack_require__(580);
+var TableRowReducers_1 = __webpack_require__(581);
+var OptionsCycleReducers_1 = __webpack_require__(582);
+var DatePickerReducers_1 = __webpack_require__(583);
+var ModalReducers_1 = __webpack_require__(725);
+var ItemFilterReducers_1 = __webpack_require__(726);
+var OptionPickerReducers_1 = __webpack_require__(727);
+var SubNavigationReducers_1 = __webpack_require__(728);
 var Redux = __webpack_require__(126);
 var TabReducers_1 = __webpack_require__(167);
 var DropdownSearchReducers_1 = __webpack_require__(393);
@@ -65725,7 +65727,7 @@ exports.Reducers = Redux.combineReducers({
 
 
 /***/ }),
-/* 570 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65734,7 +65736,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(9);
 var MembersActions_1 = __webpack_require__(129);
 var MemberEditionActions_1 = __webpack_require__(130);
-var MemberEditionReducers_1 = __webpack_require__(571);
+var MemberEditionReducers_1 = __webpack_require__(570);
 var defaultMembersCompositeState = {
     addMemberState: _.extend({}, MemberEditionReducers_1.defaultMemberEditionState),
     members: []
@@ -65794,14 +65796,14 @@ var _a;
 
 
 /***/ }),
-/* 571 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(9);
-var Member_1 = __webpack_require__(572);
+var Member_1 = __webpack_require__(571);
 var MemberEditionActions_1 = __webpack_require__(130);
 exports.defaultMemberEditionState = {
     id: null,
@@ -65873,7 +65875,7 @@ var _a;
 
 
 /***/ }),
-/* 572 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65886,7 +65888,7 @@ exports.defaultMemberAttributes = {
 
 
 /***/ }),
-/* 573 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65937,7 +65939,7 @@ exports.lastUpdatedCompositeReducer = function (state, action) {
 
 
 /***/ }),
-/* 574 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65987,13 +65989,13 @@ exports.filterBoxesReducer = function (state, action) {
 
 
 /***/ }),
-/* 575 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var FacetActions_1 = __webpack_require__(68);
+var FacetActions_1 = __webpack_require__(69);
 var _ = __webpack_require__(9);
 exports.facetInitialState = { facet: undefined, opened: false, selected: [] };
 exports.facetsInitialState = [];
@@ -66092,7 +66094,7 @@ exports.facetsReducer = function (state, action) {
 
 
 /***/ }),
-/* 576 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66142,7 +66144,7 @@ exports.perPageCompositeReducer = function (state, action) {
 
 
 /***/ }),
-/* 577 */
+/* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66197,13 +66199,13 @@ exports.paginationCompositeReducer = function (state, action) {
 
 
 /***/ }),
-/* 578 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var LoadingActions_1 = __webpack_require__(69);
+var LoadingActions_1 = __webpack_require__(70);
 var _ = __webpack_require__(9);
 exports.loadingInitialState = {
     id: undefined,
@@ -66259,7 +66261,7 @@ exports.loadingsReducer = function (state, action) {
 
 
 /***/ }),
-/* 579 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66299,7 +66301,7 @@ exports.promptsReducer = function (state, action) {
 
 
 /***/ }),
-/* 580 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66351,7 +66353,7 @@ exports.actionBarsReducer = function (state, action) {
 
 
 /***/ }),
-/* 581 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66410,7 +66412,7 @@ exports.dropdownsReducer = function (state, action) {
 
 
 /***/ }),
-/* 582 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66461,7 +66463,7 @@ exports.tableRowsReducer = function (state, action) {
 
 
 /***/ }),
-/* 583 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66511,13 +66513,13 @@ exports.optionsCyclesReducer = function (state, action) {
 
 
 /***/ }),
-/* 584 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var DatePickerActions_1 = __webpack_require__(52);
+var DatePickerActions_1 = __webpack_require__(53);
 var _ = __webpack_require__(9);
 var moment = __webpack_require__(1);
 exports.datePickerInitialState = {
@@ -66620,7 +66622,7 @@ exports.datePickersReducer = function (state, action) {
 
 
 /***/ }),
-/* 585 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66657,78 +66659,78 @@ exports.SetToNowButton = SetToNowButton;
 
 
 /***/ }),
-/* 586 */
+/* 585 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Accordion__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Accordion__ = __webpack_require__(586);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Accordion", function() { return __WEBPACK_IMPORTED_MODULE_0__Accordion__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Alert__ = __webpack_require__(625);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Alert__ = __webpack_require__(624);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return __WEBPACK_IMPORTED_MODULE_1__Alert__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Badge__ = __webpack_require__(628);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Badge__ = __webpack_require__(627);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Badge", function() { return __WEBPACK_IMPORTED_MODULE_2__Badge__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Breadcrumb__ = __webpack_require__(629);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Breadcrumb__ = __webpack_require__(628);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Breadcrumb", function() { return __WEBPACK_IMPORTED_MODULE_3__Breadcrumb__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__BreadcrumbItem__ = __webpack_require__(243);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BreadcrumbItem", function() { return __WEBPACK_IMPORTED_MODULE_4__BreadcrumbItem__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Button__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Button__ = __webpack_require__(76);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return __WEBPACK_IMPORTED_MODULE_5__Button__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ButtonGroup__ = __webpack_require__(156);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ButtonGroup", function() { return __WEBPACK_IMPORTED_MODULE_6__ButtonGroup__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ButtonToolbar__ = __webpack_require__(630);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ButtonToolbar__ = __webpack_require__(629);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ButtonToolbar", function() { return __WEBPACK_IMPORTED_MODULE_7__ButtonToolbar__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Carousel__ = __webpack_require__(631);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Carousel__ = __webpack_require__(630);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Carousel", function() { return __WEBPACK_IMPORTED_MODULE_8__Carousel__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__CarouselItem__ = __webpack_require__(244);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "CarouselItem", function() { return __WEBPACK_IMPORTED_MODULE_9__CarouselItem__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Checkbox__ = __webpack_require__(634);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Checkbox__ = __webpack_require__(633);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Checkbox", function() { return __WEBPACK_IMPORTED_MODULE_10__Checkbox__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Clearfix__ = __webpack_require__(635);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Clearfix__ = __webpack_require__(634);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Clearfix", function() { return __WEBPACK_IMPORTED_MODULE_11__Clearfix__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__CloseButton__ = __webpack_require__(154);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "CloseButton", function() { return __WEBPACK_IMPORTED_MODULE_12__CloseButton__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ControlLabel__ = __webpack_require__(636);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ControlLabel__ = __webpack_require__(635);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ControlLabel", function() { return __WEBPACK_IMPORTED_MODULE_13__ControlLabel__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Col__ = __webpack_require__(637);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Col__ = __webpack_require__(636);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Col", function() { return __WEBPACK_IMPORTED_MODULE_14__Col__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Collapse__ = __webpack_require__(158);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Collapse", function() { return __WEBPACK_IMPORTED_MODULE_15__Collapse__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Dropdown__ = __webpack_require__(94);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return __WEBPACK_IMPORTED_MODULE_16__Dropdown__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__DropdownButton__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__DropdownButton__ = __webpack_require__(656);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownButton", function() { return __WEBPACK_IMPORTED_MODULE_17__DropdownButton__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Fade__ = __webpack_require__(97);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Fade", function() { return __WEBPACK_IMPORTED_MODULE_18__Fade__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Form__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__Form__ = __webpack_require__(657);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Form", function() { return __WEBPACK_IMPORTED_MODULE_19__Form__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__FormControl__ = __webpack_require__(659);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__FormControl__ = __webpack_require__(658);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "FormControl", function() { return __WEBPACK_IMPORTED_MODULE_20__FormControl__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__FormGroup__ = __webpack_require__(662);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__FormGroup__ = __webpack_require__(661);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "FormGroup", function() { return __WEBPACK_IMPORTED_MODULE_21__FormGroup__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__Glyphicon__ = __webpack_require__(157);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Glyphicon", function() { return __WEBPACK_IMPORTED_MODULE_22__Glyphicon__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__Grid__ = __webpack_require__(253);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Grid", function() { return __WEBPACK_IMPORTED_MODULE_23__Grid__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__HelpBlock__ = __webpack_require__(663);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__HelpBlock__ = __webpack_require__(662);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HelpBlock", function() { return __WEBPACK_IMPORTED_MODULE_24__HelpBlock__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__Image__ = __webpack_require__(664);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__Image__ = __webpack_require__(663);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Image", function() { return __WEBPACK_IMPORTED_MODULE_25__Image__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__InputGroup__ = __webpack_require__(665);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__InputGroup__ = __webpack_require__(664);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "InputGroup", function() { return __WEBPACK_IMPORTED_MODULE_26__InputGroup__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__Jumbotron__ = __webpack_require__(668);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__Jumbotron__ = __webpack_require__(667);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Jumbotron", function() { return __WEBPACK_IMPORTED_MODULE_27__Jumbotron__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__Label__ = __webpack_require__(669);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__Label__ = __webpack_require__(668);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Label", function() { return __WEBPACK_IMPORTED_MODULE_28__Label__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ListGroup__ = __webpack_require__(670);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ListGroup__ = __webpack_require__(669);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ListGroup", function() { return __WEBPACK_IMPORTED_MODULE_29__ListGroup__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ListGroupItem__ = __webpack_require__(254);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ListGroupItem", function() { return __WEBPACK_IMPORTED_MODULE_30__ListGroupItem__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__Media__ = __webpack_require__(161);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Media", function() { return __WEBPACK_IMPORTED_MODULE_31__Media__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__MenuItem__ = __webpack_require__(677);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__MenuItem__ = __webpack_require__(676);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MenuItem", function() { return __WEBPACK_IMPORTED_MODULE_32__MenuItem__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__Modal__ = __webpack_require__(678);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__Modal__ = __webpack_require__(677);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return __WEBPACK_IMPORTED_MODULE_33__Modal__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__ModalBody__ = __webpack_require__(261);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ModalBody", function() { return __WEBPACK_IMPORTED_MODULE_34__ModalBody__["a"]; });
@@ -66740,69 +66742,69 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ModalTitle", function() { return __WEBPACK_IMPORTED_MODULE_37__ModalTitle__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__Nav__ = __webpack_require__(265);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Nav", function() { return __WEBPACK_IMPORTED_MODULE_38__Nav__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__Navbar__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__Navbar__ = __webpack_require__(690);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Navbar", function() { return __WEBPACK_IMPORTED_MODULE_39__Navbar__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__NavbarBrand__ = __webpack_require__(266);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarBrand", function() { return __WEBPACK_IMPORTED_MODULE_40__NavbarBrand__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__NavDropdown__ = __webpack_require__(695);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__NavDropdown__ = __webpack_require__(694);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavDropdown", function() { return __WEBPACK_IMPORTED_MODULE_41__NavDropdown__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__NavItem__ = __webpack_require__(267);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavItem", function() { return __WEBPACK_IMPORTED_MODULE_42__NavItem__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__Overlay__ = __webpack_require__(268);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Overlay", function() { return __WEBPACK_IMPORTED_MODULE_43__Overlay__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__OverlayTrigger__ = __webpack_require__(702);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__OverlayTrigger__ = __webpack_require__(701);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "OverlayTrigger", function() { return __WEBPACK_IMPORTED_MODULE_44__OverlayTrigger__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__PageHeader__ = __webpack_require__(703);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__PageHeader__ = __webpack_require__(702);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "PageHeader", function() { return __WEBPACK_IMPORTED_MODULE_45__PageHeader__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__PageItem__ = __webpack_require__(704);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__PageItem__ = __webpack_require__(703);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "PageItem", function() { return __WEBPACK_IMPORTED_MODULE_46__PageItem__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__Pager__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__Pager__ = __webpack_require__(705);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Pager", function() { return __WEBPACK_IMPORTED_MODULE_47__Pager__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__Pagination__ = __webpack_require__(707);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__Pagination__ = __webpack_require__(706);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Pagination", function() { return __WEBPACK_IMPORTED_MODULE_48__Pagination__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__PaginationButton__ = __webpack_require__(272);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "PaginationButton", function() { return __WEBPACK_IMPORTED_MODULE_49__PaginationButton__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__Panel__ = __webpack_require__(708);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__Panel__ = __webpack_require__(707);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Panel", function() { return __WEBPACK_IMPORTED_MODULE_50__Panel__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__PanelGroup__ = __webpack_require__(240);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "PanelGroup", function() { return __WEBPACK_IMPORTED_MODULE_51__PanelGroup__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__Popover__ = __webpack_require__(709);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__Popover__ = __webpack_require__(708);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Popover", function() { return __WEBPACK_IMPORTED_MODULE_52__Popover__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ProgressBar__ = __webpack_require__(710);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ProgressBar__ = __webpack_require__(709);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ProgressBar", function() { return __WEBPACK_IMPORTED_MODULE_53__ProgressBar__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__Radio__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__Radio__ = __webpack_require__(710);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Radio", function() { return __WEBPACK_IMPORTED_MODULE_54__Radio__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__ResponsiveEmbed__ = __webpack_require__(712);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__ResponsiveEmbed__ = __webpack_require__(711);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ResponsiveEmbed", function() { return __WEBPACK_IMPORTED_MODULE_55__ResponsiveEmbed__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__Row__ = __webpack_require__(713);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__Row__ = __webpack_require__(712);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Row", function() { return __WEBPACK_IMPORTED_MODULE_56__Row__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__SafeAnchor__ = __webpack_require__(35);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "SafeAnchor", function() { return __WEBPACK_IMPORTED_MODULE_57__SafeAnchor__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__SplitButton__ = __webpack_require__(714);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__SplitButton__ = __webpack_require__(713);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "SplitButton", function() { return __WEBPACK_IMPORTED_MODULE_58__SplitButton__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__Tab__ = __webpack_require__(716);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__Tab__ = __webpack_require__(715);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Tab", function() { return __WEBPACK_IMPORTED_MODULE_59__Tab__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__TabContainer__ = __webpack_require__(164);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "TabContainer", function() { return __WEBPACK_IMPORTED_MODULE_60__TabContainer__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__TabContent__ = __webpack_require__(165);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "TabContent", function() { return __WEBPACK_IMPORTED_MODULE_61__TabContent__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__Table__ = __webpack_require__(717);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__Table__ = __webpack_require__(716);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return __WEBPACK_IMPORTED_MODULE_62__Table__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__TabPane__ = __webpack_require__(273);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "TabPane", function() { return __WEBPACK_IMPORTED_MODULE_63__TabPane__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__Tabs__ = __webpack_require__(718);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__Tabs__ = __webpack_require__(717);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Tabs", function() { return __WEBPACK_IMPORTED_MODULE_64__Tabs__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__Thumbnail__ = __webpack_require__(719);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__Thumbnail__ = __webpack_require__(718);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Thumbnail", function() { return __WEBPACK_IMPORTED_MODULE_65__Thumbnail__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__ToggleButton__ = __webpack_require__(274);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ToggleButton", function() { return __WEBPACK_IMPORTED_MODULE_66__ToggleButton__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__ToggleButtonGroup__ = __webpack_require__(720);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__ToggleButtonGroup__ = __webpack_require__(719);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "ToggleButtonGroup", function() { return __WEBPACK_IMPORTED_MODULE_67__ToggleButtonGroup__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__Tooltip__ = __webpack_require__(721);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__Tooltip__ = __webpack_require__(720);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Tooltip", function() { return __WEBPACK_IMPORTED_MODULE_68__Tooltip__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__Well__ = __webpack_require__(722);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__Well__ = __webpack_require__(721);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Well", function() { return __WEBPACK_IMPORTED_MODULE_69__Well__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_70__utils__ = __webpack_require__(723);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_70__utils__ = __webpack_require__(722);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "utils", function() { return __WEBPACK_IMPORTED_MODULE_70__utils__; });
 
 
@@ -66948,7 +66950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 587 */
+/* 586 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66994,23 +66996,23 @@ var Accordion = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Accordion);
 
 /***/ }),
-/* 588 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(589);
+__webpack_require__(588);
 module.exports = __webpack_require__(33).Object.assign;
 
 /***/ }),
-/* 589 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(40);
 
-$export($export.S + $export.F, 'Object', {assign: __webpack_require__(591)});
+$export($export.S + $export.F, 'Object', {assign: __webpack_require__(590)});
 
 /***/ }),
-/* 590 */
+/* 589 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -67019,21 +67021,21 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 591 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys  = __webpack_require__(56)
+var getKeys  = __webpack_require__(57)
   , gOPS     = __webpack_require__(146)
-  , pIE      = __webpack_require__(73)
+  , pIE      = __webpack_require__(74)
   , toObject = __webpack_require__(147)
   , IObject  = __webpack_require__(233)
   , $assign  = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(71)(function(){
+module.exports = !$assign || __webpack_require__(72)(function(){
   var A = {}
     , B = {}
     , S = Symbol()
@@ -67058,14 +67060,14 @@ module.exports = !$assign || __webpack_require__(71)(function(){
 } : $assign;
 
 /***/ }),
-/* 592 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(42)
   , toLength  = __webpack_require__(234)
-  , toIndex   = __webpack_require__(593);
+  , toIndex   = __webpack_require__(592);
 module.exports = function(IS_INCLUDES){
   return function($this, el, fromIndex){
     var O      = toIObject($this)
@@ -67084,7 +67086,7 @@ module.exports = function(IS_INCLUDES){
 };
 
 /***/ }),
-/* 593 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(142)
@@ -67096,21 +67098,21 @@ module.exports = function(index, length){
 };
 
 /***/ }),
+/* 593 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(594), __esModule: true };
+
+/***/ }),
 /* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(595), __esModule: true };
-
-/***/ }),
-/* 595 */
-/***/ (function(module, exports, __webpack_require__) {
-
 __webpack_require__(235);
-__webpack_require__(601);
+__webpack_require__(600);
 module.exports = __webpack_require__(152).f('iterator');
 
 /***/ }),
-/* 596 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(142)
@@ -67132,18 +67134,18 @@ module.exports = function(TO_STRING){
 };
 
 /***/ }),
-/* 597 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var create         = __webpack_require__(150)
-  , descriptor     = __webpack_require__(72)
+  , descriptor     = __webpack_require__(73)
   , setToStringTag = __webpack_require__(151)
   , IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(53)(IteratorPrototype, __webpack_require__(34)('iterator'), function(){ return this; });
+__webpack_require__(54)(IteratorPrototype, __webpack_require__(34)('iterator'), function(){ return this; });
 
 module.exports = function(Constructor, NAME, next){
   Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -67151,14 +67153,14 @@ module.exports = function(Constructor, NAME, next){
 };
 
 /***/ }),
-/* 598 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP       = __webpack_require__(46)
-  , anObject = __webpack_require__(54)
-  , getKeys  = __webpack_require__(56);
+  , anObject = __webpack_require__(55)
+  , getKeys  = __webpack_require__(57);
 
-module.exports = __webpack_require__(55) ? Object.defineProperties : function defineProperties(O, Properties){
+module.exports = __webpack_require__(56) ? Object.defineProperties : function defineProperties(O, Properties){
   anObject(O);
   var keys   = getKeys(Properties)
     , length = keys.length
@@ -67169,13 +67171,13 @@ module.exports = __webpack_require__(55) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 599 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(41).document && document.documentElement;
 
 /***/ }),
-/* 600 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
@@ -67193,13 +67195,13 @@ module.exports = Object.getPrototypeOf || function(O){
 };
 
 /***/ }),
-/* 601 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(602);
+__webpack_require__(601);
 var global        = __webpack_require__(41)
-  , hide          = __webpack_require__(53)
-  , Iterators     = __webpack_require__(74)
+  , hide          = __webpack_require__(54)
+  , Iterators     = __webpack_require__(75)
   , TO_STRING_TAG = __webpack_require__(34)('toStringTag');
 
 for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
@@ -67211,14 +67213,14 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
 }
 
 /***/ }),
-/* 602 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(603)
-  , step             = __webpack_require__(604)
-  , Iterators        = __webpack_require__(74)
+var addToUnscopables = __webpack_require__(602)
+  , step             = __webpack_require__(603)
+  , Iterators        = __webpack_require__(75)
   , toIObject        = __webpack_require__(42);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -67251,13 +67253,13 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 603 */
+/* 602 */
 /***/ (function(module, exports) {
 
 module.exports = function(){ /* empty */ };
 
 /***/ }),
-/* 604 */
+/* 603 */
 /***/ (function(module, exports) {
 
 module.exports = function(done, value){
@@ -67265,23 +67267,23 @@ module.exports = function(done, value){
 };
 
 /***/ }),
+/* 604 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(605), __esModule: true };
+
+/***/ }),
 /* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(606), __esModule: true };
-
-/***/ }),
-/* 606 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(607);
+__webpack_require__(606);
+__webpack_require__(612);
 __webpack_require__(613);
 __webpack_require__(614);
-__webpack_require__(615);
 module.exports = __webpack_require__(33).Symbol;
 
 /***/ }),
-/* 607 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67289,29 +67291,29 @@ module.exports = __webpack_require__(33).Symbol;
 // ECMAScript 6 symbols shim
 var global         = __webpack_require__(41)
   , has            = __webpack_require__(47)
-  , DESCRIPTORS    = __webpack_require__(55)
+  , DESCRIPTORS    = __webpack_require__(56)
   , $export        = __webpack_require__(40)
   , redefine       = __webpack_require__(237)
-  , META           = __webpack_require__(608).KEY
-  , $fails         = __webpack_require__(71)
+  , META           = __webpack_require__(607).KEY
+  , $fails         = __webpack_require__(72)
   , shared         = __webpack_require__(144)
   , setToStringTag = __webpack_require__(151)
   , uid            = __webpack_require__(90)
   , wks            = __webpack_require__(34)
   , wksExt         = __webpack_require__(152)
   , wksDefine      = __webpack_require__(153)
-  , keyOf          = __webpack_require__(609)
-  , enumKeys       = __webpack_require__(610)
-  , isArray        = __webpack_require__(611)
-  , anObject       = __webpack_require__(54)
+  , keyOf          = __webpack_require__(608)
+  , enumKeys       = __webpack_require__(609)
+  , isArray        = __webpack_require__(610)
+  , anObject       = __webpack_require__(55)
   , toIObject      = __webpack_require__(42)
   , toPrimitive    = __webpack_require__(139)
-  , createDesc     = __webpack_require__(72)
+  , createDesc     = __webpack_require__(73)
   , _create        = __webpack_require__(150)
-  , gOPNExt        = __webpack_require__(612)
+  , gOPNExt        = __webpack_require__(611)
   , $GOPD          = __webpack_require__(239)
   , $DP            = __webpack_require__(46)
-  , $keys          = __webpack_require__(56)
+  , $keys          = __webpack_require__(57)
   , gOPD           = $GOPD.f
   , dP             = $DP.f
   , gOPN           = gOPNExt.f
@@ -67435,7 +67437,7 @@ if(!USE_NATIVE){
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f   = $defineProperty;
   __webpack_require__(238).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(73).f  = $propertyIsEnumerable;
+  __webpack_require__(74).f  = $propertyIsEnumerable;
   __webpack_require__(146).f = $getOwnPropertySymbols;
 
   if(DESCRIPTORS && !__webpack_require__(149)){
@@ -67513,7 +67515,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(53)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(54)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -67522,18 +67524,18 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 608 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var META     = __webpack_require__(90)('meta')
-  , isObject = __webpack_require__(70)
+  , isObject = __webpack_require__(71)
   , has      = __webpack_require__(47)
   , setDesc  = __webpack_require__(46).f
   , id       = 0;
 var isExtensible = Object.isExtensible || function(){
   return true;
 };
-var FREEZE = !__webpack_require__(71)(function(){
+var FREEZE = !__webpack_require__(72)(function(){
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function(it){
@@ -67580,10 +67582,10 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 609 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getKeys   = __webpack_require__(56)
+var getKeys   = __webpack_require__(57)
   , toIObject = __webpack_require__(42);
 module.exports = function(object, el){
   var O      = toIObject(object)
@@ -67595,13 +67597,13 @@ module.exports = function(object, el){
 };
 
 /***/ }),
-/* 610 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(56)
+var getKeys = __webpack_require__(57)
   , gOPS    = __webpack_require__(146)
-  , pIE     = __webpack_require__(73);
+  , pIE     = __webpack_require__(74);
 module.exports = function(it){
   var result     = getKeys(it)
     , getSymbols = gOPS.f;
@@ -67615,7 +67617,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 611 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -67625,7 +67627,7 @@ module.exports = Array.isArray || function isArray(arg){
 };
 
 /***/ }),
-/* 612 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
@@ -67650,52 +67652,52 @@ module.exports.f = function getOwnPropertyNames(it){
 
 
 /***/ }),
-/* 613 */
+/* 612 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 614 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(153)('asyncIterator');
 
 /***/ }),
-/* 615 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(153)('observable');
 
 /***/ }),
+/* 615 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(616), __esModule: true };
+
+/***/ }),
 /* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(617), __esModule: true };
+__webpack_require__(617);
+module.exports = __webpack_require__(33).Object.setPrototypeOf;
 
 /***/ }),
 /* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(618);
-module.exports = __webpack_require__(33).Object.setPrototypeOf;
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(40);
+$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(618).set});
 
 /***/ }),
 /* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(40);
-$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(619).set});
-
-/***/ }),
-/* 619 */
-/***/ (function(module, exports, __webpack_require__) {
-
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(70)
-  , anObject = __webpack_require__(54);
+var isObject = __webpack_require__(71)
+  , anObject = __webpack_require__(55);
 var check = function(O, proto){
   anObject(O);
   if(!isObject(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
@@ -67719,23 +67721,23 @@ module.exports = {
 };
 
 /***/ }),
+/* 619 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(620), __esModule: true };
+
+/***/ }),
 /* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(621), __esModule: true };
-
-/***/ }),
-/* 621 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(622);
+__webpack_require__(621);
 var $Object = __webpack_require__(33).Object;
 module.exports = function create(P, D){
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 622 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(40)
@@ -67743,14 +67745,14 @@ var $export = __webpack_require__(40)
 $export($export.S, 'Object', {create: __webpack_require__(150)});
 
 /***/ }),
-/* 623 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(624);
+__webpack_require__(623);
 module.exports = __webpack_require__(33).Object.entries;
 
 /***/ }),
-/* 624 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -67764,11 +67766,11 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 625 */
+/* 624 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
@@ -67861,14 +67863,14 @@ Alert.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsStyles"])(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(__WEBPACK_IMPORTED_MODULE_10__utils_StyleConfig__["d" /* State */]), __WEBPACK_IMPORTED_MODULE_10__utils_StyleConfig__["d" /* State */].INFO, Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('alert', Alert)));
 
 /***/ }),
-/* 626 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(627);
+__webpack_require__(626);
 module.exports = __webpack_require__(33).Object.values;
 
 /***/ }),
-/* 627 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -67882,7 +67884,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 628 */
+/* 627 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67985,7 +67987,7 @@ Badge.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('badge', Badge));
 
 /***/ }),
-/* 629 */
+/* 628 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68051,7 +68053,7 @@ Breadcrumb.Item = __WEBPACK_IMPORTED_MODULE_7__BreadcrumbItem__["a" /* default *
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('breadcrumb', Breadcrumb));
 
 /***/ }),
-/* 630 */
+/* 629 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68112,7 +68114,7 @@ var ButtonToolbar = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('btn-toolbar', ButtonToolbar));
 
 /***/ }),
-/* 631 */
+/* 630 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68132,7 +68134,7 @@ var ButtonToolbar = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__CarouselCaption__ = __webpack_require__(632);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__CarouselCaption__ = __webpack_require__(631);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__CarouselItem__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Glyphicon__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__SafeAnchor__ = __webpack_require__(35);
@@ -68565,7 +68567,7 @@ Carousel.Item = __WEBPACK_IMPORTED_MODULE_9__CarouselItem__["a" /* default */];
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["bsClass"])('carousel', Carousel));
 
 /***/ }),
-/* 632 */
+/* 631 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68640,7 +68642,7 @@ CarouselCaption.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('carousel-caption', CarouselCaption));
 
 /***/ }),
-/* 633 */
+/* 632 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68755,7 +68757,7 @@ var ReactTransitionEvents = {
 /* harmony default export */ __webpack_exports__["a"] = (ReactTransitionEvents);
 
 /***/ }),
-/* 634 */
+/* 633 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68891,7 +68893,7 @@ Checkbox.defaultProps = defaultProps;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 635 */
+/* 634 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69015,7 +69017,7 @@ Clearfix.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('clearfix', Clearfix));
 
 /***/ }),
-/* 636 */
+/* 635 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69113,7 +69115,7 @@ ControlLabel.contextTypes = contextTypes;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 637 */
+/* 636 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69378,7 +69380,7 @@ Col.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('col', Col));
 
 /***/ }),
-/* 638 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69398,7 +69400,7 @@ function camelize(string) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 639 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69409,7 +69411,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = hyphenateStyleName;
 
-var _hyphenate = __webpack_require__(640);
+var _hyphenate = __webpack_require__(639);
 
 var _hyphenate2 = _interopRequireDefault(_hyphenate);
 
@@ -69427,7 +69429,7 @@ function hyphenateStyleName(string) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 640 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69446,7 +69448,7 @@ function hyphenate(string) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 641 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69507,7 +69509,7 @@ function _getComputedStyle(node) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 642 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69523,7 +69525,7 @@ function removeStyle(node, key) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 643 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69541,7 +69543,7 @@ function isTransform(property) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 644 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69557,11 +69559,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _invariant = __webpack_require__(66);
+var _invariant = __webpack_require__(67);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _utils = __webpack_require__(645);
+var _utils = __webpack_require__(644);
 
 var utils = _interopRequireWildcard(_utils);
 
@@ -69742,7 +69744,7 @@ function createUncontrollable(mixin, set) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 645 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69765,7 +69767,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _invariant = __webpack_require__(66);
+var _invariant = __webpack_require__(67);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -69865,7 +69867,7 @@ function isReactComponent(component) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 646 */
+/* 645 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69873,7 +69875,7 @@ function isReactComponent(component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_array_from__ = __webpack_require__(647);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_array_from__ = __webpack_require__(646);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_array_from___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_array_from__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_classCallCheck__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_classCallCheck__);
@@ -70057,21 +70059,21 @@ DropdownMenu.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__["bsClass"])('dropdown-menu', DropdownMenu));
 
 /***/ }),
+/* 646 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(647), __esModule: true };
+
+/***/ }),
 /* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(648), __esModule: true };
-
-/***/ }),
-/* 648 */
-/***/ (function(module, exports, __webpack_require__) {
-
 __webpack_require__(235);
-__webpack_require__(649);
+__webpack_require__(648);
 module.exports = __webpack_require__(33).Array.from;
 
 /***/ }),
-/* 649 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70079,13 +70081,13 @@ module.exports = __webpack_require__(33).Array.from;
 var ctx            = __webpack_require__(138)
   , $export        = __webpack_require__(40)
   , toObject       = __webpack_require__(147)
-  , call           = __webpack_require__(650)
-  , isArrayIter    = __webpack_require__(651)
+  , call           = __webpack_require__(649)
+  , isArrayIter    = __webpack_require__(650)
   , toLength       = __webpack_require__(234)
-  , createProperty = __webpack_require__(652)
-  , getIterFn      = __webpack_require__(653);
+  , createProperty = __webpack_require__(651)
+  , getIterFn      = __webpack_require__(652);
 
-$export($export.S + $export.F * !__webpack_require__(655)(function(iter){ Array.from(iter); }), 'Array', {
+$export($export.S + $export.F * !__webpack_require__(654)(function(iter){ Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
     var O       = toObject(arrayLike)
@@ -70115,11 +70117,11 @@ $export($export.S + $export.F * !__webpack_require__(655)(function(iter){ Array.
 
 
 /***/ }),
-/* 650 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(54);
+var anObject = __webpack_require__(55);
 module.exports = function(iterator, fn, value, entries){
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -70132,11 +70134,11 @@ module.exports = function(iterator, fn, value, entries){
 };
 
 /***/ }),
-/* 651 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
-var Iterators  = __webpack_require__(74)
+var Iterators  = __webpack_require__(75)
   , ITERATOR   = __webpack_require__(34)('iterator')
   , ArrayProto = Array.prototype;
 
@@ -70145,13 +70147,13 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 652 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $defineProperty = __webpack_require__(46)
-  , createDesc      = __webpack_require__(72);
+  , createDesc      = __webpack_require__(73);
 
 module.exports = function(object, index, value){
   if(index in object)$defineProperty.f(object, index, createDesc(0, value));
@@ -70159,12 +70161,12 @@ module.exports = function(object, index, value){
 };
 
 /***/ }),
-/* 653 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof   = __webpack_require__(654)
+var classof   = __webpack_require__(653)
   , ITERATOR  = __webpack_require__(34)('iterator')
-  , Iterators = __webpack_require__(74);
+  , Iterators = __webpack_require__(75);
 module.exports = __webpack_require__(33).getIteratorMethod = function(it){
   if(it != undefined)return it[ITERATOR]
     || it['@@iterator']
@@ -70172,7 +70174,7 @@ module.exports = __webpack_require__(33).getIteratorMethod = function(it){
 };
 
 /***/ }),
-/* 654 */
+/* 653 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
@@ -70200,7 +70202,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 655 */
+/* 654 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ITERATOR     = __webpack_require__(34)('iterator')
@@ -70226,7 +70228,7 @@ module.exports = function(exec, skipClosing){
 };
 
 /***/ }),
-/* 656 */
+/* 655 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70296,7 +70298,7 @@ function exclusiveRoles() {
 }
 
 /***/ }),
-/* 657 */
+/* 656 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70393,7 +70395,7 @@ DropdownButton.propTypes = propTypes;
 /* harmony default export */ __webpack_exports__["a"] = (DropdownButton);
 
 /***/ }),
-/* 658 */
+/* 657 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70483,7 +70485,7 @@ Form.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('form', Form));
 
 /***/ }),
-/* 659 */
+/* 658 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70507,8 +70509,8 @@ Form.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_elementType___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_elementType__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_warning__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__FormControlFeedback__ = __webpack_require__(660);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__FormControlStatic__ = __webpack_require__(661);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__FormControlFeedback__ = __webpack_require__(659);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__FormControlStatic__ = __webpack_require__(660);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__utils_bootstrapUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__utils_StyleConfig__ = __webpack_require__(25);
 
@@ -70620,7 +70622,7 @@ FormControl.Static = __WEBPACK_IMPORTED_MODULE_11__FormControlStatic__["a" /* de
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 660 */
+/* 659 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70727,7 +70729,7 @@ FormControlFeedback.contextTypes = contextTypes;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('form-control-feedback', FormControlFeedback));
 
 /***/ }),
-/* 661 */
+/* 660 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70802,7 +70804,7 @@ FormControlStatic.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('form-control-static', FormControlStatic));
 
 /***/ }),
-/* 662 */
+/* 661 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70917,7 +70919,7 @@ FormGroup.childContextTypes = childContextTypes;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('form-group', Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsSizes"])([__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].SMALL], FormGroup)));
 
 /***/ }),
-/* 663 */
+/* 662 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70977,7 +70979,7 @@ var HelpBlock = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('help-block', HelpBlock));
 
 /***/ }),
-/* 664 */
+/* 663 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71078,7 +71080,7 @@ Image.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('img', Image));
 
 /***/ }),
-/* 665 */
+/* 664 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71096,8 +71098,8 @@ Image.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__InputGroupAddon__ = __webpack_require__(666);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__InputGroupButton__ = __webpack_require__(667);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__InputGroupAddon__ = __webpack_require__(665);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__InputGroupButton__ = __webpack_require__(666);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__utils_StyleConfig__ = __webpack_require__(25);
 
@@ -71147,7 +71149,7 @@ InputGroup.Button = __WEBPACK_IMPORTED_MODULE_8__InputGroupButton__["a" /* defau
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('input-group', Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsSizes"])([__WEBPACK_IMPORTED_MODULE_10__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_10__utils_StyleConfig__["c" /* Size */].SMALL], InputGroup)));
 
 /***/ }),
-/* 666 */
+/* 665 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71207,7 +71209,7 @@ var InputGroupAddon = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('input-group-addon', InputGroupAddon));
 
 /***/ }),
-/* 667 */
+/* 666 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71267,7 +71269,7 @@ var InputGroupButton = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('input-group-btn', InputGroupButton));
 
 /***/ }),
-/* 668 */
+/* 667 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71342,11 +71344,11 @@ Jumbotron.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('jumbotron', Jumbotron));
 
 /***/ }),
-/* 669 */
+/* 668 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
@@ -71432,7 +71434,7 @@ var Label = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('label', Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsStyles"])([].concat(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["d" /* State */]), [__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["e" /* Style */].DEFAULT, __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["e" /* Style */].PRIMARY]), __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["e" /* Style */].DEFAULT, Label)));
 
 /***/ }),
-/* 670 */
+/* 669 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71539,7 +71541,7 @@ ListGroup.propTypes = propTypes;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('list-group', ListGroup));
 
 /***/ }),
-/* 671 */
+/* 670 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71614,7 +71616,7 @@ MediaBody.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('media-body', MediaBody));
 
 /***/ }),
-/* 672 */
+/* 671 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71689,7 +71691,7 @@ MediaHeading.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('media-heading', MediaHeading));
 
 /***/ }),
-/* 673 */
+/* 672 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71769,7 +71771,7 @@ MediaLeft.propTypes = propTypes;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('media-left', MediaLeft));
 
 /***/ }),
-/* 674 */
+/* 673 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71829,7 +71831,7 @@ var MediaList = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('media-list', MediaList));
 
 /***/ }),
-/* 675 */
+/* 674 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71889,7 +71891,7 @@ var MediaListItem = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('media', MediaListItem));
 
 /***/ }),
-/* 676 */
+/* 675 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71969,7 +71971,7 @@ MediaRight.propTypes = propTypes;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('media-right', MediaRight));
 
 /***/ }),
-/* 677 */
+/* 676 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72156,7 +72158,7 @@ MenuItem.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__["bsClass"])('dropdown', MenuItem));
 
 /***/ }),
-/* 678 */
+/* 677 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72172,9 +72174,9 @@ MenuItem.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_classnames__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_dom_helpers_events__ = __webpack_require__(679);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_dom_helpers_events__ = __webpack_require__(678);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_dom_helpers_events___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_dom_helpers_events__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_dom_helpers_ownerDocument__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_dom_helpers_ownerDocument__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_dom_helpers_ownerDocument___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_dom_helpers_ownerDocument__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_dom_helpers_util_inDOM__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_dom_helpers_util_inDOM___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_dom_helpers_util_inDOM__);
@@ -72186,7 +72188,7 @@ MenuItem.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_overlays_lib_Modal__ = __webpack_require__(683);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_overlays_lib_Modal__ = __webpack_require__(682);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_overlays_lib_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_react_overlays_lib_Modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_react_overlays_lib_utils_isOverflowing__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_react_overlays_lib_utils_isOverflowing___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_react_overlays_lib_utils_isOverflowing__);
@@ -72194,7 +72196,7 @@ MenuItem.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_prop_types_extra_lib_elementType___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_prop_types_extra_lib_elementType__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Fade__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ModalBody__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ModalDialog__ = __webpack_require__(690);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ModalDialog__ = __webpack_require__(689);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ModalFooter__ = __webpack_require__(262);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ModalHeader__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ModalTitle__ = __webpack_require__(264);
@@ -72485,7 +72487,7 @@ Modal.BACKDROP_TRANSITION_DURATION = 150;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_22__utils_bootstrapUtils__["bsClass"])('modal', Object(__WEBPACK_IMPORTED_MODULE_22__utils_bootstrapUtils__["bsSizes"])([__WEBPACK_IMPORTED_MODULE_25__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_25__utils_StyleConfig__["c" /* Size */].SMALL], Modal)));
 
 /***/ }),
-/* 679 */
+/* 678 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72504,11 +72506,11 @@ var _off = __webpack_require__(160);
 
 var _off2 = _interopRequireDefault(_off);
 
-var _filter = __webpack_require__(680);
+var _filter = __webpack_require__(679);
 
 var _filter2 = _interopRequireDefault(_filter);
 
-var _listen = __webpack_require__(682);
+var _listen = __webpack_require__(681);
 
 var _listen2 = _interopRequireDefault(_listen);
 
@@ -72521,7 +72523,7 @@ exports.listen = _listen2.default;
 exports.default = { on: _on2.default, off: _off2.default, filter: _filter2.default, listen: _listen2.default };
 
 /***/ }),
-/* 680 */
+/* 679 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72532,11 +72534,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = filterEvents;
 
-var _contains = __webpack_require__(59);
+var _contains = __webpack_require__(60);
 
 var _contains2 = _interopRequireDefault(_contains);
 
-var _querySelectorAll = __webpack_require__(681);
+var _querySelectorAll = __webpack_require__(680);
 
 var _querySelectorAll2 = _interopRequireDefault(_querySelectorAll);
 
@@ -72556,7 +72558,7 @@ function filterEvents(selector, handler) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 681 */
+/* 680 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72595,7 +72597,7 @@ function qsa(element, selector) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 682 */
+/* 681 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72634,7 +72636,7 @@ exports.default = listen;
 module.exports = exports['default'];
 
 /***/ }),
-/* 683 */
+/* 682 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72672,11 +72674,11 @@ var _Portal = __webpack_require__(258);
 
 var _Portal2 = _interopRequireDefault(_Portal);
 
-var _ModalManager = __webpack_require__(684);
+var _ModalManager = __webpack_require__(683);
 
 var _ModalManager2 = _interopRequireDefault(_ModalManager);
 
-var _ownerDocument = __webpack_require__(77);
+var _ownerDocument = __webpack_require__(78);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -72684,7 +72686,7 @@ var _addEventListener = __webpack_require__(251);
 
 var _addEventListener2 = _interopRequireDefault(_addEventListener);
 
-var _addFocusListener = __webpack_require__(689);
+var _addFocusListener = __webpack_require__(688);
 
 var _addFocusListener2 = _interopRequireDefault(_addFocusListener);
 
@@ -72696,7 +72698,7 @@ var _activeElement = __webpack_require__(249);
 
 var _activeElement2 = _interopRequireDefault(_activeElement);
 
-var _contains = __webpack_require__(59);
+var _contains = __webpack_require__(60);
 
 var _contains2 = _interopRequireDefault(_contains);
 
@@ -73248,7 +73250,7 @@ exports.default = Modal;
 module.exports = exports['default'];
 
 /***/ }),
-/* 684 */
+/* 683 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73262,7 +73264,7 @@ var _style = __webpack_require__(92);
 
 var _style2 = _interopRequireDefault(_style);
 
-var _class = __webpack_require__(685);
+var _class = __webpack_require__(684);
 
 var _class2 = _interopRequireDefault(_class);
 
@@ -73274,7 +73276,7 @@ var _isOverflowing = __webpack_require__(260);
 
 var _isOverflowing2 = _interopRequireDefault(_isOverflowing);
 
-var _manageAriaHidden = __webpack_require__(688);
+var _manageAriaHidden = __webpack_require__(687);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73432,7 +73434,7 @@ exports.default = ModalManager;
 module.exports = exports['default'];
 
 /***/ }),
-/* 685 */
+/* 684 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73443,11 +73445,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hasClass = exports.removeClass = exports.addClass = undefined;
 
-var _addClass = __webpack_require__(686);
+var _addClass = __webpack_require__(685);
 
 var _addClass2 = _interopRequireDefault(_addClass);
 
-var _removeClass = __webpack_require__(687);
+var _removeClass = __webpack_require__(686);
 
 var _removeClass2 = _interopRequireDefault(_removeClass);
 
@@ -73463,7 +73465,7 @@ exports.hasClass = _hasClass2.default;
 exports.default = { addClass: _addClass2.default, removeClass: _removeClass2.default, hasClass: _hasClass2.default };
 
 /***/ }),
-/* 686 */
+/* 685 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73486,7 +73488,7 @@ function addClass(element, className) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 687 */
+/* 686 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73497,7 +73499,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 688 */
+/* 687 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73552,7 +73554,7 @@ function showSiblings(container, mountNode) {
 }
 
 /***/ }),
-/* 689 */
+/* 688 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73589,7 +73591,7 @@ function addFocusListener(handler) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 690 */
+/* 689 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73687,7 +73689,7 @@ ModalDialog.propTypes = propTypes;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('modal', Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsSizes"])([__WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_9__utils_StyleConfig__["c" /* Size */].SMALL], ModalDialog)));
 
 /***/ }),
-/* 691 */
+/* 690 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73709,13 +73711,13 @@ ModalDialog.propTypes = propTypes;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_elementType__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_elementType___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_prop_types_extra_lib_elementType__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_uncontrollable__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_uncontrollable__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_uncontrollable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_uncontrollable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Grid__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__NavbarBrand__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__NavbarCollapse__ = __webpack_require__(692);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__NavbarHeader__ = __webpack_require__(693);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__NavbarToggle__ = __webpack_require__(694);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__NavbarCollapse__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__NavbarHeader__ = __webpack_require__(692);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__NavbarToggle__ = __webpack_require__(693);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__utils_bootstrapUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__utils_StyleConfig__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__utils_createChainedFunction__ = __webpack_require__(21);
@@ -73998,7 +74000,7 @@ UncontrollableNavbar.Link = createSimpleWrapper('a', 'link', 'NavbarLink');
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_15__utils_bootstrapUtils__["bsStyles"])([__WEBPACK_IMPORTED_MODULE_16__utils_StyleConfig__["e" /* Style */].DEFAULT, __WEBPACK_IMPORTED_MODULE_16__utils_StyleConfig__["e" /* Style */].INVERSE], __WEBPACK_IMPORTED_MODULE_16__utils_StyleConfig__["e" /* Style */].DEFAULT, UncontrollableNavbar));
 
 /***/ }),
-/* 692 */
+/* 691 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74073,7 +74075,7 @@ NavbarCollapse.contextTypes = contextTypes;
 /* harmony default export */ __webpack_exports__["a"] = (NavbarCollapse);
 
 /***/ }),
-/* 693 */
+/* 692 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74140,7 +74142,7 @@ NavbarHeader.contextTypes = contextTypes;
 /* harmony default export */ __webpack_exports__["a"] = (NavbarHeader);
 
 /***/ }),
-/* 694 */
+/* 693 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74246,7 +74248,7 @@ NavbarToggle.contextTypes = contextTypes;
 /* harmony default export */ __webpack_exports__["a"] = (NavbarToggle);
 
 /***/ }),
-/* 695 */
+/* 694 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74378,7 +74380,7 @@ NavDropdown.propTypes = propTypes;
 /* harmony default export */ __webpack_exports__["a"] = (NavDropdown);
 
 /***/ }),
-/* 696 */
+/* 695 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74404,7 +74406,7 @@ var _Portal = __webpack_require__(258);
 
 var _Portal2 = _interopRequireDefault(_Portal);
 
-var _Position = __webpack_require__(697);
+var _Position = __webpack_require__(696);
 
 var _Position2 = _interopRequireDefault(_Position);
 
@@ -74615,7 +74617,7 @@ exports.default = Overlay;
 module.exports = exports['default'];
 
 /***/ }),
-/* 697 */
+/* 696 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74649,7 +74651,7 @@ var _componentOrElement = __webpack_require__(162);
 
 var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
 
-var _calculatePosition = __webpack_require__(698);
+var _calculatePosition = __webpack_require__(697);
 
 var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
 
@@ -74657,7 +74659,7 @@ var _getContainer = __webpack_require__(163);
 
 var _getContainer2 = _interopRequireDefault(_getContainer);
 
-var _ownerDocument = __webpack_require__(77);
+var _ownerDocument = __webpack_require__(78);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -74834,7 +74836,7 @@ exports.default = Position;
 module.exports = exports['default'];
 
 /***/ }),
-/* 698 */
+/* 697 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74849,7 +74851,7 @@ var _offset = __webpack_require__(269);
 
 var _offset2 = _interopRequireDefault(_offset);
 
-var _position = __webpack_require__(699);
+var _position = __webpack_require__(698);
 
 var _position2 = _interopRequireDefault(_position);
 
@@ -74857,7 +74859,7 @@ var _scrollTop = __webpack_require__(270);
 
 var _scrollTop2 = _interopRequireDefault(_scrollTop);
 
-var _ownerDocument = __webpack_require__(77);
+var _ownerDocument = __webpack_require__(78);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -74969,7 +74971,7 @@ function calculatePosition(placement, overlayNode, target, container, padding) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 699 */
+/* 698 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74987,7 +74989,7 @@ var _offset = __webpack_require__(269);
 
 var _offset2 = _interopRequireDefault(_offset);
 
-var _offsetParent = __webpack_require__(700);
+var _offsetParent = __webpack_require__(699);
 
 var _offsetParent2 = _interopRequireDefault(_offsetParent);
 
@@ -74995,7 +74997,7 @@ var _scrollTop = __webpack_require__(270);
 
 var _scrollTop2 = _interopRequireDefault(_scrollTop);
 
-var _scrollLeft = __webpack_require__(701);
+var _scrollLeft = __webpack_require__(700);
 
 var _scrollLeft2 = _interopRequireDefault(_scrollLeft);
 
@@ -75036,7 +75038,7 @@ function position(node, offsetParent) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 700 */
+/* 699 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75047,7 +75049,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = offsetParent;
 
-var _ownerDocument = __webpack_require__(58);
+var _ownerDocument = __webpack_require__(59);
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
 
@@ -75074,7 +75076,7 @@ function offsetParent(node) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 701 */
+/* 700 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75101,7 +75103,7 @@ function scrollTop(node, val) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 702 */
+/* 701 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75115,7 +75117,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_inherits__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_extends__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_dom_helpers_query_contains__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_dom_helpers_query_contains__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_dom_helpers_query_contains___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_dom_helpers_query_contains__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
@@ -75440,7 +75442,7 @@ OverlayTrigger.defaultProps = defaultProps;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 703 */
+/* 702 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75509,19 +75511,19 @@ var PageHeader = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('page-header', PageHeader));
 
 /***/ }),
-/* 704 */
+/* 703 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PagerItem__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_deprecationWarning__ = __webpack_require__(705);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_deprecationWarning__ = __webpack_require__(704);
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_1__utils_deprecationWarning__["a" /* default */].wrapper(__WEBPACK_IMPORTED_MODULE_0__PagerItem__["a" /* default */], '`<PageItem>`', '`<Pager.Item>`'));
 
 /***/ }),
-/* 705 */
+/* 704 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75605,7 +75607,7 @@ function _resetWarned() {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 706 */
+/* 705 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75692,7 +75694,7 @@ Pager.Item = __WEBPACK_IMPORTED_MODULE_8__PagerItem__["a" /* default */];
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('pager', Pager));
 
 /***/ }),
-/* 707 */
+/* 706 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75979,11 +75981,11 @@ Pagination.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__["bsClass"])('pagination', Pagination));
 
 /***/ }),
-/* 708 */
+/* 707 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties__);
@@ -76233,7 +76235,7 @@ Panel.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__["bsClass"])('panel', Object(__WEBPACK_IMPORTED_MODULE_10__utils_bootstrapUtils__["bsStyles"])([].concat(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(__WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["d" /* State */]), [__WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["e" /* Style */].DEFAULT, __WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["e" /* Style */].PRIMARY]), __WEBPACK_IMPORTED_MODULE_11__utils_StyleConfig__["e" /* Style */].DEFAULT, Panel)));
 
 /***/ }),
-/* 709 */
+/* 708 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76380,11 +76382,11 @@ Popover.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('popover', Popover));
 
 /***/ }),
-/* 710 */
+/* 709 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
@@ -76572,7 +76574,7 @@ ProgressBar.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('progress-bar', Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsStyles"])(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(__WEBPACK_IMPORTED_MODULE_10__utils_StyleConfig__["d" /* State */]), ProgressBar)));
 
 /***/ }),
-/* 711 */
+/* 710 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76708,7 +76710,7 @@ Radio.defaultProps = defaultProps;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 712 */
+/* 711 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76812,7 +76814,7 @@ ResponsiveEmbed.defaultProps = defaultProps;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 713 */
+/* 712 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76887,7 +76889,7 @@ Row.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('row', Row));
 
 /***/ }),
-/* 714 */
+/* 713 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76905,9 +76907,9 @@ Row.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_prop_types__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Button__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Button__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Dropdown__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SplitToggle__ = __webpack_require__(715);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SplitToggle__ = __webpack_require__(714);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__utils_splitComponentProps__ = __webpack_require__(96);
 
 
@@ -77005,7 +77007,7 @@ SplitButton.Toggle = __WEBPACK_IMPORTED_MODULE_9__SplitToggle__["a" /* default *
 /* harmony default export */ __webpack_exports__["a"] = (SplitButton);
 
 /***/ }),
-/* 715 */
+/* 714 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77052,7 +77054,7 @@ SplitToggle.defaultProps = __WEBPACK_IMPORTED_MODULE_5__DropdownToggle__["a" /* 
 /* harmony default export */ __webpack_exports__["a"] = (SplitToggle);
 
 /***/ }),
-/* 716 */
+/* 715 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77126,7 +77128,7 @@ Tab.Pane = __WEBPACK_IMPORTED_MODULE_8__TabPane__["a" /* default */];
 /* harmony default export */ __webpack_exports__["a"] = (Tab);
 
 /***/ }),
-/* 717 */
+/* 716 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77225,7 +77227,7 @@ Table.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8__utils_bootstrapUtils__["bsClass"])('table', Table));
 
 /***/ }),
-/* 718 */
+/* 717 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77245,7 +77247,7 @@ Table.defaultProps = defaultProps;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types_extra_lib_isRequiredForA11y__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_prop_types_extra_lib_isRequiredForA11y___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_prop_types_extra_lib_isRequiredForA11y__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uncontrollable__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uncontrollable__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uncontrollable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_uncontrollable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Nav__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__NavItem__ = __webpack_require__(267);
@@ -77422,7 +77424,7 @@ Object(__WEBPACK_IMPORTED_MODULE_13__utils_bootstrapUtils__["bsClass"])('tab', T
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_8_uncontrollable___default()(Tabs, { activeKey: 'onSelect' }));
 
 /***/ }),
-/* 719 */
+/* 718 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77527,7 +77529,7 @@ Thumbnail.propTypes = propTypes;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('thumbnail', Thumbnail));
 
 /***/ }),
-/* 720 */
+/* 719 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77545,9 +77547,9 @@ Thumbnail.propTypes = propTypes;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_invariant__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_invariant__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uncontrollable__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uncontrollable__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_uncontrollable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_uncontrollable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_createChainedFunction__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__utils_ValidComponentChildren__ = __webpack_require__(26);
@@ -77697,7 +77699,7 @@ UncontrolledToggleButtonGroup.Button = __WEBPACK_IMPORTED_MODULE_12__ToggleButto
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 721 */
+/* 720 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77832,7 +77834,7 @@ Tooltip.defaultProps = defaultProps;
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9__utils_bootstrapUtils__["bsClass"])('tooltip', Tooltip));
 
 /***/ }),
-/* 722 */
+/* 721 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77894,7 +77896,7 @@ var Well = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsClass"])('well', Object(__WEBPACK_IMPORTED_MODULE_7__utils_bootstrapUtils__["bsSizes"])([__WEBPACK_IMPORTED_MODULE_8__utils_StyleConfig__["c" /* Size */].LARGE, __WEBPACK_IMPORTED_MODULE_8__utils_StyleConfig__["c" /* Size */].SMALL], Well)));
 
 /***/ }),
-/* 723 */
+/* 722 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77913,13 +77915,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 724 */
+/* 723 */
 /***/ (function(module, exports) {
 
 module.exports = {"access-private":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M251.398 67.167c1.477-.142 0 0 0 0zm0 0c-39.869 3.663-62.133 36.377-62.133 36.377s-12.637 14.369-9.087 30.073c4.771 21.212 11.643 39.018 3.407 58.187-3.692 8.661 6.134 27.857 6.446 30.924 1.505 14.341 22.234 21.866 24.506 62.618 2.272 40.75-118.472 67.896-118.472 67.896V416h319.867v-62.758s-120.744-27.148-118.474-67.896c2.272-40.751 23.002-48.277 24.507-62.618.313-3.066 10.137-22.263 6.446-30.924-8.236-19.169-1.363-36.974 3.407-58.187 3.55-15.704-9.087-30.073-9.087-30.073S300.471 70.83 260.6 67.167c-1.534-.17-7.725-.142-9.202 0zm9.202 0s-1.534-.17 0 0z\"/></svg>","access-secured":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M276.029 67.131a37.2 37.2 0 0 1 .324-.03l-.324.03zM276.004 67.133l.025-.002-.025.002zM275.736 67.158a7.03 7.03 0 0 1 .104-.01l-.104.01zM276.354 67.101c.011-.001.011-.001 0 0zM275.842 67.148a.63.63 0 0 0 .041-.004l-.041.004zM275.883 67.145l.121-.011a3.193 3.193 0 0 0-.121.011zM283.864 67.091c-.027-.003-.03-.003 0 0zM284.491 67.158l-.04-.004.04.004zM284.371 67.146l-.507-.055.507.055zM284.451 67.154l-.08-.008.08.008zM113.664 140.567l.03-.003-.03.003zM113.426 140.591l.238-.024a24.22 24.22 0 0 1-.238.024zM113.272 140.606l.134-.013a4.788 4.788 0 0 1-.134.013zM113.406 140.593l.02-.002-.02.002zM119.832 140.593l-.017-.001.017.001zM119.551 140.567c-.086-.007-.104-.009 0 0zM119.815 140.591l-.264-.024.264.024zM113.694 140.564c.042-.004.053-.005 0 0zM119.982 140.606l-.15-.014c.084.009.15.014.15.014z\"/><g><path d=\"M284.491 67.158c-1.468-.157-7.341-.132-8.755 0-37.904 3.67-59.058 36.383-59.058 36.383s-12.032 14.365-8.677 30.041c4.561 21.232 11.062 39.057 3.25 58.219-3.513 8.65 5.819 27.864 6.134 30.932 1.442 14.338 21.154 21.888 23.304 62.623 1.289 24.42-39.459 43.955-72.311 55.689-12.763-7.941-22.156-17.471-21.606-28.191 1.625-32.164 16.724-38.113 17.825-49.438.209-2.411 7.365-17.589 4.665-24.404-5.977-15.15-.996-29.201 2.49-45.978 2.596-12.372-6.632-23.696-6.632-23.696s-16.146-25.846-45.139-28.729c-1.153-.104-5.662-.104-6.71 0-28.992 2.884-45.191 28.729-45.191 28.729s-9.018 11.298-6.605 23.696c3.276 16.882 8.44 30.827 2.464 45.978-2.674 6.815 4.456 21.993 4.718 24.404 1.075 11.324 16.147 17.273 17.799 49.438C88.107 345.016.294 366.458.294 366.458V416h351.407v-62.754s-34.286-27.156-32.137-67.893c2.147-40.733 21.859-48.285 23.275-62.623.314-3.067 9.646-22.281 6.134-30.932-7.812-19.162-1.311-36.986 3.25-58.219 3.384-15.675-8.648-30.04-8.648-30.04s-21.127-32.711-59.084-36.381zM496.014 337.053V288c0-15.287-15.731-42.292-47.981-42.292-31.75 0-48.042 25.511-48.042 42.292v49.053H384V448h127.501V337.053h-15.487zm-63.974-.001l-.04-39.03s.131-26.021 16.03-26.021c16.18 0 15.97 26.021 15.97 26.021l.024 39.03H432.04z\"/></g></svg>","access-shared":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M323.779 67.112l.126-.011-.126.011zM323.497 67.139l.282-.026-.282.026zM323.905 67.101c.012-.001.012-.001 0 0zM323.288 67.158l.035-.003-.035.003zM323.475 67.141l.022-.002-.022.002zM323.323 67.155l.149-.014-.149.014z\"/><path d=\"M367.116 285.354c2.147-40.731 21.858-48.284 23.274-62.622.314-3.067 9.646-22.281 6.137-30.932-7.813-19.162-1.312-36.986 3.25-58.219 3.382-15.675-8.65-30.04-8.65-30.04S370 70.828 332.043 67.158c-1.468-.157-7.34-.131-8.755 0-37.904 3.67-59.058 36.384-59.058 36.384s-12.034 14.365-8.68 30.04c4.562 21.232 11.062 39.057 3.251 58.219-3.513 8.65 5.819 27.864 6.136 30.932 1.439 14.338 21.151 21.888 23.304 62.623 1.421 26.936-48.295 47.929-82.152 59.063-15.595-8.56-28.023-19.28-27.392-31.567 1.625-32.164 16.724-38.114 17.825-49.438.21-2.411 7.366-17.589 4.666-24.403-5.977-15.151-.996-29.202 2.49-45.978 2.595-12.373-6.632-23.697-6.632-23.697s-16.147-25.846-45.139-28.729c-1.152-.105-5.66-.105-6.709 0-28.992 2.883-45.191 28.729-45.191 28.729s-9.018 11.298-6.606 23.697c3.277 16.881 8.44 30.826 2.464 45.978-2.673 6.814 4.457 21.992 4.719 24.403 1.075 11.324 16.147 17.273 17.798 49.438 1.651 32.162-86.162 53.604-86.162 53.604V416H480l-.221-62.754s-114.813-27.156-112.663-67.892zM332.043 67.158l-.04-.004.04.004z\"/><path d=\"M331.416 67.091c-.027-.003-.03-.003 0 0zM332.003 67.154l-.08-.008.08.008zM331.923 67.146l-.507-.055.507.055zM151.54 140.572l.369.034-.369-.034zM151.54 140.572c-.211-.019-.141-.012 0 0zM145.198 140.606l.345-.035-.345.035zM145.543 140.571c.12-.011.173-.017 0 0z\"/></svg>","activity":"<svg viewbox=\"0 0 20 20\"><path d=\"M0 10c0 5.52 4.466 10 9.989 10 5.53 0 10.01-4.478 10.01-10 0-5.52-4.478-10-10.01-10C4.469 0 0 4.478 0 10m10.04-8c4.44 0 8.05 3.589 8.05 8s-3.612 8-8.05 8c-4.428 0-8.03-3.589-8.03-8s3.603-8 8.03-8\"/><path d=\"M9 5.991C9 5.451 9.45 5 10.01 5c.559 0 1 .444 1 .991l-.009 4.596 2.742 2.742a.994.994 0 0 1-.005 1.409.997.997 0 0 1-1.409.005L9 11.414V5.991\"/></svg>","add":"<svg viewbox=\"0 0 18 18\"><path d=\"M13 8h-3V5a1 1 0 0 0-2 0v3H5a1 1 0 0 0 0 2h3v3a1 1 0 1 0 2 0v-3h3a1 1 0 1 0 0-2\"/><path d=\"M8.991 16C5.136 16 2 12.86 2 9s3.136-7 6.991-7c3.865 0 7.01 3.14 7.01 7s-3.144 7-7.01 7m0-16C4.023 0 0 4.03 0 9c0 4.968 4.02 9 8.991 9 4.977 0 9.01-4.03 9.01-9 0-4.968-4.03-9-9.01-9\"/></svg>","arrow-bottom-rounded":"<svg viewbox=\"0 0 12.6 7.2\"><path d=\"M.945.046c.3 0 .5.1.7.3l4.6 4.6 4.6-4.6c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-5.2 5.2c-.4.4-1.2.4-1.6 0l-5.2-5.2c-.4-.4-.4-1 0-1.4.2-.2.4-.3.7-.3\"/></svg>","arrow-bottom":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M127.315 128.628l-63.999 64.001L254.897 384.21l191.788-191.789-64-64L254.897 256.21z\"/></svg>","arrow-left-rounded":"<svg viewbox=\"0 0 20 20\"><path d=\"M11.5 4.8L7.2 9.3c-.3.4-.3.9 0 1.3l4.3 4.6c.3.4.9.4 1.2 0 .3-.4.3-.9 0-1.3L9 9.9 12.7 6c.3-.4.3-.9 0-1.3-.3-.3-.9-.3-1.2.1z\"/></svg>","arrow-left":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M383.688 128.631l-64-64-191.583 191.581L319.895 448l64-64-127.79-127.788z\"/></svg>","arrow-right-rounded":"<svg viewbox=\"0 0 20 20\"><path d=\"M8.5 15.2l4.3-4.6c.3-.4.3-.9 0-1.3L8.4 4.8c-.3-.4-.9-.4-1.2 0-.3.4-.3.9 0 1.3l3.7 4L7.2 14c-.3.4-.3.9 0 1.3.4.3 1 .3 1.3-.1z\"/></svg>","arrow-right":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M128.313 384l64 64 191.582-191.581-191.79-191.788-64 64 127.79 127.788z\"/></svg>","arrow-top-rounded":"<svg viewbox=\"0 0 12.6 7.2\"><path d=\"M11.3 7.04c-.3 0-.5-.1-.7-.3L6 2.14l-4.6 4.6c-.4.4-1 .4-1.4 0s-.4-1 0-1.4L5.2.14c.4-.4 1.2-.4 1.6 0l5.2 5.2c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3\"/></svg>","arrow-top":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M382.685 384.003l63.999-64.001-191.581-191.581L63.315 320.21l64 64 127.788-127.789z\"/></svg>","asc-desc":"<svg viewbox=\"0 0 260 390\"><path class=\"asc-arrow\" d=\"M258 131L130 3 2 131\"/><path class=\"desc-arrow\" d=\"M1 259l128 128 128-128\"/></svg>","cancel":"<svg viewbox=\"0 0 18 18\"><path d=\"M12.536 11.121L10.414 9l2.122-2.121a1 1 0 0 0-1.415-1.415L9 7.586 6.879 5.464A1 1 0 0 0 5.464 6.88L7.586 9l-2.122 2.121a1 1 0 1 0 1.415 1.415L9 10.414l2.121 2.122a1 1 0 1 0 1.415-1.415\"/><path d=\"M8.991 16C5.136 16 2 12.86 2 9s3.136-7 6.991-7c3.865 0 7.01 3.14 7.01 7s-3.144 7-7.01 7m0-16C4.023 0 0 4.03 0 9c0 4.968 4.02 9 8.991 9 4.977 0 9.01-4.03 9.01-9 0-4.968-4.03-9-9.01-9\"/></svg>","card-data-add_content":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M479.75 352h-64v-64h-64v64h-64v64l64 .188V480h64v-64h64zM320.92 32.08v95.911l96 .179z\"/><path d=\"M32 416h224.75v-96h64v-64h96l.17-95.92-127.83.081-.34-128.162L32 32.08\"/></svg>","card-graph-add_content":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M512 352h-64v-64h-64v64h-64v64l64 .188V480h64v-64h64zM32 384V32H.272L0 416h288v-32z\"/><path d=\"M448 64L288 224l-112-96-112 96v128h224v-32h64v-64h96z\"/></svg>","card-move":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M160 192h192v-64H160v64zm0-96h192V32H160v64zm0 192h192v-64H160v64zm0 96h192v-64H160v64zm0 96h192v-64H160v64z\"/></svg>","card-table-add_content":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M511.625 352h-64v-64h-64v64h-64v64l64 .188V480h64v-64h64z\"/><path d=\"M320 320h32.625v-64H448V32l-128 .009M0 32.009h128V416H0zM160 32.004h128v383.991H160z\"/></svg>","card-type-BarChart-horizontal":"<svg viewbox=\"0 0 32 32\"><g fill=\"#f38130\"><path d=\"M7.03 24.996V7.003a1 1 0 0 1 1-1h.992a1 1 0 0 1 1 1v17.994a1 1 0 0 1-1 1H8.03c-.554-.001-1-.45-1-1M11 19v4h7l.001-4h-7m5.988 2.999h-4.981v-1.991h4.981v1.991M11 9v4h10l.001-4h-10m8.988 2.999h-7.981v-1.991h7.981v1.991M11 14v4h14l.001-4h-14m12.988 2.999H12.007v-1.991h11.981v1.991z\"/><path d=\"M32 30.006V1.994A1.994 1.994 0 0 0 30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006zM2 30V2h28v28H2z\"/></g></svg>","card-type-BarChart-vertical":"<svg viewbox=\"0 0 32 32\"><g fill=\"#f38130\"><path d=\"M24.996 24.975H7.003a1 1 0 0 1-1-1v-.992a1 1 0 0 1 1-1h17.994a1 1 0 0 1 1 1v.992c-.001.554-.45 1-1 1M19 20.999L23 21v-7h-4v7m2.999-5.988v4.981h-1.991v-4.981h1.991M9 20.999L13 21V11H9v10m2.999-8.988v7.981h-1.991v-7.981h1.991M14 20.999L18 21V7l-4-.001v14m2.999-12.988v11.981h-1.991V8.011h1.991\"/><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/></g></svg>","card-type-DetailedStatistics":"<svg viewbox=\"0 0 32 32\"><g fill=\"#296897\"><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/><path d=\"M6 7.996l-.001 4h20l.001-4H6m18.987 2.999H7.006V9.004h17.981v1.991M6 12.996l-.001 3h20l.001-3H6m18.987 1.999H7.006v-.991h17.981v.991M6 16.996l-.001 3h20l.001-3H6m18.987 1.999H7.006v-.991h17.981v.991M6 20.996l-.001 3h20l.001-3H6m18.987 1.999H7.006v-.991h17.981v.991\"/></g></svg>","card-type-LineChart-bar":"<svg viewbox=\"0 0 32 32\"><g fill=\"#00a78a\"><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/><path d=\"M24.997 24.975H7.003a1 1 0 0 1-1-1v-.992a1 1 0 0 1 1-1h17.994a1 1 0 0 1 1 1v.992a1 1 0 0 1-1 1M11 8v4H8v8.992L15 21V8l-4 .004m-2 4.982h2v7H9v-7m5 7h-2v-.011h.002V9.007H14v10.979M20 10v5h-3v5.992L24 21V10l-4 .004m-2 5.982h2l-.001 4h-2v-4zm5 4h-2v-.011h.002v-8.968H23v8.979\"/></g></svg>","card-type-LineChart-line":"<svg viewbox=\"0 0 32 32\"><g fill=\"#00a78a\"><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/><path d=\"M26 23.972v-.992a1 1 0 0 0-1-1H8.011v-5.446l3.329-2.208 3.492 3.848c.361.396.971.439 1.382.096l4.154-3.47 3.635 3.619v1.226a1 1 0 1 0 2 0v-1.642a1 1 0 0 0-.295-.709l-4.577-4.555a1.002 1.002 0 0 0-1.347-.059l-4.116 3.439-3.424-3.773a.999.999 0 0 0-1.293-.162l-2.939 1.949v-1.704l3.503-3.102 3.408 2.918a.999.999 0 0 0 1.04.161l4.314-1.826 3.726 2.896v1.153a1 1 0 1 0 2 0v-1.642c0-.309-.143-.6-.387-.79L21.04 8.643a.994.994 0 0 0-1-.131l-4.285 1.813-3.598-3.082a1 1 0 0 0-1.313.011l-2.83 2.505V6.99a.997.997 0 0 0-.997-.997h-.013a.998.998 0 0 0-.998.997V23.975a1 1 0 0 0 1 1H25a1 1 0 0 0 1-1\"/></g></svg>","card-type-Map":"<svg viewbox=\"0 0 32 32\"><path d=\"M30 0H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2m0 30H2V2h28v28\"/><path d=\"M16 26.5l-.6-1.1c-.6-1-6.1-10.3-6.1-13.3 0-3.2 3-5.9 6.8-5.9 3.7 0 6.8 2.6 6.8 5.9 0 3-5.5 12.2-6.1 13.3l-.8 1.1m0-18.8c-2.9 0-5.2 2-5.2 4.4 0 1.8 2.9 7.4 5.2 11.4 2.3-4 5.2-9.7 5.2-11.4 0-2.4-2.3-4.4-5.2-4.4m0 7.8c-1.3 0-2.8-1.1-2.8-2.8 0-1.6 1.2-2.8 2.8-2.8 1.3 0 2.7 1.1 2.7 2.8.1 1.6-1.1 2.8-2.7 2.8m0-4c-.7 0-1.2.5-1.2 1.2s.7 1.2 1.2 1.2c.7 0 1.2-.5 1.2-1.2.1-.7-.6-1.2-1.2-1.2\"/></svg>","card-type-PieChart-donut":"<svg viewbox=\"0 0 32 32\"><g fill=\"#f38130\"><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/><path d=\"M16 6C10.477 6 6 10.477 6 16s4.477 10 10 10 10-4.477 10-10S21.523 6 16 6m3 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 16c0-4.078 3.053-7.436 6.997-7.93v3.03A5 5 0 0 0 11 15.998c0 .053.014.103.016.156l-2.968.705A8.16 8.16 0 0 1 8 15.998m8 8c-3.43 0-6.347-2.162-7.484-5.194l2.962-.703A4.99 4.99 0 0 0 16 20.998a4.964 4.964 0 0 0 2.754-.832l2.146 2.146a7.957 7.957 0 0 1-4.9 1.686m6.314-3.1l-2.146-2.146c.524-.79.832-1.735.832-2.754 0-2.42-1.72-4.437-4-4.9v-3.03c3.946.491 7 3.851 7 7.931a7.957 7.957 0 0 1-1.686 4.9\"/></g></svg>","card-type-PieChart-pie":"<svg viewbox=\"0 0 32 32\"><g fill=\"#f38130\"><path d=\"M16 6C10.477 6 6 10.477 6 16s4.477 10 10 10 10-4.477 10-10S21.523 6 16 6m-1 2.07v7.141l-6.949 1.65A8.16 8.16 0 0 1 8.003 16c0-4.078 3.053-7.436 6.997-7.93M8.519 18.806l7.172-1.703 5.212 5.212a7.962 7.962 0 0 1-4.9 1.685c-3.43 0-6.347-2.162-7.484-5.194M22.317 20.9l-5.318-5.318V8.069c3.947.491 7 3.851 7 7.931a7.957 7.957 0 0 1-1.686 4.9\"/><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/></g></svg>","card-type-QuickMetric":"<svg viewbox=\"0 0 32 32\"><g fill=\"#442f84\"><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/><path d=\"M14.996 9.995H7.003a1 1 0 0 1-1-1v-.992a1 1 0 0 1 1-1h7.993a1 1 0 0 1 1 1v.992a1 1 0 0 1-1 1M12.691 13.991c.538 0 1.023.079 1.453.236a3.25 3.25 0 0 1 1.103.654c.303.279.536.612.699.998.162.386.243.811.243 1.275 0 .398-.056.767-.169 1.105a4.38 4.38 0 0 1-.459.969c-.195.307-.42.603-.677.889s-.53.577-.818.871l-2.13 2.182c.274-.08.544-.143.811-.191.266-.047.517-.071.751-.071h2.033c.249 0 .446.069.59.205a.713.713 0 0 1 .217.542V25H8.685v-.748c0-.144.03-.299.09-.463.059-.165.165-.314.314-.448l3.139-3.161c.269-.269.503-.526.703-.771.199-.244.363-.484.493-.72.129-.237.226-.474.291-.71.065-.237.097-.488.097-.751 0-.434-.103-.767-.31-.998-.206-.232-.522-.348-.946-.348a1.429 1.429 0 0 0-.867.277 1.312 1.312 0 0 0-.296.299 1.59 1.59 0 0 0-.197.374c-.08.223-.181.386-.303.486-.122.099-.288.148-.496.148-.05 0-.104-.002-.162-.006a2.212 2.212 0 0 1-.175-.023l-1.226-.217a4.12 4.12 0 0 1 .46-1.42 3.44 3.44 0 0 1 .845-1.01 3.44 3.44 0 0 1 1.155-.602 4.76 4.76 0 0 1 1.397-.198M21.36 13.991c.538 0 1.023.079 1.453.236a3.25 3.25 0 0 1 1.103.654c.303.279.536.612.699.998.162.386.243.811.243 1.275 0 .398-.056.767-.169 1.105a4.38 4.38 0 0 1-.459.969c-.195.307-.42.603-.677.889s-.53.577-.818.871l-2.13 2.182c.274-.08.544-.143.811-.191.266-.047.517-.071.751-.071H24.2c.249 0 .446.069.59.205a.713.713 0 0 1 .217.542V25h-7.653v-.748c0-.144.03-.299.09-.463.059-.165.165-.314.314-.448l3.139-3.161c.269-.269.503-.526.703-.771.199-.244.363-.484.493-.72.129-.237.226-.474.291-.71.065-.237.097-.488.097-.751 0-.434-.103-.767-.31-.998-.206-.232-.522-.348-.946-.348a1.429 1.429 0 0 0-.867.277 1.312 1.312 0 0 0-.296.299 1.59 1.59 0 0 0-.197.374c-.08.223-.181.386-.303.486-.122.099-.288.148-.496.148-.05 0-.104-.002-.162-.006a2.212 2.212 0 0 1-.175-.023l-1.226-.217a4.12 4.12 0 0 1 .46-1.42 3.44 3.44 0 0 1 .845-1.01 3.44 3.44 0 0 1 1.155-.602 4.77 4.77 0 0 1 1.397-.198\"/></g></svg>","card-type-Trend":"<svg viewbox=\"0 0 32 32\"><g fill=\"#296897\"><path d=\"M30.006 0H1.994A1.994 1.994 0 0 0 0 1.994v28.012C0 31.107.893 32 1.994 32h28.012A1.994 1.994 0 0 0 32 30.006V1.994A1.994 1.994 0 0 0 30.006 0zM30 30H2V2h28v28z\"/><path d=\"M16 9.543l-3.259-3.259a.994.994 0 0 0-.718-.291l-.01-.002-.01.002a.994.994 0 0 0-.718.291l-3.26 3.259a1 1 0 0 0 0 1.415l.02.02a1 1 0 0 0 1.415 0l1.552-1.552v10.567a1 1 0 0 0 2 0V9.425l1.552 1.552a1 1 0 0 0 1.415 0l.02-.02A.998.998 0 0 0 16 9.543M16.03 22.422l3.259 3.259a.994.994 0 0 0 .718.291l.01.002.01-.002c.26.003.52-.093.718-.291l3.259-3.259a1 1 0 0 0 0-1.415l-.02-.02a1 1 0 0 0-1.415 0l-1.552 1.552V11.972a1 1 0 0 0-2 0v10.567l-1.552-1.552a1 1 0 0 0-1.415 0l-.02.02a1 1 0 0 0 0 1.415\"/></g></svg>","chart-down":"<svg viewbox=\"0 0 512 512\"><path d=\"M0 128h512L256 384\"/></svg>","chart-new":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M256-.001l52.034 118.761 114.991-57.009-34.857 124.533L512 217.984l-105.591 72.834 74.9 105.049-127.493-13.195L344.975 512 256 418.548 167.025 512l-8.841-129.328-127.493 13.195 74.9-105.049L0 217.984l123.834-31.7L88.975 61.751l114.993 57.009z\"/></svg>","chart-stable":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 224h512v96H0z\"/></svg>","chart-up":"<svg viewbox=\"0 0 512 512\"><path d=\"M512 384H0l256-256\"/></svg>","check-not_all_selected":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M64 224h383.75v96H64z\"/></svg>","check":"<svg viewbox=\"0 0 10 8\"><path d=\"M3.144 8L.167 4.891a.615.615 0 0 1 0-.843.556.556 0 0 1 .809 0l2.168 2.264L9.025.174a.557.557 0 0 1 .809 0 .617.617 0 0 1-.001.844L3.144 8\"/></svg>","clear-small":"<svg viewbox=\"0 0 12 12\"><ellipse cx=\"6\" cy=\"6\" fill=\"#fff\" rx=\"5.377\" ry=\"5.377\" transform=\"rotate(-45.001 6 6)\"/><path d=\"M6 0c3.312 0 6 2.688 6 6s-2.688 6-6 6-6-2.688-6-6 2.688-6 6-6zM1.2 6c0 2.646 2.154 4.8 4.8 4.8s4.8-2.154 4.8-4.8S8.646 1.2 6 1.2 1.2 3.354 1.2 6z\"/><path d=\"M5.293 6L3.525 4.232l.707-.707L6 5.293 7.753 3.51l.722.722L6.707 6l1.768 1.768-.707.707L6 6.707 4.232 8.475l-.707-.707z\"/></svg>","clear":"<svg viewbox=\"0 0 10 10\"><path d=\"M9.79.212A.72.72 0 0 0 8.77.211L5 3.981 1.229.211A.717.717 0 0 0 .211.212H.21A.72.72 0 0 0 .211 1.23l3.771 3.769L.211 8.77a.718.718 0 0 0 0 1.018.718.718 0 0 0 1.018 0L5 6.017l3.771 3.771A.72.72 0 0 0 9.789 8.77L6.018 4.999 9.789 1.23A.72.72 0 0 0 9.79.212\"/></svg>","close":"<svg viewbox=\"0 0 22 22\"><path d=\"M.818 2.232L2.232.818l19.02 19.02-1.413 1.415z\"/><path d=\"M.818 19.768L19.838.748l1.415 1.413L2.232 21.182z\"/></svg>","clouds":"<svg width=\"117\" height=\"94\" viewbox=\"0 0 117 94\"><path d=\"M103.5 20.5H63s-7.5.5-7.5-5c0-9.552 10.446-10.175 14.04-2.886.982 3.068 2.997 4.67 5.643 3.689-2.256 0-4.321-1.053-4.92-3.913C69.735 9.51 68.263.073 78.5.5c9.024.376 9.717 6.104 9.5 12.318-.04 1.165.198 2.519 3.142 3.485-2.464-1.37-2.479-2.697-2.479-3.485 0-.787.918-2.318 3.337-2.318 3.5 0 4.5 3.5 4.5 3.5s.5 6.144 7 6.144M58.47 50.603c0 7.017-8.932 6.475-8.932 6.475H0s11.078-1.246 12.732-4.05c1.02-1.73-.05-3.8-.05-3.8s-2.851-5.208 2.47-7.717c3.934-1.856 6.404-.083 7.313 2.86.91 2.942-.894 3.83-3.212 7.276 3.212-2.419 5.016-4.767 4.529-7.277-.488-2.51-3.884-10.388 4.75-11.305 10.48-1.112 8.229 12.38 8.229 12.38s.569-8.862 7.65-8.278c6.52.537 6.568 6.398 5.426 8.691-.723 1.518-4.337 3.718-7.498 4.745-2.818.916-10.426 1.685-10.426 1.685 15.79 0 18.775-6.06 18.775-6.06s7.782-1.378 7.782 4.375zM75.616 93.602s-7.155-.097-5.735-6.408c1.42-6.309 7.988-3.459 9.276-3.012 1.288.446 2.517 3.659 8.414 4.57-4.466-1.574-6.894-4.167-7.126-4.984-.877-3.082-2.448-10.62 6.54-11.08 9.37-.478 8.629 7.359 8.079 10.129-.118.59-.98 3.14 3.718 5.435-3.208-2.296-2.872-4.722-2.796-5.435.294-2.528 3.152-5.986 7.764-4.339 6.249 2.232 3.797 7.31 3.797 8.716 0 1.844-1.11 6.408 9.953 6.408H75.616z\"/></svg>","condition":"<svg viewbox=\"0 0 18 18\"><path d=\"M17.1 0H.9C.4 0 0 .4 0 .9v16.2c0 .5.4.9.9.9h16.2c.5 0 .9-.4.9-.9V.9c0-.5-.4-.9-.9-.9zM16 16H2V2h14z\"/><path d=\"M4 13h2V5H4zM8 5h6v2h-4v1h3v2h-3v3H8z\"/></svg>","copy":"<svg width=\"20\" height=\"20\" viewbox=\"0 0 20 20\"><path d=\"M12.3 2H2.1v12.4h10.2V2zm-.9 10.1H3.6v-1h7.8v1zm0-3H3.6v-1h7.8v1zm0-3.1H3.6V5h7.8v1z\" fill=\"none\"/><path d=\"M14.3 14.6c0 1-.7 1.8-1.7 1.8h-5V18h10.2V3.8h-3.6v10.8h.1z\" fill=\"none\"/><path fill=\"#1D4F76\" d=\"M3.6 11.1h7.8v1H3.6zM3.6 8.1h7.8v1H3.6zM3.6 5h7.8v1H3.6z\"/><path d=\"M18.2 1.8h-3.9c0-1-.7-1.8-1.7-1.8H1.7C.8 0 0 .8 0 1.8v12.7c0 1 .7 1.8 1.7 1.8h3.9v1.8c0 1 .7 1.8 1.7 1.8h10.9c.9 0 1.7-.8 1.7-1.8V3.6c0-1-.7-1.8-1.7-1.8zM2.1 14.4V2h10.2v12.4H2.1zM17.9 18H7.7v-1.6h5c.9 0 1.7-.8 1.7-1.8V3.9H18V18h-.1z\" fill=\"#1D4F76\"/></svg>","dashboard-addcard":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M512 384h-64v-64h-64v64h-64v64l64 .188V512h64v-64h64z\"/><path d=\"M288 479.75V352h64v-64h128V32H32v448zM447.75 448h.25v-.25z\"/></svg>","dashboard-duplicate":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M128 128h384v384H128z\"/><path d=\"M383.875 0H.125v384h96V96h287.75z\"/></svg>","dashboard-reset":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 416h288v96H0zM320 0C192 0 98.979 98.563 96 256H0l144 144 144-144h-96c2.563-73.813 47.875-160 128-160 83.953 0 157.026 92.986 160.006 189.033C483.076 384 432 400 448 416s64-64 64-160C512 155.76 448 0 320 0z\"/></svg>","dashboard-save":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M384 0H128C64 0 0 64 0 128v256c0 64 64 127.999 128 127.999h64c64 .001 96-64 96-127.999v-96.001h96L256 160 128 287.999h96S224.343 320 224 352c-.244 22.714-6.629 64.499-64 64.499-16 0 7.702 0 0 0-34.157 0-63.455-32.058-64-64.5-.187-11.113-.187-180.885 0-191.999.545-32.443 29.844-64 64-64h192c34.157 0 63.455 31.557 64 64 1.612 95.985 0 351.999 0 351.999h96v-384C512 64 448 0 384 0z\"/></svg>","dashboard":"<svg width=\"768\" height=\"768\" viewbox=\"0 0 768 768\"><path d=\"M432 526.875h239.5v49.5H432zM96 96h240v240H96zM432 96h240v240H432zM432 624.375h239.5v48H432zM432 431.625h239.5v49.5H432zM96 432h240v240H96z\"/></svg>","date-today":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M64 0C28.797 0 0 28.797 0 64v384c0 35.188 28.797 64 64 64h384c35.188 0 64-28.812 64-64V64c0-35.203-28.812-64-64-64h-32v64h-32V0h-64v64h-32V0h-64v64h-32V0h-64v64H96V0H64zm32 160h320v224H96V160z\"/><path d=\"M352 224l-32-32-92.5 99.5L192 256l-32 32 64 64\"/></svg>","delete":"<svg viewbox=\"0 0 16 16\"><path d=\"M7 6H6v7h1zM10 6H9v7h1z\"/><path d=\"M12.5 4.5v9.4c0 .3-.3.5-.4.6H3.8c-.1 0-.3-.2-.3-.5V4.5zM14 3H2v11c0 1.1.9 2 1.8 2h8.3c.9 0 1.8-1 1.8-2V3zM6 0v1H0v1h16V1h-6V0z\"/></svg>","details":"<svg width=\"20\" height=\"20\" viewbox=\"0 0 20 20\"><path d=\"M18.536 19.535a.997.997 0 0 1-.707-.293l-5.04-5.04a.999.999 0 1 1 1.414-1.414l5.04 5.03a.999.999 0 0 1-.707 1.707\"/><path d=\"M8 2C4.691 2 2 4.691 2 8s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6m0 14c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8\"/><path d=\"M9 7V5.99a1 1 0 0 0-2 0V7H5.99a1 1 0 0 0 0 2H7v1.01a1 1 0 0 0 2 0V9h1.01a1 1 0 0 0 0-2H9\"/></svg>","domain-google":"<svg viewbox=\"0 0 46 46\"><path d=\"M45.99 23.54c0-1.627-.149-3.191-.426-4.693h-22.05v8.875h12.599c-.543 2.868-2.192 5.298-4.671 6.925v5.757h7.566c4.427-3.994 6.981-9.876 6.981-16.864\" fill=\"#4285f4\"/><path d=\"M23.516 45.962c6.321 0 11.62-2.054 15.493-5.559l-7.566-5.757c-2.096 1.377-4.778 2.19-7.928 2.19-6.097 0-11.258-4.04-13.1-9.459H2.594v5.944c3.852 7.498 11.769 12.64 20.92 12.64\" fill=\"#34a853\"/><path d=\"M10.417 27.378a13.549 13.549 0 0 1-.734-4.359c0-1.512.266-2.983.734-4.359v-5.944H2.596a22.554 22.554 0 0 0 0 20.608l7.821-5.944\" fill=\"#fbbc05\"/><path d=\"M23.516 9.2c3.437 0 6.523 1.158 8.949 3.431L39.18 6.05C35.126 2.348 29.827.074 23.516.074c-9.151 0-17.07 5.141-20.92 12.64l7.821 5.944c1.841-5.423 7-9.459 13.1-9.459\" fill=\"#ea4335\"/></svg>","domain-office365":"<svg width=\"26\" height=\"26\" viewbox=\"0 0 32 32\"><path d=\"M2.518 25.801V6.477L19.808.16l9.396 2.973v26.01l-9.396 2.8-17.29-6.145 17.29 2.057V5.359L8.532 7.96v15.236l-6.01 2.601\"/></svg>","domain-salesforce":"<svg viewbox=\"0 0 28 21\"><path d=\"M21.786 3.461c-.852 0-1.662.184-2.394.513-.842-1.512-2.423-2.531-4.235-2.531a4.792 4.792 0 0 0-3.481 1.507A5.31 5.31 0 0 0 7.436.838c-2.945 0-5.332 2.403-5.332 5.368 0 .76.156 1.481.439 2.135a4.679 4.679 0 0 0-2.291 4.04c0 2.577 2.051 4.666 4.582 4.666a4.5 4.5 0 0 0 .942-.099c.695 1.901 2.507 3.257 4.633 3.257 2.041 0 3.792-1.25 4.544-3.03a4.277 4.277 0 0 0 1.893.439 4.32 4.32 0 0 0 3.776-2.234c.377.077.767.117 1.166.117 3.269 0 5.919-2.694 5.919-6.02 0-3.325-2.65-6.02-5.919-6.02\"/></svg>","domain-saml":"<svg width=\"32\" height=\"32\" viewbox=\"0 0 48 48\"><path d=\"M24.819 4.284c3.693 3.693 4.906 8.878 3.787 13.623l18.569 18.57c.22.215.358.515.377.823l.447 8.496c.03.714-.657 1.373-1.37 1.313l-10.73-.894c-.62-.052-1.151-.622-1.16-1.244v-4.108h-4.108c-.657-.006-1.253-.6-1.257-1.257v-4.108h-4.108c-.33 0-.659-.132-.894-.363l-6.511-6.511c-4.738 1.108-9.923-.087-13.61-3.773-5.668-5.669-5.668-14.898 0-20.567 6.956-6.704 15.991-4.626 20.568 0zM23.03 6.072a11.995 11.995 0 0 0-16.99 0 11.995 11.995 0 0 0 0 16.99c3.232 3.233 7.847 4.228 11.933 3.019.431-.124.926.006 1.243.321l6.567 6.567h4.862c.658.006 1.254.6 1.258 1.258v4.107h4.108c.657.007 1.254.6 1.257 1.258v4.22l8.132.67-.35-6.553-18.68-18.68a1.292 1.292 0 0 1-.308-1.258c1.244-5.736-.354-9.127-3.032-11.919zm-8.942 1.789c1.718 1.718 1.718 4.541 0 6.26-1.718 1.717-4.541 1.717-6.26 0-1.717-1.719-1.717-4.542 0-6.26 1.719-1.718 4.542-1.718 6.26 0zM12.3 9.649a1.878 1.878 0 0 0-2.683 0 1.878 1.878 0 0 0 0 2.683 1.878 1.878 0 0 0 2.683 0 1.878 1.878 0 0 0 0-2.683z\"/></svg>","download":"<svg viewbox=\"0 0 20 20\"><path d=\"M11 12.3l1.5-1.5c.7-.7 1.5 0 1.5 0s.7.8 0 1.5l-3.3 3.4c-.4.4-1 .4-1.4 0L6 12.2c-.7-.7 0-1.4 0-1.4s.8-.7 1.5 0L9 12.3V1c0-.6.5-1 1-1s1 .5 1 1v11.3\"/><path d=\"M14 7v2h4v9H2V9h4V7H1S0 7 0 8v11c0 1 1 1 1 1h18c1 0 1-1 1-1V8c0-1-1-1-1-1h-5z\"/></svg>","drag-drop":"<svg viewbox=\"0 0 9 15\"><g clip-rule=\"evenodd\" fill-rule=\"evenodd\"><path d=\"M7 12h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1zM7 6h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zM7 0h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1zM1 12h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1zM1 6h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zM1 0h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z\"/></g></svg>","dropdown-date":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M64 0C28.797 0 0 28.797 0 64v384c0 35.188 28.797 64 64 64h384c35.188 0 64-28.812 64-64V64c0-35.203-28.812-64-64-64h-32v64h-32V0h-64v64h-32V0h-64v64h-32V0h-64v64H96V0H64zm32 160h320v224H96V160z\"/><path d=\"M128 192h64v64h-64zM224 192h64v64h-64zM320 192h64v64h-64zM128 288h64v64h-64zM224 288h64v64h-64zM320 288h64v64h-64z\"/></svg>","dropdown-time":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 256c0 141.438 114.563 256 256 256 141.438 0 256-114.562 256-256C512 114.563 397.438 0 256 0S0 114.563 0 256zm224 0V96s-.267-32 32-32c32.357 0 32 32 32 32v96c0 32 0 32 31.082 32H384s32 .263 32 32c0 30.77-32 32-32 32H257.938C240.684 288 224 272.467 224 256z\"/></svg>","dulicate":"<svg viewbox=\"0 0 20 20\"><path d=\"M4 5h7v1H4V5m0 3h7v1H4V8m0 3h7v1H4v-1\"/><path d=\"M15 1c.009-.525.066-1-1-1H1.002c-.651 0-1 .33-1 1v15c0 .66.351 1 1 1H3v2c.075.546.383 1 1 1h13c.718 0 1-.295 1-1V3c.001-.468-.406-.99-1-1h-2V1M2 15V2h11v13H2m14 3H5v-.995L14 17c.5.005.976-.428 1-1l.021-12H16v14\"/></svg>","edit":"<svg viewbox=\"0 0 20 20\"><path d=\"M1 4c0-.553.446-1 .997-1h8v2h-7s.019 11.933 0 12h12v-7h2v8a.997.997 0 0 1-1 .997H1.999c-.553 0-1-.445-1-1V4\"/><path d=\"M14.5 3.5l-7 7L6 14l3.5-1.5 7-7zM17.848.848a.495.495 0 0 0-.697 0L15.499 2.5l2 2 1.652-1.652a.495.495 0 0 0 0-.697L17.848.848\"/></svg>","email":"<svg viewbox=\"0 0 18 15\"><g fill-rule=\"evenodd\"><path d=\"M2 13h14V2H2v11M1.8 0C.81 0 0 .844 0 1.875v11.251c0 1.031.81 1.875 1.8 1.875h14.4c.99 0 1.8-.844 1.8-1.875V1.875C18 .844 17.189 0 16.2 0H1.8\"/><path d=\"M14.603 6.23a.917.917 0 0 0-1.226-.404L9 8 4.645 5.826a.917.917 0 0 0-1.218.404l.019-.037a.894.894 0 0 0 .393 1.212L9 10l5.191-2.595a.896.896 0 0 0 .393-1.212l.019.037\"/></g></svg>","exclude":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M256 0C114.615 0 0 114.615 0 256s114.615 256 256 256 256-114.615 256-256S397.385 0 256 0zm0 80c32.001 0 62.005 8.544 87.862 23.47L103.608 344.096C88.598 318.186 80 288.098 80 256c0-97.202 78.798-176 176-176zm0 352c-32.184 0-62.346-8.646-88.303-23.73l240.59-240.54C423.362 193.679 432 223.829 432 256c0 97.202-78.799 176-176 176z\"/></svg>","exit":"<svg viewbox=\"0 0 20 20\"><path d=\"M16.3 11l-1.5 1.5c-.7.7 0 1.5 0 1.5s.8.7 1.5 0l3.4-3.3c.4-.4.4-1 0-1.4L16.2 6c-.7-.7-1.4 0-1.4 0s-.7.8 0 1.5L16.3 9H5c-.6 0-1 .5-1 1s.5 1 1 1h11.3\"/><path d=\"M11 14v4H2V2h9v4h2V.99a.995.995 0 0 0-.999-.991h-11C.45-.001.002.454.002.991v18.02c0 .548.447.992.999.992h11a1 1 0 0 0 .999-.991v-5.01h-2\"/></svg>","expand":"<svg width=\"20\" height=\"20\" viewbox=\"0 0 20 20\"><path d=\"M6.004 18.5V18a.5.5 0 0 0-.5-.5H3.78l4.931-4.931a.404.404 0 0 0 0-.57l-.708-.708a.404.404 0 0 0-.57 0L2.5 16.224V14.5A.5.5 0 0 0 2 14h-.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h4.004a.5.5 0 0 0 .5-.5zM13.996 18.5V18a.5.5 0 0 1 .5-.5h1.724l-4.931-4.931a.404.404 0 0 1 0-.57l.708-.708a.404.404 0 0 1 .57 0l4.933 4.933V14.5a.5.5 0 0 1 .5-.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-4.004a.5.5 0 0 1-.5-.5zM6.004 1.5V2a.5.5 0 0 1-.5.5H3.78l4.931 4.931a.404.404 0 0 1 0 .57l-.708.708a.404.404 0 0 1-.57 0L2.5 3.776V5.5A.5.5 0 0 1 2 6h-.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h4.004a.5.5 0 0 1 .5.5zM13.996 1.5V2a.5.5 0 0 0 .5.5h1.724l-4.931 4.931a.404.404 0 0 0 0 .57l.708.708a.404.404 0 0 0 .57 0L17.5 3.776V5.5a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5h-4.004a.5.5 0 0 0-.5.5z\"/></svg>","expend-table-right":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M79.553 415.685l32.313 32 191.581-191.581L111.658 64.315l-32.105 31.37 160 160.315z\"/><path d=\"M208.553 415.685l32.312 32 191.582-191.581L240.658 64.315l-32.105 31.37 160 160.315z\"/></svg>","explorer-expand":"<svg width=\"768\" height=\"768\" viewbox=\"0 0 768 768\"><path d=\"M96 526.875h576v49.5H96zM96 624.375h576v48H96zM96 431.625h576v49.5H96zM557.935 336h93.04l-44.595-44.324zM476 161l-65-65H96v240h220.08z\"/><g><path d=\"M480 96l64 64-184 200 48 48 199.75-184.25L672 288V96z\"/></g></svg>","explorer":"<svg width=\"768\" height=\"768\" viewbox=\"0 0 768 768\"><path d=\"M96 526.875h576v49.5H96zM96 96h576v240H96zM96 624.375h576v48H96zM96 431.625h576v49.5H96z\"/></svg>","export":"<svg viewbox=\"0 0 20 20\"><path d=\"M11 14V3.7l1.5 1.5c.7.7 1.5 0 1.5 0s.7-.8 0-1.5L10.7.3c-.4-.4-1-.4-1.4 0L6 3.8c-.7.7 0 1.4 0 1.4s.8.7 1.5 0L9 3.7V14c0 .6.5 1 1 1s1-.4 1-1\"/><path d=\"M14 10v2h4v6H2v-6h4v-2H1s-1 0-1 1v8c0 1 1 1 1 1h18c1 0 1-1 1-1v-8c0-1-1-1-1-1h-5z\"/></svg>","exportagain":"<svg viewbox=\"0 0 20 20\"><path d=\"M20 9h-2c0 .3.1.7.1 1 0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8c2.2 0 4.1.9 5.6 2.3l.3.4h-2.5c-.9 0-1 1-1 1s.1 1 1 1h4.3c.5 0 .9-.4.9-.9l-.1-4.4c0-.9-.9-.9-.9-.9s-1 .1-1 1v1.2C14.9 1 12.6 0 10 0 4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10V9\"/></svg>","external":"<svg viewbox=\"0 0 20 20\"><path d=\"M1 4c0-.553.446-1 .997-1h8v2h-7s.019 11.933 0 12h12v-7h2v8a.997.997 0 0 1-1 .998H1.999c-.553 0-1-.445-1-1V4\"/><path d=\"M15.5 3L8.707 9.792a.999.999 0 0 0 0 1.414l.086.086a.999.999 0 0 0 1.414 0L17 4.5v2a1 1 0 0 0 2 0V2.001a1 1 0 0 0-1-1h-4.499a1 1 0 0 0 0 2h2\"/></svg>","filter-add":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M384 118.182c0-48.514-78.798-87.843-176-87.843-97.203 0-176 39.329-176 87.843 0 28.32 32.148 43.663 68.545 69.569C120.201 201.741 159.716 264.094 160 288c.305 25.727 0 96 0 96l96 48s.306-118.273 0-144c-.283-23.869 38.967-85.978 58.978-100.068C351.713 162.068 384 146.608 384 118.182zm-301.715-.158c0-27.771 56.285-50.285 125.714-50.285 69.431 0 125.714 22.514 125.714 50.285 0 27.773-56.283 50.287-125.714 50.287-69.429 0-125.714-22.514-125.714-50.287zM512 352h-64v-64h-64v64h-64v64l64 .188V480h64v-64h64z\"/></svg>","filter":"<svg viewbox=\"0 0 18 18\"><path d=\"M9 1.541c4.976 0 7.101 1.333 7.459 1.712l-.032.046c-.629.649-3.201 1.677-7.427 1.677-4.24 0-6.802-1.024-7.413-1.659l-.046-.065C1.903 2.872 4.028 1.541 9 1.541M3.354 5.81c1.591.456 3.582.705 5.646.705s4.056-.249 5.646-.705l-4.484 6.329-.037.051v4.075c-.912.542-1.78.247-2.25-.004v-4.07L3.354 5.81M18 3.258C18 1.432 14.048.001 9 .001c-5.05 0-9 1.43-9 3.257 0 .167.035.337.104.506L.17 3.9c.042.071.132.222.194.297l6.02 8.496v4.158l.216.195c.106.098 1.072.955 2.47.955.882 0 1.679-.303 2.37-.905l.177-.171v-4.232l6.01-8.486c.067-.083.121-.158.157-.22l.047-.075.062-.145A1.3 1.3 0 0 0 18 3.258\"/></svg>","filter_facet":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 64h96v96H0zM160 64h352v96H160zM0 224h96v96H0zM160 224h352v96H160zM0 384h96v96H0zM160 384h352v96H160z\"/></svg>","fleche-stratus":"<svg viewbox=\"0 0 235.5 369.4\"><g fill=\"#676767\"><path d=\"M42.9 174.7h25.3c1.4 0 2.4-1.1 2.4-2.4v-40.9c0-1.4-1.1-2.4-2.4-2.4H42.9c-1.4 0-2.4 1.1-2.4 2.4v40.9c0 1.3 1.1 2.4 2.4 2.4zM42.9 119.6h25.3c1.4 0 2.4-1.1 2.4-2.4V88.1c0-1.4-1.1-2.4-2.4-2.4H42.9c-1.4 0-2.4 1.1-2.4 2.4v29.1c0 1.3 1.1 2.4 2.4 2.4zM42.9 76.4h25.3c1.4 0 2.4-1.1 2.4-2.4V56.7c0-1.4-1.1-2.4-2.4-2.4H42.9c-1.4 0-2.4 1.1-2.4 2.4V74c0 1.3 1.1 2.4 2.4 2.4zM42.9 45.1h25.3c1.4 0 2.4-1.1 2.4-2.4v-5.4c0-1.4-1.1-2.4-2.4-2.4H42.9c-1.4 0-2.4 1.1-2.4 2.4v5.4c0 1.3 1.1 2.4 2.4 2.4zM194.3 262.4l-68.1-68.1c-1-1-2.5-1-3.5 0L105 212.2c-1 1-1 2.5 0 3.5l33.4 33.4H70.6v-9.6-.2-53c0-1.4-1.1-2.4-2.4-2.4H42.9c-1.4 0-2.4 1.1-2.4 2.4v90.5c0 1.4 1.1 2.4 2.4 2.4h95.4L105 312.6c-1 1-1 2.5 0 3.5l17.9 17.9c.5.5 1.1.7 1.7.7.6 0 1.3-.2 1.7-.7l68.1-68.1c.5-.5.7-1.1.7-1.7s-.3-1.3-.8-1.8z\"/></g></svg>","folder-close":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M160 64c-20.014 0-65.066-.545-96 0-16 .282-32 16-32 32v320c0 16 16 32 32 32h384c16 0 32-16 32-32V160c0-16-16-32-32-32H256c-32 0-32-64-96-64z\"/></svg>","folder-lock":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M480 371.454V304c0-19.186-16-48.122-48-48.121s-48 27.06-48 48.121v67.864l-32-.394V512h160V371.473l-32-.019zm-64 .017V320s-3.949-32 16-32c20.305 0 16 32 16 32v51.471h-32z\"/><path d=\"M320 336h32v-32c0-40.373 36.083-80.233 80.244-80.233 8.516 0 29.271 3.733 47.89 16.059 0-10.796-.134-51.856-.134-79.826 0-16-16-32-32-32H256c-32 0-32-64-96-64-20.014 0-65.066-.545-96 0-16 .282-32 16-32 32v320c0 16 16 32 32 32h256V336z\"/></svg>","folder-open":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M480 160c0-16-16-32-32-32H256c-32 0-32-64-96-64-20.014 0-65.066-.545-96 0-16 .282-32 16-32 32v96h448v-32zM480 224H32c-16 0-32 16-32 32 0 22.932 32 160 32 160 3.4 16 16 32 32 32h384c16 0 28.6-16 32-32 0 0 32-137.068 32-160 0-16-16-32-32-32z\"/></svg>","fullview":"<svg width=\"20\" height=\"20\" viewbox=\"0 0 20 20\"><path d=\"M2.714 2.71h6.17c.456-.002.8-.254.894-.65.134-.566-.272-1.06-.88-1.06h-6.96c-.588 0-.937.342-.937.93v16.138c0 .59.346.932.934.932h16.14c.098 0 .2-.007.295-.033.41-.113.63-.436.63-.928v-6.66c0-.087-.005-.174-.018-.26a.836.836 0 0 0-.685-.69c-.553-.09-1 .3-1.002.885-.002 1.907 0 3.813 0 5.72v.248H2.715V2.71zm13.432-.068c.013.02.027.04.04.062-.056.04-.12.075-.168.123l-6.66 6.664c-.054.055-.11.107-.16.167-.196.242-.252.516-.142.81.11.29.323.468.634.52.32.055.566-.08.787-.3 2.232-2.236 4.466-4.47 6.7-6.705.05-.05.103-.098.186-.176v.257c0 .896-.002 1.79 0 2.687.002.493.333.85.79.86.474.013.84-.33.84-.828.01-1.65.01-3.3 0-4.95-.002-.498-.35-.828-.843-.83a1339.34 1339.34 0 0 0-4.91 0c-.49 0-.858.364-.853.825.005.455.366.81.846.813.9.006 1.803.002 2.704.002h.21z\"/><path d=\"M2.714 2.71v14.573h14.58v-5.968c.002-.585.45-.976 1.003-.885.35.058.63.34.685.69.013.086.017.173.017.26v6.66c0 .49-.22.814-.63.927a1.141 1.141 0 0 1-.297.032H1.933c-.586 0-.932-.34-.932-.932V1.928c0-.586.35-.927.94-.927h6.958c.608.002 1.014.495.88 1.06-.095.396-.438.648-.895.65h-6.17\"/><path d=\"M16.146 2.642h-.21c-.9 0-1.802.004-2.703-.002-.48-.003-.84-.358-.846-.813-.005-.46.362-.824.852-.825 1.636-.003 3.273-.003 4.91 0 .494.002.84.332.844.83.008 1.65.008 3.3 0 4.95-.002.497-.367.84-.84.83-.458-.013-.79-.37-.79-.862-.003-.896 0-1.79 0-2.687v-.256c-.084.077-.137.125-.188.175l-6.7 6.705c-.22.22-.465.355-.786.3a.778.778 0 0 1-.634-.52c-.11-.294-.054-.568.143-.81.047-.06.104-.112.158-.166l6.66-6.662c.048-.05.112-.083.168-.124-.013-.02-.027-.04-.04-.062\"/></svg>","help-no-fill":"<svg viewbox=\"0 0 22 22\"><path d=\"M11 2c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9m0 20C4.9 22 0 17.1 0 11S4.9 0 11 0s11 4.9 11 11-4.9 11-11 11\"/><path d=\"M11 4.7c-2.2 0-4 1.8-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.8-3 5h2c0-2.2 3-2.5 3-5 0-2.3-1.8-4-4-4M10 17h2v-2h-2v2\"/></svg>","help":"<svg viewbox=\"-948 530 22 22\"><path d=\"M-937 532c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9\" fill=\"#f7f8f9\"/><path d=\"M-937 532c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9m0 20c-6.1 0-11-4.9-11-11s4.9-11 11-11 11 4.9 11 11-4.9 11-11 11\"/><path d=\"M-937 534.7c-2.2 0-4 1.8-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.8-3 5h2c0-2.2 3-2.5 3-5 0-2.3-1.8-4-4-4m-1 12.3h2v-2h-2v2\"/></svg>","history":"<svg viewbox=\"0 0 20 20\"><g fill=\"currentColor\" fill-rule=\"evenodd\"><path d=\"M0 10c0 5.52 4.466 10 9.989 10 5.53 0 10.01-4.478 10.01-10 0-5.52-4.478-10-10.01-10C4.469 0 0 4.478 0 10m10.04-8c4.44 0 8.05 3.589 8.05 8s-3.612 8-8.05 8c-4.428 0-8.03-3.589-8.03-8s3.603-8 8.03-8\"/><path d=\"M9 5.991C9 5.451 9.45 5 10.01 5c.559 0 1 .444 1 .991l-.009 4.596 2.742 2.742a.994.994 0 0 1-.005 1.409.997.997 0 0 1-1.409.005L9 11.414V5.991\"/></g></svg>","identity-group":"<svg viewbox=\"0 0 20 12\"><g fill=\"currentColor\"><path d=\"M14 5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2m0-5c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3M14 7c-1.1 0-2.7.3-4 .8a1.075 1.075 0 0 0-.065.027C8.651 7.276 7.05 7 6 7c-2 0-6 1-6 3v1.6c0 .2.2.4.4.4h19.2c.2 0 .4-.2.4-.4V10c0-2-4-3-6-3M1 11v-1c0-.7 2.6-2 5-2s5 1.3 5 2v1H1m18 0h-7v-1c0-.588-.346-1.09-.885-1.505C12.011 8.198 13.005 8 14 8c2.4 0 5 1.3 5 2v1M6 5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2m0-5C4.3 0 3 1.3 3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3\"/></g></svg>","identity-user":"<svg viewbox=\"0 0 12.1 12\"><g fill=\"currentColor\"><path d=\"M10.995 10.995h-9.99v-.999c0-.699 2.597-1.998 4.995-1.998s4.995 1.299 4.995 1.998v.999M.006 9.996v1.399c0 .3.3.599.599.599h10.889c.3 0 .599-.3.599-.599V9.996c0-1.998-3.996-2.997-5.994-2.997S.006 7.998.006 9.996M6 5.001c-1.099 0-1.998-.899-1.998-1.998S4.901 1.005 6 1.005s1.998.899 1.998 1.998S7.099 5.001 6 5.001M6 .006c-1.698 0-2.997 1.299-2.997 2.997S4.302 6 6 6s2.997-1.299 2.997-2.997S7.698.006 6 .006\"/></g></svg>","index":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M256 160c123.758 0 224-35.89 224-79.994C480 35.891 379.758 0 256 0S32 35.891 32 80.006C32 124.11 132.242 160 256 160z\"/><path d=\"M256 192c-123.758 0-224-37.972-224-82.076v77.645C32 231.673 132.242 272 256 272s224-40.327 224-84.431v-77.645C480 154.028 379.758 192 256 192zM256 416c-123.758 0-224-38.73-224-82.836v97.66C32 474.928 132.242 512 256 512s224-37.072 224-81.176v-97.66C480 377.27 379.758 416 256 416z\"/><path d=\"M256 304.502c-123.758 0-224-37.972-224-82.076v77.645c0 44.104 100.242 84.432 224 84.432s224-40.327 224-84.432v-77.645c0 44.104-100.242 82.076-224 82.076z\"/></svg>","interface-editor":"<svg viewbox=\"0 0 20 20\"><path d=\"M19.976 14.204a.459.459 0 0 0-.254-.276l-9.08-3.893a.455.455 0 0 0-.179-.037l-.002.003a.459.459 0 0 0-.424.64l3.893 9.08a.458.458 0 0 0 .857-.036l1.225-3.675 3.675-1.225a.459.459 0 0 0 .289-.581M1 1v8h8V1H1m6 6H3V3h4v4M2 18h6v-6H2v6m2-4h2v2H4v-2M12 8h6V2h-6v6m2-4h2v2h-2V4\"/><g fill=\"#bcc3ca\"><path d=\"M4 9h2v3H4zM9 4h3v2H9z\"/></g></svg>","invert":"<svg viewbox=\"0 0 12 14\"><path fill=\"currentColor\" d=\"M12.009 2.804L9.439.229a.782.782 0 0 0-1.106 1.104L9.57 2.572H.783a.78.78 0 1 0 0 1.563h8.789L8.334 5.374a.782.782 0 0 0 1.105 1.105l2.57-2.571a.782.782 0 0 0 0-1.104zM11.714 9.865H2.931l1.237-1.239a.78.78 0 1 0-1.106-1.104l-2.57 2.574a.781.781 0 0 0 0 1.104l2.57 2.571a.782.782 0 0 0 1.105-1.105l-1.238-1.239h8.785a.783.783 0 0 0 .788-.781.787.787 0 0 0-.788-.781z\"/></svg>","label-value":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M64 0v512h384V0H64zm128 448h-64v-64h64v64zm0-96h-64v-64h64v64zm0-96h-64v-64h64v64zm96 192h-64v-64h64v64zm0-96h-64v-64h64v64zm0-96h-64v-64h64v64zm96 192h-64v-64h64v64zm0-96h-64v-64h64v64zm0-96h-64v-64h64v64zm0-128.5H128V64h256v63.5z\"/></svg>","limi-size_storage":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 320v128c0 38.111 26.167 64 64 64h384c37.833 0 64-25.889 64-64V320H0zm384 96c0-16 16-32 32-32s32 16 32 32-16 32-31.986 32C400 448 384 432 384 416zM416 0H96L0 288h512L416 0z\"/></svg>","limit-document":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M288 0H64v512h384V160H288z\"/><path d=\"M320 0v128h128z\"/></svg>","limit-size_data":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M256 160c123.758 0 224-35.89 224-79.994C480 35.891 379.758 0 256 0S32 35.891 32 80.006C32 124.11 132.242 160 256 160z\"/><path d=\"M256 192c-123.758 0-224-37.972-224-82.076v77.645C32 231.673 132.242 272 256 272s224-40.327 224-84.431v-77.645C480 154.028 379.758 192 256 192zM256 416c-123.758 0-224-38.73-224-82.836v97.66C32 474.928 132.242 512 256 512s224-37.072 224-81.176v-97.66C480 377.27 379.758 416 256 416z\"/><path d=\"M256 304.502c-123.758 0-224-37.972-224-82.076v77.645c0 44.104 100.242 84.432 224 84.432s224-40.327 224-84.432v-77.645c0 44.104-100.242 82.076-224 82.076z\"/></svg>","limit-size_file":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M384 0v95.911l96 .179zM64.479 63.972l-31.965-.09.018 447.866 382.465.179v-31.911l-350.5-.089z\"/><path d=\"M352.83-.081L160-.161 160.34 384H481V128l-127.83.081z\"/><path d=\"M128 32H96v416h351.5v-32H128z\"/></svg>","limit-source":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M454.863 136.244l-88.935 88.932-79.108-79.11 88.932-88.932c13.973-13.973 17.322-33.232 3.377-47.206-13.975-13.945-33.26-10.597-47.205 3.349l-88.933 88.932-41.396-41.396c-11.067-11.039-28.944-11.039-39.956 0-10.708 10.682-11.012 27.837-.912 38.905-6.062 5.866-17.129 16.795-19.646 19.314-73.685 73.688-93.278 177.256-52.657 248.977l-75.928 75.984c-15.329 15.328-15.329 40.176 0 55.506 15.332 15.354 40.177 15.328 55.535 0l75.956-75.955c71.72 40.646 175.29 21.057 248.975-52.603 2.521-2.545 13.449-13.612 19.316-19.646 11.066 10.045 28.223 9.769 38.9-.938 11.068-11.015 11.068-28.89 0-39.93l-41.395-41.423 88.932-88.932c13.947-13.945 17.295-33.231 3.352-47.205-13.971-13.944-33.233-10.597-47.204 3.377z\"/></svg>","limit-user":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M261.876.075c.124.014.362.041.752.083l-.752-.083z\"/><path d=\"M480 416c-34.648-31.232-163.331-36.213-160-96 3.335-59.791 19.857-70.926 32-96 1.972-4.071 15.663-28.245 10.249-40.952-12.085-28.127-2.001-54.251 4.999-85.376 5.208-23.042-13.334-44.125-13.334-44.125s-32.662-48-91.162-53.375C261.631.048 258.812-.004 256 0c-2.813-.005-5.631.047-6.752.171-58.5 5.375-91.162 53.375-91.162 53.375s-18.542 21.083-13.334 44.125c7 31.125 17.084 57.249 4.999 85.376-5.414 12.708 8.277 36.882 10.249 40.953 12.143 25.074 28.665 36.209 32 96 3.331 59.787-125.352 64.768-160 96-18.79 16.938-32 96-32 96h512s-13.21-79.062-32-96zM249.372.158l.752-.083-.752.083z\"/></svg>","lock":"<svg viewbox=\"0 0 12 16\"><path d=\"M10 7H2C.9 7 0 7.9 0 9v5c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2m0 1.5c.3 0 .5.2.5.5v5c0 .3-.2.5-.5.5H2c-.3 0-.5-.2-.5-.5V9c0-.3.2-.5.5-.5h8M10 7H8.4V5.9c0-1.3-1.1-2.4-2.4-2.4S3.6 4.6 3.6 5.9V7H2V5.9C2 3.8 3.8 2 6 2s4 1.8 4 3.9V7\"/></svg>","logo":"<svg width=\"100\" height=\"37\" viewbox=\"0 0 100 37\"><g fill=\"none\" fill-rule=\"evenodd\"><path d=\"M90.96 18.577c-4.97 0-8.877 3.933-8.877 9.073 0 5.137 3.907 9.072 8.877 9.072 4.975 0 8.882-3.928 8.882-9.072 0-5.14-3.907-9.073-8.882-9.073zm0 15.012c-3.16 0-5.684-2.728-5.684-5.939 0-3.247 2.523-5.94 5.684-5.94 3.165 0 5.684 2.693 5.684 5.94 0 3.21-2.519 5.939-5.684 5.939zM69.508 18.578c-5.364 0-8.097 3.932-8.097 9.178 0 5.03 3.086 8.966 8.167 8.966 3.233 0 6.142-1.714 7.708-4.665l-2.7-1.569c-1.207 2.042-2.522 3.319-4.975 3.319-3.053 0-4.977-2.728-5.006-5.651l12.686.002v-.507c0-5.065-2.49-9.073-7.783-9.073zm-4.734 7.104c.397-2.45 2.245-4.26 4.729-4.26 2.562 0 4.197 1.707 4.583 4.26h-9.312zM49.01 29.724l-4.76-10.637h-3.585l8.346 17.635 8.382-17.641h-3.588L49.01 29.724zM27.982 18.577c-4.973 0-8.877 3.933-8.877 9.073 0 5.137 3.904 9.072 8.877 9.072 4.972 0 8.882-3.928 8.882-9.072 0-5.14-3.912-9.073-8.882-9.073zm0 15.012c-3.16 0-5.686-2.728-5.686-5.939 0-3.247 2.525-5.94 5.686-5.94 3.163 0 5.68 2.693 5.68 5.94 0 3.21-2.517 5.939-5.68 5.939zM.098 27.759c0 5.106 4.013 8.965 8.916 8.965 1.67 0 3.127-.33 4.581-1.133v-4.186c-1.205 1.377-2.699 2.252-4.545 2.252-3.376 0-5.754-2.548-5.754-6.048 0-3.135 2.415-5.97 5.539-5.97 1.919 0 3.482.798 4.76 2.29v-4.22c-1.278-.766-2.914-1.13-4.402-1.13-5.119 0-9.095 3.901-9.095 9.18z\" fill=\"#FFF\"/><path d=\"M76.22 8.295L62.434.043v16.268l13.788-8.016z\" fill=\"#F58025\"/></g></svg>","logout":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 0v384l256 130.172V416h96V256h-32v128h-64V145.815L64 32h256v96h32V0z\"/><path d=\"M288 160v64h128v64l96-96-96-96v64z\"/></svg>","logs":"<svg viewbox=\"0 0 20 20\"><path d=\"M2 19V1c0-.607.399-1 1-1h14c.603 0 1 .395 1 1v18c0 .605-.399.998-1 1H3c-.603 0-1-.393-1-1m2-1V2h12v16\"/><path d=\"M11 15a.75.75 0 0 1 0-1.061L12.939 12 11 10.061A.75.75 0 1 1 12.061 9l3 3-3 3A.75.75 0 0 1 11 15M7.939 11l-3-3 3-3A.75.75 0 1 1 9 6.061L7.061 8 9 9.939A.75.75 0 1 1 7.939 11\"/></svg>","maintenance":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M351.999 220c-15.557-.059-42.497-28.517-44-44-1.921-19.789 66.136-87.901 66.136-87.901s-33.386-.441-43.947.327C279.988 93.228 241.5 135.543 241.5 187c0 10.302.25 21.97.699 33 0 0-132.51 144.089-132.2 154 .486 15.549 28.468 44.873 44 44 9.899-.557 154.146-131.889 154.146-131.889 9.91-.096 22.595-.111 32.355-.111 50.852 0 93.887-38.496 99.499-87.847.333-8.73.147-44.324.147-44.324S371.77 220.075 351.999 220zM43.999 22l121 121.596V22z\"/><path d=\"M263.999 0h-2.527c-10.854 0-19.653 9.736-19.653 21.748 0 12.011 8.799 21.747 19.653 21.747l2.779.002c121.643 0 220.252 98.61 220.252 220.251S385.894 484 264.251 484c-121.642 0-220.252-98.609-220.252-220.252 0-74.459 36.957-140.274 93.521-180.137V46.443l-13.02-6.597C49.75 86.465-.001 169.416-.001 264c0 145.803 118.197 264 264 264s264-118.197 264-264-118.197-264-264-264z\"/></svg>","mapping-extraction-literal":"<svg viewbox=\"0 0 16 16\"><path fill=\"#565871\" d=\"M16 14.3V1.7c0-.9-.4-1.7-1.4-1.7h-3.1L3.7 16h10.6c.9 0 1.7-.8 1.7-1.7z\"/><path fill=\"#626882\" d=\"M1.7 0C.8 0 0 .8 0 1.7v12.6c0 .9.8 1.7 1.7 1.7h3.9l7.8-16H1.7z\"/><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#FFF\" d=\"M5.6 5.1L4.8 7h1.6l-.8-1.9zM7 9l-.3-1H4.6l-.4 1H3l2-5h1.3l1.9 5H7zM12 7.5c0-.3-.2-.5-.6-.5H10v1h1.4c.4 0 .6-.1.6-.5zm0-2c0-.3-.2-.5-.6-.5H10v1h1.3c.4 0 .7-.2.7-.5zM9 9V4h2.6c1 0 1.4.3 1.4 1 0 .6-.3.9-.8 1 .5.1 1 .6.9 1.5 0 .8-.2 1.5-1.1 1.5H9z\"/><path clip-rule=\"evenodd\" fill=\"none\" stroke=\"#FFF\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" d=\"M3.5 10.5h6.2M3.5 12.5h8.3\"/></svg>","mapping-extraction-metadata":"<svg width=\"16\" height=\"16\" fill=\"#B2AC87\" viewbox=\"0 0 16 16\"><rect width=\"16\" height=\"16\" rx=\"3\"/><g fill=\"none\" fill-rule=\"evenodd\"><rect fill=\"#FFF\" mask=\"url(#mask-2)\" x=\"2\" y=\"3\" width=\"2\" height=\"2\" rx=\"1\"/><rect fill=\"#FFF\" mask=\"url(#mask-2)\" x=\"2\" y=\"9\" width=\"2\" height=\"2\" rx=\"1\"/><rect fill=\"#FFF\" mask=\"url(#mask-2)\" x=\"9\" y=\"11\" width=\"2\" height=\"2\" rx=\"1\"/><rect fill=\"#FFF\" mask=\"url(#mask-2)\" x=\"12\" y=\"7\" width=\"2\" height=\"2\" rx=\"1\"/><rect fill=\"#FFF\" mask=\"url(#mask-2)\" x=\"11\" y=\"3\" width=\"2\" height=\"2\" rx=\"1\"/><circle fill=\"#FFF\" cx=\"7.5\" cy=\"7.5\" r=\"2.5\"/><path d=\"M7.434 7.79l2.687 5.261M7.777 7.619l5.26.286M7.663 7.333l4.46-3.374M7.491 7.619L2.973 3.902M7.72 7.333L3.088 10.02\" stroke=\"#FFF\"/><path d=\"M15.192 0C14.757.589 7.03 12.493 5 15.715h9.06a2.998 2.998 0 0 0 3.003-3.01V2.663c0-1.103-.848-2.3-1.87-2.662z\" opacity=\".16\" fill=\"#000\"/></g></svg>","mapping-extraction-script":"<svg width=\"16\" height=\"16\" fill=\"#82617F\" viewbox=\"0 0 16 16\"><rect width=\"16\" height=\"16\" rx=\"3\"/><g fill=\"none\" fill-rule=\"evenodd\"><path d=\"M8.116 11.629v-1.382l3.428-1.348-3.428-1.333V6.194l4.912 2.124V9.49l-4.912 2.139zM2.734 12.156l3.703-8.281h1.281L4.03 12.156H2.734z\" fill=\"#FFF\"/><path d=\"M14.14.006C13.705.595 6.03 12.464 4 15.686h9.06a2.999 2.999 0 0 0 3.003-3.009v-9.98c0-1.663-1.325-2.79-1.923-2.69z\" opacity=\".16\" fill=\"#000\"/></g></svg>","menu-analytics":"<svg viewbox=\"0 0 16 16\"><path d=\"M14.5 9.331l-.894-.894-1.267 1.269-4.159-4.16-2.888 2.887-1.768-1.768L1.5 8.69V1.994c0-.272.222-.494.494-.494h12.01c.272 0 .494.222.494.494v7.337m0 4.675a.495.495 0 0 1-.494.494H1.994a.495.495 0 0 1-.494-.494v-3.902l2.024-2.025 1.768 1.768L8.18 6.96l4.159 4.16 1.267-1.268.894.893v3.261m-.494-14.01H1.996A1.996 1.996 0 0 0 .002 1.99V14c0 1.099.893 1.994 1.994 1.994h12.01A1.995 1.995 0 0 0 16 14V1.99a1.995 1.995 0 0 0-1.994-1.993\" fill=\"currentColor\" fill-rule=\"evenodd\"/></svg>","menu-content":"<svg viewbox=\"0 0 16 16\"><g fill=\"currentColor\" fill-rule=\"evenodd\"><path d=\"M1.5 2.998h13v1.995h-13V2.998M13-.001H3L0 1.998v3.5c0 .551.453.998 1 .998v8.503c0 .421.524 1 1 1h12c.476 0 1-.579 1-1V6.496a1 1 0 0 0 1-.998v-3.5L13-.001M2.5 14.493h11V6.496h-11v7.997m.193-12.494l.754-.501h9.12l.755.501H2.693\"/><path d=\"M9.802 12H6.198A1.2 1.2 0 0 1 5 10.801v-.602A1.2 1.2 0 0 1 6.198 9h3.604A1.2 1.2 0 0 1 11 10.199v.602A1.2 1.2 0 0 1 9.802 12m-3.516-1.999V11h3.428l-.001-.999H6.286\"/></g></svg>","menu-infrastructure":"<svg viewbox=\"0 0 16 15\"><g fill=\"currentColor\" fill-rule=\"evenodd\"><path d=\"M0 14.744c0 .141.102.256.251.256h15.497a.253.253 0 0 0 .251-.256v-2.488a.247.247 0 0 0-.251-.256H.251a.253.253 0 0 0-.251.256v2.488M1 14h14v-1H1v1M0 10.744c0 .141.102.256.251.256h15.497a.253.253 0 0 0 .251-.256V8.256A.247.247 0 0 0 15.748 8H.251A.253.253 0 0 0 0 8.256v2.488M13 10h2V9h-2v1M1 10h11V9H1v1M0 6.744C0 6.885.102 7 .251 7h15.497a.253.253 0 0 0 .251-.256V4.256A.247.247 0 0 0 15.748 4H.251A.253.253 0 0 0 0 4.256v2.488M13 5h2v1h-2V5M1 6h11V5H1v1M3.341 0a1.43 1.43 0 0 0-.852.344L.105 2.656c-.196.19-.122.344.139.344h15.512c.273 0 .327-.161.139-.344L13.51.344A1.39 1.39 0 0 0 12.658 0H3.341m-.07 1h9.458l1.031 1H2.24l1.031-1\"/></g></svg>","menu-lock":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M416 192h-32V96c0-33.941-32-96-128-96S128.393 62.062 128 96c-.37 32 0 96 0 96H96c-11.313 0-32 0-32 32v256c0 32 20.686 32 32 32h320c11.314 0 32 0 32-32V224c0-32-20.686-32-32-32zm-224-64c0-22.627 16.359-64 64-64 49.427 0 64 41.373 64 64v64H192v-64z\"/></svg>","menu-optimization":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M32 0v96c-17.594 0-32 14.406-32 32v32c0 17.594 14.406 32 32 32v320h64V192c17.594 0 32-14.406 32-32v-32c0-17.594-14.406-32-32-32V0H32zm192 0v320c-17.594 0-32 14.406-32 32v32c0 17.594 14.406 32 32 32v96h64v-96c17.594 0 32-14.406 32-32v-32c0-17.594-14.406-32-32-32V0h-64zm192 0v160c-17.594 0-32 14.406-32 32v32c0 17.594 14.406 32 32 32v256h64V256c17.594 0 32-14.406 32-32v-32c0-17.594-14.406-32-32-32V0h-64z\"/></svg>","menu-organization":"<svg viewbox=\"0 0 16 16\"><path d=\"M14.504 8.995h-4.501A1 1 0 0 0 8.993 8H7.011a.998.998 0 0 0-1.01.995H1.5V4.5h13.004v4.495m0 5.505H1.502V9.995h4.5v.006c0 .556.452.999 1.01.999h1.982a1 1 0 0 0 1.01-.999v-.006h4.5V14.5M5.991 1h4.02a1 1 0 0 1 .991 1v1h-6V2H5c0-.556.444-1 .991-1m9.01 2h-2.998V2c0-1.103-.893-2-1.991-2h-4.02a1.998 1.998 0 0 0-1.991 2v1h-3c-.552 0-1 .529-1 1.182v10.636c0 .653.448 1.182 1 1.182h14c.552 0 1-.529 1-1.182V4.182c0-.653-.448-1.182-1-1.182\" fill=\"currentColor\" fill-rule=\"evenodd\"/></svg>","menu-permissions":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M323.779 67.112l.126-.011-.126.011zM323.497 67.139l.282-.026-.282.026zM323.905 67.101c.012-.001.012-.001 0 0zM323.288 67.158l.035-.003-.035.003zM323.475 67.141l.022-.002-.022.002zM323.323 67.155l.149-.014-.149.014z\"/><path d=\"M367.116 285.354c2.147-40.731 21.858-48.284 23.274-62.622.314-3.067 9.646-22.281 6.137-30.932-7.813-19.162-1.312-36.986 3.25-58.219 3.382-15.675-8.65-30.04-8.65-30.04S370 70.828 332.043 67.158c-1.468-.157-7.34-.131-8.755 0-37.904 3.67-59.058 36.384-59.058 36.384s-12.034 14.365-8.68 30.04c4.562 21.232 11.062 39.057 3.251 58.219-3.513 8.65 5.819 27.864 6.136 30.932 1.439 14.338 21.151 21.888 23.304 62.623 1.421 26.936-48.295 47.929-82.152 59.063-15.595-8.56-28.023-19.28-27.392-31.567 1.625-32.164 16.724-38.114 17.825-49.438.21-2.411 7.366-17.589 4.666-24.403-5.977-15.151-.996-29.202 2.49-45.978 2.595-12.373-6.632-23.697-6.632-23.697s-16.147-25.846-45.139-28.729c-1.152-.105-5.66-.105-6.709 0-28.992 2.883-45.191 28.729-45.191 28.729s-9.018 11.298-6.606 23.697c3.277 16.881 8.44 30.826 2.464 45.978-2.673 6.814 4.457 21.992 4.719 24.403 1.075 11.324 16.147 17.273 17.798 49.438 1.651 32.162-86.162 53.604-86.162 53.604V416H480l-.221-62.754s-114.813-27.156-112.663-67.892zM332.043 67.158l-.04-.004.04.004z\"/><path d=\"M331.416 67.091c-.027-.003-.03-.003 0 0zM332.003 67.154l-.08-.008.08.008zM331.923 67.146l-.507-.055.507.055zM151.54 140.572l.369.034-.369-.034zM151.54 140.572c-.211-.019-.141-.012 0 0zM145.198 140.606l.345-.035-.345.035zM145.543 140.571c.12-.011.173-.017 0 0z\"/></svg>","menu":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M447.932 80c0-16 0-16.275-16-16.275H78.528c-16 0-16 .275-16 16.275v64c-.005 16-.005 16 16 16h353.403c16.005 0 16.005 0 16-16l.001-64zM447.932 240.3c0-16 0-16.275-16-16.275H78.528c-16 0-16 .275-16 16.275v64c-.005 16-.005 16 16 16h353.403c16.005 0 16.005 0 16-16l.001-64zM447.932 400.3c0-16 0-16.274-16-16.274H78.528c-16 0-16 .274-16 16.274v64c-.005 16-.005 16 16 16h353.403c16.005 0 16.005 0 16-16l.001-64z\"/></svg>","message-alert":"<svg viewbox=\"0 0 16 16\"><path d=\"M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8m0 14.4c-3.5 0-6.4-2.9-6.4-6.4 0-3.5 2.9-6.4 6.4-6.4 3.5 0 6.4 2.9 6.4 6.4 0 3.5-2.9 6.4-6.4 6.4\"/><path d=\"M8 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M9 7.246C9 7.705 8.733 10 8.733 10H7.266s-.267-2.295-.267-2.754V3h2v4.246\"/></svg>","message-authentification":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M416 192h-32V96c0-33.941-32-96-128-96S128.393 62.062 128 96c-.37 32 0 96 0 96H96c-11.313 0-32 0-32 32v256c0 32 20.686 32 32 32h320c11.314 0 32 0 32-32V224c0-32-20.686-32-32-32zM288 360.489V448s-63.701 2.109-64-32.402c-.068-7.91 0-15.598 0-31.643 0-8.939 32-15.955 32-15.955-35.346 0-64-25.072-64-56s28.654-56 64-56c35.348 0 64 25.072 64 56 0 20.725-12.876 38.807-32 48.489zM320 192H192v-64c0-22.627 16.36-64 64-64 49.427 0 64 41.373 64 64v64z\"/></svg>","message-error":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M512 256C512 114.615 397.385 0 256 0S0 114.615 0 256s114.615 256 256 256 256-114.615 256-256zm-384.004 96L208 256l-80.483-96 47.507-48.973L258.25 208l77.754-96 47.999 48L304 256l80 96.004-48 47.999L258.25 304 176 400.003 127.996 352z\"/></svg>","minus":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M64 208h384v96H64z\"/></svg>","more":"<svg viewbox=\"0 0 522 530\"><path d=\"M5 261c0 141.3 114.3 256 255.7 256C402.3 517 517 402.4 517 261 517 119.7 402.4 5 260.7 5 119.4 5 5 119.6 5 261M262 56.2c113.7 0 206.1 91.9 206.1 204.8S375.7 465.8 262 465.8c-113.4 0-205.6-91.9-205.6-204.8S148.7 56.2 262 56.2\"/><path d=\"M363.4 286.6c14.1 0 25.6-11.5 25.6-25.6s-11.5-25.6-25.6-25.6-25.6 11.5-25.6 25.6 11.5 25.6 25.6 25.6M261 286.6c14.1 0 25.6-11.5 25.6-25.6s-11.5-25.6-25.6-25.6-25.6 11.5-25.6 25.6 11.5 25.6 25.6 25.6M158.6 286.6c14.1 0 25.6-11.5 25.6-25.6s-11.5-25.6-25.6-25.6S133 246.9 133 261s11.5 25.6 25.6 25.6\"/></svg>","move-new-file":"<svg viewbox=\"0 0 19 20\"><path d=\"M8.3 11L6.8 9.5C6 8.8 6.7 8 6.7 8s.8-.7 1.5 0l3.5 3.2c.4.4.4 1 0 1.4L8.3 16c-.7.7-1.4 0-1.4 0s-.7-.8 0-1.5L8.3 13H1c-.5 0-.9-.5-1-1 .1-.5.5-.8 1-1h7.3\"/><path d=\"M19 6.5L12.5 0H3v9h2V2h6v6h6v10H5v-3H3v5h16V6.5zM12 7V2l5 5h-5z\"/></svg>","movetonewfile":"<svg viewbox=\"0 0 19 20\"><path d=\"M8.3 11L6.8 9.5C6 8.8 6.7 8 6.7 8s.8-.7 1.5 0l3.5 3.2c.4.4.4 1 0 1.4L8.3 16c-.7.7-1.4 0-1.4 0s-.7-.8 0-1.5L8.3 13H1c-.5 0-.9-.5-1-1 .1-.5.5-.8 1-1h7.3\"/><path d=\"M19 6.5L12.5 0H3v9h2V2h6v6h6v10H5v-3H3v5h16V6.5zM12 7V2l5 5h-5z\"/></svg>","no-content":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M447.75 448h.25v-.25zM38.556 233.619c-61.319-12.325-39.149 48.664-4.705 48.258-58.575 49.335 38.952 96.609 56.868-8.633 17.916-105.236-75.74-107.23-52.163-39.625zM373.06 129.039c100.526 35.917 118.753-55.967 48.08-44.487 22.786-58.25-41.123-47.008-46.707-13.015-38.413-66.251-101.906 21.583-1.373 57.502zM511.715 235.008l-383.78-192.91v427.805L474.4 297.305c-54.7-9.087-109.244 4.26-175.59 24.066-.728.216.733-21.797 0-21.576 72.309-68.299 175.692-73.046 212.905-64.787zm-234.195 3.123c-17.443 3.709-35.519-9.41-38.495-25.3-2.979-15.888 7.843-33.848 25.284-37.558 17.447-3.707 34.901 8.244 37.883 24.137 2.974 15.887-7.23 35.016-24.672 38.721z\"/></svg>","note-no":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M352 32H32v448h448V160H352z\"/><path d=\"M384 32v96h96z\"/></svg>","note-yes":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M384 32v96h96z\"/><path d=\"M352 160V32H32v448h448V160H352zm-256 0h192v32H96v-32zm0 64h320v32H96v-32zm0 64h320v32H96v-32zm320 96H96v-32h320v32z\"/></svg>","notification":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M255.83 512c35.527 0 64.33-28.802 64.33-64.33H191.5c0 35.528 28.801 64.33 64.33 64.33zM384 224v-64C384 71.703 344.676 0 256.377 0l-.207.001h-.34L255.623 0C167.325 0 128 71.703 128 160v64c0 72.5-96 96-96 160 0 16 159.779 33.998 223.83 32h.34C320.221 417.998 480 397.998 480 381.998c0-64-96-85.498-96-157.998z\"/></svg>","open":"<svg viewbox=\"0 0 16 16\"><g fill-rule=\"evenodd\"><path d=\"M8.641 8.158c-.505-.229-.717-.019-.466.482l3.454 6.895c.248.495.546.461.666-.074l.575-2.583 2.607-.867c.527-.175.546-.503.039-.733L8.641 8.159\"/><rect x=\"4\" y=\"12\" width=\"3\" height=\"2\" rx=\"1\"/><rect x=\"8\" y=\"1\" width=\"3\" height=\"2\" rx=\"1\"/><rect x=\"4\" y=\"1\" width=\"3\" height=\"2\" rx=\"1\"/><rect x=\"1\" y=\"8\" width=\"2\" height=\"3\" rx=\"1\"/><rect x=\"1\" y=\"4\" width=\"2\" height=\"3\" rx=\"1\"/><rect x=\"12\" y=\"4\" width=\"2\" height=\"3\" rx=\"1\"/><rect width=\"3\" height=\"3\" rx=\"1\"/><rect y=\"12\" width=\"3\" height=\"3\" rx=\"1\"/><rect x=\"12\" width=\"3\" height=\"3\" rx=\"1\"/></g></svg>","people":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M448 336.99c-30.834-13.916-76.625-49.562-144.5-61.917 17.396-18.646 30.583-47.833 44.166-82.375 7.917-20.021 6.604-37.125 6.667-61.458.042-18 3.521-46.812-.896-62.646-.354-1.312-.771-2.49-1.188-3.729C336.75 14.657 300 .292 257.021.063c-.229 0-.418-.031-.646-.031C212-.093 174.083 14.688 159 68.303c-4.438 15.792-1.125 44.583-1.146 62.479-.062 24.364-1.438 41.542 6.375 61.625 13.562 34.802 26.458 63.979 43.708 82.625-67.396 12.271-113.062 47.438-143.771 61.083C.542 364.471 0 395.615 0 395.615v84.416h512V512 396.865s-.229-31.291-64-59.875z\"/></svg>","pin":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M352 224V96l32-32h32V0H96v64h32l32 32v128L64 352h160v96l64 64V352h160z\"/></svg>","play":"<svg viewbox=\"-287 410.9 20 20\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M-277 428.9c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm0-18c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm-2 14.5l6-4.5-6-4.5v9z\"/></svg>","rectangle":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M43 43h426v426H43z\"/></svg>","refresh":"<svg viewbox=\"0 0 20 20\"><path d=\"M8 13.899c0 .548.351.729.8.392l5.314-3.985c.225-.169.234-.437 0-.612L8.8 5.709c-.442-.331-.8-.154-.8.392v7.798\"/><path d=\"M0 10c0 5.52 4.466 10 9.989 10 5.53 0 10.01-4.478 10.01-10 0-5.52-4.478-10-10.01-10C4.469 0 0 4.478 0 10m9.989-8c4.417 0 8.01 3.589 8.01 8s-3.593 8-8.01 8C5.584 18 2 14.411 2 10s3.584-8 7.989-8\"/></svg>","remove":"<svg viewbox=\"0 0 18 18\"><path d=\"M13 10H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2\"/><path d=\"M8.991 0C4.023 0 0 4.03 0 9c0 4.968 4.02 9 8.991 9 4.977 0 9.01-4.03 9.01-9 0-4.968-4.03-9-9.01-9m0 2c3.865 0 7.01 3.14 7.01 7s-3.144 7-7.01 7C5.136 16 2 12.86 2 9s3.136-7 6.991-7\"/></svg>","salesforce-sans-nuage":"<svg width=\"512\" height=\"115.201\" viewbox=\"0 0 512 115.201\"><path d=\"M24.703 88.692c-6.872 0-16.535-1.319-24.703-7.481L4.391 71.3c3.266 2.524 11.434 6.963 19.478 6.963 4.944 0 11.763-2.312 11.763-6.863 0-2.774-2.228-6.625-13.066-9.006-3.675-.808-20.622-4.451-20.622-18.208 0-9.794 7.044-19.024 22.563-19.024 11.231 0 18.631 4.263 21.847 5.869l-3.881 9.405c-6.531-4.144-13.766-5.263-18.168-5.263-6.841 0-10.11 3.949-10.11 6.988 0 6.675 10.503 7.574 16.95 9.806 9.984 3.307 16.95 8.806 16.95 18.007-.011 9.793-8.361 18.718-23.392 18.718zm56.254-.206c-14.888 0-26.95-5.052-26.95-19.419 0-13.152 12.062-20.844 26.95-20.844 4.547 0 8.744.162 12.456.712V47.01c0-11.737-13.272-11.487-13.272-11.487-11.435 0-18.172 5.014-18.172 5.014l-4.284-9.713s9.8-5.862 22.253-5.862c26.544 0 25.854 19.625 25.854 19.625v10.317l.003 28.733c-4.42 3.029-13.673 4.849-24.838 4.849zm50.027-1.412h-12.659V1.691h12.659v85.383zm65.21-26.77h-40.366v1.28c0 10.113 7.913 14.832 16.666 16.052 7.769 1.073 18.116-3.238 18.116-3.238l4.082 9.714s-7.078 4.312-20.688 4.312c-26.543 0-32.4-16.726-32.4-32.101 0-18.35 10.072-31.119 29.497-31.119 22.224-.007 27.544 20.325 25.093 35.1zm7.831 20.905l4.391-9.911c3.269 2.524 11.435 6.963 19.479 6.963 4.943 0 11.762-2.312 11.762-6.863 0-2.774-2.231-6.625-13.069-9.006-3.675-.808-20.619-4.451-20.619-18.208 0-9.794 7.044-19.024 22.562-19.024 11.231 0 18.631 4.263 21.85 5.869l-3.881 9.405c-6.538-4.144-13.769-5.263-18.175-5.263-6.837 0-10.106 3.949-10.106 6.988 0 6.674 10.506 7.573 16.95 9.806 9.981 3.307 16.95 8.806 16.95 18.007 0 9.787-8.35 18.711-23.381 18.711-6.875.009-16.544-1.312-24.713-7.474zm92.638-44.299l-13.412-.244-9.862 53.946c-2.994 13.362-6.601 19.338-12.363 22.271-10.26 5.219-22.975 0-22.975 0l4.25-9.9c16.475 5.449 17.731-9.155 18.475-13.112.75-3.955 9.738-53.208 9.738-53.208h-10.238l2.5-10.144h9.738s.524-16.006 9.977-22.399c11.562-7.826 25.485-2.095 25.485-2.095l-4.249 10.144c-9.676-2.469-14.48 1.757-14.48 1.757-3.307 3.713-4.281 13.088-4.281 13.088h14.021l-2.324 9.896zm31.7 51.789c-15.787 0-28.588-10.524-28.588-32.107 0-20.231 12.801-31.856 28.588-31.856 15.788 0 28.588 11.352 28.588 31.856 0 21.85-12.8 32.107-28.588 32.107zm71.051-50.451s-19.638-7.7-19.638 20.769v28.406h-12.471V26.378h12.456v5.818c10.281-10.625 25.102-4.744 25.102-4.744l-5.449 10.796zM434.67 88.56c-15.781 0-29.531-10.387-29.531-31.968 0-21.312 14.15-31.562 29.669-31.562 10.994 0 15.244 2.02 18.244 3.506l-3.538 9.438c-6.263-2.156-10.763-2.138-13.344-2.021-11.844.545-17.331 10.031-17.331 20.694 0 12.22 7.662 20.989 16.106 20.989 8.844 0 10.756-.812 14.831-2.568l3.812 9.175c-3.262 2.43-8.712 4.317-18.918 4.317zm76.781-28.256h-40.362v1.28c0 10.113 7.913 14.832 16.663 16.052 7.77 1.073 18.112-3.238 18.112-3.238l4.087 9.714s-7.081 4.312-20.688 4.312c-26.55 0-32.397-16.726-32.397-32.101 0-18.35 10.075-31.119 29.5-31.119 22.223-.007 27.535 20.325 25.085 35.1zm-25.462-24.219c-13.882 0-14.9 14.236-14.9 14.236h28c-1.087-12.411-9.563-14.236-13.1-14.236zm-157.626.112c-10.89 0-14.875 9.787-14.875 20.45 0 11.375 3.985 21.25 14.875 21.25 11.432 0 15.062-9.729 15.062-21.25.001-10.799-3.63-20.45-15.062-20.45zM67.481 69.067c0 13.148 25.319 7.688 25.319 7.688v-17.4c0-.001-25.319-5.465-25.319 9.712zm103.25-32.982c-13.884 0-14.903 14.236-14.903 14.236h28.003c-1.093-12.411-9.559-14.236-13.1-14.236z\"/></svg>","salesforce":"<svg width=\"512\" height=\"370.305\" viewbox=\"0 0 512 370.305\"><path d=\"M401.609 50.153c-15.889 0-30.984 3.515-44.634 9.815-15.708-28.911-45.193-48.383-78.993-48.383-25.419 0-48.405 11.03-64.917 28.807C194.896 15.842 166.239 0 133.997 0 79.074 0 34.554 45.945 34.554 102.625c0 14.518 2.916 28.313 8.182 40.812C17.188 158.864 0 187.693 0 220.715c0 49.287 38.262 89.217 85.459 89.217 6.02 0 11.9-.643 17.565-1.885 12.964 36.34 46.753 62.259 86.39 62.259 38.062 0 70.721-23.879 84.732-57.958 10.664 5.365 22.658 8.394 35.309 8.394 30.241 0 56.592-17.216 70.427-42.701a105.755 105.755 0 0 0 21.738 2.239c60.96 0 110.38-51.516 110.38-115.047 0-63.566-49.42-115.08-110.391-115.08zM92.521 199.219c-5.166 0-12.433-1.028-18.574-5.862l3.304-7.771c2.456 1.984 8.597 5.464 14.644 5.464 3.714 0 8.846-1.815 8.846-5.389 0-2.173-1.674-5.188-9.827-7.056-2.76-.639-15.503-3.492-15.503-14.278 0-7.672 5.299-14.91 16.961-14.91 8.447 0 14.012 3.342 16.429 4.602l-2.916 7.377c-4.917-3.254-10.354-4.13-13.663-4.13-5.144 0-7.599 3.1-7.599 5.477 0 5.231 7.898 5.937 12.743 7.688 7.505 2.595 12.743 6.9 12.743 14.117-.006 7.678-6.287 14.671-17.588 14.671zm42.296-.153c-11.196 0-20.264-3.957-20.264-15.227 0-10.31 9.068-16.341 20.264-16.341 3.415 0 6.574.128 9.362.562v-1.515c0-9.194-9.978-9.007-9.978-9.007-8.597 0-13.663 3.936-13.663 3.936l-3.22-7.615s7.366-4.602 16.733-4.602c19.954 0 19.433 15.388 19.433 15.388v8.093l.005 22.523c-3.323 2.374-10.28 3.805-18.672 3.805zm37.614-1.109h-9.522V131.02h9.522v66.937zm49.026-20.991H191.11v1.003c0 7.933 5.947 11.629 12.527 12.583 5.842.854 13.619-2.539 13.619-2.539l3.07 7.615s-5.321 3.383-15.553 3.383c-19.96 0-24.36-13.107-24.36-25.166 0-14.378 7.571-24.394 22.177-24.394 16.711-.004 20.707 15.936 18.867 27.515zm5.887 16.391l3.304-7.771c2.455 1.984 8.597 5.464 14.644 5.464 3.714 0 8.847-1.815 8.847-5.389 0-2.173-1.68-5.188-9.827-7.056-2.761-.639-15.504-3.492-15.504-14.278 0-7.672 5.294-14.91 16.961-14.91 8.447 0 14.012 3.342 16.428 4.602l-2.915 7.377c-4.917-3.254-10.354-4.13-13.663-4.13-5.144 0-7.599 3.1-7.599 5.477 0 5.231 7.893 5.937 12.743 7.688 7.504 2.595 12.743 6.9 12.743 14.117 0 7.676-6.279 14.67-17.576 14.67-5.178.001-12.445-1.027-18.586-5.861zm69.651-34.726l-10.077-.193-7.428 42.292c-2.239 10.476-4.967 15.153-9.29 17.46-7.716 4.091-17.271 0-17.271 0l3.193-7.762c12.394 4.27 13.323-7.185 13.901-10.285.554-3.104 7.313-41.705 7.313-41.705h-7.704l1.873-7.953h7.328s.391-12.556 7.504-17.565c8.689-6.131 19.156-1.641 19.156-1.641l-3.191 7.954c-7.271-1.94-10.887 1.374-10.887 1.374-2.48 2.909-3.215 10.266-3.215 10.266h10.529l-1.734 7.758zm23.834 40.601c-11.873 0-21.495-8.247-21.495-25.176 0-15.862 9.622-24.971 21.495-24.971 11.872 0 21.494 8.896 21.494 24.971 0 17.128-9.622 25.176-21.494 25.176zm53.421-39.554s-14.766-6.035-14.766 16.284v22.271h-9.379v-47.862h9.379v4.562c7.716-8.324 18.864-3.719 18.864-3.719l-4.098 8.464zm26.506 39.443c-11.872 0-22.204-8.137-22.204-25.064 0-16.705 10.645-24.742 22.307-24.742 8.271 0 11.463 1.585 13.724 2.749l-2.66 7.404c-4.723-1.695-8.092-1.68-10.043-1.591-8.891.427-13.015 7.871-13.015 16.229 0 9.571 5.753 16.444 12.104 16.444 6.651 0 8.081-.633 11.151-2.006l2.857 7.185c-2.459 1.906-6.539 3.392-14.221 3.392zm57.723-22.155h-30.341v1.003c0 7.933 5.953 11.629 12.526 12.583 5.842.854 13.624-2.539 13.624-2.539l3.06 7.615s-5.318 3.383-15.542 3.383c-19.965 0-24.363-13.107-24.363-25.166 0-14.378 7.568-24.394 22.171-24.394 16.714-.004 20.705 15.936 18.865 27.515zm-256.167-18.983c-10.438 0-11.202 11.156-11.202 11.156h21.052c-.82-9.727-7.189-11.156-9.85-11.156zm237.033 0c-10.439 0-11.207 11.156-11.207 11.156h21.054c-.824-9.727-7.187-11.156-9.847-11.156zm-118.516.089c-8.192 0-11.188 7.677-11.188 16.035 0 8.913 2.993 16.655 11.188 16.655 8.591 0 11.329-7.627 11.329-16.655 0-8.475-2.738-16.035-11.329-16.035zM124.686 183.84c0 10.315 19.034 6.024 19.034 6.024v-13.642c0 .001-19.034-4.282-19.034 7.618z\"/></svg>","search":"<svg viewbox=\"0 0 15 15\"><path d=\"M2.01 6.03a4.025 4.025 0 0 1 4.02-4.02 4.025 4.025 0 0 1 4.02 4.02 4.025 4.025 0 0 1-4.02 4.02 4.024 4.024 0 0 1-4.02-4.02m12.696 7.256l-3.769-3.768a5.991 5.991 0 0 0 1.12-3.487 6.036 6.036 0 0 0-6.03-6.03 6.036 6.036 0 0 0-6.03 6.03 6.036 6.036 0 0 0 6.03 6.03c1.3 0 2.502-.418 3.487-1.12l3.769 3.769a1.001 1.001 0 0 0 1.42 0 1.005 1.005 0 0 0 0-1.422\" fill=\"currentColor\" fill-rule=\"evenodd\"/></svg>","select":"<svg viewbox=\"0 0 20 20\"><path d=\"M2.3 6h1.4a.3.3 0 0 1 .3.3v1.4a.3.3 0 0 1-.3.3H2.3a.3.3 0 0 1-.3-.3V6.3a.3.3 0 0 1 .3-.3M1.53 1a.53.53 0 0 0-.53.53v1.94c0 .293.237.53.53.53h1.94A.53.53 0 0 0 4 3.47V1.53A.53.53 0 0 0 3.47 1H1.53M14.53 1a.53.53 0 0 0-.53.53v1.94c0 .293.237.53.53.53h1.94a.53.53 0 0 0 .53-.53V1.53a.53.53 0 0 0-.53-.53h-1.94M1.53 14a.53.53 0 0 0-.53.53v1.94c0 .293.237.53.53.53h1.94a.53.53 0 0 0 .53-.53v-1.94a.53.53 0 0 0-.53-.53H1.53M2.3 10h1.4a.3.3 0 0 1 .3.3v1.4a.3.3 0 0 1-.3.3H2.3a.3.3 0 0 1-.3-.3v-1.4a.3.3 0 0 1 .3-.3M6.3 14h1.4a.3.3 0 0 1 .3.3v1.4a.3.3 0 0 1-.3.3H6.3a.3.3 0 0 1-.3-.3v-1.4a.3.3 0 0 1 .3-.3M6.3 2h1.4a.3.3 0 0 1 .3.3v1.4a.3.3 0 0 1-.3.3H6.3a.3.3 0 0 1-.3-.3V2.3a.3.3 0 0 1 .3-.3M10.3 2h1.4a.3.3 0 0 1 .3.3v1.4a.3.3 0 0 1-.3.3h-1.4a.3.3 0 0 1-.3-.3V2.3a.3.3 0 0 1 .3-.3M14.3 6h1.4a.3.3 0 0 1 .3.3v1.4a.3.3 0 0 1-.3.3h-1.4a.3.3 0 0 1-.3-.3V6.3a.3.3 0 0 1 .3-.3M10.46 10a.459.459 0 0 0-.424.64l3.893 9.08a.458.458 0 0 0 .857-.036l1.225-3.674 3.675-1.225a.46.46 0 0 0 .035-.857l-9.08-3.893a.463.463 0 0 0-.179-.037\"/></svg>","send_email":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M256-.75l-96 96h64v129.5h63.5V95.25H352z\"/><path d=\"M288 351.975C357.175 326.385 512 192 512 192v-32l-192-.025v96H192v-96L0 160v32s156.377 130.525 224 159.975c14.669 6.386 48.994 5.55 64 0z\"/><path d=\"M512 480V240S377.482 359.484 320 383.975c-29.439 12.543-97.911 10.895-128 0C133.25 362.704 0 240 0 240v240c0 32 32 32 32 32h448s32 0 32-32z\"/></svg>","set-to-now":"<svg viewbox=\"0 0 18 18\"><path d=\"M0 1h18v16H0V1m2 4v10h14V5H2m9 6h3v2h-3v-2\"/></svg>","settings":"<svg width=\"20\" height=\"20\" viewbox=\"-287 410.89 20 20\"><path d=\"M-275.149 430.64h-3.701a1.199 1.199 0 0 1-1.197-1.033l-.289-1.959a7.51 7.51 0 0 1-.985-.558l-1.927.753c-.582.203-1.213-.028-1.493-.531l-1.84-3.097a1.193 1.193 0 0 1 .297-1.553l1.62-1.231a6.09 6.09 0 0 1 0-1.083l-1.616-1.229a1.19 1.19 0 0 1-.297-1.562l1.847-3.108c.277-.499.915-.729 1.476-.516l1.937.756c.327-.217.652-.402.982-.559l.291-1.974c.073-.574.588-1.019 1.195-1.019h3.701c.607 0 1.122.444 1.197 1.034l.289 1.958c.338.159.668.346.985.558l1.929-.753c.576-.205 1.209.027 1.491.53l1.84 3.098c.306.542.177 1.188-.298 1.553l-1.618 1.231a6.38 6.38 0 0 1 0 1.083l1.615 1.228c.478.37.606 1.016.31 1.542l-1.858 3.129a1.193 1.193 0 0 1-1.476.517l-1.938-.757a7.944 7.944 0 0 1-.982.559l-.291 1.974c-.074.575-.588 1.019-1.196 1.019zm-3.451-1.5h3.201l.376-2.551.401-.16a6.265 6.265 0 0 0 1.397-.79l.333-.243 2.458.961 1.586-2.672-2.076-1.579.055-.43c.033-.257.059-.514.059-.787 0-.272-.025-.529-.059-.786l-.055-.43 2.076-1.58-1.586-2.671-2.464.962-.333-.25a6.11 6.11 0 0 0-1.392-.785l-.401-.16-.376-2.55h-3.201l-.376 2.55-.401.16a6.339 6.339 0 0 0-1.398.791l-.332.243-2.457-.959-1.587 2.67 2.077 1.58-.055.43c-.033.257-.06.521-.06.786s.026.53.06.787l.055.43-2.077 1.58 1.587 2.671 2.463-.963.334.251a6.04 6.04 0 0 0 1.391.784l.401.16.376 2.55z\"/><path d=\"M-277 424.39c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5zm0-6a2.503 2.503 0 0 0-2.5 2.5c0 1.379 1.121 2.5 2.5 2.5s2.5-1.122 2.5-2.5c0-1.379-1.121-2.5-2.5-2.5z\"/></svg>","share":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M320 96c0 5.125.312 9.922.938 14.719l-158.703 75.843C145.281 170.234 121.921 160 96 160c-53.125 0-96 42.875-96 96s42.875 96 96 96c25.921 0 49.281-10.25 66.234-26.875l158.704 76.156c-.626 4.781-.938 9.594-.938 14.719 0 53.125 42.875 96 96 96s96-42.875 96-96-42.875-96-96-96c-27.5 0-52.156 11.5-69.751 30.062L190.079 275.5c1.279-6.375 1.921-12.781 1.921-19.5s-.642-13.125-1.921-19.516l156.17-74.562C363.5 180.484 388.5 192 416 192c53.125 0 96-42.875 96-96S469.125 0 416 0s-96 42.875-96 96z\"/></svg>","sort-asc":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M384 192L256 64 128 192z\"/></svg>","sort-desc":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M128 320l128 128 128-128z\"/></svg>","source-aha":"<svg viewbox=\"0 0 32 32\"><path fill=\"#0073cf\" d=\"M30 0H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2M19 27.3c0 .4-.1.6-.6.6-1.6 0-3.2 0-4.8.1-.4 0-.6-.2-.6-.6v-4.1c0-.4.2-.6.6-.6.8 0 1.6.1 2.3.1.8 0 1.6 0 2.4-.1.5 0 .7.1.6.6 0 .7 0 3.3.1 4m-.3-14.8c-.1 2.3-.2 4.5-.2 6.8 0 .4-.1.6-.6.6-.9 0-3.4.1-3.7.1-.4 0-.6-.1-.6-.5-.1-1.6-.1-3.3-.2-4.9-.2-3-.4-5.9-.7-8.9 0-.4.1-.6.5-.7 1.8-.3 3.7-.6 5.5-.9.5-.1.6.1.6.6-.2 2.5-.4 5.1-.6 7.8\"/></svg>","source-all":"<svg viewbox=\"0 0 32 32\"><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#004990\"/><path d=\"M21.6 21.1c-2.1 0-4.4-1.4-5.6-3.3-1.2 1.9-3.5 3.3-5.6 3.3-3.1 0-5.6-2.3-5.6-5.1s2.5-5.1 5.6-5.1c2.1 0 4.4 1.4 5.6 3.3 1.2-1.9 3.5-3.3 5.6-3.3 3.1 0 5.6 2.3 5.6 5.1s-2.5 5.1-5.6 5.1M16.8 16c.7 1.9 2.9 3.6 4.8 3.6 2.2 0 4.1-1.6 4.1-3.6s-1.8-3.6-4.1-3.6c-1.9 0-4.1 1.7-4.8 3.6m-6.4-3.6c-2.2 0-4.1 1.6-4.1 3.6s1.8 3.6 4.1 3.6c1.9 0 4.1-1.7 4.8-3.6-.7-1.9-2.9-3.6-4.8-3.6\" fill=\"#fff\"/><path d=\"M10.4 21.1v-1.5c2 0 4.3-1.8 4.9-3.8l.1-.2c.9-2.5 3.4-4.6 6.2-4.6v1.5c-2 0-4.3 1.8-4.9 3.8v.2c-1 2.6-3.7 4.6-6.3 4.6z\" opacity=\".5\" fill=\"#004990\" stroke=\"#004990\" stroke-width=\".5\" stroke-miterlimit=\"10\"/><path d=\"M21.5 20.9c-2.7 0-5.3-1.9-6.1-4.4 0 0-1.2-4.2-5.1-4.2V11c2.8 0 5.5 2 6.3 4.5 0 0 1.4 4.3 4.9 4.3v1.1\" fill=\"#fff\"/></svg>","source-amazonS3":"<svg viewbox=\"0 0 32 32\"><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/><path fill=\"#e05243\" d=\"M25.6 9.3v13.5l-1.6.7v-15z\"/><g fill=\"#8c3123\"><path d=\"M16 10.5v11.1l8 1.9v-15zM6.4 9.3v13.5l1.6.7v-15z\"/></g><path fill=\"#e05243\" d=\"M16 10.5v11.1l-8 1.9v-15z\"/><g fill=\"#8c3123\"><path d=\"M12.5 6.2v4.9l3.5-.8V4.4zM12.5 20.9v4.9l3.5 1.8v-5.9zM12.5 13.5v4.9l3.5.5v-5.8z\"/></g><g fill=\"#e05243\"><path d=\"M19.5 13.5v4.9l-3.5.5v-5.8zM19.5 6.2v4.9l-3.5-.8V4.4zM19.5 20.9v4.9L16 27.6v-5.9z\"/></g><path fill=\"#5e1f18\" d=\"M16 10.3l-3.5.8 3.5.7 3.5-.7z\"/><path fill=\"#f2b0a9\" d=\"M16 20.2l-3.5.7 3.5.8 3.5-.8z\"/></svg>","source-box":"<svg viewbox=\"0 0 32 32\"><g fill=\"#0075c9\"><path d=\"M16.8 13.5c-1.7 0-3.1.9-3.8 2.3-.7-1.4-2.2-2.3-3.8-2.3-1 0-1.9.3-2.6.9v-3.6c0-.5-.4-.8-.9-.8s-.9.4-.9.8V18c0 2.4 2 4.3 4.3 4.3 1.7 0 3.1-.9 3.8-2.3.7 1.4 2.2 2.3 3.8 2.3 2.4 0 4.3-1.9 4.3-4.3.2-2.6-1.8-4.5-4.2-4.5m-7.6 6.9c-1.4 0-2.6-1.2-2.6-2.6s1.2-2.6 2.6-2.6 2.6 1.2 2.6 2.6c0 1.4-1.2 2.6-2.6 2.6m7.6 0c-1.4 0-2.6-1.2-2.6-2.6s1.2-2.6 2.6-2.6 2.6 1.2 2.6 2.6c0 1.4-1.1 2.6-2.6 2.6\"/><path d=\"M27 20.8l-2.2-3 2.2-3c.3-.4.2-.9-.2-1.2-.4-.3-.9-.2-1.2.2l-1.9 2.6-1.9-2.6c-.3-.4-.8-.4-1.2-.2-.4.3-.5.8-.2 1.2l2.2 3-2.2 3c-.3.4-.2.9.2 1.2.4.3.9.2 1.2-.2l1.9-2.6 1.9 2.6c.3.4.8.4 1.2.2.4-.3.5-.9.2-1.2\"/></g><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-clearspace":"<svg width=\"32\" height=\"32\" fill=\"#53AA45\" viewbox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"2\"/><lineargradient x1=\"50%\" y1=\"0%\" x2=\"50%\" y2=\"100%\"><stop stop-color=\"#B3E3B3\" offset=\"0%\"/><stop stop-color=\"#FFF\" offset=\"100%\"/></lineargradient><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#B5E3B5\" d=\"M17.375 10.958h4.583v4.583h-4.583z\"/><path d=\"M11 22c6.075 0 11-4.925 11-11S17.075 0 11 0 0 4.925 0 11s4.925 11 11 11zm-4.279-6.726c1.102 0 3.49-1.668 4.28.166 1.164 2.7-3.615 3.2-3.615 3.2s1.432 1.37 4.373 1.37c2.94 0 8.685-2.653 8.852-9.01H3.2c0 2.152 1.369 4.274 3.52 4.274zm0-8.548c1.102 0 3.49 1.668 4.28-.166 1.164-2.7-3.615-3.2-3.615-3.2s1.432-1.37 4.373-1.37c2.94 0 8.685 2.653 8.852 9.01H3.2c0-2.152 1.369-4.274 3.52-4.274z\" fill=\"url(#a)\" transform=\"translate(5 5)\"/><path stroke=\"#FFF\" d=\"M13.25 12.792h6.417v6.417H13.25z\"/><path d=\"M29 0L8 32h24V0h-3z\" opacity=\".102\" fill=\"#000\"/></g></svg>","source-confluence":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"5.3\" y=\"7\" width=\"21.7\" height=\"20.1\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"5.3\" y=\"7\" width=\"21.7\" height=\"20.1\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#1f2e4f\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#f8faff\" d=\"M20.7 20.4c-.3-.6-.6-1.1-1-1.7l-.9-1.2c-.1-.2-.1-.4 0-.5l.3-.3c1.3-1.4 2.6-2.8 3.7-4.4 1.1-1.6 1.7-3.2 1.9-4.8 0-.2-.1-.3-.2-.4-.1 0-.2-.1-.3-.1H24c-1 .4-2 .7-2.9.9-.2 0-.3.2-.4.4-.7 1.9-2.4 3.8-4.2 5.7-.1.1-.2.2-.3.2s-.3-.1-.3-.2c-1.8-1.9-3.5-3.8-4.2-5.7-.1-.1-.3-.3-.5-.3-.9-.2-1.9-.6-2.9-1h-.2c-.1 0-.2 0-.3.1-.1.1-.1.3-.1.4.2 1.6.8 3.2 1.9 4.8 1 1.5 2.4 3 3.7 4.4 2.4 2.5 4.6 5 4.8 7.7 0 .3.2.4.5.4h2.8c.1 0 .2-.1.3-.2.1-.1.1-.2.1-.4 0-.5-.1-1.1-.2-1.6 0-.1.1-.2.2-.2 2.3.4 3.7.9 3.7 1.5s-1.3 1.5-3.4 2.1c-.2.1-.3.2-.3.4 0 .3.2.5.5.5h.1c2.8-.7 4.7-1.8 4.7-3.2-.1-1.3-2.6-2.7-6.4-3.3m-7.5-1.5c-.1-.1-.2-.1-.3-.1-.2 0-.3.1-.4.2-.3.5-.6 1-.8 1.4-3.8.6-6.3 2-6.3 3.6 0 1.3 1.9 2.5 4.7 3.1h.1c.2 0 .5-.2.5-.5 0-.2-.1-.4-.3-.4-2.1-.6-3.4-1.5-3.4-2.1 0-.6 1.4-1.2 3.7-1.5.1 0 .2.1.2.2-.1.5-.2 1-.2 1.6 0 .1 0 .3.1.4.1.1.2.2.3.2h2.8c.2 0 .4-.2.5-.4.1-.9.3-1.7.8-2.6.2-.3 0-.6-.1-.7-.5-.8-1.1-1.5-1.9-2.4m2.6-7.3c.1.1.2.1.3.1.1 0 .2 0 .3-.1 1-1 1.5-2.2 1.6-2.5v-.2c0-.3-.2-.4-.4-.4s-.7.1-1.6.1c-.9 0-1.4-.1-1.6-.1-.2 0-.4.2-.4.4v.2c.3.4.9 1.5 1.8 2.5\"/></svg>","source-confluence2":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"5.3\" y=\"7\" width=\"21.7\" height=\"20.1\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"5.3\" y=\"7\" width=\"21.7\" height=\"20.1\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#1f2e4f\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#f8faff\" d=\"M20.7 20.4c-.3-.6-.6-1.1-1-1.7l-.9-1.2c-.1-.2-.1-.4 0-.5l.3-.3c1.3-1.4 2.6-2.8 3.7-4.4 1.1-1.6 1.7-3.2 1.9-4.8 0-.2-.1-.3-.2-.4-.1 0-.2-.1-.3-.1H24c-1 .4-2 .7-2.9.9-.2 0-.3.2-.4.4-.7 1.9-2.4 3.8-4.2 5.7-.1.1-.2.2-.3.2s-.3-.1-.3-.2c-1.8-1.9-3.5-3.8-4.2-5.7-.1-.1-.3-.3-.5-.3-.9-.2-1.9-.6-2.9-1h-.2c-.1 0-.2 0-.3.1-.1.1-.1.3-.1.4.2 1.6.8 3.2 1.9 4.8 1 1.5 2.4 3 3.7 4.4 2.4 2.5 4.6 5 4.8 7.7 0 .3.2.4.5.4h2.8c.1 0 .2-.1.3-.2.1-.1.1-.2.1-.4 0-.5-.1-1.1-.2-1.6 0-.1.1-.2.2-.2 2.3.4 3.7.9 3.7 1.5s-1.3 1.5-3.4 2.1c-.2.1-.3.2-.3.4 0 .3.2.5.5.5h.1c2.8-.7 4.7-1.8 4.7-3.2-.1-1.3-2.6-2.7-6.4-3.3m-7.5-1.5c-.1-.1-.2-.1-.3-.1-.2 0-.3.1-.4.2-.3.5-.6 1-.8 1.4-3.8.6-6.3 2-6.3 3.6 0 1.3 1.9 2.5 4.7 3.1h.1c.2 0 .5-.2.5-.5 0-.2-.1-.4-.3-.4-2.1-.6-3.4-1.5-3.4-2.1 0-.6 1.4-1.2 3.7-1.5.1 0 .2.1.2.2-.1.5-.2 1-.2 1.6 0 .1 0 .3.1.4.1.1.2.2.3.2h2.8c.2 0 .4-.2.5-.4.1-.9.3-1.7.8-2.6.2-.3 0-.6-.1-.7-.5-.8-1.1-1.5-1.9-2.4m2.6-7.3c.1.1.2.1.3.1.1 0 .2 0 .3-.1 1-1 1.5-2.2 1.6-2.5v-.2c0-.3-.2-.4-.4-.4s-.7.1-1.6.1c-.9 0-1.4-.1-1.6-.1-.2 0-.4.2-.4.4v.2c.3.4.9 1.5 1.8 2.5\"/></svg>","source-confluence2_cloud":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"5.3\" y=\"7\" width=\"21.7\" height=\"20.1\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"5.3\" y=\"7\" width=\"21.7\" height=\"20.1\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#1f2e4f\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#f8faff\" d=\"M20.7 20.4c-.3-.6-.6-1.1-1-1.7l-.9-1.2c-.1-.2-.1-.4 0-.5l.3-.3c1.3-1.4 2.6-2.8 3.7-4.4 1.1-1.6 1.7-3.2 1.9-4.8 0-.2-.1-.3-.2-.4-.1 0-.2-.1-.3-.1H24c-1 .4-2 .7-2.9.9-.2 0-.3.2-.4.4-.7 1.9-2.4 3.8-4.2 5.7-.1.1-.2.2-.3.2s-.3-.1-.3-.2c-1.8-1.9-3.5-3.8-4.2-5.7-.1-.1-.3-.3-.5-.3-.9-.2-1.9-.6-2.9-1h-.2c-.1 0-.2 0-.3.1-.1.1-.1.3-.1.4.2 1.6.8 3.2 1.9 4.8 1 1.5 2.4 3 3.7 4.4 2.4 2.5 4.6 5 4.8 7.7 0 .3.2.4.5.4h2.8c.1 0 .2-.1.3-.2.1-.1.1-.2.1-.4 0-.5-.1-1.1-.2-1.6 0-.1.1-.2.2-.2 2.3.4 3.7.9 3.7 1.5s-1.3 1.5-3.4 2.1c-.2.1-.3.2-.3.4 0 .3.2.5.5.5h.1c2.8-.7 4.7-1.8 4.7-3.2-.1-1.3-2.6-2.7-6.4-3.3m-7.5-1.5c-.1-.1-.2-.1-.3-.1-.2 0-.3.1-.4.2-.3.5-.6 1-.8 1.4-3.8.6-6.3 2-6.3 3.6 0 1.3 1.9 2.5 4.7 3.1h.1c.2 0 .5-.2.5-.5 0-.2-.1-.4-.3-.4-2.1-.6-3.4-1.5-3.4-2.1 0-.6 1.4-1.2 3.7-1.5.1 0 .2.1.2.2-.1.5-.2 1-.2 1.6 0 .1 0 .3.1.4.1.1.2.2.3.2h2.8c.2 0 .4-.2.5-.4.1-.9.3-1.7.8-2.6.2-.3 0-.6-.1-.7-.5-.8-1.1-1.5-1.9-2.4m2.6-7.3c.1.1.2.1.3.1.1 0 .2 0 .3-.1 1-1 1.5-2.2 1.6-2.5v-.2c0-.3-.2-.4-.4-.4s-.7.1-1.6.1c-.9 0-1.4-.1-1.6-.1-.2 0-.4.2-.4.4v.2c.3.4.9 1.5 1.8 2.5\"/></svg>","source-custom":"<svg viewbox=\"0 0 32 32\"><g fill=\"#004990\"><path d=\"M30 0H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2m-3.9 13.2L22 17.3l1.6 1.6.1.1c.2.2.2.4 0 .6l-.9.9c-.1.1-.2.1-.3.1s-.2 0-.3-.1l-.1-.1c-2.2 1.8-5 2.9-7.5 2.9-1 0-1.9-.2-2.7-.6-.1.1-.1.2-.2.3l-2.8 2.8c-.3.4-.8.6-1.3.6-.4 0-.9-.2-1.3-.6-.7-.8-.7-2 0-2.7L9 20.3l.2-.2C8 17.3 8.9 13.2 11.6 10l-.2-.2c-.2-.2-.2-.4 0-.6l.9-.9c.1-.1.2-.1.3-.1.1 0 .2 0 .3.1l.2.2 1.5 1.5 4.1-4.1c.2-.2.5-.3.8-.3.3 0 .6.1.8.3.4.4.4 1.2 0 1.6l-4.1 4.1 4.2 4.2 4.1-4.1c.2-.2.5-.3.8-.3s.6.1.8.3c.4.3.4 1.1 0 1.5M13 11.5c-2.5 3-3.2 7-1.3 8.8\"/><path d=\"M11.7 20.3c-1.8-1.8-1.1-5.8 1.3-8.8l7.5 7.5c-3.1 2.5-7 3.1-8.8 1.3\"/></g></svg>","source-database":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"8\" y=\"7\" width=\"16\" height=\"19\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"8\" y=\"7\" width=\"16\" height=\"19\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M16 26c-4.4 0-8-1.2-8-2.7v-2.7c0-.2.1-.5.3-.7.9 1.2 4 2 7.7 2s6.8-.9 7.7-2c.2.2.3.4.3.7v2.7c0 1.5-3.6 2.7-8 2.7m0-5.4c-4.4 0-8-1.2-8-2.7v-2.7c0-.1.1-.3.1-.4 0-.1.1-.2.2-.3.9 1.2 4 2 7.7 2s6.8-.9 7.7-2c.1.1.1.2.2.3.1.1.1.3.1.4v2.7c0 1.4-3.6 2.7-8 2.7m0-5.5c-4.4 0-8-1.2-8-2.7V9.7C8 8.2 11.6 7 16 7s8 1.2 8 2.7v2.8c0 1.4-3.6 2.6-8 2.6m0-7.6c-3.9 0-7 .9-7 2s3.1 2 7 2 7-.9 7-2-3.1-2-7-2\"/></svg>","source-desktop":"<svg viewbox=\"0 0 32 32\"><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g fill=\"#fff\"><circle cx=\"22.2\" cy=\"15.4\" r=\"2\"/><path d=\"M7 14v4l3.9-2z\"/><path d=\"M27 10.5H5c-.8 0-1.5.7-1.5 1.5v8c0 .8.7 1.5 1.5 1.5h22c.8 0 1.5-.7 1.5-1.5v-8c0-.8-.7-1.5-1.5-1.5m-9 10H5c-.3 0-.5-.2-.5-.5v-8c0-.3.2-.5.5-.5h13v9m8.6-1.4l-.5.5c-.1.1-.3.1-.4 0l-1.8-1.8c-.5.4-1.1.6-1.7.6-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3c0 .5-.1 1-.4 1.4l1.8 1.8c.1.2.1.4 0 .5\"/></g></svg>","source-discourse":"<svg width=\"32\" height=\"32\" viewbox=\"0 0 32 32\"><title>Discourse</title><defs><rect width=\"32\" height=\"32\" rx=\"2\"/></defs><g fill=\"none\" fill-rule=\"evenodd\"><mask fill=\"#fff\"><use xlink:href=\"#a\"/></mask><use fill=\"#39393A\" xlink:href=\"#a\"/><g mask=\"url(#b)\"><path d=\"M8.123 18.795a8.162 8.162 0 0 1-1.098-4.247c.079-4.533 3.823-8.143 8.361-8.064 4.54.08 8.155 3.818 8.075 8.351-.079 4.533-3.822 8.143-8.361 8.064a8.192 8.192 0 0 1-5.14-1.92l.324.433-3.006 2.734.845-5.35z\" fill=\"#E51B24\"/><path d=\"M10.44 21.556a8.165 8.165 0 0 1-1.528-4.912C8.99 12.11 12.735 8.5 17.273 8.58c4.54.08 8.155 3.818 8.075 8.35-.079 4.534-3.822 8.144-8.361 8.065a8.19 8.19 0 0 1-4.142-1.202l.03.029-5.625.292 3.033-2.704.156.146z\" fill=\"#01ADF0\"/><path d=\"M10.037 21.385a8.258 8.258 0 0 1-.008-.009l12.2-10.985c3 3.331 2.7 8.49-.669 11.524-2.663 2.398-6.446 2.75-9.396 1.147l-4.916 1.054 2.79-2.73z\" fill=\"#00A84F\"/><path d=\"M10.026 21.373l.003.003 12.2-10.985C19.23 7.06 14.067 6.818 10.7 9.852c-2.76 2.485-3.46 6.396-1.976 9.56l-1.541 4.716 2.844-2.755z\" fill=\"#F15C21\"/><path d=\"M9.293 19.666a8.096 8.096 0 0 1-.508-3.127c.159-4.53 4.006-8.073 8.594-7.913a8.345 8.345 0 0 1 4.768 1.69 8.102 8.102 0 0 1 1.372 4.811c-.158 4.531-4.005 8.074-8.593 7.914a8.4 8.4 0 0 1-2.59-.503l-5.102 1.609 2.059-4.48z\" fill=\"#FFF9AE\"/></g><path d=\"M29 0L8 32h24V0h-3z\" opacity=\".102\" fill=\"#000\" mask=\"url(#b)\"/></g></svg>","source-documentum":"<svg width=\"32\" height=\"32\" viewbox=\"0 0 32 32\"><defs><rect width=\"32\" height=\"32\" rx=\"2\"/></defs><g fill=\"none\" fill-rule=\"evenodd\"><mask fill=\"#fff\"><use xlink:href=\"#a\"/></mask><use fill=\"#F6F6F6\" xlink:href=\"#a\"/><g mask=\"url(#b)\"><path d=\"M25.564 17.204h-3.488a9.953 9.953 0 0 1-2.29-.341c-.258-.075-.945-.276-1.61-.683-.618-.379-1.189-.9-1.755-1.602-.8-.993-1.293-1.947-1.574-3.194-.134-.593-.166-1.117-.203-1.877-.016-.336-.132-1.066-.132-1.066-.48-2.418-2.66-4.245-5.279-4.245-2.97 0-5.378 2.348-5.378 5.244 0 2.565 1.89 4.696 4.384 5.151 0 0 .898.134 1.346.14 1.715.023 3.349.505 4.851 1.653 1.085.829 2.603 2.09 2.78 5.493v3.466c0 1.293 1.074 2.34 2.399 2.34h5.949c1.326 0 2.4-1.047 2.4-2.34v-5.8c0-1.292-1.074-2.34-2.4-2.34\" fill=\"#005795\"/><path d=\"M9.278 27.78c2.97 0 5.379-2.349 5.379-5.245 0-2.897-2.408-5.244-5.38-5.244-2.97 0-5.378 2.347-5.378 5.244 0 2.896 2.408 5.244 5.379 5.244M27.968 9.51c0-2.896-2.408-5.245-5.378-5.245-2.972 0-5.379 2.349-5.379 5.244 0 2.897 2.407 5.245 5.379 5.245 2.97 0 5.378-2.348 5.378-5.245\" fill=\"#1A1918\"/></g><path d=\"M29 0L8 32h24V0h-3z\" opacity=\".102\" fill=\"#000\" mask=\"url(#b)\"/></g></svg>","source-dropbox":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4\" y=\"5.1\" width=\"23.7\" height=\"22.2\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4\" y=\"5.1\" width=\"23.7\" height=\"22.2\"><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#fff\" filter=\"url(#a)\"/></mask></defs><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#007ee5\"/><path d=\"M11 5.1L4 9.7l4.8 3.9 7-4.4L11 5.1M4 17.5l7 4.6 4.9-4.1-7-4.4L4 17.5m11.9.5l4.9 4.1 7-4.6-4.8-3.9-7.1 4.4m11.8-8.3l-7-4.6-4.9 4.1 7 4.4 4.9-3.9m-11.8 9.2L11 23l-2.1-1.4v1.5l7 4.2 7-4.2v-1.5L20.8 23l-4.9-4.1\" fill=\"#fff\" mask=\"url(#b)\"/></svg>","source-dropbox_for_business":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4\" y=\"5.1\" width=\"23.7\" height=\"22.2\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4\" y=\"5.1\" width=\"23.7\" height=\"22.2\"><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#fff\" filter=\"url(#a)\"/></mask></defs><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#007ee5\"/><path d=\"M11 5.1L4 9.7l4.8 3.9 7-4.4L11 5.1M4 17.5l7 4.6 4.9-4.1-7-4.4L4 17.5m11.9.5l4.9 4.1 7-4.6-4.8-3.9-7.1 4.4m11.8-8.3l-7-4.6-4.9 4.1 7 4.4 4.9-3.9m-11.8 9.2L11 23l-2.1-1.4v1.5l7 4.2 7-4.2v-1.5L20.8 23l-4.9-4.1\" fill=\"#fff\" mask=\"url(#b)\"/></svg>","source-drupal":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"5\" y=\"1.6\" width=\"22\" height=\"26.8\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"5\" y=\"1.6\" width=\"22\" height=\"26.8\"><path d=\"M2.1.1H30c1.1 0 2 .9 2 2V30c0 1.1-.9 2-2 2H2.1c-1.1 0-2-.9-2-2V2.1c0-1.1.9-2 2-2\" fill=\"#fff\" filter=\"url(#a)\"/></mask></defs><path d=\"M2.1.1H30c1.1 0 2 .9 2 2V30c0 1.1-.9 2-2 2H2.1c-1.1 0-2-.9-2-2V2.1c0-1.1.9-2 2-2\" fill=\"#2ba9e0\"/><g mask=\"url(#b)\"><path d=\"M21.5 6.6c-1.3-.9-2.5-1.2-3.7-2-.8-.6-1.8-1.9-2.7-3-.2 1.8-.7 2.5-1.3 3-1.2 1-2 1.3-3.1 2-.9.5-5.7 3.6-5.7 10.3s5.3 11.6 11.1 11.6S27 24 27 17.1s-4.8-10-5.5-10.5m-2 16c.4 0 .8 0 1.1.2.3.2.5.7.6.9.1.3 0 .4-.2.5-.2.1-.2.1-.4-.3-.2-.3-.3-.7-1.2-.7-.8 0-1.1.3-1.5.7-.4.4-.6.5-.7.3-.1-.2-.1-.4.2-.7.3-.3.7-.7 1.1-.9h1m-4 3c.5.4 1.2.7 2.8.7 1.6 0 2.6-.5 3.1-.9.2-.2.3 0 .3.1s.1.3-.1.4c-.1.1-1.2 1-2.5 1.1-1.3.1-3.1.2-4.1-.8-.2-.2-.1-.4 0-.5.1-.1.2-.2.4-.2l.1.1m-5.8-4.7c0-2 1.8-3.9 4-3.9 2.8 0 4.8 3 6.2 3 1.2 0 3.5-2.6 4.7-2.6 1.2 0 1.6 1.3 1.6 2.1s-.2 2.2-.8 3.1c-.6.9-.9 1.2-1.6 1.2-.9-.1-2.6-3-3.7-3-1.4-.1-4.5 3.1-6.9 3.1-1.5 0-1.9-.2-2.4-.6-.7-.5-1.1-1.3-1.1-2.4\" fill=\"#fff\"/></g></svg>","source-dynamics":"<svg viewbox=\"0 0 32 32\"><path fill=\"#1c6db5\" d=\"M14.5 5.1h.5v14.8s-5.7.6-8.5 3.1c0 0 4.4-2.5 8.9-2.6v-4.6c2.2-2.3 3.7-6 4.4-7.3.3-.1.6 0 .6 0v13c-6.8-1.1-13.2 1.3-13 1.2 2.8-.7 8.7-1.7 13.4-.6v-7s3.1-2.4 3.8-3.5c.2-.1.3 0 .3 0s.1 12.3 0 12.3c-9.4-3.5-19.9 0-19.9 0v-1.5c0 .1 7.6-7.9 9.5-17.3\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-ektron_cms":"<svg viewbox=\"0 0 32 32\"><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#1c6db1\"/><circle cx=\"16\" cy=\"16\" r=\"12\" fill=\"#fff\"/><path d=\"M20.7 13.9c0-.1 0-.1 0 0v-.2c-.3-.8-.7-1.4-1.4-1.9-.9-.8-2-1.1-3.2-1.1-.4 0-.9.1-1.3.1-.9.2-1.7.6-2.3 1.2-.5.5-.8 1.1-1.1 1.7v.1l9.3.1M7 15.5v-.1c.1-1.1.3-2.2.7-3.2.5-1.1 1.2-2.1 2.1-3 1.2-1.1 2.7-1.8 4.3-2.1.6-.1 1.2-.2 1.9-.1 1.5 0 2.9.3 4.3 1 .7.4 1.3.8 1.9 1.3 1 1 1.8 2.2 2.2 3.5.2.6.4 1.3.4 1.9.1.6.1 1.2.1 1.8v.5l-.1.1H11.1c.1.3.1.5.2.8.4 1.2 1.1 2.1 2.2 2.7.5.3 1.1.4 1.7.5.3 0 .6.1.9.1 1.4 0 2.6-.5 3.7-1.4 0 0 .1 0 .1-.1.2-.2.4-.2.6-.1.8.4 1.5.7 2.3 1.1.3.1.6.3.8.4 0 0 .1 0 .1.1-.2.2-.4.5-.5.7-.8 1-1.8 1.7-2.9 2.2-.7.3-1.5.5-2.3.7-.8.1-1.5.2-2.3.1-2-.1-3.8-.6-5.4-1.8-1.7-1.3-2.8-3-3.2-5.1-.1-.4-.1-.9-.2-1.3v-.1l.1-1.1\" fill=\"#ed9b2d\"/></svg>","source-evernote":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"6\" y=\"5\" width=\"19\" height=\"21.9\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"6\" y=\"5\" width=\"19\" height=\"21.9\"><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#fff\" filter=\"url(#a)\"/></mask></defs><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#76b74b\"/><path d=\"M20.1 15.4c-.3 0-.6 0-.9.1.1-.6.3-1.3 1.2-1.3 1 0 1.2 1 1.2 1.6-.4-.3-.9-.4-1.5-.4m4.4-6.6c-.2-.9-.7-1.3-1.2-1.5-.5-.2-1.6-.4-2.9-.5-1.1-.1-2.3-.1-3.1-.1-.1-.6-.5-1.2-1-1.4-1.3-.5-3.3-.4-3.9-.2-.4.1-.9.3-1.1.7-.2.2-.3.5-.3 1v2.3c0 .4-.4.8-.8.8H8c-.4 0-.8.1-1 .2-.3.1-.5.3-.6.5-.3.3-.4.8-.4 1.2 0 0 0 .4.1 1.1.1.6.7 4.5 1.3 5.8.2.5.4.7.9.9 1 .4 3.4.9 4.5 1 1.1.1 1.8.4 2.2-.4 0 0 .1-.2.2-.5.4-1 .4-2 .4-2.6 0-.1.1-.1.1 0 0 .5-.1 2.2 1.2 2.6.5.2 1.6.3 2.7.5 1 .1 1.7.5 1.7 2.9 0 1.5-.3 1.7-2 1.7-1.4 0-1.9 0-1.9-1 0-.9.9-.8 1.5-.8.3 0 .1-.2.1-.7 0-.5.3-.8 0-.8-2.2-.1-3.5 0-3.5 2.7 0 2.4 1 2.9 4.1 2.9 2.5 0 3.4-.1 4.4-3.2.2-.6.7-2.5 1-5.6.1-2-.3-8-.5-9.5m-16.6.5H10c.1 0 .2-.1.2-.2V6.8c0-.4.1-.8.2-1l.1-.1-4.1 4c.1 0 .2-.1.2-.1.4-.2.8-.3 1.3-.3\" fill=\"#fff\" mask=\"url(#b)\"/></svg>","source-exchange":"<svg viewbox=\"0 0 32 32\"><path fill=\"#1c6db5\" d=\"M13.3 20.5L8.6 20v-9.2l4.5-.5v1.9l-2.7.2v2.1l2.6-.1v1.8h-2.6v2.2l2.9.2v1.9M5 7.2v17.5l12.3 2.2v-22L5 7.2m20.4 5.1v1.8c0 .1 0 .1-.1.2l-1.1 1.2c-.1.1-.2.1-.3 0l-.4-.4c-.1-.1-.1-.2 0-.3l.5-.5v-1.9h-1.6c-1.4 1.1-2.5 3-2.8 2.7-.4-.4 2.3-4.1 2.6-4.1h2.9c.2 0 .3.1.3.3v1m0 7.3v1.1c0 .2-.1.3-.3.3h-2.8c-.1 0-.1 0-.2-.1L21 19.7c-.1-.1-.1-.2 0-.3l.4-.4c.1-.1.2-.1.3 0l.5.5H24v-1.6c-1-1.4-2.9-2.6-2.6-3 .4-.4 3.9 2.4 3.9 2.7l.1 2m.5-10.3h-7.4v1.6h.3c.1 0 .1 0 .2.1l1.1 1.2c.1.1.1.2 0 .3l-.4.4c-.1.1-.2.1-.3 0l-.5-.5h-.4v3.1c.8.7 1.4 1.3 1.2 1.5-.1.1-.6-.1-1.2-.5v3.2h.2c1.4-1.1 2.5-3 2.8-2.7.4.4-2.3 4.1-2.6 4.1h-.4v1.6h7.4c.6 0 1.1-.5 1.1-1.2V10.4c0-.6-.5-1.1-1.1-1.1\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-facebook":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"12.9\" y=\"4.9\" width=\"14.1\" height=\"27.1\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"12.9\" y=\"4.9\" width=\"14.1\" height=\"27.1\"><path d=\"M2.1 0H30c1.1 0 2 .9 2 2v27.9c0 1.1-.9 2-2 2H2.1c-1.1 0-2-.9-2-2V2c0-1.1.9-2 2-2\" fill=\"#fff\" filter=\"url(#a)\"/></mask></defs><path d=\"M2.1 0H30c1.1 0 2 .9 2 2v27.9c0 1.1-.9 2-2 2H2.1c-1.1 0-2-.9-2-2V2c0-1.1.9-2 2-2\" fill=\"#3b579d\"/><path d=\"M17.1 32V19.6h-4.2v-4.8h4.2v-3.7c0-3.8 2.4-6.2 6.1-6.2 2.3 0 3.8.1 3.8.1v4.3h-2.5c-1.6 0-2.4.6-2.4 2.3v3.1h4.8l-.6 4.8h-4.1V32h-5.1\" fill=\"#fff\" mask=\"url(#b)\"/></svg>","source-file_system":"<svg viewbox=\"0 0 32 32\"><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#fff\"/><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#004990\"/><g fill=\"#fff\"><path d=\"M24 21H8c-1.6 0-3-1.3-3-3V7c0-1.1.9-2 2-2h3.7l1.6 1.9H24c1.7 0 3 1.3 3 3V18c0 1.6-1.3 3-3 3M7 7v11c0 .6.4 1 1 1h16c.5 0 1-.5 1-1V9.9c0-.6-.4-1-1-1H11.4L9.8 7H7M6 24h20v1H6z\"/><path d=\"M13 23h6v3h-6zM15 20h2v3h-2z\"/></g></svg>","source-gmail":"<svg shape-rendering=\"geometricPrecision\" image-rendering=\"optimizeQuality\" viewbox=\"0 0 32 32\"><defs><path d=\"M7.4 8.5l8.6 6.4 8.7-6.4z\"/><lineargradient gradientunits=\"userSpaceOnUse\" x1=\"10.489\" x2=\"21.536\"><stop stop-color=\"#f8f6ef\"/><stop offset=\"1\" stop-color=\"#e7e4d6\"/></lineargradient></defs><path d=\"M24.7 8.5c.9 0 1.7.8 1.7 1.7v.5L24 12.4l-8 5.4-8.1-5.6v11.1h-.6c-.9 0-1.7-.8-1.7-1.7V10.2c0-.9.8-1.7 1.7-1.7l8.7 6.4 8.7-6.4\" fill=\"#e75a4d\"/><use fill=\"url(#a)\" xlink:href=\"#b\"/><path fill=\"#e7e4d7\" d=\"M8 12.3v11.1h16v-11l-8 5.4z\"/><path fill=\"#b8b7ae\" d=\"M8 23.4l8-5.6-8 5.5z\"/><path fill=\"#b7b6ad\" d=\"M24 12.4v11l-8-5.6z\"/><path d=\"M26.4 10.7v11c0 1.2-.6 1.7-2.4 1.7V12.3l2.4-1.6\" fill=\"#b2392f\"/><g fill=\"url(#a)\"><use xlink:href=\"#b\"/><use xlink:href=\"#b\"/><use xlink:href=\"#b\"/><use xlink:href=\"#b\"/><use xlink:href=\"#b\"/><use xlink:href=\"#b\"/><use xlink:href=\"#b\"/></g><use fill=\"#f7f5ed\" xlink:href=\"#b\"/><path d=\"M30 2v27.9H2.1V2H30m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\" fill=\"#bcc3ca\"/></svg>","source-google_drive_domain_wide":"<svg viewbox=\"0 0 32 32\"><defs><lineargradient gradientunits=\"userSpaceOnUse\" y1=\"16.07\" x2=\"0\" y2=\"5.558\"><stop stop-color=\"#149d5f\"/><stop offset=\".446\" stop-color=\"#0b9759\"/><stop offset=\"1\" stop-color=\"#069355\"/></lineargradient><lineargradient gradientunits=\"userSpaceOnUse\" x1=\"16.03\" x2=\"8.09\"><stop stop-color=\"#3678e6\"/><stop offset=\".446\" stop-color=\"#2d71e5\"/><stop offset=\"1\" stop-color=\"#286de4\"/></lineargradient><lineargradient gradientunits=\"userSpaceOnUse\" x1=\"17.822\" x2=\"28.07\"><stop stop-color=\"#edc449\"/><stop offset=\"1\" stop-color=\"#e8b935\"/></lineargradient></defs><path fill=\"#bcc3ca\" d=\"M29.9 2v27.9H2V2h27.9m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c-.1-1.1-1-2-2.1-2z\"/><path fill=\"#0ca45f\" d=\"M11.8 5.6L3.9 19.2l4.2 7.2L16 12.8z\"/><path fill=\"url(#a)\" d=\"M16 12.8l-4.2-7.2 2.3 10.5z\"/><path fill=\"#3279f1\" d=\"M12.3 19.2l-4.2 7.2h15.8l4.2-7.2z\"/><path fill=\"#fccc46\" d=\"M28.1 19.2L20.2 5.6h-8.4l7.9 13.6z\"/><path fill=\"url(#b)\" d=\"M12.3 19.2l-4.2 7.2 7.9-7.2z\"/><path fill=\"url(#c)\" d=\"M19.7 19.2h8.4L17.8 16z\"/></svg>","source-google_drive_single_user":"<svg viewbox=\"0 0 32 32\"><defs><lineargradient gradientunits=\"userSpaceOnUse\" y1=\"16.07\" x2=\"0\" y2=\"5.558\"><stop stop-color=\"#149d5f\"/><stop offset=\".446\" stop-color=\"#0b9759\"/><stop offset=\"1\" stop-color=\"#069355\"/></lineargradient><lineargradient gradientunits=\"userSpaceOnUse\" x1=\"16.03\" x2=\"8.09\"><stop stop-color=\"#3678e6\"/><stop offset=\".446\" stop-color=\"#2d71e5\"/><stop offset=\"1\" stop-color=\"#286de4\"/></lineargradient><lineargradient gradientunits=\"userSpaceOnUse\" x1=\"17.822\" x2=\"28.07\"><stop stop-color=\"#edc449\"/><stop offset=\"1\" stop-color=\"#e8b935\"/></lineargradient></defs><path fill=\"#bcc3ca\" d=\"M29.9 2v27.9H2V2h27.9m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c-.1-1.1-1-2-2.1-2z\"/><path fill=\"#0ca45f\" d=\"M11.8 5.6L3.9 19.2l4.2 7.2L16 12.8z\"/><path fill=\"url(#a)\" d=\"M16 12.8l-4.2-7.2 2.3 10.5z\"/><path fill=\"#3279f1\" d=\"M12.3 19.2l-4.2 7.2h15.8l4.2-7.2z\"/><path fill=\"#fccc46\" d=\"M28.1 19.2L20.2 5.6h-8.4l7.9 13.6z\"/><path fill=\"url(#b)\" d=\"M12.3 19.2l-4.2 7.2 7.9-7.2z\"/><path fill=\"url(#c)\" d=\"M19.7 19.2h8.4L17.8 16z\"/></svg>","source-google_sites":"<svg viewbox=\"0 0 32 32\"><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g fill=\"#fff\"><path d=\"M26 5H6c-.6 0-1 .4-1 1v21h22V6c0-.6-.4-1-1-1m0 21H6V11h20v15m0-16H6V8h20v2\"/><path d=\"M20.2 22c-1.4 1.9-4.1 2.5-6.2 1.7-2.1-.8-3.7-3.1-3.5-5.4 0-2.8 2.6-5.3 5.5-5.2 1.3-.1 2.6.5 3.7 1.3-.4.5-.9 1-1.4 1.4-1.2-.9-3-1.1-4.3-.1-1.8 1.2-1.9 4.1-.1 5.5 1.7 1.5 4.8.8 5.3-1.6h-3.1v-1.9h5.2c0 1.5-.2 3.1-1.1 4.3\"/></g></svg>","source-googleplus":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\".1\" y=\".1\" width=\"31.8\" height=\"31.8\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\".1\" y=\".1\" width=\"31.8\" height=\"31.8\"><path fill=\"#fff\" d=\"M.1 0H32v31.9H.1V0z\" filter=\"url(#a)\"/></mask></defs><path mask=\"url(#b)\" fill=\"#dc4e41\" d=\"M24.7 16.8h-1.6v1.6h-1.6v-1.6H20v-1.6h1.6v-1.6h1.6v1.6h1.6v1.6zm-7.6 2.7c-1.4 1.9-4.2 2.5-6.3 1.7-2.2-.8-3.7-3.1-3.5-5.5 0-2.9 2.7-5.4 5.5-5.3 1.4-.1 2.7.5 3.7 1.4-.4.5-.9 1-1.4 1.5-1.3-.9-3.1-1.1-4.3-.1-1.8 1.2-1.9 4.2-.2 5.5 1.7 1.5 4.9.8 5.3-1.6h-3.2v-1.9H18c.2 1.5 0 3.1-.9 4.3M30.2.1H1.8C.9.1.1.8.1 1.8v28.5c0 .9.7 1.7 1.7 1.7h28.5c.9 0 1.7-.7 1.7-1.7V1.8c-.1-1-.8-1.7-1.8-1.7\"/></svg>","source-jira":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"8\" y=\"5\" width=\"16\" height=\"20.9\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"8\" y=\"5\" width=\"16\" height=\"20.9\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#1f2e4f\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M18.6 18.9c2.8 3.3 2.6 6.9 2.6 6.9h-3.5c.3-1.3-.3-3.2-5.1-7.8C7.9 13.4 8 10.3 8 10.3c0-.8.7-.4.7-.4 1.3 1 3.1 1 3.1 1 .6 2.4 3.8 5.3 4.3 5.7.7-.7 3.6-3.5 4.1-5.7 0 0 1.8 0 3.1-1 0 0 .7-.4.7.3 0 0 .2 3.3-4.6 7.9-.3.3-.6.5-.8.8m-3.2 3.6c-.6-.8-1.4-1.7-2.5-2.8-2.2 3.1-2 6.2-2 6.2h3.5c-.3-.7-.1-1.7 1-3.4m-1.2-11.3h3.4s.5-.1.3.5c-.2.8-2 2.5-2 2.5s-1.4-1.2-2-2.4c.2 0-.1-.6.3-.6M22 7.7c0 .8-.7 1.5-1.5 1.5S19 8.5 19 7.7s.7-1.5 1.5-1.5c.9 0 1.5.7 1.5 1.5m-8.8 0c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5m4.5-1.2c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5\"/></svg>","source-jira_cloud":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"8\" y=\"5\" width=\"16\" height=\"20.9\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"8\" y=\"5\" width=\"16\" height=\"20.9\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#1f2e4f\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M18.6 18.9c2.8 3.3 2.6 6.9 2.6 6.9h-3.5c.3-1.3-.3-3.2-5.1-7.8C7.9 13.4 8 10.3 8 10.3c0-.8.7-.4.7-.4 1.3 1 3.1 1 3.1 1 .6 2.4 3.8 5.3 4.3 5.7.7-.7 3.6-3.5 4.1-5.7 0 0 1.8 0 3.1-1 0 0 .7-.4.7.3 0 0 .2 3.3-4.6 7.9-.3.3-.6.5-.8.8m-3.2 3.6c-.6-.8-1.4-1.7-2.5-2.8-2.2 3.1-2 6.2-2 6.2h3.5c-.3-.7-.1-1.7 1-3.4m-1.2-11.3h3.4s.5-.1.3.5c-.2.8-2 2.5-2 2.5s-1.4-1.2-2-2.4c.2 0-.1-.6.3-.6M22 7.7c0 .8-.7 1.5-1.5 1.5S19 8.5 19 7.7s.7-1.5 1.5-1.5c.9 0 1.5.7 1.5 1.5m-8.8 0c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5m4.5-1.2c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5\"/></svg>","source-jive":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4.3\" y=\"11.8\" width=\"23.9\" height=\"12\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4.3\" y=\"11.8\" width=\"23.9\" height=\"12\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#39393a\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M18.6 12l-1.4 4.7-.5-1.6c-.9 0-1.7-.1-2.5-.1l1.8 5h2.2l3-8.1h-2.6zm-2.9 0h-2.6l.7 2h2.5l-.6-2M12 14v-2H9.6v1.8c.7.1 1.5.1 2.4.2m-2.4.7v5.4H12v-5.2c-.9 0-1.7-.1-2.4-.2m18.6 1.8l-4.8.3s.1.9 1 1.2c1 .4 2.4-.1 2.4-.1l1.2 1.7s-.9.5-2.7.5c-2.3 0-4.1-1.4-4.2-3.9 0-.4 0-.7.1-1.1 3-.1 5.1-.3 5.1-.3s0-.7-.6-1c-.3-.2-.9-.2-1.1-.2-.1 0-1.3.1-3 .3.6-1.2 1.7-2 3.2-2.1 2.3 0 3.1 1.5 3.3 2.9.2.7.1 1.8.1 1.8m-20.3-2c-1.2-.2-2.1-.3-2.4-.4v6.2s0 .5-.2.9c-.4.5-.9.5-.9.5l.9 2.1s.5-.1 1-.3c.6-.3 1-.6 1.4-1.3.3-.6.3-1.3.3-1.3v-6.4zm0-.8V12H5.4v1.5c.5 0 1.3.1 2.5.2\"/></svg>","source-jive_cloud":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4.3\" y=\"11.8\" width=\"23.9\" height=\"12\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4.3\" y=\"11.8\" width=\"23.9\" height=\"12\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#39393a\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M18.6 12l-1.4 4.7-.5-1.6c-.9 0-1.7-.1-2.5-.1l1.8 5h2.2l3-8.1h-2.6zm-2.9 0h-2.6l.7 2h2.5l-.6-2M12 14v-2H9.6v1.8c.7.1 1.5.1 2.4.2m-2.4.7v5.4H12v-5.2c-.9 0-1.7-.1-2.4-.2m18.6 1.8l-4.8.3s.1.9 1 1.2c1 .4 2.4-.1 2.4-.1l1.2 1.7s-.9.5-2.7.5c-2.3 0-4.1-1.4-4.2-3.9 0-.4 0-.7.1-1.1 3-.1 5.1-.3 5.1-.3s0-.7-.6-1c-.3-.2-.9-.2-1.1-.2-.1 0-1.3.1-3 .3.6-1.2 1.7-2 3.2-2.1 2.3 0 3.1 1.5 3.3 2.9.2.7.1 1.8.1 1.8m-20.3-2c-1.2-.2-2.1-.3-2.4-.4v6.2s0 .5-.2.9c-.4.5-.9.5-.9.5l.9 2.1s.5-.1 1-.3c.6-.3 1-.6 1.4-1.3.3-.6.3-1.3.3-1.3v-6.4zm0-.8V12H5.4v1.5c.5 0 1.3.1 2.5.2\"/></svg>","source-knowledgebase":"<svg viewbox=\"0 0 32 32\"><path fill=\"#009ddc\" d=\"M22.5 10.6c-.7 0-1.4.2-2 .4-.7-1.3-2-2.1-3.6-2.1-1.1 0-2.2.5-2.9 1.3-.8-1.1-2.1-1.8-3.6-1.8-2.5 0-4.5 2-4.5 4.5 0 .6.1 1.2.4 1.8-1.1.7-1.9 1.9-1.9 3.4 0 2.2 1.7 3.9 3.8 3.9.3 0 .5 0 .8-.1.6 1.6 2.1 2.7 3.9 2.7 1.7 0 3.2-1 3.8-2.5.5.2 1 .4 1.6.4 1.4 0 2.5-.8 3.2-1.9.3.1.6.1 1 .1 2.7 0 5-2.3 5-5.1s-2.2-5-5-5\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-ldap":"<svg width=\"32\" height=\"32\" viewbox=\"0 0 32 32\"><title>LDAP</title><defs><rect width=\"32\" height=\"32\" rx=\"2\"/></defs><g fill=\"none\" fill-rule=\"evenodd\"><mask fill=\"#fff\"><use xlink:href=\"#a\"/></mask><use fill=\"#004990\" xlink:href=\"#a\"/><text mask=\"url(#b)\" font-family=\"Proxima Nova\" font-size=\"9\" font-weight=\"bold\" fill=\"#FFF\"><tspan x=\"5\" y=\"15\">LDAP</tspan></text><path d=\"M23.03 22h-7.14a4.008 4.008 0 0 0-3.882-3A4.004 4.004 0 0 0 8 23c0 2.21 1.794 4 4.008 4a4.008 4.008 0 0 0 3.882-3l.665.014 1.573 1.074 1.533-1.074 1.822 1.06 2.296-1.06.253-1.027L23.03 22zm-12.153-.409l1.532 1.286-1.286 1.532-1.532-1.286 1.286-1.532z\" fill=\"#FFF\" mask=\"url(#b)\"/><path d=\"M29 0L8 32h24V0h-3z\" opacity=\".102\" fill=\"#000\" mask=\"url(#b)\"/></g></svg>","source-liferay":"<svg viewbox=\"0 0 32 32\"><path fill=\"#76aad0\" d=\"M16.4 6.1h4.3v4.3h-4.3V6.1\"/><path fill=\"#0d1929\" d=\"M10.3 10.4H6V6.1h4.3v4.3\"/><path fill=\"#213156\" d=\"M6 11.2h4.3v4.3H6v-4.3z\"/><path fill=\"#76aad0\" d=\"M6 16.4h4.3v4.3H6v-4.3z\"/><path fill=\"#213156\" d=\"M11.2 6.1h4.3v4.3h-4.3V6.1\"/><g fill=\"#76aad0\"><path d=\"M11.2 11.2h4.3v4.3h-4.3v-4.3zM11.2 21.6h4.3v4.3h-4.3v-4.3M16.4 16.4h4.3v4.3h-4.3v-4.3\"/></g><path fill=\"#213156\" d=\"M16.4 21.6h4.3v4.3h-4.3v-4.3\"/><path fill=\"#76aad0\" d=\"M21.6 11.2h4.3v4.3h-4.3v-4.3\"/><path fill=\"#213156\" d=\"M21.6 16.4h4.3v4.3h-4.3v-4.3\"/><path fill=\"#0d1929\" d=\"M21.6 21.6h4.3v4.3h-4.3v-4.3\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-linkedin":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"6\" y=\"6\" width=\"20\" height=\"21\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"6\" y=\"6\" width=\"20\" height=\"21\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#0077b5\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M6 13h4v14H6V13m2.5-7C9.9 6 11 7.1 11 8.5S9.9 11 8.5 11 6 9.9 6 8.5 7.1 6 8.5 6m4.5 7.3h4v1.9h.1C17.6 14.1 19 13 21 13c4.2 0 5 2.8 5 6.5V27h-4.2v-6.6c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V27H13V13.3\"/></svg>","source-lithium":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"9\" y=\"7\" width=\"15\" height=\"18\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"9\" y=\"7\" width=\"15\" height=\"18\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#572b71\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M18.5 25h-3.4C11.7 25 9 22.4 9 19.2V8h1.7c.9 0 1.7.7 1.7 1.6v9.5c0 1.4 1.2 2.6 2.7 2.6h1.6c1 0 1.8.8 1.8 1.7V25m3.6-18c-1.1 0-1.9.8-1.9 1.8s.9 1.8 1.9 1.8c1.1 0 1.9-.8 1.9-1.8S23.1 7 22.1 7m0 4.9h-1.7v11.5c0 .9.8 1.6 1.7 1.6h1.7V13.5c0-.9-.8-1.6-1.7-1.6\"/></svg>","source-litmos":"<svg viewbox=\"0 0 32 32\"><path fill=\"#99ca3b\" d=\"M16 27.5c6.4 0 11.5-5.1 11.5-11.5S22.4 4.5 16 4.5 4.5 9.6 4.5 16c0 6.3 5.1 11.5 11.5 11.5\"/><g fill=\"#fff\"><path d=\"M21.6 19.9s-3.4.1-3.8-.1c-1.5-.9-1.8-3.2-1.8-3.2h-.4s-.3 2.6-1.8 3.3c-.6.2-3.6 0-3.6 0l-.2-.1-.2.1.3 3.1s1.2 2 5.7 2 5.8-2.1 5.8-2.1l.3-3.1-.3.1\"/><path d=\"M10.4 19.3h2.9c1.2-.4 1.4-1.9 1.4-1.9.3-1.9-.5-1.8-.5-1.8-2.4-.1-3.7.2-4.3.3-.3.1-.3.3-.2 1.7-.1.5.2 1.7.7 1.7m2.5-2.6c.4 0 .7.3.7.7s-.3.7-.7.7c-.4 0-.7-.3-.7-.7s.4-.7.7-.7\"/><path d=\"M23.4 16.1c.1-.9-1.5-1-1.5-1-.5-3-3.8-4.3-3.8-4.3C16.7 10 17 7.6 17 7.6l-.2-.1c-1.4 1.5-.5 3.2-.5 3.2l-.2.1c-1.5-1.2-1.3-3.4-1.3-3.4h-.3c-.8.7-.5 3.8-.5 3.8h-.1c-1-.8-1.2-1.9-1.2-1.9l-.3.1c-.4 1.1 0 2 0 2s-2.4 1.6-3 3.8c-.7.3-.8.1-1.2.4-.3.3-.2 1-.2 1 .1.4.8.4.8.4l.1-.2c-.1-.3-.5 0-.5-.5s.5-.7 2.4-1 3.8-.2 3.8-.2l.6.6h1l.7-.6c3 0 3.5.2 3.5.2 1.2.2 2.6.3 2.6.9 0 .6-.5.5-.5.5l.1.3c.9-.3.8-.9.8-.9\"/><path d=\"M21.8 15.9c-.6-.2-1.9-.4-4.2-.3 0 0-.9-.3-.5 1.8 0 0 .2 1.5 1.4 1.9h2.8c.6 0 .6-.8.7-1.6-.1-.6.1-1.7-.2-1.8M18.7 18c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.4.7-.7.7\"/></g><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-mail":"<svg viewbox=\"0 0 32 32\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g fill=\"#fff\"><path d=\"M24 10v13H8V10h16m0-2H8c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z\"/><path d=\"M22 14v7H10v-7H9v7.1c0 .6.2.9 1 .9h12c.8 0 1-.3 1-.9V14\"/><path d=\"M16 15.7L10.6 11H9l7 6 7-6h-1.5z\"/></g></svg>","source-microsoft_dynamics":"<svg viewbox=\"0 0 32 32\"><path d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\" fill=\"#bcc3ca\"/><g fill=\"#1c75bc\"><path d=\"M20.8 10.2c-1.1 2.7-2.8 5.2-4.5 7v4.2l-.2.1h-.3c-5.9.4-9.4 3.3-9.4 3.3 6.6-4.1 14.1-2.2 14.1-2.2l.6-.1V10.3l-.3-.1\"/><path d=\"M25.2 13.1s-.6.8-2.6 2.5c-.5.4-.7.6-1.1 1V23l-.4.1s-1.7-.5-4.5-.6c-2.8-.1-6.9.7-10.1 2.4h.1s8.5-3.3 18.5.1l.4-.1V13.3l-.3-.2\"/><path d=\"M15.9 7.2l-.5-.1c0 .4-.5 3.4-2.7 7.6-1.3 2.5-3.3 5.6-6.2 8.7v1.4s3.2-3 8.9-3.6h.2l.3-.1V7.2\"/></g></svg>","source-microsoftactivedirectory":"<svg viewbox=\"0 0 32 32\"><g fill=\"#1c6db5\"><path d=\"M24.1 9.1H26v4h-1.9zM7 6v20h16.5V6H7m8.2 5.1c1.4 0 2.5 1 2.5 2.3s-1.1 2.3-2.5 2.3-2.5-1-2.5-2.3c0-1.2 1.1-2.3 2.5-2.3m5.1 9.2H10.2v-1.7s-.1-2.3 5-2.3 5.1 2.3 5.1 2.3v1.7M24.1 14.4H26v4h-1.9zM24.1 19.7H26v4h-1.9z\"/></g><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-microsoftdynamics":"<svg viewbox=\"0 0 32 32\"><path d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\" fill=\"#bcc3ca\"/><g fill=\"#1c75bc\"><path d=\"M20.8 10.2c-1.1 2.7-2.8 5.2-4.5 7v4.2l-.2.1h-.3c-5.9.4-9.4 3.3-9.4 3.3 6.6-4.1 14.1-2.2 14.1-2.2l.6-.1V10.3l-.3-.1\"/><path d=\"M25.2 13.1s-.6.8-2.6 2.5c-.5.4-.7.6-1.1 1V23l-.4.1s-1.7-.5-4.5-.6c-2.8-.1-6.9.7-10.1 2.4h.1s8.5-3.3 18.5.1l.4-.1V13.3l-.3-.2\"/><path d=\"M15.9 7.2l-.5-.1c0 .4-.5 3.4-2.7 7.6-1.3 2.5-3.3 5.6-6.2 8.7v1.4s3.2-3 8.9-3.6h.2l.3-.1V7.2\"/></g></svg>","source-notes":"<svg viewbox=\"0 0 32 32\"><path fill=\"#f7da67\" d=\"M30 32H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2\"/><g fill=\"#fff\"><circle cx=\"10.6\" cy=\"9.4\" r=\"2\"/><circle cx=\"16\" cy=\"9.4\" r=\"2\"/><circle cx=\"21.4\" cy=\"9.4\" r=\"2\"/></g><g fill=\"#ff6b0d\"><circle cx=\"10.6\" cy=\"9.1\" r=\"2\"/><circle cx=\"16\" cy=\"9.1\" r=\"2\"/><circle cx=\"21.4\" cy=\"9.1\" r=\"2\"/></g><g fill=\"#fff\"><path d=\"M18.5 23.1c-.2-2.8-.4-5.6-.5-8.4-.1-1-.8-1.8-1.7-1.8h-.4c-.9 0-1.6.8-1.7 1.8-.2 2.8-.4 5.6-.5 8.4-.1 1 .9 1.8 2.1 1.8h.6c1.3.1 2.2-.8 2.1-1.8M10.8 12.6c-1.1-.7-3.9-1.2-5.2-1.6-.6-.2-1.2.1-1.5.7l-.1.4c-.3.7-.1 1.4.5 1.6 1 .4 2.1.7 3.1 1.1-.5 2.4-1 4.9-1.5 7.3-.2 1 .6 1.9 1.9 2.1l.6.1c1.2.2 2.3-.5 2.4-1.5l.6-8.4c0-.8-.3-1.4-.8-1.8M21.2 12.7c1.1-.7 3.9-1.2 5.2-1.6.6-.2 1.2.1 1.5.7l.1.3c.3.7.1 1.4-.5 1.6-1 .4-2.1.7-3.1 1.1.5 2.4 1 4.9 1.5 7.3.2 1-.6 1.9-1.9 2.1l-.6.1c-1.2.2-2.3-.5-2.4-1.5l-.6-8.4c0-.6.3-1.3.8-1.7\"/></g><g fill=\"#ff7009\"><path d=\"M18.5 22.8c-.2-2.8-.4-5.6-.5-8.4-.1-1-.8-1.8-1.7-1.8h-.4c-.9 0-1.6.8-1.7 1.8-.2 2.8-.4 5.6-.5 8.4-.1 1 .9 1.8 2.1 1.8h.6c1.3 0 2.2-.8 2.1-1.8M10.8 12.2c-1.1-.7-3.9-1.2-5.2-1.6-.6-.2-1.2.1-1.5.7l-.1.5c-.3.7-.1 1.4.5 1.6 1 .4 2.1.7 3.1 1.1-.5 2.4-1 4.9-1.5 7.3-.2 1 .6 1.9 1.9 2.1l.6.1c1.2.2 2.3-.5 2.4-1.5l.6-8.4c0-.8-.3-1.5-.8-1.9M21.2 12.4c1.1-.7 3.9-1.2 5.2-1.6.6-.2 1.2.1 1.5.7l.1.3c.3.7.1 1.4-.5 1.6-1 .4-2.1.7-3.1 1.1.5 2.4 1 4.9 1.5 7.3.2 1-.6 1.9-1.9 2.1l-.6.1c-1.2.2-2.3-.5-2.4-1.5l-.6-8.4c0-.7.3-1.4.8-1.7\"/></g></svg>","source-one_drive":"<svg viewbox=\"0 0 32 32\"><path d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\" fill=\"#bcc3ca\"/><g fill=\"#1c6db5\"><path d=\"M25.5 17.8v-.2c0-1.9-1.5-3.4-3.4-3.4-.7 0-1.3.2-1.9.6-.6-1.3-2-2.1-3.5-2.1-2.2 0-3.9 1.7-3.9 3.9v.2h-.3c-1.7 0-3.1 1.4-3.1 3.1 0 1.7 1.4 3.1 3.1 3.1h13.4c.1 0 .1-.1.2-.1.9-.4 1.5-1.4 1.5-2.4.2-1.3-.8-2.5-2.1-2.7\"/><path d=\"M12.2 16.1c.2-2.3 2.2-4.2 4.6-4.2 1.5 0 2.9.7 3.7 1.9.5-.2 1.1-.3 1.6-.3h.1C22 11 19.9 9 17.3 9c-2 0-3.7 1.1-4.5 2.8-.6-.4-1.3-.6-2-.6-2 0-3.6 1.6-3.6 3.6 0 .3 0 .5.1.8-1.7.1-3 1.5-3 3.2 0 1.8 1.4 3.2 3.2 3.2h2.1c-.4-.6-.7-1.4-.7-2.2 0-1.9 1.4-3.5 3.3-3.7\"/></g></svg>","source-opentext":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4\" y=\"10\" width=\"23.9\" height=\"12.9\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4\" y=\"10\" width=\"23.9\" height=\"12.9\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#006fa8\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M9.7 22.9c3.1 0 5.7-2.5 5.7-6.4 0-4.3-2.8-6.5-5.7-6.5C6.9 10 4 12.2 4 16.5c0 4 2.6 6.4 5.7 6.4m-.1-.6c-1.9 0-3.7-1.7-3.7-5.8 0-4.3 1.9-5.8 3.7-5.8s3.7 1.5 3.7 5.8c0 4.1-1.8 5.8-3.7 5.8zm15.5.3h-5.5v-.3c1.7-.1 1.8-.5 1.9-2V11h-1.3c-2.1 0-2.6.4-3 2.6h-.5l.1-3.4h11l.1 3.4h-.4c-.4-2.2-.9-2.6-3-2.6h-1.2v9.6c0 1.4.2 1.8 1.8 1.8v.2\"/></svg>","source-oracle_knowledge":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4\" y=\"8\" width=\"23.9\" height=\"16\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4\" y=\"8\" width=\"23.9\" height=\"16\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#db3c2e\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M21.2 21.4H10.8C8 21.4 6.4 19 6.4 16s1.6-5.4 4.3-5.4h10.4c2.7 0 4.3 2.4 4.3 5.4s-1.4 5.4-4.2 5.4m0-13.4H10.8C6.7 8 4 11.6 4 16s2.7 8 6.7 8h10.4c4.1 0 6.7-3.6 6.7-8s-2.5-8-6.6-8\"/></svg>","source-oracle_ucm":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4\" y=\"8\" width=\"23.9\" height=\"16\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4\" y=\"8\" width=\"23.9\" height=\"16\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#db3c2e\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M21.2 21.4H10.8C8 21.4 6.4 19 6.4 16s1.6-5.4 4.3-5.4h10.4c2.7 0 4.3 2.4 4.3 5.4s-1.4 5.4-4.2 5.4m0-13.4H10.8C6.7 8 4 11.6 4 16s2.7 8 6.7 8h10.4c4.1 0 6.7-3.6 6.7-8s-2.5-8-6.6-8\"/></svg>","source-outlook":"<svg viewbox=\"0 0 32 32\"><g fill=\"#1c6db5\"><path d=\"M19.1 9.4v4.1l1.4.9h.2l6.2-4.2c0-.5-.5-.8-.7-.8h-7.1\"/><path d=\"M19.1 15l1.3.9c.2.1.4 0 .4 0l6.1-4v7.6c0 .8-.5 1.2-1.1 1.2h-6.7V15M12.3 13.1c-.4 0-.8.2-1.1.6-.3.4-.4 1-.4 1.7s.1 1.3.4 1.7c.3.4.6.6 1 .6s.8-.2 1.1-.6c.3-.4.4-.9.4-1.6s-.1-1.3-.4-1.7c-.2-.5-.5-.7-1-.7\"/><path d=\"M14.3 18.1c-.5.7-1.2 1-2 1s-1.5-.3-2-1-.8-1.5-.8-2.6.3-2 .8-2.7 1.2-1 2.1-1c.8 0 1.5.3 2 1s.8 1.5.8 2.6c-.1 1.1-.4 2-.9 2.7M6.1 7.3v16.1L18.4 26V5L6.1 7.3\"/></g><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-productalert":"<svg viewbox=\"0 0 32 32\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#fff\" d=\"M16 10c3.8 0 7 2 7 4.4.1 2.5-1.3 4.6-4.2 6.3-1.2.7-2.5 1.2-3.4 1.6v-3.5l-1.6-.3C11 17.9 9 16.2 9 14.4 9 12 12.2 10 16 10m0-2c-5 0-9 2.8-9 6.4 0 2.9 2.7 5.3 6.4 6.1V24c0 .5.3.8.7.8h.2S25.2 22.4 25 14.5c0-3.7-4-6.5-9-6.5z\"/><circle fill=\"#d0011b\" cx=\"9\" cy=\"9\" r=\"3\"/></svg>","source-queue":"<svg viewbox=\"0 0 32 32\"><path fill=\"#004990\" d=\"M30 0H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2\"/><g fill=\"#fff\"><path d=\"M6 14.5l5-3.5-5-3.5v7M14.5 12.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5-1.5.7-1.5 1.5.7 1.5 1.5 1.5M19.5 12.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5-1.5.7-1.5 1.5.7 1.5 1.5 1.5M12.5 22.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5-1.5.7-1.5 1.5.7 1.5 1.5 1.5M7.5 22.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5S6 20.2 6 21s.7 1.5 1.5 1.5M21 24.5l5-3.5-5-3.5v7M24.5 12.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5-1.5.7-1.5 1.5.7 1.5 1.5 1.5M17.5 22.5c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5-1.5.7-1.5 1.5.7 1.5 1.5 1.5\"/></g></svg>","source-reviewboard":"<svg viewbox=\"0 0 32 32\"><defs><lineargradient gradientunits=\"userSpaceOnUse\" y1=\"-809.72\" x2=\"0\" y2=\"-808.72\" gradienttransform=\"matrix(10 0 0 2 5147 1624.45)\"><stop stop-color=\"#ebdb3d\"/><stop offset=\"1\" stop-color=\"#f1e03e\"/></lineargradient><lineargradient gradientunits=\"userSpaceOnUse\" y1=\"-809.74\" x2=\"0\" y2=\"-808.75\" gradienttransform=\"matrix(10 0 0 3 5147 2437.23)\"><stop stop-color=\"#f3e23d\"/><stop offset=\".485\" stop-color=\"#ebdb3d\"/><stop offset=\"1\" stop-color=\"#f9e73d\"/></lineargradient><lineargradient gradientunits=\"userSpaceOnUse\" y1=\"-809.75\" x2=\"0\" y2=\"-808.75\" gradienttransform=\"matrix(14 0 0 3 7423 2444.23)\"><stop stop-color=\"#f5e43d\"/><stop offset=\".485\" stop-color=\"#ebdb3d\"/><stop offset=\"1\" stop-color=\"#f7e53c\"/></lineargradient><radialgradient cx=\"2.975\" cy=\"2.579\" r=\"2.677\" gradientunits=\"userSpaceOnUse\"><stop stop-color=\"#7e9fce\"/><stop offset=\"1\" stop-color=\"#3163a6\"/></radialgradient></defs><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#ebb554\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g transform=\"translate(4 4)\"><path fill=\"#fdeb3c\" stroke=\"#a58419\" d=\"M2 18.9V2h20v20H2c-.6 0-1-.4-1-1v-.5c0-.7.4-1.3 1-1.6z\"/><path fill=\"#9e9a56\" d=\"M4 6l3 3 1-1-2-4-2 2\"/><circle fill=\"url(#a)\" stroke=\"#365e94\" cx=\"4\" cy=\"4\" r=\"4\"/><path fill=\"url(#b)\" d=\"M9 5h10v2H9z\"/><path fill=\"url(#c)\" d=\"M9 8h10v3H9z\"/><path fill=\"#ebdb3d\" d=\"M5 12h14v2H5z\"/><path fill=\"url(#d)\" d=\"M5 15h14v3H5z\"/></g></svg>","source-rss":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"7\" y=\"7\" width=\"18\" height=\"18\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"7\" y=\"7\" width=\"18\" height=\"18\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#ff6501\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M11.1 20.9c.4.4.7 1 .7 1.7s-.3 1.2-.7 1.7a2.413 2.413 0 0 1-3.4 0c-.4-.4-.7-1-.7-1.7s.3-1.2.7-1.7a2.413 2.413 0 0 1 3.4 0M7 13.1v3.4c2.2 0 4.4.9 5.9 2.5 1.6 1.6 2.5 3.7 2.5 5.9h3.4c0-3.3-1.3-6.2-3.5-8.4-2.1-2-5-3.4-8.3-3.4M7 7v3.4c8 0 14.5 6.5 14.5 14.5H25c0-4.9-2-9.4-5.3-12.7C16.5 9 12 7 7 7\"/></svg>","source-salesforce":"<svg viewbox=\"0 0 32 32\"><path fill=\"#009ddc\" d=\"M22.5 10.6c-.7 0-1.4.2-2 .4-.7-1.3-2-2.1-3.6-2.1-1.1 0-2.2.5-2.9 1.3-.8-1.1-2.1-1.8-3.6-1.8-2.5 0-4.5 2-4.5 4.5 0 .6.1 1.2.4 1.8-1.1.7-1.9 1.9-1.9 3.4 0 2.2 1.7 3.9 3.8 3.9.3 0 .5 0 .8-.1.6 1.6 2.1 2.7 3.9 2.7 1.7 0 3.2-1 3.8-2.5.5.2 1 .4 1.6.4 1.4 0 2.5-.8 3.2-1.9.3.1.6.1 1 .1 2.7 0 5-2.3 5-5.1s-2.2-5-5-5\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-salesforce_content":"<svg viewbox=\"0 0 32 32\"><path fill=\"#009ddc\" d=\"M22.5 10.6c-.7 0-1.4.2-2 .4-.7-1.3-2-2.1-3.6-2.1-1.1 0-2.2.5-2.9 1.3-.8-1.1-2.1-1.8-3.6-1.8-2.5 0-4.5 2-4.5 4.5 0 .6.1 1.2.4 1.8-1.1.7-1.9 1.9-1.9 3.4 0 2.2 1.7 3.9 3.8 3.9.3 0 .5 0 .8-.1.6 1.6 2.1 2.7 3.9 2.7 1.7 0 3.2-1 3.8-2.5.5.2 1 .4 1.6.4 1.4 0 2.5-.8 3.2-1.9.3.1.6.1 1 .1 2.7 0 5-2.3 5-5.1s-2.2-5-5-5\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-sharepoint":"<svg viewbox=\"0 0 32 32\"><path fill=\"#1c6db5\" d=\"M24.1 14h-.4c-.5-1.3-1.4-2.4-2.6-3v-.3c0-1.1-.9-2-1.9-2-.4 0-.9.2-1.2.4v3.2c.3.3.7.4 1.2.4.6 0 1.2-.3 1.6-.9 1 .5 1.8 1.4 2.1 2.5-.4.4-.7.9-.7 1.6 0 .6.3 1.2.7 1.6-.4 1.1-1.2 2-2.2 2.6-.3-.5-.9-.9-1.6-.9-.4 0-.9.2-1.2.4v3.2c.3.3.7.4 1.2.4 1.1 0 1.9-.9 1.9-2v-.3c1.2-.6 2.2-1.7 2.6-3.1h.4c1.1 0 1.9-.9 1.9-2 .1-.9-.7-1.8-1.8-1.8m-11.8 5.9c-.9.7-2.1.4-3 0v-1.8c.6.5 1.5 1.2 2.2.5.6-1-.5-1.6-1.2-2.1-1.4-.8-1.4-3.2-.1-4.2.8-.5 1.7-.4 2.6-.2v1.7c-.7-.2-1.6-.7-2.2.1-.4 1.1.9 1.6 1.5 2.1 1.2.8 1.3 3 .2 3.9M6.1 8.2V24l11 2V6l-11 2.2\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-sharepoint_legacy":"<svg viewbox=\"0 0 32 32\"><path fill=\"#1c6db5\" d=\"M24.1 14h-.4c-.5-1.3-1.4-2.4-2.6-3v-.3c0-1.1-.9-2-1.9-2-.4 0-.9.2-1.2.4v3.2c.3.3.7.4 1.2.4.6 0 1.2-.3 1.6-.9 1 .5 1.8 1.4 2.1 2.5-.4.4-.7.9-.7 1.6 0 .6.3 1.2.7 1.6-.4 1.1-1.2 2-2.2 2.6-.3-.5-.9-.9-1.6-.9-.4 0-.9.2-1.2.4v3.2c.3.3.7.4 1.2.4 1.1 0 1.9-.9 1.9-2v-.3c1.2-.6 2.2-1.7 2.6-3.1h.4c1.1 0 1.9-.9 1.9-2 .1-.9-.7-1.8-1.8-1.8m-11.8 5.9c-.9.7-2.1.4-3 0v-1.8c.6.5 1.5 1.2 2.2.5.6-1-.5-1.6-1.2-2.1-1.4-.8-1.4-3.2-.1-4.2.8-.5 1.7-.4 2.6-.2v1.7c-.7-.2-1.6-.7-2.2.1-.4 1.1.9 1.6 1.5 2.1 1.2.8 1.3 3 .2 3.9M6.1 8.2V24l11 2V6l-11 2.2\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-sharepoint_online":"<svg viewbox=\"0 0 32 32\"><path fill=\"#1c6db5\" d=\"M24.1 14h-.4c-.5-1.3-1.4-2.4-2.6-3v-.3c0-1.1-.9-2-1.9-2-.4 0-.9.2-1.2.4v3.2c.3.3.7.4 1.2.4.6 0 1.2-.3 1.6-.9 1 .5 1.8 1.4 2.1 2.5-.4.4-.7.9-.7 1.6 0 .6.3 1.2.7 1.6-.4 1.1-1.2 2-2.2 2.6-.3-.5-.9-.9-1.6-.9-.4 0-.9.2-1.2.4v3.2c.3.3.7.4 1.2.4 1.1 0 1.9-.9 1.9-2v-.3c1.2-.6 2.2-1.7 2.6-3.1h.4c1.1 0 1.9-.9 1.9-2 .1-.9-.7-1.8-1.8-1.8m-11.8 5.9c-.9.7-2.1.4-3 0v-1.8c.6.5 1.5 1.2 2.2.5.6-1-.5-1.6-1.2-2.1-1.4-.8-1.4-3.2-.1-4.2.8-.5 1.7-.4 2.6-.2v1.7c-.7-.2-1.6-.7-2.2.1-.4 1.1.9 1.6 1.5 2.1 1.2.8 1.3 3 .2 3.9M6.1 8.2V24l11 2V6l-11 2.2\"/><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-sitecore":"<svg viewbox=\"0 0 32 32\"><g fill=\"#e53227\"><path d=\"M0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2H2C.9 0 0 .9 0 2zm16 25.6C9.7 27.6 4.5 22.4 4.5 16S9.7 4.4 16 4.4 27.5 9.6 27.5 16 22.3 27.6 16 27.6z\"/><path d=\"M16.1 7.5c-4.6 0-8.4 3.8-8.4 8.4 0 4.7 3.8 8.4 8.4 8.4s8.4-3.8 8.4-8.4-3.7-8.4-8.4-8.4m-1 16.5c-5.4-.6-6.8-6-6.8-6 1.1 2.1 3.1 4.5 7.1 4.6s6.2-3.6 6.2-3.6l1.4.9c.1 0-2.6 4.7-7.9 4.1m8.1-4.3l-1.3-.8-.2-.1-.1.2s-2.2 3.7-6.1 3.5c-1.7-.1-3.1-.5-4.3-1.4-.4-.4-.6-.7-.6-.7 1.9 1.5 4.9 1.6 6.8.7 4.4-2.1 4.2-5.8 4.2-5.8h2.5c0 .1.3 2.4-.9 4.4m.9-4.7H21.3v.2c0 .1.1 3.9-3.7 5.6-1.9.9-3.3.6-3.5.5 0 0 1.1 0 2.5-.7 1.2-.5 2.4-1.8 3-2.9 1.7-3.3-.2-4.7-.2-4.7l2.9-1.8c.1 0 1.6 1.8 1.8 3.8\"/></g></svg>","source-sitemap":"<svg viewbox=\"0 0 32 32\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g fill=\"#fff\"><path d=\"M26 5H6c-.6 0-1 .4-1 1v21h22V6c0-.6-.4-1-1-1m0 21H6V11h20v15m0-16H6V8h20v2\"/><path d=\"M8 19v1h1v-1H8zm6 0v1h1v-1h-1zm6 0v1h1v-1h-1zM8 17v2h1v-2H8zM9 18h12v1H9zM8 13h4v4H8zM8 20h4v4H8zM14 20h4v4h-4zM20 20h4v4h-4z\"/></g></svg>","source-symantec_enterprise_vault":"<svg viewbox=\"0 0 32 32\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#f6f6f6\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#ffb819\" d=\"M15.9 27c-5.5 0-10-4.3-10-9.5 0-5.3 4.5-9.5 10-9.5s10 4.3 10 9.5-4.5 9.5-10 9.5m0-16c-1.8 0-3.5.6-4.8 1.9-1.3 1.2-2 2.9-2 4.6s.7 3.4 2 4.6 3 1.9 4.8 1.9c1.8 0 3.5-.7 4.8-1.9 1.3-1.2 2-2.9 2-4.6s-.7-3.4-2-4.6c-1.3-1.3-3-1.9-4.8-1.9\"/><g fill=\"#ffb819\"><path d=\"M26.938 6h.8v.7h-.8zM26.938 5h.8v.7h-.8zM24.838 7h.7v.7h-.7z\"/></g><g fill=\"#231f20\"><path d=\"M22.738 9h.7v.7h-.7zM24.838 8h.8v.7h-.8zM22.738 8h.7v.7h-.7zM24.838 9h.7v.7h-.7zM25.938 6h.8v.7h-.8z\"/><path d=\"M24.838 6h1.4v.7h-1.4zM23.838 7h.7v1.4h-.7zM23.838 9.3v.7h-.7v-.7h-1.2v.5h-.7v.6h.7v.7h-.7v-.6h-.7v1.1h-.8v.7h-.5v.7h-.5c-.6.8-2.1 3.4-2.5 4.5-1.7-2.2-3-3-4-3.3-.5-.2-1.1.4-.2 1.3 2.1 2.2 2.7 4 3.3 5.4.3.8 1.8.9 2.1.1.6-1.6 1.6-3.4 2.6-4.9v-.8h.6v-.8h.6v-.8h.7v-.8h-.7v-.7h.7v.7h.7v-.7h.6v-.8h.7v-.6h.6V9.3h-.7\"/></g><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/></svg>","source-target_process_2":"<svg viewbox=\"0 0 32 32\"><path fill=\"#bcc3ca\" d=\"M30 2v28H2V2h28m0-2H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z\"/><path fill=\"#1a1a1a\" d=\"M23.1 10.3l-3.2 1.2.5-3.5-2.6-2.2L14.6 7l-.6 3.4-2.6-2.2-3.3 1.2-.6 3.4 2.6 2.2-3.2 1.2-.6 3.4 2.6 2.2 3.2-1.2-.5 3.4 2.6 2.2 3.2-1.2.6-3.4 2.6 2.2 3.2-1.2.6-3.4-2.5-2.2 3.2-1.2.6-3.4-2.6-2.1m-7.7 9.1l3.2-1.2-.6 3.4-2.6-2.2m1.2-6.8l-3.2 1.2.6-3.4 2.6 2.2M10.1 15l3.2-1.2-.6 3.4-2.6-2.2m5.3 4.4l-3.2 1.2.6-3.4 2.6 2.2m-2.6-2.2l.6-3.4 3.2-1.2 2.6 2.2-.6 3.4-3.2 1.2-2.6-2.2m6.4-2.4l2.6 2.2-3.2 1.2.6-3.4m-2.6-2.2l3.2-1.2-.6 3.4-2.6-2.2m-2-5.6l3.2-1.2L20.4 8l-.6 3.4-3.2 1.2-2.6-2.2.6-3.4m-7.1 5.7l.6-3.4 3.2-1.2 2.6 2.2-.6 3.4-3.2 1.3-2.6-2.3m1.4 9l-2.6-2.2.6-3.4 3.2-1.2 2.6 2.2-.6 3.4-3.2 1.2m8.5 3.3l-3.2 1.2-2.6-2.2.6-3.4 3.2-1.2 2.6 2.2-.6 3.4m7.1-5.8l-.6 3.4-3.2 1.2-2.7-2.2.6-3.4 3.2-1.2 2.7 2.2m.6-3.3L21.9 17l-2.6-2.2.6-3.4 3.2-1.2 2.6 2.2-.6 3.5\"/><path fill=\"#649791\" d=\"M25.1 13.1l-7.9-6.6c-.4-.3-.4-.9-.1-1.2.3-.4.9-.4 1.2-.1l7.9 6.6c.4.3.4.9.1 1.2-.2.2-.4.3-.7.3-.1 0-.3 0-.5-.2\"/><path fill=\"#efc519\" d=\"M14.1 27c-.4 0-.7-.2-.8-.6-.2-.5.1-1 .5-1.1l9.8-3.5c.5-.2 1 .1 1.1.5.2.5-.1 1-.5 1.1L14.4 27h-.3\"/><path fill=\"#a21c3d\" d=\"M6.3 20.5h-.2c-.5-.1-.8-.5-.7-1L7.2 9.2c.1-.5.5-.8 1-.7.5.1.8.5.8 1L7.2 19.8c-.1.4-.5.7-.9.7\"/><path fill=\"#068cba\" d=\"M10.7 12.5h-.2c-.5-.1-.8-.5-.7-1l.7-3.5c.1-.5.5-.8 1-.7.5.1.8.5.7 1l-.6 3.4c-.1.5-.5.8-.9.8\"/><path fill=\"#531210\" d=\"M8.9 22.6h-.2c-.5-.1-.8-.5-.7-1l.6-3.4c.1-.5.5-.8 1-.7.5.1.8.5.7 1l-.6 3.4c0 .4-.3.7-.8.7\"/><path fill=\"#509f4e\" d=\"M17.2 10.1c-.2 0-.4-.1-.6-.2L14 7.7c-.4-.3-.4-.9-.1-1.2.3-.4.9-.4 1.2-.1l2.6 2.2c.4.3.4.9.1 1.2-.1.2-.4.3-.6.3\"/><path fill=\"#106e66\" d=\"M25.1 16.7c-.2 0-.4-.1-.6-.2l-2.6-2.2c-.4-.3-.4-.9-.1-1.2.3-.4.9-.4 1.2-.1l2.6 2.2c.4.3.4.9.1 1.2-.1.2-.3.3-.6.3\"/><path fill=\"#068cba\" d=\"M21.3 21.3c-.4 0-.7-.2-.8-.6-.2-.5.1-1 .5-1.1l3.2-1.2c.5-.2 1 .1 1.1.5.2.5-.1 1-.5 1.1l-3.2 1.2c-.1.1-.2.1-.3.1\"/><path fill=\"#92beaf\" d=\"M15.4 20.3c-.2 0-.4-.1-.6-.2l-2.6-2.2c-.4-.3-.4-.9-.1-1.2.3-.4.9-.4 1.2-.1l2.6 2.2c.4.3.4.9.1 1.2-.1.2-.3.3-.6.3\"/><path fill=\"#4b635b\" d=\"M18.6 19.1h-.2c-.5-.1-.8-.5-.7-1l.6-3.4c.1-.5.5-.8 1-.7.5.1.8.5.7 1l-.6 3.4c0 .4-.3.7-.8.7\"/><path fill=\"#b9bc63\" d=\"M13.4 14.7c-.4 0-.7-.2-.8-.6-.2-.5.1-1 .5-1.1l3.2-1.2c.5-.2 1 .1 1.1.5.2.5-.1 1-.5 1.1l-3.2 1.2c-.1 0-.2.1-.3.1\"/><path fill=\"#e38b25\" d=\"M11.6 24.8c-.4 0-.7-.2-.8-.6-.2-.5.1-1 .5-1.1l3.2-1.2c.5-.2 1 .1 1.1.5.2.5-.1 1-.5 1.1l-3.2 1.2c-.1.1-.2.1-.3.1\"/></svg>","source-twitter":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"6\" y=\"7\" width=\"21.9\" height=\"19\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"6\" y=\"7\" width=\"21.9\" height=\"19\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#00b0ed\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M12.9 26c-2.5 0-4.9-.8-6.9-2.2.4 0 .7.1 1.1.1 2.1 0 4.1-.8 5.6-2-2 0-3.6-1.4-4.2-3.3.3.1.6.1.8.1.4 0 .8-.1 1.2-.2-2.1-.4-3.6-2.4-3.6-4.7v-.1c.6.4 1.3.6 2 .6-1.2-.9-2-2.3-2-4 0-.9.2-1.7.6-2.4 2.2 2.9 5.5 4.8 9.3 5-.1-.4-.1-.7-.1-1.1 0-2.6 2-4.8 4.5-4.8 1.3 0 2.5.6 3.3 1.5 1-.2 2-.6 2.9-1.2-.3 1.1-1.1 2.1-2 2.6.9-.1 1.8-.4 2.6-.8-.6 1-1.4 1.8-2.2 2.5v.6C25.7 18.7 21.2 26 12.9 26\"/></svg>","source-web":"<svg viewbox=\"0 0 32 32\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g fill=\"#fff\"><path d=\"M26 5H6c-.6 0-1 .4-1 1v21h22V6c0-.6-.4-1-1-1m0 21H6V11h20v15m0-16H6V8h20v2\"/><path d=\"M22 15c.6 0 1 .4 1 1v6c0 .6-.4 1-1 1s-1-.4-1-1v-6c0-.6.4-1 1-1M8 13h11v3H8zM8 18h6v6H8z\"/></g></svg>","source-web2":"<svg viewbox=\"0 0 32 32\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#004990\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g fill=\"#fff\"><path d=\"M26 5H6c-.6 0-1 .4-1 1v21h22V6c0-.6-.4-1-1-1m0 21H6V11h20v15m0-16H6V8h20v2\"/><path d=\"M22 15c.6 0 1 .4 1 1v6c0 .6-.4 1-1 1s-1-.4-1-1v-6c0-.6.4-1 1-1M8 13h11v3H8zM8 18h6v6H8z\"/></g></svg>","source-webscraper":"<svg viewbox=\"0 0 32 32\"><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#fff\"/><path d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" fill=\"#004990\"/><g fill=\"#fff\"><path d=\"M7 6c-.6 0-1 .4-1 1v1h19v17h1V7c0-.5-.5-1-1-1H7\"/><path d=\"M9 3c-.6 0-1 .4-1 1v1h19v17h1V4c0-.5-.5-1-1-1H9\"/></g><g fill=\"#fff\"><path d=\"M23 9H5c-.6 0-1 .5-1 1v18h20V10c0-.6-.5-1-1-1m0 18H5V14h18v13m0-14H5v-2h18v2\"/><path d=\"M7 16h10v3H7zM7 21h4v4H7z\"/></g></svg>","source-websphere_wcm":"<svg viewbox=\"0 0 32 32\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path fill=\"#7262a0\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><g fill=\"#fff\"><path d=\"M16 4c-2.8 0-5 5.4-5 12s2.2 12 5 12 5-5.4 5-12-2.2-12-5-12m0 22c-1.7 0-3-4.5-3-10s1.3-10 3-10 3 4.5 3 10-1.3 10-3 10\"/><path d=\"M16 11c-6.6 0-12 2.2-12 5s5.4 5 12 5 12-2.2 12-5-5.4-5-12-5m0 8c-5.5 0-10-1.3-10-3s4.5-3 10-3 10 1.3 10 3-4.5 3-10 3\"/></g><path fill=\"#fff\" d=\"M16 4C9.4 4 4 9.4 4 16s5.4 12 12 12 12-5.4 12-12S22.6 4 16 4m0 22c-5.5 0-10-4.5-10-10S10.5 6 16 6s10 4.5 10 10-4.5 10-10 10\"/></svg>","source-windchill":"<svg viewbox=\"0 0 32 32\"><path fill=\"#00586f\" d=\"M30 0H2C.9 0 0 .9 0 2v28c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2M11.9 4.1h8.5v.7H18c-.6 0-.9.1-.9.8v5.6c-.1 2.1.5 2.2 1.4 2.3v.4c-1.2 0-3.1.2-3.1-2.6V5.6c0-.7-.4-.8-1-.8H12v-.7zm-4 6.6c-.7 0-1.1-.2-1.5-.4l.2-.3c.3.2.6.2 1 .2 1.6 0 1.8-1.5 1.8-2.8C9.4 6 9 4.7 7.6 4.5c-.6 0-1.1.1-1.4.7C5.9 5.7 6 6.4 6 7v6.7H4.2V5.3c0-.7-.2-.9-1.1-.9v-.3h4.6c2.4 0 3.4 1.5 3.4 3.4.1 1.7-1.4 3.2-3.2 3.2m12.5 15.2c-1.3 1.8-3.1 2.7-4.1 1.8-.5-.5-.7-1.3-.6-2.3-.1.9.1 1.6.7 2 .9.5 2.6-.3 3.6-1.9 1-1.6.9-3.4 0-3.9-.4-.2-1-.2-1.6.1.3.8.3 1.6-.1 2.1-.3.4-.8.7-1.4.8.5-.1.8-.3 1-.6.4-.5.3-1.3.1-2-.5.3-1 .8-1.4 1.5-.1.2-.2.3-.3.5.2-.5.3-.7.6-1.1.3-.4.6-.8 1-1.1-.3-.7-.9-1.5-1.7-2.1-1.7-1.3-3.7-1.5-4.4-.5-.7 1 0 2.9 1.6 4.3.1-.1.3-.1.4-.2 1.2-.5 2.2-.1 2.4.8v.1c-.1-.7-1-1-1.9-.6-.2.1-.3.1-.4.2.6.4 1.3.8 1.9.9-.7-.1-1.4-.4-2-.8-.6.4-1 1.1-.9 1.7.1.7 1 1 1.9.6.5-.2.9-.5 1.2-.9-.3.5-.9 1-1.6 1.2-1.2.5-2.2.1-2.3-.8-.1-.7.4-1.6 1.3-2.1-.1-.1-.2-.1-.3-.2-2-1.5-3-3.7-2.1-5 .9-1.3 3.3-1 5.3.5 1 .7 1.7 1.7 2.1 2.5 1-.7 2.1-.9 2.7-.3.9.8.6 3-.7 4.8m4.8-12.1c-2.3 0-4.1-1.9-4.1-4.6 0-3.6 1.7-5.1 4.6-5.1h3v2.1h-.4c-.2-1.4-1.7-1.7-2.7-1.7C23.2 4.5 23 7 23 8.9c0 2 .4 4.1 2.8 4.3 1 .1 2-.5 2.7-1.3l.3.3c-.8 1-2.2 1.6-3.6 1.6\"/></svg>","source-yahoo":"<svg viewbox=\"0 0 32 32\"><path fill=\"#4801b9\" d=\"M30 32H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2\"/><g fill=\"#390094\"><path d=\"M16 25.3C8.5 25.3 1 28 1 28v3h30v-3s-7.5-2.7-15-2.7M16 6.7C8.5 6.7 1 4 1 4V1h30v3s-7.5 2.7-15 2.7z\"/></g><path fill=\"#fff\" d=\"M14.3 28l.2-10.2L6 4s1.7.5 3.2 0c.4.7 6.7 10.6 6.7 10.6L22.6 4s1.7.4 3.4 0c-.5.6-8.6 13.8-8.6 13.8l.2 10.2s-1.6-.3-3.3 0\"/></svg>","source-yammer":"<svg viewbox=\"0 0 32 32\" enable-background=\"new 0 0 32 32\"><defs><filter filterunits=\"userSpaceOnUse\" x=\"4\" y=\"5\" width=\"23.9\" height=\"22.8\"><fecolormatrix values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0\"/></filter><mask maskunits=\"userSpaceOnUse\" x=\"4\" y=\"5\" width=\"23.9\" height=\"22.8\"><path fill=\"#fff\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\" filter=\"url(#a)\"/></mask></defs><path fill=\"#189cc7\" d=\"M2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0\"/><path mask=\"url(#b)\" fill=\"#fff\" d=\"M17.1 9.4s0-.1 0 0c.3-.7-.1-1.4-.7-1.6-.6-.2-1.3.1-1.5.8v.1c-.4 1.2-4 10.5-4 10.5h-.1L6.6 8.5l-.1-.2c-.3-.6-1-.9-1.6-.7-.7.2-1 1-.8 1.6.5 1.3 5.4 13.1 5.4 13.1l-.3.7c-.5 1.5-1.1 2.4-2.7 2.4h-.7c-.5 0-1 .3-1.1.8-.2.6.2 1.2.8 1.4.4.1.9.1 1.3.1 3 0 3.9-1.7 4.9-4.2 0 0 5.4-13.4 5.6-14-.2 0-.2 0-.2-.1m7.4 9.1h-.3l-.2-.1c-.4-.2-4.7-3.2-4.8-3.9 0-.1 0-.2.1-.3.1-.1.2-.1.4-.1 1 0 3.8 1.4 5.5 2.3.5.4.6 1.1.3 1.6-.2.3-.6.5-1 .5m-4.8-9.1c-.2 0-.3 0-.4-.1-.1-.1-.1-.1-.1-.3 0-.8 4.4-3.7 4.8-3.9l.1-.1h.4c.4 0 .8.2 1 .5.3.5.2 1.2-.3 1.6-1.6.9-4.4 2.3-5.5 2.3m7.2 3.4c-.1 0-5.7 0-6.2-.9v-.3c.4-.7 5.6-1.1 6.1-1.1h.1c.5.1.9.6 1 1.1.1.6-.3 1.1-1 1.2\"/></svg>","source-youtube":"<svg image-rendering=\"optimizeQuality\" shape-rendering=\"geometricPrecision\" viewbox=\"0 0 32 32\"><path d=\"M30 32H2c-1.1 0-2-.9-2-2V2C0 .9.9 0 2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2\" fill=\"#ca1b25\"/><path d=\"M25 7H7c-1.7 0-3 1.3-3 3v12c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3V10c0-1.7-1.3-3-3-3M13 20v-8l8 4-8 4\" fill=\"#fff\"/></svg>","status-limite_source":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M110.343 175.271H418.12v-22H109.883zM352 88H176l-66.229 54.461h308.46zM132 418.63l263.976-.63.024-220H132v220.63zM198 264l22-22 44.001 44L308 242l22 22-44 44 44 44.286L308 374l-43.999-44L220 374.047l-22-22.462L242 308l-44-44z\"/><path d=\"M264 0C118.197 0 0 118.197 0 264s118.197 264 264 264 264-118.197 264-264S409.803 0 264 0zm.252 484C142.61 484 44 385.391 44 263.748c0-121.642 98.61-220.251 220.252-220.251 121.642 0 220.252 98.61 220.252 220.251S385.894 484 264.252 484z\"/></svg>","status-limite_user":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M263.999 0c-145.803 0-264 118.197-264 264s118.197 264 264 264 264-118.197 264-264-118.197-264-264-264zm.252 484c-121.642 0-220.252-98.609-220.252-220.252 0-121.642 98.61-220.251 220.252-220.251 121.643 0 220.252 98.61 220.252 220.251S385.894 484 264.251 484z\"/><path d=\"M312.962 303.482c2.478-44.375 14.738-52.642 23.75-71.25 1.464-3.02 11.625-20.962 7.605-30.394-8.97-20.875-1.484-40.264 3.711-63.364 3.864-17.102-9.896-32.749-9.896-32.749S313.892 70.1 270.475 66.11c-.832-.092-2.925-.13-5.013-.127-2.088-.004-4.18.035-5.012.127-43.418 3.989-67.659 39.614-67.659 39.614s-13.762 15.647-9.896 32.749c5.195 23.101 12.68 42.489 3.71 63.365-4.019 9.432 6.143 27.375 7.606 30.394 9.013 18.609 21.275 26.875 23.75 71.25 2.334 41.885-98.796 29.525-129.962 49.521C128.149 395.473 167.075 462 264.25 462c98.749 0 136.354-66.979 176.552-110-32.325-19.234-130.137-7.303-127.84-48.518zm6.569 126.051l-22 22L264 418l-33.488 33.487-22-22L241.999 396l-33.256-33.256 22-22L264 374l33.426-33.427 22 22L285.999 396l33.532 33.533z\"/></svg>","status-org_backup":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M264 0C118.197 0 0 118.197 0 264s118.197 264 264 264 264-118.197 264-264S409.803 0 264 0zm.252 484C142.61 484 44 385.391 44 263.748c0-121.642 98.61-220.251 220.252-220.251 121.642 0 220.252 98.61 220.252 220.251S385.894 484 264.252 484z\"/><path d=\"M110 308.398V374c0 20.982 23.171 44 44 44h220c20.83 0 44-23.018 44-44l-.292-65.6L110 308.398zm242.292 65.638c-11.284 0-22.045-11.109-22.045-22.036 0-11.409 10.851-22 22.045-22 11.143 0 22.11 11.266 22.11 21.698 0 11.605-10.878 22.338-22.11 22.338zM374.467 110.214h-66.334V132h65.613L264 253 153.746 132h66l.166-22H153.66l-43.828 176h308.336z\"/><path d=\"M286.675 154.086V65.61l-43.663.39v88.414L198 154.086l66.623 66.079L330 154.086z\"/></svg>","status-org_expiration":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M524.998 495.531l-84.997-165.274c-6.162-10.179-11.317-21.616-21.5-21.981v-.26c-.167-.005-.331-.016-.501-.016-10.518 0-15.737 11.654-22 22l-84.997 165c-7.146 12.141-2.19 33 22 33h169.995c24.191 0 29.147-20.328 22-32.469zm-84.997 10.726h-21.5V506H396v-22h21.5v.257h22.501v22zm-21.5-44V462h-22.744l.732-88H417.5v.257h22.012l.732 88h-21.743z\"/><path d=\"M287.945 495l6.762-13.126A221.033 221.033 0 0 1 264.252 484C142.61 484 44 385.391 44 263.748c0-121.642 98.61-220.251 220.252-220.251 121.642 0 220.252 98.61 220.252 220.251 0 23.404-3.665 45.949-10.433 67.107l26.688 50.039C518.191 345.658 528 305.977 528 264 528 118.197 409.803 0 264 0S0 118.197 0 264s118.197 264 264 264c11.484 0 22.788-.766 33.883-2.195-13.597-5.664-15.682-21.046-9.938-30.805z\"/><path d=\"M286 212.731V110c0-12.15-9.85-22-22-22-12.151 0-22 9.85-22 22l-.375 102.901A55.97 55.97 0 0 0 212.732 242h-59.167c-12.151 0-22 9.85-22 22s9.85 22 22 22h59.167c8.536 19.866 28.274 33.782 51.269 33.782 30.808 0 55.782-24.976 55.782-55.782-.001-22.994-13.917-42.732-33.783-51.269z\"/></svg>","status-org_read_only":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M264 0C118.197 0 0 118.197 0 264s118.197 264 264 264 264-118.197 264-264S409.803 0 264 0zm.252 484C142.61 484 44 385.391 44 263.748c0-121.642 98.61-220.251 220.252-220.251 121.642 0 220.252 98.61 220.252 220.251S385.894 484 264.252 484z\"/><path d=\"M264 132C115.285 132 66 286 66 286s63.583 110 198 110c128.477 0 198-110 198-110s-47.298-154-198-154zm-.359 219.58c-48.569 0-87.94-39.372-87.94-87.939 0-48.57 39.372-87.941 87.94-87.941 48.567 0 87.939 39.372 87.939 87.941 0 48.567-39.372 87.939-87.939 87.939z\"/><path d=\"M262.393 209c-4.956 0-9.754.667-14.322 1.896 9.468 4.361 16.043 13.927 16.043 25.035 0 15.219-12.337 27.557-27.557 27.557-11.917 0-22.065-7.565-25.909-18.154a54.895 54.895 0 0 0-3.255 18.667c0 30.376 24.625 55 55 55 30.376 0 55-24.624 55-55S292.77 209 262.393 209z\"/></svg>","status-org_stop":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M264 0C118.197 0 0 118.197 0 264s118.197 264 264 264 264-118.197 264-264S409.803 0 264 0zm.252 484C142.61 484 44 385.391 44 263.748c0-121.642 98.61-220.251 220.252-220.251 121.642 0 220.252 98.61 220.252 220.251S385.894 484 264.252 484z\"/><path d=\"M352.06 286.26c-2.562 24.982-22.338 2.342-22.338-22.129l.338-131.871c0-9.556-6.24-22.639-15.798-22.639-9.557 0-17.201 13.083-17.201 22.639v110c-5.422-5.421-14.617-9.862-22-11v-143c0-9.557-7.283-22-16.839-22-9.557 0-16.161 12.443-16.161 22l-.085 131.885c-5.958-.884-16.143-1.386-21.915.303V110c0-9.556-6.352-22-15.909-22s-17.091 12.444-17.091 22v132.26c-6.218 4.382-17.841 11.615-21.703 21.74l-.297-87.745c0-9.557-6.423-22.095-15.979-22.095-9.557 0-17.081 12.667-17.081 22.224v180.769C132 424.719 188.746 462 256.324 462c55.928 0 139.797-33.084 139.797-166.123l-.297-97.617s-33.65-10.644-43.764 88z\"/></svg>","status-search_down":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M524.997 495.531L440 330.257c-6.162-10.179-11.317-21.616-21.5-21.981v-.26c-.167-.005-.331-.016-.501-.016-10.518 0-15.736 11.654-22 22l-84.997 165c-7.146 12.141-2.19 33 22 33h169.995c24.191 0 29.147-20.328 22-32.469zM440 506.257h-21.5V506h-22.501v-22h21.5v.257H440v22zm-21.5-44V462h-22.744l.732-88h21.011v.257h22.012l.732 88H418.5z\"/><path d=\"M287.943 495l6.763-13.126A221.033 221.033 0 0 1 264.251 484c-121.642 0-220.252-98.609-220.252-220.252 0-121.642 98.61-220.251 220.252-220.251 121.643 0 220.252 98.61 220.252 220.251 0 23.404-3.665 45.949-10.433 67.107l26.688 50.039c17.434-35.236 27.241-74.918 27.241-116.896 0-145.803-118.197-264-264-264s-264 118.197-264 264 118.197 264 264 264a265.09 265.09 0 0 0 33.883-2.195c-13.597-5.662-15.682-21.044-9.939-30.803z\"/><path d=\"M252.354 87.398c-79.167 0-143.344 64.177-143.344 143.344 0 28.555 8.352 55.156 22.742 77.504l-37.801 37.801a220.99 220.99 0 0 0 37.682 50.317l44.323-44.322c22.116 13.959 48.311 22.044 76.397 22.044 79.167 0 143.344-64.177 143.344-143.344.001-79.166-64.176-143.344-143.343-143.344zM252.503 330c-54.676 0-99-44.324-99-99s44.324-99 99-99 99 44.324 99 99-44.324 99-99 99z\"/></svg>","status-too-long":"<svg width=\"528\" height=\"528\" viewbox=\"0 0 528 528\"><path d=\"M524.998 495.531l-84.997-165.274c-6.162-10.179-11.317-21.616-21.5-21.981v-.26c-.167-.005-.331-.016-.501-.016-10.518 0-15.737 11.654-22 22l-84.997 165c-7.146 12.141-2.19 33 22 33h169.995c24.191 0 29.147-20.328 22-32.469zm-84.997 10.726h-21.5V506H396v-22h21.5v.257h22.501v22zm-21.5-44V462h-22.744l.732-88H417.5v.257h22.012l.732 88h-21.743z\"/><path d=\"M287.945 495l6.762-13.126A221.033 221.033 0 0 1 264.252 484C142.61 484 44 385.391 44 263.748c0-121.642 98.61-220.251 220.252-220.251 121.642 0 220.252 98.61 220.252 220.251 0 23.404-3.665 45.949-10.433 67.107l26.688 50.039C518.191 345.658 528 305.977 528 264 528 118.197 409.803 0 264 0S0 118.197 0 264s118.197 264 264 264c11.484 0 22.788-.766 33.883-2.195-13.597-5.664-15.682-21.046-9.938-30.805z\"/><path d=\"M286 212.731V110c0-12.15-9.85-22-22-22-12.151 0-22 9.85-22 22l-.375 102.901A55.97 55.97 0 0 0 212.732 242h-59.167c-12.151 0-22 9.85-22 22s9.85 22 22 22h59.167c8.536 19.866 28.274 33.782 51.269 33.782 30.808 0 55.782-24.976 55.782-55.782-.001-22.994-13.917-42.732-33.783-51.269z\"/></svg>","status":"<svg viewbox=\"0 0 20 20\"><path d=\"M13.5 5.6l-.4.4c-2-1.5-4.9-1.3-6.7.5-1 1-1.5 2.3-1.5 3.7 0 1.4.5 2.7 1.5 3.7.1 0 .2.1.4.1.1 0 .2 0 .3-.1.2-.2.2-.5 0-.7-.8-.8-1.2-1.9-1.2-3s.4-2.2 1.2-3c1.4-1.4 3.7-1.6 5.3-.5l-1.6 1.6c-.2-.1-.5-.2-.8-.2-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2c0-.3-.1-.6-.2-.8l2.7-2.7c.3-.3.3-.7 0-1-.3-.3-.8-.3-1 0z\"/><path d=\"M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16.2c-4 0-7.2-3.2-7.2-7.2S6 2.8 10 2.8 17.2 6 17.2 10 14 17.2 10 17.2z\"/></svg>","thumb-down":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M96 32v48.248l48-.25c41.922 0 61.75-4.188 80-16 22.719-14.125 40.626-32 112-32 160.312 0 163.188 41.281 176 208v32c1.594 20.484-5.438 36.469-16 48-13.125 14.391-36.812 16-48 16H304c20.47 71.359 22.062 133.766 0 160-6.75 8-16 16.207-32 16-14.421-.188-27.204-23.031-32-48-8.641-41.92-9.594-104-112-128l-16-160H96V384H0V32h96z\"/></svg>","thumb-up":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M447.75 448h.25v-.25z\"/><path d=\"M95.888 480.002v-48.25l48 .25c41.922 0 61.75 4.188 80 16 22.719 14.125 40.625 32 112 32 160.312 0 163.188-41.281 176-208v-32c1.595-20.484-5.438-36.469-16-48-13.125-14.391-36.812-16-48-16H303.889c20.47-71.359 22.062-133.765 0-160-6.75-8-16-16.208-32-16-14.422.187-27.205 23.031-32 48-8.641 41.92-9.594 104-112 128l-16 160h-16V128h-96v352.002h95.999z\"/></svg>","tips":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M432.686 176.667c-.062-1.333.125-43.467-21.742-87.483C389.579 45.081 342.018-.558 256.04.005 170.021-.558 122.477 45.08 101.111 89.184c-21.891 44.016-21.702 86.15-21.797 87.5.723 89.021 68.159 154.574 68.942 155.925 9.851 9.756 16.297 19.354 20.42 30.791-5.254 5.815-8.676 13.205-8.676 20.6 0 8 .02 24.001 0 32-.041 16 16 32 32 32 0 16 0 32 16 32 11.247 0 16 32 47.621 32C288 512 292.619 480 304 480c16 0 16-16 16-32 16 0 31.972-15.979 32-32 .028-16-.016-24 0-32 .014-7.393-3.404-14.781-8.66-20.596 4.118-11.442 10.541-21.121 20.403-30.812.815-1.35 68.252-66.904 68.943-155.925zm-91.672 133.228c-13.835 14.138-22.412 27.551-27.757 42.105H198.758c-5.349-14.557-13.932-27.969-27.771-42.105 0 0-3.373-3.375-9.028-10.182-17.122-20.408-50.792-69.397-50.503-123.029 0-.031-.031-8.534 2.283-22.44 3.435-20.933 12.337-52.188 33.201-77.083 21.011-24.808 52.847-44.785 109.1-45.043 74.589.563 107.373 35.254 126.166 71.436 9.082 18.149 13.772 36.777 16.062 50.69 2.339 13.907 2.213 22.44 2.308 22.44.062 35.789-14.589 69.405-29.757 93.993-7.562 12.267-15.122 22.214-20.771 29.036-5.647 6.807-9.034 10.148-9.034 10.182zM512 176c0 8.836-7.163 16-16 16h-32c-8.837 0-16-7.164-16-16s7.163-16 16-16h32c8.837 0 16 7.164 16 16zM64 176c0 8.836-7.163 16-16 16H16c-8.837 0-16-7.164-16-16s7.163-16 16-16h32c8.837 0 16 7.164 16 16zM475.312 36.687c6.248 6.248 6.249 16.379 0 22.627l-22.627 22.627c-6.249 6.249-16.38 6.248-22.627 0-6.249-6.249-6.249-16.379 0-22.627l22.627-22.627c6.251-6.249 16.38-6.249 22.627 0zM81.941 81.942c-6.248 6.248-16.379 6.249-22.627 0L36.687 59.314c-6.249-6.249-6.248-16.379 0-22.627 6.249-6.249 16.379-6.249 22.627 0l22.627 22.627c6.249 6.249 6.249 16.379 0 22.628zM481.94 315.312c-6.247 6.248-16.378 6.25-22.628 0l-22.627-22.627c-6.249-6.248-6.248-16.379 0-22.627 6.247-6.248 16.379-6.248 22.627 0l22.628 22.627c6.249 6.251 6.248 16.381 0 22.627zM81.941 270.059c6.248 6.248 6.249 16.379 0 22.627l-22.627 22.627c-6.248 6.25-16.379 6.248-22.627 0-6.249-6.248-6.249-16.379 0-22.627l22.627-22.627c6.248-6.248 16.379-6.248 22.627 0z\"/><path d=\"M316.27 195.73c-6.246-6.249-18.44-4.185-27.236 4.611l-31.85 31.85c-.468.467-.906.949-1.334 1.434a29.503 29.503 0 0 0-2.649-3.055l-30.712-30.711c-8.481-8.481-20.421-10.291-26.67-4.042-6.248 6.248-4.439 18.188 4.042 26.669l30.712 30.711c2.865 2.866 6.126 4.957 9.429 6.246v62.173c0 7.944 7.164 14.384 16 14.384 8.837 0 16-6.439 16-14.384v-61.14c2.729-1.363 5.397-3.248 7.812-5.66l31.848-31.848c8.793-8.794 10.856-20.989 4.608-27.238z\"/></svg>","trend-down":"<svg viewbox=\"0 0 512 512\"><path d=\"M0 128h512L256 384\"/></svg>","trend-new":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M256-.001l52.034 118.761 114.991-57.009-34.857 124.533L512 217.984l-105.591 72.834 74.9 105.049-127.493-13.195L344.975 512 256 418.548 167.025 512l-8.841-129.328-127.493 13.195 74.9-105.049L0 217.984l123.834-31.7L88.975 61.751l114.993 57.009z\"/></svg>","trend-stable":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 224h512v96H0z\"/></svg>","trend-up":"<svg viewbox=\"0 0 512 512\"><path d=\"M512 384H0l256-256\"/></svg>","triangle":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M32 .032L464 256 32 512z\"/></svg>","unlock":"<svg viewbox=\"-953 533 12 16\"><path d=\"M-943 540h-8c-1.1 0-2 .9-2 2v5c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-5c0-1.1-.9-2-2-2m0 1.5c.3 0 .5.2.5.5v5c0 .3-.2.5-.5.5h-8c-.3 0-.5-.2-.5-.5v-5c0-.3.2-.5.5-.5h8M-943 538h-1.6v-1.1c0-1.3-1.1-2.4-2.4-2.4s-2.4 1.1-2.4 2.4v3.1h-1.6v-3.1c0-2.2 1.8-3.9 4-3.9s4 1.8 4 3.9v1.1\"/></svg>","update-full_refresh":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M352 256L240 368l112 112v-64h160V32H0v384h192l-48-48 48-48H96V128h320v192h-64z\"/></svg>","update-inc_refresh":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M0 32v192h96v-96h320v192h-64v-64L240 368l112 112v-64h160V32H0zm0 224v32h96v-32H0zm0 64v32h96v-32H0zm0 64v32h96v-32H0z\"/></svg>","update-rebuild":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M352 288L240 400l112 112v-64h160V64H320l48 48-48 48h96v192h-64v-64zM0 448h192l-48-48 48-48H96V160h64v64l112-112L160 0v64H0v384z\"/></svg>","update":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M192 416h128v96H192zM256 0L64 192h128v191.5h128V192h127.75z\"/></svg>","upload":"<svg viewbox=\"0 0 20 20\"><path d=\"M11 3.7l1.5 1.5c.7.7 1.5 0 1.5 0s.7-.8 0-1.5L10.7.3c-.4-.4-1-.4-1.4 0L6 3.8c-.7.7 0 1.4 0 1.4s.8.7 1.5 0L9 3.7V15c0 .6.5 1 1 1s1-.5 1-1V3.7\"/><path d=\"M14 7v2h4v9H2V9h4V7H1S0 7 0 8v11c0 1 1 1 1 1h18c1 0 1-1 1-1V8c0-1-1-1-1-1h-5z\"/></svg>","view":"<svg width=\"24\" height=\"20\" viewbox=\"0 0 24 20\"><g stroke=\"null\" fill=\"#3A6083\"><path d=\"M12 16.81c-4.66 0-9.081-2.389-11.71-6.332L.051 10l.24-.478C2.918 5.58 7.34 3.19 12 3.19s9.081 2.39 11.71 6.333l.239.478-.24.478C21.082 14.421 16.66 16.811 12 16.811zM2.083 10c2.27 3.226 5.974 5.138 9.917 5.138s7.647-1.912 9.917-5.138C19.647 6.774 15.943 4.862 12 4.862S4.353 6.774 2.083 10z\"/><path d=\"M12 16.81c-4.66 0-9.081-2.389-11.71-6.332L.051 10l.24-.478C2.918 5.58 7.34 3.19 12 3.19s9.081 2.39 11.71 6.333l.239.478-.24.478C21.082 14.421 16.66 16.811 12 16.811zM2.083 10c2.27 3.226 5.974 5.138 9.917 5.138s7.647-1.912 9.917-5.138C19.647 6.774 15.943 4.862 12 4.862S4.353 6.774 2.083 10z\"/><path d=\"M12 13.943c-2.15 0-3.943-1.792-3.943-3.943 0-2.15 1.792-3.943 3.943-3.943 2.15 0 3.943 1.792 3.943 3.943 0 2.15-1.792 3.943-3.943 3.943zm0-6.213c-1.314 0-2.27 1.075-2.27 2.27 0 1.314 1.075 2.27 2.27 2.27 1.314 0 2.27-1.075 2.27-2.27 0-1.314-.956-2.27-2.27-2.27z\"/></g></svg>","web":"<svg width=\"512\" height=\"512\" viewbox=\"0 0 512 512\"><path d=\"M448 64.165H64c-32-.328-64 31.672-64 63.672v256c0 32 32 64 64 64h383.75c32.25 0 64.25-32 64.25-64v-256c0-32-32-63.674-64-63.672zM224.003 97.818c11.625 0 21.05 10.3 21.05 23.007 0 12.712-9.425 23.012-21.05 23.012s-21.05-10.3-21.05-23.012c.001-12.707 9.425-23.007 21.05-23.007zm-63.993 0c11.625 0 21.05 10.3 21.05 23.007 0 12.712-9.425 23.012-21.05 23.012-11.638 0-21.062-10.3-21.062-23.012-.001-12.707 9.424-23.007 21.062-23.007zm-64 0c11.625 0 21.05 10.3 21.05 23.007 0 12.712-9.425 23.012-21.05 23.012s-21.062-10.3-21.062-23.012c-.001-12.707 9.437-23.007 21.062-23.007zM480 383.837c0 16-16 31.75-32 32H64c-16 0-32-15.678-32-32v-192c0-16 16-32 32-32h384c16 0 32 16 32 32v192z\"/><path d=\"M288 191.837h160v192H288zM64 191.837h192V240H64zM64 256h192v32H64zM64 304h192v32H64zM64 352h192v32H64z\"/></svg>","zoom-negative":"<svg viewbox=\"0 0 16 16\"><path d=\"M4 6h5v1H4z\"/><path d=\"M15.7 14.3l-4-4c.8-1 1.3-2.4 1.3-3.8C13 2.9 10.1 0 6.5 0S0 2.9 0 6.5 2.9 13 6.5 13c1.4 0 2.8-.5 3.8-1.3l4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4M2 6.5C2 4 4 2 6.5 2S11 4 11 6.5c0 1.2-.5 2.3-1.3 3.2-.9.8-2 1.3-3.2 1.3C4 11 2 9 2 6.5\"/></svg>","zoom-positive":"<svg viewbox=\"0 0 16 16\"><path d=\"M7 4H6v2H4v1h2v2h1V7h2V6H7z\"/><path d=\"M15.7 14.3l-4-4c.8-1 1.3-2.4 1.3-3.8C13 2.9 10.1 0 6.5 0S0 2.9 0 6.5 2.9 13 6.5 13c1.4 0 2.8-.5 3.8-1.3l4 4c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4M2 6.5C2 4 4 2 6.5 2S11 4 11 6.5c0 1.2-.5 2.3-1.3 3.2-.9.8-2 1.3-3.2 1.3C4 11 2 9 2 6.5\"/></svg>"}
 
 /***/ }),
-/* 725 */
+/* 724 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -78168,10 +78170,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 725;
+webpackContext.id = 724;
 
 /***/ }),
-/* 726 */
+/* 725 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78186,7 +78188,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(9);
-var ModalActions_1 = __webpack_require__(78);
+var ModalActions_1 = __webpack_require__(79);
 exports.modalInitialState = { id: undefined, isOpened: false };
 exports.modalsInitialState = [];
 exports.modalReducer = function (state, action) {
@@ -78235,7 +78237,7 @@ exports.modalsReducer = function (state, action) {
 
 
 /***/ }),
-/* 727 */
+/* 726 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78288,13 +78290,13 @@ exports.itemFiltersReducer = function (state, action) {
 
 
 /***/ }),
-/* 728 */
+/* 727 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var OptionPickerActions_1 = __webpack_require__(79);
+var OptionPickerActions_1 = __webpack_require__(80);
 var _ = __webpack_require__(9);
 exports.optionPickerInitialState = {
     id: undefined,
@@ -78356,7 +78358,7 @@ exports.optionPickersReducer = function (state, action) {
 
 
 /***/ }),
-/* 729 */
+/* 728 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78401,7 +78403,7 @@ exports.subNavigationsReducer = function (state, action) {
 
 
 /***/ }),
-/* 730 */
+/* 729 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78412,7 +78414,7 @@ module.exports = function stripTags(str) {
 
 
 /***/ }),
-/* 731 */
+/* 730 */
 /***/ (function(module, exports) {
 
 module.exports = function chop(str, step) {
@@ -78424,7 +78426,7 @@ module.exports = function chop(str, step) {
 
 
 /***/ }),
-/* 732 */
+/* 731 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var trim = __webpack_require__(37);
@@ -78435,7 +78437,7 @@ module.exports = function clean(str) {
 
 
 /***/ }),
-/* 733 */
+/* 732 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78451,7 +78453,7 @@ module.exports = function(str, substr) {
 
 
 /***/ }),
-/* 734 */
+/* 733 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78464,11 +78466,11 @@ module.exports = function swapCase(str) {
 
 
 /***/ }),
-/* 735 */
+/* 734 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
-var escapeChars = __webpack_require__(736);
+var escapeChars = __webpack_require__(735);
 
 var regexString = '[';
 for(var key in escapeChars) {
@@ -78487,7 +78489,7 @@ module.exports = function escapeHTML(str) {
 
 
 /***/ }),
-/* 736 */
+/* 735 */
 /***/ (function(module, exports) {
 
 /* We're explicitly defining the list of entities we want to escape.
@@ -78512,11 +78514,11 @@ module.exports = escapeChars;
 
 
 /***/ }),
-/* 737 */
+/* 736 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
-var htmlEntities = __webpack_require__(738);
+var htmlEntities = __webpack_require__(737);
 
 module.exports = function unescapeHTML(str) {
   return makeString(str).replace(/\&([^;]+);/g, function(entity, entityCode) {
@@ -78538,7 +78540,7 @@ module.exports = function unescapeHTML(str) {
 
 
 /***/ }),
-/* 738 */
+/* 737 */
 /***/ (function(module, exports) {
 
 /*
@@ -78563,7 +78565,7 @@ module.exports = htmlEntities;
 
 
 /***/ }),
-/* 739 */
+/* 738 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var splice = __webpack_require__(398);
@@ -78574,7 +78576,7 @@ module.exports = function insert(str, i, substr) {
 
 
 /***/ }),
-/* 740 */
+/* 739 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78588,7 +78590,7 @@ module.exports = function replaceAll(str, find, replace, ignorecase) {
 
 
 /***/ }),
-/* 741 */
+/* 740 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78600,7 +78602,7 @@ module.exports = function include(str, needle) {
 
 
 /***/ }),
-/* 742 */
+/* 741 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78615,7 +78617,7 @@ module.exports = function join() {
 
 
 /***/ }),
-/* 743 */
+/* 742 */
 /***/ (function(module, exports) {
 
 module.exports = function lines(str) {
@@ -78625,7 +78627,7 @@ module.exports = function lines(str) {
 
 
 /***/ }),
-/* 744 */
+/* 743 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78659,7 +78661,7 @@ module.exports = function dedent(str, pattern) {
 
 
 /***/ }),
-/* 745 */
+/* 744 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var chars = __webpack_require__(170);
@@ -78670,7 +78672,7 @@ module.exports = function reverse(str) {
 
 
 /***/ }),
-/* 746 */
+/* 745 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78685,7 +78687,7 @@ module.exports = function startsWith(str, starts, position) {
 
 
 /***/ }),
-/* 747 */
+/* 746 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78704,7 +78706,7 @@ module.exports = function endsWith(str, ends, position) {
 
 
 /***/ }),
-/* 748 */
+/* 747 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var adjacent = __webpack_require__(400);
@@ -78715,7 +78717,7 @@ module.exports = function succ(str) {
 
 
 /***/ }),
-/* 749 */
+/* 748 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var adjacent = __webpack_require__(400);
@@ -78726,7 +78728,7 @@ module.exports = function succ(str) {
 
 
 /***/ }),
-/* 750 */
+/* 749 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78739,7 +78741,7 @@ module.exports = function titleize(str) {
 
 
 /***/ }),
-/* 751 */
+/* 750 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var capitalize = __webpack_require__(168);
@@ -78753,7 +78755,7 @@ module.exports = function classify(str) {
 
 
 /***/ }),
-/* 752 */
+/* 751 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var capitalize = __webpack_require__(168);
@@ -78766,7 +78768,7 @@ module.exports = function humanize(str) {
 
 
 /***/ }),
-/* 753 */
+/* 752 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78782,7 +78784,7 @@ module.exports = function ltrim(str, characters) {
 
 
 /***/ }),
-/* 754 */
+/* 753 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78796,7 +78798,7 @@ module.exports = function truncate(str, length, truncateStr) {
 
 
 /***/ }),
-/* 755 */
+/* 754 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -78829,7 +78831,7 @@ module.exports = function prune(str, length, pruneStr) {
 
 
 /***/ }),
-/* 756 */
+/* 755 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isBlank = __webpack_require__(394);
@@ -78842,7 +78844,7 @@ module.exports = function words(str, delimiter) {
 
 
 /***/ }),
-/* 757 */
+/* 756 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pad = __webpack_require__(102);
@@ -78853,7 +78855,7 @@ module.exports = function lpad(str, length, padStr) {
 
 
 /***/ }),
-/* 758 */
+/* 757 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pad = __webpack_require__(102);
@@ -78864,7 +78866,7 @@ module.exports = function rpad(str, length, padStr) {
 
 
 /***/ }),
-/* 759 */
+/* 758 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pad = __webpack_require__(102);
@@ -78875,7 +78877,7 @@ module.exports = function lrpad(str, length, padStr) {
 
 
 /***/ }),
-/* 760 */
+/* 759 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var deprecate = __webpack_require__(405);
@@ -78885,7 +78887,7 @@ module.exports = deprecate(__webpack_require__(406).sprintf,
 
 
 /***/ }),
-/* 761 */
+/* 760 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var deprecate = __webpack_require__(405);
@@ -78895,7 +78897,7 @@ module.exports = deprecate(__webpack_require__(406).vsprintf,
 
 
 /***/ }),
-/* 762 */
+/* 761 */
 /***/ (function(module, exports) {
 
 module.exports = function toNumber(num, precision) {
@@ -78906,7 +78908,7 @@ module.exports = function toNumber(num, precision) {
 
 
 /***/ }),
-/* 763 */
+/* 762 */
 /***/ (function(module, exports) {
 
 module.exports = function numberFormat(number, dec, dsep, tsep) {
@@ -78924,7 +78926,7 @@ module.exports = function numberFormat(number, dec, dsep, tsep) {
 
 
 /***/ }),
-/* 764 */
+/* 763 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78938,7 +78940,7 @@ module.exports = function strRight(str, sep) {
 
 
 /***/ }),
-/* 765 */
+/* 764 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78952,7 +78954,7 @@ module.exports = function strRightBack(str, sep) {
 
 
 /***/ }),
-/* 766 */
+/* 765 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78966,7 +78968,7 @@ module.exports = function strLeft(str, sep) {
 
 
 /***/ }),
-/* 767 */
+/* 766 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -78980,7 +78982,7 @@ module.exports = function strLeftBack(str, sep) {
 
 
 /***/ }),
-/* 768 */
+/* 767 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toSentence = __webpack_require__(407);
@@ -78991,7 +78993,7 @@ module.exports = function toSentenceSerial(array, sep, lastSep) {
 
 
 /***/ }),
-/* 769 */
+/* 768 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var trim = __webpack_require__(37);
@@ -79004,7 +79006,7 @@ module.exports = function slugify(str) {
 
 
 /***/ }),
-/* 770 */
+/* 769 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var surround = __webpack_require__(408);
@@ -79015,7 +79017,7 @@ module.exports = function quote(str, quoteChar) {
 
 
 /***/ }),
-/* 771 */
+/* 770 */
 /***/ (function(module, exports) {
 
 module.exports = function unquote(str, quoteChar) {
@@ -79027,7 +79029,7 @@ module.exports = function unquote(str, quoteChar) {
 
 
 /***/ }),
-/* 772 */
+/* 771 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -79049,7 +79051,7 @@ module.exports = function repeat(str, qty, separator) {
 
 
 /***/ }),
-/* 773 */
+/* 772 */
 /***/ (function(module, exports) {
 
 module.exports = function naturalCmp(str1, str2) {
@@ -79084,7 +79086,7 @@ module.exports = function naturalCmp(str1, str2) {
 
 
 /***/ }),
-/* 774 */
+/* 773 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -79142,7 +79144,7 @@ module.exports = function levenshtein(str1, str2) {
 
 
 /***/ }),
-/* 775 */
+/* 774 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var trim = __webpack_require__(37);
@@ -79168,7 +79170,7 @@ module.exports = function toBoolean(str, trueValues, falseValues) {
 
 
 /***/ }),
-/* 776 */
+/* 775 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -79184,7 +79186,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 777 */
+/* 776 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Wrap
@@ -79292,7 +79294,7 @@ module.exports = function wrap(str, options){
 
 
 /***/ }),
-/* 778 */
+/* 777 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var makeString = __webpack_require__(15);
@@ -79307,7 +79309,7 @@ module.exports = function(str, callback) {
 
 
 /***/ }),
-/* 779 */
+/* 778 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79371,7 +79373,7 @@ exports.multiSelectDropdownSearchReducer = function (state, action) {
 
 
 /***/ }),
-/* 780 */
+/* 779 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79384,7 +79386,7 @@ exports.deepClone = deepClone;
 
 
 /***/ }),
-/* 781 */
+/* 780 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79401,7 +79403,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var UserFeedback_1 = __webpack_require__(782);
+var UserFeedback_1 = __webpack_require__(781);
 var UserFeedbackExample = (function (_super) {
     __extends(UserFeedbackExample, _super);
     function UserFeedbackExample() {
@@ -79429,7 +79431,7 @@ exports.UserFeedbackExample = UserFeedbackExample;
 
 
 /***/ }),
-/* 782 */
+/* 781 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79446,7 +79448,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ComponentUtils_1 = __webpack_require__(783);
+var ComponentUtils_1 = __webpack_require__(782);
 exports.UserFeedbackState = {
     VALID: 'VALID',
     WARNING: 'WARNING',
@@ -79481,7 +79483,7 @@ exports.UserFeedback = UserFeedback;
 
 
 /***/ }),
-/* 783 */
+/* 782 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79498,7 +79500,7 @@ exports.DisplayClass = {
 
 
 /***/ }),
-/* 784 */
+/* 783 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79515,7 +79517,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var SyncFeedback_1 = __webpack_require__(785);
+var SyncFeedback_1 = __webpack_require__(784);
 var SyncFeedbackExample = (function (_super) {
     __extends(SyncFeedbackExample, _super);
     function SyncFeedbackExample() {
@@ -79545,7 +79547,7 @@ exports.SyncFeedbackExample = SyncFeedbackExample;
 
 
 /***/ }),
-/* 785 */
+/* 784 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79623,7 +79625,7 @@ exports.SyncFeedback = SyncFeedback;
 
 
 /***/ }),
-/* 786 */
+/* 785 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79640,9 +79642,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ReactVaporStore_1 = __webpack_require__(67);
+var ReactVaporStore_1 = __webpack_require__(68);
 var MembersActions_1 = __webpack_require__(129);
-var MembersCompositeView_1 = __webpack_require__(787);
+var MembersCompositeView_1 = __webpack_require__(786);
 var MembersExample = (function (_super) {
     __extends(MembersExample, _super);
     function MembersExample() {
@@ -79668,7 +79670,7 @@ exports.MembersExample = MembersExample;
 
 
 /***/ }),
-/* 787 */
+/* 786 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79693,7 +79695,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(9);
 var React = __webpack_require__(0);
 var ReduxUtils_1 = __webpack_require__(14);
-var MemberEditView_1 = __webpack_require__(788);
+var MemberEditView_1 = __webpack_require__(787);
 var MembersActions_1 = __webpack_require__(129);
 var mapStateToProps = function (state) {
     return {
@@ -79730,7 +79732,7 @@ exports.MembersCompositeView = MembersCompositeView;
 
 
 /***/ }),
-/* 788 */
+/* 787 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79755,7 +79757,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _ = __webpack_require__(9);
 var React = __webpack_require__(0);
 var ReduxUtils_1 = __webpack_require__(14);
-var Popover_1 = __webpack_require__(789);
+var Popover_1 = __webpack_require__(788);
 var MemberEditionActions_1 = __webpack_require__(130);
 var mapStateToProps = function (state, ownProps) {
     var item;
@@ -79832,7 +79834,7 @@ exports.MemberEditView = MemberEditView;
 
 
 /***/ }),
-/* 789 */
+/* 788 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79858,7 +79860,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var react_dom_1 = __webpack_require__(22);
-var TetherComponent = __webpack_require__(790);
+var TetherComponent = __webpack_require__(789);
 var _ = __webpack_require__(9);
 var Popover = (function (_super) {
     __extends(Popover, _super);
@@ -79916,7 +79918,7 @@ exports.Popover = Popover;
 
 
 /***/ }),
-/* 790 */
+/* 789 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79927,7 +79929,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _TetherComponent = __webpack_require__(791);
+var _TetherComponent = __webpack_require__(790);
 
 var _TetherComponent2 = _interopRequireDefault(_TetherComponent);
 
@@ -79937,7 +79939,7 @@ exports.default = _TetherComponent2.default;
 module.exports = exports['default'];
 
 /***/ }),
-/* 791 */
+/* 790 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79963,7 +79965,7 @@ var _reactDom = __webpack_require__(22);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _tether = __webpack_require__(792);
+var _tether = __webpack_require__(791);
 
 var _tether2 = _interopRequireDefault(_tether);
 
@@ -80224,7 +80226,7 @@ exports.default = TetherComponent;
 module.exports = exports['default'];
 
 /***/ }),
-/* 792 */
+/* 791 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.4.0 */
@@ -82045,7 +82047,7 @@ return Tether;
 
 
 /***/ }),
-/* 793 */
+/* 792 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82086,7 +82088,7 @@ exports.LastUpdatedExamples = LastUpdatedExamples;
 
 
 /***/ }),
-/* 794 */
+/* 793 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82109,7 +82111,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var LastUpdatedConnected_1 = __webpack_require__(795);
+var LastUpdatedConnected_1 = __webpack_require__(794);
 var LastUpdatedActions_1 = __webpack_require__(131);
 var ReduxUtils_1 = __webpack_require__(14);
 var mapStateToProps = function () {
@@ -82148,7 +82150,7 @@ exports.LastUpdatedConnectedExamples = LastUpdatedConnectedExamples;
 
 
 /***/ }),
-/* 795 */
+/* 794 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82173,7 +82175,7 @@ exports.LastUpdatedConnected = react_redux_1.connect(mapStateToProps, mapDispatc
 
 
 /***/ }),
-/* 796 */
+/* 795 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82208,7 +82210,7 @@ exports.LoadingExamples = LoadingExamples;
 
 
 /***/ }),
-/* 797 */
+/* 796 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82246,7 +82248,7 @@ exports.FilterBoxExamples = FilterBoxExamples;
 
 
 /***/ }),
-/* 798 */
+/* 797 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82281,7 +82283,7 @@ exports.FilterBoxConnectedExamples = FilterBoxConnectedExamples;
 
 
 /***/ }),
-/* 799 */
+/* 798 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82303,9 +82305,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var FacetConnected_1 = __webpack_require__(800);
+var FacetConnected_1 = __webpack_require__(799);
 var ReduxUtils_1 = __webpack_require__(14);
-var FacetActions_1 = __webpack_require__(68);
+var FacetActions_1 = __webpack_require__(69);
 var React = __webpack_require__(0);
 var facet = { name: 'facetTitle1', formattedName: 'Facet Title' };
 var facet2 = { name: 'facetTitle2', formattedName: 'Facet Title' };
@@ -82379,7 +82381,7 @@ exports.FacetConnectedExamples = FacetConnectedExamples;
 
 
 /***/ }),
-/* 800 */
+/* 799 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82387,7 +82389,7 @@ exports.FacetConnectedExamples = FacetConnectedExamples;
 Object.defineProperty(exports, "__esModule", { value: true });
 var Facet_1 = __webpack_require__(411);
 var ReduxUtils_1 = __webpack_require__(14);
-var FacetActions_1 = __webpack_require__(68);
+var FacetActions_1 = __webpack_require__(69);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var mapStateToProps = function (state, ownProps) {
@@ -82408,7 +82410,7 @@ exports.FacetConnected = react_redux_1.connect(mapStateToProps, mapDispatchToPro
 
 
 /***/ }),
-/* 801 */
+/* 800 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82416,7 +82418,7 @@ exports.FacetConnected = react_redux_1.connect(mapStateToProps, mapDispatchToPro
 Object.defineProperty(exports, "__esModule", { value: true });
 var FacetMoreToggle_1 = __webpack_require__(412);
 var ReduxUtils_1 = __webpack_require__(14);
-var FacetActions_1 = __webpack_require__(68);
+var FacetActions_1 = __webpack_require__(69);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var mapStateToProps = function (state, ownProps) {
@@ -82432,7 +82434,7 @@ exports.FacetMoreToggleConnected = react_redux_1.connect(mapStateToProps, mapDis
 
 
 /***/ }),
-/* 802 */
+/* 801 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82441,7 +82443,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ReduxUtils_1 = __webpack_require__(14);
 var FacetMoreRows_1 = __webpack_require__(413);
 var FilterBoxActions_1 = __webpack_require__(132);
-var FacetActions_1 = __webpack_require__(68);
+var FacetActions_1 = __webpack_require__(69);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var mapStateToProps = function (state, ownProps) {
@@ -82461,7 +82463,7 @@ exports.FacetMoreRowsConnected = react_redux_1.connect(mapStateToProps, mapDispa
 
 
 /***/ }),
-/* 803 */
+/* 802 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82502,7 +82504,7 @@ exports.FacetRow = FacetRow;
 
 
 /***/ }),
-/* 804 */
+/* 803 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82575,7 +82577,7 @@ exports.FacetExamples = FacetExamples;
 
 
 /***/ }),
-/* 805 */
+/* 804 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82599,12 +82601,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var ReduxUtils_1 = __webpack_require__(14);
-var ModalActions_1 = __webpack_require__(78);
-var ModalConnected_1 = __webpack_require__(806);
+var ModalActions_1 = __webpack_require__(79);
+var ModalConnected_1 = __webpack_require__(805);
 var ModalBody_1 = __webpack_require__(175);
 var ModalFooter_1 = __webpack_require__(176);
-var ModalBackdropConnected_1 = __webpack_require__(807);
-var ModalHeaderConnected_1 = __webpack_require__(808);
+var ModalBackdropConnected_1 = __webpack_require__(806);
+var ModalHeaderConnected_1 = __webpack_require__(807);
 var modal1Id = 'modal1';
 var modal2Id = 'modal2';
 var mapStateToProps = function () { return ({}); };
@@ -82651,7 +82653,7 @@ exports.ModalConnectedExamples = ModalConnectedExamples;
 
 
 /***/ }),
-/* 806 */
+/* 805 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82659,7 +82661,7 @@ exports.ModalConnectedExamples = ModalConnectedExamples;
 Object.defineProperty(exports, "__esModule", { value: true });
 var Modal_1 = __webpack_require__(174);
 var ReduxUtils_1 = __webpack_require__(14);
-var ModalActions_1 = __webpack_require__(78);
+var ModalActions_1 = __webpack_require__(79);
 var react_redux_1 = __webpack_require__(16);
 var mapStateToProps = function (state, ownProps) {
     return {
@@ -82674,7 +82676,7 @@ exports.ModalConnected = react_redux_1.connect(mapStateToProps, mapDispatchToPro
 
 
 /***/ }),
-/* 807 */
+/* 806 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82684,7 +82686,7 @@ var ModalBackdrop_1 = __webpack_require__(177);
 var ReduxUtils_1 = __webpack_require__(14);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
-var ModalActions_1 = __webpack_require__(78);
+var ModalActions_1 = __webpack_require__(79);
 var mapStateToProps = function (state, ownProps) {
     var modals = state.modals;
     if (ownProps.displayFor && ownProps.displayFor.length > 0) {
@@ -82701,14 +82703,14 @@ exports.ModalBackdropConnected = react_redux_1.connect(mapStateToProps, mapDispa
 
 
 /***/ }),
-/* 808 */
+/* 807 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReduxUtils_1 = __webpack_require__(14);
-var ModalActions_1 = __webpack_require__(78);
+var ModalActions_1 = __webpack_require__(79);
 var react_redux_1 = __webpack_require__(16);
 var ModalHeader_1 = __webpack_require__(178);
 var mapStateToProps = function () { return ({}); };
@@ -82719,7 +82721,7 @@ exports.ModalHeaderConnected = react_redux_1.connect(mapStateToProps, mapDispatc
 
 
 /***/ }),
-/* 809 */
+/* 808 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82773,7 +82775,7 @@ exports.NavigationExamples = NavigationExamples;
 
 
 /***/ }),
-/* 810 */
+/* 809 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82781,7 +82783,7 @@ exports.NavigationExamples = NavigationExamples;
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReduxUtils_1 = __webpack_require__(14);
 var Loading_1 = __webpack_require__(173);
-var LoadingActions_1 = __webpack_require__(69);
+var LoadingActions_1 = __webpack_require__(70);
 var react_redux_1 = __webpack_require__(16);
 var mapStateToProps = function () { return ({}); };
 var mapDispatchToProps = function (dispatch, ownProps) { return ({
@@ -82792,7 +82794,7 @@ exports.LoadingConnected = react_redux_1.connect(mapStateToProps, mapDispatchToP
 
 
 /***/ }),
-/* 811 */
+/* 810 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82801,7 +82803,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ReduxUtils_1 = __webpack_require__(14);
 var NavigationPagination_1 = __webpack_require__(415);
 var NavigationPaginationActions_1 = __webpack_require__(133);
-var LoadingActions_1 = __webpack_require__(69);
+var LoadingActions_1 = __webpack_require__(70);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var mapStateToProps = function (state, ownProps) {
@@ -82822,7 +82824,7 @@ exports.NavigationPaginationConnected = react_redux_1.connect(mapStateToProps, m
 
 
 /***/ }),
-/* 812 */
+/* 811 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82855,7 +82857,7 @@ exports.NavigationPaginationSelect = NavigationPaginationSelect;
 
 
 /***/ }),
-/* 813 */
+/* 812 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82865,7 +82867,7 @@ var ReduxUtils_1 = __webpack_require__(14);
 var NavigationPerPage_1 = __webpack_require__(416);
 var NavigationPerPageActions_1 = __webpack_require__(227);
 var NavigationPaginationActions_1 = __webpack_require__(133);
-var LoadingActions_1 = __webpack_require__(69);
+var LoadingActions_1 = __webpack_require__(70);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var mapStateToProps = function (state, ownProps) {
@@ -82890,7 +82892,7 @@ exports.NavigationPerPageConnected = react_redux_1.connect(mapStateToProps, mapD
 
 
 /***/ }),
-/* 814 */
+/* 813 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82925,7 +82927,7 @@ exports.NavigationPerPageSelect = NavigationPerPageSelect;
 
 
 /***/ }),
-/* 815 */
+/* 814 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82949,9 +82951,9 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var NavigationConnected_1 = __webpack_require__(816);
-var LoadingActions_1 = __webpack_require__(69);
-var ReactVaporStore_1 = __webpack_require__(67);
+var NavigationConnected_1 = __webpack_require__(815);
+var LoadingActions_1 = __webpack_require__(70);
+var ReactVaporStore_1 = __webpack_require__(68);
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 var navigationConnectedExampleId = 'navigation-connected';
@@ -82988,7 +82990,7 @@ exports.NavigationConnectedExamples = NavigationConnectedExamples;
 
 
 /***/ }),
-/* 816 */
+/* 815 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83010,7 +83012,7 @@ exports.NavigationConnected = react_redux_1.connect(mapStateToProps, mapDispatch
 
 
 /***/ }),
-/* 817 */
+/* 816 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83069,7 +83071,7 @@ exports.ActionBarExamples = ActionBarExamples;
 
 
 /***/ }),
-/* 818 */
+/* 817 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83086,7 +83088,7 @@ exports.SecondaryActionsConnected = react_redux_1.connect(mapStateToProps, mapDi
 
 
 /***/ }),
-/* 819 */
+/* 818 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83103,7 +83105,7 @@ exports.ActionsDropdownConnected = react_redux_1.connect(mapStateToProps, mapDis
 
 
 /***/ }),
-/* 820 */
+/* 819 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83130,7 +83132,7 @@ exports.DropdownConnected = react_redux_1.connect(mapStateToProps, mapDispatchTo
 
 
 /***/ }),
-/* 821 */
+/* 820 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83179,7 +83181,7 @@ exports.ItemFilter = ItemFilter;
 
 
 /***/ }),
-/* 822 */
+/* 821 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83197,7 +83199,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var ActionBarConnected_1 = __webpack_require__(424);
-var ReactVaporStore_1 = __webpack_require__(67);
+var ReactVaporStore_1 = __webpack_require__(68);
 var ActionBarActions_1 = __webpack_require__(135);
 var actionBarId = 'action-bar-connected';
 var ActionBarConnectedExamples = (function (_super) {
@@ -83257,13 +83259,13 @@ exports.ActionBarConnectedExamples = ActionBarConnectedExamples;
 
 
 /***/ }),
-/* 823 */
+/* 822 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var InlinePrompt_1 = __webpack_require__(824);
+var InlinePrompt_1 = __webpack_require__(823);
 var ReduxUtils_1 = __webpack_require__(14);
 var InlinePromptActions_1 = __webpack_require__(134);
 var react_redux_1 = __webpack_require__(16);
@@ -83277,7 +83279,7 @@ exports.InlinePromptConnected = react_redux_1.connect(mapStateToProps, mapDispat
 
 
 /***/ }),
-/* 824 */
+/* 823 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83336,7 +83338,7 @@ exports.InlinePrompt = InlinePrompt;
 
 
 /***/ }),
-/* 825 */
+/* 824 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83387,7 +83389,7 @@ exports.TableRowExamples = TableRowExamples;
 
 
 /***/ }),
-/* 826 */
+/* 825 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83443,7 +83445,7 @@ exports.TableError = TableError;
 
 
 /***/ }),
-/* 827 */
+/* 826 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83478,7 +83480,7 @@ exports.TableCollapsibleRowToggle = TableCollapsibleRowToggle;
 
 
 /***/ }),
-/* 828 */
+/* 827 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83494,8 +83496,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var TableHeadingRowConnected_1 = __webpack_require__(829);
-var TableCollapsibleRowConnected_1 = __webpack_require__(830);
+var TableHeadingRowConnected_1 = __webpack_require__(828);
+var TableCollapsibleRowConnected_1 = __webpack_require__(829);
 var React = __webpack_require__(0);
 var TableRowConnectedExamples = (function (_super) {
     __extends(TableRowConnectedExamples, _super);
@@ -83525,7 +83527,7 @@ exports.TableRowConnectedExamples = TableRowConnectedExamples;
 
 
 /***/ }),
-/* 829 */
+/* 828 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83563,7 +83565,7 @@ exports.TableHeadingRowConnected = react_redux_1.connect(mapStateToProps, mapDis
 
 
 /***/ }),
-/* 830 */
+/* 829 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83584,7 +83586,7 @@ exports.TableCollapsibleRowConnected = react_redux_1.connect(mapStateToProps, ma
 
 
 /***/ }),
-/* 831 */
+/* 830 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83635,7 +83637,7 @@ exports.TableHeaderExamples = TableHeaderExamples;
 
 
 /***/ }),
-/* 832 */
+/* 831 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83666,7 +83668,7 @@ exports.TableHeaderCell = TableHeaderCell;
 
 
 /***/ }),
-/* 833 */
+/* 832 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83701,7 +83703,7 @@ exports.ItemFilterExamples = ItemFilterExamples;
 
 
 /***/ }),
-/* 834 */
+/* 833 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83719,7 +83721,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var ActionBarConnected_1 = __webpack_require__(424);
-var ReactVaporStore_1 = __webpack_require__(67);
+var ReactVaporStore_1 = __webpack_require__(68);
 var ItemFilterActions_1 = __webpack_require__(166);
 var ACTION_BAR_ID = 'item-filter-connected-example';
 var ITEM_FILTER_LABEL = 'Item filter';
@@ -83751,7 +83753,7 @@ exports.ItemFilterConnectedExamples = ItemFilterConnectedExamples;
 
 
 /***/ }),
-/* 835 */
+/* 834 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83767,7 +83769,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var TableEmptyRow_1 = __webpack_require__(836);
+var TableEmptyRow_1 = __webpack_require__(835);
 var React = __webpack_require__(0);
 var TableEmptyRowExamples = (function (_super) {
     __extends(TableEmptyRowExamples, _super);
@@ -83792,7 +83794,7 @@ exports.TableEmptyRowExamples = TableEmptyRowExamples;
 
 
 /***/ }),
-/* 836 */
+/* 835 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83825,7 +83827,7 @@ exports.TableEmptyRow = TableEmptyRow;
 
 
 /***/ }),
-/* 837 */
+/* 836 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83861,7 +83863,7 @@ exports.OptionsCycleExamples = OptionsCycleExamples;
 
 
 /***/ }),
-/* 838 */
+/* 837 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83910,7 +83912,7 @@ exports.SubNavigationExamples = SubNavigationExamples;
 
 
 /***/ }),
-/* 839 */
+/* 838 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83927,7 +83929,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var SubNavigationConnected_1 = __webpack_require__(840);
+var SubNavigationConnected_1 = __webpack_require__(839);
 var SubNavigationConnectedExamples = (function (_super) {
     __extends(SubNavigationConnectedExamples, _super);
     function SubNavigationConnectedExamples() {
@@ -83959,7 +83961,7 @@ exports.SubNavigationConnectedExamples = SubNavigationConnectedExamples;
 
 
 /***/ }),
-/* 840 */
+/* 839 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83985,7 +83987,7 @@ exports.SubNavigationConnected = react_redux_1.connect(mapStateToProps, mapDispa
 
 
 /***/ }),
-/* 841 */
+/* 840 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84021,7 +84023,7 @@ exports.OptionsCycleConnectedExamples = OptionsCycleConnectedExamples;
 
 
 /***/ }),
-/* 842 */
+/* 841 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84039,7 +84041,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var CalendarConnected_1 = __webpack_require__(430);
-var Calendar_1 = __webpack_require__(61);
+var Calendar_1 = __webpack_require__(62);
 var CalendarConnectedExamples = (function (_super) {
     __extends(CalendarConnectedExamples, _super);
     function CalendarConnectedExamples() {
@@ -84058,7 +84060,7 @@ exports.CalendarConnectedExamples = CalendarConnectedExamples;
 
 
 /***/ }),
-/* 843 */
+/* 842 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84094,7 +84096,7 @@ exports.DatePickerBoxExamples = DatePickerBoxExamples;
 
 
 /***/ }),
-/* 844 */
+/* 843 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84127,7 +84129,7 @@ exports.Option = Option;
 
 
 /***/ }),
-/* 845 */
+/* 844 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84135,7 +84137,7 @@ exports.Option = Option;
 Object.defineProperty(exports, "__esModule", { value: true });
 var ReduxUtils_1 = __webpack_require__(14);
 var OptionPicker_1 = __webpack_require__(432);
-var OptionPickerActions_1 = __webpack_require__(79);
+var OptionPickerActions_1 = __webpack_require__(80);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var mapStateToProps = function (state, ownProps) {
@@ -84153,7 +84155,7 @@ exports.OptionPickerConnected = react_redux_1.connect(mapStateToProps, mapDispat
 
 
 /***/ }),
-/* 846 */
+/* 845 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84188,7 +84190,7 @@ exports.DatesSelectionExamples = DatesSelectionExamples;
 
 
 /***/ }),
-/* 847 */
+/* 846 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84225,7 +84227,7 @@ exports.DatesSelectionConnectedExamples = DatesSelectionConnectedExamples;
 
 
 /***/ }),
-/* 848 */
+/* 847 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84261,7 +84263,7 @@ exports.DatePickerBoxConnectedExamples = DatePickerBoxConnectedExamples;
 
 
 /***/ }),
-/* 849 */
+/* 848 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84297,7 +84299,7 @@ exports.DatePickerDropdownConnectedExamples = DatePickerDropdownConnectedExample
 
 
 /***/ }),
-/* 850 */
+/* 849 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84322,10 +84324,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var DatePickerBox_1 = __webpack_require__(183);
-var DateUtils_1 = __webpack_require__(60);
+var DateUtils_1 = __webpack_require__(61);
 var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(22);
-var Calendar_1 = __webpack_require__(61);
+var Calendar_1 = __webpack_require__(62);
 exports.DEFAULT_DATE_PICKER_DROPDOWN_LABEL = 'Select date';
 exports.DEFAULT_APPLY_DATE_LABEL = 'Apply';
 exports.DEFAULT_CANCEL_DATE_LABEL = 'Cancel';
@@ -84464,7 +84466,7 @@ exports.DatePickerDropdown = DatePickerDropdown;
 
 
 /***/ }),
-/* 851 */
+/* 850 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84482,7 +84484,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var DatePickerDropdownConnected_1 = __webpack_require__(433);
 var DatePickerExamplesCommon_1 = __webpack_require__(104);
-var DateUtils_1 = __webpack_require__(60);
+var DateUtils_1 = __webpack_require__(61);
 var React = __webpack_require__(0);
 var DatePickerDropdownConnectedSingleDateExamples = (function (_super) {
     __extends(DatePickerDropdownConnectedSingleDateExamples, _super);
@@ -84504,7 +84506,7 @@ exports.DatePickerDropdownConnectedSingleDateExamples = DatePickerDropdownConnec
 
 
 /***/ }),
-/* 852 */
+/* 851 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84563,7 +84565,7 @@ exports.ModalExamples = ModalExamples;
 
 
 /***/ }),
-/* 853 */
+/* 852 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84580,10 +84582,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var TabNavigation_1 = __webpack_require__(854);
-var TabConnected_1 = __webpack_require__(855);
-var TabContent_1 = __webpack_require__(857);
-var TabPaneConnected_1 = __webpack_require__(858);
+var TabNavigation_1 = __webpack_require__(853);
+var TabConnected_1 = __webpack_require__(854);
+var TabContent_1 = __webpack_require__(856);
+var TabPaneConnected_1 = __webpack_require__(857);
 var TAB1_ID = 'tab1';
 var TAB2_ID = 'tab2';
 var TAB3_ID = 'tab3';
@@ -84615,7 +84617,7 @@ exports.TabsExamples = TabsExamples;
 
 
 /***/ }),
-/* 854 */
+/* 853 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84646,14 +84648,14 @@ exports.TabNavigation = TabNavigation;
 
 
 /***/ }),
-/* 855 */
+/* 854 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var TabActions_1 = __webpack_require__(392);
-var Tab_1 = __webpack_require__(856);
+var Tab_1 = __webpack_require__(855);
 var ReduxUtils_1 = __webpack_require__(14);
 var react_redux_1 = __webpack_require__(16);
 var TabReducers_1 = __webpack_require__(167);
@@ -84674,7 +84676,7 @@ exports.TabConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps
 
 
 /***/ }),
-/* 856 */
+/* 855 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84725,7 +84727,7 @@ exports.Tab = Tab;
 
 
 /***/ }),
-/* 857 */
+/* 856 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84756,14 +84758,14 @@ exports.TabContent = TabContent;
 
 
 /***/ }),
-/* 858 */
+/* 857 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_redux_1 = __webpack_require__(16);
-var TabPane_1 = __webpack_require__(859);
+var TabPane_1 = __webpack_require__(858);
 var ReduxUtils_1 = __webpack_require__(14);
 var TabReducers_1 = __webpack_require__(167);
 var _ = __webpack_require__(9);
@@ -84779,7 +84781,7 @@ exports.TabPaneConnected = react_redux_1.connect(mapStateToProps, mapDispatchToP
 
 
 /***/ }),
-/* 859 */
+/* 858 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84814,7 +84816,7 @@ exports.TabPane = TabPane;
 
 
 /***/ }),
-/* 860 */
+/* 859 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84831,7 +84833,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ModalPrompt_1 = __webpack_require__(861);
+var ModalPrompt_1 = __webpack_require__(860);
 var ModalBackdrop_1 = __webpack_require__(177);
 var ModalPromptExamples = (function (_super) {
     __extends(ModalPromptExamples, _super);
@@ -84867,7 +84869,7 @@ exports.ModalPromptExamples = ModalPromptExamples;
 
 
 /***/ }),
-/* 861 */
+/* 860 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84925,7 +84927,7 @@ exports.ModalPrompt = ModalPrompt;
 
 
 /***/ }),
-/* 862 */
+/* 861 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84941,7 +84943,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var MultilineInput_1 = __webpack_require__(863);
+var MultilineInput_1 = __webpack_require__(862);
 var React = __webpack_require__(0);
 var MultilineInputExamples = (function (_super) {
     __extends(MultilineInputExamples, _super);
@@ -84970,7 +84972,7 @@ exports.MultilineInputExamples = MultilineInputExamples;
 
 
 /***/ }),
-/* 863 */
+/* 862 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84989,8 +84991,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
 var UUID_1 = __webpack_require__(434);
-var DeletableInput_1 = __webpack_require__(864);
-var AddInput_1 = __webpack_require__(866);
+var DeletableInput_1 = __webpack_require__(863);
+var AddInput_1 = __webpack_require__(865);
 var MultilineInput = (function (_super) {
     __extends(MultilineInput, _super);
     function MultilineInput() {
@@ -85033,7 +85035,7 @@ var MultilineInput = (function (_super) {
     MultilineInput.prototype.getDeletableInput = function (inputValue, index) {
         var _this = this;
         return (React.createElement("li", { key: "delete-input-" + inputValue.id },
-            React.createElement(DeletableInput_1.DeletableInput, { label: index === 0 ? this.props.title : '', placeholder: this.props.placeholder, value: inputValue.value, onChange: function (newValue) { return _this.handleDeleteInputChange(newValue, inputValue.id); } })));
+            React.createElement(DeletableInput_1.DeletableInput, { label: index === 0 ? this.props.title : '', placeholder: this.props.placeholder, value: inputValue.value, onBlur: function (newValue) { return _this.handleDeleteInputChange(newValue, inputValue.id); } })));
     };
     MultilineInput.prototype.render = function () {
         var _this = this;
@@ -85042,7 +85044,7 @@ var MultilineInput = (function (_super) {
             : null;
         return (React.createElement("div", { className: 'input-field multiline-field form-group' },
             React.createElement("ul", null, deletableInputs),
-            React.createElement(AddInput_1.AddInput, { label: this.props.title, labelClasses: this.props.values && this.props.values.length === 0 ? ['first-label'] : [], placeholder: this.props.placeholder, value: '', onChange: function (newValue) { return _this.handleAddInputChange(newValue); } })));
+            React.createElement(AddInput_1.AddInput, { label: this.props.title, labelClasses: this.props.values && this.props.values.length === 0 ? ['first-label'] : [], placeholder: this.props.placeholder, value: '', onBlur: function (newValue) { return _this.handleAddInputChange(newValue); } })));
     };
     return MultilineInput;
 }(React.Component));
@@ -85050,7 +85052,7 @@ exports.MultilineInput = MultilineInput;
 
 
 /***/ }),
-/* 864 */
+/* 863 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85076,16 +85078,16 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
-var DeleteInputAction_1 = __webpack_require__(865);
-var Input_1 = __webpack_require__(80);
+var DeleteInputAction_1 = __webpack_require__(864);
+var Input_1 = __webpack_require__(48);
 var DeletableInput = (function (_super) {
     __extends(DeletableInput, _super);
     function DeletableInput() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     DeletableInput.prototype.onDeleteClicked = function () {
-        if (this.props.onChange) {
-            this.props.onChange('');
+        if (this.props.onBlur) {
+            this.props.onBlur('');
         }
     };
     DeletableInput.prototype.render = function () {
@@ -85100,7 +85102,7 @@ exports.DeletableInput = DeletableInput;
 
 
 /***/ }),
-/* 865 */
+/* 864 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85136,7 +85138,7 @@ exports.DeleteInputAction = DeleteInputAction;
 
 
 /***/ }),
-/* 866 */
+/* 865 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85162,16 +85164,16 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var _ = __webpack_require__(9);
-var AddInputAction_1 = __webpack_require__(867);
-var Input_1 = __webpack_require__(80);
+var AddInputAction_1 = __webpack_require__(866);
+var Input_1 = __webpack_require__(48);
 var AddInput = (function (_super) {
     __extends(AddInput, _super);
     function AddInput() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AddInput.prototype.onAdd = function () {
-        if (this.props.onChange) {
-            this.props.onChange(this.innerInput.getInnerValue());
+        if (this.props.onBlur) {
+            this.props.onBlur(this.innerInput.getInnerValue());
             this.innerInput.reset();
         }
     };
@@ -85183,10 +85185,10 @@ var AddInput = (function (_super) {
     AddInput.prototype.render = function () {
         var _this = this;
         var props = _.omit(this.props, ['children']);
-        props.onChange = function () { return _this.onAdd(); };
+        props.onBlur = function () { return _this.onAdd(); };
         props.onKeyUp = function (event) { return _this.handleAddKeys(event); };
         return (React.createElement(Input_1.Input, __assign({ ref: function (innerInput) { return _this.innerInput = innerInput; } }, props),
-            React.createElement(AddInputAction_1.AddInputAction, null)));
+            React.createElement(AddInputAction_1.AddInputAction, { onClick: function () { return _this.onAdd(); } })));
     };
     return AddInput;
 }(React.Component));
@@ -85194,7 +85196,7 @@ exports.AddInput = AddInput;
 
 
 /***/ }),
-/* 867 */
+/* 866 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85218,8 +85220,9 @@ var AddInputAction = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AddInputAction.prototype.render = function () {
+        var _this = this;
         var title = this.props.title ? this.props.title : DEFAULT_TITLE;
-        return (React.createElement("div", { className: 'input-actions' },
+        return (React.createElement("div", { className: 'input-actions', onClick: function () { return _this.props.onClick(); } },
             React.createElement("button", { className: 'js-add-value-button' },
                 React.createElement("i", { className: 'add-action', title: title }))));
     };
@@ -85229,7 +85232,7 @@ exports.AddInputAction = AddInputAction;
 
 
 /***/ }),
-/* 868 */
+/* 867 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85271,13 +85274,13 @@ exports.TooltipExamples = TooltipExamples;
 
 
 /***/ }),
-/* 869 */
+/* 868 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(870);
+var content = __webpack_require__(869);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -85302,7 +85305,7 @@ if(false) {
 }
 
 /***/ }),
-/* 870 */
+/* 869 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(435)(undefined);
@@ -85316,7 +85319,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 871 */
+/* 870 */
 /***/ (function(module, exports) {
 
 
@@ -85411,13 +85414,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 872 */
+/* 871 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(873);
+var content = __webpack_require__(872);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -85442,7 +85445,7 @@ if(false) {
 }
 
 /***/ }),
-/* 873 */
+/* 872 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(435)(undefined);
@@ -85450,31 +85453,31 @@ exports = module.exports = __webpack_require__(435)(undefined);
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/ \n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {\n  padding: 0;\n  margin: 0;\n  font: inherit;\n  font-size: 100%;\n  vertical-align: baseline;\n  border: 0; }\n\nhtml {\n  height: 100%;\n  overflow: hidden; }\n\nbody {\n  height: 100%;\n  overflow: auto; }\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after, q:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: inherit;\n  border-spacing: 0; }\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  padding: 0;\n  border: 0; }\n\nbutton {\n  margin: 0; }\n\ndiv.datepicker {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 5555;\n  -moz-box-sizing: content-box;\n       box-sizing: content-box;\n  display: none;\n  width: 196px;\n  font-size: 12px;\n  cursor: default; }\n\n.datepickerContainer {\n  position: absolute; }\n\n/* Hide border divs by default */\n.datepickerBorderT, .datepickerBorderB, .datepickerBorderL, .datepickerBorderR, .datepickerBorderTL, .datepickerBorderTR, .datepickerBorderBL, .datepickerBorderBR {\n  display: none; }\n\n.datepickerHidden {\n  display: none; }\n\ndiv.datepicker table {\n  border-collapse: collapse; }\n\ndiv.datepicker a {\n  color: black;\n  text-decoration: none;\n  outline: none; }\n\ndiv.datepicker table td {\n  padding: 0;\n  margin: 0;\n  text-align: center; }\n\ndiv.datepicker th {\n  padding: 0;\n  color: #666666;\n  font-weight: normal;\n  text-align: center; }\n\ndiv.datepicker tbody a {\n  display: block; }\n\n.datepickerDays a {\n  width: 20px;\n  height: 16px;\n  padding-right: 2px;\n  line-height: 16px; }\n\n.datepickerYears a, .datepickerMonths a {\n  width: 39px;\n  height: 36px;\n  line-height: 36px;\n  text-align: center; }\n\n.datepickerMonths td:first-child a, .datepickerMonths td:last-child a, .datepickerYears td:first-child a, .datepickerYears td:last-child a {\n  width: 38px; }\n\ntd.datepickerNotInMonth a {\n  color: #666666; }\n\ntbody.datepickerDays td.datepickerSelected {\n  background: #136a9f; }\n\ntbody.datepickerDays td.datepickerNotInMonth.datepickerSelected {\n  background: #17384d; }\n\ntbody.datepickerYears td.datepickerSelected, tbody.datepickerMonths td.datepickerSelected {\n  background: #17384d; }\n\ndiv.datepicker td.datepickerSelected a {\n  color: white; }\n\ndiv.datepicker a:hover, div.datepicker a:hover {\n  color: #88c5eb; }\n\n.datepickerSpace div {\n  width: 20px; }\n\n.datepickerBlock {\n  vertical-align: top; }\n\na.datepickerGoNext, a.datepickerGoPrev, a.datepickerMonth {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n  text-align: center; }\n\ndiv.datepicker th a.datepickerGoNext, div.datepicker th a.datepickerGoPrev {\n  display: none;\n  width: 20px;\n  color: #666666; }\n\ndiv.datepicker th a.datepickerMonth {\n  display: block;\n  width: 114px; }\n\n/* Only display the previous/next arrows on the first/last calendars */\ndiv.datepicker .datepickerFirstView th a.datepickerGoPrev, div.datepicker .datepickerLastView th a.datepickerGoNext {\n  display: block; }\n\n/* Compensate for the space lost by not having a previous arrow */\ndiv.datepicker th a.datepickerMonth {\n  margin-left: 20px; }\n\ndiv.datepicker .datepickerFirstView th a.datepickerMonth {\n  margin-left: 0; }\n\n/* Day mode calendar body */\ntable.datepickerViewDays tbody.datepickerMonths, table.datepickerViewDays tbody.datepickerYears {\n  display: none; }\n\n/* Month mode calendar body */\ntable.datepickerViewMonths tbody.datepickerDays, table.datepickerViewMonths tbody.datepickerYears, table.datepickerViewMonths tr.datepickerDoW {\n  display: none; }\n\n/* Year mode calendar body */\ntable.datepickerViewYears tbody.datepickerDays, table.datepickerViewYears tbody.datepickerMonths, table.datepickerViewYears tr.datepickerDoW {\n  display: none; }\n\ntd.datepickerDisabled a, td.datepickerDisabled.datepickerNotInMonth a {\n  color: #555555; }\n\n/* Not used by default, calendar cells can be marked as special if desired (doesn't seem to be totally working) */\ndiv.datepicker tbody.datepickerDays td.datepickerSpecial a {\n  color: white;\n  background: #770000; }\n\ndiv.datepicker tbody.datepickerDays td.datepickerSpecial.datepickerSelected a {\n  background: #aa0000; }\n\n/* Datepicker border styling */\n.datepicker {\n  padding: 10px;\n  background-color: #f7f7f7;\n  border: 1px solid #cccccc; }\n\n/* Tighten up the spacing between multiple calendars */\n.datepickerSpace div {\n  width: 2px; }\n\ndiv.datepicker th a.datepickerMonth {\n  color: #008ed6;\n  font-weight: normal; }\n\n/* style the day of week header cells */\ndiv.datepicker th {\n  color: black;\n  font-weight: bold; }\n\n/* grey underline beneath day of week row */\ndiv.datepicker table thead tr.datepickerDoW th {\n  border-bottom: 1px solid #cccccc; }\n\n/* Black text, white background, and grey borders around day cells */\ndiv.datepicker a, div.datepicker a:hover {\n  color: black; }\n\ndiv.datepicker table.datepickerViewDays, div.datepicker table.datepickerViewMonths, div.datepicker table.datepickerViewYears {\n  background-color: white; }\n\ndiv.datepicker table tbody.datepickerDays td {\n  border: 1px solid #f7f7f7; }\n\n/* blue cell color for selected days */\ntbody.datepickerDays td.datepickerSelected {\n  background-color: #0077cc; }\n\n/* yellow cell background on hover */\ndiv.datepicker tbody.datepickerDays td:hover {\n  background-color: #ffcc33; }\n\n/* Bold today's date */\ndiv.datepicker td.datepickerToday a {\n  font-weight: bold; }\n\n/* cells are wider in the clean style */\n.datepickerYears a, .datepickerMonths a {\n  width: 42px; }\n\n.datepickerMonths td:first-child a, .datepickerYears td:first-child a {\n  width: 39px; }\n\ndiv.datepicker th a.datepickerMonth {\n  width: 121px; }\n\ninput[type=range].coveo-slider-input {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  width: 100%;\n  height: 20px;\n  padding: 0;\n  margin: 0;\n  -webkit-appearance: none;\n  background-color: transparent; }\n\ninput[type=range].coveo-slider-input:focus {\n  outline: none; }\n\ninput[type=range].coveo-slider-input::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 7px;\n  background: #dddddd;\n  border: none; }\n\ninput[type=range].coveo-slider-input:focus::-webkit-slider-thumb {\n  box-shadow: 0 0 2px 2px rgba(56, 169, 240, 0.75); }\n\ninput[type=range].coveo-slider-input::-webkit-slider-thumb {\n  width: 20px;\n  height: 20px;\n  margin-top: -6px;\n  -webkit-appearance: none;\n  background: #f5f5f5;\n  background: -webkit-linear-gradient(bottom left, #f5f5f5 50%, #ffffff 50%);\n  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);\n  border: 1px solid #e4e4e4;\n  border-radius: 50%; }\n\ninput[type=range].coveo-slider-input::-moz-range-track {\n  width: 100%;\n  height: 7px;\n  background: #dddddd;\n  border: none; }\n\ninput[type=range].coveo-slider-input::-moz-range-thumb {\n  width: 20px;\n  height: 20px;\n  background: #f5f5f5;\n  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);\n  border: 1px solid #e4e4e4;\n  border-radius: 50%; }\n\ninput[type=range].coveo-slider-input:focus::-moz-range-thumb {\n  box-shadow: 0 0 2px 2px rgba(56, 169, 240, 0.75); }\n\ninput[type=range]::-moz-focus-outer {\n  border: 0; }\n\ninput[type=range].coveo-slider-input::-ms-track {\n  width: 100%;\n  height: 7px;\n  color: transparent;\n  background: transparent;\n  border-color: transparent;\n  border-width: 8px 0; }\n\ninput[type=range].coveo-slider-input::-ms-thumb {\n  width: 20px;\n  height: 20px;\n  background: #f5f5f5;\n  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);\n  border: 1px solid #e4e4e4;\n  border-radius: 50%; }\n\ninput[type=range].coveo-slider-input:focus::-ms-thumb {\n  box-shadow: 0 0 1px 2px rgba(56, 169, 240, 0.75); }\n\ninput[type=range].coveo-slider-input::-ms-tooltip {\n  display: none;\n  visibility: hidden; }\n\n.coveo-slider-labels {\n  position: relative;\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  height: 1.1em; }\n  .coveo-slider-labels .coveo-slider-label {\n    position: absolute;\n    display: inline-block;\n    white-space: nowrap; }\n\n.coveo-slider-ticks {\n  position: relative;\n  z-index: -1;\n  height: 24px;\n  margin-top: -24px; }\n  .coveo-slider-ticks .coveo-slider-tick {\n    position: absolute;\n    display: inline-block;\n    width: 18px;\n    height: 18px;\n    margin-left: -10px;\n    background-color: #dddddd;\n    border-radius: 100%;\n    -webkit-transform: translate(1px, 1px);\n            transform: translate(1px, 1px); }\n\n@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {\n  /* IE10+ CSS styles go here */\n  input[type=range].coveo-slider-input {\n    height: 27px;\n    padding-top: 1px; }\n  .coveo-slider-ticks {\n    margin-top: -27px; } }\n\n/* Firefox fix */\n@-moz-document url-prefix() {\n  .coveo-slider-ticks {\n    margin-top: -25px; } }\n\n@font-face {\n  font-family: 'source_code_pro_regular';\n  font-style: normal;\n  font-weight: normal;\n  src: url(" + __webpack_require__(105) + ");\n  src: url(" + __webpack_require__(105) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(437) + ") format(\"woff\"), url(" + __webpack_require__(438) + ") format(\"truetype\"); }\n\nhtml {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box; }\n\n*, *:before, *:after {\n  -moz-box-sizing: inherit;\n       box-sizing: inherit; }\n\nbody {\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: column nowrap;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-flow: column nowrap;\n          flex-flow: column nowrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 13px;\n  -webkit-font-smoothing: antialiased; }\n\n@font-face {\n  font-family: 'source_code_pro_regular';\n  font-style: normal;\n  font-weight: normal;\n  src: url(" + __webpack_require__(105) + ");\n  src: url(" + __webpack_require__(105) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(437) + ") format(\"woff\"), url(" + __webpack_require__(438) + ") format(\"truetype\"); }\n\nfieldset {\n  min-width: 0; }\n\n.coveo-sprites-misc-closepopup,\n.coveo-sprites-misc-filter,\n.coveo-sprites-misc-spinner_arrow_down,\n.coveo-sprites-misc-spinner_arrow_up,\n.coveo-sprites-misc-alert,\n.coveo-sprites-misc-panel-collapsed,\n.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,\n.coveo-sprites-tables-sort_asc,\n.coveo-sprites-misc-panel-expended,\n.collapsable-panel-group .panel .panel-heading i.toggle-icon,\n.coveo-sprites-tables-sort_desc {\n  background-image: url(" + __webpack_require__(874) + ");\n  display: inline-block;\n  background-repeat: no-repeat;\n  overflow: hidden;\n  background-size: 83px 16px; }\n\ni.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup {\n  background-position: 0px 0px;\n  width: 16px;\n  height: 16px;\n  text-indent: 16px; }\n\ni.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {\n  background-position: -16px 0px;\n  width: 12px;\n  height: 12px;\n  text-indent: 12px; }\n\ni.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {\n  background-position: -28px 0px;\n  width: 12px;\n  height: 12px;\n  text-indent: 12px; }\n\ni.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {\n  background-position: -40px 0px;\n  width: 12px;\n  height: 12px;\n  text-indent: 12px; }\n\ni.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {\n  background-position: -52px 0px;\n  width: 11px;\n  height: 11px;\n  text-indent: 11px; }\n\ni.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {\n  background-position: -63px 0px;\n  width: 10px;\n  height: 10px;\n  text-indent: 10px; }\n\ni.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {\n  background-position: -63px -10px;\n  width: 6px;\n  height: 6px;\n  text-indent: 6px; }\n\ni.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {\n  background-position: -73px 0px;\n  width: 10px;\n  height: 10px;\n  text-indent: 10px; }\n\ni.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {\n  background-position: -73px -10px;\n  width: 6px;\n  height: 6px;\n  text-indent: 6px; }\n\n@-webkit-keyframes vp-fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes vp-fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@-webkit-keyframes vp-fadeOut {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes vp-fadeOut {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@-webkit-keyframes scaleout {\n  0% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n    opacity: 0; } }\n\n@keyframes scaleout {\n  0% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n    opacity: 0; } }\n\n@-webkit-keyframes scaleoutCentered {\n  0% {\n    -webkit-transform: scale(0) translateY(-50%);\n            transform: scale(0) translateY(-50%); }\n  100% {\n    -webkit-transform: scale(1) translateY(-50%);\n            transform: scale(1) translateY(-50%);\n    opacity: 0; } }\n\n@keyframes scaleoutCentered {\n  0% {\n    -webkit-transform: scale(0) translateY(-50%);\n            transform: scale(0) translateY(-50%); }\n  100% {\n    -webkit-transform: scale(1) translateY(-50%);\n            transform: scale(1) translateY(-50%);\n    opacity: 0; } }\n\n@-webkit-keyframes bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n            transform: scale(1); } }\n\n@keyframes bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n            transform: scale(1); } }\n\n@-webkit-keyframes slideInLeft {\n  0% {\n    -webkit-transform: translateX(-2000px);\n            transform: translateX(-2000px);\n    opacity: 0; }\n  100% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); } }\n\n@keyframes slideInLeft {\n  0% {\n    -webkit-transform: translateX(-2000px);\n            transform: translateX(-2000px);\n    opacity: 0; }\n  100% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); } }\n\n.slideInLeft, .coveo-styleguide .tab-pane.active, .coveo-styleguide .input-field input:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide input:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field input:valid + label.tab-pane, .input-field .coveo-styleguide input:valid + label.tab-pane, .coveo-styleguide .input-field input:disabled + label.tab-pane, .input-field .coveo-styleguide input:disabled + label.tab-pane, .coveo-styleguide .input-field textarea:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide textarea:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field textarea:valid + label.tab-pane, .input-field .coveo-styleguide textarea:valid + label.tab-pane, .coveo-styleguide .input-field textarea:disabled + label.tab-pane, .input-field .coveo-styleguide textarea:disabled + label.tab-pane {\n  -webkit-animation-name: slideInLeft;\n          animation-name: slideInLeft; }\n\n.coveo-styleguide .bold {\n  font-weight: bold; }\n\n.coveo-styleguide .semibold {\n  font-weight: 600; }\n\n.coveo-styleguide .regular {\n  font-weight: normal; }\n\n.coveo-styleguide .italic {\n  font-style: italic; }\n\n.coveo-styleguide .underline {\n  text-decoration: underline; }\n\n.coveo-styleguide .caps {\n  text-transform: uppercase; }\n\n.coveo-styleguide .left-align {\n  text-align: left; }\n\n.coveo-styleguide .center {\n  text-align: center; }\n\n.coveo-styleguide .right-align {\n  text-align: right; }\n\n.coveo-styleguide .justify {\n  text-align: justify; }\n\n.coveo-styleguide .nowrap {\n  white-space: nowrap; }\n\n.coveo-styleguide .break-word {\n  word-wrap: break-word; }\n\n.coveo-styleguide .break-all {\n  word-break: break-all; }\n\n.coveo-styleguide .truncate {\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap; }\n\n.coveo-styleguide .list-reset {\n  padding-left: 0;\n  list-style: none; }\n\n.coveo-styleguide .bullet-list {\n  padding-left: 20px;\n  list-style: disc; }\n  .coveo-styleguide .bullet-list li {\n    margin-bottom: 10px; }\n\n.coveo-styleguide .align-baseline {\n  vertical-align: baseline; }\n\n.coveo-styleguide .align-top {\n  vertical-align: top; }\n\n.coveo-styleguide .align-middle {\n  vertical-align: middle; }\n\n.coveo-styleguide .align-bottom {\n  vertical-align: bottom; }\n\n.coveo-styleguide .align-text-bottom {\n  vertical-align: text-bottom; }\n\n.coveo-styleguide .mod-border-top {\n  border-top: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-border-bottom {\n  border-bottom: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-border-left {\n  border-left: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-border-right {\n  border-right: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-no-border-top {\n  border-top: none; }\n\n.coveo-styleguide .mod-no-border-bottom {\n  border-bottom: none; }\n\n.coveo-styleguide .mod-no-border-left {\n  border-left: none; }\n\n.coveo-styleguide .mod-no-border-right {\n  border-right: none; }\n\n.coveo-styleguide .flex, .coveo-styleguide .split-layout, .coveo-styleguide .splitted-layout {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.coveo-styleguide .inline-flex {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n\n.coveo-styleguide .flex-column {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n.coveo-styleguide .flex-wrap {\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap; }\n\n.coveo-styleguide .flex-center {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.coveo-styleguide .flex-stretch {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n     -moz-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch; }\n\n.coveo-styleguide .flex-auto, .coveo-styleguide .split-layout, .coveo-styleguide .splitted-layout, .coveo-styleguide .split-layout .column, .coveo-styleguide .splitted-layout .column {\n  -webkit-flex-basis: auto;\n      -ms-flex-preferred-size: auto;\n          flex-basis: auto;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.coveo-styleguide .center-align {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\n.coveo-styleguide .align-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end; }\n\n.coveo-styleguide .space-between {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n\n.coveo-styleguide .inline {\n  display: inline; }\n\n.coveo-styleguide .block {\n  display: block; }\n\n.coveo-styleguide .inline-block {\n  display: inline-block; }\n\n.coveo-styleguide .table {\n  display: table; }\n\n.coveo-styleguide .table-cell {\n  display: table-cell; }\n\n.coveo-styleguide .overflow-hidden {\n  overflow: hidden; }\n\n.coveo-styleguide .overflow-scroll {\n  overflow: scroll; }\n\n.coveo-styleguide .overflow-auto {\n  overflow: auto; }\n\n.coveo-styleguide .clearfix:before, .coveo-styleguide .clearfix:after {\n  display: table;\n  content: ' '; }\n\n.coveo-styleguide .clearfix:after {\n  clear: both; }\n\n.coveo-styleguide .left {\n  float: left; }\n\n.coveo-styleguide .right {\n  float: right; }\n\n.coveo-styleguide .fullscreen {\n  height: 100px;\n  min-width: 100vw;\n  min-height: 100vh; }\n\n.coveo-styleguide .full-content {\n  width: 100%;\n  height: 100%; }\n\n.coveo-styleguide .hidden {\n  display: none;\n  visibility: hidden; }\n\n.coveo-styleguide .split-layout, .coveo-styleguide .splitted-layout {\n  height: 100%;\n  min-height: -webkit-min-content;\n  min-height: -moz-min-content;\n  min-height: min-content; }\n  .coveo-styleguide .split-layout .column, .coveo-styleguide .splitted-layout .column {\n    height: 100%;\n    max-width: 50%;\n    overflow-y: auto; }\n  .coveo-styleguide .split-layout .column + .column, .coveo-styleguide .splitted-layout .column + .column {\n    border-left: 1px solid #bcc3ca; }\n\n.coveo-styleguide .normal-height {\n  max-height: none; }\n\n.coveo-styleguide .full-height {\n  min-height: -webkit-min-content;\n  min-height: -moz-min-content;\n  min-height: min-content; }\n\n.coveo-styleguide .full-width-min {\n  min-width: -webkit-min-content;\n  min-width: -moz-min-content;\n  min-width: min-content; }\n\n.coveo-styleguide .full-width-max {\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content; }\n\n.coveo-styleguide .relative {\n  position: relative; }\n\n.coveo-styleguide .absolute {\n  position: absolute; }\n\n.coveo-styleguide .fixed {\n  position: fixed; }\n\n.coveo-styleguide .p0 {\n  padding: 0; }\n\n.coveo-styleguide .m0 {\n  margin: 0; }\n\n.coveo-styleguide .mx-auto {\n  margin-right: auto;\n  margin-left: auto; }\n\n.coveo-styleguide .ml-auto {\n  margin-left: auto; }\n\n.coveo-styleguide .mr-auto {\n  margin-right: auto; }\n\n.coveo-styleguide .p1 {\n  padding: 0.5rem; }\n\n.coveo-styleguide .px1 {\n  padding-right: 0.5rem;\n  padding-left: 0.5rem; }\n\n.coveo-styleguide .py1 {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem; }\n\n.coveo-styleguide .m1 {\n  margin: 0.5rem; }\n\n.coveo-styleguide .mt1 {\n  margin-top: 0.5rem; }\n\n.coveo-styleguide .mr1 {\n  margin-right: 0.5rem; }\n\n.coveo-styleguide .mb1 {\n  margin-bottom: 0.5rem; }\n\n.coveo-styleguide .ml1 {\n  margin-left: 0.5rem; }\n\n.coveo-styleguide .p2 {\n  padding: 1rem; }\n\n.coveo-styleguide .px2 {\n  padding-right: 1rem;\n  padding-left: 1rem; }\n\n.coveo-styleguide .py2 {\n  padding-top: 1rem;\n  padding-bottom: 1rem; }\n\n.coveo-styleguide .m2 {\n  margin: 1rem; }\n\n.coveo-styleguide .mt2 {\n  margin-top: 1rem; }\n\n.coveo-styleguide .mr2 {\n  margin-right: 1rem; }\n\n.coveo-styleguide .mb2 {\n  margin-bottom: 1rem; }\n\n.coveo-styleguide .ml2 {\n  margin-left: 1rem; }\n\n.coveo-styleguide .mod-header-padding {\n  padding-right: 40px;\n  padding-left: 40px; }\n  .coveo-styleguide .mod-header-padding .mod-cancel-header-padding {\n    width: -webkit-calc(100% + 2 * 40px);\n    width: calc(100% + 2 * 40px);\n    margin-left: -40px; }\n\n.coveo-styleguide .mod-form-top-bottom-padding, .coveo-styleguide.mod-form-top-bottom-padding {\n  padding-top: 20px;\n  padding-bottom: 30px; }\n\n.coveo-styleguide .spaced-boxes-container {\n  margin-top: -10px;\n  margin-left: -10px; }\n\n.coveo-styleguide .spaced-box {\n  margin-top: 10px;\n  margin-left: 10px; }\n\n.coveo-styleguide .bg-dark-blue {\n  background-color: #263e55; }\n\n.coveo-styleguide .fill-dark-blue {\n  fill: #263e55; }\n\n.coveo-styleguide .text-dark-blue {\n  color: #263e55; }\n\n.coveo-styleguide .border-dark-blue {\n  border-color: #263e55; }\n\n.coveo-styleguide .bg-darker-blue {\n  background-color: #193045; }\n\n.coveo-styleguide .fill-darker-blue {\n  fill: #193045; }\n\n.coveo-styleguide .text-darker-blue {\n  color: #193045; }\n\n.coveo-styleguide .border-darker-blue {\n  border-color: #193045; }\n\n.coveo-styleguide .bg-medium-blue {\n  background-color: #1d4f76; }\n\n.coveo-styleguide .fill-medium-blue {\n  fill: #1d4f76; }\n\n.coveo-styleguide .text-medium-blue {\n  color: #1d4f76; }\n\n.coveo-styleguide .border-medium-blue {\n  border-color: #1d4f76; }\n\n.coveo-styleguide .bg-light-blue {\n  background-color: #296896; }\n\n.coveo-styleguide .fill-light-blue {\n  fill: #296896; }\n\n.coveo-styleguide .text-light-blue {\n  color: #296896; }\n\n.coveo-styleguide .border-light-blue {\n  border-color: #296896; }\n\n.coveo-styleguide .bg-dark-grey {\n  background-color: #373737; }\n\n.coveo-styleguide .fill-dark-grey {\n  fill: #373737; }\n\n.coveo-styleguide .text-dark-grey {\n  color: #373737; }\n\n.coveo-styleguide .border-dark-grey {\n  border-color: #373737; }\n\n.coveo-styleguide .bg-medium-grey {\n  background-color: #bcc3ca; }\n\n.coveo-styleguide .fill-medium-grey {\n  fill: #bcc3ca; }\n\n.coveo-styleguide .text-medium-grey {\n  color: #bcc3ca; }\n\n.coveo-styleguide .border-medium-grey {\n  border-color: #bcc3ca; }\n\n.coveo-styleguide .bg-light-grey {\n  background-color: #e6ecf0; }\n\n.coveo-styleguide .fill-light-grey {\n  fill: #e6ecf0; }\n\n.coveo-styleguide .text-light-grey {\n  color: #e6ecf0; }\n\n.coveo-styleguide .border-light-grey {\n  border-color: #e6ecf0; }\n\n.coveo-styleguide .bg-white {\n  background-color: #f1f3f4; }\n\n.coveo-styleguide .fill-white {\n  fill: #f1f3f4; }\n\n.coveo-styleguide .text-white {\n  color: #f1f3f4; }\n\n.coveo-styleguide .border-white {\n  border-color: #f1f3f4; }\n\n.coveo-styleguide .bg-pure-white {\n  background-color: #ffffff; }\n\n.coveo-styleguide .fill-pure-white {\n  fill: #ffffff; }\n\n.coveo-styleguide .text-pure-white {\n  color: #ffffff; }\n\n.coveo-styleguide .border-pure-white {\n  border-color: #ffffff; }\n\n.coveo-styleguide .bg-orange {\n  background-color: #f58020; }\n\n.coveo-styleguide .fill-orange {\n  fill: #f58020; }\n\n.coveo-styleguide .text-orange {\n  color: #f58020; }\n\n.coveo-styleguide .border-orange {\n  border-color: #f58020; }\n\n.coveo-styleguide .bg-red {\n  background-color: #ce3f00; }\n\n.coveo-styleguide .fill-red {\n  fill: #ce3f00; }\n\n.coveo-styleguide .text-red {\n  color: #ce3f00; }\n\n.coveo-styleguide .border-red {\n  border-color: #ce3f00; }\n\n.coveo-styleguide .bg-yellow {\n  background-color: #ecad00; }\n\n.coveo-styleguide .fill-yellow {\n  fill: #ecad00; }\n\n.coveo-styleguide .text-yellow {\n  color: #ecad00; }\n\n.coveo-styleguide .border-yellow {\n  border-color: #ecad00; }\n\n.coveo-styleguide .bg-green {\n  background-color: #009830; }\n\n.coveo-styleguide .fill-green {\n  fill: #009830; }\n\n.coveo-styleguide .text-green {\n  color: #009830; }\n\n.coveo-styleguide .border-green {\n  border-color: #009830; }\n\n.coveo-styleguide .bg-blue {\n  background-color: #009ad9; }\n\n.coveo-styleguide .fill-blue {\n  fill: #009ad9; }\n\n.coveo-styleguide .text-blue {\n  color: #009ad9; }\n\n.coveo-styleguide .border-blue {\n  border-color: #009ad9; }\n\n.coveo-styleguide .bg-salesforce-blue {\n  background-color: #00a0de; }\n\n.coveo-styleguide .fill-salesforce-blue {\n  fill: #00a0de; }\n\n.coveo-styleguide .text-salesforce-blue {\n  color: #00a0de; }\n\n.coveo-styleguide .border-salesforce-blue {\n  border-color: #00a0de; }\n\n.coveo-styleguide .bg-google-red {\n  background-color: #dd4b39; }\n\n.coveo-styleguide .fill-google-red {\n  fill: #dd4b39; }\n\n.coveo-styleguide .text-google-red {\n  color: #dd4b39; }\n\n.coveo-styleguide .border-google-red {\n  border-color: #dd4b39; }\n\n.coveo-styleguide .bg-office365-red {\n  background-color: #eb3c00; }\n\n.coveo-styleguide .fill-office365-red {\n  fill: #eb3c00; }\n\n.coveo-styleguide .text-office365-red {\n  color: #eb3c00; }\n\n.coveo-styleguide .border-office365-red {\n  border-color: #eb3c00; }\n\n.progress-bar {\n  width: 100%;\n  text-align: center; }\n  .progress-bar .progress {\n    position: relative;\n    z-index: 1;\n    height: 20px;\n    margin: 0 auto;\n    overflow: hidden;\n    background-color: #f1f3f4; }\n  .progress-bar .progress, .progress-bar .progress-bar-completed {\n    border-radius: 12px; }\n  .progress-bar .progress-bar-completed {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    z-index: 2;\n    background-color: #009830;\n    box-shadow: inset 0 0 0 1px #009830;\n    -webkit-transition: all 1s linear;\n    transition: all 1s linear; }\n\n.btn {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  display: inline-block;\n  height: 34px;\n  padding: 8.5px 16px;\n  color: #1d4f76;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 15px;\n  text-decoration: none;\n  text-overflow: ellipsis;\n  text-transform: uppercase;\n  vertical-align: middle;\n  white-space: nowrap;\n  background-color: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: pointer; }\n  .btn .icon:not([class*='fill-']) {\n    fill: #1d4f76; }\n  .btn:hover, .btn:focus {\n    text-decoration: none; }\n  .btn:focus {\n    background-color: #e6ecf0;\n    outline: thin dotted;\n    outline: 5px auto -webkit-focus-ring-color;\n    outline-offset: -2px; }\n  .btn:disabled, .btn.state-disabled {\n    color: #bcc3ca;\n    cursor: default; }\n    .btn:disabled .icon, .btn.state-disabled .icon {\n      fill: #bcc3ca; }\n  .btn.mod-small {\n    height: 24px;\n    padding: 0 10px;\n    font-size: 11px;\n    line-height: 14px; }\n  .btn.mod-large {\n    height: 50px; }\n  .btn.mod-primary {\n    color: #ffffff;\n    background-color: #f58020;\n    border: 1px solid #f58020; }\n    .btn.mod-primary:hover, .btn.mod-primary:focus {\n      background-color: #f68e38;\n      border: 1px solid #f68e38; }\n    .btn.mod-primary:disabled, .btn.mod-primary.state-disabled {\n      background-color: #f9b882;\n      border: 1px solid #f9b882; }\n    .btn.mod-primary .icon {\n      fill: #ffffff; }\n  .btn.mod-danger {\n    color: #ffffff;\n    background-color: #ce3f00;\n    border: 1px solid #ce3f00; }\n    .btn.mod-danger:hover, .btn.mod-danger:focus {\n      background-color: #e84700;\n      border: 1px solid #e84700; }\n    .btn.mod-danger:disabled, .btn.mod-danger.state-disabled {\n      background-color: #ff7335;\n      border: 1px solid #ff7335; }\n    .btn.mod-danger .icon {\n      fill: #ffffff; }\n  .btn.mod-link {\n    background-color: transparent;\n    border: none; }\n  .btn + .btn, .btn + .btn-container {\n    margin-left: 10px; }\n  .btn .confirm-icon-error, .btn .confirm-icon-success {\n    display: none; }\n  .btn.mod-confirm-success, .btn.mod-confirm-error {\n    position: relative;\n    color: transparent;\n    outline: 0;\n    -webkit-transition: background-color 0.2s ease;\n    transition: background-color 0.2s ease;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none; }\n    .btn.mod-confirm-success:before, .btn.mod-confirm-error:before {\n      position: absolute;\n      top: 40px;\n      font-size: 11px;\n      text-transform: initial;\n      -webkit-animation: vp-fadeIn ease-in 1;\n              animation: vp-fadeIn ease-in 1;\n      -webkit-animation-duration: 0.3s;\n              animation-duration: 0.3s;\n      -webkit-animation-fill-mode: forwards;\n              animation-fill-mode: forwards;\n      opacity: 0; }\n    .btn.mod-confirm-success.mod-confirm-right:before, .btn.mod-confirm-error.mod-confirm-right:before {\n      right: 0; }\n    .btn.mod-confirm-success.mod-confirm-left:before, .btn.mod-confirm-error.mod-confirm-left:before {\n      left: 0; }\n    .btn.mod-confirm-success .confirm-icon-error, .btn.mod-confirm-success .confirm-icon-success, .btn.mod-confirm-error .confirm-icon-error, .btn.mod-confirm-error .confirm-icon-success {\n      position: absolute;\n      top: -webkit-calc(50% - 15px / 2);\n      top: calc(50% - 15px / 2);\n      right: -webkit-calc(50% - 15px / 2);\n      right: calc(50% - 15px / 2);\n      display: inline-block;\n      font-size: 15px;\n      fill: #ffffff; }\n  .btn.mod-confirm {\n    margin-bottom: 20px; }\n  .btn.mod-confirm-success {\n    background-color: #009830;\n    border: 1px solid #009830; }\n    .btn.mod-confirm-success:focus, .btn.mod-confirm-success:hover {\n      background-color: #009830; }\n    .btn.mod-confirm-success:before {\n      color: #009830;\n      content: attr(data-confirm-success); }\n    .btn.mod-confirm-success .confirm-icon-error {\n      display: none; }\n  .btn.mod-confirm-error {\n    background-color: #ce3f00;\n    border: 1px solid #ce3f00; }\n    .btn.mod-confirm-error:focus, .btn.mod-confirm-error:hover {\n      background-color: #ce3f00; }\n    .btn.mod-confirm-error:before {\n      color: #ce3f00;\n      content: attr(data-confirm-error); }\n    .btn.mod-confirm-error .confirm-icon-success {\n      display: none; }\n\n.btn-container {\n  display: inline-block;\n  margin: 0; }\n  .btn-container .btn[disabled] {\n    pointer-events: none; }\n  .btn-container + .btn, .btn-container + .btn-container {\n    margin-left: 10px; }\n\n.btn.mod-append, .btn.mod-prepend {\n  line-height: 33px; }\n  .btn.mod-append .btn-append, .btn.mod-append .btn-prepend, .btn.mod-prepend .btn-append, .btn.mod-prepend .btn-prepend {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -moz-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    height: 33px;\n    padding: 0 16px;\n    vertical-align: top; }\n    .btn.mod-append .btn-append.mod-icon, .btn.mod-append .btn-prepend.mod-icon, .btn.mod-prepend .btn-append.mod-icon, .btn.mod-prepend .btn-prepend.mod-icon {\n      padding: 8px; }\n  .btn.mod-append.dropdown-toggle .dropdown-toggle-arrow, .btn.mod-prepend.dropdown-toggle .dropdown-toggle-arrow {\n    position: static;\n    display: inline-block;\n    margin-left: 10px; }\n  .btn.mod-append.mod-large, .btn.mod-prepend.mod-large {\n    line-height: 49px; }\n    .btn.mod-append.mod-large .btn-append, .btn.mod-append.mod-large .btn-prepend, .btn.mod-prepend.mod-large .btn-append, .btn.mod-prepend.mod-large .btn-prepend {\n      height: 49px; }\n  .btn.mod-append.mod-on-hover:not(:hover), .btn.mod-prepend.mod-on-hover:not(:hover) {\n    padding: 0 16px 0 16px; }\n    .btn.mod-append.mod-on-hover:not(:hover) .btn-append, .btn.mod-append.mod-on-hover:not(:hover) .btn-prepend, .btn.mod-prepend.mod-on-hover:not(:hover) .btn-append, .btn.mod-prepend.mod-on-hover:not(:hover) .btn-prepend {\n      display: none; }\n\n.btn.mod-append {\n  padding: 0 0 0 16px; }\n  .btn.mod-append .btn-append {\n    margin-left: 16px;\n    border-left: 1px solid #bcc3ca; }\n\n.btn.mod-prepend {\n  padding: 0 16px 0 0; }\n  .btn.mod-prepend .btn-prepend {\n    margin-right: 16px;\n    border-right: 1px solid #bcc3ca; }\n\nh1, h2, h3, h4, h5, h6 {\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  line-height: 1.5; }\n\nh1, .h1 {\n  font-size: 24px; }\n\nh2, .h2 {\n  font-size: 20px; }\n\nh3, .h3 {\n  font-size: 15px; }\n\nh4, .h4 {\n  font-size: 13px; }\n\nh5 {\n  font-size: 13px; }\n\nh6 {\n  font-size: 13px; }\n\n.description {\n  color: #373737;\n  font-size: 15px;\n  line-height: 21px; }\n\na {\n  color: #009ddc;\n  text-decoration: none; }\n  a.disabled {\n    cursor: default;\n    pointer-events: none; }\n\n.color-dot {\n  display: inline-block;\n  background-color: #009830;\n  border-radius: 100%; }\n  .color-dot.state-critical {\n    background-color: #ce3f00; }\n  .color-dot.state-major {\n    background-color: #f58020; }\n  .color-dot.state-minor {\n    background-color: #ecad00; }\n  .color-dot.state-info {\n    background-color: #009ad9; }\n  .color-dot.state-disabled {\n    background-color: #e6ecf0; }\n  .color-dot.state-executing {\n    -webkit-animation: scaleout 1.0s infinite ease-in-out;\n            animation: scaleout 1.0s infinite ease-in-out; }\n  .color-dot.state-waiting {\n    background-color: #bcc3ca; }\n\n.icon {\n  display: inline-block;\n  width: 0.9em;\n  height: 0.9em;\n  overflow: visible;\n  /* makes the icon 33% larger relative to the icon container */ }\n  .icon.mod-small {\n    width: 0.7em;\n    height: 0.7em; }\n  .icon.mod-16 {\n    width: 16px;\n    height: 16px;\n    line-height: 16px;\n    vertical-align: -2px; }\n  .icon.mod-lg {\n    width: 1.33333em;\n    height: 1.33333em;\n    line-height: 1.33333em;\n    vertical-align: -0.1em; }\n  .icon.mod-2x {\n    width: 2em;\n    height: 2em;\n    vertical-align: -0.5em; }\n  .icon.mod-3x {\n    width: 3em;\n    height: 3em;\n    vertical-align: -1em; }\n  .icon.mod-4x {\n    width: 4em;\n    height: 4em;\n    vertical-align: -1.5em; }\n  .icon.mod-5x {\n    width: 5em;\n    height: 5em;\n    vertical-align: -2em; }\n\n.icon-container {\n  display: inline-block; }\n\n.coveo-checkbox-button, input[type=checkbox].coveo-checkbox + button, .coveo-styleguide .facet-more .facet-more-button {\n  position: relative;\n  width: 18px;\n  height: 18px;\n  padding: 0;\n  background: #ffffff;\n  border: 2px solid #1d4f76;\n  border-radius: 2px;\n  outline: none;\n  -webkit-transition: all 200ms;\n  transition: all 200ms;\n  cursor: pointer; }\n\ninput[type=checkbox].coveo-checkbox {\n  display: none; }\n  input[type=checkbox].coveo-checkbox + button:after {\n    position: absolute;\n    top: 7px;\n    left: 7px;\n    display: inline-block;\n    width: 0;\n    height: 0;\n    content: '';\n    background-color: transparent;\n    border-radius: 100%;\n    -webkit-transition: all 300ms ease;\n    transition: all 300ms ease; }\n  input[type=checkbox].coveo-checkbox + button:focus:after {\n    top: -6px;\n    left: -6px;\n    display: inline-block;\n    width: 26px;\n    height: 26px;\n    background-color: rgba(0, 0, 0, 0.08); }\n  input[type=checkbox].coveo-checkbox:checked + button {\n    background-color: #009830;\n    border-color: #009830; }\n    input[type=checkbox].coveo-checkbox:checked + button:before {\n      position: absolute;\n      top: 1px;\n      left: 4px;\n      -moz-box-sizing: content-box;\n           box-sizing: content-box;\n      display: block;\n      width: 4px;\n      height: 8px;\n      content: '';\n      border: solid #ffffff;\n      border-width: 0 2px 2px 0;\n      -webkit-transform: rotate(40deg);\n              transform: rotate(40deg); }\n  input[type=checkbox].coveo-checkbox:disabled + button {\n    background-color: #373737;\n    border-color: #373737; }\n  input[type=checkbox].coveo-checkbox:indeterminate + button {\n    position: relative; }\n    input[type=checkbox].coveo-checkbox:indeterminate + button:before {\n      position: absolute;\n      top: 6px;\n      left: 3px;\n      -moz-box-sizing: content-box;\n           box-sizing: content-box;\n      display: block;\n      width: 8px;\n      height: 0;\n      content: '';\n      border-bottom: solid 2px #1d4f76; }\n  input[type=checkbox].coveo-checkbox:indeterminate:disabled + button:before {\n    border-color: #ffffff; }\n  input[type=checkbox].coveo-checkbox:disabled + button {\n    background-color: #373737;\n    cursor: default;\n    opacity: 0.2; }\n\n.coveo-checkbox-label {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  color: #373737;\n  line-height: 16px;\n  vertical-align: middle; }\n  .coveo-checkbox-label .label {\n    cursor: pointer; }\n  .coveo-checkbox-label.disabled .label {\n    cursor: default;\n    opacity: 0.4; }\n  .coveo-checkbox-label button + .label, .coveo-checkbox-label .label + .coveo-checkbox + button {\n    margin-left: 18px; }\n\nlabel[for].coveo-checkbox-label {\n  cursor: pointer; }\n\n.coveo-checkbox-labels-group .coveo-checkbox-label {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .coveo-checkbox-labels-group .coveo-checkbox-label + .coveo-checkbox-label {\n    margin-top: 10px; }\n\n.coveo-checkbox-labels-group .coveo-checkbox-group-option + .coveo-checkbox-group-option {\n  margin-top: 10px; }\n\n.collapsable-panel-group .collapse {\n  display: none;\n  visibility: hidden; }\n  .collapsable-panel-group .collapse.in {\n    display: table;\n    width: 100%;\n    visibility: visible; }\n\n.collapsable-panel-group .collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-duration: 0.35s;\n          transition-duration: 0.35s;\n  -webkit-transition-property: height, visibility;\n  transition-property: height, visibility;\n  -webkit-transition-timing-function: ease;\n          transition-timing-function: ease; }\n\n.collapsable-panel-group .panel {\n  border-bottom: 2px solid #bcc3ca; }\n  .collapsable-panel-group .panel + .panel {\n    margin-top: 15px; }\n  .collapsable-panel-group .panel .panel-heading {\n    position: relative;\n    z-index: 0; }\n    .collapsable-panel-group .panel .panel-heading a {\n      display: block;\n      padding: 3px 0 3px 26px;\n      margin-bottom: 5px;\n      color: #1d4f76;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: 15px;\n      line-height: initial;\n      text-decoration: none;\n      text-transform: uppercase; }\n    .collapsable-panel-group .panel .panel-heading i.toggle-icon {\n      position: absolute;\n      top: 8px;\n      left: 10px;\n      z-index: -1;\n      display: inline-block;\n      content: '\\A0'; }\n  .collapsable-panel-group .panel.panel-default .panel-body {\n    padding: 0 10px 10px 10px; }\n\n.inline .datepicker {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  width: 100% !important;\n  height: auto !important;\n  padding: 0;\n  border: none; }\n  .inline .datepicker .datepickerContainer {\n    position: relative;\n    width: 100% !important;\n    height: 100% !important; }\n\n.datepicker {\n  background-color: #ffffff; }\n  .datepicker .datepickerBlock {\n    border: none !important; }\n  .datepicker table thead tr {\n    background-color: transparent; }\n    .datepicker table thead tr th {\n      padding: 3px 0;\n      text-align: center; }\n    .datepicker table thead tr.datepickerDoW th {\n      padding: 2px 0;\n      border-bottom: 1px solid #bcc3ca; }\n    .datepicker table thead tr.datepickerDoW span {\n      color: #bcc3ca;\n      font-size: 9px;\n      border-top: none;\n      border-right: none;\n      border-bottom: none; }\n  .datepicker table thead tr:first-child th a:hover {\n    text-decoration: none;\n    background: #bcc3ca;\n    cursor: pointer; }\n  .datepicker table thead tr:first-child th .datepickerMonth {\n    width: -webkit-calc(100% - 74px);\n    width: calc(100% - 74px);\n    margin: 0 37px; }\n    .datepicker table thead tr:first-child th .datepickerMonth:hover {\n      text-decoration: underline;\n      background-color: transparent; }\n  .datepicker table thead tr:first-child th .datepickerGoPrev, .datepicker table thead tr:first-child th .datepickerGoNext {\n    position: absolute; }\n  .datepicker table thead tr:first-child th .datepickerGoPrev {\n    left: 0; }\n  .datepicker table thead tr:first-child th .datepickerGoNext {\n    right: 0; }\n  .datepicker table tbody tr:hover > td {\n    background-color: inherit; }\n  .datepicker table tbody tr td {\n    padding: 0;\n    font-size: 11px;\n    text-align: center;\n    border: 1px solid #f1f3f4; }\n    .datepicker table tbody tr td a {\n      -moz-box-sizing: border-box;\n           box-sizing: border-box;\n      width: 37px;\n      height: 26px;\n      line-height: 26px;\n      text-decoration: none;\n      cursor: pointer; }\n    .datepicker table tbody tr td.datepickerSelected {\n      background-color: #296896; }\n      .datepicker table tbody tr td.datepickerSelected.datepickerNotInMonth {\n        background-color: #bcc3ca; }\n        .datepicker table tbody tr td.datepickerSelected.datepickerNotInMonth a {\n          color: #373737; }\n    .datepicker table tbody tr td.datepickerNotInMonth {\n      background-color: #e6ecf0; }\n    .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth {\n      background-color: #e6ecf0; }\n      .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth a {\n        cursor: default; }\n      .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth.datepickerDisabled {\n        background-color: #e6ecf0; }\n        .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth.datepickerDisabled a {\n          color: #bcc3ca;\n          cursor: default; }\n    .datepicker table tbody tr td.datepickerDisabled {\n      background-color: #e6ecf0; }\n      .datepicker table tbody tr td.datepickerDisabled a {\n        color: #bcc3ca;\n        cursor: default; }\n    .datepicker table tbody tr td:last-child {\n      padding-right: 0; }\n  .datepicker table tbody tr .datepickerSpace {\n    border: none !important; }\n    .datepicker table tbody tr .datepickerSpace div {\n      width: 5px; }\n  .datepicker table tbody.datepickerDays td:hover {\n    background-color: #eeeeee; }\n  .datepicker table tbody tr td.datepickerSelected:hover {\n    background-color: #225d8a; }\n\n.dropdown {\n  position: relative;\n  display: inline-block; }\n  .dropdown.open > .dropdown-toggle.mod-primary .dropdown-toggle-arrow, .dropdown .dropdown-toggle.open.mod-primary .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown.open > .dropdown-toggle .dropdown-toggle-arrow, .dropdown .dropdown-toggle.open .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown.open > .dropdown-menu {\n    display: block;\n    margin-bottom: 30px; }\n\n.dropdown-prepend {\n  padding-right: 5px;\n  color: #bcc3ca; }\n\n.dropdown-toggle {\n  position: relative;\n  display: inline-block;\n  padding: 8.5px 36px 8.5px 16px;\n  overflow: hidden;\n  font-size: 13px;\n  line-height: 16px;\n  text-overflow: ellipsis;\n  text-transform: none;\n  white-space: nowrap; }\n  .dropdown-toggle:disabled .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23bcc3ca' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown-toggle.mod-primary {\n    font-size: 12px;\n    text-transform: uppercase; }\n    .dropdown-toggle.mod-primary .dropdown-toggle-arrow {\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n  .dropdown-toggle .dropdown-toggle-arrow {\n    position: absolute;\n    top: -webkit-calc(50% - (10px - 2px) / 2);\n    top: calc(50% - (10px - 2px) / 2);\n    right: 16px;\n    width: 10px;\n    height: 10px;\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown-toggle.mod-search {\n    text-align: left; }\n\n.dropdown-toggle .value-icon, .dropdown-menu li .value-icon {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  margin-right: 3px; }\n  .dropdown-toggle .value-icon, .dropdown-toggle .value-icon svg, .dropdown-menu li .value-icon, .dropdown-menu li .value-icon svg {\n    width: 0.8em;\n    height: 0.8em; }\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  max-height: 240px;\n  min-width: 100%;\n  padding: 8px 0;\n  margin: 0;\n  overflow-y: auto;\n  color: #263e55;\n  list-style: none;\n  background-color: #ffffff;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);\n  border: 1px solid #bcc3ca;\n  border-radius: 0 0 2px 2px; }\n  .dropdown-menu::-webkit-scrollbar, .dropdown-menu ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .dropdown-menu::-webkit-scrollbar-track, .dropdown-menu ::-webkit-scrollbar-track {\n    background-color: #e6ecf0; }\n  .dropdown-menu::-webkit-scrollbar-thumb, .dropdown-menu ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .dropdown-menu::-webkit-scrollbar-button, .dropdown-menu ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n  .dropdown-menu.mod-right {\n    right: 0;\n    left: auto; }\n  .dropdown-menu li > a, .dropdown-menu li > span {\n    display: block;\n    width: 100%;\n    padding: 8px 16px;\n    overflow: hidden;\n    color: #373737;\n    font-size: 13px;\n    line-height: 16px;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    cursor: pointer; }\n    .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-menu li > span:hover, .dropdown-menu li > span:focus {\n      color: #263e55;\n      background: #e6ecf0; }\n    .dropdown-menu li > a.state-selected, .dropdown-menu li > span.state-selected {\n      color: #263e55;\n      font-weight: bold; }\n    .dropdown-menu li > a.disabled, .dropdown-menu li > span.disabled {\n      color: #bcc3ca;\n      cursor: default; }\n    .dropdown-menu li > a.no-search-results, .dropdown-menu li > span.no-search-results {\n      word-break: break-word;\n      white-space: normal; }\n  .dropdown-menu li.active {\n    color: #263e55;\n    background-color: #e6ecf0; }\n  .dropdown-menu li.divider {\n    height: 1px;\n    margin: 8px 0;\n    background-color: #bcc3ca;\n    cursor: default; }\n\n.dropdown.mod-search .dropdown-button-search-container, .dropdown.mod-search .filter-container {\n  width: inherit;\n  min-width: 260px; }\n  .dropdown.mod-search .dropdown-button-search-container input.filter-box, .dropdown.mod-search .filter-container input.filter-box {\n    width: inherit;\n    min-width: 260px; }\n\n.dropdown.mod-search .dropdown-menu {\n  width: 260px; }\n\n.coveo-filter-container, .filter-container {\n  position: relative; }\n  @media only screen and (max-width: 1600px) {\n    .coveo-filter-container, .filter-container {\n      width: 260px; }\n      .coveo-filter-container .filter-icon, .filter-container .filter-icon {\n        right: 10px; }\n      .coveo-filter-container input.filter-box, .filter-container input.filter-box {\n        width: 260px; }\n        .coveo-filter-container input.filter-box + span, .filter-container input.filter-box + span {\n          right: 10px; } }\n  @media only screen and (min-width: 1600px) {\n    .coveo-filter-container, .filter-container {\n      width: 336px; }\n      .coveo-filter-container .filter-icon, .filter-container .filter-icon {\n        right: 20px; }\n      .coveo-filter-container input.filter-box, .filter-container input.filter-box {\n        width: 336px; }\n        .coveo-filter-container input.filter-box + span, .filter-container input.filter-box + span {\n          right: 20px; } }\n  .coveo-filter-container.mod-small, .filter-container.mod-small {\n    width: 200px; }\n    .coveo-filter-container.mod-small input.filter-box, .filter-container.mod-small input.filter-box {\n      width: 200px;\n      height: 32px;\n      font-size: 13px; }\n  .coveo-filter-container .filter-icon, .filter-container .filter-icon {\n    position: absolute;\n    top: 8px;\n    display: none;\n    cursor: default; }\n  .coveo-filter-container input.filter-box, .filter-container input.filter-box {\n    height: 34px;\n    padding-right: 40px;\n    padding-left: 20px;\n    margin: 0; }\n    .coveo-filter-container input.filter-box + span, .filter-container input.filter-box + span {\n      position: absolute;\n      top: -webkit-calc(50% - 12px / 2);\n      top: calc(50% - 12px / 2);\n      line-height: 0;\n      cursor: pointer; }\n      .coveo-filter-container input.filter-box + span svg, .filter-container input.filter-box + span svg {\n        height: 12px; }\n      .coveo-filter-container input.filter-box + span.hide, .coveo-filter-container input.filter-box + span.hidden, .filter-container input.filter-box + span.hide, .filter-container input.filter-box + span.hidden {\n        display: none; }\n        .coveo-filter-container input.filter-box + span.hide + .filter-icon, .coveo-filter-container input.filter-box + span.hidden + .filter-icon, .filter-container input.filter-box + span.hide + .filter-icon, .filter-container input.filter-box + span.hidden + .filter-icon {\n          display: block; }\n\n.flat-select {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  background-color: #ffffff;\n  border-radius: 2px; }\n  .flat-select .flat-select-option {\n    height: 26px;\n    min-width: 26px;\n    padding: 0 4px;\n    color: #ffffff;\n    font-size: 13px;\n    line-height: 24px;\n    text-align: center;\n    background-color: #1d4f76;\n    border: 1px solid #1d4f76;\n    border-radius: 2px;\n    cursor: default; }\n    .flat-select .flat-select-option.disabled, .flat-select .flat-select-option:disabled {\n      cursor: default;\n      opacity: 0.4; }\n    .flat-select .flat-select-option .icon-container {\n      margin-right: 5px;\n      vertical-align: -3px; }\n      .flat-select .flat-select-option .icon-container, .flat-select .flat-select-option .icon-container .icon {\n        width: 13px;\n        height: 13px; }\n      .flat-select .flat-select-option .icon-container .icon {\n        fill: #ffffff; }\n    .flat-select .flat-select-option + .flat-select-option {\n      margin-left: 10px; }\n    .flat-select .flat-select-option:last-child {\n      margin-right: 0; }\n    .flat-select .flat-select-option:hover {\n      text-decoration: none; }\n    .flat-select .flat-select-option.selectable {\n      color: #1d4f76;\n      background-color: #ffffff;\n      border: 1px solid #bcc3ca;\n      cursor: pointer; }\n      .flat-select .flat-select-option.selectable.disabled {\n        cursor: default; }\n      .flat-select .flat-select-option.selectable .icon {\n        fill: #1d4f76; }\n    .flat-select .flat-select-option:empty {\n      display: none; }\n    .flat-select .flat-select-option.mod-link, .flat-select .flat-select-option.selectable.mod-link {\n      padding: 0;\n      color: #1d4f76;\n      font-size: 15px;\n      background-color: #ffffff;\n      border: none; }\n      .flat-select .flat-select-option.mod-link .icon, .flat-select .flat-select-option.selectable.mod-link .icon {\n        fill: #1d4f76; }\n      .flat-select .flat-select-option.mod-link.disabled, .flat-select .flat-select-option.selectable.mod-link.disabled {\n        color: #bcc3ca; }\n        .flat-select .flat-select-option.mod-link.disabled .icon, .flat-select .flat-select-option.selectable.mod-link.disabled .icon {\n          fill: #bcc3ca; }\n  .flat-select.mod-btn-group .flat-select-option {\n    height: 34px;\n    padding: 8.5px 16px;\n    font-size: 12px;\n    font-weight: 700;\n    line-height: 15px;\n    text-transform: uppercase;\n    border-radius: 0; }\n    .flat-select.mod-btn-group .flat-select-option:focus {\n      z-index: 1; }\n    .flat-select.mod-btn-group .flat-select-option:first-child {\n      border-radius: 2px 0 0 2px; }\n    .flat-select.mod-btn-group .flat-select-option:last-child {\n      border-radius: 0 2px 2px 0; }\n    .flat-select.mod-btn-group .flat-select-option + .flat-select-option {\n      margin-left: 0; }\n  .flat-select.mod-option-picker .flat-select-option {\n    -webkit-box-flex: 1;\n    -webkit-flex: auto;\n       -moz-box-flex: 1;\n        -ms-flex: auto;\n            flex: auto;\n    color: #1d4f76;\n    background-color: #e6ecf0;\n    border: 1px solid #009ad9;\n    border-right-width: 0;\n    border-radius: 0; }\n    .flat-select.mod-option-picker .flat-select-option.selectable {\n      background-color: #ffffff;\n      border-color: #bcc3ca; }\n    .flat-select.mod-option-picker .flat-select-option:first-child {\n      border-radius: 2px 0 0 2px; }\n    .flat-select.mod-option-picker .flat-select-option:last-child {\n      border-right-width: 1px;\n      border-radius: 0 2px 2px 0; }\n    .flat-select.mod-option-picker .flat-select-option:not(.selectable) + .flat-select-option {\n      border-left-color: #009ad9; }\n    .flat-select.mod-option-picker .flat-select-option + .flat-select-option {\n      margin-left: 0; }\n\n.prepended-flat-select {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .prepended-flat-select .flat-select-prepend {\n    margin-right: 10px;\n    color: #bcc3ca;\n    font-size: 15px;\n    line-height: 18px; }\n\n::-webkit-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n::-moz-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n:-ms-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n::placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\nselect, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] {\n  padding: 3px 6px;\n  color: #373737;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 16px;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\ninput[type='text'].admin-invisible-textbox, textarea.admin-invisible-textbox {\n  padding: 4px 6px;\n  margin-bottom: 0;\n  background: transparent;\n  border-width: 0;\n  resize: none; }\n\ninput[type='text']:-ms-input-placeholder, textarea:-ms-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.input-group input {\n  height: 30px; }\n\n.input-group .add-on {\n  display: inline-block;\n  height: 30px;\n  padding: 0;\n  margin-left: -5px;\n  vertical-align: top;\n  background-color: #bcc3ca;\n  border: 1px solid #a0aab3;\n  border-radius: 0 2px 2px 0; }\n\n.admin-numeric-spinner.input-group *, .admin-numeric-spinner.input-group *:before, .admin-numeric-spinner.input-group *:after {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box; }\n\n.admin-numeric-spinner.input-group input[type='text'] {\n  width: 35px; }\n\n.admin-numeric-spinner.input-group .add-on {\n  padding-top: 2px;\n  border-left-width: 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .admin-numeric-spinner.input-group .add-on div {\n    padding: 0 6px;\n    border-radius: 3px;\n    cursor: pointer; }\n    .admin-numeric-spinner.input-group .add-on div:hover {\n      background-color: #1d4f76; }\n    .admin-numeric-spinner.input-group .add-on div i {\n      display: block; }\n\n.radio-option {\n  position: relative; }\n  .radio-option input[type='radio'] {\n    position: absolute;\n    margin: 0;\n    opacity: 0; }\n    .radio-option input[type='radio'] + label {\n      position: relative;\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-inline-box;\n      display: -webkit-inline-flex;\n      display: -moz-inline-box;\n      display: -ms-inline-flexbox;\n      display: inline-flex;\n      height: 18px;\n      padding-left: 36px;\n      color: #373737;\n      line-height: 18px;\n      -webkit-transition: 0.28s ease;\n      transition: 0.28s ease;\n      cursor: pointer;\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n      .radio-option input[type='radio'] + label:before, .radio-option input[type='radio'] + label:after {\n        position: absolute;\n        top: 0;\n        left: 0;\n        z-index: 0;\n        width: 18px;\n        height: 18px;\n        content: '';\n        border-radius: 50%;\n        -webkit-transition: 0.28s ease;\n        transition: 0.28s ease; }\n    .radio-option input[type='radio']:focus + label:before {\n      box-shadow: 0 0 0 8px #e6ecf0; }\n    .radio-option input[type='radio']:not(:checked) + label:before {\n      border: 2px solid #1d4f76; }\n    .radio-option input[type='radio']:not(:checked) + label:after {\n      z-index: -1;\n      -webkit-transform: scale(0);\n              transform: scale(0); }\n    .radio-option input[type='radio']:checked + label:before {\n      border: 2px solid #009830; }\n    .radio-option input[type='radio']:checked + label:after {\n      z-index: 0;\n      background-color: #009830;\n      -webkit-transform: scale(0.5);\n              transform: scale(0.5); }\n    .radio-option input[type='radio']:disabled + label {\n      color: #bcc3ca; }\n      .radio-option input[type='radio']:disabled + label:before {\n        border-color: #bcc3ca; }\n    .radio-option input[type='radio']:disabled:checked + label:after {\n      background-color: #bcc3ca; }\n\n.radio-select .radio-option + .radio-option {\n  margin-top: 10px; }\n\ninput[type=checkbox].coveo-slide-toggle {\n  display: none; }\n  input[type=checkbox].coveo-slide-toggle + button {\n    position: relative;\n    width: 32px;\n    height: 20px;\n    border: none;\n    cursor: pointer; }\n    input[type=checkbox].coveo-slide-toggle + button:before, input[type=checkbox].coveo-slide-toggle + button:after {\n      position: absolute;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      display: block;\n      width: 32px;\n      content: ' ';\n      background-color: #bcc3ca;\n      -webkit-transition: all 0.2s linear;\n      transition: all 0.2s linear; }\n    input[type=checkbox].coveo-slide-toggle + button:after {\n      top: 2px;\n      bottom: 2px;\n      width: 18px;\n      margin-left: 2px;\n      background-color: #f1f3f4; }\n  input[type=checkbox].coveo-slide-toggle:checked + button:before {\n    background-color: #009830; }\n  input[type=checkbox].coveo-slide-toggle:checked + button:after {\n    margin-left: 12px; }\n  input[type=checkbox].coveo-slide-toggle:disabled + button {\n    outline: none;\n    cursor: default;\n    opacity: 0.4; }\n\n.coveo-slide-toggle-label {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  line-height: 20px;\n  -webkit-transition: opacity 0.35s ease;\n  transition: opacity 0.35s ease;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .coveo-slide-toggle-label.disabled, .coveo-slide-toggle-label[for].disabled {\n    cursor: default;\n    opacity: 0.4; }\n  .coveo-slide-toggle-label.boxed {\n    display: inline-block;\n    padding: 8px 10px;\n    border: solid 1px #bcc3ca; }\n    .coveo-slide-toggle-label.boxed .toggle-description {\n      display: block;\n      margin-top: 8px;\n      color: #373737;\n      font-size: 13px;\n      line-height: 16px; }\n    .coveo-slide-toggle-label.boxed button {\n      float: right; }\n  .coveo-slide-toggle-label .toggle-label {\n    font-size: 16px; }\n  .coveo-slide-toggle-label button + .toggle-label, .coveo-slide-toggle-label .toggle-label + .coveo-slide-toggle + button {\n    margin-left: 18px; }\n\nlabel[for].coveo-slide-toggle-label {\n  cursor: pointer; }\n\n.coveo-slide-toggle-double-container {\n  display: inline-block; }\n\nlabel.coveo-slide-toggle-double {\n  float: left;\n  margin-bottom: 0;\n  color: #373737;\n  font-size: 13px;\n  line-height: 22px; }\n  label.coveo-slide-toggle-double.first {\n    margin-right: 5px; }\n  label.coveo-slide-toggle-double.second {\n    margin-left: 5px; }\n\ninput.coveo-slide-toggle-double[type=checkbox] {\n  display: none; }\n  input.coveo-slide-toggle-double[type=checkbox] + span {\n    -moz-box-sizing: initial;\n         box-sizing: initial;\n    display: inline-block;\n    float: left;\n    width: 33px;\n    height: 16px;\n    background: #bcc3ca url(" + __webpack_require__(875) + ") 0 0;\n    border: 3px solid #bcc3ca;\n    border-radius: 3px;\n    -webkit-transition: background-position 0.35s ease;\n    transition: background-position 0.35s ease;\n    cursor: pointer; }\n  input.coveo-slide-toggle-double[type=checkbox]:checked + span {\n    background-position: -15px; }\n  input.coveo-slide-toggle-double[type=checkbox]:disabled + span {\n    cursor: default;\n    opacity: 0.4; }\n\n.splash-header {\n  position: absolute;\n  width: 100%;\n  height: 30vh;\n  min-height: 230px; }\n  .splash-header .splash-header-medium {\n    height: 45vh; }\n\n@media (max-width: 495px) {\n  .splash-header {\n    height: 100vh; } }\n\n.bg-polygon {\n  background: #296896 url(" + __webpack_require__(876) + ");\n  background-size: cover; }\n\n.splash-container {\n  z-index: 1;\n  width: 495px;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .splash-container.mod-wizard-container {\n    width: 1025px;\n    padding-top: 145px; }\n  .splash-container.mod-large-wizard-container {\n    width: 1400px;\n    padding-top: 145px; }\n\n.splash-logo svg {\n  display: block;\n  width: 200px;\n  height: auto;\n  margin: 15px auto 60px; }\n\n.splash-box {\n  text-align: center;\n  background: #ffffff;\n  border-radius: 2px; }\n  .splash-box .splash-box-title {\n    padding: 70px 0 40px; }\n  .splash-box .splash-box-section {\n    padding-right: 20px;\n    padding-bottom: 20px;\n    padding-left: 20px; }\n  .splash-box .splash-box-description {\n    padding: 0 30px 30px; }\n  .splash-box .btn {\n    display: block;\n    width: 250px;\n    margin: auto auto 1em; }\n  .splash-box .splash-box-header, .splash-box .splash-box-footer {\n    padding: 17px; }\n  .splash-box .splash-box-footer {\n    margin-top: 50px; }\n  .splash-box .splash-box-section-center-with-title {\n    padding-bottom: 70px; }\n\n.splash-footer {\n  z-index: 1;\n  min-height: 45px;\n  padding: 10px 20px 10px;\n  background-color: #193045;\n  border-bottom-right-radius: 2px;\n  border-bottom-left-radius: 2px; }\n  .splash-footer span {\n    line-height: 25px; }\n    .splash-footer span a {\n      margin-right: 10px; }\n\n.chosen-container {\n  position: relative;\n  display: inline-block;\n  font-size: 13px;\n  vertical-align: middle;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .chosen-container a {\n    cursor: pointer; }\n  .chosen-container .chosen-drop {\n    position: absolute;\n    top: 100%;\n    left: -9999px;\n    z-index: 1010;\n    width: 100%;\n    background: #ffffff;\n    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4);\n    border: 1px solid #bcc3ca;\n    border-top: 0;\n    border-radius: 2px;\n    border-top-right-radius: 0;\n    border-top-left-radius: 0; }\n    .chosen-container .chosen-drop::-webkit-scrollbar, .chosen-container .chosen-drop ::-webkit-scrollbar {\n      width: 6px;\n      height: 6px; }\n    .chosen-container .chosen-drop::-webkit-scrollbar-track, .chosen-container .chosen-drop ::-webkit-scrollbar-track {\n      background-color: #e6ecf0; }\n    .chosen-container .chosen-drop::-webkit-scrollbar-thumb, .chosen-container .chosen-drop ::-webkit-scrollbar-thumb {\n      background-color: #bcc3ca;\n      border-radius: 3px; }\n    .chosen-container .chosen-drop::-webkit-scrollbar-button, .chosen-container .chosen-drop ::-webkit-scrollbar-button {\n      width: 0;\n      height: 0; }\n    .chosen-container .chosen-drop .chosen-results {\n      position: relative;\n      max-height: 240px;\n      overflow-x: hidden;\n      overflow-y: auto;\n      -webkit-overflow-scrolling: touch; }\n      .chosen-container .chosen-drop .chosen-results li {\n        display: none;\n        padding: 8px 16px;\n        margin: 0;\n        color: #373737;\n        font-size: 13px;\n        line-height: 16px;\n        word-wrap: break-word;\n        list-style: none;\n        -webkit-touch-callout: none; }\n        .chosen-container .chosen-drop .chosen-results li:first-child {\n          margin-top: 8px; }\n        .chosen-container .chosen-drop .chosen-results li:last-child {\n          margin-bottom: 8px; }\n        .chosen-container .chosen-drop .chosen-results li.active-result {\n          display: list-item;\n          cursor: pointer; }\n        .chosen-container .chosen-drop .chosen-results li.disabled-result {\n          display: list-item;\n          color: #bcc3ca;\n          cursor: default; }\n        .chosen-container .chosen-drop .chosen-results li.highlighted {\n          background-color: #e6ecf0; }\n        .chosen-container .chosen-drop .chosen-results li.no-results {\n          display: list-item;\n          background: #ffffff; }\n        .chosen-container .chosen-drop .chosen-results li.result-selected {\n          color: #1d4f76;\n          font-weight: bold; }\n        .chosen-container .chosen-drop .chosen-results li em {\n          color: #373737;\n          font-style: normal;\n          font-weight: bold;\n          text-decoration: underline; }\n  .chosen-container.chosen-with-drop .chosen-drop {\n    left: 0; }\n  .chosen-container.chosen-disabled .chosen-single {\n    color: #bcc3ca;\n    border-color: #bcc3ca; }\n  .chosen-container.chosen-disabled b {\n    visibility: hidden; }\n\n.chosen-container-single {\n  min-width: 200px; }\n  .chosen-container-single .chosen-single {\n    position: relative;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n       -moz-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 34px;\n    padding: 0 16px;\n    overflow: hidden;\n    color: #1d4f76;\n    font-size: 13px;\n    font-weight: 700;\n    line-height: 34px;\n    text-decoration: none;\n    white-space: nowrap;\n    background-color: #ffffff;\n    background-clip: padding-box;\n    border: 1px solid #bcc3ca;\n    border-radius: 2px; }\n    .chosen-container-single .chosen-single.chosen-default {\n      color: #bcc3ca; }\n    .chosen-container-single .chosen-single span {\n      width: 100%;\n      padding-right: 2px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap; }\n    .chosen-container-single .chosen-single div {\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .chosen-container-single .chosen-single div b {\n        width: 10px;\n        height: 10px;\n        background-position: center;\n        background-size: 10px 10px;\n        background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n        background-repeat: no-repeat; }\n    .chosen-container-single .chosen-single .search-choice-close {\n      position: absolute;\n      top: -webkit-calc(50% - 10px / 2);\n      top: calc(50% - 10px / 2);\n      right: 36px;\n      display: inline-block;\n      width: 10px;\n      height: 10px;\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg' fill='%23bcc3ca'%3E %3Cpath d='m9.79.212c-.282-.283-.738-.283-1.02-.001l-3.77 3.77-3.771-3.77c-.281-.282-.737-.282-1.018.001h-.001c-.28.282-.28.737.001 1.018l3.771 3.769-3.771 3.771c-.282.282-.282.737 0 1.018.281.282.737.282 1.018 0l3.771-3.771 3.771 3.771c.281.282.737.282 1.018 0 .281-.281.281-.737 0-1.018l-3.771-3.771 3.771-3.769c.281-.281.282-.736.001-1.018'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n    .chosen-container-single .chosen-single.chosen-single-with-deselect span {\n      margin-right: 30px; }\n  .chosen-container-single .chosen-drop .chosen-search {\n    position: relative;\n    z-index: 1010;\n    padding: 4px;\n    margin: 0;\n    white-space: nowrap; }\n    .chosen-container-single .chosen-drop .chosen-search input[type='text'] {\n      width: 100%;\n      height: 32px;\n      padding: 4px 28px 4px 5px;\n      margin: 1px 0;\n      font-size: 13px;\n      line-height: normal;\n      background-position: right 8px center;\n      background-origin: border-box;\n      background-size: 16px 16px;\n      border: 1px solid #bcc3ca;\n      border-radius: 2px;\n      outline: 0;\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23bcc3ca'%3E %3Cpath d='m19.2 4.1c0-1.9-4-3.3-9.2-3.3s-9.2 1.5-9.2 3.3c0 .2 0 .3.1.5l.1.2c0 .1.1.2.2.3l6.2 8.7v4.2l.2.2c.1.1 1.1 1 2.5 1 .9 0 1.7-.3 2.4-.9l.2-.2v-4.3l6.1-8.7c.1-.1.1-.2.2-.2v-.1l.1-.1c.1-.2.1-.4.1-.6m-15 2.6c1.7.5 3.7.8 5.8.8s4.1-.3 5.8-.7l-4.6 6.5v.1 4.2c-.9.6-1.8.3-2.3 0v-4.2l-4.7-6.7m5.8-4.3c5.1 0 7.3 1.4 7.6 1.7-.6.7-3.3 1.7-7.6 1.7-4.3 0-7-1-7.6-1.7v-.1c.3-.3 2.5-1.6 7.6-1.6'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n  .chosen-container-single.chosen-container-active .chosen-single {\n    outline: -webkit-focus-ring-color auto 5px; }\n  .chosen-container-single.chosen-container-single-nosearch .chosen-drop .chosen-search {\n    position: absolute;\n    left: -9999px; }\n  .chosen-container-single.chosen-with-drop .chosen-single {\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0; }\n    .chosen-container-single.chosen-with-drop .chosen-single div b {\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n\n.chosen-container-multi .chosen-choices {\n  position: relative;\n  width: 100%;\n  height: auto;\n  padding: 0 38px 0 16px;\n  margin: 0;\n  overflow: hidden;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: text; }\n  .chosen-container-multi .chosen-choices:after {\n    position: absolute;\n    top: -webkit-calc(50% - 16px / 2);\n    top: calc(50% - 16px / 2);\n    right: 16px;\n    display: inline-block;\n    width: 16px;\n    height: 16px;\n    content: '';\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23bcc3ca'%3E %3Cpath d='m19.2 4.1c0-1.9-4-3.3-9.2-3.3s-9.2 1.5-9.2 3.3c0 .2 0 .3.1.5l.1.2c0 .1.1.2.2.3l6.2 8.7v4.2l.2.2c.1.1 1.1 1 2.5 1 .9 0 1.7-.3 2.4-.9l.2-.2v-4.3l6.1-8.7c.1-.1.1-.2.2-.2v-.1l.1-.1c.1-.2.1-.4.1-.6m-15 2.6c1.7.5 3.7.8 5.8.8s4.1-.3 5.8-.7l-4.6 6.5v.1 4.2c-.9.6-1.8.3-2.3 0v-4.2l-4.7-6.7m5.8-4.3c5.1 0 7.3 1.4 7.6 1.7-.6.7-3.3 1.7-7.6 1.7-4.3 0-7-1-7.6-1.7v-.1c.3-.3 2.5-1.6 7.6-1.6'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .chosen-container-multi .chosen-choices li {\n    float: left;\n    list-style: none; }\n    .chosen-container-multi .chosen-choices li.search-field {\n      max-width: 100%;\n      white-space: nowrap; }\n      .chosen-container-multi .chosen-choices li.search-field input[type='text'] {\n        -moz-box-sizing: content-box;\n             box-sizing: content-box;\n        height: 24px;\n        padding: 10px 0;\n        font-size: 15px;\n        line-height: 24px;\n        border: none;\n        outline: none; }\n    .chosen-container-multi .chosen-choices li.search-choice {\n      position: relative;\n      height: 24px;\n      max-width: 100%;\n      padding: 0 30px 0 10px;\n      margin: 10px 10px 0 0;\n      color: #373737;\n      font-size: 11px;\n      line-height: 22px;\n      border: 1px solid #bcc3ca;\n      border-radius: 2px;\n      cursor: default; }\n      .chosen-container-multi .chosen-choices li.search-choice span {\n        word-wrap: break-word; }\n      .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {\n        position: absolute;\n        top: -webkit-calc(50% - 10px / 2);\n        top: calc(50% - 10px / 2);\n        right: 10px;\n        display: inline-block;\n        width: 10px;\n        height: 10px;\n        background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg' fill='%23bcc3ca'%3E %3Cpath d='m9.79.212c-.282-.283-.738-.283-1.02-.001l-3.77 3.77-3.771-3.77c-.281-.282-.737-.282-1.018.001h-.001c-.28.282-.28.737.001 1.018l3.771 3.769-3.771 3.771c-.282.282-.282.737 0 1.018.281.282.737.282 1.018 0l3.771-3.771 3.771 3.771c.281.282.737.282 1.018 0 .281-.281.281-.737 0-1.018l-3.771-3.771 3.771-3.769c.281-.281.282-.736.001-1.018'/%3E %3C/svg%3E\");\n        background-repeat: no-repeat; }\n    .chosen-container-multi .chosen-choices li.search-choice-disabled {\n      padding-right: 5px;\n      color: #bcc3ca;\n      border: 1px solid #bcc3ca; }\n    .chosen-container-multi .chosen-choices li.search-choice-focus {\n      background: #f1f3f4; }\n\n.chosen-container-multi .chosen-drop .chosen-results li.result-selected {\n  display: list-item;\n  color: #bcc3ca;\n  font-weight: normal;\n  cursor: default; }\n\n.chosen-container-multi.chosen-container-active .chosen-choices {\n  outline: -webkit-focus-ring-color auto 5px; }\n\n.chosen-container-multi.chosen-with-drop .chosen-choices {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.input-field {\n  position: relative;\n  margin-top: 15px; }\n  .input-field input, .input-field textarea {\n    width: 100%;\n    height: 34px;\n    padding: 0;\n    font-size: 15px;\n    background-color: transparent;\n    box-shadow: none;\n    border: 0;\n    border-bottom: 1px solid rgba(188, 195, 202, 0.4);\n    border-radius: 0;\n    outline: 0;\n    -webkit-transition: all 0.2s ease;\n    transition: all 0.2s ease; }\n    .input-field input:focus:not([readonly]), .input-field input:valid, .input-field input:disabled, .input-field textarea:focus:not([readonly]), .input-field textarea:valid, .input-field textarea:disabled {\n      color: #373737;\n      border-bottom: 1px solid #1d4f76; }\n      .input-field input:focus:not([readonly])::-webkit-input-placeholder, .input-field input:valid::-webkit-input-placeholder, .input-field input:disabled::-webkit-input-placeholder, .input-field textarea:focus:not([readonly])::-webkit-input-placeholder, .input-field textarea:valid::-webkit-input-placeholder, .input-field textarea:disabled::-webkit-input-placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n      .input-field input:focus:not([readonly])::-moz-placeholder, .input-field input:valid::-moz-placeholder, .input-field input:disabled::-moz-placeholder, .input-field textarea:focus:not([readonly])::-moz-placeholder, .input-field textarea:valid::-moz-placeholder, .input-field textarea:disabled::-moz-placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n      .input-field input:focus:not([readonly]):-ms-input-placeholder, .input-field input:valid:-ms-input-placeholder, .input-field input:disabled:-ms-input-placeholder, .input-field textarea:focus:not([readonly]):-ms-input-placeholder, .input-field textarea:valid:-ms-input-placeholder, .input-field textarea:disabled:-ms-input-placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n      .input-field input:focus:not([readonly])::placeholder, .input-field input:valid::placeholder, .input-field input:disabled::placeholder, .input-field textarea:focus:not([readonly])::placeholder, .input-field textarea:valid::placeholder, .input-field textarea:disabled::placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n    .input-field input:disabled, .input-field input[readonly='readonly'], .input-field textarea:disabled, .input-field textarea[readonly='readonly'] {\n      color: #bcc3ca;\n      border-bottom-color: #bcc3ca;\n      -webkit-text-fill-color: #bcc3ca; }\n      .input-field input:disabled + label, .input-field input[readonly='readonly'] + label, .input-field textarea:disabled + label, .input-field textarea[readonly='readonly'] + label {\n        color: #bcc3ca; }\n  .input-field label {\n    position: absolute;\n    top: 10px;\n    left: 0;\n    -moz-box-sizing: content-box;\n         box-sizing: content-box;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n    color: #bcc3ca;\n    font-size: 15px;\n    -webkit-transition: all 0.2s ease;\n    transition: all 0.2s ease;\n    pointer-events: none; }\n    .input-field label.active, .input-field input:focus:not([readonly]) + label, .input-field input:valid + label, .input-field input:disabled + label, .input-field textarea:focus:not([readonly]) + label, .input-field textarea:valid + label, .input-field textarea:disabled + label {\n      top: -15px;\n      padding-bottom: 15px;\n      color: #1d4f76;\n      font-size: 13px; }\n  .input-field input {\n    padding: 3px 0;\n    color: transparent;\n    font-size: 15px;\n    background-color: transparent;\n    box-shadow: none;\n    -webkit-transition: color 0.2s ease;\n    transition: color 0.2s ease; }\n    .input-field input::-webkit-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field input::-moz-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field input:-ms-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field input::placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n  .input-field textarea {\n    min-height: 34px;\n    padding: 10px 0 24px 0;\n    overflow-y: hidden;\n    -webkit-transition: height ease 0.2s;\n    transition: height ease 0.2s;\n    resize: none;\n    -ms-overflow-y: hidden !important; }\n    .input-field textarea::-webkit-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field textarea::-moz-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field textarea:-ms-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field textarea::placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n  .input-field.mod-resizeable textarea {\n    padding: 5px 0 2px;\n    resize: vertical; }\n  .input-field.mod-fixed-width {\n    max-width: 440px; }\n  .input-field.validate input, .input-field .validate input, .input-field.validate textarea, .input-field .validate textarea {\n    -webkit-transition: 0.2s margin-bottom ease, 0.2s color ease;\n    transition: 0.2s margin-bottom ease, 0.2s color ease; }\n    .input-field.validate input.valid, .input-field.validate input.invalid, .input-field .validate input.valid, .input-field .validate input.invalid, .input-field.validate textarea.valid, .input-field.validate textarea.invalid, .input-field .validate textarea.valid, .input-field .validate textarea.invalid {\n      margin-bottom: 20px; }\n    .input-field.validate input.valid, .input-field .validate input.valid, .input-field.validate textarea.valid, .input-field .validate textarea.valid {\n      border-bottom-color: #009830; }\n      .input-field.validate input.valid + label:after, .input-field .validate input.valid + label:after, .input-field.validate textarea.valid + label:after, .input-field .validate textarea.valid + label:after {\n        color: #009830;\n        content: attr(data-valid-message);\n        opacity: 1; }\n    .input-field.validate input.invalid, .input-field .validate input.invalid, .input-field.validate textarea.invalid, .input-field .validate textarea.invalid {\n      border-bottom-color: #ce3f00; }\n    .input-field.validate input.invalid + label:after, .input-field .validate input.invalid + label:after, .input-field.validate textarea.invalid + label:after, .input-field .validate textarea.invalid + label:after {\n      color: #ce3f00;\n      content: attr(data-invalid-message);\n      opacity: 1; }\n    .input-field.validate input + label, .input-field .validate input + label, .input-field.validate textarea + label, .input-field .validate textarea + label {\n      width: 100%; }\n      .input-field.validate input + label:after, .input-field .validate input + label:after, .input-field.validate textarea + label:after, .input-field .validate textarea + label:after {\n        position: absolute;\n        top: 100%;\n        left: 0;\n        display: block;\n        margin-top: -20px;\n        font-size: 12px;\n        -webkit-transition: 0.2s all ease;\n        transition: 0.2s all ease; }\n      .input-field.validate input + label.active:after, .input-field.validate input:focus:not([readonly]) + label:after, .input-field.validate input:valid + label:after, .input-field.validate input:disabled + label:after, .input-field .validate input + label.active:after, .input-field .validate input:focus:not([readonly]) + label:after, .input-field .validate input:valid + label:after, .input-field .validate input:disabled + label:after, .input-field.validate textarea + label.active:after, .input-field.validate textarea:focus:not([readonly]) + label:after, .input-field.validate textarea:valid + label:after, .input-field.validate textarea:disabled + label:after, .input-field .validate textarea + label.active:after, .input-field .validate textarea:focus:not([readonly]) + label:after, .input-field .validate textarea:valid + label:after, .input-field .validate textarea:disabled + label:after {\n        margin-top: -10px; }\n  .input-field.validate textarea.invalid {\n    border-bottom-color: #ce3f00; }\n  .input-field.validate .generic-form-error {\n    display: block;\n    margin-top: 3px;\n    margin-bottom: 0; }\n\n.multiline-field .input-wrapper {\n  position: relative;\n  padding-bottom: 8px; }\n  .multiline-field .input-wrapper input {\n    padding-right: 22px; }\n  .multiline-field .input-wrapper label {\n    visibility: hidden; }\n    .multiline-field .input-wrapper label:after {\n      visibility: visible; }\n    .multiline-field .input-wrapper label.first-label {\n      visibility: visible; }\n  .multiline-field .input-wrapper:nth-child(1) label {\n    visibility: visible; }\n  .multiline-field .input-wrapper .multiline-label .inline-help-tooltip {\n    width: 1em;\n    height: 1em; }\n    .multiline-field .input-wrapper .multiline-label .inline-help-tooltip .inline-help-icon {\n      width: 1em;\n      height: 1em; }\n      .multiline-field .input-wrapper .multiline-label .inline-help-tooltip .inline-help-icon svg {\n        width: 1em;\n        height: 1em; }\n\n.multiline-field ul li:first-child label {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.multiline-field ul li input {\n  margin-bottom: 10px; }\n  .multiline-field ul li input::-ms-clear {\n    display: none; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input::-webkit-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input::-moz-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input:-ms-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input::placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper label.first-label {\n  visibility: hidden; }\n\n.multiline-field .input-actions {\n  position: absolute;\n  top: 4px;\n  right: -2px; }\n  .multiline-field .input-actions .js-add-value-button, .multiline-field .input-actions .js-delete-value-button {\n    position: relative;\n    padding: 4px; }\n    .multiline-field .input-actions .js-add-value-button:hover, .multiline-field .input-actions .js-delete-value-button:hover {\n      cursor: pointer; }\n    .multiline-field .input-actions .js-add-value-button:focus i, .multiline-field .input-actions .js-delete-value-button:focus i {\n      box-shadow: 0 0 6px 1px #1d4f76; }\n  .multiline-field .input-actions button {\n    width: auto;\n    background: none;\n    border: none;\n    outline: none; }\n  .multiline-field .input-actions .tooltip {\n    width: 150px; }\n  .multiline-field .input-actions i {\n    position: relative;\n    display: block;\n    width: 18px;\n    height: 18px;\n    border: 2px solid #1d4f76;\n    border-radius: 18px; }\n    .multiline-field .input-actions i.add-action:before, .multiline-field .input-actions i.delete-action:before {\n      position: relative;\n      top: 6px;\n      left: 2px;\n      display: block;\n      width: 10px;\n      height: 2px;\n      content: '';\n      background-color: #1d4f76; }\n    .multiline-field .input-actions i.add-action {\n      border-color: #f58020; }\n      .multiline-field .input-actions i.add-action:before {\n        background-color: #f58020; }\n      .multiline-field .input-actions i.add-action:after {\n        position: absolute;\n        top: 2px;\n        left: 6px;\n        display: block;\n        width: 2px;\n        height: 10px;\n        content: '';\n        background-color: #f58020; }\n\n.file-input {\n  position: relative;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n  .file-input .file-path-wrapper {\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n       -moz-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .file-input .btn {\n    margin-top: 10px;\n    margin-left: 10px; }\n    .file-input .btn input {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      cursor: pointer;\n      opacity: 0; }\n  .file-input .clear-file {\n    position: absolute;\n    top: 10px;\n    right: 0;\n    z-index: 2;\n    cursor: pointer; }\n\n.filter-expression-picker .filters {\n  background-color: #f1f3f4; }\n\n.filter-expression-picker .admin-filterbox {\n  position: relative;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  margin-bottom: 1px; }\n  .filter-expression-picker .admin-filterbox.mod-small {\n    padding: 13px 20px; }\n  .filter-expression-picker .admin-filterbox .filter-badge {\n    -moz-box-sizing: border-box;\n         box-sizing: border-box;\n    height: 34px;\n    font-weight: normal;\n    text-transform: initial; }\n  .filter-expression-picker .admin-filterbox .filter-badge {\n    display: inline-block;\n    margin-left: 3px;\n    overflow: visible;\n    color: #373737;\n    font-size: 13px;\n    background-color: #ffffff;\n    cursor: pointer; }\n    .filter-expression-picker .admin-filterbox .filter-badge .edit-filter {\n      -moz-box-sizing: border-box;\n           box-sizing: border-box; }\n    .filter-expression-picker .admin-filterbox .filter-badge .edit-filter-content {\n      font-size: 13px;\n      line-height: 16px; }\n    .filter-expression-picker .admin-filterbox .filter-badge .filter-operator.mod-negative {\n      color: #ce3f00; }\n    .filter-expression-picker .admin-filterbox .filter-badge .filter-operator.mod-positive {\n      color: #009830; }\n    .filter-expression-picker .admin-filterbox .filter-badge .filter-value-join {\n      color: #373737; }\n    .filter-expression-picker .admin-filterbox .filter-badge .dropdown-toggle:disabled .filter-operator, .filter-expression-picker .admin-filterbox .filter-badge .dropdown-toggle:disabled .filter-value-join {\n      color: #bcc3ca; }\n  .filter-expression-picker .admin-filterbox .filterbox-filters-container {\n    -webkit-box-flex: 2;\n    -webkit-flex-grow: 2;\n       -moz-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    padding: 4px 4px 3px;\n    background-color: #bcc3ca; }\n  .filter-expression-picker .admin-filterbox .filters {\n    position: relative;\n    display: inline;\n    margin-right: 5px;\n    vertical-align: baseline; }\n    .filter-expression-picker .admin-filterbox .filters:empty {\n      margin-right: 0; }\n    .filter-expression-picker .admin-filterbox .filters .active-filters {\n      display: inline; }\n    .filter-expression-picker .admin-filterbox .filters .editable-filters, .filter-expression-picker .admin-filterbox .filters .editable-filter {\n      display: -webkit-inline-box;\n      display: -webkit-inline-flex;\n      display: -moz-inline-box;\n      display: -ms-inline-flexbox;\n      display: inline-flex; }\n\n.filter-expression-picker .filters .btn.dropdown-toggle, .filter-expression-picker .filters .filter-badge, .filter-expression-picker .filters .predefined-filter {\n  box-shadow: none;\n  outline: none; }\n\n.filter-expression-picker .add-filter-popup, .filter-expression-picker .edit-filter-popup, .filter-expression-picker .filter-type-popup {\n  position: absolute;\n  z-index: 999;\n  width: 292px; }\n  .filter-expression-picker .add-filter-popup .operator .admin-select, .filter-expression-picker .add-filter-popup .select-operator .admin-select, .filter-expression-picker .add-filter-popup .value-selector .admin-select, .filter-expression-picker .edit-filter-popup .operator .admin-select, .filter-expression-picker .edit-filter-popup .select-operator .admin-select, .filter-expression-picker .edit-filter-popup .value-selector .admin-select, .filter-expression-picker .filter-type-popup .operator .admin-select, .filter-expression-picker .filter-type-popup .select-operator .admin-select, .filter-expression-picker .filter-type-popup .value-selector .admin-select {\n    width: 100%; }\n    .filter-expression-picker .add-filter-popup .operator .admin-select .dropdown-toggle, .filter-expression-picker .add-filter-popup .select-operator .admin-select .dropdown-toggle, .filter-expression-picker .add-filter-popup .value-selector .admin-select .dropdown-toggle, .filter-expression-picker .edit-filter-popup .operator .admin-select .dropdown-toggle, .filter-expression-picker .edit-filter-popup .select-operator .admin-select .dropdown-toggle, .filter-expression-picker .edit-filter-popup .value-selector .admin-select .dropdown-toggle, .filter-expression-picker .filter-type-popup .operator .admin-select .dropdown-toggle, .filter-expression-picker .filter-type-popup .select-operator .admin-select .dropdown-toggle, .filter-expression-picker .filter-type-popup .value-selector .admin-select .dropdown-toggle {\n      -moz-box-sizing: border-box;\n           box-sizing: border-box;\n      width: 100%;\n      text-align: left; }\n\n.filter-expression-picker .add-filter-popup.left {\n  right: 35px; }\n\n.filter-expression-picker .edit-filter-popup.left {\n  right: 3px; }\n\n.filter-expression-picker .filter-choices .popup-content .section, .filter-expression-picker .columns-picker .popup-content .section {\n  display: inline-block;\n  width: 100%;\n  padding-left: 15px;\n  margin-top: 7px;\n  color: #1d4f76;\n  text-transform: uppercase; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar {\n  width: 6px;\n  height: 6px; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar-track, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar-track, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar-track, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar-track {\n  background-color: #e6ecf0; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar-thumb, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar-thumb, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar-thumb, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar-thumb {\n  background-color: #bcc3ca;\n  border-radius: 3px; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar-button, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar-button, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar-button, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar-button {\n  width: 0;\n  height: 0; }\n\n.filter-expression-picker .filter-choices .popup-content {\n  max-height: 300px;\n  overflow: auto; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar-track, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar-track {\n    background-color: #e6ecf0; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar-thumb, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar-button, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n\n.filter-expression-picker .filter-choices .popup-header, .filter-expression-picker .edit-filter-values .popup-header {\n  background-color: #f1f3f4;\n  border-bottom: 1px solid #bcc3ca; }\n\n.filter-expression-picker .filter-choices .popup-header .coveo-filter-container, .filter-expression-picker .filter-choices .popup-header .filter-container {\n  width: 260px; }\n  .filter-expression-picker .filter-choices .popup-header .coveo-filter-container .filter-icon, .filter-expression-picker .filter-choices .popup-header .filter-container .filter-icon {\n    right: 10px; }\n  .filter-expression-picker .filter-choices .popup-header .coveo-filter-container input.filter-box, .filter-expression-picker .filter-choices .popup-header .filter-container input.filter-box {\n    width: 260px; }\n    .filter-expression-picker .filter-choices .popup-header .coveo-filter-container input.filter-box + span, .filter-expression-picker .filter-choices .popup-header .filter-container input.filter-box + span {\n      right: 10px; }\n\n.filter-expression-picker .filter-choices .popup-header .event-type {\n  width: 224px;\n  margin-bottom: 16px; }\n\n.filter-expression-picker .available-filters ul, .filter-expression-picker .edit-filter-values ul {\n  margin: 0; }\n\n.filter-expression-picker .available-filters .filter:not(.selected-filter), .filter-expression-picker .edit-filter-values .filter:not(.selected-filter) {\n  -moz-box-sizing: content-box;\n       box-sizing: content-box;\n  min-height: 20px;\n  padding: 6px 25px;\n  margin-right: 1px;\n  overflow-x: hidden;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  background-color: #ffffff;\n  cursor: pointer; }\n  .filter-expression-picker .available-filters .filter:not(.selected-filter) .type, .filter-expression-picker .edit-filter-values .filter:not(.selected-filter) .type {\n    color: #bcc3ca;\n    font-size: 10px; }\n\n.filter-expression-picker .available-filters li.filter:hover, .filter-expression-picker .available-filters li.filter.active, .filter-expression-picker .edit-filter-values li.filter:hover, .filter-expression-picker .edit-filter-values li.filter.active {\n  background-color: #e6ecf0; }\n\n.filter-expression-picker .available-filters label.filter, .filter-expression-picker .edit-filter-values label.filter {\n  cursor: default; }\n\n.filter-expression-picker .edit-filter-values {\n  position: relative;\n  overflow: visible; }\n  .filter-expression-picker .edit-filter-values .popup-main-section {\n    width: 100%; }\n    .filter-expression-picker .edit-filter-values .popup-main-section .popup-header {\n      background-color: #ffffff; }\n    .filter-expression-picker .edit-filter-values .popup-main-section .selected-filter {\n      height: 50px;\n      padding-left: 20px;\n      color: #1d4f76;\n      font-size: 15px;\n      font-weight: bold;\n      line-height: 50px; }\n    .filter-expression-picker .edit-filter-values .popup-main-section .popover-body .string-filters {\n      padding-top: 30px; }\n      .filter-expression-picker .edit-filter-values .popup-main-section .popover-body .string-filters label {\n        line-height: 18px; }\n\n.filter-expression-picker .multi-filter {\n  position: relative; }\n  .filter-expression-picker .multi-filter .multi-filter-picker {\n    position: relative;\n    margin-bottom: 20px; }\n    .filter-expression-picker .multi-filter .multi-filter-picker .admin-filterbox {\n      border-bottom: 2px solid #ffffff; }\n  .filter-expression-picker .multi-filter .add-container {\n    overflow: auto;\n    background-color: rgba(241, 243, 244, 0.4); }\n    .filter-expression-picker .multi-filter .add-container .add {\n      padding: 10px 20px;\n      cursor: pointer;\n      opacity: 1; }\n      .filter-expression-picker .multi-filter .add-container .add svg {\n        width: 20px;\n        height: 20px;\n        vertical-align: text-bottom;\n        fill: #f58020; }\n  .filter-expression-picker .multi-filter .admin-filterbox .pre-operator {\n    display: inline-block;\n    padding: 2px 0 0 2px;\n    margin: 0 6px 0 0;\n    font-family: \"Lato\", Arial, Helvetica, sans-serif;\n    font-size: 12px;\n    font-weight: bold;\n    line-height: 33px; }\n  .filter-expression-picker .multi-filter .admin-filterbox .filter-where {\n    float: left;\n    padding: 0 4px;\n    margin-right: 5px;\n    margin-bottom: 0;\n    margin-left: 4px;\n    line-height: 34px;\n    background-color: #ffffff; }\n  .filter-expression-picker .multi-filter .admin-filterbox .filter-type {\n    -moz-box-sizing: border-box;\n         box-sizing: border-box; }\n  .filter-expression-picker .multi-filter .filter-popup {\n    margin-bottom: 0; }\n    .filter-expression-picker .multi-filter .filter-popup .filter-actions .btn + .btn {\n      margin: 0; }\n    .filter-expression-picker .multi-filter .filter-popup .event-type {\n      display: none; }\n\n.coveo-styleguide table:not(.datepicker-table) {\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-spacing: 0; }\n  .coveo-styleguide table:not(.datepicker-table) th, .coveo-styleguide table:not(.datepicker-table) td {\n    position: relative;\n    text-align: left;\n    vertical-align: middle; }\n    .coveo-styleguide table:not(.datepicker-table) th.selection, .coveo-styleguide table:not(.datepicker-table) td.selection {\n      width: 25px !important;\n      margin: 0; }\n    .coveo-styleguide table:not(.datepicker-table) th:last-child, .coveo-styleguide table:not(.datepicker-table) td:last-child {\n      padding-right: 20px; }\n    .coveo-styleguide table:not(.datepicker-table) th .coveo-checkbox-label + .cell-content, .coveo-styleguide table:not(.datepicker-table) td .coveo-checkbox-label + .cell-content {\n      margin-left: 10px; }\n  .coveo-styleguide table:not(.datepicker-table) thead tr {\n    height: 32px;\n    color: #1d4f76;\n    font-size: 12px;\n    font-weight: bold;\n    line-height: 16px;\n    background-color: transparent; }\n  .coveo-styleguide table:not(.datepicker-table) th {\n    padding: 7px 15px;\n    white-space: nowrap;\n    border-top: 1px solid #bcc3ca;\n    border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide table:not(.datepicker-table) th.admin-sort {\n      position: relative;\n      cursor: pointer; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon {\n        display: -webkit-inline-box;\n        display: -webkit-inline-flex;\n        display: -moz-inline-box;\n        display: -ms-inline-flexbox;\n        display: inline-flex; }\n        .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort {\n          width: 7px;\n          height: 12px;\n          margin-left: 5px;\n          vertical-align: -2px;\n          fill: #1d4f76; }\n          .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .asc-arrow, .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .desc-arrow {\n            cursor: pointer;\n            opacity: 0.3; }\n            .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .asc-arrow:hover, .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .desc-arrow:hover {\n              opacity: 0.6; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort.admin-sort-descending .admin-sort-icon .desc-arrow {\n        opacity: 1; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort.admin-sort-ascending .admin-sort-icon .asc-arrow {\n        opacity: 1; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort:hover {\n        background-color: #e6ecf0; }\n    .coveo-styleguide table:not(.datepicker-table) th:first-child {\n      padding-left: 20px; }\n    .coveo-styleguide table:not(.datepicker-table) th .coveo-checkbox-label {\n      vertical-align: bottom; }\n  .coveo-styleguide table:not(.datepicker-table) thead.mod-no-border-top th {\n    border-top: none; }\n  .coveo-styleguide table:not(.datepicker-table) tbody.table-loading {\n    opacity: 0.3; }\n  .coveo-styleguide table:not(.datepicker-table) tr {\n    height: 37px;\n    font-size: 15px;\n    line-height: 18px; }\n    .coveo-styleguide table:not(.datepicker-table) tr.disabled div.wrapper {\n      opacity: 0.4; }\n    .coveo-styleguide table:not(.datepicker-table) tr:first-child {\n      padding-left: 10px; }\n    .coveo-styleguide table:not(.datepicker-table) tr:hover td {\n      background-color: #e6ecf0; }\n    .coveo-styleguide table:not(.datepicker-table) tr.empty td {\n      padding: 25px;\n      text-align: center; }\n    .coveo-styleguide table:not(.datepicker-table) tr.selected:not(:hover) td {\n      background-color: #f1f3f4; }\n    .coveo-styleguide table:not(.datepicker-table) tr.selected td:first-child {\n      border-left-color: #f58020; }\n  .coveo-styleguide table:not(.datepicker-table) td {\n    padding: 9px 15px;\n    margin-left: 15px;\n    text-align: left;\n    border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide table:not(.datepicker-table) td .mod-max-width {\n      max-width: 300px;\n      overflow: hidden;\n      text-overflow: ellipsis; }\n    .coveo-styleguide table:not(.datepicker-table) td:first-child {\n      border-left: 5px solid transparent; }\n    .coveo-styleguide table:not(.datepicker-table) td.edit.enabled {\n      color: #1d4f76;\n      cursor: pointer; }\n    .coveo-styleguide table:not(.datepicker-table) td .btn-icon, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle {\n      cursor: default;\n      opacity: 0.3; }\n      .coveo-styleguide table:not(.datepicker-table) td .btn-icon.enabled:active:hover, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle.enabled:active:hover {\n        border-radius: 2px; }\n      .coveo-styleguide table:not(.datepicker-table) td .btn-icon.disabled, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle.disabled {\n        cursor: default;\n        opacity: 0.2; }\n      .coveo-styleguide table:not(.datepicker-table) td .btn-icon.enabled, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle.enabled {\n        cursor: pointer;\n        opacity: 1; }\n    .coveo-styleguide table:not(.datepicker-table) td .coveo-checkbox-label {\n      position: relative;\n      top: -1px;\n      vertical-align: text-bottom; }\n  .coveo-styleguide table:not(.datepicker-table).row-selected td, .coveo-styleguide table:not(.datepicker-table).row-selected:hover td {\n    background-color: #e6ecf0; }\n  .coveo-styleguide table:not(.datepicker-table).confirm-delete .row-selected td, .coveo-styleguide table:not(.datepicker-table).confirm-delete.row-selected:hover td {\n    background-color: rgba(206, 63, 0, 0.1);\n    border-color: #ce3f00;\n    -webkit-transition: background-color 300ms;\n    transition: background-color 300ms; }\n  .coveo-styleguide table:not(.datepicker-table).mod-deleting tbody tr.selected td {\n    background-color: rgba(206, 63, 0, 0.1); }\n\n.coveo-styleguide .table-last-update {\n  margin: 10px 40px;\n  color: rgba(55, 55, 55, 0.5);\n  font-size: 11px;\n  text-align: right; }\n\n.coveo-styleguide table.big-table tbody tr {\n  height: 36px;\n  cursor: default; }\n  .coveo-styleguide table.big-table tbody tr td {\n    padding: 15px; }\n  .coveo-styleguide table.big-table tbody tr td.main {\n    white-space: nowrap; }\n    .coveo-styleguide table.big-table tbody tr td.main .icon {\n      width: 36px;\n      height: 36px;\n      margin-right: 20px;\n      vertical-align: -3px; }\n    .coveo-styleguide table.big-table tbody tr td.main div.details {\n      display: inline-block; }\n      .coveo-styleguide table.big-table tbody tr td.main div.details div.second-row .icon {\n        width: 15px;\n        height: 15px;\n        margin-right: 0; }\n      .coveo-styleguide table.big-table tbody tr td.main div.details div.second-row .label {\n        color: #373737; }\n  .coveo-styleguide table.big-table tbody tr td.col, .coveo-styleguide table.big-table tbody tr td.main {\n    position: relative; }\n    .coveo-styleguide table.big-table tbody tr td.col .first-row, .coveo-styleguide table.big-table tbody tr td.main .first-row {\n      font-size: 15px;\n      line-height: 20px; }\n    .coveo-styleguide table.big-table tbody tr td.col div.second-row, .coveo-styleguide table.big-table tbody tr td.main div.second-row {\n      margin-top: 2px;\n      font-size: 12px;\n      line-height: 17px; }\n  .coveo-styleguide table.big-table tbody tr div.wrapper {\n    min-height: 36px; }\n  .coveo-styleguide table.big-table tbody tr.disabled td .wrapper {\n    opacity: 0.5; }\n\n.coveo-styleguide .fixed-header-table-container {\n  position: relative;\n  padding-top: 30px;\n  overflow: hidden;\n  border-top: 1px solid #bcc3ca; }\n  .coveo-styleguide .fixed-header-table-container .fixed-header-table {\n    overflow-y: scroll;\n    border-top: 1px solid #bcc3ca;\n    border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar {\n      width: 6px;\n      height: 6px; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar-track, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar-track {\n      background-color: #e6ecf0; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar-thumb, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar-thumb {\n      background-color: #bcc3ca;\n      border-radius: 3px; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar-button, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar-button {\n      width: 0;\n      height: 0; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table table thead tr {\n      height: 0;\n      line-height: 0; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table table th {\n      position: inherit;\n      padding-top: 0;\n      padding-bottom: 0;\n      font-size: 0;\n      white-space: nowrap;\n      border: none; }\n      .coveo-styleguide .fixed-header-table-container .fixed-header-table table th.admin-sort .admin-sort-icon {\n        left: 0; }\n      .coveo-styleguide .fixed-header-table-container .fixed-header-table table th div.fixed-header-container {\n        position: absolute;\n        top: 0;\n        padding: 7px 0;\n        font-size: 12px;\n        line-height: 16px; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table table tbody tr:last-child {\n      height: 36px; }\n      .coveo-styleguide .fixed-header-table-container .fixed-header-table table tbody tr:last-child td {\n        border-bottom: none; }\n\n.coveo-styleguide .coveo-table-actions-container {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n     -moz-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  -moz-box-sizing: content-box;\n       box-sizing: content-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 52px;\n  background-color: #f1f3f4; }\n  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions {\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n       -moz-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -moz-box-sizing: border-box;\n         box-sizing: border-box;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 52px;\n    padding: 0 30px; }\n    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .actions-row {\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex; }\n    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .admin-select.dropdown {\n      vertical-align: super; }\n    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action {\n      line-height: 0;\n      border: 1px solid transparent;\n      border-radius: 2px;\n      cursor: pointer;\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .state-disabled {\n        cursor: default;\n        opacity: 0.3; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action + .action {\n        margin-left: 30px; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown {\n        padding: 3px 10px;\n        margin-right: -10px;\n        margin-left: -webkit-calc(30px - 10px);\n        margin-left: calc(30px - 10px); }\n        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown .dropdown-toggle {\n          padding: 0; }\n        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown.open {\n          background-color: #e6ecf0;\n          border-color: #bcc3ca; }\n        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown:first-child {\n          margin-left: -10px; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .action-label {\n        margin-top: 1px;\n        margin-left: 10px;\n        color: #1d4f76;\n        font-size: 13px;\n        font-weight: bold;\n        line-height: 11px;\n        text-transform: uppercase; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .action-icon, .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .action-icon svg {\n        display: inline-block;\n        width: 26px;\n        height: 26px; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.prompt-action {\n        padding: 8.5px 16px;\n        margin-left: 10px; }\n  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions + .coveo-table-actions {\n    border-left: 1px solid #bcc3ca; }\n  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions.predicate-filters + .coveo-table-actions:last-child {\n    padding-left: 0;\n    border-left: none; }\n  .coveo-styleguide .coveo-table-actions-container.mod-align-header .coveo-table-actions:last-child {\n    padding-right: 40px; }\n\n.coveo-styleguide .item-filter {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.coveo-styleguide .item-filter-item {\n  display: inline-block;\n  margin: 0 10px;\n  color: #009ad9; }\n\n.coveo-styleguide .item-filter-clear {\n  padding: 0;\n  background: none;\n  border: none;\n  outline: none;\n  cursor: pointer; }\n\n.coveo-styleguide table.mod-align-header th:first-child {\n  padding-left: 40px; }\n\n.coveo-styleguide table.mod-align-header tbody tr td:first-child {\n  padding-left: 35px; }\n\n.coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child {\n  padding-left: 35px; }\n  .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .container {\n    padding-right: 35px;\n    padding-left: 35px;\n    margin-right: -35px;\n    margin-left: -35px; }\n  .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .box.padded {\n    padding-left: 0; }\n  .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .box .label, .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .box .value {\n    padding-right: 0;\n    padding-left: 0; }\n\n.coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:last-child {\n  padding-right: 35px; }\n\n.coveo-styleguide table.mod-collapsible-rows tbody tr {\n  height: 45px; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='collapsed'] .state-expanded {\n    display: none; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='collapsed'] .state-collapsed {\n    display: inline; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='expanded'] .state-expanded {\n    display: inline; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='expanded'] .state-collapsed {\n    display: none; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr.heading-row.opened:not(:hover) td {\n    background-color: #f1f3f4; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row {\n    height: 0;\n    line-height: 12px; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td {\n      padding: 0;\n      border-bottom: 0; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td:first-child {\n        border-left: 0; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .container {\n        display: none; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .section-title {\n        padding-top: 10px;\n        color: #1d4f76;\n        font-size: 12px;\n        font-weight: bold;\n        text-transform: uppercase; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container {\n        padding: 15px 35px;\n        margin-right: -35px;\n        margin-left: -35px;\n        background: #ffffff;\n        border-bottom: 1px solid;\n        border-bottom-color: #bcc3ca; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .details-container {\n          padding-right: 15px; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value {\n          padding: 5px 0;\n          font-size: 14px;\n          line-height: 15px; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value b {\n            font-weight: bold; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value i {\n            font-style: italic; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value ul {\n            padding-left: 20px;\n            list-style-type: disc; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .label {\n          padding: 5px 0;\n          font-size: 12px;\n          font-weight: normal; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-title {\n          padding: 0;\n          color: #ce3f00; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-description-container {\n          -webkit-flex-basis: -webkit-calc(33% - 15px);\n              -ms-flex-preferred-size: calc(33% - 15px);\n                  flex-basis: calc(33% - 15px); }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-description-container li {\n            padding-bottom: 5px; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-description-container .error-description {\n            padding-top: 5px;\n            color: #ce3f00; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .troubleshooting-container {\n          -webkit-flex-basis: -webkit-calc(66% - 15px);\n              -ms-flex-preferred-size: calc(66% - 15px);\n                  flex-basis: calc(66% - 15px); }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row.in td {\n      border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td {\n      background-color: #f1f3f4; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box.padded {\n      padding: 5px 10px; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box .label, .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box .value {\n      padding: 5px;\n      overflow: hidden;\n      font-size: 12px;\n      text-overflow: ellipsis; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box .label {\n      color: #296896; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .columns {\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n      -webkit-flex-flow: row wrap;\n         -moz-box-orient: horizontal;\n         -moz-box-direction: normal;\n          -ms-flex-flow: row wrap;\n              flex-flow: row wrap;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .columns .box {\n        -webkit-flex-basis: 33%;\n            -ms-flex-preferred-size: 33%;\n                flex-basis: 33%; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .columns .box.padded {\n          -webkit-flex-basis: -webkit-calc(33% - 10px);\n              -ms-flex-preferred-size: calc(33% - 10px);\n                  flex-basis: calc(33% - 10px); }\n\n.coveo-styleguide table.mod-collapsible-rows.mod-slim tbody:not(.loading-row) tr {\n  height: auto; }\n\n.coveo-styleguide .pagination-container {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-bottom: 20px; }\n  .coveo-styleguide .pagination-container.loading-view .spinner {\n    display: block;\n    margin-top: 30px; }\n  .coveo-styleguide .pagination-container.loading-view .items-per-page, .coveo-styleguide .pagination-container.loading-view .pagination {\n    opacity: 0.4;\n    pointer-events: none; }\n  .coveo-styleguide .pagination-container .items-per-page {\n    margin: 20px 40px 0 40px; }\n  .coveo-styleguide .pagination-container .pagination {\n    margin: 20px -webkit-calc(40px - 5px) 0 -webkit-calc(40px - 5px);\n    margin: 20px calc(40px - 5px) 0 calc(40px - 5px); }\n  .coveo-styleguide .pagination-container .pagination .pagination-icon {\n    vertical-align: -2px; }\n  .coveo-styleguide .pagination-container .spinner {\n    display: none; }\n\n.coveo-styleguide .modal .pagination-container .items-per-page, .coveo-styleguide .modal .pagination-container .pagination, .coveo-styleguide .modal-container .modal-body .pagination-container .items-per-page, .coveo-styleguide .modal-container .modal-body .pagination-container .pagination {\n  margin: 20px -5px 0 0; }\n\n.coveo-styleguide table.mod-slim td {\n  padding-top: 0;\n  padding-bottom: 0; }\n\n.coveo-styleguide table.mod-slim tbody tr:not(.empty) {\n  height: auto;\n  font-size: 13px; }\n\n.coveo-styleguide table.mod-alternate tbody tr td, .coveo-styleguide table.mod-alternate tbody tr td:hover, .coveo-styleguide table.mod-alternate tbody tr:hover td, .coveo-styleguide table.mod-alternate tbody tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr td, .coveo-styleguide table.mod-alternate tbody:hover tr td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr:hover td, .coveo-styleguide table.mod-alternate tbody:hover tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover td:hover {\n  background-color: #ffffff; }\n\n.coveo-styleguide table.mod-alternate tbody tr.selected td, .coveo-styleguide table.mod-alternate tbody tr.selected td:hover, .coveo-styleguide table.mod-alternate tbody tr:hover.selected td, .coveo-styleguide table.mod-alternate tbody tr:hover.selected td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row.selected td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row.selected td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover.selected td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr:hover.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr:hover.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover.selected td:hover {\n  background-color: #f1f3f4; }\n\n.coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td:hover, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td:hover {\n  background-color: #f1f3f4; }\n  .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td:hover .row-error-container {\n    background-color: #f1f3f4; }\n\n.coveo-styleguide table.drag-and-drop-table-view [draggable] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-user-drag: element; }\n\n.coveo-styleguide table.drag-and-drop-table-view tr th.drag-column {\n  width: 25px;\n  padding: 7px 10px; }\n\n.coveo-styleguide table.drag-and-drop-table-view tr.drag-over {\n  background-color: rgba(188, 195, 202, 0.5); }\n  .coveo-styleguide table.drag-and-drop-table-view tr.drag-over td.drag-feedback {\n    background-color: rgba(188, 195, 202, 0.5); }\n\n.coveo-styleguide table.drag-and-drop-table-view .drag-feedback {\n  position: relative; }\n\n.coveo-styleguide table.drag-and-drop-table-view .handle {\n  padding: 0;\n  text-align: center;\n  cursor: move;\n  cursor: -webkit-grab;\n  cursor: -moz-grab;\n  cursor: grab; }\n  .coveo-styleguide table.drag-and-drop-table-view .handle:active {\n    cursor: -webkit-grabbing;\n    cursor: -moz-grabbing;\n    cursor: grabbing; }\n  .coveo-styleguide table.drag-and-drop-table-view .handle .icon {\n    pointer-events: none;\n    fill: #bcc3ca; }\n\n.coveo-styleguide .modal-container.mod-prompt .modal-content {\n  height: auto;\n  max-width: 550px;\n  max-height: 350px;\n  min-width: 500px;\n  min-height: 280px; }\n  .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-header {\n    height: 90px;\n    padding: 20px 30px; }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-header .small-close {\n      width: 14px;\n      height: 14px; }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-header h1 {\n      color: #ffffff;\n      white-space: inherit; }\n  .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body {\n    -webkit-flex-basis: inherit;\n        -ms-flex-preferred-size: inherit;\n            flex-basis: inherit;\n    -webkit-box-flex: initial;\n    -webkit-flex-grow: initial;\n       -moz-box-flex: initial;\n        -ms-flex-positive: initial;\n            flex-grow: initial;\n    min-height: -webkit-calc(280px - 90px - 84px);\n    min-height: calc(280px - 90px - 84px);\n    min-height: -webkit-calc(280px - 90px - -webkit-calc(2 * 24px + 34px + 2 * 1px));\n    min-height: calc(280px - 90px - calc(2 * 24px + 34px + 2 * 1px)); }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body.mod-header-padding {\n      padding-right: 30px;\n      padding-left: 30px; }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body .prompt-message, .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body .pompt-message {\n      padding-top: 24px;\n      line-height: 20px; }\n  .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-footer {\n    height: -webkit-calc(2 * 24px + 34px + 2 * 1px);\n    height: calc(2 * 24px + 34px + 2 * 1px);\n    padding: 20px 30px;\n    background-color: #ffffff;\n    border-top: 0; }\n\n.coveo-styleguide .modal-container.mod-medium .modal-content {\n  max-height: initial; }\n  .coveo-styleguide .modal-container.mod-medium .modal-content .modal-body {\n    max-height: initial;\n    min-height: initial; }\n\n.coveo-styleguide .header {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%;\n  height: 65px;\n  color: #f1f3f4;\n  background-color: #296896; }\n  .coveo-styleguide .header .header-section {\n    border-left: solid 1px rgba(0, 0, 0, 0.1); }\n    .coveo-styleguide .header .header-section.mod-padded {\n      padding: 0 25px; }\n    .coveo-styleguide .header .header-section:first-child {\n      border-left: none; }\n\n.coveo-styleguide .navigation {\n  width: 245px;\n  overflow: auto;\n  background-color: #263e55;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .coveo-styleguide .navigation::-webkit-scrollbar, .coveo-styleguide .navigation ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .coveo-styleguide .navigation::-webkit-scrollbar-track, .coveo-styleguide .navigation ::-webkit-scrollbar-track {\n    background-color: #373737; }\n  .coveo-styleguide .navigation::-webkit-scrollbar-thumb, .coveo-styleguide .navigation ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .coveo-styleguide .navigation::-webkit-scrollbar-button, .coveo-styleguide .navigation ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n  .coveo-styleguide .navigation *, .coveo-styleguide .navigation *:before, .coveo-styleguide .navigation *:after {\n    -webkit-font-smoothing: subpixel-antialiased; }\n  .coveo-styleguide .navigation .tooltip.right .tooltip-arrow {\n    border-right-color: #f58020; }\n  .coveo-styleguide .navigation .tooltip .tooltip-inner {\n    background-color: #f58020; }\n  .coveo-styleguide .navigation .navigation-menu {\n    position: relative;\n    height: 100%;\n    overflow: auto;\n    color: #f1f3f4;\n    background-color: #263e55; }\n    .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header {\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex;\n      height: 50px;\n      font-size: 13px;\n      font-weight: 700;\n      text-transform: uppercase;\n      background-color: #1d4f76; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header .navigation-menu-section-header-icon {\n        margin: 0 15px; }\n    .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item {\n      font-weight: 400;\n      border-left: 3px solid transparent;\n      cursor: pointer; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link {\n        -webkit-box-align: center;\n        -webkit-align-items: center;\n           -moz-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: justify;\n        -webkit-justify-content: space-between;\n           -moz-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        display: -webkit-box;\n        display: -webkit-flex;\n        display: -moz-box;\n        display: -ms-flexbox;\n        display: flex;\n        height: 30px;\n        padding-left: 43px;\n        margin-right: 43px;\n        color: #f1f3f4; }\n        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link.state-locked {\n          color: #bcc3ca; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .icon-folder-locked {\n        display: inline-block;\n        visibility: visible; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-closed .icon-folder-closed {\n        display: inline-block;\n        visibility: visible; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-opened .icon-folder-opened {\n        display: inline-block;\n        visibility: visible; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-active {\n        background-color: #57748a;\n        border-left-color: #f1f3f4; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item:hover {\n        background-color: #57748a; }\n\n.coveo-styleguide .sub-navigation {\n  min-width: 200px;\n  overflow: auto;\n  background-color: #f1f3f4;\n  border-right: 200px; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar, .coveo-styleguide .sub-navigation ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar-track, .coveo-styleguide .sub-navigation ::-webkit-scrollbar-track {\n    background-color: #bcc3ca; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar-thumb, .coveo-styleguide .sub-navigation ::-webkit-scrollbar-thumb {\n    background-color: #373737;\n    border-radius: 3px; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar-button, .coveo-styleguide .sub-navigation ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n  .coveo-styleguide .sub-navigation .sub-navigation-items {\n    padding-top: 26px; }\n    .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item {\n      position: relative; }\n      .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item .sub-navigation-item-link {\n        display: block;\n        padding: 7px 40px;\n        color: #1d4f76;\n        line-height: 16px; }\n      .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item.mod-selected {\n        background-color: #e6ecf0; }\n        .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item.mod-selected:before {\n          position: absolute;\n          top: 0;\n          left: 0;\n          display: block;\n          width: 3px;\n          height: 100%;\n          content: '';\n          background-color: #f58020; }\n\n.coveo-styleguide .application-container {\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-box-ordinal-group: 3;\n  -webkit-order: 2;\n     -moz-box-ordinal-group: 3;\n      -ms-flex-order: 2;\n          order: 2;\n  overflow: auto;\n  border-top-left-radius: 2px; }\n\n.coveo-styleguide .application-wrapper {\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start;\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row nowrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.coveo-styleguide .member {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .coveo-styleguide .member .member-icon {\n    width: 42px;\n    height: 42px;\n    overflow: hidden;\n    background-color: #f1f3f4;\n    border-radius: 100%; }\n    .coveo-styleguide .member .member-icon .member-icon-provider {\n      display: block;\n      height: 42px;\n      max-width: 26px;\n      margin: auto; }\n  .coveo-styleguide .member .member-info {\n    margin-left: 14px; }\n    .coveo-styleguide .member .member-info .member-info-name {\n      font-size: 13px;\n      font-weight: 700;\n      line-height: 16px;\n      text-transform: uppercase; }\n    .coveo-styleguide .member .member-info .member-info-email {\n      margin-top: 2px;\n      font-size: 12px;\n      font-weight: 400;\n      line-height: 15px; }\n\n.coveo-styleguide .dropdown.mod-menu .dropdown-toggle {\n  height: auto;\n  min-height: 34px;\n  text-transform: none;\n  background-color: transparent;\n  border: none;\n  cursor: pointer; }\n  .coveo-styleguide .dropdown.mod-menu .dropdown-toggle .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n\n.coveo-styleguide .dropdown.mod-menu.open > .dropdown-toggle .dropdown-toggle-arrow {\n  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n  background-repeat: no-repeat; }\n\n.coveo-styleguide .dropdown.mod-menu .dropdown-menu li > a, .coveo-styleguide .dropdown.mod-menu .dropdown-menu li > span {\n  padding: 8px 38px; }\n\n.coveo-styleguide .dropdown.mod-menu .dropdown-menu li.divider {\n  margin: 8px 0; }\n\n.coveo-styleguide .tooltip {\n  position: absolute;\n  z-index: 10000;\n  display: block;\n  font-size: 13px;\n  line-height: 1.4;\n  text-transform: none;\n  opacity: 0;\n  visibility: visible; }\n  .coveo-styleguide .tooltip.in {\n    opacity: 1; }\n  .coveo-styleguide .tooltip.top {\n    padding: 5px 0;\n    margin-top: -3px; }\n    .coveo-styleguide .tooltip.top .tooltip-arrow {\n      bottom: 0;\n      left: 50%;\n      margin-left: -5px;\n      border-top-color: #263e55;\n      border-width: 5px 5px 0; }\n  .coveo-styleguide .tooltip.right {\n    padding: 0 5px;\n    margin-left: 3px; }\n    .coveo-styleguide .tooltip.right .tooltip-arrow {\n      top: 50%;\n      left: 0;\n      margin-top: -5px;\n      border-right-color: #263e55;\n      border-width: 5px 5px 5px 0; }\n  .coveo-styleguide .tooltip.bottom {\n    padding: 5px 0;\n    margin-top: 3px; }\n    .coveo-styleguide .tooltip.bottom .tooltip-arrow {\n      top: 0;\n      left: 50%;\n      margin-left: -5px;\n      border-bottom-color: #263e55;\n      border-width: 0 5px 5px; }\n  .coveo-styleguide .tooltip.left {\n    padding: 0 5px;\n    margin-left: -3px; }\n    .coveo-styleguide .tooltip.left .tooltip-arrow {\n      top: 50%;\n      right: 0;\n      margin-top: -5px;\n      border-left-color: #263e55;\n      border-width: 5px 0 5px 5px; }\n  .coveo-styleguide .tooltip.state-error .tooltip-inner {\n    background-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.left .tooltip-arrow {\n    border-left-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.bottom .tooltip-arrow {\n    border-bottom-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.top .tooltip-arrow {\n    border-top-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.right .tooltip-arrow {\n    border-right-color: #ce3f00; }\n  .coveo-styleguide .tooltip .tooltip-arrow {\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-color: transparent;\n    border-style: solid; }\n  .coveo-styleguide .tooltip .tooltip-inner {\n    max-width: 300px;\n    padding: 5px 10px;\n    color: #ffffff;\n    text-decoration: none;\n    word-wrap: break-word;\n    white-space: normal;\n    background-color: #263e55;\n    border-radius: 2px; }\n\n.coveo-styleguide .tooltip-footer {\n  margin-top: 10px; }\n\n.coveo-styleguide .popover {\n  min-width: 320px;\n  background-color: #ffffff;\n  box-shadow: 0 2px 4px rgba(8, 8, 14, 0.4);\n  border: 1px solid #263e55;\n  border-radius: 2px; }\n\n.coveo-styleguide .popover-body {\n  padding: 16px; }\n\n.coveo-styleguide .popover-footer {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n     -moz-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 12px 16px;\n  overflow: hidden;\n  background-color: #f1f3f4;\n  border-top: solid 1px #bcc3ca;\n  border-radius: 0 0 2px 2px; }\n\n.coveo-styleguide .popover-navigation-section {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 30px;\n  background-color: #f1f3f4;\n  border-right: 1px solid #bcc3ca;\n  border-radius: 1px 0 0 1px;\n  cursor: pointer; }\n  .coveo-styleguide .popover-navigation-section .back {\n    margin-top: 15px; }\n\n.coveo-styleguide .modal-backdrop, .coveo-styleguide .modal-container {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\n.coveo-styleguide .modal-backdrop {\n  z-index: 1049;\n  background: #1d4f76;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  opacity: 0.9; }\n  .coveo-styleguide .modal-backdrop.layer-1 {\n    z-index: 1049; }\n  .coveo-styleguide .modal-backdrop.layer-2 {\n    z-index: 1069; }\n  .coveo-styleguide .modal-backdrop.layer-3 {\n    z-index: 1089; }\n  .coveo-styleguide .modal-backdrop.layer-4 {\n    z-index: 1109; }\n  .coveo-styleguide .modal-backdrop.layer-5 {\n    z-index: 1129; }\n  .coveo-styleguide .modal-backdrop.layer-6 {\n    z-index: 1149; }\n  .coveo-styleguide .modal-backdrop.layer-7 {\n    z-index: 1169; }\n  .coveo-styleguide .modal-backdrop.layer-8 {\n    z-index: 1189; }\n  .coveo-styleguide .modal-backdrop.layer-9 {\n    z-index: 1209; }\n  .coveo-styleguide .modal-backdrop.layer-10 {\n    z-index: 1229; }\n  .coveo-styleguide .modal-backdrop.prompt-backdrop {\n    position: absolute;\n    opacity: 0.5; }\n    .coveo-styleguide .modal-backdrop.prompt-backdrop .mask {\n      position: fixed;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0; }\n  .coveo-styleguide .modal-backdrop.clear, .coveo-styleguide .modal-backdrop.closed {\n    opacity: 0; }\n  .coveo-styleguide .modal-backdrop.closed {\n    visibility: hidden; }\n\n.coveo-styleguide .modal-container {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  z-index: 1050;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  visibility: hidden;\n  pointer-events: none; }\n  .coveo-styleguide .modal-container.layer-1 {\n    z-index: 1050; }\n  .coveo-styleguide .modal-container.layer-2 {\n    z-index: 1070; }\n  .coveo-styleguide .modal-container.layer-3 {\n    z-index: 1090; }\n  .coveo-styleguide .modal-container.layer-4 {\n    z-index: 1110; }\n  .coveo-styleguide .modal-container.layer-5 {\n    z-index: 1130; }\n  .coveo-styleguide .modal-container.layer-6 {\n    z-index: 1150; }\n  .coveo-styleguide .modal-container.layer-7 {\n    z-index: 1170; }\n  .coveo-styleguide .modal-container.layer-8 {\n    z-index: 1190; }\n  .coveo-styleguide .modal-container.layer-9 {\n    z-index: 1210; }\n  .coveo-styleguide .modal-container.layer-10 {\n    z-index: 1230; }\n  .coveo-styleguide .modal-container.opening, .coveo-styleguide .modal-container.opened {\n    visibility: visible; }\n    .coveo-styleguide .modal-container.opening > .modal-content, .coveo-styleguide .modal-container.opened > .modal-content {\n      opacity: 1; }\n  .coveo-styleguide .modal-container .modal-content {\n    position: relative;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n       -moz-box-orient: vertical;\n       -moz-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 45%;\n    height: 50%;\n    opacity: 0;\n    pointer-events: auto; }\n  .coveo-styleguide .modal-container.mod-medium > .modal-content {\n    width: 65%;\n    height: 70%; }\n  .coveo-styleguide .modal-container.mod-big > .modal-content {\n    width: 85%;\n    height: 90%; }\n  .coveo-styleguide .modal-container.mod-width-small > .modal-content {\n    width: 520px; }\n  .coveo-styleguide .modal-container.mod-stick-bottom {\n    -webkit-box-align: end;\n    -webkit-align-items: flex-end;\n       -moz-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n    .coveo-styleguide .modal-container.mod-stick-bottom > .modal-content {\n      height: 55%; }\n      .coveo-styleguide .modal-container.mod-stick-bottom > .modal-content > .modal-footer {\n        border-radius: 0; }\n    .coveo-styleguide .modal-container.mod-stick-bottom.mod-medium > .modal-content {\n      height: 75%; }\n    .coveo-styleguide .modal-container.mod-stick-bottom.mod-big > .modal-content {\n      height: 95%; }\n  .coveo-styleguide .modal-container.mod-fade-in-scale > .modal-content {\n    -webkit-transform: scale(0.7);\n            transform: scale(0.7);\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s; }\n  .coveo-styleguide .modal-container.opened.mod-fade-in-scale > .modal-content {\n    -webkit-transform: scale(1);\n            transform: scale(1); }\n  .coveo-styleguide .modal-container.mod-slide-in-bottom > .modal-content {\n    -webkit-transform: translate3d(0, 20%, 0);\n            transform: translate3d(0, 20%, 0);\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s; }\n  .coveo-styleguide .modal-container.opened.mod-slide-in-bottom > .modal-content {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n\n.coveo-styleguide .modal-header {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100px;\n  padding: 0 40px;\n  color: #ffffff;\n  background-color: #ffffff;\n  border-radius: 2px 2px 0 0; }\n  .coveo-styleguide .modal-header:not(.mod-no-border-bottom) {\n    border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .modal-header.mod-confirmation {\n    background-color: #ecad00; }\n  .coveo-styleguide .modal-header.mod-warning {\n    background-color: #ce3f00; }\n  .coveo-styleguide .modal-header.mod-info {\n    background-color: #1d4f76; }\n  .coveo-styleguide .modal-header h1 {\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n       -moz-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    overflow: hidden;\n    color: #1d4f76;\n    line-height: 30px;\n    text-overflow: ellipsis;\n    white-space: nowrap; }\n  .coveo-styleguide .modal-header .small-close {\n    position: absolute;\n    top: -2.10256em;\n    right: 0;\n    cursor: pointer; }\n    .coveo-styleguide .modal-header .small-close, .coveo-styleguide .modal-header .small-close .icon {\n      width: 1.33333em;\n      height: 1.33333em; }\n\n.coveo-styleguide .modal-body {\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  background-color: #ffffff; }\n  .coveo-styleguide .modal-body .tab-content {\n    height: 100%; }\n\n.coveo-styleguide .modal-footer {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n     -moz-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 24px 40px;\n  overflow: hidden;\n  background-color: #f1f3f4;\n  border-top: 1px solid #bcc3ca;\n  border-radius: 0 0 2px 2px; }\n  .coveo-styleguide .modal-footer.mod-small {\n    padding: 12px 20px; }\n\n.coveo-styleguide .lightbox-search-input {\n  width: 100%;\n  padding: 10px 20px;\n  color: #373737;\n  font-size: 2rem;\n  border: none;\n  outline: none; }\n\n.coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover {\n  width: 100%;\n  padding: 0;\n  margin-top: 5px;\n  overflow: hidden;\n  background: #ffffff;\n  border: none;\n  border-radius: 2px; }\n  .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li {\n    height: auto;\n    padding: 0;\n    color: #373737;\n    line-height: inherit;\n    cursor: pointer; }\n    .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li:hover, .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li.admin-active {\n      color: #1d4f76;\n      background-color: #f1f3f4; }\n    .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li .autocomplete-value {\n      display: block;\n      padding: 10px 20px;\n      font-size: 1.8rem;\n      border-top: 1px solid #e6ecf0; }\n\n.coveo-styleguide .blankslate {\n  padding: 30px;\n  color: #1d4f76;\n  text-align: center;\n  background-color: #f1f3f4;\n  border: 1px solid #1d4f76;\n  border-radius: 2px; }\n  .coveo-styleguide .blankslate h1, .coveo-styleguide .blankslate h2, .coveo-styleguide .blankslate h3, .coveo-styleguide .blankslate h4, .coveo-styleguide .blankslate h5, .coveo-styleguide .blankslate h6 {\n    margin: 15px 0 24px 0; }\n  .coveo-styleguide .blankslate p {\n    margin-bottom: 20px;\n    color: #1d4f76; }\n\n.coveo-styleguide .banner {\n  width: 100%;\n  height: 60px;\n  padding: 0 40px; }\n\n.coveo-styleguide .banner-description {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  color: #f1f3f4;\n  font-size: 18px;\n  text-align: center; }\n  .coveo-styleguide .banner-description button {\n    margin-left: 20px;\n    border: none; }\n\n.coveo-styleguide .collapsible .collapsible-header {\n  display: block;\n  width: 100%;\n  min-height: 50px;\n  padding: 0 40px;\n  font-size: 13px;\n  line-height: 50px;\n  text-align: left;\n  text-transform: uppercase;\n  background-color: #f1f3f4;\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgLTEgMTIuMzY2IDcuMDg2KSIgICAgICAgIGQ9Im0xMS40MjEgNy4wNGMtLjMgMC0uNS0uMS0uNy0uM2wtNC42LTQuNi00LjYgNC42Yy0uNC40LTEgLjQtMS40IDBzLS40LTEgMC0xLjRsNS4yLTUuMmMuNC0uNCAxLjItLjQgMS42IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNC0uMi4yLS40LjMtLjcuMyIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-position: right 40px center;\n  background-size: 10px 10px;\n  border: none;\n  border-bottom: 1px solid #bcc3ca;\n  outline: none;\n  cursor: pointer; }\n  .coveo-styleguide .collapsible .collapsible-header.active, .coveo-styleguide .collapsible .input-field input:focus:not([readonly]) + label.collapsible-header, .input-field .coveo-styleguide .collapsible input:focus:not([readonly]) + label.collapsible-header, .coveo-styleguide .collapsible .input-field input:valid + label.collapsible-header, .input-field .coveo-styleguide .collapsible input:valid + label.collapsible-header, .coveo-styleguide .collapsible .input-field input:disabled + label.collapsible-header, .input-field .coveo-styleguide .collapsible input:disabled + label.collapsible-header, .coveo-styleguide .collapsible .input-field textarea:focus:not([readonly]) + label.collapsible-header, .input-field .coveo-styleguide .collapsible textarea:focus:not([readonly]) + label.collapsible-header, .coveo-styleguide .collapsible .input-field textarea:valid + label.collapsible-header, .input-field .coveo-styleguide .collapsible textarea:valid + label.collapsible-header, .coveo-styleguide .collapsible .input-field textarea:disabled + label.collapsible-header, .input-field .coveo-styleguide .collapsible textarea:disabled + label.collapsible-header {\n    background-color: #e6ecf0;\n    background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCAgICAgIGQ9Im0xMS4zIDcuMDRjLS4zIDAtLjUtLjEtLjctLjNsLTQuNi00LjYtNC42IDQuNmMtLjQuNC0xIC40LTEuNCAwcy0uNC0xIDAtMS40bDUuMi01LjJjLjQtLjQgMS4yLS40IDEuNiAwbDUuMiA1LjJjLjQuNC40IDEgMCAxLjQtLjIuMi0uNC4zLS43LjMiLz48L3N2Zz4=\"); }\n\n.coveo-styleguide .collapsible .collapsible-body {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  display: none;\n  padding: 20px 40px;\n  border-bottom: 1px solid #bcc3ca; }\n\n.coveo-styleguide .panel-header {\n  min-height: 100px;\n  padding: 5px 40px; }\n  .coveo-styleguide .panel-header:not(.mod-no-border-bottom) {\n    border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .panel-header .action-bar {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    -webkit-flex-flow: row nowrap;\n       -moz-box-orient: horizontal;\n       -moz-box-direction: normal;\n        -ms-flex-flow: row nowrap;\n            flex-flow: row nowrap;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .coveo-styleguide .panel-header .admin-description {\n    margin-top: 5px; }\n  .coveo-styleguide .panel-header .action {\n    display: inline-block;\n    height: 34px;\n    padding: 4px 5px;\n    margin-left: 5px;\n    vertical-align: bottom;\n    background-color: #ffffff;\n    border: 1px solid #bcc3ca;\n    border-radius: 2px;\n    cursor: pointer; }\n    .coveo-styleguide .panel-header .action.open, .coveo-styleguide .panel-header .action:focus, .coveo-styleguide .panel-header .action:active {\n      background-color: #e6ecf0; }\n    .coveo-styleguide .panel-header .action span {\n      display: inline-block;\n      vertical-align: middle; }\n      .coveo-styleguide .panel-header .action span.state-disabled {\n        color: #bcc3ca;\n        cursor: default; }\n    .coveo-styleguide .panel-header .action .action-label {\n      display: none; }\n    .coveo-styleguide .panel-header .action.dropdown .dropdown-toggle {\n      padding: 0; }\n\n.coveo-styleguide .facet-column {\n  display: block;\n  width: 30%;\n  max-width: 360px;\n  padding: 24px 32px 24px 40px;\n  margin-right: 0;\n  border-right: 1px solid #bcc3ca; }\n\n.coveo-styleguide .facet {\n  position: relative;\n  padding-bottom: 15px;\n  margin: 10px 0;\n  background: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .facet-header {\n  position: relative;\n  padding: 16px;\n  clear: both;\n  background: #f1f3f4;\n  border-top-right-radius: 2px;\n  border-top-left-radius: 2px; }\n\n.coveo-styleguide .facet-header-eraser {\n  position: absolute;\n  top: 0;\n  right: 25px;\n  height: 100%;\n  cursor: pointer; }\n  .coveo-styleguide .facet-header-eraser .icon {\n    position: relative;\n    top: 50%;\n    display: block;\n    width: 10px;\n    height: 10px;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%); }\n    .coveo-styleguide .facet-header-eraser .icon:hover {\n      fill: #373737; }\n\n.coveo-styleguide .remove-selected-tooltip {\n  display: block;\n  height: 100%; }\n\n.coveo-styleguide .facet-header-title {\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 15px; }\n\n.coveo-styleguide .facet-values {\n  padding-top: 5px;\n  margin: 0;\n  list-style: none; }\n\n.coveo-styleguide .facet-value {\n  position: relative;\n  padding: 0 16px;\n  margin: 0; }\n  .coveo-styleguide .facet-value:hover {\n    background-color: #e6ecf0; }\n\n.coveo-styleguide .facet-value-label {\n  display: block;\n  padding: 5px 0;\n  overflow: hidden;\n  font-size: 15px;\n  white-space: nowrap;\n  cursor: pointer; }\n\n.coveo-styleguide .facet-value .label {\n  position: relative;\n  top: -1px; }\n\n.coveo-styleguide .facet-more .facet-more-button {\n  display: inline-block;\n  border: 2px dashed #bcc3ca; }\n  .coveo-styleguide .facet-more .facet-more-button + .label {\n    top: -3px;\n    margin-left: 18px; }\n  .coveo-styleguide .facet-more .facet-more-button:before, .coveo-styleguide .facet-more .facet-more-button:after {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    display: block;\n    content: '';\n    background-color: #bcc3ca;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%); }\n  .coveo-styleguide .facet-more .facet-more-button:before {\n    width: 2px;\n    height: 10px; }\n  .coveo-styleguide .facet-more .facet-more-button:after {\n    width: 10px;\n    height: 2px; }\n\n.coveo-styleguide .facet-more .label {\n  color: #009ad9; }\n\n.coveo-styleguide .facet-value.facet-more:hover .facet-more-button {\n  border-style: solid; }\n\n.coveo-styleguide .facet-search {\n  margin: 10px 16px; }\n  .coveo-styleguide .facet-search .coveo-filter-container, .coveo-styleguide .facet-search .filter-container {\n    width: 100%; }\n    .coveo-styleguide .facet-search .coveo-filter-container input.filter-box, .coveo-styleguide .facet-search .filter-container input.filter-box {\n      width: 100%; }\n\n.coveo-styleguide .facet-search-results {\n  position: absolute;\n  top: -webkit-calc(100% - 25px);\n  top: calc(100% - 25px);\n  left: 16px;\n  z-index: 999;\n  width: -webkit-calc(100% - 16px * 2);\n  width: calc(100% - 16px * 2);\n  max-height: 200px;\n  padding: 8px 0;\n  margin: 3px 0;\n  overflow-x: hidden;\n  overflow-y: auto;\n  list-style: none;\n  background-color: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar, .coveo-styleguide .facet-search-results ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar-track, .coveo-styleguide .facet-search-results ::-webkit-scrollbar-track {\n    background-color: #e6ecf0; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar-thumb, .coveo-styleguide .facet-search-results ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar-button, .coveo-styleguide .facet-search-results ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n\n.coveo-styleguide .facet:last-child.facet-opened .facet-search-results {\n  top: auto;\n  bottom: 60px; }\n\n.coveo-styleguide .spinner {\n  width: 40px;\n  margin: 0 auto;\n  text-align: center;\n  cursor: default; }\n  .coveo-styleguide .spinner.mod-vertical-margin {\n    margin-top: 100px;\n    margin-bottom: 100px; }\n  .coveo-styleguide .spinner > div {\n    display: inline-block;\n    width: 10px;\n    height: 10px;\n    background-color: #f58020;\n    border-radius: 100%;\n    -webkit-animation: bouncedelay 1.7s infinite ease-in-out;\n            animation: bouncedelay 1.7s infinite ease-in-out;\n    /* Prevent first frame from flickering when animation starts */\n    -webkit-animation-fill-mode: both;\n            animation-fill-mode: both; }\n  .coveo-styleguide .spinner .bounce1 {\n    -webkit-animation-delay: -0.32s;\n            animation-delay: -0.32s; }\n  .coveo-styleguide .spinner .bounce2 {\n    -webkit-animation-delay: -0.16s;\n            animation-delay: -0.16s; }\n\n.coveo-styleguide .loading-prompt {\n  margin-top: 60px;\n  margin-bottom: 50px;\n  font-size: 16px;\n  text-align: center; }\n  .coveo-styleguide .loading-prompt .spinner {\n    width: 70px;\n    margin-top: 30px; }\n    .coveo-styleguide .loading-prompt .spinner > div {\n      width: 20px;\n      height: 20px;\n      background-color: #f58020; }\n\n.coveo-styleguide .wizard-card {\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 490px;\n  background-color: #f1f3f4;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n  .coveo-styleguide .wizard-card .wizard-card-body {\n    margin-bottom: auto; }\n    .coveo-styleguide .wizard-card .wizard-card-body .coveo-form {\n      padding-top: 30px;\n      padding-right: 30px;\n      padding-left: 30px; }\n  .coveo-styleguide .wizard-card .wizard-card-footer {\n    -webkit-align-self: flex-end;\n        -ms-flex-item-align: end;\n            align-self: flex-end;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n    -webkit-box-pack: end;\n    -webkit-justify-content: flex-end;\n       -moz-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    padding: 20px 30px;\n    margin-top: auto; }\n    .coveo-styleguide .wizard-card .wizard-card-footer .btn {\n      width: auto;\n      margin: 0; }\n  .coveo-styleguide .wizard-card.mod-small {\n    width: 365px; }\n  .coveo-styleguide .wizard-card.mod-large {\n    width: 1095px; }\n\n.coveo-styleguide .date-picker-dropdown {\n  position: relative; }\n  .coveo-styleguide .date-picker-dropdown .dropdown-menu {\n    max-height: none;\n    min-width: 0;\n    padding: 0; }\n    .coveo-styleguide .date-picker-dropdown .dropdown-menu.on-right {\n      right: 0;\n      left: auto; }\n  .coveo-styleguide .date-picker-dropdown .dropdown-selected-value {\n    font-weight: normal; }\n  .coveo-styleguide .date-picker-dropdown .to-label {\n    color: #373737; }\n\n.coveo-styleguide .date-picker-box {\n  width: 562px;\n  background-color: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .dropdown-menu .date-picker-box {\n  border: none; }\n\n.coveo-styleguide .calendar .calendar-grid {\n  width: 280px;\n  table-layout: fixed; }\n  .coveo-styleguide .calendar .calendar-grid.selecting td:not(.un-selectable) {\n    cursor: pointer; }\n  .coveo-styleguide .calendar .calendar-grid td, .coveo-styleguide .calendar .calendar-grid th, .coveo-styleguide .calendar .calendar-grid td:first-child, .coveo-styleguide .calendar .calendar-grid td:last-child, .coveo-styleguide .calendar .calendar-grid th:first-child, .coveo-styleguide .calendar .calendar-grid th:last-child {\n    width: 40px;\n    height: 40px;\n    padding: 0;\n    text-align: center; }\n  .coveo-styleguide .calendar .calendar-grid th {\n    color: #373737;\n    text-transform: uppercase;\n    border-bottom: 1px solid #e6ecf0; }\n  .coveo-styleguide .calendar .calendar-grid td {\n    border: 1px solid #e6ecf0;\n    border-top: none;\n    border-left: none; }\n    .coveo-styleguide .calendar .calendar-grid td:last-child {\n      border-right: none; }\n  .coveo-styleguide .calendar .calendar-grid .other-month-date, .coveo-styleguide .calendar .calendar-grid .un-selectable {\n    color: #bcc3ca; }\n  .coveo-styleguide .calendar .calendar-grid .selected-date {\n    position: relative;\n    top: 0;\n    left: -1px;\n    display: block;\n    width: -webkit-calc(40px + 1px);\n    width: calc(40px + 1px);\n    height: 28px;\n    color: #ffffff;\n    line-height: 28px; }\n  .coveo-styleguide .calendar .calendar-grid .lower-limit, .coveo-styleguide .calendar .calendar-grid .upper-limit {\n    width: -webkit-calc(40px - 2px - 2px);\n    width: calc(40px - 2px - 2px); }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:before, .coveo-styleguide .calendar .calendar-grid .lower-limit:after, .coveo-styleguide .calendar .calendar-grid .upper-limit:before, .coveo-styleguide .calendar .calendar-grid .upper-limit:after {\n      position: absolute;\n      display: block;\n      width: 5px;\n      height: 2px;\n      content: '';\n      background: #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:before, .coveo-styleguide .calendar .calendar-grid .upper-limit:before {\n      top: -2px; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:after, .coveo-styleguide .calendar .calendar-grid .upper-limit:after {\n      bottom: -2px; }\n  .coveo-styleguide .calendar .calendar-grid .lower-limit {\n    left: -webkit-calc(2px + 2px);\n    left: calc(2px + 2px);\n    border-left: 2px solid #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:before, .coveo-styleguide .calendar .calendar-grid .lower-limit:after {\n      left: -2px; }\n  .coveo-styleguide .calendar .calendar-grid .upper-limit {\n    border-right: 2px solid #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .upper-limit:before, .coveo-styleguide .calendar .calendar-grid .upper-limit:after {\n      right: -2px; }\n  .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit {\n    width: -webkit-calc(40px - 2px * 2 - 2px * 2 - 2px);\n    width: calc(40px - 2px * 2 - 2px * 2 - 2px); }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:before, .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:after {\n      position: absolute;\n      right: -2px;\n      display: block;\n      width: 5px;\n      height: 2px;\n      content: '';\n      background: #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:before {\n      top: -2px; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:after {\n      bottom: -2px; }\n  .coveo-styleguide .calendar .calendar-grid tr:hover td {\n    background: none; }\n  .coveo-styleguide .calendar .calendar-grid tr:last-child td {\n    border-bottom: none; }\n\n.coveo-styleguide .options-cycle {\n  font-size: 24px; }\n  .coveo-styleguide .options-cycle.mod-inline {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -moz-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .coveo-styleguide .options-cycle .options-cycle-option {\n    display: inline-block; }\n  .coveo-styleguide .options-cycle:first-child .options-cycle-option {\n    min-width: 120px;\n    text-align: center; }\n\n.coveo-styleguide .options-cycle-button {\n  padding: 0;\n  font-size: 0.8em;\n  line-height: 1.5;\n  background: none;\n  border: none;\n  outline: none;\n  cursor: pointer; }\n\n.coveo-styleguide .option-picker li {\n  width: 50%; }\n  .coveo-styleguide .option-picker li button {\n    -moz-box-sizing: border-box;\n         box-sizing: border-box;\n    display: block;\n    width: 100%;\n    padding: 8px;\n    color: #1d4f76;\n    font-size: 12px;\n    background: none;\n    border: 1px solid #bcc3ca;\n    border-top-color: transparent;\n    border-left-color: transparent;\n    outline: none;\n    cursor: pointer; }\n  .coveo-styleguide .option-picker li:first-child button {\n    border-top-left-radius: 2px;\n    border-top: 1px solid #bcc3ca; }\n  .coveo-styleguide .option-picker li:nth-child(2) button {\n    border-top-right-radius: 2px;\n    border-top: 1px solid #bcc3ca; }\n  .coveo-styleguide .option-picker li:nth-last-child(2):not(:nth-child(2n)) button, .coveo-styleguide .option-picker li:last-child:nth-child(2n+1) button {\n    border-bottom-left-radius: 2px; }\n  .coveo-styleguide .option-picker li:last-child:not(:nth-child(2n+1)) button {\n    border-bottom-right-radius: 2px; }\n  .coveo-styleguide .option-picker li:nth-child(2n-1) button {\n    border-left: 1px solid #bcc3ca; }\n  .coveo-styleguide .option-picker li:nth-child(1n) button:hover, .coveo-styleguide .option-picker li:nth-child(1n) button.active {\n    background-color: rgba(41, 104, 150, 0.2); }\n  .coveo-styleguide .option-picker li:nth-child(1n) button.active {\n    border-color: #009ad9; }\n\n.coveo-styleguide .date-picker {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  .coveo-styleguide .date-picker input {\n    width: -webkit-calc(100% - 10px - 36px);\n    width: calc(100% - 10px - 36px);\n    padding: 8px;\n    font-size: 15px;\n    border-radius: 2px;\n    outline: none; }\n    .coveo-styleguide .date-picker input:not(.picking-date):not(.date-picked) {\n      border: 1px solid #bcc3ca; }\n    .coveo-styleguide .date-picker input.picking-date, .coveo-styleguide .date-picker input.date-picked {\n      border-style: solid;\n      border-width: 2px; }\n    .coveo-styleguide .date-picker input.date-picked {\n      color: #ffffff; }\n  .coveo-styleguide .date-picker > span {\n    -webkit-box-ordinal-group: 2;\n    -webkit-order: 1;\n       -moz-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1; }\n\n.coveo-styleguide .mod-inline {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  .coveo-styleguide .mod-inline .date-picker {\n    width: -webkit-calc(50% - 10px);\n    width: calc(50% - 10px); }\n    .coveo-styleguide .mod-inline .date-picker input {\n      width: 100%; }\n\n.coveo-styleguide .date-button {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  display: block;\n  width: 36px;\n  height: 36px;\n  padding: 10px;\n  background: none;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: pointer; }\n\n.coveo-styleguide .date-separator {\n  font-size: 15px;\n  line-height: 36px; }\n  .coveo-styleguide .date-separator.mod-vertical {\n    display: block;\n    line-height: 15px;\n    text-align: center; }\n    .coveo-styleguide .date-separator.mod-vertical span {\n      display: inline-block;\n      -webkit-transform: rotate(90deg);\n              transform: rotate(90deg); }\n\n.coveo-styleguide .tab-navigation {\n  min-height: 36px;\n  padding: 0 40px;\n  border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .tab-navigation .tab {\n    position: relative;\n    bottom: -1px;\n    display: inline-block;\n    padding: 10px 0 5px;\n    margin-right: 30px;\n    color: #1d4f76;\n    font-size: 13px;\n    font-weight: bold;\n    line-height: 16px;\n    letter-spacing: 0.3px;\n    text-transform: uppercase;\n    border-bottom: 4px solid transparent;\n    -webkit-transition: all 0.2s ease;\n    transition: all 0.2s ease;\n    cursor: pointer; }\n    .coveo-styleguide .tab-navigation .tab.active, .coveo-styleguide .tab-navigation .input-field input:focus:not([readonly]) + label.tab, .input-field .coveo-styleguide .tab-navigation input:focus:not([readonly]) + label.tab, .coveo-styleguide .tab-navigation .input-field input:valid + label.tab, .input-field .coveo-styleguide .tab-navigation input:valid + label.tab, .coveo-styleguide .tab-navigation .input-field input:disabled + label.tab, .input-field .coveo-styleguide .tab-navigation input:disabled + label.tab, .coveo-styleguide .tab-navigation .input-field textarea:focus:not([readonly]) + label.tab, .input-field .coveo-styleguide .tab-navigation textarea:focus:not([readonly]) + label.tab, .coveo-styleguide .tab-navigation .input-field textarea:valid + label.tab, .input-field .coveo-styleguide .tab-navigation textarea:valid + label.tab, .coveo-styleguide .tab-navigation .input-field textarea:disabled + label.tab, .input-field .coveo-styleguide .tab-navigation textarea:disabled + label.tab {\n      color: #1d4f76;\n      border-bottom: 4px solid #1d4f76; }\n    .coveo-styleguide .tab-navigation .tab.disabled {\n      color: #bcc3ca;\n      cursor: default; }\n    .coveo-styleguide .tab-navigation .tab:last-child {\n      margin-right: 0; }\n  .coveo-styleguide .tab-navigation.sub-tabs .tab {\n    font-size: 12px;\n    font-weight: 400;\n    border-bottom-width: 2px; }\n\n.coveo-styleguide .tab-pane {\n  display: none;\n  visibility: hidden; }\n  .coveo-styleguide .tab-pane.active, .coveo-styleguide .input-field input:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide input:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field input:valid + label.tab-pane, .input-field .coveo-styleguide input:valid + label.tab-pane, .coveo-styleguide .input-field input:disabled + label.tab-pane, .input-field .coveo-styleguide input:disabled + label.tab-pane, .coveo-styleguide .input-field textarea:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide textarea:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field textarea:valid + label.tab-pane, .input-field .coveo-styleguide textarea:valid + label.tab-pane, .coveo-styleguide .input-field textarea:disabled + label.tab-pane, .input-field .coveo-styleguide textarea:disabled + label.tab-pane {\n    display: block;\n    visibility: visible; }\n  .coveo-styleguide .tab-pane .loading, .coveo-styleguide .tab-pane > .spinner {\n    margin-top: 50px; }\n\n.coveo-styleguide .sync-feedback {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .coveo-styleguide .sync-feedback.mod-error {\n    color: #ce3f00; }\n    .coveo-styleguide .sync-feedback.mod-error .sync-feedback-icon svg {\n      fill: #ce3f00; }\n  .coveo-styleguide .sync-feedback.mod-success .sync-feedback-icon svg {\n    fill: #009830; }\n  .coveo-styleguide .sync-feedback .sync-feedback-icon {\n    margin-right: 3px;\n    line-height: 0;\n    vertical-align: middle; }\n  .coveo-styleguide .sync-feedback .status-dot {\n    display: inline-block;\n    width: 13px;\n    height: 13px;\n    vertical-align: -2px;\n    border-radius: 50%; }\n    .coveo-styleguide .sync-feedback .status-dot.syncing {\n      background-color: #373737;\n      -webkit-animation: scaleout 1.0s infinite ease-in-out;\n              animation: scaleout 1.0s infinite ease-in-out; }\n\n.coveo-styleguide .selected-option {\n  position: relative;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 1 auto;\n     -moz-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: nowrap;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  height: 100%;\n  max-width: 100%;\n  min-height: 24px;\n  margin: 2px;\n  color: #1d4f76;\n  font-size: 11px;\n  line-height: 24px;\n  background-color: #e6ecf0;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: default; }\n\n.coveo-styleguide .selected-option-item, .coveo-styleguide .selected-option-value, .coveo-styleguide .remove-option {\n  -webkit-align-self: center;\n      -ms-flex-item-align: center;\n          align-self: center;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 1 auto;\n     -moz-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto; }\n\n.coveo-styleguide .selected-option-value {\n  margin-left: 4px;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n.coveo-styleguide .remove-option {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: nowrap;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100%;\n  min-width: 24px;\n  margin-left: 4px;\n  border-left: 1px solid #bcc3ca;\n  -webkit-transition: all 0.05s ease-in;\n  transition: all 0.05s ease-in; }\n\n.coveo-styleguide .remove-option:hover {\n  background-color: #d6e0e6;\n  cursor: pointer; }\n\n.coveo-styleguide .remove-option:active {\n  background-color: #c6d4dd; }\n\n.coveo-styleguide .multiselect-input {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 260px;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .selected-options-container {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 1;\n     -moz-box-flex: 1;\n      -ms-flex: 1 1;\n          flex: 1 1;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n     -moz-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  padding: 2px;\n  overflow: hidden; }\n  .coveo-styleguide .selected-options-container input {\n    height: 24px;\n    min-width: 100%;\n    padding: 2px;\n    font-size: 13px;\n    border: none; }\n  .coveo-styleguide .selected-options-container input:focus {\n    outline: none; }\n\n.coveo-styleguide .remove-all-selected-options {\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 1;\n     -moz-box-flex: 0;\n      -ms-flex: 0 1;\n          flex: 0 1;\n  padding: 4px; }\n\n.coveo-styleguide .remove-all-selected-options:hover {\n  cursor: pointer; }\n\n.coveo-styleguide .home-card {\n  margin-bottom: 15px;\n  background: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .home-card-header {\n  padding: 1rem;\n  color: #1d4f76;\n  text-align: center;\n  border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .home-card-header h2 {\n    font-size: 17px; }\n\n.coveo-styleguide .section-heading .heading-title {\n  color: #1d4f76;\n  font-size: 16px;\n  font-weight: bold; }\n\n.coveo-styleguide .section-heading .heading-description {\n  margin-top: 10px;\n  color: #373737;\n  font-size: 12px; }\n\n.coveo-styleguide .coveo-form .form-group + .section-heading {\n  margin-top: 30px;\n  margin-bottom: 20px; }\n\n.coveo-styleguide .form-section {\n  margin-top: 10px; }\n  .coveo-styleguide .form-section .section-heading {\n    margin-bottom: 20px; }\n  .coveo-styleguide .form-section .form-subsection + .form-subsection {\n    margin-top: 10px; }\n  .coveo-styleguide .form-section .form-subsection .subsection-heading {\n    margin: 5px 0; }\n    .coveo-styleguide .form-section .form-subsection .subsection-heading .heading-title {\n      color: #1d4f76;\n      font-size: 13px;\n      text-transform: uppercase; }\n      .coveo-styleguide .form-section .form-subsection .subsection-heading .heading-title svg {\n        fill: #1d4f76; }\n\n.coveo-styleguide .form-section-separator {\n  position: relative;\n  width: 100%;\n  margin: 20px 0 10px;\n  text-align: center; }\n  .coveo-styleguide .form-section-separator span {\n    display: inline-block;\n    color: #bcc3ca;\n    text-transform: uppercase; }\n    .coveo-styleguide .form-section-separator span:before, .coveo-styleguide .form-section-separator span:after {\n      position: absolute;\n      top: 4px;\n      width: 235px;\n      content: ' ';\n      border-top: solid 1px; }\n    .coveo-styleguide .form-section-separator span:before {\n      left: 0;\n      border-image: -webkit-linear-gradient(right, #bcc3ca, white) 1;\n      border-image: linear-gradient(to left, #bcc3ca, white) 1; }\n    .coveo-styleguide .form-section-separator span:after {\n      left: 265px;\n      border-image: -webkit-linear-gradient(left, #bcc3ca, white) 1;\n      border-image: linear-gradient(to right, #bcc3ca, white) 1; }\n\n.coveo-styleguide .coveo-child {\n  position: relative;\n  padding: 20px 20px;\n  margin-top: 15px;\n  background-color: #f1f3f4;\n  border-radius: 2px;\n  border-top-left-radius: 0; }\n  .coveo-styleguide .coveo-child:before {\n    position: absolute;\n    top: -10px;\n    left: 0;\n    display: block;\n    width: 0;\n    height: 0;\n    content: '';\n    border-right: 8px solid transparent;\n    border-bottom: 10px solid #f1f3f4;\n    border-left: 8px solid transparent; }\n  .coveo-styleguide .coveo-child.mod-fixed-width {\n    max-width: 440px; }\n\n.coveo-styleguide form .coveo-block-form .form-group + .form-group {\n  margin-top: 10px; }\n\n.coveo-styleguide form .coveo-block-form .form-group.sub {\n  margin-left: 10px; }\n\n.coveo-styleguide .coveo-form .form-control-label {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  margin-bottom: 10px;\n  color: #1d4f76;\n  font-size: 13px; }\n  .coveo-styleguide .coveo-form .form-control-label.flex, .coveo-styleguide .coveo-form .form-control-label.split-layout, .coveo-styleguide .coveo-form .form-control-label.splitted-layout {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex; }\n\n.coveo-styleguide .coveo-form .form-group {\n  display: block; }\n  .coveo-styleguide .coveo-form .form-group + .form-group {\n    margin-top: 30px; }\n    .coveo-styleguide .coveo-form .form-group + .form-group.input-field {\n      margin-top: 45px; }\n  .coveo-styleguide .coveo-form .form-group.coveo-checkbox-label, .coveo-styleguide .coveo-form .form-group.coveo-slide-toggle-label {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .coveo-styleguide .coveo-form .form-group.collapsable-panel-group .panel-heading a {\n    padding-left: 18px; }\n  .coveo-styleguide .coveo-form .form-group.collapsable-panel-group .toggle-icon {\n    left: 0; }\n\n.coveo-styleguide .coveo-form .inline-help-tooltip {\n  margin-left: 10px;\n  pointer-events: visible; }\n  .coveo-styleguide .coveo-form .inline-help-tooltip, .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon, .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon > svg {\n    display: inline-block;\n    width: 1.2em;\n    height: 1.2em; }\n  .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon, .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon > svg {\n    fill: #bcc3ca; }\n\n.coveo-styleguide .coveo-flex-form {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-top: -10px;\n  margin-left: -10px; }\n  .coveo-styleguide .coveo-flex-form .coveo-slide-toggle-label.boxed {\n    -webkit-box-flex: 1;\n    -webkit-flex: auto;\n       -moz-box-flex: 1;\n        -ms-flex: auto;\n            flex: auto;\n    width: 0;\n    margin-top: 10px;\n    margin-left: 10px; }\n    .coveo-styleguide .coveo-flex-form .coveo-slide-toggle-label.boxed:empty {\n      height: 0;\n      padding: 0;\n      margin-top: 0;\n      border: 0; }\n\n.coveo-styleguide .coveo-table-form {\n  display: table;\n  width: 100%;\n  text-align: left;\n  table-layout: fixed;\n  -webkit-transition: opacity 0.35s ease;\n  transition: opacity 0.35s ease; }\n  .coveo-styleguide .coveo-table-form .form-group {\n    display: table-row;\n    height: 36px;\n    color: #373737; }\n    .coveo-styleguide .coveo-table-form .form-group.hidden {\n      display: none; }\n    .coveo-styleguide .coveo-table-form .form-group.disabled .value {\n      background-color: transparent; }\n    .coveo-styleguide .coveo-table-form .form-group > label:first-child, .coveo-styleguide .coveo-table-form .form-group .value {\n      display: table-cell;\n      vertical-align: middle;\n      border-top: 2px solid white;\n      border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide .coveo-table-form .form-group > label:first-child {\n      width: 30%;\n      padding: 0 10px;\n      color: #1d4f76;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: 16px;\n      background-color: #ffffff; }\n    .coveo-styleguide .coveo-table-form .form-group .context-help {\n      float: right; }\n    .coveo-styleguide .coveo-table-form .form-group .coveo-checkbox + span, .coveo-styleguide .coveo-table-form .form-group .coveo-checkbox + button {\n      margin-left: 10px; }\n    .coveo-styleguide .coveo-table-form .form-group .value {\n      height: 39px;\n      font-size: 16px;\n      background-color: #f1f3f4; }\n      .coveo-styleguide .coveo-table-form .form-group .value input:disabled:not([type='radio']) {\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: 16px;\n        font-weight: 600;\n        background-color: #ffffff;\n        opacity: 0.4; }\n      .coveo-styleguide .coveo-table-form .form-group .value.disabled {\n        background-color: #ffffff; }\n      .coveo-styleguide .coveo-table-form .form-group .value input, .coveo-styleguide .coveo-table-form .form-group .value textarea, .coveo-styleguide .coveo-table-form .form-group .value .admin-select {\n        -moz-box-sizing: border-box;\n             box-sizing: border-box;\n        padding: 6px 10px; }\n      .coveo-styleguide .coveo-table-form .form-group .value input {\n        width: 100%;\n        height: 39px;\n        background-color: transparent;\n        box-shadow: none;\n        border-width: 0;\n        resize: none; }\n      .coveo-styleguide .coveo-table-form .form-group .value input[type='file'] {\n        padding: 9px 10px; }\n      .coveo-styleguide .coveo-table-form .form-group .value.coveo-slide-toggle-label {\n        padding: 0 10px; }\n      .coveo-styleguide .coveo-table-form .form-group .value.admin-editable:hover {\n        background-color: #e6ecf0; }\n      .coveo-styleguide .coveo-table-form .form-group .value.admin-non-editable {\n        padding-left: 9px;\n        background-color: #ffffff; }\n        .coveo-styleguide .coveo-table-form .form-group .value.admin-non-editable i {\n          margin-right: 5px;\n          vertical-align: text-bottom; }\n      .coveo-styleguide .coveo-table-form .form-group .value .admin-multiline {\n        margin-bottom: 0;\n        border: none; }\n      .coveo-styleguide .coveo-table-form .form-group .value .admin-select {\n        width: 100%; }\n        .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-toggle {\n          -moz-box-sizing: border-box;\n               box-sizing: border-box;\n          width: 100%;\n          padding-right: 30px;\n          padding-left: 0;\n          font-size: 16px;\n          text-align: left;\n          background-color: transparent;\n          box-shadow: none;\n          border: none;\n          cursor: pointer;\n          opacity: 1; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-toggle.disabled {\n            cursor: inherit; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-toggle .dropdown-toggle-arrow {\n            right: 21px; }\n        .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu {\n          -moz-box-sizing: border-box;\n               box-sizing: border-box;\n          width: 100%;\n          max-height: 250px;\n          overflow-y: auto;\n          text-align: left; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar {\n            width: 6px;\n            height: 6px; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-track, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-track {\n            background-color: #e6ecf0; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-thumb, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-thumb {\n            background-color: #373737;\n            border-radius: 3px; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-button, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-button {\n            width: 0;\n            height: 0; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu li a i {\n            margin-top: 0;\n            margin-bottom: 0;\n            vertical-align: text-top; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu li > a, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu li > span {\n            padding-left: 9px; }\n      .coveo-styleguide .coveo-table-form .form-group .value textarea {\n        width: 100%;\n        margin-bottom: 0;\n        background-color: transparent;\n        box-shadow: none;\n        border: none;\n        resize: vertical; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar {\n          width: 6px;\n          height: 6px; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar-track, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-track {\n          background-color: #e6ecf0; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar-thumb, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-thumb {\n          background-color: #373737;\n          border-radius: 3px; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar-button, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-button {\n          width: 0;\n          height: 0; }\n  .coveo-styleguide .coveo-table-form.disabled {\n    opacity: 0.4; }\n    .coveo-styleguide .coveo-table-form.disabled .form-group label {\n      cursor: default; }\n  .coveo-styleguide .coveo-table-form + .coveo-table-form, .coveo-styleguide .coveo-table-form + .coveo-block-form {\n    margin-top: 10px; }\n\n.coveo-styleguide .form-group .input-validation-error-details {\n  display: none; }\n\n.coveo-styleguide .form-group.input-validation-error .input-validation-error-details, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 0 10px;\n  color: #ffffff;\n  font-size: 12px;\n  line-height: 16px;\n  background-color: #ce3f00; }\n  .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-icon, .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-icon svg.icon, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-icon, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-icon svg.icon {\n    width: 12px;\n    height: 12px; }\n  .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-icon svg, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-icon svg {\n    fill: #ce3f00; }\n  .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-message, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-message {\n    margin-left: 5px; }\n\n.coveo-styleguide .form-group.input-validation-error label, .coveo-styleguide .form-group.multiline-input-validation-error label {\n  color: #ce3f00; }\n\n.coveo-styleguide .form-group.multiline-input-validation-error .erroneous-input {\n  background-color: #ffffff; }\n\n.coveo-styleguide .generic-form-error {\n  display: inline-block;\n  margin-bottom: 10px;\n  color: #ce3f00;\n  font-size: 12px; }\n\n.coveo-styleguide .coveo-table-form .form-group.input-validation-error label, .coveo-styleguide .coveo-table-form .form-group.input-validation-error .value, .coveo-styleguide .coveo-table-form .form-group.multiline-input-validation-error label, .coveo-styleguide .coveo-table-form .form-group.multiline-input-validation-error .value {\n  border-bottom: solid 1px #ce3f00; }\n\n.coveo-styleguide .coveo-table-form .form-group.input-validation-error > label:first-child, .coveo-styleguide .coveo-table-form .form-group.multiline-input-validation-error > label:first-child {\n  color: #ce3f00; }\n", ""]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/ \n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {\n  padding: 0;\n  margin: 0;\n  font: inherit;\n  font-size: 100%;\n  vertical-align: baseline;\n  border: 0; }\n\nhtml {\n  height: 100%;\n  overflow: hidden; }\n\nbody {\n  height: 100%;\n  overflow: auto; }\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after, q:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: inherit;\n  border-spacing: 0; }\n\nbutton::-moz-focus-inner, input::-moz-focus-inner {\n  padding: 0;\n  border: 0; }\n\nbutton {\n  margin: 0; }\n\ndiv.datepicker {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 5555;\n  -moz-box-sizing: content-box;\n       box-sizing: content-box;\n  display: none;\n  width: 196px;\n  font-size: 12px;\n  cursor: default; }\n\n.datepickerContainer {\n  position: absolute; }\n\n/* Hide border divs by default */\n.datepickerBorderT, .datepickerBorderB, .datepickerBorderL, .datepickerBorderR, .datepickerBorderTL, .datepickerBorderTR, .datepickerBorderBL, .datepickerBorderBR {\n  display: none; }\n\n.datepickerHidden {\n  display: none; }\n\ndiv.datepicker table {\n  border-collapse: collapse; }\n\ndiv.datepicker a {\n  color: black;\n  text-decoration: none;\n  outline: none; }\n\ndiv.datepicker table td {\n  padding: 0;\n  margin: 0;\n  text-align: center; }\n\ndiv.datepicker th {\n  padding: 0;\n  color: #666666;\n  font-weight: normal;\n  text-align: center; }\n\ndiv.datepicker tbody a {\n  display: block; }\n\n.datepickerDays a {\n  width: 20px;\n  height: 16px;\n  padding-right: 2px;\n  line-height: 16px; }\n\n.datepickerYears a, .datepickerMonths a {\n  width: 39px;\n  height: 36px;\n  line-height: 36px;\n  text-align: center; }\n\n.datepickerMonths td:first-child a, .datepickerMonths td:last-child a, .datepickerYears td:first-child a, .datepickerYears td:last-child a {\n  width: 38px; }\n\ntd.datepickerNotInMonth a {\n  color: #666666; }\n\ntbody.datepickerDays td.datepickerSelected {\n  background: #136a9f; }\n\ntbody.datepickerDays td.datepickerNotInMonth.datepickerSelected {\n  background: #17384d; }\n\ntbody.datepickerYears td.datepickerSelected, tbody.datepickerMonths td.datepickerSelected {\n  background: #17384d; }\n\ndiv.datepicker td.datepickerSelected a {\n  color: white; }\n\ndiv.datepicker a:hover, div.datepicker a:hover {\n  color: #88c5eb; }\n\n.datepickerSpace div {\n  width: 20px; }\n\n.datepickerBlock {\n  vertical-align: top; }\n\na.datepickerGoNext, a.datepickerGoPrev, a.datepickerMonth {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n  text-align: center; }\n\ndiv.datepicker th a.datepickerGoNext, div.datepicker th a.datepickerGoPrev {\n  display: none;\n  width: 20px;\n  color: #666666; }\n\ndiv.datepicker th a.datepickerMonth {\n  display: block;\n  width: 114px; }\n\n/* Only display the previous/next arrows on the first/last calendars */\ndiv.datepicker .datepickerFirstView th a.datepickerGoPrev, div.datepicker .datepickerLastView th a.datepickerGoNext {\n  display: block; }\n\n/* Compensate for the space lost by not having a previous arrow */\ndiv.datepicker th a.datepickerMonth {\n  margin-left: 20px; }\n\ndiv.datepicker .datepickerFirstView th a.datepickerMonth {\n  margin-left: 0; }\n\n/* Day mode calendar body */\ntable.datepickerViewDays tbody.datepickerMonths, table.datepickerViewDays tbody.datepickerYears {\n  display: none; }\n\n/* Month mode calendar body */\ntable.datepickerViewMonths tbody.datepickerDays, table.datepickerViewMonths tbody.datepickerYears, table.datepickerViewMonths tr.datepickerDoW {\n  display: none; }\n\n/* Year mode calendar body */\ntable.datepickerViewYears tbody.datepickerDays, table.datepickerViewYears tbody.datepickerMonths, table.datepickerViewYears tr.datepickerDoW {\n  display: none; }\n\ntd.datepickerDisabled a, td.datepickerDisabled.datepickerNotInMonth a {\n  color: #555555; }\n\n/* Not used by default, calendar cells can be marked as special if desired (doesn't seem to be totally working) */\ndiv.datepicker tbody.datepickerDays td.datepickerSpecial a {\n  color: white;\n  background: #770000; }\n\ndiv.datepicker tbody.datepickerDays td.datepickerSpecial.datepickerSelected a {\n  background: #aa0000; }\n\n/* Datepicker border styling */\n.datepicker {\n  padding: 10px;\n  background-color: #f7f7f7;\n  border: 1px solid #cccccc; }\n\n/* Tighten up the spacing between multiple calendars */\n.datepickerSpace div {\n  width: 2px; }\n\ndiv.datepicker th a.datepickerMonth {\n  color: #008ed6;\n  font-weight: normal; }\n\n/* style the day of week header cells */\ndiv.datepicker th {\n  color: black;\n  font-weight: bold; }\n\n/* grey underline beneath day of week row */\ndiv.datepicker table thead tr.datepickerDoW th {\n  border-bottom: 1px solid #cccccc; }\n\n/* Black text, white background, and grey borders around day cells */\ndiv.datepicker a, div.datepicker a:hover {\n  color: black; }\n\ndiv.datepicker table.datepickerViewDays, div.datepicker table.datepickerViewMonths, div.datepicker table.datepickerViewYears {\n  background-color: white; }\n\ndiv.datepicker table tbody.datepickerDays td {\n  border: 1px solid #f7f7f7; }\n\n/* blue cell color for selected days */\ntbody.datepickerDays td.datepickerSelected {\n  background-color: #0077cc; }\n\n/* yellow cell background on hover */\ndiv.datepicker tbody.datepickerDays td:hover {\n  background-color: #ffcc33; }\n\n/* Bold today's date */\ndiv.datepicker td.datepickerToday a {\n  font-weight: bold; }\n\n/* cells are wider in the clean style */\n.datepickerYears a, .datepickerMonths a {\n  width: 42px; }\n\n.datepickerMonths td:first-child a, .datepickerYears td:first-child a {\n  width: 39px; }\n\ndiv.datepicker th a.datepickerMonth {\n  width: 121px; }\n\ninput[type=range].coveo-slider-input {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  width: 100%;\n  height: 20px;\n  padding: 0;\n  margin: 0;\n  -webkit-appearance: none;\n  background-color: transparent; }\n\ninput[type=range].coveo-slider-input:focus {\n  outline: none; }\n\ninput[type=range].coveo-slider-input::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 7px;\n  background: #dddddd;\n  border: none; }\n\ninput[type=range].coveo-slider-input:focus::-webkit-slider-thumb {\n  box-shadow: 0 0 2px 2px rgba(56, 169, 240, 0.75); }\n\ninput[type=range].coveo-slider-input::-webkit-slider-thumb {\n  width: 20px;\n  height: 20px;\n  margin-top: -6px;\n  -webkit-appearance: none;\n  background: #f5f5f5;\n  background: -webkit-linear-gradient(bottom left, #f5f5f5 50%, #ffffff 50%);\n  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);\n  border: 1px solid #e4e4e4;\n  border-radius: 50%; }\n\ninput[type=range].coveo-slider-input::-moz-range-track {\n  width: 100%;\n  height: 7px;\n  background: #dddddd;\n  border: none; }\n\ninput[type=range].coveo-slider-input::-moz-range-thumb {\n  width: 20px;\n  height: 20px;\n  background: #f5f5f5;\n  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);\n  border: 1px solid #e4e4e4;\n  border-radius: 50%; }\n\ninput[type=range].coveo-slider-input:focus::-moz-range-thumb {\n  box-shadow: 0 0 2px 2px rgba(56, 169, 240, 0.75); }\n\ninput[type=range]::-moz-focus-outer {\n  border: 0; }\n\ninput[type=range].coveo-slider-input::-ms-track {\n  width: 100%;\n  height: 7px;\n  color: transparent;\n  background: transparent;\n  border-color: transparent;\n  border-width: 8px 0; }\n\ninput[type=range].coveo-slider-input::-ms-thumb {\n  width: 20px;\n  height: 20px;\n  background: #f5f5f5;\n  background: linear-gradient(to top right, #f5f5f5 50%, #ffffff 50%);\n  border: 1px solid #e4e4e4;\n  border-radius: 50%; }\n\ninput[type=range].coveo-slider-input:focus::-ms-thumb {\n  box-shadow: 0 0 1px 2px rgba(56, 169, 240, 0.75); }\n\ninput[type=range].coveo-slider-input::-ms-tooltip {\n  display: none;\n  visibility: hidden; }\n\n.coveo-slider-labels {\n  position: relative;\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  height: 1.1em; }\n  .coveo-slider-labels .coveo-slider-label {\n    position: absolute;\n    display: inline-block;\n    white-space: nowrap; }\n\n.coveo-slider-ticks {\n  position: relative;\n  z-index: -1;\n  height: 24px;\n  margin-top: -24px; }\n  .coveo-slider-ticks .coveo-slider-tick {\n    position: absolute;\n    display: inline-block;\n    width: 18px;\n    height: 18px;\n    margin-left: -10px;\n    background-color: #dddddd;\n    border-radius: 100%;\n    -webkit-transform: translate(1px, 1px);\n            transform: translate(1px, 1px); }\n\n@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {\n  /* IE10+ CSS styles go here */\n  input[type=range].coveo-slider-input {\n    height: 27px;\n    padding-top: 1px; }\n  .coveo-slider-ticks {\n    margin-top: -27px; } }\n\n/* Firefox fix */\n@-moz-document url-prefix() {\n  .coveo-slider-ticks {\n    margin-top: -25px; } }\n\n@font-face {\n  font-family: 'source_code_pro_regular';\n  font-style: normal;\n  font-weight: normal;\n  src: url(" + __webpack_require__(105) + ");\n  src: url(" + __webpack_require__(105) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(437) + ") format(\"woff\"), url(" + __webpack_require__(438) + ") format(\"truetype\"); }\n\nhtml {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box; }\n\n*, *:before, *:after {\n  -moz-box-sizing: inherit;\n       box-sizing: inherit; }\n\nbody {\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: column nowrap;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-flow: column nowrap;\n          flex-flow: column nowrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 13px;\n  -webkit-font-smoothing: antialiased; }\n\n@font-face {\n  font-family: 'source_code_pro_regular';\n  font-style: normal;\n  font-weight: normal;\n  src: url(" + __webpack_require__(105) + ");\n  src: url(" + __webpack_require__(105) + "?#iefix) format(\"embedded-opentype\"), url(" + __webpack_require__(437) + ") format(\"woff\"), url(" + __webpack_require__(438) + ") format(\"truetype\"); }\n\nfieldset {\n  min-width: 0; }\n\n.coveo-sprites-misc-closepopup,\n.coveo-sprites-misc-filter,\n.coveo-sprites-misc-spinner_arrow_down,\n.coveo-sprites-misc-spinner_arrow_up,\n.coveo-sprites-misc-alert,\n.coveo-sprites-misc-panel-collapsed,\n.collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon,\n.coveo-sprites-tables-sort_asc,\n.coveo-sprites-misc-panel-expended,\n.collapsable-panel-group .panel .panel-heading i.toggle-icon,\n.coveo-sprites-tables-sort_desc {\n  background-image: url(" + __webpack_require__(873) + ");\n  display: inline-block;\n  background-repeat: no-repeat;\n  overflow: hidden;\n  background-size: 83px 16px; }\n\ni.coveo-sprites-misc-closepopup, .coveo-sprites-misc-closepopup {\n  background-position: 0px 0px;\n  width: 16px;\n  height: 16px;\n  text-indent: 16px; }\n\ni.coveo-sprites-misc-filter, .coveo-sprites-misc-filter {\n  background-position: -16px 0px;\n  width: 12px;\n  height: 12px;\n  text-indent: 12px; }\n\ni.coveo-sprites-misc-spinner_arrow_down, .coveo-sprites-misc-spinner_arrow_down {\n  background-position: -28px 0px;\n  width: 12px;\n  height: 12px;\n  text-indent: 12px; }\n\ni.coveo-sprites-misc-spinner_arrow_up, .coveo-sprites-misc-spinner_arrow_up {\n  background-position: -40px 0px;\n  width: 12px;\n  height: 12px;\n  text-indent: 12px; }\n\ni.coveo-sprites-misc-alert, .coveo-sprites-misc-alert {\n  background-position: -52px 0px;\n  width: 11px;\n  height: 11px;\n  text-indent: 11px; }\n\ni.coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon, .coveo-sprites-misc-panel-collapsed, .collapsable-panel-group .panel .panel-heading a.collapsed + i.toggle-icon {\n  background-position: -63px 0px;\n  width: 10px;\n  height: 10px;\n  text-indent: 10px; }\n\ni.coveo-sprites-tables-sort_asc, .coveo-sprites-tables-sort_asc {\n  background-position: -63px -10px;\n  width: 6px;\n  height: 6px;\n  text-indent: 6px; }\n\ni.coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon, .coveo-sprites-misc-panel-expended, .collapsable-panel-group .panel .panel-heading i.toggle-icon {\n  background-position: -73px 0px;\n  width: 10px;\n  height: 10px;\n  text-indent: 10px; }\n\ni.coveo-sprites-tables-sort_desc, .coveo-sprites-tables-sort_desc {\n  background-position: -73px -10px;\n  width: 6px;\n  height: 6px;\n  text-indent: 6px; }\n\n@-webkit-keyframes vp-fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes vp-fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@-webkit-keyframes vp-fadeOut {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@keyframes vp-fadeOut {\n  from {\n    opacity: 1; }\n  to {\n    opacity: 0; } }\n\n@-webkit-keyframes scaleout {\n  0% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n    opacity: 0; } }\n\n@keyframes scaleout {\n  0% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n    opacity: 0; } }\n\n@-webkit-keyframes scaleoutCentered {\n  0% {\n    -webkit-transform: scale(0) translateY(-50%);\n            transform: scale(0) translateY(-50%); }\n  100% {\n    -webkit-transform: scale(1) translateY(-50%);\n            transform: scale(1) translateY(-50%);\n    opacity: 0; } }\n\n@keyframes scaleoutCentered {\n  0% {\n    -webkit-transform: scale(0) translateY(-50%);\n            transform: scale(0) translateY(-50%); }\n  100% {\n    -webkit-transform: scale(1) translateY(-50%);\n            transform: scale(1) translateY(-50%);\n    opacity: 0; } }\n\n@-webkit-keyframes bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n            transform: scale(1); } }\n\n@keyframes bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n            transform: scale(0); }\n  40% {\n    -webkit-transform: scale(1);\n            transform: scale(1); } }\n\n@-webkit-keyframes slideInLeft {\n  0% {\n    -webkit-transform: translateX(-2000px);\n            transform: translateX(-2000px);\n    opacity: 0; }\n  100% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); } }\n\n@keyframes slideInLeft {\n  0% {\n    -webkit-transform: translateX(-2000px);\n            transform: translateX(-2000px);\n    opacity: 0; }\n  100% {\n    -webkit-transform: translateX(0);\n            transform: translateX(0); } }\n\n.slideInLeft, .coveo-styleguide .tab-pane.active, .coveo-styleguide .input-field input:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide input:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field input:valid + label.tab-pane, .input-field .coveo-styleguide input:valid + label.tab-pane, .coveo-styleguide .input-field input:disabled + label.tab-pane, .input-field .coveo-styleguide input:disabled + label.tab-pane, .coveo-styleguide .input-field textarea:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide textarea:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field textarea:valid + label.tab-pane, .input-field .coveo-styleguide textarea:valid + label.tab-pane, .coveo-styleguide .input-field textarea:disabled + label.tab-pane, .input-field .coveo-styleguide textarea:disabled + label.tab-pane {\n  -webkit-animation-name: slideInLeft;\n          animation-name: slideInLeft; }\n\n.coveo-styleguide .bold {\n  font-weight: bold; }\n\n.coveo-styleguide .semibold {\n  font-weight: 600; }\n\n.coveo-styleguide .regular {\n  font-weight: normal; }\n\n.coveo-styleguide .italic {\n  font-style: italic; }\n\n.coveo-styleguide .underline {\n  text-decoration: underline; }\n\n.coveo-styleguide .caps {\n  text-transform: uppercase; }\n\n.coveo-styleguide .left-align {\n  text-align: left; }\n\n.coveo-styleguide .center {\n  text-align: center; }\n\n.coveo-styleguide .right-align {\n  text-align: right; }\n\n.coveo-styleguide .justify {\n  text-align: justify; }\n\n.coveo-styleguide .nowrap {\n  white-space: nowrap; }\n\n.coveo-styleguide .break-word {\n  word-wrap: break-word; }\n\n.coveo-styleguide .break-all {\n  word-break: break-all; }\n\n.coveo-styleguide .truncate {\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap; }\n\n.coveo-styleguide .list-reset {\n  padding-left: 0;\n  list-style: none; }\n\n.coveo-styleguide .bullet-list {\n  padding-left: 20px;\n  list-style: disc; }\n  .coveo-styleguide .bullet-list li {\n    margin-bottom: 10px; }\n\n.coveo-styleguide .align-baseline {\n  vertical-align: baseline; }\n\n.coveo-styleguide .align-top {\n  vertical-align: top; }\n\n.coveo-styleguide .align-middle {\n  vertical-align: middle; }\n\n.coveo-styleguide .align-bottom {\n  vertical-align: bottom; }\n\n.coveo-styleguide .align-text-bottom {\n  vertical-align: text-bottom; }\n\n.coveo-styleguide .mod-border-top {\n  border-top: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-border-bottom {\n  border-bottom: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-border-left {\n  border-left: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-border-right {\n  border-right: 1px solid #bcc3ca; }\n\n.coveo-styleguide .mod-no-border-top {\n  border-top: none; }\n\n.coveo-styleguide .mod-no-border-bottom {\n  border-bottom: none; }\n\n.coveo-styleguide .mod-no-border-left {\n  border-left: none; }\n\n.coveo-styleguide .mod-no-border-right {\n  border-right: none; }\n\n.coveo-styleguide .flex, .coveo-styleguide .split-layout, .coveo-styleguide .splitted-layout {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.coveo-styleguide .inline-flex {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex; }\n\n.coveo-styleguide .flex-column {\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n.coveo-styleguide .flex-wrap {\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap; }\n\n.coveo-styleguide .flex-center {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center; }\n\n.coveo-styleguide .flex-stretch {\n  -webkit-box-align: stretch;\n  -webkit-align-items: stretch;\n     -moz-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch; }\n\n.coveo-styleguide .flex-auto, .coveo-styleguide .split-layout, .coveo-styleguide .splitted-layout, .coveo-styleguide .split-layout .column, .coveo-styleguide .splitted-layout .column {\n  -webkit-flex-basis: auto;\n      -ms-flex-preferred-size: auto;\n          flex-basis: auto;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.coveo-styleguide .center-align {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\n.coveo-styleguide .align-end {\n  -webkit-align-self: flex-end;\n      -ms-flex-item-align: end;\n          align-self: flex-end; }\n\n.coveo-styleguide .space-between {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n\n.coveo-styleguide .inline {\n  display: inline; }\n\n.coveo-styleguide .block {\n  display: block; }\n\n.coveo-styleguide .inline-block {\n  display: inline-block; }\n\n.coveo-styleguide .table {\n  display: table; }\n\n.coveo-styleguide .table-cell {\n  display: table-cell; }\n\n.coveo-styleguide .overflow-hidden {\n  overflow: hidden; }\n\n.coveo-styleguide .overflow-scroll {\n  overflow: scroll; }\n\n.coveo-styleguide .overflow-auto {\n  overflow: auto; }\n\n.coveo-styleguide .clearfix:before, .coveo-styleguide .clearfix:after {\n  display: table;\n  content: ' '; }\n\n.coveo-styleguide .clearfix:after {\n  clear: both; }\n\n.coveo-styleguide .left {\n  float: left; }\n\n.coveo-styleguide .right {\n  float: right; }\n\n.coveo-styleguide .fullscreen {\n  height: 100px;\n  min-width: 100vw;\n  min-height: 100vh; }\n\n.coveo-styleguide .full-content {\n  width: 100%;\n  height: 100%; }\n\n.coveo-styleguide .hidden {\n  display: none;\n  visibility: hidden; }\n\n.coveo-styleguide .split-layout, .coveo-styleguide .splitted-layout {\n  height: 100%;\n  min-height: -webkit-min-content;\n  min-height: -moz-min-content;\n  min-height: min-content; }\n  .coveo-styleguide .split-layout .column, .coveo-styleguide .splitted-layout .column {\n    height: 100%;\n    max-width: 50%;\n    overflow-y: auto; }\n  .coveo-styleguide .split-layout .column + .column, .coveo-styleguide .splitted-layout .column + .column {\n    border-left: 1px solid #bcc3ca; }\n\n.coveo-styleguide .normal-height {\n  max-height: none; }\n\n.coveo-styleguide .full-height {\n  min-height: -webkit-min-content;\n  min-height: -moz-min-content;\n  min-height: min-content; }\n\n.coveo-styleguide .full-width-min {\n  min-width: -webkit-min-content;\n  min-width: -moz-min-content;\n  min-width: min-content; }\n\n.coveo-styleguide .full-width-max {\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content; }\n\n.coveo-styleguide .relative {\n  position: relative; }\n\n.coveo-styleguide .absolute {\n  position: absolute; }\n\n.coveo-styleguide .fixed {\n  position: fixed; }\n\n.coveo-styleguide .p0 {\n  padding: 0; }\n\n.coveo-styleguide .m0 {\n  margin: 0; }\n\n.coveo-styleguide .mx-auto {\n  margin-right: auto;\n  margin-left: auto; }\n\n.coveo-styleguide .ml-auto {\n  margin-left: auto; }\n\n.coveo-styleguide .mr-auto {\n  margin-right: auto; }\n\n.coveo-styleguide .p1 {\n  padding: 0.5rem; }\n\n.coveo-styleguide .px1 {\n  padding-right: 0.5rem;\n  padding-left: 0.5rem; }\n\n.coveo-styleguide .py1 {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem; }\n\n.coveo-styleguide .m1 {\n  margin: 0.5rem; }\n\n.coveo-styleguide .mt1 {\n  margin-top: 0.5rem; }\n\n.coveo-styleguide .mr1 {\n  margin-right: 0.5rem; }\n\n.coveo-styleguide .mb1 {\n  margin-bottom: 0.5rem; }\n\n.coveo-styleguide .ml1 {\n  margin-left: 0.5rem; }\n\n.coveo-styleguide .p2 {\n  padding: 1rem; }\n\n.coveo-styleguide .px2 {\n  padding-right: 1rem;\n  padding-left: 1rem; }\n\n.coveo-styleguide .py2 {\n  padding-top: 1rem;\n  padding-bottom: 1rem; }\n\n.coveo-styleguide .m2 {\n  margin: 1rem; }\n\n.coveo-styleguide .mt2 {\n  margin-top: 1rem; }\n\n.coveo-styleguide .mr2 {\n  margin-right: 1rem; }\n\n.coveo-styleguide .mb2 {\n  margin-bottom: 1rem; }\n\n.coveo-styleguide .ml2 {\n  margin-left: 1rem; }\n\n.coveo-styleguide .mod-header-padding {\n  padding-right: 40px;\n  padding-left: 40px; }\n  .coveo-styleguide .mod-header-padding .mod-cancel-header-padding {\n    width: -webkit-calc(100% + 2 * 40px);\n    width: calc(100% + 2 * 40px);\n    margin-left: -40px; }\n\n.coveo-styleguide .mod-form-top-bottom-padding, .coveo-styleguide.mod-form-top-bottom-padding {\n  padding-top: 20px;\n  padding-bottom: 30px; }\n\n.coveo-styleguide .spaced-boxes-container {\n  margin-top: -10px;\n  margin-left: -10px; }\n\n.coveo-styleguide .spaced-box {\n  margin-top: 10px;\n  margin-left: 10px; }\n\n.coveo-styleguide .bg-dark-blue {\n  background-color: #263e55; }\n\n.coveo-styleguide .fill-dark-blue {\n  fill: #263e55; }\n\n.coveo-styleguide .text-dark-blue {\n  color: #263e55; }\n\n.coveo-styleguide .border-dark-blue {\n  border-color: #263e55; }\n\n.coveo-styleguide .bg-darker-blue {\n  background-color: #193045; }\n\n.coveo-styleguide .fill-darker-blue {\n  fill: #193045; }\n\n.coveo-styleguide .text-darker-blue {\n  color: #193045; }\n\n.coveo-styleguide .border-darker-blue {\n  border-color: #193045; }\n\n.coveo-styleguide .bg-medium-blue {\n  background-color: #1d4f76; }\n\n.coveo-styleguide .fill-medium-blue {\n  fill: #1d4f76; }\n\n.coveo-styleguide .text-medium-blue {\n  color: #1d4f76; }\n\n.coveo-styleguide .border-medium-blue {\n  border-color: #1d4f76; }\n\n.coveo-styleguide .bg-light-blue {\n  background-color: #296896; }\n\n.coveo-styleguide .fill-light-blue {\n  fill: #296896; }\n\n.coveo-styleguide .text-light-blue {\n  color: #296896; }\n\n.coveo-styleguide .border-light-blue {\n  border-color: #296896; }\n\n.coveo-styleguide .bg-dark-grey {\n  background-color: #373737; }\n\n.coveo-styleguide .fill-dark-grey {\n  fill: #373737; }\n\n.coveo-styleguide .text-dark-grey {\n  color: #373737; }\n\n.coveo-styleguide .border-dark-grey {\n  border-color: #373737; }\n\n.coveo-styleguide .bg-medium-grey {\n  background-color: #bcc3ca; }\n\n.coveo-styleguide .fill-medium-grey {\n  fill: #bcc3ca; }\n\n.coveo-styleguide .text-medium-grey {\n  color: #bcc3ca; }\n\n.coveo-styleguide .border-medium-grey {\n  border-color: #bcc3ca; }\n\n.coveo-styleguide .bg-light-grey {\n  background-color: #e6ecf0; }\n\n.coveo-styleguide .fill-light-grey {\n  fill: #e6ecf0; }\n\n.coveo-styleguide .text-light-grey {\n  color: #e6ecf0; }\n\n.coveo-styleguide .border-light-grey {\n  border-color: #e6ecf0; }\n\n.coveo-styleguide .bg-white {\n  background-color: #f1f3f4; }\n\n.coveo-styleguide .fill-white {\n  fill: #f1f3f4; }\n\n.coveo-styleguide .text-white {\n  color: #f1f3f4; }\n\n.coveo-styleguide .border-white {\n  border-color: #f1f3f4; }\n\n.coveo-styleguide .bg-pure-white {\n  background-color: #ffffff; }\n\n.coveo-styleguide .fill-pure-white {\n  fill: #ffffff; }\n\n.coveo-styleguide .text-pure-white {\n  color: #ffffff; }\n\n.coveo-styleguide .border-pure-white {\n  border-color: #ffffff; }\n\n.coveo-styleguide .bg-orange {\n  background-color: #f58020; }\n\n.coveo-styleguide .fill-orange {\n  fill: #f58020; }\n\n.coveo-styleguide .text-orange {\n  color: #f58020; }\n\n.coveo-styleguide .border-orange {\n  border-color: #f58020; }\n\n.coveo-styleguide .bg-red {\n  background-color: #ce3f00; }\n\n.coveo-styleguide .fill-red {\n  fill: #ce3f00; }\n\n.coveo-styleguide .text-red {\n  color: #ce3f00; }\n\n.coveo-styleguide .border-red {\n  border-color: #ce3f00; }\n\n.coveo-styleguide .bg-yellow {\n  background-color: #ecad00; }\n\n.coveo-styleguide .fill-yellow {\n  fill: #ecad00; }\n\n.coveo-styleguide .text-yellow {\n  color: #ecad00; }\n\n.coveo-styleguide .border-yellow {\n  border-color: #ecad00; }\n\n.coveo-styleguide .bg-green {\n  background-color: #009830; }\n\n.coveo-styleguide .fill-green {\n  fill: #009830; }\n\n.coveo-styleguide .text-green {\n  color: #009830; }\n\n.coveo-styleguide .border-green {\n  border-color: #009830; }\n\n.coveo-styleguide .bg-blue {\n  background-color: #009ad9; }\n\n.coveo-styleguide .fill-blue {\n  fill: #009ad9; }\n\n.coveo-styleguide .text-blue {\n  color: #009ad9; }\n\n.coveo-styleguide .border-blue {\n  border-color: #009ad9; }\n\n.coveo-styleguide .bg-salesforce-blue {\n  background-color: #00a0de; }\n\n.coveo-styleguide .fill-salesforce-blue {\n  fill: #00a0de; }\n\n.coveo-styleguide .text-salesforce-blue {\n  color: #00a0de; }\n\n.coveo-styleguide .border-salesforce-blue {\n  border-color: #00a0de; }\n\n.coveo-styleguide .bg-google-red {\n  background-color: #dd4b39; }\n\n.coveo-styleguide .fill-google-red {\n  fill: #dd4b39; }\n\n.coveo-styleguide .text-google-red {\n  color: #dd4b39; }\n\n.coveo-styleguide .border-google-red {\n  border-color: #dd4b39; }\n\n.coveo-styleguide .bg-office365-red {\n  background-color: #eb3c00; }\n\n.coveo-styleguide .fill-office365-red {\n  fill: #eb3c00; }\n\n.coveo-styleguide .text-office365-red {\n  color: #eb3c00; }\n\n.coveo-styleguide .border-office365-red {\n  border-color: #eb3c00; }\n\n.progress-bar {\n  width: 100%;\n  text-align: center; }\n  .progress-bar .progress {\n    position: relative;\n    z-index: 1;\n    height: 20px;\n    margin: 0 auto;\n    overflow: hidden;\n    background-color: #f1f3f4; }\n  .progress-bar .progress, .progress-bar .progress-bar-completed {\n    border-radius: 12px; }\n  .progress-bar .progress-bar-completed {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    z-index: 2;\n    background-color: #009830;\n    box-shadow: inset 0 0 0 1px #009830;\n    -webkit-transition: all 1s linear;\n    transition: all 1s linear; }\n\n.btn {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  display: inline-block;\n  height: 34px;\n  padding: 8.5px 16px;\n  color: #1d4f76;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 15px;\n  text-decoration: none;\n  text-overflow: ellipsis;\n  text-transform: uppercase;\n  vertical-align: middle;\n  white-space: nowrap;\n  background-color: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: pointer; }\n  .btn .icon:not([class*='fill-']) {\n    fill: #1d4f76; }\n  .btn:hover, .btn:focus {\n    text-decoration: none; }\n  .btn:focus {\n    background-color: #e6ecf0;\n    outline: thin dotted;\n    outline: 5px auto -webkit-focus-ring-color;\n    outline-offset: -2px; }\n  .btn:disabled, .btn.state-disabled {\n    color: #bcc3ca;\n    cursor: default; }\n    .btn:disabled .icon, .btn.state-disabled .icon {\n      fill: #bcc3ca; }\n  .btn.mod-small {\n    height: 24px;\n    padding: 0 10px;\n    font-size: 11px;\n    line-height: 14px; }\n  .btn.mod-large {\n    height: 50px; }\n  .btn.mod-primary {\n    color: #ffffff;\n    background-color: #f58020;\n    border: 1px solid #f58020; }\n    .btn.mod-primary:hover, .btn.mod-primary:focus {\n      background-color: #f68e38;\n      border: 1px solid #f68e38; }\n    .btn.mod-primary:disabled, .btn.mod-primary.state-disabled {\n      background-color: #f9b882;\n      border: 1px solid #f9b882; }\n    .btn.mod-primary .icon {\n      fill: #ffffff; }\n  .btn.mod-danger {\n    color: #ffffff;\n    background-color: #ce3f00;\n    border: 1px solid #ce3f00; }\n    .btn.mod-danger:hover, .btn.mod-danger:focus {\n      background-color: #e84700;\n      border: 1px solid #e84700; }\n    .btn.mod-danger:disabled, .btn.mod-danger.state-disabled {\n      background-color: #ff7335;\n      border: 1px solid #ff7335; }\n    .btn.mod-danger .icon {\n      fill: #ffffff; }\n  .btn.mod-link {\n    background-color: transparent;\n    border: none; }\n  .btn + .btn, .btn + .btn-container {\n    margin-left: 10px; }\n  .btn .confirm-icon-error, .btn .confirm-icon-success {\n    display: none; }\n  .btn.mod-confirm-success, .btn.mod-confirm-error {\n    position: relative;\n    color: transparent;\n    outline: 0;\n    -webkit-transition: background-color 0.2s ease;\n    transition: background-color 0.2s ease;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none; }\n    .btn.mod-confirm-success:before, .btn.mod-confirm-error:before {\n      position: absolute;\n      top: 40px;\n      font-size: 11px;\n      text-transform: initial;\n      -webkit-animation: vp-fadeIn ease-in 1;\n              animation: vp-fadeIn ease-in 1;\n      -webkit-animation-duration: 0.3s;\n              animation-duration: 0.3s;\n      -webkit-animation-fill-mode: forwards;\n              animation-fill-mode: forwards;\n      opacity: 0; }\n    .btn.mod-confirm-success.mod-confirm-right:before, .btn.mod-confirm-error.mod-confirm-right:before {\n      right: 0; }\n    .btn.mod-confirm-success.mod-confirm-left:before, .btn.mod-confirm-error.mod-confirm-left:before {\n      left: 0; }\n    .btn.mod-confirm-success .confirm-icon-error, .btn.mod-confirm-success .confirm-icon-success, .btn.mod-confirm-error .confirm-icon-error, .btn.mod-confirm-error .confirm-icon-success {\n      position: absolute;\n      top: -webkit-calc(50% - 15px / 2);\n      top: calc(50% - 15px / 2);\n      right: -webkit-calc(50% - 15px / 2);\n      right: calc(50% - 15px / 2);\n      display: inline-block;\n      font-size: 15px;\n      fill: #ffffff; }\n  .btn.mod-confirm {\n    margin-bottom: 20px; }\n  .btn.mod-confirm-success {\n    background-color: #009830;\n    border: 1px solid #009830; }\n    .btn.mod-confirm-success:focus, .btn.mod-confirm-success:hover {\n      background-color: #009830; }\n    .btn.mod-confirm-success:before {\n      color: #009830;\n      content: attr(data-confirm-success); }\n    .btn.mod-confirm-success .confirm-icon-error {\n      display: none; }\n  .btn.mod-confirm-error {\n    background-color: #ce3f00;\n    border: 1px solid #ce3f00; }\n    .btn.mod-confirm-error:focus, .btn.mod-confirm-error:hover {\n      background-color: #ce3f00; }\n    .btn.mod-confirm-error:before {\n      color: #ce3f00;\n      content: attr(data-confirm-error); }\n    .btn.mod-confirm-error .confirm-icon-success {\n      display: none; }\n\n.btn-container {\n  display: inline-block;\n  margin: 0; }\n  .btn-container .btn[disabled] {\n    pointer-events: none; }\n  .btn-container + .btn, .btn-container + .btn-container {\n    margin-left: 10px; }\n\n.btn.mod-append, .btn.mod-prepend {\n  line-height: 33px; }\n  .btn.mod-append .btn-append, .btn.mod-append .btn-prepend, .btn.mod-prepend .btn-append, .btn.mod-prepend .btn-prepend {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -moz-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    height: 33px;\n    padding: 0 16px;\n    vertical-align: top; }\n    .btn.mod-append .btn-append.mod-icon, .btn.mod-append .btn-prepend.mod-icon, .btn.mod-prepend .btn-append.mod-icon, .btn.mod-prepend .btn-prepend.mod-icon {\n      padding: 8px; }\n  .btn.mod-append.dropdown-toggle .dropdown-toggle-arrow, .btn.mod-prepend.dropdown-toggle .dropdown-toggle-arrow {\n    position: static;\n    display: inline-block;\n    margin-left: 10px; }\n  .btn.mod-append.mod-large, .btn.mod-prepend.mod-large {\n    line-height: 49px; }\n    .btn.mod-append.mod-large .btn-append, .btn.mod-append.mod-large .btn-prepend, .btn.mod-prepend.mod-large .btn-append, .btn.mod-prepend.mod-large .btn-prepend {\n      height: 49px; }\n  .btn.mod-append.mod-on-hover:not(:hover), .btn.mod-prepend.mod-on-hover:not(:hover) {\n    padding: 0 16px 0 16px; }\n    .btn.mod-append.mod-on-hover:not(:hover) .btn-append, .btn.mod-append.mod-on-hover:not(:hover) .btn-prepend, .btn.mod-prepend.mod-on-hover:not(:hover) .btn-append, .btn.mod-prepend.mod-on-hover:not(:hover) .btn-prepend {\n      display: none; }\n\n.btn.mod-append {\n  padding: 0 0 0 16px; }\n  .btn.mod-append .btn-append {\n    margin-left: 16px;\n    border-left: 1px solid #bcc3ca; }\n\n.btn.mod-prepend {\n  padding: 0 16px 0 0; }\n  .btn.mod-prepend .btn-prepend {\n    margin-right: 16px;\n    border-right: 1px solid #bcc3ca; }\n\nh1, h2, h3, h4, h5, h6 {\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  line-height: 1.5; }\n\nh1, .h1 {\n  font-size: 24px; }\n\nh2, .h2 {\n  font-size: 20px; }\n\nh3, .h3 {\n  font-size: 15px; }\n\nh4, .h4 {\n  font-size: 13px; }\n\nh5 {\n  font-size: 13px; }\n\nh6 {\n  font-size: 13px; }\n\n.description {\n  color: #373737;\n  font-size: 15px;\n  line-height: 21px; }\n\na {\n  color: #009ddc;\n  text-decoration: none; }\n  a.disabled {\n    cursor: default;\n    pointer-events: none; }\n\n.color-dot {\n  display: inline-block;\n  background-color: #009830;\n  border-radius: 100%; }\n  .color-dot.state-critical {\n    background-color: #ce3f00; }\n  .color-dot.state-major {\n    background-color: #f58020; }\n  .color-dot.state-minor {\n    background-color: #ecad00; }\n  .color-dot.state-info {\n    background-color: #009ad9; }\n  .color-dot.state-disabled {\n    background-color: #e6ecf0; }\n  .color-dot.state-executing {\n    -webkit-animation: scaleout 1.0s infinite ease-in-out;\n            animation: scaleout 1.0s infinite ease-in-out; }\n  .color-dot.state-waiting {\n    background-color: #bcc3ca; }\n\n.icon {\n  display: inline-block;\n  width: 0.9em;\n  height: 0.9em;\n  overflow: visible;\n  /* makes the icon 33% larger relative to the icon container */ }\n  .icon.mod-small {\n    width: 0.7em;\n    height: 0.7em; }\n  .icon.mod-16 {\n    width: 16px;\n    height: 16px;\n    line-height: 16px;\n    vertical-align: -2px; }\n  .icon.mod-lg {\n    width: 1.33333em;\n    height: 1.33333em;\n    line-height: 1.33333em;\n    vertical-align: -0.1em; }\n  .icon.mod-2x {\n    width: 2em;\n    height: 2em;\n    vertical-align: -0.5em; }\n  .icon.mod-3x {\n    width: 3em;\n    height: 3em;\n    vertical-align: -1em; }\n  .icon.mod-4x {\n    width: 4em;\n    height: 4em;\n    vertical-align: -1.5em; }\n  .icon.mod-5x {\n    width: 5em;\n    height: 5em;\n    vertical-align: -2em; }\n\n.icon-container {\n  display: inline-block; }\n\n.coveo-checkbox-button, input[type=checkbox].coveo-checkbox + button, .coveo-styleguide .facet-more .facet-more-button {\n  position: relative;\n  width: 18px;\n  height: 18px;\n  padding: 0;\n  background: #ffffff;\n  border: 2px solid #1d4f76;\n  border-radius: 2px;\n  outline: none;\n  -webkit-transition: all 200ms;\n  transition: all 200ms;\n  cursor: pointer; }\n\ninput[type=checkbox].coveo-checkbox {\n  display: none; }\n  input[type=checkbox].coveo-checkbox + button:after {\n    position: absolute;\n    top: 7px;\n    left: 7px;\n    display: inline-block;\n    width: 0;\n    height: 0;\n    content: '';\n    background-color: transparent;\n    border-radius: 100%;\n    -webkit-transition: all 300ms ease;\n    transition: all 300ms ease; }\n  input[type=checkbox].coveo-checkbox + button:focus:after {\n    top: -6px;\n    left: -6px;\n    display: inline-block;\n    width: 26px;\n    height: 26px;\n    background-color: rgba(0, 0, 0, 0.08); }\n  input[type=checkbox].coveo-checkbox:checked + button {\n    background-color: #009830;\n    border-color: #009830; }\n    input[type=checkbox].coveo-checkbox:checked + button:before {\n      position: absolute;\n      top: 1px;\n      left: 4px;\n      -moz-box-sizing: content-box;\n           box-sizing: content-box;\n      display: block;\n      width: 4px;\n      height: 8px;\n      content: '';\n      border: solid #ffffff;\n      border-width: 0 2px 2px 0;\n      -webkit-transform: rotate(40deg);\n              transform: rotate(40deg); }\n  input[type=checkbox].coveo-checkbox:disabled + button {\n    background-color: #373737;\n    border-color: #373737; }\n  input[type=checkbox].coveo-checkbox:indeterminate + button {\n    position: relative; }\n    input[type=checkbox].coveo-checkbox:indeterminate + button:before {\n      position: absolute;\n      top: 6px;\n      left: 3px;\n      -moz-box-sizing: content-box;\n           box-sizing: content-box;\n      display: block;\n      width: 8px;\n      height: 0;\n      content: '';\n      border-bottom: solid 2px #1d4f76; }\n  input[type=checkbox].coveo-checkbox:indeterminate:disabled + button:before {\n    border-color: #ffffff; }\n  input[type=checkbox].coveo-checkbox:disabled + button {\n    background-color: #373737;\n    cursor: default;\n    opacity: 0.2; }\n\n.coveo-checkbox-label {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  color: #373737;\n  line-height: 16px;\n  vertical-align: middle; }\n  .coveo-checkbox-label .label {\n    cursor: pointer; }\n  .coveo-checkbox-label.disabled .label {\n    cursor: default;\n    opacity: 0.4; }\n  .coveo-checkbox-label button + .label, .coveo-checkbox-label .label + .coveo-checkbox + button {\n    margin-left: 18px; }\n\nlabel[for].coveo-checkbox-label {\n  cursor: pointer; }\n\n.coveo-checkbox-labels-group .coveo-checkbox-label {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .coveo-checkbox-labels-group .coveo-checkbox-label + .coveo-checkbox-label {\n    margin-top: 10px; }\n\n.coveo-checkbox-labels-group .coveo-checkbox-group-option + .coveo-checkbox-group-option {\n  margin-top: 10px; }\n\n.collapsable-panel-group .collapse {\n  display: none;\n  visibility: hidden; }\n  .collapsable-panel-group .collapse.in {\n    display: table;\n    width: 100%;\n    visibility: visible; }\n\n.collapsable-panel-group .collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-duration: 0.35s;\n          transition-duration: 0.35s;\n  -webkit-transition-property: height, visibility;\n  transition-property: height, visibility;\n  -webkit-transition-timing-function: ease;\n          transition-timing-function: ease; }\n\n.collapsable-panel-group .panel {\n  border-bottom: 2px solid #bcc3ca; }\n  .collapsable-panel-group .panel + .panel {\n    margin-top: 15px; }\n  .collapsable-panel-group .panel .panel-heading {\n    position: relative;\n    z-index: 0; }\n    .collapsable-panel-group .panel .panel-heading a {\n      display: block;\n      padding: 3px 0 3px 26px;\n      margin-bottom: 5px;\n      color: #1d4f76;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: 15px;\n      line-height: initial;\n      text-decoration: none;\n      text-transform: uppercase; }\n    .collapsable-panel-group .panel .panel-heading i.toggle-icon {\n      position: absolute;\n      top: 8px;\n      left: 10px;\n      z-index: -1;\n      display: inline-block;\n      content: '\\A0'; }\n  .collapsable-panel-group .panel.panel-default .panel-body {\n    padding: 0 10px 10px 10px; }\n\n.inline .datepicker {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  width: 100% !important;\n  height: auto !important;\n  padding: 0;\n  border: none; }\n  .inline .datepicker .datepickerContainer {\n    position: relative;\n    width: 100% !important;\n    height: 100% !important; }\n\n.datepicker {\n  background-color: #ffffff; }\n  .datepicker .datepickerBlock {\n    border: none !important; }\n  .datepicker table thead tr {\n    background-color: transparent; }\n    .datepicker table thead tr th {\n      padding: 3px 0;\n      text-align: center; }\n    .datepicker table thead tr.datepickerDoW th {\n      padding: 2px 0;\n      border-bottom: 1px solid #bcc3ca; }\n    .datepicker table thead tr.datepickerDoW span {\n      color: #bcc3ca;\n      font-size: 9px;\n      border-top: none;\n      border-right: none;\n      border-bottom: none; }\n  .datepicker table thead tr:first-child th a:hover {\n    text-decoration: none;\n    background: #bcc3ca;\n    cursor: pointer; }\n  .datepicker table thead tr:first-child th .datepickerMonth {\n    width: -webkit-calc(100% - 74px);\n    width: calc(100% - 74px);\n    margin: 0 37px; }\n    .datepicker table thead tr:first-child th .datepickerMonth:hover {\n      text-decoration: underline;\n      background-color: transparent; }\n  .datepicker table thead tr:first-child th .datepickerGoPrev, .datepicker table thead tr:first-child th .datepickerGoNext {\n    position: absolute; }\n  .datepicker table thead tr:first-child th .datepickerGoPrev {\n    left: 0; }\n  .datepicker table thead tr:first-child th .datepickerGoNext {\n    right: 0; }\n  .datepicker table tbody tr:hover > td {\n    background-color: inherit; }\n  .datepicker table tbody tr td {\n    padding: 0;\n    font-size: 11px;\n    text-align: center;\n    border: 1px solid #f1f3f4; }\n    .datepicker table tbody tr td a {\n      -moz-box-sizing: border-box;\n           box-sizing: border-box;\n      width: 37px;\n      height: 26px;\n      line-height: 26px;\n      text-decoration: none;\n      cursor: pointer; }\n    .datepicker table tbody tr td.datepickerSelected {\n      background-color: #296896; }\n      .datepicker table tbody tr td.datepickerSelected.datepickerNotInMonth {\n        background-color: #bcc3ca; }\n        .datepicker table tbody tr td.datepickerSelected.datepickerNotInMonth a {\n          color: #373737; }\n    .datepicker table tbody tr td.datepickerNotInMonth {\n      background-color: #e6ecf0; }\n    .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth {\n      background-color: #e6ecf0; }\n      .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth a {\n        cursor: default; }\n      .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth.datepickerDisabled {\n        background-color: #e6ecf0; }\n        .datepicker table tbody tr td.datepickerFuture.datepickerNotInMonth.datepickerDisabled a {\n          color: #bcc3ca;\n          cursor: default; }\n    .datepicker table tbody tr td.datepickerDisabled {\n      background-color: #e6ecf0; }\n      .datepicker table tbody tr td.datepickerDisabled a {\n        color: #bcc3ca;\n        cursor: default; }\n    .datepicker table tbody tr td:last-child {\n      padding-right: 0; }\n  .datepicker table tbody tr .datepickerSpace {\n    border: none !important; }\n    .datepicker table tbody tr .datepickerSpace div {\n      width: 5px; }\n  .datepicker table tbody.datepickerDays td:hover {\n    background-color: #eeeeee; }\n  .datepicker table tbody tr td.datepickerSelected:hover {\n    background-color: #225d8a; }\n\n.dropdown {\n  position: relative;\n  display: inline-block; }\n  .dropdown.open > .dropdown-toggle.mod-primary .dropdown-toggle-arrow, .dropdown .dropdown-toggle.open.mod-primary .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown.open > .dropdown-toggle .dropdown-toggle-arrow, .dropdown .dropdown-toggle.open .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown.open > .dropdown-menu {\n    display: block;\n    margin-bottom: 30px; }\n\n.dropdown-prepend {\n  padding-right: 5px;\n  color: #bcc3ca; }\n\n.dropdown-toggle {\n  position: relative;\n  display: inline-block;\n  padding: 8.5px 36px 8.5px 16px;\n  overflow: hidden;\n  font-size: 13px;\n  line-height: 16px;\n  text-overflow: ellipsis;\n  text-transform: none;\n  white-space: nowrap; }\n  .dropdown-toggle:disabled .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23bcc3ca' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown-toggle.mod-primary {\n    font-size: 12px;\n    text-transform: uppercase; }\n    .dropdown-toggle.mod-primary .dropdown-toggle-arrow {\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n  .dropdown-toggle .dropdown-toggle-arrow {\n    position: absolute;\n    top: -webkit-calc(50% - (10px - 2px) / 2);\n    top: calc(50% - (10px - 2px) / 2);\n    right: 16px;\n    width: 10px;\n    height: 10px;\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .dropdown-toggle.mod-search {\n    text-align: left; }\n\n.dropdown-toggle .value-icon, .dropdown-menu li .value-icon {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  margin-right: 3px; }\n  .dropdown-toggle .value-icon, .dropdown-toggle .value-icon svg, .dropdown-menu li .value-icon, .dropdown-menu li .value-icon svg {\n    width: 0.8em;\n    height: 0.8em; }\n\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  max-height: 240px;\n  min-width: 100%;\n  padding: 8px 0;\n  margin: 0;\n  overflow-y: auto;\n  color: #263e55;\n  list-style: none;\n  background-color: #ffffff;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);\n  border: 1px solid #bcc3ca;\n  border-radius: 0 0 2px 2px; }\n  .dropdown-menu::-webkit-scrollbar, .dropdown-menu ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .dropdown-menu::-webkit-scrollbar-track, .dropdown-menu ::-webkit-scrollbar-track {\n    background-color: #e6ecf0; }\n  .dropdown-menu::-webkit-scrollbar-thumb, .dropdown-menu ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .dropdown-menu::-webkit-scrollbar-button, .dropdown-menu ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n  .dropdown-menu.mod-right {\n    right: 0;\n    left: auto; }\n  .dropdown-menu li > a, .dropdown-menu li > span {\n    display: block;\n    width: 100%;\n    padding: 8px 16px;\n    overflow: hidden;\n    color: #373737;\n    font-size: 13px;\n    line-height: 16px;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    cursor: pointer; }\n    .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-menu li > span:hover, .dropdown-menu li > span:focus {\n      color: #263e55;\n      background: #e6ecf0; }\n    .dropdown-menu li > a.state-selected, .dropdown-menu li > span.state-selected {\n      color: #263e55;\n      font-weight: bold; }\n    .dropdown-menu li > a.disabled, .dropdown-menu li > span.disabled {\n      color: #bcc3ca;\n      cursor: default; }\n    .dropdown-menu li > a.no-search-results, .dropdown-menu li > span.no-search-results {\n      word-break: break-word;\n      white-space: normal; }\n  .dropdown-menu li.active {\n    color: #263e55;\n    background-color: #e6ecf0; }\n  .dropdown-menu li.divider {\n    height: 1px;\n    margin: 8px 0;\n    background-color: #bcc3ca;\n    cursor: default; }\n\n.dropdown.mod-search .dropdown-button-search-container, .dropdown.mod-search .filter-container {\n  width: inherit;\n  min-width: 260px; }\n  .dropdown.mod-search .dropdown-button-search-container input.filter-box, .dropdown.mod-search .filter-container input.filter-box {\n    width: inherit;\n    min-width: 260px; }\n\n.dropdown.mod-search .dropdown-menu {\n  width: 260px; }\n\n.coveo-filter-container, .filter-container {\n  position: relative; }\n  @media only screen and (max-width: 1600px) {\n    .coveo-filter-container, .filter-container {\n      width: 260px; }\n      .coveo-filter-container .filter-icon, .filter-container .filter-icon {\n        right: 10px; }\n      .coveo-filter-container input.filter-box, .filter-container input.filter-box {\n        width: 260px; }\n        .coveo-filter-container input.filter-box + span, .filter-container input.filter-box + span {\n          right: 10px; } }\n  @media only screen and (min-width: 1600px) {\n    .coveo-filter-container, .filter-container {\n      width: 336px; }\n      .coveo-filter-container .filter-icon, .filter-container .filter-icon {\n        right: 20px; }\n      .coveo-filter-container input.filter-box, .filter-container input.filter-box {\n        width: 336px; }\n        .coveo-filter-container input.filter-box + span, .filter-container input.filter-box + span {\n          right: 20px; } }\n  .coveo-filter-container.mod-small, .filter-container.mod-small {\n    width: 200px; }\n    .coveo-filter-container.mod-small input.filter-box, .filter-container.mod-small input.filter-box {\n      width: 200px;\n      height: 32px;\n      font-size: 13px; }\n  .coveo-filter-container .filter-icon, .filter-container .filter-icon {\n    position: absolute;\n    top: 8px;\n    display: none;\n    cursor: default; }\n  .coveo-filter-container input.filter-box, .filter-container input.filter-box {\n    height: 34px;\n    padding-right: 40px;\n    padding-left: 20px;\n    margin: 0; }\n    .coveo-filter-container input.filter-box + span, .filter-container input.filter-box + span {\n      position: absolute;\n      top: -webkit-calc(50% - 12px / 2);\n      top: calc(50% - 12px / 2);\n      line-height: 0;\n      cursor: pointer; }\n      .coveo-filter-container input.filter-box + span svg, .filter-container input.filter-box + span svg {\n        height: 12px; }\n      .coveo-filter-container input.filter-box + span.hide, .coveo-filter-container input.filter-box + span.hidden, .filter-container input.filter-box + span.hide, .filter-container input.filter-box + span.hidden {\n        display: none; }\n        .coveo-filter-container input.filter-box + span.hide + .filter-icon, .coveo-filter-container input.filter-box + span.hidden + .filter-icon, .filter-container input.filter-box + span.hide + .filter-icon, .filter-container input.filter-box + span.hidden + .filter-icon {\n          display: block; }\n\n.flat-select {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  background-color: #ffffff;\n  border-radius: 2px; }\n  .flat-select .flat-select-option {\n    height: 26px;\n    min-width: 26px;\n    padding: 0 4px;\n    color: #ffffff;\n    font-size: 13px;\n    line-height: 24px;\n    text-align: center;\n    background-color: #1d4f76;\n    border: 1px solid #1d4f76;\n    border-radius: 2px;\n    cursor: default; }\n    .flat-select .flat-select-option.disabled, .flat-select .flat-select-option:disabled {\n      cursor: default;\n      opacity: 0.4; }\n    .flat-select .flat-select-option .icon-container {\n      margin-right: 5px;\n      vertical-align: -3px; }\n      .flat-select .flat-select-option .icon-container, .flat-select .flat-select-option .icon-container .icon {\n        width: 13px;\n        height: 13px; }\n      .flat-select .flat-select-option .icon-container .icon {\n        fill: #ffffff; }\n    .flat-select .flat-select-option + .flat-select-option {\n      margin-left: 10px; }\n    .flat-select .flat-select-option:last-child {\n      margin-right: 0; }\n    .flat-select .flat-select-option:hover {\n      text-decoration: none; }\n    .flat-select .flat-select-option.selectable {\n      color: #1d4f76;\n      background-color: #ffffff;\n      border: 1px solid #bcc3ca;\n      cursor: pointer; }\n      .flat-select .flat-select-option.selectable.disabled {\n        cursor: default; }\n      .flat-select .flat-select-option.selectable .icon {\n        fill: #1d4f76; }\n    .flat-select .flat-select-option:empty {\n      display: none; }\n    .flat-select .flat-select-option.mod-link, .flat-select .flat-select-option.selectable.mod-link {\n      padding: 0;\n      color: #1d4f76;\n      font-size: 15px;\n      background-color: #ffffff;\n      border: none; }\n      .flat-select .flat-select-option.mod-link .icon, .flat-select .flat-select-option.selectable.mod-link .icon {\n        fill: #1d4f76; }\n      .flat-select .flat-select-option.mod-link.disabled, .flat-select .flat-select-option.selectable.mod-link.disabled {\n        color: #bcc3ca; }\n        .flat-select .flat-select-option.mod-link.disabled .icon, .flat-select .flat-select-option.selectable.mod-link.disabled .icon {\n          fill: #bcc3ca; }\n  .flat-select.mod-btn-group .flat-select-option {\n    height: 34px;\n    padding: 8.5px 16px;\n    font-size: 12px;\n    font-weight: 700;\n    line-height: 15px;\n    text-transform: uppercase;\n    border-radius: 0; }\n    .flat-select.mod-btn-group .flat-select-option:focus {\n      z-index: 1; }\n    .flat-select.mod-btn-group .flat-select-option:first-child {\n      border-radius: 2px 0 0 2px; }\n    .flat-select.mod-btn-group .flat-select-option:last-child {\n      border-radius: 0 2px 2px 0; }\n    .flat-select.mod-btn-group .flat-select-option + .flat-select-option {\n      margin-left: 0; }\n  .flat-select.mod-option-picker .flat-select-option {\n    -webkit-box-flex: 1;\n    -webkit-flex: auto;\n       -moz-box-flex: 1;\n        -ms-flex: auto;\n            flex: auto;\n    color: #1d4f76;\n    background-color: #e6ecf0;\n    border: 1px solid #009ad9;\n    border-right-width: 0;\n    border-radius: 0; }\n    .flat-select.mod-option-picker .flat-select-option.selectable {\n      background-color: #ffffff;\n      border-color: #bcc3ca; }\n    .flat-select.mod-option-picker .flat-select-option:first-child {\n      border-radius: 2px 0 0 2px; }\n    .flat-select.mod-option-picker .flat-select-option:last-child {\n      border-right-width: 1px;\n      border-radius: 0 2px 2px 0; }\n    .flat-select.mod-option-picker .flat-select-option:not(.selectable) + .flat-select-option {\n      border-left-color: #009ad9; }\n    .flat-select.mod-option-picker .flat-select-option + .flat-select-option {\n      margin-left: 0; }\n\n.prepended-flat-select {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .prepended-flat-select .flat-select-prepend {\n    margin-right: 10px;\n    color: #bcc3ca;\n    font-size: 15px;\n    line-height: 18px; }\n\n::-webkit-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n::-moz-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n:-ms-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n::placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\nselect, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] {\n  padding: 3px 6px;\n  color: #373737;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 16px;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\ninput[type='text'].admin-invisible-textbox, textarea.admin-invisible-textbox {\n  padding: 4px 6px;\n  margin-bottom: 0;\n  background: transparent;\n  border-width: 0;\n  resize: none; }\n\ninput[type='text']:-ms-input-placeholder, textarea:-ms-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.input-group input {\n  height: 30px; }\n\n.input-group .add-on {\n  display: inline-block;\n  height: 30px;\n  padding: 0;\n  margin-left: -5px;\n  vertical-align: top;\n  background-color: #bcc3ca;\n  border: 1px solid #a0aab3;\n  border-radius: 0 2px 2px 0; }\n\n.admin-numeric-spinner.input-group *, .admin-numeric-spinner.input-group *:before, .admin-numeric-spinner.input-group *:after {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box; }\n\n.admin-numeric-spinner.input-group input[type='text'] {\n  width: 35px; }\n\n.admin-numeric-spinner.input-group .add-on {\n  padding-top: 2px;\n  border-left-width: 0;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .admin-numeric-spinner.input-group .add-on div {\n    padding: 0 6px;\n    border-radius: 3px;\n    cursor: pointer; }\n    .admin-numeric-spinner.input-group .add-on div:hover {\n      background-color: #1d4f76; }\n    .admin-numeric-spinner.input-group .add-on div i {\n      display: block; }\n\n.radio-option {\n  position: relative; }\n  .radio-option input[type='radio'] {\n    position: absolute;\n    margin: 0;\n    opacity: 0; }\n    .radio-option input[type='radio'] + label {\n      position: relative;\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-inline-box;\n      display: -webkit-inline-flex;\n      display: -moz-inline-box;\n      display: -ms-inline-flexbox;\n      display: inline-flex;\n      height: 18px;\n      padding-left: 36px;\n      color: #373737;\n      line-height: 18px;\n      -webkit-transition: 0.28s ease;\n      transition: 0.28s ease;\n      cursor: pointer;\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n      .radio-option input[type='radio'] + label:before, .radio-option input[type='radio'] + label:after {\n        position: absolute;\n        top: 0;\n        left: 0;\n        z-index: 0;\n        width: 18px;\n        height: 18px;\n        content: '';\n        border-radius: 50%;\n        -webkit-transition: 0.28s ease;\n        transition: 0.28s ease; }\n    .radio-option input[type='radio']:focus + label:before {\n      box-shadow: 0 0 0 8px #e6ecf0; }\n    .radio-option input[type='radio']:not(:checked) + label:before {\n      border: 2px solid #1d4f76; }\n    .radio-option input[type='radio']:not(:checked) + label:after {\n      z-index: -1;\n      -webkit-transform: scale(0);\n              transform: scale(0); }\n    .radio-option input[type='radio']:checked + label:before {\n      border: 2px solid #009830; }\n    .radio-option input[type='radio']:checked + label:after {\n      z-index: 0;\n      background-color: #009830;\n      -webkit-transform: scale(0.5);\n              transform: scale(0.5); }\n    .radio-option input[type='radio']:disabled + label {\n      color: #bcc3ca; }\n      .radio-option input[type='radio']:disabled + label:before {\n        border-color: #bcc3ca; }\n    .radio-option input[type='radio']:disabled:checked + label:after {\n      background-color: #bcc3ca; }\n\n.radio-select .radio-option + .radio-option {\n  margin-top: 10px; }\n\ninput[type=checkbox].coveo-slide-toggle {\n  display: none; }\n  input[type=checkbox].coveo-slide-toggle + button {\n    position: relative;\n    width: 32px;\n    height: 20px;\n    border: none;\n    cursor: pointer; }\n    input[type=checkbox].coveo-slide-toggle + button:before, input[type=checkbox].coveo-slide-toggle + button:after {\n      position: absolute;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      display: block;\n      width: 32px;\n      content: ' ';\n      background-color: #bcc3ca;\n      -webkit-transition: all 0.2s linear;\n      transition: all 0.2s linear; }\n    input[type=checkbox].coveo-slide-toggle + button:after {\n      top: 2px;\n      bottom: 2px;\n      width: 18px;\n      margin-left: 2px;\n      background-color: #f1f3f4; }\n  input[type=checkbox].coveo-slide-toggle:checked + button:before {\n    background-color: #009830; }\n  input[type=checkbox].coveo-slide-toggle:checked + button:after {\n    margin-left: 12px; }\n  input[type=checkbox].coveo-slide-toggle:disabled + button {\n    outline: none;\n    cursor: default;\n    opacity: 0.4; }\n\n.coveo-slide-toggle-label {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  line-height: 20px;\n  -webkit-transition: opacity 0.35s ease;\n  transition: opacity 0.35s ease;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .coveo-slide-toggle-label.disabled, .coveo-slide-toggle-label[for].disabled {\n    cursor: default;\n    opacity: 0.4; }\n  .coveo-slide-toggle-label.boxed {\n    display: inline-block;\n    padding: 8px 10px;\n    border: solid 1px #bcc3ca; }\n    .coveo-slide-toggle-label.boxed .toggle-description {\n      display: block;\n      margin-top: 8px;\n      color: #373737;\n      font-size: 13px;\n      line-height: 16px; }\n    .coveo-slide-toggle-label.boxed button {\n      float: right; }\n  .coveo-slide-toggle-label .toggle-label {\n    font-size: 16px; }\n  .coveo-slide-toggle-label button + .toggle-label, .coveo-slide-toggle-label .toggle-label + .coveo-slide-toggle + button {\n    margin-left: 18px; }\n\nlabel[for].coveo-slide-toggle-label {\n  cursor: pointer; }\n\n.coveo-slide-toggle-double-container {\n  display: inline-block; }\n\nlabel.coveo-slide-toggle-double {\n  float: left;\n  margin-bottom: 0;\n  color: #373737;\n  font-size: 13px;\n  line-height: 22px; }\n  label.coveo-slide-toggle-double.first {\n    margin-right: 5px; }\n  label.coveo-slide-toggle-double.second {\n    margin-left: 5px; }\n\ninput.coveo-slide-toggle-double[type=checkbox] {\n  display: none; }\n  input.coveo-slide-toggle-double[type=checkbox] + span {\n    -moz-box-sizing: initial;\n         box-sizing: initial;\n    display: inline-block;\n    float: left;\n    width: 33px;\n    height: 16px;\n    background: #bcc3ca url(" + __webpack_require__(874) + ") 0 0;\n    border: 3px solid #bcc3ca;\n    border-radius: 3px;\n    -webkit-transition: background-position 0.35s ease;\n    transition: background-position 0.35s ease;\n    cursor: pointer; }\n  input.coveo-slide-toggle-double[type=checkbox]:checked + span {\n    background-position: -15px; }\n  input.coveo-slide-toggle-double[type=checkbox]:disabled + span {\n    cursor: default;\n    opacity: 0.4; }\n\n.splash-header {\n  position: absolute;\n  width: 100%;\n  height: 30vh;\n  min-height: 230px; }\n  .splash-header .splash-header-medium {\n    height: 45vh; }\n\n@media (max-width: 495px) {\n  .splash-header {\n    height: 100vh; } }\n\n.bg-polygon {\n  background: #296896 url(" + __webpack_require__(875) + ");\n  background-size: cover; }\n\n.splash-container {\n  z-index: 1;\n  width: 495px;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .splash-container.mod-wizard-container {\n    width: 1025px;\n    padding-top: 145px; }\n  .splash-container.mod-large-wizard-container {\n    width: 1400px;\n    padding-top: 145px; }\n\n.splash-logo svg {\n  display: block;\n  width: 200px;\n  height: auto;\n  margin: 15px auto 60px; }\n\n.splash-box {\n  text-align: center;\n  background: #ffffff;\n  border-radius: 2px; }\n  .splash-box .splash-box-title {\n    padding: 70px 0 40px; }\n  .splash-box .splash-box-section {\n    padding-right: 20px;\n    padding-bottom: 20px;\n    padding-left: 20px; }\n  .splash-box .splash-box-description {\n    padding: 0 30px 30px; }\n  .splash-box .btn {\n    display: block;\n    width: 250px;\n    margin: auto auto 1em; }\n  .splash-box .splash-box-header, .splash-box .splash-box-footer {\n    padding: 17px; }\n  .splash-box .splash-box-footer {\n    margin-top: 50px; }\n  .splash-box .splash-box-section-center-with-title {\n    padding-bottom: 70px; }\n\n.splash-footer {\n  z-index: 1;\n  min-height: 45px;\n  padding: 10px 20px 10px;\n  background-color: #193045;\n  border-bottom-right-radius: 2px;\n  border-bottom-left-radius: 2px; }\n  .splash-footer span {\n    line-height: 25px; }\n    .splash-footer span a {\n      margin-right: 10px; }\n\n.chosen-container {\n  position: relative;\n  display: inline-block;\n  font-size: 13px;\n  vertical-align: middle;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .chosen-container a {\n    cursor: pointer; }\n  .chosen-container .chosen-drop {\n    position: absolute;\n    top: 100%;\n    left: -9999px;\n    z-index: 1010;\n    width: 100%;\n    background: #ffffff;\n    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4);\n    border: 1px solid #bcc3ca;\n    border-top: 0;\n    border-radius: 2px;\n    border-top-right-radius: 0;\n    border-top-left-radius: 0; }\n    .chosen-container .chosen-drop::-webkit-scrollbar, .chosen-container .chosen-drop ::-webkit-scrollbar {\n      width: 6px;\n      height: 6px; }\n    .chosen-container .chosen-drop::-webkit-scrollbar-track, .chosen-container .chosen-drop ::-webkit-scrollbar-track {\n      background-color: #e6ecf0; }\n    .chosen-container .chosen-drop::-webkit-scrollbar-thumb, .chosen-container .chosen-drop ::-webkit-scrollbar-thumb {\n      background-color: #bcc3ca;\n      border-radius: 3px; }\n    .chosen-container .chosen-drop::-webkit-scrollbar-button, .chosen-container .chosen-drop ::-webkit-scrollbar-button {\n      width: 0;\n      height: 0; }\n    .chosen-container .chosen-drop .chosen-results {\n      position: relative;\n      max-height: 240px;\n      overflow-x: hidden;\n      overflow-y: auto;\n      -webkit-overflow-scrolling: touch; }\n      .chosen-container .chosen-drop .chosen-results li {\n        display: none;\n        padding: 8px 16px;\n        margin: 0;\n        color: #373737;\n        font-size: 13px;\n        line-height: 16px;\n        word-wrap: break-word;\n        list-style: none;\n        -webkit-touch-callout: none; }\n        .chosen-container .chosen-drop .chosen-results li:first-child {\n          margin-top: 8px; }\n        .chosen-container .chosen-drop .chosen-results li:last-child {\n          margin-bottom: 8px; }\n        .chosen-container .chosen-drop .chosen-results li.active-result {\n          display: list-item;\n          cursor: pointer; }\n        .chosen-container .chosen-drop .chosen-results li.disabled-result {\n          display: list-item;\n          color: #bcc3ca;\n          cursor: default; }\n        .chosen-container .chosen-drop .chosen-results li.highlighted {\n          background-color: #e6ecf0; }\n        .chosen-container .chosen-drop .chosen-results li.no-results {\n          display: list-item;\n          background: #ffffff; }\n        .chosen-container .chosen-drop .chosen-results li.result-selected {\n          color: #1d4f76;\n          font-weight: bold; }\n        .chosen-container .chosen-drop .chosen-results li em {\n          color: #373737;\n          font-style: normal;\n          font-weight: bold;\n          text-decoration: underline; }\n  .chosen-container.chosen-with-drop .chosen-drop {\n    left: 0; }\n  .chosen-container.chosen-disabled .chosen-single {\n    color: #bcc3ca;\n    border-color: #bcc3ca; }\n  .chosen-container.chosen-disabled b {\n    visibility: hidden; }\n\n.chosen-container-single {\n  min-width: 200px; }\n  .chosen-container-single .chosen-single {\n    position: relative;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n       -moz-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 34px;\n    padding: 0 16px;\n    overflow: hidden;\n    color: #1d4f76;\n    font-size: 13px;\n    font-weight: 700;\n    line-height: 34px;\n    text-decoration: none;\n    white-space: nowrap;\n    background-color: #ffffff;\n    background-clip: padding-box;\n    border: 1px solid #bcc3ca;\n    border-radius: 2px; }\n    .chosen-container-single .chosen-single.chosen-default {\n      color: #bcc3ca; }\n    .chosen-container-single .chosen-single span {\n      width: 100%;\n      padding-right: 2px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap; }\n    .chosen-container-single .chosen-single div {\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .chosen-container-single .chosen-single div b {\n        width: 10px;\n        height: 10px;\n        background-position: center;\n        background-size: 10px 10px;\n        background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n        background-repeat: no-repeat; }\n    .chosen-container-single .chosen-single .search-choice-close {\n      position: absolute;\n      top: -webkit-calc(50% - 10px / 2);\n      top: calc(50% - 10px / 2);\n      right: 36px;\n      display: inline-block;\n      width: 10px;\n      height: 10px;\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg' fill='%23bcc3ca'%3E %3Cpath d='m9.79.212c-.282-.283-.738-.283-1.02-.001l-3.77 3.77-3.771-3.77c-.281-.282-.737-.282-1.018.001h-.001c-.28.282-.28.737.001 1.018l3.771 3.769-3.771 3.771c-.282.282-.282.737 0 1.018.281.282.737.282 1.018 0l3.771-3.771 3.771 3.771c.281.282.737.282 1.018 0 .281-.281.281-.737 0-1.018l-3.771-3.771 3.771-3.769c.281-.281.282-.736.001-1.018'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n    .chosen-container-single .chosen-single.chosen-single-with-deselect span {\n      margin-right: 30px; }\n  .chosen-container-single .chosen-drop .chosen-search {\n    position: relative;\n    z-index: 1010;\n    padding: 4px;\n    margin: 0;\n    white-space: nowrap; }\n    .chosen-container-single .chosen-drop .chosen-search input[type='text'] {\n      width: 100%;\n      height: 32px;\n      padding: 4px 28px 4px 5px;\n      margin: 1px 0;\n      font-size: 13px;\n      line-height: normal;\n      background-position: right 8px center;\n      background-origin: border-box;\n      background-size: 16px 16px;\n      border: 1px solid #bcc3ca;\n      border-radius: 2px;\n      outline: 0;\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23bcc3ca'%3E %3Cpath d='m19.2 4.1c0-1.9-4-3.3-9.2-3.3s-9.2 1.5-9.2 3.3c0 .2 0 .3.1.5l.1.2c0 .1.1.2.2.3l6.2 8.7v4.2l.2.2c.1.1 1.1 1 2.5 1 .9 0 1.7-.3 2.4-.9l.2-.2v-4.3l6.1-8.7c.1-.1.1-.2.2-.2v-.1l.1-.1c.1-.2.1-.4.1-.6m-15 2.6c1.7.5 3.7.8 5.8.8s4.1-.3 5.8-.7l-4.6 6.5v.1 4.2c-.9.6-1.8.3-2.3 0v-4.2l-4.7-6.7m5.8-4.3c5.1 0 7.3 1.4 7.6 1.7-.6.7-3.3 1.7-7.6 1.7-4.3 0-7-1-7.6-1.7v-.1c.3-.3 2.5-1.6 7.6-1.6'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n  .chosen-container-single.chosen-container-active .chosen-single {\n    outline: -webkit-focus-ring-color auto 5px; }\n  .chosen-container-single.chosen-container-single-nosearch .chosen-drop .chosen-search {\n    position: absolute;\n    left: -9999px; }\n  .chosen-container-single.chosen-with-drop .chosen-single {\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0; }\n    .chosen-container-single.chosen-with-drop .chosen-single div b {\n      background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231d4f76' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n      background-repeat: no-repeat; }\n\n.chosen-container-multi .chosen-choices {\n  position: relative;\n  width: 100%;\n  height: auto;\n  padding: 0 38px 0 16px;\n  margin: 0;\n  overflow: hidden;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: text; }\n  .chosen-container-multi .chosen-choices:after {\n    position: absolute;\n    top: -webkit-calc(50% - 16px / 2);\n    top: calc(50% - 16px / 2);\n    right: 16px;\n    display: inline-block;\n    width: 16px;\n    height: 16px;\n    content: '';\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23bcc3ca'%3E %3Cpath d='m19.2 4.1c0-1.9-4-3.3-9.2-3.3s-9.2 1.5-9.2 3.3c0 .2 0 .3.1.5l.1.2c0 .1.1.2.2.3l6.2 8.7v4.2l.2.2c.1.1 1.1 1 2.5 1 .9 0 1.7-.3 2.4-.9l.2-.2v-4.3l6.1-8.7c.1-.1.1-.2.2-.2v-.1l.1-.1c.1-.2.1-.4.1-.6m-15 2.6c1.7.5 3.7.8 5.8.8s4.1-.3 5.8-.7l-4.6 6.5v.1 4.2c-.9.6-1.8.3-2.3 0v-4.2l-4.7-6.7m5.8-4.3c5.1 0 7.3 1.4 7.6 1.7-.6.7-3.3 1.7-7.6 1.7-4.3 0-7-1-7.6-1.7v-.1c.3-.3 2.5-1.6 7.6-1.6'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n  .chosen-container-multi .chosen-choices li {\n    float: left;\n    list-style: none; }\n    .chosen-container-multi .chosen-choices li.search-field {\n      max-width: 100%;\n      white-space: nowrap; }\n      .chosen-container-multi .chosen-choices li.search-field input[type='text'] {\n        -moz-box-sizing: content-box;\n             box-sizing: content-box;\n        height: 24px;\n        padding: 10px 0;\n        font-size: 15px;\n        line-height: 24px;\n        border: none;\n        outline: none; }\n    .chosen-container-multi .chosen-choices li.search-choice {\n      position: relative;\n      height: 24px;\n      max-width: 100%;\n      padding: 0 30px 0 10px;\n      margin: 10px 10px 0 0;\n      color: #373737;\n      font-size: 11px;\n      line-height: 22px;\n      border: 1px solid #bcc3ca;\n      border-radius: 2px;\n      cursor: default; }\n      .chosen-container-multi .chosen-choices li.search-choice span {\n        word-wrap: break-word; }\n      .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {\n        position: absolute;\n        top: -webkit-calc(50% - 10px / 2);\n        top: calc(50% - 10px / 2);\n        right: 10px;\n        display: inline-block;\n        width: 10px;\n        height: 10px;\n        background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg' fill='%23bcc3ca'%3E %3Cpath d='m9.79.212c-.282-.283-.738-.283-1.02-.001l-3.77 3.77-3.771-3.77c-.281-.282-.737-.282-1.018.001h-.001c-.28.282-.28.737.001 1.018l3.771 3.769-3.771 3.771c-.282.282-.282.737 0 1.018.281.282.737.282 1.018 0l3.771-3.771 3.771 3.771c.281.282.737.282 1.018 0 .281-.281.281-.737 0-1.018l-3.771-3.771 3.771-3.769c.281-.281.282-.736.001-1.018'/%3E %3C/svg%3E\");\n        background-repeat: no-repeat; }\n    .chosen-container-multi .chosen-choices li.search-choice-disabled {\n      padding-right: 5px;\n      color: #bcc3ca;\n      border: 1px solid #bcc3ca; }\n    .chosen-container-multi .chosen-choices li.search-choice-focus {\n      background: #f1f3f4; }\n\n.chosen-container-multi .chosen-drop .chosen-results li.result-selected {\n  display: list-item;\n  color: #bcc3ca;\n  font-weight: normal;\n  cursor: default; }\n\n.chosen-container-multi.chosen-container-active .chosen-choices {\n  outline: -webkit-focus-ring-color auto 5px; }\n\n.chosen-container-multi.chosen-with-drop .chosen-choices {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0; }\n\n.input-field {\n  position: relative;\n  margin-top: 15px; }\n  .input-field input, .input-field textarea {\n    width: 100%;\n    height: 34px;\n    padding: 0;\n    font-size: 15px;\n    background-color: transparent;\n    box-shadow: none;\n    border: 0;\n    border-bottom: 1px solid rgba(188, 195, 202, 0.4);\n    border-radius: 0;\n    outline: 0;\n    -webkit-transition: all 0.2s ease;\n    transition: all 0.2s ease; }\n    .input-field input:focus:not([readonly]), .input-field input:valid, .input-field input:disabled, .input-field textarea:focus:not([readonly]), .input-field textarea:valid, .input-field textarea:disabled {\n      color: #373737;\n      border-bottom: 1px solid #1d4f76; }\n      .input-field input:focus:not([readonly])::-webkit-input-placeholder, .input-field input:valid::-webkit-input-placeholder, .input-field input:disabled::-webkit-input-placeholder, .input-field textarea:focus:not([readonly])::-webkit-input-placeholder, .input-field textarea:valid::-webkit-input-placeholder, .input-field textarea:disabled::-webkit-input-placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n      .input-field input:focus:not([readonly])::-moz-placeholder, .input-field input:valid::-moz-placeholder, .input-field input:disabled::-moz-placeholder, .input-field textarea:focus:not([readonly])::-moz-placeholder, .input-field textarea:valid::-moz-placeholder, .input-field textarea:disabled::-moz-placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n      .input-field input:focus:not([readonly]):-ms-input-placeholder, .input-field input:valid:-ms-input-placeholder, .input-field input:disabled:-ms-input-placeholder, .input-field textarea:focus:not([readonly]):-ms-input-placeholder, .input-field textarea:valid:-ms-input-placeholder, .input-field textarea:disabled:-ms-input-placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n      .input-field input:focus:not([readonly])::placeholder, .input-field input:valid::placeholder, .input-field input:disabled::placeholder, .input-field textarea:focus:not([readonly])::placeholder, .input-field textarea:valid::placeholder, .input-field textarea:disabled::placeholder {\n        color: #bcc3ca;\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: inherit;\n        text-transform: none;\n        -webkit-transition: color 0.2s ease;\n        transition: color 0.2s ease; }\n    .input-field input:disabled, .input-field input[readonly='readonly'], .input-field textarea:disabled, .input-field textarea[readonly='readonly'] {\n      color: #bcc3ca;\n      border-bottom-color: #bcc3ca;\n      -webkit-text-fill-color: #bcc3ca; }\n      .input-field input:disabled + label, .input-field input[readonly='readonly'] + label, .input-field textarea:disabled + label, .input-field textarea[readonly='readonly'] + label {\n        color: #bcc3ca; }\n  .input-field label {\n    position: absolute;\n    top: 10px;\n    left: 0;\n    -moz-box-sizing: content-box;\n         box-sizing: content-box;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 100%;\n    color: #bcc3ca;\n    font-size: 15px;\n    -webkit-transition: all 0.2s ease;\n    transition: all 0.2s ease;\n    pointer-events: none; }\n    .input-field label.active, .input-field input:focus:not([readonly]) + label, .input-field input:valid + label, .input-field input:disabled + label, .input-field textarea:focus:not([readonly]) + label, .input-field textarea:valid + label, .input-field textarea:disabled + label {\n      top: -15px;\n      padding-bottom: 15px;\n      color: #1d4f76;\n      font-size: 13px; }\n  .input-field input {\n    padding: 3px 0;\n    color: transparent;\n    font-size: 15px;\n    background-color: transparent;\n    box-shadow: none;\n    -webkit-transition: color 0.2s ease;\n    transition: color 0.2s ease; }\n    .input-field input::-webkit-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field input::-moz-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field input:-ms-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field input::placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n  .input-field textarea {\n    min-height: 34px;\n    padding: 10px 0 24px 0;\n    overflow-y: hidden;\n    -webkit-transition: height ease 0.2s;\n    transition: height ease 0.2s;\n    resize: none;\n    -ms-overflow-y: hidden !important; }\n    .input-field textarea::-webkit-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field textarea::-moz-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field textarea:-ms-input-placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n    .input-field textarea::placeholder {\n      color: transparent;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: inherit;\n      text-transform: none;\n      -webkit-transition: color 0.2s ease;\n      transition: color 0.2s ease; }\n  .input-field.mod-resizeable textarea {\n    padding: 5px 0 2px;\n    resize: vertical; }\n  .input-field.mod-fixed-width {\n    max-width: 440px; }\n  .input-field.validate input, .input-field .validate input, .input-field.validate textarea, .input-field .validate textarea {\n    -webkit-transition: 0.2s margin-bottom ease, 0.2s color ease;\n    transition: 0.2s margin-bottom ease, 0.2s color ease; }\n    .input-field.validate input.valid, .input-field.validate input.invalid, .input-field .validate input.valid, .input-field .validate input.invalid, .input-field.validate textarea.valid, .input-field.validate textarea.invalid, .input-field .validate textarea.valid, .input-field .validate textarea.invalid {\n      margin-bottom: 20px; }\n    .input-field.validate input.valid, .input-field .validate input.valid, .input-field.validate textarea.valid, .input-field .validate textarea.valid {\n      border-bottom-color: #009830; }\n      .input-field.validate input.valid + label:after, .input-field .validate input.valid + label:after, .input-field.validate textarea.valid + label:after, .input-field .validate textarea.valid + label:after {\n        color: #009830;\n        content: attr(data-valid-message);\n        opacity: 1; }\n    .input-field.validate input.invalid, .input-field .validate input.invalid, .input-field.validate textarea.invalid, .input-field .validate textarea.invalid {\n      border-bottom-color: #ce3f00; }\n    .input-field.validate input.invalid + label:after, .input-field .validate input.invalid + label:after, .input-field.validate textarea.invalid + label:after, .input-field .validate textarea.invalid + label:after {\n      color: #ce3f00;\n      content: attr(data-invalid-message);\n      opacity: 1; }\n    .input-field.validate input + label, .input-field .validate input + label, .input-field.validate textarea + label, .input-field .validate textarea + label {\n      width: 100%; }\n      .input-field.validate input + label:after, .input-field .validate input + label:after, .input-field.validate textarea + label:after, .input-field .validate textarea + label:after {\n        position: absolute;\n        top: 100%;\n        left: 0;\n        display: block;\n        margin-top: -20px;\n        font-size: 12px;\n        -webkit-transition: 0.2s all ease;\n        transition: 0.2s all ease; }\n      .input-field.validate input + label.active:after, .input-field.validate input:focus:not([readonly]) + label:after, .input-field.validate input:valid + label:after, .input-field.validate input:disabled + label:after, .input-field .validate input + label.active:after, .input-field .validate input:focus:not([readonly]) + label:after, .input-field .validate input:valid + label:after, .input-field .validate input:disabled + label:after, .input-field.validate textarea + label.active:after, .input-field.validate textarea:focus:not([readonly]) + label:after, .input-field.validate textarea:valid + label:after, .input-field.validate textarea:disabled + label:after, .input-field .validate textarea + label.active:after, .input-field .validate textarea:focus:not([readonly]) + label:after, .input-field .validate textarea:valid + label:after, .input-field .validate textarea:disabled + label:after {\n        margin-top: -10px; }\n  .input-field.validate textarea.invalid {\n    border-bottom-color: #ce3f00; }\n  .input-field.validate .generic-form-error {\n    display: block;\n    margin-top: 3px;\n    margin-bottom: 0; }\n\n.multiline-field .input-wrapper {\n  position: relative;\n  padding-bottom: 8px; }\n  .multiline-field .input-wrapper input {\n    padding-right: 22px; }\n  .multiline-field .input-wrapper label {\n    visibility: hidden; }\n    .multiline-field .input-wrapper label:after {\n      visibility: visible; }\n    .multiline-field .input-wrapper label.first-label {\n      visibility: visible; }\n  .multiline-field .input-wrapper:nth-child(1) label {\n    visibility: visible; }\n  .multiline-field .input-wrapper .multiline-label .inline-help-tooltip {\n    width: 1em;\n    height: 1em; }\n    .multiline-field .input-wrapper .multiline-label .inline-help-tooltip .inline-help-icon {\n      width: 1em;\n      height: 1em; }\n      .multiline-field .input-wrapper .multiline-label .inline-help-tooltip .inline-help-icon svg {\n        width: 1em;\n        height: 1em; }\n\n.multiline-field ul li:first-child label {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.multiline-field ul li input {\n  margin-bottom: 10px; }\n  .multiline-field ul li input::-ms-clear {\n    display: none; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input::-webkit-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input::-moz-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input:-ms-input-placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper input::placeholder {\n  color: #bcc3ca;\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: inherit;\n  text-transform: none;\n  -webkit-transition: color 0.2s ease;\n  transition: color 0.2s ease; }\n\n.multiline-field ul:not(:empty) + .input-wrapper label.first-label {\n  visibility: hidden; }\n\n.multiline-field .input-actions {\n  position: absolute;\n  top: 4px;\n  right: -2px; }\n  .multiline-field .input-actions .js-add-value-button, .multiline-field .input-actions .js-delete-value-button {\n    position: relative;\n    padding: 4px; }\n    .multiline-field .input-actions .js-add-value-button:hover, .multiline-field .input-actions .js-delete-value-button:hover {\n      cursor: pointer; }\n    .multiline-field .input-actions .js-add-value-button:focus i, .multiline-field .input-actions .js-delete-value-button:focus i {\n      box-shadow: 0 0 6px 1px #1d4f76; }\n  .multiline-field .input-actions button {\n    width: auto;\n    background: none;\n    border: none;\n    outline: none; }\n  .multiline-field .input-actions .tooltip {\n    width: 150px; }\n  .multiline-field .input-actions i {\n    position: relative;\n    display: block;\n    width: 18px;\n    height: 18px;\n    border: 2px solid #1d4f76;\n    border-radius: 18px; }\n    .multiline-field .input-actions i.add-action:before, .multiline-field .input-actions i.delete-action:before {\n      position: relative;\n      top: 6px;\n      left: 2px;\n      display: block;\n      width: 10px;\n      height: 2px;\n      content: '';\n      background-color: #1d4f76; }\n    .multiline-field .input-actions i.add-action {\n      border-color: #f58020; }\n      .multiline-field .input-actions i.add-action:before {\n        background-color: #f58020; }\n      .multiline-field .input-actions i.add-action:after {\n        position: absolute;\n        top: 2px;\n        left: 6px;\n        display: block;\n        width: 2px;\n        height: 10px;\n        content: '';\n        background-color: #f58020; }\n\n.file-input {\n  position: relative;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%; }\n  .file-input .file-path-wrapper {\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n       -moz-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1; }\n  .file-input .btn {\n    margin-top: 10px;\n    margin-left: 10px; }\n    .file-input .btn input {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      cursor: pointer;\n      opacity: 0; }\n  .file-input .clear-file {\n    position: absolute;\n    top: 10px;\n    right: 0;\n    z-index: 2;\n    cursor: pointer; }\n\n.filter-expression-picker .filters {\n  background-color: #f1f3f4; }\n\n.filter-expression-picker .admin-filterbox {\n  position: relative;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  margin-bottom: 1px; }\n  .filter-expression-picker .admin-filterbox.mod-small {\n    padding: 13px 20px; }\n  .filter-expression-picker .admin-filterbox .filter-badge {\n    -moz-box-sizing: border-box;\n         box-sizing: border-box;\n    height: 34px;\n    font-weight: normal;\n    text-transform: initial; }\n  .filter-expression-picker .admin-filterbox .filter-badge {\n    display: inline-block;\n    margin-left: 3px;\n    overflow: visible;\n    color: #373737;\n    font-size: 13px;\n    background-color: #ffffff;\n    cursor: pointer; }\n    .filter-expression-picker .admin-filterbox .filter-badge .edit-filter {\n      -moz-box-sizing: border-box;\n           box-sizing: border-box; }\n    .filter-expression-picker .admin-filterbox .filter-badge .edit-filter-content {\n      font-size: 13px;\n      line-height: 16px; }\n    .filter-expression-picker .admin-filterbox .filter-badge .filter-operator.mod-negative {\n      color: #ce3f00; }\n    .filter-expression-picker .admin-filterbox .filter-badge .filter-operator.mod-positive {\n      color: #009830; }\n    .filter-expression-picker .admin-filterbox .filter-badge .filter-value-join {\n      color: #373737; }\n    .filter-expression-picker .admin-filterbox .filter-badge .dropdown-toggle:disabled .filter-operator, .filter-expression-picker .admin-filterbox .filter-badge .dropdown-toggle:disabled .filter-value-join {\n      color: #bcc3ca; }\n  .filter-expression-picker .admin-filterbox .filterbox-filters-container {\n    -webkit-box-flex: 2;\n    -webkit-flex-grow: 2;\n       -moz-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    padding: 4px 4px 3px;\n    background-color: #bcc3ca; }\n  .filter-expression-picker .admin-filterbox .filters {\n    position: relative;\n    display: inline;\n    margin-right: 5px;\n    vertical-align: baseline; }\n    .filter-expression-picker .admin-filterbox .filters:empty {\n      margin-right: 0; }\n    .filter-expression-picker .admin-filterbox .filters .active-filters {\n      display: inline; }\n    .filter-expression-picker .admin-filterbox .filters .editable-filters, .filter-expression-picker .admin-filterbox .filters .editable-filter {\n      display: -webkit-inline-box;\n      display: -webkit-inline-flex;\n      display: -moz-inline-box;\n      display: -ms-inline-flexbox;\n      display: inline-flex; }\n\n.filter-expression-picker .filters .btn.dropdown-toggle, .filter-expression-picker .filters .filter-badge, .filter-expression-picker .filters .predefined-filter {\n  box-shadow: none;\n  outline: none; }\n\n.filter-expression-picker .add-filter-popup, .filter-expression-picker .edit-filter-popup, .filter-expression-picker .filter-type-popup {\n  position: absolute;\n  z-index: 999;\n  width: 292px; }\n  .filter-expression-picker .add-filter-popup .operator .admin-select, .filter-expression-picker .add-filter-popup .select-operator .admin-select, .filter-expression-picker .add-filter-popup .value-selector .admin-select, .filter-expression-picker .edit-filter-popup .operator .admin-select, .filter-expression-picker .edit-filter-popup .select-operator .admin-select, .filter-expression-picker .edit-filter-popup .value-selector .admin-select, .filter-expression-picker .filter-type-popup .operator .admin-select, .filter-expression-picker .filter-type-popup .select-operator .admin-select, .filter-expression-picker .filter-type-popup .value-selector .admin-select {\n    width: 100%; }\n    .filter-expression-picker .add-filter-popup .operator .admin-select .dropdown-toggle, .filter-expression-picker .add-filter-popup .select-operator .admin-select .dropdown-toggle, .filter-expression-picker .add-filter-popup .value-selector .admin-select .dropdown-toggle, .filter-expression-picker .edit-filter-popup .operator .admin-select .dropdown-toggle, .filter-expression-picker .edit-filter-popup .select-operator .admin-select .dropdown-toggle, .filter-expression-picker .edit-filter-popup .value-selector .admin-select .dropdown-toggle, .filter-expression-picker .filter-type-popup .operator .admin-select .dropdown-toggle, .filter-expression-picker .filter-type-popup .select-operator .admin-select .dropdown-toggle, .filter-expression-picker .filter-type-popup .value-selector .admin-select .dropdown-toggle {\n      -moz-box-sizing: border-box;\n           box-sizing: border-box;\n      width: 100%;\n      text-align: left; }\n\n.filter-expression-picker .add-filter-popup.left {\n  right: 35px; }\n\n.filter-expression-picker .edit-filter-popup.left {\n  right: 3px; }\n\n.filter-expression-picker .filter-choices .popup-content .section, .filter-expression-picker .columns-picker .popup-content .section {\n  display: inline-block;\n  width: 100%;\n  padding-left: 15px;\n  margin-top: 7px;\n  color: #1d4f76;\n  text-transform: uppercase; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar {\n  width: 6px;\n  height: 6px; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar-track, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar-track, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar-track, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar-track {\n  background-color: #e6ecf0; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar-thumb, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar-thumb, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar-thumb, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar-thumb {\n  background-color: #bcc3ca;\n  border-radius: 3px; }\n\n.filter-expression-picker .filter-choices .popup-content .list::-webkit-scrollbar-button, .filter-expression-picker .filter-choices .popup-content .list ::-webkit-scrollbar-button, .filter-expression-picker .columns-picker .popup-content .list::-webkit-scrollbar-button, .filter-expression-picker .columns-picker .popup-content .list ::-webkit-scrollbar-button {\n  width: 0;\n  height: 0; }\n\n.filter-expression-picker .filter-choices .popup-content {\n  max-height: 300px;\n  overflow: auto; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar-track, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar-track {\n    background-color: #e6ecf0; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar-thumb, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .filter-expression-picker .filter-choices .popup-content::-webkit-scrollbar-button, .filter-expression-picker .filter-choices .popup-content ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n\n.filter-expression-picker .filter-choices .popup-header, .filter-expression-picker .edit-filter-values .popup-header {\n  background-color: #f1f3f4;\n  border-bottom: 1px solid #bcc3ca; }\n\n.filter-expression-picker .filter-choices .popup-header .coveo-filter-container, .filter-expression-picker .filter-choices .popup-header .filter-container {\n  width: 260px; }\n  .filter-expression-picker .filter-choices .popup-header .coveo-filter-container .filter-icon, .filter-expression-picker .filter-choices .popup-header .filter-container .filter-icon {\n    right: 10px; }\n  .filter-expression-picker .filter-choices .popup-header .coveo-filter-container input.filter-box, .filter-expression-picker .filter-choices .popup-header .filter-container input.filter-box {\n    width: 260px; }\n    .filter-expression-picker .filter-choices .popup-header .coveo-filter-container input.filter-box + span, .filter-expression-picker .filter-choices .popup-header .filter-container input.filter-box + span {\n      right: 10px; }\n\n.filter-expression-picker .filter-choices .popup-header .event-type {\n  width: 224px;\n  margin-bottom: 16px; }\n\n.filter-expression-picker .available-filters ul, .filter-expression-picker .edit-filter-values ul {\n  margin: 0; }\n\n.filter-expression-picker .available-filters .filter:not(.selected-filter), .filter-expression-picker .edit-filter-values .filter:not(.selected-filter) {\n  -moz-box-sizing: content-box;\n       box-sizing: content-box;\n  min-height: 20px;\n  padding: 6px 25px;\n  margin-right: 1px;\n  overflow-x: hidden;\n  line-height: 18px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  background-color: #ffffff;\n  cursor: pointer; }\n  .filter-expression-picker .available-filters .filter:not(.selected-filter) .type, .filter-expression-picker .edit-filter-values .filter:not(.selected-filter) .type {\n    color: #bcc3ca;\n    font-size: 10px; }\n\n.filter-expression-picker .available-filters li.filter:hover, .filter-expression-picker .available-filters li.filter.active, .filter-expression-picker .edit-filter-values li.filter:hover, .filter-expression-picker .edit-filter-values li.filter.active {\n  background-color: #e6ecf0; }\n\n.filter-expression-picker .available-filters label.filter, .filter-expression-picker .edit-filter-values label.filter {\n  cursor: default; }\n\n.filter-expression-picker .edit-filter-values {\n  position: relative;\n  overflow: visible; }\n  .filter-expression-picker .edit-filter-values .popup-main-section {\n    width: 100%; }\n    .filter-expression-picker .edit-filter-values .popup-main-section .popup-header {\n      background-color: #ffffff; }\n    .filter-expression-picker .edit-filter-values .popup-main-section .selected-filter {\n      height: 50px;\n      padding-left: 20px;\n      color: #1d4f76;\n      font-size: 15px;\n      font-weight: bold;\n      line-height: 50px; }\n    .filter-expression-picker .edit-filter-values .popup-main-section .popover-body .string-filters {\n      padding-top: 30px; }\n      .filter-expression-picker .edit-filter-values .popup-main-section .popover-body .string-filters label {\n        line-height: 18px; }\n\n.filter-expression-picker .multi-filter {\n  position: relative; }\n  .filter-expression-picker .multi-filter .multi-filter-picker {\n    position: relative;\n    margin-bottom: 20px; }\n    .filter-expression-picker .multi-filter .multi-filter-picker .admin-filterbox {\n      border-bottom: 2px solid #ffffff; }\n  .filter-expression-picker .multi-filter .add-container {\n    overflow: auto;\n    background-color: rgba(241, 243, 244, 0.4); }\n    .filter-expression-picker .multi-filter .add-container .add {\n      padding: 10px 20px;\n      cursor: pointer;\n      opacity: 1; }\n      .filter-expression-picker .multi-filter .add-container .add svg {\n        width: 20px;\n        height: 20px;\n        vertical-align: text-bottom;\n        fill: #f58020; }\n  .filter-expression-picker .multi-filter .admin-filterbox .pre-operator {\n    display: inline-block;\n    padding: 2px 0 0 2px;\n    margin: 0 6px 0 0;\n    font-family: \"Lato\", Arial, Helvetica, sans-serif;\n    font-size: 12px;\n    font-weight: bold;\n    line-height: 33px; }\n  .filter-expression-picker .multi-filter .admin-filterbox .filter-where {\n    float: left;\n    padding: 0 4px;\n    margin-right: 5px;\n    margin-bottom: 0;\n    margin-left: 4px;\n    line-height: 34px;\n    background-color: #ffffff; }\n  .filter-expression-picker .multi-filter .admin-filterbox .filter-type {\n    -moz-box-sizing: border-box;\n         box-sizing: border-box; }\n  .filter-expression-picker .multi-filter .filter-popup {\n    margin-bottom: 0; }\n    .filter-expression-picker .multi-filter .filter-popup .filter-actions .btn + .btn {\n      margin: 0; }\n    .filter-expression-picker .multi-filter .filter-popup .event-type {\n      display: none; }\n\n.coveo-styleguide table:not(.datepicker-table) {\n  width: 100%;\n  text-align: left;\n  border: none;\n  border-spacing: 0; }\n  .coveo-styleguide table:not(.datepicker-table) th, .coveo-styleguide table:not(.datepicker-table) td {\n    position: relative;\n    text-align: left;\n    vertical-align: middle; }\n    .coveo-styleguide table:not(.datepicker-table) th.selection, .coveo-styleguide table:not(.datepicker-table) td.selection {\n      width: 25px !important;\n      margin: 0; }\n    .coveo-styleguide table:not(.datepicker-table) th:last-child, .coveo-styleguide table:not(.datepicker-table) td:last-child {\n      padding-right: 20px; }\n    .coveo-styleguide table:not(.datepicker-table) th .coveo-checkbox-label + .cell-content, .coveo-styleguide table:not(.datepicker-table) td .coveo-checkbox-label + .cell-content {\n      margin-left: 10px; }\n  .coveo-styleguide table:not(.datepicker-table) thead tr {\n    height: 32px;\n    color: #1d4f76;\n    font-size: 12px;\n    font-weight: bold;\n    line-height: 16px;\n    background-color: transparent; }\n  .coveo-styleguide table:not(.datepicker-table) th {\n    padding: 7px 15px;\n    white-space: nowrap;\n    border-top: 1px solid #bcc3ca;\n    border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide table:not(.datepicker-table) th.admin-sort {\n      position: relative;\n      cursor: pointer; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon {\n        display: -webkit-inline-box;\n        display: -webkit-inline-flex;\n        display: -moz-inline-box;\n        display: -ms-inline-flexbox;\n        display: inline-flex; }\n        .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort {\n          width: 7px;\n          height: 12px;\n          margin-left: 5px;\n          vertical-align: -2px;\n          fill: #1d4f76; }\n          .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .asc-arrow, .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .desc-arrow {\n            cursor: pointer;\n            opacity: 0.3; }\n            .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .asc-arrow:hover, .coveo-styleguide table:not(.datepicker-table) th.admin-sort .admin-sort-icon .tables-sort .desc-arrow:hover {\n              opacity: 0.6; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort.admin-sort-descending .admin-sort-icon .desc-arrow {\n        opacity: 1; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort.admin-sort-ascending .admin-sort-icon .asc-arrow {\n        opacity: 1; }\n      .coveo-styleguide table:not(.datepicker-table) th.admin-sort:hover {\n        background-color: #e6ecf0; }\n    .coveo-styleguide table:not(.datepicker-table) th:first-child {\n      padding-left: 20px; }\n    .coveo-styleguide table:not(.datepicker-table) th .coveo-checkbox-label {\n      vertical-align: bottom; }\n  .coveo-styleguide table:not(.datepicker-table) thead.mod-no-border-top th {\n    border-top: none; }\n  .coveo-styleguide table:not(.datepicker-table) tbody.table-loading {\n    opacity: 0.3; }\n  .coveo-styleguide table:not(.datepicker-table) tr {\n    height: 37px;\n    font-size: 15px;\n    line-height: 18px; }\n    .coveo-styleguide table:not(.datepicker-table) tr.disabled div.wrapper {\n      opacity: 0.4; }\n    .coveo-styleguide table:not(.datepicker-table) tr:first-child {\n      padding-left: 10px; }\n    .coveo-styleguide table:not(.datepicker-table) tr:hover td {\n      background-color: #e6ecf0; }\n    .coveo-styleguide table:not(.datepicker-table) tr.empty td {\n      padding: 25px;\n      text-align: center; }\n    .coveo-styleguide table:not(.datepicker-table) tr.selected:not(:hover) td {\n      background-color: #f1f3f4; }\n    .coveo-styleguide table:not(.datepicker-table) tr.selected td:first-child {\n      border-left-color: #f58020; }\n  .coveo-styleguide table:not(.datepicker-table) td {\n    padding: 9px 15px;\n    margin-left: 15px;\n    text-align: left;\n    border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide table:not(.datepicker-table) td .mod-max-width {\n      max-width: 300px;\n      overflow: hidden;\n      text-overflow: ellipsis; }\n    .coveo-styleguide table:not(.datepicker-table) td:first-child {\n      border-left: 5px solid transparent; }\n    .coveo-styleguide table:not(.datepicker-table) td.edit.enabled {\n      color: #1d4f76;\n      cursor: pointer; }\n    .coveo-styleguide table:not(.datepicker-table) td .btn-icon, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle {\n      cursor: default;\n      opacity: 0.3; }\n      .coveo-styleguide table:not(.datepicker-table) td .btn-icon.enabled:active:hover, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle.enabled:active:hover {\n        border-radius: 2px; }\n      .coveo-styleguide table:not(.datepicker-table) td .btn-icon.disabled, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle.disabled {\n        cursor: default;\n        opacity: 0.2; }\n      .coveo-styleguide table:not(.datepicker-table) td .btn-icon.enabled, .coveo-styleguide table:not(.datepicker-table) td .dropdown-toggle.enabled {\n        cursor: pointer;\n        opacity: 1; }\n    .coveo-styleguide table:not(.datepicker-table) td .coveo-checkbox-label {\n      position: relative;\n      top: -1px;\n      vertical-align: text-bottom; }\n  .coveo-styleguide table:not(.datepicker-table).row-selected td, .coveo-styleguide table:not(.datepicker-table).row-selected:hover td {\n    background-color: #e6ecf0; }\n  .coveo-styleguide table:not(.datepicker-table).confirm-delete .row-selected td, .coveo-styleguide table:not(.datepicker-table).confirm-delete.row-selected:hover td {\n    background-color: rgba(206, 63, 0, 0.1);\n    border-color: #ce3f00;\n    -webkit-transition: background-color 300ms;\n    transition: background-color 300ms; }\n  .coveo-styleguide table:not(.datepicker-table).mod-deleting tbody tr.selected td {\n    background-color: rgba(206, 63, 0, 0.1); }\n\n.coveo-styleguide .table-last-update {\n  margin: 10px 40px;\n  color: rgba(55, 55, 55, 0.5);\n  font-size: 11px;\n  text-align: right; }\n\n.coveo-styleguide table.big-table tbody tr {\n  height: 36px;\n  cursor: default; }\n  .coveo-styleguide table.big-table tbody tr td {\n    padding: 15px; }\n  .coveo-styleguide table.big-table tbody tr td.main {\n    white-space: nowrap; }\n    .coveo-styleguide table.big-table tbody tr td.main .icon {\n      width: 36px;\n      height: 36px;\n      margin-right: 20px;\n      vertical-align: -3px; }\n    .coveo-styleguide table.big-table tbody tr td.main div.details {\n      display: inline-block; }\n      .coveo-styleguide table.big-table tbody tr td.main div.details div.second-row .icon {\n        width: 15px;\n        height: 15px;\n        margin-right: 0; }\n      .coveo-styleguide table.big-table tbody tr td.main div.details div.second-row .label {\n        color: #373737; }\n  .coveo-styleguide table.big-table tbody tr td.col, .coveo-styleguide table.big-table tbody tr td.main {\n    position: relative; }\n    .coveo-styleguide table.big-table tbody tr td.col .first-row, .coveo-styleguide table.big-table tbody tr td.main .first-row {\n      font-size: 15px;\n      line-height: 20px; }\n    .coveo-styleguide table.big-table tbody tr td.col div.second-row, .coveo-styleguide table.big-table tbody tr td.main div.second-row {\n      margin-top: 2px;\n      font-size: 12px;\n      line-height: 17px; }\n  .coveo-styleguide table.big-table tbody tr div.wrapper {\n    min-height: 36px; }\n  .coveo-styleguide table.big-table tbody tr.disabled td .wrapper {\n    opacity: 0.5; }\n\n.coveo-styleguide .fixed-header-table-container {\n  position: relative;\n  padding-top: 30px;\n  overflow: hidden;\n  border-top: 1px solid #bcc3ca; }\n  .coveo-styleguide .fixed-header-table-container .fixed-header-table {\n    overflow-y: scroll;\n    border-top: 1px solid #bcc3ca;\n    border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar {\n      width: 6px;\n      height: 6px; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar-track, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar-track {\n      background-color: #e6ecf0; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar-thumb, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar-thumb {\n      background-color: #bcc3ca;\n      border-radius: 3px; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table::-webkit-scrollbar-button, .coveo-styleguide .fixed-header-table-container .fixed-header-table ::-webkit-scrollbar-button {\n      width: 0;\n      height: 0; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table table thead tr {\n      height: 0;\n      line-height: 0; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table table th {\n      position: inherit;\n      padding-top: 0;\n      padding-bottom: 0;\n      font-size: 0;\n      white-space: nowrap;\n      border: none; }\n      .coveo-styleguide .fixed-header-table-container .fixed-header-table table th.admin-sort .admin-sort-icon {\n        left: 0; }\n      .coveo-styleguide .fixed-header-table-container .fixed-header-table table th div.fixed-header-container {\n        position: absolute;\n        top: 0;\n        padding: 7px 0;\n        font-size: 12px;\n        line-height: 16px; }\n    .coveo-styleguide .fixed-header-table-container .fixed-header-table table tbody tr:last-child {\n      height: 36px; }\n      .coveo-styleguide .fixed-header-table-container .fixed-header-table table tbody tr:last-child td {\n        border-bottom: none; }\n\n.coveo-styleguide .coveo-table-actions-container {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n     -moz-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  -moz-box-sizing: content-box;\n       box-sizing: content-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  min-height: 52px;\n  background-color: #f1f3f4; }\n  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions {\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n       -moz-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -moz-box-sizing: border-box;\n         box-sizing: border-box;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    height: 52px;\n    padding: 0 30px; }\n    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .actions-row {\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex; }\n    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .admin-select.dropdown {\n      vertical-align: super; }\n    .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action {\n      line-height: 0;\n      border: 1px solid transparent;\n      border-radius: 2px;\n      cursor: pointer;\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .state-disabled {\n        cursor: default;\n        opacity: 0.3; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action + .action {\n        margin-left: 30px; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown {\n        padding: 3px 10px;\n        margin-right: -10px;\n        margin-left: -webkit-calc(30px - 10px);\n        margin-left: calc(30px - 10px); }\n        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown .dropdown-toggle {\n          padding: 0; }\n        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown.open {\n          background-color: #e6ecf0;\n          border-color: #bcc3ca; }\n        .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.dropdown:first-child {\n          margin-left: -10px; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .action-label {\n        margin-top: 1px;\n        margin-left: 10px;\n        color: #1d4f76;\n        font-size: 13px;\n        font-weight: bold;\n        line-height: 11px;\n        text-transform: uppercase; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .action-icon, .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action .action-icon svg {\n        display: inline-block;\n        width: 26px;\n        height: 26px; }\n      .coveo-styleguide .coveo-table-actions-container .coveo-table-actions .action.prompt-action {\n        padding: 8.5px 16px;\n        margin-left: 10px; }\n  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions + .coveo-table-actions {\n    border-left: 1px solid #bcc3ca; }\n  .coveo-styleguide .coveo-table-actions-container .coveo-table-actions.predicate-filters + .coveo-table-actions:last-child {\n    padding-left: 0;\n    border-left: none; }\n  .coveo-styleguide .coveo-table-actions-container.mod-align-header .coveo-table-actions:last-child {\n    padding-right: 40px; }\n\n.coveo-styleguide .item-filter {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.coveo-styleguide .item-filter-item {\n  display: inline-block;\n  margin: 0 10px;\n  color: #009ad9; }\n\n.coveo-styleguide .item-filter-clear {\n  padding: 0;\n  background: none;\n  border: none;\n  outline: none;\n  cursor: pointer; }\n\n.coveo-styleguide table.mod-align-header th:first-child {\n  padding-left: 40px; }\n\n.coveo-styleguide table.mod-align-header tbody tr td:first-child {\n  padding-left: 35px; }\n\n.coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child {\n  padding-left: 35px; }\n  .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .container {\n    padding-right: 35px;\n    padding-left: 35px;\n    margin-right: -35px;\n    margin-left: -35px; }\n  .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .box.padded {\n    padding-left: 0; }\n  .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .box .label, .coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:first-child .box .value {\n    padding-right: 0;\n    padding-left: 0; }\n\n.coveo-styleguide table.mod-align-header.mod-collapsible-rows tbody tr.collapsible-row td:last-child {\n  padding-right: 35px; }\n\n.coveo-styleguide table.mod-collapsible-rows tbody tr {\n  height: 45px; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='collapsed'] .state-expanded {\n    display: none; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='collapsed'] .state-collapsed {\n    display: inline; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='expanded'] .state-expanded {\n    display: inline; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr td [data-collapse-state='expanded'] .state-collapsed {\n    display: none; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr.heading-row.opened:not(:hover) td {\n    background-color: #f1f3f4; }\n  .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row {\n    height: 0;\n    line-height: 12px; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td {\n      padding: 0;\n      border-bottom: 0; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td:first-child {\n        border-left: 0; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .container {\n        display: none; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .section-title {\n        padding-top: 10px;\n        color: #1d4f76;\n        font-size: 12px;\n        font-weight: bold;\n        text-transform: uppercase; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container {\n        padding: 15px 35px;\n        margin-right: -35px;\n        margin-left: -35px;\n        background: #ffffff;\n        border-bottom: 1px solid;\n        border-bottom-color: #bcc3ca; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .details-container {\n          padding-right: 15px; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value {\n          padding: 5px 0;\n          font-size: 14px;\n          line-height: 15px; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value b {\n            font-weight: bold; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value i {\n            font-style: italic; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .value ul {\n            padding-left: 20px;\n            list-style-type: disc; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .label {\n          padding: 5px 0;\n          font-size: 12px;\n          font-weight: normal; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-title {\n          padding: 0;\n          color: #ce3f00; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-description-container {\n          -webkit-flex-basis: -webkit-calc(33% - 15px);\n              -ms-flex-preferred-size: calc(33% - 15px);\n                  flex-basis: calc(33% - 15px); }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-description-container li {\n            padding-bottom: 5px; }\n          .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .error-description-container .error-description {\n            padding-top: 5px;\n            color: #ce3f00; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td .row-error-container .troubleshooting-container {\n          -webkit-flex-basis: -webkit-calc(66% - 15px);\n              -ms-flex-preferred-size: calc(66% - 15px);\n                  flex-basis: calc(66% - 15px); }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row.in td {\n      border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row td {\n      background-color: #f1f3f4; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box.padded {\n      padding: 5px 10px; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box .label, .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box .value {\n      padding: 5px;\n      overflow: hidden;\n      font-size: 12px;\n      text-overflow: ellipsis; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .box .label {\n      color: #296896; }\n    .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .columns {\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n      -webkit-flex-flow: row wrap;\n         -moz-box-orient: horizontal;\n         -moz-box-direction: normal;\n          -ms-flex-flow: row wrap;\n              flex-flow: row wrap;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .columns .box {\n        -webkit-flex-basis: 33%;\n            -ms-flex-preferred-size: 33%;\n                flex-basis: 33%; }\n        .coveo-styleguide table.mod-collapsible-rows tbody tr.collapsible-row .columns .box.padded {\n          -webkit-flex-basis: -webkit-calc(33% - 10px);\n              -ms-flex-preferred-size: calc(33% - 10px);\n                  flex-basis: calc(33% - 10px); }\n\n.coveo-styleguide table.mod-collapsible-rows.mod-slim tbody:not(.loading-row) tr {\n  height: auto; }\n\n.coveo-styleguide .pagination-container {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-bottom: 20px; }\n  .coveo-styleguide .pagination-container.loading-view .spinner {\n    display: block;\n    margin-top: 30px; }\n  .coveo-styleguide .pagination-container.loading-view .items-per-page, .coveo-styleguide .pagination-container.loading-view .pagination {\n    opacity: 0.4;\n    pointer-events: none; }\n  .coveo-styleguide .pagination-container .items-per-page {\n    margin: 20px 40px 0 40px; }\n  .coveo-styleguide .pagination-container .pagination {\n    margin: 20px -webkit-calc(40px - 5px) 0 -webkit-calc(40px - 5px);\n    margin: 20px calc(40px - 5px) 0 calc(40px - 5px); }\n  .coveo-styleguide .pagination-container .pagination .pagination-icon {\n    vertical-align: -2px; }\n  .coveo-styleguide .pagination-container .spinner {\n    display: none; }\n\n.coveo-styleguide .modal .pagination-container .items-per-page, .coveo-styleguide .modal .pagination-container .pagination, .coveo-styleguide .modal-container .modal-body .pagination-container .items-per-page, .coveo-styleguide .modal-container .modal-body .pagination-container .pagination {\n  margin: 20px -5px 0 0; }\n\n.coveo-styleguide table.mod-slim td {\n  padding-top: 0;\n  padding-bottom: 0; }\n\n.coveo-styleguide table.mod-slim tbody tr:not(.empty) {\n  height: auto;\n  font-size: 13px; }\n\n.coveo-styleguide table.mod-alternate tbody tr td, .coveo-styleguide table.mod-alternate tbody tr td:hover, .coveo-styleguide table.mod-alternate tbody tr:hover td, .coveo-styleguide table.mod-alternate tbody tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr td, .coveo-styleguide table.mod-alternate tbody:hover tr td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr:hover td, .coveo-styleguide table.mod-alternate tbody:hover tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover td:hover {\n  background-color: #ffffff; }\n\n.coveo-styleguide table.mod-alternate tbody tr.selected td, .coveo-styleguide table.mod-alternate tbody tr.selected td:hover, .coveo-styleguide table.mod-alternate tbody tr:hover.selected td, .coveo-styleguide table.mod-alternate tbody tr:hover.selected td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row.selected td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row.selected td:hover, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover.selected td, .coveo-styleguide table.mod-alternate tbody tr.collapsible-row:hover.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr:hover.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr:hover.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row.selected td:hover, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover.selected td, .coveo-styleguide table.mod-alternate tbody:hover tr.collapsible-row:hover.selected td:hover {\n  background-color: #f1f3f4; }\n\n.coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td:hover, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td:hover, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td:hover {\n  background-color: #f1f3f4; }\n  .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr:hover td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:nth-child(2n) tr.collapsible-row:hover td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr:hover td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row td:hover .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td .row-error-container, .coveo-styleguide table.mod-alternate tbody:hover:nth-child(2n) tr.collapsible-row:hover td:hover .row-error-container {\n    background-color: #f1f3f4; }\n\n.coveo-styleguide table.drag-and-drop-table-view [draggable] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-user-drag: element; }\n\n.coveo-styleguide table.drag-and-drop-table-view tr th.drag-column {\n  width: 25px;\n  padding: 7px 10px; }\n\n.coveo-styleguide table.drag-and-drop-table-view tr.drag-over {\n  background-color: rgba(188, 195, 202, 0.5); }\n  .coveo-styleguide table.drag-and-drop-table-view tr.drag-over td.drag-feedback {\n    background-color: rgba(188, 195, 202, 0.5); }\n\n.coveo-styleguide table.drag-and-drop-table-view .drag-feedback {\n  position: relative; }\n\n.coveo-styleguide table.drag-and-drop-table-view .handle {\n  padding: 0;\n  text-align: center;\n  cursor: move;\n  cursor: -webkit-grab;\n  cursor: -moz-grab;\n  cursor: grab; }\n  .coveo-styleguide table.drag-and-drop-table-view .handle:active {\n    cursor: -webkit-grabbing;\n    cursor: -moz-grabbing;\n    cursor: grabbing; }\n  .coveo-styleguide table.drag-and-drop-table-view .handle .icon {\n    pointer-events: none;\n    fill: #bcc3ca; }\n\n.coveo-styleguide .modal-container.mod-prompt .modal-content {\n  height: auto;\n  max-width: 550px;\n  max-height: 350px;\n  min-width: 500px;\n  min-height: 280px; }\n  .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-header {\n    height: 90px;\n    padding: 20px 30px; }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-header .small-close {\n      width: 14px;\n      height: 14px; }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-header h1 {\n      color: #ffffff;\n      white-space: inherit; }\n  .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body {\n    -webkit-flex-basis: inherit;\n        -ms-flex-preferred-size: inherit;\n            flex-basis: inherit;\n    -webkit-box-flex: initial;\n    -webkit-flex-grow: initial;\n       -moz-box-flex: initial;\n        -ms-flex-positive: initial;\n            flex-grow: initial;\n    min-height: -webkit-calc(280px - 90px - 84px);\n    min-height: calc(280px - 90px - 84px);\n    min-height: -webkit-calc(280px - 90px - -webkit-calc(2 * 24px + 34px + 2 * 1px));\n    min-height: calc(280px - 90px - calc(2 * 24px + 34px + 2 * 1px)); }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body.mod-header-padding {\n      padding-right: 30px;\n      padding-left: 30px; }\n    .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body .prompt-message, .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-body .pompt-message {\n      padding-top: 24px;\n      line-height: 20px; }\n  .coveo-styleguide .modal-container.mod-prompt .modal-content .modal-footer {\n    height: -webkit-calc(2 * 24px + 34px + 2 * 1px);\n    height: calc(2 * 24px + 34px + 2 * 1px);\n    padding: 20px 30px;\n    background-color: #ffffff;\n    border-top: 0; }\n\n.coveo-styleguide .modal-container.mod-medium .modal-content {\n  max-height: initial; }\n  .coveo-styleguide .modal-container.mod-medium .modal-content .modal-body {\n    max-height: initial;\n    min-height: initial; }\n\n.coveo-styleguide .header {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%;\n  height: 65px;\n  color: #f1f3f4;\n  background-color: #296896; }\n  .coveo-styleguide .header .header-section {\n    border-left: solid 1px rgba(0, 0, 0, 0.1); }\n    .coveo-styleguide .header .header-section.mod-padded {\n      padding: 0 25px; }\n    .coveo-styleguide .header .header-section:first-child {\n      border-left: none; }\n\n.coveo-styleguide .navigation {\n  width: 245px;\n  overflow: auto;\n  background-color: #263e55;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  .coveo-styleguide .navigation::-webkit-scrollbar, .coveo-styleguide .navigation ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .coveo-styleguide .navigation::-webkit-scrollbar-track, .coveo-styleguide .navigation ::-webkit-scrollbar-track {\n    background-color: #373737; }\n  .coveo-styleguide .navigation::-webkit-scrollbar-thumb, .coveo-styleguide .navigation ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .coveo-styleguide .navigation::-webkit-scrollbar-button, .coveo-styleguide .navigation ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n  .coveo-styleguide .navigation *, .coveo-styleguide .navigation *:before, .coveo-styleguide .navigation *:after {\n    -webkit-font-smoothing: subpixel-antialiased; }\n  .coveo-styleguide .navigation .tooltip.right .tooltip-arrow {\n    border-right-color: #f58020; }\n  .coveo-styleguide .navigation .tooltip .tooltip-inner {\n    background-color: #f58020; }\n  .coveo-styleguide .navigation .navigation-menu {\n    position: relative;\n    height: 100%;\n    overflow: auto;\n    color: #f1f3f4;\n    background-color: #263e55; }\n    .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header {\n      -webkit-box-align: center;\n      -webkit-align-items: center;\n         -moz-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      display: -webkit-box;\n      display: -webkit-flex;\n      display: -moz-box;\n      display: -ms-flexbox;\n      display: flex;\n      height: 50px;\n      font-size: 13px;\n      font-weight: 700;\n      text-transform: uppercase;\n      background-color: #1d4f76; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-header .navigation-menu-section-header-icon {\n        margin: 0 15px; }\n    .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item {\n      font-weight: 400;\n      border-left: 3px solid transparent;\n      cursor: pointer; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link {\n        -webkit-box-align: center;\n        -webkit-align-items: center;\n           -moz-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-pack: justify;\n        -webkit-justify-content: space-between;\n           -moz-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        display: -webkit-box;\n        display: -webkit-flex;\n        display: -moz-box;\n        display: -ms-flexbox;\n        display: flex;\n        height: 30px;\n        padding-left: 43px;\n        margin-right: 43px;\n        color: #f1f3f4; }\n        .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item .navigation-menu-section-item-link.state-locked {\n          color: #bcc3ca; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-locked .icon-folder-locked {\n        display: inline-block;\n        visibility: visible; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-closed .icon-folder-closed {\n        display: inline-block;\n        visibility: visible; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-opened .icon-folder-opened {\n        display: inline-block;\n        visibility: visible; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item.state-active {\n        background-color: #57748a;\n        border-left-color: #f1f3f4; }\n      .coveo-styleguide .navigation .navigation-menu .navigation-menu-sections .navigation-menu-section .navigation-menu-section-items .navigation-menu-section-item:hover {\n        background-color: #57748a; }\n\n.coveo-styleguide .sub-navigation {\n  min-width: 200px;\n  overflow: auto;\n  background-color: #f1f3f4;\n  border-right: 200px; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar, .coveo-styleguide .sub-navigation ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar-track, .coveo-styleguide .sub-navigation ::-webkit-scrollbar-track {\n    background-color: #bcc3ca; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar-thumb, .coveo-styleguide .sub-navigation ::-webkit-scrollbar-thumb {\n    background-color: #373737;\n    border-radius: 3px; }\n  .coveo-styleguide .sub-navigation::-webkit-scrollbar-button, .coveo-styleguide .sub-navigation ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n  .coveo-styleguide .sub-navigation .sub-navigation-items {\n    padding-top: 26px; }\n    .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item {\n      position: relative; }\n      .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item .sub-navigation-item-link {\n        display: block;\n        padding: 7px 40px;\n        color: #1d4f76;\n        line-height: 16px; }\n      .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item.mod-selected {\n        background-color: #e6ecf0; }\n        .coveo-styleguide .sub-navigation .sub-navigation-items .sub-navigation-item.mod-selected:before {\n          position: absolute;\n          top: 0;\n          left: 0;\n          display: block;\n          width: 3px;\n          height: 100%;\n          content: '';\n          background-color: #f58020; }\n\n.coveo-styleguide .application-container {\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -webkit-box-ordinal-group: 3;\n  -webkit-order: 2;\n     -moz-box-ordinal-group: 3;\n      -ms-flex-order: 2;\n          order: 2;\n  overflow: auto;\n  border-top-left-radius: 2px; }\n\n.coveo-styleguide .application-wrapper {\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start;\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row nowrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1; }\n\n.coveo-styleguide .member {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .coveo-styleguide .member .member-icon {\n    width: 42px;\n    height: 42px;\n    overflow: hidden;\n    background-color: #f1f3f4;\n    border-radius: 100%; }\n    .coveo-styleguide .member .member-icon .member-icon-provider {\n      display: block;\n      height: 42px;\n      max-width: 26px;\n      margin: auto; }\n  .coveo-styleguide .member .member-info {\n    margin-left: 14px; }\n    .coveo-styleguide .member .member-info .member-info-name {\n      font-size: 13px;\n      font-weight: 700;\n      line-height: 16px;\n      text-transform: uppercase; }\n    .coveo-styleguide .member .member-info .member-info-email {\n      margin-top: 2px;\n      font-size: 12px;\n      font-weight: 400;\n      line-height: 15px; }\n\n.coveo-styleguide .dropdown.mod-menu .dropdown-toggle {\n  height: auto;\n  min-height: 34px;\n  text-transform: none;\n  background-color: transparent;\n  border: none;\n  cursor: pointer; }\n  .coveo-styleguide .dropdown.mod-menu .dropdown-toggle .dropdown-toggle-arrow {\n    background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m0 128h512l-256 256'/%3E %3C/svg%3E\");\n    background-repeat: no-repeat; }\n\n.coveo-styleguide .dropdown.mod-menu.open > .dropdown-toggle .dropdown-toggle-arrow {\n  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23ffffff' enable-background='new 0 0 512 512'%3E %3Cpath d='m512 384h-512l256-256'/%3E %3C/svg%3E\");\n  background-repeat: no-repeat; }\n\n.coveo-styleguide .dropdown.mod-menu .dropdown-menu li > a, .coveo-styleguide .dropdown.mod-menu .dropdown-menu li > span {\n  padding: 8px 38px; }\n\n.coveo-styleguide .dropdown.mod-menu .dropdown-menu li.divider {\n  margin: 8px 0; }\n\n.coveo-styleguide .tooltip {\n  position: absolute;\n  z-index: 10000;\n  display: block;\n  font-size: 13px;\n  line-height: 1.4;\n  text-transform: none;\n  opacity: 0;\n  visibility: visible; }\n  .coveo-styleguide .tooltip.in {\n    opacity: 1; }\n  .coveo-styleguide .tooltip.top {\n    padding: 5px 0;\n    margin-top: -3px; }\n    .coveo-styleguide .tooltip.top .tooltip-arrow {\n      bottom: 0;\n      left: 50%;\n      margin-left: -5px;\n      border-top-color: #263e55;\n      border-width: 5px 5px 0; }\n  .coveo-styleguide .tooltip.right {\n    padding: 0 5px;\n    margin-left: 3px; }\n    .coveo-styleguide .tooltip.right .tooltip-arrow {\n      top: 50%;\n      left: 0;\n      margin-top: -5px;\n      border-right-color: #263e55;\n      border-width: 5px 5px 5px 0; }\n  .coveo-styleguide .tooltip.bottom {\n    padding: 5px 0;\n    margin-top: 3px; }\n    .coveo-styleguide .tooltip.bottom .tooltip-arrow {\n      top: 0;\n      left: 50%;\n      margin-left: -5px;\n      border-bottom-color: #263e55;\n      border-width: 0 5px 5px; }\n  .coveo-styleguide .tooltip.left {\n    padding: 0 5px;\n    margin-left: -3px; }\n    .coveo-styleguide .tooltip.left .tooltip-arrow {\n      top: 50%;\n      right: 0;\n      margin-top: -5px;\n      border-left-color: #263e55;\n      border-width: 5px 0 5px 5px; }\n  .coveo-styleguide .tooltip.state-error .tooltip-inner {\n    background-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.left .tooltip-arrow {\n    border-left-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.bottom .tooltip-arrow {\n    border-bottom-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.top .tooltip-arrow {\n    border-top-color: #ce3f00; }\n  .coveo-styleguide .tooltip.state-error.right .tooltip-arrow {\n    border-right-color: #ce3f00; }\n  .coveo-styleguide .tooltip .tooltip-arrow {\n    position: absolute;\n    width: 0;\n    height: 0;\n    border-color: transparent;\n    border-style: solid; }\n  .coveo-styleguide .tooltip .tooltip-inner {\n    max-width: 300px;\n    padding: 5px 10px;\n    color: #ffffff;\n    text-decoration: none;\n    word-wrap: break-word;\n    white-space: normal;\n    background-color: #263e55;\n    border-radius: 2px; }\n\n.coveo-styleguide .tooltip-footer {\n  margin-top: 10px; }\n\n.coveo-styleguide .popover {\n  min-width: 320px;\n  background-color: #ffffff;\n  box-shadow: 0 2px 4px rgba(8, 8, 14, 0.4);\n  border: 1px solid #263e55;\n  border-radius: 2px; }\n\n.coveo-styleguide .popover-body {\n  padding: 16px; }\n\n.coveo-styleguide .popover-footer {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n     -moz-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 12px 16px;\n  overflow: hidden;\n  background-color: #f1f3f4;\n  border-top: solid 1px #bcc3ca;\n  border-radius: 0 0 2px 2px; }\n\n.coveo-styleguide .popover-navigation-section {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 30px;\n  background-color: #f1f3f4;\n  border-right: 1px solid #bcc3ca;\n  border-radius: 1px 0 0 1px;\n  cursor: pointer; }\n  .coveo-styleguide .popover-navigation-section .back {\n    margin-top: 15px; }\n\n.coveo-styleguide .modal-backdrop, .coveo-styleguide .modal-container {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\n.coveo-styleguide .modal-backdrop {\n  z-index: 1049;\n  background: #1d4f76;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  opacity: 0.9; }\n  .coveo-styleguide .modal-backdrop.layer-1 {\n    z-index: 1049; }\n  .coveo-styleguide .modal-backdrop.layer-2 {\n    z-index: 1069; }\n  .coveo-styleguide .modal-backdrop.layer-3 {\n    z-index: 1089; }\n  .coveo-styleguide .modal-backdrop.layer-4 {\n    z-index: 1109; }\n  .coveo-styleguide .modal-backdrop.layer-5 {\n    z-index: 1129; }\n  .coveo-styleguide .modal-backdrop.layer-6 {\n    z-index: 1149; }\n  .coveo-styleguide .modal-backdrop.layer-7 {\n    z-index: 1169; }\n  .coveo-styleguide .modal-backdrop.layer-8 {\n    z-index: 1189; }\n  .coveo-styleguide .modal-backdrop.layer-9 {\n    z-index: 1209; }\n  .coveo-styleguide .modal-backdrop.layer-10 {\n    z-index: 1229; }\n  .coveo-styleguide .modal-backdrop.prompt-backdrop {\n    position: absolute;\n    opacity: 0.5; }\n    .coveo-styleguide .modal-backdrop.prompt-backdrop .mask {\n      position: fixed;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0; }\n  .coveo-styleguide .modal-backdrop.clear, .coveo-styleguide .modal-backdrop.closed {\n    opacity: 0; }\n  .coveo-styleguide .modal-backdrop.closed {\n    visibility: hidden; }\n\n.coveo-styleguide .modal-container {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  z-index: 1050;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  visibility: hidden;\n  pointer-events: none; }\n  .coveo-styleguide .modal-container.layer-1 {\n    z-index: 1050; }\n  .coveo-styleguide .modal-container.layer-2 {\n    z-index: 1070; }\n  .coveo-styleguide .modal-container.layer-3 {\n    z-index: 1090; }\n  .coveo-styleguide .modal-container.layer-4 {\n    z-index: 1110; }\n  .coveo-styleguide .modal-container.layer-5 {\n    z-index: 1130; }\n  .coveo-styleguide .modal-container.layer-6 {\n    z-index: 1150; }\n  .coveo-styleguide .modal-container.layer-7 {\n    z-index: 1170; }\n  .coveo-styleguide .modal-container.layer-8 {\n    z-index: 1190; }\n  .coveo-styleguide .modal-container.layer-9 {\n    z-index: 1210; }\n  .coveo-styleguide .modal-container.layer-10 {\n    z-index: 1230; }\n  .coveo-styleguide .modal-container.opening, .coveo-styleguide .modal-container.opened {\n    visibility: visible; }\n    .coveo-styleguide .modal-container.opening > .modal-content, .coveo-styleguide .modal-container.opened > .modal-content {\n      opacity: 1; }\n  .coveo-styleguide .modal-container .modal-content {\n    position: relative;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n       -moz-box-orient: vertical;\n       -moz-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 45%;\n    height: 50%;\n    opacity: 0;\n    pointer-events: auto; }\n  .coveo-styleguide .modal-container.mod-medium > .modal-content {\n    width: 65%;\n    height: 70%; }\n  .coveo-styleguide .modal-container.mod-big > .modal-content {\n    width: 85%;\n    height: 90%; }\n  .coveo-styleguide .modal-container.mod-width-small > .modal-content {\n    width: 520px; }\n  .coveo-styleguide .modal-container.mod-stick-bottom {\n    -webkit-box-align: end;\n    -webkit-align-items: flex-end;\n       -moz-box-align: end;\n        -ms-flex-align: end;\n            align-items: flex-end; }\n    .coveo-styleguide .modal-container.mod-stick-bottom > .modal-content {\n      height: 55%; }\n      .coveo-styleguide .modal-container.mod-stick-bottom > .modal-content > .modal-footer {\n        border-radius: 0; }\n    .coveo-styleguide .modal-container.mod-stick-bottom.mod-medium > .modal-content {\n      height: 75%; }\n    .coveo-styleguide .modal-container.mod-stick-bottom.mod-big > .modal-content {\n      height: 95%; }\n  .coveo-styleguide .modal-container.mod-fade-in-scale > .modal-content {\n    -webkit-transform: scale(0.7);\n            transform: scale(0.7);\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s; }\n  .coveo-styleguide .modal-container.opened.mod-fade-in-scale > .modal-content {\n    -webkit-transform: scale(1);\n            transform: scale(1); }\n  .coveo-styleguide .modal-container.mod-slide-in-bottom > .modal-content {\n    -webkit-transform: translate3d(0, 20%, 0);\n            transform: translate3d(0, 20%, 0);\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s; }\n  .coveo-styleguide .modal-container.opened.mod-slide-in-bottom > .modal-content {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0); }\n\n.coveo-styleguide .modal-header {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100px;\n  padding: 0 40px;\n  color: #ffffff;\n  background-color: #ffffff;\n  border-radius: 2px 2px 0 0; }\n  .coveo-styleguide .modal-header:not(.mod-no-border-bottom) {\n    border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .modal-header.mod-confirmation {\n    background-color: #ecad00; }\n  .coveo-styleguide .modal-header.mod-warning {\n    background-color: #ce3f00; }\n  .coveo-styleguide .modal-header.mod-info {\n    background-color: #1d4f76; }\n  .coveo-styleguide .modal-header h1 {\n    -webkit-box-flex: 1;\n    -webkit-flex-grow: 1;\n       -moz-box-flex: 1;\n        -ms-flex-positive: 1;\n            flex-grow: 1;\n    overflow: hidden;\n    color: #1d4f76;\n    line-height: 30px;\n    text-overflow: ellipsis;\n    white-space: nowrap; }\n  .coveo-styleguide .modal-header .small-close {\n    position: absolute;\n    top: -2.10256em;\n    right: 0;\n    cursor: pointer; }\n    .coveo-styleguide .modal-header .small-close, .coveo-styleguide .modal-header .small-close .icon {\n      width: 1.33333em;\n      height: 1.33333em; }\n\n.coveo-styleguide .modal-body {\n  -webkit-flex-basis: 0;\n      -ms-flex-preferred-size: 0;\n          flex-basis: 0;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  overflow: auto;\n  background-color: #ffffff; }\n  .coveo-styleguide .modal-body .tab-content {\n    height: 100%; }\n\n.coveo-styleguide .modal-footer {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n  -webkit-justify-content: flex-end;\n     -moz-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 24px 40px;\n  overflow: hidden;\n  background-color: #f1f3f4;\n  border-top: 1px solid #bcc3ca;\n  border-radius: 0 0 2px 2px; }\n  .coveo-styleguide .modal-footer.mod-small {\n    padding: 12px 20px; }\n\n.coveo-styleguide .lightbox-search-input {\n  width: 100%;\n  padding: 10px 20px;\n  color: #373737;\n  font-size: 2rem;\n  border: none;\n  outline: none; }\n\n.coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover {\n  width: 100%;\n  padding: 0;\n  margin-top: 5px;\n  overflow: hidden;\n  background: #ffffff;\n  border: none;\n  border-radius: 2px; }\n  .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li {\n    height: auto;\n    padding: 0;\n    color: #373737;\n    line-height: inherit;\n    cursor: pointer; }\n    .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li:hover, .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li.admin-active {\n      color: #1d4f76;\n      background-color: #f1f3f4; }\n    .coveo-styleguide .lightbox-search .popover-container .lightbox-search-popover ul li .autocomplete-value {\n      display: block;\n      padding: 10px 20px;\n      font-size: 1.8rem;\n      border-top: 1px solid #e6ecf0; }\n\n.coveo-styleguide .blankslate {\n  padding: 30px;\n  color: #1d4f76;\n  text-align: center;\n  background-color: #f1f3f4;\n  border: 1px solid #1d4f76;\n  border-radius: 2px; }\n  .coveo-styleguide .blankslate h1, .coveo-styleguide .blankslate h2, .coveo-styleguide .blankslate h3, .coveo-styleguide .blankslate h4, .coveo-styleguide .blankslate h5, .coveo-styleguide .blankslate h6 {\n    margin: 15px 0 24px 0; }\n  .coveo-styleguide .blankslate p {\n    margin-bottom: 20px;\n    color: #1d4f76; }\n\n.coveo-styleguide .banner {\n  width: 100%;\n  height: 60px;\n  padding: 0 40px; }\n\n.coveo-styleguide .banner-description {\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n     -moz-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  color: #f1f3f4;\n  font-size: 18px;\n  text-align: center; }\n  .coveo-styleguide .banner-description button {\n    margin-left: 20px;\n    border: none; }\n\n.coveo-styleguide .collapsible .collapsible-header {\n  display: block;\n  width: 100%;\n  min-height: 50px;\n  padding: 0 40px;\n  font-size: 13px;\n  line-height: 50px;\n  text-align: left;\n  text-transform: uppercase;\n  background-color: #f1f3f4;\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgLTEgMTIuMzY2IDcuMDg2KSIgICAgICAgIGQ9Im0xMS40MjEgNy4wNGMtLjMgMC0uNS0uMS0uNy0uM2wtNC42LTQuNi00LjYgNC42Yy0uNC40LTEgLjQtMS40IDBzLS40LTEgMC0xLjRsNS4yLTUuMmMuNC0uNCAxLjItLjQgMS42IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNC0uMi4yLS40LjMtLjcuMyIvPjwvc3ZnPg==\");\n  background-repeat: no-repeat;\n  background-position: right 40px center;\n  background-size: 10px 10px;\n  border: none;\n  border-bottom: 1px solid #bcc3ca;\n  outline: none;\n  cursor: pointer; }\n  .coveo-styleguide .collapsible .collapsible-header.active, .coveo-styleguide .collapsible .input-field input:focus:not([readonly]) + label.collapsible-header, .input-field .coveo-styleguide .collapsible input:focus:not([readonly]) + label.collapsible-header, .coveo-styleguide .collapsible .input-field input:valid + label.collapsible-header, .input-field .coveo-styleguide .collapsible input:valid + label.collapsible-header, .coveo-styleguide .collapsible .input-field input:disabled + label.collapsible-header, .input-field .coveo-styleguide .collapsible input:disabled + label.collapsible-header, .coveo-styleguide .collapsible .input-field textarea:focus:not([readonly]) + label.collapsible-header, .input-field .coveo-styleguide .collapsible textarea:focus:not([readonly]) + label.collapsible-header, .coveo-styleguide .collapsible .input-field textarea:valid + label.collapsible-header, .input-field .coveo-styleguide .collapsible textarea:valid + label.collapsible-header, .coveo-styleguide .collapsible .input-field textarea:disabled + label.collapsible-header, .input-field .coveo-styleguide .collapsible textarea:disabled + label.collapsible-header {\n    background-color: #e6ecf0;\n    background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCAgICAgIGQ9Im0xMS4zIDcuMDRjLS4zIDAtLjUtLjEtLjctLjNsLTQuNi00LjYtNC42IDQuNmMtLjQuNC0xIC40LTEuNCAwcy0uNC0xIDAtMS40bDUuMi01LjJjLjQtLjQgMS4yLS40IDEuNiAwbDUuMiA1LjJjLjQuNC40IDEgMCAxLjQtLjIuMi0uNC4zLS43LjMiLz48L3N2Zz4=\"); }\n\n.coveo-styleguide .collapsible .collapsible-body {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  display: none;\n  padding: 20px 40px;\n  border-bottom: 1px solid #bcc3ca; }\n\n.coveo-styleguide .panel-header {\n  min-height: 100px;\n  padding: 5px 40px; }\n  .coveo-styleguide .panel-header:not(.mod-no-border-bottom) {\n    border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .panel-header .action-bar {\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n    -webkit-flex-flow: row nowrap;\n       -moz-box-orient: horizontal;\n       -moz-box-direction: normal;\n        -ms-flex-flow: row nowrap;\n            flex-flow: row nowrap;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .coveo-styleguide .panel-header .admin-description {\n    margin-top: 5px; }\n  .coveo-styleguide .panel-header .action {\n    display: inline-block;\n    height: 34px;\n    padding: 4px 5px;\n    margin-left: 5px;\n    vertical-align: bottom;\n    background-color: #ffffff;\n    border: 1px solid #bcc3ca;\n    border-radius: 2px;\n    cursor: pointer; }\n    .coveo-styleguide .panel-header .action.open, .coveo-styleguide .panel-header .action:focus, .coveo-styleguide .panel-header .action:active {\n      background-color: #e6ecf0; }\n    .coveo-styleguide .panel-header .action span {\n      display: inline-block;\n      vertical-align: middle; }\n      .coveo-styleguide .panel-header .action span.state-disabled {\n        color: #bcc3ca;\n        cursor: default; }\n    .coveo-styleguide .panel-header .action .action-label {\n      display: none; }\n    .coveo-styleguide .panel-header .action.dropdown .dropdown-toggle {\n      padding: 0; }\n\n.coveo-styleguide .facet-column {\n  display: block;\n  width: 30%;\n  max-width: 360px;\n  padding: 24px 32px 24px 40px;\n  margin-right: 0;\n  border-right: 1px solid #bcc3ca; }\n\n.coveo-styleguide .facet {\n  position: relative;\n  padding-bottom: 15px;\n  margin: 10px 0;\n  background: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .facet-header {\n  position: relative;\n  padding: 16px;\n  clear: both;\n  background: #f1f3f4;\n  border-top-right-radius: 2px;\n  border-top-left-radius: 2px; }\n\n.coveo-styleguide .facet-header-eraser {\n  position: absolute;\n  top: 0;\n  right: 25px;\n  height: 100%;\n  cursor: pointer; }\n  .coveo-styleguide .facet-header-eraser .icon {\n    position: relative;\n    top: 50%;\n    display: block;\n    width: 10px;\n    height: 10px;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%); }\n    .coveo-styleguide .facet-header-eraser .icon:hover {\n      fill: #373737; }\n\n.coveo-styleguide .remove-selected-tooltip {\n  display: block;\n  height: 100%; }\n\n.coveo-styleguide .facet-header-title {\n  font-family: \"Lato\", Arial, Helvetica, sans-serif;\n  font-size: 15px; }\n\n.coveo-styleguide .facet-values {\n  padding-top: 5px;\n  margin: 0;\n  list-style: none; }\n\n.coveo-styleguide .facet-value {\n  position: relative;\n  padding: 0 16px;\n  margin: 0; }\n  .coveo-styleguide .facet-value:hover {\n    background-color: #e6ecf0; }\n\n.coveo-styleguide .facet-value-label {\n  display: block;\n  padding: 5px 0;\n  overflow: hidden;\n  font-size: 15px;\n  white-space: nowrap;\n  cursor: pointer; }\n\n.coveo-styleguide .facet-value .label {\n  position: relative;\n  top: -1px; }\n\n.coveo-styleguide .facet-more .facet-more-button {\n  display: inline-block;\n  border: 2px dashed #bcc3ca; }\n  .coveo-styleguide .facet-more .facet-more-button + .label {\n    top: -3px;\n    margin-left: 18px; }\n  .coveo-styleguide .facet-more .facet-more-button:before, .coveo-styleguide .facet-more .facet-more-button:after {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    display: block;\n    content: '';\n    background-color: #bcc3ca;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%); }\n  .coveo-styleguide .facet-more .facet-more-button:before {\n    width: 2px;\n    height: 10px; }\n  .coveo-styleguide .facet-more .facet-more-button:after {\n    width: 10px;\n    height: 2px; }\n\n.coveo-styleguide .facet-more .label {\n  color: #009ad9; }\n\n.coveo-styleguide .facet-value.facet-more:hover .facet-more-button {\n  border-style: solid; }\n\n.coveo-styleguide .facet-search {\n  margin: 10px 16px; }\n  .coveo-styleguide .facet-search .coveo-filter-container, .coveo-styleguide .facet-search .filter-container {\n    width: 100%; }\n    .coveo-styleguide .facet-search .coveo-filter-container input.filter-box, .coveo-styleguide .facet-search .filter-container input.filter-box {\n      width: 100%; }\n\n.coveo-styleguide .facet-search-results {\n  position: absolute;\n  top: -webkit-calc(100% - 25px);\n  top: calc(100% - 25px);\n  left: 16px;\n  z-index: 999;\n  width: -webkit-calc(100% - 16px * 2);\n  width: calc(100% - 16px * 2);\n  max-height: 200px;\n  padding: 8px 0;\n  margin: 3px 0;\n  overflow-x: hidden;\n  overflow-y: auto;\n  list-style: none;\n  background-color: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar, .coveo-styleguide .facet-search-results ::-webkit-scrollbar {\n    width: 6px;\n    height: 6px; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar-track, .coveo-styleguide .facet-search-results ::-webkit-scrollbar-track {\n    background-color: #e6ecf0; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar-thumb, .coveo-styleguide .facet-search-results ::-webkit-scrollbar-thumb {\n    background-color: #bcc3ca;\n    border-radius: 3px; }\n  .coveo-styleguide .facet-search-results::-webkit-scrollbar-button, .coveo-styleguide .facet-search-results ::-webkit-scrollbar-button {\n    width: 0;\n    height: 0; }\n\n.coveo-styleguide .facet:last-child.facet-opened .facet-search-results {\n  top: auto;\n  bottom: 60px; }\n\n.coveo-styleguide .spinner {\n  width: 40px;\n  margin: 0 auto;\n  text-align: center;\n  cursor: default; }\n  .coveo-styleguide .spinner.mod-vertical-margin {\n    margin-top: 100px;\n    margin-bottom: 100px; }\n  .coveo-styleguide .spinner > div {\n    display: inline-block;\n    width: 10px;\n    height: 10px;\n    background-color: #f58020;\n    border-radius: 100%;\n    -webkit-animation: bouncedelay 1.7s infinite ease-in-out;\n            animation: bouncedelay 1.7s infinite ease-in-out;\n    /* Prevent first frame from flickering when animation starts */\n    -webkit-animation-fill-mode: both;\n            animation-fill-mode: both; }\n  .coveo-styleguide .spinner .bounce1 {\n    -webkit-animation-delay: -0.32s;\n            animation-delay: -0.32s; }\n  .coveo-styleguide .spinner .bounce2 {\n    -webkit-animation-delay: -0.16s;\n            animation-delay: -0.16s; }\n\n.coveo-styleguide .loading-prompt {\n  margin-top: 60px;\n  margin-bottom: 50px;\n  font-size: 16px;\n  text-align: center; }\n  .coveo-styleguide .loading-prompt .spinner {\n    width: 70px;\n    margin-top: 30px; }\n    .coveo-styleguide .loading-prompt .spinner > div {\n      width: 20px;\n      height: 20px;\n      background-color: #f58020; }\n\n.coveo-styleguide .wizard-card {\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 490px;\n  background-color: #f1f3f4;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n  .coveo-styleguide .wizard-card .wizard-card-body {\n    margin-bottom: auto; }\n    .coveo-styleguide .wizard-card .wizard-card-body .coveo-form {\n      padding-top: 30px;\n      padding-right: 30px;\n      padding-left: 30px; }\n  .coveo-styleguide .wizard-card .wizard-card-footer {\n    -webkit-align-self: flex-end;\n        -ms-flex-item-align: end;\n            align-self: flex-end;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap;\n    -webkit-box-pack: end;\n    -webkit-justify-content: flex-end;\n       -moz-box-pack: end;\n        -ms-flex-pack: end;\n            justify-content: flex-end;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    padding: 20px 30px;\n    margin-top: auto; }\n    .coveo-styleguide .wizard-card .wizard-card-footer .btn {\n      width: auto;\n      margin: 0; }\n  .coveo-styleguide .wizard-card.mod-small {\n    width: 365px; }\n  .coveo-styleguide .wizard-card.mod-large {\n    width: 1095px; }\n\n.coveo-styleguide .date-picker-dropdown {\n  position: relative; }\n  .coveo-styleguide .date-picker-dropdown .dropdown-menu {\n    max-height: none;\n    min-width: 0;\n    padding: 0; }\n    .coveo-styleguide .date-picker-dropdown .dropdown-menu.on-right {\n      right: 0;\n      left: auto; }\n  .coveo-styleguide .date-picker-dropdown .dropdown-selected-value {\n    font-weight: normal; }\n  .coveo-styleguide .date-picker-dropdown .to-label {\n    color: #373737; }\n\n.coveo-styleguide .date-picker-box {\n  width: 562px;\n  background-color: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .dropdown-menu .date-picker-box {\n  border: none; }\n\n.coveo-styleguide .calendar .calendar-grid {\n  width: 280px;\n  table-layout: fixed; }\n  .coveo-styleguide .calendar .calendar-grid.selecting td:not(.un-selectable) {\n    cursor: pointer; }\n  .coveo-styleguide .calendar .calendar-grid td, .coveo-styleguide .calendar .calendar-grid th, .coveo-styleguide .calendar .calendar-grid td:first-child, .coveo-styleguide .calendar .calendar-grid td:last-child, .coveo-styleguide .calendar .calendar-grid th:first-child, .coveo-styleguide .calendar .calendar-grid th:last-child {\n    width: 40px;\n    height: 40px;\n    padding: 0;\n    text-align: center; }\n  .coveo-styleguide .calendar .calendar-grid th {\n    color: #373737;\n    text-transform: uppercase;\n    border-bottom: 1px solid #e6ecf0; }\n  .coveo-styleguide .calendar .calendar-grid td {\n    border: 1px solid #e6ecf0;\n    border-top: none;\n    border-left: none; }\n    .coveo-styleguide .calendar .calendar-grid td:last-child {\n      border-right: none; }\n  .coveo-styleguide .calendar .calendar-grid .other-month-date, .coveo-styleguide .calendar .calendar-grid .un-selectable {\n    color: #bcc3ca; }\n  .coveo-styleguide .calendar .calendar-grid .selected-date {\n    position: relative;\n    top: 0;\n    left: -1px;\n    display: block;\n    width: -webkit-calc(40px + 1px);\n    width: calc(40px + 1px);\n    height: 28px;\n    color: #ffffff;\n    line-height: 28px; }\n  .coveo-styleguide .calendar .calendar-grid .lower-limit, .coveo-styleguide .calendar .calendar-grid .upper-limit {\n    width: -webkit-calc(40px - 2px - 2px);\n    width: calc(40px - 2px - 2px); }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:before, .coveo-styleguide .calendar .calendar-grid .lower-limit:after, .coveo-styleguide .calendar .calendar-grid .upper-limit:before, .coveo-styleguide .calendar .calendar-grid .upper-limit:after {\n      position: absolute;\n      display: block;\n      width: 5px;\n      height: 2px;\n      content: '';\n      background: #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:before, .coveo-styleguide .calendar .calendar-grid .upper-limit:before {\n      top: -2px; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:after, .coveo-styleguide .calendar .calendar-grid .upper-limit:after {\n      bottom: -2px; }\n  .coveo-styleguide .calendar .calendar-grid .lower-limit {\n    left: -webkit-calc(2px + 2px);\n    left: calc(2px + 2px);\n    border-left: 2px solid #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit:before, .coveo-styleguide .calendar .calendar-grid .lower-limit:after {\n      left: -2px; }\n  .coveo-styleguide .calendar .calendar-grid .upper-limit {\n    border-right: 2px solid #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .upper-limit:before, .coveo-styleguide .calendar .calendar-grid .upper-limit:after {\n      right: -2px; }\n  .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit {\n    width: -webkit-calc(40px - 2px * 2 - 2px * 2 - 2px);\n    width: calc(40px - 2px * 2 - 2px * 2 - 2px); }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:before, .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:after {\n      position: absolute;\n      right: -2px;\n      display: block;\n      width: 5px;\n      height: 2px;\n      content: '';\n      background: #1d4f76; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:before {\n      top: -2px; }\n    .coveo-styleguide .calendar .calendar-grid .lower-limit.upper-limit span:after {\n      bottom: -2px; }\n  .coveo-styleguide .calendar .calendar-grid tr:hover td {\n    background: none; }\n  .coveo-styleguide .calendar .calendar-grid tr:last-child td {\n    border-bottom: none; }\n\n.coveo-styleguide .options-cycle {\n  font-size: 24px; }\n  .coveo-styleguide .options-cycle.mod-inline {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -moz-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex; }\n  .coveo-styleguide .options-cycle .options-cycle-option {\n    display: inline-block; }\n  .coveo-styleguide .options-cycle:first-child .options-cycle-option {\n    min-width: 120px;\n    text-align: center; }\n\n.coveo-styleguide .options-cycle-button {\n  padding: 0;\n  font-size: 0.8em;\n  line-height: 1.5;\n  background: none;\n  border: none;\n  outline: none;\n  cursor: pointer; }\n\n.coveo-styleguide .option-picker li {\n  width: 50%; }\n  .coveo-styleguide .option-picker li button {\n    -moz-box-sizing: border-box;\n         box-sizing: border-box;\n    display: block;\n    width: 100%;\n    padding: 8px;\n    color: #1d4f76;\n    font-size: 12px;\n    background: none;\n    border: 1px solid #bcc3ca;\n    border-top-color: transparent;\n    border-left-color: transparent;\n    outline: none;\n    cursor: pointer; }\n  .coveo-styleguide .option-picker li:first-child button {\n    border-top-left-radius: 2px;\n    border-top: 1px solid #bcc3ca; }\n  .coveo-styleguide .option-picker li:nth-child(2) button {\n    border-top-right-radius: 2px;\n    border-top: 1px solid #bcc3ca; }\n  .coveo-styleguide .option-picker li:nth-last-child(2):not(:nth-child(2n)) button, .coveo-styleguide .option-picker li:last-child:nth-child(2n+1) button {\n    border-bottom-left-radius: 2px; }\n  .coveo-styleguide .option-picker li:last-child:not(:nth-child(2n+1)) button {\n    border-bottom-right-radius: 2px; }\n  .coveo-styleguide .option-picker li:nth-child(2n-1) button {\n    border-left: 1px solid #bcc3ca; }\n  .coveo-styleguide .option-picker li:nth-child(1n) button:hover, .coveo-styleguide .option-picker li:nth-child(1n) button.active {\n    background-color: rgba(41, 104, 150, 0.2); }\n  .coveo-styleguide .option-picker li:nth-child(1n) button.active {\n    border-color: #009ad9; }\n\n.coveo-styleguide .date-picker {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  .coveo-styleguide .date-picker input {\n    width: -webkit-calc(100% - 10px - 36px);\n    width: calc(100% - 10px - 36px);\n    padding: 8px;\n    font-size: 15px;\n    border-radius: 2px;\n    outline: none; }\n    .coveo-styleguide .date-picker input:not(.picking-date):not(.date-picked) {\n      border: 1px solid #bcc3ca; }\n    .coveo-styleguide .date-picker input.picking-date, .coveo-styleguide .date-picker input.date-picked {\n      border-style: solid;\n      border-width: 2px; }\n    .coveo-styleguide .date-picker input.date-picked {\n      color: #ffffff; }\n  .coveo-styleguide .date-picker > span {\n    -webkit-box-ordinal-group: 2;\n    -webkit-order: 1;\n       -moz-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1; }\n\n.coveo-styleguide .mod-inline {\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n  .coveo-styleguide .mod-inline .date-picker {\n    width: -webkit-calc(50% - 10px);\n    width: calc(50% - 10px); }\n    .coveo-styleguide .mod-inline .date-picker input {\n      width: 100%; }\n\n.coveo-styleguide .date-button {\n  -moz-box-sizing: border-box;\n       box-sizing: border-box;\n  display: block;\n  width: 36px;\n  height: 36px;\n  padding: 10px;\n  background: none;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: pointer; }\n\n.coveo-styleguide .date-separator {\n  font-size: 15px;\n  line-height: 36px; }\n  .coveo-styleguide .date-separator.mod-vertical {\n    display: block;\n    line-height: 15px;\n    text-align: center; }\n    .coveo-styleguide .date-separator.mod-vertical span {\n      display: inline-block;\n      -webkit-transform: rotate(90deg);\n              transform: rotate(90deg); }\n\n.coveo-styleguide .tab-navigation {\n  min-height: 36px;\n  padding: 0 40px;\n  border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .tab-navigation .tab {\n    position: relative;\n    bottom: -1px;\n    display: inline-block;\n    padding: 10px 0 5px;\n    margin-right: 30px;\n    color: #1d4f76;\n    font-size: 13px;\n    font-weight: bold;\n    line-height: 16px;\n    letter-spacing: 0.3px;\n    text-transform: uppercase;\n    border-bottom: 4px solid transparent;\n    -webkit-transition: all 0.2s ease;\n    transition: all 0.2s ease;\n    cursor: pointer; }\n    .coveo-styleguide .tab-navigation .tab.active, .coveo-styleguide .tab-navigation .input-field input:focus:not([readonly]) + label.tab, .input-field .coveo-styleguide .tab-navigation input:focus:not([readonly]) + label.tab, .coveo-styleguide .tab-navigation .input-field input:valid + label.tab, .input-field .coveo-styleguide .tab-navigation input:valid + label.tab, .coveo-styleguide .tab-navigation .input-field input:disabled + label.tab, .input-field .coveo-styleguide .tab-navigation input:disabled + label.tab, .coveo-styleguide .tab-navigation .input-field textarea:focus:not([readonly]) + label.tab, .input-field .coveo-styleguide .tab-navigation textarea:focus:not([readonly]) + label.tab, .coveo-styleguide .tab-navigation .input-field textarea:valid + label.tab, .input-field .coveo-styleguide .tab-navigation textarea:valid + label.tab, .coveo-styleguide .tab-navigation .input-field textarea:disabled + label.tab, .input-field .coveo-styleguide .tab-navigation textarea:disabled + label.tab {\n      color: #1d4f76;\n      border-bottom: 4px solid #1d4f76; }\n    .coveo-styleguide .tab-navigation .tab.disabled {\n      color: #bcc3ca;\n      cursor: default; }\n    .coveo-styleguide .tab-navigation .tab:last-child {\n      margin-right: 0; }\n  .coveo-styleguide .tab-navigation.sub-tabs .tab {\n    font-size: 12px;\n    font-weight: 400;\n    border-bottom-width: 2px; }\n\n.coveo-styleguide .tab-pane {\n  display: none;\n  visibility: hidden; }\n  .coveo-styleguide .tab-pane.active, .coveo-styleguide .input-field input:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide input:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field input:valid + label.tab-pane, .input-field .coveo-styleguide input:valid + label.tab-pane, .coveo-styleguide .input-field input:disabled + label.tab-pane, .input-field .coveo-styleguide input:disabled + label.tab-pane, .coveo-styleguide .input-field textarea:focus:not([readonly]) + label.tab-pane, .input-field .coveo-styleguide textarea:focus:not([readonly]) + label.tab-pane, .coveo-styleguide .input-field textarea:valid + label.tab-pane, .input-field .coveo-styleguide textarea:valid + label.tab-pane, .coveo-styleguide .input-field textarea:disabled + label.tab-pane, .input-field .coveo-styleguide textarea:disabled + label.tab-pane {\n    display: block;\n    visibility: visible; }\n  .coveo-styleguide .tab-pane .loading, .coveo-styleguide .tab-pane > .spinner {\n    margin-top: 50px; }\n\n.coveo-styleguide .sync-feedback {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .coveo-styleguide .sync-feedback.mod-error {\n    color: #ce3f00; }\n    .coveo-styleguide .sync-feedback.mod-error .sync-feedback-icon svg {\n      fill: #ce3f00; }\n  .coveo-styleguide .sync-feedback.mod-success .sync-feedback-icon svg {\n    fill: #009830; }\n  .coveo-styleguide .sync-feedback .sync-feedback-icon {\n    margin-right: 3px;\n    line-height: 0;\n    vertical-align: middle; }\n  .coveo-styleguide .sync-feedback .status-dot {\n    display: inline-block;\n    width: 13px;\n    height: 13px;\n    vertical-align: -2px;\n    border-radius: 50%; }\n    .coveo-styleguide .sync-feedback .status-dot.syncing {\n      background-color: #373737;\n      -webkit-animation: scaleout 1.0s infinite ease-in-out;\n              animation: scaleout 1.0s infinite ease-in-out; }\n\n.coveo-styleguide .selected-option {\n  position: relative;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 1 auto;\n     -moz-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: nowrap;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  height: 100%;\n  max-width: 100%;\n  min-height: 24px;\n  margin: 2px;\n  color: #1d4f76;\n  font-size: 11px;\n  line-height: 24px;\n  background-color: #e6ecf0;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px;\n  cursor: default; }\n\n.coveo-styleguide .selected-option-item, .coveo-styleguide .selected-option-value, .coveo-styleguide .remove-option {\n  -webkit-align-self: center;\n      -ms-flex-item-align: center;\n          align-self: center;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 1 auto;\n     -moz-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto; }\n\n.coveo-styleguide .selected-option-value {\n  margin-left: 4px;\n  overflow: hidden;\n  text-overflow: ellipsis; }\n\n.coveo-styleguide .remove-option {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: nowrap;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100%;\n  min-width: 24px;\n  margin-left: 4px;\n  border-left: 1px solid #bcc3ca;\n  -webkit-transition: all 0.05s ease-in;\n  transition: all 0.05s ease-in; }\n\n.coveo-styleguide .remove-option:hover {\n  background-color: #d6e0e6;\n  cursor: pointer; }\n\n.coveo-styleguide .remove-option:active {\n  background-color: #c6d4dd; }\n\n.coveo-styleguide .multiselect-input {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 260px;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .selected-options-container {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1 1;\n     -moz-box-flex: 1;\n      -ms-flex: 1 1;\n          flex: 1 1;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-box-pack: start;\n  -webkit-justify-content: flex-start;\n     -moz-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  padding: 2px;\n  overflow: hidden; }\n  .coveo-styleguide .selected-options-container input {\n    height: 24px;\n    min-width: 100%;\n    padding: 2px;\n    font-size: 13px;\n    border: none; }\n  .coveo-styleguide .selected-options-container input:focus {\n    outline: none; }\n\n.coveo-styleguide .remove-all-selected-options {\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 1;\n     -moz-box-flex: 0;\n      -ms-flex: 0 1;\n          flex: 0 1;\n  padding: 4px; }\n\n.coveo-styleguide .remove-all-selected-options:hover {\n  cursor: pointer; }\n\n.coveo-styleguide .home-card {\n  margin-bottom: 15px;\n  background: #ffffff;\n  border: 1px solid #bcc3ca;\n  border-radius: 2px; }\n\n.coveo-styleguide .home-card-header {\n  padding: 1rem;\n  color: #1d4f76;\n  text-align: center;\n  border-bottom: 1px solid #bcc3ca; }\n  .coveo-styleguide .home-card-header h2 {\n    font-size: 17px; }\n\n.coveo-styleguide .section-heading .heading-title {\n  color: #1d4f76;\n  font-size: 16px;\n  font-weight: bold; }\n\n.coveo-styleguide .section-heading .heading-description {\n  margin-top: 10px;\n  color: #373737;\n  font-size: 12px; }\n\n.coveo-styleguide .coveo-form .form-group + .section-heading {\n  margin-top: 30px;\n  margin-bottom: 20px; }\n\n.coveo-styleguide .form-section {\n  margin-top: 10px; }\n  .coveo-styleguide .form-section .section-heading {\n    margin-bottom: 20px; }\n  .coveo-styleguide .form-section .form-subsection + .form-subsection {\n    margin-top: 10px; }\n  .coveo-styleguide .form-section .form-subsection .subsection-heading {\n    margin: 5px 0; }\n    .coveo-styleguide .form-section .form-subsection .subsection-heading .heading-title {\n      color: #1d4f76;\n      font-size: 13px;\n      text-transform: uppercase; }\n      .coveo-styleguide .form-section .form-subsection .subsection-heading .heading-title svg {\n        fill: #1d4f76; }\n\n.coveo-styleguide .form-section-separator {\n  position: relative;\n  width: 100%;\n  margin: 20px 0 10px;\n  text-align: center; }\n  .coveo-styleguide .form-section-separator span {\n    display: inline-block;\n    color: #bcc3ca;\n    text-transform: uppercase; }\n    .coveo-styleguide .form-section-separator span:before, .coveo-styleguide .form-section-separator span:after {\n      position: absolute;\n      top: 4px;\n      width: 235px;\n      content: ' ';\n      border-top: solid 1px; }\n    .coveo-styleguide .form-section-separator span:before {\n      left: 0;\n      border-image: -webkit-linear-gradient(right, #bcc3ca, white) 1;\n      border-image: linear-gradient(to left, #bcc3ca, white) 1; }\n    .coveo-styleguide .form-section-separator span:after {\n      left: 265px;\n      border-image: -webkit-linear-gradient(left, #bcc3ca, white) 1;\n      border-image: linear-gradient(to right, #bcc3ca, white) 1; }\n\n.coveo-styleguide .coveo-child {\n  position: relative;\n  padding: 20px 20px;\n  margin-top: 15px;\n  background-color: #f1f3f4;\n  border-radius: 2px;\n  border-top-left-radius: 0; }\n  .coveo-styleguide .coveo-child:before {\n    position: absolute;\n    top: -10px;\n    left: 0;\n    display: block;\n    width: 0;\n    height: 0;\n    content: '';\n    border-right: 8px solid transparent;\n    border-bottom: 10px solid #f1f3f4;\n    border-left: 8px solid transparent; }\n  .coveo-styleguide .coveo-child.mod-fixed-width {\n    max-width: 440px; }\n\n.coveo-styleguide form .coveo-block-form .form-group + .form-group {\n  margin-top: 10px; }\n\n.coveo-styleguide form .coveo-block-form .form-group.sub {\n  margin-left: 10px; }\n\n.coveo-styleguide .coveo-form .form-control-label {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  margin-bottom: 10px;\n  color: #1d4f76;\n  font-size: 13px; }\n  .coveo-styleguide .coveo-form .form-control-label.flex, .coveo-styleguide .coveo-form .form-control-label.split-layout, .coveo-styleguide .coveo-form .form-control-label.splitted-layout {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex; }\n\n.coveo-styleguide .coveo-form .form-group {\n  display: block; }\n  .coveo-styleguide .coveo-form .form-group + .form-group {\n    margin-top: 30px; }\n    .coveo-styleguide .coveo-form .form-group + .form-group.input-field {\n      margin-top: 45px; }\n  .coveo-styleguide .coveo-form .form-group.coveo-checkbox-label, .coveo-styleguide .coveo-form .form-group.coveo-slide-toggle-label {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .coveo-styleguide .coveo-form .form-group.collapsable-panel-group .panel-heading a {\n    padding-left: 18px; }\n  .coveo-styleguide .coveo-form .form-group.collapsable-panel-group .toggle-icon {\n    left: 0; }\n\n.coveo-styleguide .coveo-form .inline-help-tooltip {\n  margin-left: 10px;\n  pointer-events: visible; }\n  .coveo-styleguide .coveo-form .inline-help-tooltip, .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon, .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon > svg {\n    display: inline-block;\n    width: 1.2em;\n    height: 1.2em; }\n  .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon, .coveo-styleguide .coveo-form .inline-help-tooltip .inline-help-icon > svg {\n    fill: #bcc3ca; }\n\n.coveo-styleguide .coveo-flex-form {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-flow: row wrap;\n     -moz-box-orient: horizontal;\n     -moz-box-direction: normal;\n      -ms-flex-flow: row wrap;\n          flex-flow: row wrap;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-top: -10px;\n  margin-left: -10px; }\n  .coveo-styleguide .coveo-flex-form .coveo-slide-toggle-label.boxed {\n    -webkit-box-flex: 1;\n    -webkit-flex: auto;\n       -moz-box-flex: 1;\n        -ms-flex: auto;\n            flex: auto;\n    width: 0;\n    margin-top: 10px;\n    margin-left: 10px; }\n    .coveo-styleguide .coveo-flex-form .coveo-slide-toggle-label.boxed:empty {\n      height: 0;\n      padding: 0;\n      margin-top: 0;\n      border: 0; }\n\n.coveo-styleguide .coveo-table-form {\n  display: table;\n  width: 100%;\n  text-align: left;\n  table-layout: fixed;\n  -webkit-transition: opacity 0.35s ease;\n  transition: opacity 0.35s ease; }\n  .coveo-styleguide .coveo-table-form .form-group {\n    display: table-row;\n    height: 36px;\n    color: #373737; }\n    .coveo-styleguide .coveo-table-form .form-group.hidden {\n      display: none; }\n    .coveo-styleguide .coveo-table-form .form-group.disabled .value {\n      background-color: transparent; }\n    .coveo-styleguide .coveo-table-form .form-group > label:first-child, .coveo-styleguide .coveo-table-form .form-group .value {\n      display: table-cell;\n      vertical-align: middle;\n      border-top: 2px solid white;\n      border-bottom: 1px solid #bcc3ca; }\n    .coveo-styleguide .coveo-table-form .form-group > label:first-child {\n      width: 30%;\n      padding: 0 10px;\n      color: #1d4f76;\n      font-family: \"Lato\", Arial, Helvetica, sans-serif;\n      font-size: 16px;\n      background-color: #ffffff; }\n    .coveo-styleguide .coveo-table-form .form-group .context-help {\n      float: right; }\n    .coveo-styleguide .coveo-table-form .form-group .coveo-checkbox + span, .coveo-styleguide .coveo-table-form .form-group .coveo-checkbox + button {\n      margin-left: 10px; }\n    .coveo-styleguide .coveo-table-form .form-group .value {\n      height: 39px;\n      font-size: 16px;\n      background-color: #f1f3f4; }\n      .coveo-styleguide .coveo-table-form .form-group .value input:disabled:not([type='radio']) {\n        font-family: \"Lato\", Arial, Helvetica, sans-serif;\n        font-size: 16px;\n        font-weight: 600;\n        background-color: #ffffff;\n        opacity: 0.4; }\n      .coveo-styleguide .coveo-table-form .form-group .value.disabled {\n        background-color: #ffffff; }\n      .coveo-styleguide .coveo-table-form .form-group .value input, .coveo-styleguide .coveo-table-form .form-group .value textarea, .coveo-styleguide .coveo-table-form .form-group .value .admin-select {\n        -moz-box-sizing: border-box;\n             box-sizing: border-box;\n        padding: 6px 10px; }\n      .coveo-styleguide .coveo-table-form .form-group .value input {\n        width: 100%;\n        height: 39px;\n        background-color: transparent;\n        box-shadow: none;\n        border-width: 0;\n        resize: none; }\n      .coveo-styleguide .coveo-table-form .form-group .value input[type='file'] {\n        padding: 9px 10px; }\n      .coveo-styleguide .coveo-table-form .form-group .value.coveo-slide-toggle-label {\n        padding: 0 10px; }\n      .coveo-styleguide .coveo-table-form .form-group .value.admin-editable:hover {\n        background-color: #e6ecf0; }\n      .coveo-styleguide .coveo-table-form .form-group .value.admin-non-editable {\n        padding-left: 9px;\n        background-color: #ffffff; }\n        .coveo-styleguide .coveo-table-form .form-group .value.admin-non-editable i {\n          margin-right: 5px;\n          vertical-align: text-bottom; }\n      .coveo-styleguide .coveo-table-form .form-group .value .admin-multiline {\n        margin-bottom: 0;\n        border: none; }\n      .coveo-styleguide .coveo-table-form .form-group .value .admin-select {\n        width: 100%; }\n        .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-toggle {\n          -moz-box-sizing: border-box;\n               box-sizing: border-box;\n          width: 100%;\n          padding-right: 30px;\n          padding-left: 0;\n          font-size: 16px;\n          text-align: left;\n          background-color: transparent;\n          box-shadow: none;\n          border: none;\n          cursor: pointer;\n          opacity: 1; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-toggle.disabled {\n            cursor: inherit; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-toggle .dropdown-toggle-arrow {\n            right: 21px; }\n        .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu {\n          -moz-box-sizing: border-box;\n               box-sizing: border-box;\n          width: 100%;\n          max-height: 250px;\n          overflow-y: auto;\n          text-align: left; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar {\n            width: 6px;\n            height: 6px; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-track, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-track {\n            background-color: #e6ecf0; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-thumb, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-thumb {\n            background-color: #373737;\n            border-radius: 3px; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu::-webkit-scrollbar-button, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu ::-webkit-scrollbar-button {\n            width: 0;\n            height: 0; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu li a i {\n            margin-top: 0;\n            margin-bottom: 0;\n            vertical-align: text-top; }\n          .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu li > a, .coveo-styleguide .coveo-table-form .form-group .value .admin-select .dropdown-menu li > span {\n            padding-left: 9px; }\n      .coveo-styleguide .coveo-table-form .form-group .value textarea {\n        width: 100%;\n        margin-bottom: 0;\n        background-color: transparent;\n        box-shadow: none;\n        border: none;\n        resize: vertical; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar {\n          width: 6px;\n          height: 6px; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar-track, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-track {\n          background-color: #e6ecf0; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar-thumb, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-thumb {\n          background-color: #373737;\n          border-radius: 3px; }\n        .coveo-styleguide .coveo-table-form .form-group .value textarea::-webkit-scrollbar-button, .coveo-styleguide .coveo-table-form .form-group .value textarea ::-webkit-scrollbar-button {\n          width: 0;\n          height: 0; }\n  .coveo-styleguide .coveo-table-form.disabled {\n    opacity: 0.4; }\n    .coveo-styleguide .coveo-table-form.disabled .form-group label {\n      cursor: default; }\n  .coveo-styleguide .coveo-table-form + .coveo-table-form, .coveo-styleguide .coveo-table-form + .coveo-block-form {\n    margin-top: 10px; }\n\n.coveo-styleguide .form-group .input-validation-error-details {\n  display: none; }\n\n.coveo-styleguide .form-group.input-validation-error .input-validation-error-details, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details {\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 0 10px;\n  color: #ffffff;\n  font-size: 12px;\n  line-height: 16px;\n  background-color: #ce3f00; }\n  .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-icon, .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-icon svg.icon, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-icon, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-icon svg.icon {\n    width: 12px;\n    height: 12px; }\n  .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-icon svg, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-icon svg {\n    fill: #ce3f00; }\n  .coveo-styleguide .form-group.input-validation-error .input-validation-error-details .input-validation-error-message, .coveo-styleguide .form-group.multiline-input-validation-error .input-validation-error-details .input-validation-error-message {\n    margin-left: 5px; }\n\n.coveo-styleguide .form-group.input-validation-error label, .coveo-styleguide .form-group.multiline-input-validation-error label {\n  color: #ce3f00; }\n\n.coveo-styleguide .form-group.multiline-input-validation-error .erroneous-input {\n  background-color: #ffffff; }\n\n.coveo-styleguide .generic-form-error {\n  display: inline-block;\n  margin-bottom: 10px;\n  color: #ce3f00;\n  font-size: 12px; }\n\n.coveo-styleguide .coveo-table-form .form-group.input-validation-error label, .coveo-styleguide .coveo-table-form .form-group.input-validation-error .value, .coveo-styleguide .coveo-table-form .form-group.multiline-input-validation-error label, .coveo-styleguide .coveo-table-form .form-group.multiline-input-validation-error .value {\n  border-bottom: solid 1px #ce3f00; }\n\n.coveo-styleguide .coveo-table-form .form-group.input-validation-error > label:first-child, .coveo-styleguide .coveo-table-form .form-group.multiline-input-validation-error > label:first-child {\n  color: #ce3f00; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 874 */
+/* 873 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "13b67c51430c8e1acfdb732b6fa4bc2b.png";
 
 /***/ }),
-/* 875 */
+/* 874 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "3e2d6dedb0e38cc535f6f8d6b2b57a64.png";
 
 /***/ }),
-/* 876 */
+/* 875 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "aa57d6f69b5382e8dd8410d679386f35.svg";
 
 /***/ }),
-/* 877 */
+/* 876 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85563,7 +85566,7 @@ exports.ButtonExamples = ButtonExamples;
 
 
 /***/ }),
-/* 878 */
+/* 877 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85580,7 +85583,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var BlankSlate_1 = __webpack_require__(879);
+var BlankSlate_1 = __webpack_require__(878);
 var BlankSlateExample = (function (_super) {
     __extends(BlankSlateExample, _super);
     function BlankSlateExample() {
@@ -85636,7 +85639,7 @@ exports.BlankSlateExample = BlankSlateExample;
 
 
 /***/ }),
-/* 879 */
+/* 878 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85709,7 +85712,7 @@ exports.BlankSlate = BlankSlate;
 
 
 /***/ }),
-/* 880 */
+/* 879 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85726,7 +85729,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ChosenSelect_1 = __webpack_require__(881);
+var ChosenSelect_1 = __webpack_require__(880);
 var _ = __webpack_require__(9);
 var ChosenSelectExamples = (function (_super) {
     __extends(ChosenSelectExamples, _super);
@@ -85769,7 +85772,7 @@ exports.ChosenSelectExamples = ChosenSelectExamples;
 
 
 /***/ }),
-/* 881 */
+/* 880 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85796,7 +85799,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var $ = __webpack_require__(99);
 var _ = __webpack_require__(9);
-__webpack_require__(882);
+__webpack_require__(881);
 var chosenSelectPropsToOmit = [
     'allowSingleDeselect', 'children', 'disableSearch', 'disableSearchThreshold', 'displayDisabledOptions', 'displaySelectedOptions',
     'enableSplitWordSearch', 'inheritSelectClasses', 'maxSelectedOptions', 'noResultsText', 'onChosenChange',
@@ -85847,7 +85850,7 @@ exports.ChosenSelect = ChosenSelect;
 
 
 /***/ }),
-/* 882 */
+/* 881 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*** IMPORTS FROM imports-loader ***/
@@ -87206,7 +87209,7 @@ This file is generated by `grunt build`, do not edit it by hand.
 
 
 /***/ }),
-/* 883 */
+/* 882 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87231,10 +87234,10 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var DropdownSearchConnected_1 = __webpack_require__(884);
+var DropdownSearchConnected_1 = __webpack_require__(883);
 var _ = __webpack_require__(9);
 var UUID_1 = __webpack_require__(434);
-var MultiSelectDropdownSearchConnected_1 = __webpack_require__(885);
+var MultiSelectDropdownSearchConnected_1 = __webpack_require__(884);
 var DropdownSearchExamples = (function (_super) {
     __extends(DropdownSearchExamples, _super);
     function DropdownSearchExamples() {
@@ -87328,7 +87331,7 @@ exports.DropdownSearchExamples = DropdownSearchExamples;
 
 
 /***/ }),
-/* 884 */
+/* 883 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87371,7 +87374,7 @@ exports.DropdownSearchConnected = react_redux_1.connect(mapStateToProps, mapDisp
 
 
 /***/ }),
-/* 885 */
+/* 884 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87381,7 +87384,7 @@ var ReduxUtils_1 = __webpack_require__(14);
 var react_redux_1 = __webpack_require__(16);
 var _ = __webpack_require__(9);
 var DropdownSearchActions_1 = __webpack_require__(100);
-var MultiSelectDropdownSearch_1 = __webpack_require__(886);
+var MultiSelectDropdownSearch_1 = __webpack_require__(885);
 var mapStateToProps = function (state, ownProps) {
     var dropdownSearch = _.findWhere(state.dropdownSearch, { id: ownProps.id });
     if (dropdownSearch) {
@@ -87411,7 +87414,7 @@ exports.MultiSelectDropdownSearchConnected = react_redux_1.connect(mapStateToPro
 
 
 /***/ }),
-/* 886 */
+/* 885 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87437,7 +87440,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var DropdownSearch_1 = __webpack_require__(440);
-var MultiSelectInput_1 = __webpack_require__(887);
+var MultiSelectInput_1 = __webpack_require__(886);
 var _ = __webpack_require__(9);
 ;
 var MultiSelectDropdownSearch = (function (_super) {
@@ -87468,7 +87471,7 @@ exports.MultiSelectDropdownSearch = MultiSelectDropdownSearch;
 
 
 /***/ }),
-/* 887 */
+/* 886 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87485,7 +87488,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var SelectedOption_1 = __webpack_require__(888);
+var SelectedOption_1 = __webpack_require__(887);
 var Svg_1 = __webpack_require__(23);
 var _ = __webpack_require__(9);
 var Tooltip_1 = __webpack_require__(39);
@@ -87553,7 +87556,7 @@ exports.MultiselectInput = MultiselectInput;
 
 
 /***/ }),
-/* 888 */
+/* 887 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87594,7 +87597,7 @@ exports.SelectedOption = SelectedOption;
 
 
 /***/ }),
-/* 889 */
+/* 888 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87611,9 +87614,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var SingleRadioExample_1 = __webpack_require__(890);
-var RadioSelectExample_1 = __webpack_require__(891);
-var RadioDisabledExample_1 = __webpack_require__(892);
+var SingleRadioExample_1 = __webpack_require__(889);
+var RadioSelectExample_1 = __webpack_require__(890);
+var RadioDisabledExample_1 = __webpack_require__(891);
 var RadioExamples = (function (_super) {
     __extends(RadioExamples, _super);
     function RadioExamples() {
@@ -87632,7 +87635,7 @@ exports.RadioExamples = RadioExamples;
 
 
 /***/ }),
-/* 890 */
+/* 889 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87666,7 +87669,7 @@ exports.SingleRadioExample = SingleRadioExample;
 
 
 /***/ }),
-/* 891 */
+/* 890 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87713,7 +87716,7 @@ exports.RadioSelectExample = RadioSelectExample;
 
 
 /***/ }),
-/* 892 */
+/* 891 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87750,7 +87753,7 @@ exports.RadioDisabledExample = RadioDisabledExample;
 
 
 /***/ }),
-/* 893 */
+/* 892 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87767,7 +87770,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ChildFormWithRadiosExample_1 = __webpack_require__(894);
+var ChildFormWithRadiosExample_1 = __webpack_require__(893);
 var SimpleChildFormExample_1 = __webpack_require__(895);
 var ChildFormExamples = (function (_super) {
     __extends(ChildFormExamples, _super);
@@ -87786,7 +87789,7 @@ exports.ChildFormExamples = ChildFormExamples;
 
 
 /***/ }),
-/* 894 */
+/* 893 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87803,10 +87806,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ChildForm_1 = __webpack_require__(442);
+var ChildForm_1 = __webpack_require__(441);
 var RadioSelect_1 = __webpack_require__(185);
 var Radio_1 = __webpack_require__(106);
-var Input_1 = __webpack_require__(80);
+var Input_1 = __webpack_require__(48);
 var childFormRadioValue = 'child-form-radio-value';
 var otherRadioValue = 'other-radio-value';
 var ChildFormWithRadiosExamples = (function (_super) {
@@ -87829,12 +87832,31 @@ var ChildFormWithRadiosExamples = (function (_super) {
             React.createElement("label", { className: 'form-control-label' }, "Child Form Element With Radio Buttons"),
             React.createElement(RadioSelect_1.RadioSelect, { value: this.state.value, onChange: (function (value) { return _this.handleChange(value); }) },
                 React.createElement(Radio_1.Radio, { id: otherRadioValue, label: 'Option 1', value: otherRadioValue, classes: ['mb1'] }),
-                React.createElement(ChildForm_1.ChildForm, { parentControl: React.createElement(Radio_1.Radio, { id: childFormRadioValue, label: 'Option 2', value: childFormRadioValue }) },
+                React.createElement(ChildForm_1.ChildForm, { parentControl: React.createElement(Radio_1.Radio, { id: childFormRadioValue, label: 'Option 2' }), value: childFormRadioValue },
                     React.createElement(Input_1.Input, { label: 'Dependant Option', value: 'Some value', classes: ['input-field', 'form-group'] })))));
     };
     return ChildFormWithRadiosExamples;
 }(React.Component));
 exports.ChildFormWithRadiosExamples = ChildFormWithRadiosExamples;
+
+
+/***/ }),
+/* 894 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var ValidComponentChildren = (function () {
+    function ValidComponentChildren() {
+    }
+    ValidComponentChildren.map = function (children, func, context) {
+        return React.Children.map(children, function (child) { return React.isValidElement(child) ? func.call(context, child) : child; });
+    };
+    return ValidComponentChildren;
+}());
+exports.ValidComponentChildren = ValidComponentChildren;
 
 
 /***/ }),
@@ -87855,9 +87877,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var ChildForm_1 = __webpack_require__(442);
-var Input_1 = __webpack_require__(80);
-var Checkbox_1 = __webpack_require__(443);
+var ChildForm_1 = __webpack_require__(441);
+var Input_1 = __webpack_require__(48);
+var Checkbox_1 = __webpack_require__(442);
 var SimpleChildFormExample = (function (_super) {
     __extends(SimpleChildFormExample, _super);
     function SimpleChildFormExample(props, state) {
@@ -87876,7 +87898,7 @@ var SimpleChildFormExample = (function (_super) {
         var _this = this;
         return (React.createElement("div", { className: 'form-group' },
             React.createElement("label", { className: 'form-control-label' }, "A Child Form With a Checkbox"),
-            React.createElement(ChildForm_1.ChildForm, { parentControl: React.createElement(Checkbox_1.Checkbox, { label: 'Edit properties' }), active: this.state.active, onChange: function () { return _this.handleChange(); } },
+            React.createElement(ChildForm_1.ChildForm, { parentControl: React.createElement(Checkbox_1.Checkbox, { label: 'Edit properties' }), checked: this.state.active, onClick: function () { return _this.handleChange(); } },
                 React.createElement(Input_1.Input, { label: 'Child form input', value: 'Some value', classes: ['input-field', 'form-group'] }))));
     };
     return SimpleChildFormExample;
@@ -87945,7 +87967,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var Checkbox_1 = __webpack_require__(443);
+var Checkbox_1 = __webpack_require__(442);
 var CheckboxExample = (function (_super) {
     __extends(CheckboxExample, _super);
     function CheckboxExample(props, state) {
@@ -87955,7 +87977,7 @@ var CheckboxExample = (function (_super) {
         };
         return _this;
     }
-    CheckboxExample.prototype.handleChange = function () {
+    CheckboxExample.prototype.handleClick = function () {
         if (!this.props.disabled) {
             this.setState({
                 checked: !this.state.checked
@@ -87964,7 +87986,7 @@ var CheckboxExample = (function (_super) {
     };
     CheckboxExample.prototype.render = function () {
         var _this = this;
-        return (React.createElement(Checkbox_1.Checkbox, { classes: this.props.classes, onChange: function () { return _this.handleChange(); }, label: this.props.label, checked: this.state.checked, disabled: this.props.disabled }));
+        return (React.createElement(Checkbox_1.Checkbox, { classes: this.props.classes, onClick: function () { return _this.handleClick(); }, label: this.props.label, checked: this.state.checked, disabled: this.props.disabled }));
     };
     return CheckboxExample;
 }(React.Component));
@@ -87988,7 +88010,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Input_1 = __webpack_require__(80);
+var Input_1 = __webpack_require__(48);
 var React = __webpack_require__(0);
 var InputExamples = (function (_super) {
     __extends(InputExamples, _super);

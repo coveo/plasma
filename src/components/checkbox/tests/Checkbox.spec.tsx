@@ -1,7 +1,8 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Checkbox, ICheckboxProps } from '../Checkbox';
+import { Checkbox } from '../Checkbox';
+import { IInputProps } from '../../input/Input';
 
 describe('Checkbox', () => {
   describe('<Checkbox />', () => {
@@ -15,7 +16,7 @@ describe('Checkbox', () => {
   });
 
   describe('<Checkbox />', () => {
-    let checkbox: ReactWrapper<ICheckboxProps, any>;
+    let checkbox: ReactWrapper<IInputProps, any>;
     let checkboxInstance: Checkbox;
 
     beforeEach(() => {
@@ -31,61 +32,20 @@ describe('Checkbox', () => {
       checkbox.detach();
     });
 
-    it('should set label when specified', () => {
-      const label = 'salut';
-      const innerLabel = checkbox.find('.label').first();
-      expect(innerLabel.text()).toBe('');
+    it('should call prop onClick when specified on click', () => {
+      const clickSpy = jasmine.createSpy('onClick');
+      const innerLabel = checkbox.find('div');
 
-      checkbox.setProps({ label }).mount();
-      expect(innerLabel.text()).toBe(label);
-    });
-
-    it('should set not disable inner input when disabled prop is not specified', () => {
-      const innerInput = checkbox.find('input').first();
-      expect(innerInput.prop('disabled')).toBe(false);
-    });
-
-    it('should set not check inner input when checked prop is not specified', () => {
-      const innerInput = checkbox.find('input').first();
-      expect(innerInput.prop('checked')).toBe(false);
-    });
-
-    it('should set disabled prop when specified', () => {
-      const innerInput = checkbox.find('input').first();
-      checkbox.setProps({ disabled: false }).mount();
-      expect(innerInput.prop('disabled')).toBe(false);
-
-      checkbox.setProps({ disabled: true }).mount();
-      expect(innerInput.prop('disabled')).toBe(true);
-    });
-
-    it('should set checked prop when specified', () => {
-      const innerInput = checkbox.find('input').first();
-      checkbox.setProps({ checked: false }).mount();
-      expect(innerInput.prop('checked')).toBe(false);
-
-      checkbox.setProps({ checked: true }).mount();
-      expect(innerInput.prop('checked')).toBe(true);
-    });
-
-    it('should set classes when specified', () => {
-      const innerClass = 'salut';
-      const classes = [innerClass];
-      const innerLabel = checkbox.find('label').first();
-      expect(innerLabel.hasClass(innerClass)).toBe(false);
-
-      checkbox.setProps({ classes }).mount();
-      expect(innerLabel.hasClass(innerClass)).toBe(true);
-    });
-
-    it('should call prop onChange when specified on click', () => {
-      const changeSpy = jasmine.createSpy('onChange');
-      const innerLabel = checkbox.find('label');
-
-      checkbox.setProps({ onChange: changeSpy }).mount();
+      checkbox.setProps({ onClick: clickSpy }).mount();
       innerLabel.simulate('click');
 
-      expect(changeSpy.calls.count()).toBe(1);
+      expect(clickSpy.calls.count()).toBe(1);
+    });
+
+    it('should set inner input type to checkbox', () => {
+      const innerInput = checkbox.find('input');
+
+      expect(innerInput.prop('type')).toBe('checkbox');
     });
   });
 });

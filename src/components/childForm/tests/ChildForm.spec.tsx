@@ -46,37 +46,37 @@ describe('ChildForm', () => {
       expect(innerLabel.hasClass(innerClass)).toBe(true);
     });
 
-    it('should check parent control when active property is true', () => {
+    it('should check parent control when checked property is true', () => {
       const parentControl = childForm.find('Checkbox').first();
-      childForm.setProps({ active: false });
+      childForm.setProps({ checked: false });
       childForm.mount();
       expect(parentControl.prop('checked')).toBe(false);
 
-      childForm.setProps({ active: true });
+      childForm.setProps({ checked: true });
       childForm.mount();
       expect(parentControl.prop('checked')).toBe(true);
     });
 
-    it('should call onChange handler when parent control is clicked and prop is set', () => {
-      const changeSpy = jasmine.createSpy('onChange');
+    it('should call onClick handler when parent control is clicked and prop is set', () => {
+      const clickSpy = jasmine.createSpy('onClick');
       const parentControlInnerInput = childForm.find('label').first();
 
-      childForm.setProps({ onChange: changeSpy });
+      childForm.setProps({ onClick: clickSpy });
       childForm.mount();
       parentControlInnerInput.simulate('click');
 
-      expect(changeSpy.calls.count()).toBe(1);
+      expect(clickSpy.calls.count()).toBe(1);
     });
 
-    it('should disable children when active property is false', () => {
+    it('should disable children when checked property is false', () => {
       const childElement = childForm.find('Radio').first();
       expect(childElement.prop('disabled')).toBe(true);
 
-      childForm.setProps({ active: false });
+      childForm.setProps({ checked: false });
       childForm.mount();
       expect(childElement.prop('disabled')).toBe(true);
 
-      childForm.setProps({ active: true });
+      childForm.setProps({ checked: true });
       childForm.mount();
       expect(childElement.prop('disabled')).toBe(false);
     });

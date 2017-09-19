@@ -35,7 +35,7 @@ export class ChildFormWithRadiosExamples extends React.Component<IChildFormWithR
         <label className='form-control-label'>Child Form Element With Radio Buttons</label>
         <RadioSelect value={this.state.value} onChange={(value => this.handleChange(value))}>
           <Radio id={otherRadioValue} label='Option 1' value={otherRadioValue} classes={['mb1']} />
-          <ChildForm parentControl={<Radio id={childFormRadioValue} label='Option 2' value={childFormRadioValue} />}>
+          <ChildForm parentControl={<Radio id={childFormRadioValue} label='Option 2' />} value={childFormRadioValue}>
             <Input label='Dependant Option' value='Some value' classes={['input-field', 'form-group']} />
           </ChildForm>
         </RadioSelect>

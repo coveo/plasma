@@ -71,7 +71,7 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
           label={index === 0 ? this.props.title : ''}
           placeholder={this.props.placeholder}
           value={inputValue.value}
-          onChange={(newValue: string) => this.handleDeleteInputChange(newValue, inputValue.id)}
+          onBlur={(newValue: string) => this.handleDeleteInputChange(newValue, inputValue.id)}
         />
       </li>
     );
@@ -92,7 +92,7 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
           labelClasses={this.props.values && this.props.values.length === 0 ? ['first-label'] : []}
           placeholder={this.props.placeholder}
           value=''
-          onChange={(newValue: string) => this.handleAddInputChange(newValue)}
+          onBlur={(newValue: string) => this.handleAddInputChange(newValue)}
         />
       </div>
     );
