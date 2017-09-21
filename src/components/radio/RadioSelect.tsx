@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Radio } from './Radio';
-import { ChildForm } from '../childForm/ChildForm';
+import { ToggleForm } from '../childForm/ToggleForm';
 
 export interface IRadioSelectProps {
   name?: string;
   value?: string;
   disabled?: boolean;
   onChange?: (value: string) => void;
-  children?: React.ReactElement<Radio>[] | React.ReactElement<ChildForm>[];
+  children?: React.ReactElement<Radio>[] | React.ReactElement<ToggleForm>[];
 }
 
 export class RadioSelect extends React.Component<IRadioSelectProps, any> {

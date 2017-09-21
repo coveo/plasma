@@ -10,7 +10,7 @@ describe('ChildForm', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <ChildForm parentControl={<div />} />
+          <ChildForm />
         );
       }).not.toThrow();
     });
@@ -22,7 +22,7 @@ describe('ChildForm', () => {
 
     beforeEach(() => {
       childForm = mount(
-        <ChildForm parentControl={<Checkbox />}>
+        <ChildForm>
           <Radio id='id' label='label' />
         </ChildForm>,
         { attachTo: document.getElementById('App') }
@@ -35,50 +35,17 @@ describe('ChildForm', () => {
       childForm.detach();
     });
 
-    it('should set classes when specified', () => {
-      const innerClass = 'salut';
-      const classes = [innerClass];
-      const innerLabel = childForm.find('div').first();
-      expect(innerLabel.hasClass(innerClass)).toBe(false);
-
-      childForm.setProps({ classes });
-      childForm.mount();
-      expect(innerLabel.hasClass(innerClass)).toBe(true);
-    });
-
-    it('should check parent control when checked property is true', () => {
-      const parentControl = childForm.find('Checkbox').first();
-      childForm.setProps({ checked: false });
-      childForm.mount();
-      expect(parentControl.prop('checked')).toBe(false);
-
-      childForm.setProps({ checked: true });
-      childForm.mount();
-      expect(parentControl.prop('checked')).toBe(true);
-    });
-
-    it('should call onClick handler when parent control is clicked and prop is set', () => {
-      const clickSpy = jasmine.createSpy('onClick');
-      const parentControlInnerInput = childForm.find('label').first();
-
-      childForm.setProps({ onClick: clickSpy });
-      childForm.mount();
-      parentControlInnerInput.simulate('click');
-
-      expect(clickSpy.calls.count()).toBe(1);
-    });
-
-    it('should disable children when checked property is false', () => {
+    it('should disable children when disabled property is true', () => {
       const childElement = childForm.find('Radio').first();
-      expect(childElement.prop('disabled')).toBe(true);
+      expect(childElement.prop('disabled')).toBe(false);
 
-      childForm.setProps({ checked: false });
-      childForm.mount();
-      expect(childElement.prop('disabled')).toBe(true);
-
-      childForm.setProps({ checked: true });
+      childForm.setProps({ disabled: false });
       childForm.mount();
       expect(childElement.prop('disabled')).toBe(false);
+
+      childForm.setProps({ disabled: true });
+      childForm.mount();
+      expect(childElement.prop('disabled')).toBe(true);
     });
   });
 });

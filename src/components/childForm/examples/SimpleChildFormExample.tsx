@@ -2,6 +2,8 @@ import * as React from 'react';
 import { ChildForm } from '../ChildForm';
 import { Input } from '../../input/Input';
 import { Checkbox } from '../../checkbox/Checkbox';
+import { ToggleForm } from '../ToggleForm';
+import { Label } from '../../input/Label';
 
 export interface ISimpleChildFormExampleState {
   active: boolean;
@@ -11,7 +13,7 @@ export class SimpleChildFormExample extends React.Component<any, ISimpleChildFor
   constructor(props: any, state: ISimpleChildFormExampleState) {
     super(props, state);
     this.state = {
-      active: true,
+      active: false,
     };
   }
 
@@ -25,15 +27,19 @@ export class SimpleChildFormExample extends React.Component<any, ISimpleChildFor
     return (
       <div className='form-group'>
         <label className='form-control-label'>A Child Form With a Checkbox</label>
-        <ChildForm
-          parentControl={<Checkbox label='Edit properties' />}
-          checked={this.state.active}
-          onClick={() => this.handleChange()}>
-          <Input
-            label='Child form input'
-            value='Some value'
-            classes={['input-field', 'form-group']} />
-        </ChildForm>
+        <ToggleForm onClick={() => this.handleChange()} checked={this.state.active}>
+          <Checkbox>
+            <Label classes={['label']}>Edit properties</Label>
+          </Checkbox>
+          <ChildForm
+            disabled={!this.state.active}>
+            <Input
+              value='Some value'
+              classes={['input-field', 'form-group']}>
+              <Label>Child form input</Label>
+            </Input>
+          </ChildForm>
+        </ToggleForm>
       </div>
     );
   }

@@ -95,23 +95,6 @@ describe('Input', () => {
       expect(innerInput.prop('type')).toBe(type);
     });
 
-    it('should set inner label valid message when specified', () => {
-      const message = 'salut';
-      const innerLabel = input.find('label').first();
-      expect(innerLabel.prop('data-valid-message')).toBe(undefined);
-
-      input.setProps({ validMessage: message }).mount();
-      expect(innerLabel.prop('data-valid-message')).toBe(message);
-    });
-
-    it('should set inner label invalid message when specified', () => {
-      const message = 'salut';
-      const innerLabel = input.find('label').first();
-      expect(innerLabel.prop('data-invalid-message')).toBe(undefined);
-
-      input.setProps({ invalidMessage: message }).mount();
-      expect(innerLabel.prop('data-invalid-message')).toBe(message);
-    });
 
     it('should call prop onBlur on inner input blur', () => {
       const blurSpy = jasmine.createSpy('onBlur');

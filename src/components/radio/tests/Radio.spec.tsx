@@ -12,7 +12,7 @@ describe('Radio', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Radio id={anId} label={aLabel} />
+          <Radio id={anId} />
         );
       }).not.toThrow();
     });
@@ -24,7 +24,7 @@ describe('Radio', () => {
 
     beforeEach(() => {
       radio = mount(
-        <Radio id={anId} label={aLabel} />,
+        <Radio id={anId} />,
         { attachTo: document.getElementById('App') }
       );
       radioInstance = radio.instance() as Radio;
@@ -38,11 +38,6 @@ describe('Radio', () => {
     it('should set id prop', () => {
       const innerInput = radio.find('input').first();
       expect(innerInput.prop('id')).toBe(anId);
-    });
-
-    it('should set label prop', () => {
-      const innerLabel = radio.find('label').first();
-      expect(innerLabel.text()).toBe(aLabel);
     });
 
     it('should set name prop when specified', () => {

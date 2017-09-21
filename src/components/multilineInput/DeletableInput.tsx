@@ -14,6 +14,7 @@ export class DeletableInput extends React.Component<IInputProps, any> {
     const props: IInputProps = _.omit(this.props, ['children']);
     return (
       <Input {...props }>
+        {this.props.children}
         <DeleteInputAction onClick={() => this.onDeleteClicked()} />
       </Input>
     );

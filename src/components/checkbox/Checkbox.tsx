@@ -5,8 +5,7 @@ import { Input } from '../input/Input';
 export class Checkbox extends Input {
 
   private onClick(e: React.MouseEvent<HTMLElement>) {
-    const { onClick } = this.props;
-    if (onClick) {
+    if (this.props.onClick) {
       e.preventDefault();
       e.stopPropagation();
       this.props.onClick(e);
@@ -16,7 +15,6 @@ export class Checkbox extends Input {
   render() {
     const classes: string = classNames('coveo-checkbox-label', this.props.classes);
     const innerInputClasses: string = classNames('coveo-checkbox', this.props.innerInputClasses);
-    const labelClasses: string = classNames('label', this.props.labelClasses);
     return (
       <Input
         {...this.props}
@@ -24,9 +22,10 @@ export class Checkbox extends Input {
         innerInputClasses={[innerInputClasses]}
         type='checkbox'
         onClick={(e: React.MouseEvent<HTMLElement>) => this.onClick(e)}
-        labelClasses={[labelClasses]}
-        readOnly
-      />
+        readOnly>
+        <button></button>
+        {this.props.children}
+      </Input>
     );
   }
 }

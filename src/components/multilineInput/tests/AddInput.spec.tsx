@@ -32,34 +32,45 @@ describe('AddInput', () => {
     });
 
     it('should call property onBlur when input loses focus and prop is specified', () => {
-      let blurSpy = jasmine.createSpy('onBlur');
-      let innerInput = addInput.find('input');
+      const blurSpy = jasmine.createSpy('onBlur');
+      const innerInput = addInput.find('input');
 
       innerInput.simulate('blur');
       expect(blurSpy).not.toHaveBeenCalled();
 
-      addInput.setProps({ onBlur: blurSpy });
-      addInput.mount();
+      addInput.setProps({ onBlur: blurSpy }).mount();
 
       innerInput.simulate('blur');
       expect(blurSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call property onBlur when inner input has focus and Enter key is released', () => {
-      let blurSpy = jasmine.createSpy('onBlur');
-      let innerInput = addInput.find('input');
+      const blurSpy = jasmine.createSpy('onBlur');
+      const innerInput = addInput.find('input');
 
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
       expect(blurSpy).not.toHaveBeenCalled();
 
-      addInput.setProps({ onBlur: blurSpy });
-      addInput.mount();
+      addInput.setProps({ onBlur: blurSpy }).mount();
 
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
+      expect(blurSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call property onBlur when inner add button is clicked', () => {
+      const blurSpy = jasmine.createSpy('onBlur');
+      const innerAddInputButton = addInput.find('.input-actions');
+
+      innerAddInputButton.simulate('click');
+      expect(blurSpy).not.toHaveBeenCalled();
+
+      addInput.setProps({ onBlur: blurSpy }).mount();
+
+      innerAddInputButton.simulate('click');
       expect(blurSpy).toHaveBeenCalledTimes(1);
     });
   });

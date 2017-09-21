@@ -1,22 +1,56 @@
 import * as React from 'react';
-import { CheckboxExample } from './CheckboxExample';
+import { Checkbox } from '../Checkbox';
+import { Label } from '../../input/Label';
 
-export class CheckboxExamples extends React.Component<any, any> {
+export interface ICheckboxWithStateState {
+  checked?: boolean;
+}
+
+export class CheckboxExamples extends React.Component<any, ICheckboxWithStateState> {
+  constructor(props: any, state: ICheckboxWithStateState) {
+    super(props, state);
+    this.state = {
+      checked: false
+    };
+  }
+
+  private handleClick() {
+    if (!this.props.disabled) {
+      this.setState({
+        checked: !this.state.checked
+      });
+    }
+  }
+
   render() {
     return (
       <div className='mt2'>
         <h1 className='text-blue mb1'>Checkboxes</h1>
         <div className='form-group'>
-          <CheckboxExample label='A checkbox unchecked by default' />
+          <Checkbox>
+            <Label classes={['label']}>A checkbox unchecked</Label>
+          </Checkbox>
           <br />
-          <CheckboxExample classes={['mt1']} label='A checkbox checked by default' checked={true} />
+          <Checkbox classes={['mt1']} checked={true}>
+            <Label classes={['label']}>A checkbox checked</Label>
+          </Checkbox>
           <br />
-          <CheckboxExample classes={['mt1']} label='A disabled checkbox' disabled={true} />
+          <Checkbox classes={['mt1']} disabled={true}>
+            <Label classes={['label']}>A disabled checkbox</Label>
+          </Checkbox>
+          <br />
+          <Checkbox classes={['mt1']} checked={true} disabled={true}>
+            <Label classes={['label']}>A checked and disabled checkbox</Label>
+          </Checkbox>
+          <br />
+          <Checkbox classes={['mt1']} checked={this.state.checked} onClick={() => this.handleClick()}>
+            <Label classes={['label']}>A checkbox with state</Label>
+          </Checkbox>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>A checkbox with no label</label>
           <br />
-          <CheckboxExample />
+          <Checkbox />
         </div>
       </div>
     );

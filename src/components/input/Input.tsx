@@ -4,11 +4,9 @@ import * as classNames from 'classnames';
 export interface IInputProps {
   id?: string;
   name?: string;
-  label?: string;
   type?: string;
   classes?: string[];
   innerInputClasses?: string[];
-  labelClasses?: string[];
   value?: string;
   placeholder?: string;
   checked?: boolean;
@@ -18,8 +16,6 @@ export interface IInputProps {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   onChange?: (value?: string) => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  validMessage?: string;
-  invalidMessage?: string;
 }
 
 export class Input extends React.Component<IInputProps, any> {
@@ -66,9 +62,7 @@ export class Input extends React.Component<IInputProps, any> {
       'input-wrapper',
       this.props.classes
     );
-    const labelClasses = classNames(this.props.labelClasses);
     const innerInputClasses = classNames(this.props.innerInputClasses);
-    const btn = this.props.type === 'checkbox' ? <button /> : null;
 
     return (
       <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
@@ -88,12 +82,6 @@ export class Input extends React.Component<IInputProps, any> {
           required
           readOnly={!!this.props.readOnly}
         />
-        {btn}
-        <label className={labelClasses}
-          data-valid-message={this.props.validMessage}
-          data-invalid-message={this.props.invalidMessage}>{this.props.label}
-        </label>
-
         {this.props.children}
       </div>
     );

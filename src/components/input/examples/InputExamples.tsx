@@ -1,5 +1,6 @@
 import { Input } from '../Input';
 import * as React from 'react';
+import { Label } from '../Label';
 
 export interface IInputExampleStateProps {
   inputClasses: string[];
@@ -34,12 +35,15 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
           <Input
             innerInputClasses={this.state.inputClasses}
             placeholder='Please, do not leave me empty!'
-            validMessage='Great!'
-            invalidMessage='The input box must not be empty.'
-            label='An Input Box'
             classes={['input-field', 'form-group', 'validate']}
             ref={(innerInput: Input) => this.innerInput = innerInput}
-            onKeyUp={() => this.onChange()} />
+            onKeyUp={() => this.onChange()}>
+            <Label
+              validMessage='Great!'
+              invalidMessage='The input box must not be empty.'>
+              An Input Box
+            </Label>
+          </Input>
         </div>
       </div>
     );
