@@ -6,7 +6,6 @@ import { IInputProps } from '../../input/Input';
 
 describe('Radio', () => {
   const anId = 'patate';
-  const aLabel = 'Option 1';
 
   describe('<Radio />', () => {
     it('should render without errors', () => {

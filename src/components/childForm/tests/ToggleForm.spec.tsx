@@ -2,7 +2,6 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { ToggleForm, IToggleFormProps } from '../ToggleForm';
-import { Checkbox } from '../../checkbox/Checkbox';
 import { Radio } from '../../radio/Radio';
 import { ChildForm } from '../ChildForm';
 

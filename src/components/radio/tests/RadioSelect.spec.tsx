@@ -27,8 +27,8 @@ describe('RadioSelect', () => {
       clickSpy = jasmine.createSpy('onClick');
       radioSelect = mount(
         <RadioSelect>
-          <Radio id='radio1' label='label1' value={aRadioValue} onClick={clickSpy} />
-          <Radio id='radio2' label='label2' value={anotherRadioValue} name={anotherName} />
+          <Radio id='radio1' value={aRadioValue} onClick={clickSpy} />
+          <Radio id='radio2' value={anotherRadioValue} name={anotherName} />
         </RadioSelect>,
         { attachTo: document.getElementById('App') }
       );
