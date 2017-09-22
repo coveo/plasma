@@ -118,6 +118,8 @@ import { Checkbox } from './components/checkbox/Checkbox';
 import { ChildForm } from './components/childForm/ChildForm';
 import { ToggleForm } from './components/childForm/ToggleForm';
 import { Label } from './components/input/Label';
+import { ItemBox } from './components/itemBox/ItemBox';
+import { Content } from './components/content/Content';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
@@ -127,6 +129,7 @@ export {
   Svg,
   Tooltip,
   UserFeedback,
+  Content,
 
   // LastUpdated
   LastUpdated,
@@ -188,6 +191,9 @@ export {
   // Input
   Input,
   Label,
+
+  // Box
+  ItemBox,
 
   // MultilineInput
   MultilineInput,

@@ -33,11 +33,8 @@
     "prepublish": "npm run build && npm test",
     "report-coverage": "codecov -f coverage/coverage.json"
   },
-  "pre-push": [
-    "lint",
-    "build",
-    "pretest",
-    "test"
+  "pre-commit": [
+    "lint"
   ],
   "dependencies": {
     "react-bootstrap": "0.31.3",
@@ -72,7 +69,7 @@
     "chosen-js": "1.8.2",
     "classnames": "2.2.5",
     "codecov": "2.3.0",
-    "coveo-styleguide": "1.17.x",
+    "coveo-styleguide": "1.18.x",
     "css-loader": "0.28.7",
     "del": "3.0.0",
     "dts-generator": "2.1.0",
@@ -107,7 +104,7 @@
     "moment": "2.18.1",
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.6",
-    "pre-push": "0.1.1",
+    "pre-commit": "1.2.2",
     "pretty-typescript": "1.15.0",
     "react": "15.6.1",
     "react-addons-test-utils": "15.6.0",
