@@ -3,6 +3,7 @@ import { Content } from '../Content';
 import { Tooltip } from '../../tooltip/Tooltip';
 import { Svg } from '../../svg/Svg';
 import { Loading } from '../../loading/Loading';
+import { ItemBox } from '../../itemBox/ItemBox';
 
 export class ContentExamples extends React.Component<any, any> {
   render() {
@@ -32,6 +33,12 @@ export class ContentExamples extends React.Component<any, any> {
           <label className='form-control-label'>Content with a component Loading</label>
           <div className='form-control'>
             <Content content={Loading} />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Content with a component ItemBox with props</label>
+          <div className='form-control'>
+            <Content content={ItemBox} componentProps={{ value: 'test' }} />
           </div>
         </div>
       </div>

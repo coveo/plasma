@@ -16,8 +16,8 @@ export class ItemBoxExamples extends React.Component<any, any> {
       svgName: 'domain-google',
       svgClass: 'icon',
     };
-    const getSvgPrepend: IContentProps = { content: () => <Svg {...svg} />, classes: ['mr1'] };
-    const getSvgAppend: IContentProps = { content: () => <Svg {...svg} />, classes: ['ml1'] };
+    const getPrepend: IContentProps = { content: () => <Svg {...svg} />, classes: ['mr1'] };
+    const getAppend: IContentProps = { content: () => <Svg {...svg} />, classes: ['ml1'] };
 
     const triggerAlertFunction = () => {
       alert('Event onClick triggered');
@@ -48,13 +48,13 @@ export class ItemBoxExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Item Box with a prepend icon</label>
           <div className='form-control'>
-            <ItemBox value='test' prepend={getSvgPrepend} />
+            <ItemBox value='test' prepend={getPrepend} />
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Item Box with a append icon</label>
           <div className='form-control'>
-            <ItemBox value='test' append={getSvgAppend} />
+            <ItemBox value='test' append={getAppend} />
           </div>
         </div>
         <div className='form-group'>

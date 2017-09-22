@@ -26,7 +26,7 @@ export class ItemBox extends React.Component<IItemBoxProps, void> {
     },
   };
 
-  getClasses(): string {
+  private getClasses(): string {
     return classNames('item-box',
       {
         'selected': this.props.selected,
@@ -38,7 +38,7 @@ export class ItemBox extends React.Component<IItemBoxProps, void> {
       this.props.classes);
   }
 
-  handleOnOptionClick = () => {
+  private handleOnOptionClick = () => {
     if (this.props.onOptionClick) {
       this.props.onOptionClick(this.props);
     }
