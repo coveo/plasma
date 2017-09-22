@@ -116,6 +116,7 @@ import { RadioSelect } from './components/radio/RadioSelect';
 import { Radio } from './components/radio/Radio';
 import { Checkbox } from './components/checkbox/Checkbox';
 import { ChildForm } from './components/childForm/ChildForm';
+import { ToggleForm } from './components/childForm/ToggleForm';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
@@ -137,6 +138,7 @@ export {
 
   // Child form
   ChildForm,
+  ToggleForm,
 
   // FilterBox
   FilterBox,
