@@ -3,7 +3,7 @@ import * as classname from 'classnames';
 import * as _ from 'underscore';
 
 export interface IContentProps {
-  content: typeof React.Component | string | (() => JSX.Element);
+  content: typeof React.Component | string | (() => JSX.Element) | any;
   componentProps?: { [key: string]: any };
   classes?: string[];
 }
