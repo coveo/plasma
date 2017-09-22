@@ -46,6 +46,8 @@ import { ButtonExamples } from '../src/components/button/examples/ButtonExamples
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+import { ContentExamples } from '../src/components/content/examples/ContentExamples';
+import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
 import { InputExamples } from '../src/components/input/examples/InputExamples';
 
 class App extends React.Component<any, any> {
@@ -78,6 +80,8 @@ class App extends React.Component<any, any> {
               <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
             </div>
           </div>
+          <ContentExamples />
+          <ItemBoxExamples />
           <ButtonExamples />
           <DropdownSearchExamples />
           <TooltipExamples />

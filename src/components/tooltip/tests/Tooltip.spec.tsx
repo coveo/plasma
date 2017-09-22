@@ -1,4 +1,4 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import { ITooltipProps, Tooltip } from '../Tooltip';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
@@ -8,7 +8,7 @@ import { OverlayTrigger } from 'react-bootstrap';
 describe('Tooltip', () => {
   let tooltipWrapper: ReactWrapper<ITooltipProps, void>;
   const TOOLTIP_PROPS: ITooltipProps = {
-    title: 'My test tooltip!'
+    title: 'My test tooltip!',
   };
   const TOOLTIP: JSX.Element = <Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>;
 
@@ -70,6 +70,16 @@ describe('Tooltip', () => {
       tooltipWrapper.setProps(newProps);
 
       expect(tooltipWrapper.find(OverlayTrigger).props().overlay.props.children[1].props.className).toBe('tooltip-footer');
+    });
+
+    it('should not display the tooltip if the title is empty', () => {
+      const newProps: ITooltipProps = _.extend({}, { title: '' });
+
+      expect(tooltipWrapper.find(OverlayTrigger).props().overlay.props.children[1]).toBeNull();
+
+      tooltipWrapper.setProps(newProps);
+
+      expect(tooltipWrapper.find(OverlayTrigger).length).toBe(0);
     });
   });
 });
