@@ -1,11 +1,13 @@
 // General
 $border-radius: 2px;
-$title-font-size: 16px;
-$default-font-size: 15px;
 $default-border: 1px solid $medium-grey;
 $big-title-font-size: 24px;
 
 //Typography
+$title-font-size: 16px;
+$small-font-size: 13px;
+$default-font-size: 15px;
+$default-line-height: 16px;
 $big-line-height: 21px;
 $bullet-list-padding: 20px;
 
@@ -329,3 +331,13 @@ $tooltip-spacing: 10px;
 // Home card
 $home-card-padding: 1rem; // Based on white space utility p2 (0.5rem * 2)
 $home-card-margin: 15px;
+
+// Box
+$item-box-horizontal-spacing: 16px;
+$item-box-divider-height: 1px;
+$item-box-spacing: 5px;
+$item-box-vertical-spacing: 8px;
+$list-box-max-height: 240px;
+$list-box-vertical-spacing: 8px;
+$list-box-box-shadow: 0 2px 4px rgba($black, 0.4);
+$list-box-border-radius: 0 0 2px 2px;
