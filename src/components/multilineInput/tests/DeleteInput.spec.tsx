@@ -31,18 +31,18 @@ describe('DeletableInput', () => {
       deleteInput.detach();
     });
 
-    it('should call property onChange when delete button is clicked and prop is specified', () => {
-      let changeSpy = jasmine.createSpy('onChange');
+    it('should call property onBlur when delete button is clicked and prop is specified', () => {
+      let blurSpy = jasmine.createSpy('onBlur');
       let deleteButton = deleteInput.find('.input-actions');
 
       deleteButton.simulate('click');
-      expect(changeSpy).not.toHaveBeenCalled();
+      expect(blurSpy).not.toHaveBeenCalled();
 
-      deleteInput.setProps({ onChange: changeSpy });
+      deleteInput.setProps({ onBlur: blurSpy });
       deleteInput.mount();
 
       deleteButton.simulate('click');
-      expect(changeSpy).toHaveBeenCalledTimes(1);
+      expect(blurSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

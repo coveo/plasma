@@ -67,7 +67,7 @@ describe('MultilineInput', () => {
       let innerAddInput = multilineInput.find(AddInput);
       expect(innerAddInput.length).toBe(1);
 
-      innerAddInput.props().onChange(aNewValue);
+      innerAddInput.props().onBlur(aNewValue);
 
       expect(changeSpy.calls.count()).toBe(1);
       expect(changeSpy.calls.first().args[0][0].value).toBe(aNewValue);
@@ -81,7 +81,7 @@ describe('MultilineInput', () => {
       let innerDeleteInput = multilineInput.find(DeletableInput);
       expect(innerDeleteInput.length).toBe(1);
 
-      innerDeleteInput.props().onChange(aNewValue);
+      innerDeleteInput.props().onBlur(aNewValue);
 
       expect(changeSpy.calls.count()).toBe(1);
       expect(changeSpy.calls.first().args[0][0].value).toBe(aNewValue);
@@ -95,7 +95,7 @@ describe('MultilineInput', () => {
       let innerDeleteInput = multilineInput.find(DeletableInput);
       expect(innerDeleteInput.length).toBe(1);
 
-      innerDeleteInput.props().onChange('');
+      innerDeleteInput.props().onBlur('');
 
       expect(changeSpy.calls.count()).toBe(1);
       expect(changeSpy.calls.first().args[0].length).toBe(0);
