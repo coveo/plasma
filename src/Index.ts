@@ -18,7 +18,7 @@ export { Checkbox } from './components/checkbox/Checkbox';
 export { ChildForm } from './components/childForm/ChildForm';
 export { ToggleForm } from './components/childForm/ToggleForm';
 
-  // FilterBox
+// FilterBox
 export { FilterBox } from './components/filterBox/FilterBox';
 export { FilterBoxConnected } from './components/filterBox/FilterBoxConnected';
 export { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
@@ -63,7 +63,7 @@ export { perPageCompositeReducer } from './components/navigation/perPage/Navigat
 export { addPagination, changePage, PaginationActions, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 export { addPerPage, changePerPage, PerPageActions } from './components/navigation/perPage/NavigationPerPageActions';
 
-export {ItemBox, IItemBoxProps} from './components/itemBox/ItemBox';
+export { ItemBox, IItemBoxProps } from './components/itemBox/ItemBox';
 
 // Dropdown
 export { Dropdown } from './components/dropdown/Dropdown';
@@ -139,7 +139,7 @@ export { subNavigationsReducer } from './components/subNavigation/SubNavigationR
 export { SubNavigationActions, selectSubNavigation } from './components/subNavigation/SubNavigationActions';
 
 // Utils
-export { DisplayClass } from './utils/ComponentUtils';
+export { DisplayClass, ComponentContent } from './utils/ComponentUtils';
 export { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
 export { clearState, CommonActions, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
 export { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
@@ -173,8 +173,8 @@ export { MultiSelectDropdownSearchConnected } from './components/dropdownSearch/
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
 // Radio
-export {Radio} from './components/radio/Radio';
-export {RadioSelect, IRadioSelectProps} from './components/radio/RadioSelect';
+export { Radio } from './components/radio/Radio';
+export { RadioSelect, IRadioSelectProps } from './components/radio/RadioSelect';
 
 // Toasts
 export { Toast, ToastType, IToastProps } from './components/toast/Toast';

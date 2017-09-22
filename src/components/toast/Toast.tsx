@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import * as classNames from 'classnames';
 import { Svg } from '../svg/Svg';
+import { ComponentContent } from '../../utils/ComponentUtils';
 
 export interface IToastProps {
   id?: string;
@@ -10,7 +11,7 @@ export interface IToastProps {
   type?: string;
   dismiss?: number;
   animate?: boolean;
-  content?: typeof React.Component | string | (() => JSX.Element);
+  content?: ComponentContent;
   onRender?: () => void;
   onClose?: () => void;
   onDestroy?: () => void;

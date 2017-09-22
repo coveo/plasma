@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as classname from 'classnames';
 import * as _ from 'underscore';
+import { ComponentContent } from '../../utils/ComponentUtils';
 
 export interface IContentProps {
-  content: typeof React.Component | string | (() => JSX.Element) | any;
+  content: ComponentContent;
   componentProps?: { [key: string]: any };
   classes?: string[];
 }
