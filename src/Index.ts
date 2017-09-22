@@ -117,6 +117,7 @@ import { Radio } from './components/radio/Radio';
 import { Checkbox } from './components/checkbox/Checkbox';
 import { ChildForm } from './components/childForm/ChildForm';
 import { ToggleForm } from './components/childForm/ToggleForm';
+import { Label } from './components/input/Label';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
@@ -186,6 +187,7 @@ export {
 
   // Input
   Input,
+  Label,
 
   // MultilineInput
   MultilineInput,
