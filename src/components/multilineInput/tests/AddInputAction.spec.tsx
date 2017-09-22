@@ -31,12 +31,23 @@ describe('AddInputAction', () => {
     });
 
     it('should render title prop if prop is set', () => {
-      let title = 'a title';
+      const title = 'a title';
       expect(addInput.find(`[title="${title}"]`).length).toBe(0);
 
-      addInput.setProps({ title });
-      addInput.mount();
+      addInput.setProps({ title }).mount();
       expect(addInput.find(`[title="${title}"]`).length).toBe(1);
+    });
+
+    it('should call onClick props on button click if prop is set', () => {
+      const clickSpy = jasmine.createSpy('onClick');
+
+      const innerAction = addInput.find('.input-actions');
+      innerAction.simulate('click');
+      expect(clickSpy.calls.count()).toBe(0);
+
+      addInput.setProps({ onClick: clickSpy }).mount();
+      innerAction.simulate('click');
+      expect(clickSpy.calls.count()).toBe(1);
     });
   });
 });

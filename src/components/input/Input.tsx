@@ -1,18 +1,29 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 
 export interface IInputProps {
-  label?: string;
+  id?: string;
+  name?: string;
+  type?: string;
   classes?: string[];
-  labelClasses?: string[];
+  innerInputClasses?: string[];
   value?: string;
   placeholder?: string;
-  onChange?: (value: string) => void;
+  checked?: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
+  onBlur?: (value: string) => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  onChange?: (value?: string) => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  validate?: (value: string) => string;
 }
 
 export class Input extends React.Component<IInputProps, any> {
   private innerInput: HTMLInputElement;
+
+  static defaultProps: Partial<IInputProps> = {
+    type: 'text',
+  };
 
   reset() {
     this.innerInput.value = '';
@@ -22,9 +33,21 @@ export class Input extends React.Component<IInputProps, any> {
     return this.innerInput.value;
   }
 
+  private handleBlur() {
+    if (this.props.onBlur) {
+      this.props.onBlur(this.innerInput.value);
+    }
+  }
+
   private handleChange() {
     if (this.props.onChange) {
       this.props.onChange(this.innerInput.value);
+    }
+  }
+
+  private handleClick(e: React.MouseEvent<HTMLElement>) {
+    if (this.props.onClick) {
+      this.props.onClick(e);
     }
   }
 
@@ -35,20 +58,30 @@ export class Input extends React.Component<IInputProps, any> {
   }
 
   render() {
-    const classes = ['input-wrapper'].concat(this.props.classes);
-    const labelClasses = [].concat(this.props.labelClasses);
+    const classes = classNames(
+      'input-wrapper',
+      this.props.classes
+    );
+    const innerInputClasses = classNames(this.props.innerInputClasses);
 
     return (
-      <div className={classes.join(' ')}>
+      <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
         <input
-          type='text'
+          id={this.props.id}
+          className={innerInputClasses}
+          type={this.props.type}
           defaultValue={this.props.value}
           ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
-          onBlur={() => this.handleChange()}
+          onBlur={() => this.handleBlur()}
+          onChange={() => this.handleChange()}
           onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
           placeholder={this.props.placeholder}
-          required />
-        <label className={labelClasses.join(' ')}>{this.props.label}</label>
+          checked={!!this.props.checked}
+          disabled={!!this.props.disabled}
+          name={this.props.name}
+          required
+          readOnly={!!this.props.readOnly}
+        />
         {this.props.children}
       </div>
     );

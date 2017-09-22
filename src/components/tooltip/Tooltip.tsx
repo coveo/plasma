@@ -1,4 +1,4 @@
-import { Tooltip as BootstrapTooltip, OverlayTrigger } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip as BootstrapTooltip } from 'react-bootstrap';
 import * as _ from 'underscore';
 import * as React from 'react';
 
@@ -16,6 +16,7 @@ export interface IOverlayTriggerProps {
   onExited?: Function;
   onExiting?: Function;
   placement?: string;
+  container?: string;
   rootClose?: boolean;
   trigger?: string | string[];
 }
@@ -62,6 +63,7 @@ const OVERLAY_PROPS_TO_OMIT: string[] = [
   'bsClass',
   'positionTop',
   'positionLeft',
+  'container',
 ];
 
 export class Tooltip extends React.Component<ITooltipProps, any> {
@@ -81,12 +83,15 @@ export class Tooltip extends React.Component<ITooltipProps, any> {
       {tooltipFooter}
     </BootstrapTooltip>;
 
-    return (
-      <OverlayTrigger {..._.omit(this.props, OVERLAY_PROPS_TO_OMIT) } overlay={tooltip}>
-        <span className={this.props.className}>
-          {this.props.children}
-        </span>
-      </OverlayTrigger>
-    );
+    if (this.props.title) {
+      return (
+        <OverlayTrigger {..._.omit(this.props, OVERLAY_PROPS_TO_OMIT) } overlay={tooltip}>
+          <span className={this.props.className}>
+            {this.props.children}
+          </span>
+        </OverlayTrigger>
+      );
+    }
+    return (<span>{this.props.children}</span>);
   }
 }

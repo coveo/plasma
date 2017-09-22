@@ -50,7 +50,7 @@ export interface IDropdownSearchDispatchProps {
   onMount?: () => void;
   onDestroy?: () => void;
   onToggleDropdown?: () => void;
-  onBlur?: () => void;
+  onBlur?: (options: IDropdownOption[]) => void;
   onFocus?: () => void;
   onFilterTextChange?: (filterText: string) => void;
   onOptionClick?: (option: IDropdownOption) => void;
@@ -301,7 +301,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, void> 
 
   handleOnBlur() {
     if (this.props.onBlur && !this.props.setFocusOnDropdownButton) {
-      this.props.onBlur();
+      this.props.onBlur(this.props.options);
     }
   }
 

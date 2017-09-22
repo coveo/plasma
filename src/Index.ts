@@ -3,6 +3,7 @@ export { Popover } from './components/popover/Popover';
 export { Svg } from './components/svg/Svg';
 export { Tooltip } from './components/tooltip/Tooltip';
 export { UserFeedback } from './components/userFeedback/UserFeedback';
+export { Content, IContentProps } from './components/content/Content';
 
 // LastUpdated
 export { LastUpdated } from './components/lastUpdated/LastUpdated';
@@ -10,7 +11,14 @@ export { LastUpdatedConnected } from './components/lastUpdated/LastUpdatedConnec
 export { lastUpdatedCompositeReducer } from './components/lastUpdated/LastUpdatedReducers';
 export { changeLastUpdated } from './components/lastUpdated/LastUpdatedActions';
 
-// FilterBox
+// Checkbox
+export { Checkbox } from './components/checkbox/Checkbox';
+
+// Child form
+export { ChildForm } from './components/childForm/ChildForm';
+export { ToggleForm } from './components/childForm/ToggleForm';
+
+  // FilterBox
 export { FilterBox } from './components/filterBox/FilterBox';
 export { FilterBoxConnected } from './components/filterBox/FilterBoxConnected';
 export { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
@@ -36,6 +44,7 @@ export { ModalBackdropConnected } from './components/modal/ModalBackdropConnecte
 export { ModalBody } from './components/modal/ModalBody';
 export { ModalFooter } from './components/modal/ModalFooter';
 export { ModalHeader } from './components/modal/ModalHeader';
+export { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 export { modalsReducer } from './components/modal/ModalReducers';
 export { addModal, closeModal, ModalAction, openModal, removeModal } from './components/modal/ModalActions';
 export { ModalPrompt } from './components/modalPrompt/ModalPrompt';
@@ -53,6 +62,8 @@ export { paginationCompositeReducer } from './components/navigation/pagination/N
 export { perPageCompositeReducer } from './components/navigation/perPage/NavigationPerPageReducers';
 export { addPagination, changePage, PaginationActions, resetPaging } from './components/navigation/pagination/NavigationPaginationActions';
 export { addPerPage, changePerPage, PerPageActions } from './components/navigation/perPage/NavigationPerPageActions';
+
+export {ItemBox, IItemBoxProps} from './components/itemBox/ItemBox';
 
 // Dropdown
 export { Dropdown } from './components/dropdown/Dropdown';
@@ -143,12 +154,12 @@ export { TabPane } from './components/tab/TabPane';
 export { TabPaneConnected } from './components/tab/TabPaneConnected';
 
 // Input
-export { Input } from './components/input/Input';
+export { Input, IInputProps } from './components/input/Input';
+export { Label, ILabelProps } from './components/input/Label';
 
 // MultilineInput
 export { MultilineInput } from './components/multilineInput/MultilineInput';
 export { tabGroupsReducer, tabsReducer } from './components/tab/TabReducers';
-export { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 
 // Button
 export { Button } from './components/button/Button';
@@ -160,6 +171,10 @@ export { BlankSlate } from './components/blankSlate/BlankSlate';
 export { MultiSelectDropdownSearchConnected } from './components/dropdownSearch/MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
+
+// Radio
+export {Radio} from './components/radio/Radio';
+export {RadioSelect, IRadioSelectProps} from './components/radio/RadioSelect';
 
 // Toasts
 export { Toast, ToastType, IToastProps } from './components/toast/Toast';
