@@ -48,6 +48,7 @@ import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSe
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
 import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
+import { InputExamples } from '../src/components/input/examples/InputExamples';
 
 class App extends React.Component<any, any> {
 
@@ -121,6 +122,7 @@ class App extends React.Component<any, any> {
           <DatePickerDropdownConnectedSingleDateExamples />
           <MultilineInputExamples />
           <BlankSlateExample />
+          <InputExamples />
         </div>
       </Provider>
     );

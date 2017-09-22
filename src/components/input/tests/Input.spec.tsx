@@ -31,12 +31,48 @@ describe('Input', () => {
       input.detach();
     });
 
+    it('should set inner input classes when specified', () => {
+      const innerInputClass = 'valid';
+      const classes = [innerInputClass];
+      const innerInput = input.find('input').first();
+      expect(innerInput.hasClass(innerInputClass)).toBe(false);
+
+      input.setProps({ innerInputClasses: classes }).mount();
+      expect(innerInput.hasClass(innerInputClass)).toBe(true);
+    });
+
+    it('should set inner input type when specified', () => {
+      const type = 'password';
+      const innerInput = input.find('input').first();
+      expect(innerInput.prop('type')).toBe('text');
+
+      input.setProps({ type }).mount();
+      expect(innerInput.prop('type')).toBe(type);
+    });
+
+    it('should set inner label valid message when specified', () => {
+      const message = 'salut';
+      const innerLabel = input.find('label').first();
+      expect(innerLabel.prop('data-valid-message')).toBe(undefined);
+
+      input.setProps({ validMessage: message }).mount();
+      expect(innerLabel.prop('data-valid-message')).toBe(message);
+    });
+
+    it('should set inner label invalid message when specified', () => {
+      const message = 'salut';
+      const innerLabel = input.find('label').first();
+      expect(innerLabel.prop('data-invalid-message')).toBe(undefined);
+
+      input.setProps({ invalidMessage: message }).mount();
+      expect(innerLabel.prop('data-invalid-message')).toBe(message);
+    });
+
     it('should call prop onChange on inner input blur', () => {
       const changeSpy = jasmine.createSpy('onChange');
       const innerInput = input.find('input');
 
-      input.setProps({ onChange: changeSpy });
-      input.mount();
+      input.setProps({ onChange: changeSpy }).mount();
       innerInput.simulate('blur');
 
       expect(changeSpy.calls.count()).toBe(1);
@@ -46,8 +82,7 @@ describe('Input', () => {
       const keyUpSpy = jasmine.createSpy('onKeyUp');
       const innerInput = input.find('input');
 
-      input.setProps({ onKeyUp: keyUpSpy });
-      input.mount();
+      input.setProps({ onKeyUp: keyUpSpy }).mount();
       innerInput.simulate('keyUp');
 
       expect(keyUpSpy.calls.count()).toBe(1);
