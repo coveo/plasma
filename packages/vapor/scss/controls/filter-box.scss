@@ -60,6 +60,10 @@
     padding-left: 20px;
     margin: 0;
 
+    &::-ms-clear {
+      display: none;
+    }
+
     & + span {
       position: absolute;
       top: calc(50% - #{$clear-icon-height} / 2);
