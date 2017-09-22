@@ -1,3 +1,4 @@
+import * as Redux from 'redux';
 import { IMembersCompositeState, membersReducers } from './members-example/reducers/MembersReducers';
 import { lastUpdatedCompositeReducer } from '../src/components/lastUpdated/LastUpdatedReducers';
 import { filterBoxesReducer } from '../src/components/filterBox/FilterBoxReducers';
@@ -16,9 +17,9 @@ import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilter
 import { optionPickersReducer } from '../src/components/optionPicker/OptionPickerReducers';
 import { subNavigationsReducer } from '../src/components/subNavigation/SubNavigationReducers';
 import { IReactVaporState } from '../src/ReactVapor';
-import * as Redux from 'redux';
 import { tabGroupsReducer } from '../src/components/tab/TabReducers';
 import { dropdownsSearchReducer } from '../src/components/dropdownSearch/DropdownSearchReducers';
+import { toastsContainerReducer } from '../src/components/toast/ToastReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -49,5 +50,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   modals: modalsReducer,
   subNavigations: subNavigationsReducer,
   tabs: tabGroupsReducer,
+  toastContainers: toastsContainerReducer,
   lastAction,
 });

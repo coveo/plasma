@@ -19,6 +19,7 @@ import { IModalState } from './components/modal/ModalReducers';
 import { ISubNavigationState } from './components/subNavigation/SubNavigationReducers';
 import { ITabGroupState } from './components/tab/TabReducers';
 import { IDropdownSearchState } from './components/dropdownSearch/DropdownSearchReducers';
+import { IToastsState } from './components/toast/ToastReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -39,6 +40,7 @@ export interface IReactVaporState {
   modals?: IModalState[];
   subNavigations?: ISubNavigationState[];
   tabs?: ITabGroupState[];
+  toastContainers?: IToastsState[];
 }
 
 export interface IReduxActionsPayload {

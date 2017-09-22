@@ -19,6 +19,7 @@ import { subNavigationsReducer } from '../components/subNavigation/SubNavigation
 import { tabGroupsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
 import { dropdownsSearchReducer } from '../components/dropdownSearch/DropdownSearchReducers';
+import { toastsContainerReducer } from '../components/toast/ToastReducers';
 
 export class TestUtils {
   static buildStore() {
@@ -41,6 +42,7 @@ export class TestUtils {
       modals: modalsReducer,
       subNavigations: subNavigationsReducer,
       tabs: tabGroupsReducer,
+      toastContainers: toastsContainerReducer,
     });
 
     let reactVapor = (state: IReactVaporState, action: Redux.Action) => {
