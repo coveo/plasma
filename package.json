@@ -57,7 +57,7 @@
     "@types/react": "15.0.30",
     "@types/react-bootstrap": "0.0.52",
     "@types/react-dom": "15.5.4",
-    "@types/react-dropzone": "0.0.35",
+    "@types/react-dropzone": "4.1.0",
     "@types/react-redux": "5.0.8",
     "@types/tether": "1.4.3",
     "@types/underscore": "1.8.3",
