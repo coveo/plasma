@@ -110,7 +110,7 @@
     "react-addons-test-utils": "15.6.0",
     "react-dom": "15.6.1",
     "react-redux": "5.0.6",
-    "react-test-renderer": "15.6.1",
+    "react-test-renderer": "15.6.2",
     "redux": "3.7.2",
     "remap-istanbul": "0.9.5",
     "sass-loader": "6.0.6",
