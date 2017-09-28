@@ -1,19 +1,18 @@
 import * as React from 'react';
 import { Radio } from '../Radio';
-import { RadioSelect } from '../RadioSelect';
+import { IRadioSelectProps, RadioSelect } from '../RadioSelect';
 import { Label } from '../../input/Label';
 
-export interface IRadioSelectProps {
+export interface IRadioSelectExampleProps extends IRadioSelectProps {
   defaultValue?: string;
-  disabled?: boolean;
 }
 
 export interface IRadioSelectState {
   value: string;
 }
 
-export class RadioSelectExample extends React.Component<IRadioSelectProps, IRadioSelectState> {
-  constructor(props: IRadioSelectProps, state: IRadioSelectState) {
+export class RadioSelectExample extends React.Component<IRadioSelectExampleProps, IRadioSelectState> {
+  constructor(props: IRadioSelectExampleProps, state: IRadioSelectState) {
     super(props, state);
     this.state = {
       value: this.props.defaultValue,
