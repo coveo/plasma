@@ -21,9 +21,18 @@ import * as Redux from 'redux';
 import { dropdownsSearchReducer } from '../components/dropdownSearch/DropdownSearchReducers';
 import { toastsContainerReducer } from '../components/toast/ToastReducers';
 
+export interface IReactVaporTestState extends IReactVaporState {
+  lastAction?: Redux.Action;
+}
+
 export class TestUtils {
   static buildStore() {
-    let reactVaporReducers = Redux.combineReducers({
+    const lastActionReducer = (state: IReactVaporTestState = null, action: Redux.Action): Redux.Action => {
+      return action;
+    };
+
+    const reactVaporReducers = Redux.combineReducers({
+      lastAction: lastActionReducer,
       lastUpdatedComposite: lastUpdatedCompositeReducer,
       filters: filterBoxesReducer,
       facets: facetsReducer,
@@ -45,7 +54,7 @@ export class TestUtils {
       toastContainers: toastsContainerReducer,
     });
 
-    let reactVapor = (state: IReactVaporState, action: Redux.Action) => {
+    const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
       state = action.type === CommonActions.clearState ? undefined : state;
       return reactVaporReducers(state, action as any);
     };

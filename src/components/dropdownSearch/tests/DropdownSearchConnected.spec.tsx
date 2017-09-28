@@ -2,14 +2,16 @@
 import { mount, ReactWrapper } from 'enzyme';
 import { Provider, Store } from 'react-redux';
 import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
+import { IReactVaporTestState, TestUtils } from '../../../utils/TestUtils';
 import * as React from 'react';
 import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import { UUID } from '../../../utils/UUID';
 import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
 import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
-import { toggleDropdownSearch, updateActiveOptionDropdownSearch, updateOptionsDropdownSearch } from '../DropdownSearchActions';
+import {
+  DropdownSearchActions, toggleDropdownSearch, updateActiveOptionDropdownSearch,
+  updateOptionsDropdownSearch
+} from '../DropdownSearchActions';
 import { keyCode } from '../../../utils/InputUtils';
 import * as _ from 'underscore';
 
@@ -19,7 +21,7 @@ describe('DropdownSearch', () => {
   describe('<DropdownSearchConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let dropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
-    let store: Store<IReactVaporState>;
+    let store: Store<IReactVaporTestState>;
 
     const defaultOptions = [{ value: 'a' }, { value: 'b' }];
 
@@ -57,6 +59,22 @@ describe('DropdownSearch', () => {
         wrapper.mount();
         expect(store.getState().dropdownSearch.length).toBe(1);
       });
+
+      it('should also dispatch a updateOptionsDropdownSearch onMount if there is a defaultSelectedOption', () => {
+        expect(store.getState().lastAction.type).not.toBe(DropdownSearchActions.update);
+
+        wrapper.unmount();
+
+        wrapper = mount(
+          <Provider store={store}>
+            <DropdownSearchConnected id={id} defaultOptions={defaultOptions} defaultSelectedOption={defaultSelectedOptionPlaceholder} />
+          </Provider>,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(store.getState().lastAction.type).toBe(DropdownSearchActions.update);
+      });
+
 
       it('should call onDestroy prop when will unmount', () => {
         wrapper.unmount();
