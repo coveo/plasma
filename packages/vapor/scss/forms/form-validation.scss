@@ -48,6 +48,10 @@
 
   color: $red;
   font-size: 12px;
+
+  &.bottom {
+    margin: 10px 0 0 0;
+  }
 }
 
 // TODO remove when removing the table-form
