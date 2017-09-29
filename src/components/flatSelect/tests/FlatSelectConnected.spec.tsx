@@ -1,0 +1,143 @@
+import { TestUtils } from '../../../utils/TestUtils';
+import { mount, ReactWrapper } from 'enzyme';
+import * as React from 'react';
+import { FlatSelect, IFlatSelectProps } from '../FlatSelect';
+import { IReactVaporState } from '../../../ReactVapor';
+import { Provider, Store } from 'react-redux';
+import { FlatSelectConnected } from '../FlatSelectConnected';
+import { IFlatSelectOptionProps } from '../FlatSelectOption';
+import { clearState } from '../../../utils/ReduxUtils';
+import { selectFlatSelect } from '../FlatSelectActions';
+
+describe('FlatSelect', () => {
+
+  describe('<FlatSelectConnected />', () => {
+    let wrapper: ReactWrapper<any, any>;
+    let flatSelect: ReactWrapper<IFlatSelectProps, void>;
+    let store: Store<IReactVaporState>;
+
+    let id: string = 'flatSelect';
+    let defaultOptions: IFlatSelectOptionProps[] = [{
+      option: { content: 'test' },
+    }, {
+      option: { content: 'test 1' },
+    },
+    ];
+
+    const renderDropdownSearchConnected = () => {
+      wrapper = mount(
+        <Provider store={store}>
+          <FlatSelectConnected id={id} options={defaultOptions} />
+        </Provider>,
+        { attachTo: document.getElementById('App') },
+      );
+      flatSelect = wrapper.find(FlatSelect).first();
+    };
+
+    beforeEach(() => {
+      store = TestUtils.buildStore();
+    });
+
+    afterEach(() => {
+      store.dispatch(clearState());
+      wrapper.unmount();
+      wrapper.detach();
+    });
+
+    describe('mount and unmount', () => {
+
+      beforeEach(() => {
+        renderDropdownSearchConnected();
+      });
+
+      it('should call onMount prop when mounted', () => {
+        wrapper.unmount();
+        store.dispatch(clearState());
+        expect(store.getState().flatSelect.length).toBe(0);
+
+        wrapper.mount();
+        expect(store.getState().flatSelect.length).toBe(1);
+      });
+
+      it('should call onDestroy prop when will unmount', () => {
+        wrapper.unmount();
+        expect(store.getState().flatSelect.length).toBe(0);
+      });
+    });
+
+    describe('mapStateToProps', () => {
+
+      beforeEach(() => {
+        renderDropdownSearchConnected();
+      });
+
+      it('should get an id as a prop', () => {
+        const idProp = flatSelect.props().id;
+
+        expect(idProp).toBeDefined();
+        expect(idProp).toBe(id);
+      });
+
+      it('should get the options as a prop', () => {
+        const isOpenedProp = flatSelect.props().options;
+
+        expect(isOpenedProp).toBeDefined();
+        expect(isOpenedProp.length).toBe(2);
+      });
+
+      it('should get the first option for selectedOption if the selectedOption is undefined as a prop', () => {
+        const optionsProp = flatSelect.props().selectedOption;
+
+        expect(optionsProp).toBeDefined();
+        expect(optionsProp).toBe(defaultOptions[0]);
+      });
+
+      it('should get the current selectedOption as a prop', () => {
+        store.dispatch(selectFlatSelect(id, defaultOptions[1]));
+
+        flatSelect = wrapper.find(FlatSelect).first();
+        const optionsProp = flatSelect.props().selectedOption;
+
+        expect(optionsProp).toBeDefined();
+        expect(optionsProp).toBe(defaultOptions[1]);
+      });
+    });
+
+    describe('mapDispatchToProps', () => {
+
+      beforeEach(() => {
+        renderDropdownSearchConnected();
+      });
+
+      it('should get what to do on destroy as a prop', () => {
+        const onDestroyProp = flatSelect.props().onDestroy;
+
+        expect(onDestroyProp).toBeDefined();
+      });
+
+      it('should get what to do on onMount as a prop', () => {
+        const onMountProp = flatSelect.props().onMount;
+
+        expect(onMountProp).toBeDefined();
+      });
+
+      it('should add the first option as optionSelection on onMount', () => {
+        expect(store.getState().flatSelect[0].selectedOption).toBe(defaultOptions[0]);
+      });
+
+      it('should get what to do on onOptionClick as a prop', () => {
+        const onBlurProp = flatSelect.props().onOptionClick;
+
+        expect(onBlurProp).toBeDefined();
+      });
+
+      it('should add the optionSelected in the state on onOptionClick', () => {
+        expect(store.getState().flatSelect[0].selectedOption).toBe(defaultOptions[0]);
+
+        flatSelect.props().onOptionClick(defaultOptions[1]);
+
+        expect(store.getState().flatSelect[0].selectedOption).toBe(defaultOptions[1]);
+      });
+    });
+  });
+});

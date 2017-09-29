@@ -20,6 +20,7 @@ import { IReactVaporState } from '../src/ReactVapor';
 import { tabGroupsReducer } from '../src/components/tab/TabReducers';
 import { dropdownsSearchReducer } from '../src/components/dropdownSearch/DropdownSearchReducers';
 import { toastsContainerReducer } from '../src/components/toast/ToastReducers';
+import { flatSelectsReducer } from '../src/components/flatSelect/FlatSelectReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -42,6 +43,7 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   actionBars: actionBarsReducer,
   dropdowns: dropdownsReducer,
   dropdownSearch: dropdownsSearchReducer,
+  flatSelect: flatSelectsReducer,
   rows: tableRowsReducer,
   itemFilters: itemFiltersReducer,
   optionsCycles: optionsCyclesReducer,
