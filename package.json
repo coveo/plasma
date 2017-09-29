@@ -62,7 +62,7 @@
     "@types/tether": "1.4.3",
     "@types/underscore": "1.8.3",
     "@types/underscore.string": "0.0.31",
-    "@types/webpack": "3.0.10",
+    "@types/webpack": "3.0.12",
     "@types/webpack-env": "1.13.1",
     "autoprefixer": "7.1.4",
     "bithound": "1.7.0",
@@ -118,11 +118,11 @@
     "ts-loader": "2.3.7",
     "tslint": "4.5.1",
     "tslint-loader": "3.5.3",
-    "typescript": "2.5.2",
+    "typescript": "2.5.3",
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
-    "webpack": "3.5.6",
-    "webpack-dev-server": "2.6.0"
+    "webpack": "3.6.0",
+    "webpack-dev-server": "2.9.1"
   },
   "files": [
     "dist",
