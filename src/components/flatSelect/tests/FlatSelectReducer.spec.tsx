@@ -22,9 +22,9 @@ describe('FlatSelect', () => {
 
   it('should return the default state if the action is not defined and the state is undefined for one flat select', () => {
     let oldState: IFlatSelectState = undefined;
-    let actionBarState: IFlatSelectState = flatSelectReducer(oldState, genericAction);
+    let flatSelectState: IFlatSelectState = flatSelectReducer(oldState, genericAction);
 
-    expect(actionBarState).toBe(flatSelectInitialState);
+    expect(flatSelectState).toBe(flatSelectInitialState);
   });
 
   it('should return the old state when the action is not defined', () => {
@@ -36,9 +36,9 @@ describe('FlatSelect', () => {
 
   it('should return the old state when the action is not defined for one flat select', () => {
     let oldState: IFlatSelectState = flatSelectInitialState;
-    let actionBarState: IFlatSelectState = flatSelectReducer(oldState, genericAction);
+    let flatSelectState: IFlatSelectState = flatSelectReducer(oldState, genericAction);
 
-    expect(actionBarState).toBe(oldState);
+    expect(flatSelectState).toBe(oldState);
   });
 
   it('should return the old state with one more FlatSelectState when the action is "ADD_FLAT_SELECT"', () => {
@@ -94,7 +94,7 @@ describe('FlatSelect', () => {
     expect(flatSelectState.filter(flatSelect => flatSelect.id === action.payload.id).length).toBe(0);
   });
 
-  it('should return the old state when the action is "REMOVE_ACTION_BAR" and the prompt id does not exist', () => {
+  it('should return the old state when the action is "REMOVE_FLAT_SELECT" and the prompt id does not exist', () => {
     const oldState: IFlatSelectState[] = [
       {
         id: 'flat-select-id-1',
@@ -110,7 +110,7 @@ describe('FlatSelect', () => {
     let action: IReduxAction<IFlatSelectActionPayload> = {
       type: FlatSelectActions.remove,
       payload: {
-        id: 'some-action-bar4',
+        id: 'flat-select-id-4',
       },
     };
     const flatSelectState: IFlatSelectState[] = flatSelectsReducer(oldState, action);
