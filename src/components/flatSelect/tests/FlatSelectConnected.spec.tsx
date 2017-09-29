@@ -126,9 +126,9 @@ describe('FlatSelect', () => {
       });
 
       it('should get what to do on onOptionClick as a prop', () => {
-        const onBlurProp = flatSelect.props().onOptionClick;
+        const onOptionClick = flatSelect.props().onOptionClick;
 
-        expect(onBlurProp).toBeDefined();
+        expect(onOptionClick).toBeDefined();
       });
 
       it('should add the optionSelected in the state on onOptionClick', () => {
