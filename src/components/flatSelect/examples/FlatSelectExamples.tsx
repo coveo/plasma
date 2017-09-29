@@ -107,22 +107,20 @@ export class FlatSelectExamples extends React.Component<any, void> {
             }} />
           </div>
         </div>
-        <div>
-          <div className='form-group'>
-            <label className='form-control-label'>Flat Select with option append</label>
-            <div className='form-control'>
-              <FlatSelectConnected {...{
-                id: UUID.generate(),
-                options: [{
-                  option: { content: 'Option 1' },
-                  append: getAppend,
-                }, {
-                  option: { content: 'Option 2' },
-                  append: getAppend,
-                },
-                ],
-              }} />
-            </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Flat Select with option append</label>
+          <div className='form-control'>
+            <FlatSelectConnected {...{
+              id: UUID.generate(),
+              options: [{
+                option: { content: 'Option 1' },
+                append: getAppend,
+              }, {
+                option: { content: 'Option 2' },
+                append: getAppend,
+              },
+              ],
+            }} />
           </div>
         </div>
       </div>
