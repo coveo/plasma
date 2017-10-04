@@ -34,3 +34,14 @@ $child-arrow-height: 10px;
     max-width: $input-max-width;
   }
 }
+
+.child-section {
+  padding-left: $child-section-spacing-left;
+  margin-top: $child-section-spacing-top;
+
+  border-left: $child-section-border-size solid $light-grey;
+}
+
+.mod-child-section-first-input {
+  padding-top: $child-section-first-input-spacing-top;
+}
