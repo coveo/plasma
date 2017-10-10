@@ -103,7 +103,7 @@
     "merge-stream": "1.0.1",
     "moment": "2.18.1",
     "node-sass": "4.5.3",
-    "postcss-loader": "2.0.6",
+    "postcss-loader": "2.0.7",
     "pre-commit": "1.2.2",
     "pretty-typescript": "1.15.0",
     "react": "15.6.1",
