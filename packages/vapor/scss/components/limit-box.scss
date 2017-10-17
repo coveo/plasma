@@ -1,5 +1,6 @@
 .limit-box {
   width: $limit-box-width;
+  min-width: $limit-box-width;
 
   border: $default-border;
   border-radius: $border-radius;
@@ -7,7 +8,7 @@
 
 .limit-box-numbers {
   label.form-control-label, .input-field input:valid + label {
-    color: $dark-medium-grey;
+  color: $dark-medium-grey;
   }
 }
 
@@ -48,4 +49,16 @@
       background-color: $red;
     }
   }
+}
+
+.limit-box-bar.mod-green {
+  background-color: $green;
+}
+
+.limit-box-bar.mod-orange {
+  background-color: $orange;
+}
+
+.limit-box-bar.mod-red {
+  background-color: $red;
 }
