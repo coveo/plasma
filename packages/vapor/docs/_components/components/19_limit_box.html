@@ -1,0 +1,64 @@
+---
+type: component
+title: Limit Box
+usage: Visually show the usage of a limit
+stylesheet: '/scss/components/limit-box.scss'
+---
+<form class="coveo-form">
+    <div class="limit-box mb2">
+        <div class="limit-box-main p2 pb1">
+            <label class="form-control-label">Limit</label>
+            <div class="limit-box-numbers pt1 flex">
+                <div class="limit-box-usage">
+                    <label class="form-control-label">Usage</label>
+                    <span class="limit-box-usage-value">42</span>
+                </div>
+                <div class="limit-box-limit form-group input-field validate">
+                    <input id="FirstLimit" type="number" value="100" required />
+                    <label for="FirstLimit">Limit</label>
+                </div>
+            </div>
+        </div>
+        <div class="limit-box-footer">
+            <div class="limit-box-bar progress-42"></div>
+        </div>
+    </div>
+
+    <div class="limit-box mb2">
+        <div class="limit-box-main p2 pb1">
+            <label class="form-control-label">Limit</label>
+            <div class="limit-box-numbers pt1 flex">
+                <div class="limit-box-usage">
+                    <label class="form-control-label">Usage</label>
+                    <span class="limit-box-usage-value">100</span>
+                </div>
+                <div class="limit-box-limit form-group input-field validate">
+                    <input id="SecondLimit" type="number" value="110" required />
+                    <label for="SecondLimit">Limit</label>
+                </div>
+            </div>
+        </div>
+        <div class="limit-box-footer">
+            <div class="limit-box-bar progress-91"></div>
+        </div>
+    </div>
+
+    <div class="limit-box">
+        <div class="limit-box-main p2 pb1">
+            <label class="form-control-label">Limit</label>
+            <div class="limit-box-numbers pt1 flex">
+                <div class="limit-box-usage">
+                    <label class="form-control-label">Usage</label>
+                    <span class="limit-box-usage-value">30</span>
+                </div>
+                <div class="limit-box-limit form-group input-field validate">
+                    <input id="ThirdLimit" type="number" value="30" required />
+                    <label for="ThirdLimit">Limit</label>
+                </div>
+            </div>
+        </div>
+        <div class="limit-box-footer">
+            <div class="limit-box-bar progress-100"></div>
+        </div>
+    </div>
+</form>
