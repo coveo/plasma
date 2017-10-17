@@ -43,7 +43,7 @@ stylesheet: '/scss/components/limit-box.scss'
         </div>
     </div>
 
-    <div class="limit-box">
+    <div class="limit-box mb2">
         <div class="limit-box-main p2 pb1">
             <label class="form-control-label">Limit</label>
             <div class="limit-box-numbers pt1 flex">
@@ -59,6 +59,38 @@ stylesheet: '/scss/components/limit-box.scss'
         </div>
         <div class="limit-box-footer">
             <div class="limit-box-bar progress-100"></div>
+        </div>
+    </div>
+
+    <div class="limit-box mb2">
+        <div class="limit-box-main p2 pb1">
+            <label class="form-control-label">Limit we want to fill</label>
+            <div class="limit-box-numbers pt1 flex">
+                <div class="limit-box-usage">
+                    <label class="form-control-label">Usage</label>
+                    <span class="limit-box-usage-value">30</span>
+                </div>
+                <div class="limit-box-limit form-group input-field validate">
+                    <input id="FourthLimit" type="number" value="30" required />
+                    <label for="FourthLimit">Limit</label>
+                </div>
+            </div>
+        </div>
+        <div class="limit-box-footer">
+            <!-- .mod-red and .mod-orange are also available -->
+            <div class="limit-box-bar progress-100 mod-green"></div>
+        </div>
+    </div>
+
+    <div class="limit-box">
+        <div class="limit-box-main p2 pb1">
+            <label class="form-control-label">Limit</label>
+            <div class="limit-box-numbers pt1 flex">
+                <div class="limit-box-limit form-group input-field validate">
+                    <input id="FifthLimit" type="number" value="219000" required />
+                    <label for="FifthLimit">Limit</label>
+                </div>
+            </div>
         </div>
     </div>
 </form>
