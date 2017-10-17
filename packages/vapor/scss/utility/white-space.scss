@@ -43,6 +43,35 @@ $spacing: 0.5rem;
     margin: $i * $spacing;
   }
 
+  .mx#{$i} {
+    margin-right: $i * $spacing;
+    margin-left: $i * $spacing;
+  }
+
+  .my#{$i} {
+    margin-top: $i * $spacing;
+    margin-bottom: $i * $spacing;
+  }
+}
+
+// Loop is duplicated so that individual paddings and margins overwrite general ones
+@for $i from 1 through 2 {
+  .pt#{$i} {
+    padding-top: $i * $spacing;
+  }
+
+  .pb#{$i} {
+    padding-bottom: $i * $spacing;
+  }
+
+  .pl#{$i} {
+    padding-left: $i * $spacing;
+  }
+
+  .pr#{$i} {
+    padding-right: $i * $spacing;
+  }
+
   .mt#{$i} {
     margin-top: $i * $spacing;
   }
