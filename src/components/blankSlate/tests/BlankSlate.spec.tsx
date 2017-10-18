@@ -41,7 +41,6 @@ describe('BlankSlate', () => {
   });
 
   describe('<Blankslate /> with custom props', () => {
-
     const customProps = {
       title: 'title',
       description: 'description test',
@@ -106,6 +105,11 @@ describe('BlankSlate', () => {
     it('should render the icon', () => {
       renderBlankSlate();
       expect(blankSlateComponent.find(Svg).length).toBe(1);
+    });
+
+    it('should render an icon in the description', () => {
+      renderBlankSlate({ descriptionSvgName: 'tips' });
+      expect(blankSlateComponent.find('p').find(Svg).length).toBe(1);
     });
   });
 });
