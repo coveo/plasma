@@ -12,35 +12,43 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
   classes?: string[];
   svgName?: string;
   svgClass?: string;
+  descriptionSvgName?: string;
+  descriptionSvgClass?: string;
 }
 
 export class BlankSlate extends React.Component<IBlankSlateProps, void> {
-
   static defaultProps: Partial<IBlankSlateProps> = {
     title: '',
     buttons: [],
     withModal: false,
     classes: [],
-    svgName: '',
     svgClass: '',
+    descriptionSvgClass: '',
   };
 
-  private getSvgTemplate() {
+  private getSvgTemplate(): JSX.Element {
     return this.props.svgName
       ? <Svg svgName={this.props.svgName} svgClass={`icon mod-4x ${this.props.svgClass}`} />
       : null;
   }
 
+  private getDescriptionSvg(): JSX.Element {
+    return this.props.descriptionSvgName
+      ? <Svg svgName={this.props.descriptionSvgName} svgClass={`icon mod-2x mr1 ${this.props.descriptionSvgClass}`} />
+      : null;
+  }
+
   private getDescriptionTemplate(): JSX.Element {
     return this.props.description
-      ? <p>{this.props.description}</p>
+      ? (<p>
+        {this.getDescriptionSvg()}
+        {this.props.description}
+      </p>)
       : null;
   }
 
   private getButtonsTemplate(): JSX.Element[] {
-    return _.map(this.props.buttons, (buttonProps: IBaseActionOptions) => {
-      return <Button key={buttonProps.name} {...buttonProps} />;
-    });
+    return _.map(this.props.buttons, (buttonProps: IBaseActionOptions) => <Button key={buttonProps.name} {...buttonProps} />);
   }
 
   render() {
