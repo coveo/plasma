@@ -22,6 +22,8 @@ export class BlankSlate extends React.Component<IBlankSlateProps, void> {
     buttons: [],
     withModal: false,
     classes: [],
+    svgClass: '',
+    descriptionSvgClass: '',
   };
 
   private getSvgTemplate(): JSX.Element {
