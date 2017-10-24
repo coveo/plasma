@@ -37,7 +37,7 @@
     "lint"
   ],
   "dependencies": {
-    "react-bootstrap": "0.31.3",
+    "react-bootstrap": "0.31.4",
     "react-tether": "0.5.7"
   },
   "peerDependencies": {
