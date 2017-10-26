@@ -196,7 +196,6 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ...state,
         id: action.payload.id,
         options: updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption),
-        filterText: '',
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.filter:
