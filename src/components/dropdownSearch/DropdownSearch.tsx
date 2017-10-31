@@ -64,7 +64,7 @@ export interface IDropdownSearchDispatchProps {
 
 export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdownSearchStateProps, IDropdownSearchDispatchProps { }
 
-export class DropdownSearch extends React.Component<IDropdownSearchProps, void> {
+export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
   filterInput: HTMLDivElement;
   ulElement: HTMLElement;
   protected dropdownButton: HTMLElement;
