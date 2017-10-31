@@ -118,7 +118,7 @@
     "ts-loader": "3.0.5",
     "tslint": "4.5.1",
     "tslint-loader": "3.5.3",
-    "typescript": "2.5.3",
+    "typescript": "2.6.1",
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
     "webpack": "3.8.1",
