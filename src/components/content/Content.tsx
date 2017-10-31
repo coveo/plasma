@@ -9,7 +9,7 @@ export interface IContentProps {
   classes?: string[];
 }
 
-export class Content extends React.Component<IContentProps, void> {
+export class Content extends React.Component<IContentProps, {}> {
 
   static defaultProps: Partial<IContentProps> = {
     classes: [],

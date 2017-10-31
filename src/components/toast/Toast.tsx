@@ -23,7 +23,7 @@ export const ToastType = {
   Error: 'Error',
 };
 
-export class Toast extends React.Component<IToastProps, void> {
+export class Toast extends React.Component<IToastProps, {}> {
   private timeout: number;
 
   componentWillMount() {

@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import { IBaseActionOptions } from '../actions/Action';
 import { Tooltip } from '../tooltip/Tooltip';
 
-export class Button extends React.Component<IBaseActionOptions, void> {
+export class Button extends React.Component<IBaseActionOptions, {}> {
 
   static defaultProps: Partial<IBaseActionOptions> = {
     enabled: true,

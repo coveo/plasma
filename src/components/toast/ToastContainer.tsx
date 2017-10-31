@@ -24,7 +24,7 @@ export interface IToastContainerDispatchProps {
 
 export interface IToastContainerProps extends IToastContainerOwnProps, IToastContainerStateProps, IToastContainerDispatchProps { }
 
-export class ToastContainer extends React.Component<IToastContainerProps, void> {
+export class ToastContainer extends React.Component<IToastContainerProps, {}> {
 
   componentWillMount() {
     if (this.props.onRender) {

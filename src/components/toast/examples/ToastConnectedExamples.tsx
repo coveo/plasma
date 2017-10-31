@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IToastActionPayload>
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class ToastConnectedExamples extends React.Component<IToastConnectedExamplesProps, void> {
+export class ToastConnectedExamples extends React.Component<IToastConnectedExamplesProps, {}> {
 
   render() {
     return (
