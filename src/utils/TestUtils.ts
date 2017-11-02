@@ -20,6 +20,8 @@ import { tabGroupsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
 import { dropdownsSearchReducer } from '../components/dropdownSearch/DropdownSearchReducers';
 import { toastsContainerReducer } from '../components/toast/ToastReducers';
+import { ISvgProps } from '../components/svg/Svg';
+import { ITooltipProps } from '../components/tooltip/Tooltip';
 
 export interface IReactVaporTestState extends IReactVaporState {
   lastAction?: Redux.Action;
@@ -66,3 +68,14 @@ export class TestUtils {
     return new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
   }
 }
+
+export const defaultSvgProps: ISvgProps = {
+  svgName: 'domain-google',
+  svgClass: 'icon mod-2x',
+};
+
+export const defaultTooltipProps: ITooltipProps = {
+  title: 'default tooltip description',
+  placement: 'bottom',
+  container: 'body',
+};

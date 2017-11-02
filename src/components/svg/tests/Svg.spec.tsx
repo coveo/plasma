@@ -1,7 +1,7 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as $ from 'jquery';
 import * as _ from 'underscore';
-import { ISvgProps, Svg } from './Svg';
+import { ISvgProps, Svg } from '../Svg';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 
