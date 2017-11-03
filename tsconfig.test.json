@@ -9,15 +9,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "sourceMap": false,
-    "target": "ES5",
-    "typeRoots": [
-      "types"
-    ],
-    "types": [
-      "jasmine",
-      "react-tether",
-      "webpack-env"
-    ]
+    "target": "ES5"
   },
   "include": [
     "src/**/*.tsx",
