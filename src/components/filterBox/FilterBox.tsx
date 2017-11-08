@@ -9,6 +9,8 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   onBlur?: () => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   isAutoFocus?: boolean;
+  maxWidth?: number;
+  withTitleOnInput?: boolean;
 }
 
 export interface IFilterBoxStateProps {
@@ -79,8 +81,14 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
     let filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
 
+    const inputMaxWidth = { maxWidth: `${this.props.maxWidth}px` };
+
     return (
-      <div id={this.props.id} className={filterBoxContainerClasses}>
+      <div
+        id={this.props.id}
+        className={filterBoxContainerClasses}
+        style={inputMaxWidth}
+        title={this.filterInput && this.props.withTitleOnInput ? this.filterInput.value : undefined}>
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
@@ -91,6 +99,8 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           onFocus={(e: React.FocusEvent<any>) => { this.placeCursorAtEndOfInputValue(e); }}
           onKeyDown={(e) => this.handleOnKeyDown(e)}
           value={this.props.filterText}
+          style={inputMaxWidth}
+
           autoFocus={this.props.isAutoFocus}
         />
         <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
