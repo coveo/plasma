@@ -16,11 +16,11 @@ export class FilterBoxExamples extends React.Component<any, any> {
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Filter box with max width</label>
-          <FilterBox id='FilterBoxExampleComponentWithPlaceholder' filterPlaceholder='Filter' maxWidth={160} />
+          <FilterBox id='FilterBoxExampleComponentWithMaxWidth' filterPlaceholder='Filter' maxWidth={160} />
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Filter box with title reflecting the input value</label>
-          <FilterBox id='FilterBoxExampleComponentWithPlaceholder' filterPlaceholder='Filter' withTitleOnInput={true} />
+          <FilterBox id='FilterBoxExampleComponentWithTitle' filterPlaceholder='Filter' withTitleOnInput={true} />
         </div>
       </div>
     );
