@@ -22,7 +22,7 @@ export { ToggleForm } from './components/childForm/ToggleForm';
 export { FilterBox } from './components/filterBox/FilterBox';
 export { FilterBoxConnected } from './components/filterBox/FilterBoxConnected';
 export { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
-export { filterThrough } from './components/filterBox/FilterBoxActions';
+export { FilterActions, filterThrough } from './components/filterBox/FilterBoxActions';
 
 // Facets
 export { Facet, IFacet } from './components/facets/Facet';
