@@ -11,6 +11,7 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   isAutoFocus?: boolean;
   maxWidth?: number;
   withTitleOnInput?: boolean;
+  truncate?: boolean;
 }
 
 export interface IFilterBoxStateProps {
@@ -81,6 +82,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     const inputMaxWidth = { maxWidth: `${this.props.maxWidth}px` };
     const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
     const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
+    const filterInputClasses = classNames('filter-box', {'truncate': this.props.truncate});
 
     return (
       <div
@@ -91,7 +93,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
-          className='filter-box'
+          className={filterInputClasses}
           placeholder={filterPlaceholder}
           onChange={() => this.handleChange()}
           onBlur={() => this.handleOnBlur()}

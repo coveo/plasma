@@ -22,6 +22,10 @@ export class FilterBoxExamples extends React.Component<any, any> {
           <label className='form-control-label'>Filter box with title reflecting the input value</label>
           <FilterBox id='FilterBoxExampleComponentWithTitle' filterPlaceholder='Filter' withTitleOnInput={true} />
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Filter box with truncate</label>
+          <FilterBox id='FilterBoxExampleComponentWithTruncate' filterPlaceholder='Long filter placeholder' truncate={true} />
+        </div>
       </div>
     );
   }
