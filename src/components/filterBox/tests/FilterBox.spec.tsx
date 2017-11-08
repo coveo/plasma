@@ -194,5 +194,30 @@ describe('FilterBox', () => {
         expect(filterBox.find('.filter-box').prop('style')).toEqual({ maxWidth: '130px' });
       });
     });
+
+    describe('truncate', () => {
+      it('should not add the "truncate" class to the filter input if it is not set', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(false);
+      });
+
+      it('should add the "truncate" class to the filter input if it is true', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+            truncate={true}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(true);
+      });
+    });
   });
 });
