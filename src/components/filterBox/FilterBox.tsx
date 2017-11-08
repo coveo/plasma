@@ -82,7 +82,6 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
     const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
 
-
     return (
       <div
         id={this.props.id}
