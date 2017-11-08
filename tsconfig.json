@@ -11,15 +11,7 @@
     "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "ES5",
-    "typeRoots": [
-      "types"
-    ],
-    // Required for WebPack since typeRoots does not look to be supported, works fine without it when using tsc..
-    "types": [
-      "react-tether",
-      "webpack-env"
-    ]
+    "target": "ES5"
   },
   "include": [
     "src/**/*.tsx",
