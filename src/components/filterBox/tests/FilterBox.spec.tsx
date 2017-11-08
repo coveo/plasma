@@ -156,5 +156,68 @@ describe('FilterBox', () => {
 
       expect(placeCursorAtEndOfInputValueSpy).toHaveBeenCalledTimes(1);
     });
+
+    describe('withTitleOnInput', () => {
+      beforeEach(() => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+            withTitleOnInput={true}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+      });
+
+      it('should not have a title on the input container if the input has a value in it', () => {
+        expect(filterBox.find('.filter-container').prop('title')).toBeUndefined();
+      });
+
+      it('should have a title on the input container if the input has a value in it', () => {
+        (filterBox.find('.filter-box').get(0) as any).value = 'test';
+        filterBox.update();
+
+        expect(filterBox.find('.filter-container').prop('title')).toBe('test');
+      });
+    });
+
+    describe('maxWidth', () => {
+      it('should set a max width in px on the filter container and the filter input when max width is set', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+            maxWidth={130}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-container').prop('style')).toEqual({ maxWidth: '130px' });
+        expect(filterBox.find('.filter-box').prop('style')).toEqual({ maxWidth: '130px' });
+      });
+    });
+
+    describe('truncate', () => {
+      it('should not add the "truncate" class to the filter input if it is not set', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(false);
+      });
+
+      it('should add the "truncate" class to the filter input if it is true', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+            truncate={true}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(true);
+      });
+    });
   });
 });

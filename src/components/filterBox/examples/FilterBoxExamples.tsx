@@ -14,6 +14,18 @@ export class FilterBoxExamples extends React.Component<any, any> {
           <label className='form-control-label'>Filter box with custom placeholder</label>
           <FilterBox id='FilterBoxExampleComponentWithPlaceholder' filterPlaceholder='Filter through results' />
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Filter box with max width</label>
+          <FilterBox id='FilterBoxExampleComponentWithMaxWidth' filterPlaceholder='Filter' maxWidth={160} />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Filter box with title reflecting the input value</label>
+          <FilterBox id='FilterBoxExampleComponentWithTitle' filterPlaceholder='Filter' withTitleOnInput={true} />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Filter box with truncate</label>
+          <FilterBox id='FilterBoxExampleComponentWithTruncate' filterPlaceholder='Long filter placeholder' truncate={true} />
+        </div>
       </div>
     );
   }
