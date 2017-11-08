@@ -78,10 +78,10 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
   }
 
   render() {
-    let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-    let filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
-
     const inputMaxWidth = { maxWidth: `${this.props.maxWidth}px` };
+    const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
+    const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
+
 
     return (
       <div
