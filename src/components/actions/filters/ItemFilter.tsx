@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Svg } from '../../svg/Svg';
-import {Tooltip, ITooltipProps} from '../../tooltip/Tooltip';
+import { Tooltip, ITooltipProps } from '../../tooltip/Tooltip';
 
 export interface IItemFilterProps extends React.ClassAttributes<ItemFilter> {
   label: string;
@@ -27,7 +27,9 @@ export class ItemFilter extends React.Component<IItemFilterProps, any> {
     }
 
     const itemFilter: JSX.Element = this.props.itemTooltipProps
-      ? <Tooltip {...this.props.itemTooltipProps}><span className='item-filter-item'>{itemFilterText}</span></Tooltip>
+      ? <Tooltip {...this.props.itemTooltipProps}>
+        <span className='item-filter-item'>{itemFilterText}</span>
+      </Tooltip>
       : <span className='item-filter-item'>{itemFilterText}</span>;
 
     return (

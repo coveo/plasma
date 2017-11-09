@@ -1,13 +1,13 @@
-import {IActionOptions} from './Action';
-import {ITooltipProps} from '../tooltip/Tooltip';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {PrimaryActionConnected} from './PrimaryActionConnected';
-import {PrimaryAction} from './PrimaryAction';
-import {SecondaryActionsConnected} from './SecondaryActionsConnected';
-import {SecondaryActions} from './SecondaryActions';
+import { IActionOptions } from './Action';
+import { ITooltipProps } from '../tooltip/Tooltip';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { PrimaryActionConnected } from './PrimaryActionConnected';
+import { PrimaryAction } from './PrimaryAction';
+import { SecondaryActionsConnected } from './SecondaryActionsConnected';
+import { SecondaryActions } from './SecondaryActions';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ItemFilter} from './filters/ItemFilter';
+import { ItemFilter } from './filters/ItemFilter';
 
 export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
   id?: string;
@@ -36,10 +36,15 @@ export interface IActionBarChildrenProps {
 }
 
 export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProps, IActionBarDispatchProps,
-  IActionBarChildrenProps {}
+  IActionBarChildrenProps { }
 
 export class ActionBar extends React.Component<IActionBarProps, any> {
-  static DEFAULT_ACTIONS_CONTAINER_CLASSES = ['coveo-table-actions-container', 'mod-cancel-header-padding', 'mod-border-bottom', 'mod-align-header'];
+  static DEFAULT_ACTIONS_CONTAINER_CLASSES = [
+    'coveo-table-actions-container',
+    'mod-cancel-header-padding',
+    'mod-border-bottom',
+    'mod-align-header',
+  ];
 
   private handleClear() {
     if (this.props.clearItemFilter) {
