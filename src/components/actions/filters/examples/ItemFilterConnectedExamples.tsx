@@ -43,6 +43,16 @@ export class ItemFilterConnectedExamples extends React.Component<any, any> {
             onClearItemFilter={() => alert('Item filter was cleared')}
           />
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Action bar with an item filter cropped on the left with Redux state and tooltip options</label>
+          <ActionBarConnected
+            id={ACTION_BAR_ID + '2'}
+            itemFilterLabel={ITEM_FILTER_LABEL}
+            itemTooltipProps={{title: 'tooltip', placement: 'top'}}
+            itemFilterCropLength={-10}
+            onClearItemFilter={() => alert('Item filter was cleared')}
+          />
+        </div>
       </div>
     );
   }

@@ -1,17 +1,21 @@
-import { IActionOptions } from './Action';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { PrimaryActionConnected } from './PrimaryActionConnected';
-import { PrimaryAction } from './PrimaryAction';
-import { SecondaryActionsConnected } from './SecondaryActionsConnected';
-import { SecondaryActions } from './SecondaryActions';
+import {IActionOptions} from './Action';
+import {ITooltipProps} from '../tooltip/Tooltip';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+import {PrimaryActionConnected} from './PrimaryActionConnected';
+import {PrimaryAction} from './PrimaryAction';
+import {SecondaryActionsConnected} from './SecondaryActionsConnected';
+import {SecondaryActions} from './SecondaryActions';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ItemFilter } from './filters/ItemFilter';
+import {ItemFilter} from './filters/ItemFilter';
 
 export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
   id?: string;
   itemFilterLabel?: string;
+  itemTooltipProps?: ITooltipProps;
   onClearItemFilter?: () => void;
+  extraContainerClasses?: string[];
+  removeDefaultContainerClasses?: boolean;
 }
 
 export interface IActionBarStateProps extends IReduxStatePossibleProps {
@@ -32,9 +36,10 @@ export interface IActionBarChildrenProps {
 }
 
 export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProps, IActionBarDispatchProps,
-  IActionBarChildrenProps { }
+  IActionBarChildrenProps {}
 
 export class ActionBar extends React.Component<IActionBarProps, any> {
+  static DEFAULT_ACTIONS_CONTAINER_CLASSES = ['coveo-table-actions-container', 'mod-cancel-header-padding', 'mod-border-bottom', 'mod-align-header'];
 
   private handleClear() {
     if (this.props.clearItemFilter) {
@@ -55,15 +60,16 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
   }
 
   render() {
-    let itemFilter: JSX.Element = this.props.itemFilter
+    const itemFilter: JSX.Element = this.props.itemFilter
       ? <ItemFilter
         label={this.props.itemFilterLabel}
         item={this.props.itemFilter}
+        itemTooltipProps={this.props.itemTooltipProps}
         onClear={() => this.handleClear()} crop={this.props.itemFilterCropLength}
       />
       : null;
 
-    let primaryActions: JSX.Element[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {
+    const primaryActions: JSX.Element[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {
       if (action.primary) {
         let primaryAction = this.props.withReduxState
           ? <PrimaryActionConnected action={action} parentId={this.props.id} />
@@ -72,7 +78,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       }
     });
 
-    let secondaryActions: IActionOptions[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions) => {
+    const secondaryActions: IActionOptions[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions) => {
       if (!action.primary) {
         return action;
       }
@@ -85,7 +91,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
         : <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />;
     }
 
-    let actions = primaryActions.length || secondaryActionsView || this.props.prompt
+    const actions = primaryActions.length || secondaryActionsView || this.props.prompt
       ? (<div className='coveo-table-actions'>
         {primaryActions}
         {secondaryActionsView}
@@ -93,8 +99,12 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       </div>)
       : null;
 
+    const containerClasses = _.isUndefined(this.props.removeDefaultContainerClasses) || !this.props.removeDefaultContainerClasses
+      ? [...ActionBar.DEFAULT_ACTIONS_CONTAINER_CLASSES, ...(this.props.extraContainerClasses || [])].join(' ')
+      : (this.props.extraContainerClasses || []).join(' ');
+
     return (
-      <div className='coveo-table-actions-container mod-cancel-header-padding mod-border-bottom mod-align-header'>
+      <div className={containerClasses}>
         {itemFilter}
         {actions}
         {this.props.children}
