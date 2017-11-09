@@ -9,6 +9,13 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { ItemFilter } from './filters/ItemFilter';
 
+export const DEFAULT_ACTIONS_CONTAINER_CLASSES = [
+  'coveo-table-actions-container',
+  'mod-cancel-header-padding',
+  'mod-border-bottom',
+  'mod-align-header',
+];
+
 export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
   id?: string;
   itemFilterLabel?: string;
@@ -39,12 +46,7 @@ export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProp
   IActionBarChildrenProps { }
 
 export class ActionBar extends React.Component<IActionBarProps, any> {
-  static DEFAULT_ACTIONS_CONTAINER_CLASSES = [
-    'coveo-table-actions-container',
-    'mod-cancel-header-padding',
-    'mod-border-bottom',
-    'mod-align-header',
-  ];
+  private DEFAULT_ACTIONS_CONTAINER_CLASSES: string[] = DEFAULT_ACTIONS_CONTAINER_CLASSES;
 
   private handleClear() {
     if (this.props.clearItemFilter) {
@@ -105,7 +107,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       : null;
 
     const containerClasses = _.isUndefined(this.props.removeDefaultContainerClasses) || !this.props.removeDefaultContainerClasses
-      ? [...ActionBar.DEFAULT_ACTIONS_CONTAINER_CLASSES, ...(this.props.extraContainerClasses || [])].join(' ')
+      ? [...this.DEFAULT_ACTIONS_CONTAINER_CLASSES, ...(this.props.extraContainerClasses || [])].join(' ')
       : (this.props.extraContainerClasses || []).join(' ');
 
     return (

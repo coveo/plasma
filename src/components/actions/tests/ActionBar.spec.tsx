@@ -1,6 +1,6 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { IActionOptions } from '../Action';
-import { ActionBar, IActionBarProps } from '../ActionBar';
+import { ActionBar, IActionBarProps, DEFAULT_ACTIONS_CONTAINER_CLASSES } from '../ActionBar';
 import { InlinePrompt, IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
@@ -135,21 +135,21 @@ describe('Actions', () => {
 
     describe('removeDefaultContainerClasses', () => {
       it('should leave the default container classes if it is not set', () => {
-        ActionBar.DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
           expect(actionBar.find('div').first().hasClass(className)).toBe(true);
         });
       });
 
       it('should leave the default container classes if it is set to false', () => {
         actionBar.setProps({ removeDefaultContainerClasses: false });
-        ActionBar.DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
           expect(actionBar.find('div').first().hasClass(className)).toBe(true);
         });
       });
 
       it('should remove the default container classes if it is set to true', () => {
         actionBar.setProps({ removeDefaultContainerClasses: true });
-        ActionBar.DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
           expect(actionBar.find('div').first().hasClass(className)).toBe(false);
         });
       });
