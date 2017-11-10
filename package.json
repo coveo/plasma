@@ -97,7 +97,7 @@
     "karma-phantomjs-launcher": "1.0.4",
     "karma-source-map-support": "1.2.0",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "2.0.5",
+    "karma-webpack": "2.0.6",
     "merge-stream": "1.0.1",
     "moment": "2.19.1",
     "node-sass": "4.5.3",
