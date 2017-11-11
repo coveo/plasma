@@ -99,7 +99,7 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.5",
     "merge-stream": "1.0.1",
-    "moment": "2.19.1",
+    "moment": "2.19.2",
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.8",
     "pre-commit": "1.2.2",
