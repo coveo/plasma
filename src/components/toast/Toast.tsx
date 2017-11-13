@@ -24,7 +24,7 @@ export const ToastType = {
 };
 
 export class Toast extends React.Component<IToastProps, {}> {
-  private timeout: number;
+  private timeout: NodeJS.Timer;
 
   componentWillMount() {
     if (this.props.onRender) {
