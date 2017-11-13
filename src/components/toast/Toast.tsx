@@ -10,6 +10,7 @@ export interface IToastProps {
   isOpened?: boolean;
   type?: string;
   dismiss?: number;
+  dismissible?: boolean;
   animate?: boolean;
   content?: ComponentContent;
   onRender?: () => void;
@@ -25,6 +26,10 @@ export const ToastType = {
 
 export class Toast extends React.Component<IToastProps, {}> {
   private timeout: number;
+
+  static defaultProps: Partial<IToastProps> = {
+    dismissible: true,
+  };
 
   componentWillMount() {
     if (this.props.onRender) {
@@ -45,7 +50,7 @@ export class Toast extends React.Component<IToastProps, {}> {
   }
 
   private setTimeout() {
-    if (this.props.dismiss > 0) {
+    if (this.props.dismissible !== false && this.props.dismiss > 0) {
       this.timeout = setTimeout(() => this.close(), this.props.dismiss);
     }
   }
@@ -70,9 +75,9 @@ export class Toast extends React.Component<IToastProps, {}> {
 
     return (
       <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
-        <span className='toast-close' onClick={() => this.close()}>
+        {this.props.dismissible && <span className='toast-close' onClick={() => this.close()}>
           <Svg svgName='close' className='icon mod-lg fill-pure-white' />
-        </span>
+        </span>}
         <div className='toast-title'>{this.props.title}</div>
         {!!this.props.content
           ? <div className='toast-description'>{
