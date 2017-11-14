@@ -42,7 +42,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
 
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>Dropdown List</h1>
+        <h1 className='text-blue mb1 bold'>Dropdown List</h1>
 
         <div className='form-group'>
           <label className='form-control-label'>Multiselect Dropdown</label>

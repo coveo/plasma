@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {Svg} from '../Svg';
+import { Svg } from '../Svg';
 
 export class SvgExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>Svg List</h1>
+        <h1 className='text-blue mb1 bold'>Svg List</h1>
         <div className='form-group'>
           <label className='form-control-label'>
             Include an SVG

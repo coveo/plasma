@@ -1,10 +1,10 @@
-import {shallow, mount, ReactWrapper} from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {ILinkSvgProps, LinkSvg} from '../LinkSvg';
-import {Svg} from '../Svg';
-import {Tooltip} from '../../tooltip/Tooltip';
+import { ILinkSvgProps, LinkSvg } from '../LinkSvg';
+import { Svg } from '../Svg';
+import { Tooltip } from '../../tooltip/Tooltip';
 
 describe('<LinkSvg>', () => {
   let linkSvgComponent: ReactWrapper<ILinkSvgProps, any>;
@@ -28,7 +28,7 @@ describe('<LinkSvg>', () => {
     expect(() => {
       linkSvgComponent = mount(
         <LinkSvg {...linkSvgProps} />,
-        {attachTo: document.getElementById('App')},
+        { attachTo: document.getElementById('App') },
       );
     }).not.toThrow();
 
@@ -46,8 +46,8 @@ describe('<LinkSvg>', () => {
 
     const renderLinkSvg = (props: Partial<ILinkSvgProps> = {}) => {
       linkSvgComponent = mount(
-        <LinkSvg {..._.defaults(props, linkSvgProps)} />,
-        {attachTo: document.getElementById('App')},
+        <LinkSvg {..._.defaults(props, linkSvgProps) } />,
+        { attachTo: document.getElementById('App') },
       );
     };
 
@@ -58,18 +58,18 @@ describe('<LinkSvg>', () => {
     });
 
     it('should set the target on <a>', () => {
-      renderLinkSvg({link: {url: 'test', target: '_blank'}});
+      renderLinkSvg({ link: { url: 'test', target: '_blank' } });
 
       expect(linkSvgComponent.find(`a[target="_blank"]`).length).toBe(1);
     });
 
     it('should add custom class with linkClasses on <a>', () => {
       renderLinkSvg({
-          link: {
-            url: 'www.google.ca',
-          },
-          linkClasses: ['test', 'test1'],
+        link: {
+          url: 'www.google.ca',
         },
+        linkClasses: ['test', 'test1'],
+      },
       );
 
       const element = linkSvgComponent.find('a');
@@ -78,7 +78,7 @@ describe('<LinkSvg>', () => {
     });
 
     it('should add custom class with linkClasses on <a>', () => {
-      renderLinkSvg({linkClasses: ['test', 'test1']});
+      renderLinkSvg({ linkClasses: ['test', 'test1'] });
 
       const element = linkSvgComponent.find('a');
       expect(element.hasClass('test')).toBe(true);
