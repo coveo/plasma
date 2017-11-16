@@ -50,7 +50,7 @@ export class Toast extends React.Component<IToastProps, {}> {
   }
 
   private setTimeout() {
-    if (this.props.dismissible !== false && this.props.dismiss > 0) {
+    if (this.props.dismissible && this.props.dismiss > 0) {
       this.timeout = setTimeout(() => this.close(), this.props.dismiss);
     }
   }
