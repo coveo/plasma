@@ -1,5 +1,5 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableRowActionPayload, TableRowActions} from '../TableRowActions';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { ITableRowActionPayload, TableRowActions } from '../TableRowActions';
 import {
   ITableRowState,
   tableRowsReducer,
@@ -106,9 +106,9 @@ describe('Tables', () => {
       beforeEach(() => {
         openValue = false;
         oldState = [
-          {id: 'row2', opened: openValue, selected: false},
-          {id: 'row3', opened: openValue, selected: false},
-          {id: 'row1', opened: openValue, selected: false},
+          { id: 'row2', opened: openValue, selected: false },
+          { id: 'row3', opened: openValue, selected: false },
+          { id: 'row1', opened: openValue, selected: false },
         ];
       });
 
@@ -174,7 +174,7 @@ describe('Tables', () => {
       describe('selected behavior', () => {
         const actionMaker = (rowId: string): IReduxAction<ITableRowActionPayload> => ({
           type: TableRowActions.toggle,
-          payload: {id: rowId},
+          payload: { id: rowId },
         });
 
         let oldState: ITableRowState[];
@@ -183,9 +183,9 @@ describe('Tables', () => {
           const doesNotMatter = false;
           openValue = false;
           oldState = [
-            {id: 'row2', opened: doesNotMatter, selected: false},
-            {id: 'row3', opened: doesNotMatter, selected: false},
-            {id: 'row1', opened: doesNotMatter, selected: false},
+            { id: 'row2', opened: doesNotMatter, selected: false },
+            { id: 'row3', opened: doesNotMatter, selected: false },
+            { id: 'row1', opened: doesNotMatter, selected: false },
           ];
         });
 
