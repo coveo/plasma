@@ -83,6 +83,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
     const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
     const filterInputClasses = classNames('filter-box', { 'truncate': this.props.truncate });
+    const svgClearClasses = classNames({ 'hidden': !(this.filterInput && this.filterInput.value) });
 
     return (
       <div
@@ -104,7 +105,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
           autoFocus={this.props.isAutoFocus}
         />
-        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
+        <Svg svgName='clear' className={svgClearClasses} svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
         <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
       </div>
     );
