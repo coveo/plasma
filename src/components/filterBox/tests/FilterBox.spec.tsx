@@ -98,6 +98,26 @@ describe('FilterBox', () => {
       expect(clearIcon.hasClass('hidden')).toBe(true);
     });
 
+    it('should remove the hidden class of the clear icon if there is a value in the input without a change event', () => {
+      const clearIcon = filterBox.find('span').first();
+
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+
+      filterBoxInstance.filterInput.value = 'non empty';
+      filterBox.update();
+
+      expect(clearIcon.hasClass('hidden')).toBe(false);
+    });
+
+    it('should leave the hidden class of the clear icon if there is an empty value in the input without a change event', () => {
+      const clearIcon = filterBox.find('span').first();
+
+      filterBoxInstance.filterInput.value = '';
+      filterBox.update();
+
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+    });
+
     it('should clear the filter input when clicking the clear icon', () => {
       let clearIcon = filterBox.find('span').first();
 
