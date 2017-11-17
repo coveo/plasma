@@ -57,9 +57,17 @@
   min-height: 100vh;
 }
 
-.full-content {
+.full-content-x {
   width: 100%;
+}
+
+.full-content-y {
   height: 100%;
+}
+
+.full-content {
+  @extend .full-content-x;
+  @extend .full-content-y;
 }
 
 .hidden {
