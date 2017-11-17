@@ -5,14 +5,14 @@ import {
   DatePickerActions,
   IChangeDatePickerPayload,
   DateLimits,
-  ISelectDatePickerPayload
+  ISelectDatePickerPayload,
 } from '../DatePickerActions';
 import {
   IDatePickerState,
   datePickersReducer,
   datePickersInitialState,
   datePickerInitialState,
-  datePickerReducer
+  datePickerReducer,
 } from '../DatePickerReducers';
 import * as _ from 'underscore';
 
@@ -21,8 +21,8 @@ describe('Date picker', () => {
   const GENERIC_ACTION: IReduxAction<IDatePickerPayload> = {
     type: 'DO_SOMETHING',
     payload: {
-      id: 'some-date-picker'
-    }
+      id: 'some-date-picker',
+    },
   };
 
   const BASE_DATE_PICKER_STATE: IDatePickerState = {
@@ -34,7 +34,7 @@ describe('Date picker', () => {
     upperLimit: new Date(new Date().setHours(3, 2, 1, 2)),
     selected: '',
     appliedLowerLimit: new Date(new Date().setHours(0, 0, 0, 0)),
-    appliedUpperLimit: new Date(new Date().setHours(23, 59, 59, 999))
+    appliedUpperLimit: new Date(new Date().setHours(23, 59, 59, 999)),
   };
 
   describe('datePickersReducer', () => {
@@ -60,8 +60,8 @@ describe('Date picker', () => {
           id: 'some-date-picker',
           isRange: true,
           calendarId: 'calendar-321',
-          color: 'magenta'
-        }
+          color: 'magenta',
+        },
       };
       let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
 
@@ -82,13 +82,13 @@ describe('Date picker', () => {
       let oldState: IDatePickerState[] = [
         _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
         _.extend({}, BASE_DATE_PICKER_STATE),
-        _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' })
+        _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' }),
       ];
       let action: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.remove,
         payload: {
-          id: 'some-date-picker'
-        }
+          id: 'some-date-picker',
+        },
       };
       let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
 
@@ -110,13 +110,13 @@ describe('Date picker', () => {
         let oldState: IDatePickerState[] = [
           _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
           _.extend({}, BASE_DATE_PICKER_STATE),
-          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' })
+          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' }),
         ];
         let action: IReduxAction<IDatePickerPayload> = {
           type: DatePickerActions.remove,
           payload: {
-            id: 'some-date-picker4'
-          }
+            id: 'some-date-picker4',
+          },
         };
         let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
 
@@ -129,13 +129,13 @@ describe('Date picker', () => {
       let oldState: IDatePickerState[] = [
         _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
         _.extend({}, BASE_DATE_PICKER_STATE),
-        _.extend({}, BASE_DATE_PICKER_STATE, { id: 'other-id' })
+        _.extend({}, BASE_DATE_PICKER_STATE, { id: 'other-id' }),
       ];
       let action: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.reset,
         payload: {
-          id: 'some-date-picker'
-        }
+          id: 'some-date-picker',
+        },
       };
       let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
 
@@ -156,13 +156,13 @@ describe('Date picker', () => {
       let oldState: IDatePickerState[] = [
         _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
         _.extend({}, BASE_DATE_PICKER_STATE),
-        _.extend({}, BASE_DATE_PICKER_STATE, { id: 'other-id' })
+        _.extend({}, BASE_DATE_PICKER_STATE, { id: 'other-id' }),
       ];
       let action: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.reset,
         payload: {
-          id: 'some-date-picker'
-        }
+          id: 'some-date-picker',
+        },
       };
       let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
 
@@ -184,14 +184,14 @@ describe('Date picker', () => {
         let oldState: IDatePickerState[] = [
           _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
           _.extend({}, BASE_DATE_PICKER_STATE),
-          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' })
+          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' }),
         ];
         let action: IReduxAction<IChangeDatePickerPayload> = {
           type: DatePickerActions.changeLowerLimit,
           payload: {
             id: 'some-date-picker',
-            date: new Date(new Date().setHours(4, 4, 4, 4))
-          }
+            date: new Date(new Date().setHours(4, 4, 4, 4)),
+          },
         };
         let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
         expect(_.findWhere(datePickersState, { id: action.payload.id }).lowerLimit).toBe(action.payload.date);
@@ -202,14 +202,14 @@ describe('Date picker', () => {
         let oldState: IDatePickerState[] = [
           _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
           _.extend({}, BASE_DATE_PICKER_STATE),
-          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' })
+          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' }),
         ];
         let action: IReduxAction<IChangeDatePickerPayload> = {
           type: DatePickerActions.changeUpperLimit,
           payload: {
             id: 'some-date-picker',
-            date: new Date(new Date().setHours(4, 4, 4, 4))
-          }
+            date: new Date(new Date().setHours(4, 4, 4, 4)),
+          },
         };
         let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
         expect(_.findWhere(datePickersState, { id: action.payload.id }).upperLimit).toBe(action.payload.date);
@@ -220,14 +220,14 @@ describe('Date picker', () => {
         let oldState: IDatePickerState[] = [
           _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker2' }),
           _.extend({}, BASE_DATE_PICKER_STATE),
-          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' })
+          _.extend({}, BASE_DATE_PICKER_STATE, { id: 'some-date-picker3' }),
         ];
         let action: IReduxAction<ISelectDatePickerPayload> = {
           type: DatePickerActions.select,
           payload: {
             id: 'some-date-picker',
-            limit: DateLimits.upper
-          }
+            limit: DateLimits.upper,
+          },
         };
         let datePickersState: IDatePickerState[] = datePickersReducer(oldState, action);
         expect(_.findWhere(datePickersState, { id: action.payload.id }).selected).toBe(action.payload.limit);
@@ -239,8 +239,8 @@ describe('Date picker', () => {
       let action: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.add,
         payload: {
-          id: 'some-date-picker'
-        }
+          id: 'some-date-picker',
+        },
       };
       datePickersReducer(datePickersInitialState, action);
 
@@ -271,8 +271,8 @@ describe('Date picker', () => {
           id: 'some-date-picker',
           isRange: true,
           color: 'rainbow',
-          calendarId: 'radnelac'
-        }
+          calendarId: 'radnelac',
+        },
       };
       let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -289,8 +289,8 @@ describe('Date picker', () => {
           type: DatePickerActions.changeLowerLimit,
           payload: {
             id: 'some-date-picker5',
-            date: new Date(new Date().setHours(3, 3, 3, 3))
-          }
+            date: new Date(new Date().setHours(3, 3, 3, 3)),
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -304,8 +304,8 @@ describe('Date picker', () => {
           type: DatePickerActions.changeUpperLimit,
           payload: {
             id: 'some-date-picker5',
-            date: new Date(new Date().setHours(3, 3, 3, 3))
-          }
+            date: new Date(new Date().setHours(3, 3, 3, 3)),
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -319,8 +319,8 @@ describe('Date picker', () => {
           type: DatePickerActions.changeLowerLimit,
           payload: {
             id: 'some-date-picker',
-            date: new Date(new Date().setHours(3, 3, 3, 3))
-          }
+            date: new Date(new Date().setHours(3, 3, 3, 3)),
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -334,8 +334,8 @@ describe('Date picker', () => {
           type: DatePickerActions.changeUpperLimit,
           payload: {
             id: 'some-date-picker',
-            date: new Date(new Date().setHours(3, 3, 3, 3))
-          }
+            date: new Date(new Date().setHours(3, 3, 3, 3)),
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -348,8 +348,8 @@ describe('Date picker', () => {
         let action: IReduxAction<IDatePickerPayload> = {
           type: DatePickerActions.reset,
           payload: {
-            id: 'date-picker'
-          }
+            id: 'date-picker',
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -363,8 +363,8 @@ describe('Date picker', () => {
         let action: IReduxAction<IDatePickerPayload> = {
           type: DatePickerActions.reset,
           payload: {
-            id: 'some-date'
-          }
+            id: 'some-date',
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -380,8 +380,8 @@ describe('Date picker', () => {
         let action: IReduxAction<IDatePickerPayload> = {
           type: DatePickerActions.apply,
           payload: {
-            id: 'date-picker'
-          }
+            id: 'date-picker',
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -395,8 +395,8 @@ describe('Date picker', () => {
         let action: IReduxAction<IDatePickerPayload> = {
           type: DatePickerActions.apply,
           payload: {
-            id: 'some-date'
-          }
+            id: 'some-date',
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -413,8 +413,8 @@ describe('Date picker', () => {
         let action: IReduxAction<IDatePickerPayload> = {
           type: DatePickerActions.apply,
           payload: {
-            id: 'some-date'
-          }
+            id: 'some-date',
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -430,13 +430,13 @@ describe('Date picker', () => {
           upperLimit: undefined,
           lowerLimit: undefined,
           appliedUpperLimit: new Date(new Date().setHours(2, 0, 1, 1)),
-          appliedLowerLimit: new Date(new Date().setHours(0, 0, 1, 1))
+          appliedLowerLimit: new Date(new Date().setHours(0, 0, 1, 1)),
         });
       let action: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.apply,
         payload: {
-          id: 'some-date'
-        }
+          id: 'some-date',
+        },
       };
       let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -451,8 +451,8 @@ describe('Date picker', () => {
           type: DatePickerActions.select,
           payload: {
             id: 'some-date-picker5',
-            limit: DateLimits.upper
-          }
+            limit: DateLimits.upper,
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -467,8 +467,8 @@ describe('Date picker', () => {
           type: DatePickerActions.select,
           payload: {
             id: 'some-date-picker',
-            limit: DateLimits.upper
-          }
+            limit: DateLimits.upper,
+          },
         };
         let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
@@ -482,12 +482,101 @@ describe('Date picker', () => {
         type: DatePickerActions.changeUpperLimit,
         payload: {
           id: 'some-date-picker',
-          date: new Date(new Date().setHours(3, 3, 3, 3))
-        }
+          date: new Date(new Date().setHours(3, 3, 3, 3)),
+        },
       };
       datePickerReducer(datePickerInitialState, action);
 
       expect(expectedState).toEqual(datePickerInitialState);
+    });
+
+    it('should return the appliedLowerLimit if the lowerLimit is not defined', () => {
+      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
+        lowerLimit: undefined,
+      });
+      let action: IReduxAction<IDatePickerPayload> = {
+        type: DatePickerActions.apply,
+        payload: {
+          id: 'some-date-picker',
+        },
+      };
+      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+
+      expect(datePickerState.appliedLowerLimit).toBe(oldState.appliedLowerLimit);
+    });
+
+    it('should return the lowerLimit if the lowerLimit is defined', () => {
+      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE);
+      let action: IReduxAction<IDatePickerPayload> = {
+        type: DatePickerActions.apply,
+        payload: {
+          id: 'some-date-picker',
+        },
+      };
+      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+
+      expect(datePickerState.lowerLimit).toBe(oldState.lowerLimit);
+    });
+
+    it('should return the appliedUpperLimit if the upperLimit and the lowerLimit is not defined', () => {
+      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
+        upperLimit: undefined,
+        lowerLimit: undefined,
+      });
+      let action: IReduxAction<IDatePickerPayload> = {
+        type: DatePickerActions.apply,
+        payload: {
+          id: 'some-date-picker',
+        },
+      };
+      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+
+      expect(datePickerState.appliedUpperLimit).toBe(oldState.appliedUpperLimit);
+    });
+
+    it('should return the upperLimit if its greater than the lowerLimit', () => {
+      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE);
+      let action: IReduxAction<IDatePickerPayload> = {
+        type: DatePickerActions.apply,
+        payload: {
+          id: 'some-date-picker',
+        },
+      };
+      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+
+      expect(datePickerState.appliedUpperLimit).toBe(oldState.upperLimit);
+    });
+
+    it('should return the lowerLimit if the upperLimit is smaller than the lowerLimit', () => {
+      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
+        lowerLimit: new Date().setHours(2, 1, 2, 1),
+        upperLimit: new Date().setHours(1, 1, 2, 1),
+      });
+      let action: IReduxAction<IDatePickerPayload> = {
+        type: DatePickerActions.apply,
+        payload: {
+          id: 'some-date-picker',
+        },
+      };
+      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+
+      expect(datePickerState.appliedUpperLimit).toBe(oldState.lowerLimit);
+    });
+
+    it('should return the lowerLimit if the upperLimit is equal than the lowerLimit', () => {
+      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
+        lowerLimit: new Date().setHours(1, 1, 2, 1),
+        upperLimit: new Date().setHours(1, 1, 2, 1),
+      });
+      let action: IReduxAction<IDatePickerPayload> = {
+        type: DatePickerActions.apply,
+        payload: {
+          id: 'some-date-picker',
+        },
+      };
+      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+
+      expect(datePickerState.appliedUpperLimit).toBe(oldState.upperLimit);
     });
   });
 });
