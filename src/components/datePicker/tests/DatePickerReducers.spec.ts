@@ -490,21 +490,6 @@ describe('Date picker', () => {
       expect(expectedState).toEqual(datePickerInitialState);
     });
 
-    it('should return the appliedLowerLimit if the lowerLimit is not defined', () => {
-      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
-        lowerLimit: undefined,
-      });
-      let action: IReduxAction<IDatePickerPayload> = {
-        type: DatePickerActions.apply,
-        payload: {
-          id: 'some-date-picker',
-        },
-      };
-      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
-
-      expect(datePickerState.appliedLowerLimit).toBe(oldState.appliedLowerLimit);
-    });
-
     describe('reducers for the action "APPLY_DATE"', () => {
 
       let action: IReduxAction<IDatePickerPayload>;
@@ -518,6 +503,15 @@ describe('Date picker', () => {
             id: 'some-date-picker',
           },
         };
+      });
+
+      it('should return the appliedLowerLimit if the lowerLimit is not defined', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
+          lowerLimit: undefined,
+        });
+        datePickerState = datePickerReducer(oldState, action);
+
+        expect(datePickerState.appliedLowerLimit).toBe(oldState.appliedLowerLimit);
       });
 
       it('should return the lowerLimit if the lowerLimit is defined', () => {
