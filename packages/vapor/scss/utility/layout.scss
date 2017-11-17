@@ -89,6 +89,10 @@
     overflow-y: auto;
 
     @extend .flex-auto;
+
+    &.mod-small-content {
+      height: auto;
+    }
   }
 
   .column + .column {
