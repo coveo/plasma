@@ -9,12 +9,24 @@
     height: 0.7em;
   }
 
-  &.mod-16 {
-    width: 16px;
-    height: 16px;
+  &.mod-normal {
+    width: 1em;
+    height: 1em;
+  }
 
+  &.mod-align-with-text {
     line-height: 16px;
     vertical-align: -2px;
+  }
+
+  @for $i from 5 through 15 {
+    $size: $i * 2;
+    &.mod-#{$size} {
+      width: $size;
+      height: $size;
+
+      @extend .mod-align-with-text;
+    }
   }
 
   /* makes the icon 33% larger relative to the icon container */
