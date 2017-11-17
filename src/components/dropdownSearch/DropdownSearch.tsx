@@ -28,6 +28,7 @@ export interface IDropdownSearchStateProps {
 export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownSearch> {
   id: string;
   modMenu?: boolean;
+  containerClasses?: string[];
   defaultOptions?: IDropdownOption[];
   defaultSelectedOption?: IDropdownOption;
   filterPlaceholder?: string;
@@ -369,7 +370,9 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
       {
         'open': this.props.isOpened,
         'mod-menu': this.props.modMenu,
-      });
+      },
+      ...(this.props.containerClasses || []),
+    );
   }
 
   getStyles() {
