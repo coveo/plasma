@@ -490,7 +490,7 @@ describe('Date picker', () => {
       expect(expectedState).toEqual(datePickerInitialState);
     });
 
-    describe('reducers for the action "APPLY_DATE"', () => {
+    describe('reducer for the action "APPLY_DATE"', () => {
 
       let action: IReduxAction<IDatePickerPayload>;
       let oldState: IDatePickerState;
