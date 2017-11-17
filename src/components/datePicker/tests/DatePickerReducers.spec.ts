@@ -505,78 +505,64 @@ describe('Date picker', () => {
       expect(datePickerState.appliedLowerLimit).toBe(oldState.appliedLowerLimit);
     });
 
-    it('should return the lowerLimit if the lowerLimit is defined', () => {
-      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE);
-      let action: IReduxAction<IDatePickerPayload> = {
-        type: DatePickerActions.apply,
-        payload: {
-          id: 'some-date-picker',
-        },
-      };
-      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+    describe('reducers for the action "APPLY_DATE"', () => {
 
-      expect(datePickerState.lowerLimit).toBe(oldState.lowerLimit);
-    });
+      let action: IReduxAction<IDatePickerPayload>;
+      let oldState: IDatePickerState;
+      let datePickerState: IDatePickerState;
 
-    it('should return the appliedUpperLimit if the upperLimit and the lowerLimit is not defined', () => {
-      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
-        upperLimit: undefined,
-        lowerLimit: undefined,
+      beforeEach(() => {
+        action = {
+          type: DatePickerActions.apply,
+          payload: {
+            id: 'some-date-picker',
+          },
+        };
       });
-      let action: IReduxAction<IDatePickerPayload> = {
-        type: DatePickerActions.apply,
-        payload: {
-          id: 'some-date-picker',
-        },
-      };
-      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
-      expect(datePickerState.appliedUpperLimit).toBe(oldState.appliedUpperLimit);
-    });
+      it('should return the lowerLimit if the lowerLimit is defined', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE);
+        datePickerState = datePickerReducer(oldState, action);
 
-    it('should return the upperLimit if its greater than the lowerLimit', () => {
-      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE);
-      let action: IReduxAction<IDatePickerPayload> = {
-        type: DatePickerActions.apply,
-        payload: {
-          id: 'some-date-picker',
-        },
-      };
-      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
-
-      expect(datePickerState.appliedUpperLimit).toBe(oldState.upperLimit);
-    });
-
-    it('should return the lowerLimit if the upperLimit is smaller than the lowerLimit', () => {
-      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
-        lowerLimit: new Date().setHours(2, 1, 2, 1),
-        upperLimit: new Date().setHours(1, 1, 2, 1),
+        expect(datePickerState.lowerLimit).toBe(oldState.lowerLimit);
       });
-      let action: IReduxAction<IDatePickerPayload> = {
-        type: DatePickerActions.apply,
-        payload: {
-          id: 'some-date-picker',
-        },
-      };
-      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
-      expect(datePickerState.appliedUpperLimit).toBe(oldState.lowerLimit);
-    });
+      it('should return the appliedUpperLimit if the upperLimit and the lowerLimit are not defined', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
+          upperLimit: undefined,
+          lowerLimit: undefined,
+        });
+        datePickerState = datePickerReducer(oldState, action);
 
-    it('should return the lowerLimit if the upperLimit is equal than the lowerLimit', () => {
-      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
-        lowerLimit: new Date().setHours(1, 1, 2, 1),
-        upperLimit: new Date().setHours(1, 1, 2, 1),
+        expect(datePickerState.appliedUpperLimit).toBe(oldState.appliedUpperLimit);
       });
-      let action: IReduxAction<IDatePickerPayload> = {
-        type: DatePickerActions.apply,
-        payload: {
-          id: 'some-date-picker',
-        },
-      };
-      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
-      expect(datePickerState.appliedUpperLimit).toBe(oldState.lowerLimit);
+      it('should return the upperLimit if its greater than the lowerLimit', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE);
+        datePickerState = datePickerReducer(oldState, action);
+
+        expect(datePickerState.appliedUpperLimit).toBe(oldState.upperLimit);
+      });
+
+      it('should return the lowerLimit if the upperLimit is smaller than the lowerLimit', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
+          lowerLimit: new Date().setHours(2, 1, 2, 1),
+          upperLimit: new Date().setHours(1, 1, 2, 1),
+        });
+        datePickerState = datePickerReducer(oldState, action);
+
+        expect(datePickerState.appliedUpperLimit).toBe(oldState.lowerLimit);
+      });
+
+      it('should return the lowerLimit if the upperLimit is equal than the lowerLimit', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
+          lowerLimit: new Date().setHours(1, 1, 2, 1),
+          upperLimit: new Date().setHours(1, 1, 2, 1),
+        });
+        datePickerState = datePickerReducer(oldState, action);
+
+        expect(datePickerState.appliedUpperLimit).toBe(oldState.lowerLimit);
+      });
     });
   });
 });
