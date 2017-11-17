@@ -8,6 +8,7 @@ export const TableRowActions = {
 
 export interface ITableRowActionPayload {
   id: string;
+  isCollapsible?: boolean;
 }
 
 export const addRow = (id: string): IReduxAction<ITableRowActionPayload> => ({
@@ -24,9 +25,10 @@ export const removeRow = (id: string): IReduxAction<ITableRowActionPayload> => (
   }
 });
 
-export const toggleRow = (id: string): IReduxAction<ITableRowActionPayload> => ({
+export const toggleRow = (id: string, isCollapsible?: boolean): IReduxAction<ITableRowActionPayload> => ({
   type: TableRowActions.toggle,
   payload: {
-    id
+    id,
+    isCollapsible,
   }
 });

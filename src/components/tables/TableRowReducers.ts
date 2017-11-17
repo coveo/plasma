@@ -6,9 +6,10 @@ import * as _ from 'underscore';
 export interface ITableRowState {
   id: string;
   opened: boolean;
+  selected: boolean;
 }
 
-export const tableRowInitialState: ITableRowState = { id: undefined, opened: undefined };
+export const tableRowInitialState: ITableRowState = { id: undefined, opened: undefined, selected: undefined };
 export const tableRowsInitialState: ITableRowState[] = [];
 
 export const tableRowReducer = (state: ITableRowState = tableRowInitialState, action: IReduxAction<IReduxActionsPayload>): ITableRowState => {
@@ -16,16 +17,19 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
     case TableRowActions.add:
       return {
         id: action.payload.id,
-        opened: false
+        opened: false,
+        selected: false,
       };
     case TableRowActions.toggle:
       if (state.id !== action.payload.id) {
         return _.extend({}, state, {
-          opened: false
+          opened: action.payload.isCollapsible && false,
+          selected: false,
         });
       }
       return _.extend({}, state, {
-        opened: !state.opened
+        opened: action.payload.isCollapsible && !state.opened,
+        selected: true,
       });
     default:
       return state;

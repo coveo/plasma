@@ -8,29 +8,24 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnProps) => {
-  let item: ITableRowState = _.findWhere(state.rows, { id: ownProps.id });
+  const item: ITableRowState = _.findWhere(state.rows, { id: ownProps.id });
 
   return {
-    opened: item && item.opened
+    opened: item && item.opened,
+    selected: item && item.selected,
   };
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ITableHeadingRowOwnProps) => ({
     onClick: () => {
-      if (ownProps.isCollapsible) {
-        dispatch(toggleRow(ownProps.id));
-      }
+      dispatch(toggleRow(ownProps.id, ownProps.isCollapsible));
     },
     onRender: () => {
-      if (ownProps.isCollapsible) {
-        dispatch(addRow(ownProps.id));
-      }
+      dispatch(addRow(ownProps.id));
     },
     onDestroy: () => {
-      if (ownProps.isCollapsible) {
-        dispatch(removeRow(ownProps.id));
-      }
+      dispatch(removeRow(ownProps.id));
     }
   });
 
