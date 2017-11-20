@@ -99,36 +99,124 @@ describe('Tables', () => {
       expect(collapsibleRowsState.filter(row => row.id === action.payload.id).length).toBe(0);
     });
 
-    it('should toggle the open property value of a collapsible row when the action is "TOGGLE_ROW"', () => {
-      let openValue = false;
-      let oldState: ITableRowState[] = [
-        {
-          id: 'row2',
-          opened: openValue
-        }, {
-          id: 'row1',
-          opened: openValue
-        }, {
-          id: 'row3',
-          opened: openValue
-        }
-      ];
-      let action: IReduxAction<ITableRowActionPayload> = {
-        type: TableRowActions.toggle,
-        payload: {
-          id: 'row1'
-        }
-      };
-      let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
+    describe('collapsible behaviors', () => {
+      let oldState: ITableRowState[];
+      let openValue: boolean;
 
-      expect(collapsibleRowsState.length).toBe(oldState.length);
-      expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(!openValue);
-      expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(openValue);
+      beforeEach(() => {
+        openValue = false;
+        oldState = [
+          { id: 'row2', opened: openValue, selected: false },
+          { id: 'row3', opened: openValue, selected: false },
+          { id: 'row1', opened: openValue, selected: false },
+        ];
+      });
 
-      collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
+      it('should toggle the open property if the action is "SELECT_ROW" and isCollapsible is true', () => {
+        const action: IReduxAction<ITableRowActionPayload> = {
+          type: TableRowActions.select,
+          payload: {
+            id: 'row1',
+            isCollapsible: true,
+          }
+        };
+        let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
-      expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(openValue);
-      expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(openValue);
+        expect(collapsibleRowsState.length).toBe(oldState.length);
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(!openValue);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(openValue);
+
+        collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
+
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(openValue);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(openValue);
+      });
+
+      it('should leave the open property to a falsy value if the action is "SELECT_ROW" and isCollapsible is undefined', () => {
+        const action: IReduxAction<ITableRowActionPayload> = {
+          type: TableRowActions.select,
+          payload: {
+            id: 'row1',
+          }
+        };
+        let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
+
+        expect(collapsibleRowsState.length).toBe(oldState.length);
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+
+        collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
+
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+      });
+
+      it('should leave the open property to a falsy value if the action is "SELECT_ROW" and isCollapsible is false', () => {
+        const action: IReduxAction<ITableRowActionPayload> = {
+          type: TableRowActions.select,
+          payload: {
+            id: 'row1',
+            isCollapsible: false,
+          }
+        };
+        let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
+
+        expect(collapsibleRowsState.length).toBe(oldState.length);
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+
+        collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
+
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+      });
+
+      describe('selected behavior', () => {
+        const actionMaker = (rowId: string): IReduxAction<ITableRowActionPayload> => ({
+          type: TableRowActions.select,
+          payload: { id: rowId },
+        });
+
+        let oldState: ITableRowState[];
+
+        beforeEach(() => {
+          const doesNotMatter = false;
+          openValue = false;
+          oldState = [
+            { id: 'row2', opened: doesNotMatter, selected: false },
+            { id: 'row3', opened: doesNotMatter, selected: false },
+            { id: 'row1', opened: doesNotMatter, selected: false },
+          ];
+        });
+
+        it('should select the row with the corresponding id and leave the rest unselected', () => {
+          const action = actionMaker('row2');
+          const rowsState = tableRowsReducer(oldState, action);
+
+          expect(rowsState.filter(row => row.id === action.payload.id)[0].selected).toBe(true);
+          expect(rowsState.filter(row => row.id !== action.payload.id).every(row => !row.selected))
+            .toBe(true);
+        });
+
+        it('should preserve the same selected row if you perform the exact same toggle action twice', () => {
+          const action = actionMaker('row2');
+          const rowsState = tableRowsReducer(tableRowsReducer(oldState, action), action);
+
+          expect(rowsState.filter(row => row.id === action.payload.id)[0].selected).toBe(true);
+          expect(rowsState.filter(row => row.id !== action.payload.id).every(row => !row.selected))
+            .toBe(true);
+        });
+
+        it('should select a new row on the second time the toggle action is performed with a new row id', () => {
+          const action1 = actionMaker('row1');
+          const action2 = actionMaker('row2');
+          const rowsState = tableRowsReducer(tableRowsReducer(oldState, action1), action2);
+
+          expect(rowsState.filter(row => row.id === action2.payload.id)[0].selected).toBe(true);
+          expect(rowsState.filter(row => row.id !== action2.payload.id).every(row => !row.selected))
+            .toBe(true);
+        });
+      });
     });
   });
 });
