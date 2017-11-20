@@ -19,9 +19,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ITableHeadingRowOwnProps) => ({
     onClick: () => {
-      if (ownProps.isCollapsible) {
-        dispatch(selectRow(ownProps.id, ownProps.isCollapsible));
-      }
+      dispatch(selectRow(ownProps.id, ownProps.isCollapsible));
     },
     onRender: () => {
       dispatch(addRow(ownProps.id));
