@@ -1,7 +1,6 @@
 import { Table, ITableRowsData, ITableRowData, ITableData } from '../TableBase';
 import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
 import { TableCell } from '../TableHeadingRow';
-import { ActionBarConnected } from '../../actions/ActionBarConnected';
 import * as React from 'react';
 import * as _ from 'underscore';
 

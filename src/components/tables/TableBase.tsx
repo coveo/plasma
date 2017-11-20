@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import * as _ from 'underscore';
-import { TableHeadingRowConnected } from './TableHeadingRowConnected';
-import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { NavigationPerPageConnected } from '../navigation/perPage/NavigationPerPageConnected';
 import { INavigationPerPageProps } from '../navigation/perPage/NavigationPerPage';
 import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
@@ -17,11 +15,7 @@ import { ActionBarConnected } from '../actions/ActionBarConnected';
 import { IActionBarProps } from '../actions/ActionBar';
 import { ITableHeaderProps, TableHeader } from './TableHeader';
 import { IBlankSlateProps, BlankSlate } from '../blankSlate/BlankSlate';
-import { TableHeadingRowConnected } from './TableHeadingRowConnected';
-import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { TableRowWrapper } from './TableRowWrapper';
-
-const REST_PREDICATES_DEFAULT_CLASSES = ['ml1'];
 
 export interface IHeadingOrCollapsibleData {
   [attribute: string]: any;
@@ -43,7 +37,7 @@ export interface ITableData {
   displayedIds: string[];
 }
 
-export interface ITableOwnProps extends React.ClassAttributes<TableBase> {
+export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
   initialTableData: ITableData;
   rawDataReceivedOnFetchOrElseParser: (data: any) => ITableRowsData;
@@ -90,11 +84,11 @@ export class Table extends React.Component<ITableProps, any> {
   buildActionBar(): JSX.Element {
     const { actionBar, filter, predicates, styles } = this.props;
 
-    const filterBoxConnected: FilterBoxConnected = actionBar && filter
+    const filterBoxConnected: JSX.Element = actionBar && filter
       ? <FilterBoxConnected {...filter} />
       : null;
 
-    const predicatesConnected: DropdownSearchConnected = actionBar && predicates
+    const predicatesConnected: JSX.Element[] = actionBar && predicates
       ? predicates.map((predicateProps: IDropdownSearchProps, i: number) => <DropdownSearchConnected {...predicateProps} />)
       : null;
 
