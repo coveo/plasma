@@ -30,6 +30,11 @@ export { FacetConnected } from './components/facets/FacetConnected';
 export { facetsReducer } from './components/facets/FacetReducers';
 export { changeFacet, emptyFacet, FacetActions } from './components/facets/FacetActions';
 
+// FlatSelect
+export { FlatSelectOption } from './components/flatSelect/FlatSelectOption';
+export { FlatSelect } from './components/flatSelect/FlatSelect';
+export { FlatSelectStandalone } from './components/flatSelect/FlatSelectStandalone';
+
 // Loading
 export { Loading } from './components/loading/Loading';
 export { LoadingConnected } from './components/loading/LoadingConnected';
