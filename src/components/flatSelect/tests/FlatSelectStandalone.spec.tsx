@@ -27,6 +27,14 @@ describe('FlatSelectStandalone picker', () => {
         );
       }).not.toThrow();
     });
+
+    it('should throw when no option specified', () => {
+      expect(() => {
+        shallow(
+          <FlatSelectStandalone options={[]} />
+        );
+      }).toThrow();
+    });
   });
 
   describe('<FlatSelectStandalone />', () => {
