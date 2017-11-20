@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import * as _ from 'underscore';
-// import {TableHeadingRowConnected} from './TableHeadingRowConnected';
-// import {TableCollapsibleRowConnected} from './TableCollapsibleRowConnected';
+import { TableHeadingRowConnected } from './TableHeadingRowConnected';
+import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { NavigationPerPageConnected } from '../navigation/perPage/NavigationPerPageConnected';
 import { INavigationPerPageProps } from '../navigation/perPage/NavigationPerPage';
 import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
@@ -11,19 +11,51 @@ import { DropdownSearchConnected } from '../dropdownSearch/DropdownSearchConnect
 import { IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
 import { NavigationPaginationConnected } from '../navigation/pagination/NavigationPaginationConnected';
 import { INavigationPaginationProps } from '../navigation/pagination/NavigationPagination';
-import { ILastUpdatedProps, LastUpdated } from '../lastUpdated/LastUpdated';
+import { ILastUpdatedProps } from '../lastUpdated/LastUpdated';
+import { LastUpdatedConnected } from '../lastUpdated/LastUpdatedConnected';
 import { ActionBarConnected } from '../actions/ActionBarConnected';
 import { IActionBarProps } from '../actions/ActionBar';
 import { ITableHeaderProps, TableHeader } from './TableHeader';
-import { IBlankSlateProps } from '../blankSlate/BlankSlate';
+import { IBlankSlateProps, BlankSlate } from '../blankSlate/BlankSlate';
+import { TableHeadingRowConnected } from './TableHeadingRowConnected';
+import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
+import { TableRowWrapper } from './TableRowWrapper';
 
 const REST_PREDICATES_DEFAULT_CLASSES = ['ml1'];
 
-export interface ITableProps extends React.ClassAttributes<TableBase> {
+export interface IHeadingOrCollapsibleData {
+  [attribute: string]: any;
+};
+
+export interface ITableRowData {
   id: string;
+  headingData: IHeadingOrCollapsibleData;
+  collapsibleData?: IHeadingOrCollapsibleData;
+};
+
+export interface ITableRowsData {
+  [id: string]: ITableRowData;
+};
+
+export interface ITableData {
+  byId: ITableRowsData;
+  allIds: string[];
+  displayedIds: string[];
+}
+
+export interface ITableOwnProps extends React.ClassAttributes<TableBase> {
+  id: string;
+  initialTableData: ITableData;
+  rawDataReceivedOnFetchOrElseParser: (data: any) => ITableRowsData;
+  headingRowDataParser: (rowData: ITableRowData) => JSX.Element;
+  collapsibleRowDataParser?: (rowData: ITableRowData) => JSX.Element;
+};
+
+export interface ITableChildrenProps {
   blankSlates: {
     noResultsDefault: IBlankSlateProps;
     noResultsOnFilterOrPredicates?: IBlankSlateProps;
+    noResultsOnError?: IBlankSlateProps;
   };
   actionBar?: IActionBarProps;
   filter?: IFilterBoxProps;
@@ -42,6 +74,17 @@ export interface ITableProps extends React.ClassAttributes<TableBase> {
     navigationClasses?: string[];
   };
 }
+
+export interface ITableStateProps {
+  tableData?: ITableData;
+  hasPredicate?: boolean;
+  isFiltered?: boolean;
+  isInError?: boolean;
+  currentPerPage?: number;
+  currentPage?: number;
+};
+
+export interface ITableProps extends ITableOwnProps, ITableChildrenProps, ITableStateProps { }
 
 export class Table extends React.Component<ITableProps, any> {
   buildActionBar(): JSX.Element {
@@ -75,13 +118,58 @@ export class Table extends React.Component<ITableProps, any> {
       : null;
   }
 
+  buildTableBody(): JSX.Element[] {
+    const tableRowWrappers: JSX.Element[] = [];
+    const tableData = this.props.tableData || this.props.initialTableData;
+
+    tableData.displayedIds.forEach((id: string) => {
+      const rowData: ITableRowData = tableData.byId[id];
+      tableRowWrappers.push(
+        <TableRowWrapper key={rowData.id}>
+          {this.props.headingRowDataParser(rowData)}
+          {rowData.collapsibleData
+            ? this.props.collapsibleRowDataParser && this.props.collapsibleRowDataParser(rowData)
+            : null
+          }
+        </TableRowWrapper>
+      );
+    });
+
+    console.log(tableRowWrappers);
+    return tableRowWrappers;
+  }
+
+  buildBlankSlate(): JSX.Element {
+    const tableData = this.props.tableData || this.props.initialTableData;
+    const {
+      noResultsDefault,
+      noResultsOnFilterOrPredicates,
+      noResultsOnError,
+    } = this.props.blankSlates;
+
+    let blankSlatePropsToUse: IBlankSlateProps;
+
+    if (tableData.displayedIds.length || _.isEmpty(this.props.blankSlates)) {
+      return null;
+    }
+
+    if (this.props.isFiltered || this.props.hasPredicate) {
+      blankSlatePropsToUse = noResultsOnFilterOrPredicates || noResultsDefault;
+    } else if (this.props.isInError) {
+      blankSlatePropsToUse = noResultsOnError || noResultsDefault;
+    } else {
+      blankSlatePropsToUse = noResultsDefault;
+    }
+
+    return <BlankSlate {...blankSlatePropsToUse} />;
+  }
+
   buildNavigation(): JSX.Element {
     const { perPage, pagination, styles } = this.props;
 
     if (!perPage && !pagination) {
       return null;
     }
-
 
     const perPageConnected = perPage
       ? <NavigationPerPageConnected {...perPage} />
@@ -114,10 +202,11 @@ export class Table extends React.Component<ITableProps, any> {
         {this.buildActionBar()}
         <table className='mod-collapsible-rows'>
           {this.buildTableHeader()}
+          {this.buildTableBody()}
         </table>
+        {this.buildBlankSlate()}
         {this.buildNavigation()}
         {this.buildLastUpdated()}
-
       </div>
     );
   }
