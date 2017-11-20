@@ -2,7 +2,7 @@ import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { IReduxActionsPayload, IReactVaporState } from '../../ReactVapor';
 import { ITableHeadingRowOwnProps, TableHeadingRow, ITableHeadingRowProps } from './TableHeadingRow';
 import { ITableRowState } from './TableRowReducers';
-import { toggleRow, addRow, removeRow } from './TableRowActions';
+import { selectRow, addRow, removeRow } from './TableRowActions';
 import { connect } from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -19,7 +19,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ITableHeadingRowOwnProps) => ({
     onClick: () => {
-      dispatch(toggleRow(ownProps.id, ownProps.isCollapsible));
+      if (ownProps.isCollapsible) {
+        dispatch(selectRow(ownProps.id, ownProps.isCollapsible));
+      }
     },
     onRender: () => {
       dispatch(addRow(ownProps.id));

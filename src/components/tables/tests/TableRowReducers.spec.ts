@@ -112,9 +112,9 @@ describe('Tables', () => {
         ];
       });
 
-      it('should toggle the open property if the action is "TOGGLE_ROW" and isCollapsible is true', () => {
+      it('should toggle the open property if the action is "SELECT_ROW" and isCollapsible is true', () => {
         const action: IReduxAction<ITableRowActionPayload> = {
-          type: TableRowActions.toggle,
+          type: TableRowActions.select,
           payload: {
             id: 'row1',
             isCollapsible: true,
@@ -132,9 +132,9 @@ describe('Tables', () => {
         expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(openValue);
       });
 
-      it('should leave the open property to a falsy value if the action is "TOGGLE_ROW" and isCollapsible is undefined', () => {
+      it('should leave the open property to a falsy value if the action is "SELECT_ROW" and isCollapsible is undefined', () => {
         const action: IReduxAction<ITableRowActionPayload> = {
-          type: TableRowActions.toggle,
+          type: TableRowActions.select,
           payload: {
             id: 'row1',
           }
@@ -142,18 +142,18 @@ describe('Tables', () => {
         let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
         expect(collapsibleRowsState.length).toBe(oldState.length);
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBeUndefined();
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBeUndefined();
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
 
         collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
 
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBeUndefined();
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBeUndefined();
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
       });
 
-      it('should leave the open property to a falsy value if the action is "TOGGLE_ROW" and isCollapsible is false', () => {
+      it('should leave the open property to a falsy value if the action is "SELECT_ROW" and isCollapsible is false', () => {
         const action: IReduxAction<ITableRowActionPayload> = {
-          type: TableRowActions.toggle,
+          type: TableRowActions.select,
           payload: {
             id: 'row1',
             isCollapsible: false,
@@ -162,18 +162,18 @@ describe('Tables', () => {
         let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
         expect(collapsibleRowsState.length).toBe(oldState.length);
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBeFalsy();
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBeFalsy();
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
 
         collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
 
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBeFalsy();
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBeFalsy();
+        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
       });
 
       describe('selected behavior', () => {
         const actionMaker = (rowId: string): IReduxAction<ITableRowActionPayload> => ({
-          type: TableRowActions.toggle,
+          type: TableRowActions.select,
           payload: { id: rowId },
         });
 
