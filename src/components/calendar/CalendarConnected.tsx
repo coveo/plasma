@@ -10,8 +10,8 @@ import {
 import {
   changeDatePickerLowerLimit,
   changeDatePickerUpperLimit,
-  DateLimits,
-  selectDate
+  DateLimits, resetDatePickers,
+  selectDate,
 } from '../datePicker/DatePickerActions';
 import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
 import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
@@ -39,7 +39,9 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
       dispatch(selectDate(pickerId, ''));
       dispatch(changeOptionPicker(pickerId, '', ''));
-      if (value) {
+      if (!value) {
+        dispatch(resetDatePickers(pickerId));
+      } else {
         if (isUpperLimit) {
           dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
         } else {

@@ -140,11 +140,9 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private hasExceededRangeLimit(): Boolean {
     if (this.props.datePicker && this.props.datePicker.rangeLimit) {
-      const lowerLimit = this.props.datePicker.lowerLimit || this.props.datePicker.appliedLowerLimit;
-      const upperLimit = this.props.datePicker.upperLimit || this.props.datePicker.appliedUpperLimit;
       const { weeks, days, hours } = this.props.datePicker.rangeLimit;
       const limitInMinutes: number = (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0);
-      const diffInMinutes: number = moment(upperLimit).diff(moment(lowerLimit), 'minutes');
+      const diffInMinutes: number = moment(this.props.datePicker.inputUpperLimit).diff(moment(this.props.datePicker.inputLowerLimit), 'minutes');
       return diffInMinutes > limitInMinutes;
     }
 

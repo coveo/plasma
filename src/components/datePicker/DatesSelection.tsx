@@ -1,5 +1,5 @@
 import { DatePicker, IDatePickerProps } from './DatePicker';
-import { DATES_SEPARATOR } from '../../utils/DateUtils';
+import { DATES_SEPARATOR, DateUtils } from '../../utils/DateUtils';
 import * as React from 'react';
 
 export interface IRangeLimit {
@@ -26,6 +26,8 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
 export interface IDatesSelectionStateProps {
   lowerLimit?: Date;
   upperLimit?: Date;
+  inputLowerLimit?: Date;
+  inputUpperLimit?: Date;
   quickOption?: string;
   isSelecting?: string;
 }
@@ -92,6 +94,16 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
     }
   }
 
+  private handleOnBlur(date: Date, isUpperLimit: boolean = false) {
+    const formattedLowerLimit: string = DateUtils.getDateWithTimeString(this.props.inputLowerLimit);
+    const formattedUpperLimit: string = DateUtils.getDateWithTimeString(this.props.inputUpperLimit);
+    const formattedInputDate: string = DateUtils.getDateWithTimeString(date);
+
+    if ((!isUpperLimit && formattedLowerLimit !== formattedInputDate) || (isUpperLimit && formattedUpperLimit !== formattedInputDate)) {
+      this.onDateChange(date, isUpperLimit);
+    }
+  }
+
   render() {
     const wrapperClasses: string = !this.props.withTime && this.props.isRange ? 'mod-inline flex' : '';
     const datePickerProps: IDatePickerProps = {
@@ -100,7 +112,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
       setToNowTooltip: this.props.setToNowTooltip,
       isSelecting: this.props.isSelecting,
       onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit),
-      onBlur: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
+      onBlur: (date: Date, isUpperLimit: boolean) => this.handleOnBlur(date, isUpperLimit),
       placeholder: '',
     };
     const separatorClasses: string[] = ['date-separator'];
