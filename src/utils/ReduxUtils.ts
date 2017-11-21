@@ -20,7 +20,7 @@ export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, me
   return target => (ReactRedux.connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any);
 }
 
-export interface IReduxAction<T = {}> extends Redux.Action {
+export interface IReduxAction<T> extends Redux.Action {
   type: string;
   payload?: T;
 }
