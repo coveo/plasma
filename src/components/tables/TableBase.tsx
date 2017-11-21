@@ -1,21 +1,21 @@
-import * as React from 'react';
-import * as classNames from 'classnames';
-import * as _ from 'underscore';
-import { NavigationPerPageConnected } from '../navigation/perPage/NavigationPerPageConnected';
-import { INavigationPerPageProps } from '../navigation/perPage/NavigationPerPage';
-import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
-import { IFilterBoxProps } from '../filterBox/FilterBox';
-import { DropdownSearchConnected } from '../dropdownSearch/DropdownSearchConnected';
+import { ITableHeaderProps, TableHeader } from './TableHeader';
+import { TableRowWrapper } from './TableRowWrapper';
+import { IActionBarProps } from '../actions/ActionBar';
+import { ActionBarConnected } from '../actions/ActionBarConnected';
+import { BlankSlate, IBlankSlateProps } from '../blankSlate/BlankSlate';
 import { IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
-import { NavigationPaginationConnected } from '../navigation/pagination/NavigationPaginationConnected';
-import { INavigationPaginationProps } from '../navigation/pagination/NavigationPagination';
+import { DropdownSearchConnected } from '../dropdownSearch/DropdownSearchConnected';
+import { IFilterBoxProps } from '../filterBox/FilterBox';
+import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
 import { ILastUpdatedProps } from '../lastUpdated/LastUpdated';
 import { LastUpdatedConnected } from '../lastUpdated/LastUpdatedConnected';
-import { ActionBarConnected } from '../actions/ActionBarConnected';
-import { IActionBarProps } from '../actions/ActionBar';
-import { ITableHeaderProps, TableHeader } from './TableHeader';
-import { IBlankSlateProps, BlankSlate } from '../blankSlate/BlankSlate';
-import { TableRowWrapper } from './TableRowWrapper';
+import { INavigationPaginationProps } from '../navigation/pagination/NavigationPagination';
+import { NavigationPaginationConnected } from '../navigation/pagination/NavigationPaginationConnected';
+import { INavigationPerPageProps } from '../navigation/perPage/NavigationPerPage';
+import { NavigationPerPageConnected } from '../navigation/perPage/NavigationPerPageConnected';
+import * as classNames from 'classnames';
+import * as React from 'react';
+import * as _ from 'underscore';
 
 export interface IHeadingOrCollapsibleData {
   [attribute: string]: any;
@@ -40,9 +40,9 @@ export interface ITableData {
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
   initialTableData: ITableData;
-  rawDataReceivedOnFetchOrElseParser: (data: any) => ITableRowsData;
   headingRowDataParser: (rowData: ITableRowData) => JSX.Element;
   collapsibleRowDataParser?: (rowData: ITableRowData) => JSX.Element;
+  rawDataReceivedOnFetchOrElseParser?: (data: any) => ITableRowsData;
 };
 
 export interface ITableChildrenProps {
@@ -81,6 +81,11 @@ export interface ITableStateProps {
 export interface ITableProps extends ITableOwnProps, ITableChildrenProps, ITableStateProps { }
 
 export class Table extends React.Component<ITableProps, any> {
+  constructor(props: ITableProps) {
+    super(props);
+
+    // registerComponentInStore with initial state
+  }
   buildActionBar(): JSX.Element {
     const { actionBar, filter, predicates, styles } = this.props;
 
@@ -89,7 +94,7 @@ export class Table extends React.Component<ITableProps, any> {
       : null;
 
     const predicatesConnected: JSX.Element[] = actionBar && predicates
-      ? predicates.map((predicateProps: IDropdownSearchProps, i: number) => <DropdownSearchConnected {...predicateProps} />)
+      ? predicates.map((predicateProps: IDropdownSearchProps, i: number) => <DropdownSearchConnected {...predicateProps} key={_.uniqueId()} />)
       : null;
 
     const tableActionClasses: string[] = styles && styles.tableActionClasses || [];
@@ -129,7 +134,6 @@ export class Table extends React.Component<ITableProps, any> {
       );
     });
 
-    console.log(tableRowWrappers);
     return tableRowWrappers;
   }
 

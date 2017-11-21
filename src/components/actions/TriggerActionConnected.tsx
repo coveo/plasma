@@ -1,10 +1,15 @@
-import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import {
+  ITriggerActionDispatchProps,
+  ITriggerActionOwnProps,
+  ITriggerActionProps,
+  TriggerAction
+} from './TriggerAction';
 import { IReduxActionsPayload } from '../../ReactVapor';
-import { TriggerAction, ITriggerActionProps, ITriggerActionOwnProps, ITriggerActionDispatchProps } from './TriggerAction';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { IUserChoice } from '../inlinePrompt/InlinePrompt';
 import { addPrompt, removePrompt } from '../inlinePrompt/InlinePromptActions';
-import { connect } from 'react-redux';
 import * as React from 'react';
+import { connect } from 'react-redux';
 
 const mapStateToProps = () => ({});
 

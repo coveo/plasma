@@ -25,7 +25,7 @@ export const ToastType = {
 };
 
 export class Toast extends React.Component<IToastProps, {}> {
-  private timeout: NodeJS.Timer;
+  private timeout: number;
 
   static defaultProps: Partial<IToastProps> = {
     dismissible: true,

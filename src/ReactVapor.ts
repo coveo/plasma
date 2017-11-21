@@ -20,6 +20,7 @@ import { ISubNavigationState } from './components/subNavigation/SubNavigationRed
 import { ITabGroupState } from './components/tab/TabReducers';
 import { IDropdownSearchState } from './components/dropdownSearch/DropdownSearchReducers';
 import { IToastsState } from './components/toast/ToastReducers';
+import { ITableHeaderCellsState } from './components/tables/TableHeaderCellReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -41,6 +42,7 @@ export interface IReactVaporState {
   subNavigations?: ISubNavigationState[];
   tabs?: ITabGroupState[];
   toastContainers?: IToastsState[];
+  tableHeaderCells?: ITableHeaderCellsState;
 }
 
 export interface IReduxActionsPayload {
@@ -64,4 +66,6 @@ export interface IReduxActionsPayload {
   item?: string;
   label?: string;
   selected?: string;
+  tableId?: string;
+  attributeToFormat?: string;
 }

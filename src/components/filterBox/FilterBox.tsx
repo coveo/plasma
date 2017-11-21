@@ -83,8 +83,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
     const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
     const filterInputClasses = classNames('filter-box', { 'truncate': this.props.truncate });
-    const svgClearClasses = classNames({ 'hidden': !!this.props.filterText });
-    const svgFilterClasses = classNames('filter-icon', { 'hidden': !this.props.filterText });
+    const svgClearClasses = classNames({ 'hidden': !(this.filterInput && this.filterInput.value) });
 
     return (
       <div
