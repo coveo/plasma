@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as _ from 'underscore';
-import { ISvgProps } from '../../svg/Svg';
 import { IItemBoxProps, ItemBox } from '../ItemBox';
 import { ITooltipProps, Tooltip } from '../../tooltip/Tooltip';
 import { Content, IContentProps } from '../../content/Content';
