@@ -39,6 +39,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onRender: () => {
       dispatch(addDatePicker(ownProps.id,
         ownProps.isRange,
+        ownProps.rangeLimit,
         ownProps.color,
         ownProps.calendarId));
     },

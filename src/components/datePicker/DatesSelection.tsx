@@ -2,11 +2,19 @@ import { DatePicker, IDatePickerProps } from './DatePicker';
 import { DATES_SEPARATOR } from '../../utils/DateUtils';
 import * as React from 'react';
 
+export interface IRangeLimit {
+  weeks?: number;
+  days?: number;
+  hours?: number;
+  message?: string;
+}
+
 export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSelection> {
   id?: string;
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   isRange?: boolean;
+  rangeLimit?: IRangeLimit;
   color?: string;
   calendarId?: string;
   defaultLowerLimit?: Date;
@@ -27,7 +35,7 @@ export interface IDatesSelectionDispatchProps {
   onDestroy?: () => void;
   onChange?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
   onClick?: (isUpperLimit: boolean) => void;
-  onBlur?: () => void;
+  onBlur?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
 }
 
 export interface IDatesSelectionChildrenProps {
@@ -91,13 +99,8 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
       hasSetToNowButton: this.props.hasSetToNowButton,
       setToNowTooltip: this.props.setToNowTooltip,
       isSelecting: this.props.isSelecting,
-      onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
       onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit),
-      onBlur: () => {
-        if (this.props.onBlur) {
-          this.props.onBlur();
-        }
-      },
+      onBlur: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
       placeholder: '',
     };
     const separatorClasses: string[] = ['date-separator'];

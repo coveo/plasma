@@ -2,7 +2,7 @@ import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 import { Calendar, ICalendarProps, ICalendarSelectionRule } from '../calendar/Calendar';
 import { CalendarConnected } from '../calendar/CalendarConnected';
 import { IOption } from '../optionPicker/Option';
-import { DatesSelection, IDatesSelectionProps } from './DatesSelection';
+import { DatesSelection, IDatesSelectionProps, IRangeLimit } from './DatesSelection';
 import { DatesSelectionConnected } from './DatesSelectionConnected';
 import { IOptionPickerProps, OptionPicker } from '../optionPicker/OptionPicker';
 import { OptionPickerConnected } from '../optionPicker/OptionPickerConnected';
@@ -14,6 +14,7 @@ export interface IDatesSelectionBox {
   title: string;
   quickOptions?: IOption[];
   isRange?: boolean;
+  rangeLimit?: IRangeLimit;
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   color?: string;
@@ -78,6 +79,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
           setToNowTooltip: this.props.setToNowTooltip,
           isRange: datesSelectionBox.isRange,
+          rangeLimit: datesSelectionBox.rangeLimit,
           color: datesSelectionBox.color,
           calendarId: calendarProps.id,
           lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,

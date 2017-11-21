@@ -1,6 +1,7 @@
 import { IDay } from '../components/calendar/CalendarDay';
 import * as moment from 'moment';
 import * as _ from 'underscore';
+import { Moment } from 'moment';
 
 export interface IDateComponents {
   year?: number;
@@ -14,6 +15,7 @@ export interface IDateComponents {
 
 export const SIMPLE_DATE_FORMAT: string = 'MMM DD, YYYY';
 export const LONG_DATE_FORMAT: string = 'YYYY-MM-DD HH:mm';
+export const LONG_DATE_WITH_SMALL_HOURS_FORMAT: string = 'YYYY-MM-DD H:mm';
 export const DATES_SEPARATOR: string = '%';
 
 export class DateUtils {
@@ -43,7 +45,7 @@ export class DateUtils {
           number: date.date(),
           isCurrentMonth: date.month() === firstDay.getMonth(),
           isToday: date.isSame(DateUtils.currentDate, 'day'),
-          date: date
+          date: date,
         });
         date = date.clone();
         date.add(1, 'day');
@@ -65,7 +67,16 @@ export class DateUtils {
   }
 
   static getDateFromTimeString(date: string): Date {
-    return moment(date, LONG_DATE_FORMAT, true).toDate();
+    return DateUtils.getValidDate(date, true);
+  }
+
+  static getValidDate(date: string, fromTime: boolean = false): Date {
+    const momentDate: Moment = moment(date, LONG_DATE_FORMAT, fromTime);
+    if (momentDate.isValid()) {
+      return momentDate.toDate();
+    }
+
+    return moment(date, LONG_DATE_WITH_SMALL_HOURS_FORMAT, true).toDate();
   }
 
   static getSimpleDate(date: Date): string {

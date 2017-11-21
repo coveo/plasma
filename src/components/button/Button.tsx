@@ -1,15 +1,22 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+import * as classNames from 'classnames';
 import { IBaseActionOptions } from '../actions/Action';
 import { Tooltip } from '../tooltip/Tooltip';
 
-export class Button extends React.Component<IBaseActionOptions, {}> {
+export interface IButtonProps extends IBaseActionOptions {
+  small?: boolean;
+  classes?: string[];
+}
 
-  static defaultProps: Partial<IBaseActionOptions> = {
+export class Button extends React.Component<IButtonProps, {}> {
+
+  static defaultProps: Partial<IButtonProps> = {
     enabled: true,
     name: '',
     tooltip: '',
     primary: false,
+    small: false,
     tooltipPlacement: 'right',
     target: '',
   };
@@ -23,11 +30,9 @@ export class Button extends React.Component<IBaseActionOptions, {}> {
   getTemplate(buttonClass: string): JSX.Element {
     let buttonElement: JSX.Element;
 
-    const disabled: boolean = !this.props.enabled;
-    const onClick = () => this.onClick();
     let buttonAttrs = {
-      disabled,
-      onClick,
+      disabled: !this.props.enabled,
+      onClick: () => this.onClick(),
     };
 
     if (this.props.link) {
@@ -51,23 +56,21 @@ export class Button extends React.Component<IBaseActionOptions, {}> {
     }
 
     return !_.isEmpty(this.props.tooltip)
-      ? <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement}>
-        <span>
-          {buttonElement}
-        </span>
+      ? <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement} className={'btn-container'}>
+        {buttonElement}
       </Tooltip>
       : buttonElement;
   }
 
-  render() {
-    const buttonClasses = ['btn'];
-    if (this.props.primary) {
-      buttonClasses.push('mod-primary');
-    }
-    if (!this.props.enabled) {
-      buttonClasses.push('state-disabled', 'disabled', 'text-medium-grey');
-    }
+  private getClasses() {
+    return classNames('btn', {
+      'mod-primary': this.props.primary,
+      'mod-small': this.props.small,
+      'state-disabled disabled text-medium-grey': !this.props.enabled,
+    }, this.props.classes);
+  }
 
-    return this.getTemplate(buttonClasses.join(' '));
+  render() {
+    return this.getTemplate(this.getClasses());
   }
 }
