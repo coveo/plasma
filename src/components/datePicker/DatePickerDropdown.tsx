@@ -7,7 +7,7 @@ import * as ReactDOM from 'react-dom';
 import { DEFAULT_YEARS, ICalendarSelectionRule } from '../calendar/Calendar';
 import { ModalFooter } from '../modal/ModalFooter';
 import { Button } from '../button/Button';
-import moment = require('moment');
+import * as moment from 'moment';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
   label?: string;

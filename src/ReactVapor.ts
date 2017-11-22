@@ -46,6 +46,7 @@ export interface IReactVaporState {
 export interface IReduxActionsPayload {
   id?: string;
   ids?: string[];
+  isCollapsible?: boolean;
   facet?: string;
   facetRow?: IFacet;
   filterText?: string;
