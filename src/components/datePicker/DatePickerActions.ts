@@ -20,7 +20,7 @@ export interface IAddDatePickerPayload extends IDatePickerPayload {
   color: string;
   calendarId: string;
   isRange: boolean;
-  rangeLimit: IRangeLimit;
+  rangeLimit?: IRangeLimit;
 }
 
 export interface IChangeDatePickerPayload extends IDatePickerPayload {
@@ -36,7 +36,7 @@ export const DateLimits = {
   upper: 'upper'
 };
 
-export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLimit, color: string = DEFAULT_DATE_PICKER_COLOR,
+export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLimit = undefined, color: string = DEFAULT_DATE_PICKER_COLOR,
   calendarId: string = ''): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {

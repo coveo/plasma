@@ -71,12 +71,17 @@ export class DateUtils {
   }
 
   static getValidDate(date: string, fromTime: boolean = false): Date {
-    const momentDate: Moment = moment(date, LONG_DATE_FORMAT, fromTime);
+    let momentDate: Moment = moment(date, LONG_DATE_FORMAT, fromTime);
     if (momentDate.isValid()) {
       return momentDate.toDate();
     }
 
-    return moment(date, LONG_DATE_WITH_SMALL_HOURS_FORMAT, true).toDate();
+    momentDate = moment(date, LONG_DATE_WITH_SMALL_HOURS_FORMAT, fromTime);
+    if (momentDate.isValid()) {
+      return momentDate.toDate();
+    }
+
+    return moment().toDate();
   }
 
   static getSimpleDate(date: Date): string {

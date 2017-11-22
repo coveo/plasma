@@ -38,6 +38,22 @@ describe('Date picker', () => {
     let datePickerDropdown: ReactWrapper<IDatePickerDropdownProps, any>;
     let datePickerDropdownInstance: DatePickerDropdown;
 
+    const now: Date = new Date();
+    const then: Date = new Date(new Date().setDate(new Date().getDate() + 1));
+    let datePicker: IDatePickerState = {
+      id: 'id',
+      calendarId: 'calendarId',
+      color: 'color',
+      lowerLimit: now,
+      upperLimit: then,
+      isRange: false,
+      selected: '',
+      appliedLowerLimit: now,
+      appliedUpperLimit: then,
+      inputLowerLimit: now,
+      inputUpperLimit: then
+    };
+
     beforeEach(() => {
       datePickerDropdown = mount(
         <DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />,
@@ -102,22 +118,9 @@ describe('Date picker', () => {
     });
 
     it('should display the dates from the date picker if the datePicker prop is set', () => {
-      let now: Date = new Date();
       let formattedNow: string = DateUtils.getSimpleDate(now);
-      let then: Date = new Date(new Date().setDate(new Date().getDate() + 1));
       let formattedThen: string = DateUtils.getSimpleDate(then);
       let toLabel: string = 'à';
-      let datePicker: IDatePickerState = {
-        id: 'id',
-        calendarId: 'calendarId',
-        color: 'color',
-        lowerLimit: now,
-        upperLimit: then,
-        isRange: false,
-        selected: '',
-        appliedLowerLimit: now,
-        appliedUpperLimit: then
-      };
       let propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { datePicker });
 
       expect(datePickerDropdown.find('.dropdown-selected-value').text()).not.toContain(formattedNow);
@@ -139,7 +142,9 @@ describe('Date picker', () => {
         isRange: true,
         selected: '',
         appliedLowerLimit: now,
-        appliedUpperLimit: then
+        appliedUpperLimit: then,
+        inputLowerLimit: now,
+        inputUpperLimit: then
       };
       propsWithDatePicker = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { datePicker });
       datePickerDropdown.setProps(propsWithDatePicker);
@@ -174,7 +179,9 @@ describe('Date picker', () => {
             isRange: true,
             selected: '',
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: then
           }
         };
 
@@ -394,6 +401,51 @@ describe('Date picker', () => {
       datePickerDropdown.setProps(onRightProps);
 
       expect(datePickerDropdown.find('.dropdown-menu').hasClass(expectedClass)).toBe(true);
+    });
+
+    describe('with a range limit defined in the <DatePicker/>', () => {
+      let datePickerDropdownWithRangeLimit: IDatePickerDropdownProps;
+
+      const changeDatePickerState = (newState?: Partial<IDatePickerState>) => {
+        datePickerDropdownWithRangeLimit = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS,
+          {
+            datePicker: _.extend({}, datePicker, {
+              isRange: true,
+              rangeLimit: {
+                weeks: 1,
+                days: 1,
+                hours: 1,
+                message: 'test',
+              }
+            }, newState)
+          });
+
+        datePickerDropdown.setProps(datePickerDropdownWithRangeLimit);
+        datePickerDropdown = datePickerDropdown.update();
+      };
+
+      it('should disabled the primary button if the the inputLowerLimit has exceeded the range limit with the inputUpperLimit', () => {
+        const date: Date = new Date();
+        date.setFullYear(date.getFullYear() + 1);
+        changeDatePickerState({
+          inputLowerLimit: new Date(),
+          inputUpperLimit: date,
+        });
+
+        expect(datePickerDropdown.find(ModalFooter).find(Button).first().props().enabled).toBe(false);
+        expect(datePickerDropdown.find(ModalFooter).find(Button).first().props().tooltip).toBe('test');
+      });
+
+      it('should enabled the primary button if the the inputLowerLimit does not exceeded the range limit with the inputUpperLimit', () => {
+        const date: Date = new Date();
+        date.setHours(date.getHours() + 1);
+        changeDatePickerState({
+          inputLowerLimit: new Date(),
+          inputUpperLimit: date,
+        });
+
+        expect(datePickerDropdown.find(ModalFooter).find(Button).first().props().enabled).toBe(true);
+      });
     });
   });
 });

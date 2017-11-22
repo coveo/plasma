@@ -98,7 +98,7 @@ describe('Date picker', () => {
       expect(onClickProp).toBeDefined();
     });
 
-    it('should get what to do on aply as a prop', () => {
+    it('should get what to do on apply as a prop', () => {
       let onApplyProp = datePickerDropdown.props().onApply;
 
       expect(onApplyProp).toBeDefined();

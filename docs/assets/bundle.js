@@ -10661,6 +10661,7 @@ var moment = __webpack_require__(1);
 var _ = __webpack_require__(9);
 exports.SIMPLE_DATE_FORMAT = 'MMM DD, YYYY';
 exports.LONG_DATE_FORMAT = 'YYYY-MM-DD HH:mm';
+exports.LONG_DATE_WITH_SMALL_HOURS_FORMAT = 'YYYY-MM-DD H:mm';
 exports.DATES_SEPARATOR = '%';
 var DateUtils = (function () {
     function DateUtils() {
@@ -10684,7 +10685,7 @@ var DateUtils = (function () {
                     number: date.date(),
                     isCurrentMonth: date.month() === firstDay.getMonth(),
                     isToday: date.isSame(DateUtils.currentDate, 'day'),
-                    date: date
+                    date: date,
                 });
                 date = date.clone();
                 date.add(1, 'day');
@@ -10703,7 +10704,19 @@ var DateUtils = (function () {
         return dateMoment.format(exports.LONG_DATE_FORMAT);
     };
     DateUtils.getDateFromTimeString = function (date) {
-        return moment(date, exports.LONG_DATE_FORMAT, true).toDate();
+        return DateUtils.getValidDate(date, true);
+    };
+    DateUtils.getValidDate = function (date, fromTime) {
+        if (fromTime === void 0) { fromTime = false; }
+        var momentDate = moment(date, exports.LONG_DATE_FORMAT, fromTime);
+        if (momentDate.isValid()) {
+            return momentDate.toDate();
+        }
+        momentDate = moment(date, exports.LONG_DATE_WITH_SMALL_HOURS_FORMAT, true);
+        if (momentDate.isValid()) {
+            return momentDate.toDate();
+        }
+        return moment().toDate();
     };
     DateUtils.getSimpleDate = function (date) {
         var dateMoment = moment(date);
@@ -27343,7 +27356,7 @@ var DatePicker = (function (_super) {
         _this.handleDocumentClick = function (e) {
             var target = $(e.target);
             if (_this.isPicked && !target.closest('.date-picker').length && !target.closest("." + CalendarDay_1.CalendarDay.DEFAULT_DATE_CLASS).length && !target.closest('.date-picker-dropdown').length) {
-                _this.handleChange();
+                _this.handleChangeDate();
             }
         };
         return _this;
@@ -27361,12 +27374,12 @@ var DatePicker = (function (_super) {
     DatePicker.prototype.setToToday = function () {
         var date = new Date();
         this.dateInput.value = this.getStringFromDate(date);
-        this.handleChange();
+        this.handleChangeDate();
     };
-    DatePicker.prototype.handleChange = function () {
+    DatePicker.prototype.handleChangeDate = function () {
         var date = this.getDateFromString(this.dateInput.value);
         if (date.getDate()) {
-            this.props.onChange(date, this.props.upperLimit);
+            this.props.onBlur(date, this.props.upperLimit);
         }
     };
     DatePicker.prototype.componentDidMount = function () {
@@ -27395,7 +27408,7 @@ var DatePicker = (function (_super) {
             inputClasses.push('date-picked', "bg-" + this.props.color);
         }
         return (React.createElement("div", { className: 'date-picker flex' },
-            React.createElement("input", { className: inputClasses.join(' '), ref: function (dateInput) { return _this.dateInput = dateInput; }, onBlur: function () { return _this.handleChange(); }, onClick: function () { return _this.props.onClick(_this.props.upperLimit); }, placeholder: this.props.placeholder, required: true }),
+            React.createElement("input", { className: inputClasses.join(' '), ref: function (dateInput) { return _this.dateInput = dateInput; }, onBlur: function () { return _this.handleChangeDate(); }, onClick: function () { return _this.props.onClick(_this.props.upperLimit); }, placeholder: this.props.placeholder, required: true }),
             nowButton));
     };
     DatePicker.defaultProps = {
@@ -29621,8 +29634,8 @@ var DatePickerBox = (function (_super) {
                 hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
                 setToNowTooltip: _this.props.setToNowTooltip,
                 isRange: datesSelectionBox.isRange,
-                color: datesSelectionBox.color,
                 rangeLimit: datesSelectionBox.rangeLimit,
+                color: datesSelectionBox.color,
                 calendarId: calendarProps.id,
                 lowerLimitPlaceholder: _this.props.lowerLimitPlaceholder,
                 upperLimitPlaceholder: _this.props.upperLimitPlaceholder,
@@ -29682,8 +29695,8 @@ var DatesSelection = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     DatesSelection.prototype.onDateChange = function (date, isUpperLimit, datePicker) {
-        if (this.props.onChange) {
-            this.props.onChange(date, isUpperLimit, datePicker);
+        if (this.props.onBlur) {
+            this.props.onBlur(date, isUpperLimit, datePicker);
         }
     };
     DatesSelection.prototype.onDateClick = function (isUpperLimit) {
@@ -29710,6 +29723,15 @@ var DatesSelection = (function (_super) {
             }
         }
     };
+    DatesSelection.prototype.handleOnBlur = function (date, isUpperLimit) {
+        if (isUpperLimit === void 0) { isUpperLimit = false; }
+        var formattedLowerLimit = DateUtils_1.DateUtils.getDateWithTimeString(this.props.inputLowerLimit);
+        var formattedUpperLimit = DateUtils_1.DateUtils.getDateWithTimeString(this.props.inputUpperLimit);
+        var formattedInputDate = DateUtils_1.DateUtils.getDateWithTimeString(date);
+        if ((!isUpperLimit && formattedLowerLimit !== formattedInputDate) || (isUpperLimit && formattedUpperLimit !== formattedInputDate)) {
+            this.onDateChange(date, isUpperLimit);
+        }
+    };
     DatesSelection.prototype.render = function () {
         var _this = this;
         var wrapperClasses = !this.props.withTime && this.props.isRange ? 'mod-inline flex' : '';
@@ -29718,9 +29740,8 @@ var DatesSelection = (function (_super) {
             hasSetToNowButton: this.props.hasSetToNowButton,
             setToNowTooltip: this.props.setToNowTooltip,
             isSelecting: this.props.isSelecting,
-            onChange: function (date, isUpperLimit) { return _this.onDateChange(date, isUpperLimit); },
             onClick: function (isUpperLimit) { return _this.onDateClick(isUpperLimit); },
-            onBlur: function (date, isUpperLimit) { return _this.onDateChange(date, isUpperLimit); },
+            onBlur: function (date, isUpperLimit) { return _this.handleOnBlur(date, isUpperLimit); },
             placeholder: '',
         };
         var separatorClasses = ['date-separator'];
@@ -29808,7 +29829,7 @@ var Button = (function (_super) {
             buttonElement = (React.createElement("button", __assign({ className: buttonClass }, buttonAttrs), this.props.name));
         }
         return !_.isEmpty(this.props.tooltip)
-            ? React.createElement(Tooltip_1.Tooltip, { title: this.props.tooltip, placement: this.props.tooltipPlacement }, buttonElement)
+            ? React.createElement(Tooltip_1.Tooltip, { title: this.props.tooltip, placement: this.props.tooltipPlacement, className: 'btn-container' }, buttonElement)
             : buttonElement;
     };
     Button.prototype.getClasses = function () {
@@ -51644,7 +51665,10 @@ var mapDispatchToProps = function (dispatch, ownProps) { return ({
     onClick: function (pickerId, isUpperLimit, value) {
         dispatch(DatePickerActions_1.selectDate(pickerId, ''));
         dispatch(OptionPickerActions_1.changeOptionPicker(pickerId, '', ''));
-        if (value) {
+        if (!value) {
+            dispatch(DatePickerActions_1.resetDatePickers(pickerId));
+        }
+        else {
             if (isUpperLimit) {
                 dispatch(DatePickerActions_1.changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
             }
@@ -51681,6 +51705,8 @@ var mapStateToProps = function (state, ownProps) {
     return {
         lowerLimit: item ? item.lowerLimit : new Date(),
         upperLimit: item ? item.upperLimit : new Date(),
+        inputLowerLimit: item ? item.inputLowerLimit : undefined,
+        inputUpperLimit: item ? item.inputUpperLimit : undefined,
         quickOption: optionPicker && optionPicker.selectedValue,
         isSelecting: item && item.selected,
     };
@@ -51690,7 +51716,7 @@ var mapDispatchToProps = function (dispatch, ownProps) { return ({
         dispatch(DatePickerActions_1.addDatePicker(ownProps.id, ownProps.isRange, ownProps.rangeLimit, ownProps.color, ownProps.calendarId));
     },
     onDestroy: function () { return dispatch(DatePickerActions_1.removeDatePicker(ownProps.id)); },
-    onChange: function (date, isUpperLimit, optionPicker) {
+    onBlur: function (date, isUpperLimit, optionPicker) {
         if (optionPicker === void 0) { optionPicker = false; }
         if (isUpperLimit) {
             dispatch(DatePickerActions_1.changeDatePickerUpperLimit(ownProps.id, date));
@@ -51708,7 +51734,6 @@ var mapDispatchToProps = function (dispatch, ownProps) { return ({
     onClick: function (isUpperLimit) {
         dispatch(DatePickerActions_1.selectDate(ownProps.id, (isUpperLimit ? DatePickerActions_1.DateLimits.upper : DatePickerActions_1.DateLimits.lower)));
     },
-    onBlur: function () { return dispatch(DatePickerActions_1.selectDate(ownProps.id, '')); },
 }); };
 exports.DatesSelectionConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps, ReduxUtils_1.ReduxUtils.mergeProps)(DatesSelection_1.DatesSelection);
 
@@ -67251,6 +67276,8 @@ exports.datePickerInitialState = {
     lowerLimit: moment().startOf('day').toDate(),
     upperLimit: moment().endOf('day').toDate(),
     selected: '',
+    inputLowerLimit: moment().startOf('day').toDate(),
+    inputUpperLimit: moment().endOf('day').toDate(),
     appliedLowerLimit: moment().startOf('day').toDate(),
     appliedUpperLimit: moment().endOf('day').toDate(),
 };
@@ -67264,6 +67291,8 @@ var addDatePicker = function (state, action) {
         rangeLimit: action.payload.rangeLimit,
         lowerLimit: state.lowerLimit,
         upperLimit: state.upperLimit,
+        inputLowerLimit: state.appliedLowerLimit,
+        inputUpperLimit: state.appliedUpperLimit,
         selected: state.selected,
         appliedLowerLimit: state.appliedLowerLimit,
         appliedUpperLimit: state.appliedUpperLimit,
@@ -67272,23 +67301,34 @@ var addDatePicker = function (state, action) {
 var changeLowerLimit = function (state, action) {
     return state.id !== action.payload.id ? state : _.extend({}, state, {
         lowerLimit: action.payload.date,
+        inputLowerLimit: action.payload.date,
+        selected: ''
     });
 };
 var changeUpperLimit = function (state, action) {
-    return state.id !== action.payload.id ? state : _.extend({}, state, { upperLimit: action.payload.date });
+    return state.id !== action.payload.id ? state : _.extend({}, state, {
+        upperLimit: action.payload.date,
+        inputUpperLimit: action.payload.date,
+        selected: ''
+    });
 };
 var selectDate = function (state, action) {
     return state.id !== action.payload.id ? state : _.extend({}, state, {
         selected: action.payload.limit,
+        lowerLimit: action.payload.limit === DatePickerActions_1.DateLimits.lower ? undefined : state.lowerLimit,
+        upperLimit: action.payload.limit === DatePickerActions_1.DateLimits.upper ? undefined : state.upperLimit,
     });
 };
 var applyDates = function (state, action) {
     var lowerLimit = state.lowerLimit || state.appliedLowerLimit;
+    var upperLimit = (state.upperLimit >= lowerLimit ? state.upperLimit : state.lowerLimit) || state.appliedUpperLimit;
     return state.id.indexOf(action.payload.id) !== 0
         ? state
         : _.extend({}, state, {
             appliedLowerLimit: lowerLimit,
-            appliedUpperLimit: (state.upperLimit >= lowerLimit ? state.upperLimit : state.lowerLimit) || state.appliedUpperLimit,
+            appliedUpperLimit: upperLimit,
+            inputLowerLimit: lowerLimit,
+            inputUpperLimit: upperLimit,
         });
 };
 var resetDates = function (state, action) {
@@ -85178,6 +85218,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var DatePickerDropdownConnected_1 = __webpack_require__(439);
 var DatePickerExamplesCommon_1 = __webpack_require__(109);
 var React = __webpack_require__(0);
+var _ = __webpack_require__(9);
 var DatePickerDropdownConnectedExamples = (function (_super) {
     __extends(DatePickerDropdownConnectedExamples, _super);
     function DatePickerDropdownConnectedExamples() {
@@ -85187,7 +85228,10 @@ var DatePickerDropdownConnectedExamples = (function (_super) {
         return (React.createElement("div", { className: 'mt2' },
             React.createElement("div", { className: 'form-group' },
                 React.createElement("label", { className: 'form-control-label' }, "Date picker dropdown with Redux state"),
-                React.createElement(DatePickerDropdownConnected_1.DatePickerDropdownConnected, { id: 'date-picker-dropdown', datesSelectionBoxes: DatePickerExamplesCommon_1.SELECTION_BOXES, selectionRules: DatePickerExamplesCommon_1.CALENDAR_SELECTION_RULES }))));
+                React.createElement(DatePickerDropdownConnected_1.DatePickerDropdownConnected, { id: 'date-picker-dropdown', datesSelectionBoxes: DatePickerExamplesCommon_1.SELECTION_BOXES, selectionRules: DatePickerExamplesCommon_1.CALENDAR_SELECTION_RULES })),
+            React.createElement("div", { className: 'form-group' },
+                React.createElement("label", { className: 'form-control-label' }, "Date picker dropdown with a range limit of 3 days Redux state"),
+                React.createElement(DatePickerDropdownConnected_1.DatePickerDropdownConnected, { id: 'date-picker-dropdown-1', datesSelectionBoxes: [_.extend({}, DatePickerExamplesCommon_1.SELECTION_BOXES[0], { rangeLimit: { days: 3, message: 'Date limit exceeded' } })], selectionRules: DatePickerExamplesCommon_1.CALENDAR_SELECTION_RULES }))));
     };
     return DatePickerDropdownConnectedExamples;
 }(React.Component));
@@ -85295,12 +85339,10 @@ var DatePickerDropdown = (function (_super) {
     };
     DatePickerDropdown.prototype.hasExceededRangeLimit = function () {
         if (this.props.datePicker && this.props.datePicker.rangeLimit) {
-            var lowerLimit = this.props.datePicker.lowerLimit || this.props.datePicker.appliedLowerLimit;
-            var upperLimit = this.props.datePicker.upperLimit || this.props.datePicker.appliedUpperLimit;
             var _a = this.props.datePicker.rangeLimit, weeks = _a.weeks, days = _a.days, hours = _a.hours;
-            var limitInHours = (weeks ? weeks * 168 : 0) + (days ? days * 24 : 0) + (hours ? hours : 0);
-            var diffInHours = moment(upperLimit).diff(moment(lowerLimit), 'hours');
-            return diffInHours > limitInHours;
+            var limitInMinutes = (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0);
+            var diffInMinutes = moment(this.props.datePicker.inputUpperLimit).diff(moment(this.props.datePicker.inputLowerLimit), 'minutes');
+            return diffInMinutes > limitInMinutes;
         }
         return false;
     };
@@ -85322,7 +85364,7 @@ var DatePickerDropdown = (function (_super) {
             upperLimitPlaceholder: this.props.upperLimitPlaceholder,
             isLinkedToDateRange: this.props.isLinkedToDateRange,
             footer: (React.createElement(ModalFooter_1.ModalFooter, { classes: ['mod-small'] },
-                React.createElement(Button_1.Button, { enabled: !hasExceededRangeLimit, name: this.props.applyLabel, small: true, primary: true, tooltip: hasExceededRangeLimit ? this.props.datePicker.rangeLimit.message : '', onClick: function () { return _this.handleApply(); } }),
+                React.createElement(Button_1.Button, { enabled: !hasExceededRangeLimit, name: this.props.applyLabel, small: true, primary: true, tooltip: hasExceededRangeLimit ? this.props.datePicker.rangeLimit.message : '', tooltipPlacement: 'left', onClick: function () { return _this.handleApply(); } }),
                 React.createElement(Button_1.Button, { enabled: true, name: this.props.cancelLabel, small: true, primary: true, onClick: function () { return _this.handleCancel(); } })))
         };
         var datePickerBox = null;
