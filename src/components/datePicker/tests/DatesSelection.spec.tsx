@@ -9,7 +9,6 @@ import { DatePicker } from '../DatePicker';
 import { DATES_SEPARATOR, DateUtils } from '../../../utils/DateUtils';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { ReactElement, ReactHTMLElement } from 'react';
 
 describe('Date picker', () => {
 

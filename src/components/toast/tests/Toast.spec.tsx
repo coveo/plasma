@@ -6,7 +6,7 @@ import { IToastProps, Toast, ToastType } from '../Toast';
 
 
 describe('Toasts', () => {
-  let toastComponent: ReactWrapper<IToastProps, void>;
+  let toastComponent: ReactWrapper<IToastProps, {}>;
   let toastBasicAttributes: IToastProps;
   let toastInstance: Toast;
 

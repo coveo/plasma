@@ -197,7 +197,7 @@ describe('Calendar', () => {
       let currentLowerLimit: Date = moment(new Date()).add(10, 'day').toDate();
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
-      store.dispatch(addDatePicker(PICKER_ID, true, 'any', CALENDAR_ID));
+      store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
       store.dispatch(changeDatePickerLowerLimit(PICKER_ID, currentLowerLimit));
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).lowerLimit).toBe(currentLowerLimit);

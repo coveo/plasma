@@ -8,7 +8,6 @@ import * as React from 'react';
 
 describe('Date picker', () => {
   const DATE_PICKER_BASIC_PROPS: IDatePickerProps = {
-    onChange: jasmine.createSpy('onChange'),
     onClick: jasmine.createSpy('onClick'),
     onBlur: jasmine.createSpy('onBlur'),
     placeholder: 'Pick a date',
@@ -41,10 +40,10 @@ describe('Date picker', () => {
       datePicker.detach();
     });
 
-    it('should get what to do on change as a prop', () => {
-      let onChangeProp = datePicker.props().onChange;
+    it('should get what to do on blur as a prop', () => {
+      let onBlurProp = datePicker.props().onBlur;
 
-      expect(onChangeProp).toBeDefined();
+      expect(onBlurProp).toBeDefined();
     });
 
     it('should display a <SetToNowButton /> component if hasSetToNowButton prop is set to true', () => {
