@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
         ownProps.calendarId));
     },
     onDestroy: () => dispatch(removeDatePicker(ownProps.id)),
-    onChange: (date: Date, isUpperLimit: boolean, optionPicker = false) => {
+    onBlur: (date: Date, isUpperLimit: boolean, optionPicker = false) => {
       if (isUpperLimit) {
         dispatch(changeDatePickerUpperLimit(ownProps.id, date));
       } else {

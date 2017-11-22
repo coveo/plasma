@@ -166,7 +166,7 @@ describe('Date picker', () => {
 
     it('should call handleChange when calling setToToday', () => {
       let withButtonProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { hasSetToNowButton: true });
-      let handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
+      let handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
       datePicker.setProps(withButtonProps);
 
       datePicker.find('button').simulate('click');
@@ -174,42 +174,42 @@ describe('Date picker', () => {
       expect(handleChangeSpy).toHaveBeenCalled();
     });
 
-    it('should call onChange prop on handleChange only if the input value is a valid date', () => {
-      let onChangeSpy = jasmine.createSpy('newSpy');
+    it('should call onBlur prop on handleChangeDate only if the input value is a valid date', () => {
+      let onBlurSpy = jasmine.createSpy('newSpy');
       let simpleDate: string = DateUtils.getSimpleDate(new Date());
-      let newOnChangeSpyProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { onChange: onChangeSpy });
+      let newOnChangeSpyProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { onBlur: onBlurSpy });
       datePicker.setProps(newOnChangeSpyProps);
 
       datePickerInstance['dateInput'].value = 'this is not a date!';
-      datePickerInstance['handleChange'].call(datePickerInstance);
+      datePickerInstance['handleChangeDate'].call(datePickerInstance);
 
-      expect(onChangeSpy).not.toHaveBeenCalled();
+      expect(onBlurSpy).not.toHaveBeenCalled();
 
       datePickerInstance['dateInput'].value = simpleDate;
-      datePickerInstance['handleChange'].call(datePickerInstance);
+      datePickerInstance['handleChangeDate'].call(datePickerInstance);
 
-      expect(onChangeSpy).toHaveBeenCalled();
+      expect(onBlurSpy).toHaveBeenCalled();
     });
 
-    it('should call the onChange prop with a simple date if withTime prop is set to false', () => {
+    it('should call the onBlur prop with a simple date if withTime prop is set to false', () => {
       let simpleDate: string = DateUtils.getSimpleDate(new Date());
 
       datePickerInstance['dateInput'].value = simpleDate;
-      datePickerInstance['handleChange'].call(datePickerInstance);
+      datePickerInstance['handleChangeDate'].call(datePickerInstance);
 
-      expect(DATE_PICKER_BASIC_PROPS.onChange).toHaveBeenCalledWith(DateUtils.getDateFromSimpleDateString(simpleDate),
+      expect(DATE_PICKER_BASIC_PROPS.onBlur).toHaveBeenCalledWith(DateUtils.getDateFromSimpleDateString(simpleDate),
         DATE_PICKER_BASIC_PROPS.upperLimit);
     });
 
-    it('should call the onChange prop with a full date if withTime prop is set to true', () => {
+    it('should call the onBlur prop with a full date if withTime prop is set to true', () => {
       let fullDate: string = DateUtils.getDateWithTimeString(new Date());
       let withTimeProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { withTime: true });
       datePicker.setProps(withTimeProps);
 
       datePickerInstance['dateInput'].value = fullDate;
-      datePickerInstance['handleChange'].call(datePickerInstance);
+      datePickerInstance['handleChangeDate'].call(datePickerInstance);
 
-      expect(withTimeProps.onChange).toHaveBeenCalledWith(DateUtils.getDateFromTimeString(fullDate),
+      expect(withTimeProps.onBlur).toHaveBeenCalledWith(DateUtils.getDateFromTimeString(fullDate),
         withTimeProps.upperLimit);
     });
 
@@ -239,25 +239,17 @@ describe('Date picker', () => {
       expect(DATE_PICKER_BASIC_PROPS.onClick).toHaveBeenCalledWith(DATE_PICKER_BASIC_PROPS.upperLimit);
     });
 
-    it('should call handleChange on input change', () => {
-      let handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
+    it('should call handleChangeDate on input change', () => {
+      let handleChangeDateSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
 
-      datePicker.find('input').simulate('change');
+      datePicker.find('input').simulate('blur');
 
-      expect(handleChangeSpy).toHaveBeenCalled();
+      expect(handleChangeDateSpy).toHaveBeenCalled();
     });
 
-    it('should call prop onBlur when clicking elsewhere than the date picker or a calendar day', () => {
-      const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower, onBlur: jasmine.createSpy('onBlur') });
-      datePicker.setProps(dateProps);
-
-      document.getElementById('App').click();
-      expect(dateProps.onBlur).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call handleChange when clicking elsewhere than the date picker or a calendar day', () => {
+    it('should call handleChangeDate when clicking elsewhere than the date picker or a calendar day', () => {
       const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
-      const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
+      const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
 
       datePicker.setProps(dateProps);
 
@@ -271,7 +263,7 @@ describe('Date picker', () => {
 
     it('should  not call handleChange when clicking the date picker', () => {
       const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
-      const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
+      const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
 
       datePicker.setProps(dateProps);
 
@@ -287,9 +279,9 @@ describe('Date picker', () => {
         document.body.appendChild(calendarDayElement);
       });
 
-      it('should  not call handleChange when clicking the a calendar day', () => {
+      it('should  not call handleChangeDate when clicking the a calendar day', () => {
         const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
-        const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChange');
+        const handleChangeDateSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
 
         datePicker.setProps(dateProps);
 
@@ -297,7 +289,7 @@ describe('Date picker', () => {
         document.getElementById('CalendarDay').setAttribute('class', 'calendar-day');
         document.getElementById('CalendarDay').click();
 
-        expect(handleChangeSpy).not.toHaveBeenCalled();
+        expect(handleChangeDateSpy).not.toHaveBeenCalled();
       });
 
       it('should not call prop onBlur when clicking a calendar day', () => {

@@ -145,13 +145,11 @@ describe('Calendar', () => {
         expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(DateLimits.upper);
       });
 
-    it('should keep the current value set if on click is called without a value', () => {
+    it('should reset the date picker if on click is called without a value', () => {
       store.dispatch(addDatePicker(PICKER_ID, false, undefined, 'any', CALENDAR_ID));
       store.dispatch(selectDate(PICKER_ID, DateLimits.lower));
 
-      const newDate: Date = new Date();
-
-      calendar.props().onClick(PICKER_ID, false, newDate);
+      calendar.props().onClick(PICKER_ID, false, new Date());
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).lowerLimit).toBeDefined();
 
@@ -159,7 +157,7 @@ describe('Calendar', () => {
 
       const datePicker: IDatePickerState = _.findWhere(store.getState().datePickers, { id: PICKER_ID });
 
-      expect(datePicker.lowerLimit).toBe(newDate);
+      expect(datePicker.lowerLimit).toBe(datePicker.appliedLowerLimit);
       expect(datePicker.selected).toBe('');
     });
 

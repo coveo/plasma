@@ -12,6 +12,8 @@ import { DateUtils } from '../../../utils/DateUtils';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ModalFooter } from '../../modal/ModalFooter';
+import { Button } from '../../button/Button';
 
 describe('Date picker', () => {
   const DATE_PICKER_DROPDOWN_BASIC_PROPS: IDatePickerDropdownProps = {
@@ -284,8 +286,8 @@ describe('Date picker', () => {
       let propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { isOpened: true });
       datePickerDropdown.setProps(propsIsOpened);
 
-      expect(datePickerDropdown.find('footer').length).toBe(1);
-      expect(datePickerDropdown.find('footer').find('button').length).toBe(2);
+      expect(datePickerDropdown.find(ModalFooter).length).toBe(1);
+      expect(datePickerDropdown.find(ModalFooter).find(Button).length).toBe(2);
     });
 
     it('should display the apply label passed as a prop or use the default one if the dropdown is opened', () => {
@@ -295,12 +297,12 @@ describe('Date picker', () => {
       let applyLabel: string = 'appliquer';
       let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, { applyLabel });
 
-      expect(datePickerDropdown.find('footer').html()).toContain(DEFAULT_APPLY_DATE_LABEL);
+      expect(datePickerDropdown.find(ModalFooter).find(Button).first().props().name).toContain(DEFAULT_APPLY_DATE_LABEL);
 
       datePickerDropdown.setProps(newProps);
 
-      expect(datePickerDropdown.find('footer').html()).not.toContain(DEFAULT_APPLY_DATE_LABEL);
-      expect(datePickerDropdown.find('footer').html()).toContain(applyLabel);
+      expect(datePickerDropdown.find(ModalFooter).find(Button).first().props().name).not.toContain(DEFAULT_APPLY_DATE_LABEL);
+      expect(datePickerDropdown.find(ModalFooter).find(Button).first().props().name).toContain(applyLabel);
     });
 
     it('should display the cancel label passed as a prop or use the default one if the dropdown is opened', () => {
@@ -310,12 +312,12 @@ describe('Date picker', () => {
       let cancelLabel: string = 'annuler';
       let newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, { cancelLabel });
 
-      expect(datePickerDropdown.find('footer').html()).toContain(DEFAULT_CANCEL_DATE_LABEL);
+      expect(datePickerDropdown.find(ModalFooter).find(Button).last().props().name).toContain(DEFAULT_CANCEL_DATE_LABEL);
 
       datePickerDropdown.setProps(newProps);
 
-      expect(datePickerDropdown.find('footer').html()).not.toContain(DEFAULT_CANCEL_DATE_LABEL);
-      expect(datePickerDropdown.find('footer').html()).toContain(cancelLabel);
+      expect(datePickerDropdown.find(ModalFooter).find(Button).last().props().name).not.toContain(DEFAULT_CANCEL_DATE_LABEL);
+      expect(datePickerDropdown.find(ModalFooter).find(Button).last().props().name).toContain(cancelLabel);
     });
 
     it('should call handleApply when clicking on the apply button', () => {
@@ -324,7 +326,7 @@ describe('Date picker', () => {
 
       let handleApplySpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleApply');
 
-      datePickerDropdown.find('footer').find('button').first().simulate('click');
+      datePickerDropdown.find(ModalFooter).find('button').first().simulate('click');
 
       expect(handleApplySpy).toHaveBeenCalled();
     });
@@ -335,7 +337,7 @@ describe('Date picker', () => {
 
       let handleCancelSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleCancel');
 
-      datePickerDropdown.find('footer').find('button').last().simulate('click');
+      datePickerDropdown.find(ModalFooter).find('button').last().simulate('click');
 
       expect(handleCancelSpy).toHaveBeenCalled();
     });

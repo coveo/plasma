@@ -35,7 +35,6 @@ export interface IDatesSelectionStateProps {
 export interface IDatesSelectionDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
-  onChange?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
   onClick?: (isUpperLimit: boolean) => void;
   onBlur?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
 }
@@ -59,8 +58,8 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
   };
 
   private onDateChange(date: Date, isUpperLimit: boolean, datePicker?: boolean) {
-    if (this.props.onChange) {
-      this.props.onChange(date, isUpperLimit, datePicker);
+    if (this.props.onBlur) {
+      this.props.onBlur(date, isUpperLimit, datePicker);
     }
   }
 

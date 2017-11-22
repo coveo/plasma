@@ -6,9 +6,10 @@ import {
   UPPER_LIMIT_PLACEHOLDER
 } from '../DatesSelection';
 import { DatePicker } from '../DatePicker';
-import { DATES_SEPARATOR } from '../../../utils/DateUtils';
+import { DATES_SEPARATOR, DateUtils } from '../../../utils/DateUtils';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ReactElement, ReactHTMLElement } from 'react';
 
 describe('Date picker', () => {
 
@@ -103,7 +104,7 @@ describe('Date picker', () => {
         let expectedIsUpperLimit: boolean = true;
         let onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
 
-        datesSelection.find(DatePicker).first().props().onChange(expectedDate, expectedIsUpperLimit);
+        datesSelection.find(DatePicker).first().props().onBlur(expectedDate, expectedIsUpperLimit);
 
         expect(onDateChangeSpy).toHaveBeenCalledWith(expectedDate, expectedIsUpperLimit);
       });
@@ -118,17 +119,17 @@ describe('Date picker', () => {
         expect(onDateClickSpy).toHaveBeenCalledWith(expectedIsUpperLimit);
       });
 
-    it('should call onChange prop if defined when calling onDateChange', () => {
-      let onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
+    it('should call onBlur prop if defined when calling onDateChange', () => {
+      let onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
 
       expect(() => {
         datesSelectionInstance['onDateChange'].call(datesSelectionInstance, new Date(), false);
       }).not.toThrow();
 
-      datesSelection.setProps({ onChange: onChangeSpy });
+      datesSelection.setProps({ onBlur: onBlurSpy });
       datesSelectionInstance['onDateChange'].call(datesSelectionInstance, new Date(), false);
 
-      expect(onChangeSpy).toHaveBeenCalled();
+      expect(onBlurSpy).toHaveBeenCalled();
     });
 
     it('should not throw on date click if the onClick prop is not defined', () => {
@@ -214,15 +215,16 @@ describe('Date picker', () => {
       expect(onDateChangeSpy).toHaveBeenCalledTimes(4);
     });
 
-    it('should call onBlur prop on blur of the date picker if the prop is defined', () => {
+    it('should call onBlur prop on blur of the date picker if the date is in the input is valid', () => {
       const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
 
       expect(() => {
-        datesSelection.find(DatePicker).props().onBlur();
+        datesSelection.find(DatePicker).props().onBlur(new Date(), false);
       }).not.toThrow();
 
       datesSelection.setProps({ onBlur: onBlurSpy });
-      datesSelection.find(DatePicker).props().onBlur();
+      (datesSelection.find('input').get(0) as React.HTMLAttributes<HTMLButtonElement>).value = DateUtils.getDateWithTimeString(new Date());
+      datesSelection.find(DatePicker).props().onBlur(new Date(), false);
 
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
