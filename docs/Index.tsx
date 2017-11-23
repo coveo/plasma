@@ -54,7 +54,7 @@ import { ContentExamples } from '../src/components/content/examples/ContentExamp
 import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
 import { InputExamples } from '../src/components/input/examples/InputExamples';
 import { LinkSvgExamples } from '../src/components/svg/examples/LinkSvgExamples';
-import {SvgExamples} from '../src/components/svg/examples/SvgExamples';
+import { SvgExamples } from '../src/components/svg/examples/SvgExamples';
 
 class App extends React.Component<any, any> {
 
