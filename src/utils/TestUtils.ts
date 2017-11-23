@@ -20,6 +20,7 @@ import { tabGroupsReducer } from '../components/tab/TabReducers';
 import * as Redux from 'redux';
 import { dropdownsSearchReducer } from '../components/dropdownSearch/DropdownSearchReducers';
 import { toastsContainerReducer } from '../components/toast/ToastReducers';
+import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers';
 
 export interface IReactVaporTestState extends IReactVaporState {
   lastAction?: Redux.Action;
@@ -43,6 +44,7 @@ export class TestUtils {
       actionBars: actionBarsReducer,
       dropdowns: dropdownsReducer,
       dropdownSearch: dropdownsSearchReducer,
+      flatSelect: flatSelectsReducer,
       rows: tableRowsReducer,
       optionsCycles: optionsCyclesReducer,
       optionPickers: optionPickersReducer,
