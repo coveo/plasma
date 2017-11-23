@@ -1,6 +1,5 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { TableRowActions } from './TableRowActions';
-import { IReduxActionsPayload } from '../../ReactVapor';
+import { ITableRowActionPayload, TableRowActions } from './TableRowActions';
 import * as _ from 'underscore';
 
 export interface ITableRowState {
@@ -12,7 +11,7 @@ export interface ITableRowState {
 export const tableRowInitialState: ITableRowState = { id: undefined, opened: undefined, selected: undefined };
 export const tableRowsInitialState: ITableRowState[] = [];
 
-export const tableRowReducer = (state: ITableRowState = tableRowInitialState, action: IReduxAction<IReduxActionsPayload>): ITableRowState => {
+export const tableRowReducer = (state: ITableRowState = tableRowInitialState, action: IReduxAction<ITableRowActionPayload>): ITableRowState => {
   switch (action.type) {
     case TableRowActions.add:
       return {
@@ -36,7 +35,7 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
   }
 };
 
-export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState, action: IReduxAction<IReduxActionsPayload>): ITableRowState[] => {
+export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState, action: IReduxAction<ITableRowActionPayload>): ITableRowState[] => {
   switch (action.type) {
     case TableRowActions.add:
       return [
