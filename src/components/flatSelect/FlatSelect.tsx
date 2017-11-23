@@ -13,11 +13,11 @@ export interface IFlatSelectOwnProps {
 }
 
 export interface IFlatSelectStateProps {
-  selectedOption?: IFlatSelectOptionProps;
+  selectedOptionId?: string;
 }
 
 export interface IFlatSelectDispatchProps {
-  onMount?: () => void;
+  onRender?: () => void;
   onDestroy?: () => void;
   onOptionClick?: (option: IFlatSelectOptionProps) => void;
 }
@@ -27,8 +27,8 @@ export interface IFlatSelectProps extends IFlatSelectOwnProps, IFlatSelectStateP
 export class FlatSelect extends React.Component<IFlatSelectProps, void> {
 
   componentWillMount() {
-    if (this.props.onMount) {
-      this.props.onMount();
+    if (this.props.onRender) {
+      this.props.onRender();
     }
   }
 
@@ -50,7 +50,7 @@ export class FlatSelect extends React.Component<IFlatSelectProps, void> {
 
   private getOptions(): JSX.Element[] {
     return _.map(this.props.options, (flatSelectOption: IFlatSelectOptionProps, index: number) => {
-      flatSelectOption.selected = this.props.selectedOption && this.props.selectedOption.option === flatSelectOption.option;
+      flatSelectOption.selected = this.props.selectedOptionId && this.props.selectedOptionId === flatSelectOption.id;
       flatSelectOption.onClick = (option: IFlatSelectOptionProps) => this.handleOnOptionClick(option);
 
       return <FlatSelectOption key={index} {...flatSelectOption} />;

@@ -3,13 +3,23 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { FlatSelectOption, IFlatSelectOptionProps } from '../FlatSelectOption';
 import { FlatSelect, IFlatSelectOwnProps, IFlatSelectProps } from '../FlatSelect';
+import { UUID } from '../../../utils/UUID';
 
 describe('FlatSelect', () => {
 
   const id = 'id';
   const defaultOptions: IFlatSelectOptionProps[] = [
-    { option: { content: 'test' } },
-    { option: { content: 'test' } },
+    {
+      id: UUID.generate(),
+      option: {
+        content: 'test',
+      }
+    }, {
+      id: UUID.generate(),
+      option: {
+        content: 'test',
+      }
+    },
   ];
 
   const ownProps: IFlatSelectOwnProps = {
@@ -23,11 +33,6 @@ describe('FlatSelect', () => {
   describe('<FlatSelect />', () => {
     let flatSelect: ReactWrapper<IFlatSelectProps, any>;
     let flatSelectInstance: FlatSelect;
-
-    let defaultOptions: IFlatSelectOptionProps[] = [
-      { option: { content: 'test' } },
-      { option: { content: 'test' } },
-    ];
 
     const renderFlatSelect = (props?: IFlatSelectProps) => {
       flatSelect = mount(
@@ -76,15 +81,15 @@ describe('FlatSelect', () => {
       });
 
       it('should call onMount prop if set when mounting', () => {
-        const onMountSpy = jasmine.createSpy('onMount');
+        const onRenderSpy = jasmine.createSpy('onRender');
 
         expect(() => flatSelectInstance.componentWillMount()).not.toThrow();
 
         flatSelect.unmount();
-        flatSelect.setProps({ onMount: onMountSpy });
+        flatSelect.setProps({ onRender: onRenderSpy });
         flatSelect.mount();
 
-        expect(onMountSpy).toHaveBeenCalled();
+        expect(onRenderSpy).toHaveBeenCalled();
       });
 
       it('should call onDestroy prop if set when will unmount', () => {

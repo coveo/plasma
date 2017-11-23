@@ -31,7 +31,6 @@ export { facetsReducer } from './components/facets/FacetReducers';
 export { changeFacet, emptyFacet, FacetActions } from './components/facets/FacetActions';
 
 // FlatSelect
-
 export { FlatSelect, IFlatSelectProps } from './components/flatSelect/FlatSelect';
 export { FlatSelectConnected } from './components/flatSelect/FlatSelectConnected';
 export { flatSelectsReducer } from './components/flatSelect/FlatSelectReducers';

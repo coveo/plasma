@@ -1,10 +1,9 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { IFlatSelectOptionProps } from './FlatSelectOption';
 import { IReduxActionsPayload } from '../../ReactVapor';
 
 export interface IFlatSelectActionPayload extends IReduxActionsPayload {
   id: string;
-  selectedOption?: IFlatSelectOptionProps;
+  selectedOptionId?: string;
 }
 
 export const FlatSelectActions = {
@@ -13,11 +12,11 @@ export const FlatSelectActions = {
   select: 'SELECT_FLAT_SELECT',
 };
 
-export const addFlatSelect = (id: string, selectedOption: IFlatSelectOptionProps): IReduxAction<IFlatSelectActionPayload> => ({
+export const addFlatSelect = (id: string, selectedOptionId: string): IReduxAction<IFlatSelectActionPayload> => ({
   type: FlatSelectActions.add,
   payload: {
     id,
-    selectedOption,
+    selectedOptionId,
   },
 });
 
@@ -28,10 +27,10 @@ export const removeFlatSelect = (id: string): IReduxAction<IFlatSelectActionPayl
   },
 });
 
-export const selectFlatSelect = (id: string, selectedOption: IFlatSelectOptionProps): IReduxAction<IFlatSelectActionPayload> => ({
+export const selectFlatSelect = (id: string, selectedOptionId: string): IReduxAction<IFlatSelectActionPayload> => ({
   type: FlatSelectActions.select,
   payload: {
     id,
-    selectedOption,
+    selectedOptionId,
   },
 });

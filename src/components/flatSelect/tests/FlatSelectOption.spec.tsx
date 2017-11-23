@@ -4,29 +4,31 @@ import * as _ from 'underscore';
 import { FlatSelectOption, IFlatSelectOptionProps } from '../FlatSelectOption';
 import { Content, IContentProps } from '../../content/Content';
 import { ISvgProps, Svg } from '../../svg/Svg';
+import { UUID } from '../../../utils/UUID';
 
 describe('FlatSelect', () => {
-  describe('<Checkbox />', () => {
+  describe('<FlatSelectOption />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <FlatSelectOption option={{ content: 'test' }} />,
+          <FlatSelectOption id={UUID.generate()} option={{ content: 'test' }} />,
         );
       }).not.toThrow();
     });
   });
 
-  describe('<Checkbox />', () => {
+  describe('<FlatSelectOption />', () => {
     let flatSelect: ReactWrapper<IFlatSelectOptionProps, any>;
     let defaultOption: IContentProps = { content: 'test' };
     let defaultProps: IFlatSelectOptionProps = {
+      id: UUID.generate(),
       option: defaultOption,
     };
     const svg: ISvgProps = {
       svgName: 'domain-google',
       svgClass: 'icon',
     };
-    const getContent: IContentProps = { content: () => <Svg {...svg} />, classes: ['mr1'] };
+    const content: IContentProps = { content: () => <Svg {...svg} />, classes: ['mr1'] };
 
     const renderFlatSelectOption = (props: IFlatSelectOptionProps = defaultProps) => {
       flatSelect = mount(
@@ -78,7 +80,7 @@ describe('FlatSelect', () => {
 
     it('should have 2 <Content/> if a prop prepend is set', () => {
       renderFlatSelectOption(_.extend({}, defaultProps, {
-        prepend: getContent,
+        prepend: content,
       }));
 
       expect(flatSelect.find(Content).length).toBe(2);
@@ -86,7 +88,7 @@ describe('FlatSelect', () => {
 
     it('should have 2 <Content/> if a prop append is set', () => {
       renderFlatSelectOption(_.extend({}, defaultProps, {
-        append: getContent,
+        append: content,
       }));
 
       expect(flatSelect.find(Content).length).toBe(2);

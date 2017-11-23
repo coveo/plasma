@@ -1,27 +1,22 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 import * as _ from 'underscore';
 import { FlatSelectActions, IFlatSelectActionPayload } from './FlatSelectActions';
-import { IFlatSelectOptionProps } from './FlatSelectOption';
 
 export interface IFlatSelectState {
   id: string;
-  selectedOption?: IFlatSelectOptionProps;
+  selectedOptionId?: string;
 }
 
-export const flatSelectInitialState: IFlatSelectState = { id: undefined, selectedOption: undefined };
+export const flatSelectInitialState: IFlatSelectState = { id: undefined, selectedOptionId: undefined };
 export const flatSelectsInitialState: IFlatSelectState[] = [];
 
 export const flatSelectReducer = (state: IFlatSelectState = flatSelectInitialState,
   action: (IReduxAction<IFlatSelectActionPayload>)): IFlatSelectState => {
   switch (action.type) {
     case FlatSelectActions.select:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
-
       return {
         id: state.id,
-        selectedOption: action.payload.selectedOption,
+        selectedOptionId: action.payload.selectedOptionId,
       };
     case FlatSelectActions.add:
       return _.extend({}, action.payload);

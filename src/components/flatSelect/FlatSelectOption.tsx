@@ -4,6 +4,7 @@ import { Content, IContentProps } from '../content/Content';
 import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
 
 export interface IFlatSelectOptionProps {
+  id: string;
   option: IContentProps;
   classes?: string[];
   prepend?: IContentProps;

@@ -8,6 +8,7 @@ import { FlatSelectConnected } from '../FlatSelectConnected';
 import { IFlatSelectOptionProps } from '../FlatSelectOption';
 import { clearState } from '../../../utils/ReduxUtils';
 import { selectFlatSelect } from '../FlatSelectActions';
+import { UUID } from '../../../utils/UUID';
 
 describe('FlatSelect', () => {
 
@@ -17,11 +18,18 @@ describe('FlatSelect', () => {
     let store: Store<IReactVaporState>;
 
     let id: string = 'flatSelect';
-    let defaultOptions: IFlatSelectOptionProps[] = [{
-      option: { content: 'test' },
-    }, {
-      option: { content: 'test 1' },
-    },
+    const defaultOptions: IFlatSelectOptionProps[] = [
+      {
+        id: UUID.generate(),
+        option: {
+          content: 'test',
+        }
+      }, {
+        id: UUID.generate(),
+        option: {
+          content: 'test 1',
+        }
+      },
     ];
 
     const renderDropdownSearchConnected = () => {
@@ -86,20 +94,20 @@ describe('FlatSelect', () => {
       });
 
       it('should get the first option for selectedOption if the selectedOption is undefined as a prop', () => {
-        const optionsProp = flatSelect.props().selectedOption;
+        const optionsPropId = flatSelect.props().selectedOptionId;
 
-        expect(optionsProp).toBeDefined();
-        expect(optionsProp).toBe(defaultOptions[0]);
+        expect(optionsPropId).toBeDefined();
+        expect(optionsPropId).toBe(defaultOptions[0].id);
       });
 
       it('should get the current selectedOption as a prop', () => {
-        store.dispatch(selectFlatSelect(id, defaultOptions[1]));
+        store.dispatch(selectFlatSelect(id, defaultOptions[1].id));
 
         flatSelect = wrapper.find(FlatSelect).first();
-        const optionsProp = flatSelect.props().selectedOption;
+        const optionsPropId = flatSelect.props().selectedOptionId;
 
-        expect(optionsProp).toBeDefined();
-        expect(optionsProp).toBe(defaultOptions[1]);
+        expect(optionsPropId).toBeDefined();
+        expect(optionsPropId).toBe(defaultOptions[1].id);
       });
     });
 
@@ -116,13 +124,13 @@ describe('FlatSelect', () => {
       });
 
       it('should get what to do on onMount as a prop', () => {
-        const onMountProp = flatSelect.props().onMount;
+        const onMountProp = flatSelect.props().onRender;
 
         expect(onMountProp).toBeDefined();
       });
 
       it('should add the first option as optionSelection on onMount', () => {
-        expect(store.getState().flatSelect[0].selectedOption).toBe(defaultOptions[0]);
+        expect(store.getState().flatSelect[0].selectedOptionId).toBe(defaultOptions[0].id);
       });
 
       it('should get what to do on onOptionClick as a prop', () => {
@@ -132,11 +140,11 @@ describe('FlatSelect', () => {
       });
 
       it('should add the optionSelected in the state on onOptionClick', () => {
-        expect(store.getState().flatSelect[0].selectedOption).toBe(defaultOptions[0]);
+        expect(store.getState().flatSelect[0].selectedOptionId).toBe(defaultOptions[0].id);
 
         flatSelect.props().onOptionClick(defaultOptions[1]);
 
-        expect(store.getState().flatSelect[0].selectedOption).toBe(defaultOptions[1]);
+        expect(store.getState().flatSelect[0].selectedOptionId).toBe(defaultOptions[1].id);
       });
     });
   });
