@@ -20,7 +20,7 @@ export interface ITableHeaderStateProps {
 }
 
 export interface ITableHeaderCellDispatchProps {
-  onMount?: (id: string, tableId: string) => void;
+  onMount?: (id: string, tableId: string, attributeToSort: string) => void;
   onSort?: (id: string, tableId: string, attributeToSort: string) => void;
   onUnmount?: (id: string) => void;
 }
@@ -33,7 +33,7 @@ export interface ITableHeaderCellProps extends
 export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any> {
   componentDidMount() {
     if (this.props.onMount) {
-      this.props.onMount(this.props.id, this.props.tableId, this.props.attributeToSort);
+      this.props.onMount(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
     }
   }
 
@@ -44,8 +44,8 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
   }
 
   handleClick(e: React.MouseEvent<any>) {
-    if (this.props.onSort && this.props.tableId && this.props.attributeToSort) {
-      this.props.onSort(this.props.id, this.props.tableId, this.props.attributeToSort);
+    if (this.props.onSort && this.props.tableRefForSort.tableId && this.props.tableRefForSort.attributeToSort) {
+      this.props.onSort(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
     }
 
     if (this.props.onClickCallback) {
@@ -54,9 +54,9 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
   }
 
   render() {
-    const tableCellHasSort = !_.isUndefined(this.props.sorted) && !!this.props.attributeToSort;
+    const tableCellHasSort = !_.isUndefined(this.props.sorted) && !!this.props.tableRefForSort;
     const sortIcon: JSX.Element = tableCellHasSort
-      ? <Svg svgName='asc-desc' className='icon' />
+      ? <div className='admin-sort-icon'><Svg svgName='asc-desc' className='tables-sort icon' /></div>
       : null;
 
     const headerCellClasses = classNames(this.props.className, {
@@ -68,7 +68,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
     return (
       <th
         className={headerCellClasses}
-        onClick={this.handleClick}>
+        onClick={(e: React.MouseEvent<any>) => this.handleClick(e)}>
         {this.props.title}
         {sortIcon}
       </th>

@@ -5,7 +5,7 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 import * as _ from 'underscore';
 
 const {
-    ASCENDING,
+  ASCENDING,
   DESCENDING,
   UNSORTED,
 } = TableSortingOrder;
@@ -23,7 +23,7 @@ export interface ITableHeaderCellsState {
 export const tableHeaderCellInitialState: ITableHeaderCellState = {
   id: undefined,
   tableId: undefined,
-  sorted: TableSortingOrder.UNSORTED,
+  sorted: UNSORTED,
 };
 
 export const tableHeaderCellsInitialState: ITableHeaderCellsState = {};
@@ -42,14 +42,13 @@ export const tableHeaderCellReducer = (
     case TableHeaderCellActions.sortFromHeaderCell:
       if (state.id !== action.payload.id) {
         return state.tableId === action.payload.tableId
-          ? _.extend({}, state, { sorted: UNSORTED })
+          ? { ...state, sorted: UNSORTED }
           : state;
       }
 
-      debugger;
       return _.contains([UNSORTED, DESCENDING], state.sorted)
-        ? _.extend({}, state, { sorted: ASCENDING })
-        : _.extend({}, state, { sorted: DESCENDING });
+        ? { ...state, sorted: ASCENDING }
+        : { ...state, sorted: DESCENDING };
     default:
       return state;
   }
@@ -66,9 +65,7 @@ export const tableHeaderCellsReducer = (
         [action.payload.id]: tableHeaderCellReducer(undefined, action),
       };
     case TableHeaderCellActions.remove:
-      const newState = _.extend({}, state);
-      delete newState[action.payload.id];
-      return newState;
+      return _.omit(state, action.payload.id);
     case TableHeaderCellActions.sortFromHeaderCell:
       return _.mapObject(
         state,

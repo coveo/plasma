@@ -1,11 +1,11 @@
-import { ITableData, ITableRowData, Table } from '../TableBase';
+import { ITableData, ITableRowData, Table } from '../Table';
 import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
 import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
-import * as lorem from 'lorem-ipsum';
+import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-const generateText = () => lorem({ count: 1, sentenceUpperBound: 3 });
+const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
 const tableData: ITableData = {
   byId: {
@@ -68,7 +68,7 @@ const collapsibleRowDataParser = (rowData: ITableRowData): JSX.Element => (
   </TableCollapsibleRowConnected>
 );
 
-export class TableBaseExamples extends React.Component<any, any> {
+export class TableExamples extends React.Component<any, any> {
 
   render() {
     return (
@@ -84,9 +84,9 @@ export class TableBaseExamples extends React.Component<any, any> {
               id: 'nice',
               extraContainerClasses: ['mod-border-top'],
               actions: [
-                { name: 'edit', icon: 'edit', enabled: true, primary: true },
-                { name: 'view', icon: 'view', enabled: true, primary: false },
-                { name: 'copy', icon: 'copy', enabled: true, primary: false },
+                { name: 'edit', icon: 'edit', enabled: true, primary: true, onClick: () => alert('yaaa') },
+                { name: 'view', icon: 'view', enabled: true, primary: false, onClick: () => alert('yaaaaaaaa') },
+                { name: 'copy', icon: 'copy', enabled: true, primary: false, onClick: () => alert('yaaaaaaaaaaaa') },
               ],
             }}
             predicates={[
@@ -97,7 +97,7 @@ export class TableBaseExamples extends React.Component<any, any> {
             blankSlates={{
               noResultsDefault: {},
             }}
-            tableHeader={{ connectCell: true, columns: [{ title: 'hey', tableRefForSort: { tableId: 'test', attributeToSort: 'attribute1' }, id: 'test' }, { title: 'ho' }, { title: 'hey' }, { title: 'ho' }, { title: '' }] }}
+            tableHeader={{ connectCell: true, columns: [{ title: 'hey', tableRefForSort: { tableId: 'test', attributeToSort: 'attribute1' }, id: 'test' }, { title: 'ho' }, { title: 'hey' }, { title: 'ho', tableRefForSort: { tableId: 'test', attributeToSort: 'attribute2' }, id: 'test101' }, { title: '' }] }}
             perPage={{ id: 'noice', totalEntries: 300 }}
             pagination={{ id: 'noiiiice', totalPages: 10 }}
             lastUpdated={{ id: 'hello' }}

@@ -1,4 +1,6 @@
+import { ITableCollapsibleRowProps } from './TableCollapsibleRow';
 import { ITableHeaderProps, TableHeader } from './TableHeader';
+import { ITableHeadingRowProps } from './TableHeadingRow';
 import { TableRowWrapper } from './TableRowWrapper';
 import { IActionBarProps } from '../actions/ActionBar';
 import { ActionBarConnected } from '../actions/ActionBarConnected';
@@ -17,22 +19,16 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-export interface IHeadingOrCollapsibleData {
+export interface IData {
   [attribute: string]: any;
 };
 
 export interface ITableRowData {
-  id: string;
-  headingData: IHeadingOrCollapsibleData;
-  collapsibleData?: IHeadingOrCollapsibleData;
-};
-
-export interface ITableRowsData {
-  [id: string]: ITableRowData;
+  [id: string]: IData;
 };
 
 export interface ITableData {
-  byId: ITableRowsData;
+  byId: ITableRowData;
   allIds: string[];
   displayedIds: string[];
 }
@@ -40,9 +36,8 @@ export interface ITableData {
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
   initialTableData: ITableData;
-  headingRowDataParser: (rowData: ITableRowData) => JSX.Element;
-  collapsibleRowDataParser?: (rowData: ITableRowData) => JSX.Element;
-  rawDataReceivedOnFetchOrElseParser?: (data: any) => ITableRowsData;
+  tableRowDataToHeadingRowProps: (rowData: ITableRowData) => ITableHeadingRowProps;
+  tableRowDataToCollapsibleRowProps?: (rowData: ITableRowData) => ITableCollapsibleRowProps;
 };
 
 export interface ITableChildrenProps {
@@ -71,14 +66,24 @@ export interface ITableChildrenProps {
 
 export interface ITableStateProps {
   tableData?: ITableData;
-  hasPredicate?: boolean;
-  isFiltered?: boolean;
+  filteredWith?: string;
   isInError?: boolean;
   currentPerPage?: number;
   currentPage?: number;
 };
 
-export interface ITableProps extends ITableOwnProps, ITableChildrenProps, ITableStateProps { }
+export interface ITableDispatchProps {
+  onMount?: (id: string) => void;
+  onUnmount?: (id: string) => void;
+  onFilter?: () => void;
+  onPredicate?: () => void;
+  onRowClick?: () => void;
+  onSort?: () => void;
+  onPageChange?: () => void;
+  onPerPageChange?: () => void;
+}
+
+export interface ITableProps extends ITableOwnProps, ITableChildrenProps, ITableStateProps, ITableDispatchProps { }
 
 export class Table extends React.Component<ITableProps, any> {
   constructor(props: ITableProps) {

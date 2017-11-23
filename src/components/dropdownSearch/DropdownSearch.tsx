@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { ISvgProps, Svg } from '../svg/Svg';
-import * as _ from 'underscore';
-import * as classNames from 'classnames';
-import { FilterBox } from '../filterBox/FilterBox';
+import { DropdownPrepend } from './DropdownPrepend';
 import { keyCode } from '../../utils/InputUtils';
+import { FilterBox } from '../filterBox/FilterBox';
+import { ISvgProps, Svg } from '../svg/Svg';
+import * as classNames from 'classnames';
+import * as React from 'react';
+import * as _ from 'underscore';
 import * as s from 'underscore.string';
 
 export interface IDropdownOption {
@@ -26,8 +27,9 @@ export interface IDropdownSearchStateProps {
 }
 
 export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownSearch> {
-  id: string;
+  id?: string;
   modMenu?: boolean;
+  fixedPrepend?: string;
   containerClasses?: string[];
   defaultOptions?: IDropdownOption[];
   defaultSelectedOption?: IDropdownOption;
@@ -202,14 +204,18 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     );
   }
 
+  protected getMainInputPrepend(option: IDropdownOption): JSX.Element {
+    const prepend = this.props.fixedPrepend || (option && option.prefix);
+
+    return prepend
+      ? <DropdownPrepend key={prepend} prepend={prepend} />
+      : null;
+  }
+
   protected getDropdownPrepend(option: IDropdownOption): JSX.Element {
-    if (option && option.prefix) {
-      return <span key={option.prefix}
-        className='dropdown-prepend'>
-        {option.prefix}
-      </span>;
-    }
-    return null;
+    return option && option.prefix
+      ? <DropdownPrepend key={option.prefix} prepend={option.prefix} />
+      : null;
   }
 
   protected getMainInput(): JSX.Element {
@@ -239,7 +245,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
       }}
       ref={(input: HTMLButtonElement) => { this.dropdownButton = input; }}
       disabled={!!this.props.isDisabled}>
-      {this.getDropdownPrepend(this.getSelectedOption())}
+      {this.getMainInputPrepend(this.getSelectedOption())}
       {this.getSvg(this.getSelectedOption())}
       {this.getSelectedOptionElement()}
       <span className='dropdown-toggle-arrow'></span>
