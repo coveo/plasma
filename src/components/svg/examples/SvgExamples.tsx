@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Svg} from '../Svg';
+import { Svg } from '../Svg';
 
 export class SvgExamples extends React.Component<any, any> {
   render() {
