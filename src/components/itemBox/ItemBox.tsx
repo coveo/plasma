@@ -18,7 +18,7 @@ export interface IItemBoxProps {
   onOptionClick?: (option: IItemBoxProps) => void;
 }
 
-export class ItemBox extends React.Component<IItemBoxProps, void> {
+export class ItemBox extends React.Component<IItemBoxProps, {}> {
 
   static defaultProps: Partial<IItemBoxProps> = {
     tooltip: {

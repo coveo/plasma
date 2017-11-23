@@ -22,7 +22,7 @@ export { ToggleForm } from './components/childForm/ToggleForm';
 export { FilterBox } from './components/filterBox/FilterBox';
 export { FilterBoxConnected } from './components/filterBox/FilterBoxConnected';
 export { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
-export { filterThrough } from './components/filterBox/FilterBoxActions';
+export { FilterActions, filterThrough } from './components/filterBox/FilterBoxActions';
 
 // Facets
 export { Facet, IFacet } from './components/facets/Facet';
@@ -97,7 +97,7 @@ export { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
 export { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
 export { TableEmptyRow } from './components/tables/TableEmptyRow';
 export { tableRowsReducer } from './components/tables/TableRowReducers';
-export { TableRowActions, toggleRow } from './components/tables/TableRowActions';
+export { TableRowActions, selectRow } from './components/tables/TableRowActions';
 
 // Prompts
 export { promptsReducer } from './components/inlinePrompt/InlinePromptReducers';

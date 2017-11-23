@@ -9,6 +9,9 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   onBlur?: () => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   isAutoFocus?: boolean;
+  maxWidth?: number;
+  withTitleOnInput?: boolean;
+  truncate?: boolean;
 }
 
 export interface IFilterBoxStateProps {
@@ -76,24 +79,33 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
   }
 
   render() {
-    let filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
-    let filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
+    const inputMaxWidth = { maxWidth: `${this.props.maxWidth}px` };
+    const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
+    const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
+    const filterInputClasses = classNames('filter-box', { 'truncate': this.props.truncate });
+    const svgClearClasses = classNames({ 'hidden': !(this.filterInput && this.filterInput.value) });
 
     return (
-      <div id={this.props.id} className={filterBoxContainerClasses}>
+      <div
+        id={this.props.id}
+        className={filterBoxContainerClasses}
+        style={inputMaxWidth}
+        title={this.filterInput && this.props.withTitleOnInput ? this.filterInput.value : undefined}>
         <input
           ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
           type='text'
-          className='filter-box'
+          className={filterInputClasses}
           placeholder={filterPlaceholder}
           onChange={() => this.handleChange()}
           onBlur={() => this.handleOnBlur()}
           onFocus={(e: React.FocusEvent<any>) => { this.placeCursorAtEndOfInputValue(e); }}
           onKeyDown={(e) => this.handleOnKeyDown(e)}
           value={this.props.filterText}
+          style={inputMaxWidth}
+
           autoFocus={this.props.isAutoFocus}
         />
-        <Svg svgName='clear' className='hidden' svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
+        <Svg svgName='clear' className={svgClearClasses} svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
         <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
       </div>
     );

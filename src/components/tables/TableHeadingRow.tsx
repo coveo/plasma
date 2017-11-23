@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import { TableCollapsibleRowToggle } from './TableCollapsibleRowToggle';
 import * as React from 'react';
 
@@ -8,6 +9,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
 
 export interface ITableHeadingRowStateProps {
   opened?: boolean;
+  selected?: boolean;
 }
 
 export interface ITableHeadingRowDispatchProps {
@@ -40,10 +42,12 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
   }
 
   render() {
-
     let toggle: JSX.Element = this.props.isCollapsible ? <TableCollapsibleRowToggle isExpanded={this.props.opened} /> : <td></td>;
-    let rowClasses: string = this.props.isCollapsible ? 'heading-row ' : '';
-    rowClasses += this.props.opened ? 'opened selected' : '';
+    const rowClasses = classNames({
+      'heading-row': this.props.isCollapsible,
+      'selected': this.props.selected,
+      'opened': this.props.opened,
+    });
 
     return (
       <tr className={rowClasses} onClick={() => this.handleClick()}>

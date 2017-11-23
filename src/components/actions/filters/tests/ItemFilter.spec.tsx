@@ -1,4 +1,5 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
+import { Tooltip, ITooltipProps } from '../../../tooltip/Tooltip';
 import { ItemFilter, IItemFilterProps, ELLIPSIS } from '../ItemFilter';
 import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
@@ -100,6 +101,26 @@ describe('Item filter', () => {
       itemFilterComponent.setProps(cropProps);
 
       expect(itemFilterComponent.find('.item-filter-item').text().length).toBe(longItem.length);
+    });
+
+    describe('itemTooltipProps', () => {
+      it('should not add a tooltip on the item if no props are passed', () => {
+        expect(itemFilterComponent.find(Tooltip).length).toBe(0);
+      });
+
+      it('should add a tooltip to the item if tooltip props are passed', () => {
+        itemFilterComponent.setProps({ itemTooltipProps: { title: 'what a nice feature' } });
+        expect(itemFilterComponent.find(Tooltip).length).toBe(1);
+      });
+
+      it('should add all tooltip options passed to itemTooltipProps to the item tooltip', () => {
+        const itemTooltipProps: ITooltipProps = { title: 'noice', placement: 'bottom', container: 'body' };
+        itemFilterComponent.setProps({ itemTooltipProps });
+
+        _.pairs(itemTooltipProps).forEach((tooltipProp: string[]) => {
+          expect(itemFilterComponent.find(Tooltip).prop(tooltipProp[0])).toBe(tooltipProp[1]);
+        });
+      });
     });
   });
 });

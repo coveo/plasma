@@ -20,6 +20,7 @@ export const ToastAction = {
 
 export interface IToastAddOptionalPayload {
   dismiss?: number;
+  dismissible?: boolean;
   type?: string;
   animate?: boolean;
   content?: ComponentContent;
@@ -37,6 +38,7 @@ export const addToast = (containerId: string, title: string, optionals: IToastAd
     id: _.uniqueId('toast'),
     type: optionals.type,
     dismiss: optionals.dismiss,
+    dismissible: optionals.dismissible,
     animate: optionals.animate,
     content: optionals.content,
   }
