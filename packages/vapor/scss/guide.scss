@@ -9,19 +9,6 @@
 @import 'animations';
 @import 'helpers';
 
-// Utility
-.coveo-styleguide {
-  @import 'typography/utility';
-  @import 'utility/align';
-  @import 'utility/border';
-  @import 'utility/flex';
-  @import 'utility/layout';
-  @import 'utility/position';
-  @import 'utility/white-space';
-  @import 'utility/spaced-boxes';
-  @import 'utility/colors';
-}
-
 //Progress bar
 @import 'elements/progress-bar';
 
@@ -112,4 +99,17 @@
   @import 'forms/flex-form';
   @import 'forms/table-form';
   @import 'forms/form-validation';
+}
+
+// Utility
+.coveo-styleguide {
+  @import 'typography/utility';
+  @import 'utility/align';
+  @import 'utility/border';
+  @import 'utility/flex';
+  @import 'utility/layout';
+  @import 'utility/position';
+  @import 'utility/white-space';
+  @import 'utility/spaced-boxes';
+  @import 'utility/colors';
 }
