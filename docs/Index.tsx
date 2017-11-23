@@ -55,6 +55,7 @@ import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamp
 import { InputExamples } from '../src/components/input/examples/InputExamples';
 import { LinkSvgExamples } from '../src/components/svg/examples/LinkSvgExamples';
 import { SvgExamples } from '../src/components/svg/examples/SvgExamples';
+import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
 
 class App extends React.Component<any, any> {
 
@@ -76,6 +77,7 @@ class App extends React.Component<any, any> {
           <ItemBoxExamples />
           <ButtonExamples />
           <DropdownSearchExamples />
+          <FlatSelectExamples />
           <TooltipExamples />
           <ChosenSelectExamples />
           <UserFeedbackExample />

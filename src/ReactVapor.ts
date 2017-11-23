@@ -20,6 +20,7 @@ import { ISubNavigationState } from './components/subNavigation/SubNavigationRed
 import { ITabGroupState } from './components/tab/TabReducers';
 import { IDropdownSearchState } from './components/dropdownSearch/DropdownSearchReducers';
 import { IToastsState } from './components/toast/ToastReducers';
+import { IFlatSelectState } from './components/flatSelect/FlatSelectReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -32,6 +33,7 @@ export interface IReactVaporState {
   actionBars?: IActionBarState[];
   dropdowns?: IDropdownState[];
   dropdownSearch?: IDropdownSearchState[];
+  flatSelect?: IFlatSelectState[];
   rows?: ITableRowState[];
   optionsCycles?: IOptionsCycleState[];
   datePickers?: IDatePickerState[];
@@ -46,6 +48,7 @@ export interface IReactVaporState {
 export interface IReduxActionsPayload {
   id?: string;
   ids?: string[];
+  isCollapsible?: boolean;
   facet?: string;
   facetRow?: IFacet;
   filterText?: string;

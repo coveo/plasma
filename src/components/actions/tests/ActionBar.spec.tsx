@@ -1,6 +1,6 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { IActionOptions } from '../Action';
-import { ActionBar, IActionBarProps } from '../ActionBar';
+import { ActionBar, IActionBarProps, DEFAULT_ACTIONS_CONTAINER_CLASSES } from '../ActionBar';
 import { InlinePrompt, IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
@@ -131,6 +131,38 @@ describe('Actions', () => {
       actionBar.find('.item-filter-clear').simulate('click');
 
       expect(clearItemFilter).toHaveBeenCalled();
+    });
+
+    describe('removeDefaultContainerClasses', () => {
+      it('should leave the default container classes if it is not set', () => {
+        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+          expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+        });
+      });
+
+      it('should leave the default container classes if it is set to false', () => {
+        actionBar.setProps({ removeDefaultContainerClasses: false });
+        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+          expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+        });
+      });
+
+      it('should remove the default container classes if it is set to true', () => {
+        actionBar.setProps({ removeDefaultContainerClasses: true });
+        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+          expect(actionBar.find('div').first().hasClass(className)).toBe(false);
+        });
+      });
+    });
+
+    describe('extraContainerClasses', () => {
+      it('should add extra classes to the container div if extra container classes are passed', () => {
+        const extraContainerClasses = ['test', 'with', 'multiple', 'classes', 'tobesure'];
+        actionBar.setProps({ extraContainerClasses });
+        extraContainerClasses.forEach((className: string) => {
+          expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+        });
+      });
     });
   });
 });

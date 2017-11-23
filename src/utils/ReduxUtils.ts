@@ -1,6 +1,6 @@
-import { extend } from 'underscore';
 import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
+import { extend } from 'underscore';
 
 export class ReduxUtils {
   static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
@@ -20,7 +20,8 @@ export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, me
   return target => (ReactRedux.connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any);
 }
 
-export interface IReduxAction<T> extends Redux.Action {
+export interface IReduxAction<T = {}> extends Redux.Action {
+  type: string;
   payload?: T;
 }
 
