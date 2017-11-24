@@ -46,10 +46,16 @@ import { ButtonExamples } from '../src/components/button/examples/ButtonExamples
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+import { ToastExamples } from '../src/components/toast/examples/ToastExamples';
+import { ToastConnectedExamples } from '../src/components/toast/examples/ToastConnectedExamples';
+import { RadioExamples } from '../src/components/radio/examples/RadioExamples';
+import { ChildFormExamples } from '../src/components/childForm/examples/ChildFormExamples';
+import { CheckboxExamples } from '../src/components/checkbox/examples/CheckboxExamples';
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
 import { ListBoxExamples } from '../src/components/listBox/examples/ListBoxExamples';
 import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
 import { InputExamples } from '../src/components/input/examples/InputExamples';
+import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
 
 class App extends React.Component<any, any> {
 
@@ -86,6 +92,7 @@ class App extends React.Component<any, any> {
           <ListBoxExamples />
           <ButtonExamples />
           <DropdownSearchExamples />
+          <FlatSelectExamples />
           <TooltipExamples />
           <ChosenSelectExamples />
           <UserFeedbackExample />
@@ -124,7 +131,12 @@ class App extends React.Component<any, any> {
           <DatePickerDropdownConnectedSingleDateExamples />
           <MultilineInputExamples />
           <BlankSlateExample />
+          <ToastExamples />
+          <ToastConnectedExamples />
           <InputExamples />
+          <RadioExamples />
+          <CheckboxExamples />
+          <ChildFormExamples />
         </div>
       </Provider>
     );

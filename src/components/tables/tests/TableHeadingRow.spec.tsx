@@ -69,8 +69,8 @@ describe('Tables', () => {
     });
 
     it('should have class opened if opened prop is set to true', () => {
-      let expectedClass = 'opened';
-      let newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { opened: true });
+      const expectedClass = 'opened';
+      const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { opened: true });
 
       expect(tableHeadingRow.find('tr').hasClass(expectedClass)).toBe(false);
 

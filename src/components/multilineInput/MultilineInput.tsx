@@ -3,6 +3,7 @@ import * as _ from 'underscore';
 import { UUID } from '../../utils/UUID';
 import { DeletableInput } from './DeletableInput';
 import { AddInput } from './AddInput';
+import { Label } from '../input/Label';
 
 export interface IMultilineInputValue {
   id: string;
@@ -68,11 +69,11 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
     return (
       <li key={`delete-input-${inputValue.id}`}>
         <DeletableInput
-          label={index === 0 ? this.props.title : ''}
           placeholder={this.props.placeholder}
           value={inputValue.value}
-          onChange={(newValue: string) => this.handleDeleteInputChange(newValue, inputValue.id)}
-        />
+          onBlur={(newValue: string) => this.handleDeleteInputChange(newValue, inputValue.id)}>
+          <Label>{index === 0 ? this.props.title : ''}</Label>
+        </DeletableInput>
       </li>
     );
   }
@@ -88,12 +89,11 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
           {deletableInputs}
         </ul>
         <AddInput
-          label={this.props.title}
-          labelClasses={this.props.values && this.props.values.length === 0 ? ['first-label'] : []}
           placeholder={this.props.placeholder}
           value=''
-          onChange={(newValue: string) => this.handleAddInputChange(newValue)}
-        />
+          onBlur={(newValue: string) => this.handleAddInputChange(newValue)}>
+          <Label classes={this.props.values && this.props.values.length === 0 ? ['first-label'] : []}>{this.props.title}</Label>
+        </AddInput>
       </div>
     );
   }

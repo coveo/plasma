@@ -18,7 +18,7 @@ export class ListBox extends React.Component<IListBoxProps, void> {
     },
   };
 
-  getClasses(): string {
+  private getClasses(): string {
     return classNames('list-box', this.props.classes);
   }
 
@@ -27,13 +27,9 @@ export class ListBox extends React.Component<IListBoxProps, void> {
       .map((item: IItemBoxProps) => <ItemBox {..._.extend(item, { onOptionClick: this.props.onOptionClick }) } />)
       .value();
 
-    return items.length ? items : <ItemBox {..._.extend(this.props.noResultItem, { classes: ['multi-line'] }) } />;
-  }
-
-  handleOnOptionClick = (option: IItemBoxProps) => {
-    if (this.props.onOptionClick) {
-      this.props.onOptionClick(option);
-    }
+    return items.length
+      ? items
+      : <ItemBox {..._.extend(this.props.noResultItem, { classes: ['multi-line'] }) } />;
   }
 
   render() {

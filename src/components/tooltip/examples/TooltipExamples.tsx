@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tooltip } from '../Tooltip';
 
-export class TooltipExamples extends React.Component<any, void> {
+export class TooltipExamples extends React.Component<{}, {}> {
 
   render() {
     return (

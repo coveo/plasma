@@ -98,6 +98,26 @@ describe('FilterBox', () => {
       expect(clearIcon.hasClass('hidden')).toBe(true);
     });
 
+    it('should remove the hidden class of the clear icon if there is a value in the input without a change event', () => {
+      const clearIcon = filterBox.find('span').first();
+
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+
+      filterBoxInstance.filterInput.value = 'non empty';
+      filterBox.update();
+
+      expect(clearIcon.hasClass('hidden')).toBe(false);
+    });
+
+    it('should leave the hidden class of the clear icon if there is an empty value in the input without a change event', () => {
+      const clearIcon = filterBox.find('span').first();
+
+      filterBoxInstance.filterInput.value = '';
+      filterBox.update();
+
+      expect(clearIcon.hasClass('hidden')).toBe(true);
+    });
+
     it('should clear the filter input when clicking the clear icon', () => {
       let clearIcon = filterBox.find('span').first();
 
@@ -155,6 +175,69 @@ describe('FilterBox', () => {
       element.simulate('focus');
 
       expect(placeCursorAtEndOfInputValueSpy).toHaveBeenCalledTimes(1);
+    });
+
+    describe('withTitleOnInput', () => {
+      beforeEach(() => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+            withTitleOnInput={true}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+      });
+
+      it('should not have a title on the input container if the input has a value in it', () => {
+        expect(filterBox.find('.filter-container').prop('title')).toBeUndefined();
+      });
+
+      it('should have a title on the input container if the input has a value in it', () => {
+        (filterBox.find('.filter-box').get(0) as any).value = 'test';
+        filterBox.update();
+
+        expect(filterBox.find('.filter-container').prop('title')).toBe('test');
+      });
+    });
+
+    describe('maxWidth', () => {
+      it('should set a max width in px on the filter container and the filter input when max width is set', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+            maxWidth={130}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-container').prop('style')).toEqual({ maxWidth: '130px' });
+        expect(filterBox.find('.filter-box').prop('style')).toEqual({ maxWidth: '130px' });
+      });
+    });
+
+    describe('truncate', () => {
+      it('should not add the "truncate" class to the filter input if it is not set', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(false);
+      });
+
+      it('should add the "truncate" class to the filter input if it is true', () => {
+        filterBox = mount(
+          <FilterBox
+            id={id}
+            truncate={true}
+          />,
+          { attachTo: document.getElementById('App') },
+        );
+
+        expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(true);
+      });
     });
   });
 });

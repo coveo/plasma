@@ -14,7 +14,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
   svgClass?: string;
 }
 
-export class BlankSlate extends React.Component<IBlankSlateProps, void> {
+export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
 
   static defaultProps: Partial<IBlankSlateProps> = {
     title: '',

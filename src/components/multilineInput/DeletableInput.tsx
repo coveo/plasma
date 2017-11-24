@@ -5,8 +5,8 @@ import { Input, IInputProps } from '../input/Input';
 
 export class DeletableInput extends React.Component<IInputProps, any> {
   private onDeleteClicked() {
-    if (this.props.onChange) {
-      this.props.onChange('');
+    if (this.props.onBlur) {
+      this.props.onBlur('');
     }
   }
 
@@ -14,6 +14,7 @@ export class DeletableInput extends React.Component<IInputProps, any> {
     const props: IInputProps = _.omit(this.props, ['children']);
     return (
       <Input {...props }>
+        {this.props.children}
         <DeleteInputAction onClick={() => this.onDeleteClicked()} />
       </Input>
     );

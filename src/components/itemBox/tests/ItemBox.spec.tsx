@@ -25,7 +25,7 @@ describe('ItemBox', () => {
     beforeEach(() => {
       ItemBoxComponent = mount(
         <ItemBox {...defaultProps} />,
-        {attachTo: document.getElementById('App')},
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -54,7 +54,7 @@ describe('ItemBox', () => {
     const renderItemBox = (props: Partial<IItemBoxProps> = {}) => {
       ItemBoxComponent = mount(
         <ItemBox {..._.defaults(props, defaultProps) } />,
-        {attachTo: document.getElementById('App')},
+        { attachTo: document.getElementById('App') },
       );
     };
 

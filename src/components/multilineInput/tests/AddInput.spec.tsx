@@ -31,36 +31,47 @@ describe('AddInput', () => {
       addInput.detach();
     });
 
-    it('should call property onChange when input loses focus and prop is specified', () => {
-      let blurSpy = jasmine.createSpy('onBlur');
-      let innerInput = addInput.find('input');
+    it('should call property onBlur when input loses focus and prop is specified', () => {
+      const blurSpy = jasmine.createSpy('onBlur');
+      const innerInput = addInput.find('input');
 
       innerInput.simulate('blur');
       expect(blurSpy).not.toHaveBeenCalled();
 
-      addInput.setProps({ onChange: blurSpy });
-      addInput.mount();
+      addInput.setProps({ onBlur: blurSpy }).mount();
 
       innerInput.simulate('blur');
       expect(blurSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should call property onChange when inner input has focus and Enter key is released', () => {
-      let changeSpy = jasmine.createSpy('onChange');
-      let innerInput = addInput.find('input');
+    it('should call property onBlur when inner input has focus and Enter key is released', () => {
+      const blurSpy = jasmine.createSpy('onBlur');
+      const innerInput = addInput.find('input');
 
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
-      expect(changeSpy).not.toHaveBeenCalled();
+      expect(blurSpy).not.toHaveBeenCalled();
 
-      addInput.setProps({ onChange: changeSpy });
-      addInput.mount();
+      addInput.setProps({ onBlur: blurSpy }).mount();
 
       innerInput.simulate('keyUp', {
         key: 'Enter'
       });
-      expect(changeSpy).toHaveBeenCalledTimes(1);
+      expect(blurSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call property onBlur when inner add button is clicked', () => {
+      const blurSpy = jasmine.createSpy('onBlur');
+      const innerAddInputButton = addInput.find('.input-actions');
+
+      innerAddInputButton.simulate('click');
+      expect(blurSpy).not.toHaveBeenCalled();
+
+      addInput.setProps({ onBlur: blurSpy }).mount();
+
+      innerAddInputButton.simulate('click');
+      expect(blurSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

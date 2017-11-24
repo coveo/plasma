@@ -19,7 +19,7 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   onSelectUnselectable: () => void;
 }
 
-export class CalendarDay extends React.Component<ICalendarDayProps, void> {
+export class CalendarDay extends React.Component<ICalendarDayProps, {}> {
   static DEFAULT_DATE_CLASS: string = 'calendar-day';
 
   private handleClick() {

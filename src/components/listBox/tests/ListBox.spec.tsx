@@ -65,7 +65,7 @@ describe('ListBox', () => {
         items: [],
       });
 
-      expect(listBoxComponent.find(ItemBox).length).toBe(1);
+      expect(listBoxComponent.find(ItemBox).props().value).toBe(ListBox.defaultProps.noResultItem.value);
     });
   });
 });

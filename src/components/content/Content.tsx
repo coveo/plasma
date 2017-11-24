@@ -1,14 +1,15 @@
 import * as React from 'react';
 import * as classname from 'classnames';
 import * as _ from 'underscore';
+import { ComponentContent } from '../../utils/ComponentUtils';
 
 export interface IContentProps {
-  content: typeof React.Component | string | (() => JSX.Element);
+  content: ComponentContent;
   componentProps?: { [key: string]: any };
   classes?: string[];
 }
 
-export class Content extends React.Component<IContentProps, void> {
+export class Content extends React.Component<IContentProps, {}> {
 
   static defaultProps: Partial<IContentProps> = {
     classes: [],

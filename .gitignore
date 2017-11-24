@@ -1,6 +1,7 @@
 # Ignore compiled files
 dist
 coverage
+docs/assets/*
 
 # Node files
 node_modules
