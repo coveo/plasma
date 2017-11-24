@@ -2,7 +2,6 @@ import * as React from 'react';
 import { render as ReactDOMRender } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReactVaporStore } from './ReactVaporStore';
-import { Svg } from '../src/components/svg/Svg';
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { SyncFeedbackExample } from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
@@ -54,6 +53,8 @@ import { CheckboxExamples } from '../src/components/checkbox/examples/CheckboxEx
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
 import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
 import { InputExamples } from '../src/components/input/examples/InputExamples';
+import { LinkSvgExamples } from '../src/components/svg/examples/LinkSvgExamples';
+import { SvgExamples } from '../src/components/svg/examples/SvgExamples';
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
 
 class App extends React.Component<any, any> {
@@ -70,22 +71,8 @@ class App extends React.Component<any, any> {
               <MembersExample />
             </div>
           </div>
-          <div className='form-group'>
-            <label className='form-control-label'>
-              Include an SVG
-                        </label>
-            <div className='form-control'>
-              <Svg svgName='domain-google' className='icon mod-2x' />
-            </div>
-          </div>
-          <div className='form-group'>
-            <label className='form-control-label'>
-              Include another SVG
-                        </label>
-            <div className='form-control'>
-              <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
-            </div>
-          </div>
+          <SvgExamples />
+          <LinkSvgExamples />
           <ContentExamples />
           <ItemBoxExamples />
           <ButtonExamples />
