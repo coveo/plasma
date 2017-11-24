@@ -24,7 +24,7 @@ export class ListBox extends React.Component<IListBoxProps, void> {
 
   protected getItems(): JSX.Element[] | JSX.Element {
     const items = _.chain(this.props.items)
-      .map((item: IItemBoxProps) => <ItemBox {..._.extend(item, { onOptionClick: this.props.onOptionClick }) } />)
+      .map((item: IItemBoxProps) => <ItemBox key={item.value} {..._.extend(item, { onOptionClick: this.props.onOptionClick }) } />)
       .value();
 
     return items.length
