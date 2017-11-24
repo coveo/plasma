@@ -9,7 +9,7 @@ export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHea
   id?: string;
   tableRefForSort?: {
     tableId: string;
-    attributeToSort?: string;
+    attributeToSort: string;
   };
   className?: string;
   onClickCallback?: (e: React.MouseEvent<any>) => void;
@@ -32,7 +32,7 @@ export interface ITableHeaderCellProps extends
 
 export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any> {
   componentDidMount() {
-    if (this.props.onMount) {
+    if (this.props.onMount && this.props.tableRefForSort) {
       this.props.onMount(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
     }
   }
@@ -44,7 +44,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
   }
 
   handleClick(e: React.MouseEvent<any>) {
-    if (this.props.onSort && this.props.tableRefForSort.tableId && this.props.tableRefForSort.attributeToSort) {
+    if (this.props.onSort && this.props.tableRefForSort) {
       this.props.onSort(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
     }
 

@@ -18,7 +18,7 @@ import { NavigationExamples } from '../src/components/navigation/examples/Naviga
 import { NavigationConnectedExamples } from '../src/components/navigation/examples/NavigationConnectedExamples';
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ActionBarConnectedExamples } from '../src/components/actions/examples/ActionBarConnectedExamples';
-import { TableBaseExamples } from '../src/components/tables/examples/TableBaseExamples';
+import { TableExamples } from '../src/components/tables/examples/TableExamples';
 import { TableRowExamples } from '../src/components/tables/examples/TableRowExamples';
 import { TableRowConnectedExamples } from '../src/components/tables/examples/TableRowConnectedExamples';
 import { TableHeaderExamples } from '../src/components/tables/examples/TableHeaderExamples';
@@ -62,7 +62,7 @@ class App extends React.Component<any, any> {
     return (
       <Provider store={ReactVaporStore}>
         <div className='coveo-form'>
-          <TableBaseExamples />
+          <TableExamples />
           <div className='form-group'>
             <label className='form-control-label'>
               My list of members

@@ -1,14 +1,9 @@
+import { getNextTableSortingOrder } from './TableUtils';
 import { TableSortingOrder } from './TableConstants';
 import { TableHeaderCellActions } from './TableHeaderCellActions';
 import { IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import * as _ from 'underscore';
-
-const {
-  ASCENDING,
-  DESCENDING,
-  UNSORTED,
-} = TableSortingOrder;
 
 export interface ITableHeaderCellState {
   id: string;
@@ -23,7 +18,7 @@ export interface ITableHeaderCellsState {
 export const tableHeaderCellInitialState: ITableHeaderCellState = {
   id: undefined,
   tableId: undefined,
-  sorted: UNSORTED,
+  sorted: TableSortingOrder.UNSORTED,
 };
 
 export const tableHeaderCellsInitialState: ITableHeaderCellsState = {};
@@ -37,18 +32,16 @@ export const tableHeaderCellReducer = (
       return {
         id: action.payload.id,
         tableId: action.payload.tableId,
-        sorted: UNSORTED,
+        sorted: TableSortingOrder.UNSORTED,
       };
     case TableHeaderCellActions.sortFromHeaderCell:
       if (state.id !== action.payload.id) {
         return state.tableId === action.payload.tableId
-          ? { ...state, sorted: UNSORTED }
+          ? { ...state, sorted: TableSortingOrder.UNSORTED }
           : state;
       }
 
-      return _.contains([UNSORTED, DESCENDING], state.sorted)
-        ? { ...state, sorted: ASCENDING }
-        : { ...state, sorted: DESCENDING };
+      return { ...state, sorted: getNextTableSortingOrder(state.sorted) };
     default:
       return state;
   }

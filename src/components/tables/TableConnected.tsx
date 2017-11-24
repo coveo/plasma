@@ -1,26 +1,58 @@
-// import { ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow } from './TableHeadingRow';
-// import { ITableRowState } from './TableRowReducers';
-// import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-// import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-// import * as React from 'react';
-// import { connect } from 'react-redux';
-// import * as _ from 'underscore';
+import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
+import { TableChildComponents } from './TableConstants';
+import { getLoadingIds, getChildComponentId } from './TableUtils';
+import { ITableOwnProps, ITableProps, Table } from './Table';
+import { ITableState } from './TableReducers';
+import { selectRow } from './TableRowActions';
+import { addActionsToActionBar } from '../actions/ActionBarActions';
+import { modifyState } from './TableActions';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { ThunkAction } from 'redux-thunk';
+import * as _ from 'underscore';
+import { IActionProps } from '../actions/Action';
 
-// const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnProps) => {
-//   const item: ITableRowState = _.findWhere(state.rows, { id: ownProps.id });
+const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
+    const tableState: ITableState = state.tables[ownProps.id];
 
-//   return {
-//     opened: item && item.opened,
-//     selected: item && item.selected,
-//   };
-// };
+    return { tableState: { ...tableState } };
+};
 
-// const mapDispatchToProps = (
-//   dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-//   ownProps: ITableHeadingRowOwnProps,
-// ) => ({
-//   onFilter: () => 1,
-// });
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IReduxActionsPayload> | ThunkAction<any, any, any>) => void,
+    ownProps: ITableOwnProps,
+) => ({
+    onDidMount: (id: string) => {
 
-// export const TableHeadingRowConnected: React.ComponentClass<ITableHeadingRowProps> =
-//   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TableHeadingRow);
+    },
+    onUnmount: (id: string) => 1,
+    onModifyData: (props: ITableProps) => {
+        dispatch(() => {
+            dispatch(selectRow(undefined));
+            dispatch(
+                addActionsToActionBar(
+                    getChildComponentId(ownProps.id, TableChildComponents.ACTION_BAR),
+                    [],
+                ),
+            );
+            dispatch(turnOnLoading(getLoadingIds(ownProps.id)));
+
+            // modify state here
+            ownProps.onModifyData();
+            dispatch(modifyState(ownProps.id, ownProps.onModifyData));
+        });
+    },
+    onRowClick: (actions: IActionProps[] = []) => {
+        dispatch(
+            addActionsToActionBar(
+                getChildComponentId(ownProps.id, TableChildComponents.ACTION_BAR),
+                actions,
+            ),
+        );
+    }
+});
+
+export const TableConnected: React.ComponentClass<ITableProps> =
+    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);

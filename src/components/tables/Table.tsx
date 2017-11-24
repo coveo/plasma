@@ -1,8 +1,10 @@
 import { ITableCollapsibleRowProps } from './TableCollapsibleRow';
-import { ITableHeaderProps, TableHeader } from './TableHeader';
+import { IActionOptions } from '../actions/Action';
+import { TableHeader } from './TableHeader';
 import { ITableHeadingRowProps } from './TableHeadingRow';
+import { TableHeadingRowConnected } from './TableHeadingRowConnected';
 import { TableRowWrapper } from './TableRowWrapper';
-import { IActionBarProps } from '../actions/ActionBar';
+import { ActionBar, IActionBarProps } from '../actions/ActionBar';
 import { ActionBarConnected } from '../actions/ActionBarConnected';
 import { BlankSlate, IBlankSlateProps } from '../blankSlate/BlankSlate';
 import { IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
@@ -18,13 +20,23 @@ import { NavigationPerPageConnected } from '../navigation/perPage/NavigationPerP
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { ITableState } from './TableReducers';
+import { getChildComponentId } from './TableUtils';
+import { TableChildComponent } from './TableConstants';
+import { JSXRenderable } from '../../utils/JSXUtils';
+import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
+import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 
 export interface IData {
+  id: string;
   [attribute: string]: any;
 };
 
 export interface ITableRowData {
-  [id: string]: IData;
+  [id: string]: {
+    id: string;
+    [attribute: string]: any;
+  };
 };
 
 export interface ITableData {
@@ -33,64 +45,79 @@ export interface ITableData {
   displayedIds: string[];
 }
 
+export type IAttributeFormatter = (attributeValue: any, attributeName: string) => JSXRenderable;
+
+export interface IHeadingAttribute {
+  attributeName: string;
+  rowKeyGenerator?: (attributeName: string, attributeValue: any) => string;
+  titleFormatter: (attributeName: string) => string;
+  sort?: boolean | ((attributeValue: any) => string);
+  attributeFormatter?: IAttributeFormatter;
+}
+
+
+
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
   initialTableData: ITableData;
-  tableRowDataToHeadingRowProps: (rowData: ITableRowData) => ITableHeadingRowProps;
-  tableRowDataToCollapsibleRowProps?: (rowData: ITableRowData) => ITableCollapsibleRowProps;
+  headingAttributes: IHeadingAttribute[];
+  predicateMethods?: {
+    [attributeName: string]: (attributeValue: any, attributeName?: string) => boolean;
+  };
+  getActions?: () => IActionOptions[];
+  filterMethod?: (rowData: ITableRowData, ) => boolean;
+  sortByMethod?: (attributeValue: any, attributeName: string) => string;
+  collapsibleFormatter?: (tableRowData: ITableRowData) => JSXRenderable;
+  onModifyData?: (state: ITableState, newTableData?: any) => ITableState;
 };
 
 export interface ITableChildrenProps {
   blankSlates: {
-    noResultsDefault: IBlankSlateProps;
+    noResults: IBlankSlateProps;
     noResultsOnFilterOrPredicates?: IBlankSlateProps;
     noResultsOnError?: IBlankSlateProps;
   };
   actionBar?: IActionBarProps;
   filter?: IFilterBoxProps;
-  filterMethod?: (tableState: any) => void;
   predicates?: IDropdownSearchProps[];
-  predicateMethods?: ((tableState: any) => void)[];
   perPage?: INavigationPerPageProps;
   pagination?: INavigationPaginationProps;
   lastUpdated?: ILastUpdatedProps;
-  tableHeader?: ITableHeaderProps;
-  tableSortMethods?: {
-    [attribute: string]: (tableState: any) => void;
-  };
   styles?: {
+    tableHeaderClass?: string[]
     tableActionClasses?: string[];
     navigationClasses?: string[];
   };
 }
 
 export interface ITableStateProps {
-  tableData?: ITableData;
-  filteredWith?: string;
-  isInError?: boolean;
-  currentPerPage?: number;
-  currentPage?: number;
+  tableState: ITableState;
 };
 
 export interface ITableDispatchProps {
   onMount?: (id: string) => void;
   onUnmount?: (id: string) => void;
-  onFilter?: () => void;
-  onPredicate?: () => void;
-  onRowClick?: () => void;
-  onSort?: () => void;
-  onPageChange?: () => void;
-  onPerPageChange?: () => void;
+  onModifyData?: (id: string) => void;
 }
 
 export interface ITableProps extends ITableOwnProps, ITableChildrenProps, ITableStateProps, ITableDispatchProps { }
 
 export class Table extends React.Component<ITableProps, any> {
-  constructor(props: ITableProps) {
-    super(props);
-
-    // registerComponentInStore with initial state
+  buildLoadingRow(): JSX.Element {
+    return this.props.tableState.isLoading
+      ? <LoadingConnected
+        id={getChildComponentId(this.props.id, TableChildComponent.LOADING_TABLE)}
+        rowStyle={{ nbColumns: this.props.headingAttributes.length }} />
+      : null;
   }
+
+  buildLoadingNavigation(): JSX.Element {
+    return this.props.tableState.isLoading
+      ? <LoadingConnected
+        id={getChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)} />
+      : null;
+  }
+
   buildActionBar(): JSX.Element {
     const { actionBar, filter, predicates, styles } = this.props;
 
@@ -117,22 +144,67 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   buildTableHeader(): JSX.Element {
-    return this.props.tableHeader
-      ? <TableHeader {...this.props.tableHeader} />
-      : null;
+    const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: IHeadingAttribute) => {
+      const id = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}-${headingAttribute.attributeName}`;
+      const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
+      const tableRefForSort = !!headingAttribute.sort
+        ? { tableId: this.props.id, attributeToSort: headingAttribute.attributeName }
+        : undefined;
+
+      return { id, title, tableRefForSort };
+    });
+
+    const { styles } = this.props;
+    return (
+      <TableHeader
+        headerClass={styles && styles.tableHeaderClass && styles.tableHeaderClass.join(' ')}
+        columns={tableHeaderCells}
+        connectCell />
+    );
+  }
+
+  buildTableHeadingRowContent(
+    attributeValue: any,
+    attributeName: string,
+    attributeFormatter?: IAttributeFormatter,
+  ): JSXRenderable {
+    return attributeFormatter
+      ? attributeFormatter(attributeValue, attributeName)
+      : convertUndefinedAndNullToEmptyString(attributeValue);
   }
 
   buildTableBody(): JSX.Element[] {
     const tableRowWrappers: JSX.Element[] = [];
-    const tableData = this.props.tableData || this.props.initialTableData;
+    const tableData = this.props.tableState.data || this.props.initialTableData;
 
     tableData.displayedIds.forEach((id: string) => {
       const rowData: ITableRowData = tableData.byId[id];
+      const toggleArrowCellCount = 1;
+      const rowWrapperId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}-${rowData.id}`;
+      const headingRowId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}-${rowData.id}`;
+      const collapsibleRowId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}-${rowData.id}`;
+      const collapsibleData = this.props.collapsibleFormatter && this.props.collapsibleFormatter(rowData);
+
       tableRowWrappers.push(
-        <TableRowWrapper key={rowData.id}>
-          {this.props.headingRowDataParser(rowData)}
-          {rowData.collapsibleData
-            ? this.props.collapsibleRowDataParser && this.props.collapsibleRowDataParser(rowData)
+        <TableRowWrapper key={rowWrapperId}>
+          <TableHeadingRowConnected
+            id={headingRowId}
+            key={headingRowId}
+            isCollapsible={!!collapsibleData}
+            onClickCallback={(e: React.MouseEvent<any>) => this.props.onRowClick(this.props.getActions())}>
+            {this.props.headingAttributes.map((headingAttribute: IHeadingAttribute) => {
+              const { attributeName, attributeFormatter } = headingAttribute;
+              return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, attributeFormatter);
+            })}
+          </TableHeadingRowConnected>
+          {collapsibleData
+            ? (
+              <TableCollapsibleRowConnected
+                id={collapsibleRowId}
+                nbColumns={this.props.headingAttributes.length + toggleArrowCellCount}>
+                {collapsibleData}
+              </TableCollapsibleRowConnected>
+            )
             : null
           }
         </TableRowWrapper>
@@ -145,7 +217,7 @@ export class Table extends React.Component<ITableProps, any> {
   buildBlankSlate(): JSX.Element {
     const tableData = this.props.tableData || this.props.initialTableData;
     const {
-      noResultsDefault,
+            noResults,
       noResultsOnFilterOrPredicates,
       noResultsOnError,
     } = this.props.blankSlates;
@@ -157,11 +229,11 @@ export class Table extends React.Component<ITableProps, any> {
     }
 
     if (this.props.isFiltered || this.props.hasPredicate) {
-      blankSlatePropsToUse = noResultsOnFilterOrPredicates || noResultsDefault;
+      blankSlatePropsToUse = noResultsOnFilterOrPredicates || noResults;
     } else if (this.props.isInError) {
-      blankSlatePropsToUse = noResultsOnError || noResultsDefault;
+      blankSlatePropsToUse = noResultsOnError || noResults;
     } else {
-      blankSlatePropsToUse = noResultsDefault;
+      blankSlatePropsToUse = noResults;
     }
 
     return <BlankSlate {...blankSlatePropsToUse} />;
@@ -187,7 +259,7 @@ export class Table extends React.Component<ITableProps, any> {
     return (
       <div className={classNames('pagination-container', ...navigationClasses)}>
         {perPageConnected}
-        <div className='flex-auto'></div>
+        <div className='flex-auto'>{this.buildLoadingNavigation()}</div>
         {paginationConnected}
       </div>
     );
@@ -202,11 +274,12 @@ export class Table extends React.Component<ITableProps, any> {
   render() {
     return (
       <div>
-        {this.buildActionBar()}
+        {!this.props.tableState.isLoading ? this.buildActionBar() : <ActionBar />}
         <table className='mod-collapsible-rows'>
           {this.buildTableHeader()}
           {this.buildTableBody()}
         </table>
+        {this.buildLoadingRow()}
         {this.buildBlankSlate()}
         {this.buildNavigation()}
         {this.buildLastUpdated()}

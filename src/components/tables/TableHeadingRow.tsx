@@ -5,6 +5,7 @@ import * as React from 'react';
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
   id?: string;
   isCollapsible: boolean;
+  onClickCallback?: (e: React.MouseEvent<any>) => void;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -23,9 +24,13 @@ export interface ITableHeadingRowProps extends ITableHeadingRowOwnProps, ITableH
 
 export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
 
-  private handleClick = () => {
+  private handleClick = (e: React.MouseEvent<any>) => {
     if (this.props.onClick) {
       this.props.onClick();
+    }
+
+    if (this.props.onClickCallback) {
+      this.props.onClickCallback(e);
     }
   }
 
@@ -42,7 +47,9 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
   }
 
   render() {
-    let toggle: JSX.Element = this.props.isCollapsible ? <TableCollapsibleRowToggle isExpanded={this.props.opened} /> : <td></td>;
+    const toggle: JSX.Element = this.props.isCollapsible
+      ? <TableCollapsibleRowToggle isExpanded={this.props.opened} />
+      : <td></td>;
     const rowClasses = classNames({
       'heading-row': this.props.isCollapsible,
       'selected': this.props.selected,
@@ -50,7 +57,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     });
 
     return (
-      <tr className={rowClasses} onClick={() => this.handleClick()}>
+      <tr className={rowClasses} onClick={(e: React.MouseEvent<any>) => this.handleClick(e)}>
         {this.props.children}
         {toggle}
       </tr>

@@ -17,12 +17,13 @@ export interface ITableActionPayload {
   id: string;
   isInError?: boolean;
   newTableData?: any;
+  initialTableState?: Partial<ITableState>;
   tableStateModifyer?: ITableStateModifyer;
 }
 
-export const addTable = (id: string): IReduxAction<ITableActionPayload> => ({
+export const addTable = (id: string, initialTableState: Partial<ITableState>): IReduxAction<ITableActionPayload> => ({
   type: TableActions.add,
-  payload: { id }
+  payload: { id, initialTableState },
 });
 
 export const removeTable = (id: string): IReduxAction<ITableActionPayload> => ({
@@ -31,7 +32,7 @@ export const removeTable = (id: string): IReduxAction<ITableActionPayload> => ({
 });
 
 export const setIsInError = (id: string, isInError: boolean): IReduxAction<ITableActionPayload> => ({
-  type: TableActions.remove,
+  type: TableActions.inError,
   payload: { id, isInError }
 });
 

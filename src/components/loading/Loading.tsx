@@ -2,6 +2,9 @@ import * as React from 'react';
 
 export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
   id?: string;
+  rowStyle?: {
+    nbColumns: number;
+  };
 }
 
 export interface ILoadingDispatchProps {
@@ -26,12 +29,22 @@ export class Loading extends React.Component<ILoadingProps, any> {
   }
 
   render() {
-    return (
+    const spinner: JSX.Element = (
       <div className='spinner'>
         <div className='bounce1'></div>
         <div className='bounce2'></div>
         <div className='bounce3'></div>
       </div>
     );
+
+    return this.props.rowStyle
+      ? (
+        <tbody className='loading-row'>
+          <tr>
+            <td colSpan={this.props.rowStyle.nbColumns}>{spinner}</td>
+          </tr>
+        </tbody>
+      )
+      : spinner;
   }
 }

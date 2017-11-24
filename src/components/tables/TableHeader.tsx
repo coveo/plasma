@@ -12,17 +12,17 @@ export interface ITableHeaderProps extends React.ClassAttributes<TableHeader> {
 export class TableHeader extends React.Component<ITableHeaderProps, any> {
   render() {
     const columns: JSX.Element[] = _.map(this.props.columns, (column: ITableHeaderCellProps, index: number): JSX.Element => {
-      const TableHeaderCellConstructor = this.props.connectCell && column.tableRefForSort
+      const TableHeaderCellClass = this.props.connectCell && column.tableRefForSort
         ? TableHeaderCellConnected
         : TableHeaderCell;
 
       return (
-        <TableHeaderCellConstructor
-          key={'th-' + index}
+        <TableHeaderCellClass
+          key={`th-${colum.id || index}`}
           id={column.id}
           title={column.title}
           className={column.className}
-          tableReference={column.tableRefForSort}
+          tableRefForSort={column.tableRefForSort}
           onClickCallback={column.onClickCallback}
         />
       );
