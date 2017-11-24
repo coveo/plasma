@@ -70,6 +70,7 @@ export { addPagination, changePage, PaginationActions, resetPaging } from './com
 export { addPerPage, changePerPage, PerPageActions } from './components/navigation/perPage/NavigationPerPageActions';
 
 export { ItemBox, IItemBoxProps } from './components/itemBox/ItemBox';
+export { ListBox, IListBoxProps } from './components/listBox/ListBox';
 
 // Dropdown
 export { Dropdown } from './components/dropdown/Dropdown';

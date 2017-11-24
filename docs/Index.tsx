@@ -51,6 +51,7 @@ import { RadioExamples } from '../src/components/radio/examples/RadioExamples';
 import { ChildFormExamples } from '../src/components/childForm/examples/ChildFormExamples';
 import { CheckboxExamples } from '../src/components/checkbox/examples/CheckboxExamples';
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
+import { ListBoxExamples } from '../src/components/listBox/examples/ListBoxExamples';
 import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
 import { InputExamples } from '../src/components/input/examples/InputExamples';
 import { LinkSvgExamples } from '../src/components/svg/examples/LinkSvgExamples';
@@ -66,7 +67,7 @@ class App extends React.Component<any, any> {
           <div className='form-group'>
             <label className='form-control-label'>
               My list of members
-                        </label>
+            </label>
             <div className='form-control'>
               <MembersExample />
             </div>
@@ -75,6 +76,7 @@ class App extends React.Component<any, any> {
           <LinkSvgExamples />
           <ContentExamples />
           <ItemBoxExamples />
+          <ListBoxExamples />
           <ButtonExamples />
           <DropdownSearchExamples />
           <FlatSelectExamples />
