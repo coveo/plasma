@@ -13,46 +13,45 @@ import { connect } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import * as _ from 'underscore';
 import { IActionProps } from '../actions/Action';
+import { TableDataModifyerMethods } from './TableOnModifyDataMethods';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
-    const tableState: ITableState = state.tables[ownProps.id];
+  const tableState: ITableState = state.tables[ownProps.id];
 
-    return { tableState: { ...tableState } };
+  return { tableState: { ...tableState } };
 };
 
 const mapDispatchToProps = (
-    dispatch: (action: IReduxAction<IReduxActionsPayload> | ThunkAction<any, any, any>) => void,
-    ownProps: ITableOwnProps,
+  dispatch: (action: IReduxAction<IReduxActionsPayload> | ThunkAction<any, any, any>) => void,
+  ownProps: ITableOwnProps,
 ) => ({
-    onDidMount: (id: string) => {
+  onDidMount: (id: string) => {
 
-    },
-    onUnmount: (id: string) => 1,
-    onModifyData: (props: ITableProps) => {
-        dispatch(() => {
-            dispatch(selectRow(undefined));
-            dispatch(
-                addActionsToActionBar(
-                    getChildComponentId(ownProps.id, TableChildComponents.ACTION_BAR),
-                    [],
-                ),
-            );
-            dispatch(turnOnLoading(getLoadingIds(ownProps.id)));
+  },
+  onUnmount: (id: string) => 1,
+  onModifyData: (props: ITableProps) => {
+    dispatch(selectRow(undefined));
+    dispatch(
+      addActionsToActionBar(
+        getChildComponentId(ownProps.id, TableChildComponents.ACTION_BAR),
+        [],
+      ),
+    );
+    dispatch(turnOnLoading(getLoadingIds(ownProps.id)));
 
-            // modify state here
-            ownProps.onModifyData();
-            dispatch(modifyState(ownProps.id, ownProps.onModifyData));
-        });
-    },
-    onRowClick: (actions: IActionProps[] = []) => {
-        dispatch(
-            addActionsToActionBar(
-                getChildComponentId(ownProps.id, TableChildComponents.ACTION_BAR),
-                actions,
-            ),
-        );
-    }
+    // modify state here
+    dispatch(TableDataModifyerMethods.thunkDefault(ownProps));
+    dispatch(modifyState(ownProps.id, ownProps.modifyState));
+  },
+  onRowClick: (actions: IActionProps[] = []) => {
+    dispatch(
+      addActionsToActionBar(
+        getChildComponentId(ownProps.id, TableChildComponents.ACTION_BAR),
+        actions,
+      ),
+    );
+  }
 });
 
 export const TableConnected: React.ComponentClass<ITableProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);
+  connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);

@@ -34,6 +34,9 @@ export interface ITablesState {
   [id: string]: ITableState;
 }
 
+export type attributeName = any;
+export type attributeValue = any;
+
 export interface ITableState {
   id: string;
   headingAttributes: string[];
@@ -45,11 +48,11 @@ export interface ITableState {
   perPage: number;
   selectedRowId: string;
   sortState: {
-    attribute: string;
+    attribute: attributeName;
     order: TableSortingOrder;
   };
   predicates: {
-    [attributeName: string]: any;
+    [attributeNameAssociatedToPredicate: string]: attributeValue;
   };
 }
 

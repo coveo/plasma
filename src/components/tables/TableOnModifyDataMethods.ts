@@ -2,6 +2,8 @@ import { ITableState } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder } from './TableConstants';
 import * as _ from 'underscore';
+import { ITableOwnProps } from './Table';
+import { modifyState } from './TableActions';
 
 export const TableDataModifyerMethods = {
   default(tableState: ITableState): ITableState {
@@ -63,7 +65,18 @@ export const TableDataModifyerMethods = {
       },
     };
   },
-  server(tableState: ITableState) {
+  thunkDefault(tableOwnProps: ITableOwnProps) {
+    return (dispatch: any) => {
+      dispatch(modifyState(tableOwnProps.id, TableDataModifyerMethods.default));
+    };
+  },
+  server(tableState: ITableState): ITableState {
     // todo
+    return undefined;
+  },
+  thunkServer(tableOwnProps: ITableOwnProps) {
+    return (dispatch: any) => {
+      // todo
+    };
   }
 };

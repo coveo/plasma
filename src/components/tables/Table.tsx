@@ -1,7 +1,6 @@
-import { ITableCollapsibleRowProps } from './TableCollapsibleRow';
+import { ITableHeaderCellOwnProps } from './TableHeaderCell';
 import { IActionOptions } from '../actions/Action';
 import { TableHeader } from './TableHeader';
-import { ITableHeadingRowProps } from './TableHeadingRow';
 import { TableHeadingRowConnected } from './TableHeadingRowConnected';
 import { TableRowWrapper } from './TableRowWrapper';
 import { ActionBar, IActionBarProps } from '../actions/ActionBar';
@@ -46,6 +45,7 @@ export interface ITableData {
 }
 
 export type IAttributeFormatter = (attributeValue: any, attributeName: string) => JSXRenderable;
+export type IAttributeNameFormatter = (attributeName: string) => string;
 
 export interface IHeadingAttribute {
   attributeName: string;
@@ -55,7 +55,11 @@ export interface IHeadingAttribute {
   attributeFormatter?: IAttributeFormatter;
 }
 
-
+export interface IPredicate {
+  props: IDropdownSearchProps;
+  attributeName: string;
+  attributeNameFormatter: IAttributeNameFormatter;
+};
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
@@ -68,7 +72,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   filterMethod?: (rowData: ITableRowData, ) => boolean;
   sortByMethod?: (attributeValue: any, attributeName: string) => string;
   collapsibleFormatter?: (tableRowData: ITableRowData) => JSXRenderable;
-  onModifyData?: (state: ITableState, newTableData?: any) => ITableState;
+  modifyState?: (state: ITableState, newTableData?: any) => ITableState;
 };
 
 export interface ITableChildrenProps {
@@ -79,7 +83,7 @@ export interface ITableChildrenProps {
   };
   actionBar?: IActionBarProps;
   filter?: IFilterBoxProps;
-  predicates?: IDropdownSearchProps[];
+  predicates?: IPredicate[];
   perPage?: INavigationPerPageProps;
   pagination?: INavigationPaginationProps;
   lastUpdated?: ILastUpdatedProps;
@@ -97,12 +101,45 @@ export interface ITableStateProps {
 export interface ITableDispatchProps {
   onMount?: (id: string) => void;
   onUnmount?: (id: string) => void;
+  onRowClick?: (id: string) => void;
   onModifyData?: (id: string) => void;
 }
 
 export interface ITableProps extends ITableOwnProps, ITableChildrenProps, ITableStateProps, ITableDispatchProps { }
 
 export class Table extends React.Component<ITableProps, any> {
+  componentWillMount() {
+
+  }
+
+  componentDidMount() {
+
+  }
+
+  componentWillReceiveProps() {
+
+  }
+
+  onMount() {
+    if (this.props.onMount) {
+      this.props.onMount(this.props.id);
+    }
+  }
+
+  onUnmount() {
+    if (this.props.onMount) {
+      this.props.onUnmount(this.props.id);
+    }
+  }
+
+  onModifyData() {
+    this.props.onModifyData();
+  }
+
+  onRowClick() {
+    this.props.onRowClick();
+  }
+
   buildLoadingRow(): JSX.Element {
     return this.props.tableState.isLoading
       ? <LoadingConnected
@@ -122,11 +159,24 @@ export class Table extends React.Component<ITableProps, any> {
     const { actionBar, filter, predicates, styles } = this.props;
 
     const filterBoxConnected: JSX.Element = actionBar && filter
-      ? <FilterBoxConnected {...filter} />
+      ? <FilterBoxConnected
+        {...filter}
+        id={getChildComponentId(this.props.id, TableChildComponent.FILTER)} />
       : null;
 
     const predicatesConnected: JSX.Element[] = actionBar && predicates
-      ? predicates.map((predicateProps: IDropdownSearchProps, i: number) => <DropdownSearchConnected {...predicateProps} key={_.uniqueId()} />)
+      ? predicates.map((predicate: IPredicate, i: number) => {
+        const predicateId = `${getChildComponentId(this.props.id, TableChildComponent.PREDICATE)}-${predicate.attributeName}`;
+        const containerClasses = i ? 'ml1' : '';
+        return (
+          <DropdownSearchConnected
+            {...predicate.props}
+            key={predicateId}
+            fixedPrepend={predicate.attributeNameFormatter(predicate.attributeName)}
+            id={predicateId}
+            containerClasses={containerClasses} />
+        );
+      })
       : null;
 
     const tableActionClasses: string[] = styles && styles.tableActionClasses || [];
