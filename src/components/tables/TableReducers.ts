@@ -54,23 +54,25 @@ export interface ITableState {
   predicates: {
     [attributeNameAssociatedToPredicate: string]: attributeValue;
   };
+  isLocked: boolean;
 }
 
 export const tableInitialState: ITableState = {
   id: undefined,
   headingAttributes: [],
-  data: {},
+  data: { byId: {}, allIds: [], displayedIds: [] },
   isInError: false,
   isLoading: false,
-  filter: undefined,
+  filter: '',
   page: 0,
-  perPage: 1000000,
-  selectedRowId: undefined,
+  perPage: 10,
+  selectedRowId: '',
   sortState: {
     attribute: undefined,
     order: TableSortingOrder.UNSORTED,
   },
   predicates: {},
+  isLocked: false,
 };
 
 export const tablesInitialState: { [tableId: string]: ITableState; } = {};
@@ -80,15 +82,23 @@ export const tableReducer = (
   action: IReduxAction<IReduxActionsPayload>,
 ): ITableState => {
   // all child ids are an extension of the original table id, thus should all contain it,
-  if (!_.contains(action.payload.id, state.id)) {
+  if (!_.contains(action && action.payload && action.payload.id, state && state.id)) {
     return state;
   }
 
+  // if (action.type === TableActions.toggleLock) {
+  //   return {
+  //     ...state,
+  //     isLocked: action.payload.isLocked,
+  //   };
+  // } else if (!state.isLocked) {
   switch (action.type) {
     case TableActions.add:
       return {
         ...state,
         id: action.payload.id,
+        data: action.payload.initialTableData,
+        perPage: action.payload.initialPerPage,
       };
     case TableActions.inError:
       return {
@@ -104,7 +114,8 @@ export const tableReducer = (
         page: 0,
       };
     case DropdownSearchActions.select:
-      // the attribute name related to the predicate is stored in the dropdown id as follows "<tableid-prefix><predicate-predix><attributeName>"
+      // the attribute name related to the predicate is stored in the dropdown id as follows
+      // "<tableid-prefix><predicate-predix><attributeName>"
       const attributeName = action.payload.id.split(TABLE_PREDICATE_ID_PREFIX)[1];
       return {
         ...state,
@@ -113,6 +124,11 @@ export const tableReducer = (
           [attributeName]: action.payload.addedSelectedOption.value,
         },
         page: 0,
+      };
+    case FilterActions.filterThrough:
+      return {
+        ...state,
+        filter: action.payload.filterText,
       };
     case PerPageActions.change:
       return {
@@ -155,4 +171,38 @@ export const tableReducer = (
     default:
       return state;
   }
+  // } else {
+  //   return state;
+  // }
+};
+
+export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAction<IReduxActionsPayload>) => {
+  // all child ids are an extension of the original table id, thus should all contain it,
+
+
+  switch (action.type) {
+    case TableActions.add:
+      return {
+        ...tablesState,
+        [action.payload.id]: {
+          ...tableInitialState,
+          id: action.payload.id,
+          data: action.payload.initialTableData,
+          perPage: action.payload.initialPerPage,
+        },
+      };
+    case TableActions.remove:
+      return _.omit(tablesState, '');
+  }
+
+  const tableId = _.findKey(
+    tablesState,
+    (tableState: ITableState, currentTableId: string) => (action.payload && action.payload.id || '').indexOf(currentTableId) === 0,
+  );
+
+  console.dir(tablesState[tableId]);
+
+  return tableId
+    ? { ...tablesState, [tableId]: tableReducer(tablesState[tableId], action) }
+    : tablesState;
 };

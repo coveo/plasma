@@ -1,9 +1,13 @@
 import { ITableState } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder } from './TableConstants';
+import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent } from './TableConstants';
 import * as _ from 'underscore';
 import { ITableOwnProps } from './Table';
 import { modifyState } from './TableActions';
+import { turnOffLoading } from '../loading/LoadingActions';
+import { getLoadingIds, getChildComponentId } from './TableUtils';
+import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
+
 
 export const TableDataModifyerMethods = {
   default(tableState: ITableState): ITableState {
@@ -68,6 +72,8 @@ export const TableDataModifyerMethods = {
   thunkDefault(tableOwnProps: ITableOwnProps) {
     return (dispatch: any) => {
       dispatch(modifyState(tableOwnProps.id, TableDataModifyerMethods.default));
+      dispatch(turnOffLoading(getLoadingIds(tableOwnProps.id)));
+      dispatch(changeLastUpdated(getChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
     };
   },
   server(tableState: ITableState): ITableState {

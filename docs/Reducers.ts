@@ -21,6 +21,7 @@ import { tableRowsReducer } from '../src/components/tables/TableRowReducers';
 import { toastsContainerReducer } from '../src/components/toast/ToastReducers';
 import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
+import { tablesReducer } from '../src/components/tables/TableReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -32,6 +33,7 @@ const lastAction = (state: IReactVaporExampleState = null, action: Redux.Action)
 };
 
 export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
+  tables: tablesReducer,
   membersCompositeState: membersReducers,
   lastUpdatedComposite: lastUpdatedCompositeReducer,
   filters: filterBoxesReducer,

@@ -22,9 +22,9 @@ import { IDropdownSearchState } from './components/dropdownSearch/DropdownSearch
 import { IToastsState } from './components/toast/ToastReducers';
 import { ITableHeaderCellsState } from './components/tables/TableHeaderCellReducers';
 import { ITableStateModifyer } from './components/tables/TableActions';
-import { ITableState } from './components/tables/TableReducers';
 import { IDropdownOption } from './components/dropdownSearch/DropdownSearch';
 import { ITablesState } from './components/tables/TableReducers';
+import { ITableData } from './components/tables/Table';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -74,8 +74,10 @@ export interface IReduxActionsPayload {
   tableId?: string;
   attributeToFormat?: string;
   attributeToSort?: string;
-  initialTableState?: Partial<ITableState>;
+  initialTableData?: ITableData;
+  initialPerPage?: number;
   tableStateModifyer?: ITableStateModifyer;
   newTableData?: any;
   addedSelectedOption?: IDropdownOption;
+  isLocked?: boolean;
 }

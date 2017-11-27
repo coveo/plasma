@@ -18,7 +18,7 @@ export class TableHeader extends React.Component<ITableHeaderProps, any> {
 
       return (
         <TableHeaderCellClass
-          key={`th-${colum.id || index}`}
+          key={`th-${column.id || index}`}
           id={column.id}
           title={column.title}
           className={column.className}

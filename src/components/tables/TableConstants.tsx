@@ -23,5 +23,6 @@ export enum TableChildComponent {
   TABLE_HEADER_CELL = 'table-header-cell',
   TABLE_HEADING_ROW = 'table-heading-row',
   TABLE_COLLAPSIBLE_ROW = 'table-collapsible-row',
-  TABLE_ROW_WRAPPER = 'table-row-wrapper'
+  TABLE_ROW_WRAPPER = 'table-row-wrapper',
+  LAST_UPDATED = 'last-updated',
 }
