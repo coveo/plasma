@@ -72,7 +72,7 @@ export class TableExamples extends React.Component<any, any> {
             blankSlates={{
               noResults: { title: 'Oh no! No results!' },
             }}
-            navigationChildren={{perPageNumbers: [20, 40, 60]}}
+            navigationChildren={{ perPageNumbers: [20, 40, 60] }}
             lastUpdated={{ id: 'hello' }}
           />
         </div>

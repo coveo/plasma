@@ -47,7 +47,7 @@ const mapDispatchToProps = (
         ownProps.id,
         ownProps.initialTableData,
         initialPerPage,
-        ownProps.headingAttributes.map(({attributeName}) => attributeName),
+        ownProps.headingAttributes.map(({ attributeName }) => attributeName),
         ownProps.initialTotalEntries,
         ownProps.initialTotalPages,
       )
