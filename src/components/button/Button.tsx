@@ -56,7 +56,7 @@ export class Button extends React.Component<IButtonProps, {}> {
     }
 
     return !_.isEmpty(this.props.tooltip)
-      ? <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement} className={'btn-container'}>
+      ? <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement} className='btn-container'>
         {buttonElement}
       </Tooltip>
       : buttonElement;

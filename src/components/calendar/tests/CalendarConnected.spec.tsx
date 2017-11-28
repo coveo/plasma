@@ -25,6 +25,8 @@ import { IDatePickerState } from '../../datePicker/DatePickerReducers';
 describe('Calendar', () => {
   const CALENDAR_ID: string = 'calendar';
   const PICKER_ID: string = 'some-picker';
+  const DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE = addDatePicker(PICKER_ID, false, undefined, 'any', CALENDAR_ID);
+  const DEFAULT_ADD_DATE_PICKER_WITH_RANGE = addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID);
 
   describe('<CalendarConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
@@ -121,7 +123,7 @@ describe('Calendar', () => {
       'is the upper one', () => {
         const pickerSelected: string = DateLimits.upper;
 
-        store.dispatch(addDatePicker(PICKER_ID, false, undefined, 'any', CALENDAR_ID));
+        store.dispatch(DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE);
         store.dispatch(selectDate(PICKER_ID, pickerSelected));
 
         expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(pickerSelected);
@@ -135,7 +137,7 @@ describe('Calendar', () => {
       'is the lower one', () => {
         const pickerSelected: string = DateLimits.lower;
 
-        store.dispatch(addDatePicker(PICKER_ID, false, undefined, 'any', CALENDAR_ID));
+        store.dispatch(DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE);
         store.dispatch(selectDate(PICKER_ID, pickerSelected));
 
         expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(pickerSelected);
@@ -146,7 +148,7 @@ describe('Calendar', () => {
       });
 
     it('should reset the date picker if on click is called without a value', () => {
-      store.dispatch(addDatePicker(PICKER_ID, false, undefined, 'any', CALENDAR_ID));
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE);
       store.dispatch(selectDate(PICKER_ID, DateLimits.lower));
 
       calendar.props().onClick(PICKER_ID, false, new Date());
@@ -182,7 +184,7 @@ describe('Calendar', () => {
         let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
         let newLimit: Date = moment(new Date()).add(5, 'day').toDate();
 
-        store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
+        store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
         store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
         expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
@@ -197,7 +199,7 @@ describe('Calendar', () => {
       let currentLowerLimit: Date = moment(new Date()).add(10, 'day').toDate();
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
-      store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
       store.dispatch(changeDatePickerLowerLimit(PICKER_ID, currentLowerLimit));
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).lowerLimit).toBe(currentLowerLimit);
@@ -212,7 +214,7 @@ describe('Calendar', () => {
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       mountComponent({ isLinkedToDateRange: false });
-      store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
@@ -227,7 +229,7 @@ describe('Calendar', () => {
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       mountComponent({ isLinkedToDateRange: undefined });
-      store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
@@ -242,7 +244,7 @@ describe('Calendar', () => {
       let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       mountComponent({ isLinkedToDateRange: true });
-      store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
 
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
@@ -260,7 +262,7 @@ describe('Calendar', () => {
       store.dispatch(changeOptionsCycle(monthId, 13));
       store.dispatch(changeOptionsCycle(yearId, secondYear));
 
-      store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
       store.dispatch(changeDatePickerLowerLimit(PICKER_ID, moment().endOf('hour').toDate()));
 
       expect(_.findWhere(store.getState().optionsCycles, { id: monthId }).currentOption).toBe(DateUtils.currentMonth);
@@ -269,7 +271,7 @@ describe('Calendar', () => {
       store.dispatch(changeOptionsCycle(monthId, 13));
       store.dispatch(changeOptionsCycle(yearId, secondYear));
 
-      store.dispatch(addDatePicker(PICKER_ID, true, undefined, 'any', CALENDAR_ID));
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
       store.dispatch(changeDatePickerUpperLimit(PICKER_ID, moment().endOf('year').toDate()));
 
       expect(_.findWhere(store.getState().optionsCycles, { id: monthId }).currentOption).toBe(11);

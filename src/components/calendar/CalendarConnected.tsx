@@ -10,7 +10,8 @@ import {
 import {
   changeDatePickerLowerLimit,
   changeDatePickerUpperLimit,
-  DateLimits, resetDatePickers,
+  DateLimits,
+  resetDatePickers,
   selectDate,
 } from '../datePicker/DatePickerActions';
 import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
