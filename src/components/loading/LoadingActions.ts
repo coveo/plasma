@@ -9,6 +9,7 @@ export const LoadingActions = {
 
 export interface ILoadingActionPayload {
   ids: string[];
+  id?: string;
 }
 
 export const addLoading = (id: string): IReduxAction<ILoadingActionPayload> => ({
@@ -25,16 +26,20 @@ export const removeLoading = (id: string): IReduxAction<ILoadingActionPayload> =
   }
 });
 
-export const turnOnLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
+// the second id is the id from which the action was triggered from
+export const turnOnLoading = (ids: string[], id?: string): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOn,
   payload: {
-    ids
+    ids,
+    id,
   }
 });
 
-export const turnOffLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
+// the second id is the id from which the action was triggered from
+export const turnOffLoading = (ids: string[], id?: string): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOff,
   payload: {
-    ids
+    ids,
+    id,
   }
 });

@@ -17,9 +17,8 @@ export const getChildComponentId = (tableId: string, childComponent: TableChildC
   `${tableId}${childComponent}`;
 
 export const getLoadingIds = (tableId: string): string[] => ([
-  getChildComponentId(tableId, TableChildComponent.LOADING_ACTION_BAR),
   getChildComponentId(tableId, TableChildComponent.LOADING_TABLE),
-  getChildComponentId(tableId, TableChildComponent.LOADING_NAVIGATION),
+  `loading-${getChildComponentId(tableId, TableChildComponent.NAVIGATION)}`,
 ]);
 
 export const convertCollectionToTableData = (

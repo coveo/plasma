@@ -21,6 +21,9 @@ export interface ITableActionPayload {
   newTableData?: any;
   initialTableData?: ITableData;
   initialPerPage?: number;
+  initialTotalEntries?: number;
+  initialTotalPages?: number;
+  headingAttributeIds?: string[];
   tableStateModifyer?: ITableStateModifyer;
 }
 
@@ -28,9 +31,12 @@ export const addTable = (
   id: string,
   initialTableData: ITableData,
   initialPerPage: number,
+  headingAttributeIds: string[],
+  initialTotalEntries: number,
+  initialTotalPages: number,
 ): IReduxAction<ITableActionPayload> => ({
   type: TableActions.add,
-  payload: { id, initialTableData, initialPerPage },
+  payload: { id, initialTableData, initialPerPage, headingAttributeIds, initialTotalEntries, initialTotalPages },
 });
 
 export const removeTable = (

@@ -9,7 +9,7 @@ import {
   removeDropdownSearch,
   selectOptionDropdownSearch,
   toggleDropdownSearch,
-  updateActiveOptionDropdownSearch, updateOptionsDropdownSearch,
+  updateActiveOptionDropdownSearch, updateOptionsDropdownSearch, closeDropdownSearch,
 } from './DropdownSearchActions';
 import { IDropdownSearchState } from './DropdownSearchReducers';
 
@@ -51,6 +51,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onKeyDownFilterBox: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
     onKeyDownDropdownButton: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
     onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
+    onClose: () => dispatch(closeDropdownSearch(ownProps.id)),
   });
 
 export const DropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =

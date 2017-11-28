@@ -8,4 +8,4 @@ export interface IDropdownPrependProps {
 }
 
 export const DropdownPrepend = (props: IDropdownPrependProps): JSX.Element =>
-  <span className='value-icon'>{props.prepend}{props.children}</span>;
+  <span className='dropdown-prepend'>{props.prepend}{props.children}</span>;

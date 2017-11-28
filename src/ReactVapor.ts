@@ -23,7 +23,7 @@ import { IToastsState } from './components/toast/ToastReducers';
 import { ITableHeaderCellsState } from './components/tables/TableHeaderCellReducers';
 import { ITableStateModifyer } from './components/tables/TableActions';
 import { IDropdownOption } from './components/dropdownSearch/DropdownSearch';
-import { ITablesState } from './components/tables/TableReducers';
+import { ITablesState, ITableState } from './components/tables/TableReducers';
 import { ITableData } from './components/tables/Table';
 
 export interface IReactVaporState {
@@ -77,7 +77,10 @@ export interface IReduxActionsPayload {
   initialTableData?: ITableData;
   initialPerPage?: number;
   tableStateModifyer?: ITableStateModifyer;
-  newTableData?: any;
+  totalEntries?: number;
+  totalPages?: number;
+  newTableState?: ITableState;
+  headingAttributeIds?: string[];
   addedSelectedOption?: IDropdownOption;
   isLocked?: boolean;
 }

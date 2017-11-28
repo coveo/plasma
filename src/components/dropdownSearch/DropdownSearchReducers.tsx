@@ -238,7 +238,14 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
     case DropdownSearchActions.select:
       nextOptions = !state.supportSingleCustomOption
         ? selectSingleOption(state.options, action.payload.addedSelectedOption)
-        : removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), action.payload.addedSelectedOption), state.supportSingleCustomOption, false);
+        : removeCustomOptions(
+          selectSingleOption(
+            deselectAllOptions(state.options, true),
+            action.payload.addedSelectedOption
+          ),
+          state.supportSingleCustomOption,
+          false
+        );
 
       return {
         ...state,

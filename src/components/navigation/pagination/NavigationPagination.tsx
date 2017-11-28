@@ -33,7 +33,7 @@ export const NEXT_LABEL: string = 'Next';
 export class NavigationPagination extends React.Component<INavigationPaginationProps, any> {
 
   private handlePageClick = (pageNb: number) => {
-    if (this.props.onPageClick && pageNb >= 0) {
+    if (this.props.onPageClick && pageNb >= 0 && this.props.currentPage !== pageNb) {
       this.props.onPageClick(pageNb);
     }
   }

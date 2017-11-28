@@ -5,6 +5,7 @@ export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
   rowStyle?: {
     nbColumns: number;
   };
+  shouldHide?: boolean;
 }
 
 export interface ILoadingDispatchProps {
@@ -36,6 +37,10 @@ export class Loading extends React.Component<ILoadingProps, any> {
         <div className='bounce3'></div>
       </div>
     );
+
+    if (this.props.shouldHide) {
+      return null;
+    }
 
     return this.props.rowStyle
       ? (

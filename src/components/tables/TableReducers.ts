@@ -1,4 +1,3 @@
-import { ITableData } from './Table';
 import { getNextTableSortingOrder } from './TableUtils';
 import { TableActions } from './TableActions';
 import { TableRowActions } from './TableRowActions';
@@ -26,8 +25,9 @@ export interface ITableData {
       [attribute: string]: any;
     };
   };
-  allIds: string[];
-  displayedIds: string[];
+  allIds: string[]; // useful to loop over all ids
+  beforeDisplayedIds: string[]; // useful for proper pagination setup
+  displayedIds: string[]; // will be the data displayed in the table
 }
 
 export interface ITablesState {
@@ -54,7 +54,8 @@ export interface ITableState {
   predicates: {
     [attributeNameAssociatedToPredicate: string]: attributeValue;
   };
-  isLocked: boolean;
+  totalEntries: number;
+  totalPages: number;
 }
 
 export const tableInitialState: ITableState = {
@@ -72,7 +73,8 @@ export const tableInitialState: ITableState = {
     order: TableSortingOrder.UNSORTED,
   },
   predicates: {},
-  isLocked: false,
+  totalEntries: 0,
+  totalPages: 0,
 };
 
 export const tablesInitialState: { [tableId: string]: ITableState; } = {};
@@ -81,25 +83,7 @@ export const tableReducer = (
   state: ITableState = tableInitialState,
   action: IReduxAction<IReduxActionsPayload>,
 ): ITableState => {
-  // all child ids are an extension of the original table id, thus should all contain it,
-  if (!_.contains(action && action.payload && action.payload.id, state && state.id)) {
-    return state;
-  }
-
-  // if (action.type === TableActions.toggleLock) {
-  //   return {
-  //     ...state,
-  //     isLocked: action.payload.isLocked,
-  //   };
-  // } else if (!state.isLocked) {
   switch (action.type) {
-    case TableActions.add:
-      return {
-        ...state,
-        id: action.payload.id,
-        data: action.payload.initialTableData,
-        perPage: action.payload.initialPerPage,
-      };
     case TableActions.inError:
       return {
         ...state,
@@ -171,15 +155,9 @@ export const tableReducer = (
     default:
       return state;
   }
-  // } else {
-  //   return state;
-  // }
 };
 
 export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAction<IReduxActionsPayload>) => {
-  // all child ids are an extension of the original table id, thus should all contain it,
-
-
   switch (action.type) {
     case TableActions.add:
       return {
@@ -187,20 +165,22 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
         [action.payload.id]: {
           ...tableInitialState,
           id: action.payload.id,
-          data: action.payload.initialTableData,
           perPage: action.payload.initialPerPage,
+          data: action.payload.initialTableData,
+          headingAttributes: [...action.payload.headingAttributeIds],
+          totalEntries: action.payload.totalEntries,
+          totalPages: action.payload.totalPages,
         },
       };
     case TableActions.remove:
       return _.omit(tablesState, '');
   }
 
+  // all child ids contain their related table id in them
   const tableId = _.findKey(
     tablesState,
-    (tableState: ITableState, currentTableId: string) => (action.payload && action.payload.id || '').indexOf(currentTableId) === 0,
+    (tableState: ITableState, currentTableId: string) => (action.payload && action.payload.id || '').indexOf(currentTableId) >= 0,
   );
-
-  console.dir(tablesState[tableId]);
 
   return tableId
     ? { ...tablesState, [tableId]: tableReducer(tablesState[tableId], action) }

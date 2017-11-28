@@ -9,43 +9,27 @@ import { generateTableId } from '../TableReducers';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
+const tableDataById = _.range(0, 100).reduce((obj, number) => ({
+  ...obj,
+  ['row' + number]: {
+    id: 'row' + number,
+    attribute1: generateText(),
+    attribute2: generateText(),
+    attribute3: generateText(),
+    attribute4: generateText(),
+  }
+}), {});
+
+const predicateOptionsAttribute4 = [{ value: 'ALL' }, ..._.keys(tableDataById).reduce((arr: any, id: string) => [...arr, { value: tableDataById[id].attribute4 }], [])].slice(0, 10);
+const predicateOptionsAttribute3 = [{ value: 'ALL' }, ..._.keys(tableDataById).reduce((arr: any, id: string) => [...arr, { value: tableDataById[id].attribute3 }], [])].slice(0, 10);
+
 const tableData: ITableData = {
-  byId: {
-    row1: {
-      id: 'row1',
-      attribute1: generateText(),
-      attribute2: generateText(),
-      attribute3: generateText(),
-      attribute4: generateText(),
-    },
-    row2: {
-      id: 'row2',
-      attribute1: generateText(),
-      attribute2: generateText(),
-      attribute3: generateText(),
-      attribute4: generateText(),
-    },
-    row3: {
-      id: 'row3',
-      attribute1: generateText(),
-      attribute2: generateText(),
-      attribute3: generateText(),
-      attribute4: generateText(),
-    },
-    row4: {
-      id: 'row4',
-      attribute1: generateText(),
-      attribute2: generateText(),
-      attribute3: generateText(),
-      attribute4: generateText(),
-    },
-  },
-  allIds: ['row1', 'row2', 'row3', 'row4'],
-  displayedIds: ['row1', 'row2', 'row3', 'row4'],
+  byId: tableDataById,
+  allIds: _.keys(tableDataById),
+  displayedIds: _.keys(tableDataById).slice(0, 10),
 };
 
 export class TableExamples extends React.Component<any, any> {
-
   render() {
     return (
       <div className='mt2'>
@@ -54,46 +38,41 @@ export class TableExamples extends React.Component<any, any> {
           <TableConnected
             id={generateTableId()}
             initialTableData={tableData}
-            initialPerPage={10}
+            initialTotalEntries={tableData.allIds.length}
+            initialTotalPages={Math.ceil(tableData.allIds.length / 10)}
             headingAttributes={[
               {
                 attributeName: 'attribute1',
                 titleFormatter: _.identity,
                 sort: true,
-                attributeFormatter: (attributeValue: any, attributeName: string) => attributeValue,
+                attributeFormatter: _.identity,
               },
               {
-                attributeName: 'attribute2',
+                attributeName: 'attribute4',
                 titleFormatter: _.identity,
                 sort: true,
-                attributeFormatter: (attributeValue: any, attributeName: string) => attributeValue,
+                attributeFormatter: _.identity,
               },
               {
                 attributeName: 'attribute3',
                 titleFormatter: _.identity,
                 sort: true,
-                attributeFormatter: (attributeValue: any, attributeName: string) => attributeValue,
+                attributeFormatter: _.identity,
               },
             ]}
             actionBar={{
               id: 'nice',
               extraContainerClasses: ['mod-border-top'],
-              actions: [
-                { name: 'edit', icon: 'edit', enabled: true, primary: true, trigger: () => alert('yaaa') },
-                { name: 'view', icon: 'view', enabled: true, primary: false, trigger: () => alert('yaaaaaaaa') },
-                { name: 'copy', icon: 'copy', enabled: true, primary: false, trigger: () => alert('yaaaaaaaaaaaa') },
-              ],
             }}
             predicates={[
-              { props: { id: 'predicaaaaate' }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
-              { props: { id: 'predicaaaaate' }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: { id: 'predicaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: { id: 'predicaaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
             ]}
             filter={{ id: 'filtaaaaaa', containerClasses: ['ml1'] }}
             blankSlates={{
-              noResults: {},
+              noResults: { title: 'Oh no! No results!' },
             }}
-            perPage={{ id: 'noice', totalEntries: 300 }}
-            pagination={{ id: 'noiiiice', totalPages: 10 }}
+            navigationChildren={{perPageNumbers: [20, 40, 60]}}
             lastUpdated={{ id: 'hello' }}
           />
         </div>

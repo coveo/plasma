@@ -12,8 +12,7 @@ export const TABLE_PREDICATE_ID_PREFIX = 'predicate-';
 export enum TableChildComponent {
   ACTION_BAR = 'action-bar',
   FILTER = 'filter',
-  PAGINATION = 'pagination',
-  PER_PAGE = 'per-page',
+  NAVIGATION = 'navigation',
   LOADING_TABLE = 'loading-table',
   LOADING_ACTION_BAR = 'loading-action-bar',
   LOADING_NAVIGATION = 'loading-table',
