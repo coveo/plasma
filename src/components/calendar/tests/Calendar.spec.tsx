@@ -187,7 +187,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: undefined,
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           },
           {
             id: 'id',
@@ -198,7 +200,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: 'yes it is',
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           }
         ]
       });
@@ -232,7 +236,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: 'the name of the limit',
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           }
         ]
       });
@@ -250,7 +256,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: undefined,
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           }
         ]
       });
@@ -275,7 +283,9 @@ describe('Calendar', () => {
         isRange: true,
         selected: undefined,
         appliedLowerLimit: now,
-        appliedUpperLimit: now
+        appliedUpperLimit: now,
+        inputLowerLimit: now,
+        inputUpperLimit: now
       };
       const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
         {

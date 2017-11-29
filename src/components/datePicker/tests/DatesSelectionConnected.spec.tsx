@@ -90,10 +90,10 @@ describe('Date picker', () => {
       expect(onDestroyProp).toBeDefined();
     });
 
-    it('should get what to do on change as a prop', () => {
-      let onChangeProp = datesSelection.props().onChange;
+    it('should get what to do on blur as a prop', () => {
+      let onBlurProp = datesSelection.props().onBlur;
 
-      expect(onChangeProp).toBeDefined();
+      expect(onBlurProp).toBeDefined();
     });
 
     it('should get what to do on change as a prop', () => {
@@ -187,34 +187,34 @@ describe('Date picker', () => {
       expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).selected).toBe(expectedValue);
     });
 
-    it('should change the lower limit in the state when calling the onChange prop with the lower limit', () => {
+    it('should change the lower limit in the state when calling the onBlur prop with the lower limit', () => {
       const expectedValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
 
-      datesSelection.props().onChange(expectedValue, false);
+      datesSelection.props().onBlur(expectedValue, false);
 
       expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).lowerLimit).toBe(expectedValue);
     });
 
-    it('should change the upper limit in the state to the new lower limit date when calling the onChange prop with the lower limit when isRange prop is false', () => {
+    it('should change the upper limit in the state to the new lower limit date when calling the onBlur prop with the lower limit when isRange prop is false', () => {
       mountComponent({ isRange: false });
       const expectedValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
 
-      datesSelection.props().onChange(expectedValue, false);
+      datesSelection.props().onBlur(expectedValue, false);
 
       expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).upperLimit).toBe(expectedValue);
     });
 
-    it('should not change the upper limit in the state when calling the onChange prop with the lower limit when isRange prop is true', () => {
+    it('should not change the upper limit in the state when calling the onBlur prop with the lower limit when isRange prop is true', () => {
       mountComponent({ isRange: true });
       const newValue: Date = new Date(new Date().setHours(5, 5, 5, 5));
       const expectedValue: Date = _.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).upperLimit;
 
-      datesSelection.props().onChange(newValue, false);
+      datesSelection.props().onBlur(newValue, false);
 
       expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).upperLimit).toBe(expectedValue);
     });
 
-    it('should deselect the quick option when calling onChange prop if the call does not come from the option picker',
+    it('should deselect the quick option when calling onBlur prop if the call does not come from the option picker',
       () => {
         let expectedValue: string = 'anything';
         let expectedLabel: string = 'something';
@@ -222,22 +222,32 @@ describe('Date picker', () => {
         store.dispatch(addOptionPicker(DATES_SELECTION_ID));
         store.dispatch(changeOptionPicker(DATES_SELECTION_ID, expectedLabel, expectedValue));
 
-        datesSelection.props().onChange(new Date(), true, true);
+        datesSelection.props().onBlur(new Date(), true, true);
 
         expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedValue).toBe(expectedValue);
         expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedLabel).toBe(expectedLabel);
 
-        datesSelection.props().onChange(new Date(), true, false);
+        datesSelection.props().onBlur(new Date(), true, false);
         expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedValue).toBe('');
         expect(_.findWhere(store.getState().optionPickers, { id: DATES_SELECTION_ID }).selectedLabel).toBe('');
       });
 
-    it('should remove the selected limit on blur', () => {
+    it('should remove the selected limit on blur if the lowerLimit input has changed', () => {
       store.dispatch(selectDate(DATES_SELECTION_ID, DateLimits.lower));
 
       expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).selected).toBe(DateLimits.lower);
 
-      datesSelection.props().onBlur();
+      datesSelection.props().onBlur(new Date(), false);
+
+      expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).selected).toBe('');
+    });
+
+    it('should remove the selected limit on blur if the upperLimit input has changed', () => {
+      store.dispatch(selectDate(DATES_SELECTION_ID, DateLimits.upper));
+
+      expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).selected).toBe(DateLimits.upper);
+
+      datesSelection.props().onBlur(new Date(), true);
 
       expect(_.findWhere(store.getState().datePickers, { id: DATES_SELECTION_ID }).selected).toBe('');
     });

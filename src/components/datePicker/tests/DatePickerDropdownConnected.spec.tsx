@@ -16,6 +16,8 @@ import { addOptionsCycle, changeOptionsCycle } from '../../optionsCycle/OptionsC
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ModalFooter } from '../../modal/ModalFooter';
+import { Button } from '../../button/Button';
 
 describe('Date picker', () => {
   describe('<DatePickerDropdownConnected />', () => {
@@ -96,7 +98,7 @@ describe('Date picker', () => {
       expect(onClickProp).toBeDefined();
     });
 
-    it('should get what to do on aply as a prop', () => {
+    it('should get what to do on apply as a prop', () => {
       let onApplyProp = datePickerDropdown.props().onApply;
 
       expect(onApplyProp).toBeDefined();
@@ -267,7 +269,7 @@ describe('Date picker', () => {
       let yearCycleId: string = `calendar-${DATE_PICKER_DROPDOWN_BASIC_PROPS.id}${YEAR_PICKER_ID}`;
       let monthCycleId: string = `calendar-${DATE_PICKER_DROPDOWN_BASIC_PROPS.id}${MONTH_PICKER_ID}`;
 
-      store.dispatch(addDatePicker(pickerId, false));
+      store.dispatch(addDatePicker(pickerId, false, undefined));
       store.dispatch(changeDatePickerLowerLimit(pickerId, newLowerLimit));
       store.dispatch(applyDatePicker(pickerId));
 
@@ -276,7 +278,7 @@ describe('Date picker', () => {
 
       store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
-      datePickerDropdown.find('footer').find('button').last().simulate('click');
+      datePickerDropdown.find(ModalFooter).find(Button).last().simulate('click');
 
       expect(_.findWhere(store.getState().optionsCycles, { id: monthCycleId }).currentOption)
         .toBe(newLowerLimit.getMonth());

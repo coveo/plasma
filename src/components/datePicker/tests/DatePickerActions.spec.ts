@@ -27,11 +27,12 @@ describe('Date picker', () => {
           id: DATE_PICKER_ID,
           color: COLOR,
           calendarId: CALENDAR_ID,
-          isRange: IS_RANGE
+          isRange: IS_RANGE,
+          rangeLimit: undefined,
         }
       };
 
-      expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, COLOR, CALENDAR_ID)).toEqual(expectedAction);
+      expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined, COLOR, CALENDAR_ID)).toEqual(expectedAction);
     });
 
     it('should create an action to add the date picker with default values if the color or the calendar id are not defined', () => {
@@ -41,11 +42,12 @@ describe('Date picker', () => {
           id: DATE_PICKER_ID,
           color: DEFAULT_DATE_PICKER_COLOR,
           calendarId: '',
-          isRange: IS_RANGE
+          isRange: IS_RANGE,
+          rangeLimit: undefined,
         }
       };
 
-      expect(addDatePicker(DATE_PICKER_ID, IS_RANGE)).toEqual(expectedAction);
+      expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined)).toEqual(expectedAction);
     });
 
     it('should create an action to remove the date picker', () => {
