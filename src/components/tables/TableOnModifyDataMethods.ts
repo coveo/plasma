@@ -1,14 +1,12 @@
-import { ITableState } from './TableReducers';
+import { ITableState, DEFAULT_TABLE_DATA } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent } from './TableConstants';
 import * as _ from 'underscore';
-import { ITableOwnProps } from './Table';
-import { modifyState } from './TableActions';
+import { ITableOwnProps, ITableHeadingAttribute } from './Table';
 import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
 import { getLoadingIds, getChildComponentId } from './TableUtils';
 import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
-import { resetPaging, changePage } from '../navigation/pagination/NavigationPaginationActions';
-import { addTable, removeTable, setIsInError, toggleLock, modifyState, initializeTable } from './TableActions';
+import { setIsInError, modifyState } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
 import { selectRow } from './TableRowActions';
 import * as $ from 'jquery';
@@ -29,80 +27,85 @@ export const TableDataModifyerMethods = {
     dispatch(turnOffLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
     dispatch(changeLastUpdated(getChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
   },
-  default(tableState: ITableState): ITableState {
-    const tableDataById = tableState.data.byId;
+  default(tableOwnProps: ITableOwnProps): ((tableState: ITableState) => ITableState) {
+    return (tableState: ITableState) => {
+      const tableDataById = tableState.data.byId;
 
-    let totalPages: number;
-    let totalEntries: number;
-    let nextDisplayedIds = [...tableState.data.allIds];
+      let totalPages: number;
+      let totalEntries: number;
+      let nextDisplayedIds = [...tableState.data.allIds];
 
-    // predicates default logic
-    if (!_.isEmpty(tableState.predicates)) {
-      _.pairs(tableState.predicates).forEach((keyValuePair: string[]) => {
-        const attributeName = keyValuePair[0];
-        const attributeValue = keyValuePair[1];
+      // predicates default logic
+      if (!_.isEmpty(tableState.predicates)) {
+        _.pairs(tableState.predicates).forEach((keyValuePair: string[]) => {
+          const attributeName = keyValuePair[0];
+          const attributeValue = keyValuePair[1];
 
-        if (attributeValue !== TABLE_PREDICATE_DEFAULT_VALUE) {
-          nextDisplayedIds = nextDisplayedIds.filter((dataId: string) =>
-            tableDataById[dataId][attributeName] === attributeValue);
-        }
-      });
-    }
-
-    // filter default logic
-    if (tableState.filter) {
-      nextDisplayedIds = nextDisplayedIds.filter((dataId: string) => {
-        let shouldKeep = false;
-
-        tableState.headingAttributes.forEach((headingAttribute: string) => {
-          const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[dataId][headingAttribute]);
-          shouldKeep =
-            shouldKeep
-            || cleanAttributeValue.toString().toLowerCase().indexOf(tableState.filter.toLowerCase()) > -1;
+          if (attributeValue !== TABLE_PREDICATE_DEFAULT_VALUE) {
+            nextDisplayedIds = nextDisplayedIds.filter((dataId: string) =>
+              tableDataById[dataId][attributeName] === attributeValue);
+          }
         });
-
-        return shouldKeep;
-      });
-    }
-
-    totalEntries = nextDisplayedIds.length;
-    totalPages = Math.ceil(totalEntries / tableState.perPage);
-
-    // pagination logic
-    const startingIndex = tableState.page * tableState.perPage;
-    const endingIndex = startingIndex + tableState.perPage;
-    nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
-
-    // sort default logic
-    const { sortState } = tableState;
-    if (sortState && sortState.order !== TableSortingOrder.UNSORTED) {
-      nextDisplayedIds = _.sortBy(
-        nextDisplayedIds,
-        (displayedId: string) => {
-          const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-          return cleanAttributeValue.toString().toLowerCase();
-        },
-      );
-
-      if (sortState.order === TableSortingOrder.DESCENDING) {
-        nextDisplayedIds.reverse();
       }
-    }
 
-    return {
-      ...tableState,
-      data: {
-        ...tableState.data,
-        displayedIds: nextDisplayedIds,
-      },
-      totalEntries,
-      totalPages,
+      // filter default logic
+      if (tableState.filter) {
+        nextDisplayedIds = nextDisplayedIds.filter((dataId: string) => {
+          let shouldKeep = false;
+
+          tableOwnProps.headingAttributes.forEach((headingAttribute: ITableHeadingAttribute) => {
+            const { attributeName, attributeFormatter } = headingAttribute;
+            shouldKeep =
+              shouldKeep
+              || attributeFormatter(tableDataById[dataId][attributeName])
+                .toString()
+                .toLowerCase()
+                .indexOf(tableState.filter.toLowerCase()) > -1;
+          });
+
+          return shouldKeep;
+        });
+      }
+
+      totalEntries = nextDisplayedIds.length;
+      totalPages = Math.ceil(totalEntries / tableState.perPage);
+
+      // pagination logic
+      const startingIndex = tableState.page * tableState.perPage;
+      const endingIndex = startingIndex + tableState.perPage;
+      nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
+
+      // sort default logic
+      const { sortState } = tableState;
+      if (sortState && sortState.order !== TableSortingOrder.UNSORTED) {
+        nextDisplayedIds = _.sortBy(
+          nextDisplayedIds,
+          (displayedId: string) => {
+            const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
+            return cleanAttributeValue.toString().toLowerCase();
+          },
+        );
+
+        if (sortState.order === TableSortingOrder.DESCENDING) {
+          nextDisplayedIds.reverse();
+        }
+      }
+
+      return {
+        ...tableState,
+        data: {
+          ...tableState.data,
+          displayedIds: nextDisplayedIds,
+          totalEntries,
+          totalPages,
+        },
+      };
     };
   },
   thunkDefault(tableOwnProps: ITableOwnProps) {
     return (dispatch: any) => {
       TableDataModifyerMethods.commonDispatchPreStateModification(tableOwnProps, dispatch);
-      dispatch(modifyState(tableOwnProps.id, TableDataModifyerMethods.default));
+      dispatch(modifyState(tableOwnProps.id, TableDataModifyerMethods.default(tableOwnProps)));
       TableDataModifyerMethods.commonDispatchPostStateModification(tableOwnProps, dispatch);
     };
   },
@@ -126,7 +129,7 @@ export const TableDataModifyerMethods = {
           dispatch(setIsInError(tableOwnProps.id, true));
           dispatch(modifyState(
             tableOwnProps.id,
-            (tableState: ITableState) => ({ ...tableState, data: { byId: {}, allIds: [], displayedIds: [] }}),
+            (tableState: ITableState) => ({ ...tableState, data: DEFAULT_TABLE_DATA }),
           ));
         })
         .always(() => {

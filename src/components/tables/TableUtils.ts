@@ -24,6 +24,8 @@ export const getLoadingIds = (tableId: string): string[] => ([
 export const convertCollectionToTableData = (
   collection: { [attribute: string]: any }[],
   attributeNameToUseAsId: string,
+  totalEntries: number,
+  totalPages: number,
 ): ITableData => collection
   .reduce(
   (tableData: ITableData, model: { [attribute: string]: any }): ITableData => ({
@@ -36,6 +38,8 @@ export const convertCollectionToTableData = (
     },
     allIds: [...tableData.allIds, model[attributeNameToUseAsId]],
     displayedIds: [...tableData.displayedIds, model[attributeNameToUseAsId]],
+    totalEntries,
+    totalPages,
   }),
   { byId: {}, allIds: [], displayedIds: [] },
 ) as ITableData;

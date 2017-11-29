@@ -1,12 +1,10 @@
-import { turnOnLoading } from '../loading/LoadingActions';
 import { TableChildComponent } from './TableConstants';
 import { resetPaging } from '../navigation/pagination/NavigationPaginationActions';
-import { getLoadingIds, getChildComponentId } from './TableUtils';
-import { ITableOwnProps, ITableProps, Table, IHeadingAttribute } from './Table';
+import { getChildComponentId } from './TableUtils';
+import { ITableOwnProps, ITableProps, Table } from './Table';
 import { ITableState } from './TableReducers';
-import { selectRow } from './TableRowActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
-import { addTable, removeTable, setIsInError, toggleLock, modifyState, initializeTable } from './TableActions';
+import { addTable, removeTable } from './TableActions';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import * as React from 'react';
@@ -21,7 +19,6 @@ import { PER_PAGE_NUMBERS } from '../navigation/perPage/NavigationPerPage';
 
 export interface ITableDispatchProps {
   onDidMount: () => void;
-  onDidUpdate: () => void;
   onUnmount: () => void;
   onModifyData: (tableState: ITableState) => void;
   onRowClick: (actions: IActionOptions[]) => void;
@@ -47,9 +44,6 @@ const mapDispatchToProps = (
         ownProps.id,
         ownProps.initialTableData,
         initialPerPage,
-        ownProps.headingAttributes.map(({ attributeName }) => attributeName),
-        ownProps.initialTotalEntries,
-        ownProps.initialTotalPages,
       )
     );
   },

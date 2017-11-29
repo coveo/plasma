@@ -46,7 +46,7 @@ export class Loading extends React.Component<ILoadingProps, any> {
       ? (
         <tbody className='loading-row'>
           <tr>
-            <td colSpan={this.props.rowStyle.nbColumns}>{spinner}</td>
+            <td colSpan={this.props.rowStyle.nbColumns}></td>
           </tr>
         </tbody>
       )

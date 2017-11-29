@@ -25,7 +25,7 @@ import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { LoadingConnected } from '../loading/LoadingConnected';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import { NavigationConnected } from '../navigation/NavigationConnected';
-import { ReduxUtils } from '../../utils/ReduxUtils';
+import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 
 export interface IData {
   id: string;
@@ -39,17 +39,17 @@ export interface ITableRowData {
   };
 };
 
-export type IAttributeFormatter = (attributeValue: any, attributeName: string) => JSXRenderable;
+export type IAttributeFormatter = (attributeValue: any, attributeName?: string) => JSXRenderable;
 export type IAttributeNameFormatter = (attributeName: string) => string;
 
-export interface IHeadingAttribute {
+export interface ITableHeadingAttribute {
   attributeName: string;
   titleFormatter: (attributeName: string) => string;
   sort?: boolean | ((attributeValue: any) => string);
   attributeFormatter?: IAttributeFormatter;
 }
 
-export interface IPredicate {
+export interface ITablePredicate {
   props: IDropdownSearchProps;
   attributeName: string;
   attributeNameFormatter: IAttributeNameFormatter;
@@ -58,9 +58,7 @@ export interface IPredicate {
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
   initialTableData: ITableData;
-  initialTotalEntries: number;
-  initialTotalPages: number;
-  headingAttributes: IHeadingAttribute[];
+  headingAttributes: ITableHeadingAttribute[];
   getActions?: () => IActionOptions[];
   collapsibleFormatter?: (tableRowData: ITableRowData) => JSXRenderable;
   modifyState?: (state: ITableState, newTableData?: any) => ITableState;
@@ -71,9 +69,6 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   customMode?: {
     thunkActionCreator: (tableOwnProps: ITableOwnProps) => ((dispatch: any, getState?: () => any) => void);
   };
-};
-
-export interface ITableChildrenProps {
   blankSlates: {
     noResults: IBlankSlateProps;
     noResultsOnFilterOrPredicates?: IBlankSlateProps;
@@ -81,7 +76,7 @@ export interface ITableChildrenProps {
   };
   actionBar?: IActionBarProps;
   filter?: IFilterBoxProps;
-  predicates?: IPredicate[];
+  predicates?: ITablePredicate[];
   navigationChildren?: INavigationChildrenProps;
   lastUpdated?: ILastUpdatedProps;
   styles?: {
@@ -89,13 +84,13 @@ export interface ITableChildrenProps {
     tableActionClasses?: string[];
     navigationClasses?: string[];
   };
-}
+};
 
 export interface ITableStateProps {
   tableState?: ITableState;
 };
 
-export interface ITableProps extends ITableOwnProps, ITableChildrenProps, ITableStateProps, Partial<ITableDispatchProps> { }
+export interface ITableProps extends ITableOwnProps, ITableStateProps, Partial<ITableDispatchProps> { }
 
 export class Table extends React.Component<ITableProps, any> {
   componentDidMount() {
@@ -161,7 +156,7 @@ export class Table extends React.Component<ITableProps, any> {
       : null;
 
     const predicatesConnected: JSX.Element[] = actionBar && predicates
-      ? predicates.map((predicate: IPredicate, i: number) => {
+      ? predicates.map((predicate: ITablePredicate, i: number) => {
         const predicateId = `${getChildComponentId(this.props.id, TableChildComponent.PREDICATE)}-${predicate.attributeName}`;
         const containerClasses = i ? ['ml1'] : [''];
         return (
@@ -196,7 +191,7 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   buildTableHeader(): JSX.Element {
-    const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: IHeadingAttribute) => {
+    const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
       const id = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}-${headingAttribute.attributeName}`;
       const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
       const tableRefForSort = !!headingAttribute.sort
@@ -242,7 +237,7 @@ export class Table extends React.Component<ITableProps, any> {
             key={headingRowId}
             isCollapsible={!!collapsibleData}
             onClickCallback={(e: React.MouseEvent<any>) => this.props.onRowClick([])}>
-            {this.props.headingAttributes.map((headingAttribute: IHeadingAttribute) => {
+            {this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
               const { attributeName, attributeFormatter } = headingAttribute;
               return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, attributeFormatter);
             })}
@@ -294,17 +289,13 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   buildNavigation(): JSX.Element {
-    const { tableState } = this.props;
-    const tableDataToUse = tableState && tableState.data || this.props.initialTableData;
-    const perPage = tableState && tableState.perPage || this.props.initialPerPage;
-    const totalEntries = tableState && tableState.totalEntries || this.props.initialTotalEntries;
-    const totalPages = tableState && tableState.totalPages || this.props.initialTotalPages;
+    const tableData = this.props.tableState && this.props.tableState.data || this.props.initialTableData;
 
     return (
       <NavigationConnected
         {...this.props.navigationChildren}
-        totalEntries={totalEntries}
-        totalPages={totalPages}
+        totalEntries={tableData.totalEntries}
+        totalPages={tableData.totalPages}
         id={getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
         loadingIds={[`loading-${getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}`]} />
     );

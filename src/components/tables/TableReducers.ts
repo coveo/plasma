@@ -18,6 +18,8 @@ import { TableHeaderCellActions } from './TableHeaderCellActions';
 
 export const generateTableId = (): string => _.uniqueId(TABLE_ID_PREFIX);
 
+export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [],  totalEntries: 0, totalPages: 0, });
+
 export interface ITableData {
   byId: {
     [id: string]: {
@@ -27,6 +29,8 @@ export interface ITableData {
   };
   allIds: string[]; // useful to loop over all ids
   displayedIds: string[]; // will be the data displayed in the table
+  totalEntries: number;
+  totalPages: number;
 }
 
 export interface ITablesState {
@@ -38,7 +42,6 @@ export type attributeValue = any;
 
 export interface ITableState {
   id: string;
-  headingAttributes: string[];
   data: ITableData;
   isInError: boolean;
   isLoading: boolean;
@@ -53,14 +56,11 @@ export interface ITableState {
   predicates: {
     [attributeNameAssociatedToPredicate: string]: attributeValue;
   };
-  totalEntries: number;
-  totalPages: number;
 }
 
 export const tableInitialState: ITableState = {
   id: undefined,
-  headingAttributes: [],
-  data: { byId: {}, allIds: [], displayedIds: [] },
+  data: DEFAULT_TABLE_DATA,
   isInError: false,
   isLoading: false,
   filter: '',
@@ -72,8 +72,7 @@ export const tableInitialState: ITableState = {
     order: TableSortingOrder.UNSORTED,
   },
   predicates: {},
-  totalEntries: 0,
-  totalPages: 0,
+
 };
 
 export const tablesInitialState: { [tableId: string]: ITableState; } = {};
@@ -166,9 +165,6 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
           id: action.payload.id,
           perPage: action.payload.initialPerPage,
           data: action.payload.initialTableData,
-          headingAttributes: [...action.payload.headingAttributeIds],
-          totalEntries: action.payload.totalEntries,
-          totalPages: action.payload.totalPages,
         },
       };
     case TableActions.remove:
