@@ -1,6 +1,6 @@
 import { turnOnLoading } from '../loading/LoadingActions';
 import { TableChildComponent } from './TableConstants';
-import { changePage } from '../navigation/pagination/NavigationPaginationActions';
+import { resetPaging } from '../navigation/pagination/NavigationPaginationActions';
 import { getLoadingIds, getChildComponentId } from './TableUtils';
 import { ITableOwnProps, ITableProps, Table, IHeadingAttribute } from './Table';
 import { ITableState } from './TableReducers';
@@ -57,7 +57,15 @@ const mapDispatchToProps = (
     dispatch(removeTable(ownProps.id));
   },
   onModifyData: (tableState: ITableState) => {
-    dispatch(TableDataModifyerMethods.thunkDefault(ownProps, tableState));
+    if (ownProps.serverMode) {
+      dispatch(TableDataModifyerMethods.thunkServer(ownProps));
+    } else if (ownProps.customMode) {
+      TableDataModifyerMethods.commonDispatchPreStateModification(ownProps, dispatch);
+      dispatch(ownProps.customMode.thunkActionCreator(ownProps));
+      TableDataModifyerMethods.commonDispatchPostStateModification(ownProps, dispatch);
+    } else {
+      dispatch(TableDataModifyerMethods.thunkDefault(ownProps));
+    }
   },
   onRowClick: (actions: IActionOptions[] = []) => {
     dispatch(
@@ -68,7 +76,7 @@ const mapDispatchToProps = (
     );
   },
   onResetPage: () => {
-    dispatch(changePage(`pagination-${getChildComponentId(ownProps.id, TableChildComponent.NAVIGATION)}`, 0));
+    dispatch(resetPaging(`pagination-${getChildComponentId(ownProps.id, TableChildComponent.NAVIGATION)}`));
   },
   onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => {
     dispatch(selectOptionDropdownSearch(predicateId, option));

@@ -25,6 +25,7 @@ import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { LoadingConnected } from '../loading/LoadingConnected';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import { NavigationConnected } from '../navigation/NavigationConnected';
+import { ReduxUtils } from '../../utils/ReduxUtils';
 
 export interface IData {
   id: string;
@@ -63,6 +64,13 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   getActions?: () => IActionOptions[];
   collapsibleFormatter?: (tableRowData: ITableRowData) => JSXRenderable;
   modifyState?: (state: ITableState, newTableData?: any) => ITableState;
+  serverMode?: {
+    url: (ownProps?: ITableOwnProps, tableState?: ITableState) => string;
+    rawDataToTableData: (data: any, ownProps?: ITableOwnProps, tableState?: ITableState) => ITableData;
+  };
+  customMode?: {
+    thunkActionCreator: (tableOwnProps: ITableOwnProps) => ((dispatch: any, getState?: () => any) => void);
+  };
 };
 
 export interface ITableChildrenProps {
@@ -103,8 +111,8 @@ export class Table extends React.Component<ITableProps, any> {
       if (tableState.page !== nextProps.tableState.page) {
         this.props.onModifyData(tableState);
       } else {
-        this.props.onResetPage();
         this.props.onModifyData(tableState);
+        this.props.onResetPage();
       }
     }
   }

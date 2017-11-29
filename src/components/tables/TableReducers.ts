@@ -26,7 +26,6 @@ export interface ITableData {
     };
   };
   allIds: string[]; // useful to loop over all ids
-  beforeDisplayedIds: string[]; // useful for proper pagination setup
   displayedIds: string[]; // will be the data displayed in the table
 }
 
@@ -90,7 +89,7 @@ export const tableReducer = (
         isInError: true,
       };
     case TableActions.modifyState:
-      return action.payload.tableStateModifyer(state, action.payload.newTableData);
+      return action.payload.tableStateModifyer(state);
     case FilterActions.filterThrough:
       return {
         ...state,

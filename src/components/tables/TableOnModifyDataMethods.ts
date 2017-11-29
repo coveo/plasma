@@ -8,11 +8,27 @@ import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
 import { getLoadingIds, getChildComponentId } from './TableUtils';
 import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
 import { resetPaging, changePage } from '../navigation/pagination/NavigationPaginationActions';
+import { addTable, removeTable, setIsInError, toggleLock, modifyState, initializeTable } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
 import { selectRow } from './TableRowActions';
-
+import * as $ from 'jquery';
+import { IReactVaporState } from '../../ReactVapor';
 
 export const TableDataModifyerMethods = {
+  commonDispatchPreStateModification: (tableOwnProps: ITableOwnProps, dispatch: any) => {
+    dispatch(selectRow(undefined));
+    dispatch(
+      addActionsToActionBar(
+        getChildComponentId(tableOwnProps.id, TableChildComponent.ACTION_BAR),
+        [],
+      ),
+    );
+    dispatch(turnOnLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
+  },
+  commonDispatchPostStateModification: (tableOwnProps: ITableOwnProps, dispatch: any) => {
+    dispatch(turnOffLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
+    dispatch(changeLastUpdated(getChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
+  },
   default(tableState: ITableState): ITableState {
     const tableDataById = tableState.data.byId;
 
@@ -85,26 +101,37 @@ export const TableDataModifyerMethods = {
   },
   thunkDefault(tableOwnProps: ITableOwnProps) {
     return (dispatch: any) => {
-      dispatch(selectRow(undefined));
-      dispatch(
-        addActionsToActionBar(
-          getChildComponentId(tableOwnProps.id, TableChildComponent.ACTION_BAR),
-          [],
-        ),
-      );
-      dispatch(turnOnLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
+      TableDataModifyerMethods.commonDispatchPreStateModification(tableOwnProps, dispatch);
       dispatch(modifyState(tableOwnProps.id, TableDataModifyerMethods.default));
-      dispatch(turnOffLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
-      dispatch(changeLastUpdated(getChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
+      TableDataModifyerMethods.commonDispatchPostStateModification(tableOwnProps, dispatch);
     };
   },
   server(tableState: ITableState): ITableState {
     // todo
     return undefined;
   },
-  thunkServer(tableState: ITableState, tableOwnProps: ITableOwnProps) {
-    return (dispatch: any) => {
-      // todo
+  thunkServer(tableOwnProps: ITableOwnProps) {
+    return (dispatch: any, getState: () => IReactVaporState) => {
+      TableDataModifyerMethods.commonDispatchPreStateModification(tableOwnProps, dispatch);
+      $.get(tableOwnProps.serverMode.url(tableOwnProps, getState().tables[tableOwnProps.id]))
+        .done(data => {
+          dispatch(
+            modifyState(
+              tableOwnProps.id,
+              (tableState: ITableState) => ({ ...tableState, data: tableOwnProps.serverMode.rawDataToTableData(data) }),
+            )
+          );
+        })
+        .fail(error => {
+          dispatch(setIsInError(tableOwnProps.id, true));
+          dispatch(modifyState(
+            tableOwnProps.id,
+            (tableState: ITableState) => ({ ...tableState, data: { byId: {}, allIds: [], displayedIds: [] }}),
+          ));
+        })
+        .always(() => {
+          TableDataModifyerMethods.commonDispatchPostStateModification(tableOwnProps, dispatch);
+        });
     };
-  }
+  },
 };

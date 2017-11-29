@@ -79,7 +79,6 @@ export interface IReduxActionsPayload {
   tableStateModifyer?: ITableStateModifyer;
   totalEntries?: number;
   totalPages?: number;
-  newTableState?: ITableState;
   headingAttributeIds?: string[];
   addedSelectedOption?: IDropdownOption;
   isLocked?: boolean;

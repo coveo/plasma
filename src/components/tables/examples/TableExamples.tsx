@@ -29,10 +29,86 @@ const tableData: ITableData = {
   displayedIds: _.keys(tableDataById).slice(0, 10),
 };
 
+const rawDataToTableData = (data: any): ITableData => JSON.parse(data).entries.slice(0, 1).reduce((tableData: ITableData, entry: any) => {
+  return {
+    byId: {
+      ...tableData.byId,
+      [entry.API]: {
+        id: entry.API,
+        attribute1: entry.API,
+        ...entry,
+      }
+    },
+    allIds: [...tableData.allIds, entry.API],
+    displayedIds: [...tableData.displayedIds, entry.API],
+  };
+}, {byId: {}, allIds: [], displayedIds: []});
+
 export class TableExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
+        <div className='form-group'>
+          <label className='form-control-label'>Table</label>
+          <TableConnected
+            id={generateTableId()}
+            serverMode={{
+              url: () => 'https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json',
+              rawDataToTableData: (data) => JSON.parse(data).entries.slice(0, 1).reduce((tableData, entry) => {
+                return {
+                  byId: {
+                    ...tableData.byId,
+                    [entry.API]: {
+                      id: entry.API,
+                      attribute1: entry.API,
+                      ...entry,
+                    }
+                  },
+                  allIds: [...tableData.allIds, entry.API],
+                  displayedIds: [...tableData.displayedIds, entry.API],
+                };
+              }, {byId: {}, allIds: [], displayedIds: []}),
+            }}
+            initialTableData={tableData}
+            initialTotalEntries={tableData.allIds.length}
+            initialTotalPages={Math.ceil(tableData.allIds.length / 10)}
+            headingAttributes={[
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+            ]}
+            actionBar={{
+              id: 'nice',
+              extraContainerClasses: ['mod-border-top'],
+            }}
+            predicates={[
+              { props: { id: 'predicaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: { id: 'predicaaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
+            ]}
+            filter={{ id: 'filtaaaaaa', containerClasses: ['ml1'] }}
+            blankSlates={{
+              noResults: { title: 'Oh no! No results!' },
+              noResultsOnError: { title: 'i am on error!'},
+            }}
+            navigationChildren={{ perPageNumbers: [20, 40, 60] }}
+            lastUpdated={{ id: 'hello' }}
+          />
+        </div>
         <div className='form-group'>
           <label className='form-control-label'>Table</label>
           <TableConnected
@@ -76,6 +152,7 @@ export class TableExamples extends React.Component<any, any> {
             lastUpdated={{ id: 'hello' }}
           />
         </div>
+
       </div>
     );
   }

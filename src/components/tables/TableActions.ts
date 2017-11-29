@@ -4,7 +4,7 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 
 export enum MODIFY_SATE_TABLE { MODIFY_SATE_TABLE = 'MODIFY_STATE_TABLE' };
 
-export type ITableStateModifyer = (state: ITableState, newTableData?: any) => ITableState;
+export type ITableStateModifyer = (state: ITableState) => ITableState;
 
 export const TableActions = {
   add: 'ADD_TABLE',
