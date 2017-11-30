@@ -58,10 +58,8 @@ describe('<Title/>', () => {
     };
 
     const documentationLink: ILinkSvgProps = {
-      link: {
-        url: 'https://www.google.ca',
-        target: '_blank',
-      },
+      url: 'https://www.google.ca',
+      target: '_blank',
       svg: {
         svgName: 'help',
         svgClass: 'fill-orange icon mod-20',

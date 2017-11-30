@@ -1,6 +1,6 @@
-import { NavigationConnected } from '../NavigationConnected';
 import { INavigationOwnProps } from '../Navigation';
 import { turnOffLoading, LoadingActions } from '../../loading/LoadingActions';
+import { NavigationConnected } from '../NavigationConnected';
 import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 import * as React from 'react';
 import * as _ from 'underscore';

@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { render as ReactDOMRender } from 'react-dom';
-import './style.scss';
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { ReactVaporStore } from './ReactVaporStore';
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { SyncFeedbackExample } from '../src/components/syncFeedback/examples/SyncFeedbackExample';

@@ -62,10 +62,6 @@ describe('<LinkSvg>', () => {
     });
 
     it('should add custom class with linkClasses on <a>', () => {
-        link: {
-          url: 'www.google.ca',
-        linkClasses: ['test', 'test1'],
-      },
       renderLinkSvg({ linkClasses: ['test', 'test1'] });
 
       const element = linkSvgComponent.find('a');

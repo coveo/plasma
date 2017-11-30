@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import { Breadcrumb, IBreadcrumbProps } from '../Breadcrumb';
 import { IBreadcrumbLinkProps, BreadcrumbLink } from '../BreadcrumbLink';
@@ -37,7 +38,7 @@ describe('<Breadcrumb/>', () => {
     it('should render the default title', () => {
       const titleComponent = breadcrumbComponent.find(Title);
       expect(titleComponent.length).toEqual(1);
-      expect(titleComponent.props().title).toEqual(defaultProps.title);
+      expect(titleComponent.props().title).toEqual(defaultProps.title.title);
     });
   });
 
@@ -68,10 +69,14 @@ describe('<Breadcrumb/>', () => {
     });
 
     it('should render all BreadcrumbLink if the links has more than 1 element', () => {
+      const secondLink: IBreadcrumbLinkProps = {
+        name: 'test',
+        link: '$',
+      };
       renderBreadcrumb({
-        links: [defaultLink, defaultLink, defaultLink],
+        links: [defaultLink, secondLink],
       });
-      expect(breadcrumbComponent.find(BreadcrumbLink).length).toEqual(3);
+      expect(breadcrumbComponent.find(BreadcrumbLink).length).toEqual(2);
     });
 
     it('should render the BreadcrumbLink link with the defaultLinkPath before', () => {
