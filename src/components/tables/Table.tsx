@@ -83,7 +83,6 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   styles?: {
     tableHeaderClass?: string[]
     tableActionClasses?: string[];
-    navigationClasses?: string[];
   };
 };
 
