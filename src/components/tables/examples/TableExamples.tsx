@@ -72,7 +72,7 @@ const rawDataToTableData = (data: any): ITableData => JSON.parse(data).entries.r
     allIds: [...tableData.allIds, entry.API],
     displayedIds: [...tableData.displayedIds, entry.API].slice(0, perPageNumbers[0]),
     totalEntries: JSON.parse(data).count,
-    totalPages:  Math.ceil(JSON.parse(data).count / perPageNumbers[0]),
+    totalPages: Math.ceil(JSON.parse(data).count / perPageNumbers[0]),
   };
 }, { byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0 });
 
@@ -101,9 +101,9 @@ export class TableExamples extends React.Component<any, any> {
               },
             ]}
             blankSlates={{
-              noResults: {title: 'Oh my oh my, nothing to see here :(!'}
+              noResults: { title: 'Oh my oh my, nothing to see here :(!' }
             }}
-            actionBar={{ extraContainerClasses: ['mod-border-top']}}
+            actionBar={{ extraContainerClasses: ['mod-border-top'] }}
             noNavigation
           />
         </div>
@@ -133,9 +133,9 @@ export class TableExamples extends React.Component<any, any> {
             ]}
             filter={{}}
             blankSlates={{
-              noResults: {title: 'Oh my oh my, nothing to see here :(!'}
+              noResults: { title: 'Oh my oh my, nothing to see here :(!' }
             }}
-            actionBar={{ extraContainerClasses: ['mod-border-top']}}
+            actionBar={{ extraContainerClasses: ['mod-border-top'] }}
             noNavigation
           />
         </div>
