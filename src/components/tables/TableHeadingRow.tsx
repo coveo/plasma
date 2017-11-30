@@ -4,6 +4,7 @@ import * as React from 'react';
 
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
   id?: string;
+  tableId?: string;
   hide?: boolean;
   isCollapsible: boolean;
   onClickCallback?: (e: React.MouseEvent<any>) => void;

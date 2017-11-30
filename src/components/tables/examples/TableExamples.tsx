@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 import { generateTableId, ITableData } from '../TableReducers';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { ITableRowData, ITableProps } from '../Table';
+import { TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
@@ -17,12 +18,23 @@ const tableDataById = _.range(0, 100).reduce((obj, number) => ({
     attribute3: generateText(),
     attribute4: generateText(),
   }
-}), {} as { [id: string]: any });
+}), {} as {
+  [id: string]: {
+    id: string;
+    [attribute: string]: any;
+  };
+});
 
-const perPageNumbers = [20, 40, 60];
+const perPageNumbers = [5, 40, 100];
 
-const predicateOptionsAttribute4 = [{ value: 'ALL' }, ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute4 }], [])].slice(0, 10);
-const predicateOptionsAttribute3 = [{ value: 'ALL' }, ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute3 }], [])].slice(0, 10);
+const predicateOptionsAttribute4 = [
+  { value: TABLE_PREDICATE_DEFAULT_VALUE },
+  ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute4 }], [])
+].slice(0, 4);
+const predicateOptionsAttribute3 = [
+  { value: TABLE_PREDICATE_DEFAULT_VALUE },
+  ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute3 }], []),
+].slice(0, 4);
 
 const tableData: ITableData = {
   byId: tableDataById,
@@ -108,7 +120,7 @@ export class TableExamples extends React.Component<any, any> {
           <TableConnected
             id={generateTableId()}
             initialTableData={tableData}
-            collapsibleFormatter={(rowData: ITableRowData) => rowData.attribute2}
+            collapsibleFormatter={(rowData: ITableRowData, props?: ITableProps) => <div className='p2'>This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}</div>}
             getActions={(rowData: ITableRowData, tableProps: ITableProps) => ([
               {
                 name: 'Link to Coveo',
@@ -119,7 +131,7 @@ export class TableExamples extends React.Component<any, any> {
                 enabled: true
               }, {
                 name: 'action1',
-                trigger: () => alert('attribute 4: ' + rowData.attribute4),
+                trigger: () => alert('attribute 4 value of the selected row is: ' + rowData.attribute4),
                 enabled: true
               }, {
                 separator: true,
@@ -139,6 +151,7 @@ export class TableExamples extends React.Component<any, any> {
                 attributeName: 'attribute1',
                 titleFormatter: _.identity,
                 sort: true,
+                sortByMethod: () => 1,
                 attributeFormatter: _.identity,
               },
               {
@@ -166,7 +179,7 @@ export class TableExamples extends React.Component<any, any> {
             blankSlates={{
               noResults: { title: 'Oh no! No results!' },
             }}
-            navigationChildren={{ perPageNumbers: [5, 40, 60] }}
+            navigationChildren={{ perPageNumbers }}
             lastUpdated={{ id: 'hello' }}
           />
         </div>

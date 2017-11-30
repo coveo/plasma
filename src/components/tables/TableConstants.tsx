@@ -20,6 +20,7 @@ export enum TableChildComponent {
   PREDICATE = 'predicate',
   TABLE_HEADER = 'table-header',
   TABLE_HEADER_CELL = 'table-header-cell',
+  TABLE_ROW_CELL = 'table-row-cell',
   TABLE_HEADING_ROW = 'table-heading-row',
   TABLE_COLLAPSIBLE_ROW = 'table-collapsible-row',
   TABLE_ROW_WRAPPER = 'table-row-wrapper',

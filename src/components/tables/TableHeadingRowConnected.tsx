@@ -19,10 +19,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ITableHeadingRowOwnProps) => ({
     onClick: () => {
-      dispatch(selectRow(ownProps.id, ownProps.isCollapsible));
+      dispatch(selectRow(ownProps.id, ownProps.isCollapsible, ownProps.tableId));
     },
     onRender: () => {
-      dispatch(addRow(ownProps.id));
+      dispatch(addRow(ownProps.id, ownProps.tableId));
     },
     onDestroy: () => {
       dispatch(removeRow(ownProps.id));

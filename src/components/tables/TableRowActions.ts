@@ -3,18 +3,21 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 export const TableRowActions = {
   add: 'ADD_ROW',
   remove: 'REMOVE_ROW',
-  select: 'SELECT_ROW'
+  select: 'SELECT_ROW',
+  unselectAll: 'UNSELECT_ALL_ROW',
 };
 
 export interface ITableRowActionPayload {
-  id: string;
+  id?: string;
   isCollapsible?: boolean;
+  tableId?: string;
 }
 
-export const addRow = (id: string): IReduxAction<ITableRowActionPayload> => ({
+export const addRow = (id: string, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
   type: TableRowActions.add,
   payload: {
     id,
+    tableId,
   }
 });
 
@@ -25,10 +28,26 @@ export const removeRow = (id: string): IReduxAction<ITableRowActionPayload> => (
   }
 });
 
-export const selectRow = (id: string, isCollapsible?: boolean): IReduxAction<ITableRowActionPayload> => ({
+export const selectRow = (id: string, isCollapsible?: boolean, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
   type: TableRowActions.select,
   payload: {
     id,
     isCollapsible,
+    tableId,
+  }
+});
+
+export const unselectRow = (id: string, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
+  type: TableRowActions.select,
+  payload: {
+    id,
+    tableId,
+  }
+});
+
+export const unselectAllRows = (tableId?: string): IReduxAction<ITableRowActionPayload> => ({
+  type: TableRowActions.unselectAll,
+  payload: {
+    tableId,
   }
 });

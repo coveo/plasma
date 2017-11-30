@@ -1,4 +1,4 @@
-import { ITableState, DEFAULT_TABLE_DATA } from './TableReducers';
+import { ITableState, DEFAULT_TABLE_DATA, ITablesState } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent } from './TableConstants';
 import * as _ from 'underscore';
@@ -8,13 +8,12 @@ import { getLoadingIds, getChildComponentId } from './TableUtils';
 import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
 import { setIsInError, modifyState } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
-import { selectRow } from './TableRowActions';
+import { unselectAllRows } from './TableRowActions';
 import * as $ from 'jquery';
-import { IReactVaporState } from '../../ReactVapor';
 
 export const TableDataModifyerMethods = {
   commonDispatchPreStateModification: (tableOwnProps: ITableOwnProps, dispatch: any) => {
-    dispatch(selectRow(undefined));
+    dispatch(unselectAllRows(tableOwnProps.id));
     dispatch(
       addActionsToActionBar(
         getChildComponentId(tableOwnProps.id, TableChildComponent.ACTION_BAR),
@@ -50,7 +49,7 @@ export const TableDataModifyerMethods = {
 
       // filter default logic
       if (tableState.filter) {
-        nextDisplayedIds = nextDisplayedIds.filter((dataId: string) => {
+        const filterDefault = (dataId: string): boolean => {
           let shouldKeep = false;
 
           tableOwnProps.headingAttributes.forEach((headingAttribute: ITableHeadingAttribute) => {
@@ -64,7 +63,13 @@ export const TableDataModifyerMethods = {
           });
 
           return shouldKeep;
-        });
+        };
+
+        const filterMethod = tableOwnProps.filterMethod
+          ? (dataId: string): boolean => tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps)
+          : filterDefault;
+
+        nextDisplayedIds = nextDisplayedIds.filter(filterDefault);
       }
 
       totalEntries = nextDisplayedIds.length;
@@ -78,13 +83,14 @@ export const TableDataModifyerMethods = {
       // sort default logic
       const { sortState } = tableState;
       if (sortState && sortState.order !== TableSortingOrder.UNSORTED) {
-        nextDisplayedIds = _.sortBy(
-          nextDisplayedIds,
-          (displayedId: string) => {
-            const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-            return cleanAttributeValue.toString().toLowerCase();
-          },
-        );
+        const defaultSortBy = (displayedId: string) => {
+          const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
+          return cleanAttributeValue.toString().toLowerCase();
+        };
+
+        const sortByMethod = _.findWhere(tableOwnProps.headingAttributes, { attributeName: sortState.attribute }).sortByMethod || defaultSortBy;
+
+        nextDisplayedIds = _.sortBy(nextDisplayedIds, sortByMethod);
 
         if (sortState.order === TableSortingOrder.DESCENDING) {
           nextDisplayedIds.reverse();
@@ -115,7 +121,7 @@ export const TableDataModifyerMethods = {
     return undefined;
   },
   thunkServer(tableOwnProps: ITableOwnProps, shouldResetPage: boolean) {
-    return (dispatch: any, getState: () => IReactVaporState) => {
+    return (dispatch: any, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
       TableDataModifyerMethods.commonDispatchPreStateModification(tableOwnProps, dispatch);
       $.get(tableOwnProps.serverMode.url(tableOwnProps, getState().tables[tableOwnProps.id]))
         .done(data => {

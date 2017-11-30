@@ -15,7 +15,7 @@ import { LastUpdatedConnected } from '../lastUpdated/LastUpdatedConnected';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ITableState, ITableData } from './TableReducers';
+import { ITableState, ITableData, attributeValue } from './TableReducers';
 import { ITableDispatchProps } from './TableConnected';
 import { getChildComponentId } from './TableUtils';
 import { TableChildComponent } from './TableConstants';
@@ -46,7 +46,8 @@ export type IAttributeNameFormatter = (attributeName: string) => string;
 export interface ITableHeadingAttribute {
   attributeName: string;
   titleFormatter: (attributeName: string) => string;
-  sort?: boolean | ((attributeValue: any) => string);
+  sort?: boolean;
+  sortByMethod?: (attributeValue: any) => string;
   attributeFormatter?: IAttributeFormatter;
 }
 
@@ -60,9 +61,9 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
   initialTableData: ITableData;
   headingAttributes: ITableHeadingAttribute[];
+  filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
-  collapsibleFormatter?: (tableRowData: ITableRowData) => JSXRenderable;
-  modifyState?: (state: ITableState, newTableData?: any) => ITableState;
+  collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSX.Element | JSX.Element[] | string;
   serverMode?: {
     url: (ownProps?: ITableOwnProps, tableState?: ITableState) => string;
     rawDataToTableData: (data: any, ownProps?: ITableOwnProps, tableState?: ITableState) => ITableData;
@@ -78,7 +79,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   actionBar?: IActionBarProps;
   filter?: IFilterBoxProps;
   predicates?: ITablePredicate[];
-  navigationChildren?: INavigationChildrenProps;
+  navigation?: INavigationChildrenProps;
   lastUpdated?: ILastUpdatedProps;
   styles?: {
     tableHeaderClass?: string[]
@@ -217,44 +218,46 @@ export class Table extends React.Component<ITableProps, any> {
   buildTableHeadingRowContent(
     attributeValue: any,
     attributeName: string,
+    xyPosition: string,
     attributeFormatter?: IAttributeFormatter,
   ): JSXRenderable {
     return attributeFormatter
-      ? <td>{attributeFormatter(attributeValue, attributeName)}</td>
-      : <td>{convertUndefinedAndNullToEmptyString(attributeValue)}</td>;
+      ? <td key={`${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_CELL)}-${xyPosition}`}>{attributeFormatter(attributeValue, attributeName)}</td>
+      : <td key={`${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_CELL)}-${xyPosition}`}>{convertUndefinedAndNullToEmptyString(attributeValue)}</td>;
   }
 
   buildTableBody(): JSX.Element[] {
     const tableData = this.props.tableState.data || this.props.initialTableData;
-    return tableData.displayedIds.map((id: string): JSX.Element => {
+    return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
       const rowData: ITableRowData = tableData.byId[id];
       const toggleArrowCellCount = 1;
       const rowWrapperId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}-${rowData.id}`;
       const headingAndCollapsibleId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}-${rowData.id}`;
       const collapsibleRowKey = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}-${rowData.id}`;
-      const collapsibleData = this.props.collapsibleFormatter && this.props.collapsibleFormatter(rowData);
+      const collapsibleData = this.props.collapsibleFormatter && this.props.collapsibleFormatter(rowData, this.props);
 
-      const tableHeadingRowContent = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
+      const tableHeadingRowContent = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
         const { attributeName, attributeFormatter } = headingAttribute;
-        return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, attributeFormatter);
+        return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, `${xPosition}${yPosition}`, attributeFormatter);
       });
 
       const collapsibleRow = collapsibleData
-      ? (
-        <TableCollapsibleRowConnected
-          id={headingAndCollapsibleId}
-          key={collapsibleRowKey}
-          nbColumns={this.props.headingAttributes.length + toggleArrowCellCount}>
-          {collapsibleData}
-        </TableCollapsibleRowConnected>
-      )
-      : null;
+        ? (
+          <TableCollapsibleRowConnected
+            id={headingAndCollapsibleId}
+            key={collapsibleRowKey}
+            nbColumns={this.props.headingAttributes.length + toggleArrowCellCount}>
+            {collapsibleData}
+          </TableCollapsibleRowConnected>
+        )
+        : null;
 
       return (
         <TableRowWrapper key={rowWrapperId}>
           <TableHeadingRowConnected
             id={headingAndCollapsibleId}
             key={headingAndCollapsibleId}
+            tableId={this.props.id}
             hide={this.props.tableState.isLoading || this.props.tableState.isInError}
             isCollapsible={!!collapsibleData}
             onClickCallback={(e: React.MouseEvent<any>) =>
