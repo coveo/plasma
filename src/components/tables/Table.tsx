@@ -60,7 +60,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
   initialTableData: ITableData;
   headingAttributes: ITableHeadingAttribute[];
-  getActions?: () => IActionOptions[];
+  getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
   collapsibleFormatter?: (tableRowData: ITableRowData) => JSXRenderable;
   modifyState?: (state: ITableState, newTableData?: any) => ITableState;
   serverMode?: {
@@ -184,7 +184,7 @@ export class Table extends React.Component<ITableProps, any> {
 
     return actionBar
       ? (
-        <ActionBarConnected {...actionBar}>
+        <ActionBarConnected {...actionBar} id={getChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
           <div className={classNames('coveo-table-actions', ...tableActionClasses)}>
             {predicatesConnected}
             {filterBoxConnected}
@@ -230,34 +230,38 @@ export class Table extends React.Component<ITableProps, any> {
       const rowData: ITableRowData = tableData.byId[id];
       const toggleArrowCellCount = 1;
       const rowWrapperId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}-${rowData.id}`;
-      const headingRowId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}-${rowData.id}`;
-      const collapsibleRowId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}-${rowData.id}`;
+      const headingAndCollapsibleId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}-${rowData.id}`;
+      const collapsibleRowKey = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}-${rowData.id}`;
       const collapsibleData = this.props.collapsibleFormatter && this.props.collapsibleFormatter(rowData);
+
+      const tableHeadingRowContent = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
+        const { attributeName, attributeFormatter } = headingAttribute;
+        return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, attributeFormatter);
+      });
+
+      const collapsibleRow = collapsibleData
+      ? (
+        <TableCollapsibleRowConnected
+          id={headingAndCollapsibleId}
+          key={collapsibleRowKey}
+          nbColumns={this.props.headingAttributes.length + toggleArrowCellCount}>
+          {collapsibleData}
+        </TableCollapsibleRowConnected>
+      )
+      : null;
 
       return (
         <TableRowWrapper key={rowWrapperId}>
           <TableHeadingRowConnected
-            id={headingRowId}
-            key={headingRowId}
+            id={headingAndCollapsibleId}
+            key={headingAndCollapsibleId}
             hide={this.props.tableState.isLoading || this.props.tableState.isInError}
             isCollapsible={!!collapsibleData}
-            onClickCallback={(e: React.MouseEvent<any>) => this.props.onRowClick([])}>
-            {this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
-              const { attributeName, attributeFormatter } = headingAttribute;
-              return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, attributeFormatter);
-            })}
+            onClickCallback={(e: React.MouseEvent<any>) =>
+              this.props.onRowClick(this.props.getActions && this.props.getActions(rowData, this.props))}>
+            {tableHeadingRowContent}
           </TableHeadingRowConnected>
-          {collapsibleData
-            ? (
-              <TableCollapsibleRowConnected
-                id={collapsibleRowId}
-                key={collapsibleRowId}
-                nbColumns={this.props.headingAttributes.length + toggleArrowCellCount}>
-                {collapsibleData}
-              </TableCollapsibleRowConnected>
-            )
-            : null
-          }
+          {collapsibleRow}
         </TableRowWrapper>
       );
     });

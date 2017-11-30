@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { generateTableId, ITableData } from '../TableReducers';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
+import { ITableRowData, ITableProps } from '../Table';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
@@ -78,6 +79,12 @@ export class TableExamples extends React.Component<any, any> {
                 sort: true,
                 attributeFormatter: _.identity,
               },
+              {
+                attributeName: 'attribute2',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
             ]}
             actionBar={{
               id: 'nice',
@@ -101,6 +108,32 @@ export class TableExamples extends React.Component<any, any> {
           <TableConnected
             id={generateTableId()}
             initialTableData={tableData}
+            collapsibleFormatter={(rowData: ITableRowData) => rowData.attribute2}
+            getActions={(rowData: ITableRowData, tableProps: ITableProps) => ([
+              {
+                name: 'Link to Coveo',
+                link: 'http://coveo.com',
+                target: '_blank',
+                icon: 'exit',
+                primary: true,
+                enabled: true
+              }, {
+                name: 'action1',
+                trigger: () => alert('attribute 4: ' + rowData.attribute4),
+                enabled: true
+              }, {
+                separator: true,
+                enabled: true
+              }, {
+                name: 'action2',
+                trigger: () => alert('we are at page ' + (tableProps.tableState.page + 1)),
+                enabled: true
+              },
+              {
+                name: 'action3',
+                trigger: () => alert('value in your filter box is: ' + (tableProps.tableState.filter || 'empty (add something and retry)')),
+                enabled: true
+              }])}
             headingAttributes={[
               {
                 attributeName: 'attribute1',
