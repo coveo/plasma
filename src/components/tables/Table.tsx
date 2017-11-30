@@ -23,6 +23,7 @@ import { JSXRenderable } from '../../utils/JSXUtils';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { LoadingConnected } from '../loading/LoadingConnected';
+import { LoadingTableConnected } from '../loading/LoadingTableConnected';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import { NavigationConnected } from '../navigation/NavigationConnected';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
@@ -103,12 +104,11 @@ export class Table extends React.Component<ITableProps, any> {
     const { tableState } = this.props;
 
     if (this.hasTableStateChanged(tableState, nextProps.tableState)) {
-      if (tableState.page !== nextProps.tableState.page) {
-        this.props.onModifyData(tableState);
-      } else {
-        this.props.onModifyData(tableState);
-        this.props.onResetPage();
-      }
+      const shouldResetPage =
+        tableState.page === nextProps.tableState.page
+        || tableState.perPage !== nextProps.tableState.perPage;
+
+      this.props.onModifyData(shouldResetPage);
     }
   }
 
@@ -133,17 +133,21 @@ export class Table extends React.Component<ITableProps, any> {
     );
   }
 
-  buildLoadingRow(): JSX.Element {
-    return <LoadingConnected
+  buildLoadingTable(): JSX.Element {
+    return <LoadingTableConnected
       id={getChildComponentId(this.props.id, TableChildComponent.LOADING_TABLE)}
-      shouldHide={!this.props.tableState.isLoading}
-      rowStyle={{ nbColumns: this.props.headingAttributes.length + 1 }} />;
+      hide={!this.props.tableState.isLoading}
+      columnsPerRow={this.props.headingAttributes.length + 1}
+      numberOfRows={
+        this.props.tableState.data && this.props.tableState.data.displayedIds.length
+        || this.props.tableState.perPage
+      } />;
   }
 
   buildLoadingNavigation(): JSX.Element {
     return <LoadingConnected
       id={getChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)}
-      shouldHide={!this.props.tableState.isLoading} />;
+      hide={!this.props.tableState.isLoading} />;
   }
 
   buildActionBar(): JSX.Element {
@@ -152,7 +156,8 @@ export class Table extends React.Component<ITableProps, any> {
     const filterBoxConnected: JSX.Element = actionBar && filter
       ? <FilterBoxConnected
         {...filter}
-        id={getChildComponentId(this.props.id, TableChildComponent.FILTER)} />
+        id={getChildComponentId(this.props.id, TableChildComponent.FILTER)}
+        key={getChildComponentId(this.props.id, TableChildComponent.FILTER)} />
       : null;
 
     const predicatesConnected: JSX.Element[] = actionBar && predicates
@@ -235,6 +240,7 @@ export class Table extends React.Component<ITableProps, any> {
           <TableHeadingRowConnected
             id={headingRowId}
             key={headingRowId}
+            hide={this.props.tableState.isLoading || this.props.tableState.isInError}
             isCollapsible={!!collapsibleData}
             onClickCallback={(e: React.MouseEvent<any>) => this.props.onRowClick([])}>
             {this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
@@ -246,6 +252,7 @@ export class Table extends React.Component<ITableProps, any> {
             ? (
               <TableCollapsibleRowConnected
                 id={collapsibleRowId}
+                key={collapsibleRowId}
                 nbColumns={this.props.headingAttributes.length + toggleArrowCellCount}>
                 {collapsibleData}
               </TableCollapsibleRowConnected>
@@ -268,7 +275,9 @@ export class Table extends React.Component<ITableProps, any> {
 
     let blankSlatePropsToUse: IBlankSlateProps;
 
-    if (tableData.displayedIds.length || _.isEmpty(this.props.blankSlates)) {
+    if (tableData.displayedIds.length
+      || _.isEmpty(this.props.blankSlates)
+      || this.props.tableState.isLoading) {
       return null;
     }
 
@@ -297,7 +306,8 @@ export class Table extends React.Component<ITableProps, any> {
         totalEntries={tableData.totalEntries}
         totalPages={tableData.totalPages}
         id={getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
-        loadingIds={[`loading-${getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}`]} />
+        loadingIds={[`loading-${getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}`]}
+        currentPage={this.props.tableState.page} />
     );
   }
 
@@ -316,8 +326,8 @@ export class Table extends React.Component<ITableProps, any> {
         <table className='mod-collapsible-rows'>
           {this.buildTableHeader()}
           {this.buildTableBody()}
-          {this.buildLoadingRow()}
         </table>
+        {this.buildLoadingTable()}
         {this.buildBlankSlate()}
         {this.buildNavigation()}
         {this.buildLastUpdated()}

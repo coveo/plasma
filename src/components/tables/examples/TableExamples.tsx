@@ -1,4 +1,4 @@
-import { TableConnected  } from '../TableConnected';
+import { TableConnected } from '../TableConnected';
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -16,7 +16,7 @@ const tableDataById = _.range(0, 100).reduce((obj, number) => ({
     attribute3: generateText(),
     attribute4: generateText(),
   }
-}), {} as {[id: string]: any});
+}), {} as { [id: string]: any });
 
 const perPageNumbers = [20, 40, 60];
 
@@ -133,7 +133,7 @@ export class TableExamples extends React.Component<any, any> {
             blankSlates={{
               noResults: { title: 'Oh no! No results!' },
             }}
-            navigationChildren={{ perPageNumbers: [20, 40, 60] }}
+            navigationChildren={{ perPageNumbers: [5, 40, 60] }}
             lastUpdated={{ id: 'hello' }}
           />
         </div>

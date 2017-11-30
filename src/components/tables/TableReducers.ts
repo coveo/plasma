@@ -18,7 +18,7 @@ import { TableHeaderCellActions } from './TableHeaderCellActions';
 
 export const generateTableId = (): string => _.uniqueId(TABLE_ID_PREFIX);
 
-export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [],  totalEntries: 0, totalPages: 0, });
+export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0, });
 
 export interface ITableData {
   byId: {
@@ -72,7 +72,6 @@ export const tableInitialState: ITableState = {
     order: TableSortingOrder.UNSORTED,
   },
   predicates: {},
-
 };
 
 export const tablesInitialState: { [tableId: string]: ITableState; } = {};
@@ -82,6 +81,18 @@ export const tableReducer = (
   action: IReduxAction<IReduxActionsPayload>,
 ): ITableState => {
   switch (action.type) {
+    case PaginationActions.changePage:
+    case PaginationActions.reset:
+      return {
+        ...state,
+        page: action.payload.pageNb,
+      };
+    case PerPageActions.change:
+      return {
+        ...state,
+        perPage: action.payload.perPage,
+        page: 0,
+      };
     case TableActions.inError:
       return {
         ...state,
@@ -107,22 +118,7 @@ export const tableReducer = (
         },
         page: 0,
       };
-    case FilterActions.filterThrough:
-      return {
-        ...state,
-        filter: action.payload.filterText,
-      };
-    case PerPageActions.change:
-      return {
-        ...state,
-        perPage: action.payload.perPage,
-        page: 0,
-      };
-    case PaginationActions.changePage:
-      return {
-        ...state,
-        page: action.payload.pageNb,
-      };
+
     case TableRowActions.select:
       return {
         ...state,

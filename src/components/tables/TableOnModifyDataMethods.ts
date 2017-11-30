@@ -27,7 +27,7 @@ export const TableDataModifyerMethods = {
     dispatch(turnOffLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
     dispatch(changeLastUpdated(getChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
   },
-  default(tableOwnProps: ITableOwnProps): ((tableState: ITableState) => ITableState) {
+  default(tableOwnProps: ITableOwnProps, shouldResetPage: boolean): ((tableState: ITableState) => ITableState) {
     return (tableState: ITableState) => {
       const tableDataById = tableState.data.byId;
 
@@ -99,13 +99,14 @@ export const TableDataModifyerMethods = {
           totalEntries,
           totalPages,
         },
+        page: shouldResetPage ? 0 : tableState.page,
       };
     };
   },
-  thunkDefault(tableOwnProps: ITableOwnProps) {
+  thunkDefault(tableOwnProps: ITableOwnProps, shouldResetPage: boolean) {
     return (dispatch: any) => {
       TableDataModifyerMethods.commonDispatchPreStateModification(tableOwnProps, dispatch);
-      dispatch(modifyState(tableOwnProps.id, TableDataModifyerMethods.default(tableOwnProps)));
+      dispatch(modifyState(tableOwnProps.id, TableDataModifyerMethods.default(tableOwnProps, shouldResetPage)));
       TableDataModifyerMethods.commonDispatchPostStateModification(tableOwnProps, dispatch);
     };
   },
@@ -113,7 +114,7 @@ export const TableDataModifyerMethods = {
     // todo
     return undefined;
   },
-  thunkServer(tableOwnProps: ITableOwnProps) {
+  thunkServer(tableOwnProps: ITableOwnProps, shouldResetPage: boolean) {
     return (dispatch: any, getState: () => IReactVaporState) => {
       TableDataModifyerMethods.commonDispatchPreStateModification(tableOwnProps, dispatch);
       $.get(tableOwnProps.serverMode.url(tableOwnProps, getState().tables[tableOwnProps.id]))
@@ -121,7 +122,7 @@ export const TableDataModifyerMethods = {
           dispatch(
             modifyState(
               tableOwnProps.id,
-              (tableState: ITableState) => ({ ...tableState, data: tableOwnProps.serverMode.rawDataToTableData(data) }),
+              (tableState: ITableState) => ({ ...tableState, data: tableOwnProps.serverMode.rawDataToTableData(data), page: shouldResetPage ? 0 : tableState.page }),
             )
           );
         })

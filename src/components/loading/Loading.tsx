@@ -2,10 +2,10 @@ import * as React from 'react';
 
 export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
   id?: string;
-  rowStyle?: {
-    nbColumns: number;
-  };
-  shouldHide?: boolean;
+  hide?: boolean;
+  // loading table props
+  columnsPerRow?: number;
+  numberOfRows?: number;
 }
 
 export interface ILoadingDispatchProps {
@@ -38,18 +38,6 @@ export class Loading extends React.Component<ILoadingProps, any> {
       </div>
     );
 
-    if (this.props.shouldHide) {
-      return null;
-    }
-
-    return this.props.rowStyle
-      ? (
-        <tbody className='loading-row'>
-          <tr>
-            <td colSpan={this.props.rowStyle.nbColumns}></td>
-          </tr>
-        </tbody>
-      )
-      : spinner;
+    return this.props.hide ? null : spinner;
   }
 }

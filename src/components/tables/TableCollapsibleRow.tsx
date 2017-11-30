@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 
 export interface ITableCollapsibleRowOwnProps extends React.ClassAttributes<TableCollapsibleRow> {
   id: string;
+  hide?: boolean;
   isInError?: boolean;
   nbColumns: number;
 }
@@ -55,7 +56,7 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
       /> :
       null;
 
-    return (
+    return this.props.hide ? null : (
       <tr className={rowClasses}>
         <td colSpan={this.props.nbColumns}>
           <div className='container'>

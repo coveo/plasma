@@ -44,7 +44,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
       numberOfPagesToShow: this.props.numberOfPagesToShow,
       previousLabel: this.props.previousLabel,
       nextLabel: this.props.nextLabel,
-      hidePages: this.props.hidePages || !this.props.totalPages || this.props.totalPages === 1
+      hidePages: this.props.hidePages || !this.props.totalPages || this.props.totalPages === 1,
+      currentPage: this.props.currentPage,
     };
     const pagination: JSX.Element = this.props.withReduxState
       ? <NavigationPaginationConnected id={`pagination-${this.props.id}`} loadingIds={this.props.loadingIds} {...paginationProps} />

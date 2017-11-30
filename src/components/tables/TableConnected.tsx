@@ -20,7 +20,7 @@ import { PER_PAGE_NUMBERS } from '../navigation/perPage/NavigationPerPage';
 export interface ITableDispatchProps {
   onDidMount: () => void;
   onUnmount: () => void;
-  onModifyData: (tableState: ITableState) => void;
+  onModifyData: (shouldResetPage: boolean) => void;
   onRowClick: (actions: IActionOptions[]) => void;
   onResetPage: () => void;
   onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => void;
@@ -50,15 +50,15 @@ const mapDispatchToProps = (
   onUnmount: () => {
     dispatch(removeTable(ownProps.id));
   },
-  onModifyData: (tableState: ITableState) => {
+  onModifyData: (shouldResetPage: boolean) => {
     if (ownProps.serverMode) {
-      dispatch(TableDataModifyerMethods.thunkServer(ownProps));
+      dispatch(TableDataModifyerMethods.thunkServer(ownProps, shouldResetPage));
     } else if (ownProps.customMode) {
       TableDataModifyerMethods.commonDispatchPreStateModification(ownProps, dispatch);
       dispatch(ownProps.customMode.thunkActionCreator(ownProps));
       TableDataModifyerMethods.commonDispatchPostStateModification(ownProps, dispatch);
     } else {
-      dispatch(TableDataModifyerMethods.thunkDefault(ownProps));
+      dispatch(TableDataModifyerMethods.thunkDefault(ownProps, shouldResetPage));
     }
   },
   onRowClick: (actions: IActionOptions[] = []) => {
