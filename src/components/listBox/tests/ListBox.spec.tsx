@@ -56,7 +56,7 @@ describe('ListBox', () => {
         onOptionClick,
       });
 
-      listBoxComponent.find(ItemBox).node.handleOnOptionClick({ target: 'target' });
+      (listBoxComponent.find(ItemBox) as any).node.handleOnOptionClick({ target: 'target' });
       expect(onOptionClick).toHaveBeenCalled();
     });
 

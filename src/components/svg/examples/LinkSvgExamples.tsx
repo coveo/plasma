@@ -32,6 +32,12 @@ export class LinkSvgExamples extends React.Component<any, any> {
             <LinkSvg {..._.extend({}, defaultProps, { svg: defaultSvgProps }) } />
           </div>
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>LinkSvg with a tooltip and without a href</label>
+          <div className='form-control'>
+            <LinkSvg tooltip={defaultTooltipProps} svg={defaultSvgProps} />
+          </div>
+        </div>
       </div>
     );
   }
