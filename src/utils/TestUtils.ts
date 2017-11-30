@@ -22,6 +22,7 @@ import { dropdownsSearchReducer } from '../components/dropdownSearch/DropdownSea
 import { toastsContainerReducer } from '../components/toast/ToastReducers';
 import { ISvgProps } from '../components/svg/Svg';
 import { ITooltipProps } from '../components/tooltip/Tooltip';
+import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers';
 
 export interface IReactVaporTestState extends IReactVaporState {
   lastAction?: Redux.Action;
@@ -45,6 +46,7 @@ export class TestUtils {
       actionBars: actionBarsReducer,
       dropdowns: dropdownsReducer,
       dropdownSearch: dropdownsSearchReducer,
+      flatSelect: flatSelectsReducer,
       rows: tableRowsReducer,
       optionsCycles: optionsCyclesReducer,
       optionPickers: optionPickersReducer,

@@ -1,8 +1,11 @@
-/// <reference types="react-tether" /> Required to make dts-generator bundle react-tether definition file.
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import * as TetherComponent from 'react-tether';
+import * as ReactTether from 'react-tether';
 import * as _ from 'underscore';
+
+// This is a hack since the tether definition file doesn't match the code
+// See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16909
+const TetherComponent = (ReactTether as any) as () => JSX.Element;
 
 export interface ITetherComponentCopiedProps {
   renderElementTag?: string;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classname from 'classnames';
+import * as classNames from 'classnames';
 import * as _ from 'underscore';
 import { ComponentContent } from '../../utils/ComponentUtils';
 
@@ -20,7 +20,7 @@ export class Content extends React.Component<IContentProps, {}> {
   }
 
   render() {
-    const classes = classname(this.props.classes);
+    const classes = classNames(this.props.classes);
     return (<span className={classes}>
       {this.getContent()}
     </span>);

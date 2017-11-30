@@ -1,12 +1,20 @@
 import { DatePicker, IDatePickerProps } from './DatePicker';
-import { DATES_SEPARATOR } from '../../utils/DateUtils';
+import { DATES_SEPARATOR, DateUtils } from '../../utils/DateUtils';
 import * as React from 'react';
+
+export interface IRangeLimit {
+  weeks?: number;
+  days?: number;
+  hours?: number;
+  message?: string;
+}
 
 export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSelection> {
   id?: string;
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   isRange?: boolean;
+  rangeLimit?: IRangeLimit;
   color?: string;
   calendarId?: string;
   defaultLowerLimit?: Date;
@@ -18,6 +26,8 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
 export interface IDatesSelectionStateProps {
   lowerLimit?: Date;
   upperLimit?: Date;
+  inputLowerLimit?: Date;
+  inputUpperLimit?: Date;
   quickOption?: string;
   isSelecting?: string;
 }
@@ -25,9 +35,8 @@ export interface IDatesSelectionStateProps {
 export interface IDatesSelectionDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
-  onChange?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
   onClick?: (isUpperLimit: boolean) => void;
-  onBlur?: () => void;
+  onBlur?: (date: Date, isUpperLimit: boolean, datePicker?: boolean) => void;
 }
 
 export interface IDatesSelectionChildrenProps {
@@ -49,8 +58,8 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
   };
 
   private onDateChange(date: Date, isUpperLimit: boolean, datePicker?: boolean) {
-    if (this.props.onChange) {
-      this.props.onChange(date, isUpperLimit, datePicker);
+    if (this.props.onBlur) {
+      this.props.onBlur(date, isUpperLimit, datePicker);
     }
   }
 
@@ -84,6 +93,16 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
     }
   }
 
+  private handleOnBlur(date: Date, isUpperLimit: boolean = false) {
+    const formattedLowerLimit: string = DateUtils.getDateWithTimeString(this.props.inputLowerLimit);
+    const formattedUpperLimit: string = DateUtils.getDateWithTimeString(this.props.inputUpperLimit);
+    const formattedInputDate: string = DateUtils.getDateWithTimeString(date);
+
+    if ((!isUpperLimit && formattedLowerLimit !== formattedInputDate) || (isUpperLimit && formattedUpperLimit !== formattedInputDate)) {
+      this.onDateChange(date, isUpperLimit);
+    }
+  }
+
   render() {
     const wrapperClasses: string = !this.props.withTime && this.props.isRange ? 'mod-inline flex' : '';
     const datePickerProps: IDatePickerProps = {
@@ -91,13 +110,8 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
       hasSetToNowButton: this.props.hasSetToNowButton,
       setToNowTooltip: this.props.setToNowTooltip,
       isSelecting: this.props.isSelecting,
-      onChange: (date: Date, isUpperLimit: boolean) => this.onDateChange(date, isUpperLimit),
       onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit),
-      onBlur: () => {
-        if (this.props.onBlur) {
-          this.props.onBlur();
-        }
-      },
+      onBlur: (date: Date, isUpperLimit: boolean) => this.handleOnBlur(date, isUpperLimit),
       placeholder: '',
     };
     const separatorClasses: string[] = ['date-separator'];

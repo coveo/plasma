@@ -6,7 +6,7 @@ import { IToastProps, Toast, ToastType } from '../Toast';
 
 
 describe('Toasts', () => {
-  let toastComponent: ReactWrapper<IToastProps, void>;
+  let toastComponent: ReactWrapper<IToastProps, {}>;
   let toastBasicAttributes: IToastProps;
   let toastInstance: Toast;
 
@@ -131,6 +131,18 @@ describe('Toasts', () => {
       expect(toastComponent.find(descriptionContainer).text()).toBe(expectedDescription);
     });
 
+    it('should contain a toast-close when the prop is undefined or true', () => {
+      const closeSelector = '.toast-close';
+
+      // By default dismisslbe is omitted
+      expect(toastComponent.find(closeSelector).length).toBe(1);
+
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { dismissible: true });
+      toastComponent.setProps(newToastAttributes).mount();
+
+      expect(toastComponent.find(closeSelector).length).toBe(1);
+    });
+
     it('should call onClose when the user clicks on .toast-close', () => {
       const closeSelector = '.toast-close';
       const newToastAttributes = _.extend({}, toastBasicAttributes, { onClose: jasmine.createSpy('onClose') });
@@ -143,6 +155,14 @@ describe('Toasts', () => {
 
       toastComponent.find(closeSelector).simulate('click');
       expect(newToastAttributes.onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not contain a toast-close when the toast is not dismissible', () => {
+      const closeSelector = '.toast-close';
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { dismissible: false });
+
+      toastComponent.setProps(newToastAttributes).mount();
+      expect(toastComponent.find(closeSelector).length).toBe(0);
     });
   });
 
@@ -180,6 +200,20 @@ describe('Toasts', () => {
 
       jasmine.clock().tick(dismissDelay);
       expect(onCloseToast).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onClose when the toast is not dimissible even if the timer expires', () => {
+      // Needed to clear the timeout since we mounted it in the beforeEach
+      toastComponent.simulate('mouseEnter');
+
+      const newToastAttributes = _.extend({}, toastBasicAttributes, { dismissible: false });
+      toastComponent.setProps(newToastAttributes).mount();
+      toastComponent.simulate('mouseLeave');
+
+      expect(onCloseToast).not.toHaveBeenCalled();
+
+      jasmine.clock().tick(dismissDelay);
+      expect(onCloseToast).not.toHaveBeenCalled();
     });
 
     it('should clear the timeout on mouseenter', () => {

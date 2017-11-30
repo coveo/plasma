@@ -20,6 +20,12 @@ export class ButtonExamples extends React.Component<any, any> {
           </div>
         </div>
         <div className='form-group'>
+          <label className='form-control-label'>Small Button</label>
+          <div className='form-control'>
+            <Button enabled={true} small={true} name='Small Button' />
+          </div>
+        </div>
+        <div className='form-group'>
           <label className='form-control-label'>Link Button</label>
           <div className='form-control'>
             <Button enabled={true} name='Link Button' link='http://perdu.com/' target='_blank' />

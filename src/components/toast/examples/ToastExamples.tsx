@@ -8,6 +8,7 @@ export interface IToastExamplesState {
   Warning: boolean;
   Error: boolean;
   Timed: boolean;
+  NonDismissible: boolean;
   BottomRight: boolean;
   BottomLeft: boolean;
   BottomCenter: boolean;
@@ -26,6 +27,7 @@ export class ToastExamples extends React.Component<{}, IToastExamplesState> {
       Warning: false,
       Error: false,
       Timed: false,
+      NonDismissible: false,
       TopCenter: false,
       TopLeft: false,
       TopRight: false,
@@ -45,6 +47,7 @@ export class ToastExamples extends React.Component<{}, IToastExamplesState> {
             <button className='btn' onClick={() => this.setState({ Warning: !this.state.Warning })}>Warning Toast</button>
             <button className='btn' onClick={() => this.setState({ Error: !this.state.Error })}>Error Toast</button>
             <button className='btn' onClick={() => this.setState({ Timed: !this.state.Timed })}>Timed Toast</button>
+            <button className='btn' onClick={() => this.setState({ NonDismissible: !this.state.NonDismissible })}>Non Dismissible Toast</button>
 
             <ToastContainer>
               {this.state.Success && <Toast key='toast-1' id='toast-1' title='Success!' onClose={() => this.setState({ Success: false })} />}
@@ -56,6 +59,8 @@ export class ToastExamples extends React.Component<{}, IToastExamplesState> {
               </Toast>}
               {this.state.Timed &&
                 <Toast key='toast-4' id='toast-4' title='Timed Success!' dismiss={1000} onClose={() => this.setState({ Timed: false })} />}
+              {this.state.NonDismissible &&
+                <Toast key='toast-5' id='toast-5' title='Ohno! Something went wrong.' type={ToastType.Error} dismissible={false} content={ToastContentExample} />}
             </ToastContainer>
           </div>
         </div>

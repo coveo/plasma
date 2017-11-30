@@ -22,13 +22,19 @@ export { ToggleForm } from './components/childForm/ToggleForm';
 export { FilterBox } from './components/filterBox/FilterBox';
 export { FilterBoxConnected } from './components/filterBox/FilterBoxConnected';
 export { filterBoxesReducer } from './components/filterBox/FilterBoxReducers';
-export { filterThrough } from './components/filterBox/FilterBoxActions';
+export { FilterActions, filterThrough } from './components/filterBox/FilterBoxActions';
 
 // Facets
 export { Facet, IFacet } from './components/facets/Facet';
 export { FacetConnected } from './components/facets/FacetConnected';
 export { facetsReducer } from './components/facets/FacetReducers';
 export { changeFacet, emptyFacet, FacetActions } from './components/facets/FacetActions';
+
+// FlatSelect
+export { FlatSelect, IFlatSelectProps } from './components/flatSelect/FlatSelect';
+export { FlatSelectConnected } from './components/flatSelect/FlatSelectConnected';
+export { flatSelectsReducer } from './components/flatSelect/FlatSelectReducers';
+export { selectFlatSelect, FlatSelectActions } from './components/flatSelect/FlatSelectActions';
 
 // Loading
 export { Loading } from './components/loading/Loading';
@@ -64,6 +70,7 @@ export { addPagination, changePage, PaginationActions, resetPaging } from './com
 export { addPerPage, changePerPage, PerPageActions } from './components/navigation/perPage/NavigationPerPageActions';
 
 export { ItemBox, IItemBoxProps } from './components/itemBox/ItemBox';
+export { ListBox, IListBoxProps } from './components/listBox/ListBox';
 
 // Dropdown
 export { Dropdown } from './components/dropdown/Dropdown';
@@ -91,7 +98,7 @@ export { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
 export { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
 export { TableEmptyRow } from './components/tables/TableEmptyRow';
 export { tableRowsReducer } from './components/tables/TableRowReducers';
-export { TableRowActions, toggleRow } from './components/tables/TableRowActions';
+export { TableRowActions, selectRow } from './components/tables/TableRowActions';
 
 // Prompts
 export { promptsReducer } from './components/inlinePrompt/InlinePromptReducers';

@@ -14,6 +14,7 @@ export interface IToastState {
   title: string;
   type?: string;
   dismiss?: number;
+  dismissible?: boolean;
   animate?: boolean;
   content?: typeof React.Component | string | (() => JSX.Element);
 }
@@ -28,6 +29,7 @@ export const toastInitialState: IToastState = {
   title: '',
   type: ToastType.Success,
   dismiss: 0,
+  dismissible: true,
   animate: true,
   content: '',
 };
@@ -56,6 +58,7 @@ const toastsReducer = (state: IToastState[], action: IReduxAction<IToastActionPa
       title: payload.title,
       animate: payload.animate,
       dismiss: payload.dismiss,
+      dismissible: payload.dismissible,
       content: payload.content,
       type: payload.type,
     }];
