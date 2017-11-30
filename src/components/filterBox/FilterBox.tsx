@@ -3,7 +3,7 @@ import { Svg } from '../svg/Svg';
 import * as classNames from 'classnames';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
-  id: string;
+  id?: string;
   containerClasses?: string[];
   filterPlaceholder?: string;
   onBlur?: () => void;

@@ -37,7 +37,7 @@ const mapDispatchToProps = (
   ownProps: ITableOwnProps,
 ): ITableDispatchProps => ({
   onDidMount: () => {
-    let initialPerPage = ownProps.navigationChildren && ownProps.navigationChildren.perPageNumbers[0];
+    let initialPerPage = ownProps.navigation && ownProps.navigation.perPageNumbers && ownProps.navigation.perPageNumbers[0];
     initialPerPage = !_.isUndefined(initialPerPage) ? initialPerPage : PER_PAGE_NUMBERS[0];
     dispatch(
       addTable(

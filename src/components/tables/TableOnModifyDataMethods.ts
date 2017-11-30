@@ -69,7 +69,7 @@ export const TableDataModifyerMethods = {
           ? (dataId: string): boolean => tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps)
           : filterDefault;
 
-        nextDisplayedIds = nextDisplayedIds.filter(filterDefault);
+        nextDisplayedIds = nextDisplayedIds.filter(filterMethod);
       }
 
       totalEntries = nextDisplayedIds.length;

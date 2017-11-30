@@ -10,12 +10,11 @@ import { IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
 import { DropdownSearchConnected } from '../dropdownSearch/DropdownSearchConnected';
 import { IFilterBoxProps } from '../filterBox/FilterBox';
 import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
-import { ILastUpdatedProps } from '../lastUpdated/LastUpdated';
 import { LastUpdatedConnected } from '../lastUpdated/LastUpdatedConnected';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ITableState, ITableData, attributeValue } from './TableReducers';
+import { ITableState, ITableData } from './TableReducers';
 import { ITableDispatchProps } from './TableConnected';
 import { getChildComponentId } from './TableUtils';
 import { TableChildComponent } from './TableConstants';
@@ -63,7 +62,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   headingAttributes: ITableHeadingAttribute[];
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
-  collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSX.Element | JSX.Element[] | string;
+  collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
   serverMode?: {
     url: (ownProps?: ITableOwnProps, tableState?: ITableState) => string;
     rawDataToTableData: (data: any, ownProps?: ITableOwnProps, tableState?: ITableState) => ITableData;
@@ -80,7 +79,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   filter?: IFilterBoxProps;
   predicates?: ITablePredicate[];
   navigation?: INavigationChildrenProps;
-  lastUpdated?: ILastUpdatedProps;
+  lastUpdatedLabel?: string;
   styles?: {
     tableHeaderClass?: string[]
     tableActionClasses?: string[];
@@ -218,12 +217,12 @@ export class Table extends React.Component<ITableProps, any> {
   buildTableHeadingRowContent(
     attributeValue: any,
     attributeName: string,
-    xyPosition: string,
+    tableCoordinate: string,
     attributeFormatter?: IAttributeFormatter,
   ): JSXRenderable {
     return attributeFormatter
-      ? <td key={`${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_CELL)}-${xyPosition}`}>{attributeFormatter(attributeValue, attributeName)}</td>
-      : <td key={`${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_CELL)}-${xyPosition}`}>{convertUndefinedAndNullToEmptyString(attributeValue)}</td>;
+      ? <td key={tableCoordinate}>{attributeFormatter(attributeValue, attributeName)}</td>
+      : <td key={tableCoordinate}>{convertUndefinedAndNullToEmptyString(attributeValue)}</td>;
   }
 
   buildTableBody(): JSX.Element[] {
@@ -238,7 +237,8 @@ export class Table extends React.Component<ITableProps, any> {
 
       const tableHeadingRowContent = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
         const { attributeName, attributeFormatter } = headingAttribute;
-        return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, `${xPosition}${yPosition}`, attributeFormatter);
+        const tableCoordinate = `${xPosition}${yPosition}`;
+        return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, tableCoordinate, attributeFormatter);
       });
 
       const collapsibleRow = collapsibleData
@@ -308,7 +308,7 @@ export class Table extends React.Component<ITableProps, any> {
 
     return (
       <NavigationConnected
-        {...this.props.navigationChildren}
+        {...this.props.navigation}
         totalEntries={tableData.totalEntries}
         totalPages={tableData.totalPages}
         id={getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
@@ -318,11 +318,9 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   buildLastUpdated(): JSX.Element {
-    return this.props.lastUpdated
-      ? <LastUpdatedConnected
-        {...this.props.lastUpdated}
-        id={getChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)} />
-      : null;
+    return <LastUpdatedConnected
+      label={this.props.lastUpdatedLabel}
+      id={getChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)} />;
   }
 
   render() {

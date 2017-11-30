@@ -17,7 +17,6 @@ export const TableActions = {
 export interface ITableActionPayload {
   id: string;
   isInError?: boolean;
-  isLocked?: boolean;
   newTableData?: any;
   initialTableData?: ITableData;
   initialPerPage?: number;
@@ -47,14 +46,6 @@ export const setIsInError = (
 ): IReduxAction<ITableActionPayload> => ({
   type: TableActions.inError,
   payload: { id, isInError }
-});
-
-export const toggleLock = (
-  id: string,
-  isLocked: boolean,
-): IReduxAction<ITableActionPayload> => ({
-  type: TableActions.inError,
-  payload: { id, isLocked }
 });
 
 export const modifyState = (

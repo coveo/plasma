@@ -18,12 +18,7 @@ const tableDataById = _.range(0, 100).reduce((obj, number) => ({
     attribute3: generateText(),
     attribute4: generateText(),
   }
-}), {} as {
-  [id: string]: {
-    id: string;
-    [attribute: string]: any;
-  };
-});
+}), {} as ITableRowData);
 
 const perPageNumbers = [5, 40, 100];
 
@@ -99,20 +94,18 @@ export class TableExamples extends React.Component<any, any> {
               },
             ]}
             actionBar={{
-              id: 'nice',
               extraContainerClasses: ['mod-border-top'],
             }}
             predicates={[
-              { props: { id: 'predicaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
-              { props: { id: 'predicaaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: {maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: {maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
             ]}
-            filter={{ id: 'filtaaaaaa', containerClasses: ['ml1'] }}
+            filter={{containerClasses: ['ml1'] }}
             blankSlates={{
               noResults: { title: 'Oh no! No results!' },
               noResultsOnError: { title: 'i am on error!' },
             }}
-            navigationChildren={{ perPageNumbers }}
-            lastUpdated={{ id: 'hello' }}
+            navigation={{ perPageNumbers }}
           />
         </div>
         <div className='form-group'>
@@ -132,7 +125,8 @@ export class TableExamples extends React.Component<any, any> {
               }, {
                 name: 'action1',
                 trigger: () => alert('attribute 4 value of the selected row is: ' + rowData.attribute4),
-                enabled: true
+                enabled: true,
+                callOnDoubleClick: true,
               }, {
                 separator: true,
                 enabled: true
@@ -151,7 +145,6 @@ export class TableExamples extends React.Component<any, any> {
                 attributeName: 'attribute1',
                 titleFormatter: _.identity,
                 sort: true,
-                sortByMethod: () => 1,
                 attributeFormatter: _.identity,
               },
               {
@@ -168,19 +161,17 @@ export class TableExamples extends React.Component<any, any> {
               },
             ]}
             actionBar={{
-              id: 'nice',
               extraContainerClasses: ['mod-border-top'],
             }}
             predicates={[
-              { props: { id: 'predicaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
-              { props: { id: 'predicaaaaaate', maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
             ]}
-            filter={{ id: 'filtaaaaaa', containerClasses: ['ml1'] }}
+            filter={{ containerClasses: ['ml1'] }}
             blankSlates={{
               noResults: { title: 'Oh no! No results!' },
             }}
-            navigationChildren={{ perPageNumbers }}
-            lastUpdated={{ id: 'hello' }}
+            navigation={{ perPageNumbers }}
           />
         </div>
 

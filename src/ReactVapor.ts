@@ -79,5 +79,4 @@ export interface IReduxActionsPayload {
   totalEntries?: number;
   totalPages?: number;
   addedSelectedOption?: IDropdownOption;
-  isLocked?: boolean;
 }
