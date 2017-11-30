@@ -11,7 +11,6 @@ import { DropdownSearchConnected } from '../dropdownSearch/DropdownSearchConnect
 import { IFilterBoxProps } from '../filterBox/FilterBox';
 import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
 import { LastUpdatedConnected } from '../lastUpdated/LastUpdatedConnected';
-import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import { ITableState, ITableData } from './TableReducers';
@@ -58,31 +57,44 @@ export interface ITablePredicate {
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
+
+  // table content props
   initialTableData: ITableData;
   headingAttributes: ITableHeadingAttribute[];
-  filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
-  getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
   collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
-  serverMode?: {
-    url: (ownProps?: ITableOwnProps, tableState?: ITableState) => string;
-    rawDataToTableData: (data: any, ownProps?: ITableOwnProps, tableState?: ITableState) => ITableData;
-  };
-  customMode?: {
-    thunkActionCreator: (tableOwnProps: ITableOwnProps) => ((dispatch: any, getState?: () => any) => void);
-  };
+
+  // action bar props
+  actionBar?: IActionBarProps;
+  getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
+
+  // blankslate props
   blankSlates: {
     noResults: IBlankSlateProps;
     noResultsOnFilterOrPredicates?: IBlankSlateProps;
     noResultsOnError?: IBlankSlateProps;
   };
-  actionBar?: IActionBarProps;
+
+  // filter props
   filter?: IFilterBoxProps;
+  filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
+
+  // predicate props
   predicates?: ITablePredicate[];
+
+  // navigation props
   navigation?: INavigationChildrenProps;
+  noNavigation?: boolean;
+
+  // last update label
   lastUpdatedLabel?: string;
-  styles?: {
-    tableHeaderClass?: string[]
-    tableActionClasses?: string[];
+
+  // modes
+  serverMode?: {
+    url: (tableState?: ITableState, ownProps?: ITableOwnProps) => string;
+    rawDataToTableData: (data: any, ownProps?: ITableOwnProps, tableState?: ITableState) => ITableData;
+  };
+  customMode?: {
+    thunkActionCreator: (tableOwnProps: ITableOwnProps) => ((dispatch: any, getState?: () => any) => void);
   };
 };
 
@@ -150,7 +162,7 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   buildActionBar(): JSX.Element {
-    const { actionBar, filter, predicates, styles } = this.props;
+    const { actionBar, filter, predicates } = this.props;
 
     const filterBoxConnected: JSX.Element = actionBar && filter
       ? <FilterBoxConnected
@@ -180,12 +192,10 @@ export class Table extends React.Component<ITableProps, any> {
       })
       : null;
 
-    const tableActionClasses: string[] = styles && styles.tableActionClasses || [];
-
     return actionBar
       ? (
         <ActionBarConnected {...actionBar} id={getChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
-          <div className={classNames('coveo-table-actions', ...tableActionClasses)}>
+          <div className='coveo-table-actions'>
             {predicatesConnected}
             {filterBoxConnected}
           </div>
@@ -205,10 +215,9 @@ export class Table extends React.Component<ITableProps, any> {
       return { id, title, tableRefForSort };
     });
 
-    const { styles } = this.props;
     return (
       <TableHeader
-        headerClass={styles && styles.tableHeaderClass && styles.tableHeaderClass.join(' ')}
+        headerClass='mod-no-border-top'
         columns={[...tableHeaderCells, { title: '' }]}
         connectCell />
     );
@@ -306,7 +315,7 @@ export class Table extends React.Component<ITableProps, any> {
   buildNavigation(): JSX.Element {
     const tableData = this.props.tableState && this.props.tableState.data || this.props.initialTableData;
 
-    return (
+    return !this.props.noNavigation ? (
       <NavigationConnected
         {...this.props.navigation}
         totalEntries={tableData.totalEntries}
@@ -314,7 +323,7 @@ export class Table extends React.Component<ITableProps, any> {
         id={getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
         loadingIds={[`loading-${getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}`]}
         currentPage={this.props.tableState.page} />
-    );
+    ) : null;
   }
 
   buildLastUpdated(): JSX.Element {

@@ -54,9 +54,11 @@ export const TableDataModifyerMethods = {
 
           tableOwnProps.headingAttributes.forEach((headingAttribute: ITableHeadingAttribute) => {
             const { attributeName, attributeFormatter } = headingAttribute;
+            const attributeValue = tableDataById[dataId][attributeName];
+            const attributeValueToUse = attributeFormatter ? attributeFormatter(attributeValue) : attributeValue;
             shouldKeep =
               shouldKeep
-              || attributeFormatter(tableDataById[dataId][attributeName])
+              || attributeValueToUse
                 .toString()
                 .toLowerCase()
                 .indexOf(tableState.filter.toLowerCase()) > -1;
@@ -123,7 +125,7 @@ export const TableDataModifyerMethods = {
   thunkServer(tableOwnProps: ITableOwnProps, shouldResetPage: boolean) {
     return (dispatch: any, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
       TableDataModifyerMethods.commonDispatchPreStateModification(tableOwnProps, dispatch);
-      $.get(tableOwnProps.serverMode.url(tableOwnProps, getState().tables[tableOwnProps.id]))
+      $.get(tableOwnProps.serverMode.url(getState().tables[tableOwnProps.id], tableOwnProps))
         .done(data => {
           dispatch(
             modifyState(
