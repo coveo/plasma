@@ -56,10 +56,12 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
   }
 
   private handleDocumentClick = (e: MouseEvent) => {
-    let facetSearch: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.facetSearch);
+    if (this.props.isOpened) {
+      const facetSearch: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.facetSearch);
 
-    if (!facetSearch.contains(e.target as Node)) {
-      this.props.onDocumentClick();
+      if (!facetSearch.contains(e.target as Node)) {
+        this.props.onDocumentClick();
+      }
     }
   }
 
