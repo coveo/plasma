@@ -21,8 +21,8 @@ export const perPageReducer = (state: IPerPageState = perPageInitialState, actio
       return { id: action.payload.id, perPage: action.payload.perPage };
     case PerPageActions.change:
       return state.id === action.payload.id
-      ? { id: state.id, perPage: action.payload.perPage }
-      : state;
+        ? { id: state.id, perPage: action.payload.perPage }
+        : state;
     default:
       return state;
   }
