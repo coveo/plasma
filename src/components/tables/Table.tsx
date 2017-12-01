@@ -15,7 +15,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { ITableState, ITableData } from './TableReducers';
 import { ITableDispatchProps } from './TableConnected';
-import { getChildComponentId } from './TableUtils';
+import { getTableChildComponentId } from './TableUtils';
 import { TableChildComponent } from './TableConstants';
 import { JSXRenderable } from '../../utils/JSXUtils';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
@@ -146,7 +146,7 @@ export class Table extends React.Component<ITableProps, any> {
 
   buildLoadingTable(): JSX.Element {
     return <LoadingTableConnected
-      id={getChildComponentId(this.props.id, TableChildComponent.LOADING_TABLE)}
+      id={getTableChildComponentId(this.props.id, TableChildComponent.LOADING_TABLE)}
       hide={!this.props.tableState.isLoading}
       columnsPerRow={this.props.headingAttributes.length + 1}
       numberOfRows={
@@ -157,7 +157,7 @@ export class Table extends React.Component<ITableProps, any> {
 
   buildLoadingNavigation(): JSX.Element {
     return <LoadingConnected
-      id={getChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)}
+      id={getTableChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)}
       hide={!this.props.tableState.isLoading} />;
   }
 
@@ -167,13 +167,13 @@ export class Table extends React.Component<ITableProps, any> {
     const filterBoxConnected: JSX.Element = actionBar && filter
       ? <FilterBoxConnected
         {...filter}
-        id={getChildComponentId(this.props.id, TableChildComponent.FILTER)}
-        key={getChildComponentId(this.props.id, TableChildComponent.FILTER)} />
+        id={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)}
+        key={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)} />
       : null;
 
     const predicatesConnected: JSX.Element[] = actionBar && predicates
       ? predicates.map((predicate: ITablePredicate, i: number) => {
-        const predicateId = `${getChildComponentId(this.props.id, TableChildComponent.PREDICATE)}-${predicate.attributeName}`;
+        const predicateId = `${getTableChildComponentId(this.props.id, TableChildComponent.PREDICATE)}-${predicate.attributeName}`;
         const containerClasses = i ? ['ml1'] : [''];
         return (
           <DropdownSearchConnected
@@ -194,7 +194,7 @@ export class Table extends React.Component<ITableProps, any> {
 
     return actionBar
       ? (
-        <ActionBarConnected {...actionBar} id={getChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
+        <ActionBarConnected {...actionBar} id={getTableChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
           <div className='coveo-table-actions'>
             {predicatesConnected}
             {filterBoxConnected}
@@ -206,7 +206,7 @@ export class Table extends React.Component<ITableProps, any> {
 
   buildTableHeader(): JSX.Element {
     const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
-      const id = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}-${headingAttribute.attributeName}`;
+      const id = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}-${headingAttribute.attributeName}`;
       const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
       const tableRefForSort = !!headingAttribute.sort
         ? { tableId: this.props.id, attributeToSort: headingAttribute.attributeName }
@@ -239,9 +239,9 @@ export class Table extends React.Component<ITableProps, any> {
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
       const rowData: ITableRowData = tableData.byId[id];
       const toggleArrowCellCount = 1;
-      const rowWrapperId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}-${rowData.id}`;
-      const headingAndCollapsibleId = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}-${rowData.id}`;
-      const collapsibleRowKey = `${getChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}-${rowData.id}`;
+      const rowWrapperId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}-${rowData.id}`;
+      const headingAndCollapsibleId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}-${rowData.id}`;
+      const collapsibleRowKey = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}-${rowData.id}`;
       const collapsibleData = this.props.collapsibleFormatter && this.props.collapsibleFormatter(rowData, this.props);
 
       const tableHeadingRowContent = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
@@ -321,8 +321,8 @@ export class Table extends React.Component<ITableProps, any> {
         {...this.props.navigation}
         totalEntries={tableData.totalEntries}
         totalPages={tableData.totalPages}
-        id={getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
-        loadingIds={[`loading-${getChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}`]}
+        id={getTableChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
+        loadingIds={[`loading-${getTableChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}`]}
         currentPage={this.props.tableState.page} />
     ) : null;
   }
@@ -330,7 +330,7 @@ export class Table extends React.Component<ITableProps, any> {
   buildLastUpdated(): JSX.Element {
     return <LastUpdatedConnected
       label={this.props.lastUpdatedLabel}
-      id={getChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)} />;
+      id={getTableChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)} />;
   }
 
   render() {

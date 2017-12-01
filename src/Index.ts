@@ -91,7 +91,13 @@ export { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
 export { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
 export { TableEmptyRow } from './components/tables/TableEmptyRow';
 export { tableRowsReducer } from './components/tables/TableRowReducers';
-export { TableRowActions, selectRow } from './components/tables/TableRowActions';
+export { TableRowActions, selectRow, unselectAllRows } from './components/tables/TableRowActions';
+export { TableConnected } from './components/tables/TableConnected';
+export {
+  defaultTableStateModifyerThunk,
+  dispatchPreTableStateModification,
+  dispatchPostTableStateModification,
+ } from './components/tables/TableThunkActionCreators';
 
 // Prompts
 export { promptsReducer } from './components/inlinePrompt/InlinePromptReducers';

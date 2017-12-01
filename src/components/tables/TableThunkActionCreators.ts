@@ -4,7 +4,7 @@ import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent }
 import * as _ from 'underscore';
 import { ITableOwnProps, ITableHeadingAttribute } from './Table';
 import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
-import { getLoadingIds, getChildComponentId } from './TableUtils';
+import { getLoadingIds, getTableChildComponentId } from './TableUtils';
 import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
 import { setIsInError, modifyState } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
@@ -15,7 +15,7 @@ export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps,
   dispatch(unselectAllRows(tableOwnProps.id));
   dispatch(
     addActionsToActionBar(
-      getChildComponentId(tableOwnProps.id, TableChildComponent.ACTION_BAR),
+      getTableChildComponentId(tableOwnProps.id, TableChildComponent.ACTION_BAR),
       [],
     ),
   );
@@ -24,7 +24,7 @@ export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps,
 
 export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: any) => {
   dispatch(turnOffLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
-  dispatch(changeLastUpdated(getChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
+  dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
 };
 
 export const defaultTableStateModifyer = (
