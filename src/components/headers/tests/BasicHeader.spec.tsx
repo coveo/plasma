@@ -8,7 +8,7 @@ describe('<BasicHeader/>', () => {
 
   const defaultProps: IBasicHeaderProps = {
     title: {
-      title: 'test',
+      text: 'test',
     },
   };
 
@@ -36,12 +36,12 @@ describe('<BasicHeader/>', () => {
 
     it('should render the default title', () => {
       const titleComponent = basicHeaderComponent.find(Title);
-      expect(titleComponent.length).toEqual(1);
-      expect(titleComponent.props().title).toEqual(defaultProps.title.title);
+      expect(titleComponent.length).toBe(1);
+      expect(titleComponent.props().text).toBe(defaultProps.title.text);
     });
 
     it('should render the HeaderWrapper', () => {
-      expect(basicHeaderComponent.find(HeaderWrapper).length).toEqual(1);
+      expect(basicHeaderComponent.find(HeaderWrapper).length).toBe(1);
     });
   });
 });

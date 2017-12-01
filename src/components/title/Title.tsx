@@ -6,7 +6,7 @@ import { ILinkSvgProps, LinkSvg } from '../svg/LinkSvg';
 
 export interface ITitleProps extends React.ClassAttributes<Title> {
   prefix?: string;
-  title: string;
+  text: string;
   withTitleTooltip?: boolean;
   documentationLink?: ILinkSvgProps;
 }
@@ -33,8 +33,8 @@ export class Title extends React.Component<ITitleProps, {}> {
       <div className='flex flex-center full-content-x'>
         <h1 className='bold text-medium-blue mr1 truncate'>
           <span className={prefixClasses}>{this.props.prefix}</span>
-          <Tooltip title={this.props.withTitleTooltip ? this.props.title : ''} placement='left'>
-            {this.props.title}
+          <Tooltip title={this.props.withTitleTooltip ? this.props.text : ''} placement='left'>
+            {this.props.text}
           </Tooltip>
         </h1>
         {this.getLinkIcon()}

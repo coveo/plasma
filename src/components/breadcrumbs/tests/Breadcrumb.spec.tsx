@@ -9,7 +9,7 @@ describe('<Breadcrumb/>', () => {
 
   const defaultProps: IBreadcrumbProps = {
     title: {
-      title: 'test',
+      text: 'test',
     },
   };
 
@@ -61,11 +61,18 @@ describe('<Breadcrumb/>', () => {
       breadcrumbComponent.detach();
     });
 
+    it('should not render the BreadcrumbLink if the links has no elements', () => {
+      renderBreadcrumb({
+        links: [],
+      });
+      expect(breadcrumbComponent.find(BreadcrumbLink).length).toBe(0);
+    });
+
     it('should render the BreadcrumbLink if the links has 1 element', () => {
       renderBreadcrumb({
         links: [defaultLink],
       });
-      expect(breadcrumbComponent.find(BreadcrumbLink).length).toEqual(1);
+      expect(breadcrumbComponent.find(BreadcrumbLink).length).toBe(1);
     });
 
     it('should render all BreadcrumbLink if the links has more than 1 element', () => {
@@ -76,7 +83,7 @@ describe('<Breadcrumb/>', () => {
       renderBreadcrumb({
         links: [defaultLink, secondLink],
       });
-      expect(breadcrumbComponent.find(BreadcrumbLink).length).toEqual(2);
+      expect(breadcrumbComponent.find(BreadcrumbLink).length).toBe(2);
     });
 
     it('should render the BreadcrumbLink link with the defaultLinkPath before', () => {

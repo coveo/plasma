@@ -10,7 +10,7 @@ export class BasicHeader extends React.Component<IBasicHeaderProps, {}> {
 
   static defaultProps: Partial<IBasicHeaderProps> = {
     title: {
-      title: '',
+      text: '',
     },
     classes: [],
   };

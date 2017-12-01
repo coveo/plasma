@@ -5,7 +5,7 @@ import { ILinkSvgProps } from '../../svg/LinkSvg';
 export class TitleExamples extends React.Component<any, any> {
 
   render() {
-    const defaultTitle: string = 'Title test';
+    const defaultText: string = 'Title test';
 
     const documentationLink: ILinkSvgProps = {
       url: 'https://www.google.ca',
@@ -22,25 +22,25 @@ export class TitleExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Default Title</label>
           <div className='form-control'>
-            <Title title={defaultTitle} />
+            <Title text={defaultText} />
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Title with a prefix</label>
           <div className='form-control'>
-            <Title title={defaultTitle} prefix='Edit:' />
+            <Title text={defaultText} prefix='Edit:' />
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Title with a tooltip on title</label>
           <div className='form-control'>
-            <Title title={defaultTitle} prefix='Edit:' withTitleTooltip={true} />
+            <Title text={defaultText} prefix='Edit:' withTitleTooltip={true} />
           </div>
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Title with a documentation link</label>
           <div className='form-control'>
-            <Title title={defaultTitle} prefix='Edit:' documentationLink={documentationLink} />
+            <Title text={defaultText} prefix='Edit:' documentationLink={documentationLink} />
           </div>
         </div>
       </div>

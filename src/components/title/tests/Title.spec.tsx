@@ -8,7 +8,7 @@ import { ILinkSvgProps, LinkSvg } from '../../svg/LinkSvg';
 describe('<Title/>', () => {
 
   const defaultProps: ITitleProps = {
-    title: 'title',
+    text: 'title',
   };
   let titleComponent: ReactWrapper<ITitleProps, any>;
 
@@ -32,12 +32,12 @@ describe('<Title/>', () => {
       titleComponent.detach();
     });
 
-    it('should render the default title', () => {
-      expect(titleComponent.find('h1').text()).toEqual(defaultProps.title);
+    it('should render the default text', () => {
+      expect(titleComponent.find('h1').text()).toBe(defaultProps.text);
     });
 
     it('should not render the prefix', () => {
-      expect(titleComponent.find('span.mr1').length).toEqual(0);
+      expect(titleComponent.find('span.mr1').length).toBe(0);
     });
 
     it('should not add the tooltip for the title', () => {
@@ -53,7 +53,7 @@ describe('<Title/>', () => {
 
     const customProps: ITitleProps = {
       prefix: 'prefix',
-      title: 'title',
+      text: 'title',
       withTitleTooltip: false,
     };
 
@@ -80,7 +80,7 @@ describe('<Title/>', () => {
 
     it('should render the prefix', () => {
       renderTitle();
-      expect(titleComponent.find('span.mr1').text()).toEqual(customProps.prefix);
+      expect(titleComponent.find('span.mr1').text()).toBe(customProps.prefix);
     });
 
     it('should add the tooltip for the title with withTitleTooltip to true', () => {

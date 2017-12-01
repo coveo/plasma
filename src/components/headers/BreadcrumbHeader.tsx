@@ -2,16 +2,16 @@ import * as React from 'react';
 import { HeaderWrapper, IHeaderWrapperProps } from './HeaderWrapper';
 import { Breadcrumb, IBreadcrumbProps } from '../breadcrumbs/Breadcrumb';
 
-export interface IBasicHeaderProps extends IHeaderWrapperProps, React.ClassAttributes<React.Component<any, any>> {
+export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps, React.ClassAttributes<React.Component<any, any>> {
   breadcrumb: IBreadcrumbProps;
 }
 
-export class BreadcrumbHeader extends React.Component<IBasicHeaderProps, {}> {
+export class BreadcrumbHeader extends React.Component<IBreadcrumbHeaderProps, {}> {
 
-  static defaultProps: Partial<IBasicHeaderProps> = {
+  static defaultProps: Partial<IBreadcrumbHeaderProps> = {
     breadcrumb: {
       title: {
-        title: '',
+        text: '',
       },
     },
     classes: [],

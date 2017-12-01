@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Breadcrumb } from '../Breadcrumb';
 import { ITitleProps } from '../../title/Title';
 import { ILinkSvgProps } from '../../svg/LinkSvg';
-import { IBreadcrumbLinkProps } from '../BreadcrumbLink';
+import {link1, link2} from '../../headers/examples/ExamplesUtils';
+import {IBreadcrumbLinkProps} from '../BreadcrumbLink';
 
 export class BreadcrumbsExamples extends React.Component<any, any> {
 
@@ -17,20 +18,22 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
     };
 
     const defaultTitle: ITitleProps = {
-      title: 'Pokemon',
+      text: 'Pokemon',
       prefix: 'Catch them all:',
       documentationLink,
     };
 
-    const link1: IBreadcrumbLinkProps = {
+    const link3: IBreadcrumbLinkProps = {
       name: 'Pikachu',
-      link: '#',
+      link: 'pikachu',
     };
 
-    const link2: IBreadcrumbLinkProps = {
+    const link4: IBreadcrumbLinkProps = {
       name: 'Squirtle',
-      link: '#',
+      link: 'squirtle',
     };
+
+    const defaultLinkPath: string = 'https://www.google.ca/?q=pokemon/';
 
     return (
       <div className='mt2'>
@@ -51,6 +54,12 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
           <label className='form-control-label'>Breadscrum with 2 links</label>
           <div className='form-control'>
             <Breadcrumb title={defaultTitle} links={[link1, link2]} />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Breadscrum with 2 links and a defaultPath</label>
+          <div className='form-control'>
+            <Breadcrumb title={defaultTitle} defaultLinkPath={defaultLinkPath} links={[link3, link4]} />
           </div>
         </div>
       </div>

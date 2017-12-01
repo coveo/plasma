@@ -8,12 +8,12 @@ import { ITabProps } from '../../tab/Tab';
 
 export const link1: IBreadcrumbLinkProps = {
   name: 'Pikachu',
-  link: '#',
+  link: 'https://www.google.ca/?q=pikachu',
 };
 
 export const link2: IBreadcrumbLinkProps = {
   name: 'Squirtle',
-  link: '#',
+  link: 'https://www.google.ca/?q=squirtle',
 };
 
 export const documentationLink: ILinkSvgProps = {
@@ -26,7 +26,7 @@ export const documentationLink: ILinkSvgProps = {
 };
 
 export const defaultTitle: ITitleProps = {
-  title: 'Charmeleon title',
+  text: 'Charmeleon title',
   documentationLink,
 };
 
@@ -49,7 +49,7 @@ export const defaultBreadcrumb: IBreadcrumbProps = {
 
 export const defaultBreadcrumbLongTitle: IBreadcrumbProps = {
   title: {
-    title: 'Pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika ',
+    text: 'Pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika ',
     prefix: 'Catch this pokemon:',
     documentationLink,
   },

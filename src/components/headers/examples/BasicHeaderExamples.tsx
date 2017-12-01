@@ -41,7 +41,7 @@ export class BasicHeaderExamples extends React.Component<any, any> {
           <label className='form-control-label'>Basic header with a long title</label>
           <div className='form-control'>
             <BasicHeader title={{
-              title: 'Pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika ',
+              text: 'Pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika ',
               prefix: 'Catch this pokemon:',
               documentationLink,
             }}

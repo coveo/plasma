@@ -8,14 +8,12 @@ export interface ITabsHeaderProps extends React.ClassAttributes<React.Component<
   tabs?: ITabProps[];
 }
 
-export class TabsHeader extends React.Component<ITabsHeaderProps, {}> {
-
-  render() {
-    if (this.props.tabs) {
-      return (<TabNavigation>
-        {..._.map(this.props.tabs, (tab: ITabProps) => <TabConnected key={tab.id} {...tab} />)}
-      </TabNavigation>);
-    }
-    return null;
+export const TabsHeader = (props: ITabsHeaderProps) => {
+  if (props.tabs) {
+    return (<TabNavigation>
+      {..._.map(props.tabs, (tab: ITabProps) => <TabConnected key={tab.id} {...tab} />)}
+    </TabNavigation>);
   }
-}
+
+  return null;
+};
