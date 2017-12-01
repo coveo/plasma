@@ -57,13 +57,13 @@ describe('DropdownSearch', () => {
     });
 
     describe('render', () => {
-      it('should render wihtout error', () => {
+      it('should render without error', () => {
         expect(() => {
           renderDropdownSearch(_.extend({}, ownProps));
         }).not.toThrow();
       });
 
-      it('should render wihtout error with no options provided', () => {
+      it('should render without error with no options provided', () => {
         expect(() => {
           renderDropdownSearch(_.extend({}, ownProps, {
             options: [],

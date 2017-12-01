@@ -71,13 +71,16 @@ describe('Tables', () => {
       let oldState: ITableRowState[] = [
         {
           id: 'row2',
-          opened: false
+          opened: false,
+          selected: false,
         }, {
           id: 'row1',
-          opened: true
+          opened: true,
+          selected: false,
         }, {
           id: 'row3',
-          opened: false
+          opened: false,
+          selected: false,
         }
       ];
       let action: IReduxAction<ITableRowActionPayload> = {

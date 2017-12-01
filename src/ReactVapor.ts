@@ -24,6 +24,7 @@ import { ITableHeaderCellsState } from './components/tables/TableHeaderCellReduc
 import { ITableStateModifyer } from './components/tables/TableActions';
 import { IDropdownOption } from './components/dropdownSearch/DropdownSearch';
 import { ITablesState, ITableData } from './components/tables/TableReducers';
+import { IFlatSelectState } from './components/flatSelect/FlatSelectReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -36,6 +37,7 @@ export interface IReactVaporState {
   actionBars?: IActionBarState[];
   dropdowns?: IDropdownState[];
   dropdownSearch?: IDropdownSearchState[];
+  flatSelect?: IFlatSelectState[];
   rows?: ITableRowState[];
   optionsCycles?: IOptionsCycleState[];
   datePickers?: IDatePickerState[];
