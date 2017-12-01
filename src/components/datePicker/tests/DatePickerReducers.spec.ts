@@ -452,21 +452,43 @@ describe('Date picker', () => {
         expect(datePickerState.appliedUpperLimit).toBe(oldState.lowerLimit);
       });
 
-    it('should apply the already applied limit if the new limits are not valid', () => {
-      let oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE,
+    it('should apply the input limit if the new limits are not valid', () => {
+      const oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE,
         {
           upperLimit: undefined,
           lowerLimit: undefined,
-          appliedUpperLimit: new Date(new Date().setHours(2, 0, 1, 1)),
-          appliedLowerLimit: new Date(new Date().setHours(0, 0, 1, 1))
+          inputUpperLimit: new Date(new Date().setHours(2, 0, 1, 1)),
+          inputLowerLimit: new Date(new Date().setHours(0, 0, 1, 1))
         });
-      let action: IReduxAction<IDatePickerPayload> = {
+      const action: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.apply,
         payload: {
           id: 'some-date'
         }
       };
-      let datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+      const datePickerState: IDatePickerState = datePickerReducer(oldState, action);
+
+      expect(datePickerState.appliedLowerLimit).toBe(oldState.inputLowerLimit);
+      expect(datePickerState.appliedUpperLimit).toBe(oldState.inputUpperLimit);
+    });
+
+    it('should apply the already applied limit if the new limits are not valid and neither are the input limits', () => {
+      const oldState: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE,
+        {
+          upperLimit: undefined,
+          lowerLimit: undefined,
+          inputUpperLimit: undefined,
+          inputLowerLimit: undefined,
+          appliedUpperLimit: new Date(new Date().setHours(2, 0, 1, 1)),
+          appliedLowerLimit: new Date(new Date().setHours(0, 0, 1, 1))
+        });
+      const action: IReduxAction<IDatePickerPayload> = {
+        type: DatePickerActions.apply,
+        payload: {
+          id: 'some-date'
+        }
+      };
+      const datePickerState: IDatePickerState = datePickerReducer(oldState, action);
 
       expect(datePickerState.appliedLowerLimit).toBe(oldState.appliedLowerLimit);
       expect(datePickerState.appliedUpperLimit).toBe(oldState.appliedUpperLimit);
@@ -533,9 +555,19 @@ describe('Date picker', () => {
         };
       });
 
-      it('should return the appliedLowerLimit if the lowerLimit is not defined', () => {
+      it('should return the inputLowerLimit if the lowerLimit is not defined', () => {
         oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
           lowerLimit: undefined,
+        });
+        datePickerState = datePickerReducer(oldState, action);
+
+        expect(datePickerState.appliedLowerLimit).toBe(oldState.inputLowerLimit);
+      });
+
+      it('should return the appliedLowerLimit if the lowerLimit and inputLowerLimits are not defined', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
+          lowerLimit: undefined,
+          inputLowerLimit: undefined,
         });
         datePickerState = datePickerReducer(oldState, action);
 
@@ -549,10 +581,19 @@ describe('Date picker', () => {
         expect(datePickerState.lowerLimit).toBe(oldState.lowerLimit);
       });
 
-      it('should return the appliedUpperLimit if the upperLimit and the lowerLimit are not defined', () => {
+      it('should return the inputUpperLimit if the upperLimit is not defined', () => {
         oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
           upperLimit: undefined,
-          lowerLimit: undefined,
+        });
+        datePickerState = datePickerReducer(oldState, action);
+
+        expect(datePickerState.appliedUpperLimit).toBe(oldState.inputUpperLimit);
+      });
+
+      it('should return the appliedUpperLimit if the upperLimit and inputUpperLimit are not defined', () => {
+        oldState = _.extend({}, BASE_DATE_PICKER_STATE, {
+          upperLimit: undefined,
+          inputUpperLimit: undefined,
         });
         datePickerState = datePickerReducer(oldState, action);
 
