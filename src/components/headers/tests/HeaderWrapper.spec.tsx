@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import { HeaderWrapper, IHeaderWrapperProps } from '../HeaderWrapper';
-import { Button, Content } from '../../../';
 import { TabsHeader } from '../TabsHeader';
 import { Store } from 'redux';
 import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { clearState } from '../../../utils/ReduxUtils';
 import { Provider } from 'react-redux';
+import { Button } from '../../button/Button';
+import { Content, IContentProps } from '../../content/Content';
 
 describe('<HeaderWrapper/>', () => {
 
@@ -59,8 +60,8 @@ describe('<HeaderWrapper/>', () => {
       const contents = headerWrapperComponent.find(Content);
 
       expect(contents.length).toEqual(2);
-      expect(contents.first().props().content).toEqual(Button);
-      expect(contents.last().props().content).toEqual(Button);
+      expect((contents.first().props() as IContentProps).content).toEqual(Button);
+      expect((contents.last().props() as IContentProps).content).toEqual(Button);
     });
 
     it('should render tabs', () => {
