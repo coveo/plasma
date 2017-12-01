@@ -44,7 +44,7 @@ describe('<LinkSvg>', () => {
 
     const renderLinkSvg = (props: Partial<ILinkSvgProps> = {}) => {
       linkSvgComponent = mount(
-        <LinkSvg {..._.defaults(props, linkSvgProps) } />,
+        <LinkSvg {..._.extend(linkSvgProps, props) } />,
         { attachTo: document.getElementById('App') },
       );
     };
@@ -83,6 +83,14 @@ describe('<LinkSvg>', () => {
       });
 
       expect(linkSvgComponent.find(Tooltip).length).toBe(1);
+    });
+
+    it('should render without href', () => {
+      renderLinkSvg({
+        url: undefined,
+      });
+
+      expect(linkSvgComponent.find('a').props().href).toBeUndefined();
     });
   });
 });

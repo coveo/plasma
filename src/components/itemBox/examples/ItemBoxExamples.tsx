@@ -25,7 +25,7 @@ export class ItemBoxExamples extends React.Component<any, any> {
 
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>Item Box</h1>
+        <h1 className='text-blue mb1 bold'>Item Box</h1>
 
         <div className='form-group'>
           <label className='form-control-label'>Default Item Box</label>
