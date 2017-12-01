@@ -12,7 +12,11 @@ import { connect } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import * as _ from 'underscore';
 import { IActionOptions } from '../actions/Action';
-import { TableDataModifyerMethods } from './TableOnModifyDataMethods';
+import { defaultTableStateModifyerThunk,
+  serverTableStateModifyerThunk,
+  dispatchPreTableStateModification,
+  dispatchPostTableStateModification,
+ } from './TableThunkActionCreators';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { selectOptionDropdownSearch, closeDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
 import { PER_PAGE_NUMBERS } from '../navigation/perPage/NavigationPerPage';
@@ -53,13 +57,13 @@ const mapDispatchToProps = (
   },
   onModifyData: (shouldResetPage: boolean) => {
     if (ownProps.serverMode) {
-      dispatch(TableDataModifyerMethods.thunkServer(ownProps, shouldResetPage));
+      dispatch(defaultTableStateModifyerThunk(ownProps, shouldResetPage));
     } else if (ownProps.customMode) {
-      TableDataModifyerMethods.commonDispatchPreStateModification(ownProps, dispatch);
+      dispatchPreTableStateModification(ownProps, dispatch);
       dispatch(ownProps.customMode.thunkActionCreator(ownProps));
-      TableDataModifyerMethods.commonDispatchPostStateModification(ownProps, dispatch);
+      dispatchPostTableStateModification(ownProps, dispatch);
     } else {
-      dispatch(TableDataModifyerMethods.thunkDefault(ownProps, shouldResetPage));
+      dispatch(serverTableStateModifyerThunk(ownProps, shouldResetPage));
     }
   },
   onRowClick: (actions: IActionOptions[] = []) => {
