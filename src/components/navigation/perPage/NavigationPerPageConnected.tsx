@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onPerPageClick: (perPageNb: number, oldPerPageNb: number, currentPage: number) => {
       dispatch(turnOnLoading(ownProps.loadingIds));
       dispatch(changePerPage(ownProps.id, perPageNb));
-      dispatch(changePage(`pagination-${ownProps.id}`, Math.floor(currentPage * oldPerPageNb / perPageNb)));
+      dispatch(changePage(`pagination-${ownProps.id}`, 0));
     }
   });
 
