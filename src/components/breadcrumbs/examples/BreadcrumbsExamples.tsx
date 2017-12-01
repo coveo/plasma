@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Breadcrumb } from '../Breadcrumb';
 import { ITitleProps } from '../../title/Title';
 import { ILinkSvgProps } from '../../svg/LinkSvg';
-import {link1, link2} from '../../headers/examples/ExamplesUtils';
-import {IBreadcrumbLinkProps} from '../BreadcrumbLink';
+import { link1, link2 } from '../../headers/examples/ExamplesUtils';
+import { IBreadcrumbLinkProps } from '../BreadcrumbLink';
 
 export class BreadcrumbsExamples extends React.Component<any, any> {
 

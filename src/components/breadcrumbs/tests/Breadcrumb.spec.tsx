@@ -38,7 +38,7 @@ describe('<Breadcrumb/>', () => {
     it('should render the default title', () => {
       const titleComponent = breadcrumbComponent.find(Title);
       expect(titleComponent.length).toEqual(1);
-      expect(titleComponent.props().title).toEqual(defaultProps.title.title);
+      expect(titleComponent.props().text).toEqual(defaultProps.title.text);
     });
   });
 
