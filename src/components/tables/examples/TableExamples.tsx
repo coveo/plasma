@@ -101,9 +101,8 @@ export class TableExamples extends React.Component<any, any> {
               },
             ]}
             blankSlates={{
-              noResults: { title: 'Oh my oh my, nothing to see here :(!' }
+              noResults: { title: 'No results!' }
             }}
-            actionBar={{ extraContainerClasses: ['mod-border-top'] }}
             noNavigation
           />
         </div>
@@ -140,7 +139,7 @@ export class TableExamples extends React.Component<any, any> {
           />
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Table in server mode (we use fake data, have a look at your network tab to see what is happening under the hood)</label>
+          <label className='form-control-label'>Table in server mode, i.e. with fake data (have a look at your network tab to see what is happening under the hood)</label>
           <TableConnected
             id={generateTableId()}
             serverMode={{

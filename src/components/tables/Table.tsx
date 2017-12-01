@@ -270,7 +270,8 @@ export class Table extends React.Component<ITableProps, any> {
             hide={this.props.tableState.isLoading || this.props.tableState.isInError}
             isCollapsible={!!collapsibleData}
             onClickCallback={(e: React.MouseEvent<any>) =>
-              this.props.onRowClick(this.props.getActions && this.props.getActions(rowData, this.props))}>
+              this.props.onRowClick(this.props.getActions && this.props.getActions(rowData, this.props))
+            }>
             {tableHeadingRowContent}
           </TableHeadingRowConnected>
           {collapsibleRow}

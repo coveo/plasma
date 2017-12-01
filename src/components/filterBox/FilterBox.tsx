@@ -100,7 +100,6 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           onBlur={() => this.handleOnBlur()}
           onFocus={(e: React.FocusEvent<any>) => { this.placeCursorAtEndOfInputValue(e); }}
           onKeyDown={(e) => this.handleOnKeyDown(e)}
-          value={this.props.filterText}
           style={inputMaxWidth}
 
           autoFocus={this.props.isAutoFocus}

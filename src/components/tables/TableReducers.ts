@@ -167,10 +167,11 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
       return _.omit(tablesState, '');
   }
 
-  // all child ids contain their related table id in them
+  // all child ids contain their related table id
   const tableId = _.findKey(
     tablesState,
-    (tableState: ITableState, currentTableId: string) => (action.payload && action.payload.id || '').indexOf(currentTableId) >= 0,
+    (tableState: ITableState, currentTableId: string) =>
+      (action.payload && action.payload.id || '').indexOf(currentTableId) >= 0,
   );
 
   return tableId
