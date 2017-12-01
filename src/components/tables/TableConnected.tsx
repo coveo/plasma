@@ -12,11 +12,12 @@ import { connect } from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import * as _ from 'underscore';
 import { IActionOptions } from '../actions/Action';
-import { defaultTableStateModifyerThunk,
+import {
+  defaultTableStateModifyerThunk,
   serverTableStateModifyerThunk,
   dispatchPreTableStateModification,
   dispatchPostTableStateModification,
- } from './TableThunkActionCreators';
+} from './TableThunkActionCreators';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { selectOptionDropdownSearch, closeDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
 import { PER_PAGE_NUMBERS } from '../navigation/perPage/NavigationPerPage';
@@ -57,13 +58,13 @@ const mapDispatchToProps = (
   },
   onModifyData: (shouldResetPage: boolean) => {
     if (ownProps.serverMode) {
-      dispatch(defaultTableStateModifyerThunk(ownProps, shouldResetPage));
+      dispatch(serverTableStateModifyerThunk(ownProps, shouldResetPage));
     } else if (ownProps.customMode) {
       dispatchPreTableStateModification(ownProps, dispatch);
       dispatch(ownProps.customMode.thunkActionCreator(ownProps));
       dispatchPostTableStateModification(ownProps, dispatch);
     } else {
-      dispatch(serverTableStateModifyerThunk(ownProps, shouldResetPage));
+      dispatch(defaultTableStateModifyerThunk(ownProps, shouldResetPage));
     }
   },
   onRowClick: (actions: IActionOptions[] = []) => {
