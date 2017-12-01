@@ -92,7 +92,7 @@ export const tableReducer = (
     case TableActions.inError:
       return {
         ...state,
-        isInError: true,
+        isInError: action.payload.isInError,
       };
     case TableActions.modifyState:
       return action.payload.tableStateModifyer(state);

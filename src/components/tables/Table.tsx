@@ -57,35 +57,21 @@ export interface ITablePredicate {
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
-
-  // table content props
   initialTableData: ITableData;
   headingAttributes: ITableHeadingAttribute[];
   collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
-
-  // action bar props
   actionBar?: IActionBarProps;
   getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
-
-  // blankslate props
   blankSlates: {
     noResults: IBlankSlateProps;
     noResultsOnFilterOrPredicates?: IBlankSlateProps;
     noResultsOnError?: IBlankSlateProps;
   };
-
-  // filter props
   filter?: IFilterBoxProps;
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
-
-  // predicate props
   predicates?: ITablePredicate[];
-
-  // navigation props
   navigation?: INavigationChildrenProps;
   noNavigation?: boolean;
-
-  // last update label
   lastUpdatedLabel?: string;
 
   // modes
@@ -94,7 +80,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
     rawDataToTableData: (data: any, ownProps?: ITableOwnProps, tableState?: ITableState) => ITableData;
   };
   customMode?: {
-    thunkActionCreator: (tableOwnProps: ITableOwnProps) => ((dispatch: any, getState?: () => any) => void);
+    thunkActionCreator: (tableOwnProps?: ITableOwnProps, shouldResetPage?: boolean) => ((dispatch: any, getState?: () => any) => void);
   };
 };
 

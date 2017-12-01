@@ -1,5 +1,4 @@
 import { TableChildComponent } from './TableConstants';
-import { resetPaging } from '../navigation/pagination/NavigationPaginationActions';
 import { getTableChildComponentId } from './TableUtils';
 import { ITableOwnProps, ITableProps, Table } from './Table';
 import { ITableState } from './TableReducers';
@@ -15,8 +14,6 @@ import { IActionOptions } from '../actions/Action';
 import {
   defaultTableStateModifyerThunk,
   serverTableStateModifyerThunk,
-  dispatchPreTableStateModification,
-  dispatchPostTableStateModification,
 } from './TableThunkActionCreators';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { selectOptionDropdownSearch, closeDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
@@ -27,7 +24,6 @@ export interface ITableDispatchProps {
   onUnmount: () => void;
   onModifyData: (shouldResetPage: boolean) => void;
   onRowClick: (actions: IActionOptions[]) => void;
-  onResetPage: () => void;
   onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => void;
 }
 
@@ -60,9 +56,7 @@ const mapDispatchToProps = (
     if (ownProps.serverMode) {
       dispatch(serverTableStateModifyerThunk(ownProps, shouldResetPage));
     } else if (ownProps.customMode) {
-      dispatchPreTableStateModification(ownProps, dispatch);
-      dispatch(ownProps.customMode.thunkActionCreator(ownProps));
-      dispatchPostTableStateModification(ownProps, dispatch);
+      dispatch(ownProps.customMode.thunkActionCreator(ownProps, shouldResetPage));
     } else {
       dispatch(defaultTableStateModifyerThunk(ownProps, shouldResetPage));
     }
@@ -74,9 +68,6 @@ const mapDispatchToProps = (
         actions,
       ),
     );
-  },
-  onResetPage: () => {
-    dispatch(resetPaging(`pagination-${getTableChildComponentId(ownProps.id, TableChildComponent.NAVIGATION)}`));
   },
   onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => {
     dispatch(selectOptionDropdownSearch(predicateId, option));

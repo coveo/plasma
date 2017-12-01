@@ -71,6 +71,7 @@ export interface IReduxActionsPayload {
   label?: string;
   selected?: string;
   tableId?: string;
+  isInError?: boolean;
   attributeToFormat?: string;
   attributeToSort?: string;
   initialTableData?: ITableData;
