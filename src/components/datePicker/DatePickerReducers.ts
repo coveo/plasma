@@ -79,8 +79,9 @@ const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
 };
 
 const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-  const lowerLimit: Date = state.lowerLimit || state.appliedLowerLimit;
-  const upperLimit: Date = (state.upperLimit >= lowerLimit ? state.upperLimit : state.lowerLimit) || state.appliedUpperLimit;
+  const lowerLimit: Date = state.lowerLimit || state.inputLowerLimit || state.appliedLowerLimit;
+  let upperLimit: Date = state.upperLimit || state.inputUpperLimit || state.appliedUpperLimit;
+  upperLimit = upperLimit >= lowerLimit ? upperLimit : lowerLimit;
 
   return state.id.indexOf(action.payload.id) !== 0
     ? state
