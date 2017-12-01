@@ -22,8 +22,8 @@
   @for $i from 5 through 15 {
     $size: $i * 2;
     &.mod-#{$size} {
-      width: $size;
-      height: $size;
+      width: $size + px;
+      height: $size + px;
 
       @extend .mod-align-with-text;
     }
