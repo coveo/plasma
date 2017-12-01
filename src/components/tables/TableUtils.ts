@@ -1,6 +1,5 @@
 import { TableSortingOrder, TableChildComponent } from './TableConstants';
 import * as _ from 'underscore';
-import { ITableData } from './TableReducers';
 
 const {
   ASCENDING,
@@ -13,10 +12,10 @@ export const getNextTableSortingOrder = (sortedState: TableSortingOrder): TableS
     ? ASCENDING
     : DESCENDING;
 
-export const getChildComponentId = (tableId: string, childComponent: TableChildComponent): string =>
+export const getTableChildComponentId = (tableId: string, childComponent: TableChildComponent): string =>
   `${tableId}${childComponent}`;
 
-export const getLoadingIds = (tableId: string): string[] => ([
-  getChildComponentId(tableId, TableChildComponent.LOADING_TABLE),
-  `loading-${getChildComponentId(tableId, TableChildComponent.NAVIGATION)}`,
+export const getTableLoadingIds = (tableId: string): string[] => ([
+  getTableChildComponentId(tableId, TableChildComponent.LOADING_TABLE),
+  `loading-${getTableChildComponentId(tableId, TableChildComponent.NAVIGATION)}`,
 ]);

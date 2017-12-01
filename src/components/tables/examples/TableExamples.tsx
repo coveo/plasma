@@ -2,7 +2,7 @@ import { TableConnected } from '../TableConnected';
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { generateTableId, ITableData, ITableState } from '../TableReducers';
+import { ITableData, ITableState } from '../TableReducers';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { ITableRowData, ITableProps } from '../Table';
 import { TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
@@ -84,7 +84,7 @@ export class TableExamples extends React.Component<any, any> {
           <label className='form-control-label'>Simplest Table
           </label>
           <TableConnected
-            id={generateTableId()}
+            id={_.uniqueId('react-vapor-table')}
             initialTableData={simplestTableData}
             headingAttributes={[
               {
@@ -110,7 +110,7 @@ export class TableExamples extends React.Component<any, any> {
           <label className='form-control-label'>Table with filter
           </label>
           <TableConnected
-            id={generateTableId()}
+            id={_.uniqueId('react-vapor-table')}
             initialTableData={simplestTableData}
             headingAttributes={[
               {
@@ -141,7 +141,7 @@ export class TableExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Table in server mode, i.e. with fake data (have a look at your network tab to see what is happening under the hood)</label>
           <TableConnected
-            id={generateTableId()}
+            id={_.uniqueId('react-vapor-table')}
             serverMode={{
               url: (tableState: ITableState) => { return `https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json?page=${tableState.page}&perPage=${tableState.perPage}&predicate1=${tableState.predicates.attribute4}&predicate2=${tableState.predicates.attribute3}&filter=${tableState.filter}&sortOrder=${tableState.sortState.order}&sortAttribute=${tableState.sortState.attribute}`; },
               rawDataToTableData,
@@ -185,7 +185,7 @@ export class TableExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Table</label>
           <TableConnected
-            id={generateTableId()}
+            id={_.uniqueId('react-vapor-table')}
             initialTableData={tableData}
             collapsibleFormatter={(rowData: ITableRowData, props?: ITableProps) => <div className='p2'>This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}</div>}
             getActions={(rowData: ITableRowData, tableProps: ITableProps) => ([

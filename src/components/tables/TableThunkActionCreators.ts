@@ -1,10 +1,10 @@
-import { ITableState, DEFAULT_TABLE_DATA, ITablesState } from './TableReducers';
+import { ITableState, ITablesState } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent } from './TableConstants';
+import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent, DEFAULT_TABLE_DATA } from './TableConstants';
 import * as _ from 'underscore';
 import { ITableOwnProps, ITableHeadingAttribute } from './Table';
 import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
-import { getLoadingIds, getTableChildComponentId } from './TableUtils';
+import { getTableLoadingIds, getTableChildComponentId } from './TableUtils';
 import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
 import { setIsInError, modifyState } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
@@ -19,11 +19,11 @@ export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps,
       [],
     ),
   );
-  dispatch(turnOnLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
+  dispatch(turnOnLoading(getTableLoadingIds(tableOwnProps.id), tableOwnProps.id));
 };
 
 export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: any) => {
-  dispatch(turnOffLoading(getLoadingIds(tableOwnProps.id), tableOwnProps.id));
+  dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id), tableOwnProps.id));
   dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
 };
 

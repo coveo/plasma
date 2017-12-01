@@ -1,8 +1,12 @@
+import { ITableData } from './TableReducers';
+
 export enum TableSortingOrder {
   UNSORTED = 'UNSORTED',
   ASCENDING = 'ASCENDING',
   DESCENDING = 'DESCENDING',
 };
+
+export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0, });
 
 export const TABLE_PREDICATE_DEFAULT_VALUE = 'ALL';
 

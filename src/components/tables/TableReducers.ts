@@ -9,16 +9,12 @@ import { PaginationActions } from '../navigation/pagination/NavigationPagination
 import { PerPageActions } from '../navigation/perPage/NavigationPerPageActions';
 import * as _ from 'underscore';
 import {
+  DEFAULT_TABLE_DATA,
   TableSortingOrder,
-  TABLE_ID_PREFIX,
   TABLE_PREDICATE_ID_PREFIX,
 } from './TableConstants';
 import { LoadingActions } from '../loading/LoadingActions';
 import { TableHeaderCellActions } from './TableHeaderCellActions';
-
-export const generateTableId = (): string => _.uniqueId(TABLE_ID_PREFIX);
-
-export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0, });
 
 export interface ITableData {
   byId: {

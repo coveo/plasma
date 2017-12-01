@@ -1,6 +1,6 @@
 import { TableChildComponent } from './TableConstants';
 import { resetPaging } from '../navigation/pagination/NavigationPaginationActions';
-import { getChildComponentId } from './TableUtils';
+import { getTableChildComponentId } from './TableUtils';
 import { ITableOwnProps, ITableProps, Table } from './Table';
 import { ITableState } from './TableReducers';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
@@ -70,13 +70,13 @@ const mapDispatchToProps = (
   onRowClick: (actions: IActionOptions[] = []) => {
     dispatch(
       addActionsToActionBar(
-        getChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR),
+        getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR),
         actions,
       ),
     );
   },
   onResetPage: () => {
-    dispatch(resetPaging(`pagination-${getChildComponentId(ownProps.id, TableChildComponent.NAVIGATION)}`));
+    dispatch(resetPaging(`pagination-${getTableChildComponentId(ownProps.id, TableChildComponent.NAVIGATION)}`));
   },
   onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => {
     dispatch(selectOptionDropdownSearch(predicateId, option));

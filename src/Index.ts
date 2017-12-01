@@ -93,11 +93,9 @@ export { TableEmptyRow } from './components/tables/TableEmptyRow';
 export { tableRowsReducer } from './components/tables/TableRowReducers';
 export { TableRowActions, selectRow, unselectAllRows } from './components/tables/TableRowActions';
 export { TableConnected } from './components/tables/TableConnected';
-export {
-  defaultTableStateModifyerThunk,
-  dispatchPreTableStateModification,
-  dispatchPostTableStateModification,
- } from './components/tables/TableThunkActionCreators';
+export { defaultTableStateModifyerThunk, dispatchPreTableStateModification, dispatchPostTableStateModification } from './components/tables/TableThunkActionCreators';
+export { getTableChildComponentId, getTableLoadingIds } from './components/tables/TableUtils';
+export { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder } from './components/tables/TableConstants';
 
 // Prompts
 export { promptsReducer } from './components/inlinePrompt/InlinePromptReducers';
