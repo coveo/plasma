@@ -222,12 +222,10 @@ describe('<Popover>', () => {
         mountPopover(popoverProps);
       });
 
-      it('should not explode', () => {
+      it('should not update if already closed', () => {
         document.getElementById('App').click();
 
-        expect(toggleOpenedSpy).toHaveBeenCalledTimes(1);
-
-        expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
+        expect(toggleOpenedSpy).not.toHaveBeenCalled();
       });
     });
 
@@ -241,12 +239,10 @@ describe('<Popover>', () => {
         mountPopover(popoverProps);
       });
 
-      it('should not explode', () => {
+      it('should not update if already closed', () => {
         document.getElementById('App').click();
 
-        expect(toggleOpenedSpy).toHaveBeenCalledTimes(1);
-
-        expect(toggleOpenedSpy).toHaveBeenCalledWith(false);
+        expect(toggleOpenedSpy).not.toHaveBeenCalled();
       });
     });
   });

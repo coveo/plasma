@@ -106,19 +106,21 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
   // Using a fat arrow function instead of a method here to bind it to context and to make sure we have the same listener for both
   // addEventListener and removeEventListener and therefore prevent leaking listeners.
   private handleDocumentClick: EventListener = (event: Event) => {
-    const tetherToggle = findDOMNode<HTMLElement>(this.tetherToggle);
-    const tetherElement = findDOMNode<HTMLElement>(this.tetherElement);
+    if (this.props.isOpen) {
+      const tetherToggle = findDOMNode<HTMLElement>(this.tetherToggle);
+      const tetherElement = findDOMNode<HTMLElement>(this.tetherElement);
 
-    const outsideTetherToggle = !tetherToggle.contains(event.target as Node);
-    const outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
+      const outsideTetherToggle = !tetherToggle.contains(event.target as Node);
+      const outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
 
-    if (outsideTetherElement && outsideTetherToggle) {
-      if (this.props.isOpen && this.props.isModal) {
-        event.stopImmediatePropagation();
-        event.preventDefault();
+      if (outsideTetherElement && outsideTetherToggle) {
+        if (this.props.isModal) {
+          event.stopImmediatePropagation();
+          event.preventDefault();
+        }
+
+        this.toggleOpened(false);
       }
-
-      this.toggleOpened(false);
     }
   }
 }
