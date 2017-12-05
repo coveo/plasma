@@ -115,3 +115,15 @@
     }
   }
 }
+
+.navigation-tag {
+  display: inline-block;
+  padding: $navigation-tag-padding;
+
+  font-size: $navigation-tag-font-size;
+  text-transform: uppercase;
+
+  border: $default-border;
+  border-color: $orange;
+  border-radius: $border-radius;
+}
