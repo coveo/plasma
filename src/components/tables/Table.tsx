@@ -194,7 +194,7 @@ export class Table extends React.Component<ITableProps, any> {
 
     const headerClass = classNames(
       'mod-no-border-top',
-      {'no-pointer': this.props.tableState && !!this.props.tableState.isLoading}
+      { 'no-pointer': this.props.tableState && !!this.props.tableState.isLoading }
     );
 
     return (

@@ -16,6 +16,6 @@ export const getTableChildComponentId = (tableId: string, childComponent: TableC
   `${tableId}${childComponent}`;
 
 export const getTableLoadingIds = (tableId: string): string[] => ([
-  getTableChildComponentId(tableId, TableChildComponent.LOADING_TABLE),
+  tableId,
   `loading-${getTableChildComponentId(tableId, TableChildComponent.NAVIGATION)}`,
 ]);
