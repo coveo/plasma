@@ -52,3 +52,49 @@
     }
   }
 }
+
+.table-container {
+  .loading-row {
+    display: none;
+  }
+
+  .spinner {
+    display: none;
+  } 
+}
+
+.loading-component {
+  position: relative;
+
+  & > * {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .loading-row {
+    display: table-row-group;
+
+    opacity: 1;
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+
+    display: block;
+
+    transform: translate(-50%, -50%);
+
+    opacity: 1;
+  }
+}
+
+.mod-loading-content {
+  pointer-events: none;
+
+  tbody {
+    opacity: 0.4;
+  }
+}
