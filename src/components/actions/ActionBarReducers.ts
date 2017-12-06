@@ -3,10 +3,12 @@ import { ActionBarActions } from './ActionBarActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
+import { LoadingActions } from '../loading/LoadingActions';
 
 export interface IActionBarState {
   id: string;
   actions: IActionOptions[];
+  isLoading?: boolean;
 }
 
 export const actionBarInitialState: IActionBarState = { id: undefined, actions: [] };
@@ -18,15 +20,23 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
       if (state.id !== action.payload.id) {
         return state;
       }
-      return {
-        id: state.id,
-        actions: action.payload.actions
-      };
+      return state.id !== action.payload.id
+        ? state
+        : { ...state, actions: action.payload.actions };
     case ActionBarActions.add:
       return {
         id: action.payload.id,
-        actions: []
+        actions: [],
+        isLoading: false,
       };
+    case LoadingActions.turnOn:
+      return _.contains(action.payload.ids, action.payload.id)
+        ? state
+        : { ...state, isLoading: true };
+    case LoadingActions.turnOff:
+      return _.contains(action.payload.ids, action.payload.id)
+        ? state
+        : { ...state, isLoading: false };
     default:
       return state;
   }

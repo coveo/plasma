@@ -3,9 +3,6 @@ import * as React from 'react';
 export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
   id?: string;
   hide?: boolean;
-  // loading table props
-  columnsPerRow?: number;
-  numberOfRows?: number;
 }
 
 export interface ILoadingDispatchProps {

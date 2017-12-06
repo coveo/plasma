@@ -21,10 +21,10 @@ import { JSXRenderable } from '../../utils/JSXUtils';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { LoadingConnected } from '../loading/LoadingConnected';
-import { LoadingTableConnected } from '../loading/LoadingTableConnected';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import { NavigationConnected } from '../navigation/NavigationConnected';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
+import * as classNames from 'classnames';
 
 export interface IData {
   id: string;
@@ -130,17 +130,6 @@ export class Table extends React.Component<ITableProps, any> {
     );
   }
 
-  buildLoadingTable(): JSX.Element {
-    return <LoadingTableConnected
-      id={getTableChildComponentId(this.props.id, TableChildComponent.LOADING_TABLE)}
-      hide={!this.props.tableState.isLoading}
-      columnsPerRow={this.props.headingAttributes.length + 1}
-      numberOfRows={
-        this.props.tableState.data && this.props.tableState.data.displayedIds.length
-        || this.props.tableState.perPage
-      } />;
-  }
-
   buildLoadingNavigation(): JSX.Element {
     return <LoadingConnected
       id={getTableChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)}
@@ -180,7 +169,9 @@ export class Table extends React.Component<ITableProps, any> {
 
     return actionBar
       ? (
-        <ActionBarConnected {...actionBar} id={getTableChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
+        <ActionBarConnected
+          {...actionBar}
+          id={getTableChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
           <div className='coveo-table-actions'>
             {predicatesConnected}
             {filterBoxConnected}
@@ -201,9 +192,14 @@ export class Table extends React.Component<ITableProps, any> {
       return { id, title, tableRefForSort };
     });
 
+    const headerClass = classNames(
+      'mod-no-border-top',
+      {'no-pointer': this.props.tableState && !!this.props.tableState.isLoading}
+    );
+
     return (
       <TableHeader
-        headerClass='mod-no-border-top'
+        headerClass={headerClass}
         columns={[...tableHeaderCells, { title: '' }]}
         connectCell />
     );
@@ -247,13 +243,13 @@ export class Table extends React.Component<ITableProps, any> {
         )
         : null;
 
+      const tableRowWrapperClasses = classNames({ 'table-body-loading': this.props.tableState && !!this.props.tableState.isLoading });
       return (
-        <TableRowWrapper key={rowWrapperId}>
+        <TableRowWrapper key={rowWrapperId} className={tableRowWrapperClasses}>
           <TableHeadingRowConnected
             id={headingAndCollapsibleId}
             key={headingAndCollapsibleId}
             tableId={this.props.id}
-            hide={this.props.tableState.isLoading || this.props.tableState.isInError}
             isCollapsible={!!collapsibleData}
             onClickCallback={(e: React.MouseEvent<any>) =>
               this.props.onRowClick(this.props.getActions && this.props.getActions(rowData, this.props))
@@ -320,14 +316,20 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   render() {
+    const tableClasses = classNames(
+      'mod-collapsible-rows',
+      {
+        'no-pointer': !!(this.props.tableState && this.props.tableState.isLoading),
+      },
+    );
+
     return (
       <div>
         {this.buildActionBar()}
-        <table className='mod-collapsible-rows'>
+        <table className={tableClasses}>
           {this.buildTableHeader()}
           {this.buildTableBody()}
         </table>
-        {this.buildLoadingTable()}
         {this.buildBlankSlate()}
         {this.buildNavigation()}
         {this.buildLastUpdated()}
