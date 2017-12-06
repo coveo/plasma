@@ -12,7 +12,7 @@ export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHea
     attributeToSort: string;
   };
   className?: string;
-  onClickCallback?: (e: React.MouseEvent<any>) => void;
+  onClickCallback?: (e: React.MouseEvent<HTMLTableHeaderCellElement>) => void;
 }
 
 export interface ITableHeaderStateProps {
@@ -31,6 +31,10 @@ export interface ITableHeaderCellProps extends
   ITableHeaderCellDispatchProps { }
 
 export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any> {
+  static defaultProps: Partial<ITableHeaderCellProps> = {
+    sorted: TableSortingOrder.UNSORTED,
+  };
+
   componentDidMount() {
     if (this.props.onMount && this.props.tableRefForSort) {
       this.props.onMount(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
@@ -43,7 +47,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
     }
   }
 
-  handleClick(e: React.MouseEvent<any>) {
+  handleClick(e: React.MouseEvent<HTMLTableHeaderCellElement>) {
     if (this.props.onSort && this.props.tableRefForSort) {
       this.props.onSort(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
     }

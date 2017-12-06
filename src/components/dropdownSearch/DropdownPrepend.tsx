@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 export interface IDropdownPrependProps {
-  prepend: string;
+  prepend: JSX.Element | string;
   key?: string;
   children?: any;
 }

@@ -4,7 +4,7 @@ import * as classname from 'classnames';
 import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
 
 export interface ILinkSvgProps extends React.ClassAttributes<LinkSvg> {
-  url: string;
+  url?: string;
   target?: string;
   linkClasses?: string[];
   svg?: ISvgProps;
@@ -13,7 +13,6 @@ export interface ILinkSvgProps extends React.ClassAttributes<LinkSvg> {
 
 export class LinkSvg extends React.Component<ILinkSvgProps, {}> {
   static defaultProps: Partial<ILinkSvgProps> = {
-    url: '',
     target: '_blank',
     linkClasses: [],
     svg: { svgName: 'help', svgClass: `icon` },
@@ -21,7 +20,8 @@ export class LinkSvg extends React.Component<ILinkSvgProps, {}> {
 
   render() {
     const classes = classname(this.props.linkClasses);
-    return (<a href={this.props.url} target={this.props.target} className={classes}>
+    const href = this.props.url ? { href: this.props.url } : null;
+    return (<a {...href} target={this.props.target} className={classes}>
       <Tooltip {...this.props.tooltip}>
         <Svg {...this.props.svg} />
       </Tooltip>

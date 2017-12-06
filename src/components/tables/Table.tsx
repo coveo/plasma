@@ -20,7 +20,6 @@ import { TableChildComponent } from './TableConstants';
 import { JSXRenderable } from '../../utils/JSXUtils';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
-import { LoadingConnected } from '../loading/LoadingConnected';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import { NavigationConnected } from '../navigation/NavigationConnected';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
@@ -71,7 +70,6 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   predicates?: ITablePredicate[];
   navigation?: INavigationChildrenProps;
-  noNavigation?: boolean;
   lastUpdatedLabel?: string;
 
   // modes
@@ -130,13 +128,7 @@ export class Table extends React.Component<ITableProps, any> {
     );
   }
 
-  buildLoadingNavigation(): JSX.Element {
-    return <LoadingConnected
-      id={getTableChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)}
-      hide={!this.props.tableState.isLoading} />;
-  }
-
-  buildActionBar(): JSX.Element {
+  private buildActionBar(): JSX.Element {
     const { actionBar, filter, predicates } = this.props;
 
     const filterBoxConnected: JSX.Element = actionBar && filter
@@ -181,7 +173,7 @@ export class Table extends React.Component<ITableProps, any> {
       : null;
   }
 
-  buildTableHeader(): JSX.Element {
+  private buildTableHeader(): JSX.Element {
     const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
       const id = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}-${headingAttribute.attributeName}`;
       const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
@@ -205,7 +197,7 @@ export class Table extends React.Component<ITableProps, any> {
     );
   }
 
-  buildTableHeadingRowContent(
+  private buildTableHeadingRowContent(
     attributeValue: any,
     attributeName: string,
     tableCoordinate: string,
@@ -216,7 +208,7 @@ export class Table extends React.Component<ITableProps, any> {
       : <td key={tableCoordinate}>{convertUndefinedAndNullToEmptyString(attributeValue)}</td>;
   }
 
-  buildTableBody(): JSX.Element[] {
+  private buildTableBody(): JSX.Element[] {
     const tableData = this.props.tableState.data || this.props.initialTableData;
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
       const rowData: ITableRowData = tableData.byId[id];
@@ -262,7 +254,7 @@ export class Table extends React.Component<ITableProps, any> {
     });
   }
 
-  buildBlankSlate(): JSX.Element {
+  private buildBlankSlate(): JSX.Element {
     const { tableState } = this.props;
     const tableData = tableState && tableState.data || this.props.initialTableData;
     const {
@@ -291,14 +283,10 @@ export class Table extends React.Component<ITableProps, any> {
     return <BlankSlate {...blankSlatePropsToUse} />;
   }
 
-  hideSectionOnLoading() {
-    return this.props.tableState.isLoading ? { display: 'none' } : undefined;
-  }
-
-  buildNavigation(): JSX.Element {
+  private buildNavigation(): JSX.Element {
     const tableData = this.props.tableState && this.props.tableState.data || this.props.initialTableData;
 
-    return !this.props.noNavigation ? (
+    return !!this.props.navigation ? (
       <NavigationConnected
         {...this.props.navigation}
         totalEntries={tableData.totalEntries}

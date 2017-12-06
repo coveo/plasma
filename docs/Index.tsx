@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { render as ReactDOMRender } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReactVaporStore } from './ReactVaporStore';
+import { render as ReactDOMRender } from 'react-dom';
+import './style.scss';
+import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { SyncFeedbackExample } from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
@@ -40,8 +42,6 @@ import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample
 import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
 import { MultilineInputExamples } from '../src/components/multilineInput/examples/MultilineInputExamples';
 import { TooltipExamples } from '../src/components/tooltip/examples/TooltipExamples';
-import './style.scss';
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
@@ -57,6 +57,10 @@ import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamp
 import { InputExamples } from '../src/components/input/examples/InputExamples';
 import { LinkSvgExamples } from '../src/components/svg/examples/LinkSvgExamples';
 import { SvgExamples } from '../src/components/svg/examples/SvgExamples';
+import { TitleExamples } from '../src/components/title/examples/TitleExamples';
+import { BreadcrumbsExamples } from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
+import { BasicHeaderExamples } from '../src/components/headers/examples/BasicHeaderExamples';
+import { BreadcrumbHeaderExample } from '../src/components/headers/examples/BreadcrumbHeaderExample';
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
 
 class App extends React.Component<any, any> {
@@ -75,10 +79,14 @@ class App extends React.Component<any, any> {
           </div>
           <SvgExamples />
           <LinkSvgExamples />
+          <TitleExamples />
           <ContentExamples />
           <ItemBoxExamples />
           <ListBoxExamples />
           <ButtonExamples />
+          <BreadcrumbsExamples />
+          <BasicHeaderExamples />
+          <BreadcrumbHeaderExample />
           <DropdownSearchExamples />
           <FlatSelectExamples />
           <TooltipExamples />

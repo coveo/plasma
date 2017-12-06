@@ -134,7 +134,6 @@ export class TableExamples extends React.Component<any, any> {
             blankSlates={{
               noResults: { title: 'No results!' }
             }}
-            noNavigation
           />
         </div>
         <div className='form-group'>
@@ -166,7 +165,6 @@ export class TableExamples extends React.Component<any, any> {
               noResults: { title: 'Oh my oh my, nothing to see here :(!' }
             }}
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
-            noNavigation
           />
         </div>
         <div className='form-group'>

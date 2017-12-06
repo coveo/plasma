@@ -1,4 +1,3 @@
-import { TableSortingOrder } from './TableConstants';
 import { ITableHeaderCellOwnProps, ITableHeaderCellProps, TableHeaderCell } from './TableHeaderCell';
 import { addHeaderCell, removeHeaderCell, sortFromHeaderCell } from './TableHeaderCellActions';
 import { ITableHeaderCellState } from './TableHeaderCellReducers';
@@ -11,7 +10,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderCellOwnP
   const headerCell: ITableHeaderCellState = state.tableHeaderCells[ownProps.id];
 
   return {
-    sorted: headerCell && headerCell.sorted || TableSortingOrder.UNSORTED,
+    sorted: headerCell && headerCell.sorted,
   };
 };
 

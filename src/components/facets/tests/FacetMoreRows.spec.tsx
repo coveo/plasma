@@ -65,43 +65,6 @@ describe('Facets', () => {
       expect(facetMoreRows.find(FilterBox).props().id).toBe('filter-' + facet);
     });
 
-    it('should add a listener on document on mount and remove it on unmount if prop onDocumentClick is set', () => {
-      let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { onDocumentClick: onDocumentClickSpy });
-
-      facetMoreRows.mount();
-      $('body').click();
-      expect(onDocumentClickSpy).not.toHaveBeenCalled();
-
-      facetMoreRows.unmount();
-      facetMoreRows.setProps(newFacetAttributes);
-      facetMoreRows.mount();
-      $('body').click();
-      expect(onDocumentClickSpy.calls.count()).toBe(1);
-
-      facetMoreRows.unmount();
-      $('body').click();
-      expect(onDocumentClickSpy.calls.count()).toBe(1);
-    });
-
-    it('should not call onDocumentClick when prop is set and clicking on "facet-search"', () => {
-      let onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
-      let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { onDocumentClick: onDocumentClickSpy });
-
-      facetMoreRows = mount(
-        <FacetMoreRows
-          {...newFacetAttributes}
-        />,
-        { attachTo: document.getElementById('App') }
-      );
-
-      (document.getElementsByClassName('facet-search')[0] as HTMLDivElement).click();
-      expect(onDocumentClickSpy).not.toHaveBeenCalled();
-
-      document.getElementById('App').click();
-      expect(onDocumentClickSpy).toHaveBeenCalled();
-    });
-
     it('should focus on the filter box input when opening', () => {
       let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { isOpened: true });
 
@@ -109,6 +72,62 @@ describe('Facets', () => {
 
       facetMoreRows.setProps(newFacetAttributes);
       expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).toBe(document.activeElement as HTMLInputElement);
+    });
+  });
+
+  describe('<FacetMoreRows />', () => {
+    beforeEach(() => {
+      const otherElement: HTMLDivElement = document.createElement('div');
+      otherElement.setAttribute('id', 'other');
+      document.body.appendChild(otherElement);
+    });
+
+    afterEach(() => document.getElementById('other').remove());
+
+    const clickOnOther = () => {
+      const evt = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: 20,
+      });
+      document.getElementById('other').dispatchEvent(evt);
+    };
+
+    it('should not add a listener on document on mount if onDocumentClick is set but the dropdown is not opened', () => {
+      const onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+      const props = _.extend({}, basicFacetMoreRowsAttributes, { onDocumentClick: onDocumentClickSpy });
+
+      mount(<FacetMoreRows {...props} />, { attachTo: document.getElementById('App') });
+      clickOnOther();
+
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+    });
+
+    it('should add a listener on document on mount and remove it on unmount if prop onDocumentClick is set', () => {
+      const onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+      const props = _.extend({}, basicFacetMoreRowsAttributes, { isOpened: true, onDocumentClick: onDocumentClickSpy });
+
+      const facetMoreRows = mount(<FacetMoreRows {...props} />, { attachTo: document.getElementById('App') });
+      clickOnOther();
+      expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
+
+      facetMoreRows.unmount();
+      clickOnOther();
+      expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onDocumentClick when prop is set and clicking on "facet-search"', () => {
+      const onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+      const props = _.extend({}, basicFacetMoreRowsAttributes, { isOpened: true, onDocumentClick: onDocumentClickSpy });
+
+      mount(<FacetMoreRows {...props} />, { attachTo: document.getElementById('App') });
+
+      (document.getElementsByClassName('facet-search')[0] as HTMLDivElement).click();
+      expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+      clickOnOther();
+      expect(onDocumentClickSpy).toHaveBeenCalled();
     });
   });
 });

@@ -40,7 +40,7 @@ const mapDispatchToProps = (
   onDidMount: () => {
     let initialPerPage = ownProps.navigation && ownProps.navigation.perPageNumbers && ownProps.navigation.perPageNumbers[0];
     initialPerPage = !_.isUndefined(initialPerPage) ? initialPerPage : PER_PAGE_NUMBERS[0];
-    initialPerPage = !ownProps.noNavigation ? initialPerPage : ownProps.initialTableData.allIds.length;
+    initialPerPage = !ownProps.navigation ? initialPerPage : ownProps.initialTableData.allIds.length;
     dispatch(
       addTable(
         ownProps.id,

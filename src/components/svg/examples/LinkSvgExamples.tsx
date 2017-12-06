@@ -13,7 +13,7 @@ export class LinkSvgExamples extends React.Component<any, any> {
 
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>LinkSvg List</h1>
+        <h1 className='text-blue mb1 bold'>LinkSvg List</h1>
         <div className='form-group'>
           <label className='form-control-label'>Default LinkSvg</label>
           <div className='form-control'>
@@ -30,6 +30,12 @@ export class LinkSvgExamples extends React.Component<any, any> {
           <label className='form-control-label'>LinkSvg with a custom svg</label>
           <div className='form-control'>
             <LinkSvg {..._.extend({}, defaultProps, { svg: defaultSvgProps }) } />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>LinkSvg with a tooltip and without a href</label>
+          <div className='form-control'>
+            <LinkSvg tooltip={defaultTooltipProps} svg={defaultSvgProps} />
           </div>
         </div>
       </div>

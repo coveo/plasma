@@ -19,11 +19,7 @@ export class TableHeader extends React.Component<ITableHeaderProps, any> {
       return (
         <TableHeaderCellClass
           key={`th-${column.id || index}`}
-          id={column.id}
-          title={column.title}
-          className={column.className}
-          tableRefForSort={column.tableRefForSort}
-          onClickCallback={column.onClickCallback}
+          {...column}
         />
       );
     });
