@@ -111,6 +111,49 @@ export class TableExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
+              <div className='form-group'>
+          <label className='form-control-label'>Table in server mode (the data is fake and thus won't change much, have a look at your network tab to see what is happening under the hood)</label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            serverMode={{
+              url: (tableState: ITableState) => { return `https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json?page=${tableState.page}&perPage=${tableState.perPage}&predicate1=${tableState.predicates.attribute4}&predicate2=${tableState.predicates.attribute3}&filter=${tableState.filter}&sortOrder=${tableState.sortState.order}&sortAttribute=${tableState.sortState.attribute}`; },
+              rawDataToTableData,
+            }}
+            headingAttributes={[
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+            ]}
+            actionBar={{
+              extraContainerClasses: ['mod-border-top'],
+            }}
+            predicates={[
+              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
+            ]}
+            filter={{ containerClasses: ['ml1'] }}
+            blankSlates={{
+              noResults: { title: 'Oh no! No results!' },
+              noResultsOnError: { title: 'i am on error!' },
+            }}
+            navigation={{ perPageNumbers }}
+          />
+        </div>
         <div className='form-group'>
           <label className='form-control-label'>Simplest Table
           </label>
@@ -165,50 +208,6 @@ export class TableExamples extends React.Component<any, any> {
               noResults: { title: 'Oh my oh my, nothing to see here :(!' }
             }}
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
-          />
-        </div>
-        <div className='form-group'>
-          <label className='form-control-label'>Table in server mode (the data is fake and thus won't change much, have a look at your network tab to see what is happening under the hood)</label>
-          <TableConnected
-            id={_.uniqueId('react-vapor-table')}
-            serverMode={{
-              url: (tableState: ITableState) => { return `https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json?page=${tableState.page}&perPage=${tableState.perPage}&predicate1=${tableState.predicates.attribute4}&predicate2=${tableState.predicates.attribute3}&filter=${tableState.filter}&sortOrder=${tableState.sortState.order}&sortAttribute=${tableState.sortState.attribute}`; },
-              rawDataToTableData,
-            }}
-            initialTableData={tableData}
-            headingAttributes={[
-              {
-                attributeName: 'attribute1',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute4',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute3',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-            ]}
-            actionBar={{
-              extraContainerClasses: ['mod-border-top'],
-            }}
-            predicates={[
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
-            ]}
-            filter={{ containerClasses: ['ml1'] }}
-            blankSlates={{
-              noResults: { title: 'Oh no! No results!' },
-              noResultsOnError: { title: 'i am on error!' },
-            }}
-            navigation={{ perPageNumbers }}
           />
         </div>
         {/* <div className='form-group'>

@@ -29,8 +29,9 @@ export interface ITableDispatchProps {
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
   const tableState: ITableState = state.tables[ownProps.id];
+  const initialLoad = _.findWhere(state.loadings, { id: ownProps.id });
 
-  return { tableState: { ...tableState } };
+  return { tableState, isInitialLoad: !!(initialLoad && initialLoad.isOn) };
 };
 
 const mapDispatchToProps = (
@@ -40,7 +41,7 @@ const mapDispatchToProps = (
   onDidMount: () => {
     let initialPerPage = ownProps.navigation && ownProps.navigation.perPageNumbers && ownProps.navigation.perPageNumbers[0];
     initialPerPage = !_.isUndefined(initialPerPage) ? initialPerPage : PER_PAGE_NUMBERS[0];
-    initialPerPage = !ownProps.navigation ? initialPerPage : ownProps.initialTableData.allIds.length;
+    initialPerPage = ownProps.navigation ? initialPerPage : ownProps.initialTableData.allIds.length;
     dispatch(
       addTable(
         ownProps.id,

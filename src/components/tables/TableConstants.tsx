@@ -9,6 +9,7 @@ export enum TableSortingOrder {
 export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0, });
 
 export const TABLE_PREDICATE_DEFAULT_VALUE = 'ALL';
+export const TOGGLE_ARROW_CELL_COUNT = 1;
 
 export const TABLE_ID_PREFIX = 'react-vapor-table-';
 export const TABLE_PREDICATE_ID_PREFIX = 'predicate-';

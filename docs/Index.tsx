@@ -69,6 +69,7 @@ class App extends React.Component<any, any> {
     return (
       <Provider store={ReactVaporStore}>
         <div className='coveo-form'>
+          <TableExamples />
           <div className='form-group'>
             <label className='form-control-label'>
               My list of members
@@ -133,7 +134,6 @@ class App extends React.Component<any, any> {
           <RadioExamples />
           <CheckboxExamples />
           <ChildFormExamples />
-          <TableExamples />
         </div>
       </Provider>
     );
