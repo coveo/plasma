@@ -5,7 +5,7 @@ const {
   ASCENDING,
   DESCENDING,
   UNSORTED,
-  } = TableSortingOrder;
+} = TableSortingOrder;
 
 export const getNextTableSortingOrder = (sortedState: TableSortingOrder): TableSortingOrder =>
   _.contains([UNSORTED, DESCENDING], sortedState)

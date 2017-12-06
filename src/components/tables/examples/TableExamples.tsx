@@ -111,7 +111,7 @@ export class TableExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
-              <div className='form-group'>
+        <div className='form-group'>
           <label className='form-control-label'>Table in server mode (the data is fake and thus won't change much, have a look at your network tab to see what is happening under the hood)</label>
           <TableConnected
             id={_.uniqueId('react-vapor-table')}

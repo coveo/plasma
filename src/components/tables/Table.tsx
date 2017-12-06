@@ -23,7 +23,7 @@ import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import { NavigationConnected } from '../navigation/NavigationConnected';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
-import {Loading} from '../loading/Loading';
+import { Loading } from '../loading/Loading';
 import * as classNames from 'classnames';
 
 export interface IData {
@@ -116,7 +116,8 @@ export class Table extends React.Component<ITableProps, any> {
       this.updateCountForLoadingBehavior += 1;
     } else {
       // used for proper loading behavior
-      // first update occurs on mount, and second update occurs after the real data has loaded in the table
+      // the first update occurs after mount,
+      // and the second update occurs after the real data has loaded in the table
       // after which the initial load is completed
       this.isInitialLoad = false;
     }
@@ -331,6 +332,7 @@ export class Table extends React.Component<ITableProps, any> {
   render() {
     const tableClasses = classNames(
       'mod-collapsible-rows',
+      'mod-align-header',
       {
         'mod-loading-content': !!(this.props.tableState && this.props.tableState.isLoading),
         'loading-component': this.isInitialLoad,
@@ -344,7 +346,7 @@ export class Table extends React.Component<ITableProps, any> {
           <tbody className='loading-row'>
             <tr>
               <td colSpan={this.props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
-              <Loading />
+                <Loading />
               </td>
             </tr>
           </tbody>
