@@ -172,7 +172,6 @@ export class Table extends React.Component<ITableProps, any> {
         const containerClasses = i ? ['ml1'] : [''];
         return (
           <DropdownSearchConnected
-            turnOffSearch={true}
             {...predicate.props}
             key={predicateId}
             fixedPrepend={predicate.attributeNameFormatter(predicate.attributeName)}
