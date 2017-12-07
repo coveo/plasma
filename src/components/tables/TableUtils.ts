@@ -12,8 +12,18 @@ export const getNextTableSortingOrder = (sortedState: TableSortingOrder): TableS
     ? ASCENDING
     : DESCENDING;
 
-export const getTableChildComponentId = (tableId: string, childComponent: TableChildComponent): string =>
-  `${tableId}${childComponent}`;
+export const getTableChildComponentId = (tableId: string, childComponent: TableChildComponent): string => {
+  switch (childComponent) {
+    case TableChildComponent.LOADING_NAVIGATION:
+      return `loading-${tableId}${TableChildComponent.NAVIGATION}`;
+    case TableChildComponent.PAGINATION:
+      return `pagination-${tableId}${TableChildComponent.NAVIGATION}`;
+    case TableChildComponent.PER_PAGE:
+      return `${tableId}${TableChildComponent.NAVIGATION}`;
+    default:
+      return `${tableId}${childComponent}`;
+  }
+};
 
 export const getTableLoadingIds = (tableId: string): string[] => ([
   tableId,

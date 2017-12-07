@@ -1,15 +1,15 @@
-import { ITableState, ITablesState } from './TableReducers';
+import { ITableState, ITableCompositeState } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent, DEFAULT_TABLE_DATA } from './TableConstants';
+import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent } from './TableConstants';
 import * as _ from 'underscore';
+import { contains } from 'underscore.string';
 import { ITableOwnProps, ITableHeadingAttribute } from './Table';
 import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
 import { getTableLoadingIds, getTableChildComponentId } from './TableUtils';
 import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
-import { setIsInError, modifyState } from './TableActions';
+import { modifyState } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
 import { unselectAllRows } from './TableRowActions';
-import * as $ from 'jquery';
 
 export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: any) => {
   dispatch(unselectAllRows(tableOwnProps.id));
@@ -27,20 +27,21 @@ export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps
   dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
 };
 
-export const defaultTableStateModifyer = (
+export const defaultTableStateModifier = (
   tableOwnProps: ITableOwnProps,
   shouldResetPage: boolean,
+  tableCompositeState: ITableCompositeState,
 ): ((tableState: ITableState) => ITableState) => {
-  return (tableState: ITableState) => {
-    const tableDataById = tableState.data.byId;
+  return (tableState: ITableState): ITableState => {
+    const tableDataById = tableCompositeState.data && tableCompositeState.data.byId || {};
 
     let totalPages: number;
     let totalEntries: number;
-    let nextDisplayedIds = [...tableState.data.allIds];
+    let nextDisplayedIds = tableCompositeState.data ? [...tableCompositeState.data.allIds] : [];
 
     // predicates default logic
-    if (!_.isEmpty(tableState.predicates)) {
-      _.pairs(tableState.predicates).forEach((keyValuePair: string[]) => {
+    if (!_.isEmpty(tableCompositeState.predicates)) {
+      _.pairs(tableCompositeState.predicates).forEach((keyValuePair: string[]) => {
         const attributeName = keyValuePair[0];
         const attributeValue = keyValuePair[1];
 
@@ -52,23 +53,14 @@ export const defaultTableStateModifyer = (
     }
 
     // filter default logic
-    if (tableState.filter) {
+    if (tableCompositeState.filter) {
       const filterDefault = (dataId: string): boolean => {
-        let shouldKeep = false;
-
-        tableOwnProps.headingAttributes.forEach((headingAttribute: ITableHeadingAttribute) => {
+        return tableOwnProps.headingAttributes.some((headingAttribute: ITableHeadingAttribute) => {
           const { attributeName, attributeFormatter } = headingAttribute;
           const attributeValue = tableDataById[dataId][attributeName];
           const attributeValueToUse = attributeFormatter ? attributeFormatter(attributeValue) : attributeValue;
-          shouldKeep =
-            shouldKeep
-            || attributeValueToUse
-              .toString()
-              .toLowerCase()
-              .indexOf(tableState.filter.toLowerCase()) > -1;
+          return contains(attributeValueToUse.toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
         });
-
-        return shouldKeep;
       };
 
       const filterMethod = tableOwnProps.filterMethod
@@ -79,22 +71,17 @@ export const defaultTableStateModifyer = (
     }
 
     totalEntries = nextDisplayedIds.length;
-    totalPages = Math.ceil(totalEntries / tableState.perPage);
-
-    // pagination logic
-    const startingIndex = tableState.page * tableState.perPage;
-    const endingIndex = startingIndex + tableState.perPage;
-    nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
+    totalPages = Math.ceil(totalEntries / tableCompositeState.perPage);
 
     // sort default logic
-    const { sortState } = tableState;
+    const { sortState } = tableCompositeState;
     if (sortState && sortState.order !== TableSortingOrder.UNSORTED) {
       const defaultSortBy = (displayedId: string) => {
         const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
         return cleanAttributeValue.toString().toLowerCase();
       };
-
-      const sortByMethod = _.findWhere(tableOwnProps.headingAttributes, { attributeName: sortState.attribute }).sortByMethod || defaultSortBy;
+      const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, { attributeName: sortState.attribute });
+      const sortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod || defaultSortBy;
 
       nextDisplayedIds = _.sortBy(nextDisplayedIds, sortByMethod);
 
@@ -102,6 +89,11 @@ export const defaultTableStateModifyer = (
         nextDisplayedIds.reverse();
       }
     }
+
+    // pagination logic
+    const startingIndex = tableCompositeState.page * tableCompositeState.perPage;
+    const endingIndex = startingIndex + tableCompositeState.perPage;
+    nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
 
     return {
       ...tableState,
@@ -111,41 +103,14 @@ export const defaultTableStateModifyer = (
         totalEntries,
         totalPages,
       },
-      page: shouldResetPage ? 0 : tableState.page,
     };
   };
 };
 
-export const defaultTableStateModifyerThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean) => {
+export const defaultTableStateModifierThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
   return (dispatch: any) => {
     dispatchPreTableStateModification(tableOwnProps, dispatch);
-    dispatch(modifyState(tableOwnProps.id, defaultTableStateModifyer(tableOwnProps, shouldResetPage)));
+    dispatch(modifyState(tableOwnProps.id, defaultTableStateModifier(tableOwnProps, shouldResetPage, tableCompositeState), shouldResetPage));
     dispatchPostTableStateModification(tableOwnProps, dispatch);
-  };
-};
-
-export const serverTableStateModifyerThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean) => {
-  return (dispatch: any, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
-    dispatchPreTableStateModification(tableOwnProps, dispatch);
-    $.get(tableOwnProps.serverMode.url(getState().tables[tableOwnProps.id], tableOwnProps))
-      .done(data => {
-        dispatch(
-          modifyState(
-            tableOwnProps.id,
-            (tableState: ITableState) =>
-              ({ ...tableState, data: tableOwnProps.serverMode.rawDataToTableData(data), page: shouldResetPage ? 0 : tableState.page }),
-          )
-        );
-      })
-      .fail(error => {
-        dispatch(setIsInError(tableOwnProps.id, true));
-        dispatch(modifyState(
-          tableOwnProps.id,
-          (tableState: ITableState) => ({ ...tableState, data: DEFAULT_TABLE_DATA }),
-        ));
-      })
-      .always(() => {
-        dispatchPostTableStateModification(tableOwnProps, dispatch);
-      });
   };
 };

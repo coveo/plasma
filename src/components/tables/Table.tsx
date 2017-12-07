@@ -13,7 +13,7 @@ import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
 import { LastUpdatedConnected } from '../lastUpdated/LastUpdatedConnected';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ITableState, ITableData } from './TableReducers';
+import { ITableCompositeState, ITableData } from './TableReducers';
 import { ITableDispatchProps } from './TableConnected';
 import { getTableChildComponentId } from './TableUtils';
 import { TableChildComponent, TOGGLE_ARROW_CELL_COUNT, DEFAULT_TABLE_DATA } from './TableConstants';
@@ -62,42 +62,31 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
   actionBar?: IActionBarProps;
   getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
-  blankSlates: {
-    noResults: IBlankSlateProps;
-    noResultsOnFilterOrPredicates?: IBlankSlateProps;
-    noResultsOnError?: IBlankSlateProps;
-  };
+  blankSlateDefault: IBlankSlateProps;
+  blankSlateNoResultsOnAction?: IBlankSlateProps;
+  blankSlateOnError?: IBlankSlateProps;
   filter?: IFilterBoxProps;
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   predicates?: ITablePredicate[];
   navigation?: INavigationChildrenProps;
   lastUpdatedLabel?: string;
-
-  // modes
-  serverMode?: {
-    url: (tableState?: ITableState, ownProps?: ITableOwnProps) => string;
-    rawDataToTableData: (data: any, ownProps?: ITableOwnProps, tableState?: ITableState) => ITableData;
-  };
-  customMode?: {
-    thunkActionCreator: (tableOwnProps?: ITableOwnProps, shouldResetPage?: boolean) => ((dispatch: any, getState?: () => any) => void);
-  };
+  manual?: (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => ((dispatch: any, getState?: () => any) => void);
 };
 
-export interface ITableStateProps {
-  tableState?: ITableState;
-  isInitialLoad?: boolean;
+export interface ItableCompositeStateProps {
+  readonly tableCompositeState?: ITableCompositeState;
 };
 
-export interface ITableProps extends ITableOwnProps, ITableStateProps, Partial<ITableDispatchProps> { }
+export interface ITableProps extends ITableOwnProps, ItableCompositeStateProps, Partial<ITableDispatchProps> { }
 
 export class Table extends React.Component<ITableProps, any> {
-  static defaultProps: Partial<ITableProps> = {
-    tableState: {} as any,
-    initialTableData: DEFAULT_TABLE_DATA,
-  };
-
   private updateCountForLoadingBehavior: number = 0;
   private isInitialLoad: boolean;
+
+  static defaultProps = {
+    tableCompositeState: {sortState: {}} as any,
+    initialTableData: DEFAULT_TABLE_DATA,
+  } as Partial<ITableOwnProps>;
 
   constructor(props: ITableProps) {
     super(props);
@@ -124,14 +113,12 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   componentWillReceiveProps(nextProps: ITableProps) {
-    const { tableState } = this.props;
+    const { tableCompositeState } = this.props;
 
-    if (this.hasTableStateChanged(tableState, nextProps.tableState)) {
-      const shouldResetPage =
-        tableState.page === nextProps.tableState.page
-        || tableState.perPage !== nextProps.tableState.perPage;
+    if (this.hastableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
+      const shouldResetPage = tableCompositeState.page === nextProps.tableCompositeState.page;
 
-      this.props.onModifyData(shouldResetPage);
+      this.props.onModifyData(shouldResetPage, nextProps.tableCompositeState);
     }
   }
 
@@ -141,17 +128,17 @@ export class Table extends React.Component<ITableProps, any> {
     }
   }
 
-  private hasTableStateChanged(currentTableState: ITableState, nextTableState: ITableState): boolean {
-    return !!currentTableState && (
-      currentTableState.filter !== nextTableState.filter
-      || currentTableState.perPage !== nextTableState.perPage
-      || currentTableState.page !== nextTableState.page
-      || currentTableState.sortState.attribute !== nextTableState.sortState.attribute
-      || currentTableState.sortState.order !== nextTableState.sortState.order
-      || (_.isEmpty(currentTableState.predicates) && !_.isEmpty(nextTableState.predicates))
+  private hastableCompositeStateChanged(currentTableCompositeState: ITableCompositeState, nextTableCompositeState: ITableCompositeState): boolean {
+    return !!currentTableCompositeState && (
+      currentTableCompositeState.filter !== nextTableCompositeState.filter
+      || currentTableCompositeState.perPage !== nextTableCompositeState.perPage
+      || currentTableCompositeState.page !== nextTableCompositeState.page
+      || currentTableCompositeState.sortState.attribute !== nextTableCompositeState.sortState.attribute
+      || currentTableCompositeState.sortState.order !== nextTableCompositeState.sortState.order
+      || (_.isEmpty(currentTableCompositeState.predicates) && !_.isEmpty(nextTableCompositeState.predicates))
       || _.some(
-        currentTableState.predicates,
-        (attributeValue: any, attributeName: string) => attributeValue !== nextTableState.predicates[attributeName],
+        currentTableCompositeState.predicates,
+        (attributeValue: any, attributeName: string) => attributeValue !== nextTableCompositeState.predicates[attributeName],
       )
     );
   }
@@ -168,8 +155,9 @@ export class Table extends React.Component<ITableProps, any> {
 
     const predicatesConnected: JSX.Element[] = actionBar && predicates
       ? predicates.map((predicate: ITablePredicate, i: number) => {
-        const predicateId = `${getTableChildComponentId(this.props.id, TableChildComponent.PREDICATE)}-${predicate.attributeName}`;
+        const predicateId = `${getTableChildComponentId(this.props.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
         const containerClasses = i ? ['ml1'] : [''];
+
         return (
           <DropdownSearchConnected
             {...predicate.props}
@@ -202,18 +190,18 @@ export class Table extends React.Component<ITableProps, any> {
 
   private buildTableHeader(): JSX.Element {
     const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
-      const id = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}-${headingAttribute.attributeName}`;
+      const id = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}${headingAttribute.attributeName}`;
       const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
       const tableRefForSort = !!headingAttribute.sort
         ? { tableId: this.props.id, attributeToSort: headingAttribute.attributeName }
         : undefined;
 
-      return { id, title, tableRefForSort };
+      return { id, title, ...tableRefForSort };
     });
 
     const headerClass = classNames(
       'mod-no-border-top',
-      { 'mod-deactivate-pointer': !!this.props.tableState.isLoading }
+      { 'mod-deactivate-pointer': !!this.props.tableCompositeState.isLoading }
     );
 
     return (
@@ -236,12 +224,12 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   private buildTableBody(): JSX.Element[] {
-    const tableData = this.props.tableState.data || this.props.initialTableData;
+    const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
       const rowData: ITableRowData = tableData.byId[id];
-      const rowWrapperId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}-${rowData.id}`;
-      const headingAndCollapsibleId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}-${rowData.id}`;
-      const collapsibleRowKey = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}-${rowData.id}`;
+      const rowWrapperId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}${rowData.id}`;
+      const headingAndCollapsibleId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}${rowData.id}`;
+      const collapsibleRowKey = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}${rowData.id}`;
       const collapsibleData = this.props.collapsibleFormatter && this.props.collapsibleFormatter(rowData, this.props);
 
       const tableHeadingRowContent = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
@@ -261,7 +249,7 @@ export class Table extends React.Component<ITableProps, any> {
         )
         : null;
 
-      const tableRowWrapperClasses = classNames({ 'table-body-loading': !!this.props.tableState.isLoading });
+      const tableRowWrapperClasses = classNames({ 'table-body-loading': !!this.props.tableCompositeState.isLoading });
       return (
         <TableRowWrapper key={rowWrapperId} className={tableRowWrapperClasses}>
           <TableHeadingRowConnected
@@ -281,35 +269,34 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   private buildBlankSlate(): JSX.Element {
-    const { tableState } = this.props;
-    const tableData = tableState.data || this.props.initialTableData;
+    const { tableCompositeState } = this.props;
+    const tableData = tableCompositeState.data || this.props.initialTableData;
     const {
-      noResults,
-      noResultsOnFilterOrPredicates,
-      noResultsOnError,
-    } = this.props.blankSlates;
+      blankSlateDefault,
+      blankSlateNoResultsOnAction,
+      blankSlateOnError,
+    } = this.props;
 
     let blankSlatePropsToUse: IBlankSlateProps;
 
     if (tableData.displayedIds.length
-      || _.isEmpty(this.props.blankSlates)
-      || this.props.tableState.isLoading) {
+      || this.props.tableCompositeState.isLoading) {
       return null;
     }
 
-    if (tableState.filter || _.some(tableState.predicates, (value: any) => !_.isUndefined(value))) {
-      blankSlatePropsToUse = noResultsOnFilterOrPredicates || noResults;
-    } else if (tableState.isInError) {
-      blankSlatePropsToUse = noResultsOnError || noResults;
+    if (tableCompositeState.filter || _.some(tableCompositeState.predicates, (value: any) => !_.isUndefined(value))) {
+      blankSlatePropsToUse = blankSlateNoResultsOnAction || blankSlateDefault;
+    } else if (tableCompositeState.isInError) {
+      blankSlatePropsToUse = blankSlateOnError || blankSlateDefault;
     } else {
-      blankSlatePropsToUse = noResults;
+      blankSlatePropsToUse = blankSlateDefault;
     }
 
     return <BlankSlate {...blankSlatePropsToUse} />;
   }
 
   private buildNavigation(): JSX.Element {
-    const tableData = this.props.tableState.data || this.props.initialTableData;
+    const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
 
     return !!this.props.navigation ? (
       <NavigationConnected
@@ -317,8 +304,8 @@ export class Table extends React.Component<ITableProps, any> {
         totalEntries={tableData.totalEntries}
         totalPages={tableData.totalPages}
         id={getTableChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
-        loadingIds={[`loading-${getTableChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}`]}
-        currentPage={this.props.tableState.page} />
+        loadingIds={[getTableChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)]}
+        />
     ) : null;
   }
 
@@ -333,7 +320,7 @@ export class Table extends React.Component<ITableProps, any> {
       'mod-collapsible-rows',
       'mod-align-header',
       {
-        'mod-loading-content': !!(this.props.tableState && this.props.tableState.isLoading),
+        'mod-loading-content': !!(this.props.tableCompositeState && this.props.tableCompositeState.isLoading),
         'loading-component': this.isInitialLoad,
       },
     );

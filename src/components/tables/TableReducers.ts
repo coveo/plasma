@@ -1,20 +1,16 @@
-import { getNextTableSortingOrder } from './TableUtils';
+import { getTableChildComponentId } from './TableUtils';
 import { TableActions } from './TableActions';
-import { TableRowActions } from './TableRowActions';
 import { IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { DropdownSearchActions } from '../dropdownSearch/DropdownSearchActions';
-import { FilterActions } from '../filterBox/FilterBoxActions';
-import { PaginationActions } from '../navigation/pagination/NavigationPaginationActions';
-import { PerPageActions } from '../navigation/perPage/NavigationPerPageActions';
 import * as _ from 'underscore';
 import {
   DEFAULT_TABLE_DATA,
   TableSortingOrder,
-  TABLE_PREDICATE_ID_PREFIX,
+  TableChildComponent,
 } from './TableConstants';
 import { LoadingActions } from '../loading/LoadingActions';
 import { TableHeaderCellActions } from './TableHeaderCellActions';
+import { ITablePredicate } from './Table';
 
 export interface ITableData {
   byId: {
@@ -36,7 +32,7 @@ export interface ITablesState {
 export type attributeName = any;
 export type attributeValue = any;
 
-export interface ITableState {
+export interface ITableCompositeState {
   id: string;
   data: ITableData;
   isInError: boolean;
@@ -44,7 +40,6 @@ export interface ITableState {
   filter: string;
   page: number;
   perPage: number;
-  selectedRowId: string;
   sortState: {
     attribute: attributeName;
     order: TableSortingOrder;
@@ -54,20 +49,28 @@ export interface ITableState {
   };
 }
 
+export interface ITableState {
+  id: string;
+  data: ITableData;
+  isInError: boolean;
+  isLoading: boolean;
+  filterId: string;
+  paginationId: string;
+  perPageId: string;
+  predicateIds: string[];
+  tableHeaderCellId: string;
+}
+
 export const tableInitialState: ITableState = {
   id: undefined,
   data: DEFAULT_TABLE_DATA,
   isInError: false,
   isLoading: false,
-  filter: '',
-  page: 0,
-  perPage: 10,
-  selectedRowId: '',
-  sortState: {
-    attribute: undefined,
-    order: TableSortingOrder.UNSORTED,
-  },
-  predicates: {},
+  paginationId: undefined,
+  perPageId: undefined,
+  filterId: undefined,
+  predicateIds: [],
+  tableHeaderCellId: undefined,
 };
 
 export const tablesInitialState: { [tableId: string]: ITableState; } = {};
@@ -77,48 +80,12 @@ export const tableReducer = (
   action: IReduxAction<IReduxActionsPayload>,
 ): ITableState => {
   switch (action.type) {
-    case PaginationActions.changePage:
-    case PaginationActions.reset:
-      return {
-        ...state,
-        page: action.payload.pageNb,
-      };
-    case PerPageActions.change:
-      return {
-        ...state,
-        perPage: action.payload.perPage,
-        page: 0,
-      };
+    case TableActions.modifyState:
+      return action.payload.TableStateModifier(state);
     case TableActions.inError:
       return {
         ...state,
         isInError: action.payload.isInError,
-      };
-    case TableActions.modifyState:
-      return action.payload.tableStateModifyer(state);
-    case FilterActions.filterThrough:
-      return {
-        ...state,
-        filter: action.payload.filterText,
-        page: 0,
-      };
-    case DropdownSearchActions.select:
-      // the attribute name related to the predicate is stored in the dropdown id as follows
-      // "<tableid-prefix><predicate-predix><attributeName>"
-      const attributeName = action.payload.id.split(TABLE_PREDICATE_ID_PREFIX)[1];
-      return {
-        ...state,
-        predicates: {
-          ...state.predicates,
-          [attributeName]: action.payload.addedSelectedOption.value,
-        },
-        page: 0,
-      };
-
-    case TableRowActions.select:
-      return {
-        ...state,
-        selectedRowId: action.payload.id,
       };
     case LoadingActions.turnOn:
       return {
@@ -130,17 +97,10 @@ export const tableReducer = (
         ...state,
         isLoading: false,
       };
-    case TableHeaderCellActions.sortFromHeaderCell:
-      const nextSortingOrder = action.payload.attributeToSort === state.sortState.attribute
-        ? getNextTableSortingOrder(state.sortState.order)
-        : TableSortingOrder.ASCENDING;
-
+    case TableHeaderCellActions.sort:
       return {
         ...state,
-        sortState: {
-          attribute: action.payload.attributeToSort,
-          order: nextSortingOrder,
-        },
+        tableHeaderCellId: action.payload.id,
       };
     default:
       return state;
@@ -155,12 +115,16 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
         [action.payload.id]: {
           ...tableInitialState,
           id: action.payload.id,
-          perPage: action.payload.initialPerPage,
           data: action.payload.initialTableData,
+          perPageId: getTableChildComponentId(action.payload.id, TableChildComponent.PER_PAGE),
+          paginationId: getTableChildComponentId(action.payload.id, TableChildComponent.PAGINATION),
+          filterId: getTableChildComponentId(action.payload.id, TableChildComponent.FILTER),
+          predicateIds: action.payload.predicates.map((predicate: ITablePredicate) =>
+            `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`),
         },
       };
     case TableActions.remove:
-      return _.omit(tablesState, '');
+      return _.omit(tablesState, action.payload.id);
   }
 
   // all child ids contain their related table id

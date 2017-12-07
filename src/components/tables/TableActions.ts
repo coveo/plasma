@@ -1,36 +1,35 @@
-import { IData } from './Table';
+import { ITablePredicate } from './Table';
 import { ITableState, ITableData } from './TableReducers';
 import { IReduxAction } from '../../utils/ReduxUtils';
 
-export enum MODIFY_SATE_TABLE { MODIFY_SATE_TABLE = 'MODIFY_STATE_TABLE' };
-
-export type ITableStateModifyer = (state: ITableState) => ITableState;
+export type ITableStateModifier = (state: ITableState) => ITableState;
 
 export const TableActions = {
   add: 'ADD_TABLE',
   remove: 'REMOVE_TABLE',
   inError: 'IN_ERROR_TABLE',
   toggleLock: 'TOGGLE_LOCK_TABLE',
-  modifyState: MODIFY_SATE_TABLE.MODIFY_SATE_TABLE,
+  modifyState: 'MODIFY_STATE_TABLE',
 };
 
 export interface ITableActionPayload {
   id: string;
   isInError?: boolean;
-  newTableData?: any;
   initialTableData?: ITableData;
   initialPerPage?: number;
   headingAttributeIds?: string[];
-  tableStateModifyer?: ITableStateModifyer;
+  predicates?: ITablePredicate[];
+  TableStateModifier?: ITableStateModifier;
+  shouldResetPage?: boolean;
 }
 
 export const addTable = (
   id: string,
   initialTableData: ITableData,
-  initialPerPage: number,
+  predicates: ITablePredicate[],
 ): IReduxAction<ITableActionPayload> => ({
   type: TableActions.add,
-  payload: { id, initialTableData, initialPerPage },
+  payload: { id, initialTableData, predicates: predicates || [] },
 });
 
 export const removeTable = (
@@ -50,13 +49,13 @@ export const setIsInError = (
 
 export const modifyState = (
   id: string,
-  tableStateModifyer: ITableStateModifyer,
-  newTableData?: IData,
+  TableStateModifier: ITableStateModifier,
+  shouldResetPage: boolean,
 ): IReduxAction<ITableActionPayload> => ({
-  type: MODIFY_SATE_TABLE.MODIFY_SATE_TABLE,
+  type: TableActions.modifyState,
   payload: {
     id,
-    tableStateModifyer,
-    newTableData,
+    TableStateModifier,
+    shouldResetPage,
   },
 });

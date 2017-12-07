@@ -12,7 +12,7 @@ export interface ITableHeaderProps extends React.ClassAttributes<TableHeader> {
 export class TableHeader extends React.Component<ITableHeaderProps, any> {
   render() {
     const columns: JSX.Element[] = _.map(this.props.columns, (column: ITableHeaderCellProps, index: number): JSX.Element => {
-      const TableHeaderCellClass = this.props.connectCell && column.tableRefForSort
+      const TableHeaderCellClass = this.props.connectCell && column.attributeToSort
         ? TableHeaderCellConnected
         : TableHeaderCell;
 

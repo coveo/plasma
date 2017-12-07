@@ -21,10 +21,11 @@ import { ITabGroupState } from './components/tab/TabReducers';
 import { IDropdownSearchState } from './components/dropdownSearch/DropdownSearchReducers';
 import { IToastsState } from './components/toast/ToastReducers';
 import { ITableHeaderCellsState } from './components/tables/TableHeaderCellReducers';
-import { ITableStateModifyer } from './components/tables/TableActions';
+import { ITableStateModifier } from './components/tables/TableActions';
 import { IDropdownOption } from './components/dropdownSearch/DropdownSearch';
 import { ITablesState, ITableData } from './components/tables/TableReducers';
 import { IFlatSelectState } from './components/flatSelect/FlatSelectReducers';
+import { ITablePredicate } from './components/tables/Table';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -78,8 +79,10 @@ export interface IReduxActionsPayload {
   attributeToSort?: string;
   initialTableData?: ITableData;
   initialPerPage?: number;
-  tableStateModifyer?: ITableStateModifyer;
+  TableStateModifier?: ITableStateModifier;
   totalEntries?: number;
   totalPages?: number;
   addedSelectedOption?: IDropdownOption;
+  predicates?: ITablePredicate[];
+  shouldResetPage?: boolean;
 }

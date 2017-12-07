@@ -2,6 +2,8 @@ import { IReduxAction } from '../../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../../ReactVapor';
 import { PaginationActions } from './NavigationPaginationActions';
 import * as _ from 'underscore';
+import { contains } from 'underscore.string';
+import { TableActions } from '../../tables/TableActions';
 
 export interface IPaginationState {
   id: string;
@@ -31,6 +33,10 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
         id: state.id,
         pageNb: action.payload.pageNb
       };
+    case TableActions.modifyState:
+      return contains(state.id, action.payload.id) && action.payload.shouldResetPage
+        ? { ...state, pageNb: 0 }
+        : state;
     default:
       return state;
   }

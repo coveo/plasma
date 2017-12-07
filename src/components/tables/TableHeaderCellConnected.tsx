@@ -1,4 +1,4 @@
-import { ITableHeaderCellOwnProps, ITableHeaderCellProps, TableHeaderCell } from './TableHeaderCell';
+import { ITableHeaderCellOwnProps, ITableHeaderCellProps, ITableHeaderCellDispatchProps, TableHeaderCell } from './TableHeaderCell';
 import { addHeaderCell, removeHeaderCell, sortFromHeaderCell } from './TableHeaderCellActions';
 import { ITableHeaderCellState } from './TableHeaderCellReducers';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
@@ -17,9 +17,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderCellOwnP
 const mapDispatchToProps = (
   dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
   ownProps: ITableHeaderCellOwnProps,
-) => ({
-  onMount: () => dispatch(addHeaderCell(ownProps.id, ownProps.tableRefForSort.tableId)),
-  onSort: () => dispatch(sortFromHeaderCell(ownProps.id, ownProps.tableRefForSort.tableId, ownProps.tableRefForSort.attributeToSort)),
+): ITableHeaderCellDispatchProps => ({
+  onMount: () => dispatch(addHeaderCell(ownProps.id, ownProps.attributeToSort, ownProps.tableId)),
+  onSort: () => dispatch(sortFromHeaderCell(ownProps.id, ownProps.attributeToSort, ownProps.tableId)),
   onUnmount: () => dispatch(removeHeaderCell(ownProps.id)),
 });
 

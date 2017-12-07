@@ -1,14 +1,15 @@
-// import { ITableOwnProps } from '../Table';
+import { ITableOwnProps } from '../Table';
 import { TableConnected } from '../TableConnected';
-// import { dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableThunkActionCreators';
+import { dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableThunkActionCreators';
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ITableData, ITableState } from '../TableReducers';
-// import { modifyState, setIsInError } from '../TableActions';
+import { ITableData, ITableState, ITablesState, ITableCompositeState } from '../TableReducers';
+import { modifyState, setIsInError } from '../TableActions';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { ITableRowData, ITableProps } from '../Table';
-import { TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
+import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
+import * as $ from 'jquery';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
@@ -48,7 +49,7 @@ const predicateOptionsAttribute3 = [
 const simplestTableData: ITableData = {
   byId: simplestTableDataById,
   allIds: _.keys(simplestTableDataById),
-  displayedIds: _.keys(simplestTableDataById).slice(0, perPageNumbers[0]),
+  displayedIds: _.keys(simplestTableDataById),
   totalEntries: _.keys(simplestTableDataById).length,
   totalPages: Math.ceil(_.keys(simplestTableDataById).length / perPageNumbers[0]),
 };
@@ -61,64 +62,68 @@ const tableData: ITableData = {
   totalPages: Math.ceil(_.keys(tableDataById).length / perPageNumbers[0]),
 };
 
-const rawDataToTableData = (data: any): ITableData => JSON.parse(data).entries.reduce((tableData: ITableData, entry: any, arr: any[]) => {
-  return {
-    byId: {
-      ...tableData.byId,
-      [entry.API]: {
-        id: entry.API,
-        attribute1: entry.API,
-        attribute3: entry.Category,
-        attribute4: entry.Description,
-      }
-    },
-    allIds: [...tableData.allIds, entry.API],
-    displayedIds: [...tableData.displayedIds, entry.API].slice(0, perPageNumbers[0]),
-    totalEntries: JSON.parse(data).count,
-    totalPages: Math.ceil(JSON.parse(data).count / perPageNumbers[0]),
-  };
-}, { byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0 });
+const rawDataToTableData = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState): ITableData => {
+  const newTableData = JSON.parse(data).entries.reduce((tableData: ITableData, entry: any, arr: any[]) => {
+    return {
+      byId: {
+        ...tableData.byId,
+        [entry.API]: {
+          id: entry.API,
+          attribute1: entry.API,
+          attribute3: entry.Category,
+          attribute4: entry.Description,
+        }
+      },
+      allIds: [...tableData.allIds, entry.API],
+      displayedIds: [...tableData.displayedIds, entry.API],
+      totalEntries: JSON.parse(data).count,
+      totalPages: Math.ceil(JSON.parse(data).count / perPageNumbers[0]),
+    };
+  }, DEFAULT_TABLE_DATA);
+  newTableData.displayedIds = newTableData.displayedIds.slice(tableCompositeState.perPage * tableCompositeState.page, tableCompositeState.perPage + (tableCompositeState.perPage * tableCompositeState.page));
+  return newTableData;
+};
 
-// const customModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean) => {
-//   return (dispatch: any, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
-//     dispatchPreTableStateModification(tableOwnProps, dispatch);
-//     $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')
-//       .done(data => {
-//         dispatch(
-//           modifyState(
-//             tableOwnProps.id,
-//             (tableState: ITableState) =>
-//               ({ ...tableState, data: rawDataToTableData(data), page: shouldResetPage ? 0 : tableState.page }),
-//           )
-//         );
-//         alert('Table update was a success!');
-//       })
-//       .fail(error => {
-//         dispatch(setIsInError(tableOwnProps.id, true));
-//         dispatch(modifyState(
-//           tableOwnProps.id,
-//           (tableState: ITableState) => ({ ...tableState, data: DEFAULT_TABLE_DATA }),
-//         ));
-//       })
-//       .always(() => {
-//         dispatchPostTableStateModification(tableOwnProps, dispatch);
-//         alert('The loading just turned off!');
-//       });
-//   };
-// };
+const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
+  return (dispatch: any, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
+    const currentTableState = getState().tables[tableOwnProps.id];
+    dispatchPreTableStateModification(tableOwnProps, dispatch);
+    $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')
+      .done(data => {
+        dispatch(
+          modifyState(
+            tableOwnProps.id,
+            (tableState: ITableState) =>
+              ({ ...tableState, data: rawDataToTableData(data, currentTableState, tableCompositeState) }),
+            shouldResetPage,
+          )
+        );
+      })
+      .fail(error => {
+        dispatch(setIsInError(tableOwnProps.id, true));
+        dispatch(modifyState(
+          tableOwnProps.id,
+          (tableState: ITableState) => ({ ...tableState, data: DEFAULT_TABLE_DATA }),
+          shouldResetPage,
+        ));
+      })
+      .always(() => {
+        dispatchPostTableStateModification(tableOwnProps, dispatch);
+      });
+  };
+};
 
 export class TableExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
         <div className='form-group'>
-          <label className='form-control-label'>Table in server mode (the data is fake and thus won't change much, have a look at your network tab to see what is happening under the hood)</label>
+          <label className='form-control-label'>
+            Table in manual mode (the data is fake and thus won't change much. Perform any side effects on table state modification.
+          </label>
           <TableConnected
             id={_.uniqueId('react-vapor-table')}
-            serverMode={{
-              url: (tableState: ITableState) => { return `https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json?page=${tableState.page}&perPage=${tableState.perPage}&predicate1=${tableState.predicates.attribute4}&predicate2=${tableState.predicates.attribute3}&filter=${tableState.filter}&sortOrder=${tableState.sortState.order}&sortAttribute=${tableState.sortState.attribute}`; },
-              rawDataToTableData,
-            }}
+            manual={manualModeThunk}
             headingAttributes={[
               {
                 attributeName: 'attribute1',
@@ -147,10 +152,7 @@ export class TableExamples extends React.Component<any, any> {
               { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
             ]}
             filter={{ containerClasses: ['ml1'] }}
-            blankSlates={{
-              noResults: { title: 'Oh no! No results!' },
-              noResultsOnError: { title: 'i am on error!' },
-            }}
+            blankSlateDefault={{ title: 'No results here!' }}
             navigation={{ perPageNumbers }}
           />
         </div>
@@ -174,9 +176,7 @@ export class TableExamples extends React.Component<any, any> {
                 titleFormatter: _.identity,
               },
             ]}
-            blankSlates={{
-              noResults: { title: 'No results!' }
-            }}
+            blankSlateDefault={{ title: 'No results!' }}
           />
         </div>
         <div className='form-group'>
@@ -204,55 +204,11 @@ export class TableExamples extends React.Component<any, any> {
               },
             ]}
             filter={{}}
-            blankSlates={{
-              noResults: { title: 'Oh my oh my, nothing to see here :(!' }
-            }}
+            blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
           />
         </div>
-        {/* <div className='form-group'>
-          <label className='form-control-label'>
-            Table in custom mode (the data is fake and thus won't change much. Perform any side effects on table state modification.
-          </label>
-          <TableConnected
-            id={_.uniqueId('react-vapor-table')}
-            customMode={{ thunkActionCreator: customModeThunk }}
-            initialTableData={tableData}
-            headingAttributes={[
-              {
-                attributeName: 'attribute1',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute4',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute3',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-            ]}
-            actionBar={{
-              extraContainerClasses: ['mod-border-top'],
-            }}
-            predicates={[
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
-            ]}
-            filter={{ containerClasses: ['ml1'] }}
-            blankSlates={{
-              noResults: { title: 'Oh no! No results!' },
-              noResultsOnError: { title: 'i am on error!' },
-            }}
-            navigation={{ perPageNumbers }}
-          />
-        </div> */}
+
         <div className='form-group'>
           <label className='form-control-label'>Complex Table in default mode</label>
           <TableConnected
@@ -277,12 +233,12 @@ export class TableExamples extends React.Component<any, any> {
                 enabled: true
               }, {
                 name: 'action2',
-                trigger: () => alert('we are at page ' + (tableProps.tableState.page + 1)),
+                trigger: () => alert('we are at page ' + (tableProps.tableCompositeState.page + 1)),
                 enabled: true
               },
               {
                 name: 'action3',
-                trigger: () => alert('value in your filter box is: ' + (tableProps.tableState.filter || 'empty (add something and retry)')),
+                trigger: () => alert('value in your filter box is: ' + (tableProps.tableCompositeState.filter || 'empty (add something and retry)')),
                 enabled: true
               }])}
             headingAttributes={[
@@ -313,10 +269,8 @@ export class TableExamples extends React.Component<any, any> {
               { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
             ]}
             filter={{ containerClasses: ['ml1'] }}
-            blankSlates={{
-              noResults: { title: 'Oh no! No results!' },
-              noResultsOnFilterOrPredicates: { title: 'Oh no, too much filtering!' }
-            }}
+            blankSlateDefault={{ title: 'Oh no! No results!' }}
+            blankSlateNoResultsOnAction={{ title: 'Oh no, too much filtering!' }}
             navigation={{ perPageNumbers }}
           />
         </div>

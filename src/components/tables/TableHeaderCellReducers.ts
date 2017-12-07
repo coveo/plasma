@@ -9,6 +9,7 @@ export interface ITableHeaderCellState {
   id: string;
   tableId: string;
   sorted: TableSortingOrder;
+  attributeToSort?: string;
 }
 
 export interface ITableHeaderCellsState {
@@ -19,6 +20,7 @@ export const tableHeaderCellInitialState: ITableHeaderCellState = {
   id: undefined,
   tableId: undefined,
   sorted: TableSortingOrder.UNSORTED,
+  attributeToSort: undefined,
 };
 
 export const tableHeaderCellsInitialState: ITableHeaderCellsState = {};
@@ -33,11 +35,12 @@ export const tableHeaderCellReducer = (
         id: action.payload.id,
         tableId: action.payload.tableId,
         sorted: TableSortingOrder.UNSORTED,
+        attributeToSort: action.payload.attributeToSort,
       };
-    case TableHeaderCellActions.sortFromHeaderCell:
+    case TableHeaderCellActions.sort:
       if (state.id !== action.payload.id) {
         return state.tableId === action.payload.tableId
-          ? { ...state, sorted: TableSortingOrder.UNSORTED }
+          ? { ...state, sorted: TableSortingOrder.UNSORTED, attributeToSort: action.payload.attributeToSort }
           : state;
       }
 
@@ -59,7 +62,7 @@ export const tableHeaderCellsReducer = (
       };
     case TableHeaderCellActions.remove:
       return _.omit(state, action.payload.id);
-    case TableHeaderCellActions.sortFromHeaderCell:
+    case TableHeaderCellActions.sort:
       return _.mapObject(
         state,
         (headerCell: ITableHeaderCellState) => tableHeaderCellReducer(headerCell, action),

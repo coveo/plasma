@@ -7,10 +7,8 @@ import * as _ from 'underscore';
 export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHeaderCell> {
   title: string;
   id?: string;
-  tableRefForSort?: {
-    tableId: string;
-    attributeToSort: string;
-  };
+  attributeToSort?: string;
+  tableId?: string;
   className?: string;
   onClickCallback?: (e: React.MouseEvent<HTMLTableHeaderCellElement>) => void;
 }
@@ -20,9 +18,9 @@ export interface ITableHeaderStateProps {
 }
 
 export interface ITableHeaderCellDispatchProps {
-  onMount?: (id: string, tableId: string, attributeToSort: string) => void;
-  onSort?: (id: string, tableId: string, attributeToSort: string) => void;
-  onUnmount?: (id: string) => void;
+  onMount?: () => void;
+  onSort?: () => void;
+  onUnmount?: () => void;
 }
 
 export interface ITableHeaderCellProps extends
@@ -36,20 +34,20 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
   };
 
   componentDidMount() {
-    if (this.props.onMount && this.props.tableRefForSort) {
-      this.props.onMount(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
+    if (this.props.onMount && this.props.attributeToSort) {
+      this.props.onMount();
     }
   }
 
   componentWillUnmount() {
     if (this.props.onMount) {
-      this.props.onUnmount(this.props.id);
+      this.props.onUnmount();
     }
   }
 
   handleClick(e: React.MouseEvent<HTMLTableHeaderCellElement>) {
-    if (this.props.onSort && this.props.tableRefForSort) {
-      this.props.onSort(this.props.id, this.props.tableRefForSort.tableId, this.props.tableRefForSort.attributeToSort);
+    if (this.props.onSort && this.props.attributeToSort) {
+      this.props.onSort();
     }
 
     if (this.props.onClickCallback) {
@@ -58,7 +56,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
   }
 
   render() {
-    const tableCellHasSort = !_.isUndefined(this.props.sorted) && !!this.props.tableRefForSort;
+    const tableCellHasSort = !_.isUndefined(this.props.sorted) && !!this.props.attributeToSort;
     const sortIcon: JSX.Element = tableCellHasSort
       ? <div className='admin-sort-icon'><Svg svgName='asc-desc' className='tables-sort icon' /></div>
       : null;
