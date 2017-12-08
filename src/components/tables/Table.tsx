@@ -33,10 +33,7 @@ export interface IData {
 };
 
 export interface ITableRowData {
-  [id: string]: {
-    id: string;
-    [attribute: string]: any;
-  };
+  [id: string]: IData;
 };
 
 export type IAttributeFormatter = (attributeValue: any, attributeName?: string) => JSXRenderable;

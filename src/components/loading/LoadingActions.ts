@@ -9,7 +9,6 @@ export const LoadingActions = {
 
 export interface ILoadingActionPayload {
   ids: string[];
-  id?: string;
 }
 
 export const addLoading = (id: string): IReduxAction<ILoadingActionPayload> => ({
