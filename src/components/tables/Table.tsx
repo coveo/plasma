@@ -41,9 +41,9 @@ export type IAttributeNameFormatter = (attributeName: string) => string;
 
 export interface ITableHeadingAttribute {
   attributeName: string;
-  titleFormatter: (attributeName: string) => string;
+  titleFormatter: IAttributeNameFormatter;
   sort?: boolean;
-  sortByMethod?: (attributeValue: any) => string;
+  sortByMethod?: IAttributeNameFormatter;
   attributeFormatter?: IAttributeFormatter;
 }
 
