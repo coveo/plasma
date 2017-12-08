@@ -8,9 +8,7 @@ const {
 } = TableSortingOrder;
 
 export const getNextTableSortingOrder = (sortedState: TableSortingOrder): TableSortingOrder =>
-  _.contains([UNSORTED, DESCENDING], sortedState)
-    ? ASCENDING
-    : DESCENDING;
+  _.contains([UNSORTED, DESCENDING], sortedState) ? ASCENDING : DESCENDING;
 
 export const getTableChildComponentId = (tableId: string, childComponent: TableChildComponent): string => {
   switch (childComponent) {

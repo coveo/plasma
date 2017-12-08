@@ -23,26 +23,17 @@ export interface ITableActionPayload {
   shouldResetPage?: boolean;
 }
 
-export const addTable = (
-  id: string,
-  initialTableData: ITableData,
-  predicates: ITablePredicate[],
-): IReduxAction<ITableActionPayload> => ({
+export const addTable = (id: string, initialTableData: ITableData, predicates: ITablePredicate[]): IReduxAction<ITableActionPayload> => ({
   type: TableActions.add,
   payload: { id, initialTableData, predicates: predicates || [] },
 });
 
-export const removeTable = (
-  id: string,
-): IReduxAction<ITableActionPayload> => ({
+export const removeTable = (id: string): IReduxAction<ITableActionPayload> => ({
   type: TableActions.remove,
   payload: { id }
 });
 
-export const setIsInError = (
-  id: string,
-  isInError: boolean,
-): IReduxAction<ITableActionPayload> => ({
+export const setIsInError = (id: string, isInError: boolean): IReduxAction<ITableActionPayload> => ({
   type: TableActions.inError,
   payload: { id, isInError }
 });
