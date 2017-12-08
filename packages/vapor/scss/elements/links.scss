@@ -6,4 +6,8 @@ a, .link {
     cursor: default;
     pointer-events: none;
   }
+
+  &:focus {
+    @include focus-border(-2px);
+  }
 }

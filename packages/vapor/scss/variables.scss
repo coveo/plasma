@@ -159,15 +159,24 @@ $wizard-card-footer-padding: 20px 30px;
 $application-container-min-height: 400px;
 
 // Navigation
+$navigation-menu-header-font-weight: 400;
+$navigation-menu-item-font-weight: 200;
 $navigation-width: 245px;
-$navigation-background-color: $dark-blue;
-$navigation-active-background-color: #57748a;
+$navigation-background-color: $purple-blue;
+$navigation-active-background-color: #354667;
 $navigation-active-border-width: 3px;
 $navigation-section-icon-size: 16px;
 $navigation-section-icon-margin: 15px;
+$navigation-horizontal-space: 2 * $navigation-section-icon-margin + $navigation-section-icon-size - $navigation-active-border-width;
 $navigation-locked-color: $medium-grey;
 $navigation-tag-font-size: 9px;
 $navigation-tag-padding: 2px 5px;
+$navigation-menu-section-height: 30px;
+$navigation-loading-height: 12px;
+$navigation-loading-item-margin: ($navigation-menu-section-height - $navigation-loading-height) / 2;
+$navigation-loading-item-border-radius: 10px;
+$navigation-loading-background-size: 300% 104px;
+$navigation-loading-bullet-width: 12px;
 
 // Sub Navigation
 $sub-navigation-padding-top: 26px;

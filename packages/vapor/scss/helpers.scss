@@ -15,3 +15,9 @@ $browser-context: 13; // Default
     }
   }
 }
+
+@mixin focus-border($offset) {
+  outline: thin dotted;
+  outline: 5px auto $orange;
+  outline-offset: $offset;
+}

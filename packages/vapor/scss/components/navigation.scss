@@ -6,7 +6,7 @@
 
   user-select: none;
 
-  @include slim-scroll($dark-grey, $medium-grey);
+  @include slim-scroll($purple-blue, $light-grey);
 
   *, *:before, *:after {
     -webkit-font-smoothing: subpixel-antialiased;
@@ -43,10 +43,11 @@
           height: 50px;
 
           font-size: 13px;
-          font-weight: 700;
+          font-weight: $navigation-menu-header-font-weight;
           text-transform: uppercase;
 
-          background-color: $medium-blue;
+          border-top: 1px solid $dark-grey;
+          border-bottom: 1px solid $dark-grey;
 
           .navigation-menu-section-header-icon {
             margin: 0 $navigation-section-icon-margin;
@@ -55,7 +56,7 @@
 
         .navigation-menu-section-items {
           .navigation-menu-section-item {
-            font-weight: 400;
+            font-weight: $navigation-menu-item-font-weight;
 
             border-left: $navigation-active-border-width solid transparent;
 
@@ -66,9 +67,9 @@
               justify-content: space-between;
 
               display: flex;
-              height: 30px;
-              padding-left: 2 * $navigation-section-icon-margin + $navigation-section-icon-size - $navigation-active-border-width;
-              margin-right: 2 * $navigation-section-icon-margin + $navigation-section-icon-size - $navigation-active-border-width;
+              height: $navigation-menu-section-height;
+              padding-left: $navigation-horizontal-space;
+              margin-right: $navigation-horizontal-space;
 
               color: $white;
 
