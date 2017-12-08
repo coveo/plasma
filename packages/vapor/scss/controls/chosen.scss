@@ -216,7 +216,7 @@
   }
 
   &.chosen-container-active .chosen-single {
-    outline: -webkit-focus-ring-color auto 5px;
+    outline: $orange auto 5px;
   }
 
   &.chosen-container-single-nosearch .chosen-drop .chosen-search {
@@ -344,7 +344,7 @@
   }
 
   &.chosen-container-active .chosen-choices {
-    outline: -webkit-focus-ring-color auto 5px;
+    outline: $orange auto 5px;
   }
 
   &.chosen-with-drop .chosen-choices {

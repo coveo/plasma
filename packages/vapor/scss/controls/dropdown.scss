@@ -83,6 +83,7 @@
   left: 0;
   z-index: 1000;
 
+  box-sizing: border-box;
   display: none;
   float: left;
   max-height: $dropdown-menu-max-height;
@@ -98,7 +99,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
   border: 1px solid $medium-grey;
   border-radius: 0 0 2px 2px;
-  box-sizing: border-box;
 
   @include slim-scroll($light-grey, $medium-grey);
 
