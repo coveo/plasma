@@ -1,4 +1,4 @@
-import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE } from './TableConstants';
+import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE, DEFAULT_TABLE_PER_PAGE } from './TableConstants';
 import { getTableChildComponentId } from './TableUtils';
 import { ITableOwnProps, ITableProps, Table } from './Table';
 import { ITableState, ITableCompositeState } from './TableReducers';
@@ -58,7 +58,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
       isLoading: tableState.isLoading,
       filter: filterState && filterState.filterText || '',
       page: paginationState && paginationState.pageNb || 0,
-      perPage: perPageState && perPageState.perPage || 10000000,
+      perPage: perPageState && perPageState.perPage || DEFAULT_TABLE_PER_PAGE,
       sortState: {
         attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
         order: tableHeaderCellState && tableHeaderCellState.sorted,

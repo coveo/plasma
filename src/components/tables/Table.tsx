@@ -37,20 +37,21 @@ export interface ITableRowData {
 };
 
 export type IAttributeFormatter = (attributeValue: any, attributeName?: string) => JSXRenderable;
-export type IAttributeNameFormatter = (attributeName: string) => string;
+export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string) => string;
 
 export interface ITableHeadingAttribute {
   attributeName: string;
-  titleFormatter: IAttributeNameFormatter;
+  titleFormatter: IAttributeNameOrValueFormatter;
+  filterFormatter?: IAttributeNameOrValueFormatter; // use this for filter if you render JSX through the attribute formatter
   sort?: boolean;
-  sortByMethod?: IAttributeNameFormatter;
+  sortByMethod?: IAttributeNameOrValueFormatter;
   attributeFormatter?: IAttributeFormatter;
 }
 
 export interface ITablePredicate {
   props: IDropdownSearchProps;
   attributeName: string;
-  attributeNameFormatter: IAttributeNameFormatter;
+  attributeNameFormatter: IAttributeNameOrValueFormatter;
 };
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
@@ -203,11 +204,11 @@ export class Table extends React.Component<ITableProps, any> {
     const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
       const id = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}${headingAttribute.attributeName}`;
       const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
-      const tableRefForSort = !!headingAttribute.sort
+      const tableSortInformation = !!headingAttribute.sort
         ? { tableId: this.props.id, attributeToSort: headingAttribute.attributeName }
-        : undefined;
+        : {};
 
-      return { id, title, ...tableRefForSort };
+      return { id, title, ...tableSortInformation };
     });
 
     const headerClass = classNames(

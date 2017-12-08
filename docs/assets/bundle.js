@@ -22684,9 +22684,7 @@ var TableConstants_1 = __webpack_require__(45);
 var _ = __webpack_require__(3);
 var ASCENDING = TableConstants_1.TableSortingOrder.ASCENDING, DESCENDING = TableConstants_1.TableSortingOrder.DESCENDING, UNSORTED = TableConstants_1.TableSortingOrder.UNSORTED;
 exports.getNextTableSortingOrder = function (sortedState) {
-    return _.contains([UNSORTED, DESCENDING], sortedState)
-        ? ASCENDING
-        : DESCENDING;
+    return _.contains([UNSORTED, DESCENDING], sortedState) ? ASCENDING : DESCENDING;
 };
 exports.getTableChildComponentId = function (tableId, childComponent) {
     switch (childComponent) {
@@ -54260,7 +54258,7 @@ exports.dispatchPostTableStateModification = function (tableOwnProps, dispatch) 
     dispatch(LoadingActions_1.turnOffLoading(TableUtils_1.getTableLoadingIds(tableOwnProps.id)));
     dispatch(LastUpdatedActions_1.changeLastUpdated(TableUtils_1.getTableChildComponentId(tableOwnProps.id, TableConstants_1.TableChildComponent.LAST_UPDATED)));
 };
-exports.defaultTableStateModifier = function (tableOwnProps, shouldResetPage, tableCompositeState) {
+exports.defaultTableStateModifier = function (tableOwnProps, tableCompositeState) {
     return function (tableState) {
         var tableDataById = tableCompositeState.data && tableCompositeState.data.byId || {};
         var totalPages;
@@ -54315,7 +54313,7 @@ exports.defaultTableStateModifier = function (tableOwnProps, shouldResetPage, ta
 };
 exports.defaultTableStateModifierThunk = function (tableOwnProps, shouldResetPage, tableCompositeState) {
     return function (dispatch) {
-        var tableStateModifier = exports.defaultTableStateModifier(tableOwnProps, shouldResetPage, tableCompositeState);
+        var tableStateModifier = exports.defaultTableStateModifier(tableOwnProps, tableCompositeState);
         dispatch(TableActions_1.modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
         exports.dispatchPostTableStateModification(tableOwnProps, dispatch);
     };
@@ -85957,7 +85955,9 @@ var tableData = {
     totalEntries: _.keys(tableDataById).length,
     totalPages: Math.ceil(_.keys(tableDataById).length / perPageNumbers[0]),
 };
-var rawDataToTableData = function (data, currentState, tableCompositeState) {
+var buildNewTableStateManually = function (data, currentState, tableCompositeState, tableOwnProps) {
+    var totalEntries = JSON.parse(data).count;
+    var totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
     var newTableData = JSON.parse(data).entries.reduce(function (tableData, entry, arr) {
         return {
             byId: __assign({}, tableData.byId, (_a = {}, _a[entry.API] = {
@@ -85968,13 +85968,13 @@ var rawDataToTableData = function (data, currentState, tableCompositeState) {
             }, _a)),
             allIds: tableData.allIds.concat([entry.API]),
             displayedIds: tableData.displayedIds.concat([entry.API]),
-            totalEntries: JSON.parse(data).count,
-            totalPages: Math.ceil(JSON.parse(data).count / perPageNumbers[0]),
+            totalEntries: totalEntries,
+            totalPages: totalPages,
         };
         var _a;
     }, TableConstants_1.DEFAULT_TABLE_DATA);
     newTableData.displayedIds = newTableData.displayedIds.slice(tableCompositeState.perPage * tableCompositeState.page, tableCompositeState.perPage + (tableCompositeState.perPage * tableCompositeState.page));
-    return newTableData;
+    return TableThunkActionCreators_1.defaultTableStateModifier(tableOwnProps, tableCompositeState)(currentState);
 };
 var manualModeThunk = function (tableOwnProps, shouldResetPage, tableCompositeState) {
     return function (dispatch, getState) {
@@ -85982,9 +85982,7 @@ var manualModeThunk = function (tableOwnProps, shouldResetPage, tableCompositeSt
         TableThunkActionCreators_1.dispatchPreTableStateModification(tableOwnProps, dispatch);
         $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')
             .done(function (data) {
-            dispatch(TableActions_1.modifyState(tableOwnProps.id, function (tableState) {
-                return (__assign({}, tableState, { data: rawDataToTableData(data, currentTableState, tableCompositeState) }));
-            }, shouldResetPage));
+            dispatch(TableActions_1.modifyState(tableOwnProps.id, function (tableState) { return buildNewTableStateManually(data, currentTableState, tableCompositeState, tableOwnProps); }, shouldResetPage));
         })
             .fail(function (error) {
             dispatch(TableActions_1.setIsInError(tableOwnProps.id, true));

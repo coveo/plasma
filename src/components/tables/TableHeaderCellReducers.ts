@@ -40,10 +40,9 @@ export const tableHeaderCellReducer = (
     case TableHeaderCellActions.sort:
       if (state.id !== action.payload.id) {
         return state.tableId === action.payload.tableId
-          ? { ...state, sorted: TableSortingOrder.UNSORTED, attributeToSort: action.payload.attributeToSort }
+          ? { ...state, sorted: TableSortingOrder.UNSORTED }
           : state;
       }
-
       return { ...state, sorted: getNextTableSortingOrder(state.sorted) };
     default:
       return state;

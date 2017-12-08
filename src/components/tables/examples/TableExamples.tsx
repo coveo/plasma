@@ -1,6 +1,6 @@
 import { ITableOwnProps } from '../Table';
 import { TableConnected } from '../TableConnected';
-import { dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableThunkActionCreators';
+import { defaultTableStateModifier, dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableThunkActionCreators';
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -63,7 +63,9 @@ const tableData: ITableData = {
   totalPages: Math.ceil(_.keys(tableDataById).length / perPageNumbers[0]),
 };
 
-const rawDataToTableData = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState): ITableData => {
+const buildNewTableStateManually = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState, tableOwnProps: ITableOwnProps): ITableState => {
+  const totalEntries = JSON.parse(data).count;
+  const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
   const newTableData = JSON.parse(data).entries.reduce((tableData: ITableData, entry: any, arr: any[]) => {
     return {
       byId: {
@@ -77,12 +79,11 @@ const rawDataToTableData = (data: any, currentState: ITableState, tableComposite
       },
       allIds: [...tableData.allIds, entry.API],
       displayedIds: [...tableData.displayedIds, entry.API],
-      totalEntries: JSON.parse(data).count,
-      totalPages: Math.ceil(JSON.parse(data).count / perPageNumbers[0]),
+      totalEntries: totalEntries,
+      totalPages: totalPages,
     };
   }, DEFAULT_TABLE_DATA);
-  newTableData.displayedIds = newTableData.displayedIds.slice(tableCompositeState.perPage * tableCompositeState.page, tableCompositeState.perPage + (tableCompositeState.perPage * tableCompositeState.page));
-  return newTableData;
+  return defaultTableStateModifier(tableOwnProps, tableCompositeState)({...currentState, data: newTableData});
 };
 
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): ThunkAction => {
@@ -94,8 +95,7 @@ const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean
         dispatch(
           modifyState(
             tableOwnProps.id,
-            (tableState: ITableState) =>
-              ({ ...tableState, data: rawDataToTableData(data, currentTableState, tableCompositeState) }),
+            (tableState: ITableState) => buildNewTableStateManually(data, currentTableState, tableCompositeState, tableOwnProps),
             shouldResetPage,
           )
         );
@@ -120,7 +120,7 @@ export class TableExamples extends React.Component<any, any> {
       <div className='mt2'>
         <div className='form-group'>
           <label className='form-control-label'>
-            Table in manual mode (the data is fake and thus won't change much. Perform any side effects on table state modification.
+            Table in manual mode.
           </label>
           <TableConnected
             id={_.uniqueId('react-vapor-table')}
@@ -148,10 +148,6 @@ export class TableExamples extends React.Component<any, any> {
             actionBar={{
               extraContainerClasses: ['mod-border-top'],
             }}
-            predicates={[
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
-            ]}
             filter={{}}
             blankSlateDefault={{ title: 'No results here!' }}
             navigation={{ perPageNumbers }}

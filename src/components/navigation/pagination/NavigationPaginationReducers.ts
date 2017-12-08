@@ -35,7 +35,6 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
       };
     case TableActions.modifyState:
       if (contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
-        debugger;
         return { ...state, pageNb: 0 };
       }
     default:

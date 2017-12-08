@@ -1,6 +1,6 @@
 import { ITableState, ITableCompositeState } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent } from './TableConstants';
+import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent, DEFAULT_TABLE_PER_PAGE } from './TableConstants';
 import * as _ from 'underscore';
 import { contains } from 'underscore.string';
 import { ITableOwnProps, ITableHeadingAttribute } from './Table';
@@ -30,7 +30,6 @@ export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps
 
 export const defaultTableStateModifier = (
   tableOwnProps: ITableOwnProps,
-  shouldResetPage: boolean,
   tableCompositeState: ITableCompositeState,
 ): ((tableState: ITableState) => ITableState) => {
   return (tableState: ITableState): ITableState => {
@@ -92,8 +91,8 @@ export const defaultTableStateModifier = (
     }
 
     // pagination logic
-    const startingIndex = tableCompositeState.page * tableCompositeState.perPage;
-    const endingIndex = startingIndex + tableCompositeState.perPage;
+    const startingIndex = (tableCompositeState.page || 0) * (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
+    const endingIndex = startingIndex + (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
     nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
 
     return {
@@ -110,7 +109,7 @@ export const defaultTableStateModifier = (
 
 export const defaultTableStateModifierThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
   return (dispatch: Dispatch) => {
-    const tableStateModifier = defaultTableStateModifier(tableOwnProps, shouldResetPage, tableCompositeState);
+    const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);
     dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
     dispatchPostTableStateModification(tableOwnProps, dispatch);
   };

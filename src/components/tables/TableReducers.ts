@@ -99,6 +99,7 @@ export const tableReducer = (
         isLoading: false,
       };
     case TableHeaderCellActions.sort:
+      console.log(state.id + action.payload.id);
       return {
         ...state,
         tableHeaderCellId: action.payload.id,
@@ -131,6 +132,7 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
   const tableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
     ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
     : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
+
 
   return tableId
     ? { ...tablesState, [tableId]: tableReducer(tablesState[tableId], action) }
