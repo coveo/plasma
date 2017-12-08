@@ -31,15 +31,13 @@ export const turnOnLoading = (ids: string[], id?: string): IReduxAction<ILoading
   type: LoadingActions.turnOn,
   payload: {
     ids,
-    id,
   }
 });
 
 // the second id is the id from which the action was triggered from
-export const turnOffLoading = (ids: string[], id?: string): IReduxAction<ILoadingActionPayload> => ({
+export const turnOffLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOff,
   payload: {
     ids,
-    id,
   }
 });

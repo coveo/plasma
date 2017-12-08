@@ -54264,7 +54264,7 @@ exports.defaultTableStateModifier = function (tableOwnProps, shouldResetPage, ta
         var tableDataById = tableCompositeState.data && tableCompositeState.data.byId || {};
         var totalPages;
         var totalEntries;
-        var nextDisplayedIds = (tableCompositeState.data && tableCompositeState.data.allIds || []).slice();
+        var nextDisplayedIds = tableCompositeState.data ? tableCompositeState.data.allIds.slice() : [];
         if (!_.isEmpty(tableCompositeState.predicates)) {
             _.pairs(tableCompositeState.predicates).forEach(function (keyValuePair) {
                 var attributeName = keyValuePair[0];
@@ -54292,11 +54292,8 @@ exports.defaultTableStateModifier = function (tableOwnProps, shouldResetPage, ta
         }
         totalEntries = nextDisplayedIds.length;
         totalPages = Math.ceil(totalEntries / tableCompositeState.perPage);
-        var startingIndex = tableCompositeState.page * tableCompositeState.perPage;
-        var endingIndex = startingIndex + tableCompositeState.perPage;
-        nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
         var sortState = tableCompositeState.sortState;
-        if (!_.isEmpty(sortState) && sortState.order !== TableConstants_1.TableSortingOrder.UNSORTED) {
+        if (sortState && sortState.order !== TableConstants_1.TableSortingOrder.UNSORTED) {
             var defaultSortBy = function (displayedId) {
                 var cleanAttributeValue = FalsyValuesUtils_1.convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
                 return cleanAttributeValue.toString().toLowerCase();
@@ -54308,6 +54305,9 @@ exports.defaultTableStateModifier = function (tableOwnProps, shouldResetPage, ta
                 nextDisplayedIds.reverse();
             }
         }
+        var startingIndex = tableCompositeState.page * tableCompositeState.perPage;
+        var endingIndex = startingIndex + tableCompositeState.perPage;
+        nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
         return __assign({}, tableState, { data: __assign({}, tableState.data, { displayedIds: nextDisplayedIds, totalEntries: totalEntries,
                 totalPages: totalPages }) });
     };
@@ -81616,11 +81616,12 @@ exports.tableHeaderCellReducer = function (state, action) {
                 id: action.payload.id,
                 tableId: action.payload.tableId,
                 sorted: TableConstants_1.TableSortingOrder.UNSORTED,
+                attributeToSort: action.payload.attributeToSort,
             };
         case TableHeaderCellActions_1.TableHeaderCellActions.sort:
             if (state.id !== action.payload.id) {
                 return state.tableId === action.payload.tableId
-                    ? __assign({}, state, { sorted: TableConstants_1.TableSortingOrder.UNSORTED }) : state;
+                    ? __assign({}, state, { sorted: TableConstants_1.TableSortingOrder.UNSORTED, attributeToSort: action.payload.attributeToSort }) : state;
             }
             return __assign({}, state, { sorted: TableUtils_1.getNextTableSortingOrder(state.sorted) });
         default:
@@ -85943,7 +85944,7 @@ var predicateOptionsAttribute3 = [
 var simplestTableData = {
     byId: simplestTableDataById,
     allIds: _.keys(simplestTableDataById),
-    displayedIds: _.keys(simplestTableDataById).slice(0, perPageNumbers[0]),
+    displayedIds: _.keys(simplestTableDataById),
     totalEntries: _.keys(simplestTableDataById).length,
     totalPages: Math.ceil(_.keys(simplestTableDataById).length / perPageNumbers[0]),
 };
@@ -86160,14 +86161,14 @@ var mapStateToProps = function (state, ownProps) {
     var tableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
     var predicateStates = tableDidMount && _.reject(state.dropdownSearch, function (dropdownSearch) { return !underscore_string_1.contains(dropdownSearch.id, ownProps.id); }) || [];
     return {
-        tableState: {
+        tableCompositeState: {
             id: tableState.id,
             data: tableState.data,
             isInError: tableState.isInError,
             isLoading: tableState.isLoading,
             filter: filterState && filterState.filterText || '',
-            page: paginationState && paginationState.pageNb,
-            perPage: perPageState && perPageState.perPage,
+            page: paginationState && paginationState.pageNb || 0,
+            perPage: perPageState && perPageState.perPage || 10000000,
             sortState: {
                 attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
                 order: tableHeaderCellState && tableHeaderCellState.sorted,
@@ -86175,7 +86176,6 @@ var mapStateToProps = function (state, ownProps) {
             predicates: predicateStates.reduce(function (currentPredicates, nextPredicate) {
                 var attributeName = nextPredicate.id.split(TableUtils_1.getTableChildComponentId(ownProps.id, TableConstants_1.TableChildComponent.PREDICATE))[1];
                 var selectedOption = _.findWhere(nextPredicate.options, { selected: true });
-                console.log(selectedOption && selectedOption.value);
                 return __assign({}, currentPredicates, (_a = {}, _a[attributeName] = selectedOption && selectedOption.value || TableConstants_1.TABLE_PREDICATE_DEFAULT_VALUE, _a));
                 var _a;
             }, {}),

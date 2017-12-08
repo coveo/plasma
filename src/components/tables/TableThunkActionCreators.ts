@@ -23,7 +23,7 @@ export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps,
 };
 
 export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: any) => {
-  dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id), tableOwnProps.id));
+  dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
   dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
 };
 
@@ -109,8 +109,8 @@ export const defaultTableStateModifier = (
 
 export const defaultTableStateModifierThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
   return (dispatch: any) => {
-    dispatchPreTableStateModification(tableOwnProps, dispatch);
-    dispatch(modifyState(tableOwnProps.id, defaultTableStateModifier(tableOwnProps, shouldResetPage, tableCompositeState), shouldResetPage));
+    const tableStateModifier = defaultTableStateModifier(tableOwnProps, shouldResetPage, tableCompositeState);
+    dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
     dispatchPostTableStateModification(tableOwnProps, dispatch);
   };
 };

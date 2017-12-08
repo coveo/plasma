@@ -70,7 +70,12 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   predicates?: ITablePredicate[];
   navigation?: INavigationChildrenProps;
   lastUpdatedLabel?: string;
-  manual?: (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => ((dispatch: any, getState?: () => any) => void);
+  manual?: (
+    tableOwnProps: ITableOwnProps,
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+    previousTableCompositeState: ITableCompositeState,
+  ) => ((dispatch: any, getState?: () => any) => void);
 };
 
 export interface ItableCompositeStateProps {
@@ -84,7 +89,7 @@ export class Table extends React.Component<ITableProps, any> {
   private isInitialLoad: boolean;
 
   static defaultProps = {
-    tableCompositeState: {sortState: {}} as any,
+    tableCompositeState: { sortState: {} } as any,
     initialTableData: DEFAULT_TABLE_DATA,
   } as Partial<ITableOwnProps>;
 
@@ -116,9 +121,11 @@ export class Table extends React.Component<ITableProps, any> {
     const { tableCompositeState } = this.props;
 
     if (this.hastableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
-      const shouldResetPage = tableCompositeState.page === nextProps.tableCompositeState.page;
+      // if the change occurs outside the navigation (per page, pagination) of the table, we should reset the pagination to page 0
+      const shouldResetPage = tableCompositeState.page === nextProps.tableCompositeState.page
+        && tableCompositeState.perPage === nextProps.tableCompositeState.perPage;
 
-      this.props.onModifyData(shouldResetPage, nextProps.tableCompositeState);
+      this.props.onModifyData(shouldResetPage, nextProps.tableCompositeState, tableCompositeState);
     }
   }
 
@@ -147,31 +154,39 @@ export class Table extends React.Component<ITableProps, any> {
     const { actionBar, filter, predicates } = this.props;
 
     const filterBoxConnected: JSX.Element = actionBar && filter
-      ? <FilterBoxConnected
-        {...filter}
-        id={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)}
-        key={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)} />
+      ? (
+        <div className='coveo-table-actions'>
+          <FilterBoxConnected
+            {...filter}
+            id={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)}
+            key={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)} />
+        </div>
+      )
       : null;
 
-    const predicatesConnected: JSX.Element[] = actionBar && predicates
-      ? predicates.map((predicate: ITablePredicate, i: number) => {
-        const predicateId = `${getTableChildComponentId(this.props.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
-        const containerClasses = i ? ['ml1'] : [''];
+    const predicatesConnected: JSX.Element = actionBar && predicates
+      ? (
+        <div className='coveo-table-actions predicate-filters'>
+          {predicates.map((predicate: ITablePredicate, i: number) => {
+            const predicateId = `${getTableChildComponentId(this.props.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
+            const containerClasses = i ? ['ml1'] : [''];
 
-        return (
-          <DropdownSearchConnected
-            {...predicate.props}
-            key={predicateId}
-            fixedPrepend={predicate.attributeNameFormatter(predicate.attributeName)}
-            id={predicateId}
-            containerClasses={containerClasses}
-            onOptionClickCallBack={(option: IDropdownOption) => {
-              if (this.props.onPredicateOptionClick) {
-                this.props.onPredicateOptionClick(predicateId, option);
-              }
-            }} />
-        );
-      })
+            return (
+              <DropdownSearchConnected
+                {...predicate.props}
+                key={predicateId}
+                fixedPrepend={predicate.attributeNameFormatter(predicate.attributeName)}
+                id={predicateId}
+                containerClasses={containerClasses}
+                onOptionClickCallBack={(option: IDropdownOption) => {
+                  if (this.props.onPredicateOptionClick) {
+                    this.props.onPredicateOptionClick(predicateId, option);
+                  }
+                }} />
+            );
+          })}
+        </div>
+      )
       : null;
 
     return actionBar
@@ -179,10 +194,8 @@ export class Table extends React.Component<ITableProps, any> {
         <ActionBarConnected
           {...actionBar}
           id={getTableChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
-          <div className='coveo-table-actions'>
-            {predicatesConnected}
-            {filterBoxConnected}
-          </div>
+          {predicatesConnected}
+          {filterBoxConnected}
         </ActionBarConnected>
       )
       : null;
@@ -305,7 +318,7 @@ export class Table extends React.Component<ITableProps, any> {
         totalPages={tableData.totalPages}
         id={getTableChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
         loadingIds={[getTableChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)]}
-        />
+      />
     ) : null;
   }
 

@@ -11,6 +11,7 @@ import {
 import { LoadingActions } from '../loading/LoadingActions';
 import { TableHeaderCellActions } from './TableHeaderCellActions';
 import { ITablePredicate } from './Table';
+import { contains } from 'underscore.string';
 
 export interface ITableData {
   byId: {
@@ -127,12 +128,9 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
       return _.omit(tablesState, action.payload.id);
   }
 
-  // all child ids contain their related table id
-  const tableId = _.findKey(
-    tablesState,
-    (tableState: ITableState, currentTableId: string) =>
-      (action.payload && action.payload.id || '').indexOf(currentTableId) >= 0,
-  );
+  const tableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
+    ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
+    : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
 
   return tableId
     ? { ...tablesState, [tableId]: tableReducer(tablesState[tableId], action) }

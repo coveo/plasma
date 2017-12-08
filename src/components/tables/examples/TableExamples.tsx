@@ -151,7 +151,7 @@ export class TableExamples extends React.Component<any, any> {
               { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
               { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
             ]}
-            filter={{ containerClasses: ['ml1'] }}
+            filter={{}}
             blankSlateDefault={{ title: 'No results here!' }}
             navigation={{ perPageNumbers }}
           />

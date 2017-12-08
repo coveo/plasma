@@ -34,9 +34,10 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
         pageNb: action.payload.pageNb
       };
     case TableActions.modifyState:
-      return contains(state.id, action.payload.id) && action.payload.shouldResetPage
-        ? { ...state, pageNb: 0 }
-        : state;
+      if (contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
+        debugger;
+        return { ...state, pageNb: 0 };
+      }
     default:
       return state;
   }
@@ -56,6 +57,7 @@ export const paginationCompositeReducer = (state: IPaginationState[] = paginatio
       });
     case PaginationActions.changePage:
     case PaginationActions.reset:
+    case TableActions.modifyState:
       return state.map((pagination: IPaginationState) => paginationReducer(pagination, action));
     default:
       return state;

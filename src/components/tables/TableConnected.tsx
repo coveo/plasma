@@ -31,7 +31,11 @@ export interface IPredicateAttributes {
 export interface ITableDispatchProps {
   onDidMount: () => void;
   onUnmount: () => void;
-  onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => void;
+  onModifyData: (
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+    previousTableCompositeState?: ITableCompositeState,
+  ) => void;
   onRowClick: (actions: IActionOptions[]) => void;
   onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => void;
 }
@@ -39,9 +43,9 @@ export interface ITableDispatchProps {
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
   const tableState: ITableState = state.tables[ownProps.id] || {} as ITableState;
   const tableDidMount = !_.isEmpty(tableState);
-  const filterState: IFilterState = tableDidMount && _.findWhere(state.filters, {id: tableState.filterId});
-  const paginationState: IPaginationState = tableDidMount && _.findWhere(state.paginationComposite, {id: tableState.paginationId});
-  const perPageState: IPerPageState = tableDidMount && _.findWhere(state.perPageComposite, {id: tableState.perPageId});
+  const filterState: IFilterState = tableDidMount && _.findWhere(state.filters, { id: tableState.filterId });
+  const paginationState: IPaginationState = tableDidMount && _.findWhere(state.paginationComposite, { id: tableState.paginationId });
+  const perPageState: IPerPageState = tableDidMount && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
   const predicateStates: IDropdownSearchState[] = tableDidMount && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, ownProps.id)) || [];
 
@@ -61,7 +65,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
       predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
         // the attribute name is stored in the id of the dropdownSearch
         const attributeName = nextPredicate.id.split(getTableChildComponentId(ownProps.id, TableChildComponent.PREDICATE))[1];
-        const selectedOption = _.findWhere(nextPredicate.options, {selected: true});
+        const selectedOption = _.findWhere(nextPredicate.options, { selected: true });
         return {
           ...currentPredicates,
           [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
@@ -87,9 +91,9 @@ const mapDispatchToProps = (
   onUnmount: () => {
     dispatch(removeTable(ownProps.id));
   },
-  onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
+  onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState, previousTableCompositeState: ITableCompositeState) => {
     if (ownProps.manual) {
-      dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState));
+      dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));
     } else {
       dispatch(defaultTableStateModifierThunk(ownProps, shouldResetPage, tableCompositeState));
     }
