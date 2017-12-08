@@ -152,7 +152,7 @@ export { SubNavigationActions, selectSubNavigation } from './components/subNavig
 // Utils
 export { DisplayClass, ComponentContent } from './utils/ComponentUtils';
 export { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
-export { clearState, CommonActions, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
+export { clearState, CommonActions, Dispatch, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
 export { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
 // Tab

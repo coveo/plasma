@@ -10,8 +10,9 @@ import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
 import { modifyState } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
 import { unselectAllRows } from './TableRowActions';
+import { Dispatch } from '../../utils/ReduxUtils';
 
-export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: any) => {
+export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: Dispatch) => {
   dispatch(unselectAllRows(tableOwnProps.id));
   dispatch(
     addActionsToActionBar(
@@ -22,7 +23,7 @@ export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps,
   dispatch(turnOnLoading(getTableLoadingIds(tableOwnProps.id), tableOwnProps.id));
 };
 
-export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: any) => {
+export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: Dispatch) => {
   dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
   dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
 };
@@ -108,7 +109,7 @@ export const defaultTableStateModifier = (
 };
 
 export const defaultTableStateModifierThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch) => {
     const tableStateModifier = defaultTableStateModifier(tableOwnProps, shouldResetPage, tableCompositeState);
     dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
     dispatchPostTableStateModification(tableOwnProps, dispatch);

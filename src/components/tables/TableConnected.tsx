@@ -4,11 +4,10 @@ import { ITableOwnProps, ITableProps, Table } from './Table';
 import { ITableState, ITableCompositeState } from './TableReducers';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
 import { addTable, removeTable } from './TableActions';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { IReactVaporState } from '../../ReactVapor';
+import { ReduxUtils } from '../../utils/ReduxUtils';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ThunkAction } from 'redux-thunk';
 import * as _ from 'underscore';
 import { IActionOptions } from '../actions/Action';
 import {
@@ -22,6 +21,8 @@ import { IFilterState } from '../filterBox/FilterBoxReducers';
 import { ITableHeaderCellState } from './TableHeaderCellReducers';
 import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
 import { contains } from 'underscore.string';
+import { Dispatch } from '../../utils/ReduxUtils';
+
 
 type AttributeValue = any;
 export interface IPredicateAttributes {
@@ -76,7 +77,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
 };
 
 const mapDispatchToProps = (
-  dispatch: (action: IReduxAction<IReduxActionsPayload> | ThunkAction<any, any, any>) => void,
+  dispatch: Dispatch,
   ownProps: ITableOwnProps,
 ): ITableDispatchProps => ({
   onDidMount: () => {

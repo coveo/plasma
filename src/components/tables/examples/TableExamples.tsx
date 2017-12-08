@@ -10,6 +10,7 @@ import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { ITableRowData, ITableProps } from '../Table';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 import * as $ from 'jquery';
+import { Dispatch, ThunkAction } from '../../../utils/ReduxUtils';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
@@ -84,8 +85,8 @@ const rawDataToTableData = (data: any, currentState: ITableState, tableComposite
   return newTableData;
 };
 
-const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
-  return (dispatch: any, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
+const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): ThunkAction => {
+  return (dispatch: Dispatch, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
     const currentTableState = getState().tables[tableOwnProps.id];
     dispatchPreTableStateModification(tableOwnProps, dispatch);
     $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')

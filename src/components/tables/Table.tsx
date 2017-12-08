@@ -25,6 +25,7 @@ import { NavigationConnected } from '../navigation/NavigationConnected';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { Loading } from '../loading/Loading';
 import * as classNames from 'classnames';
+import { ThunkAction } from '../../utils/ReduxUtils';
 
 export interface IData {
   id: string;
@@ -75,7 +76,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
     shouldResetPage: boolean,
     tableCompositeState: ITableCompositeState,
     previousTableCompositeState: ITableCompositeState,
-  ) => ((dispatch: any, getState?: () => any) => void);
+  ) => ThunkAction;
 };
 
 export interface ItableCompositeStateProps {
