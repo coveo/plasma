@@ -70,7 +70,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
     return (
       <th
         className={headerCellClasses}
-        onClick={(e: React.MouseEvent<any>) => this.handleClick(e)}>
+        onClick={(e: React.MouseEvent<HTMLTableHeaderCellElement>) => this.handleClick(e)}>
         {this.props.title}
         {sortIcon}
       </th>
