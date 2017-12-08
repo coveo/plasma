@@ -56,9 +56,14 @@ export const defaultTableStateModifier = (
     if (tableCompositeState.filter) {
       const filterDefault = (dataId: string): boolean => {
         return tableOwnProps.headingAttributes.some((headingAttribute: ITableHeadingAttribute) => {
-          const { attributeName, attributeFormatter } = headingAttribute;
+          const { attributeName, attributeFormatter, filterFormatter } = headingAttribute;
           const attributeValue = tableDataById[dataId][attributeName];
-          const attributeValueToUse = attributeFormatter ? attributeFormatter(attributeValue) : attributeValue;
+          let attributeValueToUse = filterFormatter
+            ? filterFormatter(attributeValue)
+            : attributeValue;
+          attributeValueToUse = !filterFormatter && attributeFormatter
+            ? attributeFormatter(attributeValue)
+            : attributeValueToUse;
           return contains(attributeValueToUse.toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
         });
       };

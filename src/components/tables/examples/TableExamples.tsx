@@ -83,7 +83,7 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
       totalPages: totalPages,
     };
   }, DEFAULT_TABLE_DATA);
-  return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, {data: newTableData}))({ ...currentState, data: newTableData });
+  return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, { data: newTableData }))({ ...currentState, data: newTableData });
 };
 
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): ThunkAction => {
