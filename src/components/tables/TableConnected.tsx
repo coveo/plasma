@@ -23,7 +23,6 @@ import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
 import { contains } from 'underscore.string';
 import { Dispatch } from '../../utils/ReduxUtils';
 
-
 type AttributeValue = any;
 export interface IPredicateAttributes {
   [attributeName: string]: AttributeValue;
