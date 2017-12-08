@@ -99,7 +99,6 @@ export const tableReducer = (
         isLoading: false,
       };
     case TableHeaderCellActions.sort:
-      console.log(state.id + action.payload.id);
       return {
         ...state,
         tableHeaderCellId: action.payload.id,

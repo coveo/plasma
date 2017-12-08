@@ -43,12 +43,11 @@ export interface ITableDispatchProps {
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
   const tableState: ITableState = state.tables[ownProps.id] || {} as ITableState;
-  const tableDidMount = !_.isEmpty(tableState);
-  const filterState: IFilterState = tableDidMount && _.findWhere(state.filters, { id: tableState.filterId });
-  const paginationState: IPaginationState = tableDidMount && _.findWhere(state.paginationComposite, { id: tableState.paginationId });
-  const perPageState: IPerPageState = tableDidMount && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
+  const filterState: IFilterState = tableState && _.findWhere(state.filters, { id: tableState.filterId });
+  const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, { id: tableState.paginationId });
+  const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
-  const predicateStates: IDropdownSearchState[] = tableDidMount && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, ownProps.id)) || [];
+  const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, ownProps.id)) || [];
 
   return {
     tableCompositeState: {

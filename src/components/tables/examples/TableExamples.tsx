@@ -69,7 +69,7 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
   const newTableData = JSON.parse(data).entries.reduce((tableData: ITableData, entry: any, arr: any[]) => {
     return {
       byId: {
-        ...tableData.byId,
+        ...(tableData.byId || {}),
         [entry.API]: {
           id: entry.API,
           attribute1: entry.API,
@@ -83,7 +83,7 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
       totalPages: totalPages,
     };
   }, DEFAULT_TABLE_DATA);
-  return defaultTableStateModifier(tableOwnProps, tableCompositeState)({...currentState, data: newTableData});
+  return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, {data: newTableData}))({ ...currentState, data: newTableData });
 };
 
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): ThunkAction => {
@@ -118,41 +118,6 @@ export class TableExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
-        <div className='form-group'>
-          <label className='form-control-label'>
-            Table in manual mode.
-          </label>
-          <TableConnected
-            id={_.uniqueId('react-vapor-table')}
-            manual={manualModeThunk}
-            headingAttributes={[
-              {
-                attributeName: 'attribute1',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute4',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute3',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-            ]}
-            actionBar={{
-              extraContainerClasses: ['mod-border-top'],
-            }}
-            filter={{}}
-            blankSlateDefault={{ title: 'No results here!' }}
-            navigation={{ perPageNumbers }}
-          />
-        </div>
         <div className='form-group'>
           <label className='form-control-label'>Simplest Table
           </label>
@@ -268,6 +233,41 @@ export class TableExamples extends React.Component<any, any> {
             filter={{ containerClasses: ['ml1'] }}
             blankSlateDefault={{ title: 'Oh no! No results!' }}
             blankSlateNoResultsOnAction={{ title: 'Oh no, too much filtering!' }}
+            navigation={{ perPageNumbers }}
+          />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>
+            Table in manual mode.
+          </label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            manual={manualModeThunk}
+            headingAttributes={[
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+            ]}
+            actionBar={{
+              extraContainerClasses: ['mod-border-top'],
+            }}
+            filter={{}}
+            blankSlateDefault={{ title: 'No results here!' }}
             navigation={{ perPageNumbers }}
           />
         </div>

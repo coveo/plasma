@@ -37,7 +37,7 @@ export const defaultTableStateModifier = (
 
     let totalPages: number;
     let totalEntries: number;
-    let nextDisplayedIds = tableCompositeState.data ? [...tableCompositeState.data.allIds] : [];
+    let nextDisplayedIds = [...tableCompositeState.data.allIds];
 
     // predicates default logic
     if (!_.isEmpty(tableCompositeState.predicates)) {
@@ -75,7 +75,7 @@ export const defaultTableStateModifier = (
 
     // sort default logic
     const { sortState } = tableCompositeState;
-    if (sortState && sortState.order !== TableSortingOrder.UNSORTED) {
+    if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
       const defaultSortBy = (displayedId: string) => {
         const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
         return cleanAttributeValue.toString().toLowerCase();

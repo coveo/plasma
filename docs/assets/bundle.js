@@ -9595,6 +9595,7 @@ var TableSortingOrder;
     TableSortingOrder["DESCENDING"] = "DESCENDING";
 })(TableSortingOrder = exports.TableSortingOrder || (exports.TableSortingOrder = {}));
 ;
+exports.DEFAULT_TABLE_PER_PAGE = Infinity;
 exports.DEFAULT_TABLE_DATA = Object.freeze({ byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0, });
 exports.TABLE_PREDICATE_DEFAULT_VALUE = 'ALL';
 exports.TOGGLE_ARROW_CELL_COUNT = 1;
@@ -51661,7 +51662,6 @@ exports.paginationReducer = function (state, action) {
             };
         case TableActions_1.TableActions.modifyState:
             if (underscore_string_1.contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
-                debugger;
                 return __assign({}, state, { pageNb: 0 });
             }
         default:
@@ -54304,8 +54304,8 @@ exports.defaultTableStateModifier = function (tableOwnProps, tableCompositeState
                 nextDisplayedIds.reverse();
             }
         }
-        var startingIndex = tableCompositeState.page * tableCompositeState.perPage;
-        var endingIndex = startingIndex + tableCompositeState.perPage;
+        var startingIndex = (tableCompositeState.page || 0) * (tableCompositeState.perPage || TableConstants_1.DEFAULT_TABLE_PER_PAGE);
+        var endingIndex = startingIndex + (tableCompositeState.perPage || TableConstants_1.DEFAULT_TABLE_PER_PAGE);
         nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
         return __assign({}, tableState, { data: __assign({}, tableState.data, { displayedIds: nextDisplayedIds, totalEntries: totalEntries,
                 totalPages: totalPages }) });
@@ -81620,7 +81620,7 @@ exports.tableHeaderCellReducer = function (state, action) {
         case TableHeaderCellActions_1.TableHeaderCellActions.sort:
             if (state.id !== action.payload.id) {
                 return state.tableId === action.payload.tableId
-                    ? __assign({}, state, { sorted: TableConstants_1.TableSortingOrder.UNSORTED, attributeToSort: action.payload.attributeToSort }) : state;
+                    ? __assign({}, state, { sorted: TableConstants_1.TableSortingOrder.UNSORTED }) : state;
             }
             return __assign({}, state, { sorted: TableUtils_1.getNextTableSortingOrder(state.sorted) });
         default:
@@ -81689,6 +81689,7 @@ exports.tableReducer = function (state, action) {
         case LoadingActions_1.LoadingActions.turnOff:
             return __assign({}, state, { isLoading: false });
         case TableHeaderCellActions_1.TableHeaderCellActions.sort:
+            console.log(state.id + action.payload.id);
             return __assign({}, state, { tableHeaderCellId: action.payload.id });
         default:
             return state;
@@ -85973,8 +85974,7 @@ var buildNewTableStateManually = function (data, currentState, tableCompositeSta
         };
         var _a;
     }, TableConstants_1.DEFAULT_TABLE_DATA);
-    newTableData.displayedIds = newTableData.displayedIds.slice(tableCompositeState.perPage * tableCompositeState.page, tableCompositeState.perPage + (tableCompositeState.perPage * tableCompositeState.page));
-    return TableThunkActionCreators_1.defaultTableStateModifier(tableOwnProps, tableCompositeState)(currentState);
+    return TableThunkActionCreators_1.defaultTableStateModifier(tableOwnProps, tableCompositeState)(__assign({}, currentState, { data: newTableData }));
 };
 var manualModeThunk = function (tableOwnProps, shouldResetPage, tableCompositeState) {
     return function (dispatch, getState) {
@@ -86001,7 +86001,7 @@ var TableExamples = (function (_super) {
     TableExamples.prototype.render = function () {
         return (React.createElement("div", { className: 'mt2' },
             React.createElement("div", { className: 'form-group' },
-                React.createElement("label", { className: 'form-control-label' }, "Table in manual mode (the data is fake and thus won't change much. Perform any side effects on table state modification."),
+                React.createElement("label", { className: 'form-control-label' }, "Table in manual mode."),
                 React.createElement(TableConnected_1.TableConnected, { id: _.uniqueId('react-vapor-table'), manual: manualModeThunk, headingAttributes: [
                         {
                             attributeName: 'attribute1',
@@ -86023,10 +86023,7 @@ var TableExamples = (function (_super) {
                         },
                     ], actionBar: {
                         extraContainerClasses: ['mod-border-top'],
-                    }, predicates: [
-                        { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: function (attributeName) { return attributeName; } },
-                        { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: function (attributeName) { return attributeName; } },
-                    ], filter: {}, blankSlateDefault: { title: 'No results here!' }, navigation: { perPageNumbers: perPageNumbers } })),
+                    }, filter: {}, blankSlateDefault: { title: 'No results here!' }, navigation: { perPageNumbers: perPageNumbers } })),
             React.createElement("div", { className: 'form-group' },
                 React.createElement("label", { className: 'form-control-label' }, "Simplest Table"),
                 React.createElement(TableConnected_1.TableConnected, { id: _.uniqueId('react-vapor-table'), initialTableData: simplestTableData, headingAttributes: [
@@ -86168,7 +86165,7 @@ var mapStateToProps = function (state, ownProps) {
             isLoading: tableState.isLoading,
             filter: filterState && filterState.filterText || '',
             page: paginationState && paginationState.pageNb || 0,
-            perPage: perPageState && perPageState.perPage || 10000000,
+            perPage: perPageState && perPageState.perPage || TableConstants_1.DEFAULT_TABLE_PER_PAGE,
             sortState: {
                 attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
                 order: tableHeaderCellState && tableHeaderCellState.sorted,
@@ -86328,10 +86325,10 @@ var Table = (function (_super) {
         var tableHeaderCells = this.props.headingAttributes.map(function (headingAttribute) {
             var id = "" + TableUtils_1.getTableChildComponentId(_this.props.id, TableConstants_1.TableChildComponent.TABLE_HEADER_CELL) + headingAttribute.attributeName;
             var title = headingAttribute.titleFormatter(headingAttribute.attributeName);
-            var tableRefForSort = !!headingAttribute.sort
+            var tableSortInformation = !!headingAttribute.sort
                 ? { tableId: _this.props.id, attributeToSort: headingAttribute.attributeName }
-                : undefined;
-            return __assign({ id: id, title: title }, tableRefForSort);
+                : {};
+            return __assign({ id: id, title: title }, tableSortInformation);
         });
         var headerClass = classNames('mod-no-border-top', { 'mod-deactivate-pointer': !!this.props.tableCompositeState.isLoading });
         return (React.createElement(TableHeader_1.TableHeader, { headerClass: headerClass, columns: tableHeaderCells.concat([{ title: '' }]), connectCell: true }));
