@@ -82,7 +82,7 @@ export const tableReducer = (
 ): ITableState => {
   switch (action.type) {
     case TableActions.modifyState:
-      return action.payload.TableStateModifier(state);
+      return action.payload.tableStateModifier(state);
     case TableActions.inError:
       return {
         ...state,

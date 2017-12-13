@@ -19,7 +19,7 @@ export interface ITableActionPayload {
   initialPerPage?: number;
   headingAttributeIds?: string[];
   predicates?: ITablePredicate[];
-  TableStateModifier?: ITableStateModifier;
+  tableStateModifier?: ITableStateModifier;
   shouldResetPage?: boolean;
 }
 
@@ -40,13 +40,13 @@ export const setIsInError = (id: string, isInError: boolean): IReduxAction<ITabl
 
 export const modifyState = (
   id: string,
-  TableStateModifier: ITableStateModifier,
+  tableStateModifier: ITableStateModifier,
   shouldResetPage: boolean,
 ): IReduxAction<ITableActionPayload> => ({
   type: TableActions.modifyState,
   payload: {
     id,
-    TableStateModifier,
+    tableStateModifier,
     shouldResetPage,
   },
 });

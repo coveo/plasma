@@ -79,7 +79,7 @@ export interface IReduxActionsPayload {
   attributeToSort?: string;
   initialTableData?: ITableData;
   initialPerPage?: number;
-  TableStateModifier?: ITableStateModifier;
+  tableStateModifier?: ITableStateModifier;
   totalEntries?: number;
   totalPages?: number;
   addedSelectedOption?: IDropdownOption;
