@@ -158,7 +158,8 @@ export class Table extends React.Component<ITableProps, any> {
           <FilterBoxConnected
             {...filter}
             id={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)}
-            key={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)} />
+            key={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)}
+          />
         </div>
       )
       : null;
@@ -220,7 +221,8 @@ export class Table extends React.Component<ITableProps, any> {
       <TableHeader
         headerClass={headerClass}
         columns={[...tableHeaderCells, { title: '' }]}
-        connectCell />
+        connectCell
+      />
     );
   }
 
@@ -230,9 +232,10 @@ export class Table extends React.Component<ITableProps, any> {
     tableCoordinate: string,
     attributeFormatter?: IAttributeFormatter,
   ): JSXRenderable {
-    return attributeFormatter
-      ? <td key={tableCoordinate}>{attributeFormatter(attributeValue, attributeName)}</td>
-      : <td key={tableCoordinate}>{convertUndefinedAndNullToEmptyString(attributeValue)}</td>;
+    const headingRowContent = attributeFormatter
+      ? attributeFormatter(attributeValue, attributeName)
+      : convertUndefinedAndNullToEmptyString(attributeValue);
+    return <td key={tableCoordinate}>{headingRowContent}</td>;
   }
 
   private buildTableBody(): JSX.Element[] {
@@ -324,7 +327,8 @@ export class Table extends React.Component<ITableProps, any> {
   private buildLastUpdated(): JSX.Element {
     return <LastUpdatedConnected
       label={this.props.lastUpdatedLabel}
-      id={getTableChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)} />;
+      id={getTableChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)}
+    />;
   }
 
   private buildLoadingRow(): JSX.Element {

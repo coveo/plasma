@@ -10,9 +10,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import { IActionOptions } from '../actions/Action';
-import {
-  defaultTableStateModifierThunk,
-} from './TableThunkActionCreators';
+import { defaultTableStateModifierThunk } from './TableThunkActionCreators';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { selectOptionDropdownSearch, closeDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
 import { IPerPageState } from '../navigation/perPage/NavigationPerPageReducers';

@@ -74,6 +74,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
   ulElement: HTMLElement;
   protected dropdownButton: HTMLElement;
 
+  private isSearchOn: boolean = false;
+
   static defaultProps: Partial<IDropdownSearchProps> = {
     isOpened: false,
     highlightThreshold: 100,
@@ -226,7 +228,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     const filterPlaceHolder: string = selectedOption && (selectedOption.displayValue || selectedOption.value)
       || this.props.filterPlaceholder;
 
-    if (this.props.isOpened && this.props.options.length > this.props.searchThresold) {
+    if (this.props.isOpened
+      && (this.isSearchOn || this.props.supportSingleCustomOption)) {
       return <FilterBox
         id={this.props.id}
         onFilter={(id, filterText) => this.handleOnFilterTextChange(filterText)}
@@ -321,24 +324,26 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
   }
 
-  private isKeyToHandleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+  private isKeyToPreventOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    /**
+     * Prevent Enter key because it triggers an undesirable click event
+     * Prevent Tab key to prevent focusing on the next element when selecting an option
+     * Prevent Up Arrow key when the first option in the dropdown is the active option to avoid two focus events to be triggered
+     */
     return e.keyCode === keyCode.enter
       || e.keyCode === keyCode.tab
       || (e.keyCode == keyCode.upArrow && this.props.activeOption === this.props.options[0]);
   }
 
   private handleOnOptionClickOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    // prevent onClick because an enter key on an input trigger an click event. OnClick re open the dropdown.
-    // prevent the tab event to select the option and change the focus on next element.
-    // We only want to close the dropdown and get focus on him.
-    // prevent the double focus on input dropdown when key up when the active option
-    // is the first option of the list filter by the filterText
+    if (this.isKeyToPreventOnKeyDown(e)) {
+      e.preventDefault();
 
-    e.preventDefault();
-
-    if (this.props.onOptionClickCallBack && this.props.activeOption) {
-      this.props.onOptionClickCallBack(this.props.activeOption);
+      if (this.props.onOptionClickCallBack && this.props.activeOption) {
+        this.props.onOptionClickCallBack(this.props.activeOption);
+      }
     }
+
   }
 
   handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -346,9 +351,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
       this.props.onKeyDownFilterBox(e.keyCode);
     }
 
-    if (this.isKeyToHandleOnKeyDown(e)) {
-      this.handleOnOptionClickOnKeyDown(e);
-    }
+    this.handleOnOptionClickOnKeyDown(e);
   }
 
   handleOnKeyDownDropdownButton(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -356,12 +359,11 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
       this.props.onKeyDownDropdownButton(e.keyCode);
     }
 
-    if (this.props.options.length <= this.props.searchThresold
-      && this.isKeyToHandleOnKeyDown(e)) {
+    if (!this.isSearchOn) {
       this.handleOnOptionClickOnKeyDown(e);
     }
 
-    if (this.props.options.length <= this.props.searchThresold
+    if (!this.isSearchOn
       && _.contains([keyCode.downArrow, keyCode.upArrow], e.keyCode)) {
       e.preventDefault();
     }
@@ -373,10 +375,14 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
   }
 
+  componentWillReceiveProps(nextProps: IDropdownSearchProps) {
+    this.isSearchOn = nextProps.options.length > nextProps.searchThresold;
+  }
+
   componentDidUpdate() {
     this.updateScrollPositionBasedOnActiveElement();
 
-    if (this.dropdownButton && this.props.setFocusOnDropdownButton && this.props.options.length > this.props.searchThresold) {
+    if (this.dropdownButton && this.props.setFocusOnDropdownButton && this.isSearchOn) {
       this.dropdownButton.focus();
     }
   }
