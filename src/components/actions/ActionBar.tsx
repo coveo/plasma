@@ -122,7 +122,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       defaultContainerClasses,
       this.props.extraContainerClasses,
       {
-        'no-pointer': !!this.props.isLoading,
+        'mod-deactivate-pointer': !!this.props.isLoading,
       },
     );
 
