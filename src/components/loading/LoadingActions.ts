@@ -25,7 +25,6 @@ export const removeLoading = (id: string): IReduxAction<ILoadingActionPayload> =
   }
 });
 
-// the second id is the id from which the action was triggered from
 export const turnOnLoading = (ids: string[], id?: string): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOn,
   payload: {
@@ -33,7 +32,6 @@ export const turnOnLoading = (ids: string[], id?: string): IReduxAction<ILoading
   }
 });
 
-// the second id is the id from which the action was triggered from
 export const turnOffLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOff,
   payload: {
