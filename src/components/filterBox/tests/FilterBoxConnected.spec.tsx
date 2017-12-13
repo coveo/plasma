@@ -8,6 +8,7 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { FilterBoxConnected } from '../FilterBoxConnected';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { filterThrough } from '../FilterBoxActions';
 
 describe('FilterBox', () => {
   describe('<FilterBoxConnected />', () => {
@@ -77,11 +78,12 @@ describe('FilterBox', () => {
     });
 
     it('should send the text from the filter input to the store on filter', () => {
-      let newValue = 'something';
+      const newValue = 'something';
 
       expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === '').length).toBe(1);
 
-      filterBox.props().onFilter(id, newValue);
+      // Use the dispatch since the onFilter is debounced, and is hardly testable
+      store.dispatch(filterThrough(filterBox.props().id, newValue));
 
       expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === '').length).toBe(0);
       expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === newValue).length).toBe(1);

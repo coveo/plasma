@@ -13,7 +13,7 @@ describe('DropdownSearch', () => {
   const options = [
     { value: 'test a', displayValue: 'test a', prefix: 'test' },
     { value: 'test b', displayValue: 'test b', svg: { svgClass: 'svg-class', svgName: 'svg-name' } },
-    { value: 'test c', displayValue: 'test c' }
+    { value: 'test c', displayValue: 'test c' },
   ];
 
   const ownProps: IDropdownSearchProps = {
@@ -26,6 +26,7 @@ describe('DropdownSearch', () => {
     hasFilterSuggestionBoxWidthFixed: true,
     isDisabled: false,
     isOpened: false,
+    searchThresold: 1,
   };
 
   describe('<DropdownSearch />', () => {
@@ -52,7 +53,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should have the same object sent has parameter than the component props', () => {
-        expect(dropdownSearch.props()).toEqual(_.extend({}, ownProps, DropdownSearch.defaultProps));
+        expect(dropdownSearch.props()).toEqual(_.extend({}, DropdownSearch.defaultProps, ownProps));
       });
     });
 
