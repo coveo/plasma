@@ -16,6 +16,8 @@
   animation-name: move-background-horizontal;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+
+  transform: translate3d(0,0,0);
 }
 
 .navigation-loading-item {
