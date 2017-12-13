@@ -1,31 +1,24 @@
-import { ITableHeaderCellOwnProps } from './TableHeaderCell';
 import { IActionOptions } from '../actions/Action';
-import { TableHeader } from './TableHeader';
-import { TableHeadingRowConnected } from './TableHeadingRowConnected';
-import { TableRowWrapper } from './TableRowWrapper';
 import { IActionBarProps } from '../actions/ActionBar';
-import { ActionBarConnected } from '../actions/ActionBarConnected';
-import { BlankSlate, IBlankSlateProps } from '../blankSlate/BlankSlate';
+import { IBlankSlateProps } from '../blankSlate/BlankSlate';
 import { IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
-import { DropdownSearchConnected } from '../dropdownSearch/DropdownSearchConnected';
 import { IFilterBoxProps } from '../filterBox/FilterBox';
-import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
-import { LastUpdatedConnected } from '../lastUpdated/LastUpdatedConnected';
 import * as React from 'react';
 import * as _ from 'underscore';
 import { ITableCompositeState, ITableData } from './TableReducers';
 import { ITableDispatchProps } from './TableConnected';
-import { getTableChildComponentId } from './TableUtils';
-import { TableChildComponent, TOGGLE_ARROW_CELL_COUNT, DEFAULT_TABLE_DATA } from './TableConstants';
+import { DEFAULT_TABLE_DATA } from './TableConstants';
 import { JSXRenderable } from '../../utils/JSXUtils';
-import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { TableCollapsibleRowConnected } from './TableCollapsibleRowConnected';
 import { INavigationChildrenProps } from '../navigation/Navigation';
-import { NavigationConnected } from '../navigation/NavigationConnected';
-import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
-import { Loading } from '../loading/Loading';
 import * as classNames from 'classnames';
 import { ThunkAction } from '../../utils/ReduxUtils';
+import { TableChildActionBar } from './table-children/TableChildActionBar';
+import { TableChildHeader } from './table-children/TableChildHeader';
+import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
+import { TableChildBlankSlate } from './table-children/TableChildBlankSlate';
+import { TableChildNavigation } from './table-children/TableChildNavigation';
+import { TableChildLastUpdated } from './table-children/TableChildLastUpdated';
+import { TableChildBody } from './table-children/TableChildBody';
 
 export interface IData {
   id: string;
@@ -56,6 +49,7 @@ export interface ITablePredicate {
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
+  tableContainerClasses?: string[];
   initialTableData?: ITableData;
   headingAttributes: ITableHeadingAttribute[];
   collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
@@ -119,7 +113,7 @@ export class Table extends React.Component<ITableProps, any> {
   componentWillReceiveProps(nextProps: ITableProps) {
     const { tableCompositeState } = this.props;
 
-    if (this.hastableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
+    if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
       // if the change occurs outside the navigation (per page, pagination) of the table, we should reset the pagination to page 0
       const shouldResetPage = tableCompositeState.page === nextProps.tableCompositeState.page
         && tableCompositeState.perPage === nextProps.tableCompositeState.perPage;
@@ -134,7 +128,7 @@ export class Table extends React.Component<ITableProps, any> {
     }
   }
 
-  private hastableCompositeStateChanged(currentTableCompositeState: ITableCompositeState, nextTableCompositeState: ITableCompositeState): boolean {
+  private hasTableCompositeStateChanged(currentTableCompositeState: ITableCompositeState, nextTableCompositeState: ITableCompositeState): boolean {
     return !!currentTableCompositeState && (
       currentTableCompositeState.filter !== nextTableCompositeState.filter
       || currentTableCompositeState.perPage !== nextTableCompositeState.perPage
@@ -149,200 +143,6 @@ export class Table extends React.Component<ITableProps, any> {
     );
   }
 
-  private buildActionBar(): JSX.Element {
-    const { actionBar, filter, predicates } = this.props;
-
-    const filterBoxConnected: JSX.Element = actionBar && filter
-      ? (
-        <div className='coveo-table-actions'>
-          <FilterBoxConnected
-            {...filter}
-            id={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)}
-            key={getTableChildComponentId(this.props.id, TableChildComponent.FILTER)}
-          />
-        </div>
-      )
-      : null;
-
-    const predicatesConnected: JSX.Element = actionBar && predicates
-      ? (
-        <div className='coveo-table-actions predicate-filters'>
-          {predicates.map((predicate: ITablePredicate, i: number) => {
-            const predicateId = `${getTableChildComponentId(this.props.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
-            const containerClasses = i ? ['ml1'] : [''];
-
-            return (
-              <DropdownSearchConnected
-                {...predicate.props}
-                key={predicateId}
-                fixedPrepend={predicate.attributeNameFormatter(predicate.attributeName)}
-                id={predicateId}
-                containerClasses={containerClasses}
-                onOptionClickCallBack={(option: IDropdownOption) => {
-                  if (this.props.onPredicateOptionClick) {
-                    this.props.onPredicateOptionClick(predicateId, option);
-                  }
-                }} />
-            );
-          })}
-        </div>
-      )
-      : null;
-
-    return actionBar
-      ? (
-        <ActionBarConnected
-          {...actionBar}
-          id={getTableChildComponentId(this.props.id, TableChildComponent.ACTION_BAR)}>
-          {predicatesConnected}
-          {filterBoxConnected}
-        </ActionBarConnected>
-      )
-      : null;
-  }
-
-  private buildTableHeader(): JSX.Element {
-    const tableHeaderCells: ITableHeaderCellOwnProps[] = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
-      const id = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADER_CELL)}${headingAttribute.attributeName}`;
-      const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
-      const tableSortInformation = !!headingAttribute.sort
-        ? { tableId: this.props.id, attributeToSort: headingAttribute.attributeName }
-        : {};
-
-      return { id, title, ...tableSortInformation };
-    });
-
-    const headerClass = classNames(
-      'mod-no-border-top',
-      { 'mod-deactivate-pointer': !!this.props.tableCompositeState.isLoading }
-    );
-
-    return (
-      <TableHeader
-        headerClass={headerClass}
-        columns={[...tableHeaderCells, { title: '' }]}
-        connectCell
-      />
-    );
-  }
-
-  private buildTableHeadingRowContent(
-    attributeValue: any,
-    attributeName: string,
-    tableCoordinate: string,
-    attributeFormatter?: IAttributeFormatter,
-  ): JSXRenderable {
-    const headingRowContent = attributeFormatter
-      ? attributeFormatter(attributeValue, attributeName)
-      : convertUndefinedAndNullToEmptyString(attributeValue);
-    return <td key={tableCoordinate}>{headingRowContent}</td>;
-  }
-
-  private buildTableBody(): JSX.Element[] {
-    const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
-    return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-      const rowData: ITableRowData = tableData.byId[id];
-      const rowWrapperId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_ROW_WRAPPER)}${rowData.id}`;
-      const headingAndCollapsibleId = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_HEADING_ROW)}${rowData.id}`;
-      const collapsibleRowKey = `${getTableChildComponentId(this.props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}${rowData.id}`;
-      const collapsibleData = this.props.collapsibleFormatter && this.props.collapsibleFormatter(rowData, this.props);
-
-      const tableHeadingRowContent = this.props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
-        const { attributeName, attributeFormatter } = headingAttribute;
-        const tableCoordinate = `${xPosition}${yPosition}`;
-        return this.buildTableHeadingRowContent(rowData[attributeName], attributeName, tableCoordinate, attributeFormatter);
-      });
-
-      const collapsibleRow = collapsibleData
-        ? (
-          <TableCollapsibleRowConnected
-            id={headingAndCollapsibleId}
-            key={collapsibleRowKey}
-            nbColumns={this.props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
-            {collapsibleData}
-          </TableCollapsibleRowConnected>
-        )
-        : null;
-
-      const tableRowWrapperClasses = classNames({ 'table-body-loading': !!this.props.tableCompositeState.isLoading });
-      return (
-        <TableRowWrapper key={rowWrapperId} className={tableRowWrapperClasses}>
-          <TableHeadingRowConnected
-            id={headingAndCollapsibleId}
-            key={headingAndCollapsibleId}
-            tableId={this.props.id}
-            isCollapsible={!!collapsibleData}
-            onClickCallback={(e: React.MouseEvent<any>) =>
-              this.props.onRowClick(this.props.getActions && this.props.getActions(rowData, this.props))
-            }>
-            {tableHeadingRowContent}
-          </TableHeadingRowConnected>
-          {collapsibleRow}
-        </TableRowWrapper>
-      );
-    });
-  }
-
-  private buildBlankSlate(): JSX.Element {
-    const { tableCompositeState } = this.props;
-    const tableData = tableCompositeState.data || this.props.initialTableData;
-    const {
-      blankSlateDefault,
-      blankSlateNoResultsOnAction,
-      blankSlateOnError,
-    } = this.props;
-
-    let blankSlatePropsToUse: IBlankSlateProps;
-
-    if (tableData.displayedIds.length
-      || this.props.tableCompositeState.isLoading) {
-      return null;
-    }
-
-    if (tableCompositeState.filter || _.some(tableCompositeState.predicates, (value: any) => !_.isUndefined(value))) {
-      blankSlatePropsToUse = blankSlateNoResultsOnAction || blankSlateDefault;
-    } else if (tableCompositeState.isInError) {
-      blankSlatePropsToUse = blankSlateOnError || blankSlateDefault;
-    } else {
-      blankSlatePropsToUse = blankSlateDefault;
-    }
-
-    return <BlankSlate {...blankSlatePropsToUse} />;
-  }
-
-  private buildNavigation(): JSX.Element {
-    const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
-
-    return !!this.props.navigation ? (
-      <NavigationConnected
-        {...this.props.navigation}
-        totalEntries={tableData.totalEntries}
-        totalPages={tableData.totalPages}
-        id={getTableChildComponentId(this.props.id, TableChildComponent.NAVIGATION)}
-        loadingIds={[getTableChildComponentId(this.props.id, TableChildComponent.LOADING_NAVIGATION)]}
-      />
-    ) : null;
-  }
-
-  private buildLastUpdated(): JSX.Element {
-    return <LastUpdatedConnected
-      label={this.props.lastUpdatedLabel}
-      id={getTableChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)}
-    />;
-  }
-
-  private buildLoadingRow(): JSX.Element {
-    return this.isInitialLoad ? (
-      <tbody className='loading-row'>
-        <tr>
-          <td colSpan={this.props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
-            <Loading />
-          </td>
-        </tr>
-      </tbody>
-    ) : null;
-  }
-
   render() {
     const tableClasses = classNames(
       'mod-collapsible-rows',
@@ -354,16 +154,16 @@ export class Table extends React.Component<ITableProps, any> {
     );
 
     return (
-      <div className='table-container'>
-        {this.buildActionBar()}
+      <div className={classNames('table-container', this.props.tableContainerClasses)}>
+        <TableChildActionBar {...this.props}/>
         <table className={tableClasses}>
-          {this.buildLoadingRow()}
-          {this.buildTableHeader()}
-          {this.buildTableBody()}
+          <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
+          <TableChildHeader {...this.props} />
+          {TableChildBody(this.props)}
         </table>
-        {this.buildBlankSlate()}
-        {this.buildNavigation()}
-        {this.buildLastUpdated()}
+        <TableChildBlankSlate {...this.props} />
+        <TableChildNavigation {...this.props} />
+        <TableChildLastUpdated {...this.props} />
       </div>
     );
   }
