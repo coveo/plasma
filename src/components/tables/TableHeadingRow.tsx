@@ -5,7 +5,6 @@ import * as React from 'react';
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
   id?: string;
   tableId?: string;
-  hide?: boolean;
   isCollapsible: boolean;
   onClickCallback?: (e: React.MouseEvent<any>) => void;
 }
@@ -58,7 +57,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
       'opened': this.props.opened,
     });
 
-    return this.props.hide ? null : (
+    return (
       <tr className={rowClasses} onClick={(e: React.MouseEvent<HTMLTableRowElement>) => this.handleClick(e)}>
         {this.props.children}
         {toggle}
