@@ -12,7 +12,6 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
   classes?: string[];
   svgName?: string;
   svgClass?: string;
-  hide?: string;
 }
 
 export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
@@ -49,7 +48,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
     const blankSlateClasses: string = `blankslate ${marginClasses} ${this.props.classes.join(' ')}`;
     const modalClasses: string = this.props.withModal ? 'mod-header-padding' : '';
 
-    return this.props.hide ? null : (
+    return (
       <div className={modalClasses}>
         <div className={blankSlateClasses}>
           {this.getSvgTemplate()}

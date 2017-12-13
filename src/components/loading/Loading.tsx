@@ -2,7 +2,6 @@ import * as React from 'react';
 
 export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
   id?: string;
-  hide?: boolean;
 }
 
 export interface ILoadingDispatchProps {
@@ -35,6 +34,6 @@ export class Loading extends React.Component<ILoadingProps, any> {
       </div>
     );
 
-    return this.props.hide ? null : spinner;
+    return spinner;
   }
 }

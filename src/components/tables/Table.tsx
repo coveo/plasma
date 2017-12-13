@@ -327,6 +327,18 @@ export class Table extends React.Component<ITableProps, any> {
       id={getTableChildComponentId(this.props.id, TableChildComponent.LAST_UPDATED)} />;
   }
 
+  private buildLoadingRow(): JSX.Element {
+    return this.isInitialLoad ? (
+      <tbody className='loading-row'>
+        <tr>
+          <td colSpan={this.props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
+            <Loading />
+          </td>
+        </tr>
+      </tbody>
+    ) : null;
+  }
+
   render() {
     const tableClasses = classNames(
       'mod-collapsible-rows',
@@ -341,13 +353,7 @@ export class Table extends React.Component<ITableProps, any> {
       <div className='table-container'>
         {this.buildActionBar()}
         <table className={tableClasses}>
-          <tbody className='loading-row'>
-            <tr>
-              <td colSpan={this.props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
-                <Loading />
-              </td>
-            </tr>
-          </tbody>
+          {this.buildLoadingRow()}
           {this.buildTableHeader()}
           {this.buildTableBody()}
         </table>
