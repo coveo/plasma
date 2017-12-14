@@ -43,7 +43,9 @@ export const tableHeaderCellReducer = (
           ? { ...state, sorted: TableSortingOrder.UNSORTED }
           : state;
       }
-      return { ...state, sorted: getNextTableSortingOrder(state.sorted) };
+      return state.tableId === action.payload.tableId
+        ? { ...state, sorted: getNextTableSortingOrder(state.sorted) }
+        : state;
     default:
       return state;
   }
