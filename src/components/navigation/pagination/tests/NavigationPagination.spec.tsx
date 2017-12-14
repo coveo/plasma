@@ -73,7 +73,7 @@ describe('NavigationPagination', () => {
     });
 
     it('should call onPageClick prop if set when clicking on next/previous or page number and page number is greater' +
-      'than or is 0', () => {
+      'than or is 0 and does not equal the current page', () => {
         let clickSpy: jasmine.Spy = jasmine.createSpy('onClick');
         let newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
           { onPageClick: clickSpy });
@@ -94,6 +94,10 @@ describe('NavigationPagination', () => {
 
         // Number button
         navigationPagination.find('.selectable').first().simulate('click');
+        expect(clickSpy.calls.count()).toBe(1);
+
+        // Number button (does not call again since already on this page)
+        navigationPagination.find('.flat-select-option').first().simulate('click');
         expect(clickSpy.calls.count()).toBe(1);
 
         // Next button

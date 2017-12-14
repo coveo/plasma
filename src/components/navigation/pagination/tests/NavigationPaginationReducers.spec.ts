@@ -11,6 +11,8 @@ import {
   IPaginationState
 } from '../NavigationPaginationReducers';
 import { IReduxAction } from '../../../../utils/ReduxUtils';
+import { modifyState } from '../../../tables/TableActions';
+import * as _ from 'underscore';
 
 describe('Reducers', () => {
 
@@ -142,6 +144,39 @@ describe('Reducers', () => {
       let paginationState = paginationCompositeReducer([oldState], action);
 
       expect(paginationState[0]).toEqual(jasmine.objectContaining(newState));
+    });
+
+    it('should set the page number at 0 for the table state modification action if the table id is in the pagination id and shouldResetPage is true', () => {
+      const tableId = 'table';
+      const shouldResetPage = true;
+      const oldState: IPaginationState = {
+        id: `pagination${tableId}`,
+        pageNb: 22
+      };
+
+      expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(0);
+    });
+
+    it('should not reset the page for the table state modification action if the table id is in the pagination id and shouldResetPage is false', () => {
+      const tableId = 'table';
+      const shouldResetPage = false;
+      const oldState: IPaginationState = {
+        id: `pagination${tableId}`,
+        pageNb: 22
+      };
+
+      expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(oldState.pageNb);
+    });
+
+    it('should not reset the page for the table state modification action if the table id is not in the pagination id regardless of shouldResetPage', () => {
+      const tableId = 'table';
+      const shouldResetPage = true;
+      const oldState: IPaginationState = {
+        id: 'pagination',
+        pageNb: 22
+      };
+
+      expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(oldState.pageNb);
     });
   });
 });
