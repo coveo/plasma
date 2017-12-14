@@ -136,7 +136,7 @@ describe('NavigationPerPage', () => {
       expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(expectedPerPageNumbers.length);
     });
 
-    it('should call onPerPageClick prop if it is set when calling handleClick', () => {
+    it('should call onPerPageClick prop if it is set when calling handleClick and perPage is different than currentPerPage', () => {
       let newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS,
         { onPerPageClick: jasmine.createSpy('onPerPageClick') });
       let expectedPerPage: number = 22;
@@ -146,7 +146,20 @@ describe('NavigationPerPage', () => {
       navigationPerPage.setProps(newProps);
       navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage);
 
-      expect(newProps.onPerPageClick).toHaveBeenCalled();
+      expect(newProps.onPerPageClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onPerPageClick prop if perPage is identical to currentPerPage', () => {
+      let newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS,
+        { onPerPageClick: jasmine.createSpy('onPerPageClick'), currentPerPage: 10 });
+      let expectedPerPage: number = 10;
+
+      expect(() => navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage)).not.toThrow();
+
+      navigationPerPage.setProps(newProps);
+      // two clicks should call the function once
+      navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage);
+      expect(newProps.onPerPageClick).not.toHaveBeenCalled();
     });
   });
 });
