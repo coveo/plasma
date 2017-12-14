@@ -345,7 +345,6 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         this.props.onOptionClickCallBack(this.props.activeOption);
       }
     }
-
   }
 
   handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
