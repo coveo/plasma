@@ -171,7 +171,7 @@ describe('Actions', () => {
       });
 
       it('should have the mod-deactivate-pointer class if the action bar is loading', () => {
-        actionBar.setProps({isLoading: true});
+        actionBar.setProps({ isLoading: true });
         expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(true);
       });
     });
