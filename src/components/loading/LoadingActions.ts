@@ -25,7 +25,7 @@ export const removeLoading = (id: string): IReduxAction<ILoadingActionPayload> =
   }
 });
 
-export const turnOnLoading = (ids: string[], id?: string): IReduxAction<ILoadingActionPayload> => ({
+export const turnOnLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOn,
   payload: {
     ids,

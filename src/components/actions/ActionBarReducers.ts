@@ -30,13 +30,13 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
         isLoading: false,
       };
     case LoadingActions.turnOn:
-      return _.contains(action.payload.ids, action.payload.id)
-        ? state
-        : { ...state, isLoading: true };
+      return _.contains(action.payload.ids, state.id)
+        ? { ...state, isLoading: true }
+        : state;
     case LoadingActions.turnOff:
-      return _.contains(action.payload.ids, action.payload.id)
-        ? state
-        : { ...state, isLoading: false };
+      return _.contains(action.payload.ids, state.id)
+        ? { ...state, isLoading: false }
+        : state;
     default:
       return state;
   }
@@ -45,6 +45,8 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
 export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState[] => {
   switch (action.type) {
     case ActionBarActions.addActions:
+    case LoadingActions.turnOn:
+    case LoadingActions.turnOff:
       return state.map(bar =>
         actionBarReducer(bar, action)
       );

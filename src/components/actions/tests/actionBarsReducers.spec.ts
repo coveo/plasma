@@ -7,6 +7,8 @@ import {
   actionBarInitialState,
   actionBarReducer
 } from '../ActionBarReducers';
+import { turnOnLoading, turnOffLoading } from '../../loading/LoadingActions';
+import * as _ from 'underscore';
 
 describe('Actions', () => {
 
@@ -67,90 +69,82 @@ describe('Actions', () => {
       expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(1);
     });
 
-    it('should return the old state without the PromptState with the prompt id when the action is "REMOVE_ACTION_BAR', () => {
-      let oldState: IActionBarState[] = [
-        {
-          id: 'some-action-bar2',
-          actions: undefined
-        }, {
-          id: 'some-action-bar',
-          actions: undefined
-        }, {
-          id: 'some-action-bar3',
-          actions: undefined
-        }
-      ];
-      let action: IReduxAction<IActionBarPayload> = {
-        type: ActionBarActions.remove,
-        payload: {
-          id: 'some-action-bar'
-        }
-      };
-      let actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
+    describe('with action bars in the state', () => {
+      let oldState: IActionBarState[];
 
-      expect(actionBarsState.length).toBe(oldState.length - 1);
-      expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
+      beforeEach(() => {
+        oldState = [
+          {
+            id: 'some-action-bar2',
+            actions: undefined
+          }, {
+            id: 'some-action-bar',
+            actions: undefined
+          }, {
+            id: 'some-action-bar3',
+            actions: undefined
+          }
+        ];
+      });
 
-      oldState = actionBarsState;
-      action.payload.id = 'some-action-bar2';
-      actionBarsState = actionBarsReducer(oldState, action);
+      it('should return the old state without the PromptState with the prompt id when the action is "REMOVE_ACTION_BAR', () => {
+        const action: IReduxAction<IActionBarPayload> = {
+          type: ActionBarActions.remove,
+          payload: {
+            id: 'some-action-bar'
+          }
+        };
+        let actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
 
-      expect(actionBarsState.length).toBe(oldState.length - 1);
-      expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
-    });
+        expect(actionBarsState.length).toBe(oldState.length - 1);
+        expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
 
-    it('should return the old state when the action is "REMOVE_ACTION_BAR" and the prompt id does not exist', () => {
-      let oldState: IActionBarState[] = [
-        {
-          id: 'some-action-bar2',
-          actions: undefined
-        }, {
-          id: 'some-action-bar',
-          actions: undefined
-        }, {
-          id: 'some-action-bar3',
-          actions: undefined
-        }
-      ];
-      let action: IReduxAction<IActionBarPayload> = {
-        type: ActionBarActions.remove,
-        payload: {
-          id: 'some-action-bar4'
-        }
-      };
-      let actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
+        oldState = actionBarsState;
+        action.payload.id = 'some-action-bar2';
+        actionBarsState = actionBarsReducer(oldState, action);
 
-      expect(actionBarsState.length).toBe(oldState.length);
-      expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
-    });
+        expect(actionBarsState.length).toBe(oldState.length - 1);
+        expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
+      });
 
-    it('should add the model (with its actions) to the action bar when the action is "ADD_ACTIONS"', () => {
-      let oldState: IActionBarState[] = [
-        {
-          id: 'some-action-bar2',
-          actions: undefined
-        }, {
-          id: 'some-action-bar',
-          actions: undefined
-        }, {
-          id: 'some-action-bar3',
-          actions: undefined
-        }
-      ];
+      it('should return the old state when the action is "REMOVE_ACTION_BAR" and the prompt id does not exist', () => {
+        const action: IReduxAction<IActionBarPayload> = {
+          type: ActionBarActions.remove,
+          payload: {
+            id: 'some-action-bar4'
+          }
+        };
+        const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
 
-      let action: IReduxAction<IChangeActionBarActionsPayload> = {
-        type: ActionBarActions.addActions,
-        payload: {
-          id: 'some-action-bar3',
-          actions: [{ enabled: true }]
-        }
-      };
+        expect(actionBarsState.length).toBe(oldState.length);
+        expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
+      });
 
-      let actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
+      it('should add the model (with its actions) to the action bar when the action is "ADD_ACTIONS"', () => {
+        const action: IReduxAction<IChangeActionBarActionsPayload> = {
+          type: ActionBarActions.addActions,
+          payload: {
+            id: 'some-action-bar3',
+            actions: [{ enabled: true }]
+          }
+        };
 
-      expect(actionBarsState.length).toBe(oldState.length);
-      expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id)[0].actions).toBeDefined();
-      expect(actionBarsState.filter(actionBar => actionBar.id !== action.payload.id)[0].actions).toBeUndefined();
+        const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
+
+        expect(actionBarsState.length).toBe(oldState.length);
+        expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id)[0].actions).toBeDefined();
+        expect(actionBarsState.filter(actionBar => actionBar.id !== action.payload.id)[0].actions).toBeUndefined();
+      });
+
+      it('should set the actionbar isLoading prop to true when a loading action is dispatched and contain its id', () => {
+        const testedActionBarId = 'some-action-bar3';
+
+        const actionBarsState = actionBarsReducer(oldState, turnOnLoading([testedActionBarId]));
+
+        expect(_.findWhere(actionBarsState, { id: testedActionBarId }).isLoading).toBe(true);
+        expect(actionBarsState.filter((actionBar => actionBar.id !== testedActionBarId)))
+          .toEqual(oldState.filter((actionBar => actionBar.id !== testedActionBarId)));
+      });
     });
   });
 });

@@ -20,7 +20,7 @@ export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps,
       [],
     ),
   );
-  dispatch(turnOnLoading(getTableLoadingIds(tableOwnProps.id), tableOwnProps.id));
+  dispatch(turnOnLoading(getTableLoadingIds(tableOwnProps.id)));
 };
 
 export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: Dispatch) => {
