@@ -190,6 +190,12 @@ describe('DropdownSearch', () => {
         expect(onMouseEnterDropdown).toBeDefined();
       });
 
+      it('should get what to do on onClose as a prop', () => {
+        const onClose = dropdownSearch.props().onClose;
+
+        expect(onClose).toBeDefined();
+      });
+
       it('should toggle the dropdown class to open and close on click on the dropdown button', () => {
         const dropdown = wrapper.find('.dropdown');
         const button = wrapper.find('.dropdown-toggle');

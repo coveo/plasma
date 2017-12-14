@@ -9,7 +9,7 @@ import { keyCode } from '../../../utils/InputUtils';
 import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
 import { DropdownPrepend } from '../DropdownPrepend';
 
-fdescribe('DropdownSearch', () => {
+describe('DropdownSearch', () => {
   const id: string = UUID.generate();
   const options = [
     { value: 'test a', displayValue: 'test a', prefix: 'test' },
