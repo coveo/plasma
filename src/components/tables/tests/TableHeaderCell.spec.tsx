@@ -1,7 +1,10 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { TableHeaderCell, ITableHeaderCellProps } from '../TableHeaderCell';
+import { TableSortingOrder } from '../TableConstants';
+import { Svg } from '../../svg/Svg';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
 
 describe('Tables', () => {
   let title: string;
@@ -42,6 +45,10 @@ describe('Tables', () => {
       tableHeaderCell.detach();
     });
 
+    it('should have the sorted attribute UNSORTED as a default prop', () => {
+      expect(tableHeaderCell.props().sorted).toBe(TableSortingOrder.UNSORTED);
+    });
+
     it('should get its title as a prop', () => {
       let titleProp = tableHeaderCell.props().title;
 
@@ -62,6 +69,95 @@ describe('Tables', () => {
 
     it('should display the title sent as a prop', () => {
       expect(tableHeaderCell.html()).toContain(title);
+    });
+
+    it('should call onMount if it is set as a prop and attributeToSort is defined', () => {
+      const onMountSpy = jasmine.createSpy('onMount');
+
+      tableHeaderCell.unmount();
+      tableHeaderCell.setProps({ onMount: onMountSpy, attributeToSort: 'i am defined', onUnmount: _.noop });
+      tableHeaderCell.mount();
+
+      expect(onMountSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onMount if it is set as a prop and attributeToSort is undefined', () => {
+      const onMountSpy = jasmine.createSpy('onMount');
+
+      tableHeaderCell.unmount();
+      tableHeaderCell.setProps({ onMount: onMountSpy, onUnmount: _.noop });
+      tableHeaderCell.mount();
+
+      expect(onMountSpy).not.toHaveBeenCalled();
+    });
+
+    it('should call onSort on click of the header cell if it is set as a prop and attributeToSort is defined', () => {
+      const onSortSpy = jasmine.createSpy('onSortSpy');
+
+      tableHeaderCell.setProps({ onSort: onSortSpy, attributeToSort: 'i am defined' });
+      tableHeaderCell.simulate('click');
+
+      expect(onSortSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onSort on click of the header cell if it is set as a prop and attributeToSort is undefined', () => {
+      const onSortSpy = jasmine.createSpy('onSortSpy');
+
+      tableHeaderCell.setProps({ onSort: onSortSpy });
+
+      expect(onSortSpy).not.toHaveBeenCalled();
+    });
+
+
+    it('should call onUnmount if it is set as a prop', () => {
+      const onUnmountSpy = jasmine.createSpy('onUnmount');
+
+      tableHeaderCell.setProps({ onUnmount: onUnmountSpy });
+      tableHeaderCell.unmount();
+
+      expect(onUnmountSpy).toHaveBeenCalledTimes(1);
+    });
+
+    describe('sort icon', () => {
+      const svgProps = { svgName: 'asc-desc', className: 'tables-sort icon' };
+      const sortDefaultClass = 'admin-sort';
+      const sortAscendingClass = 'admin-sort-ascending';
+      const sortDescendingClass = 'admin-sort-descending';
+      const throwIfSvgNotPresent = () => {
+        expect(tableHeaderCell.find(Svg).length).toBe(1);
+        expect(tableHeaderCell.find(Svg).props()).toEqual(jasmine.objectContaining(svgProps));
+      };
+
+      it('should not be present if the cell has no sort', () => {
+        expect(tableHeaderCell.find(Svg).length).toBe(0);
+      });
+
+      it('should have a sort icon in an unsorted state if it has sort in state UNSORTED', () => {
+        tableHeaderCell.setProps({ sorted: TableSortingOrder.UNSORTED, attributeToSort: 'anyWouldDo' });
+
+        throwIfSvgNotPresent();
+        expect(tableHeaderCell.hasClass(sortDefaultClass)).toBe(true);
+        expect(tableHeaderCell.hasClass(sortAscendingClass)).toBe(false);
+        expect(tableHeaderCell.hasClass(sortDescendingClass)).toBe(false);
+      });
+
+      it('should have a sort icon in a sorted ascending state if it has sort in state ASCENDING', () => {
+        tableHeaderCell.setProps({ sorted: TableSortingOrder.ASCENDING, attributeToSort: 'anyWouldDo' });
+
+        throwIfSvgNotPresent();
+        expect(tableHeaderCell.hasClass(sortDefaultClass)).toBe(true);
+        expect(tableHeaderCell.hasClass(sortAscendingClass)).toBe(true);
+        expect(tableHeaderCell.hasClass(sortDescendingClass)).toBe(false);
+      });
+
+      it('should have a sort icon in a sorted descending state if it has sort in state DESCENDING', () => {
+        tableHeaderCell.setProps({ sorted: TableSortingOrder.DESCENDING, attributeToSort: 'anyWouldDo' });
+
+        throwIfSvgNotPresent();
+        expect(tableHeaderCell.hasClass(sortDefaultClass)).toBe(true);
+        expect(tableHeaderCell.hasClass(sortAscendingClass)).toBe(false);
+        expect(tableHeaderCell.hasClass(sortDescendingClass)).toBe(true);
+      });
     });
   });
 });

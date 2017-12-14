@@ -40,7 +40,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
   }
 
   componentWillUnmount() {
-    if (this.props.onMount) {
+    if (this.props.onUnmount) {
       this.props.onUnmount();
     }
   }
