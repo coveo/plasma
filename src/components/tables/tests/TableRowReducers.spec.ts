@@ -224,7 +224,7 @@ describe('Tables', () => {
           const tableId = 'tableId';
           const action = unselectAllRows(tableId);
 
-          const currentStateWithTableId = oldState.map(rowState => ({...rowState, tableId, selected: true}));
+          const currentStateWithTableId = oldState.map(rowState => ({ ...rowState, tableId, selected: true }));
 
           expect(tableRowsReducer(currentStateWithTableId, action).every(row => !row.selected)).toBe(true);
         });
@@ -233,7 +233,7 @@ describe('Tables', () => {
           const tableId = 'tableId';
           const action = unselectAllRows(tableId);
 
-          const currentStateWithTableId = oldState.map(rowState => ({...rowState, tableId: `different${tableId}`, selected: true}));
+          const currentStateWithTableId = oldState.map(rowState => ({ ...rowState, tableId: `different${tableId}`, selected: true }));
 
           expect(tableRowsReducer(currentStateWithTableId, action).every(row => row.selected)).toBe(true);
         });

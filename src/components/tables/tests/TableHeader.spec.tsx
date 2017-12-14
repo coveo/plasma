@@ -1,8 +1,13 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { ITableHeaderCellProps, TableHeaderCell } from '../TableHeaderCell';
 import { TableHeader, ITableHeaderProps } from '../TableHeader';
+import { ITableHeaderCellOwnProps } from '../TableHeaderCell';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { Provider } from 'react-redux';
+import { TestUtils } from '../../../utils/TestUtils';
+import { TableHeaderCellConnected } from '../TableHeaderCellConnected';
 
 describe('Tables', () => {
   let columns: ITableHeaderCellProps[];
@@ -73,6 +78,53 @@ describe('Tables', () => {
 
     it('should have the class sent as a prop', () => {
       expect(tableHeader.find('thead').hasClass(headerClass)).toBe(true);
+    });
+
+    describe('table connected cells vs unconnected table cells', () => {
+      const columns: { [key: string]: ITableHeaderCellOwnProps } = {
+        cellWithAttributeToSort: {
+          title: 'I will be connected',
+          attributeToSort: 'attributeJustForTesting'
+        },
+        cellWithoutAttributeToSort: {
+          title: 'I will not be connected because it is not necessary',
+        }
+      };
+
+      const store = TestUtils.buildStore();
+
+      it('should have connected cells if connectCell is passed as prop and some cells have an attribute to sort', () => {
+        tableHeader = mount(
+          <Provider store={store}>
+            <TableHeader
+              columns={_.values(columns)}
+              connectCell
+            />
+          </Provider>,
+          { attachTo: document.getElementById('AppTable') }
+        );
+
+        expect(tableHeader.find(TableHeaderCellConnected).length).toBe(1);
+
+        expect(tableHeader.find(TableHeaderCellConnected).first().text()).toBe(columns.cellWithAttributeToSort.title);
+        expect(tableHeader.find(TableHeaderCell).last().text()).toBe(columns.cellWithoutAttributeToSort.title);
+      });
+
+      it('should not have connected cells if connectCell is not passed as prop even if some cells have an attribute to sort', () => {
+        tableHeader = mount(
+          <Provider store={store}>
+            <TableHeader
+              columns={_.values(columns)}
+            />
+          </Provider>,
+          { attachTo: document.getElementById('AppTable') }
+        );
+
+        expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);
+
+        expect(tableHeader.find(TableHeaderCell).first().text()).toBe(columns.cellWithAttributeToSort.title);
+        expect(tableHeader.find(TableHeaderCell).last().text()).toBe(columns.cellWithoutAttributeToSort.title);
+      });
     });
   });
 });
