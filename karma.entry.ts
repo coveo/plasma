@@ -4,7 +4,7 @@ import * as s from 'underscore.string';
 // Polyfill MouseEvent if needed
 (function (window) {
   try {
-    new MouseEvent('test');
+    new (MouseEvent as any)('test');
     return false; // No need to polyfill
   } catch (e) {
     // Need to polyfill - fall through
@@ -12,7 +12,7 @@ import * as s from 'underscore.string';
 
   // Polyfills DOM4 MouseEvent
 
-  var MouseEvent = function (eventType, params) {
+  var MouseEvent = function (eventType: any, params: any) {
     params = params || { bubbles: false, cancelable: false };
     var mouseEvent = document.createEvent('MouseEvent');
     mouseEvent.initMouseEvent(eventType, params.bubbles, params.cancelable, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
@@ -22,7 +22,7 @@ import * as s from 'underscore.string';
 
   MouseEvent.prototype = Event.prototype;
 
-  window.MouseEvent = MouseEvent;
+  (window as any).MouseEvent = MouseEvent;
 })(window);
 
 

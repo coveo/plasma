@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { DropdownPrepend } from '../DropdownPrepend';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('<DropdownPrepend />', () => {
   describe('render', () => {

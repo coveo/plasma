@@ -145,6 +145,16 @@ describe('Actions', () => {
         expect(actionBarsState.filter((actionBar => actionBar.id !== testedActionBarId)))
           .toEqual(oldState.filter((actionBar => actionBar.id !== testedActionBarId)));
       });
+
+      it('should set the actionbar isLoading prop to false when a loading action is dispatched and contain its id', () => {
+        const testedActionBarId = 'some-action-bar3';
+
+        const actionBarsState = actionBarsReducer(oldState, turnOffLoading([testedActionBarId]));
+
+        expect(_.findWhere(actionBarsState, { id: testedActionBarId }).isLoading).toBe(false);
+        expect(actionBarsState.filter((actionBar => actionBar.id !== testedActionBarId)))
+          .toEqual(oldState.filter((actionBar => actionBar.id !== testedActionBarId)));
+      });
     });
   });
 });

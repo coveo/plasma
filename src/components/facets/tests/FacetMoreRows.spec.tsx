@@ -1,7 +1,6 @@
 import { shallow, ReactWrapper, mount } from 'enzyme';
 import { FacetMoreRows, IFacetMoreRowsProps } from '../FacetMoreRows';
 import { FilterBox } from '../../filterBox/FilterBox';
-import * as $ from 'jquery';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
