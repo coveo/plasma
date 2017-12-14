@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {convertUndefinedAndNullToEmptyString} from './FalsyValuesUtils';
+import { convertUndefinedAndNullToEmptyString } from './FalsyValuesUtils';
 
 describe('FalsyValuesUtils', () => {
   it('should return empty string if the value is undefined', () => {

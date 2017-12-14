@@ -37,14 +37,6 @@ export const selectRow = (id: string, isCollapsible?: boolean, tableId?: string)
   }
 });
 
-export const unselectRow = (id: string, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
-  type: TableRowActions.select,
-  payload: {
-    id,
-    tableId,
-  }
-});
-
 export const unselectAllRows = (tableId?: string): IReduxAction<ITableRowActionPayload> => ({
   type: TableRowActions.unselectAll,
   payload: {
