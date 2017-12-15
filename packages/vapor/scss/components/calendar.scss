@@ -202,6 +202,7 @@
 .option-picker {
   li {
     width: 50%;
+    background: $pure-white;
 
     button {
       box-sizing: border-box;
@@ -221,6 +222,10 @@
       cursor: pointer;
     }
 
+    &:last-child:nth-child(2n+1) {
+      width: 100%;
+    }
+
     // Here we change the border radius of the options in the corners (the options are shown in a 2xX grid)
     &:first-child {
       @include button-border('top', 'left', true);
@@ -234,7 +239,7 @@
       @include button-border('bottom', 'left');
     }
 
-    &:last-child:not(:nth-child(2n+1)) {
+    &:last-child {
       @include button-border('bottom', 'right');
     }
 

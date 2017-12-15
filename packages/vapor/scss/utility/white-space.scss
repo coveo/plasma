@@ -24,7 +24,7 @@ $spacing: 0.5rem;
   margin-right: auto;
 }
 
-@for $i from 1 through 2 {
+@for $i from 1 through 5 {
   .p#{$i} {
     padding: $i * $spacing;
   }
@@ -55,7 +55,7 @@ $spacing: 0.5rem;
 }
 
 // Loop is duplicated so that individual paddings and margins overwrite general ones
-@for $i from 1 through 2 {
+@for $i from 1 through 5 {
   .pt#{$i} {
     padding-top: $i * $spacing;
   }
