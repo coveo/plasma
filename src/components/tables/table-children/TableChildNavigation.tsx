@@ -7,7 +7,7 @@ import { NavigationConnected } from '../../navigation/NavigationConnected';
 
 
 export const TableChildNavigation = (props: ITableProps): JSX.Element => {
-  const tableData = props.tableCompositeState.data || props.initialTableData;
+  const tableData = (props.tableCompositeState && props.tableCompositeState.data) || props.initialTableData;
   const navigationProps = _.isBoolean(props.navigation) ? {} : props.navigation;
 
   return !!navigationProps ? (
