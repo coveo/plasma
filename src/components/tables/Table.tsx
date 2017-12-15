@@ -54,14 +54,14 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   tableContainerClasses?: string[];
   initialTableData?: ITableData;
   collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
-  actionBar?: true|IActionBarProps;
+  actionBar?: true | IActionBarProps;
   getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
   blankSlateNoResultsOnAction?: IBlankSlateProps;
   blankSlateOnError?: IBlankSlateProps;
-  filter?: true|IFilterBoxProps;
+  filter?: true | IFilterBoxProps;
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   predicates?: ITablePredicate[];
-  navigation?: true|INavigationChildrenProps;
+  navigation?: true | INavigationChildrenProps;
   lastUpdatedLabel?: string;
   manual?: (
     tableOwnProps: ITableOwnProps,
