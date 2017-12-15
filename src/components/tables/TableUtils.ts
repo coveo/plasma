@@ -1,5 +1,6 @@
-import { TableSortingOrder, TableChildComponent } from './TableConstants';
+import { TableSortingOrder, TableChildComponent, DEFAULT_TABLE_DATA } from './TableConstants';
 import * as _ from 'underscore';
+import { ITableRowData, IData } from './Table';
 
 const {
   ASCENDING,
@@ -28,3 +29,26 @@ export const getTableLoadingIds = (tableId: string): string[] => ([
   getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
   getTableChildComponentId(tableId, TableChildComponent.LOADING_NAVIGATION),
 ]);
+
+export type Model = { [key: string]: any };
+export type Collection = Model[];
+
+export const convertInitialCollectionToDataById = (collection: Collection, attributeNameForId: string): ITableRowData => {
+  return collection.reduce((finalData: ITableRowData, model: Model) => {
+    return {
+      ...finalData,
+      [model[attributeNameForId]]: {
+        ...model,
+        id: model[attributeNameForId],
+        ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION: model.id,
+      }
+    };
+  }, DEFAULT_TABLE_DATA.byId);
+};
+
+export const convertDataByIdToCollection = (dataById: ITableRowData, attributeNameForId: string, keepIdAttribute = true): Collection => {
+  return _.values(dataById).map((data: IData) => ({
+    ...data,
+    id: keepIdAttribute && (data.ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION || data.id),
+  }));
+};
