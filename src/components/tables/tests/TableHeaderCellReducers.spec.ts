@@ -1,9 +1,7 @@
 import { getNextTableSortingOrder } from '../TableUtils';
 import { TableSortingOrder } from '../TableConstants';
-import { tableHeaderCellsReducer, ITableHeaderCellsState, tableHeaderCellsInitialState } from '../TableHeaderCellReducers';
+import { tableHeaderCellsReducer, tableHeaderCellsInitialState } from '../TableHeaderCellReducers';
 import { TableHeaderCellActions, addHeaderCell, removeHeaderCell, sortFromHeaderCell } from '../TableHeaderCellActions';
-import { IReduxActionsPayload } from '../../../ReactVapor';
-import * as _ from 'underscore';
 
 describe('tableHeaderCellsReducer', () => {
   const testHeaderCell = {
