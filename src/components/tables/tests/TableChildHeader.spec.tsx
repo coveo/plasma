@@ -11,71 +11,71 @@ import { Store, Provider } from 'react-redux';
 import { TableHeaderCellConnected } from '../TableHeaderCellConnected';
 import { TableHeaderCell } from '../TableHeaderCell';
 
-fdescribe('<TableChildHeader />', () => {
-    let store: Store<IReactVaporState>;
+describe('<TableChildHeader />', () => {
+  let store: Store<IReactVaporState>;
 
-    beforeEach(() => {
-        store = TestUtils.buildStore();
+  beforeEach(() => {
+    store = TestUtils.buildStore();
+  });
+
+  afterEach(() => {
+    store.dispatch(clearState());
+  });
+
+  describe('render', () => {
+    const mountComponentWithProps = (props: ITableProps) => {
+      return mount(
+        <Provider store={store}>
+          <TableChildHeader {...props} />
+        </Provider>,
+        { attachTo: document.getElementById('App') },
+      );
+    };
+
+    it('should render without error if basic props are passed', () => {
+      expect(() => {
+        mountComponentWithProps(tablePropsMock);
+      }).not.toThrow();
     });
 
-    afterEach(() => {
-        store.dispatch(clearState());
+    it('should render with a mod-no-border-top and no mod-deactivate-pointer class by default', () => {
+      const tableHeader = mountComponentWithProps(tablePropsMock).find(TableHeader);
+
+      expect(tableHeader.props().headerClass).toContain('mod-no-border-top');
+      expect(tableHeader.props().headerClass).not.toContain('mod-deactivate-pointer');
     });
 
-    describe('render', () => {
-        const mountComponentWithProps = (props: ITableProps) => {
-            return mount(
-                <Provider store={store}>
-                    <TableChildHeader {...props} />
-                </Provider>,
-                { attachTo: document.getElementById('App') },
-            );
-        };
+    it('should render with a mod-no-border-top and a mod-deactivate-pointer class if table is loading', () => {
+      const tableHeader = mountComponentWithProps({ ...tablePropsMock, tableCompositeState: { isLoading: true } } as any)
+        .find(TableHeader);
 
-        it('should render without error if basic props are passed', () => {
-            expect(() => {
-                mountComponentWithProps(tablePropsMock);
-            }).not.toThrow();
-        });
-
-        it('should render with a mod-no-border-top and no mod-deactivate-pointer class by default', () => {
-            const tableHeader = mountComponentWithProps(tablePropsMock).find(TableHeader);
-
-            expect(tableHeader.props().headerClass).toContain('mod-no-border-top');
-            expect(tableHeader.props().headerClass).not.toContain('mod-deactivate-pointer');
-        });
-
-        it('should render with a mod-no-border-top and a mod-deactivate-pointer class if table is loading', () => {
-            const tableHeader = mountComponentWithProps({ ...tablePropsMock, tableCompositeState: { isLoading: true } } as any)
-                .find(TableHeader);
-
-            expect(tableHeader.props().headerClass).toContain('mod-no-border-top');
-            expect(tableHeader.props().headerClass).toContain('mod-deactivate-pointer');
-        });
-
-        it('should have no connected header cells if no headerAttribute has sort', () => {
-            const tableHeader = mountComponentWithProps(tablePropsMock)
-                .find(TableHeader);
-
-            expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);
-            expect(tableHeader.find(TableHeaderCell).length).not.toBe(0);
-        });
-
-        it('should have as many connected header cells as there are headerAttribute with sort', () => {
-            const headerAttributesWithSort = tablePropsMock.headingAttributes.map(attribute => ({...attribute, sort: true}));
-            const tableHeader = mountComponentWithProps({...tablePropsMock, headingAttributes: headerAttributesWithSort}).find(TableHeader);
-
-            expect(tableHeader.find(TableHeaderCellConnected).length).toBe(headerAttributesWithSort.length);
-        });
-
-        it('should have proper sort information for each connected header cell', () => {
-            const headerAttributesWithSort = tablePropsMock.headingAttributes.map(attribute => ({...attribute, sort: true}));
-            const tableHeader = mountComponentWithProps({...tablePropsMock, headingAttributes: headerAttributesWithSort}).find(TableHeader);
-
-            tableHeader.find(TableHeaderCellConnected).forEach((headerCell, index) => {
-                expect(headerCell.props().tableId).toBe(tablePropsMock.id);
-                expect(headerCell.props().attributeToSort).toBe(headerAttributesWithSort[index].attributeName);
-            });
-        });
+      expect(tableHeader.props().headerClass).toContain('mod-no-border-top');
+      expect(tableHeader.props().headerClass).toContain('mod-deactivate-pointer');
     });
+
+    it('should have no connected header cells if no headerAttribute has sort', () => {
+      const tableHeader = mountComponentWithProps(tablePropsMock)
+        .find(TableHeader);
+
+      expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);
+      expect(tableHeader.find(TableHeaderCell).length).not.toBe(0);
+    });
+
+    it('should have as many connected header cells as there are headerAttribute with sort', () => {
+      const headerAttributesWithSort = tablePropsMock.headingAttributes.map(attribute => ({ ...attribute, sort: true }));
+      const tableHeader = mountComponentWithProps({ ...tablePropsMock, headingAttributes: headerAttributesWithSort }).find(TableHeader);
+
+      expect(tableHeader.find(TableHeaderCellConnected).length).toBe(headerAttributesWithSort.length);
+    });
+
+    it('should have proper sort information for each connected header cell', () => {
+      const headerAttributesWithSort = tablePropsMock.headingAttributes.map(attribute => ({ ...attribute, sort: true }));
+      const tableHeader = mountComponentWithProps({ ...tablePropsMock, headingAttributes: headerAttributesWithSort }).find(TableHeader);
+
+      tableHeader.find(TableHeaderCellConnected).forEach((headerCell, index) => {
+        expect(headerCell.props().tableId).toBe(tablePropsMock.id);
+        expect(headerCell.props().attributeToSort).toBe(headerAttributesWithSort[index].attributeName);
+      });
+    });
+  });
 });
