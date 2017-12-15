@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
 import { ITableProps, ITablePredicate } from '../Table';
 import { TableChildComponent } from '../TableConstants';
@@ -12,7 +13,9 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
     return null;
   }
 
-  const { actionBar, filter, predicates } = props;
+  const { predicates } = props;
+  const actionBar = _.isBoolean(props.actionBar) ? {} : props.actionBar;
+  const filter = _.isBoolean(props.filter) ? {} : props.filter;
 
   const filterBoxConnected: JSX.Element = actionBar && filter
     ? (

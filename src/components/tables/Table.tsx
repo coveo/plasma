@@ -49,19 +49,19 @@ export interface ITablePredicate {
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
+  headingAttributes: ITableHeadingAttribute[];
+  blankSlateDefault: IBlankSlateProps;
   tableContainerClasses?: string[];
   initialTableData?: ITableData;
-  headingAttributes: ITableHeadingAttribute[];
   collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
-  actionBar?: IActionBarProps;
+  actionBar?: true|IActionBarProps;
   getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
-  blankSlateDefault: IBlankSlateProps;
   blankSlateNoResultsOnAction?: IBlankSlateProps;
   blankSlateOnError?: IBlankSlateProps;
-  filter?: IFilterBoxProps;
+  filter?: true|IFilterBoxProps;
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   predicates?: ITablePredicate[];
-  navigation?: INavigationChildrenProps;
+  navigation?: true|INavigationChildrenProps;
   lastUpdatedLabel?: string;
   manual?: (
     tableOwnProps: ITableOwnProps,
