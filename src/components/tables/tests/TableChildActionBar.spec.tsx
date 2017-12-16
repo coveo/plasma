@@ -119,6 +119,22 @@ describe('<TableChildActionBar />', () => {
         expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
         expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).length).toBe(2);
       });
+
+      it('should call onPredicateOptionClick if onOptionClickCallback of a dropdownSearch connected is called', () => {
+        const onPredicateOptionClickSpy = jasmine.createSpy('onPredicateOptionClickSpy');
+        const tableActionBar = mountComponentWithProps({
+          ...tablePropsMock,
+          onPredicateOptionClick: onPredicateOptionClickSpy,
+          actionBar: true,
+          predicates: [
+            { attributeName: 'attribute1', attributeNameFormatter: _.identity, props: {} },
+          ],
+        });
+        tableActionBar.find(ActionBarConnected)
+          .find(DropdownSearchConnected).first().props().onOptionClickCallBack({ value: 'test' });
+
+        expect(onPredicateOptionClickSpy).toHaveBeenCalledTimes(1);
+      });
     });
   });
 });

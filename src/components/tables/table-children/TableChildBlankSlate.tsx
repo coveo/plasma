@@ -5,13 +5,14 @@ import * as _ from 'underscore';
 import { TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 
 export const TableChildBlankSlate = (props: ITableProps): JSX.Element => {
-  const tableCompositeState = props.tableCompositeState || {} as any;
-  const tableData = tableCompositeState.data || props.initialTableData;
   const {
     blankSlateDefault,
     blankSlateNoResultsOnAction,
     blankSlateOnError,
+    tableCompositeState,
+    initialTableData,
   } = props;
+  const tableData = tableCompositeState.data || initialTableData;
 
   let blankSlatePropsToUse: IBlankSlateProps;
 

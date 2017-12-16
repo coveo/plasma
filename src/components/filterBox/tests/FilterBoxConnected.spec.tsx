@@ -83,6 +83,7 @@ describe('FilterBox', () => {
       expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === '').length).toBe(1);
 
       // Use the dispatch since the onFilter is debounced, and is hardly testable
+      expect(() => filterBox.props().onFilter(filterBox.props().id, 'anyWouldDo')).not.toThrow();
       store.dispatch(filterThrough(filterBox.props().id, newValue));
 
       expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === '').length).toBe(0);

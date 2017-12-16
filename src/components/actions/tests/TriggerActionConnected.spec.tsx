@@ -68,6 +68,7 @@ describe('Actions', () => {
 
     it('should get what to do onCloseDropdown', () => {
       expect(triggerAction.props().onCloseDropdown).toBeDefined();
+      expect(() => triggerAction.props().onCloseDropdown()).not.toThrow();
     });
 
     it('should add a prompt onTriggerConfirm', () => {

@@ -205,6 +205,16 @@ describe('DropdownSearch', () => {
         expect(dropdown.hasClass('open')).toBe(true, 'open on first click');
       });
 
+      it('should close the dropdown on calling onClose', () => {
+        const dropdown = wrapper.find('.dropdown');
+        const button = wrapper.find('.dropdown-toggle');
+
+        button.simulate('click');
+        expect(dropdown.hasClass('open')).toBe(true);
+        dropdownSearch.props().onClose();
+        expect(dropdown.hasClass('open')).toBe(false);
+      });
+
       it('should toggle the close dropdown on blur', () => {
         const dropdown = wrapper.find('.dropdown');
 

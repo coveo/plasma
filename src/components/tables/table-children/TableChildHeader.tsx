@@ -19,7 +19,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
 
   const headerClass = classNames(
     'mod-no-border-top',
-    { 'mod-deactivate-pointer': !!(props.tableCompositeState && props.tableCompositeState.isLoading) }
+    { 'mod-deactivate-pointer': !!props.tableCompositeState.isLoading }
   );
 
   return (

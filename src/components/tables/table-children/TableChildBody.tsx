@@ -15,19 +15,19 @@ export const TableChildBody = (props: ITableProps): JSX.Element[] => {
     const rowData: ITableRowData = tableData.byId[id];
     const rowWrapperId = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_ROW_WRAPPER)}${rowData.id}`;
     const headingAndCollapsibleId = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_HEADING_ROW)}${rowData.id}`;
-    const collapsibleRowKey = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}${rowData.id}`;
-    const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(rowData, props);
 
     const tableHeadingRowContent = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
       const { attributeName, attributeFormatter } = headingAttribute;
       const tableCoordinate = `${xPosition}${yPosition}`;
-
       const headingRowContent: JSXRenderable = attributeFormatter
         ? attributeFormatter(rowData[attributeName], attributeName)
         : convertUndefinedAndNullToEmptyString(rowData[attributeName]);
+
       return <td key={tableCoordinate}>{headingRowContent}</td>;
     });
 
+    const collapsibleRowKey = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}${rowData.id}`;
+    const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(rowData, props);
     const collapsibleRow = collapsibleData
       ? (
         <TableCollapsibleRowConnected
@@ -48,9 +48,11 @@ export const TableChildBody = (props: ITableProps): JSX.Element[] => {
           key={headingAndCollapsibleId}
           tableId={props.id}
           isCollapsible={!!collapsibleData}
-          onClickCallback={(e: React.MouseEvent<any>) =>
-            props.onRowClick(props.getActions && props.getActions(rowData, props))
-          }>
+          onClickCallback={(e: React.MouseEvent<any>) => {
+            if (props.onRowClick) {
+              props.onRowClick(props.getActions && props.getActions(rowData, props));
+            }
+          }}>
           {tableHeadingRowContent}
         </TableHeadingRowConnected>
         {collapsibleRow}

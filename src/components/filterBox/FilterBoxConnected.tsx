@@ -13,7 +13,7 @@ import * as _ from 'underscore';
 import * as React from 'react';
 
 const FILTER_THROUGH_DEBOUNCE = 400;
-const debouncedFilterThrough = _.debounce(
+export const debouncedFilterThrough = _.debounce(
   (dispatch: Dispatch, id: string, filterText: string) => dispatch(filterThrough(id, filterText)),
   FILTER_THROUGH_DEBOUNCE,
 );
