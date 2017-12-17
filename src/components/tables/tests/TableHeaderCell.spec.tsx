@@ -118,6 +118,15 @@ describe('Tables', () => {
       expect(onUnmountSpy).toHaveBeenCalledTimes(1);
     });
 
+    it('should call onClickCallBack if it is set as a prop', () => {
+      const onClickCallBackSpy = jasmine.createSpy('onClickCallBackSpy');
+      tableHeaderCell.setProps({ onClickCallback: onClickCallBackSpy });
+
+      tableHeaderCell.find('th').simulate('click');
+
+      expect(onClickCallBackSpy).toHaveBeenCalledTimes(1);
+    });
+
     describe('sort icon', () => {
       const svgProps = { svgName: 'asc-desc', className: 'tables-sort icon' };
       const sortDefaultClass = 'admin-sort';

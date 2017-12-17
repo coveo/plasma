@@ -1,7 +1,11 @@
 import { getNextTableSortingOrder } from '../TableUtils';
 import { TableSortingOrder } from '../TableConstants';
-import { tableHeaderCellsReducer, tableHeaderCellsInitialState } from '../TableHeaderCellReducers';
+import { tableHeaderCellsReducer, tableHeaderCellReducer, tableHeaderCellsInitialState } from '../TableHeaderCellReducers';
 import { TableHeaderCellActions, addHeaderCell, removeHeaderCell, sortFromHeaderCell } from '../TableHeaderCellActions';
+
+describe('tableHeaderCellReducer', () => {
+
+});
 
 describe('tableHeaderCellsReducer', () => {
   const testHeaderCell = {
@@ -14,6 +18,11 @@ describe('tableHeaderCellsReducer', () => {
   it('should return the default state if the action is unrelated and the state is undefined', () => {
     const unrelatedAction = { type: 'any', payload: {} };
     expect(tableHeaderCellsReducer(undefined, unrelatedAction)).toEqual(tableHeaderCellsInitialState);
+  });
+
+  it('should return the same state if the action is unrelated and the state is defined for tableHeaderCellReducer', () => {
+    const unrelatedAction = { type: 'any', payload: {} };
+    expect(tableHeaderCellReducer(testHeaderCell, unrelatedAction)).toEqual(testHeaderCell);
   });
 
   it(`should return the state with the new header cell in it on ${TableHeaderCellActions.add}`, () => {
