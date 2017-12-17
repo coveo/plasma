@@ -4,14 +4,16 @@ import * as _ from 'underscore';
 import { internet } from 'faker';
 import { DEFAULT_TABLE_DATA } from '../TableConstants';
 import { IActionOptions } from '../../actions/Action';
+import { IData } from '../Table';
 
-export const tablePropsMock: ITableProps = {
+export const tableOwnPropsMock: ITableProps = {
   id: 'super-table',
   headingAttributes: [
     {
       attributeName: 'email',
       titleFormatter: _.identity,
       attributeFormatter: _.escape,
+      filterFormatter: _.identity,
     },
     {
       attributeName: 'avatar',
@@ -20,6 +22,7 @@ export const tablePropsMock: ITableProps = {
     {
       attributeName: 'userName',
       titleFormatter: _.identity,
+      attributeFormatter: _.identity,
     },
     {
       attributeName: 'password',
@@ -27,12 +30,23 @@ export const tablePropsMock: ITableProps = {
     },
   ],
   blankSlateDefault: { title: 'super blankslate' },
+};
 
+export const tablePropsMock: ITableProps = {
+  ...tableOwnPropsMock,
   // default props
   initialTableData: DEFAULT_TABLE_DATA,
   tableCompositeState: { sortState: {}, data: DEFAULT_TABLE_DATA } as any,
 };
 
+export const predictableData: IData = {
+  id: 'funkyUserName',
+  email: 'awesome@awesome.com',
+  avatar: 'whatever',
+  userName: 'funkyUserName',
+  password: 'lakjhdslfksh98323qasd',
+  url: 'https://www.larrypage.com',
+};
 
 export const dataById = _.range(10).reduce((byId, index) => {
   const email = internet.email();
@@ -51,7 +65,7 @@ export const dataById = _.range(10).reduce((byId, index) => {
       url: index % 2 ? internet.url() : undefined,
     },
   };
-}, {});
+}, {[predictableData.userName]: {...predictableData}});
 
 export const tablePropsMockWithData = {
   ...tablePropsMock,

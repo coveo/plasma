@@ -132,7 +132,6 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
     ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
     : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
 
-
   return tableId
     ? { ...tablesState, [tableId]: tableReducer(tablesState[tableId], action) }
     : tablesState;
