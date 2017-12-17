@@ -65,7 +65,7 @@ export const dataById = _.range(10).reduce((byId, index) => {
       url: index % 2 ? internet.url() : undefined,
     },
   };
-}, {[predictableData.userName]: {...predictableData}});
+}, { [predictableData.userName]: { ...predictableData } });
 
 export const tablePropsMockWithData = {
   ...tablePropsMock,
