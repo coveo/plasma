@@ -17,9 +17,6 @@ export const actionBarsInitialState: IActionBarState[] = [];
 export const actionBarReducer = (state: IActionBarState = actionBarInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState => {
   switch (action.type) {
     case ActionBarActions.addActions:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
       return state.id !== action.payload.id
         ? state
         : { ...state, actions: action.payload.actions };
