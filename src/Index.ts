@@ -101,7 +101,7 @@ export { tableRowsReducer } from './components/tables/TableRowReducers';
 export { TableRowActions, selectRow, unselectAllRows } from './components/tables/TableRowActions';
 export { TableConnected } from './components/tables/TableConnected';
 export { defaultTableStateModifierThunk, dispatchPreTableStateModification, dispatchPostTableStateModification } from './components/tables/TableDataModifier';
-export { getTableChildComponentId, getTableLoadingIds } from './components/tables/TableUtils';
+export { getTableChildComponentId, getTableLoadingIds, convertDataByIdToCollection, convertInitialCollectionToDataById } from './components/tables/TableUtils';
 export { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder } from './components/tables/TableConstants';
 
 // Prompts

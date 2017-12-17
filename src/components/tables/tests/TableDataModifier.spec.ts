@@ -236,10 +236,12 @@ describe('TableDataModifier', () => {
       expect(() => defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)).not.toThrow();
     });
 
-    it('should dispatch an action of type MODIFY_STATE_TABLE', () => {
+    it('should dispatch an action of type MODIFY_STATE_TABLE and turn off loading', () => {
       const dispatchSpy = jasmine.createSpy('dispatchSpy');
       defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)(dispatchSpy);
       expect(dispatchSpy).toHaveBeenCalledWith(jasmine.objectContaining({ type: TableActions.modifyState }));
+      expect(dispatchSpy).toHaveBeenCalledWith(turnOffLoading(getTableLoadingIds(tablePropsMockWithData.id)));
+      expect(dispatchSpy.calls.count()).toBe(2);
     });
   });
 });

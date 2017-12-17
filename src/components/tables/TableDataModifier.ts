@@ -151,5 +151,6 @@ export const defaultTableStateModifierThunk = (
   return (dispatch: IDispatch) => {
     const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);
     dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
+    dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
   };
 };

@@ -101,7 +101,6 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           onFocus={(e: React.FocusEvent<any>) => { this.placeCursorAtEndOfInputValue(e); }}
           onKeyDown={(e) => this.handleOnKeyDown(e)}
           style={inputMaxWidth}
-          value={this.props.filterText}
           autoFocus={this.props.isAutoFocus}
         />
         <Svg svgName='clear' className={svgClearClasses} svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />

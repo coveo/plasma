@@ -1,14 +1,21 @@
-import { getNextTableSortingOrder, getTableChildComponentId, getTableLoadingIds } from '../TableUtils';
+import {
+  getNextTableSortingOrder,
+  getTableChildComponentId,
+  getTableLoadingIds,
+  convertInitialCollectionToDataById,
+  convertDataByIdToCollection,
+} from '../TableUtils';
 import { TableSortingOrder, TableChildComponent } from '../TableConstants';
 import * as _ from 'underscore';
+import * as faker from 'faker';
 
 describe('TableUtils', () => {
   describe('getNextTableSortingOrder', () => {
     const {
-            ASCENDING,
+      ASCENDING,
       DESCENDING,
       UNSORTED,
-          } = TableSortingOrder;
+    } = TableSortingOrder;
 
     it('should return ASCENDING if the previous order was UNSORTED', () => {
       expect(getNextTableSortingOrder(UNSORTED)).toBe(ASCENDING);
@@ -57,6 +64,44 @@ describe('TableUtils', () => {
         getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
         getTableChildComponentId(tableId, TableChildComponent.LOADING_NAVIGATION),
       ]);
+    });
+  });
+
+  describe('data structure conversions', () => {
+    it('should convert a collection into a dataById format', () => {
+      const collection = [
+        {
+          companyName: faker.company.companyName(),
+          catchPhrase: faker.company.catchPhrase(),
+          id: 'a'
+        },
+        {
+          companyName: faker.company.companyName(),
+          catchPhrase: faker.company.catchPhrase(),
+          id: 'b',
+        },
+      ];
+
+      const dataById = {
+        [collection[0].companyName]: {
+          ...collection[0],
+          id: collection[0].companyName,
+          ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION: collection[0].id,
+        },
+        [collection[1].companyName]: {
+          ...collection[1],
+          id: collection[1].companyName,
+          ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION: collection[1].id,
+        },
+      };
+
+      describe('convertInitialCollectionToDataById', () => {
+        expect(convertInitialCollectionToDataById(collection, 'companyName')).toEqual(dataById);
+      });
+
+      describe('convertDataByIdToCollection', () => {
+        expect(convertDataByIdToCollection(dataById)).toEqual(collection);
+      });
     });
   });
 });

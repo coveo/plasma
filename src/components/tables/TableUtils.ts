@@ -46,9 +46,14 @@ export const convertInitialCollectionToDataById = (collection: Collection, attri
   }, DEFAULT_TABLE_DATA.byId);
 };
 
-export const convertDataByIdToCollection = (dataById: ITableRowData, attributeNameForId: string, keepIdAttribute = true): Collection => {
-  return _.values(dataById).map((data: IData) => ({
-    ...data,
-    id: keepIdAttribute && (data.ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION || data.id),
-  }));
+export const convertDataByIdToCollection = (dataById: ITableRowData, keepIdAttribute = true): Collection => {
+  return _.values(dataById).map((data: IData) => {
+    const model = {
+      ...data,
+      id: keepIdAttribute && (data.ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION || data.id),
+    };
+    delete (model as IData).ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION;
+
+    return model;
+  });
 };
