@@ -10,7 +10,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import { IActionOptions } from '../actions/Action';
-import { defaultTableStateModifierThunk } from './TableThunkActionCreators';
+import { defaultTableStateModifierThunk } from './TableDataModifier';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { selectOptionDropdownSearch, closeDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
 import { IPerPageState } from '../navigation/perPage/NavigationPerPageReducers';
@@ -19,7 +19,7 @@ import { IFilterState } from '../filterBox/FilterBoxReducers';
 import { ITableHeaderCellState } from './TableHeaderCellReducers';
 import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
 import { contains } from 'underscore.string';
-import { Dispatch } from '../../utils/ReduxUtils';
+import { IDispatch } from '../../utils/ReduxUtils';
 
 export type IAttributeValue = any;
 export interface IPredicateAttributes {
@@ -73,7 +73,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
 };
 
 const mapDispatchToProps = (
-  dispatch: Dispatch,
+  dispatch: IDispatch,
   ownProps: ITableOwnProps,
 ): ITableDispatchProps => ({
   onDidMount: () => {

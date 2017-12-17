@@ -1,6 +1,6 @@
 import { ITableOwnProps } from '../Table';
 import { TableConnected } from '../TableConnected';
-import { defaultTableStateModifier, dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableThunkActionCreators';
+import { defaultTableStateModifier, dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableDataModifier';
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -10,7 +10,7 @@ import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { ITableRowData, ITableProps } from '../Table';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 import * as $ from 'jquery';
-import { Dispatch, ThunkAction } from '../../../utils/ReduxUtils';
+import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
@@ -86,8 +86,8 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
   return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, { data: newTableData }))({ ...currentState, data: newTableData });
 };
 
-const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): ThunkAction => {
-  return (dispatch: Dispatch, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
+const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): IThunkAction => {
+  return (dispatch: IDispatch, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
     const currentTableState = getState().tables[tableOwnProps.id];
     dispatchPreTableStateModification(tableOwnProps, dispatch);
     $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')

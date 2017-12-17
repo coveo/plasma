@@ -30,7 +30,7 @@ export const tablePropsMock: ITableProps = {
 
   // default props
   initialTableData: DEFAULT_TABLE_DATA,
-  tableCompositeState: { sortState: {} } as any,
+  tableCompositeState: { sortState: {}, data: DEFAULT_TABLE_DATA } as any,
 };
 
 
@@ -68,7 +68,7 @@ export const tablePropsMockWithData = {
       totalPages: 1,
     },
   } as any,
-};
+} as any;
 
 export const tablePossibleProps = [
   tablePropsMock,
@@ -93,4 +93,4 @@ export const tablePossibleProps = [
     ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
     predicates: [{ attributeName: 'email', attributeNameFormatter: _.identity, props: {} }],
   },
-];
+] as any;

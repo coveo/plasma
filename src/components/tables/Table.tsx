@@ -11,7 +11,7 @@ import { DEFAULT_TABLE_DATA } from './TableConstants';
 import { JSXRenderable } from '../../utils/JSXUtils';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import * as classNames from 'classnames';
-import { ThunkAction } from '../../utils/ReduxUtils';
+import { IThunkAction } from '../../utils/ReduxUtils';
 import { TableChildActionBar } from './table-children/TableChildActionBar';
 import { TableChildHeader } from './table-children/TableChildHeader';
 import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
@@ -68,7 +68,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
     shouldResetPage: boolean,
     tableCompositeState: ITableCompositeState,
     previousTableCompositeState: ITableCompositeState,
-  ) => ThunkAction;
+  ) => IThunkAction;
 };
 
 export interface ItableCompositeStateProps {

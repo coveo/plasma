@@ -10,9 +10,9 @@ import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
 import { modifyState } from './TableActions';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
 import { unselectAllRows } from './TableRowActions';
-import { Dispatch } from '../../utils/ReduxUtils';
+import { IDispatch } from '../../utils/ReduxUtils';
 
-export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: Dispatch) => {
+export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: IDispatch) => {
   dispatch(unselectAllRows(tableOwnProps.id));
   dispatch(
     addActionsToActionBar(
@@ -23,7 +23,7 @@ export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps,
   dispatch(turnOnLoading(getTableLoadingIds(tableOwnProps.id)));
 };
 
-export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: Dispatch) => {
+export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: IDispatch) => {
   dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
   dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
 };
@@ -37,7 +37,7 @@ export const defaultTableStateModifier = (
 
     let totalPages: number;
     let totalEntries: number;
-    let nextDisplayedIds = [...tableCompositeState.data.allIds];
+    let nextDisplayedIds = [...(tableCompositeState.data.allIds || [])];
 
     // predicates default logic
     if (!_.isEmpty(tableCompositeState.predicates)) {
@@ -113,7 +113,7 @@ export const defaultTableStateModifier = (
 };
 
 export const defaultTableStateModifierThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState) => {
-  return (dispatch: Dispatch) => {
+  return (dispatch: IDispatch) => {
     const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);
     dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
     dispatchPostTableStateModification(tableOwnProps, dispatch);

@@ -24,6 +24,8 @@ import { toastsContainerReducer } from '../components/toast/ToastReducers';
 import { ISvgProps } from '../components/svg/Svg';
 import { ITooltipProps } from '../components/tooltip/Tooltip';
 import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers';
+import { tablesReducer } from '../components/tables/TableReducers';
+import thunk from 'redux-thunk';
 
 export interface IReactVaporTestState extends IReactVaporState {
   lastAction?: Redux.Action;
@@ -58,6 +60,7 @@ export class TestUtils {
       subNavigations: subNavigationsReducer,
       tabs: tabGroupsReducer,
       toastContainers: toastsContainerReducer,
+      tables: tablesReducer,
     });
 
     const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
@@ -65,7 +68,7 @@ export class TestUtils {
       return reactVaporReducers(state, action as any);
     };
 
-    return Redux.createStore(reactVapor);
+    return Redux.createStore(reactVapor, Redux.applyMiddleware(thunk));
   }
 
   static randomDate() {

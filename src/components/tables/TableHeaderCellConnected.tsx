@@ -2,7 +2,7 @@ import { ITableHeaderCellOwnProps, ITableHeaderCellProps, ITableHeaderCellDispat
 import { addHeaderCell, removeHeaderCell, sortFromHeaderCell } from './TableHeaderCellActions';
 import { ITableHeaderCellState } from './TableHeaderCellReducers';
 import { IReactVaporState } from '../../ReactVapor';
-import { Dispatch, ReduxUtils } from '../../utils/ReduxUtils';
+import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderCellOwnP
 };
 
 const mapDispatchToProps = (
-  dispatch: Dispatch,
+  dispatch: IDispatch,
   ownProps: ITableHeaderCellOwnProps,
 ): ITableHeaderCellDispatchProps => ({
   onMount: () => dispatch(addHeaderCell(ownProps.id, ownProps.attributeToSort, ownProps.tableId)),

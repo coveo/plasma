@@ -49,8 +49,8 @@ describe('<Table />', () => {
 
   describe('render', () => {
     it('should render without error in different scenarios', () => {
-      tablePossibleProps.forEach(props => {
-        expect(() => mountComponentWithProps(props as any)).not.toThrow();
+      tablePossibleProps.forEach((props: ITableProps) => {
+        expect(() => mountComponentWithProps(props)).not.toThrow();
       });
     });
   });
