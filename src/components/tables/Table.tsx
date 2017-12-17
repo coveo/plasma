@@ -106,8 +106,8 @@ export class Table extends React.Component<ITableProps, any> {
       /**
        *  A count is utilized for a clean loading behavior during the initial load of the table
        *  The first count occurs after mount
-       *  The second count occurs after the real data has loaded in the table
-       *  And the initial load is completed after the above two counts
+       *  The second count occurs before the real data has loaded in the table
+       *  The initial load is than completed on the third update after the real data has loaded
        */
       this.isInitialLoad = false;
     }
@@ -117,7 +117,7 @@ export class Table extends React.Component<ITableProps, any> {
     const { tableCompositeState } = this.props;
 
     if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
-      // if the change occurs outside the navigation (per page, pagination), reset the pagination 0
+      // if the change occurs outside the navigation (per page, pagination), reset the pagination to 0
       const shouldResetPage = tableCompositeState.page === nextProps.tableCompositeState.page
         && tableCompositeState.perPage === nextProps.tableCompositeState.perPage;
 

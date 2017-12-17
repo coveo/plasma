@@ -59,7 +59,7 @@ describe('<TableChildActionBar />', () => {
             actionBar: true,
             filter: true,
             predicates: [
-              { attributeName: 'attribute1', attributeNameFormatter: _.identity, props: {} },
+              { attributeName: 'email', attributeNameFormatter: _.identity, props: {} },
             ],
           });
         }).not.toThrow();
@@ -72,8 +72,8 @@ describe('<TableChildActionBar />', () => {
             actionBar: true,
             filter: true,
             predicates: [
-              { attributeName: 'attribute1', attributeNameFormatter: _.identity, props: {} },
-              { attributeName: 'attribute2', attributeNameFormatter: _.identity, props: {} },
+              { attributeName: 'email', attributeNameFormatter: _.identity, props: {} },
+              { attributeName: 'userName', attributeNameFormatter: _.identity, props: {} },
             ],
           });
         }).not.toThrow();
@@ -100,7 +100,7 @@ describe('<TableChildActionBar />', () => {
           ...tablePropsMock,
           actionBar: true,
           predicates: [
-            { attributeName: 'attribute1', attributeNameFormatter: _.identity, props: {} },
+            { attributeName: 'email', attributeNameFormatter: _.identity, props: {} },
           ],
         });
         expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
@@ -112,8 +112,8 @@ describe('<TableChildActionBar />', () => {
           ...tablePropsMock,
           actionBar: true,
           predicates: [
-            { attributeName: 'attribute1', attributeNameFormatter: _.identity, props: {} },
-            { attributeName: 'attribute2', attributeNameFormatter: _.identity, props: {} },
+            { attributeName: 'email', attributeNameFormatter: _.identity, props: {} },
+            { attributeName: 'userName', attributeNameFormatter: _.identity, props: {} },
           ],
         });
         expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
@@ -127,7 +127,7 @@ describe('<TableChildActionBar />', () => {
           onPredicateOptionClick: onPredicateOptionClickSpy,
           actionBar: true,
           predicates: [
-            { attributeName: 'attribute1', attributeNameFormatter: _.identity, props: {} },
+            { attributeName: 'email', attributeNameFormatter: _.identity, props: {} },
           ],
         });
         tableActionBar.find(ActionBarConnected)

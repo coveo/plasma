@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ITableProps, ITableRowData } from '../Table';
 import * as _ from 'underscore';
-import {internet} from 'faker';
+import { internet } from 'faker';
 import { DEFAULT_TABLE_DATA } from '../TableConstants';
+import { IActionOptions } from '../../actions/Action';
 
 export const tablePropsMock: ITableProps = {
   id: 'super-table',
@@ -68,3 +69,28 @@ export const tablePropsMockWithData = {
     },
   } as any,
 };
+
+export const tablePossibleProps = [
+  tablePropsMock,
+  { ...tablePropsMock, navigation: true },
+  { ...tablePropsMock, navigation: true, actionBar: true },
+  { ...tablePropsMock, navigation: true, actionBar: true, filter: true },
+  { ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo' },
+  { ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [] },
+  { ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [] },
+  {
+    ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+    predicates: [{ attributeName: 'email', attributeNameFormatter: _.identity, props: {} }],
+  },
+  tablePropsMockWithData,
+  { ...tablePropsMockWithData, navigation: true },
+  { ...tablePropsMockWithData, navigation: true, actionBar: true },
+  { ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true },
+  { ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo' },
+  { ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [] },
+  { ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [] },
+  {
+    ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+    predicates: [{ attributeName: 'email', attributeNameFormatter: _.identity, props: {} }],
+  },
+];
