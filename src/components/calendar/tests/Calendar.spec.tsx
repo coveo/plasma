@@ -426,7 +426,7 @@ describe('Calendar', () => {
         const tuesday = '2017-12-19'; // always tuesday
 
         it('should return day isSelectable if the day is not a Saturday and selecting lower limit', () => {
-          let otherDay: IDay = _.extend({}, DAY, { date: moment(tuesday)});
+          let otherDay: IDay = _.extend({}, DAY, { date: moment(tuesday) });
           let saturday: IDay = _.extend({}, DAY, { date: moment().endOf('week') });
           let selectionLowerLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.lower });
 
@@ -453,31 +453,31 @@ describe('Calendar', () => {
         });
 
         it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
-            let otherDay: IDay = _.extend({}, DAY, { date: moment(tuesday)});
-            let sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
-            let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
+          let otherDay: IDay = _.extend({}, DAY, { date: moment(tuesday) });
+          let sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
+          let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
 
-            day = calendarInstance.fillInDayInfos(otherDay);
+          day = calendarInstance.fillInDayInfos(otherDay);
 
-            expect(day.isSelectable).toBe(true);
+          expect(day.isSelectable).toBe(true);
 
-            day = calendarInstance.fillInDayInfos(sunday);
+          day = calendarInstance.fillInDayInfos(sunday);
 
-            expect(day.isSelectable).toBe(true);
+          expect(day.isSelectable).toBe(true);
 
-            calendar.setProps({
-              calendarSelection: [selectionUpperLimit],
-              selectionRules: CALENDAR_SELECTION_RULES
-            });
-
-            day = calendarInstance.fillInDayInfos(otherDay);
-
-            expect(day.isSelectable).toBe(true);
-
-            day = calendarInstance.fillInDayInfos(sunday);
-
-            expect(day.isSelectable).toBe(false);
+          calendar.setProps({
+            calendarSelection: [selectionUpperLimit],
+            selectionRules: CALENDAR_SELECTION_RULES
           });
+
+          day = calendarInstance.fillInDayInfos(otherDay);
+
+          expect(day.isSelectable).toBe(true);
+
+          day = calendarInstance.fillInDayInfos(sunday);
+
+          expect(day.isSelectable).toBe(false);
+        });
       });
 
     });
