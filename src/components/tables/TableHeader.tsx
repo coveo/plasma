@@ -2,8 +2,9 @@ import { ITableHeaderCellProps, TableHeaderCell } from './TableHeaderCell';
 import { TableHeaderCellConnected } from './TableHeaderCellConnected';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 
-export interface ITableHeaderProps extends React.ClassAttributes<TableHeader> {
+export interface ITableHeaderProps extends React.ClassAttributes<TableHeader>, IReduxStatePossibleProps {
   columns: ITableHeaderCellProps[];
   headerClass?: string;
   connectCell?: true;

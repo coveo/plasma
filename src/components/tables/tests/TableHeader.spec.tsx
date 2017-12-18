@@ -93,12 +93,12 @@ describe('Tables', () => {
 
       const store = TestUtils.buildStore();
 
-      it('should have connected cells if connectCell is passed as prop and some cells have an attribute to sort', () => {
+      it('should have connected cells if withReduxState is passed as prop and some cells have an attribute to sort', () => {
         tableHeader = mount(
           <Provider store={store}>
             <TableHeader
               columns={_.values(columns)}
-              connectCell
+              withReduxState
             />
           </Provider>,
           { attachTo: document.getElementById('AppTable') }
@@ -110,7 +110,7 @@ describe('Tables', () => {
         expect(tableHeader.find(TableHeaderCell).last().text()).toBe(columns.cellWithoutAttributeToSort.title);
       });
 
-      it('should not have connected cells if connectCell is not passed as prop even if some cells have an attribute to sort', () => {
+      it('should not have connected cells if withReduxState is not passed as prop even if some cells have an attribute to sort', () => {
         tableHeader = mount(
           <Provider store={store}>
             <TableHeader
