@@ -26,7 +26,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
     <TableHeader
       headerClass={headerClass}
       columns={[...tableHeaderCells, { title: '' }]}
-      connectCell
+      withReduxState
     />
   );
 };
