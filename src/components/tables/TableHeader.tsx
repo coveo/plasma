@@ -7,13 +7,12 @@ import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 export interface ITableHeaderProps extends React.ClassAttributes<TableHeader>, IReduxStatePossibleProps {
   columns: ITableHeaderCellProps[];
   headerClass?: string;
-  connectCell?: true;
 }
 
 export class TableHeader extends React.Component<ITableHeaderProps, any> {
   render() {
     const columns: JSX.Element[] = _.map(this.props.columns, (column: ITableHeaderCellProps, index: number): JSX.Element => {
-      const TableHeaderCellClass = this.props.connectCell && column.attributeToSort
+      const TableHeaderCellClass = this.props.withReduxState && column.attributeToSort
         ? TableHeaderCellConnected
         : TableHeaderCell;
 
