@@ -41,10 +41,6 @@ describe('<Table />', () => {
       };
       expect((new Table(tablePropsWithoutDefaultInitialData) as any).isInitialLoad).toBe(false);
     });
-
-    it('should set updateCountForLoadingBehavior to 0', () => {
-      expect((new Table(tablePropsMock) as any).updateCountForLoadingBehavior).toBe(0);
-    });
   });
 
   describe('render', () => {
@@ -72,15 +68,16 @@ describe('<Table />', () => {
       expect(onUnmountSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should set isInitialLoad to false after three component updates', () => {
-      const tableAsAny = new Table(tablePropsMock) as any;
-      tableAsAny.componentDidUpdate();
+    it('should set isInitialLoad to false after tableCompositeState.data is defined', () => {
+      const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined};
+      const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
+
+      expect(tableAsAny.props.tableCompositeState.data).toBeUndefined();
       expect(tableAsAny.isInitialLoad).toBe(true);
 
+      tableAsAny.props.tableCompositeState.data = DEFAULT_TABLE_DATA;
       tableAsAny.componentDidUpdate();
-      expect(tableAsAny.isInitialLoad).toBe(true);
 
-      tableAsAny.componentDidUpdate();
       expect(tableAsAny.isInitialLoad).toBe(false);
     });
 

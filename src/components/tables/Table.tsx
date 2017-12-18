@@ -78,7 +78,6 @@ export interface ITableCompositeStateProps {
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, Partial<ITableDispatchProps> { }
 
 export class Table extends React.Component<ITableProps, any> {
-  private updateCountForLoadingBehavior: number = 0;
   private isInitialLoad: boolean;
 
   static defaultProps = {
@@ -90,7 +89,7 @@ export class Table extends React.Component<ITableProps, any> {
       filter: '',
       page: 0,
       perPage: DEFAULT_TABLE_PER_PAGE,
-    } as Partial<ITableProps>,
+    } as Partial<ITableCompositeState>,
     initialTableData: DEFAULT_TABLE_DATA,
   } as Partial<ITableOwnProps>;
 
@@ -108,16 +107,7 @@ export class Table extends React.Component<ITableProps, any> {
   }
 
   componentDidUpdate() {
-    if (this.updateCountForLoadingBehavior < 2) {
-      this.updateCountForLoadingBehavior += 1;
-    } else {
-      /**
-       *  A count is utilized for a clean loading behavior during the initial load of the table
-       *  The first count occurs after mount
-       *  The second count occurs before the real data has loaded in the table
-       *  The initial load is than completed on the third update after the real data has loaded
-       *  This strategy is only used for tables that do not provide their own initialTableData in their own props
-       */
+    if (this.isInitialLoad && !_.isUndefined(this.props.tableCompositeState.data)) {
       this.isInitialLoad = false;
     }
   }

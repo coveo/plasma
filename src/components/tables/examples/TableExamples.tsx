@@ -119,6 +119,41 @@ export class TableExamples extends React.Component<any, any> {
     return (
       <div className='mt2'>
         <div className='form-group'>
+          <label className='form-control-label'>
+            Table in manual mode.
+          </label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            manual={manualModeThunk}
+            headingAttributes={[
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+                sort: true,
+                attributeFormatter: _.identity,
+              },
+            ]}
+            actionBar={{
+              extraContainerClasses: ['mod-border-top'],
+            }}
+            filter={{}}
+            blankSlateDefault={{ title: 'No results here!' }}
+            navigation={{ perPageNumbers }}
+          />
+        </div>
+        <div className='form-group'>
           <label className='form-control-label'>Simplest Table
           </label>
           <TableConnected
@@ -236,41 +271,7 @@ export class TableExamples extends React.Component<any, any> {
             navigation={{ perPageNumbers }}
           />
         </div>
-        <div className='form-group'>
-          <label className='form-control-label'>
-            Table in manual mode.
-          </label>
-          <TableConnected
-            id={_.uniqueId('react-vapor-table')}
-            manual={manualModeThunk}
-            headingAttributes={[
-              {
-                attributeName: 'attribute1',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute4',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute3',
-                titleFormatter: _.identity,
-                sort: true,
-                attributeFormatter: _.identity,
-              },
-            ]}
-            actionBar={{
-              extraContainerClasses: ['mod-border-top'],
-            }}
-            filter={{}}
-            blankSlateDefault={{ title: 'No results here!' }}
-            navigation={{ perPageNumbers }}
-          />
-        </div>
+
       </div>
     );
   }

@@ -6,6 +6,7 @@ import { Loading } from '../../loading/Loading';
 export interface ITableChildLoadingRowProps extends ITableProps {
   isInitialLoad: boolean;
 }
+
 export const TableChildLoadingRow = (props: ITableChildLoadingRowProps): JSX.Element => {
   return props.isInitialLoad ? (
     <tbody className='loading-row'>
