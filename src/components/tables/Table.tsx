@@ -7,7 +7,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { ITableCompositeState, ITableData } from './TableReducers';
 import { ITableDispatchProps } from './TableConnected';
-import { DEFAULT_TABLE_DATA } from './TableConstants';
+import { DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder } from './TableConstants';
 import { JSXRenderable } from '../../utils/JSXUtils';
 import { INavigationChildrenProps } from '../navigation/Navigation';
 import * as classNames from 'classnames';
@@ -71,18 +71,26 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   ) => IThunkAction;
 };
 
-export interface ItableCompositeStateProps {
+export interface ITableCompositeStateProps {
   readonly tableCompositeState?: ITableCompositeState;
 };
 
-export interface ITableProps extends ITableOwnProps, ItableCompositeStateProps, Partial<ITableDispatchProps> { }
+export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, Partial<ITableDispatchProps> { }
 
 export class Table extends React.Component<ITableProps, any> {
   private updateCountForLoadingBehavior: number = 0;
   private isInitialLoad: boolean;
 
   static defaultProps = {
-    tableCompositeState: { sortState: {} } as any,
+    tableCompositeState: {
+      sortState: {
+        attribute: undefined,
+        order: TableSortingOrder.UNSORTED,
+      },
+      filter: '',
+      page: 0,
+      perPage: DEFAULT_TABLE_PER_PAGE,
+    } as Partial<ITableProps>,
     initialTableData: DEFAULT_TABLE_DATA,
   } as Partial<ITableOwnProps>;
 
@@ -108,6 +116,7 @@ export class Table extends React.Component<ITableProps, any> {
        *  The first count occurs after mount
        *  The second count occurs before the real data has loaded in the table
        *  The initial load is than completed on the third update after the real data has loaded
+       *  This strategy is only used for tables that do not provide their own initialTableData in their own props
        */
       this.isInitialLoad = false;
     }

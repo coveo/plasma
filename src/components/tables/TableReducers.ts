@@ -81,6 +81,17 @@ export const tableReducer = (
   action: IReduxAction<IReduxActionsPayload>,
 ): ITableState => {
   switch (action.type) {
+    case TableActions.add:
+      return {
+        ...tableInitialState,
+        id: action.payload.id,
+        data: action.payload.initialTableData,
+        perPageId: getTableChildComponentId(action.payload.id, TableChildComponent.PER_PAGE),
+        paginationId: getTableChildComponentId(action.payload.id, TableChildComponent.PAGINATION),
+        filterId: getTableChildComponentId(action.payload.id, TableChildComponent.FILTER),
+        predicateIds: action.payload.predicates.map((predicate: ITablePredicate) =>
+          `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`),
+      };
     case TableActions.modifyState:
       return action.payload.tableStateModifier(state);
     case TableActions.inError:
@@ -113,16 +124,7 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
     case TableActions.add:
       return {
         ...tablesState,
-        [action.payload.id]: {
-          ...tableInitialState,
-          id: action.payload.id,
-          data: action.payload.initialTableData,
-          perPageId: getTableChildComponentId(action.payload.id, TableChildComponent.PER_PAGE),
-          paginationId: getTableChildComponentId(action.payload.id, TableChildComponent.PAGINATION),
-          filterId: getTableChildComponentId(action.payload.id, TableChildComponent.FILTER),
-          predicateIds: action.payload.predicates.map((predicate: ITablePredicate) =>
-            `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`),
-        },
+        [action.payload.id]: tableReducer(undefined, action),
       };
     case TableActions.remove:
       return _.omit(tablesState, action.payload.id);

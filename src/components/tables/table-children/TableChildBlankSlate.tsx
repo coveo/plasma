@@ -16,8 +16,7 @@ export const TableChildBlankSlate = (props: ITableProps): JSX.Element => {
 
   let blankSlatePropsToUse: IBlankSlateProps;
 
-  if (tableData.displayedIds.length
-    || tableCompositeState.isLoading) {
+  if (tableData.displayedIds.length || tableCompositeState.isLoading) {
     return null;
   }
 

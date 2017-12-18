@@ -51,8 +51,6 @@ export interface IActionBarProps extends
   IActionBarChildrenProps { }
 
 export class ActionBar extends React.Component<IActionBarProps, any> {
-  private DEFAULT_ACTIONS_CONTAINER_CLASSES: string[] = DEFAULT_ACTIONS_CONTAINER_CLASSES;
-
   static defaultProps: Partial<IActionBarOwnProps> = {
     extraContainerClasses: [],
   };
@@ -116,7 +114,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       : null;
 
     const defaultContainerClasses = !this.props.removeDefaultContainerClasses
-      ? this.DEFAULT_ACTIONS_CONTAINER_CLASSES
+      ? DEFAULT_ACTIONS_CONTAINER_CLASSES
       : [];
     const containerClasses = classNames(
       defaultContainerClasses,

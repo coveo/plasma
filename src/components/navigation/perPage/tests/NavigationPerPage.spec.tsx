@@ -150,9 +150,9 @@ describe('NavigationPerPage', () => {
     });
 
     it('should not call onPerPageClick prop if perPage is identical to currentPerPage', () => {
-      let newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS,
+      const newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS,
         { onPerPageClick: jasmine.createSpy('onPerPageClick'), currentPerPage: 10 });
-      let expectedPerPage: number = 10;
+      const expectedPerPage: number = 10;
 
       expect(() => navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage)).not.toThrow();
 

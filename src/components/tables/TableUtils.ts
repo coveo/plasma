@@ -30,7 +30,9 @@ export const getTableLoadingIds = (tableId: string): string[] => ([
   getTableChildComponentId(tableId, TableChildComponent.LOADING_NAVIGATION),
 ]);
 
-export type Model = { [key: string]: any };
+export type Model = {
+  [key: string]: any;
+};
 export type Collection = Model[];
 
 export const convertInitialCollectionToDataById = (collection: Collection, attributeNameForId: string): ITableRowData => {
@@ -48,11 +50,11 @@ export const convertInitialCollectionToDataById = (collection: Collection, attri
 
 export const convertDataByIdToCollection = (dataById: ITableRowData, keepIdAttribute = true): Collection => {
   return _.values(dataById).map((data: IData) => {
-    const model = {
+    const model: Model = {
       ...data,
       id: keepIdAttribute && (data.ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION || data.id),
     };
-    delete (model as IData).ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION;
+    delete model.ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION;
 
     return model;
   });

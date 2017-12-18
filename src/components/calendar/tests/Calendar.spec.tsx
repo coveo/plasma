@@ -293,11 +293,11 @@ describe('Calendar', () => {
           isFor: CalendarSelectionRuleType.all
         },
         {
-          test: (date: Date) => date.getDay() !== 6, // You cannot start your selection with Saturday
+          test: (date: Date) => date.getDay() !== 6, // You cannot start your selection on a Saturday
           isFor: CalendarSelectionRuleType.lower
         },
         {
-          test: (date: Date) => date.getDay() !== 0, // You cannot end your selection witn Sunday
+          test: (date: Date) => date.getDay() !== 0, // You cannot end your selection on a Sunday
           isFor: CalendarSelectionRuleType.upper
         },
         {
