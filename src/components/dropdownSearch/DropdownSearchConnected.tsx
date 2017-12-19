@@ -6,12 +6,12 @@ import * as _ from 'underscore';
 import {
   addDropdownSearch,
   applyFilterDropdownSearch,
+  closeDropdownSearch,
   removeDropdownSearch,
   selectOptionDropdownSearch,
   toggleDropdownSearch,
   updateActiveOptionDropdownSearch,
   updateOptionsDropdownSearch,
-  closeDropdownSearch,
 } from './DropdownSearchActions';
 import { IDropdownSearchState } from './DropdownSearchReducers';
 
