@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { tablePropsMock, tablePossibleProps } from './TableTestCommon';
-import { Table } from '../Table';
-import { ITableProps } from '../Table';
+import { Table, ITableProps } from '../Table';
+import { ITableData } from '../TableReducers';
 import { mount } from 'enzyme';
 import { clearState } from '../../../utils/ReduxUtils';
 import { IReactVaporState } from '../../../ReactVapor';
@@ -69,8 +69,8 @@ describe('<Table />', () => {
     });
 
     it('should set isInitialLoad to false after tableCompositeState.data is defined', () => {
-      const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined};
-      const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
+      const tableCompositeState = { ...tablePropsMock.tableCompositeState, data: undefined as ITableData};
+      const tableAsAny = new Table({ ...tablePropsMock, tableCompositeState }) as any;
 
       expect(tableAsAny.props.tableCompositeState.data).toBeUndefined();
       expect(tableAsAny.isInitialLoad).toBe(true);

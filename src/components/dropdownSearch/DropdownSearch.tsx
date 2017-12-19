@@ -96,24 +96,6 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     });
   }
 
-  private getSelectedOptionElement(): JSX.Element[] {
-    if (this.props.options.length) {
-      return _.map(this.getSelectedOptions(), (selectedOption: IDropdownOption) => {
-        const displayValue = selectedOption.displayValue || selectedOption.value;
-        return (
-          <span key={selectedOption.value}
-            className='dropdown-selected-value'
-            data-value={selectedOption.value}
-            title={displayValue}>
-            {displayValue}
-          </span>
-        );
-      });
-    }
-
-    return null;
-  }
-
   protected getDropdownOptions(): JSX.Element[] {
     const options = _.chain(this.getDisplayedOptions())
       .filter((option: IDropdownOption) => {
@@ -266,6 +248,60 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     return (elTop >= boxTop) && (elBottom <= boxBottom);
   }
 
+  protected handleOnOptionClickOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (this.isKeyToPreventOnKeyDown(e)) {
+      e.preventDefault();
+
+      if (this.props.onOptionClickCallBack && this.props.activeOption) {
+        this.props.onOptionClickCallBack(this.props.activeOption);
+      }
+    }
+  }
+
+  protected handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (this.props.onKeyDownFilterBox) {
+      this.props.onKeyDownFilterBox(e.keyCode);
+    }
+
+    this.handleOnOptionClickOnKeyDown(e);
+  }
+
+  protected getClasses() {
+    return classNames(
+      'dropdown',
+      'mod-search',
+      {
+        'open': this.props.isOpened,
+        'mod-menu': this.props.modMenu,
+      },
+      ...(this.props.containerClasses || []),
+    );
+  }
+
+  protected getStyles() {
+    return {
+      width: this.props.width,
+    };
+  }
+
+  private getSelectedOptionElement(): JSX.Element[] {
+    if (this.props.options.length) {
+      return _.map(this.getSelectedOptions(), (selectedOption: IDropdownOption) => {
+        const displayValue = selectedOption.displayValue || selectedOption.value;
+        return (
+          <span key={selectedOption.value}
+            className='dropdown-selected-value'
+            data-value={selectedOption.value}
+            title={displayValue}>
+            {displayValue}
+          </span>
+        );
+      });
+    }
+
+    return null;
+  }
+
   private isSearchOn(): boolean {
     return this.props.options.length > this.props.searchThresold;
   }
@@ -285,13 +321,13 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
   }
 
-  handleOnFilterTextChange(filterText: string) {
+  private handleOnFilterTextChange(filterText: string) {
     if (this.props.onFilterTextChange) {
       this.props.onFilterTextChange(filterText);
     }
   }
 
-  handleOnClick() {
+  private handleOnClick() {
     if (this.props.onClickCallBack) {
       this.props.onClickCallBack();
     }
@@ -301,7 +337,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
   }
 
-  handleOnOptionClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+  private handleOnOptionClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     if (e.target) {
       const option = _.findWhere(this.props.options, { value: e.currentTarget.dataset.value });
       if (this.props.onOptionClick) {
@@ -314,13 +350,13 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
   }
 
-  handleOnBlur() {
+  private handleOnBlur() {
     if (this.props.onBlur && !this.props.setFocusOnDropdownButton) {
       this.props.onBlur(this.props.options);
     }
   }
 
-  handleOnClose() {
+  private handleOnClose() {
     if (this.props.onClose) {
       this.props.onClose();
     }
@@ -337,25 +373,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
       || (e.keyCode == keyCode.upArrow && this.props.activeOption === this.props.options[0]);
   }
 
-  private handleOnOptionClickOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (this.isKeyToPreventOnKeyDown(e)) {
-      e.preventDefault();
-
-      if (this.props.onOptionClickCallBack && this.props.activeOption) {
-        this.props.onOptionClickCallBack(this.props.activeOption);
-      }
-    }
-  }
-
-  handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (this.props.onKeyDownFilterBox) {
-      this.props.onKeyDownFilterBox(e.keyCode);
-    }
-
-    this.handleOnOptionClickOnKeyDown(e);
-  }
-
-  handleOnKeyDownDropdownButton(e: React.KeyboardEvent<HTMLInputElement>) {
+  private handleOnKeyDownDropdownButton(e: React.KeyboardEvent<HTMLInputElement>) {
     if (this.props.onKeyDownDropdownButton) {
       this.props.onKeyDownDropdownButton(e.keyCode);
     }
@@ -370,7 +388,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
   }
 
-  handleOnMouseEnter() {
+  private handleOnMouseEnter() {
     if (this.props.onMouseEnterDropdown) {
       this.props.onMouseEnterDropdown();
     }
@@ -398,24 +416,6 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     if (this.props.onDestroy) {
       this.props.onDestroy();
     }
-  }
-
-  getClasses() {
-    return classNames(
-      'dropdown',
-      'mod-search',
-      {
-        'open': this.props.isOpened,
-        'mod-menu': this.props.modMenu,
-      },
-      ...(this.props.containerClasses || []),
-    );
-  }
-
-  getStyles() {
-    return {
-      width: this.props.width,
-    };
   }
 
   render() {

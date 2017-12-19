@@ -91,7 +91,7 @@ describe('Actions', () => {
         const action: IReduxAction<IActionBarPayload> = {
           type: ActionBarActions.remove,
           payload: {
-            id: 'some-action-bar'
+            id: oldState[1].id
           }
         };
         let actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
@@ -100,7 +100,7 @@ describe('Actions', () => {
         expect(actionBarsState.filter(actionBar => actionBar.id === action.payload.id).length).toBe(0);
 
         oldState = actionBarsState;
-        action.payload.id = 'some-action-bar2';
+        action.payload.id = oldState[0].id;
         actionBarsState = actionBarsReducer(oldState, action);
 
         expect(actionBarsState.length).toBe(oldState.length - 1);
@@ -111,7 +111,7 @@ describe('Actions', () => {
         const action: IReduxAction<IActionBarPayload> = {
           type: ActionBarActions.remove,
           payload: {
-            id: 'some-action-bar4'
+            id: 'i do not exist'
           }
         };
         const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
@@ -124,7 +124,7 @@ describe('Actions', () => {
         const action: IReduxAction<IChangeActionBarActionsPayload> = {
           type: ActionBarActions.addActions,
           payload: {
-            id: 'some-action-bar3',
+            id: oldState[2].id,
             actions: [{ enabled: true }]
           }
         };
@@ -137,23 +137,19 @@ describe('Actions', () => {
       });
 
       it('should set the actionbar isLoading prop to true when a loading action is dispatched and contain its id', () => {
-        const testedActionBarId = 'some-action-bar3';
+        const actionBarsState = actionBarsReducer(oldState, turnOnLoading([oldState[2].id]));
 
-        const actionBarsState = actionBarsReducer(oldState, turnOnLoading([testedActionBarId]));
-
-        expect(_.findWhere(actionBarsState, { id: testedActionBarId }).isLoading).toBe(true);
-        expect(actionBarsState.filter((actionBar => actionBar.id !== testedActionBarId)))
-          .toEqual(oldState.filter((actionBar => actionBar.id !== testedActionBarId)));
+        expect(_.findWhere(actionBarsState, { id: oldState[2].id }).isLoading).toBe(true);
+        expect(actionBarsState.filter((actionBar => actionBar.id !== oldState[2].id)))
+          .toEqual(oldState.filter((actionBar => actionBar.id !== oldState[2].id)));
       });
 
       it('should set the actionbar isLoading prop to false when a loading action is dispatched and contain its id', () => {
-        const testedActionBarId = 'some-action-bar3';
+        const actionBarsState = actionBarsReducer(oldState, turnOffLoading([oldState[2].id]));
 
-        const actionBarsState = actionBarsReducer(oldState, turnOffLoading([testedActionBarId]));
-
-        expect(_.findWhere(actionBarsState, { id: testedActionBarId }).isLoading).toBe(false);
-        expect(actionBarsState.filter((actionBar => actionBar.id !== testedActionBarId)))
-          .toEqual(oldState.filter((actionBar => actionBar.id !== testedActionBarId)));
+        expect(_.findWhere(actionBarsState, { id: oldState[2].id }).isLoading).toBe(false);
+        expect(actionBarsState.filter((actionBar => actionBar.id !== oldState[2].id)))
+          .toEqual(oldState.filter((actionBar => actionBar.id !== oldState[2].id)));
       });
     });
   });

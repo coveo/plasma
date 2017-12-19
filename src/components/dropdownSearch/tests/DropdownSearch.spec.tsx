@@ -259,10 +259,10 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the button if the dropdown is open and search is off and supportSingleCustomOption is true', () => {
-        const infiniteSerchThresold = 1000000000000;
+        const infiniteSearchThreshold = 1000000000000;
         renderDropdownSearch(_.extend({}, ownProps, {
           isOpened: true,
-          searchThresold: infiniteSerchThresold,
+          searchThresold: infiniteSearchThreshold,
           supportSingleCustomOption: true,
         }));
 
@@ -270,10 +270,10 @@ describe('DropdownSearch', () => {
       });
 
       it('should show the button if the dropdown is open and search is off and supportSingleCustomOption is false', () => {
-        const infiniteSerchThresold = 1000000000000;
+        const infiniteSearchThreshold = 1000000000000;
         renderDropdownSearch(_.extend({}, ownProps, {
           isOpened: true,
-          searchThresold: infiniteSerchThresold,
+          searchThresold: infiniteSearchThreshold,
         }));
 
         expect(dropdownSearch.find('button.dropdown-toggle').length).toBe(1);
@@ -292,7 +292,7 @@ describe('DropdownSearch', () => {
           isOpened: false,
         }));
 
-        const handleOnCloseSpy = spyOn(DropdownSearch.prototype, 'handleOnClose');
+        const handleOnCloseSpy = spyOn(DropdownSearch.prototype as any, 'handleOnClose');
         dropdownSearch.find('button.dropdown-toggle').simulate('blur');
         expect(handleOnCloseSpy).toHaveBeenCalledTimes(1);
       });
