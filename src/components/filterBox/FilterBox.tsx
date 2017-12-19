@@ -40,10 +40,10 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
   };
 
   private handleChange = (nextInputValue: string) => {
-      this.filterInput.value = nextInputValue;
-      this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
+    this.filterInput.value = nextInputValue;
+    this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
 
-      if (this.props.onFilter) {
+    if (this.props.onFilter) {
       this.props.onFilter(this.props.id, this.filterInput.value);
     }
   }
