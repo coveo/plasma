@@ -1,4 +1,4 @@
-import { DropdownPrepend } from './DropdownPrepend';
+import { Content } from '../content/Content';
 import { keyCode } from '../../utils/InputUtils';
 import { FilterBox } from '../filterBox/FilterBox';
 import { ISvgProps, Svg } from '../svg/Svg';
@@ -193,13 +193,13 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     const prepend = this.props.fixedPrepend || (option && option.prefix);
 
     return prepend
-      ? <DropdownPrepend key={prepend} prepend={prepend} />
+      ? <Content key={prepend} classes={['dropdown-prepend']} content={prepend} />
       : null;
   }
 
   protected getDropdownPrepend(option: IDropdownOption): JSX.Element {
     return option && option.prefix
-      ? <DropdownPrepend key={option.prefix} prepend={option.prefix} />
+      ? <Content key={option.prefix} classes={['dropdown-prepend']} content={option.prefix} />
       : null;
   }
 

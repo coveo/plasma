@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
 import { keyCode } from '../../../utils/InputUtils';
 import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
-import { DropdownPrepend } from '../DropdownPrepend';
+import { Content } from '../../content/Content';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -315,7 +315,7 @@ describe('DropdownSearch', () => {
           fixedPrepend,
         }));
 
-        expect(dropdownSearch.find(DropdownPrepend).text()).toContain(fixedPrepend);
+        expect(dropdownSearch.find(Content).text()).toContain(fixedPrepend);
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {

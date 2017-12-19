@@ -69,7 +69,7 @@ describe('<Table />', () => {
     });
 
     it('should set isInitialLoad to false after tableCompositeState.data is defined', () => {
-      const tableCompositeState = { ...tablePropsMock.tableCompositeState, data: undefined as ITableData};
+      const tableCompositeState = { ...tablePropsMock.tableCompositeState, data: undefined as ITableData };
       const tableAsAny = new Table({ ...tablePropsMock, tableCompositeState }) as any;
 
       expect(tableAsAny.props.tableCompositeState.data).toBeUndefined();
