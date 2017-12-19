@@ -33,7 +33,7 @@ export class TableRowExamples extends React.Component<any, any> {
               <TableHeadingRow isCollapsible={true} opened={true}>
                 {firstRowCols}
               </TableHeadingRow>
-              <TableCollapsibleRow id='second-row' nbColumns={4} opened={true}>
+              <TableCollapsibleRow id='second-row' nbColumns={4} opened >
                 <div className='p2'>This is the collapsible row!</div>
               </TableCollapsibleRow>
             </tbody>

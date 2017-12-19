@@ -164,5 +164,17 @@ describe('Actions', () => {
         });
       });
     });
+
+    describe('loading behavior', () => {
+      it('should not have the mod-deactivate-pointer class if the action bar is not loading', () => {
+        actionBar.setProps({ isLoading: false });
+        expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(false);
+      });
+
+      it('should have the mod-deactivate-pointer class if the action bar is loading', () => {
+        actionBar.setProps({ isLoading: true });
+        expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(true);
+      });
+    });
   });
 });

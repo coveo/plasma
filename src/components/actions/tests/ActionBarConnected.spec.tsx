@@ -81,6 +81,10 @@ describe('Actions', () => {
       expect(itemFilterProp).toBe(itemFilter);
     });
 
+    it('should get isLoading as a prop', () => {
+      expect(actionBar.props().isLoading).toBeDefined();
+    });
+
     it('should get what to do on render as a prop', () => {
       let onRenderProp = actionBar.props().onRender;
 

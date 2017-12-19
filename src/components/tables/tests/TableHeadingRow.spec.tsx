@@ -113,5 +113,15 @@ describe('Tables', () => {
       tableHeadingRow.find('tr').simulate('click');
       expect(onClickSpy).toHaveBeenCalled();
     });
+
+    it('should call onClickCallBack prop if set when clicking on row', () => {
+      const onClickCallback = jasmine.createSpy('onClickCallback');
+      const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onClickCallback });
+      tableHeadingRow.setProps(newTabledHeadingRowProps);
+
+      tableHeadingRow.find('tr').simulate('click');
+
+      expect(onClickCallback).toHaveBeenCalledTimes(1);
+    });
   });
 });

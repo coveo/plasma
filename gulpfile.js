@@ -104,7 +104,7 @@ gulp.task('internalDefs', false, () =>
     name: 'ReactVapor',
     project: './',
     out: 'dist/react-vapor.d.ts',
-    exclude: ['node_modules/**/*.d.ts', 'src/Index.ts', '**/*Examples*', '**/*Example*'],
+    exclude: ['node_modules/**/*.d.ts', 'src/Index.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*'],
   }));
 
 gulp.task('cleanDefs', false, () =>

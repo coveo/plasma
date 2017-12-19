@@ -8,6 +8,7 @@ import { SecondaryActions } from './SecondaryActions';
 import * as React from 'react';
 import * as _ from 'underscore';
 import { ItemFilter } from './filters/ItemFilter';
+import * as classNames from 'classnames';
 
 export const DEFAULT_ACTIONS_CONTAINER_CLASSES = [
   'coveo-table-actions-container',
@@ -29,6 +30,7 @@ export interface IActionBarStateProps extends IReduxStatePossibleProps {
   actions?: IActionOptions[];
   prompt?: JSX.Element;
   itemFilter?: string;
+  isLoading?: boolean;
 }
 
 export interface IActionBarDispatchProps {
@@ -42,11 +44,16 @@ export interface IActionBarChildrenProps {
   itemFilterCropLength?: number;
 }
 
-export interface IActionBarProps extends IActionBarOwnProps, IActionBarStateProps, IActionBarDispatchProps,
+export interface IActionBarProps extends
+  IActionBarOwnProps,
+  IActionBarStateProps,
+  IActionBarDispatchProps,
   IActionBarChildrenProps { }
 
 export class ActionBar extends React.Component<IActionBarProps, any> {
-  private DEFAULT_ACTIONS_CONTAINER_CLASSES: string[] = DEFAULT_ACTIONS_CONTAINER_CLASSES;
+  static defaultProps: Partial<IActionBarOwnProps> = {
+    extraContainerClasses: [],
+  };
 
   private handleClear() {
     if (this.props.clearItemFilter) {
@@ -106,9 +113,16 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       </div>)
       : null;
 
-    const containerClasses = _.isUndefined(this.props.removeDefaultContainerClasses) || !this.props.removeDefaultContainerClasses
-      ? [...this.DEFAULT_ACTIONS_CONTAINER_CLASSES, ...(this.props.extraContainerClasses || [])].join(' ')
-      : (this.props.extraContainerClasses || []).join(' ');
+    const defaultContainerClasses = !this.props.removeDefaultContainerClasses
+      ? DEFAULT_ACTIONS_CONTAINER_CLASSES
+      : [];
+    const containerClasses = classNames(
+      defaultContainerClasses,
+      this.props.extraContainerClasses,
+      {
+        'mod-deactivate-pointer': !!this.props.isLoading,
+      },
+    );
 
     return (
       <div className={containerClasses}>

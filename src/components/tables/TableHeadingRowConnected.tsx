@@ -1,10 +1,10 @@
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload, IReactVaporState } from '../../ReactVapor';
-import { ITableHeadingRowOwnProps, TableHeadingRow, ITableHeadingRowProps } from './TableHeadingRow';
+import { ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow } from './TableHeadingRow';
+import { addRow, removeRow, selectRow } from './TableRowActions';
 import { ITableRowState } from './TableRowReducers';
-import { selectRow, addRow, removeRow } from './TableRowActions';
-import { connect } from 'react-redux';
+import { IReactVaporState } from '../../ReactVapor';
+import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
 import * as React from 'react';
+import { connect } from 'react-redux';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnProps) => {
@@ -16,18 +16,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-  ownProps: ITableHeadingRowOwnProps) => ({
-    onClick: () => {
-      dispatch(selectRow(ownProps.id, ownProps.isCollapsible));
-    },
-    onRender: () => {
-      dispatch(addRow(ownProps.id));
-    },
-    onDestroy: () => {
-      dispatch(removeRow(ownProps.id));
-    }
-  });
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnProps) => ({
+  onClick: () => dispatch(selectRow(ownProps.id, ownProps.isCollapsible, ownProps.tableId)),
+  onRender: () => dispatch(addRow(ownProps.id, ownProps.tableId)),
+  onDestroy: () => dispatch(removeRow(ownProps.id)),
+});
 
 export const TableHeadingRowConnected: React.ComponentClass<ITableHeadingRowProps> =
   connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TableHeadingRow);

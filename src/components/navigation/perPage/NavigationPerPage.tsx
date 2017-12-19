@@ -31,7 +31,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
   private perPageNumbers: number[];
 
   private handleClick(newPerPage: number) {
-    if (this.props.onPerPageClick) {
+    if (this.props.onPerPageClick && this.props.currentPerPage !== newPerPage) {
       this.props.onPerPageClick(newPerPage, this.props.currentPerPage, this.props.currentPage);
     }
   }

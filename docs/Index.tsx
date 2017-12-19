@@ -19,6 +19,7 @@ import { NavigationExamples } from '../src/components/navigation/examples/Naviga
 import { NavigationConnectedExamples } from '../src/components/navigation/examples/NavigationConnectedExamples';
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ActionBarConnectedExamples } from '../src/components/actions/examples/ActionBarConnectedExamples';
+import { TableExamples } from '../src/components/tables/examples/TableExamples';
 import { TableRowExamples } from '../src/components/tables/examples/TableRowExamples';
 import { TableRowConnectedExamples } from '../src/components/tables/examples/TableRowConnectedExamples';
 import { TableHeaderExamples } from '../src/components/tables/examples/TableHeaderExamples';
@@ -65,6 +66,7 @@ import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSe
 class App extends React.Component<any, any> {
 
   render() {
+    (window as any).store = ReactVaporStore;
     return (
       <Provider store={ReactVaporStore}>
         <div className='coveo-form'>
@@ -115,6 +117,7 @@ class App extends React.Component<any, any> {
           <TableRowConnectedExamples />
           <TableEmptyRowExamples />
           <TableHeaderExamples />
+          <TableExamples />
           <OptionsCycleExamples />
           <OptionsCycleConnectedExamples />
           <CalendarConnectedExamples />

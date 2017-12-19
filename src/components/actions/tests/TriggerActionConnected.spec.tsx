@@ -66,6 +66,11 @@ describe('Actions', () => {
       expect(onConfirmProp).toBeDefined();
     });
 
+    it('should get what to do onCloseDropdown', () => {
+      expect(triggerAction.props().onCloseDropdown).toBeDefined();
+      expect(() => triggerAction.props().onCloseDropdown()).not.toThrow();
+    });
+
     it('should add a prompt onTriggerConfirm', () => {
       expect(store.getState().prompts.length).toBe(0);
       triggerAction.props().onTriggerConfirm(jasmine.createSpy('onClick'), {}, 'someClass');

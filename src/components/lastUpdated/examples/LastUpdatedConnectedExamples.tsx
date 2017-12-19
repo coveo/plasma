@@ -25,14 +25,14 @@ export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateCon
   componentDidMount() {
     setInterval(() => {
       this.props.onRefresh();
-    }, 5000);
+    }, 10000);
   }
 
   render() {
     return (
       <div className='form-group' style={{ width: 400 }}>
         <div>
-          <label className='form-control-label'>Last update updating with Redux (every 5 seconds here with the changeLastUpdated action with the id)</label>
+          <label className='form-control-label'>Last update updating with Redux (every 10 seconds here with the changeLastUpdated action with the id)</label>
           <LastUpdatedConnected id='LastUpdatedConnectedExampleComponent' />
         </div>
       </div>

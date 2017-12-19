@@ -3,7 +3,7 @@ import { Svg } from '../svg/Svg';
 import * as classNames from 'classnames';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
-  id: string;
+  id?: string;
   containerClasses?: string[];
   filterPlaceholder?: string;
   onBlur?: () => void;
@@ -31,11 +31,16 @@ export const FILTER_PLACEHOLDER: string = 'Filter';
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
   filterInput: HTMLInputElement;
 
+  constructor(props: IFilterBoxProps) {
+    super(props);
+  }
+
   static defaultProps: Partial<IFilterBoxProps> = {
     isAutoFocus: false,
   };
 
-  private handleChange = () => {
+  private handleChange = (nextInputValue: string) => {
+    this.filterInput.value = nextInputValue;
     this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
 
     if (this.props.onFilter) {
@@ -56,9 +61,8 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
   }
 
   private clearValue = () => {
-    this.filterInput.value = '';
     this.filterInput.focus();
-    this.handleChange();
+    this.handleChange('');
   }
 
   placeCursorAtEndOfInputValue(e: React.FocusEvent<any>) {
@@ -75,6 +79,12 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
   componentWillUnmount() {
     if (this.props.onDestroy) {
       this.props.onDestroy(this.props.id);
+    }
+  }
+
+  componentWillReceiveProps(nextProps: IFilterBoxProps) {
+    if (this.props.filterText !== nextProps.filterText && this.filterInput.value !== nextProps.filterText) {
+      this.handleChange(nextProps.filterText);
     }
   }
 
@@ -96,13 +106,11 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
           type='text'
           className={filterInputClasses}
           placeholder={filterPlaceholder}
-          onChange={() => this.handleChange()}
+          onChange={(e: React.FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
           onBlur={() => this.handleOnBlur()}
-          onFocus={(e: React.FocusEvent<any>) => { this.placeCursorAtEndOfInputValue(e); }}
+          onFocus={(e: React.FocusEvent<HTMLInputElement>) => { this.placeCursorAtEndOfInputValue(e); }}
           onKeyDown={(e) => this.handleOnKeyDown(e)}
-          value={this.props.filterText}
           style={inputMaxWidth}
-
           autoFocus={this.props.isAutoFocus}
         />
         <Svg svgName='clear' className={svgClearClasses} svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />

@@ -86,6 +86,14 @@ describe('Actions', () => {
       expect(triggerSpy.calls.count()).toBe(1);
     });
 
+    it('should call the onCloseDropdown if it exists and no confirmation is required', () => {
+      const onCloseDropdownSpy = jasmine.createSpy('onCloseDropdownSpy');
+      triggerAction.setProps({ onCloseDropdown: onCloseDropdownSpy });
+
+      triggerAction.find('.enabled').simulate('click');
+      expect(onCloseDropdownSpy).toHaveBeenCalledTimes(1);
+    });
+
     it('should call the onTriggerConfirm if set when clicked and confirmation is required', () => {
       let onTriggerConfirmSpy = jasmine.createSpy('onTriggerConfirmSpy');
 

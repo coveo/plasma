@@ -12,7 +12,7 @@ import * as React from 'react';
 
 describe('NavigationPagination', () => {
   const NAVIGATION_PAGINATION_BASIC_PROPS: INavigationPaginationProps = {
-    totalPages: 22
+    totalPages: 22,
   };
 
   describe('<NavigationPagination />', () => {
@@ -54,7 +54,7 @@ describe('NavigationPagination', () => {
           onRender={renderSpy}
         />,
         { attachTo: document.getElementById('App') });
-      expect(renderSpy.calls.count()).toBe(1);
+      expect(renderSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
@@ -69,11 +69,11 @@ describe('NavigationPagination', () => {
         />,
         { attachTo: document.getElementById('App') });
       navigationPagination.unmount();
-      expect(destroySpy.calls.count()).toBe(1);
+      expect(destroySpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call onPageClick prop if set when clicking on next/previous or page number and page number is greater' +
-      'than or is 0', () => {
+      'than or is 0 and does not equal the current page', () => {
         let clickSpy: jasmine.Spy = jasmine.createSpy('onClick');
         let newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
           { onPageClick: clickSpy });
@@ -94,11 +94,15 @@ describe('NavigationPagination', () => {
 
         // Number button
         navigationPagination.find('.selectable').first().simulate('click');
-        expect(clickSpy.calls.count()).toBe(1);
+        expect(clickSpy).toHaveBeenCalledTimes(1);
+
+        // Number button (does not call again since already on this page)
+        navigationPagination.find('.flat-select-option').first().simulate('click');
+        expect(clickSpy).toHaveBeenCalledTimes(1);
 
         // Next button
         navigationPagination.find('.mod-link').last().simulate('click');
-        expect(clickSpy.calls.count()).toBe(2);
+        expect(clickSpy).toHaveBeenCalledTimes(2);
       });
 
     it('should show the previous label sent as a prop else show the default one', () => {

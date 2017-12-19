@@ -7,13 +7,14 @@ import * as _ from 'underscore';
 import { FilterBox } from '../../filterBox/FilterBox';
 import { keyCode } from '../../../utils/InputUtils';
 import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
+import { Content } from '../../content/Content';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
   const options = [
     { value: 'test a', displayValue: 'test a', prefix: 'test' },
     { value: 'test b', displayValue: 'test b', svg: { svgClass: 'svg-class', svgName: 'svg-name' } },
-    { value: 'test c', displayValue: 'test c' }
+    { value: 'test c', displayValue: 'test c' },
   ];
 
   const ownProps: IDropdownSearchProps = {
@@ -26,6 +27,7 @@ describe('DropdownSearch', () => {
     hasFilterSuggestionBoxWidthFixed: true,
     isDisabled: false,
     isOpened: false,
+    searchThresold: 1,
   };
 
   describe('<DropdownSearch />', () => {
@@ -52,7 +54,7 @@ describe('DropdownSearch', () => {
       });
 
       it('should have the same object sent has parameter than the component props', () => {
-        expect(dropdownSearch.props()).toEqual(_.extend({}, ownProps, DropdownSearch.defaultProps));
+        expect(dropdownSearch.props()).toEqual(_.extend({}, DropdownSearch.defaultProps, ownProps));
       });
     });
 
@@ -213,6 +215,24 @@ describe('DropdownSearch', () => {
 
         expect(onKeyDownDropdownButton).toHaveBeenCalled();
       });
+
+      it('should call handleOnOptionClickOnKeyDown if search is off', () => {
+        spyOn(DropdownSearch.prototype as any, 'isSearchOn').and.returnValue(false);
+        const handleOnOptionClickOnKeyDownSpy = spyOn(DropdownSearch.prototype as any, 'handleOnOptionClickOnKeyDown');
+
+        dropdownSearch.find('button.dropdown-toggle').simulate('keydown');
+
+        expect(handleOnOptionClickOnKeyDownSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should not call handleOnOptionClickOnKeyDown if search is on', () => {
+        spyOn(DropdownSearch.prototype as any, 'isSearchOn').and.returnValue(true);
+        const handleOnOptionClickOnKeyDownSpy = spyOn(DropdownSearch.prototype as any, 'handleOnOptionClickOnKeyDown');
+
+        dropdownSearch.find('button.dropdown-toggle').simulate('keydown');
+
+        expect(handleOnOptionClickOnKeyDownSpy).not.toHaveBeenCalled();
+      });
     });
 
     describe('Props functionality', () => {
@@ -230,12 +250,33 @@ describe('DropdownSearch', () => {
         };
       });
 
-      it('should show the filterBox if the dropdown is open', () => {
+      it('should show the filterBox if the dropdown is open and search is on', () => {
         renderDropdownSearch(_.extend({}, ownProps, {
           isOpened: true,
         }));
 
         expect(dropdownSearch.find(FilterBox).length).toBe(1);
+      });
+
+      it('should show the button if the dropdown is open and search is off and supportSingleCustomOption is true', () => {
+        const infiniteSearchThreshold = 1000000000000;
+        renderDropdownSearch(_.extend({}, ownProps, {
+          isOpened: true,
+          searchThresold: infiniteSearchThreshold,
+          supportSingleCustomOption: true,
+        }));
+
+        expect(dropdownSearch.find(FilterBox).length).toBe(1);
+      });
+
+      it('should show the button if the dropdown is open and search is off and supportSingleCustomOption is false', () => {
+        const infiniteSearchThreshold = 1000000000000;
+        renderDropdownSearch(_.extend({}, ownProps, {
+          isOpened: true,
+          searchThresold: infiniteSearchThreshold,
+        }));
+
+        expect(dropdownSearch.find('button.dropdown-toggle').length).toBe(1);
       });
 
       it('should show the button if the dropdown is close', () => {
@@ -244,6 +285,37 @@ describe('DropdownSearch', () => {
         }));
 
         expect(dropdownSearch.find('button.dropdown-toggle').length).toBe(1);
+      });
+
+      it('should call handleOnClose if a blur event occurs on the dropdown button', () => {
+        renderDropdownSearch(_.extend({}, ownProps, {
+          isOpened: false,
+        }));
+
+        const handleOnCloseSpy = spyOn(DropdownSearch.prototype as any, 'handleOnClose');
+        dropdownSearch.find('button.dropdown-toggle').simulate('blur');
+        expect(handleOnCloseSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should call this.props.onClose if a blur event occurs on the dropdown button and the onClose prop is defined', () => {
+        const onCloseSpy = jasmine.createSpy('onCloseSpy');
+        renderDropdownSearch(_.extend({}, ownProps, {
+          isOpened: false,
+          onClose: onCloseSpy,
+        }));
+
+        dropdownSearch.find('button.dropdown-toggle').simulate('blur');
+        expect(onCloseSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should show the button with a fixed prepend if it has one', () => {
+        const fixedPrepend = 'prependo';
+        renderDropdownSearch(_.extend({}, ownProps, {
+          isOpened: false,
+          fixedPrepend,
+        }));
+
+        expect(dropdownSearch.find(Content).text()).toContain(fixedPrepend);
       });
 
       it('should show the dropdown prepend if the selected option has one', () => {
@@ -385,6 +457,37 @@ describe('DropdownSearch', () => {
 
         dropdownSearch.setProps({ activeOption: { value: 'test 1', displayValue: 'test 1' } });
         expect(spy).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('isSearchOn', () => {
+      const renderDropdownSearchWithNumberOfOptions = (numberOfOptions: number) => {
+        renderDropdownSearch(_.extend({}, ownProps, {
+          selectedOption: { value: 'test 1', displayValue: 'test 1' },
+          isOpened: true,
+          options: _.times(numberOfOptions, (n: number) => ({ value: `${n}` })),
+          searchThresold: 2,
+          displayedOptions: options,
+          activeOption: { value: 'test 19', displayValue: 'test 19' },
+        }));
+      };
+
+      it('should return true if the number of options is greater than the search thresold', () => {
+        renderDropdownSearchWithNumberOfOptions(3);
+
+        expect((dropdownSearch.instance() as any).isSearchOn()).toBe(true);
+      });
+
+      it('should return false if the number of options is equal to the search thresold', () => {
+        renderDropdownSearchWithNumberOfOptions(2);
+
+        expect((dropdownSearch.instance() as any).isSearchOn()).toBe(false);
+      });
+
+      it('should return false if the number of options is lower to the search thresold', () => {
+        renderDropdownSearchWithNumberOfOptions(1);
+
+        expect((dropdownSearch.instance() as any).isSearchOn()).toBe(false);
       });
     });
   });

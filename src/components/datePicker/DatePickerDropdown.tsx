@@ -147,7 +147,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     }
 
     return false;
-  };
+  }
 
   render() {
     const hasExceededRangeLimit = this.hasExceededRangeLimit();

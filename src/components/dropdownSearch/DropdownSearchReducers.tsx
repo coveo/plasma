@@ -236,9 +236,15 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.select:
+      const optionsWithOneSelectedOption = selectSingleOption(deselectAllOptions(state.options, true), action.payload.addedSelectedOption);
+
       nextOptions = !state.supportSingleCustomOption
         ? selectSingleOption(state.options, action.payload.addedSelectedOption)
-        : removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), action.payload.addedSelectedOption), state.supportSingleCustomOption, false);
+        : removeCustomOptions(
+          optionsWithOneSelectedOption,
+          state.supportSingleCustomOption,
+          false
+        );
 
       return {
         ...state,
@@ -280,11 +286,13 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed) && state.activeOption) {
+        const optionsWithOneSelectedOption = selectSingleOption(deselectAllOptions(state.options, true), state.activeOption);
+
         return {
           ...state,
           id: action.payload.id,
           isOpened: false,
-          options: removeCustomOptions(selectSingleOption(deselectAllOptions(state.options, true), state.activeOption), state.supportSingleCustomOption, false),
+          options: removeCustomOptions(optionsWithOneSelectedOption, state.supportSingleCustomOption, false),
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
