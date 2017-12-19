@@ -49,7 +49,7 @@ describe('Reducers', () => {
     it('should return the old state when the action is not defined for a specific pagination', () => {
       let oldState: IPaginationState = {
         id: 'pagination',
-        pageNb: 22
+        pageNb: 22,
       };
       let pageNbState = paginationReducer(oldState, genericAction);
 
@@ -62,7 +62,7 @@ describe('Reducers', () => {
         type: PaginationActions.add,
         payload: {
           id: 'pagination',
-          pageNb: 1
+          pageNb: 1,
         }
       };
       let paginationCompositeState: IPaginationState[] = paginationCompositeReducer(oldState, action);
@@ -82,19 +82,19 @@ describe('Reducers', () => {
       let oldState: IPaginationState[] = [
         {
           id: 'some-pagination',
-          pageNb: 2
+          pageNb: 2,
         }, {
           id: 'some-pagination2',
-          pageNb: 5
+          pageNb: 5,
         }, {
           id: 'some-pagination1',
-          pageNb: 33
+          pageNb: 33,
         }
       ];
       let action: IReduxAction<IPaginationActionPayload> = {
         type: PaginationActions.remove,
         payload: {
-          id: 'some-pagination2'
+          id: 'some-pagination2',
         }
       };
       let paginationCompositeState: IPaginationState[] = paginationCompositeReducer(oldState, action);
@@ -113,11 +113,11 @@ describe('Reducers', () => {
     it('should change the page number of the action id when action is "CHANGE_PAGE"', () => {
       let oldState: IPaginationState = {
         id: 'pagination',
-        pageNb: 22
+        pageNb: 22,
       };
       let newState: IPaginationState = {
         id: 'pagination',
-        pageNb: 2
+        pageNb: 2,
       };
       let action: IReduxAction<IPaginationActionPayload> = {
         type: PaginationActions.changePage,
@@ -131,11 +131,11 @@ describe('Reducers', () => {
     it('should set the page number at 0 for the action id if the action is "RESET_PAGING"', () => {
       let oldState: IPaginationState = {
         id: 'pagination',
-        pageNb: 22
+        pageNb: 22,
       };
       let newState: IPaginationState = {
         id: 'pagination',
-        pageNb: 0
+        pageNb: 0,
       };
       let action: IReduxAction<IPaginationActionPayload> = {
         type: PaginationActions.reset,
@@ -151,7 +151,7 @@ describe('Reducers', () => {
       const shouldResetPage = true;
       const oldState: IPaginationState = {
         id: `pagination${tableId}`,
-        pageNb: 22
+        pageNb: 22,
       };
 
       expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(0);
@@ -162,7 +162,7 @@ describe('Reducers', () => {
       const shouldResetPage = false;
       const oldState: IPaginationState = {
         id: `pagination${tableId}`,
-        pageNb: 22
+        pageNb: 22,
       };
 
       expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(oldState.pageNb);
@@ -173,7 +173,7 @@ describe('Reducers', () => {
       const shouldResetPage = true;
       const oldState: IPaginationState = {
         id: 'pagination',
-        pageNb: 22
+        pageNb: 22,
       };
 
       expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(oldState.pageNb);
