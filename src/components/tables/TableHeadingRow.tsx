@@ -25,7 +25,7 @@ export interface ITableHeadingRowProps extends ITableHeadingRowOwnProps, ITableH
 
 export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
 
-  private handleClick (e: React.MouseEvent<HTMLTableRowElement>) {
+  private handleClick(e: React.MouseEvent<HTMLTableRowElement>) {
     if (this.props.onClick) {
       this.props.onClick();
     }

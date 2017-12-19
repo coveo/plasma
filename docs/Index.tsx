@@ -66,6 +66,7 @@ import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSe
 class App extends React.Component<any, any> {
 
   render() {
+    (window as any).store = ReactVaporStore;
     return (
       <Provider store={ReactVaporStore}>
         <div className='coveo-form'>

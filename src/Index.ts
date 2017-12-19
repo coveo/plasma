@@ -94,6 +94,7 @@ export { itemFiltersReducer } from './components/actions/filters/ItemFilterReduc
 export { TableHeader } from './components/tables/TableHeader';
 export { TableHeadingRow } from './components/tables/TableHeadingRow';
 export { TableHeadingRowConnected } from './components/tables/TableHeadingRowConnected';
+export { tableHeaderCellsReducer } from './components/tables/TableHeaderCellReducers';
 export { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
 export { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
 export { TableEmptyRow } from './components/tables/TableEmptyRow';
