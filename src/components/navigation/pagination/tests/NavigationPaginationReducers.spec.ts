@@ -21,7 +21,7 @@ describe('Reducers', () => {
       type: 'DO_SOMETHING',
       payload: {
         id: 'pagination',
-        pageNb: 22
+        pageNb: 22,
       }
     };
 

@@ -48,7 +48,7 @@ export const TableChildBody = (props: ITableProps): JSX.Element[] => {
           key={headingAndCollapsibleId}
           tableId={props.id}
           isCollapsible={!!collapsibleData}
-          onClickCallback={(e: React.MouseEvent<any>) => {
+          onClickCallback={(e: React.MouseEvent<HTMLTableRowElement>) => {
             if (props.onRowClick) {
               props.onRowClick(props.getActions && props.getActions(rowData, props));
             }

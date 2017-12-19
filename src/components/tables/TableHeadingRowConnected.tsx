@@ -17,15 +17,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnProps) => ({
-  onClick: () => {
-    dispatch(selectRow(ownProps.id, ownProps.isCollapsible, ownProps.tableId));
-  },
-  onRender: () => {
-    dispatch(addRow(ownProps.id, ownProps.tableId));
-  },
-  onDestroy: () => {
-    dispatch(removeRow(ownProps.id));
-  }
+  onClick: () => dispatch(selectRow(ownProps.id, ownProps.isCollapsible, ownProps.tableId)),
+  onRender: () => dispatch(addRow(ownProps.id, ownProps.tableId)),
+  onDestroy: () => dispatch(removeRow(ownProps.id)),
 });
 
 export const TableHeadingRowConnected: React.ComponentClass<ITableHeadingRowProps> =
