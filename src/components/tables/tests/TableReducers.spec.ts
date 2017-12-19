@@ -12,6 +12,7 @@ import { getTableChildComponentId } from '../TableUtils';
 import { sortFromHeaderCell } from '../TableHeaderCellActions';
 
 describe('TableReducers', () => {
+  const tableId = 'super-table';
   const genericAction: IReduxAction<ITableActionPayload> = {
     type: 'DO_SOMETHING',
     payload: {
@@ -31,14 +32,12 @@ describe('TableReducers', () => {
   });
 
   it('should return the old state with a new table in it on add table', () => {
-    const tableId = 'super-table';
     expect(tablesInitialState[tableId]).toBeUndefined();
     const newState = tablesReducer(tablesInitialState, addTable(tableId, DEFAULT_TABLE_DATA, []));
     expect(newState[tableId]).toBeDefined();
   });
 
   it('should remove a table state from the tables state in it on remove table', () => {
-    const tableId = 'super-table';
     let newState = tablesReducer(tablesInitialState, addTable(tableId, DEFAULT_TABLE_DATA, []));
     expect(newState[tableId]).toBeDefined();
 
@@ -47,7 +46,6 @@ describe('TableReducers', () => {
   });
 
   describe('with a table state in the tables state', () => {
-    const tableId = 'super-table';
     let oldState: ITablesState;
 
     beforeEach(() => {

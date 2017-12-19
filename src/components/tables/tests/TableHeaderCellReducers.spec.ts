@@ -1,11 +1,7 @@
 import { getNextTableSortingOrder } from '../TableUtils';
 import { TableSortingOrder } from '../TableConstants';
 import { tableHeaderCellsReducer, tableHeaderCellReducer, tableHeaderCellsInitialState } from '../TableHeaderCellReducers';
-import { TableHeaderCellActions, addHeaderCell, removeHeaderCell, sortFromHeaderCell } from '../TableHeaderCellActions';
-
-describe('tableHeaderCellReducer', () => {
-
-});
+import { addHeaderCell, removeHeaderCell, sortFromHeaderCell } from '../TableHeaderCellActions';
 
 describe('tableHeaderCellsReducer', () => {
   const testHeaderCell = {
@@ -25,7 +21,7 @@ describe('tableHeaderCellsReducer', () => {
     expect(tableHeaderCellReducer(testHeaderCell, unrelatedAction)).toEqual(testHeaderCell);
   });
 
-  it(`should return the state with the new header cell in it on ${TableHeaderCellActions.add}`, () => {
+  it('should return the state with the new header cell in it on TableHeaderCellActions.add', () => {
     const newState = {
       [testHeaderCell.id]: testHeaderCell,
     };
@@ -33,7 +29,7 @@ describe('tableHeaderCellsReducer', () => {
       .toEqual(newState);
   });
 
-  it(`should return the state with the new header cell in it on ${TableHeaderCellActions.remove}`, () => {
+  it('should return the state with the new header cell in it on TableHeaderCellActions.remove', () => {
     const currentState = {
       [testHeaderCell.id]: testHeaderCell,
     };
@@ -43,7 +39,7 @@ describe('tableHeaderCellsReducer', () => {
       .toEqual(nextState);
   });
 
-  describe(`on ${TableHeaderCellActions.sort}`, () => {
+  describe('on TableHeaderCellActions.sort', () => {
     it('should modify the sorted prop to the next table sorting order of the header cell having an identical id and tableId as the ones in the payload', () => {
       const currentState = {
         [testHeaderCell.id]: testHeaderCell,

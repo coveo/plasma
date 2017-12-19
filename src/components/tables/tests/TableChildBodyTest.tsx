@@ -48,7 +48,7 @@ describe('<TableChildHeader />', () => {
       }).not.toThrow();
     });
 
-    it('should render no table wrapper if there are no displayed rows', () => {
+    it('should not render a table wrapper if there are no displayed rows', () => {
       expect(mountComponentWithProps(tablePropsMock).find(TableRowWrapper).length).toBe(0);
     });
 

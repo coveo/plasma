@@ -423,10 +423,12 @@ describe('Calendar', () => {
       });
 
       describe('saturday and sunday rule', () => {
-        const tuesday = '2017-12-19'; // always tuesday
+        const notSaturdayOrSunday: moment.Moment = moment().isoWeekday() >= 5
+          ? moment().add(4, 'days')
+          : moment().add(1, 'days');
 
         it('should return day isSelectable if the day is not a Saturday and selecting lower limit', () => {
-          let otherDay: IDay = _.extend({}, DAY, { date: moment(tuesday) });
+          let otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
           let saturday: IDay = _.extend({}, DAY, { date: moment().endOf('week') });
           let selectionLowerLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.lower });
 
@@ -453,7 +455,7 @@ describe('Calendar', () => {
         });
 
         it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
-          let otherDay: IDay = _.extend({}, DAY, { date: moment(tuesday) });
+          let otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
           let sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
           let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
 

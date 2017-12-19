@@ -104,6 +104,7 @@ describe('Tables', () => {
       const onSortSpy = jasmine.createSpy('onSortSpy');
 
       tableHeaderCell.setProps({ onSort: onSortSpy });
+      tableHeaderCell.simulate('click');
 
       expect(onSortSpy).not.toHaveBeenCalled();
     });

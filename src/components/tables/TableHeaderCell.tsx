@@ -33,6 +33,16 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
     sorted: TableSortingOrder.UNSORTED,
   };
 
+  private handleClick(e: React.MouseEvent<HTMLTableHeaderCellElement>) {
+    if (this.props.onSort && this.props.attributeToSort) {
+      this.props.onSort();
+    }
+
+    if (this.props.onClickCallback) {
+      this.props.onClickCallback(e);
+    }
+  }
+
   componentDidMount() {
     if (this.props.onMount && this.props.attributeToSort) {
       this.props.onMount();
@@ -42,16 +52,6 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
   componentWillUnmount() {
     if (this.props.onUnmount) {
       this.props.onUnmount();
-    }
-  }
-
-  handleClick(e: React.MouseEvent<HTMLTableHeaderCellElement>) {
-    if (this.props.onSort && this.props.attributeToSort) {
-      this.props.onSort();
-    }
-
-    if (this.props.onClickCallback) {
-      this.props.onClickCallback(e);
     }
   }
 

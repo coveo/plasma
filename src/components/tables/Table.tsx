@@ -44,7 +44,7 @@ export interface ITableHeadingAttribute {
 export interface ITablePredicate {
   props: IDropdownSearchProps;
   attributeName: string;
-  attributeNameFormatter: IAttributeNameOrValueFormatter;
+  attributeNameFormatter?: IAttributeNameOrValueFormatter;
 };
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {

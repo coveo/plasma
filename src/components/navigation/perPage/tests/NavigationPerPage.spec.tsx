@@ -23,6 +23,7 @@ describe('NavigationPerPage', () => {
   describe('<NavigationPerPage />', () => {
     let navigationPerPage: ReactWrapper<INavigationPerPageProps, any>;
     let navigationPerPageInstance: NavigationPerPage;
+    let navigationPerPageInstanceAsAny: any;
 
     beforeEach(() => {
       navigationPerPage = mount(
@@ -30,6 +31,7 @@ describe('NavigationPerPage', () => {
         { attachTo: document.getElementById('App') }
       );
       navigationPerPageInstance = navigationPerPage.instance() as NavigationPerPage;
+      navigationPerPageInstanceAsAny = navigationPerPageInstance;
     });
 
     afterEach(() => {
@@ -141,10 +143,10 @@ describe('NavigationPerPage', () => {
         { onPerPageClick: jasmine.createSpy('onPerPageClick') });
       let expectedPerPage: number = 22;
 
-      expect(() => navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage)).not.toThrow();
+      expect(() => navigationPerPageInstanceAsAny.handleClick(expectedPerPage)).not.toThrow();
 
       navigationPerPage.setProps(newProps);
-      navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage);
+      navigationPerPageInstanceAsAny.handleClick(expectedPerPage);
 
       expect(newProps.onPerPageClick).toHaveBeenCalledTimes(1);
     });
@@ -154,11 +156,11 @@ describe('NavigationPerPage', () => {
         { onPerPageClick: jasmine.createSpy('onPerPageClick'), currentPerPage: 10 });
       const expectedPerPage: number = 10;
 
-      expect(() => navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage)).not.toThrow();
+      expect(() => navigationPerPageInstanceAsAny.handleClick(expectedPerPage)).not.toThrow();
 
       navigationPerPage.setProps(newProps);
       // two clicks should call the function once
-      navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage);
+      navigationPerPageInstanceAsAny.handleClick(expectedPerPage);
       expect(newProps.onPerPageClick).not.toHaveBeenCalled();
     });
   });

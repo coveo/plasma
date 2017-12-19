@@ -2,11 +2,12 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
 import { ITableProps, ITablePredicate } from '../Table';
-import { TableChildComponent } from '../TableConstants';
+import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 import { getTableChildComponentId } from '../TableUtils';
 import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
 import { ActionBarConnected } from '../../actions/ActionBarConnected';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
+import { humanize } from 'underscore.string';
 
 export const TableChildActionBar = (props: ITableProps): JSX.Element => {
   if (!props.actionBar) {
@@ -38,9 +39,13 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
 
           return (
             <DropdownSearchConnected
+              maxWidth={260}
+              defaultSelectedOption={{ value: TABLE_PREDICATE_DEFAULT_VALUE }}
               {...predicate.props}
               key={predicateId}
-              fixedPrepend={predicate.attributeNameFormatter(predicate.attributeName)}
+              fixedPrepend={predicate.attributeNameFormatter
+                ? predicate.attributeNameFormatter(predicate.attributeName)
+                : humanize(predicate.attributeName)}
               id={predicateId}
               containerClasses={containerClasses}
               onOptionClickCallBack={(option: IDropdownOption) => {

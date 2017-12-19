@@ -6,7 +6,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
   id?: string;
   tableId?: string;
   isCollapsible: boolean;
-  onClickCallback?: (e: React.MouseEvent<any>) => void;
+  onClickCallback?: (e: React.MouseEvent<HTMLTableRowElement>) => void;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -25,7 +25,7 @@ export interface ITableHeadingRowProps extends ITableHeadingRowOwnProps, ITableH
 
 export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
 
-  private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
+  private handleClick (e: React.MouseEvent<HTMLTableRowElement>) {
     if (this.props.onClick) {
       this.props.onClick();
     }

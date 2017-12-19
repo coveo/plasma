@@ -262,8 +262,8 @@ export class TableExamples extends React.Component<any, any> {
               extraContainerClasses: ['mod-border-top'],
             }}
             predicates={[
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4', attributeNameFormatter: (attributeName: string) => attributeName },
-              { props: { maxWidth: 260, defaultSelectedOption: { value: 'ALL' }, defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3', attributeNameFormatter: (attributeName: string) => attributeName },
+              { props: { defaultOptions: predicateOptionsAttribute4 }, attributeName: 'attribute4' },
+              { props: { defaultOptions: predicateOptionsAttribute3 }, attributeName: 'attribute3' },
             ]}
             filter={{ containerClasses: ['ml1'] }}
             blankSlateDefault={{ title: 'Oh no! No results!' }}
