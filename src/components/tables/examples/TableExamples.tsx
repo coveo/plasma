@@ -275,4 +275,4 @@ export class TableExamples extends React.Component<any, any> {
       </div>
     );
   }
-};
+}

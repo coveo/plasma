@@ -1,4 +1,4 @@
-import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE, DEFAULT_TABLE_PER_PAGE } from './TableConstants';
+import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE } from './TableConstants';
 import { getTableChildComponentId } from './TableUtils';
 import { ITableOwnProps, ITableProps, Table } from './Table';
 import { ITableState, ITableCompositeState } from './TableReducers';
@@ -24,7 +24,7 @@ import { IDispatch } from '../../utils/ReduxUtils';
 export type IAttributeValue = any;
 export interface IPredicateAttributes {
   [attributeName: string]: IAttributeValue;
-};
+}
 
 export interface ITableDispatchProps {
   onDidMount: () => void;
@@ -52,9 +52,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
       data: tableState.data,
       isInError: tableState.isInError,
       isLoading: tableState.isLoading,
-      filter: filterState && filterState.filterText || '',
-      page: paginationState && paginationState.pageNb || 0,
-      perPage: perPageState && perPageState.perPage || DEFAULT_TABLE_PER_PAGE,
+      filter: filterState && filterState.filterText,
+      page: paginationState && paginationState.pageNb,
+      perPage: perPageState && perPageState.perPage,
       sortState: {
         attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
         order: tableHeaderCellState && tableHeaderCellState.sorted,

@@ -23,11 +23,11 @@ import { TableChildBody } from './table-children/TableChildBody';
 export interface IData {
   id: string;
   [attribute: string]: any;
-};
+}
 
 export interface ITableRowData {
   [id: string]: IData;
-};
+}
 
 export type IAttributeFormatter = (attributeValue: any, attributeName?: string) => JSXRenderable;
 export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string) => string;
@@ -45,7 +45,7 @@ export interface ITablePredicate {
   props: IDropdownSearchProps;
   attributeName: string;
   attributeNameFormatter?: IAttributeNameOrValueFormatter;
-};
+}
 
 export interface ITableOwnProps extends React.ClassAttributes<Table> {
   id: string;
@@ -69,11 +69,11 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
     tableCompositeState: ITableCompositeState,
     previousTableCompositeState: ITableCompositeState,
   ) => IThunkAction;
-};
+}
 
 export interface ITableCompositeStateProps {
   readonly tableCompositeState?: ITableCompositeState;
-};
+}
 
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, Partial<ITableDispatchProps> { }
 
@@ -169,4 +169,4 @@ export class Table extends React.Component<ITableProps, any> {
       </div>
     );
   }
-};
+}

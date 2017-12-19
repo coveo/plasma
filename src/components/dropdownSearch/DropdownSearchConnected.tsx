@@ -9,7 +9,9 @@ import {
   removeDropdownSearch,
   selectOptionDropdownSearch,
   toggleDropdownSearch,
-  updateActiveOptionDropdownSearch, updateOptionsDropdownSearch, closeDropdownSearch,
+  updateActiveOptionDropdownSearch,
+  updateOptionsDropdownSearch,
+  closeDropdownSearch,
 } from './DropdownSearchActions';
 import { IDropdownSearchState } from './DropdownSearchReducers';
 
