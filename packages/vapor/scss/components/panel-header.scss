@@ -19,7 +19,7 @@
   .action {
     display: inline-block;
     height: $button-height;
-    padding: 4px 5px;
+    padding: $panel-header-action-padding-vertical $panel-header-action-padding-horizontal;
     margin-left: 5px;
 
     vertical-align: bottom;
@@ -35,8 +35,6 @@
     }
 
     span {
-      display: inline-block;
-
       vertical-align: middle;
 
       &.state-disabled {
@@ -52,6 +50,7 @@
 
     &.dropdown .dropdown-toggle {
       padding: 0;
+      line-height: inherit;
     }
   }
 }
