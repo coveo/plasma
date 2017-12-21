@@ -5,7 +5,7 @@ import * as _ from 'underscore';
 import { TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 
 export interface ITableChildBlankSlateProps extends ITableProps {
-  isInitialLoad: boolean;
+  isInitialLoad?: boolean;
 }
 
 export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Element => {
