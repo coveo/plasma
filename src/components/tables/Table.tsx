@@ -163,7 +163,7 @@ export class Table extends React.Component<ITableProps, any> {
           <TableChildHeader {...this.props} />
           {TableChildBody(this.props)}
         </table>
-        {this.isInitialLoad ? null : <TableChildBlankSlate {...this.props} />}
+        <TableChildBlankSlate {...this.props} isInitialLoad={this.isInitialLoad} />
         <TableChildNavigation {...this.props} />
         <TableChildLastUpdated {...this.props} />
       </div>
