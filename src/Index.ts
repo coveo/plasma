@@ -1,4 +1,3 @@
-import { modifyState } from './components/tables/TableActions';
 export { ChosenSelect } from './components/chosen/ChosenSelect';
 export { Popover } from './components/popover/Popover';
 export { Svg } from './components/svg/Svg';
