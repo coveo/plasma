@@ -120,7 +120,7 @@ export const defaultTableStateModifier = (
 ): ITableStateModifier => {
   return (tableState: ITableState): ITableState => {
     const tableDataById = tableCompositeState.data && tableCompositeState.data.byId || {};
-    let nextDisplayedIds = [...(tableCompositeState.data.allIds || [])];
+    let nextDisplayedIds = [...(tableCompositeState.data && tableCompositeState.data.allIds || [])];
 
     nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
     nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
