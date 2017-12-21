@@ -204,3 +204,8 @@ export {
 export { IToastsState, IToastState, toastsContainerInitialState, toastInitialState, toastContainerInitialState, toastsContainerReducer, toastContainerReducer } from './components/toast/ToastReducers';
 export { ToastContainer, IToastContainerDispatchProps, IToastContainerOwnProps, IToastContainerStateProps, IToastContainerProps } from './components/toast/ToastContainer';
 export { ToastContainerConnected } from './components/toast/ToastContainerConnected';
+
+// Headers
+export { BreadcrumbHeader } from './components/headers/BreadcrumbHeader';
+export { HeaderWrapper } from './components/headers/HeaderWrapper';
+export { BasicHeader } from './components/headers/BasicHeader';
