@@ -19,10 +19,10 @@ export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
       'space-between',
       'mod-header-padding',
       'header-height',
+      'pt1',
       {
-        'pt1': !!this.props.tabs,
         'pb2': !!this.props.tabs,
-        'p1': !this.props.tabs,
+        'pb1': !this.props.tabs,
       },
       this.props.classes,
     );
