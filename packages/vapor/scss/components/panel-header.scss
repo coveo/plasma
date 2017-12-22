@@ -18,10 +18,8 @@
 
   .action {
     display: inline-block;
+    padding: 0;
     height: $button-height;
-    padding: $panel-header-action-padding-vertical $panel-header-action-padding-horizontal;
-    margin-left: 5px;
-
     vertical-align: bottom;
 
     background-color: $pure-white;
@@ -48,9 +46,8 @@
       display: none;
     }
 
-    &.dropdown .dropdown-toggle {
-      padding: 0;
-      line-height: inherit;
+    &.mod-link, .trigger, &.dropdown .dropdown-toggle {
+      padding: $panel-header-action-padding-vertical $panel-header-action-padding-horizontal;
     }
   }
 }
