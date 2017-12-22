@@ -13,12 +13,19 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps, React.ClassAttrib
 export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
 
   private getClasses(): string {
-    return classNames('flex',
-      'flex-center space-between',
+    return classNames(
+      'flex',
+      'flex-center',
+      'space-between',
       'mod-header-padding',
       'header-height',
-      'pb2',
-      this.props.classes);
+      'pt1',
+      {
+        'pb2': !!this.props.tabs,
+        'pb1': !this.props.tabs,
+      },
+      this.props.classes,
+    );
   }
 
   private getActions(): JSX.Element[] {
