@@ -25,11 +25,11 @@ export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Ele
     return null;
   }
 
-  if (tableCompositeState.filter
-    || _.some(tableCompositeState.predicates, (value: any) => !_.isUndefined(value) || value !== TABLE_PREDICATE_DEFAULT_VALUE)) {
-    blankSlatePropsToUse = blankSlateNoResultsOnAction || blankSlateDefault;
-  } else if (tableCompositeState.isInError) {
+  if (tableCompositeState.isInError) {
     blankSlatePropsToUse = blankSlateOnError || blankSlateDefault;
+  } else if (tableCompositeState.filter
+    || _.some(tableCompositeState.predicates, (value: any) => !_.isUndefined(value) && value !== TABLE_PREDICATE_DEFAULT_VALUE)) {
+    blankSlatePropsToUse = blankSlateNoResultsOnAction || blankSlateDefault;
   } else {
     blankSlatePropsToUse = blankSlateDefault;
   }
