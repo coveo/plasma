@@ -8,5 +8,7 @@ const branchName = sh.exec('git rev-parse --abbrev-ref HEAD').stdout
 sh.mv('dist', branchName)
 
 sh.exec(`git add ${branchName}`)
-sh.exec(`git commit -m 'create live demo for ${branchName}'`)
+sh.exec(`git commit -m 'create live demo for ${branchName}' --no-verify`)
 sh.exec(`git push origin ${branchName}:gh-pages`)
+
+process.exit()
