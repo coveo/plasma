@@ -254,7 +254,7 @@ describe('Calendar', () => {
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBeUndefined();
     });
 
-    it('should change the selected month and year if one of the calendar selection changed a limit', () => {
+    xit('should change the selected month and year if one of the calendar selection changed a limit', () => {
       let secondYear: number = 1;
       let monthId: string = CALENDAR_ID + MONTH_PICKER_ID;
       let yearId: string = CALENDAR_ID + YEAR_PICKER_ID;
