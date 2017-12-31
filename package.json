@@ -117,6 +117,7 @@
     "redux-thunk": "2.2.0",
     "remap-istanbul": "0.9.5",
     "sass-loader": "6.0.6",
+    "shelljs": "^0.7.8",
     "style-loader": "0.19.0",
     "ts-loader": "3.0.5",
     "tslint": "4.5.1",
