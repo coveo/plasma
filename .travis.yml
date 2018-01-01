@@ -23,7 +23,7 @@ script:
 
 after_success:
  - npm run report-coverage
- - node create-live-demo.js
+ - npm run live-demo
 
 after_failure:
- - node create-live-demo.js
+ - npm run live-demo
