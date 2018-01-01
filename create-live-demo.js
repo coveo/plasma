@@ -21,5 +21,5 @@ sh.rm('-rf', branchName)
 sh.exec(`git add . && git commit -m 'remove demo repo from vcs' --no-verify`)
 
 console.log('Live demo creation completed.')
-console.log(`If it succeeded, the demo url should be https://coveo.github.io/react-vapor/${branchName}/`)
+console.log(`If it succeeded, the demo url should be https://coveo.github.io/react-vapor/${branchName}/index.html`)
 process.exit()
