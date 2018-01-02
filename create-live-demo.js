@@ -1,5 +1,5 @@
 const sh = require('shelljs')
-const argv = require('args').argv
+const argv = require('yargs').argv
 const branchName = argv.currentbranch
 const userpassword = argv.userpassword
 const originWithAuthentication = `https://${userpassword}@github.com/coveo/react-vapor.git`
