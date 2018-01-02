@@ -19,11 +19,8 @@ cache:
     - node_modules
 
 script:
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run live-demo; fi'
  - npm run test
 
 after_success:
  - npm run report-coverage
- - npm run live-demo
-
-after_failure:
- - npm run live-demo
