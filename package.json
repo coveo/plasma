@@ -31,8 +31,7 @@
     "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,karma.entry.ts",
     "coverage:report": "istanbul report",
     "prepublish": "npm run build && npm test",
-    "report-coverage": "codecov -f coverage/coverage.json",
-    "live-demo": "node create-live-demo.js"
+    "report-coverage": "codecov -f coverage/coverage.json"
   },
   "pre-commit": [
     "lint"
@@ -127,7 +126,8 @@
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
     "webpack": "3.8.1",
-    "webpack-dev-server": "2.9.3"
+    "webpack-dev-server": "2.9.3",
+    "yargs": "^10.0.3"
   },
   "files": [
     "dist",

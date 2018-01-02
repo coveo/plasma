@@ -19,7 +19,7 @@ cache:
     - node_modules
 
 script:
- - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run live-demo; fi'
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then node create-live-demo --userpassword $GITUSRPWD --currentbranch $TRAVIS_PULL_REQUEST_BRANCH; fi'
  - npm run test
 
 after_success:
