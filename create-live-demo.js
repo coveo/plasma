@@ -8,7 +8,9 @@ console.log(`Creating live demo for branch: ${branchName}`)
 sh.cp('-R', 'docs', branchName)
 sh.exec(`git add ${branchName}`)
 sh.exec(`git commit -m 'create live demo for ${branchName}' --no-verify`)
-sh.exec(`git push -f ${originWithAuthentication} ${branchName}:gh-pages`)
+
+const currentCommit = sh.exec('git show --oneline -s').trim().split(' ')[0]
+sh.exec(`git push -f ${originWithAuthentication} ${currentCommit}:gh-pages`)
 
 console.log('Live demo creation completed.')
 console.log(`If it succeeded, the demo url should be https://coveo.github.io/react-vapor/${branchName}/index.html`)
