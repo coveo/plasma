@@ -1,11 +1,16 @@
 const sh = require('shelljs')
-const argv = require('yargs').argv
+const replace = require('replace-in-file');
 const branchName = process.env.TRAVIS_PULL_REQUEST_BRANCH // travis provides this env variable
 const userpassword = process.env.GITUSRPWD
 const originWithAuthentication = `https://${userpassword}@github.com/coveo/react-vapor.git`
 
 console.log(`Creating live demo for branch: ${branchName}`)
 sh.cp('-R', 'docs', branchName)
+replace.sync({
+    files: `${branchName}/index.html`,
+    from: 'assets/bundle.js',
+    to: `https://raw.githubusercontent.com/coveo/react-vapor/gh-pages/${branchName}/assets/bundle.js`,
+});
 sh.exec(`git add ${branchName}`)
 sh.exec(`git commit -m 'create live demo for ${branchName}' --no-verify`)
 
