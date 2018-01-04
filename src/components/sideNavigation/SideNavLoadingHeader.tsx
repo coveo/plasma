@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export class NavigationHeader extends React.Component<any, any> {
+export class SideNavLoadingHeader extends React.Component<any, any> {
   render() {
     return (
       <header className='navigation-menu-section-header'>

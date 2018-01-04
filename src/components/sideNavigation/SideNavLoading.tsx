@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as className from 'classnames';
 
-export interface INavigationProps {
-  className: string;
+export interface ISideNavProps {
+  className?: string;
 }
 
-export class NavigationContainer extends React.Component<INavigationProps, any> {
+export class SideNavLoading extends React.Component<ISideNavProps, any> {
   render() {
     const classes = className(this.props.className, 'navigation');
     return (
