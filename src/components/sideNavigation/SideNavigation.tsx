@@ -5,7 +5,7 @@ export interface ISideNavProps {
   className?: string;
 }
 
-export class SideNavLoading extends React.Component<ISideNavProps, any> {
+export class SideNavigation extends React.Component<ISideNavProps, any> {
   render() {
     const classes = className(this.props.className, 'navigation');
     return (

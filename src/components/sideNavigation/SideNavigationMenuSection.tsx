@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { SideNavLoadingHeader } from './SideNavLoadingHeader';
+import { SideNavigationLoadingHeader } from './SideNavigationLoadingHeader';
 
-export class SideNavMenuSection extends React.Component<any, any> {
+export class SideNavigationMenuSection extends React.Component<any, any> {
   render() {
     return (
       <div className='block navigation-menu-section'>
-        <SideNavLoadingHeader />
+        <SideNavigationLoadingHeader />
         <div className='navigation-menu-section-items'>
           {this.props.children}
         </div>

@@ -5,7 +5,7 @@ export interface ISideNavLoadingItemProps {
   classes?: string;
 }
 
-export class SideNavLoadingItem extends React.Component<ISideNavLoadingItemProps, any> {
+export class SideNavigationLoadingItem extends React.Component<ISideNavLoadingItemProps, any> {
   render() {
     const classes = className(this.props.classes, 'mod-sub-navigation-left-margin', 'navigation-loading-item-grey');
     return <div className={classes}></div>;

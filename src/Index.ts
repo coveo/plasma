@@ -62,7 +62,7 @@ export { NavigationPagination } from './components/navigation/pagination/Navigat
 export { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
 export { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
 export { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
-export { SideNavLoading } from './components/sideNavigation/SideNavLoading'
+export { SideNavigation } from './components/sideNavigation/SideNavigation'
 
 // Pagination
 export { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
