@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SideNavigation } from './SideNavigation';
-import { SideNavigationLoadingItem } from './SideNavigationLoadingItem';
-import { SideNavigationMenuSection } from './SideNavigationMenuSection';
+import { SideNavigation } from '../SideNavigation';
+import { SideNavigationLoadingItem } from '../SideNavigationLoadingItem';
+import { SideNavigationMenuSection } from '../SideNavigationMenuSection';
 
 export class SideNavigationLoadingExample extends React.Component<any, any> {
   render() {
