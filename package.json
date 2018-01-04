@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
+    "docs": "gulp docs",
     "lint": "gulp prettify",
     "lint-commit": "gulp prettify && git add . && git commit -m 'prettify ts files before push'",
     "build": "gulp",
