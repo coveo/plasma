@@ -12,13 +12,15 @@ branches:
 
 install:
   - npm install -g gulp
-  - npm install
+  - npm install --ignore-scripts #  avoid triggering npm prepublish script (which runs on npm install), running the tests twice during the build
+  - npm run build
 
 cache:
   directories:
     - node_modules
 
 script:
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run docs && node create-live-demo.js; fi' # run this line on pull request builds only
  - npm run test
 
 after_success:
