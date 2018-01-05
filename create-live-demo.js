@@ -6,7 +6,9 @@ const originWithAuthentication = `https://${userpassword}@github.com/coveo/react
 
 console.log(`Creating live demo for branch: ${branchName}`)
 sh.cp('-R', 'docs', branchName)
-sh.exec(`git add ${branchName}`)
+sh.exec('git pull origin gh-pages')
+sh.exec('git merge --strategy-option theirs gh-pages')
+sh.exec('git add .')
 sh.exec(`git commit -m 'create live demo for ${branchName} branch' --no-verify`)
 
 const currentCommit = sh.exec('git show --oneline -s').trim().split(' ')[0]
