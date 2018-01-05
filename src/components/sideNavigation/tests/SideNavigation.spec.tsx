@@ -17,19 +17,19 @@ describe('<SideNavigation />', () => {
     wrapper.detach();
   });
 
-  it('should render a <SideNavigation /> with classes prop', () => {
-    const className = 'foo';
-    const container = wrapper.find('nav').first();
-    wrapper.setProps({ className });
-    wrapper.mount();
-    expect(container.hasClass(className)).toBe(true);
-  });
-
   it('should render without errors', () => {
     expect(() => {
       shallow(
         <SideNavigation />
       );
     }).not.toThrow();
+  });
+
+  it('should render a <SideNavigation /> with classes prop', () => {
+    const className = 'foo';
+    const container = wrapper.find('nav').first();
+    wrapper.setProps({ className });
+    wrapper.mount();
+    expect(container.hasClass(className)).toBe(true);
   });
 });

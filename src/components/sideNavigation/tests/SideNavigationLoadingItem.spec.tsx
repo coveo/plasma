@@ -17,12 +17,20 @@ describe('<SideNavigationLoadingItem />', () => {
     wrapper.detach();
   });
 
+  it('should render without errors', () => {
+    expect(() => {
+      shallow(
+        <SideNavigationLoadingItem />
+      );
+    }).not.toThrow();
+  });
+
   it('should render a <SideNavigationLoadingItem /> with classes prop', () => {
-    const classes = 'mod-width-30';
+    const className = 'mod-width-30';
     const container = wrapper.find('div').first();
-    wrapper.setProps({ classes });
+    wrapper.setProps({ className });
     wrapper.mount();
-    expect(container.hasClass(classes)).toBe(true);
+    expect(container.hasClass(className)).toBe(true);
   });
 
   it('should render without errors', () => {
