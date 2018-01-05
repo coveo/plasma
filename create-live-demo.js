@@ -6,7 +6,7 @@ const originWithAuthentication = `https://${userpassword}@github.com/coveo/react
 
 console.log(`Creating live demo for branch: ${branchName}`)
 sh.cp('-R', 'docs', branchName)
-sh.cp('-R', `${branchName}/assets`, branchName)
+sh.mv(`${branchName}/assets/*`, branchName)
 sh.rm('-rf', `${branchName}/assets`)
 replace.sync({
     files: `${branchName}/index.html`,
