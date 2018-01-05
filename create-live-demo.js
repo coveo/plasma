@@ -1,5 +1,4 @@
 const sh = require('shelljs')
-const replace = require('replace-in-file');
 const branchName = process.env.TRAVIS_PULL_REQUEST_BRANCH // travis provides this env variable
 const userpassword = process.env.GITUSRPWD
 const originWithAuthentication = `https://${userpassword}@github.com/coveo/react-vapor.git`
