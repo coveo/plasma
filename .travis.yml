@@ -12,7 +12,7 @@ branches:
 
 install:
   - npm install -g gulp
-  - npm install --ignore-scripts # avoid triggering npm prepublish script (which runs on npm install), running the UTs twice during the build
+  - npm install --ignore-scripts # avoid triggering npm prepublish script (which runs on npm install), running the tests twice during the build
   - npm run build
 
 cache:
