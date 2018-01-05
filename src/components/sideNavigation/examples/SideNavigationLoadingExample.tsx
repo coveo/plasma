@@ -11,23 +11,23 @@ export class SideNavigationLoadingExample extends React.Component<any, any> {
         <div className='flex flex-row flex-stretch'>
           <SideNavigation>
             <SideNavigationMenuSection>
-              <SideNavigationLoadingItem classes={'mod-width-30'} />
-              <SideNavigationLoadingItem classes={'mod-width-50'} />
-              <SideNavigationLoadingItem classes={'mod-width-40'} />
-              <SideNavigationLoadingItem classes={'mod-width-60'} />
-              <SideNavigationLoadingItem classes={'mod-width-50'} />
+              <SideNavigationLoadingItem classes='mod-width-30' />
+              <SideNavigationLoadingItem classes='mod-width-50' />
+              <SideNavigationLoadingItem classes='mod-width-40' />
+              <SideNavigationLoadingItem classes='mod-width-60' />
+              <SideNavigationLoadingItem classes='mod-width-50' />
             </SideNavigationMenuSection>
             <SideNavigationMenuSection>
-              <SideNavigationLoadingItem classes={'mod-width-30'} />
-              <SideNavigationLoadingItem classes={'mod-width-50'} />
-              <SideNavigationLoadingItem classes={'mod-width-60'} />
-              <SideNavigationLoadingItem classes={'mod-width-30'} />
+              <SideNavigationLoadingItem classes='mod-width-30' />
+              <SideNavigationLoadingItem classes='mod-width-50' />
+              <SideNavigationLoadingItem classes='mod-width-60' />
+              <SideNavigationLoadingItem classes='mod-width-30' />
             </SideNavigationMenuSection>
             <SideNavigationMenuSection>
-              <SideNavigationLoadingItem classes={'mod-width-30'} />
-              <SideNavigationLoadingItem classes={'mod-width-40'} />
-              <SideNavigationLoadingItem classes={'mod-width-50'} />
-              <SideNavigationLoadingItem classes={'mod-width-30'} />
+              <SideNavigationLoadingItem classes='mod-width-30' />
+              <SideNavigationLoadingItem classes='mod-width-40' />
+              <SideNavigationLoadingItem classes='mod-width-50' />
+              <SideNavigationLoadingItem classes='mod-width-30' />
             </SideNavigationMenuSection>
           </SideNavigation>
         </div>
