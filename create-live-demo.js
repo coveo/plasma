@@ -13,7 +13,7 @@ sh.exec(`git pull ${originWithAuthentication} gh-pages`)
 sh.exec('git merge --no-edit --strategy-option ours gh-pages')
 
 console.log(`Pushing live demo to gh-pages for branch: ${branchName}`)
-const currentCommit = sh.exec('git show --oneline -s').stdout.rim().split(' ')[0]
+const currentCommit = sh.exec('git show --oneline -s').stdout.trim().split(' ')[0]
 sh.exec(`git push -f ${originWithAuthentication} ${currentCommit}:gh-pages`)
 
 console.log('Live demo creation completed.')
