@@ -14,7 +14,7 @@ replace.sync({
     to: 'bundle.js',
 });
 sh.exec(`git add ${branchName}`)
-sh.exec(`git commit -m 'create live demo for ${branchName}' --no-verify`)
+sh.exec(`git commit -m 'create live demo for ${branchName} branch' --no-verify`)
 
 const currentCommit = sh.exec('git show --oneline -s').trim().split(' ')[0]
 sh.exec(`git push -f ${originWithAuthentication} ${currentCommit}:gh-pages`)
