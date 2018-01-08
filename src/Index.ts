@@ -62,6 +62,10 @@ export { NavigationPagination } from './components/navigation/pagination/Navigat
 export { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
 export { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
 export { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
+export { SideNavigation } from './components/sideNavigation/SideNavigation'
+export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader'
+export { SideNavigationLoadingItem } from './components/sideNavigation/SideNavigationLoadingItem'
+export { SideNavigationMenuSection } from './components/sideNavigation/SideNavigationMenuSection'
 
 // Pagination
 export { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
