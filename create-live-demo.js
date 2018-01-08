@@ -16,6 +16,6 @@ console.log(`Pushing live demo to gh-pages for branch: ${branchName}`);
 const currentCommit = sh.exec('git show --oneline -s').stdout.trim().split(' ')[0];
 sh.exec(`git push ${originWithAuthentication} ${currentCommit}:gh-pages`);
 
-console.log('Live demo creation completed.');
-console.log(`If it succeeded, the demo url should be https://coveo.github.io/react-vapor/${branchName}/`);
+console.log(`Live demo creation completed.
+If it succeeded, the demo url should be https://coveo.github.io/react-vapor/${branchName}/`);
 process.exit();
