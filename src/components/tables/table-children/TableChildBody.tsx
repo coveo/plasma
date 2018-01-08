@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { ITableProps, ITableRowData, ITableHeadingAttribute } from '../Table';
+import { ITableProps, IData, ITableHeadingAttribute } from '../Table';
 import { getTableChildComponentId } from '../TableUtils';
 import { TableChildComponent, TOGGLE_ARROW_CELL_COUNT } from '../TableConstants';
 import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
@@ -12,7 +12,7 @@ import { JSXRenderable } from '../../../utils/JSXUtils';
 export const TableChildBody = (props: ITableProps): JSX.Element[] => {
   const tableData = props.tableCompositeState.data || props.initialTableData;
   return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-    const rowData: ITableRowData = tableData.byId[id];
+    const rowData: IData = tableData.byId[id];
     const rowWrapperId = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_ROW_WRAPPER)}${rowData.id}`;
     const headingAndCollapsibleId = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_HEADING_ROW)}${rowData.id}`;
 

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { ITableProps, ITableRowData } from '../Table';
+import { ITableProps, IData } from '../Table';
 import * as _ from 'underscore';
 import { internet } from 'faker';
 import { DEFAULT_TABLE_DATA } from '../TableConstants';
 import { IActionOptions } from '../../actions/Action';
-import { IData } from '../Table';
 
 export const tableOwnPropsMock: ITableProps = {
   id: 'super-table',
@@ -69,7 +68,7 @@ export const dataById = _.range(10).reduce((byId, index) => {
 
 export const tablePropsMockWithData = {
   ...tablePropsMock,
-  collapsibleFormatter: (rowData: ITableRowData) => rowData.url
+  collapsibleFormatter: (rowData: IData) => rowData.url
     ? <p>{rowData.url}</p>
     : undefined,
   tableCompositeState: {

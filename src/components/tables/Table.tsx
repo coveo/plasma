@@ -53,9 +53,9 @@ export interface ITableOwnProps extends React.ClassAttributes<Table> {
   blankSlateDefault: IBlankSlateProps;
   tableContainerClasses?: string[];
   initialTableData?: ITableData;
-  collapsibleFormatter?: (tableRowData: ITableRowData, props: ITableProps) => JSXRenderable;
+  collapsibleFormatter?: (tableRowData: IData, props: ITableProps) => JSXRenderable;
   actionBar?: true | IActionBarProps;
-  getActions?: (rowData?: ITableRowData, props?: ITableProps) => IActionOptions[];
+  getActions?: (rowData?: IData, props?: ITableProps) => IActionOptions[];
   blankSlateNoResultsOnAction?: IBlankSlateProps;
   blankSlateOnError?: IBlankSlateProps;
   filter?: true | IFilterBoxProps;
