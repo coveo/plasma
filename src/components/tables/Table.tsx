@@ -77,7 +77,7 @@ export interface ITableCompositeStateProps {
 
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, Partial<ITableDispatchProps> { }
 
-export class Table extends React.Component<ITableProps, any> {
+export class Table extends React.Component<ITableProps, {}> {
   private isInitialLoad: boolean;
 
   static defaultProps = {
