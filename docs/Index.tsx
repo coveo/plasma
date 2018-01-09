@@ -63,6 +63,7 @@ import { BasicHeaderExamples } from '../src/components/headers/examples/BasicHea
 import { BreadcrumbHeaderExample } from '../src/components/headers/examples/BreadcrumbHeaderExample';
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
 import { SliderExamples } from '../src/components/slider/SliderExamples';
+import { SideNavigationLoadingExample } from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 
 class App extends React.Component<any, any> {
 
@@ -110,6 +111,7 @@ class App extends React.Component<any, any> {
           <NavigationConnectedExamples />
           <SubNavigationExamples />
           <SubNavigationConnectedExamples />
+          <SideNavigationLoadingExample />
           <TabsExamples />
           <ActionBarExamples />
           <ActionBarConnectedExamples />

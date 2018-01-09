@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 import { ITableData, ITableState, ITablesState, ITableCompositeState } from '../TableReducers';
 import { modifyState, setIsInError } from '../TableActions';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { ITableRowData, ITableProps } from '../Table';
+import { IData, ITableRowData, ITableProps } from '../Table';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 import * as $ from 'jquery';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
@@ -211,8 +211,8 @@ export class TableExamples extends React.Component<any, any> {
           <TableConnected
             id={_.uniqueId('react-vapor-table')}
             initialTableData={tableData}
-            collapsibleFormatter={(rowData: ITableRowData, props?: ITableProps) => <div className='p2'>This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}</div>}
-            getActions={(rowData: ITableRowData, tableProps: ITableProps) => ([
+            collapsibleFormatter={(rowData: IData, props?: ITableProps) => <div className='p2'>This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}</div>}
+            getActions={(rowData: IData, tableProps: ITableProps) => ([
               {
                 name: 'Link to Coveo',
                 link: 'http://coveo.com',
