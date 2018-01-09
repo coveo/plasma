@@ -58,17 +58,6 @@ export class SliderExamples extends React.Component<any, any> {
             </div>
           </div>
         </div>
-        <div className='form-group'>
-          <label className='form-control-label'>Slider with default value</label>
-          <div className='form-control'>
-            <div style={style}>
-              <Range className='vapor-slider'
-                     defaultValue={[20, 30]}
-                     count={2}
-              />
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
