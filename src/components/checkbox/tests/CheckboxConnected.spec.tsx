@@ -75,6 +75,14 @@ describe('Checkbox', () => {
       expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(true);
     });
 
+    it('should toggle the checkbox in the store when clicking on it', () => {
+      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id).length).toBe(1);
+      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(false);
+
+      checkbox.props().onClick(null);
+      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(true);
+    });
+
     it('should remove the checkbox in the store on destroy', () => {
       wrapper.unmount();
       expect(store.getState().checkboxes.filter(checkboxs => checkboxs.id === id).length).toBe(0);
