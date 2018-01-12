@@ -1,11 +1,11 @@
 import * as React from 'react';
 import 'rc-slider/assets/index.css';
-import {Slider} from '../Slider';
+import { Slider } from '../Slider';
 
 export class SliderExamples extends React.Component<any, any> {
 
   render() {
-    const style = {width: 600, margin: 25};
+    const style = { width: 600, margin: 25 };
     return (
       <div className='mt2'>
         <h1 className='text-blue mb1 bold'>Slider List</h1>
@@ -13,7 +13,7 @@ export class SliderExamples extends React.Component<any, any> {
           <label className='form-control-label'>Default Slider</label>
           <div className='form-control'>
             <div style={style}>
-              <Slider/>
+              <Slider />
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@ export class SliderExamples extends React.Component<any, any> {
           <div className='form-control'>
             <div style={style}>
               <Slider
-                slider={{defaultValue: 20}}
+                slider={{ defaultValue: 20 }}
               />
             </div>
           </div>
@@ -32,11 +32,13 @@ export class SliderExamples extends React.Component<any, any> {
           <div className='form-control'>
             <div style={style}>
               <Slider
-                slider={{marks: {
-                  0: 'Lower',
-                  50: 'Middle',
-                  100: 'Higher',
-                }}}
+                slider={{
+                  marks: {
+                    0: 'Lower',
+                    50: 'Middle',
+                    100: 'Higher',
+                  }
+                }}
               />
             </div>
           </div>
@@ -54,7 +56,7 @@ export class SliderExamples extends React.Component<any, any> {
           <label className='form-control-label'>Slider with tooltip and value formatter</label>
           <div className='form-control'>
             <div style={style}>
-              <Slider hasTooltip={true} slider={{tipFormatter: (value) => `${value}$`}}
+              <Slider hasTooltip={true} slider={{ tipFormatter: (value) => `${value}$` }}
               />
             </div>
           </div>
