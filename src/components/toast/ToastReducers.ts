@@ -2,7 +2,7 @@ import * as _ from 'underscore';
 import { IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction } from './ToastActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { ToastType } from './Toast';
-import { ComponentContent } from '../../';
+import { ComponentContent } from '../../utils/ComponentUtils';
 
 export interface IToastsState {
   id: string;
