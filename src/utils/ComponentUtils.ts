@@ -14,4 +14,4 @@ export const DisplayClass = {
   TABLE_CELL: 'table-cell'
 };
 
-export type ComponentContent = (new () => React.Component<any, any>) | string | (() => JSX.Element);
+export type ComponentContent = (new () => React.Component) | string | (() => JSX.Element);

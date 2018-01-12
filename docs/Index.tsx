@@ -62,7 +62,7 @@ import { BreadcrumbsExamples } from '../src/components/breadcrumbs/examples/Brea
 import { BasicHeaderExamples } from '../src/components/headers/examples/BasicHeaderExamples';
 import { BreadcrumbHeaderExample } from '../src/components/headers/examples/BreadcrumbHeaderExample';
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
-import { SliderExamples } from '../src/components/slider/SliderExamples';
+import { SliderExamples } from '../src/components/slider/examples/SliderExamples';
 import { SideNavigationLoadingExample } from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 
 class App extends React.Component<any, any> {

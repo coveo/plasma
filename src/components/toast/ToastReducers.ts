@@ -1,8 +1,8 @@
-import * as React from 'react';
 import * as _ from 'underscore';
 import { IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction } from './ToastActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { ToastType } from './Toast';
+import { ComponentContent } from '../../';
 
 export interface IToastsState {
   id: string;
@@ -16,7 +16,7 @@ export interface IToastState {
   dismiss?: number;
   dismissible?: boolean;
   animate?: boolean;
-  content?: typeof React.Component | string | (() => JSX.Element);
+  content?: ComponentContent;
 }
 
 export const toastContainerInitialState: IToastsState = {
