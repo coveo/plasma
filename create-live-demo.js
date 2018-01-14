@@ -10,7 +10,7 @@ sh.exec(`git commit -m 'prepare live demo folder for ${branchName} branch' --no-
 
 console.log(`Syncing with gh-pages from branch: ${branchName}`);
 sh.exec(`git pull ${originWithAuthentication} gh-pages`);
-sh.exec('git merge --no-edit --strategy-option ours gh-pages');
+sh.exec(`git merge --no-edit --strategy-option ours ${originWithAuthentication}/gh-pages`);
 
 console.log(`Pushing live demo to gh-pages for branch: ${branchName}`);
 const currentCommit = sh.exec('git show --oneline -s').stdout.trim().split(' ')[0];
