@@ -20,8 +20,10 @@ cache:
     - node_modules
 
 script:
- - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run docs && node create-live-demo.js; fi' # run this line on pull request builds only
  - npm run test
 
 after_success:
  - npm run report-coverage
+
+after_script:
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run docs && node create-live-demo.js; fi' # run this line on pull request builds only
