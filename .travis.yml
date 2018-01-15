@@ -21,7 +21,7 @@ cache:
 
 script:
  - npm run test
- - echo "Your live demo url, if everything went well, should be https://coveo.github.io/react-vapor/$(TRAVIS_PULL_REQUEST_BRANCH)/"
+ - echo "Your live demo url, if everything went well, should be https://coveo.github.io/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/"
 
 after_success:
  - npm run report-coverage
