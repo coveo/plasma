@@ -6,7 +6,7 @@ const originWithAuthentication = `https://${userpassword}@github.com/coveo/react
 console.log(`Creating live demo for branch: ${branchName}`);
 sh.cp('-R', 'docs', branchName);
 sh.exec('git add .');
-sh.exec(`git commit -m 'prepare live demo folder for ${branchName} branch' --no-verify`);
+sh.exec(`git commit -m 'live demo at https://coveo.github.io/react-vapor/${branchName}/' --no-verify`);
 
 console.log(`Syncing with gh-pages from branch: ${branchName}`);
 sh.exec(`git pull ${originWithAuthentication} gh-pages`);
@@ -16,6 +16,4 @@ console.log(`Pushing live demo to gh-pages for branch: ${branchName}`);
 const currentCommit = sh.exec('git show --oneline -s').stdout.trim().split(' ')[0];
 sh.exec(`git push ${originWithAuthentication} ${currentCommit}:gh-pages`);
 
-console.log(`Live demo creation completed.
-If it succeeded, the demo url should be https://coveo.github.io/react-vapor/${branchName}/`);
 process.exit();
