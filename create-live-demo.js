@@ -14,6 +14,6 @@ sh.exec(`git merge --no-edit --strategy-option ours ${originWithAuthentication}/
 
 console.log(`Pushing live demo to gh-pages for branch: ${branchName}`);
 const currentCommit = sh.exec('git show --oneline -s').stdout.trim().split(' ')[0];
-sh.exec(`git push ${originWithAuthentication} ${currentCommit}:gh-pages`);
+sh.exec(`git push -f ${originWithAuthentication} ${currentCommit}:gh-pages`);
 
 process.exit();
