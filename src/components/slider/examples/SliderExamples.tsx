@@ -13,7 +13,7 @@ export class SliderExamples extends React.Component<any, any> {
           <label className='form-control-label'>Default Slider</label>
           <div className='form-control'>
             <div style={style}>
-              <Slider />
+              <Slider classes={['class1', 'class2']}/>
             </div>
           </div>
         </div>

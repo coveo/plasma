@@ -215,3 +215,6 @@ export { ToastContainerConnected } from './components/toast/ToastContainerConnec
 export { BreadcrumbHeader } from './components/headers/BreadcrumbHeader';
 export { HeaderWrapper } from './components/headers/HeaderWrapper';
 export { BasicHeader } from './components/headers/BasicHeader';
+
+// Slider
+export { Slider } from './components/slider/Slider';
