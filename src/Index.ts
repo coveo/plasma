@@ -13,6 +13,9 @@ export { changeLastUpdated } from './components/lastUpdated/LastUpdatedActions';
 
 // Checkbox
 export { Checkbox } from './components/checkbox/Checkbox';
+export { CheckboxConnected } from './components/checkbox/CheckboxConnected';
+export { checkboxesReducer } from './components/checkbox/CheckboxReducers';
+export { CheckboxActions, toggleCheckbox } from './components/checkbox/CheckboxActions';
 
 // Child form
 export { ChildForm } from './components/childForm/ChildForm';

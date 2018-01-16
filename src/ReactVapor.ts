@@ -26,6 +26,7 @@ import { IDropdownOption } from './components/dropdownSearch/DropdownSearch';
 import { ITablesState, ITableData } from './components/tables/TableReducers';
 import { IFlatSelectState } from './components/flatSelect/FlatSelectReducers';
 import { ITablePredicate } from './components/tables/Table';
+import { ICheckboxState } from './components/checkbox/CheckboxReducers';
 
 export interface IReactVaporState {
   lastUpdatedComposite?: ILastUpdatedState[];
@@ -50,6 +51,7 @@ export interface IReactVaporState {
   toastContainers?: IToastsState[];
   tableHeaderCells?: ITableHeaderCellsState;
   tables?: ITablesState;
+  checkboxes: ICheckboxState[];
 }
 
 export interface IReduxActionsPayload {

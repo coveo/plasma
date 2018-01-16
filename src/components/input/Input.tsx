@@ -1,22 +1,34 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-export interface IInputProps {
+export interface IInputOwnProps {
   id?: string;
   name?: string;
   type?: string;
   classes?: string[];
   innerInputClasses?: string[];
-  value?: string;
+  defaultValue?: string;
   placeholder?: string;
-  checked?: boolean;
+  defaultChecked?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
+}
+
+export interface IInputStateProps {
+  checked?: boolean;
+  value?: string;
+}
+
+export interface IInputDispatchProps {
+  onDestroy?: () => void;
+  onRender?: () => void;
   onBlur?: (value: string) => void;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   onChange?: (value?: string) => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
+
+export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps { }
 
 export class Input extends React.Component<IInputProps, any> {
   private innerInput: HTMLInputElement;
@@ -24,6 +36,18 @@ export class Input extends React.Component<IInputProps, any> {
   static defaultProps: Partial<IInputProps> = {
     type: 'text',
   };
+
+  componentWillMount() {
+    if (this.props.onRender) {
+      this.props.onRender();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.onDestroy) {
+      this.props.onDestroy();
+    }
+  }
 
   reset() {
     this.innerInput.value = '';
