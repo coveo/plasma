@@ -9,8 +9,8 @@
   @include slim-scroll($purple-blue, $light-grey);
 
   *, *:before, *:after {
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
   }
 
   .tooltip {
