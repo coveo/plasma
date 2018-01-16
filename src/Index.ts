@@ -60,7 +60,7 @@ export { Navigation } from './components/navigation/Navigation';
 export { NavigationConnected } from './components/navigation/NavigationConnected';
 export { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
 export { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
-export { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
+export { NavigationPerPage, PER_PAGE_NUMBERS } from './components/navigation/perPage/NavigationPerPage';
 export { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
 export { SideNavigation } from './components/sideNavigation/SideNavigation'
 export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader'
