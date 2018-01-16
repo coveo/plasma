@@ -11,13 +11,13 @@
 }
 
 .navigation-loading-animation {
+  transform: translate3d(0,0,0);
+
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-name: move-background-horizontal;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-
-  transform: translate3d(0,0,0);
 }
 
 .navigation-loading-item {

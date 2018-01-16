@@ -1,0 +1,67 @@
+.vapor-slider.rc-slider {
+  .rc-slider-rail {
+    height: $slider-rail-height;
+    margin-top: $slider-rail-margin-top;
+
+    background-color: $light-grey;
+  }
+
+  .rc-slider-track {
+    height: $slider-track-height;
+
+    background-color: $dark-blue;
+    border-radius: $slider-track-border-radius;
+  }
+
+  .rc-slider-dot {
+    bottom: initial;
+
+    width: $slider-dot-width;
+    height: $slider-dot-height;
+    margin-top: $slider-dot-margin-top;
+    margin-left: $slider-dot-margin-left;
+
+    background-color: $pure-white;
+    box-shadow: $slider-dot-box-shadow;
+    border: none;
+    border-radius: initial;
+  }
+
+  .rc-slider-dot-active {
+    height: $slider-dot-active-height;
+    margin-top: initial;
+  }
+
+  .rc-slider-handle {
+    width: $slider-handle-width;
+    height: $slider-handle-height;
+    margin-top: $slider-handle-margin-top;
+    margin-left: $slider-handle-margin-left;
+
+    background: url('../../resources/icons/svg/slider-handle.svg');
+    background-repeat: no-repeat;
+    background-size: $slider-handle-background-size;
+    box-shadow: $slider-handle-box-shadow;
+    border: none;
+    border-radius: $slider-handle-border-radius;
+  }
+}
+
+.vapor-slider-overlay {
+  padding: 0;
+
+  &[class*='rc-slider-tooltip-placement-'] {
+    .rc-slider-tooltip-arrow {
+      display: none;
+    }
+
+    .rc-slider-tooltip-inner {
+      color: $dark-blue;
+      font-size: $small-font-size;
+      line-height: $default-line-height;
+
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+}
