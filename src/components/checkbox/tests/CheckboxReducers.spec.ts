@@ -12,29 +12,29 @@ describe('Checkbox', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: ICheckboxState[] = undefined;
-      let checkboxsState: ICheckboxState[] = checkboxesReducer(oldState, genericAction);
+      const oldState: ICheckboxState[] = undefined;
+      const checkboxsState: ICheckboxState[] = checkboxesReducer(oldState, genericAction);
 
       expect(checkboxsState).toBe(checkboxesInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one checkbox', () => {
-      let oldState: ICheckboxState = undefined;
-      let checkboxState: ICheckboxState = checkboxReducer(oldState, genericAction);
+      const oldState: ICheckboxState = undefined;
+      const checkboxState: ICheckboxState = checkboxReducer(oldState, genericAction);
 
       expect(checkboxState).toBe(checkboxInitialState);
     });
 
     it('should return the old state when the action is not defined', () => {
-      let oldState: ICheckboxState[] = [checkboxInitialState];
-      let checkboxsState: ICheckboxState[] = checkboxesReducer(oldState, genericAction);
+      const oldState: ICheckboxState[] = [checkboxInitialState];
+      const checkboxsState: ICheckboxState[] = checkboxesReducer(oldState, genericAction);
 
       expect(checkboxsState).toBe(oldState);
     });
 
     it('should return the old state when the action is not defined for one checkbox', () => {
-      let oldState: ICheckboxState = checkboxInitialState;
-      let checkboxState: ICheckboxState = checkboxReducer(oldState, genericAction);
+      const oldState: ICheckboxState = checkboxInitialState;
+      const checkboxState: ICheckboxState = checkboxReducer(oldState, genericAction);
 
       expect(checkboxState).toBe(oldState);
     });
@@ -94,7 +94,7 @@ describe('Checkbox', () => {
     });
 
     it('should toggle a checkbox when the action is "CheckboxAction.toggle"', () => {
-      let oldState: ICheckboxState[] = [
+      const oldState: ICheckboxState[] = [
         {
           id: 'some-checkbox1',
           checked: false
@@ -107,13 +107,13 @@ describe('Checkbox', () => {
         }
       ];
 
-      let action: IReduxAction<ICheckboxActionPayload> = {
+      const action: IReduxAction<ICheckboxActionPayload> = {
         type: CheckboxActions.toggle,
         payload: {
           id: 'some-checkbox1'
         }
       };
-      let checkboxesState: ICheckboxState[] = checkboxesReducer(oldState, action);
+      const checkboxesState: ICheckboxState[] = checkboxesReducer(oldState, action);
 
       expect(checkboxesState.length).toBe(oldState.length);
       expect(checkboxesState.filter(checkbox => checkbox.id === action.payload.id)[0].checked).toBe(true);

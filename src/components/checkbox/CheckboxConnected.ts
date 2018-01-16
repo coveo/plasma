@@ -10,7 +10,7 @@ import { Checkbox } from './Checkbox';
 const mapStateToProps = (state: IReactVaporState, ownProps: IInputOwnProps): IInputStateProps => {
   const checkbox: ICheckboxState = _.findWhere(state.checkboxes, { id: ownProps.id });
   return {
-    checked: checkbox ? checkbox.checked : false
+    checked: checkbox && checkbox.checked
   };
 };
 
