@@ -8,7 +8,6 @@ export const TableActions = {
   add: 'ADD_TABLE',
   remove: 'REMOVE_TABLE',
   inError: 'IN_ERROR_TABLE',
-  toggleLock: 'TOGGLE_LOCK_TABLE',
   modifyState: 'MODIFY_STATE_TABLE',
 };
 

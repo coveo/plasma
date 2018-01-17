@@ -26,6 +26,7 @@ import { ITooltipProps } from '../components/tooltip/Tooltip';
 import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers';
 import { tablesReducer } from '../components/tables/TableReducers';
 import thunk from 'redux-thunk';
+import { checkboxesReducer } from '../components/checkbox/CheckboxReducers';
 
 export interface IReactVaporTestState extends IReactVaporState {
   lastAction?: Redux.Action;
@@ -37,7 +38,7 @@ export class TestUtils {
       return action;
     };
 
-    const reactVaporReducers = Redux.combineReducers({
+    const reactVaporReducers = Redux.combineReducers<IReactVaporState>({
       lastAction: lastActionReducer,
       lastUpdatedComposite: lastUpdatedCompositeReducer,
       filters: filterBoxesReducer,
@@ -61,6 +62,7 @@ export class TestUtils {
       tabs: tabGroupsReducer,
       toastContainers: toastsContainerReducer,
       tables: tablesReducer,
+      checkboxes: checkboxesReducer,
     });
 
     const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {

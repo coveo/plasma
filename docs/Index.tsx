@@ -64,6 +64,7 @@ import { BreadcrumbHeaderExample } from '../src/components/headers/examples/Brea
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
 import { SliderExamples } from '../src/components/slider/examples/SliderExamples';
 import { SideNavigationLoadingExample } from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
+import { CheckboxConnectedExamples } from '../src/components/checkbox/examples/CheckboxConnectedExamples';
 
 class App extends React.Component<any, any> {
 
@@ -138,6 +139,7 @@ class App extends React.Component<any, any> {
           <InputExamples />
           <RadioExamples />
           <CheckboxExamples />
+          <CheckboxConnectedExamples />
           <ChildFormExamples />
         </div>
       </Provider>

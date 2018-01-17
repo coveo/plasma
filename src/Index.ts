@@ -13,6 +13,9 @@ export { changeLastUpdated } from './components/lastUpdated/LastUpdatedActions';
 
 // Checkbox
 export { Checkbox } from './components/checkbox/Checkbox';
+export { CheckboxConnected } from './components/checkbox/CheckboxConnected';
+export { checkboxesReducer } from './components/checkbox/CheckboxReducers';
+export { CheckboxActions, toggleCheckbox } from './components/checkbox/CheckboxActions';
 
 // Child form
 export { ChildForm } from './components/childForm/ChildForm';
@@ -60,7 +63,7 @@ export { Navigation } from './components/navigation/Navigation';
 export { NavigationConnected } from './components/navigation/NavigationConnected';
 export { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
 export { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
-export { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
+export { NavigationPerPage, PER_PAGE_NUMBERS } from './components/navigation/perPage/NavigationPerPage';
 export { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
 export { SideNavigation } from './components/sideNavigation/SideNavigation'
 export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader'
@@ -106,7 +109,7 @@ export { tableRowsReducer } from './components/tables/TableRowReducers';
 export { TableRowActions, selectRow, unselectAllRows } from './components/tables/TableRowActions';
 export { TableConnected } from './components/tables/TableConnected';
 export { tablesReducer } from './components/tables/TableReducers';
-export { modifyState, setIsInError } from './components/tables/TableActions';
+export { addTable, modifyState, removeTable, setIsInError, TableActions } from './components/tables/TableActions';
 export { defaultTableStateModifierThunk, dispatchPreTableStateModification, dispatchPostTableStateModification } from './components/tables/TableDataModifier';
 export { getTableChildComponentId, getTableLoadingIds, convertDataByIdToCollection, convertInitialCollectionToDataById } from './components/tables/TableUtils';
 export { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder } from './components/tables/TableConstants';

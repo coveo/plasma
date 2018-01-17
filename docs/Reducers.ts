@@ -23,6 +23,7 @@ import { IReactVaporState } from '../src/ReactVapor';
 import * as Redux from 'redux';
 import { tablesReducer } from '../src/components/tables/TableReducers';
 import { flatSelectsReducer } from '../src/components/flatSelect/FlatSelectReducers';
+import { checkboxesReducer } from '../src/components/checkbox/CheckboxReducers';
 
 export interface IReactVaporExampleState extends IReactVaporState {
   membersCompositeState: IMembersCompositeState;
@@ -58,4 +59,5 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   toastContainers: toastsContainerReducer,
   lastAction,
   tableHeaderCells: tableHeaderCellsReducer,
+  checkboxes: checkboxesReducer,
 });
