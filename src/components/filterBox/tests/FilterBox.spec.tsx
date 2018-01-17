@@ -72,17 +72,17 @@ describe('FilterBox', () => {
       expect(filterSpy.calls.count()).toBe(1);
     });
 
-    it('should call prop formatFilter when the filter input value has changed and prop is set', () => {
-      let formatFilterSpy = jasmine.createSpy('formatFilter');
+    it('should call prop onFilterCallback when the filter input value has changed and prop is set', () => {
+      let onFilterCallbackSpy = jasmine.createSpy('onFilterCallback');
       let input = filterBox.find('input');
 
       input.simulate('change');
-      expect(formatFilterSpy).not.toHaveBeenCalled();
+      expect(onFilterCallbackSpy).not.toHaveBeenCalled();
 
-      filterBox.setProps({ id: id, formatFilter: formatFilterSpy });
+      filterBox.setProps({ id: id, onFilterCallback: onFilterCallbackSpy });
       filterBox.mount();
       input.simulate('change');
-      expect(formatFilterSpy).toHaveBeenCalledTimes(1);
+      expect(onFilterCallbackSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should display the filterPlaceholder if set as a prop else, display the default one', () => {
