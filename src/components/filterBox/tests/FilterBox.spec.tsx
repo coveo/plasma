@@ -77,12 +77,12 @@ describe('FilterBox', () => {
       let input = filterBox.find('input');
 
       input.simulate('change');
-      expect(formatFilterSpy.calls.count()).toBe(0);
+      expect(formatFilterSpy).not.toHaveBeenCalled();
 
       filterBox.setProps({ id: id, formatFilter: formatFilterSpy });
       filterBox.mount();
       input.simulate('change');
-      expect(formatFilterSpy.calls.count()).toBe(1);
+      expect(formatFilterSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should display the filterPlaceholder if set as a prop else, display the default one', () => {

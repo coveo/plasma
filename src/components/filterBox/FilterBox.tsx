@@ -12,7 +12,7 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   maxWidth?: number;
   withTitleOnInput?: boolean;
   truncate?: boolean;
-  formatFilter?: (id: string, filterText: string) => void;
+  onFilterCallback?: (id: string, filterText: string) => void;
 }
 
 export interface IFilterBoxStateProps {
@@ -44,8 +44,8 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     this.filterInput.value = nextInputValue;
     this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
 
-    if (this.props.formatFilter) {
-      this.props.formatFilter(this.props.id, this.filterInput.value);
+    if (this.props.onFilterCallback) {
+      this.props.onFilterCallback(this.props.id, this.filterInput.value);
     }
 
     if (this.props.onFilter) {
