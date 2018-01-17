@@ -24,7 +24,7 @@ export interface IFlatSelectDispatchProps {
 
 export interface IFlatSelectProps extends IFlatSelectOwnProps, IFlatSelectStateProps, IFlatSelectDispatchProps { }
 
-export class FlatSelect extends React.Component<IFlatSelectProps, void> {
+export class FlatSelect extends React.Component<IFlatSelectProps> {
 
   componentWillMount() {
     if (this.props.onRender) {

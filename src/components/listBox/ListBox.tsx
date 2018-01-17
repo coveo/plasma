@@ -10,7 +10,7 @@ export interface IListBoxProps {
   classes?: string[];
 }
 
-export class ListBox extends React.Component<IListBoxProps, void> {
+export class ListBox extends React.Component<IListBoxProps> {
 
   static defaultProps: Partial<IListBoxProps> = {
     noResultItem: {

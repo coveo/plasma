@@ -6,7 +6,7 @@ import { ISvgProps, Svg } from '../../svg/Svg';
 import { IContentProps } from '../../content/Content';
 import { Loading } from '../../loading/Loading';
 
-export class FlatSelectExamples extends React.Component<any, void> {
+export class FlatSelectExamples extends React.Component {
 
   render() {
     const defaultFlatSelectOption: IFlatSelectOptionProps[] = [

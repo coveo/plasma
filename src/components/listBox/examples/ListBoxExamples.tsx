@@ -3,7 +3,7 @@ import { ListBox } from '../ListBox';
 import { ITooltipProps } from '../../tooltip/Tooltip';
 import { IItemBoxProps } from '../../itemBox/ItemBox';
 
-export class ListBoxExamples extends React.Component<any, any> {
+export class ListBoxExamples extends React.Component {
   render() {
     const tooltip: ITooltipProps = {
       title: 'title test',
