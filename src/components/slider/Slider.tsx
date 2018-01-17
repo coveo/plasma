@@ -8,7 +8,7 @@ export interface ISliderProps {
   hasTooltip?: boolean;
 }
 
-export class Slider extends React.Component<ISliderProps> {
+export class Slider extends React.Component<ISliderProps, {}> {
 
   static defaultProps: Partial<ISliderProps> = {
     slider: {},

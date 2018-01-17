@@ -220,4 +220,4 @@ export { HeaderWrapper } from './components/headers/HeaderWrapper';
 export { BasicHeader } from './components/headers/BasicHeader';
 
 // Slider
-export { Slider } from './components/slider/Slider';
+export { Slider, ISliderProps } from './components/slider/Slider';
