@@ -74,6 +74,11 @@
 
               color: $white;
 
+              &:focus {
+                border: none;
+                width: $navigation-focus-button-width;
+              }
+
               &.state-locked {
                 color: $navigation-locked-color;
               }
