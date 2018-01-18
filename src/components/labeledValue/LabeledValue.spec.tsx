@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {shallow, ShallowWrapper} from 'enzyme';
-import {LabeledValue} from './LabeledValue';
-import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Tooltip} from '../tooltip/Tooltip';
+import { shallow, ShallowWrapper } from 'enzyme';
+import { LabeledValue } from './LabeledValue';
+import { TooltipPlacement } from '../../utils/TooltipUtils';
+import { Tooltip } from '../tooltip/Tooltip';
 import { Svg } from '../svg/Svg';
 
 describe('LabeledValue', () => {
-  const props = {label: 'label', value: 'value'};
+  const props = { label: 'label', value: 'value' };
 
   it('should render without error with simple props', () => {
     expect(() => {
@@ -65,7 +65,7 @@ describe('LabeledValue', () => {
 
     it('should render with the value inside the value section if value is a JSX.element', () => {
       const jsxValue: JSX.Element = <div className='jsx-value'>value</div>;
-      labeledValue.setProps({value: jsxValue}).update();
+      labeledValue.setProps({ value: jsxValue }).update();
       expect(labeledValue.find('.value').find('.jsx-value').length).toBe(1);
     });
 
@@ -78,7 +78,7 @@ describe('LabeledValue', () => {
     });
 
     it('should render a Tooltip with a placement prop having the value of informationPlacement if set', () => {
-      labeledValue.setProps({informationPlacement: TooltipPlacement.Bottom}).update();
+      labeledValue.setProps({ informationPlacement: TooltipPlacement.Bottom }).update();
       expect(labeledValue.find(Tooltip).prop('placement')).toBe(TooltipPlacement.Bottom);
     });
 
