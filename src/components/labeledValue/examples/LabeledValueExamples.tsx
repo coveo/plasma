@@ -18,7 +18,7 @@ export const LabeledValueExamples = () =>
       </div>
     </div>
     <div className='form-group'>
-      <label className='form-control-label'>Two Simple Labeled Values inside a flexbox with one value full column</label>
+      <label className='form-control-label'>Two Simple Labeled Values inside a flexbox with one value full row</label>
       <div className='flex flex-wrap'>
         <LabeledValue label='First label (full row)' value='first value' fullRow />
         <LabeledValue label='Second label' value='second value' />
