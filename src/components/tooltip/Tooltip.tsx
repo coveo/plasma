@@ -66,7 +66,7 @@ const OVERLAY_PROPS_TO_OMIT: string[] = [
   'container',
 ];
 
-export class Tooltip extends React.Component<ITooltipProps> {
+export class Tooltip extends React.Component<ITooltipProps, {}> {
   static defaultProps: Partial<ITooltipProps> = {
     className: '',
   };
