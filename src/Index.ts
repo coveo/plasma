@@ -221,3 +221,9 @@ export { BasicHeader } from './components/headers/BasicHeader';
 
 // Slider
 export { Slider, ISliderProps } from './components/slider/Slider';
+
+// LabeledValue
+export { LabeledValue, ILabeledValueProps } from './components/labeledValue/LabeledValue';
+
+// Utils
+export { TooltipPlacement } from './utils/TooltipUtils';
