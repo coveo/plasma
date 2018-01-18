@@ -18,15 +18,6 @@ table {
         margin-right: -$table-first-column-padding-left;
         margin-left: -$table-first-column-padding-left;
       }
-
-      .box.padded {
-        padding-left: 0;
-      }
-
-      .box .label, .box .value {
-        padding-right: 0;
-        padding-left: 0;
-      }
     }
 
     &.mod-collapsible-rows tbody tr.collapsible-row td:last-child {

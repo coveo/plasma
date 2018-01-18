@@ -130,38 +130,6 @@ table {
         td {
           background-color: $pure-white;
         }
-
-        .box {
-          &.padded {
-            padding: 5px $collapsible-box-padding;
-          }
-
-          .label, .value {
-            padding: 5px;
-            overflow: hidden;
-
-            font-size: $collapsible-content-font-size;
-            text-overflow: ellipsis;
-          }
-
-          .label {
-            color: $light-blue;
-          }
-        }
-
-        .columns {
-          flex-flow: row wrap;
-
-          display: flex;
-
-          .box {
-            flex-basis: 33%;
-
-            &.padded {
-              flex-basis: calc(33% - #{$collapsible-box-padding});
-            }
-          }
-        }
       }
     }
 
