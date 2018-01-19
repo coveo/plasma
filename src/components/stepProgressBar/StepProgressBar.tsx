@@ -16,19 +16,13 @@ export interface IStepProgressBarProps {
 
 export const StepProgressBar = (props: IStepProgressBarProps) => {
     const { numberOfSteps, currentStep } = props;
-    const stepWidth = Math.floor(100 / numberOfSteps);
     const stepProgressBarSteps = range(numberOfSteps).map((stepNumber: number) => (
       <div
-        className={classNames('step-progress-bar', {
+        className={classNames('step-progress-bar full-content-x', {
           'step-progress-bar-done': stepNumber < currentStep,
           'step-progress-bar-doing': stepNumber === currentStep,
           'step-progress-bar-to-do': stepNumber > currentStep,
-        })}
-        style={{
-          width: stepNumber === (numberOfSteps - 1)
-            ? `${stepWidth + (100 % numberOfSteps)}%` // add residual to make sure the total width of all steps is 100%
-            : `${stepWidth}%`,
-        }}>
+        })}>
       </div>
     ));
 
