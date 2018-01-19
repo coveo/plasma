@@ -15,20 +15,20 @@ export interface IStepProgressBarProps {
 }
 
 export const StepProgressBar = (props: IStepProgressBarProps) => {
-    const { numberOfSteps, currentStep } = props;
-    const stepProgressBarSteps = range(numberOfSteps).map((stepNumber: number) => (
-      <div
-        className={classNames('step-progress-bar full-content-x', {
-          'step-progress-bar-done': stepNumber < currentStep,
-          'step-progress-bar-doing': stepNumber === currentStep,
-          'step-progress-bar-to-do': stepNumber > currentStep,
-        })}>
-      </div>
-    ));
+  const { numberOfSteps, currentStep } = props;
+  const stepProgressBarSteps = range(numberOfSteps).map((stepNumber: number) => (
+    <div
+      className={classNames('step-progress-bar full-content-x', {
+        'step-progress-bar-done': stepNumber < currentStep,
+        'step-progress-bar-doing': stepNumber === currentStep,
+        'step-progress-bar-to-do': stepNumber > currentStep,
+      })}>
+    </div>
+  ));
 
-    return (
-      <div className={classNames('step-progress-bar-container', props.className)}>
-        {stepProgressBarSteps}
-      </div>
-    );
+  return (
+    <div className={classNames('step-progress-bar-container', props.className)}>
+      {stepProgressBarSteps}
+    </div>
+  );
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {shallow} from 'enzyme';
-import {StepProgressBar, IStepProgressBarProps} from './StepProgressBar';
+import { shallow } from 'enzyme';
+import { StepProgressBar, IStepProgressBarProps } from './StepProgressBar';
 
 describe('StepProgressBar', () => {
   const stepProgressBarContainerSelector = '.step-progress-bar-container';
@@ -8,14 +8,14 @@ describe('StepProgressBar', () => {
   const stepProgressBarDoneSelector = '.step-progress-bar-done';
   const stepProgressBarDoingSelector = '.step-progress-bar-doing';
   const stepProgressBarToDoSelector = '.step-progress-bar-to-do';
-  const testProps = {numberOfSteps: 10, currentStep: 5};
+  const testProps = { numberOfSteps: 10, currentStep: 5 };
 
   it('should render without error with multiple scenarios of number of steps and current step', () => {
     [
-      {numberOfSteps: 1, currentStep: 0},
-      {numberOfSteps: 10, currentStep: 5},
-      {numberOfSteps: 4, currentStep: 4},
-      {numberOfSteps: 5, currentStep: 4},
+      { numberOfSteps: 1, currentStep: 0 },
+      { numberOfSteps: 10, currentStep: 5 },
+      { numberOfSteps: 4, currentStep: 4 },
+      { numberOfSteps: 5, currentStep: 4 },
     ].forEach((props: IStepProgressBarProps) => {
       expect(() => shallow(<StepProgressBar {...props} />)).not.toThrow();
     });
@@ -50,7 +50,7 @@ describe('StepProgressBar', () => {
       expect(stepProgressBar.find(stepProgressBarSelector).length).toBe(testProps.numberOfSteps);
     });
 
-    it('should render with extra classes on the container if passed as props as array', () => {
+    it('should render with extra classes on the container if passed in props as array', () => {
       const testClasses = ['container', 'classes', 'wonderful'];
       const stepProgressBarWithClasses = shallow(<StepProgressBar {...testProps} className={testClasses} />);
 
@@ -59,7 +59,7 @@ describe('StepProgressBar', () => {
       });
     });
 
-    it('should render with extra classes on the container if passed as props as string', () => {
+    it('should render with extra classes on the container if passed in props as string', () => {
       const testClasses = 'container classes wonderful';
       const stepProgressBarWithClasses = shallow(<StepProgressBar {...testProps} className={testClasses} />);
 
