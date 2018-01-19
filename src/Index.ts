@@ -86,7 +86,7 @@ export { dropdownsReducer } from './components/dropdown/DropdownReducers';
 export { DropdownSearchConnected } from './components/dropdownSearch/DropdownSearchConnected';
 export { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 export { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
-export { DropdownSearchActions, updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
+export { DropdownSearchActions, updateOptionsDropdownSearch, selectOptionDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 
 // ActionBar
 export { ActionBar } from './components/actions/ActionBar';
