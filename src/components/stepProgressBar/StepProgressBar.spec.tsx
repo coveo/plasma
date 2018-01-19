@@ -22,7 +22,7 @@ describe('StepProgressBar', () => {
   });
 
   it('should render without error with mandatory props and className as array of string', () => {
-    expect(() => shallow(<StepProgressBar {...testProps} className={['some', 'classes']}/>)).not.toThrow();
+    expect(() => shallow(<StepProgressBar {...testProps} className={['some', 'classes']} />)).not.toThrow();
   });
 
   it('should render without error with mandatory props and className as string', () => {
