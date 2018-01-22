@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { range } from 'underscore';
+import { range, uniqueId } from 'underscore';
 import * as classNames from 'classnames';
 
 export interface IStepProgressBarProps {
@@ -18,6 +18,7 @@ export const StepProgressBar = (props: IStepProgressBarProps) => {
   const { numberOfSteps, currentStep } = props;
   const stepProgressBarSteps = range(numberOfSteps).map((stepNumber: number) => (
     <div
+      key={`step-progress-bar-${uniqueId()}`}
       className={classNames('step-progress-bar full-content-x', {
         'step-progress-bar-done': stepNumber < currentStep,
         'step-progress-bar-doing': stepNumber === currentStep,
