@@ -89,5 +89,31 @@ describe('<TableChildHeader />', () => {
       expect(onRowClickSpy).toHaveBeenCalledWith(someActions);
       expect(getActionsSpy).toHaveBeenCalledWith(_.values(tableProps.tableCompositeState.data.byId)[0], tableProps);
     });
+
+    it('should call getActions results with option callOnDoubleClick true on row double click', () => {
+      const actionSpy = jasmine.createSpy('actionSpy');
+      const someActions: IActionOptions[] = [{
+        name: 'action that should not be called',
+        enabled: true,
+        trigger: () => {
+          throw new Error('This action should not be called');
+        }
+      }, {
+        name: 'action that should be called',
+        callOnDoubleClick: true,
+        enabled: true,
+        trigger: actionSpy
+      }];
+      const getActionsSpy = jasmine.createSpy('getActionsSpy').and.returnValue(someActions);
+      const tableProps = {
+        ...tablePropsMockWithData,
+        getActions: getActionsSpy,
+      };
+
+      mountComponentWithProps(tableProps).find(TableHeadingRowConnected).first().simulate('dblclick');
+
+      expect(getActionsSpy).toHaveBeenCalledTimes(1);
+      expect(actionSpy).toHaveBeenCalledTimes(1);
+    });
   });
 });
