@@ -65,6 +65,7 @@ import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSe
 import { SliderExamples } from '../src/components/slider/examples/SliderExamples';
 import { SideNavigationLoadingExample } from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 import { CheckboxConnectedExamples } from '../src/components/checkbox/examples/CheckboxConnectedExamples';
+import { StepProgressBarExamples } from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
 import { LabeledValueExamples } from '../src/components/labeledValue/examples/LabeledValueExamples';
 
 class App extends React.Component<any, any> {
@@ -142,6 +143,7 @@ class App extends React.Component<any, any> {
           <CheckboxExamples />
           <CheckboxConnectedExamples />
           <ChildFormExamples />
+          <StepProgressBarExamples />
           <LabeledValueExamples />
         </div>
       </Provider>

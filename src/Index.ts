@@ -222,6 +222,9 @@ export { BasicHeader } from './components/headers/BasicHeader';
 // Slider
 export { Slider, ISliderProps } from './components/slider/Slider';
 
+// StepProgressBar
+export { StepProgressBar, IStepProgressBarProps } from './components/stepProgressBar/StepProgressBar';
+
 // LabeledValue
 export { LabeledValue, ILabeledValueProps } from './components/labeledValue/LabeledValue';
 
