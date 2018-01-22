@@ -40,5 +40,17 @@ export const StepProgressBarExamples = () => (
         <StepProgressBar numberOfSteps={10} currentStep={3} />
       </div>
     </div>
+    <div className='form-group'>
+      <label className='form-control-label'>Step Progress Bar 10 steps (step 4) with extra classes for margin (string)</label>
+      <div className='form-control'>
+        <StepProgressBar numberOfSteps={10} currentStep={3} className='mt2 mb2'/>
+      </div>
+    </div>
+    <div className='form-group'>
+      <label className='form-control-label'>Step Progress Bar 10 steps (step 4) with extra classes for margin (array)</label>
+      <div className='form-control'>
+        <StepProgressBar numberOfSteps={10} currentStep={3} className={['mt2', 'mb2']}/>
+      </div>
+    </div>
   </div>
 );
