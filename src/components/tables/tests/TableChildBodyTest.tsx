@@ -90,6 +90,17 @@ describe('<TableChildHeader />', () => {
       expect(getActionsSpy).toHaveBeenCalledWith(_.values(tableProps.tableCompositeState.data.byId)[0], tableProps);
     });
 
+    it('should not throw on row double click and getAction prop is undefined', () => {
+      const tableProps = {
+        ...tablePropsMockWithData,
+        getActions: undefined,
+      };
+
+      const row = mountComponentWithProps(tableProps).find(TableHeadingRowConnected).first();
+
+      expect(() => row.simulate('dblclick')).not.toThrow();
+    });
+
     it('should call getActions results with option callOnDoubleClick true on row double click', () => {
       const actionSpy = jasmine.createSpy('actionSpy');
       const someActions: IActionOptions[] = [{
