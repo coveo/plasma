@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { StepProgressBar } from '../../stepProgressBar/StepProgressBar';
 import { SplitLayout } from '../SplitLayout';
