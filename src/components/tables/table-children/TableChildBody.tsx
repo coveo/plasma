@@ -52,6 +52,14 @@ export const TableChildBody = (props: ITableProps): JSX.Element[] => {
             if (props.onRowClick) {
               props.onRowClick(props.getActions && props.getActions(rowData, props));
             }
+          }}
+          onDoubleClick={() => {
+            const actions = props.getActions
+              ? props.getActions(rowData, props)
+              : [];
+            actions
+              .filter(action => action.callOnDoubleClick)
+              .forEach(action => action.trigger());
           }}>
           {tableHeadingRowContent}
         </TableHeadingRowConnected>
