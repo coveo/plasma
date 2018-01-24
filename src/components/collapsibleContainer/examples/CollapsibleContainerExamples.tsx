@@ -1,14 +1,52 @@
 import * as React from 'react';
-import { CollapsibleContainer } from '../CollapsibleContainer';
+import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
+import { CollapsibleContainerConnected } from '../CollapsibleContainerConnected';
+import { setExpandedCollapsibleContainer } from '../CollapsibleContainerActions';
+import * as _ from 'underscore';
 
 export const CollapsibleContainerExamples = () =>
   <div className='mt2'>
     <h1 className='text-blue mb1 bold'>CollapsibleContainer List</h1>
     <div className='form-group'>
-      <label className='form-control-label'>CollapsibleContainer</label>
+      <label className='form-control-label'>CollapsibleContainer expanded on mount</label>
       <div className='form-control'>
-        <CollapsibleContainer title={'hello!'} informationUrl='hey' expanded />
-        <CollapsibleContainer title={'hello!'}>hello!</CollapsibleContainer>
+        <CollapsibleContainerConnected
+          id='collapsible-example-1'
+          title='CollapsibleContainer expanded on mount'
+          informationUrl='http://coveo.github.io/vapor/'
+          informationTooltip={{ title: 'I display information and if you click me you\'ll be led to a url that was provided to me.', placement: 'top' }}
+          expandedOnMount>I am expanded on mount!</CollapsibleContainerConnected>
+      </div>
+    </div>
+    <div className='form-group'>
+      <label className='form-control-label'>CollapsibleContainer not expanded on mount</label>
+      <div className='form-control'>
+        <CollapsibleContainerConnected
+          id='collapsible-example-2'
+          title='CollapsibleContainer not expanded on mount'
+          informationTooltip={{ title: 'I display information only since no url was given to me.', placement: 'top' }}>
+          I was not expanded on mount, but now I am! Thanks!
+        </CollapsibleContainerConnected>
+      </div>
+    </div>
+    <div className='form-group'>
+      <label className='form-control-label'>
+        CollapsibleContainer is expandable from outside the component.
+      <button
+          className='ml1'
+          onClick={() => {
+            const collapsibleState = _.findWhere(ReactVaporStore.getState().collapsibleContainers, { id: 'collapsible-example-3' });
+            ReactVaporStore.dispatch(setExpandedCollapsibleContainer('collapsible-example-3', !collapsibleState.expanded));
+          }}>
+          Toggle Container!
+        </button>
+      </label>
+      <div className='form-control'>
+        <CollapsibleContainerConnected
+          id='collapsible-example-3'
+          title='CollapsibleContainer'>
+          You just expanded me with that button! Thanks!
+        </CollapsibleContainerConnected>
       </div>
     </div>
   </div>;

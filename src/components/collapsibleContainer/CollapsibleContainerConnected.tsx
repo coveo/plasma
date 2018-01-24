@@ -22,8 +22,8 @@ const mapDispatchToProps = (
   dispatch: IDispatch,
   ownProps: ICollapsibleContainerOwnProps,
 ): ICollapsibleContainerDispatchProps => ({
-  onMount: () => dispatch(addCollapsibleContainer(ownProps.id, !!ownProps.initialExpandedState)),
-  onDestroy: () => dispatch(removeCollapsibleContainer(ownProps.id)),
+  onMount: () => dispatch(addCollapsibleContainer(ownProps.id, !!ownProps.expandedOnMount)),
+  onUnmount: () => dispatch(removeCollapsibleContainer(ownProps.id)),
   onToggleExpandedState: (currentExpandedState: boolean) => dispatch(setExpandedCollapsibleContainer(ownProps.id, !currentExpandedState))
 });
 

@@ -231,5 +231,9 @@ export { LabeledValue, ILabeledValueProps } from './components/labeledValue/Labe
 // SplitLayout
 export { SplitLayout, ISplitLayoutProps } from './components/splitlayout/SplitLayout';
 
+// CollapsibleContainer
+export { ICollapsibleContainerProps, ICollapsibleContainerOwnProps, ICollapsibleContainerStateProps, ICollapsibleContainerDispatchProps } from './components/collapsibleContainer/CollapsibleContainer';
+export { CollapsibleContainerConnected } from './components/collapsibleContainer/CollapsibleContainerConnected';
+
 // Utils
 export { TooltipPlacement } from './utils/TooltipUtils';
