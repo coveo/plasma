@@ -104,7 +104,7 @@ describe('Reducers', () => {
       expect(perPageCompositeState.filter(p => p.id === action.payload.id).length).toBe(0);
     });
 
-    it('should change the page number of the action id when action is "CHANGE_PER_PAGE"', () => {
+    it('should change the page number of the action id when action is "CHANGE_PER_PAGE" and action id equals state id', () => {
       let oldState: IPerPageState = {
         id: 'per-page',
         perPage: 20
@@ -120,6 +120,24 @@ describe('Reducers', () => {
       let perPageCompositeState = perPageCompositeReducer([oldState], action);
 
       expect(perPageCompositeState[0]).toEqual(jasmine.objectContaining(newState));
+    });
+
+    it('should change the page number of the action id when action is "CHANGE_PER_PAGE" and action id does not equal state id', () => {
+      const oldState: IPerPageState = {
+        id: 'pageId',
+        perPage: 20
+      };
+      const newState: IPerPageState = {
+        id: 'aDifferentPageId',
+        perPage: 10
+      };
+      const action: IReduxAction<IPerPageActionPayload> = {
+        type: PerPageActions.change,
+        payload: newState
+      };
+      const perPageCompositeState = perPageCompositeReducer([oldState], action);
+
+      expect(perPageCompositeState[0]).toEqual(jasmine.objectContaining(oldState));
     });
   });
 });

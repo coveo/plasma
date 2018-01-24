@@ -10,6 +10,7 @@ export interface ITriggerActionOwnProps extends React.ClassAttributes<TriggerAct
 export interface ITriggerActionDispatchProps {
   onTriggerConfirm?: (onClick: () => void, userChoice: IUserChoice, className: string) => void;
   onConfirm?: () => void;
+  onCloseDropdown?: () => void;
 }
 
 export interface ITriggerActionProps extends ITriggerActionOwnProps, ITriggerActionDispatchProps { }
@@ -47,6 +48,7 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
     } else {
       if (this.props.action.trigger) {
         this.props.action.trigger();
+        this.props.onCloseDropdown && this.props.onCloseDropdown();
       }
     }
   }

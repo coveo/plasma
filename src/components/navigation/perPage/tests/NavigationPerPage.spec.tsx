@@ -23,6 +23,7 @@ describe('NavigationPerPage', () => {
   describe('<NavigationPerPage />', () => {
     let navigationPerPage: ReactWrapper<INavigationPerPageProps, any>;
     let navigationPerPageInstance: NavigationPerPage;
+    let navigationPerPageInstanceAsAny: any;
 
     beforeEach(() => {
       navigationPerPage = mount(
@@ -30,6 +31,7 @@ describe('NavigationPerPage', () => {
         { attachTo: document.getElementById('App') }
       );
       navigationPerPageInstance = navigationPerPage.instance() as NavigationPerPage;
+      navigationPerPageInstanceAsAny = navigationPerPageInstance;
     });
 
     afterEach(() => {
@@ -136,17 +138,30 @@ describe('NavigationPerPage', () => {
       expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(expectedPerPageNumbers.length);
     });
 
-    it('should call onPerPageClick prop if it is set when calling handleClick', () => {
+    it('should call onPerPageClick prop if it is set when calling handleClick and perPage is different than currentPerPage', () => {
       let newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS,
         { onPerPageClick: jasmine.createSpy('onPerPageClick') });
       let expectedPerPage: number = 22;
 
-      expect(() => navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage)).not.toThrow();
+      expect(() => navigationPerPageInstanceAsAny.handleClick(expectedPerPage)).not.toThrow();
 
       navigationPerPage.setProps(newProps);
-      navigationPerPageInstance['handleClick'].call(navigationPerPageInstance, expectedPerPage);
+      navigationPerPageInstanceAsAny.handleClick(expectedPerPage);
 
-      expect(newProps.onPerPageClick).toHaveBeenCalled();
+      expect(newProps.onPerPageClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onPerPageClick prop if perPage is identical to currentPerPage', () => {
+      const newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS,
+        { onPerPageClick: jasmine.createSpy('onPerPageClick'), currentPerPage: 10 });
+      const expectedPerPage: number = 10;
+
+      expect(() => navigationPerPageInstanceAsAny.handleClick(expectedPerPage)).not.toThrow();
+
+      navigationPerPage.setProps(newProps);
+      // two clicks should call the function once
+      navigationPerPageInstanceAsAny.handleClick(expectedPerPage);
+      expect(newProps.onPerPageClick).not.toHaveBeenCalled();
     });
   });
 });

@@ -187,7 +187,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: undefined,
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           },
           {
             id: 'id',
@@ -198,7 +200,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: 'yes it is',
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           }
         ]
       });
@@ -232,7 +236,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: 'the name of the limit',
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           }
         ]
       });
@@ -250,7 +256,9 @@ describe('Calendar', () => {
             isRange: true,
             selected: undefined,
             appliedLowerLimit: now,
-            appliedUpperLimit: now
+            appliedUpperLimit: now,
+            inputLowerLimit: now,
+            inputUpperLimit: now
           }
         ]
       });
@@ -275,7 +283,9 @@ describe('Calendar', () => {
         isRange: true,
         selected: undefined,
         appliedLowerLimit: now,
-        appliedUpperLimit: now
+        appliedUpperLimit: now,
+        inputLowerLimit: now,
+        inputUpperLimit: now
       };
       const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
         {
@@ -412,59 +422,66 @@ describe('Calendar', () => {
         expect(day.isSelectable).toBe(true);
       });
 
-      it('should return day isSelectable if the day is not a Saturday and selecting lower limit', () => {
-        let otherDay: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'day') });
-        let saturday: IDay = _.extend({}, DAY, { date: moment().endOf('week') });
-        let selectionLowerLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.lower });
+      describe('saturday and sunday rule', () => {
+        const notSaturdayOrSunday: moment.Moment = moment().isoWeekday() >= 5
+          ? moment().add(4, 'days')
+          : moment().add(1, 'days');
 
-        day = calendarInstance.fillInDayInfos(otherDay);
+        it('should return day isSelectable if the day is not a Saturday and selecting lower limit', () => {
+          let otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
+          let saturday: IDay = _.extend({}, DAY, { date: moment().endOf('week') });
+          let selectionLowerLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.lower });
 
-        expect(day.isSelectable).toBe(true);
+          day = calendarInstance.fillInDayInfos(otherDay);
 
-        day = calendarInstance.fillInDayInfos(saturday);
+          expect(day.isSelectable).toBe(true);
 
-        expect(day.isSelectable).toBe(true);
+          day = calendarInstance.fillInDayInfos(saturday);
 
-        calendar.setProps({
-          calendarSelection: [selectionLowerLimit],
-          selectionRules: CALENDAR_SELECTION_RULES
+          expect(day.isSelectable).toBe(true);
+
+          calendar.setProps({
+            calendarSelection: [selectionLowerLimit],
+            selectionRules: CALENDAR_SELECTION_RULES
+          });
+
+          day = calendarInstance.fillInDayInfos(otherDay);
+
+          expect(day.isSelectable).toBe(true);
+
+          day = calendarInstance.fillInDayInfos(saturday);
+
+          expect(day.isSelectable).toBe(false);
         });
 
-        day = calendarInstance.fillInDayInfos(otherDay);
+        it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
+          let otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
+          let sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
+          let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
 
-        expect(day.isSelectable).toBe(true);
+          day = calendarInstance.fillInDayInfos(otherDay);
 
-        day = calendarInstance.fillInDayInfos(saturday);
+          expect(day.isSelectable).toBe(true);
 
-        expect(day.isSelectable).toBe(false);
-      });
+          day = calendarInstance.fillInDayInfos(sunday);
 
-      it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
-        let otherDay: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(2, 'day') });
-        let sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
-        let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
+          expect(day.isSelectable).toBe(true);
 
-        day = calendarInstance.fillInDayInfos(otherDay);
+          calendar.setProps({
+            calendarSelection: [selectionUpperLimit],
+            selectionRules: CALENDAR_SELECTION_RULES
+          });
 
-        expect(day.isSelectable).toBe(true);
+          day = calendarInstance.fillInDayInfos(otherDay);
 
-        day = calendarInstance.fillInDayInfos(sunday);
+          expect(day.isSelectable).toBe(true);
 
-        expect(day.isSelectable).toBe(true);
+          day = calendarInstance.fillInDayInfos(sunday);
 
-        calendar.setProps({
-          calendarSelection: [selectionUpperLimit],
-          selectionRules: CALENDAR_SELECTION_RULES
+          expect(day.isSelectable).toBe(false);
         });
-
-        day = calendarInstance.fillInDayInfos(otherDay);
-
-        expect(day.isSelectable).toBe(true);
-
-        day = calendarInstance.fillInDayInfos(sunday);
-
-        expect(day.isSelectable).toBe(false);
       });
+
     });
   });
 });

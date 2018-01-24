@@ -25,7 +25,7 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
   render() {
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>Checkboxes</h1>
+        <h1 className='text-blue mb1 bold'>Checkboxes</h1>
         <div className='form-group'>
           <Checkbox>
             <Label classes={['label']}>A checkbox unchecked</Label>

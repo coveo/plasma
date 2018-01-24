@@ -6,7 +6,7 @@ import { IToastContainerProps, ToastContainer } from '../ToastContainer';
 import { Toast } from '../Toast';
 
 describe('Toasts', () => {
-  let component: ReactWrapper<IToastContainerProps, void>;
+  let component: ReactWrapper<IToastContainerProps, {}>;
   let basicProps: IToastContainerProps;
   let instance: ToastContainer;
 

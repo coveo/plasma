@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { render as ReactDOMRender } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReactVaporStore } from './ReactVaporStore';
+import { render as ReactDOMRender } from 'react-dom';
+import './style.scss';
+import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { SyncFeedbackExample } from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
@@ -17,6 +19,7 @@ import { NavigationExamples } from '../src/components/navigation/examples/Naviga
 import { NavigationConnectedExamples } from '../src/components/navigation/examples/NavigationConnectedExamples';
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ActionBarConnectedExamples } from '../src/components/actions/examples/ActionBarConnectedExamples';
+import { TableExamples } from '../src/components/tables/examples/TableExamples';
 import { TableRowExamples } from '../src/components/tables/examples/TableRowExamples';
 import { TableRowConnectedExamples } from '../src/components/tables/examples/TableRowConnectedExamples';
 import { TableHeaderExamples } from '../src/components/tables/examples/TableHeaderExamples';
@@ -39,8 +42,6 @@ import { TabsExamples } from '../src/components/tab/examples/TabConnectedExample
 import { ModalPromptExamples } from '../src/components/modalPrompt/exemples/ModalPromptExamples';
 import { MultilineInputExamples } from '../src/components/multilineInput/examples/MultilineInputExamples';
 import { TooltipExamples } from '../src/components/tooltip/examples/TooltipExamples';
-import './style.scss';
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
@@ -56,11 +57,22 @@ import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamp
 import { InputExamples } from '../src/components/input/examples/InputExamples';
 import { LinkSvgExamples } from '../src/components/svg/examples/LinkSvgExamples';
 import { SvgExamples } from '../src/components/svg/examples/SvgExamples';
+import { TitleExamples } from '../src/components/title/examples/TitleExamples';
+import { BreadcrumbsExamples } from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
+import { BasicHeaderExamples } from '../src/components/headers/examples/BasicHeaderExamples';
+import { BreadcrumbHeaderExample } from '../src/components/headers/examples/BreadcrumbHeaderExample';
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
+import { SliderExamples } from '../src/components/slider/examples/SliderExamples';
+import { SideNavigationLoadingExample } from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
+import { CheckboxConnectedExamples } from '../src/components/checkbox/examples/CheckboxConnectedExamples';
+import { StepProgressBarExamples } from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
+import { LabeledValueExamples } from '../src/components/labeledValue/examples/LabeledValueExamples';
+import { SplitLayoutExamples } from '../src/components/splitlayout/examples/SplitLayoutExamples';
 
 class App extends React.Component<any, any> {
 
   render() {
+    (window as any).store = ReactVaporStore;
     return (
       <Provider store={ReactVaporStore}>
         <div className='coveo-form'>
@@ -72,12 +84,17 @@ class App extends React.Component<any, any> {
               <MembersExample />
             </div>
           </div>
+          <SliderExamples />
           <SvgExamples />
           <LinkSvgExamples />
+          <TitleExamples />
           <ContentExamples />
           <ItemBoxExamples />
           <ListBoxExamples />
           <ButtonExamples />
+          <BreadcrumbsExamples />
+          <BasicHeaderExamples />
+          <BreadcrumbHeaderExample />
           <DropdownSearchExamples />
           <FlatSelectExamples />
           <TooltipExamples />
@@ -98,6 +115,7 @@ class App extends React.Component<any, any> {
           <NavigationConnectedExamples />
           <SubNavigationExamples />
           <SubNavigationConnectedExamples />
+          <SideNavigationLoadingExample />
           <TabsExamples />
           <ActionBarExamples />
           <ActionBarConnectedExamples />
@@ -107,6 +125,7 @@ class App extends React.Component<any, any> {
           <TableRowConnectedExamples />
           <TableEmptyRowExamples />
           <TableHeaderExamples />
+          <TableExamples />
           <OptionsCycleExamples />
           <OptionsCycleConnectedExamples />
           <CalendarConnectedExamples />
@@ -123,7 +142,11 @@ class App extends React.Component<any, any> {
           <InputExamples />
           <RadioExamples />
           <CheckboxExamples />
+          <CheckboxConnectedExamples />
           <ChildFormExamples />
+          <StepProgressBarExamples />
+          <LabeledValueExamples />
+          <SplitLayoutExamples />
         </div>
       </Provider>
     );

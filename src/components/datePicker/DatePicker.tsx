@@ -6,8 +6,7 @@ import * as React from 'react';
 import { CalendarDay } from '../calendar/CalendarDay';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
-  onChange: (date: Date, isUpperLimit: boolean) => void;
-  onBlur: () => void;
+  onBlur: (date: Date, isUpperLimit: boolean) => void;
   onClick: (isUpperLimit: boolean) => void;
   placeholder: string;
   withTime?: boolean;
@@ -52,22 +51,21 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
   private setToToday() {
     const date = new Date();
     this.dateInput.value = this.getStringFromDate(date);
-    this.handleChange();
+    this.handleChangeDate();
   }
 
-  private handleChange() {
+  private handleChangeDate() {
     const date: Date = this.getDateFromString(this.dateInput.value);
 
     if (date.getDate()) {
-      this.props.onChange(date, this.props.upperLimit);
+      this.props.onBlur(date, this.props.upperLimit);
     }
   }
 
   handleDocumentClick = (e: MouseEvent) => {
     const target = $(e.target);
     if (this.isPicked && !target.closest('.date-picker').length && !target.closest(`.${CalendarDay.DEFAULT_DATE_CLASS}`).length && !target.closest('.date-picker-dropdown').length) {
-      this.handleChange();
-      this.props.onBlur();
+      this.handleChangeDate();
     }
   }
 
@@ -107,7 +105,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
         <input
           className={inputClasses.join(' ')}
           ref={(dateInput: HTMLInputElement) => this.dateInput = dateInput}
-          onChange={() => this.handleChange()}
+          onBlur={() => this.handleChangeDate()}
           onClick={() => this.props.onClick(this.props.upperLimit)}
           placeholder={this.props.placeholder}
           required

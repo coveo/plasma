@@ -95,6 +95,18 @@ describe('MultiSelectDropdownSearch', () => {
 
         expect(onKeyDownFilterBox).toHaveBeenCalled();
       });
+
+      it('should call onBlur props on blur in input', () => {
+        const onBlur = jasmine.createSpy('onBlur');
+
+        multiSelectDropdownSearch.setProps({
+          onBlur,
+        });
+
+        multiSelectDropdownSearch.find('input').simulate('blur');
+
+        expect(onBlur).toHaveBeenCalledTimes(1);
+      });
     });
   });
 });

@@ -10,6 +10,7 @@ import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers'
 import { actionBarsReducer } from '../components/actions/ActionBarReducers';
 import { dropdownsReducer } from '../components/dropdown/DropdownReducers';
 import { tableRowsReducer } from '../components/tables/TableRowReducers';
+import { tableHeaderCellsReducer } from '../components/tables/TableHeaderCellReducers';
 import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleReducers';
 import { optionPickersReducer } from '../components/optionPicker/OptionPickerReducers';
 import { datePickersReducer } from '../components/datePicker/DatePickerReducers';
@@ -23,6 +24,9 @@ import { toastsContainerReducer } from '../components/toast/ToastReducers';
 import { ISvgProps } from '../components/svg/Svg';
 import { ITooltipProps } from '../components/tooltip/Tooltip';
 import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers';
+import { tablesReducer } from '../components/tables/TableReducers';
+import thunk from 'redux-thunk';
+import { checkboxesReducer } from '../components/checkbox/CheckboxReducers';
 
 export interface IReactVaporTestState extends IReactVaporState {
   lastAction?: Redux.Action;
@@ -34,7 +38,7 @@ export class TestUtils {
       return action;
     };
 
-    const reactVaporReducers = Redux.combineReducers({
+    const reactVaporReducers = Redux.combineReducers<IReactVaporState>({
       lastAction: lastActionReducer,
       lastUpdatedComposite: lastUpdatedCompositeReducer,
       filters: filterBoxesReducer,
@@ -48,6 +52,7 @@ export class TestUtils {
       dropdownSearch: dropdownsSearchReducer,
       flatSelect: flatSelectsReducer,
       rows: tableRowsReducer,
+      tableHeaderCells: tableHeaderCellsReducer,
       optionsCycles: optionsCyclesReducer,
       optionPickers: optionPickersReducer,
       datePickers: datePickersReducer,
@@ -56,6 +61,8 @@ export class TestUtils {
       subNavigations: subNavigationsReducer,
       tabs: tabGroupsReducer,
       toastContainers: toastsContainerReducer,
+      tables: tablesReducer,
+      checkboxes: checkboxesReducer,
     });
 
     const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
@@ -63,7 +70,7 @@ export class TestUtils {
       return reactVaporReducers(state, action as any);
     };
 
-    return Redux.createStore(reactVapor);
+    return Redux.createStore(reactVapor, Redux.applyMiddleware(thunk));
   }
 
   static randomDate() {

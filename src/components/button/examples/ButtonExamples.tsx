@@ -6,7 +6,7 @@ export class ButtonExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>Buttons List</h1>
+        <h1 className='text-blue mb1 bold'>Buttons List</h1>
         <div className='form-group'>
           <label className='form-control-label'>Default Button</label>
           <div className='form-control'>
@@ -17,6 +17,12 @@ export class ButtonExamples extends React.Component<any, any> {
           <label className='form-control-label'>Primary Button</label>
           <div className='form-control'>
             <Button enabled={true} primary={true} name='Primary Button' />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Small Button</label>
+          <div className='form-control'>
+            <Button enabled={true} small={true} name='Small Button' />
           </div>
         </div>
         <div className='form-group'>

@@ -14,7 +14,7 @@ export class ChosenSelectExamples extends React.Component<any, any> {
   render() {
     return (
       <div className='mt2'>
-        <h1 className='text-blue mb1'>Chosen Single Select</h1>
+        <h1 className='text-blue mb1 bold'>Chosen Single Select</h1>
         <div className='form-group'>
           <label className='form-control-label'>
             Default Chosen single select

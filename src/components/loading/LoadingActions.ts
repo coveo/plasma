@@ -28,13 +28,13 @@ export const removeLoading = (id: string): IReduxAction<ILoadingActionPayload> =
 export const turnOnLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOn,
   payload: {
-    ids
+    ids,
   }
 });
 
 export const turnOffLoading = (ids: string[]): IReduxAction<ILoadingActionPayload> => ({
   type: LoadingActions.turnOff,
   payload: {
-    ids
+    ids,
   }
 });

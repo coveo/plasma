@@ -13,6 +13,9 @@ export { changeLastUpdated } from './components/lastUpdated/LastUpdatedActions';
 
 // Checkbox
 export { Checkbox } from './components/checkbox/Checkbox';
+export { CheckboxConnected } from './components/checkbox/CheckboxConnected';
+export { checkboxesReducer } from './components/checkbox/CheckboxReducers';
+export { CheckboxActions, toggleCheckbox } from './components/checkbox/CheckboxActions';
 
 // Child form
 export { ChildForm } from './components/childForm/ChildForm';
@@ -60,8 +63,12 @@ export { Navigation } from './components/navigation/Navigation';
 export { NavigationConnected } from './components/navigation/NavigationConnected';
 export { NavigationPagination } from './components/navigation/pagination/NavigationPagination';
 export { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
-export { NavigationPerPage } from './components/navigation/perPage/NavigationPerPage';
+export { NavigationPerPage, PER_PAGE_NUMBERS } from './components/navigation/perPage/NavigationPerPage';
 export { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
+export { SideNavigation } from './components/sideNavigation/SideNavigation'
+export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader'
+export { SideNavigationLoadingItem } from './components/sideNavigation/SideNavigationLoadingItem'
+export { SideNavigationMenuSection } from './components/sideNavigation/SideNavigationMenuSection'
 
 // Pagination
 export { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
@@ -79,7 +86,7 @@ export { dropdownsReducer } from './components/dropdown/DropdownReducers';
 export { DropdownSearchConnected } from './components/dropdownSearch/DropdownSearchConnected';
 export { DropdownSearch } from './components/dropdownSearch/DropdownSearch';
 export { dropdownsSearchReducer } from './components/dropdownSearch/DropdownSearchReducers';
-export { DropdownSearchActions, updateOptionsDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
+export { DropdownSearchActions, updateOptionsDropdownSearch, selectOptionDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 
 // ActionBar
 export { ActionBar } from './components/actions/ActionBar';
@@ -94,11 +101,18 @@ export { itemFiltersReducer } from './components/actions/filters/ItemFilterReduc
 export { TableHeader } from './components/tables/TableHeader';
 export { TableHeadingRow } from './components/tables/TableHeadingRow';
 export { TableHeadingRowConnected } from './components/tables/TableHeadingRowConnected';
+export { tableHeaderCellsReducer } from './components/tables/TableHeaderCellReducers';
 export { TableCollapsibleRow } from './components/tables/TableCollapsibleRow';
 export { TableCollapsibleRowConnected } from './components/tables/TableCollapsibleRowConnected';
 export { TableEmptyRow } from './components/tables/TableEmptyRow';
 export { tableRowsReducer } from './components/tables/TableRowReducers';
-export { TableRowActions, selectRow } from './components/tables/TableRowActions';
+export { TableRowActions, selectRow, unselectAllRows } from './components/tables/TableRowActions';
+export { TableConnected } from './components/tables/TableConnected';
+export { tablesReducer } from './components/tables/TableReducers';
+export { addTable, modifyState, removeTable, setIsInError, TableActions } from './components/tables/TableActions';
+export { defaultTableStateModifierThunk, dispatchPreTableStateModification, dispatchPostTableStateModification } from './components/tables/TableDataModifier';
+export { getTableChildComponentId, getTableLoadingIds, convertDataByIdToCollection, convertInitialCollectionToDataById } from './components/tables/TableUtils';
+export { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder } from './components/tables/TableConstants';
 
 // Prompts
 export { promptsReducer } from './components/inlinePrompt/InlinePromptReducers';
@@ -148,7 +162,7 @@ export { SubNavigationActions, selectSubNavigation } from './components/subNavig
 // Utils
 export { DisplayClass, ComponentContent } from './utils/ComponentUtils';
 export { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
-export { clearState, CommonActions, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
+export { clearState, CommonActions, IDispatch, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
 export { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
 
 // Tab
@@ -199,3 +213,23 @@ export {
 export { IToastsState, IToastState, toastsContainerInitialState, toastInitialState, toastContainerInitialState, toastsContainerReducer, toastContainerReducer } from './components/toast/ToastReducers';
 export { ToastContainer, IToastContainerDispatchProps, IToastContainerOwnProps, IToastContainerStateProps, IToastContainerProps } from './components/toast/ToastContainer';
 export { ToastContainerConnected } from './components/toast/ToastContainerConnected';
+
+// Headers
+export { BreadcrumbHeader } from './components/headers/BreadcrumbHeader';
+export { HeaderWrapper } from './components/headers/HeaderWrapper';
+export { BasicHeader } from './components/headers/BasicHeader';
+
+// Slider
+export { Slider, ISliderProps } from './components/slider/Slider';
+
+// StepProgressBar
+export { StepProgressBar, IStepProgressBarProps } from './components/stepProgressBar/StepProgressBar';
+
+// LabeledValue
+export { LabeledValue, ILabeledValueProps } from './components/labeledValue/LabeledValue';
+
+// SplitLayout
+export { SplitLayout, ISplitLayoutProps } from './components/splitlayout/SplitLayout';
+
+// Utils
+export { TooltipPlacement } from './utils/TooltipUtils';

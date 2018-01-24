@@ -49,7 +49,7 @@ export class ActionsDropdown extends React.Component<IActionsDropdownProps, any>
 
     return (
       this.props.withReduxState ?
-        <DropdownConnected toggleContent={toggleContent} dropdownItems={actions} /> :
+        <DropdownConnected toggleContent={toggleContent} dropdownItems={actions} id={this.props.id} /> :
         <Dropdown toggleContent={toggleContent} dropdownItems={actions} />
     );
   }

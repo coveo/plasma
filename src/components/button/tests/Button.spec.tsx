@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import { Button } from '../Button';
-import { IBaseActionOptions } from '../../actions/Action';
+import { Button, IButtonProps } from '../Button';
 import { Tooltip } from '../../tooltip/Tooltip';
 import * as _ from 'underscore';
 
 describe('Button', () => {
 
-  let buttonComponent: ReactWrapper<IBaseActionOptions, any>;
+  let buttonComponent: ReactWrapper<IButtonProps, any>;
 
   it('should render without errors', () => {
     expect(() => {
@@ -35,7 +34,7 @@ describe('Button', () => {
 
   describe('<Button /> with custom props', () => {
 
-    const showButton = (props: Partial<IBaseActionOptions>) => {
+    const showButton = (props: Partial<IButtonProps>) => {
       buttonComponent = mount(
         <Button {..._.defaults(props, { enabled: true }) } />,
         { attachTo: document.getElementById('App') },
@@ -48,6 +47,22 @@ describe('Button', () => {
       });
 
       expect(buttonComponent.find('button').text()).toEqual('test');
+    });
+
+    it('should render the button mod primary', () => {
+      showButton({
+        primary: true,
+      });
+
+      expect(buttonComponent.find('button').hasClass('mod-primary')).toBe(true);
+    });
+
+    it('should render the button mod small', () => {
+      showButton({
+        small: true,
+      });
+
+      expect(buttonComponent.find('button').hasClass('mod-small')).toBe(true);
     });
 
     it('should render the default button disabled with enabled at false', () => {

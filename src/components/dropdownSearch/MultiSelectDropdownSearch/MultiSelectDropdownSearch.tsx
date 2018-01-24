@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps {
   displayedOptions: IDropdownOption[];
   selectedOptions: IDropdownOption[];
-};
+}
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
 

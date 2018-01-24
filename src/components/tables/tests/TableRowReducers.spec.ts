@@ -1,5 +1,5 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { ITableRowActionPayload, TableRowActions } from '../TableRowActions';
+import { ITableRowActionPayload, TableRowActions, unselectAllRows } from '../TableRowActions';
 import {
   ITableRowState,
   tableRowsReducer,
@@ -71,13 +71,16 @@ describe('Tables', () => {
       let oldState: ITableRowState[] = [
         {
           id: 'row2',
-          opened: false
+          opened: false,
+          selected: false,
         }, {
           id: 'row1',
-          opened: true
+          opened: true,
+          selected: false,
         }, {
           id: 'row3',
-          opened: false
+          opened: false,
+          selected: false,
         }
       ];
       let action: IReduxAction<ITableRowActionPayload> = {
@@ -176,11 +179,11 @@ describe('Tables', () => {
           type: TableRowActions.select,
           payload: { id: rowId },
         });
+        const doesNotMatter = false;
 
         let oldState: ITableRowState[];
 
         beforeEach(() => {
-          const doesNotMatter = false;
           openValue = false;
           oldState = [
             { id: 'row2', opened: doesNotMatter, selected: false },
@@ -215,6 +218,24 @@ describe('Tables', () => {
           expect(rowsState.filter(row => row.id === action2.payload.id)[0].selected).toBe(true);
           expect(rowsState.filter(row => row.id !== action2.payload.id).every(row => !row.selected))
             .toBe(true);
+        });
+
+        it('should unselect all rows having a table id identical to the one received in the payload', () => {
+          const tableId = 'tableId';
+          const action = unselectAllRows(tableId);
+
+          const currentStateWithTableId = oldState.map(rowState => ({ ...rowState, tableId, selected: true }));
+
+          expect(tableRowsReducer(currentStateWithTableId, action).every(row => !row.selected)).toBe(true);
+        });
+
+        it('should leave all rows not having a table id identical to the one received in the payload', () => {
+          const tableId = 'tableId';
+          const action = unselectAllRows(tableId);
+
+          const currentStateWithTableId = oldState.map(rowState => ({ ...rowState, tableId: `different${tableId}`, selected: true }));
+
+          expect(tableRowsReducer(currentStateWithTableId, action).every(row => row.selected)).toBe(true);
         });
       });
     });

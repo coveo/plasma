@@ -5,6 +5,9 @@ import { DateUtils } from '../../utils/DateUtils';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DEFAULT_YEARS, ICalendarSelectionRule } from '../calendar/Calendar';
+import { ModalFooter } from '../modal/ModalFooter';
+import { Button } from '../button/Button';
+import * as moment from 'moment';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
   label?: string;
@@ -135,7 +138,19 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       : DateUtils.getSimpleDate(date);
   }
 
+  private hasExceededRangeLimit(): Boolean {
+    if (this.props.datePicker && this.props.datePicker.rangeLimit) {
+      const { weeks, days, hours } = this.props.datePicker.rangeLimit;
+      const limitInMinutes: number = (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0);
+      const diffInMinutes: number = moment(this.props.datePicker.inputUpperLimit).diff(moment(this.props.datePicker.inputLowerLimit), 'minutes');
+      return diffInMinutes > limitInMinutes;
+    }
+
+    return false;
+  }
+
   render() {
+    const hasExceededRangeLimit = this.hasExceededRangeLimit();
     let datePickerBoxProps: IDatePickerBoxProps = {
       setToNowTooltip: this.props.setToNowTooltip,
       datesSelectionBoxes: this.props.datesSelectionBoxes,
@@ -150,14 +165,20 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       upperLimitPlaceholder: this.props.upperLimitPlaceholder,
       isLinkedToDateRange: this.props.isLinkedToDateRange,
       footer: (
-        <footer className='modal-footer mod-small'>
-          <button type='button' className='btn mod-primary mod-small' onClick={() => this.handleApply()}>
-            {this.props.applyLabel}
-          </button>
-          <button type='button' className='btn mod-small' onClick={() => this.handleCancel()}>
-            {this.props.cancelLabel}
-          </button>
-        </footer>
+        <ModalFooter classes={['mod-small']}>
+          <Button enabled={!hasExceededRangeLimit}
+            name={this.props.applyLabel}
+            small={true}
+            primary={true}
+            tooltip={hasExceededRangeLimit ? this.props.datePicker.rangeLimit.message : ''}
+            tooltipPlacement={'left'}
+            onClick={() => this.handleApply()} />
+          <Button enabled={true}
+            name={this.props.cancelLabel}
+            small={true}
+            primary={true}
+            onClick={() => this.handleCancel()} />
+        </ModalFooter>
       )
     };
 

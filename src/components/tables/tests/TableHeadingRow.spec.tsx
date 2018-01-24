@@ -113,5 +113,26 @@ describe('Tables', () => {
       tableHeadingRow.find('tr').simulate('click');
       expect(onClickSpy).toHaveBeenCalled();
     });
+
+    it('should call onDoubleClick prop if set when double clicking on row', () => {
+      let onDoubleClickSpy = jasmine.createSpy('onDoubleClick');
+      let newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onDoubleClick: onDoubleClickSpy });
+
+      expect(() => (tableHeadingRowInstance['handleDoubleClick'].call(tableHeadingRowInstance))).not.toThrow();
+
+      tableHeadingRow.setProps(newTabledHeadingRowProps);
+      tableHeadingRow.find('tr').simulate('dblclick');
+      expect(onDoubleClickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call onClickCallBack prop if set when clicking on row', () => {
+      const onClickCallback = jasmine.createSpy('onClickCallback');
+      const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onClickCallback });
+      tableHeadingRow.setProps(newTabledHeadingRowProps);
+
+      tableHeadingRow.find('tr').simulate('click');
+
+      expect(onClickCallback).toHaveBeenCalledTimes(1);
+    });
   });
 });

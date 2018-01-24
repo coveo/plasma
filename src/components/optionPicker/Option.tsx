@@ -3,6 +3,7 @@ import * as React from 'react';
 export interface IOption {
   label: string;
   value: () => string;
+  [key: string]: any;
 }
 
 export interface IOptionProps extends React.ClassAttributes<Option> {

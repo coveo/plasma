@@ -18,15 +18,11 @@ export const perPageCompositeInitialState: IPerPageState[] = [];
 export const perPageReducer = (state: IPerPageState = perPageInitialState, action: IReduxAction<IReduxActionsPayload>): IPerPageState => {
   switch (action.type) {
     case PerPageActions.add:
-      return {
-        id: action.payload.id,
-        perPage: action.payload.perPage
-      };
+      return { id: action.payload.id, perPage: action.payload.perPage };
     case PerPageActions.change:
-      return {
-        id: state.id,
-        perPage: action.payload.perPage
-      };
+      return state.id === action.payload.id
+        ? { id: state.id, perPage: action.payload.perPage }
+        : state;
     default:
       return state;
   }

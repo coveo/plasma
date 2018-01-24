@@ -292,7 +292,14 @@ describe('DropdownSearch', () => {
             id: 'new-dropdown-search',
             isOpened: false,
             filterText: '',
-            options: [],
+            options: [
+              {
+                value: 'testOption',
+                displayValue: 'testOption',
+                custom: false,
+                selected: false,
+              },
+            ],
             supportSingleCustomOption: true,
           },
         ];
@@ -309,7 +316,7 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.filter(
           (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-            dropdownSearch.options[0] === undefined).length).toBe(1);
+            dropdownSearch.options[1] === undefined).length).toBe(1);
       });
 
       it('should add a custom option if the filterText is not empty', () => {
