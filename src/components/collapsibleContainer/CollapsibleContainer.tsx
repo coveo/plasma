@@ -6,15 +6,28 @@ import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
 import { IClassName } from '../../utils/ClassNameUtils';
 import { JSXRenderable } from '../../utils/JSXUtils';
 
-export interface ICollapsibleContainerProps {
+export interface ICollapsibleContainerOwnProps {
+  id: string;
   title: JSXRenderable;
+  initialExpandedState?: boolean;
   informationUrl?: string;
   informationTooltip?: ITooltipProps;
-  expanded?: boolean;
   className?: IClassName;
   collapsibleHeaderClassName?: IClassName;
   collapsibleBodyClassName?: IClassName;
 }
+
+export interface ICollapsibleContainerStateProps {
+  expanded?: boolean;
+}
+
+export interface ICollapsibleContainerDispatchProps {
+  onMount?: () => void;
+  onDestroy?: () => void;
+  onToggleExpandedState?: (currentExpandedState: boolean) => void;
+}
+
+export interface ICollapsibleContainerProps extends ICollapsibleContainerOwnProps, ICollapsibleContainerStateProps { }
 
 export class CollapsibleContainer extends React.Component<ICollapsibleContainerProps, {}> {
   getCollapsibleHeaderIcon(): JSX.Element {
