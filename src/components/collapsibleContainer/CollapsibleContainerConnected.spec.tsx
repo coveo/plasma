@@ -80,7 +80,7 @@ describe('<CollapsibleContainerConnected />', () => {
         collapsible.find('.collapsible-header button').simulate('click');
         expect(findWhere(store.getState().collapsibleContainers, { id: basicCollapsibleContainerProps.id }).expanded)
           .toBe(!expandedBeforeClick);
-  
+
         collapsible.find('.collapsible-header button').simulate('click');
         expect(findWhere(store.getState().collapsibleContainers, { id: basicCollapsibleContainerProps.id }).expanded)
           .toBe(expandedBeforeClick);
