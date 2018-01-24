@@ -51,7 +51,7 @@ export interface IReactVaporState {
   toastContainers?: IToastsState[];
   tableHeaderCells?: ITableHeaderCellsState;
   tables?: ITablesState;
-  checkboxes: ICheckboxState[];
+  checkboxes?: ICheckboxState[];
 }
 
 export interface IReduxActionsPayload {
