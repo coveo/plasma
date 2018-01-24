@@ -34,4 +34,10 @@
 
     border-bottom: $collapsible-border-width solid $medium-grey;
   }
+
+  .round-contextual-help {
+    position: relative;
+    top: $collapsible-contextual-help-positioning;
+    left: $collapsible-contextual-help-positioning;
+  }
 }
