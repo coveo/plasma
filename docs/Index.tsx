@@ -68,6 +68,7 @@ import { CheckboxConnectedExamples } from '../src/components/checkbox/examples/C
 import { StepProgressBarExamples } from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
 import { LabeledValueExamples } from '../src/components/labeledValue/examples/LabeledValueExamples';
 import { CollapsibleContainerExamples } from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
+import { SplitLayoutExamples } from '../src/components/splitlayout/examples/SplitLayoutExamples';
 
 class App extends React.Component<any, any> {
 
@@ -147,6 +148,7 @@ class App extends React.Component<any, any> {
           <StepProgressBarExamples />
           <LabeledValueExamples />
           <CollapsibleContainerExamples />
+          <SplitLayoutExamples />
         </div>
       </Provider>
     );

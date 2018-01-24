@@ -228,5 +228,8 @@ export { StepProgressBar, IStepProgressBarProps } from './components/stepProgres
 // LabeledValue
 export { LabeledValue, ILabeledValueProps } from './components/labeledValue/LabeledValue';
 
+// SplitLayout
+export { SplitLayout, ISplitLayoutProps } from './components/splitlayout/SplitLayout';
+
 // Utils
 export { TooltipPlacement } from './utils/TooltipUtils';
