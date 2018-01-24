@@ -122,7 +122,7 @@ describe('Tables', () => {
 
       tableHeadingRow.setProps(newTabledHeadingRowProps);
       tableHeadingRow.find('tr').simulate('dblclick');
-      expect(onDoubleClickSpy).toHaveBeenCalled();
+      expect(onDoubleClickSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should call onClickCallBack prop if set when clicking on row', () => {
