@@ -4,8 +4,8 @@ import { SplitLayout } from '../SplitLayout';
 import * as loremIpsum from 'lorem-ipsum';
 import { range } from 'underscore';
 
-const exampleTextLeft = `I am a left children. ${loremIpsum({ count: 5, sentenceUpperBound: 15 })}`;
-const exampleTextRight = `I am a right children. ${loremIpsum({ count: 5, sentenceUpperBound: 15 })}`;
+const exampleTextLeft = `I am a left child. ${loremIpsum({ count: 5, sentenceUpperBound: 15 })}`;
+const exampleTextRight = `I am a right child. ${loremIpsum({ count: 5, sentenceUpperBound: 15 })}`;
 
 export const SplitLayoutExamples = () =>
   <div className='mt2'>

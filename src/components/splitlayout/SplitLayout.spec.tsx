@@ -13,7 +13,7 @@ describe('SplitLayout', () => {
     rightChildren: <div className='right'></div>,
   };
 
-  it('should render without error with basic props and one children on each side', () => {
+  it('should render without error with basic props and one child on each side', () => {
     expect(() => shallow(<SplitLayout {...basicProps} />)).not.toThrow();
   });
 
@@ -46,7 +46,7 @@ describe('SplitLayout', () => {
   });
 
   describe('SplitLayout Content', () => {
-    it('should render with left children in first column and right children in right column', () => {
+    it('should render with a left child in first column and a right child in right column', () => {
       const splitLayout = shallow(<SplitLayout {...basicProps} />);
 
       expect(splitLayout.find('.column').first().find('.left').length).toBe(1);
