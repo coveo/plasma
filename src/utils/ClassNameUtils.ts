@@ -1,5 +1,3 @@
-import { IClassName } from './ClassNameUtils';
-
 export type ClassNameTypes = string | string[] | { [key: string]: boolean };
 
 /**

@@ -39,15 +39,15 @@ describe('<CollapsibleContainerConnected />', () => {
     );
   };
 
-  it('should get what to do onMount', () => {
+  it('should not throw when calling onMount', () => {
     expect(() => mountComponentWithProps(basicCollapsibleContainerProps).find(CollapsibleContainer).props().onMount()).not.toThrow();
   });
 
-  it('should get what to do onUnmount', () => {
+  it('should not throw when calling onUnmount', () => {
     expect(() => mountComponentWithProps(basicCollapsibleContainerProps).find(CollapsibleContainer).props().onUnmount()).not.toThrow();
   });
 
-  it('should get what to do onToggleExpandedState', () => {
+  it('should not throw when calling onToggleExpandedState', () => {
     expect(() => mountComponentWithProps(basicCollapsibleContainerProps).find(CollapsibleContainer).props().onToggleExpandedState(true)).not.toThrow();
   });
 

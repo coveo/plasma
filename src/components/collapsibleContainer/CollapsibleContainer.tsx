@@ -33,7 +33,7 @@ export interface ICollapsibleContainerProps extends
   ICollapsibleContainerStateProps,
   ICollapsibleContainerDispatchProps { }
 
-export class CollapsibleContainer extends React.Component<ICollapsibleContainerProps, {}> {
+export class CollapsibleContainer extends React.Component<ICollapsibleContainerProps> {
   private toggleCollapsibleBodyOnExpandedStateChange(nextProps: ICollapsibleContainerProps) {
     const collapsibleBodySelector = `#${this.props.id} .collapsible-body`;
     const animationOptions = { duration: 350 };
