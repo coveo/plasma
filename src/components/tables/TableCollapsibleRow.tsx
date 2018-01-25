@@ -1,7 +1,7 @@
 import { IErrorSection, TableError } from './TableError';
 import { SlideY } from '../../animations/SlideY';
 import * as React from 'react';
-// import * as $ from 'jquery';
+import * as $ from 'jquery';
 
 export interface ITableCollapsibleRowOwnProps extends React.ClassAttributes<TableCollapsibleRow> {
   id: string;
@@ -25,25 +25,25 @@ export interface ITableCollapsibleRowProps extends ITableCollapsibleRowOwnProps,
 
 export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowProps, any> {
 
-  // private toggleRow(opened: boolean) {
-  //   let animationTime: number = 400;
-  //   let $e: JQuery = $('.' + this.props.id);
-  //   let $container: JQuery = $e.find('.container');
+  private toggleRow(opened: boolean) {
+    let animationTime: number = 400;
+    let $e: JQuery = $('.' + this.props.id);
+    let $container: JQuery = $e.find('.container');
 
-  //   if (opened) {
-  //     $container.slideDown(animationTime);
-  //   } else {
-  //     $container.slideUp(animationTime);
-  //   }
-  // }
+    if (opened) {
+      $container.slideDown(animationTime);
+    } else {
+      $container.slideUp(animationTime);
+    }
+  }
 
-  // componentDidMount() {
-  //   this.toggleRow(this.props.opened);
-  // }
+  componentDidMount() {
+    this.toggleRow(this.props.opened);
+  }
 
-  // componentWillReceiveProps(nextProps: ITableCollapsibleRowProps) {
-  //   this.toggleRow(nextProps.opened);
-  // }
+  componentWillReceiveProps(nextProps: ITableCollapsibleRowProps) {
+    this.toggleRow(nextProps.opened);
+  }
 
   render() {
     let rowClasses: string = 'collapsible-row ' + this.props.id + (this.props.opened ? ' in' : '');
@@ -59,7 +59,6 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
     return (
       <tr className={rowClasses}>
         <td colSpan={this.props.nbColumns}>
-          <SlideY in={this.props.opened} timeout={400}>
             <div className='container'>
               {error}
               <div className='clearfix'></div>
@@ -67,7 +66,6 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
                 {this.props.children}
               </section>
             </div>
-          </SlideY>
         </td>
       </tr>
     );
