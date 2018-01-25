@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import { ILabelProps, Label } from './Label';
 
 export interface IInputOwnProps {
   id?: string;
@@ -12,19 +13,24 @@ export interface IInputOwnProps {
   defaultChecked?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
+  validate?: (value: any) => boolean;
+  withValidStyle?: true;
+  labelTitle?: string;
+  labelProps?: ILabelProps;
 }
 
 export interface IInputStateProps {
   checked?: boolean;
   value?: string;
+  valid?: boolean;
 }
 
 export interface IInputDispatchProps {
   onDestroy?: () => void;
-  onRender?: () => void;
+  onRender?: (value?: any, valid?: boolean) => void;
   onBlur?: (value: string) => void;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-  onChange?: (value?: string) => void;
+  onChange?: (value?: any) => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
@@ -35,6 +41,7 @@ export class Input extends React.Component<IInputProps, any> {
 
   static defaultProps: Partial<IInputProps> = {
     type: 'text',
+    valid: true,
   };
 
   componentWillMount() {
@@ -81,12 +88,22 @@ export class Input extends React.Component<IInputProps, any> {
     }
   }
 
+  private getLabel(): JSX.Element {
+    const { labelProps, labelTitle } = this.props;
+    return labelTitle
+      ? <Label htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
+      : null;
+  }
+
   render() {
     const classes = classNames(
       'input-wrapper',
       this.props.classes
     );
-    const innerInputClasses = classNames(this.props.innerInputClasses);
+    const innerInputClasses = classNames({
+      valid: this.props.valid && this.props.withValidStyle,
+      invalid: !this.props.valid,
+    }, this.props.innerInputClasses);
 
     return (
       <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
@@ -106,6 +123,7 @@ export class Input extends React.Component<IInputProps, any> {
           required
           readOnly={!!this.props.readOnly}
         />
+        {this.getLabel()}
         {this.props.children}
       </div>
     );
