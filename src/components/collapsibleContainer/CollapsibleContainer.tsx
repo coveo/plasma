@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import * as $ from 'jquery';
+import { SlideY } from '../../animations/SlideY';
 import { LinkSvg } from '../svg/LinkSvg';
 import { Svg } from '../svg/Svg';
 import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
@@ -34,17 +34,6 @@ export interface ICollapsibleContainerProps extends
   ICollapsibleContainerDispatchProps { }
 
 export class CollapsibleContainer extends React.Component<ICollapsibleContainerProps> {
-  private toggleCollapsibleBodyOnExpandedStateChange(nextProps: ICollapsibleContainerProps) {
-    const collapsibleBodySelector = `#${this.props.id} .collapsible-body`;
-    const animationOptions = { duration: 350 };
-
-    if (this.props.expanded && !nextProps.expanded) {
-      $(collapsibleBodySelector).slideUp(animationOptions);
-    } else if (!this.props.expanded && nextProps.expanded) {
-      $(collapsibleBodySelector).slideDown(animationOptions);
-    }
-  }
-
   private getCollapsibleHeaderClass(): string {
     return classNames(
       'collapsible-header btn',
@@ -57,12 +46,13 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
 
   private getCollapsibleBodyClass(): string {
     return classNames(
-      'collapsible-body',
-      {
-        'display-block': this.props.expanded,
-      },
+      'collapsible-body-visible',
       this.props.collapsibleBodyClassName,
     );
+  }
+
+  private getCollapsibleBody(): JSX.Element {
+    return <div className={this.getCollapsibleBodyClass()}>{this.props.children}</div>;
   }
 
   private getSvgClass(): string {
@@ -90,10 +80,6 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
     return <span className='round-contextual-help'>{collapsibleHeaderIcon}</span>;
   }
 
-  componentWillReceiveProps(nextProps: ICollapsibleContainerProps) {
-    this.toggleCollapsibleBodyOnExpandedStateChange(nextProps);
-  }
-
   componentWillMount() {
     if (this.props.onMount) {
       this.props.onMount();
@@ -116,10 +102,9 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
           {this.props.title}
           {this.getCollapsibleHeaderIcon()}
         </button>
-        <div
-          className={this.getCollapsibleBodyClass()}>
-          {this.props.children}
-        </div>
+        <SlideY in={this.props.expanded} timeout={350}>
+            {this.getCollapsibleBody()}
+        </SlideY>
       </div>
     );
   }

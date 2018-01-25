@@ -15,7 +15,15 @@ export const CollapsibleContainerExamples = () =>
           title='CollapsibleContainer expanded on mount'
           informationUrl='http://coveo.github.io/vapor/'
           informationTooltip={{ title: 'I display information and if you click me you\'ll be led to a url that was provided to me.', placement: 'top' }}
-          expandedOnMount>I am expanded on mount!</CollapsibleContainerConnected>
+          expandedOnMount>I am expanded on mount!
+          </CollapsibleContainerConnected>
+        <CollapsibleContainerConnected
+          id='collapsible-example-5'
+          title='CollapsibleContainer (why not stack two on top of each other)'
+          informationUrl='http://coveo.github.io/vapor/'
+          informationTooltip={{ title: 'I display information and if you click me you\'ll be led to a url that was provided to me.', placement: 'top' }}
+          expandedOnMount>I am expanded on mount!
+          </CollapsibleContainerConnected>
       </div>
     </div>
     <div className='form-group'>
