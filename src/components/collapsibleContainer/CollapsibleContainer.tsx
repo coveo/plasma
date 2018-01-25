@@ -48,7 +48,9 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
   private getCollapsibleHeaderClass(): string {
     return classNames(
       'collapsible-header btn',
-      { active: this.props.expanded },
+      {
+        active: this.props.expanded,
+      },
       this.props.collapsibleHeaderClassName,
     );
   }
