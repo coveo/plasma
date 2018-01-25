@@ -86,11 +86,13 @@ describe('Reducers', () => {
       const newState = collapsibleContainersReducer(oldState, setExpandedToTrueAction);
 
       expect(newState[0].expanded).toBeUndefined();
+      expect(oldState).toEqual(oldState);
 
       const setExpandedToFalseAction = setExpandedCollapsibleContainer('a different id', false);
       const secondNewState = collapsibleContainersReducer(oldState, setExpandedToFalseAction);
 
       expect(secondNewState[0].expanded).toBeUndefined();
+      expect(oldState).toEqual(oldState);
     });
   });
 });
