@@ -53,9 +53,7 @@ export const inputsReducer = (
                 inputReducer(undefined, action)
             ];
         case InputActions.remove:
-            return _.reject(state, (input: IInputState) => {
-                return input.id === action.payload.id;
-            });
+            return _.reject(state, (input: IInputState) => input.id === action.payload.id);
         case InputActions.changeValue:
         case InputActions.validateValue:
             return state.map((input: IInputState) => inputReducer(input, action));
