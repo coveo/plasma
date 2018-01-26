@@ -103,7 +103,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
           {this.getCollapsibleHeaderIcon()}
         </button>
         <SlideY in={this.props.expanded} timeout={350}>
-            {this.getCollapsibleBody()}
+          {this.getCollapsibleBody()}
         </SlideY>
       </div>
     );
