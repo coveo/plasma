@@ -1,5 +1,4 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import * as $ from 'jquery';
 import * as _ from 'underscore';
 import { ISvgProps, Svg } from '../Svg';
 // tslint:disable-next-line:no-unused-variable
@@ -55,7 +54,7 @@ describe('<Svg>', () => {
         );
       }).not.toThrow();
 
-      expect($('#App').find('svg').length).toBe(1);
+      expect(document.querySelector('#App').querySelector('svg')).toBeDefined();
     });
 
     it('should handle an undefined className', () => {
@@ -70,7 +69,7 @@ describe('<Svg>', () => {
         );
       }).not.toThrow();
 
-      expect($('#App').find('svg').length).toBe(1);
+      expect(document.querySelector('#App').querySelector('svg')).toBeDefined();
     });
 
     it('should handle an undefined svgClass', () => {
@@ -85,7 +84,7 @@ describe('<Svg>', () => {
         );
       }).not.toThrow();
 
-      expect($('#App').find('svg').length).toBe(1);
+      expect(document.querySelector('#App').querySelector('svg')).toBeDefined();
     });
   });
 });

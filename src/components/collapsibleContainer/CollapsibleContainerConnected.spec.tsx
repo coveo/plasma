@@ -13,6 +13,7 @@ import { findWhere } from 'underscore';
 import { Svg } from '../svg/Svg';
 import { LinkSvg } from '../svg/LinkSvg';
 import { Tooltip } from '../tooltip/Tooltip';
+import { SlideY } from '../../animations/SlideY';
 
 
 describe('<CollapsibleContainerConnected />', () => {
@@ -94,27 +95,27 @@ describe('<CollapsibleContainerConnected />', () => {
 
         expect(findWhere(store.getState().collapsibleContainers, { id: basicCollapsibleContainerProps.id }).expanded).toBe(true);
         expect(collapsible.find('.collapsible-header').hasClass('active')).toBe(true);
-        expect(collapsible.find('.collapsible-body').hasClass('display-block')).toBe(true);
+        expect(collapsible.find(SlideY).prop('in')).toBe(true);
 
         store.dispatch(setExpandedCollapsibleContainer(basicCollapsibleContainerProps.id, false));
 
         expect(findWhere(store.getState().collapsibleContainers, { id: basicCollapsibleContainerProps.id }).expanded).toBe(false);
         expect(collapsible.find('.collapsible-header').hasClass('active')).toBe(false);
-        expect(collapsible.find('.collapsible-body').hasClass('display-block')).toBe(false);
+        expect(collapsible.find(SlideY).prop('in')).toBe(false);
       });
 
       it('should render as expanded if expandedOnMount is passed in props', () => {
         const collapsible = mountComponentWithProps({ ...basicCollapsibleContainerProps, expandedOnMount: true });
         expect(findWhere(store.getState().collapsibleContainers, { id: basicCollapsibleContainerProps.id }).expanded).toBe(true);
         expect(collapsible.find('.collapsible-header').hasClass('active')).toBe(true);
-        expect(collapsible.find('.collapsible-body').hasClass('display-block')).toBe(true);
+        expect(collapsible.find(SlideY).prop('in')).toBe(true);
       });
 
       it('should render as not expanded if expandedOnMount is not passed in props', () => {
         const collapsible = mountComponentWithProps(basicCollapsibleContainerProps);
         expect(findWhere(store.getState().collapsibleContainers, { id: basicCollapsibleContainerProps.id }).expanded).toBe(false);
         expect(collapsible.find('.collapsible-header').hasClass('active')).toBe(false);
-        expect(collapsible.find('.collapsible-body').hasClass('display-block')).toBe(false);
+        expect(collapsible.find(SlideY).prop('in')).toBe(false);
       });
     });
 

@@ -4,6 +4,7 @@ import { TableError } from '../TableError';
 import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { SlideY } from '../../../animations/SlideY';
 
 describe('Tables', () => {
 
@@ -17,7 +18,7 @@ describe('Tables', () => {
     });
   });
 
-  describe('<TableCollapsibleRow />', () => {
+  fdescribe('<TableCollapsibleRow />', () => {
     let tableCollapsibleRow: ReactWrapper<ITableCollapsibleRowProps, any>;
     let basicTableCollapsibleRowProps: ITableCollapsibleRowProps;
 
@@ -97,14 +98,16 @@ describe('Tables', () => {
       expect(tableCollapsibleRow.find('tr').hasClass(basicTableCollapsibleRowProps.id)).toBe(true);
     });
 
-    it('should have "in" as a class if opened', () => {
+    it('should have "in" as a class, and SlideY "in" prop set to true if opened', () => {
       let newTableCollapsibleRowProps = _.extend({}, basicTableCollapsibleRowProps, { opened: false });
       let openedClass = 'in';
 
       expect(tableCollapsibleRow.find('tr').hasClass(openedClass)).toBe(true);
+      expect(tableCollapsibleRow.find(SlideY).prop('in')).toBe(true);
 
       tableCollapsibleRow.setProps(newTableCollapsibleRowProps);
       expect(tableCollapsibleRow.find('tr').hasClass(openedClass)).toBe(false);
+      expect(tableCollapsibleRow.find(SlideY).prop('in')).toBe(false);
     });
   });
 });
