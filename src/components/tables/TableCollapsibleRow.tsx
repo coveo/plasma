@@ -1,5 +1,4 @@
 import { IErrorSection, TableError } from './TableError';
-import { SlideY } from '../../animations/SlideY';
 import * as React from 'react';
 import * as $ from 'jquery';
 
@@ -59,13 +58,13 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
     return (
       <tr className={rowClasses}>
         <td colSpan={this.props.nbColumns}>
-            <div className='container'>
-              {error}
-              <div className='clearfix'></div>
-              <section className='columns'>
-                {this.props.children}
-              </section>
-            </div>
+          <div className='container'>
+            {error}
+            <div className='clearfix'></div>
+            <section className='columns'>
+              {this.props.children}
+            </section>
+          </div>
         </td>
       </tr>
     );
