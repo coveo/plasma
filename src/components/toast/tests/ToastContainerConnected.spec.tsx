@@ -8,7 +8,6 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { IToastContainerProps, ToastContainer } from '../ToastContainer';
 import { Toast, ToastType } from '../Toast';
 import { ToastContainerConnected } from '../ToastContainerConnected';
-import { IToastState } from '../ToastReducers';
 import { addToast } from '../ToastActions';
 
 describe('Toasts', () => {

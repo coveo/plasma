@@ -24,12 +24,14 @@ describe('Date picker', () => {
 
   describe('<DatesSelection />', () => {
     let datesSelection: ReactWrapper<IDatesSelectionProps, any>;
+    let datesSelectionInstance: DatesSelection;
 
     beforeEach(() => {
       datesSelection = mount(
         <DatesSelection />,
         { attachTo: document.getElementById('App') }
       );
+      datesSelectionInstance = datesSelection.instance() as DatesSelection;
     });
 
     afterEach(() => {
