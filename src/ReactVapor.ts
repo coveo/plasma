@@ -1,4 +1,5 @@
 import { IInputState } from './components/input/InputReducers';
+import { ICollapsibleContainerState } from './components/collapsibleContainer/CollapsibleContainerReducers';
 import { ILastUpdatedState } from './components/lastUpdated/LastUpdatedReducers';
 import { IFacetState } from './components/facets/FacetReducers';
 import { IFilterState } from './components/filterBox/FilterBoxReducers';
@@ -54,6 +55,7 @@ export interface IReactVaporState {
   tables?: ITablesState;
   checkboxes?: ICheckboxState[];
   inputs?: IInputState[];
+  collapsibleContainers?: ICollapsibleContainerState[];
 }
 
 export interface IReduxActionsPayload {
@@ -90,4 +92,5 @@ export interface IReduxActionsPayload {
   predicates?: ITablePredicate[];
   shouldResetPage?: boolean;
   valid?: boolean;
+  expanded?: boolean;
 }

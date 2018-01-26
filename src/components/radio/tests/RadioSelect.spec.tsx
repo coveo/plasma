@@ -17,7 +17,6 @@ describe('RadioSelect', () => {
 
   describe('<RadioSelect />', () => {
     let radioSelect: ReactWrapper<IRadioSelectProps, any>;
-    let radioSelectInstance: RadioSelect;
     let clickSpy: jasmine.Spy;
     const aRadioValue = 'blue';
     const anotherRadioValue = 'red';
@@ -32,7 +31,6 @@ describe('RadioSelect', () => {
         </RadioSelect>,
         { attachTo: document.getElementById('App') }
       );
-      radioSelectInstance = radioSelect.instance() as RadioSelect;
     });
 
     afterEach(() => {

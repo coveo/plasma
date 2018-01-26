@@ -19,14 +19,12 @@ describe('Radio', () => {
 
   describe('<Radio />', () => {
     let radio: ReactWrapper<IInputProps, any>;
-    let radioInstance: Radio;
 
     beforeEach(() => {
       radio = mount(
         <Radio id={anId} />,
         { attachTo: document.getElementById('App') }
       );
-      radioInstance = radio.instance() as Radio;
     });
 
     afterEach(() => {

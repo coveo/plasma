@@ -16,14 +16,12 @@ describe('Label', () => {
 
   describe('<Label />', () => {
     let label: ReactWrapper<ILabelProps, any>;
-    let labelInstance: Label;
 
     beforeEach(() => {
       label = mount(
         <Label />,
         { attachTo: document.getElementById('App') }
       );
-      labelInstance = label.instance() as Label;
     });
 
     afterEach(() => {

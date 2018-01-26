@@ -29,14 +29,12 @@ describe('MultiSelectDropdownSearch', () => {
 
   describe('<MultiSelectDropdownSearch />', () => {
     let multiSelectDropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
-    let multiSelectDropdownSearchInstance: MultiSelectDropdownSearch;
 
     const renderMultiSelectDropdownSearch = (props?: IDropdownSearchProps) => {
       multiSelectDropdownSearch = mount(
         <MultiSelectDropdownSearch {...props} />,
         { attachTo: document.getElementById('App') },
       );
-      multiSelectDropdownSearchInstance = multiSelectDropdownSearch.instance() as MultiSelectDropdownSearch;
     };
 
     beforeEach(() => {

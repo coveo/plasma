@@ -1,3 +1,4 @@
+import { collapsibleContainersReducer } from '../components/collapsibleContainer/CollapsibleContainerReducers';
 import { CommonActions } from './ReduxUtils';
 import { IReactVaporState } from '../ReactVapor';
 import { lastUpdatedCompositeReducer } from '../components/lastUpdated/LastUpdatedReducers';
@@ -63,6 +64,7 @@ export class TestUtils {
       toastContainers: toastsContainerReducer,
       tables: tablesReducer,
       checkboxes: checkboxesReducer,
+      collapsibleContainers: collapsibleContainersReducer,
     });
 
     const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
