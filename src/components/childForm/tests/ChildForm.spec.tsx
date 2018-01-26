@@ -17,7 +17,6 @@ describe('ChildForm', () => {
 
   describe('<ChildForm />', () => {
     let childForm: ReactWrapper<IChildFormProps, any>;
-    let childFormInstance: ChildForm;
 
     beforeEach(() => {
       childForm = mount(
@@ -26,7 +25,6 @@ describe('ChildForm', () => {
         </ChildForm>,
         { attachTo: document.getElementById('App') }
       );
-      childFormInstance = childForm.instance() as ChildForm;
     });
 
     afterEach(() => {

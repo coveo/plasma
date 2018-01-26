@@ -16,15 +16,9 @@ describe('Toasts', () => {
     let wrapper: ReactWrapper<any, any>;
     let component: ReactWrapper<IToastContainerProps, void>;
     let store: Store<IReactVaporState>;
-    let toasts: IToastState[];
     const containerId = 'toast-container-id';
 
     beforeEach(() => {
-      toasts = [
-        { id: '1', title: 'toast success' },
-        { id: '2', title: 'toast warning', type: ToastType.Warning },
-        { id: '3', title: 'toast error', type: ToastType.Error },
-      ];
       store = TestUtils.buildStore();
 
       wrapper = mount(

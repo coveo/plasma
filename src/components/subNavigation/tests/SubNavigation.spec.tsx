@@ -31,7 +31,6 @@ describe('SubNavigation', () => {
 
     describe('<SubNavigation />', () => {
       let subNavigation: ReactWrapper<ISubNavigationProps, any>;
-      let subNavigationInstance: SubNavigation;
       let basicProps: ISubNavigationProps = { items: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], selected: 'b' };
 
       beforeEach(() => {
@@ -39,7 +38,6 @@ describe('SubNavigation', () => {
           <SubNavigation {...basicProps} />,
           { attachTo: document.getElementById('App') }
         );
-        subNavigationInstance = subNavigation.instance() as SubNavigation;
       });
 
       afterEach(() => {

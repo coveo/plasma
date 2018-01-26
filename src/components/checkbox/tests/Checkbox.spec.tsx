@@ -17,14 +17,12 @@ describe('Checkbox', () => {
 
   describe('<Checkbox />', () => {
     let checkbox: ReactWrapper<IInputProps, any>;
-    let checkboxInstance: Checkbox;
 
     beforeEach(() => {
       checkbox = mount(
         <Checkbox />,
         { attachTo: document.getElementById('App') }
       );
-      checkboxInstance = checkbox.instance() as Checkbox;
     });
 
     afterEach(() => {

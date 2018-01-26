@@ -1,5 +1,5 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
-import { CollapsibleContainerActions, addCollapsibleContainer, removeCollapsibleContainer, setExpandedCollapsibleContainer } from './CollapsibleContainerActions';
+import { addCollapsibleContainer, removeCollapsibleContainer, setExpandedCollapsibleContainer } from './CollapsibleContainerActions';
 import { collapsibleContainerInitialState, collapsibleContainersInitialState, collapsibleContainerReducer, collapsibleContainersReducer, ICollapsibleContainerState } from './CollapsibleContainerReducers';
 
 describe('Reducers', () => {

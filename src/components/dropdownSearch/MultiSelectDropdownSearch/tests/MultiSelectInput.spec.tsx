@@ -18,14 +18,12 @@ describe('MultiSelectInput', () => {
 
   describe('<SelectedOption />', () => {
     let multiSelectInput: ReactWrapper<IMultiselectInputProps, any>;
-    let multiSelectInputInstance: MultiselectInput;
 
     const renderMultiSelectInput = (props?: IMultiselectInputProps) => {
       multiSelectInput = mount(
         <MultiselectInput {...props} />,
         { attachTo: document.getElementById('App') },
       );
-      multiSelectInputInstance = multiSelectInput.instance() as MultiselectInput;
     };
 
     beforeEach(() => {

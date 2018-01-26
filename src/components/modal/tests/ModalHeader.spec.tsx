@@ -21,7 +21,6 @@ describe('ModalHeader', () => {
 
   describe('<ModalHeader />', () => {
     let modal: ReactWrapper<IModalHeaderProps, any>;
-    let modalInstance: ModalHeader;
 
     beforeEach(() => {
       modal = mount(
@@ -30,7 +29,6 @@ describe('ModalHeader', () => {
         />,
         { attachTo: document.getElementById('App') }
       );
-      modalInstance = modal.instance() as ModalHeader;
     });
 
     afterEach(() => {
