@@ -1,0 +1,14 @@
+.slide-y {
+    height: 0;
+    transition-property: none;
+    transition-duration: $slide-y-transition-duration;
+    transition-timing-function: ease-in-out;
+}
+
+.slide-y-transition {
+    overflow-y: hidden;
+}
+
+.slide-y-closed {
+    display: none;
+}
