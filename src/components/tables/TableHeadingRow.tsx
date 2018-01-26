@@ -8,6 +8,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
   isCollapsible: boolean;
   onClickCallback?: (e: React.MouseEvent<HTMLTableRowElement>) => void;
   onDoubleClick?: () => void;
+  className?: string;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -62,7 +63,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
       'heading-row': this.props.isCollapsible,
       'selected': this.props.selected,
       'opened': this.props.opened,
-    });
+    }, this.props.className);
 
     return (
       <tr

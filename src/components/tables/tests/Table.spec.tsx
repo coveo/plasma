@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { tablePropsMock, tablePossibleProps } from './TableTestCommon';
+import { tablePropsMock, tablePossibleProps, tablePropsMockWithData } from './TableTestCommon';
 import { Table, ITableProps } from '../Table';
 import { ITableData } from '../TableReducers';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { clearState } from '../../../utils/ReduxUtils';
 import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { Store, Provider } from 'react-redux';
 import { DEFAULT_TABLE_DATA, TableSortingOrder } from '../TableConstants';
+import { TableRowWrapper } from '../TableRowWrapper';
+import { TableRowWrapper } from '../TableRowWrapper';
+import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
+import { TableChildBody } from '../table-children/TableChildBody';
 
 describe('<Table />', () => {
   let store: Store<IReactVaporState>;
@@ -79,6 +83,29 @@ describe('<Table />', () => {
       tableAsAny.componentDidUpdate();
 
       expect(tableAsAny.isInitialLoad).toBe(false);
+    });
+
+    it('should not render a table wrapper if there are no displayed rows', () => {
+      expect(mountComponentWithProps(tablePropsMock).find(TableChildBody).length).toBe(0);
+    });
+
+    it('should render as many <TableChildBody /> as there are displayed ids', () => {
+      expect(mountComponentWithProps(tablePropsMockWithData).find(TableChildBody).length)
+        .toBe(tablePropsMockWithData.tableCompositeState.data.displayedIds.length);
+    });
+
+    it('should call onRowClick when a <TableChildBody /> calls its onRowClick function', () => {
+      const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
+      table.find(TableChildBody).first().props().onRowClick([]);
+
+      expect(tablePropsMockWithData.onRowClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call getActions when a <TableChildBody /> calls its getActions function', () => {
+      const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
+      table.find(TableChildBody).first().props().getActions({ id: 'any' });
+
+      expect(tablePropsMockWithData.getActions).toHaveBeenCalledTimes(1);
     });
 
     describe('componentWillReceiveProps', () => {

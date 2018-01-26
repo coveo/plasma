@@ -1,6 +1,6 @@
 import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE } from './TableConstants';
 import { getTableChildComponentId } from './TableUtils';
-import { ITableOwnProps, ITableProps, Table } from './Table';
+import { ITableOwnProps, ITableProps, ITableDispatchProps, Table, ITableCompositeStateProps } from './Table';
 import { ITableState, ITableCompositeState } from './TableReducers';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
 import { addTable, removeTable } from './TableActions';
@@ -21,24 +21,7 @@ import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
 import { contains } from 'underscore.string';
 import { IDispatch } from '../../utils/ReduxUtils';
 
-export type IAttributeValue = any;
-export interface IPredicateAttributes {
-  [attributeName: string]: IAttributeValue;
-}
-
-export interface ITableDispatchProps {
-  onDidMount: () => void;
-  onUnmount: () => void;
-  onModifyData: (
-    shouldResetPage: boolean,
-    tableCompositeState: ITableCompositeState,
-    previousTableCompositeState?: ITableCompositeState,
-  ) => void;
-  onRowClick: (actions: IActionOptions[]) => void;
-  onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => void;
-}
-
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps) => {
+const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
   const tableState: ITableState = state.tables[ownProps.id] || {} as ITableState;
   const filterState: IFilterState = tableState && _.findWhere(state.filters, { id: tableState.filterId });
   const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, { id: tableState.paginationId });

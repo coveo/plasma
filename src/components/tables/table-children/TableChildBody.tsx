@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { ITableProps, IData, ITableHeadingAttribute } from '../Table';
+import * as _ from 'underscore';
+import { ITableHeadingAttribute, IData } from '../Table';
 import { getTableChildComponentId } from '../TableUtils';
 import { TableChildComponent, TOGGLE_ARROW_CELL_COUNT } from '../TableConstants';
 import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
@@ -8,63 +9,82 @@ import { TableRowWrapper } from '../TableRowWrapper';
 import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
 import { convertUndefinedAndNullToEmptyString } from '../../../utils/FalsyValuesUtils';
 import { JSXRenderable } from '../../../utils/JSXUtils';
+import { IActionOptions } from '../../actions/Action';
 
-export const TableChildBody = (props: ITableProps): JSX.Element[] => {
-  const tableData = props.tableCompositeState.data || props.initialTableData;
-  return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-    const rowData: IData = tableData.byId[id];
-    const rowWrapperId = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_ROW_WRAPPER)}${rowData.id}`;
-    const headingAndCollapsibleId = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_HEADING_ROW)}${rowData.id}`;
+export interface IInheritedFromTableProps {
+  getActions?: (rowData?: IData) => IActionOptions[];
+  headingAttributes: ITableHeadingAttribute[];
+  collapsibleFormatter?: (tableRowData: IData) => JSXRenderable;
+}
 
-    const tableHeadingRowContent = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
-      const { attributeName, attributeFormatter } = headingAttribute;
-      const tableCoordinate = `${xPosition}${yPosition}`;
-      const headingRowContent: JSXRenderable = attributeFormatter
-        ? attributeFormatter(rowData[attributeName], attributeName)
-        : convertUndefinedAndNullToEmptyString(rowData[attributeName]);
+export interface ITableChildBodyProps extends IInheritedFromTableProps {
+  tableId: string;
+  rowData: IData;
+  yPosition: number;
+  isLoading: boolean;
+  onRowClick?: (actions: IActionOptions[]) => void;
+}
 
-      return <td key={tableCoordinate}>{headingRowContent}</td>;
-    });
+export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
+  const rowWrapperId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_ROW_WRAPPER)}${props.rowData.id}`;
+  const headingAndCollapsibleId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_HEADING_ROW)}${props.rowData.id}`;
 
-    const collapsibleRowKey = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}${rowData.id}`;
-    const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(rowData, props);
-    const collapsibleRow = collapsibleData
-      ? (
-        <TableCollapsibleRowConnected
-          id={headingAndCollapsibleId}
-          key={collapsibleRowKey}
-          nbColumns={props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
-          {collapsibleData}
-        </TableCollapsibleRowConnected>
-      )
-      : null;
+  const tableHeadingRowContent = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
+    const { attributeName, attributeFormatter } = headingAttribute;
+    const tableCoordinate = `${xPosition}${props.yPosition}`;
+    const headingRowContent: JSXRenderable = attributeFormatter
+      ? attributeFormatter(props.rowData[attributeName], attributeName)
+      : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
-    const tableRowWrapperClasses = classNames({ 'table-body-loading': !!props.tableCompositeState.isLoading });
-
-    return (
-      <TableRowWrapper key={rowWrapperId} className={tableRowWrapperClasses}>
-        <TableHeadingRowConnected
-          id={headingAndCollapsibleId}
-          key={headingAndCollapsibleId}
-          tableId={props.id}
-          isCollapsible={!!collapsibleData}
-          onClickCallback={(e: React.MouseEvent<HTMLTableRowElement>) => {
-            if (props.onRowClick) {
-              props.onRowClick(props.getActions && props.getActions(rowData, props));
-            }
-          }}
-          onDoubleClick={() => {
-            const actions = props.getActions
-              ? props.getActions(rowData, props)
-              : [];
-            actions
-              .filter(action => action.callOnDoubleClick)
-              .forEach(action => action.trigger());
-          }}>
-          {tableHeadingRowContent}
-        </TableHeadingRowConnected>
-        {collapsibleRow}
-      </TableRowWrapper>
-    );
+    return (<td key={tableCoordinate}>
+      <div className='wrapper'>{headingRowContent}</div>
+    </td>);
   });
+
+  const collapsibleRowKey = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}${props.rowData.id}`;
+  const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(props.rowData);
+  const collapsibleRow = collapsibleData
+    ? (
+      <TableCollapsibleRowConnected
+        id={headingAndCollapsibleId}
+        key={collapsibleRowKey}
+        nbColumns={props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
+        {collapsibleData}
+      </TableCollapsibleRowConnected>
+    )
+    : null;
+
+  const tableRowWrapperClasses = classNames({
+    'table-body-loading': !!props.isLoading,
+  });
+  const tableRowClasses = classNames({
+    disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
+  });
+
+  return (
+    <TableRowWrapper key={rowWrapperId} className={tableRowWrapperClasses}>
+      <TableHeadingRowConnected
+        id={headingAndCollapsibleId}
+        key={headingAndCollapsibleId}
+        tableId={props.tableId}
+        className={tableRowClasses}
+        isCollapsible={!!collapsibleData}
+        onClickCallback={(e: React.MouseEvent<HTMLTableRowElement>) => {
+          if (props.onRowClick) {
+            props.onRowClick(props.getActions && props.getActions(props.rowData));
+          }
+        }}
+        onDoubleClick={() => {
+          const actions = props.getActions
+            ? props.getActions(props.rowData)
+            : [];
+          actions
+            .filter(action => action.callOnDoubleClick)
+            .forEach(action => action.trigger());
+        }}>
+        {tableHeadingRowContent}
+      </TableHeadingRowConnected>
+      {collapsibleRow}
+    </TableRowWrapper>
+  );
 };
