@@ -235,5 +235,8 @@ export { SplitLayout, ISplitLayoutProps } from './components/splitlayout/SplitLa
 export { ICollapsibleContainerProps, ICollapsibleContainerOwnProps, ICollapsibleContainerStateProps, ICollapsibleContainerDispatchProps } from './components/collapsibleContainer/CollapsibleContainer';
 export { CollapsibleContainerConnected } from './components/collapsibleContainer/CollapsibleContainerConnected';
 
+// SlideY
+export { SlideY } from './animations/SlideY';
+
 // Utils
 export { TooltipPlacement } from './utils/TooltipUtils';
