@@ -18,7 +18,7 @@ describe('Tables', () => {
     });
   });
 
-  fdescribe('<TableCollapsibleRow />', () => {
+  describe('<TableCollapsibleRow />', () => {
     let tableCollapsibleRow: ReactWrapper<ITableCollapsibleRowProps, any>;
     let basicTableCollapsibleRowProps: ITableCollapsibleRowProps;
 
