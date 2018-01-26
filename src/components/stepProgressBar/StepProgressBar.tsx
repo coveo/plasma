@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { range, uniqueId } from 'underscore';
 import * as classNames from 'classnames';
+import { IClassName } from '../../utils/ClassNameUtils';
 
 export interface IStepProgressBarProps {
   /**
@@ -11,7 +12,7 @@ export interface IStepProgressBarProps {
    * The 0-based index of the step currently in completion by the user
    */
   currentStep: number;
-  className?: string[] | string;
+  className?: IClassName;
 }
 
 export const StepProgressBar = (props: IStepProgressBarProps) => {

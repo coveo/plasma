@@ -18,7 +18,6 @@ describe('ToggleForm', () => {
 
   describe('<ToggleForm />', () => {
     let toggleForm: ReactWrapper<IToggleFormProps, any>;
-    let toggleFormInstance: ToggleForm;
 
     beforeEach(() => {
       toggleForm = mount(
@@ -28,7 +27,6 @@ describe('ToggleForm', () => {
         </ToggleForm>,
         { attachTo: document.getElementById('App') }
       );
-      toggleFormInstance = toggleForm.instance() as ToggleForm;
     });
 
     afterEach(() => {

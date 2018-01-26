@@ -1,3 +1,4 @@
+import { collapsibleContainersReducer } from '../src/components/collapsibleContainer/CollapsibleContainerReducers';
 import { IMembersCompositeState, membersReducers } from './members-example/reducers/MembersReducers';
 import { actionBarsReducer } from '../src/components/actions/ActionBarReducers';
 import { itemFiltersReducer } from '../src/components/actions/filters/ItemFilterReducers';
@@ -60,4 +61,5 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   lastAction,
   tableHeaderCells: tableHeaderCellsReducer,
   checkboxes: checkboxesReducer,
+  collapsibleContainers: collapsibleContainersReducer,
 });

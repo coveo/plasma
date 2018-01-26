@@ -13,14 +13,12 @@ describe('SelectedOption', () => {
 
   describe('<SelectedOption />', () => {
     let selectedOption: ReactWrapper<ISelectedOptionProps, any>;
-    let selectedOptionInstance: SelectedOption;
 
     const renderSelectedOption = (props?: ISelectedOptionProps) => {
       selectedOption = mount(
         <SelectedOption {...props} />,
         { attachTo: document.getElementById('App') },
       );
-      selectedOptionInstance = selectedOption.instance() as SelectedOption;
     };
 
     beforeEach(() => {

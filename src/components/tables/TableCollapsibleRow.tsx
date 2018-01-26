@@ -1,6 +1,6 @@
 import { IErrorSection, TableError } from './TableError';
+import { SlideY } from '../../animations/SlideY';
 import * as React from 'react';
-import * as $ from 'jquery';
 
 export interface ITableCollapsibleRowOwnProps extends React.ClassAttributes<TableCollapsibleRow> {
   id: string;
@@ -23,27 +23,6 @@ export interface ITableCollapsibleRowProps extends ITableCollapsibleRowOwnProps,
   ITableCollapsibleRowChildrenProps { }
 
 export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowProps, any> {
-
-  private toggleRow(opened: boolean) {
-    let animationTime: number = 400;
-    let $e: JQuery = $('.' + this.props.id);
-    let $container: JQuery = $e.find('.container');
-
-    if (opened) {
-      $container.slideDown(animationTime);
-    } else {
-      $container.slideUp(animationTime);
-    }
-  }
-
-  componentDidMount() {
-    this.toggleRow(this.props.opened);
-  }
-
-  componentWillReceiveProps(nextProps: ITableCollapsibleRowProps) {
-    this.toggleRow(nextProps.opened);
-  }
-
   render() {
     let rowClasses: string = 'collapsible-row ' + this.props.id + (this.props.opened ? ' in' : '');
     let error: JSX.Element = this.props.isInError ?
@@ -58,13 +37,13 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
     return (
       <tr className={rowClasses}>
         <td colSpan={this.props.nbColumns}>
-          <div className='container'>
+          <SlideY in={this.props.opened} timeout={350}>
             {error}
             <div className='clearfix'></div>
             <section className='columns'>
               {this.props.children}
             </section>
-          </div>
+          </SlideY>
         </td>
       </tr>
     );

@@ -23,8 +23,8 @@ export const SplitLayoutExamples = () =>
       <label className='form-control-label'>SplitLayout with multiple JSX.Elements on each side</label>
       <div className='form-control'>
         <SplitLayout
-          leftChildren={range(2).map(() => <div className='p1'>{exampleTextLeft}</div>)}
-          rightChildren={[<div className='p1'>Something is loading:</div>, <StepProgressBar className='p1' numberOfSteps={10} currentStep={5} />]}
+          leftChildren={range(2).map((i) => <div key={i} className='p1'>{exampleTextLeft}</div>)}
+          rightChildren={[<div key='div' className='p1'>Something is loading:</div>, <StepProgressBar key='progress' className='p1' numberOfSteps={10} currentStep={5} />]}
         />
       </div>
     </div>
@@ -43,8 +43,8 @@ export const SplitLayoutExamples = () =>
       <div className='form-control'>
         <div className='form-control'>
           <SplitLayout
-            leftChildren={range(2).map(() => <div className='p1'>{exampleTextLeft}</div>)}
-            rightChildren={range(2).map(() => <div className='p1'>{exampleTextRight}</div>)}
+            leftChildren={range(2).map((i) => <div key={i} className='p1'>{exampleTextLeft}</div>)}
+            rightChildren={range(2).map((i) => <div key={i} className='p1'>{exampleTextRight}</div>)}
             leftContainerClassName='text-medium-blue bold'
             rightContainerClassName='text-orange italic'
           />

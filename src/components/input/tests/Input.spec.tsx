@@ -16,14 +16,12 @@ describe('Input', () => {
 
   describe('<Input />', () => {
     let input: ReactWrapper<IInputProps, any>;
-    let inputInstance: Input;
 
     beforeEach(() => {
       input = mount(
         <Input />,
         { attachTo: document.getElementById('App') }
       );
-      inputInstance = input.instance() as Input;
     });
 
     afterEach(() => {

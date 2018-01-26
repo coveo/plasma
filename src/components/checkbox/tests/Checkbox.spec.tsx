@@ -10,21 +10,19 @@ describe('Checkbox', () => {
       expect(() => {
         shallow(
           <Checkbox />
-        );
+      );
       }).not.toThrow();
     });
   });
 
   describe('<Checkbox />', () => {
     let checkbox: ReactWrapper<IInputProps, any>;
-    let checkboxInstance: Checkbox;
 
     beforeEach(() => {
       checkbox = mount(
         <Checkbox />,
         { attachTo: document.getElementById('App') }
       );
-      checkboxInstance = checkbox.instance() as Checkbox;
     });
 
     afterEach(() => {

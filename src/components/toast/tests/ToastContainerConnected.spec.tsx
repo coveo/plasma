@@ -8,7 +8,6 @@ import { TestUtils } from '../../../utils/TestUtils';
 import { IToastContainerProps, ToastContainer } from '../ToastContainer';
 import { Toast, ToastType } from '../Toast';
 import { ToastContainerConnected } from '../ToastContainerConnected';
-import { IToastState } from '../ToastReducers';
 import { addToast } from '../ToastActions';
 
 describe('Toasts', () => {
@@ -16,15 +15,9 @@ describe('Toasts', () => {
     let wrapper: ReactWrapper<any, any>;
     let component: ReactWrapper<IToastContainerProps, void>;
     let store: Store<IReactVaporState>;
-    let toasts: IToastState[];
     const containerId = 'toast-container-id';
 
     beforeEach(() => {
-      toasts = [
-        { id: '1', title: 'toast success' },
-        { id: '2', title: 'toast warning', type: ToastType.Warning },
-        { id: '3', title: 'toast error', type: ToastType.Error },
-      ];
       store = TestUtils.buildStore();
 
       wrapper = mount(
