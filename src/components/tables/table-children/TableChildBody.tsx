@@ -20,34 +20,29 @@ export interface IInheritedFromTableProps {
 export interface ITableChildBodyProps extends IInheritedFromTableProps {
   tableId: string;
   rowData: IData;
-  yPosition: number;
   isLoading: boolean;
   onRowClick?: (actions: IActionOptions[]) => void;
 }
 
 export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
-  const rowWrapperId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_ROW_WRAPPER)}${props.rowData.id}`;
   const headingAndCollapsibleId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_HEADING_ROW)}${props.rowData.id}`;
-
   const tableHeadingRowContent = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
     const { attributeName, attributeFormatter } = headingAttribute;
-    const tableCoordinate = `${xPosition}${props.yPosition}`;
     const headingRowContent: JSXRenderable = attributeFormatter
       ? attributeFormatter(props.rowData[attributeName], attributeName)
       : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
-    return (<td key={tableCoordinate}>
+    return (<td key={`cell-${xPosition}`}>
       <div className='wrapper'>{headingRowContent}</div>
     </td>);
   });
 
-  const collapsibleRowKey = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_COLLAPSIBLE_ROW)}${props.rowData.id}`;
   const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(props.rowData);
   const collapsibleRow = collapsibleData
     ? (
       <TableCollapsibleRowConnected
         id={headingAndCollapsibleId}
-        key={collapsibleRowKey}
+        key={`collapsible-row-${props.rowData.id}`}
         nbColumns={props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
         {collapsibleData}
       </TableCollapsibleRowConnected>
@@ -62,14 +57,13 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
   });
 
   return (
-    <TableRowWrapper key={rowWrapperId} className={tableRowWrapperClasses}>
+    <TableRowWrapper className={tableRowWrapperClasses}>
       <TableHeadingRowConnected
         id={headingAndCollapsibleId}
-        key={headingAndCollapsibleId}
         tableId={props.tableId}
         className={tableRowClasses}
         isCollapsible={!!collapsibleData}
-        onClickCallback={(e: React.MouseEvent<HTMLTableRowElement>) => {
+        onClickCallback={() => {
           if (props.onRowClick) {
             props.onRowClick(props.getActions && props.getActions(props.rowData));
           }

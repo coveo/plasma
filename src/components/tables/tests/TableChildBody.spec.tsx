@@ -21,7 +21,6 @@ describe('<TableChildBody />', () => {
       url: 'www.somewher.com',
       aProperty: false,
     },
-    yPosition: 3,
     isLoading: false,
     onRowClick: jasmine.createSpy('onRowClick'),
     getActions: jasmine.createSpy('getActions').and.returnValue(someActions),

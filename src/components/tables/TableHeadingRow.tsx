@@ -6,7 +6,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
   id?: string;
   tableId?: string;
   isCollapsible: boolean;
-  onClickCallback?: (e: React.MouseEvent<HTMLTableRowElement>) => void;
+  onClickCallback?: () => void;
   onDoubleClick?: () => void;
   className?: string;
 }
@@ -26,22 +26,6 @@ export interface ITableHeadingRowProps extends ITableHeadingRowOwnProps, ITableH
   ITableHeadingRowDispatchProps { }
 
 export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
-
-  private handleClick(e: React.MouseEvent<HTMLTableRowElement>) {
-    if (this.props.onClick) {
-      this.props.onClick();
-    }
-
-    if (this.props.onClickCallback) {
-      this.props.onClickCallback(e);
-    }
-  }
-
-  private handleDoubleClick() {
-    if (this.props.onDoubleClick) {
-      this.props.onDoubleClick();
-    }
-  }
 
   componentWillMount() {
     if (this.props.onRender) {
@@ -68,12 +52,28 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     return (
       <tr
         className={rowClasses}
-        onClick={(e: React.MouseEvent<HTMLTableRowElement>) => this.handleClick(e)}
+        onClick={() => this.handleClick()}
         onDoubleClick={() => this.handleDoubleClick()}
       >
         {this.props.children}
         {toggle}
       </tr>
     );
+  }
+
+  private handleClick() {
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
+
+    if (this.props.onClickCallback) {
+      this.props.onClickCallback();
+    }
+  }
+
+  private handleDoubleClick() {
+    if (this.props.onDoubleClick) {
+      this.props.onDoubleClick();
+    }
   }
 }

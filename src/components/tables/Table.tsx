@@ -193,7 +193,6 @@ export class Table extends React.Component<ITableProps, {}> {
         key={id}
         tableId={this.props.id}
         rowData={rowData}
-        yPosition={yPosition}
         isLoading={this.props.tableCompositeState.isLoading}
         getActions={(rowData?: IData) => this.props.getActions(rowData)}
         headingAttributes={this.props.headingAttributes}
