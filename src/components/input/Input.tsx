@@ -1,33 +1,46 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import { ILabelProps, Label } from './Label';
+import { IClassName } from '../../utils/ClassNameUtils';
 
 export interface IInputOwnProps {
   id?: string;
   name?: string;
   type?: string;
-  classes?: string[];
+  classes?: IClassName;
   innerInputClasses?: string[];
   defaultValue?: string;
   placeholder?: string;
   defaultChecked?: boolean;
-  disabled?: boolean;
   readOnly?: boolean;
   validate?: (value: any) => boolean;
-  withValidStyle?: true;
   labelTitle?: string;
   labelProps?: ILabelProps;
+  onChangeCallback?: (e: React.ChangeEvent<HTMLInputElement>, props: IInputProps) => any;
+  /**
+   * The initial disabled state of the input that will be sent to the Redux Store onMount
+   */
+  disabledOnMount?: boolean;
+  /**
+   * The initial value of the input that will be sent to the Redux Store onMount
+   */
+  valueOnMount?: any;
+  /**
+   * Specify if an InputConnected should be validated onMount
+   */
+  validateOnMount?: boolean;
 }
 
 export interface IInputStateProps {
   checked?: boolean;
+  disabled?: boolean;
   value?: string;
   valid?: boolean;
 }
 
 export interface IInputDispatchProps {
   onDestroy?: () => void;
-  onRender?: (value?: any, valid?: boolean) => void;
+  onRender?: (value?: any, valid?: boolean, disabled?: boolean) => void;
   onBlur?: (value: string) => void;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   onChange?: (value?: any) => void;
@@ -46,7 +59,11 @@ export class Input extends React.Component<IInputProps, any> {
 
   componentWillMount() {
     if (this.props.onRender) {
-      this.props.onRender();
+      this.props.onRender(
+        this.props.valueOnMount,
+        this.props.validateOnMount && this.props.validate && this.props.validate(this.props.validateOnMount),
+        this.props.disabledOnMount,
+      );
     }
   }
 
@@ -70,9 +87,13 @@ export class Input extends React.Component<IInputProps, any> {
     }
   }
 
-  private handleChange() {
+  private handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (this.props.onChange) {
       this.props.onChange(this.innerInput.value);
+    }
+
+    if (this.props.onChangeCallback) {
+      this.props.onChangeCallback(e, this.props);
     }
   }
 
@@ -97,11 +118,10 @@ export class Input extends React.Component<IInputProps, any> {
 
   render() {
     const classes = classNames(
-      'input-wrapper',
+      'input-wrapper input-field form-group validate',
       this.props.classes
     );
     const innerInputClasses = classNames({
-      valid: this.props.valid && this.props.withValidStyle,
       invalid: !this.props.valid,
     }, this.props.innerInputClasses);
 
@@ -114,12 +134,13 @@ export class Input extends React.Component<IInputProps, any> {
           defaultValue={this.props.value}
           ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
           onBlur={() => this.handleBlur()}
-          onChange={() => this.handleChange()}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.handleChange(e)}
           onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
           placeholder={this.props.placeholder}
           checked={!!this.props.checked}
           disabled={!!this.props.disabled}
           name={this.props.name}
+          value={this.props.value || (this.innerInput && this.innerInput.value)}
           required
           readOnly={!!this.props.readOnly}
         />

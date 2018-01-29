@@ -93,4 +93,5 @@ export interface IReduxActionsPayload {
   shouldResetPage?: boolean;
   valid?: boolean;
   expanded?: boolean;
+  disabled?: boolean;
 }

@@ -1,6 +1,10 @@
 import { Input } from '../Input';
+import { InputConnected } from '../InputConnected';
+import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
+import { setDisabledInput, validateInputValue } from '../InputActions';
 import * as React from 'react';
 import { Label } from '../Label';
+import { findWhere } from 'underscore';
 
 export interface IInputExampleStateProps {
   inputClasses: string[];
@@ -35,7 +39,6 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
           <Input
             innerInputClasses={this.state.inputClasses}
             placeholder='Please, do not leave me empty!'
-            classes={['input-field', 'form-group', 'validate']}
             ref={(innerInput: Input) => this.innerInput = innerInput}
             onKeyUp={() => this.onChange()}>
             <Label
@@ -44,6 +47,41 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
               An Input Box
             </Label>
           </Input>
+          <InputConnected
+            id='super-input'
+            validate={(value: any) => !!value}
+            labelTitle='I am a connected input'
+            labelProps={{ validMessage: 'I am valid', invalidMessage: 'Do not leave me empty' }}
+          />
+          <InputConnected
+            id='super-input-2'
+            validate={(value: any) => !!value}
+            labelTitle='I am a disabled connected input'
+            labelProps={{ invalidMessage: 'Do not leave me empty' }}
+            disabledOnMount={true}
+            valueOnMount='I am disabled on mount'
+          />
+          <button className='mt2 mb2' onClick={() => ReactVaporStore.dispatch(setDisabledInput('super-input-3', !findWhere(ReactVaporStore.getState().inputs, { id: 'super-input-3' }).disabled))}>
+            Toggle disabled state
+          </button>
+          <InputConnected
+            id='super-input-3'
+            validate={(value: any) => !!value}
+            labelTitle='Toggle my disabled state with the button above'
+            labelProps={{ invalidMessage: 'Do not leave me empty' }}
+            valueOnMount='awesome disabled feature'
+          />
+          <button className='mt2 mb2' onClick={() => ReactVaporStore.dispatch(validateInputValue('super-input-4', !findWhere(ReactVaporStore.getState().inputs, { id: 'super-input-4' }).valid))}>
+            Toggle valid state
+          </button>
+          <InputConnected
+            id='super-input-4'
+            classes='mt1'
+            validate={(value: any) => !!value}
+            labelTitle='Toggle my valid state with the button above'
+            labelProps={{ invalidMessage: 'Do not leave me empty' }}
+            valueOnMount='awesome valid feature'
+          />
         </div>
       </div>
     );
