@@ -17,7 +17,7 @@ import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
 import { TableChildBlankSlate } from './table-children/TableChildBlankSlate';
 import { TableChildNavigation } from './table-children/TableChildNavigation';
 import { TableChildLastUpdated } from './table-children/TableChildLastUpdated';
-import {TableChildBody, ITableBodyInheritedFromTableProps } from './table-children/TableChildBody';
+import { TableChildBody, ITableBodyInheritedFromTableProps } from './table-children/TableChildBody';
 
 export interface IData {
   id: string;
