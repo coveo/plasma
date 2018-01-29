@@ -11,13 +11,13 @@ import { convertUndefinedAndNullToEmptyString } from '../../../utils/FalsyValues
 import { JSXRenderable } from '../../../utils/JSXUtils';
 import { IActionOptions } from '../../actions/Action';
 
-export interface IInheritedFromTableProps {
+export interface ITableBodyInheritedFromTableProps {
   getActions?: (rowData?: IData) => IActionOptions[];
   headingAttributes: ITableHeadingAttribute[];
   collapsibleFormatter?: (tableRowData: IData) => JSXRenderable;
 }
 
-export interface ITableChildBodyProps extends IInheritedFromTableProps {
+export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps {
   tableId: string;
   rowData: IData;
   isLoading: boolean;

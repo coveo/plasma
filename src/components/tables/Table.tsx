@@ -17,7 +17,7 @@ import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
 import { TableChildBlankSlate } from './table-children/TableChildBlankSlate';
 import { TableChildNavigation } from './table-children/TableChildNavigation';
 import { TableChildLastUpdated } from './table-children/TableChildLastUpdated';
-import { TableChildBody, IInheritedFromTableProps } from './table-children/TableChildBody';
+import {TableChildBody, ITableBodyInheritedFromTableProps } from './table-children/TableChildBody';
 
 export interface IData {
   id: string;
@@ -51,7 +51,7 @@ export interface ITablePredicate {
   attributeNameFormatter?: IAttributeNameOrValueFormatter;
 }
 
-export interface ITableOwnProps extends React.ClassAttributes<Table>, IInheritedFromTableProps {
+export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBodyInheritedFromTableProps {
   id: string;
   blankSlateDefault: IBlankSlateProps;
   tableContainerClasses?: string[];
