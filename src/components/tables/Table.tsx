@@ -189,16 +189,18 @@ export class Table extends React.Component<ITableProps, {}> {
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
       const rowData: IData = tableData.byId[id];
 
-      return (<TableChildBody
-        key={id}
-        tableId={this.props.id}
-        rowData={rowData}
-        isLoading={this.props.tableCompositeState.isLoading}
-        getActions={(rowData?: IData) => this.props.getActions(rowData)}
-        headingAttributes={this.props.headingAttributes}
-        collapsibleFormatter={this.props.collapsibleFormatter}
-        onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions)}
-      />);
+      return (
+        <TableChildBody
+          key={id}
+          tableId={this.props.id}
+          rowData={rowData}
+          isLoading={this.props.tableCompositeState.isLoading}
+          getActions={(rowData?: IData) => this.props.getActions(rowData)}
+          headingAttributes={this.props.headingAttributes}
+          collapsibleFormatter={this.props.collapsibleFormatter}
+          onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions)}
+        />
+      );
     });
   }
 }

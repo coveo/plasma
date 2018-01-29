@@ -32,9 +32,11 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
       ? attributeFormatter(props.rowData[attributeName], attributeName)
       : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
-    return (<td key={`cell-${xPosition}`}>
-      <div className='wrapper'>{headingRowContent}</div>
-    </td>);
+    return (
+      <td key={`cell-${xPosition}`}>
+        <div className='wrapper'>{headingRowContent}</div>
+      </td>
+    );
   });
 
   const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(props.rowData);
