@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import {contains} from 'underscore';
 import { ILabelProps, Label } from './Label';
 import { IClassName } from '../../utils/ClassNameUtils';
 
@@ -21,10 +22,6 @@ export interface IInputOwnProps {
    * The initial disabled state of the input that will be sent to the Redux Store onMount
    */
   disabledOnMount?: boolean;
-  /**
-   * The initial value of the input that will be sent to the Redux Store onMount
-   */
-  valueOnMount?: any;
   /**
    * Specify if an InputConnected should be validated onMount
    */
@@ -60,7 +57,7 @@ export class Input extends React.Component<IInputProps, any> {
   componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender(
-        this.props.valueOnMount,
+        this.props.defaultValue,
         this.props.validateOnMount && this.props.validate && this.props.validate(this.props.validateOnMount),
         this.props.disabledOnMount,
       );
@@ -118,11 +115,14 @@ export class Input extends React.Component<IInputProps, any> {
 
   render() {
     const classes = classNames(
-      'input-wrapper input-field form-group validate',
+      'input-wrapper validate',
+      {
+       'input-field': contains(['number', 'text'], this.props.type),
+      },
       this.props.classes
     );
     const innerInputClasses = classNames({
-      invalid: !this.props.valid,
+      invalid: !this.props.valid && contains(['number', 'text'], this.props.type),
     }, this.props.innerInputClasses);
 
     return (
@@ -131,7 +131,7 @@ export class Input extends React.Component<IInputProps, any> {
           id={this.props.id}
           className={innerInputClasses}
           type={this.props.type}
-          defaultValue={this.props.value}
+          defaultValue={this.props.value || (this.innerInput && this.innerInput.value)}
           ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
           onBlur={() => this.handleBlur()}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.handleChange(e)}
