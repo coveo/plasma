@@ -52,8 +52,9 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
           <InputConnected
             id='super-input'
             validate={validate}
-            labelTitle='I am a connected input'
-            labelProps={{ validMessage: 'I am valid', invalidMessage: 'Do not leave me empty' }}
+            labelTitle='I am a connected input, and validated in real time'
+            labelProps={{ invalidMessage: 'Do not leave me empty' }}
+            validateOnChange
           />
           <InputConnected
             id='super-input-2'
@@ -74,7 +75,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
           <InputConnected
             id='super-input-3'
             validate={validate}
-            labelTitle='Toggle my disabled state with the button above'
+            labelTitle='I am a connected input and you can toggle my disabled state with the button above'
             labelProps={{ invalidMessage: 'Do not leave me empty' }}
             defaultValue='awesome disabled feature'
           />
@@ -90,9 +91,9 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
             id='super-input-4'
             classes='mt1'
             validate={validate}
-            labelTitle='Toggle my valid state with the button above'
+            labelTitle='I am a connected input and you can toggle my valid state with the button above'
             labelProps={{ invalidMessage: 'Do not leave me empty' }}
-            defaultValue='awesome valid feature'
+            defaultValue=''
           />
         </div>
       </div>
