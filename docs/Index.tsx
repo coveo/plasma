@@ -69,7 +69,7 @@ import { StepProgressBarExamples } from '../src/components/stepProgressBar/examp
 import { LabeledValueExamples } from '../src/components/labeledValue/examples/LabeledValueExamples';
 import { CollapsibleContainerExamples } from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
 import { SplitLayoutExamples } from '../src/components/splitlayout/examples/SplitLayoutExamples';
-import {TableWithDisabledRowsExamples} from '../src/components/tables/examples/TableDisabledRowsExamples';
+import { TableWithDisabledRowsExamples } from '../src/components/tables/examples/TableDisabledRowsExamples';
 
 class App extends React.Component<any, any> {
 
