@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 import { ITableData, ITableState, ITablesState, ITableCompositeState } from '../TableReducers';
 import { modifyState, setIsInError } from '../TableActions';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { IData, ITableRowData, ITableProps } from '../Table';
+import { IData, ITableRowData } from '../Table';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 import * as $ from 'jquery';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
@@ -211,15 +211,15 @@ export class TableExamples extends React.Component<any, any> {
           <TableConnected
             id={_.uniqueId('react-vapor-table')}
             initialTableData={tableData}
-            collapsibleFormatter={(rowData: IData, props?: ITableProps) => <div className='p2'>This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}</div>}
-            getActions={(rowData: IData, tableProps: ITableProps) => ([
+            collapsibleFormatter={(rowData: IData) => <div className='p2'>This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}</div>}
+            getActions={(rowData: IData) => ([
               {
                 name: 'Link to Coveo',
                 link: 'http://coveo.com',
                 target: '_blank',
                 icon: 'exit',
                 primary: true,
-                enabled: true
+                enabled: true,
               }, {
                 name: 'action1',
                 trigger: () => alert('attribute 4 value of the selected row is: ' + rowData.attribute4),
@@ -227,17 +227,14 @@ export class TableExamples extends React.Component<any, any> {
                 callOnDoubleClick: true,
               }, {
                 separator: true,
-                enabled: true
-              }, {
-                name: 'action2',
-                trigger: () => alert('we are at page ' + (tableProps.tableCompositeState.page + 1)),
-                enabled: true
+                enabled: true,
               },
               {
                 name: 'action3',
-                trigger: () => alert('value in your filter box is: ' + (tableProps.tableCompositeState.filter || 'empty (add something and retry)')),
-                enabled: true
-              }])}
+                trigger: () => alert('another action'),
+                enabled: true,
+              },
+            ])}
             headingAttributes={[
               {
                 attributeName: 'attribute1',
