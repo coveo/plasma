@@ -54,6 +54,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
             validate={validate}
             labelTitle='I am a connected input, and validated in real time'
             labelProps={{ invalidMessage: 'Do not leave me empty' }}
+            innerInputClasses='mb2'
             validateOnChange
           />
           <InputConnected
