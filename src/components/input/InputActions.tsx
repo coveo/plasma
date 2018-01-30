@@ -5,17 +5,17 @@ export const InputActions = {
   remove: 'REMOVE_INPUT',
   changeValue: 'CHANGE_VALUE_INPUT',
   validateValue: 'VALIDATE_VALUE_INPUT',
-  setDisable: 'SET_DISABLED_INPUT',
+  setDisabled: 'SET_DISABLED_INPUT',
 };
 
 export interface IInputActionPayload {
   id: string;
   valid?: boolean;
-  value?: any;
+  value?: string;
   disabled?: boolean;
 }
 
-export const addInput = (id: string, value: any, valid = true, disabled = false): IReduxAction<IInputActionPayload> => ({
+export const addInput = (id: string, value = '', valid = true, disabled = false): IReduxAction<IInputActionPayload> => ({
   type: InputActions.add,
   payload: { id, value, valid, disabled },
 });
@@ -25,7 +25,7 @@ export const removeInput = (id: string): IReduxAction<IInputActionPayload> => ({
   payload: { id },
 });
 
-export const changeInputValue = (id: string, value: any, valid = true): IReduxAction<IInputActionPayload> => ({
+export const changeInputValue = (id: string, value = '', valid = true): IReduxAction<IInputActionPayload> => ({
   type: InputActions.changeValue,
   payload: { id, value, valid },
 });
@@ -36,6 +36,6 @@ export const validateInputValue = (id: string, valid = true): IReduxAction<IInpu
 });
 
 export const setDisabledInput = (id: string, disabled = false): IReduxAction<IInputActionPayload> => ({
-  type: InputActions.setDisable,
+  type: InputActions.setDisabled,
   payload: { id, disabled },
 });

@@ -59,7 +59,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
             labelTitle='I am a disabled connected input'
             labelProps={{ invalidMessage: 'Do not leave me empty' }}
             disabledOnMount={true}
-            valueOnMount='I am disabled on mount'
+            defaultValue='I am disabled on mount'
           />
           <button className='mt2 mb2' onClick={() => ReactVaporStore.dispatch(setDisabledInput('super-input-3', !findWhere(ReactVaporStore.getState().inputs, { id: 'super-input-3' }).disabled))}>
             Toggle disabled state
@@ -69,7 +69,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
             validate={(value: any) => !!value}
             labelTitle='Toggle my disabled state with the button above'
             labelProps={{ invalidMessage: 'Do not leave me empty' }}
-            valueOnMount='awesome disabled feature'
+            defaultValue='awesome disabled feature'
           />
           <button className='mt2 mb2' onClick={() => ReactVaporStore.dispatch(validateInputValue('super-input-4', !findWhere(ReactVaporStore.getState().inputs, { id: 'super-input-4' }).valid))}>
             Toggle valid state
@@ -80,7 +80,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
             validate={(value: any) => !!value}
             labelTitle='Toggle my valid state with the button above'
             labelProps={{ invalidMessage: 'Do not leave me empty' }}
-            valueOnMount='awesome valid feature'
+            defaultValue='awesome valid feature'
           />
         </div>
       </div>

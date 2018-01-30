@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {contains} from 'underscore';
+import { contains } from 'underscore';
 import { ILabelProps, Label } from './Label';
 import { IClassName } from '../../utils/ClassNameUtils';
 
@@ -18,8 +18,9 @@ export interface IInputOwnProps {
   labelTitle?: string;
   labelProps?: ILabelProps;
   onChangeCallback?: (e: React.ChangeEvent<HTMLInputElement>, props: IInputProps) => any;
+  validateOnChange?: true;
   /**
-   * The initial disabled state of the input that will be sent to the Redux Store onMount
+   * Specify if an InputConnected should be disabled onMount
    */
   disabledOnMount?: boolean;
   /**
@@ -56,9 +57,13 @@ export class Input extends React.Component<IInputProps, any> {
 
   componentWillMount() {
     if (this.props.onRender) {
+      const validOnMount = this.props.validateOnMount
+        && this.props.valid
+        && this.props.validate(this.props.validateOnMount);
+
       this.props.onRender(
         this.props.defaultValue,
-        this.props.validateOnMount && this.props.validate && this.props.validate(this.props.validateOnMount),
+        validOnMount,
         this.props.disabledOnMount,
       );
     }
@@ -117,7 +122,7 @@ export class Input extends React.Component<IInputProps, any> {
     const classes = classNames(
       'input-wrapper validate',
       {
-       'input-field': contains(['number', 'text'], this.props.type),
+        'input-field': contains(['number', 'text'], this.props.type),
       },
       this.props.classes
     );

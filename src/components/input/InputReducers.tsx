@@ -5,7 +5,7 @@ import * as _ from 'underscore';
 
 export interface IInputState {
   id: string;
-  value: any;
+  value: string;
   valid: boolean;
   disabled: boolean;
 }
@@ -40,7 +40,7 @@ export const inputReducer = (
       return state.id === action.payload.id
         ? { ...state, valid: action.payload.valid }
         : state;
-    case InputActions.setDisable:
+    case InputActions.setDisabled:
       return state.id === action.payload.id
         ? { ...state, disabled: action.payload.disabled }
         : state;
@@ -63,7 +63,7 @@ export const inputsReducer = (
       return _.reject(state, (input: IInputState) => input.id === action.payload.id);
     case InputActions.changeValue:
     case InputActions.validateValue:
-    case InputActions.setDisable:
+    case InputActions.setDisabled:
       return state.map((input: IInputState) => inputReducer(input, action));
     default:
       return state;

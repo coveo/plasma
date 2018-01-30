@@ -17,7 +17,12 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IInputOwnProps): IIn
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IInputOwnProps): IInputDispatchProps => ({
   onRender: (value: any, valid = true, disabled = false) => dispatch(addInput(ownProps.id, value, valid, disabled)),
   onDestroy: () => dispatch(removeInput(ownProps.id)),
-  onChange: (value: any) => dispatch(changeInputValue(ownProps.id, value, ownProps.validate && ownProps.validate(value))),
+  onChange: (value: any) => {
+    const validState = ownProps.validateOnChange
+      && ownProps.validate
+      && ownProps.validate(value);
+    dispatch(changeInputValue(ownProps.id, value, validState));
+  },
 });
 
 export const InputConnected: React.ComponentClass<IInputProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Input);
