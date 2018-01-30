@@ -9,7 +9,7 @@ export interface IInputOwnProps {
   name?: string;
   type?: string;
   classes?: IClassName;
-  innerInputClasses?: string[];
+  innerInputClasses?: IClassName;
   defaultValue?: string;
   placeholder?: string;
   defaultChecked?: boolean;
@@ -17,8 +17,10 @@ export interface IInputOwnProps {
   validate?: (value: any) => boolean;
   labelTitle?: string;
   labelProps?: ILabelProps;
+  onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onBlur?: (value: string) => void;
   onChangeCallback?: (e: React.ChangeEvent<HTMLInputElement>, props: IInputProps) => any;
-  validateOnChange?: true;
+  validateOnChange?: boolean;
   /**
    * Specify if an InputConnected should be disabled onMount
    */
@@ -39,10 +41,8 @@ export interface IInputStateProps {
 export interface IInputDispatchProps {
   onDestroy?: () => void;
   onRender?: (value?: string, valid?: boolean, disabled?: boolean) => void;
-  onBlur?: (value: string) => void;
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   onChange?: (value?: string) => void;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps { }
@@ -60,7 +60,7 @@ export class Input extends React.Component<IInputProps, any> {
       // undefined validOnMount will default to true in the state
       const validOnMount = this.props.validateOnMount
         && this.props.validate
-        && this.props.validate(this.props.defaultValue);
+        && this.props.validate(this.props.defaultValue || '');
 
       this.props.onRender(
         this.props.defaultValue,

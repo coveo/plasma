@@ -28,6 +28,7 @@ import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers'
 import { tablesReducer } from '../components/tables/TableReducers';
 import thunk from 'redux-thunk';
 import { checkboxesReducer } from '../components/checkbox/CheckboxReducers';
+import { inputsReducer } from '../components/input/InputReducers';
 
 export interface IReactVaporTestState extends IReactVaporState {
   lastAction?: Redux.Action;
@@ -65,6 +66,7 @@ export class TestUtils {
       tables: tablesReducer,
       checkboxes: checkboxesReducer,
       collapsibleContainers: collapsibleContainersReducer,
+      inputs: inputsReducer,
     });
 
     const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
