@@ -19,7 +19,6 @@ export interface IInputOwnProps {
   labelProps?: ILabelProps;
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   onBlur?: (value: string) => void;
-  onChangeCallback?: (e: React.ChangeEvent<HTMLInputElement>, props: IInputProps) => any;
   validateOnChange?: boolean;
   /**
    * Specify if an InputConnected should be disabled onMount
@@ -90,13 +89,9 @@ export class Input extends React.Component<IInputProps, any> {
     }
   }
 
-  private handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  private handleChange() {
     if (this.props.onChange) {
       this.props.onChange(this.innerInput.value);
-    }
-
-    if (this.props.onChangeCallback) {
-      this.props.onChangeCallback(e, this.props);
     }
   }
 
@@ -140,7 +135,7 @@ export class Input extends React.Component<IInputProps, any> {
           defaultValue={this.props.value || (this.innerInput && this.innerInput.value)}
           ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
           onBlur={() => this.handleBlur()}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.handleChange(e)}
+          onChange={() => this.handleChange()}
           onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
           placeholder={this.props.placeholder}
           checked={!!this.props.checked}

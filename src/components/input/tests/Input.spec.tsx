@@ -138,42 +138,42 @@ describe('Input', () => {
     it('should not render without a label if labelTitle is not passed as prop (even with labelProps)', () => {
       expect(input.find(Label).length).toBe(0);
 
-      input.setProps({labelProps: {}}).mount();
+      input.setProps({ labelProps: {} }).mount();
       expect(input.find(Label).length).toBe(0);
     });
 
     it('should render with a label if labelTitle is passed as prop', () => {
-      input.setProps({labelTitle: 'hello there'});
+      input.setProps({ labelTitle: 'hello there' });
       expect(input.find(Label).length).toBe(1);
       expect(input.find(Label).text()).toBe('hello there');
     });
 
     it('should pass the labelProps to the rendered Label if labelTitle and labelProps are set as props', () => {
-      const labelProps = {invalidMessage: 'do not leave me empty'};
-      input.setProps({labelTitle: 'hello there', labelProps});
+      const labelProps = { invalidMessage: 'do not leave me empty' };
+      input.setProps({ labelTitle: 'hello there', labelProps });
       expect(input.find(Label).props()).toEqual(jasmine.objectContaining(labelProps));
     });
 
     it('should set the input-field class on the container if the input is of type text or number', () => {
       expect(input.find('div').first().hasClass('input-field')).toBe(true);
 
-      input.setProps({type: 'number'});
+      input.setProps({ type: 'number' });
       expect(input.find('div').first().hasClass('input-field')).toBe(true);
 
-      input.setProps({type: 'checkbox'});
+      input.setProps({ type: 'checkbox' });
       expect(input.find('div').first().hasClass('input-field')).toBe(false);
     });
 
     it('should set the invalid class on the input if valid prop is false and input text is of type text or number', () => {
       expect(input.find('input').first().hasClass('invalid')).toBe(false);
 
-      input.setProps({valid: false});
+      input.setProps({ valid: false });
       expect(input.find('input').first().hasClass('invalid')).toBe(true);
 
-      input.setProps({type: 'number'});
+      input.setProps({ type: 'number' });
       expect(input.find('input').first().hasClass('invalid')).toBe(true);
 
-      input.setProps({type: 'checkbox'});
+      input.setProps({ type: 'checkbox' });
       expect(input.find('input').first().hasClass('invalid')).toBe(false);
     });
   });
