@@ -68,6 +68,7 @@ import { CheckboxConnectedExamples } from '../src/components/checkbox/examples/C
 import { StepProgressBarExamples } from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
 import { LabeledValueExamples } from '../src/components/labeledValue/examples/LabeledValueExamples';
 import { SplitLayoutExamples } from '../src/components/splitlayout/examples/SplitLayoutExamples';
+import {TableWithDisabledRowsExamples} from '../src/components/tables/examples/TableDisabledRowsExamples';
 
 class App extends React.Component<any, any> {
 
@@ -126,6 +127,7 @@ class App extends React.Component<any, any> {
           <TableEmptyRowExamples />
           <TableHeaderExamples />
           <TableExamples />
+          <TableWithDisabledRowsExamples />
           <OptionsCycleExamples />
           <OptionsCycleConnectedExamples />
           <CalendarConnectedExamples />
