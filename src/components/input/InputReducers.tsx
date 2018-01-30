@@ -12,7 +12,7 @@ export interface IInputState {
 
 export const inputInitialState: IInputState = {
   id: undefined,
-  value: undefined,
+  value: '',
   valid: true,
   disabled: false,
 };

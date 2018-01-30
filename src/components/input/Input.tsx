@@ -38,10 +38,10 @@ export interface IInputStateProps {
 
 export interface IInputDispatchProps {
   onDestroy?: () => void;
-  onRender?: (value?: any, valid?: boolean, disabled?: boolean) => void;
+  onRender?: (value?: string, valid?: boolean, disabled?: boolean) => void;
   onBlur?: (value: string) => void;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-  onChange?: (value?: any) => void;
+  onChange?: (value?: string) => void;
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
@@ -57,9 +57,10 @@ export class Input extends React.Component<IInputProps, any> {
 
   componentWillMount() {
     if (this.props.onRender) {
+      // undefined validOnMount will default to true in the state
       const validOnMount = this.props.validateOnMount
-        && this.props.valid
-        && this.props.validate(this.props.validateOnMount);
+        && this.props.validate
+        && this.props.validate(this.props.defaultValue);
 
       this.props.onRender(
         this.props.defaultValue,

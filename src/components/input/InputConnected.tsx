@@ -15,9 +15,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IInputOwnProps): IIn
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IInputOwnProps): IInputDispatchProps => ({
-  onRender: (value: any, valid = true, disabled = false) => dispatch(addInput(ownProps.id, value, valid, disabled)),
+  onRender: (value: string, valid = true, disabled = false) => dispatch(addInput(ownProps.id, value, valid, disabled)),
   onDestroy: () => dispatch(removeInput(ownProps.id)),
-  onChange: (value: any) => {
+  onChange: (value: string) => {
     const validState = ownProps.validateOnChange
       && ownProps.validate
       && ownProps.validate(value);
