@@ -11,7 +11,7 @@ describe('Reducers', () => {
     }];
   });
 
-  fdescribe('InputReducers', () => {
+  describe('InputReducers', () => {
     const unrelatedAction: IReduxAction<any> = {
       type: 'DO_SOMETHING',
       payload: { id: '' },

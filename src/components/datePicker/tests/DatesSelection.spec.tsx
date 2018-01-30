@@ -222,7 +222,7 @@ describe('Date picker', () => {
       }).not.toThrow();
 
       datesSelection.setProps({ onBlur: onBlurSpy });
-      (datesSelection.find('input').get(0) as React.ReactElement<HTMLInputElement>).props.value = DateUtils.getDateWithTimeString(new Date());
+      (datesSelection.find('input').get(0) as any).value = DateUtils.getDateWithTimeString(new Date());
       datesSelection.find(DatePicker).props().onBlur(new Date(), false);
 
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
