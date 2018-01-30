@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { contains } from 'underscore';
+import { contains, isUndefined } from 'underscore';
 import { ILabelProps, Label } from './Label';
 import { IClassName } from '../../utils/ClassNameUtils';
 
@@ -132,7 +132,7 @@ export class Input extends React.Component<IInputProps, any> {
           id={this.props.id}
           className={innerInputClasses}
           type={this.props.type}
-          defaultValue={this.props.value || (this.innerInput && this.innerInput.value)}
+          defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
           ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
           onBlur={() => this.handleBlur()}
           onChange={() => this.handleChange()}
@@ -141,7 +141,6 @@ export class Input extends React.Component<IInputProps, any> {
           checked={!!this.props.checked}
           disabled={!!this.props.disabled}
           name={this.props.name}
-          value={this.props.value || (this.innerInput && this.innerInput.value)}
           required
           readOnly={!!this.props.readOnly}
         />
