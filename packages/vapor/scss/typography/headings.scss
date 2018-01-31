@@ -1,6 +1,6 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: $base-font-family;
-  line-height: 1.5;
+  line-height: $header-line-height;
 }
 
 h1, .h1 {
@@ -25,4 +25,8 @@ h5 {
 
 h6 {
   font-size: 13px;
+}
+
+.mod-header-min-height {
+  min-height: $header-line-height;
 }
