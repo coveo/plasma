@@ -10,7 +10,7 @@ describe('Checkbox', () => {
       expect(() => {
         shallow(
           <Checkbox />
-      );
+        );
       }).not.toThrow();
     });
   });
