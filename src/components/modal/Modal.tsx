@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface IModalOwnProps {
-  id: string;
+  id?: string;
   classes?: string[];
 }
 
