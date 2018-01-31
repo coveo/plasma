@@ -1,13 +1,15 @@
 .step-progress-bar-container {
-    display: flex;
-    align-items: flex-start;
+  align-items: flex-start;
+
+  display: flex;
 }
 
 .step-progress-bar {
   height: $step-progress-bar-height;
-  margin: 0;
-  border: 0;
   padding: 0;
+  margin: 0;
+
+  border: 0;
 }
 
 .step-progress-bar-done {
