@@ -20,13 +20,7 @@ export interface IInputOwnProps {
   onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   onBlur?: (value: string) => void;
   validateOnChange?: boolean;
-  /**
-   * Specify if an InputConnected should be disabled onMount
-   */
   disabledOnMount?: boolean;
-  /**
-   * Specify if an InputConnected should be validated onMount
-   */
   validateOnMount?: boolean;
 }
 
