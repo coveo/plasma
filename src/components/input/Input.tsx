@@ -34,7 +34,7 @@ export interface IInputStateProps {
 export interface IInputDispatchProps {
   onDestroy?: () => void;
   onRender?: (value?: string, valid?: boolean, disabled?: boolean) => void;
-  onChange?: (value?: string) => void;
+  onChange?: (value?: string, valid?: boolean) => void;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -85,7 +85,10 @@ export class Input extends React.Component<IInputProps, any> {
 
   private handleChange() {
     if (this.props.onChange) {
-      this.props.onChange(this.innerInput.value);
+      const validOnChange = this.props.validateOnChange
+        && this.props.validate
+        && this.props.validate(this.innerInput.value);
+      this.props.onChange(this.innerInput.value, validOnChange);
     }
   }
 

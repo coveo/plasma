@@ -21,7 +21,7 @@ describe('<InputConnected />', () => {
     store.dispatch(clearState());
   });
 
-  const mountComponentWithProps = (props: IInputProps) => mount(
+  const mountComponentWithProps = (props: IInputProps = {}) => mount(
     <Provider store={store}>
       <InputConnected {...props} />
     </Provider>,
@@ -30,7 +30,7 @@ describe('<InputConnected />', () => {
 
   it('should mount without errors in various props scenarios', () => {
     expect(() => {
-      mountComponentWithProps({});
+      mountComponentWithProps();
     }).not.toThrow();
 
     inputPossibleProps.forEach((props) => {
