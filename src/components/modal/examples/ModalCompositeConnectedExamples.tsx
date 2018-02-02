@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
-import {closeModal, IModalActionPayload, openModal} from '../ModalActions';
-import {ModalCompositeConnected} from '../ModalCompositeConnected';
+import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
+import { closeModal, IModalActionPayload, openModal } from '../ModalActions';
+import { ModalCompositeConnected } from '../ModalCompositeConnected';
 
 export interface IModalExamplesProps {
   openModal?: (id: string) => void;

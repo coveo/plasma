@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import { IModalProps, Modal } from './Modal';
-import {IModalHeaderProps, ModalHeader } from './ModalHeader';
+import { IModalHeaderProps, ModalHeader } from './ModalHeader';
 import { IModalFooterProps, ModalFooter } from './ModalFooter';
 import { IModalBackdropProps, ModalBackdrop } from './ModalBackdrop';
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
@@ -74,11 +74,15 @@ export class ModalComposite extends React.Component<IModalCompositeProps, {}> {
   }
 
   private getModalBody() {
-    return <ModalBody classes={this.props.modalBodyClasses}>{this.props.modalBodyChildren}</ModalBody>;
+    return this.props.modalBodyChildren
+      ? <ModalBody classes={this.props.modalBodyClasses}>{this.props.modalBodyChildren}</ModalBody>
+      : null;
   }
 
   private getModalFooter() {
-    return <ModalFooter classes={this.props.modalFooterClasses}>{this.props.modalFooterChildren}</ModalFooter>;
+    return this.props.modalFooterChildren
+      ? <ModalFooter classes={this.props.modalFooterClasses}>{this.props.modalFooterChildren}</ModalFooter>
+      : null;
   }
 
   private getModalBackdrop() {
