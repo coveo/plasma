@@ -54,7 +54,7 @@ import { CheckboxExamples } from '../src/components/checkbox/examples/CheckboxEx
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
 import { ListBoxExamples } from '../src/components/listBox/examples/ListBoxExamples';
 import { ItemBoxExamples } from '../src/components/itemBox/examples/ItemBoxExamples';
-import { InputExamples } from '../src/components/input/examples/InputExamples';
+import { InputAndInputConnectedExamples } from '../src/components/input/examples/InputAndInputConnectedExamples';
 import { LinkSvgExamples } from '../src/components/svg/examples/LinkSvgExamples';
 import { SvgExamples } from '../src/components/svg/examples/SvgExamples';
 import { TitleExamples } from '../src/components/title/examples/TitleExamples';
@@ -146,7 +146,7 @@ class App extends React.Component<any, any> {
           <BlankSlateExample />
           <ToastExamples />
           <ToastConnectedExamples />
-          <InputExamples />
+          <InputAndInputConnectedExamples />
           <RadioExamples />
           <CheckboxExamples />
           <CheckboxConnectedExamples />

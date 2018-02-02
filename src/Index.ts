@@ -57,6 +57,8 @@ export { ModalHeaderConnected } from './components/modal/ModalHeaderConnected';
 export { modalsReducer } from './components/modal/ModalReducers';
 export { addModal, closeModal, ModalAction, openModal, removeModal } from './components/modal/ModalActions';
 export { ModalPrompt } from './components/modalPrompt/ModalPrompt';
+export { ModalComposite } from './components/modal/ModalComposite';
+export { ModalCompositeConnected } from './components/modal/ModalCompositeConnected';
 
 // Navigation
 export { Navigation } from './components/navigation/Navigation';

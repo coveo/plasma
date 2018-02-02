@@ -8,9 +8,6 @@ import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
 import { Store, Provider } from 'react-redux';
 import { DEFAULT_TABLE_DATA, TableSortingOrder } from '../TableConstants';
-import { TableRowWrapper } from '../TableRowWrapper';
-import { TableRowWrapper } from '../TableRowWrapper';
-import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
 import { TableChildBody } from '../table-children/TableChildBody';
 
 describe('<Table />', () => {
