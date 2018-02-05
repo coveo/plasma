@@ -79,6 +79,24 @@ export const applyFilterOnDisplayedIds = (
   return nextDisplayedIds;
 };
 
+export const applyDatePickerOnDisplayedIds = (
+  nextDisplayedIds: string[],
+  tableDataById: ITableRowData,
+  tableCompositeState: ITableCompositeState,
+  tableOwnProps: ITableOwnProps,
+): string[] => {
+  const { from, to } = tableCompositeState;
+  const { datePicker } = tableOwnProps;
+  if (from && to && datePicker.attributeValue) {
+    nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean => {
+      const rowDate = new Date(tableDataById[dataId][datePicker.attributeValue]);
+      return rowDate >= from && rowDate <= to;
+    });
+  }
+
+  return nextDisplayedIds;
+};
+
 export const applySortOnDisplayedIds = (
   nextDisplayedIds: string[],
   tableDataById: ITableRowData,
@@ -124,6 +142,7 @@ export const defaultTableStateModifier = (
 
     nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
     nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+    nextDisplayedIds = applyDatePickerOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
 
     const totalEntries = nextDisplayedIds.length;
     const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));

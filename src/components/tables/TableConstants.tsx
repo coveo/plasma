@@ -17,6 +17,7 @@ export const TABLE_PREDICATE_ID_PREFIX = 'predicate-';
 
 export enum TableChildComponent {
   ACTION_BAR = 'action-bar',
+  DATEPICKER = 'datepicker',
   FILTER = 'filter',
   NAVIGATION = 'navigation',
   PAGINATION = 'pagination',

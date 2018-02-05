@@ -48,6 +48,8 @@ export interface ITableCompositeState {
   predicates: {
     [attributeNameAssociatedToPredicate: string]: attributeValue;
   };
+  from: Date;
+  to: Date;
 }
 
 export interface ITableState {
@@ -56,6 +58,7 @@ export interface ITableState {
   isInError: boolean;
   isLoading: boolean;
   filterId: string;
+  datePickerId: string;
   paginationId: string;
   perPageId: string;
   predicateIds: string[];
@@ -72,6 +75,7 @@ export const tableInitialState: ITableState = {
   filterId: undefined,
   predicateIds: [],
   tableHeaderCellId: undefined,
+  datePickerId: undefined,
 };
 
 export const tablesInitialState: { [tableId: string]: ITableState; } = {};
@@ -91,6 +95,7 @@ export const tableReducer = (
         filterId: getTableChildComponentId(action.payload.id, TableChildComponent.FILTER),
         predicateIds: action.payload.predicates.map((predicate: ITablePredicate) =>
           `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`),
+        datePickerId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER),
       };
     case TableActions.modifyState:
       return action.payload.tableStateModifier(state);

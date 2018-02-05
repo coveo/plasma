@@ -4,6 +4,7 @@ import { defaultTableStateModifier, dispatchPreTableStateModification, dispatchP
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
+import * as moment from 'moment';
 import { ITableData, ITableState, ITablesState, ITableCompositeState } from '../TableReducers';
 import { modifyState, setIsInError } from '../TableActions';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
@@ -11,8 +12,11 @@ import { IData, ITableRowData } from '../Table';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 import * as $ from 'jquery';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
+import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
+const generateDate = (start: Date, end: Date) =>
+  moment(start.getTime() + Math.random() * (end.getTime() - start.getTime())).format('YYYY-MM-DD hh:mm:ss');
 
 const simplestTableDataById = _.range(0, 5).reduce((obj, number) => ({
   ...obj,
@@ -22,6 +26,7 @@ const simplestTableDataById = _.range(0, 5).reduce((obj, number) => ({
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
+    attribute5: generateDate(moment().subtract(1, 'month').toDate(), moment().endOf('day').toDate()),
   }
 }), {} as ITableRowData);
 
@@ -201,6 +206,36 @@ export class TableExamples extends React.Component<any, any> {
               },
             ]}
             filter={{}}
+            blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
+            actionBar={{ extraContainerClasses: ['mod-border-top'] }}
+          />
+        </div>
+
+        <div className='form-group'>
+          <label className='form-control-label'>Table with datePicker
+          </label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            initialTableData={simplestTableData}
+            headingAttributes={[
+              {
+                attributeName: 'attribute5',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+              },
+            ]}
+            datePicker={{
+              datesSelectionBoxes: SELECTION_BOXES_LONG,
+              attributeValue: 'attribute5',
+              lowerLimitPlaceholder: moment().subtract(1, 'month').toDate().toISOString()
+            }}
             blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
           />

@@ -2,6 +2,7 @@ import { IActionOptions } from '../actions/Action';
 import { IActionBarProps } from '../actions/ActionBar';
 import { IBlankSlateProps } from '../blankSlate/BlankSlate';
 import { IDropdownSearchProps, IDropdownOption } from '../dropdownSearch/DropdownSearch';
+import { IDatePickerDropdownProps } from '../datePicker/DatePickerDropdown';
 import { IFilterBoxProps } from '../filterBox/FilterBox';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -51,6 +52,11 @@ export interface ITablePredicate {
   attributeNameFormatter?: IAttributeNameOrValueFormatter;
 }
 
+export interface ITableDatePicker extends IDatePickerDropdownProps {
+  // If the table is not manual, tells which attribute should be used to filter dates
+  attributeValue?: string;
+}
+
 export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBodyInheritedFromTableProps {
   id: string;
   blankSlateDefault: IBlankSlateProps;
@@ -59,6 +65,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
   actionBar?: true | IActionBarProps;
   blankSlateNoResultsOnAction?: IBlankSlateProps;
   blankSlateOnError?: IBlankSlateProps;
+  datePicker?: ITableDatePicker;
   filter?: true | IFilterBoxProps;
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   predicates?: ITablePredicate[];
@@ -180,6 +187,8 @@ export class Table extends React.Component<ITableProps, {}> {
         currentTableCompositeState.predicates,
         (attributeValue: any, attributeName: string) => attributeValue !== nextTableCompositeState.predicates[attributeName],
       )
+      || currentTableCompositeState.from !== nextTableCompositeState.from
+      || currentTableCompositeState.to !== nextTableCompositeState.to
     );
   }
 

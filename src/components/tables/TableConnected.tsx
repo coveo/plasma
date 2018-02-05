@@ -18,6 +18,7 @@ import { IPaginationState } from '../navigation/pagination/NavigationPaginationR
 import { IFilterState } from '../filterBox/FilterBoxReducers';
 import { ITableHeaderCellState } from './TableHeaderCellReducers';
 import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
+import { IDatePickerState } from '../datePicker/DatePickerReducers';
 import { contains } from 'underscore.string';
 import { IDispatch } from '../../utils/ReduxUtils';
 
@@ -28,6 +29,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
   const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
   const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, ownProps.id)) || [];
+  const datePickerState: IDatePickerState = tableState && _.find(state.datePickers, (datePicker: IDatePickerState) => {
+    return datePicker.id, datePicker.id.indexOf(tableState.datePickerId) === 0;
+  });
 
   return {
     tableCompositeState: {
@@ -51,6 +55,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
           [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
         };
       }, {}),
+      from: datePickerState && datePickerState.appliedLowerLimit,
+      to: datePickerState && datePickerState.appliedUpperLimit,
     } as ITableCompositeState
   };
 };
