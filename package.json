@@ -33,7 +33,8 @@
     "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,karma.entry.ts",
     "coverage:report": "istanbul report",
     "prepublish": "npm run build && npm test",
-    "report-coverage": "codecov -f coverage/coverage.json"
+    "report-coverage": "codecov -f coverage/coverage.json",
+    "reconstruct": "gulp clean --all && npm install && gulp"
   },
   "pre-commit": [
     "lint"
