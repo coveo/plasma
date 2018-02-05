@@ -37,7 +37,18 @@ gulp.task('clean:tests', false, (done) => {
   clean(['coverage'], done);
 });
 
-gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests']);
+gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests'], (done) => {
+    if (gutil.env.all === true) {
+      clean([
+        '**/*.orig',
+        '**/*.rej',
+        'node_modules',
+        'package-lock.json'
+      ], done);
+    } else {
+      done();
+    }
+});
 // </editor-fold>
 
 // <editor-fold desc="Prettify">
