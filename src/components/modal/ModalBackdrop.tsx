@@ -15,7 +15,7 @@ export interface IModalBackdropDispatchProps {
 export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {
 }
 
-export class ModalBackdrop extends React.Component<IModalBackdropProps, any> {
+export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
 
   handleClick() {
     if (this.props.onClick) {

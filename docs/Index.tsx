@@ -70,6 +70,8 @@ import { LabeledValueExamples } from '../src/components/labeledValue/examples/La
 import { CollapsibleContainerExamples } from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
 import { SplitLayoutExamples } from '../src/components/splitlayout/examples/SplitLayoutExamples';
 import { TableWithDisabledRowsExamples } from '../src/components/tables/examples/TableDisabledRowsExamples';
+import { ModalCompositeExamples } from '../src/components/modal/examples/ModalCompositeExamples';
+import { ModalCompositeConnectedExamples } from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 
 class App extends React.Component<any, any> {
 
@@ -112,6 +114,8 @@ class App extends React.Component<any, any> {
           <FacetConnectedExamples />
           <ModalExamples />
           <ModalConnectedExamples />
+          <ModalCompositeExamples />
+          <ModalCompositeConnectedExamples />
           <ModalPromptExamples />
           <NavigationExamples />
           <NavigationConnectedExamples />
