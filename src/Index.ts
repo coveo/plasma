@@ -173,14 +173,17 @@ export { TabContent } from './components/tab/TabContent';
 export { TabNavigation } from './components/tab/TabNavigation';
 export { TabPane } from './components/tab/TabPane';
 export { TabPaneConnected } from './components/tab/TabPaneConnected';
+export { tabGroupsReducer, tabsReducer } from './components/tab/TabReducers';
 
 // Input
 export { Input, IInputProps } from './components/input/Input';
 export { Label, ILabelProps } from './components/input/Label';
+export { InputConnected } from './components/input/InputConnected';
+export { InputActions, changeInputValue, validateInputValue, setDisabledInput, addInput, removeInput } from './components/input/InputActions';
+export { inputsReducer, inputReducer } from './components/input/InputReducers';
 
 // MultilineInput
 export { MultilineInput } from './components/multilineInput/MultilineInput';
-export { tabGroupsReducer, tabsReducer } from './components/tab/TabReducers';
 
 // Button
 export { Button } from './components/button/Button';
