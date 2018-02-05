@@ -1,10 +1,12 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import { IClassName } from '../../utils/ClassNameUtils';
 import { Svg } from '../svg/Svg';
 
 export interface IModalHeaderOwnProps {
   id?: string;
   title: string;
-  classes?: string[];
+  classes?: IClassName;
 }
 
 export interface IModalHeaderStateProps { }
@@ -15,7 +17,7 @@ export interface IModalHeaderDispatchProps {
 
 export interface IModalHeaderProps extends IModalHeaderOwnProps, IModalHeaderStateProps, IModalHeaderDispatchProps { }
 
-export class ModalHeader extends React.Component<IModalHeaderProps, any> {
+export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
 
   close() {
     if (this.props.onClose) {
@@ -24,7 +26,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps, any> {
   }
 
   render() {
-    const classes = ['modal-header'].concat(this.props.classes);
+    const classes = classNames('modal-header', this.props.classes);
 
     let closeComponent: JSX.Element = null;
     if (this.props.onClose) {
@@ -36,7 +38,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps, any> {
     }
 
     return (
-      <header className={classes.join(' ')}>
+      <header className={classes}>
         <div>
           <h1 className='inline'>{this.props.title}</h1>
           {this.props.children}

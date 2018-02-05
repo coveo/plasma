@@ -10,14 +10,15 @@ import { ModalHeaderConnected } from './ModalHeaderConnected';
 import { JSXRenderable } from '../../utils/JSXUtils';
 import { ModalConnected } from './ModalConnected';
 import { ModalBody } from './ModalBody';
+import { IClassName } from '../../utils/ClassNameUtils';
 
 export interface IModalCompositeOwnProps extends IModalProps, IModalHeaderProps, IModalFooterProps, IModalBackdropProps {
   modalHeaderChildren?: JSXRenderable;
-  modalHeaderClasses?: string[];
+  modalHeaderClasses?: IClassName;
   modalBodyChildren?: JSXRenderable;
-  modalBodyClasses?: string[];
+  modalBodyClasses?: IClassName;
   modalFooterChildren?: JSXRenderable;
-  modalFooterClasses?: string[];
+  modalFooterClasses?: IClassName;
 }
 
 export interface IModalCompositeStateProps extends IReduxStatePossibleProps { }
@@ -69,19 +70,19 @@ export class ModalComposite extends React.Component<IModalCompositeProps, {}> {
     const onCloseProp = this.props.onClose ? () => this.props.onClose() : undefined;
 
     return this.props.withReduxState
-      ? <ModalHeaderConnected {...basicProps}>{this.props.modalHeaderChildren}</ModalHeaderConnected>
-      : <ModalHeader {...basicProps} onClose={onCloseProp}>{this.props.modalHeaderChildren}</ModalHeader>;
+      ? <ModalHeaderConnected key='modal-header' {...basicProps}>{this.props.modalHeaderChildren}</ModalHeaderConnected>
+      : <ModalHeader key='modal-header' {...basicProps} onClose={onCloseProp}>{this.props.modalHeaderChildren}</ModalHeader>;
   }
 
   private getModalBody() {
     return this.props.modalBodyChildren
-      ? <ModalBody classes={this.props.modalBodyClasses}>{this.props.modalBodyChildren}</ModalBody>
+      ? <ModalBody key='modal-body' classes={this.props.modalBodyClasses}>{this.props.modalBodyChildren}</ModalBody>
       : null;
   }
 
   private getModalFooter() {
     return this.props.modalFooterChildren
-      ? <ModalFooter classes={this.props.modalFooterClasses}>{this.props.modalFooterChildren}</ModalFooter>
+      ? <ModalFooter key='modal-footer' classes={this.props.modalFooterClasses}>{this.props.modalFooterChildren}</ModalFooter>
       : null;
   }
 

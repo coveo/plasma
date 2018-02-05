@@ -1,8 +1,10 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import { IClassName } from '../../utils/ClassNameUtils';
 
 export interface IModalOwnProps {
   id?: string;
-  classes?: string[];
+  classes?: IClassName;
 }
 
 export interface IModalStateProps {
@@ -16,7 +18,7 @@ export interface IModalDispatchProps {
 
 export interface IModalProps extends IModalOwnProps, IModalStateProps, IModalDispatchProps { }
 
-export class Modal extends React.Component<IModalProps, any> {
+export class Modal extends React.Component<IModalProps, {}> {
 
   componentWillMount() {
     if (this.props.onRender) {
@@ -31,13 +33,12 @@ export class Modal extends React.Component<IModalProps, any> {
   }
 
   render() {
-    let classes = ['modal-container'].concat(this.props.classes);
-    if (this.props.isOpened) {
-      classes.push('opened');
-    }
+    const classes = classNames('modal-container', this.props.classes, {
+      'opened': this.props.isOpened,
+    });
 
     return (
-      <div className={classes.join(' ')}>
+      <div className={classes}>
         <div className='modal-content'>
           {this.props.children}
         </div>

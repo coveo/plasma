@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ModalComposite } from '../ModalComposite';
+import { Tooltip } from '../../tooltip/Tooltip';
+import { Svg } from '../../svg/Svg';
 
 export interface IModalExamplesState {
   isOpened: boolean;
@@ -32,6 +34,7 @@ export class ModalCompositeExamples extends React.Component<{}, IModalExamplesSt
               isOpened={this.state.isOpened}
               title='Modal composite'
               onClose={() => this.closeModal()}
+              modalHeaderChildren={<Tooltip title='A tooltip for the title'><Svg svgName='help' className='icon mod-2x ml1' svgClass='fill-orange' /></Tooltip>}
               modalBodyChildren='The content of the modal'
               modalFooterChildren={<button className='btn' onClick={() => this.closeModal()}>Close</button>}
               modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}

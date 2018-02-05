@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { ReduxUtils } from '../../utils/ReduxUtils';
 import { IModalCompositeDispatchProps, IModalCompositeProps, IModalCompositeStateProps, ModalComposite } from './ModalComposite';
 
-
 const mapStateToProps = (): IModalCompositeStateProps => ({
   withReduxState: true,
 });
