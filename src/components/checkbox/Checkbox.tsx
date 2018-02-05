@@ -1,6 +1,6 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
-import { Input, IInputProps } from '../input/Input';
+import * as React from 'react';
+import { IInputProps, Input } from '../input/Input';
 
 export class Checkbox extends React.Component<IInputProps, any> {
   private onClick(e: React.MouseEvent<HTMLElement>) {

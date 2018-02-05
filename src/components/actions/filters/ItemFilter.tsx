@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Svg } from '../../svg/Svg';
-import { Tooltip, ITooltipProps } from '../../tooltip/Tooltip';
+import { ITooltipProps, Tooltip } from '../../tooltip/Tooltip';
 
 export interface IItemFilterProps extends React.ClassAttributes<ItemFilter> {
   label: string;
@@ -17,7 +17,7 @@ export class ItemFilter extends React.Component<IItemFilterProps, any> {
   render() {
     let itemFilterText: string = this.props.item;
     if (this.props.crop) {
-      let itemFilterLength: number = itemFilterText.length;
+      const itemFilterLength: number = itemFilterText.length;
 
       if (itemFilterLength > Math.abs(this.props.crop)) {
         itemFilterText = this.props.crop > 0

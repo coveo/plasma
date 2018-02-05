@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { Svg } from '../../svg/Svg';
+import { Tooltip } from '../../tooltip/Tooltip';
 import { Modal } from '../Modal';
-import { ModalBody } from '../ModalBody';
 import { ModalBackdrop } from '../ModalBackdrop';
+import { ModalBody } from '../ModalBody';
 import { ModalFooter } from '../ModalFooter';
 import { ModalHeader } from '../ModalHeader';
-import { Tooltip } from '../../tooltip/Tooltip';
-import { Svg } from '../../svg/Svg';
 
 export interface IModalExamplesState {
   isOpened: boolean;

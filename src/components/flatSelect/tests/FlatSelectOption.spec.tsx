@@ -1,10 +1,10 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { FlatSelectOption, IFlatSelectOptionProps } from '../FlatSelectOption';
+import { UUID } from '../../../utils/UUID';
 import { Content, IContentProps } from '../../content/Content';
 import { ISvgProps, Svg } from '../../svg/Svg';
-import { UUID } from '../../../utils/UUID';
+import { FlatSelectOption, IFlatSelectOptionProps } from '../FlatSelectOption';
 
 describe('FlatSelect', () => {
   describe('<FlatSelectOption />', () => {
@@ -19,8 +19,8 @@ describe('FlatSelect', () => {
 
   describe('<FlatSelectOption />', () => {
     let flatSelect: ReactWrapper<IFlatSelectOptionProps, any>;
-    let defaultOption: IContentProps = { content: 'test' };
-    let defaultProps: IFlatSelectOptionProps = {
+    const defaultOption: IContentProps = { content: 'test' };
+    const defaultProps: IFlatSelectOptionProps = {
       id: UUID.generate(),
       option: defaultOption,
     };

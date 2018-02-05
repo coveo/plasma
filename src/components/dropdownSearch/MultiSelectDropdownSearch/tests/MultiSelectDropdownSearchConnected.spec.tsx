@@ -1,23 +1,23 @@
-import { UUID } from '../../../../utils/UUID';
-import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { IDropdownSearchProps } from '../../DropdownSearch';
+import * as React from 'react';
 import { Provider, Store } from 'react-redux';
+import * as _ from 'underscore';
 import { IReactVaporState } from '../../../../ReactVapor';
-import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearchConnected';
-import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
-import { TestUtils } from '../../../../utils/TestUtils';
+import { keyCode } from '../../../../utils/InputUtils';
 import { clearState } from '../../../../utils/ReduxUtils';
-import { defaultSelectedOptionPlaceholder } from '../../DropdownSearchReducers';
+import { TestUtils } from '../../../../utils/TestUtils';
+import { UUID } from '../../../../utils/UUID';
+import { IDropdownSearchProps } from '../../DropdownSearch';
 import {
   addCustomSelectedOption,
   applyFilterDropdownSearch,
   closeDropdownSearch,
   openDropdownSearch,
-  updateOptionsDropdownSearch
+  updateOptionsDropdownSearch,
 } from '../../DropdownSearchActions';
-import { keyCode } from '../../../../utils/InputUtils';
-import * as _ from 'underscore';
+import { defaultSelectedOptionPlaceholder } from '../../DropdownSearchReducers';
+import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
+import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearchConnected';
 
 describe('MultiSelectDropdownSearch', () => {
 

@@ -1,5 +1,5 @@
-import { TableEmptyRow } from '../TableEmptyRow';
 import * as React from 'react';
+import { TableEmptyRow } from '../TableEmptyRow';
 
 export class TableEmptyRowExamples extends React.Component<any, any> {
 

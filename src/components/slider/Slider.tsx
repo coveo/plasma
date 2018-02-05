@@ -1,6 +1,6 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
 import RCSlider, { createSliderWithTooltip, SliderProps } from 'rc-slider';
+import * as React from 'react';
 
 export interface ISliderProps {
   slider?: SliderProps;

@@ -1,10 +1,10 @@
+import { IBreadcrumbProps } from '../../breadcrumbs/Breadcrumb';
 import { IBreadcrumbLinkProps } from '../../breadcrumbs/BreadcrumbLink';
-import { ILinkSvgProps } from '../../svg/LinkSvg';
 import { Button } from '../../button/Button';
 import { IContentProps } from '../../content/Content';
-import { IBreadcrumbProps } from '../../breadcrumbs/Breadcrumb';
-import { ITitleProps } from '../../title/Title';
+import { ILinkSvgProps } from '../../svg/LinkSvg';
 import { ITabProps } from '../../tab/Tab';
+import { ITitleProps } from '../../title/Title';
 
 export const link1: IBreadcrumbLinkProps = {
   name: 'Pikachu',

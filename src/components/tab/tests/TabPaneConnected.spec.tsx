@@ -1,14 +1,14 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { TabPaneConnected } from '../TabPaneConnected';
-import { ITabPaneProps, TabPane } from '../TabPane';
-import { addTab } from '../TabActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { addTab } from '../TabActions';
+import { ITabPaneProps, TabPane } from '../TabPane';
+import { TabPaneConnected } from '../TabPaneConnected';
 
 describe('TabPane', () => {
   describe('<TabPaneConnected />', () => {
@@ -28,7 +28,7 @@ describe('TabPane', () => {
             id={id}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       tabPane = wrapper.find(TabPane).first();
     });
@@ -40,14 +40,14 @@ describe('TabPane', () => {
     });
 
     it('should get its id as a prop', () => {
-      let idProp = tabPane.props().id;
+      const idProp = tabPane.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
     });
 
     it('should get isActive false as a prop', () => {
-      let isActive = tabPane.props().isActive;
+      const isActive = tabPane.props().isActive;
 
       expect(isActive).toBeDefined();
       expect(isActive).toBe(false);
@@ -55,7 +55,7 @@ describe('TabPane', () => {
 
     it('should set the tab pane as active when adding a tab with same ID and no other tab is in the store', () => {
       store.dispatch(addTab(id));
-      let isActive = tabPane.props().isActive;
+      const isActive = tabPane.props().isActive;
 
       expect(isActive).toBe(true);
     });
@@ -63,7 +63,7 @@ describe('TabPane', () => {
     it('should not set the tab pane as active when adding a tab with same ID and another tab is in the store', () => {
       store.dispatch(addTab('tab-id-2'));
       store.dispatch(addTab(id));
-      let isActive = tabPane.props().isActive;
+      const isActive = tabPane.props().isActive;
 
       expect(isActive).toBe(false);
     });

@@ -1,13 +1,13 @@
+import * as faker from 'faker';
+import * as _ from 'underscore';
+import { TableChildComponent, TableSortingOrder } from '../TableConstants';
 import {
+  convertDataByIdToCollection,
+  convertInitialCollectionToDataById,
   getNextTableSortingOrder,
   getTableChildComponentId,
   getTableLoadingIds,
-  convertInitialCollectionToDataById,
-  convertDataByIdToCollection,
 } from '../TableUtils';
-import { TableSortingOrder, TableChildComponent } from '../TableConstants';
-import * as _ from 'underscore';
-import * as faker from 'faker';
 
 describe('TableUtils', () => {
   describe('getNextTableSortingOrder', () => {
@@ -73,7 +73,7 @@ describe('TableUtils', () => {
         {
           companyName: faker.company.companyName(),
           catchPhrase: faker.company.catchPhrase(),
-          id: 'a'
+          id: 'a',
         },
         {
           companyName: faker.company.companyName(),

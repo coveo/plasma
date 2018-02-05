@@ -14,21 +14,21 @@ export const CheckboxActions = {
 export const toggleCheckbox = (id: string): IReduxAction<ICheckboxActionPayload> => ({
   type: CheckboxActions.toggle,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const addCheckbox = (id: string, checked: boolean): IReduxAction<ICheckboxActionPayload> => ({
   type: CheckboxActions.add,
   payload: {
     id,
-    checked
-  }
+    checked,
+  },
 });
 
 export const removeCheckbox = (id: string): IReduxAction<ICheckboxActionPayload> => ({
   type: CheckboxActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });

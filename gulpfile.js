@@ -42,7 +42,7 @@ gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests'], (do
         '**/*.orig',
         '**/*.rej',
         'node_modules',
-        'package-lock.json'
+        'package-lock.json',
       ], done);
     } else {
       done();

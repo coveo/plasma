@@ -1,7 +1,7 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { ModalBody, IModalBodyProps } from '../ModalBody';
+import { IModalBodyProps, ModalBody } from '../ModalBody';
 
 describe('ModalBody', () => {
 
@@ -9,7 +9,7 @@ describe('ModalBody', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <ModalBody />
+          <ModalBody />,
         );
       }).not.toThrow();
     });
@@ -21,7 +21,7 @@ describe('ModalBody', () => {
     beforeEach(() => {
       modalBody = mount(
         <ModalBody />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -31,9 +31,9 @@ describe('ModalBody', () => {
     });
 
     it('should set class when the class is specified', () => {
-      let containerClass = 'mod-header-padding';
-      let classes = [containerClass];
-      let container = modalBody.find('div').first();
+      const containerClass = 'mod-header-padding';
+      const classes = [containerClass];
+      const container = modalBody.find('div').first();
       expect(container.hasClass(containerClass)).toBe(false);
 
       modalBody.setProps({ classes });

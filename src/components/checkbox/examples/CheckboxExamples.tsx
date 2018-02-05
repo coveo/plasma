@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Checkbox } from '../Checkbox';
 import { Label } from '../../input/Label';
+import { Checkbox } from '../Checkbox';
 
 export interface ICheckboxWithStateState {
   checked?: boolean;
@@ -10,14 +10,14 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
   constructor(props: any, state: ICheckboxWithStateState) {
     super(props, state);
     this.state = {
-      checked: false
+      checked: false,
     };
   }
 
   private handleClick() {
     if (!this.props.disabled) {
       this.setState({
-        checked: !this.state.checked
+        checked: !this.state.checked,
       });
     }
   }

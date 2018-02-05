@@ -1,10 +1,10 @@
-import { IDropdownOption } from '../../DropdownSearch';
-import { IDropdownSearchState } from '../../DropdownSearchReducers';
-import { multiSelectDropdownSearchReducer } from '../MultiSelectDropdownSearchReducer';
-import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../../DropdownSearchActions';
-import { IReduxAction } from '../../../../utils/ReduxUtils';
 import * as _ from 'underscore';
 import { keyCode } from '../../../../utils/InputUtils';
+import { IReduxAction } from '../../../../utils/ReduxUtils';
+import { IDropdownOption } from '../../DropdownSearch';
+import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../../DropdownSearchActions';
+import { IDropdownSearchState } from '../../DropdownSearchReducers';
+import { multiSelectDropdownSearchReducer } from '../MultiSelectDropdownSearchReducer';
 
 describe('DropdownSearch', () => {
 
@@ -27,7 +27,7 @@ describe('DropdownSearch', () => {
     });
 
     it('should add a new multiselect state on "ADD_MULTI_SELECT_DROPDOWN_SEARCH"', () => {
-      const oldState: IDropdownSearchState = { id: 'new-dropdown-search', };
+      const oldState: IDropdownSearchState = { id: 'new-dropdown-search' };
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.addMultiSelect,
         payload: _.extend(defaultPayload, {
@@ -37,7 +37,7 @@ describe('DropdownSearch', () => {
 
       const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
 
-      for (let option of options) {
+      for (const option of options) {
         expect(updatedState.options.indexOf(option)).toBeDefined();
       }
       expect(_.where(updatedState.options, { selected: true })).toEqual([]);
@@ -215,7 +215,7 @@ describe('DropdownSearch', () => {
           filterText,
           options: [
             { ...options[0], selected: true, hidden: true },
-            { ...options[1], selected: true, hidden: true }
+            { ...options[1], selected: true, hidden: true },
           ],
         });
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {

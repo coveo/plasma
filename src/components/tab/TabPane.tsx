@@ -16,7 +16,7 @@ export interface ITabPaneProps extends ITabPaneOwnProps, ITabPaneStateProps, ITa
 export class TabPane extends React.Component<ITabPaneProps, any> {
 
   render() {
-    let classes = ['tab-pane'];
+    const classes = ['tab-pane'];
     if (this.props.isActive) {
       classes.push('active');
     }

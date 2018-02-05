@@ -1,16 +1,16 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { ToggleForm, IToggleFormProps } from '../ToggleForm';
 import { Radio } from '../../radio/Radio';
 import { ChildForm } from '../ChildForm';
+import { IToggleFormProps, ToggleForm } from '../ToggleForm';
 
 describe('ToggleForm', () => {
   describe('<ToggleForm />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <ToggleForm />
+          <ToggleForm />,
         );
       }).not.toThrow();
     });
@@ -25,7 +25,7 @@ describe('ToggleForm', () => {
           <Radio id='id' />
           <ChildForm />
         </ToggleForm>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

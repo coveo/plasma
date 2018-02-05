@@ -1,7 +1,7 @@
-import { DatePickerDropdownConnected } from '../DatePickerDropdownConnected';
-import { SELECTION_BOXES, CALENDAR_SELECTION_RULES } from './DatePickerExamplesCommon';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { DatePickerDropdownConnected } from '../DatePickerDropdownConnected';
+import { CALENDAR_SELECTION_RULES, SELECTION_BOXES } from './DatePickerExamplesCommon';
 
 export class DatePickerDropdownConnectedExamples extends React.Component<any, any> {
 

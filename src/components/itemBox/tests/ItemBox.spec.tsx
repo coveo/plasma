@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
+import * as React from 'react';
 import * as _ from 'underscore';
-import { IItemBoxProps, ItemBox } from '../ItemBox';
-import { ITooltipProps, Tooltip } from '../../tooltip/Tooltip';
 import { Content, IContentProps } from '../../content/Content';
+import { ITooltipProps, Tooltip } from '../../tooltip/Tooltip';
+import { IItemBoxProps, ItemBox } from '../ItemBox';
 
 describe('ItemBox', () => {
 

@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
+import * as React from 'react';
 import { BreadcrumbLink, IBreadcrumbLinkProps } from '../BreadcrumbLink';
 
 describe('<BreadcrumbLink/>', () => {

@@ -1,14 +1,14 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Label, ILabelProps } from '../Label';
+import { ILabelProps, Label } from '../Label';
 
 describe('Label', () => {
   describe('<Label />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Label />
+          <Label />,
         );
       }).not.toThrow();
     });
@@ -20,7 +20,7 @@ describe('Label', () => {
     beforeEach(() => {
       label = mount(
         <Label />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

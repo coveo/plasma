@@ -1,23 +1,23 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { ITableActionPayload, addTable, removeTable, setIsInError, modifyState } from '../TableActions';
+import { turnOffLoading, turnOnLoading } from '../../loading/LoadingActions';
+import { addTable, ITableActionPayload, modifyState, removeTable, setIsInError } from '../TableActions';
+import { DEFAULT_TABLE_DATA, TableChildComponent } from '../TableConstants';
+import { sortFromHeaderCell } from '../TableHeaderCellActions';
 import {
-  tablesInitialState,
-  tablesReducer,
   ITablesState,
   ITableState,
+  tablesInitialState,
+  tablesReducer,
 } from '../TableReducers';
-import { DEFAULT_TABLE_DATA, TableChildComponent } from '../TableConstants';
-import { turnOnLoading, turnOffLoading } from '../../loading/LoadingActions';
 import { getTableChildComponentId } from '../TableUtils';
-import { sortFromHeaderCell } from '../TableHeaderCellActions';
 
 describe('TableReducers', () => {
   const tableId = 'super-table';
   const genericAction: IReduxAction<ITableActionPayload> = {
     type: 'DO_SOMETHING',
     payload: {
-      id: 'row1'
-    }
+      id: 'row1',
+    },
   };
 
   it('should return the default state if the action is not defined and the state is undefined', () => {

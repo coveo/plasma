@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ToastContainer } from '../ToastContainer';
 import { Toast, ToastType } from '../Toast';
+import { ToastContainer } from '../ToastContainer';
 import { ToastContentExample } from './ToastContentExample';
 
 export interface IToastExamplesState {

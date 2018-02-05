@@ -1,6 +1,6 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { TableRowWrapper } from '../TableRowWrapper';
-import { mount } from 'enzyme';
 
 describe('<TableRowWrapper />', () => {
   describe('render', () => {

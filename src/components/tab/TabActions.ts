@@ -8,29 +8,29 @@ export interface ITabActionPayload {
 export const TabAction = {
   selectTab: 'SELECT_TAB',
   addTab: 'ADD_TAB',
-  removeTab: 'REMOVE_TAB'
+  removeTab: 'REMOVE_TAB',
 };
 
 export const selectTab = (id: string, groupId?: string): IReduxAction<ITabActionPayload> => ({
   type: TabAction.selectTab,
   payload: {
     groupId,
-    id
-  }
+    id,
+  },
 });
 
 export const addTab = (id: string, groupId?: string): IReduxAction<ITabActionPayload> => ({
   type: TabAction.addTab,
   payload: {
     groupId,
-    id
-  }
+    id,
+  },
 });
 
 export const removeTab = (id: string, groupId?: string): IReduxAction<ITabActionPayload> => ({
   type: TabAction.removeTab,
   payload: {
     groupId,
-    id
-  }
+    id,
+  },
 });

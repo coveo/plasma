@@ -1,21 +1,21 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Provider } from 'react-redux';
-import { IOptionsCycleProps, OptionsCycle } from '../OptionsCycle';
-import { OptionsCycleConnected } from '../OptionsCycleConnected';
-import { changeOptionsCycle } from '../OptionsCycleActions';
-import * as _ from 'underscore';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
+import { Store } from 'react-redux';
+import { Provider } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IOptionsCycleProps, OptionsCycle } from '../OptionsCycle';
+import { changeOptionsCycle } from '../OptionsCycleActions';
+import { OptionsCycleConnected } from '../OptionsCycleConnected';
 /* tslint:enable:no-unused-variable */
 
 describe('Options cycle', () => {
   const optionsCycleBasicProps: IOptionsCycleProps = {
     id: 'options-cycle',
-    options: ['option 1', 'option 2', 'option 3', 'option 4']
+    options: ['option 1', 'option 2', 'option 3', 'option 4'],
   };
 
   describe('<OptionsCycleConnected />', () => {
@@ -30,7 +30,7 @@ describe('Options cycle', () => {
         <Provider store={store}>
           <OptionsCycleConnected {...optionsCycleBasicProps} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       optionsCycle = wrapper.find(OptionsCycle).first();
     });
@@ -42,33 +42,33 @@ describe('Options cycle', () => {
     });
 
     it('should get an id as a prop', () => {
-      let idProp = optionsCycle.props().id;
+      const idProp = optionsCycle.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(optionsCycleBasicProps.id);
     });
 
     it('should get the current option as a prop', () => {
-      let currentOptionProp = optionsCycle.props().currentOption;
+      const currentOptionProp = optionsCycle.props().currentOption;
 
       expect(currentOptionProp).toBeDefined();
       expect(currentOptionProp).toBe(0);
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRenderProp = optionsCycle.props().onRender;
+      const onRenderProp = optionsCycle.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {
-      let onDestroyProp = optionsCycle.props().onDestroy;
+      const onDestroyProp = optionsCycle.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should get what to do on change as a prop', () => {
-      let onChangeProp = optionsCycle.props().onChange;
+      const onChangeProp = optionsCycle.props().onChange;
 
       expect(onChangeProp).toBeDefined();
     });
@@ -81,7 +81,7 @@ describe('Options cycle', () => {
     });
 
     it('should return  the currentOption from the state when the options cycle exists in the state', () => {
-      let expectedCurrentOption = 5;
+      const expectedCurrentOption = 5;
 
       store.dispatch(changeOptionsCycle(optionsCycleBasicProps.id, expectedCurrentOption));
 
@@ -100,8 +100,8 @@ describe('Options cycle', () => {
     });
 
     it('should set the currentOption to the startAt prop', () => {
-      let expectedCurrentOption: number = 3;
-      let newProps = _.extend({}, optionsCycleBasicProps, { startAt: expectedCurrentOption });
+      const expectedCurrentOption: number = 3;
+      const newProps = _.extend({}, optionsCycleBasicProps, { startAt: expectedCurrentOption });
       wrapper.unmount();
       store.dispatch(clearState());
 
@@ -111,7 +111,7 @@ describe('Options cycle', () => {
         <Provider store={store}>
           <OptionsCycleConnected {...newProps} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       optionsCycle = wrapper.find(OptionsCycle).first();
 

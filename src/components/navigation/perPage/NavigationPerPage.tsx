@@ -1,6 +1,6 @@
-import { NavigationPerPageSelect } from './NavigationPerPageSelect';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { NavigationPerPageSelect } from './NavigationPerPageSelect';
 
 export interface INavigationPerPageOwnProps extends React.ClassAttributes<NavigationPerPage> {
   id?: string;
@@ -52,17 +52,17 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
   render() {
     this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
 
-    let currentPerPage: number = this.props.currentPerPage || this.perPageNumbers[0];
-    let topNumber: number = this.props.totalEntries;
-    let label: string = this.props.label || PER_PAGE_LABEL;
+    const currentPerPage: number = this.props.currentPerPage || this.perPageNumbers[0];
+    const topNumber: number = this.props.totalEntries;
+    const label: string = this.props.label || PER_PAGE_LABEL;
 
-    let perPageSelects: JSX.Element[] = _.map(this.perPageNumbers, (number: number, index: number): JSX.Element => {
-      let shouldShowPerPageSelect: boolean =
+    const perPageSelects: JSX.Element[] = _.map(this.perPageNumbers, (number: number, index: number): JSX.Element => {
+      const shouldShowPerPageSelect: boolean =
         topNumber > (this.perPageNumbers[index - 1] || 0);
 
       if (shouldShowPerPageSelect) {
-        let selectId: string = 'perpage-' + (this.props.id || '') + number;
-        let isSelected: boolean = currentPerPage === number;
+        const selectId: string = 'perpage-' + (this.props.id || '') + number;
+        const isSelected: boolean = currentPerPage === number;
         return (
           <NavigationPerPageSelect
             onPerPageClick={(newPerPageNb: number) => this.handleClick(newPerPageNb)}

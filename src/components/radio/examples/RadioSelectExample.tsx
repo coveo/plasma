@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Label } from '../../input/Label';
 import { Radio } from '../Radio';
 import { IRadioSelectProps, RadioSelect } from '../RadioSelect';
-import { Label } from '../../input/Label';
 
 export interface IRadioSelectExampleProps extends IRadioSelectProps {
   defaultValue?: string;
@@ -31,7 +31,7 @@ export class RadioSelectExample extends React.Component<IRadioSelectExampleProps
         <label className='form-control-label'>A Radio Select</label>
         <RadioSelect
           value={this.state.value}
-          onChange={(value => this.handleChange(value))}
+          onChange={((value) => this.handleChange(value))}
           disabled={this.props.disabled}>
           <Radio id='Option1' name='enabledOptions' value='blue'>
             <Label>Blue</Label>

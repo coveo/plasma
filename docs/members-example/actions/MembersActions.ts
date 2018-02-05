@@ -4,7 +4,7 @@ import { IMemberEditionActionsPayloads } from './MemberEditionActions';
 
 export const MembersActionsType = {
   SetMembers: 'SET_MEMBERS',
-  AddMember: 'ADD_MEMBER'
+  AddMember: 'ADD_MEMBER',
 };
 
 export interface ISetMembersPayload {
@@ -17,13 +17,13 @@ export const setMembers = (members: IMemberAttributes[]): IReduxAction<ISetMembe
   return {
     type: MembersActionsType.SetMembers,
     payload: {
-      members
-    }
+      members,
+    },
   };
 };
 
 export const addMember = (): IReduxAction<any> => {
   return {
-    type: MembersActionsType.AddMember
+    type: MembersActionsType.AddMember,
   };
 };

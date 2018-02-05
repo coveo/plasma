@@ -1,12 +1,12 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ModalComposite, IModalCompositeProps } from '../ModalComposite';
 import { Modal } from '../Modal';
-import { ModalHeader } from '../ModalHeader';
-import { ModalBody } from '../ModalBody';
-import { ModalFooter } from '../ModalFooter';
 import { ModalBackdrop } from '../ModalBackdrop';
+import { ModalBody } from '../ModalBody';
+import { IModalCompositeProps, ModalComposite } from '../ModalComposite';
+import { ModalFooter } from '../ModalFooter';
+import { ModalHeader } from '../ModalHeader';
 
 describe('ModalComposite', () => {
   const basicProps: IModalCompositeProps = {
@@ -25,7 +25,7 @@ describe('ModalComposite', () => {
     beforeEach(() => {
       modalComposite = mount(
         <ModalComposite {...basicProps} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

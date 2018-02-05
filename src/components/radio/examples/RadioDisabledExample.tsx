@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Label } from '../../input/Label';
 import { Radio } from '../Radio';
 import { RadioSelect } from '../RadioSelect';
-import { Label } from '../../input/Label';
 
 export class RadioDisabledExample extends React.Component<any, any> {
   render() {

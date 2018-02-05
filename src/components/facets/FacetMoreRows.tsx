@@ -1,10 +1,10 @@
-import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { FilterBox } from '../filterBox/FilterBox';
-import * as _ from 'underscore';
-import * as s from 'underscore.string';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as _ from 'underscore';
+import * as s from 'underscore.string';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { FilterBox } from '../filterBox/FilterBox';
+import { FilterBoxConnected } from '../filterBox/FilterBoxConnected';
 
 export interface IFacetMoreRowsOwnProps extends React.ClassAttributes<FacetMoreRows> {
   facet: string;
@@ -66,18 +66,18 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
   }
 
   render() {
-    let moreSearchClasses: string = 'facet-more-search' + (!this.props.isOpened ? ' hidden' : '');
-    let rowsFiltered: JSX.Element[] = this.props.filterText && this.props.filterText.length
+    const moreSearchClasses: string = 'facet-more-search' + (!this.props.isOpened ? ' hidden' : '');
+    const rowsFiltered: JSX.Element[] = this.props.filterText && this.props.filterText.length
       ? _.map(this.props.facetRows, (facetRow: JSX.Element) => {
-        let facetText = facetRow.props.facetRow.formattedName;
+        const facetText = facetRow.props.facetRow.formattedName;
         if (s.contains(facetText.toLowerCase(), this.props.filterText.toLowerCase())) {
           return facetRow;
         }
       }).filter(Boolean)
       : this.props.facetRows;
-    let resultsClass: string = 'facet-search-results' + (!rowsFiltered.length ? ' hidden' : '');
-    let filterBoxId: string = 'filter-' + this.props.facet;
-    let filterBox: JSX.Element = this.props.withReduxState ?
+    const resultsClass: string = 'facet-search-results' + (!rowsFiltered.length ? ' hidden' : '');
+    const filterBoxId: string = 'filter-' + this.props.facet;
+    const filterBox: JSX.Element = this.props.withReduxState ?
       <FilterBoxConnected id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} /> :
       <FilterBox id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} />;
 

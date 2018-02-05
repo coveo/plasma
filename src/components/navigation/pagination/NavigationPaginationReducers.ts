@@ -1,9 +1,9 @@
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../../ReactVapor';
-import { PaginationActions } from './NavigationPaginationActions';
 import * as _ from 'underscore';
 import { contains } from 'underscore.string';
+import { IReduxActionsPayload } from '../../../ReactVapor';
+import { IReduxAction } from '../../../utils/ReduxUtils';
 import { TableActions } from '../../tables/TableActions';
+import { PaginationActions } from './NavigationPaginationActions';
 
 export interface IPaginationState {
   id: string;
@@ -12,7 +12,7 @@ export interface IPaginationState {
 
 export const paginationInitialState: IPaginationState = {
   id: undefined,
-  pageNb: 0
+  pageNb: 0,
 };
 
 export const paginationCompositeInitialState: IPaginationState[] = [];
@@ -22,7 +22,7 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
     case PaginationActions.add:
       return {
         id: action.payload.id,
-        pageNb: state.pageNb
+        pageNb: state.pageNb,
       };
     case PaginationActions.changePage:
     case PaginationActions.reset:
@@ -31,7 +31,7 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
       }
       return {
         id: state.id,
-        pageNb: action.payload.pageNb
+        pageNb: action.payload.pageNb,
       };
     case TableActions.modifyState:
       if (contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
@@ -42,13 +42,12 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
   }
 };
 
-
 export const paginationCompositeReducer = (state: IPaginationState[] = paginationCompositeInitialState, action: IReduxAction<IReduxActionsPayload>): IPaginationState[] => {
   switch (action.type) {
     case PaginationActions.add:
       return [
         ...state,
-        paginationReducer(undefined, action)
+        paginationReducer(undefined, action),
       ];
     case PaginationActions.remove:
       return _.reject(state, (pagination: IPaginationState) => {

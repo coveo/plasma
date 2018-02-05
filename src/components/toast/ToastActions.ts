@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import { IReduxAction } from '../../utils/ReduxUtils';
 import { ComponentContent } from '../../utils/ComponentUtils';
+import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface IToastContainerActionPayload {
   id: string;
@@ -41,20 +41,20 @@ export const addToast = (containerId: string, title: string, optionals: IToastAd
     dismissible: optionals.dismissible,
     animate: optionals.animate,
     content: optionals.content,
-  }
+  },
 });
 
 export const removeToast = (containerId: string, id: string): IReduxAction<IToastActionPayload> => ({
   type: ToastAction.removeToast,
-  payload: { containerId, id }
+  payload: { containerId, id },
 });
 
 export const addToastContainer = (id: string): IReduxAction<IToastContainerActionPayload> => ({
   type: ToastAction.addToastContainer,
-  payload: { id }
+  payload: { id },
 });
 
 export const removeToastContainer = (id: string): IReduxAction<IToastContainerActionPayload> => ({
   type: ToastAction.removeToastContainer,
-  payload: { id }
+  payload: { id },
 });

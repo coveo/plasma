@@ -9,7 +9,7 @@ describe('TabNavigation', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <TabNavigation />
+          <TabNavigation />,
         );
       }).not.toThrow();
     });

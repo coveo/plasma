@@ -1,17 +1,17 @@
-import { getTableChildComponentId } from './TableUtils';
-import { TableActions } from './TableActions';
+import * as _ from 'underscore';
+import { contains } from 'underscore.string';
 import { IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction } from '../../utils/ReduxUtils';
-import * as _ from 'underscore';
+import { LoadingActions } from '../loading/LoadingActions';
+import { ITablePredicate } from './Table';
+import { TableActions } from './TableActions';
 import {
   DEFAULT_TABLE_DATA,
-  TableSortingOrder,
   TableChildComponent,
+  TableSortingOrder,
 } from './TableConstants';
-import { LoadingActions } from '../loading/LoadingActions';
 import { TableHeaderCellActions } from './TableHeaderCellActions';
-import { ITablePredicate } from './Table';
-import { contains } from 'underscore.string';
+import { getTableChildComponentId } from './TableUtils';
 
 export interface ITableData {
   byId: {

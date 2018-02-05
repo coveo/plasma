@@ -1,16 +1,16 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Provider } from 'react-redux';
-import { IDatesSelectionProps, DatesSelection } from '../DatesSelection';
-import { DatesSelectionConnected } from '../DatesSelectionConnected';
-import { changeDatePickerLowerLimit, changeDatePickerUpperLimit, selectDate, DateLimits } from '../DatePickerActions';
-import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
+import { changeDatePickerLowerLimit, changeDatePickerUpperLimit, DateLimits, selectDate } from '../DatePickerActions';
+import { DatesSelection, IDatesSelectionProps } from '../DatesSelection';
+import { DatesSelectionConnected } from '../DatesSelectionConnected';
 
 describe('Date picker', () => {
   describe('<DatesSelectionConnected />', () => {
@@ -26,7 +26,7 @@ describe('Date picker', () => {
         <Provider store={store}>
           <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       datesSelection = wrapper.find(DatesSelection).first();
     };
@@ -47,57 +47,57 @@ describe('Date picker', () => {
     });
 
     it('should get an id as a prop', () => {
-      let idProp = datesSelection.props().id;
+      const idProp = datesSelection.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(DATES_SELECTION_ID);
     });
 
     it('should get the lower limit as a prop', () => {
-      let lowerLimitProp = datesSelection.props().lowerLimit;
+      const lowerLimitProp = datesSelection.props().lowerLimit;
 
       expect(lowerLimitProp).toBeDefined();
     });
 
     it('should get the upper limit as a prop', () => {
-      let upperLimitProp = datesSelection.props().upperLimit;
+      const upperLimitProp = datesSelection.props().upperLimit;
 
       expect(upperLimitProp).toBeDefined();
     });
 
     it('should get the quick option as a prop', () => {
-      let quickOptionProp = datesSelection.props().quickOption;
+      const quickOptionProp = datesSelection.props().quickOption;
 
       expect(quickOptionProp).toBeDefined();
       expect(quickOptionProp).toBe('');
     });
 
     it('should get if one of the pricker is being selected as a prop', () => {
-      let isSelectingProp = datesSelection.props().isSelecting;
+      const isSelectingProp = datesSelection.props().isSelecting;
 
       expect(isSelectingProp).toBeDefined();
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRenderProp = datesSelection.props().onRender;
+      const onRenderProp = datesSelection.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {
-      let onDestroyProp = datesSelection.props().onDestroy;
+      const onDestroyProp = datesSelection.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should get what to do on blur as a prop', () => {
-      let onBlurProp = datesSelection.props().onBlur;
+      const onBlurProp = datesSelection.props().onBlur;
 
       expect(onBlurProp).toBeDefined();
     });
 
     it('should get what to do on change as a prop', () => {
-      let onClickProp = datesSelection.props().onClick;
+      const onClickProp = datesSelection.props().onClick;
 
       expect(onClickProp).toBeDefined();
     });
@@ -124,7 +124,7 @@ describe('Date picker', () => {
     });
 
     it('should return the lower limit from the state when the date picker exists in the state', () => {
-      let expectedValue: Date = new Date(new Date().setHours(11, 1, 11, 1));
+      const expectedValue: Date = new Date(new Date().setHours(11, 1, 11, 1));
 
       store.dispatch(changeDatePickerLowerLimit(DATES_SELECTION_ID, expectedValue));
 
@@ -132,7 +132,7 @@ describe('Date picker', () => {
     });
 
     it('should return the upper limit from the state when the date picker exists in the state', () => {
-      let expectedValue: Date = new Date(new Date().setHours(11, 1, 11, 1));
+      const expectedValue: Date = new Date(new Date().setHours(11, 1, 11, 1));
 
       store.dispatch(changeDatePickerUpperLimit(DATES_SELECTION_ID, expectedValue));
 
@@ -140,7 +140,7 @@ describe('Date picker', () => {
     });
 
     it('should return the picker selected when the date picker exists in the state', () => {
-      let expectedValue: string = 'one limit';
+      const expectedValue: string = 'one limit';
 
       store.dispatch(selectDate(DATES_SELECTION_ID, expectedValue));
 
@@ -148,7 +148,7 @@ describe('Date picker', () => {
     });
 
     it('should return the selected value if the option picker exists in the state', () => {
-      let expectedValue: string = 'this option';
+      const expectedValue: string = 'this option';
 
       store.dispatch(addOptionPicker(DATES_SELECTION_ID));
       store.dispatch(changeOptionPicker(DATES_SELECTION_ID, 'this label', expectedValue));
@@ -216,8 +216,8 @@ describe('Date picker', () => {
 
     it('should deselect the quick option when calling onBlur prop if the call does not come from the option picker',
       () => {
-        let expectedValue: string = 'anything';
-        let expectedLabel: string = 'something';
+        const expectedValue: string = 'anything';
+        const expectedLabel: string = 'something';
 
         store.dispatch(addOptionPicker(DATES_SELECTION_ID));
         store.dispatch(changeOptionPicker(DATES_SELECTION_ID, expectedLabel, expectedValue));

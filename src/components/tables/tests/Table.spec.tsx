@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { tablePropsMock, tablePossibleProps, tablePropsMockWithData } from './TableTestCommon';
-import { Table, ITableProps } from '../Table';
-import { ITableData } from '../TableReducers';
 import { mount, ReactWrapper } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
+import * as React from 'react';
+import { Provider, Store } from 'react-redux';
 import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
-import { DEFAULT_TABLE_DATA, TableSortingOrder } from '../TableConstants';
+import { ITableProps, Table } from '../Table';
 import { TableChildBody } from '../table-children/TableChildBody';
+import { DEFAULT_TABLE_DATA, TableSortingOrder } from '../TableConstants';
+import { ITableData } from '../TableReducers';
+import { tablePossibleProps, tablePropsMock, tablePropsMockWithData } from './TableTestCommon';
 
 describe('<Table />', () => {
   let store: Store<IReactVaporState>;
@@ -235,7 +235,7 @@ describe('<Table />', () => {
           const nextTableCompositeState = {
             ...tableProps.tableCompositeState,
             predicates: {
-              anyWouldDo: 'anyWouldDo'
+              anyWouldDo: 'anyWouldDo',
             },
           };
           expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
@@ -246,14 +246,14 @@ describe('<Table />', () => {
           const tableCompositeState = {
             ...tableProps.tableCompositeState,
             predicates: {
-              anyWouldDo: 'anyWouldDo'
+              anyWouldDo: 'anyWouldDo',
             },
           };
 
           const nextTableCompositeState = {
             ...tableProps.tableCompositeState,
             predicates: {
-              anyWouldDo: 'predicate value changed'
+              anyWouldDo: 'predicate value changed',
             },
           };
 

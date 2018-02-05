@@ -1,22 +1,22 @@
+import * as _ from 'underscore';
+import { addActionsToActionBar } from '../../actions/ActionBarActions';
+import { changeLastUpdated } from '../../lastUpdated/LastUpdatedActions';
+import { turnOffLoading, turnOnLoading } from '../../loading/LoadingActions';
+import { TableActions } from '../TableActions';
+import { TableChildComponent, TableSortingOrder } from '../TableConstants';
 import {
-  applyPredicatesOnDisplayedIds,
   applyFilterOnDisplayedIds,
-  applySortOnDisplayedIds,
   applyPaginationOnDisplayedIds,
-  dispatchPreTableStateModification,
-  dispatchPostTableStateModification,
+  applyPredicatesOnDisplayedIds,
+  applySortOnDisplayedIds,
   defaultTableStateModifier,
   defaultTableStateModifierThunk,
+  dispatchPostTableStateModification,
+  dispatchPreTableStateModification,
 } from '../TableDataModifier';
-import { turnOnLoading, turnOffLoading } from '../../loading/LoadingActions';
-import { addActionsToActionBar } from '../../actions/ActionBarActions';
 import { unselectAllRows } from '../TableRowActions';
-import { tableOwnPropsMock, tablePropsMockWithData, predictableData } from './TableTestCommon';
 import { getTableChildComponentId, getTableLoadingIds } from '../TableUtils';
-import { TableChildComponent, TableSortingOrder } from '../TableConstants';
-import { changeLastUpdated } from '../../lastUpdated/LastUpdatedActions';
-import * as _ from 'underscore';
-import { TableActions } from '../TableActions';
+import { predictableData, tableOwnPropsMock, tablePropsMockWithData } from './TableTestCommon';
 
 describe('TableDataModifier', () => {
   describe('dispatchPreTableStateModification', () => {
@@ -31,7 +31,7 @@ describe('TableDataModifier', () => {
 
       dispatchPreTableStateModification(tableOwnPropsMock, dispatchSpy);
 
-      actions.forEach(action => {
+      actions.forEach((action) => {
         expect(dispatchSpy).toHaveBeenCalledWith(action);
       });
       expect(dispatchSpy.calls.count()).toBe(actions.length);
@@ -49,7 +49,7 @@ describe('TableDataModifier', () => {
 
       dispatchPostTableStateModification(tableOwnPropsMock, dispatchSpy);
 
-      actions.forEach(action => {
+      actions.forEach((action) => {
         expect(dispatchSpy).toHaveBeenCalledWith(action);
       });
       expect(dispatchSpy.calls.count()).toBe(actions.length);
@@ -157,7 +157,7 @@ describe('TableDataModifier', () => {
     });
 
     it('should return the same ids but sorted ascending by the specified attribute if sorted ASCENDING', () => {
-      const expectedOrderOfIds = _.sortBy(_.values(data.byId), data => data.userName.toLowerCase()).map(data => data.id);
+      const expectedOrderOfIds = _.sortBy(_.values(data.byId), (data) => data.userName.toLowerCase()).map((data) => data.id);
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,
@@ -167,9 +167,9 @@ describe('TableDataModifier', () => {
     });
 
     it('should return the same ids but sorted descending by the specified attribute if sorted DESCENDING', () => {
-      const expectedOrderOfIds = _.sortBy(_.values(data.byId), data => data.userName.toLowerCase())
+      const expectedOrderOfIds = _.sortBy(_.values(data.byId), (data) => data.userName.toLowerCase())
         .reverse()
-        .map(data => data.id);
+        .map((data) => data.id);
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,

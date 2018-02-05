@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Content } from '../Content';
-import { Tooltip } from '../../tooltip/Tooltip';
-import { Svg } from '../../svg/Svg';
-import { Loading } from '../../loading/Loading';
 import { ItemBox } from '../../itemBox/ItemBox';
+import { Loading } from '../../loading/Loading';
+import { Svg } from '../../svg/Svg';
+import { Tooltip } from '../../tooltip/Tooltip';
+import { Content } from '../Content';
 
 export class ContentExamples extends React.Component<any, any> {
   render() {

@@ -5,5 +5,5 @@ export interface IMemberAttributes {
 
 export const defaultMemberAttributes: IMemberAttributes = {
   email: '',
-  sendEmail: false
+  sendEmail: false,
 };

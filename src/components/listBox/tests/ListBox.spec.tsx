@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
+import * as React from 'react';
 import * as _ from 'underscore';
-import { IListBoxProps, ListBox } from '../ListBox';
 import { ItemBox } from '../../itemBox/ItemBox';
+import { IListBoxProps, ListBox } from '../ListBox';
 
 describe('ListBox', () => {
 

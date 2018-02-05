@@ -2,69 +2,69 @@ import { IReduxAction } from '../../../utils/ReduxUtils';
 import { ITableRowActionPayload, TableRowActions, unselectAllRows } from '../TableRowActions';
 import {
   ITableRowState,
-  tableRowsReducer,
-  tableRowsInitialState,
   tableRowInitialState,
-  tableRowReducer
+  tableRowReducer,
+  tableRowsInitialState,
+  tableRowsReducer,
 } from '../TableRowReducers';
 
 describe('Tables', () => {
 
   describe('TableRowReducers', () => {
-    let genericAction: IReduxAction<ITableRowActionPayload> = {
+    const genericAction: IReduxAction<ITableRowActionPayload> = {
       type: 'DO_SOMETHING',
       payload: {
-        id: 'row1'
-      }
+        id: 'row1',
+      },
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: ITableRowState[] = undefined;
-      let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, genericAction);
+      let oldState: ITableRowState[];
+      const collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, genericAction);
 
       expect(collapsibleRowsState).toBe(tableRowsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one row', () => {
-      let oldState: ITableRowState = undefined;
-      let collapsibleRowState: ITableRowState = tableRowReducer(oldState, genericAction);
+      let oldState: ITableRowState;
+      const collapsibleRowState: ITableRowState = tableRowReducer(oldState, genericAction);
 
       expect(collapsibleRowState).toBe(tableRowInitialState);
     });
 
     it('should return the old state when the action is not defined', () => {
-      let oldState: ITableRowState[] = [tableRowInitialState];
-      let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, genericAction);
+      const oldState: ITableRowState[] = [tableRowInitialState];
+      const collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, genericAction);
 
       expect(collapsibleRowsState).toBe(oldState);
     });
 
     it('should return the old state when the action is not defined for one row', () => {
-      let oldState: ITableRowState = tableRowInitialState;
-      let collapsibleRowState: ITableRowState = tableRowReducer(oldState, genericAction);
+      const oldState: ITableRowState = tableRowInitialState;
+      const collapsibleRowState: ITableRowState = tableRowReducer(oldState, genericAction);
 
       expect(collapsibleRowState).toBe(oldState);
     });
 
     it('should return the old state with one more CollapsibleRowState when the action is "ADD_ROW"', () => {
       let oldState: ITableRowState[] = tableRowsInitialState;
-      let action: IReduxAction<ITableRowActionPayload> = {
+      const action: IReduxAction<ITableRowActionPayload> = {
         type: TableRowActions.add,
         payload: {
-          id: 'row1'
-        }
+          id: 'row1',
+        },
       };
       let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
       expect(collapsibleRowsState.length).toBe(oldState.length + 1);
-      expect(collapsibleRowsState.filter(row => row.id === action.payload.id).length).toBe(1);
+      expect(collapsibleRowsState.filter((row) => row.id === action.payload.id).length).toBe(1);
 
       oldState = collapsibleRowsState;
       action.payload.id = 'row2';
       collapsibleRowsState = tableRowsReducer(oldState, action);
 
       expect(collapsibleRowsState.length).toBe(oldState.length + 1);
-      expect(collapsibleRowsState.filter(row => row.id === action.payload.id).length).toBe(1);
+      expect(collapsibleRowsState.filter((row) => row.id === action.payload.id).length).toBe(1);
     });
 
     it('should return the old state without the CollapsibleRowState with the timer id when the action is "REMOVE_ROW"', () => {
@@ -81,25 +81,25 @@ describe('Tables', () => {
           id: 'row3',
           opened: false,
           selected: false,
-        }
+        },
       ];
-      let action: IReduxAction<ITableRowActionPayload> = {
+      const action: IReduxAction<ITableRowActionPayload> = {
         type: TableRowActions.remove,
         payload: {
-          id: 'row1'
-        }
+          id: 'row1',
+        },
       };
       let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
       expect(collapsibleRowsState.length).toBe(oldState.length - 1);
-      expect(collapsibleRowsState.filter(row => row.id === action.payload.id).length).toBe(0);
+      expect(collapsibleRowsState.filter((row) => row.id === action.payload.id).length).toBe(0);
 
       oldState = collapsibleRowsState;
       action.payload.id = 'row2';
       collapsibleRowsState = tableRowsReducer(oldState, action);
 
       expect(collapsibleRowsState.length).toBe(oldState.length - 1);
-      expect(collapsibleRowsState.filter(row => row.id === action.payload.id).length).toBe(0);
+      expect(collapsibleRowsState.filter((row) => row.id === action.payload.id).length).toBe(0);
     });
 
     describe('collapsible behaviors', () => {
@@ -121,18 +121,18 @@ describe('Tables', () => {
           payload: {
             id: 'row1',
             isCollapsible: true,
-          }
+          },
         };
         let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
         expect(collapsibleRowsState.length).toBe(oldState.length);
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(!openValue);
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(openValue);
+        expect(collapsibleRowsState.filter((row) => row.id === action.payload.id)[0].opened).toBe(!openValue);
+        expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(openValue);
 
         collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
 
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(openValue);
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(openValue);
+        expect(collapsibleRowsState.filter((row) => row.id === action.payload.id)[0].opened).toBe(openValue);
+        expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(openValue);
       });
 
       it('should leave the open property to a falsy value if the action is "SELECT_ROW" and isCollapsible is undefined', () => {
@@ -140,18 +140,18 @@ describe('Tables', () => {
           type: TableRowActions.select,
           payload: {
             id: 'row1',
-          }
+          },
         };
         let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
         expect(collapsibleRowsState.length).toBe(oldState.length);
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(false);
 
         collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
 
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(false);
       });
 
       it('should leave the open property to a falsy value if the action is "SELECT_ROW" and isCollapsible is false', () => {
@@ -160,18 +160,18 @@ describe('Tables', () => {
           payload: {
             id: 'row1',
             isCollapsible: false,
-          }
+          },
         };
         let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, action);
 
         expect(collapsibleRowsState.length).toBe(oldState.length);
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(false);
 
         collapsibleRowsState = tableRowsReducer(collapsibleRowsState, action);
 
-        expect(collapsibleRowsState.filter(row => row.id === action.payload.id)[0].opened).toBe(false);
-        expect(collapsibleRowsState.filter(row => row.id !== action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id === action.payload.id)[0].opened).toBe(false);
+        expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(false);
       });
 
       describe('selected behavior', () => {
@@ -196,8 +196,8 @@ describe('Tables', () => {
           const action = actionMaker('row2');
           const rowsState = tableRowsReducer(oldState, action);
 
-          expect(rowsState.filter(row => row.id === action.payload.id)[0].selected).toBe(true);
-          expect(rowsState.filter(row => row.id !== action.payload.id).every(row => !row.selected))
+          expect(rowsState.filter((row) => row.id === action.payload.id)[0].selected).toBe(true);
+          expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected))
             .toBe(true);
         });
 
@@ -205,8 +205,8 @@ describe('Tables', () => {
           const action = actionMaker('row2');
           const rowsState = tableRowsReducer(tableRowsReducer(oldState, action), action);
 
-          expect(rowsState.filter(row => row.id === action.payload.id)[0].selected).toBe(true);
-          expect(rowsState.filter(row => row.id !== action.payload.id).every(row => !row.selected))
+          expect(rowsState.filter((row) => row.id === action.payload.id)[0].selected).toBe(true);
+          expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected))
             .toBe(true);
         });
 
@@ -215,8 +215,8 @@ describe('Tables', () => {
           const action2 = actionMaker('row2');
           const rowsState = tableRowsReducer(tableRowsReducer(oldState, action1), action2);
 
-          expect(rowsState.filter(row => row.id === action2.payload.id)[0].selected).toBe(true);
-          expect(rowsState.filter(row => row.id !== action2.payload.id).every(row => !row.selected))
+          expect(rowsState.filter((row) => row.id === action2.payload.id)[0].selected).toBe(true);
+          expect(rowsState.filter((row) => row.id !== action2.payload.id).every((row) => !row.selected))
             .toBe(true);
         });
 
@@ -224,18 +224,18 @@ describe('Tables', () => {
           const tableId = 'tableId';
           const action = unselectAllRows(tableId);
 
-          const currentStateWithTableId = oldState.map(rowState => ({ ...rowState, tableId, selected: true }));
+          const currentStateWithTableId = oldState.map((rowState) => ({ ...rowState, tableId, selected: true }));
 
-          expect(tableRowsReducer(currentStateWithTableId, action).every(row => !row.selected)).toBe(true);
+          expect(tableRowsReducer(currentStateWithTableId, action).every((row) => !row.selected)).toBe(true);
         });
 
         it('should leave all rows not having a table id identical to the one received in the payload', () => {
           const tableId = 'tableId';
           const action = unselectAllRows(tableId);
 
-          const currentStateWithTableId = oldState.map(rowState => ({ ...rowState, tableId: `different${tableId}`, selected: true }));
+          const currentStateWithTableId = oldState.map((rowState) => ({ ...rowState, tableId: `different${tableId}`, selected: true }));
 
-          expect(tableRowsReducer(currentStateWithTableId, action).every(row => row.selected)).toBe(true);
+          expect(tableRowsReducer(currentStateWithTableId, action).every((row) => row.selected)).toBe(true);
         });
       });
     });

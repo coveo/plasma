@@ -1,13 +1,13 @@
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { DatePickerBox, IDatesSelectionBox, IDatePickerBoxProps, IDatePickerBoxChildrenProps } from './DatePickerBox';
-import { IDatePickerState } from './DatePickerReducers';
-import { DateUtils } from '../../utils/DateUtils';
+import * as moment from 'moment';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { DateUtils } from '../../utils/DateUtils';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { Button } from '../button/Button';
 import { DEFAULT_YEARS, ICalendarSelectionRule } from '../calendar/Calendar';
 import { ModalFooter } from '../modal/ModalFooter';
-import { Button } from '../button/Button';
-import * as moment from 'moment';
+import { DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox } from './DatePickerBox';
+import { IDatePickerState } from './DatePickerReducers';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
   label?: string;
@@ -82,7 +82,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
   }
 
   private handleDocumentClick = (e: MouseEvent) => {
-    let dropdown: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
+    const dropdown: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
     if (!dropdown.contains(e.target as Node) && this.props.isOpened) {
       this.props.onDocumentClick();
       this.handleCancel();
@@ -121,11 +121,11 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private handleCancel() {
     if (this.props.onCancel) {
-      let currentMonth: number = this.props.datePicker
+      const currentMonth: number = this.props.datePicker
         ? this.props.datePicker.appliedLowerLimit.getMonth()
         : DateUtils.currentMonth;
-      let years: string[] = this.props.years || DEFAULT_YEARS;
-      let currentYear: number = this.props.datePicker
+      const years: string[] = this.props.years || DEFAULT_YEARS;
+      const currentYear: number = this.props.datePicker
         ? this.props.datePicker.appliedLowerLimit.getFullYear()
         : DateUtils.currentYear;
       this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()), this.props.isOpened);
@@ -151,7 +151,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   render() {
     const hasExceededRangeLimit = this.hasExceededRangeLimit();
-    let datePickerBoxProps: IDatePickerBoxProps = {
+    const datePickerBoxProps: IDatePickerBoxProps = {
       setToNowTooltip: this.props.setToNowTooltip,
       datesSelectionBoxes: this.props.datesSelectionBoxes,
       months: this.props.months,
@@ -179,7 +179,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
             primary={true}
             onClick={() => this.handleCancel()} />
         </ModalFooter>
-      )
+      ),
     };
 
     let datePickerBox: JSX.Element = null;
@@ -205,7 +205,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       }
     }
 
-    let menuClasses: string[] = ['dropdown-menu', 'normal-height'];
+    const menuClasses: string[] = ['dropdown-menu', 'normal-height'];
     if (this.props.onRight) {
       menuClasses.push('on-right');
     }

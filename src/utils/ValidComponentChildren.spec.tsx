@@ -1,6 +1,6 @@
-import { ValidComponentChildren } from './ValidComponentChildren';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ValidComponentChildren } from './ValidComponentChildren';
 
 describe('ValidComponentChildren', () => {
   it('should call function for valid component', () => {

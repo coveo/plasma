@@ -1,35 +1,35 @@
-import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import * as _ from 'underscore';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { IFacetState } from './FacetReducers';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { filterThrough } from '../filterBox/FilterBoxActions';
 import { IFilterState } from '../filterBox/FilterBoxReducers';
+import { closeMoreFacetRows } from './FacetActions';
 import {
-  IFacetMoreRowsOwnProps,
   FacetMoreRows,
+  IFacetMoreRowsDispatchProps,
+  IFacetMoreRowsOwnProps,
   IFacetMoreRowsProps,
   IFacetMoreRowsStateProps,
-  IFacetMoreRowsDispatchProps
 } from './FacetMoreRows';
-import { filterThrough } from '../filterBox/FilterBoxActions';
-import { closeMoreFacetRows } from './FacetActions';
-import { connect } from 'react-redux';
-import * as React from 'react';
-import * as _ from 'underscore';
+import { IFacetState } from './FacetReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsStateProps => {
-  let item: IFacetState = _.findWhere(state.facets, { facet: ownProps.facet });
-  let filterItem: IFilterState = _.findWhere(state.filters, { id: 'filter-' + ownProps.facet });
+  const item: IFacetState = _.findWhere(state.facets, { facet: ownProps.facet });
+  const filterItem: IFilterState = _.findWhere(state.filters, { id: 'filter-' + ownProps.facet });
 
   return {
     isOpened: item && item.opened,
     filterText: filterItem ? filterItem.filterText : '',
-    withReduxState: true
+    withReduxState: true,
   };
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-  ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsDispatchProps => ({
+                            ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsDispatchProps => ({
     onOpen: () => dispatch(filterThrough('filter-' + ownProps.facet, '')),
-    onDocumentClick: () => dispatch(closeMoreFacetRows())
+    onDocumentClick: () => dispatch(closeMoreFacetRows()),
   });
 
 export const FacetMoreRowsConnected: React.ComponentClass<IFacetMoreRowsProps> =

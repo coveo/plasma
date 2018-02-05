@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { ISvgProps, Svg } from './Svg';
 import * as classname from 'classnames';
+import * as React from 'react';
 import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
+import { ISvgProps, Svg } from './Svg';
 
 export interface ILinkSvgProps extends React.ClassAttributes<LinkSvg> {
   url?: string;

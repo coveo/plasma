@@ -1,6 +1,6 @@
-import { DatePicker, IDatePickerProps } from './DatePicker';
-import { DATES_SEPARATOR, DateUtils } from '../../utils/DateUtils';
 import * as React from 'react';
+import { DATES_SEPARATOR, DateUtils } from '../../utils/DateUtils';
+import { DatePicker, IDatePickerProps } from './DatePicker';
 
 export interface IRangeLimit {
   weeks?: number;

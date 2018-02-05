@@ -1,16 +1,16 @@
-import { ITableOwnProps } from '../Table';
-import { TableConnected } from '../TableConnected';
-import { defaultTableStateModifier, dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableDataModifier';
+import * as $ from 'jquery';
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ITableData, ITableState, ITablesState, ITableCompositeState } from '../TableReducers';
-import { modifyState, setIsInError } from '../TableActions';
+import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { IData, ITableRowData } from '../Table';
+import { ITableOwnProps } from '../Table';
+import { modifyState, setIsInError } from '../TableActions';
+import { TableConnected } from '../TableConnected';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
-import * as $ from 'jquery';
-import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
+import { defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification } from '../TableDataModifier';
+import { ITableCompositeState, ITableData, ITablesState, ITableState } from '../TableReducers';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
@@ -22,7 +22,7 @@ const simplestTableDataById = _.range(0, 5).reduce((obj, number) => ({
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
-  }
+  },
 }), {} as ITableRowData);
 
 const tableDataById = _.range(0, 100).reduce((obj, number) => ({
@@ -33,14 +33,14 @@ const tableDataById = _.range(0, 100).reduce((obj, number) => ({
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
-  }
+  },
 }), {} as ITableRowData);
 
 const perPageNumbers = [5, 10, 20];
 
 const predicateOptionsAttribute4 = [
   { value: TABLE_PREDICATE_DEFAULT_VALUE },
-  ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute4 }], [])
+  ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute4 }], []),
 ].slice(0, 4);
 const predicateOptionsAttribute3 = [
   { value: TABLE_PREDICATE_DEFAULT_VALUE },
@@ -75,7 +75,7 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
           attribute1: entry.API,
           attribute3: entry.Category,
           attribute4: entry.Description,
-        }
+        },
       },
       allIds: [...tableData.allIds, entry.API],
       displayedIds: [...tableData.displayedIds, entry.API],
@@ -91,16 +91,16 @@ const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean
     const currentTableState = getState().tables[tableOwnProps.id];
     dispatchPreTableStateModification(tableOwnProps, dispatch);
     $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')
-      .done(data => {
+      .done((data) => {
         dispatch(
           modifyState(
             tableOwnProps.id,
             (tableState: ITableState) => buildNewTableStateManually(data, currentTableState, tableCompositeState, tableOwnProps),
             shouldResetPage,
-          )
+          ),
         );
       })
-      .fail(error => {
+      .fail((error) => {
         dispatch(setIsInError(tableOwnProps.id, true));
         dispatch(modifyState(
           tableOwnProps.id,

@@ -1,13 +1,13 @@
-import { ReactWrapper, mount } from 'enzyme';
-import { ISubNavigationProps, SubNavigation } from '../SubNavigation';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { SubNavigationConnected } from '../SubNavigationConnected';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { findWhere } from 'underscore';
+import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { findWhere } from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { TestUtils } from '../../../utils/TestUtils';
+import { ISubNavigationProps, SubNavigation } from '../SubNavigation';
+import { SubNavigationConnected } from '../SubNavigationConnected';
 
 describe('SubNavigation', () => {
   let wrapper: ReactWrapper<any, any>;
@@ -15,7 +15,7 @@ describe('SubNavigation', () => {
   let store: Store<IReactVaporState>;
 
   describe('<SubNavigationConnected />', () => {
-    let basicProps: ISubNavigationProps = {
+    const basicProps: ISubNavigationProps = {
       id: 'sub-nav-id',
       items: [
         { id: 'a', label: 'A' },
@@ -31,7 +31,7 @@ describe('SubNavigation', () => {
         <Provider store={store}>
           <SubNavigationConnected {...basicProps} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       subNavigation = wrapper.find(SubNavigation);
     });
@@ -42,19 +42,19 @@ describe('SubNavigation', () => {
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRenderProp = subNavigation.props().onRender;
+      const onRenderProp = subNavigation.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {
-      let onDestroyProp = subNavigation.props().onDestroy;
+      const onDestroyProp = subNavigation.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should get what to do on item click as a prop', () => {
-      let onClickItemProp = subNavigation.props().onClickItem;
+      const onClickItemProp = subNavigation.props().onClickItem;
 
       expect(onClickItemProp).toBeDefined();
     });
@@ -71,8 +71,8 @@ describe('SubNavigation', () => {
     it('should set the selected property of the sub navigation on item click', () => {
       expect(findWhere(store.getState().subNavigations, { id: basicProps.id }).selected).toBe(basicProps.defaultSelected);
 
-      let li = subNavigation.find('.sub-navigation-item')
-        .filterWhere(item => item.key() !== basicProps.defaultSelected)
+      const li = subNavigation.find('.sub-navigation-item')
+        .filterWhere((item) => item.key() !== basicProps.defaultSelected)
         .first();
       li.find('.sub-navigation-item-link').simulate('click');
 
@@ -83,19 +83,19 @@ describe('SubNavigation', () => {
   describe('<SubNavigationConnected />', () => {
     it('should select the first menu item when mounting', () => {
       store = TestUtils.buildStore();
-      let props: ISubNavigationProps = {
+      const props: ISubNavigationProps = {
         id: 'sub-nav-id',
         items: [
           { id: 'a', label: 'A' },
           { id: 'b', label: 'B' },
-        ]
+        ],
       };
 
       wrapper = mount(
         <Provider store={store}>
           <SubNavigationConnected {...props} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
 
       expect(findWhere(store.getState().subNavigations, { id: props.id }).selected).toBe(props.items[0].id);
@@ -104,16 +104,16 @@ describe('SubNavigation', () => {
 
     it('should not throw when there is no items', () => {
       store = TestUtils.buildStore();
-      let props: ISubNavigationProps = {
+      const props: ISubNavigationProps = {
         id: 'sub-nav-id',
-        items: []
+        items: [],
       };
 
       expect(() => mount(
         <Provider store={store}>
           <SubNavigationConnected {...props} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       ).unmount()).not.toThrow();
     });
   });

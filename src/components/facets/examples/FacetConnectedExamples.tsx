@@ -1,8 +1,8 @@
-import { IFacet } from '../Facet';
-import { FacetConnected } from '../FacetConnected';
-import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
-import { IFacetActionPayload, changeFacet } from '../FacetActions';
 import * as React from 'react';
+import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
+import { IFacet } from '../Facet';
+import { changeFacet, IFacetActionPayload } from '../FacetActions';
+import { FacetConnected } from '../FacetConnected';
 
 export interface ILastUpdateConnectedExamplesProps {
   selectedFacets?: IFacet[];
@@ -10,9 +10,9 @@ export interface ILastUpdateConnectedExamplesProps {
   onRender?: () => void;
 }
 
-let facet: IFacet = { name: 'facetTitle1', formattedName: 'Facet Title' };
-let facet2: IFacet = { name: 'facetTitle2', formattedName: 'Facet Title' };
-let facet3: IFacet = { name: 'facetTitle3', formattedName: 'Facet Title' };
+const facet: IFacet = { name: 'facetTitle1', formattedName: 'Facet Title' };
+const facet2: IFacet = { name: 'facetTitle2', formattedName: 'Facet Title' };
+const facet3: IFacet = { name: 'facetTitle3', formattedName: 'Facet Title' };
 
 const mapStateToProps = () => {
   return {};
@@ -23,9 +23,9 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>
     onRender: () => {
       dispatch(changeFacet(facet2.name, {
         name: 'row2',
-        formattedName: 'Row 2'
+        formattedName: 'Row 2',
       }));
-    }
+    },
   };
 };
 
@@ -37,38 +37,38 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
   }
 
   render() {
-    let facetRows: IFacet[] = [
+    const facetRows: IFacet[] = [
       {
         name: 'row1',
-        formattedName: 'Row 1'
+        formattedName: 'Row 1',
       }, {
         name: 'row2',
-        formattedName: 'Row 2'
+        formattedName: 'Row 2',
       }, {
         name: 'row3',
-        formattedName: 'Row 3'
-      }
+        formattedName: 'Row 3',
+      },
     ];
-    let moreFacetRows = facetRows.concat(
+    const moreFacetRows = facetRows.concat(
       {
         name: 'row4',
-        formattedName: 'Row 4'
+        formattedName: 'Row 4',
       },
       {
         name: 'row5',
-        formattedName: 'Row 5'
+        formattedName: 'Row 5',
       },
       {
         name: 'row6',
-        formattedName: 'Row 6'
+        formattedName: 'Row 6',
       },
       {
         name: 'row7',
-        formattedName: 'Row 7'
-      }
+        formattedName: 'Row 7',
+      },
     );
-    let toggleFacet: (facet: string, facetRow: IFacet) => void = () => { return; };
-    let clearFacet: (facet: string) => void = () => { return; };
+    const toggleFacet: (facet: string, facetRow: IFacet) => void = () => { return; };
+    const clearFacet: (facet: string) => void = () => { return; };
     return (
       <div className='mt2' style={{ width: 400 }}>
         <div className='form-group'>

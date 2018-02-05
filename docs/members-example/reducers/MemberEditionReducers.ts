@@ -1,14 +1,14 @@
 import * as _ from 'underscore';
 import { IReduxAction } from '../../../src/utils/ReduxUtils';
-import { defaultMemberAttributes, IMemberAttributes } from '../models/Member';
 import {
-  MemberEditionActionsType,
-  IMemberEditionActionPayload,
   IChangeEmailPayload,
   IChangeSendEmailPayload,
+  IMemberEditionActionPayload,
+  IMemberEditionActionsPayloads,
   IToggleOpenPayload,
-  IMemberEditionActionsPayloads
+  MemberEditionActionsType,
 } from '../actions/MemberEditionActions';
+import { defaultMemberAttributes, IMemberAttributes } from '../models/Member';
 
 export interface IMemberEditionState {
   id: string;
@@ -21,7 +21,7 @@ export const defaultMemberEditionState: IMemberEditionState = {
   id: null,
   appliedState: null,
   editionState: _.extend({}, defaultMemberAttributes),
-  isOpen: false
+  isOpen: false,
 };
 
 const applyChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
@@ -30,7 +30,7 @@ const applyChangesReducer = (state: IMemberEditionState, action: IReduxAction<IM
   }
   return _.extend({}, state, {
     appliedState: _.extend({}, state.editionState),
-    isOpen: false
+    isOpen: false,
   });
 };
 
@@ -40,7 +40,7 @@ const cancelChangesReducer = (state: IMemberEditionState, action: IReduxAction<I
   }
   return _.extend({}, state, {
     editionState: _.extend({}, _.isNull(state.appliedState) ? defaultMemberAttributes : state.appliedState),
-    isOpen: false
+    isOpen: false,
   });
 };
 
@@ -50,8 +50,8 @@ const changeEmailReducer = (state: IMemberEditionState, action: IReduxAction<ICh
   }
   return _.extend({}, state, {
     editionState: _.extend({}, state.editionState, {
-      email: action.payload.email
-    })
+      email: action.payload.email,
+    }),
   });
 };
 
@@ -61,8 +61,8 @@ const changeSendEmailReducer = (state: IMemberEditionState, action: IReduxAction
   }
   return _.extend({}, state, {
     editionState: _.extend({}, state.editionState, {
-      sendEmail: action.payload.sendEmail
-    })
+      sendEmail: action.payload.sendEmail,
+    }),
   });
 };
 
@@ -71,7 +71,7 @@ const toggleOpen = (state: IMemberEditionState, action: IReduxAction<IToggleOpen
     return state;
   }
   return _.extend({}, state, {
-    isOpen: action.payload.isOpen
+    isOpen: action.payload.isOpen,
   });
 };
 
@@ -84,11 +84,11 @@ const memberEditionActionsReducers: IMemberEditionActionsReducers = {
   [MemberEditionActionsType.CancelChanges]: cancelChangesReducer,
   [MemberEditionActionsType.ChangeEmail]: changeEmailReducer,
   [MemberEditionActionsType.ChangeSendEmail]: changeSendEmailReducer,
-  [MemberEditionActionsType.ToggleOpen]: toggleOpen
+  [MemberEditionActionsType.ToggleOpen]: toggleOpen,
 };
 
 export const memberEditionReducers = (state: IMemberEditionState = defaultMemberEditionState,
-  action: IReduxAction<IMemberEditionActionsPayloads>): IMemberEditionState => {
+                                      action: IReduxAction<IMemberEditionActionsPayloads>): IMemberEditionState => {
   if (_.isUndefined(memberEditionActionsReducers[action.type])) {
     return state;
   }

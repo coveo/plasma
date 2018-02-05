@@ -1,14 +1,14 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import { ITabsHeaderProps, TabsHeader } from '../TabsHeader';
-import { TabNavigation } from '../../tab/TabNavigation';
-import { ITabProps } from '../../tab/Tab';
-import { TabConnected } from '../../tab/TabConnected';
-import { IReactVaporState } from '../../../ReactVapor';
-import { Store } from 'redux';
+import * as React from 'react';
 import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { IReactVaporState } from '../../../ReactVapor';
 import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
+import { ITabProps } from '../../tab/Tab';
+import { TabConnected } from '../../tab/TabConnected';
+import { TabNavigation } from '../../tab/TabNavigation';
+import { ITabsHeaderProps, TabsHeader } from '../TabsHeader';
 
 describe('<TabsHeader/>', () => {
 

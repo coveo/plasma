@@ -2,7 +2,7 @@ import * as $ from 'jquery';
 import * as s from 'underscore.string';
 
 // Polyfill MouseEvent if needed
-(function (window) {
+(function(window) {
   try {
     new (MouseEvent as any)('test');
     return false; // No need to polyfill
@@ -12,9 +12,9 @@ import * as s from 'underscore.string';
 
   // Polyfills DOM4 MouseEvent
 
-  var MouseEvent = function (eventType: any, params: any) {
+  const MouseEvent = function(eventType: any, params: any) {
     params = params || { bubbles: false, cancelable: false };
-    var mouseEvent = document.createEvent('MouseEvent');
+    const mouseEvent = document.createEvent('MouseEvent');
     mouseEvent.initMouseEvent(eventType, params.bubbles, params.cancelable, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
     return mouseEvent;
@@ -24,7 +24,6 @@ import * as s from 'underscore.string';
 
   (window as any).MouseEvent = MouseEvent;
 })(window);
-
 
 beforeEach(() => {
   if (!$('#App').length) {
@@ -41,5 +40,5 @@ testsContext.keys().forEach(testsContext);
 
 const coverageContext = require.context('./src', true, /.*\.ts(x?)$/);
 coverageContext.keys()
-  .filter(file => !s.contains(file, '.spec.') && !s.contains(file, 'Examples'))
+  .filter((file) => !s.contains(file, '.spec.') && !s.contains(file, 'Examples'))
   .forEach(coverageContext);

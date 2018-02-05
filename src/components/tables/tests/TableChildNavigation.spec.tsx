@@ -1,13 +1,13 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
-import { tablePropsMock } from './TableTestCommon';
-import { TableChildNavigation } from '../table-children/TableChildNavigation';
+import { Provider, Store } from 'react-redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
 import { NavigationConnected } from '../../navigation/NavigationConnected';
 import { ITableProps } from '../Table';
-import { mount } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
+import { TableChildNavigation } from '../table-children/TableChildNavigation';
+import { tablePropsMock } from './TableTestCommon';
 
 describe('<TableChildNavigation />', () => {
   let store: Store<IReactVaporState>;

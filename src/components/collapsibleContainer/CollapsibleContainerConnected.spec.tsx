@@ -1,20 +1,19 @@
-import * as React from 'react';
-import { Store, Provider } from 'react-redux';
-import { TestUtils } from '../../utils/TestUtils';
-import { clearState } from '../../utils/ReduxUtils';
 import { mount } from 'enzyme';
+import * as React from 'react';
+import { Provider, Store } from 'react-redux';
+import { findWhere } from 'underscore';
+import { SlideY } from '../../animations/SlideY';
 import { IReactVaporState } from '../../ReactVapor';
+import { clearState } from '../../utils/ReduxUtils';
+import { TestUtils } from '../../utils/TestUtils';
+import { LinkSvg } from '../svg/LinkSvg';
+import { Svg } from '../svg/Svg';
+import { Tooltip } from '../tooltip/Tooltip';
+import { ICollapsibleContainerOwnProps, ICollapsibleContainerProps } from './CollapsibleContainer';
 import { CollapsibleContainer } from './CollapsibleContainer';
 import { setExpandedCollapsibleContainer } from './CollapsibleContainerActions';
 import { CollapsibleContainerConnected } from './CollapsibleContainerConnected';
-import { ICollapsibleContainerOwnProps, ICollapsibleContainerProps } from './CollapsibleContainer';
 import { collapsibleContainerPossibleProps } from './CollapsibleContainerTestCommon.spec';
-import { findWhere } from 'underscore';
-import { Svg } from '../svg/Svg';
-import { LinkSvg } from '../svg/LinkSvg';
-import { Tooltip } from '../tooltip/Tooltip';
-import { SlideY } from '../../animations/SlideY';
-
 
 describe('<CollapsibleContainerConnected />', () => {
   let store: Store<IReactVaporState>;
@@ -118,7 +117,6 @@ describe('<CollapsibleContainerConnected />', () => {
         expect(collapsible.find(SlideY).prop('in')).toBe(false);
       });
     });
-
 
     describe('Header Svg logic', () => {
       it('should render with no svg if no informationUrl and informationTooltip are passed', () => {

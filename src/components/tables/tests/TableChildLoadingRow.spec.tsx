@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { tablePropsMock } from './TableTestCommon';
-import { TableChildLoadingRow, ITableChildLoadingRowProps } from '../table-children/TableChildLoadingRow';
 import { mount } from 'enzyme';
+import * as React from 'react';
 import { Loading } from '../../loading/Loading';
+import { ITableChildLoadingRowProps, TableChildLoadingRow } from '../table-children/TableChildLoadingRow';
+import { tablePropsMock } from './TableTestCommon';
 
 describe('<TableChildLoadingRow />', () => {
   describe('render', () => {

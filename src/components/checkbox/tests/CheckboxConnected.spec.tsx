@@ -1,15 +1,15 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { Checkbox } from '../Checkbox';
-import { CheckboxConnected } from '../CheckboxConnected';
-import { toggleCheckbox } from '../CheckboxActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
 import { IInputProps } from '../../input/Input';
+import { Checkbox } from '../Checkbox';
+import { toggleCheckbox } from '../CheckboxActions';
+import { CheckboxConnected } from '../CheckboxConnected';
 
 describe('Checkbox', () => {
   describe('<CheckboxConnected />', () => {
@@ -29,7 +29,7 @@ describe('Checkbox', () => {
             id={id}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       checkbox = wrapper.find(Checkbox).first();
     });
@@ -48,7 +48,7 @@ describe('Checkbox', () => {
     });
 
     it('should get checked false as a prop', () => {
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(false);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(false);
     });
 
     it('should get what to do on render as a prop', () => {
@@ -64,28 +64,28 @@ describe('Checkbox', () => {
     });
 
     it('should add the checkbox in the store on render', () => {
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id).length).toBe(1);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id).length).toBe(1);
     });
 
     it('should toggle the checkbox in the store when dispatching a "toggleCheckbox" action', () => {
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id).length).toBe(1);
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(false);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id).length).toBe(1);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(false);
 
       store.dispatch(toggleCheckbox(id));
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(true);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(true);
     });
 
     it('should toggle the checkbox in the store when clicking on it', () => {
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id).length).toBe(1);
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(false);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id).length).toBe(1);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(false);
 
       checkbox.props().onClick(null);
-      expect(store.getState().checkboxes.filter(checkbox => checkbox.id === id)[0].checked).toBe(true);
+      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(true);
     });
 
     it('should remove the checkbox in the store on destroy', () => {
       wrapper.unmount();
-      expect(store.getState().checkboxes.filter(checkboxs => checkboxs.id === id).length).toBe(0);
+      expect(store.getState().checkboxes.filter((checkboxs) => checkboxs.id === id).length).toBe(0);
     });
   });
 });

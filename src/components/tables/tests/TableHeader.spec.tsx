@@ -1,12 +1,12 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { ITableHeaderCellProps, TableHeaderCell } from '../TableHeaderCell';
-import { TableHeader, ITableHeaderProps } from '../TableHeader';
-import { ITableHeaderCellOwnProps } from '../TableHeaderCell';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import * as _ from 'underscore';
 import { Provider } from 'react-redux';
+import * as _ from 'underscore';
 import { TestUtils } from '../../../utils/TestUtils';
+import { ITableHeaderProps, TableHeader } from '../TableHeader';
+import { ITableHeaderCellProps, TableHeaderCell } from '../TableHeaderCell';
+import { ITableHeaderCellOwnProps } from '../TableHeaderCell';
 import { TableHeaderCellConnected } from '../TableHeaderCellConnected';
 
 describe('Tables', () => {
@@ -21,7 +21,7 @@ describe('Tables', () => {
         shallow(
           <TableHeader
             columns={columns}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -35,11 +35,11 @@ describe('Tables', () => {
 
       columns = [{
         title: 'Header 1',
-        className: 'special'
+        className: 'special',
       }, {
-        title: 'Header 2'
+        title: 'Header 2',
       }, {
-        title: 'Header 3'
+        title: 'Header 3',
       }];
 
       headerClass = 'header-class';
@@ -49,7 +49,7 @@ describe('Tables', () => {
           columns={columns}
           headerClass={headerClass}
         />,
-        { attachTo: document.getElementById('AppTable') }
+        { attachTo: document.getElementById('AppTable') },
       );
     });
 
@@ -59,14 +59,14 @@ describe('Tables', () => {
     });
 
     it('should get the columns as a prop', () => {
-      let columnsProp = tableHeader.props().columns;
+      const columnsProp = tableHeader.props().columns;
 
       expect(columnsProp).toBeDefined();
       expect(columnsProp).toBe(columns);
     });
 
     it('should get the header class name as a prop', () => {
-      let headerClassProp = tableHeader.props().headerClass;
+      const headerClassProp = tableHeader.props().headerClass;
 
       expect(headerClassProp).toBeDefined();
       expect(headerClassProp).toBe(headerClass);
@@ -84,11 +84,11 @@ describe('Tables', () => {
       const columns: { [key: string]: ITableHeaderCellOwnProps } = {
         cellWithAttributeToSort: {
           title: 'I will be connected',
-          attributeToSort: 'attributeJustForTesting'
+          attributeToSort: 'attributeJustForTesting',
         },
         cellWithoutAttributeToSort: {
           title: 'I will not be connected because it is not necessary',
-        }
+        },
       };
 
       const store = TestUtils.buildStore();
@@ -101,7 +101,7 @@ describe('Tables', () => {
               withReduxState
             />
           </Provider>,
-          { attachTo: document.getElementById('AppTable') }
+          { attachTo: document.getElementById('AppTable') },
         );
 
         expect(tableHeader.find(TableHeaderCellConnected).length).toBe(1);
@@ -117,7 +117,7 @@ describe('Tables', () => {
               columns={_.values(columns)}
             />
           </Provider>,
-          { attachTo: document.getElementById('AppTable') }
+          { attachTo: document.getElementById('AppTable') },
         );
 
         expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Modal } from '../modal/Modal';
-import { ModalFooter } from '../modal/ModalFooter';
 import { ModalBody } from '../modal/ModalBody';
+import { ModalFooter } from '../modal/ModalFooter';
 import { ModalHeader } from '../modal/ModalHeader';
 
 export interface IModalPromptOwnProps {

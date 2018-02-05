@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import { UUID } from '../../utils/UUID';
-import { DeletableInput } from './DeletableInput';
-import { AddInput } from './AddInput';
 import { Label } from '../input/Label';
+import { AddInput } from './AddInput';
+import { DeletableInput } from './DeletableInput';
 
 export interface IMultilineInputValue {
   id: string;
@@ -42,24 +42,24 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
   }
 
   private removeValue(id: string) {
-    let currentInput = _.findWhere(this.props.values, { id });
-    let nextValues = _.without(this.props.values, currentInput);
+    const currentInput = _.findWhere(this.props.values, { id });
+    const nextValues = _.without(this.props.values, currentInput);
     this.handleChange(nextValues);
   }
 
   private updateValue(id: string, value: string) {
-    let inputIndex = _.findIndex(this.props.values, { id });
-    let nextValues = this.props.values;
+    const inputIndex = _.findIndex(this.props.values, { id });
+    const nextValues = this.props.values;
     nextValues[inputIndex] = {
       id,
-      value
+      value,
     };
     this.handleChange(nextValues);
   }
 
   private handleAddInputChange(value: string) {
     if (value) {
-      let nextValues = this.props.values ? this.props.values : [];
+      const nextValues = this.props.values ? this.props.values : [];
       nextValues.push({ id: UUID.generate(), value });
       this.handleChange(nextValues);
     }
@@ -79,7 +79,7 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
   }
 
   render() {
-    let deletableInputs: JSX.Element[] = this.props.values
+    const deletableInputs: JSX.Element[] = this.props.values
       ? this.props.values.map((input: IMultilineInputValue, index: number) => this.getDeletableInput(input, index))
       : null;
 
@@ -98,4 +98,3 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
     );
   }
 }
-

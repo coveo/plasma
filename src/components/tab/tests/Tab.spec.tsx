@@ -1,11 +1,11 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Tab, ITabProps } from '../Tab';
+import { ITabProps, Tab } from '../Tab';
 
 describe('Tab', () => {
-  let id: string = 'tab';
-  let title: string = 'Title';
+  const id: string = 'tab';
+  const title: string = 'Title';
 
   describe('<Tab />', () => {
     it('should render without errors', () => {
@@ -14,7 +14,7 @@ describe('Tab', () => {
           <Tab
             id={id}
             title={title}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -30,7 +30,7 @@ describe('Tab', () => {
           id={id}
           title={title}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       tabInstance = tab.instance() as Tab;
     });
@@ -41,7 +41,7 @@ describe('Tab', () => {
     });
 
     it('should call prop onRender on mounting if set', () => {
-      let renderSpy = jasmine.createSpy('onRender');
+      const renderSpy = jasmine.createSpy('onRender');
 
       expect(() => tabInstance.componentWillMount()).not.toThrow();
 
@@ -52,7 +52,7 @@ describe('Tab', () => {
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-      let destroySpy = jasmine.createSpy('onDestroy');
+      const destroySpy = jasmine.createSpy('onDestroy');
 
       expect(() => tabInstance.componentWillUnmount()).not.toThrow();
 
@@ -63,7 +63,7 @@ describe('Tab', () => {
     });
 
     it('should call prop onSelect when tab is clicked and prop is set', () => {
-      let selectSpy = jasmine.createSpy('onSelect');
+      const selectSpy = jasmine.createSpy('onSelect');
 
       tab.simulate('click');
       expect(selectSpy.calls.count()).toBe(0);
@@ -75,7 +75,7 @@ describe('Tab', () => {
     });
 
     it('should set active class on container when isActive is true', () => {
-      let container = tab.find('div').first();
+      const container = tab.find('div').first();
       expect(container.hasClass('active')).toBe(false);
 
       tab.setProps({ id, title, isActive: true });

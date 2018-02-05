@@ -1,5 +1,5 @@
-import { Svg } from '../svg/Svg';
 import * as React from 'react';
+import { Svg } from '../svg/Svg';
 
 export interface IOptionsCycleOwnProps extends React.ClassAttributes<OptionsCycle> {
   options: string[];
@@ -25,14 +25,14 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps, any> {
 
   private goToPreviousOption() {
     if (this.props.onChange) {
-      let newOptionIndex = this.props.currentOption ? this.props.currentOption - 1 : this.props.options.length - 1;
+      const newOptionIndex = this.props.currentOption ? this.props.currentOption - 1 : this.props.options.length - 1;
       this.props.onChange(newOptionIndex);
     }
   }
 
   private goToNextOption() {
     if (this.props.onChange) {
-      let newOptionIndex = this.props.currentOption === this.props.options.length - 1 ? 0 : this.props.currentOption + 1;
+      const newOptionIndex = this.props.currentOption === this.props.options.length - 1 ? 0 : this.props.currentOption + 1;
       this.props.onChange(newOptionIndex);
     }
   }
@@ -60,7 +60,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps, any> {
   }
 
   render() {
-    let optionsCycleClasses = ['options-cycle', 'text-medium-blue'];
+    const optionsCycleClasses = ['options-cycle', 'text-medium-blue'];
 
     if (this.props.isInline) {
       optionsCycleClasses.push('mod-inline');

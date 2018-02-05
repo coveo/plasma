@@ -1,8 +1,8 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import * as classNames from 'classnames';
-import { Svg } from '../svg/Svg';
 import { ComponentContent } from '../../utils/ComponentUtils';
+import { Svg } from '../svg/Svg';
 
 export interface IToastProps {
   id?: string;

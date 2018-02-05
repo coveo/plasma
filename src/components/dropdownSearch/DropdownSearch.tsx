@@ -1,11 +1,11 @@
-import { Content } from '../content/Content';
-import { keyCode } from '../../utils/InputUtils';
-import { FilterBox } from '../filterBox/FilterBox';
-import { ISvgProps, Svg } from '../svg/Svg';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
+import { keyCode } from '../../utils/InputUtils';
+import { Content } from '../content/Content';
+import { FilterBox } from '../filterBox/FilterBox';
+import { ISvgProps, Svg } from '../svg/Svg';
 
 export interface IDropdownOption {
   svg?: ISvgProps;
@@ -155,11 +155,11 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     return null;
   }
 
-  protected getTextFiltered(text: string): (JSX.Element | string)[] | string {
+  protected getTextFiltered(text: string): Array<JSX.Element | string> | string {
     const originalText = new String(text).toString();
     if (!_.isEmpty(this.props.filterText)) {
       let highlightIndexKey: number = 0;
-      const textFilterElements: (JSX.Element | string)[] = [''];
+      const textFilterElements: Array<JSX.Element | string> = [''];
       let index: number = text.toLowerCase().indexOf(this.props.filterText.toLowerCase());
       while (index !== -1) {
         if (index > 0) {

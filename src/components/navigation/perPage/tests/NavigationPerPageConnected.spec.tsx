@@ -1,28 +1,28 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { clearState } from '../../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../../ReactVapor';
-import { NavigationPerPageConnected } from '../NavigationPerPageConnected';
-import { TestUtils } from '../../../../utils/TestUtils';
-import { NavigationPerPage, INavigationPerPageProps, PER_PAGE_NUMBERS } from '../NavigationPerPage';
-import { addLoading, turnOffLoading } from '../../../loading/LoadingActions';
-import { changePerPage } from '../NavigationPerPageActions';
-import { addPagination, changePage } from '../../pagination/NavigationPaginationActions';
-import { INavigationPerPageSelectProps, NavigationPerPageSelect } from '../NavigationPerPageSelect';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../../ReactVapor';
+import { clearState } from '../../../../utils/ReduxUtils';
+import { TestUtils } from '../../../../utils/TestUtils';
+import { addLoading, turnOffLoading } from '../../../loading/LoadingActions';
+import { addPagination, changePage } from '../../pagination/NavigationPaginationActions';
+import { INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS } from '../NavigationPerPage';
+import { changePerPage } from '../NavigationPerPageActions';
+import { NavigationPerPageConnected } from '../NavigationPerPageConnected';
+import { INavigationPerPageSelectProps, NavigationPerPageSelect } from '../NavigationPerPageSelect';
 
 describe('<NavigationPerPageConnected />', () => {
   let wrapper: ReactWrapper<any, any>;
   let navigationPerPage: ReactWrapper<INavigationPerPageProps, any>;
   let store: Store<IReactVaporState>;
-  let basicNavigationPerPageProps: INavigationPerPageProps = {
+  const basicNavigationPerPageProps: INavigationPerPageProps = {
     totalEntries: 55,
-    id: 'navigation-per-page'
+    id: 'navigation-per-page',
   };
-  let loadingId: string = basicNavigationPerPageProps.id + '-loading';
+  const loadingId: string = basicNavigationPerPageProps.id + '-loading';
   basicNavigationPerPageProps.loadingIds = [loadingId];
 
   beforeEach(() => {
@@ -36,7 +36,7 @@ describe('<NavigationPerPageConnected />', () => {
           <NavigationPerPageConnected {...basicNavigationPerPageProps} />
         </div>
       </Provider>,
-      { attachTo: document.getElementById('App') }
+      { attachTo: document.getElementById('App') },
     );
     navigationPerPage = wrapper.find(NavigationPerPage).first();
   });
@@ -63,14 +63,14 @@ describe('<NavigationPerPageConnected />', () => {
     currentPerPageProp = navigationPerPage.props().currentPerPage;
     expect(currentPerPageProp).toBe(PER_PAGE_NUMBERS[0]);
 
-    let perPageNumber: number[] = [11, 22, 33];
+    const perPageNumber: number[] = [11, 22, 33];
     wrapper = mount(
       <Provider store={store}>
         <div>
           <NavigationPerPageConnected {...basicNavigationPerPageProps} perPageNumbers={perPageNumber} />
         </div>
       </Provider>,
-      { attachTo: document.getElementById('App') }
+      { attachTo: document.getElementById('App') },
     );
     navigationPerPage = wrapper.find(NavigationPerPage).first();
     store.dispatch(clearState());
@@ -80,19 +80,19 @@ describe('<NavigationPerPageConnected />', () => {
   });
 
   it('should get what to do onRender as a prop', () => {
-    let onRenderProp = navigationPerPage.props().onRender;
+    const onRenderProp = navigationPerPage.props().onRender;
 
     expect(onRenderProp).toBeDefined();
   });
 
   it('should get what to do onDestroy as a prop', () => {
-    let onDestroyProp = navigationPerPage.props().onDestroy;
+    const onDestroyProp = navigationPerPage.props().onDestroy;
 
     expect(onDestroyProp).toBeDefined();
   });
 
   it('should get what to do onPerPageClick as a prop', () => {
-    let onPerPageClickProp = navigationPerPage.props().onPerPageClick;
+    const onPerPageClickProp = navigationPerPage.props().onPerPageClick;
 
     expect(onPerPageClickProp).toBeDefined();
   });
@@ -107,7 +107,7 @@ describe('<NavigationPerPageConnected />', () => {
   });
 
   it('should turn on loading and change the per page number when clicking on a <NavigationPerPageSelect /> link', () => {
-    let perPageSelected = navigationPerPage.find('a').last();
+    const perPageSelected = navigationPerPage.find('a').last();
 
     expect(_.findWhere(store.getState().loadings, { id: basicNavigationPerPageProps.loadingIds[0] }).isOn).toBe(false);
 
@@ -117,7 +117,7 @@ describe('<NavigationPerPageConnected />', () => {
   });
 
   it('should not update the currentPerPage prop if a selected <NavigationPerPageSelect /> is clicked', () => {
-    let perPageSelected = navigationPerPage.find('NavigationPerPageSelect').first();
+    const perPageSelected = navigationPerPage.find('NavigationPerPageSelect').first();
 
     expect(_.findWhere(store.getState().perPageComposite, { id: basicNavigationPerPageProps.id }).perPage).toBe(10);
 
@@ -127,7 +127,7 @@ describe('<NavigationPerPageConnected />', () => {
   });
 
   it('should update the currentPerPage prop if an unselected <NavigationPerPageSelect /> is clicked', () => {
-    let perPageUnSelected = navigationPerPage.find('NavigationPerPageSelect').at(1);
+    const perPageUnSelected = navigationPerPage.find('NavigationPerPageSelect').at(1);
 
     expect(_.findWhere(store.getState().perPageComposite, { id: basicNavigationPerPageProps.id }).perPage).toBe(10);
 
@@ -138,13 +138,13 @@ describe('<NavigationPerPageConnected />', () => {
 
   it('should change the page to the one starting with the same item as the previous per page when a new per page is' +
     'selected', () => {
-      let paginationId: string = 'pagination-' + basicNavigationPerPageProps.id;
-      let firstPerPage: ReactWrapper<INavigationPerPageSelectProps, any> =
+      const paginationId: string = 'pagination-' + basicNavigationPerPageProps.id;
+      const firstPerPage: ReactWrapper<INavigationPerPageSelectProps, any> =
         navigationPerPage.find(NavigationPerPageSelect).first() as ReactWrapper<INavigationPerPageSelectProps, any>;
-      let secondPerPage: ReactWrapper<INavigationPerPageSelectProps, any> =
+      const secondPerPage: ReactWrapper<INavigationPerPageSelectProps, any> =
         navigationPerPage.find(NavigationPerPageSelect).at(1) as ReactWrapper<INavigationPerPageSelectProps, any>;
-      let startingPage: number = 4;
-      let expectedPage: number = Math.floor(startingPage * firstPerPage.props().perPageNb / secondPerPage.props().perPageNb);
+      const startingPage: number = 4;
+      const expectedPage: number = Math.floor(startingPage * firstPerPage.props().perPageNb / secondPerPage.props().perPageNb);
 
       store.dispatch(addPagination(paginationId));
       store.dispatch(changePage(paginationId, 4));

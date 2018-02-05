@@ -1,14 +1,14 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
+// tslint:disable-next-line:no-unused-variable
+import * as React from 'react';
+import { DATES_SEPARATOR, DateUtils } from '../../../utils/DateUtils';
+import { DatePicker } from '../DatePicker';
 import {
   DatesSelection,
   IDatesSelectionProps,
   LOWER_LIMIT_PLACEHOLDER,
-  UPPER_LIMIT_PLACEHOLDER
+  UPPER_LIMIT_PLACEHOLDER,
 } from '../DatesSelection';
-import { DatePicker } from '../DatePicker';
-import { DATES_SEPARATOR, DateUtils } from '../../../utils/DateUtils';
-// tslint:disable-next-line:no-unused-variable
-import * as React from 'react';
 
 describe('Date picker', () => {
 
@@ -16,7 +16,7 @@ describe('Date picker', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <DatesSelection />
+          <DatesSelection />,
         );
       }).not.toThrow();
     });
@@ -29,7 +29,7 @@ describe('Date picker', () => {
     beforeEach(() => {
       datesSelection = mount(
         <DatesSelection />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       datesSelectionInstance = datesSelection.instance() as DatesSelection;
     });
@@ -99,9 +99,9 @@ describe('Date picker', () => {
 
     it('should call onDateChange with the date and whether or not the picker is the upper limit when calling the ' +
       'onChange prop on the picker', () => {
-        let expectedDate: Date = new Date();
-        let expectedIsUpperLimit: boolean = true;
-        let onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
+        const expectedDate: Date = new Date();
+        const expectedIsUpperLimit: boolean = true;
+        const onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
 
         datesSelection.find(DatePicker).first().props().onBlur(expectedDate, expectedIsUpperLimit);
 
@@ -110,8 +110,8 @@ describe('Date picker', () => {
 
     it('should call onDateClick with and whether or not the picker is the upper limit when calling the onClick prop ' +
       'on the picker', () => {
-        let expectedIsUpperLimit: boolean = true;
-        let onDateClickSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateClick');
+        const expectedIsUpperLimit: boolean = true;
+        const onDateClickSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateClick');
 
         datesSelection.find(DatePicker).first().props().onClick(expectedIsUpperLimit);
 
@@ -119,7 +119,7 @@ describe('Date picker', () => {
       });
 
     it('should call onBlur prop if defined when calling onDateChange', () => {
-      let onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
+      const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
 
       expect(() => {
         datesSelectionInstance['onDateChange'].call(datesSelectionInstance, new Date(), false);
@@ -132,7 +132,7 @@ describe('Date picker', () => {
     });
 
     it('should not throw on date click if the onClick prop is not defined', () => {
-      let onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
+      const onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
 
       expect(() => {
         datesSelectionInstance['onDateClick'].call(datesSelectionInstance, false);
@@ -145,7 +145,7 @@ describe('Date picker', () => {
     });
 
     it('should call onRender prop if set when mounting', () => {
-      let onRenderSpy: jasmine.Spy = jasmine.createSpy('onRender');
+      const onRenderSpy: jasmine.Spy = jasmine.createSpy('onRender');
 
       expect(() => datesSelectionInstance.componentWillMount()).not.toThrow();
 
@@ -156,7 +156,7 @@ describe('Date picker', () => {
     });
 
     it('should call onDestroy prop if set when will unmount', () => {
-      let onDestroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
+      const onDestroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
 
       expect(() => datesSelectionInstance.componentWillUnmount()).not.toThrow();
 
@@ -192,8 +192,8 @@ describe('Date picker', () => {
     });
 
     it('should call onDateChange for each picker if the quick option has changed', () => {
-      let onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
-      let now: Date = new Date();
+      const onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
+      const now: Date = new Date();
 
       datesSelection.setProps({ quickOption: now.toString() });
 

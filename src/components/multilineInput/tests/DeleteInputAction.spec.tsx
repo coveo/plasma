@@ -1,4 +1,4 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { DeleteInputAction, IDeleteInputActionProps } from '../DeleteInputAction';
@@ -9,7 +9,7 @@ describe('DeleteInputAction', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <DeleteInputAction onClick={() => { }} />
+          <DeleteInputAction onClick={() => { }} />,
         );
       }).not.toThrow();
     });
@@ -21,7 +21,7 @@ describe('DeleteInputAction', () => {
     beforeEach(() => {
       deleteInput = mount(
         <DeleteInputAction onClick={() => { }} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -31,7 +31,7 @@ describe('DeleteInputAction', () => {
     });
 
     it('should render title prop if prop is set', () => {
-      let title = 'a title';
+      const title = 'a title';
       expect(deleteInput.find(`[title="${title}"]`).length).toBe(0);
 
       deleteInput.setProps({ title });

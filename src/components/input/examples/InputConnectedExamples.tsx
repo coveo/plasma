@@ -1,8 +1,8 @@
-import { InputConnected } from '../InputConnected';
-import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
-import { setDisabledInput, validateInputValue } from '../InputActions';
 import * as React from 'react';
 import { findWhere } from 'underscore';
+import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
+import { setDisabledInput, validateInputValue } from '../InputActions';
+import { InputConnected } from '../InputConnected';
 
 const validate = (value: any) => !!value;
 

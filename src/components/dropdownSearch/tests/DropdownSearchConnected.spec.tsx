@@ -1,19 +1,19 @@
 // tslint:disable-next-line:no-unused-variable
 import { mount, ReactWrapper } from 'enzyme';
+import * as React from 'react';
 import { Provider, Store } from 'react-redux';
+import * as _ from 'underscore';
+import { keyCode } from '../../../utils/InputUtils';
 import { clearState } from '../../../utils/ReduxUtils';
 import { IReactVaporTestState, TestUtils } from '../../../utils/TestUtils';
-import * as React from 'react';
-import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import { UUID } from '../../../utils/UUID';
 import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
-import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
 import {
   DropdownSearchActions, toggleDropdownSearch, updateActiveOptionDropdownSearch,
-  updateOptionsDropdownSearch
+  updateOptionsDropdownSearch,
 } from '../DropdownSearchActions';
-import { keyCode } from '../../../utils/InputUtils';
-import * as _ from 'underscore';
+import { DropdownSearchConnected } from '../DropdownSearchConnected';
+import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();
@@ -74,7 +74,6 @@ describe('DropdownSearch', () => {
 
         expect(store.getState().lastAction.type).toBe(DropdownSearchActions.update);
       });
-
 
       it('should call onDestroy prop when will unmount', () => {
         wrapper.unmount();

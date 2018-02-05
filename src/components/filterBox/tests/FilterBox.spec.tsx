@@ -1,10 +1,10 @@
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import { FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps } from '../FilterBox';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps } from '../FilterBox';
 
 describe('FilterBox', () => {
-  let id: string = 'filter-box';
+  const id: string = 'filter-box';
 
   describe('<FilterBox />', () => {
     it('should render without errors', () => {
@@ -38,7 +38,7 @@ describe('FilterBox', () => {
     });
 
     it('should call prop onRender on mounting if set', () => {
-      let renderSpy = jasmine.createSpy('onRender');
+      const renderSpy = jasmine.createSpy('onRender');
 
       expect(() => filterBoxInstance.componentWillMount()).not.toThrow();
 
@@ -49,7 +49,7 @@ describe('FilterBox', () => {
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-      let destroySpy = jasmine.createSpy('onDestroy');
+      const destroySpy = jasmine.createSpy('onDestroy');
 
       expect(() => filterBoxInstance.componentWillUnmount()).not.toThrow();
 
@@ -60,8 +60,8 @@ describe('FilterBox', () => {
     });
 
     it('should call prop onFilter when the filter input value has changed and prop is set', () => {
-      let filterSpy = jasmine.createSpy('onFilter');
-      let input = filterBox.find('input');
+      const filterSpy = jasmine.createSpy('onFilter');
+      const input = filterBox.find('input');
 
       input.simulate('change');
       expect(filterSpy.calls.count()).toBe(0);
@@ -73,8 +73,8 @@ describe('FilterBox', () => {
     });
 
     it('should call prop onFilterCallback when the filter input value has changed and prop is set', () => {
-      let onFilterCallbackSpy = jasmine.createSpy('onFilterCallback');
-      let input = filterBox.find('input');
+      const onFilterCallbackSpy = jasmine.createSpy('onFilterCallback');
+      const input = filterBox.find('input');
 
       input.simulate('change');
       expect(onFilterCallbackSpy).not.toHaveBeenCalled();
@@ -86,7 +86,7 @@ describe('FilterBox', () => {
     });
 
     it('should display the filterPlaceholder if set as a prop else, display the default one', () => {
-      let expectedPlaceholder = 'new placeholder';
+      const expectedPlaceholder = 'new placeholder';
 
       expect(filterBox.html()).toContain(FILTER_PLACEHOLDER);
 
@@ -97,8 +97,8 @@ describe('FilterBox', () => {
     });
 
     it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', () => {
-      let filterInput = filterBox.find('input');
-      let clearIcon = filterBox.find('span').first();
+      const filterInput = filterBox.find('input');
+      const clearIcon = filterBox.find('span').first();
 
       expect(clearIcon.hasClass('hidden')).toBe(true);
 
@@ -132,7 +132,7 @@ describe('FilterBox', () => {
     });
 
     it('should clear the filter input when clicking the clear icon', () => {
-      let clearIcon = filterBox.find('span').first();
+      const clearIcon = filterBox.find('span').first();
 
       filterBoxInstance.filterInput.value = 'something';
 
@@ -141,7 +141,7 @@ describe('FilterBox', () => {
     });
 
     it('should focus the filter box input when clicking the clear icon', () => {
-      let clearIcon = filterBox.find('span').first();
+      const clearIcon = filterBox.find('span').first();
 
       expect(filterBoxInstance.filterInput).not.toBe(document.activeElement as HTMLInputElement);
 
@@ -150,9 +150,9 @@ describe('FilterBox', () => {
     });
 
     it('should set container class when the container class is specified', () => {
-      let containerClass = 'mod-small';
-      let containerClasses = [containerClass];
-      let container = filterBox.find('div').first();
+      const containerClass = 'mod-small';
+      const containerClasses = [containerClass];
+      const container = filterBox.find('div').first();
       expect(container.hasClass(containerClass)).toBe(false);
 
       filterBox.setProps({ id: id, containerClasses });

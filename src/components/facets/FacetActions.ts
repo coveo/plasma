@@ -7,7 +7,7 @@ export const FacetActions = {
   changeFacet: 'CHANGE_FACET',
   emptyFacet: 'EMPTY_FACET',
   toggleMoreFacetRows: 'TOGGLE_MORE_FACET_ROWS',
-  closeMoreFacetRows: 'CLOSE_MORE_FACET_ROWS'
+  closeMoreFacetRows: 'CLOSE_MORE_FACET_ROWS',
 };
 
 export interface IFacetActionPayload {
@@ -21,42 +21,42 @@ export interface IChangeFacetActionPayload extends IFacetActionPayload {
 export const addFacet = (facet: string): IReduxAction<IFacetActionPayload> => ({
   type: FacetActions.addFacet,
   payload: {
-    facet
-  }
+    facet,
+  },
 });
 
 export const removeFacet = (facet: string): IReduxAction<IFacetActionPayload> => ({
   type: FacetActions.removeFacet,
   payload: {
-    facet
-  }
+    facet,
+  },
 });
 
 export const changeFacet = (facet: string, facetRow: IFacet): IReduxAction<IChangeFacetActionPayload> => ({
   type: FacetActions.changeFacet,
   payload: {
     facet,
-    facetRow
-  }
+    facetRow,
+  },
 });
 
 export const emptyFacet = (facet: string): IReduxAction<IFacetActionPayload> => ({
   type: FacetActions.emptyFacet,
   payload: {
-    facet
-  }
+    facet,
+  },
 });
 
 export const toggleMoreFacetRows = (facet: string): IReduxAction<IFacetActionPayload> => ({
   type: FacetActions.toggleMoreFacetRows,
   payload: {
-    facet
-  }
+    facet,
+  },
 });
 
 export const closeMoreFacetRows = (): IReduxAction<IFacetActionPayload> => ({
   type: FacetActions.closeMoreFacetRows,
   payload: {
-    facet: ''
-  }
+    facet: '',
+  },
 });

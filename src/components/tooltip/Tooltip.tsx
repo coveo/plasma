@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { OverlayTrigger, Tooltip as BootstrapTooltip } from 'react-bootstrap';
 import * as _ from 'underscore';
-import * as React from 'react';
 
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
 export interface IOverlayTriggerProps {

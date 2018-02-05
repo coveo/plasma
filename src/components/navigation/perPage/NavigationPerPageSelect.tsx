@@ -11,8 +11,8 @@ export interface INavigationPerPageSelectProps extends INavigationPerPageSelectO
 export class NavigationPerPageSelect extends React.Component<INavigationPerPageSelectProps, any> {
 
   render() {
-    let selectClasses: string = 'flat-select-option' + (this.props.selected ? '' : ' selectable');
-    let spanClasses: string = 'enabled' + (this.props.selected ? ' selected-value state-selected' : '');
+    const selectClasses: string = 'flat-select-option' + (this.props.selected ? '' : ' selectable');
+    const spanClasses: string = 'enabled' + (this.props.selected ? ' selected-value state-selected' : '');
 
     return (
       <a className={selectClasses} onClick={() => this.props.onPerPageClick(this.props.perPageNb)}>

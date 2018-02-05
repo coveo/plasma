@@ -1,14 +1,14 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import { HeaderWrapper, IHeaderWrapperProps } from '../HeaderWrapper';
-import { TabsHeader } from '../TabsHeader';
+import * as React from 'react';
+import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
 import { clearState } from '../../../utils/ReduxUtils';
-import { Provider } from 'react-redux';
+import { TestUtils } from '../../../utils/TestUtils';
 import { Button } from '../../button/Button';
 import { Content, IContentProps } from '../../content/Content';
+import { HeaderWrapper, IHeaderWrapperProps } from '../HeaderWrapper';
+import { TabsHeader } from '../TabsHeader';
 
 describe('<HeaderWrapper/>', () => {
 

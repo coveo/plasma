@@ -1,132 +1,132 @@
-import {
-  ISubNavigationState,
-  subNavigationsReducer,
-  subNavigationReducer,
-  subNavigationsInitialState,
-  subNavigationInitialState
-} from '../SubNavigationReducers';
+import { findWhere } from 'underscore';
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { ISubNavigationActionPayload, SubNavigationActions } from '../SubNavigationActions';
-import { findWhere } from 'underscore';
+import {
+  ISubNavigationState,
+  subNavigationInitialState,
+  subNavigationReducer,
+  subNavigationsInitialState,
+  subNavigationsReducer,
+} from '../SubNavigationReducers';
 
 describe('Reducers', () => {
   describe('subNavigations', () => {
-    let genericAction: IReduxAction<ISubNavigationActionPayload> = {
+    const genericAction: IReduxAction<ISubNavigationActionPayload> = {
       type: 'DO_SOMETHING',
       payload: {
-        id: 'sub-navigation'
-      }
+        id: 'sub-navigation',
+      },
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: ISubNavigationState[] = undefined;
-      let newState: ISubNavigationState[] = subNavigationsReducer(oldState, genericAction);
+      let oldState: ISubNavigationState[];
+      const newState: ISubNavigationState[] = subNavigationsReducer(oldState, genericAction);
 
       expect(newState).toBe(subNavigationsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one sub navigation', () => {
-      let oldState: ISubNavigationState = undefined;
-      let newState: ISubNavigationState = subNavigationReducer(oldState, genericAction);
+      let oldState: ISubNavigationState;
+      const newState: ISubNavigationState = subNavigationReducer(oldState, genericAction);
 
       expect(newState).toBe(subNavigationInitialState);
     });
 
     it('should return the old state when the action is not defined', () => {
-      let oldState: ISubNavigationState[] = [subNavigationInitialState];
-      let newState: ISubNavigationState[] = subNavigationsReducer(oldState, genericAction);
+      const oldState: ISubNavigationState[] = [subNavigationInitialState];
+      const newState: ISubNavigationState[] = subNavigationsReducer(oldState, genericAction);
 
       expect(newState).toBe(oldState);
     });
 
     it('should return the old state when the action is not defined for one facet', () => {
-      let oldState: ISubNavigationState = subNavigationInitialState;
-      let newState: ISubNavigationState = subNavigationReducer(oldState, genericAction);
+      const oldState: ISubNavigationState = subNavigationInitialState;
+      const newState: ISubNavigationState = subNavigationReducer(oldState, genericAction);
 
       expect(newState).toBe(oldState);
     });
 
     it('should return the old state with one more SubNavigationState when the action is "ADD_SUB_NAVIGATION"', () => {
       let oldState: ISubNavigationState[] = subNavigationsInitialState;
-      let action: IReduxAction<ISubNavigationActionPayload> = {
+      const action: IReduxAction<ISubNavigationActionPayload> = {
         type: SubNavigationActions.add,
         payload: {
-          id: 'one'
-        }
+          id: 'one',
+        },
       };
       let newState: ISubNavigationState[] = subNavigationsReducer(oldState, action);
 
       expect(newState.length).toBe(oldState.length + 1);
-      expect(newState.filter(subNav => subNav.id === action.payload.id).length).toBe(1);
+      expect(newState.filter((subNav) => subNav.id === action.payload.id).length).toBe(1);
 
       oldState = newState;
       action.payload.id = 'two';
       newState = subNavigationsReducer(oldState, action);
 
       expect(newState.length).toBe(oldState.length + 1);
-      expect(newState.filter(subNav => subNav.id === action.payload.id).length).toBe(1);
+      expect(newState.filter((subNav) => subNav.id === action.payload.id).length).toBe(1);
     });
 
     it('should return the old state without the SubNavigationState with the action facet when the action is "REMOVE_SUB_NAVIGATION"',
       () => {
-        let firstIdtoRemove = 'sub-nav-3';
-        let secondIdtoRemove = 'sub-nav-2';
+        const firstIdtoRemove = 'sub-nav-3';
+        const secondIdtoRemove = 'sub-nav-2';
         let oldState: ISubNavigationState[] = [
           {
             id: secondIdtoRemove,
-            selected: ''
+            selected: '',
           }, {
             id: firstIdtoRemove,
-            selected: 'one'
+            selected: 'one',
           }, {
             id: 'sub-nav-1',
-            selected: 'test'
-          }
+            selected: 'test',
+          },
         ];
-        let action: IReduxAction<ISubNavigationActionPayload> = {
+        const action: IReduxAction<ISubNavigationActionPayload> = {
           type: SubNavigationActions.remove,
           payload: {
-            id: firstIdtoRemove
-          }
+            id: firstIdtoRemove,
+          },
         };
         let newState: ISubNavigationState[] = subNavigationsReducer(oldState, action);
 
         expect(newState.length).toBe(oldState.length - 1);
-        expect(newState.filter(subNav => subNav.id === action.payload.id).length).toBe(0);
+        expect(newState.filter((subNav) => subNav.id === action.payload.id).length).toBe(0);
 
         oldState = newState;
         action.payload.id = secondIdtoRemove;
         newState = subNavigationsReducer(oldState, action);
 
         expect(newState.length).toBe(oldState.length - 1);
-        expect(newState.filter(subNav => subNav.id === action.payload.id).length).toBe(0);
+        expect(newState.filter((subNav) => subNav.id === action.payload.id).length).toBe(0);
       });
 
     it('should set the selected value in SubNavigationState when the action is "SELECT_SUB_NAVIGATION"', () => {
-      let firstIdToSet = 'sub-nav-1';
-      let firstExpectedSelected = 'k';
+      const firstIdToSet = 'sub-nav-1';
+      const firstExpectedSelected = 'k';
 
-      let secondIdToSet = 'sub-nav-2';
-      let secondExpectedSelected = 'k-again';
+      const secondIdToSet = 'sub-nav-2';
+      const secondExpectedSelected = 'k-again';
 
-      let oldState: ISubNavigationState[] = [
+      const oldState: ISubNavigationState[] = [
         {
           id: secondIdToSet,
-          selected: ''
+          selected: '',
         }, {
           id: 'sub-nav-3',
-          selected: 'one'
+          selected: 'one',
         }, {
           id: firstIdToSet,
-          selected: 'test'
-        }
+          selected: 'test',
+        },
       ];
-      let action: IReduxAction<ISubNavigationActionPayload> = {
+      const action: IReduxAction<ISubNavigationActionPayload> = {
         type: SubNavigationActions.select,
         payload: {
           id: firstIdToSet,
           selected: firstExpectedSelected,
-        }
+        },
       };
       let newState: ISubNavigationState[] = subNavigationsReducer(oldState, action);
 

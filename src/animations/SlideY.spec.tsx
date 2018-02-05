@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { shallow } from 'enzyme';
-import { SlideY, onEntering, onExiting } from './SlideY';
+import * as React from 'react';
+import { onEntering, onExiting, SlideY } from './SlideY';
 
 describe('SlideY', () => {
   const dummyTimeout = 400;

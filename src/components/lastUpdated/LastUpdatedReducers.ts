@@ -1,7 +1,7 @@
-import { LastUpdatedActions } from './LastUpdatedActions';
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { LastUpdatedActions } from './LastUpdatedActions';
 
 export interface ILastUpdatedState {
   id: string;
@@ -16,14 +16,14 @@ export const lastUpdatedReducer = (state: ILastUpdatedState = lastUpdatedInitial
     case LastUpdatedActions.addLastUpdated:
       return {
         id: action.payload.id,
-        time: state.time
+        time: state.time,
       };
     case LastUpdatedActions.changeLastUpdated:
       if (state.id !== action.payload.id) {
         return state;
       }
       return _.extend({}, state, {
-        time: new Date()
+        time: new Date(),
       });
     default:
       return state;
@@ -35,7 +35,7 @@ export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpd
     case LastUpdatedActions.addLastUpdated:
       return [
         ...state,
-        lastUpdatedReducer(undefined, action)
+        lastUpdatedReducer(undefined, action),
       ];
     case LastUpdatedActions.removeLastUpdated:
       return _.reject(state, (lastUpdated: ILastUpdatedState) => {
@@ -43,7 +43,7 @@ export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpd
       });
     case LastUpdatedActions.changeLastUpdated:
       return state.map((lastUpdated: ILastUpdatedState) =>
-        lastUpdatedReducer(lastUpdated, action)
+        lastUpdatedReducer(lastUpdated, action),
       );
     default:
       return state;

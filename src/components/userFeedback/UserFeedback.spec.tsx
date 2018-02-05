@@ -1,16 +1,16 @@
 import { shallow, ShallowWrapper } from 'enzyme';
-import { extend, all } from 'underscore';
-import { UserFeedback, UserFeedbackState, IUserFeedbackProps, TextColorClass } from './UserFeedback';
-import { DisplayClass } from '../../utils/ComponentUtils';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { all, extend } from 'underscore';
+import { DisplayClass } from '../../utils/ComponentUtils';
+import { IUserFeedbackProps, TextColorClass, UserFeedback, UserFeedbackState } from './UserFeedback';
 
 describe('<UserFeedback>', () => {
   const getShallowOutput = (feedbackText: string, state: string, extraClasses?: string[], displayOnShow?: string): ShallowWrapper<IUserFeedbackProps, any> => {
 
     let props: IUserFeedbackProps = {
       feedbackText,
-      state
+      state,
     };
 
     if (extraClasses) { props = extend(props, { extraClasses }); }
@@ -50,8 +50,8 @@ describe('<UserFeedback>', () => {
     describe('style for each state', () => {
       describe('non existent state', () => {
         it('should be invisible if state provided does not exist', () => {
-          let nonExistentState = 'NON_EXISTENT_STATE';
-          let emptyState = '';
+          const nonExistentState = 'NON_EXISTENT_STATE';
+          const emptyState = '';
 
           expect(getShallowOutput('', nonExistentState).hasClass(DisplayClass.HIDDEN)).toBe(true);
           expect(getShallowOutput('', emptyState).hasClass(DisplayClass.HIDDEN)).toBe(true);
@@ -81,7 +81,7 @@ describe('<UserFeedback>', () => {
         });
 
         it('should have the default text color class', () => {
-          let componentOnStateWarning = getShallowOutput('', UserFeedbackState.WARNING);
+          const componentOnStateWarning = getShallowOutput('', UserFeedbackState.WARNING);
           expect(componentOnStateWarning.hasClass(TextColorClass.default));
         });
       });
@@ -98,7 +98,7 @@ describe('<UserFeedback>', () => {
         });
 
         it('should have the error text color class', () => {
-          let componentOnStateError = getShallowOutput('', UserFeedbackState.ERROR);
+          const componentOnStateError = getShallowOutput('', UserFeedbackState.ERROR);
           expect(componentOnStateError.hasClass(TextColorClass.error));
         });
       });
@@ -106,9 +106,9 @@ describe('<UserFeedback>', () => {
 
     describe('constant classes', () => {
       it('should only have the text-[color] and display classes if no extraClasses are passed as prop', () => {
-        let testComponentValid = getShallowOutput('', UserFeedbackState.VALID);
-        let testComponentWarning = getShallowOutput('', UserFeedbackState.WARNING);
-        let testComponentError = getShallowOutput('', UserFeedbackState.ERROR);
+        const testComponentValid = getShallowOutput('', UserFeedbackState.VALID);
+        const testComponentWarning = getShallowOutput('', UserFeedbackState.WARNING);
+        const testComponentError = getShallowOutput('', UserFeedbackState.ERROR);
 
         // a trailing space will be left at the end of the class property if no extraClasses are passed as prop
         expect(/class=\"text-dark-grey hidden\"/.test(testComponentValid.html())).toBe(true);
@@ -117,13 +117,13 @@ describe('<UserFeedback>', () => {
       });
 
       it('should contain all classes passed through extraClasses, along with the text-[color] and display classes', () => {
-        let extraClass: string[] = ['onlyoneclass'];
-        let extraClasses: string[] = ['each', 'word', 'represents', 'a', 'class'];
-        let extraClassesRealLife: string[] = ['mt1', 'mb2'];
+        const extraClass: string[] = ['onlyoneclass'];
+        const extraClasses: string[] = ['each', 'word', 'represents', 'a', 'class'];
+        const extraClassesRealLife: string[] = ['mt1', 'mb2'];
         let testComponent: ShallowWrapper<IUserFeedbackProps, any> = getShallowOutput('', '', extraClass);
 
         const areClassesAddedToElement = (extraClasses: string[], shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>): boolean => {
-          let allClasses: string[] = extraClasses;
+          const allClasses: string[] = extraClasses;
           allClasses.unshift(TextColorClass.default, DisplayClass.HIDDEN);
 
           return all(allClasses, (className: string) => shallowWrapper.hasClass(className));

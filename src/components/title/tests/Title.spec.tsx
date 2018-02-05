@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
+import * as React from 'react';
 import * as _ from 'underscore';
-import { ITitleProps, Title } from '../Title';
-import { Tooltip } from '../../tooltip/Tooltip';
 import { ILinkSvgProps, LinkSvg } from '../../svg/LinkSvg';
+import { Tooltip } from '../../tooltip/Tooltip';
+import { ITitleProps, Title } from '../Title';
 
 describe('<Title/>', () => {
 

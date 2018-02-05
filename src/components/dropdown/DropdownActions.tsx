@@ -8,33 +8,33 @@ export const DropdownActions = {
   add: 'ADD_DROPDOWN',
   remove: 'REMOVE_DROPDOWN',
   toggle: 'TOGGLE_DROPDOWN',
-  close: 'CLOSE'
+  close: 'CLOSE',
 };
 
 export const addDropdown = (id: string): IReduxAction<IDropdownActionPayload> => ({
   type: DropdownActions.add,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const removeDropdown = (id: string): IReduxAction<IDropdownActionPayload> => ({
   type: DropdownActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const toggleDropdown = (id: string): IReduxAction<IDropdownActionPayload> => ({
   type: DropdownActions.toggle,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const closeDropdown = (id: string): IReduxAction<IDropdownActionPayload> => ({
   type: DropdownActions.close,
   payload: {
-    id
-  }
+    id,
+  },
 });

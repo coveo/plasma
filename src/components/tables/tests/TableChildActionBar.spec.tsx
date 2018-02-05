@@ -1,16 +1,16 @@
-import * as React from 'react';
-import * as _ from 'underscore';
-import { tablePropsMock } from './TableTestCommon';
-import { TableChildActionBar } from '../table-children/TableChildActionBar';
 import { mount } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
+import * as React from 'react';
+import { Provider, Store } from 'react-redux';
+import * as _ from 'underscore';
 import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
-import { ITableProps } from '../Table';
 import { ActionBarConnected } from '../../actions/ActionBarConnected';
-import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
 import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
+import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
+import { ITableProps } from '../Table';
+import { TableChildActionBar } from '../table-children/TableChildActionBar';
+import { tablePropsMock } from './TableTestCommon';
 
 describe('<TableChildActionBar />', () => {
   let store: Store<IReactVaporState>;

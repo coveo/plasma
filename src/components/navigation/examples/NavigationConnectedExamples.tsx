@@ -1,9 +1,9 @@
-import { INavigationOwnProps } from '../Navigation';
-import { turnOffLoading, LoadingActions } from '../../loading/LoadingActions';
-import { NavigationConnected } from '../NavigationConnected';
-import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
+import { LoadingActions, turnOffLoading } from '../../loading/LoadingActions';
+import { INavigationOwnProps } from '../Navigation';
+import { NavigationConnected } from '../NavigationConnected';
 
 const navigationConnectedExampleId = 'navigation-connected';
 const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedExampleId];
@@ -22,11 +22,11 @@ export class NavigationConnectedExamples extends React.Component<any, any> {
   }
 
   render() {
-    let navigationProps: INavigationOwnProps = {
+    const navigationProps: INavigationOwnProps = {
       id: navigationConnectedExampleId,
       totalPages: 10,
       totalEntries: 50,
-      loadingIds: navigationConnectedExampleLoadingIds
+      loadingIds: navigationConnectedExampleLoadingIds,
     };
     return (
       <div className='mt2'>

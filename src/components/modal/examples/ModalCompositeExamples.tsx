@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ModalComposite } from '../ModalComposite';
-import { Tooltip } from '../../tooltip/Tooltip';
 import { Svg } from '../../svg/Svg';
+import { Tooltip } from '../../tooltip/Tooltip';
+import { ModalComposite } from '../ModalComposite';
 
 export interface IModalExamplesState {
   isOpened: boolean;

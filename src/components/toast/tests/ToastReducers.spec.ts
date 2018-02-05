@@ -1,4 +1,6 @@
 import * as _ from 'underscore';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { IToastContainerActionPayload, ToastAction } from '../ToastActions';
 import {
   IToastsState,
   toastContainerInitialState,
@@ -6,16 +8,14 @@ import {
   toastsContainerInitialState,
   toastsContainerReducer,
 } from '../ToastReducers';
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IToastContainerActionPayload, ToastAction } from '../ToastActions';
 
 describe('Reducers', () => {
   describe('toastContainers', () => {
     const genericAction: IReduxAction<IToastContainerActionPayload> = {
       type: 'DO_SOMETHING',
       payload: {
-        id: 'toast-container'
-      }
+        id: 'toast-container',
+      },
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
@@ -55,7 +55,7 @@ describe('Reducers', () => {
       const toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
 
       expect(toastContainersState.length).toBe(oldState.length + 1);
-      expect(toastContainersState.filter(container => container.id === action.payload.id).length).toBe(1);
+      expect(toastContainersState.filter((container) => container.id === action.payload.id).length).toBe(1);
     });
 
     it('should return the old state without the ToastsState when the action is "REMOVE_TOAST_CONTAINER"', () => {
@@ -71,7 +71,7 @@ describe('Reducers', () => {
       const toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
 
       expect(toastContainersState.length).toBe(oldState.length - 1);
-      expect(toastContainersState.filter(container => container.id === action.payload.id).length).toBe(0);
+      expect(toastContainersState.filter((container) => container.id === action.payload.id).length).toBe(0);
     });
 
     it('should return the old state with one more ToastState when the action is "ADD_TOAST"', () => {

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ITableProps } from '../Table';
-import { getTableChildComponentId } from '../TableUtils';
-import { TableChildComponent } from '../TableConstants';
 import { NavigationConnected } from '../../navigation/NavigationConnected';
-
+import { ITableProps } from '../Table';
+import { TableChildComponent } from '../TableConstants';
+import { getTableChildComponentId } from '../TableUtils';
 
 export const TableChildNavigation = (props: ITableProps): JSX.Element => {
   const tableData = props.tableCompositeState.data || props.initialTableData;

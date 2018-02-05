@@ -59,7 +59,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     // If onToggle wasn't passed, Popover is uncontrolled and we set an initial state.
     if (!_.isFunction(this.props.onToggle)) {
       this.state = {
-        isOpen: !!this.props.isOpen
+        isOpen: !!this.props.isOpen,
       };
     }
   }
@@ -98,7 +98,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
       this.props.onToggle(isOpen);
     } else {
       this.setState({
-        isOpen: isOpen
+        isOpen: isOpen,
       });
     }
   }

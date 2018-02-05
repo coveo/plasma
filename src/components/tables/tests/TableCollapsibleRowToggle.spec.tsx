@@ -1,7 +1,7 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { TableCollapsibleRowToggle, ITableCollapsibleRowToggleProps } from '../TableCollapsibleRowToggle';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ITableCollapsibleRowToggleProps, TableCollapsibleRowToggle } from '../TableCollapsibleRowToggle';
 
 describe('Tables', () => {
 
@@ -10,7 +10,7 @@ describe('Tables', () => {
 
       expect(() => {
         shallow(
-          <TableCollapsibleRowToggle isExpanded={false} />
+          <TableCollapsibleRowToggle isExpanded={false} />,
         );
       }).not.toThrow();
     });
@@ -26,7 +26,7 @@ describe('Tables', () => {
 
       tableCollapsibleRowToggle = mount(
         <TableCollapsibleRowToggle isExpanded={isExpanded} />,
-        { attachTo: document.getElementById('AppTableBodyRow') }
+        { attachTo: document.getElementById('AppTableBodyRow') },
       );
     });
 
@@ -36,7 +36,7 @@ describe('Tables', () => {
     });
 
     it('should get if it is expanded as a prop', () => {
-      let isExpandedProp = tableCollapsibleRowToggle.props().isExpanded;
+      const isExpandedProp = tableCollapsibleRowToggle.props().isExpanded;
 
       expect(isExpandedProp).toBeDefined();
       expect(isExpandedProp).toBe(isExpanded);

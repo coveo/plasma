@@ -1,19 +1,19 @@
-import { IReactVaporState, IReduxActionsPayload } from '../../../ReactVapor';
-import {
-  IDropdownOption, IDropdownSearchDispatchProps, IDropdownSearchOwnProps, IDropdownSearchProps,
-  IDropdownSearchStateProps
-} from './../DropdownSearch';
-import { IReduxAction, ReduxUtils } from '../../../utils/ReduxUtils';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
+import { IReactVaporState, IReduxActionsPayload } from '../../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../../utils/ReduxUtils';
 import {
+  addCustomSelectedOption,
   addMultiSelectDropdownSearch,
-  applyFilterDropdownSearch,
-  multiSelectOptionDropdownSearch, openDropdownSearch, closeDropdownSearch,
-  deselectAllOptionsMultiselectDropdownSearch,
-  removeDropdownSearch,
-  deselectOptionDropdownSearch, keyDownMultiselectDropdownSearch, addCustomSelectedOption,
+  applyFilterDropdownSearch, closeDropdownSearch, deselectAllOptionsMultiselectDropdownSearch,
+  deselectOptionDropdownSearch,
+  keyDownMultiselectDropdownSearch,
+  multiSelectOptionDropdownSearch, openDropdownSearch, removeDropdownSearch,
 } from '../DropdownSearchActions';
+import {
+  IDropdownOption, IDropdownSearchDispatchProps, IDropdownSearchOwnProps, IDropdownSearchProps,
+  IDropdownSearchStateProps,
+} from './../DropdownSearch';
 import { IDropdownSearchState } from './../DropdownSearchReducers';
 import { MultiSelectDropdownSearch } from './MultiSelectDropdownSearch';
 
@@ -34,7 +34,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-  ownProps: IDropdownSearchOwnProps): IDropdownSearchDispatchProps => ({
+                            ownProps: IDropdownSearchOwnProps): IDropdownSearchDispatchProps => ({
     onMount: () => dispatch(addMultiSelectDropdownSearch(ownProps.id, ownProps.defaultOptions)),
     onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
     onBlur: (options: IDropdownOption[]) => dispatch(closeDropdownSearch(ownProps.id, options)),

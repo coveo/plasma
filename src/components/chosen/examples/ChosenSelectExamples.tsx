@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ChosenSelect } from '../ChosenSelect';
 import * as _ from 'underscore';
+import { ChosenSelect } from '../ChosenSelect';
 
 export class ChosenSelectExamples extends React.Component<any, any> {
 

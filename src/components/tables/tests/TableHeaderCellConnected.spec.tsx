@@ -1,13 +1,13 @@
-import { TableHeaderCellConnected } from '../TableHeaderCellConnected';
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { clearState } from '../../../utils/ReduxUtils';
 import * as React from 'react';
-import { ITableHeaderCellProps, TableHeaderCell } from '../TableHeaderCell';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
 import { TableSortingOrder } from '../TableConstants';
+import { ITableHeaderCellProps, TableHeaderCell } from '../TableHeaderCell';
+import { TableHeaderCellConnected } from '../TableHeaderCellConnected';
 
 describe('Tables', () => {
   describe('<TableHeaderCellConnected />', () => {
@@ -37,7 +37,7 @@ describe('Tables', () => {
             </thead>
           </table>
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       tableHeaderCell = wrapper.find(TableHeaderCell).first();
     });

@@ -1,13 +1,13 @@
 import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { UUID } from '../../../utils/UUID';
-import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
 import * as _ from 'underscore';
-import { FilterBox } from '../../filterBox/FilterBox';
 import { keyCode } from '../../../utils/InputUtils';
-import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
+import { UUID } from '../../../utils/UUID';
 import { Content } from '../../content/Content';
+import { FilterBox } from '../../filterBox/FilterBox';
+import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
+import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();

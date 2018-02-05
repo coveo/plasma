@@ -1,7 +1,7 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Input, IInputProps } from '../Input';
+import { IInputProps, Input } from '../Input';
 import { Label } from '../Label';
 
 describe('Input', () => {
@@ -9,7 +9,7 @@ describe('Input', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Input />
+          <Input />,
         );
       }).not.toThrow();
     });
@@ -21,7 +21,7 @@ describe('Input', () => {
     beforeEach(() => {
       input = mount(
         <Input />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -93,7 +93,6 @@ describe('Input', () => {
       input.setProps({ type }).mount();
       expect(innerInput.prop('type')).toBe(type);
     });
-
 
     it('should call prop onBlur on inner input blur', () => {
       const blurSpy = jasmine.createSpy('onBlur');

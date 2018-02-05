@@ -1,22 +1,22 @@
+import * as React from 'react';
+import { connect } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { MONTH_PICKER_ID, YEAR_PICKER_ID } from '../calendar/Calendar';
+import { addDropdown, closeDropdown, removeDropdown, toggleDropdown } from '../dropdown/DropdownActions';
+import { IDropdownState } from '../dropdown/DropdownReducers';
+import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
+import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
+import { applyDatePicker, DateLimits, resetDatePickers, selectDate } from './DatePickerActions';
 import {
-  IDatePickerDropdownProps,
   DatePickerDropdown,
   IDatePickerDropdownDispatchProps,
   IDatePickerDropdownOwnProps,
-  IDatePickerDropdownStateProps
+  IDatePickerDropdownProps,
+  IDatePickerDropdownStateProps,
 } from './DatePickerDropdown';
-import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from '../dropdown/DropdownActions';
-import { IDropdownState } from '../dropdown/DropdownReducers';
-import { applyDatePicker, resetDatePickers, selectDate, DateLimits } from './DatePickerActions';
-import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { IDatePickerState } from './DatePickerReducers';
-import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
-import { MONTH_PICKER_ID, YEAR_PICKER_ID } from '../calendar/Calendar';
-import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { connect } from 'react-redux';
-import * as React from 'react';
-import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
   const item: IDropdownState = _.findWhere(state.dropdowns, { id: ownProps.id });
@@ -29,7 +29,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownO
   return {
     isOpened: item && item.opened,
     datePicker: datePickers.length ? datePickers[0] : null,
-    withReduxState: true
+    withReduxState: true,
   };
 };
 
@@ -56,7 +56,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
       dispatch(resetOptionPickers(ownProps.id));
       dispatch(closeDropdown(ownProps.id));
     }
-  }
+  },
 });
 
 export const DatePickerDropdownConnected: React.ComponentClass<IDatePickerDropdownProps> =

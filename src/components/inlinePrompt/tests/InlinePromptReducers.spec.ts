@@ -1,128 +1,128 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IPromptActionPayload, PromptActions, IAddPromptActionPayload } from '../InlinePromptActions';
+import { IAddPromptActionPayload, IPromptActionPayload, PromptActions } from '../InlinePromptActions';
 import {
   IPromptState,
-  promptsReducer,
-  promptsInitialState,
   promptInitialState,
-  promptReducer
+  promptReducer,
+  promptsInitialState,
+  promptsReducer,
 } from '../InlinePromptReducers';
 
 describe('InlinePrompt', () => {
 
   describe('prompts', () => {
-    let genericAction: IReduxAction<IPromptActionPayload> = {
+    const genericAction: IReduxAction<IPromptActionPayload> = {
       type: 'DO_SOMETHING',
       payload: {
-        id: 'some-prompt'
-      }
+        id: 'some-prompt',
+      },
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IPromptState[] = undefined;
-      let promptsState: IPromptState[] = promptsReducer(oldState, genericAction);
+      let oldState: IPromptState[];
+      const promptsState: IPromptState[] = promptsReducer(oldState, genericAction);
 
       expect(promptsState).toBe(promptsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one prompt', () => {
-      let oldState: IPromptState = undefined;
-      let promptState: IPromptState = promptReducer(oldState, genericAction);
+      let oldState: IPromptState;
+      const promptState: IPromptState = promptReducer(oldState, genericAction);
 
       expect(promptState).toBe(promptInitialState);
     });
 
     it('should return the old state when the action is not defined', () => {
-      let oldState: IPromptState[] = [promptInitialState];
-      let promptsState: IPromptState[] = promptsReducer(oldState, genericAction);
+      const oldState: IPromptState[] = [promptInitialState];
+      const promptsState: IPromptState[] = promptsReducer(oldState, genericAction);
 
       expect(promptsState).toBe(oldState);
     });
 
     it('should return the old state when the action is not defined for one prompt', () => {
-      let oldState: IPromptState = promptInitialState;
-      let promptState: IPromptState = promptReducer(oldState, genericAction);
+      const oldState: IPromptState = promptInitialState;
+      const promptState: IPromptState = promptReducer(oldState, genericAction);
 
       expect(promptState).toBe(oldState);
     });
 
     it('should return the old state with one more PromptState when the action is "ADD_PROMPT"', () => {
       let oldState: IPromptState[] = promptsInitialState;
-      let action: IReduxAction<IAddPromptActionPayload> = {
+      const action: IReduxAction<IAddPromptActionPayload> = {
         type: PromptActions.add,
         payload: {
           id: 'some-prompt',
-          options: { userChoice: undefined, onClick: undefined }
-        }
+          options: { userChoice: undefined, onClick: undefined },
+        },
       };
       let promptsState: IPromptState[] = promptsReducer(oldState, action);
 
       expect(promptsState.length).toBe(oldState.length + 1);
-      expect(promptsState.filter(prompt => prompt.id === action.payload.id).length).toBe(1);
+      expect(promptsState.filter((prompt) => prompt.id === action.payload.id).length).toBe(1);
 
       oldState = promptsState;
       action.payload.id = 'some-prompt2';
       promptsState = promptsReducer(oldState, action);
 
       expect(promptsState.length).toBe(oldState.length + 1);
-      expect(promptsState.filter(prompt => prompt.id === action.payload.id).length).toBe(1);
+      expect(promptsState.filter((prompt) => prompt.id === action.payload.id).length).toBe(1);
     });
 
     it('should return the old state without the PromptState with the prompt id when the action is "REMOVE_PROMPT', () => {
       let oldState: IPromptState[] = [
         {
           id: 'some-prompt2',
-          options: { userChoice: undefined, onClick: undefined }
+          options: { userChoice: undefined, onClick: undefined },
         }, {
           id: 'some-prompt',
-          options: { userChoice: undefined, onClick: undefined }
+          options: { userChoice: undefined, onClick: undefined },
         }, {
           id: 'some-prompt3',
-          options: { userChoice: undefined, onClick: undefined }
-        }
+          options: { userChoice: undefined, onClick: undefined },
+        },
       ];
-      let action: IReduxAction<IPromptActionPayload> = {
+      const action: IReduxAction<IPromptActionPayload> = {
         type: PromptActions.remove,
         payload: {
-          id: 'some-prompt'
-        }
+          id: 'some-prompt',
+        },
       };
       let promptsState: IPromptState[] = promptsReducer(oldState, action);
 
       expect(promptsState.length).toBe(oldState.length - 1);
-      expect(promptsState.filter(prompt => prompt.id === action.payload.id).length).toBe(0);
+      expect(promptsState.filter((prompt) => prompt.id === action.payload.id).length).toBe(0);
 
       oldState = promptsState;
       action.payload.id = 'some-prompt2';
       promptsState = promptsReducer(oldState, action);
 
       expect(promptsState.length).toBe(oldState.length - 1);
-      expect(promptsState.filter(prompt => prompt.id === action.payload.id).length).toBe(0);
+      expect(promptsState.filter((prompt) => prompt.id === action.payload.id).length).toBe(0);
     });
 
     it('should return the old state when the action is "REMOVE_PROMPT" and the prompt id does not exist', () => {
-      let oldState: IPromptState[] = [
+      const oldState: IPromptState[] = [
         {
           id: 'some-prompt2',
-          options: { userChoice: undefined, onClick: undefined }
+          options: { userChoice: undefined, onClick: undefined },
         }, {
           id: 'some-prompt',
-          options: { userChoice: undefined, onClick: undefined }
+          options: { userChoice: undefined, onClick: undefined },
         }, {
           id: 'some-prompt3',
-          options: { userChoice: undefined, onClick: undefined }
-        }
+          options: { userChoice: undefined, onClick: undefined },
+        },
       ];
-      let action: IReduxAction<IPromptActionPayload> = {
+      const action: IReduxAction<IPromptActionPayload> = {
         type: PromptActions.remove,
         payload: {
-          id: 'some-prompt4'
-        }
+          id: 'some-prompt4',
+        },
       };
-      let promptsState: IPromptState[] = promptsReducer(oldState, action);
+      const promptsState: IPromptState[] = promptsReducer(oldState, action);
 
       expect(promptsState.length).toBe(oldState.length);
-      expect(promptsState.filter(prompt => prompt.id === action.payload.id).length).toBe(0);
+      expect(promptsState.filter((prompt) => prompt.id === action.payload.id).length).toBe(0);
     });
   });
 });

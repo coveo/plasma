@@ -1,7 +1,7 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { ModalPrompt, IModalPromptProps, DEFAULT_MODAL_PROMPT_CONFIRM_LABEL, DEFAULT_MODAL_PROMPT_CANCEL_LABEL } from '../ModalPrompt';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { DEFAULT_MODAL_PROMPT_CANCEL_LABEL, DEFAULT_MODAL_PROMPT_CONFIRM_LABEL, IModalPromptProps, ModalPrompt } from '../ModalPrompt';
 
 describe('ModalPrompt', () => {
   const id: string = 'modalPrompt';
@@ -21,7 +21,7 @@ describe('ModalPrompt', () => {
             cancelLabel={cancelLabel}
             message={message}
             onConfirm={() => { }}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -40,7 +40,7 @@ describe('ModalPrompt', () => {
           message={message}
           onConfirm={() => { }}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -75,7 +75,7 @@ describe('ModalPrompt', () => {
           message={message}
           onConfirm={() => { }}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

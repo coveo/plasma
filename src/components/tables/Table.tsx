@@ -1,23 +1,23 @@
+import * as classNames from 'classnames';
+import * as React from 'react';
+import * as _ from 'underscore';
+import { JSXRenderable } from '../../utils/JSXUtils';
+import { IThunkAction } from '../../utils/ReduxUtils';
 import { IActionOptions } from '../actions/Action';
 import { IActionBarProps } from '../actions/ActionBar';
 import { IBlankSlateProps } from '../blankSlate/BlankSlate';
-import { IDropdownSearchProps, IDropdownOption } from '../dropdownSearch/DropdownSearch';
+import { IDropdownOption, IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
 import { IFilterBoxProps } from '../filterBox/FilterBox';
-import * as React from 'react';
-import * as _ from 'underscore';
-import { ITableCompositeState, ITableData } from './TableReducers';
-import { DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder } from './TableConstants';
-import { JSXRenderable } from '../../utils/JSXUtils';
 import { INavigationChildrenProps } from '../navigation/Navigation';
-import * as classNames from 'classnames';
-import { IThunkAction } from '../../utils/ReduxUtils';
 import { TableChildActionBar } from './table-children/TableChildActionBar';
-import { TableChildHeader } from './table-children/TableChildHeader';
-import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
 import { TableChildBlankSlate } from './table-children/TableChildBlankSlate';
-import { TableChildNavigation } from './table-children/TableChildNavigation';
+import { ITableBodyInheritedFromTableProps, TableChildBody } from './table-children/TableChildBody';
+import { TableChildHeader } from './table-children/TableChildHeader';
 import { TableChildLastUpdated } from './table-children/TableChildLastUpdated';
-import { TableChildBody, ITableBodyInheritedFromTableProps } from './table-children/TableChildBody';
+import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
+import { TableChildNavigation } from './table-children/TableChildNavigation';
+import { DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder } from './TableConstants';
+import { ITableCompositeState, ITableData } from './TableReducers';
 
 export interface IData {
   id: string;
