@@ -27,7 +27,7 @@ export interface IModalCompositeDispatchProps { }
 
 export interface IModalCompositeProps extends IModalCompositeOwnProps, IModalCompositeStateProps, IModalCompositeDispatchProps { }
 
-export class ModalComposite extends React.Component<IModalCompositeProps, {}> {
+export class ModalComposite extends React.Component<IModalCompositeProps> {
   static defaultProps: Partial<IModalCompositeProps> = {
     id: _.uniqueId('modal'),
   };
