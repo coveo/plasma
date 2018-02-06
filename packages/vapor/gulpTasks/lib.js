@@ -1,31 +1,31 @@
-var config = require('./configuration');
+const config = require('./configuration');
 
-var gulp = require('gulp-help')(require('gulp'));
-var fs = require('fs');
-var gulpif = require('gulp-if');
-var gutil = require('gulp-util');
-var gzip = require('gulp-gzip');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
+const gulp = require('gulp-help')(require('gulp'));
+const fs = require('fs');
+const gulpif = require('gulp-if');
+const gutil = require('gulp-util');
+const gzip = require('gulp-gzip');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
 
-var gzipOptions = config.gzipOptions;
+const gzipOptions = config.gzipOptions;
 
-var useMinifiedSources = gutil.env.min;
-var useGzippedSources = gutil.env.gzip;
+const useMinifiedSources = gutil.env.min;
+const useGzippedSources = gutil.env.gzip;
 
-gulp.task('lib', 'Concat and export libs to dist folder', function() {
-    var dependencies = [
+gulp.task('lib', 'Concat and export libs to dist folder', () => {
+    const dependencies = [
         './node_modules/coveo-slider/dist/js/Coveo.Slider.js',
         './node_modules/chosen-npm/public/chosen.jquery.js',
         './node_modules/materialize-css/js/jquery.easing.1.3.js',
         './node_modules/materialize-css/js/collapsible.js',
-        './lib/js/*'
+        './lib/js/*',
     ];
-    dependencies.forEach(function(path) {
-        fs.exists(path, function(exists) {
+    dependencies.forEach((path) => {
+        fs.exists(path, (exists) => {
             if (!exists) {
-                if (path.indexOf('*') == -1) {
+                if (path.indexOf('*') === -1) {
                     gutil.log(gutil.colors.red('File not found: ', path));
                     process.exit(1);
                 }
