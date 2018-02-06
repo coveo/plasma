@@ -1,16 +1,18 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import { IClassName } from '../../utils/ClassNameUtils';
 
 export interface IModalBodyProps {
-  classes?: string[];
+  classes?: IClassName;
 }
 
-export class ModalBody extends React.Component<IModalBodyProps, any> {
+export class ModalBody extends React.Component<IModalBodyProps, {}> {
 
   render() {
-    let classes = ['modal-body'].concat(this.props.classes);
+    const classes = classNames('modal-body', this.props.classes);
 
     return (
-      <div className={classes.join(' ')}>
+      <div className={classes}>
         {this.props.children}
       </div>
     );
