@@ -2,9 +2,9 @@
 // --min                        Flag to enable minification                                         Default: false
 // --gzip                       Flag to enable gziphication                                         Default: false
 
-var gulp = require('gulp-help')(require('gulp'));
-var requireDir = require('require-dir');
-var tasks = requireDir('./gulpTasks');
+const gulp = require('gulp-help')(require('gulp'));
+const requireDir = require('require-dir');
+const tasks = requireDir('./gulpTasks');
 
 gulp.task('default', 'Build sass, libs and sprites to the dist folder', [
     'sass',
@@ -12,10 +12,10 @@ gulp.task('default', 'Build sass, libs and sprites to the dist folder', [
     'copy:images',
     'copy:fonts',
     'copy:js',
-    'svg'
+    'svg',
 ]);
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
     gulp.watch('./scss/**/*', ['docs']);
     gulp.watch('./resources/js/**/*', ['copy:js']);
 });
