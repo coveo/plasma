@@ -2,6 +2,7 @@ import { ITableState, ITableCompositeState } from './TableReducers';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent, DEFAULT_TABLE_PER_PAGE } from './TableConstants';
 import * as _ from 'underscore';
+import * as moment from 'moment';
 import { contains } from 'underscore.string';
 import { ITableOwnProps, ITableHeadingAttribute, ITableRowData } from './Table';
 import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
@@ -87,9 +88,9 @@ export const applyDatePickerOnDisplayedIds = (
 ): string[] => {
   const { from, to } = tableCompositeState;
   const { datePicker } = tableOwnProps;
-  if (from && to && datePicker.attributeValue) {
+  if (from && to && datePicker && datePicker.attributeValue) {
     nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean => {
-      const rowDate = new Date(tableDataById[dataId][datePicker.attributeValue]);
+      const rowDate = moment(tableDataById[dataId][datePicker.attributeValue]).toDate();
       return rowDate >= from && rowDate <= to;
     });
   }

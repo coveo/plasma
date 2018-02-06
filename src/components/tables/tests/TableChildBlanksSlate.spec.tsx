@@ -48,6 +48,26 @@ describe('<TableChildBlankSlate />', () => {
         }).not.toThrow();
       });
 
+      it('should render without error if the table has a blankslate on action and from (datePicker) is non empty', () => {
+        expect(() => {
+          mountComponentWithProps({
+            ...tablePropsMock,
+            blankSlateNoResultsOnAction: { title: 'no results' },
+            tableCompositeState: { from: Date.now() }
+          } as any);
+        }).not.toThrow();
+      });
+
+      it('should render without error if the table has a blankslate on action and to (datePicker) is non empty', () => {
+        expect(() => {
+          mountComponentWithProps({
+            ...tablePropsMock,
+            blankSlateNoResultsOnAction: { title: 'no results' },
+            tableCompositeState: { to: Date.now() }
+          } as any);
+        }).not.toThrow();
+      });
+
       it('should render without error if the table has a blankslate on action and some predicates have a non default value', () => {
         expect(() => {
           mountComponentWithProps({
@@ -63,6 +83,24 @@ describe('<TableChildBlankSlate />', () => {
           mountComponentWithProps({
             ...tablePropsMock,
             tableCompositeState: { filter: 'non empty' }
+          } as any);
+        }).not.toThrow();
+      });
+
+      it('should render without error if the table has no blankslate on action and from (datePicker) is non empty', () => {
+        expect(() => {
+          mountComponentWithProps({
+            ...tablePropsMock,
+            tableCompositeState: { from: Date.now() }
+          } as any);
+        }).not.toThrow();
+      });
+
+      it('should render without error if the table has no blankslate on action and to (datePicker) is non empty', () => {
+        expect(() => {
+          mountComponentWithProps({
+            ...tablePropsMock,
+            tableCompositeState: { to: Date.now() }
           } as any);
         }).not.toThrow();
       });
@@ -128,6 +166,24 @@ describe('<TableChildBlankSlate />', () => {
         } as any).text()).toContain(blankslateTitleOnAction);
       });
 
+      it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and from (datePicker) is non empty', () => {
+        const blankslateTitleOnAction = 'no results on action!';
+        expect(mountComponentWithProps({
+          ...tablePropsMock,
+          blankSlateNoResultsOnAction: { title: blankslateTitleOnAction },
+          tableCompositeState: { from: Date.now() }
+        } as any).text()).toContain(blankslateTitleOnAction);
+      });
+
+      it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and to (datePicker) is non empty', () => {
+        const blankslateTitleOnAction = 'no results on action!';
+        expect(mountComponentWithProps({
+          ...tablePropsMock,
+          blankSlateNoResultsOnAction: { title: blankslateTitleOnAction },
+          tableCompositeState: { to: Date.now() }
+        } as any).text()).toContain(blankslateTitleOnAction);
+      });
+
       it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and some predicates have a non default value', () => {
         const blankslateTitleOnAction = 'no results on action!';
         expect(mountComponentWithProps({
@@ -141,6 +197,20 @@ describe('<TableChildBlankSlate />', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
           tableCompositeState: { filter: 'non empty' }
+        } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
+      });
+
+      it('should render blankSlateDefault if the table has no blankslate on action and from (datePicker) is non empty', () => {
+        expect(mountComponentWithProps({
+          ...tablePropsMock,
+          tableCompositeState: { from: Date.now() }
+        } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
+      });
+
+      it('should render blankSlateDefault if the table has no blankslate on action and to (datePicker) is non empty', () => {
+        expect(mountComponentWithProps({
+          ...tablePropsMock,
+          tableCompositeState: { to: Date.now() }
         } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
       });
 

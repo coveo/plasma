@@ -189,6 +189,24 @@ describe('<Table />', () => {
             .toBe(true);
         });
 
+        it('should return true if the from (datepicker) has changed and nothing else has', () => {
+          const nextTableCompositeState = {
+            ...tableProps.tableCompositeState,
+            from: Date.now(),
+          };
+          expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
+            .toBe(true);
+        });
+
+        it('should return true if the to (datepicker) has changed and nothing else has', () => {
+          const nextTableCompositeState = {
+            ...tableProps.tableCompositeState,
+            to: Date.now(),
+          };
+          expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
+            .toBe(true);
+        });
+
         it('should return true if the perPage has changed and nothing else has', () => {
           const nextTableCompositeState = {
             ...tableProps.tableCompositeState,

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { ITableProps, IData } from '../Table';
 import * as _ from 'underscore';
-import { internet } from 'faker';
+import * as moment from 'moment';
+import { internet, date } from 'faker';
 import { DEFAULT_TABLE_DATA } from '../TableConstants';
 import { IActionOptions } from '../../actions/Action';
+import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 
 export const tableOwnPropsMock: ITableProps = {
   id: 'super-table',
@@ -27,6 +29,10 @@ export const tableOwnPropsMock: ITableProps = {
       attributeName: 'password',
       titleFormatter: _.identity,
     },
+    {
+      attributeName: 'lastLogin',
+      titleFormatter: _.identity,
+    },
   ],
   blankSlateDefault: { title: 'super blankslate' },
 };
@@ -44,6 +50,7 @@ export const predictableData: IData = {
   avatar: 'whatever',
   userName: 'funkyUserName',
   password: 'lakjhdslfksh98323qasd',
+  lastLogin: moment().add(2, 'day').format('YYYY-MM-DD hh:mm:ss'),
   url: 'https://www.larrypage.com',
 };
 
@@ -52,6 +59,7 @@ export const dataById = _.range(10).reduce((byId, index) => {
   const avatar = internet.avatar();
   const userName = internet.userName();
   const password = internet.password();
+  const lastLogin = moment(date.recent(30)).format('YYYY-MM-DD hh:mm:ss');
 
   return {
     ...byId,
@@ -61,6 +69,7 @@ export const dataById = _.range(10).reduce((byId, index) => {
       avatar,
       userName,
       password,
+      lastLogin,
       url: index % 2 ? internet.url() : undefined,
     },
   };
@@ -97,6 +106,10 @@ export const tablePossibleProps = [
     ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
     predicates: [{ attributeName: 'email', attributeNameFormatter: _.identity, props: {} }],
   },
+  {
+    ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+    datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'date' },
+  },
   tablePropsMockWithData,
   { ...tablePropsMockWithData, navigation: true },
   { ...tablePropsMockWithData, navigation: true, actionBar: true },
@@ -107,5 +120,9 @@ export const tablePossibleProps = [
   {
     ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
     predicates: [{ attributeName: 'email', attributeNameFormatter: _.identity, props: {} }],
+  },
+  {
+    ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+    datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'date' },
   },
 ] as any;

@@ -1,6 +1,7 @@
 import {
   applyPredicatesOnDisplayedIds,
   applyFilterOnDisplayedIds,
+  applyDatePickerOnDisplayedIds,
   applySortOnDisplayedIds,
   applyPaginationOnDisplayedIds,
   dispatchPreTableStateModification,
@@ -16,7 +17,9 @@ import { getTableChildComponentId, getTableLoadingIds } from '../TableUtils';
 import { TableChildComponent, TableSortingOrder } from '../TableConstants';
 import { changeLastUpdated } from '../../lastUpdated/LastUpdatedActions';
 import * as _ from 'underscore';
+import * as moment from 'moment';
 import { TableActions } from '../TableActions';
+import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 
 describe('TableDataModifier', () => {
   describe('dispatchPreTableStateModification', () => {
@@ -197,6 +200,29 @@ describe('TableDataModifier', () => {
     it('should keep the first 5 only if perPage is 5 and page is 0', () => {
       expect(applyPaginationOnDisplayedIds([...displayedIds], { ...tableCompositeState, perPage: 5, page: 0 }))
         .toEqual(displayedIds.slice(5 * 0, 5 * 0 + 5));
+    });
+  });
+
+  describe('applyDatePickerOnDisplayedIds', () => {
+    const { tableCompositeState } = tablePropsMockWithData;
+    const { data } = tableCompositeState;
+    const { displayedIds } = data;
+
+    it('should return the same ids if the tableCompositeState has no from/to', () => {
+      expect(applyDatePickerOnDisplayedIds([...displayedIds], tableCompositeState, data.byId, tablePropsMockWithData))
+        .toEqual(displayedIds);
+    });
+
+    it('should only return the ids containing the dates inside the from/to if datepicker is defined', () => {
+      const from = moment().add(1, 'day').toDate();
+      const to = moment().add(3, 'day').toDate();
+
+      expect(applyDatePickerOnDisplayedIds(
+        [...displayedIds],
+        data.byId,
+        { ...tableCompositeState, from, to },
+        { ...tablePropsMockWithData, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'lastLogin' } },
+      )).toEqual([predictableData.id]);
     });
   });
 

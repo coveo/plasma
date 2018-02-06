@@ -234,7 +234,6 @@ export class TableExamples extends React.Component<any, any> {
             datePicker={{
               datesSelectionBoxes: SELECTION_BOXES_LONG,
               attributeValue: 'attribute5',
-              lowerLimitPlaceholder: moment().subtract(1, 'month').toDate().toISOString()
             }}
             blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
