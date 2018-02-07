@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { OverlayTrigger, Tooltip as BootstrapTooltip } from 'react-bootstrap';
 import * as _ from 'underscore';
-import * as React from 'react';
 
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
 export interface IOverlayTriggerProps {
@@ -9,12 +9,12 @@ export interface IOverlayTriggerProps {
   delay?: number;
   delayHide?: number;
   delayShow?: number;
-  onEnter?: Function;
-  onEntered?: Function;
-  onEntering?: Function;
-  onExit?: Function;
-  onExited?: Function;
-  onExiting?: Function;
+  onEnter?: (...args: any[]) => void;
+  onEntered?: (...args: any[]) => void;
+  onEntering?: (...args: any[]) => void;
+  onExit?: (...args: any[]) => void;
+  onExited?: (...args: any[]) => void;
+  onExiting?: (...args: any[]) => void;
   placement?: string;
   container?: string;
   rootClose?: boolean;

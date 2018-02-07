@@ -1,7 +1,7 @@
-import { IDay } from '../components/calendar/CalendarDay';
 import * as moment from 'moment';
-import * as _ from 'underscore';
 import { Moment } from 'moment';
+import * as _ from 'underscore';
+import { IDay } from '../components/calendar/CalendarDay';
 
 export interface IDateComponents {
   year?: number;
@@ -32,14 +32,14 @@ export class DateUtils {
   }
 
   static getMonthWeeks(firstDay: Date, startingDay: number): IDay[][] {
-    let weeks: IDay[][] = [];
+    const weeks: IDay[][] = [];
     let done = false;
     let date = moment(firstDay).startOf('week').add(startingDay, 'day');
     let monthIndex = date.month();
     let count = 0;
 
     while (!done) {
-      let days: IDay[] = [];
+      const days: IDay[] = [];
       for (let i = 0; i < 7; i++) {
         days.push({
           number: date.date(),
@@ -59,7 +59,7 @@ export class DateUtils {
   }
 
   static getDateWithTimeString(date: Date): string {
-    let dateMoment = moment(date);
+    const dateMoment = moment(date);
     if (!date || !dateMoment.isValid()) {
       return '';
     }
@@ -85,7 +85,7 @@ export class DateUtils {
   }
 
   static getSimpleDate(date: Date): string {
-    let dateMoment = moment(date);
+    const dateMoment = moment(date);
     if (!date || !dateMoment.isValid()) {
       return '';
     }

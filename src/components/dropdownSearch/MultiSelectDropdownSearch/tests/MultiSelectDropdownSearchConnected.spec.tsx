@@ -1,23 +1,23 @@
-import { UUID } from '../../../../utils/UUID';
-import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { IDropdownSearchProps } from '../../DropdownSearch';
+import * as React from 'react';
 import { Provider, Store } from 'react-redux';
+import * as _ from 'underscore';
 import { IReactVaporState } from '../../../../ReactVapor';
-import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearchConnected';
-import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
-import { TestUtils } from '../../../../utils/TestUtils';
+import { keyCode } from '../../../../utils/InputUtils';
 import { clearState } from '../../../../utils/ReduxUtils';
-import { defaultSelectedOptionPlaceholder } from '../../DropdownSearchReducers';
+import { TestUtils } from '../../../../utils/TestUtils';
+import { UUID } from '../../../../utils/UUID';
+import { IDropdownSearchProps } from '../../DropdownSearch';
 import {
   addCustomSelectedOption,
   applyFilterDropdownSearch,
   closeDropdownSearch,
   openDropdownSearch,
-  updateOptionsDropdownSearch
+  updateOptionsDropdownSearch,
 } from '../../DropdownSearchActions';
-import { keyCode } from '../../../../utils/InputUtils';
-import * as _ from 'underscore';
+import { defaultSelectedOptionPlaceholder } from '../../DropdownSearchReducers';
+import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
+import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearchConnected';
 
 describe('MultiSelectDropdownSearch', () => {
 
@@ -35,10 +35,10 @@ describe('MultiSelectDropdownSearch', () => {
       defaultOptions: defaultOptions,
     };
 
-    const renderMultiSelectDropdownSearchConnected = (props: IDropdownSearchProps) => {
+    const renderMultiSelectDropdownSearchConnected = (currentProps: IDropdownSearchProps) => {
       wrapper = mount(
         <Provider store={store}>
-          <MultiSelectDropdownSearchConnected {...props} />
+          <MultiSelectDropdownSearchConnected {...currentProps} />
         </Provider>,
         { attachTo: document.getElementById('App') },
       );
@@ -204,11 +204,11 @@ describe('MultiSelectDropdownSearch', () => {
       });
 
       it('should remove all selected option', () => {
-        const selectedOptionValue_1 = 'value_1';
-        const selectedOptionValue_2 = 'value_2';
+        const selectedOptionValue1 = 'value_1';
+        const selectedOptionValue2 = 'value_2';
 
-        store.dispatch(addCustomSelectedOption(id, selectedOptionValue_1));
-        store.dispatch(addCustomSelectedOption(id, selectedOptionValue_2));
+        store.dispatch(addCustomSelectedOption(id, selectedOptionValue1));
+        store.dispatch(addCustomSelectedOption(id, selectedOptionValue2));
 
         multiSelectDropdownSearchConnected.props().onRemoveAllSelectedOptions();
 

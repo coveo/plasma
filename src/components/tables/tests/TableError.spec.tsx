@@ -1,19 +1,19 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import {
-  IErrorSection, TableError, ITableErrorProps, DESCRIPTION_LABEL, TROUBLESHOOTING_LABEL,
-  ERROR_CODE_LABEL
-} from '../TableError';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import {
+  DESCRIPTION_LABEL, ERROR_CODE_LABEL, IErrorSection, ITableErrorProps, TableError,
+  TROUBLESHOOTING_LABEL,
+} from '../TableError';
 
 describe('Tables', () => {
-  let error: IErrorSection = {
+  const error: IErrorSection = {
     errorDescription: 'error',
     errorPrecision: 'the row is in error',
     errorTroubleshoot: 'you should do something',
     errorStatus: 'urgent',
-    errorCode: 'error_1'
+    errorCode: 'error_1',
   };
 
   describe('<TableError />', () => {
@@ -22,7 +22,7 @@ describe('Tables', () => {
         shallow(
           <TableError
             error={error}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -36,7 +36,7 @@ describe('Tables', () => {
         <TableError
           error={error}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -46,14 +46,14 @@ describe('Tables', () => {
     });
 
     it('should get the error as a prop', () => {
-      let errorProp = tableError.props().error;
+      const errorProp = tableError.props().error;
 
       expect(errorProp).toBeDefined();
       expect(errorProp).toBe(error);
     });
 
     it('should render an error-description-precision div if there is an error precision in the error', () => {
-      let errorNoPrecision = _.extend({}, error, { errorPrecision: undefined });
+      const errorNoPrecision = _.extend({}, error, { errorPrecision: undefined });
 
       expect(tableError.find('.error-description-precision').length).toBe(1);
 
@@ -63,7 +63,7 @@ describe('Tables', () => {
     });
 
     it('should display the error precision if there is an error precision in the error', () => {
-      let errorNoPrecision = _.extend({}, error, { errorPrecision: undefined });
+      const errorNoPrecision = _.extend({}, error, { errorPrecision: undefined });
 
       expect(tableError.html()).toContain(error.errorPrecision);
 
@@ -81,7 +81,7 @@ describe('Tables', () => {
     });
 
     it('should display the error troubleshoot if there is an erro troubleshoot in the error', () => {
-      let errorNoTroubleshoot = _.extend({}, error, { errorTroubleshoot: undefined });
+      const errorNoTroubleshoot = _.extend({}, error, { errorTroubleshoot: undefined });
 
       expect(tableError.html()).toContain(error.errorTroubleshoot);
 
@@ -95,7 +95,7 @@ describe('Tables', () => {
     });
 
     it('should display the description label passed as a prop or the default one', () => {
-      let expectedLabel = 'expected label';
+      const expectedLabel = 'expected label';
 
       expect(tableError.html()).toContain(DESCRIPTION_LABEL);
       expect(tableError.html()).not.toContain(expectedLabel);
@@ -106,7 +106,7 @@ describe('Tables', () => {
     });
 
     it('should display the troubleshooting label passed as a prop or the default one', () => {
-      let expectedLabel = 'expected label';
+      const expectedLabel = 'expected label';
 
       expect(tableError.html()).toContain(TROUBLESHOOTING_LABEL);
       expect(tableError.html()).not.toContain(expectedLabel);
@@ -117,7 +117,7 @@ describe('Tables', () => {
     });
 
     it('should display the error code label passed as a prop or the default one', () => {
-      let expectedLabel = 'expected label';
+      const expectedLabel = 'expected label';
 
       expect(tableError.html()).toContain(ERROR_CODE_LABEL);
       expect(tableError.html()).not.toContain(expectedLabel);

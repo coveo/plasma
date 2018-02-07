@@ -1,7 +1,7 @@
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../../ReactVapor';
-import { ItemFilterActions } from './ItemFilterActions';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../../ReactVapor';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { ItemFilterActions } from './ItemFilterActions';
 
 export interface IItemFilterState {
   id: string;
@@ -10,18 +10,18 @@ export interface IItemFilterState {
 
 export const itemFilterOriginalState: IItemFilterState = {
   id: undefined,
-  item: ''
+  item: '',
 };
 
 export const itemFiltersOriginalState: IItemFilterState[] = [];
 
 export const itemFilterReducer = (state: IItemFilterState = itemFilterOriginalState,
-  action: IReduxAction<IReduxActionsPayload>): IItemFilterState => {
+                                  action: IReduxAction<IReduxActionsPayload>): IItemFilterState => {
   switch (action.type) {
     case ItemFilterActions.add:
       return {
         id: action.payload.id,
-        item: state.item
+        item: state.item,
       };
     case ItemFilterActions.filter:
       if (state.id !== action.payload.id) {
@@ -30,7 +30,7 @@ export const itemFilterReducer = (state: IItemFilterState = itemFilterOriginalSt
 
       return {
         id: action.payload.id,
-        item: action.payload.item
+        item: action.payload.item,
       };
     default:
       return state;
@@ -38,12 +38,12 @@ export const itemFilterReducer = (state: IItemFilterState = itemFilterOriginalSt
 };
 
 export const itemFiltersReducer = (state: IItemFilterState[] = itemFiltersOriginalState,
-  action: IReduxAction<IReduxActionsPayload>): IItemFilterState[] => {
+                                   action: IReduxAction<IReduxActionsPayload>): IItemFilterState[] => {
   switch (action.type) {
     case ItemFilterActions.add:
       return [
         ...state,
-        itemFilterReducer(undefined, action)
+        itemFilterReducer(undefined, action),
       ];
     case ItemFilterActions.filter:
       return state.map((itemFilter: IItemFilterState) => itemFilterReducer(itemFilter, action));

@@ -1,6 +1,6 @@
-import { IUserChoice } from '../inlinePrompt/InlinePrompt';
-import { IBasicActionProps, Action, IConfirmData } from './Action';
 import * as React from 'react';
+import { IUserChoice } from '../inlinePrompt/InlinePrompt';
+import { Action, IBasicActionProps, IConfirmData } from './Action';
 
 export interface ITriggerActionOwnProps extends React.ClassAttributes<TriggerAction>, IBasicActionProps {
   confirmLabel?: string;
@@ -20,11 +20,11 @@ export const CONFIRM_LABEL: string = 'Are you sure?';
 export class TriggerAction extends React.Component<ITriggerActionProps, any> {
 
   private onTriggerAction() {
-    let confirmData: IConfirmData = this.props.action.requiresConfirmation;
+    const confirmData: IConfirmData = this.props.action.requiresConfirmation;
 
     if (confirmData && this.props.onTriggerConfirm) {
-      let confirmLabel: string = this.props.confirmLabel || CONFIRM_LABEL;
-      let icon: string = this.props.action.icon;
+      const confirmLabel: string = this.props.confirmLabel || CONFIRM_LABEL;
+      const icon: string = this.props.action.icon;
 
       this.props.onTriggerConfirm(
         () => {
@@ -40,10 +40,10 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
           description: confirmLabel,
           cancel: confirmData.buttonLabels.cancel,
           choices: {
-            confirm: confirmData.buttonLabels.confirm
-          }
+            confirm: confirmData.buttonLabels.confirm,
+          },
         },
-        confirmData.confirmType
+        confirmData.confirmType,
       );
     } else {
       if (this.props.action.trigger) {
@@ -54,7 +54,7 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
   }
 
   render() {
-    let actionClasses: string = this.props.action.enabled ? 'enabled' : (this.props.simple ? 'state-disabled' : 'disabled');
+    const actionClasses: string = this.props.action.enabled ? 'enabled' : (this.props.simple ? 'state-disabled' : 'disabled');
 
     return (
       <span onClick={() => this.onTriggerAction()} className={actionClasses} title={this.props.action.name}>

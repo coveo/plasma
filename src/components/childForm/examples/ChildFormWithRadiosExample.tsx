@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ChildForm } from '../ChildForm';
-import { RadioSelect } from '../../radio/RadioSelect';
-import { Radio } from '../../radio/Radio';
 import { Input } from '../../input/Input';
-import { ToggleForm } from '../ToggleForm';
 import { Label } from '../../input/Label';
+import { Radio } from '../../radio/Radio';
+import { RadioSelect } from '../../radio/RadioSelect';
+import { ChildForm } from '../ChildForm';
+import { ToggleForm } from '../ToggleForm';
 
 export interface IChildFormWithRadiosExamplesProps {
   defaultValue?: string;
@@ -35,7 +35,7 @@ export class ChildFormWithRadiosExamples extends React.Component<IChildFormWithR
     return (
       <div className='form-group'>
         <label className='form-control-label'>Child Form Element With Radio Buttons</label>
-        <RadioSelect value={this.state.value} onChange={(value => this.handleChange(value))}>
+        <RadioSelect value={this.state.value} onChange={((value) => this.handleChange(value))}>
           <Radio id={otherRadioValue} value={otherRadioValue} classes={['mb1']}>
             <Label>Option 1</Label>
           </Radio>

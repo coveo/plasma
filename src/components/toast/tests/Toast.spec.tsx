@@ -1,9 +1,8 @@
 // tslint:disable-next-line:no-unused-variable
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { mount, shallow, ReactWrapper } from 'enzyme';
 import { IToastProps, Toast, ToastType } from '../Toast';
-
 
 describe('Toasts', () => {
   let toastComponent: ReactWrapper<IToastProps, {}>;
@@ -151,7 +150,6 @@ describe('Toasts', () => {
       expect(newToastAttributes.onClose).not.toHaveBeenCalled();
 
       toastComponent.setProps(newToastAttributes).mount();
-
 
       toastComponent.find(closeSelector).simulate('click');
       expect(newToastAttributes.onClose).toHaveBeenCalledTimes(1);

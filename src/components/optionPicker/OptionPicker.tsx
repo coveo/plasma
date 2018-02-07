@@ -1,6 +1,6 @@
-import { IOption, Option } from './Option';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { IOption, Option } from './Option';
 
 export interface IOptionPickerOwnProps extends React.ClassAttributes<OptionPicker> {
   id?: string;
@@ -40,7 +40,7 @@ export class OptionPicker extends React.Component<IOptionPickerProps, any> {
   }
 
   render() {
-    let options: JSX.Element[] = _.map(this.props.options, (option: IOption, index: number) => {
+    const options: JSX.Element[] = _.map(this.props.options, (option: IOption, index: number) => {
 
       return <li key={`option-${this.props.id}-${index}`}>
         <Option

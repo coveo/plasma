@@ -1,6 +1,6 @@
-import { Svg } from '../svg/Svg';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { Svg } from '../svg/Svg';
 
 export interface IUserChoice {
   description?: string;
@@ -39,11 +39,11 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
     let className: string = `prompt-${this.props.options.className ? this.props.options.className : 'info'}`;
     className += this.props.options.isOpened ? ' opened' : '';
 
-    let icon: JSX.Element = this.props.options.userChoice.icon
+    const icon: JSX.Element = this.props.options.userChoice.icon
       ? <Svg svgName={this.props.options.userChoice.icon} className='prompt-icon' svgClass='icon mod-2x fill-medium-blue' />
       : null;
 
-    let choices: JSX.Element[] = _.map(this.props.options.userChoice.choices, (choice: string, index: string) => {
+    const choices: JSX.Element[] = _.map(this.props.options.userChoice.choices, (choice: string, index: string) => {
       return (
         <button
           type='button'
@@ -55,11 +55,11 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
       );
     });
 
-    let description: JSX.Element = this.props.options.userChoice.description ?
+    const description: JSX.Element = this.props.options.userChoice.description ?
       <span className='description'>{this.props.options.userChoice.description}</span> :
       null;
 
-    let cancel: JSX.Element = this.props.options.userChoice.cancel ?
+    const cancel: JSX.Element = this.props.options.userChoice.cancel ?
       <button type='button' className='btn cancel prompt-action enabled' onClick={() => { this.onCancelClick(); }}>
         {this.props.options.userChoice.cancel}
       </button> :

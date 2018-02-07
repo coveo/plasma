@@ -1,33 +1,33 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IActionOptions } from '../Action';
-import { ActionsDropdown, IActionsDropdownProps } from '../ActionsDropdown';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { IActionOptions } from '../Action';
+import { ActionsDropdown, IActionsDropdownProps } from '../ActionsDropdown';
 
 describe('Actions', () => {
   const actionLink: string = 'http://coveo.com';
   const actionTrigger: jasmine.Spy = jasmine.createSpy('methodTrigger');
 
-  let actions: IActionOptions[] = [{
+  const actions: IActionOptions[] = [{
     name: 'action',
     link: actionLink,
     target: '_blank',
-    enabled: true
+    enabled: true,
   }, {
     separator: true,
-    enabled: true
+    enabled: true,
   }, {
     name: 'action2',
     trigger: actionTrigger,
-    enabled: true
+    enabled: true,
   }];
 
   describe('<ActionsDropdown />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <ActionsDropdown actions={actions} />
+          <ActionsDropdown actions={actions} />,
         );
       }).not.toThrow();
     });
@@ -39,7 +39,7 @@ describe('Actions', () => {
     beforeEach(() => {
       actionsDropdown = mount(
         <ActionsDropdown actions={actions} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -49,7 +49,7 @@ describe('Actions', () => {
     });
 
     it('should get the actions as a prop', () => {
-      let actionsProp = actionsDropdown.props().actions;
+      const actionsProp = actionsDropdown.props().actions;
 
       expect(actionsProp).toBeDefined();
       expect(actionsProp.length).toBe(actions.length);
@@ -61,10 +61,10 @@ describe('Actions', () => {
     });
 
     it('should display separators if any', () => {
-      let separatorActionsLength = _.where(actions, { separator: true }).length;
+      const separatorActionsLength = _.where(actions, { separator: true }).length;
       expect(actionsDropdown.find('.divider').length).toBe(separatorActionsLength);
 
-      let newActions = _.reject(actions, (action) => {
+      const newActions = _.reject(actions, (action) => {
         return !!action.separator;
       });
       actionsDropdown.setProps({ actions: newActions });
@@ -72,10 +72,10 @@ describe('Actions', () => {
     });
 
     it('should display as many <LinkAction /> components as link actions', () => {
-      let linkActionsLength = _.where(actions, { link: actionLink }).length;
+      const linkActionsLength = _.where(actions, { link: actionLink }).length;
       expect(actionsDropdown.find('LinkAction').length).toBe(linkActionsLength);
 
-      let newActions = _.reject(actions, (action) => {
+      const newActions = _.reject(actions, (action) => {
         return !!action.link;
       });
       actionsDropdown.setProps({ actions: newActions });
@@ -83,10 +83,10 @@ describe('Actions', () => {
     });
 
     it('should display as many <TriggerAction/> components as trigger actions', () => {
-      let triggerActionsLength = _.where(actions, { trigger: actionTrigger }).length;
+      const triggerActionsLength = _.where(actions, { trigger: actionTrigger }).length;
       expect(actionsDropdown.find('TriggerAction').length).toBe(triggerActionsLength);
 
-      let newActions = _.reject(actions, (action) => {
+      const newActions = _.reject(actions, (action) => {
         return !!action.trigger;
       });
       actionsDropdown.setProps({ actions: newActions });

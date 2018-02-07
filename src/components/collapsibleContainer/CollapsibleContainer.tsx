@@ -1,11 +1,11 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import { SlideY } from '../../animations/SlideY';
+import { IClassName } from '../../utils/ClassNameUtils';
+import { JSXRenderable } from '../../utils/JSXUtils';
 import { LinkSvg } from '../svg/LinkSvg';
 import { Svg } from '../svg/Svg';
 import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
-import { IClassName } from '../../utils/ClassNameUtils';
-import { JSXRenderable } from '../../utils/JSXUtils';
 
 export interface ICollapsibleContainerOwnProps {
   id: string;
@@ -61,7 +61,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
       {
         'fill-orange': !!this.props.informationUrl,
         'fill-medium-grey': !this.props.informationUrl,
-      }
+      },
     );
   }
 

@@ -1,12 +1,12 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
-import { FacetMoreToggle, IFacetMoreToggleProps, FACET_TOGGLE_MORE_LABEL } from '../FacetMoreToggle';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { FACET_TOGGLE_MORE_LABEL, FacetMoreToggle, IFacetMoreToggleProps } from '../FacetMoreToggle';
 
 describe('Facets', () => {
-  let basicFacetMoreToggleProps: IFacetMoreToggleProps = {
-    facet: 'facetTitle'
+  const basicFacetMoreToggleProps: IFacetMoreToggleProps = {
+    facet: 'facetTitle',
   };
   describe('<FacetMoreToggle />', () => {
     it('should render without errors', () => {
@@ -14,7 +14,7 @@ describe('Facets', () => {
         shallow(
           <FacetMoreToggle
             {...basicFacetMoreToggleProps}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -28,7 +28,7 @@ describe('Facets', () => {
         <FacetMoreToggle
           {...basicFacetMoreToggleProps}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -38,15 +38,15 @@ describe('Facets', () => {
     });
 
     it('should get the facet as a prop', () => {
-      let facetProp = facetMoreToggle.props().facet;
+      const facetProp = facetMoreToggle.props().facet;
 
       expect(facetProp).toBeDefined();
       expect(facetProp).toBe(basicFacetMoreToggleProps.facet);
     });
 
     it('should display the moreLabel if passed as a prop else use the default label', () => {
-      let expectedMoreLabel = 'Show more rows';
-      let newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, { moreLabel: expectedMoreLabel });
+      const expectedMoreLabel = 'Show more rows';
+      const newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, { moreLabel: expectedMoreLabel });
 
       expect(facetMoreToggle.html()).toContain(FACET_TOGGLE_MORE_LABEL);
 
@@ -57,9 +57,9 @@ describe('Facets', () => {
     });
 
     it('should call onToggleMore on change if prop is set', () => {
-      let onToggleMoreSpy = jasmine.createSpy('onToggleMore');
-      let handleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
-      let newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, { onToggleMore: onToggleMoreSpy });
+      const onToggleMoreSpy = jasmine.createSpy('onToggleMore');
+      const handleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
+      const newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, { onToggleMore: onToggleMoreSpy });
 
       facetMoreToggle.find('input').simulate('change');
       expect(handleOnChangeSpy).toHaveBeenCalled();
@@ -68,9 +68,9 @@ describe('Facets', () => {
         <FacetMoreToggle
           {...newFacetMoreToggleProps}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
-      let newHandleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
+      const newHandleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
 
       facetMoreToggle.find('input').simulate('change');
       expect(newHandleOnChangeSpy).toHaveBeenCalled();
@@ -78,7 +78,7 @@ describe('Facets', () => {
     });
 
     it('should stop clicks from propagating their events', () => {
-      let generalEventSpy = jasmine.createSpy('generalEvent');
+      const generalEventSpy = jasmine.createSpy('generalEvent');
 
       document.addEventListener('click', generalEventSpy);
 

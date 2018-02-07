@@ -1,14 +1,14 @@
-import { TestUtils } from '../../../utils/TestUtils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
-import { FlatSelect, IFlatSelectProps } from '../FlatSelect';
-import { IReactVaporState } from '../../../ReactVapor';
 import { Provider, Store } from 'react-redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { UUID } from '../../../utils/UUID';
+import { FlatSelect, IFlatSelectProps } from '../FlatSelect';
+import { selectFlatSelect } from '../FlatSelectActions';
 import { FlatSelectConnected } from '../FlatSelectConnected';
 import { IFlatSelectOptionProps } from '../FlatSelectOption';
-import { clearState } from '../../../utils/ReduxUtils';
-import { selectFlatSelect } from '../FlatSelectActions';
-import { UUID } from '../../../utils/UUID';
 
 describe('FlatSelect', () => {
 
@@ -17,18 +17,18 @@ describe('FlatSelect', () => {
     let flatSelect: ReactWrapper<IFlatSelectProps, void>;
     let store: Store<IReactVaporState>;
 
-    let id: string = 'flatSelect';
+    const id: string = 'flatSelect';
     const defaultOptions: IFlatSelectOptionProps[] = [
       {
         id: UUID.generate(),
         option: {
           content: 'test',
-        }
+        },
       }, {
         id: UUID.generate(),
         option: {
           content: 'test 1',
-        }
+        },
       },
     ];
 

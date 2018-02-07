@@ -1,16 +1,16 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
-import { FacetMoreRows, IFacetMoreRowsProps } from '../FacetMoreRows';
-import { FilterBox } from '../../filterBox/FilterBox';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { FilterBox } from '../../filterBox/FilterBox';
+import { FacetMoreRows, IFacetMoreRowsProps } from '../FacetMoreRows';
 
 describe('Facets', () => {
-  let facet: string = 'facetTitle';
-  let facetRows: JSX.Element[] = [];
-  let basicFacetMoreRowsAttributes: IFacetMoreRowsProps = {
+  const facet: string = 'facetTitle';
+  const facetRows: JSX.Element[] = [];
+  const basicFacetMoreRowsAttributes: IFacetMoreRowsProps = {
     facet: facet,
-    facetRows: facetRows
+    facetRows: facetRows,
   };
 
   describe('<FacetMoreRows />', () => {
@@ -20,7 +20,7 @@ describe('Facets', () => {
           <FacetMoreRows
             facet={facet}
             facetRows={facetRows}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -35,7 +35,7 @@ describe('Facets', () => {
         <FacetMoreRows
           {...basicFacetMoreRowsAttributes}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       facetMoreRowsInstance = facetMoreRows.instance() as FacetMoreRows;
     });
@@ -46,14 +46,14 @@ describe('Facets', () => {
     });
 
     it('should get the facet as a prop', () => {
-      let facetProp = facetMoreRows.props().facet;
+      const facetProp = facetMoreRows.props().facet;
 
       expect(facetProp).toBeDefined();
       expect(facetProp).toBe(facet);
     });
 
     it('should get the facet rows as a prop', () => {
-      let facetRowsProp = facetMoreRows.props().facetRows;
+      const facetRowsProp = facetMoreRows.props().facetRows;
 
       expect(facetRowsProp).toBeDefined();
       expect(facetRowsProp).toBe(facetRows);
@@ -65,7 +65,7 @@ describe('Facets', () => {
     });
 
     it('should focus on the filter box input when opening', () => {
-      let newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { isOpened: true });
+      const newFacetAttributes = _.extend({}, basicFacetMoreRowsAttributes, { isOpened: true });
 
       expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).not.toBe(document.activeElement as HTMLInputElement);
 

@@ -11,7 +11,7 @@ export const DisplayClass = {
   INLINE_BLOCK: 'inline-block',
   HIDDEN: 'hidden',
   TABLE: 'table',
-  TABLE_CELL: 'table-cell'
+  TABLE_CELL: 'table-cell',
 };
 
 export type ComponentContent = (new () => React.Component) | string | (() => JSX.Element);

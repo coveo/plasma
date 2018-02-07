@@ -1,9 +1,9 @@
 // tslint:disable-next-line:no-unused-variable
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { mount, ReactWrapper, shallow } from 'enzyme';
-import { IToastContainerProps, ToastContainer } from '../ToastContainer';
 import { Toast } from '../Toast';
+import { IToastContainerProps, ToastContainer } from '../ToastContainer';
 
 describe('Toasts', () => {
   let component: ReactWrapper<IToastContainerProps, {}>;

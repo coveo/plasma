@@ -20,3 +20,6 @@ node_modules
 *.swo
 *.swp
 *.vi
+
+# package-lock.json
+package-lock.json

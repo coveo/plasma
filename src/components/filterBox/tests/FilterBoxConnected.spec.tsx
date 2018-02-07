@@ -1,14 +1,14 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { FilterBox, IFilterBoxProps } from '../FilterBox';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { FilterBoxConnected } from '../FilterBoxConnected';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { FilterBox, IFilterBoxProps } from '../FilterBox';
 import { filterThrough } from '../FilterBoxActions';
+import { FilterBoxConnected } from '../FilterBoxConnected';
 
 describe('FilterBox', () => {
   describe('<FilterBoxConnected />', () => {
@@ -28,7 +28,7 @@ describe('FilterBox', () => {
             id={id}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       filterBox = wrapper.find(FilterBox).first();
     });
@@ -40,26 +40,26 @@ describe('FilterBox', () => {
     });
 
     it('should get its id as a prop', () => {
-      let idProp = filterBox.props().id;
+      const idProp = filterBox.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRenderProp = filterBox.props().onRender;
+      const onRenderProp = filterBox.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {
-      let onDestroyProp = filterBox.props().onDestroy;
+      const onDestroyProp = filterBox.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should get what to do on filter as a prop', () => {
-      let onFilterProp = filterBox.props().onFilter;
+      const onFilterProp = filterBox.props().onFilter;
 
       expect(onFilterProp).toBeDefined();
     });
@@ -69,25 +69,25 @@ describe('FilterBox', () => {
     });
 
     it('should add the filter box in the store on render', () => {
-      expect(store.getState().filters.filter(filter => filter.id === id).length).toBe(1);
+      expect(store.getState().filters.filter((filter) => filter.id === id).length).toBe(1);
     });
 
     it('should remove the filter box in the store on render', () => {
       wrapper.unmount();
-      expect(store.getState().filters.filter(filter => filter.id === id).length).toBe(0);
+      expect(store.getState().filters.filter((filter) => filter.id === id).length).toBe(0);
     });
 
     it('should send the text from the filter input to the store on filter', () => {
       const newValue = 'something';
 
-      expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === '').length).toBe(1);
+      expect(store.getState().filters.filter((filter) => filter.id === id && filter.filterText === '').length).toBe(1);
 
       // Use the dispatch since the onFilter is debounced, and is hardly testable
       expect(() => filterBox.props().onFilter(filterBox.props().id, 'anyWouldDo')).not.toThrow();
       store.dispatch(filterThrough(filterBox.props().id, newValue));
 
-      expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === '').length).toBe(0);
-      expect(store.getState().filters.filter(filter => filter.id === id && filter.filterText === newValue).length).toBe(1);
+      expect(store.getState().filters.filter((filter) => filter.id === id && filter.filterText === '').length).toBe(0);
+      expect(store.getState().filters.filter((filter) => filter.id === id && filter.filterText === newValue).length).toBe(1);
     });
   });
 });

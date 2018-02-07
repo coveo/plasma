@@ -1,8 +1,8 @@
-import { IInlinePromptOptions } from './InlinePrompt';
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { PromptActions } from './InlinePromptActions';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { IInlinePromptOptions } from './InlinePrompt';
+import { PromptActions } from './InlinePromptActions';
 
 export interface IPromptState {
   id: string;
@@ -17,7 +17,7 @@ export const promptReducer = (state: IPromptState = promptInitialState, action: 
     case PromptActions.add:
       return _.extend({}, state, {
         id: action.payload.id,
-        options: action.payload.options
+        options: action.payload.options,
       });
     default:
       return state;
@@ -29,7 +29,7 @@ export const promptsReducer = (state: IPromptState[] = promptsInitialState, acti
     case PromptActions.add:
       return [
         ...state,
-        promptReducer(undefined, action)
+        promptReducer(undefined, action),
       ];
     case PromptActions.remove:
       return _.reject(state, (prompt: IPromptState) => {

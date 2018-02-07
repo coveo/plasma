@@ -1,7 +1,7 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { FilterActions } from './FilterBoxActions';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { FilterActions } from './FilterBoxActions';
 
 export interface IFilterState {
   id: string;
@@ -20,12 +20,12 @@ export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, ac
 
       return {
         id: state.id,
-        filterText: action.payload.filterText
+        filterText: action.payload.filterText,
       };
     case FilterActions.addFilter:
       return {
         id: action.payload.id,
-        filterText: ''
+        filterText: '',
       };
     default:
       return state;
@@ -35,11 +35,11 @@ export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, ac
 export const filterBoxesReducer = (state: IFilterState[] = filtersInitialState, action: IReduxAction<IReduxActionsPayload>): IFilterState[] => {
   switch (action.type) {
     case FilterActions.filterThrough:
-      return state.map(filterBox => filterBoxReducer(filterBox, action));
+      return state.map((filterBox) => filterBoxReducer(filterBox, action));
     case FilterActions.addFilter:
       return [
         ...state,
-        filterBoxReducer(undefined, action)
+        filterBoxReducer(undefined, action),
       ];
     case FilterActions.removeFilter:
       return _.reject(state, (filterBox: IFilterState) => {

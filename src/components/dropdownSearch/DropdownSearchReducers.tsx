@@ -1,11 +1,11 @@
+import * as _ from 'underscore';
+import * as s from 'underscore.string';
+import { deepClone } from '../../utils/CloneUtils';
+import { keyCode } from '../../utils/InputUtils';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { IDropdownOption } from './DropdownSearch';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from './DropdownSearchActions';
-import * as _ from 'underscore';
-import * as s from 'underscore.string';
-import { keyCode } from '../../utils/InputUtils';
 import { multiSelectDropdownSearchReducer } from './MultiSelectDropdownSearch/MultiSelectDropdownSearchReducer';
-import { deepClone } from '../../utils/CloneUtils';
 
 export interface IDropdownSearchState {
   id: string;
@@ -87,7 +87,7 @@ export const deselectLastSelectedOption = (options: IDropdownOption[]): IDropdow
 };
 
 export const deselectAllOptions = (options: IDropdownOption[], includeCustom: boolean = false): IDropdownOption[] => {
-  let nextOptions: IDropdownOption[] = [];
+  const nextOptions: IDropdownOption[] = [];
   _.each(options, (option: IDropdownOption) => {
     if (!option.custom || includeCustom) {
       const nextOption = deepClone(option);
@@ -159,7 +159,7 @@ export const updateOptions = (options: IDropdownOption[], selectedOption?: IDrop
 };
 
 export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
-  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
+                                      action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
   let nextOptions: IDropdownOption[] = [];
 
   switch (action.type) {
@@ -208,7 +208,6 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         ? options.map((option: IDropdownOption) => _.extend(option, { hidden: shouldHideOnFilter(option, action.payload.filterText) }))
         : options;
 
-
       if (shouldReturnNewOptions) {
         const newCustomOption: IDropdownOption[] = action.payload.filterText !== ''
           ? [{ value: action.payload.filterText, selected: false, custom: true, hidden: false }]
@@ -243,7 +242,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
         : removeCustomOptions(
           optionsWithOneSelectedOption,
           state.supportSingleCustomOption,
-          false
+          false,
         );
 
       return {
@@ -286,13 +285,13 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
           setFocusOnDropdownButton: isFirstSelectedOption,
         };
       } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed) && state.activeOption) {
-        const optionsWithOneSelectedOption = selectSingleOption(deselectAllOptions(state.options, true), state.activeOption);
+        const optionsWithOneSelectedOpt = selectSingleOption(deselectAllOptions(state.options, true), state.activeOption);
 
         return {
           ...state,
           id: action.payload.id,
           isOpened: false,
-          options: removeCustomOptions(optionsWithOneSelectedOption, state.supportSingleCustomOption, false),
+          options: removeCustomOptions(optionsWithOneSelectedOpt, state.supportSingleCustomOption, false),
           activeOption: undefined,
           filterText: '',
           setFocusOnDropdownButton: true,
@@ -316,7 +315,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
 };
 
 export const dropdownsSearchReducer = (state: IDropdownSearchState[] = dropdownsSearchInitialState,
-  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState[] => {
+                                       action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState[] => {
   switch (action.type) {
     case DropdownSearchActions.update:
     case DropdownSearchActions.filter:

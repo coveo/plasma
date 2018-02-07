@@ -1,9 +1,9 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IInlinePromptOptions, InlinePrompt, IInlinePromptProps } from '../InlinePrompt';
-import { Svg } from '../../svg/Svg';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { Svg } from '../../svg/Svg';
+import { IInlinePromptOptions, IInlinePromptProps, InlinePrompt } from '../InlinePrompt';
 
 describe('InlinePrompt', () => {
   let options: IInlinePromptOptions;
@@ -12,12 +12,12 @@ describe('InlinePrompt', () => {
     it('should render without errors', () => {
       options = {
         onClick: jasmine.createSpy('onClick'),
-        userChoice: {}
+        userChoice: {},
       };
 
       expect(() => {
         shallow(
-          <InlinePrompt options={options} />
+          <InlinePrompt options={options} />,
         );
       }).not.toThrow();
     });
@@ -38,16 +38,16 @@ describe('InlinePrompt', () => {
           choices: {
             confirm: 'confirm',
             other: 'other',
-            newChoice: 'some other choice'
-          }
+            newChoice: 'some other choice',
+          },
         },
         isOpened: false,
-        className: 'some-class'
+        className: 'some-class',
       };
 
       inlinePrompt = mount(
         <InlinePrompt options={options} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -57,14 +57,14 @@ describe('InlinePrompt', () => {
     });
 
     it('should get its options as a prop', () => {
-      let optionsProp = inlinePrompt.props().options;
+      const optionsProp = inlinePrompt.props().options;
 
       expect(optionsProp).toBeDefined();
       expect(optionsProp).toEqual(jasmine.objectContaining(options));
     });
 
     it('should have the className as a class if defined', () => {
-      let newOptions: IInlinePromptOptions = _.extend({}, options, { className: undefined });
+      const newOptions: IInlinePromptOptions = _.extend({}, options, { className: undefined });
 
       expect(inlinePrompt.find('.prompt-' + options.className).length).toBe(1);
 
@@ -74,7 +74,7 @@ describe('InlinePrompt', () => {
     });
 
     it('should have the opened as a class if opened', () => {
-      let newOptions = _.extend({}, options, { isOpened: true });
+      const newOptions = _.extend({}, options, { isOpened: true });
 
       expect(inlinePrompt.find('.opened').length).toBe(0);
 
@@ -83,8 +83,8 @@ describe('InlinePrompt', () => {
     });
 
     it('should display an icon if there is one set in the user choice', () => {
-      let newUserChoice = _.extend({}, options.userChoice, { icon: undefined });
-      let newOptions = _.extend({}, options, { userChoice: newUserChoice });
+      const newUserChoice = _.extend({}, options.userChoice, { icon: undefined });
+      const newOptions = _.extend({}, options, { userChoice: newUserChoice });
 
       expect(inlinePrompt.find(Svg).length).toBe(1);
 
@@ -97,8 +97,8 @@ describe('InlinePrompt', () => {
     });
 
     it('should display the description if there is one set in the user choice', () => {
-      let newUserChoice = _.extend({}, options.userChoice, { description: undefined });
-      let newOptions = _.extend({}, options, { userChoice: newUserChoice });
+      const newUserChoice = _.extend({}, options.userChoice, { description: undefined });
+      const newOptions = _.extend({}, options, { userChoice: newUserChoice });
 
       expect(inlinePrompt.find('.description').length).toBe(1);
 
@@ -107,8 +107,8 @@ describe('InlinePrompt', () => {
     });
 
     it('should have a cancel button if there is one set in the user choice', () => {
-      let newUserChoice = _.extend({}, options.userChoice, { cancel: undefined });
-      let newOptions = _.extend({}, options, { userChoice: newUserChoice });
+      const newUserChoice = _.extend({}, options.userChoice, { cancel: undefined });
+      const newOptions = _.extend({}, options, { userChoice: newUserChoice });
 
       expect(inlinePrompt.find('.cancel').length).toBe(1);
 
@@ -122,8 +122,8 @@ describe('InlinePrompt', () => {
     });
 
     it('should call the onCancel prop if set when clicking the cancel button', () => {
-      let onCancelSpy = jasmine.createSpy('onCancel');
-      let inlinePromptInstance = inlinePrompt.instance() as InlinePrompt;
+      const onCancelSpy = jasmine.createSpy('onCancel');
+      const inlinePromptInstance = inlinePrompt.instance() as InlinePrompt;
 
       expect(() => inlinePromptInstance['onCancelClick'].call(inlinePromptInstance)).not.toThrow();
 

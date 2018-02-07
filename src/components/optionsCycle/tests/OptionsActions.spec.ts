@@ -1,5 +1,5 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import { OptionsCycleActions, addOptionsCycle, changeOptionsCycle, removeOptionsCycle, IChangeOptionsCyclePayload, IOptionsCyclePayload } from '../OptionsCycleActions';
+import { addOptionsCycle, changeOptionsCycle, IChangeOptionsCyclePayload, IOptionsCyclePayload, OptionsCycleActions, removeOptionsCycle } from '../OptionsCycleActions';
 
 describe('Options cycle', () => {
 
@@ -9,35 +9,35 @@ describe('Options cycle', () => {
     const CURRENT_OPTION: number = 3;
 
     it('should create an action to add the options cycle', () => {
-      let expectedAction: IReduxAction<IChangeOptionsCyclePayload> = {
+      const expectedAction: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.add,
         payload: {
           id: OPTIONS_CYCLE_ID,
-          currentOption: CURRENT_OPTION
-        }
+          currentOption: CURRENT_OPTION,
+        },
       };
 
       expect(addOptionsCycle(OPTIONS_CYCLE_ID, CURRENT_OPTION)).toEqual(expectedAction);
     });
 
     it('should create an action to change the options cycle', () => {
-      let expectedAction: IReduxAction<IChangeOptionsCyclePayload> = {
+      const expectedAction: IReduxAction<IChangeOptionsCyclePayload> = {
         type: OptionsCycleActions.change,
         payload: {
           id: OPTIONS_CYCLE_ID,
-          currentOption: CURRENT_OPTION
-        }
+          currentOption: CURRENT_OPTION,
+        },
       };
 
       expect(changeOptionsCycle(OPTIONS_CYCLE_ID, CURRENT_OPTION)).toEqual(expectedAction);
     });
 
     it('should create an action to remove the options cycle', () => {
-      let expectedAction: IReduxAction<IOptionsCyclePayload> = {
+      const expectedAction: IReduxAction<IOptionsCyclePayload> = {
         type: OptionsCycleActions.remove,
         payload: {
-          id: OPTIONS_CYCLE_ID
-        }
+          id: OPTIONS_CYCLE_ID,
+        },
       };
 
       expect(removeOptionsCycle(OPTIONS_CYCLE_ID)).toEqual(expectedAction);

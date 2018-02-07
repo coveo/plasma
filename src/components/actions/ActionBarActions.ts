@@ -12,27 +12,27 @@ export interface IChangeActionBarActionsPayload extends IActionBarPayload {
 export const ActionBarActions = {
   add: 'ADD_ACTION_BAR',
   remove: 'REMOVE_ACTION_BAR',
-  addActions: 'ADD_ACTIONS'
+  addActions: 'ADD_ACTIONS',
 };
 
 export const addActionBar = (id: string): IReduxAction<IActionBarPayload> => ({
   type: ActionBarActions.add,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const removeActionBar = (id: string): IReduxAction<IActionBarPayload> => ({
   type: ActionBarActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const addActionsToActionBar = (id: string, actions: IActionOptions[]): IReduxAction<IChangeActionBarActionsPayload> => ({
   type: ActionBarActions.addActions,
   payload: {
     id,
-    actions
-  }
+    actions,
+  },
 });

@@ -39,7 +39,7 @@ export class Tab extends React.Component<ITabProps, any> {
   }
 
   render() {
-    let classes = ['tab', 'enabled'];
+    const classes = ['tab', 'enabled'];
     if (this.props.isActive) {
       classes.push('active');
     }

@@ -1,6 +1,6 @@
-import { IFacet } from './Facet';
-import { Tooltip } from '../tooltip/Tooltip';
 import * as React from 'react';
+import { Tooltip } from '../tooltip/Tooltip';
+import { IFacet } from './Facet';
 
 export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
   facetRow: IFacet;

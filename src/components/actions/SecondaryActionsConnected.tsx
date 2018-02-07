@@ -1,10 +1,10 @@
-import { ReduxUtils } from '../../utils/ReduxUtils';
-import { ISecondaryActionsStateProps, ISecondaryActionsProps, SecondaryActions } from './SecondaryActions';
-import { connect } from 'react-redux';
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { ReduxUtils } from '../../utils/ReduxUtils';
+import { ISecondaryActionsProps, ISecondaryActionsStateProps, SecondaryActions } from './SecondaryActions';
 
 const mapStateToProps = (): ISecondaryActionsStateProps => ({
-  withReduxState: true
+  withReduxState: true,
 });
 
 const mapDispatchToProps = () => ({});

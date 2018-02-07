@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import { CheckboxActions, ICheckboxActionPayload } from './CheckboxActions';
 import { IReduxAction } from '../../utils/ReduxUtils';
+import { CheckboxActions, ICheckboxActionPayload } from './CheckboxActions';
 
 export interface ICheckboxState {
   id: string;
@@ -11,19 +11,19 @@ export const checkboxInitialState: ICheckboxState = { id: undefined, checked: fa
 export const checkboxesInitialState: ICheckboxState[] = [];
 
 export const checkboxReducer = (state: ICheckboxState = checkboxInitialState,
-  action: IReduxAction<ICheckboxActionPayload>): ICheckboxState => {
+                                action: IReduxAction<ICheckboxActionPayload>): ICheckboxState => {
   switch (action.type) {
     case CheckboxActions.add:
       return {
         id: action.payload.id,
-        checked: !!action.payload.checked
+        checked: !!action.payload.checked,
       };
     case CheckboxActions.toggle:
       return state.id !== action.payload.id
         ? state
         : {
           ...state,
-          checked: !state.checked
+          checked: !state.checked,
         };
     default:
       return state;
@@ -31,12 +31,12 @@ export const checkboxReducer = (state: ICheckboxState = checkboxInitialState,
 };
 
 export const checkboxesReducer = (state: ICheckboxState[] = checkboxesInitialState,
-  action: IReduxAction<ICheckboxActionPayload>): ICheckboxState[] => {
+                                  action: IReduxAction<ICheckboxActionPayload>): ICheckboxState[] => {
   switch (action.type) {
     case CheckboxActions.add:
       return [
         ...state,
-        checkboxReducer(undefined, action)
+        checkboxReducer(undefined, action),
       ];
     case CheckboxActions.remove:
       return _.reject(state, (checkbox: ICheckboxState) => {

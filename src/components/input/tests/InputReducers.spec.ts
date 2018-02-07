@@ -1,13 +1,13 @@
+import { addInput, changeInputValue, IInputActionPayload, removeInput, setDisabledInput, validateInputValue } from '../InputActions';
+import { IInputState, inputInitialState, inputReducer, inputsInitialState, inputsReducer } from '../InputReducers';
 import { IReduxAction } from './../../../utils/ReduxUtils';
-import { addInput, removeInput, changeInputValue, validateInputValue, setDisabledInput, IInputActionPayload } from '../InputActions';
-import { inputInitialState, inputsInitialState, inputReducer, inputsReducer, IInputState } from '../InputReducers';
 
 describe('Reducers', () => {
   let oldState: IInputState[];
 
   beforeEach(() => {
     oldState = [{
-      ...inputInitialState
+      ...inputInitialState,
     }];
   });
 
@@ -39,7 +39,7 @@ describe('Reducers', () => {
 
     describe('addInput', () => {
       const getNewInput = (state: IInputState[], action: IReduxAction<IInputActionPayload>): IInputState[] =>
-        state.filter(input => input.id === action.payload.id);
+        state.filter((input) => input.id === action.payload.id);
 
       it('should return the old state with one more Input', () => {
         const action = addInput('new-input');
@@ -126,7 +126,7 @@ describe('Reducers', () => {
       const newState = inputsReducer(oldState, action);
 
       expect(newState.length).toBe(oldState.length - 1);
-      expect(newState.filter(input => input.id === oldState[0].id).length).toBe(0);
+      expect(newState.filter((input) => input.id === oldState[0].id).length).toBe(0);
     });
 
     it('should change the value in the state o');

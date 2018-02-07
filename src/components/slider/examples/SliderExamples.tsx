@@ -1,5 +1,5 @@
-import * as React from 'react';
 import 'rc-slider/assets/index.css';
+import * as React from 'react';
 import { Slider } from '../Slider';
 
 export class SliderExamples extends React.Component<any, any> {
@@ -37,7 +37,7 @@ export class SliderExamples extends React.Component<any, any> {
                     0: 'Lower',
                     50: 'Middle',
                     100: 'Higher',
-                  }
+                  },
                 }}
               />
             </div>

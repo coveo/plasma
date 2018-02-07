@@ -1,15 +1,15 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { ChildForm, IChildFormProps } from '../ChildForm';
 import { Radio } from '../../radio/Radio';
+import { ChildForm, IChildFormProps } from '../ChildForm';
 
 describe('ChildForm', () => {
   describe('<ChildForm />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <ChildForm />
+          <ChildForm />,
         );
       }).not.toThrow();
     });
@@ -23,7 +23,7 @@ describe('ChildForm', () => {
         <ChildForm>
           <Radio id='id' />
         </ChildForm>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

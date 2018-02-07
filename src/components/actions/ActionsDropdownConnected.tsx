@@ -1,10 +1,10 @@
+import * as React from 'react';
+import { connect } from 'react-redux';
 import { ReduxUtils } from '../../utils/ReduxUtils';
 import { ActionsDropdown, IActionsDropdownProps, IActionsDropdownStateProps } from './ActionsDropdown';
-import { connect } from 'react-redux';
-import * as React from 'react';
 
 const mapStateToProps = (): IActionsDropdownStateProps => ({
-  withReduxState: true
+  withReduxState: true,
 });
 
 const mapDispatchToProps = () => ({});

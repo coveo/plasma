@@ -1,7 +1,7 @@
-import { shallow, ShallowWrapper, ReactWrapper, mount } from 'enzyme';
-import { Loading, ILoadingProps } from '../Loading';
+import { mount, ReactWrapper, shallow, ShallowWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ILoadingProps, Loading } from '../Loading';
 
 describe('<Loading />', () => {
   it('should render without errors', () => {
@@ -11,15 +11,15 @@ describe('<Loading />', () => {
   });
 
   it('should render the spinner', () => {
-    let loading: ShallowWrapper<ILoadingProps, any> = shallow(<Loading />);
+    const loading: ShallowWrapper<ILoadingProps, any> = shallow(<Loading />);
     expect(loading.find('.spinner').length).toBe(1);
   });
 
   it('should call onRender if prop is set when mounting', () => {
-    let onRenderSpy = jasmine.createSpy('onRender');
-    let loading: ReactWrapper<ILoadingProps, any> = mount(
+    const onRenderSpy = jasmine.createSpy('onRender');
+    const loading: ReactWrapper<ILoadingProps, any> = mount(
       <Loading onRender={onRenderSpy} />,
-      { attachTo: document.getElementById('App') }
+      { attachTo: document.getElementById('App') },
     );
     expect(onRenderSpy).toHaveBeenCalled();
     loading.unmount();
@@ -27,10 +27,10 @@ describe('<Loading />', () => {
   });
 
   it('should call onDestroy if prop is set when unmounting', () => {
-    let onDestroySpy = jasmine.createSpy('onDestroy');
-    let loading: ReactWrapper<ILoadingProps, any> = mount(
+    const onDestroySpy = jasmine.createSpy('onDestroy');
+    const loading: ReactWrapper<ILoadingProps, any> = mount(
       <Loading onDestroy={onDestroySpy} />,
-      { attachTo: document.getElementById('App') }
+      { attachTo: document.getElementById('App') },
     );
     loading.unmount();
     expect(onDestroySpy).toHaveBeenCalled();

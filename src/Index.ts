@@ -67,10 +67,10 @@ export { NavigationPagination } from './components/navigation/pagination/Navigat
 export { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
 export { NavigationPerPage, PER_PAGE_NUMBERS } from './components/navigation/perPage/NavigationPerPage';
 export { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
-export { SideNavigation } from './components/sideNavigation/SideNavigation'
-export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader'
-export { SideNavigationLoadingItem } from './components/sideNavigation/SideNavigationLoadingItem'
-export { SideNavigationMenuSection } from './components/sideNavigation/SideNavigationMenuSection'
+export { SideNavigation } from './components/sideNavigation/SideNavigation';
+export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader';
+export { SideNavigationLoadingItem } from './components/sideNavigation/SideNavigationLoadingItem';
+export { SideNavigationMenuSection } from './components/sideNavigation/SideNavigationMenuSection';
 
 // Pagination
 export { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
@@ -213,7 +213,7 @@ export {
   IToastAddPayload,
   IToastActionPayload,
   IToastContainerActionPayload,
-  IToastAddOptionalPayload
+  IToastAddOptionalPayload,
 } from './components/toast/ToastActions';
 export { IToastsState, IToastState, toastsContainerInitialState, toastInitialState, toastContainerInitialState, toastsContainerReducer, toastContainerReducer } from './components/toast/ToastReducers';
 export { ToastContainer, IToastContainerDispatchProps, IToastContainerOwnProps, IToastContainerStateProps, IToastContainerProps } from './components/toast/ToastContainer';

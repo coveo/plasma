@@ -1,6 +1,6 @@
-import { IErrorSection, TableError } from './TableError';
-import { SlideY } from '../../animations/SlideY';
 import * as React from 'react';
+import { SlideY } from '../../animations/SlideY';
+import { IErrorSection, TableError } from './TableError';
 
 export interface ITableCollapsibleRowOwnProps extends React.ClassAttributes<TableCollapsibleRow> {
   id: string;
@@ -24,8 +24,8 @@ export interface ITableCollapsibleRowProps extends ITableCollapsibleRowOwnProps,
 
 export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowProps, any> {
   render() {
-    let rowClasses: string = 'collapsible-row ' + this.props.id + (this.props.opened ? ' in' : '');
-    let error: JSX.Element = this.props.isInError ?
+    const rowClasses: string = 'collapsible-row ' + this.props.id + (this.props.opened ? ' in' : '');
+    const error: JSX.Element = this.props.isInError ?
       <TableError
         error={this.props.error}
         descriptionLabel={this.props.descriptionLabel}

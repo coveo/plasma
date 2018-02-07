@@ -1,15 +1,15 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { InlinePromptConnected } from '../InlinePromptConnected';
-import { Provider } from 'react-redux';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { IInlinePromptProps, InlinePrompt, IInlinePromptOptions } from '../InlinePrompt';
-import { addPrompt } from '../InlinePromptActions';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IInlinePromptOptions, IInlinePromptProps, InlinePrompt } from '../InlinePrompt';
+import { addPrompt } from '../InlinePromptActions';
+import { InlinePromptConnected } from '../InlinePromptConnected';
 
 describe('InlinePrompt', () => {
   let id: string;
@@ -31,11 +31,11 @@ describe('InlinePrompt', () => {
           choices: {
             confirm: 'confirm',
             other: 'other',
-            newChoice: 'some other choice'
-          }
+            newChoice: 'some other choice',
+          },
         },
         isOpened: false,
-        className: 'some-class'
+        className: 'some-class',
       };
 
       store = TestUtils.buildStore();
@@ -47,7 +47,7 @@ describe('InlinePrompt', () => {
             options={options}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       inlinePrompt = wrapper.find(InlinePrompt).first();
     });
@@ -59,21 +59,21 @@ describe('InlinePrompt', () => {
     });
 
     it('should get its id as a prop', () => {
-      let idProp = inlinePrompt.props().id;
+      const idProp = inlinePrompt.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
     });
 
     it('should get its options as a prop', () => {
-      let optionsProp = inlinePrompt.props().options;
+      const optionsProp = inlinePrompt.props().options;
 
       expect(optionsProp).toBeDefined();
       expect(optionsProp).toEqual(jasmine.objectContaining(options));
     });
 
     it('should get what to do on cancel as a prop', () => {
-      let onCancelProp = inlinePrompt.props().onCancel;
+      const onCancelProp = inlinePrompt.props().onCancel;
 
       expect(onCancelProp).toBeDefined();
     });

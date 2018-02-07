@@ -3,7 +3,7 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 export const FilterActions = {
   addFilter: 'ADD_FILTER',
   removeFilter: 'REMOVE_FILTER',
-  filterThrough: 'FILTER'
+  filterThrough: 'FILTER',
 };
 
 export interface IFilterActionPayload {
@@ -17,21 +17,21 @@ export interface IChangeFilterActionPayload extends IFilterActionPayload {
 export const addFilter = (id: string): IReduxAction<IFilterActionPayload> => ({
   type: FilterActions.addFilter,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const removeFilter = (id: string): IReduxAction<IFilterActionPayload> => ({
   type: FilterActions.removeFilter,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const filterThrough = (id: string, filterText: string): IReduxAction<IChangeFilterActionPayload> => ({
   type: FilterActions.filterThrough,
   payload: {
     id,
-    filterText
-  }
+    filterText,
+  },
 });

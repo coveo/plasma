@@ -2,17 +2,17 @@ import { ReduxUtils } from './ReduxUtils';
 
 describe('ReduxUtils', () => {
   it('should correctly merge all props when calling ReduxUtils.mergeProps is called', () => {
-    let expectedStateProps = {
+    const expectedStateProps = {
       a: 'something',
-      b: false
+      b: false,
     };
-    let expectedDispatchProps = {
-      c: jasmine.createSpy('c')
+    const expectedDispatchProps = {
+      c: jasmine.createSpy('c'),
     };
-    let expectedOwnProps = {
-      d: 'd'
+    const expectedOwnProps = {
+      d: 'd',
     };
-    let result = ReduxUtils.mergeProps(expectedStateProps, expectedDispatchProps, expectedOwnProps);
+    const result = ReduxUtils.mergeProps(expectedStateProps, expectedDispatchProps, expectedOwnProps);
 
     expect(result).toEqual(jasmine.objectContaining(expectedStateProps));
     expect(result).toEqual(jasmine.objectContaining(expectedDispatchProps));

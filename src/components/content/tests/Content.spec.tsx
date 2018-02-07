@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
+import * as React from 'react';
+import { Loading } from '../../loading/Loading';
 import { ISvgProps, Svg } from '../../svg/Svg';
 import { Content, IContentProps } from '../Content';
-import { Loading } from '../../loading/Loading';
 
 describe('Content', () => {
 

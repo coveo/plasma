@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { shallow } from 'enzyme';
-import { StepProgressBar, IStepProgressBarProps } from './StepProgressBar';
+import * as React from 'react';
+import { IStepProgressBarProps, StepProgressBar } from './StepProgressBar';
 
 describe('StepProgressBar', () => {
   const stepProgressBarContainerSelector = '.step-progress-bar-container';

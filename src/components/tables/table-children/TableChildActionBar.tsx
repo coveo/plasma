@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
-import { ITableProps, ITablePredicate } from '../Table';
-import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
-import { getTableChildComponentId } from '../TableUtils';
-import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
+import { humanize } from 'underscore.string';
 import { ActionBarConnected } from '../../actions/ActionBarConnected';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { humanize } from 'underscore.string';
+import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
+import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
+import { ITablePredicate, ITableProps } from '../Table';
+import { TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent } from '../TableConstants';
+import { getTableChildComponentId } from '../TableUtils';
 
 export const TableChildActionBar = (props: ITableProps): JSX.Element => {
   if (!props.actionBar) {

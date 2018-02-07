@@ -1,28 +1,28 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IActionOptions } from '../Action';
-import { ActionBar, IActionBarProps, DEFAULT_ACTIONS_CONTAINER_CLASSES } from '../ActionBar';
-import { InlinePrompt, IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { IInlinePromptOptions, InlinePrompt } from '../../inlinePrompt/InlinePrompt';
+import { IActionOptions } from '../Action';
+import { ActionBar, DEFAULT_ACTIONS_CONTAINER_CLASSES, IActionBarProps } from '../ActionBar';
 
 describe('Actions', () => {
-  let actions: IActionOptions[] = [{
+  const actions: IActionOptions[] = [{
     name: 'action',
     link: 'http://coveo.com',
     target: '_blank',
     primary: true,
-    enabled: true
+    enabled: true,
   }, {
     name: 'action2',
     trigger: jasmine.createSpy('triggerMethod'),
-    enabled: true
+    enabled: true,
   }];
 
   describe('<ActionBar />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <ActionBar />
+          <ActionBar />,
         );
       }).not.toThrow();
     });
@@ -35,7 +35,7 @@ describe('Actions', () => {
     beforeEach(() => {
       actionBar = mount(
         <ActionBar actions={actions} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       actionBarInstance = actionBar.instance() as ActionBar;
     });
@@ -46,16 +46,15 @@ describe('Actions', () => {
     });
 
     it('should get the actions as a prop', () => {
-      let actionsProp = actionBar.props().actions;
+      const actionsProp = actionBar.props().actions;
 
       expect(actionsProp).toBeDefined();
       expect(actionsProp.length).toBe(actions.length);
       expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
     });
 
-
     it('should call onRender prop if set when mounting', () => {
-      let onRenderSpy = jasmine.createSpy('onRender');
+      const onRenderSpy = jasmine.createSpy('onRender');
 
       expect(() => actionBarInstance.componentWillMount()).not.toThrow();
 
@@ -66,7 +65,7 @@ describe('Actions', () => {
     });
 
     it('should call onDestroy prop if set when will unmount', () => {
-      let onDestroySpy = jasmine.createSpy('onDestroy');
+      const onDestroySpy = jasmine.createSpy('onDestroy');
 
       expect(() => actionBarInstance.componentWillUnmount()).not.toThrow();
 
@@ -92,11 +91,11 @@ describe('Actions', () => {
     });
 
     it('should display an <InlinePrompt /> and no actions if there is a prompt if there is a prompt', () => {
-      let inlinePromptOptions: IInlinePromptOptions = {
+      const inlinePromptOptions: IInlinePromptOptions = {
         onClick: jasmine.createSpy('onClick'),
-        userChoice: {}
+        userChoice: {},
       };
-      let inlinePrompt: JSX.Element = <InlinePrompt options={inlinePromptOptions} />;
+      const inlinePrompt: JSX.Element = <InlinePrompt options={inlinePromptOptions} />;
 
       expect(actionBar.find('InlinePrompt').length).toBe(0);
 
@@ -115,7 +114,7 @@ describe('Actions', () => {
     });
 
     it('should not throw when handling the clear of the item filter when clearItemFilter is not defined', () => {
-      let handleClearSpy: jasmine.Spy = spyOn<any>(actionBar.instance(), 'handleClear').and.callThrough();
+      const handleClearSpy: jasmine.Spy = spyOn<any>(actionBar.instance(), 'handleClear').and.callThrough();
       actionBar.setProps({ itemFilter: 'an item' });
       expect(() => {
         actionBar.find('.item-filter-clear').simulate('click');
@@ -125,7 +124,7 @@ describe('Actions', () => {
     });
 
     it('should call clearItemFilter if defined when clicking the "item-filter-clear" button', () => {
-      let clearItemFilter = jasmine.createSpy('clearItemFilter');
+      const clearItemFilter = jasmine.createSpy('clearItemFilter');
       actionBar.setProps({ itemFilter: 'an item', clearItemFilter });
 
       actionBar.find('.item-filter-clear').simulate('click');

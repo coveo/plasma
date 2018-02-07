@@ -1,14 +1,14 @@
-import { IActionOptions } from './Action';
-import { ITooltipProps } from '../tooltip/Tooltip';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { PrimaryActionConnected } from './PrimaryActionConnected';
-import { PrimaryAction } from './PrimaryAction';
-import { SecondaryActionsConnected } from './SecondaryActionsConnected';
-import { SecondaryActions } from './SecondaryActions';
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { ITooltipProps } from '../tooltip/Tooltip';
+import { IActionOptions } from './Action';
 import { ItemFilter } from './filters/ItemFilter';
-import * as classNames from 'classnames';
+import { PrimaryAction } from './PrimaryAction';
+import { PrimaryActionConnected } from './PrimaryActionConnected';
+import { SecondaryActions } from './SecondaryActions';
+import { SecondaryActionsConnected } from './SecondaryActionsConnected';
 
 export const DEFAULT_ACTIONS_CONTAINER_CLASSES = [
   'coveo-table-actions-container',
@@ -85,7 +85,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
 
     const primaryActions: JSX.Element[] = !this.props.prompt && _.map(this.props.actions, (action: IActionOptions, index: number): JSX.Element => {
       if (action.primary) {
-        let primaryAction = this.props.withReduxState
+        const primaryAction = this.props.withReduxState
           ? <PrimaryActionConnected action={action} parentId={this.props.id} />
           : <PrimaryAction action={action} />;
         return <div className='dropdown action primary-action' key={'primary-' + index}>{primaryAction}</div>;

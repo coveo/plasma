@@ -1,15 +1,15 @@
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { OptionsCycle, IOptionsCycleProps } from '../optionsCycle/OptionsCycle';
-import { OptionsCycleConnected } from '../optionsCycle/OptionsCycleConnected';
-import { DateUtils } from '../../utils/DateUtils';
-import { ITableHeaderCellProps } from '../tables/TableHeaderCell';
-import { TableHeader } from '../tables/TableHeader';
-import { CalendarDay, IDay } from './CalendarDay';
-import { IDatePickerState } from '../datePicker/DatePickerReducers';
-import { DateLimits } from '../datePicker/DatePickerActions';
+import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
-import * as moment from 'moment';
+import { DateUtils } from '../../utils/DateUtils';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { DateLimits } from '../datePicker/DatePickerActions';
+import { IDatePickerState } from '../datePicker/DatePickerReducers';
+import { IOptionsCycleProps, OptionsCycle } from '../optionsCycle/OptionsCycle';
+import { OptionsCycleConnected } from '../optionsCycle/OptionsCycleConnected';
+import { TableHeader } from '../tables/TableHeader';
+import { ITableHeaderCellProps } from '../tables/TableHeaderCell';
+import { CalendarDay, IDay } from './CalendarDay';
 
 export const CalendarSelectionRuleType = {
   all: 'ALL',
@@ -158,7 +158,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
 
       _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {
         if (day.isSelectable) {
-          if (rule.isFor == CalendarSelectionRuleType.all
+          if (rule.isFor === CalendarSelectionRuleType.all
             || (rule.isFor === CalendarSelectionRuleType.lower && calendarSelection.selected === DateLimits.lower)
             || (rule.isFor === CalendarSelectionRuleType.upper && calendarSelection.selected === DateLimits.upper)) {
             day.isSelectable = rule.test(day.date.toDate());
@@ -202,7 +202,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       : <OptionsCycle {...yearPickerProps} />;
 
     const sectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
-    const year = parseInt(this.props.years[sectedYearOption]);
+    const year = parseInt(this.props.years[sectedYearOption], 10);
     const selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : this.props.startingMonth;
 
     const month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), this.props.startingDay);

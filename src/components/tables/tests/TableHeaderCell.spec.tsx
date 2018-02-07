@@ -1,10 +1,10 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { TableHeaderCell, ITableHeaderCellProps } from '../TableHeaderCell';
-import { TableSortingOrder } from '../TableConstants';
-import { Svg } from '../../svg/Svg';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+import { Svg } from '../../svg/Svg';
+import { TableSortingOrder } from '../TableConstants';
+import { ITableHeaderCellProps, TableHeaderCell } from '../TableHeaderCell';
 
 describe('Tables', () => {
   let title: string;
@@ -16,7 +16,7 @@ describe('Tables', () => {
 
       expect(() => {
         shallow(
-          <TableHeaderCell title={title} />
+          <TableHeaderCell title={title} />,
         );
       }).not.toThrow();
     });
@@ -36,7 +36,7 @@ describe('Tables', () => {
           title={title}
           className={className}
         />,
-        { attachTo: document.getElementById('AppTableHeadRow') }
+        { attachTo: document.getElementById('AppTableHeadRow') },
       );
     });
 
@@ -50,14 +50,14 @@ describe('Tables', () => {
     });
 
     it('should get its title as a prop', () => {
-      let titleProp = tableHeaderCell.props().title;
+      const titleProp = tableHeaderCell.props().title;
 
       expect(titleProp).toBeDefined();
       expect(titleProp).toBe(title);
     });
 
     it('should get its class name as a prop', () => {
-      let classNameProp = tableHeaderCell.props().className;
+      const classNameProp = tableHeaderCell.props().className;
 
       expect(classNameProp).toBeDefined();
       expect(classNameProp).toBe(className);
@@ -108,7 +108,6 @@ describe('Tables', () => {
 
       expect(onSortSpy).not.toHaveBeenCalled();
     });
-
 
     it('should call onUnmount if it is set as a prop', () => {
       const onUnmountSpy = jasmine.createSpy('onUnmount');

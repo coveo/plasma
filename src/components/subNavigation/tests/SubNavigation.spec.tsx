@@ -1,8 +1,8 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
-import { SubNavigation, ISubNavigationProps } from '../SubNavigation';
-import { extend } from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { extend } from 'underscore';
+import { ISubNavigationProps, SubNavigation } from '../SubNavigation';
 
 describe('SubNavigation', () => {
   describe('<SubNavigation />', () => {
@@ -15,15 +15,15 @@ describe('SubNavigation', () => {
     });
 
     it('should call onRender when the element is created', () => {
-      let spy = jasmine.createSpy('onRender');
+      const spy = jasmine.createSpy('onRender');
       shallow(<SubNavigation items={[]} defaultSelected='' onRender={spy} />);
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('should call onDestroy when the element is created', () => {
-      let spy = jasmine.createSpy('onDestroy');
-      let mounted = mount(<SubNavigation items={[]} defaultSelected='' onDestroy={spy} />);
+      const spy = jasmine.createSpy('onDestroy');
+      const mounted = mount(<SubNavigation items={[]} defaultSelected='' onDestroy={spy} />);
       mounted.unmount();
 
       expect(spy).toHaveBeenCalledTimes(1);
@@ -31,12 +31,12 @@ describe('SubNavigation', () => {
 
     describe('<SubNavigation />', () => {
       let subNavigation: ReactWrapper<ISubNavigationProps, any>;
-      let basicProps: ISubNavigationProps = { items: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], selected: 'b' };
+      const basicProps: ISubNavigationProps = { items: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], selected: 'b' };
 
       beforeEach(() => {
         subNavigation = mount(
           <SubNavigation {...basicProps} />,
-          { attachTo: document.getElementById('App') }
+          { attachTo: document.getElementById('App') },
         );
       });
 
@@ -46,28 +46,28 @@ describe('SubNavigation', () => {
       });
 
       it('should get the items as a prop', () => {
-        let itemsProp = subNavigation.props().items;
+        const itemsProp = subNavigation.props().items;
 
         expect(itemsProp).toBeDefined();
         expect(itemsProp.length).toBe(basicProps.items.length);
       });
 
       it('should have the "mod-selected" class on the selected item', () => {
-        let li = subNavigation.find('.sub-navigation-item')
-          .filterWhere(item => item.key() === basicProps.selected);
+        const li = subNavigation.find('.sub-navigation-item')
+          .filterWhere((item) => item.key() === basicProps.selected);
         expect(li.hasClass('mod-selected')).toBe(true);
       });
 
       it('should call the onClickItem prop when clicking on an item', () => {
-        let spy = jasmine.createSpy('onClickItem');
-        let newProps = extend({}, basicProps, { onClickItem: spy });
+        const spy = jasmine.createSpy('onClickItem');
+        const newProps = extend({}, basicProps, { onClickItem: spy });
 
         subNavigation = mount(
           <SubNavigation {...newProps} />,
-          { attachTo: document.getElementById('App') }
+          { attachTo: document.getElementById('App') },
         );
-        let li = subNavigation.find('.sub-navigation-item')
-          .filterWhere(item => item.key() !== basicProps.selected).first();
+        const li = subNavigation.find('.sub-navigation-item')
+          .filterWhere((item) => item.key() !== basicProps.selected).first();
         li.find('.sub-navigation-item-link').simulate('click');
 
         expect(spy).toHaveBeenCalledTimes(1);

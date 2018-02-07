@@ -1,7 +1,7 @@
-import { Svg } from '../../svg/Svg';
-import { NavigationPaginationSelect } from './NavigationPaginationSelect';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { Svg } from '../../svg/Svg';
+import { NavigationPaginationSelect } from './NavigationPaginationSelect';
 
 export interface INavigationPaginationOwnProps extends React.ClassAttributes<NavigationPagination> {
   id?: string;
@@ -51,16 +51,16 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
   }
 
   render() {
-    let currentPage: number = this.props.currentPage || 0;
-    let showXPages: number = Math.abs((this.props.numberOfPagesToShow || NUMBER_OF_PAGES_SHOWING) - 1);
-    let previousLabel: string = this.props.previousLabel || PREVIOUS_LABEL;
-    let nextLabel: string = this.props.nextLabel || NEXT_LABEL;
+    const currentPage: number = this.props.currentPage || 0;
+    const showXPages: number = Math.abs((this.props.numberOfPagesToShow || NUMBER_OF_PAGES_SHOWING) - 1);
+    const previousLabel: string = this.props.previousLabel || PREVIOUS_LABEL;
+    const nextLabel: string = this.props.nextLabel || NEXT_LABEL;
     let start: number = 0;
     let end: number = showXPages;
-    let lastPage: number = this.props.totalPages - 1;
-    let previousClasses: string = 'flat-select-option mod-link ' + (currentPage === 0 ? 'disabled' : 'selectable');
-    let nextClasses: string = 'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
-    let pageSelects: JSX.Element[] = [];
+    const lastPage: number = this.props.totalPages - 1;
+    const previousClasses: string = 'flat-select-option mod-link ' + (currentPage === 0 ? 'disabled' : 'selectable');
+    const nextClasses: string = 'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
+    const pageSelects: JSX.Element[] = [];
 
     if (!this.props.hidePages) {
       if (currentPage + showXPages / 2 > lastPage) {

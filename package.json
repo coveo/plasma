@@ -22,8 +22,7 @@
   "scripts": {
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
     "docs": "gulp docs",
-    "lint": "gulp prettify",
-    "lint-commit": "gulp prettify && git add . && git commit -m 'prettify ts files before push'",
+    "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js",
     "build": "gulp",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
@@ -37,7 +36,7 @@
     "reconstruct": "gulp clean --all && npm install && gulp"
   },
   "pre-commit": [
-    "lint"
+    "lintfix"
   ],
   "dependencies": {
     "react-bootstrap": "0.31.3",
@@ -112,7 +111,6 @@
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.8",
     "pre-commit": "1.2.2",
-    "pretty-typescript": "1.15.0",
     "rc-slider": "8.5.0",
     "react": "15.6.1",
     "react-addons-test-utils": "15.6.0",
@@ -127,7 +125,7 @@
     "shelljs": "0.7.8",
     "style-loader": "0.19.0",
     "ts-loader": "3.0.5",
-    "tslint": "4.5.1",
+    "tsjs": "0.3.x",
     "tslint-loader": "3.5.3",
     "typescript": "2.6.2",
     "underscore": "1.8.3",

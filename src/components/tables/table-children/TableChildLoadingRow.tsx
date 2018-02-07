@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Loading } from '../../loading/Loading';
 import { ITableProps } from '../Table';
 import { TOGGLE_ARROW_CELL_COUNT } from '../TableConstants';
-import { Loading } from '../../loading/Loading';
 
 export interface ITableChildLoadingRowProps extends ITableProps {
   isInitialLoad?: boolean;

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ChildForm } from '../ChildForm';
-import { Input } from '../../input/Input';
 import { Checkbox } from '../../checkbox/Checkbox';
-import { ToggleForm } from '../ToggleForm';
+import { Input } from '../../input/Input';
 import { Label } from '../../input/Label';
+import { ChildForm } from '../ChildForm';
+import { ToggleForm } from '../ToggleForm';
 
 export interface ISimpleChildFormExampleState {
   active: boolean;

@@ -1,8 +1,8 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import * as _ from 'underscore';
-import { ISvgProps, Svg } from '../Svg';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { ISvgProps, Svg } from '../Svg';
 
 describe('<Svg>', () => {
   let svgWrapper: ReactWrapper<ISvgProps, any>;
@@ -12,13 +12,13 @@ describe('<Svg>', () => {
     svgProps = {
       svgName: 'clear',
       className: 'icon',
-      svgClass: 'fill-medium-blue'
+      svgClass: 'fill-medium-blue',
     };
   });
 
   it('should render without error', () => {
     expect(() => shallow(
-      <Svg {...svgProps} />
+      <Svg {...svgProps} />,
     )).not.toThrow();
   });
 
@@ -26,7 +26,7 @@ describe('<Svg>', () => {
     expect(() => {
       svgWrapper = mount(
         <Svg {...svgProps} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     }).not.toThrow();
 
@@ -44,13 +44,13 @@ describe('<Svg>', () => {
 
     it('should handle an invalid svgName', () => {
       svgProps = _.extend(svgProps, {
-        svgName: 'an-icon-that-does-not-exist'
+        svgName: 'an-icon-that-does-not-exist',
       });
 
       expect(() => {
         svgWrapper = mount(
           <Svg {...svgProps} />,
-          { attachTo: document.getElementById('App') }
+          { attachTo: document.getElementById('App') },
         );
       }).not.toThrow();
 
@@ -59,13 +59,13 @@ describe('<Svg>', () => {
 
     it('should handle an undefined className', () => {
       svgProps = _.extend(svgProps, {
-        className: undefined
+        className: undefined,
       });
 
       expect(() => {
         svgWrapper = mount(
           <Svg {...svgProps} />,
-          { attachTo: document.getElementById('App') }
+          { attachTo: document.getElementById('App') },
         );
       }).not.toThrow();
 
@@ -74,13 +74,13 @@ describe('<Svg>', () => {
 
     it('should handle an undefined svgClass', () => {
       svgProps = _.extend(svgProps, {
-        svgClass: undefined
+        svgClass: undefined,
       });
 
       expect(() => {
         svgWrapper = mount(
           <Svg {...svgProps} />,
-          { attachTo: document.getElementById('App') }
+          { attachTo: document.getElementById('App') },
         );
       }).not.toThrow();
 

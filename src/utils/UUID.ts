@@ -1,3 +1,4 @@
+// tslint:disable
 export class UUID {
   static generate() {
     // Source: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
@@ -9,3 +10,4 @@ export class UUID {
     });
   }
 }
+// tslint:enable

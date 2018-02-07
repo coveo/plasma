@@ -1,9 +1,9 @@
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import { ITooltipProps, Tooltip } from '../Tooltip';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { OverlayTrigger } from 'react-bootstrap';
+import * as _ from 'underscore';
+import { ITooltipProps, Tooltip } from '../Tooltip';
 
 describe('Tooltip', () => {
   let tooltipWrapper: ReactWrapper<ITooltipProps, void>;

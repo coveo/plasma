@@ -1,14 +1,14 @@
 // tslint:disable-next-line:no-unused-variable
-import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
+import * as React from 'react';
 import { Provider } from 'react-redux';
+import { Store } from 'redux';
 import { IReactVaporState } from '../../../ReactVapor';
 import { TestUtils } from '../../../utils/TestUtils';
-import { IToastContainerProps, ToastContainer } from '../ToastContainer';
 import { Toast, ToastType } from '../Toast';
-import { ToastContainerConnected } from '../ToastContainerConnected';
 import { addToast } from '../ToastActions';
+import { IToastContainerProps, ToastContainer } from '../ToastContainer';
+import { ToastContainerConnected } from '../ToastContainerConnected';
 
 describe('Toasts', () => {
   describe('<ToastContainerConnected />', () => {
@@ -24,7 +24,7 @@ describe('Toasts', () => {
         <Provider store={store}>
           <ToastContainerConnected id={containerId} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       component = wrapper.find(ToastContainer);
     });

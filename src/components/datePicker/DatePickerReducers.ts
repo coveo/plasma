@@ -1,8 +1,8 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { DateLimits, DatePickerActions, IAddDatePickerPayload } from './DatePickerActions';
-import * as _ from 'underscore';
 import * as moment from 'moment';
+import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { DateLimits, DatePickerActions, IAddDatePickerPayload } from './DatePickerActions';
 import { IRangeLimit } from './DatesSelection';
 
 export interface IDatePickerState {
@@ -56,7 +56,7 @@ const changeLowerLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
   return state.id !== action.payload.id ? state : _.extend({}, state, {
     lowerLimit: action.payload.date,
     inputLowerLimit: action.payload.date,
-    selected: ''
+    selected: '',
   });
 };
 
@@ -64,7 +64,7 @@ const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
   return state.id !== action.payload.id ? state : _.extend({}, state, {
     upperLimit: action.payload.date,
     inputUpperLimit: action.payload.date,
-    selected: ''
+    selected: '',
   });
 };
 
@@ -74,7 +74,7 @@ const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
       selected: action.payload.limit,
       lowerLimit: action.payload.limit === DateLimits.lower ? undefined : state.lowerLimit,
       upperLimit: action.payload.limit === DateLimits.upper ? undefined : state.upperLimit,
-    }
+    },
   );
 };
 
@@ -99,12 +99,12 @@ const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
     : _.extend({}, state, {
       selected: '',
       lowerLimit: state.appliedLowerLimit,
-      upperLimit: state.appliedUpperLimit
+      upperLimit: state.appliedUpperLimit,
     });
 };
 
 export const datePickerReducer = (state: IDatePickerState = datePickerInitialState,
-  action: IReduxAction<any>): IDatePickerState => {
+                                  action: IReduxAction<any>): IDatePickerState => {
   switch (action.type) {
     case DatePickerActions.add:
       return addDatePicker(state, action);
@@ -124,12 +124,12 @@ export const datePickerReducer = (state: IDatePickerState = datePickerInitialSta
 };
 
 export const datePickersReducer = (state: IDatePickerState[] = datePickersInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDatePickerState[] => {
+                                   action: IReduxAction<IReduxActionsPayload>): IDatePickerState[] => {
   switch (action.type) {
     case DatePickerActions.add:
       return [
         ...state,
-        datePickerReducer(undefined, action)
+        datePickerReducer(undefined, action),
       ];
     case DatePickerActions.remove:
       return _.reject(state, (datePicker: IDatePickerState) => {
@@ -141,7 +141,7 @@ export const datePickersReducer = (state: IDatePickerState[] = datePickersInitia
     case DatePickerActions.apply:
     case DatePickerActions.reset:
       return state.map((datePicker: IDatePickerState) =>
-        datePickerReducer(datePicker, action)
+        datePickerReducer(datePicker, action),
       );
     default:
       return state;

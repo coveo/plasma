@@ -1,10 +1,10 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { CalendarDay, IDay, ICalendarDayProps } from '../CalendarDay';
-import { DateUtils } from '../../../utils/DateUtils';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as moment from 'moment';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { DateUtils } from '../../../utils/DateUtils';
+import { CalendarDay, ICalendarDayProps, IDay } from '../CalendarDay';
 
 describe('Calendar day', () => {
   const newMonth = DateUtils.currentMonth < 11 ? DateUtils.currentMonth + 1 : 0;
@@ -26,7 +26,7 @@ describe('Calendar day', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />
+          <CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />,
         );
       }).not.toThrow();
     });
@@ -41,7 +41,7 @@ describe('Calendar day', () => {
 
       calendarDay = mount(
         <CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />,
-        { attachTo: document.getElementById('AppTableRow') }
+        { attachTo: document.getElementById('AppTableRow') },
       );
       calendarDayInstance = calendarDay.instance() as CalendarDay;
     });

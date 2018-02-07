@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { LabeledValue } from '../LabeledValue';
 import { TooltipPlacement } from '../../../utils/TooltipUtils';
+import { LabeledValue } from '../LabeledValue';
 
 export const LabeledValueExamples = () =>
   <div className='mt2'>

@@ -1,11 +1,11 @@
-import * as _ from 'underscore';
 import * as React from 'react';
 import { Action } from 'redux';
-import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
-import { MemberEditView } from './MemberEditView';
-import { addMember } from '../actions/MembersActions';
+import * as _ from 'underscore';
+import { IReduxProps, ReduxConnect } from '../../../src/utils/ReduxUtils';
 import { IReactVaporExampleState } from '../../Reducers';
+import { addMember } from '../actions/MembersActions';
 import { IMemberEditionState } from '../reducers/MemberEditionReducers';
+import { MemberEditView } from './MemberEditView';
 
 export interface IMembersCompositeViewStateProps {
   members?: IMemberEditionState[];
@@ -19,20 +19,20 @@ export interface IMembersCompositeViewProps extends IMembersCompositeViewStatePr
 
 const mapStateToProps = (state: IReactVaporExampleState): IMembersCompositeViewStateProps => {
   return {
-    members: state.membersCompositeState.members
+    members: state.membersCompositeState.members,
   };
 };
 
 const mapDispatchToProps = (dispatch: (action: Action) => void): IMembersCompositeViewDispatchProps => {
   return {
-    addMember: () => dispatch(addMember())
+    addMember: () => dispatch(addMember()),
   };
 };
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MembersCompositeView extends React.Component<IMembersCompositeViewProps, any> {
   render() {
-    let memberEditViews = _.map(this.props.members, (member: IMemberEditionState) => {
+    const memberEditViews = _.map(this.props.members, (member: IMemberEditionState) => {
       return (
         <div className='spaced-box' key={member.id}>
           <MemberEditView

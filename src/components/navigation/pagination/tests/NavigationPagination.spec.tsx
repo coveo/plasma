@@ -1,14 +1,14 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
-import {
-  NavigationPagination,
-  INavigationPaginationProps,
-  PREVIOUS_LABEL,
-  NEXT_LABEL,
-  NUMBER_OF_PAGES_SHOWING
-} from '../NavigationPagination';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import {
+  INavigationPaginationProps,
+  NavigationPagination,
+  NEXT_LABEL,
+  NUMBER_OF_PAGES_SHOWING,
+  PREVIOUS_LABEL,
+} from '../NavigationPagination';
 
 describe('NavigationPagination', () => {
   const NAVIGATION_PAGINATION_BASIC_PROPS: INavigationPaginationProps = {
@@ -19,7 +19,7 @@ describe('NavigationPagination', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <NavigationPagination {...NAVIGATION_PAGINATION_BASIC_PROPS} />
+          <NavigationPagination {...NAVIGATION_PAGINATION_BASIC_PROPS} />,
         );
       }).not.toThrow();
     });
@@ -44,7 +44,7 @@ describe('NavigationPagination', () => {
     });
 
     it('should call prop onRender on mounting if set', () => {
-      let renderSpy: jasmine.Spy = jasmine.createSpy('onRender');
+      const renderSpy: jasmine.Spy = jasmine.createSpy('onRender');
 
       expect(() => { navigationPaginationInstance.componentWillMount(); }).not.toThrow();
 
@@ -58,7 +58,7 @@ describe('NavigationPagination', () => {
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-      let destroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
+      const destroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
 
       expect(() => { navigationPaginationInstance.componentWillUnmount(); }).not.toThrow();
 
@@ -74,8 +74,8 @@ describe('NavigationPagination', () => {
 
     it('should call onPageClick prop if set when clicking on next/previous or page number and page number is greater' +
       'than or is 0 and does not equal the current page', () => {
-        let clickSpy: jasmine.Spy = jasmine.createSpy('onClick');
-        let newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
+        const clickSpy: jasmine.Spy = jasmine.createSpy('onClick');
+        const newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
           { onPageClick: clickSpy });
 
         expect(() => {
@@ -106,8 +106,8 @@ describe('NavigationPagination', () => {
       });
 
     it('should show the previous label sent as a prop else show the default one', () => {
-      let expectedLabel: string = 'Previous page';
-      let newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
+      const expectedLabel: string = 'Previous page';
+      const newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
         { previousLabel: expectedLabel });
 
       expect(navigationPagination.html()).toContain(PREVIOUS_LABEL);
@@ -117,8 +117,8 @@ describe('NavigationPagination', () => {
     });
 
     it('should show the next label sent as a prop else show the default one', () => {
-      let expectedLabel: string = 'Next page';
-      let newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
+      const expectedLabel: string = 'Next page';
+      const newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
         { nextLabel: expectedLabel });
 
       expect(navigationPagination.html()).toContain(NEXT_LABEL);
@@ -128,8 +128,8 @@ describe('NavigationPagination', () => {
     });
 
     it('should show as many pages as numberOfPagesToShow prop else show the default number', () => {
-      let expectedNbOfPagesToShow: number = 2;
-      let newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
+      const expectedNbOfPagesToShow: number = 2;
+      const newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
         { numberOfPagesToShow: 2 });
 
       expect(navigationPagination.find('NavigationPaginationSelect').length).toBe(NUMBER_OF_PAGES_SHOWING);
@@ -139,7 +139,7 @@ describe('NavigationPagination', () => {
     });
 
     it('should not show any page number if the prop hidePages is set to true', () => {
-      let newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
+      const newNavigationPaginationProps: INavigationPaginationProps = _.extend({}, NAVIGATION_PAGINATION_BASIC_PROPS,
         { hidePages: true });
 
       expect(navigationPagination.find('NavigationPaginationSelect').length).toBeGreaterThan(0);

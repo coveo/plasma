@@ -1,8 +1,8 @@
-import { FacetActions } from './FacetActions';
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { IFacet } from './Facet';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { IFacet } from './Facet';
+import { FacetActions } from './FacetActions';
 
 export interface IFacetState {
   facet: string;
@@ -21,7 +21,7 @@ const toggleMore = (state: IFacetState, action: (IReduxAction<IReduxActionsPaylo
   return {
     facet: state.facet,
     opened: !state.opened,
-    selected: state.selected
+    selected: state.selected,
   };
 };
 
@@ -29,7 +29,7 @@ const closeMore = (state: IFacetState): IFacetState => {
   return {
     facet: state.facet,
     opened: false,
-    selected: state.selected
+    selected: state.selected,
   };
 };
 
@@ -37,7 +37,7 @@ const addFacet = (state: IFacetState, action: (IReduxAction<IReduxActionsPayload
   return {
     facet: action.payload.facet,
     opened: false,
-    selected: []
+    selected: [],
   };
 };
 
@@ -47,20 +47,20 @@ const changeFacet = (state: IFacetState, action: (IReduxAction<IReduxActionsPayl
   }
 
   let selected = state.selected;
-  if (_.some(state.selected, (facetRow: IFacet) => { return facetRow.name === action.payload.facetRow.name; })) {
+  if (_.some(state.selected, (facetRow: IFacet) => facetRow.name === action.payload.facetRow.name)) {
     selected = _.reject(state.selected, (facetRow: IFacet) => {
       return facetRow.name === action.payload.facetRow.name;
     });
   } else {
     selected = [
       action.payload.facetRow,
-      ...state.selected
+      ...state.selected,
     ];
   }
   return {
     facet: state.facet,
     opened: state.opened,
-    selected: selected
+    selected: selected,
   };
 };
 
@@ -72,12 +72,12 @@ const emptyFacet = (state: IFacetState, action: (IReduxAction<IReduxActionsPaylo
   return {
     facet: state.facet,
     opened: state.opened,
-    selected: []
+    selected: [],
   };
 };
 
 export const facetReducer = (state: IFacetState = facetInitialState,
-  action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
+                             action: (IReduxAction<IReduxActionsPayload>)): IFacetState => {
   switch (action.type) {
     case FacetActions.toggleMoreFacetRows:
       return toggleMore(state, action);
@@ -95,7 +95,7 @@ export const facetReducer = (state: IFacetState = facetInitialState,
 };
 
 export const facetsReducer = (state: IFacetState[] = facetsInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IFacetState[] => {
+                              action: IReduxAction<IReduxActionsPayload>): IFacetState[] => {
   switch (action.type) {
     case FacetActions.changeFacet:
     case FacetActions.emptyFacet:
@@ -105,7 +105,7 @@ export const facetsReducer = (state: IFacetState[] = facetsInitialState,
     case FacetActions.addFacet:
       return [
         ...state,
-        facetReducer(undefined, action)
+        facetReducer(undefined, action),
       ];
     case FacetActions.removeFacet:
       return _.reject(state, (facet: IFacetState) => {

@@ -1,10 +1,10 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { TabPane, ITabPaneProps } from '../TabPane';
+import { ITabPaneProps, TabPane } from '../TabPane';
 
 describe('TabPane', () => {
-  let id: string = 'tab';
+  const id: string = 'tab';
 
   describe('<TabPane />', () => {
     it('should render without errors', () => {
@@ -12,7 +12,7 @@ describe('TabPane', () => {
         shallow(
           <TabPane
             id={id}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -26,7 +26,7 @@ describe('TabPane', () => {
         <TabPane
           id={id}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -36,7 +36,7 @@ describe('TabPane', () => {
     });
 
     it('should set active class on container when isActive is true', () => {
-      let container = tab.find('div').first();
+      const container = tab.find('div').first();
       expect(container.hasClass('active')).toBe(false);
 
       tab.setProps({ id, isActive: true });

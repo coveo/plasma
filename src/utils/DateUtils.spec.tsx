@@ -1,5 +1,5 @@
-import { DateUtils } from './DateUtils';
 import * as moment from 'moment';
+import { DateUtils } from './DateUtils';
 
 describe('DateUtils', () => {
 

@@ -12,7 +12,7 @@ export class SubNavigationExamples extends React.Component<any, any> {
             { label: 'Titanic', id: 'titanic' },
             { label: 'Star Wars: The Force Awakens', id: 'star-wars' },
             { label: 'Jurassic World', id: 'jurasic-world' },
-            { label: 'The Avengers', id: 'the-avengers' }
+            { label: 'The Avengers', id: 'the-avengers' },
           ]} />
         </div>
         <div className='flex flex-row flex-stretch mt2' style={{ height: '120px' }}>
@@ -21,7 +21,7 @@ export class SubNavigationExamples extends React.Component<any, any> {
             { label: 'Titanic', id: 'titanic' },
             { label: 'Star Wars: The Force Awakens', id: 'star-wars' },
             { label: 'Jurassic World', id: 'jurasic-world' },
-            { label: 'The Avengers', id: 'the-avengers' }
+            { label: 'The Avengers', id: 'the-avengers' },
           ]} defaultSelected='star-wars' onClickItem={(id) => alert(id)} />
         </div>
       </div>

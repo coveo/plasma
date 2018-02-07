@@ -1,23 +1,23 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { Navigation, INavigationProps } from '../Navigation';
-import { Loading } from '../../loading/Loading';
-import { NavigationPagination } from '../pagination/NavigationPagination';
-import { NavigationPerPage, PER_PAGE_NUMBERS, INavigationPerPageProps } from '../perPage/NavigationPerPage';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { Loading } from '../../loading/Loading';
+import { INavigationProps, Navigation } from '../Navigation';
+import { NavigationPagination } from '../pagination/NavigationPagination';
+import { INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS } from '../perPage/NavigationPerPage';
 
 describe(' navigation', () => {
-  let basicNavigationProps: INavigationProps = {
+  const basicNavigationProps: INavigationProps = {
     totalPages: 4,
-    totalEntries: 12
+    totalEntries: 12,
   };
 
   describe('<Navigation />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Navigation {...basicNavigationProps} />
+          <Navigation {...basicNavigationProps} />,
         );
       }).not.toThrow();
     });
@@ -29,7 +29,7 @@ describe(' navigation', () => {
     beforeEach(() => {
       navigation = mount(
         <Navigation {...basicNavigationProps} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -39,14 +39,14 @@ describe(' navigation', () => {
     });
 
     it('should get the number of pages as a prop', () => {
-      let totalPagesProp = navigation.props().totalPages;
+      const totalPagesProp = navigation.props().totalPages;
 
       expect(totalPagesProp).toBeDefined();
       expect(totalPagesProp).toBe(basicNavigationProps.totalPages);
     });
 
     it('should get the number of entries as a prop', () => {
-      let totalEntriesProp = navigation.props().totalEntries;
+      const totalEntriesProp = navigation.props().totalEntries;
 
       expect(totalEntriesProp).toBeDefined();
       expect(totalEntriesProp).toBe(basicNavigationProps.totalEntries);
@@ -57,7 +57,7 @@ describe(' navigation', () => {
     });
 
     it('should render a <NavigationPagination /> component if totalPages is higher than 1', () => {
-      let newNavigationProps = _.extend({}, basicNavigationProps, { totalPages: 1 });
+      const newNavigationProps = _.extend({}, basicNavigationProps, { totalPages: 1 });
 
       expect(navigation.find(NavigationPagination).closest('div').hasClass('hidden')).toBe(false);
 
@@ -66,7 +66,7 @@ describe(' navigation', () => {
     });
 
     it('should render a <NavigationPerPage /> component if totalEntries is higher than the first perPageNumber', () => {
-      let newNavigationProps = _.extend({}, basicNavigationProps, { totalEntries: PER_PAGE_NUMBERS[0] });
+      const newNavigationProps = _.extend({}, basicNavigationProps, { totalEntries: PER_PAGE_NUMBERS[0] });
 
       expect(navigation.find(NavigationPerPage).closest('div').hasClass('hidden')).toBe(false);
 
@@ -75,9 +75,9 @@ describe(' navigation', () => {
     });
 
     it('should pass on the currentPerPage prop if it is set (used without Redux)', () => {
-      let perPageNav: ReactWrapper<INavigationPerPageProps, any> = navigation.find(NavigationPerPage);
-      let expectedPerPage: number = 33;
-      let newNavigationProps: INavigationProps = _.extend({}, basicNavigationProps, { currentPerPage: expectedPerPage });
+      const perPageNav: ReactWrapper<INavigationPerPageProps, any> = navigation.find(NavigationPerPage);
+      const expectedPerPage: number = 33;
+      const newNavigationProps: INavigationProps = _.extend({}, basicNavigationProps, { currentPerPage: expectedPerPage });
 
       expect(perPageNav.props().currentPerPage).toBeUndefined();
 

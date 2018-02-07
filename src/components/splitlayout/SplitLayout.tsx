@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import { JSXRenderable } from '../../utils/JSXUtils';
 
 export interface ISplitLayoutProps {

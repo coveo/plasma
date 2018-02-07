@@ -1,16 +1,16 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Provider } from 'react-redux';
-import { IOptionPickerProps, OptionPicker } from '../OptionPicker';
-import { OptionPickerConnected } from '../OptionPickerConnected';
-import { changeOptionPicker } from '../OptionPickerActions';
-import { IOptionPickerState } from '../OptionPickerReducers';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IOptionPickerProps, OptionPicker } from '../OptionPicker';
+import { changeOptionPicker } from '../OptionPickerActions';
+import { OptionPickerConnected } from '../OptionPickerConnected';
+import { IOptionPickerState } from '../OptionPickerReducers';
 
 describe('Option picker', () => {
   const OPTION_PICKER_BASIC_PROPS: IOptionPickerProps = {
@@ -18,13 +18,13 @@ describe('Option picker', () => {
     options: [
       {
         label: 'Option 1',
-        value: () => 'optionValue'
+        value: () => 'optionValue',
       },
       {
         label: 'Option 2',
-        value: () => '1238'
-      }
-    ]
+        value: () => '1238',
+      },
+    ],
   };
 
   describe('<OptionPickerConnected />', () => {
@@ -39,7 +39,7 @@ describe('Option picker', () => {
         <Provider store={store}>
           <OptionPickerConnected {...OPTION_PICKER_BASIC_PROPS} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       optionPicker = wrapper.find(OptionPicker).first();
     });
@@ -51,33 +51,33 @@ describe('Option picker', () => {
     });
 
     it('should get an id as a prop', () => {
-      let idProp = optionPicker.props().id;
+      const idProp = optionPicker.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(OPTION_PICKER_BASIC_PROPS.id);
     });
 
     it('should get the active label as a prop', () => {
-      let activeLabelProp = optionPicker.props().activeLabel;
+      const activeLabelProp = optionPicker.props().activeLabel;
 
       expect(activeLabelProp).toBeDefined();
       expect(activeLabelProp).toBe('');
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRenderProp = optionPicker.props().onRender;
+      const onRenderProp = optionPicker.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {
-      let onDestroyProp = optionPicker.props().onDestroy;
+      const onDestroyProp = optionPicker.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should get what to do on click as a prop', () => {
-      let onChangeProp = optionPicker.props().onClick;
+      const onChangeProp = optionPicker.props().onClick;
 
       expect(onChangeProp).toBeDefined();
     });
@@ -90,8 +90,8 @@ describe('Option picker', () => {
     });
 
     it('should return the activeLabel from the state when the option picker exists in the state', () => {
-      let expectedSelectedValue: string = 'our value';
-      let expectedSelectedLabel: string = 'our label';
+      const expectedSelectedValue: string = 'our value';
+      const expectedSelectedLabel: string = 'our label';
 
       store.dispatch(changeOptionPicker(OPTION_PICKER_BASIC_PROPS.id, expectedSelectedLabel, expectedSelectedValue));
 

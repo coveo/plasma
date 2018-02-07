@@ -1,5 +1,5 @@
-import { Input } from '../Input';
 import * as React from 'react';
+import { Input } from '../Input';
 import { Label } from '../Label';
 
 export interface IInputExampleStateProps {
@@ -13,7 +13,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
     super(props, state);
 
     this.state = {
-      inputClasses: []
+      inputClasses: [],
     };
   }
 
@@ -24,7 +24,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
 
   setInputClasses(className: string) {
     this.setState({
-      inputClasses: [className]
+      inputClasses: [className],
     });
   }
 

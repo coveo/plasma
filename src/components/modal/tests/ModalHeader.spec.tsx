@@ -1,7 +1,7 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { ModalHeader, IModalHeaderProps } from '../ModalHeader';
+import { IModalHeaderProps, ModalHeader } from '../ModalHeader';
 
 describe('ModalHeader', () => {
   const id: string = 'modal';
@@ -13,7 +13,7 @@ describe('ModalHeader', () => {
         shallow(
           <ModalHeader
             title={title}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -27,7 +27,7 @@ describe('ModalHeader', () => {
         <ModalHeader
           title={title}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

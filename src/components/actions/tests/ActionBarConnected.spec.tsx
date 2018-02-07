@@ -1,21 +1,21 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { IActionOptions } from '../Action';
-import { IActionBarProps, ActionBar } from '../ActionBar';
-import { Store } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Provider } from 'react-redux';
-import { ActionBarConnected } from '../ActionBarConnected';
-import { addActionsToActionBar } from '../ActionBarActions';
-import { PrimaryActionConnected } from '../PrimaryActionConnected';
-import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
-import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
-import { IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
-import { filterItems } from '../filters/ItemFilterActions';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
+import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
+import { IActionOptions } from '../Action';
+import { ActionBar, IActionBarProps } from '../ActionBar';
+import { addActionsToActionBar } from '../ActionBarActions';
+import { ActionBarConnected } from '../ActionBarConnected';
+import { filterItems } from '../filters/ItemFilterActions';
+import { PrimaryActionConnected } from '../PrimaryActionConnected';
+import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
 
 describe('Actions', () => {
   const id: string = 'secondary-actions';
@@ -24,11 +24,11 @@ describe('Actions', () => {
     link: 'http://coveo.com',
     target: '_blank',
     primary: true,
-    enabled: true
+    enabled: true,
   }, {
     name: 'action2',
     trigger: jasmine.createSpy('triggerMethod'),
-    enabled: true
+    enabled: true,
   }];
   const itemFilter: string = 'the item';
   const itemFilterLabel: string = 'Item filter';
@@ -45,7 +45,7 @@ describe('Actions', () => {
         <Provider store={store}>
           <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       actionBar = wrapper.find(ActionBar).first();
 
@@ -60,14 +60,14 @@ describe('Actions', () => {
     });
 
     it('should get an id as a prop', () => {
-      let idProp = actionBar.props().id;
+      const idProp = actionBar.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
     });
 
     it('should get the actions as a prop', () => {
-      let actionsProp = actionBar.props().actions;
+      const actionsProp = actionBar.props().actions;
 
       expect(actionsProp).toBeDefined();
       expect(actionsProp.length).toBe(actions.length);
@@ -75,7 +75,7 @@ describe('Actions', () => {
     });
 
     it('should get the item filter as a prop', () => {
-      let itemFilterProp = actionBar.props().itemFilter;
+      const itemFilterProp = actionBar.props().itemFilter;
 
       expect(itemFilterProp).toBeDefined();
       expect(itemFilterProp).toBe(itemFilter);
@@ -86,30 +86,29 @@ describe('Actions', () => {
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRenderProp = actionBar.props().onRender;
+      const onRenderProp = actionBar.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should what to do on destroy as a prop', () => {
-      let onDestroyProp = actionBar.props().onDestroy;
+      const onDestroyProp = actionBar.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should get what to do on clearItemFilter as a prop', () => {
-      let clearItemFilterProp = actionBar.props().clearItemFilter;
+      const clearItemFilterProp = actionBar.props().clearItemFilter;
 
       expect(clearItemFilterProp).toBeDefined();
     });
 
     it('should get withReduxState as a prop', () => {
-      let withReduxStateProp = actionBar.props().withReduxState;
+      const withReduxStateProp = actionBar.props().withReduxState;
 
       expect(withReduxStateProp).toBeDefined();
       expect(withReduxStateProp).toBe(true);
     });
-
 
     it('should call onRender prop when mounted', () => {
       wrapper.unmount();
@@ -129,7 +128,7 @@ describe('Actions', () => {
         <Provider store={store}>
           <ActionBarConnected id={id} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       actionBar = wrapper.find(ActionBar).first();
 
@@ -150,28 +149,28 @@ describe('Actions', () => {
     });
 
     it('should get the <InlinePrompt /> as a prop', () => {
-      let expectedClass = 'expected-class';
-      let inlinePromptOptions: IInlinePromptOptions = {
+      const expectedClass = 'expected-class';
+      const inlinePromptOptions: IInlinePromptOptions = {
         onClick: jasmine.createSpy('onClick'),
         userChoice: {},
-        className: expectedClass
+        className: expectedClass,
       };
       store.dispatch(addPrompt(id, inlinePromptOptions));
 
-      let promptProp = actionBar.props().prompt;
+      const promptProp = actionBar.props().prompt;
       expect(promptProp).toBeDefined();
 
       expect(actionBar.find('.prompt-' + expectedClass).length).toBe(1);
     });
 
     it('should call onClearItemFilter when calling clearItemFilter', () => {
-      let onClearItemFilterSpy = jasmine.createSpy('onClearItemFilter');
+      const onClearItemFilterSpy = jasmine.createSpy('onClearItemFilter');
 
       wrapper = mount(
         <Provider store={store}>
           <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} onClearItemFilter={onClearItemFilterSpy} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       actionBar = wrapper.find(ActionBar).first();
 
