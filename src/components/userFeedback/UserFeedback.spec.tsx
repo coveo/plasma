@@ -122,8 +122,8 @@ describe('<UserFeedback>', () => {
         const extraClassesRealLife: string[] = ['mt1', 'mb2'];
         let testComponent: ShallowWrapper<IUserFeedbackProps, any> = getShallowOutput('', '', extraClass);
 
-        const areClassesAddedToElement = (extraClasses: string[], shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>): boolean => {
-          const allClasses: string[] = extraClasses;
+        const areClassesAddedToElement = (currentExtraClasses: string[], shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>): boolean => {
+          const allClasses: string[] = currentExtraClasses;
           allClasses.unshift(TextColorClass.default, DisplayClass.HIDDEN);
 
           return all(allClasses, (className: string) => shallowWrapper.hasClass(className));

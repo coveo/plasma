@@ -33,7 +33,7 @@ describe('Calendar', () => {
     let calendar: ReactWrapper<ICalendarProps, any>;
     let store: Store<IReactVaporState>;
 
-    const mountComponent = (props: Object = {}) => {
+    const mountComponent = (props = {}) => {
       wrapper = mount(
         <Provider store={store}>
           <CalendarConnected id={CALENDAR_ID} {...props} />

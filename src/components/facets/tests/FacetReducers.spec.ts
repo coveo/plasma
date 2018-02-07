@@ -13,15 +13,13 @@ describe('Facets', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IFacetState[];
-      const facetsState: IFacetState[] = facetsReducer(oldState, genericAction);
+      const facetsState: IFacetState[] = facetsReducer(undefined, genericAction);
 
       expect(facetsState).toBe(facetsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one facet', () => {
-      let oldState: IFacetState;
-      const facetState: IFacetState = facetReducer(oldState, genericAction);
+      const facetState: IFacetState = facetReducer(undefined, genericAction);
 
       expect(facetState).toBe(facetInitialState);
     });

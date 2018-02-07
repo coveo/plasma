@@ -17,15 +17,13 @@ describe('LastUpdated', () => {
     const initialDate: Date = new Date();
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: ILastUpdatedState[];
-      const lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedCompositeReducer(oldState, genericAction);
+      const lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedCompositeReducer(undefined, genericAction);
 
       expect(lastUpdateTimeState).toBe(lastUpdatedCompositeInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one timer', () => {
-      let oldState: ILastUpdatedState;
-      const lastUpdateTimeState: ILastUpdatedState = lastUpdatedReducer(oldState, genericAction);
+      const lastUpdateTimeState: ILastUpdatedState = lastUpdatedReducer(undefined, genericAction);
 
       expect(lastUpdateTimeState).toBe(lastUpdatedInitialState);
     });

@@ -167,9 +167,6 @@ describe('<Table />', () => {
       });
 
       describe('hasTableCompositeStateChanged', () => {
-        let tableAsAny: any;
-        let tableProps: any;
-
         beforeEach(() => {
           tableProps = { ...tablePropsMock, onModifyData: onModifyDataSpy };
           tableAsAny = new Table(tableProps);

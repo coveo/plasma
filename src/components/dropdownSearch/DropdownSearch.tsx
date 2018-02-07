@@ -103,28 +103,28 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         return _.isEmpty(this.props.filterText)
           || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
       })
-      .map((option: IDropdownOption, index: number, options: IDropdownOption[]) => {
+      .map((opt: IDropdownOption, index: number, opts: IDropdownOption[]) => {
         const optionClasses = classNames({
-          'state-selected': option.selected,
+          'state-selected': opt.selected,
         });
         const liClasses = classNames({
-          'active': JSON.stringify(option) === JSON.stringify(this.props.activeOption),
+          'active': JSON.stringify(opt) === JSON.stringify(this.props.activeOption),
         });
 
-        const value = option.displayValue || option.value;
-        const valueToShow = !!this.props.highlightAllFilterResult || options.length <= this.props.highlightThreshold
+        const value = opt.displayValue || opt.value;
+        const valueToShow = !!this.props.highlightAllFilterResult || opts.length <= this.props.highlightThreshold
           ? this.getTextFiltered(value)
           : value;
 
         return (
-          <li key={option.value}
+          <li key={opt.value}
             className={liClasses}
             title={value}>
             <span className={optionClasses}
               onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
-              data-value={option.value}>
-              {this.getDropdownPrepend(option)}
-              {this.getSvg(option)}
+              data-value={opt.value}>
+              {this.getDropdownPrepend(opt)}
+              {this.getSvg(opt)}
               {valueToShow}
             </span>
           </li>
@@ -156,7 +156,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
   }
 
   protected getTextFiltered(text: string): Array<JSX.Element | string> | string {
-    const originalText = new String(text).toString();
+    const originalText = (text || '').toString();
     if (!_.isEmpty(this.props.filterText)) {
       let highlightIndexKey: number = 0;
       const textFilterElements: Array<JSX.Element | string> = [''];
@@ -370,7 +370,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
      */
     return e.keyCode === keyCode.enter
       || e.keyCode === keyCode.tab
-      || (e.keyCode == keyCode.upArrow && this.props.activeOption === this.props.options[0]);
+      || (e.keyCode === keyCode.upArrow && this.props.activeOption === this.props.options[0]);
   }
 
   private handleOnKeyDownDropdownButton(e: React.KeyboardEvent<HTMLInputElement>) {

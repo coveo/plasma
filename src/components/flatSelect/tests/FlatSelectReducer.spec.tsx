@@ -14,15 +14,13 @@ describe('FlatSelect', () => {
   };
 
   it('should return the default state if the action is not defined and the state is undefined', () => {
-    let oldState: IFlatSelectState[];
-    const flatSelectState: IFlatSelectState[] = flatSelectsReducer(oldState, genericAction);
+    const flatSelectState: IFlatSelectState[] = flatSelectsReducer(undefined, genericAction);
 
     expect(flatSelectState).toBe(flatSelectsInitialState);
   });
 
   it('should return the default state if the action is not defined and the state is undefined for one flat select', () => {
-    let oldState: IFlatSelectState;
-    const flatSelectState: IFlatSelectState = flatSelectReducer(oldState, genericAction);
+    const flatSelectState: IFlatSelectState = flatSelectReducer(undefined, genericAction);
 
     expect(flatSelectState).toBe(flatSelectInitialState);
   });

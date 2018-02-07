@@ -9,12 +9,12 @@ export interface IOverlayTriggerProps {
   delay?: number;
   delayHide?: number;
   delayShow?: number;
-  onEnter?: Function;
-  onEntered?: Function;
-  onEntering?: Function;
-  onExit?: Function;
-  onExited?: Function;
-  onExiting?: Function;
+  onEnter?: (...args: any[]) => void;
+  onEntered?: (...args: any[]) => void;
+  onEntering?: (...args: any[]) => void;
+  onExit?: (...args: any[]) => void;
+  onExited?: (...args: any[]) => void;
+  onExiting?: (...args: any[]) => void;
   placement?: string;
   container?: string;
   rootClose?: boolean;

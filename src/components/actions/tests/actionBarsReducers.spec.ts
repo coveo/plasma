@@ -21,14 +21,14 @@ describe('Actions', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IActionBarState[];
+      const oldState = undefined;
       const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, genericAction);
 
       expect(actionBarsState).toBe(actionBarsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one action bar', () => {
-      let oldState: IActionBarState;
+      const oldState = undefined;
       const actionBarState: IActionBarState = actionBarReducer(oldState, genericAction);
 
       expect(actionBarState).toBe(actionBarInitialState);

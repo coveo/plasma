@@ -21,7 +21,7 @@ describe('Date picker', () => {
     let datesSelection: ReactWrapper<IDatesSelectionProps, any>;
     let store: Store<IReactVaporState>;
 
-    const mountComponent = (props: Object = {}) => {
+    const mountComponent = (props = {}) => {
       wrapper = mount(
         <Provider store={store}>
           <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />

@@ -145,13 +145,13 @@ describe('Calendar', () => {
 
     it('should start the week on the startingDay sent as prop or simply use the first one (assumed to be Sunday)', () => {
       const startingDay: number = 3;
-      let firstDayOfSecondWeek: number = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text());
+      let firstDayOfSecondWeek: number = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text(), 10);
 
       expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[0]);
       expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(0);
 
       calendar.setProps({ startingDay });
-      firstDayOfSecondWeek = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text());
+      firstDayOfSecondWeek = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text(), 10);
 
       expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[startingDay]);
       expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(startingDay);

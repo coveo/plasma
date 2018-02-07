@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { extend, omit } from 'underscore';
 
+// tslint:disable-next-line
 const svgsEnum = require('../../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as { [key: string]: string };
 
 /**

@@ -12,7 +12,7 @@ describe('DropdownSearch', () => {
 
     const defaultPayload = { id: 'new-dropdown-search' };
     let options: IDropdownOption[] = [];
-    let oldState: IDropdownSearchState = { id: 'new-dropdown-search' };
+    let defaultOldState: IDropdownSearchState = { id: 'new-dropdown-search' };
 
     beforeEach(() => {
       options = [
@@ -20,7 +20,7 @@ describe('DropdownSearch', () => {
         { value: 'test 2' },
       ];
 
-      oldState = _.extend(oldState, {
+      defaultOldState = _.extend(defaultOldState, {
         options: options,
         isOpened: false,
       });
@@ -54,7 +54,7 @@ describe('DropdownSearch', () => {
         }),
       };
 
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
       expect(_.findWhere(updatedState.options, { ...options[0], selected: true })).toBeDefined();
     });
@@ -69,7 +69,7 @@ describe('DropdownSearch', () => {
         }),
       };
 
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
       expect(_.findWhere(updatedState.options, { ...options[0], selected: true }).hidden).toBe(true);
     });
@@ -80,7 +80,7 @@ describe('DropdownSearch', () => {
         payload: defaultPayload,
       };
 
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
       expect(_.where(updatedState.options, { selected: true })).toEqual([]);
     });
@@ -91,7 +91,7 @@ describe('DropdownSearch', () => {
         payload: defaultPayload,
       };
 
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
       expect(_.where(updatedState.options, { hidden: false }).length).toBe(options.length);
     });
@@ -100,7 +100,7 @@ describe('DropdownSearch', () => {
       const selectedOptionValue: string = options[0].value;
 
       const oldstate: IDropdownSearchState = {
-        ...oldState,
+        ...defaultOldState,
         options: [{ ...options[0], selected: true, hidden: true }, { ...options[1], selected: true, hidden: true }],
       };
 
@@ -131,7 +131,7 @@ describe('DropdownSearch', () => {
         }),
       };
 
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
       expect(_.findWhere(_.reject(updatedState.options, (option) => {
         return option.custom || option.hidden;
@@ -148,7 +148,7 @@ describe('DropdownSearch', () => {
         }),
       };
 
-      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+      const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
       expect(_.where(updatedState.options, { selected: true, value: customValue }).length).toBe(1);
     });
@@ -156,7 +156,7 @@ describe('DropdownSearch', () => {
     describe('on key down', () => {
 
       it('should return the new state with active option above the last one if the keyCode is "Up Arrow"', () => {
-        const oldstate: IDropdownSearchState = _.extend(oldState, {
+        const oldstate: IDropdownSearchState = _.extend(defaultOldState, {
           id: 'new-dropdown-search',
           isOpened: true,
           options: options,
@@ -175,7 +175,7 @@ describe('DropdownSearch', () => {
       it('should add a custom option on enter if the selected option is not present', () => {
         const keycode = keyCode.enter;
         const customValue: string = 'custom_value';
-        const stateWithFilterTextPresent: IDropdownSearchState = _.extend(oldState, {
+        const stateWithFilterTextPresent: IDropdownSearchState = _.extend(defaultOldState, {
           filterText: customValue,
           activeOption: undefined,
         });
@@ -193,7 +193,7 @@ describe('DropdownSearch', () => {
 
       it('should add the active option on tab in selected options', () => {
         const keycode = keyCode.tab;
-        const oldstate: IDropdownSearchState = _.extend(oldState, {
+        const oldstate: IDropdownSearchState = _.extend(defaultOldState, {
           activeOption: options[0],
         });
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
@@ -211,7 +211,7 @@ describe('DropdownSearch', () => {
       it('should remove last selected option on backspace when the filter text is empty', () => {
         const keycode = keyCode.backspace;
         const filterText: string = '';
-        const stateWithFilterTextPresent: IDropdownSearchState = _.extend(oldState, {
+        const stateWithFilterTextPresent: IDropdownSearchState = _.extend(defaultOldState, {
           filterText,
           options: [
             { ...options[0], selected: true, hidden: true },
@@ -238,7 +238,7 @@ describe('DropdownSearch', () => {
       it('should not remove last selected option on backspace when the filter text is not empty', () => {
         const keycode = keyCode.backspace;
         const filterText: string = 'not empty filter text';
-        const stateWithFilterTextPresent: IDropdownSearchState = _.extend(oldState, {
+        const stateWithFilterTextPresent: IDropdownSearchState = _.extend(defaultOldState, {
           filterText,
           options: [].concat(options),
         });
@@ -265,7 +265,7 @@ describe('DropdownSearch', () => {
           }),
         };
 
-        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
         expect(updatedState.isOpened).toBe(false);
       });
@@ -279,7 +279,7 @@ describe('DropdownSearch', () => {
           }),
         };
 
-        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
         expect(updatedState.setFocusOnDropdownButton).toBe(false);
       });
@@ -293,7 +293,7 @@ describe('DropdownSearch', () => {
           }),
         };
 
-        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
         expect(updatedState.activeOption).toBeUndefined();
       });
@@ -306,9 +306,9 @@ describe('DropdownSearch', () => {
           payload: defaultPayload,
         };
 
-        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
+        const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
-        expect(updatedState).toEqual(oldState);
+        expect(updatedState).toEqual(defaultOldState);
       });
     });
   });

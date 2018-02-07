@@ -158,7 +158,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
 
       _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {
         if (day.isSelectable) {
-          if (rule.isFor == CalendarSelectionRuleType.all
+          if (rule.isFor === CalendarSelectionRuleType.all
             || (rule.isFor === CalendarSelectionRuleType.lower && calendarSelection.selected === DateLimits.lower)
             || (rule.isFor === CalendarSelectionRuleType.upper && calendarSelection.selected === DateLimits.upper)) {
             day.isSelectable = rule.test(day.date.toDate());
@@ -202,7 +202,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       : <OptionsCycle {...yearPickerProps} />;
 
     const sectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
-    const year = parseInt(this.props.years[sectedYearOption]);
+    const year = parseInt(this.props.years[sectedYearOption], 10);
     const selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : this.props.startingMonth;
 
     const month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), this.props.startingDay);

@@ -42,8 +42,7 @@ describe('Date picker', () => {
 
   describe('datePickersReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IDatePickerState[];
-      const datePickersState: IDatePickerState[] = datePickersReducer(oldState, GENERIC_ACTION);
+      const datePickersState: IDatePickerState[] = datePickersReducer(undefined, GENERIC_ACTION);
 
       expect(datePickersState).toBe(datePickersInitialState);
     });
@@ -255,8 +254,7 @@ describe('Date picker', () => {
 
   describe('datePickerReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IDatePickerState;
-      const datePickerState: IDatePickerState = datePickerReducer(oldState, GENERIC_ACTION);
+      const datePickerState: IDatePickerState = datePickerReducer(undefined, GENERIC_ACTION);
 
       expect(datePickerState).toBe(datePickerInitialState);
     });

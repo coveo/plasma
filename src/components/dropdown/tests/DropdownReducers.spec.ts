@@ -19,15 +19,13 @@ describe('Reducers', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IDropdownState[];
-      const dropdownsState: IDropdownState[] = dropdownsReducer(oldState, genericAction);
+      const dropdownsState: IDropdownState[] = dropdownsReducer(undefined, genericAction);
 
       expect(dropdownsState).toBe(dropdownsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one dropdown', () => {
-      let oldState: IDropdownState;
-      const dropdownState: IDropdownState = dropdownReducer(oldState, genericAction);
+      const dropdownState: IDropdownState = dropdownReducer(undefined, genericAction);
 
       expect(dropdownState).toBe(dropdownInitialState);
     });

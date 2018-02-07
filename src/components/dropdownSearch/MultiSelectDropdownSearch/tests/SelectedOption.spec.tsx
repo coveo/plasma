@@ -14,9 +14,9 @@ describe('SelectedOption', () => {
   describe('<SelectedOption />', () => {
     let selectedOption: ReactWrapper<ISelectedOptionProps, any>;
 
-    const renderSelectedOption = (props?: ISelectedOptionProps) => {
+    const renderSelectedOption = (currentProps?: ISelectedOptionProps) => {
       selectedOption = mount(
-        <SelectedOption {...props} />,
+        <SelectedOption {...currentProps} />,
         { attachTo: document.getElementById('App') },
       );
     };

@@ -20,8 +20,7 @@ describe('Option picker', () => {
 
   describe('optionPickersReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IOptionPickerState[];
-      const optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, genericAction);
+      const optionPickersState: IOptionPickerState[] = optionPickersReducer(undefined, genericAction);
 
       expect(optionPickersState).toBe(optionPickersInitialState);
     });
@@ -207,8 +206,7 @@ describe('Option picker', () => {
 
   describe('optionPickerReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IOptionPickerState;
-      const optionPickerState: IOptionPickerState = optionPickerReducer(oldState, genericAction);
+      const optionPickerState: IOptionPickerState = optionPickerReducer(undefined, genericAction);
 
       expect(optionPickerState).toBe(optionPickerInitialState);
     });

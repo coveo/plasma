@@ -20,8 +20,7 @@ describe('Options cycle', () => {
 
   describe('optionsCyclesReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IOptionsCycleState[];
-      const optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(oldState, genericAction);
+      const optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(undefined, genericAction);
 
       expect(optionsCyclesState).toBe(optionsCyclesInitialState);
     });
@@ -152,8 +151,7 @@ describe('Options cycle', () => {
 
   describe('optionsCycleReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IOptionsCycleState;
-      const optionsCycleState: IOptionsCycleState = optionsCycleReducer(oldState, genericAction);
+      const optionsCycleState: IOptionsCycleState = optionsCycleReducer(undefined, genericAction);
 
       expect(optionsCycleState).toBe(optionsCycleInitialState);
     });

@@ -35,10 +35,10 @@ describe('MultiSelectDropdownSearch', () => {
       defaultOptions: defaultOptions,
     };
 
-    const renderMultiSelectDropdownSearchConnected = (props: IDropdownSearchProps) => {
+    const renderMultiSelectDropdownSearchConnected = (currentProps: IDropdownSearchProps) => {
       wrapper = mount(
         <Provider store={store}>
-          <MultiSelectDropdownSearchConnected {...props} />
+          <MultiSelectDropdownSearchConnected {...currentProps} />
         </Provider>,
         { attachTo: document.getElementById('App') },
       );
@@ -204,11 +204,11 @@ describe('MultiSelectDropdownSearch', () => {
       });
 
       it('should remove all selected option', () => {
-        const selectedOptionValue_1 = 'value_1';
-        const selectedOptionValue_2 = 'value_2';
+        const selectedOptionValue1 = 'value_1';
+        const selectedOptionValue2 = 'value_2';
 
-        store.dispatch(addCustomSelectedOption(id, selectedOptionValue_1));
-        store.dispatch(addCustomSelectedOption(id, selectedOptionValue_2));
+        store.dispatch(addCustomSelectedOption(id, selectedOptionValue1));
+        store.dispatch(addCustomSelectedOption(id, selectedOptionValue2));
 
         multiSelectDropdownSearchConnected.props().onRemoveAllSelectedOptions();
 

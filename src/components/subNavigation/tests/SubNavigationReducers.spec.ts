@@ -19,15 +19,13 @@ describe('Reducers', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: ISubNavigationState[];
-      const newState: ISubNavigationState[] = subNavigationsReducer(oldState, genericAction);
+      const newState: ISubNavigationState[] = subNavigationsReducer(undefined, genericAction);
 
       expect(newState).toBe(subNavigationsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one sub navigation', () => {
-      let oldState: ISubNavigationState;
-      const newState: ISubNavigationState = subNavigationReducer(oldState, genericAction);
+      const newState: ISubNavigationState = subNavigationReducer(undefined, genericAction);
 
       expect(newState).toBe(subNavigationInitialState);
     });

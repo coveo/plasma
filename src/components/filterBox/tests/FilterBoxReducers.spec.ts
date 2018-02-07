@@ -19,15 +19,13 @@ describe('FilterBox', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IFilterState[];
-      const filtersState: IFilterState[] = filterBoxesReducer(oldState, genericAction);
+      const filtersState: IFilterState[] = filterBoxesReducer(undefined, genericAction);
 
       expect(filtersState).toBe(filtersInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one filter box', () => {
-      let oldState: IFilterState;
-      const filterBoxState: IFilterState = filterBoxReducer(oldState, genericAction);
+      const filterBoxState: IFilterState = filterBoxReducer(undefined, genericAction);
 
       expect(filterBoxState).toBe(filterBoxInitialState);
     });

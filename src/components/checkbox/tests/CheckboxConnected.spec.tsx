@@ -48,7 +48,7 @@ describe('Checkbox', () => {
     });
 
     it('should get checked false as a prop', () => {
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(false);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(false);
     });
 
     it('should get what to do on render as a prop', () => {
@@ -64,23 +64,23 @@ describe('Checkbox', () => {
     });
 
     it('should add the checkbox in the store on render', () => {
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id).length).toBe(1);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id).length).toBe(1);
     });
 
     it('should toggle the checkbox in the store when dispatching a "toggleCheckbox" action', () => {
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id).length).toBe(1);
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(false);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id).length).toBe(1);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(false);
 
       store.dispatch(toggleCheckbox(id));
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(true);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(true);
     });
 
     it('should toggle the checkbox in the store when clicking on it', () => {
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id).length).toBe(1);
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(false);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id).length).toBe(1);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(false);
 
       checkbox.props().onClick(null);
-      expect(store.getState().checkboxes.filter((checkbox) => checkbox.id === id)[0].checked).toBe(true);
+      expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(true);
     });
 
     it('should remove the checkbox in the store on destroy', () => {

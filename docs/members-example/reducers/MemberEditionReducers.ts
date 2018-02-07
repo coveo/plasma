@@ -25,7 +25,7 @@ export const defaultMemberEditionState: IMemberEditionState = {
 };
 
 const applyChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
-  if (action.payload.id != state.id) {
+  if (action.payload.id !== state.id) {
     return state;
   }
   return _.extend({}, state, {
@@ -35,7 +35,7 @@ const applyChangesReducer = (state: IMemberEditionState, action: IReduxAction<IM
 };
 
 const cancelChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
-  if (action.payload.id != state.id) {
+  if (action.payload.id !== state.id) {
     return state;
   }
   return _.extend({}, state, {
@@ -45,7 +45,7 @@ const cancelChangesReducer = (state: IMemberEditionState, action: IReduxAction<I
 };
 
 const changeEmailReducer = (state: IMemberEditionState, action: IReduxAction<IChangeEmailPayload>): IMemberEditionState => {
-  if (action.payload.id != state.id) {
+  if (action.payload.id !== state.id) {
     return state;
   }
   return _.extend({}, state, {
@@ -56,7 +56,7 @@ const changeEmailReducer = (state: IMemberEditionState, action: IReduxAction<ICh
 };
 
 const changeSendEmailReducer = (state: IMemberEditionState, action: IReduxAction<IChangeSendEmailPayload>): IMemberEditionState => {
-  if (action.payload.id != state.id) {
+  if (action.payload.id !== state.id) {
     return state;
   }
   return _.extend({}, state, {
@@ -67,7 +67,7 @@ const changeSendEmailReducer = (state: IMemberEditionState, action: IReduxAction
 };
 
 const toggleOpen = (state: IMemberEditionState, action: IReduxAction<IToggleOpenPayload>): IMemberEditionState => {
-  if (action.payload.id != state.id) {
+  if (action.payload.id !== state.id) {
     return state;
   }
   return _.extend({}, state, {

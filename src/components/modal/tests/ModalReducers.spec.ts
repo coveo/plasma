@@ -13,15 +13,13 @@ describe('Modal', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IModalState[];
-      const modalsState: IModalState[] = modalsReducer(oldState, genericAction);
+      const modalsState: IModalState[] = modalsReducer(undefined, genericAction);
 
       expect(modalsState).toBe(modalsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one modal', () => {
-      let oldState: IModalState;
-      const modalState: IModalState = modalReducer(oldState, genericAction);
+      const modalState: IModalState = modalReducer(undefined, genericAction);
 
       expect(modalState).toBe(modalInitialState);
     });

@@ -162,7 +162,7 @@ describe('Date picker', () => {
 
     it('should display the date from the date picker with time on the label if the first dateSelectionBox is with time',
       () => {
-        const now: Date = new Date();
+        const rightNow: Date = new Date();
         const newProps: IDatePickerDropdownProps = {
           datesSelectionBoxes: [
             {
@@ -174,13 +174,13 @@ describe('Date picker', () => {
             id: 'id',
             calendarId: 'calendarId',
             color: 'color',
-            lowerLimit: now,
-            upperLimit: now,
+            lowerLimit: rightNow,
+            upperLimit: rightNow,
             isRange: true,
             selected: '',
-            appliedLowerLimit: now,
-            appliedUpperLimit: now,
-            inputLowerLimit: now,
+            appliedLowerLimit: rightNow,
+            appliedUpperLimit: rightNow,
+            inputLowerLimit: rightNow,
             inputUpperLimit: then,
           },
         };

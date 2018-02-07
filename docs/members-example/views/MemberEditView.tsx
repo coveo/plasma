@@ -38,7 +38,7 @@ const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditVi
     item = state.membersCompositeState.addMemberState;
   } else {
     item = _.find(state.membersCompositeState.members, (memberState: IMemberEditionState) => {
-      return memberState.id == ownProps.id;
+      return memberState.id === ownProps.id;
     });
   }
 

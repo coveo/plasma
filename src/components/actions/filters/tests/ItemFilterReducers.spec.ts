@@ -17,7 +17,7 @@ describe('Item filters', () => {
 
   describe('itemFiltersReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IItemFilterState[];
+      const oldState: IItemFilterState[] = undefined;
       const itemFilterState: IItemFilterState[] = itemFiltersReducer(oldState, genericAction);
 
       expect(itemFilterState).toBe(itemFiltersOriginalState);
@@ -149,7 +149,7 @@ describe('Item filters', () => {
 
   describe('itemFilterReducer', () => {
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IItemFilterState;
+      const oldState: IItemFilterState = undefined;
       const itemFilterState: IItemFilterState = itemFilterReducer(oldState, genericAction);
 
       expect(itemFilterState).toBe(itemFilterOriginalState);

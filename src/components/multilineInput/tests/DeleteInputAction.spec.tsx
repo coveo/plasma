@@ -9,7 +9,7 @@ describe('DeleteInputAction', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <DeleteInputAction onClick={() => { }} />,
+          <DeleteInputAction onClick={() => 1} />,
         );
       }).not.toThrow();
     });
@@ -20,7 +20,7 @@ describe('DeleteInputAction', () => {
 
     beforeEach(() => {
       deleteInput = mount(
-        <DeleteInputAction onClick={() => { }} />,
+        <DeleteInputAction onClick={() => 1} />,
         { attachTo: document.getElementById('App') },
       );
     });

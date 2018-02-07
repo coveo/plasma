@@ -19,9 +19,9 @@ describe('MultiSelectInput', () => {
   describe('<SelectedOption />', () => {
     let multiSelectInput: ReactWrapper<IMultiselectInputProps, any>;
 
-    const renderMultiSelectInput = (props?: IMultiselectInputProps) => {
+    const renderMultiSelectInput = (curentProps?: IMultiselectInputProps) => {
       multiSelectInput = mount(
-        <MultiselectInput {...props} />,
+        <MultiselectInput {...curentProps} />,
         { attachTo: document.getElementById('App') },
       );
     };

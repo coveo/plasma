@@ -14,15 +14,13 @@ describe('Reducers', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined ', () => {
-      let oldState: ILoadingState[];
-      const loadingState: ILoadingState[] = loadingsReducer(oldState, genericAction);
+      const loadingState: ILoadingState[] = loadingsReducer(undefined, genericAction);
 
       expect(loadingState).toBe(loadingsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one loading state', () => {
-      let oldState: ILoadingState;
-      const loadingState: ILoadingState = loadingReducer(oldState, genericAction);
+      const loadingState: ILoadingState = loadingReducer(undefined, genericAction);
 
       expect(loadingState).toBe(loadingInitialState);
     });

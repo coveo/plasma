@@ -19,15 +19,13 @@ describe('InlinePrompt', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IPromptState[];
-      const promptsState: IPromptState[] = promptsReducer(oldState, genericAction);
+      const promptsState: IPromptState[] = promptsReducer(undefined, genericAction);
 
       expect(promptsState).toBe(promptsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one prompt', () => {
-      let oldState: IPromptState;
-      const promptState: IPromptState = promptReducer(oldState, genericAction);
+      const promptState: IPromptState = promptReducer(undefined, genericAction);
 
       expect(promptState).toBe(promptInitialState);
     });

@@ -19,15 +19,13 @@ describe('Tables', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: ITableRowState[];
-      const collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, genericAction);
+      const collapsibleRowsState: ITableRowState[] = tableRowsReducer(undefined, genericAction);
 
       expect(collapsibleRowsState).toBe(tableRowsInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one row', () => {
-      let oldState: ITableRowState;
-      const collapsibleRowState: ITableRowState = tableRowReducer(oldState, genericAction);
+      const collapsibleRowState: ITableRowState = tableRowReducer(undefined, genericAction);
 
       expect(collapsibleRowState).toBe(tableRowInitialState);
     });
@@ -180,8 +178,6 @@ describe('Tables', () => {
           payload: { id: rowId },
         });
         const doesNotMatter = false;
-
-        let oldState: ITableRowState[];
 
         beforeEach(() => {
           openValue = false;

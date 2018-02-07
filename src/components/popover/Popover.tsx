@@ -17,12 +17,12 @@ export interface ITetherComponentCopiedProps {
   targetModifier?: string;
   enabled?: boolean;
   classes?: any;
-  style?: Object;
+  style?: {[key: string]: any; };
   classPrefix?: string;
-  optimizations?: Object;
+  optimizations?: {[key: string]: any; };
   constraints?: any[];
-  onUpdate?: Function;
-  onRepositioned?: Function;
+  onUpdate?: (...args: any[]) => void;
+  onRepositioned?: (...args: any[]) => void;
 }
 
 export interface IPopoverProps extends ITetherComponentCopiedProps, React.ClassAttributes<Popover> {

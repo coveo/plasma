@@ -66,29 +66,29 @@ describe('Modal', () => {
     });
 
     it('should add the modal in the store on render', () => {
-      expect(store.getState().modals.filter((modal) => modal.id === id).length).toBe(1);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id).length).toBe(1);
     });
 
     it('should open the modal in the store when dispatching a "openModal" action', () => {
-      expect(store.getState().modals.filter((modal) => modal.id === id).length).toBe(1);
-      expect(store.getState().modals.filter((modal) => modal.id === id)[0].isOpened).toBe(false);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id).length).toBe(1);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id)[0].isOpened).toBe(false);
 
       store.dispatch(openModal(id));
-      expect(store.getState().modals.filter((modal) => modal.id === id)[0].isOpened).toBe(true);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id)[0].isOpened).toBe(true);
     });
 
     it('should close the modal in the store when dispatching a "closeModal" action', () => {
-      expect(store.getState().modals.filter((modal) => modal.id === id)[0].isOpened).toBe(false);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id)[0].isOpened).toBe(false);
       store.dispatch(openModal(id));
-      expect(store.getState().modals.filter((modal) => modal.id === id)[0].isOpened).toBe(true);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id)[0].isOpened).toBe(true);
 
       store.dispatch(closeModal(id));
-      expect(store.getState().modals.filter((modal) => modal.id === id)[0].isOpened).toBe(false);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id)[0].isOpened).toBe(false);
     });
 
     it('should remove the modal in the store on destroy', () => {
       wrapper.unmount();
-      expect(store.getState().modals.filter((modals) => modals.id === id).length).toBe(0);
+      expect(store.getState().modals.filter((currentModal) => currentModal.id === id).length).toBe(0);
     });
   });
 });

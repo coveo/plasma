@@ -2,17 +2,16 @@ import * as $ from 'jquery';
 import * as s from 'underscore.string';
 
 // Polyfill MouseEvent if needed
-(function(window) {
+((window) => {
   try {
-    new (MouseEvent as any)('test');
+    new ((window as any).MouseEvent as any)('test');
     return false; // No need to polyfill
   } catch (e) {
     // Need to polyfill - fall through
   }
 
   // Polyfills DOM4 MouseEvent
-
-  const MouseEvent = function(eventType: any, params: any) {
+  const MouseEvent = (eventType: any, params: any) => {
     params = params || { bubbles: false, cancelable: false };
     const mouseEvent = document.createEvent('MouseEvent');
     mouseEvent.initMouseEvent(eventType, params.bubbles, params.cancelable, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);

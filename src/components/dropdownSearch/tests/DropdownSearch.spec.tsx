@@ -403,25 +403,25 @@ describe('DropdownSearch', () => {
           options: [],
         }));
 
-        const dropdownSearchInstance = (dropdownSearch.instance() as any);
+        const newDropdownSearchInstance = (dropdownSearch.instance() as any);
 
-        expect(JSON.stringify(dropdownSearchInstance.getNoOptions()))
+        expect(JSON.stringify(newDropdownSearchInstance.getNoOptions()))
           .toBe(JSON.stringify([
             <li key='noResultDropdownSearch'>
-              <span className='no-search-results'>{dropdownSearchInstance.props.noResultText}</span>
+              <span className='no-search-results'>{newDropdownSearchInstance.props.noResultText}</span>
             </li>,
           ]));
       });
 
       it('should scroll down if the active option is not visible by the user inside the dropdown list', () => {
-        const options = _.times(20, (n: number) => {
+        const opts = _.times(20, (n: number) => {
           return { value: `test ${n}` };
         });
 
         renderDropdownSearch(_.extend({}, ownProps, {
           selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
-          options,
+          options: opts,
           displayedOptions: options,
           activeOption: { value: 'testd 1', displayValue: 'test 1' },
         }));
@@ -437,14 +437,14 @@ describe('DropdownSearch', () => {
       });
 
       it('should scroll up if the active option is not visible by the user inside the dropdown list', () => {
-        const options = _.times(20, (n: number) => {
+        const opts = _.times(20, (n: number) => {
           return { value: `test ${n}`, displayValue: `test ${n}` };
         });
 
         renderDropdownSearch(_.extend({}, ownProps, {
           selectedOption: { value: 'test 1', displayValue: 'test 1' },
           isOpened: true,
-          options,
+          options: opts,
           displayedOptions: options,
           activeOption: { value: 'test 19', displayValue: 'test 19' },
         }));

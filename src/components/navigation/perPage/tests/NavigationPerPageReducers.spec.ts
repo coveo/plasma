@@ -20,15 +20,13 @@ describe('Reducers', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IPerPageState[];
-      const perPageCompositeState = perPageCompositeReducer(oldState, genericAction);
+      const perPageCompositeState = perPageCompositeReducer(undefined, genericAction);
 
       expect(perPageCompositeState).toBe(perPageCompositeInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for a specific perPage', () => {
-      let oldState: IPerPageState;
-      const perPageState = perPageReducer(oldState, genericAction);
+      const perPageState = perPageReducer(undefined, genericAction);
 
       expect(perPageState).toBe(perPageInitialState);
     });

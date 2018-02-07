@@ -109,8 +109,10 @@ export class Table extends React.Component<ITableProps, {}> {
   constructor(props: ITableProps) {
     super(props);
 
+    // tslint:disable
     // Only use the initial load strategy for tables that do not provide initialTableData in their own props
     this.isInitialLoad = props.initialTableData == DEFAULT_TABLE_DATA;
+    // tslint:enable
   }
 
   componentDidMount() {
@@ -187,13 +189,13 @@ export class Table extends React.Component<ITableProps, {}> {
     const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
 
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-      const rowData: IData = tableData.byId[id];
+      const currentRowData: IData = tableData.byId[id];
 
       return (
         <TableChildBody
           key={id}
           tableId={this.props.id}
-          rowData={rowData}
+          rowData={currentRowData}
           isLoading={this.props.tableCompositeState.isLoading}
           getActions={(rowData?: IData) => this.props.getActions(rowData)}
           headingAttributes={this.props.headingAttributes}

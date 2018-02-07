@@ -20,7 +20,7 @@ describe('ModalPrompt', () => {
             confirmLabel={confirmLabel}
             cancelLabel={cancelLabel}
             message={message}
-            onConfirm={() => { }}
+            onConfirm={() => 1}
           />,
         );
       }).not.toThrow();
@@ -38,7 +38,7 @@ describe('ModalPrompt', () => {
           id={id}
           title={title}
           message={message}
-          onConfirm={() => { }}
+          onConfirm={() => 1}
         />,
         { attachTo: document.getElementById('App') },
       );
@@ -73,7 +73,7 @@ describe('ModalPrompt', () => {
           confirmLabel={confirmLabel}
           cancelLabel={cancelLabel}
           message={message}
-          onConfirm={() => { }}
+          onConfirm={() => 1}
         />,
         { attachTo: document.getElementById('App') },
       );

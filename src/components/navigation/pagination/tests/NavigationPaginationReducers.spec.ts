@@ -26,15 +26,13 @@ describe('Reducers', () => {
     };
 
     it('should return the default state if the action is not defined and the state is undefined', () => {
-      let oldState: IPaginationState[];
-      const paginationCompositeState = paginationCompositeReducer(oldState, genericAction);
+      const paginationCompositeState = paginationCompositeReducer(undefined, genericAction);
 
       expect(paginationCompositeState).toBe(paginationCompositeInitialState);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for a specific pagination', () => {
-      let oldState: IPaginationState;
-      const paginationState = paginationReducer(oldState, genericAction);
+      const paginationState = paginationReducer(undefined, genericAction);
 
       expect(paginationState).toBe(paginationInitialState);
     });

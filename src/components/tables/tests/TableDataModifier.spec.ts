@@ -157,7 +157,8 @@ describe('TableDataModifier', () => {
     });
 
     it('should return the same ids but sorted ascending by the specified attribute if sorted ASCENDING', () => {
-      const expectedOrderOfIds = _.sortBy(_.values(data.byId), (data) => data.userName.toLowerCase()).map((data) => data.id);
+      const expectedOrderOfIds = _.sortBy(_.values(data.byId), (currentData) => currentData.userName.toLowerCase())
+        .map((currentData) => currentData.id);
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,
@@ -167,9 +168,9 @@ describe('TableDataModifier', () => {
     });
 
     it('should return the same ids but sorted descending by the specified attribute if sorted DESCENDING', () => {
-      const expectedOrderOfIds = _.sortBy(_.values(data.byId), (data) => data.userName.toLowerCase())
+      const expectedOrderOfIds = _.sortBy(_.values(data.byId), (currentData) => currentData.userName.toLowerCase())
         .reverse()
-        .map((data) => data.id);
+        .map((currentData) => currentData.id);
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,

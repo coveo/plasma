@@ -14,10 +14,10 @@ import { ITableCompositeState, ITableData, ITablesState, ITableState } from '../
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 
-const simplestTableDataById = _.range(0, 5).reduce((obj, number) => ({
+const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
   ...obj,
-  ['row' + number]: {
-    id: 'row' + number,
+  ['row' + num]: {
+    id: 'row' + num,
     attribute1: generateText(),
     attribute2: generateText(),
     attribute3: generateText(),
@@ -25,10 +25,10 @@ const simplestTableDataById = _.range(0, 5).reduce((obj, number) => ({
   },
 }), {} as ITableRowData);
 
-const tableDataById = _.range(0, 100).reduce((obj, number) => ({
+const tableDataById = _.range(0, 100).reduce((obj, num) => ({
   ...obj,
-  ['row' + number]: {
-    id: 'row' + number,
+  ['row' + num]: {
+    id: 'row' + num,
     attribute1: generateText(),
     attribute2: generateText(),
     attribute3: generateText(),
@@ -66,10 +66,10 @@ const tableData: ITableData = {
 const buildNewTableStateManually = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState, tableOwnProps: ITableOwnProps): ITableState => {
   const totalEntries = JSON.parse(data).count;
   const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
-  const newTableData = JSON.parse(data).entries.reduce((tableData: ITableData, entry: any, arr: any[]) => {
+  const newTableData = JSON.parse(data).entries.reduce((finalTableData: ITableData, entry: any, arr: any[]) => {
     return {
       byId: {
-        ...(tableData.byId || {}),
+        ...(finalTableData.byId || {}),
         [entry.API]: {
           id: entry.API,
           attribute1: entry.API,
@@ -77,8 +77,8 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
           attribute4: entry.Description,
         },
       },
-      allIds: [...tableData.allIds, entry.API],
-      displayedIds: [...tableData.displayedIds, entry.API],
+      allIds: [...finalTableData.allIds, entry.API],
+      displayedIds: [...finalTableData.displayedIds, entry.API],
       totalEntries: totalEntries,
       totalPages: totalPages,
     };
