@@ -98,6 +98,12 @@ export { actionBarsReducer } from './components/actions/ActionBarReducers';
 export { ActionBarActions, addActionsToActionBar } from './components/actions/ActionBarActions';
 export { addItemFilter, filterItems, ItemFilterActions, removeItemFilter } from './components/actions/filters/ItemFilterActions';
 export { itemFiltersReducer } from './components/actions/filters/ItemFilterReducers';
+export { TriggerAction } from './components/actions/TriggerAction';
+export { LinkAction } from './components/actions/LinkAction';
+export { PrimaryAction } from './components/actions/PrimaryAction';
+export { PrimaryActionConnected } from './components/actions/PrimaryActionConnected';
+export { SecondaryActions } from './components/actions/SecondaryActions';
+export { SecondaryActionsConnected } from './components/actions/SecondaryActionsConnected';
 
 // Table
 export { TableHeader } from './components/tables/TableHeader';
