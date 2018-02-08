@@ -24,7 +24,10 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
   id?: string;
   datesSelectionBoxes: IDatesSelectionBox[];
   setToNowTooltip?: string;
+  isClearable?: boolean;
+  initiallyUnselected?: boolean;
   footer?: JSX.Element;
+  onClear?: () => void;
 }
 
 export interface IDatePickerBoxStateProps extends IReduxStatePossibleProps { }
@@ -41,6 +44,8 @@ export interface IDatePickerBoxChildrenProps {
   upperLimitPlaceholder?: string;
   isLinkedToDateRange?: boolean;
 }
+
+export const DEFAULT_CLEAR_LABEL: string = 'Clear';
 
 export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps,
   IDatePickerBoxChildrenProps { }
@@ -84,6 +89,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           calendarId: calendarProps.id,
           lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
           upperLimitPlaceholder: this.props.upperLimitPlaceholder,
+          initiallyUnselected: this.props.initiallyUnselected,
         };
         let dateSelection: JSX.Element = this.props.withReduxState
           ? <DatesSelectionConnected {...datesSelectionProps} />
@@ -98,12 +104,17 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
         );
       });
 
+    let clearOption: JSX.Element = this.props.isClearable
+      ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{DEFAULT_CLEAR_LABEL}</button>
+      : null;
+
     return (
       <div className='date-picker-box flex flex-column'>
         <div className='split-layout'>
           {calendar}
           <div className='date-selection column mod-small-content p2'>
             {datesSelectionBoxes}
+            {clearOption}
           </div>
         </div>
         {this.props.footer}

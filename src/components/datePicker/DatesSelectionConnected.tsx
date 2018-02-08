@@ -11,7 +11,7 @@ import {
   changeDatePickerUpperLimit,
   DateLimits,
   removeDatePicker,
-  selectDate
+  selectDate,
 } from './DatePickerActions';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
@@ -43,7 +43,9 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
         ownProps.isRange,
         ownProps.rangeLimit,
         ownProps.color,
-        ownProps.calendarId));
+        ownProps.calendarId,
+        ownProps.initiallyUnselected,
+      ));
     },
     onDestroy: () => dispatch(removeDatePicker(ownProps.id)),
     onBlur: (date: Date, isUpperLimit: boolean, optionPicker = false) => {

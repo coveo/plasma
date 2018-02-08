@@ -40,6 +40,36 @@ export const SELECTION_BOXES: IDatesSelectionBox[] = [
   }
 ];
 
+export const FOUR_SELECTION_BOXES: IDatesSelectionBox[] = [
+  {
+    title: 'Date range',
+    quickOptions: [
+      {
+        label: 'Last 5 minutes',
+        value: () => moment().subtract(5, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString()
+      },
+      {
+        label: 'Last 30 minutes',
+        value: () => moment().subtract(30, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString()
+      },
+      {
+        label: 'Last hour',
+        value: () => moment().subtract(1, 'hour').toDate().toString() + DATES_SEPARATOR + new Date().toString()
+      },
+      {
+        label: 'Last day',
+        value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString()
+      }
+    ],
+    isRange: true,
+    withTime: true,
+    hasSetToNowButton: true,
+    color: DatePickerColors.blue
+  }
+];
+
+
+
 export const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
   {
     test: (date: Date) => date >= moment().startOf('day').toDate(), // You cannot select a date in the past

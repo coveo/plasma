@@ -7,7 +7,15 @@ import {
 } from './DatePickerDropdown';
 import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from '../dropdown/DropdownActions';
 import { IDropdownState } from '../dropdown/DropdownReducers';
-import { applyDatePicker, resetDatePickers, selectDate, DateLimits } from './DatePickerActions';
+import {
+  applyDatePicker,
+  resetDatePickers,
+  clearSelection,
+  changeDatePickerLowerLimit,
+  changeDatePickerUpperLimit,
+  selectDate,
+  DateLimits
+} from './DatePickerActions';
 import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { IDatePickerState } from './DatePickerReducers';
 import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
@@ -39,7 +47,14 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   onClick: (datePicker: IDatePickerState) => {
     dispatch(toggleDropdown(ownProps.id));
     if (datePicker) {
+      dispatch(resetOptionPickers(datePicker.id));
       dispatch(selectDate(datePicker.id, DateLimits.lower));
+      if (datePicker.appliedLowerLimit) {
+        dispatch(changeDatePickerLowerLimit(datePicker.id, datePicker.appliedLowerLimit));
+      }
+      if (datePicker.isRange && datePicker.appliedUpperLimit) {
+        dispatch(changeDatePickerUpperLimit(datePicker.id, datePicker.appliedUpperLimit));
+      }
     }
   },
   onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
@@ -56,7 +71,10 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
       dispatch(resetOptionPickers(ownProps.id));
       dispatch(closeDropdown(ownProps.id));
     }
-  }
+  },
+  onClear: () => {
+    dispatch(clearSelection(ownProps.id));
+  },
 });
 
 export const DatePickerDropdownConnected: React.ComponentClass<IDatePickerDropdownProps> =

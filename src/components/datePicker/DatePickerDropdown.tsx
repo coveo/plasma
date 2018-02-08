@@ -20,6 +20,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   extraDropdownClasses?: string[];
   extraDropdownToggleClasses?: string[];
   renderDatePickerWhenClosed?: boolean;
+  initiallyUnselected?: boolean;
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -30,6 +31,7 @@ export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildren
   years?: string[];
   startingYear?: number;
   days?: string[];
+  isClearable?: boolean;
   startingDay?: number;
   selectionRules?: ICalendarSelectionRule[];
   lowerLimitPlaceholder?: string;
@@ -49,6 +51,7 @@ export interface IDatePickerDropdownDispatchProps {
   onDestroy?: () => void;
   onClick?: (datePicker: IDatePickerState) => void;
   onDocumentClick?: () => void;
+  onClear?: () => void;
 }
 
 export interface IDatePickerDropdownProps extends IDatePickerDropdownOwnProps, IDatePickerDropdownStateProps,
@@ -61,6 +64,7 @@ export const DEFAULT_TO_LABEL: string = 'to';
 export const DEFAULT_EXTRA_DROPDOWN_CLASSES: string[] = [];
 export const DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES: string[] = [];
 export const DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED: boolean = true;
+export const DEFAULT_INITIALY_UNSELECTED: boolean = false;
 
 export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
   static defaultProps: Partial<IDatePickerDropdownProps> = {
@@ -71,6 +75,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     extraDropdownClasses: DEFAULT_EXTRA_DROPDOWN_CLASSES,
     extraDropdownToggleClasses: DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES,
     renderDatePickerWhenClosed: DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED,
+    isClearable: false,
   };
 
   private dropdown: HTMLDivElement;
@@ -121,14 +126,20 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private handleCancel() {
     if (this.props.onCancel) {
-      let currentMonth: number = this.props.datePicker
+      let currentMonth: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
         ? this.props.datePicker.appliedLowerLimit.getMonth()
         : DateUtils.currentMonth;
       let years: string[] = this.props.years || DEFAULT_YEARS;
-      let currentYear: number = this.props.datePicker
+      let currentYear: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
         ? this.props.datePicker.appliedLowerLimit.getFullYear()
         : DateUtils.currentYear;
       this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()), this.props.isOpened);
+    }
+  }
+
+  private handleClear() {
+    if (this.props.onClear) {
+      this.props.onClear();
     }
   }
 
@@ -164,6 +175,9 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
       upperLimitPlaceholder: this.props.upperLimitPlaceholder,
       isLinkedToDateRange: this.props.isLinkedToDateRange,
+      isClearable: this.props.isClearable,
+      initiallyUnselected: this.props.initiallyUnselected,
+      onClear: () => this.handleClear(),
       footer: (
         <ModalFooter classes={['mod-small']}>
           <Button enabled={!hasExceededRangeLimit}
@@ -197,7 +211,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     let label: string = this.props.label;
     let toLabel: JSX.Element = null;
     let labelSecondPart: string;
-    if (this.props.datePicker) {
+    if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
       label = this.formatDate(this.props.datePicker.appliedLowerLimit);
       if (this.props.datePicker.isRange) {
         toLabel = <span className='to-label'> {this.props.toLabel} </span>;
