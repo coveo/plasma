@@ -1,6 +1,6 @@
+import * as _ from 'underscore';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { ITableRowActionPayload, TableRowActions } from './TableRowActions';
-import * as _ from 'underscore';
 
 export interface ITableRowState {
   id: string;
@@ -41,7 +41,7 @@ export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState
     case TableRowActions.add:
       return [
         ...state,
-        tableRowReducer(undefined, action)
+        tableRowReducer(undefined, action),
       ];
     case TableRowActions.remove:
       return _.reject(state, (row: ITableRowState) => {

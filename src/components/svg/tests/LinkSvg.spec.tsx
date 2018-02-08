@@ -1,10 +1,10 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { Tooltip } from '../../tooltip/Tooltip';
 import { ILinkSvgProps, LinkSvg } from '../LinkSvg';
 import { Svg } from '../Svg';
-import { Tooltip } from '../../tooltip/Tooltip';
 
 describe('<LinkSvg>', () => {
   let linkSvgComponent: ReactWrapper<ILinkSvgProps, any>;

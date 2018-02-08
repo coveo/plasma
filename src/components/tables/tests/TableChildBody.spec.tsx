@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { TableChildBody, ITableChildBodyProps } from '../table-children/TableChildBody';
-import { TableRowWrapper } from '../TableRowWrapper';
 import { mount, ReactWrapper } from 'enzyme';
-import * as _ from 'underscore';
-import { IActionOptions } from '../../actions/Action';
-import { TableHeadingRow } from '../TableHeadingRow';
-import { TableCollapsibleRow } from '../TableCollapsibleRow';
+import * as React from 'react';
 import { Provider, Store } from 'react-redux';
-import { TestUtils } from '../../../utils/TestUtils';
+import * as _ from 'underscore';
 import { clearState, IReactVaporState } from '../../../Index';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IActionOptions } from '../../actions/Action';
 import { IData } from '../Table';
+import { ITableChildBodyProps, TableChildBody } from '../table-children/TableChildBody';
+import { TableCollapsibleRow } from '../TableCollapsibleRow';
+import { TableHeadingRow } from '../TableHeadingRow';
+import { TableRowWrapper } from '../TableRowWrapper';
 
 describe('<TableChildBody />', () => {
   const someActions: IActionOptions[] = [];
@@ -43,7 +43,6 @@ describe('<TableChildBody />', () => {
   afterEach(() => {
     store.dispatch(clearState());
   });
-
 
   describe('render', () => {
     const mountComponentWithProps = (props: ITableChildBodyProps = tableChildBodyProps) => {
@@ -106,12 +105,12 @@ describe('<TableChildBody />', () => {
         enabled: true,
         trigger: () => {
           throw new Error('This action should not be called');
-        }
+        },
       }, {
         name: 'action that should be called',
         callOnDoubleClick: true,
         enabled: true,
-        trigger: actionSpy
+        trigger: actionSpy,
       }];
       const getActionsSpy: jasmine.Spy = jasmine.createSpy('getActions').and.returnValue(twoActions);
       const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, { getActions: getActionsSpy });

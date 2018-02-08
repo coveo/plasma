@@ -5,11 +5,11 @@ import { Store } from 'redux';
 import { IReactVaporState } from '../../../ReactVapor';
 import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
+import { ModalBackdropConnected } from '../ModalBackdropConnected';
 import { IModalCompositeProps, ModalComposite } from '../ModalComposite';
 import { ModalCompositeConnected } from '../ModalCompositeConnected';
 import { ModalConnected } from '../ModalConnected';
 import { ModalHeaderConnected } from '../ModalHeaderConnected';
-import { ModalBackdropConnected } from '../ModalBackdropConnected';
 
 // tslint:disable-next-line:no-unused-variable
 describe('<ModalCompositeConnected />', () => {
@@ -30,7 +30,7 @@ describe('<ModalCompositeConnected />', () => {
       <Provider store={store}>
         <ModalCompositeConnected {...basicProps} />
       </Provider>,
-      { attachTo: document.getElementById('App') }
+      { attachTo: document.getElementById('App') },
     );
     modalComposite = wrapper.find(ModalComposite).first();
   });

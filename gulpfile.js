@@ -5,7 +5,6 @@ const gulp = require('gulp-help')(require('gulp'));
 const gutil = require('gulp-util');
 const Karma = require('karma').Server;
 const path = require('path');
-const prettyTypescript = require('pretty-typescript');
 const replace = require('gulp-replace');
 const remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 const runSequence = require('gulp-sequence');
@@ -43,25 +42,11 @@ gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests'], (do
         '**/*.orig',
         '**/*.rej',
         'node_modules',
-        'package-lock.json'
       ], done);
     } else {
       done();
     }
 });
-// </editor-fold>
-
-// <editor-fold desc="Prettify">
-const prettify = (srcPaths, destPath) =>
-  gulp.src(srcPaths)
-    .pipe(prettyTypescript({ emitError: true }))
-    .pipe(gulp.dest(destPath));
-
-gulp.task('prettify:src', false, () => prettify(['src/**/*.ts', 'src/**/*.tsx'], 'src'));
-
-gulp.task('prettify:docs', false, () => prettify(['docs/**/*.ts', 'docs/**/*.tsx'], 'docs'));
-
-gulp.task('prettify', 'Run the pretty Typescript plugin on the project', ['prettify:src', 'prettify:docs']);
 // </editor-fold>
 
 // <editor-fold desc="Typescript compilation">
@@ -161,7 +146,7 @@ gulp.task('test:remap', false, () =>
     })));
 
 gulp.task('test', 'Run all tests in PhantomJS and exit', (done) => {
-  runSequence('prettify:src', 'test:single', 'test:remap', done);
+  runSequence('test:single', 'test:remap', done);
 });
 
 gulp.task('test:browser', 'Run all tests in Chrome and watch', (done) => {
@@ -174,9 +159,9 @@ gulp.task('test:watch', 'Run all tests in PhantomJS and watch', (done) => {
 // </editor-fold>
 
 gulp.task('docs', 'Build the docs project', (done) => {
-  runSequence('clean:docs', 'prettify:docs', 'ts:docs', done);
+  runSequence('clean:docs', 'ts:docs', done);
 });
 
-gulp.task('default', 'Clean, prettify and compile the project', (done) => {
-  runSequence('clean:dist', 'prettify:src', 'ts', done);
+gulp.task('default', 'Clean, and compile the project', (done) => {
+  runSequence('clean:dist', 'ts', done);
 });

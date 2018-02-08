@@ -9,7 +9,7 @@ export const DatePickerActions = {
   changeUpperLimit: 'CHANGE_UPPER_LIMIT',
   select: 'SELECT_DATE',
   reset: 'RESET_DATE_PICKERS',
-  apply: 'APPLY_DATE'
+  apply: 'APPLY_DATE',
 };
 
 export interface IDatePickerPayload {
@@ -33,11 +33,11 @@ export interface ISelectDatePickerPayload extends IDatePickerPayload {
 
 export const DateLimits = {
   lower: 'lower',
-  upper: 'upper'
+  upper: 'upper',
 };
 
 export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLimit = undefined, color: string = DEFAULT_DATE_PICKER_COLOR,
-  calendarId: string = ''): IReduxAction<IAddDatePickerPayload> => ({
+                              calendarId: string = ''): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {
       id,
@@ -45,50 +45,50 @@ export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLi
       calendarId,
       isRange,
       rangeLimit,
-    }
+    },
   });
 
 export const removeDatePicker = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const resetDatePickers = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.reset,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const applyDatePicker = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.apply,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const changeDatePickerLowerLimit = (id: string, date: Date): IReduxAction<IChangeDatePickerPayload> => ({
   type: DatePickerActions.changeLowerLimit,
   payload: {
     id,
-    date
-  }
+    date,
+  },
 });
 
 export const changeDatePickerUpperLimit = (id: string, date: Date): IReduxAction<IChangeDatePickerPayload> => ({
   type: DatePickerActions.changeUpperLimit,
   payload: {
     id,
-    date
-  }
+    date,
+  },
 });
 
 export const selectDate = (id: string, limit: string): IReduxAction<ISelectDatePickerPayload> => ({
   type: DatePickerActions.select,
   payload: {
     id,
-    limit
-  }
+    limit,
+  },
 });

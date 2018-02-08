@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ILinkSvgProps, LinkSvg } from '../LinkSvg';
-import { defaultSvgProps, defaultTooltipProps } from '../../../utils/TestUtils';
 import * as _ from 'underscore';
+import { defaultSvgProps, defaultTooltipProps } from '../../../utils/TestUtils';
+import { ILinkSvgProps, LinkSvg } from '../LinkSvg';
 
 export class LinkSvgExamples extends React.Component<any, any> {
 

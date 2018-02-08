@@ -1,24 +1,24 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { IActionOptions } from '../Action';
-import { ActionsDropdownConnected } from '../ActionsDropdownConnected';
-import { IActionsDropdownProps, ActionsDropdown } from '../ActionsDropdown';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Provider } from 'react-redux';
-import { TriggerActionConnected } from '../TriggerActionConnected';
-import { Store } from 'react-redux';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'react-redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IActionOptions } from '../Action';
+import { ActionsDropdown, IActionsDropdownProps } from '../ActionsDropdown';
+import { ActionsDropdownConnected } from '../ActionsDropdownConnected';
+import { TriggerActionConnected } from '../TriggerActionConnected';
 
 describe('Actions', () => {
   const actionTrigger: jasmine.Spy = jasmine.createSpy('triggerMethod');
 
-  let id: string = 'dropdown-actions';
-  let actions: IActionOptions[] = [{
+  const id: string = 'dropdown-actions';
+  const actions: IActionOptions[] = [{
     name: 'action2',
     trigger: actionTrigger,
-    enabled: true
+    enabled: true,
   }];
 
   describe('<ActionsDropdownConnected />', () => {
@@ -36,7 +36,7 @@ describe('Actions', () => {
             id={id}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       actionsDropdown = wrapper.find(ActionsDropdown).first();
     });
@@ -48,14 +48,14 @@ describe('Actions', () => {
     });
 
     it('should get an id as a prop', () => {
-      let idProp = actionsDropdown.props().id;
+      const idProp = actionsDropdown.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
     });
 
     it('should get an withReduxState as a prop', () => {
-      let withReduxStateProp = actionsDropdown.props().withReduxState;
+      const withReduxStateProp = actionsDropdown.props().withReduxState;
 
       expect(withReduxStateProp).toBeDefined();
       expect(withReduxStateProp).toBe(true);

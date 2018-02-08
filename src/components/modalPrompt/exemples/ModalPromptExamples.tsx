@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ModalPrompt } from '../ModalPrompt';
 import { ModalBackdrop } from '../../modal/ModalBackdrop';
+import { ModalPrompt } from '../ModalPrompt';
 
 export interface IPromptExamplesState {
   isOpened: boolean;

@@ -1,10 +1,10 @@
+import * as React from 'react';
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 import { IActionOptions } from './Action';
+import { ActionsDropdown } from './ActionsDropdown';
+import { ActionsDropdownConnected } from './ActionsDropdownConnected';
 import { PrimaryAction } from './PrimaryAction';
 import { PrimaryActionConnected } from './PrimaryActionConnected';
-import { ActionsDropdownConnected } from './ActionsDropdownConnected';
-import { ActionsDropdown } from './ActionsDropdown';
-import * as React from 'react';
 
 export interface ISecondaryActionsOwnProps extends React.ClassAttributes<SecondaryActions> {
   actions: IActionOptions[];
@@ -22,7 +22,7 @@ export interface ISecondaryActionsProps extends ISecondaryActionsOwnProps, ISeco
 export class SecondaryActions extends React.Component<ISecondaryActionsProps, any> {
 
   render() {
-    let actions: JSX.Element = this.props.actions.length === 1 ?
+    const actions: JSX.Element = this.props.actions.length === 1 ?
       (this.props.withReduxState ?
         <PrimaryActionConnected action={this.props.actions[0]} parentId={this.props.id} /> :
         <PrimaryAction action={this.props.actions[0]} />

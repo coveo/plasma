@@ -1,21 +1,21 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { NavigationPerPageSelect, INavigationPerPageSelectProps } from '../NavigationPerPageSelect';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { INavigationPerPageSelectProps, NavigationPerPageSelect } from '../NavigationPerPageSelect';
 
 describe('NavigationPerPageSelect', () => {
-  let basicNavigationPerPageSelectProps: INavigationPerPageSelectProps = {
+  const basicNavigationPerPageSelectProps: INavigationPerPageSelectProps = {
     perPageNb: 20,
     selected: false,
-    onPerPageClick: jasmine.createSpy('onPerPageClick')
+    onPerPageClick: jasmine.createSpy('onPerPageClick'),
   };
 
   describe('<NavigationPerPageSelect />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />
+          <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />,
         );
       }).not.toThrow();
     });
@@ -27,7 +27,7 @@ describe('NavigationPerPageSelect', () => {
     beforeEach(() => {
       navigationPerPageSelect = mount(
         <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -37,28 +37,28 @@ describe('NavigationPerPageSelect', () => {
     });
 
     it('should get the per page number as a prop', () => {
-      let perPageNumberProp = navigationPerPageSelect.props().perPageNb;
+      const perPageNumberProp = navigationPerPageSelect.props().perPageNb;
 
       expect(perPageNumberProp).toBeDefined();
       expect(perPageNumberProp).toBe(basicNavigationPerPageSelectProps.perPageNb);
     });
 
     it('should get if it is selected  as a prop', () => {
-      let selectedProp = navigationPerPageSelect.props().selected;
+      const selectedProp = navigationPerPageSelect.props().selected;
 
       expect(selectedProp).toBeDefined();
       expect(selectedProp).toBe(basicNavigationPerPageSelectProps.selected);
     });
 
     it('should get what to do on click as a prop', () => {
-      let onPerPageClickProp = navigationPerPageSelect.props().onPerPageClick;
+      const onPerPageClickProp = navigationPerPageSelect.props().onPerPageClick;
 
       expect(onPerPageClickProp).toBeDefined();
     });
 
     it('should have "selectable" class if it is not selected', () => {
-      let newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, { selected: true });
-      let option = navigationPerPageSelect.find('.flat-select-option');
+      const newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, { selected: true });
+      const option = navigationPerPageSelect.find('.flat-select-option');
 
       expect(option.hasClass('selectable')).toBe(true);
 
@@ -68,9 +68,9 @@ describe('NavigationPerPageSelect', () => {
     });
 
     it('should have "selected-value" "state-selected" classes when selected', () => {
-      let newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, { selected: true });
-      let option = navigationPerPageSelect.find('.flat-select-option');
-      let optionSpan = option.find('.enabled');
+      const newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, { selected: true });
+      const option = navigationPerPageSelect.find('.flat-select-option');
+      const optionSpan = option.find('.enabled');
 
       expect(optionSpan.hasClass('selected-value')).toBe(false);
       expect(optionSpan.hasClass('state-selected')).toBe(false);

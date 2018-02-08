@@ -1,27 +1,27 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { IDropdownProps, Dropdown } from '../Dropdown';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { DropdownConnected } from '../DropdownConnected';
-import { toggleDropdown } from '../DropdownActions';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { TestUtils } from '../../../utils/TestUtils';
+import { Dropdown, IDropdownProps } from '../Dropdown';
+import { toggleDropdown } from '../DropdownActions';
+import { DropdownConnected } from '../DropdownConnected';
 
 describe('Dropdown', () => {
   describe('<DropdownConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let dropdown: ReactWrapper<IDropdownProps, any>;
     let store: Store<IReactVaporState>;
-    let basicDropdownProps: IDropdownProps = {
+    const basicDropdownProps: IDropdownProps = {
       id: 'dropdown-id',
       toggleContent: [<span key='toggle'>Toggle</span>],
       dropdownItems: [
         <li key='option1'>Option 1</li>,
-        <li key='options2'>Option 2</li>
-      ]
+        <li key='options2'>Option 2</li>,
+      ],
     };
 
     beforeEach(() => {
@@ -32,7 +32,7 @@ describe('Dropdown', () => {
         <Provider store={store}>
           <DropdownConnected {...basicDropdownProps} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       dropdown = wrapper.find(Dropdown);
     });
@@ -43,32 +43,32 @@ describe('Dropdown', () => {
     });
 
     it('should get if dropdown is opened as a prop', () => {
-      let isOpenedProp = dropdown.props().isOpened;
+      const isOpenedProp = dropdown.props().isOpened;
 
       expect(isOpenedProp).toBeDefined();
       expect(isOpenedProp).toBe(false);
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRenderProp = dropdown.props().onRender;
+      const onRenderProp = dropdown.props().onRender;
 
       expect(onRenderProp).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {
-      let onDestroyProp = dropdown.props().onDestroy;
+      const onDestroyProp = dropdown.props().onDestroy;
 
       expect(onDestroyProp).toBeDefined();
     });
 
     it('should get what to do on click as a prop', () => {
-      let onClickProp = dropdown.props().onClick;
+      const onClickProp = dropdown.props().onClick;
 
       expect(onClickProp).toBeDefined();
     });
 
     it('should get what to do on document click as a prop', () => {
-      let onDocumentClickProp = dropdown.props().onDocumentClick;
+      const onDocumentClickProp = dropdown.props().onDocumentClick;
 
       expect(onDocumentClickProp).toBeDefined();
     });

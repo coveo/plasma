@@ -1,6 +1,6 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
 import { SubNavigationActions } from './SubNavigationActions';
 
 export interface ISubNavigationState {
@@ -12,7 +12,7 @@ export const subNavigationInitialState: ISubNavigationState = { id: undefined, s
 export const subNavigationsInitialState: ISubNavigationState[] = [];
 
 export const subNavigationReducer = (state: ISubNavigationState = subNavigationInitialState,
-  action: (IReduxAction<IReduxActionsPayload>)): ISubNavigationState => {
+                                     action: (IReduxAction<IReduxActionsPayload>)): ISubNavigationState => {
   switch (action.type) {
     case SubNavigationActions.select:
       return state.id !== action.payload.id
@@ -24,7 +24,7 @@ export const subNavigationReducer = (state: ISubNavigationState = subNavigationI
     case SubNavigationActions.add:
       return {
         id: action.payload.id,
-        selected: action.payload.selected
+        selected: action.payload.selected,
       };
     default:
       return state;
@@ -32,7 +32,7 @@ export const subNavigationReducer = (state: ISubNavigationState = subNavigationI
 };
 
 export const subNavigationsReducer = (state: ISubNavigationState[] = subNavigationsInitialState,
-  action: IReduxAction<IReduxActionsPayload>): ISubNavigationState[] => {
+                                      action: IReduxAction<IReduxActionsPayload>): ISubNavigationState[] => {
   switch (action.type) {
     case SubNavigationActions.select:
       return state.map((dropdown: ISubNavigationState) => subNavigationReducer(dropdown, action));

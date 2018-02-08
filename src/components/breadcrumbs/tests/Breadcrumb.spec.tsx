@@ -1,9 +1,9 @@
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { mount, ReactWrapper, shallow } from 'enzyme';
-import { Breadcrumb, IBreadcrumbProps } from '../Breadcrumb';
-import { IBreadcrumbLinkProps, BreadcrumbLink } from '../BreadcrumbLink';
 import { Title } from '../../title/Title';
+import { Breadcrumb, IBreadcrumbProps } from '../Breadcrumb';
+import { BreadcrumbLink, IBreadcrumbLinkProps } from '../BreadcrumbLink';
 
 describe('<Breadcrumb/>', () => {
 

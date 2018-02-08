@@ -1,18 +1,18 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IChosenSelectProps, ChosenSelect } from './ChosenSelect';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ChosenSelect, IChosenSelectProps } from './ChosenSelect';
 
 describe('<ChosenSelect>', () => {
   let chosenSelectWrapper: ReactWrapper<IChosenSelectProps, any>;
 
   let chosenSelectProps: IChosenSelectProps;
 
-  let onChosenChangeSpy: jasmine.Spy = jasmine.createSpy('OnChosenChange');
+  const onChosenChangeSpy: jasmine.Spy = jasmine.createSpy('OnChosenChange');
 
   beforeEach(() => {
     chosenSelectProps = {
-      onChosenChange: onChosenChangeSpy
+      onChosenChange: onChosenChangeSpy,
     };
   });
 
@@ -22,7 +22,7 @@ describe('<ChosenSelect>', () => {
         <option value='1'>Option 1</option>
         <option value='2'>Option 2</option>
         <option value='3'>Option 3</option>
-      </ChosenSelect>
+      </ChosenSelect>,
     )).not.toThrow();
   });
 
@@ -34,7 +34,7 @@ describe('<ChosenSelect>', () => {
           <option value='2'>Option 2</option>
           <option value='3'>Option 3</option>
         </ChosenSelect>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     }).not.toThrow();
 
@@ -52,7 +52,7 @@ describe('<ChosenSelect>', () => {
           <option value='2'>Option 2</option>
           <option value='3'>Option 3</option>
         </ChosenSelect>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -62,7 +62,7 @@ describe('<ChosenSelect>', () => {
     });
 
     it('should call the onChosenChange prop on change', () => {
-      let chosenSelect: ChosenSelect = chosenSelectWrapper.instance() as ChosenSelect;
+      const chosenSelect: ChosenSelect = chosenSelectWrapper.instance() as ChosenSelect;
 
       // Mock the change event
       chosenSelect.select.trigger('change');

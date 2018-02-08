@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as $ from 'jquery';
-import * as _ from 'underscore';
 import 'chosen-js'; // Clean way to make Webpack import something that is not a module
+import * as $ from 'jquery';
+import * as React from 'react';
+import * as _ from 'underscore';
 
 export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
   allowSingleDeselect?: boolean; // @default: false
@@ -75,7 +75,7 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
    */
   render() {
     // Omit ChosenSelect props to avoid warnings.
-    let selectProps = _.extend({}, _.omit(this.props, chosenSelectPropsToOmit));
+    const selectProps = _.extend({}, _.omit(this.props, chosenSelectPropsToOmit));
     return (
       <select {...selectProps} ref={(select: HTMLSelectElement) => this.select = $(select)} onChange={_.noop}>
         {this.props.children}

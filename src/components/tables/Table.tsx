@@ -1,24 +1,24 @@
+import * as classNames from 'classnames';
+import * as React from 'react';
+import * as _ from 'underscore';
+import { JSXRenderable } from '../../utils/JSXUtils';
+import { IThunkAction } from '../../utils/ReduxUtils';
 import { IActionOptions } from '../actions/Action';
 import { IActionBarProps } from '../actions/ActionBar';
 import { IBlankSlateProps } from '../blankSlate/BlankSlate';
-import { IDropdownSearchProps, IDropdownOption } from '../dropdownSearch/DropdownSearch';
+import { IDropdownOption, IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
 import { IDatePickerDropdownProps } from '../datePicker/DatePickerDropdown';
 import { IFilterBoxProps } from '../filterBox/FilterBox';
-import * as React from 'react';
-import * as _ from 'underscore';
-import { ITableCompositeState, ITableData } from './TableReducers';
-import { DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder } from './TableConstants';
-import { JSXRenderable } from '../../utils/JSXUtils';
 import { INavigationChildrenProps } from '../navigation/Navigation';
-import * as classNames from 'classnames';
-import { IThunkAction } from '../../utils/ReduxUtils';
 import { TableChildActionBar } from './table-children/TableChildActionBar';
-import { TableChildHeader } from './table-children/TableChildHeader';
-import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
 import { TableChildBlankSlate } from './table-children/TableChildBlankSlate';
-import { TableChildNavigation } from './table-children/TableChildNavigation';
+import { ITableBodyInheritedFromTableProps, TableChildBody } from './table-children/TableChildBody';
+import { TableChildHeader } from './table-children/TableChildHeader';
 import { TableChildLastUpdated } from './table-children/TableChildLastUpdated';
-import { TableChildBody, ITableBodyInheritedFromTableProps } from './table-children/TableChildBody';
+import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
+import { TableChildNavigation } from './table-children/TableChildNavigation';
+import { DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder } from './TableConstants';
+import { ITableCompositeState, ITableData } from './TableReducers';
 
 export interface IData {
   id: string;
@@ -116,8 +116,10 @@ export class Table extends React.Component<ITableProps, {}> {
   constructor(props: ITableProps) {
     super(props);
 
+    // tslint:disable
     // Only use the initial load strategy for tables that do not provide initialTableData in their own props
     this.isInitialLoad = props.initialTableData == DEFAULT_TABLE_DATA;
+    // tslint:enable
   }
 
   componentDidMount() {
@@ -196,13 +198,13 @@ export class Table extends React.Component<ITableProps, {}> {
     const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
 
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-      const rowData: IData = tableData.byId[id];
+      const currentRowData: IData = tableData.byId[id];
 
       return (
         <TableChildBody
           key={id}
           tableId={this.props.id}
-          rowData={rowData}
+          rowData={currentRowData}
           isLoading={this.props.tableCompositeState.isLoading}
           getActions={(rowData?: IData) => this.props.getActions(rowData)}
           headingAttributes={this.props.headingAttributes}

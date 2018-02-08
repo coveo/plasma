@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import { Button, IButtonProps } from '../Button';
-import { Tooltip } from '../../tooltip/Tooltip';
+import * as React from 'react';
 import * as _ from 'underscore';
+import { Tooltip } from '../../tooltip/Tooltip';
+import { Button, IButtonProps } from '../Button';
 
 describe('Button', () => {
 

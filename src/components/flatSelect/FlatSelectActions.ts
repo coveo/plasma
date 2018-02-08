@@ -1,5 +1,5 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface IFlatSelectActionPayload extends IReduxActionsPayload {
   id: string;

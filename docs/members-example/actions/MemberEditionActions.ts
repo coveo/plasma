@@ -5,7 +5,7 @@ export const MemberEditionActionsType = {
   CancelChanges: 'CANCEL_MEMBER_CHANGES',
   ChangeEmail: 'CHANGE_MEMBER_EMAIL',
   ChangeSendEmail: 'CHANGE_MEMBER_SEND_EMAIL',
-  ToggleOpen: 'TOGGLE_MEMBER_OPEN'
+  ToggleOpen: 'TOGGLE_MEMBER_OPEN',
 };
 
 export interface IMemberEditionActionPayload {
@@ -33,8 +33,8 @@ export const applyChanges = (id: string): IReduxAction<IMemberEditionActionPaylo
   return {
     type: MemberEditionActionsType.ApplyChanges,
     payload: {
-      id
-    }
+      id,
+    },
   };
 };
 
@@ -42,8 +42,8 @@ export const cancelChanges = (id: string): IReduxAction<IMemberEditionActionPayl
   return {
     type: MemberEditionActionsType.CancelChanges,
     payload: {
-      id
-    }
+      id,
+    },
   };
 };
 
@@ -52,7 +52,7 @@ export const changeEmail = (id: string, email: string): IReduxAction<IChangeEmai
     type: MemberEditionActionsType.ChangeEmail,
     payload: {
       id,
-      email
+      email,
     },
   };
 };
@@ -62,8 +62,8 @@ export const changeSendEmail = (id: string, sendEmail: boolean): IReduxAction<IC
     type: MemberEditionActionsType.ChangeSendEmail,
     payload: {
       id,
-      sendEmail
-    }
+      sendEmail,
+    },
   };
 };
 
@@ -72,7 +72,7 @@ export const toggleOpen = (id: string, isOpen: boolean): IReduxAction<IToggleOpe
     type: MemberEditionActionsType.ToggleOpen,
     payload: {
       id,
-      isOpen
-    }
+      isOpen,
+    },
   };
 };

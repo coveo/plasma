@@ -1,5 +1,5 @@
-import { LastUpdated } from '../LastUpdated';
 import * as React from 'react';
+import { LastUpdated } from '../LastUpdated';
 
 export class LastUpdatedExamples extends React.Component<any, any> {
 

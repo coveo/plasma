@@ -1,23 +1,23 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
-import { IDropdownProps, Dropdown } from '../Dropdown';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { Dropdown, IDropdownProps } from '../Dropdown';
 
 describe('Dropdown', () => {
-  let basicDropdownProps: IDropdownProps = {
+  const basicDropdownProps: IDropdownProps = {
     toggleContent: [<span key='toggle'>Toggle</span>],
     dropdownItems: [
       <li key='option1'>Option 1</li>,
-      <li key='option2'>Option 2</li>
-    ]
+      <li key='option2'>Option 2</li>,
+    ],
   };
 
   describe('<Dropdown />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Dropdown {...basicDropdownProps} />
+          <Dropdown {...basicDropdownProps} />,
         );
       }).not.toThrow();
     });
@@ -30,7 +30,7 @@ describe('Dropdown', () => {
     beforeEach(() => {
       dropdown = mount(
         <Dropdown {...basicDropdownProps} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       dropdownInstance = dropdown.instance() as Dropdown;
     });
@@ -41,21 +41,21 @@ describe('Dropdown', () => {
     });
 
     it('should get the toggleContent as a prop', () => {
-      let toggleContentProp = dropdown.props().toggleContent;
+      const toggleContentProp = dropdown.props().toggleContent;
 
       expect(toggleContentProp).toBeDefined();
       expect(toggleContentProp.length).toBe(basicDropdownProps.toggleContent.length);
     });
 
     it('should get the dropdown items as a prop', () => {
-      let dropdownItemsProp = dropdown.props().dropdownItems;
+      const dropdownItemsProp = dropdown.props().dropdownItems;
 
       expect(dropdownItemsProp).toBeDefined();
       expect(dropdownItemsProp.length).toBe(basicDropdownProps.dropdownItems.length);
     });
 
     it('should have "open" class if opened', () => {
-      let newDropdownProps = _.extend({}, basicDropdownProps, { isOpened: true });
+      const newDropdownProps = _.extend({}, basicDropdownProps, { isOpened: true });
 
       expect(dropdown.find('.open').length).toBe(0);
 
@@ -64,8 +64,8 @@ describe('Dropdown', () => {
     });
 
     it('should call onClick prop if set when clicking the toggle', () => {
-      let onClickSpy = jasmine.createSpy('onClick');
-      let newDropdownProps = _.extend({}, basicDropdownProps, { onClick: onClickSpy });
+      const onClickSpy = jasmine.createSpy('onClick');
+      const newDropdownProps = _.extend({}, basicDropdownProps, { onClick: onClickSpy });
 
       expect(() => dropdownInstance['handleClick'].call(dropdownInstance)).not.toThrow();
 

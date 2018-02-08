@@ -1,11 +1,11 @@
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { LoadingConnected } from '../loading/LoadingConnected';
-import { Loading } from '../loading/Loading';
-import { NavigationPaginationConnected } from './pagination/NavigationPaginationConnected';
-import { NavigationPerPageConnected } from './perPage/NavigationPerPageConnected';
-import { NavigationPagination, INavigationPaginationProps } from './pagination/NavigationPagination';
-import { NavigationPerPage, INavigationPerPageProps, PER_PAGE_NUMBERS } from './perPage/NavigationPerPage';
 import * as React from 'react';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { Loading } from '../loading/Loading';
+import { LoadingConnected } from '../loading/LoadingConnected';
+import { INavigationPaginationProps, NavigationPagination } from './pagination/NavigationPagination';
+import { NavigationPaginationConnected } from './pagination/NavigationPaginationConnected';
+import { INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS } from './perPage/NavigationPerPage';
+import { NavigationPerPageConnected } from './perPage/NavigationPerPageConnected';
 
 export interface INavigationOwnProps extends React.ClassAttributes<Navigation> {
   id?: string;
@@ -55,7 +55,7 @@ export class Navigation extends React.Component<INavigationProps, any> {
     const perPageProps: INavigationPerPageProps = {
       label: this.props.perPageLabel,
       perPageNumbers: this.props.perPageNumbers,
-      totalEntries: this.props.totalEntries
+      totalEntries: this.props.totalEntries,
     };
     if (this.props.currentPerPage) {
       perPageProps.currentPerPage = this.props.currentPerPage;

@@ -1,7 +1,7 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import { JSXRenderable } from '../../utils/JSXUtils';
 import { TooltipPlacement } from '../../utils/TooltipUtils';
-import * as classNames from 'classnames';
 import { Svg } from '../svg/Svg';
 import { Tooltip } from '../tooltip/Tooltip';
 

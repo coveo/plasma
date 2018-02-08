@@ -1,15 +1,15 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { IModalHeaderProps, ModalHeader } from '../ModalHeader';
-import { ModalHeaderConnected } from '../ModalHeaderConnected';
-import { openModal, addModal } from '../ModalActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
 import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { addModal, openModal } from '../ModalActions';
+import { IModalHeaderProps, ModalHeader } from '../ModalHeader';
+import { ModalHeaderConnected } from '../ModalHeaderConnected';
 import { IModalState } from '../ModalReducers';
 
 describe('ModalHeader', () => {
@@ -33,7 +33,7 @@ describe('ModalHeader', () => {
             title={title}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       modalHeader = wrapper.find(ModalHeader).first();
     });
@@ -45,21 +45,21 @@ describe('ModalHeader', () => {
     });
 
     it('should get its id as a prop', () => {
-      let idProp = modalHeader.props().id;
+      const idProp = modalHeader.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
     });
 
     it('should get its title as a prop', () => {
-      let titleProp = modalHeader.props().title;
+      const titleProp = modalHeader.props().title;
 
       expect(titleProp).toBeDefined();
       expect(titleProp).toBe(title);
     });
 
     it('should get what to do on close as a prop', () => {
-      let onCloseProp = modalHeader.props().onClose;
+      const onCloseProp = modalHeader.props().onClose;
 
       expect(onCloseProp).toBeDefined();
     });

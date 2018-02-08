@@ -1,7 +1,7 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
-import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
+import * as React from 'react';
 import { Content, IContentProps } from '../content/Content';
+import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
 
 export interface IItemBoxProps {
   value: string;

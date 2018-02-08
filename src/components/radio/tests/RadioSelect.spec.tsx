@@ -1,15 +1,15 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { RadioSelect, IRadioSelectProps } from '../RadioSelect';
 import { Radio } from '../Radio';
+import { IRadioSelectProps, RadioSelect } from '../RadioSelect';
 
 describe('RadioSelect', () => {
   describe('<RadioSelect />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <RadioSelect />
+          <RadioSelect />,
         );
       }).not.toThrow();
     });
@@ -29,7 +29,7 @@ describe('RadioSelect', () => {
           <Radio id='radio1' value={aRadioValue} onClick={clickSpy} />
           <Radio id='radio2' value={anotherRadioValue} name={anotherName} />
         </RadioSelect>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -47,8 +47,8 @@ describe('RadioSelect', () => {
 
     it('should disable children when disabled', () => {
       const innerRadios = radioSelect.find('Radio');
-      const innerRadio1 = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
-      const innerRadio2 = innerRadios.findWhere(radio => radio.prop('value') === anotherRadioValue).first();
+      const innerRadio1 = innerRadios.findWhere((radio) => radio.prop('value') === aRadioValue).first();
+      const innerRadio2 = innerRadios.findWhere((radio) => radio.prop('value') === anotherRadioValue).first();
 
       radioSelect.setProps({ disabled: false }).mount();
       expect(innerRadio1.prop('disabled')).toBe(false);
@@ -61,8 +61,8 @@ describe('RadioSelect', () => {
 
     it('should check children with same value', () => {
       const innerRadios = radioSelect.find('Radio');
-      const innerRadio1 = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
-      const innerRadio2 = innerRadios.findWhere(radio => radio.prop('value') === anotherRadioValue).first();
+      const innerRadio1 = innerRadios.findWhere((radio) => radio.prop('value') === aRadioValue).first();
+      const innerRadio2 = innerRadios.findWhere((radio) => radio.prop('value') === anotherRadioValue).first();
 
       radioSelect.setProps({ value: undefined }).mount();
       expect(innerRadio1.prop('checked')).toBe(false);
@@ -76,8 +76,8 @@ describe('RadioSelect', () => {
     it('should set children name prop with self name prop when children does not specify it', () => {
       const name = 'Maurice the nuclear trout 04';
       const innerRadios = radioSelect.find('Radio');
-      const innerRadio1 = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
-      const innerRadio2 = innerRadios.findWhere(radio => radio.prop('value') === anotherRadioValue).first();
+      const innerRadio1 = innerRadios.findWhere((radio) => radio.prop('value') === aRadioValue).first();
+      const innerRadio2 = innerRadios.findWhere((radio) => radio.prop('value') === anotherRadioValue).first();
 
       radioSelect.setProps({ name }).mount();
       expect(innerRadio1.prop('name')).toBe(name);
@@ -86,7 +86,7 @@ describe('RadioSelect', () => {
 
     it('should chain prop onChange with children onClick prop and call both on children change', () => {
       const innerRadios = radioSelect.find('Radio');
-      const innerRadio = innerRadios.findWhere(radio => radio.prop('value') === aRadioValue).first();
+      const innerRadio = innerRadios.findWhere((radio) => radio.prop('value') === aRadioValue).first();
       const innerRadioInput = innerRadio.find('input').first();
 
       radioSelect.setProps({ onChange: clickSpy }).mount();

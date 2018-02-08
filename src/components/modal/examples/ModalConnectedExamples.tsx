@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
-import { openModal, IModalActionPayload, closeModal } from '../ModalActions';
-import { ModalConnected } from '../ModalConnected';
-import { ModalBody } from '../ModalBody';
-import { ModalFooter } from '../ModalFooter';
+import { closeModal, IModalActionPayload, openModal } from '../ModalActions';
 import { ModalBackdropConnected } from '../ModalBackdropConnected';
+import { ModalBody } from '../ModalBody';
+import { ModalConnected } from '../ModalConnected';
+import { ModalFooter } from '../ModalFooter';
 import { ModalHeaderConnected } from '../ModalHeaderConnected';
 
 export interface IModalExamplesProps {
@@ -19,7 +19,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => ({
   openModal: (id: string) => dispatch(openModal(id)),
-  closeModal: (id: string) => dispatch(closeModal(id))
+  closeModal: (id: string) => dispatch(closeModal(id)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)

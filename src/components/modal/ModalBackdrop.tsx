@@ -24,7 +24,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
   }
 
   render() {
-    let classes = ['modal-backdrop'];
+    const classes = ['modal-backdrop'];
     if (!this.props.display) {
       classes.push('closed');
     }

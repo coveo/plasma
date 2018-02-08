@@ -1,26 +1,26 @@
-import { TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE } from './TableConstants';
-import { getTableChildComponentId } from './TableUtils';
-import { ITableOwnProps, ITableProps, ITableDispatchProps, Table, ITableCompositeStateProps } from './Table';
-import { ITableState, ITableCompositeState } from './TableReducers';
-import { addActionsToActionBar } from '../actions/ActionBarActions';
-import { addTable, removeTable } from './TableActions';
-import { IReactVaporState } from '../../ReactVapor';
-import { ReduxUtils } from '../../utils/ReduxUtils';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
-import { IActionOptions } from '../actions/Action';
-import { defaultTableStateModifierThunk } from './TableDataModifier';
-import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
-import { selectOptionDropdownSearch, closeDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
-import { IPerPageState } from '../navigation/perPage/NavigationPerPageReducers';
-import { IPaginationState } from '../navigation/pagination/NavigationPaginationReducers';
-import { IFilterState } from '../filterBox/FilterBoxReducers';
-import { ITableHeaderCellState } from './TableHeaderCellReducers';
-import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
-import { IDatePickerState } from '../datePicker/DatePickerReducers';
 import { contains } from 'underscore.string';
+import { IReactVaporState } from '../../ReactVapor';
 import { IDispatch } from '../../utils/ReduxUtils';
+import { ReduxUtils } from '../../utils/ReduxUtils';
+import { IActionOptions } from '../actions/Action';
+import { addActionsToActionBar } from '../actions/ActionBarActions';
+import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
+import { closeDropdownSearch, selectOptionDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
+import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
+import { IFilterState } from '../filterBox/FilterBoxReducers';
+import { IPaginationState } from '../navigation/pagination/NavigationPaginationReducers';
+import { IPerPageState } from '../navigation/perPage/NavigationPerPageReducers';
+import { ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table } from './Table';
+import { addTable, removeTable } from './TableActions';
+import { TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent } from './TableConstants';
+import { defaultTableStateModifierThunk } from './TableDataModifier';
+import { ITableHeaderCellState } from './TableHeaderCellReducers';
+import { IDatePickerState } from '../datePicker/DatePickerReducers';
+import { ITableCompositeState, ITableState } from './TableReducers';
+import { getTableChildComponentId } from './TableUtils';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
   const tableState: ITableState = state.tables[ownProps.id] || {} as ITableState;
@@ -55,7 +55,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
       }, {}),
       from: datePickerState && datePickerState.appliedLowerLimit,
       to: datePickerState && datePickerState.appliedUpperLimit,
-    } as ITableCompositeState
+    } as ITableCompositeState,
   };
 };
 
@@ -69,7 +69,7 @@ const mapDispatchToProps = (
         ownProps.id,
         ownProps.initialTableData,
         ownProps.predicates,
-      )
+      ),
     );
   },
   onUnmount: () => {

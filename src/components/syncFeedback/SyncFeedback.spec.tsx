@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
-import { SyncFeedback, SyncFeedbackState } from './SyncFeedback';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { each } from 'underscore';
+import { SyncFeedback, SyncFeedbackState } from './SyncFeedback';
 
 describe('<SyncFeedback>', () => {
   it('should render without errors', () => {
@@ -17,47 +17,47 @@ describe('<SyncFeedback>', () => {
   });
 
   it('should be empty if the state is none', () => {
-    let shallowed = shallow(<SyncFeedback state={SyncFeedbackState.NONE} />);
-    let shallowedWithFeedback = shallow(<SyncFeedback state={SyncFeedbackState.NONE} feedback='Not empty' />);
+    const shallowed = shallow(<SyncFeedback state={SyncFeedbackState.NONE} />);
+    const shallowedWithFeedback = shallow(<SyncFeedback state={SyncFeedbackState.NONE} feedback='Not empty' />);
 
     expect(shallowed.text()).toBe('');
     expect(shallowedWithFeedback.text()).toBe('');
   });
 
   it('should contain the exact text passed to feedback prop', () => {
-    let expectedFeedback = 'this is the expected value';
+    const expectedFeedback = 'this is the expected value';
 
     each([SyncFeedbackState.SYNCING, SyncFeedbackState.SUCCESS, SyncFeedbackState.ERROR], (state: string) => {
-      let wrapper = shallow(<SyncFeedback state={state} feedback={expectedFeedback} />);
+      const wrapper = shallow(<SyncFeedback state={state} feedback={expectedFeedback} />);
       expect(wrapper.find('.sync-feedback-text').length).toBe(1);
       expect(wrapper.find('.sync-feedback-text').text()).toBe(expectedFeedback);
     });
   });
 
   it('should have the mod-error class whent the state is ERROR', () => {
-    let expectedClass = 'mod-error';
-    let wrapper = shallow(<SyncFeedback state={SyncFeedbackState.ERROR} />);
+    const expectedClass = 'mod-error';
+    const wrapper = shallow(<SyncFeedback state={SyncFeedbackState.ERROR} />);
     expect(wrapper.find('.sync-feedback').length).toBe(1);
     expect(wrapper.find('.sync-feedback').hasClass(expectedClass)).toBe(true);
   });
 
   it('should have the mod-success class whent the state is ERROR', () => {
-    let expectedClass = 'mod-success';
-    let wrapper = shallow(<SyncFeedback state={SyncFeedbackState.SUCCESS} />);
+    const expectedClass = 'mod-success';
+    const wrapper = shallow(<SyncFeedback state={SyncFeedbackState.SUCCESS} />);
     expect(wrapper.find('.sync-feedback').length).toBe(1);
     expect(wrapper.find('.sync-feedback').hasClass(expectedClass)).toBe(true);
   });
 
   it('should not have the mod-error nor mod-success classes whent the state is NONE or SYNCING', () => {
-    let successClass = 'mod-success';
-    let errorClass = 'mod-error';
+    const successClass = 'mod-success';
+    const errorClass = 'mod-error';
 
-    let noneWrapper = shallow(<SyncFeedback state={SyncFeedbackState.NONE} />);
+    const noneWrapper = shallow(<SyncFeedback state={SyncFeedbackState.NONE} />);
     expect(noneWrapper.find('.sync-feedback').length).toBe(1);
     expect(noneWrapper.find('.sync-feedback').hasClass(successClass)).toBe(false);
     expect(noneWrapper.find('.sync-feedback').hasClass(errorClass)).toBe(false);
 
-    let syncingWrapper = shallow(<SyncFeedback state={SyncFeedbackState.SYNCING} />);
+    const syncingWrapper = shallow(<SyncFeedback state={SyncFeedbackState.SYNCING} />);
     expect(syncingWrapper.find('.sync-feedback').length).toBe(1);
     expect(syncingWrapper.find('.sync-feedback').hasClass(successClass)).toBe(false);
     expect(syncingWrapper.find('.sync-feedback').hasClass(errorClass)).toBe(false);

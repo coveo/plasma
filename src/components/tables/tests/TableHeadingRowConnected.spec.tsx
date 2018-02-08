@@ -1,14 +1,14 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { ITableHeadingRowProps, TableHeadingRow, ITableHeadingRowOwnProps } from '../TableHeadingRow';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
-import { clearState } from '../../../utils/ReduxUtils';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow } from '../TableHeadingRow';
+import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
 
 describe('Tables', () => {
   let basicTableHeadingRowProps: ITableHeadingRowOwnProps;
@@ -21,7 +21,7 @@ describe('Tables', () => {
     beforeEach(() => {
       basicTableHeadingRowProps = {
         id: 'heading-row',
-        isCollapsible: true
+        isCollapsible: true,
       };
 
       store = TestUtils.buildStore();
@@ -34,7 +34,7 @@ describe('Tables', () => {
             </tbody>
           </table>
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       tableHeadingRow = wrapper.find(TableHeadingRow).first();
     });
@@ -46,44 +46,44 @@ describe('Tables', () => {
     });
 
     it('should get its id as a prop', () => {
-      let idProp = tableHeadingRow.props().id;
+      const idProp = tableHeadingRow.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(basicTableHeadingRowProps.id);
     });
 
     it('should get if its collapsible row is opened as a prop', () => {
-      let openedProp = tableHeadingRow.props().opened;
+      const openedProp = tableHeadingRow.props().opened;
 
       expect(openedProp).toBeDefined();
       expect(openedProp).toBe(false);
     });
 
     it('should get what to do on render as a prop', () => {
-      let onRowRenderProp = tableHeadingRow.props().onRender;
+      const onRowRenderProp = tableHeadingRow.props().onRender;
 
       expect(onRowRenderProp).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {
-      let onRowDestroyProp = tableHeadingRow.props().onDestroy;
+      const onRowDestroyProp = tableHeadingRow.props().onDestroy;
 
       expect(onRowDestroyProp).toBeDefined();
     });
 
     it('should get what to do on click as a prop', () => {
-      let onRowClickProp = tableHeadingRow.props().onClick;
+      const onRowClickProp = tableHeadingRow.props().onClick;
 
       expect(onRowClickProp).toBeDefined();
     });
 
     it('should add the row in the store on render', () => {
-      expect(store.getState().rows.filter(row => row.id === basicTableHeadingRowProps.id).length).toBe(1);
+      expect(store.getState().rows.filter((row) => row.id === basicTableHeadingRowProps.id).length).toBe(1);
     });
 
     it('should remove the row in the store on destroy', () => {
       wrapper.unmount();
-      expect(store.getState().rows.filter(row => row.id === basicTableHeadingRowProps.id).length).toBe(0);
+      expect(store.getState().rows.filter((row) => row.id === basicTableHeadingRowProps.id).length).toBe(0);
     });
 
     it('should set the open property to true on click', () => {
@@ -96,8 +96,8 @@ describe('Tables', () => {
     it('should not dispatch any action on render, on destroy and on click if not collapsible', () => {
       store.dispatch(clearState());
 
-      let newHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { isCollapsible: false });
-      let rowState = _.clone(store.getState().rows);
+      const newHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { isCollapsible: false });
+      const rowState = _.clone(store.getState().rows);
 
       wrapper = mount(
         <Provider store={store}>
@@ -107,7 +107,7 @@ describe('Tables', () => {
             </tbody>
           </table>
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       tableHeadingRow = wrapper.find(TableHeadingRow).first();
       expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));

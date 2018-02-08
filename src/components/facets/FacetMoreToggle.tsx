@@ -26,9 +26,9 @@ export class FacetMoreToggle extends React.Component<IFacetMoreToggleProps, any>
   }
 
   render() {
-    let isOpened: boolean = this.props.isOpened ? this.props.isOpened : false;
-    let moreClasses: string = 'facet-value facet-selectable facet-more' + (isOpened ? ' hidden' : '');
-    let moreLabel: string = this.props.moreLabel || FACET_TOGGLE_MORE_LABEL;
+    const isOpened: boolean = this.props.isOpened ? this.props.isOpened : false;
+    const moreClasses: string = 'facet-value facet-selectable facet-more' + (isOpened ? ' hidden' : '');
+    const moreLabel: string = this.props.moreLabel || FACET_TOGGLE_MORE_LABEL;
 
     return (
       <li className={moreClasses} onClick={(e) => e.nativeEvent.stopImmediatePropagation()}>

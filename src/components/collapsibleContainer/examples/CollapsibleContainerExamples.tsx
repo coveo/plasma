@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
-import { CollapsibleContainerConnected } from '../CollapsibleContainerConnected';
-import { setExpandedCollapsibleContainer } from '../CollapsibleContainerActions';
 import * as _ from 'underscore';
+import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
+import { setExpandedCollapsibleContainer } from '../CollapsibleContainerActions';
+import { CollapsibleContainerConnected } from '../CollapsibleContainerConnected';
 
 export const CollapsibleContainerExamples = () =>
   <div className='mt2'>

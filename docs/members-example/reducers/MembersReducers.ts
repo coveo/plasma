@@ -1,9 +1,9 @@
 import * as _ from 'underscore';
 import { IReduxAction } from '../../../src/utils/ReduxUtils';
+import { IMemberEditionActionsPayloads, MemberEditionActionsType } from '../actions/MemberEditionActions';
+import { IMembersActionsPayloads, ISetMembersPayload, MembersActionsType } from '../actions/MembersActions';
 import { IMemberAttributes } from '../models/Member';
-import { MembersActionsType, ISetMembersPayload, IMembersActionsPayloads } from '../actions/MembersActions';
-import { MemberEditionActionsType, IMemberEditionActionsPayloads } from '../actions/MemberEditionActions';
-import { IMemberEditionState, defaultMemberEditionState, memberEditionReducers } from './MemberEditionReducers';
+import { defaultMemberEditionState, IMemberEditionState, memberEditionReducers } from './MemberEditionReducers';
 
 export interface IMembersCompositeState {
   addMemberState: IMemberEditionState;
@@ -12,7 +12,7 @@ export interface IMembersCompositeState {
 
 const defaultMembersCompositeState: IMembersCompositeState = {
   addMemberState: _.extend({}, defaultMemberEditionState),
-  members: []
+  members: [],
 };
 
 const generateMemberId = (): string => _.uniqueId('member');
@@ -24,21 +24,21 @@ const setMembersReduder = (state: IMembersCompositeState, action: IReduxAction<I
         appliedState: _.extend({}, member),
         editionState: _.extend({}, member),
         id: generateMemberId(),
-        isOpen: false
+        isOpen: false,
       };
-    })
+    }),
   });
 };
 
 const addMemberReducer = (state: IMembersCompositeState): IMembersCompositeState => {
-  let newState: IMembersCompositeState = _.extend({}, state);
+  const newState: IMembersCompositeState = _.extend({}, state);
 
   // Clone and add the new member
-  let newMember: IMemberEditionState = _.extend({}, {
+  const newMember: IMemberEditionState = _.extend({}, {
     appliedState: _.extend({}, state.addMemberState.editionState),
     editionState: _.extend({}, state.addMemberState.editionState),
     id: generateMemberId(),
-    isOpen: false
+    isOpen: false,
   });
   newState.members = [].concat(state.members, [newMember]);
 
@@ -49,8 +49,8 @@ const addMemberReducer = (state: IMembersCompositeState): IMembersCompositeState
 };
 
 const applyMemberEditionReducers = (state: IMembersCompositeState,
-  action: IReduxAction<IMemberEditionActionsPayloads>): IMembersCompositeState => {
-  let newState: IMembersCompositeState = _.extend({}, state);
+                                    action: IReduxAction<IMemberEditionActionsPayloads>): IMembersCompositeState => {
+  const newState: IMembersCompositeState = _.extend({}, state);
 
   if (_.isNull(action.payload.id)) {
     newState.addMemberState = memberEditionReducers(newState.addMemberState, action);
@@ -72,11 +72,11 @@ const membersActionsReducers: IMembersActionsReducers = {
   [MemberEditionActionsType.CancelChanges]: applyMemberEditionReducers,
   [MemberEditionActionsType.ChangeEmail]: applyMemberEditionReducers,
   [MemberEditionActionsType.ChangeSendEmail]: applyMemberEditionReducers,
-  [MemberEditionActionsType.ToggleOpen]: applyMemberEditionReducers
+  [MemberEditionActionsType.ToggleOpen]: applyMemberEditionReducers,
 };
 
 export const membersReducers = (state: IMembersCompositeState = defaultMembersCompositeState,
-  action: IReduxAction<IMembersActionsPayloads>): IMembersCompositeState => {
+                                action: IReduxAction<IMembersActionsPayloads>): IMembersCompositeState => {
   if (_.isUndefined(membersActionsReducers[action.type])) {
     return state;
   }

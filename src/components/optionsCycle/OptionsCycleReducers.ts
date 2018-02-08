@@ -1,7 +1,7 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { OptionsCycleActions } from './OptionsCycleActions';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { OptionsCycleActions } from './OptionsCycleActions';
 
 export interface IOptionsCycleState {
   id: string;
@@ -12,7 +12,7 @@ export const optionsCycleInitialState: IOptionsCycleState = { id: undefined, cur
 export const optionsCyclesInitialState: IOptionsCycleState[] = [];
 
 export const optionsCycleReducer = (state: IOptionsCycleState = optionsCycleInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IOptionsCycleState => {
+                                    action: IReduxAction<IReduxActionsPayload>): IOptionsCycleState => {
   switch (action.type) {
     case OptionsCycleActions.change:
       if (state.id !== action.payload.id) {
@@ -21,12 +21,12 @@ export const optionsCycleReducer = (state: IOptionsCycleState = optionsCycleInit
 
       return {
         id: state.id,
-        currentOption: action.payload.currentOption
+        currentOption: action.payload.currentOption,
       };
     case OptionsCycleActions.add:
       return {
         id: action.payload.id,
-        currentOption: action.payload.currentOption
+        currentOption: action.payload.currentOption,
       };
     default:
       return state;
@@ -34,14 +34,14 @@ export const optionsCycleReducer = (state: IOptionsCycleState = optionsCycleInit
 };
 
 export const optionsCyclesReducer = (state: IOptionsCycleState[] = optionsCyclesInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IOptionsCycleState[] => {
+                                     action: IReduxAction<IReduxActionsPayload>): IOptionsCycleState[] => {
   switch (action.type) {
     case OptionsCycleActions.change:
       return state.map((optionsCycle: IOptionsCycleState) => optionsCycleReducer(optionsCycle, action));
     case OptionsCycleActions.add:
       return [
         ...state,
-        optionsCycleReducer(undefined, action)
+        optionsCycleReducer(undefined, action),
       ];
     case OptionsCycleActions.remove:
       return _.reject(state, (optionsCycle: IOptionsCycleState) => {

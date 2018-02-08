@@ -1,9 +1,9 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { TableHeadingRow, ITableHeadingRowProps } from '../TableHeadingRow';
-import { TableCollapsibleRowToggle } from '../TableCollapsibleRowToggle';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { TableCollapsibleRowToggle } from '../TableCollapsibleRowToggle';
+import { ITableHeadingRowProps, TableHeadingRow } from '../TableHeadingRow';
 
 describe('Tables', () => {
   let basicTableHeadingRowProps: ITableHeadingRowProps;
@@ -11,12 +11,12 @@ describe('Tables', () => {
   describe('<TableHeadingRow />', () => {
     it('should render without errors', () => {
       basicTableHeadingRowProps = {
-        isCollapsible: false
+        isCollapsible: false,
       };
 
       expect(() => {
         shallow(
-          <TableHeadingRow {...basicTableHeadingRowProps} />
+          <TableHeadingRow {...basicTableHeadingRowProps} />,
         );
       }).not.toThrow();
     });
@@ -30,12 +30,12 @@ describe('Tables', () => {
       document.getElementById('App').innerHTML = '<table><tbody id="AppTableBody"></tbody></table>';
 
       basicTableHeadingRowProps = {
-        isCollapsible: true
+        isCollapsible: true,
       };
 
       tableHeadingRow = mount(
         <TableHeadingRow {...basicTableHeadingRowProps} />,
-        { attachTo: document.getElementById('AppTableBody') }
+        { attachTo: document.getElementById('AppTableBody') },
       );
       tableHeadingRowInstance = tableHeadingRow.instance() as TableHeadingRow;
     });
@@ -46,14 +46,14 @@ describe('Tables', () => {
     });
 
     it('should get if it is collapsible as a prop', () => {
-      let isCollapsibleProp = tableHeadingRow.props().isCollapsible;
+      const isCollapsibleProp = tableHeadingRow.props().isCollapsible;
 
       expect(isCollapsibleProp).toBeDefined();
       expect(isCollapsibleProp).toBe(basicTableHeadingRowProps.isCollapsible);
     });
 
     it('should have heading-row as a class if collapsible', () => {
-      let rowClass = 'heading-row';
+      const rowClass = 'heading-row';
 
       expect(tableHeadingRow.find('tr').hasClass(rowClass)).toBe(true);
 
@@ -79,8 +79,8 @@ describe('Tables', () => {
     });
 
     it('should call onRender prop if set on mount', () => {
-      let onRenderSpy = jasmine.createSpy('onRender');
-      let newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onRender: onRenderSpy });
+      const onRenderSpy = jasmine.createSpy('onRender');
+      const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onRender: onRenderSpy });
 
       expect(() => (tableHeadingRowInstance.componentWillMount())).not.toThrow();
 
@@ -91,8 +91,8 @@ describe('Tables', () => {
     });
 
     it('should call onDestroy prop if set when unmounting', () => {
-      let onDestroySpy = jasmine.createSpy('onDestroy');
-      let newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onDestroy: onDestroySpy });
+      const onDestroySpy = jasmine.createSpy('onDestroy');
+      const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onDestroy: onDestroySpy });
 
       expect(() => (tableHeadingRowInstance.componentWillUnmount())).not.toThrow();
 
@@ -104,8 +104,8 @@ describe('Tables', () => {
     });
 
     it('should call onClick prop if set when clicking on row', () => {
-      let onClickSpy = jasmine.createSpy('onClick');
-      let newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onClick: onClickSpy });
+      const onClickSpy = jasmine.createSpy('onClick');
+      const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onClick: onClickSpy });
 
       expect(() => (tableHeadingRowInstance['handleClick'].call(tableHeadingRowInstance))).not.toThrow();
 
@@ -115,8 +115,8 @@ describe('Tables', () => {
     });
 
     it('should call onDoubleClick prop if set when double clicking on row', () => {
-      let onDoubleClickSpy = jasmine.createSpy('onDoubleClick');
-      let newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onDoubleClick: onDoubleClickSpy });
+      const onDoubleClickSpy = jasmine.createSpy('onDoubleClick');
+      const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, { onDoubleClick: onDoubleClickSpy });
 
       expect(() => (tableHeadingRowInstance['handleDoubleClick'].call(tableHeadingRowInstance))).not.toThrow();
 

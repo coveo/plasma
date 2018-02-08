@@ -1,6 +1,6 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import * as classNames from 'classnames';
 import { IBaseActionOptions } from '../actions/Action';
 import { Tooltip } from '../tooltip/Tooltip';
 

@@ -1,14 +1,14 @@
 import { mount } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { inputPossibleProps, inputProps } from './InputTestCommons.spec';
-import { Input, IInputProps } from '../Input';
-import { InputConnected } from '../InputConnected';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
+import { Provider, Store } from 'react-redux';
 import { findWhere } from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IInputProps, Input } from '../Input';
+import { InputConnected } from '../InputConnected';
+import { inputPossibleProps, inputProps } from './InputTestCommons.spec';
 
 describe('<InputConnected />', () => {
   let store: Store<IReactVaporState>;

@@ -15,15 +15,15 @@ export const addSubNavigation = (id: string, itemsId: string[]): IReduxAction<IS
   type: SubNavigationActions.add,
   payload: {
     id,
-    selected: itemsId.length ? itemsId[0] : ''
-  }
+    selected: itemsId.length ? itemsId[0] : '',
+  },
 });
 
 export const removeSubNavigation = (id: string): IReduxAction<ISubNavigationActionPayload> => ({
   type: SubNavigationActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const selectSubNavigation = (id: string, selected: string): IReduxAction<ISubNavigationActionPayload> => ({
@@ -31,5 +31,5 @@ export const selectSubNavigation = (id: string, selected: string): IReduxAction<
   payload: {
     id,
     selected,
-  }
+  },
 });

@@ -1,9 +1,9 @@
 import * as React from 'react';
+import * as _ from 'underscore';
+import { Svg } from '../../svg/Svg';
+import { Tooltip } from '../../tooltip/Tooltip';
 import { IDropdownOption } from '../DropdownSearch';
 import { SelectedOption } from './SelectedOption';
-import { Svg } from '../../svg/Svg';
-import * as _ from 'underscore';
-import { Tooltip } from '../../tooltip/Tooltip';
 
 export interface IMultiselectInputProps {
   selectedOptions: IDropdownOption[];
@@ -36,7 +36,6 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
     }
   }
 
-
   private handleOnBlur() {
     if (this.props.onBlur) {
       this.props.onBlur();
@@ -64,7 +63,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
           value={selectedOption.value}
           key={selectedOption.value}
           onRemoveClick={this.props.onRemoveClick}
-        />
+        />,
       );
     });
 

@@ -1,16 +1,16 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import * as _ from 'underscore';
-import { Popover, IPopoverProps } from './Popover';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { IPopoverProps, Popover } from './Popover';
 
 describe('<Popover>', () => {
   let popoverProps: IPopoverProps;
   let popoverWrapper: ReactWrapper<IPopoverProps, any>;
 
-  let popoverToggleId = 'PopoverToggle';
-  let popoverElementId = 'PopoverElement';
-  let popoverToggleSelector = `#${popoverToggleId}`;
+  const popoverToggleId = 'PopoverToggle';
+  const popoverElementId = 'PopoverElement';
+  const popoverToggleSelector = `#${popoverToggleId}`;
 
   let toggleOpenedSpy: jasmine.Spy;
 
@@ -19,12 +19,12 @@ describe('<Popover>', () => {
       <span id={popoverToggleId}>Toggle</span>
       <span id={popoverElementId}>Tether element</span>
     </Popover>,
-    { attachTo: document.getElementById('App') }
+    { attachTo: document.getElementById('App') },
   );
 
   beforeEach(() => {
     popoverProps = {
-      attachment: 'top left'
+      attachment: 'top left',
     };
 
     toggleOpenedSpy = spyOn<any>(Popover.prototype, 'toggleOpened').and.callThrough();
@@ -35,7 +35,7 @@ describe('<Popover>', () => {
       <Popover {...popoverProps}>
         <span>Toggle</span>
         <span>Tether element</span>
-      </Popover>
+      </Popover>,
     )).not.toThrow();
   });
 
@@ -44,7 +44,7 @@ describe('<Popover>', () => {
       <Popover {...popoverProps} style={{ 'margin-left': '10px' }}>
         <span>Toggle</span>
         <span>Tether element</span>
-      </Popover>
+      </Popover>,
     )).not.toThrow();
   });
 
@@ -65,7 +65,7 @@ describe('<Popover>', () => {
         shallow(
           <Popover {...popoverProps}>
             <span>Toggle</span>
-          </Popover>
+          </Popover>,
         );
       }).not.toThrow();
     });
@@ -73,7 +73,7 @@ describe('<Popover>', () => {
     it('should not throw when redering a Popover without childrens', () => {
       expect(() => {
         shallow(
-          <Popover {...popoverProps} />
+          <Popover {...popoverProps} />,
         );
       }).not.toThrow();
     });
@@ -165,7 +165,7 @@ describe('<Popover>', () => {
     describe('Document click handler for an opened popover', () => {
       beforeEach(() => {
         popoverProps = _.extend(popoverProps, {
-          isOpen: true
+          isOpen: true,
         });
 
         mountPopover(popoverProps);
@@ -216,7 +216,7 @@ describe('<Popover>', () => {
     describe('Document click handler for a closed popover', () => {
       beforeEach(() => {
         popoverProps = _.extend(popoverProps, {
-          isOpen: false
+          isOpen: false,
         });
 
         mountPopover(popoverProps);

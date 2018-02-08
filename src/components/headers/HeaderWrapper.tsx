@@ -1,7 +1,7 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
-import { Content, IContentProps } from '../content/Content';
+import * as React from 'react';
 import * as _ from 'underscore';
+import { Content, IContentProps } from '../content/Content';
 import { ITabsHeaderProps, TabsHeader } from './TabsHeader';
 
 export interface IHeaderWrapperProps extends ITabsHeaderProps, React.ClassAttributes<React.Component<any, any>> {

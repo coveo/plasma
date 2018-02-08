@@ -1,21 +1,21 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IActionOptions, Action, IActionProps } from '../Action';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { Action, IActionOptions, IActionProps } from '../Action';
 
 describe('Actions', () => {
-  let action: IActionOptions = {
+  const action: IActionOptions = {
     name: 'action',
     trigger: jasmine.createSpy('triggerMethod'),
-    enabled: true
+    enabled: true,
   };
 
   describe('<Action />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Action action={action} />
+          <Action action={action} />,
         );
       }).not.toThrow();
     });
@@ -23,7 +23,7 @@ describe('Actions', () => {
 
   describe('<Action />', () => {
     let actionComponent: ReactWrapper<IActionProps, any>;
-    let simple: boolean = false;
+    const simple: boolean = false;
 
     beforeEach(() => {
       actionComponent = mount(
@@ -31,7 +31,7 @@ describe('Actions', () => {
           action={action}
           simple={simple}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -41,14 +41,14 @@ describe('Actions', () => {
     });
 
     it('should get an action as a prop', () => {
-      let actionProp = actionComponent.props().action;
+      const actionProp = actionComponent.props().action;
 
       expect(actionProp).toBeDefined();
       expect(actionProp).toEqual(jasmine.objectContaining(action));
     });
 
     it('should get if the action is simple (no html) as a prop', () => {
-      let simpleProp = actionComponent.props().simple;
+      const simpleProp = actionComponent.props().simple;
 
       expect(simpleProp).toBeDefined();
       expect(simpleProp).toBe(simple);
@@ -65,7 +65,7 @@ describe('Actions', () => {
     it('should have icon more if no icon is defined', () => {
       expect(actionComponent.find('.action-icon-more').length).toBe(1);
 
-      let newAction = _.extend({}, action);
+      const newAction = _.extend({}, action);
       newAction.icon = 'delete';
       actionComponent.setProps({ action: newAction, simple: false });
 
@@ -80,7 +80,7 @@ describe('Actions', () => {
     it('should display a <Tooltip /> if the action has a tooltip', () => {
       expect(actionComponent.find('Tooltip').length).toBe(0);
 
-      let newAction = _.extend({}, action, { tooltip: 'A useful tooltip' });
+      const newAction = _.extend({}, action, { tooltip: 'A useful tooltip' });
       actionComponent.setProps({ action: newAction, simple: false });
 
       expect(actionComponent.find('Tooltip').length).toBe(1);

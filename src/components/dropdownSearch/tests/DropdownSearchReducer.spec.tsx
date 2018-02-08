@@ -1,23 +1,23 @@
+import * as _ from 'underscore';
+import { keyCode } from '../../../utils/InputUtils';
 import { IReduxAction } from '../../../utils/ReduxUtils';
 import { IDropdownOption } from '../DropdownSearch';
+import { addDropdownSearch, DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import {
   addUniqueSelectedOption,
-  dropdownSearchInitialState,
+  defaultSelectedOptionPlaceholder,
+  deselectAllOptions,
+  deselectLastSelectedOption,
+  deselectOption, dropdownSearchInitialState,
   dropdownSearchReducer,
   dropdownsSearchInitialState,
-  dropdownsSearchReducer, getDisplayedOptions,
+  dropdownsSearchReducer,
+  getDisplayedOptions,
   IDropdownSearchState,
-  deselectLastSelectedOption,
-  deselectAllOptions,
-  deselectOption,
-  defaultSelectedOptionPlaceholder,
   isNotCustomOption,
   removeCustomOptions,
   shouldHideOnFilter,
 } from '../DropdownSearchReducers';
-import { DropdownSearchActions, IOptionsDropdownSearchPayload, addDropdownSearch } from '../DropdownSearchActions';
-import * as _ from 'underscore';
-import { keyCode } from '../../../utils/InputUtils';
 
 describe('DropdownSearch', () => {
 
@@ -48,10 +48,10 @@ describe('DropdownSearch', () => {
     const options = [
       { value: 'test 1', displayValue: 'display 1' },
       { value: 'test 2', displayValue: 'display 2' },
-      { value: 'test 3', displayValue: 'display 3' }
+      { value: 'test 3', displayValue: 'display 3' },
     ];
 
-    const oldState: IDropdownSearchState[] = [
+    const defaultOldState: IDropdownSearchState[] = [
       {
         id: 'new-dropdown-search',
         isOpened: false,
@@ -109,82 +109,82 @@ describe('DropdownSearch', () => {
     });
 
     it('should return a state with a default selected option when defaultSelectedOption is given on "ADD_DROPDOWN_SEARCH"', () => {
-      let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+      const oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
       const defaultSelectedOption: IDropdownOption = { value: 'Default option' };
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.add,
         payload: _.extend({}, { ...defaultPayload, defaultSelectedOption, dropdownOptions: options }),
       };
-      let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       const dropdownSearch = _.find(dropdownSearchState,
-        (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+        (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id);
 
       expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected).toBe(true);
     });
 
     it('should return a state with a default selected option when no options are given on "ADD_DROPDOWN_SEARCH"', () => {
-      let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+      const oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
       const action: IReduxAction<IOptionsDropdownSearchPayload> = {
         type: DropdownSearchActions.add,
         payload: _.extend({}, { ...defaultPayload }),
       };
-      let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+      const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       const dropdownSearch = _.find(dropdownSearchState,
-        (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+        (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id);
 
       expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOptionPlaceholder.value)).toBeDefined();
     });
 
     it('should return a state with a selectedOption if the defaultSelectedOption is equal to one option already present "ADD_DROPDOWN_SEARCH"',
       () => {
-        let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+        const oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
         const defaultSelectedOption: IDropdownOption = { value: 'Default option', selected: false };
         const action: IReduxAction<IOptionsDropdownSearchPayload> = {
           type: DropdownSearchActions.add,
           payload: _.extend({}, { ...defaultPayload, options: [defaultSelectedOption], defaultSelectedOption }),
         };
-        let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         const dropdownSearch = _.find(dropdownSearchState,
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id);
 
         expect(_.find(dropdownSearch.options, (option) => option.value === defaultSelectedOption.value).selected).toBe(true);
       });
 
     it('should return a state with supportSingleCustomOption set to false if the property is not passed to the addDropdownSearch action generator on "ADD_DROPDOWN_SEARCH"',
       () => {
-        let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+        const oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
         const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined);
-        let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         const dropdownSearch = _.find(dropdownSearchState,
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id);
 
         expect(dropdownSearch.supportSingleCustomOption).toBe(false);
       });
 
     it('should return a state with supportSingleCustomOption set to false if the property is passed with false in the payload on "ADD_DROPDOWN_SEARCH"',
       () => {
-        let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+        const oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
         const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined, false);
-        let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         const dropdownSearch = _.find(dropdownSearchState,
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id);
 
         expect(dropdownSearch.supportSingleCustomOption).toBe(false);
       });
 
     it('should return a state with supportSingleCustomOption set to true if the property is passed with false in the payload on "ADD_DROPDOWN_SEARCH"',
       () => {
-        let oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
+        const oldState: IDropdownSearchState[] = dropdownsSearchInitialState;
         const action: IReduxAction<IOptionsDropdownSearchPayload> = addDropdownSearch(defaultPayload.id, [], undefined, true);
-        let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         const dropdownSearch = _.find(dropdownSearchState,
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id);
 
         expect(dropdownSearch.supportSingleCustomOption).toBe(true);
       });
@@ -198,14 +198,14 @@ describe('DropdownSearch', () => {
       let dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       expect(dropdownSearchState.length).toBe(oldState.length - 1);
-      expect(dropdownSearchState.filter(dropdownSearch => dropdownSearch.id === action.payload.id).length).toBe(0);
+      expect(dropdownSearchState.filter((dropdownSearch) => dropdownSearch.id === action.payload.id).length).toBe(0);
 
       oldState = dropdownSearchState;
       action.payload.id = 'new-dropdown-search-2';
       dropdownSearchState = dropdownsSearchReducer(oldState, action);
 
       expect(dropdownSearchState.length).toBe(oldState.length - 1);
-      expect(dropdownSearchState.filter(dropdownSearch => dropdownSearch.id === action.payload.id).length).toBe(0);
+      expect(dropdownSearchState.filter((dropdownSearch) => dropdownSearch.id === action.payload.id).length).toBe(0);
     });
 
     it('should return the old state when the action is "REMOVE_DROPDOWN_SEARCH" and the payload id does not exist', () => {
@@ -279,8 +279,8 @@ describe('DropdownSearch', () => {
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
-        (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-          dropdownSearch.filterText === newFilterText).length).toBe(1);
+        (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id &&
+        currentDropdownSearch.filterText === newFilterText).length).toBe(1);
     });
 
     describe('FILTER_DROPDOWN_SEARCH with supportSingleCustomOption', () => {
@@ -315,8 +315,8 @@ describe('DropdownSearch', () => {
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-            dropdownSearch.options[1] === undefined).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id &&
+          currentDropdownSearch.options[1] === undefined).length).toBe(1);
       });
 
       it('should add a custom option if the filterText is not empty', () => {
@@ -329,8 +329,8 @@ describe('DropdownSearch', () => {
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-            dropdownSearch.options[0].custom === true).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id &&
+          currentDropdownSearch.options[0].custom === true).length).toBe(1);
       });
 
       it('should add a custom option if the filterText is not empty with its value being the filterText value', () => {
@@ -343,8 +343,8 @@ describe('DropdownSearch', () => {
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-            dropdownSearch.options[0].value === newFilterText).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id &&
+          currentDropdownSearch.options[0].value === newFilterText).length).toBe(1);
       });
     });
 
@@ -365,8 +365,8 @@ describe('DropdownSearch', () => {
 
       expect(dropdownSearchState.length).toBe(oldState.length);
       expect(dropdownSearchState.filter(
-        (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id &&
-          _.where(dropdownSearch.options, { value: selectedOption.value })).length).toBe(1);
+        (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id &&
+          _.where(currentDropdownSearch.options, { value: selectedOption.value })).length).toBe(1);
     });
 
     it('should remove custom options on "SELECT_DROPDOWN_SEARCH" with supportSingleCustomOption', () => {
@@ -389,8 +389,8 @@ describe('DropdownSearch', () => {
       const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
       expect(dropdownSearchState.length).toBe(oldState.length);
-      expect(_.findWhere(dropdownSearchState.filter((dropdownSearch: IDropdownSearchState) =>
-        dropdownSearch.id === action.payload.id)[0].options, { custom: true })).toBeUndefined();
+      expect(_.findWhere(dropdownSearchState.filter((currentDropdownSearch: IDropdownSearchState) =>
+      currentDropdownSearch.id === action.payload.id)[0].options, { custom: true })).toBeUndefined();
     });
 
     it(
@@ -400,14 +400,14 @@ describe('DropdownSearch', () => {
           type: DropdownSearchActions.active,
           payload: _.extend({}, defaultPayload, { keyCode: keyCode.downArrow }),
         };
-        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(defaultOldState, action);
 
-        expect(dropdownSearchState.length).toBe(oldState.length);
+        expect(dropdownSearchState.length).toBe(defaultOldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && dropdownSearch.activeOption.value === options[0].value
-            && !dropdownSearch.setFocusOnDropdownButton
-            && dropdownSearch.isOpened).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && currentDropdownSearch.activeOption.value === options[0].value
+            && !currentDropdownSearch.setFocusOnDropdownButton
+            && currentDropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -417,14 +417,14 @@ describe('DropdownSearch', () => {
           type: DropdownSearchActions.active,
           payload: _.extend({}, defaultPayload, { keyCode: keyCode.upArrow }),
         };
-        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+        const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(defaultOldState, action);
 
-        expect(dropdownSearchState.length).toBe(oldState.length);
+        expect(dropdownSearchState.length).toBe(defaultOldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && dropdownSearch.activeOption.value === options[0].value
-            && !dropdownSearch.setFocusOnDropdownButton
-            && dropdownSearch.isOpened).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && currentDropdownSearch.activeOption.value === options[0].value
+            && !currentDropdownSearch.setFocusOnDropdownButton
+            && currentDropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -446,10 +446,10 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && dropdownSearch.activeOption.value === options[1].value
-            && !dropdownSearch.setFocusOnDropdownButton
-            && dropdownSearch.isOpened).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && currentDropdownSearch.activeOption.value === options[1].value
+            && !currentDropdownSearch.setFocusOnDropdownButton
+            && currentDropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -471,10 +471,10 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && dropdownSearch.activeOption.value === options[0].value
-            && !dropdownSearch.setFocusOnDropdownButton
-            && dropdownSearch.isOpened).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && currentDropdownSearch.activeOption.value === options[0].value
+            && !currentDropdownSearch.setFocusOnDropdownButton
+            && currentDropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -498,11 +498,11 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && dropdownSearch.activeOption &&
-            dropdownSearch.activeOption.value === options[options.length - 1].value
-            && !dropdownSearch.setFocusOnDropdownButton
-            && dropdownSearch.isOpened).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && currentDropdownSearch.activeOption &&
+            currentDropdownSearch.activeOption.value === options[options.length - 1].value
+            && !currentDropdownSearch.setFocusOnDropdownButton
+            && currentDropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -524,9 +524,9 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && !dropdownSearch.isOpened
-            && dropdownSearch.setFocusOnDropdownButton).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && !currentDropdownSearch.isOpened
+            && currentDropdownSearch.setFocusOnDropdownButton).length).toBe(1);
       });
 
     it(
@@ -548,10 +548,10 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && _.isUndefined(dropdownSearch.activeOption)
-            && dropdownSearch.setFocusOnDropdownButton
-            && !dropdownSearch.isOpened
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && _.isUndefined(currentDropdownSearch.activeOption)
+            && currentDropdownSearch.setFocusOnDropdownButton
+            && !currentDropdownSearch.isOpened,
         ).length).toBe(1);
       });
 
@@ -576,8 +576,8 @@ describe('DropdownSearch', () => {
 
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
-            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === ''
+            (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+              && currentDropdownSearch.filterText === '',
           ).length).toBe(1);
         });
 
@@ -601,8 +601,8 @@ describe('DropdownSearch', () => {
 
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
-            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === ''
+            (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+              && currentDropdownSearch.filterText === '',
           ).length).toBe(1);
         });
 
@@ -626,8 +626,8 @@ describe('DropdownSearch', () => {
 
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
-            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === ''
+            (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+              && currentDropdownSearch.filterText === '',
           ).length).toBe(1);
         });
 
@@ -651,8 +651,8 @@ describe('DropdownSearch', () => {
 
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
-            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === ''
+            (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+              && currentDropdownSearch.filterText === '',
           ).length).toBe(1);
         });
 
@@ -676,8 +676,8 @@ describe('DropdownSearch', () => {
 
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
-            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === ''
+            (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+              && currentDropdownSearch.filterText === '',
           ).length).toBe(1);
         });
 
@@ -701,8 +701,8 @@ describe('DropdownSearch', () => {
 
           expect(dropdownSearchState.length).toBe(oldState.length);
           expect(dropdownSearchState.filter(
-            (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-              && dropdownSearch.filterText === ''
+            (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+              && currentDropdownSearch.filterText === '',
           ).length).toBe(1);
         });
     });
@@ -726,10 +726,10 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && _.isUndefined(dropdownSearch.activeOption)
-            && dropdownSearch.setFocusOnDropdownButton
-            && !dropdownSearch.isOpened
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && _.isUndefined(currentDropdownSearch.activeOption)
+            && currentDropdownSearch.setFocusOnDropdownButton
+            && !currentDropdownSearch.isOpened,
         ).length).toBe(1);
       });
 
@@ -752,9 +752,9 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && _.isUndefined(dropdownSearch.activeOption)
-            && _.isUndefined(dropdownSearch.selectedOption)).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && _.isUndefined(currentDropdownSearch.activeOption)
+            && _.isUndefined(currentDropdownSearch.selectedOption)).length).toBe(1);
       });
 
     it(
@@ -776,9 +776,9 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && _.isUndefined(dropdownSearch.activeOption)
-            && _.isUndefined(dropdownSearch.selectedOption)).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && _.isUndefined(currentDropdownSearch.activeOption)
+            && _.isUndefined(currentDropdownSearch.selectedOption)).length).toBe(1);
       });
 
     it(
@@ -800,10 +800,10 @@ describe('DropdownSearch', () => {
 
         expect(dropdownSearchState.length).toBe(oldState.length);
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && _.isUndefined(dropdownSearch.activeOption)
-            && dropdownSearch.setFocusOnDropdownButton
-            && !dropdownSearch.isOpened).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && _.isUndefined(currentDropdownSearch.activeOption)
+            && currentDropdownSearch.setFocusOnDropdownButton
+            && !currentDropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -824,8 +824,8 @@ describe('DropdownSearch', () => {
         const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
 
         expect(dropdownSearchState.filter(
-          (dropdownSearch: IDropdownSearchState) => dropdownSearch.id === action.payload.id
-            && !dropdownSearch.isOpened).length).toBe(1);
+          (currentDropdownSearch: IDropdownSearchState) => currentDropdownSearch.id === action.payload.id
+            && !currentDropdownSearch.isOpened).length).toBe(1);
       });
 
     it(
@@ -925,11 +925,11 @@ describe('DropdownSearch', () => {
       describe('deselect last selected option', () => {
         it('should return an array of option without the last one', () => {
           const optionToBeRemoved: IDropdownOption = {
-            value: 'value', displayValue: 'display', selected: true
+            value: 'value', displayValue: 'display', selected: true,
           };
 
           const selectedOptions: IDropdownOption[] = [
-            ...options, optionToBeRemoved
+            ...options, optionToBeRemoved,
           ];
 
           expect(deselectLastSelectedOption(selectedOptions)).toEqual([...options,
@@ -945,10 +945,10 @@ describe('DropdownSearch', () => {
 
       describe('add unique selected option', () => {
         it('should add a custom selected option', () => {
-          const options: IDropdownOption[] = [];
+          const opts: IDropdownOption[] = [];
           const value = 'Display value';
 
-          expect(_.findWhere(addUniqueSelectedOption(options, value), { value, selected: true, custom: true })).toBeDefined();
+          expect(_.findWhere(addUniqueSelectedOption(opts, value), { value, selected: true, custom: true })).toBeDefined();
         });
 
         it('should not add a custom selected option if another one with the same value is present', () => {

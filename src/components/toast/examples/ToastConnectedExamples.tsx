@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
-import { ToastContainerConnected } from '../ToastContainerConnected';
 import { ToastType } from '../Toast';
 import { addToast, IToastActionPayload, IToastAddOptionalPayload } from '../ToastActions';
+import { ToastContainerConnected } from '../ToastContainerConnected';
 import { ToastContentExample } from './ToastContentExample';
 
 export interface IToastConnectedExamplesProps {

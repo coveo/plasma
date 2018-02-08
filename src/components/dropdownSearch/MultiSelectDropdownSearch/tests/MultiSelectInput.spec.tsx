@@ -1,8 +1,8 @@
 import { mount, ReactWrapper } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { IMultiselectInputProps, MultiselectInput } from '../MultiSelectInput';
 import { IDropdownOption } from '../../DropdownSearch';
+import { IMultiselectInputProps, MultiselectInput } from '../MultiSelectInput';
 
 describe('MultiSelectInput', () => {
   const selectedOptions: IDropdownOption[] = [
@@ -19,9 +19,9 @@ describe('MultiSelectInput', () => {
   describe('<SelectedOption />', () => {
     let multiSelectInput: ReactWrapper<IMultiselectInputProps, any>;
 
-    const renderMultiSelectInput = (props?: IMultiselectInputProps) => {
+    const renderMultiSelectInput = (curentProps?: IMultiselectInputProps) => {
       multiSelectInput = mount(
-        <MultiselectInput {...props} />,
+        <MultiselectInput {...curentProps} />,
         { attachTo: document.getElementById('App') },
       );
     };

@@ -1,7 +1,7 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { OptionsCycle, IOptionsCycleProps } from '../OptionsCycle';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { IOptionsCycleProps, OptionsCycle } from '../OptionsCycle';
 
 describe('Options cycle', () => {
   const OPTIONS = ['option 1', 'option 2', 'option 3', 'option 4'];
@@ -10,7 +10,7 @@ describe('Options cycle', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <OptionsCycle options={OPTIONS} />
+          <OptionsCycle options={OPTIONS} />,
         );
       }).not.toThrow();
     });
@@ -23,7 +23,7 @@ describe('Options cycle', () => {
     beforeEach(() => {
       optionsCycle = mount(
         <OptionsCycle options={OPTIONS} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       optionsCycleInstance = optionsCycle.instance() as OptionsCycle;
     });
@@ -34,14 +34,14 @@ describe('Options cycle', () => {
     });
 
     it('should get the options as a prop', () => {
-      let optionsProp = optionsCycle.props().options;
+      const optionsProp = optionsCycle.props().options;
 
       expect(optionsProp).toBeDefined();
       expect(optionsProp).toEqual(OPTIONS);
     });
 
     it('should call prop onRender on mounting if set', () => {
-      let renderSpy = jasmine.createSpy('onRender');
+      const renderSpy = jasmine.createSpy('onRender');
 
       expect(() => optionsCycleInstance.componentWillMount()).not.toThrow();
 
@@ -52,7 +52,7 @@ describe('Options cycle', () => {
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-      let destroySpy = jasmine.createSpy('onDestroy');
+      const destroySpy = jasmine.createSpy('onDestroy');
 
       expect(() => optionsCycleInstance.componentWillUnmount()).not.toThrow();
 
@@ -81,21 +81,21 @@ describe('Options cycle', () => {
     });
 
     it('should call goToPreviousOption when clicking the previous arrow', () => {
-      let goToPreviousOptionSpy = spyOn<any>(optionsCycleInstance, 'goToPreviousOption');
+      const goToPreviousOptionSpy = spyOn<any>(optionsCycleInstance, 'goToPreviousOption');
 
       optionsCycle.find('.previous-option').simulate('click');
       expect(goToPreviousOptionSpy.calls.count()).toBe(1);
     });
 
     it('should call goToNextOption when clicking the previous arrow', () => {
-      let goToNextOptionSpy = spyOn<any>(optionsCycleInstance, 'goToNextOption');
+      const goToNextOptionSpy = spyOn<any>(optionsCycleInstance, 'goToNextOption');
 
       optionsCycle.find('.next-option').simulate('click');
       expect(goToNextOptionSpy.calls.count()).toBe(1);
     });
 
     it('should call onChange when clicking the previous or next arrow if the prop is defined', () => {
-      let onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       optionsCycle.setProps({ options: OPTIONS, onChange: onChangeSpy });
 
@@ -109,7 +109,7 @@ describe('Options cycle', () => {
     });
 
     it('should call onChange with the last option when clicking on the previous arrow if the current option is the first one', () => {
-      let onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       optionsCycle.setProps({ options: OPTIONS, onChange: onChangeSpy, currentOption: 0 });
       optionsCycle.find('.previous-option').simulate('click');
@@ -119,7 +119,7 @@ describe('Options cycle', () => {
 
     it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one',
       () => {
-        let onChangeSpy = jasmine.createSpy('onChange');
+        const onChangeSpy = jasmine.createSpy('onChange');
 
         optionsCycle.setProps({ options: OPTIONS, onChange: onChangeSpy, currentOption: 2 });
         optionsCycle.find('.previous-option').simulate('click');
@@ -128,7 +128,7 @@ describe('Options cycle', () => {
       });
 
     it('should call onChange with the first option when clicking on the next arrow if the current option is the last one', () => {
-      let onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       optionsCycle.setProps({ options: OPTIONS, onChange: onChangeSpy, currentOption: (OPTIONS.length - 1) });
       optionsCycle.find('.next-option').simulate('click');
@@ -137,7 +137,7 @@ describe('Options cycle', () => {
     });
 
     it('should call onChange with the previous option when clicking on the next arrow if the current option is not the last one', () => {
-      let onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jasmine.createSpy('onChange');
 
       optionsCycle.setProps({ options: OPTIONS, onChange: onChangeSpy, currentOption: 2 });
       optionsCycle.find('.next-option').simulate('click');
@@ -154,14 +154,14 @@ describe('Options cycle', () => {
     });
 
     it('should show the option which is at index startAt if it is defined as a prop on mount or just show the first one', () => {
-      let startAt: number = 3;
+      const startAt: number = 3;
 
       expect(optionsCycle.html()).toContain(OPTIONS[0]);
 
       optionsCycle.unmount();
       optionsCycle = mount(
         <OptionsCycle options={OPTIONS} startAt={startAt} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
 
       expect(optionsCycle.html()).toContain(OPTIONS[startAt]);

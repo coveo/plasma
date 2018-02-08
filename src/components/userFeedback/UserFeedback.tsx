@@ -20,12 +20,12 @@ export const UserFeedbackState = {
 
 export const TextColorClass = {
   default: 'text-dark-grey',
-  error: 'text-red'
+  error: 'text-red',
 };
 
 export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
   render() {
-    let style = this.getUserFeedbackStyle();
+    const style = this.getUserFeedbackStyle();
     return (
       <div className={style.classes}>
         {this.props.feedbackText}
@@ -34,15 +34,15 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
   }
 
   private getUserFeedbackStyle(): IUserFeedbackStyle {
-    let state = (this.props.state in UserFeedbackState) ? this.props.state : UserFeedbackState.VALID;
-    let displayClassOnShow = this.props.displayOnShow || DisplayClass.BLOCK;
+    const state = (this.props.state in UserFeedbackState) ? this.props.state : UserFeedbackState.VALID;
+    const displayClassOnShow = this.props.displayOnShow || DisplayClass.BLOCK;
 
-    let renderedDisplayClass = state === UserFeedbackState.VALID ? DisplayClass.HIDDEN : displayClassOnShow;
-    let renderedTextColorClass = state === UserFeedbackState.ERROR ? TextColorClass.error : TextColorClass.default;
-    let renderedExtraClasses = this.props.extraClasses || [];
+    const renderedDisplayClass = state === UserFeedbackState.VALID ? DisplayClass.HIDDEN : displayClassOnShow;
+    const renderedTextColorClass = state === UserFeedbackState.ERROR ? TextColorClass.error : TextColorClass.default;
+    const renderedExtraClasses = this.props.extraClasses || [];
 
     return {
-      classes: renderedExtraClasses.concat(renderedTextColorClass, renderedDisplayClass).join(' ')
+      classes: renderedExtraClasses.concat(renderedTextColorClass, renderedDisplayClass).join(' '),
     };
   }
 }

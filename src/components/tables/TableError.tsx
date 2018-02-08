@@ -22,11 +22,11 @@ export const ERROR_CODE_LABEL: string = 'Error code';
 export class TableError extends React.Component<ITableErrorProps, any> {
 
   render() {
-    let descriptionLabel: string = this.props.descriptionLabel || DESCRIPTION_LABEL;
-    let troubleshootingLabel: string = this.props.troubleshootingLabel || TROUBLESHOOTING_LABEL;
-    let errorCodeLabel: string = this.props.errorCodeLabel || ERROR_CODE_LABEL;
+    const descriptionLabel: string = this.props.descriptionLabel || DESCRIPTION_LABEL;
+    const troubleshootingLabel: string = this.props.troubleshootingLabel || TROUBLESHOOTING_LABEL;
+    const errorCodeLabel: string = this.props.errorCodeLabel || ERROR_CODE_LABEL;
 
-    let errorPrecision: JSX.Element = this.props.error.errorPrecision
+    const errorPrecision: JSX.Element = this.props.error.errorPrecision
       ? <div
         className='error-description error-description-precision'
         dangerouslySetInnerHTML={{ __html: this.props.error.errorPrecision }}
@@ -34,7 +34,7 @@ export class TableError extends React.Component<ITableErrorProps, any> {
       </div>
       : null;
 
-    let errorTroubleshoot: JSX.Element = this.props.error.errorTroubleshoot
+    const errorTroubleshoot: JSX.Element = this.props.error.errorTroubleshoot
       ? <div>
         <div className='label text-light-blue'>{troubleshootingLabel}</div>
         <div className='value' dangerouslySetInnerHTML={{ __html: this.props.error.errorTroubleshoot }}></div>

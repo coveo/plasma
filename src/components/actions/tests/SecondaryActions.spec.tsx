@@ -1,29 +1,29 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IActionOptions } from '../Action';
-import { SecondaryActions, ISecondaryActionsProps } from '../SecondaryActions';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { IActionOptions } from '../Action';
+import { ISecondaryActionsProps, SecondaryActions } from '../SecondaryActions';
 
 describe('Actions', () => {
-  let actions: IActionOptions[] = [{
+  const actions: IActionOptions[] = [{
     name: 'action',
     link: 'http://coveo.com',
     target: '_blank',
-    enabled: true
+    enabled: true,
   }, {
     separator: true,
-    enabled: true
+    enabled: true,
   }, {
     name: 'action2',
     trigger: jasmine.createSpy('triggerMethod'),
-    enabled: true
+    enabled: true,
   }];
 
   describe('<SecondaryActions />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <SecondaryActions actions={actions} />
+          <SecondaryActions actions={actions} />,
         );
       }).not.toThrow();
     });
@@ -37,7 +37,7 @@ describe('Actions', () => {
         <SecondaryActions
           actions={actions}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -47,7 +47,7 @@ describe('Actions', () => {
     });
 
     it('should get the actions as a prop', () => {
-      let actionsProp = secondaryActions.props().actions;
+      const actionsProp = secondaryActions.props().actions;
 
       expect(actionsProp).toBeDefined();
       expect(actionsProp.length).toBe(actions.length);

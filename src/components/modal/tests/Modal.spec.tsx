@@ -1,10 +1,10 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Modal, IModalProps } from '../Modal';
+import { IModalProps, Modal } from '../Modal';
 
 describe('Modal', () => {
-  let id: string = 'modal';
+  const id: string = 'modal';
 
   describe('<Modal />', () => {
     it('should render without errors', () => {
@@ -12,7 +12,7 @@ describe('Modal', () => {
         shallow(
           <Modal
             id={id}
-          />
+          />,
         );
       }).not.toThrow();
     });
@@ -27,7 +27,7 @@ describe('Modal', () => {
         <Modal
           id={id}
         />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       modalInstance = modal.instance() as Modal;
     });
@@ -38,7 +38,7 @@ describe('Modal', () => {
     });
 
     it('should call prop onRender on mounting if set', () => {
-      let renderSpy = jasmine.createSpy('onRender');
+      const renderSpy = jasmine.createSpy('onRender');
 
       expect(() => modalInstance.componentWillMount()).not.toThrow();
 
@@ -49,7 +49,7 @@ describe('Modal', () => {
     });
 
     it('should call prop onDestroy on unmounting if set', () => {
-      let destroySpy = jasmine.createSpy('onDestroy');
+      const destroySpy = jasmine.createSpy('onDestroy');
 
       expect(() => modalInstance.componentWillUnmount()).not.toThrow();
 
@@ -60,9 +60,9 @@ describe('Modal', () => {
     });
 
     it('should set container class when the container class is specified', () => {
-      let containerClass = 'mod-small';
-      let classes = [containerClass];
-      let container = modal.find('div').first();
+      const containerClass = 'mod-small';
+      const classes = [containerClass];
+      const container = modal.find('div').first();
       expect(container.hasClass(containerClass)).toBe(false);
 
       modal.setProps({ id, classes });
@@ -71,7 +71,7 @@ describe('Modal', () => {
     });
 
     it('should set opened class on container when isOpened is true', () => {
-      let container = modal.find('div').first();
+      const container = modal.find('div').first();
       expect(container.hasClass('opened')).toBe(false);
 
       modal.setProps({ id, isOpened: true });

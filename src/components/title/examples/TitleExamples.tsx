@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Title } from '../Title';
 import { ILinkSvgProps } from '../../svg/LinkSvg';
+import { Title } from '../Title';
 
 export class TitleExamples extends React.Component<any, any> {
 

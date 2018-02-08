@@ -1,20 +1,20 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { SetToNowButton, ISetToNowProps, SET_TO_NOW_DEFAULT_TOOLTIP } from '../SetToNowButton';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
 import { Tooltip } from '../../tooltip/Tooltip';
+import { ISetToNowProps, SET_TO_NOW_DEFAULT_TOOLTIP, SetToNowButton } from '../SetToNowButton';
 
 describe('Date picker', () => {
   const BUTTON_BASIC_PROPS: ISetToNowProps = {
-    onClick: jasmine.createSpy('onClick')
+    onClick: jasmine.createSpy('onClick'),
   };
 
   describe('<SetToNowButton />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <SetToNowButton {...BUTTON_BASIC_PROPS} />
+          <SetToNowButton {...BUTTON_BASIC_PROPS} />,
         );
       }).not.toThrow();
     });
@@ -26,7 +26,7 @@ describe('Date picker', () => {
     beforeEach(() => {
       setToNowButton = mount(
         <SetToNowButton {...BUTTON_BASIC_PROPS} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -36,7 +36,7 @@ describe('Date picker', () => {
     });
 
     it('should get what to do on click as a prop', () => {
-      let onClickProp = setToNowButton.props().onClick;
+      const onClickProp = setToNowButton.props().onClick;
 
       expect(onClickProp).toBeDefined();
     });

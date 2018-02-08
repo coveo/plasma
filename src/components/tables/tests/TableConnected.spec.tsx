@@ -1,18 +1,18 @@
-import * as React from 'react';
-import { tablePropsMock, tablePropsMockWithData, tablePossibleProps } from './TableTestCommon';
-import { TableConnected } from '../TableConnected';
-import { ITableProps, Table } from '../Table';
 import { mount } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
-import { PrimaryAction } from '../../actions/PrimaryAction';
+import * as React from 'react';
+import { Provider, Store } from 'react-redux';
 import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { PrimaryAction } from '../../actions/PrimaryAction';
 import { openDropdownSearch } from '../../dropdownSearch/DropdownSearchActions';
-import { getTableChildComponentId } from '../TableUtils';
+import { ITableProps, Table } from '../Table';
+import { TableConnected } from '../TableConnected';
 import { TableChildComponent } from '../TableConstants';
 import * as TableDataModifier from '../TableDataModifier';
+import { getTableChildComponentId } from '../TableUtils';
+import { tablePossibleProps, tablePropsMock, tablePropsMockWithData } from './TableTestCommon';
 
 describe('<TableConnected />', () => {
   let store: Store<IReactVaporState>;
@@ -105,9 +105,9 @@ describe('<TableConnected />', () => {
       const wrapper = mountComponentWithProps({ ...tablePropsMock, manual: manualSpy });
       const tableConnected = wrapper.find(Table);
 
-      let shouldResetPage = true;
-      let tableComposite1 = tablePropsMock.tableCompositeState;
-      let tableComposite2 = tablePropsMock.tableCompositeState;
+      const shouldResetPage = true;
+      const tableComposite1 = tablePropsMock.tableCompositeState;
+      const tableComposite2 = tablePropsMock.tableCompositeState;
       tableConnected.props().onModifyData(shouldResetPage, tableComposite1, tableComposite2);
       expect(manualSpy).toHaveBeenCalledTimes(1);
       expect(_.rest(manualSpy.calls.mostRecent().args)).toEqual([shouldResetPage, tableComposite1, tableComposite2]);
@@ -118,8 +118,8 @@ describe('<TableConnected />', () => {
       const tableConnected = wrapper.find(Table);
       const defaultTableStateModifierThunkSpy = spyOn(TableDataModifier, 'defaultTableStateModifierThunk').and.returnValue(_.noop);
 
-      let shouldResetPage = true;
-      let tableComposite1 = tablePropsMock.tableCompositeState;
+      const shouldResetPage = true;
+      const tableComposite1 = tablePropsMock.tableCompositeState;
       tableConnected.props().onModifyData(shouldResetPage, tableComposite1);
       expect(defaultTableStateModifierThunkSpy).toHaveBeenCalledTimes(1);
       expect(_.rest(defaultTableStateModifierThunkSpy.calls.mostRecent().args)).toEqual([shouldResetPage, tableComposite1]);

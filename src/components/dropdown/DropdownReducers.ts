@@ -1,7 +1,7 @@
+import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { DropdownActions } from './DropdownActions';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import * as _ from 'underscore';
 
 export interface IDropdownState {
   id: string;
@@ -12,7 +12,7 @@ export const dropdownInitialState: IDropdownState = { id: undefined, opened: fal
 export const dropdownsInitialState: IDropdownState[] = [];
 
 export const dropdownReducer = (state: IDropdownState = dropdownInitialState,
-  action: (IReduxAction<IReduxActionsPayload>)): IDropdownState => {
+                                action: (IReduxAction<IReduxActionsPayload>)): IDropdownState => {
   switch (action.type) {
     case DropdownActions.toggle:
       if (state.id !== action.payload.id) {
@@ -30,12 +30,12 @@ export const dropdownReducer = (state: IDropdownState = dropdownInitialState,
 
       return {
         id: state.id,
-        opened: false
+        opened: false,
       };
     case DropdownActions.add:
       return {
         id: action.payload.id,
-        opened: false
+        opened: false,
       };
     default:
       return state;
@@ -43,7 +43,7 @@ export const dropdownReducer = (state: IDropdownState = dropdownInitialState,
 };
 
 export const dropdownsReducer = (state: IDropdownState[] = dropdownsInitialState,
-  action: IReduxAction<IReduxActionsPayload>): IDropdownState[] => {
+                                 action: IReduxAction<IReduxActionsPayload>): IDropdownState[] => {
   switch (action.type) {
     case DropdownActions.toggle:
     case DropdownActions.close:
@@ -51,7 +51,7 @@ export const dropdownsReducer = (state: IDropdownState[] = dropdownsInitialState
     case DropdownActions.add:
       return [
         ...state,
-        dropdownReducer(undefined, action)
+        dropdownReducer(undefined, action),
       ];
     case DropdownActions.remove:
       return _.reject(state, (dropdown: IDropdownState) => {

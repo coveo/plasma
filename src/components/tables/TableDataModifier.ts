@@ -1,17 +1,17 @@
-import { ITableState, ITableCompositeState } from './TableReducers';
-import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent, DEFAULT_TABLE_PER_PAGE } from './TableConstants';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 import { contains } from 'underscore.string';
-import { ITableOwnProps, ITableHeadingAttribute, ITableRowData } from './Table';
-import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
-import { getTableLoadingIds, getTableChildComponentId } from './TableUtils';
-import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
-import { modifyState, ITableStateModifier } from './TableActions';
-import { addActionsToActionBar } from '../actions/ActionBarActions';
-import { unselectAllRows } from './TableRowActions';
+import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { IDispatch } from '../../utils/ReduxUtils';
+import { addActionsToActionBar } from '../actions/ActionBarActions';
+import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
+import { turnOffLoading, turnOnLoading } from '../loading/LoadingActions';
+import { ITableHeadingAttribute, ITableOwnProps, ITableRowData } from './Table';
+import { ITableStateModifier, modifyState } from './TableActions';
+import { DEFAULT_TABLE_PER_PAGE, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder } from './TableConstants';
+import { ITableCompositeState, ITableState } from './TableReducers';
+import { unselectAllRows } from './TableRowActions';
+import { getTableChildComponentId, getTableLoadingIds } from './TableUtils';
 
 export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: IDispatch) => {
   dispatch(unselectAllRows(tableOwnProps.id));

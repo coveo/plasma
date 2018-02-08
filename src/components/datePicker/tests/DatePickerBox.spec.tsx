@@ -1,28 +1,28 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { Provider } from 'react-redux';
-import { TestUtils } from '../../../utils/TestUtils';
-import { DatePickerBox, IDatePickerBoxProps } from '../DatePickerBox';
-import { CalendarConnected } from '../../calendar/CalendarConnected';
-import { DatesSelectionConnected } from '../DatesSelectionConnected';
-import { OptionPickerConnected } from '../../optionPicker/OptionPickerConnected';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import * as _ from 'underscore';
+import { TestUtils } from '../../../utils/TestUtils';
+import { CalendarConnected } from '../../calendar/CalendarConnected';
+import { OptionPickerConnected } from '../../optionPicker/OptionPickerConnected';
+import { DatePickerBox, IDatePickerBoxProps } from '../DatePickerBox';
+import { DatesSelectionConnected } from '../DatesSelectionConnected';
 
 describe('Date picker', () => {
   const DATE_PICKER_BOX_BASIC_PROPS: IDatePickerBoxProps = {
     datesSelectionBoxes: [
       {
-        title: 'The first box'
-      }
-    ]
+        title: 'The first box',
+      },
+    ],
   };
 
   describe('<DatePickerBox />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />
+          <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />,
         );
       }).not.toThrow();
     });
@@ -34,7 +34,7 @@ describe('Date picker', () => {
     beforeEach(() => {
       datePickerBox = mount(
         <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -44,7 +44,7 @@ describe('Date picker', () => {
     });
 
     it('should get the dates selection boxes as a prop', () => {
-      let datesSelectionBoxesProps = datePickerBox.props().datesSelectionBoxes;
+      const datesSelectionBoxesProps = datePickerBox.props().datesSelectionBoxes;
 
       expect(datesSelectionBoxesProps).toBeDefined();
       expect(datesSelectionBoxesProps).toEqual(DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes);
@@ -55,8 +55,8 @@ describe('Date picker', () => {
     });
 
     it('should display as many <DatesSelection /> as there are datesSelectionBoxes', () => {
-      let moreBoxesProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
-        datesSelectionBoxes: [...DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes, { title: 'other box' }]
+      const moreBoxesProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
+        datesSelectionBoxes: [...DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes, { title: 'other box' }],
       });
 
       expect(datePickerBox.find('DatesSelection').length).toBe(DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length);
@@ -67,8 +67,8 @@ describe('Date picker', () => {
     });
 
     it('should diplay a <OptionPicker /> for every dates selections box', () => {
-      let moreBoxesProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
-        datesSelectionBoxes: [...DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes, { title: 'other box' }]
+      const moreBoxesProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
+        datesSelectionBoxes: [...DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes, { title: 'other box' }],
       });
 
       expect(datePickerBox.find('OptionPicker').length).toBe(DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length);
@@ -79,8 +79,8 @@ describe('Date picker', () => {
     });
 
     it('should display anything sent as the footer prop', () => {
-      let footerClass: string = 'the-footer-added';
-      let propsWithFooter: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, { footer: <div className={footerClass}></div> });
+      const footerClass: string = 'the-footer-added';
+      const propsWithFooter: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, { footer: <div className={footerClass}></div> });
 
       expect(datePickerBox.find(`.${footerClass}`).length).toBe(0);
 
@@ -99,7 +99,7 @@ describe('Date picker', () => {
         <Provider store={TestUtils.buildStore()}>
           <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} withReduxState />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       datePickerBox = wrapper.find(DatePickerBox).first();
     });
@@ -110,7 +110,7 @@ describe('Date picker', () => {
     });
 
     it('should get withReduxState as a prop', () => {
-      let withReduxStateProp = datePickerBox.props().withReduxState;
+      const withReduxStateProp = datePickerBox.props().withReduxState;
 
       expect(withReduxStateProp).toBeDefined();
       expect(withReduxStateProp).toBe(true);

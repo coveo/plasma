@@ -1,8 +1,8 @@
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { DropdownSearch, IDropdownOption, IDropdownSearchOwnProps, IDropdownSearchProps, IDropdownSearchStateProps } from './DropdownSearch';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { DropdownSearch, IDropdownOption, IDropdownSearchOwnProps, IDropdownSearchProps, IDropdownSearchStateProps } from './DropdownSearch';
 import {
   addDropdownSearch,
   applyFilterDropdownSearch,
@@ -36,7 +36,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-  ownProps: IDropdownSearchOwnProps) => ({
+                            ownProps: IDropdownSearchOwnProps) => ({
     onMount: () => {
       dispatch(addDropdownSearch(ownProps.id, ownProps.defaultOptions, ownProps.defaultSelectedOption, ownProps.supportSingleCustomOption));
 

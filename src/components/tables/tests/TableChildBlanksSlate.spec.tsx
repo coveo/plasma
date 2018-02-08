@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { tablePropsMock } from './TableTestCommon';
-import { TableChildBlankSlate } from '../table-children/TableChildBlankSlate';
 import { mount } from 'enzyme';
+import * as React from 'react';
 import { ITableProps } from '../Table';
+import { TableChildBlankSlate } from '../table-children/TableChildBlankSlate';
 import { DEFAULT_TABLE_DATA } from '../TableConstants';
+import { tablePropsMock } from './TableTestCommon';
 
 describe('<TableChildBlankSlate />', () => {
   describe('render', () => {
@@ -43,7 +43,7 @@ describe('<TableChildBlankSlate />', () => {
           mountComponentWithProps({
             ...tablePropsMock,
             blankSlateNoResultsOnAction: { title: 'no results' },
-            tableCompositeState: { filter: 'non empty' }
+            tableCompositeState: { filter: 'non empty' },
           } as any);
         }).not.toThrow();
       });
@@ -73,7 +73,7 @@ describe('<TableChildBlankSlate />', () => {
           mountComponentWithProps({
             ...tablePropsMock,
             blankSlateNoResultsOnAction: { title: 'no results' },
-            tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] }
+            tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] },
           } as any);
         }).not.toThrow();
       });
@@ -82,7 +82,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(() => {
           mountComponentWithProps({
             ...tablePropsMock,
-            tableCompositeState: { filter: 'non empty' }
+            tableCompositeState: { filter: 'non empty' },
           } as any);
         }).not.toThrow();
       });
@@ -109,7 +109,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(() => {
           mountComponentWithProps({
             ...tablePropsMock,
-            tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] }
+            tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] },
           } as any);
         }).not.toThrow();
       });
@@ -119,7 +119,7 @@ describe('<TableChildBlankSlate />', () => {
           mountComponentWithProps({
             ...tablePropsMock,
             blankSlateOnError: { title: 'table on error' },
-            tableCompositeState: { isInError: true }
+            tableCompositeState: { isInError: true },
           } as any);
         }).not.toThrow();
       });
@@ -128,7 +128,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(() => {
           mountComponentWithProps({
             ...tablePropsMock,
-            tableCompositeState: { isInError: true }
+            tableCompositeState: { isInError: true },
           } as any);
         }).not.toThrow();
       });
@@ -162,7 +162,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
           blankSlateNoResultsOnAction: { title: blankslateTitleOnAction },
-          tableCompositeState: { filter: 'non empty' }
+          tableCompositeState: { filter: 'non empty' },
         } as any).text()).toContain(blankslateTitleOnAction);
       });
 
@@ -189,14 +189,14 @@ describe('<TableChildBlankSlate />', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
           blankSlateNoResultsOnAction: { title: blankslateTitleOnAction },
-          tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] }
+          tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] },
         } as any).text()).toContain(blankslateTitleOnAction);
       });
 
       it('should render blankSlateDefault if the table has no blankslate on action and filter is non empty', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
-          tableCompositeState: { filter: 'non empty' }
+          tableCompositeState: { filter: 'non empty' },
         } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
       });
 
@@ -217,7 +217,7 @@ describe('<TableChildBlankSlate />', () => {
       it('should render blankSlateDefault if the table has no blankslate on action and some predicates have a non default value', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
-          tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] }
+          tableCompositeState: { predicates: [{ 'attribute1': 'non default value' }] },
         } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
       });
 
@@ -226,14 +226,14 @@ describe('<TableChildBlankSlate />', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
           blankSlateOnError: { title: blankslateTitleOnAction },
-          tableCompositeState: { isInError: true }
+          tableCompositeState: { isInError: true },
         } as any).text()).toContain(blankslateTitleOnAction);
       });
 
       it('should render blankSlateDefault if the table is in error and has no blankslateOnError', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
-          tableCompositeState: { isInError: true }
+          tableCompositeState: { isInError: true },
         } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
       });
     });

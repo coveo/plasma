@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { tablePropsMock } from './TableTestCommon';
-import { TableChildLastUpdated } from '../table-children/TableChildLastUpdated';
 import { mount } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
+import * as React from 'react';
+import { Provider, Store } from 'react-redux';
 import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
 import { ITableProps } from '../Table';
+import { TableChildLastUpdated } from '../table-children/TableChildLastUpdated';
+import { tablePropsMock } from './TableTestCommon';
 
 describe('<TableChildLastUpdated />', () => {
   let store: Store<IReactVaporState>;

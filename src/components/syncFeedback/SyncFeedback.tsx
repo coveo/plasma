@@ -19,7 +19,7 @@ export const DEFAULT_SYNC_FEEDBACK_ERROR_LABEL: string = 'Changes could not be s
 
 export class SyncFeedback extends React.Component<ISyncFeedbackProps, any> {
   render() {
-    let classes = ['sync-feedback'];
+    const classes = ['sync-feedback'];
     if (this.props.state === SyncFeedbackState.ERROR) {
       classes.push('mod-error');
     } else if (this.props.state === SyncFeedbackState.SUCCESS) {

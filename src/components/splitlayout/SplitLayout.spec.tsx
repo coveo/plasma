@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { shallow } from 'enzyme';
-import { SplitLayout, ISplitLayoutProps } from './SplitLayout';
+import * as React from 'react';
 import { range } from 'underscore';
 import { JSXRenderable } from '../../utils/JSXUtils';
+import { ISplitLayoutProps, SplitLayout } from './SplitLayout';
 
 describe('SplitLayout', () => {
   const testClassesString = 'some classes';
@@ -30,7 +30,7 @@ describe('SplitLayout', () => {
         className={testClassesString}
         leftContainerClassName={testClassesString}
         rightContainerClassName={testClassesString}
-      />
+      />,
     )).not.toThrow();
   });
 
@@ -41,7 +41,7 @@ describe('SplitLayout', () => {
         className={testClassesArray}
         leftContainerClassName={testClassesArray}
         rightContainerClassName={testClassesArray}
-      />
+      />,
     )).not.toThrow();
   });
 
@@ -64,42 +64,42 @@ describe('SplitLayout', () => {
 
     it('should render with extra classes on container if passed in props as string', () => {
       const splitLayout = shallow(<SplitLayout {...basicProps} className={testClassesString} />);
-      testClassesString.split(' ').forEach(testClass => {
+      testClassesString.split(' ').forEach((testClass) => {
         expect(splitLayout.find('.split-layout').hasClass(testClass)).toBe(true);
       });
     });
 
     it('should render with extra classes on container if passed in props as array', () => {
       const splitLayout = shallow(<SplitLayout {...basicProps} className={testClassesArray} />);
-      testClassesArray.forEach(testClass => {
+      testClassesArray.forEach((testClass) => {
         expect(splitLayout.find('.split-layout').hasClass(testClass)).toBe(true);
       });
     });
 
     it('should render with extra classes on left children container if passed in props as string', () => {
       const splitLayout = shallow(<SplitLayout {...basicProps} leftContainerClassName={testClassesString} />);
-      testClassesString.split(' ').forEach(testClass => {
+      testClassesString.split(' ').forEach((testClass) => {
         expect(splitLayout.find('.column').first().hasClass(testClass)).toBe(true);
       });
     });
 
     it('should render with extra classes on left children container if passed in props as array', () => {
       const splitLayout = shallow(<SplitLayout {...basicProps} leftContainerClassName={testClassesArray} />);
-      testClassesArray.forEach(testClass => {
+      testClassesArray.forEach((testClass) => {
         expect(splitLayout.find('.column').first().hasClass(testClass)).toBe(true);
       });
     });
 
     it('should render with extra classes on right children container if passed in props as string', () => {
       const splitLayout = shallow(<SplitLayout {...basicProps} rightContainerClassName={testClassesString} />);
-      testClassesString.split(' ').forEach(testClass => {
+      testClassesString.split(' ').forEach((testClass) => {
         expect(splitLayout.find('.column').last().hasClass(testClass)).toBe(true);
       });
     });
 
     it('should render with extra classes on right children container if passed in props as array', () => {
       const splitLayout = shallow(<SplitLayout {...basicProps} rightContainerClassName={testClassesArray} />);
-      testClassesArray.forEach(testClass => {
+      testClassesArray.forEach((testClass) => {
         expect(splitLayout.find('.column').last().hasClass(testClass)).toBe(true);
       });
     });

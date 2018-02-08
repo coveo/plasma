@@ -1,8 +1,8 @@
+import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
+import { range } from 'underscore';
 import { StepProgressBar } from '../../stepProgressBar/StepProgressBar';
 import { SplitLayout } from '../SplitLayout';
-import * as loremIpsum from 'lorem-ipsum';
-import { range } from 'underscore';
 
 const exampleTextLeft = `I am a left child. ${loremIpsum({ count: 5, sentenceUpperBound: 15 })}`;
 const exampleTextRight = `I am a right child. ${loremIpsum({ count: 5, sentenceUpperBound: 15 })}`;

@@ -1,6 +1,6 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
-import { SideNavigation, ISideNavProps } from '../SideNavigation';
+import { ISideNavProps, SideNavigation } from '../SideNavigation';
 
 describe('<SideNavigation />', () => {
   let wrapper: ReactWrapper<ISideNavProps, any>;
@@ -8,7 +8,7 @@ describe('<SideNavigation />', () => {
   beforeEach(() => {
     wrapper = mount(
       <SideNavigation />,
-      { attachTo: document.getElementById('App') }
+      { attachTo: document.getElementById('App') },
     );
   });
 
@@ -20,7 +20,7 @@ describe('<SideNavigation />', () => {
   it('should render without errors', () => {
     expect(() => {
       shallow(
-        <SideNavigation />
+        <SideNavigation />,
       );
     }).not.toThrow();
   });

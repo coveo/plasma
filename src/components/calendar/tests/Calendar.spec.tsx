@@ -1,22 +1,22 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import {
-  Calendar,
-  ICalendarProps,
-  DEFAULT_DAYS,
-  DEFAULT_MONTHS,
-  DEFAULT_YEARS,
-  ICalendarSelectionRule,
-  CalendarSelectionRuleType
-} from '../Calendar';
-import { OptionsCycle, IOptionsCycleProps } from '../../optionsCycle/OptionsCycle';
-import { DateUtils } from '../../../utils/DateUtils';
-import { ICalendarDayProps, CalendarDay, IDay } from '../CalendarDay';
-import { IDatePickerState } from '../../datePicker/DatePickerReducers';
-import { DateLimits } from '../../datePicker/DatePickerActions';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
+import { DateUtils } from '../../../utils/DateUtils';
+import { DateLimits } from '../../datePicker/DatePickerActions';
+import { IDatePickerState } from '../../datePicker/DatePickerReducers';
+import { IOptionsCycleProps, OptionsCycle } from '../../optionsCycle/OptionsCycle';
+import {
+  Calendar,
+  CalendarSelectionRuleType,
+  DEFAULT_DAYS,
+  DEFAULT_MONTHS,
+  DEFAULT_YEARS,
+  ICalendarProps,
+  ICalendarSelectionRule,
+} from '../Calendar';
+import { CalendarDay, ICalendarDayProps, IDay } from '../CalendarDay';
 
 describe('Calendar', () => {
 
@@ -24,7 +24,7 @@ describe('Calendar', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Calendar />
+          <Calendar />,
         );
       }).not.toThrow();
     });
@@ -37,7 +37,7 @@ describe('Calendar', () => {
     beforeEach(() => {
       calendar = mount(
         <Calendar />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       calendarInstance = calendar.instance() as Calendar;
     });
@@ -123,7 +123,7 @@ describe('Calendar', () => {
       calendar.unmount();
       calendar = mount(
         <Calendar startingMonth={startingMonth} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
 
       expect(calendar.html()).toContain(DEFAULT_MONTHS[startingMonth]);
@@ -137,7 +137,7 @@ describe('Calendar', () => {
       calendar.unmount();
       calendar = mount(
         <Calendar startingYear={startingYear} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
 
       expect(calendar.html()).toContain(DEFAULT_YEARS[startingYear]);
@@ -145,13 +145,13 @@ describe('Calendar', () => {
 
     it('should start the week on the startingDay sent as prop or simply use the first one (assumed to be Sunday)', () => {
       const startingDay: number = 3;
-      let firstDayOfSecondWeek: number = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text());
+      let firstDayOfSecondWeek: number = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text(), 10);
 
       expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[0]);
       expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(0);
 
       calendar.setProps({ startingDay });
-      firstDayOfSecondWeek = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text());
+      firstDayOfSecondWeek = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text(), 10);
 
       expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[startingDay]);
       expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(startingDay);
@@ -162,8 +162,8 @@ describe('Calendar', () => {
     });
 
     it('should call onClick when handleClick has been called, onClick is defined and one picker is selected', () => {
-      let onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
-      let now: Date = new Date();
+      const onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
+      const now: Date = new Date();
 
       expect(() => {
         calendarInstance['handleClick'].call(calendarInstance, now);
@@ -189,7 +189,7 @@ describe('Calendar', () => {
             appliedLowerLimit: now,
             appliedUpperLimit: now,
             inputLowerLimit: now,
-            inputUpperLimit: now
+            inputUpperLimit: now,
           },
           {
             id: 'id',
@@ -202,9 +202,9 @@ describe('Calendar', () => {
             appliedLowerLimit: now,
             appliedUpperLimit: now,
             inputLowerLimit: now,
-            inputUpperLimit: now
-          }
-        ]
+            inputUpperLimit: now,
+          },
+        ],
       });
 
       calendarInstance['handleClick'].call(calendarInstance, now);
@@ -213,15 +213,15 @@ describe('Calendar', () => {
     });
 
     it('should call handleClick on <CalendarDay /> click', () => {
-      let handleClickSpy: jasmine.Spy = spyOn<any>(calendarInstance, 'handleClick');
-      let firstCalendarDay: ReactWrapper<ICalendarDayProps, any> = calendar.find(CalendarDay).first();
+      const handleClickSpy: jasmine.Spy = spyOn<any>(calendarInstance, 'handleClick');
+      const firstCalendarDay: ReactWrapper<ICalendarDayProps, any> = calendar.find(CalendarDay).first();
       firstCalendarDay.find('td').simulate('click');
 
       expect(handleClickSpy).toHaveBeenCalledWith(firstCalendarDay.props().day.date.toDate());
     });
 
     it('should have the class selecting if we are currently selecting a date', () => {
-      let now = new Date();
+      const now = new Date();
 
       expect(calendar.find('.calendar-grid').hasClass('selecting')).toBe(false);
 
@@ -238,9 +238,9 @@ describe('Calendar', () => {
             appliedLowerLimit: now,
             appliedUpperLimit: now,
             inputLowerLimit: now,
-            inputUpperLimit: now
-          }
-        ]
+            inputUpperLimit: now,
+          },
+        ],
       });
 
       expect(calendar.find('.calendar-grid').hasClass('selecting')).toBe(true);
@@ -258,21 +258,21 @@ describe('Calendar', () => {
             appliedLowerLimit: now,
             appliedUpperLimit: now,
             inputLowerLimit: now,
-            inputUpperLimit: now
-          }
-        ]
+            inputUpperLimit: now,
+          },
+        ],
       });
 
       expect(calendar.find('.calendar-grid').hasClass('selecting')).toBe(false);
     });
 
     describe('fillInDayInfos', () => {
-      let now: Date = new Date();
+      const now: Date = new Date();
       const DAY: IDay = {
         number: 2,
         isCurrentMonth: true,
         isToday: false,
-        date: moment(now)
+        date: moment(now),
       };
       const CALENDAR_SELECTION: IDatePickerState = {
         id: 'id',
@@ -285,36 +285,36 @@ describe('Calendar', () => {
         appliedLowerLimit: now,
         appliedUpperLimit: now,
         inputLowerLimit: now,
-        inputUpperLimit: now
+        inputUpperLimit: now,
       };
       const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
         {
           test: (date: Date) => date >= new Date(), // You cannot select a date in the past
-          isFor: CalendarSelectionRuleType.all
+          isFor: CalendarSelectionRuleType.all,
         },
         {
           test: (date: Date) => date.getDay() !== 6, // You cannot start your selection on a Saturday
-          isFor: CalendarSelectionRuleType.lower
+          isFor: CalendarSelectionRuleType.lower,
         },
         {
           test: (date: Date) => date.getDay() !== 0, // You cannot end your selection on a Sunday
-          isFor: CalendarSelectionRuleType.upper
+          isFor: CalendarSelectionRuleType.upper,
         },
         {
           test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') >= 0, // The end of your selection cannot be before the start of your selection
-          isFor: CalendarSelectionRuleType.range
+          isFor: CalendarSelectionRuleType.range,
         },
         {
           test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') <= 7, // You cannot select more than 7 days at a time
-          isFor: CalendarSelectionRuleType.range
-        }
+          isFor: CalendarSelectionRuleType.range,
+        },
       ];
       let day: IDay;
 
       beforeEach(() => {
         calendar.setProps({
           calendarSelection: [CALENDAR_SELECTION],
-          selectionRules: CALENDAR_SELECTION_RULES
+          selectionRules: CALENDAR_SELECTION_RULES,
         });
 
         day = calendarInstance.fillInDayInfos(_.extend({}, DAY));
@@ -339,7 +339,7 @@ describe('Calendar', () => {
       });
 
       it('should return day isLowerLimit if the selection is a range and starts on that day', () => {
-        let lowerLimitDay: moment.Moment = moment(now).subtract(1, 'day');
+        const lowerLimitDay: moment.Moment = moment(now).subtract(1, 'day');
 
         expect(day.isLowerLimit).toBeFalsy();
 
@@ -348,9 +348,9 @@ describe('Calendar', () => {
 
         expect(day.isLowerLimit).toBe(true);
 
-        let selectionNoRange: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { isRange: false });
+        const selectionNoRange: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { isRange: false });
         calendar.setProps({
-          calendarSelection: [selectionNoRange]
+          calendarSelection: [selectionNoRange],
         });
         firstDay = _.extend({}, DAY, { date: lowerLimitDay });
         day = calendarInstance.fillInDayInfos(firstDay);
@@ -359,7 +359,7 @@ describe('Calendar', () => {
       });
 
       it('should return day isUpperLimit if the selection is a range and ends on that day', () => {
-        let upperLimitDay: moment.Moment = moment(now).add(1, 'day');
+        const upperLimitDay: moment.Moment = moment(now).add(1, 'day');
 
         expect(day.isUpperLimit).toBeFalsy();
 
@@ -368,9 +368,9 @@ describe('Calendar', () => {
 
         expect(day.isUpperLimit).toBe(true);
 
-        let selectionNoRange: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { isRange: false });
+        const selectionNoRange: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { isRange: false });
         calendar.setProps({
-          calendarSelection: [selectionNoRange]
+          calendarSelection: [selectionNoRange],
         });
         lastDay = _.extend({}, DAY, { date: upperLimitDay });
         day = calendarInstance.fillInDayInfos(lastDay);
@@ -380,15 +380,15 @@ describe('Calendar', () => {
 
       it('should not change the day values set by a selection if another selection does not go through that day', () => {
         let limitDay: IDay = _.extend({}, DAY, { date: moment(now).add(1, 'day') });
-        let selectionAll: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { lowerLimit: CALENDAR_SELECTION.upperLimit });
-        let selectionNone: IDatePickerState = _.extend({}, CALENDAR_SELECTION, {
+        const selectionAll: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { lowerLimit: CALENDAR_SELECTION.upperLimit });
+        const selectionNone: IDatePickerState = _.extend({}, CALENDAR_SELECTION, {
           lowerLimit: moment(now).subtract(20, 'day').toDate(),
           upperLimit: moment(now).subtract(10, 'day').toDate(),
-          color: 'not any'
+          color: 'not any',
         });
 
         calendar.setProps({
-          calendarSelection: [selectionNone, selectionAll]
+          calendarSelection: [selectionNone, selectionAll],
         });
         day = calendarInstance.fillInDayInfos(limitDay);
 
@@ -398,7 +398,7 @@ describe('Calendar', () => {
         expect(day.color).toBe(selectionAll.color);
 
         calendar.setProps({
-          calendarSelection: [selectionAll, selectionNone]
+          calendarSelection: [selectionAll, selectionNone],
         });
         limitDay = _.extend({}, DAY, { date: moment(now).add(1, 'day') });
         day = calendarInstance.fillInDayInfos(limitDay);
@@ -410,8 +410,8 @@ describe('Calendar', () => {
       });
 
       it('should return day isSelectable if the day comes after today', () => {
-        let pastDay: IDay = _.extend({}, DAY, { date: moment().subtract(1, 'day') });
-        let futureDay: IDay = _.extend({}, DAY, { date: moment().add(1, 'day') });
+        const pastDay: IDay = _.extend({}, DAY, { date: moment().subtract(1, 'day') });
+        const futureDay: IDay = _.extend({}, DAY, { date: moment().add(1, 'day') });
 
         day = calendarInstance.fillInDayInfos(pastDay);
 
@@ -428,9 +428,9 @@ describe('Calendar', () => {
           : moment().add(1, 'days');
 
         it('should return day isSelectable if the day is not a Saturday and selecting lower limit', () => {
-          let otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
-          let saturday: IDay = _.extend({}, DAY, { date: moment().endOf('week') });
-          let selectionLowerLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.lower });
+          const otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
+          const saturday: IDay = _.extend({}, DAY, { date: moment().endOf('week') });
+          const selectionLowerLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.lower });
 
           day = calendarInstance.fillInDayInfos(otherDay);
 
@@ -442,7 +442,7 @@ describe('Calendar', () => {
 
           calendar.setProps({
             calendarSelection: [selectionLowerLimit],
-            selectionRules: CALENDAR_SELECTION_RULES
+            selectionRules: CALENDAR_SELECTION_RULES,
           });
 
           day = calendarInstance.fillInDayInfos(otherDay);
@@ -455,9 +455,9 @@ describe('Calendar', () => {
         });
 
         it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
-          let otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
-          let sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
-          let selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
+          const otherDay: IDay = _.extend({}, DAY, { date: notSaturdayOrSunday });
+          const sunday: IDay = _.extend({}, DAY, { date: moment().endOf('week').add(1, 'week') });
+          const selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, { selected: DateLimits.upper });
 
           day = calendarInstance.fillInDayInfos(otherDay);
 
@@ -469,7 +469,7 @@ describe('Calendar', () => {
 
           calendar.setProps({
             calendarSelection: [selectionUpperLimit],
-            selectionRules: CALENDAR_SELECTION_RULES
+            selectionRules: CALENDAR_SELECTION_RULES,
           });
 
           day = calendarInstance.fillInDayInfos(otherDay);

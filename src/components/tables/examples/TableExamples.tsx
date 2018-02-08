@@ -1,51 +1,51 @@
-import { ITableOwnProps } from '../Table';
-import { TableConnected } from '../TableConnected';
-import { defaultTableStateModifier, dispatchPreTableStateModification, dispatchPostTableStateModification } from '../TableDataModifier';
+import * as $ from 'jquery';
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as moment from 'moment';
-import { ITableData, ITableState, ITablesState, ITableCompositeState } from '../TableReducers';
-import { modifyState, setIsInError } from '../TableActions';
+import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { IData, ITableRowData } from '../Table';
+import { ITableOwnProps } from '../Table';
+import { modifyState, setIsInError } from '../TableActions';
+import { TableConnected } from '../TableConnected';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
-import * as $ from 'jquery';
-import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
 import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
+import { defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification } from '../TableDataModifier';
+import { ITableCompositeState, ITableData, ITablesState, ITableState } from '../TableReducers';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 const generateDate = (start: Date, end: Date) =>
   moment(start.getTime() + Math.random() * (end.getTime() - start.getTime())).format('YYYY-MM-DD hh:mm:ss');
 
-const simplestTableDataById = _.range(0, 5).reduce((obj, number) => ({
+const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
   ...obj,
-  ['row' + number]: {
-    id: 'row' + number,
+  ['row' + num]: {
+    id: 'row' + num,
     attribute1: generateText(),
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
     attribute5: generateDate(moment().subtract(1, 'month').toDate(), moment().endOf('day').toDate()),
-  }
+  },
 }), {} as ITableRowData);
 
-const tableDataById = _.range(0, 100).reduce((obj, number) => ({
+const tableDataById = _.range(0, 100).reduce((obj, num) => ({
   ...obj,
-  ['row' + number]: {
-    id: 'row' + number,
+  ['row' + num]: {
+    id: 'row' + num,
     attribute1: generateText(),
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
-  }
+  },
 }), {} as ITableRowData);
 
 const perPageNumbers = [5, 10, 20];
 
 const predicateOptionsAttribute4 = [
   { value: TABLE_PREDICATE_DEFAULT_VALUE },
-  ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute4 }], [])
+  ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, { value: tableDataById[id].attribute4 }], []),
 ].slice(0, 4);
 const predicateOptionsAttribute3 = [
   { value: TABLE_PREDICATE_DEFAULT_VALUE },
@@ -71,19 +71,19 @@ const tableData: ITableData = {
 const buildNewTableStateManually = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState, tableOwnProps: ITableOwnProps): ITableState => {
   const totalEntries = JSON.parse(data).count;
   const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
-  const newTableData = JSON.parse(data).entries.reduce((tableData: ITableData, entry: any, arr: any[]) => {
+  const newTableData = JSON.parse(data).entries.reduce((finalTableData: ITableData, entry: any, arr: any[]) => {
     return {
       byId: {
-        ...(tableData.byId || {}),
+        ...(finalTableData.byId || {}),
         [entry.API]: {
           id: entry.API,
           attribute1: entry.API,
           attribute3: entry.Category,
           attribute4: entry.Description,
-        }
+        },
       },
-      allIds: [...tableData.allIds, entry.API],
-      displayedIds: [...tableData.displayedIds, entry.API],
+      allIds: [...finalTableData.allIds, entry.API],
+      displayedIds: [...finalTableData.displayedIds, entry.API],
       totalEntries: totalEntries,
       totalPages: totalPages,
     };
@@ -96,16 +96,16 @@ const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean
     const currentTableState = getState().tables[tableOwnProps.id];
     dispatchPreTableStateModification(tableOwnProps, dispatch);
     $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')
-      .done(data => {
+      .done((data) => {
         dispatch(
           modifyState(
             tableOwnProps.id,
             (tableState: ITableState) => buildNewTableStateManually(data, currentTableState, tableCompositeState, tableOwnProps),
             shouldResetPage,
-          )
+          ),
         );
       })
-      .fail(error => {
+      .fail((error) => {
         dispatch(setIsInError(tableOwnProps.id, true));
         dispatch(modifyState(
           tableOwnProps.id,

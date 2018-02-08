@@ -1,7 +1,7 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 import { DropdownSearch, IDropdownOption, IDropdownSearchProps } from '../DropdownSearch';
 import { MultiselectInput } from './MultiSelectInput';
-import * as _ from 'underscore';
 
 export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps {
   displayedOptions: IDropdownOption[];

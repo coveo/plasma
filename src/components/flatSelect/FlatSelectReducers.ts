@@ -1,5 +1,5 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
 import * as _ from 'underscore';
+import { IReduxAction } from '../../utils/ReduxUtils';
 import { FlatSelectActions, IFlatSelectActionPayload } from './FlatSelectActions';
 
 export interface IFlatSelectState {
@@ -11,7 +11,7 @@ export const flatSelectInitialState: IFlatSelectState = { id: undefined, selecte
 export const flatSelectsInitialState: IFlatSelectState[] = [];
 
 export const flatSelectReducer = (state: IFlatSelectState = flatSelectInitialState,
-  action: (IReduxAction<IFlatSelectActionPayload>)): IFlatSelectState => {
+                                  action: (IReduxAction<IFlatSelectActionPayload>)): IFlatSelectState => {
   switch (action.type) {
     case FlatSelectActions.select:
       return {
@@ -26,7 +26,7 @@ export const flatSelectReducer = (state: IFlatSelectState = flatSelectInitialSta
 };
 
 export const flatSelectsReducer = (state: IFlatSelectState[] = flatSelectsInitialState,
-  action: IReduxAction<IFlatSelectActionPayload>): IFlatSelectState[] => {
+                                   action: IReduxAction<IFlatSelectActionPayload>): IFlatSelectState[] => {
   switch (action.type) {
     case FlatSelectActions.select:
       return state.map((flatSelect: IFlatSelectState) => {

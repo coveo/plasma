@@ -1,26 +1,26 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store, Provider } from 'react-redux';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { ICalendarProps, Calendar, MONTH_PICKER_ID, YEAR_PICKER_ID } from '../Calendar';
-import { CalendarConnected } from '../CalendarConnected';
-import { changeOptionsCycle } from '../../optionsCycle/OptionsCycleActions';
-import { OptionsCycleConnected } from '../../optionsCycle/OptionsCycleConnected';
-import { DateUtils } from '../../../utils/DateUtils';
-import {
-  addDatePicker,
-  selectDate,
-  changeDatePickerUpperLimit,
-  changeDatePickerLowerLimit,
-  DateLimits
-} from '../../datePicker/DatePickerActions';
-import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
-import * as _ from 'underscore';
 import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider, Store } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { DateUtils } from '../../../utils/DateUtils';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import {
+  addDatePicker,
+  changeDatePickerLowerLimit,
+  changeDatePickerUpperLimit,
+  DateLimits,
+  selectDate,
+} from '../../datePicker/DatePickerActions';
 import { IDatePickerState } from '../../datePicker/DatePickerReducers';
+import { addOptionPicker, changeOptionPicker } from '../../optionPicker/OptionPickerActions';
+import { changeOptionsCycle } from '../../optionsCycle/OptionsCycleActions';
+import { OptionsCycleConnected } from '../../optionsCycle/OptionsCycleConnected';
+import { Calendar, ICalendarProps, MONTH_PICKER_ID, YEAR_PICKER_ID } from '../Calendar';
+import { CalendarConnected } from '../CalendarConnected';
 
 describe('Calendar', () => {
   const CALENDAR_ID: string = 'calendar';
@@ -33,12 +33,12 @@ describe('Calendar', () => {
     let calendar: ReactWrapper<ICalendarProps, any>;
     let store: Store<IReactVaporState>;
 
-    const mountComponent = (props: Object = {}) => {
+    const mountComponent = (props = {}) => {
       wrapper = mount(
         <Provider store={store}>
           <CalendarConnected id={CALENDAR_ID} {...props} />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       calendar = wrapper.find(Calendar).first();
     };
@@ -164,8 +164,8 @@ describe('Calendar', () => {
     });
 
     it('should unselected any option from the option picker when calling onClick', () => {
-      let pickerSelected: string = 'something-selected';
-      let pickerLabelSelected: string = 'the label';
+      const pickerSelected: string = 'something-selected';
+      const pickerLabelSelected: string = 'the label';
 
       store.dispatch(addOptionPicker(PICKER_ID));
       store.dispatch(changeOptionPicker(PICKER_ID, pickerLabelSelected, pickerSelected));
@@ -181,8 +181,8 @@ describe('Calendar', () => {
 
     it('should change the upper limit to the end of the day selected if the onClick was called on an upper limit',
       () => {
-        let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
-        let newLimit: Date = moment(new Date()).add(5, 'day').toDate();
+        const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+        const newLimit: Date = moment(new Date()).add(5, 'day').toDate();
 
         store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
         store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
@@ -196,8 +196,8 @@ describe('Calendar', () => {
       });
 
     it('should change the lower limit if the onClick was called on a lower limit', () => {
-      let currentLowerLimit: Date = moment(new Date()).add(10, 'day').toDate();
-      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
+      const currentLowerLimit: Date = moment(new Date()).add(10, 'day').toDate();
+      const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
       store.dispatch(changeDatePickerLowerLimit(PICKER_ID, currentLowerLimit));
@@ -210,8 +210,8 @@ describe('Calendar', () => {
     });
 
     it('should change the upper limit if the onClick was called on a lower limit and isLinkedToDateRange prop is false', () => {
-      let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
-      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
+      const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+      const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       mountComponent({ isLinkedToDateRange: false });
       store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
@@ -225,8 +225,8 @@ describe('Calendar', () => {
     });
 
     it('should set the upper limit to undefined if onClick was called on a lower limit and isLinkedToDateRange prop is undefined', () => {
-      let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
-      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
+      const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+      const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       mountComponent({ isLinkedToDateRange: undefined });
       store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
@@ -240,8 +240,8 @@ describe('Calendar', () => {
     });
 
     it('should not change the upper limit if the onClick was called on a lower limit and isLinkedToDateRange prop is true', () => {
-      let currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
-      let newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
+      const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+      const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
       mountComponent({ isLinkedToDateRange: true });
       store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
@@ -255,9 +255,9 @@ describe('Calendar', () => {
     });
 
     it('should change the selected month and year if one of the calendar selection changed a limit', () => {
-      let secondYear: number = 1;
-      let monthId: string = CALENDAR_ID + MONTH_PICKER_ID;
-      let yearId: string = CALENDAR_ID + YEAR_PICKER_ID;
+      const secondYear: number = 1;
+      const monthId: string = CALENDAR_ID + MONTH_PICKER_ID;
+      const yearId: string = CALENDAR_ID + YEAR_PICKER_ID;
 
       store.dispatch(changeOptionsCycle(monthId, 13));
       store.dispatch(changeOptionsCycle(yearId, secondYear));
