@@ -29,7 +29,8 @@ export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Ele
     blankSlatePropsToUse = blankSlateOnError || blankSlateDefault;
   } else if (tableCompositeState.filter
     || _.some(tableCompositeState.predicates, (value: any) => !_.isUndefined(value) && value !== TABLE_PREDICATE_DEFAULT_VALUE)
-    || tableCompositeState.from || tableCompositeState.to) {
+    || tableCompositeState.from
+    || tableCompositeState.to) {
     blankSlatePropsToUse = blankSlateNoResultsOnAction || blankSlateDefault;
   } else {
     blankSlatePropsToUse = blankSlateDefault;

@@ -29,9 +29,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
   const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
   const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, ownProps.id)) || [];
-  const datePickerState: IDatePickerState = tableState && _.find(state.datePickers, (datePicker: IDatePickerState) => {
-    return datePicker.id, datePicker.id.indexOf(tableState.datePickerId) === 0;
-  });
+  const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, { id: tableState.datePickerRangeId });
 
   return {
     tableCompositeState: {

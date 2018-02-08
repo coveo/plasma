@@ -90,8 +90,7 @@ export const applyDatePickerOnDisplayedIds = (
   const { datePicker } = tableOwnProps;
   if (from && to && datePicker && datePicker.attributeValue) {
     nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean => {
-      const rowDate = moment(tableDataById[dataId][datePicker.attributeValue]).toDate();
-      return rowDate >= from && rowDate <= to;
+      return moment(tableDataById[dataId][datePicker.attributeValue]).isBetween(from, to);
     });
   }
 
