@@ -26,7 +26,6 @@ const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
-    attribute5: generateDate(moment().subtract(1, 'month').toDate(), moment().endOf('day').toDate()),
   },
 }), {} as ITableRowData);
 
@@ -38,6 +37,7 @@ const tableDataById = _.range(0, 100).reduce((obj, num) => ({
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
+    attribute5: generateDate(moment().subtract(2, 'week').toDate(), moment().endOf('day').toDate()),
   },
 }), {} as ITableRowData);
 
@@ -216,7 +216,7 @@ export class TableExamples extends React.Component<any, any> {
           </label>
           <TableConnected
             id={_.uniqueId('react-vapor-table')}
-            initialTableData={simplestTableData}
+            initialTableData={tableData}
             headingAttributes={[
               {
                 attributeName: 'attribute5',
@@ -231,12 +231,24 @@ export class TableExamples extends React.Component<any, any> {
                 titleFormatter: _.identity,
               },
             ]}
+            filter
+            getActions={(rowData: IData) => ([
+              {
+                name: 'Link to Coveo',
+                link: 'http://coveo.com',
+                target: '_blank',
+                icon: 'exit',
+                primary: true,
+                enabled: true,
+              },
+            ])}
             datePicker={{
               datesSelectionBoxes: SELECTION_BOXES_LONG,
               attributeValue: 'attribute5',
             }}
             blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
+            navigation={{ perPageNumbers }}
           />
         </div>
 
