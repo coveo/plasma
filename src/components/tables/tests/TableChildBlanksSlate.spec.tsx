@@ -53,7 +53,7 @@ describe('<TableChildBlankSlate />', () => {
           mountComponentWithProps({
             ...tablePropsMock,
             blankSlateNoResultsOnAction: { title: 'no results' },
-            tableCompositeState: { from: Date.now() }
+            tableCompositeState: { from: Date.now() },
           } as any);
         }).not.toThrow();
       });
@@ -63,7 +63,7 @@ describe('<TableChildBlankSlate />', () => {
           mountComponentWithProps({
             ...tablePropsMock,
             blankSlateNoResultsOnAction: { title: 'no results' },
-            tableCompositeState: { to: Date.now() }
+            tableCompositeState: { to: Date.now() },
           } as any);
         }).not.toThrow();
       });
@@ -91,7 +91,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(() => {
           mountComponentWithProps({
             ...tablePropsMock,
-            tableCompositeState: { from: Date.now() }
+            tableCompositeState: { from: Date.now() },
           } as any);
         }).not.toThrow();
       });
@@ -100,7 +100,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(() => {
           mountComponentWithProps({
             ...tablePropsMock,
-            tableCompositeState: { to: Date.now() }
+            tableCompositeState: { to: Date.now() },
           } as any);
         }).not.toThrow();
       });
@@ -171,7 +171,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
           blankSlateNoResultsOnAction: { title: blankslateTitleOnAction },
-          tableCompositeState: { from: Date.now() }
+          tableCompositeState: { from: Date.now() },
         } as any).text()).toContain(blankslateTitleOnAction);
       });
 
@@ -180,7 +180,7 @@ describe('<TableChildBlankSlate />', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
           blankSlateNoResultsOnAction: { title: blankslateTitleOnAction },
-          tableCompositeState: { to: Date.now() }
+          tableCompositeState: { to: Date.now() },
         } as any).text()).toContain(blankslateTitleOnAction);
       });
 
@@ -203,14 +203,14 @@ describe('<TableChildBlankSlate />', () => {
       it('should render blankSlateDefault if the table has no blankslate on action and from (datePicker) is non empty', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
-          tableCompositeState: { from: Date.now() }
+          tableCompositeState: { from: Date.now() },
         } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
       });
 
       it('should render blankSlateDefault if the table has no blankslate on action and to (datePicker) is non empty', () => {
         expect(mountComponentWithProps({
           ...tablePropsMock,
-          tableCompositeState: { to: Date.now() }
+          tableCompositeState: { to: Date.now() },
         } as any).text()).toContain(tablePropsMock.blankSlateDefault.title);
       });
 

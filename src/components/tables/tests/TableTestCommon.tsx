@@ -1,9 +1,9 @@
-import { internet, date } from 'faker';
+import { date, internet } from 'faker';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IActionOptions } from '../../actions/Action';
+import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IData, ITableProps } from '../Table';
 import { DEFAULT_TABLE_DATA } from '../TableConstants';
 

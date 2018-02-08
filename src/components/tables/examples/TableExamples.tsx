@@ -1,16 +1,16 @@
 import * as $ from 'jquery';
 import * as loremIpsum from 'lorem-ipsum';
+import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
-import * as moment from 'moment';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
+import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { IData, ITableRowData } from '../Table';
 import { ITableOwnProps } from '../Table';
+import { IData, ITableRowData } from '../Table';
 import { modifyState, setIsInError } from '../TableActions';
 import { TableConnected } from '../TableConnected';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
-import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification } from '../TableDataModifier';
 import { ITableCompositeState, ITableData, ITablesState, ITableState } from '../TableReducers';
 

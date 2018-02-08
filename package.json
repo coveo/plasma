@@ -22,7 +22,7 @@
   "scripts": {
     "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
     "docs": "gulp docs",
-    "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js",
+    "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js docs/**/*.js",
     "build": "gulp",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",

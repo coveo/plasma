@@ -7,6 +7,7 @@ import { IDispatch } from '../../utils/ReduxUtils';
 import { ReduxUtils } from '../../utils/ReduxUtils';
 import { IActionOptions } from '../actions/Action';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
+import { IDatePickerState } from '../datePicker/DatePickerReducers';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { closeDropdownSearch, selectOptionDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
 import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
@@ -18,7 +19,6 @@ import { addTable, removeTable } from './TableActions';
 import { TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent } from './TableConstants';
 import { defaultTableStateModifierThunk } from './TableDataModifier';
 import { ITableHeaderCellState } from './TableHeaderCellReducers';
-import { IDatePickerState } from '../datePicker/DatePickerReducers';
 import { ITableCompositeState, ITableState } from './TableReducers';
 import { getTableChildComponentId } from './TableUtils';
 

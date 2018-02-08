@@ -1,5 +1,5 @@
-import * as _ from 'underscore';
 import * as moment from 'moment';
+import * as _ from 'underscore';
 import { contains } from 'underscore.string';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { IDispatch } from '../../utils/ReduxUtils';

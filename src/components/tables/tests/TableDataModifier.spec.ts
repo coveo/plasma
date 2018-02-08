@@ -1,13 +1,14 @@
-import * as _ from 'underscore';
 import * as moment from 'moment';
+import * as _ from 'underscore';
 import { addActionsToActionBar } from '../../actions/ActionBarActions';
+import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { changeLastUpdated } from '../../lastUpdated/LastUpdatedActions';
 import { turnOffLoading, turnOnLoading } from '../../loading/LoadingActions';
 import { TableActions } from '../TableActions';
 import { TableChildComponent, TableSortingOrder } from '../TableConstants';
 import {
-  applyFilterOnDisplayedIds,
   applyDatePickerOnDisplayedIds,
+  applyFilterOnDisplayedIds,
   applyPaginationOnDisplayedIds,
   applyPredicatesOnDisplayedIds,
   applySortOnDisplayedIds,
@@ -18,7 +19,6 @@ import {
 } from '../TableDataModifier';
 import { unselectAllRows } from '../TableRowActions';
 import { getTableChildComponentId, getTableLoadingIds } from '../TableUtils';
-import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { predictableData, tableOwnPropsMock, tablePropsMockWithData } from './TableTestCommon';
 
 describe('TableDataModifier', () => {
