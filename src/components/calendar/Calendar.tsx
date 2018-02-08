@@ -152,8 +152,8 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         && dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
 
       day.isSelected = isSelected || day.isSelected;
-      day.isLowerLimit = calendarSelection.isRange && !dayStart.diff(selectionStart) || day.isLowerLimit;
-      day.isUpperLimit = calendarSelection.isRange && !dayStart.diff(selectionEnd) || day.isUpperLimit;
+      day.isLowerLimit = calendarSelection.isRange && !dayStart.diff(selectionStart, 'day') || day.isLowerLimit;
+      day.isUpperLimit = calendarSelection.isRange && !dayStart.diff(selectionEnd, 'day') || day.isUpperLimit;
       day.color = isSelected ? calendarSelection.color : day.color;
 
       _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {

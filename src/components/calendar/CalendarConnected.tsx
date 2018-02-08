@@ -14,7 +14,7 @@ import {
   resetDatePickers,
   selectDate,
 } from '../datePicker/DatePickerActions';
-import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
+import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
 import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   ownProps: ICalendarOwnProps): ICalendarDispatchProps => ({
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
       dispatch(selectDate(pickerId, ''));
-      dispatch(changeOptionPicker(pickerId, '', ''));
+      dispatch(resetOptionPickers(pickerId));
       if (!value) {
         dispatch(resetDatePickers(pickerId));
       } else {
