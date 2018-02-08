@@ -20,6 +20,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   extraDropdownClasses?: string[];
   extraDropdownToggleClasses?: string[];
   renderDatePickerWhenClosed?: boolean;
+  attributeName?: string;
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {

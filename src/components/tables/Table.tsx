@@ -52,11 +52,6 @@ export interface ITablePredicate {
   attributeNameFormatter?: IAttributeNameOrValueFormatter;
 }
 
-export interface ITableDatePicker extends IDatePickerDropdownProps {
-  // If the table is not manual, tells which attribute should be used to filter dates
-  attributeValue?: string;
-}
-
 export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBodyInheritedFromTableProps {
   id: string;
   blankSlateDefault: IBlankSlateProps;
@@ -65,7 +60,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
   actionBar?: true | IActionBarProps;
   blankSlateNoResultsOnAction?: IBlankSlateProps;
   blankSlateOnError?: IBlankSlateProps;
-  datePicker?: ITableDatePicker;
+  datePicker?: IDatePickerDropdownProps;
   filter?: true | IFilterBoxProps;
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   predicates?: ITablePredicate[];
