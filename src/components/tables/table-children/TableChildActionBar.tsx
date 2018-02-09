@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { humanize } from 'underscore.string';
 import { ActionBarConnected } from '../../actions/ActionBarConnected';
+import { DatePickerDropdownConnected } from '../../datePicker/DatePickerDropdownConnected';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
 import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
@@ -14,7 +15,7 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
     return null;
   }
 
-  const { predicates } = props;
+  const { predicates, datePicker } = props;
   const actionBar = _.isBoolean(props.actionBar) ? {} : props.actionBar;
   const filter = _.isBoolean(props.filter) ? {} : props.filter;
 
@@ -59,12 +60,26 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
     )
     : null;
 
+  const datePickerConnected: JSX.Element = actionBar && datePicker
+    ? (
+      <div className='coveo-table-actions'>
+        <DatePickerDropdownConnected
+          {...datePicker}
+          id={getTableChildComponentId(props.id, TableChildComponent.DATEPICKER)}
+          key={getTableChildComponentId(props.id, TableChildComponent.DATEPICKER)}
+          onRight
+        />
+      </div>
+    )
+    : null;
+
   return (
     <ActionBarConnected
       {...actionBar}
       id={getTableChildComponentId(props.id, TableChildComponent.ACTION_BAR)}>
       {predicatesConnected}
       {filterBoxConnected}
+      {datePickerConnected}
     </ActionBarConnected>
   );
 };

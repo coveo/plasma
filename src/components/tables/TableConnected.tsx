@@ -7,6 +7,7 @@ import { IDispatch } from '../../utils/ReduxUtils';
 import { ReduxUtils } from '../../utils/ReduxUtils';
 import { IActionOptions } from '../actions/Action';
 import { addActionsToActionBar } from '../actions/ActionBarActions';
+import { IDatePickerState } from '../datePicker/DatePickerReducers';
 import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
 import { closeDropdownSearch, selectOptionDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
 import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
@@ -28,6 +29,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
   const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
   const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, ownProps.id)) || [];
+  const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, { id: tableState.datePickerRangeId });
 
   return {
     tableCompositeState: {
@@ -51,6 +53,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
           [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
         };
       }, {}),
+      from: datePickerState && datePickerState.appliedLowerLimit,
+      to: datePickerState && datePickerState.appliedUpperLimit,
     } as ITableCompositeState,
   };
 };

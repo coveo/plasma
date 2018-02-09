@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import * as _ from 'underscore';
 import { contains } from 'underscore.string';
 import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
@@ -79,6 +80,23 @@ export const applyFilterOnDisplayedIds = (
   return nextDisplayedIds;
 };
 
+export const applyDatePickerOnDisplayedIds = (
+  nextDisplayedIds: string[],
+  tableDataById: ITableRowData,
+  tableCompositeState: ITableCompositeState,
+  tableOwnProps: ITableOwnProps,
+): string[] => {
+  const { from, to } = tableCompositeState;
+  const { datePicker } = tableOwnProps;
+  if (from && to && datePicker && datePicker.attributeName) {
+    nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean =>
+      moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to),
+    );
+  }
+
+  return nextDisplayedIds;
+};
+
 export const applySortOnDisplayedIds = (
   nextDisplayedIds: string[],
   tableDataById: ITableRowData,
@@ -124,6 +142,7 @@ export const defaultTableStateModifier = (
 
     nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
     nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+    nextDisplayedIds = applyDatePickerOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
 
     const totalEntries = nextDisplayedIds.length;
     const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));

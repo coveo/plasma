@@ -6,6 +6,7 @@ import { IThunkAction } from '../../utils/ReduxUtils';
 import { IActionOptions } from '../actions/Action';
 import { IActionBarProps } from '../actions/ActionBar';
 import { IBlankSlateProps } from '../blankSlate/BlankSlate';
+import { IDatePickerDropdownProps } from '../datePicker/DatePickerDropdown';
 import { IDropdownOption, IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
 import { IFilterBoxProps } from '../filterBox/FilterBox';
 import { INavigationChildrenProps } from '../navigation/Navigation';
@@ -59,6 +60,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
   actionBar?: true | IActionBarProps;
   blankSlateNoResultsOnAction?: IBlankSlateProps;
   blankSlateOnError?: IBlankSlateProps;
+  datePicker?: IDatePickerDropdownProps;
   filter?: true | IFilterBoxProps;
   filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
   predicates?: ITablePredicate[];
@@ -182,6 +184,8 @@ export class Table extends React.Component<ITableProps, {}> {
         currentTableCompositeState.predicates,
         (attributeValue: any, attributeName: string) => attributeValue !== nextTableCompositeState.predicates[attributeName],
       )
+      || currentTableCompositeState.from !== nextTableCompositeState.from
+      || currentTableCompositeState.to !== nextTableCompositeState.to
     );
   }
 
