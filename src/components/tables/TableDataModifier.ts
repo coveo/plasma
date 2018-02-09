@@ -89,9 +89,9 @@ export const applyDatePickerOnDisplayedIds = (
   const { from, to } = tableCompositeState;
   const { datePicker } = tableOwnProps;
   if (from && to && datePicker && datePicker.attributeName) {
-    nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean => {
-      return moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to);
-    });
+    nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean => 
+      moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to)
+    );
   }
 
   return nextDisplayedIds;

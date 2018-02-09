@@ -222,7 +222,7 @@ describe('TableDataModifier', () => {
         [...displayedIds],
         data.byId,
         { ...tableCompositeState, from, to },
-        { ...tablePropsMockWithData, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'lastLogin' } },
+        { ...tablePropsMockWithData, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'lastLogin' } },
       )).toEqual([predictableData.id]);
     });
   });

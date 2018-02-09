@@ -108,7 +108,7 @@ export const tablePossibleProps = [
   },
   {
     ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
-    datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'date' },
+    datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' },
   },
   tablePropsMockWithData,
   { ...tablePropsMockWithData, navigation: true },
@@ -123,6 +123,6 @@ export const tablePossibleProps = [
   },
   {
     ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
-    datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'date' },
+    datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' },
   },
 ] as any;
