@@ -3,7 +3,7 @@ sudo: false
 language: node_js
 
 node_js:
-  - '7.10'
+  - '8.9'
 
 branches:
   only:
@@ -13,7 +13,7 @@ branches:
 install:
   - rm -rf package-lock.json # make sure it is not in the directory
   - npm install -g gulp
-  - npm install --ignore-scripts # avoid triggering npm prepublish script (which runs on npm install), running the tests twice during the build
+  - npm install
   - npm run build
 
 cache:
