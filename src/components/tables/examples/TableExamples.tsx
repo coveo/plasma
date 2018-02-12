@@ -69,21 +69,21 @@ const tableData: ITableData = {
 };
 
 const buildNewTableStateManually = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState, tableOwnProps: ITableOwnProps): ITableState => {
-  const totalEntries = JSON.parse(data).count;
+  const totalEntries = data.count;
   const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
-  const newTableData = JSON.parse(data).entries.reduce((finalTableData: ITableData, entry: any, arr: any[]) => {
+  const newTableData = data.reduce((finalTableData: ITableData, comment: any, arr: any[]) => {
     return {
       byId: {
         ...(finalTableData.byId || {}),
-        [entry.API]: {
-          id: entry.API,
-          attribute1: entry.API,
-          attribute3: entry.Category,
-          attribute4: entry.Description,
+        [comment.id]: {
+          id: comment.id,
+          attribute1: comment.email,
+          attribute2: comment.name,
+          attribute3: comment.body,
         },
       },
-      allIds: [...finalTableData.allIds, entry.API],
-      displayedIds: [...finalTableData.displayedIds, entry.API],
+      allIds: [...finalTableData.allIds, comment.id],
+      displayedIds: [...finalTableData.displayedIds, comment.id],
       totalEntries: totalEntries,
       totalPages: totalPages,
     };
@@ -94,8 +94,8 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): IThunkAction => {
   return (dispatch: IDispatch, getState: () => { [globalStateProp: string]: any; tables: ITablesState; }) => {
     const currentTableState = getState().tables[tableOwnProps.id];
-    dispatchPreTableStateModification(tableOwnProps, dispatch);
-    $.get('https://raw.githubusercontent.com/toddmotto/public-apis/master/json/entries.json')
+    dispatchPreTableStateModification(tableOwnProps.id, dispatch);
+    $.get('https://jsonplaceholder.typicode.com/comments')
       .done((data) => {
         dispatch(
           modifyState(
@@ -114,7 +114,7 @@ const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean
         ));
       })
       .always(() => {
-        dispatchPostTableStateModification(tableOwnProps, dispatch);
+        dispatchPostTableStateModification(tableOwnProps.id, dispatch);
       });
   };
 };
@@ -138,7 +138,7 @@ export class TableExamples extends React.Component<any, any> {
                 attributeFormatter: _.identity,
               },
               {
-                attributeName: 'attribute4',
+                attributeName: 'attribute2',
                 titleFormatter: _.identity,
                 sort: true,
                 attributeFormatter: _.identity,

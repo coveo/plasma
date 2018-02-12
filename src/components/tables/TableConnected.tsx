@@ -22,40 +22,48 @@ import { ITableHeaderCellState } from './TableHeaderCellReducers';
 import { ITableCompositeState, ITableState } from './TableReducers';
 import { getTableChildComponentId } from './TableUtils';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
-  const tableState: ITableState = state.tables[ownProps.id] || {} as ITableState;
-  const filterState: IFilterState = tableState && _.findWhere(state.filters, { id: tableState.filterId });
-  const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, { id: tableState.paginationId });
-  const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
+export interface IReactVaporStateExtended extends IReactVaporState {
+  [additionalState: string]: any;
+}
+
+export const getTableCompositeState = (state: IReactVaporStateExtended, id: string): ITableCompositeState => {
+  const tableState: ITableState = state.tables[id] || {} as ITableState;
+  const filterState: IFilterState = tableState && _.findWhere(state.filters, {id: tableState.filterId});
+  const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, {id: tableState.paginationId});
+  const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, {id: tableState.perPageId});
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
-  const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, ownProps.id)) || [];
-  const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, { id: tableState.datePickerRangeId });
+  const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
+  const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, {id: tableState.datePickerRangeId});
 
   return {
-    tableCompositeState: {
-      id: tableState.id,
-      data: tableState.data,
-      isInError: tableState.isInError,
-      isLoading: tableState.isLoading,
-      filter: filterState && filterState.filterText,
-      page: paginationState && paginationState.pageNb,
-      perPage: perPageState && perPageState.perPage,
-      sortState: {
-        attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
-        order: tableHeaderCellState && tableHeaderCellState.sorted,
-      },
-      predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
-        // the attribute name is stored in the id of the dropdownSearch
-        const attributeName = nextPredicate.id.split(getTableChildComponentId(ownProps.id, TableChildComponent.PREDICATE))[1];
-        const selectedOption = _.findWhere(nextPredicate.options, { selected: true });
-        return {
-          ...currentPredicates,
-          [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
-        };
-      }, {}),
-      from: datePickerState && datePickerState.appliedLowerLimit,
-      to: datePickerState && datePickerState.appliedUpperLimit,
-    } as ITableCompositeState,
+    id: tableState.id,
+    data: tableState.data,
+    isInError: tableState.isInError,
+    isLoading: tableState.isLoading,
+    filter: filterState && filterState.filterText,
+    page: paginationState && paginationState.pageNb,
+    perPage: perPageState && perPageState.perPage,
+    sortState: {
+      attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
+      order: tableHeaderCellState && tableHeaderCellState.sorted,
+    },
+    predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
+      // the attribute name is stored in the id of the dropdownSearch
+      const attributeName = nextPredicate.id.split(getTableChildComponentId(id, TableChildComponent.PREDICATE))[1];
+      const selectedOption = _.findWhere(nextPredicate.options, { selected: true });
+      return {
+        ...currentPredicates,
+        [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
+      };
+    }, {}),
+    from: datePickerState && datePickerState.appliedLowerLimit,
+    to: datePickerState && datePickerState.appliedUpperLimit,
+  } as ITableCompositeState;
+};
+
+const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
+  return {
+    tableCompositeState: getTableCompositeState(state, ownProps.id),
   };
 };
 
