@@ -13,18 +13,18 @@ import {
   removeDatePicker,
   selectDate,
 } from './DatePickerActions';
-import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
-import {IDatePickerState} from './DatePickerReducers';
-import {IOptionPickerState} from '../optionPicker/OptionPickerReducers';
-import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
-import {connect} from 'react-redux';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IDatePickerState } from './DatePickerReducers';
+import { IOptionPickerState } from '../optionPicker/OptionPickerReducers';
+import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
+import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import * as React from 'react';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnProps): IDatesSelectionStateProps => {
-  const item: IDatePickerState = _.findWhere(state.datePickers, {id: ownProps.id});
-  const optionPicker: IOptionPickerState = _.findWhere(state.optionPickers, {id: ownProps.id});
+  const item: IDatePickerState = _.findWhere(state.datePickers, { id: ownProps.id });
+  const optionPicker: IOptionPickerState = _.findWhere(state.optionPickers, { id: ownProps.id });
 
   return {
     lowerLimit: item ? item.lowerLimit : new Date(),

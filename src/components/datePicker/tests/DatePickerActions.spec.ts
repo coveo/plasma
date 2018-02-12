@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import { IReduxAction } from '../../../utils/ReduxUtils';
 import {
   DatePickerActions,
   addDatePicker,
@@ -8,8 +8,8 @@ import {
   changeDatePickerLowerLimit,
   changeDatePickerUpperLimit, DateLimits, selectDate
 } from '../DatePickerActions';
-import {DEFAULT_DATE_PICKER_COLOR} from '../DatePicker';
-import {IAddDatePickerPayload, IDatePickerPayload, IChangeDatePickerPayload, ISelectDatePickerPayload} from '../DatePickerActions';
+import { DEFAULT_DATE_PICKER_COLOR } from '../DatePicker';
+import { IAddDatePickerPayload, IDatePickerPayload, IChangeDatePickerPayload, ISelectDatePickerPayload } from '../DatePickerActions';
 
 describe('Date picker', () => {
 

@@ -1,9 +1,9 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IReduxActionsPayload} from '../../ReactVapor';
-import {DatePickerActions, IAddDatePickerPayload} from './DatePickerActions';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { DatePickerActions, IAddDatePickerPayload } from './DatePickerActions';
 import * as _ from 'underscore';
 import * as moment from 'moment';
-import {IRangeLimit} from './DatesSelection';
+import { IRangeLimit } from './DatesSelection';
 
 export interface IDatePickerState {
   id: string;
@@ -73,7 +73,7 @@ const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
 };
 
 const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-  return state.id !== action.payload.id ? state : _.extend({}, state, {selected: action.payload.limit});
+  return state.id !== action.payload.id ? state : _.extend({}, state, { selected: action.payload.limit });
 };
 
 const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
