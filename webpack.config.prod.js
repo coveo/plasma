@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const isTravis = process.env.TRAVIS;
 
 const TARGET = process.env.TARGET || null;
 
@@ -30,7 +31,7 @@ const config = {
             configFile: './node_modules/tsjs/tslint.json',
             tsConfigFile: './tsconfig.json',
             emitErrors: true,
-            failOnHint: false,
+            failOnHint: isTravis,
           },
         },
       },

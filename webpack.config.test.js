@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const isTravis = process.env.TRAVIS;
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -18,7 +19,7 @@ module.exports = {
             configFile: './node_modules/tsjs/tslint.json',
             tsConfigFile: './tsconfig.json',
             emitErrors: true,
-            failOnHint: false,
+            failOnHint: isTravis,
           },
         },
       },
