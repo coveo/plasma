@@ -63,7 +63,7 @@
     "@types/react-bootstrap": "0.0.52",
     "@types/react-dom": "15.5.4",
     "@types/react-redux": "5.0.8",
-    "@types/react-tether": "0.5.2",
+    "@types/react-tether": "0.5.3",
     "@types/react-transition-group": "2.0.6",
     "@types/underscore": "1.8.3",
     "@types/underscore.string": "0.0.31",
