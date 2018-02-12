@@ -187,7 +187,7 @@ describe('Date picker', () => {
 
         datePickerDropdown.setProps(newProps);
 
-        expect(datePickerDropdown.find('.dropdown-selected-value').html()).toContain(DateUtils.getDateWithTimeString(now));
+        expect(datePickerDropdown.find('.dropdown-selected-value').html()).toContain(DateUtils.getDateWithTimeString(rightNow));
       });
 
     it('should call handleClick when clicking the dropdown toggle', () => {
