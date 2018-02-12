@@ -1,5 +1,5 @@
-import { DatePicker, IDatePickerProps } from './DatePicker';
-import { DATES_SEPARATOR, DateUtils } from '../../utils/DateUtils';
+import {DatePicker, IDatePickerProps} from './DatePicker';
+import {DATES_SEPARATOR, DateUtils} from '../../utils/DateUtils';
 import * as React from 'react';
 
 export interface IRangeLimit {
@@ -14,6 +14,7 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   isRange?: boolean;
+  isClearable?: boolean;
   rangeLimit?: IRangeLimit;
   color?: string;
   calendarId?: string;
@@ -45,7 +46,7 @@ export interface IDatesSelectionChildrenProps {
 }
 
 export interface IDatesSelectionProps extends IDatesSelectionOwnProps, IDatesSelectionStateProps,
-  IDatesSelectionDispatchProps, IDatesSelectionChildrenProps { }
+  IDatesSelectionDispatchProps, IDatesSelectionChildrenProps {}
 
 export const LOWER_LIMIT_PLACEHOLDER: string = 'Select a start date';
 export const UPPER_LIMIT_PLACEHOLDER: string = 'Select an end date';

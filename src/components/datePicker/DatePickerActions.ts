@@ -1,6 +1,6 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { DEFAULT_DATE_PICKER_COLOR } from './DatePicker';
-import { IRangeLimit } from './DatesSelection';
+import {IReduxAction} from '../../utils/ReduxUtils';
+import {DEFAULT_DATE_PICKER_COLOR} from './DatePicker';
+import {IRangeLimit} from './DatesSelection';
 
 export const DatePickerActions = {
   add: 'ADD_DATE_PICKER',
@@ -23,6 +23,7 @@ export interface IAddDatePickerPayload extends IDatePickerPayload {
   isRange: boolean;
   rangeLimit?: IRangeLimit;
   initiallyUnselected?: boolean;
+  isClearable?: boolean;
 }
 
 export interface IChangeDatePickerPayload extends IDatePickerPayload {
@@ -39,7 +40,7 @@ export const DateLimits = {
 };
 
 export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLimit = undefined, color: string = DEFAULT_DATE_PICKER_COLOR,
-  calendarId: string = '', initiallyUnselected = false): IReduxAction<IAddDatePickerPayload> => ({
+  calendarId: string = '', initiallyUnselected = false, isClearable = false): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {
       id,
@@ -48,6 +49,7 @@ export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLi
       isRange,
       rangeLimit,
       initiallyUnselected,
+      isClearable,
     }
   });
 

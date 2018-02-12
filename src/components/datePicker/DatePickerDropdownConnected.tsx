@@ -5,8 +5,8 @@ import {
   IDatePickerDropdownOwnProps,
   IDatePickerDropdownStateProps
 } from './DatePickerDropdown';
-import { addDropdown, removeDropdown, toggleDropdown, closeDropdown } from '../dropdown/DropdownActions';
-import { IDropdownState } from '../dropdown/DropdownReducers';
+import {addDropdown, removeDropdown, toggleDropdown, closeDropdown} from '../dropdown/DropdownActions';
+import {IDropdownState} from '../dropdown/DropdownReducers';
 import {
   applyDatePicker,
   resetDatePickers,
@@ -16,18 +16,18 @@ import {
   selectDate,
   DateLimits
 } from './DatePickerActions';
-import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
-import { IDatePickerState } from './DatePickerReducers';
-import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
-import { MONTH_PICKER_ID, YEAR_PICKER_ID } from '../calendar/Calendar';
-import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { connect } from 'react-redux';
+import {resetOptionPickers} from '../optionPicker/OptionPickerActions';
+import {IDatePickerState} from './DatePickerReducers';
+import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
+import {MONTH_PICKER_ID, YEAR_PICKER_ID} from '../calendar/Calendar';
+import {ReduxUtils, IReduxAction} from '../../utils/ReduxUtils';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {connect} from 'react-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
-  const item: IDropdownState = _.findWhere(state.dropdowns, { id: ownProps.id });
+  const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});
   const datePickers: IDatePickerState[] = _.map(state.datePickers, (datePicker: IDatePickerState) => {
     if (datePicker.id.indexOf(ownProps.id) === 0) {
       return datePicker;
@@ -49,10 +49,10 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     if (datePicker) {
       dispatch(resetOptionPickers(datePicker.id));
       dispatch(selectDate(datePicker.id, DateLimits.lower));
-      if (datePicker.appliedLowerLimit) {
+      if (datePicker.appliedLowerLimit && datePicker.isClearable) {
         dispatch(changeDatePickerLowerLimit(datePicker.id, datePicker.appliedLowerLimit));
       }
-      if (datePicker.isRange && datePicker.appliedUpperLimit) {
+      if (datePicker.isRange && datePicker.appliedUpperLimit && datePicker.isClearable) {
         dispatch(changeDatePickerUpperLimit(datePicker.id, datePicker.appliedUpperLimit));
       }
     }

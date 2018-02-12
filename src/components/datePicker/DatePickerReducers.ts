@@ -1,9 +1,9 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { DatePickerActions, IAddDatePickerPayload } from './DatePickerActions';
+import {IReduxAction} from '../../utils/ReduxUtils';
+import {IReduxActionsPayload} from '../../ReactVapor';
+import {DatePickerActions, IAddDatePickerPayload} from './DatePickerActions';
 import * as _ from 'underscore';
 import * as moment from 'moment';
-import { IRangeLimit } from './DatesSelection';
+import {IRangeLimit} from './DatesSelection';
 
 export interface IDatePickerState {
   id: string;
@@ -15,6 +15,7 @@ export interface IDatePickerState {
   inputUpperLimit: Date;
   rangeLimit?: IRangeLimit;
   isRange: boolean;
+  isClearable: boolean;
   selected: string;
   appliedLowerLimit: Date;
   appliedUpperLimit: Date;
@@ -25,6 +26,7 @@ export const datePickerInitialState: IDatePickerState = {
   calendarId: undefined,
   color: undefined,
   isRange: false,
+  isClearable: false,
   lowerLimit: moment().startOf('day').toDate(),
   upperLimit: moment().endOf('day').toDate(),
   selected: '',
@@ -50,6 +52,7 @@ const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePic
     selected: state.selected,
     appliedLowerLimit: maybeUnselected(state.appliedLowerLimit),
     appliedUpperLimit: maybeUnselected(state.appliedUpperLimit),
+    isClearable: action.payload.isClearable,
   };
 };
 
@@ -70,12 +73,12 @@ const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
 };
 
 const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-  return state.id !== action.payload.id ? state : _.extend({}, state, { selected: action.payload.limit });
+  return state.id !== action.payload.id ? state : _.extend({}, state, {selected: action.payload.limit});
 };
 
 const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-  const lowerLimit: Date = state.lowerLimit ? state.lowerLimit || state.inputLowerLimit || state.appliedLowerLimit : null;
-  let upperLimit: Date = state.upperLimit ? state.upperLimit || state.inputUpperLimit || state.appliedUpperLimit : null;
+  const lowerLimit: Date = (state.lowerLimit || !state.isClearable) ? state.lowerLimit || state.inputLowerLimit || state.appliedLowerLimit : null;
+  let upperLimit: Date = (state.upperLimit || !state.isClearable) ? state.upperLimit || state.inputUpperLimit || state.appliedUpperLimit : null;
   upperLimit = upperLimit >= lowerLimit ? upperLimit : lowerLimit;
 
   return state.id.indexOf(action.payload.id) !== 0

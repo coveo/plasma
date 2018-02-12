@@ -84,6 +84,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
           setToNowTooltip: this.props.setToNowTooltip,
           isRange: datesSelectionBox.isRange,
+          isClearable: this.props.isClearable,
           rangeLimit: datesSelectionBox.rangeLimit,
           color: datesSelectionBox.color,
           calendarId: calendarProps.id,

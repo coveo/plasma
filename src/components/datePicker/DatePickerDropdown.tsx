@@ -21,6 +21,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
   extraDropdownToggleClasses?: string[];
   renderDatePickerWhenClosed?: boolean;
   initiallyUnselected?: boolean;
+  isClearable?: boolean;
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -31,7 +32,6 @@ export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildren
   years?: string[];
   startingYear?: number;
   days?: string[];
-  isClearable?: boolean;
   startingDay?: number;
   selectionRules?: ICalendarSelectionRule[];
   lowerLimitPlaceholder?: string;

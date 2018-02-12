@@ -159,7 +159,7 @@ describe('Date picker', () => {
       expect(_.findWhere(store.getState().dropdowns, { id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id }).opened).toBe(true);
     });
 
-    it('should select the date picker\'s lower limit when calling the onClick prop', () => {
+    it('should select the date picker\'s lower limit when calling the onClick prop and when datepicker is not clearable', () => {
       let pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
 
       store.dispatch(addDatePicker(pickerId, false));
