@@ -11,7 +11,7 @@ branches:
     - /^greenkeeper/.*$/
 
 install:
-  - rm -rf package-lock.json # make sure it is not in the directory
+  - ls node_modules/phantomjs-prebuilt/lib/ # remove when done testing this is to test https://github.com/karma-runner/karma-phantomjs-launcher/issues/120#issuecomment-305236999
   - npm install -g gulp
   - npm install
   - npm run build
