@@ -32,7 +32,7 @@ describe('TableDataModifier', () => {
         turnOnLoading(getTableLoadingIds(tableOwnPropsMock.id)),
       ];
 
-      dispatchPreTableStateModification(tableOwnPropsMock, dispatchSpy);
+      dispatchPreTableStateModification(tableOwnPropsMock.id, dispatchSpy);
 
       actions.forEach((action) => {
         expect(dispatchSpy).toHaveBeenCalledWith(action);
@@ -50,7 +50,7 @@ describe('TableDataModifier', () => {
         changeLastUpdated(getTableChildComponentId(tableOwnPropsMock.id, TableChildComponent.LAST_UPDATED)),
       ];
 
-      dispatchPostTableStateModification(tableOwnPropsMock, dispatchSpy);
+      dispatchPostTableStateModification(tableOwnPropsMock.id, dispatchSpy);
 
       actions.forEach((action) => {
         expect(dispatchSpy).toHaveBeenCalledWith(action);

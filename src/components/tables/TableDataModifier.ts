@@ -13,20 +13,20 @@ import { ITableCompositeState, ITableState } from './TableReducers';
 import { unselectAllRows } from './TableRowActions';
 import { getTableChildComponentId, getTableLoadingIds } from './TableUtils';
 
-export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: IDispatch) => {
-  dispatch(unselectAllRows(tableOwnProps.id));
+export const dispatchPreTableStateModification = (tableId: string, dispatch: IDispatch) => {
+  dispatch(unselectAllRows(tableId));
   dispatch(
     addActionsToActionBar(
-      getTableChildComponentId(tableOwnProps.id, TableChildComponent.ACTION_BAR),
+      getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
       [],
     ),
   );
-  dispatch(turnOnLoading(getTableLoadingIds(tableOwnProps.id)));
+  dispatch(turnOnLoading(getTableLoadingIds(tableId)));
 };
 
-export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: IDispatch) => {
-  dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
-  dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
+export const dispatchPostTableStateModification = (tableId: string, dispatch: IDispatch) => {
+  dispatch(turnOffLoading(getTableLoadingIds(tableId)));
+  dispatch(changeLastUpdated(getTableChildComponentId(tableId, TableChildComponent.LAST_UPDATED)));
 };
 
 export const applyPredicatesOnDisplayedIds = (
