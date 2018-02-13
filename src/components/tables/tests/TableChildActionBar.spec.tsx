@@ -56,7 +56,7 @@ describe('<TableChildActionBar />', () => {
 
       it('should render without error if an actionBar prop and a datePicker prop are passed', () => {
         expect(() => {
-          mountComponentWithProps({ ...tablePropsMock, actionBar: true, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'date' } });
+          mountComponentWithProps({ ...tablePropsMock, actionBar: true, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' } });
         }).not.toThrow();
       });
 
@@ -97,7 +97,7 @@ describe('<TableChildActionBar />', () => {
               { attributeName: 'email', attributeNameFormatter: _.identity, props: {} },
               { attributeName: 'userName', attributeNameFormatter: _.identity, props: {} },
             ],
-            datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'date' },
+            datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' },
           });
         }).not.toThrow();
       });
@@ -119,7 +119,7 @@ describe('<TableChildActionBar />', () => {
       });
 
       it('should render with an action bar and a datePicker inside it if there is an actionBar prop and a datePicker prop', () => {
-        const tableActionBar = mountComponentWithProps({ ...tablePropsMock, actionBar: true, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeValue: 'date' } });
+        const tableActionBar = mountComponentWithProps({ ...tablePropsMock, actionBar: true, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' } });
         expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
         expect(tableActionBar.find(ActionBarConnected).find(DatePickerDropdownConnected).length).toBe(1);
       });
