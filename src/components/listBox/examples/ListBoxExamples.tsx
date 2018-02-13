@@ -1,7 +1,10 @@
 import * as React from 'react';
+import {UUID} from '../../../utils/UUID';
 import { IItemBoxProps } from '../../itemBox/ItemBox';
 import { ITooltipProps } from '../../tooltip/Tooltip';
 import { ListBox } from '../ListBox';
+import {ListBoxConnected} from '../ListBoxConnected';
+// import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 
 export class ListBoxExamples extends React.Component {
   render() {
@@ -12,8 +15,8 @@ export class ListBoxExamples extends React.Component {
     };
     const defaultItems: IItemBoxProps[] = [
       { value: 'test' },
-      { value: 'test selected', selected: true },
-      { value: 'test disabled', disabled: true },
+      { value: 'test1' },
+      { value: 'test2 disabled', disabled: true },
       { value: 'test3', tooltip: tooltip },
       { value: 'test4' },
       { value: 'test5' },
@@ -44,7 +47,7 @@ export class ListBoxExamples extends React.Component {
         <div className='form-group'>
           <label className='form-control-label'>List Box with an trigger on click items</label>
           <div className='form-control'>
-            <ListBox items={defaultItems} onOptionClick={triggerAlertFunction} />
+            <ListBox items={defaultItems} selected={['test1']} onOptionClick={triggerAlertFunction} />
           </div>
         </div>
         <div className='form-group'>
@@ -52,6 +55,18 @@ export class ListBoxExamples extends React.Component {
           <div className='form-control'>
             <ListBox items={defaultItems} classes={['bg-light-blue']} />
           </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>List Box Connected (single)</label>
+          <div className='form-control'>
+            <ListBoxConnected id={UUID.generate()} items={defaultItems} />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>List Box Connected (mutli)</label>
+          <div className='form-control'>
+            <ListBoxConnected id={UUID.generate()} items={defaultItems} multi/>
+      </div>
         </div>
       </div>
     );
