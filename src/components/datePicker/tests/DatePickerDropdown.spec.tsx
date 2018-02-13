@@ -47,6 +47,7 @@ describe('Date picker', () => {
       lowerLimit: now,
       upperLimit: then,
       isRange: false,
+      isClearable: false,
       selected: '',
       appliedLowerLimit: now,
       appliedUpperLimit: then,
@@ -140,6 +141,7 @@ describe('Date picker', () => {
         lowerLimit: now,
         upperLimit: then,
         isRange: true,
+        isClearable: false,
         selected: '',
         appliedLowerLimit: now,
         appliedUpperLimit: then,
@@ -177,6 +179,7 @@ describe('Date picker', () => {
             lowerLimit: now,
             upperLimit: now,
             isRange: true,
+            isClearable: false,
             selected: '',
             appliedLowerLimit: now,
             appliedUpperLimit: now,
@@ -189,6 +192,30 @@ describe('Date picker', () => {
 
         expect(datePickerDropdown.find('.dropdown-selected-value').html()).toContain(DateUtils.getDateWithTimeString(now));
       });
+
+    it('should display the label props if date picker is clearable and nothing is selected', () => {
+      let newDatePicker: IDatePickerState = {
+        id: 'id',
+        calendarId: 'calendarId',
+        color: 'color',
+        lowerLimit: null,
+        upperLimit: null,
+        isRange: true,
+        isClearable: true,
+        selected: '',
+        appliedLowerLimit: null,
+        appliedUpperLimit: null,
+        inputLowerLimit: null,
+        inputUpperLimit: null
+      };
+      let newProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+        datePicker: newDatePicker,
+        label: 'EMPTY_LABEL',
+        isClearable: true,
+      });
+      datePickerDropdown.setProps(newProps);
+      expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain('EMPTY_LABEL');
+    });
 
     it('should call handleClick when clicking the dropdown toggle', () => {
       let handleClickSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleClick');
@@ -390,6 +417,20 @@ describe('Date picker', () => {
       datePickerDropdownInstance['handleCancel'].call(datePickerDropdownInstance);
 
       expect(onCancelSpy).toHaveBeenCalled();
+    });
+
+    it('should call onClear prop if set when calling handleClear', () => {
+      let onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
+      let onClearProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onClear: onClearSpy });
+
+      expect(() => {
+        datePickerDropdownInstance['handleClear'].call(datePickerDropdownInstance);
+      }).not.toThrow();
+
+      datePickerDropdown.setProps(onClearProps);
+      datePickerDropdownInstance['handleClear'].call(datePickerDropdownInstance);
+
+      expect(onClearSpy).toHaveBeenCalled();
     });
 
     it('should have class "on-right" on menu if onRight prop is set to true', () => {

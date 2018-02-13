@@ -78,6 +78,39 @@ describe('Date picker', () => {
       expect(datePickerBox.find('OptionPicker').length).toBe(moreBoxesProps.datesSelectionBoxes.length);
     });
 
+    it('should not display a clear button when isClearable prop is false', () => {
+      expect(datePickerBox.find('button.clear-selection-button').length).toBe(0);
+    });
+
+    describe('DatePickerBox is clearable', () => {
+      const clearableBoxProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
+        isClearable: true,
+      });
+
+      beforeEach(() => {
+        datePickerBox.setProps(clearableBoxProps);
+      });
+
+      afterEach(() => {
+        datePickerBox.setProps(DATE_PICKER_BOX_BASIC_PROPS);
+      });
+
+      it('should display a clear button when isClearable prop is set to true', () => {
+        expect(datePickerBox.find('button.clear-selection-button').length).toBe(1);
+      });
+
+      it('should call onClear prop when clicking on the clear button', () => {
+        let onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
+        let onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { onClear: onClearSpy });
+
+        datePickerBox.setProps(onClearProps);
+        datePickerBox.find('button.clear-selection-button').first().simulate('click');
+
+        expect(onClearSpy).toHaveBeenCalled();
+      });
+    });
+
+
     it('should display anything sent as the footer prop', () => {
       let footerClass: string = 'the-footer-added';
       let propsWithFooter: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, { footer: <div className={footerClass}></div> });
