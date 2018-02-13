@@ -22,11 +22,7 @@ import { ITableHeaderCellState } from './TableHeaderCellReducers';
 import { ITableCompositeState, ITableState } from './TableReducers';
 import { getTableChildComponentId } from './TableUtils';
 
-export interface IReactVaporStateExtended extends IReactVaporState {
-  [additionalState: string]: any;
-}
-
-export const getTableCompositeState = (state: IReactVaporStateExtended, id: string): ITableCompositeState => {
+export const getTableCompositeState = (state: IReactVaporState, id: string): ITableCompositeState => {
   const tableState: ITableState = state.tables[id] || {} as ITableState;
   const filterState: IFilterState = tableState && _.findWhere(state.filters, {id: tableState.filterId});
   const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, {id: tableState.paginationId});

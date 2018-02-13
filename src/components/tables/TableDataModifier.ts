@@ -13,20 +13,20 @@ import { ITableCompositeState, ITableState } from './TableReducers';
 import { unselectAllRows } from './TableRowActions';
 import { getTableChildComponentId, getTableLoadingIds } from './TableUtils';
 
-export const dispatchPreTableStateModification = (id: string, dispatch: IDispatch) => {
-  dispatch(unselectAllRows(id));
+export const dispatchPreTableStateModification = (tableId: string, dispatch: IDispatch) => {
+  dispatch(unselectAllRows(tableId));
   dispatch(
     addActionsToActionBar(
-      getTableChildComponentId(id, TableChildComponent.ACTION_BAR),
+      getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
       [],
     ),
   );
-  dispatch(turnOnLoading(getTableLoadingIds(id)));
+  dispatch(turnOnLoading(getTableLoadingIds(tableId)));
 };
 
-export const dispatchPostTableStateModification = (id: string, dispatch: IDispatch) => {
-  dispatch(turnOffLoading(getTableLoadingIds(id)));
-  dispatch(changeLastUpdated(getTableChildComponentId(id, TableChildComponent.LAST_UPDATED)));
+export const dispatchPostTableStateModification = (tableId: string, dispatch: IDispatch) => {
+  dispatch(turnOffLoading(getTableLoadingIds(tableId)));
+  dispatch(changeLastUpdated(getTableChildComponentId(tableId, TableChildComponent.LAST_UPDATED)));
 };
 
 export const applyPredicatesOnDisplayedIds = (
