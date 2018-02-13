@@ -1,8 +1,8 @@
-import * as React from 'react';
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {SlideY} from './SlideY';
-import {IDropdownProps} from '../components/dropdown/Dropdown';
+import * as React from 'react';
 import {TransitionProps} from 'react-transition-group/Transition';
+import {IDropdownProps} from '../components/dropdown/Dropdown';
+import {SlideY} from './SlideY';
 
 describe('SlideY', () => {
   const dummyTimeout = 400;
@@ -11,7 +11,7 @@ describe('SlideY', () => {
   let testElement: JSX.Element;
 
   beforeEach(() => {
-    testElement = <div id={testElementId}>testing</div>
+    testElement = <div id={testElementId}>testing</div>;
   });
 
   it('should not throw when rendered with in prop to true', () => {
