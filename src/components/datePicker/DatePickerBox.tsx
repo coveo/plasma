@@ -106,7 +106,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
       });
 
     let clearOption: JSX.Element = this.props.isClearable
-      ? <button type='button' onClick={() => this.props.onClear()} className='action-btn action-big mt2' >{DEFAULT_CLEAR_LABEL}</button>
+      ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{DEFAULT_CLEAR_LABEL}</button>
       : null;
 
     return (
