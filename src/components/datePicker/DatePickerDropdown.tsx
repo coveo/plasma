@@ -27,6 +27,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
   datesSelectionBoxes: IDatesSelectionBox[];
   setToNowTooltip?: string;
+  clearLabel?: string;
   months?: string[];
   startingMonth?: number;
   years?: string[];
@@ -177,6 +178,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
       isLinkedToDateRange: this.props.isLinkedToDateRange,
       isClearable: this.props.isClearable,
       initiallyUnselected: this.props.initiallyUnselected,
+      clearLabel: this.props.clearLabel,
       onClear: () => this.handleClear(),
       footer: (
         <ModalFooter classes={['mod-small']}>

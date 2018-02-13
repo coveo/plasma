@@ -25,6 +25,7 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
   datesSelectionBoxes: IDatesSelectionBox[];
   setToNowTooltip?: string;
   isClearable?: boolean;
+  clearLabel?: string;
   initiallyUnselected?: boolean;
   footer?: JSX.Element;
   onClear?: () => void;
@@ -45,12 +46,15 @@ export interface IDatePickerBoxChildrenProps {
   isLinkedToDateRange?: boolean;
 }
 
-export const DEFAULT_CLEAR_LABEL: string = 'Clear';
+export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
 
 export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps,
   IDatePickerBoxChildrenProps { }
 
 export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
+  static defaultProps: Partial<IDatePickerBoxProps> = {
+    clearLabel: DEFAULT_CLEAR_DATE_LABEL,
+  };
 
   render() {
     let calendarProps: ICalendarProps = {
@@ -106,7 +110,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
       });
 
     let clearOption: JSX.Element = this.props.isClearable
-      ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{DEFAULT_CLEAR_LABEL}</button>
+      ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{this.props.clearLabel}</button>
       : null;
 
     return (

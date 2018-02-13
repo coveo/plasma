@@ -1,7 +1,7 @@
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { Provider } from 'react-redux';
 import { TestUtils } from '../../../utils/TestUtils';
-import { DatePickerBox, IDatePickerBoxProps } from '../DatePickerBox';
+import { DatePickerBox, IDatePickerBoxProps, DEFAULT_CLEAR_DATE_LABEL } from '../DatePickerBox';
 import { CalendarConnected } from '../../calendar/CalendarConnected';
 import { DatesSelectionConnected } from '../DatesSelectionConnected';
 import { OptionPickerConnected } from '../../optionPicker/OptionPickerConnected';
@@ -86,9 +86,11 @@ describe('Date picker', () => {
       const clearableBoxProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
         isClearable: true,
       });
+      let $clearBtn;
 
       beforeEach(() => {
         datePickerBox.setProps(clearableBoxProps);
+        $clearBtn = () => datePickerBox.find('button.clear-selection-button');
       });
 
       afterEach(() => {
@@ -96,7 +98,19 @@ describe('Date picker', () => {
       });
 
       it('should display a clear button when isClearable prop is set to true', () => {
-        expect(datePickerBox.find('button.clear-selection-button').length).toBe(1);
+        expect($clearBtn().length).toBe(1);
+      });
+
+      it('should display the clear label passed as a prop or use the default one', () => {
+        let clearLabel: string = 'CLEAR_LABEL';
+        let newProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { clearLabel });
+
+        expect($clearBtn().first().text()).toContain(DEFAULT_CLEAR_DATE_LABEL);
+
+        datePickerBox.setProps(newProps);
+
+        expect($clearBtn().first().text()).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
+        expect($clearBtn().first().text()).toContain(clearLabel);
       });
 
       it('should call onClear prop when clicking on the clear button', () => {
@@ -104,7 +118,7 @@ describe('Date picker', () => {
         let onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { onClear: onClearSpy });
 
         datePickerBox.setProps(onClearProps);
-        datePickerBox.find('button.clear-selection-button').first().simulate('click');
+        $clearBtn().first().simulate('click');
 
         expect(onClearSpy).toHaveBeenCalled();
       });
