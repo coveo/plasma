@@ -2,47 +2,77 @@
 // implemented with the new react-transition-group https://github.com/reactjs/react-transition-group
 
 import * as React from 'react';
-import Transition, { TransitionProps } from 'react-transition-group/Transition';
+import Transition, {TransitionProps} from 'react-transition-group/Transition';
 
-export const onEntering = (element: HTMLElement): HTMLElement => {
-  const prevHeight = `${element.getBoundingClientRect().height}px`;
-  let endHeight = '0px';
+export class SlideY extends React.Component<TransitionProps, {}> {
+  private el: HTMLElement;
 
-  element.classList.remove('slide-y-closed');
-  element.style.height = 'auto';
-  endHeight = getComputedStyle(element).height;
-
-  if (parseFloat(endHeight).toFixed(2) !== parseFloat(prevHeight).toFixed(2)) {
-    element.classList.add('slide-y-transition');
-    element.style.height = prevHeight;
-    element.offsetHeight; // force repaint
-    element.style.transitionProperty = 'height';
-    element.style.height = endHeight;
+  componentDidMount() {
+    if (this.props.in) {
+      this.el.classList.remove('slide-y-closed');
+      this.el.style.height = 'auto';
+    }
   }
 
-  return element;
-};
+  componentWillUpdate() {
+    this.el.style.height = this.el.getBoundingClientRect().height + 'px';
+  }
 
-export const onExiting = (element: HTMLElement) => {
-  element.classList.add('slide-y-transition');
-  element.style.height = getComputedStyle(element).height;
-  element.offsetHeight; // force repaint
-  element.style.transitionProperty = 'height';
-  element.style.height = '0px';
+  componentDidUpdate() {
+    if (this.props.in) {
+      this.onEntering();
+    } else {
+      this.onExiting();
+    }
+  }
 
-  return element;
-};
+  render() {
+    return (
+      <Transition
+        in={this.props.in}
+        timeout={this.props.timeout}
+        onEntering={() => this.onEntering()}
+        onExiting={() => this.onExiting()}
+        onTransitionEnd={() => this.handleTransitionEnd()}>
+        <div className='slide-y slide-y-closed' ref={(el: HTMLElement) => this.el = el}>
+          {this.props.children}
+        </div>
+      </Transition>
+    );
+  }
 
-export const SlideY = (props: TransitionProps): JSX.Element => {
-  return (
-    <Transition
-      in={props.in}
-      timeout={props.timeout}
-      onEntering={onEntering}
-      onExiting={onExiting}>
-      <div className='slide-y slide-y-closed'>
-        {props.children}
-      </div>
-    </Transition>
-  );
-};
+  private onEntering() {
+    const prevHeight = `${this.el.getBoundingClientRect().height}px`;
+
+    this.el.classList.remove('slide-y-closed');
+    this.el.style.height = 'auto';
+    const endHeight = getComputedStyle(this.el).height;
+
+    if (parseFloat(endHeight).toFixed(2) !== parseFloat(prevHeight).toFixed(2)) {
+      this.transitionHeight(prevHeight, endHeight);
+    }
+
+  }
+
+  private onExiting() {
+    this.transitionHeight(getComputedStyle(this.el).height, '0px');
+  }
+
+  private handleTransitionEnd() {
+    this.el.classList.remove('slide-y-transition');
+    this.el.style.transitionProperty = 'none';
+    this.el.style.height = !this.props.in ? '0px' : 'auto';
+
+    if (!this.props.in) {
+      this.el.classList.add('slide-y-closed');
+    }
+  }
+
+  private transitionHeight(from: string, to: string) {
+    this.el.classList.add('slide-y-transition');
+    this.el.style.height = from;
+    this.el.offsetHeight; // force repaint
+    this.el.style.transitionProperty = 'height';
+    this.el.style.height = to;
+  }
+}
