@@ -19,6 +19,7 @@ export interface IModalCompositeOwnProps extends IModalProps, IModalHeaderProps,
   modalBodyClasses?: IClassName;
   modalFooterChildren?: JSXRenderable;
   modalFooterClasses?: IClassName;
+  isPrompt?: boolean;
 }
 
 export interface IModalCompositeStateProps extends IReduxStatePossibleProps { }
@@ -89,6 +90,7 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
   private getModalBackdrop() {
     const basicProps: IModalBackdropProps = {
       displayFor: [this.props.id],
+      isPrompt: this.props.isPrompt,
     };
 
     const onClickProp = () => {
