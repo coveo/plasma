@@ -1,6 +1,6 @@
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { IReduxActionsPayload } from '../../ReactVapor';
-import { DatePickerActions, IAddDatePickerPayload } from './DatePickerActions';
+import { DatePickerActions, IAddDatePickerPayload, DateLimits } from './DatePickerActions';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 import { IRangeLimit } from './DatesSelection';
@@ -38,29 +38,37 @@ export const datePickerInitialState: IDatePickerState = {
 export const datePickersInitialState: IDatePickerState[] = [];
 
 const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePickerPayload>): IDatePickerState => {
-  const maybeUnselected = (d: Date) => action.payload.initiallyUnselected ? null : d;
+  const mayBeNull = (d: Date) => action.payload.initiallyUnselected ? null : d;
+
   return {
     id: action.payload.id,
     calendarId: action.payload.calendarId,
     color: action.payload.color,
     isRange: action.payload.isRange,
     rangeLimit: action.payload.rangeLimit,
-    lowerLimit: maybeUnselected(state.lowerLimit),
-    upperLimit: maybeUnselected(state.upperLimit),
-    inputLowerLimit: maybeUnselected(state.appliedLowerLimit),
-    inputUpperLimit: maybeUnselected(state.appliedUpperLimit),
+    lowerLimit: mayBeNull(state.lowerLimit),
+    upperLimit: mayBeNull(state.upperLimit),
+    inputLowerLimit: mayBeNull(state.appliedLowerLimit),
+    inputUpperLimit: mayBeNull(state.appliedUpperLimit),
     selected: state.selected,
-    appliedLowerLimit: maybeUnselected(state.appliedLowerLimit),
-    appliedUpperLimit: maybeUnselected(state.appliedUpperLimit),
+    appliedLowerLimit: mayBeNull(state.appliedLowerLimit),
+    appliedUpperLimit: mayBeNull(state.appliedUpperLimit),
     isClearable: action.payload.isClearable,
   };
 };
 
 const changeLowerLimit = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
+  const nullifyIfBefore = (currentUpperLimit: Date, newLowerLimit: Date) => newLowerLimit && state.isRange
+    && moment(newLowerLimit).isAfter(currentUpperLimit)
+    ? null
+    : currentUpperLimit;
+
   return state.id !== action.payload.id ? state : _.extend({}, state, {
     lowerLimit: action.payload.date,
     inputLowerLimit: action.payload.date,
-    selected: ''
+    upperLimit: nullifyIfBefore(state.upperLimit, action.payload.date),
+    inputUpperLimit: nullifyIfBefore(state.inputUpperLimit, action.payload.date),
+    selected: state.isRange ? DateLimits.upper : '',
   });
 };
 
@@ -104,7 +112,7 @@ const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
 const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return state.id.indexOf(action.payload.id) !== 0
     ? state : _.extend({}, state, {
-      selected: '',
+      selected: DateLimits.lower,
       lowerLimit: null,
       upperLimit: null,
     });

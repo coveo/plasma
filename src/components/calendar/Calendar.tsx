@@ -44,6 +44,7 @@ export interface ICalendarStateProps extends IReduxStatePossibleProps {
 export interface ICalendarDispatchProps {
   onClick?: (pickerId: string, isUpperLimit: boolean, value: Date) => void;
   onDateChange?: (cycleId: string, newValue: number) => void;
+  onSelectUnselectable?: (pickerId: string) => void;
 }
 
 export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps, ICalendarDispatchProps { }
@@ -113,6 +114,16 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     }
   }
 
+  private handleInvalidDateSelected() {
+    if (this.props.onSelectUnselectable) {
+      const selectedDatePicker: IDatePickerState = this.getSelectedDatePicker();
+
+      if (selectedDatePicker) {
+        this.props.onSelectUnselectable(selectedDatePicker.id);
+      }
+    }
+  }
+
   componentWillReceiveProps(nextProps: ICalendarProps) {
     if (this.props.onDateChange && this.props.calendarSelection.length) {
       _.each(nextProps.calendarSelection, (calendarSelection: IDatePickerState, index: number) => {
@@ -136,29 +147,29 @@ export class Calendar extends React.Component<ICalendarProps, any> {
   }
 
   fillInDayInfos(day: IDay): IDay {
-    const dayStart: moment.Moment = day.date.startOf('day');
+    // const dayStart: moment.Moment = day.date.startOf('day');
     day.isSelectable = true;
 
     _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
       const selectionStart: moment.Moment = calendarSelection.lowerLimit
         ? moment(calendarSelection.lowerLimit).startOf('day')
-        : undefined;
-      const selectionEnd: moment.Moment = calendarSelection.upperLimit
-        ? (calendarSelection.isRange
-          ? moment(calendarSelection.upperLimit).startOf('day')
-          : selectionStart)
-        : undefined;
-      const isSelected = selectionStart && selectionEnd
-        && dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
+        : null;
+      const selectionEnd: moment.Moment = calendarSelection.isRange && calendarSelection.upperLimit && calendarSelection.lowerLimit
+        ? moment(calendarSelection.upperLimit).endOf('day')
+        : selectionStart;
+      const isSelected = selectionStart && selectionEnd && day.date.isBetween(selectionStart, selectionEnd, 'day', '[]');
 
-      day.isSelected = isSelected || day.isSelected;
-      day.isLowerLimit = calendarSelection.isRange && !dayStart.diff(selectionStart, 'day') || day.isLowerLimit;
-      day.isUpperLimit = calendarSelection.isRange && !dayStart.diff(selectionEnd, 'day') || day.isUpperLimit;
+      day.isSelectable = calendarSelection.isRange && calendarSelection.selected === DateLimits.upper && calendarSelection.lowerLimit
+        ? day.isSelectable && day.date.isSameOrAfter(calendarSelection.lowerLimit)
+        : day.isSelectable;
+      day.isSelected = (day.isSelectable && isSelected) || day.isSelected;
+      day.isLowerLimit = (calendarSelection.isRange && day.date.isSame(selectionStart, 'day')) || day.isLowerLimit;
+      day.isUpperLimit = (calendarSelection.isRange && day.date.isSame(selectionEnd, 'day')) || day.isUpperLimit;
       day.color = isSelected ? calendarSelection.color : day.color;
 
       _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {
         if (day.isSelectable) {
-          if (rule.isFor == CalendarSelectionRuleType.all
+          if (rule.isFor === CalendarSelectionRuleType.all
             || (rule.isFor === CalendarSelectionRuleType.lower && calendarSelection.selected === DateLimits.lower)
             || (rule.isFor === CalendarSelectionRuleType.upper && calendarSelection.selected === DateLimits.upper)) {
             day.isSelectable = rule.test(day.date.toDate());
@@ -213,7 +224,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
           key={dayFilled.date.toString()}
           day={dayFilled}
           onClick={(value: Date) => this.handleClick(value)}
-          onSelectUnselectable={() => this.handleClick(null)} />;
+          onSelectUnselectable={() => this.handleInvalidDateSelected()} />;
       });
 
       return <tr key={`week-${days[0].key}`}>{days}</tr>;

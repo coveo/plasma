@@ -11,8 +11,8 @@ import {
   applyDatePicker,
   resetDatePickers,
   clearSelection,
-  changeDatePickerLowerLimit,
-  changeDatePickerUpperLimit,
+  // changeDatePickerLowerLimit,
+  // changeDatePickerUpperLimit,
   selectDate,
   DateLimits
 } from './DatePickerActions';
@@ -49,12 +49,6 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     if (datePicker) {
       dispatch(resetOptionPickers(datePicker.id));
       dispatch(selectDate(datePicker.id, DateLimits.lower));
-      if (datePicker.appliedLowerLimit && datePicker.isClearable) {
-        dispatch(changeDatePickerLowerLimit(datePicker.id, datePicker.appliedLowerLimit));
-      }
-      if (datePicker.isRange && datePicker.appliedUpperLimit && datePicker.isClearable) {
-        dispatch(changeDatePickerUpperLimit(datePicker.id, datePicker.appliedUpperLimit));
-      }
     }
   },
   onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
