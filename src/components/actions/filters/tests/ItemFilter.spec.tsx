@@ -1,23 +1,23 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { Tooltip, ITooltipProps } from '../../../tooltip/Tooltip';
-import { ItemFilter, IItemFilterProps, ELLIPSIS } from '../ItemFilter';
-import * as _ from 'underscore';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
+import * as _ from 'underscore';
+import { ITooltipProps, Tooltip } from '../../../tooltip/Tooltip';
+import { ELLIPSIS, IItemFilterProps, ItemFilter } from '../ItemFilter';
 /* tslint:enable:no-unused-variable */
 
 describe('Item filter', () => {
   const ITEM_FILTER_BASIC_PROPS: IItemFilterProps = {
     label: 'Item filter',
     item: '',
-    onClear: jasmine.createSpy('onClear')
+    onClear: jasmine.createSpy('onClear'),
   };
 
   describe('<ItemFilter />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <ItemFilter {...ITEM_FILTER_BASIC_PROPS} />
+          <ItemFilter {...ITEM_FILTER_BASIC_PROPS} />,
         );
       }).not.toThrow();
     });
@@ -29,7 +29,7 @@ describe('Item filter', () => {
     beforeEach(() => {
       itemFilterComponent = mount(
         <ItemFilter {...ITEM_FILTER_BASIC_PROPS} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -39,21 +39,21 @@ describe('Item filter', () => {
     });
 
     it('should get the label as a prop', () => {
-      let labelProp = itemFilterComponent.props().label;
+      const labelProp = itemFilterComponent.props().label;
 
       expect(labelProp).toBeDefined();
       expect(labelProp).toBe(ITEM_FILTER_BASIC_PROPS.label);
     });
 
     it('should get the item as a prop', () => {
-      let itemProp = itemFilterComponent.props().item;
+      const itemProp = itemFilterComponent.props().item;
 
       expect(itemProp).toBeDefined();
       expect(itemProp).toBe(ITEM_FILTER_BASIC_PROPS.item);
     });
 
     it('should get what to do onClear as a prop', () => {
-      let onClearProp = itemFilterComponent.props().onClear;
+      const onClearProp = itemFilterComponent.props().onClear;
 
       expect(onClearProp).toBeDefined();
       expect(onClearProp).toEqual(ITEM_FILTER_BASIC_PROPS.onClear);
@@ -64,7 +64,7 @@ describe('Item filter', () => {
     });
 
     it('should display the item', () => {
-      let newItemFilterProps: IItemFilterProps = _.extend({}, ITEM_FILTER_BASIC_PROPS, { item: 'an item' });
+      const newItemFilterProps: IItemFilterProps = _.extend({}, ITEM_FILTER_BASIC_PROPS, { item: 'an item' });
       itemFilterComponent.setProps(newItemFilterProps);
 
       expect(itemFilterComponent.html()).toContain(newItemFilterProps.item);
@@ -77,7 +77,7 @@ describe('Item filter', () => {
     });
 
     it('should crop the item to the length of the crop prop', () => {
-      let longItem: string = 'longer than 10 characters for sure';
+      const longItem: string = 'longer than 10 characters for sure';
       let cropProps: IItemFilterProps = _.extend({}, ITEM_FILTER_BASIC_PROPS,
         { crop: 10, item: longItem });
       itemFilterComponent.setProps(cropProps);

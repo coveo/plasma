@@ -1,6 +1,6 @@
-import { ITablePredicate } from './Table';
-import { ITableState, ITableData } from './TableReducers';
 import { IReduxAction } from '../../utils/ReduxUtils';
+import { ITablePredicate } from './Table';
+import { ITableData, ITableState } from './TableReducers';
 
 export type ITableStateModifier = (state: ITableState) => ITableState;
 
@@ -29,12 +29,12 @@ export const addTable = (id: string, initialTableData: ITableData, predicates: I
 
 export const removeTable = (id: string): IReduxAction<ITableActionPayload> => ({
   type: TableActions.remove,
-  payload: { id }
+  payload: { id },
 });
 
 export const setIsInError = (id: string, isInError: boolean): IReduxAction<ITableActionPayload> => ({
   type: TableActions.inError,
-  payload: { id, isInError }
+  payload: { id, isInError },
 });
 
 export const modifyState = (

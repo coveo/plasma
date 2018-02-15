@@ -1,4 +1,4 @@
-import { shallow, ReactWrapper, mount } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { AddInputAction, IAddInputActionProps } from '../AddInputAction';
@@ -9,7 +9,7 @@ describe('AddInputAction', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <AddInputAction />
+          <AddInputAction />,
         );
       }).not.toThrow();
     });
@@ -21,7 +21,7 @@ describe('AddInputAction', () => {
     beforeEach(() => {
       addInput = mount(
         <AddInputAction />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

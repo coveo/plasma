@@ -1,9 +1,9 @@
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { FlatSelectOption, IFlatSelectOptionProps } from '../FlatSelectOption';
-import { FlatSelect, IFlatSelectOwnProps, IFlatSelectProps } from '../FlatSelect';
 import { UUID } from '../../../utils/UUID';
+import { FlatSelect, IFlatSelectOwnProps, IFlatSelectProps } from '../FlatSelect';
+import { FlatSelectOption, IFlatSelectOptionProps } from '../FlatSelectOption';
 
 describe('FlatSelect', () => {
 
@@ -13,12 +13,12 @@ describe('FlatSelect', () => {
       id: UUID.generate(),
       option: {
         content: 'test',
-      }
+      },
     }, {
       id: UUID.generate(),
       option: {
         content: 'test',
-      }
+      },
     },
   ];
 

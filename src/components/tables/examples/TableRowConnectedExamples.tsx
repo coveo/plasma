@@ -1,14 +1,14 @@
-import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
-import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
 import * as React from 'react';
+import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
+import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
 
 export class TableRowConnectedExamples extends React.Component<any, any> {
 
   render() {
-    let firstRowCols: JSX.Element[] = [
+    const firstRowCols: JSX.Element[] = [
       <td key='anything'>Anything</td>,
       <td key='something'>Something</td>,
-      <td key='everything'>Everything</td>
+      <td key='everything'>Everything</td>,
     ];
 
     return (

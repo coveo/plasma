@@ -1,7 +1,7 @@
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../../ReactVapor';
-import { PerPageActions } from './NavigationPerPageActions';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../../ReactVapor';
+import { IReduxAction } from '../../../utils/ReduxUtils';
+import { PerPageActions } from './NavigationPerPageActions';
 
 export interface IPerPageState {
   id: string;
@@ -10,7 +10,7 @@ export interface IPerPageState {
 
 export const perPageInitialState: IPerPageState = {
   id: undefined,
-  perPage: 10
+  perPage: 10,
 };
 
 export const perPageCompositeInitialState: IPerPageState[] = [];
@@ -33,7 +33,7 @@ export const perPageCompositeReducer = (state: IPerPageState[] = perPageComposit
     case PerPageActions.add:
       return [
         ...state,
-        perPageReducer(undefined, action)
+        perPageReducer(undefined, action),
       ];
     case PerPageActions.remove:
       return _.reject(state, (perPage: IPerPageState) => {

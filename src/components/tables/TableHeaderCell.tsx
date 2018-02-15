@@ -1,8 +1,8 @@
-import { TableSortingOrder } from './TableConstants';
-import { Svg } from '../svg/Svg';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { Svg } from '../svg/Svg';
+import { TableSortingOrder } from './TableConstants';
 
 export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHeaderCell> {
   title: string;

@@ -8,9 +8,9 @@ import { MultiSelectDropdownSearch } from '../MultiSelectDropdownSearch';
 describe('MultiSelectDropdownSearch', () => {
   const id: string = UUID.generate();
   const options = [
-    { value: 'test a', },
-    { value: 'test b', },
-    { value: 'test c', },
+    { value: 'test a' },
+    { value: 'test b' },
+    { value: 'test c' },
   ];
 
   const props: IDropdownSearchProps = {
@@ -30,9 +30,9 @@ describe('MultiSelectDropdownSearch', () => {
   describe('<MultiSelectDropdownSearch />', () => {
     let multiSelectDropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
 
-    const renderMultiSelectDropdownSearch = (props?: IDropdownSearchProps) => {
+    const renderMultiSelectDropdownSearch = (cuurentProps?: IDropdownSearchProps) => {
       multiSelectDropdownSearch = mount(
-        <MultiSelectDropdownSearch {...props} />,
+        <MultiSelectDropdownSearch {...cuurentProps} />,
         { attachTo: document.getElementById('App') },
       );
     };

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IModalProps, Modal } from './Modal';
-import { IModalHeaderProps, ModalHeader } from './ModalHeader';
-import { IModalFooterProps, ModalFooter } from './ModalFooter';
-import { IModalBackdropProps, ModalBackdrop } from './ModalBackdrop';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { ModalBackdropConnected } from './ModalBackdropConnected';
-import { ModalHeaderConnected } from './ModalHeaderConnected';
-import { JSXRenderable } from '../../utils/JSXUtils';
-import { ModalConnected } from './ModalConnected';
-import { ModalBody } from './ModalBody';
 import { IClassName } from '../../utils/ClassNameUtils';
+import { JSXRenderable } from '../../utils/JSXUtils';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { IModalProps, Modal } from './Modal';
+import { IModalBackdropProps, ModalBackdrop } from './ModalBackdrop';
+import { ModalBackdropConnected } from './ModalBackdropConnected';
+import { ModalBody } from './ModalBody';
+import { ModalConnected } from './ModalConnected';
+import { IModalFooterProps, ModalFooter } from './ModalFooter';
+import { IModalHeaderProps, ModalHeader } from './ModalHeader';
+import { ModalHeaderConnected } from './ModalHeaderConnected';
 
 export interface IModalCompositeOwnProps extends IModalProps, IModalHeaderProps, IModalFooterProps, IModalBackdropProps {
   modalHeaderChildren?: JSXRenderable;
@@ -19,6 +19,7 @@ export interface IModalCompositeOwnProps extends IModalProps, IModalHeaderProps,
   modalBodyClasses?: IClassName;
   modalFooterChildren?: JSXRenderable;
   modalFooterClasses?: IClassName;
+  isPrompt?: boolean;
 }
 
 export interface IModalCompositeStateProps extends IReduxStatePossibleProps { }
@@ -89,6 +90,7 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
   private getModalBackdrop() {
     const basicProps: IModalBackdropProps = {
       displayFor: [this.props.id],
+      isPrompt: this.props.isPrompt,
     };
 
     const onClickProp = () => {

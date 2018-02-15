@@ -1,8 +1,8 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { DeletableInput } from '../DeletableInput';
 import { IInputProps } from '../../input/Input';
+import { DeletableInput } from '../DeletableInput';
 
 describe('DeletableInput', () => {
 
@@ -10,7 +10,7 @@ describe('DeletableInput', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <DeletableInput />
+          <DeletableInput />,
         );
       }).not.toThrow();
     });
@@ -22,7 +22,7 @@ describe('DeletableInput', () => {
     beforeEach(() => {
       deleteInput = mount(
         <DeletableInput />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -32,8 +32,8 @@ describe('DeletableInput', () => {
     });
 
     it('should call property onBlur when delete button is clicked and prop is specified', () => {
-      let blurSpy = jasmine.createSpy('onBlur');
-      let deleteButton = deleteInput.find('.input-actions');
+      const blurSpy = jasmine.createSpy('onBlur');
+      const deleteButton = deleteInput.find('.input-actions');
 
       deleteButton.simulate('click');
       expect(blurSpy).not.toHaveBeenCalled();

@@ -1,14 +1,14 @@
+import * as React from 'react';
 import { TableCollapsibleRow } from '../TableCollapsibleRow';
 import { TableHeadingRow } from '../TableHeadingRow';
-import * as React from 'react';
 
 export class TableRowExamples extends React.Component<any, any> {
 
   render() {
-    let firstRowCols: JSX.Element[] = [
+    const firstRowCols: JSX.Element[] = [
       <td key='anything'>Anything</td>,
       <td key='something'>Something</td>,
-      <td key='everything'>Everything</td>
+      <td key='everything'>Everything</td>,
     ];
 
     return (

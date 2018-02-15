@@ -1,13 +1,13 @@
-import { Navigation, INavigationProps } from '../Navigation';
 import * as React from 'react';
+import { INavigationProps, Navigation } from '../Navigation';
 
 export class NavigationExamples extends React.Component<any, any> {
 
   render() {
-    let navigationProps: INavigationProps = {
+    const navigationProps: INavigationProps = {
       totalPages: 10,
       totalEntries: 50,
-      currentPerPage: 10
+      currentPerPage: 10,
     };
     return (
       <div className='mt2'>

@@ -1,7 +1,7 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { InputActions } from './InputActions';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { InputActions } from './InputActions';
 
 export interface IInputState {
   id: string;
@@ -57,7 +57,7 @@ export const inputsReducer = (
     case InputActions.add:
       return [
         ...state,
-        inputReducer(undefined, action)
+        inputReducer(undefined, action),
       ];
     case InputActions.remove:
       return _.reject(state, (input: IInputState) => input.id === action.payload.id);

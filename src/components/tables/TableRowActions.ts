@@ -18,14 +18,14 @@ export const addRow = (id: string, tableId?: string): IReduxAction<ITableRowActi
   payload: {
     id,
     tableId,
-  }
+  },
 });
 
 export const removeRow = (id: string): IReduxAction<ITableRowActionPayload> => ({
   type: TableRowActions.remove,
   payload: {
     id,
-  }
+  },
 });
 
 export const selectRow = (id: string, isCollapsible?: boolean, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
@@ -34,12 +34,12 @@ export const selectRow = (id: string, isCollapsible?: boolean, tableId?: string)
     id,
     isCollapsible,
     tableId,
-  }
+  },
 });
 
 export const unselectAllRows = (tableId?: string): IReduxAction<ITableRowActionPayload> => ({
   type: TableRowActions.unselectAll,
   payload: {
     tableId,
-  }
+  },
 });

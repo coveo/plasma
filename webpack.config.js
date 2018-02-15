@@ -1,6 +1,5 @@
 const path = require('path');
-
-const tslintConfig = require('./tslint');
+const isTravis = process.env.TRAVIS;
 
 /**
  * Config file for the documentation project
@@ -25,10 +24,10 @@ module.exports = {
         use: {
           loader: 'tslint-loader',
           options: {
-            configuration: tslintConfig,
+            configFile: './node_modules/tsjs/tslint.json',
+            tsConfigFile: './tsconfig.json',
             emitErrors: true,
-            failOnHint: false,
-            formattersDirectory: path.resolve(__dirname, 'node_modules/tslint-loader/formatters/'),
+            failOnHint: isTravis,
           },
         },
       },

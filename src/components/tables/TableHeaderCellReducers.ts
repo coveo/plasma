@@ -1,9 +1,9 @@
-import { getNextTableSortingOrder } from './TableUtils';
-import { TableSortingOrder } from './TableConstants';
-import { TableHeaderCellActions } from './TableHeaderCellActions';
+import * as _ from 'underscore';
 import { IReduxActionsPayload } from '../../ReactVapor';
 import { IReduxAction } from '../../utils/ReduxUtils';
-import * as _ from 'underscore';
+import { TableSortingOrder } from './TableConstants';
+import { TableHeaderCellActions } from './TableHeaderCellActions';
+import { getNextTableSortingOrder } from './TableUtils';
 
 export interface ITableHeaderCellState {
   id: string;

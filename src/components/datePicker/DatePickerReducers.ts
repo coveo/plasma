@@ -1,8 +1,8 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
+import * as moment from 'moment';
+import * as _ from 'underscore';
 import { IReduxActionsPayload } from '../../ReactVapor';
 import { DatePickerActions, IAddDatePickerPayload, DateLimits } from './DatePickerActions';
-import * as _ from 'underscore';
-import * as moment from 'moment';
+import { IReduxAction } from '../../utils/ReduxUtils';
 import { IRangeLimit } from './DatesSelection';
 
 export interface IDatePickerState {
@@ -105,7 +105,7 @@ const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
     : _.extend({}, state, {
       selected: '',
       lowerLimit: state.appliedLowerLimit,
-      upperLimit: state.appliedUpperLimit
+      upperLimit: state.appliedUpperLimit,
     });
 };
 
@@ -148,7 +148,7 @@ export const datePickersReducer = (state: IDatePickerState[] = datePickersInitia
     case DatePickerActions.add:
       return [
         ...state,
-        datePickerReducer(undefined, action)
+        datePickerReducer(undefined, action),
       ];
     case DatePickerActions.remove:
       return _.reject(state, (datePicker: IDatePickerState) => {
@@ -161,7 +161,7 @@ export const datePickersReducer = (state: IDatePickerState[] = datePickersInitia
     case DatePickerActions.reset:
     case DatePickerActions.clear:
       return state.map((datePicker: IDatePickerState) =>
-        datePickerReducer(datePicker, action)
+        datePickerReducer(datePicker, action),
       );
     default:
       return state;

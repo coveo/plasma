@@ -1,22 +1,22 @@
+import * as _ from 'underscore';
+import { keyCode } from '../../../utils/InputUtils';
+import { IReduxAction } from '../../../utils/ReduxUtils';
 import { DropdownSearchActions, IOptionsDropdownSearchPayload } from '../DropdownSearchActions';
 import {
   addUniqueSelectedOption,
+  deselectAllOptions,
+  deselectLastSelectedOption,
+  deselectOption,
   dropdownSearchInitialState,
   dropdownSearchReducer,
-  getNextIndexPosition,
   getFilteredOptions,
+  getNextIndexPosition,
   IDropdownSearchState,
-  deselectOption,
-  deselectAllOptions,
   multiSelectOption,
-  deselectLastSelectedOption,
 } from '../DropdownSearchReducers';
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { keyCode } from '../../../utils/InputUtils';
-import * as _ from 'underscore';
 
 export const multiSelectDropdownSearchReducer = (state: IDropdownSearchState = dropdownSearchInitialState,
-  action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
+                                                 action: IReduxAction<IOptionsDropdownSearchPayload>): IDropdownSearchState => {
 
   switch (action.type) {
     case DropdownSearchActions.addMultiSelect:

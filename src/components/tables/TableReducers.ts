@@ -1,17 +1,17 @@
-import { getTableChildComponentId } from './TableUtils';
-import { TableActions } from './TableActions';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { IReduxAction } from '../../utils/ReduxUtils';
 import * as _ from 'underscore';
+import {contains} from 'underscore.string';
+import {IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxAction} from '../../utils/ReduxUtils';
+import {LoadingActions} from '../loading/LoadingActions';
+import {ITablePredicate} from './Table';
+import {TableActions} from './TableActions';
 import {
   DEFAULT_TABLE_DATA,
-  TableSortingOrder,
   TableChildComponent,
+  TableSortingOrder,
 } from './TableConstants';
-import { LoadingActions } from '../loading/LoadingActions';
-import { TableHeaderCellActions } from './TableHeaderCellActions';
-import { ITablePredicate } from './Table';
-import { contains } from 'underscore.string';
+import {TableHeaderCellActions} from './TableHeaderCellActions';
+import {getTableChildComponentId} from './TableUtils';
 
 export interface ITableData {
   byId: {
@@ -48,6 +48,8 @@ export interface ITableCompositeState {
   predicates: {
     [attributeNameAssociatedToPredicate: string]: attributeValue;
   };
+  from: Date;
+  to: Date;
 }
 
 export interface ITableState {
@@ -56,6 +58,8 @@ export interface ITableState {
   isInError: boolean;
   isLoading: boolean;
   filterId: string;
+  datePickerId: string;
+  datePickerRangeId: string;
   paginationId: string;
   perPageId: string;
   predicateIds: string[];
@@ -72,9 +76,11 @@ export const tableInitialState: ITableState = {
   filterId: undefined,
   predicateIds: [],
   tableHeaderCellId: undefined,
+  datePickerId: undefined,
+  datePickerRangeId: undefined,
 };
 
-export const tablesInitialState: { [tableId: string]: ITableState; } = {};
+export const tablesInitialState: {[tableId: string]: ITableState; } = {};
 
 export const tableReducer = (
   state: ITableState = tableInitialState,
@@ -91,6 +97,8 @@ export const tableReducer = (
         filterId: getTableChildComponentId(action.payload.id, TableChildComponent.FILTER),
         predicateIds: action.payload.predicates.map((predicate: ITablePredicate) =>
           `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`),
+        datePickerId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER),
+        datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
       };
     case TableActions.modifyState:
       return action.payload.tableStateModifier(state);
@@ -128,13 +136,13 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
       };
     case TableActions.remove:
       return _.omit(tablesState, action.payload.id);
+    default:
+      const currentTableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
+        ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
+        : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
+
+      return currentTableId
+        ? {...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action)}
+        : tablesState;
   }
-
-  const tableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
-    ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
-    : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
-
-  return tableId
-    ? { ...tablesState, [tableId]: tableReducer(tablesState[tableId], action) }
-    : tablesState;
 };

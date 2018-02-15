@@ -12,35 +12,35 @@ export const PaginationActions = {
   add: 'ADD_PAGINATION',
   remove: 'REMOVE_PAGINATION',
   changePage: 'CHANGE_PAGE',
-  reset: 'RESET_PAGING'
+  reset: 'RESET_PAGING',
 };
 
 export const addPagination = (id: string): IReduxAction<IPaginationActionPayload> => ({
   type: PaginationActions.add,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const removePagination = (id: string): IReduxAction<IPaginationActionPayload> => ({
   type: PaginationActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const changePage = (id: string, pageNb: number): IReduxAction<IChangePaginationActionPayload> => ({
   type: PaginationActions.changePage,
   payload: {
     id,
-    pageNb
-  }
+    pageNb,
+  },
 });
 
 export const resetPaging = (id: string): IReduxAction<IChangePaginationActionPayload> => ({
   type: PaginationActions.reset,
   payload: {
     id,
-    pageNb: 0
-  }
+    pageNb: 0,
+  },
 });

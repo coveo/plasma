@@ -1,12 +1,12 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { TableEmptyRow, ITableEmptyRowProps } from '../TableEmptyRow';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { ITableEmptyRowProps, TableEmptyRow } from '../TableEmptyRow';
 
 describe('Tables', () => {
   const tableEmptyRowBasicProps: ITableEmptyRowProps = {
     text: 'No result',
-    nbColumns: 2
+    nbColumns: 2,
   };
 
   describe('<TableEmptyRow />', () => {
@@ -14,7 +14,7 @@ describe('Tables', () => {
 
       expect(() => {
         shallow(
-          <TableEmptyRow {...tableEmptyRowBasicProps} />
+          <TableEmptyRow {...tableEmptyRowBasicProps} />,
         );
       }).not.toThrow();
     });
@@ -28,7 +28,7 @@ describe('Tables', () => {
 
       tableEmptyRow = mount(
         <TableEmptyRow {...tableEmptyRowBasicProps} />,
-        { attachTo: document.getElementById('AppTable') }
+        { attachTo: document.getElementById('AppTable') },
       );
     });
 
@@ -38,14 +38,14 @@ describe('Tables', () => {
     });
 
     it('should get its text as a prop', () => {
-      let textProp = tableEmptyRow.props().text;
+      const textProp = tableEmptyRow.props().text;
 
       expect(textProp).toBeDefined();
       expect(textProp).toBe(tableEmptyRowBasicProps.text);
     });
 
     it('should get the number of columns as a prop', () => {
-      let nbColumnsProp = tableEmptyRow.props().nbColumns;
+      const nbColumnsProp = tableEmptyRow.props().nbColumns;
 
       expect(nbColumnsProp).toBeDefined();
       expect(nbColumnsProp).toBe(tableEmptyRowBasicProps.nbColumns);

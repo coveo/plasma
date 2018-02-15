@@ -1,18 +1,18 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { IFacetMoreRowsProps, FacetMoreRows } from '../FacetMoreRows';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { FacetRow } from '../FacetRow';
-import { TestUtils } from '../../../utils/TestUtils';
-import { FacetMoreRowsConnected } from '../FacetMoreRowsConnected';
-import { addFacet, toggleMoreFacetRows } from '../FacetActions';
-import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
-import { addFilter, filterThrough } from '../../filterBox/FilterBoxActions';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { addFilter, filterThrough } from '../../filterBox/FilterBoxActions';
+import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
+import { addFacet, toggleMoreFacetRows } from '../FacetActions';
+import { FacetMoreRows, IFacetMoreRowsProps } from '../FacetMoreRows';
+import { FacetMoreRowsConnected } from '../FacetMoreRowsConnected';
+import { FacetRow } from '../FacetRow';
 
 describe('Facets', () => {
 
@@ -24,7 +24,7 @@ describe('Facets', () => {
     let store: Store<IReactVaporState>;
 
     beforeEach(() => {
-      let onToggleFacet = jasmine.createSpy('onToggleFacet');
+      const onToggleFacet = jasmine.createSpy('onToggleFacet');
       facet = 'facetTitle';
       facetRows = [<FacetRow
         key='row1'
@@ -49,7 +49,7 @@ describe('Facets', () => {
             facetRows={facetRows}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       facetMoreRows = wrapper.find(FacetMoreRows);
 
@@ -63,14 +63,14 @@ describe('Facets', () => {
     });
 
     it('should get if the rows are opened as a prop', () => {
-      let isOpenedProp = facetMoreRows.props().isOpened;
+      const isOpenedProp = facetMoreRows.props().isOpened;
 
       expect(isOpenedProp).toBeDefined();
       expect(isOpenedProp).toBe(false);
     });
 
     it('should get the text in its filter as a prop', () => {
-      let filterTextProp = facetMoreRows.props().filterText;
+      const filterTextProp = facetMoreRows.props().filterText;
 
       expect(filterTextProp).toBeDefined();
       expect(filterTextProp).toBe('');
@@ -92,7 +92,7 @@ describe('Facets', () => {
     });
 
     it('should show only the filtered rows', () => {
-      let filterId = 'filter-' + facet;
+      const filterId = 'filter-' + facet;
       store.dispatch(addFilter(filterId));
 
       expect(facetMoreRows.find(FacetRow).length).toBe(2);
@@ -107,8 +107,8 @@ describe('Facets', () => {
     });
 
     it('should set the filter value to an empty string when opening', () => {
-      let filterId = 'filter-' + facet;
-      let filterValue = 'something';
+      const filterId = 'filter-' + facet;
+      const filterValue = 'something';
 
       store.dispatch(filterThrough(filterId, filterValue));
       expect(_.findWhere(store.getState().filters, { id: filterId }).filterText).toBe(filterValue);

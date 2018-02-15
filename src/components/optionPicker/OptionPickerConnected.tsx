@@ -1,31 +1,31 @@
-import { ReduxUtils, IReduxAction } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import {
-  IOptionPickerOwnProps,
-  IOptionPickerStateProps,
-  IOptionPickerDispatchProps,
-  OptionPicker,
-  IOptionPickerProps
-} from './OptionPicker';
-import { IOptionPickerState } from './OptionPickerReducers';
-import { addOptionPicker, removeOptionPicker, changeOptionPicker } from './OptionPickerActions';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
-import * as React from 'react';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import {
+  IOptionPickerDispatchProps,
+  IOptionPickerOwnProps,
+  IOptionPickerProps,
+  IOptionPickerStateProps,
+  OptionPicker,
+} from './OptionPicker';
+import { addOptionPicker, changeOptionPicker, removeOptionPicker } from './OptionPickerActions';
+import { IOptionPickerState } from './OptionPickerReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IOptionPickerOwnProps): IOptionPickerStateProps => {
-  let item: IOptionPickerState = _.findWhere(state.optionPickers, { id: ownProps.id });
+  const item: IOptionPickerState = _.findWhere(state.optionPickers, { id: ownProps.id });
 
   return {
-    activeLabel: item ? item.selectedLabel : ''
+    activeLabel: item ? item.selectedLabel : '',
   };
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-  ownProps: IOptionPickerOwnProps): IOptionPickerDispatchProps => ({
+                            ownProps: IOptionPickerOwnProps): IOptionPickerDispatchProps => ({
     onRender: () => dispatch(addOptionPicker(ownProps.id)),
     onDestroy: () => dispatch(removeOptionPicker(ownProps.id)),
-    onClick: (value: string, label: string) => dispatch(changeOptionPicker(ownProps.id, label, value))
+    onClick: (value: string, label: string) => dispatch(changeOptionPicker(ownProps.id, label, value)),
   });
 
 export const OptionPickerConnected: React.ComponentClass<IOptionPickerProps> =

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SingleRadioExample } from './SingleRadioExample';
-import { RadioSelectExample } from './RadioSelectExample';
 import { RadioDisabledExample } from './RadioDisabledExample';
+import { RadioSelectExample } from './RadioSelectExample';
+import { SingleRadioExample } from './SingleRadioExample';
 
 export class RadioExamples extends React.Component<any, any> {
   render() {

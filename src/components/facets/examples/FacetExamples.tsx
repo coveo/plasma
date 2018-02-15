@@ -4,43 +4,43 @@ import { Facet, IFacet } from '../Facet';
 export class FacetExamples extends React.Component<any, any> {
 
   render() {
-    let facet: IFacet = { name: 'facetTitle', formattedName: 'Facet Title' };
-    let facetRows: IFacet[] = [
+    const facet: IFacet = { name: 'facetTitle', formattedName: 'Facet Title' };
+    const facetRows: IFacet[] = [
       {
         name: 'row1',
-        formattedName: 'Row 1'
+        formattedName: 'Row 1',
       }, {
         name: 'row2',
-        formattedName: 'Row 2'
+        formattedName: 'Row 2',
       }, {
         name: 'row3',
-        formattedName: 'Very very long facet name that will get cut'
-      }
+        formattedName: 'Very very long facet name that will get cut',
+      },
     ];
-    let selectedFacetRows: IFacet[] = [{
+    const selectedFacetRows: IFacet[] = [{
       name: 'row2',
-      formattedName: 'Row 2'
+      formattedName: 'Row 2',
     }];
-    let moreFacetRows = facetRows.concat(
+    const moreFacetRows = facetRows.concat(
       {
         name: 'row4',
-        formattedName: 'Row 4'
+        formattedName: 'Row 4',
       },
       {
         name: 'row5',
-        formattedName: 'Row 5'
+        formattedName: 'Row 5',
       },
       {
         name: 'row6',
-        formattedName: 'Row 6'
+        formattedName: 'Row 6',
       },
       {
         name: 'row7',
-        formattedName: 'Row 7'
-      }
+        formattedName: 'Row 7',
+      },
     );
-    let onToggleFacet: (facet: string, facetRow: IFacet) => void = () => { return; };
-    let clearFacet: (facet: string) => void = () => { return; };
+    const onToggleFacet: (facet: string, facetRow: IFacet) => void = () => { return; };
+    const clearFacet: (facet: string) => void = () => { return; };
     return (
       <div className='mt2' style={{ width: 300 }}>
         <div className='form-group'>

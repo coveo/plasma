@@ -67,10 +67,10 @@ export { NavigationPagination } from './components/navigation/pagination/Navigat
 export { NavigationPaginationConnected } from './components/navigation/pagination/NavigationPaginationConnected';
 export { NavigationPerPage, PER_PAGE_NUMBERS } from './components/navigation/perPage/NavigationPerPage';
 export { NavigationPerPageConnected } from './components/navigation/perPage/NavigationPerPageConnected';
-export { SideNavigation } from './components/sideNavigation/SideNavigation'
-export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader'
-export { SideNavigationLoadingItem } from './components/sideNavigation/SideNavigationLoadingItem'
-export { SideNavigationMenuSection } from './components/sideNavigation/SideNavigationMenuSection'
+export { SideNavigation } from './components/sideNavigation/SideNavigation';
+export { SideNavigationLoadingHeader } from './components/sideNavigation/SideNavigationLoadingHeader';
+export { SideNavigationLoadingItem } from './components/sideNavigation/SideNavigationLoadingItem';
+export { SideNavigationMenuSection } from './components/sideNavigation/SideNavigationMenuSection';
 
 // Pagination
 export { paginationCompositeReducer } from './components/navigation/pagination/NavigationPaginationReducers';
@@ -98,6 +98,12 @@ export { actionBarsReducer } from './components/actions/ActionBarReducers';
 export { ActionBarActions, addActionsToActionBar } from './components/actions/ActionBarActions';
 export { addItemFilter, filterItems, ItemFilterActions, removeItemFilter } from './components/actions/filters/ItemFilterActions';
 export { itemFiltersReducer } from './components/actions/filters/ItemFilterReducers';
+export { TriggerAction } from './components/actions/TriggerAction';
+export { LinkAction } from './components/actions/LinkAction';
+export { PrimaryAction } from './components/actions/PrimaryAction';
+export { PrimaryActionConnected } from './components/actions/PrimaryActionConnected';
+export { SecondaryActions } from './components/actions/SecondaryActions';
+export { SecondaryActionsConnected } from './components/actions/SecondaryActionsConnected';
 
 // Table
 export { TableHeader } from './components/tables/TableHeader';
@@ -109,7 +115,7 @@ export { TableCollapsibleRowConnected } from './components/tables/TableCollapsib
 export { TableEmptyRow } from './components/tables/TableEmptyRow';
 export { tableRowsReducer } from './components/tables/TableRowReducers';
 export { TableRowActions, selectRow, unselectAllRows } from './components/tables/TableRowActions';
-export { TableConnected } from './components/tables/TableConnected';
+export { TableConnected, getTableCompositeState } from './components/tables/TableConnected';
 export { tablesReducer } from './components/tables/TableReducers';
 export { addTable, modifyState, removeTable, setIsInError, TableActions } from './components/tables/TableActions';
 export { defaultTableStateModifierThunk, dispatchPreTableStateModification, dispatchPostTableStateModification } from './components/tables/TableDataModifier';
@@ -213,7 +219,7 @@ export {
   IToastAddPayload,
   IToastActionPayload,
   IToastContainerActionPayload,
-  IToastAddOptionalPayload
+  IToastAddOptionalPayload,
 } from './components/toast/ToastActions';
 export { IToastsState, IToastState, toastsContainerInitialState, toastInitialState, toastContainerInitialState, toastsContainerReducer, toastContainerReducer } from './components/toast/ToastReducers';
 export { ToastContainer, IToastContainerDispatchProps, IToastContainerOwnProps, IToastContainerStateProps, IToastContainerProps } from './components/toast/ToastContainer';

@@ -1,15 +1,15 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Checkbox } from '../Checkbox';
 import { IInputProps } from '../../input/Input';
+import { Checkbox } from '../Checkbox';
 
 describe('Checkbox', () => {
   describe('<Checkbox />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Checkbox />
+          <Checkbox />,
         );
       }).not.toThrow();
     });
@@ -21,7 +21,7 @@ describe('Checkbox', () => {
     beforeEach(() => {
       checkbox = mount(
         <Checkbox />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

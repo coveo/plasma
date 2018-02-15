@@ -1,11 +1,11 @@
-import { ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow } from './TableHeadingRow';
-import { addRow, removeRow, selectRow } from './TableRowActions';
-import { ITableRowState } from './TableRowReducers';
-import { IReactVaporState } from '../../ReactVapor';
-import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
+import { IReactVaporState } from '../../ReactVapor';
+import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
+import { ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow } from './TableHeadingRow';
+import { addRow, removeRow, selectRow } from './TableRowActions';
+import { ITableRowState } from './TableRowReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnProps) => {
   const item: ITableRowState = _.findWhere(state.rows, { id: ownProps.id });

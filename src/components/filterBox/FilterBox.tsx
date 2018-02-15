@@ -1,6 +1,6 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import { Svg } from '../svg/Svg';
-import * as classNames from 'classnames';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
   id?: string;

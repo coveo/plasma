@@ -1,15 +1,15 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import * as _ from 'underscore';
-import { ITableHeadingAttribute, IData } from '../Table';
-import { getTableChildComponentId } from '../TableUtils';
-import { TableChildComponent, TOGGLE_ARROW_CELL_COUNT } from '../TableConstants';
-import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
-import { TableRowWrapper } from '../TableRowWrapper';
-import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
 import { convertUndefinedAndNullToEmptyString } from '../../../utils/FalsyValuesUtils';
 import { JSXRenderable } from '../../../utils/JSXUtils';
 import { IActionOptions } from '../../actions/Action';
+import { IData, ITableHeadingAttribute } from '../Table';
+import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
+import { TableChildComponent, TOGGLE_ARROW_CELL_COUNT } from '../TableConstants';
+import { TableHeadingRowConnected } from '../TableHeadingRowConnected';
+import { TableRowWrapper } from '../TableRowWrapper';
+import { getTableChildComponentId } from '../TableUtils';
 
 export interface ITableBodyInheritedFromTableProps {
   getActions?: (rowData?: IData) => IActionOptions[];
@@ -67,7 +67,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         isCollapsible={!!collapsibleData}
         onClickCallback={() => {
           if (props.onRowClick) {
-            props.onRowClick(props.getActions && props.getActions(props.rowData));
+            props.onRowClick(props.getActions(props.rowData));
           }
         }}
         onDoubleClick={() => {
@@ -75,8 +75,8 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             ? props.getActions(props.rowData)
             : [];
           actions
-            .filter(action => action.callOnDoubleClick)
-            .forEach(action => action.trigger());
+            .filter((action) => action.callOnDoubleClick)
+            .forEach((action) => action.trigger());
         }}>
         {tableHeadingRowContent}
       </TableHeadingRowConnected>

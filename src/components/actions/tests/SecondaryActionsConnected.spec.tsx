@@ -1,30 +1,30 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { IActionOptions } from '../Action';
-import { ISecondaryActionsProps, SecondaryActions } from '../SecondaryActions';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Provider } from 'react-redux';
-import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
-import { ActionsDropdownConnected } from '../ActionsDropdownConnected';
-import { PrimaryActionConnected } from '../PrimaryActionConnected';
-import { Store } from 'react-redux';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Store } from 'react-redux';
+import { Provider } from 'react-redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { TestUtils } from '../../../utils/TestUtils';
+import { IActionOptions } from '../Action';
+import { ActionsDropdownConnected } from '../ActionsDropdownConnected';
+import { PrimaryActionConnected } from '../PrimaryActionConnected';
+import { ISecondaryActionsProps, SecondaryActions } from '../SecondaryActions';
+import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
 
 describe('Actions', () => {
-  let id: string = 'secondary-actions';
-  let actions: IActionOptions[] = [{
+  const id: string = 'secondary-actions';
+  const actions: IActionOptions[] = [{
     name: 'action',
     link: 'http://coveo.com',
     target: '_blank',
-    enabled: true
+    enabled: true,
   }, {
     separator: true,
-    enabled: true
+    enabled: true,
   }, {
     name: 'action2',
     trigger: jasmine.createSpy('triggerMethod'),
-    enabled: true
+    enabled: true,
   }];
 
   describe('<SecondaryActionsConnected />', () => {
@@ -42,7 +42,7 @@ describe('Actions', () => {
             id={id}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       secondaryActions = wrapper.find(SecondaryActions).first();
     });
@@ -53,14 +53,14 @@ describe('Actions', () => {
     });
 
     it('should get an id as a prop', () => {
-      let idProp = secondaryActions.props().id;
+      const idProp = secondaryActions.props().id;
 
       expect(idProp).toBeDefined();
       expect(idProp).toBe(id);
     });
 
     it('should get withReduxState as a prop', () => {
-      let withReduxStateProp = secondaryActions.props().withReduxState;
+      const withReduxStateProp = secondaryActions.props().withReduxState;
 
       expect(withReduxStateProp).toBeDefined();
       expect(withReduxStateProp).toBe(true);
@@ -78,7 +78,7 @@ describe('Actions', () => {
             id={id}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       secondaryActions = wrapper.find(SecondaryActions).first();
 

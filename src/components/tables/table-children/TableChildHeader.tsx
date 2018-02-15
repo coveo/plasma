@@ -1,10 +1,10 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
-import { ITableProps, ITableHeadingAttribute } from '../Table';
+import { ITableHeadingAttribute, ITableProps } from '../Table';
+import { TableChildComponent } from '../TableConstants';
+import { TableHeader } from '../TableHeader';
 import { ITableHeaderCellOwnProps } from '../TableHeaderCell';
 import { getTableChildComponentId } from '../TableUtils';
-import { TableChildComponent } from '../TableConstants';
-import * as classNames from 'classnames';
-import { TableHeader } from '../TableHeader';
 
 export const TableChildHeader = (props: ITableProps): JSX.Element => {
   const tableHeaderCells: ITableHeaderCellOwnProps[] = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
@@ -19,7 +19,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
 
   const headerClass = classNames(
     'mod-no-border-top',
-    { 'mod-deactivate-pointer': !!props.tableCompositeState.isLoading }
+    { 'mod-deactivate-pointer': !!props.tableCompositeState.isLoading },
   );
 
   return (

@@ -1,9 +1,9 @@
-import { SetToNowButton } from './SetToNowButton';
-import { DateUtils } from '../../utils/DateUtils';
-import { DateLimits } from './DatePickerActions';
 import * as $ from 'jquery';
 import * as React from 'react';
+import { DateUtils } from '../../utils/DateUtils';
 import { CalendarDay } from '../calendar/CalendarDay';
+import { DateLimits } from './DatePickerActions';
+import { SetToNowButton } from './SetToNowButton';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
   onBlur: (date: Date, isUpperLimit: boolean) => void;
@@ -94,7 +94,6 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
     const nowButton: JSX.Element = this.props.hasSetToNowButton
       ? <SetToNowButton onClick={() => this.setToToday()} tooltip={this.props.setToNowTooltip} />
       : null;
-
 
     const inputClasses: string[] = [`border-${this.props.color}`];
     if (this.isPicked) {

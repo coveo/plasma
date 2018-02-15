@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FilterBoxConnected } from '../FilterBoxConnected';
 
-
 export class FilterBoxConnectedExamples extends React.Component<any, any> {
 
   render() {

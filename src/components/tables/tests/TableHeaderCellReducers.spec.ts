@@ -1,7 +1,7 @@
-import { getNextTableSortingOrder } from '../TableUtils';
 import { TableSortingOrder } from '../TableConstants';
-import { tableHeaderCellsReducer, tableHeaderCellReducer, tableHeaderCellsInitialState } from '../TableHeaderCellReducers';
 import { addHeaderCell, removeHeaderCell, sortFromHeaderCell } from '../TableHeaderCellActions';
+import { tableHeaderCellReducer, tableHeaderCellsInitialState, tableHeaderCellsReducer } from '../TableHeaderCellReducers';
+import { getNextTableSortingOrder } from '../TableUtils';
 
 describe('tableHeaderCellsReducer', () => {
   const testHeaderCell = {

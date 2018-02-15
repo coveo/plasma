@@ -13,15 +13,15 @@ export interface ILoadingActionPayload {
 
 export const addCollapsibleContainer = (id: string, expanded: boolean): IReduxAction<ILoadingActionPayload> => ({
   type: CollapsibleContainerActions.add,
-  payload: { id, expanded }
+  payload: { id, expanded },
 });
 
 export const removeCollapsibleContainer = (id: string): IReduxAction<ILoadingActionPayload> => ({
   type: CollapsibleContainerActions.remove,
-  payload: { id }
+  payload: { id },
 });
 
 export const setExpandedCollapsibleContainer = (id: string, expanded: boolean): IReduxAction<ILoadingActionPayload> => ({
   type: CollapsibleContainerActions.setExpanded,
-  payload: { id, expanded }
+  payload: { id, expanded },
 });

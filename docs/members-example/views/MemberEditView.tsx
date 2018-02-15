@@ -1,10 +1,10 @@
-import * as _ from 'underscore';
 import * as React from 'react';
 import { Action } from 'redux';
-import { ReduxConnect, IReduxProps } from '../../../src/utils/ReduxUtils';
+import * as _ from 'underscore';
 import { Popover } from '../../../src/components/popover/Popover';
-import { toggleOpen, changeEmail, changeSendEmail, applyChanges, cancelChanges } from '../actions/MemberEditionActions';
+import { IReduxProps, ReduxConnect } from '../../../src/utils/ReduxUtils';
 import { IReactVaporExampleState } from '../../Reducers';
+import { applyChanges, cancelChanges, changeEmail, changeSendEmail, toggleOpen } from '../actions/MemberEditionActions';
 import { IMemberAttributes } from '../models/Member';
 import { IMemberEditionState } from '../reducers/MemberEditionReducers';
 
@@ -38,7 +38,7 @@ const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditVi
     item = state.membersCompositeState.addMemberState;
   } else {
     item = _.find(state.membersCompositeState.members, (memberState: IMemberEditionState) => {
-      return memberState.id == ownProps.id;
+      return memberState.id === ownProps.id;
     });
   }
 
@@ -46,7 +46,7 @@ const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditVi
     appliedEmail: item.appliedState ? item.appliedState.email : '',
     email: item.editionState.email,
     sendEmail: item.editionState.sendEmail,
-    isOpen: item.isOpen
+    isOpen: item.isOpen,
   };
 };
 
@@ -56,7 +56,7 @@ const mapDispatchToProps = (dispatch: (action: Action) => void, ownProps: IMembe
     changeMemberEmail: (email: string) => dispatch(changeEmail(ownProps.id, email)),
     changeMemberSendEmail: (sendEmail: boolean) => dispatch(changeSendEmail(ownProps.id, sendEmail)),
     applyMemberChanges: () => dispatch(applyChanges(ownProps.id)),
-    cancelMemberChanges: () => dispatch(cancelChanges(ownProps.id))
+    cancelMemberChanges: () => dispatch(cancelChanges(ownProps.id)),
   };
 };
 
@@ -68,7 +68,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
   private sendEmailCheckbox: HTMLInputElement;
 
   render() {
-    let isNew = _.isNull(this.props.id);
+    const isNew = _.isNull(this.props.id);
 
     return (
       <Popover
@@ -77,7 +77,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
         targetAttachment='bottom left'
         constraints={[{
           to: 'scrollParent',
-          pin: true
+          pin: true,
         }]}
         isOpen={this.props.isOpen}
         onToggle={(isOpen: boolean) => this.props.toggleMemberOpen(isOpen)}

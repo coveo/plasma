@@ -1,8 +1,8 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Radio } from '../Radio';
 import { IInputProps } from '../../input/Input';
+import { Radio } from '../Radio';
 
 describe('Radio', () => {
   const anId = 'patate';
@@ -11,7 +11,7 @@ describe('Radio', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Radio id={anId} />
+          <Radio id={anId} />,
         );
       }).not.toThrow();
     });
@@ -23,7 +23,7 @@ describe('Radio', () => {
     beforeEach(() => {
       radio = mount(
         <Radio id={anId} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 

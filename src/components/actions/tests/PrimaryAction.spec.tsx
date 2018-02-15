@@ -1,19 +1,19 @@
-import { shallow, mount, ReactWrapper } from 'enzyme';
-import { IActionOptions } from '../Action';
-import { PrimaryAction, IPrimaryActionProps } from '../PrimaryAction';
+import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { IActionOptions } from '../Action';
+import { IPrimaryActionProps, PrimaryAction } from '../PrimaryAction';
 
 describe('Actions', () => {
-  let actions: IActionOptions[] = [{
+  const actions: IActionOptions[] = [{
     name: 'action',
     link: 'http://google.com',
     target: '_blank',
-    enabled: true
+    enabled: true,
   }, {
     name: 'action2',
     trigger: jasmine.createSpy('triggerMethod'),
-    enabled: true
+    enabled: true,
   }];
 
   describe('<PrimaryAction />', () => {
@@ -30,7 +30,7 @@ describe('Actions', () => {
     beforeEach(() => {
       primaryAction = mount(
         <PrimaryAction action={actions[0]} />,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
     });
 
@@ -40,7 +40,7 @@ describe('Actions', () => {
     });
 
     it('should get an action as a prop', () => {
-      let actionProp = primaryAction.props().action;
+      const actionProp = primaryAction.props().action;
 
       expect(actionProp).toBeDefined();
       expect(actionProp).toEqual(jasmine.objectContaining(actions[0]));

@@ -5,20 +5,20 @@ import { ITableHeaderCellProps } from '../TableHeaderCell';
 export class TableHeaderExamples extends React.Component<any, any> {
 
   render() {
-    let columns: ITableHeaderCellProps[] = [
+    const columns: ITableHeaderCellProps[] = [
       {
-        title: 'First col'
+        title: 'First col',
       },
       {
-        title: 'Second col'
+        title: 'Second col',
       },
       {
-        title: 'Third col'
+        title: 'Third col',
       },
       {
         title: 'Fourth col',
-        className: 'text-dark-grey'
-      }
+        className: 'text-dark-grey',
+      },
     ];
 
     return (

@@ -49,14 +49,14 @@ export class SubNavigation extends React.Component<ISubNavigationProps, any> {
   render() {
     const selected = this.props.selected || this.props.defaultSelected;
     const items = map(this.props.items, (item: ISubNavigationItem) => {
-      let classes = ['sub-navigation-item'];
+      const classes = ['sub-navigation-item'];
       if (item.id === selected) {
         classes.push('mod-selected');
       }
       return (
         <li key={item.id} className={classes.join(' ')}>
           <a href={item.link || '#'} className='sub-navigation-item-link'
-            onClick={e => this.handleItemClick(e, item.id)}>{item.label}</a>
+            onClick={(e) => this.handleItemClick(e, item.id)}>{item.label}</a>
         </li>
       );
     });

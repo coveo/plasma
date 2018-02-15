@@ -1,28 +1,28 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { INavigationPaginationProps, NavigationPagination } from '../NavigationPagination';
-import { clearState } from '../../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../../ReactVapor';
-import { NavigationPaginationConnected } from '../NavigationPaginationConnected';
-import { TestUtils } from '../../../../utils/TestUtils';
-import { NavigationPaginationSelect } from '../NavigationPaginationSelect';
-import { changePage, resetPaging } from '../NavigationPaginationActions';
-import { addLoading, turnOffLoading } from '../../../loading/LoadingActions';
-import * as _ from 'underscore';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import * as _ from 'underscore';
+import { IReactVaporState } from '../../../../ReactVapor';
+import { clearState } from '../../../../utils/ReduxUtils';
+import { TestUtils } from '../../../../utils/TestUtils';
+import { addLoading, turnOffLoading } from '../../../loading/LoadingActions';
+import { INavigationPaginationProps, NavigationPagination } from '../NavigationPagination';
+import { changePage, resetPaging } from '../NavigationPaginationActions';
+import { NavigationPaginationConnected } from '../NavigationPaginationConnected';
+import { NavigationPaginationSelect } from '../NavigationPaginationSelect';
 
 describe('<NavigationPaginationConnected />', () => {
   let wrapper: ReactWrapper<any, any>;
   let navigationPagination: ReactWrapper<INavigationPaginationProps, any>;
   let fewPagesNavigationPagination: ReactWrapper<INavigationPaginationProps, any>;
   let store: Store<IReactVaporState>;
-  let basicNavigationPaginationProps: INavigationPaginationProps = {
+  const basicNavigationPaginationProps: INavigationPaginationProps = {
     totalPages: 20,
-    id: 'navigation-pagination'
+    id: 'navigation-pagination',
   };
-  let loadingId = basicNavigationPaginationProps.id + '-loading';
+  const loadingId = basicNavigationPaginationProps.id + '-loading';
   basicNavigationPaginationProps.loadingIds = [loadingId];
 
   beforeEach(() => {
@@ -41,7 +41,7 @@ describe('<NavigationPaginationConnected />', () => {
           />
         </div>
       </Provider>,
-      { attachTo: document.getElementById('App') }
+      { attachTo: document.getElementById('App') },
     );
     navigationPagination = wrapper.find(NavigationPagination).first();
     fewPagesNavigationPagination = wrapper.find(NavigationPagination).last();
@@ -54,7 +54,7 @@ describe('<NavigationPaginationConnected />', () => {
   });
 
   it('should get the number of pages as a prop', () => {
-    let totalPagesProp = navigationPagination.props().totalPages;
+    const totalPagesProp = navigationPagination.props().totalPages;
 
     expect(totalPagesProp).toBeDefined();
     expect(totalPagesProp).toBe(basicNavigationPaginationProps.totalPages);
@@ -74,7 +74,7 @@ describe('<NavigationPaginationConnected />', () => {
   });
 
   it('should get what to do on click as a prop', () => {
-    let onPageClickProp = navigationPagination.props().onPageClick;
+    const onPageClickProp = navigationPagination.props().onPageClick;
 
     expect(onPageClickProp).toBeDefined();
   });
@@ -90,7 +90,7 @@ describe('<NavigationPaginationConnected />', () => {
   });
 
   it('should set the previous arrow to disabled if on first page', () => {
-    let previousArrow = navigationPagination.find('.flat-select-option').first();
+    const previousArrow = navigationPagination.find('.flat-select-option').first();
 
     expect(previousArrow.hasClass('disabled')).toBe(true);
 
@@ -100,7 +100,7 @@ describe('<NavigationPaginationConnected />', () => {
   });
 
   it('should set the next arrow to disabled if on last page', () => {
-    let nextArrow = navigationPagination.find('.flat-select-option').last();
+    const nextArrow = navigationPagination.find('.flat-select-option').last();
 
     expect(nextArrow.hasClass('disabled')).toBe(false);
 
@@ -114,17 +114,17 @@ describe('<NavigationPaginationConnected />', () => {
   });
 
   it('should show the last page if there are less pages left than half maximum number of pages shown (7)', () => {
-    let lastPage = basicNavigationPaginationProps.totalPages - 1;
+    const lastPage = basicNavigationPaginationProps.totalPages - 1;
 
-    expect(navigationPagination.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(0);
+    expect(navigationPagination.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(0);
 
     store.dispatch(changePage(basicNavigationPaginationProps.id, lastPage - 4));
 
-    expect(navigationPagination.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(0);
+    expect(navigationPagination.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(0);
 
     store.dispatch(changePage(basicNavigationPaginationProps.id, lastPage - 3));
 
-    expect(navigationPagination.findWhere(select => select.prop('pageNb') === lastPage).length).toBe(1);
+    expect(navigationPagination.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(1);
   });
 
   it('should add loading on page click', () => {

@@ -1,15 +1,15 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
-import { tablePropsMock } from './TableTestCommon';
+import { Provider, Store } from 'react-redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { ITableProps } from '../Table';
 import { TableChildHeader } from '../table-children/TableChildHeader';
 import { TableHeader } from '../TableHeader';
-import { ITableProps } from '../Table';
-import { mount } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
-import { TableHeaderCellConnected } from '../TableHeaderCellConnected';
 import { TableHeaderCell } from '../TableHeaderCell';
+import { TableHeaderCellConnected } from '../TableHeaderCellConnected';
+import { tablePropsMock } from './TableTestCommon';
 
 describe('<TableChildHeader />', () => {
   let store: Store<IReactVaporState>;
@@ -62,14 +62,14 @@ describe('<TableChildHeader />', () => {
     });
 
     it('should have as many connected header cells as there are headerAttribute with sort', () => {
-      const headerAttributesWithSort = tablePropsMock.headingAttributes.map(attribute => ({ ...attribute, sort: true }));
+      const headerAttributesWithSort = tablePropsMock.headingAttributes.map((attribute) => ({ ...attribute, sort: true }));
       const tableHeader = mountComponentWithProps({ ...tablePropsMock, headingAttributes: headerAttributesWithSort }).find(TableHeader);
 
       expect(tableHeader.find(TableHeaderCellConnected).length).toBe(headerAttributesWithSort.length);
     });
 
     it('should have proper sort information for each connected header cell', () => {
-      const headerAttributesWithSort = tablePropsMock.headingAttributes.map(attribute => ({ ...attribute, sort: true }));
+      const headerAttributesWithSort = tablePropsMock.headingAttributes.map((attribute) => ({ ...attribute, sort: true }));
       const tableHeader = mountComponentWithProps({ ...tablePropsMock, headingAttributes: headerAttributesWithSort }).find(TableHeader);
 
       tableHeader.find(TableHeaderCellConnected).forEach((headerCell, index) => {

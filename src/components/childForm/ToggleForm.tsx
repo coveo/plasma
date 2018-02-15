@@ -1,12 +1,12 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import { Input } from '../input/Input';
 import { ChildForm } from './ChildForm';
 
 export interface IToggleFormProps {
   classes?: string[];
   checked?: boolean;
-  children?: React.ReactElement<Input | ChildForm> | React.ReactElement<Input | ChildForm>[];
+  children?: React.ReactElement<Input | ChildForm> | Array<React.ReactElement<Input | ChildForm>>;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   value?: string;
 }
@@ -37,7 +37,7 @@ export class ToggleForm extends React.Component<IToggleFormProps, any> {
 
   private cloneChildForm(child: React.ReactElement<any>) {
     return React.cloneElement(child, {
-      disabled: !this.props.checked
+      disabled: !this.props.checked,
     });
   }
 

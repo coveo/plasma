@@ -1,8 +1,8 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import { contains, isUndefined } from 'underscore';
-import { ILabelProps, Label } from './Label';
 import { IClassName } from '../../utils/ClassNameUtils';
+import { ILabelProps, Label } from './Label';
 
 export interface IInputOwnProps {
   id?: string;
@@ -117,7 +117,7 @@ export class Input extends React.Component<IInputProps, any> {
       {
         'input-field': contains(['number', 'text'], this.props.type),
       },
-      this.props.classes
+      this.props.classes,
     );
     const innerInputClasses = classNames({
       invalid: !this.props.valid && contains(['number', 'text'], this.props.type),

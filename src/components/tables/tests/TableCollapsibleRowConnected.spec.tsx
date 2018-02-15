@@ -1,14 +1,14 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { TestUtils } from '../../../utils/TestUtils';
-import { ITableCollapsibleRowProps, TableCollapsibleRow } from '../TableCollapsibleRow';
-import { Store } from 'react-redux';
-import { IReactVaporState } from '../../../ReactVapor';
-import { Provider } from 'react-redux';
-import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
-import { clearState } from '../../../utils/ReduxUtils';
-import { addRow } from '../TableRowActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Store } from 'react-redux';
+import { Provider } from 'react-redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { ITableCollapsibleRowProps, TableCollapsibleRow } from '../TableCollapsibleRow';
+import { TableCollapsibleRowConnected } from '../TableCollapsibleRowConnected';
+import { addRow } from '../TableRowActions';
 
 describe('Tables', () => {
 
@@ -28,8 +28,8 @@ describe('Tables', () => {
           errorPrecision: 'the row is in error',
           errorTroubleshoot: 'you should do something',
           errorStatus: 'urgent',
-          errorCode: 'error_1'
-        }
+          errorCode: 'error_1',
+        },
       };
 
       store = TestUtils.buildStore();
@@ -42,7 +42,7 @@ describe('Tables', () => {
             </tbody>
           </table>
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       tableCollapsibleRow = wrapper.find(TableCollapsibleRow).first();
       store.dispatch(addRow(basicTableCollapsibleRowProps.id));
@@ -55,7 +55,7 @@ describe('Tables', () => {
     });
 
     it('should get if it is opened as a prop', () => {
-      let openedProp = tableCollapsibleRow.props().opened;
+      const openedProp = tableCollapsibleRow.props().opened;
 
       expect(openedProp).toBeDefined();
       expect(openedProp).toBe(false);

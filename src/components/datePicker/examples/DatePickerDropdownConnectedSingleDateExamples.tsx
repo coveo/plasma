@@ -1,7 +1,7 @@
-import { DatePickerDropdownConnected } from '../DatePickerDropdownConnected';
-import { SELECTION_BOX, CALENDAR_SELECTION_RULES_SINGLE_DATE } from './DatePickerExamplesCommon';
-import { DateUtils } from '../../../utils/DateUtils';
 import * as React from 'react';
+import { DateUtils } from '../../../utils/DateUtils';
+import { DatePickerDropdownConnected } from '../DatePickerDropdownConnected';
+import { CALENDAR_SELECTION_RULES_SINGLE_DATE, SELECTION_BOX } from './DatePickerExamplesCommon';
 
 export class DatePickerDropdownConnectedSingleDateExamples extends React.Component<any, any> {
 

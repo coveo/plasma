@@ -1,5 +1,5 @@
-import { MultilineInput, IMultilineInputValue } from '../MultilineInput';
 import * as React from 'react';
+import { IMultilineInputValue, MultilineInput } from '../MultilineInput';
 
 export interface IMultilineInputExampleProps { }
 
@@ -9,16 +9,16 @@ export interface IMultilineInputExampleStateProps {
 
 export class MultilineInputExamples extends React.Component<IMultilineInputExampleProps, IMultilineInputExampleStateProps> {
   constructor(props: IMultilineInputExampleProps,
-    state: IMultilineInputExampleStateProps) {
+              state: IMultilineInputExampleStateProps) {
     super(props, state);
     this.state = {
-      values: []
+      values: [],
     };
   }
 
   private handleChange(values: IMultilineInputValue[]) {
     this.setState({
-      values
+      values,
     });
   }
 

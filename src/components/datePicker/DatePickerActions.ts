@@ -36,7 +36,7 @@ export interface ISelectDatePickerPayload extends IDatePickerPayload {
 
 export const DateLimits = {
   lower: 'lower',
-  upper: 'upper'
+  upper: 'upper',
 };
 
 export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLimit = undefined, color: string = DEFAULT_DATE_PICKER_COLOR,
@@ -56,46 +56,46 @@ export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLi
 export const removeDatePicker = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const resetDatePickers = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.reset,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const applyDatePicker = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.apply,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const changeDatePickerLowerLimit = (id: string, date: Date): IReduxAction<IChangeDatePickerPayload> => ({
   type: DatePickerActions.changeLowerLimit,
   payload: {
     id,
-    date
-  }
+    date,
+  },
 });
 
 export const changeDatePickerUpperLimit = (id: string, date: Date): IReduxAction<IChangeDatePickerPayload> => ({
   type: DatePickerActions.changeUpperLimit,
   payload: {
     id,
-    date
-  }
+    date,
+  },
 });
 
 export const selectDate = (id: string, limit: string): IReduxAction<ISelectDatePickerPayload> => ({
   type: DatePickerActions.select,
   payload: {
     id,
-    limit
-  }
+    limit,
+  },
 });
 
 export const clearSelection = (id: string): IReduxAction<IDatePickerPayload> => ({

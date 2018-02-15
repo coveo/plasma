@@ -4,7 +4,7 @@ export const OptionPickerActions = {
   add: 'ADD_OPTION_PICKER',
   remove: 'REMOVE_OPTION_PICKER',
   change: 'CHANGE_OPTION',
-  reset: 'RESET_OPTION_PICKERS'
+  reset: 'RESET_OPTION_PICKERS',
 };
 
 export interface IOptionPickerPayload {
@@ -19,15 +19,15 @@ export interface IChangeOptionPayload extends IOptionPickerPayload {
 export const addOptionPicker = (id: string): IReduxAction<IOptionPickerPayload> => ({
   type: OptionPickerActions.add,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const removeOptionPicker = (id: string): IReduxAction<IOptionPickerPayload> => ({
   type: OptionPickerActions.remove,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
 export const changeOptionPicker = (id: string, label: string, value: string): IReduxAction<IChangeOptionPayload> => ({
@@ -35,13 +35,13 @@ export const changeOptionPicker = (id: string, label: string, value: string): IR
   payload: {
     id,
     label,
-    value
-  }
+    value,
+  },
 });
 
 export const resetOptionPickers = (id: string): IReduxAction<IOptionPickerPayload> => ({
   type: OptionPickerActions.reset,
   payload: {
-    id
-  }
+    id,
+  },
 });

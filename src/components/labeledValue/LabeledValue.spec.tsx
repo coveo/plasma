@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { LabeledValue } from './LabeledValue';
+import * as React from 'react';
 import { TooltipPlacement } from '../../utils/TooltipUtils';
-import { Tooltip } from '../tooltip/Tooltip';
 import { Svg } from '../svg/Svg';
+import { Tooltip } from '../tooltip/Tooltip';
+import { LabeledValue } from './LabeledValue';
 
 describe('LabeledValue', () => {
   const props = { label: 'label', value: 'value' };
@@ -38,7 +38,7 @@ describe('LabeledValue', () => {
         <LabeledValue
           {...props}
           information='some info'
-          informationPlacement={TooltipPlacement.Bottom} />
+          informationPlacement={TooltipPlacement.Bottom} />,
       );
     }).not.toThrow();
   });
@@ -51,7 +51,7 @@ describe('LabeledValue', () => {
       labeledValue = shallow(
         <LabeledValue
           {...props}
-          information={testInformations} />
+          information={testInformations} />,
       );
     });
 

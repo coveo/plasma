@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
-import { IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction } from './ToastActions';
+import { ComponentContent } from '../../utils/ComponentUtils';
 import { IReduxAction } from '../../utils/ReduxUtils';
 import { ToastType } from './Toast';
-import { ComponentContent } from '../../utils/ComponentUtils';
+import { IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction } from './ToastActions';
 
 export interface IToastsState {
   id: string;
@@ -37,7 +37,7 @@ export const toastInitialState: IToastState = {
 export const toastsContainerInitialState: IToastsState[] = [];
 
 export const toastContainerReducer = (state: IToastsState = toastContainerInitialState,
-  action: IReduxAction<IToastContainerActionPayload>): IToastsState => {
+                                      action: IReduxAction<IToastContainerActionPayload>): IToastsState => {
   switch (action.type) {
     case ToastAction.addToastContainer:
       return {
@@ -68,7 +68,7 @@ const toastsReducer = (state: IToastState[], action: IReduxAction<IToastActionPa
 };
 
 export const toastsContainerReducer = (state: IToastsState[] = toastsContainerInitialState,
-  action: IReduxAction<IToastContainerActionPayload>): IToastsState[] => {
+                                       action: IReduxAction<IToastContainerActionPayload>): IToastsState[] => {
   switch (action.type) {
     case ToastAction.addToastContainer:
       return [...state, toastContainerReducer(undefined, action)];

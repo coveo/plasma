@@ -1,5 +1,5 @@
-import { FilterBox } from '../FilterBox';
 import * as React from 'react';
+import { FilterBox } from '../FilterBox';
 
 export class FilterBoxExamples extends React.Component<any, any> {
 

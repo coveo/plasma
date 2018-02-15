@@ -1,9 +1,9 @@
-import { IReactVaporState } from '../../ReactVapor';
-import { IInputOwnProps, IInputStateProps, IInputDispatchProps, IInputProps, Input } from './Input';
-import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
-import { addInput, removeInput, changeInputValue } from './InputActions';
 import { connect } from 'react-redux';
 import { findWhere } from 'underscore';
+import { IReactVaporState } from '../../ReactVapor';
+import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
+import { IInputDispatchProps, IInputOwnProps, IInputProps, IInputStateProps, Input } from './Input';
+import { addInput, changeInputValue, removeInput } from './InputActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IInputOwnProps): IInputStateProps => {
   const input = findWhere(state.inputs, { id: ownProps.id });

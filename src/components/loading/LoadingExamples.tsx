@@ -1,5 +1,5 @@
-import { Loading } from './Loading';
 import * as React from 'react';
+import { Loading } from './Loading';
 
 export class LoadingExamples extends React.Component<any, any> {
 

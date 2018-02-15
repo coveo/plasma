@@ -1,16 +1,18 @@
-import * as React from 'react';
-import * as _ from 'underscore';
-import { tablePropsMock } from './TableTestCommon';
-import { TableChildActionBar } from '../table-children/TableChildActionBar';
 import { mount } from 'enzyme';
-import { clearState } from '../../../utils/ReduxUtils';
+import * as React from 'react';
+import { Provider, Store } from 'react-redux';
+import * as _ from 'underscore';
 import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
-import { Store, Provider } from 'react-redux';
-import { ITableProps } from '../Table';
 import { ActionBarConnected } from '../../actions/ActionBarConnected';
-import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
+import { DatePickerDropdownConnected } from '../../datePicker/DatePickerDropdownConnected';
+import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
+import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
+import { ITableProps } from '../Table';
+import { TableChildActionBar } from '../table-children/TableChildActionBar';
+import { tablePropsMock } from './TableTestCommon';
 
 describe('<TableChildActionBar />', () => {
   let store: Store<IReactVaporState>;
@@ -52,6 +54,12 @@ describe('<TableChildActionBar />', () => {
         }).not.toThrow();
       });
 
+      it('should render without error if an actionBar prop and a datePicker prop are passed', () => {
+        expect(() => {
+          mountComponentWithProps({ ...tablePropsMock, actionBar: true, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' } });
+        }).not.toThrow();
+      });
+
       it('should render without error if an actionBar prop, a filter prop, and one predicate are passed', () => {
         expect(() => {
           mountComponentWithProps({
@@ -78,6 +86,21 @@ describe('<TableChildActionBar />', () => {
           });
         }).not.toThrow();
       });
+
+      it('should render without error if an actionBar prop, a filter prop, a datePicker prop and two predicate are passed', () => {
+        expect(() => {
+          mountComponentWithProps({
+            ...tablePropsMock,
+            actionBar: true,
+            filter: true,
+            predicates: [
+              { attributeName: 'email', attributeNameFormatter: _.identity, props: {} },
+              { attributeName: 'userName', attributeNameFormatter: _.identity, props: {} },
+            ],
+            datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' },
+          });
+        }).not.toThrow();
+      });
     });
 
     describe('render content', () => {
@@ -93,6 +116,12 @@ describe('<TableChildActionBar />', () => {
         const tableActionBar = mountComponentWithProps({ ...tablePropsMock, actionBar: true, filter: true });
         expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
         expect(tableActionBar.find(ActionBarConnected).find(FilterBoxConnected).length).toBe(1);
+      });
+
+      it('should render with an action bar and a datePicker inside it if there is an actionBar prop and a datePicker prop', () => {
+        const tableActionBar = mountComponentWithProps({ ...tablePropsMock, actionBar: true, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date' } });
+        expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
+        expect(tableActionBar.find(ActionBarConnected).find(DatePickerDropdownConnected).length).toBe(1);
       });
 
       it('should render with an action bar and a predicate inside it if there is an actionBar prop and one predicate', () => {

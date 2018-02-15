@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export interface IModalBackdropOwnProps {
   displayFor?: string[];
+  isPrompt?: boolean;
 }
 
 export interface IModalBackdropStateProps {
@@ -24,11 +25,11 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
   }
 
   render() {
-    let classes = ['modal-backdrop'];
+    const classes = ['modal-backdrop'];
     if (!this.props.display) {
       classes.push('closed');
     }
-    if (this.props.displayFor && this.props.displayFor.length > 0) {
+    if (this.props.isPrompt) {
       classes.push('prompt-backdrop');
     }
 

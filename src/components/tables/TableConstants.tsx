@@ -7,7 +7,7 @@ export enum TableSortingOrder {
 }
 
 export const DEFAULT_TABLE_PER_PAGE = 100000; // show any number of rows if per page is not present
-export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0, });
+export const DEFAULT_TABLE_DATA: ITableData = Object.freeze({ byId: {}, allIds: [], displayedIds: [], totalEntries: 0, totalPages: 0 });
 
 export const TABLE_PREDICATE_DEFAULT_VALUE = 'ALL';
 export const TOGGLE_ARROW_CELL_COUNT = 1;
@@ -17,6 +17,8 @@ export const TABLE_PREDICATE_ID_PREFIX = 'predicate-';
 
 export enum TableChildComponent {
   ACTION_BAR = 'action-bar',
+  DATEPICKER = 'datepicker',
+  DATEPICKER_RANGE = 'datepicker-date-range',
   FILTER = 'filter',
   NAVIGATION = 'navigation',
   PAGINATION = 'pagination',

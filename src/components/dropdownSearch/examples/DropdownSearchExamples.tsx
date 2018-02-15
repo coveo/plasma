@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import * as _ from 'underscore';
 import { UUID } from '../../../utils/UUID';
+import { DropdownSearchConnected } from '../DropdownSearchConnected';
 import { MultiSelectDropdownSearchConnected } from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 
 export class DropdownSearchExamples extends React.Component<any, any> {
@@ -10,11 +10,11 @@ export class DropdownSearchExamples extends React.Component<any, any> {
     const defaultOptions = {
       defaultOptions: [
         { value: 'Option 1', displayValue: 'Option 1', hidden: false },
-        { value: 'Option 2', displayValue: 'Option 2', },
-        { value: 'Option 3', displayValue: 'Option 3', },
-        { value: 'Option 4', displayValue: 'Option 4', },
-        { value: 'Option 5', displayValue: 'Option 5', },
-        { value: 'Option 6', displayValue: 'Option 6', },
+        { value: 'Option 2', displayValue: 'Option 2' },
+        { value: 'Option 3', displayValue: 'Option 3' },
+        { value: 'Option 4', displayValue: 'Option 4' },
+        { value: 'Option 5', displayValue: 'Option 5' },
+        { value: 'Option 6', displayValue: 'Option 6' },
       ],
     };
 

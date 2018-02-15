@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ListBox } from '../ListBox';
-import { ITooltipProps } from '../../tooltip/Tooltip';
 import { IItemBoxProps } from '../../itemBox/ItemBox';
+import { ITooltipProps } from '../../tooltip/Tooltip';
+import { ListBox } from '../ListBox';
 
 export class ListBoxExamples extends React.Component {
   render() {
@@ -57,4 +57,3 @@ export class ListBoxExamples extends React.Component {
     );
   }
 }
-

@@ -1,7 +1,7 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { CollapsibleContainerActions } from './CollapsibleContainerActions';
 import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { CollapsibleContainerActions } from './CollapsibleContainerActions';
 
 export interface ICollapsibleContainerState {
   id: string;

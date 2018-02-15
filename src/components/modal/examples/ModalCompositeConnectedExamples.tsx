@@ -14,7 +14,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => ({
   openModal: (id: string) => dispatch(openModal(id)),
-  closeModal: (id: string) => dispatch(closeModal(id))
+  closeModal: (id: string) => dispatch(closeModal(id)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)

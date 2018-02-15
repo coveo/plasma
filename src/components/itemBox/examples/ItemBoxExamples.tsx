@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ItemBox } from '../ItemBox';
-import { ITooltipProps } from '../../tooltip/Tooltip';
-import { ISvgProps, Svg } from '../../svg/Svg';
 import { IContentProps } from '../../content/Content';
+import { ISvgProps, Svg } from '../../svg/Svg';
+import { ITooltipProps } from '../../tooltip/Tooltip';
+import { ItemBox } from '../ItemBox';
 
 export class ItemBoxExamples extends React.Component<any, any> {
   render() {

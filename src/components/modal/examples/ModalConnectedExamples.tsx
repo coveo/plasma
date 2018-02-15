@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { IReduxAction, ReduxConnect } from '../../../utils/ReduxUtils';
-import { openModal, IModalActionPayload, closeModal } from '../ModalActions';
-import { ModalConnected } from '../ModalConnected';
-import { ModalBody } from '../ModalBody';
-import { ModalFooter } from '../ModalFooter';
+import { closeModal, IModalActionPayload, openModal } from '../ModalActions';
 import { ModalBackdropConnected } from '../ModalBackdropConnected';
+import { ModalBody } from '../ModalBody';
+import { ModalConnected } from '../ModalConnected';
+import { ModalFooter } from '../ModalFooter';
 import { ModalHeaderConnected } from '../ModalHeaderConnected';
 
 export interface IModalExamplesProps {
@@ -19,7 +19,7 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => ({
   openModal: (id: string) => dispatch(openModal(id)),
-  closeModal: (id: string) => dispatch(closeModal(id))
+  closeModal: (id: string) => dispatch(closeModal(id)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -50,13 +50,13 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
                     A modal in a modal
                   </ModalBody>
                 </ModalConnected>
-                <ModalBackdropConnected displayFor={['modal2']} />
+                <ModalBackdropConnected displayFor={[modal2Id]} isPrompt />
               </ModalBody>
               <ModalFooter>
-                <button className='btn' onClick={() => { this.openModal('modal2'); }}>Open Modal 2</button>
+                <button className='btn' onClick={() => { this.openModal(modal2Id); }}>Open Modal 2</button>
               </ModalFooter>
             </ModalConnected>
-            <ModalBackdropConnected />
+            <ModalBackdropConnected displayFor={[modal1Id]} />
           </div>
         </div>
       </div>

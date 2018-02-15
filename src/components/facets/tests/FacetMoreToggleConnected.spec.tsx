@@ -1,19 +1,19 @@
 import { mount, ReactWrapper } from 'enzyme';
-import { Store } from 'redux';
-import { Provider } from 'react-redux';
-import { IFacetMoreToggleProps, FacetMoreToggle } from '../FacetMoreToggle';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { FacetMoreToggleConnected } from '../FacetMoreToggleConnected';
-import { addFacet, toggleMoreFacetRows } from '../FacetActions';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { addFacet, toggleMoreFacetRows } from '../FacetActions';
+import { FacetMoreToggle, IFacetMoreToggleProps } from '../FacetMoreToggle';
+import { FacetMoreToggleConnected } from '../FacetMoreToggleConnected';
 
 describe('Facets', () => {
 
   describe('<FacetMoreToggleConnected />', () => {
-    let facet: string = 'facet title';
+    const facet: string = 'facet title';
     let wrapper: ReactWrapper<any, any>;
     let facetMoreToggle: ReactWrapper<IFacetMoreToggleProps, any>;
     let store: Store<IReactVaporState>;
@@ -27,7 +27,7 @@ describe('Facets', () => {
             facet={facet}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') }
+        { attachTo: document.getElementById('App') },
       );
       facetMoreToggle = wrapper.find(FacetMoreToggle);
 
@@ -41,14 +41,14 @@ describe('Facets', () => {
     });
 
     it('should get its state (opened or not) as a prop', () => {
-      let openedProp = facetMoreToggle.props().isOpened;
+      const openedProp = facetMoreToggle.props().isOpened;
 
       expect(openedProp).toBeDefined();
       expect(openedProp).toBe(false);
     });
 
     it('should get what to do when toggling it as a prop', () => {
-      let onToggleProp = facetMoreToggle.props().onToggleMore;
+      const onToggleProp = facetMoreToggle.props().onToggleMore;
 
       expect(onToggleProp).toBeDefined();
     });

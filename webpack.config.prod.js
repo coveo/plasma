@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-
-const tslintConfig = require('./tslint');
+const isTravis = process.env.TRAVIS;
 
 const TARGET = process.env.TARGET || null;
 
@@ -29,10 +28,10 @@ const config = {
         use: {
           loader: 'tslint-loader',
           options: {
-            configuration: tslintConfig,
+            configFile: './node_modules/tsjs/tslint.json',
+            tsConfigFile: './tsconfig.json',
             emitErrors: true,
-            failOnHint: false,
-            formattersDirectory: path.resolve(__dirname, 'node_modules/tslint-loader/formatters/'),
+            failOnHint: isTravis,
           },
         },
       },

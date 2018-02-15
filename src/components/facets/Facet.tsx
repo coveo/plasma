@@ -1,13 +1,13 @@
-import { Svg } from '../svg/Svg';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { FacetMoreToggleConnected } from './FacetMoreToggleConnected';
-import { FacetMoreToggle } from './FacetMoreToggle';
-import { FacetMoreRowsConnected } from './FacetMoreRowsConnected';
-import { FacetMoreRows } from './FacetMoreRows';
-import { FacetRow } from './FacetRow';
-import { Tooltip } from '../tooltip/Tooltip';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import { Svg } from '../svg/Svg';
+import { Tooltip } from '../tooltip/Tooltip';
+import { FacetMoreRows } from './FacetMoreRows';
+import { FacetMoreRowsConnected } from './FacetMoreRowsConnected';
+import { FacetMoreToggle } from './FacetMoreToggle';
+import { FacetMoreToggleConnected } from './FacetMoreToggleConnected';
+import { FacetRow } from './FacetRow';
 
 export interface IFacet {
   name: string;
@@ -46,7 +46,7 @@ export const CLEAR_FACET_LABEL: string = 'Clear';
 export class Facet extends React.Component<IFacetProps, any> {
   static defaultProps: Partial<IFacetProps> = {
     clearFacetLabel: CLEAR_FACET_LABEL,
-    selectedFacetRows: []
+    selectedFacetRows: [],
   };
 
   private buildFacet = (facetRow: IFacet) => {
@@ -84,7 +84,7 @@ export class Facet extends React.Component<IFacetProps, any> {
     const selected: IFacet[] = this.sortFacetRows(this.props.selectedFacetRows);
     const unselected: IFacet[] = this.sortFacetRows(this.props.facetRows);
     const allRows: IFacet[] = _.union(selected, unselected);
-    const facetRows: IFacet[] = _.uniq(allRows, false, item => item.name);
+    const facetRows: IFacet[] = _.uniq(allRows, false, (item) => item.name);
     const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
       return (<FacetRow
         key={facetRow.name}

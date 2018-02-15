@@ -1,10 +1,10 @@
-import {
-  DatesSelection,
-  IDatesSelectionDispatchProps,
-  IDatesSelectionOwnProps,
-  IDatesSelectionProps,
-  IDatesSelectionStateProps
-} from './DatesSelection';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import * as _ from 'underscore';
+import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
+import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
+import { IOptionPickerState } from '../optionPicker/OptionPickerReducers';
 import {
   addDatePicker,
   changeDatePickerLowerLimit,
@@ -13,14 +13,14 @@ import {
   removeDatePicker,
   selectDate,
 } from './DatePickerActions';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
 import { IDatePickerState } from './DatePickerReducers';
-import { IOptionPickerState } from '../optionPicker/OptionPickerReducers';
-import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
-import { connect } from 'react-redux';
-import * as _ from 'underscore';
-import * as React from 'react';
+import {
+  DatesSelection,
+  IDatesSelectionDispatchProps,
+  IDatesSelectionOwnProps,
+  IDatesSelectionProps,
+  IDatesSelectionStateProps,
+} from './DatesSelection';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnProps): IDatesSelectionStateProps => {
   const item: IDatePickerState = _.findWhere(state.datePickers, { id: ownProps.id });
@@ -37,7 +37,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnPr
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-  ownProps: IDatesSelectionOwnProps): IDatesSelectionDispatchProps => ({
+                            ownProps: IDatesSelectionOwnProps): IDatesSelectionDispatchProps => ({
     onRender: () => {
       dispatch(addDatePicker(ownProps.id,
         ownProps.isRange,

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IFlatSelectOptionProps } from '../FlatSelectOption';
 import { UUID } from '../../../utils/UUID';
-import { FlatSelectConnected } from '../FlatSelectConnected';
-import { ISvgProps, Svg } from '../../svg/Svg';
 import { IContentProps } from '../../content/Content';
 import { Loading } from '../../loading/Loading';
+import { ISvgProps, Svg } from '../../svg/Svg';
+import { FlatSelectConnected } from '../FlatSelectConnected';
+import { IFlatSelectOptionProps } from '../FlatSelectOption';
 
 export class FlatSelectExamples extends React.Component {
 

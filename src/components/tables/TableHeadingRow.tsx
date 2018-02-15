@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
-import { TableCollapsibleRowToggle } from './TableCollapsibleRowToggle';
 import * as React from 'react';
+import { TableCollapsibleRowToggle } from './TableCollapsibleRowToggle';
 
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
   id?: string;

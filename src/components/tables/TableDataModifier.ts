@@ -1,31 +1,32 @@
-import { ITableState, ITableCompositeState } from './TableReducers';
-import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { TABLE_PREDICATE_DEFAULT_VALUE, TableSortingOrder, TableChildComponent, DEFAULT_TABLE_PER_PAGE } from './TableConstants';
+import * as moment from 'moment';
 import * as _ from 'underscore';
 import { contains } from 'underscore.string';
-import { ITableOwnProps, ITableHeadingAttribute, ITableRowData } from './Table';
-import { turnOnLoading, turnOffLoading } from '../loading/LoadingActions';
-import { getTableLoadingIds, getTableChildComponentId } from './TableUtils';
-import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
-import { modifyState, ITableStateModifier } from './TableActions';
-import { addActionsToActionBar } from '../actions/ActionBarActions';
-import { unselectAllRows } from './TableRowActions';
+import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
 import { IDispatch } from '../../utils/ReduxUtils';
+import { addActionsToActionBar } from '../actions/ActionBarActions';
+import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
+import { turnOffLoading, turnOnLoading } from '../loading/LoadingActions';
+import { ITableHeadingAttribute, ITableOwnProps, ITableRowData } from './Table';
+import { ITableStateModifier, modifyState } from './TableActions';
+import { DEFAULT_TABLE_PER_PAGE, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder } from './TableConstants';
+import { ITableCompositeState, ITableState } from './TableReducers';
+import { unselectAllRows } from './TableRowActions';
+import { getTableChildComponentId, getTableLoadingIds } from './TableUtils';
 
-export const dispatchPreTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: IDispatch) => {
-  dispatch(unselectAllRows(tableOwnProps.id));
+export const dispatchPreTableStateModification = (tableId: string, dispatch: IDispatch) => {
+  dispatch(unselectAllRows(tableId));
   dispatch(
     addActionsToActionBar(
-      getTableChildComponentId(tableOwnProps.id, TableChildComponent.ACTION_BAR),
+      getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
       [],
     ),
   );
-  dispatch(turnOnLoading(getTableLoadingIds(tableOwnProps.id)));
+  dispatch(turnOnLoading(getTableLoadingIds(tableId)));
 };
 
-export const dispatchPostTableStateModification = (tableOwnProps: ITableOwnProps, dispatch: IDispatch) => {
-  dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
-  dispatch(changeLastUpdated(getTableChildComponentId(tableOwnProps.id, TableChildComponent.LAST_UPDATED)));
+export const dispatchPostTableStateModification = (tableId: string, dispatch: IDispatch) => {
+  dispatch(turnOffLoading(getTableLoadingIds(tableId)));
+  dispatch(changeLastUpdated(getTableChildComponentId(tableId, TableChildComponent.LAST_UPDATED)));
 };
 
 export const applyPredicatesOnDisplayedIds = (
@@ -79,6 +80,23 @@ export const applyFilterOnDisplayedIds = (
   return nextDisplayedIds;
 };
 
+export const applyDatePickerOnDisplayedIds = (
+  nextDisplayedIds: string[],
+  tableDataById: ITableRowData,
+  tableCompositeState: ITableCompositeState,
+  tableOwnProps: ITableOwnProps,
+): string[] => {
+  const { from, to } = tableCompositeState;
+  const { datePicker } = tableOwnProps;
+  if (from && to && datePicker && datePicker.attributeName) {
+    nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean =>
+      moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to),
+    );
+  }
+
+  return nextDisplayedIds;
+};
+
 export const applySortOnDisplayedIds = (
   nextDisplayedIds: string[],
   tableDataById: ITableRowData,
@@ -124,6 +142,7 @@ export const defaultTableStateModifier = (
 
     nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
     nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+    nextDisplayedIds = applyDatePickerOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
 
     const totalEntries = nextDisplayedIds.length;
     const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));

@@ -1,16 +1,16 @@
-import { filterThrough, removeFilter, addFilter } from './FilterBoxActions';
-import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
-import { IReactVaporState } from '../../ReactVapor';
-import {
-  FilterBox,
-  IFilterBoxOwnProps,
-  IFilterBoxStateProps,
-  IFilterBoxDispatchProps,
-  IFilterBoxProps
-} from './FilterBox';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import * as _ from 'underscore';
-import * as React from 'react';
+import { IReactVaporState } from '../../ReactVapor';
+import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
+import {
+  FilterBox,
+  IFilterBoxDispatchProps,
+  IFilterBoxOwnProps,
+  IFilterBoxProps,
+  IFilterBoxStateProps,
+} from './FilterBox';
+import { addFilter, filterThrough, removeFilter } from './FilterBoxActions';
 
 const FILTER_THROUGH_DEBOUNCE = 400;
 export const debouncedFilterThrough = _.debounce(
@@ -19,10 +19,10 @@ export const debouncedFilterThrough = _.debounce(
 );
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFilterBoxOwnProps): IFilterBoxStateProps => {
-  let filterItem = _.findWhere(state.filters, { id: ownProps.id });
+  const filterItem = _.findWhere(state.filters, { id: ownProps.id });
 
   return {
-    filterText: filterItem ? filterItem.filterText : ''
+    filterText: filterItem ? filterItem.filterText : '',
   };
 };
 

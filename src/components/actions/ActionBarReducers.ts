@@ -1,9 +1,9 @@
+import * as _ from 'underscore';
+import { IReduxActionsPayload } from '../../ReactVapor';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { LoadingActions } from '../loading/LoadingActions';
 import { IActionOptions } from './Action';
 import { ActionBarActions } from './ActionBarActions';
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import * as _ from 'underscore';
-import { LoadingActions } from '../loading/LoadingActions';
 
 export interface IActionBarState {
   id: string;
@@ -44,13 +44,13 @@ export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialSt
     case ActionBarActions.addActions:
     case LoadingActions.turnOn:
     case LoadingActions.turnOff:
-      return state.map(bar =>
-        actionBarReducer(bar, action)
+      return state.map((bar) =>
+        actionBarReducer(bar, action),
       );
     case ActionBarActions.add:
       return [
         ...state,
-        actionBarReducer(undefined, action)
+        actionBarReducer(undefined, action),
       ];
     case ActionBarActions.remove:
       return _.reject(state, (bar) => {

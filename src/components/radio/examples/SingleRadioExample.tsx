@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Radio } from '../Radio';
 import { Label } from '../../input/Label';
+import { Radio } from '../Radio';
 
 export class SingleRadioExample extends React.Component<any, any> {
   render() {

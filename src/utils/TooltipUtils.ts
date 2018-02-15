@@ -3,4 +3,4 @@ export enum TooltipPlacement {
   Bottom = 'bottom',
   Left = 'left',
   Right = 'right',
-};
+}

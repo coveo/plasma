@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { TabNavigation } from '../TabNavigation';
 import { TabConnected } from '../TabConnected';
 import { TabContent } from '../TabContent';
+import { TabNavigation } from '../TabNavigation';
 import { TabPaneConnected } from '../TabPaneConnected';
 
 const TAB1_ID = 'tab1';

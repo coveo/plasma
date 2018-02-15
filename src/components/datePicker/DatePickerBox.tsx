@@ -1,14 +1,14 @@
+import * as React from 'react';
+import * as _ from 'underscore';
+import * as  s from 'underscore.string';
 import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
 import { Calendar, ICalendarProps, ICalendarSelectionRule } from '../calendar/Calendar';
 import { CalendarConnected } from '../calendar/CalendarConnected';
 import { IOption } from '../optionPicker/Option';
-import { DatesSelection, IDatesSelectionProps, IRangeLimit } from './DatesSelection';
-import { DatesSelectionConnected } from './DatesSelectionConnected';
 import { IOptionPickerProps, OptionPicker } from '../optionPicker/OptionPicker';
 import { OptionPickerConnected } from '../optionPicker/OptionPickerConnected';
-import * as React from 'react';
-import * as _ from 'underscore';
-import * as  s from 'underscore.string';
+import { DatesSelection, IDatesSelectionProps, IRangeLimit } from './DatesSelection';
+import { DatesSelectionConnected } from './DatesSelectionConnected';
 
 export interface IDatesSelectionBox {
   title: string;
@@ -57,7 +57,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
   };
 
   render() {
-    let calendarProps: ICalendarProps = {
+    const calendarProps: ICalendarProps = {
       id: `calendar-${this.props.id}`,
       months: this.props.months,
       startingMonth: this.props.startingMonth,
@@ -69,20 +69,20 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
       isLinkedToDateRange: this.props.isLinkedToDateRange,
     };
 
-    let calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected {...calendarProps} /> : <Calendar />;
-    let datesSelectionBoxes: JSX.Element[] =
+    const calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected {...calendarProps} /> : <Calendar />;
+    const datesSelectionBoxes: JSX.Element[] =
       _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
-        let boxId: string = this.props.id + '-' + s.slugify(datesSelectionBox.title);
+        const boxId: string = this.props.id + '-' + s.slugify(datesSelectionBox.title);
 
-        let quickOptionsProps: IOptionPickerProps = {
+        const quickOptionsProps: IOptionPickerProps = {
           id: boxId,
-          options: datesSelectionBox.quickOptions
+          options: datesSelectionBox.quickOptions,
         };
-        let optionPicker: JSX.Element = this.props.withReduxState
+        const optionPicker: JSX.Element = this.props.withReduxState
           ? <OptionPickerConnected {...quickOptionsProps} />
           : <OptionPicker {...quickOptionsProps} />;
 
-        let datesSelectionProps: IDatesSelectionProps = {
+        const datesSelectionProps: IDatesSelectionProps = {
           id: boxId,
           withTime: datesSelectionBox.withTime,
           hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
@@ -96,7 +96,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           upperLimitPlaceholder: this.props.upperLimitPlaceholder,
           initiallyUnselected: this.props.initiallyUnselected,
         };
-        let dateSelection: JSX.Element = this.props.withReduxState
+        const dateSelection: JSX.Element = this.props.withReduxState
           ? <DatesSelectionConnected {...datesSelectionProps} />
           : <DatesSelection {...datesSelectionProps} />;
 

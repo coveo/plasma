@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ChosenSelect } from '../ChosenSelect';
 import * as _ from 'underscore';
+import { ChosenSelect } from '../ChosenSelect';
 
 export class ChosenSelectExamples extends React.Component<any, any> {
 
-  getNumberOfOptions(number: number) {
-    return _.times(number, (index: number) => {
+  getNumberOfOptions(num: number) {
+    return _.times(num, (index: number) => {
       const indexShow = index + 1;
       return <option key={index} value={indexShow}>Option {indexShow}</option>;
     });
@@ -21,7 +21,7 @@ export class ChosenSelectExamples extends React.Component<any, any> {
           </label>
           <div className='form-control'>
             <ChosenSelect placeholderTextSingle='Choose a country' value='France' width='400px'
-              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
+              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => { /* tslint:disable */ console.log('Changed: ', args); /* tslint:enable */ }}>
               <option value='Canada'>Canada</option>
               <option value='France'>France</option>
               <option value='United States'>United States</option>
@@ -34,7 +34,7 @@ export class ChosenSelectExamples extends React.Component<any, any> {
           </label>
           <div className='form-control'>
             <ChosenSelect placeholderTextSingle='Choose a country' defaultValue={['Canada']} multiple width='400px'
-              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => console.log('Changed: ', args)}>
+              onChosenChange={(event: JQueryEventObject, args: Chosen.SelectedData) => { /* tslint:disable */ console.log('Changed: ', args); /* tslint:enable */ }}>
               <option value='Canada'>Canada</option>
               <option value='France'>France</option>
               <option value='United States'>United States</option>

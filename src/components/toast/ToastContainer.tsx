@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import * as _ from 'underscore';
 import { IToastProps, Toast } from './Toast';
 import { IToastState } from './ToastReducers';
