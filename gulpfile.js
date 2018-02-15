@@ -37,15 +37,15 @@ gulp.task('clean:tests', false, (done) => {
 });
 
 gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests'], (done) => {
-    if (gutil.env.all === true) {
-      clean([
-        '**/*.orig',
-        '**/*.rej',
-        'node_modules',
-      ], done);
-    } else {
-      done();
-    }
+  if (gutil.env.all === true) {
+    clean([
+      '**/*.orig',
+      '**/*.rej',
+      'node_modules',
+    ], done);
+  } else {
+    done();
+  }
 });
 // </editor-fold>
 
