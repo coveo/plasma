@@ -8,7 +8,7 @@ const TARGET = process.env.TARGET || null;
  * Config file for the packaged library
  */
 const config = {
-  entry: './src/Index.ts',
+  entry: './Index.ts',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'react-vapor.js',

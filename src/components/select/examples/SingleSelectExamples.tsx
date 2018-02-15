@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {FlatSelectConnected} from '../../flatSelect/FlatSelectConnected';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {SingleSelectWithFilter, SingleSelectWithPredicate, SingleSelectWithPredicateAndFilter} from '../SelectComponents';
 import {SingleSelectConnected} from '../SingleSelectConnected';
-// import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 
 const defaultItems: IItemBoxProps[] = [
   { displayValue: 'Test', value: '0' },
@@ -25,12 +23,10 @@ const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
   {id: UUID.generate(), option: {content: 'odd'} },
 ];
 
-const flatSelectID = UUID.generate();
-const filterID = UUID.generate();
-
 export interface ISingleSelectExamplesState {
   first: IItemBoxProps[];
   second: IItemBoxProps[];
+  hoc: IItemBoxProps[];
 }
 
 export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamplesState> {
@@ -40,68 +36,64 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
     const second = _.map(defaultItems, (item) => _.clone(item));
     second[0].selected = true;
 
+    const hoc = _.map(defaultItems, (item) => _.extend({}, item, {append: {content: () => <span className='text-medium-grey ml1'>{item.value}</span>}}));
+    hoc[0].selected = true;
+
     this.state = {
       first: _.clone(defaultItems),
       second,
+      hoc,
     };
-  }
-
-  componentDidMount() {
-    // ReactVaporStore.subscribe(() => this.onStoreChange());
   }
 
   render() {
     return (
       <div>
-        <h1>Select</h1>
+        <h1>Single Select</h1>
         <div className='form-group'>
           <label className='form-control-label'>A Simple Single Select</label>
           <br/>
           <SingleSelectConnected id={UUID.generate()} items={this.state.first}/>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>A Single Select With Header</label>
+          <label className='form-control-label'>A Single Select With Filter</label>
           <br/>
-          <SingleSelectConnected id={UUID.generate()} items={this.state.second}>
-            <div className='flex p2 flex-center bg-white flex-column'>
-              <FlatSelectConnected id={flatSelectID} options={defaultFlatSelectOptions} group optionPicker />
-              <br/>
-              <FilterBoxConnected id={filterID} />
-            </div>
-          </SingleSelectConnected>
+          <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>A Single Select With Filter that only match display value</label>
+          <br/>
+          <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1} />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>A Single Select With Predicates</label>
+          <br/>
+          <SingleSelectWithPredicate id={UUID.generate()} items={this.state.hoc} options={defaultFlatSelectOptions} matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)} />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>A Single Select With Filter and Predicates</label>
+          <br/>
+          <SingleSelectWithPredicateAndFilter
+            id={UUID.generate()}
+            items={this.state.hoc}
+            options={defaultFlatSelectOptions}
+            matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+          />
         </div>
       </div>
     );
   }
 
-  /* private onStoreChange() {
-    const state = ReactVaporStore.getState();
-
-    const flatSelectValue = _.findWhere(state.flatSelect, {id: flatSelectID}).selectedOptionId;
-    const filterValue = _.findWhere(state.filters, {id: filterID}).filterText;
-    this.setState({
-      second: _.chain(defaultItems)
-        .filter(item => {
-          const regex = new RegExp(filterValue, 'gi');
-          return item.selected || regex.test(item.value) || regex.test(item.displayValue);
-        })
-        .filter(item => {
-          if (item.selected) {
-            return true;
-          }
-
-          const v = parseInt(item.value, 10);
-          if (flatSelectValue === defaultFlatSelectOptions[0].id) {
-            return true;
-          } else if (flatSelectValue === defaultFlatSelectOptions[1].id) {
-            return  v % 2 === 0;
-          } else if (flatSelectValue === defaultFlatSelectOptions[2].id) {
-            return v % 2 === 1;
-          } else {
-            return true;
-          }
-        })
-        .value(),
-    });
-  } */
+  private matchPredicate(predicate: string, item: IItemBoxProps) {
+    const value = parseInt(item.value, 10);
+    if (predicate === defaultFlatSelectOptions[0].id) {
+      return true;
+    } else if (predicate === defaultFlatSelectOptions[1].id) {
+      return  value % 2 === 0;
+    } else if (predicate === defaultFlatSelectOptions[2].id) {
+      return value % 2 === 1;
+    } else {
+      return true;
+    }
+  }
 }

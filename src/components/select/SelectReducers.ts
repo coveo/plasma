@@ -1,15 +1,14 @@
 import * as _ from 'underscore';
-import { IReduxAction } from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils';
 import {ListBoxActions} from '../listBox/ListBoxActions';
 import {ISelectPayload, SelectActions} from './SelectActions';
-import {SelectConnected} from './SelectConnected';
 
 export interface ISelectState {
   id: string;
   open: boolean;
 }
 
-export const selectInitialState: ISelectState = { id: undefined, open: false };
+export const selectInitialState: ISelectState = {id: undefined, open: false};
 export const selectCompositeInitialState: ISelectState[] = [];
 
 export const selectReducer = (state: ISelectState = selectInitialState, action: IReduxAction<ISelectPayload>): ISelectState => {
@@ -30,7 +29,7 @@ export const selectReducer = (state: ISelectState = selectInitialState, action: 
         open: !_.isUndefined(action.payload.open) ? action.payload.open : !state.open,
       });
     case ListBoxActions.select:
-      if (action.payload.id !== SelectConnected.getListBoxId(state.id)) {
+      if (action.payload.id !== state.id) {
         return state;
       }
 
@@ -43,7 +42,8 @@ export const selectReducer = (state: ISelectState = selectInitialState, action: 
   }
 };
 
-export const selectCompositeReducer = (state: ISelectState[] = selectCompositeInitialState, action: IReduxAction<ISelectPayload>): ISelectState[] => {
+export const selectCompositeReducer = (state: ISelectState[] = selectCompositeInitialState,
+                                       action: IReduxAction<ISelectPayload>): ISelectState[] => {
   switch (action.type) {
     case SelectActions.add:
       return [

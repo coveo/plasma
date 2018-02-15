@@ -23,6 +23,7 @@ export interface ISelectOwnProps {
 
 export interface ISelectStateProps {
   items?: IItemBoxProps[];
+  visibleItems?: IItemBoxProps[];
   isOpen?: boolean;
 }
 
@@ -62,8 +63,6 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
   private dropdown: HTMLDivElement;
   private menu: HTMLDivElement;
 
-  static getListBoxId = (ownId: string) => `${ownId}-list-box`;
-
   componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender();
@@ -86,46 +85,60 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     return (
       <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
         <Content content={this.props.button} componentProps={{
-          onClick: () => this.onToggleDropdown(),
-          onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyDown(e),
-          onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyUp(e),
+          onClick: (e: React.MouseEvent<HTMLElement>) => this.onToggleDropdown(e),
+          onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
+          onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
         }}/>
         <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref} style={{
           border: '1px solid #000',
           zIndex: 1,
         }}>
-          {this.props.children}
-          <ListBoxConnected id={SelectConnected.getListBoxId(this.props.id)} items={this.props.items} multi={this.props.multi}/>
+          {this.renderChildren()}
+          <ListBoxConnected id={this.props.id} items={this.props.items} multi={this.props.multi}/>
         </div>
       </div>
     );
   }
 
-  private onToggleDropdown() {
+  private renderChildren() {
+    if (this.props.children) {
+      return (
+        <div className='flex p2 flex-center bg-white flex-column'>
+          {this.props.children}
+        </div>
+      );
+    }
+    return null;
+  }
+
+  private onToggleDropdown(e: React.SyntheticEvent<HTMLElement>) {
     this.menu.style.minWidth = this.dropdown.clientWidth + 'px';
     if (this.props.onToggleDropdown) {
+      e.stopPropagation();
+      e.preventDefault();
+
       this.props.onToggleDropdown();
     }
   }
 
-  private onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+  private onKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     if (_.contains([keyCode.escape, keyCode.downArrow, keyCode.upArrow, keyCode.enter], e.keyCode)) {
       e.stopPropagation();
       e.preventDefault();
     }
   }
 
-  private onKeyUp(e: React.KeyboardEvent<HTMLInputElement>) {
+  private onKeyUp(e: React.KeyboardEvent<HTMLElement>) {
     if (keyCode.escape === e.keyCode && this.props.isOpen) {
-      this.onToggleDropdown();
+      this.onToggleDropdown(e);
     }
     if (keyCode.enter === e.keyCode) {
-      this.onToggleDropdown();
+      this.onToggleDropdown(e);
     }
   }
 
   private handleDocumentClick = (e: MouseEvent) => {
-    if (this.props.isOpen) {
+    if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
       const dropdown: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
 
       if (!dropdown.contains(e.target as Node) && this.props.onDocumentClick) {

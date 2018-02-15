@@ -14,11 +14,12 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
   switch (action.type) {
     case ListBoxActions.add:
       const selected = _.chain(action.payload.items)
-        .where({selected: true}).pluck('value')
+        .where({selected: true})
+        .pluck('value')
         .value();
       return {
         id: action.payload.id,
-        selected: selected || state.selected,
+        selected: selected,
       };
     case ListBoxActions.select:
       if (state.id !== action.payload.id) {
@@ -65,8 +66,8 @@ export const listBoxesReducer = (state: IListBoxState[] = listBoxesInitialState,
     case ListBoxActions.clear:
     case ListBoxActions.unselect:
     case ListBoxActions.select:
-      return state.map((lastUpdated: IListBoxState) =>
-        listBoxReducer(lastUpdated, action),
+      return state.map((listBox: IListBoxState) =>
+        listBoxReducer(listBox, action),
       );
     default:
       return state;

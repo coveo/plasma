@@ -17,8 +17,7 @@ export interface ISingleSelectDispatchProps {}
 export interface ISingleSelectProps extends ISingleSelectOwnProps, ISingleSelectStateProps, ISingleSelectDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
-  const listBoxId = SelectConnected.getListBoxId(ownProps.id);
-  const listbox = _.findWhere(state.listBoxes, {id: listBoxId});
+  const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
   return {
     selected: listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : undefined,
   };

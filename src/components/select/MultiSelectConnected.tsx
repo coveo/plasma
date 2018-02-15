@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {Svg, Tooltip} from '../../';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
+import {Svg} from '../svg/Svg';
+import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 
 export interface IMultiSelectOwnProps extends ISelectProps {
@@ -25,8 +26,7 @@ export interface IMultiSelectDispatchProps {
 export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => {
-  const listBoxId = SelectConnected.getListBoxId(ownProps.id);
-  const listbox = _.findWhere(state.listBoxes, {id: listBoxId});
+  const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
   return {
     selected: listbox && listbox.selected ? listbox.selected : undefined,
   };
@@ -34,8 +34,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
                             ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
-  onRemoveClick: (item: IItemBoxProps) => dispatch(unselectListBoxOption(SelectConnected.getListBoxId(ownProps.id), item.value)),
-  onRemoveAll: () => dispatch(clearListBoxOption(SelectConnected.getListBoxId(ownProps.id))),
+  onRemoveClick: (item: IItemBoxProps) => dispatch(unselectListBoxOption(ownProps.id, item.value)),
+  onRemoveAll: () => dispatch(clearListBoxOption(ownProps.id)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)

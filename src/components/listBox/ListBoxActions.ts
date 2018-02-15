@@ -1,5 +1,5 @@
-import {IItemBoxProps} from '../../';
 import { IReduxAction } from '../../utils/ReduxUtils';
+import {IItemBoxProps} from '../itemBox/ItemBox';
 
 export const ListBoxActions = {
   add: 'ADD_LIST_BOX',

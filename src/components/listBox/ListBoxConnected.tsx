@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {ReduxUtils} from '../../';
 import {IReactVaporState} from '../../ReactVapor';
+import {ReduxUtils} from '../../utils/ReduxUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxDispatchProps, IListBoxOwnProps, IListBoxProps, IListBoxStateProps, ListBox} from './ListBox';

@@ -1,16 +1,14 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {FlatSelectConnected} from '../../flatSelect/FlatSelectConnected';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {MultiSelectConnected} from '../MultiSelectConnected';
-// import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {MultiSelectWithFilter, MultiSelectWithPredicate, MultiSelectWithPredicateAndFilter} from '../SelectComponents';
 
 const defaultItems: IItemBoxProps[] = [
   {displayValue: 'Test', value: '0'},
-  {displayValue: 'Default Selected', value: 'selected', selected: true},
+  {displayValue: 'Test One', value: '1'},
   {displayValue: 'Disabled', value: 'disabled', disabled: true},
   {displayValue: 'Three', value: '3'},
   {displayValue: 'Four', value: '4'},
@@ -25,29 +23,27 @@ const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
   {id: UUID.generate(), option: {content: 'odd'}},
 ];
 
-const flatSelectID = UUID.generate();
-const filterID = UUID.generate();
-
 export interface IMultiSelectExamplesState {
   first: IItemBoxProps[];
   second: IItemBoxProps[];
+  hoc: IItemBoxProps[];
 }
 
 export class MultiSelectExamples extends React.Component<{}, IMultiSelectExamplesState> {
-  // private flatSelectValue: string;
-  // private filterValue: string;
-  private secondSelected: string[] = ['selected'];
-
   constructor() {
     super();
+
+    const second = _.map(defaultItems, (item) => _.clone(item));
+    second[0].selected = true;
+
+    const hoc = _.map(defaultItems, (item) => _.extend({}, item, {append: {content: () => <span className='text-medium-grey ml1'>{item.value}</span>}}));
+    hoc[0].selected = true;
+
     this.state = {
       first: _.clone(defaultItems),
-      second: _.clone(defaultItems),
+      second,
+      hoc,
     };
-  }
-
-  componentDidMount() {
-    // ReactVaporStore.subscribe(() => this.onStoreChange());
   }
 
   render() {
@@ -57,71 +53,47 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
         <div className='form-group'>
           <label className='form-control-label'>A Simple Multi Select</label>
           <br/>
-          <MultiSelectConnected id={UUID.generate()} items={this.state.first} />
+          <MultiSelectConnected id={UUID.generate()} items={this.state.first}/>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>A Multi Select With Header</label>
+          <label className='form-control-label'>A Multi Select With Filter</label>
           <br/>
-          <MultiSelectConnected
+          <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc}/>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>A Multi Select With Filter that only match display value</label>
+          <br/>
+          <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1}/>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>A Multi Select With Predicates</label>
+          <br/>
+          <MultiSelectWithPredicate id={UUID.generate()} items={this.state.hoc} options={defaultFlatSelectOptions} matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}/>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>A Multi Select With Filter and Predicates</label>
+          <br/>
+          <MultiSelectWithPredicateAndFilter
             id={UUID.generate()}
-            items={this.state.second}
-            onRemoveAll={() => {
-              this.secondSelected = [];
-              // this.updateSecond();
-            }}
-            onRemoveClick={(option: IItemBoxProps) => {
-              this.secondSelected = _.without(this.secondSelected, option.value);
-              // this.updateSecond();
-            }}
-          >
-            <div className='flex p2 flex-center bg-white flex-column'>
-              <FlatSelectConnected id={flatSelectID} options={defaultFlatSelectOptions} group optionPicker/>
-              <br/>
-              <FilterBoxConnected id={filterID}/>
-            </div>
-          </MultiSelectConnected>
+            items={this.state.hoc}
+            options={defaultFlatSelectOptions}
+            matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+          />
         </div>
       </div>
     );
   }
 
-  /* private onStoreChange() {
-    const state = ReactVaporStore.getState();
-
-    const flatSelectValue = _.findWhere(state.flatSelect, {id: flatSelectID}).selectedOptionId;
-    const filterValue = _.findWhere(state.filters, {id: filterID}).filterText;
-
-    if (flatSelectValue !== this.flatSelectValue || filterValue !== this.filterValue) {
-      this.flatSelectValue = flatSelectValue;
-      this.filterValue = filterValue;
-      this.updateSecond();
+  private matchPredicate(predicate: string, item: IItemBoxProps) {
+    const value = parseInt(item.value, 10);
+    if (predicate === defaultFlatSelectOptions[0].id) {
+      return true;
+    } else if (predicate === defaultFlatSelectOptions[1].id) {
+      return value % 2 === 0;
+    } else if (predicate === defaultFlatSelectOptions[2].id) {
+      return value % 2 === 1;
+    } else {
+      return true;
     }
   }
-
-  private updateSecond() {
-    this.setState({
-      second: _.chain(defaultItems)
-        .map(item => _.extend({}, item, {selected: _.contains(this.secondSelected, item.value)}))
-        .filter(item => {
-          const regex = new RegExp(this.filterValue, 'gi');
-          return item.selected || regex.test(item.value) || regex.test(item.displayValue);
-        })
-        .filter(item => {
-          if (item.selected) {
-            return true;
-          }
-
-          const v = parseInt(item.value, 10);
-          if (this.flatSelectValue === defaultFlatSelectOptions[0].id) {
-            return true;
-          } else if (this.flatSelectValue === defaultFlatSelectOptions[1].id) {
-            return v % 2 === 0;
-          } else if (this.flatSelectValue === defaultFlatSelectOptions[2].id) {
-            return v % 2 === 1;
-          }
-          return true;
-        })
-        .value(),
-    });
-  } */
 }
