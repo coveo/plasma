@@ -29,10 +29,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnPr
   return {
     lowerLimit: item ? item.lowerLimit : new Date(),
     upperLimit: item ? item.upperLimit : new Date(),
-    inputLowerLimit: item && item.inputLowerLimit,
-    inputUpperLimit: item && item.inputUpperLimit,
-    quickOption: optionPicker && optionPicker.selectedValue,
-    isSelecting: item && item.selected,
+    inputLowerLimit: item ? item.inputLowerLimit : new Date(),
+    inputUpperLimit: item ? item.inputUpperLimit : new Date(),
+    quickOption: optionPicker ? optionPicker.selectedValue : '',
+    isSelecting: item ? item.selected : '',
   };
 };
 

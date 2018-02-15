@@ -28,7 +28,7 @@ export class DateUtils {
   }
 
   static getNextYears(numberOfYears: number): string[] {
-    return _.range(DateUtils.currentYear, DateUtils.currentYear + numberOfYears + 1).map(String);
+    return _.range(DateUtils.currentYear + 1, DateUtils.currentYear + numberOfYears + 1).map(String);
   }
 
   static getMonthWeeks(firstDay: Date, startingDay: number): IDay[][] {

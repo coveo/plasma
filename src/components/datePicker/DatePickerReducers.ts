@@ -48,8 +48,8 @@ const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePic
     rangeLimit: action.payload.rangeLimit,
     lowerLimit: mayBeNull(state.lowerLimit),
     upperLimit: mayBeNull(state.upperLimit),
-    inputLowerLimit: mayBeNull(state.appliedLowerLimit),
-    inputUpperLimit: mayBeNull(state.appliedUpperLimit),
+    inputLowerLimit: mayBeNull(state.inputLowerLimit),
+    inputUpperLimit: mayBeNull(state.inputUpperLimit),
     selected: state.selected,
     appliedLowerLimit: mayBeNull(state.appliedLowerLimit),
     appliedUpperLimit: mayBeNull(state.appliedUpperLimit),
@@ -76,7 +76,7 @@ const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
   return state.id !== action.payload.id ? state : _.extend({}, state, {
     upperLimit: action.payload.date,
     inputUpperLimit: action.payload.date,
-    selected: ''
+    selected: '',
   });
 };
 
@@ -110,11 +110,13 @@ const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
 };
 
 const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-  return state.id.indexOf(action.payload.id) !== 0
+  return state.id.indexOf(action.payload.id) !== 0 || !state.isClearable
     ? state : _.extend({}, state, {
       selected: DateLimits.lower,
       lowerLimit: null,
       upperLimit: null,
+      inputLowerLimit: null,
+      inputUpperLimit: null,
     });
 };
 
