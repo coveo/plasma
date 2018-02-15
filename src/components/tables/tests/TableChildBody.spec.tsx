@@ -90,14 +90,6 @@ describe('<TableChildBody />', () => {
       expect(tableChildBodyProps.getActions).toHaveBeenCalledWith(tableChildBodyProps.rowData);
     });
 
-    it('should not throw on row double click and getAction prop is undefined', () => {
-      const propsWithoutGetActions: ITableChildBodyProps = _.extend({}, tableChildBodyProps, { getActions: undefined });
-
-      const row = mountComponentWithProps(propsWithoutGetActions).find(TableHeadingRow);
-
-      expect(() => row.simulate('dblclick')).not.toThrow();
-    });
-
     it('should call getActions results with option callOnDoubleClick true on row double click', () => {
       const actionSpy: jasmine.Spy = jasmine.createSpy('actionSpy');
       const twoActions: IActionOptions[] = [{
