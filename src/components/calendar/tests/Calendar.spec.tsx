@@ -85,6 +85,7 @@ describe('Calendar', () => {
         'avril',
         'mai',
         'juin',
+        'juillet',
         'août',
         'septembre',
         'octobre',
@@ -185,6 +186,7 @@ describe('Calendar', () => {
             lowerLimit: now,
             upperLimit: now,
             isRange: true,
+            isClearable: false,
             selected: undefined,
             appliedLowerLimit: now,
             appliedUpperLimit: now,
@@ -198,6 +200,7 @@ describe('Calendar', () => {
             lowerLimit: now,
             upperLimit: now,
             isRange: true,
+            isClearable: false,
             selected: 'yes it is',
             appliedLowerLimit: now,
             appliedUpperLimit: now,
@@ -211,6 +214,59 @@ describe('Calendar', () => {
 
       expect(onClickSpy).toHaveBeenCalledWith('id', false, now);
     });
+
+    it('should call handleInvalidDateSelected when it is defined and selecting a day that is not selectable ' +
+      'and one picker is selected', () => {
+        let onSelectUnselectableSpy: jasmine.Spy = jasmine.createSpy('onSelectUnselectable');
+
+        expect(() => {
+          calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
+        }).not.toThrow();
+
+        calendar.setProps({ onSelectUnselectable: onSelectUnselectableSpy });
+
+        calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
+
+        expect(onSelectUnselectableSpy).not.toHaveBeenCalled();
+
+        calendar.setProps({
+          onSelectUnselectable: onSelectUnselectableSpy,
+          calendarSelection: [
+            {
+              id: 'id1',
+              calendarId: 'any',
+              color: 'any',
+              lowerLimit: null,
+              upperLimit: null,
+              isRange: true,
+              isClearable: false,
+              selected: undefined,
+              appliedLowerLimit: null,
+              appliedUpperLimit: null,
+              inputLowerLimit: null,
+              inputUpperLimit: null
+            },
+            {
+              id: 'id2',
+              calendarId: 'any',
+              color: 'any',
+              lowerLimit: null,
+              upperLimit: null,
+              isRange: true,
+              isClearable: false,
+              selected: 'yes it is',
+              appliedLowerLimit: null,
+              appliedUpperLimit: null,
+              inputLowerLimit: null,
+              inputUpperLimit: null
+            }
+          ]
+        });
+
+        calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
+
+        expect(onSelectUnselectableSpy).toHaveBeenCalledWith('id2');
+      });
 
     it('should call handleClick on <CalendarDay /> click', () => {
       let handleClickSpy: jasmine.Spy = spyOn<any>(calendarInstance, 'handleClick');
@@ -234,6 +290,7 @@ describe('Calendar', () => {
             lowerLimit: now,
             upperLimit: now,
             isRange: true,
+            isClearable: false,
             selected: 'the name of the limit',
             appliedLowerLimit: now,
             appliedUpperLimit: now,
@@ -254,6 +311,7 @@ describe('Calendar', () => {
             lowerLimit: now,
             upperLimit: now,
             isRange: true,
+            isClearable: false,
             selected: undefined,
             appliedLowerLimit: now,
             appliedUpperLimit: now,
@@ -281,6 +339,7 @@ describe('Calendar', () => {
         lowerLimit: moment().subtract(1, 'day').toDate(),
         upperLimit: moment().add(1, 'day').toDate(),
         isRange: true,
+        isClearable: false,
         selected: undefined,
         appliedLowerLimit: now,
         appliedUpperLimit: now,
@@ -420,6 +479,34 @@ describe('Calendar', () => {
         day = calendarInstance.fillInDayInfos(futureDay);
 
         expect(day.isSelectable).toBe(true);
+      });
+
+      it('should not return day isSelectable if day is before the lowerlimit and selecting the upperlimit', () => {
+        const pastDay: IDay = _.extend({}, DAY, { date: moment().subtract(1, 'day') });
+
+        calendar.setProps({
+          calendarSelection: [_.extend({}, CALENDAR_SELECTION, {
+            selected: DateLimits.lower,
+            lowerLimit: null,
+            upperLimit: null,
+          })],
+          selectionRules: []
+        });
+        day = calendarInstance.fillInDayInfos(pastDay);
+
+        expect(day.isSelectable).toBe(true);
+
+        calendar.setProps({
+          calendarSelection: [_.extend({}, CALENDAR_SELECTION, {
+            selected: DateLimits.upper,
+            lowerLimit: moment().toDate(),
+            upperLimit: null,
+          })],
+          selectionRules: []
+        });
+        day = calendarInstance.fillInDayInfos(pastDay);
+
+        expect(day.isSelectable).toBe(false);
       });
 
       describe('saturday and sunday rule', () => {

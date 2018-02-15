@@ -116,6 +116,12 @@ describe('Date picker', () => {
       expect(onDocumentClickProp).toBeDefined();
     });
 
+    it('should get what to do on clear as a prop', () => {
+      let onClearProp = datePickerDropdown.props().onClear;
+
+      expect(onClearProp).toBeDefined();
+    });
+
     it('should return isOpen if the dropdown is opened', () => {
       store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
@@ -159,7 +165,7 @@ describe('Date picker', () => {
       expect(_.findWhere(store.getState().dropdowns, { id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id }).opened).toBe(true);
     });
 
-    it('should select the date picker\'s lower limit when calling the onClick prop and when datepicker is not clearable', () => {
+    it('should select the date picker\'s lower limit when calling the onClick prop', () => {
       let pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
 
       store.dispatch(addDatePicker(pickerId, false));

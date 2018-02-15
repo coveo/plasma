@@ -86,11 +86,11 @@ describe('Date picker', () => {
       const clearableBoxProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
         isClearable: true,
       });
-      let $clearBtn;
+      let getClearButton: () => any;
 
       beforeEach(() => {
         datePickerBox.setProps(clearableBoxProps);
-        $clearBtn = () => datePickerBox.find('button.clear-selection-button');
+        getClearButton = () => datePickerBox.find('button.clear-selection-button');
       });
 
       afterEach(() => {
@@ -98,19 +98,19 @@ describe('Date picker', () => {
       });
 
       it('should display a clear button when isClearable prop is set to true', () => {
-        expect($clearBtn().length).toBe(1);
+        expect(getClearButton().length).toBe(1);
       });
 
       it('should display the clear label passed as a prop or use the default one', () => {
         let clearLabel: string = 'CLEAR_LABEL';
         let newProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { clearLabel });
 
-        expect($clearBtn().first().text()).toContain(DEFAULT_CLEAR_DATE_LABEL);
+        expect(getClearButton().first().text()).toContain(DEFAULT_CLEAR_DATE_LABEL);
 
         datePickerBox.setProps(newProps);
 
-        expect($clearBtn().first().text()).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
-        expect($clearBtn().first().text()).toContain(clearLabel);
+        expect(getClearButton().first().text()).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
+        expect(getClearButton().first().text()).toContain(clearLabel);
       });
 
       it('should call onClear prop when clicking on the clear button', () => {
@@ -118,7 +118,7 @@ describe('Date picker', () => {
         let onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { onClear: onClearSpy });
 
         datePickerBox.setProps(onClearProps);
-        $clearBtn().first().simulate('click');
+        getClearButton().first().simulate('click');
 
         expect(onClearSpy).toHaveBeenCalled();
       });
