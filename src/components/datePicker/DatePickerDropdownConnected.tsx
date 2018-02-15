@@ -9,19 +9,19 @@ import { IDropdownState } from '../dropdown/DropdownReducers';
 import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
 import {
+  applyDatePicker,
+  clearSelection,
+  DateLimits,
+  resetDatePickers,
+  selectDate,
+} from './DatePickerActions';
+import {
   DatePickerDropdown,
   IDatePickerDropdownDispatchProps,
   IDatePickerDropdownOwnProps,
   IDatePickerDropdownProps,
   IDatePickerDropdownStateProps,
 } from './DatePickerDropdown';
-import {
-  applyDatePicker,
-  resetDatePickers,
-  clearSelection,
-  selectDate,
-  DateLimits
-} from './DatePickerActions';
 import { IDatePickerState } from './DatePickerReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {

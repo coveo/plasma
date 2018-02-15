@@ -194,7 +194,7 @@ describe('Date picker', () => {
       });
 
     it('should display the label props if date picker is clearable and nothing is selected', () => {
-      let newDatePicker: IDatePickerState = {
+      const newDatePicker: IDatePickerState = {
         id: 'id',
         calendarId: 'calendarId',
         color: 'color',
@@ -206,9 +206,9 @@ describe('Date picker', () => {
         appliedLowerLimit: null,
         appliedUpperLimit: null,
         inputLowerLimit: null,
-        inputUpperLimit: null
+        inputUpperLimit: null,
       };
-      let newProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+      const newProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
         datePicker: newDatePicker,
         label: 'EMPTY_LABEL',
         isClearable: true,
@@ -420,8 +420,8 @@ describe('Date picker', () => {
     });
 
     it('should call onClear prop if set when calling handleClear', () => {
-      let onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
-      let onClearProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onClear: onClearSpy });
+      const onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
+      const onClearProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onClear: onClearSpy });
 
       expect(() => {
         datePickerDropdownInstance['handleClear'].call(datePickerDropdownInstance);

@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
         ownProps.color,
         ownProps.calendarId,
         ownProps.initiallyUnselected,
-        ownProps.isClearable
+        ownProps.isClearable,
       ));
     },
     onDestroy: () => dispatch(removeDatePicker(ownProps.id)),

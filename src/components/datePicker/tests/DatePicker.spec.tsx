@@ -233,7 +233,7 @@ describe('Date picker', () => {
       });
 
     it('should set an empty value in the date input when passing it a null date as prop', () => {
-      let dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { date: null });
+      const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { date: null });
       datePicker.setProps(dateProps);
 
       expect(datePickerInstance['dateInput'].value).toBe('');

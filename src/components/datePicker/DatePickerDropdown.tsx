@@ -128,11 +128,11 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
   private handleCancel() {
     if (this.props.onCancel) {
-      let currentMonth: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
+      const currentMonth: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
         ? this.props.datePicker.appliedLowerLimit.getMonth()
         : DateUtils.currentMonth;
-      let years: string[] = this.props.years || DEFAULT_YEARS;
-      let currentYear: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
+      const years: string[] = this.props.years || DEFAULT_YEARS;
+      const currentYear: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
         ? this.props.datePicker.appliedLowerLimit.getFullYear()
         : DateUtils.currentYear;
       this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()), this.props.isOpened);

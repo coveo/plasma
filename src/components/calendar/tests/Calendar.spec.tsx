@@ -217,7 +217,7 @@ describe('Calendar', () => {
 
     it('should call handleInvalidDateSelected when it is defined and selecting a day that is not selectable ' +
       'and one picker is selected', () => {
-        let onSelectUnselectableSpy: jasmine.Spy = jasmine.createSpy('onSelectUnselectable');
+        const onSelectUnselectableSpy: jasmine.Spy = jasmine.createSpy('onSelectUnselectable');
 
         expect(() => {
           calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
@@ -244,7 +244,7 @@ describe('Calendar', () => {
               appliedLowerLimit: null,
               appliedUpperLimit: null,
               inputLowerLimit: null,
-              inputUpperLimit: null
+              inputUpperLimit: null,
             },
             {
               id: 'id2',
@@ -258,9 +258,9 @@ describe('Calendar', () => {
               appliedLowerLimit: null,
               appliedUpperLimit: null,
               inputLowerLimit: null,
-              inputUpperLimit: null
-            }
-          ]
+              inputUpperLimit: null,
+            },
+          ],
         });
 
         calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
@@ -490,7 +490,7 @@ describe('Calendar', () => {
             lowerLimit: null,
             upperLimit: null,
           })],
-          selectionRules: []
+          selectionRules: [],
         });
         day = calendarInstance.fillInDayInfos(pastDay);
 
@@ -502,7 +502,7 @@ describe('Calendar', () => {
             lowerLimit: moment().toDate(),
             upperLimit: null,
           })],
-          selectionRules: []
+          selectionRules: [],
         });
         day = calendarInstance.fillInDayInfos(pastDay);
 

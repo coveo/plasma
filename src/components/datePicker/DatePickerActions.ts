@@ -40,7 +40,7 @@ export const DateLimits = {
 };
 
 export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLimit = undefined, color: string = DEFAULT_DATE_PICKER_COLOR,
-  calendarId: string = '', initiallyUnselected = false, isClearable = false): IReduxAction<IAddDatePickerPayload> => ({
+                              calendarId: string = '', initiallyUnselected = false, isClearable = false): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {
       id,
@@ -50,7 +50,7 @@ export const addDatePicker = (id: string, isRange: boolean, rangeLimit: IRangeLi
       rangeLimit,
       initiallyUnselected,
       isClearable,
-    }
+    },
   });
 
 export const removeDatePicker = (id: string): IReduxAction<IDatePickerPayload> => ({
@@ -101,6 +101,6 @@ export const selectDate = (id: string, limit: string): IReduxAction<ISelectDateP
 export const clearSelection = (id: string): IReduxAction<IDatePickerPayload> => ({
   type: DatePickerActions.clear,
   payload: {
-    id
-  }
+    id,
+  },
 });

@@ -74,29 +74,27 @@ export const FOUR_SELECTION_BOXES: IDatesSelectionBox[] = [
     quickOptions: [
       {
         label: 'Last 5 minutes',
-        value: () => moment().subtract(5, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString()
+        value: () => moment().subtract(5, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
       },
       {
         label: 'Last 30 minutes',
-        value: () => moment().subtract(30, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString()
+        value: () => moment().subtract(30, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
       },
       {
         label: 'Last hour',
-        value: () => moment().subtract(1, 'hour').toDate().toString() + DATES_SEPARATOR + new Date().toString()
+        value: () => moment().subtract(1, 'hour').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
       },
       {
         label: 'Last day',
-        value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString()
-      }
+        value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+      },
     ],
     isRange: true,
     withTime: true,
     hasSetToNowButton: true,
-    color: DatePickerColors.blue
-  }
+    color: DatePickerColors.blue,
+  },
 ];
-
-
 
 export const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
   {

@@ -71,7 +71,6 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
     }
   }
 
-
   componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender();

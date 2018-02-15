@@ -5,12 +5,12 @@ import {
   applyDatePicker,
   changeDatePickerLowerLimit,
   changeDatePickerUpperLimit,
-  DateLimits,
-  selectDate,
   clearSelection,
+  DateLimits,
   DatePickerActions,
   removeDatePicker,
   resetDatePickers,
+  selectDate,
 } from '../DatePickerActions';
 import { IAddDatePickerPayload, IChangeDatePickerPayload, IDatePickerPayload, ISelectDatePickerPayload } from '../DatePickerActions';
 
@@ -34,14 +34,14 @@ describe('Date picker', () => {
           rangeLimit: undefined,
           initiallyUnselected: true,
           isClearable: true,
-        }
+        },
       };
 
       expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined, COLOR, CALENDAR_ID, true, true)).toEqual(expectedAction);
     });
 
     it('should create an action to add the date picker with default values if optional values are not specified', () => {
-      let expectedAction: IReduxAction<IAddDatePickerPayload> = {
+      const expectedAction: IReduxAction<IAddDatePickerPayload> = {
         type: DatePickerActions.add,
         payload: {
           id: DATE_PICKER_ID,
@@ -51,7 +51,7 @@ describe('Date picker', () => {
           rangeLimit: undefined,
           initiallyUnselected: false,
           isClearable: false,
-        }
+        },
       };
 
       expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined)).toEqual(expectedAction);
@@ -129,11 +129,11 @@ describe('Date picker', () => {
     });
 
     it(`should create an action to clear the datepicker's selection`, () => {
-      let expectedAction: IReduxAction<IDatePickerPayload> = {
+      const expectedAction: IReduxAction<IDatePickerPayload> = {
         type: DatePickerActions.clear,
         payload: {
-          id: DATE_PICKER_ID
-        }
+          id: DATE_PICKER_ID,
+        },
       };
 
       expect(clearSelection(DATE_PICKER_ID)).toEqual(expectedAction);

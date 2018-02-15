@@ -4,9 +4,9 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import * as _ from 'underscore';
 import { TestUtils } from '../../../utils/TestUtils';
-import { DatePickerBox, IDatePickerBoxProps, DEFAULT_CLEAR_DATE_LABEL } from '../DatePickerBox';
 import { CalendarConnected } from '../../calendar/CalendarConnected';
 import { OptionPickerConnected } from '../../optionPicker/OptionPickerConnected';
+import { DatePickerBox, DEFAULT_CLEAR_DATE_LABEL, IDatePickerBoxProps } from '../DatePickerBox';
 import { DatesSelectionConnected } from '../DatesSelectionConnected';
 
 describe('Date picker', () => {
@@ -102,8 +102,8 @@ describe('Date picker', () => {
       });
 
       it('should display the clear label passed as a prop or use the default one', () => {
-        let clearLabel: string = 'CLEAR_LABEL';
-        let newProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { clearLabel });
+        const clearLabel: string = 'CLEAR_LABEL';
+        const newProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { clearLabel });
 
         expect(getClearButton().first().text()).toContain(DEFAULT_CLEAR_DATE_LABEL);
 
@@ -114,8 +114,8 @@ describe('Date picker', () => {
       });
 
       it('should call onClear prop when clicking on the clear button', () => {
-        let onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
-        let onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { onClear: onClearSpy });
+        const onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
+        const onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { onClear: onClearSpy });
 
         datePickerBox.setProps(onClearProps);
         getClearButton().first().simulate('click');
@@ -123,7 +123,6 @@ describe('Date picker', () => {
         expect(onClearSpy).toHaveBeenCalled();
       });
     });
-
 
     it('should display anything sent as the footer prop', () => {
       const footerClass: string = 'the-footer-added';

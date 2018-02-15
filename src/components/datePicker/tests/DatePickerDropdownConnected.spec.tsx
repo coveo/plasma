@@ -117,7 +117,7 @@ describe('Date picker', () => {
     });
 
     it('should get what to do on clear as a prop', () => {
-      let onClearProp = datePickerDropdown.props().onClear;
+      const onClearProp = datePickerDropdown.props().onClear;
 
       expect(onClearProp).toBeDefined();
     });
