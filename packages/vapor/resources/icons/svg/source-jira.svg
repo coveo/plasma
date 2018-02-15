@@ -1,15 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32">
-  <defs>
-    <filter id="0" filterUnits="userSpaceOnUse" x="8" y="5" width="16" height="20.9">
-      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-    </filter>
-    <mask maskUnits="userSpaceOnUse" x="8" y="5" width="16" height="20.9" id="1">
-      <g filter="url(#0)">
-        <path fill="#fff" d="m2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2h-28c-1.1 0-2-.9-2-2v-28c0-1.1.9-2 2-2"/>
-      </g>
-    </mask>
-  </defs>
-  <path fill="#1f2e4f" d="m2 0h28c1.1 0 2 .9 2 2v28c0 1.1-.9 2-2 2h-28c-1.1 0-2-.9-2-2v-28c0-1.1.9-2 2-2"/>
-  <path mask="url(#1)" fill="#fff"
-        d="m18.6 18.9c2.8 3.3 2.6 6.9 2.6 6.9h-3.5c.3-1.3-.3-3.2-5.1-7.8-4.7-4.6-4.6-7.7-4.6-7.7 0-.8.7-.4.7-.4 1.3 1 3.1 1 3.1 1 .6 2.4 3.8 5.3 4.3 5.7.7-.7 3.6-3.5 4.1-5.7 0 0 1.8 0 3.1-1 0 0 .7-.4.7.3 0 0 .2 3.3-4.6 7.9-.3.3-.6.5-.8.8m-3.2 3.6c-.6-.8-1.4-1.7-2.5-2.8-2.2 3.1-2 6.2-2 6.2h3.5c-.3-.7-.1-1.7 1-3.4m-1.2-11.3h3.4c0 0 .5-.1.3.5-.2.8-2 2.5-2 2.5s-1.4-1.2-2-2.4c.2 0-.1-.6.3-.6m7.8-3.5c0 .8-.7 1.5-1.5 1.5-.8 0-1.5-.7-1.5-1.5 0-.8.7-1.5 1.5-1.5.9 0 1.5.7 1.5 1.5m-8.8 0c0 .8-.7 1.5-1.5 1.5-.8 0-1.5-.7-1.5-1.5 0-.8.7-1.5 1.5-1.5.8 0 1.5.7 1.5 1.5m4.5-1.2c0 .8-.7 1.5-1.5 1.5-.8 0-1.5-.7-1.5-1.5 0-.8.7-1.5 1.5-1.5.8 0 1.5.7 1.5 1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.3 75.8" enable-background="new 0 0 73.3 75.8">
+<g>
+	<g>
+		<path fill="#2684FF" d="M72.4,35.8L39.8,3.2L36.6,0l0,0L12.1,24.5l0,0L0.9,35.8c-1.2,1.2-1.2,3.1,0,4.2l22.4,22.4l13.3,13.3
+			l24.5-24.5l0.4-0.4L72.4,40C73.6,38.8,73.6,36.9,72.4,35.8z M36.6,49.1L25.4,37.9l11.2-11.2l11.2,11.2L36.6,49.1z"/>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="34.6324" y1="62.655" x2="18.9924" y2="47.015" gradientTransform="matrix(1 0 0 -1 0 78)">
+			<stop  offset="0.18" style="stop-color:#0052CC"/>
+			<stop  offset="1" style="stop-color:#2684FF"/>
+		</linearGradient>
+		<path fill="url(#SVGID_1_)" d="M36.6,26.7c-7.3-7.3-7.4-19.2-0.1-26.6L12,24.6l13.3,13.3L36.6,26.7z"/>
+		
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="38.7774" y1="17.72" x2="54.3874" y2="33.33" gradientTransform="matrix(1 0 0 -1 0 78)">
+			<stop  offset="0.18" style="stop-color:#0052CC"/>
+			<stop  offset="1" style="stop-color:#2684FF"/>
+		</linearGradient>
+		<path fill="url(#SVGID_2_)" d="M47.9,37.8L36.6,49.1c7.4,7.4,7.4,19.3,0,26.7c0,0,0,0,0,0l0,0l24.6-24.6L47.9,37.8z"/>
+	</g>
+</g>
 </svg>
