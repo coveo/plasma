@@ -34,7 +34,7 @@ describe('ListBox', () => {
       expect(newState).toBe(oldState);
     });
 
-    it('should return the old state when the action is not defined for one flat select', () => {
+    it('should return the old state when the action is not defined for one list box', () => {
       const oldState: IListBoxState = listBoxInitialState;
       const newState: IListBoxState = listBoxReducer(oldState, genericAction);
 

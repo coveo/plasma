@@ -1,4 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
+import * as React from 'react';
 import {Provider, Store} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
