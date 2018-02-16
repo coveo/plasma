@@ -39,18 +39,16 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
                             ownProps: ICalendarOwnProps): ICalendarDispatchProps => ({
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
       dispatch(resetOptionPickers(pickerId));
-      if (value) {
-        if (isUpperLimit) {
-          dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
-        } else {
-          dispatch(changeDatePickerLowerLimit(pickerId, value));
+      if (value && isUpperLimit) {
+        dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
+      } else if (value) {
+        dispatch(changeDatePickerLowerLimit(pickerId, value));
 
-          // mirror upper limit to lower limit if not linked with a date range
-          // this will cause the selected lower limit date to display in the calendar right after selection of the lower limit date
-          if (!_.isUndefined(ownProps.isLinkedToDateRange) && !ownProps.isLinkedToDateRange) {
-            dispatch(changeDatePickerUpperLimit(pickerId, value));
-            dispatch(selectDate(pickerId, DateLimits.lower));
-          }
+        // mirror upper limit to lower limit if not linked with a date range
+        // this will cause the selected lower limit date to display in the calendar right after selection of the lower limit date
+        if (!_.isUndefined(ownProps.isLinkedToDateRange) && !ownProps.isLinkedToDateRange) {
+          dispatch(changeDatePickerUpperLimit(pickerId, value));
+          dispatch(selectDate(pickerId, DateLimits.lower));
         }
       } else {
         dispatch(resetDatePickers(pickerId));
