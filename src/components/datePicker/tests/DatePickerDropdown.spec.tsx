@@ -419,6 +419,23 @@ describe('Date picker', () => {
       expect(onCancelSpy).toHaveBeenCalled();
     });
 
+    it('should call onCancel prop with current month and current year when there is no applied lower limit ' +
+      'when calling handleCancel', () => {
+        const onCancelSpy: jasmine.Spy = jasmine.createSpy('onCancel');
+        const newProps: Partial<IDatePickerDropdownProps> = {
+          initiallyUnselected: true,
+          id: 'some-date-picker',
+          onCancel: onCancelSpy,
+          years: [DateUtils.currentYear.toString()],
+          isOpened: true,
+        };
+        datePickerDropdown.setProps(_.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { ...newProps }));
+
+        datePickerDropdownInstance['handleCancel'].call(datePickerDropdownInstance);
+
+        expect(onCancelSpy).toHaveBeenCalledWith(DateUtils.currentMonth, 0, true);
+      });
+
     it('should call onClear prop if set when calling handleClear', () => {
       const onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
       const onClearProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, { onClear: onClearSpy });
