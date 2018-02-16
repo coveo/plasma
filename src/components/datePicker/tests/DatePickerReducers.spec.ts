@@ -515,7 +515,7 @@ describe('Date picker', () => {
     it('should apply the lower limit to the upper limit if the upper limit it lower than the lower when the action ' +
       'is "APPLY_DATE"', () => {
         const oldDatePicker: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
-          upperLimit: new Date(new Date().setHours(0, 0, 1, 1))
+          upperLimit: new Date(new Date().setHours(0, 0, 1, 1)),
         });
         const action: IReduxAction<IDatePickerPayload> = {
           type: DatePickerActions.apply,
