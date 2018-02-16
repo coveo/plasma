@@ -92,37 +92,34 @@ describe('SlideY', () => {
       mountAndWrap(false);
       expect(() => wrapper.setProps({in: true})).not.toThrow();
 
-      let el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
-      transitionToEnd(el);
+      const slideY = component.find('.slide-y').first();
+      transitionToEnd(slideY.getDOMNode() as HTMLElement);
 
-      el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
-      expect(el.classList.contains('slide-y-transition')).toBe(false);
+      expect(slideY.hasClass('slide-y-transition')).toBe(false);
     });
 
     it('should remove the class slide-y-closed when the SlideY opens', () => {
       mountAndWrap(false);
 
-      let el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
-      expect(el.classList.contains('slide-y-closed')).toBe(true);
+      const slideY = component.find('.slide-y').first();
+      expect(slideY.hasClass('slide-y-closed')).toBe(true);
 
       expect(() => wrapper.setProps({in: true})).not.toThrow();
-      transitionToEnd(el);
+      transitionToEnd(slideY.getDOMNode() as HTMLElement);
 
-      el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
-      expect(el.classList.contains('slide-y-closed')).toBe(false);
+      expect(slideY.hasClass('slide-y-closed')).toBe(false);
     });
 
     it('should add the class slide-y-closed when the SlideY closes', () => {
       mountAndWrap(true);
 
-      let el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
-      expect(el.classList.contains('slide-y-closed')).toBe(false);
+      const slideY = component.find('.slide-y').first();
+      expect(slideY.hasClass('slide-y-closed')).toBe(false);
 
       expect(() => wrapper.setProps({in: false})).not.toThrow();
-      transitionToEnd(el);
+      transitionToEnd(slideY.getDOMNode() as HTMLElement);
 
-      el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
-      expect(el.classList.contains('slide-y-closed')).toBe(true);
+      expect(slideY.hasClass('slide-y-closed')).toBe(true);
     });
   });
 });
