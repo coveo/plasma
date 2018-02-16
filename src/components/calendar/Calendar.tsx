@@ -49,20 +49,7 @@ export interface ICalendarDispatchProps {
 
 export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps, ICalendarDispatchProps { }
 
-export const DEFAULT_MONTHS: string[] = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+export const DEFAULT_MONTHS: string[] = moment.months();
 
 export const DEFAULT_YEARS: string[] = [
   ...DateUtils.getPreviousYears(10),
@@ -70,15 +57,7 @@ export const DEFAULT_YEARS: string[] = [
   ...DateUtils.getNextYears(10),
 ];
 
-export const DEFAULT_DAYS: string[] = [
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat',
-];
+export const DEFAULT_DAYS: string[] = moment.weekdaysShort();
 
 export const MONTH_PICKER_ID: string = 'calendar-months';
 
@@ -134,9 +113,9 @@ export class Calendar extends React.Component<ICalendarProps, any> {
           const nextLowerLimit: Date = calendarSelection.lowerLimit;
           const nextUpperLimit: Date = calendarSelection.upperLimit;
 
-          if (!moment(currentLowerLimit).isSame(nextLowerLimit, 'minute') && (!!currentLowerLimit || !!nextLowerLimit)) {
+          if (DateUtils.isDifferent(currentLowerLimit, nextLowerLimit, 'minute')) {
             limitToChange = nextLowerLimit;
-          } else if (!moment(currentUpperLimit).isSame(nextUpperLimit, 'minute') && (!!currentUpperLimit || !!nextUpperLimit)) {
+          } else if (DateUtils.isDifferent(currentUpperLimit, nextUpperLimit, 'minute')) {
             limitToChange = nextUpperLimit;
           }
 

@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import { Moment } from 'moment';
 import * as _ from 'underscore';
 import { IDay } from '../components/calendar/CalendarDay';
 
@@ -71,7 +70,7 @@ export class DateUtils {
   }
 
   static getValidDate(date: string, fromTime: boolean = false): Date {
-    let momentDate: Moment = moment(date, LONG_DATE_FORMAT, fromTime);
+    let momentDate: moment.Moment = moment(date, LONG_DATE_FORMAT, fromTime);
     if (momentDate.isValid()) {
       return momentDate.toDate();
     }
@@ -94,5 +93,14 @@ export class DateUtils {
 
   static getDateFromSimpleDateString(date: string): Date {
     return moment(date, SIMPLE_DATE_FORMAT, true).toDate();
+  }
+
+  /**
+   * The difference between this function and using `moment.isSame` is in how null values are handled.
+   * * `!moment(null).isSame(null)` will return `true`
+   * * `DateUtils.isDifferent(null, null)` will return `false`
+   */
+  static isDifferent(firstDate: moment.MomentInput, secondDate: moment.MomentInput, granularity?: moment.unitOfTime.StartOf): boolean {
+    return !moment(firstDate).isSame(secondDate, granularity) && (!!firstDate || !!secondDate);
   }
 }
