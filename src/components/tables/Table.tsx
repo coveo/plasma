@@ -201,7 +201,7 @@ export class Table extends React.Component<ITableProps, {}> {
           tableId={this.props.id}
           rowData={currentRowData}
           isLoading={this.props.tableCompositeState.isLoading}
-          getActions={(rowData?: IData) => this.props.getActions(rowData)}
+          getActions={(rowData?: IData) => (this.props.getActions && this.props.getActions(rowData)) || []}
           headingAttributes={this.props.headingAttributes}
           collapsibleFormatter={this.props.collapsibleFormatter}
           onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions)}

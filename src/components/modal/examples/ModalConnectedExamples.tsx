@@ -50,13 +50,13 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
                     A modal in a modal
                   </ModalBody>
                 </ModalConnected>
-                <ModalBackdropConnected displayFor={['modal2']} />
+                <ModalBackdropConnected displayFor={[modal2Id]} isPrompt />
               </ModalBody>
               <ModalFooter>
-                <button className='btn' onClick={() => { this.openModal('modal2'); }}>Open Modal 2</button>
+                <button className='btn' onClick={() => { this.openModal(modal2Id); }}>Open Modal 2</button>
               </ModalFooter>
             </ModalConnected>
-            <ModalBackdropConnected />
+            <ModalBackdropConnected displayFor={[modal1Id]} />
           </div>
         </div>
       </div>

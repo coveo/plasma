@@ -67,17 +67,13 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         isCollapsible={!!collapsibleData}
         onClickCallback={() => {
           if (props.onRowClick) {
-            props.onRowClick(props.getActions && props.getActions(props.rowData));
+            props.onRowClick(props.getActions(props.rowData));
           }
         }}
-        onDoubleClick={() => {
-          const actions = props.getActions
-            ? props.getActions(props.rowData)
-            : [];
-          actions
+        onDoubleClick={() => props.getActions(props.rowData)
             .filter((action) => action.callOnDoubleClick)
-            .forEach((action) => action.trigger());
-        }}>
+            .forEach((action) => action.trigger())
+        }>
         {tableHeadingRowContent}
       </TableHeadingRowConnected>
       {collapsibleRow}
