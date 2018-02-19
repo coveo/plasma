@@ -1,7 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {TransitionProps} from 'react-transition-group/Transition';
-import {IDropdownProps} from '../components/dropdown/Dropdown';
 import {SlideY} from './SlideY';
 
 describe('SlideY', () => {

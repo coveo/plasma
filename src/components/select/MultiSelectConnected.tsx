@@ -43,8 +43,6 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
   static defaultProps: Partial<IMultiSelectProps> = {
     emptyValueText: 'No selected values',
     deselectAllTooltipText: 'Deselect All',
-    onRemoveClick: _.noop,
-    onRemoveAll: _.noop,
   };
 
   render() {

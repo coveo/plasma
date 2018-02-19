@@ -1,7 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider, Store} from 'react-redux';
+import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
+import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
@@ -9,7 +11,7 @@ import {SelectConnected} from '../SelectConnected';
 import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
-  describe('<SingleSelectConnected/>', () => {
+  describe('<SingleSelectConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let singleSelect: ReactWrapper<ISingleSelectProps, void>;
     let store: Store<IReactVaporState>;
@@ -64,28 +66,138 @@ describe('Select', () => {
       });
     });
 
-    it('should get the selected items as a prop', () => {
+    it('should contains a the selected value', () => {
       const selectedValue = 'dis 1';
       mountSingleSelect([
-        {value: 'a', prepend: {content: 'pre'}, append: {content: 'post'}},
+        {value: 'a'},
         {value: selectedValue, selected: true},
       ]);
-      const selectedProp = singleSelect.props().selected;
 
-      expect(selectedProp).toBeDefined();
-      expect(selectedProp).toEqual([selectedValue]);
+      expect(singleSelect.html()).toContain(selectedValue);
+    });
+
+    it('should contains the display value when the selected value has one', () => {
+      const selectedDisplayValue = 'dis 2';
+      mountSingleSelect([
+        {value: 'a'},
+        {value: 'dis 1', displayValue: selectedDisplayValue, selected: true},
+      ]);
+
+      expect(singleSelect.html()).toContain(selectedDisplayValue);
+    });
+
+    it('should contains the selected item as a prop', () => {
+      const selectedValue = 'dis 1';
+      mountSingleSelect([
+        {value: 'a'},
+        {value: selectedValue, selected: true},
+      ]);
+
+      const value: string = singleSelect.find('.dropdown-selected-value').prop<string>('data-value');
+      expect(value).toBe(selectedValue);
     });
 
     it('should contains the prepend and append in the button when selected', () => {
-      const selectedValue = 'dis 1';
+      const prepend = 'pre';
+      const append = 'post';
       mountSingleSelect([
-        {value: 'a', prepend: {content: 'pre'}, append: {content: 'post'}},
-        {value: selectedValue, selected: true},
+        {value: 'a', selected: true, prepend: {content: prepend}, append: {content: append}},
+        {value: 'b', selected: false},
       ]);
-      const selectedProp = singleSelect.props().selected;
+      const buttonHTML = singleSelect.find('.dropdown-toggle').html();
 
-      expect(selectedProp).toBeDefined();
-      expect(selectedProp).toEqual([selectedValue]);
+      expect(buttonHTML).toContain(prepend);
+      expect(buttonHTML).toContain(append);
+    });
+
+    it('should not contains the prepend and append in the button when not selected', () => {
+      const prepend = 'pre';
+      const append = 'post';
+      mountSingleSelect([
+        {value: 'a', selected: false, prepend: {content: 'pre'}, append: {content: 'post'}},
+        {value: 'b', selected: true},
+      ]);
+
+      const buttonHTML = singleSelect.find('.dropdown-toggle').html();
+
+      expect(buttonHTML).not.toContain(prepend);
+      expect(buttonHTML).not.toContain(append);
+    });
+
+    describe('keyboard events', () => {
+      it('should not throw on keydown in the dropdown', () => {
+        mountSingleSelect();
+
+        const el = singleSelect.find('.dropdown-toggle');
+        _.each(keyCode, (code) => {
+          expect(() => el.simulate('keydown', { keyCode: code })).not.toThrow();
+        });
+      });
+
+      it('should open the dropdown when the user press enter on the button', () => {
+        mountSingleSelect();
+
+        expect(store.getState().selects[0].open).toBe(false);
+
+        singleSelect.find('.dropdown-toggle').simulate('keyup', { keyCode: keyCode.enter });
+        expect(store.getState().selects[0].open).toBe(true);
+      });
+
+      it('should close the dropdown when the user press escape on the button and the dropdown is open', () => {
+        mountSingleSelect();
+
+        expect(store.getState().selects[0].open).toBe(false);
+        singleSelect.find('.dropdown-toggle').simulate('keyup', { keyCode: keyCode.escape });
+        expect(store.getState().selects[0].open).toBe(false);
+
+        singleSelect.find('.dropdown-toggle').simulate('keyup', { keyCode: keyCode.enter });
+        expect(store.getState().selects[0].open).toBe(true);
+
+        singleSelect.find('.dropdown-toggle').simulate('keyup', { keyCode: keyCode.escape });
+        expect(store.getState().selects[0].open).toBe(false);
+      });
+    });
+
+    describe('click handler', () => {
+      beforeEach(() => {
+        const otherElement: HTMLDivElement = document.createElement('div');
+        otherElement.setAttribute('id', 'other');
+        document.body.appendChild(otherElement);
+      });
+
+      afterEach(() => document.getElementById('other').remove());
+
+      const clickOnEl = (el: Element = document.getElementById('other')) => {
+        const evt = new MouseEvent('click', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+          clientX: 20,
+        });
+        el.dispatchEvent(evt);
+      };
+
+      it('should close the dropdown when the user click outside the dropdown and the dropdown is open', () => {
+        mountSingleSelect();
+
+        singleSelect.find('.dropdown-toggle').simulate('keyup', { keyCode: keyCode.enter });
+        expect(store.getState().selects[0].open).toBe(true);
+
+        clickOnEl(singleSelect.find('.dropdown-container').getDOMNode());
+        expect(store.getState().selects[0].open).toBe(true);
+
+        clickOnEl();
+        expect(store.getState().selects[0].open).toBe(false);
+      });
+
+      it('should not open the dropdown when the user click outside the dropdown', () => {
+        mountSingleSelect();
+
+        expect(store.getState().selects[0].open).toBe(false);
+
+        clickOnEl();
+        expect(store.getState().selects[0].open).toBe(false);
+      });
     });
   });
 });

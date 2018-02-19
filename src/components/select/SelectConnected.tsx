@@ -64,19 +64,13 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
   private menu: HTMLDivElement;
 
   componentWillMount() {
-    if (this.props.onRender) {
-      this.props.onRender();
-    }
-
+    this.props.onRender();
     document.addEventListener('click', this.handleDocumentClick);
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleDocumentClick);
-
-    if (this.props.onDestroy) {
-      this.props.onDestroy();
-    }
+    this.props.onDestroy();
   }
 
   render() {
@@ -113,12 +107,10 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
 
   private onToggleDropdown(e: React.SyntheticEvent<HTMLElement>) {
     this.menu.style.minWidth = this.dropdown.clientWidth + 'px';
-    if (this.props.onToggleDropdown) {
-      e.stopPropagation();
-      e.preventDefault();
+    e.stopPropagation();
+    e.preventDefault();
 
-      this.props.onToggleDropdown();
-    }
+    this.props.onToggleDropdown();
   }
 
   private onKeyDown(e: React.KeyboardEvent<HTMLElement>) {
@@ -141,7 +133,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
       const dropdown: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
 
-      if (!dropdown.contains(e.target as Node) && this.props.onDocumentClick) {
+      if (!dropdown.contains(e.target as Node)) {
         this.props.onDocumentClick();
       }
     }
