@@ -110,7 +110,7 @@
   }
 
   // Validation feedback
-  &.validate input, .validate input, &.validate textarea, .validate textarea {
+  &.validate input, .validate input, &.validate textarea, .validate textarea, &.validate .input {
     transition: 0.2s margin-bottom ease, 0.2s color ease;
 
     &.valid, &.invalid {
@@ -134,6 +134,7 @@
 
     &.invalid + label:after {
       color: $red;
+
       content: attr(data-invalid-message);
 
       opacity: 1;
@@ -160,6 +161,10 @@
           margin-top: $input-message-position / 2;
         }
       }
+    }
+
+    &.input + label {
+      top: $input-height;
     }
   }
 
