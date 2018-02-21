@@ -72,13 +72,26 @@ describe('Actions', () => {
 
       expect(triggerAction.find('.enabled').length).toBe(0);
       expect(triggerAction.find('.state-disabled').length).toBe(1);
+
+      triggerAction.setProps({ action: {...newAction, hideDisabled: false}, simple: false });
+
+      expect(triggerAction.find('.enabled').length).toBe(0);
+      expect(triggerAction.find('.state-disabled').length).toBe(1);
     });
 
-    it('should call onTriggerAction when clicked', () => {
+    it('should call onTriggerAction when clicked if action is enabled', () => {
       const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
 
       triggerAction.find('.enabled').simulate('click');
       expect(onTriggerActionSpy.calls.count()).toBe(1);
+    });
+
+    it('should not call onTriggerAction when clicked if action is not enabled and not hideDisabled', () => {
+      triggerAction.setProps({ action: {...action, enabled: false, hideDisabled: false}});
+      const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
+
+      triggerAction.find('.state-disabled').simulate('click');
+      expect(onTriggerActionSpy.calls.count()).toBe(0);
     });
 
     it('should call the trigger of the action when clicked and no confirmation is required', () => {

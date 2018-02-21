@@ -1,21 +1,21 @@
-import { mount, ReactWrapper } from 'enzyme';
+import {mount, ReactWrapper} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Provider } from 'react-redux';
-import { Store } from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'react-redux';
 import * as _ from 'underscore';
-import { IReactVaporState } from '../../../ReactVapor';
-import { clearState } from '../../../utils/ReduxUtils';
-import { TestUtils } from '../../../utils/TestUtils';
-import { IInlinePromptOptions } from '../../inlinePrompt/InlinePrompt';
-import { addPrompt } from '../../inlinePrompt/InlinePromptActions';
-import { IActionOptions } from '../Action';
-import { ActionBar, IActionBarProps } from '../ActionBar';
-import { addActionsToActionBar } from '../ActionBarActions';
-import { ActionBarConnected } from '../ActionBarConnected';
-import { filterItems } from '../filters/ItemFilterActions';
-import { PrimaryActionConnected } from '../PrimaryActionConnected';
-import { SecondaryActionsConnected } from '../SecondaryActionsConnected';
+import {IReactVaporState} from '../../../ReactVapor';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/TestUtils';
+import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
+import {addPrompt} from '../../inlinePrompt/InlinePromptActions';
+import {IActionOptions} from '../Action';
+import {ActionBar, IActionBarProps} from '../ActionBar';
+import {addActionsToActionBar} from '../ActionBarActions';
+import {ActionBarConnected} from '../ActionBarConnected';
+import {filterItems} from '../filters/ItemFilterActions';
+import {PrimaryActionConnected} from '../PrimaryActionConnected';
+import {SecondaryActionsConnected} from '../SecondaryActionsConnected';
 
 describe('Actions', () => {
   const id: string = 'secondary-actions';
@@ -29,6 +29,17 @@ describe('Actions', () => {
     name: 'action2',
     trigger: jasmine.createSpy('triggerMethod'),
     enabled: true,
+  },
+  {
+    name: 'action3',
+    trigger: jasmine.createSpy('triggerMethod'),
+    enabled: false,
+  },
+  {
+    name: 'action4',
+    trigger: jasmine.createSpy('triggerMethod'),
+    enabled: false,
+    hideDisabled: false,
   }];
   const itemFilter: string = 'the item';
   const itemFilterLabel: string = 'Item filter';
@@ -45,7 +56,7 @@ describe('Actions', () => {
         <Provider store={store}>
           <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} />
         </Provider>,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
       actionBar = wrapper.find(ActionBar).first();
 
@@ -66,11 +77,11 @@ describe('Actions', () => {
       expect(idProp).toBe(id);
     });
 
-    it('should get the actions as a prop', () => {
+    it('should get the enabled actions and unhidden disabled actions as a prop', () => {
       const actionsProp = actionBar.props().actions;
 
       expect(actionsProp).toBeDefined();
-      expect(actionsProp.length).toBe(actions.length);
+      expect(actionsProp.length).toBe(actions.filter((action) => action.enabled || action.hideDisabled === false).length);
       expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
     });
 
@@ -128,7 +139,7 @@ describe('Actions', () => {
         <Provider store={store}>
           <ActionBarConnected id={id} />
         </Provider>,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
       actionBar = wrapper.find(ActionBar).first();
 
@@ -170,7 +181,7 @@ describe('Actions', () => {
         <Provider store={store}>
           <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} onClearItemFilter={onClearItemFilterSpy} />
         </Provider>,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
       actionBar = wrapper.find(ActionBar).first();
 
@@ -186,11 +197,11 @@ describe('Actions', () => {
     });
 
     it('should clear the item filter when calling clearItemFilter', () => {
-      expect(_.findWhere(store.getState().itemFilters, { id: id }).item).toBe(itemFilter);
+      expect(_.findWhere(store.getState().itemFilters, {id: id}).item).toBe(itemFilter);
 
       actionBar.props().clearItemFilter();
 
-      expect(_.findWhere(store.getState().itemFilters, { id: id }).item).toBe('');
+      expect(_.findWhere(store.getState().itemFilters, {id: id}).item).toBe('');
     });
   });
 });
