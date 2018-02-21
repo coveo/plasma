@@ -57,7 +57,7 @@ export class ActionBarExamples extends React.Component<any, any> {
           <ActionBar />
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Action bar without actions</label>
+          <label className='form-control-label'>Action bar with actions</label>
           <ActionBar actions={actions} />
         </div>
         <div className='form-group'>
