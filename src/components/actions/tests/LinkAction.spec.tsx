@@ -117,11 +117,11 @@ describe('Actions', () => {
         expect(linkAction.find('a').hasClass('state-disabled')).toBe(true);
       });
 
-      it('should have no target provided if the action is not enabled', () => {
+      it('should have no target provided', () => {
         expect(linkAction.find('a').prop('target')).toBeUndefined();
       });
 
-      it('should have no href provided if the action is not enabled', () => {
+      it('should have no href provided', () => {
         expect(linkAction.find('a').prop('href')).toBeUndefined();
       });
     });

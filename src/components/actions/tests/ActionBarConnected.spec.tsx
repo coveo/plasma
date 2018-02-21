@@ -19,28 +19,31 @@ import {SecondaryActionsConnected} from '../SecondaryActionsConnected';
 
 describe('Actions', () => {
   const id: string = 'secondary-actions';
-  const actions: IActionOptions[] = [{
-    name: 'action',
-    link: 'http://coveo.com',
-    target: '_blank',
-    primary: true,
-    enabled: true,
-  }, {
-    name: 'action2',
-    trigger: jasmine.createSpy('triggerMethod'),
-    enabled: true,
-  },
-  {
-    name: 'action3',
-    trigger: jasmine.createSpy('triggerMethod'),
-    enabled: false,
-  },
-  {
-    name: 'action4',
-    trigger: jasmine.createSpy('triggerMethod'),
-    enabled: false,
-    hideDisabled: false,
-  }];
+  const actions: IActionOptions[] = [
+    {
+      name: 'action',
+      link: 'http://coveo.com',
+      target: '_blank',
+      primary: true,
+      enabled: true,
+    },
+    {
+      name: 'action2',
+      trigger: jasmine.createSpy('triggerMethod'),
+      enabled: true,
+    },
+    {
+      name: 'action3',
+      trigger: jasmine.createSpy('triggerMethod'),
+      enabled: false,
+    },
+    {
+      name: 'action4',
+      trigger: jasmine.createSpy('triggerMethod'),
+      enabled: false,
+      hideDisabled: false,
+    },
+  ];
   const itemFilter: string = 'the item';
   const itemFilterLabel: string = 'Item filter';
 
