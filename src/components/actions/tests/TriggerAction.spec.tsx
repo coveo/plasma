@@ -86,7 +86,7 @@ describe('Actions', () => {
       expect(onTriggerActionSpy.calls.count()).toBe(1);
     });
 
-    it('should not call onTriggerAction when clicked if action is not enabled and not hideDisabled', () => {
+    it('should not call onTriggerAction when clicked if action is not enabled and visible', () => {
       triggerAction.setProps({ action: {...action, enabled: false, hideDisabled: false}});
       const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
 
