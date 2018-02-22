@@ -5,7 +5,7 @@
 
   // General Styles
 
-  input, textarea {
+  > input, > textarea {
     width: 100%;
     height: $input-height;
     padding: $input-padding;
@@ -46,7 +46,7 @@
     }
   }
 
-  label {
+  > label {
     position: absolute;
     top: 10px;
     left: 0;
@@ -72,7 +72,7 @@
     }
   }
 
-  input {
+  > input {
     padding: $input-vertical-padding 0;
 
     color: transparent; // Make the input text color transparent when input is invalid (closed).
@@ -86,7 +86,7 @@
     @include placeholder(transparent);
   }
 
-  textarea {
+  > textarea {
     min-height: $input-height;
     padding: 10px 0 24px 0;
     overflow-y: hidden;
@@ -110,7 +110,11 @@
   }
 
   // Validation feedback
-  &.validate input, .validate input, &.validate textarea, .validate textarea, &.validate .input {
+  &.validate > input,
+  .validate > input,
+  &.validate > textarea,
+  .validate > textarea,
+  &.validate .input {
     transition: 0.2s margin-bottom ease, 0.2s color ease;
 
     &.valid, &.invalid {
