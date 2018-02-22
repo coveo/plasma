@@ -50,6 +50,34 @@ stylesheet: '/scss/controls/checkboxes.scss'
 <input type="checkbox" class="coveo-checkbox">
 <button type="button" class="mt1"></button>
 
+<div id="other-validation" class="form-group mt4">
+    <label class="form-control-label">Validation on checkbox</label>
+    <div class="input-field form-group validate">
+        <div class="validate input-field">
+            <div class="input input-wrapper invalid">
+                <div class="multi-select mod-inline">
+                    <div class="multi-select-option">
+                        <label class="coveo-checkbox-label mt1">
+                            <input type="checkbox" class="coveo-checkbox">
+                            <button type="button"></button>
+                            <span class="label">One option</span>
+                        </label>
+                    </div>
+                    <div class="multi-select-option">
+                        <label class="coveo-checkbox-label mt1">
+                            <input type="checkbox" class="coveo-checkbox">
+                            <button type="button"></button>
+                            <span class="label">Another option</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <label data-invalid-message="Uh! Oh!"></label>
+        </div>
+    </div>
+    
+</div>
+
 <script>
     // Set the indeterminate property on js-prop-indeterminate elements.
     $('.js-prop-indeterminate').each(function(i, element) {
