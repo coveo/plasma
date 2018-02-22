@@ -5,6 +5,7 @@ import { IClassName } from '../../utils/ClassNameUtils';
 export interface IModalOwnProps {
   id?: string;
   classes?: IClassName;
+  closeCallback?: () => void;
 }
 
 export interface IModalStateProps {
@@ -29,6 +30,12 @@ export class Modal extends React.Component<IModalProps, {}> {
   componentWillUnmount() {
     if (this.props.onDestroy) {
       this.props.onDestroy();
+    }
+  }
+
+  componentWillReceiveProps(nextProps: IModalProps) {
+    if (this.props.isOpened && !nextProps.isOpened && this.props.closeCallback) {
+      this.props.closeCallback();
     }
   }
 
