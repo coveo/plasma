@@ -20,6 +20,7 @@ export interface IBaseActionOptions {
   primary?: boolean;
   tooltip?: string;
   tooltipPlacement?: string;
+  hideDisabled?: boolean;
   onClick?: () => void;
 }
 
@@ -45,6 +46,9 @@ export interface IBasicActionProps {
 export interface IActionProps extends React.ClassAttributes<Action>, IBasicActionProps { }
 
 export class Action extends React.Component<IActionProps, any> {
+  static defaultProps: Partial<IActionOptions> = {
+    hideDisabled: true,
+  };
 
   render() {
     const actionIcon: JSX.Element = this.props.action.icon
