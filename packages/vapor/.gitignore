@@ -33,3 +33,6 @@ Thumbs.db
 *.vi
 *.zip
 *~
+
+# package-lock
+package-lock.json*
