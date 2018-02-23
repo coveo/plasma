@@ -20,4 +20,38 @@ describe('DateUtils', () => {
       expect(DateUtils.getValidDate(date).toString()).toBe(moment().toDate().toString());
     });
   });
+
+  describe('isDifferent', () => {
+    it('should return false when passing null and null', () => {
+      expect(DateUtils.isDifferent(null, null)).toBe(false);
+      expect(DateUtils.isDifferent(null, null, 'minutes')).toBe(false);
+      expect(DateUtils.isDifferent(null, null, 'days')).toBe(false);
+    });
+
+    it('should return false when passing undefined and undefined', () => {
+      expect(DateUtils.isDifferent(undefined, undefined)).toBe(false);
+      expect(DateUtils.isDifferent(undefined, undefined, 'minutes')).toBe(false);
+      expect(DateUtils.isDifferent(undefined, undefined, 'days')).toBe(false);
+    });
+
+    it('should return false when passing both empty strings', () => {
+      expect(DateUtils.isDifferent('', '')).toBe(false);
+      expect(DateUtils.isDifferent('', '', 'minutes')).toBe(false);
+      expect(DateUtils.isDifferent('', '', 'days')).toBe(false);
+    });
+
+    it('should return false when passing similar moments for the given granularity', () => {
+      expect(DateUtils.isDifferent(moment().subtract(1, 'second'), moment(), 'minute')).toBe(false);
+      expect(DateUtils.isDifferent('2018-01-01', '2018-12-31', 'year')).toBe(false);
+    });
+
+    it('should return true when passing different moments', () => {
+      expect(DateUtils.isDifferent(moment(), null)).toBe(true);
+      expect(DateUtils.isDifferent(null, moment())).toBe(true);
+      expect(DateUtils.isDifferent(moment(), moment().add(1, 'day'))).toBe(true);
+      expect(DateUtils.isDifferent(moment().subtract(1, 'second'), moment())).toBe(true);
+      expect(DateUtils.isDifferent('2018-01-01', '2018-12-31')).toBe(true);
+    });
+
+  });
 });

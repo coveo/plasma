@@ -115,15 +115,27 @@ describe('Calendar', () => {
       expect(onClickProp).toBeDefined();
     });
 
+    it('should get what to do on date change as a prop', () => {
+      const onDateChangeProp = calendar.props().onDateChange;
+
+      expect(onDateChangeProp).toBeDefined();
+    });
+
+    it('should get what to do on select unselectable as a prop', () => {
+      const onSelectUnselectableProp = calendar.props().onSelectUnselectable;
+
+      expect(onSelectUnselectableProp).toBeDefined();
+    });
+
     it('should display two <OptionsCycleConnected /> (one for the month picker and the other for the year picker)', () => {
       expect(calendar.find(OptionsCycleConnected).length).toBe(2);
     });
 
-    it('should set the selected value of the picker to an empty string when calling onClick and the limit selected ' +
-      'is the upper one', () => {
+    it('should set the selected value of the picker to an empty string when calling onClick on a date range picker ' +
+      'and the limit selected is the upper one', () => {
         const pickerSelected: string = DateLimits.upper;
 
-        store.dispatch(DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE);
+        store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
         store.dispatch(selectDate(PICKER_ID, pickerSelected));
 
         expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(pickerSelected);
@@ -133,8 +145,22 @@ describe('Calendar', () => {
         expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe('');
       });
 
-    it('should set the selected value of the picker to the upper limit when calling onClick and the limit selected ' +
-      'is the lower one', () => {
+    it('should set the selected value of the picker to the upper limit when calling onClick on a date range picker ' +
+      'and the limit selected is the lower one', () => {
+        const pickerSelected: string = DateLimits.lower;
+
+        store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
+        store.dispatch(selectDate(PICKER_ID, pickerSelected));
+
+        expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(pickerSelected);
+
+        calendar.props().onClick(PICKER_ID, false, new Date());
+
+        expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(DateLimits.upper);
+      });
+
+    it('should set the selected value of the picker to an empty string when calling onClick on a standard date picker ' +
+      'and the limit selected is the lower one', () => {
         const pickerSelected: string = DateLimits.lower;
 
         store.dispatch(DEFAULT_ADD_DATE_PICKER_WITHOUT_RANGE);
@@ -144,7 +170,7 @@ describe('Calendar', () => {
 
         calendar.props().onClick(PICKER_ID, false, new Date());
 
-        expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(DateLimits.upper);
+        expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe('');
       });
 
     it('should reset the date picker if on click is called without a value', () => {
@@ -224,7 +250,7 @@ describe('Calendar', () => {
       expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(newLimit);
     });
 
-    it('should set the upper limit to undefined if onClick was called on a lower limit and isLinkedToDateRange prop is undefined', () => {
+    it('should not change the upper limit if onClick was called on a lower limit and isLinkedToDateRange prop is undefined', () => {
       const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
       const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
@@ -236,10 +262,10 @@ describe('Calendar', () => {
 
       calendar.props().onClick(PICKER_ID, false, newLimit);
 
-      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBeUndefined();
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
     });
 
-    it('should not change the upper limit if the onClick was called on a lower limit and isLinkedToDateRange prop is true', () => {
+    it('should not change the upper limit if onClick was called on a lower limit and isLinkedToDateRange prop is true', () => {
       const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
       const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
@@ -251,7 +277,7 @@ describe('Calendar', () => {
 
       calendar.props().onClick(PICKER_ID, false, newLimit);
 
-      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBeUndefined();
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
     });
 
     it('should change the selected month and year if one of the calendar selection changed a limit', () => {
@@ -276,6 +302,24 @@ describe('Calendar', () => {
 
       expect(_.findWhere(store.getState().optionsCycles, { id: monthId }).currentOption).toBe(11);
       expect(_.findWhere(store.getState().optionsCycles, { id: yearId }).currentOption).not.toBe(secondYear);
+    });
+
+    it('should set the upper limit to null and select the upper limit if an unselectable day has been selected', () => {
+      // this can legitimately happen only under the following conditions: when a rule for range length is set, a both limits are set
+      // then a new lower limit that exceeds the range length is being set
+
+      const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+
+      store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
+      store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(currentUpperLimit);
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe('');
+
+      calendar.props().onSelectUnselectable(PICKER_ID);
+
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).upperLimit).toBe(null);
+      expect(_.findWhere(store.getState().datePickers, { id: PICKER_ID }).selected).toBe(DateLimits.upper);
     });
   });
 });

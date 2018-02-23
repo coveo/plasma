@@ -171,8 +171,8 @@ describe('Calendar day', () => {
       expect(BASIC_CALENDAR_DAY_PROPS.onClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should call onSelectUnselectable when the day is supposed to be selected and unselectable at the same time', () => {
-      const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false, isUpperLimit: true });
+    it('should call onSelectUnselectable when the day has been selected, but is unselectable at the same time', () => {
+      const unSelectableDay: IDay = _.extend({}, DAY, { isSelectable: false, isUpperLimit: true, isSelected: true });
       const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, { day: unSelectableDay, onSelectUnselectable: jasmine.createSpy('onSelectUnselectable') });
 
       calendarDay.setProps(unSelectableDayProps);
