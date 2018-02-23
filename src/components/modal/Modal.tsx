@@ -28,6 +28,9 @@ export class Modal extends React.Component<IModalProps, {}> {
   }
 
   componentWillUnmount() {
+    if (this.props.closeCallback) {
+      this.props.closeCallback();
+    }
     if (this.props.onDestroy) {
       this.props.onDestroy();
     }
