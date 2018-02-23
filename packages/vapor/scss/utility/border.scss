@@ -11,3 +11,11 @@ $borders: border-top border-bottom border-left border-right;
     #{$border}: none;
   }
 }
+
+.mod-border {
+  border: $default-border; 
+}
+
+.mod-no-border {
+  border: none;
+}
