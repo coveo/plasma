@@ -1,6 +1,7 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
-import { IUserChoice } from '../inlinePrompt/InlinePrompt';
-import { Action, IBasicActionProps, IConfirmData } from './Action';
+import {IUserChoice} from '../inlinePrompt/InlinePrompt';
+import {Action, IBasicActionProps, IConfirmData} from './Action';
 
 export interface ITriggerActionOwnProps extends React.ClassAttributes<TriggerAction>, IBasicActionProps {
   confirmLabel?: string;
@@ -13,7 +14,7 @@ export interface ITriggerActionDispatchProps {
   onCloseDropdown?: () => void;
 }
 
-export interface ITriggerActionProps extends ITriggerActionOwnProps, ITriggerActionDispatchProps { }
+export interface ITriggerActionProps extends ITriggerActionOwnProps, ITriggerActionDispatchProps {}
 
 export const CONFIRM_LABEL: string = 'Are you sure?';
 
@@ -54,10 +55,14 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
   }
 
   render() {
-    const actionClasses: string = this.props.action.enabled ? 'enabled' : (this.props.simple ? 'state-disabled' : 'disabled');
+    const actionClasses: string = classNames({
+      'enabled': this.props.action.enabled,
+      'state-disabled': !this.props.action.enabled && (this.props.simple || !this.props.action.hideDisabled),
+      'disabled': !this.props.action.enabled && !this.props.simple,
+    });
 
     return (
-      <span onClick={() => this.onTriggerAction()} className={actionClasses} title={this.props.action.name}>
+      <span onClick={() => this.props.action.enabled && this.onTriggerAction()} className={actionClasses} title={this.props.action.name}>
         <Action action={this.props.action} simple={this.props.simple} />
       </span>
     );

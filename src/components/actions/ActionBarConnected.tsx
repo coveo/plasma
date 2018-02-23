@@ -25,7 +25,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarOwnProps):
 
   return {
     withReduxState: true,
-    actions: actionBar && actionBar.actions ? _.filter(actionBar.actions, (action: IActionOptions) => _.result(action, 'enabled')) : [],
+    actions: actionBar && actionBar.actions ? _.filter(actionBar.actions, (action: IActionOptions) => action.enabled || action.hideDisabled === false) : [],
     isLoading: actionBar && actionBar.isLoading,
     prompt: prompt && prompt.options ?
       <div className='prompt'>

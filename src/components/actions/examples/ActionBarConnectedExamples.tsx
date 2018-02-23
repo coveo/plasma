@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
-import { IActionOptions } from '../Action';
-import { addActionsToActionBar } from '../ActionBarActions';
-import { ActionBarConnected } from '../ActionBarConnected';
+import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {IActionOptions} from '../Action';
+import {addActionsToActionBar} from '../ActionBarActions';
+import {ActionBarConnected} from '../ActionBarConnected';
 
 const actionBarId = 'action-bar-connected';
 
@@ -17,7 +17,8 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
         icon: 'edit',
         primary: true,
         enabled: true,
-      }, {
+      },
+      {
         name: 'Action 1',
         trigger: () => alert('Action 1 was triggered'),
         enabled: true,
@@ -28,10 +29,12 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
             cancel: 'Cancel',
           },
         },
-      }, {
+      },
+      {
         separator: true,
         enabled: true,
-      }, {
+      },
+      {
         name: 'Action 2',
         trigger: () => alert('Action 2 was triggered'),
         enabled: true,
@@ -42,7 +45,25 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
             cancel: 'Cancel',
           },
         },
-      }];
+      },
+      {
+        name: 'Link to Coveo (disabled)',
+        link: 'http://coveo.com',
+        target: '_blank',
+        icon: 'edit',
+        primary: true,
+        enabled: false,
+        hideDisabled: false,
+      },
+      {
+        name: 'Action 3',
+        trigger: () => alert('You cannot trigger me'),
+        icon: 'edit',
+        primary: true,
+        enabled: false,
+        hideDisabled: false,
+      },
+    ];
     setTimeout(() => {
       ReactVaporStore.dispatch(addActionsToActionBar(actionBarId, actions));
     }, 4000);
