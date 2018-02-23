@@ -4,7 +4,7 @@ import {IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {LoadingActions} from '../loading/LoadingActions';
 import {ITablePredicate} from './Table';
-import {TableActions} from './TableActions';
+import {ITableActionPayload, TableActions} from './TableActions';
 import {
   DEFAULT_TABLE_DATA,
   TableChildComponent,
@@ -24,6 +24,7 @@ export interface ITableData {
   displayedIds: string[]; // will be the data displayed in the table
   totalEntries: number;
   totalPages: number;
+  selectedIds?: string[];
 }
 
 export interface ITablesState {
@@ -80,12 +81,17 @@ export const tableInitialState: ITableState = {
   datePickerRangeId: undefined,
 };
 
-export const tablesInitialState: {[tableId: string]: ITableState; } = {};
+export const tablesInitialState: {[tableId: string]: ITableState;} = {};
 
-export const tableReducer = (
-  state: ITableState = tableInitialState,
-  action: IReduxAction<IReduxActionsPayload>,
-): ITableState => {
+export const updateSelectedIDs = (state: ITableState): ITableState => {
+  const newSelectedIds = _.reject(state.data.selectedIds, (selectedId: string) => {
+    return !_.contains(state.data.displayedIds, selectedId);
+  });
+  return {...state, data: {...state.data, selectedIds: newSelectedIds}};
+};
+
+export const tableReducer = (state: ITableState = tableInitialState,
+                             action: IReduxAction<ITableActionPayload>,): ITableState => {
   switch (action.type) {
     case TableActions.add:
       return {
@@ -101,7 +107,7 @@ export const tableReducer = (
         datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
       };
     case TableActions.modifyState:
-      return action.payload.tableStateModifier(state);
+      return _.extend({}, action.payload.tableStateModifier(state), updateSelectedIDs(state));
     case TableActions.inError:
       return {
         ...state,
@@ -122,12 +128,14 @@ export const tableReducer = (
         ...state,
         tableHeaderCellId: action.payload.id,
       };
+    case TableActions.updateSelectedIds:
+      return {...state, data: {...state.data, selectedIds: action.payload.selectedIds}};
     default:
       return state;
   }
 };
 
-export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAction<IReduxActionsPayload>) => {
+export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAction<ITableActionPayload | any>) => {
   switch (action.type) {
     case TableActions.add:
       return {

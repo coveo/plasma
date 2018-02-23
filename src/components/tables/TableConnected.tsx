@@ -1,26 +1,26 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import { contains } from 'underscore.string';
-import { IReactVaporState } from '../../ReactVapor';
-import { IDispatch } from '../../utils/ReduxUtils';
-import { ReduxUtils } from '../../utils/ReduxUtils';
-import { IActionOptions } from '../actions/Action';
-import { addActionsToActionBar } from '../actions/ActionBarActions';
-import { IDatePickerState } from '../datePicker/DatePickerReducers';
-import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
-import { closeDropdownSearch, selectOptionDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
-import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
-import { IFilterState } from '../filterBox/FilterBoxReducers';
-import { IPaginationState } from '../navigation/pagination/NavigationPaginationReducers';
-import { IPerPageState } from '../navigation/perPage/NavigationPerPageReducers';
-import { ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table } from './Table';
-import { addTable, removeTable } from './TableActions';
-import { TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent } from './TableConstants';
-import { defaultTableStateModifierThunk } from './TableDataModifier';
-import { ITableHeaderCellState } from './TableHeaderCellReducers';
-import { ITableCompositeState, ITableState } from './TableReducers';
-import { getTableChildComponentId } from './TableUtils';
+import {contains} from 'underscore.string';
+import {IReactVaporState} from '../../ReactVapor';
+import {IDispatch} from '../../utils/ReduxUtils';
+import {ReduxUtils} from '../../utils/ReduxUtils';
+import {IActionOptions} from '../actions/Action';
+import {addActionsToActionBar} from '../actions/ActionBarActions';
+import {IDatePickerState} from '../datePicker/DatePickerReducers';
+import {IDropdownOption} from '../dropdownSearch/DropdownSearch';
+import {closeDropdownSearch, selectOptionDropdownSearch} from '../dropdownSearch/DropdownSearchActions';
+import {IDropdownSearchState} from '../dropdownSearch/DropdownSearchReducers';
+import {IFilterState} from '../filterBox/FilterBoxReducers';
+import {IPaginationState} from '../navigation/pagination/NavigationPaginationReducers';
+import {IPerPageState} from '../navigation/perPage/NavigationPerPageReducers';
+import {ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table} from './Table';
+import {addTable, removeTable} from './TableActions';
+import {TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent} from './TableConstants';
+import {defaultTableStateModifierThunk} from './TableDataModifier';
+import {ITableHeaderCellState} from './TableHeaderCellReducers';
+import {ITableCompositeState, ITableState} from './TableReducers';
+import {getTableChildComponentId} from './TableUtils';
 
 export const getTableCompositeState = (state: IReactVaporState, id: string): ITableCompositeState => {
   const tableState: ITableState = state.tables[id] || {} as ITableState;
@@ -28,7 +28,8 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
   const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, {id: tableState.paginationId});
   const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, {id: tableState.perPageId});
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
-  const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
+  const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch,
+    (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
   const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, {id: tableState.datePickerRangeId});
 
   return {
@@ -46,7 +47,7 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
     predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
       // the attribute name is stored in the id of the dropdownSearch
       const attributeName = nextPredicate.id.split(getTableChildComponentId(id, TableChildComponent.PREDICATE))[1];
-      const selectedOption = _.findWhere(nextPredicate.options, { selected: true });
+      const selectedOption = _.findWhere(nextPredicate.options, {selected: true});
       return {
         ...currentPredicates,
         [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
@@ -57,16 +58,24 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
   } as ITableCompositeState;
 };
 
+const getActions = (table: ITableState, ownProps: ITableOwnProps): IActionOptions[] => {
+  if (table && table.data.selectedIds && table.data.selectedIds.length) {
+    return ownProps.getActions(table.data.byId[table.data.selectedIds[0]]);
+  }
+
+  return [];
+};
+
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
+  const table: ITableState = state.tables[ownProps.id];
   return {
     tableCompositeState: getTableCompositeState(state, ownProps.id),
+    actions: getActions(table, ownProps),
   };
 };
 
-const mapDispatchToProps = (
-  dispatch: IDispatch,
-  ownProps: ITableOwnProps,
-): ITableDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch,
+                            ownProps: ITableOwnProps,): ITableDispatchProps => ({
   onDidMount: () => {
     dispatch(
       addTable(
@@ -79,7 +88,13 @@ const mapDispatchToProps = (
   onUnmount: () => {
     dispatch(removeTable(ownProps.id));
   },
-  onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState, previousTableCompositeState: ITableCompositeState) => {
+  onWillUpdate: (actions: IActionOptions[]) => {
+    if (actions.length) {
+      dispatch(addActionsToActionBar(ownProps.id + 'action-bar', actions));
+    }
+  },
+  onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState,
+                 previousTableCompositeState: ITableCompositeState) => {
     if (ownProps.manual) {
       dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));
     } else {

@@ -5,6 +5,7 @@ import { TableCollapsibleRowToggle } from './TableCollapsibleRowToggle';
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
   id?: string;
   tableId?: string;
+  rowId?: string;
   isCollapsible: boolean;
   onClickCallback?: () => void;
   onDoubleClick?: () => void;

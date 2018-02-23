@@ -63,6 +63,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
       <TableHeadingRowConnected
         id={headingAndCollapsibleId}
         tableId={props.tableId}
+        rowId={props.rowData.id}
         className={tableRowClasses}
         isCollapsible={!!collapsibleData}
         onClickCallback={() => {

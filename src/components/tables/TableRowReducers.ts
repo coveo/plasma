@@ -7,6 +7,7 @@ export interface ITableRowState {
   opened: boolean;
   selected: boolean;
   tableId?: string;
+  rowId?: string;
 }
 
 export const tableRowInitialState: ITableRowState = { id: undefined, opened: undefined, selected: undefined };
@@ -18,13 +19,14 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
       return {
         id: action.payload.id,
         tableId: action.payload.tableId,
+        rowId: action.payload.rowId,
         opened: false,
         selected: false,
       };
     case TableRowActions.select:
       if (state.tableId === action.payload.tableId) {
         return state.id === action.payload.id
-          ? { ...state, selected: true, opened: !!action.payload.isCollapsible && !state.opened }
+          ? _.extend({}, {selected: true, opened: !!action.payload.isCollapsible && !state.opened }, state)
           : { ...state, selected: false, opened: false };
       }
     case TableRowActions.unselectAll:
