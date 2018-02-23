@@ -111,7 +111,8 @@ const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
 
 const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
   return state.id.indexOf(action.payload.id) !== 0 || !state.isClearable
-    ? state : _.extend({}, state, {
+    ? state
+    : _.extend({}, state, {
       selected: DateLimits.lower,
       lowerLimit: null,
       upperLimit: null,

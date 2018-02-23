@@ -173,7 +173,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     };
 
     const startingYearIndex: number = this.props.years.indexOf(DateUtils.currentYear.toString());
-    const startingYear: number = this.props.startingYear || (startingYearIndex > 0 ? startingYearIndex : Math.floor(this.props.years.length / 2));
+    const startingYear: number = this.props.startingYear || (startingYearIndex >= 0 ? startingYearIndex : Math.floor(this.props.years.length / 2));
     const yearPickerProps: IOptionsCycleProps = {
       options: this.props.years,
       startAt: startingYear,
