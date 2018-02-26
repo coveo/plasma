@@ -201,6 +201,7 @@ export { BlankSlate } from './components/blankSlate/BlankSlate';
 
 // MultiSelect
 export { MultiSelectDropdownSearchConnected } from './components/dropdownSearch/MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
+export { closeDropdownSearch, multiSelectOptionDropdownSearch } from './components/dropdownSearch/DropdownSearchActions';
 
 export { SyncFeedback, SyncFeedbackState } from './components/syncFeedback/SyncFeedback';
 
