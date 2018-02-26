@@ -33,7 +33,7 @@ describe('SelectedOption', () => {
     describe('render', () => {
       it('should render the display value in the selectedOption', () => {
         const label: string = 'displayTest';
-        selectedOption.setProps({label });
+        selectedOption.setProps({label});
 
         expect(selectedOption.find('.selected-option-value').text()).toBe(label);
       });
