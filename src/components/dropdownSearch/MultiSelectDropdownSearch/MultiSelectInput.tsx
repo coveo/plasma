@@ -61,6 +61,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
       selectedOptionComponents.push(
         <SelectedOption
           value={selectedOption.value}
+          label={selectedOption.displayValue}
           key={selectedOption.value}
           onRemoveClick={this.props.onRemoveClick}
         />,
