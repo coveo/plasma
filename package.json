@@ -111,7 +111,7 @@
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.8",
     "pre-commit": "1.2.2",
-    "rc-slider": "8.5.0",
+    "rc-slider": "8.6.1",
     "react": "15.6.1",
     "react-addons-test-utils": "15.6.0",
     "react-dom": "15.6.1",
