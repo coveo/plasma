@@ -1,17 +1,17 @@
 import * as moment from 'moment';
 import * as _ from 'underscore';
-import { contains } from 'underscore.string';
-import { convertUndefinedAndNullToEmptyString } from '../../utils/FalsyValuesUtils';
-import { IDispatch } from '../../utils/ReduxUtils';
-import { addActionsToActionBar } from '../actions/ActionBarActions';
-import { changeLastUpdated } from '../lastUpdated/LastUpdatedActions';
-import { turnOffLoading, turnOnLoading } from '../loading/LoadingActions';
-import { ITableHeadingAttribute, ITableOwnProps, ITableRowData } from './Table';
-import { ITableStateModifier, modifyState } from './TableActions';
-import { DEFAULT_TABLE_PER_PAGE, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder } from './TableConstants';
-import { ITableCompositeState, ITableState } from './TableReducers';
-import { unselectAllRows } from './TableRowActions';
-import { getTableChildComponentId, getTableLoadingIds } from './TableUtils';
+import {contains} from 'underscore.string';
+import {convertUndefinedAndNullToEmptyString} from '../../utils/FalsyValuesUtils';
+import {IDispatch} from '../../utils/ReduxUtils';
+import {addActionsToActionBar} from '../actions/ActionBarActions';
+import {changeLastUpdated} from '../lastUpdated/LastUpdatedActions';
+import {turnOffLoading, turnOnLoading} from '../loading/LoadingActions';
+import {ITableHeadingAttribute, ITableOwnProps, ITableRowData} from './Table';
+import {ITableStateModifier, modifyState} from './TableActions';
+import {DEFAULT_TABLE_PER_PAGE, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder} from './TableConstants';
+import {ITableCompositeState, ITableState} from './TableReducers';
+import {unselectAllRows} from './TableRowActions';
+import {getTableChildComponentId, getTableLoadingIds} from './TableUtils';
 
 export const dispatchPreTableStateModification = (tableId: string, dispatch: IDispatch) => {
   dispatch(unselectAllRows(tableId));
@@ -58,7 +58,7 @@ export const applyFilterOnDisplayedIds = (
   if (tableCompositeState.filter) {
     const filterDefault = (dataId: string): boolean => {
       return tableOwnProps.headingAttributes.some((headingAttribute: ITableHeadingAttribute) => {
-        const { attributeName, attributeFormatter, filterFormatter } = headingAttribute;
+        const {attributeName, attributeFormatter, filterFormatter} = headingAttribute;
         const attributeValue = tableDataById[dataId][attributeName];
         let attributeValueToUse = filterFormatter
           ? filterFormatter(attributeValue)
@@ -86,8 +86,8 @@ export const applyDatePickerOnDisplayedIds = (
   tableCompositeState: ITableCompositeState,
   tableOwnProps: ITableOwnProps,
 ): string[] => {
-  const { from, to } = tableCompositeState;
-  const { datePicker } = tableOwnProps;
+  const {from, to} = tableCompositeState;
+  const {datePicker} = tableOwnProps;
   if (from && to && datePicker && datePicker.attributeName) {
     nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean =>
       moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to),
@@ -103,16 +103,27 @@ export const applySortOnDisplayedIds = (
   tableCompositeState: ITableCompositeState,
   tableOwnProps: ITableOwnProps,
 ): string[] => {
-  const { sortState } = tableCompositeState;
+  const {sortState} = tableCompositeState;
   if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
-    const defaultSortBy = (displayedId: string) => {
-      const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-      return cleanAttributeValue.toString().toLowerCase();
-    };
-    const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, { attributeName: sortState.attribute });
-    const sortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod || defaultSortBy;
+    const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, {attributeName: sortState.attribute});
+    const hasCustomSortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod; 
 
-    nextDisplayedIds = _.sortBy(nextDisplayedIds, sortByMethod);
+    if (hasCustomSortByMethod) {
+      nextDisplayedIds = _.sortBy(
+        nextDisplayedIds,
+        (displayedId: string): string => {
+          const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
+          return headingAttributeToSort.sortByMethod(cleanAttributeValue); 
+        },
+      );
+    } else {
+      const defaultSortByMethod = (displayedId: string) => {
+        const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
+        return cleanAttributeValue.toString().toLowerCase();
+      };
+  
+      nextDisplayedIds = _.sortBy(nextDisplayedIds, defaultSortByMethod);
+    }
 
     if (sortState.order === TableSortingOrder.DESCENDING) {
       nextDisplayedIds.reverse();
