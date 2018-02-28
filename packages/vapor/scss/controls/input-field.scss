@@ -5,7 +5,7 @@
 
   // General Styles
 
-  > input, > textarea {
+  > input, > textarea, .input-wrapper > input {
     width: 100%;
     height: $input-height;
     padding: $input-padding;
@@ -46,7 +46,7 @@
     }
   }
 
-  > label {
+  > label, .input-wrapper > label {
     position: absolute;
     top: 10px;
     left: 0;
@@ -72,7 +72,7 @@
     }
   }
 
-  > input {
+  > input, .input-wrapper > input {
     padding: $input-vertical-padding 0;
 
     color: transparent; // Make the input text color transparent when input is invalid (closed).
@@ -111,6 +111,7 @@
 
   // Validation feedback
   &.validate > input,
+  &.validate .input-wrapper > input,
   .validate > input,
   &.validate > textarea,
   .validate > textarea,
@@ -169,6 +170,21 @@
 
     &.input + label {
       top: $input-height;
+    }
+  }
+
+  // For multiline input validation feedback
+  .input-wrapper.validate > input {
+    & + label {
+      &:after {
+        margin-top: $input-message-position * 1.5;
+      }
+
+      &.active {
+        &:after {
+          margin-top: $input-message-position;
+        }
+      }
     }
   }
 
