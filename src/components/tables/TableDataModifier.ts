@@ -106,14 +106,14 @@ export const applySortOnDisplayedIds = (
   const {sortState} = tableCompositeState;
   if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
     const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, {attributeName: sortState.attribute});
-    const hasCustomSortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod; 
+    const hasCustomSortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod;
 
     if (hasCustomSortByMethod) {
       nextDisplayedIds = _.sortBy(
         nextDisplayedIds,
         (displayedId: string): string => {
           const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-          return headingAttributeToSort.sortByMethod(cleanAttributeValue); 
+          return headingAttributeToSort.sortByMethod(cleanAttributeValue);
         },
       );
     } else {
@@ -121,7 +121,7 @@ export const applySortOnDisplayedIds = (
         const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
         return cleanAttributeValue.toString().toLowerCase();
       };
-  
+
       nextDisplayedIds = _.sortBy(nextDisplayedIds, defaultSortByMethod);
     }
 
