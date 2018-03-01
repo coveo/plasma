@@ -11,10 +11,11 @@ export class FacetExamples extends React.Component<any, any> {
         formattedName: 'Row 1',
       }, {
         name: 'row2',
-        formattedName: 'Row 2',
+        formattedName: 'Row 2 with a count',
+        count: 516,
       }, {
         name: 'row3',
-        formattedName: 'Very very long facet name that will get cut',
+        formattedName: 'Row 3 with very long facet name that will get cut',
       },
     ];
     const selectedFacetRows: IFacet[] = [{

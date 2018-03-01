@@ -12,6 +12,7 @@ import { FacetRow } from './FacetRow';
 export interface IFacet {
   name: string;
   formattedName: string;
+  count?: number;
 }
 
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {

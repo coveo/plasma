@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 import { Checkbox } from '../checkbox/Checkbox';
 import { Label } from '../input/Label';
 import { Tooltip } from '../tooltip/Tooltip';
@@ -28,6 +29,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
           checked={this.props.isChecked}
           onClick={() => this.props.onToggleFacet(this.props.facetRow)}>
           <Label classes={['label']}>{label}</Label>
+          {!_.isUndefined(this.props.facetRow.count) ? <span className='facet-value-count'>{this.props.facetRow.count}</span> : null}
         </Checkbox>
       </li>
     );

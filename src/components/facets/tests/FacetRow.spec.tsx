@@ -1,9 +1,9 @@
-import { mount, ReactWrapper, shallow } from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IFacet } from '../Facet';
-import { FacetRow, IFacetRowProps, MAX_NAME_LENGTH } from '../FacetRow';
+import {IFacet} from '../Facet';
+import {FacetRow, IFacetRowProps, MAX_NAME_LENGTH} from '../FacetRow';
 
 describe('Facets', () => {
   const FACET_ROW_PROPS: IFacetRowProps = {
@@ -27,7 +27,7 @@ describe('Facets', () => {
     let facetRowView: ReactWrapper<IFacetRowProps, any>;
 
     beforeEach(() => {
-      facetRowView = mount(FACET_ROW, { attachTo: document.getElementById('App') });
+      facetRowView = mount(FACET_ROW, {attachTo: document.getElementById('App')});
     });
 
     afterEach(() => {
@@ -86,13 +86,26 @@ describe('Facets', () => {
         name: 'something',
         formattedName: new Array(MAX_NAME_LENGTH + 2).join('a'),
       };
-      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, { facetRow: longerFormattedNameFacetRow });
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow});
 
       expect(facetRowView.find('Tooltip').length).toBe(0);
 
       facetRowView.setProps(newProps);
 
       expect(facetRowView.find('Tooltip').length).toBe(1);
+    });
+
+    it('should display a span.facet-value-count the count as value', () => {
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: {
+        name: 'something',
+        formattedName: 'something',
+        count: 10,
+      }});
+
+      facetRowView.setProps(newProps);
+
+      expect(facetRowView.find('span.facet-value-count').length).toBe(1);
+      expect(facetRowView.html()).toContain(newProps.facetRow.count.toString());
     });
   });
 });
