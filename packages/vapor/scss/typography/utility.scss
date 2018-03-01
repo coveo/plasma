@@ -46,6 +46,7 @@
 }
 
 .break-word {
+  word-break: break-all; // Fallback for IE11
   word-wrap: break-word;
 }
 
