@@ -304,13 +304,25 @@ $chosen-multi-search-choice-margin: 10px;
 $chosen-multi-search-choice-padding: 10px;
 
 // Facet
+$facet-column-width: 30%;
 $facet-column-max-width: 360px;
 $facet-column-padding-y: 24px;
 $facet-column-padding-right: 32px;
 $facet-column-padding-left: 40px;
+$facet-spacing: 16px;
+$facet-margin-y: 10px;
+$facet-header-eraser-right-position: 25px;
+$facet-search-results-bottom-position: 60px;
+$facet-search-results-top-position: calc(100% - 25px);
+$facet-search-results-margin-y: 3px;
+$facet-search-results-z-index: 999;
+$facet-value-line-height: 18px;
+$facet-value-spacing: 5px;
 $facet-checkbox-mark-size: 10px;
 $facet-checkbox-line-width: 2px;
 $facet-more-height: 200px;
+$facet-more-button-border: 2px dashed $medium-grey;
+$facet-more-button-icon-size: 10px;
 
 // Spaced boxes
 $box-spacing: 10px;
@@ -351,7 +363,7 @@ $selected-date-offset: 2px;
 $selected-date-height: 28px;
 $calendar-limit-border-width: 2px;
 $calendar-limit-border-length: 5px;
-$date-picker-button-hover-bg: rgba($light-blue, 0.2); 
+$date-picker-button-hover-bg: rgba($light-blue, 0.2);
 
 // Tooltip
 $tooltip-z-index: 10000;

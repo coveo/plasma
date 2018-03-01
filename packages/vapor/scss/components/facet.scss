@@ -1,21 +1,21 @@
 .facet-column {
   display: block;
-  width: 30%;
+  width: $facet-column-width;
   max-width: $facet-column-max-width;
   padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
   margin-right: 0;
 
-  border-right: 1px solid $medium-grey;
+  border-right: $default-border;
 }
 
 .facet {
   position: relative;
 
-  padding-bottom: 15px;
-  margin: 10px 0;
+  padding-bottom: $facet-spacing;
+  margin: $facet-margin-y 0;
 
   background: $pure-white;
-  border: 1px solid $medium-grey;
+  border: $default-border;
   border-radius: $border-radius;
 }
 
@@ -33,7 +33,7 @@
 .facet-header-eraser {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: $facet-header-eraser-right-position;
 
   height: 100%;
 
@@ -44,8 +44,8 @@
     top: 50%;
 
     display: block;
-    width: 10px;
-    height: 10px;
+    width: $facet-more-button-icon-size;
+    height: $facet-more-button-icon-size;
 
     transform: translateY(-50%);
 
@@ -66,7 +66,7 @@
 }
 
 .facet-values {
-  padding-top: 5px;
+  padding-top: $facet-value-spacing;
   margin: 0;
 
   list-style: none;
@@ -75,7 +75,7 @@
 .facet-value {
   position: relative;
 
-  padding: 0 $button-padding-x;
+  padding: 0 $facet-spacing;
   margin: 0;
 
   &:hover {
@@ -84,31 +84,56 @@
 }
 
 .facet-value-label {
-  display: block;
-  padding: 5px 0;
+  justify-content: space-between;
+
+  display: flex;
+  padding: $facet-value-spacing 0;
   overflow: hidden;
 
   font-size: $default-font-size;
-  white-space: nowrap;
+  line-height: $facet-value-line-height;
 
   cursor: pointer;
+
+  .label {
+    flex-grow: 1;
+
+    display: block;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .coveo-checkbox-button {
+    flex-shrink: 0;
+  }
 }
 
-.facet-value .label {
-  position: relative;
-  top: -1px;
+.facet-value-count {
+  padding-left: $facet-value-spacing;
+
+  color: $medium-grey;
 }
 
-.facet-more .facet-more-button {
-  display: inline-block;
+.facet-more {
+  &:hover .facet-more-button {
+    border-style: solid;
+  }
 
-  border: 2px dashed $medium-grey;
+  .label {
+    color: $blue;
+  }
+}
+
+.facet-more-button {
+  float: left;
+
+  border: $facet-more-button-border;
 
   @extend .coveo-checkbox-button;
 
   & + .label {
-    top: -3px;
-
     margin-left: $checkbox-label-margin;
   }
 
@@ -136,18 +161,10 @@
   }
 }
 
-.facet-more .label {
-  color: $blue;
-}
-
-.facet-value.facet-more:hover .facet-more-button {
-  border-style: solid;
-}
-
 .facet-search {
-  margin: 10px $button-padding-x;
+  margin: $facet-margin-y $facet-spacing;
 
-  /// @deprecated the prefix coveo is no longer used.
+  // @deprecated the prefix coveo is no longer used.
   .coveo-filter-container, .filter-container {
     width: 100%;
 
@@ -159,31 +176,27 @@
 
 .facet-search-results {
   position: absolute;
-  top: calc(100% - 25px);
+  top: $facet-search-results-top-position;
   left: $button-padding-x;
-  z-index: 999;
+  z-index: $facet-search-results-z-index;
 
   width: calc(100% - #{$button-padding-x} * 2);
   max-height: $facet-more-height;
   padding: $dropdown-choices-top-bottom-margin 0;
-  margin: 3px 0;
+  margin: $facet-search-results-margin-y 0;
   overflow-x: hidden;
   overflow-y: auto;
 
   list-style: none;
 
   background-color: $pure-white;
-  border: 1px solid $medium-grey;
+  border: $default-border;
   border-radius: $border-radius;
 
   @include slim-scroll($light-grey, $medium-grey);
 }
 
-.facet:last-child {
-  &.facet-opened {
-    .facet-search-results {
-      top: auto;
-      bottom: 60px;
-    }
-  }
+.facet-opened:last-child .facet-search-results {
+  top: auto;
+  bottom: $facet-search-results-bottom-position;
 }
