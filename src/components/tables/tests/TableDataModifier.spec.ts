@@ -1,11 +1,12 @@
 import * as moment from 'moment';
 import * as _ from 'underscore';
-import { addActionsToActionBar } from '../../actions/ActionBarActions';
-import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
-import { changeLastUpdated } from '../../lastUpdated/LastUpdatedActions';
-import { turnOffLoading, turnOnLoading } from '../../loading/LoadingActions';
-import { TableActions } from '../TableActions';
-import { TableChildComponent, TableSortingOrder } from '../TableConstants';
+import * as s from 'underscore.string';
+import {addActionsToActionBar} from '../../actions/ActionBarActions';
+import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
+import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions';
+import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
+import {TableActions} from '../TableActions';
+import {TableChildComponent, TableSortingOrder} from '../TableConstants';
 import {
   applyDatePickerOnDisplayedIds,
   applyFilterOnDisplayedIds,
@@ -17,9 +18,10 @@ import {
   dispatchPostTableStateModification,
   dispatchPreTableStateModification,
 } from '../TableDataModifier';
-import { unselectAllRows } from '../TableRowActions';
-import { getTableChildComponentId, getTableLoadingIds } from '../TableUtils';
-import { predictableData, tableOwnPropsMock, tablePropsMockWithData } from './TableTestCommon';
+import {unselectAllRows} from '../TableRowActions';
+import {getTableChildComponentId, getTableLoadingIds} from '../TableUtils';
+import {ITableProps} from './../Table';
+import {predictableData, tableOwnPropsMock, tablePropsMockWithData} from './TableTestCommon';
 
 describe('TableDataModifier', () => {
   describe('dispatchPreTableStateModification', () => {
@@ -60,9 +62,9 @@ describe('TableDataModifier', () => {
   });
 
   describe('applyPredicatesOnDisplayedIds', () => {
-    const { tableCompositeState } = tablePropsMockWithData;
-    const { data } = tableCompositeState;
-    const { displayedIds } = data;
+    const {tableCompositeState} = tablePropsMockWithData;
+    const {data} = tableCompositeState;
+    const {displayedIds} = data;
 
     it('should return the same ids if the tableCompositeState has no predicates', () => {
       expect(applyPredicatesOnDisplayedIds([...displayedIds], tableCompositeState, data.byId))
@@ -78,27 +80,27 @@ describe('TableDataModifier', () => {
       expect(applyPredicatesOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, predicates: { 'userName': predictableData.userName } },
+        {...tableCompositeState, predicates: {'userName': predictableData.userName}},
       )).toEqual([predictableData.id]);
 
       expect(applyPredicatesOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, predicates: { 'email': predictableData.email } },
+        {...tableCompositeState, predicates: {'email': predictableData.email}},
       )).toEqual([predictableData.id]);
 
       expect(applyPredicatesOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, predicates: { 'email': predictableData.email, 'userName': predictableData.userName } },
+        {...tableCompositeState, predicates: {'email': predictableData.email, 'userName': predictableData.userName}},
       )).toEqual([predictableData.id]);
     });
   });
 
   describe('applyFilterOnDisplayedIds', () => {
-    const { tableCompositeState } = tablePropsMockWithData;
-    const { data } = tableCompositeState;
-    const { displayedIds } = data;
+    const {tableCompositeState} = tablePropsMockWithData;
+    const {data} = tableCompositeState;
+    const {displayedIds} = data;
 
     it('should return the same ids if the tableCompositeState has no filter', () => {
       expect(applyFilterOnDisplayedIds([...displayedIds], tableCompositeState, data.byId, tablePropsMockWithData))
@@ -109,14 +111,14 @@ describe('TableDataModifier', () => {
       expect(applyFilterOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, filter: predictableData.password },
+        {...tableCompositeState, filter: predictableData.password},
         tablePropsMockWithData,
       )).toEqual([predictableData.id]);
 
       expect(applyFilterOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, filter: 'no rows has this content in their heading attribute' },
+        {...tableCompositeState, filter: 'no rows has this content in their heading attribute'},
         tablePropsMockWithData,
       )).toEqual([]);
     });
@@ -125,19 +127,19 @@ describe('TableDataModifier', () => {
       expect(applyFilterOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, filter: predictableData.password },
-        { ...tablePropsMockWithData, filterMethod: Boolean },
+        {...tableCompositeState, filter: predictableData.password},
+        {...tablePropsMockWithData, filterMethod: Boolean},
       )).toEqual(displayedIds);
     });
   });
 
   describe('applySortOnDisplayedIds', () => {
-    const { tableCompositeState } = tablePropsMockWithData;
-    const { data } = tableCompositeState;
-    const { displayedIds } = data;
+    const {tableCompositeState} = tablePropsMockWithData;
+    const {data} = tableCompositeState;
+    const {displayedIds} = data;
 
     it('should return the same ids if the tableCompositeState has no sortState', () => {
-      expect(applySortOnDisplayedIds([...displayedIds], data.byId, { ...tableCompositeState, sortState: undefined }, tablePropsMockWithData))
+      expect(applySortOnDisplayedIds([...displayedIds], data.byId, {...tableCompositeState, sortState: undefined}, tablePropsMockWithData))
         .toEqual(displayedIds);
     });
 
@@ -145,7 +147,7 @@ describe('TableDataModifier', () => {
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, sortState: { order: TableSortingOrder.UNSORTED, attribute: 'userName' } },
+        {...tableCompositeState, sortState: {order: TableSortingOrder.UNSORTED, attribute: 'userName'}},
         tablePropsMockWithData,
       )).toEqual(displayedIds);
     });
@@ -154,7 +156,7 @@ describe('TableDataModifier', () => {
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, sortState: { order: TableSortingOrder.ASCENDING, attribute: undefined } },
+        {...tableCompositeState, sortState: {order: TableSortingOrder.ASCENDING, attribute: undefined}},
         tablePropsMockWithData,
       )).toEqual(displayedIds);
     });
@@ -165,7 +167,7 @@ describe('TableDataModifier', () => {
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, sortState: { order: TableSortingOrder.ASCENDING, attribute: 'userName' } },
+        {...tableCompositeState, sortState: {order: TableSortingOrder.ASCENDING, attribute: 'userName'}},
         tablePropsMockWithData,
       )).toEqual(expectedOrderOfIds);
     });
@@ -177,16 +179,69 @@ describe('TableDataModifier', () => {
       expect(applySortOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, sortState: { order: TableSortingOrder.DESCENDING, attribute: 'userName' } },
+        {...tableCompositeState, sortState: {order: TableSortingOrder.DESCENDING, attribute: 'userName'}},
         tablePropsMockWithData,
       )).toEqual(expectedOrderOfIds);
+    });
+
+    describe('with custom sortByMethod', () => {
+      let tablePropsWithSortBy: ITableProps;
+
+      beforeEach(() => {
+        tablePropsWithSortBy = {
+          ...tablePropsMockWithData,
+          headingAttributes: [
+            {
+              attributeName: 'userName',
+              titleFormatter: _.identity,
+              attributeFormatter: _.identity,
+              sortByMethod: (attributeValue: string) => s.reverse(attributeValue).toLowerCase(),
+            },
+          ],
+        };
+      });
+
+      it('should return the same ids but sorted ascending with the custom sortByMethod by the specified attribute if sorted ASCENDING', () => {
+        const expectedOrderOfIds = _.chain(data.byId)
+          .values()
+          .sortBy((currentData) => s.reverse(currentData.userName).toLowerCase())
+          .map((currentData) => currentData.id)
+          .value();
+
+        const resultIds = applySortOnDisplayedIds(
+          [...displayedIds],
+          data.byId,
+          {...tableCompositeState, sortState: {order: TableSortingOrder.ASCENDING, attribute: 'userName'}},
+          tablePropsWithSortBy,
+        );
+
+        expect(resultIds).toEqual(expectedOrderOfIds);
+      });
+
+      it('should return the same ids but sorted descending with the custom sortByMethod by the specified attribute if sorted DESCENDING', () => {
+        const expectedOrderOfIds = _.chain(data.byId)
+          .values()
+          .sortBy((currentData) => s.reverse(currentData.userName).toLowerCase())
+          .map((currentData) => currentData.id)
+          .reverse()
+          .value();
+
+        const resultIds = applySortOnDisplayedIds(
+          [...displayedIds],
+          data.byId,
+          {...tableCompositeState, sortState: {order: TableSortingOrder.DESCENDING, attribute: 'userName'}},
+          tablePropsWithSortBy,
+        );
+
+        expect(resultIds).toEqual(expectedOrderOfIds);
+      });
     });
   });
 
   describe('applyPaginationOnDisplayedIds', () => {
-    const { tableCompositeState } = tablePropsMockWithData;
-    const { data } = tableCompositeState;
-    const { displayedIds } = data;
+    const {tableCompositeState} = tablePropsMockWithData;
+    const {data} = tableCompositeState;
+    const {displayedIds} = data;
 
     it('should return the same ids if the tableCompositeState has no perPage and page', () => {
       expect(applyPaginationOnDisplayedIds([...displayedIds], tableCompositeState))
@@ -194,20 +249,20 @@ describe('TableDataModifier', () => {
     });
 
     it('should skip the first 5 ids if perPage is 5 and page is 1', () => {
-      expect(applyPaginationOnDisplayedIds([...displayedIds], { ...tableCompositeState, perPage: 5, page: 1 }))
+      expect(applyPaginationOnDisplayedIds([...displayedIds], {...tableCompositeState, perPage: 5, page: 1}))
         .toEqual(displayedIds.slice(5 * 1, 5 * 1 + 5));
     });
 
     it('should keep the first 5 only if perPage is 5 and page is 0', () => {
-      expect(applyPaginationOnDisplayedIds([...displayedIds], { ...tableCompositeState, perPage: 5, page: 0 }))
+      expect(applyPaginationOnDisplayedIds([...displayedIds], {...tableCompositeState, perPage: 5, page: 0}))
         .toEqual(displayedIds.slice(5 * 0, 5 * 0 + 5));
     });
   });
 
   describe('applyDatePickerOnDisplayedIds', () => {
-    const { tableCompositeState } = tablePropsMockWithData;
-    const { data } = tableCompositeState;
-    const { displayedIds } = data;
+    const {tableCompositeState} = tablePropsMockWithData;
+    const {data} = tableCompositeState;
+    const {displayedIds} = data;
 
     it('should return the same ids if the tableCompositeState has no from/to', () => {
       expect(applyDatePickerOnDisplayedIds([...displayedIds], tableCompositeState, data.byId, tablePropsMockWithData))
@@ -221,14 +276,14 @@ describe('TableDataModifier', () => {
       expect(applyDatePickerOnDisplayedIds(
         [...displayedIds],
         data.byId,
-        { ...tableCompositeState, from, to },
-        { ...tablePropsMockWithData, datePicker: { datesSelectionBoxes: SELECTION_BOXES, attributeName: 'lastLogin' } },
+        {...tableCompositeState, from, to},
+        {...tablePropsMockWithData, datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'lastLogin'}},
       )).toEqual([predictableData.id]);
     });
   });
 
   describe('defaultTableStateModifier', () => {
-    const { tableCompositeState } = tablePropsMockWithData;
+    const {tableCompositeState} = tablePropsMockWithData;
 
     it('should not throw', () => {
       expect(() => defaultTableStateModifier(tablePropsMockWithData, tableCompositeState)).not.toThrow();
@@ -250,14 +305,14 @@ describe('TableDataModifier', () => {
         totalPages: 1,
       };
 
-      const receivedState = defaultTableStateModifier(tablePropsMockWithData, { ...tableCompositeState, filter: predictableData.password })(tableCompositeState);
+      const receivedState = defaultTableStateModifier(tablePropsMockWithData, {...tableCompositeState, filter: predictableData.password})(tableCompositeState);
 
       expect(receivedState.data).toEqual(expectedData);
     });
   });
 
   describe('defaultTableStateModifierThunk', () => {
-    const { tableCompositeState } = tablePropsMockWithData;
+    const {tableCompositeState} = tablePropsMockWithData;
 
     it('should not throw', () => {
       expect(() => defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)).not.toThrow();
@@ -266,7 +321,7 @@ describe('TableDataModifier', () => {
     it('should dispatch an action of type MODIFY_STATE_TABLE and turn off loading', () => {
       const dispatchSpy = jasmine.createSpy('dispatchSpy');
       defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)(dispatchSpy);
-      expect(dispatchSpy).toHaveBeenCalledWith(jasmine.objectContaining({ type: TableActions.modifyState }));
+      expect(dispatchSpy).toHaveBeenCalledWith(jasmine.objectContaining({type: TableActions.modifyState}));
       expect(dispatchSpy).toHaveBeenCalledWith(turnOffLoading(getTableLoadingIds(tablePropsMockWithData.id)));
       expect(dispatchSpy.calls.count()).toBe(2);
     });

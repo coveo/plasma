@@ -9,6 +9,7 @@ describe('SelectedOption', () => {
   const props: ISelectedOptionProps = {
     key,
     value: 'test',
+    label: '',
   };
 
   describe('<SelectedOption />', () => {
