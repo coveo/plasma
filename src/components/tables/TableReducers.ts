@@ -82,7 +82,7 @@ export const tableInitialState: ITableState = {
   datePickerRangeId: undefined,
 };
 
-export const tablesInitialState: {[tableId: string]: ITableState;} = {};
+export const tablesInitialState: {[tableId: string]: ITableState; } = {};
 
 export const updateSelectedIDs = (newState: ITableState, oldSelectedIds: string[]): ITableState => {
 
