@@ -33,7 +33,7 @@ export class BreadcrumbHeaderExample extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Breadcrumb header without border bottom</label>
           <div className='form-control'>
-            <BreadcrumbHeader breadcrumb={defaultBreadcrumbLongTitle}
+            <BreadcrumbHeader breadcrumb={defaultBreadcrumb}
                               description='Simple description for the title'
                               hasBorderBottom={false}
             />
