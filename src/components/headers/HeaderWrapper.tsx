@@ -8,9 +8,15 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps, React.ClassAttrib
   description?: string;
   actions?: IContentProps[];
   classes?: string[];
+  hasBorderBottom?: boolean;
 }
 
 export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
+
+  static defaultProps: Partial<IHeaderWrapperProps> = {
+    hasBorderBottom: true,
+  };
+
   render() {
     return (
       <div className={this.getContainerClasses()}>
@@ -31,7 +37,7 @@ export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
   private getContainerClasses(): string {
     return classNames('header-wrapper-container', {
       'header-wrapper-container-with-tabs': !!this.props.tabs,
-      'mod-border-bottom': !this.props.tabs,
+      'mod-border-bottom': !!this.props.hasBorderBottom && !this.props.tabs,
     });
   }
 
