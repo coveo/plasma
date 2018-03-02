@@ -1,6 +1,5 @@
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
-import {IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {LoadingActions} from '../loading/LoadingActions';
 import {ITablePredicate} from './Table';
@@ -13,13 +12,15 @@ import {
 import {TableHeaderCellActions} from './TableHeaderCellActions';
 import {getTableChildComponentId} from './TableUtils';
 
-export interface ITableData {
-  byId: {
-    [id: string]: {
-      id: string;
-      [attribute: string]: any;
-    };
+export interface ITableById {
+  [id: string]: {
+    id: string;
+    [attribute: string]: any;
   };
+}
+
+export interface ITableData {
+  byId: ITableById;
   allIds: string[]; // useful to loop over all ids
   displayedIds: string[]; // will be the data displayed in the table
   totalEntries: number;
@@ -83,15 +84,16 @@ export const tableInitialState: ITableState = {
 
 export const tablesInitialState: {[tableId: string]: ITableState;} = {};
 
-export const updateSelectedIDs = (state: ITableState): ITableState => {
-  const newSelectedIds = _.reject(state.data.selectedIds, (selectedId: string) => {
-    return !_.contains(state.data.displayedIds, selectedId);
+export const updateSelectedIDs = (newState: ITableState, oldSelectedIds: string[]): ITableState => {
+
+  const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => {
+    return !_.contains(newState.data.displayedIds, selectedId);
   });
-  return {...state, data: {...state.data, selectedIds: newSelectedIds}};
+  return {...newState, data: {...newState.data, selectedIds: newSelectedIds}};
 };
 
 export const tableReducer = (state: ITableState = tableInitialState,
-                             action: IReduxAction<ITableActionPayload>,): ITableState => {
+                             action: IReduxAction<ITableActionPayload>): ITableState => {
   switch (action.type) {
     case TableActions.add:
       return {
@@ -107,7 +109,8 @@ export const tableReducer = (state: ITableState = tableInitialState,
         datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
       };
     case TableActions.modifyState:
-      return _.extend({}, action.payload.tableStateModifier(state), updateSelectedIDs(state));
+      const selectedIds: string[] = state.data && state.data.selectedIds ? state.data.selectedIds : [];
+      return _.extend({}, updateSelectedIDs(action.payload.tableStateModifier(state), selectedIds));
     case TableActions.inError:
       return {
         ...state,

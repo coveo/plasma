@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
 import {IReactVaporState} from '../../ReactVapor';
@@ -14,12 +15,12 @@ import {IDropdownSearchState} from '../dropdownSearch/DropdownSearchReducers';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
 import {IPaginationState} from '../navigation/pagination/NavigationPaginationReducers';
 import {IPerPageState} from '../navigation/perPage/NavigationPerPageReducers';
-import {ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table} from './Table';
+import {IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table} from './Table';
 import {addTable, removeTable} from './TableActions';
 import {TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent} from './TableConstants';
 import {defaultTableStateModifierThunk} from './TableDataModifier';
 import {ITableHeaderCellState} from './TableHeaderCellReducers';
-import {ITableCompositeState, ITableState} from './TableReducers';
+import {ITableById, ITableCompositeState, ITableData, ITableState} from './TableReducers';
 import {getTableChildComponentId} from './TableUtils';
 
 export const getTableCompositeState = (state: IReactVaporState, id: string): ITableCompositeState => {
@@ -58,24 +59,27 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
   } as ITableCompositeState;
 };
 
-const getActions = (table: ITableState, ownProps: ITableOwnProps): IActionOptions[] => {
-  if (table && table.data.selectedIds && table.data.selectedIds.length) {
-    return ownProps.getActions(table.data.byId[table.data.selectedIds[0]]);
-  }
+const getSelectedIds = (data: ITableData, props: ITableOwnProps) => data.selectedIds || [];
 
-  return [];
-};
+const getDataById = (data: ITableData, props: ITableOwnProps) => data.byId;
+
+const getActions = (data: ITableData, props: ITableOwnProps) => props.getActions;
+
+const actionsSelector = createSelector(
+  [getDataById, getSelectedIds, getActions],
+  (byId: ITableById, selectedIds: string[], getAction: (rowData?: IData) => IActionOptions[]) => getAction(byId[selectedIds[0]]),
+);
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
-  const table: ITableState = state.tables[ownProps.id];
+  const table: ITableState = state.tables && state.tables[ownProps.id];
   return {
     tableCompositeState: getTableCompositeState(state, ownProps.id),
-    actions: getActions(table, ownProps),
+    actions: table && table.data ? actionsSelector(table.data, ownProps) : [],
   };
 };
 
 const mapDispatchToProps = (dispatch: IDispatch,
-                            ownProps: ITableOwnProps,): ITableDispatchProps => ({
+                            ownProps: ITableOwnProps): ITableDispatchProps => ({
   onDidMount: () => {
     dispatch(
       addTable(

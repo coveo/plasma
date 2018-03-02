@@ -71,7 +71,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
   manual?: (tableOwnProps: ITableOwnProps,
             shouldResetPage: boolean,
             tableCompositeState: ITableCompositeState,
-            previousTableCompositeState: ITableCompositeState,) => IThunkAction;
+            previousTableCompositeState: ITableCompositeState) => IThunkAction;
   rowsMultiSelect?: boolean;
 }
 
@@ -86,7 +86,7 @@ export interface ITableDispatchProps {
   onWillUpdate?: (actions: IActionOptions[]) => void;
   onModifyData?: (shouldResetPage: boolean,
                   tableCompositeState: ITableCompositeState,
-                  previousTableCompositeState?: ITableCompositeState,) => void;
+                  previousTableCompositeState?: ITableCompositeState) => void;
   onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
   onRowClick?: (actions: IActionOptions[]) => void;
 }
@@ -125,7 +125,7 @@ export class Table extends React.Component<ITableProps, {}> {
     }
   }
 
-  componentWillUpdate(tableCompositeState: ITableCompositeState) {
+  componentWillUpdate(tableCompositeState: ITableCompositeStateProps) {
     if (this.props.onWillUpdate && !(JSON.stringify(tableCompositeState.actions) === JSON.stringify(this.props.actions))) {
       this.props.onWillUpdate(tableCompositeState.actions);
     }

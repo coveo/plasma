@@ -57,5 +57,5 @@ export const updateSelectedRows = (id: string, selectedIds: string[]): IReduxAct
   payload: {
     id,
     selectedIds,
-  }
+  },
 });

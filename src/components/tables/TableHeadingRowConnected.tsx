@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import { IReactVaporState } from '../../ReactVapor';
 import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
+import {updateSelectedRows} from './TableActions';
 import { ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow } from './TableHeadingRow';
+import { ITableState} from './TableReducers';
 import { addRow, removeRow, selectRow } from './TableRowActions';
 import { ITableRowState } from './TableRowReducers';
-import {updateSelectedRows} from './TableActions';
-import {ITableState} from './TableReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnProps) => {
   const item: ITableRowState = _.findWhere(state.rows, { id: ownProps.id });
-  const tables: ITableState = _.findWhere(state.tables, {id: ownProps.tableId});
+  const table: ITableState = _.findWhere(state.tables, {id: ownProps.tableId});
 
   return {
     opened: item && item.opened,
-    selected: tables && tables.data.selectedIds.length && tables.data.selectedIds.indexOf(ownProps.rowId) !== -1
+    selected: table && !!table.data.selectedIds.length && table.data.selectedIds.indexOf(ownProps.rowId) !== -1,
   };
 };
 
