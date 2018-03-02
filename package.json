@@ -125,7 +125,7 @@
     "shelljs": "0.7.8",
     "style-loader": "0.19.0",
     "ts-loader": "3.0.5",
-    "tsjs": "0.3.x",
+    "tsjs": "0.4.x",
     "tslint-loader": "3.5.3",
     "typescript": "2.6.2",
     "underscore": "1.8.3",
