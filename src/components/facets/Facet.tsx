@@ -12,7 +12,8 @@ import {FacetRow} from './FacetRow';
 export interface IFacet {
   name: string;
   formattedName: string;
-  count?: number;
+  tooltipName?: string;
+  count?: string;
 }
 
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
@@ -22,7 +23,7 @@ export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
   clearFacet: (facet: string) => void;
   clearFacetLabel?: string;
   maxRowsToShow?: number;
-  maxNameLength?: number;
+  maxTooltipNameLength?: number;
 }
 
 export interface IFacetStateProps extends IReduxStatePossibleProps {
@@ -96,7 +97,7 @@ export class Facet extends React.Component<IFacetProps, any> {
         facetRow={facetRow}
         onToggleFacet={this.buildFacet}
         isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
-        maxNameLength={this.props.maxNameLength}
+        maxTooltipNameLength={this.props.maxTooltipNameLength}
       />);
     });
     const rowsToShow: number = Math.max(this.props.selectedFacetRows.length, this.props.maxRowsToShow);

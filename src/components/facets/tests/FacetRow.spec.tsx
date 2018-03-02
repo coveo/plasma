@@ -62,8 +62,8 @@ describe('Facets', () => {
       expect(onToggleFacetProp).toBeDefined();
     });
 
-    it('should get the maxNameLength as a prop', () => {
-      expect(facetRowView.props().maxNameLength).toBeDefined();
+    it('should get the maxTooltipNameLength as a prop', () => {
+      expect(facetRowView.props().maxTooltipNameLength).toBeDefined();
     });
 
     it('should get if the row checkbox is checked as a prop', () => {
@@ -85,13 +85,13 @@ describe('Facets', () => {
       expect(FACET_ROW_PROPS.onToggleFacet).toHaveBeenCalled();
     });
 
-    it('should display a <Tooltip /> if the formatted name is longer than maxNameLength', () => {
-      const maxNameLength = 25;
+    it('should display a <Tooltip /> if the formatted name is longer than maxTooltipNameLength', () => {
+      const maxTooltipNameLength = 25;
       const longerFormattedNameFacetRow: IFacet = {
         name: 'something',
-        formattedName: new Array(maxNameLength + 2).join('a'),
+        formattedName: new Array(maxTooltipNameLength + 2).join('a'),
       };
-      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxNameLength});
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxTooltipNameLength});
 
       expect(facetRowView.find('Tooltip').length).toBe(0);
 
@@ -100,14 +100,14 @@ describe('Facets', () => {
       expect(facetRowView.find('Tooltip').length).toBe(1);
     });
 
-    it('should display a <Tooltip /> if the formatted name minus the count length is longer than maxNameLength', () => {
-      const maxNameLength = 25;
+    it('should display a <Tooltip /> if the formatted name minus the count length is longer than maxTooltipNameLength', () => {
+      const maxTooltipNameLength = 25;
       const longerFormattedNameFacetRow: IFacet = {
         name: 'something',
-        formattedName: new Array(maxNameLength).join('a'),
-        count: 11,
+        formattedName: new Array(maxTooltipNameLength).join('a'),
+        count: '11',
       };
-      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxNameLength});
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxTooltipNameLength});
 
       expect(facetRowView.find('Tooltip').length).toBe(0);
 
@@ -121,14 +121,14 @@ describe('Facets', () => {
         facetRow: {
           name: 'something',
           formattedName: 'something',
-          count: 10,
+          count: '10',
         },
       });
 
       facetRowView.setProps(newProps);
 
       expect(facetRowView.find('span.facet-value-count').length).toBe(1);
-      expect(facetRowView.html()).toContain(newProps.facetRow.count.toString());
+      expect(facetRowView.html()).toContain(newProps.facetRow.count);
     });
   });
 });

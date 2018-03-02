@@ -7,7 +7,7 @@ import {FacetRow} from '../FacetRow';
 
 describe('Facets', () => {
   const facetRows: IFacet[] = [];
-  const facet: IFacet = {name: '', formattedName: '', count: 0};
+  const facet: IFacet = {name: '', formattedName: '', count: '0'};
   const toggleFacet: (facet: string, facetRow: IFacet) => void = jasmine.createSpy('toggleFacet');
   const clearFacet: (facet: string) => void = jasmine.createSpy('clearFacet');
   const maxRowsToShow = 4;
@@ -100,12 +100,12 @@ describe('Facets', () => {
         {
           name: '5',
           formattedName: '5',
-          count: 0,
+          count: '0',
         },
         {
           name: '6',
           formattedName: '6',
-          count: 5243421,
+          count: '5243421',
         },
       ];
       const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows});
@@ -144,12 +144,12 @@ describe('Facets', () => {
         {
           name: '5',
           formattedName: '5',
-          count: 0,
+          count: '0',
         },
         {
           name: '6',
           formattedName: '6',
-          count: 5243421,
+          count: '5243421',
         },
       ];
       const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows});
@@ -185,12 +185,12 @@ describe('Facets', () => {
           {
             name: '5',
             formattedName: '5',
-            count: 0,
+            count: '0',
           },
           {
             name: '6',
             formattedName: '6',
-            count: 5243421,
+            count: '5243421',
           },
         ];
         const newFacetAttributes = _.extend({}, facetBasicAttributes,
@@ -270,7 +270,7 @@ describe('Facets', () => {
         {
           name: 'zzz',
           formattedName: 'ZZZ',
-          count: 0,
+          count: '0',
         },
         {
           name: '222',
@@ -285,7 +285,7 @@ describe('Facets', () => {
         {
           name: 'sss',
           formattedName: 'sss',
-          count: 213,
+          count: '213',
         },
       ];
       const newAttributes = _.extend({}, facetBasicAttributes, {facetRows: unselected, selectedFacetRows: selected});

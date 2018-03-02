@@ -10,20 +10,20 @@ export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
   facet: string;
   onToggleFacet: (facetRow: IFacet) => void;
   isChecked: boolean;
-  maxNameLength?: number;
+  maxTooltipNameLength?: number;
 }
 
 export class FacetRow extends React.Component<IFacetRowProps, any> {
   static defaultProps: Partial<IFacetRowProps> = {
-    maxNameLength: 25,
+    maxTooltipNameLength: 25,
   };
 
   render() {
     const maxCalculatedNameLength = this.props.facetRow.count
-      ? this.props.maxNameLength - this.props.facetRow.count.toString().length
-      : this.props.maxNameLength;
+      ? this.props.maxTooltipNameLength - this.props.facetRow.count.length
+      : this.props.maxTooltipNameLength;
     const label: JSX.Element = this.props.facetRow.formattedName.length > maxCalculatedNameLength
-      ? <Tooltip title={this.props.facetRow.formattedName} placement='top' className='inline-block'>
+      ? <Tooltip title={this.props.facetRow.tooltipName || this.props.facetRow.formattedName} placement='top' className='inline-block'>
         {this.props.facetRow.formattedName}
       </Tooltip>
       : <span>{this.props.facetRow.formattedName}</span>;

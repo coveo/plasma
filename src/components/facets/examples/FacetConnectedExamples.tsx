@@ -47,14 +47,14 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
       }, {
         name: 'row3',
         formattedName: 'Row 3 with a very long name and also a count',
-        count: 23412,
+        count: '23412',
       },
     ];
     const moreFacetRows = facetRows.concat(
       {
         name: 'row4',
         formattedName: 'Row 4, count of 0',
-        count: 0,
+        count: '0',
       },
       {
         name: 'row5',
@@ -67,7 +67,7 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
       {
         name: 'row7',
         formattedName: 'Row 7 with a very long name and also a count',
-        count: 7903231,
+        count: '7903231',
       },
     );
     const toggleFacet: (facet: string, facetRow: IFacet) => void = () => { return; };
