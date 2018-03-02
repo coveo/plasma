@@ -1,15 +1,16 @@
-import { mount, ReactWrapper, shallow } from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
-import { Facet, IFacet, IFacetProps } from '../Facet';
-import { FacetRow } from '../FacetRow';
+import {Facet, IFacet, IFacetProps} from '../Facet';
+import {FacetRow} from '../FacetRow';
 
 describe('Facets', () => {
   const facetRows: IFacet[] = [];
-  const facet: IFacet = { name: '', formattedName: '', count: 0 };
+  const facet: IFacet = {name: '', formattedName: '', count: 0};
   const toggleFacet: (facet: string, facetRow: IFacet) => void = jasmine.createSpy('toggleFacet');
   const clearFacet: (facet: string) => void = jasmine.createSpy('clearFacet');
+  const maxRowsToShow = 4;
 
   describe('<Facet />', () => {
     it('should render without errors', () => {
@@ -37,12 +38,13 @@ describe('Facets', () => {
         facet: facet,
         toggleFacet: toggleFacet,
         clearFacet: clearFacet,
+        maxRowsToShow,
       };
       facetComponent = mount(
         <Facet
           {...facetBasicAttributes}
         />,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
       facetInstance = facetComponent.instance() as Facet;
     });
@@ -54,7 +56,7 @@ describe('Facets', () => {
 
     it('should call prop onRender on mounting if set', () => {
       const renderSpy = jasmine.createSpy('onRender');
-      const newFacetAttributes = _.extend({}, facetBasicAttributes, { onRender: renderSpy });
+      const newFacetAttributes = _.extend({}, facetBasicAttributes, {onRender: renderSpy});
 
       expect(() => facetInstance.componentWillMount()).not.toThrow();
 
@@ -66,7 +68,7 @@ describe('Facets', () => {
 
     it('should call prop onDestroy on unmounting if set', () => {
       const destroySpy = jasmine.createSpy('onDestroy');
-      const newFacetAttributes = _.extend({}, facetBasicAttributes, { onRender: destroySpy });
+      const newFacetAttributes = _.extend({}, facetBasicAttributes, {onRender: destroySpy});
 
       expect(() => facetInstance.componentWillUnmount()).not.toThrow();
 
@@ -77,7 +79,7 @@ describe('Facets', () => {
       expect(destroySpy.calls.count()).toBe(1);
     });
 
-    it('should display normal <FacetMoreToggle /> and <FacetMoreRows /> if it has more than 5 rows', () => {
+    it('should display normal <FacetMoreToggle /> and <FacetMoreRows /> if it has more than maxRowsToShow (number in props + 1 extra)', () => {
       const multipleRows = [
         {
           name: '1',
@@ -106,7 +108,7 @@ describe('Facets', () => {
           count: 5243421,
         },
       ];
-      const newFacetAttributes = _.extend({}, facetBasicAttributes, { facetRows: multipleRows });
+      const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows});
 
       expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
       expect(facetComponent.find('FacetMoreRows').length).toBe(0);
@@ -121,7 +123,7 @@ describe('Facets', () => {
       expect(facetComponent.find('FacetMoreRowsConnected').length).toBe(0);
     });
 
-    it('should display normal <FacetMoreRows /> if it has more than 5 rows', () => {
+    it('should display normal <FacetMoreRows /> if it has more than maxRowsToShow (number in props + 1 extra)', () => {
       const multipleRows = [
         {
           name: '1',
@@ -150,7 +152,7 @@ describe('Facets', () => {
           count: 5243421,
         },
       ];
-      const newFacetAttributes = _.extend({}, facetBasicAttributes, { facetRows: multipleRows });
+      const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows});
 
       expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
       expect(facetComponent.find('FacetMoreToggleConnected').length).toBe(0);
@@ -161,51 +163,52 @@ describe('Facets', () => {
       expect(facetComponent.find('FacetMoreToggleConnected').length).toBe(0);
     });
 
-    it('should not display <FacetMoreToggle /> and <FacetMoreRows /> if it has more than 5 rows and they are all selected', () => {
-      const multipleRows = [
-        {
-          name: '1',
-          formattedName: '1',
-        },
-        {
-          name: '2',
-          formattedName: '2',
-        },
-        {
-          name: '3',
-          formattedName: '3',
-        },
-        {
-          name: '4',
-          formattedName: '4',
-        },
-        {
-          name: '5',
-          formattedName: '5',
-          count: 0,
-        },
-        {
-          name: '6',
-          formattedName: '6',
-          count: 5243421,
-        },
-      ];
-      const newFacetAttributes = _.extend({}, facetBasicAttributes,
-        { facetRows: multipleRows, selectedFacetRows: multipleRows });
+    it('should not display <FacetMoreToggle /> and <FacetMoreRows /> if it has ' +
+      'more than maxRowsToShow (number in props + 1 extra) and they are all selected', () => {
+        const multipleRows = [
+          {
+            name: '1',
+            formattedName: '1',
+          },
+          {
+            name: '2',
+            formattedName: '2',
+          },
+          {
+            name: '3',
+            formattedName: '3',
+          },
+          {
+            name: '4',
+            formattedName: '4',
+          },
+          {
+            name: '5',
+            formattedName: '5',
+            count: 0,
+          },
+          {
+            name: '6',
+            formattedName: '6',
+            count: 5243421,
+          },
+        ];
+        const newFacetAttributes = _.extend({}, facetBasicAttributes,
+          {facetRows: multipleRows, selectedFacetRows: multipleRows});
 
-      expect(facetComponent.find('FacetMoreRows').length).toBe(0);
-      expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
+        expect(facetComponent.find('FacetMoreRows').length).toBe(0);
+        expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
 
-      facetComponent.setProps(newFacetAttributes);
-      facetComponent.mount();
+        facetComponent.setProps(newFacetAttributes);
+        facetComponent.mount();
 
-      expect(facetComponent.find('FacetMoreRows').length).toBe(0);
-      expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
-    });
+        expect(facetComponent.find('FacetMoreRows').length).toBe(0);
+        expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
+      });
 
     it('should have class "facet-open" if it has isOpened prop set to true', () => {
       const expectedClass = '.facet-opened';
-      const newFacetAttributes = _.extend({}, facetBasicAttributes, { isOpened: true });
+      const newFacetAttributes = _.extend({}, facetBasicAttributes, {isOpened: true});
 
       expect(facetComponent.find(expectedClass).length).toBe(0);
 
@@ -215,7 +218,7 @@ describe('Facets', () => {
     });
 
     const callBuildCategoryFacet = () => {
-      facetInstance['buildFacet'].call(facetInstance, { name: '1', formattedName: '1' });
+      facetInstance['buildFacet'].call(facetInstance, {name: '1', formattedName: '1'});
     };
 
     it('should call toggleFacet when calling buildCategoryFacet', () => {
@@ -225,7 +228,7 @@ describe('Facets', () => {
 
     it('should call onToggleFacet when calling buildCategoryFacet and prop is set', () => {
       const onToggleFacetSpy = jasmine.createSpy('onToggleFacet');
-      const newFacetAttributes = _.extend({}, facetBasicAttributes, { onToggleFacet: onToggleFacetSpy });
+      const newFacetAttributes = _.extend({}, facetBasicAttributes, {onToggleFacet: onToggleFacetSpy});
 
       callBuildCategoryFacet();
       expect(onToggleFacetSpy).not.toHaveBeenCalled();
@@ -247,7 +250,7 @@ describe('Facets', () => {
 
     it('should call onClearFacet when calling buildCategoryFacet and prop is set', () => {
       const onClearFacetSpy = jasmine.createSpy('onClearFacet');
-      const newFacetAttributes = _.extend({}, facetBasicAttributes, { onClearFacet: onClearFacetSpy });
+      const newFacetAttributes = _.extend({}, facetBasicAttributes, {onClearFacet: onClearFacetSpy});
 
       callClearCategoryFacet();
       expect(onClearFacetSpy).not.toHaveBeenCalled();
@@ -285,7 +288,7 @@ describe('Facets', () => {
           count: 213,
         },
       ];
-      const newAttributes = _.extend({}, facetBasicAttributes, { facetRows: unselected, selectedFacetRows: selected });
+      const newAttributes = _.extend({}, facetBasicAttributes, {facetRows: unselected, selectedFacetRows: selected});
 
       facetComponent.setProps(newAttributes);
       facetComponent.mount();

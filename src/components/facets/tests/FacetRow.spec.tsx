@@ -3,7 +3,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IFacet} from '../Facet';
-import {FacetRow, IFacetRowProps, MAX_NAME_LENGTH} from '../FacetRow';
+import {FacetRow, IFacetRowProps} from '../FacetRow';
 
 describe('Facets', () => {
   const FACET_ROW_PROPS: IFacetRowProps = {
@@ -62,6 +62,10 @@ describe('Facets', () => {
       expect(onToggleFacetProp).toBeDefined();
     });
 
+    it('should get the maxNameLength as a prop', () => {
+      expect(facetRowView.props().maxNameLength).toBeDefined();
+    });
+
     it('should get if the row checkbox is checked as a prop', () => {
       const checkedProp = facetRowView.props().isChecked;
 
@@ -81,12 +85,29 @@ describe('Facets', () => {
       expect(FACET_ROW_PROPS.onToggleFacet).toHaveBeenCalled();
     });
 
-    it('should display a <Tooltip /> if the formatted name is longer than 25', () => {
+    it('should display a <Tooltip /> if the formatted name is longer than maxNameLength', () => {
+      const maxNameLength = 25;
       const longerFormattedNameFacetRow: IFacet = {
         name: 'something',
-        formattedName: new Array(MAX_NAME_LENGTH + 2).join('a'),
+        formattedName: new Array(maxNameLength + 2).join('a'),
       };
-      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow});
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxNameLength});
+
+      expect(facetRowView.find('Tooltip').length).toBe(0);
+
+      facetRowView.setProps(newProps);
+
+      expect(facetRowView.find('Tooltip').length).toBe(1);
+    });
+
+    it('should display a <Tooltip /> if the formatted name minus the count length is longer than maxNameLength', () => {
+      const maxNameLength = 25;
+      const longerFormattedNameFacetRow: IFacet = {
+        name: 'something',
+        formattedName: new Array(maxNameLength).join('a'),
+        count: 11,
+      };
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxNameLength});
 
       expect(facetRowView.find('Tooltip').length).toBe(0);
 
@@ -96,11 +117,13 @@ describe('Facets', () => {
     });
 
     it('should display a span.facet-value-count the count as value', () => {
-      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: {
-        name: 'something',
-        formattedName: 'something',
-        count: 10,
-      }});
+      const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {
+        facetRow: {
+          name: 'something',
+          formattedName: 'something',
+          count: 10,
+        },
+      });
 
       facetRowView.setProps(newProps);
 

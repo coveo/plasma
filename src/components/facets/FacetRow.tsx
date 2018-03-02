@@ -1,24 +1,31 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import { Checkbox } from '../checkbox/Checkbox';
-import { Label } from '../input/Label';
-import { Tooltip } from '../tooltip/Tooltip';
-import { IFacet } from './Facet';
+import {Checkbox} from '../checkbox/Checkbox';
+import {Label} from '../input/Label';
+import {Tooltip} from '../tooltip/Tooltip';
+import {IFacet} from './Facet';
 
 export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
   facetRow: IFacet;
   facet: string;
   onToggleFacet: (facetRow: IFacet) => void;
   isChecked: boolean;
+  maxNameLength?: number;
 }
 
-export const MAX_NAME_LENGTH: number = 25;
-
 export class FacetRow extends React.Component<IFacetRowProps, any> {
+  static defaultProps: Partial<IFacetRowProps> = {
+    maxNameLength: 25,
+  };
 
   render() {
-    const label: JSX.Element = this.props.facetRow.formattedName.length > MAX_NAME_LENGTH
-      ? <Tooltip title={this.props.facetRow.formattedName} placement='top'>{this.props.facetRow.formattedName}</Tooltip>
+    const maxCalculatedNameLength = this.props.facetRow.count
+      ? this.props.maxNameLength - this.props.facetRow.count.toString().length
+      : this.props.maxNameLength;
+    const label: JSX.Element = this.props.facetRow.formattedName.length > maxCalculatedNameLength
+      ? <Tooltip title={this.props.facetRow.formattedName} placement='top' className='inline-block'>
+        {this.props.facetRow.formattedName}
+      </Tooltip>
       : <span>{this.props.facetRow.formattedName}</span>;
 
     return (

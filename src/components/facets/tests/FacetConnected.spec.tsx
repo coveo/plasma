@@ -1,15 +1,15 @@
-import { mount, ReactWrapper } from 'enzyme';
+import {mount, ReactWrapper} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Provider } from 'react-redux';
-import { Store } from 'redux';
-import { IReactVaporState } from '../../../ReactVapor';
-import { TestUtils } from '../../../utils/TestUtils';
-import { Facet, IFacet, IFacetProps } from '../Facet';
-import { FacetConnected } from '../FacetConnected';
-import { FacetMoreRowsConnected } from '../FacetMoreRowsConnected';
-import { FacetMoreToggleConnected } from '../FacetMoreToggleConnected';
-import { FacetRow } from '../FacetRow';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
+import {IReactVaporState} from '../../../ReactVapor';
+import {TestUtils} from '../../../utils/TestUtils';
+import {Facet, IFacet, IFacetProps} from '../Facet';
+import {FacetConnected} from '../FacetConnected';
+import {FacetMoreRowsConnected} from '../FacetMoreRowsConnected';
+import {FacetMoreToggleConnected} from '../FacetMoreToggleConnected';
+import {FacetRow} from '../FacetRow';
 
 describe('Facets', () => {
   describe('<FacetConnected />', () => {
@@ -22,6 +22,7 @@ describe('Facets', () => {
     let selectedFacetRows: IFacet[];
     let onToggleFacet: (facet: string, facetRow: IFacet) => void;
     let clearFacet: (facet: string) => void;
+    const maxRowsToShow = 4;
 
     beforeEach(() => {
       facetRows = [
@@ -59,9 +60,10 @@ describe('Facets', () => {
             selectedFacetRows={selectedFacetRows}
             toggleFacet={onToggleFacet}
             clearFacet={clearFacet}
+            maxRowsToShow={maxRowsToShow}
           />
         </Provider>,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
       facetComponent = wrapper.find(Facet);
     });
@@ -92,6 +94,13 @@ describe('Facets', () => {
       expect(selectedFacetRowsProp).toBe(selectedFacetRows);
     });
 
+    it('should get the maxRowsToShow as a prop', () => {
+      const maxRowsToShowProp = facetComponent.props().maxRowsToShow;
+
+      expect(maxRowsToShowProp).toBeDefined();
+      expect(maxRowsToShowProp).toBe(maxRowsToShow);
+    });
+
     it('should get what to do when toggling a row as a prop', () => {
       const onToggleFacetProp = facetComponent.props().onToggleFacet;
 
@@ -120,7 +129,7 @@ describe('Facets', () => {
       expect(facetComponent.find(FacetRow).length).toBe(facetRows.length);
     });
 
-    it('should render a toggle to view more facet rows if there are more than 5 rows', () => {
+    it('should render a toggle to view more facet rows if there are more than maxRowsToShow (number in props + 1 extra)', () => {
       expect(facetComponent.find(FacetMoreToggleConnected).length).toBe(0);
 
       facetRows = facetRows.concat(
@@ -142,13 +151,14 @@ describe('Facets', () => {
         selectedFacetRows={selectedFacetRows}
         toggleFacet={onToggleFacet}
         clearFacet={clearFacet}
+        maxRowsToShow={maxRowsToShow}
       />;
-      wrapper.setProps({ children: newRow });
+      wrapper.setProps({children: newRow});
 
       expect(facetComponent.find(FacetMoreToggleConnected).length).toBe(1);
     });
 
-    it('should render more facet rows if there are more than 5 rows', () => {
+    it('should render more facet rows if there are more than maxRowsToShow (number in props + 1 extra)', () => {
       expect(facetComponent.find(FacetMoreRowsConnected).length).toBe(0);
 
       facetRows = facetRows.concat(
@@ -170,8 +180,9 @@ describe('Facets', () => {
         selectedFacetRows={selectedFacetRows}
         toggleFacet={onToggleFacet}
         clearFacet={clearFacet}
+        maxRowsToShow={maxRowsToShow}
       />;
-      wrapper.setProps({ children: newRow });
+      wrapper.setProps({children: newRow});
 
       expect(facetComponent.find(FacetMoreRowsConnected).length).toBe(1);
     });
@@ -188,7 +199,7 @@ describe('Facets', () => {
         toggleFacet={onToggleFacet}
         clearFacet={clearFacet}
       />;
-      wrapper.setProps({ children: newRow });
+      wrapper.setProps({children: newRow});
 
       expect(facetComponent.find('.facet-header-eraser').hasClass('hidden')).toBe(true);
     });
