@@ -8,13 +8,6 @@ const path = require('path');
 const replace = require('gulp-replace');
 const remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 const runSequence = require('gulp-sequence');
-const webpack = require('webpack');
-
-const webpackConfigFile = require('./webpack.config.prod.js');
-const webpackDocsConfigFile = require('./webpack.config');
-
-const webpackCompiler = webpack(Object.create(webpackConfigFile));
-const webpackDocsCompiler = webpack(Object.create(webpackDocsConfigFile));
 
 // <editor-fold desc="Clean">
 const clean = (paths, done) => {
@@ -49,52 +42,11 @@ gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests'], (do
 });
 // </editor-fold>
 
-// <editor-fold desc="Typescript compilation">
-const webpackCallback = (taskName, done) => (err, stats) => {
-  if (err) {
-    throw new gutil.PluginError(taskName, err);
-  }
-  gutil.log(taskName, stats.toString({
-    colors: true,
-    assets: false,
-    chunks: false,
-  }));
-  done();
-};
-
-gulp.task('ts:compile', false, (done) => {
-  webpackCompiler.run(webpackCallback('ts:compile', done));
-});
-
-gulp.task('ts:minify', false, (done) => {
-  webpackConfigFile.output.filename = 'react-vapor.min.js';
-  webpackConfigFile.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-    },
-    mangle: {
-      except: ['React', 'ReactDOM', 'Tether', '_'],
-    },
-  }));
-  const webpackMinifier = webpack(Object.create(webpackConfigFile));
-
-  webpackMinifier.run(webpackCallback('ts:minify', done));
-});
-
+// <editor-fold desc="Typescript d.ts generation">
 gulp.task('ts:definitions', 'Generate the project definition file', (done) => {
   runSequence('internalDefs', 'cleanDefs', done);
 });
 
-gulp.task('ts', 'Compile Typescript', (done) => {
-  runSequence('ts:compile', 'ts:minify', 'ts:definitions', done);
-});
-
-gulp.task('ts:docs', 'Compile docs Typescript', (done) => {
-  webpackDocsCompiler.run(webpackCallback('ts:compile', done));
-});
-// </editor-fold>
-
-// <editor-fold desc="Typescript d.ts generation">
 gulp.task('internalDefs', false, () =>
   dtsGenerator.default({
     name: 'ReactVapor',
@@ -157,10 +109,6 @@ gulp.task('test:watch', 'Run all tests in PhantomJS and watch', (done) => {
   runTests(done, false, 'PhantomJS');
 });
 // </editor-fold>
-
-gulp.task('docs', 'Build the docs project', (done) => {
-  runSequence('clean:docs', 'ts:docs', done);
-});
 
 gulp.task('default', 'Clean, and compile the project', (done) => {
   runSequence('clean:dist', 'ts', done);

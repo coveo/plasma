@@ -20,10 +20,12 @@
     "url": "git+https://github.com/coveo/react-vapor.git"
   },
   "scripts": {
-    "start": "gulp docs && webpack-dev-server --devtool eval --inline --hot --progress --colors",
-    "docs": "gulp docs",
+    "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --devtool eval --inline --hot --progress --colors",
+    "docs": "webpack --config webpack.config.js",
     "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js docs/**/*.js",
-    "build": "gulp",
+    "compileTs": "webpack --config webpack.config.prod.js",
+    "minify": "webpack --config webpack.config.prod.minify.js",
+    "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
     "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run",
@@ -33,7 +35,7 @@
     "coverage:report": "istanbul report",
     "prepublishOnly": "npm run build && npm test",
     "report-coverage": "codecov -f coverage/coverage.json",
-    "reconstruct": "gulp clean --all && npm install && gulp"
+    "reconstruct": "gulp clean --all && npm install && npm run docs"
   },
   "pre-commit": [
     "lintfix"
@@ -124,14 +126,15 @@
     "sass-loader": "6.0.6",
     "shelljs": "0.8.1",
     "style-loader": "0.20.2",
-    "ts-loader": "3.0.5",
+    "ts-loader": "4.0.0",
     "tsjs": "0.3.x",
     "tslint-loader": "3.6.0",
     "typescript": "2.7.2",
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
-    "webpack": "3.8.1",
-    "webpack-dev-server": "2.9.3"
+    "webpack": "4.0.1",
+    "webpack-cli": "2.0.10",
+    "webpack-dev-server": "3.1.0"
   },
   "files": [
     "dist",

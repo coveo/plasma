@@ -3,9 +3,10 @@ const webpack = require('webpack');
 const isTravis = process.env.TRAVIS;
 
 module.exports = {
+  mode: 'development',
   devtool: 'inline-source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
@@ -31,10 +32,6 @@ module.exports = {
             configFile: 'tsconfig.test.json',
           },
         },
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
       },
       {
         enforce: 'post',
