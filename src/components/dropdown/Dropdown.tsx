@@ -2,75 +2,75 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 export interface IDropdownOwnProps extends React.ClassAttributes<Dropdown> {
-  id?: string;
-  toggleContent: JSX.Element[];
-  dropdownItems: JSX.Element[];
+    id?: string;
+    toggleContent: JSX.Element[];
+    dropdownItems: JSX.Element[];
 }
 
 export interface IDropdownStateProps {
-  isOpened?: boolean;
+    isOpened?: boolean;
 }
 
 export interface IDropdownDispatchProps {
-  onRender?: () => void;
-  onDestroy?: () => void;
-  onClick?: () => void;
-  onDocumentClick?: () => void;
+    onRender?: () => void;
+    onDestroy?: () => void;
+    onClick?: () => void;
+    onDocumentClick?: () => void;
 }
 
-export interface IDropdownProps extends IDropdownOwnProps, IDropdownStateProps, IDropdownDispatchProps { }
+export interface IDropdownProps extends IDropdownOwnProps, IDropdownStateProps, IDropdownDispatchProps {}
 
 export class Dropdown extends React.Component<IDropdownProps, any> {
-  private dropdown: HTMLDivElement;
+    private dropdown: HTMLDivElement;
 
-  private handleClick = () => {
-    if (this.props.onClick) {
-      this.props.onClick();
-    }
-  }
-
-  private handleDocumentClick = (e: MouseEvent) => {
-    if (this.props.isOpened) {
-      const facetSearch: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
-
-      if (!facetSearch.contains(e.target as Node)) {
-        this.props.onDocumentClick();
-      }
-    }
-  }
-
-  componentWillMount() {
-    if (this.props.onRender) {
-      this.props.onRender();
+    private handleClick = () => {
+        if (this.props.onClick) {
+            this.props.onClick();
+        }
     }
 
-    if (this.props.onDocumentClick) {
-      document.addEventListener('click', this.handleDocumentClick);
+    private handleDocumentClick = (e: MouseEvent) => {
+        if (this.props.isOpened) {
+            const facetSearch: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.dropdown);
+
+            if (!facetSearch.contains(e.target as Node)) {
+                this.props.onDocumentClick();
+            }
+        }
     }
-  }
 
-  componentWillUnmount() {
-    if (this.props.onDocumentClick) {
-      document.removeEventListener('click', this.handleDocumentClick);
+    componentWillMount() {
+        if (this.props.onRender) {
+            this.props.onRender();
+        }
+
+        if (this.props.onDocumentClick) {
+            document.addEventListener('click', this.handleDocumentClick);
+        }
     }
 
-    if (this.props.onDestroy) {
-      this.props.onDestroy();
+    componentWillUnmount() {
+        if (this.props.onDocumentClick) {
+            document.removeEventListener('click', this.handleDocumentClick);
+        }
+
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
     }
-  }
 
-  render() {
-    const dropdownClasses: string = 'dropdown' + (this.props.isOpened ? ' open' : '');
+    render() {
+        const dropdownClasses: string = 'dropdown' + (this.props.isOpened ? ' open' : '');
 
-    return (
-      <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
-        <span className='dropdown-toggle inline-flex flex-center' onClick={() => this.handleClick()}>
-          {this.props.toggleContent}
-        </span>
-        <ul className='dropdown-menu normal-height'>
-          {this.props.dropdownItems}
-        </ul>
-      </div>
-    );
-  }
+        return (
+            <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
+                <span className='dropdown-toggle inline-flex flex-center' onClick={() => this.handleClick()}>
+                    {this.props.toggleContent}
+                </span>
+                <ul className='dropdown-menu normal-height'>
+                    {this.props.dropdownItems}
+                </ul>
+            </div>
+        );
+    }
 }

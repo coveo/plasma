@@ -6,12 +6,12 @@ import * as React from 'react';
  * for more details
  */
 export const DisplayClass = {
-  BLOCK: 'block',
-  INLINE: 'inline',
-  INLINE_BLOCK: 'inline-block',
-  HIDDEN: 'hidden',
-  TABLE: 'table',
-  TABLE_CELL: 'table-cell',
+    BLOCK: 'block',
+    INLINE: 'inline',
+    INLINE_BLOCK: 'inline-block',
+    HIDDEN: 'hidden',
+    TABLE: 'table',
+    TABLE_CELL: 'table-cell',
 };
 
 export type ComponentContent = (new () => React.Component) | string | (() => JSX.Element);
