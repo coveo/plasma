@@ -92,5 +92,23 @@ describe('<HeaderWrapper/>', () => {
 
       expect(tabs.length).toEqual(1);
     });
+
+    it('should render without padding', () => {\
+      renderComponent({
+        hasPadding: false,
+      });
+      const tabs = headerWrapperComponent.find('.mod-header-padding');
+
+      expect(tabs.length).toEqual(0);
+    });
+
+    it('should render with padding', () => {
+      renderComponent({
+        hasPadding: true,
+      });
+      const tabs = headerWrapperComponent.find('.mod-mod-header-padding');
+
+      expect(tabs.length).toEqual(1);
+    });
   });
 });

@@ -40,6 +40,15 @@ export class BreadcrumbHeaderExample extends React.Component<any, any> {
           </div>
         </div>
         <div className='form-group'>
+          <label className='form-control-label'>Breadcrumb header without padding</label>
+          <div className='form-control'>
+            <BreadcrumbHeader breadcrumb={defaultBreadcrumb}
+                              description='Simple description for the title'
+                              hasPadding={false}
+            />
+          </div>
+        </div>
+        <div className='form-group'>
           <label className='form-control-label'>Breadcrumb header with actions</label>
           <div className='form-control'>
             <BreadcrumbHeader breadcrumb={defaultBreadcrumb}

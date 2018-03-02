@@ -9,12 +9,14 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps, React.ClassAttrib
   actions?: IContentProps[];
   classes?: string[];
   hasBorderBottom?: boolean;
+  hasPadding?: boolean;
 }
 
 export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
 
   static defaultProps: Partial<IHeaderWrapperProps> = {
     hasBorderBottom: true,
+    hasPadding: true,
   };
 
   render() {
@@ -46,12 +48,12 @@ export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
       'flex',
       'flex-center',
       'space-between',
-      'mod-header-padding',
       'header-height',
       'pt1',
       {
         'pb2': !!this.props.tabs,
         'pb1': !this.props.tabs,
+        'mod-header-padding': this.props.hasPadding,
       },
       this.props.classes,
     );
