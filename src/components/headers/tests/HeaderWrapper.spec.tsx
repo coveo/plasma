@@ -74,7 +74,7 @@ describe('<HeaderWrapper/>', () => {
       expect(tabs.length).toEqual(1);
     });
 
-    it('should render without the border bottom', () => {\
+    it('should render without the border bottom', () => {
       renderComponent({
         hasBorderBottom: false,
       });
@@ -93,7 +93,7 @@ describe('<HeaderWrapper/>', () => {
       expect(tabs.length).toEqual(1);
     });
 
-    it('should render without padding', () => {\
+    it('should render without padding', () => {
       renderComponent({
         hasPadding: false,
       });
