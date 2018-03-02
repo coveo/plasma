@@ -106,7 +106,7 @@ describe('<HeaderWrapper/>', () => {
       renderComponent({
         hasPadding: true,
       });
-      const tabs = headerWrapperComponent.find('.mod-mod-header-padding');
+      const tabs = headerWrapperComponent.find('.mod-header-padding');
 
       expect(tabs.length).toEqual(1);
     });
