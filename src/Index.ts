@@ -246,6 +246,7 @@ export { SplitLayout, ISplitLayoutProps } from './components/splitlayout/SplitLa
 // CollapsibleContainer
 export { ICollapsibleContainerProps, ICollapsibleContainerOwnProps, ICollapsibleContainerStateProps, ICollapsibleContainerDispatchProps } from './components/collapsibleContainer/CollapsibleContainer';
 export { CollapsibleContainerConnected } from './components/collapsibleContainer/CollapsibleContainerConnected';
+export { collapsibleContainersReducer, collapsibleContainerReducer } from './components/collapsibleContainer/CollapsibleContainerReducers';
 
 // SlideY
 export { SlideY } from './animations/SlideY';
