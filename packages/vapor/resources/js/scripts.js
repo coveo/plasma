@@ -31,6 +31,10 @@ $(document).ready(function() {
         selectedTab = $(this);
     });
 
+    $('.navigation-menu-section-header').click(function (event) {
+        $(this).next('.navigation-menu-section-items').slideToggle();
+    });
+
     // Simple script to handle opening/closing modals
     function modalHandler() {
         var backdrop = $('.modal-backdrop');

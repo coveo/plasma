@@ -313,11 +313,11 @@
   width: $date-picker-dimension;
   height: $date-picker-dimension;
   padding: $button-small-padding-x;
-  
+
   background: none;
   border: $default-border;
   border-radius: $border-radius;
-  
+
   cursor: pointer;
 
   &:hover {
@@ -330,15 +330,16 @@
   display: block;
   width: 100%;
   padding: $dropdown-choices-top-bottom-margin;
-  
+
+  color: $medium-blue;
+  font-size: $button-font-size;
+
   background: none;
   border: $default-border;
   border-radius: $border-radius;
 
-  color: $medium-blue;
-  font-size: $button-font-size;
   cursor: pointer;
-  
+
   &:hover {
     background-color: $date-picker-button-hover-bg;
   }

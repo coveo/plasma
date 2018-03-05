@@ -85,6 +85,12 @@
   visibility: hidden;
 }
 
+// Different from .hidden and used to initialy hide an element that will later be shown dynamically 
+// The visibility property makes it more complicated to show the element with a simple slideToggle
+.hide {
+  display: none;
+}
+
 .split-layout {
   height: 100%;
   min-height: min-content;

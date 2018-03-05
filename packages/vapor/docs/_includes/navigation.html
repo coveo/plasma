@@ -4,10 +4,10 @@
             {% for pageInformation in site.pages %}
             {% if pageInformation.title %}
             <li class="block navigation-menu-section">
-                <a href="{{ pageInformation.url | prepend: site.baseurl }}" class="navigation-menu-section-header text-white">
+                <header class="navigation-menu-section-header text-white">
                     <span class="navigation-menu-section-header-icon"></span>
                     {{ pageInformation.title }}
-                </a>
+                </header>
                 <ul class="navigation-menu-section-items">
                     {% for subMenu in site.components %}
                     {% if subMenu.type == pageInformation.type %}
