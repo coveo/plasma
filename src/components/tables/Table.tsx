@@ -91,7 +91,7 @@ export interface ITableDispatchProps {
   onRowClick?: (actions: IActionOptions[]) => void;
 }
 
-export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps {}
+export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps { }
 
 export class Table extends React.Component<ITableProps, {}> {
   private isInitialLoad: boolean;
@@ -125,7 +125,7 @@ export class Table extends React.Component<ITableProps, {}> {
     }
   }
 
-  componentWillUpdate(tableCompositeState: ITableCompositeStateProps) {
+  componentWillUpdate(tableCompositeState: any) {
     if (this.props.onWillUpdate && !(JSON.stringify(tableCompositeState.actions) === JSON.stringify(this.props.actions))) {
       this.props.onWillUpdate(tableCompositeState.actions);
     }

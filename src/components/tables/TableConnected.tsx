@@ -1,37 +1,37 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
-import {createSelector} from 'reselect';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
-import {IReactVaporState} from '../../ReactVapor';
-import {IDispatch} from '../../utils/ReduxUtils';
-import {ReduxUtils} from '../../utils/ReduxUtils';
-import {IActionOptions} from '../actions/Action';
-import {addActionsToActionBar} from '../actions/ActionBarActions';
-import {IDatePickerState} from '../datePicker/DatePickerReducers';
-import {IDropdownOption} from '../dropdownSearch/DropdownSearch';
-import {closeDropdownSearch, selectOptionDropdownSearch} from '../dropdownSearch/DropdownSearchActions';
-import {IDropdownSearchState} from '../dropdownSearch/DropdownSearchReducers';
-import {IFilterState} from '../filterBox/FilterBoxReducers';
-import {IPaginationState} from '../navigation/pagination/NavigationPaginationReducers';
-import {IPerPageState} from '../navigation/perPage/NavigationPerPageReducers';
-import {IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table} from './Table';
-import {addTable, removeTable} from './TableActions';
-import {TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent} from './TableConstants';
-import {defaultTableStateModifierThunk} from './TableDataModifier';
-import {ITableHeaderCellState} from './TableHeaderCellReducers';
-import {ITableById, ITableCompositeState, ITableData, ITableState} from './TableReducers';
-import {getTableChildComponentId} from './TableUtils';
+import { contains } from 'underscore.string';
+import { IReactVaporState } from '../../ReactVapor';
+import { IDispatch } from '../../utils/ReduxUtils';
+import { ReduxUtils } from '../../utils/ReduxUtils';
+import { IActionOptions } from '../actions/Action';
+import { addActionsToActionBar } from '../actions/ActionBarActions';
+import { IDatePickerState } from '../datePicker/DatePickerReducers';
+import { IDropdownOption } from '../dropdownSearch/DropdownSearch';
+import { closeDropdownSearch, selectOptionDropdownSearch } from '../dropdownSearch/DropdownSearchActions';
+import { IDropdownSearchState } from '../dropdownSearch/DropdownSearchReducers';
+import { IFilterState } from '../filterBox/FilterBoxReducers';
+import { IPaginationState } from '../navigation/pagination/NavigationPaginationReducers';
+import { IPerPageState } from '../navigation/perPage/NavigationPerPageReducers';
+import { IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table } from './Table';
+import { addTable, removeTable } from './TableActions';
+import { TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent } from './TableConstants';
+import { defaultTableStateModifierThunk } from './TableDataModifier';
+import { ITableHeaderCellState } from './TableHeaderCellReducers';
+import { ITableById, ITableCompositeState, ITableData, ITableState } from './TableReducers';
+import { getTableChildComponentId } from './TableUtils';
 
 export const getTableCompositeState = (state: IReactVaporState, id: string): ITableCompositeState => {
   const tableState: ITableState = state.tables[id] || {} as ITableState;
-  const filterState: IFilterState = tableState && _.findWhere(state.filters, {id: tableState.filterId});
-  const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, {id: tableState.paginationId});
-  const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, {id: tableState.perPageId});
+  const filterState: IFilterState = tableState && _.findWhere(state.filters, { id: tableState.filterId });
+  const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, { id: tableState.paginationId });
+  const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
   const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch,
     (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
-  const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, {id: tableState.datePickerRangeId});
+  const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, { id: tableState.datePickerRangeId });
 
   return {
     id: tableState.id,
@@ -48,7 +48,7 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
     predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
       // the attribute name is stored in the id of the dropdownSearch
       const attributeName = nextPredicate.id.split(getTableChildComponentId(id, TableChildComponent.PREDICATE))[1];
-      const selectedOption = _.findWhere(nextPredicate.options, {selected: true});
+      const selectedOption = _.findWhere(nextPredicate.options, { selected: true });
       return {
         ...currentPredicates,
         [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
@@ -59,15 +59,18 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
   } as ITableCompositeState;
 };
 
-const getSelectedIds = (data: ITableData, props: ITableOwnProps) => data.selectedIds || [];
+const getDataById = (data: ITableData, props: ITableOwnProps): ITableById => data.byId;
 
-const getDataById = (data: ITableData, props: ITableOwnProps) => data.byId;
+const getSelectedIds = (data: ITableData, props: ITableOwnProps): string[] => data.selectedIds || [];
 
-const getActions = (data: ITableData, props: ITableOwnProps) => props.getActions;
+const getActions = (data: ITableData, props: ITableOwnProps): (rowData?: IData) => IActionOptions[] => props.getActions;
 
 const actionsSelector = createSelector(
   [getDataById, getSelectedIds, getActions],
-  (byId: ITableById, selectedIds: string[], getAction: (rowData?: IData) => IActionOptions[]) => getAction(byId[selectedIds[0]]),
+  (byId: ITableById, selectedIds: string[], getAction: (rowData?: IData) => IActionOptions[]) => {
+    const rowData: IData = byId[selectedIds[0]];
+    return getAction && rowData ? getAction(rowData) : [];
+  },
 );
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
