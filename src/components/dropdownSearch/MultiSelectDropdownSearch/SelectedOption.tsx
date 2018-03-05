@@ -3,6 +3,7 @@ import { Svg } from '../../svg/Svg';
 
 export interface ISelectedOptionProps {
   value: string;
+  label: string;
   onRemoveClick?: (value: string) => void;
   key: string;
 }
@@ -20,7 +21,7 @@ export class SelectedOption extends React.Component<ISelectedOptionProps, any> {
       <div className='selected-option' >
 
         <div className='selected-option-value'>
-          {this.props.value}
+          {this.props.label}
         </div>
 
         <div className='remove-option' onClick={() => this.handleOnRemove()} >

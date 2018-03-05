@@ -6,6 +6,7 @@ const isTravis = !!process.env.TRAVIS;
  */
 module.exports = {
   entry: './docs/Index.tsx',
+  mode: 'development',
   output: {
     path: path.join(__dirname, '/docs/assets'),
     publicPath: '/assets/',
@@ -13,7 +14,7 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -30,10 +31,6 @@ module.exports = {
             failOnHint: isTravis,
           },
         },
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
       },
       {
         test: /\.ts(x?)$/,

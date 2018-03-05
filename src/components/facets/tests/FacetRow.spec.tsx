@@ -73,10 +73,10 @@ describe('Facets', () => {
       expect(facetRowView.html()).toContain(FACET_ROW_PROPS.facetRow.formattedName);
     });
 
-    it('should should call onToggleFacet on change', () => {
+    it('should should call onToggleFacet on click', () => {
       expect(FACET_ROW_PROPS.onToggleFacet).not.toHaveBeenCalled();
 
-      facetRowView.find('input').simulate('change');
+      facetRowView.find('input').simulate('click');
 
       expect(FACET_ROW_PROPS.onToggleFacet).toHaveBeenCalled();
     });

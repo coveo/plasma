@@ -9,6 +9,7 @@ describe('SelectedOption', () => {
   const props: ISelectedOptionProps = {
     key,
     value: 'test',
+    label: '',
   };
 
   describe('<SelectedOption />', () => {
@@ -32,10 +33,10 @@ describe('SelectedOption', () => {
 
     describe('render', () => {
       it('should render the display value in the selectedOption', () => {
-        const value: string = 'displayTest';
-        selectedOption.setProps({ value });
+        const label: string = 'displayTest';
+        selectedOption.setProps({label});
 
-        expect(selectedOption.find('.selected-option-value').text()).toBe(value);
+        expect(selectedOption.find('.selected-option-value').text()).toBe(label);
       });
     });
 

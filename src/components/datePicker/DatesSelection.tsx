@@ -14,6 +14,7 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
   withTime?: boolean;
   hasSetToNowButton?: boolean;
   isRange?: boolean;
+  isClearable?: boolean;
   rangeLimit?: IRangeLimit;
   color?: string;
   calendarId?: string;
@@ -21,6 +22,7 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
   defaultUpperLimit?: Date;
   lowerLimitPlaceholder?: string;
   upperLimitPlaceholder?: string;
+  initiallyUnselected?: boolean;
 }
 
 export interface IDatesSelectionStateProps {

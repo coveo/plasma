@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 import { TestUtils } from '../../../utils/TestUtils';
 import { CalendarConnected } from '../../calendar/CalendarConnected';
 import { OptionPickerConnected } from '../../optionPicker/OptionPickerConnected';
-import { DatePickerBox, IDatePickerBoxProps } from '../DatePickerBox';
+import { DatePickerBox, DEFAULT_CLEAR_DATE_LABEL, IDatePickerBoxProps } from '../DatePickerBox';
 import { DatesSelectionConnected } from '../DatesSelectionConnected';
 
 describe('Date picker', () => {
@@ -76,6 +76,52 @@ describe('Date picker', () => {
       datePickerBox.setProps(moreBoxesProps);
 
       expect(datePickerBox.find('OptionPicker').length).toBe(moreBoxesProps.datesSelectionBoxes.length);
+    });
+
+    it('should not display a clear button when isClearable prop is false', () => {
+      expect(datePickerBox.find('button.clear-selection-button').length).toBe(0);
+    });
+
+    describe('DatePickerBox is clearable', () => {
+      const clearableBoxProps: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
+        isClearable: true,
+      });
+      let getClearButton: () => any;
+
+      beforeEach(() => {
+        datePickerBox.setProps(clearableBoxProps);
+        getClearButton = () => datePickerBox.find('button.clear-selection-button');
+      });
+
+      afterEach(() => {
+        datePickerBox.setProps(DATE_PICKER_BOX_BASIC_PROPS);
+      });
+
+      it('should display a clear button when isClearable prop is set to true', () => {
+        expect(getClearButton().length).toBe(1);
+      });
+
+      it('should display the clear label passed as a prop or use the default one', () => {
+        const clearLabel: string = 'CLEAR_LABEL';
+        const newProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { clearLabel });
+
+        expect(getClearButton().first().text()).toContain(DEFAULT_CLEAR_DATE_LABEL);
+
+        datePickerBox.setProps(newProps);
+
+        expect(getClearButton().first().text()).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
+        expect(getClearButton().first().text()).toContain(clearLabel);
+      });
+
+      it('should call onClear prop when clicking on the clear button', () => {
+        const onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
+        const onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), { onClear: onClearSpy });
+
+        datePickerBox.setProps(onClearProps);
+        getClearButton().first().simulate('click');
+
+        expect(onClearSpy).toHaveBeenCalled();
+      });
     });
 
     it('should display anything sent as the footer prop', () => {
