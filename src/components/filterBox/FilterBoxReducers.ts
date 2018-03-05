@@ -35,7 +35,7 @@ export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, ac
         filterText: '',
       };
     case SelectActions.toggle:
-      return (action.payload as ISelectPayload).open === false
+      return (action.payload as ISelectPayload).open === true
         ? state
         : {
           id: state.id,

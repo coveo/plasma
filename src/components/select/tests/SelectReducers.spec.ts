@@ -39,6 +39,13 @@ describe('Select', () => {
       expect(newState).toBe(oldState);
     });
 
+    it('should return the old state when the action is not defined for one select which is in the state', () => {
+      const oldState: ISelectState = {...selectInitialState, id: genericAction.payload.id};
+      const newState: ISelectState = selectReducer(oldState, genericAction);
+
+      expect(newState).toBe(oldState);
+    });
+
     describe('ADD_SELECT', () => {
       const id = 'added-select';
 

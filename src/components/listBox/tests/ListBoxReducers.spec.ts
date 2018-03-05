@@ -1,7 +1,11 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {
-  addListBox, clearListBoxOption, IListBoxPayload, removeListBox, selectListBoxOption,
+  addListBox,
+  clearListBoxOption,
+  IListBoxPayload,
+  removeListBox,
+  selectListBoxOption,
   unselectListBoxOption,
 } from '../ListBoxActions';
 import {IListBoxState, listBoxesInitialState, listBoxesReducer, listBoxInitialState, listBoxReducer} from '../ListBoxReducers';
@@ -36,6 +40,13 @@ describe('ListBox', () => {
 
     it('should return the old state when the action is not defined for one list box', () => {
       const oldState: IListBoxState = listBoxInitialState;
+      const newState: IListBoxState = listBoxReducer(oldState, genericAction);
+
+      expect(newState).toBe(oldState);
+    });
+
+    it('should return the old state when the action is not defined for one list box which is in the state', () => {
+      const oldState: IListBoxState = {...listBoxInitialState, id: genericAction.payload.id};
       const newState: IListBoxState = listBoxReducer(oldState, genericAction);
 
       expect(newState).toBe(oldState);
