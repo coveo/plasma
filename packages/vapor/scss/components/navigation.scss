@@ -38,6 +38,7 @@
     .navigation-menu-sections {
       .navigation-menu-section {
         .navigation-menu-section-header {
+          position: relative;
           align-items: center;
 
           display: flex;
@@ -48,7 +49,6 @@
           text-transform: uppercase;
 
           border-top: 1px solid $dark-grey;
-          border-bottom: 1px solid $dark-grey;
 
           cursor: pointer;
 
@@ -58,6 +58,8 @@
         }
 
         .navigation-menu-section-items {
+          border-top: 1px solid $dark-grey;
+
           .navigation-menu-section-item {
             font-weight: $navigation-menu-item-font-weight;
 
@@ -130,4 +132,19 @@
   border: $default-border;
   border-color: $orange;
   border-radius: $border-radius;
+}
+
+.collapsible-arrow {
+  position: absolute;
+  top: 50%;
+  right: $navigation-section-icon-margin;
+
+  display: block;
+
+  transform: translateY(-50%);
+  transform-origin: center center;
+
+  &.open {
+    transform: translateY(-50%) rotate(180deg);
+  }
 }

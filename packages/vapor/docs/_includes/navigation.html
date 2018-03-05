@@ -7,6 +7,9 @@
                 <header class="navigation-menu-section-header text-white">
                     <span class="navigation-menu-section-header-icon"></span>
                     {{ pageInformation.title }}
+                    <span class="collapsible-arrow icon fill-white open">
+                        {{ site.data.icons['arrow-bottom-rounded'] }}
+                    </span>
                 </header>
                 <ul class="navigation-menu-section-items">
                     {% for subMenu in site.components %}
