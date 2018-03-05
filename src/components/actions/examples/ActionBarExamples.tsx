@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IActionOptions } from '../Action';
-import { ActionBar } from '../ActionBar';
+import {IActionOptions} from '../Action';
+import {ActionBar} from '../ActionBar';
 
 export class ActionBarExamples extends React.Component<any, any> {
 
@@ -20,11 +20,35 @@ export class ActionBarExamples extends React.Component<any, any> {
       }, {
         separator: true,
         enabled: true,
-      }, {
+      },
+      {
         name: 'action2',
         trigger: () => alert('Action 2 was triggered'),
         enabled: true,
-      }];
+      },
+      {
+        name: 'Link to Coveo (disabled)',
+        link: 'http://coveo.com',
+        target: '_blank',
+        icon: 'exit',
+        primary: true,
+        enabled: false,
+        hideDisabled: false,
+        tooltip: 'You cannot access Coveo\'s website at the moment.',
+        tooltipPlacement: 'bottom',
+      },
+      {
+        name: 'visibly disabled',
+        trigger: () => alert('I will never be triggered'),
+        target: '_blank',
+        icon: 'open',
+        primary: true,
+        enabled: false,
+        hideDisabled: false,
+        tooltip: 'You cannot trigger me.',
+        tooltipPlacement: 'bottom',
+      },
+    ];
 
     return (
       <div className='mt2'>
@@ -33,7 +57,7 @@ export class ActionBarExamples extends React.Component<any, any> {
           <ActionBar />
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Action bar without actions</label>
+          <label className='form-control-label'>Action bar with actions</label>
           <ActionBar actions={actions} />
         </div>
         <div className='form-group'>

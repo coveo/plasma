@@ -1,9 +1,9 @@
-import { mount, ReactWrapper, shallow } from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IActionOptions } from '../Action';
-import { ILinkActionProps, LinkAction } from '../LinkAction';
+import {IActionOptions} from '../Action';
+import {ILinkActionProps, LinkAction} from '../LinkAction';
 
 describe('Actions', () => {
   const action: IActionOptions = {
@@ -33,7 +33,7 @@ describe('Actions', () => {
           action={action}
           simple={simple}
         />,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
     });
 
@@ -66,7 +66,7 @@ describe('Actions', () => {
 
       const newAction = _.extend({}, action);
       newAction.target = undefined;
-      linkAction.setProps({ action: newAction, simple: simple });
+      linkAction.setProps({action: newAction, simple: simple});
 
       expect(linkAction.html()).not.toContain(expectedTarget);
     });
@@ -77,7 +77,7 @@ describe('Actions', () => {
 
       const newAction = _.extend({}, action);
       newAction.target = undefined;
-      linkAction.setProps({ action: newAction, simple: simple });
+      linkAction.setProps({action: newAction, simple: simple});
 
       expect(linkAction.html()).not.toContain(expectedRel);
     });
@@ -89,10 +89,41 @@ describe('Actions', () => {
       expect(linkAction.find('a').hasClass(expectedFlexClass)).toBe(true);
       expect(linkAction.find('a').hasClass(expectedCenterFlexClass)).toBe(true);
 
-      linkAction.setProps({ action: action, simple: true });
+      linkAction.setProps({action: action, simple: true});
 
       expect(linkAction.find('a').hasClass(expectedFlexClass)).toBe(false);
       expect(linkAction.find('a').hasClass(expectedCenterFlexClass)).toBe(false);
+    });
+
+    it('shoud have the enabled class if the action is enabled', () => {
+      expect(linkAction.find('a').hasClass('enabled')).toBe(true);
+    });
+
+    it('shoud not have the state-disabled class if the action is enabled', () => {
+      expect(linkAction.find('a').hasClass('state-disabled')).toBe(false);
+    });
+
+    describe('disabled action', () => {
+      beforeEach(() => {
+        linkAction.setProps({action: {...action, enabled: false}});
+      });
+
+      it('shoud not have the enabled class', () => {
+        expect(linkAction.find('a').hasClass('enabled')).toBe(false);
+      });
+
+      it('shoud have the state-disabled class if hideDisabled set to false is passed as prop', () => {
+        linkAction.setProps({action: {...action, enabled: false, hideDisabled: false}});
+        expect(linkAction.find('a').hasClass('state-disabled')).toBe(true);
+      });
+
+      it('should have no target provided', () => {
+        expect(linkAction.find('a').prop('target')).toBeUndefined();
+      });
+
+      it('should have no href provided', () => {
+        expect(linkAction.find('a').prop('href')).toBeUndefined();
+      });
     });
   });
 });

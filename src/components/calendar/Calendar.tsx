@@ -44,24 +44,12 @@ export interface ICalendarStateProps extends IReduxStatePossibleProps {
 export interface ICalendarDispatchProps {
   onClick?: (pickerId: string, isUpperLimit: boolean, value: Date) => void;
   onDateChange?: (cycleId: string, newValue: number) => void;
+  onSelectUnselectable?: (pickerId: string) => void;
 }
 
 export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps, ICalendarDispatchProps { }
 
-export const DEFAULT_MONTHS: string[] = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+export const DEFAULT_MONTHS: string[] = moment.months();
 
 export const DEFAULT_YEARS: string[] = [
   ...DateUtils.getPreviousYears(10),
@@ -69,15 +57,7 @@ export const DEFAULT_YEARS: string[] = [
   ...DateUtils.getNextYears(10),
 ];
 
-export const DEFAULT_DAYS: string[] = [
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat',
-];
+export const DEFAULT_DAYS: string[] = moment.weekdaysShort();
 
 export const MONTH_PICKER_ID: string = 'calendar-months';
 
@@ -113,16 +93,30 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     }
   }
 
+  private handleInvalidDateSelected() {
+    if (this.props.onSelectUnselectable) {
+      const selectedDatePicker: IDatePickerState = this.getSelectedDatePicker();
+
+      if (selectedDatePicker) {
+        this.props.onSelectUnselectable(selectedDatePicker.id);
+      }
+    }
+  }
+
   componentWillReceiveProps(nextProps: ICalendarProps) {
     if (this.props.onDateChange && this.props.calendarSelection.length) {
       _.each(nextProps.calendarSelection, (calendarSelection: IDatePickerState, index: number) => {
-        let limitToChange: Date;
-
         if (this.props.calendarSelection[index]) {
-          if (moment(calendarSelection.lowerLimit).diff(moment(this.props.calendarSelection[index].lowerLimit), 'minute')) {
-            limitToChange = calendarSelection.lowerLimit;
-          } else if (moment(calendarSelection.upperLimit).diff(moment(this.props.calendarSelection[index].upperLimit), 'minute')) {
-            limitToChange = calendarSelection.upperLimit;
+          let limitToChange: Date;
+          const currentLowerLimit: Date = this.props.calendarSelection[index].lowerLimit;
+          const currentUpperLimit: Date = this.props.calendarSelection[index].upperLimit;
+          const nextLowerLimit: Date = calendarSelection.lowerLimit;
+          const nextUpperLimit: Date = calendarSelection.upperLimit;
+
+          if (DateUtils.isDifferent(currentLowerLimit, nextLowerLimit, 'minute')) {
+            limitToChange = nextLowerLimit;
+          } else if (DateUtils.isDifferent(currentUpperLimit, nextUpperLimit, 'minute')) {
+            limitToChange = nextUpperLimit;
           }
 
           if (limitToChange) {
@@ -136,24 +130,23 @@ export class Calendar extends React.Component<ICalendarProps, any> {
   }
 
   fillInDayInfos(day: IDay): IDay {
-    const dayStart: moment.Moment = day.date.startOf('day');
     day.isSelectable = true;
 
     _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState) => {
       const selectionStart: moment.Moment = calendarSelection.lowerLimit
         ? moment(calendarSelection.lowerLimit).startOf('day')
-        : undefined;
-      const selectionEnd: moment.Moment = calendarSelection.upperLimit
-        ? (calendarSelection.isRange
-          ? moment(calendarSelection.upperLimit).startOf('day')
-          : selectionStart)
-        : undefined;
-      const isSelected = selectionStart && selectionEnd
-        && dayStart.toDate() >= selectionStart.toDate() && dayStart.toDate() <= selectionEnd.toDate();
+        : null;
+      const selectionEnd: moment.Moment = calendarSelection.isRange && calendarSelection.upperLimit && calendarSelection.lowerLimit
+        ? moment(calendarSelection.upperLimit).endOf('day')
+        : selectionStart;
+      const isSelected = selectionStart && selectionEnd && day.date.isBetween(selectionStart, selectionEnd, 'day', '[]');
 
-      day.isSelected = isSelected || day.isSelected;
-      day.isLowerLimit = calendarSelection.isRange && !dayStart.diff(selectionStart) || day.isLowerLimit;
-      day.isUpperLimit = calendarSelection.isRange && !dayStart.diff(selectionEnd) || day.isUpperLimit;
+      day.isSelectable = calendarSelection.isRange && calendarSelection.selected === DateLimits.upper && calendarSelection.lowerLimit
+        ? day.isSelectable && day.date.isSameOrAfter(calendarSelection.lowerLimit)
+        : day.isSelectable;
+      day.isSelected = (day.isSelectable && isSelected) || day.isSelected;
+      day.isLowerLimit = (calendarSelection.isRange && day.date.isSame(selectionStart, 'day')) || day.isLowerLimit;
+      day.isUpperLimit = (calendarSelection.isRange && day.date.isSame(selectionEnd, 'day')) || day.isUpperLimit;
       day.color = isSelected ? calendarSelection.color : day.color;
 
       _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {
@@ -179,7 +172,8 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       isInline: true,
     };
 
-    const startingYear: number = this.props.startingYear || this.props.years.indexOf(DateUtils.currentYear.toString());
+    const startingYearIndex: number = this.props.years.indexOf(DateUtils.currentYear.toString());
+    const startingYear: number = this.props.startingYear || (startingYearIndex >= 0 ? startingYearIndex : Math.floor(this.props.years.length / 2));
     const yearPickerProps: IOptionsCycleProps = {
       options: this.props.years,
       startAt: startingYear,
@@ -201,10 +195,9 @@ export class Calendar extends React.Component<ICalendarProps, any> {
       ? <OptionsCycleConnected id={this.props.id + YEAR_PICKER_ID} {...yearPickerProps} />
       : <OptionsCycle {...yearPickerProps} />;
 
-    const sectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
-    const year = parseInt(this.props.years[sectedYearOption], 10);
+    const selectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
+    const year = parseInt(this.props.years[selectedYearOption], 10);
     const selectedMonth = !_.isUndefined(this.props.selectedMonth) ? this.props.selectedMonth : this.props.startingMonth;
-
     const month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), this.props.startingDay);
     const weeks: JSX.Element[] = _.map(month, (week: IDay[]) => {
       const days: JSX.Element[] = _.map(week, (day: IDay) => {
@@ -213,7 +206,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
           key={dayFilled.date.toString()}
           day={dayFilled}
           onClick={(value: Date) => this.handleClick(value)}
-          onSelectUnselectable={() => this.handleClick(null)} />;
+          onSelectUnselectable={() => this.handleInvalidDateSelected()} />;
       });
 
       return <tr key={`week-${days[0].key}`}>{days}</tr>;

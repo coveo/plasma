@@ -232,6 +232,13 @@ describe('Date picker', () => {
         expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getDateWithTimeString(newDate));
       });
 
+    it('should set an empty value in the date input when passing it a null date as prop', () => {
+      const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { date: null });
+      datePicker.setProps(dateProps);
+
+      expect(datePickerInstance['dateInput'].value).toBe('');
+    });
+
     it('should call onClick prop with whether or not the date picker is for the upper limit on input click', () => {
       datePicker.find('input').simulate('click');
 
@@ -260,7 +267,7 @@ describe('Date picker', () => {
       expect(handleChangeSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should  not call handleChange when clicking the date picker', () => {
+    it('should not call handleChange when clicking the date picker', () => {
       const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
       const handleChangeSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
 
@@ -278,7 +285,7 @@ describe('Date picker', () => {
         document.body.appendChild(calendarDayElement);
       });
 
-      it('should  not call handleChangeDate when clicking the a calendar day', () => {
+      it('should not call handleChangeDate when clicking a calendar day', () => {
         const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, { isSelecting: DateLimits.lower });
         const handleChangeDateSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
 

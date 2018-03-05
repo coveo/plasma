@@ -74,12 +74,15 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
   }
 
   componentWillReceiveProps(nextProps: IDatePickerProps) {
-    const dateValue: string = this.getStringFromDate(nextProps.date);
+    if (nextProps.date) {
+      const dateValue: string = this.getStringFromDate(nextProps.date);
 
-    if (nextProps.date && this.dateInput.value !== dateValue) {
-      this.dateInput.value = dateValue;
+      if (this.dateInput.value !== dateValue) {
+        this.dateInput.value = dateValue;
+      }
+    } else {
+      this.dateInput.value = '';
     }
-
     this.isPicked = nextProps.isSelecting === DateLimits.upper && nextProps.upperLimit || nextProps.isSelecting === DateLimits.lower && !nextProps.upperLimit;
   }
 

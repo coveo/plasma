@@ -24,7 +24,11 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
   id?: string;
   datesSelectionBoxes: IDatesSelectionBox[];
   setToNowTooltip?: string;
+  isClearable?: boolean;
+  clearLabel?: string;
+  initiallyUnselected?: boolean;
   footer?: JSX.Element;
+  onClear?: () => void;
 }
 
 export interface IDatePickerBoxStateProps extends IReduxStatePossibleProps { }
@@ -42,10 +46,15 @@ export interface IDatePickerBoxChildrenProps {
   isLinkedToDateRange?: boolean;
 }
 
+export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
+
 export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps,
   IDatePickerBoxChildrenProps { }
 
 export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
+  static defaultProps: Partial<IDatePickerBoxProps> = {
+    clearLabel: DEFAULT_CLEAR_DATE_LABEL,
+  };
 
   render() {
     const calendarProps: ICalendarProps = {
@@ -79,11 +88,13 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
           hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
           setToNowTooltip: this.props.setToNowTooltip,
           isRange: datesSelectionBox.isRange,
+          isClearable: this.props.isClearable,
           rangeLimit: datesSelectionBox.rangeLimit,
           color: datesSelectionBox.color,
           calendarId: calendarProps.id,
           lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
           upperLimitPlaceholder: this.props.upperLimitPlaceholder,
+          initiallyUnselected: this.props.initiallyUnselected,
         };
         const dateSelection: JSX.Element = this.props.withReduxState
           ? <DatesSelectionConnected {...datesSelectionProps} />
@@ -98,12 +109,17 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
         );
       });
 
+    const clearOption: JSX.Element = this.props.isClearable
+      ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{this.props.clearLabel}</button>
+      : null;
+
     return (
       <div className='date-picker-box flex flex-column'>
         <div className='split-layout'>
           {calendar}
           <div className='date-selection column mod-small-content p2'>
             {datesSelectionBoxes}
+            {clearOption}
           </div>
         </div>
         {this.props.footer}

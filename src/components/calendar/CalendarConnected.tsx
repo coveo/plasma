@@ -11,7 +11,7 @@ import {
   resetDatePickers,
   selectDate,
 } from '../datePicker/DatePickerActions';
-import { changeOptionPicker } from '../optionPicker/OptionPickerActions';
+import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
 import {
   Calendar,
@@ -38,24 +38,25 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
                             ownProps: ICalendarOwnProps): ICalendarDispatchProps => ({
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
-      dispatch(selectDate(pickerId, ''));
-      dispatch(changeOptionPicker(pickerId, '', ''));
-      if (!value) {
-        dispatch(resetDatePickers(pickerId));
-      } else {
-        if (isUpperLimit) {
-          dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
-        } else {
-          dispatch(changeDatePickerLowerLimit(pickerId, value));
-          dispatch(selectDate(pickerId, DateLimits.upper));
+      dispatch(resetOptionPickers(pickerId));
+      if (value && isUpperLimit) {
+        dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
+      } else if (value) {
+        dispatch(changeDatePickerLowerLimit(pickerId, value));
 
-          // mirror upper limit to lower limit if not linked with a date range
-          // this will cause the selected lower limit date to display in the calendar right after selection of the lower limit date
-          if (!ownProps.isLinkedToDateRange && ownProps.isLinkedToDateRange !== undefined) {
-            dispatch(changeDatePickerUpperLimit(pickerId, value));
-          }
+        // mirror upper limit to lower limit if not linked with a date range
+        // this will cause the selected lower limit date to display in the calendar right after selection of the lower limit date
+        if (!_.isUndefined(ownProps.isLinkedToDateRange) && !ownProps.isLinkedToDateRange) {
+          dispatch(changeDatePickerUpperLimit(pickerId, value));
+          dispatch(selectDate(pickerId, DateLimits.lower));
         }
+      } else {
+        dispatch(resetDatePickers(pickerId));
       }
+    },
+    onSelectUnselectable: (pickerId: string) => {
+      dispatch(changeDatePickerUpperLimit(pickerId, null));
+      dispatch(selectDate(pickerId, DateLimits.upper));
     },
     onDateChange: (pickerId: string, newValue: number) => dispatch(changeOptionsCycle(pickerId, newValue)),
   });

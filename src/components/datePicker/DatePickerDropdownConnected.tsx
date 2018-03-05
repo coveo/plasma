@@ -8,7 +8,13 @@ import { addDropdown, closeDropdown, removeDropdown, toggleDropdown } from '../d
 import { IDropdownState } from '../dropdown/DropdownReducers';
 import { resetOptionPickers } from '../optionPicker/OptionPickerActions';
 import { changeOptionsCycle } from '../optionsCycle/OptionsCycleActions';
-import { applyDatePicker, DateLimits, resetDatePickers, selectDate } from './DatePickerActions';
+import {
+  applyDatePicker,
+  clearSelection,
+  DateLimits,
+  resetDatePickers,
+  selectDate,
+} from './DatePickerActions';
 import {
   DatePickerDropdown,
   IDatePickerDropdownDispatchProps,
@@ -39,6 +45,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   onClick: (datePicker: IDatePickerState) => {
     dispatch(toggleDropdown(ownProps.id));
     if (datePicker) {
+      dispatch(resetOptionPickers(datePicker.id));
       dispatch(selectDate(datePicker.id, DateLimits.lower));
     }
   },
@@ -56,6 +63,9 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
       dispatch(resetOptionPickers(ownProps.id));
       dispatch(closeDropdown(ownProps.id));
     }
+  },
+  onClear: () => {
+    dispatch(clearSelection(ownProps.id));
   },
 });
 

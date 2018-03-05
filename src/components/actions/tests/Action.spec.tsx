@@ -19,6 +19,10 @@ describe('Actions', () => {
         );
       }).not.toThrow();
     });
+
+    it('should have a defaultProp hideDisabled set to true', () => {
+      expect(Action.defaultProps.hideDisabled).toBe(true);
+    });
   });
 
   describe('<Action />', () => {
