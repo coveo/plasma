@@ -11,6 +11,29 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps, React.ClassAttrib
 }
 
 export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
+  render() {
+    return (
+      <div className={this.getContainerClasses()}>
+        <div className={this.getClasses()}>
+          <div className='truncate mr2'>
+            {this.props.children}
+            <h4 className='mt1 text-dark-grey normal-white-space'>{this.props.description}</h4>
+          </div>
+          <div className='flex'>
+            {this.getActions()}
+          </div>
+        </div>
+        <TabsHeader tabs={this.props.tabs} />
+      </div>
+    );
+  }
+
+  private getContainerClasses(): string {
+    return classNames('header-wrapper-container', {
+      'header-wrapper-container-with-tabs': !!this.props.tabs,
+      'mod-border-bottom': !this.props.tabs,
+    });
+  }
 
   private getClasses(): string {
     return classNames(
@@ -32,22 +55,5 @@ export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
     return this.props.actions
       ? _.map(this.props.actions, (action: IContentProps, index: number) => <Content key={index} {...action} />)
       : null;
-  }
-
-  render() {
-    return (
-      <div className={!this.props.tabs ? 'mod-border-bottom' : ''}>
-        <div className={this.getClasses()}>
-          <div className='truncate mr2'>
-            {this.props.children}
-            <h4 className='mt1 text-dark-grey normal-white-space'>{this.props.description}</h4>
-          </div>
-          <div className='flex'>
-            {this.getActions()}
-          </div>
-        </div>
-        <TabsHeader tabs={this.props.tabs} />
-      </div>
-    );
   }
 }
