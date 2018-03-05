@@ -139,7 +139,6 @@
 
     &.invalid + label:after {
       color: $red;
-
       content: attr(data-invalid-message);
 
       opacity: 1;

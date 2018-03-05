@@ -37,6 +37,7 @@
 
     &.padded {
       flex-basis: calc(33% - #{$collapsible-box-padding});
+
       word-break: break-all;
     }
   }

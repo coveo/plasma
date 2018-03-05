@@ -1,7 +1,7 @@
 ---
 type: navigation
 title: Navigation
-usage: A navigation component.
+usage: A navigation component. Click a section header to display or hide its menu. Use the class "hide" to initially hide menus.
 stylesheet: '/scss/components/navigation.scss'
 ---
 <nav class="navigation">
@@ -34,7 +34,7 @@ stylesheet: '/scss/components/navigation.scss'
                     </svg>
                     Section 2
                 </header>
-                <ul class="navigation-menu-section-items">
+                <ul class="navigation-menu-section-items hide">
                     <li class="navigation-menu-section-item">
                         <a href="#" class="block navigation-menu-section-item-link">
                             Item 1
@@ -71,4 +71,9 @@ stylesheet: '/scss/components/navigation.scss'
         placement: 'right',
         container: '.navigation'
     });
+
+    // Event is already set globally
+    /* $('.navigation-menu-section-header').click(function(event) {
+        $(this).next('.navigation-menu-section-items').slideToggle();
+    }); */
 </script>
