@@ -32,6 +32,7 @@ $(document).ready(function() {
     });
 
     $('.navigation-menu-section-header').click(function (event) {
+        $(this).find('.collapsible-arrow').toggleClass('open');
         $(this).next('.navigation-menu-section-items').slideToggle();
     });
 
