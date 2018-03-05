@@ -4,7 +4,6 @@ import { IItemBoxProps } from '../../itemBox/ItemBox';
 import { ITooltipProps } from '../../tooltip/Tooltip';
 import { ListBox } from '../ListBox';
 import {ListBoxConnected} from '../ListBoxConnected';
-// import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 
 export class ListBoxExamples extends React.Component {
   render() {

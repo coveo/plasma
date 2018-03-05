@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
-import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {IReactVaporState} from '../../ReactVapor';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
@@ -23,8 +23,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProp
   };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-                            ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({});
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({});
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class SingleSelectConnected extends React.Component<ISingleSelectProps, {}> {
@@ -49,8 +48,6 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
           onClick={props.onClick}
           onKeyDown={props.onKeyDown}
           onKeyUp={props.onKeyUp}
-          // style={{maxWidth: this.props.maxWidth}}
-          // disabled={!!this.props.isDisabled}
           >
           {option && option.prepend ? <Content {...option.prepend} /> : null}
           {this.getSelectedOptionElement(option)}

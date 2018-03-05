@@ -29,7 +29,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         ? defaultMatchFilter(filterValue, item)
         : ownProps.matchFilter(filterValue, item);
 
-      return _.extend({}, item, {hidden: !visible || item.hidden});
+      return {...item, hidden: !visible || item.hidden};
     });
 
     return {

@@ -80,7 +80,7 @@ describe('ListBox', () => {
         defaultState = [_.extend({}, listBoxInitialState, {id, selected: []}), listBoxInitialState];
       });
 
-      it('should return the old state with one more list box', () => {
+      it('should return the old state with one less list box', () => {
         const oldState: IListBoxState[] = defaultState;
         const newState: IListBoxState[] = listBoxesReducer(oldState, removeListBox(id));
 

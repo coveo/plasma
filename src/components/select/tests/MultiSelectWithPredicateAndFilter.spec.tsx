@@ -7,9 +7,7 @@ import {TestUtils} from '../../../utils/TestUtils';
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {IMultiSelectProps} from '../MultiSelectConnected';
 import {MultiSelectWithPredicateAndFilter} from '../SelectComponents';
-import {SelectConnected} from '../SelectConnected';
 
 describe('Select', () => {
   describe('<MultiSelectWithPredicateAndFilter/>', () => {

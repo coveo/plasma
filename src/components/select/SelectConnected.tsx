@@ -9,7 +9,7 @@ import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
-import {addSelect, closeSelect, removeSelect, toggleSelect} from './SelectActions';
+import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {ISelectState} from './SelectReducers';
 
 export interface ISelectSpecificProps {
@@ -46,7 +46,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISelectOwnProps): IS
   const select: ISelectState = _.findWhere(state.selects, {id: ownProps.id});
 
   return {
-    isOpen: select ? select.open : false,
+    isOpen: select && select.open,
   };
 };
 
@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
                             ownProps: ISelectOwnProps): ISelectDispatchProps => ({
   onRender: () => dispatch(addSelect(ownProps.id)),
   onDestroy: () => dispatch(removeSelect(ownProps.id)),
-  onDocumentClick: () => dispatch(closeSelect(ownProps.id)),
+  onDocumentClick: () => dispatch(toggleSelect(ownProps.id, false)),
   onToggleDropdown: () => dispatch(toggleSelect(ownProps.id)),
 });
 

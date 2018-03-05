@@ -21,7 +21,7 @@ export const selectWithPredicate = (Component: (React.ComponentClass<ISelectProp
     const items = _.map(ownProps.items, (item: IItemBoxProps) => {
       const visible = ownProps.matchPredicate(predicate, item);
 
-      return _.extend({}, item, {hidden: !visible || item.hidden});
+      return {...item, hidden: !visible || item.hidden};
     });
 
     return {

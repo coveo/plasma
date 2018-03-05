@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {selectListBoxOption} from '../../listBox/ListBoxActions';
-import {addSelect, closeSelect, ISelectPayload, openSelect, removeSelect, toggleSelect} from '../SelectActions';
+import {addSelect, ISelectPayload, removeSelect, toggleSelect} from '../SelectActions';
 import {ISelectState, selectCompositeInitialState, selectCompositeReducer, selectInitialState, selectReducer} from '../SelectReducers';
 
 describe('Select', () => {
@@ -94,7 +94,7 @@ describe('Select', () => {
 
       it('should set the open property to true', () => {
         const oldState: ISelectState[] = defaultState;
-        const newState: ISelectState[] = selectCompositeReducer(oldState, openSelect(id));
+        const newState: ISelectState[] = selectCompositeReducer(oldState, toggleSelect(id, true));
 
         expect(newState.length).toBe(oldState.length);
         expect(newState[0].id).toBe(id);
@@ -107,7 +107,7 @@ describe('Select', () => {
 
         const oldState: ISelectState[] = state;
         let newState: ISelectState[] = [];
-        expect(() => newState = selectCompositeReducer(oldState, openSelect(id))).not.toThrow();
+        expect(() => newState = selectCompositeReducer(oldState, toggleSelect(id, true))).not.toThrow();
 
         expect(newState.length).toBe(oldState.length);
         expect(newState[0].id).toBe(id);
@@ -117,7 +117,7 @@ describe('Select', () => {
       it('should not modify the old state', () => {
         const oldState: ISelectState[] = [selectInitialState];
         const oldStateBefore = _.clone(oldState);
-        selectCompositeReducer(oldState, openSelect(id));
+        selectCompositeReducer(oldState, toggleSelect(id, true));
 
         expect(oldState).toEqual(oldStateBefore);
       });
@@ -133,7 +133,7 @@ describe('Select', () => {
 
       it('should set the open property to true', () => {
         const oldState: ISelectState[] = defaultState;
-        const newState: ISelectState[] = selectCompositeReducer(oldState, closeSelect(id));
+        const newState: ISelectState[] = selectCompositeReducer(oldState, toggleSelect(id, false));
 
         expect(newState.length).toBe(oldState.length);
         expect(newState[0].id).toBe(id);
@@ -146,7 +146,7 @@ describe('Select', () => {
 
         const oldState: ISelectState[] = state;
         let newState: ISelectState[] = [];
-        expect(() => newState = selectCompositeReducer(oldState, closeSelect(id))).not.toThrow();
+        expect(() => newState = selectCompositeReducer(oldState, toggleSelect(id, false))).not.toThrow();
 
         expect(newState.length).toBe(oldState.length);
         expect(newState[0].id).toBe(id);
@@ -156,7 +156,7 @@ describe('Select', () => {
       it('should not modify the old state', () => {
         const oldState: ISelectState[] = [selectInitialState];
         const oldStateBefore = _.clone(oldState);
-        selectCompositeReducer(oldState, closeSelect(id));
+        selectCompositeReducer(oldState, toggleSelect(id, false));
 
         expect(oldState).toEqual(oldStateBefore);
       });

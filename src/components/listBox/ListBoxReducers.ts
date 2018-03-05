@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import { IReduxAction } from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils';
 import {IListBoxPayload, ListBoxActions} from './ListBoxActions';
 
 export interface IListBoxState {
@@ -7,10 +7,14 @@ export interface IListBoxState {
   selected: string[];
 }
 
-export const listBoxInitialState: IListBoxState = { id: undefined, selected: [] };
+export const listBoxInitialState: IListBoxState = {id: undefined, selected: []};
 export const listBoxesInitialState: IListBoxState[] = [];
 
 export const listBoxReducer = (state: IListBoxState = listBoxInitialState, action: IReduxAction<IListBoxPayload>): IListBoxState => {
+  if (state.id !== action.payload.id && action.type !== ListBoxActions.add) {
+    return state;
+  }
+
   switch (action.type) {
     case ListBoxActions.add:
       const selected = _.chain(action.payload.items)
@@ -22,37 +26,29 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
         selected: selected,
       };
     case ListBoxActions.select:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
-      if (action.payload.multi) {
-        return _.extend({}, state, {
-          selected: [...state.selected, action.payload.value],
-        });
-      }
-      return _.extend({}, state, {
-        selected: [action.payload.value],
-      });
+      return {
+        ...state,
+        selected: action.payload.multi
+          ? [...state.selected, action.payload.value]
+          : [action.payload.value],
+      };
     case ListBoxActions.unselect:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
-      return _.extend({}, state, {
+      return {
+        ...state,
         selected: _.without(state.selected, action.payload.value),
-      });
+      };
     case ListBoxActions.clear:
-      if (state.id !== action.payload.id) {
-        return state;
-      }
-      return _.extend({}, state, {
+      return {
+        ...state,
         selected: [],
-      });
+      };
     default:
       return state;
   }
 };
 
-export const listBoxesReducer = (state: IListBoxState[] = listBoxesInitialState, action: IReduxAction<IListBoxPayload>): IListBoxState[] => {
+export const listBoxesReducer = (state: IListBoxState[] = listBoxesInitialState,
+                                 action: IReduxAction<IListBoxPayload>): IListBoxState[] => {
   switch (action.type) {
     case ListBoxActions.add:
       return [
@@ -60,15 +56,11 @@ export const listBoxesReducer = (state: IListBoxState[] = listBoxesInitialState,
         listBoxReducer(undefined, action),
       ];
     case ListBoxActions.remove:
-      return _.reject(state, (listBox: IListBoxState) => {
-        return action.payload.id === listBox.id;
-      });
+      return _.reject(state, (listBox: IListBoxState) => action.payload.id === listBox.id);
     case ListBoxActions.clear:
     case ListBoxActions.unselect:
     case ListBoxActions.select:
-      return state.map((listBox: IListBoxState) =>
-        listBoxReducer(listBox, action),
-      );
+      return state.map((listBox: IListBoxState) => listBoxReducer(listBox, action));
     default:
       return state;
   }
