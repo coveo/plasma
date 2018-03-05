@@ -29,6 +29,6 @@ export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgP
       title,
       placement: 'bottom',
       container: 'body',
-    }
-  }
+    },
+  };
 };
