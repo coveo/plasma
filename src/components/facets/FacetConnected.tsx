@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetProps, IFacetStateProps } from './Facet';
-import { addFacet, changeFacet, emptyFacet, removeFacet } from './FacetActions';
-import { IFacetState } from './FacetReducers';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetProps, IFacetStateProps} from './Facet';
+import {addFacet, changeFacet, emptyFacet, removeFacet} from './FacetActions';
+import {IFacetState} from './FacetReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFacetStateProps => {
-  const item: IFacetState = _.findWhere(state.facets, { facet: ownProps.facet.name });
+  const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet.name});
+  const selectedFacetRows = item ? ownProps.facetRows.filter((row) => _.findWhere(item.selected, {name: row.name})) : [];
 
   return {
     isOpened: item && item.opened,
-    selectedFacetRows: item ? item.selected : [],
+    selectedFacetRows,
     withReduxState: true,
   };
 };
