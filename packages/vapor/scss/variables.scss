@@ -295,6 +295,10 @@ $drowdown-multiselect-margin: 2px;
 $drowdown-multiselect-items-margin: 4px;
 $dropdown-multiselect-option-height: 24px;
 $selected-option-close-width: 22px;
+$dropdown-multiselect-icon-size: 12px;
+$dropdown-multiselect-icon-thickness: 2px;
+$dropdown-multiselect-icon-margin: 5px;
+$dropdown-multiselect-icon-position: $dropdown-multiselect-icon-size / 2 - $dropdown-multiselect-icon-thickness / 2;
 
 // Chosen
 $chosen-clear-icon-size: 10px;
