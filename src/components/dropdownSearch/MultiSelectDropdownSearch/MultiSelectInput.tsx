@@ -97,6 +97,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
             value={this.props.filterText}
           />
         </div>
+        <span className='add-option-icon'/>
         {this.getRemoveAllSelectedOptionsButton()}
       </div>
     );
