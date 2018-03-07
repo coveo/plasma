@@ -148,10 +148,16 @@ $modal-prompt-min-height: 280px;
 $modal-prompt-min-width: 500px;
 $modal-prompt-max-width: 550px;
 $modal-prompt-header-height: 90px;
-$modal-prompt-footer-height: calc(2 * 24px + #{$button-height} + 2 * #{$button-border-width}); // Calculate the button height + 2 border top and bottom and the space below the button for the max height
+$modal-prompt-footer-height: calc(
+  2 * 24px + #{$button-height} + 2 * #{$button-border-width}
+); // Calculate the button height + 2 border top and bottom and the space below the button for the max height
 $modal-prompt-footer-height-ie: 84px;
-$modal-prompt-body-min-height: calc(#{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height});
-$modal-prompt-body-min-height-ie: calc(#{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height-ie});
+$modal-prompt-body-min-height: calc(
+  #{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height}
+);
+$modal-prompt-body-min-height-ie: calc(
+  #{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height-ie}
+);
 
 // Wizard card
 $wizard-card-width: 490px;
@@ -172,13 +178,16 @@ $navigation-active-background-color: #354667;
 $navigation-active-border-width: 3px;
 $navigation-section-icon-size: 16px;
 $navigation-section-icon-margin: 15px;
-$navigation-horizontal-space: 2 * $navigation-section-icon-margin + $navigation-section-icon-size - $navigation-active-border-width;
+$navigation-horizontal-space: 2 * $navigation-section-icon-margin +
+  $navigation-section-icon-size - $navigation-active-border-width;
 $navigation-locked-color: $medium-grey;
 $navigation-tag-font-size: 9px;
 $navigation-tag-padding: 2px 5px;
 $navigation-menu-section-height: 30px;
 $navigation-loading-height: 12px;
-$navigation-loading-item-margin: ($navigation-menu-section-height - $navigation-loading-height) / 2;
+$navigation-loading-item-margin: (
+    $navigation-menu-section-height - $navigation-loading-height
+  ) / 2;
 $navigation-loading-item-border-radius: 10px;
 $navigation-loading-background-size: 300% 104px;
 $navigation-loading-bullet-width: 12px;
@@ -208,12 +217,16 @@ $table-header-inner-height: 30px;
 $table-header-height: $table-header-inner-height + 2 * $table-border-width;
 $table-header-font-size: 12px;
 $table-header-line-height: 16px;
-$table-header-top-bottom-padding: (($table-header-inner-height - $table-header-line-height) / 2);
+$table-header-top-bottom-padding: (
+  ($table-header-inner-height - $table-header-line-height) / 2
+);
 $table-row-inner-height: 36px;
 $table-row-height: $table-row-inner-height + $table-border-width;
 $table-row-font-size: 15px;
 $table-row-line-height: 18px;
-$table-row-top-bottom-padding: (($table-row-inner-height - $table-row-line-height) / 2);
+$table-row-top-bottom-padding: (
+  ($table-row-inner-height - $table-row-line-height) / 2
+);
 $table-border: $table-border-width solid $medium-grey;
 $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
@@ -298,7 +311,8 @@ $selected-option-close-width: 22px;
 $dropdown-multiselect-icon-size: 12px;
 $dropdown-multiselect-icon-thickness: 2px;
 $dropdown-multiselect-icon-margin: 5px;
-$dropdown-multiselect-icon-position: $dropdown-multiselect-icon-size / 2 - $dropdown-multiselect-icon-thickness / 2;
+$dropdown-multiselect-icon-position: $dropdown-multiselect-icon-size / 2 -
+  $dropdown-multiselect-icon-thickness / 2;
 
 // Chosen
 $chosen-clear-icon-size: 10px;
@@ -421,3 +435,9 @@ $step-progress-bar-height: 8px;
 $step-progress-bar-done-color: #3bb862;
 $step-progress-bar-doing-color: #009830;
 $step-progress-bar-to-do-color: #d8d8d8;
+
+// Badge
+$badge-font-size: 0.8em;
+$badge-height: 2em;
+$badge-padding: 0 1em;
+$badge-margin: 0 1px;
