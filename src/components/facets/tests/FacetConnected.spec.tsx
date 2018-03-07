@@ -214,7 +214,7 @@ describe('Facets', () => {
       expect(onToggleFacet).not.toHaveBeenCalled();
 
       expect(facetRowInput.length).toBe(1);
-      facetRowInput.simulate('click');
+      facetRowInput.simulate('change');
 
       expect(onToggleFacet).toHaveBeenCalled();
     });
