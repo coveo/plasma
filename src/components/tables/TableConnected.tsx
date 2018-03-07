@@ -113,7 +113,7 @@ const mapDispatchToProps = (dispatch: IDispatch,
   },
   onWillUpdate: (actions: IActionOptions[]) => {
     if (actions.length) {
-      dispatch(addActionsToActionBar(ownProps.id + 'action-bar', actions));
+      dispatch(addActionsToActionBar(`${ownProps.id}action-bar`, actions));
     }
   },
   onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState,

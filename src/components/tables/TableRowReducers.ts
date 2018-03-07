@@ -26,7 +26,7 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
     case TableRowActions.select:
       if (state.tableId === action.payload.tableId) {
         return state.id === action.payload.id
-          ? _.extend({}, {selected: true, opened: !!action.payload.isCollapsible && !state.opened }, state)
+          ? _.extend({}, state, {selected: true, opened: !!action.payload.isCollapsible && !state.opened})
           : { ...state, selected: false, opened: false };
       }
     case TableRowActions.unselectAll:

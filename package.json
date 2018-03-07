@@ -41,7 +41,7 @@
   "dependencies": {
     "react-bootstrap": "0.31.3",
     "react-tether": "0.5.7",
-    "reselect": "^3.0.1"
+    "reselect": "3.0.1"
   },
   "peerDependencies": {
     "jquery": ">= 2.0.0 =< 3",
