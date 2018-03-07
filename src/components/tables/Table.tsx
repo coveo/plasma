@@ -1,24 +1,24 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {JSXRenderable} from '../../utils/JSXUtils';
-import {IThunkAction} from '../../utils/ReduxUtils';
-import {IActionOptions} from '../actions/Action';
-import {IActionBarProps} from '../actions/ActionBar';
-import {IBlankSlateProps} from '../blankSlate/BlankSlate';
-import {IDatePickerDropdownProps} from '../datePicker/DatePickerDropdown';
-import {IDropdownOption, IDropdownSearchProps} from '../dropdownSearch/DropdownSearch';
-import {IFilterBoxProps} from '../filterBox/FilterBox';
-import {INavigationChildrenProps} from '../navigation/Navigation';
-import {TableChildActionBar} from './table-children/TableChildActionBar';
-import {TableChildBlankSlate} from './table-children/TableChildBlankSlate';
-import {ITableBodyInheritedFromTableProps, TableChildBody} from './table-children/TableChildBody';
-import {TableChildHeader} from './table-children/TableChildHeader';
-import {TableChildLastUpdated} from './table-children/TableChildLastUpdated';
-import {TableChildLoadingRow} from './table-children/TableChildLoadingRow';
-import {TableChildNavigation} from './table-children/TableChildNavigation';
-import {DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder} from './TableConstants';
-import {ITableCompositeState, ITableData} from './TableReducers';
+import { JSXRenderable } from '../../utils/JSXUtils';
+import { IThunkAction } from '../../utils/ReduxUtils';
+import { IActionOptions } from '../actions/Action';
+import { IActionBarProps } from '../actions/ActionBar';
+import { IBlankSlateProps } from '../blankSlate/BlankSlate';
+import { IDatePickerDropdownProps } from '../datePicker/DatePickerDropdown';
+import { IDropdownOption, IDropdownSearchProps } from '../dropdownSearch/DropdownSearch';
+import { IFilterBoxProps } from '../filterBox/FilterBox';
+import { INavigationChildrenProps } from '../navigation/Navigation';
+import { TableChildActionBar } from './table-children/TableChildActionBar';
+import { TableChildBlankSlate } from './table-children/TableChildBlankSlate';
+import { ITableBodyInheritedFromTableProps, TableChildBody } from './table-children/TableChildBody';
+import { TableChildHeader } from './table-children/TableChildHeader';
+import { TableChildLastUpdated } from './table-children/TableChildLastUpdated';
+import { TableChildLoadingRow } from './table-children/TableChildLoadingRow';
+import { TableChildNavigation } from './table-children/TableChildNavigation';
+import { DEFAULT_TABLE_DATA, DEFAULT_TABLE_PER_PAGE, TableSortingOrder } from './TableConstants';
+import { ITableCompositeState, ITableData } from './TableReducers';
 
 export interface IData {
   id: string;
@@ -91,7 +91,7 @@ export interface ITableDispatchProps {
   onRowClick?: (actions: IActionOptions[], numberOfSelectedIds: number) => void;
 }
 
-export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps { }
+export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps {}
 
 export class Table extends React.Component<ITableProps, {}> {
   private isInitialLoad: boolean;
@@ -138,7 +138,7 @@ export class Table extends React.Component<ITableProps, {}> {
   }
 
   componentWillReceiveProps(nextProps: ITableProps) {
-    const {tableCompositeState} = this.props;
+    const { tableCompositeState } = this.props;
 
     if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
       // if the change occurs outside the navigation (per page, pagination), reset the pagination to 0
