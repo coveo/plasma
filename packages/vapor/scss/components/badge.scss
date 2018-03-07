@@ -1,0 +1,14 @@
+.badge {
+  display: inline-block;
+  box-sizing: border-box;
+
+  background-color: $orange;
+  color: $pure-white;
+
+  font-size: $badge-font-size;
+  line-height: $badge-height;
+  height: $badge-height;
+
+  padding: $badge-padding;
+  margin: $badge-margin;
+}
