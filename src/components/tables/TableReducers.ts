@@ -1,9 +1,10 @@
 import * as _ from 'underscore';
 import { contains } from 'underscore.string';
 import { IReduxAction } from '../../utils/ReduxUtils';
+import { IActionOptions } from '../actions/Action';
 import { LoadingActions } from '../loading/LoadingActions';
 import { ITablePredicate } from './Table';
-import { TableActions, ITableActionPayload } from './TableActions';
+import { ITableActionPayload, TableActions } from './TableActions';
 import {
   DEFAULT_TABLE_DATA,
   TableChildComponent,
@@ -11,7 +12,6 @@ import {
 } from './TableConstants';
 import { TableHeaderCellActions } from './TableHeaderCellActions';
 import { getTableChildComponentId } from './TableUtils';
-import { IActionOptions } from '../actions/Action';
 
 export interface ITableById {
   [id: string]: {
@@ -84,7 +84,7 @@ export const tableInitialState: ITableState = {
   datePickerRangeId: undefined,
 };
 
-export const tablesInitialState: {[tableId: string]: ITableState;} = {};
+export const tablesInitialState: {[tableId: string]: ITableState; } = {};
 
 export const updateSelectedIDs = (newState: ITableState, oldSelectedIds: string[]): ITableState => {
 
