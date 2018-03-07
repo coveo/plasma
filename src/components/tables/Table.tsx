@@ -88,7 +88,7 @@ export interface ITableDispatchProps {
                   tableCompositeState: ITableCompositeState,
                   previousTableCompositeState?: ITableCompositeState) => void;
   onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
-  onRowClick?: (actions: IActionOptions[]) => void;
+  onRowClick?: (actions: IActionOptions[], numberOfSelectedIds: number) => void;
 }
 
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps { }
@@ -199,10 +199,11 @@ export class Table extends React.Component<ITableProps, {}> {
   }
 
   private getTableBody() {
-    const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
+    const tableData: ITableData = this.props.tableCompositeState.data || this.props.initialTableData;
 
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
       const currentRowData: IData = tableData.byId[id];
+      const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
       return (
         <TableChildBody
@@ -213,7 +214,8 @@ export class Table extends React.Component<ITableProps, {}> {
           getActions={(rowData?: IData) => (this.props.getActions && this.props.getActions(rowData)) || []}
           headingAttributes={this.props.headingAttributes}
           collapsibleFormatter={this.props.collapsibleFormatter}
-          onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions)}
+          onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions, numberOfSelectedIds)}
+          isMultiSelect={this.props.rowsMultiSelect}
         />
       );
     });

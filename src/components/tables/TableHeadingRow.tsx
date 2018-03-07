@@ -10,6 +10,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
   onClickCallback?: () => void;
   onDoubleClick?: () => void;
   className?: string;
+  isMultiSelect?: boolean;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -20,7 +21,7 @@ export interface ITableHeadingRowStateProps {
 export interface ITableHeadingRowDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<any>) => void;
 }
 
 export interface ITableHeadingRowProps extends ITableHeadingRowOwnProps, ITableHeadingRowStateProps,
@@ -53,7 +54,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     return (
       <tr
         className={rowClasses}
-        onClick={() => this.handleClick()}
+        onClick={(e: React.MouseEvent<any>) => this.handleClick(e)}
         onDoubleClick={() => this.handleDoubleClick()}
       >
         {this.props.children}
@@ -62,9 +63,9 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     );
   }
 
-  private handleClick() {
+  private handleClick(e: React.MouseEvent<any>) {
     if (this.props.onClick) {
-      this.props.onClick();
+      this.props.onClick(e);
     }
 
     if (this.props.onClickCallback) {

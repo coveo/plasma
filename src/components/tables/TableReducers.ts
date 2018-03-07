@@ -1,16 +1,17 @@
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {LoadingActions} from '../loading/LoadingActions';
-import {ITablePredicate} from './Table';
-import {ITableActionPayload, TableActions} from './TableActions';
+import { contains } from 'underscore.string';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { LoadingActions } from '../loading/LoadingActions';
+import { ITablePredicate } from './Table';
+import { TableActions, ITableActionPayload } from './TableActions';
 import {
   DEFAULT_TABLE_DATA,
   TableChildComponent,
   TableSortingOrder,
 } from './TableConstants';
-import {TableHeaderCellActions} from './TableHeaderCellActions';
-import {getTableChildComponentId} from './TableUtils';
+import { TableHeaderCellActions } from './TableHeaderCellActions';
+import { getTableChildComponentId } from './TableUtils';
+import { IActionOptions } from '../actions/Action';
 
 export interface ITableById {
   [id: string]: {
@@ -52,6 +53,7 @@ export interface ITableCompositeState {
   };
   from: Date;
   to: Date;
+  actions?: IActionOptions[];
 }
 
 export interface ITableState {
@@ -82,18 +84,19 @@ export const tableInitialState: ITableState = {
   datePickerRangeId: undefined,
 };
 
-export const tablesInitialState: {[tableId: string]: ITableState; } = {};
+export const tablesInitialState: {[tableId: string]: ITableState;} = {};
 
 export const updateSelectedIDs = (newState: ITableState, oldSelectedIds: string[]): ITableState => {
 
   const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => {
     return !_.contains(newState.data.displayedIds, selectedId);
   });
-  return {...newState, data: {...newState.data, selectedIds: newSelectedIds}};
+  return { ...newState, data: { ...newState.data, selectedIds: newSelectedIds } };
 };
 
 export const tableReducer = (state: ITableState = tableInitialState,
                              action: IReduxAction<ITableActionPayload>): ITableState => {
+  let selectedIds: string[];
   switch (action.type) {
     case TableActions.add:
       return {
@@ -109,7 +112,7 @@ export const tableReducer = (state: ITableState = tableInitialState,
         datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
       };
     case TableActions.modifyState:
-      const selectedIds: string[] = state.data && state.data.selectedIds ? state.data.selectedIds : [];
+      selectedIds = state.data && state.data.selectedIds ? state.data.selectedIds : [];
       return _.extend({}, updateSelectedIDs(action.payload.tableStateModifier(state), selectedIds));
     case TableActions.inError:
       return {
@@ -132,7 +135,10 @@ export const tableReducer = (state: ITableState = tableInitialState,
         tableHeaderCellId: action.payload.id,
       };
     case TableActions.updateSelectedIds:
-      return {...state, data: {...state.data, selectedIds: action.payload.selectedIds}};
+      selectedIds = action.payload.hasMultipleSelectedRow
+        ? _.union(state.data.selectedIds, action.payload.selectedIds)
+        : action.payload.selectedIds.slice(0, 1);
+      return { ...state, data: { ...state.data, selectedIds } };
     default:
       return state;
   }
@@ -153,7 +159,7 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
         : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
 
       return currentTableId
-        ? {...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action)}
+        ? { ...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action) }
         : tablesState;
   }
 };

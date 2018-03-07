@@ -251,7 +251,50 @@ export class TableExamples extends React.Component<any, any> {
             navigation={{ perPageNumbers }}
           />
         </div>
-
+        <div className='form-group'>
+          <label className='form-control-label'>Table with multiple selection on rows
+          </label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            initialTableData={tableData}
+            headingAttributes={[
+              {
+                attributeName: 'attribute5',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+              },
+            ]}
+            filter
+            getActions={(rowData: IData) => ([
+              {
+                name: 'Link to Coveo',
+                link: 'http://coveo.com',
+                target: '_blank',
+                icon: 'exit',
+                primary: true,
+                enabled: true,
+              },
+              {
+                name: 'Delete',
+                icon: 'delete',
+                primary: true,
+                enabled: true,
+                grouped: true,
+              },
+            ])}
+            blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
+            actionBar={{ extraContainerClasses: ['mod-border-top'] }}
+            navigation={{ perPageNumbers }}
+            rowsMultiSelect={true}
+          />
+        </div>
         <div className='form-group'>
           <label className='form-control-label'>Complex Table in default mode</label>
           <TableConnected
@@ -314,7 +357,6 @@ export class TableExamples extends React.Component<any, any> {
             navigation={{ perPageNumbers }}
           />
         </div>
-
       </div>
     );
   }

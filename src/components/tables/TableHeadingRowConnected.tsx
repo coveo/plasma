@@ -20,9 +20,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnProps) => ({
-  onClick: () => {
+  onClick: (e: React.MouseEvent<any>) => {
+    const hasMultipleSelectedRow: boolean = e.shiftKey && ownProps.isMultiSelect;
     dispatch(selectRow(ownProps.id, ownProps.isCollapsible, ownProps.tableId, ownProps.rowId));
-    dispatch(updateSelectedRows(ownProps.tableId, [ownProps.rowId]));
+    dispatch(updateSelectedRows(ownProps.tableId, [ownProps.rowId], hasMultipleSelectedRow));
   },
   onRender: () => dispatch(addRow(ownProps.id, ownProps.tableId)),
   onDestroy: () => dispatch(removeRow(ownProps.id)),

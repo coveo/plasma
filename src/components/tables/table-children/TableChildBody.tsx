@@ -21,6 +21,7 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
   tableId: string;
   rowData: IData;
   isLoading: boolean;
+  isMultiSelect: boolean;
   onRowClick?: (actions: IActionOptions[]) => void;
 }
 
@@ -74,7 +75,9 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         onDoubleClick={() => props.getActions(props.rowData)
             .filter((action) => action.callOnDoubleClick)
             .forEach((action) => action.trigger())
-        }>
+        }
+        isMultiSelect={props.isMultiSelect}
+      >
         {tableHeadingRowContent}
       </TableHeadingRowConnected>
       {collapsibleRow}

@@ -65,11 +65,27 @@ const getSelectedIds = (data: ITableData, props: ITableOwnProps): string[] => da
 
 const getActions = (data: ITableData, props: ITableOwnProps): (rowData?: IData) => IActionOptions[] => props.getActions;
 
+const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => props.rowsMultiSelect;
+
 const actionsSelector = createSelector(
-  [getDataById, getSelectedIds, getActions],
-  (byId: ITableById, selectedIds: string[], getAction: (rowData?: IData) => IActionOptions[]) => {
-    const rowData: IData = byId[selectedIds[0]];
-    return getAction && rowData ? getAction(rowData) : [];
+  [getDataById, getSelectedIds, getMultiSelect, getActions],
+  (byId: ITableById, selectedIds: string[], isMultiSelect: boolean, getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
+    const rowsData: IData[] = [];
+    _.each(selectedIds, (id: string, index: number) => {
+      const rowData: IData = byId[id];
+      if (rowData) {
+        rowsData.push(rowData);
+      }
+    });
+    if (getAction) {
+      if (rowsData.length) {
+        const actions: IActionOptions[] = getAction(rowsData[0]);
+        return isMultiSelect && selectedIds.length >= 2
+          ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
+          : actions;
+      }
+    }
+    return [];
   },
 );
 
@@ -108,7 +124,8 @@ const mapDispatchToProps = (dispatch: IDispatch,
       dispatch(defaultTableStateModifierThunk(ownProps, shouldResetPage, tableCompositeState));
     }
   },
-  onRowClick: (actions: IActionOptions[] = []) => {
+  onRowClick: (actions: IActionOptions[] = [], numberOfSelectedIds: number) => {
+    actions = ownProps.rowsMultiSelect && numberOfSelectedIds >= 2 ? _.filter(actions, (action: IActionOptions) => !!action.grouped) : actions;
     dispatch(
       addActionsToActionBar(
         getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR),
