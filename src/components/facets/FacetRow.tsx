@@ -1,7 +1,5 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {Checkbox} from '../checkbox/Checkbox';
-import {Label} from '../input/Label';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IFacet} from './Facet';
 
@@ -33,14 +31,18 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
 
     return (
       <li className='facet-value facet-selectable'>
-        <Checkbox
-          name={this.props.facetRow.name}
-          classes={['facet-value-label']}
-          checked={this.props.isChecked}
-          onClick={() => this.props.onToggleFacet(this.props.facetRow)}>
-          <Label classes={['label']}>{label}</Label>
+        <label className='coveo-checkbox-label facet-value-label'>
+          <input
+            type='checkbox'
+            name={this.props.facetRow.name}
+            className='coveo-checkbox facet-checkbox-input'
+            checked={this.props.isChecked}
+            onChange={() => this.props.onToggleFacet(this.props.facetRow)}
+          />
+          <button type='button'></button>
+          <span className='label'>{label}</span>
           {count}
-        </Checkbox>
+        </label>
       </li>
     );
   }
