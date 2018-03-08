@@ -142,7 +142,7 @@ export const multiSelectOption = (options: IDropdownOption[], selectedOption: ID
   });
 };
 
-export const updateOptions = (options: IDropdownOption[], selectAValue?: boolean = true, selectedOption?: IDropdownOption): IDropdownOption[] => {
+export const updateOptions = (options: IDropdownOption[], selectAValue: boolean = true, selectedOption?: IDropdownOption): IDropdownOption[] => {
   let updatedOptions: IDropdownOption[] = options
     ? deepClone(options)
     : [];
