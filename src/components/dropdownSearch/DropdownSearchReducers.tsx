@@ -142,18 +142,20 @@ export const multiSelectOption = (options: IDropdownOption[], selectedOption: ID
   });
 };
 
-export const updateOptions = (options: IDropdownOption[], selectedOption?: IDropdownOption): IDropdownOption[] => {
+export const updateOptions = (options: IDropdownOption[], selectAValue?: boolean = true, selectedOption?: IDropdownOption): IDropdownOption[] => {
   let updatedOptions: IDropdownOption[] = options
     ? deepClone(options)
     : [];
 
-  const defaultSelectedOption = selectedOption
-    ? { ...selectedOption, selected: true, custom: true }
-    : defaultSelectedOptionPlaceholder;
+  if (selectAValue) {
+    const defaultSelectedOption = selectedOption
+      ? { ...selectedOption, selected: true, custom: true }
+      : defaultSelectedOptionPlaceholder;
 
-  updatedOptions = _.find(updatedOptions, (option) => option.value === defaultSelectedOption.value)
-    ? selectSingleOption(updatedOptions, defaultSelectedOption)
-    : [...updatedOptions, defaultSelectedOption];
+    updatedOptions = _.find(updatedOptions, (option) => option.value === defaultSelectedOption.value)
+      ? selectSingleOption(updatedOptions, defaultSelectedOption)
+      : [...updatedOptions, defaultSelectedOption];
+  }
 
   return updatedOptions;
 };
@@ -195,7 +197,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        options: updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption),
+        options: updateOptions(action.payload.dropdownOptions, action.payload.selectAValue, action.payload.defaultSelectedOption),
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.filter:
@@ -256,7 +258,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
     case DropdownSearchActions.add:
       return {
         ...state,
-        options: updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption),
+        options: updateOptions(action.payload.dropdownOptions, action.payload.selectAValue, action.payload.defaultSelectedOption),
         id: action.payload.id,
         filterText: '',
         isOpened: false,

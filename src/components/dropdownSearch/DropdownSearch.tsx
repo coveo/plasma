@@ -65,6 +65,7 @@ export interface IDropdownSearchDispatchProps {
   onRemoveSelectedOption?: (value: string) => void;
   onRemoveAllSelectedOptions?: () => void;
   onClose?: () => void;
+  updateOptions?: (options: IDropdownOption[]) => void;
 }
 
 export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdownSearchStateProps, IDropdownSearchDispatchProps { }
@@ -91,8 +92,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
   }
 
   protected getDisplayedOptions(): IDropdownOption[] {
-    const optionsToUses = this.props.options.length ? this.props.options : this.props.defaultOptions;
-    return _.reject(optionsToUses, (option) => {
+    return _.reject(this.props.options, (option) => {
       return (!this.props.supportSingleCustomOption && option.custom) || option.hidden;
     });
   }
@@ -400,6 +400,10 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
 
     if (this.dropdownButton && this.props.setFocusOnDropdownButton && this.isSearchOn()) {
       this.dropdownButton.focus();
+    }
+
+    if (this.props.updateOptions && !this.props.options.length && this.props.defaultOptions && this.props.defaultOptions.length) {
+      this.props.updateOptions(this.props.defaultOptions);
     }
   }
 
