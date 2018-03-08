@@ -6,6 +6,7 @@ import { ActionBarConnectedExamples } from '../src/components/actions/examples/A
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import { ItemFilterExamples } from '../src/components/actions/filters/examples/ItemFilterExamples';
+import { BadgeExamples } from '../src/components/badge/examples/BadgeExamples';
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { BreadcrumbsExamples } from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
 import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
@@ -16,6 +17,7 @@ import { ChildFormExamples } from '../src/components/childForm/examples/ChildFor
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { CollapsibleContainerExamples } from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
+import { CornerRibbonExamples } from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
 import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
@@ -28,6 +30,7 @@ import { FacetExamples } from '../src/components/facets/examples/FacetExamples';
 import { FilterBoxConnectedExamples } from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
 import { FilterBoxExamples } from '../src/components/filterBox/examples/FilterBoxExamples';
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
+import { FlippableCardExamples } from '../src/components/flippableCard/exemples/FlippableCardExamples';
 import { BasicHeaderExamples } from '../src/components/headers/examples/BasicHeaderExamples';
 import { BreadcrumbHeaderExample } from '../src/components/headers/examples/BreadcrumbHeaderExample';
 import { InputAndInputConnectedExamples } from '../src/components/input/examples/InputAndInputConnectedExamples';
@@ -37,6 +40,7 @@ import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/exam
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import { ListBoxExamples } from '../src/components/listBox/examples/ListBoxExamples';
 import { LoadingExamples } from '../src/components/loading/LoadingExamples';
+import { LogoCardExamples } from '../src/components/logoCard/examples/LogoCardExamples';
 import { ModalCompositeConnectedExamples } from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 import { ModalCompositeExamples } from '../src/components/modal/examples/ModalCompositeExamples';
 import { ModalConnectedExamples } from '../src/components/modal/examples/ModalConnectedExamples';
@@ -88,6 +92,10 @@ class App extends React.Component<any, any> {
               <MembersExample />
             </div>
           </div>
+          <BadgeExamples />
+          <CornerRibbonExamples />
+          <LogoCardExamples />
+          <FlippableCardExamples />
           <SliderExamples />
           <SvgExamples />
           <LinkSvgExamples />
