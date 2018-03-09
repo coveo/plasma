@@ -34,7 +34,7 @@ export interface IPredicateAttributes {
   [attributeName: string]: IAttributeValue;
 }
 
-export type IAttributeFormatter = (attributeValue: any, attributeName?: string) => JSXRenderable;
+export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => JSXRenderable;
 export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string) => string;
 
 export interface ITableHeadingAttribute {

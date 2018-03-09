@@ -4,10 +4,11 @@ import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
+import { CheckboxConnected } from '../../checkbox/CheckboxConnected';
 import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { ITableOwnProps } from '../Table';
 import { IData, ITableRowData } from '../Table';
+import { ITableOwnProps } from '../Table';
 import { modifyState, setIsInError } from '../TableActions';
 import { TableConnected } from '../TableConnected';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
@@ -15,6 +16,7 @@ import { defaultTableStateModifier, dispatchPostTableStateModification, dispatch
 import { ITableCompositeState, ITableData, ITablesState, ITableState } from '../TableReducers';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
+const generateBoolean = () => Math.random() <= 0.5;
 const generateDate = (start: Date, end: Date) =>
   moment(start.getTime() + Math.random() * (end.getTime() - start.getTime())).format('YYYY-MM-DD hh:mm:ss');
 
@@ -26,6 +28,7 @@ const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
+    attribute5: generateBoolean(),
   },
 }), {} as ITableRowData);
 
@@ -312,6 +315,30 @@ export class TableExamples extends React.Component<any, any> {
             blankSlateDefault={{ title: 'Oh no! No results!' }}
             blankSlateNoResultsOnAction={{ title: 'Oh no, too much filtering!' }}
             navigation={{ perPageNumbers }}
+          />
+        </div>
+
+        <div className='form-group'>
+          <label className='form-control-label'>Table with selectable values</label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            initialTableData={simplestTableData}
+            headingAttributes={[
+              {
+                attributeName: 'attribute5',
+                titleFormatter: _.identity,
+                attributeFormatter: (value: boolean, name: string, data: IData) => <CheckboxConnected id={data.id} defaultChecked={value} />,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+              },
+            ]}
+            blankSlateDefault={{ title: 'No results!' }}
           />
         </div>
 
