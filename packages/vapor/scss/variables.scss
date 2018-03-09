@@ -451,3 +451,9 @@ $ribbon-x-offset: calc((#{$ribbon-width} / -2) + #{$ribbon-distance-from-corner}
 $ribbon-font-size: 0.8em;
 $ribbon-letter-spacing: 1px;
 $ribbon-rotation-angle: 45deg;
+
+// Logo card
+$logo-card-title-color: #4a4a4a;
+$logo-card-border: 1px solid $medium-grey;
+$logo-card-padding: 1rem;
+$logo-card-margin: 0.25rem;
