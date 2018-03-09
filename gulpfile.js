@@ -111,5 +111,5 @@ gulp.task('test:watch', 'Run all tests in PhantomJS and watch', (done) => {
 // </editor-fold>
 
 gulp.task('default', 'Clean, and compile the project', (done) => {
-  runSequence('clean:dist', 'ts', done);
+  runSequence('clean:dist', 'ts:definitions', done);
 });

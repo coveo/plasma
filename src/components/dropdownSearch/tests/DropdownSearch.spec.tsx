@@ -233,6 +233,18 @@ describe('DropdownSearch', () => {
 
         expect(handleOnOptionClickOnKeyDownSpy).not.toHaveBeenCalled();
       });
+
+      it('should call updateOptions when receiving new default options when the option list is empty', () => {
+        const updateOptionsSpy: jasmine.Spy = jasmine.createSpy('updateOptions');
+        const newProps: IDropdownSearchProps = _.extend({}, ownProps, {updateOptions: updateOptionsSpy});
+        dropdownSearch.setProps(newProps);
+
+        expect(updateOptionsSpy).not.toHaveBeenCalled();
+
+        dropdownSearch.setProps(_.extend(newProps, {options: [], defaultOptions: [{value: 'something'}]}));
+
+        expect(updateOptionsSpy).toHaveBeenCalledTimes(1);
+      });
     });
 
     describe('Props functionality', () => {
