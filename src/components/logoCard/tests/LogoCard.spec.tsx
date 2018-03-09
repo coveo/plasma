@@ -1,9 +1,9 @@
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import * as _ from 'underscore';
-import { ILogoCardProps, LogoCard, DEFAULT_LOGO_CARD_CLASSNAME } from '../LogoCard';
-import { DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, CornerRibbon, ICornerRibbonProps, PlacementX, PlacementY } from '../../cornerRibbon/CornerRibbon';
-import { IBadgeProps } from '../../badge/Badge';
 import { Badge } from 'react-bootstrap';
+import * as _ from 'underscore';
+import { IBadgeProps } from '../../badge/Badge';
+import { CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, ICornerRibbonProps, PlacementX, PlacementY } from '../../cornerRibbon/CornerRibbon';
+import { DEFAULT_LOGO_CARD_CLASSNAME, ILogoCardProps, LogoCard } from '../LogoCard';
 
 describe('LogoCard', () => {
   let logoCard: ReactWrapper<ILogoCardProps>;
@@ -62,7 +62,7 @@ describe('LogoCard', () => {
       },
       disabledRibbon: {
         label: 'ribbonWhenDisabled',
-      }
+      },
     };
 
     beforeEach(() => {
@@ -75,7 +75,7 @@ describe('LogoCard', () => {
 
     it('should have the ribbon-container class', () => {
       expect(logoCard.hasClass(DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME)).toBe(true);
-    })
+    });
 
     it('should not call onClick when clicking on the logoCard', () => {
       logoCard.simulate('click');
@@ -96,7 +96,7 @@ describe('LogoCard', () => {
         },
         {
           label: 'badge 2',
-        }
+        },
       ],
       ribbon: {
         label: 'some-ribbon',
@@ -104,8 +104,8 @@ describe('LogoCard', () => {
         placementY: PlacementY.Bottom,
         extraClasses: ['bold'],
       },
-      description: 'some description'
-    }
+      description: 'some description',
+    };
 
     beforeEach(() => {
       mountWithProps(thisLogoCardProps);
