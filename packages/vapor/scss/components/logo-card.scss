@@ -1,0 +1,46 @@
+.logo-card {
+  display: flex;
+  padding: $logo-card-padding;
+  margin: $logo-card-margin;
+
+  border: $logo-card-border;
+
+  cursor: pointer;
+
+  &.disabled {
+    color: $medium-grey;
+
+    cursor: default;
+
+    .logo-card-title {
+      color: $medium-grey;
+    }
+
+    .badge {
+      background-color: $medium-grey;
+    }
+
+    path {
+      fill: $medium-grey;
+    }
+  }
+
+  &.ribbon-container.disabled .corner-ribbon {
+    background-color: $medium-grey;
+  }
+}
+
+.logo-card-logo {
+  margin-right: 1.5rem;
+}
+
+.logo-card-content {
+  flex-direction: column;
+  justify-content: space-between;
+
+  display: flex;
+}
+
+.logo-card-title {
+  color: $logo-card-title-color;
+}
