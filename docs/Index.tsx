@@ -37,6 +37,7 @@ import { LastUpdatedConnectedExamples } from '../src/components/lastUpdated/exam
 import { LastUpdatedExamples } from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import { ListBoxExamples } from '../src/components/listBox/examples/ListBoxExamples';
 import { LoadingExamples } from '../src/components/loading/LoadingExamples';
+import { LogoCardExamples } from '../src/components/logoCard/examples/LogoCardExamples';
 import { ModalCompositeConnectedExamples } from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 import { ModalCompositeExamples } from '../src/components/modal/examples/ModalCompositeExamples';
 import { ModalConnectedExamples } from '../src/components/modal/examples/ModalConnectedExamples';
@@ -88,6 +89,7 @@ class App extends React.Component<any, any> {
               <MembersExample />
             </div>
           </div>
+          <LogoCardExamples />
           <SliderExamples />
           <SvgExamples />
           <LinkSvgExamples />
