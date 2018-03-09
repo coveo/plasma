@@ -10,5 +10,9 @@
   height: $badge-height;
 
   padding: $badge-padding;
-  margin: $badge-margin;
+  margin-right: $badge-margin;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
