@@ -6,6 +6,7 @@ import { ActionBarConnectedExamples } from '../src/components/actions/examples/A
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import { ItemFilterExamples } from '../src/components/actions/filters/examples/ItemFilterExamples';
+import { BadgeExamples } from '../src/components/badge/examples/BadgeExamples';
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { BreadcrumbsExamples } from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
 import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
@@ -88,6 +89,7 @@ class App extends React.Component<any, any> {
               <MembersExample />
             </div>
           </div>
+          <BadgeExamples />
           <SliderExamples />
           <SvgExamples />
           <LinkSvgExamples />
