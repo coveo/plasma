@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const isTravis = process.env.TRAVIS;
 
@@ -16,6 +17,11 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
+    }),
+  ],
   module: {
     rules: [
       {
