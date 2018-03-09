@@ -125,7 +125,7 @@
     "remap-istanbul": "0.10.1",
     "sass-loader": "6.0.6",
     "shelljs": "0.8.1",
-    "style-loader": "0.20.2",
+    "style-loader": "0.20.3",
     "ts-loader": "4.0.0",
     "tsjs": "0.4.x",
     "tslint-loader": "3.6.0",
