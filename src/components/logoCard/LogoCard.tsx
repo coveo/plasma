@@ -46,7 +46,7 @@ export class LogoCard extends React.Component<ILogoCardProps> {
   render() {
     const containerClassName = classNames(
       DEFAULT_LOGO_CARD_CLASSNAME,
-      DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME,
+      (this.props.disabled || this.props.ribbon) ? DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME : '',
       this.props.extraContainerClasses,
       this.props.disabled ? 'disabled' : '',
     );
