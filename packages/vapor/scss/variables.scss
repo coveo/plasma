@@ -440,4 +440,14 @@ $step-progress-bar-to-do-color: #d8d8d8;
 $badge-font-size: 0.8em;
 $badge-height: 2em;
 $badge-padding: 0 1em;
-$badge-margin: 0 1px;
+$badge-margin: 4px;
+
+// Corner ribbon
+$ribbon-width: 10rem;
+$ribbon-height: 2em;
+$ribbon-distance-from-corner: 3em;
+$ribbon-y-offset: calc((#{$ribbon-height} / -2) + #{$ribbon-distance-from-corner});
+$ribbon-x-offset: calc((#{$ribbon-width} / -2) + #{$ribbon-distance-from-corner});
+$ribbon-font-size: 0.8em;
+$ribbon-letter-spacing: 1px;
+$ribbon-rotation-angle: 45deg;
