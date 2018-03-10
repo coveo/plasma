@@ -133,7 +133,7 @@
     "underscore": "1.8.3",
     "underscore.string": "3.3.4",
     "webpack": "4.0.1",
-    "webpack-cli": "2.0.10",
+    "webpack-cli": "2.0.11",
     "webpack-dev-server": "3.1.0"
   },
   "files": [
