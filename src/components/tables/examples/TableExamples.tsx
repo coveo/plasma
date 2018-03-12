@@ -4,15 +4,16 @@ import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
+import {Checkbox} from '../../checkbox/Checkbox';
 import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { ITableOwnProps } from '../Table';
 import { IData, ITableRowData } from '../Table';
+import { ITableOwnProps } from '../Table';
 import { modifyState, setIsInError } from '../TableActions';
 import { TableConnected } from '../TableConnected';
 import { DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE } from '../TableConstants';
 import { defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification } from '../TableDataModifier';
-import { ITableCompositeState, ITableData, ITablesState, ITableState } from '../TableReducers';
+import { ITableCompositeState, ITableData, ITablesState, ITableState} from '../TableReducers';
 
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 const generateDate = (start: Date, end: Date) =>
@@ -168,6 +169,40 @@ export class TableExamples extends React.Component<any, any> {
               {
                 attributeName: 'attribute1',
                 titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+              },
+            ]}
+            blankSlateDefault={{ title: 'No results!' }}
+          />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Simplest Table with checkbox
+          </label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            initialTableData={simplestTableData}
+            headingAttributes={[
+              {
+                attributeName: 'attribute1',
+                titleFormatter: (attributeName: string) => {
+                  return <span>
+                      <Checkbox checked={true} classes={'mr1'} onClick={() => console.log(`${attributeName} has changed`)} />
+                      {attributeName}
+                    </span>;
+                },
+                attributeFormatter: (attributeName: string) => {
+                  return <span>
+                      <Checkbox checked={true} classes={'mr1'} onClick={() => console.log(`${attributeName} has changed`)} />
+                      {attributeName}
+                    </span>;
+                },
               },
               {
                 attributeName: 'attribute4',

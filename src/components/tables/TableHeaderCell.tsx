@@ -1,11 +1,12 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {JSXRenderable} from '../../utils/JSXUtils';
 import { Svg } from '../svg/Svg';
 import { TableSortingOrder } from './TableConstants';
 
 export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHeaderCell> {
-  title: string;
+  title: string | JSXRenderable;
   id?: string;
   attributeToSort?: string;
   tableId?: string;

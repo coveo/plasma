@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { IInputProps, Input } from '../input/Input';
 
 export class Checkbox extends React.Component<IInputProps, any> {
@@ -8,6 +9,21 @@ export class Checkbox extends React.Component<IInputProps, any> {
       e.preventDefault();
       e.stopPropagation();
       this.props.onClick(e);
+    }
+  }
+
+  componentDidMount() {
+    this.updateIndeterminate();
+  }
+
+  componentDidUpdate() {
+    this.updateIndeterminate();
+  }
+
+  private updateIndeterminate() {
+    const inputElements = ReactDOM.findDOMNode(this).getElementsByTagName('input');
+    if (inputElements.length) {
+      inputElements[0].indeterminate = !!this.props.indeterminate;
     }
   }
 
