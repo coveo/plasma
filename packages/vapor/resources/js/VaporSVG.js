@@ -57,6 +57,7 @@
     VaporSVG.SVG = svgWrapper;
     VaporSVG.svgFromName = svgFromName;
     VaporSVG.svg = svgEnum;
+    /* VaporSVG version */
 
     var root = this;
 

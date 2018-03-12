@@ -27,6 +27,11 @@ function Dictionary(from) {
 
         fs.writeFileSync(to, code);
     };
+
+    this.writeVaporSvgVersionFile = (to) => {
+        const code = 'VaporSVG.version = ' + JSON.stringify(require('../package.json').version) + ';';
+        fs.writeFileSync(to, code);
+    }
 }
 
 gulp.task('svg:concat', 'Concat all svg files into one in a json format and export it to dist/svg', () => {
@@ -71,8 +76,11 @@ gulp.task('svg:enum', 'Enumerate the svgs in a variable', ['svg:concat'], () => 
 
     dict.writeSvgEnumFile('tmp/svg.js');
 
+    dict.writeVaporSvgVersionFile('tmp/version.js');
+
     gulp.src('resources/js/VaporSVG.js')
         .pipe(gfi({'/* SVG Enum */': 'tmp/svg.js'}))
+        .pipe(gfi({'/* VaporSVG version */': 'tmp/version.js'}))
         .pipe(gulp.dest('dist/js/'));
 });
 
