@@ -1,9 +1,8 @@
 import { mount, ReactWrapper, shallow } from 'enzyme';
-import { Badge } from 'react-bootstrap';
+import * as React from 'react';
 import * as _ from 'underscore';
-import { IBadgeProps } from '../../badge/Badge';
-import { CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, ICornerRibbonProps, PlacementX, PlacementY } from '../../cornerRibbon/CornerRibbon';
-import { DEFAULT_LOGO_CARD_CLASSNAME, ILogoCardProps, LogoCard } from '../LogoCard';
+import { CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, PlacementX, PlacementY } from '../../cornerRibbon/CornerRibbon';
+import { DEFAULT_LOGO_CARD_CLASSNAME, DEFAULT_LOGO_ICON, DEFAULT_LOGO_ICON_CLASSNAME, DEFAULT_LOGO_ICON_SIZE, ILogoCardProps, LogoCard } from '../LogoCard';
 
 describe('LogoCard', () => {
   let logoCard: ReactWrapper<ILogoCardProps>;
@@ -48,8 +47,22 @@ describe('LogoCard', () => {
       expect(defaultLogoCardProps.onClick).toHaveBeenCalledTimes(1);
     });
 
+    it('should not render a corner-ribbon if no ribbon is set when not disabled', () => {
+      expect(logoCard.find('CornerRibbon').length).toBe(0);
+    });
+
     it('should render no badges if no badges are specified as props', () => {
       expect(logoCard.find('Badge').length).toBe(0);
+    });
+
+    it('should render the logo icon with the default icon class and size', () => {
+      expect(logoCard.find('Svg').hasClass(DEFAULT_LOGO_ICON_CLASSNAME)).toBe(true);
+      expect(logoCard.find('Svg').hasClass(DEFAULT_LOGO_ICON_SIZE)).toBe(true);
+    });
+
+    it('should have the default "source-custom" icon logo', () => {
+      expect(logoCard.props().svgName).toBeDefined();
+      expect(logoCard.props().svgName).toEqual(DEFAULT_LOGO_ICON);
     });
   });
 
@@ -105,6 +118,8 @@ describe('LogoCard', () => {
         extraClasses: ['bold'],
       },
       description: 'some description',
+      extraContainerClasses: ['some-extra-class'],
+      svgName: 'source-rss',
     };
 
     beforeEach(() => {
@@ -124,6 +139,15 @@ describe('LogoCard', () => {
 
       expect(descriptionSpan.length).toBeGreaterThan(0);
       expect(descriptionSpan.text()).toBe(thisLogoCardProps.description);
+    });
+
+    it('should render extra container classes if specified as props', () => {
+      expect(logoCard.hasClass('some-extra-class')).toBe(true);
+    });
+
+    it('should have the svgName specified as props', () => {
+      expect(logoCard.props().svgName).toBeDefined();
+      expect(logoCard.props().svgName).toEqual('source-rss');
     });
   });
 });

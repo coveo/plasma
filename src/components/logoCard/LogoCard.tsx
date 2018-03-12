@@ -8,6 +8,7 @@ import { Svg } from '../svg/Svg';
 export const DEFAULT_LOGO_CARD_CLASSNAME: string = 'logo-card';
 export const DEFAULT_LOGO_ICON: string = 'source-custom';
 export const DEFAULT_LOGO_ICON_CLASSNAME: string = 'icon';
+export const DEFAULT_LOGO_ICON_SIZE: string = 'mod-4x';
 export const DEFAULT_DISABLED_RIBBON_LABEL: string = 'Unavailable';
 
 export interface ILogoCardProps {
@@ -16,8 +17,6 @@ export interface ILogoCardProps {
   disabled?: boolean;
   disabledRibbon?: ICornerRibbonProps;
   extraContainerClasses?: string[];
-  extraLogoIconClasses?: string[];
-  logoIconSize?: string;
   onClick?: () => void;
   ribbon?: ICornerRibbonProps;
   svgName?: string;
@@ -32,8 +31,6 @@ export class LogoCard extends React.Component<ILogoCardProps> {
       label: DEFAULT_DISABLED_RIBBON_LABEL,
     },
     extraContainerClasses: [],
-    extraLogoIconClasses: [],
-    logoIconSize: 'mod-4x',
     svgName: DEFAULT_LOGO_ICON,
   };
 
@@ -52,8 +49,7 @@ export class LogoCard extends React.Component<ILogoCardProps> {
     );
     const logoIconClassName = classNames(
       DEFAULT_LOGO_ICON_CLASSNAME,
-      this.props.logoIconSize,
-      this.props.extraLogoIconClasses,
+      DEFAULT_LOGO_ICON_SIZE,
     );
 
     const badges = this.props.badges.map((badgeProps) =>
