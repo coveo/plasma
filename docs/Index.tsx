@@ -13,6 +13,7 @@ import { ButtonExamples } from '../src/components/button/examples/ButtonExamples
 import { CalendarConnectedExamples } from '../src/components/calendar/examples/CalendarConnectedExamples';
 import { CheckboxConnectedExamples } from '../src/components/checkbox/examples/CheckboxConnectedExamples';
 import { CheckboxExamples } from '../src/components/checkbox/examples/CheckboxExamples';
+import {GroupableCheckboxConnectedExamples} from '../src/components/checkbox/examples/GroupableCheckboxConnectedExamples';
 import { ChildFormExamples } from '../src/components/childForm/examples/ChildFormExamples';
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { CollapsibleContainerExamples } from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
@@ -154,6 +155,7 @@ class App extends React.Component<any, any> {
           <RadioExamples />
           <CheckboxExamples />
           <CheckboxConnectedExamples />
+          <GroupableCheckboxConnectedExamples />
           <ChildFormExamples />
           <StepProgressBarExamples />
           <LabeledValueExamples />

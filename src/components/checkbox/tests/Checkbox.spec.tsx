@@ -18,12 +18,12 @@ describe('Checkbox', () => {
   describe('<Checkbox />', () => {
     let checkbox: ReactWrapper<IInputProps, any>;
 
-    beforeEach(() => {
+    const renderCheckbox = (props: IInputProps = {}) => {
       checkbox = mount(
-        <Checkbox />,
+        <Checkbox {...props} />,
         { attachTo: document.getElementById('App') },
       );
-    });
+    };
 
     afterEach(() => {
       checkbox.unmount();
@@ -31,6 +31,8 @@ describe('Checkbox', () => {
     });
 
     it('should call prop onClick when specified on click', () => {
+      renderCheckbox();
+
       const clickSpy = jasmine.createSpy('onClick');
       const innerLabel = checkbox.find('div');
 
@@ -41,9 +43,20 @@ describe('Checkbox', () => {
     });
 
     it('should set inner input type to checkbox', () => {
+      renderCheckbox();
+
       const innerInput = checkbox.find('input');
 
       expect(innerInput.prop('type')).toBe('checkbox');
+    });
+
+    it('should set indeterminate on input', () => {
+      renderCheckbox({
+        indeterminate: true,
+      });
+      const innerInput = checkbox.find('input');
+
+      expect(innerInput.prop('indeterminate')).toBe('true');
     });
   });
 });
