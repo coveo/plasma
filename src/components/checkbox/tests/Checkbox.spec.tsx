@@ -1,15 +1,15 @@
-import { mount, ReactWrapper, shallow } from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { IInputProps } from '../../input/Input';
-import { Checkbox } from '../Checkbox';
+import {IInputProps} from '../../input/Input';
+import {Checkbox} from '../Checkbox';
 
 describe('Checkbox', () => {
   describe('<Checkbox />', () => {
     it('should render without errors', () => {
       expect(() => {
         shallow(
-          <Checkbox />,
+          <Checkbox/>,
         );
       }).not.toThrow();
     });
@@ -21,7 +21,7 @@ describe('Checkbox', () => {
     const renderCheckbox = (props: IInputProps = {}) => {
       checkbox = mount(
         <Checkbox {...props} />,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
     };
 
@@ -36,7 +36,7 @@ describe('Checkbox', () => {
       const clickSpy = jasmine.createSpy('onClick');
       const innerLabel = checkbox.find('div');
 
-      checkbox.setProps({ onClick: clickSpy }).mount();
+      checkbox.setProps({onClick: clickSpy}).mount();
       innerLabel.simulate('click');
 
       expect(clickSpy.calls.count()).toBe(1);
@@ -55,8 +55,7 @@ describe('Checkbox', () => {
         indeterminate: true,
       });
       const innerInput = checkbox.find('input');
-
-      expect(innerInput.prop('indeterminate')).toBe('true');
+      expect((innerInput as any).node.indeterminate).toBe(true);
     });
   });
 });

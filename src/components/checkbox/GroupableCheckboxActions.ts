@@ -33,10 +33,11 @@ export const addGroupedCheckbox = (id: string, checked: boolean, parentId: strin
   },
 });
 
-export const removeGroupedCheckbox = (id: string, parentId: string): IReduxAction<IGroupableCheckboxActionPayload> => ({
+export const removeGroupedCheckbox = (id: string, parentId: string, isParent: boolean = false): IReduxAction<IGroupableCheckboxActionPayload> => ({
   type: GroupableCheckboxActions.removeGroup,
   payload: {
     id,
     parentId,
+    isParent,
   },
 });
