@@ -15,9 +15,9 @@ import {
   getDisplayedOptions,
   IDropdownSearchState,
   isNotCustomOption,
+  multiSelectOption,
   removeCustomOptions,
   shouldHideOnFilter,
-  multiSelectOption,
 } from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
@@ -964,7 +964,7 @@ describe('DropdownSearch', () => {
 
           const resultingOptions: IDropdownOption[] = multiSelectOption(newOptions, expectedOption);
 
-          expect(resultingOptions.length).toBe(2)
+          expect(resultingOptions.length).toBe(2);
           expect(resultingOptions[1].value).toBe(expectedOption.value);
           expect(resultingOptions[1].displayValue).toBe(expectedOption.displayValue);
           expect(resultingOptions[1].selected).toBe(true);
