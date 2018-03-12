@@ -172,6 +172,7 @@ export { DisplayClass, ComponentContent } from './utils/ComponentUtils';
 export { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
 export { clearState, CommonActions, IDispatch, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
 export { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
+export { version } from './Version';
 
 // Tab
 export { addTab, removeTab, selectTab, TabAction } from './components/tab/TabActions';
