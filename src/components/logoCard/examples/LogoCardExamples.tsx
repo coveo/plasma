@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LogoCard } from '../LogoCard';
-import { BETA_RIBBON_PROPS, MULTIPLE_BADGES } from './LogoCardExamplesCommon';
+import { EXAMPLE_RIBBON_PROPS, MULTIPLE_BADGES } from './LogoCardExamplesCommon';
 
 export class LogoCardExamples extends React.Component<any, any> {
 
@@ -13,26 +13,19 @@ export class LogoCardExamples extends React.Component<any, any> {
           <div className='form-control'>
             <LogoCard
               title='Card title'
+              description='Card description'
             />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>LogoCard with badges</label>
+          <label className='form-control-label'>LogoCard with badges, description and ribbon</label>
           <div className='form-control'>
             <LogoCard
               title='Card title'
               badges={MULTIPLE_BADGES}
-            />
-          </div>
-        </div>
-        <div className='form-group'>
-          <label className='form-control-label'>LogoCard with badges and ribbon</label>
-          <div className='form-control'>
-            <LogoCard
-              title='Card title'
-              badges={MULTIPLE_BADGES}
-              ribbon={BETA_RIBBON_PROPS}
-            />
+              ribbon={EXAMPLE_RIBBON_PROPS}
+              description='Card description'
+              />
           </div>
         </div>
         <div className='form-group'>
@@ -41,6 +34,7 @@ export class LogoCardExamples extends React.Component<any, any> {
             <LogoCard
               title='Card title'
               badges={MULTIPLE_BADGES}
+              description='Card description'
               disabled
             />
           </div>

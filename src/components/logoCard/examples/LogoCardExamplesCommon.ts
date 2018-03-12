@@ -16,7 +16,7 @@ export const MULTIPLE_BADGES: IBadgeProps[] = [
   },
 ];
 
-export const BETA_RIBBON_PROPS: ICornerRibbonProps = {
-  label: 'Beta',
+export const EXAMPLE_RIBBON_PROPS: ICornerRibbonProps = {
+  label: 'Ribbon',
   extraClasses: ['bg-orange', 'bold'],
 };

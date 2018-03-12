@@ -8,15 +8,15 @@ import { Svg } from '../svg/Svg';
 export const DEFAULT_LOGO_CARD_CLASSNAME: string = 'logo-card';
 export const DEFAULT_LOGO_ICON: string = 'source-custom';
 export const DEFAULT_LOGO_ICON_CLASSNAME: string = 'icon';
+export const DEFAULT_LOGO_ICON_SIZE: string = 'mod-4x';
 export const DEFAULT_DISABLED_RIBBON_LABEL: string = 'Unavailable';
 
 export interface ILogoCardProps {
   badges?: IBadgeProps[];
+  description?: string;
   disabled?: boolean;
   disabledRibbon?: ICornerRibbonProps;
   extraContainerClasses?: string[];
-  extraLogoIconClasses?: string[];
-  logoIconSize?: string;
   onClick?: () => void;
   ribbon?: ICornerRibbonProps;
   svgName?: string;
@@ -25,20 +25,17 @@ export interface ILogoCardProps {
 
 export class LogoCard extends React.Component<ILogoCardProps> {
   static defaultProps: Partial<ILogoCardProps> = {
-    svgName: DEFAULT_LOGO_ICON,
+    badges: [],
     disabled: false,
     disabledRibbon: {
       label: DEFAULT_DISABLED_RIBBON_LABEL,
-      extraClasses: ['bold'],
     },
-    badges: [],
     extraContainerClasses: [],
-    extraLogoIconClasses: [],
-    logoIconSize: 'mod-4x',
+    svgName: DEFAULT_LOGO_ICON,
   };
 
   private handleClick() {
-    if (this.props.onClick) {
+    if (this.props.onClick && !this.props.disabled) {
       this.props.onClick();
     }
   }
@@ -46,21 +43,26 @@ export class LogoCard extends React.Component<ILogoCardProps> {
   render() {
     const containerClassName = classNames(
       DEFAULT_LOGO_CARD_CLASSNAME,
-      DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME,
+      (this.props.disabled || this.props.ribbon) ? DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME : '',
       this.props.extraContainerClasses,
       this.props.disabled ? 'disabled' : '',
     );
     const logoIconClassName = classNames(
       DEFAULT_LOGO_ICON_CLASSNAME,
-      this.props.logoIconSize,
-      this.props.extraLogoIconClasses,
+      DEFAULT_LOGO_ICON_SIZE,
     );
+
     const badges = this.props.badges.map((badgeProps) =>
       <Badge {...badgeProps}
         key={s.slugify(badgeProps.label)} />);
     const ribbon = this.props.disabled
       ? <CornerRibbon {...this.props.disabledRibbon} />
-      : this.props.ribbon ? <CornerRibbon {...this.props.ribbon} /> : null;
+      : this.props.ribbon
+        ? <CornerRibbon {...this.props.ribbon} />
+        : null;
+    const description = this.props.description
+      ? <span className={badges.length ? 'ml1' : ''}>{this.props.description}</span>
+      : null;
 
     return (
       <div
@@ -73,6 +75,7 @@ export class LogoCard extends React.Component<ILogoCardProps> {
           <h2 className='logo-card-title'>{this.props.title}</h2>
           <div>
             {...badges}
+            {description}
           </div>
         </div>
         {ribbon}
