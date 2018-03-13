@@ -23,7 +23,6 @@ export interface ISelectOwnProps {
 
 export interface ISelectStateProps {
   items?: IItemBoxProps[];
-  visibleItems?: IItemBoxProps[];
   isOpen?: boolean;
 }
 

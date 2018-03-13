@@ -6,7 +6,9 @@ import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 
-export interface ISingleSelectOwnProps extends ISelectProps {}
+export interface ISingleSelectOwnProps extends ISelectProps {
+  emptyPlaceholder?: string;
+}
 
 export interface ISingleSelectStateProps {
   selected?: string;
@@ -27,6 +29,10 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class SingleSelectConnected extends React.Component<ISingleSelectProps, {}> {
+
+  static defaultProps: Partial<ISingleSelectOwnProps> = {
+    emptyPlaceholder: 'Select an option',
+  };
 
   render() {
     return (
@@ -70,6 +76,6 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
       );
     }
 
-    return null;
+    return <span className='dropdown-no-value'>{this.props.emptyPlaceholder}</span>;
   }
 }

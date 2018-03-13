@@ -3,7 +3,11 @@ import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {SingleSelectWithFilter, SingleSelectWithPredicate, SingleSelectWithPredicateAndFilter} from '../SelectComponents';
+import {
+  SingleSelectWithFilter,
+  SingleSelectWithPredicate,
+  SingleSelectWithPredicateAndFilter,
+} from '../SelectComponents';
 import {SingleSelectConnected} from '../SingleSelectConnected';
 
 const defaultItems: IItemBoxProps[] = [
@@ -27,6 +31,7 @@ export interface ISingleSelectExamplesState {
   first: IItemBoxProps[];
   second: IItemBoxProps[];
   hoc: IItemBoxProps[];
+  lotsOfValues: IItemBoxProps[];
 }
 
 export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamplesState> {
@@ -39,10 +44,13 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
     const hoc = _.map(defaultItems, (item) => _.extend({}, item, {append: {content: () => <span className='text-medium-grey ml1'>{item.value}</span>}}));
     hoc[0].selected = true;
 
+    const lotsOfValues = _.map(_.range(1000), (i: number) => ({displayValue: `test ${i}`, value: `${i}`}));
+
     this.state = {
       first: _.clone(defaultItems),
       second,
       hoc,
+      lotsOfValues,
     };
   }
 
@@ -80,6 +88,16 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
             matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
           />
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>A Single Select With Filter and Predicates And Lots Of Values</label>
+          <br/>
+          <SingleSelectWithPredicateAndFilter
+            id={UUID.generate()}
+            items={this.state.lotsOfValues}
+            options={defaultFlatSelectOptions}
+            matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+          />
+        </div>
       </div>
     );
   }
@@ -89,7 +107,7 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
     if (predicate === defaultFlatSelectOptions[0].id) {
       return true;
     } else if (predicate === defaultFlatSelectOptions[1].id) {
-      return  value % 2 === 0;
+      return value % 2 === 0;
     } else if (predicate === defaultFlatSelectOptions[2].id) {
       return value % 2 === 1;
     } else {
