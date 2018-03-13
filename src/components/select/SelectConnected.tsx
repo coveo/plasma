@@ -73,8 +73,8 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
   }
 
   render() {
-    const pickerClasses = classNames('dropdown', {open: this.props.isOpen});
-    const dropdownClasses = classNames('dropdown-container absolute bg-pure-white', {hidden: !this.props.isOpen});
+    const pickerClasses = classNames('select-dropdown dropdown', {open: this.props.isOpen});
+    const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {hidden: !this.props.isOpen});
     return (
       <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
         <Content content={this.props.button} componentProps={{
@@ -82,10 +82,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
           onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
           onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
         }}/>
-        <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref} style={{
-          border: '1px solid #000',
-          zIndex: 1,
-        }}>
+        <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
           {this.renderChildren()}
           <ListBoxConnected id={this.props.id} items={this.props.items} multi={this.props.multi}/>
         </div>
