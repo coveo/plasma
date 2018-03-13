@@ -10,10 +10,10 @@ import { DatePickerDropdownConnected } from '../../datePicker/DatePickerDropdown
 import { SELECTION_BOXES } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
 import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
+import { Loading } from '../../loading/Loading';
 import { ITableProps } from '../Table';
 import { TableChildActionBar } from '../table-children/TableChildActionBar';
 import { tablePropsMock } from './TableTestCommon';
-import { Loading } from '../../loading/Loading';
 
 describe('<TableChildActionBar />', () => {
   let store: Store<IReactVaporState>;
@@ -156,7 +156,7 @@ describe('<TableChildActionBar />', () => {
           actionBar: true,
           prefixContent: {
             content: Loading,
-          }
+          },
         });
         expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
         expect(tableActionBar.find(ActionBarConnected).find(Loading).length).toBe(1);
