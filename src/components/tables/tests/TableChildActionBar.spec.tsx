@@ -13,6 +13,7 @@ import { FilterBoxConnected } from '../../filterBox/FilterBoxConnected';
 import { ITableProps } from '../Table';
 import { TableChildActionBar } from '../table-children/TableChildActionBar';
 import { tablePropsMock } from './TableTestCommon';
+import { Loading } from '../../loading/Loading';
 
 describe('<TableChildActionBar />', () => {
   let store: Store<IReactVaporState>;
@@ -147,6 +148,18 @@ describe('<TableChildActionBar />', () => {
         });
         expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
         expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).length).toBe(2);
+      });
+
+      it('should render with an action bar and prefix content inside it if there is an actionBar prop and prefixContent', () => {
+        const tableActionBar = mountComponentWithProps({
+          ...tablePropsMock,
+          actionBar: true,
+          prefixContent: {
+            content: Loading,
+          }
+        });
+        expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
+        expect(tableActionBar.find(ActionBarConnected).find(Loading).length).toBe(1);
       });
 
       it('should call onPredicateOptionClick if onOptionClickCallback of a dropdownSearch connected is called', () => {

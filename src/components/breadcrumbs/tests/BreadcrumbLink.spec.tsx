@@ -19,12 +19,12 @@ describe('<BreadcrumbLink/>', () => {
 
   describe('<BreadcrumbLink /> with default props', () => {
 
-    beforeEach(() => {
+    const renderBreadcrumbLink = (props: IBreadcrumbLinkProps = defaultProps) => {
       breadcrumbLinkComponent = mount(
-        <BreadcrumbLink {...defaultProps} />,
+        <BreadcrumbLink {...props} />,
         { attachTo: document.getElementById('App') },
       );
-    });
+    };
 
     afterEach(() => {
       breadcrumbLinkComponent.unmount();
@@ -32,11 +32,21 @@ describe('<BreadcrumbLink/>', () => {
     });
 
     it('should render the default name', () => {
+      renderBreadcrumbLink();
       expect(breadcrumbLinkComponent.find('.link').text()).toEqual(defaultProps.name);
     });
 
-    it('should the default link', () => {
+    it('should render the default link', () => {
+      renderBreadcrumbLink();
       expect(breadcrumbLinkComponent.find(`.link[href="${defaultProps.link}"]`).length).toEqual(1);
+    });
+
+    it('should trigger the onClick', () => {
+      const spy = jasmine.createSpy('onClick');
+      renderBreadcrumbLink({...defaultProps, onClick: spy});
+      breadcrumbLinkComponent.props().onClick(defaultProps);
+
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 });

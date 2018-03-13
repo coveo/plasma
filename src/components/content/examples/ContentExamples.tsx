@@ -41,6 +41,12 @@ export class ContentExamples extends React.Component<any, any> {
             <Content content={ItemBox} componentProps={{ value: 'test' }} />
           </div>
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Content with an a tag for container</label>
+          <div className='form-control'>
+            <Content content={ItemBox} componentProps={{ value: 'test' }} tag={'div'} />
+          </div>
+        </div>
       </div>
     );
   }
