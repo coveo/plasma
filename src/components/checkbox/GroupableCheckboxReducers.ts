@@ -6,13 +6,13 @@ import {addChildCheckbox, addParentCheckbox, removeChildCheckbox, removeParentCh
 
 export interface IGroupableCheckboxesState {
   total: number;
-  nbSelected: number;
+  nbChecked: number;
   parentId?: string;
   parent?: ICheckboxState;
   checkboxes: ICheckboxState[];
 }
 
-export const groupableCheckboxInitialState: IGroupableCheckboxesState = {total: 0, nbSelected: 0, checkboxes: []};
+export const groupableCheckboxInitialState: IGroupableCheckboxesState = {total: 0, nbChecked: 0, checkboxes: []};
 export const groupableCheckboxesInitialState: IGroupableCheckboxesState[] = [];
 
 export const groupableCheckboxReducer = (state: IGroupableCheckboxesState = groupableCheckboxInitialState,
@@ -39,7 +39,7 @@ export const groupableCheckboxReducer = (state: IGroupableCheckboxesState = grou
               checkbox.checked = isChecked;
               return checkbox;
             }),
-            nbSelected: isChecked ? state.total : 0,
+            nbChecked: isChecked ? state.total : 0,
           };
         }
         const checkboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => {
@@ -53,14 +53,14 @@ export const groupableCheckboxReducer = (state: IGroupableCheckboxesState = grou
           return checkbox;
         });
         if (checkboxes) {
-          const nbSelected: number = state.nbSelected += (isChecked ? 1 : -1);
+          const nbChecked: number = state.nbChecked += (isChecked ? 1 : -1);
           return {
             ...state,
             parent: {
               id: action.payload.parentId,
-              checked: nbSelected === state.total,
+              checked: nbChecked === state.total,
             },
-            nbSelected,
+            nbChecked,
             checkboxes: [...checkboxes],
           };
         }

@@ -22,8 +22,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOw
     const checkbox: ICheckboxState = ownProps.isParent ? groupableCheckboxesState.parent : _.findWhere(groupableCheckboxesState.checkboxes, {id: ownProps.id});
     return {
       checked: checkbox && checkbox.checked,
-      indeterminate: ownProps.isParent && groupableCheckboxesState.nbSelected > 0 &&
-                     groupableCheckboxesState.nbSelected < groupableCheckboxesState.total,
+      indeterminate: ownProps.isParent && groupableCheckboxesState.nbChecked > 0 &&
+                     groupableCheckboxesState.nbChecked < groupableCheckboxesState.total,
     };
   }
 

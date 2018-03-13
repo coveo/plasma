@@ -31,14 +31,14 @@ export const addChildCheckbox = (state: IGroupableCheckboxesState,
   });
 
   const total: number =  state.total + 1;
-  const nbSelected: number = state.nbSelected + (action.payload.checked ? 1 : 0);
+  const nbChecked: number = state.nbChecked + (action.payload.checked ? 1 : 0);
 
   if (state === groupableCheckboxInitialState) {
     return {
       ...state,
       parentId: action.payload.parentId,
       total,
-      nbSelected,
+      nbChecked,
       checkboxes: newChecboxes,
     };
   }
@@ -46,7 +46,7 @@ export const addChildCheckbox = (state: IGroupableCheckboxesState,
   return _.extend(state, {
     checkboxes: newChecboxes,
     total,
-    nbSelected,
+    nbChecked,
   });
 };
 
@@ -60,7 +60,9 @@ export const removeParentCheckbox = (state: IGroupableCheckboxesState[],
 export const removeChildCheckbox = (state: IGroupableCheckboxesState,
                                     action: IReduxAction<IGroupableCheckboxActionPayload>) => {
   const checkboxState: ICheckboxState = _.findWhere(state.checkboxes, {id: action.payload.id});
-  state.checkboxes = _.reject(state.checkboxes, (checkbox: ICheckboxState) => checkbox.id === action.payload.id);
-  state.nbSelected += (checkboxState && checkboxState.checked ? -1 : 0);
-  state.total += checkboxState ? -1 : 0;
+  if (checkboxState) {
+    state.checkboxes = _.reject(state.checkboxes, (checkbox: ICheckboxState) => checkbox.id === action.payload.id);
+    state.nbChecked += (checkboxState && checkboxState.checked ? -1 : 0);
+    state.total += checkboxState ? -1 : 0;
+  }
 };

@@ -106,8 +106,8 @@ describe('Tables', () => {
 
         expect(tableHeader.find(TableHeaderCellConnected).length).toBe(1);
 
-        expect(tableHeader.find(TableHeaderCellConnected).first().text()).toBe(currentColumns.cellWithAttributeToSort.title as string);
-        expect(tableHeader.find(TableHeaderCell).last().text()).toBe(currentColumns.cellWithoutAttributeToSort.title as string);
+        expect(tableHeader.find(TableHeaderCellConnected).first().text()).toBe(currentColumns.cellWithAttributeToSort.title);
+        expect(tableHeader.find(TableHeaderCell).last().text()).toBe(currentColumns.cellWithoutAttributeToSort.title);
       });
 
       it('should not have connected cells if withReduxState is not passed as prop even if some cells have an attribute to sort', () => {
