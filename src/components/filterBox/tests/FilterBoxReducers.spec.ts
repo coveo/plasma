@@ -1,6 +1,6 @@
 import { IReduxAction } from '../../../utils/ReduxUtils';
-import {ListBoxActions, selectListBoxOption} from '../../listBox/ListBoxActions';
-import {SelectActions, toggleSelect} from '../../select/SelectActions';
+import {selectListBoxOption} from '../../listBox/ListBoxActions';
+import {toggleSelect} from '../../select/SelectActions';
 import { FilterActions, IChangeFilterActionPayload, IFilterActionPayload } from '../FilterBoxActions';
 import {
   filterBoxesReducer,

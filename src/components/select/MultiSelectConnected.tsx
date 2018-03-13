@@ -84,7 +84,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
       <div className='multiselect-input'>
         <div
           className='selected-options-container'
-          onClick={props.onClick}
+          onMouseUp={props.onMouseUp}
           onKeyDown={props.onKeyDown}
           onKeyUp={props.onKeyUp}
         >

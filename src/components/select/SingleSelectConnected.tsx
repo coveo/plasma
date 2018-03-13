@@ -51,7 +51,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
         <button
           className='btn dropdown-toggle'
           type='button'
-          onClick={props.onClick}
+          onMouseUp={props.onMouseUp}
           onKeyDown={props.onKeyDown}
           onKeyUp={props.onKeyUp}
           >

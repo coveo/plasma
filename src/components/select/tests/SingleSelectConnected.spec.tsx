@@ -168,7 +168,7 @@ describe('Select', () => {
       afterEach(() => document.getElementById('other').remove());
 
       const clickOnEl = (el: Element = document.getElementById('other')) => {
-        const evt = new MouseEvent('click', {
+        const evt = new MouseEvent('mousedown', {
           view: window,
           bubbles: true,
           cancelable: true,
@@ -181,13 +181,13 @@ describe('Select', () => {
         mountSingleSelect();
 
         singleSelect.find('.dropdown-toggle').simulate('keyup', { keyCode: keyCode.enter });
-        expect(store.getState().selects[0].open).toBe(true);
+        expect(store.getState().selects[0].open).toBe(true, '1');
 
-        clickOnEl(singleSelect.find('.dropdown-container').getDOMNode());
-        expect(store.getState().selects[0].open).toBe(true);
+        clickOnEl(singleSelect.find('.select-dropdown-container').getDOMNode());
+        expect(store.getState().selects[0].open).toBe(true, '2');
 
         clickOnEl();
-        expect(store.getState().selects[0].open).toBe(false);
+        expect(store.getState().selects[0].open).toBe(false, '3');
       });
 
       it('should not open the dropdown when the user click outside the dropdown', () => {

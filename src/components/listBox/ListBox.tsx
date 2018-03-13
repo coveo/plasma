@@ -31,7 +31,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     },
   };
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender();
     }

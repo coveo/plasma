@@ -34,7 +34,7 @@ export interface ISelectDispatchProps {
 }
 
 export interface ISelectButtonProps {
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
+  onMouseUp: (e: React.MouseEvent<HTMLElement>) => void;
   onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
 }
@@ -64,11 +64,11 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
 
   componentWillMount() {
     this.props.onRender();
-    document.addEventListener('click', this.handleDocumentClick);
+    document.addEventListener('mousedown', this.handleDocumentClick);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleDocumentClick);
+    document.removeEventListener('mousedown', this.handleDocumentClick);
     this.props.onDestroy();
   }
 
@@ -78,7 +78,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     return (
       <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
         <Content content={this.props.button} componentProps={{
-          onClick: (e: React.MouseEvent<HTMLElement>) => this.onToggleDropdown(e),
+          onMouseUp: (e: React.MouseEvent<HTMLElement>) => this.onToggleDropdown(e),
           onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
           onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
         }}/>
