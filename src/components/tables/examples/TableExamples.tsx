@@ -183,40 +183,6 @@ export class TableExamples extends React.Component<any, any> {
           />
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Simplest Table with checkbox
-          </label>
-          <TableConnected
-            id={_.uniqueId('react-vapor-table')}
-            initialTableData={simplestTableData}
-            headingAttributes={[
-              {
-                attributeName: 'attribute1',
-                titleFormatter: (attributeName: string) => {
-                  return <span>
-                      <Checkbox checked={true} classes={'mr1'} />
-                      {attributeName}
-                    </span>;
-                },
-                attributeFormatter: (attributeName: string) => {
-                  return <span>
-                      <Checkbox checked={true} classes={'mr1'} />
-                      {attributeName}
-                    </span>;
-                },
-              },
-              {
-                attributeName: 'attribute4',
-                titleFormatter: _.identity,
-              },
-              {
-                attributeName: 'attribute3',
-                titleFormatter: _.identity,
-              },
-            ]}
-            blankSlateDefault={{ title: 'No results!' }}
-          />
-        </div>
-        <div className='form-group'>
           <label className='form-control-label'>Table with filter
           </label>
           <TableConnected
