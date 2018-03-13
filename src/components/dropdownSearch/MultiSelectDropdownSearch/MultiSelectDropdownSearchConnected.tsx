@@ -8,7 +8,7 @@ import {
   applyFilterDropdownSearch, closeDropdownSearch, deselectAllOptionsMultiselectDropdownSearch,
   deselectOptionDropdownSearch,
   keyDownMultiselectDropdownSearch,
-  multiSelectOptionDropdownSearch, openDropdownSearch, removeDropdownSearch,
+  multiSelectOptionDropdownSearch, openDropdownSearch, removeDropdownSearch, updateOptionsDropdownSearch,
 } from '../DropdownSearchActions';
 import {
   IDropdownOption, IDropdownSearchDispatchProps, IDropdownSearchOwnProps, IDropdownSearchProps,
@@ -45,6 +45,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onKeyDownFilterBox: (keyCode: number) => dispatch(keyDownMultiselectDropdownSearch(ownProps.id, keyCode)),
     onRemoveSelectedOption: (value: string) => dispatch(deselectOptionDropdownSearch(ownProps.id, value)),
     onRemoveAllSelectedOptions: () => dispatch(deselectAllOptionsMultiselectDropdownSearch(ownProps.id)),
+    updateOptions: (options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(ownProps.id, options, undefined, false)),
   });
 
 export const MultiSelectDropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =

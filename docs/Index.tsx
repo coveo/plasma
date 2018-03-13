@@ -6,6 +6,7 @@ import { ActionBarConnectedExamples } from '../src/components/actions/examples/A
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import { ItemFilterExamples } from '../src/components/actions/filters/examples/ItemFilterExamples';
+import { BadgeExamples } from '../src/components/badge/examples/BadgeExamples';
 import { BlankSlateExample } from '../src/components/blankSlate/examples/BlankSlateExample';
 import { BreadcrumbsExamples } from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
 import { ButtonExamples } from '../src/components/button/examples/ButtonExamples';
@@ -16,6 +17,7 @@ import { ChildFormExamples } from '../src/components/childForm/examples/ChildFor
 import { ChosenSelectExamples } from '../src/components/chosen/examples/ChosenSelectExamples';
 import { CollapsibleContainerExamples } from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
 import { ContentExamples } from '../src/components/content/examples/ContentExamples';
+import { CornerRibbonExamples } from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
 import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
@@ -93,6 +95,8 @@ class App extends React.Component<any, any> {
               <MembersExample />
             </div>
           </div>
+          <CornerRibbonExamples />
+          <BadgeExamples />
           <SliderExamples />
           <SvgExamples />
           <LinkSvgExamples />

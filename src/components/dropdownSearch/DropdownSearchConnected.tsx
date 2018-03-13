@@ -54,6 +54,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onKeyDownDropdownButton: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
     onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
     onClose: () => dispatch(closeDropdownSearch(ownProps.id)),
+    updateOptions: (options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(ownProps.id, options)),
   });
 
 export const DropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =
