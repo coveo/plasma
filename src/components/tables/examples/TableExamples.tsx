@@ -4,7 +4,6 @@ import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
-import {Checkbox} from '../../checkbox/Checkbox';
 import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { IData, ITableRowData } from '../Table';
