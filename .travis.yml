@@ -21,7 +21,7 @@ cache:
     - node_modules
 
 script:
- - npm run test:compile # to catch any lint or compile errors, compile tests through webpack prior to compilation through karma (karma always exit its process with 0)
+ - npm run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
  - npm run test
  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then echo "Your live demo url, if everything went well, should be https://coveo.github.io/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/"; fi' # run this line on pull request builds only
 
