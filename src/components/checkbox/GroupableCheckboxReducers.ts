@@ -1,8 +1,15 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ICheckboxState} from './CheckboxReducers';
-import {GroupableCheckboxActions, IGroupableCheckboxActionPayload} from './GroupableCheckboxActions';
-import {addChildCheckbox, addParentCheckbox, removeChildCheckbox, removeParentCheckbox} from './GroupableCheckboxReducersUtils';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { ICheckboxState } from './CheckboxReducers';
+import { GroupableCheckboxActions, IGroupableCheckboxActionPayload } from './GroupableCheckboxActions';
+import {
+  addChildCheckbox,
+  addParentCheckbox,
+  removeChildCheckbox,
+  removeParentCheckbox,
+  toggleChildCheckbox,
+  toggleParentCheckbox,
+} from './GroupableCheckboxReducersUtils';
 
 export interface IGroupableCheckboxesState {
   total: number;
@@ -19,53 +26,17 @@ export const groupableCheckboxReducer = (state: IGroupableCheckboxesState = grou
                                          action: IReduxAction<IGroupableCheckboxActionPayload>): IGroupableCheckboxesState => {
   switch (action.type) {
     case GroupableCheckboxActions.addGroup:
-      if (action.payload.isParent) {
-        return addParentCheckbox(state, action);
-      }
-      return addChildCheckbox(state, action);
+      return action.payload.isParent
+        ? addParentCheckbox(state, action)
+        : addChildCheckbox(state, action);
 
     case GroupableCheckboxActions.toggleGroup:
       if (state.parentId === action.payload.id || state.parentId === action.payload.parentId) {
-        let isChecked: boolean;
-        if (action.payload.isParent) {
-          isChecked = !state.parent.checked;
-          return {
-            ...state,
-            parent: {
-              id: action.payload.id,
-              checked: isChecked,
-            },
-            checkboxes: _.map(state.checkboxes, (checkbox: ICheckboxState) => {
-              checkbox.checked = isChecked;
-              return checkbox;
-            }),
-            nbChecked: isChecked ? state.total : 0,
-          };
-        }
-        const checkboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => {
-          if (checkbox.id === action.payload.id) {
-            isChecked = !checkbox.checked;
-            return {
-              id: checkbox.id,
-              checked: isChecked,
-            };
-          }
-          return checkbox;
-        });
-        if (checkboxes) {
-          const nbChecked: number = state.nbChecked += (isChecked ? 1 : -1);
-          return {
-            ...state,
-            parent: {
-              id: action.payload.parentId,
-              checked: nbChecked === state.total,
-            },
-            nbChecked,
-            checkboxes: [...checkboxes],
-          };
-        }
+        return action.payload.isParent
+          ? toggleParentCheckbox(state, action)
+          : toggleChildCheckbox(state, action);
+
       }
-      return state;
     default:
       return state;
   }
@@ -76,7 +47,7 @@ export const groupableCheckboxesReducer = (state: IGroupableCheckboxesState[] = 
   let groupableCheckboxesState: IGroupableCheckboxesState;
   switch (action.type) {
     case GroupableCheckboxActions.addGroup:
-      groupableCheckboxesState = _.findWhere(state, { parentId: (action.payload.parentId || action.payload.id) });
+      groupableCheckboxesState = _.findWhere(state, {parentId: (action.payload.parentId || action.payload.id)});
       if (state && groupableCheckboxesState) {
         groupableCheckboxReducer(groupableCheckboxesState, action);
         return state;
@@ -90,11 +61,10 @@ export const groupableCheckboxesReducer = (state: IGroupableCheckboxesState[] = 
         return removeParentCheckbox(state, action);
       }
 
-      groupableCheckboxesState = _.findWhere(state, { parentId: (action.payload.parentId || action.payload.id) });
+      groupableCheckboxesState = _.findWhere(state, {parentId: (action.payload.parentId || action.payload.id)});
       if (groupableCheckboxesState) {
         removeChildCheckbox(groupableCheckboxesState, action);
       }
-      return state;
     case GroupableCheckboxActions.toggleGroup:
       return state.map((groupableCheckboxes: IGroupableCheckboxesState) => groupableCheckboxReducer(groupableCheckboxes, action));
     default:
