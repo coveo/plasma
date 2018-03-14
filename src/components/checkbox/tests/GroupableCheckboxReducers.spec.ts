@@ -265,10 +265,10 @@ describe('GroupableCheckbox', () => {
         ];
       });
 
-      it('should return the state if the parentId is not ', () => {
+      it('should return the state if the parentId is not in the state', () => {
         action = removeGroupedCheckbox(childId, 'notParentId');
         const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
-        expect(groupableCheckboxsState).toBe(currentState);
+        expect(groupableCheckboxsState).toEqual(currentState);
       });
 
       it('should remove the child checkbox from the state', () => {
