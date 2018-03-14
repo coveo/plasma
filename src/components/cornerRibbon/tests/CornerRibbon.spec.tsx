@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
+import * as React from 'react';
 import { CornerRibbon, DEFAULT_CORNER_RIBBON_CLASSNAME, ICornerRibbonProps, PlacementX, PlacementY } from '../CornerRibbon';
 
 describe('CornerRibbon', () => {
