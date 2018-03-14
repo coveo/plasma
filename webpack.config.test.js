@@ -4,6 +4,7 @@ const isTravis = process.env.TRAVIS;
 
 module.exports = {
   mode: 'development',
+  entry: './karma.entry.ts',
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -39,10 +40,19 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'istanbul-instrumenter-loader',
       },
+      {
+        test: /\.css$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+        }],
+      },
     ],
   },
   plugins: [
     new webpack.DefinePlugin({
+      WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
       'process.env.NODE_ENV': JSON.stringify('test'),
     }),
     new webpack.ProvidePlugin({
