@@ -28,6 +28,7 @@
     "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
+    "test:compile": "webpack --config webpack.config.test.js",
     "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
