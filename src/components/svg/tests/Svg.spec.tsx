@@ -1,8 +1,8 @@
-import { mount, ReactWrapper, shallow } from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
-import * as React from 'react';
+// import * as React from 'react';
 import * as _ from 'underscore';
-import { ISvgProps, Svg } from '../Svg';
+import {ISvgProps, Svg} from '../Svg';
 
 describe('<Svg>', () => {
   let svgWrapper: ReactWrapper<ISvgProps, any>;
@@ -26,7 +26,7 @@ describe('<Svg>', () => {
     expect(() => {
       svgWrapper = mount(
         <Svg {...svgProps} />,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
     }).not.toThrow();
 
@@ -50,7 +50,7 @@ describe('<Svg>', () => {
       expect(() => {
         svgWrapper = mount(
           <Svg {...svgProps} />,
-          { attachTo: document.getElementById('App') },
+          {attachTo: document.getElementById('App')},
         );
       }).not.toThrow();
 
@@ -65,7 +65,7 @@ describe('<Svg>', () => {
       expect(() => {
         svgWrapper = mount(
           <Svg {...svgProps} />,
-          { attachTo: document.getElementById('App') },
+          {attachTo: document.getElementById('App')},
         );
       }).not.toThrow();
 
@@ -80,7 +80,7 @@ describe('<Svg>', () => {
       expect(() => {
         svgWrapper = mount(
           <Svg {...svgProps} />,
-          { attachTo: document.getElementById('App') },
+          {attachTo: document.getElementById('App')},
         );
       }).not.toThrow();
 
