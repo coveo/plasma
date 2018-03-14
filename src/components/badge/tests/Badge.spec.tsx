@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as _ from 'underscore';
 import { Badge, DEFAULT_BADGE_CLASSNAME, IBadgeProps } from '../Badge';
