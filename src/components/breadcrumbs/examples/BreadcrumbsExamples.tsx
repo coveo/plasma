@@ -33,7 +33,7 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
       link: 'squirtle',
     };
 
-    const lin5: IBreadcrumbLinkProps = {
+    const link5: IBreadcrumbLinkProps = {
       name: 'Raichu',
       link: 'Raichu',
       onClick: (props: IBreadcrumbLinkProps) => {
@@ -83,7 +83,7 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
         <div className='form-group'>
           <label className='form-control-label'>Breadcrumb with 2 links and onClick event</label>
           <div className='form-control'>
-            <Breadcrumb title={defaultTitle} defaultLinkPath={defaultLinkPath} links={[lin5, link6]}  />
+            <Breadcrumb title={defaultTitle} defaultLinkPath={defaultLinkPath} links={[link5, link6]}  />
           </div>
         </div>
       </div>

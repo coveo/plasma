@@ -1,6 +1,7 @@
-import { mount, ReactWrapper, shallow } from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
+import * as _ from 'underscore';
 import * as React from 'react';
-import { BreadcrumbLink, IBreadcrumbLinkProps } from '../BreadcrumbLink';
+import {BreadcrumbLink, IBreadcrumbLinkProps} from '../BreadcrumbLink';
 
 describe('<BreadcrumbLink/>', () => {
 
@@ -22,7 +23,7 @@ describe('<BreadcrumbLink/>', () => {
     const renderBreadcrumbLink = (props: IBreadcrumbLinkProps = defaultProps) => {
       breadcrumbLinkComponent = mount(
         <BreadcrumbLink {...props} />,
-        { attachTo: document.getElementById('App') },
+        {attachTo: document.getElementById('App')},
       );
     };
 
@@ -47,6 +48,40 @@ describe('<BreadcrumbLink/>', () => {
       breadcrumbLinkComponent.props().onClick(defaultProps);
 
       expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should return true if the onClick props return true', () => {
+      const stopPropagationSpy: jasmine.Spy = jasmine.createSpy('stopPropagation');
+      const spy: jasmine.Spy = spyOn<any>(BreadcrumbLink.prototype, 'handleOnClick').and.callThrough();
+      renderBreadcrumbLink({...defaultProps, onClick: () => true});
+      breadcrumbLinkComponent.find('a.link').simulate('click', {
+        stopPropagation: stopPropagationSpy,
+      });
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(stopPropagationSpy).not.toHaveBeenCalled();
+    });
+
+    it('should call each event stop propagation on onClick if it returns false ', () => {
+      const stopPropagationSpy: jasmine.Spy = jasmine.createSpy('stopPropagation').and.callThrough();
+      const stopImmediatePropagationSpy: jasmine.Spy = jasmine.createSpy('stopImmediatePropagation').and.callThrough();
+      const preventDefaultSpy: jasmine.Spy = jasmine.createSpy('preventDefault').and.callThrough();
+
+      const handleOnClickSpy: jasmine.Spy = spyOn<any>(BreadcrumbLink.prototype, 'handleOnClick').and.callThrough();
+
+      renderBreadcrumbLink({...defaultProps, onClick: () => false});
+      breadcrumbLinkComponent.find('a.link').simulate('click', {
+        stopPropagation: stopPropagationSpy,
+        nativeEvent: {
+          stopImmediatePropagation: stopImmediatePropagationSpy,
+        },
+        preventDefault: preventDefaultSpy,
+      });
+
+      expect(handleOnClickSpy).toHaveBeenCalledTimes(1);
+      expect(stopPropagationSpy).toHaveBeenCalledTimes(1);
+      expect(stopImmediatePropagationSpy).toHaveBeenCalledTimes(1);
+      expect(preventDefaultSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

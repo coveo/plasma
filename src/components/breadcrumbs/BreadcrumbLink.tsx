@@ -9,7 +9,7 @@ export interface IBreadcrumbLinkProps {
 
 export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps, {}> {
 
-  private onClick(e: React.MouseEvent<HTMLAnchorElement>): boolean {
+  private handleOnClick(e: React.MouseEvent<HTMLAnchorElement>): boolean {
     if (this.props.onClick && !this.props.onClick(this.props)) {
       e.stopPropagation();
       e.nativeEvent.stopImmediatePropagation();
@@ -21,7 +21,7 @@ export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps, {}> {
 
   render() {
     return (<li className='breadcrumb-title'>
-      <a className='link' href={this.props.link} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.onClick(e)}>{this.props.name}</a>
+      <a className='link' href={this.props.link} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleOnClick(e)}>{this.props.name}</a>
       <Svg svgName='arrow-right-rounded' svgClass='breadcrumb-arrow' />
     </li>);
   }
