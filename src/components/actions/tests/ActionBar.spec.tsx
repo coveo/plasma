@@ -183,11 +183,11 @@ describe('Actions', () => {
     });
 
     describe('with custom props', () => {
-      it('should add the class small-actions-container if the props withsSmallActions is set to true', () => {
+      it('should add the class small-actions-container if the props withSmallActions is set to true', () => {
         renderActionBar({
-          withsSmallActions: true,
+          withSmallActions: true,
         });
-        const actionsProp = actionBar.props().withsSmallActions;
+        const actionsProp = actionBar.props().withSmallActions;
 
         expect(actionsProp).toBeDefined();
         expect(actionsProp).toBe(true);

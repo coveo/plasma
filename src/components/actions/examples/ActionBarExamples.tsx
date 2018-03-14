@@ -66,7 +66,7 @@ export class ActionBarExamples extends React.Component<any, any> {
         </div>
         <div className='form-group'>
           <label className='form-control-label'>Action bar with small actions</label>
-          <ActionBar actions={actions} withsSmallActions={true} />
+          <ActionBar actions={actions} withSmallActions />
         </div>
       </div>
     );
