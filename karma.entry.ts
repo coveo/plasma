@@ -1,5 +1,6 @@
 import * as $ from 'jquery';
 import * as s from 'underscore.string';
+declare var __dirname: string;
 
 // Polyfill MouseEvent if needed
 ((window) => {
@@ -12,7 +13,7 @@ import * as s from 'underscore.string';
 
   // Polyfills DOM4 MouseEvent
   const MouseEvent = (eventType: any, params: any) => {
-    params = params || { bubbles: false, cancelable: false };
+    params = params || {bubbles: false, cancelable: false};
     const mouseEvent = document.createEvent('MouseEvent');
     mouseEvent.initMouseEvent(eventType, params.bubbles, params.cancelable, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
@@ -34,10 +35,10 @@ afterEach(() => {
   $('body > div:not(.jasmine_html-reporter)').remove();
 });
 
-const testsContext = require.context('./src', true, /\.spec\.ts(x?)$/);
+const testsContext = require.context(`${__dirname}/src`, true, /\.spec\.ts(x?)$/);
 testsContext.keys().forEach(testsContext);
 
-const coverageContext = require.context('./src', true, /.*\.ts(x?)$/);
+const coverageContext = require.context(`${__dirname}/src`, true, /.*\.ts(x?)$/);
 coverageContext.keys()
   .filter((file) => !s.contains(file, '.spec.') && !s.contains(file, 'Examples'))
   .forEach(coverageContext);
