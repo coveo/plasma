@@ -1,5 +1,4 @@
 import './style.scss';
-import './style.scss';
 import 'codemirror/lib/codemirror.css';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 
