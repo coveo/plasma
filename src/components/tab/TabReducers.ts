@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import { IReduxAction } from '../../Index';
+import { IReduxAction } from '../../utils/ReduxUtils';
 import { ITabActionPayload, TabAction } from './TabActions';
 
 export const DEFAULT_GROUP_ID: string = 'default';

@@ -6,7 +6,7 @@ const isTravis = process.env.TRAVIS;
  * Config file for the packaged library
  */
 const config = {
-  entry: './src/Index.ts',
+  entry: './Index.ts',
   mode: 'production',
   output: {
     path: path.join(__dirname, '/dist'),

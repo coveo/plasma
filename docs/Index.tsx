@@ -54,6 +54,8 @@ import {NavigationExamples} from '../src/components/navigation/examples/Navigati
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/OptionsCycleExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
+import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
+import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
 import {SplitLayoutExamples} from '../src/components/splitlayout/examples/SplitLayoutExamples';
@@ -107,6 +109,8 @@ class App extends React.Component<any, any> {
           <BreadcrumbsExamples />
           <BasicHeaderExamples />
           <BreadcrumbHeaderExample />
+          <SingleSelectExamples />
+          <MultiSelectExamples />
           <DropdownSearchExamples />
           <FlatSelectExamples />
           <TooltipExamples />
