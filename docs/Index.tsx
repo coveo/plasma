@@ -1,7 +1,10 @@
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import './style.scss';
+
 import * as React from 'react';
 import { render as ReactDOMRender } from 'react-dom';
 import { Provider } from 'react-redux';
+
 import { ActionBarConnectedExamples } from '../src/components/actions/examples/ActionBarConnectedExamples';
 import { ActionBarExamples } from '../src/components/actions/examples/ActionBarExamples';
 import { ItemFilterConnectedExamples } from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
@@ -20,8 +23,12 @@ import { ContentExamples } from '../src/components/content/examples/ContentExamp
 import { CornerRibbonExamples } from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import { DatePickerBoxConnectedExamples } from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import { DatePickerBoxExamples } from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import { DatePickerDropdownConnectedExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
-import { DatePickerDropdownConnectedSingleDateExamples } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
+import {
+  DatePickerDropdownConnectedExamples,
+} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import {
+  DatePickerDropdownConnectedSingleDateExamples,
+} from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import { DatesSelectionConnectedExamples } from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import { DatesSelectionExamples } from '../src/components/datePicker/examples/DatesSelectionExamples';
 import { DropdownSearchExamples } from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
@@ -30,7 +37,7 @@ import { FacetExamples } from '../src/components/facets/examples/FacetExamples';
 import { FilterBoxConnectedExamples } from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
 import { FilterBoxExamples } from '../src/components/filterBox/examples/FilterBoxExamples';
 import { FlatSelectExamples } from '../src/components/flatSelect/examples/FlatSelectExamples';
-import { FlippableCardExamples } from '../src/components/flippableCard/exemples/FlippableCardExamples';
+import { FlippableExamples } from '../src/components/flippable/exemples/FlippableExamples';
 import { BasicHeaderExamples } from '../src/components/headers/examples/BasicHeaderExamples';
 import { BreadcrumbHeaderExample } from '../src/components/headers/examples/BreadcrumbHeaderExample';
 import { InputAndInputConnectedExamples } from '../src/components/input/examples/InputAndInputConnectedExamples';
@@ -75,7 +82,6 @@ import { TooltipExamples } from '../src/components/tooltip/examples/TooltipExamp
 import { UserFeedbackExample } from '../src/components/userFeedback/examples/UserFeedbackExample';
 import { MembersExample } from './members-example/MembersExample';
 import { ReactVaporStore } from './ReactVaporStore';
-import './style.scss';
 
 class App extends React.Component<any, any> {
 
@@ -95,7 +101,7 @@ class App extends React.Component<any, any> {
           <BadgeExamples />
           <CornerRibbonExamples />
           <LogoCardExamples />
-          <FlippableCardExamples />
+          <FlippableExamples />
           <SliderExamples />
           <SvgExamples />
           <LinkSvgExamples />
