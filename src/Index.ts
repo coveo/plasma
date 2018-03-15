@@ -249,6 +249,9 @@ export { ICollapsibleContainerProps, ICollapsibleContainerOwnProps, ICollapsible
 export { CollapsibleContainerConnected } from './components/collapsibleContainer/CollapsibleContainerConnected';
 export { collapsibleContainersReducer, collapsibleContainerReducer } from './components/collapsibleContainer/CollapsibleContainerReducers';
 
+// Editors
+export { JSONEditor } from './components/editor/JSONEditor';
+
 // SlideY
 export { SlideY } from './animations/SlideY';
 
