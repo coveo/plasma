@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as CodeMirror from 'react-codemirror';
+import * as ReactCodeMirror from 'react-codemirror';
 import * as _ from 'underscore';
 import {IJSONEditorProps, JSONEditor} from '../JSONEditor';
 
@@ -62,14 +62,14 @@ describe('JSONEditor', () => {
         });
 
         it('should display a <CodeMirror /> component', () => {
-            expect(jsonEditor.find(CodeMirror).length).toBe(1);
+            expect(jsonEditor.find(ReactCodeMirror).length).toBe(1);
         });
 
         it('should call handleChange when the CodeMirror onChange prop is called', () => {
             const handleChangeSpy: jasmine.Spy = spyOn<any>(JSONEditor.prototype, 'handleChange');
             const expectedValue: string = 'anything at all really';
 
-            jsonEditor.find(CodeMirror).props().onChange(expectedValue, ({} as any));
+            jsonEditor.find(ReactCodeMirror).props().onChange(expectedValue, ({} as any));
 
             expect(handleChangeSpy).toHaveBeenCalledTimes(1);
             expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);
@@ -89,6 +89,14 @@ describe('JSONEditor', () => {
 
         it('should not throw on change if the onChange prop is undefined', () => {
             expect(() => (jsonEditorInstance as any).handleChange('expectedValue')).not.toThrow();
+        });
+
+        it(`should clear codemirror's history if we set a new value`, () => {
+            const clearHistorySpy: jasmine.Spy = spyOn((jsonEditorInstance as any).codemirror.getCodeMirror().getDoc(), 'clearHistory');
+
+            jsonEditor.setProps({value: 'a new value'});
+
+            expect(clearHistorySpy).toHaveBeenCalledTimes(1);
         });
     });
 });
