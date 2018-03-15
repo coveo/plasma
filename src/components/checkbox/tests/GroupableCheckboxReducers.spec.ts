@@ -52,6 +52,13 @@ describe('GroupableCheckbox', () => {
       let action: IReduxAction<IGroupableCheckboxActionPayload>;
       const parentId: string = 'parentId';
 
+      it('should return a new state on add child checkbox', () => {
+        action = addGroupedCheckbox('id', false, parentId);
+        const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
+        const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(oldState, action);
+        expect(groupableCheckboxsState).not.toBe(oldState);
+      });
+
       it('should add the child checkbox in the state', () => {
         action = addGroupedCheckbox('id', false, parentId);
         const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
@@ -103,6 +110,13 @@ describe('GroupableCheckbox', () => {
         }
       });
 
+      it('should return a new state on add parent checkbox', () => {
+        action = addGroupedCheckbox(parentId, false, undefined, true);
+        const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
+        const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(oldState, action);
+        expect(groupableCheckboxsState).not.toBe(oldState);
+      });
+
       it('should add the parent in the new state', () => {
         action = addGroupedCheckbox(parentId, false, undefined, true);
         const oldState: IGroupableCheckboxesState[] = groupableCheckboxesInitialState;
@@ -132,6 +146,12 @@ describe('GroupableCheckbox', () => {
           ];
         });
 
+        it('should return a new state on add parent checkbox in the existing state', () => {
+          action = addGroupedCheckbox(parentId, false, undefined, true);
+          const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
+          expect(groupableCheckboxsState).not.toBe(currentState);
+        });
+
         it('should add the parent in the current state', () => {
           action = addGroupedCheckbox(parentId, false, undefined, true);
           const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
@@ -140,6 +160,12 @@ describe('GroupableCheckbox', () => {
             expect(groupableCheckboxsState[0].parent).toBeDefined();
             expect(groupableCheckboxsState[0].parentId).toBe('parentId');
           }
+        });
+
+        it('should return a new state on add child checkbox in the existing state', () => {
+          action = addGroupedCheckbox('id', false, parentId);
+          const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
+          expect(groupableCheckboxsState).not.toBe(currentState);
         });
 
         it('should add the child checkbox in the current state', () => {
@@ -203,6 +229,12 @@ describe('GroupableCheckbox', () => {
         expect(groupableCheckboxsState).toEqual([]);
       });
 
+      it('should return a new state on toggle child checkbox', () => {
+        action = addGroupedCheckbox('id', false, parentId);
+        const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
+        expect(groupableCheckboxsState).not.toBe(currentState);
+      });
+
       it('should update the child state checked to true', () => {
         action = toggleGroupedCheckbox(childId, parentId);
         const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
@@ -214,6 +246,12 @@ describe('GroupableCheckbox', () => {
         action = toggleGroupedCheckbox(childId, parentId);
         const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
         expect(groupableCheckboxsState[0].nbChecked).toBe(1);
+      });
+
+      it('should return a new state on toggle parent checkbox', () => {
+        action = toggleGroupedCheckbox(parentId, undefined, true);
+        const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
+        expect(groupableCheckboxsState).not.toBe(currentState);
       });
 
       it('should update the parent state checked to true', () => {
@@ -265,6 +303,12 @@ describe('GroupableCheckbox', () => {
         ];
       });
 
+      it('should return a new state on remove child checkbox', () => {
+        action = removeGroupedCheckbox(childId, 'notParentId');
+        const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
+        expect(groupableCheckboxsState).not.toBe(currentState);
+      });
+
       it('should return the state if the parentId is not in the state', () => {
         action = removeGroupedCheckbox(childId, 'notParentId');
         const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
@@ -287,6 +331,12 @@ describe('GroupableCheckbox', () => {
         action = removeGroupedCheckbox(childId, parentId);
         const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
         expect(groupableCheckboxsState[0].checkboxes.length).toBe(1);
+      });
+
+      it('should return a new state on remove parent checkbox', () => {
+        action = removeGroupedCheckbox(parentId, undefined, true);
+        const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
+        expect(groupableCheckboxsState).not.toBe(currentState);
       });
 
       it('should remove the groupable state when the parent is removed', () => {

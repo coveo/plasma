@@ -19,8 +19,7 @@ export const addParentCheckbox = (state: IGroupableCheckboxesState,
     };
   }
 
-  state.parent = newCheckbox;
-  return state;
+  return {...state, parent: newCheckbox};
 };
 
 export const addChildCheckbox = (state: IGroupableCheckboxesState,
@@ -43,7 +42,7 @@ export const addChildCheckbox = (state: IGroupableCheckboxesState,
     };
   }
 
-  return _.extend(state, {
+  return _.extend({}, state, {
     checkboxes: newChecboxes,
     total,
     nbChecked,

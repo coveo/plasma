@@ -13,7 +13,7 @@ export class GroupableCheckboxConnectedExamples extends React.Component<any, any
         <div className='form-group'>
           <label className='form-control-label'>A simple groupable checkbox uncheck by default</label>
           <div className='form-control'>
-            <GroupableCheckboxConnected id={parentId1} isParent={true}>
+            <GroupableCheckboxConnected id={parentId1} isParent>
               <Label classes={['label']}>A parent checkbox connected</Label>
             </GroupableCheckboxConnected>
             <br/>
@@ -34,7 +34,7 @@ export class GroupableCheckboxConnectedExamples extends React.Component<any, any
         <div className='form-group'>
           <label className='form-control-label'>A groupable checkbox with child checkbox selected by default</label>
           <div className='form-control'>
-            <GroupableCheckboxConnected id={parentId2} isParent={true}>
+            <GroupableCheckboxConnected id={parentId2} isParent>
               <Label classes={['label']}>A parent checkbox connected</Label>
             </GroupableCheckboxConnected>
             <br/>

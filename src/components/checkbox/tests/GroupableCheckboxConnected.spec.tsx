@@ -59,6 +59,10 @@ describe('GroupableCheckbox', () => {
       return currentStore.getState().groupableCheckboxes.filter((currentCheckbox) => currentCheckbox.parentId === parentId);
     };
 
+    const getFirstGroupableCheckbox = (currentStore: Store<IReactVaporState>): IGroupableCheckboxesState => {
+      return currentStore.getState().groupableCheckboxes.filter((currentCheckbox) => currentCheckbox.parentId === parentId)[0];
+    };
+
     beforeEach(() => {
       store = TestUtils.buildStore();
     });
@@ -195,11 +199,11 @@ describe('GroupableCheckbox', () => {
       });
 
       it('should have total equal to the number of child checkboxes added', () => {
-        groupableChekboxesState = getCurrentGroupableCheckboxes(store);
-        groupableCheckboxState = groupableChekboxesState[0];
+        groupableCheckboxState = getFirstGroupableCheckbox(store);
         expect(groupableCheckboxState.total).toBe(2, 'total was not updated on add child checkbox');
 
         wrappers.push(renderChildCheckbox({id: parentId + '4'}, divTemplateClasses.checkbox4));
+        groupableCheckboxState = getFirstGroupableCheckbox(store);
         expect(groupableCheckboxState.total).toBe(3, 'total was not updated on add the last child checkbox');
       });
 
