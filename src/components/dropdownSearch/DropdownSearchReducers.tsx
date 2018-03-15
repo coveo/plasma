@@ -98,13 +98,14 @@ export const deselectAllOptions = (options: IDropdownOption[], includeCustom: bo
   return nextOptions;
 };
 
-export const addUniqueSelectedOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
+export const addUniqueSelectedOption = (options: IDropdownOption[], value: string, displayValue?: string): IDropdownOption[] => {
   const sameValueDoesNotExist = _.findWhere(options, { value }) === undefined;
 
   if (sameValueDoesNotExist) {
     const nextOptions: IDropdownOption[] = deepClone(options);
     nextOptions.push({
       value,
+      displayValue: displayValue || value,
       selected: true,
       custom: true,
     });
@@ -132,14 +133,22 @@ export const selectSingleOption = (options: IDropdownOption[], selectedOption: I
 };
 
 export const multiSelectOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
-  return _.map(options, (option: IDropdownOption) => {
+  let valueFound: boolean = false;
+  const newOptions: IDropdownOption[] = _.map(options, (option: IDropdownOption) => {
     const nextOption: IDropdownOption = deepClone(option);
     if (nextOption.value === selectedOption.value) {
+      valueFound = true;
       nextOption.selected = true;
       nextOption.hidden = true;
     }
     return nextOption;
   });
+
+  if (!valueFound) {
+    return addUniqueSelectedOption(options, selectedOption.value, selectedOption.displayValue);
+  }
+
+  return newOptions;
 };
 
 export const updateOptions = (options: IDropdownOption[], selectAValue: boolean = true, selectedOption?: IDropdownOption): IDropdownOption[] => {

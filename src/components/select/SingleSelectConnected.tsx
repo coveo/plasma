@@ -36,30 +36,30 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
 
   render() {
     return (
-        <SelectConnected
-          id={this.props.id}
-          button={(props: ISelectButtonProps) => this.getButton(props)}
-          items={this.props.items}>
-          {this.props.children}
-        </SelectConnected>
+      <SelectConnected
+        id={this.props.id}
+        button={(props: ISelectButtonProps) => this.getButton(props)}
+        items={this.props.items}>
+        {this.props.children}
+      </SelectConnected>
     );
   }
 
   private getButton(props: ISelectButtonProps): JSX.Element {
     const option = _.findWhere(this.props.items, {value: this.props.selected});
     return (
-        <button
-          className='btn dropdown-toggle'
-          type='button'
-          onMouseUp={props.onMouseUp}
-          onKeyDown={props.onKeyDown}
-          onKeyUp={props.onKeyUp}
-          >
-          {option && option.prepend ? <Content {...option.prepend} /> : null}
-          {this.getSelectedOptionElement(option)}
-          {option && option.append ? <Content {...option.append} /> : null}
-        <span className='dropdown-toggle-arrow' />
-    </button>
+      <button
+        className='btn dropdown-toggle'
+        type='button'
+        onMouseUp={props.onMouseUp}
+        onKeyDown={props.onKeyDown}
+        onKeyUp={props.onKeyUp}
+      >
+        {option && option.prepend ? <Content {...option.prepend} /> : null}
+        {this.getSelectedOptionElement(option)}
+        {option && option.append ? <Content {...option.append} /> : null}
+        <span className='dropdown-toggle-arrow'/>
+      </button>
     );
   }
 
@@ -67,10 +67,12 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
     if (option) {
       const displayValue = option.displayValue || option.value;
       return (
-        <span key={option.value}
-              className='dropdown-selected-value'
-              data-value={option.value}
-              title={displayValue}>
+        <span
+          key={option.value}
+          className='dropdown-selected-value'
+          data-value={option.value}
+          title={displayValue}
+        >
           {displayValue}
         </span>
       );

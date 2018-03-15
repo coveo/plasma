@@ -1,6 +1,6 @@
 {
   "name": "react-vapor",
-  "version": "2.4.2",
+  "version": "2.4.5",
   "description": "Vapor CSS components implemented with React!",
   "keywords": [
     "coveo",
@@ -28,12 +28,13 @@
     "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
+    "test:compile": "webpack --display-error-details --config webpack.config.test.js",
     "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
     "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,karma.entry.ts",
     "coverage:report": "istanbul report",
-    "prepublishOnly": "npm run build && npm test",
+    "version": "npm run build && npm test",
     "report-coverage": "codecov -f coverage/coverage.json",
     "reconstruct": "gulp clean --all && npm install && npm run docs"
   },
@@ -42,6 +43,7 @@
   ],
   "dependencies": {
     "react-bootstrap": "0.31.3",
+    "react-codemirror": "1.0.0",
     "react-tether": "0.5.7"
   },
   "peerDependencies": {
@@ -63,6 +65,7 @@
     "@types/rc-slider": "8.2.3",
     "@types/react": "15.6.1",
     "@types/react-bootstrap": "0.0.52",
+    "@types/react-codemirror": "1.0.1",
     "@types/react-dom": "15.5.4",
     "@types/react-redux": "5.0.8",
     "@types/react-tether": "0.5.3",
