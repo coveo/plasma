@@ -15,6 +15,7 @@ import {
   getDisplayedOptions,
   IDropdownSearchState,
   isNotCustomOption,
+  multiSelectOption,
   removeCustomOptions,
   shouldHideOnFilter,
 } from '../DropdownSearchReducers';
@@ -955,6 +956,18 @@ describe('DropdownSearch', () => {
           const newOptions: IDropdownOption[] = [options[0]];
 
           expect(addUniqueSelectedOption(newOptions, options[0].value).length).toBe(1);
+        });
+
+        it('should add a custom selected option when reselecting values and value does not exist', () => {
+          const expectedOption: IDropdownOption = {value: 'custom', displayValue: 'A custom value'};
+          const newOptions: IDropdownOption[] = [options[0]];
+
+          const resultingOptions: IDropdownOption[] = multiSelectOption(newOptions, expectedOption);
+
+          expect(resultingOptions.length).toBe(2);
+          expect(resultingOptions[1].value).toBe(expectedOption.value);
+          expect(resultingOptions[1].displayValue).toBe(expectedOption.displayValue);
+          expect(resultingOptions[1].selected).toBe(true);
         });
       });
 

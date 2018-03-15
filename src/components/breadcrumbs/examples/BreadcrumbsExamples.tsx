@@ -33,6 +33,24 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
       link: 'squirtle',
     };
 
+    const link5: IBreadcrumbLinkProps = {
+      name: 'Raichu',
+      link: 'Raichu',
+      onClick: (props: IBreadcrumbLinkProps) => {
+        alert('this link will navigate');
+        return true;
+      },
+    };
+
+    const link6: IBreadcrumbLinkProps = {
+      name: 'Pichu',
+      link: 'Pichu',
+      onClick: (props: IBreadcrumbLinkProps) => {
+        alert('this link will not navigate');
+        return false;
+      },
+    };
+
     const defaultLinkPath: string = 'https://www.google.ca/?q=pokemon/';
 
     return (
@@ -45,21 +63,27 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Breadscrum with 1 link</label>
+          <label className='form-control-label'>Breadcrumb with 1 link</label>
           <div className='form-control'>
             <Breadcrumb title={defaultTitle} links={[link1]} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Breadscrum with 2 links</label>
+          <label className='form-control-label'>Breadcrumb with 2 links</label>
           <div className='form-control'>
             <Breadcrumb title={defaultTitle} links={[link1, link2]} />
           </div>
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Breadscrum with 2 links and a defaultPath</label>
+          <label className='form-control-label'>Breadcrumb with 2 links and a defaultPath</label>
           <div className='form-control'>
             <Breadcrumb title={defaultTitle} defaultLinkPath={defaultLinkPath} links={[link3, link4]} />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Breadcrumb with 2 links and onClick event</label>
+          <div className='form-control'>
+            <Breadcrumb title={defaultTitle} defaultLinkPath={defaultLinkPath} links={[link5, link6]}  />
           </div>
         </div>
       </div>

@@ -49,5 +49,13 @@ describe('Content', () => {
       });
       expect(contentComponent.find(Loading).length).toBe(1);
     });
+
+    it('should render with an custom tag div', () => {
+      renderContent({
+        content: 'test',
+        tag: 'div',
+      });
+      expect(contentComponent.find('div').text()).toBe('test');
+    });
   });
 });

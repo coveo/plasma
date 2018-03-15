@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const isTravis = process.env.TRAVIS;
+const isTravis = !!process.env.TRAVIS;
 
 /**
  * Config file for the documentation project
@@ -33,7 +33,7 @@ module.exports = {
           options: {
             configFile: './node_modules/tsjs/tslint.json',
             tsConfigFile: './tsconfig.json',
-            emitErrors: true,
+            emitErrors: isTravis,
             failOnHint: isTravis,
           },
         },
