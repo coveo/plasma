@@ -59,7 +59,7 @@ export class LogoCard extends React.Component<ILogoCardProps> {
       <Badge
         {...badgeProps}
         key={s.slugify(badgeProps.label)}
-      />
+      />,
     );
     const description = this.props.description
       ? <span className={descriptionClassName}>{this.props.description}</span>
