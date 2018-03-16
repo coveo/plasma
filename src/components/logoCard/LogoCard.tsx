@@ -51,18 +51,26 @@ export class LogoCard extends React.Component<ILogoCardProps> {
       DEFAULT_LOGO_ICON_CLASSNAME,
       DEFAULT_LOGO_ICON_SIZE,
     );
+    const descriptionClassName = classNames(
+      this.props.badges.length ? 'ml1' : '',
+    );
 
     const badges = this.props.badges.map((badgeProps) =>
-      <Badge {...badgeProps}
-        key={s.slugify(badgeProps.label)} />);
-    const ribbon = this.props.disabled
-      ? <CornerRibbon {...this.props.disabledRibbon} />
-      : this.props.ribbon
-        ? <CornerRibbon {...this.props.ribbon} />
-        : null;
+      <Badge
+        {...badgeProps}
+        key={s.slugify(badgeProps.label)}
+      />
+    );
     const description = this.props.description
-      ? <span className={badges.length ? 'ml1' : ''}>{this.props.description}</span>
+      ? <span className={descriptionClassName}>{this.props.description}</span>
       : null;
+
+    let ribbon = null;
+    if (this.props.disabled) {
+      ribbon = <CornerRibbon {...this.props.disabledRibbon} />;
+    } else if (this.props.ribbon) {
+      ribbon = <CornerRibbon {...this.props.ribbon} />;
+    }
 
     return (
       <div
