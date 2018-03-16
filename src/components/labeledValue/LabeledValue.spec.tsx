@@ -82,8 +82,8 @@ describe('LabeledValue', () => {
       expect(labeledValue.find(Tooltip).prop('placement')).toBe(TooltipPlacement.Bottom);
     });
 
-    it('should render an svg inside the tooltip having the help-no-fill-18 name', () => {
-      expect(labeledValue.find(Tooltip).find(Svg).prop('svgName')).toBe('help-no-fill-18');
+    it('should render an svg inside the tooltip having the "info" name', () => {
+      expect(labeledValue.find(Tooltip).find(Svg).prop('svgName')).toBe('info');
     });
   });
 });
