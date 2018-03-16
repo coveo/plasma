@@ -172,7 +172,6 @@ export { DisplayClass, ComponentContent } from './utils/ComponentUtils';
 export { DATES_SEPARATOR, DateUtils } from './utils/DateUtils';
 export { clearState, CommonActions, IDispatch, IReduxAction, IReduxProps, ReduxConnect, ReduxUtils } from './utils/ReduxUtils';
 export { IReactVaporState, IReduxActionsPayload } from './ReactVapor';
-export { version } from './Version';
 
 // Tab
 export { addTab, removeTab, selectTab, TabAction } from './components/tab/TabActions';
@@ -231,6 +230,7 @@ export { ToastContainerConnected } from './components/toast/ToastContainerConnec
 export { BreadcrumbHeader } from './components/headers/BreadcrumbHeader';
 export { HeaderWrapper } from './components/headers/HeaderWrapper';
 export { BasicHeader } from './components/headers/BasicHeader';
+export { getBasicDocumentLink } from './utils/ComponentUtils';
 
 // Slider
 export { Slider, ISliderProps } from './components/slider/Slider';
@@ -247,7 +247,6 @@ export { SplitLayout, ISplitLayoutProps } from './components/splitlayout/SplitLa
 // CollapsibleContainer
 export { ICollapsibleContainerProps, ICollapsibleContainerOwnProps, ICollapsibleContainerStateProps, ICollapsibleContainerDispatchProps } from './components/collapsibleContainer/CollapsibleContainer';
 export { CollapsibleContainerConnected } from './components/collapsibleContainer/CollapsibleContainerConnected';
-export { collapsibleContainersReducer, collapsibleContainerReducer } from './components/collapsibleContainer/CollapsibleContainerReducers';
 
 // SlideY
 export { SlideY } from './animations/SlideY';

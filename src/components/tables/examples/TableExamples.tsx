@@ -4,8 +4,10 @@ import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
+import { Breadcrumb } from '../../breadcrumbs/Breadcrumb';
 import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
+import { defaultTitle, link1 } from '../../headers/examples/ExamplesUtils';
 import { IData, ITableRowData } from '../Table';
 import { ITableOwnProps } from '../Table';
 import { modifyState, setIsInError } from '../TableActions';
@@ -182,6 +184,43 @@ export class TableExamples extends React.Component<any, any> {
           />
         </div>
         <div className='form-group'>
+          <label className='form-control-label'>Table with Content type Breadcrumb
+          </label>
+          <TableConnected
+            id={_.uniqueId('react-vapor-table')}
+            initialTableData={simplestTableData}
+            headingAttributes={[
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute4',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute2',
+                titleFormatter: _.identity,
+              },
+            ]}
+            prefixContent={{
+              content: Breadcrumb,
+              componentProps: {
+                title: defaultTitle,
+                links: [link1],
+                tag: 'div',
+              },
+              classes: ['flex-auto coveo-table-actions'],
+            }}
+            blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
+            actionBar={{ extraContainerClasses: ['mod-border-top'] }}
+          />
+        </div>
+        <div className='form-group'>
           <label className='form-control-label'>Table with filter
           </label>
           <TableConnected
@@ -210,7 +249,6 @@ export class TableExamples extends React.Component<any, any> {
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
           />
         </div>
-
         <div className='form-group'>
           <label className='form-control-label'>Table with datePicker
           </label>
@@ -251,7 +289,6 @@ export class TableExamples extends React.Component<any, any> {
             navigation={{ perPageNumbers }}
           />
         </div>
-
         <div className='form-group'>
           <label className='form-control-label'>Complex Table in default mode</label>
           <TableConnected
@@ -314,7 +351,6 @@ export class TableExamples extends React.Component<any, any> {
             navigation={{ perPageNumbers }}
           />
         </div>
-
       </div>
     );
   }

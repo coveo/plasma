@@ -56,6 +56,13 @@ describe('ToggleForm', () => {
       expect(parentControl.prop('checked')).toBe(true);
     });
 
+    it('should not throw when parent control is clicked and prop is undefined', () => {
+      const parentControlInnerInput = toggleForm.find('.radio-option').first();
+
+      toggleForm.mount();
+      expect(() => parentControlInnerInput.simulate('click')).not.toThrow();
+    });
+
     it('should call onClick handler when parent control is clicked and prop is set', () => {
       const clickSpy = jasmine.createSpy('onClick');
       const parentControlInnerInput = toggleForm.find('.radio-option').first();

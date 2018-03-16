@@ -14,12 +14,14 @@ import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers'
 import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers';
 import { inputsReducer } from '../components/input/InputReducers';
 import { lastUpdatedCompositeReducer } from '../components/lastUpdated/LastUpdatedReducers';
+import {listBoxesReducer} from '../components/listBox/ListBoxReducers';
 import { loadingsReducer } from '../components/loading/LoadingReducers';
 import { modalsReducer } from '../components/modal/ModalReducers';
 import { paginationCompositeReducer } from '../components/navigation/pagination/NavigationPaginationReducers';
 import { perPageCompositeReducer } from '../components/navigation/perPage/NavigationPerPageReducers';
 import { optionPickersReducer } from '../components/optionPicker/OptionPickerReducers';
 import { optionsCyclesReducer } from '../components/optionsCycle/OptionsCycleReducers';
+import {selectCompositeReducer} from '../components/select/SelectReducers';
 import { subNavigationsReducer } from '../components/subNavigation/SubNavigationReducers';
 import { ISvgProps } from '../components/svg/Svg';
 import { tabGroupsReducer } from '../components/tab/TabReducers';
@@ -49,6 +51,7 @@ export class TestUtils {
       paginationComposite: paginationCompositeReducer,
       perPageComposite: perPageCompositeReducer,
       loadings: loadingsReducer,
+      listBoxes: listBoxesReducer,
       prompts: promptsReducer,
       actionBars: actionBarsReducer,
       dropdowns: dropdownsReducer,
@@ -61,6 +64,7 @@ export class TestUtils {
       datePickers: datePickersReducer,
       itemFilters: itemFiltersReducer,
       modals: modalsReducer,
+      selects: selectCompositeReducer,
       subNavigations: subNavigationsReducer,
       tabs: tabGroupsReducer,
       toastContainers: toastsContainerReducer,
