@@ -3,8 +3,7 @@ import * as React from 'react';
 import { CornerRibbon, DEFAULT_CORNER_RIBBON_CLASSNAME, ICornerRibbonProps, PlacementX, PlacementY } from '../CornerRibbon';
 
 describe('CornerRibbon', () => {
-    let cornerRibbonComponent: ReactWrapper<ICornerRibbonProps, any>;
-    let cornerRibbon: ReactWrapper<any, any>;
+    let cornerRibbon: ReactWrapper<ICornerRibbonProps, any>;
 
     it('should render without errors', () => {
         expect(() => {
@@ -14,11 +13,10 @@ describe('CornerRibbon', () => {
 
     describe('<CornerRibbon />', () => {
         const mountWithProps = (props: Partial<ICornerRibbonProps>) => {
-            cornerRibbonComponent = mount(
+            cornerRibbon = mount(
                 <CornerRibbon {...props} />,
                 { attachTo: document.getElementById('App') },
             );
-            cornerRibbon = cornerRibbonComponent.find('div');
         };
 
         it('should have the default corner-ribon class', () => {
@@ -49,7 +47,7 @@ describe('CornerRibbon', () => {
 
             expect(cornerRibbon.hasClass(PlacementX.Left)).toBe(true);
 
-            cornerRibbonComponent.setProps({
+            cornerRibbon.setProps({
                 placementX: PlacementX.Right,
             });
 
@@ -63,7 +61,7 @@ describe('CornerRibbon', () => {
 
             expect(cornerRibbon.hasClass(PlacementY.Bottom)).toBe(true);
 
-            cornerRibbonComponent.setProps({
+            cornerRibbon.setProps({
                 placementY: PlacementY.Top,
             });
 

@@ -1,8 +1,11 @@
 import 'codemirror/lib/codemirror.css';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import './style.scss';
+
 import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
+
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
@@ -21,7 +24,9 @@ import {ContentExamples} from '../src/components/content/examples/ContentExample
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import {
+  DatePickerDropdownConnectedExamples,
+} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import {
   DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
@@ -43,6 +48,7 @@ import {LastUpdatedConnectedExamples} from '../src/components/lastUpdated/exampl
 import {LastUpdatedExamples} from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import {ListBoxExamples} from '../src/components/listBox/examples/ListBoxExamples';
 import {LoadingExamples} from '../src/components/loading/LoadingExamples';
+import {LogoCardExamples} from '../src/components/logoCard/examples/LogoCardExamples';
 import {ModalCompositeConnectedExamples} from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 import {ModalCompositeExamples} from '../src/components/modal/examples/ModalCompositeExamples';
 import {ModalConnectedExamples} from '../src/components/modal/examples/ModalConnectedExamples';
@@ -79,7 +85,6 @@ import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExample
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
 import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
-import './style.scss';
 
 class App extends React.Component<any, any> {
 
@@ -96,8 +101,9 @@ class App extends React.Component<any, any> {
               <MembersExample />
             </div>
           </div>
-          <CornerRibbonExamples />
           <BadgeExamples />
+          <CornerRibbonExamples />
+          <LogoCardExamples />
           <SliderExamples />
           <SvgExamples />
           <LinkSvgExamples />
