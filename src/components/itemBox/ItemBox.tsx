@@ -49,7 +49,7 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
       <Tooltip {...this.props.tooltip}>
         <li
           className={this.getClasses()}
-          onMouseDown={() => this.handleOnOptionClick()}
+          onClick={() => this.handleOnOptionClick()}
           data-value={this.props.value}>
           {this.props.prepend ? <Content {...this.props.prepend} /> : null}
           {this.props.displayValue || this.props.value}

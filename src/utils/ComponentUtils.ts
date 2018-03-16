@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ILinkSvgProps} from '../components/svg/LinkSvg';
 
 /**
  * DisplayClass is a reflection of the atomic display classes available in Vapor
@@ -14,4 +15,20 @@ export const DisplayClass = {
   TABLE_CELL: 'table-cell',
 };
 
-export type ComponentContent = (new () => React.Component) | string | (() => JSX.Element);
+export type ComponentContent = (new () => React.Component) | string | ((props?: any) => JSX.Element);
+
+export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => {
+  return {
+    url,
+    target: '_blank',
+    svg: {
+      svgName: 'help',
+      svgClass: 'fill-orange icon mod-20',
+    },
+    tooltip: {
+      title,
+      placement: 'bottom',
+      container: 'body',
+    },
+  };
+};

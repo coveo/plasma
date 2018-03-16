@@ -12,12 +12,14 @@ import { flatSelectsReducer } from '../src/components/flatSelect/FlatSelectReduc
 import { promptsReducer } from '../src/components/inlinePrompt/InlinePromptReducers';
 import { inputsReducer } from '../src/components/input/InputReducers';
 import { lastUpdatedCompositeReducer } from '../src/components/lastUpdated/LastUpdatedReducers';
+import { listBoxesReducer } from '../src/components/listBox/ListBoxReducers';
 import { loadingsReducer } from '../src/components/loading/LoadingReducers';
 import { modalsReducer } from '../src/components/modal/ModalReducers';
 import { paginationCompositeReducer } from '../src/components/navigation/pagination/NavigationPaginationReducers';
 import { perPageCompositeReducer } from '../src/components/navigation/perPage/NavigationPerPageReducers';
 import { optionPickersReducer } from '../src/components/optionPicker/OptionPickerReducers';
 import { optionsCyclesReducer } from '../src/components/optionsCycle/OptionsCycleReducers';
+import { selectCompositeReducer } from '../src/components/select/SelectReducers';
 import { subNavigationsReducer } from '../src/components/subNavigation/SubNavigationReducers';
 import { tabGroupsReducer } from '../src/components/tab/TabReducers';
 import { tableHeaderCellsReducer } from '../src/components/tables/TableHeaderCellReducers';
@@ -45,6 +47,8 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
   perPageComposite: perPageCompositeReducer,
   paginationComposite: paginationCompositeReducer,
   loadings: loadingsReducer,
+  listBoxes: listBoxesReducer,
+  selects: selectCompositeReducer,
   prompts: promptsReducer,
   actionBars: actionBarsReducer,
   dropdowns: dropdownsReducer,

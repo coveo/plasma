@@ -6,7 +6,7 @@ const isTravis = process.env.TRAVIS;
  * Config file for the packaged library
  */
 const config = {
-  entry: './src/Index.ts',
+  entry: './Index.ts',
   mode: 'production',
   output: {
     path: path.join(__dirname, '/dist'),
@@ -48,6 +48,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
   ],

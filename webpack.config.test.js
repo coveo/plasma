@@ -4,6 +4,7 @@ const isTravis = process.env.TRAVIS;
 
 module.exports = {
   mode: 'development',
+  entry: './karma.entry.ts',
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -18,7 +19,7 @@ module.exports = {
           loader: 'tslint-loader',
           options: {
             configFile: './node_modules/tsjs/tslint.json',
-            tsConfigFile: './tsconfig.json',
+            tsConfigFile: './tsconfig.test.json',
             emitErrors: true,
             failOnHint: isTravis,
           },
@@ -38,6 +39,14 @@ module.exports = {
         test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\..+$/i,
         exclude: /(node_modules)/,
         loader: 'istanbul-instrumenter-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+        }],
       },
     ],
   },

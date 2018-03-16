@@ -1,4 +1,4 @@
-import { IReduxAction } from '../../Index';
+import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface ITabActionPayload {
   groupId: string;

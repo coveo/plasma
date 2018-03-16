@@ -129,7 +129,7 @@ describe('ItemBox', () => {
         onOptionClick,
       });
 
-      ItemBoxComponent.find('li').simulate('mouseDown');
+      ItemBoxComponent.find('li').simulate('click');
 
       expect(onOptionClick).toHaveBeenCalled();
     });

@@ -7,12 +7,14 @@ export interface IContentProps {
   content: ComponentContent;
   componentProps?: { [key: string]: any };
   classes?: string[];
+  tag?: string;
 }
 
 export class Content extends React.Component<IContentProps, {}> {
 
   static defaultProps: Partial<IContentProps> = {
     classes: [],
+    tag: 'span',
   };
 
   private getContent(): JSX.Element | string {
@@ -21,8 +23,8 @@ export class Content extends React.Component<IContentProps, {}> {
 
   render() {
     const classes = classNames(this.props.classes);
-    return (<span className={classes}>
+    return (<this.props.tag className={classes}>
       {this.getContent()}
-    </span>);
+    </this.props.tag>);
   }
 }

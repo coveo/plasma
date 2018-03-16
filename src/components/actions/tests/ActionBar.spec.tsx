@@ -32,147 +32,166 @@ describe('Actions', () => {
     let actionBar: ReactWrapper<IActionBarProps, any>;
     let actionBarInstance: ActionBar;
 
-    beforeEach(() => {
+    const renderActionBar = (props: IActionBarProps = {}) => {
       actionBar = mount(
-        <ActionBar actions={actions} />,
+        <ActionBar actions={actions} {...props} />,
         { attachTo: document.getElementById('App') },
       );
       actionBarInstance = actionBar.instance() as ActionBar;
-    });
+    };
 
-    afterEach(() => {
-      actionBar.unmount();
-      actionBar.detach();
-    });
+    describe('with default props', () => {
+      beforeEach(() => {
+        renderActionBar();
+      });
 
-    it('should get the actions as a prop', () => {
-      const actionsProp = actionBar.props().actions;
+      afterEach(() => {
+        actionBar.unmount();
+        actionBar.detach();
+      });
 
-      expect(actionsProp).toBeDefined();
-      expect(actionsProp.length).toBe(actions.length);
-      expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
-    });
+      it('should get the actions as a prop', () => {
+        const actionsProp = actionBar.props().actions;
 
-    it('should call onRender prop if set when mounting', () => {
-      const onRenderSpy = jasmine.createSpy('onRender');
+        expect(actionsProp).toBeDefined();
+        expect(actionsProp.length).toBe(actions.length);
+        expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
+      });
 
-      expect(() => actionBarInstance.componentWillMount()).not.toThrow();
+      it('should call onRender prop if set when mounting', () => {
+        const onRenderSpy = jasmine.createSpy('onRender');
 
-      actionBar.unmount();
-      actionBar.setProps({ onRender: onRenderSpy });
-      actionBar.mount();
-      expect(onRenderSpy).toHaveBeenCalled();
-    });
+        expect(() => actionBarInstance.componentWillMount()).not.toThrow();
 
-    it('should call onDestroy prop if set when will unmount', () => {
-      const onDestroySpy = jasmine.createSpy('onDestroy');
+        actionBar.unmount();
+        actionBar.setProps({ onRender: onRenderSpy });
+        actionBar.mount();
+        expect(onRenderSpy).toHaveBeenCalled();
+      });
 
-      expect(() => actionBarInstance.componentWillUnmount()).not.toThrow();
+      it('should call onDestroy prop if set when will unmount', () => {
+        const onDestroySpy = jasmine.createSpy('onDestroy');
 
-      actionBar.setProps({ onDestroy: onDestroySpy });
-      actionBar.unmount();
-      expect(onDestroySpy).toHaveBeenCalled();
-    });
+        expect(() => actionBarInstance.componentWillUnmount()).not.toThrow();
 
-    it('should display a top level <PrimaryAction /> component if there is a primary action', () => {
-      expect(actionBar.find('.coveo-table-actions > .primary-action').length).toBe(1);
+        actionBar.setProps({ onDestroy: onDestroySpy });
+        actionBar.unmount();
+        expect(onDestroySpy).toHaveBeenCalled();
+      });
 
-      actionBar.setProps({ actions: actions.slice(1) });
+      it('should display a top level <PrimaryAction /> component if there is a primary action', () => {
+        expect(actionBar.find('.coveo-table-actions > .primary-action').length).toBe(1);
 
-      expect(actionBar.find('.coveo-table-actions > .primary-action').length).toBe(0);
-    });
+        actionBar.setProps({ actions: actions.slice(1) });
 
-    it('should display a <SecondaryActions /> component if there are secondary actions', () => {
-      expect(actionBar.find('SecondaryActions').length).toBe(1);
+        expect(actionBar.find('.coveo-table-actions > .primary-action').length).toBe(0);
+      });
 
-      actionBar.setProps({ actions: actions.slice(0, 1) });
+      it('should display a <SecondaryActions /> component if there are secondary actions', () => {
+        expect(actionBar.find('SecondaryActions').length).toBe(1);
 
-      expect(actionBar.find('SecondaryActions').length).toBe(0);
-    });
+        actionBar.setProps({ actions: actions.slice(0, 1) });
 
-    it('should display an <InlinePrompt /> and no actions if there is a prompt if there is a prompt', () => {
-      const inlinePromptOptions: IInlinePromptOptions = {
-        onClick: jasmine.createSpy('onClick'),
-        userChoice: {},
-      };
-      const inlinePrompt: JSX.Element = <InlinePrompt options={inlinePromptOptions} />;
+        expect(actionBar.find('SecondaryActions').length).toBe(0);
+      });
 
-      expect(actionBar.find('InlinePrompt').length).toBe(0);
+      it('should display an <InlinePrompt /> and no actions if there is a prompt if there is a prompt', () => {
+        const inlinePromptOptions: IInlinePromptOptions = {
+          onClick: jasmine.createSpy('onClick'),
+          userChoice: {},
+        };
+        const inlinePrompt: JSX.Element = <InlinePrompt options={inlinePromptOptions} />;
 
-      actionBar.setProps({ actions: actions, prompt: inlinePrompt });
-      expect(actionBar.find('InlinePrompt').length).toBe(1);
-      expect(actionBar.find('SecondaryActions').length).toBe(0);
-      expect(actionBar.find('PrimaryAction').length).toBe(0);
-    });
+        expect(actionBar.find('InlinePrompt').length).toBe(0);
 
-    it('should display an <ItemFilter /> if there is an itemFilter prop', () => {
-      expect(actionBar.find('ItemFilter').length).toBe(0);
+        actionBar.setProps({ actions: actions, prompt: inlinePrompt });
+        expect(actionBar.find('InlinePrompt').length).toBe(1);
+        expect(actionBar.find('SecondaryActions').length).toBe(0);
+        expect(actionBar.find('PrimaryAction').length).toBe(0);
+      });
 
-      actionBar.setProps({ itemFilter: 'an item' });
+      it('should display an <ItemFilter /> if there is an itemFilter prop', () => {
+        expect(actionBar.find('ItemFilter').length).toBe(0);
 
-      expect(actionBar.find('ItemFilter').length).toBe(1);
-    });
+        actionBar.setProps({ itemFilter: 'an item' });
 
-    it('should not throw when handling the clear of the item filter when clearItemFilter is not defined', () => {
-      const handleClearSpy: jasmine.Spy = spyOn<any>(actionBar.instance(), 'handleClear').and.callThrough();
-      actionBar.setProps({ itemFilter: 'an item' });
-      expect(() => {
+        expect(actionBar.find('ItemFilter').length).toBe(1);
+      });
+
+      it('should not throw when handling the clear of the item filter when clearItemFilter is not defined', () => {
+        const handleClearSpy: jasmine.Spy = spyOn<any>(actionBar.instance(), 'handleClear').and.callThrough();
+        actionBar.setProps({ itemFilter: 'an item' });
+        expect(() => {
+          actionBar.find('.item-filter-clear').simulate('click');
+        }).not.toThrow();
+
+        expect(handleClearSpy).toHaveBeenCalled();
+      });
+
+      it('should call clearItemFilter if defined when clicking the "item-filter-clear" button', () => {
+        const clearItemFilter = jasmine.createSpy('clearItemFilter');
+        actionBar.setProps({ itemFilter: 'an item', clearItemFilter });
+
         actionBar.find('.item-filter-clear').simulate('click');
-      }).not.toThrow();
 
-      expect(handleClearSpy).toHaveBeenCalled();
-    });
+        expect(clearItemFilter).toHaveBeenCalled();
+      });
 
-    it('should call clearItemFilter if defined when clicking the "item-filter-clear" button', () => {
-      const clearItemFilter = jasmine.createSpy('clearItemFilter');
-      actionBar.setProps({ itemFilter: 'an item', clearItemFilter });
+      describe('removeDefaultContainerClasses', () => {
+        it('should leave the default container classes if it is not set', () => {
+          DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+            expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+          });
+        });
 
-      actionBar.find('.item-filter-clear').simulate('click');
+        it('should leave the default container classes if it is set to false', () => {
+          actionBar.setProps({ removeDefaultContainerClasses: false });
+          DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+            expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+          });
+        });
 
-      expect(clearItemFilter).toHaveBeenCalled();
-    });
-
-    describe('removeDefaultContainerClasses', () => {
-      it('should leave the default container classes if it is not set', () => {
-        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-          expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+        it('should remove the default container classes if it is set to true', () => {
+          actionBar.setProps({ removeDefaultContainerClasses: true });
+          DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
+            expect(actionBar.find('div').first().hasClass(className)).toBe(false);
+          });
         });
       });
 
-      it('should leave the default container classes if it is set to false', () => {
-        actionBar.setProps({ removeDefaultContainerClasses: false });
-        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-          expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+      describe('extraContainerClasses', () => {
+        it('should add extra classes to the container div if extra container classes are passed', () => {
+          const extraContainerClasses = ['test', 'with', 'multiple', 'classes', 'tobesure'];
+          actionBar.setProps({ extraContainerClasses });
+          extraContainerClasses.forEach((className: string) => {
+            expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+          });
         });
       });
 
-      it('should remove the default container classes if it is set to true', () => {
-        actionBar.setProps({ removeDefaultContainerClasses: true });
-        DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-          expect(actionBar.find('div').first().hasClass(className)).toBe(false);
+      describe('loading behavior', () => {
+        it('should not have the mod-deactivate-pointer class if the action bar is not loading', () => {
+          actionBar.setProps({ isLoading: false });
+          expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(false);
+        });
+
+        it('should have the mod-deactivate-pointer class if the action bar is loading', () => {
+          actionBar.setProps({ isLoading: true });
+          expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(true);
         });
       });
     });
 
-    describe('extraContainerClasses', () => {
-      it('should add extra classes to the container div if extra container classes are passed', () => {
-        const extraContainerClasses = ['test', 'with', 'multiple', 'classes', 'tobesure'];
-        actionBar.setProps({ extraContainerClasses });
-        extraContainerClasses.forEach((className: string) => {
-          expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+    describe('with custom props', () => {
+      it('should add the class small-actions-container if the props withSmallActions is set to true', () => {
+        renderActionBar({
+          withSmallActions: true,
         });
-      });
-    });
+        const actionsProp = actionBar.props().withSmallActions;
 
-    describe('loading behavior', () => {
-      it('should not have the mod-deactivate-pointer class if the action bar is not loading', () => {
-        actionBar.setProps({ isLoading: false });
-        expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(false);
-      });
-
-      it('should have the mod-deactivate-pointer class if the action bar is loading', () => {
-        actionBar.setProps({ isLoading: true });
-        expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(true);
+        expect(actionsProp).toBeDefined();
+        expect(actionsProp).toBe(true);
+        expect(actionBar.hasClass('small-actions-container')).toBe(true);
       });
     });
   });

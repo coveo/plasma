@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import { humanize } from 'underscore.string';
 import { ActionBarConnected } from '../../actions/ActionBarConnected';
+import { Content } from '../../content/Content';
 import { DatePickerDropdownConnected } from '../../datePicker/DatePickerDropdownConnected';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
 import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
@@ -15,7 +16,7 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
     return null;
   }
 
-  const { predicates, datePicker } = props;
+  const { predicates, datePicker, prefixContent } = props;
   const actionBar = _.isBoolean(props.actionBar) ? {} : props.actionBar;
   const filter = _.isBoolean(props.filter) ? {} : props.filter;
 
@@ -30,6 +31,8 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
       </div>
     )
     : null;
+
+  const prefixContentElement: JSX.Element = actionBar && prefixContent ? <Content {...prefixContent}/> : null;
 
   const predicatesConnected: JSX.Element = actionBar && predicates
     ? (
@@ -77,6 +80,7 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
     <ActionBarConnected
       {...actionBar}
       id={getTableChildComponentId(props.id, TableChildComponent.ACTION_BAR)}>
+      {prefixContentElement}
       {predicatesConnected}
       {filterBoxConnected}
       {datePickerConnected}

@@ -24,6 +24,7 @@ export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
   onClearItemFilter?: () => void;
   extraContainerClasses?: string[];
   removeDefaultContainerClasses?: boolean;
+  withSmallActions?: boolean;
 }
 
 export interface IActionBarStateProps extends IReduxStatePossibleProps {
@@ -53,6 +54,7 @@ export interface IActionBarProps extends
 export class ActionBar extends React.Component<IActionBarProps, any> {
   static defaultProps: Partial<IActionBarOwnProps> = {
     extraContainerClasses: [],
+    withSmallActions: false,
   };
 
   private handleClear() {
@@ -121,6 +123,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
       this.props.extraContainerClasses,
       {
         'mod-deactivate-pointer': !!this.props.isLoading,
+        'small-actions-container': this.props.withSmallActions,
       },
     );
 
