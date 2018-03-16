@@ -1,0 +1,32 @@
+---
+type: component
+title: Flippable
+usage: A compact and interactive way of displaying content
+stylesheet: '/scss/components/flippable.scss'
+---
+<div class="flippable" style="width: 200px">
+    <div class="flipper show-front">
+        <div class="flipper-front bg-white p2">
+            Front side. <br />
+            Flippable takes the height of the front side content by default no matter how big is the back side. 
+        </div>
+        <div class="flipper-back bg-light-grey p2">
+            Some content on the back.
+        </div>
+    </div>
+</div>
+<div class="flippable mt1" style="width: 200px">
+    <div class="flipper show-front">
+        <div class="flipper-front bg-white p2">
+            Front side.
+        </div>
+        <div class="flipper-back bg-light-grey p2" style="width: 300px;height: 200px">
+            The back side can vary from the front in width and height, but it always stays aligned on the top left with the front side so be aware when the flippable is near the edges of the screen.
+        </div>
+    </div>
+</div>
+<script>
+    $('.flippable').click(function () {
+        $(this).find('.flipper').toggleClass('show-back').toggleClass('show-front');
+    });
+</script>
