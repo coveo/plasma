@@ -58,10 +58,13 @@ export const removeChildCheckbox = (state: IGroupableCheckboxesState,
                                     action: IReduxAction<IGroupableCheckboxActionPayload>) => {
   const checkboxState: ICheckboxState = _.findWhere(state.checkboxes, {id: action.payload.id});
   if (checkboxState) {
-    state.checkboxes = _.reject(state.checkboxes, (checkbox: ICheckboxState) => checkbox.id === action.payload.id);
-    state.nbChecked += (checkboxState && checkboxState.checked ? -1 : 0);
-    state.total += checkboxState ? -1 : 0;
+    return {
+      checkboxes: _.reject(state.checkboxes, (checkbox: ICheckboxState) => checkbox.id === action.payload.id),
+      nbChecked: state.nbChecked + (checkboxState && checkboxState.checked ? -1 : 0),
+      total: state.total + (checkboxState ? -1 : 0),
+    };
   }
+  return state;
 };
 
 export const toggleChildCheckbox = (state: IGroupableCheckboxesState,

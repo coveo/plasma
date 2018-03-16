@@ -3,13 +3,15 @@ import * as _ from 'underscore';
 import { IReactVaporState } from '../../ReactVapor';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
 import { IInputDispatchProps, IInputProps, IInputStateProps } from '../input/Input';
-import {Checkbox} from './Checkbox';
-import {ICheckboxState} from './CheckboxReducers';
+import { Checkbox } from './Checkbox';
+import { ICheckboxState } from './CheckboxReducers';
 import {
-  addGroupedCheckbox, IGroupableCheckboxActionPayload, removeGroupedCheckbox,
+  addGroupedCheckbox,
+  IGroupableCheckboxActionPayload,
+  removeGroupedCheckbox,
   toggleGroupedCheckbox,
 } from './GroupableCheckboxActions';
-import {IGroupableCheckboxesState} from './GroupableCheckboxReducers';
+import { IGroupableCheckboxesState } from './GroupableCheckboxReducers';
 
 export interface IGroupableCheckboxOwnProps extends IInputProps {
   isParent?: boolean;
