@@ -8,25 +8,15 @@
   cursor: pointer;
 
   &.disabled {
-    color: $medium-grey;
-
     cursor: default;
 
-    .logo-card-title {
-      color: $medium-grey;
+    *:not(.corner-ribbon) {
+      filter: $logo-card-disabled-filter;
     }
 
-    .badge {
+    &.ribbon-container .corner-ribbon {
       background-color: $medium-grey;
     }
-
-    path {
-      fill: $medium-grey;
-    }
-  }
-
-  &.ribbon-container.disabled .corner-ribbon {
-    background-color: $medium-grey;
   }
 }
 

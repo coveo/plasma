@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // manually reset the hash to force the browser to go to the selected menu item on page refresh
     var hash = window.location.hash;
     window.location.hash = "";
@@ -23,7 +23,7 @@ $(document).ready(function() {
         selectedTab = $(selectedTabParend[0]).parent().addClass('state-active');
     }
 
-    $('.navigation-menu-section-item').click(function() {
+    $('.navigation-menu-section-item').click(function () {
         if (selectedTab) {
             selectedTab.removeClass('state-active');
         }
@@ -40,7 +40,7 @@ $(document).ready(function() {
     function modalHandler() {
         var backdrop = $('.modal-backdrop');
 
-        $('.js-modal-trigger').each(function(i, modalTrigger) {
+        $('.js-modal-trigger').each(function (i, modalTrigger) {
             var modal = $('#' + modalTrigger.getAttribute('data-modal'));
             var modalPrompt = $('#' + modalTrigger.getAttribute('data-modal') + 'Prompt');
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
                 backdrop.on('click', removeModal);
             }
 
-            $(modalTrigger).on('click', function() {
+            $(modalTrigger).on('click', function () {
                 modal.addClass('opened');
 
                 backdrop.removeClass('closed');
@@ -79,12 +79,12 @@ $(document).ready(function() {
                 }
             });
 
-            closeButton.on('click', function(event) {
+            closeButton.on('click', function (event) {
                 event.stopPropagation();
                 removeModal();
             });
 
-            promptCloseButton.on('click', function(event) {
+            promptCloseButton.on('click', function (event) {
                 event.stopPropagation();
                 removePrompt();
             });
@@ -107,7 +107,7 @@ $(document).ready(function() {
         $el.find('[data-collapse-state]').attr('data-collapse-state', 'collapsed');
     }
 
-    $('tr.heading-row').click(function(jQueryEventObject) {
+    $('tr.heading-row').click(function (jQueryEventObject) {
         var $el = $(jQueryEventObject.currentTarget);
         if ($el.hasClass('opened')) {
             collapseRowView($el.parent());
@@ -117,14 +117,14 @@ $(document).ready(function() {
     });
 
     // Handle open/close dropdown
-    $('button.dropdown-toggle').click(function(event) {
+    $('button.dropdown-toggle').click(function (event) {
         var dropdownEl = $(event.currentTarget).parent();
         dropdownEl.toggleClass('open', !dropdownEl.hasClass('open'));
     });
 
 
     // Handle open/close dropdown search
-    $('.mod-search button.dropdown-toggle').click(function(event) {
+    $('.mod-search button.dropdown-toggle').click(function (event) {
         var buttonEl = $(event.currentTarget);
         var dropdownEl = $(event.currentTarget).parent();
         buttonEl.toggleClass('open', !dropdownEl.hasClass('open'));
@@ -134,7 +134,7 @@ $(document).ready(function() {
         dropdownEl.find('.filter-box').focus();
     });
 
-    $('.mod-search .filter-box').blur(function(event) {
+    $('.mod-search .filter-box').blur(function (event) {
         var filterElement = $(event.currentTarget).parent();
         var dropdownEl = filterElement.parent();
         filterElement.find('filter-box').context.value = '';
@@ -145,11 +145,16 @@ $(document).ready(function() {
     });
 
     // Handle selection in flat-select
-    $('.flat-select-option').click(function(event) {
+    $('.flat-select-option').click(function (event) {
         var optionEl = $(event.currentTarget);
         var flatSelectEl = optionEl.parent();
 
         flatSelectEl.find('.flat-select-option:not(.selectable)').addClass('selectable');
         optionEl.removeClass('selectable');
+    });
+
+    // Handle flippable flip/unflip
+    $('.flippable').click(function () {
+        $(this).find('.flipper').toggleClass('show-back').toggleClass('show-front');
     });
 });

@@ -1,0 +1,49 @@
+.flippable {
+  position: relative;
+  z-index: $flippable-z-index;
+
+  perspective: $flippable-perspective;
+}
+
+.flipper {
+  width: 100%;
+
+  transform-style: preserve-3d;
+
+  transition: transform $flippable-transition-duration;
+
+  &.show-front {
+    transform: rotateY(0deg);
+  }
+
+  &.show-back {
+    transform: rotateY(-180deg);
+  }
+}
+
+.flipper-front {
+  transform: rotateY(0deg);
+
+  cursor: pointer;
+
+  @extend %flipper-side;
+}
+
+.flipper-back {
+  position: absolute;
+  top: 0;
+  right:  0;
+
+  box-shadow: $flippable-shadow;
+  transform: rotateY(-180deg);
+
+  @extend %flipper-side;
+}
+
+%flipper-side {
+  margin: 0;
+
+  background-color: $pure-white;
+
+  backface-visibility: hidden;
+}
