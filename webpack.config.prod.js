@@ -2,22 +2,20 @@ const path = require('path');
 const webpack = require('webpack');
 const isTravis = process.env.TRAVIS;
 
-const TARGET = process.env.TARGET || null;
-
 /**
  * Config file for the packaged library
  */
 const config = {
-  entry: './src/Index.ts',
+  entry: './Index.ts',
+  mode: 'production',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'react-vapor.js',
     library: ['ReactVapor'],
     libraryTarget: 'umd',
   },
-  devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
@@ -36,10 +34,6 @@ const config = {
         },
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-      {
         test: /\.ts(x?)$/,
         loader: 'ts-loader',
       },
@@ -54,6 +48,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
   ],
@@ -66,15 +61,5 @@ const config = {
     underscore: { root: '_', commonjs2: 'underscore', commonjs: 'underscore', amd: 'underscore' },
   },
 };
-
-if (TARGET === 'minify') {
-  config.output.filename = 'react-vapor.min.js';
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    sourceMap: true,
-    mangle: {
-      except: ['$', 'React', 'ReactDOM', 'ReactRedux', 'Redux', '_'],
-    },
-  }));
-}
 
 module.exports = config;

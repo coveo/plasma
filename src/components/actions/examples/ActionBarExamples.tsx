@@ -64,6 +64,10 @@ export class ActionBarExamples extends React.Component<any, any> {
           <label className='form-control-label'>Action bar with default classes turned off and extra classes</label>
           <ActionBar actions={actions} removeDefaultContainerClasses extraContainerClasses={['coveo-table-actions-container', 'p2']} />
         </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Action bar with small actions</label>
+          <ActionBar actions={actions} withSmallActions />
+        </div>
       </div>
     );
   }

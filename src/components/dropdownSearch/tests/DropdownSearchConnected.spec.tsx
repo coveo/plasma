@@ -1,19 +1,20 @@
-// tslint:disable-next-line:no-unused-variable
-import { mount, ReactWrapper } from 'enzyme';
+import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import { Provider, Store } from 'react-redux';
+import {Provider, Store} from 'react-redux';
 import * as _ from 'underscore';
-import { keyCode } from '../../../utils/InputUtils';
-import { clearState } from '../../../utils/ReduxUtils';
-import { IReactVaporTestState, TestUtils } from '../../../utils/TestUtils';
-import { UUID } from '../../../utils/UUID';
-import { DropdownSearch, IDropdownSearchProps } from '../DropdownSearch';
+import {keyCode} from '../../../utils/InputUtils';
+import {clearState} from '../../../utils/ReduxUtils';
+import {IReactVaporTestState, TestUtils} from '../../../utils/TestUtils';
+import {UUID} from '../../../utils/UUID';
+import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
 import {
-  DropdownSearchActions, toggleDropdownSearch, updateActiveOptionDropdownSearch,
+  DropdownSearchActions,
+  toggleDropdownSearch,
+  updateActiveOptionDropdownSearch,
   updateOptionsDropdownSearch,
 } from '../DropdownSearchActions';
-import { DropdownSearchConnected } from '../DropdownSearchConnected';
-import { defaultSelectedOptionPlaceholder } from '../DropdownSearchReducers';
+import {DropdownSearchConnected} from '../DropdownSearchConnected';
+import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
   const id: string = UUID.generate();

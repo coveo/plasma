@@ -39,6 +39,10 @@ describe('ListBox', () => {
     it('should render with the box-item class', () => {
       expect(listBoxComponent.find(ItemBox).length).toBe(defaultProps.items.length);
     });
+
+    it('should not throw on umount', () => {
+      expect(() => listBoxComponent.unmount()).not.toThrow();
+    });
   });
 
   describe('<BoxItem /> with custom props', () => {
@@ -50,6 +54,27 @@ describe('ListBox', () => {
       );
     };
 
+    it('should call onRender on mount', () => {
+      const onRenderSpy = jasmine.createSpy('onRender');
+      renderListBox({
+        onRender: onRenderSpy,
+      });
+
+      expect(onRenderSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call onRender on mount', () => {
+      const onDestroySpy = jasmine.createSpy('onDestroy');
+      renderListBox({
+        onDestroy: onDestroySpy,
+      });
+
+      expect(onDestroySpy).not.toHaveBeenCalled();
+
+      listBoxComponent.unmount();
+      expect(onDestroySpy).toHaveBeenCalledTimes(1);
+    });
+
     it('should render items with events on onOptionClick', () => {
       const onOptionClick: jasmine.Spy = jasmine.createSpy('onOptionClick');
       renderListBox({
@@ -60,12 +85,39 @@ describe('ListBox', () => {
       expect(onOptionClick).toHaveBeenCalled();
     });
 
+    it('should not trigger onOptionClick if the clicked item is disabled', () => {
+      const onOptionClick: jasmine.Spy = jasmine.createSpy('onOptionClick');
+      renderListBox({
+        items: [{value: 'test', disabled: true}],
+        onOptionClick,
+      });
+
+      (listBoxComponent.find(ItemBox) as any).node.handleOnOptionClick({ target: 'target' });
+      expect(onOptionClick).not.toHaveBeenCalled();
+    });
+
     it('should show the no result <BoxItem/> if the items array is empty', () => {
       renderListBox({
         items: [],
       });
 
       expect(listBoxComponent.find(ItemBox).props().value).toBe(ListBox.defaultProps.noResultItem.value);
+    });
+
+    it('should show the no result <BoxItem/> if all items are hidden', () => {
+      renderListBox({
+        items: [{value: 'test', hidden: true}, {value: 'test 1', hidden: true}],
+      });
+
+      expect(listBoxComponent.find(ItemBox).props().value).toBe(ListBox.defaultProps.noResultItem.value);
+    });
+
+    it('should not show the no result <BoxItem/> if one item is not hidden', () => {
+      renderListBox({
+        items: [{value: 'test', hidden: false}, {value: 'test 1', hidden: true}],
+      });
+
+      expect(listBoxComponent.find(ItemBox).props().value).not.toBe(ListBox.defaultProps.noResultItem.value);
     });
   });
 });

@@ -98,13 +98,14 @@ export const deselectAllOptions = (options: IDropdownOption[], includeCustom: bo
   return nextOptions;
 };
 
-export const addUniqueSelectedOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
+export const addUniqueSelectedOption = (options: IDropdownOption[], value: string, displayValue?: string): IDropdownOption[] => {
   const sameValueDoesNotExist = _.findWhere(options, { value }) === undefined;
 
   if (sameValueDoesNotExist) {
     const nextOptions: IDropdownOption[] = deepClone(options);
     nextOptions.push({
       value,
+      displayValue: displayValue || value,
       selected: true,
       custom: true,
     });
@@ -132,28 +133,38 @@ export const selectSingleOption = (options: IDropdownOption[], selectedOption: I
 };
 
 export const multiSelectOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
-  return _.map(options, (option: IDropdownOption) => {
+  let valueFound: boolean = false;
+  const newOptions: IDropdownOption[] = _.map(options, (option: IDropdownOption) => {
     const nextOption: IDropdownOption = deepClone(option);
     if (nextOption.value === selectedOption.value) {
+      valueFound = true;
       nextOption.selected = true;
       nextOption.hidden = true;
     }
     return nextOption;
   });
+
+  if (!valueFound) {
+    return addUniqueSelectedOption(options, selectedOption.value, selectedOption.displayValue);
+  }
+
+  return newOptions;
 };
 
-export const updateOptions = (options: IDropdownOption[], selectedOption?: IDropdownOption): IDropdownOption[] => {
+export const updateOptions = (options: IDropdownOption[], selectAValue: boolean = true, selectedOption?: IDropdownOption): IDropdownOption[] => {
   let updatedOptions: IDropdownOption[] = options
     ? deepClone(options)
     : [];
 
-  const defaultSelectedOption = selectedOption
-    ? { ...selectedOption, selected: true, custom: true }
-    : defaultSelectedOptionPlaceholder;
+  if (selectAValue) {
+    const defaultSelectedOption = selectedOption
+      ? { ...selectedOption, selected: true, custom: true }
+      : defaultSelectedOptionPlaceholder;
 
-  updatedOptions = _.find(updatedOptions, (option) => option.value === defaultSelectedOption.value)
-    ? selectSingleOption(updatedOptions, defaultSelectedOption)
-    : [...updatedOptions, defaultSelectedOption];
+    updatedOptions = _.find(updatedOptions, (option) => option.value === defaultSelectedOption.value)
+      ? selectSingleOption(updatedOptions, defaultSelectedOption)
+      : [...updatedOptions, defaultSelectedOption];
+  }
 
   return updatedOptions;
 };
@@ -195,7 +206,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
       return {
         ...state,
         id: action.payload.id,
-        options: updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption),
+        options: updateOptions(action.payload.dropdownOptions, action.payload.selectAValue, action.payload.defaultSelectedOption),
         setFocusOnDropdownButton: false,
       };
     case DropdownSearchActions.filter:
@@ -256,7 +267,7 @@ export const dropdownSearchReducer = (state: IDropdownSearchState = dropdownSear
     case DropdownSearchActions.add:
       return {
         ...state,
-        options: updateOptions(action.payload.dropdownOptions, action.payload.defaultSelectedOption),
+        options: updateOptions(action.payload.dropdownOptions, action.payload.selectAValue, action.payload.defaultSelectedOption),
         id: action.payload.id,
         filterText: '',
         isOpened: false,

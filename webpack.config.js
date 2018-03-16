@@ -1,11 +1,13 @@
+const webpack = require('webpack');
 const path = require('path');
-const isTravis = process.env.TRAVIS;
+const isTravis = !!process.env.TRAVIS;
 
 /**
  * Config file for the documentation project
  */
 module.exports = {
   entry: './docs/Index.tsx',
+  mode: 'development',
   output: {
     path: path.join(__dirname, '/docs/assets'),
     publicPath: '/assets/',
@@ -13,8 +15,13 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
+    }),
+  ],
   module: {
     rules: [
       {
@@ -26,14 +33,10 @@ module.exports = {
           options: {
             configFile: './node_modules/tsjs/tslint.json',
             tsConfigFile: './tsconfig.json',
-            emitErrors: true,
+            emitErrors: isTravis,
             failOnHint: isTravis,
           },
         },
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
       },
       {
         test: /\.ts(x?)$/,

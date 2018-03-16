@@ -1,17 +1,19 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { Svg } from '../svg/Svg';
-import { Tooltip } from '../tooltip/Tooltip';
-import { FacetMoreRows } from './FacetMoreRows';
-import { FacetMoreRowsConnected } from './FacetMoreRowsConnected';
-import { FacetMoreToggle } from './FacetMoreToggle';
-import { FacetMoreToggleConnected } from './FacetMoreToggleConnected';
-import { FacetRow } from './FacetRow';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+import {Svg} from '../svg/Svg';
+import {Tooltip} from '../tooltip/Tooltip';
+import {FacetMoreRows} from './FacetMoreRows';
+import {FacetMoreRowsConnected} from './FacetMoreRowsConnected';
+import {FacetMoreToggle} from './FacetMoreToggle';
+import {FacetMoreToggleConnected} from './FacetMoreToggleConnected';
+import {FacetRow} from './FacetRow';
 
 export interface IFacet {
   name: string;
   formattedName: string;
+  tooltipLabel?: string;
+  count?: string;
 }
 
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
@@ -20,6 +22,8 @@ export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
   toggleFacet: (facet: string, facetRow: IFacet) => void;
   clearFacet: (facet: string) => void;
   clearFacetLabel?: string;
+  maxRowsToShow?: number;
+  maxTooltipLabelLength?: number;
 }
 
 export interface IFacetStateProps extends IReduxStatePossibleProps {
@@ -39,7 +43,7 @@ export interface IFacetChildrenProps {
   filterPlaceholder?: string;
 }
 
-export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps, IFacetChildrenProps { }
+export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps, IFacetChildrenProps {}
 
 export const CLEAR_FACET_LABEL: string = 'Clear';
 
@@ -47,6 +51,7 @@ export class Facet extends React.Component<IFacetProps, any> {
   static defaultProps: Partial<IFacetProps> = {
     clearFacetLabel: CLEAR_FACET_LABEL,
     selectedFacetRows: [],
+    maxRowsToShow: 5,
   };
 
   private buildFacet = (facetRow: IFacet) => {
@@ -92,10 +97,12 @@ export class Facet extends React.Component<IFacetProps, any> {
         facetRow={facetRow}
         onToggleFacet={this.buildFacet}
         isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
+        maxTooltipLabelLength={this.props.maxTooltipLabelLength}
       />);
     });
-    const rowsToShow: number = Math.max(this.props.selectedFacetRows.length, 5);
-    const moreRowsToggle: JSX.Element = rows.length > rowsToShow
+    const rowsToShow: number = Math.max(this.props.selectedFacetRows.length, this.props.maxRowsToShow);
+    // If there is only 1 extra row, show it instead of the moreRowsToggle
+    const moreRowsToggle: JSX.Element = rows.length > rowsToShow + 1
       ? (this.props.withReduxState
         ? <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
         : <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
