@@ -57,7 +57,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
 
   private getSvgClass(): string {
     return classNames(
-      'icon mod-lg',
+      'icon mod-lg ml1',
       {
         'fill-orange': !!this.props.informationUrl,
         'fill-medium-grey': !this.props.informationUrl,
@@ -71,7 +71,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
     }
 
     const tooltipProps = { placement: 'right', ...this.props.informationTooltip };
-    const svgProps = { svgName: 'help', svgClass: this.getSvgClass() };
+    const svgProps = { svgName: this.props.informationUrl ? 'help' : 'info', svgClass: this.getSvgClass() };
 
     const collapsibleHeaderIcon = this.props.informationUrl
       ? <LinkSvg url={this.props.informationUrl} target='_blank' tooltip={tooltipProps} svg={svgProps} />
