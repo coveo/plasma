@@ -19,7 +19,7 @@ export const LabeledValue = (props: ILabeledValueProps) => {
       <Tooltip
         title={props.information}
         placement={props.informationPlacement || TooltipPlacement.Top}>
-        <Svg svgName='help-no-fill-18' svgClass='icon fill-medium-grey' />
+        <Svg svgName='info-14' svgClass='icon fill-medium-grey' />
       </Tooltip>
     )
     : null;

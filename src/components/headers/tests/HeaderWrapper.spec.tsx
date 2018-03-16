@@ -2,6 +2,7 @@ import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
+import * as _ from 'underscore';
 import { IReactVaporState } from '../../../ReactVapor';
 import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
@@ -38,14 +39,14 @@ describe('<HeaderWrapper/>', () => {
       tabs: [{ id: '1', title: '1' }, { id: '2', title: '2' }],
     };
 
-    beforeEach(() => {
+    const renderComponent = (props: IHeaderWrapperProps = {}) => {
       headerWrapperComponent = mount(
         <Provider store={store}>
-          <HeaderWrapper {...customProps} />
+          <HeaderWrapper {..._.extend({}, customProps, props)} />
         </Provider>,
         { attachTo: document.getElementById('App') },
       );
-    });
+    };
 
     afterEach(() => {
       headerWrapperComponent.unmount();
@@ -53,10 +54,12 @@ describe('<HeaderWrapper/>', () => {
     });
 
     it('should render the description', () => {
+      renderComponent();
       expect(headerWrapperComponent.find('h4').text()).toEqual(customProps.description);
     });
 
     it('should render actions', () => {
+      renderComponent();
       const contents = headerWrapperComponent.find(Content);
 
       expect(contents.length).toEqual(2);
@@ -65,7 +68,45 @@ describe('<HeaderWrapper/>', () => {
     });
 
     it('should render tabs', () => {
+      renderComponent();
       const tabs = headerWrapperComponent.find(TabsHeader);
+
+      expect(tabs.length).toEqual(1);
+    });
+
+    it('should render without the border bottom', () => {
+      renderComponent({
+        hasBorderBottom: false,
+      });
+      const tabs = headerWrapperComponent.find('.mod-border-bottom');
+
+      expect(tabs.length).toEqual(0);
+    });
+
+    it('should render with the border bottom', () => {
+      renderComponent({
+        hasBorderBottom: true,
+        tabs: undefined,
+      });
+      const tabs = headerWrapperComponent.find('.mod-border-bottom');
+
+      expect(tabs.length).toEqual(1);
+    });
+
+    it('should render without padding', () => {
+      renderComponent({
+        hasPadding: false,
+      });
+      const tabs = headerWrapperComponent.find('.mod-header-padding');
+
+      expect(tabs.length).toEqual(0);
+    });
+
+    it('should render with padding', () => {
+      renderComponent({
+        hasPadding: true,
+      });
+      const tabs = headerWrapperComponent.find('.mod-header-padding');
 
       expect(tabs.length).toEqual(1);
     });
