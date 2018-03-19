@@ -10,6 +10,7 @@ import { dropdownsSearchReducer } from '../components/dropdownSearch/DropdownSea
 import { facetsReducer } from '../components/facets/FacetReducers';
 import { filterBoxesReducer } from '../components/filterBox/FilterBoxReducers';
 import { flatSelectsReducer } from '../components/flatSelect/FlatSelectReducers';
+import { flippablesReducer } from '../components/flippable/FlippableReducers';
 import { promptsReducer } from '../components/inlinePrompt/InlinePromptReducers';
 import { inputsReducer } from '../components/input/InputReducers';
 import { lastUpdatedCompositeReducer } from '../components/lastUpdated/LastUpdatedReducers';
@@ -71,6 +72,7 @@ export class TestUtils {
       checkboxes: checkboxesReducer,
       collapsibleContainers: collapsibleContainersReducer,
       inputs: inputsReducer,
+      flippables: flippablesReducer,
     });
 
     const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {

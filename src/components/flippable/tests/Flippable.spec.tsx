@@ -61,6 +61,14 @@ describe('Flippable', () => {
       expect(flippable.find(`.${Flippable.FLIPPER_CLASSNAME}`).hasClass(Flippable.triggers.FRONT)).toBe(true);
     });
 
+    it('should render additional classes if any on the flippable container', () => {
+      flippable.setProps({
+        className: 'some-class',
+      });
+
+      expect(flippable.hasClass('some-class')).toBe(true);
+    });
+
     it('should render the front side content on the front', () => {
       flippable.setProps({
         front: <div id='MyFrontContent'></div>,
