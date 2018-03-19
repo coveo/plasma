@@ -29,11 +29,20 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                     <div className='text-dark-grey'>
                         <PartialStringMatch wholeString='I match in the middle' partialMatch='in the' />
                     </div>
+                    <div className='text-dark-grey'>
+                        <PartialStringMatch wholeString='I match multiple times because I match multiple substrings' partialMatch='match multiple' />
+                    </div>
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>PartialStringMatch with partial match (caseInsensitive)</label>
                     <div className='text-dark-grey'>
                         <PartialStringMatch wholeString='I match even if my partial match is in uppercase' partialMatch={'partial match'.toUpperCase()} caseInsensitive />
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>PartialStringMatch with dangerous match</label>
+                    <div className='text-dark-grey'>
+                        <PartialStringMatch wholeString='Hey <script>alert("I may be dangerous")</script>' partialMatch={'<script>alert("I may be dangerous")</script>'} />
                     </div>
                 </div>
             </div>

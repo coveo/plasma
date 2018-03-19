@@ -1,4 +1,6 @@
+import * as escapeRegExp from 'escape-string-regexp';
 import * as React from 'react';
+import {escape} from 'underscore';
 
 export interface PartialStringMatchProps {
     wholeString: string;
@@ -6,28 +8,23 @@ export interface PartialStringMatchProps {
     caseInsensitive?: boolean;
 }
 
-export const PartialStringMatch = (props: PartialStringMatchProps): JSX.Element => {
-    const wholeString = props.wholeString || '';
-    const partialMatch = props.partialMatch || '';
-    const regExp = new RegExp(partialMatch, props.caseInsensitive && 'i');
-    const splitPlaceholder = '%%split%%';
+export class PartialStringMatch extends React.Component<PartialStringMatchProps> {
+    static defaultProps: Partial<PartialStringMatchProps> = {
+        wholeString: '',
+        partialMatch: '',
+    };
 
-    let hasMatch = false;
-    let realMatch: string;
-    let finalString: string | string[] = wholeString.replace(regExp, (match: string) => {
-        hasMatch = true;
-        realMatch = match;
-        return splitPlaceholder;
-    });
-
-    if (!partialMatch || !wholeString || !hasMatch) {
-        return <span>{wholeString}</span>;
+    render() {
+        return <span dangerouslySetInnerHTML={{__html: this.getFormattedString()}} />;
     }
 
-    finalString = finalString.split(splitPlaceholder);
-    return (
-        <span>
-            {finalString[0]}<span className='bold'>{realMatch}</span>{finalString[1]}
-        </span>
-    );
-};
+    private getFormattedString(): string {
+        const flags = this.props.caseInsensitive ? 'ig' : 'g';
+        const regExp = new RegExp(escapeRegExp(escape(this.props.partialMatch)), flags);
+        const cleanWholeString = escape(this.props.wholeString.trim());
+
+        return !cleanWholeString || !this.props.partialMatch
+            ? cleanWholeString
+            : cleanWholeString.replace(regExp, (match: string) => `<span class='bold'>${match}</span>`);
+    }
+}
