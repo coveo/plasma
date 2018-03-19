@@ -59,6 +59,7 @@ import {NavigationConnectedExamples} from '../src/components/navigation/examples
 import {NavigationExamples} from '../src/components/navigation/examples/NavigationExamples';
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/OptionsCycleExamples';
+import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
@@ -101,6 +102,7 @@ class App extends React.Component<any, any> {
                             <MembersExample />
                         </div>
                     </div>
+                    <PartialStringMatchExamples />
                     <BadgeExamples />
                     <CornerRibbonExamples />
                     <LogoCardExamples />
