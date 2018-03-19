@@ -1,49 +1,51 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import { IReactVaporState, IReduxActionsPayload } from '../../ReactVapor';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { DropdownSearch, IDropdownOption, IDropdownSearchOwnProps, IDropdownSearchProps, IDropdownSearchStateProps } from './DropdownSearch';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {DropdownSearch, IDropdownOption, IDropdownSearchOwnProps, IDropdownSearchProps, IDropdownSearchStateProps} from './DropdownSearch';
 import {
-  addDropdownSearch,
-  applyFilterDropdownSearch,
-  closeDropdownSearch,
-  removeDropdownSearch,
-  selectOptionDropdownSearch,
-  toggleDropdownSearch,
-  updateActiveOptionDropdownSearch,
-  updateOptionsDropdownSearch,
+    addDropdownSearch,
+    applyFilterDropdownSearch,
+    closeDropdownSearch,
+    removeDropdownSearch,
+    selectOptionDropdownSearch,
+    toggleDropdownSearch,
+    updateActiveOptionDropdownSearch,
+    updateOptionsDropdownSearch,
 } from './DropdownSearchActions';
-import { IDropdownSearchState } from './DropdownSearchReducers';
+import {IDropdownSearchState} from './DropdownSearchReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
-  const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, { id: ownProps.id });
+    const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, {id: ownProps.id});
 
-  if (dropdownSearch) {
+    if (dropdownSearch) {
+        return {
+            isOpened: dropdownSearch.isOpened || false,
+            options: dropdownSearch.options || [],
+            filterText: dropdownSearch.filterText || '',
+            activeOption: dropdownSearch.activeOption,
+            setFocusOnDropdownButton: dropdownSearch.setFocusOnDropdownButton,
+        };
+    }
+
     return {
-      isOpened: dropdownSearch.isOpened || false,
-      options: dropdownSearch.options || [],
-      filterText: dropdownSearch.filterText || '',
-      activeOption: dropdownSearch.activeOption,
-      setFocusOnDropdownButton: dropdownSearch.setFocusOnDropdownButton,
+        isOpened: false,
+        options: ownProps.defaultOptions || [],
+        filterText: '',
     };
-  }
-
-  return {
-    isOpened: false,
-    options: ownProps.defaultOptions || [],
-    filterText: '',
-  };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-                            ownProps: IDropdownSearchOwnProps) => ({
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+    ownProps: IDropdownSearchOwnProps,
+) => ({
     onMount: () => {
-      dispatch(addDropdownSearch(ownProps.id, ownProps.defaultOptions, ownProps.defaultSelectedOption, ownProps.supportSingleCustomOption));
+        dispatch(addDropdownSearch(ownProps.id, ownProps.defaultOptions, ownProps.defaultSelectedOption, ownProps.supportSingleCustomOption));
 
-      // TODO: remove this once the component is refactored and the DropdownSearchReducer is not overwriting the defaultSelectedOption passed above anymore.
-      if (ownProps.defaultSelectedOption) {
-        dispatch(updateOptionsDropdownSearch(ownProps.id, ownProps.defaultOptions, ownProps.defaultSelectedOption));
-      }
+        // TODO: remove this once the component is refactored and the DropdownSearchReducer is not overwriting the defaultSelectedOption passed above anymore.
+        if (ownProps.defaultSelectedOption) {
+            dispatch(updateOptionsDropdownSearch(ownProps.id, ownProps.defaultOptions, ownProps.defaultSelectedOption));
+        }
     },
     onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
     onToggleDropdown: () => dispatch(toggleDropdownSearch(ownProps.id)),
@@ -55,7 +57,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
     onClose: () => dispatch(closeDropdownSearch(ownProps.id)),
     updateOptions: (options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(ownProps.id, options)),
-  });
+});
 
 export const DropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =
-  connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(DropdownSearch);
+    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(DropdownSearch);
