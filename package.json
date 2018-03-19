@@ -109,7 +109,7 @@
     "karma-phantomjs-launcher": "1.0.4",
     "karma-source-map-support": "1.2.0",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "2.0.13",
+    "karma-webpack": "3.0.0",
     "lorem-ipsum": "1.0.4",
     "merge-stream": "1.0.1",
     "moment": "2.21.0",
