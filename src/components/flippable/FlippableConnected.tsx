@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
   onRender: () => dispatch(addFlippable(ownProps.id)),
   onFlip: () => dispatch(flip(ownProps.id)),
   onDestroy: () => dispatch(removeFlippable(ownProps.id)),
-  onCancel: () => dispatch(unflip(ownProps.id)),
+  onUnflip: () => dispatch(unflip(ownProps.id)),
 });
 
 export const FlippableConnected: React.ComponentClass<IFlippableProps> =

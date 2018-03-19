@@ -1,8 +1,21 @@
 import { mount, ReactWrapper, shallow } from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, PlacementX, PlacementY } from '../../cornerRibbon/CornerRibbon';
-import { DEFAULT_LOGO_CARD_CLASSNAME, DEFAULT_LOGO_ICON, DEFAULT_LOGO_ICON_CLASSNAME, DEFAULT_LOGO_ICON_SIZE, ILogoCardProps, LogoCard } from '../LogoCard';
+
+import {
+  CornerRibbon,
+  DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME,
+  PlacementX,
+  PlacementY,
+} from '../../cornerRibbon/CornerRibbon';
+import {
+  DEFAULT_LOGO_CARD_CLASSNAME,
+  DEFAULT_LOGO_ICON,
+  DEFAULT_LOGO_ICON_CLASSNAME,
+  DEFAULT_LOGO_ICON_SIZE,
+  ILogoCardProps,
+  LogoCard,
+} from '../LogoCard';
 
 describe('LogoCard', () => {
   let logoCard: ReactWrapper<ILogoCardProps>;

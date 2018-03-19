@@ -6,13 +6,14 @@ export interface IFlippableOwnProps {
   id?: string;
   front?: React.ReactNode;
   back?: React.ReactNode;
+  className?: string;
 }
 
 export interface IFlippableDispatchProps {
   onRender?: () => void;
   onDestroy?: () => void;
   onFlip?: () => void;
-  onCancel?: () => void;
+  onUnflip?: () => void;
 }
 
 export interface IFlippableStateProps {
@@ -23,6 +24,19 @@ export interface IFlippableProps extends IFlippableOwnProps, IFlippableDispatchP
   IFlippableStateProps { }
 
 export class Flippable extends React.Component<IFlippableProps, any> {
+  static CONTAINER_CLASSNAME: string = 'flippable';
+  static FLIPPER_CLASSNAME: string = 'flipper';
+  static sides = {
+    FRONT: 'flipper-front',
+    BACK: 'flipper-back',
+  };
+  static triggers = {
+    FRONT: 'show-front',
+    BACK: 'show-back',
+  };
+  static defaults: Partial<IFlippableProps> = {
+    isFlipped: false,
+  };
 
   private handleClickOnFront() {
     if (this.props.onFlip) {
@@ -30,15 +44,15 @@ export class Flippable extends React.Component<IFlippableProps, any> {
     }
   }
 
-  private handleCancel() {
-    if (this.props.onCancel) {
-      this.props.onCancel();
+  private handleUnflip() {
+    if (this.props.onUnflip) {
+      this.props.onUnflip();
     }
   }
 
   private handleOutsideClick(e: MouseEvent) {
     if (!ReactDOM.findDOMNode(this).contains(e.target as Node) && this.props.isFlipped) {
-      this.handleCancel();
+      this.handleUnflip();
     }
     e.preventDefault();
   }
@@ -61,20 +75,21 @@ export class Flippable extends React.Component<IFlippableProps, any> {
 
   render() {
     const containerClassName = classNames(
-      'flippable',
+      Flippable.CONTAINER_CLASSNAME,
+      this.props.className,
     );
     const flipperClassName = classNames(
-      'flipper',
-      this.props.isFlipped ? 'show-back' : 'show-front',
+      Flippable.FLIPPER_CLASSNAME,
+      this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT,
     );
 
     return (
       <div className={containerClassName} onClick={() => this.handleClickOnFront()}>
         <div className={flipperClassName}>
-          <div className='flipper-front'>
+          <div className={Flippable.sides.FRONT}>
             {this.props.front}
           </div>
-          <div className='flipper-back'>
+          <div className={Flippable.sides.BACK}>
             {this.props.back}
           </div>
         </div>
