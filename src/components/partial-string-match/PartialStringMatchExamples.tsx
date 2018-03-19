@@ -36,7 +36,7 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>PartialStringMatch with partial match (caseInsensitive)</label>
                     <div className='text-dark-grey'>
-                        <PartialStringMatch wholeString='I match even if my partial match is in uppercase' partialMatch={'partial match'.toUpperCase()} caseInsensitive/>
+                        <PartialStringMatch wholeString='I match even if my partial match is in uppercase' partialMatch={'partial match'.toUpperCase()} caseInsensitive />
                     </div>
                 </div>
             </div>
