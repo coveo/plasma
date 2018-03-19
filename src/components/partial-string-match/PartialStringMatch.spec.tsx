@@ -2,7 +2,7 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import {PartialStringMatch} from './PartialStringMatch';
 
-fdescribe('PartialStringMatch', () => {
+describe('PartialStringMatch', () => {
     const testString = 'test-string';
 
     it('should render an empty span if the wholeString is a falsy value', () => {
