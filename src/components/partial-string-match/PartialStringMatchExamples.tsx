@@ -29,9 +29,6 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                     <div className='text-dark-grey'>
                         <PartialStringMatch wholeString='I match in the middle' partialMatch='in the' />
                     </div>
-                    <div className='text-dark-grey'>
-                        <PartialStringMatch wholeString='I match even if my partial match is in uppercase' partialMatch='' />
-                    </div>
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>PartialStringMatch with partial match (caseInsensitive)</label>
