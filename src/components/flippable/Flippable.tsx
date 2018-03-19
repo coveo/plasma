@@ -38,35 +38,19 @@ export class Flippable extends React.Component<IFlippableProps, any> {
     isFlipped: false,
   };
 
-  private handleClickOnFront() {
-    if (this.props.onFlip) {
-      this.props.onFlip();
-    }
-  }
-
-  private handleUnflip() {
-    if (this.props.onUnflip) {
-      this.props.onUnflip();
-    }
-  }
-
-  private handleOutsideClick(e: MouseEvent) {
-    if (!ReactDOM.findDOMNode(this).contains(e.target as Node) && this.props.isFlipped) {
-      this.handleUnflip();
-    }
-    e.preventDefault();
-  }
+  private backside: HTMLDivElement;
+  private frontside: HTMLDivElement;
 
   componentWillMount() {
     if (this.props.onRender) {
       this.props.onRender();
     }
 
-    document.addEventListener('click', (e: MouseEvent) => this.handleOutsideClick(e));
+    document.addEventListener('click', this.handleOutsideClick);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', (e: MouseEvent) => this.handleOutsideClick(e));
+    document.removeEventListener('click', this.handleOutsideClick);
 
     if (this.props.onDestroy) {
       this.props.onDestroy();
@@ -84,16 +68,48 @@ export class Flippable extends React.Component<IFlippableProps, any> {
     );
 
     return (
-      <div className={containerClassName} onClick={() => this.handleClickOnFront()}>
+      <div className={containerClassName}>
         <div className={flipperClassName}>
-          <div className={Flippable.sides.FRONT}>
+          <div
+            className={Flippable.sides.FRONT}
+            onClick={this.handleClickOnFront}
+            ref={(frontside: HTMLDivElement) => this.frontside = frontside}
+          >
             {this.props.front}
           </div>
-          <div className={Flippable.sides.BACK}>
+          <div
+            className={Flippable.sides.BACK}
+            ref={(backside: HTMLDivElement) => this.backside = backside}
+          >
             {this.props.back}
           </div>
         </div>
       </div>
     );
+  }
+
+  private handleClickOnFront = () => {
+    if (this.props.onFlip && !this.props.isFlipped) {
+      this.props.onFlip();
+    }
+  }
+
+  private handleOutsideClick = (e: MouseEvent) => {
+    if (this.props.isFlipped) {
+      const frontside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.frontside);
+      const backside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.backside);
+      const target: Node = e.target as Node;
+
+      if (!backside.contains(target) && !frontside.contains(target)) {
+        this.handleUnflip();
+        e.preventDefault();
+      }
+    }
+  }
+
+  private handleUnflip() {
+    if (this.props.onUnflip) {
+      this.props.onUnflip();
+    }
   }
 }

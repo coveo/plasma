@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Flippable } from '../Flippable';
 import { FlippableConnected } from '../FlippableConnected';
-import { smallDiv } from './FlippableExamplesCommon';
+import { sizedDiv } from './FlippableExamplesCommon';
 
 export class FlippableExamples extends React.Component<any, any> {
 
@@ -12,12 +12,17 @@ export class FlippableExamples extends React.Component<any, any> {
         <h1 className='text-blue mb1 bold'>Flippable List</h1>
         <div className='form-group'>
           <label className='form-control-label'>Default Flippable</label>
-          <div className='form-control'>
+          <div className='form-control flex'>
             <Flippable
-              id='flippable-example-1'
+              id='flippable-example1'
               front={
-                <div style={smallDiv} className='bg-white bold center-align flex' >
-                  Some content on the front
+                <div className='bg-white center bold p2'>
+                  Some content on the front.
+                </div>
+              }
+              back={
+                <div className='bg-light-grey bold p2' >
+                  Some content on the back.
                 </div>
               }
             />
@@ -27,14 +32,34 @@ export class FlippableExamples extends React.Component<any, any> {
           <label className='form-control-label'>Flippable with redux state</label>
           <div className='form-control flex'>
             <FlippableConnected
-              id='flippable-example1'
+              id='flippable-example2'
               front={
-                <div style={smallDiv} className='bg-white center-align flex center bold'>
-                  <span>Some content on the front <br/>(Click me)</span>
+                <div className='bg-white center bold p2'>
+                  <span>Some content on the front <br />(Click me)</span>
                 </div>
               }
               back={
-                <div style={smallDiv} className='bg-light-grey bold center-align flex' >Some content on the back</div>
+                <div className='bg-light-grey bold p2'>
+                  Some content on the back.
+                </div>
+              }
+            />
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Flippable with uneven sized sides and redux state</label>
+          <div className='form-control flex'>
+            <FlippableConnected
+              id='flippable-example3'
+              front={
+                <div className='bg-white center bold p2'>
+                  <span>Some content on the front <br />(Click me)</span>
+                </div>
+              }
+              back={
+                <div className='bg-light-grey bold p2' style={sizedDiv}>
+                  Some content on the back.
+                </div>
               }
             />
           </div>

@@ -1,4 +1,4 @@
-export const smallDiv = {
-    width: '200px',
-    height: '100px',
+export const sizedDiv = {
+    width: '300px',
+    height: '200px',
 };
