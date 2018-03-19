@@ -5,15 +5,15 @@ import {Flippable, IFlippableProps} from '../Flippable';
 
 describe('Flippable', () => {
   let flippable: ReactWrapper<IFlippableProps>;
-  
+
   it('should render without errors', () => {
     expect(() => {
       shallow(<Flippable />);
     }).not.toThrow();
   });
-  
+
   describe('<Flippable />', () => {
-    
+
     beforeEach(() => {
       flippable = mount(
         <Flippable />,
