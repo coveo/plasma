@@ -25,10 +25,10 @@ import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/Corn
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
 import {
-  DatePickerDropdownConnectedExamples,
+    DatePickerDropdownConnectedExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import {
-  DatePickerDropdownConnectedSingleDateExamples,
+    DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
@@ -60,6 +60,7 @@ import {NavigationConnectedExamples} from '../src/components/navigation/examples
 import {NavigationExamples} from '../src/components/navigation/examples/NavigationExamples';
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/OptionsCycleExamples';
+import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
@@ -89,97 +90,98 @@ import {ReactVaporStore} from './ReactVaporStore';
 
 class App extends React.Component<any, any> {
 
-  render() {
-    (window as any).store = ReactVaporStore;
-    return (
-      <Provider store={ReactVaporStore}>
-        <div className='coveo-form'>
-          <div className='form-group'>
-            <label className='form-control-label'>
-              My list of members
-            </label>
-            <div className='form-control'>
-              <MembersExample />
-            </div>
-          </div>
-          <BadgeExamples />
-          <CornerRibbonExamples />
-          <LogoCardExamples />
-          <FlippableExamples />
-          <SliderExamples />
-          <SvgExamples />
-          <LinkSvgExamples />
-          <TitleExamples />
-          <ContentExamples />
-          <ItemBoxExamples />
-          <ListBoxExamples />
-          <ButtonExamples />
-          <BreadcrumbsExamples />
-          <BasicHeaderExamples />
-          <BreadcrumbHeaderExample />
-          <SingleSelectExamples />
-          <MultiSelectExamples />
-          <DropdownSearchExamples />
-          <FlatSelectExamples />
-          <TooltipExamples />
-          <ChosenSelectExamples />
-          <UserFeedbackExample />
-          <SyncFeedbackExample />
-          <LastUpdatedExamples />
-          <LastUpdatedConnectedExamples />
-          <LoadingExamples />
-          <FilterBoxExamples />
-          <FilterBoxConnectedExamples />
-          <FacetExamples />
-          <FacetConnectedExamples />
-          <ModalExamples />
-          <ModalConnectedExamples />
-          <ModalCompositeExamples />
-          <ModalCompositeConnectedExamples />
-          <ModalPromptExamples />
-          <NavigationExamples />
-          <NavigationConnectedExamples />
-          <SubNavigationExamples />
-          <SubNavigationConnectedExamples />
-          <SideNavigationLoadingExample />
-          <TabsExamples />
-          <ActionBarExamples />
-          <ActionBarConnectedExamples />
-          <ItemFilterExamples />
-          <ItemFilterConnectedExamples />
-          <TableRowExamples />
-          <TableRowConnectedExamples />
-          <TableEmptyRowExamples />
-          <TableHeaderExamples />
-          <TableExamples />
-          <TableWithDisabledRowsExamples />
-          <OptionsCycleExamples />
-          <OptionsCycleConnectedExamples />
-          <CalendarConnectedExamples />
-          <DatesSelectionExamples />
-          <DatesSelectionConnectedExamples />
-          <DatePickerBoxExamples />
-          <DatePickerBoxConnectedExamples />
-          <DatePickerDropdownConnectedExamples />
-          <DatePickerDropdownConnectedSingleDateExamples />
-          <MultilineInputExamples />
-          <BlankSlateExample />
-          <ToastExamples />
-          <ToastConnectedExamples />
-          <InputAndInputConnectedExamples />
-          <RadioExamples />
-          <CheckboxExamples />
-          <CheckboxConnectedExamples />
-          <ChildFormExamples />
-          <StepProgressBarExamples />
-          <LabeledValueExamples />
-          <CollapsibleContainerExamples />
-          <SplitLayoutExamples />
-          <JSONEditorExamples />
-        </div>
-      </Provider>
-    );
-  }
+    render() {
+        (window as any).store = ReactVaporStore;
+        return (
+            <Provider store={ReactVaporStore}>
+                <div className='coveo-form'>
+                    <div className='form-group'>
+                        <label className='form-control-label'>
+                            My list of members
+                        </label>
+                        <div className='form-control'>
+                            <MembersExample />
+                        </div>
+                    </div>
+                    <PartialStringMatchExamples />
+                    <BadgeExamples />
+                    <CornerRibbonExamples />
+                    <LogoCardExamples />
+                    <FlippableExamples />
+                    <SliderExamples />
+                    <SvgExamples />
+                    <LinkSvgExamples />
+                    <TitleExamples />
+                    <ContentExamples />
+                    <ItemBoxExamples />
+                    <ListBoxExamples />
+                    <ButtonExamples />
+                    <BreadcrumbsExamples />
+                    <BasicHeaderExamples />
+                    <BreadcrumbHeaderExample />
+                    <SingleSelectExamples />
+                    <MultiSelectExamples />
+                    <DropdownSearchExamples />
+                    <FlatSelectExamples />
+                    <TooltipExamples />
+                    <ChosenSelectExamples />
+                    <UserFeedbackExample />
+                    <SyncFeedbackExample />
+                    <LastUpdatedExamples />
+                    <LastUpdatedConnectedExamples />
+                    <LoadingExamples />
+                    <FilterBoxExamples />
+                    <FilterBoxConnectedExamples />
+                    <FacetExamples />
+                    <FacetConnectedExamples />
+                    <ModalExamples />
+                    <ModalConnectedExamples />
+                    <ModalCompositeExamples />
+                    <ModalCompositeConnectedExamples />
+                    <ModalPromptExamples />
+                    <NavigationExamples />
+                    <NavigationConnectedExamples />
+                    <SubNavigationExamples />
+                    <SubNavigationConnectedExamples />
+                    <SideNavigationLoadingExample />
+                    <TabsExamples />
+                    <ActionBarExamples />
+                    <ActionBarConnectedExamples />
+                    <ItemFilterExamples />
+                    <ItemFilterConnectedExamples />
+                    <TableRowExamples />
+                    <TableRowConnectedExamples />
+                    <TableEmptyRowExamples />
+                    <TableHeaderExamples />
+                    <TableExamples />
+                    <TableWithDisabledRowsExamples />
+                    <OptionsCycleExamples />
+                    <OptionsCycleConnectedExamples />
+                    <CalendarConnectedExamples />
+                    <DatesSelectionExamples />
+                    <DatesSelectionConnectedExamples />
+                    <DatePickerBoxExamples />
+                    <DatePickerBoxConnectedExamples />
+                    <DatePickerDropdownConnectedExamples />
+                    <DatePickerDropdownConnectedSingleDateExamples />
+                    <MultilineInputExamples />
+                    <BlankSlateExample />
+                    <ToastExamples />
+                    <ToastConnectedExamples />
+                    <InputAndInputConnectedExamples />
+                    <RadioExamples />
+                    <CheckboxExamples />
+                    <CheckboxConnectedExamples />
+                    <ChildFormExamples />
+                    <StepProgressBarExamples />
+                    <LabeledValueExamples />
+                    <CollapsibleContainerExamples />
+                    <SplitLayoutExamples />
+                    <JSONEditorExamples />
+                </div>
+            </Provider>
+        );
+    }
 }
 
 ReactDOMRender(<App />, document.getElementById('App'));

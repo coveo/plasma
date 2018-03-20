@@ -1,31 +1,31 @@
 import * as React from 'react';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { IBasicActionProps } from './Action';
-import { LinkAction } from './LinkAction';
-import { TriggerAction } from './TriggerAction';
-import { TriggerActionConnected } from './TriggerActionConnected';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+import {IBasicActionProps} from './Action';
+import {LinkAction} from './LinkAction';
+import {TriggerAction} from './TriggerAction';
+import {TriggerActionConnected} from './TriggerActionConnected';
 
 export interface IPrimaryActionOwnProps extends React.ClassAttributes<PrimaryAction>, IBasicActionProps {
-  parentId?: string;
+    parentId?: string;
 }
 
-export interface IPrimaryActionStateProps extends IReduxStatePossibleProps { }
+export interface IPrimaryActionStateProps extends IReduxStatePossibleProps {}
 
-export interface IPrimaryActionProps extends IPrimaryActionOwnProps, IPrimaryActionStateProps { }
+export interface IPrimaryActionProps extends IPrimaryActionOwnProps, IPrimaryActionStateProps {}
 
 export class PrimaryAction extends React.Component<IPrimaryActionProps, any> {
 
-  render() {
-    const action: JSX.Element = this.props.action.link ?
-      <LinkAction action={this.props.action} /> :
-      (this.props.withReduxState ?
-        <TriggerActionConnected action={this.props.action} parentId={this.props.parentId} /> :
-        <TriggerAction action={this.props.action} />);
+    render() {
+        const action: JSX.Element = this.props.action.link ?
+            <LinkAction action={this.props.action} /> :
+            (this.props.withReduxState ?
+                <TriggerActionConnected action={this.props.action} parentId={this.props.parentId} /> :
+                <TriggerAction action={this.props.action} />);
 
-    return (
-      <div>
-        {action}
-      </div>
-    );
-  }
+        return (
+            <div>
+                {action}
+            </div>
+        );
+    }
 }
