@@ -18,12 +18,12 @@ export class FlippableExamples extends React.Component<any, any> {
                             front={
                                 <div className='bg-white center bold p2'>
                                     Some content on the front.
-                </div>
+                                </div>
                             }
                             back={
                                 <div className='bg-light-grey bold p2' >
                                     Some content on the back.
-                </div>
+                                </div>
                             }
                         />
                     </div>
@@ -41,7 +41,7 @@ export class FlippableExamples extends React.Component<any, any> {
                             back={
                                 <div className='bg-light-grey bold p2'>
                                     Some content on the back.
-                </div>
+                                </div>
                             }
                         />
                     </div>
@@ -59,7 +59,7 @@ export class FlippableExamples extends React.Component<any, any> {
                             back={
                                 <div className='bg-light-grey bold p2' style={sizedDiv}>
                                     Some content on the back.
-                </div>
+                                </div>
                             }
                         />
                     </div>
