@@ -1,5 +1,3 @@
-import * as _ from 'underscore';
-
 import {IReduxAction} from '../../../Index';
 import {FlippableActions, IFlippablePayload} from '../FlippableActions';
 import {
