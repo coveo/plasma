@@ -1,4 +1,4 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils';
 
 export const FlippableActions = {
     add: 'ADD_FLIPPABLE_CARD',

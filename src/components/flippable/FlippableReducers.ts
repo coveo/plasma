@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
 
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { FlippableActions, IFlippablePayload } from './FlippableActions';
+import {IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxAction} from '../../utils/ReduxUtils';
+import {FlippableActions, IFlippablePayload} from './FlippableActions';
 
 export interface IFlippableState {
     id: string;
@@ -16,11 +16,13 @@ export const flippableInitialState: IFlippableState = {
 
 export const flippablesInitialState: IFlippableState[] = [];
 
-export const flippableReducer = (state: IFlippableState = flippableInitialState,
-                                 action: IReduxAction<any>): IFlippableState => {
+export const flippableReducer = (
+    state: IFlippableState = flippableInitialState,
+    action: IReduxAction<any>,
+): IFlippableState => {
     switch (action.type) {
         case FlippableActions.add:
-        return addFlippable(state, action);
+            return addFlippable(state, action);
         case FlippableActions.flip:
             return flip(state, action);
         case FlippableActions.unflip:
@@ -30,8 +32,10 @@ export const flippableReducer = (state: IFlippableState = flippableInitialState,
     }
 };
 
-export const flippablesReducer = (state: IFlippableState[] = flippablesInitialState,
-                                  action: IReduxAction<IReduxActionsPayload>): IFlippableState[] => {
+export const flippablesReducer = (
+    state: IFlippableState[] = flippablesInitialState,
+    action: IReduxAction<IReduxActionsPayload>,
+): IFlippableState[] => {
     switch (action.type) {
         case FlippableActions.add:
             return [

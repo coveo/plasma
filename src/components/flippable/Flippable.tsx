@@ -3,113 +3,113 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 export interface IFlippableOwnProps {
-  id?: string;
-  front?: React.ReactNode;
-  back?: React.ReactNode;
-  className?: string;
+    id?: string;
+    front?: React.ReactNode;
+    back?: React.ReactNode;
+    className?: string;
 }
 
 export interface IFlippableDispatchProps {
-  onRender?: () => void;
-  onDestroy?: () => void;
-  onFlip?: () => void;
-  onUnflip?: () => void;
+    onRender?: () => void;
+    onDestroy?: () => void;
+    onFlip?: () => void;
+    onUnflip?: () => void;
 }
 
 export interface IFlippableStateProps {
-  isFlipped?: boolean;
+    isFlipped?: boolean;
 }
 
 export interface IFlippableProps extends IFlippableOwnProps, IFlippableDispatchProps,
-  IFlippableStateProps { }
+    IFlippableStateProps {}
 
 export class Flippable extends React.Component<IFlippableProps, any> {
-  static CONTAINER_CLASSNAME: string = 'flippable';
-  static FLIPPER_CLASSNAME: string = 'flipper';
-  static sides = {
-    FRONT: 'flipper-front',
-    BACK: 'flipper-back',
-  };
-  static triggers = {
-    FRONT: 'show-front',
-    BACK: 'show-back',
-  };
-  static defaults: Partial<IFlippableProps> = {
-    isFlipped: false,
-  };
+    static CONTAINER_CLASSNAME: string = 'flippable';
+    static FLIPPER_CLASSNAME: string = 'flipper';
+    static sides = {
+        FRONT: 'flipper-front',
+        BACK: 'flipper-back',
+    };
+    static triggers = {
+        FRONT: 'show-front',
+        BACK: 'show-back',
+    };
+    static defaults: Partial<IFlippableProps> = {
+        isFlipped: false,
+    };
 
-  private backside: HTMLDivElement;
-  private frontside: HTMLDivElement;
+    private backside: HTMLDivElement;
+    private frontside: HTMLDivElement;
 
-  componentWillMount() {
-    if (this.props.onRender) {
-      this.props.onRender();
+    componentWillMount() {
+        if (this.props.onRender) {
+            this.props.onRender();
+        }
+
+        document.addEventListener('click', this.handleOutsideClick);
     }
 
-    document.addEventListener('click', this.handleOutsideClick);
-  }
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleOutsideClick);
 
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleOutsideClick);
-
-    if (this.props.onDestroy) {
-      this.props.onDestroy();
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
     }
-  }
 
-  render() {
-    const containerClassName = classNames(
-      Flippable.CONTAINER_CLASSNAME,
-      this.props.className,
-    );
-    const flipperClassName = classNames(
-      Flippable.FLIPPER_CLASSNAME,
-      this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT,
-    );
+    render() {
+        const containerClassName = classNames(
+            Flippable.CONTAINER_CLASSNAME,
+            this.props.className,
+        );
+        const flipperClassName = classNames(
+            Flippable.FLIPPER_CLASSNAME,
+            this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT,
+        );
 
-    return (
-      <div className={containerClassName}>
-        <div className={flipperClassName}>
-          <div
-            className={Flippable.sides.FRONT}
-            onClick={this.handleClickOnFront}
-            ref={(frontside: HTMLDivElement) => this.frontside = frontside}
-          >
-            {this.props.front}
-          </div>
-          <div
-            className={Flippable.sides.BACK}
-            ref={(backside: HTMLDivElement) => this.backside = backside}
-          >
-            {this.props.back}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  private handleClickOnFront = () => {
-    if (this.props.onFlip && !this.props.isFlipped) {
-      this.props.onFlip();
+        return (
+            <div className={containerClassName}>
+                <div className={flipperClassName}>
+                    <div
+                        className={Flippable.sides.FRONT}
+                        onClick={this.handleClickOnFront}
+                        ref={(frontside: HTMLDivElement) => this.frontside = frontside}
+                    >
+                        {this.props.front}
+                    </div>
+                    <div
+                        className={Flippable.sides.BACK}
+                        ref={(backside: HTMLDivElement) => this.backside = backside}
+                    >
+                        {this.props.back}
+                    </div>
+                </div>
+            </div>
+        );
     }
-  }
 
-  private handleOutsideClick = (e: MouseEvent) => {
-    if (this.props.isFlipped) {
-      const frontside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.frontside);
-      const backside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.backside);
-      const target: Node = e.target as Node;
-
-      if (!backside.contains(target) && !frontside.contains(target)) {
-        this.handleUnflip();
-        e.preventDefault();
-      }
+    private handleClickOnFront = () => {
+        if (this.props.onFlip && !this.props.isFlipped) {
+            this.props.onFlip();
+        }
     }
-  }
 
-  private handleUnflip() {
-    if (this.props.onUnflip) {
-      this.props.onUnflip();
+    private handleOutsideClick = (e: MouseEvent) => {
+        if (this.props.isFlipped) {
+            const frontside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.frontside);
+            const backside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.backside);
+            const target: Node = e.target as Node;
+
+            if (!backside.contains(target) && !frontside.contains(target)) {
+                this.handleUnflip();
+                e.preventDefault();
+            }
+        }
     }
-  }
+
+    private handleUnflip() {
+        if (this.props.onUnflip) {
+            this.props.onUnflip();
+        }
+    }
 }
