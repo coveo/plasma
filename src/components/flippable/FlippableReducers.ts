@@ -22,9 +22,9 @@ export const flippableReducer = (state: IFlippableState = flippableInitialState,
         case FlippableActions.add:
         return addFlippable(state, action);
         case FlippableActions.flip:
-            return flipCard(state, action);
+            return flip(state, action);
         case FlippableActions.unflip:
-            return unflipCard(state, action);
+            return unflip(state, action);
         default:
             return state;
     }
@@ -57,13 +57,13 @@ const addFlippable = (state: IFlippableState, action: IReduxAction<IFlippablePay
     flipped: state.flipped,
 });
 
-const flipCard = (state: IFlippableState, action: IReduxAction<IFlippablePayload>): IFlippableState => {
+const flip = (state: IFlippableState, action: IReduxAction<IFlippablePayload>): IFlippableState => {
     return state.id !== action.payload.id ? state : _.extend({}, state, {
         flipped: true,
     });
 };
 
-const unflipCard = (state: IFlippableState, action: IReduxAction<IFlippablePayload>): IFlippableState => {
+const unflip = (state: IFlippableState, action: IReduxAction<IFlippablePayload>): IFlippableState => {
     return state.id !== action.payload.id ? state : _.extend({}, state, {
         flipped: false,
     });

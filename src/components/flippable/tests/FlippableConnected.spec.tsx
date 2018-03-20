@@ -6,7 +6,7 @@ import { IReactVaporState } from '../../../ReactVapor';
 import { clearState } from '../../../utils/ReduxUtils';
 import { TestUtils } from '../../../utils/TestUtils';
 import { Flippable, IFlippableProps } from '../Flippable';
-import { flip, unflip } from '../FlippableActions';
+import { flip } from '../FlippableActions';
 import { FlippableConnected } from '../FlippableConnected';
 
 describe('Flippable', () => {
