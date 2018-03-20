@@ -253,3 +253,18 @@ export {SlideY} from './animations/SlideY';
 
 // Utils
 export {TooltipPlacement} from './utils/TooltipUtils';
+
+// Badge
+export {Badge, IBadgeProps} from './components/badge/Badge';
+
+// CornerRibbon
+export {CornerRibbon, ICornerRibbonProps} from './components/cornerRibbon/CornerRibbon';
+
+// LogoCard
+export {LogoCard, ILogoCardProps} from './components/logoCard/LogoCard';
+
+// Flippable
+export {Flippable, IFlippableProps} from './components/flippable/Flippable';
+export {FlippableConnected} from './components/flippable/FlippableConnected';
+export {flippablesReducer, flippableReducer} from './components/flippable/FlippableReducers';
+export {IFlippablePayload, addFlippable, removeFlippable, flip, unflip, FlippableAction} from './components/flippable/FlippableActions';
