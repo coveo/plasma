@@ -1,0 +1,67 @@
+.search-bar {
+  height: $input-height;
+  min-width: $search-bar-min-width;
+
+  border: $default-border;
+  border-radius: $border-radius;
+}
+
+.search-bar-input {
+  float: left;
+  width: calc(100% - #{$search-bar-width-without-input});
+  height: $input-height;
+  margin-left: $search-bar-input-margin-left;
+  margin-top: -$default-border-size * 2; // offset container border for input text and placeholder to be perfectly centered
+  background-color: transparent;
+
+  border: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.search-bar-icon-container {
+  float: right;
+  margin: $search-bar-icon-margin;
+
+  &, & svg {
+    width: $search-bar-icon-size;
+    height: $search-bar-icon-size;
+  }
+
+  & svg {
+    fill: $medium-blue;
+  }
+}
+
+.search-bar-disabled svg {
+  fill: $light-grey;
+}
+
+.search-bar-loading .search-bar-icon-container {
+  position: relative;
+
+  transform: translate(-2px, -2px) scale(1) translate(2px, 2px);
+}
+
+.search-bar-spinner {
+  animation: loading-spinner 1s linear infinite;
+
+  &, &:after {
+    position: absolute;
+    top: $search-bar-spinner-offset;
+    left: $search-bar-spinner-offset;
+
+    width: $search-bar-spinner-size;
+    height: $search-bar-spinner-size;
+
+    border: $search-bar-spinner-border;
+    border-top-color: transparent;
+    border-radius: 50%;
+  }
+
+  &:after {
+    transform: rotate(90deg);
+  }
+}
