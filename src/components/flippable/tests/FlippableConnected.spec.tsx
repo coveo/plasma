@@ -6,7 +6,7 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {Flippable, IFlippableProps} from '../Flippable';
-import {flip} from '../FlippableActions';
+import {changeFlippableSide} from '../FlippableActions';
 import {FlippableConnected} from '../FlippableConnected';
 
 describe('Flippable', () => {
@@ -95,7 +95,7 @@ describe('Flippable', () => {
         });
 
         it('should unflip the flippable component when calling onUnflip prop', () => {
-            store.dispatch(flip(FLIPPABLE_BASIC_PROPS.id));
+            store.dispatch(changeFlippableSide(FLIPPABLE_BASIC_PROPS.id, true));
 
             expect(flippable.props().isFlipped).toBe(true);
 

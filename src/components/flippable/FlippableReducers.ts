@@ -2,7 +2,7 @@ import * as _ from 'underscore';
 
 import {IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {FlippableAction, IFlippablePayload} from './FlippableActions';
+import {FlippableAction, IFlippableChangeSidePayload, IFlippablePayload} from './FlippableActions';
 
 export interface IFlippableState {
     id: string;
@@ -23,10 +23,8 @@ export const flippableReducer = (
     switch (action.type) {
         case FlippableAction.add:
             return addFlippable(state, action);
-        case FlippableAction.flip:
-            return flip(state, action);
-        case FlippableAction.unflip:
-            return unflip(state, action);
+        case FlippableAction.changeSide:
+            return changeSide(state, action);
         default:
             return state;
     }
@@ -46,8 +44,7 @@ export const flippablesReducer = (
             return _.reject(state, (flippable: IFlippableState) => {
                 return action.payload.id === flippable.id;
             });
-        case FlippableAction.flip:
-        case FlippableAction.unflip:
+        case FlippableAction.changeSide:
             return state.map((flippable: IFlippableState) =>
                 flippableReducer(flippable, action),
             );
@@ -61,14 +58,8 @@ const addFlippable = (state: IFlippableState, action: IReduxAction<IFlippablePay
     flipped: state.flipped,
 });
 
-const flip = (state: IFlippableState, action: IReduxAction<IFlippablePayload>): IFlippableState => {
+const changeSide = (state: IFlippableState, action: IReduxAction<IFlippableChangeSidePayload>): IFlippableState => {
     return state.id !== action.payload.id ? state : _.extend({}, state, {
-        flipped: true,
-    });
-};
-
-const unflip = (state: IFlippableState, action: IReduxAction<IFlippablePayload>): IFlippableState => {
-    return state.id !== action.payload.id ? state : _.extend({}, state, {
-        flipped: false,
+        flipped: action.payload.flipped,
     });
 };

@@ -1,14 +1,17 @@
 import {IReduxAction} from '../../utils/ReduxUtils';
 
 export const FlippableAction = {
-    add: 'ADD_FLIPPABLE_CARD',
-    remove: 'REMOVE_FLIPPABLE_CARD',
-    flip: 'FLIP',
-    unflip: 'UNFLIP',
+    add: 'ADD_FLIPPABLE',
+    remove: 'REMOVE_FLIPPABLE',
+    changeSide: 'CHANGE_FLIPPABLE_SIDE',
 };
 
 export interface IFlippablePayload {
     id: string;
+}
+
+export interface IFlippableChangeSidePayload extends IFlippablePayload {
+    flipped: boolean;
 }
 
 export const addFlippable = (id: string): IReduxAction<IFlippablePayload> => ({
@@ -25,16 +28,10 @@ export const removeFlippable = (id: string): IReduxAction<IFlippablePayload> => 
     },
 });
 
-export const flip = (id: string): IReduxAction<IFlippablePayload> => ({
-    type: FlippableAction.flip,
+export const changeFlippableSide = (id: string, flipped: boolean): IReduxAction<IFlippableChangeSidePayload> => ({
+    type: FlippableAction.changeSide,
     payload: {
         id,
-    },
-});
-
-export const unflip = (id: string): IReduxAction<IFlippablePayload> => ({
-    type: FlippableAction.unflip,
-    payload: {
-        id,
+        flipped,
     },
 });
