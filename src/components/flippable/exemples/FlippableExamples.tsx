@@ -2,11 +2,15 @@ import * as React from 'react';
 
 import {Flippable} from '../Flippable';
 import {FlippableConnected} from '../FlippableConnected';
-import {sizedDiv} from './FlippableExamplesCommon';
 
 export class FlippableExamples extends React.Component<any, any> {
 
     render() {
+        const sizedDiv = {
+            width: '300px',
+            height: '200px',
+        };
+
         return (
             <div className='mt2'>
                 <h1 className='text-blue mb1 bold'>Flippable List</h1>
