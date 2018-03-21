@@ -19,7 +19,7 @@ const gzipOptions = config.gzipOptions;
 const useMinifiedSources = gutil.env.min;
 const useGzippedSources = gutil.env.gzip;
 
-gulp.task('sass', 'Compile sass files to dist folder', ['sprites'], (done) => {
+gulp.task('sass', 'Compile sass files to dist folder', ['palette', 'sprites'], (done) => {
     return gulp.src('./scss/guide.scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', (err) => {

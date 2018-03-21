@@ -49,7 +49,7 @@ gulp.task('svg:concat', 'Concat all svg files into one in a json format and expo
         }))
         .pipe(cheerio(($) => {
             // tslint:disable-next-line
-            $('svg').each(function() {
+            $('svg').each(function () {
                 const svg = $(this);
                 if (svg) {
                     const attrs = svg[0].attribs;
