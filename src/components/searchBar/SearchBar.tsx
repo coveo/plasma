@@ -6,30 +6,54 @@ import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {IInputProps, Input} from '../input/Input';
 import {Svg} from '../svg/Svg';
 
-export interface SearchBarOwnProps {
+export interface ISearchBarOwnProps {
     id: string;
     containerClassNames?: IClassName;
     inputClassNames?: IClassName;
     placeholder?: string;
     width?: string;
+    onSearch?: (
+        event: React.KeyboardEvent<HTMLInputElement> | React.ChangeEvent<HTMLInputElement>,
+        filterText: string,
+        disabled: boolean,
+    ) => void;
+    additionalInputProps?: Partial<IInputProps>;
 }
 
-export interface SearchBarStateProps extends IReduxStatePossibleProps {
+export interface ISearchBarStateProps extends IReduxStatePossibleProps {
     disabled?: boolean;
     searching?: boolean;
     searchText?: string;
 }
 
-export interface SearchBarProps extends SearchBarOwnProps, SearchBarStateProps {}
+export interface ISearchBarDispatchProps {
+    onMount?: () => void;
+    onUnmount?: () => void;
+}
 
-export class SearchBar extends React.Component<SearchBarProps> {
-    static defaultProps: Partial<SearchBarProps> = {
+export interface ISearchBarProps extends ISearchBarOwnProps, ISearchBarStateProps, ISearchBarDispatchProps {}
+
+export class SearchBar extends React.Component<ISearchBarProps> {
+    static defaultProps: Partial<ISearchBarProps> = {
         placeholder: '',
         disabled: false,
         searching: false,
         searchText: '',
         width: '400px',
+        additionalInputProps: {},
     };
+
+    componentWillMount() {
+        if (this.props.onMount) {
+            this.props.onMount();
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.onUnmount) {
+            this.props.onUnmount();
+        }
+    }
 
     render() {
         return (
@@ -75,6 +99,9 @@ export class SearchBar extends React.Component<SearchBarProps> {
             disabled: this.props.disabled || this.props.searching,
             value: this.props.searchText,
             rawInput: true,
+            onKeyUp: (event) => this.props.onSearch(event, this.props.searchText, this.props.disabled),
+            onChangeCallback: (event) => this.props.onSearch(event, this.props.searchText, this.props.disabled),
+            ...this.props.additionalInputProps,
         };
 
         return this.props.withReduxState

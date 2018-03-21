@@ -23,6 +23,7 @@ export interface IInputOwnProps {
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
     rawInput?: boolean;
+    onChangeCallback?: (event: React.ChangeEvent<HTMLInputElement>, value?: string, valid?: boolean) => void;
 }
 
 export interface IInputStateProps {
@@ -84,12 +85,19 @@ export class Input extends React.Component<IInputProps, any> {
         }
     }
 
-    private handleChange() {
+    private handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         if (this.props.onChange) {
             const validOnChange = this.props.validateOnChange
                 && this.props.validate
                 && this.props.validate(this.innerInput.value);
             this.props.onChange(this.innerInput.value, validOnChange);
+        }
+
+        if (this.props.onChangeCallback) {
+            const validOnChange = this.props.validateOnChange
+                && this.props.validate
+                && this.props.validate(this.innerInput.value);
+            this.props.onChangeCallback(event, this.innerInput.value, validOnChange);
         }
     }
 
@@ -125,7 +133,7 @@ export class Input extends React.Component<IInputProps, any> {
                 defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
                 ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
                 onBlur={() => this.handleBlur()}
-                onChange={() => this.handleChange()}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.handleChange(event)}
                 onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
                 placeholder={this.props.placeholder}
                 checked={!!this.props.checked}

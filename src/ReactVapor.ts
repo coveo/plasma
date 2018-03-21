@@ -22,6 +22,7 @@ import {IPaginationState} from './components/navigation/pagination/NavigationPag
 import {IPerPageState} from './components/navigation/perPage/NavigationPerPageReducers';
 import {IOptionPickerState} from './components/optionPicker/OptionPickerReducers';
 import {IOptionsCycleState} from './components/optionsCycle/OptionsCycleReducers';
+import {ISearchBarState} from './components/searchBar/SearchBarReducers';
 import {ISelectState} from './components/select/SelectReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
@@ -60,6 +61,7 @@ export interface IReactVaporState {
     checkboxes?: ICheckboxState[];
     inputs?: IInputState[];
     collapsibleContainers?: ICollapsibleContainerState[];
+    searchBars: ISearchBarState[];
 }
 
 export interface IReduxActionsPayload {
@@ -98,4 +100,5 @@ export interface IReduxActionsPayload {
     valid?: boolean;
     expanded?: boolean;
     disabled?: boolean;
+    searching?: boolean;
 }
