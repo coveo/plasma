@@ -11,7 +11,6 @@
   width: calc(100% - #{$search-bar-width-without-input});
   height: $input-height;
   margin-left: $search-bar-input-margin-left;
-  margin-top: -$default-border-size * 2; // offset container border for input text and placeholder to be perfectly centered
   background-color: transparent;
 
   border: none;
