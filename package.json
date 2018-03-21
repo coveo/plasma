@@ -74,7 +74,7 @@
     "@types/underscore": "1.8.7",
     "@types/underscore.string": "0.0.32",
     "@types/webpack-env": "1.13.5",
-    "autoprefixer": "8.1.0",
+    "autoprefixer": "8.2.0",
     "bithound": "1.7.0",
     "chosen-js": "1.8.2",
     "classnames": "2.2.5",
