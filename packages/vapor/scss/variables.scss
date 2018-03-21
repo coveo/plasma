@@ -1,6 +1,7 @@
 // General
 $border-radius: 2px;
-$default-border: 1px solid $medium-grey;
+$default-border-size: 1px;
+$default-border: $default-border-size solid $medium-grey;
 $big-title-font-size: 24px;
 $default-line-height: 1;
 $banner-height: 60px;
@@ -472,3 +473,14 @@ $material-card-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 $content-placeholder-border-radius: 4px;
 $content-placeholder-opacity-full: 1;
 $content-placeholder-opacity-see-through: 0.6;
+
+// Search bar
+$search-bar-min-width: 200px;
+$search-bar-icon-size: 13px;
+$search-bar-icon-margin: 10px;
+$search-bar-input-margin-left: 10px;
+$search-bar-width-without-input: $search-bar-icon-size + $search-bar-icon-margin * 2 + $search-bar-input-margin-left;
+$search-bar-spinner-border: 2px solid $medium-blue;
+$search-bar-spinner-border-radius: 50%;
+$search-bar-spinner-offset: 6px;
+$search-bar-spinner-size: 16px;
