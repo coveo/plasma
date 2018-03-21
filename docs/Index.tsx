@@ -39,6 +39,7 @@ import {FacetExamples} from '../src/components/facets/examples/FacetExamples';
 import {FilterBoxConnectedExamples} from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
 import {FilterBoxExamples} from '../src/components/filterBox/examples/FilterBoxExamples';
 import {FlatSelectExamples} from '../src/components/flatSelect/examples/FlatSelectExamples';
+import {FlippableExamples} from '../src/components/flippable/exemples/FlippableExamples';
 import {BasicHeaderExamples} from '../src/components/headers/examples/BasicHeaderExamples';
 import {BreadcrumbHeaderExample} from '../src/components/headers/examples/BreadcrumbHeaderExample';
 import {InputAndInputConnectedExamples} from '../src/components/input/examples/InputAndInputConnectedExamples';
@@ -97,7 +98,7 @@ class App extends React.Component<any, any> {
                     <div className='form-group'>
                         <label className='form-control-label'>
                             My list of members
-            </label>
+                        </label>
                         <div className='form-control'>
                             <MembersExample />
                         </div>
@@ -106,6 +107,7 @@ class App extends React.Component<any, any> {
                     <BadgeExamples />
                     <CornerRibbonExamples />
                     <LogoCardExamples />
+                    <FlippableExamples />
                     <SliderExamples />
                     <SvgExamples />
                     <LinkSvgExamples />

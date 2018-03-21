@@ -1,5 +1,6 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk';
+
 import {actionBarsReducer} from '../components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReducers';
 import {checkboxesReducer} from '../components/checkbox/CheckboxReducers';
@@ -10,6 +11,7 @@ import {dropdownsSearchReducer} from '../components/dropdownSearch/DropdownSearc
 import {facetsReducer} from '../components/facets/FacetReducers';
 import {filterBoxesReducer} from '../components/filterBox/FilterBoxReducers';
 import {flatSelectsReducer} from '../components/flatSelect/FlatSelectReducers';
+import {flippablesReducer} from '../components/flippable/FlippableReducers';
 import {promptsReducer} from '../components/inlinePrompt/InlinePromptReducers';
 import {inputsReducer} from '../components/input/InputReducers';
 import {lastUpdatedCompositeReducer} from '../components/lastUpdated/LastUpdatedReducers';
@@ -71,6 +73,7 @@ export class TestUtils {
             checkboxes: checkboxesReducer,
             collapsibleContainers: collapsibleContainersReducer,
             inputs: inputsReducer,
+            flippables: flippablesReducer,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
