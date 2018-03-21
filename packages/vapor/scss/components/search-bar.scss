@@ -11,6 +11,7 @@
   width: calc(100% - #{$search-bar-width-without-input});
   height: $input-height;
   margin-left: $search-bar-input-margin-left;
+  margin-top: -$default-border-size;
   background-color: transparent;
 
   border: none;
