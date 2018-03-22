@@ -1,9 +1,9 @@
 export interface IMemberAttributes {
-  email?: string;
-  sendEmail?: boolean;
+    email?: string;
+    sendEmail?: boolean;
 }
 
 export const defaultMemberAttributes: IMemberAttributes = {
-  email: '',
-  sendEmail: false,
+    email: '',
+    sendEmail: false,
 };

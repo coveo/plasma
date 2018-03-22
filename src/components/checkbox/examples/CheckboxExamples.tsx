@@ -1,26 +1,26 @@
 import * as React from 'react';
-import { Label } from '../../input/Label';
-import { Checkbox } from '../Checkbox';
+import {Label} from '../../input/Label';
+import {Checkbox} from '../Checkbox';
 
 export interface ICheckboxWithStateState {
-  checked?: boolean;
+    checked?: boolean;
 }
 
 export class CheckboxExamples extends React.Component<any, ICheckboxWithStateState> {
-  constructor(props: any, state: ICheckboxWithStateState) {
-    super(props, state);
-    this.state = {
-      checked: false,
-    };
-  }
-
-  private handleClick() {
-    if (!this.props.disabled) {
-      this.setState({
-        checked: !this.state.checked,
-      });
+    constructor(props: any, state: ICheckboxWithStateState) {
+        super(props, state);
+        this.state = {
+            checked: false,
+        };
     }
-  }
+
+    private handleClick() {
+        if (!this.props.disabled) {
+            this.setState({
+                checked: !this.state.checked,
+            });
+        }
+    }
 
   render() {
     return (

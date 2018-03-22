@@ -1,10 +1,10 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { ITableHeadingAttribute, ITableProps } from '../Table';
-import { TableChildComponent } from '../TableConstants';
-import { TableHeader } from '../TableHeader';
-import { ITableHeaderCellOwnProps } from '../TableHeaderCell';
-import { getTableChildComponentId } from '../TableUtils';
+import {ITableHeadingAttribute, ITableProps} from '../Table';
+import {TableChildComponent} from '../TableConstants';
+import {TableHeader} from '../TableHeader';
+import {ITableHeaderCellOwnProps} from '../TableHeaderCell';
+import {getTableChildComponentId} from '../TableUtils';
 
 export const TableChildHeader = (props: ITableProps): JSX.Element => {
   const tableHeaderCells: ITableHeaderCellOwnProps[] = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
@@ -14,19 +14,19 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
       ? { tableId: props.id, attributeToSort: headingAttribute.attributeName }
       : {};
 
-    return { id, title, ...tableSortInformation };
-  });
+    return {id, title, ...tableSortInformation};
+    });
 
   const headerClass = classNames(
-    'mod-no-border-top',
-    { 'mod-deactivate-pointer': !!props.tableCompositeState.isLoading },
-  );
+        'mod-no-border-top',
+        {'mod-deactivate-pointer': !!props.tableCompositeState.isLoading},
+    );
 
   return (
-    <TableHeader
-      headerClass={headerClass}
-      columns={[...tableHeaderCells, { title: '' }]}
-      withReduxState
-    />
-  );
+        <TableHeader
+            headerClass={headerClass}
+            columns={[...tableHeaderCells, {title: ''}]}
+            withReduxState
+        />
+    );
 };
