@@ -78,7 +78,7 @@ export class TableRowExamples extends React.Component<{}, TableRowExamplesState>
         clearTimeout(this.timeout);
         if (!this.state.third) {
             this.setState({isLoading: true});
-            this.timeout = setTimeout(() => this.setState({isLoading: false}), 2000);
+            this.timeout = window.setTimeout(() => this.setState({isLoading: false}), 2000);
         }
 
         this.setState({third: !this.state.third});
