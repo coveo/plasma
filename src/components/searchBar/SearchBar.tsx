@@ -2,22 +2,21 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {InputConnected} from '../../Index';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {keyCode} from '../../utils/InputUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {IInputProps, Input} from '../input/Input';
 import {Svg} from '../svg/Svg';
 
 export interface ISearchBarOwnProps {
     id: string;
+    onSearch: (filterText: string) => void;
     containerClassNames?: IClassName;
     inputClassNames?: IClassName;
     placeholder?: string;
-    width?: string;
-    onSearch?: (
-        event: React.KeyboardEvent<HTMLInputElement> | React.ChangeEvent<HTMLInputElement>,
-        filterText: string,
-        disabled: boolean,
-    ) => void;
+    minWidth?: string;
+    maxWidth?: string;
     additionalInputProps?: Partial<IInputProps>;
+    onChangeCallBack?: (event: React.ChangeEvent<HTMLInputElement>) => any;
 }
 
 export interface ISearchBarStateProps extends IReduxStatePossibleProps {
@@ -39,7 +38,8 @@ export class SearchBar extends React.Component<ISearchBarProps> {
         disabled: false,
         searching: false,
         searchText: '',
-        width: '400px',
+        minWidth: '500px',
+        maxWidth: '500px',
         additionalInputProps: {},
     };
 
@@ -57,7 +57,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
 
     render() {
         return (
-            <div className={this.getContainerClasses()} style={{width: this.props.width}}>
+            <div className={this.getContainerClasses()} style={{minWidth: this.props.minWidth, maxWidth: this.props.maxWidth}}>
                 {this.getInput()}
                 <div className='search-bar-icon-container'>
                     {this.getSearchIcon()}
@@ -85,9 +85,13 @@ export class SearchBar extends React.Component<ISearchBarProps> {
     }
 
     private getSearchIcon(): JSX.Element {
-        return !this.props.searching
+        const searchIcon = !this.props.searching
             ? <Svg svgName='search' svgClass={this.props.disabled ? 'fill-light-grey' : 'fill-medium-blue'} />
             : <div className='search-bar-spinner'></div>;
+
+        return !this.props.searching && !this.props.disabled
+            ? <span onClick={() => this.search()}>{searchIcon}</span>
+            : searchIcon;
     }
 
     private getInput(): JSX.Element {
@@ -99,13 +103,19 @@ export class SearchBar extends React.Component<ISearchBarProps> {
             disabled: this.props.disabled || this.props.searching,
             value: this.props.searchText,
             rawInput: true,
-            onKeyUp: (event) => this.props.onSearch(event, this.props.searchText, this.props.disabled),
-            onChangeCallback: (event) => this.props.onSearch(event, this.props.searchText, this.props.disabled),
+            onKeyUp: (event) => event.keyCode === keyCode.enter && this.search(),
+            onChangeCallback: (event) => this.props.onChangeCallBack && this.props.onChangeCallBack(event),
             ...this.props.additionalInputProps,
         };
 
         return this.props.withReduxState
             ? <InputConnected {...inputProps} />
             : <Input {...inputProps} />;
+    }
+
+    private search() {
+        if (!this.props.disabled && !this.props.searching && !!this.props.searchText) {
+            this.props.onSearch(this.props.searchText);
+        }
     }
 }

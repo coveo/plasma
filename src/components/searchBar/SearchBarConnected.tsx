@@ -11,11 +11,12 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISearchBarOwnProps):
     const searchBar = findWhere(state.searchBars, {id: ownProps.id});
 
     return {
+        withReduxState: true,
         disabled: input && input.disabled,
         searchText: input && input.value,
         searching: searchBar && searchBar.searching,
     };
-});
+};
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISearchBarOwnProps): ISearchBarDispatchProps => ({
     onMount: () => dispatch(addSearchBar(ownProps.id)),

@@ -104,7 +104,7 @@ class App extends React.Component<any, any> {
                         </div>
                     </div>
                     <SearchBarExamples />
-                    <PartialStringMatchExamples />
+                    {/* <PartialStringMatchExamples />
                     <BadgeExamples />
                     <CornerRibbonExamples />
                     <LogoCardExamples />
@@ -177,7 +177,7 @@ class App extends React.Component<any, any> {
                     <LabeledValueExamples />
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
-                    <JSONEditorExamples />
+                    <JSONEditorExamples /> */}
                 </div>
             </Provider>
         );
