@@ -11,11 +11,12 @@
     "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "ES5"
+    "target": "ES5",
   },
   "include": [
     "src/**/*.tsx",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "types/**/*.d.ts"
   ],
   "exclude": [
     "src/**/*.spec.*"
