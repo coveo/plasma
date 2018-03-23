@@ -87,18 +87,18 @@ export class Input extends React.Component<IInputProps, any> {
 
     private handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         if (this.props.onChange) {
-            const validOnChange = this.props.validateOnChange
-                && this.props.validate
-                && this.props.validate(this.innerInput.value);
-            this.props.onChange(this.innerInput.value, validOnChange);
+            this.props.onChange(this.innerInput.value, this.isValidOnChange());
         }
 
         if (this.props.onChangeCallback) {
-            const validOnChange = this.props.validateOnChange
-                && this.props.validate
-                && this.props.validate(this.innerInput.value);
-            this.props.onChangeCallback(event, this.innerInput.value, validOnChange);
+            this.props.onChangeCallback(event, this.innerInput.value, this.isValidOnChange());
         }
+    }
+
+    private isValidOnChange(): boolean {
+        return this.props.validateOnChange
+            && this.props.validate
+            && this.props.validate(this.innerInput.value);
     }
 
     private handleClick(e: React.MouseEvent<HTMLElement>) {
