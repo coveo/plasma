@@ -25,7 +25,7 @@ class SearchBarExample extends React.Component<{}, ISearchBarStateProps> {
                 searchText={this.state.searchText}
                 disabled={this.state.disabled}
                 searching={this.state.searching}
-                onChangeCallBack={(event) => this.setState({searchText: event.target.value})}
+                onChangeCallback={(event) => this.setState({searchText: event.target.value})}
                 onSearch={(filterText: string) => {
                     this.setState({searching: true});
                     setTimeout(() => {

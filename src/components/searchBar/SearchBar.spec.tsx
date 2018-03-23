@@ -78,6 +78,15 @@ describe('SearchBar', () => {
         expect(component.find('div .search-bar-icon-container .search-bar-spinner').length).toBe(1);
     });
 
+    it('should call onChangeCallback on input change if it is defined', () => {
+        const onChangeCallback = jasmine.createSpy('onChangeCallback');
+        const props = {...requiredProps, onChangeCallback};
+        const component = mount(<SearchBar {...props} />);
+        component.find('input').simulate('change');
+
+        expect(onChangeCallback).toHaveBeenCalledTimes(1);
+    });
+
     it('should call search on enter keyup', () => {
         const searchSpy = spyOn(SearchBar.prototype as any, 'search');
         const component = mount(<SearchBar {...requiredProps} />);

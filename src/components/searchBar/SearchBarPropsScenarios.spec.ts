@@ -53,7 +53,7 @@ export const searchBarPropsScenarios: ISearchBarProps[] = [
         additionalInputProps: {
             type: 'number',
         },
-        onChangeCallBack: noop,
+        onChangeCallback: noop,
         disabled: true,
         searching: false,
     },
@@ -67,7 +67,7 @@ export const searchBarPropsScenarios: ISearchBarProps[] = [
         additionalInputProps: {
             type: 'number',
         },
-        onChangeCallBack: noop,
+        onChangeCallback: noop,
         disabled: false,
         searching: true,
         searchText: 'txetHcreas',
@@ -126,7 +126,7 @@ export const searchBarConnectedPropsScenarios: ISearchBarProps[] = [
         additionalInputProps: {
             type: 'number',
         },
-        onChangeCallBack: noop,
+        onChangeCallback: noop,
     },
     {
         id: 'super-search-bar',
@@ -138,6 +138,6 @@ export const searchBarConnectedPropsScenarios: ISearchBarProps[] = [
         additionalInputProps: {
             type: 'number',
         },
-        onChangeCallBack: noop,
+        onChangeCallback: noop,
     },
 ];

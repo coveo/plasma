@@ -114,6 +114,16 @@ describe('Input', () => {
             expect(changeSpy.calls.count()).toBe(1);
         });
 
+        it('should call prop onChangeCallback on inner input change', () => {
+            const changeSpy = jasmine.createSpy('onChangeCallback');
+            const innerInput = input.find('input');
+
+            input.setProps({onChangeCallback: changeSpy}).mount();
+            innerInput.simulate('change');
+
+            expect(changeSpy.calls.count()).toBe(1);
+        });
+
         it('should call prop onClick on inner container click', () => {
             const clickSpy = jasmine.createSpy('onClick');
             const innerContainer = input.find('div');

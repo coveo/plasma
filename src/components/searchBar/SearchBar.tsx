@@ -16,7 +16,7 @@ export interface ISearchBarOwnProps {
     minWidth?: string;
     maxWidth?: string;
     additionalInputProps?: Partial<IInputProps>;
-    onChangeCallBack?: (event: React.ChangeEvent<HTMLInputElement>) => any;
+    onChangeCallback?: (event: React.ChangeEvent<HTMLInputElement>) => any;
 }
 
 export interface ISearchBarStateProps extends IReduxStatePossibleProps {
@@ -106,7 +106,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
             value: this.props.searchText,
             rawInput: true,
             onKeyUp: (event) => event.keyCode === keyCode.enter && this.search(),
-            onChangeCallback: (event) => this.props.onChangeCallBack && this.props.onChangeCallBack(event),
+            onChangeCallback: (event) => this.props.onChangeCallback && this.props.onChangeCallback(event),
             ...this.props.additionalInputProps,
         };
 
