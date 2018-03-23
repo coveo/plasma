@@ -22,7 +22,8 @@ function Dictionary(from) {
         const that = this;
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
-            code += '        ' + camelizedKey + ': { name : \'' + camelizedKey + '\', render : function(svgClass, spanClass, title, attr) { return svgWrapper(' + JSON.stringify(that.json[key]) + ', svgClass, spanClass, title, attr); } }, \n';
+            const svgString = JSON.stringify(that.json[key]);
+            code += '        ' + camelizedKey + ': { name : \'' + camelizedKey + '\', svgString : ' + svgString + ', render : function(svgClass, spanClass, title, attr) { return svgWrapper(VaporSVG.svg[\'' + camelizedKey + '\'].svgString, svgClass, spanClass, title, attr); } }, \n';
         });
         code += '    };';
 
@@ -56,7 +57,7 @@ gulp.task('svg:concat', 'Concat all svg files into one in a json format and expo
         }))
         .pipe(cheerio(($) => {
             // tslint:disable-next-line
-            $('svg').each(function () {
+            $('svg').each(function() {
                 const svg = $(this);
                 if (svg) {
                     const attrs = svg[0].attribs;
