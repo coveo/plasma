@@ -21,10 +21,10 @@ export class Checkbox extends React.Component<IInputProps, any> {
     }
 
     private updateIndeterminate() {
-      const inputElements = ReactDOM.findDOMNode(this).getElementsByTagName('input');
-      if (inputElements.length) {
-        inputElements[0].indeterminate = !!this.props.indeterminate;
-      }
+        const inputElements = ReactDOM.findDOMNode(this).getElementsByTagName('input');
+        if (inputElements.length) {
+            inputElements[0].indeterminate = !!this.props.indeterminate;
+        }
     }
 
     render() {
