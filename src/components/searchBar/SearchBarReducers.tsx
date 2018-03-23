@@ -8,31 +8,7 @@ export interface ISearchBarState {
     searching: boolean;
 }
 
-export const searchBarInitialState: ISearchBarState = {
-    id: undefined,
-    searching: false,
-};
-
 export const searchBarsInitialState: ISearchBarState[] = [];
-
-export const searchBarReducer = (
-    state: ISearchBarState = searchBarInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
-): ISearchBarState => {
-    switch (action.type) {
-        case SearchBarActions.add:
-            return {
-                id: action.payload.id,
-                searching: action.payload.searching,
-            };
-        case SearchBarActions.toggleSearching:
-            return state.id === action.payload.id
-                ? {...state, searching: action.payload.searching}
-                : state;
-        default:
-            return state;
-    }
-};
 
 export const searchBarsReducer = (
     state: ISearchBarState[] = searchBarsInitialState,
@@ -42,12 +18,18 @@ export const searchBarsReducer = (
         case SearchBarActions.add:
             return [
                 ...state,
-                searchBarReducer(undefined, action),
+                {
+                    id: action.payload.id,
+                    searching: action.payload.searching,
+                },
             ];
         case SearchBarActions.remove:
             return _.reject(state, (searchBar: ISearchBarState) => searchBar.id === action.payload.id);
         case SearchBarActions.toggleSearching:
-            return state.map((searchBar: ISearchBarState) => searchBarReducer(searchBar, action));
+            return state.map((searchBarState: ISearchBarState) => searchBarState.id === action.payload.id
+                ? {...searchBarState, searching: action.payload.searching}
+                : searchBarState,
+            );
         default:
             return state;
     }

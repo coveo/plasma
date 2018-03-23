@@ -175,5 +175,10 @@ describe('Input', () => {
             input.setProps({type: 'checkbox'});
             expect(input.find('input').first().hasClass('invalid')).toBe(false);
         });
+
+        it('should render only a raw input if the rawInput prop is passed', () => {
+            expect(/^<input/.test(shallow(<Input />).html())).toBe(false);
+            expect(/^<input/.test(shallow(<Input rawInput />).html())).toBe(true);
+        });
     });
 });

@@ -6,17 +6,17 @@ export const SearchBarActions = {
     toggleSearching: 'TOGGLE_SEARCH_BAR_SEARCHING',
 };
 
-export interface ISearchActionPayload {
+export interface ISearchBarActionPayload {
     id: string;
     searching?: boolean;
 }
 
-export const addSearchBar = (id: string, searching = false): IReduxAction<ISearchActionPayload> => ({
+export const addSearchBar = (id: string, searching = false): IReduxAction<ISearchBarActionPayload> => ({
     type: SearchBarActions.add,
     payload: {id, searching},
 });
 
-export const removeSearchBar = (id: string): IReduxAction<ISearchActionPayload> => ({
+export const removeSearchBar = (id: string): IReduxAction<ISearchBarActionPayload> => ({
     type: SearchBarActions.remove,
     payload: {id},
 });
