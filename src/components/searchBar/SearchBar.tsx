@@ -1,10 +1,10 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {InputConnected} from '../../Index';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {IInputProps, Input} from '../input/Input';
+import {InputConnected} from '../input/InputConnected';
 import {Svg} from '../svg/Svg';
 
 export interface ISearchBarOwnProps {
