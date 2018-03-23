@@ -1,7 +1,8 @@
 import {mount, shallow} from 'enzyme';
 import * as React from 'react';
-import {Input, Svg} from '../../Index';
 import {keyCode} from '../../utils/InputUtils';
+import {Input} from '../input/Input';
+import {Svg} from '../svg/Svg';
 import {SearchBar} from './SearchBar';
 import {searchBarPropsScenarios} from './SearchBarPropsScenarios.spec';
 
@@ -14,25 +15,25 @@ describe('SearchBar', () => {
     });
 
     it('should have a container div with the search-bar class and without the search-bar-loading and search-bar-disabled classes by default', () => {
-        const component = shallow(<SearchBar {...requiredProps} />);
-        expect(component.find('div').first().hasClass('search-bar')).toBe(true);
-        expect(component.find('div').first().hasClass('search-bar-loading')).toBe(false);
-        expect(component.find('div').first().hasClass('search-bar-disabled')).toBe(false);
+        const containerDiv = shallow(<SearchBar {...requiredProps} />).find('div').first();
+        expect(containerDiv.hasClass('search-bar')).toBe(true);
+        expect(containerDiv.hasClass('search-bar-loading')).toBe(false);
+        expect(containerDiv.hasClass('search-bar-disabled')).toBe(false);
     });
 
     it('should have a container div with search-bar-loading class when searching is passed as prop', () => {
-        const component = shallow(<SearchBar {...requiredProps} searching />);
-        expect(component.find('div').first().hasClass('search-bar-loading')).toBe(true);
+        const containerDiv = shallow(<SearchBar {...requiredProps} searching />).find('div').first();
+        expect(containerDiv.hasClass('search-bar-loading')).toBe(true);
     });
 
     it('should have a container div with search-bar-disabled class when disabled is passed as prop', () => {
-        const component = shallow(<SearchBar {...requiredProps} disabled />);
-        expect(component.find('div').first().hasClass('search-bar-disabled')).toBe(true);
+        const containerDiv = shallow(<SearchBar {...requiredProps} disabled />).find('div').first();
+        expect(containerDiv.hasClass('search-bar-disabled')).toBe(true);
     });
 
     it('should add the extra container classes if passed as prop', () => {
-        const component = shallow(<SearchBar {...requiredProps} containerClassNames='extra-class' />);
-        expect(component.find('div').first().hasClass('extra-class')).toBe(true);
+        const containerDiv = shallow(<SearchBar {...requiredProps} containerClassNames='extra-class' />).find('div').first();
+        expect(containerDiv.hasClass('extra-class')).toBe(true);
     });
 
     it('should have an input inside the div container with the search-bar-input class by default', () => {

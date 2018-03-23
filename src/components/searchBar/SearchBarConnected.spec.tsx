@@ -1,9 +1,9 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
 import {Provider, Store} from 'react-redux';
-import {InputConnected} from '../../Index';
 import {clearState} from '../../utils/ReduxUtils';
 import {TestUtils} from '../../utils/TestUtils';
+import {InputConnected} from '../input/InputConnected';
 import {SearchBarConnected} from './SearchBarConnected';
 import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.spec';
 

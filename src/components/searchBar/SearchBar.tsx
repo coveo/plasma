@@ -56,8 +56,10 @@ export class SearchBar extends React.Component<ISearchBarProps> {
     }
 
     render() {
+        const {minWidth, maxWidth} = this.props;
+
         return (
-            <div className={this.getContainerClasses()} style={{minWidth: this.props.minWidth, maxWidth: this.props.maxWidth}}>
+            <div className={this.getContainerClasses()} style={{minWidth, maxWidth}}>
                 {this.getInput()}
                 <div className='search-bar-icon-container'>
                     {this.getSearchIcon()}
