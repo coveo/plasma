@@ -55,6 +55,14 @@ export class SplitMultilineInputExamples extends React.PureComponent {
                     />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>Split Multiline Input with onChange prop</label>
+                    <SplitMultilineInput
+                        inputs={SplitMultilineInputExamples.inputs}
+                        defaultValues={SplitMultilineInputExamples.values}
+                        onChange={(values: ISplitValue) => alert(JSON.stringify(values))}
+                    />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>Split Multiline Input with 3 inputs</label>
                     <SplitMultilineInput
                         inputs={SplitMultilineInputExamples.tripleInputs}

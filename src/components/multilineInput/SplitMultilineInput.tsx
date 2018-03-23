@@ -22,6 +22,7 @@ export interface ISplitValue {
 export interface ISplitMultilineInputOwnProps {
   inputs: ISplitInput[];
   defaultValues: ISplitValue[];
+  onChange?: (values: ISplitValue[]) => void;
 }
 
 export interface ISplitMultilineInputProps extends ISplitMultilineInputOwnProps {}
@@ -59,10 +60,15 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
 
         if (input) {
           const deleteButton: JSX.Element = inputIndex + 1 === inputLength ? <DeleteInputAction onClick={() => this.removeLine(index)} /> : null;
-          const labelClasses: string[] = ['label'];
           return (
-            <Input classes={styles.input} value={values[labelId]} placeholder={input.placeholder} key={labelId + inputIndex}>
-              <Label classes={labelClasses}>{input.label}</Label>
+            <Input
+              classes={styles.input}
+              value={values[labelId]}
+              placeholder={input.placeholder}
+              key={labelId + inputIndex}
+              onChange={(value?: string, valid?: boolean) => this.changeValue(value, valid, index, labelId)}
+            >
+              <Label>{input.label}</Label>
               {deleteButton}
             </Input>
           );
@@ -80,7 +86,6 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
   private getNewInput() {
     const inputRefs: Input[] = [];
     const inputs: JSX.Element[] = _.map(this.props.inputs, (input: ISplitInput, inputIndex: number) => {
-      const labelClasses: string[] = ['label'];
       const addButton: JSX.Element = inputIndex + 1 === this.props.inputs.length ? <AddInputAction onClick={() => this.addLine(inputRefs)} /> : null;
       return (
         <Input
@@ -90,7 +95,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
           placeholder={input.placeholder}
           validate={input.validation ? (value: any) => input.validation(value) : undefined}
         >
-          <Label classes={labelClasses} invalidMessage={input.validationMessage}>{input.label}</Label>
+          <Label invalidMessage={input.validationMessage}>{input.label}</Label>
           {addButton}
         </Input>
       );
@@ -109,7 +114,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
     ];
     this.setState({
       values,
-    });
+    }, this.handleChange);
   }
 
   private addLine(inputRefs: Input[]) {
@@ -118,7 +123,6 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
     _.each(this.props.inputs, (input: ISplitInput, inputIndex: number) => {
       const value: any = inputRefs[inputIndex].getInnerValue();
 
-      // debugger;
       inputRefs[inputIndex].validate();
 
       inError = inError || input.validation && !input.validation(value);
@@ -131,8 +135,24 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
           ...this.state.values,
           values,
         ],
-      });
+      }, this.handleChange);
       _.each(inputRefs, (inputRef: Input) => inputRef.reset());
+    }
+  }
+
+  private changeValue(value: string, valid: boolean, index: number, labelId: string) {
+    if (_.isUndefined(valid) || valid) {
+      const values: ISplitValue[] = this.state.values.slice(0);
+      values[index][labelId] = value;
+      this.setState({
+        values,
+      }, this.handleChange);
+    }
+  }
+
+  private handleChange() {
+    if (this.props.onChange) {
+      this.props.onChange(this.state.values);
     }
   }
 }
