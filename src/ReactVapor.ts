@@ -11,6 +11,7 @@ import {IFacet} from './components/facets/Facet';
 import {IFacetState} from './components/facets/FacetReducers';
 import {IFilterState} from './components/filterBox/FilterBoxReducers';
 import {IFlatSelectState} from './components/flatSelect/FlatSelectReducers';
+import {IFlippableState} from './components/flippable/FlippableReducers';
 import {IInlinePromptOptions} from './components/inlinePrompt/InlinePrompt';
 import {IPromptState} from './components/inlinePrompt/InlinePromptReducers';
 import {IInputState} from './components/input/InputReducers';
@@ -62,6 +63,7 @@ export interface IReactVaporState {
     inputs?: IInputState[];
     collapsibleContainers?: ICollapsibleContainerState[];
     searchBars: ISearchBarState[];
+    flippables?: IFlippableState[];
 }
 
 export interface IReduxActionsPayload {
