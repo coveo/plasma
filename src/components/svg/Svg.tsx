@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {extend, omit} from 'underscore';
-import * as s from 'underscore.string';
+import {camelize} from 'underscore.string';
 
 /**
  * Pass the required svgName to get your svg.
@@ -35,7 +35,7 @@ export class Svg extends React.Component<ISvgProps, any> {
     }
 
     private getFormattedSvgName(): string {
-        return s.camelize(this.props.svgName);
+        return camelize(this.props.svgName);
     }
 
     render() {
