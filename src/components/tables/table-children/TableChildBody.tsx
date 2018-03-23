@@ -29,7 +29,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
     const tableHeadingRowContent = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
         const {attributeName, attributeFormatter} = headingAttribute;
         const headingRowContent: JSXRenderable = attributeFormatter
-            ? attributeFormatter(props.rowData[attributeName], attributeName)
+            ? attributeFormatter(props.rowData[attributeName], attributeName, props.rowData)
             : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
         return (
