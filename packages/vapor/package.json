@@ -58,6 +58,7 @@
     "gulp-svgmin": "1.2.4",
     "gulp-uglify": "3.0.0",
     "gulp-util": "3.0.8",
+    "merge-stream": "1.0.1",
     "png-sprite": "0.1.1",
     "pre-commit": "1.2.2",
     "require-dir": "0.3.2",
