@@ -2,6 +2,7 @@ import * as Redux from 'redux';
 
 import {actionBarsReducer} from '../src/components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../src/components/actions/filters/ItemFilterReducers';
+import {autocompletesReducer} from '../src/components/autocomplete/AutocompleteReducers';
 import {checkboxesReducer} from '../src/components/checkbox/CheckboxReducers';
 import {collapsibleContainersReducer} from '../src/components/collapsibleContainer/CollapsibleContainerReducers';
 import {datePickersReducer} from '../src/components/datePicker/DatePickerReducers';
@@ -41,6 +42,7 @@ const lastAction = (state: IReactVaporExampleState = null, action: Redux.Action)
 };
 
 export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
+    Autocompletes: autocompletesReducer,
     tables: tablesReducer,
     membersCompositeState: membersReducers,
     lastUpdatedComposite: lastUpdatedCompositeReducer,

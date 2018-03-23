@@ -1,6 +1,7 @@
 import {IActionOptions} from './components/actions/Action';
 import {IActionBarState} from './components/actions/ActionBarReducers';
 import {IItemFilterState} from './components/actions/filters/ItemFilterReducers';
+import {IAutocompleteState} from './components/autocomplete/AutocompleteReducers';
 import {ICheckboxState} from './components/checkbox/CheckboxReducers';
 import {ICollapsibleContainerState} from './components/collapsibleContainer/CollapsibleContainerReducers';
 import {IDatePickerState} from './components/datePicker/DatePickerReducers';
@@ -34,6 +35,7 @@ import {ITableRowState} from './components/tables/TableRowReducers';
 import {IToastsState} from './components/toast/ToastReducers';
 
 export interface IReactVaporState {
+    Autocompletes: IAutocompleteState[];
     lastUpdatedComposite?: ILastUpdatedState[];
     facets?: IFacetState[];
     filters?: IFilterState[];

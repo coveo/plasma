@@ -1,11 +1,13 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {Content, IContentProps} from '../content/Content';
+import {PartialStringMatch} from '../partial-string-match/PartialStringMatch';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IItemBoxProps {
     value: string;
     displayValue?: string;
+    highlight?: string;
     selected?: boolean;
     active?: boolean;
     hidden?: boolean;
@@ -24,6 +26,7 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
         tooltip: {
             title: '',
         },
+        highlight: '',
     };
 
     private getClasses(): string {
@@ -52,7 +55,7 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
                     onClick={() => this.handleOnOptionClick()}
                     data-value={this.props.value}>
                     {this.props.prepend ? <Content {...this.props.prepend} /> : null}
-                    {this.props.displayValue || this.props.value}
+                    <PartialStringMatch wholeString={this.props.displayValue || this.props.value} partialMatch={this.props.highlight} caseInsensitive />
                     {this.props.append ? <Content {...this.props.append} /> : null}
                 </li>
             </Tooltip>
