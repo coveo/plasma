@@ -6,6 +6,7 @@ import * as _ from 'underscore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
 import {Breadcrumb} from '../../breadcrumbs/Breadcrumb';
 import {CheckboxConnected} from '../../checkbox/CheckboxConnected';
+import {GroupableCheckboxConnected} from '../../checkbox/GroupableCheckboxConnected';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
@@ -16,7 +17,6 @@ import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification} from '../TableDataModifier';
 import {ITableCompositeState, ITableData, ITablesState, ITableState} from '../TableReducers';
-import {GroupableCheckboxConnected} from '../../checkbox/GroupableCheckboxConnected';
 
 const generateText = () => loremIpsum({count: 1, sentenceUpperBound: 3});
 const generateBoolean = () => Math.random() <= 0.5;
@@ -98,7 +98,7 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
 };
 
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): IThunkAction => {
-    return (dispatch: IDispatch, getState: () => {[globalStateProp: string]: any; tables: ITablesState; }) => {
+    return (dispatch: IDispatch, getState: () => {[globalStateProp: string]: any; tables: ITablesState;}) => {
         const currentTableState = getState().tables[tableOwnProps.id];
         dispatchPreTableStateModification(tableOwnProps.id, dispatch);
         $.get('https://jsonplaceholder.typicode.com/comments')
@@ -186,33 +186,33 @@ export class TableExamples extends React.Component<any, any> {
                         blankSlateDefault={{title: 'No results!'}}
                     />
                 </div>
-              <div className='form-group'>
-                <label className='form-control-label'>Simplest Table with a custom header</label>
-                <TableConnected
-                  id={_.uniqueId('react-vapor-table')}
-                  initialTableData={simplestTableData}
-                  headingAttributes={[
-                    {
-                      attributeName: 'attribute1',
-                      titleFormatter: () => {
-                        return <div>
-                          <GroupableCheckboxConnected id={'SFCheckboxes'} parentId={'parent-id'} classes={['mt1 mr1']} defaultChecked={false}/>
-                          <span>Selected</span>
-                        </div>;
-                      },
-                    },
-                    {
-                      attributeName: 'attribute4',
-                      titleFormatter: _.identity,
-                    },
-                    {
-                      attributeName: 'attribute3',
-                      titleFormatter: _.identity,
-                    },
-                  ]}
-                  blankSlateDefault={{title: 'No results!'}}
-                />
-              </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table with a custom header</label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={simplestTableData}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: () => {
+                                    return <div>
+                                        <GroupableCheckboxConnected id={'SFCheckboxes'} parentId={'parent-id'} classes={['mt1 mr1']} defaultChecked={false} />
+                                        <span>Selected</span>
+                                    </div>;
+                                },
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Table with Content type Breadcrumb</label>
                     <TableConnected

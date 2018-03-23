@@ -40,8 +40,8 @@ export class FacetExamples extends React.Component<any, any> {
                 formattedName: 'Row 7',
             },
         );
-        const onToggleFacet: (facet: string, facetRow: IFacet) => void = () => {return; };
-        const clearFacet: (facet: string) => void = () => {return; };
+        const onToggleFacet: (facet: string, facetRow: IFacet) => void = () => {return;};
+        const clearFacet: (facet: string) => void = () => {return;};
         return (
             <div className='mt2' style={{width: 300}}>
                 <div className='form-group'>

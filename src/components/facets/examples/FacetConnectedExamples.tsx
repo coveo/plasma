@@ -70,8 +70,8 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
                 count: '7903231',
             },
         );
-        const toggleFacet: (facet: string, facetRow: IFacet) => void = () => {return; };
-        const clearFacet: (facet: string) => void = () => {return; };
+        const toggleFacet: (facet: string, facetRow: IFacet) => void = () => {return;};
+        const clearFacet: (facet: string) => void = () => {return;};
         return (
             <div className='mt2' style={{width: 400}}>
                 <div className='form-group'>

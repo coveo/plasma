@@ -63,8 +63,43 @@ export interface IReactVaporState {
     inputs?: IInputState[];
     collapsibleContainers?: ICollapsibleContainerState[];
     flippables?: IFlippableState[];
-      groupableCheckboxes?: IGroupableCheckboxesState[];
+    groupableCheckboxes?: IGroupableCheckboxesState[];
 }
 
 export interface IReduxActionsPayload {
+    id?: string;
+    ids?: string[];
+    isCollapsible?: boolean;
+    facet?: string;
+    facetRow?: IFacet;
+    filterText?: string;
+    pageNb?: number;
+    perPage?: number;
+    options?: IInlinePromptOptions;
+    actions?: IActionOptions[];
+    currentOption?: number;
+    color?: string;
+    date?: Date;
+    calendarId?: string;
+    value?: string;
+    isRange?: boolean;
+    limit?: string;
+    item?: string;
+    label?: string;
+    selected?: string;
+    tableId?: string;
+    isInError?: boolean;
+    attributeToFormat?: string;
+    attributeToSort?: string;
+    initialTableData?: ITableData;
+    initialPerPage?: number;
+    tableStateModifier?: ITableStateModifier;
+    totalEntries?: number;
+    totalPages?: number;
+    addedSelectedOption?: IDropdownOption;
+    predicates?: ITablePredicate[];
+    shouldResetPage?: boolean;
+    valid?: boolean;
+    expanded?: boolean;
+    disabled?: boolean;
 }

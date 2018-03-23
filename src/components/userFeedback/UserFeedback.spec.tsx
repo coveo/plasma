@@ -13,8 +13,8 @@ describe('<UserFeedback>', () => {
             state,
         };
 
-        if (extraClasses) {props = extend(props, {extraClasses}); }
-        if (displayOnShow) {props = extend(props, {displayOnShow}); }
+        if (extraClasses) {props = extend(props, {extraClasses});}
+        if (displayOnShow) {props = extend(props, {displayOnShow});}
 
         return shallow(<UserFeedback {...props} />);
     };

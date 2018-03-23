@@ -115,7 +115,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                     placeholder={filterPlaceholder}
                     onChange={(e: React.FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
                     onBlur={() => this.handleOnBlur()}
-                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => {this.placeCursorAtEndOfInputValue(e); }}
+                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => {this.placeCursorAtEndOfInputValue(e);}}
                     onKeyDown={(e) => this.handleOnKeyDown(e)}
                     style={inputMaxWidth}
                     autoFocus={this.props.isAutoFocus}

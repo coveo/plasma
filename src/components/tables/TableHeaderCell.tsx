@@ -5,12 +5,12 @@ import {Svg} from '../svg/Svg';
 import {TableSortingOrder} from './TableConstants';
 
 export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHeaderCell> {
-  title: React.ReactNode;
-  id?: string;
-  attributeToSort?: string;
-  tableId?: string;
-  className?: string;
-  onClickCallback?: (e: React.MouseEvent<HTMLTableHeaderCellElement>) => void;
+    title: React.ReactNode;
+    id?: string;
+    attributeToSort?: string;
+    tableId?: string;
+    className?: string;
+    onClickCallback?: (e: React.MouseEvent<HTMLTableHeaderCellElement>) => void;
 }
 
 export interface ITableHeaderStateProps {

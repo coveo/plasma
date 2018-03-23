@@ -32,7 +32,7 @@ export class ModalExamples extends React.Component<any, IModalExamplesState> {
                 <div className='form-group'>
                     <label className='form-control-label'>Modal</label>
                     <div>
-                        <button className='btn' onClick={() => {this.openModal(); }}>Open Modal</button>
+                        <button className='btn' onClick={() => {this.openModal();}}>Open Modal</button>
                         <Modal id='modal1' isOpened={this.state.isOpened}>
                             <ModalHeader title='Simple Modal' onClose={() => this.closeModal()}>
                                 <Tooltip title='I am a tooltip'>

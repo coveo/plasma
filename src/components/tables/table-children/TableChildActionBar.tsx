@@ -47,9 +47,9 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
                             defaultSelectedOption={{value: TABLE_PREDICATE_DEFAULT_VALUE}}
                             {...predicate.props}
                             key={predicateId}
-                            fixedPrepend={predicate.attributeNameFormatter
+                            fixedPrepend={(predicate.attributeNameFormatter
                                 ? predicate.attributeNameFormatter(predicate.attributeName)
-                                : humanize(predicate.attributeName)}
+                                : humanize(predicate.attributeName)) as any}
                             id={predicateId}
                             containerClasses={containerClasses}
                             onOptionClickCallBack={(option: IDropdownOption) => {

@@ -39,7 +39,7 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
                 <label className='form-control-label'>Modal Connected</label>
                 <div>
                     <div className='form-group'>
-                        <button className='btn' onClick={() => {this.openModal('modal1'); }}>Open Modal 1</button>
+                        <button className='btn' onClick={() => {this.openModal('modal1');}}>Open Modal 1</button>
                         <ModalConnected id={modal1Id} classes={['mod-big']}>
                             <ModalHeaderConnected id={modal1Id} title='Simple Modal' />
                             <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
@@ -53,7 +53,7 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
                                 <ModalBackdropConnected displayFor={[modal2Id]} isPrompt />
                             </ModalBody>
                             <ModalFooter>
-                                <button className='btn' onClick={() => {this.openModal(modal2Id); }}>Open Modal 2</button>
+                                <button className='btn' onClick={() => {this.openModal(modal2Id);}}>Open Modal 2</button>
                             </ModalFooter>
                         </ModalConnected>
                         <ModalBackdropConnected displayFor={[modal1Id]} />

@@ -25,11 +25,11 @@ export interface IInputOwnProps {
 }
 
 export interface IInputStateProps {
-  checked?: boolean;
-  disabled?: boolean;
-  value?: string;
-  valid?: boolean;
-  indeterminate?: boolean;
+    checked?: boolean;
+    disabled?: boolean;
+    value?: string;
+    valid?: boolean;
+    indeterminate?: boolean;
 }
 
 export interface IInputDispatchProps {

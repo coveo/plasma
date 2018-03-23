@@ -17,9 +17,9 @@ export interface ITetherComponentCopiedProps {
     targetModifier?: string;
     enabled?: boolean;
     classes?: any;
-    style?: {[key: string]: any; };
+    style?: {[key: string]: any;};
     classPrefix?: string;
-    optimizations?: {[key: string]: any; };
+    optimizations?: {[key: string]: any;};
     constraints?: any[];
     onUpdate?: (...args: any[]) => void;
     onRepositioned?: (...args: any[]) => void;
