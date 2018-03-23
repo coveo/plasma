@@ -1,0 +1,22 @@
+.inputBlock {
+  margin-top: 0;
+}
+
+.inputLine {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  padding-bottom: 1em;
+}
+
+.input {
+  flex: auto;
+  margin-right: 2em;
+  margin-bottom: 1em;
+}
+
+.input:last-child {
+  margin-right: 0;
+  padding-right: 2em;
+}
