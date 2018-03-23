@@ -34,12 +34,9 @@ export class Svg extends React.Component<ISvgProps, any> {
         return parser.innerHTML;
     }
 
-    private getFormattedSvgName(): string {
-        return camelize(this.props.svgName);
-    }
-
     render() {
-        const svgString: string = VaporSVG.svg[this.getFormattedSvgName()] && VaporSVG.svg[this.getFormattedSvgName()].svgString;
+        const formattedSvgName: string = camelize(this.props.svgName);
+        const svgString: string = VaporSVG.svg[formattedSvgName] && VaporSVG.svg[formattedSvgName].svgString;
 
         // Omit Svg props to avoid warnings.
         const svgSpanProps = extend({}, omit(this.props, svgPropsToOmit));
