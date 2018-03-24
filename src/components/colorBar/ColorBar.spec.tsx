@@ -14,10 +14,26 @@ describe('ColorBar', () => {
     it('should render a div with only a transparent color with width 100% if no colors are passed', () => {
         noColorsPropsScenarios.forEach((props) => {
             const colorBars = shallow(<ColorBar {...props} />).find('.color-bar-color');
+            const {backgroundColor, width} = colorBars.first().prop('style');
+
             expect(colorBars.length).toBe(1);
-            expect(colorBars.first().prop('style').backgroundColor).toBe('transparent');
-            expect(colorBars.first().prop('style').width).toBe('100%');
+            expect(backgroundColor).toBe('transparent');
+            expect(width).toBe('100%');
         });
+    });
+
+    it('should fill the no-color width with transparent if colored width does not reach 100%', () => {
+        const colorBars = shallow(<ColorBar widthPerColor={{blue: 20}} />).find('.color-bar-color');
+
+        const coloredStyle = colorBars.first().prop('style');
+        expect(colorBars.length).toBe(1);
+        expect(coloredStyle.backgroundColor).toBe('blue');
+        expect(coloredStyle.width).toBe('20%');
+
+        const transparentStyle = colorBars.last().prop('style');
+        expect(colorBars.length).toBe(1);
+        expect(transparentStyle.backgroundColor).toBe('transparent');
+        expect(transparentStyle.width).toBe('80%');
     });
 
     it('should render a div for each non-zero width color with the proper width', () => {
@@ -25,7 +41,7 @@ describe('ColorBar', () => {
             const nonZeroNonTransparentColors = _.omit(props.widthPerColor, (width: number, color: string) => !width);
 
             shallow(<ColorBar {...props} />).find('.color-bar-color').forEach((color) => {
-                const {backgroundColor, width} = color.first().prop('style'); 
+                const {backgroundColor, width} = color.first().prop('style');
 
                 if (backgroundColor !== 'transparent') {
                     expect(nonZeroNonTransparentColors[backgroundColor]).toBe(parseInt(width, 10));
