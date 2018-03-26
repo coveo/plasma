@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         enforce: 'post',
-        test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\..+$/i,
+        test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\.(?!css).+$/i,
         exclude: /(node_modules)/,
         loader: 'istanbul-instrumenter-loader',
       },

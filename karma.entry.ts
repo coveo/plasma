@@ -39,5 +39,5 @@ testsContext.keys().forEach(testsContext);
 
 const coverageContext = require.context('./src', true, /^((?!\.d).)*.ts(x?)$/);
 coverageContext.keys()
-  .filter((file) => !s.contains(file, '.spec.') && !s.contains(file, 'Examples'))
+  .filter((file) => !s.contains(file, '.spec.') && !s.contains(file, 'Examples') && !s.contains(file, 'css'))
   .forEach(coverageContext);
