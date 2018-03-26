@@ -10,7 +10,7 @@ import * as styles from './styles/SplitMultilineInput.css';
 export interface ISplitInput {
   id: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   validation?: (value: any) => boolean;
   validationMessage?: string;
 }
@@ -40,6 +40,14 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
     };
   }
 
+  componentDidUpdate(prevProps: ISplitMultilineInputProps) {
+    if (!_.isEqual(prevProps.defaultValues, this.props.defaultValues)) {
+      this.setState({
+        values: this.props.defaultValues,
+      });
+    }
+  }
+
   render() {
     return (
       <div className={styles.inputBlock}>
@@ -65,6 +73,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
               classes={styles.input}
               value={values[labelId]}
               placeholder={input.placeholder}
+              validate={input.validation ? (value: any) => input.validation(value) : undefined}
               key={labelId + inputIndex}
               onChange={(value?: string, valid?: boolean) => this.changeValue(value, valid, index, labelId)}
             >
