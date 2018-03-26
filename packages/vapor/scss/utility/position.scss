@@ -12,3 +12,7 @@
 .fixed {
   position: fixed;
 }
+
+.show-on-top {
+  z-index: 2147483647; // Max safe z-index
+}

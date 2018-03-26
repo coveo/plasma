@@ -3,6 +3,8 @@
   z-index: $flippable-z-index;
 
   perspective: $flippable-perspective;
+
+  transition: z-index $flippable-transition-duration;
 }
 
 .flipper {
