@@ -186,9 +186,9 @@ describe('Input', () => {
             expect(input.find('input').first().hasClass('invalid')).toBe(false);
         });
 
-        it('should render only a raw input if the rawInput prop is passed', () => {
+        it('should render only a raw input if the raw prop is passed', () => {
             expect(/^<input/.test(shallow(<Input />).html())).toBe(false);
-            expect(/^<input/.test(shallow(<Input rawInput />).html())).toBe(true);
+            expect(/^<input/.test(shallow(<Input raw />).html())).toBe(true);
         });
     });
 });

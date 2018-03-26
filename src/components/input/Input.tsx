@@ -28,7 +28,7 @@ export interface IInputOwnProps {
      * Label, children, container element, and their related props, will be ignored in this context.
      * Only an HTML input element will be rendered in the DOM.
      */
-    rawInput?: boolean;
+    raw?: boolean;
 }
 
 export interface IInputStateProps {
@@ -169,7 +169,7 @@ export class Input extends React.Component<IInputProps, any> {
     }
 
     render() {
-        return this.props.rawInput
+        return this.props.raw
             ? this.getRawInput()
             : this.getDefaultInput();
     }

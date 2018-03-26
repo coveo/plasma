@@ -102,7 +102,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
             placeholder: this.props.placeholder,
             disabled: this.props.disabled || this.props.searching,
             value: this.props.searchText,
-            rawInput: true,
+            raw: true,
             onKeyUp: (event) => event.keyCode === keyCode.enter && this.search(),
             onChangeCallback: (event) => this.props.onChangeCallback && this.props.onChangeCallback(event),
         };
