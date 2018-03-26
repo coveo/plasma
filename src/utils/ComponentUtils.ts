@@ -7,28 +7,28 @@ import {ILinkSvgProps} from '../components/svg/LinkSvg';
  * for more details
  */
 export const DisplayClass = {
-  BLOCK: 'block',
-  INLINE: 'inline',
-  INLINE_BLOCK: 'inline-block',
-  HIDDEN: 'hidden',
-  TABLE: 'table',
-  TABLE_CELL: 'table-cell',
+    BLOCK: 'block',
+    INLINE: 'inline',
+    INLINE_BLOCK: 'inline-block',
+    HIDDEN: 'hidden',
+    TABLE: 'table',
+    TABLE_CELL: 'table-cell',
 };
 
 export type ComponentContent = (new () => React.Component) | string | ((props?: any) => JSX.Element);
 
 export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => {
-  return {
-    url,
-    target: '_blank',
-    svg: {
-      svgName: 'help',
-      svgClass: 'fill-orange icon mod-20',
-    },
-    tooltip: {
-      title,
-      placement: 'bottom',
-      container: 'body',
-    },
-  };
+    return {
+        url,
+        target: '_blank',
+        svg: {
+            svgName: 'help',
+            svgClass: 'fill-orange icon mod-20',
+        },
+        tooltip: {
+            title,
+            placement: 'bottom',
+            container: 'body',
+        },
+    };
 };

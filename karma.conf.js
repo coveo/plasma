@@ -1,47 +1,47 @@
 const webpackConfig = require('./webpack.config.test.js');
 
 module.exports = (config) => {
-  config.set({
-    frameworks: ['jasmine', 'source-map-support'],
+    config.set({
+        frameworks: ['jasmine', 'source-map-support'],
 
-    files: ['./karma.entry.ts'],
+        files: ['./karma.entry.ts'],
 
-    preprocessors: {
-      './karma.entry.ts': ['webpack'],
-    },
+        preprocessors: {
+            './karma.entry.ts': ['webpack'],
+        },
 
-    mime: {
-      'text/x-typescript': ['ts', 'tsx'],
-    },
+        mime: {
+            'text/x-typescript': ['ts', 'tsx'],
+        },
 
-    webpack: webpackConfig,
+        webpack: webpackConfig,
 
-    webpackServer: {
-      noInfo: true,
-    },
+        webpackServer: {
+            noInfo: true,
+        },
 
-    reporters: ['mocha', 'coverage'],
+        reporters: ['mocha', 'coverage'],
 
-    mochaReporter: {
-      ignoreSkipped: true,
-    },
+        mochaReporter: {
+            ignoreSkipped: true,
+        },
 
-    coverageReporter: {
-      dir: 'coverage',
-      reporters: [
-        { type: 'json', subdir: '.', file: 'coverage.json' },
-        { type: 'text-summary' },
-      ],
-    },
+        coverageReporter: {
+            dir: 'coverage',
+            reporters: [
+                {type: 'json', subdir: '.', file: 'coverage.json'},
+                {type: 'text-summary'},
+            ],
+        },
 
-    port: 9876,
-    colors: true,
+        port: 9876,
+        colors: true,
 
-    browsers: ['PhantomJS'],
+        browsers: ['PhantomJS'],
 
-    autoWatch: true,
-    singleRun: true,
+        autoWatch: true,
+        singleRun: true,
 
-    browserNoActivityTimeout: 30000,
-  });
+        browserNoActivityTimeout: 30000,
+    });
 };
