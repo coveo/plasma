@@ -10,7 +10,7 @@ export interface IAutocompleteState {
     active: number;
 }
 
-export const selectInitialState: IAutocompleteState = {id: undefined, open: false, value: '', active: 0};
+export const selectInitialState: IAutocompleteState = {id: undefined, open: false, value: '', active: undefined};
 export const selectCompositeInitialState: IAutocompleteState[] = [];
 
 export const autocompleteReducer = (state: IAutocompleteState = selectInitialState, action: IReduxAction<IAutocompletePayload>): IAutocompleteState => {
@@ -27,12 +27,18 @@ export const autocompleteReducer = (state: IAutocompleteState = selectInitialSta
                 active: state.active,
             };
         case AutocompleteActions.toggle:
+            const open = !_.isUndefined(action.payload.open) ? action.payload.open : !state.open;
             // if open was sent in the dispatch use the value. Otherwise toggle the property
-            return {...state, active: 0, open: !_.isUndefined(action.payload.open) ? action.payload.open : !state.open};
+            return {...state, open, active: undefined};
         case AutocompleteActions.setValue:
             return {...state, open: true, value: action.payload.value};
         case AutocompleteActions.setActive:
-            return {...state, open: true, active: state.active + action.payload.diff};
+            let active = state.active + action.payload.diff;
+            if (_.isUndefined(state.active)) {
+                active = action.payload.diff === 1 ? 0 : -1;
+            }
+
+            return {...state, open: true, active};
         case ListBoxActions.select:
             // when the user selects a value in the list, close the autocomplete
             return {...state, open: false, value: action.payload.value};

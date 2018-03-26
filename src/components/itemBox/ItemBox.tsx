@@ -32,7 +32,23 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
 
     componentDidUpdate(prevProps: IItemBoxProps, prevState: IItemBoxProps) {
         if (prevProps.active !== this.props.active && this.props.active) {
-            this.el.scrollIntoView(false);
+            // First parent is the span of the tooltip, second is the list
+            const container = this.el.offsetParent;
+            if (container) {
+                this.scrollIfNeeded(this.el, container);
+            }
+        }
+    }
+
+    private scrollIfNeeded(element: HTMLElement, container: HTMLElement) {
+        if (element.offsetTop < container.scrollTop) {
+            container.scrollTop = element.offsetTop;
+        } else {
+            const offsetBottom = element.offsetTop + element.offsetHeight;
+            const scrollBottom = container.scrollTop + container.offsetHeight;
+            if (offsetBottom > scrollBottom) {
+                container.scrollTop = offsetBottom - container.offsetHeight;
+            }
         }
     }
 

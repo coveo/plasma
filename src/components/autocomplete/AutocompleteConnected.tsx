@@ -60,10 +60,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProp
     let index = 0;
     const activeIndex = autocomplete && autocomplete.active;
     const visibleLength = _.filter(itemsWithHidden, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
+    const mod = (x: number, n: number) => (x % n + n) % n; // mod is a modulo function that works with negative numbers
     const visibleItems = _.map(itemsWithHidden, (item: IItemBoxProps): IItemBoxProps => {
         let active = false;
         if (!item.hidden && !item.disabled) {
-            active = activeIndex % visibleLength === index;
+            active = mod(activeIndex, visibleLength) === index;
             index++;
         }
         return {...item, active};
@@ -118,7 +119,7 @@ export class AutocompleteConnected extends React.Component<IAutocompleteProps, {
                     {this.props.children}
                 </div>
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
-                    <ListBoxConnected id={this.props.id} items={this.props.visibleItems} highlight={this.props.value} />
+                    <ListBoxConnected id={this.props.id} classes={['relative']} items={this.props.visibleItems} highlight={this.props.value} />
                 </div>
             </div>
         );
