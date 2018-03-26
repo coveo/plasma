@@ -4,7 +4,7 @@ import {contains, isUndefined} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ILabelProps, Label} from './Label';
 
-export interface ILabelProps {
+export interface IInputLabelProps {
     labelTitle?: string;
     labelProps?: ILabelProps;
 }
@@ -13,7 +13,7 @@ export interface IInputContainerProps {
     classes?: IClassName;
 }
 
-export interface IInputOwnProps extends IInputContainerProps, ILabelProps {
+export interface IInputOwnProps extends IInputContainerProps, IInputLabelProps {
     id?: string;
     name?: string;
     type?: string;
