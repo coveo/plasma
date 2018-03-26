@@ -114,16 +114,6 @@ describe('Input', () => {
             expect(changeSpy.calls.count()).toBe(1);
         });
 
-        it('should call prop onChangeCallback on inner input change', () => {
-            const changeSpy = jasmine.createSpy('onChangeCallback');
-            const innerInput = input.find('input');
-
-            input.setProps({onChangeCallback: changeSpy}).mount();
-            innerInput.simulate('change');
-
-            expect(changeSpy.calls.count()).toBe(1);
-        });
-
         it('should call prop onClick on inner container click', () => {
             const clickSpy = jasmine.createSpy('onClick');
             const innerContainer = input.find('div');
@@ -184,11 +174,6 @@ describe('Input', () => {
 
             input.setProps({type: 'checkbox'});
             expect(input.find('input').first().hasClass('invalid')).toBe(false);
-        });
-
-        it('should render only a raw input if the raw prop is passed', () => {
-            expect(/^<input/.test(shallow(<Input />).html())).toBe(false);
-            expect(/^<input/.test(shallow(<Input raw />).html())).toBe(true);
         });
     });
 });

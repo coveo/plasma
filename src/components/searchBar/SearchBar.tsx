@@ -3,8 +3,6 @@ import * as React from 'react';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {IInputProps, Input} from '../input/Input';
-import {InputConnected} from '../input/InputConnected';
 import {Svg} from '../svg/Svg';
 
 export interface ISearchBarOwnProps {
@@ -15,7 +13,7 @@ export interface ISearchBarOwnProps {
     placeholder?: string;
     minWidth?: string;
     maxWidth?: string;
-    onChangeCallback?: (event: React.ChangeEvent<HTMLInputElement>) => any;
+    onChange?: (event: React.FormEvent<HTMLInputElement>) => any;
 }
 
 export interface ISearchBarStateProps extends IReduxStatePossibleProps {
@@ -58,7 +56,16 @@ export class SearchBar extends React.Component<ISearchBarProps> {
 
         return (
             <div className={this.getContainerClasses()} style={{minWidth, maxWidth}}>
-                {this.getInput()}
+                <input
+                    id={this.props.id}
+                    type='text'
+                    className={this.getInputClasses()}
+                    placeholder={this.props.placeholder}
+                    disabled={this.props.disabled || this.props.searching}
+                    value={this.props.searchText}
+                    onKeyUp={(event) => event.keyCode === keyCode.enter && this.search()}
+                    onChange={(event) => this.props.onChange && this.props.onChange(event)}
+                />
                 <div className='search-bar-icon-container'>
                     {this.getSearchIcon()}
                 </div>
@@ -92,24 +99,6 @@ export class SearchBar extends React.Component<ISearchBarProps> {
         return !this.props.searching && !this.props.disabled
             ? <span onClick={() => this.search()}>{searchIcon}</span>
             : searchIcon;
-    }
-
-    private getInput(): JSX.Element {
-        const inputProps: IInputProps = {
-            id: this.props.id,
-            type: 'text',
-            innerInputClasses: this.getInputClasses(),
-            placeholder: this.props.placeholder,
-            disabled: this.props.disabled || this.props.searching,
-            value: this.props.searchText,
-            raw: true,
-            onKeyUp: (event) => event.keyCode === keyCode.enter && this.search(),
-            onChangeCallback: (event) => this.props.onChangeCallback && this.props.onChangeCallback(event),
-        };
-
-        return this.props.withReduxState
-            ? <InputConnected {...inputProps} />
-            : <Input {...inputProps} />;
     }
 
     private search() {
