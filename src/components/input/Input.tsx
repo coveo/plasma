@@ -41,32 +41,32 @@ export interface IInputDispatchProps {
 export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps {}
 
 export interface IInputState {
-  valid: boolean;
+    valid: boolean;
 }
 
 export class Input extends React.Component<IInputProps, IInputState> {
-  private innerInput: HTMLInputElement;
+    private innerInput: HTMLInputElement;
 
     static defaultProps: Partial<IInputProps> = {
         type: 'text',
         valid: true,
     };
 
-  constructor(props: IInputProps, state: IInputState) {
-    super(props, state);
-    this.state = {
-      valid: this.props.valid,
-    };
-  }
+    constructor(props: IInputProps, state: IInputState) {
+        super(props, state);
+        this.state = {
+            valid: this.props.valid,
+        };
+    }
 
-  componentWillMount() {
-    if (this.props.onRender) {
-      // undefined validOnMount will default to true in the state
-      const validOnMount = this.props.validateOnMount
-        && this.props.validate
-        && this.props.validate(this.props.defaultValue || '');
+    componentWillMount() {
+        if (this.props.onRender) {
+            // undefined validOnMount will default to true in the state
+            const validOnMount = this.props.validateOnMount
+                && this.props.validate
+                && this.props.validate(this.props.defaultValue || '');
 
-      this.props.onRender(
+            this.props.onRender(
                 this.props.defaultValue,
                 validOnMount,
                 this.props.disabledOnMount,
@@ -80,30 +80,30 @@ export class Input extends React.Component<IInputProps, IInputState> {
         }
     }
 
-  componentDidUpdate(prevProps: IInputProps) {
-    if (this.props.valid !== prevProps.valid) {
-      this.validate();
+    componentDidUpdate(prevProps: IInputProps) {
+        if (this.props.valid !== prevProps.valid) {
+            this.validate();
+        }
     }
-  }
 
-  reset() {
-    this.innerInput.value = '';
-  }
+    reset() {
+        this.innerInput.value = '';
+    }
 
     getInnerValue(): string {
         return this.innerInput.value;
     }
 
-  validate() {
-    this.setState({
-      valid: this.props.valid && !(this.props.validate && !this.props.validate(this.getInnerValue())),
-    });
-  }
-
-  private handleBlur() {
-    if (this.props.onBlur) {
-      this.props.onBlur(this.innerInput.value);
+    validate() {
+        this.setState({
+            valid: this.props.valid && !(this.props.validate && !this.props.validate(this.getInnerValue())),
+        });
     }
+
+    private handleBlur() {
+        if (this.props.onBlur) {
+            this.props.onBlur(this.innerInput.value);
+        }
 
     private handleChange() {
         if (this.props.onChange) {
@@ -133,19 +133,19 @@ export class Input extends React.Component<IInputProps, IInputState> {
             : null;
     }
 
-  render() {
-    const classes = classNames(
-      'input-wrapper validate',
-      {
-        'input-field': contains(['number', 'text'], this.props.type),
-      },
-      this.props.classes,
-    );
-    const innerInputClasses = classNames({
-      invalid: !this.state.valid && contains(['number', 'text'], this.props.type),
-    }, this.props.innerInputClasses);
+    render() {
+        const classes = classNames(
+            'input-wrapper validate',
+            {
+                'input-field': contains(['number', 'text'], this.props.type),
+            },
+            this.props.classes,
+        );
+        const innerInputClasses = classNames({
+            invalid: !this.state.valid && contains(['number', 'text'], this.props.type),
+        }, this.props.innerInputClasses);
 
-    return (
+        return (
             <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
                 <input
                     id={this.props.id}

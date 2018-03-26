@@ -3,24 +3,24 @@ import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {
-  addCustomSelectedOption,
-  addMultiSelectDropdownSearch,
-  applyFilterDropdownSearch,
-  closeDropdownSearch,
-  deselectAllOptionsMultiselectDropdownSearch,
-  deselectOptionDropdownSearch,
-  keyDownMultiselectDropdownSearch,
-  multiSelectOptionDropdownSearch,
-  openDropdownSearch,
-  removeDropdownSearch,
-  updateOptionsDropdownSearch,
+    addCustomSelectedOption,
+    addMultiSelectDropdownSearch,
+    applyFilterDropdownSearch,
+    closeDropdownSearch,
+    deselectAllOptionsMultiselectDropdownSearch,
+    deselectOptionDropdownSearch,
+    keyDownMultiselectDropdownSearch,
+    multiSelectOptionDropdownSearch,
+    openDropdownSearch,
+    removeDropdownSearch,
+    updateOptionsDropdownSearch,
 } from '../DropdownSearchActions';
 import {
-  IDropdownOption,
-  IDropdownSearchDispatchProps,
-  IDropdownSearchOwnProps,
-  IDropdownSearchProps,
-  IDropdownSearchStateProps,
+    IDropdownOption,
+    IDropdownSearchDispatchProps,
+    IDropdownSearchOwnProps,
+    IDropdownSearchProps,
+    IDropdownSearchStateProps,
 } from './../DropdownSearch';
 import {IDropdownSearchState} from './../DropdownSearchReducers';
 import {MultiSelectDropdownSearch} from './MultiSelectDropdownSearch';

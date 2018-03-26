@@ -95,7 +95,7 @@ describe('NavigationPerPage', () => {
         it('should call onRender if prop is set on mount', () => {
             const onRenderSpy = jasmine.createSpy('onRender');
 
-            expect(() => {navigationPerPageInstance.componentWillMount(); }).not.toThrow();
+            expect(() => {navigationPerPageInstance.componentWillMount();}).not.toThrow();
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onRender={onRenderSpy} />,
@@ -107,7 +107,7 @@ describe('NavigationPerPage', () => {
         it('should call onDestroy if prop is set when unmounting', () => {
             const onDestroySpy = jasmine.createSpy('onDestroy');
 
-            expect(() => {navigationPerPageInstance.componentWillMount(); }).not.toThrow();
+            expect(() => {navigationPerPageInstance.componentWillMount();}).not.toThrow();
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onDestroy={onDestroySpy} />,

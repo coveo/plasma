@@ -46,7 +46,7 @@ describe('NavigationPagination', () => {
         it('should call prop onRender on mounting if set', () => {
             const renderSpy: jasmine.Spy = jasmine.createSpy('onRender');
 
-            expect(() => {navigationPaginationInstance.componentWillMount(); }).not.toThrow();
+            expect(() => {navigationPaginationInstance.componentWillMount();}).not.toThrow();
 
             navigationPagination = mount(
                 <NavigationPagination
@@ -60,7 +60,7 @@ describe('NavigationPagination', () => {
         it('should call prop onDestroy on unmounting if set', () => {
             const destroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
 
-            expect(() => {navigationPaginationInstance.componentWillUnmount(); }).not.toThrow();
+            expect(() => {navigationPaginationInstance.componentWillUnmount();}).not.toThrow();
 
             navigationPagination = mount(
                 <NavigationPagination

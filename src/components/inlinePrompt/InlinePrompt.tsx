@@ -48,7 +48,7 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
                 <button
                     type='button'
                     className='btn action mod-danger prompt-action enabled'
-                    onClick={() => {this.props.options.onClick(); }}
+                    onClick={() => {this.props.options.onClick();}}
                     key={'choice-' + index}>
                     {choice}
                 </button>
@@ -60,7 +60,7 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
             null;
 
         const cancel: JSX.Element = this.props.options.userChoice.cancel ?
-            <button type='button' className='btn cancel prompt-action enabled' onClick={() => {this.onCancelClick(); }}>
+            <button type='button' className='btn cancel prompt-action enabled' onClick={() => {this.onCancelClick();}}>
                 {this.props.options.userChoice.cancel}
             </button> :
             null;

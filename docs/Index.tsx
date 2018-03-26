@@ -27,7 +27,7 @@ import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examp
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
 import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import {
-  DatePickerDropdownConnectedSingleDateExamples,
+    DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';

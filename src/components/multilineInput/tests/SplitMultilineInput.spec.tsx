@@ -88,9 +88,11 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should not throw if the default values do not reference the inputs correctly', () => {
-            expect(() => splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [{
-                'third': 'where does this value go?',
-            }]}))).not.toThrow();
+            expect(() => splitMultilineInput.setProps(_.extend({}, basicProps, {
+                defaultValues: [{
+                    'third': 'where does this value go?',
+                }]
+            }))).not.toThrow();
         });
 
         it('should call removeLine with the index of the input when clicking the delete input action', () => {

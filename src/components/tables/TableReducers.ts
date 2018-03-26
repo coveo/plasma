@@ -80,7 +80,7 @@ export const tableInitialState: ITableState = {
     datePickerRangeId: undefined,
 };
 
-export const tablesInitialState: {[tableId: string]: ITableState; } = {};
+export const tablesInitialState: {[tableId: string]: ITableState;} = {};
 
 export const tableReducer = (
     state: ITableState = tableInitialState,
