@@ -97,7 +97,7 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
 };
 
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): IThunkAction => {
-    return (dispatch: IDispatch, getState: () => {[globalStateProp: string]: any; tables: ITablesState;}) => {
+    return (dispatch: IDispatch, getState: () => {[globalStateProp: string]: any; tables: ITablesState; }) => {
         const currentTableState = getState().tables[tableOwnProps.id];
         dispatchPreTableStateModification(tableOwnProps.id, dispatch);
         $.get('https://jsonplaceholder.typicode.com/comments')

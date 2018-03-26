@@ -66,7 +66,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
         && this.props.validate
         && this.props.validate(this.props.defaultValue || '');
 
-            this.props.onRender(
+      this.props.onRender(
                 this.props.defaultValue,
                 validOnMount,
                 this.props.disabledOnMount,
@@ -145,7 +145,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
       invalid: !this.state.valid && contains(['number', 'text'], this.props.type),
     }, this.props.innerInputClasses);
 
-        return (
+    return (
             <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
                 <input
                     id={this.props.id}
