@@ -47,7 +47,7 @@ export const searchBarPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        onChangeCallback: noop,
+        onChange: noop,
         disabled: true,
         searching: false,
     },
@@ -58,10 +58,10 @@ export const searchBarPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        onChangeCallback: noop,
+        onChange: noop,
         disabled: false,
         searching: true,
-        searchText: 'txetHcreas',
+        value: 'txetHcreas',
     },
 ];
 
@@ -111,7 +111,7 @@ export const searchBarConnectedPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        onChangeCallback: noop,
+        onChange: noop,
     },
     {
         id: 'super-search-bar',
@@ -120,6 +120,6 @@ export const searchBarConnectedPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        onChangeCallback: noop,
+        onChange: noop,
     },
 ];

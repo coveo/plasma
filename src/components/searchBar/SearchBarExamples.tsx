@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
 import {ReactVaporStore} from '../../../docs/ReactVaporStore';
-import {setDisabledInput} from '../input/InputActions';
 import {ISearchBarProps, ISearchBarStateProps, SearchBar} from './SearchBar';
-import {toggleSearching} from './SearchBarActions';
+import {toggleSearchBarDisabled, toggleSearching} from './SearchBarActions';
 import {SearchBarConnected} from './SearchBarConnected';
 
 class SearchBarExample extends React.Component<{}, ISearchBarStateProps> {
@@ -11,7 +10,7 @@ class SearchBarExample extends React.Component<{}, ISearchBarStateProps> {
         super(props);
 
         this.state = {
-            searchText: '',
+            value: '',
             disabled: false,
             searching: false,
         };
@@ -22,10 +21,10 @@ class SearchBarExample extends React.Component<{}, ISearchBarStateProps> {
             <SearchBar
                 id='search-bar-1'
                 placeholder='Search awesome things'
-                searchText={this.state.searchText}
+                value={this.state.value}
                 disabled={this.state.disabled}
                 searching={this.state.searching}
-                onChangeCallback={(event) => this.setState({searchText: event.target.value})}
+                onChange={(event) => this.setState({value: event.target.value})}
                 onSearch={(filterText: string) => {
                     this.setState({searching: true});
                     setTimeout(() => {
@@ -88,8 +87,8 @@ export class SearchBarExamples extends React.Component<any, any> {
                         <button
                             type='button'
                             onClick={() => {
-                                const input = findWhere(ReactVaporStore.getState().inputs, {id: 'search-bar-4'});
-                                ReactVaporStore.dispatch(setDisabledInput('search-bar-4', !input.disabled));
+                                const searchBar = findWhere(ReactVaporStore.getState().searchBars, {id: 'search-bar-4'});
+                                ReactVaporStore.dispatch(toggleSearchBarDisabled('search-bar-4', !searchBar.disabled));
                             }}>
                             Toggle disabled state
                         </button>

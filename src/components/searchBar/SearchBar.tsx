@@ -2,10 +2,17 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {keyCode} from '../../utils/InputUtils';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Svg} from '../svg/Svg';
 
-export interface ISearchBarOwnProps {
+export interface ISearchBarConnectedProps {
+    /**
+     * If true, the search bar will be disabled in the UI and in the state on mount.
+     * False by default.
+     */
+    disabledOnMount?: boolean;
+}
+
+export interface ISearchBarOwnProps extends ISearchBarConnectedProps {
     id: string;
     onSearch: (filterText: string) => void;
     containerClassNames?: IClassName;
@@ -13,18 +20,18 @@ export interface ISearchBarOwnProps {
     placeholder?: string;
     minWidth?: string;
     maxWidth?: string;
-    onChange?: (event: React.FormEvent<HTMLInputElement>) => any;
 }
 
-export interface ISearchBarStateProps extends IReduxStatePossibleProps {
+export interface ISearchBarStateProps {
     disabled?: boolean;
     searching?: boolean;
-    searchText?: string;
+    value?: string;
 }
 
 export interface ISearchBarDispatchProps {
     onMount?: () => void;
     onUnmount?: () => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ISearchBarProps extends ISearchBarOwnProps, ISearchBarStateProps, ISearchBarDispatchProps {}
@@ -34,7 +41,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
         placeholder: '',
         disabled: false,
         searching: false,
-        searchText: '',
+        value: '',
         minWidth: '500px',
         maxWidth: '500px',
     };
@@ -62,7 +69,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
                     className={this.getInputClasses()}
                     placeholder={this.props.placeholder}
                     disabled={this.props.disabled || this.props.searching}
-                    value={this.props.searchText}
+                    value={this.props.value}
                     onKeyUp={(event) => event.keyCode === keyCode.enter && this.search()}
                     onChange={(event) => this.props.onChange && this.props.onChange(event)}
                 />
@@ -102,8 +109,8 @@ export class SearchBar extends React.Component<ISearchBarProps> {
     }
 
     private search() {
-        if (!this.props.disabled && !this.props.searching && !!this.props.searchText) {
-            this.props.onSearch(this.props.searchText);
+        if (!this.props.disabled && !this.props.searching && !!this.props.value) {
+            this.props.onSearch(this.props.value);
         }
     }
 }

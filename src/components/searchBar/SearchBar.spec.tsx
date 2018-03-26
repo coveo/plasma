@@ -1,7 +1,6 @@
 import {mount, shallow} from 'enzyme';
 import * as React from 'react';
 import {keyCode} from '../../utils/InputUtils';
-import {Input} from '../input/Input';
 import {Svg} from '../svg/Svg';
 import {SearchBar} from './SearchBar';
 import {searchBarPropsScenarios} from './SearchBarPropsScenarios.spec';
@@ -38,12 +37,12 @@ describe('SearchBar', () => {
 
     it('should have an input inside the div container with the search-bar-input class by default', () => {
         const component = shallow(<SearchBar {...requiredProps} />);
-        expect(component.find('div').first().find(Input).prop('innerInputClasses')).toBe('search-bar-input');
+        expect(component.find('div').first().find('input').prop('className')).toBe('search-bar-input');
     });
 
     it('should have an input inside the div container with extra classes if passed as props', () => {
         const component = shallow(<SearchBar {...requiredProps} inputClassNames='extra-class' />);
-        expect(component.find('div').first().find(Input).prop('innerInputClasses')).toContain('extra-class');
+        expect(component.find('div').first().find('input').prop('className')).toContain('extra-class');
     });
 
     it('should have a clickable span containing an svg by default, which when clicked, the search method is called', () => {
@@ -78,13 +77,13 @@ describe('SearchBar', () => {
         expect(component.find('div .search-bar-icon-container .search-bar-spinner').length).toBe(1);
     });
 
-    it('should call onChangeCallback on input change if it is defined', () => {
-        const onChangeCallback = jasmine.createSpy('onChangeCallback');
-        const props = {...requiredProps, onChangeCallback};
+    it('should call onChange on input change if it is defined', () => {
+        const onChange = jasmine.createSpy('onChange');
+        const props = {...requiredProps, onChange};
         const component = mount(<SearchBar {...props} />);
         component.find('input').simulate('change');
 
-        expect(onChangeCallback).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenCalledTimes(1);
     });
 
     it('should call search on enter keyup', () => {
@@ -104,7 +103,7 @@ describe('SearchBar', () => {
     });
 
     describe('on calling search', () => {
-        it('should not call the onSearch prop if searchText is empty', () => {
+        it('should not call the onSearch prop if value is empty', () => {
             const component = new SearchBar({...requiredProps});
             spyOn(component.props, 'onSearch');
             (component as any).search();
@@ -112,24 +111,24 @@ describe('SearchBar', () => {
             expect(component.props.onSearch).not.toHaveBeenCalled();
         });
 
-        it('should not call the onSearch prop if searchText is not empty, searching is false, but disabled is true', () => {
-            const component = new SearchBar({...requiredProps, searchText: 'non empty', disabled: true});
+        it('should not call the onSearch prop if value is not empty, searching is false, but disabled is true', () => {
+            const component = new SearchBar({...requiredProps, value: 'non empty', disabled: true});
             spyOn(component.props, 'onSearch');
             (component as any).search();
 
             expect(component.props.onSearch).not.toHaveBeenCalled();
         });
 
-        it('should not call the onSearch prop if searchText is not empty, disabled is false, but searching is true', () => {
-            const component = new SearchBar({...requiredProps, searchText: 'non empty', searching: true});
+        it('should not call the onSearch prop if value is not empty, disabled is false, but searching is true', () => {
+            const component = new SearchBar({...requiredProps, value: 'non empty', searching: true});
             spyOn(component.props, 'onSearch');
             (component as any).search();
 
             expect(component.props.onSearch).not.toHaveBeenCalled();
         });
 
-        it('should call the onSearch prop if searchText is not empty, disabled is false, and searching is false', () => {
-            const component = new SearchBar({...requiredProps, searchText: 'non empty'});
+        it('should call the onSearch prop if value is not empty, disabled is false, and searching is false', () => {
+            const component = new SearchBar({...requiredProps, value: 'non empty'});
             spyOn(component.props, 'onSearch');
             (component as any).search();
 
