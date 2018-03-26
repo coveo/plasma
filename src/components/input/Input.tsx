@@ -80,6 +80,12 @@ export class Input extends React.Component<IInputProps, IInputState> {
     }
   }
 
+  componentDidUpdate(prevProps: IInputProps) {
+    if (this.props.valid !== prevProps.valid) {
+      this.validate();
+    }
+  }
+
   reset() {
     this.innerInput.value = '';
   }
