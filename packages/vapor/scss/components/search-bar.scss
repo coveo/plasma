@@ -10,10 +10,10 @@
   float: left;
   width: calc(100% - #{$search-bar-width-without-input});
   height: $input-height;
-  margin-left: $search-bar-input-margin-left;
   margin-top: -$default-border-size;
-  background-color: transparent;
+  margin-left: $search-bar-input-margin-left;
 
+  background-color: transparent;
   border: none;
 
   &:focus {
@@ -31,14 +31,16 @@
   }
 
   svg {
-    fill: $medium-blue;
     cursor: pointer;
+
+    fill: $medium-blue;
   }
 }
 
 .search-bar-disabled svg {
-  fill: $light-grey;
   cursor: default;
+
+  fill: $light-grey;
 }
 
 .search-bar-loading .search-bar-icon-container {
