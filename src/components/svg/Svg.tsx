@@ -1,8 +1,7 @@
+import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {extend, omit} from 'underscore';
-
-// tslint:disable-next-line
-const svgsEnum = require('../../../node_modules/coveo-styleguide/dist/svg/CoveoStyleGuideSvg.json') as {[key: string]: string};
+import {camelize} from 'underscore.string';
 
 /**
  * Pass the required svgName to get your svg.
@@ -36,7 +35,8 @@ export class Svg extends React.Component<ISvgProps, any> {
     }
 
     render() {
-        const svgString: string = svgsEnum[this.props.svgName];
+        const formattedSvgName: string = camelize(this.props.svgName);
+        const svgString: string = VaporSVG.svg[formattedSvgName] && VaporSVG.svg[formattedSvgName].svgString;
 
         // Omit Svg props to avoid warnings.
         const svgSpanProps = extend({}, omit(this.props, svgPropsToOmit));
