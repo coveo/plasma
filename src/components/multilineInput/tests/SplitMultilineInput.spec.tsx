@@ -91,7 +91,7 @@ describe('SplitMultilineInput', () => {
             expect(() => splitMultilineInput.setProps(_.extend({}, basicProps, {
                 defaultValues: [{
                     'third': 'where does this value go?',
-                }]
+                }],
             }))).not.toThrow();
         });
 
