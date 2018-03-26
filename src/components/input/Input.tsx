@@ -4,21 +4,27 @@ import {contains, isUndefined} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ILabelProps, Label} from './Label';
 
-export interface IInputOwnProps {
+export interface ILabelProps {
+    labelTitle?: string;
+    labelProps?: ILabelProps;
+}
+
+export interface IInputContainerProps {
+    classes?: IClassName;
+}
+
+export interface IInputOwnProps extends IInputContainerProps, ILabelProps {
     id?: string;
     name?: string;
     type?: string;
-    classes?: IClassName;
     innerInputClasses?: IClassName;
     defaultValue?: string;
     placeholder?: string;
     defaultChecked?: boolean;
     readOnly?: boolean;
-    validate?: (value: any) => boolean;
-    labelTitle?: string;
-    labelProps?: ILabelProps;
     onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     onBlur?: (value: string) => void;
+    validate?: (value: any) => boolean;
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
@@ -150,7 +156,7 @@ export class Input extends React.Component<IInputProps, any> {
         );
     }
 
-    private getDefaultInput(): JSX.Element {
+    private getInputWithLabelAndContainer(): JSX.Element {
         const classes = classNames(
             'input-wrapper validate',
             {
@@ -171,6 +177,6 @@ export class Input extends React.Component<IInputProps, any> {
     render() {
         return this.props.raw
             ? this.getRawInput()
-            : this.getDefaultInput();
+            : this.getInputWithLabelAndContainer();
     }
 }
