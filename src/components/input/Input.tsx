@@ -104,6 +104,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
         if (this.props.onBlur) {
             this.props.onBlur(this.innerInput.value);
         }
+    }
 
     private handleChange() {
         if (this.props.onChange) {
