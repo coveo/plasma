@@ -65,10 +65,22 @@ module.exports = {
                 ],
             },
         ],
-        externals: {
-            cheerio: 'window',
-            'react/addons': true,
-            'react/lib/ExecutionEnvironment': true,
-            'react/lib/ReactContext': true,
-        },
-    };
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
+            'process.env.NODE_ENV': JSON.stringify('test'),
+        }),
+        new webpack.ProvidePlugin({
+            React: 'react',
+            $: 'jquery',
+            jQuery: 'jquery', // Required for chosen-js, otherwise, it won't work.
+        }),
+    ],
+    externals: {
+        cheerio: 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true,
+    },
+};
