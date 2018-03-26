@@ -39,9 +39,6 @@ export const searchBarPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        additionalInputProps: {
-            type: 'number',
-        },
     },
     {
         id: 'super-search-bar',
@@ -50,9 +47,6 @@ export const searchBarPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        additionalInputProps: {
-            type: 'number',
-        },
         onChangeCallback: noop,
         disabled: true,
         searching: false,
@@ -64,9 +58,6 @@ export const searchBarPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        additionalInputProps: {
-            type: 'number',
-        },
         onChangeCallback: noop,
         disabled: false,
         searching: true,
@@ -112,9 +103,6 @@ export const searchBarConnectedPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        additionalInputProps: {
-            type: 'number',
-        },
     },
     {
         id: 'super-search-bar',
@@ -123,9 +111,6 @@ export const searchBarConnectedPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        additionalInputProps: {
-            type: 'number',
-        },
         onChangeCallback: noop,
     },
     {
@@ -135,9 +120,6 @@ export const searchBarConnectedPropsScenarios: ISearchBarProps[] = [
         placeholder: 'hold me tight',
         minWidth: '200px',
         maxWidth: '300px',
-        additionalInputProps: {
-            type: 'number',
-        },
         onChangeCallback: noop,
     },
 ];
