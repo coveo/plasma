@@ -7,9 +7,10 @@ export interface IAutocompleteState {
     id: string;
     open: boolean;
     value: string;
+    active: number;
 }
 
-export const selectInitialState: IAutocompleteState = {id: undefined, open: false, value: ''};
+export const selectInitialState: IAutocompleteState = {id: undefined, open: false, value: '', active: 0};
 export const selectCompositeInitialState: IAutocompleteState[] = [];
 
 export const autocompleteReducer = (state: IAutocompleteState = selectInitialState, action: IReduxAction<IAutocompletePayload>): IAutocompleteState => {
@@ -23,12 +24,15 @@ export const autocompleteReducer = (state: IAutocompleteState = selectInitialSta
                 id: action.payload.id,
                 open: state.open,
                 value: state.value,
+                active: state.active,
             };
         case AutocompleteActions.toggle:
             // if open was sent in the dispatch use the value. Otherwise toggle the property
-            return {...state, open: !_.isUndefined(action.payload.open) ? action.payload.open : !state.open};
+            return {...state, active: 0, open: !_.isUndefined(action.payload.open) ? action.payload.open : !state.open};
         case AutocompleteActions.setValue:
             return {...state, open: true, value: action.payload.value};
+        case AutocompleteActions.setActive:
+            return {...state, open: true, active: state.active + action.payload.diff};
         case ListBoxActions.select:
             // when the user selects a value in the list, close the autocomplete
             return {...state, open: false, value: action.payload.value};
@@ -52,6 +56,7 @@ export const autocompletesReducer = (
         case ListBoxActions.select:
         case AutocompleteActions.toggle:
         case AutocompleteActions.setValue:
+        case AutocompleteActions.setActive:
             return state.map((select: IAutocompleteState) => autocompleteReducer(select, action));
         default:
             return state;

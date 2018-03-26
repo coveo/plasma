@@ -28,6 +28,13 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
         },
         highlight: '',
     };
+    private el: any;
+
+    componentDidUpdate(prevProps: IItemBoxProps, prevState: IItemBoxProps) {
+        if (prevProps.active !== this.props.active && this.props.active) {
+            this.el.scrollIntoView(false);
+        }
+    }
 
     private getClasses(): string {
         return classNames('item-box',
@@ -51,6 +58,7 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
         return (
             <Tooltip {...this.props.tooltip}>
                 <li
+                    ref={(li) => this.el = li}
                     className={this.getClasses()}
                     onClick={() => this.handleOnOptionClick()}
                     data-value={this.props.value}>

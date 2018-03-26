@@ -7,7 +7,7 @@ import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
-import {addAutocomplete, removeAutocomplete, setAutocompleteValue, toggleAutocomplete} from './AutocompleteActions';
+import {addAutocomplete, removeAutocomplete, setAutocompleteActive, setAutocompleteValue, toggleAutocomplete} from './AutocompleteActions';
 import {IAutocompleteState} from './AutocompleteReducers';
 
 const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
@@ -29,6 +29,7 @@ export interface IAutocompleteStateProps {
     isOpen?: boolean;
     value?: string;
     visibleItems?: IItemBoxProps[];
+    active?: number;
 }
 
 export interface IAutocompleteDispatchProps {
@@ -37,6 +38,7 @@ export interface IAutocompleteDispatchProps {
     onDocumentClick?: () => void;
     onFocus?: () => void;
     onChange?: (value: string) => void;
+    setActive?: (diff: number) => void;
 }
 
 export interface IAutocompleteProps extends IAutocompleteOwnProps, IAutocompleteStateProps, IAutocompleteDispatchProps {}
@@ -47,16 +49,29 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProp
     const defaultValue = listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : '';
     const value = autocomplete && autocomplete.value || defaultValue;
 
-    const visibleItems = _.map(ownProps.items, (item: IItemBoxProps) => {
+    const itemsWithHidden = _.map(ownProps.items, (item: IItemBoxProps): IItemBoxProps => {
         const visible = _.isUndefined(ownProps.matchFilter)
             ? defaultMatchFilter(value, item)
             : ownProps.matchFilter(value, item);
 
-        return {...item, hidden: !visible || item.hidden};
+        return {...item, hidden: !visible || !!item.hidden};
+    });
+
+    let index = 0;
+    const activeIndex = autocomplete && autocomplete.active;
+    const visibleLength = _.filter(itemsWithHidden, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
+    const visibleItems = _.map(itemsWithHidden, (item: IItemBoxProps): IItemBoxProps => {
+        let active = false;
+        if (!item.hidden && !item.disabled) {
+            active = activeIndex % visibleLength === index;
+            index++;
+        }
+        return {...item, active};
     });
 
     return {
         visibleItems,
+        active: autocomplete && autocomplete.active,
         isOpen: autocomplete && autocomplete.open,
         value: autocomplete && autocomplete.value || defaultValue,
     };
@@ -68,6 +83,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IAutocompleteOwnProps
     onDocumentClick: () => dispatch(toggleAutocomplete(ownProps.id, false)),
     onFocus: () => dispatch(toggleAutocomplete(ownProps.id)),
     onChange: (value: string) => dispatch(setAutocompleteValue(ownProps.id, value)),
+    setActive: (diff: number) => dispatch(setAutocompleteActive(ownProps.id, diff)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -94,6 +110,7 @@ export class AutocompleteConnected extends React.Component<IAutocompleteProps, {
                     <input
                         onFocus={() => this.props.onFocus()}
                         onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyUp(e)}
+                        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyDown(e)}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.props.onChange(e.target.value)}
                         value={this.props.value}
                         required
@@ -113,12 +130,33 @@ export class AutocompleteConnected extends React.Component<IAutocompleteProps, {
         this.props.onFocus();
     }
 
+    private onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+        if (keyCode.tab === e.keyCode) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }
+
     private onKeyUp(e: React.KeyboardEvent<HTMLInputElement>) {
         if (keyCode.escape === e.keyCode && this.props.isOpen) {
             this.onToggleDropdown();
         }
-        if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode)) {
+
+        if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpen) {
+            const active = _.findWhere(this.props.visibleItems, {active: true});
+            if (active) {
+                this.props.onChange(active.value);
+            }
+        } else if (keyCode.enter === e.keyCode) {
             this.onToggleDropdown();
+        }
+
+        if (keyCode.downArrow === e.keyCode) {
+            this.props.setActive(1);
+        }
+
+        if (keyCode.upArrow === e.keyCode) {
+            this.props.setActive(-1);
         }
     }
 
