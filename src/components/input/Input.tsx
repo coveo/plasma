@@ -22,8 +22,13 @@ export interface IInputOwnProps {
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
-    rawInput?: boolean;
     onChangeCallback?: (event: React.ChangeEvent<HTMLInputElement>, value?: string, valid?: boolean) => void;
+    /**
+     * Render the input without any default style.
+     * Label, children, and the div container will be ignored in this context.
+     * Only an HTML input element will be rendered in the DOM.
+     */
+    rawInput?: boolean;
 }
 
 export interface IInputStateProps {
