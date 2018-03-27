@@ -7,30 +7,30 @@
     position: relative;
 
     padding-bottom: 8px;
+  }
 
-    input {
-      padding-right: 22px;
-    }
+  input {
+    padding-right: 22px;
+  }
 
-    label {
-      visibility: hidden;
-      &:after {
-        visibility: visible;
-      }
-
-      &.first-label {
-        visibility: visible;
-      }
-    }
-
-    &:nth-child(1) label {
+  label {
+    visibility: hidden;
+    &:after {
       visibility: visible;
     }
 
-    .multiline-label .inline-help-tooltip {
-      width: 1em;
-      height: 1em;
+    &.first-label {
+      visibility: visible;
     }
+  }
+
+  &:nth-child(1) label {
+    visibility: visible;
+  }
+
+  .multiline-label .inline-help-tooltip {
+    width: 1em;
+    height: 1em;
   }
 
   ul {
@@ -59,8 +59,9 @@
       }
     }
   }
+}
 
-  // Action icons
+// Action icons
   .input-actions {
     position: absolute;
     top: 4px;
@@ -143,4 +144,3 @@
       }
     }
   }
-}
