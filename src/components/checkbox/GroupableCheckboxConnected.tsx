@@ -2,8 +2,8 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {IInputDispatchProps, IInputProps, IInputStateProps} from '../input/Input';
-import {Checkbox} from './Checkbox';
+import {IInputDispatchProps, IInputStateProps} from '../input/Input';
+import {Checkbox, ICheckboxProps} from './Checkbox';
 import {ICheckboxState} from './CheckboxReducers';
 import {
     addGroupedCheckbox,
@@ -13,7 +13,7 @@ import {
 } from './GroupableCheckboxActions';
 import {IGroupableCheckboxesState} from './GroupableCheckboxReducers';
 
-export interface IGroupableCheckboxOwnProps extends IInputProps {
+export interface IGroupableCheckboxOwnProps extends ICheckboxProps {
     isParent?: boolean;
     parentId?: string;
 }
