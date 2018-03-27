@@ -8,7 +8,7 @@ import {IData, ITableHeadingAttribute} from '../Table';
 import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
 import {TableChildComponent, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 import {TableHeadingRowConnected} from '../TableHeadingRowConnected';
-import {TableRowWrapper} from '../TableRowWrapper';
+import {TableCollapsibleRowWrapper} from '../TableRowWrapper';
 import {getTableChildComponentId} from '../TableUtils';
 
 export interface ITableBodyInheritedFromTableProps {
@@ -58,25 +58,27 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
     });
 
-    return (
-        <TableRowWrapper className={tableRowWrapperClasses}>
-            <TableHeadingRowConnected
-                id={headingAndCollapsibleId}
-                tableId={props.tableId}
-                className={tableRowClasses}
-                isCollapsible={!!collapsibleData}
-                onClickCallback={() => {
-                    if (props.onRowClick) {
-                        props.onRowClick(props.getActions(props.rowData));
-                    }
-                }}
-                onDoubleClick={() => props.getActions(props.rowData)
-                    .filter((action) => action.callOnDoubleClick)
-                    .forEach((action) => action.trigger())
-                }>
-                {tableHeadingRowContent}
-            </TableHeadingRowConnected>
-            {collapsibleRow}
-        </TableRowWrapper>
-    );
+    const tableHeadingRowConnectedNode = <TableHeadingRowConnected
+        id={headingAndCollapsibleId}
+        tableId={props.tableId}
+        className={tableRowClasses}
+        isCollapsible={!!collapsibleData}
+        onClickCallback={() => {
+            if (props.onRowClick) {
+                props.onRowClick(props.getActions(props.rowData));
+            }
+        }}
+        onDoubleClick={() => props.getActions(props.rowData)
+            .filter((action) => action.callOnDoubleClick)
+            .forEach((action) => action.trigger())
+        }>
+        {tableHeadingRowContent}
+    </TableHeadingRowConnected>;
+
+    return collapsibleRow
+        ? <TableCollapsibleRowWrapper className={tableRowWrapperClasses}
+            collapsibleRow={collapsibleRow}>
+            {tableHeadingRowConnectedNode}
+        </TableCollapsibleRowWrapper>
+        : tableHeadingRowConnectedNode;
 };

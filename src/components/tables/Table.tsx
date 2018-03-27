@@ -36,7 +36,7 @@ export interface IPredicateAttributes {
 }
 
 export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => JSXRenderable;
-export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string) => React.ReactNode;
+export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string, data?: IData) => React.ReactNode;
 
 export interface ITableHeadingAttribute {
     attributeName: string;
@@ -194,7 +194,7 @@ export class Table extends React.Component<ITableProps, {}> {
     private getTableBody() {
         const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
 
-        return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
+        const tableBodyNode: React.ReactNode = tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
             const currentRowData: IData = tableData.byId[id];
 
             return (
@@ -210,5 +210,9 @@ export class Table extends React.Component<ITableProps, {}> {
                 />
             );
         });
+
+        return this.props.collapsibleFormatter
+            ? tableBodyNode
+            : <tbody>{tableBodyNode}</tbody>;
     }
 }
