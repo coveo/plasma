@@ -76,9 +76,9 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
         return this.state.isInError
             ? (
                 <div className='input-validation-error-details'>
-                <span className='input-validation-error-icon'>
-                    <Svg svgName='message-alert' svgClass='icon fill-white' />
-                </span>
+                    <span className='input-validation-error-icon'>
+                        <Svg svgName='message-alert' svgClass='icon fill-white' />
+                    </span>
                     <span className='input-validation-error-message'>{this.props.errorMessage}</span>
                 </div>
             )

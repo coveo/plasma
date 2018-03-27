@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror';
 import * as _ from 'underscore';
-import {IJSONEditorProps, JSONEditor, IJSONEditorState} from '../JSONEditor';
+import {IJSONEditorProps, IJSONEditorState, JSONEditor} from '../JSONEditor';
 
 describe('JSONEditor', () => {
     const basicProps: IJSONEditorProps = {
