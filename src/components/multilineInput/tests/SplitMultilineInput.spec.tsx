@@ -113,7 +113,7 @@ describe('SplitMultilineInput', () => {
             splitMultilineInput.find(Input).first().props().onChange(expectedValue, true);
 
             expect(changeValueSpy).toHaveBeenCalledTimes(1);
-            expect(changeValueSpy).toHaveBeenCalledWith(expectedValue, true, 0, _.keys(defaultValue)[0]);
+            expect(changeValueSpy).toHaveBeenCalledWith(expectedValue, true, 0, _.keys(defaultValue)[0], jasmine.anything());
         });
 
         it('should call addLine when clicking the <AddInputAction />', () => {
@@ -234,7 +234,7 @@ describe('SplitMultilineInput', () => {
 
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]}));
 
-            (splitMultilineInputInstance as any).changeValue(expectedValue, true, 0, valueId);
+            (splitMultilineInputInstance as any).changeValue(expectedValue, true, 0, valueId, undefined);
 
             expect(splitMultilineInput.state().values[0][valueId]).toBe(expectedValue);
         });
@@ -242,10 +242,13 @@ describe('SplitMultilineInput', () => {
         it('should not change the value if it is not valid', () => {
             const unexpectedValue: string = 'the value has been changed!';
             const valueId: string = basicProps.inputs[0].id;
+            const input: any = {
+                validate: jasmine.createSpy('validate'),
+            };
 
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]}));
 
-            (splitMultilineInputInstance as any).changeValue(unexpectedValue, false, 0, valueId);
+            (splitMultilineInputInstance as any).changeValue(unexpectedValue, false, 0, valueId, input);
 
             expect(splitMultilineInput.state().values[0][valueId]).not.toBe(unexpectedValue);
             expect(splitMultilineInput.state().values[0][valueId]).toBe(defaultValue[valueId]);

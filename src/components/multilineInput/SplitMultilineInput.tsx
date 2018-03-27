@@ -68,16 +68,19 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
 
                 if (input) {
                     const deleteButton: JSX.Element = inputIndex + 1 === inputLength ? <DeleteInputAction onClick={() => this.removeLine(index)} /> : null;
+                    let inputRef: Input;
                     return (
                         <Input
+                            validateOnChange
+                            ref={(ref: Input) => inputRef = ref}
                             classes={styles.input}
                             value={values[labelId]}
                             placeholder={input.placeholder}
                             validate={input.validation ? (value: any) => input.validation(value) : undefined}
                             key={labelId + inputIndex}
-                            onChange={(value?: string, valid?: boolean) => this.changeValue(value, valid, index, labelId)}
+                            onChange={(value?: string, valid?: boolean) => this.changeValue(value, valid, index, labelId, inputRef)}
                         >
-                            <Label>{input.label}</Label>
+                            <Label invalidMessage={input.validationMessage}>{index === 0 ? input.label : ''}</Label>
                             {deleteButton}
                         </Input>
                     );
@@ -104,7 +107,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                     placeholder={input.placeholder}
                     validate={input.validation ? (value: any) => input.validation(value) : undefined}
                 >
-                    <Label invalidMessage={input.validationMessage}>{input.label}</Label>
+                    <Label invalidMessage={input.validationMessage}>{!this.state.values.length ? input.label : ''}</Label>
                     {addButton}
                 </Input>
             );
@@ -149,13 +152,15 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
         }
     }
 
-    private changeValue(value: string, valid: boolean, index: number, labelId: string) {
+    private changeValue(value: string, valid: boolean, index: number, labelId: string, inputRef: Input) {
         if (_.isUndefined(valid) || valid) {
             const values: ISplitValue[] = this.state.values.slice(0);
             values[index][labelId] = value;
             this.setState({
                 values,
             }, this.handleChange);
+        } else {
+            inputRef.validate();
         }
     }
 
