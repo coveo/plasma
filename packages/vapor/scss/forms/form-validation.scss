@@ -22,7 +22,7 @@
           height: 12px;
         }
 
-        svg {
+        svg:not(.fill-white) {
           fill: $red;
         }
       }
