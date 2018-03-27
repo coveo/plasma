@@ -21,6 +21,7 @@ import {CheckboxExamples} from '../src/components/checkbox/examples/CheckboxExam
 import {ChildFormExamples} from '../src/components/childForm/examples/ChildFormExamples';
 import {ChosenSelectExamples} from '../src/components/chosen/examples/ChosenSelectExamples';
 import {CollapsibleContainerExamples} from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
+import {ColorBarExamples} from '../src/components/colorBar/ColorBarExamples';
 import {ContentExamples} from '../src/components/content/examples/ContentExamples';
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
@@ -63,6 +64,7 @@ import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/exam
 import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/OptionsCycleExamples';
 import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
+import {SearchBarExamples} from '../src/components/searchBar/SearchBarExamples';
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
@@ -105,6 +107,8 @@ class App extends React.Component<any, any> {
                         </div>
                     </div>
                     <AutocompleteExamples />
+                    <SearchBarExamples />
+                    <ColorBarExamples />
                     <PartialStringMatchExamples />
                     <BadgeExamples />
                     <CornerRibbonExamples />

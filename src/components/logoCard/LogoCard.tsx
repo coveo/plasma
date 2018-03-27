@@ -1,12 +1,14 @@
 import * as classNames from 'classnames';
+import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
-import * as  s from 'underscore.string';
+import {slugify} from 'underscore.string';
+
 import {Badge, IBadgeProps} from '../badge/Badge';
 import {CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, ICornerRibbonProps} from '../cornerRibbon/CornerRibbon';
 import {Svg} from '../svg/Svg';
 
 export const DEFAULT_LOGO_CARD_CLASSNAME: string = 'logo-card';
-export const DEFAULT_LOGO_ICON: string = 'source-custom';
+export const DEFAULT_LOGO_ICON: string = VaporSVG.svg.sourceCustom.name;
 export const DEFAULT_LOGO_ICON_CLASSNAME: string = 'icon';
 export const DEFAULT_LOGO_ICON_SIZE: string = 'mod-4x';
 export const DEFAULT_DISABLED_RIBBON_LABEL: string = 'Unavailable';
@@ -58,7 +60,7 @@ export class LogoCard extends React.Component<ILogoCardProps> {
         const badges = this.props.badges.map((badgeProps) =>
             <Badge
                 {...badgeProps}
-                key={s.slugify(badgeProps.label)}
+                key={slugify(badgeProps.label)}
             />,
         );
         const description = this.props.description

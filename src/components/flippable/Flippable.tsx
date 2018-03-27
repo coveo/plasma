@@ -60,6 +60,7 @@ export class Flippable extends React.Component<IFlippableProps, any> {
     render() {
         const containerClassName = classNames(
             Flippable.CONTAINER_CLASSNAME,
+            this.props.isFlipped ? 'show-on-top' : '',
             this.props.className,
         );
         const flipperClassName = classNames(
