@@ -127,7 +127,7 @@ describe('Svg', () => {
                 svgDomNode = svg.getDOMNode().querySelector('svg');
             });
 
-            it('should render an empty svg tag', () => {
+            it('should render an non-empty svg tag', () => {
                 expect(svgDomNode).toBeDefined();
                 expect(svgDomNode.hasChildNodes()).toBe(true);
             });
