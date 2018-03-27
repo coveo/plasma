@@ -36,9 +36,7 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
         case AutocompleteActions.setValue:
             return {
                 ...state,
-                selected: action.payload.multi
-                    ? _.without(state.selected, action.payload.value)
-                    : [action.payload.value],
+                selected: [action.payload.value],
             };
         case ListBoxActions.unselect:
             return {

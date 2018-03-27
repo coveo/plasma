@@ -10,10 +10,10 @@ export interface IAutocompleteState {
     active: number;
 }
 
-export const selectInitialState: IAutocompleteState = {id: undefined, open: false, value: '', active: undefined};
-export const selectCompositeInitialState: IAutocompleteState[] = [];
+export const autocompleteInitialState: IAutocompleteState = {id: undefined, open: false, value: '', active: undefined};
+export const autocompleteCompositeInitialState: IAutocompleteState[] = [];
 
-export const autocompleteReducer = (state: IAutocompleteState = selectInitialState, action: IReduxAction<IAutocompletePayload>): IAutocompleteState => {
+export const autocompleteReducer = (state: IAutocompleteState = autocompleteInitialState, action: IReduxAction<IAutocompletePayload>): IAutocompleteState => {
     if (state.id !== action.payload.id && action.type !== AutocompleteActions.add) {
         return state;
     }
@@ -48,7 +48,7 @@ export const autocompleteReducer = (state: IAutocompleteState = selectInitialSta
 };
 
 export const autocompletesReducer = (
-    state: IAutocompleteState[] = selectCompositeInitialState,
+    state: IAutocompleteState[] = autocompleteCompositeInitialState,
     action: IReduxAction<IAutocompletePayload>,
 ): IAutocompleteState[] => {
     switch (action.type) {

@@ -44,7 +44,7 @@ export interface IAutocompleteDispatchProps {
 export interface IAutocompleteProps extends IAutocompleteOwnProps, IAutocompleteStateProps, IAutocompleteDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProps): IAutocompleteStateProps => {
-    const autocomplete: IAutocompleteState = _.findWhere(state.Autocompletes, {id: ownProps.id});
+    const autocomplete: IAutocompleteState = _.findWhere(state.autocompletes, {id: ownProps.id});
     const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
     const defaultValue = listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : '';
     const value = autocomplete && autocomplete.value || defaultValue;

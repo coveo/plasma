@@ -42,7 +42,7 @@ const lastAction = (state: IReactVaporExampleState = null, action: Redux.Action)
 };
 
 export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
-    Autocompletes: autocompletesReducer,
+    autocompletes: autocompletesReducer,
     tables: tablesReducer,
     membersCompositeState: membersReducers,
     lastUpdatedComposite: lastUpdatedCompositeReducer,

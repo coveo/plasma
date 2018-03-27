@@ -35,7 +35,7 @@ import {ITableRowState} from './components/tables/TableRowReducers';
 import {IToastsState} from './components/toast/ToastReducers';
 
 export interface IReactVaporState {
-    Autocompletes: IAutocompleteState[];
+    autocompletes: IAutocompleteState[];
     lastUpdatedComposite?: ILastUpdatedState[];
     facets?: IFacetState[];
     filters?: IFilterState[];
