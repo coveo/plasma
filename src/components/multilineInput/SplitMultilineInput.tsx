@@ -32,6 +32,7 @@ export interface ISplitMultilineInputState {
 }
 
 export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInputProps, ISplitMultilineInputState> {
+    static inputLineClass: string = 'flex space-between relative pb1';
 
     constructor(props: ISplitMultilineInputProps, state: ISplitMultilineInputState) {
         super(props, state);
@@ -88,7 +89,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
             });
 
             return (
-                <li key={`split-${index}`} className={styles.inputLine}>
+                <li key={`split-${index}`} className={SplitMultilineInput.inputLineClass}>
                     {inputs}
                 </li>
             );
@@ -97,23 +98,20 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
 
     private getNewInput() {
         const inputRefs: Input[] = [];
-        const inputs: JSX.Element[] = _.map(this.props.inputs, (input: ISplitInput, inputIndex: number) => {
-            const addButton: JSX.Element = inputIndex + 1 === this.props.inputs.length ? <AddInputAction onClick={() => this.addLine(inputRefs)} /> : null;
-            return (
-                <Input
-                    ref={(ref: Input) => inputRefs.push(ref)}
-                    key={`add-${inputIndex}`}
-                    classes={styles.input}
-                    placeholder={input.placeholder}
-                    validate={input.validation ? (value: any) => input.validation(value) : undefined}
-                >
-                    <Label invalidMessage={input.validationMessage}>{!this.state.values.length ? input.label : ''}</Label>
-                    {addButton}
-                </Input>
-            );
-        });
+        const inputs: JSX.Element[] = _.map(this.props.inputs, (input: ISplitInput, inputIndex: number) => (
+            <Input
+                ref={(ref: Input) => inputRefs.push(ref)}
+                key={`add-${inputIndex}`}
+                classes={styles.input}
+                placeholder={input.placeholder}
+                validate={input.validation ? (value: any) => input.validation(value) : undefined}
+            >
+                <Label invalidMessage={input.validationMessage}>{!this.state.values.length ? input.label : ''}</Label>
+                {inputIndex + 1 === this.props.inputs.length ? <AddInputAction onClick={() => this.addLine(inputRefs)} /> : null}
+            </Input>
+        ));
         return (
-            <li key='new-input' className={styles.inputLine}>
+            <li key='new-input' className={SplitMultilineInput.inputLineClass}>
                 {inputs}
             </li>
         );
@@ -131,21 +129,21 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
 
     private addLine(inputRefs: Input[]) {
         let inError: boolean = false;
-        const values: ISplitValue = {};
+        const newValue: ISplitValue = {};
         _.each(this.props.inputs, (input: ISplitInput, inputIndex: number) => {
             const value: any = inputRefs[inputIndex].getInnerValue();
 
             inputRefs[inputIndex].validate();
 
             inError = inError || input.validation && !input.validation(value);
-            values[input.id] = value;
+            newValue[input.id] = value;
         });
 
         if (!inError) {
             this.setState({
                 values: [
                     ...this.state.values,
-                    values,
+                    newValue,
                 ],
             }, this.handleChange);
             _.each(inputRefs, (inputRef: Input) => inputRef.reset());
