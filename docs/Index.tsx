@@ -25,9 +25,7 @@ import {ContentExamples} from '../src/components/content/examples/ContentExample
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import {
-    DatePickerDropdownConnectedExamples,
-} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import {
     DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
@@ -57,6 +55,7 @@ import {ModalConnectedExamples} from '../src/components/modal/examples/ModalConn
 import {ModalExamples} from '../src/components/modal/examples/ModalExamples';
 import {ModalPromptExamples} from '../src/components/modalPrompt/exemples/ModalPromptExamples';
 import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
+import {SplitMultilineInputExamples} from '../src/components/multilineInput/examples/SplitMultilineExamples';
 import {NavigationConnectedExamples} from '../src/components/navigation/examples/NavigationConnectedExamples';
 import {NavigationExamples} from '../src/components/navigation/examples/NavigationExamples';
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
@@ -184,6 +183,7 @@ class App extends React.Component<any, any> {
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
                     <JSONEditorExamples />
+                    <SplitMultilineInputExamples />
                 </div>
             </Provider>
         );

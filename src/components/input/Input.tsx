@@ -40,13 +40,24 @@ export interface IInputDispatchProps {
 
 export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps {}
 
-export class Input extends React.Component<IInputProps, any> {
+export interface IInputState {
+    valid: boolean;
+}
+
+export class Input extends React.Component<IInputProps, IInputState> {
     private innerInput: HTMLInputElement;
 
     static defaultProps: Partial<IInputProps> = {
         type: 'text',
         valid: true,
     };
+
+    constructor(props: IInputProps, state: IInputState) {
+        super(props, state);
+        this.state = {
+            valid: this.props.valid,
+        };
+    }
 
     componentWillMount() {
         if (this.props.onRender) {
@@ -69,12 +80,24 @@ export class Input extends React.Component<IInputProps, any> {
         }
     }
 
+    componentDidUpdate(prevProps: IInputProps) {
+        if (this.props.valid !== prevProps.valid) {
+            this.validate();
+        }
+    }
+
     reset() {
         this.innerInput.value = '';
     }
 
     getInnerValue(): string {
         return this.innerInput.value;
+    }
+
+    validate() {
+        this.setState({
+            valid: this.props.valid && !(this.props.validate && !this.props.validate(this.getInnerValue())),
+        });
     }
 
     private handleBlur() {
@@ -120,7 +143,7 @@ export class Input extends React.Component<IInputProps, any> {
             this.props.classes,
         );
         const innerInputClasses = classNames({
-            invalid: !this.props.valid && contains(['number', 'text'], this.props.type),
+            invalid: !this.state.valid && contains(['number', 'text'], this.props.type),
         }, this.props.innerInputClasses);
 
         return (
