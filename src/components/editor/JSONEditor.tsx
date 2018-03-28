@@ -1,16 +1,30 @@
 import 'codemirror/mode/javascript/javascript';
+
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror';
 import * as _ from 'underscore';
+
+import {Svg} from '../svg/Svg';
 import {CodeMirrorGutters, CodeMirrorModes} from './EditorConstants';
 
 export interface IJSONEditorProps {
     value: string;
     readOnly?: boolean;
-    onChange?: (json: string) => void;
+    onChange?: (json: string, inError: boolean) => void;
+    errorMessage?: string;
 }
 
-export class JSONEditor extends React.Component<IJSONEditorProps, {}> {
+export interface IJSONEditorState {
+    isInError: boolean;
+}
+
+export const DEFAULT_JSON_ERROR_MESSAGE: string = 'The JSON configuration is syntactically invalid.';
+
+export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorState> {
+    static defaultProps: Partial<IJSONEditorProps> = {
+        errorMessage: DEFAULT_JSON_ERROR_MESSAGE,
+    };
     static Options: CodeMirror.EditorConfiguration = {
         mode: CodeMirrorModes.JSON,
         lineNumbers: true,
@@ -25,6 +39,13 @@ export class JSONEditor extends React.Component<IJSONEditorProps, {}> {
 
     private codemirror: ReactCodeMirror.ReactCodeMirror;
 
+    constructor(props: IJSONEditorProps, state: IJSONEditorState) {
+        super(props, state);
+        this.state = {
+            isInError: false,
+        };
+    }
+
     componentDidUpdate(prevProps: IJSONEditorProps) {
         if (prevProps.value !== this.props.value) {
             this.codemirror.getCodeMirror().getDoc().clearHistory();
@@ -32,19 +53,52 @@ export class JSONEditor extends React.Component<IJSONEditorProps, {}> {
     }
 
     render() {
+        const classes: string = classNames(
+            'form-group',
+            {
+                'input-validation-error': this.state.isInError,
+            },
+        );
         return (
-            <ReactCodeMirror
-                ref={(codemirror: ReactCodeMirror.ReactCodeMirror) => this.codemirror = codemirror}
-                value={this.props.value}
-                onChange={(json: string) => this.handleChange(json)}
-                options={_.extend({}, JSONEditor.Options, {readOnly: this.props.readOnly})}
-            />
+            <div className={classes}>
+                <ReactCodeMirror
+                    ref={(codemirror: ReactCodeMirror.ReactCodeMirror) => this.codemirror = codemirror}
+                    value={this.props.value}
+                    onChange={(json: string) => this.handleChange(json)}
+                    options={_.extend({}, JSONEditor.Options, {readOnly: this.props.readOnly})}
+                />
+                {this.getValidationDetails()}
+            </div>
         );
     }
 
+    private getValidationDetails(): JSX.Element {
+        return this.state.isInError
+            ? (
+                <div className='input-validation-error-details'>
+                    <Svg className='input-validation-error-icon' svgName='message-alert' svgClass='icon fill-white' />
+                    <span className='input-validation-error-message'>{this.props.errorMessage}</span>
+                </div>
+            )
+            : null;
+    }
+
     private handleChange(json: string) {
+        try {
+            JSON.parse(json);
+            this.setState({
+                isInError: false,
+            }, () => this.callOnChange(json, this.state.isInError));
+        } catch (error) {
+            this.setState({
+                isInError: true,
+            }, () => this.callOnChange(json, this.state.isInError));
+        }
+    }
+
+    private callOnChange(json: string, inError: boolean) {
         if (this.props.onChange) {
-            this.props.onChange(json);
+            this.props.onChange(json, inError);
         }
     }
 }
