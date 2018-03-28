@@ -19,6 +19,8 @@ export interface ISideNavigationSectionDispatchProps {
 
 export interface ISideNavigationSectionProps extends ISideNavigationSectionOwnProps, ISideNavigationSectionStateProps, ISideNavigationSectionDispatchProps {}
 
+const arrowClassName = 'collapsible-arrow icon fill-white';
+
 export class SideNavigationMenuSection extends React.Component<ISideNavigationSectionProps> {
     private handleClick() {
         if (this.props.onClick) {
@@ -44,8 +46,8 @@ export class SideNavigationMenuSection extends React.Component<ISideNavigationSe
             let arrow = null;
             if (this.props.expandable) {
                 arrow = this.props.expanded
-                    ? <Svg svgName='arrow-top-rounded' className='collapsible-arrow icon fill-white' />
-                    : <Svg svgName='arrow-bottom-rounded' className='collapsible-arrow icon fill-white' />;
+                    ? <Svg svgName='arrow-top-rounded' className={arrowClassName} />
+                    : <Svg svgName='arrow-bottom-rounded' className={arrowClassName} />;
             }
             return (
                 <SideNavigationHeader {...this.props.header}>
