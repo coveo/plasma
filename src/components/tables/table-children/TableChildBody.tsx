@@ -22,6 +22,7 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
     rowData: IData;
     isLoading: boolean;
     onRowClick?: (actions: IActionOptions[]) => void;
+    handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
 }
 
 export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
@@ -38,7 +39,6 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             </td>
         );
     });
-
     const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(props.rowData);
     const collapsibleRow = collapsibleData
         ? (
@@ -66,6 +66,10 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         onClickCallback={() => {
             if (props.onRowClick) {
                 props.onRowClick(props.getActions(props.rowData));
+            }
+
+            if (props.handleOnRowClick) {
+                props.handleOnRowClick(props.getActions(props.rowData), props.rowData);
             }
         }}
         onDoubleClick={() => props.getActions(props.rowData)
