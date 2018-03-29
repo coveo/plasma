@@ -34,8 +34,8 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
     defaultOptions?: IDropdownOption[];
     defaultSelectedOption?: IDropdownOption;
     filterPlaceholder?: string;
-    maxWidth?: number;
-    width?: number;
+    maxWidth?: number | string;
+    width?: number | string;
     hasFilterSuggestionBoxWidthFixed?: boolean;
     highlightThreshold?: number;
     highlightAllFilterResult?: boolean;
