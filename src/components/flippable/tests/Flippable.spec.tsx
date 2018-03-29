@@ -91,6 +91,14 @@ describe('Flippable', () => {
             expect(renderedBackSide.find('#MyBackContent').length).toBeGreaterThan(0);
         });
 
+        it('should render a "show-on-top" class on the flippable when it is flipped', () => {
+            flippable.setProps({
+                isFlipped: true,
+            });
+
+            expect(flippable.hasClass('show-on-top')).toBe(true);
+        });
+
         it('should call onFlip prop if any when clicking on the front side and flippable is not flipped', () => {
             const onFlipSpy = jasmine.createSpy('onFlip');
 
