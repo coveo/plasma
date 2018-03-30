@@ -110,5 +110,13 @@ describe('JSONEditor', () => {
 
             expect(clearHistorySpy).toHaveBeenCalledTimes(1);
         });
+
+        it('should reset the value if we the value prop changes', () => {
+            const setValueSpy: jasmine.Spy = spyOn((jsonEditorInstance as any).codemirror.getCodeMirror(), 'setValue');
+
+            jsonEditor.setProps({value: 'a new value'});
+
+            expect(setValueSpy).toHaveBeenCalledTimes(1);
+        });
     });
 });
