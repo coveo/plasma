@@ -19,7 +19,7 @@
   }
 
   &.show-back {
-    transform: rotateY(-180deg);
+    transform: rotateY(180deg);
   }
 }
 
@@ -37,7 +37,7 @@
   right:  0;
 
   box-shadow: $flippable-shadow;
-  transform: rotateY(-180deg);
+  transform: rotateY(180deg);
 
   @extend %flipper-side;
 }
