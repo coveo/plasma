@@ -7,7 +7,7 @@ import {IDropdownSearchState} from './DropdownSearchReducers';
  *
  * Especially useful in the context of mapStateToProps when you have one or multiple DropdownSearchConnected components in the same view.
  */
-export const getSelectedOption = (id: string, dropdownSearchState: IDropdownSearchState[] = []): IDropdownOption => {
+export const getDropdownSearchSelectedOption = (id: string, dropdownSearchState: IDropdownSearchState[] = []): IDropdownOption => {
     const dropdown = _.findWhere(dropdownSearchState, {id});
     return dropdown
         ? _.findWhere(dropdown.options, {selected: true})
