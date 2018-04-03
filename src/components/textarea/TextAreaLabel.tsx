@@ -8,15 +8,10 @@ export interface ITextAreaLabelProps {
     containerClassName?: string;
 }
 
-export class TextAreaLabel extends React.PureComponent<ITextAreaLabelProps, {}> {
-    render() {
-        return (
-            <div className={classNames('input-field form-group', this.props.containerClassName)}>
-                {this.props.children}
-                <label htmlFor={this.props.children.props.id}>
-                    {this.props.label}
-                </label>
-            </div>
-        );
-    }
-}
+export const TextAreaLabel = (props: ITextAreaLabelProps) =>
+    <div className={classNames('input-field form-group', props.containerClassName)}>
+        {props.children}
+        <label htmlFor={props.children.props.id}>
+            {props.label}
+        </label>
+    </div>;
