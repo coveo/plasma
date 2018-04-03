@@ -3,6 +3,7 @@ import {IReduxAction} from '../../utils/ReduxUtils';
 export interface ICheckboxActionPayload {
     id: string;
     checked?: boolean;
+    disabled?: boolean;
 }
 
 export const CheckboxActions = {

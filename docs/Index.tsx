@@ -21,13 +21,12 @@ import {GroupableCheckboxConnectedExamples} from '../src/components/checkbox/exa
 import {ChildFormExamples} from '../src/components/childForm/examples/ChildFormExamples';
 import {ChosenSelectExamples} from '../src/components/chosen/examples/ChosenSelectExamples';
 import {CollapsibleContainerExamples} from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
+import {ColorBarExamples} from '../src/components/colorBar/ColorBarExamples';
 import {ContentExamples} from '../src/components/content/examples/ContentExamples';
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import {
-    DatePickerDropdownConnectedExamples,
-} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import {
     DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
@@ -57,14 +56,17 @@ import {ModalConnectedExamples} from '../src/components/modal/examples/ModalConn
 import {ModalExamples} from '../src/components/modal/examples/ModalExamples';
 import {ModalPromptExamples} from '../src/components/modalPrompt/exemples/ModalPromptExamples';
 import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
+import {SplitMultilineInputExamples} from '../src/components/multilineInput/examples/SplitMultilineExamples';
 import {NavigationConnectedExamples} from '../src/components/navigation/examples/NavigationConnectedExamples';
 import {NavigationExamples} from '../src/components/navigation/examples/NavigationExamples';
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/OptionsCycleExamples';
 import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
+import {SearchBarExamples} from '../src/components/searchBar/SearchBarExamples';
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
+import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
 import {SplitLayoutExamples} from '../src/components/splitlayout/examples/SplitLayoutExamples';
@@ -104,6 +106,8 @@ class App extends React.Component<any, any> {
                             <MembersExample />
                         </div>
                     </div>
+                    <SearchBarExamples />
+                    <ColorBarExamples />
                     <PartialStringMatchExamples />
                     <BadgeExamples />
                     <CornerRibbonExamples />
@@ -144,6 +148,7 @@ class App extends React.Component<any, any> {
                     <NavigationConnectedExamples />
                     <SubNavigationExamples />
                     <SubNavigationConnectedExamples />
+                    <SideNavigationExample />
                     <SideNavigationLoadingExample />
                     <TabsExamples />
                     <ActionBarExamples />
@@ -180,6 +185,7 @@ class App extends React.Component<any, any> {
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
                     <JSONEditorExamples />
+                    <SplitMultilineInputExamples />
                 </div>
             </Provider>
         );

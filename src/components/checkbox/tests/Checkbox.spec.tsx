@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {IInputProps} from '../../input/Input';
-import {Checkbox} from '../Checkbox';
+import {Checkbox, ICheckboxProps} from '../Checkbox';
 
 describe('Checkbox', () => {
     describe('<Checkbox />', () => {
@@ -17,7 +17,7 @@ describe('Checkbox', () => {
         describe('<Checkbox />', () => {
             let checkbox: ReactWrapper<IInputProps, any>;
 
-            const renderCheckbox = (props: IInputProps = {}) => {
+            const renderCheckbox = (props: ICheckboxProps = {}) => {
                 checkbox = mount(
                     <Checkbox {...props} />,
                     {attachTo: document.getElementById('App')},
@@ -30,12 +30,54 @@ describe('Checkbox', () => {
             });
 
             it('should call prop onClick when specified on click', () => {
-                renderCheckbox();
+                const clickSpy = jasmine.createSpy('onClick');
+                renderCheckbox({
+                    onClick: clickSpy,
+                });
+                const innerLabel = checkbox.find('div');
 
-                checkbox.setProps({onClick: clickSpy}).mount();
                 innerLabel.simulate('click');
 
                 expect(clickSpy.calls.count()).toBe(1);
+            });
+
+            it('should not call prop onClick when specified on click if disabled', () => {
+                const clickSpy = jasmine.createSpy('onClick');
+                renderCheckbox({
+                    onClick: clickSpy,
+                    disabled: true,
+                });
+                const innerLabel = checkbox.find('div');
+
+                innerLabel.simulate('click');
+
+                expect(clickSpy.calls.count()).toBe(0);
+            });
+
+            it('should call prop handleOnClick when specified on click', () => {
+                const handleOnClickSpy = jasmine.createSpy('handleOnClick');
+                renderCheckbox({
+                    handleOnClick: handleOnClickSpy,
+                });
+
+                const innerLabel = checkbox.find('div');
+
+                innerLabel.simulate('click');
+
+                expect(handleOnClickSpy.calls.count()).toBe(1);
+            });
+
+            it('should not call prop handleOnClick when specified on click if disabled', () => {
+                const handleOnClickSpy = jasmine.createSpy('handleOnClick');
+                renderCheckbox({
+                    handleOnClick: handleOnClickSpy,
+                    disabled: true,
+                });
+                const innerLabel = checkbox.find('div');
+
+                innerLabel.simulate('click');
+
+                expect(handleOnClickSpy.calls.count()).toBe(0);
             });
 
             it('should set inner input type to checkbox', () => {
@@ -45,14 +87,14 @@ describe('Checkbox', () => {
 
                 expect(innerInput.prop('type')).toBe('checkbox');
             });
-        });
 
-        it('should set indeterminate on input', () => {
-            renderCheckbox({
-                indeterminate: true,
+            it('should set indeterminate on input', () => {
+                renderCheckbox({
+                    indeterminate: true,
+                });
+                const innerInput = checkbox.find('input');
+                expect((innerInput as any).node.indeterminate).toBe(true);
             });
-            const innerInput = checkbox.find('input');
-            expect((innerInput as any).node.indeterminate).toBe(true);
         });
     });
 });

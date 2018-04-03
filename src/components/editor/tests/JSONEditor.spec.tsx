@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror';
 import * as _ from 'underscore';
-import {IJSONEditorProps, JSONEditor} from '../JSONEditor';
+import {IJSONEditorProps, IJSONEditorState, JSONEditor} from '../JSONEditor';
 
 describe('JSONEditor', () => {
     const basicProps: IJSONEditorProps = {
@@ -16,7 +16,7 @@ describe('JSONEditor', () => {
     });
 
     describe('<JSONEditor />', () => {
-        let jsonEditor: ReactWrapper<IJSONEditorProps, any>;
+        let jsonEditor: ReactWrapper<IJSONEditorProps, IJSONEditorState>;
         let jsonEditorInstance: JSONEditor;
 
         const mountWithProps = (props: Partial<IJSONEditorProps> = {}) => {
@@ -50,7 +50,7 @@ describe('JSONEditor', () => {
         });
 
         it('should get what to do on change state as a prop if set', () => {
-            let onChangeProp: (json: string) => void = jsonEditor.props().onChange;
+            let onChangeProp: (json: string, inError: boolean) => void = jsonEditor.props().onChange;
 
             expect(onChangeProp).toBeUndefined();
 
@@ -75,7 +75,7 @@ describe('JSONEditor', () => {
             expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);
         });
 
-        it('should call the onChange prop if set when calling handlChange', () => {
+        it('should call the onChange prop if set when calling handleChange', () => {
             const onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
             const expectedValue: string = 'the expected value';
 
@@ -84,7 +84,19 @@ describe('JSONEditor', () => {
             (jsonEditorInstance as any).handleChange(expectedValue);
 
             expect(onChangeSpy).toHaveBeenCalledTimes(1);
-            expect(onChangeSpy).toHaveBeenCalledWith(expectedValue);
+            expect(onChangeSpy).toHaveBeenCalledWith(expectedValue, true);
+        });
+
+        it('should set the isInError to true when calling handleChange if the JSON cannot be parsed', () => {
+            (jsonEditorInstance as any).handleChange('this is not a JSON');
+
+            expect(jsonEditor.state().isInError).toBe(true);
+        });
+
+        it('should set the isInError to false when calling handleChange if the JSON can be parsed', () => {
+            (jsonEditorInstance as any).handleChange('{ "JSON": true }');
+
+            expect(jsonEditor.state().isInError).toBe(false);
         });
 
         it('should not throw on change if the onChange prop is undefined', () => {

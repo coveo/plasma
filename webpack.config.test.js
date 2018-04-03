@@ -36,17 +36,33 @@ module.exports = {
             },
             {
                 enforce: 'post',
-                test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\..+$/i,
+                test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\.(?!css).+$/i,
                 exclude: /(node_modules)/,
                 loader: 'istanbul-instrumenter-loader',
             },
             {
                 test: /\.css$/,
+                exclude: path.join(__dirname, 'src/components'),
                 use: [{
                     loader: 'style-loader',
                 }, {
                     loader: 'css-loader',
                 }],
+            },
+            {
+                test: /\.css$/,
+                include: path.join(__dirname, 'src/components'),
+                use: [
+                    {
+                        loader: 'style-loader',
+                    }, {
+                        loader: 'typings-for-css-modules-loader',
+                        options: {
+                            modules: true,
+                            namedExport: true,
+                        },
+                    },
+                ],
             },
         ],
     },

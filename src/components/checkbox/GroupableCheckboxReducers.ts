@@ -4,7 +4,7 @@ import {ICheckboxState} from './CheckboxReducers';
 import {GroupableCheckboxActions, IGroupableCheckboxActionPayload} from './GroupableCheckboxActions';
 import {
     addChildCheckbox,
-    addParentCheckbox,
+    addParentCheckbox, disabledAllCheckbox, disabledChildCheckbox, disabledParentCheckbox,
     removeChildCheckbox,
     removeParentCheckbox,
     toggleChildCheckbox,
@@ -34,6 +34,16 @@ export const groupableCheckboxReducer = (state: IGroupableCheckboxesState = grou
                 return action.payload.isParent
                     ? toggleParentCheckbox(state, action)
                     : toggleChildCheckbox(state, action);
+            }
+        case GroupableCheckboxActions.disabledGroup:
+            if (state.parentId === action.payload.id || state.parentId === action.payload.parentId) {
+                return action.payload.isParent
+                    ? disabledParentCheckbox(state, action)
+                    : disabledChildCheckbox(state, action);
+            }
+        case GroupableCheckboxActions.disabledAllGroup:
+            if (state.parentId === action.payload.id || state.parentId === action.payload.parentId) {
+                return disabledAllCheckbox(state, action);
             }
         default:
             return state;
@@ -66,6 +76,8 @@ export const groupableCheckboxesReducer = (state: IGroupableCheckboxesState[] = 
                     : groupableCheckboxes,
             );
         case GroupableCheckboxActions.toggleGroup:
+        case GroupableCheckboxActions.disabledGroup:
+        case GroupableCheckboxActions.disabledAllGroup:
             return state.map((groupableCheckboxes: IGroupableCheckboxesState) => groupableCheckboxReducer(groupableCheckboxes, action));
         default:
             return state;

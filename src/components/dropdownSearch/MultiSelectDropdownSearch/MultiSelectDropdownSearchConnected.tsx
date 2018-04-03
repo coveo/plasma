@@ -5,13 +5,21 @@ import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {
     addCustomSelectedOption,
     addMultiSelectDropdownSearch,
-    applyFilterDropdownSearch, closeDropdownSearch, deselectAllOptionsMultiselectDropdownSearch,
+    applyFilterDropdownSearch,
+    closeDropdownSearch,
+    deselectAllOptionsMultiselectDropdownSearch,
     deselectOptionDropdownSearch,
     keyDownMultiselectDropdownSearch,
-    multiSelectOptionDropdownSearch, openDropdownSearch, removeDropdownSearch, updateOptionsDropdownSearch,
+    multiSelectOptionDropdownSearch,
+    openDropdownSearch,
+    removeDropdownSearch,
+    updateOptionsDropdownSearch,
 } from '../DropdownSearchActions';
 import {
-    IDropdownOption, IDropdownSearchDispatchProps, IDropdownSearchOwnProps, IDropdownSearchProps,
+    IDropdownOption,
+    IDropdownSearchDispatchProps,
+    IDropdownSearchOwnProps,
+    IDropdownSearchProps,
     IDropdownSearchStateProps,
 } from './../DropdownSearch';
 import {IDropdownSearchState} from './../DropdownSearchReducers';

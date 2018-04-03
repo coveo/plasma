@@ -33,6 +33,7 @@ import {tableRowsReducer} from '../components/tables/TableRowReducers';
 import {toastsContainerReducer} from '../components/toast/ToastReducers';
 import {ITooltipProps} from '../components/tooltip/Tooltip';
 import {IReactVaporState} from '../ReactVapor';
+import {searchBarsReducer} from './../components/searchBar/SearchBarReducers';
 import {CommonActions} from './ReduxUtils';
 
 export interface IReactVaporTestState extends IReactVaporState {
@@ -74,6 +75,7 @@ export class TestUtils {
             checkboxes: checkboxesReducer,
             collapsibleContainers: collapsibleContainersReducer,
             inputs: inputsReducer,
+            searchBars: searchBarsReducer,
             flippables: flippablesReducer,
             groupableCheckboxes: groupableCheckboxesReducer,
         });

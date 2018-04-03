@@ -22,6 +22,7 @@ import {paginationCompositeReducer} from '../src/components/navigation/paginatio
 import {perPageCompositeReducer} from '../src/components/navigation/perPage/NavigationPerPageReducers';
 import {optionPickersReducer} from '../src/components/optionPicker/OptionPickerReducers';
 import {optionsCyclesReducer} from '../src/components/optionsCycle/OptionsCycleReducers';
+import {searchBarsReducer} from '../src/components/searchBar/SearchBarReducers';
 import {selectCompositeReducer} from '../src/components/select/SelectReducers';
 import {subNavigationsReducer} from '../src/components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from '../src/components/tab/TabReducers';
@@ -71,6 +72,7 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
     checkboxes: checkboxesReducer,
     collapsibleContainers: collapsibleContainersReducer,
     inputs: inputsReducer,
+    searchBars: searchBarsReducer,
     flippables: flippablesReducer,
     groupableCheckboxes: groupableCheckboxesReducer,
 });
