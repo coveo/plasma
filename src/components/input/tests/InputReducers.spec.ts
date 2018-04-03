@@ -129,8 +129,6 @@ describe('Reducers', () => {
             expect(newState.filter((input) => input.id === oldState[0].id).length).toBe(0);
         });
 
-        it('should change the value in the state o');
-
         it('should modify the disabled state for the Input having the same id as in the action payload', () => {
             const setDisabledTrueAction = setDisabledInput(oldState[0].id, true);
             const newState = inputsReducer(oldState, setDisabledTrueAction);

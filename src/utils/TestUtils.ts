@@ -1,5 +1,6 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk';
+import {textAreasReducer} from './../components/textarea/TextAreaReducers';
 
 import {actionBarsReducer} from '../components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReducers';
@@ -76,6 +77,7 @@ export class TestUtils {
             inputs: inputsReducer,
             searchBars: searchBarsReducer,
             flippables: flippablesReducer,
+            textAreas: textAreasReducer,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {

@@ -82,6 +82,7 @@ import {TableExamples} from '../src/components/tables/examples/TableExamples';
 import {TableHeaderExamples} from '../src/components/tables/examples/TableHeaderExamples';
 import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
 import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
+import {TextAreaConnectedExamples} from '../src/components/textarea/TextAreaConnectedExamples';
 import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
@@ -105,6 +106,7 @@ class App extends React.Component<any, any> {
                             <MembersExample />
                         </div>
                     </div>
+                    <TextAreaConnectedExamples />
                     <SearchBarExamples />
                     <ColorBarExamples />
                     <PartialStringMatchExamples />
