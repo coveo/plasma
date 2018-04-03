@@ -41,7 +41,7 @@ describe('DateUtils', () => {
         });
 
         it('should return false when passing similar moments for the given granularity', () => {
-            const current = moment();
+            const current = moment().startOf('minute').add(10, 'seconds'); // This makes sure that subtracting a second won't change the minute
             expect(DateUtils.isDifferent(moment(current).subtract(1, 'second'), current, 'minute')).toBe(false, 'subtracting a second');
             expect(DateUtils.isDifferent('2018-01-01', '2018-12-31', 'year')).toBe(false, 'year');
         });
