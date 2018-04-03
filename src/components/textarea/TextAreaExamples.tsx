@@ -3,8 +3,9 @@ import {findWhere} from 'underscore';
 import {ReactVaporStore} from '../../../docs/ReactVaporStore';
 import {TextAreaConnected} from './TextArea';
 import {setDisabledTextArea} from './TextAreaActions';
+import {TextAreaLabel} from './TextAreaLabel';
 
-export const TextAreaConnectedExamples = (): JSX.Element =>
+export const TextAreaExamples = (): JSX.Element =>
     <div className='mt2'>
         <h1 className='text-blue mb1 bold'>TextAreaConnected List</h1>
         <div className='mt2'>
@@ -28,7 +29,6 @@ export const TextAreaConnectedExamples = (): JSX.Element =>
                 />
             </div>
             <div className='form-group'>
-
                 <TextAreaConnected
                     id='super-textarea-3'
                     className='admin-invisible-textbox mod-border'
@@ -47,7 +47,14 @@ export const TextAreaConnectedExamples = (): JSX.Element =>
                         ));
                     }}>
                     Toggle TextArea disabled state
-            </button>
+                </button>
+            </div>
+            <div className='form-group'>
+                <TextAreaLabel label='simple text area with label'>
+                    <TextAreaConnected
+                        id='super-textarea-4'
+                    />
+                </TextAreaLabel>
             </div>
         </div>
     </div>;
