@@ -1,6 +1,6 @@
+import {IReduxAction} from '../../../utils/ReduxUtils';
 import {addInput, changeInputValue, IInputActionPayload, removeInput, setDisabledInput, validateInputValue} from '../InputActions';
 import {IInputState, inputInitialState, inputReducer, inputsInitialState, inputsReducer} from '../InputReducers';
-import {IReduxAction} from './../../../utils/ReduxUtils';
 
 describe('Reducers', () => {
     let oldState: IInputState[];
