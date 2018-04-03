@@ -23,7 +23,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOw
     if (groupableCheckboxesState) {
         const checkbox: ICheckboxState = ownProps.isParent ? groupableCheckboxesState.parent : _.findWhere(groupableCheckboxesState.checkboxes, {id: ownProps.id});
         return {
-            checked: checkbox && checkbox.checked,
+            checked: checkbox ? checkbox.checked : !!ownProps.defaultChecked,
+            disabled: checkbox ? checkbox.disabled : !!ownProps.defaultDisabled,
             indeterminate: ownProps.isParent
                 && groupableCheckboxesState.nbChecked > 0
                 && groupableCheckboxesState.nbChecked < groupableCheckboxesState.total,
@@ -31,14 +32,15 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOw
     }
 
     return {
-        checked: ownProps.defaultChecked,
+        checked: !!ownProps.defaultChecked,
+        disabled: !!ownProps.defaultDisabled,
         indeterminate: false,
     };
 };
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IGroupableCheckboxActionPayload>) => void, ownProps: IGroupableCheckboxOwnProps): IInputDispatchProps => {
     return {
-        onRender: () => dispatch(addGroupedCheckbox(ownProps.id, ownProps.defaultChecked, ownProps.parentId, !!ownProps.isParent)),
+        onRender: () => dispatch(addGroupedCheckbox(ownProps.id, ownProps.defaultChecked, !!ownProps.defaultDisabled, ownProps.parentId, !!ownProps.isParent)),
         onDestroy: () => dispatch(removeGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
         onClick: () => dispatch(toggleGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
     };

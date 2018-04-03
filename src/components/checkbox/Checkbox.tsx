@@ -3,20 +3,21 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
 
-export interface ICheckboxProps extends IInputProps {
+export interface ICheckboxStateProps {
+    defaultDisabled?: boolean;
+}
+
+export interface ICheckboxProps extends ICheckboxStateProps, IInputProps {
     handleOnClick?: (isChecked: boolean) => void;
 }
 
 export class Checkbox extends React.Component<ICheckboxProps, any> {
+
     private onClick(e: React.MouseEvent<HTMLElement>) {
         if (this.props.onClick) {
             e.preventDefault();
             e.stopPropagation();
             this.props.onClick(e);
-        }
-
-        if (this.props.handleOnClick) {
-            this.props.handleOnClick(this.props.checked);
         }
     }
 
@@ -35,6 +36,17 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
         }
     }
 
+    private handleOnClick(e: React.MouseEvent<HTMLElement>) {
+        if (!!!this.props.disabled) {
+            if (this.props.onClick) {
+                this.onClick(e);
+            }
+            if (this.props.handleOnClick) {
+                this.props.handleOnClick(this.props.checked);
+            }
+        }
+    }
+
     render() {
         const classes: string = classNames('coveo-checkbox-label', this.props.classes);
         const innerInputClasses: string = classNames('coveo-checkbox', this.props.innerInputClasses);
@@ -44,9 +56,9 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
                 classes={[classes]}
                 innerInputClasses={[innerInputClasses]}
                 type='checkbox'
-                onClick={(e: React.MouseEvent<HTMLElement>) => this.onClick(e)}
+                onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
                 readOnly>
-                <button></button>
+                <button disabled={!!this.props.disabled}></button>
                 {this.props.children}
             </Input>
         );
