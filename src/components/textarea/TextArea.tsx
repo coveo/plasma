@@ -73,8 +73,7 @@ export class TextArea extends React.Component<ITextAreaProps, {}> {
                 className={this.props.className}
                 value={this.props.value}
                 onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.props.onChange(e)}
-            >
-            </textarea>
+            />
         );
     }
 }
