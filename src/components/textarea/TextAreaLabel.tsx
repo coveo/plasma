@@ -9,9 +9,6 @@ export interface ITextAreaLabelProps {
 }
 
 export class TextAreaLabel extends React.PureComponent<ITextAreaLabelProps, {}> {
-    static defaultProps: Partial<ITextAreaLabelProps> = {
-        containerClassName: 'input-field form-group',
-    };
     render() {
         return (
             <div className={classNames('input-field form-group', this.props.containerClassName)}>
