@@ -63,9 +63,9 @@ export interface IReactVaporState {
     checkboxes?: ICheckboxState[];
     inputs?: IInputState[];
     collapsibleContainers?: ICollapsibleContainerState[];
-    searchBars: ISearchBarState[];
+    searchBars?: ISearchBarState[];
     flippables?: IFlippableState[];
-    textAreas: ITextAreaState[];
+    textAreas?: ITextAreaState[];
 }
 
 export interface IReduxActionsPayload {

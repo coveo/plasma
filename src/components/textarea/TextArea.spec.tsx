@@ -97,6 +97,8 @@ describe('TextArea', () => {
             let store: Store<IReactVaporState>;
             let textAreaProps: ITextAreaProps;
 
+            const getTextAreaStateFromId = (id: string): ITextAreaState => findWhere(store.getState().textAreas, {id});
+
             const mountComponentWithProps = (props: ITextAreaProps) => mount(
                 <Provider store={store}>
                     <TextAreaConnected {...props} />
@@ -133,7 +135,7 @@ describe('TextArea', () => {
                 it('should add a textArea in the store with default values', () => {
                     mountComponentWithProps(textAreaProps);
 
-                    const connectedTextArea: ITextAreaState = findWhere(store.getState().textAreas, {id: textAreaProps.id});
+                    const connectedTextArea: ITextAreaState = getTextAreaStateFromId(textAreaProps.id);
                     expect(connectedTextArea.value).toBe('');
                     expect(connectedTextArea.disabled).toBe(false);
                 });
@@ -142,7 +144,7 @@ describe('TextArea', () => {
                     const valueOnMount = 'non empty value';
                     mountComponentWithProps({...textAreaProps, valueOnMount});
 
-                    const connectedTextArea: ITextAreaState = findWhere(store.getState().textAreas, {id: textAreaProps.id});
+                    const connectedTextArea: ITextAreaState = getTextAreaStateFromId(textAreaProps.id);
                     expect(connectedTextArea.value).toBe(valueOnMount);
                     expect(connectedTextArea.disabled).toBe(false);
                 });
@@ -151,7 +153,7 @@ describe('TextArea', () => {
                     const disabledOnMount = true;
                     mountComponentWithProps({...textAreaProps, disabledOnMount});
 
-                    const connectedTextArea: ITextAreaState = findWhere(store.getState().textAreas, {id: textAreaProps.id});
+                    const connectedTextArea: ITextAreaState = getTextAreaStateFromId(textAreaProps.id);
                     expect(connectedTextArea.value).toBe('');
                     expect(connectedTextArea.disabled).toBe(disabledOnMount);
                 });
@@ -161,24 +163,24 @@ describe('TextArea', () => {
                 it('should remove the textArea from the store', () => {
                     const connectedTextArea = mountComponentWithProps(textAreaProps);
 
-                    expect(findWhere(store.getState().textAreas, {id: textAreaProps.id})).toBeDefined();
+                    expect(getTextAreaStateFromId(textAreaProps.id)).toBeDefined();
 
                     connectedTextArea.unmount();
 
-                    expect(findWhere(store.getState().textAreas, {id: textAreaProps.id})).toBeUndefined();
+                    expect(getTextAreaStateFromId(textAreaProps.id)).toBeUndefined();
                 });
             });
 
             describe('onChange', () => {
                 it('should change the value in the store to the new value', () => {
                     const connectedTextArea = mountComponentWithProps(textAreaProps);
-                    const oldTextAreaState: ITextAreaState = findWhere(store.getState().textAreas, {id: textAreaProps.id});
+                    const oldTextAreaState: ITextAreaState = getTextAreaStateFromId(textAreaProps.id);
                     expect(oldTextAreaState.value).toBe('');
 
                     (document.querySelector(`#${textAreaProps.id}`) as HTMLTextAreaElement).value = 'new value';
                     connectedTextArea.find('textarea').simulate('change', {target: {value: 'new value'}});
 
-                    const newTextAreaState: ITextAreaState = findWhere(store.getState().textAreas, {id: textAreaProps.id});
+                    const newTextAreaState: ITextAreaState = getTextAreaStateFromId(textAreaProps.id);
                     expect(newTextAreaState.value).toBe('new value');
                 });
             });
