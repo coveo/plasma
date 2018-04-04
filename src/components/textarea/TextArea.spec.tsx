@@ -46,32 +46,32 @@ describe('TextArea', () => {
             const className = 'a-class';
             expect(textArea.hasClass(className)).toBe(false);
 
-            wrapper.setProps({className}).mount();
+            wrapper.setProps({className});
             expect(textArea.hasClass(className)).toBe(true);
         });
 
         it('should set additionalAttributes when specified', () => {
             expect(textArea.prop('placeholder')).toBeUndefined();
-            wrapper.setProps({additionalAttributes: {placeholder: 'not null'}}).mount();
+            wrapper.setProps({additionalAttributes: {placeholder: 'not null'}});
             expect(textArea.prop('placeholder')).toBe('not null');
         });
 
         it('should set disabled prop when specified', () => {
             expect(textArea.prop('disabled')).toBeUndefined();
-            wrapper.setProps({disabled: true}).mount();
+            wrapper.setProps({disabled: true});
             expect(textArea.prop('disabled')).toBe(true);
         });
 
         it('should set value prop when specified', () => {
             expect(textArea.prop('value')).toBeUndefined();
-            wrapper.setProps({value: 'non empty'}).mount();
+            wrapper.setProps({value: 'non empty'});
             expect(textArea.prop('value')).toBe('non empty');
         });
 
         it('should call prop onChange on textarea change', () => {
             const onChange = jasmine.createSpy('onChange');
 
-            wrapper.setProps({onChange}).mount();
+            wrapper.setProps({onChange});
             textArea.simulate('change');
 
             expect(onChange).toHaveBeenCalledTimes(1);
