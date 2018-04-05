@@ -1,5 +1,6 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk';
+import {textAreasReducer} from '../components/textarea/TextAreaReducers';
 
 import {actionBarsReducer} from '../components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReducers';
@@ -22,6 +23,7 @@ import {paginationCompositeReducer} from '../components/navigation/pagination/Na
 import {perPageCompositeReducer} from '../components/navigation/perPage/NavigationPerPageReducers';
 import {optionPickersReducer} from '../components/optionPicker/OptionPickerReducers';
 import {optionsCyclesReducer} from '../components/optionsCycle/OptionsCycleReducers';
+import {searchBarsReducer} from '../components/searchBar/SearchBarReducers';
 import {selectCompositeReducer} from '../components/select/SelectReducers';
 import {subNavigationsReducer} from '../components/subNavigation/SubNavigationReducers';
 import {ISvgProps} from '../components/svg/Svg';
@@ -32,7 +34,6 @@ import {tableRowsReducer} from '../components/tables/TableRowReducers';
 import {toastsContainerReducer} from '../components/toast/ToastReducers';
 import {ITooltipProps} from '../components/tooltip/Tooltip';
 import {IReactVaporState} from '../ReactVapor';
-import {searchBarsReducer} from './../components/searchBar/SearchBarReducers';
 import {CommonActions} from './ReduxUtils';
 
 export interface IReactVaporTestState extends IReactVaporState {
@@ -76,6 +77,7 @@ export class TestUtils {
             inputs: inputsReducer,
             searchBars: searchBarsReducer,
             flippables: flippablesReducer,
+            textAreas: textAreasReducer,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {

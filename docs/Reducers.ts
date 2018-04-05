@@ -1,5 +1,4 @@
 import * as Redux from 'redux';
-
 import {actionBarsReducer} from '../src/components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../src/components/actions/filters/ItemFilterReducers';
 import {checkboxesReducer} from '../src/components/checkbox/CheckboxReducers';
@@ -28,6 +27,7 @@ import {tabGroupsReducer} from '../src/components/tab/TabReducers';
 import {tableHeaderCellsReducer} from '../src/components/tables/TableHeaderCellReducers';
 import {tablesReducer} from '../src/components/tables/TableReducers';
 import {tableRowsReducer} from '../src/components/tables/TableRowReducers';
+import {textAreasReducer} from '../src/components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from '../src/components/toast/ToastReducers';
 import {IReactVaporState} from '../src/ReactVapor';
 import {IMembersCompositeState, membersReducers} from './members-example/reducers/MembersReducers';
@@ -73,4 +73,5 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
     inputs: inputsReducer,
     searchBars: searchBarsReducer,
     flippables: flippablesReducer,
+    textAreas: textAreasReducer,
 });
