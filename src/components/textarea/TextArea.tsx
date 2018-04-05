@@ -5,6 +5,10 @@ import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
 
+/**
+ * TODO: autoresize is not yet implemented on TextArea
+ */
+
 export interface ITextAreaOwnProps {
     id: string;
     className?: string;
