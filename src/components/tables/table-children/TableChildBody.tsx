@@ -8,7 +8,7 @@ import {IData, ITableHeadingAttribute} from '../Table';
 import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
 import {TableChildComponent, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 import {TableHeadingRowConnected} from '../TableHeadingRowConnected';
-import {TableCollapsibleRowWrapper} from '../TableRowWrapper';
+import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 import {getTableChildComponentId} from '../TableUtils';
 
 export interface ITableBodyInheritedFromTableProps {
@@ -80,9 +80,9 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
     </TableHeadingRowConnected>;
 
     return collapsibleRow
-        ? <TableCollapsibleRowWrapper className={tableRowWrapperClasses}
-            collapsibleRow={collapsibleRow}>
+        ? <TableCollapsibleRowWrapper className={tableRowWrapperClasses}>
             {tableHeadingRowConnectedNode}
+            {collapsibleRow}
         </TableCollapsibleRowWrapper>
         : tableHeadingRowConnectedNode;
 };

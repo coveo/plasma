@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {addCollapsibleContainer, removeCollapsibleContainer, setExpandedCollapsibleContainer} from './CollapsibleContainerActions';
-import {collapsibleContainerInitialState, collapsibleContainerReducer, collapsibleContainersInitialState, collapsibleContainersReducer, ICollapsibleContainerState} from './CollapsibleContainerReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils';
+import {addCollapsibleContainer, removeCollapsibleContainer, setExpandedCollapsibleContainer} from '../CollapsibleContainerActions';
+import {collapsibleContainerInitialState, collapsibleContainerReducer, collapsibleContainersInitialState, collapsibleContainersReducer, ICollapsibleContainerState} from '../CollapsibleContainerReducers';
 
 describe('Reducers', () => {
     describe('CollapsibleContainerReducers', () => {
