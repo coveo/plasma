@@ -64,7 +64,7 @@ export const applyFilterOnDisplayedIds = (
                     ? filterFormatter(attributeValue)
                     : attributeValue;
                 attributeValueToUse = !filterFormatter && attributeFormatter
-                    ? attributeFormatter(attributeValue)
+                    ? attributeFormatter(attributeValue, attributeName, tableDataById[dataId])
                     : attributeValueToUse;
                 return contains(attributeValueToUse.toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
             });
@@ -113,7 +113,7 @@ export const applySortOnDisplayedIds = (
                 nextDisplayedIds,
                 (displayedId: string): string => {
                     const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-                    return headingAttributeToSort.sortByMethod(cleanAttributeValue);
+                    return headingAttributeToSort.sortByMethod(cleanAttributeValue, tableDataById[displayedId]);
                 },
             );
         } else {

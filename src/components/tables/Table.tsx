@@ -43,7 +43,7 @@ export interface ITableHeadingAttribute {
     titleFormatter: IAttributeNameOrValueFormatter;
     filterFormatter?: IAttributeNameOrValueFormatter; // use this for filter if you render JSX through the attribute formatter
     sort?: boolean;
-    sortByMethod?: (attributeValue: any) => string;
+    sortByMethod?: (attributeValue: any, data?: IData) => string;
     attributeFormatter?: IAttributeFormatter;
 }
 
