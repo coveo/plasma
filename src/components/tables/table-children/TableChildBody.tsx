@@ -58,7 +58,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
     });
 
-    const tableHeadingRowConnectedNode = <TableHeadingRowConnected
+    const tableHeadingRowConnectedNode = (<TableHeadingRowConnected
         id={headingAndCollapsibleId}
         tableId={props.tableId}
         className={tableRowClasses}
@@ -77,12 +77,12 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             .forEach((action) => action.trigger())
         }>
         {tableHeadingRowContent}
-    </TableHeadingRowConnected>;
+    </TableHeadingRowConnected>);
 
     return collapsibleRow
-        ? <TableCollapsibleRowWrapper className={tableRowWrapperClasses}>
+        ? (<TableCollapsibleRowWrapper className={tableRowWrapperClasses}>
             {tableHeadingRowConnectedNode}
             {collapsibleRow}
-        </TableCollapsibleRowWrapper>
+        </TableCollapsibleRowWrapper>)
         : tableHeadingRowConnectedNode;
 };

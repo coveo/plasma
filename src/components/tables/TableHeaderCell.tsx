@@ -45,10 +45,10 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
     }
 
     private setWithFixedHeaderWrapper(titleNode: React.ReactNode, sortIcon: React.ReactNode) {
-        return <div className='fixed-header-container'>
+        return (<div className='fixed-header-container'>
             {titleNode}
             {sortIcon}
-        </div>;
+        </div>);
     }
 
     componentDidMount() {

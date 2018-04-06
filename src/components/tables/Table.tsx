@@ -187,11 +187,11 @@ export class Table extends React.Component<ITableProps, {}> {
 
     private setFixedHeaderWrapper(tableElement: React.ReactNode) {
         return this.props.withFixedHeader
-            ? <div className='fixed-header-table-container'>
+            ? (<div className='fixed-header-table-container'>
                 <div className='fixed-header-table'>
                     {tableElement}
                 </div>
-            </div>
+            </div>)
             : tableElement;
     }
 
@@ -235,8 +235,8 @@ export class Table extends React.Component<ITableProps, {}> {
 
         return this.props.collapsibleFormatter
             ? tableBodyNode
-            : <tbody className={classNames(this.props.tableBodyClasses)}>
+            : (<tbody className={classNames(this.props.tableBodyClasses)}>
                 {tableBodyNode}
-            </tbody>;
+            </tbody>);
     }
 }
