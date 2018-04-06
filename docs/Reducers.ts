@@ -2,6 +2,7 @@ import * as Redux from 'redux';
 import {actionBarsReducer} from '../src/components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../src/components/actions/filters/ItemFilterReducers';
 import {checkboxesReducer} from '../src/components/checkbox/CheckboxReducers';
+import {groupableCheckboxesReducer} from '../src/components/checkbox/GroupableCheckboxReducers';
 import {collapsibleContainersReducer} from '../src/components/collapsibleContainer/CollapsibleContainerReducers';
 import {datePickersReducer} from '../src/components/datePicker/DatePickerReducers';
 import {dropdownsReducer} from '../src/components/dropdown/DropdownReducers';
@@ -73,5 +74,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
     inputs: inputsReducer,
     searchBars: searchBarsReducer,
     flippables: flippablesReducer,
+    groupableCheckboxes: groupableCheckboxesReducer,
     textAreas: textAreasReducer,
 });

@@ -6,6 +6,7 @@ import * as _ from 'underscore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
 import {Breadcrumb} from '../../breadcrumbs/Breadcrumb';
 import {CheckboxConnected} from '../../checkbox/CheckboxConnected';
+import {GroupableCheckboxConnected} from '../../checkbox/GroupableCheckboxConnected';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
@@ -172,6 +173,33 @@ export class TableExamples extends React.Component<any, any> {
                             {
                                 attributeName: 'attribute1',
                                 titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table with a custom header</label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={simplestTableData}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: () => {
+                                    return <div>
+                                        <GroupableCheckboxConnected id={'SFCheckboxes'} parentId={'parent-id'} classes={['mt1 mr1']} defaultChecked={false} />
+                                        <span>Selected</span>
+                                    </div>;
+                                },
                             },
                             {
                                 attributeName: 'attribute4',

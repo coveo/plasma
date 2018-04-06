@@ -5,7 +5,7 @@ import {Svg} from '../svg/Svg';
 import {TableSortingOrder} from './TableConstants';
 
 export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHeaderCell> {
-    title: string;
+    title: React.ReactNode;
     id?: string;
     attributeToSort?: string;
     tableId?: string;

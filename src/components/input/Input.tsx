@@ -29,6 +29,7 @@ export interface IInputStateProps {
     disabled?: boolean;
     value?: string;
     valid?: boolean;
+    indeterminate?: boolean;
 }
 
 export interface IInputDispatchProps {

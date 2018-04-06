@@ -9,7 +9,7 @@ import {getTableChildComponentId} from '../TableUtils';
 export const TableChildHeader = (props: ITableProps): JSX.Element => {
     const tableHeaderCells: ITableHeaderCellOwnProps[] = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
         const id = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_HEADER_CELL)}${headingAttribute.attributeName}`;
-        const title = headingAttribute.titleFormatter(headingAttribute.attributeName);
+        const title: React.ReactNode = headingAttribute.titleFormatter(headingAttribute.attributeName);
         const tableSortInformation = !!headingAttribute.sort
             ? {tableId: props.id, attributeToSort: headingAttribute.attributeName}
             : {};

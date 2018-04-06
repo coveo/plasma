@@ -5,6 +5,7 @@ import {textAreasReducer} from '../components/textarea/TextAreaReducers';
 import {actionBarsReducer} from '../components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReducers';
 import {checkboxesReducer} from '../components/checkbox/CheckboxReducers';
+import {groupableCheckboxesReducer} from '../components/checkbox/GroupableCheckboxReducers';
 import {collapsibleContainersReducer} from '../components/collapsibleContainer/CollapsibleContainerReducers';
 import {datePickersReducer} from '../components/datePicker/DatePickerReducers';
 import {dropdownsReducer} from '../components/dropdown/DropdownReducers';
@@ -77,6 +78,7 @@ export class TestUtils {
             inputs: inputsReducer,
             searchBars: searchBarsReducer,
             flippables: flippablesReducer,
+            groupableCheckboxes: groupableCheckboxesReducer,
             textAreas: textAreasReducer,
         });
 

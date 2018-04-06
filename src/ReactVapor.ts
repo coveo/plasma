@@ -2,6 +2,7 @@ import {IActionOptions} from './components/actions/Action';
 import {IActionBarState} from './components/actions/ActionBarReducers';
 import {IItemFilterState} from './components/actions/filters/ItemFilterReducers';
 import {ICheckboxState} from './components/checkbox/CheckboxReducers';
+import {IGroupableCheckboxesState} from './components/checkbox/GroupableCheckboxReducers';
 import {ICollapsibleContainerState} from './components/collapsibleContainer/CollapsibleContainerReducers';
 import {IDatePickerState} from './components/datePicker/DatePickerReducers';
 import {IDropdownState} from './components/dropdown/DropdownReducers';
@@ -65,6 +66,7 @@ export interface IReactVaporState {
     collapsibleContainers?: ICollapsibleContainerState[];
     searchBars?: ISearchBarState[];
     flippables?: IFlippableState[];
+    groupableCheckboxes?: IGroupableCheckboxesState[];
     textAreas?: ITextAreaState[];
 }
 
