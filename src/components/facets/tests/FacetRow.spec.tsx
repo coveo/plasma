@@ -6,13 +6,15 @@ import {IFacet} from '../Facet';
 import {FacetRow, IFacetRowProps} from '../FacetRow';
 
 describe('Facets', () => {
+    const spyOnToggleFacet: jasmine.Spy = jasmine.createSpy('onToggleFacet')
+
     const FACET_ROW_PROPS: IFacetRowProps = {
         facetRow: {
             name: 'row',
             formattedName: 'Row',
         },
         facet: 'facetTitle',
-        onToggleFacet: jasmine.createSpy('onToggleFacet'),
+        onToggleFacet: spyOnToggleFacet,
         isChecked: false,
     };
     const FACET_ROW: JSX.Element = <FacetRow {...FACET_ROW_PROPS} />;
@@ -77,12 +79,21 @@ describe('Facets', () => {
             expect(facetRowView.html()).toContain(FACET_ROW_PROPS.facetRow.formattedName);
         });
 
-        it('should should call onToggleFacet on change', () => {
+        it('should call onToggleFacet on change', () => {
+            spyOnToggleFacet.calls.reset();
             expect(FACET_ROW_PROPS.onToggleFacet).not.toHaveBeenCalled();
 
             facetRowView.find('input').simulate('change');
 
-            expect(FACET_ROW_PROPS.onToggleFacet).toHaveBeenCalled();
+            expect(spyOnToggleFacet).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call onToggleFacet on click button', () => {
+            spyOnToggleFacet.calls.reset();
+
+            facetRowView.find('button').simulate('click');
+
+            expect(spyOnToggleFacet).toHaveBeenCalledTimes(1);
         });
 
         it('should display a <Tooltip /> if the formatted name is longer than maxTooltipLabelLength', () => {
