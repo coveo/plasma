@@ -33,6 +33,7 @@ import {ITableStateModifier} from './components/tables/TableActions';
 import {ITableHeaderCellsState} from './components/tables/TableHeaderCellReducers';
 import {ITableData, ITablesState} from './components/tables/TableReducers';
 import {ITableRowState} from './components/tables/TableRowReducers';
+import {ITextAreaState} from './components/textarea/TextAreaReducers';
 import {IToastsState} from './components/toast/ToastReducers';
 
 export interface IReactVaporState {
@@ -63,9 +64,10 @@ export interface IReactVaporState {
     checkboxes?: ICheckboxState[];
     inputs?: IInputState[];
     collapsibleContainers?: ICollapsibleContainerState[];
-    searchBars: ISearchBarState[];
+    searchBars?: ISearchBarState[];
     flippables?: IFlippableState[];
     groupableCheckboxes?: IGroupableCheckboxesState[];
+    textAreas?: ITextAreaState[];
 }
 
 export interface IReduxActionsPayload {
