@@ -5,9 +5,10 @@ import {CheckboxActions, ICheckboxActionPayload} from './CheckboxActions';
 export interface ICheckboxState {
     id: string;
     checked: boolean;
+    disabled: boolean;
 }
 
-export const checkboxInitialState: ICheckboxState = {id: undefined, checked: false};
+export const checkboxInitialState: ICheckboxState = {id: undefined, checked: false, disabled: false};
 export const checkboxesInitialState: ICheckboxState[] = [];
 
 export const checkboxReducer = (
@@ -19,6 +20,7 @@ export const checkboxReducer = (
             return {
                 id: action.payload.id,
                 checked: !!action.payload.checked,
+                disabled: !!action.payload.disabled,
             };
         case CheckboxActions.toggle:
             return state.id !== action.payload.id

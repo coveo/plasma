@@ -3,18 +3,26 @@ import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {
+    IDropdownOption,
+    IDropdownSearchDispatchProps,
+    IDropdownSearchOwnProps,
+    IDropdownSearchProps,
+    IDropdownSearchStateProps,
+} from '../DropdownSearch';
+import {
     addCustomSelectedOption,
     addMultiSelectDropdownSearch,
-    applyFilterDropdownSearch, closeDropdownSearch, deselectAllOptionsMultiselectDropdownSearch,
+    applyFilterDropdownSearch,
+    closeDropdownSearch,
+    deselectAllOptionsMultiselectDropdownSearch,
     deselectOptionDropdownSearch,
     keyDownMultiselectDropdownSearch,
-    multiSelectOptionDropdownSearch, openDropdownSearch, removeDropdownSearch, updateOptionsDropdownSearch,
+    multiSelectOptionDropdownSearch,
+    openDropdownSearch,
+    removeDropdownSearch,
+    updateOptionsDropdownSearch,
 } from '../DropdownSearchActions';
-import {
-    IDropdownOption, IDropdownSearchDispatchProps, IDropdownSearchOwnProps, IDropdownSearchProps,
-    IDropdownSearchStateProps,
-} from './../DropdownSearch';
-import {IDropdownSearchState} from './../DropdownSearchReducers';
+import {IDropdownSearchState} from '../DropdownSearchReducers';
 import {MultiSelectDropdownSearch} from './MultiSelectDropdownSearch';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {

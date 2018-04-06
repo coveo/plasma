@@ -37,6 +37,30 @@ const config = {
                 test: /\.ts(x?)$/,
                 loader: 'ts-loader',
             },
+            {
+                test: /\.css$/,
+                exclude: path.join(__dirname, 'src/components'),
+                use: [{
+                    loader: 'style-loader',
+                }, {
+                    loader: 'css-loader',
+                }],
+            },
+            {
+                test: /\.css$/,
+                include: path.join(__dirname, 'src/components'),
+                use: [
+                    {
+                        loader: 'style-loader',
+                    }, {
+                        loader: 'typings-for-css-modules-loader',
+                        options: {
+                            modules: true,
+                            namedExport: true,
+                        },
+                    },
+                ],
+            },
 
             // Provide jQuery=require('jquery') to use the same jquery instance.
             // See http://reactkungfu.com/2015/10/integrating-jquery-chosen-with-webpack-using-imports-loader/ for more infos.

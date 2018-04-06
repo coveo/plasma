@@ -1,13 +1,49 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
 
-export class Checkbox extends React.Component<IInputProps, any> {
+export interface ICheckboxStateProps {
+    defaultDisabled?: boolean;
+}
+
+export interface ICheckboxProps extends ICheckboxStateProps, IInputProps {
+    handleOnClick?: (isChecked: boolean) => void;
+}
+
+export class Checkbox extends React.Component<ICheckboxProps, any> {
+
     private onClick(e: React.MouseEvent<HTMLElement>) {
         if (this.props.onClick) {
             e.preventDefault();
             e.stopPropagation();
             this.props.onClick(e);
+        }
+    }
+
+    componentDidMount() {
+        this.updateIndeterminate();
+    }
+
+    componentDidUpdate() {
+        this.updateIndeterminate();
+    }
+
+    private updateIndeterminate() {
+        const inputElements = ReactDOM.findDOMNode(this).getElementsByTagName('input');
+        if (inputElements.length) {
+            inputElements[0].indeterminate = !!this.props.indeterminate;
+        }
+    }
+
+    private handleOnClick(e: React.MouseEvent<HTMLElement>) {
+        if (!this.props.disabled) {
+            if (this.props.onClick) {
+                this.onClick(e);
+            }
+            if (this.props.handleOnClick) {
+                this.props.handleOnClick(this.props.checked);
+            }
         }
     }
 
@@ -20,9 +56,9 @@ export class Checkbox extends React.Component<IInputProps, any> {
                 classes={[classes]}
                 innerInputClasses={[innerInputClasses]}
                 type='checkbox'
-                onClick={(e: React.MouseEvent<HTMLElement>) => this.onClick(e)}
+                onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
                 readOnly>
-                <button></button>
+                <button disabled={!!this.props.disabled}></button>
                 {this.props.children}
             </Input>
         );

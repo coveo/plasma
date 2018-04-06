@@ -66,12 +66,15 @@ describe('Checkbox', () => {
                 {
                     id: 'some-checkbox2',
                     checked: false,
+                    disabled: false,
                 }, {
                     id: 'some-checkbox1',
                     checked: false,
+                    disabled: false,
                 }, {
                     id: 'some-checkbox3',
                     checked: false,
+                    disabled: false,
                 },
             ];
             const action: IReduxAction<ICheckboxActionPayload> = {
@@ -98,14 +101,17 @@ describe('Checkbox', () => {
                 {
                     id: 'some-checkbox1',
                     checked: false,
+                    disabled: false,
                 },
                 {
                     id: 'some-checkbox2',
                     checked: false,
+                    disabled: false,
                 },
                 {
                     id: 'some-checkbox3',
                     checked: true,
+                    disabled: false,
                 },
             ];
 

@@ -1,9 +1,9 @@
 import * as Redux from 'redux';
-
 import {actionBarsReducer} from '../src/components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../src/components/actions/filters/ItemFilterReducers';
 import {autocompletesReducer} from '../src/components/autocomplete/AutocompleteReducers';
 import {checkboxesReducer} from '../src/components/checkbox/CheckboxReducers';
+import {groupableCheckboxesReducer} from '../src/components/checkbox/GroupableCheckboxReducers';
 import {collapsibleContainersReducer} from '../src/components/collapsibleContainer/CollapsibleContainerReducers';
 import {datePickersReducer} from '../src/components/datePicker/DatePickerReducers';
 import {dropdownsReducer} from '../src/components/dropdown/DropdownReducers';
@@ -29,6 +29,7 @@ import {tabGroupsReducer} from '../src/components/tab/TabReducers';
 import {tableHeaderCellsReducer} from '../src/components/tables/TableHeaderCellReducers';
 import {tablesReducer} from '../src/components/tables/TableReducers';
 import {tableRowsReducer} from '../src/components/tables/TableRowReducers';
+import {textAreasReducer} from '../src/components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from '../src/components/toast/ToastReducers';
 import {IReactVaporState} from '../src/ReactVapor';
 import {IMembersCompositeState, membersReducers} from './members-example/reducers/MembersReducers';
@@ -75,4 +76,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
     inputs: inputsReducer,
     searchBars: searchBarsReducer,
     flippables: flippablesReducer,
+    groupableCheckboxes: groupableCheckboxesReducer,
+    textAreas: textAreasReducer,
 });

@@ -1,5 +1,5 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {FacetActions, IChangeFacetActionPayload, IFacetActionPayload} from '../FacetActions';
+import {emptyAllFacets, FacetActions, IChangeFacetActionPayload, IFacetActionPayload} from '../FacetActions';
 import {facetInitialState, facetReducer, facetsInitialState, facetsReducer, IFacetState} from '../FacetReducers';
 
 describe('Facets', () => {
@@ -195,6 +195,39 @@ describe('Facets', () => {
             expect(facetsState.length).toBe(oldState.length);
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(0);
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+        });
+
+        it('should set selected property to an empty array in all facets when the action is "EMPTY_ALL_FACET', () => {
+            const selectedRows = [
+                {
+                    name: 'row',
+                    formattedName: 'Row',
+                },
+                {
+                    name: 'row2',
+                    formattedName: 'Row 2',
+                },
+            ];
+            const oldState: IFacetState[] = [
+                {
+                    facet: 'some-facet2',
+                    opened: true,
+                    selected: selectedRows,
+                }, {
+                    facet: 'some-facet1',
+                    opened: false,
+                    selected: selectedRows,
+                }, {
+                    facet: 'some-facet3',
+                    opened: true,
+                    selected: selectedRows,
+                },
+            ];
+
+            const facetsState: IFacetState[] = facetsReducer(oldState, emptyAllFacets());
+
+            expect(facetsState.length).toBe(oldState.length);
+            facetsState.forEach((facet) => expect(facet.selected.length).toBe(0));
         });
 
         it('should add the row to the beginning selected property of the facet when the action is "CHANGE_FACET" and remove it if it is already there', () => {

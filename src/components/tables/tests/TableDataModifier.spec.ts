@@ -5,6 +5,7 @@ import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
+import {ITableProps} from '../Table';
 import {TableActions} from '../TableActions';
 import {TableChildComponent, TableSortingOrder} from '../TableConstants';
 import {
@@ -20,7 +21,6 @@ import {
 } from '../TableDataModifier';
 import {unselectAllRows} from '../TableRowActions';
 import {getTableChildComponentId, getTableLoadingIds} from '../TableUtils';
-import {ITableProps} from './../Table';
 import {predictableData, tableOwnPropsMock, tablePropsMockWithData} from './TableTestCommon';
 
 describe('TableDataModifier', () => {

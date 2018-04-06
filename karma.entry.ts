@@ -37,7 +37,7 @@ afterEach(() => {
 const testsContext = require.context('./src', true, /\.spec\.ts(x?)$/);
 testsContext.keys().forEach(testsContext);
 
-const coverageContext = require.context('./src', true, /.*\.ts(x?)$/);
+const coverageContext = require.context('./src', true, /^((?!\.d).)*.ts(x?)$/);
 coverageContext.keys()
-    .filter((file) => !s.contains(file, '.spec.') && !s.contains(file, 'Examples'))
+    .filter((file) => !s.contains(file, '.spec.') && !s.contains(file, 'Examples') && !s.contains(file, 'css'))
     .forEach(coverageContext);

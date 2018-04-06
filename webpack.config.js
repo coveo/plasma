@@ -48,11 +48,27 @@ module.exports = {
             },
             {
                 test: /\.css$/,
+                exclude: path.join(__dirname, 'src/components'),
                 use: [{
                     loader: 'style-loader',
                 }, {
                     loader: 'css-loader',
                 }],
+            },
+            {
+                test: /\.css$/,
+                include: path.join(__dirname, 'src/components'),
+                use: [
+                    {
+                        loader: 'style-loader',
+                    }, {
+                        loader: 'typings-for-css-modules-loader',
+                        options: {
+                            modules: true,
+                            namedExport: true,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.png$/,
