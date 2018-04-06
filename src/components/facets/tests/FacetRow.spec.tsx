@@ -6,7 +6,7 @@ import {IFacet} from '../Facet';
 import {FacetRow, IFacetRowProps} from '../FacetRow';
 
 describe('Facets', () => {
-    const spyOnToggleFacet: jasmine.Spy = jasmine.createSpy('onToggleFacet')
+    const spyOnToggleFacet: jasmine.Spy = jasmine.createSpy('onToggleFacet');
 
     const FACET_ROW_PROPS: IFacetRowProps = {
         facetRow: {
