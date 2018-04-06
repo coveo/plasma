@@ -9,8 +9,8 @@ import {IActionOptions} from '../../actions/Action';
 import {IData} from '../Table';
 import {ITableChildBodyProps, TableChildBody} from '../table-children/TableChildBody';
 import {TableCollapsibleRow} from '../TableCollapsibleRow';
-import {TableHeadingRow} from '../TableHeadingRow';
 import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
+import {TableHeadingRow} from '../TableHeadingRow';
 
 describe('<TableChildBody />', () => {
     const spyOnRowClick: jasmine.Spy = jasmine.createSpy('onRowClick');

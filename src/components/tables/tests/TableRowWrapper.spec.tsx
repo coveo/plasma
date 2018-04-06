@@ -7,7 +7,7 @@ describe('<TableCollapsibleRowWrapper />', () => {
         it('should render without error without children', () => {
             expect(() => {
                 mount(
-                    <TableCollapsibleRowWrapper/>,
+                    <TableCollapsibleRowWrapper />,
                     {attachTo: document.getElementById('App')},
                 );
             }).not.toThrow();
