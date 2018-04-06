@@ -21,17 +21,15 @@ export const autocompleteReducer = (state: IAutocompleteState = autocompleteInit
     switch (action.type) {
         case AutocompleteActions.add:
             return {
+                ...state,
                 id: action.payload.id,
-                open: state.open,
-                value: state.value,
-                active: state.active,
             };
         case AutocompleteActions.toggle:
             const open = !_.isUndefined(action.payload.open) ? action.payload.open : !state.open;
             // if open was sent in the dispatch use the value. Otherwise toggle the property
             return {...state, open, active: undefined};
         case AutocompleteActions.setValue:
-            return {...state, open: true, value: action.payload.value};
+            return {...state, open: action.payload.open, value: action.payload.value};
         case AutocompleteActions.setActive:
             let active = state.active + action.payload.diff;
             if (_.isUndefined(state.active)) {

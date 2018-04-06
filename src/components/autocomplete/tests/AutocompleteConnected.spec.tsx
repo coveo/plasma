@@ -107,13 +107,10 @@ describe('Autocomplete', () => {
 
         it('should filter the visible values with custom function', () => {
             const spy = jasmine.createSpy('matchFilter').and.callFake(() => false);
-            mountAutocomplete([
-                {value: 'a'},
-                {value: 'b'},
-            ], {
-                    // Take the value twice and make it uppercase
-                    matchFilter: spy,
-                });
+            mountAutocomplete([{value: 'a'}, {value: 'b'}], {
+                // Take the value twice and make it uppercase
+                matchFilter: spy,
+            });
 
             autocomplete.find('input')
                 .simulate('focus')

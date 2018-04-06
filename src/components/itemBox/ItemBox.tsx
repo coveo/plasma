@@ -31,7 +31,7 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
     private el: any;
 
     componentDidUpdate(prevProps: IItemBoxProps, prevState: IItemBoxProps) {
-        if (prevProps.active !== this.props.active && this.props.active) {
+        if (!prevProps.active && this.props.active) {
             // First parent is the span of the tooltip, second is the list
             const container = this.el.offsetParent;
             if (container) {

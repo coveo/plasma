@@ -30,9 +30,9 @@ export const toggleAutocomplete = (id: string, open?: boolean): IReduxAction<IAu
     payload: {id, open},
 });
 
-export const setAutocompleteValue = (id: string, value: string): IReduxAction<IAutocompletePayload> => ({
+export const setAutocompleteValue = (id: string, value: string, open: boolean): IReduxAction<IAutocompletePayload> => ({
     type: AutocompleteActions.setValue,
-    payload: {id, value},
+    payload: {id, value, open},
 });
 
 export const setAutocompleteActive = (id: string, diff: number): IReduxAction<IAutocompletePayload> => ({

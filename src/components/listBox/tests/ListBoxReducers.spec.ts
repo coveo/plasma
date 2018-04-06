@@ -164,7 +164,7 @@ describe('ListBox', () => {
             it('should select the new item', () => {
                 const expectedValue = items[0].value;
                 const oldState: IListBoxState[] = defaultState;
-                const newState: IListBoxState[] = listBoxesReducer(oldState, setAutocompleteValue(id, expectedValue));
+                const newState: IListBoxState[] = listBoxesReducer(oldState, setAutocompleteValue(id, expectedValue, false));
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
@@ -175,7 +175,7 @@ describe('ListBox', () => {
 
             it('should not modify the old state', () => {
                 const oldState: IListBoxState[] = _.clone(defaultState);
-                listBoxesReducer(oldState, setAutocompleteValue(id, items[0].value));
+                listBoxesReducer(oldState, setAutocompleteValue(id, items[0].value, true));
 
                 expect(oldState).toEqual(defaultState);
             });

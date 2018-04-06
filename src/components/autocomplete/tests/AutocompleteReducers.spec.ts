@@ -149,21 +149,27 @@ describe('Autocomplete', () => {
                 defaultState = [_.extend({}, autocompleteInitialState, {id, open: false}), autocompleteInitialState];
             });
 
-            it('should set the value and set the open property to true', () => {
+            it('should set the value and set the open property to open', () => {
                 const expectedValue = 'new-value';
                 const oldState: IAutocompleteState[] = defaultState;
-                const newState: IAutocompleteState[] = autocompletesReducer(oldState, setAutocompleteValue(id, expectedValue));
+                const newState: IAutocompleteState[] = autocompletesReducer(oldState, setAutocompleteValue(id, expectedValue, true));
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
                 expect(newState[0].open).toBe(true);
                 expect(newState[0].value).toBe(expectedValue);
+
+                const newerState: IAutocompleteState[] = autocompletesReducer(oldState, setAutocompleteValue(id, expectedValue, false));
+                expect(newerState.length).toBe(oldState.length);
+                expect(newerState[0].id).toBe(id);
+                expect(newerState[0].open).toBe(false);
+                expect(newerState[0].value).toBe(expectedValue);
             });
 
             it('should not modify the old state', () => {
                 const oldState: IAutocompleteState[] = [autocompleteInitialState];
                 const oldStateBefore = _.clone(oldState);
-                autocompletesReducer(oldState, setAutocompleteValue(id, '¯\_(ツ)_/¯'));
+                autocompletesReducer(oldState, setAutocompleteValue(id, '¯\_(ツ)_/¯', true));
 
                 expect(oldState).toEqual(oldStateBefore);
             });

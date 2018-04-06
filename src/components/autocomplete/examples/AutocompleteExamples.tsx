@@ -47,13 +47,13 @@ export class AutocompleteExamples extends React.Component<{}, ISingleSelectExamp
                 </div>
 
                 <div className='form-group'>
-                    <AutocompleteConnected id={UUID.generate()} items={this.state.second}>
-                        <Label>An autocomplete with a selected value</Label>
+                    <AutocompleteConnected id={UUID.generate()} items={this.state.second} inline>
+                        <Label>An inline autocomplete with a selected value</Label>
                     </AutocompleteConnected>
                 </div>
 
                 <div className='form-group'>
-                    <AutocompleteConnected id={UUID.generate()} items={this.state.third}>
+                    <AutocompleteConnected id={UUID.generate()} className='block' items={this.state.third}>
                         <Label>An autocomplete with a display value different than the value</Label>
                     </AutocompleteConnected>
                 </div>
