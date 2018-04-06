@@ -39,7 +39,9 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         checked={this.props.isChecked}
                         onChange={() => this.props.onToggleFacet(this.props.facetRow)}
                     />
-                    <button type='button'></button>
+                    <button type='button'
+                        onClick={() => this.props.onToggleFacet(this.props.facetRow)}
+                    />
                     <span className='label'>{label}</span>
                     {count}
                 </label>
