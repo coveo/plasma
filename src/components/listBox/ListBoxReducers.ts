@@ -1,5 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../utils/ReduxUtils';
+import {AutocompleteActions} from '../autocomplete/AutocompleteActions';
 import {IListBoxPayload, ListBoxActions} from './ListBoxActions';
 
 export interface IListBoxState {
@@ -32,6 +33,11 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
                     ? [...state.selected, action.payload.value]
                     : [action.payload.value],
             };
+        case AutocompleteActions.setValue:
+            return {
+                ...state,
+                selected: [action.payload.value],
+            };
         case ListBoxActions.unselect:
             return {
                 ...state,
@@ -62,6 +68,7 @@ export const listBoxesReducer = (
         case ListBoxActions.clear:
         case ListBoxActions.unselect:
         case ListBoxActions.select:
+        case AutocompleteActions.setValue:
             return state.map((listBox: IListBoxState) => listBoxReducer(listBox, action));
         default:
             return state;

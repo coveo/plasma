@@ -133,5 +133,15 @@ describe('ItemBox', () => {
 
             expect(onOptionClick).toHaveBeenCalled();
         });
+
+        it('should scroll the parent element if needed', () => {
+            const spy = spyOn<any>(ItemBox.prototype, 'scrollIfNeeded').and.callThrough();
+
+            renderItemBox({});
+
+            ItemBoxComponent.setProps({active: true});
+
+            expect(spy).toHaveBeenCalled();
+        });
     });
 });
