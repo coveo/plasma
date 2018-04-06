@@ -4,7 +4,10 @@ import {ICheckboxState} from './CheckboxReducers';
 import {GroupableCheckboxActions, IGroupableCheckboxActionPayload} from './GroupableCheckboxActions';
 import {
     addChildCheckbox,
-    addParentCheckbox, disabledAllCheckbox, disabledChildCheckbox, disabledParentCheckbox,
+    addParentCheckbox,
+    disabledAllCheckbox,
+    disabledChildCheckbox,
+    disabledParentCheckbox,
     removeChildCheckbox,
     removeParentCheckbox,
     toggleChildCheckbox,

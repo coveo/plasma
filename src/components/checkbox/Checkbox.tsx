@@ -37,7 +37,7 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
     }
 
     private handleOnClick(e: React.MouseEvent<HTMLElement>) {
-        if (!!!this.props.disabled) {
+        if (!this.props.disabled) {
             if (this.props.onClick) {
                 this.onClick(e);
             }
