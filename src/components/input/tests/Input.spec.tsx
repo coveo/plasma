@@ -179,7 +179,7 @@ describe('Input', () => {
         it('should set the step prop to any if the input is of type number', () => {
             const innerInput = input.find('input').first();
             expect(innerInput.prop('step')).toBe(null);
-            
+
             input.setProps({type: 'number'});
             expect(innerInput.prop('step')).toBe('any');
         });
