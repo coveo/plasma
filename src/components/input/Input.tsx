@@ -164,6 +164,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
                     name={this.props.name}
                     required
                     readOnly={!!this.props.readOnly}
+                    step={this.props.type === 'number' ? 'any' : null}
                 />
                 {this.getLabel()}
                 {this.props.children}
