@@ -49,16 +49,3 @@ input[type='text'], textarea {
     border-radius: 0 2px 2px 0;
   }
 }
-
-.coveo-form .form-group .half-input, .half-input {
-  display: inline-block;
-  width: $half-input-width;
-
-  &:nth-child(2n-1) {
-    margin-right: $half-input-between / 2;
-  }
-
-  &:nth-child(2n) {
-    margin-left: $half-input-between / 2;
-  }
-}
