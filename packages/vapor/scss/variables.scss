@@ -55,7 +55,7 @@ $input-max-width: 440px;
 $input-message-position: -20px;
 $input-clear-position: 10px;
 $half-input-between: 1em;
-$half-input-width: calc(50% - #{$half-input-between} / 2);
+$half-input-width: calc(50% - #{$half-input-between});
 $half-input-button-width: 24px;
 
 // Links
