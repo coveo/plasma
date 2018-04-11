@@ -209,14 +209,14 @@ describe('Facets', () => {
         });
 
         it('should call onToggleFacet when buildCategoryFacet is called', () => {
-            const facetRowInput = facetComponent.find(FacetRow).first().find('input');
+            const facetRowLabel = facetComponent.find(FacetRow).first().find('label');
 
             expect(onToggleFacet).not.toHaveBeenCalled();
 
-            expect(facetRowInput.length).toBe(1);
-            facetRowInput.simulate('change');
+            expect(facetRowLabel.length).toBe(1);
+            facetRowLabel.simulate('click');
 
-            expect(onToggleFacet).toHaveBeenCalled();
+            expect(onToggleFacet).toHaveBeenCalledTimes(1);
         });
 
         it('should call clearFacet when clearCategoryFacet is called', () => {
