@@ -39,12 +39,25 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
 
         return (
             <header className={classes}>
-                <div>
-                    <h1 className='inline'>{this.props.title}</h1>
-                    {this.props.children}
-                </div>
+                {
+                    !!this.props.children
+                        ? (
+                            <div>
+                                {this.getTitle()}
+                                {this.props.children}
+                            </div>
+                        )
+                        : this.getTitle()
+                }
                 {closeComponent}
             </header>
         );
+    }
+
+    private getTitle(): JSX.Element {
+        const titleClass: string = classNames({
+            inline: !!this.props.children,
+        });
+        return <h1 className={titleClass}>{this.props.title}</h1>;
     }
 }
