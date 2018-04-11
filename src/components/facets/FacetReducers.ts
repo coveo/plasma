@@ -91,6 +91,8 @@ export const facetReducer = (
             return changeFacet(state, action);
         case FacetActions.emptyFacet:
             return emptyFacet(state, action);
+        case FacetActions.emptyAllFacets:
+            return {...state, selected: []};
         default:
             return state;
     }
@@ -103,6 +105,7 @@ export const facetsReducer = (
     switch (action.type) {
         case FacetActions.changeFacet:
         case FacetActions.emptyFacet:
+        case FacetActions.emptyAllFacets:
         case FacetActions.toggleMoreFacetRows:
         case FacetActions.closeMoreFacetRows:
             return state.map((facet: IFacetState) => facetReducer(facet, action));

@@ -1,5 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
+import {setAutocompleteValue} from '../../autocomplete/AutocompleteActions';
 import {
     addListBox,
     clearListBoxOption,
@@ -145,6 +146,36 @@ describe('ListBox', () => {
             it('should not modify the old state', () => {
                 const oldState: IListBoxState[] = _.clone(defaultState);
                 listBoxesReducer(oldState, selectListBoxOption(id, false, items[0].value));
+
+                expect(oldState).toEqual(defaultState);
+            });
+        });
+
+        describe('SET_VALUE_AUTOCOMPLETE', () => {
+            const id = 'list-box-id';
+            const items = [{value: 'a'}, {value: 'b', selected: true}];
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            let defaultState: IListBoxState[];
+
+            beforeEach(() => {
+                defaultState = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
+            });
+
+            it('should select the new item', () => {
+                const expectedValue = items[0].value;
+                const oldState: IListBoxState[] = defaultState;
+                const newState: IListBoxState[] = listBoxesReducer(oldState, setAutocompleteValue(id, expectedValue, false));
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+
+                expect(newState[0].selected.length).toBe(1);
+                expect(newState[0].selected[0]).toBe(expectedValue);
+            });
+
+            it('should not modify the old state', () => {
+                const oldState: IListBoxState[] = _.clone(defaultState);
+                listBoxesReducer(oldState, setAutocompleteValue(id, items[0].value, true));
 
                 expect(oldState).toEqual(defaultState);
             });

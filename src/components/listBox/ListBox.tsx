@@ -9,6 +9,7 @@ export interface IListBoxOwnProps {
     classes?: string[];
     id?: string;
     multi?: boolean;
+    highlight?: string;
 }
 
 export interface IListBoxStateProps {
@@ -29,6 +30,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         noResultItem: {
             value: 'No Items',
         },
+        highlight: '',
     };
 
     componentWillMount() {
@@ -55,6 +57,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
                 {...item}
                 onOptionClick={(option: IItemBoxProps) => this.onSelectItem(option)}
                 selected={_.contains(this.props.selected, item.value)}
+                highlight={this.props.highlight}
             />)
             .value();
 

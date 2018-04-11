@@ -6,6 +6,7 @@ export const FacetActions = {
     removeFacet: 'REMOVE_FACET',
     changeFacet: 'CHANGE_FACET',
     emptyFacet: 'EMPTY_FACET',
+    emptyAllFacets: 'EMPTY_ALL_FACET',
     toggleMoreFacetRows: 'TOGGLE_MORE_FACET_ROWS',
     closeMoreFacetRows: 'CLOSE_MORE_FACET_ROWS',
 };
@@ -46,6 +47,8 @@ export const emptyFacet = (facet: string): IReduxAction<IFacetActionPayload> => 
         facet,
     },
 });
+
+export const emptyAllFacets = (): IReduxAction<IFacetActionPayload> => ({type: FacetActions.emptyAllFacets});
 
 export const toggleMoreFacetRows = (facet: string): IReduxAction<IFacetActionPayload> => ({
     type: FacetActions.toggleMoreFacetRows,

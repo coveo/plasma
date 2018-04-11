@@ -1,7 +1,7 @@
 import * as Redux from 'redux';
-
 import {actionBarsReducer} from '../src/components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../src/components/actions/filters/ItemFilterReducers';
+import {autocompletesReducer} from '../src/components/autocomplete/AutocompleteReducers';
 import {checkboxesReducer} from '../src/components/checkbox/CheckboxReducers';
 import {groupableCheckboxesReducer} from '../src/components/checkbox/GroupableCheckboxReducers';
 import {collapsibleContainersReducer} from '../src/components/collapsibleContainer/CollapsibleContainerReducers';
@@ -29,6 +29,7 @@ import {tabGroupsReducer} from '../src/components/tab/TabReducers';
 import {tableHeaderCellsReducer} from '../src/components/tables/TableHeaderCellReducers';
 import {tablesReducer} from '../src/components/tables/TableReducers';
 import {tableRowsReducer} from '../src/components/tables/TableRowReducers';
+import {textAreasReducer} from '../src/components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from '../src/components/toast/ToastReducers';
 import {IReactVaporState} from '../src/ReactVapor';
 import {IMembersCompositeState, membersReducers} from './members-example/reducers/MembersReducers';
@@ -43,6 +44,7 @@ const lastAction = (state: IReactVaporExampleState = null, action: Redux.Action)
 };
 
 export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
+    autocompletes: autocompletesReducer,
     tables: tablesReducer,
     membersCompositeState: membersReducers,
     lastUpdatedComposite: lastUpdatedCompositeReducer,
@@ -75,4 +77,5 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
     searchBars: searchBarsReducer,
     flippables: flippablesReducer,
     groupableCheckboxes: groupableCheckboxesReducer,
+    textAreas: textAreasReducer,
 });

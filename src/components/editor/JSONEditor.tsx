@@ -48,6 +48,7 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
 
     componentDidUpdate(prevProps: IJSONEditorProps) {
         if (prevProps.value !== this.props.value) {
+            this.codemirror.getCodeMirror().setValue(this.props.value);
             this.codemirror.getCodeMirror().getDoc().clearHistory();
         }
     }
@@ -84,16 +85,15 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
     }
 
     private handleChange(json: string) {
+        let inError: boolean = false;
         try {
             JSON.parse(json);
-            this.setState({
-                isInError: false,
-            }, () => this.callOnChange(json, this.state.isInError));
         } catch (error) {
-            this.setState({
-                isInError: true,
-            }, () => this.callOnChange(json, this.state.isInError));
+            inError = true;
         }
+        this.setState({
+            isInError: inError,
+        }, () => this.callOnChange(json, inError));
     }
 
     private callOnChange(json: string, inError: boolean) {

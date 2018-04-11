@@ -10,6 +10,7 @@ import {ActionBarConnectedExamples} from '../src/components/actions/examples/Act
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import {ItemFilterExamples} from '../src/components/actions/filters/examples/ItemFilterExamples';
+import {AutocompleteExamples} from '../src/components/autocomplete/examples/AutocompleteExamples';
 import {BadgeExamples} from '../src/components/badge/examples/BadgeExamples';
 import {BlankSlateExample} from '../src/components/blankSlate/examples/BlankSlateExample';
 import {BreadcrumbsExamples} from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
@@ -83,6 +84,7 @@ import {TableExamples} from '../src/components/tables/examples/TableExamples';
 import {TableHeaderExamples} from '../src/components/tables/examples/TableHeaderExamples';
 import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
 import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
+import {TextAreaExamples} from '../src/components/textarea/TextAreaExamples';
 import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
@@ -92,7 +94,6 @@ import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
 
 class App extends React.Component<any, any> {
-
     render() {
         (window as any).store = ReactVaporStore;
         return (
@@ -106,6 +107,8 @@ class App extends React.Component<any, any> {
                             <MembersExample />
                         </div>
                     </div>
+                    <AutocompleteExamples />
+                    <TextAreaExamples />
                     <SearchBarExamples />
                     <ColorBarExamples />
                     <PartialStringMatchExamples />

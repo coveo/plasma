@@ -51,7 +51,7 @@ describe('Checkbox', () => {
 
                 innerLabel.simulate('click');
 
-                expect(clickSpy.calls.count()).toBe(0);
+                expect(clickSpy).not.toHaveBeenCalled();
             });
 
             it('should call prop handleOnClick when specified on click', () => {
@@ -64,7 +64,7 @@ describe('Checkbox', () => {
 
                 innerLabel.simulate('click');
 
-                expect(handleOnClickSpy.calls.count()).toBe(1);
+                expect(handleOnClickSpy).toHaveBeenCalledTimes(1);
             });
 
             it('should not call prop handleOnClick when specified on click if disabled', () => {

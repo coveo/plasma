@@ -31,7 +31,6 @@ export interface ISingleSelectExamplesState {
     first: IItemBoxProps[];
     second: IItemBoxProps[];
     hoc: IItemBoxProps[];
-    lotsOfValues: IItemBoxProps[];
 }
 
 export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamplesState> {
@@ -44,13 +43,10 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
         const hoc = _.map(defaultItems, (item) => _.extend({}, item, {append: {content: () => <span className='text-medium-grey ml1'>{item.value}</span>}}));
         hoc[0].selected = true;
 
-        const lotsOfValues = _.map(_.range(1000), (i: number) => ({displayValue: `test ${i}`, value: `${i}`}));
-
         this.state = {
             first: _.clone(defaultItems),
             second,
             hoc,
-            lotsOfValues,
         };
     }
 
@@ -93,7 +89,7 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                     <br />
                     <SingleSelectWithPredicateAndFilter
                         id={UUID.generate()}
-                        items={this.state.lotsOfValues}
+                        items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
                     />

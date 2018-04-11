@@ -130,14 +130,12 @@ export const disabledParentCheckbox = (state: IGroupableCheckboxesState, action:
 };
 
 export const disabledChildCheckbox = (state: IGroupableCheckboxesState, action: IReduxAction<IGroupableCheckboxActionPayload>) => {
-    let isDisabled: boolean;
     const checkboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => {
         if (checkbox.id === action.payload.id) {
-            isDisabled = !checkbox.disabled;
             return {
                 ...checkbox,
                 id: checkbox.id,
-                disabled: isDisabled,
+                disabled: !checkbox.disabled,
             };
         }
         return checkbox;
