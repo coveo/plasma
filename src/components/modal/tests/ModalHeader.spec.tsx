@@ -6,7 +6,7 @@ import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
 describe('ModalHeader', () => {
     const basicProps: IModalHeaderProps = {
         id: 'modal',
-        title: 'Title'
+        title: 'Title',
     };
 
     describe('<ModalHeader />', () => {
