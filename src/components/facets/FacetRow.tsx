@@ -31,17 +31,21 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
 
         return (
             <li className='facet-value facet-selectable'>
-                <label className='coveo-checkbox-label facet-value-label'>
+                <label
+                    className='coveo-checkbox-label facet-value-label'
+                    onClick={(e) => {
+                        // prevent event bubbling and trigger onToggleFacet only once no matter where you click on the row
+                        e.preventDefault();
+                        this.props.onToggleFacet(this.props.facetRow);
+                    }}
+                 >
                     <input
                         type='checkbox'
                         name={this.props.facetRow.name}
                         className='coveo-checkbox facet-checkbox-input'
                         checked={this.props.isChecked}
-                        onChange={() => this.props.onToggleFacet(this.props.facetRow)}
                     />
-                    <button type='button'
-                        onClick={() => this.props.onToggleFacet(this.props.facetRow)}
-                    />
+                    <button type='button' />
                     <span className='label'>{label}</span>
                     {count}
                 </label>

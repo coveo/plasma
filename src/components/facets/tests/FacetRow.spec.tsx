@@ -83,7 +83,7 @@ describe('Facets', () => {
             spyOnToggleFacet.calls.reset();
             expect(FACET_ROW_PROPS.onToggleFacet).not.toHaveBeenCalled();
 
-            facetRowView.find('input').simulate('change');
+            facetRowView.find('label').simulate('click');
 
             expect(spyOnToggleFacet).toHaveBeenCalledTimes(1);
         });
