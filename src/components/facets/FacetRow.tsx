@@ -44,7 +44,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         name={this.props.facetRow.name}
                         className='coveo-checkbox facet-checkbox-input'
                         checked={this.props.isChecked}
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                        onClick={(e) => {e.preventDefault(); e.stopPropagation();}}
                     />
                     <button type='button' />
                     <span className='label'>{label}</span>
