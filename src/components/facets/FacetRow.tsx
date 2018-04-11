@@ -38,12 +38,13 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         e.preventDefault();
                         this.props.onToggleFacet(this.props.facetRow);
                     }}
-                 >
+                >
                     <input
                         type='checkbox'
                         name={this.props.facetRow.name}
                         className='coveo-checkbox facet-checkbox-input'
                         checked={this.props.isChecked}
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
                     />
                     <button type='button' />
                     <span className='label'>{label}</span>
