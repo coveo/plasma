@@ -65,7 +65,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     blankSlateOnError?: IBlankSlateProps;
     datePicker?: IDatePickerDropdownProps;
     filter?: true | IFilterBoxProps;
-    filterMethod?: (attributeValue: any, props: ITableOwnProps) => boolean;
+    filterMethod?: (attributeValue: any, props: ITableOwnProps, filterValue: string) => boolean;
     predicates?: ITablePredicate[];
     prefixContent?: IContentProps;
     navigation?: true | INavigationChildrenProps;
