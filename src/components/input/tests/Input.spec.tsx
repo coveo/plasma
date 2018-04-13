@@ -186,9 +186,10 @@ describe('Input', () => {
 
         it('should set the autoFocus prop to the input', () => {
             const innerInput = input.find('input').first();
-            expect(innerInput.prop('autoFocus')).toBe(null);
+            expect(innerInput.prop('autoFocus')).toBe(false);
 
             input.setProps({autoFocus: true});
+
             expect(innerInput.prop('autoFocus')).toBe(true);
         });
     });
