@@ -7,10 +7,10 @@ import {TestUtils} from '../../../utils/TestUtils';
 import {ITableProps, Table} from '../Table';
 import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 import {TableChildBody} from '../table-children/TableChildBody';
+import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
 import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
-import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 
 describe('<Table />', () => {
     let store: Store<IReactVaporState>;
