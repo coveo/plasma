@@ -10,6 +10,7 @@ export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHea
     attributeToSort?: string;
     tableId?: string;
     className?: string;
+    withFixedHeader?: boolean;
     onClickCallback?: (e: React.MouseEvent<HTMLTableHeaderCellElement>) => void;
 }
 
@@ -43,6 +44,13 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
         }
     }
 
+    private setWithFixedHeaderWrapper(titleNode: React.ReactNode, sortIcon: React.ReactNode) {
+        return (<div className='fixed-header-container'>
+            {titleNode}
+            {sortIcon}
+        </div>);
+    }
+
     componentDidMount() {
         if (this.props.onMount && this.props.attributeToSort) {
             this.props.onMount();
@@ -71,8 +79,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
             <th
                 className={headerCellClasses}
                 onClick={(e: React.MouseEvent<HTMLTableHeaderCellElement>) => this.handleClick(e)}>
-                {this.props.title}
-                {sortIcon}
+                {this.setWithFixedHeaderWrapper(this.props.title, sortIcon)}
             </th>
         );
     }

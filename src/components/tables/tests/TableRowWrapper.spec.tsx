@@ -1,13 +1,13 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
-import {TableRowWrapper} from '../TableRowWrapper';
+import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 
-describe('<TableRowWrapper />', () => {
+describe('<TableCollapsibleRowWrapper />', () => {
     describe('render', () => {
         it('should render without error without children', () => {
             expect(() => {
                 mount(
-                    <TableRowWrapper />,
+                    <TableCollapsibleRowWrapper />,
                     {attachTo: document.getElementById('App')},
                 );
             }).not.toThrow();
@@ -16,7 +16,7 @@ describe('<TableRowWrapper />', () => {
         it('should render without error with children', () => {
             expect(() => {
                 mount(
-                    <TableRowWrapper><div>Hello World</div></TableRowWrapper>,
+                    <TableCollapsibleRowWrapper><div>Hello World</div></TableCollapsibleRowWrapper>,
                     {attachTo: document.getElementById('App')},
                 );
             }).not.toThrow();
@@ -24,7 +24,7 @@ describe('<TableRowWrapper />', () => {
 
         it('should render a tbody wrapper with the children inside it', () => {
             const tableRowWrapper = mount(
-                <TableRowWrapper><div>Hello World</div></TableRowWrapper>,
+                <TableCollapsibleRowWrapper><div>Hello World</div></TableCollapsibleRowWrapper>,
                 {attachTo: document.getElementById('App')},
             );
 

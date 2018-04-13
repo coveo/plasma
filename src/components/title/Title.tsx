@@ -9,6 +9,7 @@ export interface ITitleProps extends React.ClassAttributes<Title> {
     text: string;
     withTitleTooltip?: boolean;
     documentationLink?: ILinkSvgProps;
+    classes?: string[];
 }
 
 export class Title extends React.Component<ITitleProps, {}> {
@@ -29,9 +30,16 @@ export class Title extends React.Component<ITitleProps, {}> {
             'mr1': !_.isEmpty(this.props.prefix),
         });
 
+        const titleClasses: string = classNames('bold',
+            'text-medium-blue',
+            'mr1',
+            'truncate',
+            this.props.classes,
+        );
+
         return (
             <div className='flex flex-center full-content-x'>
-                <h1 className='bold text-medium-blue mr1 truncate'>
+                <h1 className={titleClasses}>
                     <span className={prefixClasses}>{this.props.prefix}</span>
                     <Tooltip title={this.props.withTitleTooltip ? this.props.text : ''} placement='left'>
                         {this.props.text}

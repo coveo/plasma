@@ -61,17 +61,17 @@ export const applyFilterOnDisplayedIds = (
                 const {attributeName, attributeFormatter, filterFormatter} = headingAttribute;
                 const attributeValue = tableDataById[dataId][attributeName];
                 let attributeValueToUse = filterFormatter
-                    ? filterFormatter(attributeValue)
+                    ? filterFormatter(attributeValue, tableDataById[dataId])
                     : attributeValue;
                 attributeValueToUse = !filterFormatter && attributeFormatter
                     ? attributeFormatter(attributeValue, attributeName, tableDataById[dataId])
                     : attributeValueToUse;
-                return contains(attributeValueToUse.toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
+                return contains(convertUndefinedAndNullToEmptyString(attributeValueToUse).toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
             });
         };
 
         const filterMethod = tableOwnProps.filterMethod
-            ? (dataId: string): boolean => tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps)
+            ? (dataId: string): boolean => tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps, tableCompositeState.filter)
             : filterDefault;
 
         nextDisplayedIds = nextDisplayedIds.filter(filterMethod);

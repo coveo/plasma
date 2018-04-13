@@ -14,7 +14,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
             ? {tableId: props.id, attributeToSort: headingAttribute.attributeName}
             : {};
 
-        return {id, title, ...tableSortInformation};
+        return {id, title, withFixedHeader: props.withFixedHeader, ...tableSortInformation};
     });
 
     const headerClass = classNames(
@@ -25,7 +25,7 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
     return (
         <TableHeader
             headerClass={headerClass}
-            columns={[...tableHeaderCells, {title: ''}]}
+            columns={props.collapsibleFormatter ? [...tableHeaderCells, {title: ''}] : tableHeaderCells}
             withReduxState
         />
     );

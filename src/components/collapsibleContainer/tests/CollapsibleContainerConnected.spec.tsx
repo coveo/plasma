@@ -2,17 +2,17 @@ import {mount} from 'enzyme';
 import * as React from 'react';
 import {Provider, Store} from 'react-redux';
 import {findWhere} from 'underscore';
-import {SlideY} from '../../animations/SlideY';
-import {IReactVaporState} from '../../ReactVapor';
-import {clearState} from '../../utils/ReduxUtils';
-import {TestUtils} from '../../utils/TestUtils';
-import {LinkSvg} from '../svg/LinkSvg';
-import {Svg} from '../svg/Svg';
-import {Tooltip} from '../tooltip/Tooltip';
-import {ICollapsibleContainerOwnProps, ICollapsibleContainerProps} from './CollapsibleContainer';
-import {CollapsibleContainer} from './CollapsibleContainer';
-import {setExpandedCollapsibleContainer} from './CollapsibleContainerActions';
-import {CollapsibleContainerConnected} from './CollapsibleContainerConnected';
+import {SlideY} from '../../../animations/SlideY';
+import {IReactVaporState} from '../../../ReactVapor';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/TestUtils';
+import {LinkSvg} from '../../svg/LinkSvg';
+import {Svg} from '../../svg/Svg';
+import {Tooltip} from '../../tooltip/Tooltip';
+import {ICollapsibleContainerOwnProps, ICollapsibleContainerProps} from '../CollapsibleContainer';
+import {CollapsibleContainer} from '../CollapsibleContainer';
+import {setExpandedCollapsibleContainer} from '../CollapsibleContainerActions';
+import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
 import {collapsibleContainerPossibleProps} from './CollapsibleContainerTestCommon.spec';
 
 describe('<CollapsibleContainerConnected />', () => {

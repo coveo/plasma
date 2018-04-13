@@ -2,6 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+import {Content, IContentProps} from '../content/Content';
 import {ITooltipProps} from '../tooltip/Tooltip';
 import {IActionOptions} from './Action';
 import {ItemFilter} from './filters/ItemFilter';
@@ -25,6 +26,7 @@ export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
     extraContainerClasses?: string[];
     removeDefaultContainerClasses?: boolean;
     withSmallActions?: boolean;
+    prefixContent?: IContentProps;
 }
 
 export interface IActionBarStateProps extends IReduxStatePossibleProps {
@@ -127,8 +129,11 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
             },
         );
 
+        const prefixContentElement: JSX.Element = this.props.prefixContent ? <Content {...this.props.prefixContent} /> : null;
+
         return (
             <div className={containerClasses}>
+                {prefixContentElement}
                 {itemFilter}
                 {actions}
                 {this.props.children}

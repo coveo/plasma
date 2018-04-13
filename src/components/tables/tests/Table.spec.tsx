@@ -5,7 +5,9 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {ITableProps, Table} from '../Table';
+import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 import {TableChildBody} from '../table-children/TableChildBody';
+import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
 import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
@@ -50,6 +52,59 @@ describe('<Table />', () => {
                 expect(() => mountComponentWithProps(props)).not.toThrow();
             });
         });
+
+        it('should not render the <TableChildLastUpdated/> if withoutLastUpdated is true', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                withoutLastUpdated: true,
+            } as any);
+
+            expect(table.find(TableChildLastUpdated).length).toBe(0);
+        });
+
+        it('should render a blankslate null if some rows are displayed', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                tableCompositeState: {
+                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: ['test'], totalEntries: 1, totalPages: 1},
+                },
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(0);
+        });
+
+        it('should render null if table is loading', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                tableCompositeState: {
+                    isLoading: true,
+                },
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(0);
+        });
+
+        it('should render a blankslate if no loading, empty table and isInitialLoad is false', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
+                tableCompositeState: {
+                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    isLoading: false,
+                },
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(1);
+        });
+
+        it('should render with the wrapper fixed-header-table-container if the props withFixedHeader is true', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                withFixedHeader: true,
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(0);
+        });
     });
 
     describe('after render', () => {
@@ -69,7 +124,7 @@ describe('<Table />', () => {
             expect(onUnmountSpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should set isInitialLoad to false after tableCompositeState.data is defined', () => {
+        it('should set isInitialLoad to false after tableCompositeState.data is defined with componentDidUpdate', () => {
             const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined as ITableData};
             const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
 
@@ -78,6 +133,19 @@ describe('<Table />', () => {
 
             tableAsAny.props.tableCompositeState.data = DEFAULT_TABLE_DATA;
             tableAsAny.componentDidUpdate();
+
+            expect(tableAsAny.isInitialLoad).toBe(false);
+        });
+
+        it('should set isInitialLoad to false after tableCompositeState.data is defined with componentWillUpdate', () => {
+            const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined as ITableData};
+            const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
+
+            expect(tableAsAny.props.tableCompositeState.data).toBeUndefined();
+            expect(tableAsAny.isInitialLoad).toBe(true);
+
+            tableAsAny.props.tableCompositeState.data = DEFAULT_TABLE_DATA;
+            tableAsAny.componentWillUpdate(tablePropsMock);
 
             expect(tableAsAny.isInitialLoad).toBe(false);
         });

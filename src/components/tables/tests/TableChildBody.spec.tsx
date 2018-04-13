@@ -9,10 +9,12 @@ import {IActionOptions} from '../../actions/Action';
 import {IData} from '../Table';
 import {ITableChildBodyProps, TableChildBody} from '../table-children/TableChildBody';
 import {TableCollapsibleRow} from '../TableCollapsibleRow';
+import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 import {TableHeadingRow} from '../TableHeadingRow';
-import {TableRowWrapper} from '../TableRowWrapper';
 
 describe('<TableChildBody />', () => {
+    const spyOnRowClick: jasmine.Spy = jasmine.createSpy('onRowClick');
+    const spyHandleOnRowClick: jasmine.Spy = jasmine.createSpy('handleOnRowClick');
     const someActions: IActionOptions[] = [];
     const tableChildBodyProps: ITableChildBodyProps = {
         tableId: 'best-table',
@@ -23,7 +25,8 @@ describe('<TableChildBody />', () => {
             aProperty: false,
         },
         isLoading: false,
-        onRowClick: jasmine.createSpy('onRowClick'),
+        onRowClick: spyOnRowClick,
+        handleOnRowClick: spyHandleOnRowClick,
         getActions: jasmine.createSpy('getActions').and.returnValue(someActions),
         headingAttributes: [
             {
@@ -36,6 +39,10 @@ describe('<TableChildBody />', () => {
     };
 
     let store: Store<IReactVaporState>;
+
+    beforeAll(() => {
+        document.body.innerHTML += '<div id="App"></div>';
+    });
 
     beforeEach(() => {
         store = TestUtils.buildStore();
@@ -60,8 +67,14 @@ describe('<TableChildBody />', () => {
             expect(() => mountComponentWithProps()).not.toThrow();
         });
 
-        it('should render a <TableRowWrapper />', () => {
-            expect(mountComponentWithProps().find(TableRowWrapper).length).toBe(1);
+        it('should not render a <TableCollapsibleRowWrapper /> if the prop collapsibleFormatter is not defined', () => {
+            expect(mountComponentWithProps().find(TableCollapsibleRowWrapper).length).toBe(0);
+        });
+
+        it('should render a <TableCollapsibleRowWrapper /> if the prop collapsibleFormatter is defined', () => {
+            expect(mountComponentWithProps(_.extend({}, tableChildBodyProps, {
+                collapsibleFormatter: () => <div></div>,
+            })).find(TableCollapsibleRowWrapper).length).toBe(1);
         });
 
         it('should render a <TableHeadingRow />', () => {
@@ -82,13 +95,23 @@ describe('<TableChildBody />', () => {
         });
 
         it('should call onRowClick with getActions result if it is defined on click of a heading row', () => {
+            spyOnRowClick.calls.reset();
             mountComponentWithProps().find(TableHeadingRow).simulate('click');
 
-            expect(tableChildBodyProps.onRowClick).toHaveBeenCalledTimes(1);
-            expect(tableChildBodyProps.getActions).toHaveBeenCalledTimes(1);
+            expect(spyOnRowClick).toHaveBeenCalledTimes(1);
+            expect(tableChildBodyProps.getActions).toHaveBeenCalled();
 
             expect(tableChildBodyProps.onRowClick).toHaveBeenCalledWith(someActions);
             expect(tableChildBodyProps.getActions).toHaveBeenCalledWith(tableChildBodyProps.rowData);
+        });
+
+        it('should call handleOnRowClick if it is defined on click of a heading row', () => {
+            spyHandleOnRowClick.calls.reset();
+            mountComponentWithProps().find(TableHeadingRow).simulate('click');
+
+            expect(spyHandleOnRowClick).toHaveBeenCalledTimes(1);
+
+            expect(tableChildBodyProps.handleOnRowClick).toHaveBeenCalledWith(someActions, tableChildBodyProps.rowData);
         });
 
         it('should call getActions results with option callOnDoubleClick true on row double click', () => {

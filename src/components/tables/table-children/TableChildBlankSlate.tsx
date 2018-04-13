@@ -4,9 +4,7 @@ import {BlankSlate, IBlankSlateProps} from '../../blankSlate/BlankSlate';
 import {ITableProps} from '../Table';
 import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 
-export interface ITableChildBlankSlateProps extends ITableProps {
-    isInitialLoad?: boolean;
-}
+export interface ITableChildBlankSlateProps extends ITableProps {}
 
 export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Element => {
     const {
@@ -14,17 +12,9 @@ export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Ele
         blankSlateNoResultsOnAction,
         blankSlateOnError,
         tableCompositeState,
-        initialTableData,
-        isInitialLoad,
     } = props;
-    const tableData = tableCompositeState.data || initialTableData;
 
     let blankSlatePropsToUse: IBlankSlateProps;
-
-    if (tableData.displayedIds.length || tableCompositeState.isLoading || isInitialLoad) {
-        return null;
-    }
-
     if (tableCompositeState.isInError) {
         blankSlatePropsToUse = blankSlateOnError || blankSlateDefault;
     } else if (tableCompositeState.filter
