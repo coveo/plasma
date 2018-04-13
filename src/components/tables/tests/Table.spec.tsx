@@ -10,6 +10,7 @@ import {TableChildBody} from '../table-children/TableChildBody';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
 import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
+import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 
 describe('<Table />', () => {
     let store: Store<IReactVaporState>;
@@ -50,6 +51,15 @@ describe('<Table />', () => {
             tablePossibleProps.forEach((props: ITableProps) => {
                 expect(() => mountComponentWithProps(props)).not.toThrow();
             });
+        });
+
+        it('should not render the <TableChildLastUpdated/> if withoutLastUpdated is true', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                withoutLastUpdated: true,
+            } as any);
+
+            expect(table.find(TableChildLastUpdated).length).toBe(0);
         });
 
         it('should render a blankslate null if some rows are displayed', () => {
