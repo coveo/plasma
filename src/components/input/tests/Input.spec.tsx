@@ -183,5 +183,13 @@ describe('Input', () => {
             input.setProps({type: 'number'});
             expect(innerInput.prop('step')).toBe('any');
         });
+
+        it('should set the autoFocus prop to the input', () => {
+            const innerInput = input.find('input').first();
+            expect(innerInput.prop('autoFocus')).toBe(null);
+
+            input.setProps({autoFocus: true});
+            expect(innerInput.prop('autoFocus')).toBe(true);
+        });
     });
 });

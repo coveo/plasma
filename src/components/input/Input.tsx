@@ -22,7 +22,7 @@ export interface IInputOwnProps {
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
-    autofocus?: boolean;
+    autoFocus?: boolean;
 }
 
 export interface IInputStateProps {
@@ -165,7 +165,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
                     name={this.props.name}
                     required
                     readOnly={!!this.props.readOnly}
-                    autofocus={!!this.props.autofocus}
+                    autoFocus={!!this.props.autoFocus}
                     step={this.props.type === 'number' ? 'any' : null}
                 />
                 {this.getLabel()}
