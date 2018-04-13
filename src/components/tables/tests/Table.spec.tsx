@@ -5,11 +5,11 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {ITableProps, Table} from '../Table';
+import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 import {TableChildBody} from '../table-children/TableChildBody';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
 import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
-import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 
 describe('<Table />', () => {
     let store: Store<IReactVaporState>;
@@ -69,6 +69,28 @@ describe('<Table />', () => {
                 tableCompositeState: {
                     isLoading: true,
                 },
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(0);
+        });
+
+        it('should render a blankslate if no loading, empty table and isInitialLoad is false', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
+                tableCompositeState: {
+                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    isLoading: false,
+                },
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(1);
+        });
+
+        it('should render with the wrapper fixed-header-table-container if the props withFixedHeader is true', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                withFixedHeader: true,
             } as any);
 
             expect(table.find(TableChildBlankSlate).length).toBe(0);
