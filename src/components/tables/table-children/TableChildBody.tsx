@@ -58,31 +58,35 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
     });
 
-    const tableHeadingRowConnectedNode = (<TableHeadingRowConnected
-        id={headingAndCollapsibleId}
-        tableId={props.tableId}
-        className={tableRowClasses}
-        isCollapsible={!!collapsibleData}
-        onClickCallback={() => {
-            if (props.onRowClick) {
-                props.onRowClick(props.getActions(props.rowData));
-            }
+    const tableHeadingRowConnectedNode = (
+        <TableHeadingRowConnected
+            id={headingAndCollapsibleId}
+            tableId={props.tableId}
+            className={tableRowClasses}
+            isCollapsible={!!collapsibleData}
+            onClickCallback={() => {
+                if (props.onRowClick) {
+                    props.onRowClick(props.getActions(props.rowData));
+                }
 
-            if (props.handleOnRowClick) {
-                props.handleOnRowClick(props.getActions(props.rowData), props.rowData);
-            }
-        }}
-        onDoubleClick={() => props.getActions(props.rowData)
-            .filter((action) => action.callOnDoubleClick)
-            .forEach((action) => action.trigger())
-        }>
-        {tableHeadingRowContent}
-    </TableHeadingRowConnected>);
+                if (props.handleOnRowClick) {
+                    props.handleOnRowClick(props.getActions(props.rowData), props.rowData);
+                }
+            }}
+            onDoubleClick={() => props.getActions(props.rowData)
+                .filter((action) => action.callOnDoubleClick)
+                .forEach((action) => action.trigger())
+            }>
+            {tableHeadingRowContent}
+        </TableHeadingRowConnected>
+    );
 
     return collapsibleRow
-        ? (<TableCollapsibleRowWrapper className={tableRowWrapperClasses}>
-            {tableHeadingRowConnectedNode}
-            {collapsibleRow}
-        </TableCollapsibleRowWrapper>)
+        ? (
+            <TableCollapsibleRowWrapper className={tableRowWrapperClasses}>
+                {tableHeadingRowConnectedNode}
+                {collapsibleRow}
+            </TableCollapsibleRowWrapper>
+        )
         : tableHeadingRowConnectedNode;
 };

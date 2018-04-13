@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IBaseActionOptions} from '../actions/Action';
@@ -10,6 +11,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     buttons?: IBaseActionOptions[];
     withModal?: boolean;
     classes?: string[];
+    containerClasses?: string[];
     svgName?: string;
     svgClass?: string;
 }
@@ -21,6 +23,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
         buttons: [],
         withModal: false,
         classes: [],
+        containerClasses: [],
         svgName: '',
         svgClass: '',
     };
@@ -46,7 +49,10 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
     render() {
         const marginClasses: string = this.props.withModal ? 'mt2 mb2' : 'm2';
         const blankSlateClasses: string = `blankslate ${marginClasses} ${this.props.classes.join(' ')}`;
-        const modalClasses: string = this.props.withModal ? 'mod-header-padding' : '';
+        const modalClasses: string = classNames(
+            {'mod-header-padding': this.props.withModal},
+            this.props.containerClasses,
+        );
 
         return (
             <div className={modalClasses}>

@@ -1,9 +1,11 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import {Svg} from '../svg/Svg';
 
 export interface IBreadcrumbLinkProps {
     name: string;
     link?: string;
+    classes?: string;
     onClick?: (props: IBreadcrumbLinkProps) => boolean;  // return false to cancel the href event
 }
 
@@ -20,8 +22,9 @@ export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps, {}> {
     }
 
     render() {
+        const linkClasses = classNames('link', this.props.classes);
         return (<li className='breadcrumb-title'>
-            <a className='link' href={this.props.link} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleOnClick(e)}>{this.props.name}</a>
+            <a className={linkClasses} href={this.props.link} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleOnClick(e)}>{this.props.name}</a>
             <Svg svgName='arrow-right-rounded' svgClass='breadcrumb-arrow' />
         </li>);
     }

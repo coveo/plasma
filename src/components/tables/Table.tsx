@@ -136,6 +136,12 @@ export class Table extends React.Component<ITableProps, {}> {
         }
     }
 
+    componentWillUpdate(nextProps: ITableProps) {
+        if (this.isInitialLoad && !_.isUndefined(nextProps.tableCompositeState.data)) {
+            this.isInitialLoad = false;
+        }
+    }
+
     componentWillReceiveProps(nextProps: ITableProps) {
         const {tableCompositeState} = this.props;
 
@@ -165,20 +171,27 @@ export class Table extends React.Component<ITableProps, {}> {
             this.props.tableClasses,
         );
 
-        const tableChildLastUpdatedNode: React.ReactNode = this.props.withoutLastUpdated
-            ? null
-            : <TableChildLastUpdated {...this.props} />;
+        const tableChildLastUpdatedNode: React.ReactNode = !this.props.withoutLastUpdated
+            ? <TableChildLastUpdated {...this.props} />
+            : null;
+
+        let node: React.ReactNode;
+        const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
+        if (tableData.displayedIds.length || this.props.tableCompositeState.isLoading || this.isInitialLoad) {
+            node = this.setFixedHeaderWrapper(
+                <table className={tableClasses}>
+                    <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
+                    <TableChildHeader {...this.props} />
+                    {this.getTableBody()}
+                </table>);
+        } else {
+            node = <TableChildBlankSlate {...this.props} />;
+        }
 
         return (
             <div className={classNames('table-container', this.props.tableContainerClasses)}>
                 <TableChildActionBar {...this.props} />
-                {this.setFixedHeaderWrapper(<table className={tableClasses}>
-                    <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
-                    <TableChildHeader {...this.props} />
-                    {this.getTableBody()}
-                </table>)
-                }
-                <TableChildBlankSlate {...this.props} isInitialLoad={this.isInitialLoad} />
+                {node}
                 <TableChildNavigation {...this.props} />
                 {tableChildLastUpdatedNode}
             </div>
@@ -187,11 +200,13 @@ export class Table extends React.Component<ITableProps, {}> {
 
     private setFixedHeaderWrapper(tableElement: React.ReactNode) {
         return this.props.withFixedHeader
-            ? (<div className='fixed-header-table-container'>
-                <div className='fixed-header-table'>
-                    {tableElement}
+            ? (
+                <div className='fixed-header-table-container'>
+                    <div className='fixed-header-table'>
+                        {tableElement}
+                    </div>
                 </div>
-            </div>)
+            )
             : tableElement;
     }
 
@@ -235,8 +250,10 @@ export class Table extends React.Component<ITableProps, {}> {
 
         return this.props.collapsibleFormatter
             ? tableBodyNode
-            : (<tbody className={classNames(this.props.tableBodyClasses)}>
-                {tableBodyNode}
-            </tbody>);
+            : (
+                <tbody className={classNames(this.props.tableBodyClasses)}>
+                    {tableBodyNode}
+                </tbody>
+            );
     }
 }

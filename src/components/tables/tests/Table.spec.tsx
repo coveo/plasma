@@ -9,6 +9,7 @@ import {TableChildBody} from '../table-children/TableChildBody';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
 import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
+import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 
 describe('<Table />', () => {
     let store: Store<IReactVaporState>;
@@ -50,6 +51,28 @@ describe('<Table />', () => {
                 expect(() => mountComponentWithProps(props)).not.toThrow();
             });
         });
+
+        it('should render a blankslate null if some rows are displayed', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                tableCompositeState: {
+                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: ['test'], totalEntries: 1, totalPages: 1},
+                },
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(0);
+        });
+
+        it('should render null if table is loading', () => {
+            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+                ...tablePropsMock,
+                tableCompositeState: {
+                    isLoading: true,
+                },
+            } as any);
+
+            expect(table.find(TableChildBlankSlate).length).toBe(0);
+        });
     });
 
     describe('after render', () => {
@@ -69,7 +92,7 @@ describe('<Table />', () => {
             expect(onUnmountSpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should set isInitialLoad to false after tableCompositeState.data is defined', () => {
+        it('should set isInitialLoad to false after tableCompositeState.data is defined with componentDidUpdate', () => {
             const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined as ITableData};
             const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
 
@@ -78,6 +101,19 @@ describe('<Table />', () => {
 
             tableAsAny.props.tableCompositeState.data = DEFAULT_TABLE_DATA;
             tableAsAny.componentDidUpdate();
+
+            expect(tableAsAny.isInitialLoad).toBe(false);
+        });
+
+        it('should set isInitialLoad to false after tableCompositeState.data is defined with componentWillUpdate', () => {
+            const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined as ITableData};
+            const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
+
+            expect(tableAsAny.props.tableCompositeState.data).toBeUndefined();
+            expect(tableAsAny.isInitialLoad).toBe(true);
+
+            tableAsAny.props.tableCompositeState.data = DEFAULT_TABLE_DATA;
+            tableAsAny.componentWillUpdate(tablePropsMock);
 
             expect(tableAsAny.isInitialLoad).toBe(false);
         });

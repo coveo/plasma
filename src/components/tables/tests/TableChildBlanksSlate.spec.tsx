@@ -135,23 +135,6 @@ describe('<TableChildBlankSlate />', () => {
         });
 
         describe('render content', () => {
-            it('should render null if some rows are displayed', () => {
-                expect(mountComponentWithProps({
-                    ...tablePropsMock,
-                    tableCompositeState: {
-                        data: {...DEFAULT_TABLE_DATA, displayedIds: ['some rows are displayed']},
-                    },
-                } as any).html()).toBeNull();
-            });
-
-            it('should render null if table is loading', () => {
-                expect(mountComponentWithProps({
-                    ...tablePropsMock,
-                    tableCompositeState: {
-                        isLoading: true,
-                    },
-                } as any).html()).toBeNull();
-            });
 
             it('should render the default blankslate if no results without actions and without table being in error', () => {
                 expect(mountComponentWithProps(tablePropsMock).text()).toContain(tablePropsMock.blankSlateDefault.title);
