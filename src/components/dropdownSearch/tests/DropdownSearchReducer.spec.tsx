@@ -370,6 +370,24 @@ describe('DropdownSearch', () => {
                     _.where(currentDropdownSearch.options, {value: selectedOption.value})).length).toBe(1);
         });
 
+        it('should return the old state on "SELECT_DROPDOWN_SEARCH" with a disabled option in the payload', () => {
+            const selectedOption: IDropdownOption = {value: 'test', displayValue: 'yolo test', disabled: true};
+            const oldState: IDropdownSearchState[] = [
+                {
+                    id: 'dropdown-search',
+                    isOpened: true,
+                },
+            ];
+
+            const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+                type: DropdownSearchActions.select,
+                payload: _.extend({}, defaultPayload, {addedSelectedOption: selectedOption}),
+            };
+            const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+            expect(dropdownSearchState).toEqual(oldState);
+        });
+
         it('should remove custom options on "SELECT_DROPDOWN_SEARCH" with supportSingleCustomOption', () => {
             const selectedOption: IDropdownOption = {value: 'test', displayValue: 'yolo test'};
             const dropdownOption = [{value: 'test'}, {value: 'test 1'}, {value: 'custom 1', custom: true}, {value: 'test 2'}];
@@ -555,6 +573,24 @@ describe('DropdownSearch', () => {
                         && !currentDropdownSearch.isOpened,
                 ).length).toBe(1);
             });
+
+        it('should return the old state if the keyCode is "Enter" on "ACTIVE_DROPDOWN_SEARCH" when active option is disabled', () => {
+            const oldState: IDropdownSearchState[] = [
+                {
+                    id: 'new-dropdown-search',
+                    isOpened: true,
+                    options,
+                    activeOption: {...options[0], disabled: true},
+                },
+            ];
+            const action: IReduxAction<IOptionsDropdownSearchPayload> = {
+                type: DropdownSearchActions.active,
+                payload: _.extend({}, defaultPayload, {keyCode: keyCode.enter}),
+            };
+            const dropdownSearchState: IDropdownSearchState[] = dropdownsSearchReducer(oldState, action);
+
+            expect(dropdownSearchState).toEqual(oldState);
+        });
 
         describe('with supportSingleCustomOption', () => {
             it(

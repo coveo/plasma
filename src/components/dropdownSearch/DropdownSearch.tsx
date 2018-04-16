@@ -15,7 +15,9 @@ export interface IDropdownOption {
     selected?: boolean;
     custom?: boolean;
     hidden?: boolean;
+    disabled?: boolean;
     default?: boolean;
+    append?: string;
 }
 
 export interface IDropdownSearchStateProps {
@@ -105,11 +107,16 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                     || s.contains(value.toLowerCase(), this.props.filterText.toLowerCase());
             })
             .map((opt: IDropdownOption, index: number, opts: IDropdownOption[]) => {
-                const optionClasses = classNames({
-                    'state-selected': opt.selected,
-                });
+                const optionClasses = classNames(
+                    'dropdown-option',
+                    {
+                        'with-append': !_.isUndefined(opt.append),
+                        'state-selected': opt.selected,
+                    },
+                );
                 const liClasses = classNames({
                     'active': JSON.stringify(opt) === JSON.stringify(this.props.activeOption),
+                    'disabled': !!opt.disabled,
                 });
 
                 const value = opt.displayValue || opt.value;
@@ -120,20 +127,28 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                 return (
                     <li key={opt.value}
                         className={liClasses}
-                        title={value}>
-                        <span className={optionClasses}
-                            onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
-                            data-value={opt.value}>
+                        title={value}
+                        data-value={opt.value}
+                        onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
+                    >
+                        <span className={optionClasses}>
                             {this.getDropdownPrepend(opt)}
                             {this.getSvg(opt)}
                             {valueToShow}
                         </span>
+                        {this.getDropdownOptionAppend(opt)}
                     </li>
                 );
             })
             .value();
 
         return options.length ? options : this.getNoOptions();
+    }
+
+    protected getDropdownOptionAppend(option?: IDropdownOption): JSX.Element {
+        return !_.isUndefined(option && option.append)
+            ? <div className='dropdown-option-append'>{option && option.append}</div>
+            : null;
     }
 
     protected getNoOptions(): JSX.Element[] {
@@ -221,23 +236,26 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                 filterText={this.props.filterText || ''}
             />;
         }
-        return <button
-            className='btn dropdown-toggle dropdown-button-search-container mod-search'
-            type='button'
-            data-toggle='dropdown'
-            onClick={() => this.handleOnClick()}
-            onBlur={() => this.handleOnClose()}
-            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownDropdownButton(e)}
-            style={{
-                maxWidth: this.props.maxWidth,
-            }}
-            ref={(input: HTMLButtonElement) => {this.dropdownButton = input;}}
-            disabled={!!this.props.isDisabled}>
-            {this.getMainInputPrepend(this.getSelectedOption())}
-            {this.getSvg(this.getSelectedOption())}
-            {this.getSelectedOptionElement()}
-            <span className='dropdown-toggle-arrow'></span>
-        </button>;
+        return (
+            <button
+                className='btn dropdown-toggle dropdown-button-search-container mod-search'
+                type='button'
+                data-toggle='dropdown'
+                onClick={() => this.handleOnClick()}
+                onBlur={() => this.handleOnClose()}
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownDropdownButton(e)}
+                style={{
+                    maxWidth: this.props.maxWidth,
+                }}
+                ref={(input: HTMLButtonElement) => {this.dropdownButton = input;}}
+                disabled={!!this.props.isDisabled}>
+                {this.getMainInputPrepend(selectedOption)}
+                {this.getSvg(selectedOption)}
+                {this.getSelectedOptionElement()}
+                {this.getDropdownOptionAppend(selectedOption)}
+                <span className='dropdown-toggle-arrow'></span>
+            </button>
+        );
     }
 
     protected isScrolledIntoView(el: Element) {
@@ -291,7 +309,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                 const displayValue = selectedOption.displayValue || selectedOption.value;
                 return (
                     <span key={selectedOption.value}
-                        className='dropdown-selected-value'
+                        className={classNames('dropdown-selected-value', {'with-append': !!selectedOption.append})}
                         data-value={selectedOption.value}
                         title={displayValue}>
                         {displayValue}
@@ -341,12 +359,17 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     private handleOnOptionClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (e.target) {
             const option = _.findWhere(this.props.options, {value: e.currentTarget.dataset.value});
-            if (this.props.onOptionClick) {
-                this.props.onOptionClick(option);
-            }
+            if (option && !option.disabled) {
+                if (this.props.onOptionClick) {
+                    this.props.onOptionClick(option);
+                }
 
-            if (this.props.onOptionClickCallBack) {
-                this.props.onOptionClickCallBack(option);
+                if (this.props.onOptionClickCallBack) {
+                    this.props.onOptionClickCallBack(option);
+                }
+            } else {
+                e.preventDefault();
+                e.stopPropagation();
             }
         }
     }
