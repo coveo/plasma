@@ -370,11 +370,11 @@ describe('DropdownSearch', () => {
                     _.where(currentDropdownSearch.options, {value: selectedOption.value})).length).toBe(1);
         });
 
-        it('should return the old state on "SELECT_DROPDOWN_SEARCH" with a disabled option in the payload', () => {
+        fit('should return the old state on "SELECT_DROPDOWN_SEARCH" with a disabled option in the payload', () => {
             const selectedOption: IDropdownOption = {value: 'test', displayValue: 'yolo test', disabled: true};
             const oldState: IDropdownSearchState[] = [
                 {
-                    id: 'dropdown-search',
+                    id: 'new-dropdown-search',
                     isOpened: true,
                 },
             ];
