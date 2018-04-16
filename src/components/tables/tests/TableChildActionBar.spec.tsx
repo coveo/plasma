@@ -12,6 +12,7 @@ import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnec
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {Loading} from '../../loading/Loading';
 import {ITableProps} from '../Table';
+import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {TableChildActionBar} from '../table-children/TableChildActionBar';
 import {tablePropsMock} from './TableTestCommon';
 
@@ -176,6 +177,36 @@ describe('<TableChildActionBar />', () => {
                     .find(DropdownSearchConnected).first().props().onOptionClickCallBack({value: 'test'});
 
                 expect(onPredicateOptionClickSpy).toHaveBeenCalledTimes(1);
+            });
+
+            it('should put the option TABLE_PREDICATE_DEFAULT_VALUE as defaultSelectedOption by default', () => {
+                const tableActionBar = mountComponentWithProps({
+                    ...tablePropsMock,
+                    actionBar: true,
+                    predicates: [
+                        {attributeName: 'email', attributeNameFormatter: _.identity, props: {}},
+                    ],
+                });
+
+                expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected)
+                    .prop('defaultSelectedOption')).toEqual({value: TABLE_PREDICATE_DEFAULT_VALUE});
+            });
+
+            it('should put the option with defaut: true as defaultSelectedOption (if there is one)', () => {
+                const customDefaultValue = 'myDefault';
+                const tableActionBar = mountComponentWithProps({
+                    ...tablePropsMock,
+                    actionBar: true,
+                    predicates: [
+                        {
+                            attributeName: 'userName', attributeNameFormatter: _.identity, props:
+                                {defaultOptions: [{value: customDefaultValue, default: true}]}
+                        },
+                    ],
+                });
+
+                expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected)
+                    .prop('defaultSelectedOption')).toEqual({value: customDefaultValue});
             });
         });
     });
