@@ -137,19 +137,6 @@ describe('<Table />', () => {
             expect(tableAsAny.isInitialLoad).toBe(false);
         });
 
-        it('should set isInitialLoad to false after tableCompositeState.data is defined with componentWillUpdate', () => {
-            const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined as ITableData};
-            const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
-
-            expect(tableAsAny.props.tableCompositeState.data).toBeUndefined();
-            expect(tableAsAny.isInitialLoad).toBe(true);
-
-            tableAsAny.props.tableCompositeState.data = DEFAULT_TABLE_DATA;
-            tableAsAny.componentWillUpdate(tablePropsMock);
-
-            expect(tableAsAny.isInitialLoad).toBe(false);
-        });
-
         it('should not render a table wrapper if there are no displayed rows', () => {
             expect(mountComponentWithProps(tablePropsMock).find(TableChildBody).length).toBe(0);
         });
