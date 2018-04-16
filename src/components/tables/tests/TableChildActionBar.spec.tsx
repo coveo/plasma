@@ -12,8 +12,8 @@ import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnec
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {Loading} from '../../loading/Loading';
 import {ITableProps} from '../Table';
-import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {TableChildActionBar} from '../table-children/TableChildActionBar';
+import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildActionBar />', () => {
@@ -200,7 +200,7 @@ describe('<TableChildActionBar />', () => {
                     predicates: [
                         {
                             attributeName: 'userName', attributeNameFormatter: _.identity, props:
-                                {defaultOptions: [{value: customDefaultValue, default: true}]}
+                                {defaultOptions: [{value: customDefaultValue, default: true}]},
                         },
                     ],
                 });
