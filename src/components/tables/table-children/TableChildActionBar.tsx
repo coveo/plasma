@@ -37,11 +37,12 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
                 {predicates.map((predicate: ITablePredicate, i: number) => {
                     const predicateId = `${getTableChildComponentId(props.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
                     const containerClasses = i ? ['ml1'] : [''];
+                    const defaultValue = _.findWhere(predicate.props.defaultOptions, {default: true});
 
                     return (
                         <DropdownSearchConnected
                             maxWidth={260}
-                            defaultSelectedOption={{value: TABLE_PREDICATE_DEFAULT_VALUE}}
+                            defaultSelectedOption={{value: defaultValue && defaultValue.value || TABLE_PREDICATE_DEFAULT_VALUE}}
                             {...predicate.props}
                             key={predicateId}
                             fixedPrepend={(predicate.attributeNameFormatter
