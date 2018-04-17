@@ -247,7 +247,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                 style={{
                     maxWidth: this.props.maxWidth,
                 }}
-                ref={(input: HTMLButtonElement) => {this.dropdownButton = input;}}
+                ref={(input: HTMLButtonElement) => this.dropdownButton = input}
                 disabled={!!this.props.isDisabled}>
                 {this.getMainInputPrepend(selectedOption)}
                 {this.getSvg(selectedOption)}
