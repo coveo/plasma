@@ -281,6 +281,18 @@ describe('DropdownSearch', () => {
                     expect(onOptionClick).not.toHaveBeenCalled();
                 });
             });
+
+            describe('getSelectedOption', () => {
+                it('should return undefined if there are no selected options', () => {
+                    expect((dropdownSearch.instance() as any).getSelectedOption()).toBeUndefined();
+                });
+
+                it('should return the selected option if there is one', () => {
+                    const selected = {value: 'test', selected: true};
+                    dropdownSearch.setProps({...ownProps, options: [selected, ...ownProps.options]});
+                    expect((dropdownSearch.instance() as any).getSelectedOption()).toEqual(selected);
+                });
+            });
         });
 
         describe('Props functionality', () => {
