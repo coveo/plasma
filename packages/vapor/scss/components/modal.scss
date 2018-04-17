@@ -19,9 +19,41 @@ $icon-size: (4em / 3);
   bottom: 0;
   left: 0;
 
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+
+  .modal-backdrop, .modal-container {
+    .modal-content {
+      left: calc((100% - $modal-width) / 2 * -1);
+      top: calc(-(100% - $modal-height) / 2 * -1);
+      position: relative;
+    }
+
+    &.mod-medium > .modal-content {
+      left: calc((100% - $modal-medium-width) / 2 * -1);
+      top: calc((100% - $modal-medium-height) / 2 * -1);
+    }
+
+    &.mod-big > .modal-content {
+      left: calc((100% - $modal-big-width) / 2 * -1);
+      top: calc((100% - $modal-big-height) / 2 * -1);
+    }
+
+    &.mod-stick-bottom {
+      > .modal-content {
+        height: calc((100% - $modal-height-stick) / 2 * -1);
+      }
+
+      &.mod-medium > .modal-content {
+        top: calc((100% - $modal-medium-height-stick) / 2 * -1);
+      }
+
+      &.mod-big > .modal-content {
+        height: calc((100% - $modal-big-height-stick) / 2 * -1);
+      }
+    }
+  }
 }
 
 .modal-backdrop {
@@ -82,8 +114,8 @@ $icon-size: (4em / 3);
     flex-direction: column;
 
     display: flex;
-    width: 45%;
-    height: 50%;
+    width: $modal-width;
+    height: $modal-height;
 
     transform: translate3d(0, 0, 0); // Required for drag and drop positioning with dragula inside the modal.
 
@@ -92,13 +124,13 @@ $icon-size: (4em / 3);
   }
 
   &.mod-medium > .modal-content {
-    width: 65%;
-    height: 70%;
+    width: $modal-medium-width;
+    height: $modal-medium-height;
   }
 
   &.mod-big > .modal-content {
-    width: 85%;
-    height: 90%;
+    width: $modal-big-width;
+    height: $modal-big-height;
   }
 
   // need to be after other mod to combine with other below
@@ -110,7 +142,7 @@ $icon-size: (4em / 3);
     align-items: flex-end;
 
     > .modal-content {
-      height: 55%;
+      height: $modal-height-stick;
 
       > .modal-footer {
         border-radius: 0;
@@ -118,11 +150,11 @@ $icon-size: (4em / 3);
     }
 
     &.mod-medium > .modal-content {
-      height: 75%;
+      height: $modal-medium-height-stick;
     }
 
     &.mod-big > .modal-content {
-      height: 95%;
+      height: $modal-big-height-stick;
     }
   }
 
