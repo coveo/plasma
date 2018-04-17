@@ -1,4 +1,4 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -244,6 +244,54 @@ describe('DropdownSearch', () => {
                 dropdownSearch.setProps(_.extend(newProps, {options: [], defaultOptions: [{value: 'something'}]}));
 
                 expect(updateOptionsSpy).toHaveBeenCalledTimes(1);
+            });
+
+            describe('getDropdownOptionAppend', () => {
+                it('should return a non null append jsx.element if append is defined', () => {
+                    expect(shallow((dropdownSearch.instance() as any).getDropdownOptionAppend({value: 'test', append: 'test append'}))
+                        .find('.dropdown-option-append').text()).toBe('test append');
+                });
+
+                it('should a null value if option is undefined or append is undefined', () => {
+                    expect((dropdownSearch.instance() as any).getDropdownOptionAppend()).toBeNull();
+                    expect((dropdownSearch.instance() as any).getDropdownOptionAppend({value: 'test'})).toBeNull();
+                });
+            });
+
+            describe('handleOnOptionClick', () => {
+                it('should call onOptionClick if option is found in options', () => {
+                    const onOptionClick = jasmine.createSpy('onOptionClick');
+                    dropdownSearch.setProps({...ownProps, onOptionClick});
+
+                    (dropdownSearch.instance() as any).handleOnOptionClick({target: 'defined', currentTarget: {dataset: {value: options[0].value}}});
+                    expect(onOptionClick).toHaveBeenCalledTimes(1);
+                });
+
+                it('should call onOptionClick if option is found in options', () => {
+                    const onOptionClick = jasmine.createSpy('onOptionClick');
+                    dropdownSearch.setProps({...ownProps, onOptionClick});
+
+                    (dropdownSearch.instance() as any).handleOnOptionClick({
+                        target: 'defined',
+                        currentTarget: {dataset: {value: 'i do not exist in options'}},
+                        preventDefault: _.noop,
+                        stopPropagation: _.noop,
+                    });
+
+                    expect(onOptionClick).not.toHaveBeenCalled();
+                });
+            });
+
+            describe('getSelectedOption', () => {
+                it('should return undefined if there are no selected options', () => {
+                    expect((dropdownSearch.instance() as any).getSelectedOption()).toBeUndefined();
+                });
+
+                it('should return the selected option if there is one', () => {
+                    const selected = {value: 'test', selected: true};
+                    dropdownSearch.setProps({...ownProps, options: [selected, ...ownProps.options]});
+                    expect((dropdownSearch.instance() as any).getSelectedOption()).toEqual(selected);
+                });
             });
         });
 
