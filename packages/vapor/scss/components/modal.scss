@@ -26,7 +26,7 @@ $icon-size: (4em / 3);
   .modal-backdrop, .modal-container {
     .modal-content {
       left: calc((100% - $modal-width) / 2 * -1);
-      top: calc(-(100% - $modal-height) / 2 * -1);
+      top: calc((100% - $modal-height) / 2 * -1);
       position: relative;
     }
 
@@ -42,7 +42,7 @@ $icon-size: (4em / 3);
 
     &.mod-stick-bottom {
       > .modal-content {
-        height: calc((100% - $modal-height-stick) / 2 * -1);
+        top: calc((100% - $modal-height-stick) / 2 * -1);
       }
 
       &.mod-medium > .modal-content {
@@ -50,7 +50,7 @@ $icon-size: (4em / 3);
       }
 
       &.mod-big > .modal-content {
-        height: calc((100% - $modal-big-height-stick) / 2 * -1);
+        top: calc((100% - $modal-big-height-stick) / 2 * -1);
       }
     }
   }
