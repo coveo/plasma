@@ -1,20 +1,80 @@
+.home-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .home-card {
   margin-bottom: $home-card-margin;
-
   background: $pure-white;
   border: $default-border;
   border-radius: $border-radius;
+  position: relative;
+  padding-bottom: $header-line-height;
+  box-shadow: $material-card-shadow;
+}
+
+.home-card-padded {
+  padding: 1em;
+  padding-bottom: calc(1em + $header-line-height);
 }
 
 .home-card-header {
-  padding: $home-card-padding;
-
   color: $medium-blue;
-  text-align: center;
+  padding: 0 1em;
+  line-height: $header-line-height;
 
   border-bottom: $default-border;
 
   h2 {
-    font-size: 17px;
+    font-size: $default-font-size;
   }
+}
+
+.home-card-footer {
+  border-top: $default-border;
+  text-align: right;
+  line-height: $header-line-height;
+  padding: 0 1em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.home-card-footer-action {
+    color: $blue;
+    border: none;
+    background: none;
+    font-size: $small-font-size;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.home-card-footer-link {
+  &:after {
+    content: ' >';
+  }
+}
+
+.home-card-full-width {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+
+  .home-card-header {
+    text-align: center;
+  }
+}
+
+.home-card-half-size {
+  width: calc(50% - 0.5em);
+}
+
+.home-card-one-third {
+  width: calc(33.33% - 0.5em);
+}
+
+.home-card-two-third {
+  width: calc(66.66% - 0.5em);
 }
