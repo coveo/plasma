@@ -62,85 +62,85 @@
 }
 
 // Action icons
-  .input-actions {
-    position: absolute;
-    top: 4px;
-    right: -2px;
+.input-actions {
+  position: absolute;
+  top: 4px;
+  right: -2px;
 
-    .js-add-value-button, .js-delete-value-button {
-      position: relative;
+  .js-add-value-button, .js-delete-value-button {
+    position: relative;
 
-      padding: 4px;
+    padding: 4px;
 
-      &:hover {
-        cursor: pointer;
-      }
-
-      &:focus {
-        i {
-          box-shadow: 0 0 6px 1px $medium-blue;
-        }
-      }
+    &:hover {
+      cursor: pointer;
     }
 
-    button {
-      width: auto;
-
-      background: none;
-      border: none;
-      outline: none;
-    }
-
-    .tooltip {
-      width: $tooltip-width;
-    }
-
-    i {
-      position: relative;
-
-      display: block;
-      width: 18px;
-      height: 18px;
-
-      border: 2px solid $medium-blue;
-      border-radius: 18px;
-
-      &.add-action, &.delete-action {
-        &:before {
-          position: relative;
-          top: 6px;
-          left: 2px;
-
-          display: block;
-          width: 10px;
-          height: 2px;
-
-          content: '';
-
-          background-color: $medium-blue;
-        }
-      }
-
-      &.add-action {
-        border-color: $orange;
-
-        &:before {
-          background-color: $orange;
-        }
-
-        &:after {
-          position: absolute;
-          top: 2px;
-          left: 6px;
-
-          display: block;
-          width: 2px;
-          height: 10px;
-
-          content: '';
-
-          background-color: $orange;
-        }
+    &:focus {
+      i {
+        box-shadow: 0 0 6px 1px $medium-blue;
       }
     }
   }
+
+  button {
+    width: auto;
+
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  .tooltip {
+    width: $tooltip-width;
+  }
+
+  i {
+    position: relative;
+
+    display: block;
+    width: 18px;
+    height: 18px;
+
+    border: 2px solid $medium-blue;
+    border-radius: 18px;
+
+    &.add-action, &.delete-action {
+      &:before {
+        position: relative;
+        top: 6px;
+        left: 2px;
+
+        display: block;
+        width: 10px;
+        height: 2px;
+
+        content: '';
+
+        background-color: $medium-blue;
+      }
+    }
+
+    &.add-action {
+      border-color: $orange;
+
+      &:before {
+        background-color: $orange;
+      }
+
+      &:after {
+        position: absolute;
+        top: 2px;
+        left: 6px;
+
+        display: block;
+        width: 2px;
+        height: 10px;
+
+        content: '';
+
+        background-color: $orange;
+      }
+    }
+  }
+}

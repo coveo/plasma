@@ -1,6 +1,7 @@
 // General
 $border-radius: 2px;
 $default-border-size: 1px;
+$default-margin: 10px;
 $default-border: $default-border-size solid $medium-grey;
 $big-title-font-size: 24px;
 $default-line-height: 1;
@@ -313,8 +314,13 @@ $dropdown-arrow-icon-size: 10px;
 $dropdown-icon-text-spacing: 10px;
 $dropdown-button-font-size: 13px;
 $dropdown-choice-font-size: 13px;
+$dropdown-option-padding: 8px 16px;
 $dropdown-menu-max-height: 245px;
 $dropdown-button-min-width: 260px;
+$dropdown-toggle-append-width: 40px;
+$dropdown-option-append-width: 60px;
+$dropdown-toggle-right-padding: $button-padding-x + $dropdown-arrow-icon-size + $dropdown-icon-text-spacing;
+$dropdown-toggle-with-append-right-padding: $default-margin + $dropdown-toggle-append-width;
 
 //Dropdown Multiselect
 $drowdown-multiselect-margin: 2px;
