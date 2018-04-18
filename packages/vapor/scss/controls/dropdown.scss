@@ -32,7 +32,7 @@
 
 .dropdown-selected-value {
   display: inline-block;
-  width: 100%;
+  max-width: 100%;
   overflow: hidden;
 
   text-overflow: ellipsis;
@@ -46,8 +46,10 @@
 
 .dropdown-toggle {
   position: relative;
+  align-items: center;
+  flex-direction: row;
 
-  display: inline-block;
+  display: flex;
   padding: $button-padding-y $dropdown-toggle-right-padding $button-padding-y $button-padding-x;
   overflow: hidden;
 
