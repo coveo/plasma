@@ -80,7 +80,7 @@
     "chosen-js": "1.8.2",
     "classnames": "2.2.5",
     "codecov": "3.0.0",
-    "coveo-styleguide": "~2.15.0",
+    "coveo-styleguide": "2.16.x",
     "css-loader": "0.28.11",
     "del": "3.0.0",
     "dts-generator": "2.1.0",

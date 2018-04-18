@@ -6,11 +6,14 @@ import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 
 export interface ITableChildBlankSlateProps extends ITableProps {}
 
+const collapseColumnLength: number = 1;
+
 export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Element => {
     const {
         blankSlateDefault,
         blankSlateNoResultsOnAction,
         blankSlateOnError,
+        headingAttributes,
         tableCompositeState,
     } = props;
 
@@ -26,5 +29,13 @@ export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Ele
         blankSlatePropsToUse = blankSlateDefault;
     }
 
-    return <BlankSlate {...blankSlatePropsToUse} />;
+    return (
+        <tbody>
+            <tr className={'blankslate-rows'}>
+                <td colSpan={headingAttributes.length + collapseColumnLength}>
+                    <BlankSlate {...blankSlatePropsToUse} />
+                </td>
+            </tr>
+        </tbody>
+    );
 };

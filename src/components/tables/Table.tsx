@@ -136,12 +136,6 @@ export class Table extends React.Component<ITableProps, {}> {
         }
     }
 
-    componentWillUpdate(nextProps: ITableProps) {
-        if (this.isInitialLoad && !_.isUndefined(nextProps.tableCompositeState.data)) {
-            this.isInitialLoad = false;
-        }
-    }
-
     componentWillReceiveProps(nextProps: ITableProps) {
         const {tableCompositeState} = this.props;
 
@@ -175,23 +169,21 @@ export class Table extends React.Component<ITableProps, {}> {
             ? <TableChildLastUpdated {...this.props} />
             : null;
 
-        let node: React.ReactNode;
         const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
-        if (tableData.displayedIds.length || this.props.tableCompositeState.isLoading || this.isInitialLoad) {
-            node = this.setFixedHeaderWrapper(
-                <table className={tableClasses}>
-                    <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
-                    <TableChildHeader {...this.props} />
-                    {this.getTableBody()}
-                </table>);
-        } else {
-            node = <TableChildBlankSlate {...this.props} />;
-        }
+        const tableBodyNode: React.ReactNode = tableData.displayedIds.length || this.props.tableCompositeState.isLoading || this.isInitialLoad
+            ? this.getTableBody()
+            : <TableChildBlankSlate {...this.props} />;
 
         return (
             <div className={classNames('table-container', this.props.tableContainerClasses)}>
                 <TableChildActionBar {...this.props} />
-                {node}
+                {this.setFixedHeaderWrapper(
+                    <table className={tableClasses}>
+                        <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
+                        <TableChildHeader {...this.props} />
+                        {tableBodyNode}
+                    </table>,
+                )}
                 <TableChildNavigation {...this.props} />
                 {tableChildLastUpdatedNode}
             </div>
