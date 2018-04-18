@@ -137,6 +137,10 @@ table:not(.datepicker-table) {
         border-left-color: $orange;
       }
     }
+
+    &.blankslate-rows:hover td {
+      background-color: $pure-white;
+    }
   }
 
   td {
