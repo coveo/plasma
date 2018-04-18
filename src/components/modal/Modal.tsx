@@ -22,6 +22,7 @@ export interface IModalProps extends IModalOwnProps, IModalStateProps, IModalDis
 export class Modal extends React.Component<IModalProps, {}> {
 
     componentWillMount() {
+
         if (this.props.onRender) {
             this.props.onRender();
         }

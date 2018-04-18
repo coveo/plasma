@@ -18,6 +18,14 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 
 export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
 
+    componentDidMount() {
+        document.addEventListener('keydown', this.onKeyDown);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.onKeyDown);
+    }
+
     handleClick() {
         if (this.props.onClick) {
             this.props.onClick();
@@ -38,5 +46,13 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
                 <div className='mask'></div>
             </div>
         );
+    }
+
+    private onKeyDown = (e: KeyboardEvent) => {
+        if (e.code === 'Escape') {
+            e.stopPropagation();
+            e.preventDefault();
+            this.handleClick();
+        }
     }
 }

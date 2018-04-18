@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
 
@@ -67,6 +66,28 @@ describe('ModalBackdrop', () => {
             modalBackdrop.mount();
             modalBackdrop.simulate('click');
             expect(clickSpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call handleClick when user hits escape', () => {
+            const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
+
+            const event = document.createEvent('Event');
+            (event as any).code = 'Escape';
+            event.initEvent('keydown');
+            document.dispatchEvent(event);
+
+            expect(handleClickSpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not call handleClick when user hits another key', () => {
+            const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
+
+            const event = document.createEvent('Event');
+            (event as any).code = 'j';
+            event.initEvent('keydown');
+            document.dispatchEvent(event);
+
+            expect(handleClickSpy).not.toHaveBeenCalled();
         });
     });
 });
