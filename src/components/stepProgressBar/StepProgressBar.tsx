@@ -20,7 +20,7 @@ export const StepProgressBar = (props: IStepProgressBarProps) => {
     const stepProgressBarSteps = range(numberOfSteps).map((stepNumber: number) => (
         <div
             key={`step-progress-bar-${uniqueId()}`}
-            className={classNames('step-progress-bar full-content-x', {
+            className={classNames('step-progress-bar', {
                 'step-progress-bar-done': stepNumber < currentStep,
                 'step-progress-bar-doing': stepNumber === currentStep,
                 'step-progress-bar-to-do': stepNumber > currentStep,
