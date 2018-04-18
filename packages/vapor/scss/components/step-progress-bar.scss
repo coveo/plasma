@@ -5,13 +5,13 @@
 }
 
 .step-progress-bar {
+  flex: 1;
+
   height: $step-progress-bar-height;
   padding: 0;
   margin: 0;
 
   border: 0;
-
-  flex: 1;
 }
 
 .step-progress-bar-done {

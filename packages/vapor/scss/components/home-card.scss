@@ -1,17 +1,20 @@
 .home-cards {
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  display: flex;
 }
 
 .home-card {
+  position: relative;
+
+  padding-bottom: $header-line-height;
   margin-bottom: $home-card-margin;
+
   background: $pure-white;
+  box-shadow: $material-card-shadow;
   border: $default-border;
   border-radius: $border-radius;
-  position: relative;
-  padding-bottom: $header-line-height;
-  box-shadow: $material-card-shadow;
 }
 
 .home-card-padded {
@@ -20,8 +23,9 @@
 }
 
 .home-card-header {
-  color: $medium-blue;
   padding: 0 1em;
+
+  color: $medium-blue;
   line-height: $header-line-height;
 
   border-bottom: $default-border;
@@ -32,23 +36,29 @@
 }
 
 .home-card-footer {
-  border-top: $default-border;
-  text-align: right;
-  line-height: $header-line-height;
-  padding: 0 1em;
   position: absolute;
   bottom: 0;
+
   width: 100%;
+  padding: 0 1em;
+
+  line-height: $header-line-height;
+  text-align: right;
+
+  border-top: $default-border;
 }
 
 .home-card-footer-action {
-    color: $blue;
-    border: none;
-    background: none;
-    font-size: $small-font-size;
-    padding: 0;
-    outline: none;
-    cursor: pointer;
+  padding: 0;
+
+  color: $blue;
+  font-size: $small-font-size;
+
+  background: none;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
 }
 
 .home-card-footer-link {
