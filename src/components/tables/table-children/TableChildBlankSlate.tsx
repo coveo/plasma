@@ -31,7 +31,7 @@ export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Ele
 
     return (
         <tbody>
-            <tr>
+            <tr className={'blankslate-rows'}>
                 <td colSpan={headingAttributes.length + collapseColumnLength}>
                     <BlankSlate {...blankSlatePropsToUse} />
                 </td>
