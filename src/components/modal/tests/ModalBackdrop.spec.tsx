@@ -69,11 +69,11 @@ describe('ModalBackdrop', () => {
         });
 
         it('should call handleClick when user hits escape and the modal is the last one opened', () => {
-            jasmine.clock().install()
+            jasmine.clock().install();
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: true});
-            jasmine.clock().tick(5)
+            jasmine.clock().tick(5);
 
             const event = document.createEvent('Event');
             (event as any).code = 'Escape';

@@ -163,7 +163,7 @@ describe('Modal', () => {
             });
 
             it('should return the old state with one more id when the action is "ModalAction.openModal"', () => {
-                let oldState: IModalState[] = [];
+                let oldState: string[] = [];
                 const action: IReduxAction<IModalActionPayload> = {
                     type: ModalAction.openModal,
                     payload: {
