@@ -73,7 +73,7 @@ describe('ModalBackdrop', () => {
 
             const event = document.createEvent('Event');
             (event as any).code = 'Escape';
-            event.initEvent('keydown');
+            event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
             expect(handleClickSpy).toHaveBeenCalledTimes(1);
@@ -84,7 +84,7 @@ describe('ModalBackdrop', () => {
 
             const event = document.createEvent('Event');
             (event as any).code = 'j';
-            event.initEvent('keydown');
+            event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
             expect(handleClickSpy).not.toHaveBeenCalled();
