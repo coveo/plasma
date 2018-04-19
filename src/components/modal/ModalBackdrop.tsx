@@ -18,9 +18,18 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 }
 
 export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
+    private canClose: boolean;
 
     componentDidMount() {
         document.addEventListener('keydown', this.onKeyDown);
+        this.canClose = this.props.lastOpened;
+    }
+
+    // This is needed so that it does not turn to true before getting to the onKeydown function when becoming
+    // the last opened modal after the last one was closed on escape
+    componentDidUpdate() {
+        this.canClose = false;
+        setTimeout(() => this.canClose = this.props.lastOpened, 1);
     }
 
     componentWillUnmount() {
@@ -50,7 +59,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
     }
 
     private onKeyDown = (e: KeyboardEvent) => {
-        if (this.props.lastOpened && e.code === 'Escape') {
+        if (this.canClose && e.code === 'Escape') {
             e.stopPropagation();
             e.preventDefault();
             this.handleClick();

@@ -8,7 +8,9 @@ export interface IModalExamplesProps {
     closeModal?: (id: string) => void;
 }
 
-const modalId = 'modal-composite-connected';
+const modalId: string = 'modal-composite-connected';
+const secondModalId: string = 'second-modal-composite';
+const insideModalId: string = 'inside-modal';
 
 const mapStateToProps = () => ({});
 
@@ -39,6 +41,28 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                             id={modalId}
                             title='Modal composite'
                             modalBodyChildren='The content of the modal'
+                            modalFooterChildren={<button className='btn' onClick={() => this.closeModal(modalId)}>Close</button>}
+                            modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label className='form-control-label'>Modal Composite Connected with another modal inside</label>
+                        <button className='btn' onClick={() => this.openModal(secondModalId)}>Open Modal</button>
+                        <ModalCompositeConnected
+                            id={secondModalId}
+                            title='Modal composite'
+                            modalBodyChildren={
+                                <div>
+                                    <button className='btn' onClick={() => this.openModal(insideModalId)}>Open inside modal</button>
+                                    <ModalCompositeConnected
+                                        id={insideModalId}
+                                        title='Modal composite'
+                                        modalBodyChildren='The content of the modal'
+                                        modalFooterChildren={<button className='btn' onClick={() => this.closeModal(modalId)}>Close</button>}
+                                        modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                                    />
+                                </div>
+                            }
                             modalFooterChildren={<button className='btn' onClick={() => this.closeModal(modalId)}>Close</button>}
                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                         />
