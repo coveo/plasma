@@ -20,13 +20,6 @@ export const modalReducer = (
                 id: action.payload.id,
                 isOpened: false,
             };
-        case ModalAction.closeModal:
-            return state.id !== action.payload.id
-                ? state
-                : {
-                    ...state,
-                    isOpened: false,
-                };
         case ModalAction.openModal:
             return state.id !== action.payload.id
                 ? state
@@ -62,9 +55,22 @@ export const modalsReducer = (
                 return action.payload.id === modal.id;
             });
         case ModalAction.closeModals:
-        case ModalAction.closeModal:
         case ModalAction.openModal:
             return state.map((modal: IModalState) => modalReducer(modal, action));
+        default:
+            return state;
+    }
+};
+
+export const openModalsReducer = (state: string[] = [], action: IReduxAction<IModalActionPayload>): string[] => {
+    switch (action.type) {
+        case ModalAction.openModal:
+            return [
+                ...state,
+                action.payload.id,
+            ];
+        case ModalAction.closeModals:
+            return _.without(state, ...action.payload.ids);
         default:
             return state;
     }

@@ -6,7 +6,6 @@ export interface IModalActionPayload {
 }
 
 export const ModalAction = {
-    closeModal: 'CLOSE_MODAL',
     openModal: 'OPEN_MODAL',
     addModal: 'ADD_MODAL',
     removeModal: 'REMOVE_MODAL',
@@ -14,9 +13,9 @@ export const ModalAction = {
 };
 
 export const closeModal = (id: string): IReduxAction<IModalActionPayload> => ({
-    type: ModalAction.closeModal,
+    type: ModalAction.closeModals,
     payload: {
-        id,
+        ids: [id],
     },
 });
 

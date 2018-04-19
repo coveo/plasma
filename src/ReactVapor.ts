@@ -58,6 +58,7 @@ export interface IReactVaporState {
     optionPickers?: IOptionPickerState[];
     itemFilters?: IItemFilterState[];
     modals?: IModalState[];
+    openModals?: string[];
     subNavigations?: ISubNavigationState[];
     tabs?: ITabGroupState[];
     toastContainers?: IToastsState[];
