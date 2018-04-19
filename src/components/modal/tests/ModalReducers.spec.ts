@@ -1,6 +1,7 @@
+import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {IModalActionPayload, ModalAction} from '../ModalActions';
-import {IModalState, modalInitialState, modalReducer, modalsInitialState, modalsReducer} from '../ModalReducers';
+import {IModalState, modalInitialState, modalReducer, modalsInitialState, modalsReducer, openModalsReducer} from '../ModalReducers';
 
 describe('Modal', () => {
 
@@ -145,6 +146,86 @@ describe('Modal', () => {
             expect(modalsState.filter((modal) => modal.id === action.payload.id)[0].isOpened).toBe(false);
             expect(modalsState.filter((modal) => modal.id === 'some-modal2')[0].isOpened).toBe(false);
             expect(modalsState.filter((modal) => modal.id === 'some-modal3')[0].isOpened).toBe(true);
+        });
+
+        describe('openModalsReducer', () => {
+            it('should return the default state if the action is not defined and the state is undefined', () => {
+                const openModalsState: string[] = openModalsReducer(undefined, genericAction);
+
+                expect(openModalsState).toEqual([]);
+            });
+
+            it('should return the old state when the action is not defined', () => {
+                const oldState: string[] = ['an-id'];
+                const openModalsState: string[] = openModalsReducer(oldState, genericAction);
+
+                expect(openModalsState).toBe(oldState);
+            });
+
+            it('should return the old state with one more id when the action is "ModalAction.openModal"', () => {
+                let oldState: IModalState[] = [];
+                const action: IReduxAction<IModalActionPayload> = {
+                    type: ModalAction.openModal,
+                    payload: {
+                        id: 'some-modal',
+                    },
+                };
+                let openModalsState: string[] = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(1);
+                expect(openModalsState[0]).toBe(action.payload.id);
+
+                oldState = openModalsState;
+                action.payload.id = 'some-modal2';
+                openModalsState = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(2);
+                expect(openModalsState[1]).toBe(action.payload.id);
+            });
+
+            it('should return the old state without the id when the action is "ModalAction.closeModal"', () => {
+                let oldState: string[] = [
+                    'some-modal2',
+                    'some-modal1',
+                    'some-modal3',
+                ];
+                const action: IReduxAction<IModalActionPayload> = {
+                    type: ModalAction.closeModal,
+                    payload: {
+                        id: 'some-modal1',
+                    },
+                };
+                let openModalsState: string[] = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(oldState.length - 1);
+                expect(_.contains(openModalsState, action.payload.id)).toBe(false);
+
+                oldState = openModalsState;
+                action.payload.id = 'some-modal2';
+                openModalsState = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(oldState.length - 1);
+                expect(_.contains(openModalsState, action.payload.id)).toBe(false);
+            });
+
+            it('should return the old state without all of the ids when the action is "ModalAction.closeModals"', () => {
+                const oldState: string[] = [
+                    'some-modal2',
+                    'some-modal1',
+                    'some-modal3',
+                ];
+                const action: IReduxAction<IModalActionPayload> = {
+                    type: ModalAction.closeModals,
+                    payload: {
+                        ids: ['some-modal1', 'some-modal2'],
+                    },
+                };
+                const openModalsState: string[] = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(oldState.length - action.payload.ids.length);
+                expect(_.contains(openModalsState, action.payload.ids[0])).toBe(false);
+                expect(_.contains(openModalsState, action.payload.ids[1])).toBe(false);
+            });
         });
     });
 });
