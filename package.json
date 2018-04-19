@@ -104,7 +104,7 @@
     "jasmine-core": "2.8.0",
     "jquery": "3.3.1",
     "json-loader": "0.5.7",
-    "karma": "2.0.0",
+    "karma": "2.0.2",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "1.1.1",
     "karma-jasmine": "1.1.1",
