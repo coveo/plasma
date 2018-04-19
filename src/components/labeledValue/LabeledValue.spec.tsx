@@ -85,5 +85,15 @@ describe('LabeledValue', () => {
         it('should render an svg inside the tooltip having the "info-14" name', () => {
             expect(labeledValue.find(Tooltip).find(Svg).prop('svgName')).toBe('info-14');
         });
+
+        it('should have the padding prop set to true and the class "padded" by default', () => {
+            expect(LabeledValue.defaultProps.padding).toBe(true);
+            expect(labeledValue.find('.box').hasClass('padded')).toBe(true);
+        });
+
+        it('should not have the class "padded" if prop padding is set to false', () => {
+            labeledValue.setProps({'padding': false});
+            expect(labeledValue.find('.box').hasClass('padded')).toBe(false);
+        });
     });
 });

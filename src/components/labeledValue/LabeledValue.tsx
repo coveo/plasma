@@ -1,38 +1,51 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {JSXRenderable} from '../../utils/JSXUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ILabeledValueProps {
     label: string;
-    value: JSXRenderable;
+    value: React.ReactNode;
     fullRow?: true;
     information?: string;
     informationPlacement?: TooltipPlacement;
+    padding?: boolean;
+    className?: string;
 }
 
-export const LabeledValue = (props: ILabeledValueProps) => {
-    const informationSVG = !!props.information
-        ? (
-            <Tooltip
-                title={props.information}
-                placement={props.informationPlacement || TooltipPlacement.Top}>
-                <Svg svgName='info-14' svgClass='icon fill-medium-grey' />
-            </Tooltip>
-        )
-        : null;
+export class LabeledValue extends React.PureComponent<ILabeledValueProps> {
+    static defaultProps: Partial<ILabeledValueProps> = {
+        padding: true,
+    };
 
-    return (
-        <div className={classNames('box padded', {'full-content-x': !!props.fullRow})}>
-            <header className='label'>
-                <span className={classNames({mr1: !!props.information})}>
-                    {props.label}
-                </span>
-                {informationSVG}
-            </header>
-            <section className='value'>{props.value}</section>
-        </div>
-    );
-};
+    render() {
+        const informationSVG = !!this.props.information
+            ? (
+                <Tooltip
+                    title={this.props.information}
+                    placement={this.props.informationPlacement || TooltipPlacement.Top}>
+                    <Svg svgName='info-14' svgClass='icon fill-medium-grey' />
+                </Tooltip>
+            )
+            : null;
+
+        return (
+            <div
+                className={classNames(
+                    'box',
+                    {'padded': this.props.padding, 'full-content-x': !!this.props.fullRow},
+                    this.props.className,
+                )}
+            >
+                <header className='label'>
+                    <span className={classNames({mr1: !!this.props.information})}>
+                        {this.props.label}
+                    </span>
+                    {informationSVG}
+                </header>
+                <section className='value'>{this.props.value}</section>
+            </div>
+        );
+    }
+}
