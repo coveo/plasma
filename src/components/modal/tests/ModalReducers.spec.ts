@@ -120,34 +120,6 @@ describe('Modal', () => {
             expect(modalsState.filter((modal) => modal.id === 'some-modal3')[0].isOpened).toBe(true);
         });
 
-        it('should close a modal when the action is "ModalAction.closeModal"', () => {
-            const oldState: IModalState[] = [
-                {
-                    id: 'some-modal1',
-                    isOpened: true,
-                }, {
-                    id: 'some-modal2',
-                    isOpened: false,
-                }, {
-                    id: 'some-modal3',
-                    isOpened: true,
-                },
-            ];
-
-            const action: IReduxAction<IModalActionPayload> = {
-                type: ModalAction.closeModal,
-                payload: {
-                    id: 'some-modal1',
-                },
-            };
-            const modalsState: IModalState[] = modalsReducer(oldState, action);
-
-            expect(modalsState.length).toBe(oldState.length);
-            expect(modalsState.filter((modal) => modal.id === action.payload.id)[0].isOpened).toBe(false);
-            expect(modalsState.filter((modal) => modal.id === 'some-modal2')[0].isOpened).toBe(false);
-            expect(modalsState.filter((modal) => modal.id === 'some-modal3')[0].isOpened).toBe(true);
-        });
-
         describe('openModalsReducer', () => {
             it('should return the default state if the action is not defined and the state is undefined', () => {
                 const openModalsState: string[] = openModalsReducer(undefined, genericAction);
@@ -181,31 +153,6 @@ describe('Modal', () => {
 
                 expect(openModalsState.length).toBe(2);
                 expect(openModalsState[1]).toBe(action.payload.id);
-            });
-
-            it('should return the old state without the id when the action is "ModalAction.closeModal"', () => {
-                let oldState: string[] = [
-                    'some-modal2',
-                    'some-modal1',
-                    'some-modal3',
-                ];
-                const action: IReduxAction<IModalActionPayload> = {
-                    type: ModalAction.closeModal,
-                    payload: {
-                        id: 'some-modal1',
-                    },
-                };
-                let openModalsState: string[] = openModalsReducer(oldState, action);
-
-                expect(openModalsState.length).toBe(oldState.length - 1);
-                expect(_.contains(openModalsState, action.payload.id)).toBe(false);
-
-                oldState = openModalsState;
-                action.payload.id = 'some-modal2';
-                openModalsState = openModalsReducer(oldState, action);
-
-                expect(openModalsState.length).toBe(oldState.length - 1);
-                expect(_.contains(openModalsState, action.payload.id)).toBe(false);
             });
 
             it('should return the old state without all of the ids when the action is "ModalAction.closeModals"', () => {
