@@ -138,7 +138,7 @@
     "tslint-loader": "3.6.0",
     "typescript": "2.7.2",
     "typings-for-css-modules-loader": "1.7.0",
-    "underscore": "1.8.3",
+    "underscore": "1.9.0",
     "underscore.string": "3.3.4",
     "webpack": "4.0.1",
     "webpack-cli": "2.0.13",
