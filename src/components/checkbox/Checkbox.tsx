@@ -49,7 +49,7 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
 
     render() {
         const classes: string = classNames('coveo-checkbox-label', this.props.classes);
-        const innerInputClasses: string = classNames('coveo-checkbox', this.props.innerInputClasses);
+        const innerInputClasses: string = classNames('coveo-checkbox', 'react-vapor-checkbox', this.props.innerInputClasses);
         return (
             <Input
                 {...this.props}
