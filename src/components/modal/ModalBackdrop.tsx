@@ -7,6 +7,7 @@ export interface IModalBackdropOwnProps {
 
 export interface IModalBackdropStateProps {
     display?: boolean;
+    lastOpened?: boolean;
 }
 
 export interface IModalBackdropDispatchProps {
@@ -49,7 +50,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
     }
 
     private onKeyDown = (e: KeyboardEvent) => {
-        if (e.code === 'Escape') {
+        if (this.props.lastOpened && e.code === 'Escape') {
             e.stopPropagation();
             e.preventDefault();
             this.handleClick();

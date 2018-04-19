@@ -69,3 +69,19 @@ export const modalsReducer = (
             return state;
     }
 };
+
+export const openModalsReducer = (state: string[] = [], action: IReduxAction<IModalActionPayload>): string[] => {
+    switch (action.type) {
+        case ModalAction.openModal:
+            return [
+                ...state,
+                action.payload.id,
+            ];
+        case ModalAction.closeModal:
+            return _.without(state, action.payload.id);
+        case ModalAction.closeModals:
+            return _.without(state, ...action.payload.ids);
+        default:
+            return state;
+    }
+};

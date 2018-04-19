@@ -1,4 +1,5 @@
 import * as Redux from 'redux';
+
 import {actionBarsReducer} from '../src/components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../src/components/actions/filters/ItemFilterReducers';
 import {autocompletesReducer} from '../src/components/autocomplete/AutocompleteReducers';
@@ -17,7 +18,7 @@ import {inputsReducer} from '../src/components/input/InputReducers';
 import {lastUpdatedCompositeReducer} from '../src/components/lastUpdated/LastUpdatedReducers';
 import {listBoxesReducer} from '../src/components/listBox/ListBoxReducers';
 import {loadingsReducer} from '../src/components/loading/LoadingReducers';
-import {modalsReducer} from '../src/components/modal/ModalReducers';
+import {modalsReducer, openModalsReducer} from '../src/components/modal/ModalReducers';
 import {paginationCompositeReducer} from '../src/components/navigation/pagination/NavigationPaginationReducers';
 import {perPageCompositeReducer} from '../src/components/navigation/perPage/NavigationPerPageReducers';
 import {optionPickersReducer} from '../src/components/optionPicker/OptionPickerReducers';
@@ -66,6 +67,7 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
     optionPickers: optionPickersReducer,
     datePickers: datePickersReducer,
     modals: modalsReducer,
+    openModals: openModalsReducer,
     subNavigations: subNavigationsReducer,
     tabs: tabGroupsReducer,
     toastContainers: toastsContainerReducer,

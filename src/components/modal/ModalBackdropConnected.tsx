@@ -10,9 +10,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnPro
     if (ownProps.displayFor && ownProps.displayFor.length > 0) {
         modals = modals.filter((modal) => _.contains(ownProps.displayFor, modal.id));
     }
+    const lastOpenedModal = _.last(state.openModals);
 
     return {
         display: modals.some((modal) => modal.isOpened),
+        lastOpened: modals.some((modal) => modal.id === lastOpenedModal),
     };
 };
 
