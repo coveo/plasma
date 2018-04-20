@@ -59,14 +59,26 @@ describe('Modal', () => {
             expect(destroySpy.calls.count()).toBe(1);
         });
 
-        it('should call prop closeCallback on unmounting if set', () => {
+        it('should call prop closeCallback on unmounting if set and if modal is opened', () => {
             const closeCallbackSpy: jasmine.Spy = jasmine.createSpy('closeCallback');
 
-            modal.setProps({closeCallback: closeCallbackSpy});
+            modal.setProps({
+                closeCallback: closeCallbackSpy,
+                isOpened: false,
+            });
             modal.mount();
             modal.unmount();
 
-            expect(closeCallbackSpy.calls.count()).toBe(1);
+            expect(closeCallbackSpy).not.toHaveBeenCalled();
+
+            modal.setProps({
+                closeCallback: closeCallbackSpy,
+                isOpened: true,
+            });
+            modal.mount();
+            modal.unmount();
+
+            expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
         });
 
         it('should call the prop closeCallback if it exists when closing the modal', () => {
