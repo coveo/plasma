@@ -7,6 +7,7 @@ export interface IDefaultDropdownSearchPayload {
 
 export interface IInputDrodownSearchPayload extends IDefaultDropdownSearchPayload {
     keyCode?: number;
+    activeOption?: IDropdownOption;
 }
 
 export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPayload, IInputDrodownSearchPayload {
@@ -144,11 +145,12 @@ export const deselectAllOptionsMultiselectDropdownSearch = (id: string): IReduxA
     },
 });
 
-export const updateActiveOptionDropdownSearch = (id: string, keyCode: number): IReduxAction<IInputDrodownSearchPayload> => ({
+export const updateActiveOptionDropdownSearch = (id: string, keyCode: number, activeOption?: IDropdownOption): IReduxAction<IInputDrodownSearchPayload> => ({
     type: DropdownSearchActions.active,
     payload: {
         id,
         keyCode,
+        activeOption,
     },
 });
 

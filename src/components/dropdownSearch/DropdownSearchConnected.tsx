@@ -52,9 +52,9 @@ const mapDispatchToProps = (
     onBlur: () => dispatch(toggleDropdownSearch(ownProps.id)),
     onOptionClick: (option: IDropdownOption) => dispatch(selectOptionDropdownSearch(ownProps.id, option)),
     onFilterTextChange: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
-    onKeyDownFilterBox: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
-    onKeyDownDropdownButton: (keyCode: number) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode)),
-    onMouseEnterDropdown: () => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1)),
+    onKeyDownFilterBox: (keyCode: number, activeOption?: IDropdownOption) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode, activeOption)),
+    onKeyDownDropdownButton: (keyCode: number, activeOption?: IDropdownOption) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, keyCode, activeOption)),
+    onMouseEnterDropdown: (activeOption?: IDropdownOption) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1, activeOption)),
     onClose: () => dispatch(closeDropdownSearch(ownProps.id)),
     updateOptions: (options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(ownProps.id, options)),
 });
