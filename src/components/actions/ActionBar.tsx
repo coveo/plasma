@@ -141,7 +141,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
             className: containerClasses,
         };
         if (this.props.width) {
-            divProps.style = { width: this.props.width };
+            divProps.style = {width: this.props.width};
         }
 
         return (
