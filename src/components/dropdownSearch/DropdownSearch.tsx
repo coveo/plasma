@@ -61,9 +61,9 @@ export interface IDropdownSearchDispatchProps {
     onFilterTextChange?: (filterText: string) => void;
     onOptionClick?: (option: IDropdownOption) => void;
     onCustomOptionClick?: (displayValue: string) => void;
-    onKeyDownFilterBox?: (keyCode: number) => void;
-    onKeyDownDropdownButton?: (keyCode: number) => void;
-    onMouseEnterDropdown?: () => void;
+    onKeyDownFilterBox?: (keyCode: number, activeOption?: IDropdownOption) => void;
+    onKeyDownDropdownButton?: (keyCode: number, activeOption?: IDropdownOption) => void;
+    onMouseEnterDropdown?: (activeOption?: IDropdownOption) => void;
     onRemoveSelectedOption?: (value: string) => void;
     onRemoveAllSelectedOptions?: () => void;
     onClose?: () => void;
@@ -279,7 +279,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
 
     protected handleOnKeyDownFilterBox(e: React.KeyboardEvent<HTMLInputElement>) {
         if (this.props.onKeyDownFilterBox) {
-            this.props.onKeyDownFilterBox(e.keyCode);
+            this.props.onKeyDownFilterBox(e.keyCode, this.props.activeOption);
         }
 
         this.handleOnOptionClickOnKeyDown(e);
@@ -399,7 +399,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
 
     private handleOnKeyDownDropdownButton(e: React.KeyboardEvent<HTMLInputElement>) {
         if (this.props.onKeyDownDropdownButton) {
-            this.props.onKeyDownDropdownButton(e.keyCode);
+            this.props.onKeyDownDropdownButton(e.keyCode, this.props.activeOption);
         }
 
         if (!this.isSearchOn()) {
@@ -414,7 +414,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
 
     private handleOnMouseEnter() {
         if (this.props.onMouseEnterDropdown) {
-            this.props.onMouseEnterDropdown();
+            this.props.onMouseEnterDropdown(this.props.activeOption);
         }
     }
 
