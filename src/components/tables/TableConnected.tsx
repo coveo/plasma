@@ -6,7 +6,7 @@ import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {ReduxUtils} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
-import {addActionsToActionBar, setYPosition} from '../actions/ActionBarActions';
+import {addActionsToActionBar} from '../actions/ActionBarActions';
 import {IDatePickerState} from '../datePicker/DatePickerReducers';
 import {IDropdownOption} from '../dropdownSearch/DropdownSearch';
 import {closeDropdownSearch, selectOptionDropdownSearch} from '../dropdownSearch/DropdownSearchActions';
@@ -96,7 +96,6 @@ const mapDispatchToProps = (
         dispatch(selectOptionDropdownSearch(predicateId, option));
         dispatch(closeDropdownSearch(predicateId));
     },
-    setYPosition: (yPosition: number) => dispatch(setYPosition(getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR), yPosition)),
 });
 
 export const TableConnected: React.ComponentClass<ITableProps> =

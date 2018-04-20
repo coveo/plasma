@@ -95,12 +95,11 @@ export interface ITableDispatchProps {
     ) => void;
     onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
     onRowClick?: (actions: IActionOptions[]) => void;
-    setYPosition?: (yPosition: number) => void;
 }
 
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps {}
 
-export class Table extends React.Component<ITableProps, {}> {
+export class Table extends React.Component<ITableProps> {
     private isInitialLoad: boolean;
 
     static defaultProps = {
@@ -129,8 +128,6 @@ export class Table extends React.Component<ITableProps, {}> {
         if (this.props.onDidMount) {
             this.props.onDidMount();
         }
-        window.addEventListener('resize', () => this.calculateYPosition());
-        document.addEventListener('scroll', () => this.calculateYPosition());
     }
 
     componentDidUpdate() {
@@ -250,10 +247,5 @@ export class Table extends React.Component<ITableProps, {}> {
                     {tableBodyNode}
                 </tbody>
             );
-    }
-
-    private calculateYPosition = () => {
-        const el = document.getElementById(`table-${this.props.id}`).getBoundingClientRect();
-        this.props.setYPosition(el.top);
     }
 }
