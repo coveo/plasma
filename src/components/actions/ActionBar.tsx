@@ -131,7 +131,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
             {
                 'mod-deactivate-pointer': !!this.props.isLoading,
                 'small-actions-container': this.props.withSmallActions,
-                'fixed-actions': this.props.tableYPosition <= this.props.maxScroll,
+                'fixed-actions': this.props.tableYPosition && this.props.tableYPosition <= this.props.maxScroll,
             },
         );
 
