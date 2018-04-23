@@ -75,12 +75,15 @@ describe('Actions', () => {
                     {
                         id: 'some-action-bar2',
                         actions: undefined,
+                        tableYPosition: 10,
                     }, {
                         id: 'some-action-bar',
                         actions: undefined,
+                        tableYPosition: 40,
                     }, {
                         id: 'some-action-bar3',
                         actions: undefined,
+                        tableYPosition: undefined,
                     },
                 ];
             });
@@ -132,6 +135,20 @@ describe('Actions', () => {
                 expect(actionBarsState.length).toBe(oldState.length);
                 expect(actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].actions).toBeDefined();
                 expect(actionBarsState.filter((actionBar) => actionBar.id !== action.payload.id)[0].actions).toBeUndefined();
+            });
+
+            it('should return the old state with the new tableYPosition when the action is "SET_TABLE_Y_POSITION"', () => {
+                const action: IReduxAction<IActionBarPayload> = {
+                    type: ActionBarActions.setYPosition,
+                    payload: {
+                        id: oldState[2].id,
+                        yPosition: 33,
+                    },
+                };
+
+                const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
+                expect(actionBarsState.length).toBe(oldState.length);
+                expect(actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].tableYPosition).toBe(action.payload.yPosition);
             });
 
             it('should set the actionbar isLoading prop to true when a loading action is dispatched and contain its id', () => {

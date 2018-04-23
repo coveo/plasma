@@ -64,6 +64,7 @@ export interface ITableState {
     perPageId: string;
     predicateIds: string[];
     tableHeaderCellId: string;
+    yPosition: number;
 }
 
 export const tableInitialState: ITableState = {
@@ -78,6 +79,7 @@ export const tableInitialState: ITableState = {
     tableHeaderCellId: undefined,
     datePickerId: undefined,
     datePickerRangeId: undefined,
+    yPosition: undefined,
 };
 
 export const tablesInitialState: {[tableId: string]: ITableState;} = {};

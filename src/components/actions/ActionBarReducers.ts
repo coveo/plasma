@@ -8,10 +8,15 @@ import {ActionBarActions} from './ActionBarActions';
 export interface IActionBarState {
     id: string;
     actions: IActionOptions[];
+    tableYPosition: number;
     isLoading?: boolean;
 }
 
-export const actionBarInitialState: IActionBarState = {id: undefined, actions: []};
+export const actionBarInitialState: IActionBarState = {
+    id: undefined,
+    actions: [],
+    tableYPosition: undefined,
+};
 export const actionBarsInitialState: IActionBarState[] = [];
 
 export const actionBarReducer = (state: IActionBarState = actionBarInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState => {
@@ -22,9 +27,14 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
                 : {...state, actions: action.payload.actions};
         case ActionBarActions.add:
             return {
+                ...state,
                 id: action.payload.id,
-                actions: [],
                 isLoading: false,
+            };
+        case ActionBarActions.setYPosition:
+            return {
+                ...state,
+                tableYPosition: action.payload.yPosition,
             };
         case LoadingActions.turnOn:
             return _.contains(action.payload.ids, state.id)
@@ -42,6 +52,7 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
 export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState[] => {
     switch (action.type) {
         case ActionBarActions.addActions:
+        case ActionBarActions.setYPosition:
         case LoadingActions.turnOn:
         case LoadingActions.turnOff:
             return state.map((bar) =>
