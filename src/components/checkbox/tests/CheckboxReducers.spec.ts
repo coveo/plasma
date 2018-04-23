@@ -129,7 +129,7 @@ describe('Checkbox', () => {
             expect(checkboxesState.filter((checkbox) => checkbox.id === 'some-checkbox3')[0].checked).toBe(true);
         });
 
-        it('should toggle a checkbox to the checked passed in the payload if there is one when the action is "CheckboxAction.toggle"', () => {
+        it('should toggle a checkbox to the checked state passed in the payload if there is one when the action is "CheckboxAction.toggle"', () => {
             const oldState: ICheckboxState[] = [
                 {
                     id: 'some-checkbox1',
