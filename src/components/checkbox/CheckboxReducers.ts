@@ -27,7 +27,9 @@ export const checkboxReducer = (
                 ? state
                 : {
                     ...state,
-                    checked: !state.checked,
+                    checked: _.isUndefined(action.payload.checked)
+                        ? !state.checked
+                        : action.payload.checked,
                 };
         default:
             return state;

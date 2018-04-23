@@ -12,10 +12,11 @@ export const CheckboxActions = {
     remove: 'REMOVE_CHECKBOX',
 };
 
-export const toggleCheckbox = (id: string): IReduxAction<ICheckboxActionPayload> => ({
+export const toggleCheckbox = (id: string, checked?: boolean): IReduxAction<ICheckboxActionPayload> => ({
     type: CheckboxActions.toggle,
     payload: {
         id,
+        checked,
     },
 });
 

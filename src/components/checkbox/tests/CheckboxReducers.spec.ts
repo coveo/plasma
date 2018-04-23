@@ -128,5 +128,47 @@ describe('Checkbox', () => {
             expect(checkboxesState.filter((checkbox) => checkbox.id === 'some-checkbox2')[0].checked).toBe(false);
             expect(checkboxesState.filter((checkbox) => checkbox.id === 'some-checkbox3')[0].checked).toBe(true);
         });
+
+        it('should toggle a checkbox to the checked passed in the payload if there is one when the action is "CheckboxAction.toggle"', () => {
+            const oldState: ICheckboxState[] = [
+                {
+                    id: 'some-checkbox1',
+                    checked: false,
+                    disabled: false,
+                },
+                {
+                    id: 'some-checkbox2',
+                    checked: false,
+                    disabled: false,
+                },
+                {
+                    id: 'some-checkbox3',
+                    checked: true,
+                    disabled: false,
+                },
+            ];
+
+            const action: IReduxAction<ICheckboxActionPayload> = {
+                type: CheckboxActions.toggle,
+                payload: {
+                    id: 'some-checkbox1',
+                    checked: false,
+                },
+            };
+            const action2: IReduxAction<ICheckboxActionPayload> = {
+                type: CheckboxActions.toggle,
+                payload: {
+                    id: 'some-checkbox1',
+                    checked: true,
+                },
+            };
+            const checkboxesState: ICheckboxState[] = checkboxesReducer(oldState, action);
+            const checkboxesState2: ICheckboxState[] = checkboxesReducer(oldState, action2);
+
+            expect(checkboxesState.length).toBe(oldState.length);
+            expect(checkboxesState2.length).toBe(oldState.length);
+            expect(checkboxesState.filter((checkbox) => checkbox.id === action.payload.id)[0].checked).toBe(false);
+            expect(checkboxesState2.filter((checkbox) => checkbox.id === action.payload.id)[0].checked).toBe(true);
+        });
     });
 });
