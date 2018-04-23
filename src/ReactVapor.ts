@@ -110,4 +110,5 @@ export interface IReduxActionsPayload {
     expanded?: boolean;
     disabled?: boolean;
     searching?: boolean;
+    yPosition?: number;
 }

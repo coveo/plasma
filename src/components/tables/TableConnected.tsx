@@ -57,11 +57,9 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
     } as ITableCompositeState;
 };
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
-    return {
-        tableCompositeState: getTableCompositeState(state, ownProps.id),
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => ({
+    tableCompositeState: getTableCompositeState(state, ownProps.id),
+});
 
 const mapDispatchToProps = (
     dispatch: IDispatch,
