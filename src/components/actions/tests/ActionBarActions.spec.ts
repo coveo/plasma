@@ -1,5 +1,5 @@
-import {IActionBarPayload, ActionBarActions, setYPosition} from '../ActionBarActions';
 import {IReduxAction} from '../../../utils/ReduxUtils';
+import {ActionBarActions, IActionBarPayload, setYPosition} from '../ActionBarActions';
 
 describe('ActionBarActions', () => {
     it('should create an action to set the y position of a table', () => {
