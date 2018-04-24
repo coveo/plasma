@@ -110,7 +110,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
 
     private search() {
         if (!this.props.disabled && !this.props.searching) {
-            this.props.onSearch(this.props.value || '');
+            this.props.onSearch(this.props.value);
         }
     }
 }
