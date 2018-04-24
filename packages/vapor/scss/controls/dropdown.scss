@@ -233,31 +233,6 @@
   }
 }
 
-.add-option-icon {
-  position: relative;
-
-  display: block;
-  width: $dropdown-multiselect-icon-size;
-  height: $dropdown-multiselect-icon-thickness;
-  margin-right: $dropdown-multiselect-icon-margin;
-
-  background: $medium-grey;
-
-  &:after {
-    position: absolute;
-    top: -$dropdown-multiselect-icon-position;
-    left: $dropdown-multiselect-icon-position;
-
-    display: block;
-    width: $dropdown-multiselect-icon-thickness;
-    height: $dropdown-multiselect-icon-size;
-
-    content: '';
-
-    background: $medium-grey;
-  }
-}
-
 .select-dropdown-container {
   z-index: 1;
 
