@@ -103,12 +103,12 @@ describe('SearchBar', () => {
     });
 
     describe('on calling search', () => {
-        it('should not call the onSearch prop if value is empty', () => {
+        it('should call the onSearch prop even if value is empty', () => {
             const component = new SearchBar({...requiredProps});
             spyOn(component.props, 'onSearch');
             (component as any).search();
 
-            expect(component.props.onSearch).not.toHaveBeenCalled();
+            expect(component.props.onSearch).toHaveBeenCalledTimes(1);
         });
 
         it('should not call the onSearch prop if value is not empty, searching is false, but disabled is true', () => {
