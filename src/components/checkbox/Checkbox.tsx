@@ -57,7 +57,8 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
                 innerInputClasses={[innerInputClasses]}
                 type='checkbox'
                 onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
-                readOnly>
+                readOnly
+            >
                 <button disabled={!!this.props.disabled}></button>
                 {this.props.children}
             </Input>
