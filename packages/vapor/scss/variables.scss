@@ -323,8 +323,9 @@ $dropdown-toggle-right-padding: $button-padding-x + $dropdown-arrow-icon-size + 
 $dropdown-toggle-with-append-right-padding: $default-margin + $dropdown-toggle-append-width;
 
 //Dropdown Multiselect
+$drowdown-multiselect-padding: 5px;
 $drowdown-multiselect-margin: 2px;
-$drowdown-multiselect-items-margin: 4px;
+$drowdown-multiselect-items-margin: 6px;
 $dropdown-multiselect-option-height: 24px;
 $selected-option-close-width: 22px;
 $dropdown-multiselect-icon-size: 12px;
