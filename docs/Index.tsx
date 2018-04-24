@@ -18,6 +18,7 @@ import {ButtonExamples} from '../src/components/button/examples/ButtonExamples';
 import {CalendarConnectedExamples} from '../src/components/calendar/examples/CalendarConnectedExamples';
 import {CheckboxConnectedExamples} from '../src/components/checkbox/examples/CheckboxConnectedExamples';
 import {CheckboxExamples} from '../src/components/checkbox/examples/CheckboxExamples';
+import {GroupableCheckboxConnectedExamples} from '../src/components/checkbox/examples/GroupableCheckboxConnectedExamples';
 import {ChildFormExamples} from '../src/components/childForm/examples/ChildFormExamples';
 import {ChosenSelectExamples} from '../src/components/chosen/examples/ChosenSelectExamples';
 import {CollapsibleContainerExamples} from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
@@ -42,7 +43,6 @@ import {FlatSelectExamples} from '../src/components/flatSelect/examples/FlatSele
 import {FlippableExamples} from '../src/components/flippable/exemples/FlippableExamples';
 import {BasicHeaderExamples} from '../src/components/headers/examples/BasicHeaderExamples';
 import {BreadcrumbHeaderExample} from '../src/components/headers/examples/BreadcrumbHeaderExample';
-import {GroupableCheckboxConnectedExamples} from '../src/components/checkbox/examples/GroupableCheckboxConnectedExamples';
 import {InputAndInputConnectedExamples} from '../src/components/input/examples/InputAndInputConnectedExamples';
 import {ItemBoxExamples} from '../src/components/itemBox/examples/ItemBoxExamples';
 import {LabeledValueExamples} from '../src/components/labeledValue/examples/LabeledValueExamples';
