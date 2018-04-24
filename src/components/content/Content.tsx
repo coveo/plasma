@@ -1,28 +1,30 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ComponentContent } from '../../utils/ComponentUtils';
+import {ComponentContent} from '../../utils/ComponentUtils';
 
 export interface IContentProps {
-  content: ComponentContent;
-  componentProps?: { [key: string]: any };
-  classes?: string[];
+    content: ComponentContent;
+    componentProps?: {[key: string]: any};
+    classes?: string[];
+    tag?: string;
 }
 
 export class Content extends React.Component<IContentProps, {}> {
 
-  static defaultProps: Partial<IContentProps> = {
-    classes: [],
-  };
+    static defaultProps: Partial<IContentProps> = {
+        classes: [],
+        tag: 'span',
+    };
 
-  private getContent(): JSX.Element | string {
-    return _.isString(this.props.content) ? this.props.content : <this.props.content {...this.props.componentProps} />;
-  }
+    private getContent(): JSX.Element | string {
+        return _.isString(this.props.content) ? this.props.content : <this.props.content {...this.props.componentProps} />;
+    }
 
-  render() {
-    const classes = classNames(this.props.classes);
-    return (<span className={classes}>
-      {this.getContent()}
-    </span>);
-  }
+    render() {
+        const classes = classNames(this.props.classes);
+        return (<this.props.tag className={classes}>
+            {this.getContent()}
+        </this.props.tag>);
+    }
 }
