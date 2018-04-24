@@ -31,7 +31,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
         let closeComponent: JSX.Element = null;
         if (this.props.onClose) {
             closeComponent = (
-                <span className='small-close' onClick={() => {this.close();}}>
+                <span className='small-close' onClick={(e) => {this.close();}}>
                     <Svg svgName='close' className='icon mod-lg fill-pure-white' />
                 </span>
             );
