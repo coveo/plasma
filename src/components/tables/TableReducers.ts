@@ -86,17 +86,22 @@ export const tableInitialState: ITableState = {
 
 export const tablesInitialState: {[tableId: string]: ITableState; } = {};
 
-export const updateSelectedIDs = (newState: ITableState, oldSelectedIds: string[]): ITableState => {
+export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]): ITableState => {
 
-  const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => {
-    return !_.contains(newState.data.displayedIds, selectedId);
-  });
-  return { ...newState, data: { ...newState.data, selectedIds: newSelectedIds } };
+  const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => !_.contains(state.data.displayedIds, selectedId));
+  return {
+    ...state,
+    data: {
+      ...state.data,
+      selectedIds: newSelectedIds,
+    },
+  };
 };
 
-export const tableReducer = (state: ITableState = tableInitialState,
-                             action: IReduxAction<ITableActionPayload>): ITableState => {
-  let selectedIds: string[];
+export const tableReducer = (
+  state: ITableState = tableInitialState,
+  action: IReduxAction<ITableActionPayload>,
+): ITableState => {
   switch (action.type) {
     case TableActions.add:
       return {
@@ -112,8 +117,8 @@ export const tableReducer = (state: ITableState = tableInitialState,
         datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
       };
     case TableActions.modifyState:
-      selectedIds = state.data && state.data.selectedIds ? state.data.selectedIds : [];
-      return _.extend({}, updateSelectedIDs(action.payload.tableStateModifier(state), selectedIds));
+      const selectedIds: string[] = state.data && state.data.selectedIds ? state.data.selectedIds : [];
+      return updateSelectedIDs(action.payload.tableStateModifier(state), selectedIds);
     case TableActions.inError:
       return {
         ...state,
@@ -135,10 +140,15 @@ export const tableReducer = (state: ITableState = tableInitialState,
         tableHeaderCellId: action.payload.id,
       };
     case TableActions.updateSelectedIds:
-      selectedIds = action.payload.hasMultipleSelectedRow
-        ? _.union(state.data.selectedIds, action.payload.selectedIds)
-        : action.payload.selectedIds.slice(0, 1);
-      return { ...state, data: { ...state.data, selectedIds } };
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          selectedIds: action.payload.hasMultipleSelectedRow
+            ? _.union(state.data.selectedIds, action.payload.selectedIds)
+            : action.payload.selectedIds.slice(0, 1),
+        },
+      };
     default:
       return state;
   }
@@ -159,7 +169,7 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
         : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
 
       return currentTableId
-        ? { ...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action) }
+        ? {...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action)}
         : tablesState;
   }
 };

@@ -68,10 +68,12 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
   predicates?: ITablePredicate[];
   navigation?: true | INavigationChildrenProps;
   lastUpdatedLabel?: string;
-  manual?: (tableOwnProps: ITableOwnProps,
-            shouldResetPage: boolean,
-            tableCompositeState: ITableCompositeState,
-            previousTableCompositeState: ITableCompositeState) => IThunkAction;
+  manual?: (
+    tableOwnProps: ITableOwnProps,
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+    previousTableCompositeState: ITableCompositeState,
+  ) => IThunkAction;
   rowsMultiSelect?: boolean;
 }
 
@@ -84,9 +86,11 @@ export interface ITableDispatchProps {
   onDidMount?: () => void;
   onUnmount?: () => void;
   onWillUpdate?: (actions: IActionOptions[]) => void;
-  onModifyData?: (shouldResetPage: boolean,
-                  tableCompositeState: ITableCompositeState,
-                  previousTableCompositeState?: ITableCompositeState) => void;
+  onModifyData?: (
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+    previousTableCompositeState?: ITableCompositeState,
+  ) => void;
   onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
   onRowClick?: (actions: IActionOptions[], numberOfSelectedIds: number) => void;
 }
@@ -125,9 +129,9 @@ export class Table extends React.Component<ITableProps, {}> {
     }
   }
 
-  componentWillUpdate(tableCompositeState: any) {
-    if (this.props.onWillUpdate && !(JSON.stringify(tableCompositeState.actions) === JSON.stringify(this.props.actions))) {
-      this.props.onWillUpdate(tableCompositeState.actions);
+  componentWillUpdate(nextProps: ITableProps) {
+    if (this.props.onWillUpdate && JSON.stringify(nextProps.actions) !== JSON.stringify(this.props.actions)) {
+      this.props.onWillUpdate(nextProps.actions);
     }
   }
 
@@ -200,10 +204,10 @@ export class Table extends React.Component<ITableProps, {}> {
 
   private getTableBody() {
     const tableData: ITableData = this.props.tableCompositeState.data || this.props.initialTableData;
+    const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
     return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
       const currentRowData: IData = tableData.byId[id];
-      const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
       return (
         <TableChildBody

@@ -29,8 +29,8 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
   const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, { id: tableState.paginationId });
   const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, { id: tableState.perPageId });
   const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
-  const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch,
-    (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
+  const predicateStates: IDropdownSearchState[] = tableState
+    && _.reject(state.dropdownSearch, (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
   const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, { id: tableState.datePickerRangeId });
 
   return {
@@ -59,31 +59,28 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
   } as ITableCompositeState;
 };
 
-const getDataById = (data: ITableData, props: ITableOwnProps): ITableById => data.byId;
+const getDataById = (data: ITableData): ITableById => data.byId;
 
-const getSelectedIds = (data: ITableData, props: ITableOwnProps): string[] => data.selectedIds || [];
+const getSelectedIds = (data: ITableData): string[] => data.selectedIds || [];
 
 const getActions = (data: ITableData, props: ITableOwnProps): (rowData?: IData) => IActionOptions[] => props.getActions;
 
 const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => props.rowsMultiSelect;
 
 const actionsSelector = createSelector(
-  [getDataById, getSelectedIds, getMultiSelect, getActions],
-  (byId: ITableById, selectedIds: string[], isMultiSelect: boolean, getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
-    const rowsData: IData[] = [];
-    _.each(selectedIds, (id: string, index: number) => {
-      const rowData: IData = byId[id];
-      if (rowData) {
-        rowsData.push(rowData);
-      }
-    });
-    if (getAction) {
-      if (rowsData.length) {
-        const actions: IActionOptions[] = getAction(rowsData[0]);
-        return isMultiSelect && selectedIds.length >= 2
-          ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
-          : actions;
-      }
+  [
+    getDataById,
+    getSelectedIds,
+    getMultiSelect,
+    getActions,
+  ],
+  (byId: ITableById, selectedIds: string[], isMultiSelect: boolean, getActionsProp: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
+    const rowsData = selectedIds.map((id: string) => byId[id]).filter(Boolean);
+    if (getActionsProp && rowsData.length) {
+      const actions: IActionOptions[] = getActionsProp(rowsData[0]);
+      return isMultiSelect && selectedIds.length >= 2
+        ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
+        : actions;
     }
     return [];
   },
@@ -97,8 +94,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
   };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch,
-                            ownProps: ITableOwnProps): ITableDispatchProps => ({
+const mapDispatchToProps = (
+  dispatch: IDispatch,
+  ownProps: ITableOwnProps,
+): ITableDispatchProps => ({
   onDidMount: () => {
     dispatch(
       addTable(
@@ -113,11 +112,14 @@ const mapDispatchToProps = (dispatch: IDispatch,
   },
   onWillUpdate: (actions: IActionOptions[]) => {
     if (actions.length) {
-      dispatch(addActionsToActionBar(`${ownProps.id}action-bar`, actions));
+      dispatch(addActionsToActionBar(getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR), actions));
     }
   },
-  onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState,
-                 previousTableCompositeState: ITableCompositeState) => {
+  onModifyData: (
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+    previousTableCompositeState: ITableCompositeState,
+  ) => {
     if (ownProps.manual) {
       dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));
     } else {
@@ -125,11 +127,10 @@ const mapDispatchToProps = (dispatch: IDispatch,
     }
   },
   onRowClick: (actions: IActionOptions[] = [], numberOfSelectedIds: number) => {
-    actions = ownProps.rowsMultiSelect && numberOfSelectedIds >= 2 ? _.filter(actions, (action: IActionOptions) => !!action.grouped) : actions;
     dispatch(
       addActionsToActionBar(
         getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR),
-        actions,
+        ownProps.rowsMultiSelect && numberOfSelectedIds >= 2 ? _.filter(actions, (action: IActionOptions) => !!action.grouped) : actions,
       ),
     );
   },

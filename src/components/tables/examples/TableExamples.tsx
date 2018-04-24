@@ -193,13 +193,13 @@ export class TableExamples extends React.Component<any, any> {
                 attributeName: 'attribute1',
                 titleFormatter: (attributeName: string) => {
                   return <span>
-                      <Checkbox checked={true} classes={'mr1'} onClick={() => console.log(`${attributeName} has changed`)} />
+                      <Checkbox checked={true} classes={'mr1'} onClick={() => alert(`${attributeName} has changed`)} />
                       {attributeName}
                     </span>;
                 },
                 attributeFormatter: (attributeName: string) => {
                   return <span>
-                      <Checkbox checked={true} classes={'mr1'} onClick={() => console.log(`${attributeName} has changed`)} />
+                      <Checkbox checked={true} classes={'mr1'} onClick={() => alert(`${attributeName} has changed`)} />
                       {attributeName}
                     </span>;
                 },

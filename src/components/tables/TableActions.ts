@@ -53,7 +53,7 @@ export const modifyState = (
   },
 });
 
-export const updateSelectedRows = (id: string, selectedIds: string[], hasMultipleSelectedRow: boolean): IReduxAction<ITableActionPayload> => ({
+export const updateSelectedRows = (id: string, selectedIds: string[], hasMultipleSelectedRow: boolean = false): IReduxAction<ITableActionPayload> => ({
   type: TableActions.updateSelectedIds,
   payload: {
     id,

@@ -1,12 +1,15 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import { IReactVaporState } from '../../ReactVapor';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { IInputDispatchProps, IInputProps, IInputStateProps } from '../input/Input';
+
+import {IReactVaporState} from '../../ReactVapor';
+import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
+import {IInputDispatchProps, IInputProps, IInputStateProps} from '../input/Input';
 import {Checkbox} from './Checkbox';
 import {ICheckboxState} from './CheckboxReducers';
 import {
-  addGroupedCheckbox, IGroupableCheckboxActionPayload, removeGroupedCheckbox,
+  addGroupedCheckbox,
+  IGroupableCheckboxActionPayload,
+  removeGroupedCheckbox,
   toggleGroupedCheckbox,
 } from './GroupableCheckboxActions';
 import {IGroupableCheckboxesState} from './GroupableCheckboxReducers';
@@ -19,11 +22,14 @@ export interface IGroupableCheckboxOwnProps extends IInputProps {
 const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOwnProps): IInputStateProps => {
   const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes, { parentId: ownProps.parentId || ownProps.id });
   if (groupableCheckboxesState) {
-    const checkbox: ICheckboxState = ownProps.isParent ? groupableCheckboxesState.parent : _.findWhere(groupableCheckboxesState.checkboxes, {id: ownProps.id});
+    const checkbox: ICheckboxState = ownProps.isParent
+      ? groupableCheckboxesState.parent
+      : _.findWhere(groupableCheckboxesState.checkboxes, {id: ownProps.id});
     return {
       checked: checkbox && checkbox.checked,
-      indeterminate: ownProps.isParent && groupableCheckboxesState.nbSelected > 0 &&
-                     groupableCheckboxesState.nbSelected < groupableCheckboxesState.total,
+      indeterminate: ownProps.isParent
+        && groupableCheckboxesState.nbSelected > 0
+        && groupableCheckboxesState.nbSelected < groupableCheckboxesState.total,
     };
   }
 
