@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
+import {keyCode} from '../../../utils/InputUtils';
 
 describe('ModalBackdrop', () => {
 
@@ -76,7 +77,7 @@ describe('ModalBackdrop', () => {
             jasmine.clock().tick(5);
 
             const event = document.createEvent('Event');
-            (event as any).key = 'Escape';
+            (event as any).keyCode = keyCode.enter;
             event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
@@ -88,7 +89,7 @@ describe('ModalBackdrop', () => {
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
 
             const event = document.createEvent('Event');
-            (event as any).key = 'Escape';
+            (event as any).keyCode = keyCode.enter;
             event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
@@ -99,7 +100,7 @@ describe('ModalBackdrop', () => {
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
 
             const event = document.createEvent('Event');
-            (event as any).key = 'j';
+            (event as any).keyCode = keyCode.ctrl;
             event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
