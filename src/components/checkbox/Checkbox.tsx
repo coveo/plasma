@@ -31,9 +31,9 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
     private handleOnClick(e: React.MouseEvent<HTMLElement>) {
         if (!this.props.disabled) {
             if (this.props.onClick) {
-              e.preventDefault();
-              e.stopPropagation();
-              this.props.onClick(e);
+                e.preventDefault();
+                e.stopPropagation();
+                this.props.onClick(e);
             }
             if (this.props.handleOnClick) {
                 this.props.handleOnClick(this.props.checked);
@@ -51,7 +51,7 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
                 innerInputClasses={[innerInputClasses]}
                 type='checkbox'
                 onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
-              >
+            >
                 <button disabled={!!this.props.disabled}></button>
                 {this.props.children}
             </Input>
