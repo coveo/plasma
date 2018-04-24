@@ -21,7 +21,7 @@ export interface IModalHeaderDispatchProps {
 export interface IModalHeaderProps extends IModalHeaderOwnProps, IModalHeaderStateProps, IModalHeaderDispatchProps {}
 
 export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
-    private canClose: boolean;
+    private canClose: boolean = true;
 
     componentDidUpdate() {
         this.canClose = _.isUndefined(this.props.lastOpened) ? true : this.props.lastOpened;

@@ -38,7 +38,7 @@ describe('ModalHeader', () => {
             modal.detach();
         });
 
-        it('should call prop onClose when modal x clicked and prop is set', () => {
+        it('should call prop onClose when modal x clicked and prop is set and last opened is not set', () => {
             const closeSpy = jasmine.createSpy('onClose');
 
             modal.setProps(_.extend({}, basicProps, {onClose: closeSpy}));
@@ -46,6 +46,26 @@ describe('ModalHeader', () => {
             const input = modal.find('.small-close');
             input.simulate('click');
             expect(closeSpy.calls.count()).toBe(1);
+        });
+
+        it('should call prop onClose when modal x clicked and modal is last opened', () => {
+            const closeSpy = jasmine.createSpy('onClose');
+
+            modal.setProps(_.extend({}, basicProps, {lastOpened: true, onClose: closeSpy}));
+            modal.mount();
+            const input = modal.find('.small-close');
+            input.simulate('click');
+            expect(closeSpy.calls.count()).toBe(1);
+        });
+
+        it('should not call prop onClose when modal x clicked and modal is not last opened', () => {
+            const closeSpy = jasmine.createSpy('onClose');
+
+            modal.setProps(_.extend({}, basicProps, {lastOpened: false, onClose: closeSpy}));
+            modal.mount();
+            const input = modal.find('.small-close');
+            input.simulate('click');
+            expect(closeSpy.calls.count()).toBe(0);
         });
 
         it('should set class when the class is specified', () => {
