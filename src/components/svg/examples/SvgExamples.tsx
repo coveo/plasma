@@ -9,7 +9,7 @@ export class SvgExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>
                         Include an SVG
-          </label>
+                    </label>
                     <div className='form-control'>
                         <Svg svgName='domain-google' className='icon mod-2x' />
                     </div>
@@ -17,7 +17,7 @@ export class SvgExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>
                         Include another SVG
-          </label>
+                    </label>
                     <div className='form-control'>
                         <Svg svgName='clear' className='icon mod-2x' svgClass='fill-medium-blue' />
                     </div>
