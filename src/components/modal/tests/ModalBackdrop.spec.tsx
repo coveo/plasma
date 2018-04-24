@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
 import {keyCode} from '../../../utils/InputUtils';
+import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
 
 describe('ModalBackdrop', () => {
 
