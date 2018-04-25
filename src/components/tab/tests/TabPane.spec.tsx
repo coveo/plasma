@@ -43,5 +43,11 @@ describe('TabPane', () => {
             tab.mount();
             expect(container.hasClass('active')).toBe(true);
         });
+
+        it('should add classNames when className prop set', () => {
+            const container = tab.find('div').first();
+            tab.setProps({id, className: 'hello'}).mount();
+            expect(container.hasClass('hello')).toBe(true);
+        });
     });
 });
