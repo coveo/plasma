@@ -108,7 +108,6 @@ describe('Checkbox', () => {
                         disabled: falsyValue,
                     });
                     expect(checkbox.find('.coveo-checkbox-label').hasClass('disabled')).toBe(false);
-
                 });
             });
         });
