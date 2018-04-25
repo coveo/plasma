@@ -132,15 +132,19 @@ describe('ModalPrompt', () => {
             });
 
             it('should call prop onCancel when modalPrompt x is clicked and prop is set', () => {
+                jasmine.clock().install();
                 const closeButton = modalPrompt.find('.small-close');
 
                 closeButton.simulate('click');
                 expect(cancelSpy).not.toHaveBeenCalled();
 
                 modalPrompt.setProps({id, title, onCancel: cancelSpy});
+                jasmine.clock().tick(5);
+
                 closeButton.simulate('click');
 
                 expect(cancelSpy).toHaveBeenCalledTimes(1);
+                jasmine.clock().uninstall();
             });
 
             it('should call prop onCancel when modalPrompt cancel button is clicked and prop is set', () => {

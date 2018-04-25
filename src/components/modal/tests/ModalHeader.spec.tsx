@@ -39,23 +39,31 @@ describe('ModalHeader', () => {
         });
 
         it('should call prop onClose when modal x clicked and prop is set and last opened is not set', () => {
+            jasmine.clock().install();
             const closeSpy = jasmine.createSpy('onClose');
 
             modal.setProps(_.extend({}, basicProps, {onClose: closeSpy}));
             modal.mount();
+            jasmine.clock().tick(5);
+
             const input = modal.find('.small-close');
             input.simulate('click');
             expect(closeSpy.calls.count()).toBe(1);
+            jasmine.clock().uninstall();
         });
 
         it('should call prop onClose when modal x clicked and modal is last opened', () => {
+            jasmine.clock().install();
             const closeSpy = jasmine.createSpy('onClose');
 
             modal.setProps(_.extend({}, basicProps, {lastOpened: true, onClose: closeSpy}));
             modal.mount();
+            jasmine.clock().tick(5);
+
             const input = modal.find('.small-close');
             input.simulate('click');
             expect(closeSpy.calls.count()).toBe(1);
+            jasmine.clock().uninstall();
         });
 
         it('should not call prop onClose when modal x clicked and modal is not last opened', () => {
