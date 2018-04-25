@@ -2,8 +2,8 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {IInputDispatchProps, IInputOwnProps, IInputProps, IInputStateProps} from '../input/Input';
-import {Checkbox} from './Checkbox';
+import {IInputDispatchProps, IInputOwnProps, IInputStateProps} from '../input/Input';
+import {Checkbox, ICheckboxProps} from './Checkbox';
 import {addCheckbox, ICheckboxActionPayload, removeCheckbox, toggleCheckbox} from './CheckboxActions';
 import {ICheckboxState} from './CheckboxReducers';
 
@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<ICheckboxActionPaylo
     };
 };
 
-export const CheckboxConnected: React.ComponentClass<IInputProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);
+export const CheckboxConnected: React.ComponentClass<ICheckboxProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);

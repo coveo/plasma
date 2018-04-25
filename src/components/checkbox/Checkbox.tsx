@@ -3,15 +3,17 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
 
+export interface ICheckboxOwnProps {
+  handleOnClick?: (isChecked: boolean) => void;
+}
+
 export interface ICheckboxStateProps {
     defaultDisabled?: boolean;
 }
 
-export interface ICheckboxProps extends ICheckboxStateProps, IInputProps {
-    handleOnClick?: (isChecked: boolean) => void;
-}
+export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, IInputProps {}
 
-export class Checkbox extends React.Component<ICheckboxProps, any> {
+export class Checkbox extends React.Component<ICheckboxProps> {
 
     componentDidMount() {
         this.updateIndeterminate();
