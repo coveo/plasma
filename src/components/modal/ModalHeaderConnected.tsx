@@ -4,7 +4,10 @@ import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {closeModal} from './ModalActions';
 import {
-    IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps, IModalHeaderStateProps,
+    IModalHeaderDispatchProps,
+    IModalHeaderOwnProps,
+    IModalHeaderProps,
+    IModalHeaderStateProps,
     ModalHeader,
 } from './ModalHeader';
 

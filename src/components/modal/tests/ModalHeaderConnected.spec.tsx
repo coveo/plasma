@@ -31,7 +31,7 @@ describe('ModalHeader', () => {
                     <ModalHeaderConnected
                         id={id}
                         title={title}
-                        lastOpened={true}
+                        lastOpened
                     />
                 </Provider>,
                 {attachTo: document.getElementById('App')},
