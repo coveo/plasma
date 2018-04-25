@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
 
 export interface ICheckboxOwnProps {
-  handleOnClick?: (isChecked: boolean) => void;
+    handleOnClick?: (isChecked: boolean) => void;
 }
 
 export interface ICheckboxStateProps {
@@ -53,6 +53,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
                 innerInputClasses={[innerInputClasses]}
                 type='checkbox'
                 onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
+                readOnly
             >
                 <button disabled={!!this.props.disabled}></button>
                 {this.props.children}
