@@ -95,6 +95,22 @@ describe('Checkbox', () => {
                 const innerInput = checkbox.find('input');
                 expect((innerInput as any).node.indeterminate).toBe(true);
             });
+
+            it('should add the disable class on the label only if input is disabled', () => {
+                renderCheckbox({
+                    disabled: true,
+                });
+
+                expect(checkbox.find('.coveo-checkbox-label').hasClass('disabled')).toBe(true);
+
+                [false, undefined].forEach((falsyValue) => {
+                    renderCheckbox({
+                        disabled: falsyValue,
+                    });
+                    expect(checkbox.find('.coveo-checkbox-label').hasClass('disabled')).toBe(false);
+
+                });
+            });
         });
     });
 });
