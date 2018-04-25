@@ -151,7 +151,7 @@ $modal-medium-height: 70%;
 $modal-medium-height-stick: 75%;
 $modal-big-width: 85%;
 $modal-big-height: 90%;
-$modal-big-height-stick: 95%;
+$modal-big-height-stick: 90%;
 
 // Prompt modal
 $modal-prompt-text-padding-y: 24px;
@@ -323,9 +323,9 @@ $dropdown-toggle-right-padding: $button-padding-x + $dropdown-arrow-icon-size + 
 $dropdown-toggle-with-append-right-padding: $default-margin + $dropdown-toggle-append-width;
 
 //Dropdown Multiselect
-$drowdown-multiselect-padding: 5px;
-$drowdown-multiselect-margin: 2px;
-$drowdown-multiselect-items-margin: 6px;
+$dropdown-multiselect-padding: 5px 10px 5px 5px;
+$dropdown-multiselect-margin: 2px;
+$dropdown-multiselect-items-margin: 6px;
 $dropdown-multiselect-option-height: 24px;
 $selected-option-close-width: 22px;
 $dropdown-multiselect-icon-size: 12px;
