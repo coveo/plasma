@@ -6,6 +6,7 @@ export interface IModalOwnProps {
     id?: string;
     classes?: IClassName;
     closeCallback?: () => void;
+    closeTimeout?: number;
 }
 
 export interface IModalStateProps {
@@ -29,7 +30,7 @@ export class Modal extends React.Component<IModalProps, {}> {
 
     componentWillUnmount() {
         if (this.props.closeCallback && this.props.isOpened) {
-            this.props.closeCallback();
+            this.closeModal();
         }
         if (this.props.onDestroy) {
             this.props.onDestroy();
@@ -38,6 +39,14 @@ export class Modal extends React.Component<IModalProps, {}> {
 
     componentWillReceiveProps(nextProps: IModalProps) {
         if (this.props.isOpened && !nextProps.isOpened && this.props.closeCallback) {
+            this.closeModal();
+        }
+    }
+
+    private closeModal() {
+        if (this.props.closeTimeout) {
+            setTimeout(() => this.props.closeCallback(), this.props.closeTimeout);
+        } else {
             this.props.closeCallback();
         }
     }

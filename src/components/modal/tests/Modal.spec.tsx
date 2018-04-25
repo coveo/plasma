@@ -89,6 +89,22 @@ describe('Modal', () => {
             expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
         });
 
+        it('should call the prop closeCallback with a timeout if specified when closing the modal', () => {
+            jasmine.clock().install();
+
+            const closeCallbackSpy: jasmine.Spy = jasmine.createSpy('closeCallback');
+            modal.setProps({isOpened: true, closeCallback: closeCallbackSpy, closeTimeout: 5});
+            modal.setProps({isOpened: false});
+
+            expect(closeCallbackSpy).toHaveBeenCalledTimes(0);
+
+            jasmine.clock().tick(5);
+
+            expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
+
+            jasmine.clock().uninstall();
+        });
+
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const classes = [containerClass];
