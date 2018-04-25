@@ -29,7 +29,7 @@ export class Modal extends React.Component<IModalProps, {}> {
     }
 
     componentWillUnmount() {
-        if (this.props.closeCallback && this.props.isOpened) {
+        if (this.props.isOpened) {
             this.closeModal();
         }
         if (this.props.onDestroy) {
@@ -38,16 +38,18 @@ export class Modal extends React.Component<IModalProps, {}> {
     }
 
     componentWillReceiveProps(nextProps: IModalProps) {
-        if (this.props.isOpened && !nextProps.isOpened && this.props.closeCallback) {
+        if (this.props.isOpened && !nextProps.isOpened) {
             this.closeModal();
         }
     }
 
     private closeModal() {
-        if (this.props.closeTimeout) {
-            setTimeout(() => this.props.closeCallback(), this.props.closeTimeout);
-        } else {
-            this.props.closeCallback();
+        if (this.props.closeCallback) {
+            if (this.props.closeTimeout) {
+                setTimeout(() => this.props.closeCallback(), this.props.closeTimeout);
+            } else {
+                this.props.closeCallback();
+            }
         }
     }
 
