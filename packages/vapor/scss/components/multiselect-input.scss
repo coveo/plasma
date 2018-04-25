@@ -11,6 +11,10 @@
   border-radius: $border-radius;
 
   padding: $dropdown-multiselect-padding;
+
+  .icon {
+    fill: $dark-medium-grey;
+  }
 }
 
 .selected-options-container {
