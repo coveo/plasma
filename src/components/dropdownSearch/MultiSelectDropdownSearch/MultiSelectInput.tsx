@@ -86,7 +86,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
     private getFilterIcon(): JSX.Element {
         if (!this.props.selectedOptions.length) {
             return (
-                <Svg svgName='filter' className='icon' />
+                <Svg svgName='filter' className='icon fill-dark-medium-grey' />
             );
         }
     }
