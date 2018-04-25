@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {Svg} from '../svg/Svg';
 
@@ -9,7 +10,9 @@ export interface IModalHeaderOwnProps {
     classes?: IClassName;
 }
 
-export interface IModalHeaderStateProps {}
+export interface IModalHeaderStateProps {
+    lastOpened?: boolean;
+}
 
 export interface IModalHeaderDispatchProps {
     onClose?: () => void;
@@ -18,9 +21,19 @@ export interface IModalHeaderDispatchProps {
 export interface IModalHeaderProps extends IModalHeaderOwnProps, IModalHeaderStateProps, IModalHeaderDispatchProps {}
 
 export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
+    private canClose: boolean = true;
+
+    componentDidMount() {
+        this.canClose = _.result(this.props, 'lastOpened', true);
+    }
+
+    componentDidUpdate() {
+        this.canClose = false;
+        setTimeout(() => this.canClose = _.result(this.props, 'lastOpened', true), 1);
+    }
 
     close() {
-        if (this.props.onClose) {
+        if (this.canClose && this.props.onClose) {
             this.props.onClose();
         }
     }

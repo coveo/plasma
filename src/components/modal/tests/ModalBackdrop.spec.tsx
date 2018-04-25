@@ -77,7 +77,7 @@ describe('ModalBackdrop', () => {
             jasmine.clock().tick(5);
 
             const event = document.createEvent('Event');
-            (event as any).keyCode = keyCode.enter;
+            (event as any).keyCode = keyCode.escape;
             event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
@@ -89,7 +89,7 @@ describe('ModalBackdrop', () => {
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
 
             const event = document.createEvent('Event');
-            (event as any).keyCode = keyCode.enter;
+            (event as any).keyCode = keyCode.escape;
             event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
