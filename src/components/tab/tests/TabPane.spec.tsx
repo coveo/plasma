@@ -46,7 +46,7 @@ describe('TabPane', () => {
 
         it('should add classNames when className prop set', () => {
             const container = tab.find('div').first();
-            tab.setProps({ id, className: 'hello' }).mount();
+            tab.setProps({id, className: 'hello'}).mount();
             expect(container.hasClass('hello')).toBe(true);
         });
     });

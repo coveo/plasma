@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { IClassName } from '../../utils/ClassNameUtils';
+import {IClassName} from '../../utils/ClassNameUtils';
 
 export interface ITabPaneOwnProps {
     groupId?: string;
