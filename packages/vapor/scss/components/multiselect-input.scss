@@ -10,7 +10,11 @@
   border: $default-border;
   border-radius: $border-radius;
 
-  padding: $drowdown-multiselect-padding;
+  padding: $dropdown-multiselect-padding;
+
+  .icon {
+    fill: $dark-medium-grey;
+  }
 }
 
 .selected-options-container {
@@ -21,13 +25,13 @@
   justify-content: flex-start;
 
   display: inline-flex;
-  padding: $drowdown-multiselect-margin;
+  padding: $dropdown-multiselect-margin;
   overflow: hidden;
 
   input {
     height: $dropdown-multiselect-option-height;
     min-width: 100%;
-    padding: $drowdown-multiselect-margin;
+    padding: $dropdown-multiselect-margin;
 
     font-size: $dropdown-button-font-size;
 
@@ -42,7 +46,7 @@
 .remove-all-selected-options {
   flex: 0 1;
 
-  padding: $drowdown-multiselect-items-margin;
+  padding: $dropdown-multiselect-items-margin;
 }
 
 .remove-all-selected-options:hover {
