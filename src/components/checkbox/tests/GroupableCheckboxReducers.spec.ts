@@ -289,6 +289,13 @@ describe('GroupableCheckbox', () => {
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(currentState, action);
                 expect(groupableCheckboxsState[0].nbChecked).toBe(1);
             });
+
+            it('should return the state if the payload id is not the same for one parent', () => {
+                const oldState: IGroupableCheckboxesState = currentState[0];
+                action = toggleGroupedCheckbox(childId, undefined, true);
+                const groupableCheckboxState: IGroupableCheckboxesState = groupableCheckboxReducer(oldState, action);
+                expect(groupableCheckboxState).toBe(oldState);
+            });
         });
 
         describe('RemoveGroup action', () => {

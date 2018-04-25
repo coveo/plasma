@@ -3,23 +3,17 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
 
+export interface ICheckboxOwnProps {
+    handleOnClick?: (isChecked: boolean) => void;
+}
+
 export interface ICheckboxStateProps {
     defaultDisabled?: boolean;
 }
 
-export interface ICheckboxProps extends ICheckboxStateProps, IInputProps {
-    handleOnClick?: (isChecked: boolean) => void;
-}
+export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, IInputProps {}
 
-export class Checkbox extends React.Component<ICheckboxProps, any> {
-
-    private onClick(e: React.MouseEvent<HTMLElement>) {
-        if (this.props.onClick) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.props.onClick(e);
-        }
-    }
+export class Checkbox extends React.Component<ICheckboxProps> {
 
     componentDidMount() {
         this.updateIndeterminate();
@@ -39,7 +33,9 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
     private handleOnClick(e: React.MouseEvent<HTMLElement>) {
         if (!this.props.disabled) {
             if (this.props.onClick) {
-                this.onClick(e);
+                e.preventDefault();
+                e.stopPropagation();
+                this.props.onClick(e);
             }
             if (this.props.handleOnClick) {
                 this.props.handleOnClick(this.props.checked);
@@ -57,7 +53,8 @@ export class Checkbox extends React.Component<ICheckboxProps, any> {
                 innerInputClasses={[innerInputClasses]}
                 type='checkbox'
                 onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
-                readOnly>
+                readOnly
+            >
                 <button disabled={!!this.props.disabled}></button>
                 {this.props.children}
             </Input>
