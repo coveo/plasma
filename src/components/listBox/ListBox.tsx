@@ -1,42 +1,82 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IItemBoxProps, ItemBox } from '../itemBox/ItemBox';
+import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
-export interface IListBoxProps {
-  items: IItemBoxProps[];
-  onOptionClick?: (option: IItemBoxProps) => void;
-  noResultItem?: IItemBoxProps;
-  classes?: string[];
+export interface IListBoxOwnProps {
+    items: IItemBoxProps[];
+    noResultItem?: IItemBoxProps;
+    classes?: string[];
+    id?: string;
+    multi?: boolean;
+    highlight?: string;
 }
 
-export class ListBox extends React.Component<IListBoxProps> {
+export interface IListBoxStateProps {
+    selected?: string[];
+}
 
-  static defaultProps: Partial<IListBoxProps> = {
-    noResultItem: {
-      value: 'No Items',
-    },
-  };
+export interface IListBoxDispatchProps {
+    onRender?: () => void;
+    onDestroy?: () => void;
+    onOptionClick?: (option: IItemBoxProps) => void;
+}
 
-  private getClasses(): string {
-    return classNames('list-box', this.props.classes);
-  }
+export interface IListBoxProps extends IListBoxOwnProps, IListBoxStateProps, IListBoxDispatchProps {}
 
-  protected getItems(): JSX.Element[] | JSX.Element {
-    const items = _.chain(this.props.items)
-      .map((item: IItemBoxProps) => <ItemBox key={item.value} {..._.extend(item, { onOptionClick: this.props.onOptionClick }) } />)
-      .value();
+export class ListBox extends React.Component<IListBoxProps, {}> {
 
-    return items.length
-      ? items
-      : <ItemBox {..._.extend(this.props.noResultItem, { classes: ['multi-line'] }) } />;
-  }
+    static defaultProps: Partial<IListBoxProps> = {
+        noResultItem: {
+            value: 'No Items',
+        },
+        highlight: '',
+    };
 
-  render() {
-    return (
-      <ul className={this.getClasses()}>
-        {this.getItems()}
-      </ul>
-    );
-  }
+    componentWillMount() {
+        if (this.props.onRender) {
+            this.props.onRender();
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
+    }
+
+    private getClasses(): string {
+        return classNames('list-box', this.props.classes);
+    }
+
+    protected getItems(): JSX.Element[] | JSX.Element {
+        const items = _.chain(this.props.items)
+            .filter((item: IItemBoxProps) => !item.hidden)
+            .map((item: IItemBoxProps) => <ItemBox
+                key={item.value}
+                {...item}
+                onOptionClick={(option: IItemBoxProps) => this.onSelectItem(option)}
+                selected={_.contains(this.props.selected, item.value)}
+                highlight={this.props.highlight}
+            />)
+            .value();
+
+        return items.length
+            ? items
+            : <ItemBox {..._.extend(this.props.noResultItem, {classes: ['multi-line']})} />;
+    }
+
+    render() {
+        return (
+            <ul className={this.getClasses()}>
+                {this.getItems()}
+            </ul>
+        );
+    }
+
+    private onSelectItem(option: IItemBoxProps) {
+        if (this.props.onOptionClick && !option.disabled) {
+            this.props.onOptionClick(option);
+        }
+    }
 }

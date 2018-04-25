@@ -1,49 +1,48 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils';
 
 export interface IModalActionPayload {
-  id?: string;
-  ids?: string[];
+    id?: string;
+    ids?: string[];
 }
 
 export const ModalAction = {
-  closeModal: 'CLOSE_MODAL',
-  openModal: 'OPEN_MODAL',
-  addModal: 'ADD_MODAL',
-  removeModal: 'REMOVE_MODAL',
-  closeModals: 'CLOSE_MODALS',
+    openModal: 'OPEN_MODAL',
+    addModal: 'ADD_MODAL',
+    removeModal: 'REMOVE_MODAL',
+    closeModals: 'CLOSE_MODALS',
 };
 
 export const closeModal = (id: string): IReduxAction<IModalActionPayload> => ({
-  type: ModalAction.closeModal,
-  payload: {
-    id,
-  },
+    type: ModalAction.closeModals,
+    payload: {
+        ids: [id],
+    },
 });
 
 export const openModal = (id: string): IReduxAction<IModalActionPayload> => ({
-  type: ModalAction.openModal,
-  payload: {
-    id,
-  },
+    type: ModalAction.openModal,
+    payload: {
+        id,
+    },
 });
 
 export const addModal = (id: string): IReduxAction<IModalActionPayload> => ({
-  type: ModalAction.addModal,
-  payload: {
-    id,
-  },
+    type: ModalAction.addModal,
+    payload: {
+        id,
+    },
 });
 
 export const removeModal = (id: string): IReduxAction<IModalActionPayload> => ({
-  type: ModalAction.removeModal,
-  payload: {
-    id,
-  },
+    type: ModalAction.removeModal,
+    payload: {
+        id,
+    },
 });
 
 export const closeModals = (ids: string[]): IReduxAction<IModalActionPayload> => ({
-  type: ModalAction.closeModals,
-  payload: {
-    ids,
-  },
+    type: ModalAction.closeModals,
+    payload: {
+        ids,
+    },
 });
