@@ -39,10 +39,9 @@ export class Checkbox extends React.Component<ICheckboxProps> {
                 this.props.onClick(e);
             }
             if (this.props.handleOnClick) {
-                  this.props.handleOnClick(this.props.checked);
+                this.props.handleOnClick(this.props.checked);
             }
             this.isClicked = true;
-
 
             // Useful if the component is re-rendered so that the click event is not sent to the re-rendered component
             setTimeout(() => this.isClicked = false, 100);
