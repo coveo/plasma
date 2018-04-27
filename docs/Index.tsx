@@ -58,6 +58,7 @@ import {ModalExamples} from '../src/components/modal/examples/ModalExamples';
 import {ModalPromptExamples} from '../src/components/modalPrompt/exemples/ModalPromptExamples';
 import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
 import {SplitMultilineInputExamples} from '../src/components/multilineInput/examples/SplitMultilineExamples';
+import {MultiStepBarExamples} from '../src/components/multiStepBar/examples/MultiStepBarExamples';
 import {NavigationConnectedExamples} from '../src/components/navigation/examples/NavigationConnectedExamples';
 import {NavigationExamples} from '../src/components/navigation/examples/NavigationExamples';
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
@@ -184,6 +185,7 @@ class App extends React.Component<any, any> {
                     <GroupableCheckboxConnectedExamples />
                     <ChildFormExamples />
                     <StepProgressBarExamples />
+                    <MultiStepBarExamples />
                     <LabeledValueExamples />
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
