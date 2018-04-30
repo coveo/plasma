@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
 import {closeModal, IModalActionPayload, openModal} from '../ModalActions';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
@@ -60,6 +61,7 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                                         modalBodyChildren='The content of the modal'
                                         modalFooterChildren={<button className='btn' onClick={() => this.closeModal(modalId)}>Close</button>}
                                         modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                                        layer={2}
                                     />
                                 </div>
                             }
