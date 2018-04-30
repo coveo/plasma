@@ -124,5 +124,18 @@ describe('Modal', () => {
             modal.mount();
             expect(container.hasClass('opened')).toBe(true);
         });
+
+        it('should set the proper layer class on container when isOpened is true', () => {
+            const container = modal.find('div').first();
+            expect(container.hasClass('layer-1')).toBe(false);
+
+            modal.setProps({id, isOpened: true});
+            modal.mount();
+            expect(container.hasClass('layer-1')).toBe(true);
+
+            modal.setProps({id, isOpened: true, layer: 2});
+            modal.mount();
+            expect(container.hasClass('layer-2')).toBe(true);
+        });
     });
 });
