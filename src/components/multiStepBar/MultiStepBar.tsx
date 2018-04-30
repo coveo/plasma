@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { IClassName } from '../../utils/ClassNameUtils';
-import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
+import {IClassName} from '../../utils/ClassNameUtils';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export type IMultiStepState = 'to-do' | 'doing' | 'done' | 'error' | 'warning';
 
@@ -27,7 +27,7 @@ const getStepContent = (step: IStep): JSX.Element => {
 };
 
 export const MultiStepBar = (props: IMultiStepBarProps) => {
-    const { className, small, inProgressAnimation, flareAnimation, separator, steps } = props;
+    const {className, small, inProgressAnimation, flareAnimation, separator, steps} = props;
     const containerClasses = classNames(className, {
         'multi-step-bar-container': true,
         'mod-multi-step-bar-in-progress-sliding-animation': inProgressAnimation === 'slide',

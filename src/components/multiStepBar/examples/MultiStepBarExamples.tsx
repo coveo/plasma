@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IMultiStepBarProps, IStep, MultiStepBar } from '../MultiStepBar';
+import {IMultiStepBarProps, IStep, MultiStepBar} from '../MultiStepBar';
 
 export class MultiStepBarExamples extends React.Component<any, any> {
 
@@ -46,7 +46,7 @@ export class MultiStepBarExamples extends React.Component<any, any> {
                 },
             },
         ];
-        const stepsWithText = stepsWithoutText.map((step, i) => ({ ...step, text: `Step ${i}` }));
+        const stepsWithText = stepsWithoutText.map((step, i) => ({...step, text: `Step ${i}`}));
         const multiStepBarProps: IMultiStepBarProps = {
             steps: stepsWithText,
         };
