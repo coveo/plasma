@@ -93,6 +93,7 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
         const basicProps: IModalBackdropProps = {
             displayFor: [this.props.id],
             isPrompt: this.props.isPrompt,
+            layer: this.props.layer,
         };
 
         const onClickProp = () => {
