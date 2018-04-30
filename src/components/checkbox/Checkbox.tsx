@@ -14,6 +14,7 @@ export interface ICheckboxStateProps {
 export interface ICheckboxProps extends ICheckboxOwnProps, ICheckboxStateProps, IInputProps {}
 
 export class Checkbox extends React.Component<ICheckboxProps> {
+    private isClicked: boolean;
 
     componentDidMount() {
         this.updateIndeterminate();
@@ -31,7 +32,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
     }
 
     private handleOnClick(e: React.MouseEvent<HTMLElement>) {
-        if (!this.props.disabled) {
+        if (!this.props.disabled && !this.isClicked) {
             if (this.props.onClick) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -40,6 +41,10 @@ export class Checkbox extends React.Component<ICheckboxProps> {
             if (this.props.handleOnClick) {
                 this.props.handleOnClick(this.props.checked);
             }
+            this.isClicked = true;
+
+            // Useful if the component is re-rendered so that the click event is not sent to the re-rendered component
+            setTimeout(() => this.isClicked = false, 1);
         }
     }
 
