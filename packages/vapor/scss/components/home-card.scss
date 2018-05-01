@@ -5,25 +5,29 @@
   display: flex;
 }
 
-.home-card {
-  position: relative;
+.home-cards-padding {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+}
 
-  padding-bottom: $header-line-height;
+.home-card {
+  display: flex;
+  flex-flow: column;
+
   margin-bottom: $home-card-margin;
 
   background: $pure-white;
   box-shadow: $material-card-shadow;
-  border: $default-border;
-  border-radius: $border-radius;
+  border-radius: $home-card-radius;
 }
 
 .home-card-padded {
   padding: 1em;
-  padding-bottom: calc(1em + $header-line-height);
 }
 
 .home-card-header {
-  padding: 0 1em;
+  padding: $home-card-y-padding $home-card-x-padding;
 
   color: $medium-blue;
   line-height: $header-line-height;
@@ -35,12 +39,12 @@
   }
 }
 
-.home-card-footer {
-  position: absolute;
-  bottom: 0;
+.home-card-body {
+  flex-grow: 1;
+}
 
-  width: 100%;
-  padding: 0 1em;
+.home-card-footer {
+  padding: $home-card-y-padding $home-card-x-padding;
 
   line-height: $header-line-height;
   text-align: right;
