@@ -3,7 +3,7 @@
     {% include component_header.html %}
 
     <div class="sg-component-body">
-        <div class="sg-component-display">
+        <div class="sg-component-display {{ entry.class || '' }}" style="{{entry.style || ''}}">
             {{ entry.content }}
         </div>
         <div class="clearfix"></div>
