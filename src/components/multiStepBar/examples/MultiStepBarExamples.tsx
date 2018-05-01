@@ -63,7 +63,7 @@ export class MultiStepBarExamples extends React.Component<any, any> {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Small Multi Step Bar with flare animation</label>
-                    <MultiStepBar {...multiStepBarProps} steps={stepsWithoutText} small={true} flareAnimation={true} />
+                    <MultiStepBar {...multiStepBarProps} steps={stepsWithoutText} small={true} barAnimation={'flare'} />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Small Multi Step Bar with in progress slide animation</label>

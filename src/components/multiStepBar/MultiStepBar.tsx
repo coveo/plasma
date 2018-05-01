@@ -12,12 +12,12 @@ export interface IStep {
 }
 
 export interface IMultiStepBarProps {
+    steps: IStep[];
     className?: IClassName;
     small?: boolean;
     separator?: boolean;
-    inProgressAnimation?: 'slide' | 'shine';
-    flareAnimation?: boolean;
-    steps: IStep[];
+    inProgressAnimation?: '' | 'slide' | 'shine';
+    barAnimation?: '' | 'flare';
 }
 
 const getStepContent = (step: IStep): JSX.Element => {
@@ -27,12 +27,12 @@ const getStepContent = (step: IStep): JSX.Element => {
 };
 
 export const MultiStepBar = (props: IMultiStepBarProps) => {
-    const {className, small, inProgressAnimation, flareAnimation, separator, steps} = props;
+    const {className, small, inProgressAnimation, barAnimation, separator, steps} = props;
     const containerClasses = classNames(className, {
         'multi-step-bar-container': true,
         'mod-multi-step-bar-in-progress-sliding-animation': inProgressAnimation === 'slide',
         'mod-multi-step-bar-in-progress-shine-animation': inProgressAnimation === 'shine',
-        'mod-multi-step-bar-flare-animation': flareAnimation,
+        'mod-multi-step-bar-flare-animation': barAnimation === 'flare',
         'mod-multi-step-bar-separated': separator,
         'mod-small': small,
     });
@@ -40,13 +40,13 @@ export const MultiStepBar = (props: IMultiStepBarProps) => {
     return (
         <div className={containerClasses}>
             <div className='multi-step-bar-backdrop-container'>
-                {steps.map((step, i) => {
+                {steps.map((step: IStep, i: number) => {
                     const classes = classNames('multi-step-bar', `multi-step-bar-${step.state}`);
                     return <div key={`multi-step-bar-backdrop-${i}`} className={classes}>{stepsContent[i]}</div>;
                 })}
             </div>
             <div className='multi-step-bar-content-container'>
-                {steps.map((step, i) => {
+                {steps.map((step: IStep, i: number) => {
                     const key = `multi-step-bar-${i}`;
                     const classes = classNames('multi-step-bar');
                     return step.tooltip && step.tooltip.title

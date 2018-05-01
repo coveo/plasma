@@ -27,7 +27,7 @@ describe('MultiStepBar', () => {
     const stepsWithText: IStep[] = defaultSteps.map((step, i) => ({...step, text: `Step ${i}`}));
     const testProps: IMultiStepBarProps = {steps: defaultSteps};
 
-    it('should render without error with multiple scenarios of number of steps and current step', () => {
+    it('should render without error with mandatory props', () => {
         expect(() => shallow(<MultiStepBar {...testProps} />)).not.toThrow();
     });
 
