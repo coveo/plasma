@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {IMultiStepBarProps, IStep, MultiStepBar} from '../MultiStepBar';
+import {IMultiStepBarProps, IStep, MultiStepBar, MultiStepState} from '../MultiStepBar';
 
 export class MultiStepBarExamples extends React.Component<any, any> {
 
     render() {
         const stepsWithoutText: IStep[] = [
             {
-                state: 'done',
+                state: MultiStepState.Done,
                 tooltip: {
                     title: 'This step is done!',
                     placement: 'bottom',
@@ -14,7 +14,7 @@ export class MultiStepBarExamples extends React.Component<any, any> {
                 },
             },
             {
-                state: 'warning',
+                state: MultiStepState.Warning,
                 tooltip: {
                     title: 'This one finished with a warning',
                     placement: 'bottom',
@@ -22,7 +22,7 @@ export class MultiStepBarExamples extends React.Component<any, any> {
                 },
             },
             {
-                state: 'error',
+                state: MultiStepState.Error,
                 tooltip: {
                     title: 'An error occurred here',
                     placement: 'bottom',
@@ -30,7 +30,7 @@ export class MultiStepBarExamples extends React.Component<any, any> {
                 },
             },
             {
-                state: 'doing',
+                state: MultiStepState.Doing,
                 tooltip: {
                     title: 'This step is currently in progress',
                     placement: 'bottom',
@@ -38,7 +38,7 @@ export class MultiStepBarExamples extends React.Component<any, any> {
                 },
             },
             {
-                state: 'to-do',
+                state: MultiStepState.ToDo,
                 tooltip: {
                     title: 'This step is not yet done',
                     placement: 'bottom',

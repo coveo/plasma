@@ -3,10 +3,16 @@ import * as React from 'react';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
-export type IMultiStepState = 'to-do' | 'doing' | 'done' | 'error' | 'warning';
+export enum MultiStepState {
+    ToDo = 'to-do',
+    Doing = 'doing',
+    Done = 'done',
+    Error = 'error',
+    Warning = 'warning',
+}
 
 export interface IStep {
-    state: IMultiStepState;
+    state: MultiStepState;
     text?: string;
     tooltip?: ITooltipProps;
 }
@@ -21,9 +27,9 @@ export interface IMultiStepBarProps {
 }
 
 const getStepContent = (step: IStep): JSX.Element => {
-    return step.text ? (
-        <div className='multi-step-bar-text'>{step.text}</div>
-    ) : null;
+    return step.text
+        ? <div className='multi-step-bar-text'>{step.text}</div>
+        : null;
 };
 
 export const MultiStepBar = (props: IMultiStepBarProps) => {
@@ -56,7 +62,8 @@ export const MultiStepBar = (props: IMultiStepBarProps) => {
                                 className={classes}>
                                 {stepsContent[i]}
                             </Tooltip>
-                        ) : (
+                        )
+                        : (
                             <span key={key} className={classes}>
                                 {stepsContent[i]}
                             </span>

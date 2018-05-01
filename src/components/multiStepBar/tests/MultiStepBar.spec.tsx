@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {IMultiStepBarProps, IStep, MultiStepBar} from '../MultiStepBar';
+import {IMultiStepBarProps, IStep, MultiStepBar, MultiStepState} from '../MultiStepBar';
 
 describe('MultiStepBar', () => {
     const multiStepBarBackgroundContainerSelector = '.multi-step-bar-backdrop-container';
@@ -18,11 +18,11 @@ describe('MultiStepBar', () => {
         multiStepBarToDoSelector,
     ];
     const defaultSteps: IStep[] = [
-        {state: 'done'},
-        {state: 'warning'},
-        {state: 'error'},
-        {state: 'doing'},
-        {state: 'to-do'},
+        {state: MultiStepState.Done},
+        {state: MultiStepState.Warning},
+        {state: MultiStepState.Error},
+        {state: MultiStepState.Doing},
+        {state: MultiStepState.ToDo},
     ];
     const stepsWithText: IStep[] = defaultSteps.map((step, i) => ({...step, text: `Step ${i}`}));
     const testProps: IMultiStepBarProps = {steps: defaultSteps};
