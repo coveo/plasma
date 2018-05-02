@@ -44,7 +44,7 @@ const lastAction = (state: IReactVaporExampleState = null, action: Redux.Action)
     return action;
 };
 
-export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
+export const ReactVaporReducers = {
     autocompletes: autocompletesReducer,
     tables: tablesReducer,
     membersCompositeState: membersReducers,
@@ -80,4 +80,6 @@ export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineRed
     flippables: flippablesReducer,
     groupableCheckboxes: groupableCheckboxesReducer,
     textAreas: textAreasReducer,
-});
+};
+
+export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>(ReactVaporReducers);
