@@ -2,7 +2,7 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import {IMultiStepBarProps, IStep, MultiStepBar, MultiStepState} from '../MultiStepBar';
 
-describe('MultiStepBar', () => {
+describe('<MultiStepBar />', () => {
     const multiStepBarBackgroundContainerSelector = '.multi-step-bar-backdrop-container';
     const multiStepBarContainerSelector = '.multi-step-bar-container';
     const multiStepBarDoneSelector = '.multi-step-bar-done';
@@ -37,6 +37,10 @@ describe('MultiStepBar', () => {
 
     it('should render without error with mandatory props and className as string', () => {
         expect(() => shallow(<MultiStepBar {...testProps} className='some classes' />)).not.toThrow();
+    });
+
+    it('should render without error with a steps with a tooltip', () => {
+        expect(() => shallow(<MultiStepBar steps={[{state: MultiStepState.Doing, tooltip: {title: 'Some Tooltip'}}]} />)).not.toThrow();
     });
 
     describe('MultiStepBar Content', () => {
