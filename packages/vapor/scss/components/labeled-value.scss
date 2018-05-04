@@ -7,12 +7,16 @@
     padding: 5px;
     overflow: hidden;
 
-    font-size: $collapsible-content-font-size;
     text-overflow: ellipsis;
   }
 
   .label {
     color: $light-blue;
+    font-size: $small-font-size;
+  }
+
+  .value {
+    font-size: $default-font-size;
   }
 }
 
