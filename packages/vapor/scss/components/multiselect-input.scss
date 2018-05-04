@@ -6,11 +6,10 @@
 
   display: flex;
   width: $dropdown-button-min-width;
+  padding: $dropdown-multiselect-padding;
 
   border: $default-border;
   border-radius: $border-radius;
-
-  padding: $dropdown-multiselect-padding;
 }
 
 .selected-options-container {
