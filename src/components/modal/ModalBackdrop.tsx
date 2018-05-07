@@ -1,9 +1,12 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+
 import {keyCode} from '../../utils/InputUtils';
 
 export interface IModalBackdropOwnProps {
     displayFor?: string[];
     isPrompt?: boolean;
+    layer?: number;
 }
 
 export interface IModalBackdropStateProps {
@@ -20,6 +23,10 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 
 export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
     private canClose: boolean;
+
+    static defaultProps: Partial<IModalBackdropProps> = {
+        layer: 1,
+    };
 
     componentDidMount() {
         document.addEventListener('keydown', this.onKeyDown);
@@ -44,16 +51,17 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
     }
 
     render() {
-        const classes = ['modal-backdrop'];
-        if (!this.props.display) {
-            classes.push('closed');
-        }
-        if (this.props.isPrompt) {
-            classes.push('prompt-backdrop');
-        }
+        const classes = classNames(
+            'modal-backdrop',
+            {
+                'closed': !this.props.display,
+                'prompt-backdrop': this.props.isPrompt,
+                [`layer-${this.props.layer}`]: this.props.display,
+            },
+        );
 
         return (
-            <div className={classes.join(' ')} onClick={() => this.handleClick()}>
+            <div className={classes} onClick={() => this.handleClick()}>
                 <div className='mask'></div>
             </div>
         );
