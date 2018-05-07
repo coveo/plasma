@@ -7,6 +7,10 @@
     position: relative;
 
     padding-bottom: 8px;
+
+    &:nth-child(1) label {
+      visibility: visible;
+    }
   }
 
   input {
@@ -22,10 +26,6 @@
     &.first-label {
       visibility: visible;
     }
-  }
-
-  &:nth-child(1) label {
-    visibility: visible;
   }
 
   .multiline-label .inline-help-tooltip {
