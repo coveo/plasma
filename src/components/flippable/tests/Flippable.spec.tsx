@@ -155,5 +155,31 @@ describe('Flippable', () => {
                 document.getElementById('App').click();
                 expect(onUnflipSpy).toHaveBeenCalledTimes(1);
             });
+
+        it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns false', () => {
+            const onUnflipSpy = jasmine.createSpy('onUnflip');
+
+            flippable.setProps({
+                onUnflip: onUnflipSpy,
+                isFlipped: true,
+                allowUnflip: (args) => false,
+            });
+
+            document.getElementById('App').click();
+            expect(onUnflipSpy).not.toHaveBeenCalled();
+        });
+
+        it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns false', () => {
+            const onUnflipSpy = jasmine.createSpy('onUnflip');
+
+            flippable.setProps({
+                onUnflip: onUnflipSpy,
+                isFlipped: true,
+                allowUnflip: (args) => true,
+            });
+
+            document.getElementById('App').click();
+            expect(onUnflipSpy).toHaveBeenCalledTimes(1);
+        });
     });
 });
