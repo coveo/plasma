@@ -7,6 +7,7 @@ export interface IFlippableOwnProps {
     front?: React.ReactNode;
     back?: React.ReactNode;
     className?: string;
+    allowUnflip?: (e: EventTarget) => boolean;
 }
 
 export interface IFlippableDispatchProps {
@@ -101,7 +102,7 @@ export class Flippable extends React.Component<IFlippableProps, any> {
             const backside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.backside);
             const target: Node = e.target as Node;
 
-            if (!backside.contains(target) && !frontside.contains(target)) {
+            if (!backside.contains(target) && !frontside.contains(target) && (!this.props.allowUnflip || this.props.allowUnflip(target))) {
                 this.handleUnflip();
                 e.preventDefault();
             }
