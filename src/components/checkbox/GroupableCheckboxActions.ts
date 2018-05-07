@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
+import { IReduxAction } from '../../utils/ReduxUtils';
 
 export interface IGroupableCheckboxActionPayload {
   id: string;

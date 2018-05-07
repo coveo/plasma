@@ -71,19 +71,17 @@ const actionsSelector = createSelector(
   [getDataById, getSelectedIds, getMultiSelect, getActions],
   (byId: ITableById, selectedIds: string[], isMultiSelect: boolean, getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
     const rowsData: IData[] = [];
-    _.each(selectedIds, (id: string, index: number) => {
+    _.each(selectedIds, (id: string) => {
       const rowData: IData = byId[id];
       if (rowData) {
         rowsData.push(rowData);
       }
     });
-    if (getAction) {
-      if (rowsData.length) {
-        const actions: IActionOptions[] = getAction(rowsData[0]);
-        return isMultiSelect && selectedIds.length >= 2
-          ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
-          : actions;
-      }
+    if (getAction && rowsData.length) {
+      const actions: IActionOptions[] = getAction(rowsData[0]);
+      return isMultiSelect && selectedIds.length >= 2
+        ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
+        : actions;
     }
     return [];
   },
@@ -97,8 +95,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
   };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch,
-                            ownProps: ITableOwnProps): ITableDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITableDispatchProps => ({
   onDidMount: () => {
     dispatch(
       addTable(

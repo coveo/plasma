@@ -29,7 +29,6 @@ export interface IInputStateProps {
   disabled?: boolean;
   value?: string;
   valid?: boolean;
-  indeterminate?: boolean;
 }
 
 export interface IInputDispatchProps {
@@ -137,7 +136,6 @@ export class Input extends React.Component<IInputProps, any> {
           onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
           placeholder={this.props.placeholder}
           checked={!!this.props.checked}
-          indeterminate={!!this.props.indeterminate && !!!this.props.checked}
           disabled={!!this.props.disabled}
           name={this.props.name}
           required

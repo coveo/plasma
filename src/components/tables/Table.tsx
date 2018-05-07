@@ -22,7 +22,6 @@ import { ITableCompositeState, ITableData } from './TableReducers';
 
 export interface IData {
   id: string;
-
   [attribute: string]: any;
 }
 
@@ -31,7 +30,6 @@ export interface ITableRowData {
 }
 
 export type IAttributeValue = any;
-
 export interface IPredicateAttributes {
   [attributeName: string]: IAttributeValue;
 }
@@ -68,10 +66,12 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
   predicates?: ITablePredicate[];
   navigation?: true | INavigationChildrenProps;
   lastUpdatedLabel?: string;
-  manual?: (tableOwnProps: ITableOwnProps,
-            shouldResetPage: boolean,
-            tableCompositeState: ITableCompositeState,
-            previousTableCompositeState: ITableCompositeState) => IThunkAction;
+  manual?: (
+    tableOwnProps: ITableOwnProps,
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+    previousTableCompositeState: ITableCompositeState,
+  ) => IThunkAction;
   rowsMultiSelect?: boolean;
 }
 
@@ -84,9 +84,11 @@ export interface ITableDispatchProps {
   onDidMount?: () => void;
   onUnmount?: () => void;
   onWillUpdate?: (actions: IActionOptions[]) => void;
-  onModifyData?: (shouldResetPage: boolean,
-                  tableCompositeState: ITableCompositeState,
-                  previousTableCompositeState?: ITableCompositeState) => void;
+  onModifyData?: (
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+    previousTableCompositeState?: ITableCompositeState,
+  ) => void;
   onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
   onRowClick?: (actions: IActionOptions[], numberOfSelectedIds: number) => void;
 }
@@ -125,9 +127,9 @@ export class Table extends React.Component<ITableProps, {}> {
     }
   }
 
-  componentWillUpdate(tableCompositeState: any) {
-    if (this.props.onWillUpdate && !(JSON.stringify(tableCompositeState.actions) === JSON.stringify(this.props.actions))) {
-      this.props.onWillUpdate(tableCompositeState.actions);
+  componentWillUpdate(nextProps: ITableProps) {
+    if (this.props.onWillUpdate && !(JSON.stringify(nextProps.actions) === JSON.stringify(this.props.actions))) {
+      this.props.onWillUpdate(nextProps.actions);
     }
   }
 
@@ -143,7 +145,7 @@ export class Table extends React.Component<ITableProps, {}> {
     if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
       // if the change occurs outside the navigation (per page, pagination), reset the pagination to 0
       const shouldResetPage = tableCompositeState.page === nextProps.tableCompositeState.page
-                              && tableCompositeState.perPage === nextProps.tableCompositeState.perPage;
+        && tableCompositeState.perPage === nextProps.tableCompositeState.perPage;
 
       this.props.onModifyData(shouldResetPage, nextProps.tableCompositeState, tableCompositeState);
     }
