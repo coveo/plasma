@@ -365,7 +365,7 @@ export class TableExamples extends React.Component<any, any> {
           />
         </div>
         <div className='form-group'>
-          <label className='form-control-label'>Table with actions to modify icon when the row data as changed
+          <label className='form-control-label'>Table with actions to modify icon when the row data has changed
           </label>
           <br/>
           <Button name={'Toggle attribute3 to false'} enabled={true} classes={['m1']} onClick={() => updateAllBooleanInCurrentState('react-vapor-table-update-actions')}/>

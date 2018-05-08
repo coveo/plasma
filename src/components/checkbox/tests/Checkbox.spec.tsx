@@ -54,9 +54,9 @@ describe('Checkbox', () => {
       renderCheckbox({
         indeterminate: true,
       });
-      const innerInput = checkbox.find('input');
+      const innerInput: any = checkbox.find('input');
 
-      expect(innerInput.prop('indeterminate')).toBe('true');
+      expect(innerInput.node.indeterminate).toBe(true);
     });
   });
 });
