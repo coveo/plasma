@@ -50,7 +50,6 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
           <Checkbox classes={['mt1']} checked={this.state.checked} onClick={() => this.handleClick()}>
             <Label classes={['label']}>A checkbox with state</Label>
           </Checkbox>
-
         </div>
         <div className='form-group'>
           <label className='form-control-label'>A checkbox with no label</label>
