@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {ICheckboxState} from './CheckboxReducers';
-import {GroupableCheckboxActions, IGroupableCheckboxActionPayload} from './GroupableCheckboxActions';
+import { IReduxAction } from '../../utils/ReduxUtils';
+import { ICheckboxState } from './CheckboxReducers';
+import { GroupableCheckboxActions, IGroupableCheckboxActionPayload } from './GroupableCheckboxActions';
 
 export interface IGroupableCheckboxesState {
   total: number;

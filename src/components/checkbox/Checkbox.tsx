@@ -3,7 +3,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { IInputProps, Input } from '../input/Input';
 
-export class Checkbox extends React.Component<IInputProps, any> {
+export interface ICheckboxProps extends IInputProps {
+  indeterminate?: boolean;
+}
+
+export class Checkbox extends React.Component<ICheckboxProps, any> {
   private onClick(e: React.MouseEvent<HTMLElement>) {
     if (this.props.onClick) {
       e.preventDefault();

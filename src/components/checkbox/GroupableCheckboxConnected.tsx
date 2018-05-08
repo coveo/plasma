@@ -2,21 +2,23 @@ import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import { IReactVaporState } from '../../ReactVapor';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { IInputDispatchProps, IInputProps, IInputStateProps } from '../input/Input';
-import {Checkbox} from './Checkbox';
-import {ICheckboxState} from './CheckboxReducers';
+import { IInputDispatchProps, IInputProps } from '../input/Input';
+import { Checkbox, ICheckboxProps } from './Checkbox';
+import { ICheckboxState } from './CheckboxReducers';
 import {
-  addGroupedCheckbox, IGroupableCheckboxActionPayload, removeGroupedCheckbox,
+  addGroupedCheckbox,
+  IGroupableCheckboxActionPayload,
+  removeGroupedCheckbox,
   toggleGroupedCheckbox,
 } from './GroupableCheckboxActions';
-import {IGroupableCheckboxesState} from './GroupableCheckboxReducers';
+import { IGroupableCheckboxesState } from './GroupableCheckboxReducers';
 
 export interface IGroupableCheckboxOwnProps extends IInputProps {
   isParent?: boolean;
   parentId?: string;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOwnProps): IInputStateProps => {
+const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOwnProps): ICheckboxProps => {
   const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes, { parentId: ownProps.parentId || ownProps.id });
   if (groupableCheckboxesState) {
     const checkbox: ICheckboxState = ownProps.isParent ? groupableCheckboxesState.parent : _.findWhere(groupableCheckboxesState.checkboxes, {id: ownProps.id});

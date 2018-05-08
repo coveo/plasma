@@ -1,11 +1,11 @@
-import {IReactVaporState} from '../../../ReactVapor';
-import {mount, ReactWrapper} from 'enzyme';
-import {Store} from 'redux';
-import {GroupableCheckboxConnected, IGroupableCheckboxOwnProps} from '../GroupableCheckboxConnected';
-import {Checkbox} from '../Checkbox';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
-import {Provider} from 'react-redux';
+import { mount, ReactWrapper } from 'enzyme';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
+import { IReactVaporState } from '../../../ReactVapor';
+import { clearState } from '../../../utils/ReduxUtils';
+import { TestUtils } from '../../../utils/TestUtils';
+import { Checkbox } from '../Checkbox';
+import { GroupableCheckboxConnected, IGroupableCheckboxOwnProps } from '../GroupableCheckboxConnected';
 
 describe('GroupableCheckbox', () => {
   describe('<GroupableCheckboxConnected />', () => {
@@ -13,7 +13,6 @@ describe('GroupableCheckbox', () => {
     let wrapper: ReactWrapper<any, any>;
     let store: Store<IReactVaporState>;
     const parentId = 'checkboxParent1';
-
 
     const renderChildCheckbox = (props: IGroupableCheckboxOwnProps) => {
       wrapper = mount(
