@@ -2,7 +2,7 @@ import { mount, ReactWrapper, shallow } from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import { IInputProps } from '../../input/Input';
-import { Checkbox } from '../Checkbox';
+import {Checkbox, ICheckboxProps} from '../Checkbox';
 
 describe('Checkbox', () => {
   describe('<Checkbox />', () => {
@@ -16,9 +16,9 @@ describe('Checkbox', () => {
   });
 
   describe('<Checkbox />', () => {
-    let checkbox: ReactWrapper<IInputProps, any>;
+    let checkbox: ReactWrapper<ICheckboxProps, any>;
 
-    const renderCheckbox = (props: IInputProps = {}) => {
+    const renderCheckbox = (props: ICheckboxProps = {}) => {
       checkbox = mount(
         <Checkbox {...props} />,
         { attachTo: document.getElementById('App') },

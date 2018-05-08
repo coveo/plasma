@@ -50,9 +50,5 @@ describe('GroupableCheckbox', () => {
       wrapper.unmount();
       wrapper.detach();
     });
-
-    describe('Own props', () => {
-
-    });
   });
 });

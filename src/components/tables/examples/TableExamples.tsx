@@ -3,7 +3,9 @@ import * as loremIpsum from 'lorem-ipsum';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 import { IDispatch, IThunkAction } from '../../../utils/ReduxUtils';
+import { Button } from '../../button/Button';
 import { Checkbox } from '../../checkbox/Checkbox';
 import { SELECTION_BOXES_LONG } from '../../datePicker/examples/DatePickerExamplesCommon';
 import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
@@ -18,6 +20,7 @@ import { ITableCompositeState, ITableData, ITablesState, ITableState} from '../T
 const generateText = () => loremIpsum({ count: 1, sentenceUpperBound: 3 });
 const generateDate = (start: Date, end: Date) =>
   moment(start.getTime() + Math.random() * (end.getTime() - start.getTime())).format('YYYY-MM-DD hh:mm:ss');
+let globalBoolean = false;
 
 const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
   ...obj,
@@ -27,6 +30,16 @@ const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
     attribute2: generateText(),
     attribute3: generateText(),
     attribute4: generateText(),
+  },
+}), {} as ITableRowData);
+
+const tableDataWithBooleanById = (booleanValue: boolean) => _.range(0, 5).reduce((obj, num) => ({
+  ...obj,
+  ['row' + num]: {
+    id: 'row' + num,
+    attribute1: generateText(),
+    attribute2: generateText(),
+    attribute3: booleanValue,
   },
 }), {} as ITableRowData);
 
@@ -69,6 +82,17 @@ const tableData: ITableData = {
   totalPages: Math.ceil(_.keys(tableDataById).length / perPageNumbers[0]),
 };
 
+const tableDataWithBoolean = (): ITableData => {
+  globalBoolean = !globalBoolean;
+  return {
+    byId: tableDataWithBooleanById(globalBoolean),
+    allIds: _.keys(tableDataWithBooleanById(globalBoolean)),
+    displayedIds: _.keys(tableDataWithBooleanById(globalBoolean)).slice(0, perPageNumbers[0]),
+    totalEntries: _.keys(tableDataWithBooleanById(globalBoolean)).length,
+    totalPages: Math.ceil(_.keys(tableDataWithBooleanById(globalBoolean)).length / perPageNumbers[0]),
+  };
+};
+
 const buildNewTableStateManually = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState, tableOwnProps: ITableOwnProps): ITableState => {
   const totalEntries = data.count;
   const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
@@ -90,6 +114,16 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
     };
   }, DEFAULT_TABLE_DATA);
   return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, { data: newTableData }))({ ...currentState, data: newTableData });
+};
+
+const updateAllBooleanInCurrentState = (id: string) => {
+  ReactVaporStore.dispatch(
+    modifyState(
+      id,
+      (tableState: ITableState) => _.extend({}, tableState, { data: tableDataWithBoolean() }),
+      false,
+    ),
+  );
 };
 
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): IThunkAction => {
@@ -193,13 +227,13 @@ export class TableExamples extends React.Component<any, any> {
                 attributeName: 'attribute1',
                 titleFormatter: (attributeName: string) => {
                   return <span>
-                      <Checkbox checked={true} classes={'mr1'} onClick={() => console.log(`${attributeName} has changed`)} />
+                      <Checkbox checked={true} classes={'mr1'} />
                       {attributeName}
                     </span>;
                 },
                 attributeFormatter: (attributeName: string) => {
                   return <span>
-                      <Checkbox checked={true} classes={'mr1'} onClick={() => console.log(`${attributeName} has changed`)} />
+                      <Checkbox checked={true} classes={'mr1'} />
                       {attributeName}
                     </span>;
                 },
@@ -328,6 +362,51 @@ export class TableExamples extends React.Component<any, any> {
             actionBar={{ extraContainerClasses: ['mod-border-top'] }}
             navigation={{ perPageNumbers }}
             rowsMultiSelect={true}
+          />
+        </div>
+        <div className='form-group'>
+          <label className='form-control-label'>Table with actions to modify icon when the row data as changed
+          </label>
+          <br/>
+          <Button name={'Toggle attribute3 to false'} enabled={true} classes={['m1']} onClick={() => updateAllBooleanInCurrentState('react-vapor-table-update-actions')}/>
+          <TableConnected
+            id={'react-vapor-table-update-actions'}
+            initialTableData={tableDataWithBoolean()}
+            headingAttributes={[
+              {
+                attributeName: 'attribute1',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute2',
+                titleFormatter: _.identity,
+              },
+              {
+                attributeName: 'attribute3',
+                titleFormatter: _.identity,
+                attributeFormatter: (attributeValue: boolean) => attributeValue ? 'is true' : 'is false',
+              },
+            ]}
+            filter
+            getActions={(rowData: IData) => ([
+              {
+                name: 'Toggle attribute3',
+                trigger: () => updateAllBooleanInCurrentState('react-vapor-table-update-actions'),
+                icon: rowData.attribute3 ? 'check' : 'clear',
+                primary: true,
+                enabled: true,
+              },
+              {
+                name: 'Delete',
+                icon: 'delete',
+                primary: true,
+                enabled: true,
+                grouped: true,
+              },
+            ])}
+            blankSlateDefault={{ title: 'Oh my oh my, nothing to see here :(!' }}
+            actionBar={{ extraContainerClasses: ['mod-border-top'] }}
+            navigation={{ perPageNumbers }}
           />
         </div>
         <div className='form-group'>
