@@ -236,6 +236,7 @@ export class Table extends React.Component<ITableProps> {
                     collapsibleFormatter={this.props.collapsibleFormatter}
                     onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions)}
                     handleOnRowClick={this.props.handleOnRowClick}
+                    additionalRowClasses={this.props.additionalRowClasses}
                 />
             );
         });
