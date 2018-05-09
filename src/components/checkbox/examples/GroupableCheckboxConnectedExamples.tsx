@@ -14,13 +14,13 @@ export class GroupableCheckboxConnectedExamples extends React.Component<any, any
             <Label classes={['label']}>A parent checkbox connected</Label>
           </GroupableCheckboxConnected>
           <br />
-          <GroupableCheckboxConnected id={parentId1 + 1} parentId={parentId1} classes={['m1']} defaultChecked={false}>
+          <GroupableCheckboxConnected id={parentId1 + 1} parentId={parentId1} classes={['m1']} defaultChecked={true}>
             <Label classes={['label']}>Checkbox child 1</Label>
           </GroupableCheckboxConnected>
           <GroupableCheckboxConnected id={parentId1 + 2} parentId={parentId1} classes={['m1']} defaultChecked={false}>
             <Label classes={['label']}>Checkbox child 2</Label>
           </GroupableCheckboxConnected>
-          <GroupableCheckboxConnected id={parentId1 + 3} parentId={parentId1} classes={['m1']} defaultChecked={false}>
+          <GroupableCheckboxConnected id={parentId1 + 3} parentId={parentId1} classes={['m1']} defaultChecked={true}>
             <Label classes={['label']}>Checkbox child 3</Label>
           </GroupableCheckboxConnected>
           <GroupableCheckboxConnected id={parentId1 + 4} parentId={parentId1} classes={['m1']} defaultChecked={false}>

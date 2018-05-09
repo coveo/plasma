@@ -3,7 +3,6 @@ import { IReduxAction } from '../../utils/ReduxUtils';
 export interface IGroupableCheckboxActionPayload {
   id: string;
   checked?: boolean;
-  isGroupable?: boolean;
   isParent?: boolean;
   parentId?: string;
 }

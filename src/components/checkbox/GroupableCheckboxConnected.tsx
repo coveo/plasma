@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import * as _ from 'underscore';
 import { IReactVaporState } from '../../ReactVapor';
 import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { IInputDispatchProps, IInputProps } from '../input/Input';
+import { IInputDispatchProps } from '../input/Input';
 import { Checkbox, ICheckboxProps } from './Checkbox';
 import { ICheckboxState } from './CheckboxReducers';
 import {
@@ -13,7 +13,7 @@ import {
 } from './GroupableCheckboxActions';
 import { IGroupableCheckboxesState } from './GroupableCheckboxReducers';
 
-export interface IGroupableCheckboxOwnProps extends IInputProps {
+export interface IGroupableCheckboxOwnProps extends ICheckboxProps {
   isParent?: boolean;
   parentId?: string;
 }
@@ -30,7 +30,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOw
   }
 
   return {
-    checked: ownProps.checked,
+    checked: ownProps.checked || false,
     indeterminate: false,
   };
 };
