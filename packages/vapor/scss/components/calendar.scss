@@ -268,7 +268,7 @@
   justify-content: space-between;
 
   input {
-    width: calc(100% - #{$button-margin-width} - #{$date-picker-dimension});
+    width: 100%;
     padding: $dropdown-choices-top-bottom-margin;
 
     font-size: $default-font-size;
@@ -292,6 +292,7 @@
 
   > span {
     order: 1;
+    margin-left: $default-margin;
   }
 }
 
