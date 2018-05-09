@@ -1,6 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils';
 import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {IActionOptions} from '../../actions/Action';
@@ -10,7 +12,6 @@ import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 import {TableChildComponent, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 import {TableHeadingRowConnected} from '../TableHeadingRowConnected';
 import {getTableChildComponentId} from '../TableUtils';
-import {IAdditionalClass, getAdditionalClasses} from '../../../utils/ClassNameUtils';
 
 export interface ITableBodyInheritedFromTableProps {
     getActions?: (rowData?: IData) => IActionOptions[];
