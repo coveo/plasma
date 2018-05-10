@@ -8,7 +8,7 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {SelectConnected} from '../SelectConnected';
-import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {ISingleSelectOwnProps, ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
     describe('<SingleSelectConnected />', () => {
@@ -18,10 +18,10 @@ describe('Select', () => {
 
         const id: string = 'list-box-connected';
 
-        const mountSingleSelect = (items: IItemBoxProps[] = []) => {
+        const mountSingleSelect = (items: IItemBoxProps[] = [], props: Partial<ISingleSelectProps> = {}) => {
             wrapper = mount(
                 <Provider store={store}>
-                    <SingleSelectConnected id={id} items={items} />
+                    <SingleSelectConnected id={id} items={items} {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
@@ -64,6 +64,17 @@ describe('Select', () => {
 
                 expect(store.getState().selects.length).toBe(0);
             });
+        });
+
+        it('should allow a custom placeholder', () => {
+            const expectedPlaceholder = 'select thingy';
+
+            mountSingleSelect([
+                {value: 'a'},
+                {value: 'b'},
+            ], {placeholder: expectedPlaceholder});
+
+            expect(singleSelect.html()).toContain(expectedPlaceholder);
         });
 
         it('should contains a the selected value', () => {
