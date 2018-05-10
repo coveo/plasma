@@ -1,6 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as moment from 'moment';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
 import {DateUtils} from '../../../utils/DateUtils';
