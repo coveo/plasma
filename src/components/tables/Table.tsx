@@ -212,10 +212,10 @@ export class Table extends React.Component<ITableProps> {
 
     private getTableBody() {
         const tableData: ITableData = this.props.tableCompositeState.data || this.props.initialTableData;
+        const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
         return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
             const currentRowData: IData = tableData.byId[id];
-            const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
             return (
                 <TableChildBody

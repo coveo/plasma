@@ -90,31 +90,6 @@ const actionsSelector = createSelector(
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
     const table: ITableState = state.tables && state.tables[ownProps.id];
     return {
-        actions: table && table.data ? actionsSelector(table.data, ownProps) : [],
-    };
-};
-(byId: ITableById, selectedIds: string[], isMultiSelect: boolean,
-    getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
-    const rowsData: IData[] = [];
-    _.each(selectedIds, (id: string) => {
-        const rowData: IData = byId[id];
-        if (rowData) {
-            rowsData.push(rowData);
-        }
-    });
-    if (getAction && rowsData.length) {
-        const actions: IActionOptions[] = getAction(rowsData[0]);
-        return isMultiSelect && selectedIds.length >= 2
-            ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
-            : actions;
-    }
-    return [];
-},;
-)
-
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
-    const table: ITableState = state.tables && state.tables[ownProps.id];
-    return {
         tableCompositeState: getTableCompositeState(state, ownProps.id),
         actions: table && table.data ? actionsSelector(table.data, ownProps) : [],
     };
