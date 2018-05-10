@@ -243,7 +243,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                 data-toggle='dropdown'
                 onClick={() => this.handleOnClick()}
                 onBlur={() => this.handleOnClose()}
-                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDownDropdownButton(e)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLButtonElement>) => this.handleOnKeyDownDropdownButton(e as any)}
                 style={{
                     maxWidth: this.props.maxWidth,
                 }}

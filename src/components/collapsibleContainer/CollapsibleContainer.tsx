@@ -98,7 +98,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
                 <button
                     type='button'
                     className={this.getCollapsibleHeaderClass()}
-                    onClick={(e: React.MouseEvent<HTMLInputElement>) => this.props.onToggleExpandedState(this.props.expanded)}>
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => this.props.onToggleExpandedState(this.props.expanded)}>
                     {this.props.title}
                     {this.getCollapsibleHeaderIcon()}
                 </button>
