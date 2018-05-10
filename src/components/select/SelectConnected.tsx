@@ -19,6 +19,7 @@ export interface ISelectSpecificProps {
 
 export interface ISelectOwnProps {
     id: string;
+    placeholder?: string;
 }
 
 export interface ISelectStateProps {
@@ -37,6 +38,7 @@ export interface ISelectButtonProps {
     onMouseUp: (e: React.MouseEvent<HTMLElement>) => void;
     onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => void;
     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
+    placeholder?: string;
 }
 
 export interface ISelectProps extends ISelectOwnProps, ISelectStateProps, ISelectDispatchProps {}
@@ -83,6 +85,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
                     onMouseUp: (e: React.MouseEvent<HTMLElement>) => this.onToggleDropdown(e),
                     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
                     onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
+                    placeholder: this.props.placeholder,
                 }} />
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
                     {this.renderChildren()}

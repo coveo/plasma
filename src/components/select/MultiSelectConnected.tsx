@@ -10,7 +10,7 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 
 export interface IMultiSelectOwnProps extends ISelectProps {
-    emptyValueText?: string;
+    placeholder?: string;
     deselectAllTooltipText?: string;
 }
 
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps)
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}> {
     static defaultProps: Partial<IMultiSelectProps> = {
-        emptyValueText: 'No selected values',
+        placeholder: 'No selected values',
         deselectAllTooltipText: 'Deselect All',
     };
 
@@ -66,7 +66,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                 key={item.value}
                 onRemoveClick={() => this.props.onRemoveClick(item)}
             />)
-            : <input placeholder={this.props.emptyValueText} readOnly />;
+            : <input placeholder={this.props.placeholder} readOnly />;
     }
 
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
