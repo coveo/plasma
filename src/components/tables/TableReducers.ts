@@ -101,7 +101,7 @@ export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]):
 };
 
 export const tableReducer = (state: ITableState = tableInitialState,
-    action: IReduxAction<ITableActionPayload>): ITableState => {
+                             action: IReduxAction<ITableActionPayload>): ITableState => {
     switch (action.type) {
         case TableActions.add:
             return {

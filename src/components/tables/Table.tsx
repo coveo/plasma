@@ -77,9 +77,9 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
     rowsMultiSelect?: boolean;
     manual?: (tableOwnProps: ITableOwnProps,
-        shouldResetPage: boolean,
-        tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState) => IThunkAction;
+              shouldResetPage: boolean,
+              tableCompositeState: ITableCompositeState,
+              previousTableCompositeState: ITableCompositeState) => IThunkAction;
 }
 
 export interface ITableCompositeStateProps {
@@ -92,8 +92,8 @@ export interface ITableDispatchProps {
     onUnmount?: () => void;
     onWillUpdate?: (actions: IActionOptions[]) => void;
     onModifyData?: (shouldResetPage: boolean,
-        tableCompositeState: ITableCompositeState,
-        previousTableCompositeState?: ITableCompositeState) => void;
+                    tableCompositeState: ITableCompositeState,
+                    previousTableCompositeState?: ITableCompositeState) => void;
     onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
     onRowClick?: (actions: IActionOptions[], numberOfSelectedIds: number) => void;
 }
@@ -193,7 +193,7 @@ export class Table extends React.Component<ITableProps> {
     }
 
     private hasTableCompositeStateChanged(currentTableCompositeState: ITableCompositeState,
-        nextTableCompositeState: ITableCompositeState): boolean {
+                                          nextTableCompositeState: ITableCompositeState): boolean {
         return !!currentTableCompositeState && (
             currentTableCompositeState.filter !== nextTableCompositeState.filter
             || currentTableCompositeState.perPage !== nextTableCompositeState.perPage
