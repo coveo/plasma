@@ -1,61 +1,88 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { Content, IContentProps } from '../content/Content';
-import { ITooltipProps, Tooltip } from '../tooltip/Tooltip';
+import {Content, IContentProps} from '../content/Content';
+import {PartialStringMatch} from '../partial-string-match/PartialStringMatch';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IItemBoxProps {
-  value: string;
-  displayValue?: string;
-  selected?: boolean;
-  active?: boolean;
-  hidden?: boolean;
-  disabled?: boolean;
-  divider?: boolean;
-  tooltip?: ITooltipProps;
-  classes?: string[];
-  prepend?: IContentProps;
-  append?: IContentProps;
-  onOptionClick?: (option: IItemBoxProps) => void;
+    value: string;
+    displayValue?: string;
+    highlight?: string;
+    selected?: boolean;
+    active?: boolean;
+    hidden?: boolean;
+    disabled?: boolean;
+    divider?: boolean;
+    tooltip?: ITooltipProps;
+    classes?: string[];
+    prepend?: IContentProps;
+    append?: IContentProps;
+    onOptionClick?: (option: IItemBoxProps) => void;
 }
 
 export class ItemBox extends React.Component<IItemBoxProps, any> {
 
-  static defaultProps: Partial<IItemBoxProps> = {
-    tooltip: {
-      title: '',
-    },
-  };
+    static defaultProps: Partial<IItemBoxProps> = {
+        tooltip: {
+            title: '',
+        },
+        highlight: '',
+    };
+    private el: any;
 
-  private getClasses(): string {
-    return classNames('item-box',
-      {
-        'selected': this.props.selected,
-        'active': this.props.active,
-        'disabled': this.props.disabled,
-        'hidden': this.props.hidden,
-        'divider': this.props.divider,
-      },
-      this.props.classes);
-  }
-
-  private handleOnOptionClick = () => {
-    if (this.props.onOptionClick) {
-      this.props.onOptionClick(this.props);
+    componentDidUpdate(prevProps: IItemBoxProps, prevState: IItemBoxProps) {
+        if (!prevProps.active && this.props.active) {
+            // First parent is the span of the tooltip, second is the list
+            const container = this.el.offsetParent;
+            if (container) {
+                this.scrollIfNeeded(this.el, container);
+            }
+        }
     }
-  }
 
-  render() {
-    return (
-      <Tooltip {...this.props.tooltip}>
-        <li
-          className={this.getClasses()}
-          onMouseDown={() => this.handleOnOptionClick()}
-          data-value={this.props.value}>
-          {this.props.prepend ? <Content {...this.props.prepend} /> : null}
-          {this.props.displayValue || this.props.value}
-          {this.props.append ? <Content {...this.props.append} /> : null}
-        </li>
-      </Tooltip>
-    );
-  }
+    private scrollIfNeeded(element: HTMLElement, container: HTMLElement) {
+        if (element.offsetTop < container.scrollTop) {
+            container.scrollTop = element.offsetTop;
+        } else {
+            const offsetBottom = element.offsetTop + element.offsetHeight;
+            const scrollBottom = container.scrollTop + container.offsetHeight;
+            if (offsetBottom > scrollBottom) {
+                container.scrollTop = offsetBottom - container.offsetHeight;
+            }
+        }
+    }
+
+    private getClasses(): string {
+        return classNames('item-box',
+            {
+                'selected': this.props.selected,
+                'active': this.props.active,
+                'disabled': this.props.disabled,
+                'hidden': this.props.hidden,
+                'divider': this.props.divider,
+            },
+            this.props.classes);
+    }
+
+    private handleOnOptionClick = () => {
+        if (this.props.onOptionClick) {
+            this.props.onOptionClick(this.props);
+        }
+    }
+
+    render() {
+        return (
+            <Tooltip {...this.props.tooltip}>
+                <li
+                    ref={(li) => this.el = li}
+                    className={this.getClasses()}
+                    onClick={() => this.handleOnOptionClick()}
+                    data-value={this.props.value}>
+                    {this.props.prepend ? <Content {...this.props.prepend} /> : null}
+                    <PartialStringMatch wholeString={this.props.displayValue || this.props.value} partialMatch={this.props.highlight} caseInsensitive />
+                    {this.props.append ? <Content {...this.props.append} /> : null}
+                </li>
+            </Tooltip>
+        );
+    }
 }

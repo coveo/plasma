@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { TableCollapsibleRowToggle } from './TableCollapsibleRowToggle';
+import {TableCollapsibleRowToggle} from './TableCollapsibleRowToggle';
 
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
   id?: string;
@@ -14,8 +14,8 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
 }
 
 export interface ITableHeadingRowStateProps {
-  opened?: boolean;
-  selected?: boolean;
+    opened?: boolean;
+    selected?: boolean;
 }
 
 export interface ITableHeadingRowDispatchProps {
@@ -25,31 +25,31 @@ export interface ITableHeadingRowDispatchProps {
 }
 
 export interface ITableHeadingRowProps extends ITableHeadingRowOwnProps, ITableHeadingRowStateProps,
-  ITableHeadingRowDispatchProps { }
+    ITableHeadingRowDispatchProps {}
 
 export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
 
-  componentWillMount() {
-    if (this.props.onRender) {
-      this.props.onRender();
+    componentWillMount() {
+        if (this.props.onRender) {
+            this.props.onRender();
+        }
     }
-  }
 
-  componentWillUnmount() {
-    if (this.props.onDestroy) {
-      this.props.onDestroy();
+    componentWillUnmount() {
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
     }
-  }
 
-  render() {
-    const toggle: JSX.Element = this.props.isCollapsible
-      ? <TableCollapsibleRowToggle isExpanded={this.props.opened} />
-      : <td></td>;
-    const rowClasses = classNames({
-      'heading-row': this.props.isCollapsible,
-      'selected': this.props.selected,
-      'opened': this.props.opened,
-    }, this.props.className);
+    render() {
+        const toggle: JSX.Element = this.props.isCollapsible
+            ? <TableCollapsibleRowToggle isExpanded={this.props.opened} />
+            : null;
+        const rowClasses = classNames({
+            'heading-row': this.props.isCollapsible,
+            'selected': this.props.selected,
+            'opened': this.props.opened,
+        }, this.props.className);
 
     return (
       <tr
@@ -68,14 +68,14 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
       this.props.onClick((e.metaKey || e.altKey) && this.props.isMultiSelect);
     }
 
-    if (this.props.onClickCallback) {
-      this.props.onClickCallback();
+        if (this.props.onClickCallback) {
+            this.props.onClickCallback();
+        }
     }
-  }
 
-  private handleDoubleClick() {
-    if (this.props.onDoubleClick) {
-      this.props.onDoubleClick();
+    private handleDoubleClick() {
+        if (this.props.onDoubleClick) {
+            this.props.onDoubleClick();
+        }
     }
-  }
 }

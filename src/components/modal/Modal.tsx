@@ -1,58 +1,79 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { IClassName } from '../../utils/ClassNameUtils';
+import {IClassName} from '../../utils/ClassNameUtils';
 
 export interface IModalOwnProps {
-  id?: string;
-  classes?: IClassName;
-  closeCallback?: () => void;
+    id?: string;
+    classes?: IClassName;
+    closeCallback?: () => void;
+    closeTimeout?: number;
+    layer?: number;
 }
 
 export interface IModalStateProps {
-  isOpened?: boolean;
+    isOpened?: boolean;
 }
 
 export interface IModalDispatchProps {
-  onDestroy?: () => void;
-  onRender?: () => void;
+    onDestroy?: () => void;
+    onRender?: () => void;
 }
 
-export interface IModalProps extends IModalOwnProps, IModalStateProps, IModalDispatchProps { }
+export interface IModalProps extends IModalOwnProps, IModalStateProps, IModalDispatchProps {}
 
 export class Modal extends React.Component<IModalProps, {}> {
 
-  componentWillMount() {
-    if (this.props.onRender) {
-      this.props.onRender();
-    }
-  }
+    static defaultProps: Partial<IModalProps> = {
+        layer: 1,
+    };
 
-  componentWillUnmount() {
-    if (this.props.closeCallback) {
-      this.props.closeCallback();
+    componentWillMount() {
+        if (this.props.onRender) {
+            this.props.onRender();
+        }
     }
-    if (this.props.onDestroy) {
-      this.props.onDestroy();
+
+    componentWillUnmount() {
+        if (this.props.isOpened) {
+            this.closeModal();
+        }
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
     }
-  }
 
-  componentWillReceiveProps(nextProps: IModalProps) {
-    if (this.props.isOpened && !nextProps.isOpened && this.props.closeCallback) {
-      this.props.closeCallback();
+    componentWillReceiveProps(nextProps: IModalProps) {
+        if (this.props.isOpened && !nextProps.isOpened) {
+            this.closeModal();
+        }
     }
-  }
 
-  render() {
-    const classes = classNames('modal-container', this.props.classes, {
-      'opened': this.props.isOpened,
-    });
+    private closeModal() {
+        if (this.props.closeCallback) {
+            if (this.props.closeTimeout) {
+                setTimeout(() => this.props.closeCallback(), this.props.closeTimeout);
+            } else {
+                this.props.closeCallback();
+            }
+        }
+    }
 
-    return (
-      <div className={classes}>
-        <div className='modal-content'>
-          {this.props.children}
-        </div>
-      </div>
-    );
-  }
+    render() {
+        const classes = classNames(
+            'modal-container',
+            this.props.classes,
+            {
+                'opened': this.props.isOpened,
+                [`layer-${this.props.layer}`]: this.props.isOpened,
+            },
+        );
+
+        return (
+            <div className={classes}>
+                <div className='modal-content'>
+                    {this.props.children}
+                </div>
+            </div>
+        );
+    }
 }

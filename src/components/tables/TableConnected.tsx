@@ -33,30 +33,30 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
     (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
   const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, { id: tableState.datePickerRangeId });
 
-  return {
-    id: tableState.id,
-    data: tableState.data,
-    isInError: tableState.isInError,
-    isLoading: tableState.isLoading,
-    filter: filterState && filterState.filterText,
-    page: paginationState && paginationState.pageNb,
-    perPage: perPageState && perPageState.perPage,
-    sortState: {
-      attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
-      order: tableHeaderCellState && tableHeaderCellState.sorted,
-    },
-    predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
-      // the attribute name is stored in the id of the dropdownSearch
-      const attributeName = nextPredicate.id.split(getTableChildComponentId(id, TableChildComponent.PREDICATE))[1];
-      const selectedOption = _.findWhere(nextPredicate.options, { selected: true });
-      return {
-        ...currentPredicates,
-        [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
-      };
-    }, {}),
-    from: datePickerState && datePickerState.appliedLowerLimit,
-    to: datePickerState && datePickerState.appliedUpperLimit,
-  } as ITableCompositeState;
+    return {
+        id: tableState.id,
+        data: tableState.data,
+        isInError: tableState.isInError,
+        isLoading: tableState.isLoading,
+        filter: filterState && filterState.filterText,
+        page: paginationState && paginationState.pageNb,
+        perPage: perPageState && perPageState.perPage,
+        sortState: {
+            attribute: tableHeaderCellState && tableHeaderCellState.attributeToSort,
+            order: tableHeaderCellState && tableHeaderCellState.sorted,
+        },
+        predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
+            // the attribute name is stored in the id of the dropdownSearch
+            const attributeName = nextPredicate.id.split(getTableChildComponentId(id, TableChildComponent.PREDICATE))[1];
+            const selectedOption = _.findWhere(nextPredicate.options, {selected: true});
+            return {
+                ...currentPredicates,
+                [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
+            };
+        }, {}),
+        from: datePickerState && datePickerState.appliedLowerLimit,
+        to: datePickerState && datePickerState.appliedUpperLimit,
+    } as ITableCompositeState;
 };
 
 const getDataById = (data: ITableData, props: ITableOwnProps): ITableById => data.byId;
@@ -137,4 +137,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
 });
 
 export const TableConnected: React.ComponentClass<ITableProps> =
-  connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);
+    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);

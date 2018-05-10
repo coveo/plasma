@@ -1,0 +1,71 @@
+import {ReducersMapObject} from 'redux';
+import {membersReducers} from '../docs/members-example/reducers/MembersReducers';
+import {actionBarsReducer} from './components/actions/ActionBarReducers';
+import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducers';
+import {autocompletesReducer} from './components/autocomplete/AutocompleteReducers';
+import {checkboxesReducer} from './components/checkbox/CheckboxReducers';
+import {groupableCheckboxesReducer} from './components/checkbox/GroupableCheckboxReducers';
+import {collapsibleContainersReducer} from './components/collapsibleContainer/CollapsibleContainerReducers';
+import {datePickersReducer} from './components/datePicker/DatePickerReducers';
+import {dropdownsReducer} from './components/dropdown/DropdownReducers';
+import {dropdownsSearchReducer} from './components/dropdownSearch/DropdownSearchReducers';
+import {facetsReducer} from './components/facets/FacetReducers';
+import {filterBoxesReducer} from './components/filterBox/FilterBoxReducers';
+import {flatSelectsReducer} from './components/flatSelect/FlatSelectReducers';
+import {flippablesReducer} from './components/flippable/FlippableReducers';
+import {promptsReducer} from './components/inlinePrompt/InlinePromptReducers';
+import {inputsReducer} from './components/input/InputReducers';
+import {lastUpdatedCompositeReducer} from './components/lastUpdated/LastUpdatedReducers';
+import {listBoxesReducer} from './components/listBox/ListBoxReducers';
+import {loadingsReducer} from './components/loading/LoadingReducers';
+import {modalsReducer, openModalsReducer} from './components/modal/ModalReducers';
+import {paginationCompositeReducer} from './components/navigation/pagination/NavigationPaginationReducers';
+import {perPageCompositeReducer} from './components/navigation/perPage/NavigationPerPageReducers';
+import {optionPickersReducer} from './components/optionPicker/OptionPickerReducers';
+import {optionsCyclesReducer} from './components/optionsCycle/OptionsCycleReducers';
+import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
+import {selectCompositeReducer} from './components/select/SelectReducers';
+import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
+import {tabGroupsReducer} from './components/tab/TabReducers';
+import {tableHeaderCellsReducer} from './components/tables/TableHeaderCellReducers';
+import {tablesReducer} from './components/tables/TableReducers';
+import {tableRowsReducer} from './components/tables/TableRowReducers';
+import {textAreasReducer} from './components/textarea/TextAreaReducers';
+import {toastsContainerReducer} from './components/toast/ToastReducers';
+
+export const ReactVaporReducers: ReducersMapObject = {
+    autocompletes: autocompletesReducer,
+    tables: tablesReducer,
+    membersCompositeState: membersReducers,
+    lastUpdatedComposite: lastUpdatedCompositeReducer,
+    filters: filterBoxesReducer,
+    facets: facetsReducer,
+    perPageComposite: perPageCompositeReducer,
+    paginationComposite: paginationCompositeReducer,
+    loadings: loadingsReducer,
+    listBoxes: listBoxesReducer,
+    selects: selectCompositeReducer,
+    prompts: promptsReducer,
+    actionBars: actionBarsReducer,
+    dropdowns: dropdownsReducer,
+    dropdownSearch: dropdownsSearchReducer,
+    flatSelect: flatSelectsReducer,
+    rows: tableRowsReducer,
+    itemFilters: itemFiltersReducer,
+    optionsCycles: optionsCyclesReducer,
+    optionPickers: optionPickersReducer,
+    datePickers: datePickersReducer,
+    modals: modalsReducer,
+    openModals: openModalsReducer,
+    subNavigations: subNavigationsReducer,
+    tabs: tabGroupsReducer,
+    toastContainers: toastsContainerReducer,
+    tableHeaderCells: tableHeaderCellsReducer,
+    checkboxes: checkboxesReducer,
+    collapsibleContainers: collapsibleContainersReducer,
+    inputs: inputsReducer,
+    searchBars: searchBarsReducer,
+    flippables: flippablesReducer,
+    groupableCheckboxes: groupableCheckboxesReducer,
+    textAreas: textAreasReducer,
+};

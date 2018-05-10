@@ -1,6 +1,6 @@
-import { IReduxAction } from '../../utils/ReduxUtils';
-import { ITablePredicate } from './Table';
-import { ITableData, ITableState } from './TableReducers';
+import {IReduxAction} from '../../utils/ReduxUtils';
+import {ITablePredicate} from './Table';
+import {ITableData, ITableState} from './TableReducers';
 
 export type ITableStateModifier = (state: ITableState) => ITableState;
 
@@ -26,31 +26,31 @@ export interface ITableActionPayload {
 }
 
 export const addTable = (id: string, initialTableData: ITableData, predicates: ITablePredicate[]): IReduxAction<ITableActionPayload> => ({
-  type: TableActions.add,
-  payload: { id, initialTableData, predicates: predicates || [] },
+    type: TableActions.add,
+    payload: {id, initialTableData, predicates: predicates || []},
 });
 
 export const removeTable = (id: string): IReduxAction<ITableActionPayload> => ({
-  type: TableActions.remove,
-  payload: { id },
+    type: TableActions.remove,
+    payload: {id},
 });
 
 export const setIsInError = (id: string, isInError: boolean): IReduxAction<ITableActionPayload> => ({
-  type: TableActions.inError,
-  payload: { id, isInError },
+    type: TableActions.inError,
+    payload: {id, isInError},
 });
 
 export const modifyState = (
-  id: string,
-  tableStateModifier: ITableStateModifier,
-  shouldResetPage: boolean,
+    id: string,
+    tableStateModifier: ITableStateModifier,
+    shouldResetPage: boolean,
 ): IReduxAction<ITableActionPayload> => ({
-  type: TableActions.modifyState,
-  payload: {
-    id,
-    tableStateModifier,
-    shouldResetPage,
-  },
+    type: TableActions.modifyState,
+    payload: {
+        id,
+        tableStateModifier,
+        shouldResetPage,
+    },
 });
 
 export const updateSelectedRows = (id: string, selectedIds: string[], hasMultipleSelectedRow: boolean): IReduxAction<ITableActionPayload> => ({

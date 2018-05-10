@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-export interface ITabNavigationProps { }
+export interface ITabNavigationProps {}
 
 export class TabNavigation extends React.Component<ITabNavigationProps, any> {
 
-  render() {
+    render() {
 
-    return (
-      <div className='tab-navigation'>
-        {this.props.children}
-      </div>
-    );
-  }
+        return (
+            <div className='tab-navigation'>
+                {this.props.children}
+            </div>
+        );
+    }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import { IReactVaporState } from '../../ReactVapor';
 import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnPr
 });
 
 export const TableHeadingRowConnected: React.ComponentClass<ITableHeadingRowProps> =
-  connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TableHeadingRow);
+    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TableHeadingRow);

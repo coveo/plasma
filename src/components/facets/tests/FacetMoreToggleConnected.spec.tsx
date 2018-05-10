@@ -1,72 +1,72 @@
-import { mount, ReactWrapper } from 'enzyme';
+import {mount, ReactWrapper} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import { Provider } from 'react-redux';
-import { Store } from 'redux';
-import { IReactVaporState } from '../../../ReactVapor';
-import { clearState } from '../../../utils/ReduxUtils';
-import { TestUtils } from '../../../utils/TestUtils';
-import { addFacet, toggleMoreFacetRows } from '../FacetActions';
-import { FacetMoreToggle, IFacetMoreToggleProps } from '../FacetMoreToggle';
-import { FacetMoreToggleConnected } from '../FacetMoreToggleConnected';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
+import {IReactVaporState} from '../../../ReactVapor';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/TestUtils';
+import {addFacet, toggleMoreFacetRows} from '../FacetActions';
+import {FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
+import {FacetMoreToggleConnected} from '../FacetMoreToggleConnected';
 
 describe('Facets', () => {
 
-  describe('<FacetMoreToggleConnected />', () => {
-    const facet: string = 'facet title';
-    let wrapper: ReactWrapper<any, any>;
-    let facetMoreToggle: ReactWrapper<IFacetMoreToggleProps, any>;
-    let store: Store<IReactVaporState>;
+    describe('<FacetMoreToggleConnected />', () => {
+        const facet: string = 'facet title';
+        let wrapper: ReactWrapper<any, any>;
+        let facetMoreToggle: ReactWrapper<IFacetMoreToggleProps, any>;
+        let store: Store<IReactVaporState>;
 
-    beforeEach(() => {
-      store = TestUtils.buildStore();
+        beforeEach(() => {
+            store = TestUtils.buildStore();
 
-      wrapper = mount(
-        <Provider store={store}>
-          <FacetMoreToggleConnected
-            facet={facet}
-          />
-        </Provider>,
-        { attachTo: document.getElementById('App') },
-      );
-      facetMoreToggle = wrapper.find(FacetMoreToggle);
+            wrapper = mount(
+                <Provider store={store}>
+                    <FacetMoreToggleConnected
+                        facet={facet}
+                    />
+                </Provider>,
+                {attachTo: document.getElementById('App')},
+            );
+            facetMoreToggle = wrapper.find(FacetMoreToggle);
 
-      store.dispatch(addFacet(facet));
+            store.dispatch(addFacet(facet));
+        });
+
+        afterEach(() => {
+            store.dispatch(clearState());
+            wrapper.unmount();
+            wrapper.detach();
+        });
+
+        it('should get its state (opened or not) as a prop', () => {
+            const openedProp = facetMoreToggle.props().isOpened;
+
+            expect(openedProp).toBeDefined();
+            expect(openedProp).toBe(false);
+        });
+
+        it('should get what to do when toggling it as a prop', () => {
+            const onToggleProp = facetMoreToggle.props().onToggleMore;
+
+            expect(onToggleProp).toBeDefined();
+        });
+
+        it('should call onToggleMore on change', () => {
+            expect(facetMoreToggle.props().isOpened).toBe(false);
+
+            facetMoreToggle.find('input').simulate('change');
+
+            expect(facetMoreToggle.props().isOpened).toBe(true);
+        });
+
+        it('should be hidden when the other rows are opened', () => {
+            expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(false);
+
+            store.dispatch(toggleMoreFacetRows(facet));
+
+            expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(true);
+        });
     });
-
-    afterEach(() => {
-      store.dispatch(clearState());
-      wrapper.unmount();
-      wrapper.detach();
-    });
-
-    it('should get its state (opened or not) as a prop', () => {
-      const openedProp = facetMoreToggle.props().isOpened;
-
-      expect(openedProp).toBeDefined();
-      expect(openedProp).toBe(false);
-    });
-
-    it('should get what to do when toggling it as a prop', () => {
-      const onToggleProp = facetMoreToggle.props().onToggleMore;
-
-      expect(onToggleProp).toBeDefined();
-    });
-
-    it('should call onToggleMore on change', () => {
-      expect(facetMoreToggle.props().isOpened).toBe(false);
-
-      facetMoreToggle.find('input').simulate('change');
-
-      expect(facetMoreToggle.props().isOpened).toBe(true);
-    });
-
-    it('should be hidden when the other rows are opened', () => {
-      expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(false);
-
-      store.dispatch(toggleMoreFacetRows(facet));
-
-      expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(true);
-    });
-  });
 });

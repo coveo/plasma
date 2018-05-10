@@ -14,173 +14,173 @@ import {unselectAllRows} from './TableRowActions';
 import {getTableChildComponentId, getTableLoadingIds} from './TableUtils';
 
 export const dispatchPreTableStateModification = (tableId: string, dispatch: IDispatch) => {
-  dispatch(unselectAllRows(tableId));
-  dispatch(
-    addActionsToActionBar(
-      getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
-      [],
-    ),
-  );
-  dispatch(turnOnLoading(getTableLoadingIds(tableId)));
+    dispatch(unselectAllRows(tableId));
+    dispatch(
+        addActionsToActionBar(
+            getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
+            [],
+        ),
+    );
+    dispatch(turnOnLoading(getTableLoadingIds(tableId)));
 };
 
 export const dispatchPostTableStateModification = (tableId: string, dispatch: IDispatch) => {
-  dispatch(turnOffLoading(getTableLoadingIds(tableId)));
-  dispatch(changeLastUpdated(getTableChildComponentId(tableId, TableChildComponent.LAST_UPDATED)));
+    dispatch(turnOffLoading(getTableLoadingIds(tableId)));
+    dispatch(changeLastUpdated(getTableChildComponentId(tableId, TableChildComponent.LAST_UPDATED)));
 };
 
 export const applyPredicatesOnDisplayedIds = (
-  nextDisplayedIds: string[],
-  tableDataById: ITableRowData,
-  tableCompositeState: ITableCompositeState,
+    nextDisplayedIds: string[],
+    tableDataById: ITableRowData,
+    tableCompositeState: ITableCompositeState,
 ): string[] => {
-  if (!_.isEmpty(tableCompositeState.predicates)) {
-    _.pairs(tableCompositeState.predicates).forEach((keyValuePair: string[]) => {
-      const attributeName = keyValuePair[0];
-      const attributeValue = keyValuePair[1];
+    if (!_.isEmpty(tableCompositeState.predicates)) {
+        _.pairs(tableCompositeState.predicates).forEach((keyValuePair: string[]) => {
+            const attributeName = keyValuePair[0];
+            const attributeValue = keyValuePair[1];
 
-      if (attributeValue !== TABLE_PREDICATE_DEFAULT_VALUE) {
-        nextDisplayedIds = nextDisplayedIds.filter((dataId: string) =>
-          tableDataById[dataId][attributeName] === attributeValue);
-      }
-    });
-  }
+            if (attributeValue !== TABLE_PREDICATE_DEFAULT_VALUE) {
+                nextDisplayedIds = nextDisplayedIds.filter((dataId: string) =>
+                    tableDataById[dataId][attributeName] === attributeValue);
+            }
+        });
+    }
 
-  return nextDisplayedIds;
+    return nextDisplayedIds;
 };
 
 export const applyFilterOnDisplayedIds = (
-  nextDisplayedIds: string[],
-  tableDataById: ITableRowData,
-  tableCompositeState: ITableCompositeState,
-  tableOwnProps: ITableOwnProps,
+    nextDisplayedIds: string[],
+    tableDataById: ITableRowData,
+    tableCompositeState: ITableCompositeState,
+    tableOwnProps: ITableOwnProps,
 ): string[] => {
-  if (tableCompositeState.filter) {
-    const filterDefault = (dataId: string): boolean => {
-      return tableOwnProps.headingAttributes.some((headingAttribute: ITableHeadingAttribute) => {
-        const {attributeName, attributeFormatter, filterFormatter} = headingAttribute;
-        const attributeValue = tableDataById[dataId][attributeName];
-        let attributeValueToUse = filterFormatter
-          ? filterFormatter(attributeValue)
-          : attributeValue;
-        attributeValueToUse = !filterFormatter && attributeFormatter
-          ? attributeFormatter(attributeValue)
-          : attributeValueToUse;
-        return contains(attributeValueToUse.toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
-      });
-    };
+    if (tableCompositeState.filter) {
+        const filterDefault = (dataId: string): boolean => {
+            return tableOwnProps.headingAttributes.some((headingAttribute: ITableHeadingAttribute) => {
+                const {attributeName, attributeFormatter, filterFormatter} = headingAttribute;
+                const attributeValue = tableDataById[dataId][attributeName];
+                let attributeValueToUse = filterFormatter
+                    ? filterFormatter(attributeValue, tableDataById[dataId])
+                    : attributeValue;
+                attributeValueToUse = !filterFormatter && attributeFormatter
+                    ? attributeFormatter(attributeValue, attributeName, tableDataById[dataId])
+                    : attributeValueToUse;
+                return contains(convertUndefinedAndNullToEmptyString(attributeValueToUse).toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
+            });
+        };
 
-    const filterMethod = tableOwnProps.filterMethod
-      ? (dataId: string): boolean => tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps)
-      : filterDefault;
+        const filterMethod = tableOwnProps.filterMethod
+            ? (dataId: string): boolean => tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps, tableCompositeState.filter)
+            : filterDefault;
 
-    nextDisplayedIds = nextDisplayedIds.filter(filterMethod);
-  }
+        nextDisplayedIds = nextDisplayedIds.filter(filterMethod);
+    }
 
-  return nextDisplayedIds;
+    return nextDisplayedIds;
 };
 
 export const applyDatePickerOnDisplayedIds = (
-  nextDisplayedIds: string[],
-  tableDataById: ITableRowData,
-  tableCompositeState: ITableCompositeState,
-  tableOwnProps: ITableOwnProps,
+    nextDisplayedIds: string[],
+    tableDataById: ITableRowData,
+    tableCompositeState: ITableCompositeState,
+    tableOwnProps: ITableOwnProps,
 ): string[] => {
-  const {from, to} = tableCompositeState;
-  const {datePicker} = tableOwnProps;
-  if (from && to && datePicker && datePicker.attributeName) {
-    nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean =>
-      moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to),
-    );
-  }
+    const {from, to} = tableCompositeState;
+    const {datePicker} = tableOwnProps;
+    if (from && to && datePicker && datePicker.attributeName) {
+        nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean =>
+            moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to),
+        );
+    }
 
-  return nextDisplayedIds;
+    return nextDisplayedIds;
 };
 
 export const applySortOnDisplayedIds = (
-  nextDisplayedIds: string[],
-  tableDataById: ITableRowData,
-  tableCompositeState: ITableCompositeState,
-  tableOwnProps: ITableOwnProps,
+    nextDisplayedIds: string[],
+    tableDataById: ITableRowData,
+    tableCompositeState: ITableCompositeState,
+    tableOwnProps: ITableOwnProps,
 ): string[] => {
-  const {sortState} = tableCompositeState;
-  if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
-    const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, {attributeName: sortState.attribute});
-    const hasCustomSortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod;
+    const {sortState} = tableCompositeState;
+    if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
+        const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, {attributeName: sortState.attribute});
+        const hasCustomSortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod;
 
-    if (hasCustomSortByMethod) {
-      nextDisplayedIds = _.sortBy(
-        nextDisplayedIds,
-        (displayedId: string): string => {
-          const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-          return headingAttributeToSort.sortByMethod(cleanAttributeValue);
-        },
-      );
-    } else {
-      const defaultSortByMethod = (displayedId: string) => {
-        const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-        return cleanAttributeValue.toString().toLowerCase();
-      };
+        if (hasCustomSortByMethod) {
+            nextDisplayedIds = _.sortBy(
+                nextDisplayedIds,
+                (displayedId: string): string => {
+                    const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
+                    return headingAttributeToSort.sortByMethod(cleanAttributeValue, tableDataById[displayedId]);
+                },
+            );
+        } else {
+            const defaultSortByMethod = (displayedId: string) => {
+                const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
+                return cleanAttributeValue.toString().toLowerCase();
+            };
 
-      nextDisplayedIds = _.sortBy(nextDisplayedIds, defaultSortByMethod);
+            nextDisplayedIds = _.sortBy(nextDisplayedIds, defaultSortByMethod);
+        }
+
+        if (sortState.order === TableSortingOrder.DESCENDING) {
+            nextDisplayedIds.reverse();
+        }
     }
 
-    if (sortState.order === TableSortingOrder.DESCENDING) {
-      nextDisplayedIds.reverse();
-    }
-  }
-
-  return nextDisplayedIds;
+    return nextDisplayedIds;
 };
 
 export const applyPaginationOnDisplayedIds = (
-  nextDisplayedIds: string[],
-  tableCompositeState: ITableCompositeState,
+    nextDisplayedIds: string[],
+    tableCompositeState: ITableCompositeState,
 ): string[] => {
-  const startingIndex = (tableCompositeState.page || 0) * (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
-  const endingIndex = startingIndex + (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
-  nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
-  return nextDisplayedIds;
+    const startingIndex = (tableCompositeState.page || 0) * (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
+    const endingIndex = startingIndex + (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
+    nextDisplayedIds = nextDisplayedIds.slice(startingIndex, endingIndex);
+    return nextDisplayedIds;
 };
 
 export const defaultTableStateModifier = (
-  tableOwnProps: ITableOwnProps,
-  tableCompositeState: ITableCompositeState,
+    tableOwnProps: ITableOwnProps,
+    tableCompositeState: ITableCompositeState,
 ): ITableStateModifier => {
-  return (tableState: ITableState): ITableState => {
-    const tableDataById = tableCompositeState.data && tableCompositeState.data.byId || {};
-    let nextDisplayedIds = [...(tableCompositeState.data && tableCompositeState.data.allIds || [])];
+    return (tableState: ITableState): ITableState => {
+        const tableDataById = tableCompositeState.data && tableCompositeState.data.byId || {};
+        let nextDisplayedIds = [...(tableCompositeState.data && tableCompositeState.data.allIds || [])];
 
-    nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
-    nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
-    nextDisplayedIds = applyDatePickerOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+        nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
+        nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+        nextDisplayedIds = applyDatePickerOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
 
-    const totalEntries = nextDisplayedIds.length;
-    const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));
+        const totalEntries = nextDisplayedIds.length;
+        const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));
 
-    nextDisplayedIds = applySortOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
-    nextDisplayedIds = applyPaginationOnDisplayedIds(nextDisplayedIds, tableCompositeState);
+        nextDisplayedIds = applySortOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+        nextDisplayedIds = applyPaginationOnDisplayedIds(nextDisplayedIds, tableCompositeState);
 
-    return {
-      ...tableState,
-      data: {
-        ...tableState.data,
-        displayedIds: nextDisplayedIds,
-        totalEntries,
-        totalPages,
-      },
+        return {
+            ...tableState,
+            data: {
+                ...tableState.data,
+                displayedIds: nextDisplayedIds,
+                totalEntries,
+                totalPages,
+            },
+        };
     };
-  };
 };
 
 export const defaultTableStateModifierThunk = (
-  tableOwnProps: ITableOwnProps,
-  shouldResetPage: boolean,
-  tableCompositeState: ITableCompositeState,
+    tableOwnProps: ITableOwnProps,
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
 ) => {
-  return (dispatch: IDispatch) => {
-    const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);
-    dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
-    dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
-  };
+    return (dispatch: IDispatch) => {
+        const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);
+        dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
+        dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
+    };
 };

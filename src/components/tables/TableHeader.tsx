@@ -1,33 +1,33 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
-import { ITableHeaderCellProps, TableHeaderCell } from './TableHeaderCell';
-import { TableHeaderCellConnected } from './TableHeaderCellConnected';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+import {ITableHeaderCellProps, TableHeaderCell} from './TableHeaderCell';
+import {TableHeaderCellConnected} from './TableHeaderCellConnected';
 
 export interface ITableHeaderProps extends React.ClassAttributes<TableHeader>, IReduxStatePossibleProps {
-  columns: ITableHeaderCellProps[];
-  headerClass?: string;
+    columns: ITableHeaderCellProps[];
+    headerClass?: string;
 }
 
 export class TableHeader extends React.Component<ITableHeaderProps, any> {
-  render() {
-    const columns: JSX.Element[] = _.map(this.props.columns, (column: ITableHeaderCellProps, index: number): JSX.Element => {
-      const TableHeaderCellClass = this.props.withReduxState && column.attributeToSort
-        ? TableHeaderCellConnected
-        : TableHeaderCell;
+    render() {
+        const columns: JSX.Element[] = _.map(this.props.columns, (column: ITableHeaderCellProps, index: number): JSX.Element => {
+            const TableHeaderCellClass = this.props.withReduxState && column.attributeToSort
+                ? TableHeaderCellConnected
+                : TableHeaderCell;
 
-      return (
-        <TableHeaderCellClass
-          key={`th-${column.id || index}`}
-          {...column}
-        />
-      );
-    });
+            return (
+                <TableHeaderCellClass
+                    key={`th-${column.id || index}`}
+                    {...column}
+                />
+            );
+        });
 
-    return (
-      <thead className={this.props.headerClass}>
-        <tr>{columns}</tr>
-      </thead>
-    );
-  }
+        return (
+            <thead className={this.props.headerClass}>
+                <tr>{columns}</tr>
+            </thead>
+        );
+    }
 }

@@ -1,19 +1,19 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ITabProps } from '../tab/Tab';
-import { TabConnected } from '../tab/TabConnected';
-import { TabNavigation } from '../tab/TabNavigation';
+import {ITabProps} from '../tab/Tab';
+import {TabConnected} from '../tab/TabConnected';
+import {TabNavigation} from '../tab/TabNavigation';
 
 export interface ITabsHeaderProps extends React.ClassAttributes<React.Component<any, any>> {
-  tabs?: ITabProps[];
+    tabs?: ITabProps[];
 }
 
 export const TabsHeader = (props: ITabsHeaderProps) => {
-  if (props.tabs) {
-    return (<TabNavigation>
-      {..._.map(props.tabs, (tab: ITabProps) => <TabConnected key={tab.id} {...tab} />)}
-    </TabNavigation>);
-  }
+    if (props.tabs) {
+        return (<TabNavigation>
+            {..._.map(props.tabs, (tab: ITabProps) => <TabConnected key={tab.id} {...tab} />)}
+        </TabNavigation>);
+    }
 
-  return null;
+    return null;
 };

@@ -1,72 +1,72 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { FlatSelectOption, IFlatSelectOptionProps } from './FlatSelectOption';
+import {FlatSelectOption, IFlatSelectOptionProps} from './FlatSelectOption';
 
 export interface IFlatSelectOwnProps {
-  id: string;
-  options: IFlatSelectOptionProps[];
-  classes?: string[];
-  group?: boolean;
-  optionPicker?: boolean;
-  onClick?: (option: IFlatSelectOptionProps) => void;
+    id: string;
+    options: IFlatSelectOptionProps[];
+    classes?: string[];
+    group?: boolean;
+    optionPicker?: boolean;
+    onClick?: (option: IFlatSelectOptionProps) => void;
 }
 
 export interface IFlatSelectStateProps {
-  selectedOptionId?: string;
+    selectedOptionId?: string;
 }
 
 export interface IFlatSelectDispatchProps {
-  onRender?: () => void;
-  onDestroy?: () => void;
-  onOptionClick?: (option: IFlatSelectOptionProps) => void;
+    onRender?: () => void;
+    onDestroy?: () => void;
+    onOptionClick?: (option: IFlatSelectOptionProps) => void;
 }
 
-export interface IFlatSelectProps extends IFlatSelectOwnProps, IFlatSelectStateProps, IFlatSelectDispatchProps { }
+export interface IFlatSelectProps extends IFlatSelectOwnProps, IFlatSelectStateProps, IFlatSelectDispatchProps {}
 
 export class FlatSelect extends React.Component<IFlatSelectProps> {
 
-  componentWillMount() {
-    if (this.props.onRender) {
-      this.props.onRender();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.props.onDestroy) {
-      this.props.onDestroy();
-    }
-  }
-
-  private handleOnOptionClick(option: IFlatSelectOptionProps) {
-    if (this.props.onOptionClick) {
-      this.props.onOptionClick(option);
+    componentWillMount() {
+        if (this.props.onRender) {
+            this.props.onRender();
+        }
     }
 
-    if (this.props.onClick) {
-      this.props.onClick(option);
+    componentWillUnmount() {
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
     }
-  }
 
-  private getOptions(): JSX.Element[] {
-    return _.map(this.props.options, (flatSelectOption: IFlatSelectOptionProps, index: number) => {
-      flatSelectOption.selected = this.props.selectedOptionId && this.props.selectedOptionId === flatSelectOption.id;
-      flatSelectOption.onClick = (option: IFlatSelectOptionProps) => this.handleOnOptionClick(option);
+    private handleOnOptionClick(option: IFlatSelectOptionProps) {
+        if (this.props.onOptionClick) {
+            this.props.onOptionClick(option);
+        }
 
-      return <FlatSelectOption key={index} {...flatSelectOption} />;
-    });
-  }
+        if (this.props.onClick) {
+            this.props.onClick(option);
+        }
+    }
 
-  render() {
-    const classes: string = classNames('flat-select', {
-      'mod-btn-group': this.props.group,
-      'mod-option-picker': this.props.optionPicker,
-    }, this.props.classes);
+    private getOptions(): JSX.Element[] {
+        return _.map(this.props.options, (flatSelectOption: IFlatSelectOptionProps, index: number) => {
+            flatSelectOption.selected = this.props.selectedOptionId && this.props.selectedOptionId === flatSelectOption.id;
+            flatSelectOption.onClick = (option: IFlatSelectOptionProps) => this.handleOnOptionClick(option);
 
-    return (
-      <div className={classes}>
-        {this.getOptions()}
-      </div>
-    );
-  }
+            return <FlatSelectOption key={index} {...flatSelectOption} />;
+        });
+    }
+
+    render() {
+        const classes: string = classNames('flat-select', {
+            'mod-btn-group': this.props.group,
+            'mod-option-picker': this.props.optionPicker,
+        }, this.props.classes);
+
+        return (
+            <div className={classes}>
+                {this.getOptions()}
+            </div>
+        );
+    }
 }

@@ -1,30 +1,34 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import {IClassName} from '../../utils/ClassNameUtils';
 
 export interface ITabPaneOwnProps {
-  groupId?: string;
-  id?: string;
+    groupId?: string;
+    id?: string;
+    className?: IClassName;
 }
 
 export interface ITabPaneStateProps {
-  isActive?: boolean;
+    isActive?: boolean;
 }
 
-export interface ITabPaneDispatchProps { }
+export interface ITabPaneDispatchProps {}
 
-export interface ITabPaneProps extends ITabPaneOwnProps, ITabPaneStateProps, ITabPaneDispatchProps { }
+export interface ITabPaneProps extends ITabPaneOwnProps, ITabPaneStateProps, ITabPaneDispatchProps {}
 
 export class TabPane extends React.Component<ITabPaneProps, any> {
 
-  render() {
-    const classes = ['tab-pane'];
-    if (this.props.isActive) {
-      classes.push('active');
-    }
+    render() {
+        const classes = classNames(
+            'tab-pane',
+            this.props.className,
+            {active: this.props.isActive},
+        );
 
-    return (
-      <div className={classes.join(' ')}>
-        {this.props.children}
-      </div>
-    );
-  }
+        return (
+            <div className={classes}>
+                {this.props.children}
+            </div>
+        );
+    }
 }

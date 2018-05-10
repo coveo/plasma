@@ -6,9 +6,9 @@ import { LoadingActions } from '../loading/LoadingActions';
 import { ITablePredicate } from './Table';
 import { ITableActionPayload, TableActions } from './TableActions';
 import {
-  DEFAULT_TABLE_DATA,
-  TableChildComponent,
-  TableSortingOrder,
+    DEFAULT_TABLE_DATA,
+    TableChildComponent,
+    TableSortingOrder,
 } from './TableConstants';
 import { TableHeaderCellActions } from './TableHeaderCellActions';
 import { getTableChildComponentId } from './TableUtils';
@@ -30,7 +30,7 @@ export interface ITableData {
 }
 
 export interface ITablesState {
-  [id: string]: ITableState;
+    [id: string]: ITableState;
 }
 
 export type attributeName = any;
@@ -57,34 +57,36 @@ export interface ITableCompositeState {
 }
 
 export interface ITableState {
-  id: string;
-  data: ITableData;
-  isInError: boolean;
-  isLoading: boolean;
-  filterId: string;
-  datePickerId: string;
-  datePickerRangeId: string;
-  paginationId: string;
-  perPageId: string;
-  predicateIds: string[];
-  tableHeaderCellId: string;
+    id: string;
+    data: ITableData;
+    isInError: boolean;
+    isLoading: boolean;
+    filterId: string;
+    datePickerId: string;
+    datePickerRangeId: string;
+    paginationId: string;
+    perPageId: string;
+    predicateIds: string[];
+    tableHeaderCellId: string;
+    yPosition: number;
 }
 
 export const tableInitialState: ITableState = {
-  id: undefined,
-  data: DEFAULT_TABLE_DATA,
-  isInError: false,
-  isLoading: false,
-  paginationId: undefined,
-  perPageId: undefined,
-  filterId: undefined,
-  predicateIds: [],
-  tableHeaderCellId: undefined,
-  datePickerId: undefined,
-  datePickerRangeId: undefined,
+    id: undefined,
+    data: DEFAULT_TABLE_DATA,
+    isInError: false,
+    isLoading: false,
+    paginationId: undefined,
+    perPageId: undefined,
+    filterId: undefined,
+    predicateIds: [],
+    tableHeaderCellId: undefined,
+    datePickerId: undefined,
+    datePickerRangeId: undefined,
+    yPosition: undefined,
 };
 
-export const tablesInitialState: {[tableId: string]: ITableState; } = {};
+export const tablesInitialState: {[tableId: string]: ITableState;} = {};
 
 export const updateSelectedIDs = (newState: ITableState, oldSelectedIds: string[]): ITableState => {
 
@@ -92,11 +94,10 @@ export const updateSelectedIDs = (newState: ITableState, oldSelectedIds: string[
     return !_.contains(newState.data.displayedIds, selectedId);
   });
   return { ...newState, data: { ...newState.data, selectedIds: newSelectedIds } };
-};
 
-export const tableReducer = (state: ITableState = tableInitialState,
-                             action: IReduxAction<ITableActionPayload>): ITableState => {
-  let selectedIds: string[];
+export const tableReducer = (
+    state: ITableState = tableInitialState,
+    action: IReduxAction<IReduxActionsPayload>,
   switch (action.type) {
     case TableActions.add:
       return {
@@ -145,21 +146,21 @@ export const tableReducer = (state: ITableState = tableInitialState,
 };
 
 export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAction<ITableActionPayload | any>) => {
-  switch (action.type) {
-    case TableActions.add:
-      return {
-        ...tablesState,
-        [action.payload.id]: tableReducer(undefined, action),
-      };
-    case TableActions.remove:
-      return _.omit(tablesState, action.payload.id);
-    default:
-      const currentTableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
-        ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
-        : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
+    switch (action.type) {
+        case TableActions.add:
+            return {
+                ...tablesState,
+                [action.payload.id]: tableReducer(undefined, action),
+            };
+        case TableActions.remove:
+            return _.omit(tablesState, action.payload.id);
+        default:
+            const currentTableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
+                ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
+                : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
 
-      return currentTableId
-        ? { ...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action) }
-        : tablesState;
-  }
+            return currentTableId
+                ? {...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action)}
+                : tablesState;
+    }
 };

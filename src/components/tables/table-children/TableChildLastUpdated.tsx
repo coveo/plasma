@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { LastUpdatedConnected } from '../../lastUpdated/LastUpdatedConnected';
-import { ITableProps } from '../Table';
-import { TableChildComponent } from '../TableConstants';
-import { getTableChildComponentId } from '../TableUtils';
+import {LastUpdatedConnected} from '../../lastUpdated/LastUpdatedConnected';
+import {ITableProps} from '../Table';
+import {TableChildComponent} from '../TableConstants';
+import {getTableChildComponentId} from '../TableUtils';
 
 export const TableChildLastUpdated = (props: ITableProps): JSX.Element =>
-  <LastUpdatedConnected
-    label={props.lastUpdatedLabel}
-    id={getTableChildComponentId(props.id, TableChildComponent.LAST_UPDATED)}
-  />;
+    <LastUpdatedConnected
+        label={props.lastUpdatedLabel}
+        id={getTableChildComponentId(props.id, TableChildComponent.LAST_UPDATED)}
+    />;

@@ -1,14 +1,26 @@
-import { connect } from 'react-redux';
-import { IReduxActionsPayload } from '../../ReactVapor';
-import { IReduxAction, ReduxUtils } from '../../utils/ReduxUtils';
-import { closeModal } from './ModalActions';
-import { IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps, ModalHeader } from './ModalHeader';
+import {connect} from 'react-redux';
+import * as _ from 'underscore';
+import {IReactVaporState} from '../../ReactVapor';
+import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
+import {closeModal} from './ModalActions';
+import {
+    IModalHeaderDispatchProps,
+    IModalHeaderOwnProps,
+    IModalHeaderProps,
+    IModalHeaderStateProps,
+    ModalHeader,
+} from './ModalHeader';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state: IReactVaporState, ownProps: IModalHeaderOwnProps): IModalHeaderStateProps => {
+    const lastOpenedModal = _.last(state.openModals);
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-                            ownProps: IModalHeaderOwnProps): IModalHeaderDispatchProps => ({
+    return {
+        lastOpened: ownProps.id === lastOpenedModal,
+    };
+};
+
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalHeaderOwnProps): IModalHeaderDispatchProps => ({
     onClose: () => dispatch(closeModal(ownProps.id)),
-  });
+});
 
 export const ModalHeaderConnected: React.ComponentClass<IModalHeaderProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalHeader);
