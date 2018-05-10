@@ -94,22 +94,22 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
     };
 };
 (byId: ITableById, selectedIds: string[], isMultiSelect: boolean,
-     getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
-        const rowsData: IData[] = [];
-        _.each(selectedIds, (id: string) => {
-            const rowData: IData = byId[id];
-            if (rowData) {
-                rowsData.push(rowData);
-            }
-        });
-        if (getAction && rowsData.length) {
-            const actions: IActionOptions[] = getAction(rowsData[0]);
-            return isMultiSelect && selectedIds.length >= 2
-                ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
-                : actions;
+    getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
+    const rowsData: IData[] = [];
+    _.each(selectedIds, (id: string) => {
+        const rowData: IData = byId[id];
+        if (rowData) {
+            rowsData.push(rowData);
         }
-        return [];
-    },;
+    });
+    if (getAction && rowsData.length) {
+        const actions: IActionOptions[] = getAction(rowsData[0]);
+        return isMultiSelect && selectedIds.length >= 2
+            ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
+            : actions;
+    }
+    return [];
+},;
 )
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
@@ -139,7 +139,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
         }
     },
     onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState,
-                   previousTableCompositeState: ITableCompositeState) => {
+        previousTableCompositeState: ITableCompositeState) => {
         if (ownProps.manual) {
             dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));
         } else {
