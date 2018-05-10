@@ -234,10 +234,9 @@ export class Table extends React.Component<ITableProps> {
     }
 
     private getTableBody() {
-        const tableData: ITableData = this.props.tableCompositeState.data || this.props.initialTableData;
-        const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
+        const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
 
-        return tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
+        const tableBodyNode: React.ReactNode = tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
             const currentRowData: IData = tableData.byId[id];
 
             return (
@@ -249,12 +248,20 @@ export class Table extends React.Component<ITableProps> {
                     getActions={(rowData?: IData) => (this.props.getActions && this.props.getActions(rowData)) || []}
                     headingAttributes={this.props.headingAttributes}
                     collapsibleFormatter={this.props.collapsibleFormatter}
-                    onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions, numberOfSelectedIds)}
+                    onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions)}
                     handleOnRowClick={this.props.handleOnRowClick}
                     additionalRowClasses={this.props.additionalRowClasses}
                     isMultiSelect={this.props.rowsMultiSelect}
                 />
             );
         });
+
+        return this.props.collapsibleFormatter
+            ? tableBodyNode
+            : (
+                   <tbody className={classNames(this.props.tableBodyClasses)}>
+                   {tableBodyNode}
+                   </tbody>
+               );
     }
 }
