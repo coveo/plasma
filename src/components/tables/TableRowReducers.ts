@@ -7,6 +7,7 @@ export interface ITableRowState {
     opened: boolean;
     selected: boolean;
     tableId?: string;
+    rowId?: string;
 }
 
 export const tableRowInitialState: ITableRowState = {id: undefined, opened: undefined, selected: undefined};
@@ -18,6 +19,7 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
             return {
                 id: action.payload.id,
                 tableId: action.payload.tableId,
+                rowId: action.payload.rowId,
                 opened: false,
                 selected: false,
             };

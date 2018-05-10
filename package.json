@@ -43,6 +43,7 @@
   ],
   "dependencies": {
     "react-bootstrap": "0.31.3",
+    "reselect": "3.0.1",
     "react-codemirror": "1.0.0",
     "react-tether": "0.5.7"
   },
