@@ -217,8 +217,11 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
             label = this.formatDate(this.props.datePicker.appliedLowerLimit);
             if (this.props.datePicker.isRange) {
-                toLabel = <span className='to-label'> {this.props.toLabel} </span>;
-                labelSecondPart = this.formatDate(this.props.datePicker.appliedUpperLimit);
+                const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
+                if (formattedUpper !== label) {
+                    toLabel = <span className='to-label'> {this.props.toLabel} </span>;
+                    labelSecondPart = formattedUpper;
+                }
             }
         }
 

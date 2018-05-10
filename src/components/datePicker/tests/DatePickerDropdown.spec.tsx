@@ -1,4 +1,5 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
+import * as moment from 'moment';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -215,6 +216,31 @@ describe('Date picker', () => {
             });
             datePickerDropdown.setProps(newProps);
             expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain('EMPTY_LABEL');
+        });
+
+        it('should not display the to-label and the upperlimit if it is equal to the lower limit', () => {
+            const start = moment().startOf('day').toDate();
+            const end = moment().endOf('day').toDate();
+            const formattedNow: string = DateUtils.getSimpleDate(start);
+            datePicker = {
+                id: 'id',
+                calendarId: 'calendarId',
+                color: 'color',
+                lowerLimit: start,
+                upperLimit: end,
+                isRange: true,
+                isClearable: false,
+                selected: '',
+                appliedLowerLimit: start,
+                appliedUpperLimit: end,
+                inputLowerLimit: start,
+                inputUpperLimit: end,
+            };
+            const propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {datePicker});
+            datePickerDropdown.setProps(propsWithDatePicker);
+
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).toBe(formattedNow);
+            expect(datePickerDropdown.find('.to-label').length).toBe(0);
         });
 
         it('should call handleClick when clicking the dropdown toggle', () => {
