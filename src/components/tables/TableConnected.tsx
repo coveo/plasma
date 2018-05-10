@@ -70,7 +70,7 @@ const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => pro
 const actionsSelector = createSelector(
     [getDataById, getSelectedIds, getMultiSelect, getActions],
     (byId: ITableById, selectedIds: string[], isMultiSelect: boolean,
-        getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
+     getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
         const rowsData: IData[] = [];
         _.each(selectedIds, (id: string) => {
             const rowData: IData = byId[id];
@@ -115,7 +115,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
         }
     },
     onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState) => {
+                   previousTableCompositeState: ITableCompositeState) => {
         if (ownProps.manual) {
             dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));
         } else {
@@ -124,7 +124,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
     },
     onRowClick: (actions: IActionOptions[] = [], numberOfSelectedIds: number) => {
         actions = ownProps.rowsMultiSelect && numberOfSelectedIds >= 2 ? _.filter(actions, (action: IActionOptions) => !!action.grouped) :
-            actions;
+                  actions;
         dispatch(
             addActionsToActionBar(
                 getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR),
