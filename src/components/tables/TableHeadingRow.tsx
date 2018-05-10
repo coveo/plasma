@@ -5,10 +5,12 @@ import {TableCollapsibleRowToggle} from './TableCollapsibleRowToggle';
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
     id?: string;
     tableId?: string;
+    rowId?: string;
     isCollapsible: boolean;
     onClickCallback?: () => void;
     onDoubleClick?: () => void;
     className?: string;
+    isMultiSelect?: boolean;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -19,7 +21,7 @@ export interface ITableHeadingRowStateProps {
 export interface ITableHeadingRowDispatchProps {
     onRender?: () => void;
     onDestroy?: () => void;
-    onClick?: () => void;
+    onClick?: (hasMultipleSelectedRow: boolean) => void;
 }
 
 export interface ITableHeadingRowProps extends ITableHeadingRowOwnProps, ITableHeadingRowStateProps,
@@ -52,7 +54,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
         return (
             <tr
                 className={rowClasses}
-                onClick={() => this.handleClick()}
+                onClick={(e: React.MouseEvent<any>) => this.handleClick(e)}
                 onDoubleClick={() => this.handleDoubleClick()}
             >
                 {this.props.children}
@@ -61,9 +63,9 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
         );
     }
 
-    private handleClick() {
+    private handleClick(e: React.MouseEvent<any>) {
         if (this.props.onClick) {
-            this.props.onClick();
+            this.props.onClick((e.metaKey || e.altKey) && this.props.isMultiSelect);
         }
 
         if (this.props.onClickCallback) {

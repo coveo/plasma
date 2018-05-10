@@ -1,7 +1,5 @@
 import * as Redux from 'redux';
 import thunk from 'redux-thunk';
-import {textAreasReducer} from '../components/textarea/TextAreaReducers';
-
 import {actionBarsReducer} from '../components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReducers';
 import {autocompletesReducer} from '../components/autocomplete/AutocompleteReducers';
@@ -33,6 +31,7 @@ import {tabGroupsReducer} from '../components/tab/TabReducers';
 import {tableHeaderCellsReducer} from '../components/tables/TableHeaderCellReducers';
 import {tablesReducer} from '../components/tables/TableReducers';
 import {tableRowsReducer} from '../components/tables/TableRowReducers';
+import {textAreasReducer} from '../components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from '../components/toast/ToastReducers';
 import {ITooltipProps} from '../components/tooltip/Tooltip';
 import {IReactVaporState} from '../ReactVapor';
