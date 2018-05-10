@@ -8,7 +8,7 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {SelectConnected} from '../SelectConnected';
-import {ISingleSelectOwnProps, ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
     describe('<SingleSelectConnected />', () => {
