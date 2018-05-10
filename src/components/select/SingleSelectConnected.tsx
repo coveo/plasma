@@ -7,7 +7,7 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 
 export interface ISingleSelectOwnProps extends ISelectProps {
-    emptyPlaceholder?: string;
+    placeholder?: string;
 }
 
 export interface ISingleSelectStateProps {
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps
 export class SingleSelectConnected extends React.Component<ISingleSelectProps, {}> {
 
     static defaultProps: Partial<ISingleSelectOwnProps> = {
-        emptyPlaceholder: 'Select an option',
+        placeholder: 'Select an option',
     };
 
     render() {
@@ -78,6 +78,6 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
             );
         }
 
-        return <span className='dropdown-no-value'>{this.props.emptyPlaceholder}</span>;
+        return <span className='dropdown-no-value'>{this.props.placeholder}</span>;
     }
 }

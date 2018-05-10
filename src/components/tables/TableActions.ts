@@ -5,24 +5,24 @@ import {ITableData, ITableState} from './TableReducers';
 export type ITableStateModifier = (state: ITableState) => ITableState;
 
 export const TableActions = {
-  add: 'ADD_TABLE',
-  remove: 'REMOVE_TABLE',
-  inError: 'IN_ERROR_TABLE',
-  modifyState: 'MODIFY_STATE_TABLE',
-  updateSelectedIds: 'UPDATE_SELECTED_IDS_TABLE',
+    add: 'ADD_TABLE',
+    remove: 'REMOVE_TABLE',
+    inError: 'IN_ERROR_TABLE',
+    modifyState: 'MODIFY_STATE_TABLE',
+    updateSelectedIds: 'UPDATE_SELECTED_IDS_TABLE',
 };
 
 export interface ITableActionPayload {
-  id: string;
-  isInError?: boolean;
-  initialTableData?: ITableData;
-  initialPerPage?: number;
-  headingAttributeIds?: string[];
-  predicates?: ITablePredicate[];
-  tableStateModifier?: ITableStateModifier;
-  shouldResetPage?: boolean;
-  selectedIds?: string[];
-  hasMultipleSelectedRow?: boolean;
+    id: string;
+    isInError?: boolean;
+    initialTableData?: ITableData;
+    initialPerPage?: number;
+    headingAttributeIds?: string[];
+    predicates?: ITablePredicate[];
+    tableStateModifier?: ITableStateModifier;
+    shouldResetPage?: boolean;
+    selectedIds?: string[];
+    hasMultipleSelectedRow?: boolean;
 }
 
 export const addTable = (id: string, initialTableData: ITableData, predicates: ITablePredicate[]): IReduxAction<ITableActionPayload> => ({
@@ -54,10 +54,10 @@ export const modifyState = (
 });
 
 export const updateSelectedRows = (id: string, selectedIds: string[], hasMultipleSelectedRow: boolean): IReduxAction<ITableActionPayload> => ({
-  type: TableActions.updateSelectedIds,
-  payload: {
-    id,
-    selectedIds,
-    hasMultipleSelectedRow,
-  },
+    type: TableActions.updateSelectedIds,
+    payload: {
+        id,
+        selectedIds,
+        hasMultipleSelectedRow,
+    },
 });

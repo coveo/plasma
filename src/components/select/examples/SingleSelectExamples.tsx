@@ -55,9 +55,9 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
             <div>
                 <h1>Single Select</h1>
                 <div className='form-group'>
-                    <label className='form-control-label'>A Simple Single Select</label>
+                    <label className='form-control-label'>A Simple Single Select with a Custom Placeholder</label>
                     <br />
-                    <SingleSelectConnected id={UUID.generate()} items={this.state.first} />
+                    <SingleSelectConnected id={UUID.generate()} items={this.state.first} placeholder='Select something' />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>A Single Select With Filter</label>

@@ -1,6 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils';
 import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {IActionOptions} from '../../actions/Action';
@@ -15,6 +17,7 @@ export interface ITableBodyInheritedFromTableProps {
     getActions?: (rowData?: IData) => IActionOptions[];
     headingAttributes: ITableHeadingAttribute[];
     collapsibleFormatter?: (tableRowData: IData) => JSXRenderable;
+    additionalRowClasses?: IAdditionalClass[];
 }
 
 export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps {
@@ -22,7 +25,7 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
     rowData: IData;
     isLoading: boolean;
     onRowClick?: (actions: IActionOptions[]) => void;
-  	isMultiSelect: boolean;
+    isMultiSelect: boolean;
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
 }
 
@@ -55,9 +58,12 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
     const tableRowWrapperClasses = classNames({
         'table-body-loading': !!props.isLoading,
     });
-    const tableRowClasses = classNames({
-        disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
-    });
+    const tableRowClasses = classNames(
+        {
+            disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
+        },
+        getAdditionalClasses(props.additionalRowClasses, props.rowData),
+    );
 
     const tableHeadingRowConnectedNode = (
         <TableHeadingRowConnected
@@ -78,8 +84,8 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
                 .filter((action) => action.callOnDoubleClick)
                 .forEach((action) => action.trigger())
             }
-			isMultiSelect={props.isMultiSelect}
-		>
+            isMultiSelect={props.isMultiSelect}
+        >
             {tableHeadingRowContent}
         </TableHeadingRowConnected>
     );

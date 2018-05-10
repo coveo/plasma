@@ -3,26 +3,23 @@ import * as loremIpsum from 'lorem-ipsum';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
 import {Breadcrumb} from '../../breadcrumbs/Breadcrumb';
+import {Button} from '../../button/Button';
+import {Checkbox} from '../../checkbox/Checkbox';
 import {CheckboxConnected} from '../../checkbox/CheckboxConnected';
 import {GroupableCheckboxConnected} from '../../checkbox/GroupableCheckboxConnected';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
-import {IData, ITableRowData} from '../Table';
 import {ITableOwnProps} from '../Table';
+import {IData, ITableRowData} from '../Table';
 import {modifyState, setIsInError} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification} from '../TableDataModifier';
 import {ITableCompositeState, ITableData, ITablesState, ITableState} from '../TableReducers';
-import {modifyState, setIsInError} from '../TableActions';
-import {TableConnected} from '../TableConnected';
-import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
-import {defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification} from '../TableDataModifier';
-import {ITableCompositeState, ITableData, ITablesState, ITableState} from '../TableReducers';
-import {Checkbox} from '../../checkbox/Checkbox';
 
 const generateText = () => loremIpsum({count: 1, sentenceUpperBound: 3});
 const generateBoolean = () => Math.random() <= 0.5;
@@ -103,7 +100,7 @@ const tableDataWithBoolean = (): ITableData => {
 };
 
 const buildNewTableStateManually = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState,
-                                    tableOwnProps: ITableOwnProps): ITableState => {
+    tableOwnProps: ITableOwnProps): ITableState => {
     const totalEntries = data.count;
     const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
     const newTableData = data.reduce((finalTableData: ITableData, comment: any, arr: any[]) => {
@@ -138,7 +135,7 @@ const updateAllBooleanInCurrentState = (id: string) => {
 };
 
 const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean,
-                         tableCompositeState: ITableCompositeState): IThunkAction => {
+    tableCompositeState: ITableCompositeState): IThunkAction => {
     return (dispatch: IDispatch, getState: () => {[globalStateProp: string]: any; tables: ITablesState;}) => {
         const currentTableState = getState().tables[tableOwnProps.id];
         dispatchPreTableStateModification(tableOwnProps.id, dispatch);
@@ -239,15 +236,15 @@ export class TableExamples extends React.Component<any, any> {
                                 attributeName: 'attribute1',
                                 titleFormatter: (attributeName: string) => {
                                     return <span>
-                      <Checkbox checked={true} classes={'mr1'}/>
+                                        <Checkbox checked={true} classes={'mr1'} />
                                         {attributeName}
-                    </span>;
+                                    </span>;
                                 },
                                 attributeFormatter: (attributeName: string) => {
                                     return <span>
-                      <Checkbox checked={true} classes={'mr1'}/>
+                                        <Checkbox checked={true} classes={'mr1'} />
                                         {attributeName}
-                    </span>;
+                                    </span>;
                                 },
                             },
                             {
@@ -263,6 +260,28 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
+                    headingAttributes={[
+                        {
+                            attributeFormatter: (attributeName: string) => {
+                                return <span>
+                                    <Checkbox checked={true} classes={'mr1'} />
+                                    {attributeName}
+                                </span>;
+                            },
+                        },
+                        {
+                            attributeName: 'attribute4',
+                            titleFormatter: _.identity,
+                        },
+                        {
+                            attributeName: 'attribute3',
+                            titleFormatter: _.identity,
+                        },
+                    ]}
+                    blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>Simplest Table with a custom header</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
@@ -273,7 +292,8 @@ export class TableExamples extends React.Component<any, any> {
                                 titleFormatter: () => {
                                     return <div>
                                         <GroupableCheckboxConnected id={'SFCheckboxes'} parentId={'parent-id'} classes={['mt1 mr1']}
-                                                                    defaultChecked={false}/>
+                                            defaultChecked={false} />
+                                        defaultChecked={false} />
                                         <span>Selected</span>
                                     </div>;
                                 },
@@ -503,9 +523,53 @@ export class TableExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>Table with actions to modify icon when the row data has changed
                     </label>
-                    <br/>
+                    <br />
                     <Button name={'Toggle attribute3 to false'} enabled={true} classes={['m1']}
-                            onClick={() => updateAllBooleanInCurrentState('react-vapor-table-update-actions')}/>
+                        onClick={() => updateAllBooleanInCurrentState('react-vapor-table-update-actions')} />
+                    <TableConnected
+                        id={'react-vapor-table-update-actions'}
+                        initialTableData={tableDataWithBoolean()}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute2',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                                attributeFormatter: (attributeValue: boolean) => attributeValue ? 'is true' : 'is false',
+                            },
+                        ]}
+                        filter
+                        getActions={(rowData: IData) => ([
+                            {
+                                name: 'Toggle attribute3',
+                                trigger: () => updateAllBooleanInCurrentState('react-vapor-table-update-actions'),
+                                icon: rowData.attribute3 ? 'check' : 'clear',
+                                primary: true,
+                                enabled: true,
+                            },
+                            {
+                                name: 'Delete',
+                                icon: 'delete',
+                                primary: true,
+                                enabled: true,
+                                grouped: true,
+                            },
+                        ])}
+                        blankSlateDefault={{title: 'Oh my oh my, nothing to see here :(!'}}
+                        actionBar={{extraContainerClasses: ['mod-border-top']}}
+                        navigation={{perPageNumbers}}
+                    />
+                </div>
+                <div className='form-group'>
+                    <br />
+                    <Button name={'Toggle attribute3 to false'} enabled={true} classes={['m1']}
+                        onClick={() => updateAllBooleanInCurrentState('react-vapor-table-update-actions')} />
                     <TableConnected
                         id={'react-vapor-table-update-actions'}
                         initialTableData={tableDataWithBoolean()}
@@ -556,7 +620,7 @@ export class TableExamples extends React.Component<any, any> {
                                 attributeName: 'attribute5',
                                 titleFormatter: _.identity,
                                 attributeFormatter: (value: boolean, name: string, data: IData) => <CheckboxConnected id={data.id}
-                                                                                                                      defaultChecked={value}/>,
+                                    defaultChecked={value} />,
                             },
                             {
                                 attributeName: 'attribute4',
@@ -570,7 +634,6 @@ export class TableExamples extends React.Component<any, any> {
                         blankSlateDefault={{title: 'No results!'}}
                     />
                 </div>
-            </div>
-        );
+            </div>);
     }
 }

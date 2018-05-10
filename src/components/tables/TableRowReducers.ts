@@ -3,11 +3,11 @@ import {IReduxAction} from '../../utils/ReduxUtils';
 import {ITableRowActionPayload, TableRowActions} from './TableRowActions';
 
 export interface ITableRowState {
-  id: string;
-  opened: boolean;
-  selected: boolean;
-  tableId?: string;
-  rowId?: string;
+    id: string;
+    opened: boolean;
+    selected: boolean;
+    tableId?: string;
+    rowId?: string;
 }
 
 export const tableRowInitialState: ITableRowState = {id: undefined, opened: undefined, selected: undefined};
@@ -19,7 +19,7 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
             return {
                 id: action.payload.id,
                 tableId: action.payload.tableId,
-				rowId: action.payload.rowId,
+                rowId: action.payload.rowId,
                 opened: false,
                 selected: false,
             };
