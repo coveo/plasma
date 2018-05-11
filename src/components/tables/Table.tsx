@@ -194,7 +194,6 @@ export class Table extends React.Component<ITableProps> {
                         {tableBodyNode}
                     </table>,
                 )}
-                <TableChildBlankSlate {...this.props} />
                 <TableChildNavigation {...this.props} />
                 {tableChildLastUpdatedNode}
             </div>
