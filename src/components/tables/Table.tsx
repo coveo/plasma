@@ -188,7 +188,7 @@ export class Table extends React.Component<ITableProps> {
             <div className={classNames('table-container', this.props.tableContainerClasses)}>
                 <TableChildActionBar {...this.props} />
                 {this.setFixedHeaderWrapper(
-                    <table className={tableClasses}>
+                    <table id={`table-${this.props.id}`} className={tableClasses}>
                         <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
                         <TableChildHeader {...this.props} />
                         {tableBodyNode}

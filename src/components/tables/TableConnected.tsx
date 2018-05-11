@@ -116,8 +116,11 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
             dispatch(addActionsToActionBar(`${ownProps.id}action-bar`, actions));
         }
     },
-    onModifyData: (shouldResetPage: boolean, tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState) => {
+    onModifyData: (
+        shouldResetPage: boolean,
+        tableCompositeState: ITableCompositeState,
+        previousTableCompositeState: ITableCompositeState,
+    ) => {
         if (ownProps.manual) {
             dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));
         } else {

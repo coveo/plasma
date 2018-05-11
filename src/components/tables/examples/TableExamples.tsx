@@ -260,28 +260,6 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
-                    headingAttributes={[
-                        {
-                            attributeFormatter: (attributeName: string) => {
-                                return <span>
-                                    <Checkbox checked={true} classes={'mr1'} />
-                                    {attributeName}
-                                </span>;
-                            },
-                        },
-                        {
-                            attributeName: 'attribute4',
-                            titleFormatter: _.identity,
-                        },
-                        {
-                            attributeName: 'attribute3',
-                            titleFormatter: _.identity,
-                        },
-                    ]}
-                    blankSlateDefault={{title: 'No results!'}}
-                    />
-                </div>
-                <div className='form-group'>
                     <label className='form-control-label'>Simplest Table with a custom header</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
@@ -291,9 +269,12 @@ export class TableExamples extends React.Component<any, any> {
                                 attributeName: 'attribute1',
                                 titleFormatter: () => {
                                     return <div>
-                                        <GroupableCheckboxConnected id={'SFCheckboxes'} parentId={'parent-id'} classes={['mt1 mr1']}
-                                            defaultChecked={false} />
-                                        defaultChecked={false} />
+                                        <GroupableCheckboxConnected
+                                            id={'SFCheckboxes'}
+                                            parentId={'parent-id'}
+                                            classes={['mt1 mr1']}
+                                            defaultChecked={false}
+                                        />
                                         <span>Selected</span>
                                     </div>;
                                 },
@@ -480,7 +461,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Table with multiple selection on rows
                     </label>
                     <TableConnected
-                        id={_.uniqueId('react-vapor-table')}
+                        id={'react-vapor-table-multiple-selection'}
                         initialTableData={tableData}
                         headingAttributes={[
                             {
@@ -567,50 +548,6 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
-                    <br />
-                    <Button name={'Toggle attribute3 to false'} enabled={true} classes={['m1']}
-                        onClick={() => updateAllBooleanInCurrentState('react-vapor-table-update-actions')} />
-                    <TableConnected
-                        id={'react-vapor-table-update-actions'}
-                        initialTableData={tableDataWithBoolean()}
-                        headingAttributes={[
-                            {
-                                attributeName: 'attribute1',
-                                titleFormatter: _.identity,
-                            },
-                            {
-                                attributeName: 'attribute2',
-                                titleFormatter: _.identity,
-                            },
-                            {
-                                attributeName: 'attribute3',
-                                titleFormatter: _.identity,
-                                attributeFormatter: (attributeValue: boolean) => attributeValue ? 'is true' : 'is false',
-                            },
-                        ]}
-                        filter
-                        getActions={(rowData: IData) => ([
-                            {
-                                name: 'Toggle attribute3',
-                                trigger: () => updateAllBooleanInCurrentState('react-vapor-table-update-actions'),
-                                icon: rowData.attribute3 ? 'check' : 'clear',
-                                primary: true,
-                                enabled: true,
-                            },
-                            {
-                                name: 'Delete',
-                                icon: 'delete',
-                                primary: true,
-                                enabled: true,
-                                grouped: true,
-                            },
-                        ])}
-                        blankSlateDefault={{title: 'Oh my oh my, nothing to see here :(!'}}
-                        actionBar={{extraContainerClasses: ['mod-border-top']}}
-                        navigation={{perPageNumbers}}
-                    />
-                </div>
-                <div className='form-group'>
                     <label className='form-control-label'>Table with selectable values</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
@@ -634,6 +571,7 @@ export class TableExamples extends React.Component<any, any> {
                         blankSlateDefault={{title: 'No results!'}}
                     />
                 </div>
-            </div>);
+            </div>
+        );
     }
 }
