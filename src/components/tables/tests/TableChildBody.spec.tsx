@@ -36,7 +36,7 @@ describe('<TableChildBody />', () => {
                 filterFormatter: _.identity,
             },
         ],
-        isMultiSelect: false
+        isMultiSelect: false,
     };
 
     let store: Store<IReactVaporState>;

@@ -103,7 +103,7 @@ const buildNewTableStateManually = (
     data: any,
     currentState: ITableState,
     tableCompositeState: ITableCompositeState,
-    tableOwnProps: ITableOwnProps
+    tableOwnProps: ITableOwnProps,
 ): ITableState => {
     const totalEntries = data.count;
     const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
@@ -141,7 +141,7 @@ const updateAllBooleanInCurrentState = (id: string) => {
 const manualModeThunk = (
     tableOwnProps: ITableOwnProps,
     shouldResetPage: boolean,
-    tableCompositeState: ITableCompositeState
+    tableCompositeState: ITableCompositeState,
 ): IThunkAction => {
     return (dispatch: IDispatch, getState: () => {[globalStateProp: string]: any; tables: ITablesState;}) => {
         const currentTableState = getState().tables[tableOwnProps.id];
