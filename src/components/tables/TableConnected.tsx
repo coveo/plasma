@@ -71,7 +71,8 @@ const actionsSelector = createSelector(
     [getDataById, getSelectedIds, getMultiSelect, getActions],
     (byId: ITableById, selectedIds: string[],
         isMultiSelect: boolean,
-        getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
+        getAction: (rowData?: IData) => IActionOptions[],
+    ): IActionOptions[] => {
         const rowsData: IData[] = [];
         _.each(selectedIds, (id: string) => {
             const rowData: IData = byId[id];
