@@ -76,7 +76,7 @@ describe('<TableConnected />', () => {
             ];
 
             expect(wrapper.find(PrimaryAction).length).toBe(0);
-            tableConnected.props().onRowClick(actions);
+            tableConnected.props().onRowClick(actions, 1);
             expect(wrapper.find(PrimaryAction).length).toBe(actions.length);
         });
 
