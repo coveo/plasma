@@ -1,3 +1,4 @@
+import * as classnames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -5,6 +6,7 @@ export interface IDropdownOwnProps extends React.ClassAttributes<Dropdown> {
     id?: string;
     toggleContent: JSX.Element[];
     dropdownItems: JSX.Element[];
+    className?: string;
 }
 
 export interface IDropdownStateProps {
@@ -60,7 +62,11 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     }
 
     render() {
-        const dropdownClasses: string = 'dropdown' + (this.props.isOpened ? ' open' : '');
+        const dropdownClasses = classnames(
+            'dropdown',
+            {'open': this.props.isOpened},
+            this.props.className,
+        );
 
         return (
             <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
