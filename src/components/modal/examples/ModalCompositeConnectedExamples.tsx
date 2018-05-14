@@ -54,7 +54,6 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                         <ModalCompositeConnected
                             id={secondModalId}
                             title='Modal composite'
-                            classes={'mod-medium'}
                             modalBodyChildren={
                                 <div>
                                     <button className='btn' onClick={() => this.openModal(insideModalId)}>Open inside modal</button>
@@ -69,7 +68,6 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                             modalBodyChildren='The content of the modal'
                             modalFooterChildren={<button className='btn' onClick={() => this.closeModal(insideModalId)}>Close</button>}
                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
-                            layer={2}
                         />
                     </div>
                 </div>

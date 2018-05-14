@@ -6,7 +6,7 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
-import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
+/*import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import {ItemFilterExamples} from '../src/components/actions/filters/examples/ItemFilterExamples';
@@ -50,13 +50,13 @@ import {LastUpdatedConnectedExamples} from '../src/components/lastUpdated/exampl
 import {LastUpdatedExamples} from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import {ListBoxExamples} from '../src/components/listBox/examples/ListBoxExamples';
 import {LoadingExamples} from '../src/components/loading/LoadingExamples';
-import {LogoCardExamples} from '../src/components/logoCard/examples/LogoCardExamples';
+import {LogoCardExamples} from '../src/components/logoCard/examples/LogoCardExamples';*/
 import {ModalCompositeConnectedExamples} from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 import {ModalCompositeExamples} from '../src/components/modal/examples/ModalCompositeExamples';
 import {ModalConnectedExamples} from '../src/components/modal/examples/ModalConnectedExamples';
 import {ModalExamples} from '../src/components/modal/examples/ModalExamples';
 import {ModalPromptExamples} from '../src/components/modalPrompt/exemples/ModalPromptExamples';
-import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
+/*import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
 import {SplitMultilineInputExamples} from '../src/components/multilineInput/examples/SplitMultilineExamples';
 import {MultiStepBarExamples} from '../src/components/multiStepBar/examples/MultiStepBarExamples';
 import {NavigationConnectedExamples} from '../src/components/navigation/examples/NavigationConnectedExamples';
@@ -91,7 +91,7 @@ import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConn
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
-import {MembersExample} from './members-example/MembersExample';
+import {MembersExample} from './members-example/MembersExample';*/
 import {ReactVaporStore} from './ReactVaporStore';
 
 class App extends React.Component<any, any> {
@@ -100,7 +100,7 @@ class App extends React.Component<any, any> {
         return (
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form'>
-                    <div className='form-group'>
+                    {/*<div className='form-group'>
                         <label className='form-control-label'>
                             My list of members
                         </label>
@@ -142,13 +142,13 @@ class App extends React.Component<any, any> {
                     <FilterBoxExamples />
                     <FilterBoxConnectedExamples />
                     <FacetExamples />
-                    <FacetConnectedExamples />
+                    <FacetConnectedExamples />*/}
                     <ModalExamples />
                     <ModalConnectedExamples />
                     <ModalCompositeExamples />
                     <ModalCompositeConnectedExamples />
                     <ModalPromptExamples />
-                    <NavigationExamples />
+                    {/*<NavigationExamples />
                     <NavigationConnectedExamples />
                     <SubNavigationExamples />
                     <SubNavigationConnectedExamples />
@@ -190,7 +190,7 @@ class App extends React.Component<any, any> {
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
                     <JSONEditorExamples />
-                    <SplitMultilineInputExamples />
+                    <SplitMultilineInputExamples />*/}
                 </div>
             </Provider>
         );
