@@ -55,45 +55,38 @@ describe('Date picker', () => {
             expect(datesSelection.find('.date-separator').length).toBe(1);
         });
 
-        it('should add the class "mod-vertical" on the separator if the pickers display the time', () => {
-            datesSelection.setProps({isRange: true});
-
+        it('should not add the class "mod-vertical" on the separator if the pickers are small', () => {
+            datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: false});
             expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(false);
+        });
 
-            datesSelection.setProps({isRange: true, withTime: true});
+        it('should add the class "mod-vertical" on the separator if the pickers are large', () => {
+            datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: true});
+            expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(true);
 
+            datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: true});
             expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(true);
         });
 
-        it('should have the classes "mod-inline" and "flex" if the pickers do not display the time and isRange prop is set to true', () => {
-            expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
-
-            datesSelection.setProps({withTime: false, isRange: true});
-
+        it('should have the classes "mod-inline" and "flex" if the pickers are small', () => {
+            datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: false});
             expect(datesSelection.find('.mod-inline.flex').length).toBe(1);
         });
 
-        it('should not have the classes "mod-inline" and "flex" if the pickers do not display the time and isRange prop is set to false', () => {
+        it('should not have the classes "mod-inline" and "flex" if the pickers are large', () => {
+            datesSelection.setProps({isRange: false, withTime: false, hasSetToNowButton: false});
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
 
-            datesSelection.setProps({withTime: false, isRange: false});
-
+            datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: true});
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
-        });
 
-        it('should not have the classes "mod-inline" and "flex" if the pickers does display the time and isRange prop is set to true', () => {
-            expect(datesSelection.find('.mod-inline').length).toBe(0);
-
-            datesSelection.setProps({withTime: true, isRange: true});
-
+            datesSelection.setProps({isRange: false, withTime: true, hasSetToNowButton: false});
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
-        });
 
-        it('should not have the classes "mod-inline" and "flex" if the pickers does display the time and isRange prop is set to false', () => {
-            expect(datesSelection.find('.mod-inline').length).toBe(0);
+            datesSelection.setProps({isRange: false, withTime: true, hasSetToNowButton: true});
+            expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
 
-            datesSelection.setProps({withTime: true, isRange: false});
-
+            datesSelection.setProps({isRange: false, withTime: false, hasSetToNowButton: true});
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
         });
 

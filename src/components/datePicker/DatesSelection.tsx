@@ -106,7 +106,9 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
     }
 
     render() {
-        const wrapperClasses: string = !this.props.withTime && this.props.isRange ? 'mod-inline flex' : '';
+        const isSmallSplit = this.props.isRange && !this.props.hasSetToNowButton;
+        const isLarge = this.props.withTime || (this.props.isRange && this.props.hasSetToNowButton);
+        const wrapperClasses: string = !isSmallSplit || isLarge ? '' : 'mod-inline flex';
         const datePickerProps: IDatePickerProps = {
             withTime: this.props.withTime,
             hasSetToNowButton: this.props.hasSetToNowButton,
@@ -117,7 +119,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
             placeholder: '',
         };
         const separatorClasses: string[] = ['date-separator'];
-        if (this.props.withTime) {
+        if (isLarge) {
             separatorClasses.push('mod-vertical');
         }
         const separator: JSX.Element = this.props.isRange

@@ -1,7 +1,12 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {DatePickerDropdownConnected} from '../DatePickerDropdownConnected';
-import {CALENDAR_SELECTION_RULES, FOUR_SELECTION_BOXES, SELECTION_BOXES} from './DatePickerExamplesCommon';
+import {
+    CALENDAR_SELECTION_RULES,
+    FOUR_SELECTION_BOXES,
+    SELECTION_BOXES,
+    SELECTION_BOXES_LONG_WITHOUT_TIME, SELECTION_BOXES_WITHOUT_TIME_AND_NOW,
+} from './DatePickerExamplesCommon';
 
 export class DatePickerDropdownConnectedExamples extends React.Component<any, any> {
 
@@ -27,6 +32,24 @@ export class DatePickerDropdownConnectedExamples extends React.Component<any, an
                     <DatePickerDropdownConnected
                         id='date-picker-dropdown-2'
                         datesSelectionBoxes={FOUR_SELECTION_BOXES}
+                        selectionRules={[]}
+                        isClearable
+                        initiallyUnselected />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Clearable date picker dropdown initially unselected with Redux state without time</label>
+                    <DatePickerDropdownConnected
+                        id='date-picker-dropdown-3'
+                        datesSelectionBoxes={SELECTION_BOXES_LONG_WITHOUT_TIME}
+                        selectionRules={[]}
+                        isClearable
+                        initiallyUnselected />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Clearable date picker dropdown initially unselected with Redux state without time and without setToNow</label>
+                    <DatePickerDropdownConnected
+                        id='date-picker-dropdown-4'
+                        datesSelectionBoxes={SELECTION_BOXES_WITHOUT_TIME_AND_NOW}
                         selectionRules={[]}
                         isClearable
                         initiallyUnselected />

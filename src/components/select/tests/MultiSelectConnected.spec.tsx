@@ -18,10 +18,10 @@ describe('Select', () => {
 
         const id: string = 'list-box-connected';
 
-        const mountMultiSelect = (items: IItemBoxProps[] = []) => {
+        const mountMultiSelect = (items: IItemBoxProps[] = [], props: Partial<IMultiSelectProps> = {}) => {
             wrapper = mount(
                 <Provider store={store}>
-                    <MultiSelectConnected id={id} items={items} />
+                    <MultiSelectConnected id={id} items={items} {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
@@ -64,6 +64,17 @@ describe('Select', () => {
 
                 expect(store.getState().selects.length).toBe(0);
             });
+        });
+
+        it('should allow a custom placeholder', () => {
+            const expectedPlaceholder = 'select thingy';
+
+            mountMultiSelect([
+                {value: 'a'},
+                {value: 'b'},
+            ], {placeholder: expectedPlaceholder});
+
+            expect(multiSelect.html()).toContain(expectedPlaceholder);
         });
 
         it('should contains a the selected value', () => {

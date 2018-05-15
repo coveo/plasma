@@ -40,30 +40,54 @@ export const SELECTION_BOXES: IDatesSelectionBox[] = [
     },
 ];
 
+const defaultQuickOptions = [
+    {
+        label: 'Last day',
+        value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+    },
+    {
+        label: 'Last week',
+        value: () => moment().subtract(1, 'week').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+    },
+    {
+        label: 'Last month',
+        value: () => moment().subtract(1, 'month').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+    },
+    {
+        label: 'Last year',
+        value: () => moment().subtract(1, 'year').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+    },
+];
+
 export const SELECTION_BOXES_LONG: IDatesSelectionBox[] = [
     {
         title: 'Date range',
-        quickOptions: [
-            {
-                label: 'Last day',
-                value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
-            },
-            {
-                label: 'Last week',
-                value: () => moment().subtract(1, 'week').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
-            },
-            {
-                label: 'Last month',
-                value: () => moment().subtract(1, 'month').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
-            },
-            {
-                label: 'Last year',
-                value: () => moment().subtract(1, 'year').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
-            },
-        ],
+        quickOptions: defaultQuickOptions,
         isRange: true,
         withTime: true,
         hasSetToNowButton: true,
+        color: DatePickerColors.blue,
+    },
+];
+
+export const SELECTION_BOXES_LONG_WITHOUT_TIME: IDatesSelectionBox[] = [
+    {
+        title: 'Date range',
+        quickOptions: defaultQuickOptions,
+        isRange: true,
+        withTime: false,
+        hasSetToNowButton: true,
+        color: DatePickerColors.blue,
+    },
+];
+
+export const SELECTION_BOXES_WITHOUT_TIME_AND_NOW: IDatesSelectionBox[] = [
+    {
+        title: 'Date range',
+        quickOptions: defaultQuickOptions,
+        isRange: true,
+        withTime: false,
+        hasSetToNowButton: false,
         color: DatePickerColors.blue,
     },
 ];
