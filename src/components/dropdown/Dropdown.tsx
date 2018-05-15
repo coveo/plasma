@@ -1,4 +1,4 @@
-import * as classnames from 'classnames';
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -62,7 +62,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     }
 
     render() {
-        const dropdownClasses = classnames(
+        const dropdownClasses = classNames(
             'dropdown',
             {'open': this.props.isOpened},
             this.props.className,
