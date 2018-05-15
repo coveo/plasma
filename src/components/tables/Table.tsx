@@ -135,7 +135,7 @@ export class Table extends React.Component<ITableProps> {
     }
 
     componentWillUpdate(nextProps: ITableProps) {
-        if (this.props.onWillUpdate && !(JSON.stringify(nextProps.actions) === JSON.stringify(this.props.actions))) {
+        if (this.props.onWillUpdate && JSON.stringify(nextProps.actions) !== JSON.stringify(this.props.actions)) {
             this.props.onWillUpdate(nextProps.actions);
         }
     }

@@ -68,21 +68,21 @@ const getActions = (data: ITableData, props: ITableOwnProps): (rowData?: IData) 
 const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => props.rowsMultiSelect;
 
 const actionsSelector = createSelector([getDataById, getSelectedIds, getMultiSelect, getActions], (byId: ITableById, selectedIds: string[], isMultiSelect: boolean, getAction: (rowData?: IData) => IActionOptions[]): IActionOptions[] => {
-        const rowsData: IData[] = [];
-        _.each(selectedIds, (id: string) => {
-            const rowData: IData = byId[id];
-            if (rowData) {
-                rowsData.push(rowData);
-            }
-        });
-        if (getAction && rowsData.length) {
-            const actions: IActionOptions[] = getAction(rowsData[0]);
-            return isMultiSelect && selectedIds.length >= 2
-                ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
-                : actions;
+    const rowsData: IData[] = [];
+    _.each(selectedIds, (id: string) => {
+        const rowData: IData = byId[id];
+        if (rowData) {
+            rowsData.push(rowData);
         }
-        return [];
-    },
+    });
+    if (getAction && rowsData.length) {
+        const actions: IActionOptions[] = getAction(rowsData[0]);
+        return isMultiSelect && selectedIds.length >= 2
+            ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
+            : actions;
+    }
+    return [];
+},
 );
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
@@ -107,9 +107,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
         dispatch(removeTable(ownProps.id));
     },
     onWillUpdate: (actions: IActionOptions[]) => {
-        if (actions.length) {
-            dispatch(addActionsToActionBar(`${ownProps.id}action-bar`, actions));
-        }
+        const actionBarId: string = getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR);
+        const newAction: IActionOptions[] = actions.length ? actions : [];
+        dispatch(addActionsToActionBar(actionBarId, newAction));
     },
     onModifyData: (
         shouldResetPage: boolean,

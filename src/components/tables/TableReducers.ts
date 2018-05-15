@@ -89,8 +89,6 @@ export const tableInitialState: ITableState = {
 export const tablesInitialState: {[tableId: string]: ITableState;} = {};
 
 export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]): ITableState => {
-
-    debugger;
     const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => !_.contains(state.data.displayedIds, selectedId));
     return {
         ...state,
@@ -120,7 +118,6 @@ export const tableReducer = (
                 datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
             };
         case TableActions.modifyState:
-            debugger;
             const selectedIds: string[] = state.data && state.data.selectedIds ? state.data.selectedIds : [];
             return updateSelectedIDs(action.payload.tableStateModifier(state), selectedIds);
         case TableActions.inError:
@@ -144,7 +141,6 @@ export const tableReducer = (
                 tableHeaderCellId: action.payload.id,
             };
         case TableActions.updateSelectedIds:
-            debugger;
             return {
                 ...state,
                 data: {
