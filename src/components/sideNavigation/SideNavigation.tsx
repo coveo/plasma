@@ -1,4 +1,4 @@
-import * as className from 'classnames';
+import * as classNames from 'classnames';
 import * as React from 'react';
 import {JSXRenderable} from '../../utils/JSXUtils';
 
@@ -8,7 +8,7 @@ export interface ISideNavProps {
 }
 
 export const SideNavigation = (props: ISideNavProps) =>
-    <nav className={className(props.className, 'navigation')}>
+    <nav className={classNames(props.className, 'navigation')}>
         <div className='navigation-menu'>
             <div className='navigation-menu-sections'>
                 {props.children}

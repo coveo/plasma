@@ -63,6 +63,15 @@ describe('Dropdown', () => {
             expect(dropdown.find('.open').length).toBe(1);
         });
 
+        it('should have the classes passed as props if any', () => {
+            const newDropdownProps = _.extend({}, basicDropdownProps, {className: 'some-class'});
+
+            expect(dropdown.find('.some-class').length).toBe(0);
+
+            dropdown.setProps(newDropdownProps);
+            expect(dropdown.find('.some-class').length).toBe(1);
+        });
+
         it('should call onClick prop if set when clicking the toggle', () => {
             const onClickSpy = jasmine.createSpy('onClick');
             const newDropdownProps = _.extend({}, basicDropdownProps, {onClick: onClickSpy});
