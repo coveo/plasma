@@ -33,7 +33,7 @@ describe('callIfDefined', () => {
     it('should call the callback and pass down args properly', () => {
         const args = [
             'some'
-            ['args'],
+            [1],
             -10,
             true,
             () => 'ooookay',
