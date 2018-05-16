@@ -57,16 +57,16 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                             modalBodyChildren={
                                 <div>
                                     <button className='btn' onClick={() => this.openModal(insideModalId)}>Open inside modal</button>
+                                    <ModalCompositeConnected
+                                        id={insideModalId}
+                                        title='Nested modal composite'
+                                        modalBodyChildren='The content of the modal'
+                                        modalFooterChildren={<button className='btn' onClick={() => this.closeModal(insideModalId)}>Close</button>}
+                                        modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                                    />
                                 </div>
                             }
                             modalFooterChildren={<button className='btn' onClick={() => this.closeModal(secondModalId)}>Close</button>}
-                            modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
-                        />
-                        <ModalCompositeConnected
-                            id={insideModalId}
-                            title='Nested modal composite'
-                            modalBodyChildren='The content of the modal'
-                            modalFooterChildren={<button className='btn' onClick={() => this.closeModal(insideModalId)}>Close</button>}
                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                         />
                     </div>
