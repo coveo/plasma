@@ -23,35 +23,18 @@ $icon-size: (4em / 3);
   height: 100vh;
   overflow: hidden;
 
-  .modal-backdrop, .modal-container {
-    .modal-content {
-      position: relative;
-      top: calc((100% - #{$modal-height}) / 2 * -1);
-      left: calc((100% - #{$modal-width}) / 2 * -1);
-    }
-
-    &.mod-medium > .modal-content {
-      top: calc((100% - #{$modal-medium-height}) / 2 * -1);
-      left: calc((100% - #{$modal-medium-width}) / 2 * -1);
-    }
-
-    &.mod-big > .modal-content {
-      top: calc((100% - #{$modal-big-height}) / 2 * -1);
-      left: calc((100% - #{$modal-big-width}) / 2 * -1);
-    }
+  .modal-container, .modal-container + .modal-backdrop {
+    top: calc((100vh - 100%) / -2);
+    left: calc((100vw - 100%) / -2);
 
     &.mod-stick-bottom {
-      > .modal-content {
-        top: calc((100% - #{$modal-height-stick}) / 2 * -1);
-      }
+      bottom: 0;
+    }
+  }
 
-      &.mod-medium > .modal-content {
-        top: calc((100% - #{$modal-medium-height-stick}) / 2 * -1);
-      }
-
-      &.mod-big > .modal-content {
-        top: calc((100% - #{$modal-big-height-stick}) * -1);
-      }
+  &.mod-stick-bottom {
+    .modal-container, .modal-container + .modal-backdrop {
+      top: calc((100vh - 95%) / -2);
     }
   }
 }
