@@ -1,8 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import {IDefaultComponentOwnProps} from '../../utils/ComponentUtils';
 
-export interface IFlippableOwnProps {
+export interface IFlippableOwnProps extends IDefaultComponentOwnProps {
     id?: string;
     front?: React.ReactNode;
     back?: React.ReactNode;
@@ -69,8 +70,9 @@ export class Flippable extends React.Component<IFlippableProps, any> {
             this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT,
         );
 
+        debugger;
         return (
-            <div className={containerClassName}>
+            <div className={containerClassName} {...this.props.dataAttributes}>
                 <div className={flipperClassName}>
                     <div
                         className={Flippable.sides.FRONT}
