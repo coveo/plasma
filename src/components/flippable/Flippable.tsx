@@ -70,7 +70,6 @@ export class Flippable extends React.Component<IFlippableProps, any> {
             this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT,
         );
 
-        debugger;
         return (
             <div className={containerClassName} {...this.props.dataAttributes}>
                 <div className={flipperClassName}>
