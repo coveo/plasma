@@ -1,11 +1,11 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {addTable, ITableActionPayload, modifyState, removeTable, setIsInError} from '../TableActions';
+import {addTable, ITableActionPayload, modifyState, removeTable, setIsInError, TableActions} from '../TableActions';
 import {DEFAULT_TABLE_DATA, TableChildComponent} from '../TableConstants';
 import {sortFromHeaderCell} from '../TableHeaderCellActions';
 import {
     ITablesState,
-    ITableState,
+    ITableState, tableReducer,
     tablesInitialState,
     tablesReducer,
 } from '../TableReducers';
@@ -115,4 +115,24 @@ describe('TableReducers', () => {
                 .toEqual(oldState[tableId]);
         });
     });
+
+    /*
+    describe('ModifyState action', () => {
+    
+        const getModifyStateAction = () => ({
+            type: TableActions.modifyState,
+                payload: {
+                id: 'row1',
+            },
+        });
+    
+        it('should remove selected ids from the list if the displayedIds do not contain the id', () => {
+            //const newState: ITableState = tableReducer(oldState);
+        });
+    });
+    
+    describe('UpdateSelectedIds action', () => {
+    });
+    */
+
 });
