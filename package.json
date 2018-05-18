@@ -136,6 +136,7 @@
     "style-loader": "0.21.0",
     "tsjs": "0.5.x",
     "tslint-loader": "3.6.0",
+    "ts-transformer-keys": "0.3.1",
     "typescript": "2.8.3",
     "typings-for-css-modules-loader": "1.7.0",
     "underscore": "1.9.0",

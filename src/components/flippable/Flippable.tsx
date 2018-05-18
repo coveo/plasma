@@ -1,6 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import {keys} from 'ts-transformer-keys';
+import * as _ from 'underscore';
 
 export interface IFlippableOwnProps {
     id?: string;
@@ -23,6 +25,8 @@ export interface IFlippableStateProps {
 
 export interface IFlippableProps extends IFlippableOwnProps, IFlippableDispatchProps,
     IFlippableStateProps {}
+
+const FlippablePropsToOmit = keys<IFlippableProps>();
 
 export class Flippable extends React.Component<IFlippableProps & React.HTMLProps<HTMLDivElement>, any> {
     static CONTAINER_CLASSNAME: string = 'flippable';
@@ -70,7 +74,7 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
         );
 
         return (
-            <div className={containerClassName} {...this.props}>
+            <div className={containerClassName} {..._.omit(this.props, FlippablePropsToOmit)}>
                 <div className={flipperClassName}>
                     <div
                         className={Flippable.sides.FRONT}
