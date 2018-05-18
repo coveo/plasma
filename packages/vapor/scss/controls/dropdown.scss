@@ -158,14 +158,14 @@
     }
 
     &.disabled {
-       > a,  > span, .dropdown-option-append {
+      > a, > span, .dropdown-option-append {
         color: $medium-grey;
 
         cursor: default;
       }
     }
 
-     > a,  > span {
+    > a, > span {
       width: 100%;
 
       @extend %dropdown-option-line-style;
