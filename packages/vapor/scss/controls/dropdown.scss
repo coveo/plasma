@@ -158,14 +158,14 @@
     }
 
     &.disabled {
-      > a, > span, .dropdown-option-append {
+       > a,  > span, .dropdown-option-append {
         color: $medium-grey;
 
         cursor: default;
       }
     }
 
-    > a, > span {
+     > a,  > span {
       width: 100%;
 
       @extend %dropdown-option-line-style;
@@ -236,5 +236,12 @@
 .select-dropdown-container {
   z-index: 1;
 
-  border: 1px solid $dark-grey;
+  box-shadow: $list-box-box-shadow;
+  border: $default-border;
+  border-radius: $border-radius;
+
+  .list-box {
+    box-shadow: initial;
+    border: none;
+  }
 }
