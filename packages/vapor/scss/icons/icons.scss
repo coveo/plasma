@@ -72,16 +72,19 @@
 }
 
 .shadow svg {
-  display: none;
   position: absolute;
   left: calc(50%);
-  transform: translateX(calc(-50% + #{$icon-hover-offset}));
   z-index: 1;
+
+  display: none;
+
+  transform: translateX(calc(-50% + #{$icon-hover-offset}));
 }
 
 .with-hover svg {
   position: relative;
   z-index: 2;
+
   transition: fill 0.5s ease;
 }
 
@@ -97,5 +100,6 @@
 
 .hover-wrapper {
   position: relative;
+
   display: inline;
 }
