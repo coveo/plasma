@@ -6,7 +6,8 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
-/*import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
+/*
+import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
 import {ItemFilterExamples} from '../src/components/actions/filters/examples/ItemFilterExamples';
@@ -33,7 +34,9 @@ import {
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
+*/
 import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+/*
 import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
 import {FacetConnectedExamples} from '../src/components/facets/examples/FacetConnectedExamples';
 import {FacetExamples} from '../src/components/facets/examples/FacetExamples';
@@ -50,13 +53,13 @@ import {LastUpdatedConnectedExamples} from '../src/components/lastUpdated/exampl
 import {LastUpdatedExamples} from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import {ListBoxExamples} from '../src/components/listBox/examples/ListBoxExamples';
 import {LoadingExamples} from '../src/components/loading/LoadingExamples';
-import {LogoCardExamples} from '../src/components/logoCard/examples/LogoCardExamples';*/
+import {LogoCardExamples} from '../src/components/logoCard/examples/LogoCardExamples';
 import {ModalCompositeConnectedExamples} from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 import {ModalCompositeExamples} from '../src/components/modal/examples/ModalCompositeExamples';
 import {ModalConnectedExamples} from '../src/components/modal/examples/ModalConnectedExamples';
 import {ModalExamples} from '../src/components/modal/examples/ModalExamples';
 import {ModalPromptExamples} from '../src/components/modalPrompt/exemples/ModalPromptExamples';
-/*import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
+import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
 import {SplitMultilineInputExamples} from '../src/components/multilineInput/examples/SplitMultilineExamples';
 import {MultiStepBarExamples} from '../src/components/multiStepBar/examples/MultiStepBarExamples';
 import {NavigationConnectedExamples} from '../src/components/navigation/examples/NavigationConnectedExamples';
@@ -66,8 +69,10 @@ import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/Opti
 import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
 import {SearchBarExamples} from '../src/components/searchBar/SearchBarExamples';
+*/
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
+/*
 import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
@@ -91,7 +96,9 @@ import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConn
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
+
 import {MembersExample} from './members-example/MembersExample';*/
+
 import {ReactVaporStore} from './ReactVaporStore';
 
 class App extends React.Component<any, any> {
@@ -100,7 +107,7 @@ class App extends React.Component<any, any> {
         return (
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form'>
-                    {/*<div className='form-group'>
+                    {/* <div className='form-group'>
                         <label className='form-control-label'>
                             My list of members
                         </label>
@@ -127,11 +134,11 @@ class App extends React.Component<any, any> {
                     <ButtonExamples />
                     <BreadcrumbsExamples />
                     <BasicHeaderExamples />
-                    <BreadcrumbHeaderExample />
+                    <BreadcrumbHeaderExample /> */}
                     <SingleSelectExamples />
                     <MultiSelectExamples />
                     <DropdownSearchExamples />
-                    <FlatSelectExamples />
+                    {/* <FlatSelectExamples />
                     <TooltipExamples />
                     <ChosenSelectExamples />
                     <UserFeedbackExample />
@@ -142,13 +149,13 @@ class App extends React.Component<any, any> {
                     <FilterBoxExamples />
                     <FilterBoxConnectedExamples />
                     <FacetExamples />
-                    <FacetConnectedExamples />*/}
+                    <FacetConnectedExamples />
                     <ModalExamples />
                     <ModalConnectedExamples />
                     <ModalCompositeExamples />
                     <ModalCompositeConnectedExamples />
                     <ModalPromptExamples />
-                    {/*<NavigationExamples />
+                    <NavigationExamples />
                     <NavigationConnectedExamples />
                     <SubNavigationExamples />
                     <SubNavigationConnectedExamples />
