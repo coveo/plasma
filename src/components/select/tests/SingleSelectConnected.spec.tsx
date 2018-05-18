@@ -108,6 +108,14 @@ describe('Select', () => {
             expect(value).toBe(selectedValue);
         });
 
+        it('should set the toggleClasses prop if any on the dropdown-toggle', () => {
+            mountSingleSelect([], {
+                toggleClasses: 'some-class',
+            });
+
+            expect(singleSelect.find('.dropdown-toggle').hasClass('some-class')).toBe(true);
+        });
+
         it('should contain the prepend and append in the button when selected', () => {
             const prepend = 'pre';
             const append = 'post';
