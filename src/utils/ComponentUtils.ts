@@ -15,14 +15,6 @@ export const DisplayClass = {
     TABLE_CELL: 'table-cell',
 };
 
-export interface IDefaultComponentOwnProps {
-    dataAttributes?: IDataAttribute;
-}
-
-export interface IDataAttribute {
-    [dataAttribute: string]: string;
-}
-
 export type ComponentContent = (new () => React.Component) | string | ((props?: any) => JSX.Element);
 
 export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => {

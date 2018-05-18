@@ -1,9 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {IDefaultComponentOwnProps} from '../../utils/ComponentUtils';
 
-export interface IFlippableOwnProps extends IDefaultComponentOwnProps {
+export interface IFlippableOwnProps {
     id?: string;
     front?: React.ReactNode;
     back?: React.ReactNode;
@@ -25,7 +24,7 @@ export interface IFlippableStateProps {
 export interface IFlippableProps extends IFlippableOwnProps, IFlippableDispatchProps,
     IFlippableStateProps {}
 
-export class Flippable extends React.Component<IFlippableProps, any> {
+export class Flippable extends React.Component<IFlippableProps & React.HTMLProps<HTMLDivElement>, any> {
     static CONTAINER_CLASSNAME: string = 'flippable';
     static FLIPPER_CLASSNAME: string = 'flipper';
     static sides = {
@@ -71,7 +70,7 @@ export class Flippable extends React.Component<IFlippableProps, any> {
         );
 
         return (
-            <div className={containerClassName} {...this.props.dataAttributes}>
+            <div className={containerClassName} {...this.props}>
                 <div className={flipperClassName}>
                     <div
                         className={Flippable.sides.FRONT}

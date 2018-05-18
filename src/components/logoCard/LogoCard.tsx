@@ -3,7 +3,6 @@ import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {slugify} from 'underscore.string';
 
-import {IDefaultComponentOwnProps} from '../../utils/ComponentUtils';
 import {Badge, IBadgeProps} from '../badge/Badge';
 import {CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, ICornerRibbonProps} from '../cornerRibbon/CornerRibbon';
 import {Svg} from '../svg/Svg';
@@ -14,7 +13,7 @@ export const DEFAULT_LOGO_ICON_CLASSNAME: string = 'icon';
 export const DEFAULT_LOGO_ICON_SIZE: string = 'mod-4x';
 export const DEFAULT_DISABLED_RIBBON_LABEL: string = 'Unavailable';
 
-export interface ILogoCardProps extends IDefaultComponentOwnProps {
+export interface ILogoCardProps {
     badges?: IBadgeProps[];
     description?: string;
     disabled?: boolean;
@@ -26,7 +25,7 @@ export interface ILogoCardProps extends IDefaultComponentOwnProps {
     title: string;
 }
 
-export class LogoCard extends React.Component<ILogoCardProps> {
+export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<HTMLDivElement>> {
     static defaultProps: Partial<ILogoCardProps> = {
         badges: [],
         disabled: false,
@@ -79,7 +78,7 @@ export class LogoCard extends React.Component<ILogoCardProps> {
             <div
                 className={containerClassName}
                 onClick={() => this.handleClick()}
-                {...this.props.dataAttributes}>
+                {...this.props}>
                 <div className='logo-card-logo'>
                     <Svg svgName={this.props.svgName} className={logoIconClassName} />
                 </div>
