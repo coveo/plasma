@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const isTravis = !!process.env.TRAVIS;
+const keysTransformer = require('ts-transformer-keys/transformer').default;
 
 /**
  * Config file for the documentation project
@@ -41,6 +42,9 @@ module.exports = {
             {
                 test: /\.ts(x?)$/,
                 loader: 'ts-loader',
+                options: {
+                    getCustomTransformers: () => ({before: [keysTransformer]}),
+                },
             },
             {
                 test: /\.scss$/,
