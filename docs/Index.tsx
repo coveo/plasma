@@ -5,6 +5,7 @@ import './style.scss';
 import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
+
 /*
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
@@ -95,8 +96,9 @@ import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConn
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
-*/
-// import {MembersExample} from './members-example/MembersExample';
+
+import {MembersExample} from './members-example/MembersExample';*/
+
 import {ReactVaporStore} from './ReactVaporStore';
 
 class App extends React.Component<any, any> {
@@ -112,8 +114,8 @@ class App extends React.Component<any, any> {
                         <div className='form-control'>
                             <MembersExample />
                         </div>
-                    </div> */}
-                    {/* <AutocompleteExamples />
+                    </div>
+                    <AutocompleteExamples />
                     <TextAreaExamples />
                     <SearchBarExamples />
                     <ColorBarExamples />
@@ -195,7 +197,7 @@ class App extends React.Component<any, any> {
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
                     <JSONEditorExamples />
-                    <SplitMultilineInputExamples /> */}
+                    <SplitMultilineInputExamples />*/}
                 </div>
             </Provider>
         );
