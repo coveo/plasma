@@ -25,7 +25,7 @@
     "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js docs/**/*.js",
     "compileTs": "webpack --config webpack.config.prod.js",
     "minify": "webpack --config webpack.config.prod.minify.js",
-    "build": "gulp clean && npx ttsc npm run compileTs && npm run minify && gulp ts:definitions",
+    "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
     "test:compile": "webpack --display-error-details --config webpack.config.test.js",
