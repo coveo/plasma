@@ -21,11 +21,9 @@
   "include": [
     "src/**/*.tsx",
     "src/**/*.ts",
-    "types/**/*.d.ts",
-    "node_modules/ttypescript/**/*",
+    "types/**/*.d.ts"
   ],
   "exclude": [
-    "src/**/*.spec.*",
-    "src/transformers/**/*"
+    "src/**/*.spec.*"
   ]
 }
