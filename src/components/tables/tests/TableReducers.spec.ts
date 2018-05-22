@@ -118,19 +118,19 @@ describe('TableReducers', () => {
 
     /*
     describe('ModifyState action', () => {
-    
+
         const getModifyStateAction = () => ({
             type: TableActions.modifyState,
                 payload: {
                 id: 'row1',
             },
         });
-    
+
         it('should remove selected ids from the list if the displayedIds do not contain the id', () => {
             //const newState: ITableState = tableReducer(oldState);
         });
     });
-    
+
     describe('UpdateSelectedIds action', () => {
     });
     */

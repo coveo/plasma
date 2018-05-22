@@ -65,7 +65,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
 
     private handleClick(e: React.MouseEvent<any>) {
         if (this.props.onClick) {
-            this.props.onClick((e.metaKey || e.altKey) && this.props.isMultiSelect);
+            this.props.onClick((e.metaKey || e.ctrlKey) && this.props.isMultiSelect);
         }
 
         if (this.props.onClickCallback) {
