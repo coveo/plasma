@@ -1,11 +1,11 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {addTable, ITableActionPayload, modifyState, removeTable, setIsInError, TableActions} from '../TableActions';
+import {addTable, ITableActionPayload, modifyState, removeTable, setIsInError} from '../TableActions';
 import {DEFAULT_TABLE_DATA, TableChildComponent} from '../TableConstants';
 import {sortFromHeaderCell} from '../TableHeaderCellActions';
 import {
     ITablesState,
-    ITableState, tableReducer,
+    ITableState,
     tablesInitialState,
     tablesReducer,
 } from '../TableReducers';
