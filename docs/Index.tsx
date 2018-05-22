@@ -6,7 +6,6 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
-/*
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
@@ -34,9 +33,9 @@ import {
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
-*/
+
 import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
-/*
+
 import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
 import {FacetConnectedExamples} from '../src/components/facets/examples/FacetConnectedExamples';
 import {FacetExamples} from '../src/components/facets/examples/FacetExamples';
@@ -69,10 +68,10 @@ import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/Opti
 import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
 import {SearchBarExamples} from '../src/components/searchBar/SearchBarExamples';
-*/
+
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
-/*
+
 import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
@@ -97,7 +96,7 @@ import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
 
-import {MembersExample} from './members-example/MembersExample';*/
+import {MembersExample} from './members-example/MembersExample';
 
 import {ReactVaporStore} from './ReactVaporStore';
 
@@ -107,7 +106,7 @@ class App extends React.Component<any, any> {
         return (
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form'>
-                    {/* <div className='form-group'>
+                    <div className='form-group'>
                         <label className='form-control-label'>
                             My list of members
                         </label>
@@ -134,11 +133,11 @@ class App extends React.Component<any, any> {
                     <ButtonExamples />
                     <BreadcrumbsExamples />
                     <BasicHeaderExamples />
-                    <BreadcrumbHeaderExample /> */}
+                    <BreadcrumbHeaderExample />
                     <SingleSelectExamples />
                     <MultiSelectExamples />
                     <DropdownSearchExamples />
-                    {/* <FlatSelectExamples />
+                    <FlatSelectExamples />
                     <TooltipExamples />
                     <ChosenSelectExamples />
                     <UserFeedbackExample />
@@ -197,7 +196,7 @@ class App extends React.Component<any, any> {
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
                     <JSONEditorExamples />
-                    <SplitMultilineInputExamples />*/}
+                    <SplitMultilineInputExamples />
                 </div>
             </Provider>
         );

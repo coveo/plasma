@@ -11,14 +11,21 @@
     "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "ES5"
+    "target": "ES5",
+    "plugins": [
+    {
+        "transform": "ts-transformer-keys/transformer"
+    }
+  ]
   },
   "include": [
     "src/**/*.tsx",
     "src/**/*.ts",
-    "types/**/*.d.ts"
+    "types/**/*.d.ts",
+    "node_modules/ttypescript/**/*",
   ],
   "exclude": [
-    "src/**/*.spec.*"
+    "src/**/*.spec.*",
+    "src/transformers/**/*"
   ]
 }
