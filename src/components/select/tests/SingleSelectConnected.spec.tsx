@@ -77,7 +77,7 @@ describe('Select', () => {
             expect(singleSelect.html()).toContain(expectedPlaceholder);
         });
 
-        it('should contains a the selected value', () => {
+        it('should contain the selected value', () => {
             const selectedValue = 'dis 1';
             mountSingleSelect([
                 {value: 'a'},
@@ -87,7 +87,7 @@ describe('Select', () => {
             expect(singleSelect.html()).toContain(selectedValue);
         });
 
-        it('should contains the display value when the selected value has one', () => {
+        it('should contain the display value when the selected value has one', () => {
             const selectedDisplayValue = 'dis 2';
             mountSingleSelect([
                 {value: 'a'},
@@ -97,7 +97,7 @@ describe('Select', () => {
             expect(singleSelect.html()).toContain(selectedDisplayValue);
         });
 
-        it('should contains the selected item as a prop', () => {
+        it('should contain the selected item as a prop', () => {
             const selectedValue = 'dis 1';
             mountSingleSelect([
                 {value: 'a'},
@@ -108,7 +108,15 @@ describe('Select', () => {
             expect(value).toBe(selectedValue);
         });
 
-        it('should contains the prepend and append in the button when selected', () => {
+        it('should set the toggleClasses prop if any on the dropdown-toggle', () => {
+            mountSingleSelect([], {
+                toggleClasses: 'some-class',
+            });
+
+            expect(singleSelect.find('.dropdown-toggle').hasClass('some-class')).toBe(true);
+        });
+
+        it('should contain the prepend and append in the button when selected', () => {
             const prepend = 'pre';
             const append = 'post';
             mountSingleSelect([
@@ -121,7 +129,7 @@ describe('Select', () => {
             expect(buttonHTML).toContain(append);
         });
 
-        it('should not contains the prepend and append in the button when not selected', () => {
+        it('should not contain the prepend and append in the button when not selected', () => {
             const prepend = 'pre';
             const append = 'post';
             mountSingleSelect([
@@ -133,6 +141,17 @@ describe('Select', () => {
 
             expect(buttonHTML).not.toContain(prepend);
             expect(buttonHTML).not.toContain(append);
+        });
+
+        it('should call with the selected option the onSelectOptionCallback prop when defined', () => {
+            const onSelectOptionCallbackSpy = jasmine.createSpy('onSelectOptionCallback');
+
+            mountSingleSelect([{value: 'a'}, {value: 'b'}], {onSelectOptionCallback: onSelectOptionCallbackSpy});
+
+            singleSelect.find('.dropdown-toggle').simulate('click');
+            singleSelect.find('.item-box').first().simulate('click');
+
+            expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('a');
         });
 
         describe('keyboard events', () => {

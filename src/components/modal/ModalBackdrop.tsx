@@ -1,12 +1,12 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import * as _ from 'underscore';
 
 import {keyCode} from '../../utils/InputUtils';
 
 export interface IModalBackdropOwnProps {
     displayFor?: string[];
     isPrompt?: boolean;
-    layer?: number;
 }
 
 export interface IModalBackdropStateProps {
@@ -22,11 +22,11 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 }
 
 export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
-    private canClose: boolean;
-
     static defaultProps: Partial<IModalBackdropProps> = {
-        layer: 1,
+        lastOpened: true,
     };
+
+    private canClose: boolean;
 
     componentDidMount() {
         document.addEventListener('keydown', this.onKeyDown);
@@ -37,7 +37,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
     // the last opened modal after the last one was closed on escape
     componentDidUpdate() {
         this.canClose = false;
-        setTimeout(() => this.canClose = this.props.lastOpened, 1);
+        _.defer(() => this.canClose = this.props.lastOpened);
     }
 
     componentWillUnmount() {
@@ -56,7 +56,6 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
             {
                 'closed': !this.props.display,
                 'prompt-backdrop': this.props.isPrompt,
-                [`layer-${this.props.layer}`]: this.props.display,
             },
         );
 
