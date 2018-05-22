@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {IModalProps, Modal} from '../Modal';
 
 describe('Modal', () => {
@@ -114,28 +114,6 @@ describe('Modal', () => {
             modal.setProps({id, classes});
             modal.mount();
             expect(container.hasClass(containerClass)).toBe(true);
-        });
-
-        it('should set opened class on container when isOpened is true', () => {
-            const container = modal.find('div').first();
-            expect(container.hasClass('opened')).toBe(false);
-
-            modal.setProps({id, isOpened: true});
-            modal.mount();
-            expect(container.hasClass('opened')).toBe(true);
-        });
-
-        it('should set the proper layer class on container when isOpened is true', () => {
-            const container = modal.find('div').first();
-            expect(container.hasClass('layer-1')).toBe(false);
-
-            modal.setProps({id, isOpened: true});
-            modal.mount();
-            expect(container.hasClass('layer-1')).toBe(true);
-
-            modal.setProps({id, isOpened: true, layer: 2});
-            modal.mount();
-            expect(container.hasClass('layer-2')).toBe(true);
         });
     });
 });

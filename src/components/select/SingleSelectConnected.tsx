@@ -1,6 +1,9 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -8,6 +11,8 @@ import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnect
 
 export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
+    toggleClasses?: string;
+    onSelectOptionCallback?: (option: string) => void;
 }
 
 export interface ISingleSelectStateProps {
@@ -34,6 +39,12 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
         placeholder: 'Select an option',
     };
 
+    componentDidUpdate(prevProps: ISingleSelectProps) {
+        if (prevProps.selected !== this.props.selected) {
+            callIfDefined(this.props.onSelectOptionCallback, this.props.selected);
+        }
+    }
+
     render() {
         return (
             <SelectConnected
@@ -49,7 +60,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
         const option = _.findWhere(this.props.items, {value: this.props.selected});
         return (
             <button
-                className='btn dropdown-toggle'
+                className={classNames(['btn', 'dropdown-toggle', this.props.toggleClasses])}
                 type='button'
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}

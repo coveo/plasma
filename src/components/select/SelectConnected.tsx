@@ -98,7 +98,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     private renderChildren() {
         if (this.props.children) {
             return (
-                <div className='flex p2 flex-center bg-white flex-column'>
+                <div className='flex p2 flex-center bg-white flex-column mod-border-bottom'>
                     {this.props.children}
                 </div>
             );
