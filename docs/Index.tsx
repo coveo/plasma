@@ -100,7 +100,7 @@ class App extends React.Component<any, any> {
         return (
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form'>
-                    <div className='form-group'>
+                    {<div className='form-group'>
                         <label className='form-control-label'>
                             My list of members
                         </label>
@@ -127,11 +127,11 @@ class App extends React.Component<any, any> {
                     <ButtonExamples />
                     <BreadcrumbsExamples />
                     <BasicHeaderExamples />
-                    <BreadcrumbHeaderExample />
+                    <BreadcrumbHeaderExample />}
                     <SingleSelectExamples />
                     <MultiSelectExamples />
                     <DropdownSearchExamples />
-                    <FlatSelectExamples />
+                    {<FlatSelectExamples />
                     <TooltipExamples />
                     <ChosenSelectExamples />
                     <UserFeedbackExample />
@@ -190,7 +190,7 @@ class App extends React.Component<any, any> {
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
                     <JSONEditorExamples />
-                    <SplitMultilineInputExamples />
+                    <SplitMultilineInputExamples />}
                 </div>
             </Provider>
         );
