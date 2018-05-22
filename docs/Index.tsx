@@ -22,7 +22,7 @@ import {GroupableCheckboxConnectedExamples} from '../src/components/checkbox/exa
 import {ChildFormExamples} from '../src/components/childForm/examples/ChildFormExamples';
 import {ChosenSelectExamples} from '../src/components/chosen/examples/ChosenSelectExamples';
 import {CollapsibleContainerExamples} from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
-import {ColorBarExamples} from '../src/components/colorBar/ColorBarExamples';
+import {ColorBarExamples} from '../src/components/colorBar/examples/ColorBarExamples';
 import {ContentExamples} from '../src/components/content/examples/ContentExamples';
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
@@ -49,7 +49,7 @@ import {LabeledValueExamples} from '../src/components/labeledValue/examples/Labe
 import {LastUpdatedConnectedExamples} from '../src/components/lastUpdated/examples/LastUpdatedConnectedExamples';
 import {LastUpdatedExamples} from '../src/components/lastUpdated/examples/LastUpdatedExamples';
 import {ListBoxExamples} from '../src/components/listBox/examples/ListBoxExamples';
-import {LoadingExamples} from '../src/components/loading/LoadingExamples';
+import {LoadingExamples} from '../src/components/loading/examples/LoadingExamples';
 import {LogoCardExamples} from '../src/components/logoCard/examples/LogoCardExamples';
 import {ModalCompositeConnectedExamples} from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 import {ModalCompositeExamples} from '../src/components/modal/examples/ModalCompositeExamples';
@@ -63,9 +63,9 @@ import {NavigationConnectedExamples} from '../src/components/navigation/examples
 import {NavigationExamples} from '../src/components/navigation/examples/NavigationExamples';
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/OptionsCycleExamples';
-import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
+import {PartialStringMatchExamples} from '../src/components/partial-string-match/examples/PartialStringMatchExamples';
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
-import {SearchBarExamples} from '../src/components/searchBar/SearchBarExamples';
+import {SearchBarExamples} from '../src/components/searchBar/examples/SearchBarExamples';
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
 import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
@@ -85,7 +85,7 @@ import {TableExamples} from '../src/components/tables/examples/TableExamples';
 import {TableHeaderExamples} from '../src/components/tables/examples/TableHeaderExamples';
 import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
 import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
-import {TextAreaExamples} from '../src/components/textarea/TextAreaExamples';
+import {TextAreaExamples} from '../src/components/textarea/examples/TextAreaExamples';
 import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
