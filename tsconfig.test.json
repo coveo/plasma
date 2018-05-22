@@ -9,7 +9,12 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "sourceMap": false,
-    "target": "ES5"
+    "target": "ES5",
+    "plugins": [
+    {
+      "transform": "ts-transformer-keys/transformer"
+    }
+  ]
   },
   "include": [
     "src/**/*.tsx",
