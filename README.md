@@ -41,10 +41,10 @@ Run `npm test` to run all tests and get the code coverage!
 5. Wait for some nice guy to review and merge
 
 ** Folder stucture
-1. create a folder in sentense case for your new component
+1. create a folder in camel case for your new component
 2. add your new files in TitleCase
-3. add a folder tests for your test with the extension ".specs.(ts or tsx)"
-4. add a folder examples with "Examples.tsx"
+3. add a folder named tests for your tests with the extension ".spec.(ts or tsx)"
+4. add a folder named examples for your example files ending in "Examples.ts(x)"
 
 ## License
 Vapor is distributed under [MIT license](LICENSE).
