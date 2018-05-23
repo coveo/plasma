@@ -32,10 +32,12 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
                 isLoading: false,
             };
         case ActionBarActions.setYPosition:
-            return {
-                ...state,
-                tableYPosition: action.payload.yPosition,
-            };
+            if (state.tableYPosition !== action.payload.yPosition) {
+                return {
+                    ...state,
+                    tableYPosition: action.payload.yPosition,
+                };
+            }
         case LoadingActions.turnOn:
             return _.contains(action.payload.ids, state.id)
                 ? {...state, isLoading: true}

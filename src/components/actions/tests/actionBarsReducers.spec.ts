@@ -151,6 +151,34 @@ describe('Actions', () => {
                 expect(actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].tableYPosition).toBe(action.payload.yPosition);
             });
 
+            it('should return the old state when the state y position is equal to the action y position when the action is "SET_TABLE_Y_POSITION"', () => {
+                const action: IReduxAction<IActionBarPayload> = {
+                    type: ActionBarActions.setYPosition,
+                    payload: {
+                        id: oldState[0].id,
+                        yPosition: 10,
+                    },
+                };
+
+                const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
+                expect(actionBarsState.length).toBe(oldState.length);
+                expect(actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0]).toEqual(oldState[0]);
+            });
+
+            it('should return the new state with the new position when the state y position is different from the action y position when the action is "SET_TABLE_Y_POSITION"', () => {
+                const action: IReduxAction<IActionBarPayload> = {
+                    type: ActionBarActions.setYPosition,
+                    payload: {
+                        id: oldState[0].id,
+                        yPosition: 20,
+                    },
+                };
+
+                const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
+                expect(actionBarsState.length).toBe(oldState.length);
+                expect(actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].tableYPosition).toEqual(action.payload.yPosition);
+            });
+
             it('should set the actionbar isLoading prop to true when a loading action is dispatched and contain its id', () => {
                 const actionBarsState = actionBarsReducer(oldState, turnOnLoading([oldState[2].id]));
 
