@@ -39,8 +39,11 @@ module.exports = {
                 },
             },
             {
-                test: /\.ts(x?)$/,
+                test: /\.(ts|tsx)$/,
                 loader: 'ts-loader',
+                options: {
+                    compiler: 'ttypescript',
+                },
             },
             {
                 test: /\.scss$/,
