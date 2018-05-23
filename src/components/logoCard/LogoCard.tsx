@@ -1,6 +1,8 @@
 import * as classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys';
+import * as _ from 'underscore';
 import {slugify} from 'underscore.string';
 
 import {Badge, IBadgeProps} from '../badge/Badge';
@@ -25,7 +27,9 @@ export interface ILogoCardProps {
     title: string;
 }
 
-export class LogoCard extends React.Component<ILogoCardProps> {
+const LogoCardPropsToOmit = keys<ILogoCardProps>();
+
+export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<HTMLDivElement>> {
     static defaultProps: Partial<ILogoCardProps> = {
         badges: [],
         disabled: false,
@@ -77,7 +81,8 @@ export class LogoCard extends React.Component<ILogoCardProps> {
         return (
             <div
                 className={containerClassName}
-                onClick={() => this.handleClick()} >
+                onClick={() => this.handleClick()}
+                {..._.omit(this.props, LogoCardPropsToOmit)}>
                 <div className='logo-card-logo'>
                     <Svg svgName={this.props.svgName} className={logoIconClassName} />
                 </div>

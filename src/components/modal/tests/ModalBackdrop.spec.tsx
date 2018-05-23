@@ -48,19 +48,6 @@ describe('ModalBackdrop', () => {
             expect(container.hasClass('closed')).toBe(false);
         });
 
-        it('should set the proper layer class when display prop is true', () => {
-            const container = modalBackdrop.find('div').first();
-            expect(container.hasClass('layer-1')).toBe(false);
-
-            modalBackdrop.setProps({display: true});
-            modalBackdrop.mount();
-            expect(container.hasClass('layer-1')).toBe(true);
-
-            modalBackdrop.setProps({display: true, layer: 2});
-            modalBackdrop.mount();
-            expect(container.hasClass('layer-2')).toBe(true);
-        });
-
         it('should set "prompt-backdrop" class when isPrompt prop is passed', () => {
             const container = modalBackdrop.find('div').first();
             expect(container.hasClass('prompt-backdrop')).toBe(false);
@@ -98,10 +85,11 @@ describe('ModalBackdrop', () => {
             jasmine.clock().uninstall();
         });
 
-        it('should call not handleClick when user hits escape and the modal is not the last one opened', () => {
+        it('should not call handleClick when user hits escape and the modal is not the last one opened', () => {
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
-
             const event = document.createEvent('Event');
+
+            modalBackdrop.setProps({lastOpened: false});
             (event as any).keyCode = keyCode.escape;
             event.initEvent('keydown', true, true);
             document.dispatchEvent(event);

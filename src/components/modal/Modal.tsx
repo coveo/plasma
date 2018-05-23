@@ -7,7 +7,6 @@ export interface IModalOwnProps {
     classes?: IClassName;
     closeCallback?: () => void;
     closeTimeout?: number;
-    layer?: number;
 }
 
 export interface IModalStateProps {
@@ -22,10 +21,6 @@ export interface IModalDispatchProps {
 export interface IModalProps extends IModalOwnProps, IModalStateProps, IModalDispatchProps {}
 
 export class Modal extends React.Component<IModalProps, {}> {
-
-    static defaultProps: Partial<IModalProps> = {
-        layer: 1,
-    };
 
     componentWillMount() {
         if (this.props.onRender) {
@@ -64,7 +59,6 @@ export class Modal extends React.Component<IModalProps, {}> {
             this.props.classes,
             {
                 'opened': this.props.isOpened,
-                [`layer-${this.props.layer}`]: this.props.isOpened,
             },
         );
 

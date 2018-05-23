@@ -11,6 +11,7 @@ export interface ITableRowActionPayload {
     id?: string;
     isCollapsible?: boolean;
     tableId?: string;
+    rowId?: string;
 }
 
 export const addRow = (id: string, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
@@ -28,12 +29,13 @@ export const removeRow = (id: string): IReduxAction<ITableRowActionPayload> => (
     },
 });
 
-export const selectRow = (id: string, isCollapsible?: boolean, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
+export const selectRow = (id: string, isCollapsible?: boolean, tableId?: string, rowId?: string): IReduxAction<ITableRowActionPayload> => ({
     type: TableRowActions.select,
     payload: {
         id,
         isCollapsible,
         tableId,
+        rowId,
     },
 });
 

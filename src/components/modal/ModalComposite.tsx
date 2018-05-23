@@ -47,7 +47,7 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
             id: this.props.id,
             classes: this.props.classes,
             closeCallback: this.props.closeCallback,
-            layer: this.props.layer,
+            closeTimeout: this.props.closeTimeout,
         };
         const onRenderProp = this.props.onRender ? () => this.props.onRender() : undefined;
         const onDestroyProp = this.props.onDestroy ? () => this.props.onDestroy() : undefined;
@@ -93,7 +93,6 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
         const basicProps: IModalBackdropProps = {
             displayFor: [this.props.id],
             isPrompt: this.props.isPrompt,
-            layer: this.props.layer,
         };
 
         const onClickProp = () => {
