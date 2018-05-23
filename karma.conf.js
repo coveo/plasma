@@ -29,15 +29,22 @@ module.exports = (config) => {
         coverageReporter: {
             dir: 'coverage',
             reporters: [
-                {type: 'json', subdir: '.', file: 'coverage.json'},
-                {type: 'text-summary'},
+                { type: 'json', subdir: '.', file: 'coverage.json' },
+                { type: 'text-summary' },
             ],
         },
 
         port: 9876,
         colors: true,
 
-        browsers: ['PhantomJS'],
+        browsers: ['ChromeHeadless'],
+        // you can define custom flags
+        customLaunchers: {
+            ChromeHeadlessNoSandbox: {
+                base: 'ChromeHeadless',
+                flags: ['--no-sandbox']
+            }
+        },
 
         autoWatch: true,
         singleRun: true,

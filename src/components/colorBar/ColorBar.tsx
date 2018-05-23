@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {KeyValue} from '../../utils/DataStructuresUtils';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IColorBarProps {
     /**
@@ -11,6 +12,7 @@ export interface IColorBarProps {
      * and each value is an integer representing the percentage of 100% that this color must fill
      */
     widthPerColor: KeyValue<number>;
+    tooltipPerColor?: KeyValue<ITooltipProps>;
     height?: string;
     className?: IClassName;
 }
@@ -18,6 +20,7 @@ export interface IColorBarProps {
 export class ColorBar extends React.Component<IColorBarProps> {
     static defaultProps: Partial<IColorBarProps> = {
         height: '5px',
+        tooltipPerColor: {},
     };
 
     render() {
@@ -25,12 +28,23 @@ export class ColorBar extends React.Component<IColorBarProps> {
             <div className={classNames('full-content-x color-bar', this.props.className)}>
                 {_.map(
                     this.getAdjustedWidthPerColor(),
-                    (width: number, color: string) =>
-                        <div
-                            key={color}
-                            className='inline-block color-bar-color'
-                            style={{height: this.props.height, width: `${width}%`, backgroundColor: color}}>
-                        </div>,
+                    (width: number, color: string) => {
+                        const colorBarSection: JSX.Element = (
+                            <div
+                                key={color}
+                                className='inline-block color-bar-color'
+                                style={{height: this.props.height, width: `${width}%`, backgroundColor: color}}>
+                            </div>
+                        );
+
+                        return this.props.tooltipPerColor[color]
+                            ? (
+                                <Tooltip key={color} {...this.props.tooltipPerColor[color]}>
+                                    {colorBarSection}
+                                </Tooltip>
+                            )
+                            : colorBarSection;
+                    },
                 )}
             </div>
         );
