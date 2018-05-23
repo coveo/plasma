@@ -29,8 +29,10 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
     const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, {id: tableState.paginationId});
     const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, {id: tableState.perPageId});
     const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
-    const predicateStates: IDropdownSearchState[] = tableState && _.reject(state.dropdownSearch,
-        (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)) || [];
+    const predicateStates: IDropdownSearchState[] = tableState && _.reject(
+        state.dropdownSearch,
+        (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id),
+    ) || [];
     const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, {id: tableState.datePickerRangeId});
 
     return {
@@ -67,21 +69,18 @@ const getActions = (data: ITableData, props: ITableOwnProps): (rowData?: IData) 
 
 const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => props.rowsMultiSelect;
 
-const actionsSelector = createSelector(
-    [getDataById, getSelectedIds, getMultiSelect, getActions],
-    (
-        byId: ITableById,
-        selectedIds: string[],
-        isMultiSelect: boolean,
-        getAction: (rowData?: IData) => IActionOptions[],
+const actionsSelector = createSelector([
+    getDataById,
+    getSelectedIds,
+    getMultiSelect,
+    getActions,
+], (
+    byId: ITableById,
+    selectedIds: string[],
+    isMultiSelect: boolean,
+    getAction: (rowData?: IData) => IActionOptions[],
     ): IActionOptions[] => {
-        const rowsData: IData[] = [];
-        _.each(selectedIds, (id: string) => {
-            const rowData: IData = byId[id];
-            if (rowData) {
-                rowsData.push(rowData);
-            }
-        });
+        const rowsData: IData[] = _.map(selectedIds, (id: string) => byId[id]);
         if (getAction && rowsData.length) {
             const actions: IActionOptions[] = getAction(rowsData[0]);
             return isMultiSelect && selectedIds.length >= 2
