@@ -332,5 +332,37 @@ describe('<Table />', () => {
                 });
             });
         });
+
+        describe('componentWillUpdate', () => {
+            let tableAsAny: any;
+            let onWillUpdateSpy: jasmine.Spy;
+            let tableProps: any;
+
+            beforeEach(() => {
+                onWillUpdateSpy = jasmine.createSpy('onWillUpdateSpy');
+                tableProps = {...tablePropsMock, onWillUpdate: onWillUpdateSpy, actions: [{id: 'id1'}]};
+                tableAsAny = new Table(tableProps);
+            });
+
+            it('should not call onWillUpdate if next actions is identical to the previous action from the state', () => {
+                const nextProps = {
+                    actions: [{id: 'id1'}],
+                };
+
+                tableAsAny.componentWillUpdate(nextProps);
+
+                expect(onWillUpdateSpy).not.toHaveBeenCalled();
+            });
+
+            it('should call onWillUpdate if next actions is different to the previous action from the state', () => {
+                const nextProps = {
+                    actions: [{id: 'id2'}],
+                };
+
+                tableAsAny.componentWillUpdate(nextProps);
+
+                expect(onWillUpdateSpy).toHaveBeenCalledWith(nextProps.actions);
+            });
+        });
     });
 });
