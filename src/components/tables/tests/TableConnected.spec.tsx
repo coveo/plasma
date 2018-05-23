@@ -35,6 +35,29 @@ describe('<TableConnected />', () => {
     };
 
     describe('render', () => {
+
+        const getInitialTableDataMock: any = (selectedIds = ['id1']) => ({
+            byId: {
+                id1: {
+                    status: 'pokeball',
+                    pokemon: 'pikachu',
+                },
+                id2: {
+                    status: 'pokeball',
+                    pokemon: 'Ditto',
+                },
+                id3: {
+                    status: 'board',
+                    pokemon: 'Mew',
+                },
+            },
+            allIds: ['id1', 'id2', 'id3'],
+            displayedIds: ['id1', 'id2'],
+            selectedIds,
+            totalEntries: 3,
+            totalPages: 1,
+        });
+
         it('should render without error in different scenarios', () => {
             tablePossibleProps.forEach((props: ITableProps) => {
                 expect(() => mountComponentWithProps(props)).not.toThrow();
@@ -52,6 +75,24 @@ describe('<TableConnected />', () => {
             expect(store.getState().tables[tablePropsMock.id]).toBeDefined();
             tableConnected.unmount();
             expect(store.getState().tables[tablePropsMock.id]).toBeUndefined();
+        });
+
+        it('should update action in props with the selectedIds array and the rowsData from the state', () => {
+            const actions = [{id: 'action1', enabled: true}];
+            const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true, getActions: () => actions, initialTableData: getInitialTableDataMock()});
+
+            const tableConnected = wrapper.find(Table);
+
+            expect(tableConnected.props().actions[0]).toEqual(actions[0]);
+        });
+
+        it('should update action grouped in props with the selectedIds array and the rowsData from the state if rowsMultiSelect is true', () => {
+            const actions = [{id: 'action1', enabled: true}, {id: 'action2', enabled: true, grouped: true}];
+            const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true, getActions: () => actions, initialTableData: getInitialTableDataMock(['id1', 'id2']), rowsMultiSelect: true});
+
+            const tableConnected = wrapper.find(Table);
+
+            expect(tableConnected.props().actions[0]).toEqual(actions[1]);
         });
     });
 
@@ -76,8 +117,33 @@ describe('<TableConnected />', () => {
             ];
 
             expect(wrapper.find(PrimaryAction).length).toBe(0);
-            tableConnected.props().onRowClick(actions);
+            tableConnected.props().onRowClick(actions, 1);
             expect(wrapper.find(PrimaryAction).length).toBe(actions.length);
+        });
+
+        it('should show only grouped action if the numberOfSelectedIds is greater than 2 on onRowClick', () => {
+            const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true, rowsMultiSelect: true});
+            const tableConnected = wrapper.find(Table);
+
+            const actions = [
+                {
+                    enabled: true,
+                    name: 'action1',
+                    primary: true,
+                    icon: 'edit',
+                },
+                {
+                    enabled: true,
+                    name: 'action2',
+                    primary: true,
+                    icon: 'clear',
+                    grouped: true,
+                },
+            ];
+
+            expect(wrapper.find(PrimaryAction).length).toBe(0);
+            tableConnected.props().onRowClick(actions, 2);
+            expect(wrapper.find(PrimaryAction).length).toBe(1);
         });
 
         it('should modify the selected option in the predicate and close the dropdown on onPredicateOptionClick', () => {
@@ -98,6 +164,40 @@ describe('<TableConnected />', () => {
 
             expect(dropdownSearch.isOpened).toBe(false);
             expect(_.findWhere(dropdownSearch.options, {selected: true}).value).toBe(testOption.value);
+        });
+
+        it('should update the actions in the actionBar on onWillUpdate', () => {
+            const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true});
+            const tableConnected = wrapper.find(Table);
+
+            const actions = [
+                {
+                    enabled: true,
+                    name: 'action1',
+                    primary: true,
+                    icon: 'edit',
+                },
+                {
+                    enabled: true,
+                    name: 'action2',
+                    primary: true,
+                    icon: 'clear',
+                    grouped: true,
+                },
+            ];
+
+            expect(wrapper.find(PrimaryAction).length).toBe(0);
+            tableConnected.props().onWillUpdate(actions);
+            expect(wrapper.find(PrimaryAction).length).toBe(actions.length);
+        });
+
+        it('should keep the empty actionBar if the length of the new actions is empty', () => {
+            const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true});
+            const tableConnected = wrapper.find(Table);
+
+            expect(wrapper.find(PrimaryAction).length).toBe(0);
+            tableConnected.props().onWillUpdate([]);
+            expect(wrapper.find(PrimaryAction).length).toBe(0);
         });
 
         it('should call the manual thunk if it is passed as own props on onModifyData', () => {

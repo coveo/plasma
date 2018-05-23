@@ -3,15 +3,18 @@ import * as loremIpsum from 'lorem-ipsum';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
 import {Breadcrumb} from '../../breadcrumbs/Breadcrumb';
+import {Button} from '../../button/Button';
+import {Checkbox} from '../../checkbox/Checkbox';
 import {CheckboxConnected} from '../../checkbox/CheckboxConnected';
 import {GroupableCheckboxConnected} from '../../checkbox/GroupableCheckboxConnected';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
-import {IData, ITableRowData} from '../Table';
 import {ITableOwnProps} from '../Table';
+import {IData, ITableRowData} from '../Table';
 import {modifyState, setIsInError} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
@@ -22,6 +25,7 @@ const generateText = () => loremIpsum({count: 1, sentenceUpperBound: 3});
 const generateBoolean = () => Math.random() <= 0.5;
 const generateDate = (start: Date, end: Date) =>
     moment(start.getTime() + Math.random() * (end.getTime() - start.getTime())).format('YYYY-MM-DD hh:mm:ss');
+let globalBoolean = false;
 
 const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
     ...obj,
@@ -32,6 +36,16 @@ const simplestTableDataById = _.range(0, 5).reduce((obj, num) => ({
         attribute3: generateText(),
         attribute4: generateText(),
         attribute5: generateBoolean(),
+    },
+}), {} as ITableRowData);
+
+const tableDataWithBooleanById = (booleanValue: boolean) => _.range(0, 5).reduce((obj, num) => ({
+    ...obj,
+    ['row' + num]: {
+        id: 'row' + num,
+        attribute1: generateText(),
+        attribute2: generateText(),
+        attribute3: booleanValue,
     },
 }), {} as ITableRowData);
 
@@ -74,7 +88,23 @@ const tableData: ITableData = {
     totalPages: Math.ceil(_.keys(tableDataById).length / perPageNumbers[0]),
 };
 
-const buildNewTableStateManually = (data: any, currentState: ITableState, tableCompositeState: ITableCompositeState, tableOwnProps: ITableOwnProps): ITableState => {
+const tableDataWithBoolean = (): ITableData => {
+    globalBoolean = !globalBoolean;
+    return {
+        byId: tableDataWithBooleanById(globalBoolean),
+        allIds: _.keys(tableDataWithBooleanById(globalBoolean)),
+        displayedIds: _.keys(tableDataWithBooleanById(globalBoolean)).slice(0, perPageNumbers[0]),
+        totalEntries: _.keys(tableDataWithBooleanById(globalBoolean)).length,
+        totalPages: Math.ceil(_.keys(tableDataWithBooleanById(globalBoolean)).length / perPageNumbers[0]),
+    };
+};
+
+const buildNewTableStateManually = (
+    data: any,
+    currentState: ITableState,
+    tableCompositeState: ITableCompositeState,
+    tableOwnProps: ITableOwnProps,
+): ITableState => {
     const totalEntries = data.count;
     const totalPages = Math.ceil(totalEntries / perPageNumbers[0]);
     const newTableData = data.reduce((finalTableData: ITableData, comment: any, arr: any[]) => {
@@ -94,10 +124,25 @@ const buildNewTableStateManually = (data: any, currentState: ITableState, tableC
             totalPages: totalPages,
         };
     }, DEFAULT_TABLE_DATA);
-    return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, {data: newTableData}))({...currentState, data: newTableData});
+    return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, {data: newTableData}))(
+        {...currentState, data: newTableData});
 };
 
-const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean, tableCompositeState: ITableCompositeState): IThunkAction => {
+const updateAllBooleanInCurrentState = (id: string) => {
+    ReactVaporStore.dispatch(
+        modifyState(
+            id,
+            (tableState: ITableState) => _.extend({}, tableState, {data: tableDataWithBoolean()}),
+            false,
+        ),
+    );
+};
+
+const manualModeThunk = (
+    tableOwnProps: ITableOwnProps,
+    shouldResetPage: boolean,
+    tableCompositeState: ITableCompositeState,
+): IThunkAction => {
     return (dispatch: IDispatch, getState: () => {[globalStateProp: string]: any; tables: ITablesState;}) => {
         const currentTableState = getState().tables[tableOwnProps.id];
         dispatchPreTableStateModification(tableOwnProps.id, dispatch);
@@ -106,7 +151,8 @@ const manualModeThunk = (tableOwnProps: ITableOwnProps, shouldResetPage: boolean
                 dispatch(
                     modifyState(
                         tableOwnProps.id,
-                        (tableState: ITableState) => buildNewTableStateManually(data, currentTableState, tableCompositeState, tableOwnProps),
+                        (tableState: ITableState) => buildNewTableStateManually(data, currentTableState, tableCompositeState,
+                            tableOwnProps),
                         shouldResetPage,
                     ),
                 );
@@ -132,7 +178,7 @@ export class TableExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>
                         Table in manual mode.
-          </label>
+                    </label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
                         manual={manualModeThunk}
@@ -187,6 +233,40 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table with checkbox
+                    </label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={simplestTableData}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: (attributeName: string) => {
+                                    return <span>
+                                        <Checkbox checked={true} classes={'mr1'} />
+                                        {attributeName}
+                                    </span>;
+                                },
+                                attributeFormatter: (attributeName: string) => {
+                                    return <span>
+                                        <Checkbox checked={true} classes={'mr1'} />
+                                        {attributeName}
+                                    </span>;
+                                },
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>Simplest Table with a custom header</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
@@ -196,7 +276,12 @@ export class TableExamples extends React.Component<any, any> {
                                 attributeName: 'attribute1',
                                 titleFormatter: () => {
                                     return <div>
-                                        <GroupableCheckboxConnected id={'SFCheckboxes'} parentId={'parent-id'} classes={['mt1 mr1']} defaultChecked={false} />
+                                        <GroupableCheckboxConnected
+                                            id={'SFCheckboxes'}
+                                            parentId={'parent-id'}
+                                            classes={['mt1 mr1']}
+                                            defaultChecked={false}
+                                        />
                                         <span>Selected</span>
                                     </div>;
                                 },
@@ -321,7 +406,8 @@ export class TableExamples extends React.Component<any, any> {
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
                         initialTableData={tableData}
-                        collapsibleFormatter={(rowData: IData) => <div className='p2'>This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}</div>}
+                        collapsibleFormatter={(rowData: IData) => <div className='p2'>This is the collapsible row! And here's the value of
+                            attribute 3: {rowData.attribute3}</div>}
                         getActions={(rowData: IData) => ([
                             {
                                 name: 'Link to Coveo',
@@ -379,6 +465,96 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>Table with multiple selection on rows
+                    </label>
+                    <TableConnected
+                        id={'react-vapor-table-multiple-selection'}
+                        initialTableData={tableData}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute5',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        filter
+                        getActions={(rowData: IData) => ([
+                            {
+                                name: 'Link to Coveo',
+                                link: 'http://coveo.com',
+                                target: '_blank',
+                                icon: 'exit',
+                                primary: true,
+                                enabled: true,
+                            },
+                            {
+                                name: 'Delete',
+                                icon: 'delete',
+                                primary: true,
+                                enabled: true,
+                                grouped: true,
+                            },
+                        ])}
+                        blankSlateDefault={{title: 'Oh my oh my, nothing to see here :(!'}}
+                        actionBar={{extraContainerClasses: ['mod-border-top']}}
+                        navigation={{perPageNumbers}}
+                        rowsMultiSelect={true}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Table with actions to modify icon when the row data has changed
+                    </label>
+                    <br />
+                    <Button name={'Toggle attribute3 to false'} enabled={true} classes={['m1']}
+                        onClick={() => updateAllBooleanInCurrentState('react-vapor-table-update-actions')} />
+                    <TableConnected
+                        id={'react-vapor-table-update-actions'}
+                        initialTableData={tableDataWithBoolean()}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute2',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                                attributeFormatter: (attributeValue: boolean) => attributeValue ? 'is true' : 'is false',
+                            },
+                        ]}
+                        filter
+                        getActions={(rowData: IData) => ([
+                            {
+                                name: 'Toggle attribute3',
+                                trigger: () => updateAllBooleanInCurrentState('react-vapor-table-update-actions'),
+                                icon: rowData.attribute3 ? 'check' : 'clear',
+                                primary: true,
+                                enabled: true,
+                            },
+                            {
+                                name: 'Delete',
+                                icon: 'delete',
+                                primary: true,
+                                enabled: true,
+                                grouped: true,
+                            },
+                        ])}
+                        blankSlateDefault={{title: 'Oh my oh my, nothing to see here :(!'}}
+                        actionBar={{extraContainerClasses: ['mod-border-top']}}
+                        navigation={{perPageNumbers}}
+                    />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>Table with selectable values</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
@@ -387,7 +563,8 @@ export class TableExamples extends React.Component<any, any> {
                             {
                                 attributeName: 'attribute5',
                                 titleFormatter: _.identity,
-                                attributeFormatter: (value: boolean, name: string, data: IData) => <CheckboxConnected id={data.id} defaultChecked={value} />,
+                                attributeFormatter: (value: boolean, name: string, data: IData) => <CheckboxConnected id={data.id}
+                                    defaultChecked={value} />,
                             },
                             {
                                 attributeName: 'attribute4',
