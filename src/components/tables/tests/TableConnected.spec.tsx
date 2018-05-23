@@ -83,7 +83,7 @@ describe('<TableConnected />', () => {
 
             const tableConnected = wrapper.find(Table);
 
-            expect(tableConnected.props().actions[0]).toBe(actions[0]);
+            expect(tableConnected.props().actions[0]).toEqual(actions[0]);
         });
 
         it('should update action grouped in props with the selectedIds array and the rowsData from the state if rowsMultiSelect is true', () => {
@@ -92,7 +92,7 @@ describe('<TableConnected />', () => {
 
             const tableConnected = wrapper.find(Table);
 
-            expect(tableConnected.props().actions[0]).toBe(actions[1]);
+            expect(tableConnected.props().actions[0]).toEqual(actions[1]);
         });
     });
 
