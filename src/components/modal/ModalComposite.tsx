@@ -47,6 +47,7 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
             id: this.props.id,
             classes: this.props.classes,
             closeCallback: this.props.closeCallback,
+            closeTimeout: this.props.closeTimeout,
         };
         const onRenderProp = this.props.onRender ? () => this.props.onRender() : undefined;
         const onDestroyProp = this.props.onDestroy ? () => this.props.onDestroy() : undefined;
