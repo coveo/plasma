@@ -67,8 +67,12 @@ const getActions = (data: ITableData, props: ITableOwnProps): (rowData?: IData) 
 
 const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => props.rowsMultiSelect;
 
-const actionsSelector = createSelector(
-    [getDataById, getSelectedIds, getMultiSelect, getActions],
+const actionsSelector = createSelector([
+        getDataById,
+        getSelectedIds,
+        getMultiSelect,
+        getActions,
+    ],
     (
         byId: ITableById,
         selectedIds: string[],
