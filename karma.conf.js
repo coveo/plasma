@@ -37,7 +37,7 @@ module.exports = (config) => {
         port: 9876,
         colors: true,
 
-        browsers: ['PhantomJS'],
+        browsers: ['ChromeHeadless'],
 
         autoWatch: true,
         singleRun: true,

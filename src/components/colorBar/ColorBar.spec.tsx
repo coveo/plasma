@@ -1,6 +1,8 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {KeyValue} from '../../utils/DataStructuresUtils';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 import {ColorBar, IColorBarProps} from './ColorBar';
 import {noColorsPropsScenarios, withColorsPropsScenarios} from './ColorBarPropsScenarios.spec';
 
@@ -82,5 +84,23 @@ describe('ColorBar', () => {
         const colorBar = shallow(<ColorBar widthPerColor={{blue: 10}} className='extra-class' />).find('div').first();
 
         expect(colorBar.prop('className')).toContain('extra-class');
+    });
+
+    it('should render without tooltip if no tooltipPerColor is passed', () => {
+        const colorBar = shallow(<ColorBar widthPerColor={{blue: 10}} className='extra-class' />);
+
+        expect(colorBar.find(Tooltip).length).toBe(0);
+    });
+
+    it('should render with a tooltip on the right color if some tooltipPerColor values are passed', () => {
+        const widthPerColor: KeyValue<number> = {blue: 10, green: 90};
+        const tooltipPerColor: KeyValue<ITooltipProps> = {blue: {title: 'superTooltipPropsForBlue'}, green: {title: 'superTooltipPropsForGreen'}};
+
+        const colorBar = shallow(<ColorBar {...{widthPerColor, tooltipPerColor}} className='extra-class' />);
+
+        _.keys(widthPerColor).map((color: string, index: number) => {
+            expect(colorBar.find(Tooltip).at(index).props()).toEqual(jasmine.objectContaining(tooltipPerColor[color]));
+            expect(colorBar.find(Tooltip).at(index).find('.color-bar-color').html()).toContain(color);
+        });
     });
 });

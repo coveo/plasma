@@ -23,6 +23,15 @@ export const ColorBarExamples = () => (
             </div>
         </div>
         <div className='form-group'>
+            <label className='form-control-label'>ColorBar with tooltip on specific colors (hover on blue and yellow)</label>
+            <div className='form-control'>
+                <ColorBar
+                    widthPerColor={{blue: 30, yellow: 15, '#E94B3C': 10, '#00A591': 25, cyan: 20}}
+                    tooltipPerColor={{blue: {title: 'blue', placement: 'top'}, yellow: {title: 'yello', placement: 'top'}}}
+                />
+            </div>
+        </div>
+        <div className='form-group'>
             <label className='form-control-label'>ColorBar with multiple colors not full</label>
             <div className='form-control'>
                 <ColorBar widthPerColor={{blue: 20, yellow: 5, '#E94B3C': 10, '#00A591': 5, cyan: 20}} />
