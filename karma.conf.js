@@ -29,8 +29,8 @@ module.exports = (config) => {
         coverageReporter: {
             dir: 'coverage',
             reporters: [
-                { type: 'json', subdir: '.', file: 'coverage.json' },
-                { type: 'text-summary' },
+                {type: 'json', subdir: '.', file: 'coverage.json'},
+                {type: 'text-summary'},
             ],
         },
 
@@ -42,8 +42,8 @@ module.exports = (config) => {
         customLaunchers: {
             ChromeHeadlessNoSandbox: {
                 base: 'ChromeHeadless',
-                flags: ['--no-sandbox']
-            }
+                flags: ['--no-sandbox'],
+            },
         },
 
         autoWatch: true,
