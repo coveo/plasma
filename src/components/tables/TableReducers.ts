@@ -1,10 +1,10 @@
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
-import {IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
+import {IActionOptions} from '../actions/Action';
 import {LoadingActions} from '../loading/LoadingActions';
 import {ITablePredicate} from './Table';
-import {TableActions} from './TableActions';
+import {ITableActionPayload, TableActions} from './TableActions';
 import {
     DEFAULT_TABLE_DATA,
     TableChildComponent,
@@ -13,17 +13,20 @@ import {
 import {TableHeaderCellActions} from './TableHeaderCellActions';
 import {getTableChildComponentId} from './TableUtils';
 
-export interface ITableData {
-    byId: {
-        [id: string]: {
-            id: string;
-            [attribute: string]: any;
-        };
+export interface ITableById {
+    [id: string]: {
+        id: string;
+        [attribute: string]: any;
     };
+}
+
+export interface ITableData {
+    byId: ITableById;
     allIds: string[]; // useful to loop over all ids
     displayedIds: string[]; // will be the data displayed in the table
     totalEntries: number;
     totalPages: number;
+    selectedIds?: string[];
 }
 
 export interface ITablesState {
@@ -50,6 +53,7 @@ export interface ITableCompositeState {
     };
     from: Date;
     to: Date;
+    actions?: IActionOptions[];
 }
 
 export interface ITableState {
@@ -84,9 +88,20 @@ export const tableInitialState: ITableState = {
 
 export const tablesInitialState: {[tableId: string]: ITableState;} = {};
 
+export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]): ITableState => {
+    const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => !_.contains(state.data.displayedIds, selectedId));
+    return {
+        ...state,
+        data: {
+            ...state.data,
+            selectedIds: newSelectedIds,
+        },
+    };
+};
+
 export const tableReducer = (
     state: ITableState = tableInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<ITableActionPayload>,
 ): ITableState => {
     switch (action.type) {
         case TableActions.add:
@@ -103,7 +118,8 @@ export const tableReducer = (
                 datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
             };
         case TableActions.modifyState:
-            return action.payload.tableStateModifier(state);
+            const selectedIds: string[] = state.data && state.data.selectedIds ? state.data.selectedIds : [];
+            return updateSelectedIDs(action.payload.tableStateModifier(state), selectedIds);
         case TableActions.inError:
             return {
                 ...state,
@@ -124,12 +140,22 @@ export const tableReducer = (
                 ...state,
                 tableHeaderCellId: action.payload.id,
             };
+        case TableActions.updateSelectedIds:
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    selectedIds: action.payload.hasMultipleSelectedRow
+                        ? _.union(state.data.selectedIds, action.payload.selectedIds)
+                        : action.payload.selectedIds.slice(0, 1),
+                },
+            };
         default:
             return state;
     }
 };
 
-export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAction<IReduxActionsPayload>) => {
+export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAction<ITableActionPayload | any>) => {
     switch (action.type) {
         case TableActions.add:
             return {

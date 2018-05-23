@@ -1,11 +1,11 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {addTable, ITableActionPayload, modifyState, removeTable, setIsInError} from '../TableActions';
+import {addTable, ITableActionPayload, modifyState, removeTable, setIsInError, TableActions} from '../TableActions';
 import {DEFAULT_TABLE_DATA, TableChildComponent} from '../TableConstants';
 import {sortFromHeaderCell} from '../TableHeaderCellActions';
 import {
     ITablesState,
-    ITableState,
+    ITableState, tableReducer,
     tablesInitialState,
     tablesReducer,
 } from '../TableReducers';
@@ -13,6 +13,12 @@ import {getTableChildComponentId} from '../TableUtils';
 
 describe('TableReducers', () => {
     const tableId = 'super-table';
+
+    const getEmptyOldState = () => ({
+        id: 'table1',
+        data: {},
+    });
+
     const genericAction: IReduxAction<ITableActionPayload> = {
         type: 'DO_SOMETHING',
         payload: {
@@ -113,6 +119,88 @@ describe('TableReducers', () => {
 
             expect(tablesReducer(oldState, modifyState('some other id', tableDataModifier, true))[tableId])
                 .toEqual(oldState[tableId]);
+        });
+    });
+
+    describe('ModifyState action', () => {
+
+        const getModifyStateAction = () => ({
+            type: TableActions.modifyState,
+            payload: {
+                id: 'row1',
+                tableStateModifier: (state: ITableState) => state,
+            },
+        });
+
+        const getOldState = (selectedIds = ['id1', 'id2']) => ({
+            id: 'table1',
+            data: {
+                selectedIds,
+                displayedIds: ['id2', 'id3'],
+            },
+        });
+
+        it('should not throw if the selectedIds array is not defined', () => {
+            expect(() => {
+                const oldState = getOldState([]);
+                tableReducer(oldState as ITableState, getModifyStateAction());
+            }).not.toThrow();
+        });
+
+        it('should remove selected ids from the list if the displayedIds do not contain the id', () => {
+            const oldState = getOldState();
+            const newState: ITableState = tableReducer(oldState as ITableState, getModifyStateAction());
+
+            expect(newState.data.selectedIds.length).toBe(1);
+            expect(newState.data.selectedIds[0]).toBe('id2');
+        });
+
+        it('should return a selectedIds empty if the displayedIds is empty and the selectedIds undefined', () => {
+            const oldState = getEmptyOldState();
+            const newState: ITableState = tableReducer(oldState as ITableState, getModifyStateAction());
+
+            expect(newState.data.selectedIds.length).toBe(0);
+        });
+    });
+
+    describe('UpdateSelectedIds action', () => {
+        const getUpdateSelectedIdsAction = (hasMultipleSelectedRow: boolean = false) => ({
+            type: TableActions.updateSelectedIds,
+            payload: {
+                id: 'table1',
+                selectedIds: ['id3', 'id4'],
+                hasMultipleSelectedRow,
+            },
+        });
+
+        const getOldState = (selectedIds = ['id1', 'id2']) => ({
+            id: 'table1',
+            data: {
+                selectedIds,
+                displayedIds: ['id2', 'id3'],
+            },
+        });
+
+        it('should return only the first selected ids if hasMultipleSelectedRow is false', () => {
+            const oldState = getOldState();
+            const newState: ITableState = tableReducer(oldState as ITableState, getUpdateSelectedIdsAction());
+
+            expect(newState.data.selectedIds.length).toBe(1);
+            expect(newState.data.selectedIds[0]).toBe('id3');
+        });
+
+        it('should combine all selected ids if hasMultipleSelectedRow is true', () => {
+            const oldState = getOldState();
+            const newState: ITableState = tableReducer(oldState as ITableState, getUpdateSelectedIdsAction(true));
+
+            expect(newState.data.selectedIds.length).toBe(4);
+        });
+
+        it('should not add a duplicate id if hasMultipleSelectedRow is true', () => {
+            const oldState = getOldState(['id1', 'id3']);
+            const newState: ITableState = tableReducer(oldState as ITableState, getUpdateSelectedIdsAction(true));
+
+            expect(newState.data.selectedIds.length).toBe(3);
         });
     });
 });

@@ -1,6 +1,6 @@
 {
   "name": "react-vapor",
-  "version": "2.16.4",
+  "version": "2.16.5",
   "description": "Vapor CSS components implemented with React!",
   "keywords": [
     "coveo",
@@ -43,6 +43,7 @@
   ],
   "dependencies": {
     "react-bootstrap": "0.31.3",
+    "reselect": "3.0.1",
     "react-codemirror": "1.0.0",
     "react-tether": "0.5.7"
   },
