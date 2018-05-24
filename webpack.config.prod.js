@@ -36,6 +36,9 @@ const config = {
             {
                 test: /\.ts(x?)$/,
                 loader: 'ts-loader',
+                options: {
+                    compiler: 'ttypescript',
+                },
             },
             {
                 test: /\.css$/,
