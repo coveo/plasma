@@ -2,13 +2,13 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {keys} from 'ts-transformer-keys';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
-import {keys} from 'ts-transformer-keys';
 
 export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
@@ -62,7 +62,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const option = _.findWhere(this.props.items, {value: this.props.selected});
-        
+
         return (
             <button
                 className={classNames(['btn', 'dropdown-toggle', this.props.toggleClasses])}
