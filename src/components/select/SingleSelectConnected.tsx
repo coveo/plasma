@@ -8,12 +8,12 @@ import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {keys} from 'ts-transformer-keys';
 
 export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
     toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
-    disabled?: boolean;
 }
 
 export interface ISingleSelectStateProps {
@@ -33,8 +33,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProp
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({});
 
+const singleSelectPropsToOmit = keys<ISingleSelectProps>();
+
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.Component<ISingleSelectProps, {}> {
+export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.HTMLProps<HTMLButtonElement>, {}> {
 
     static defaultProps: Partial<ISingleSelectOwnProps> = {
         placeholder: 'Select an option',
@@ -60,6 +62,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const option = _.findWhere(this.props.items, {value: this.props.selected});
+        
         return (
             <button
                 className={classNames(['btn', 'dropdown-toggle', this.props.toggleClasses])}
@@ -67,7 +70,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
-                disabled={this.props.disabled}
+                {..._.omit(this.props, singleSelectPropsToOmit)}
             >
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
