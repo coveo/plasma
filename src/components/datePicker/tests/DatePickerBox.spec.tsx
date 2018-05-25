@@ -134,6 +134,16 @@ describe('Date picker', () => {
 
             expect(datePickerBox.find(`.${footerClass}`).length).toBe(1);
         });
+
+        it('should have the class simple if it has the prop simple', () => {
+            expect(datePickerBox.find('.simple').length).toBe(0);
+
+            datePickerBox.setProps({
+                simple: true,
+            });
+
+            expect(datePickerBox.find('.simple').length).toBe(1);
+        });
     });
 
     describe('<DatePickerBox /> with redux state', () => {

@@ -1,6 +1,8 @@
+import classNames = require('classnames');
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {DateLimits} from '../datePicker/DatePickerActions';
@@ -33,6 +35,7 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
     startingDay?: number;
     selectionRules?: ICalendarSelectionRule[];
     isLinkedToDateRange?: boolean;
+    simple?: boolean;
 }
 
 export interface ICalendarStateProps extends IReduxStatePossibleProps {
@@ -212,18 +215,27 @@ export class Calendar extends React.Component<ICalendarProps, any> {
             return <tr key={`week-${days[0].key}`}>{days}</tr>;
         });
 
-        const tableClasses: string[] = ['calendar-grid'];
-        if (this.getSelectedDatePicker()) {
-            tableClasses.push('selecting');
-        }
+        const tableClasses: string = classNames(
+            'calendar-grid',
+            {
+                'selecting': !!this.getSelectedDatePicker(),
+            },
+        );
+
+        const wrapperClasses: string = classNames(
+            'calendar',
+            {
+                'column': !this.props.simple,
+            },
+        );
 
         return (
-            <div className='calendar column'>
+            <div className={wrapperClasses}>
                 <div className='calendar-header p2'>
                     {monthPicker}
                     {yearPicker}
                 </div>
-                <table className={tableClasses.join(' ')}>
+                <table className={tableClasses}>
                     <TableHeader columns={daysHeaderColumns} headerClass='mod-no-border-top' />
                     <tbody>
                         {weeks}

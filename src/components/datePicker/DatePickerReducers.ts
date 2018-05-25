@@ -19,6 +19,7 @@ export interface IDatePickerState {
     selected: string;
     appliedLowerLimit: Date;
     appliedUpperLimit: Date;
+    simple: boolean;
 }
 
 export const datePickerInitialState: IDatePickerState = {
@@ -27,6 +28,7 @@ export const datePickerInitialState: IDatePickerState = {
     color: undefined,
     isRange: false,
     isClearable: false,
+    simple: false,
     lowerLimit: moment().startOf('day').toDate(),
     upperLimit: moment().endOf('day').toDate(),
     selected: '',
@@ -54,6 +56,7 @@ const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePic
         appliedLowerLimit: mayBeNull(state.appliedLowerLimit),
         appliedUpperLimit: mayBeNull(state.appliedUpperLimit),
         isClearable: action.payload.isClearable,
+        simple: action.payload.simple,
     };
 };
 
@@ -63,12 +66,14 @@ const changeLowerLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
         ? null
         : currentUpperLimit;
 
+    const simpleSelected = state.simple ? DateLimits.lower : '';
+
     return state.id !== action.payload.id ? state : _.extend({}, state, {
         lowerLimit: action.payload.date,
         inputLowerLimit: action.payload.date,
         upperLimit: nullifyIfBefore(state.upperLimit, action.payload.date),
         inputUpperLimit: nullifyIfBefore(state.inputUpperLimit, action.payload.date),
-        selected: state.isRange ? DateLimits.upper : '',
+        selected: state.isRange ? DateLimits.upper : simpleSelected,
     });
 };
 
