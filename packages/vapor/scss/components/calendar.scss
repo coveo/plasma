@@ -27,6 +27,10 @@
   background-color: $pure-white;
   border: $default-border;
   border-radius: $border-radius;
+
+  &.simple {
+    width: auto;
+  }
 }
 
 .dropdown-menu .date-picker-box {
