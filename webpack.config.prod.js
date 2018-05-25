@@ -8,6 +8,7 @@ const isTravis = process.env.TRAVIS;
 const config = {
     entry: './Index.ts',
     mode: 'production',
+    optimization: {minimize: false},
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'react-vapor.js',
