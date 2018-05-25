@@ -13,6 +13,7 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
     toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
+    disabled?: boolean;
 }
 
 export interface ISingleSelectStateProps {
@@ -50,7 +51,8 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
             <SelectConnected
                 id={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
-                items={this.props.items}>
+                items={this.props.items}
+            >
                 {this.props.children}
             </SelectConnected>
         );
@@ -65,6 +67,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
+                disabled={this.props.disabled}
             >
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}

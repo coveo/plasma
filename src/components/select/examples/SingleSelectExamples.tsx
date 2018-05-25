@@ -65,6 +65,15 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                     />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>Disabled Simple Single Select</label>
+                    <br />
+                    <SingleSelectConnected
+                        id={UUID.generate()}
+                        items={this.state.hoc}
+                        disabled
+                    />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>A Single Select With Filter</label>
                     <br />
                     <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
