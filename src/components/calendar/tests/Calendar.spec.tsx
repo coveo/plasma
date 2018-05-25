@@ -192,6 +192,7 @@ describe('Calendar', () => {
                         appliedUpperLimit: now,
                         inputLowerLimit: now,
                         inputUpperLimit: now,
+                        simple: false,
                     },
                     {
                         id: 'id',
@@ -206,6 +207,7 @@ describe('Calendar', () => {
                         appliedUpperLimit: now,
                         inputLowerLimit: now,
                         inputUpperLimit: now,
+                        simple: false,
                     },
                 ],
             });
@@ -245,6 +247,7 @@ describe('Calendar', () => {
                             appliedUpperLimit: null,
                             inputLowerLimit: null,
                             inputUpperLimit: null,
+                            simple: false,
                         },
                         {
                             id: 'id2',
@@ -259,6 +262,7 @@ describe('Calendar', () => {
                             appliedUpperLimit: null,
                             inputLowerLimit: null,
                             inputUpperLimit: null,
+                            simple: false,
                         },
                     ],
                 });
@@ -296,6 +300,7 @@ describe('Calendar', () => {
                         appliedUpperLimit: now,
                         inputLowerLimit: now,
                         inputUpperLimit: now,
+                        simple: false,
                     },
                 ],
             });
@@ -317,6 +322,7 @@ describe('Calendar', () => {
                         appliedUpperLimit: now,
                         inputLowerLimit: now,
                         inputUpperLimit: now,
+                        simple: false,
                     },
                 ],
             });
@@ -345,6 +351,7 @@ describe('Calendar', () => {
                 appliedUpperLimit: now,
                 inputLowerLimit: now,
                 inputUpperLimit: now,
+                simple: false,
             };
             const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
                 {
@@ -567,8 +574,15 @@ describe('Calendar', () => {
 
                     expect(day.isSelectable).toBe(false);
                 });
-            });
 
+                it('should not have the class column if it has the prop simple', () => {
+                    expect(calendar.find('.column').length).toBe(1);
+
+                    calendar.setProps({simple: true});
+
+                    expect(calendar.find('.column').length).toBe(0);
+                });
+            });
         });
     });
 });
