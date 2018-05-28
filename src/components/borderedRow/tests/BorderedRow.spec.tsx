@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {BorderedRow} from './BorderedRow';
+import {BorderedRow} from '../BorderedRow';
 
 describe('BorderedRow', () => {
     it('should render without error in various scenarios', () => {
