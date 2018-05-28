@@ -1,6 +1,8 @@
+import classNames = require('classnames');
 import * as React from 'react';
 import * as _ from 'underscore';
-import * as  s from 'underscore.string';
+import * as s from 'underscore.string';
+
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Calendar, ICalendarProps, ICalendarSelectionRule} from '../calendar/Calendar';
 import {CalendarConnected} from '../calendar/CalendarConnected';
@@ -27,6 +29,7 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
     isClearable?: boolean;
     clearLabel?: string;
     initiallyUnselected?: boolean;
+    simple?: boolean;
     footer?: JSX.Element;
     onClear?: () => void;
 }
@@ -56,9 +59,17 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
         clearLabel: DEFAULT_CLEAR_DATE_LABEL,
     };
 
+    static getCalendarId = (datePickerId: string) => `calendar-${datePickerId}`;
+
+    private id: string;
+
+    componentWillMount() {
+        this.id = DatePickerBox.getCalendarId(this.props.id);
+    }
+
     render() {
         const calendarProps: ICalendarProps = {
-            id: `calendar-${this.props.id}`,
+            id: this.id,
             months: this.props.months,
             startingMonth: this.props.startingMonth,
             years: this.props.years,
@@ -67,63 +78,89 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
             startingDay: this.props.startingDay,
             selectionRules: this.props.selectionRules,
             isLinkedToDateRange: this.props.isLinkedToDateRange,
+            simple: this.props.simple,
         };
 
         const calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected {...calendarProps} /> : <Calendar />;
-        const datesSelectionBoxes: JSX.Element[] =
-            _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
-                const boxId: string = this.props.id + '-' + s.slugify(datesSelectionBox.title);
 
-                const quickOptionsProps: IOptionPickerProps = {
-                    id: boxId,
-                    options: datesSelectionBox.quickOptions,
-                };
-                const optionPicker: JSX.Element = this.props.withReduxState
-                    ? <OptionPickerConnected {...quickOptionsProps} />
-                    : <OptionPicker {...quickOptionsProps} />;
+        const datePickerClasses: string = classNames(
+            'date-picker-box',
+            'flex',
+            'flex-column',
+            {
+                'simple': this.props.simple,
+            },
+        );
 
-                const datesSelectionProps: IDatesSelectionProps = {
-                    id: boxId,
-                    withTime: datesSelectionBox.withTime,
-                    hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
-                    setToNowTooltip: this.props.setToNowTooltip,
-                    isRange: datesSelectionBox.isRange,
-                    isClearable: this.props.isClearable,
-                    rangeLimit: datesSelectionBox.rangeLimit,
-                    color: datesSelectionBox.color,
-                    calendarId: calendarProps.id,
-                    lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
-                    upperLimitPlaceholder: this.props.upperLimitPlaceholder,
-                    initiallyUnselected: this.props.initiallyUnselected,
-                };
-                const dateSelection: JSX.Element = this.props.withReduxState
-                    ? <DatesSelectionConnected {...datesSelectionProps} />
-                    : <DatesSelection {...datesSelectionProps} />;
-
-                return (
-                    <div key={boxId}>
-                        <h3 className='bold text-medium-blue'>{datesSelectionBox.title}</h3>
-                        {optionPicker}
-                        {dateSelection}
-                    </div>
-                );
-            });
-
-        const clearOption: JSX.Element = this.props.isClearable
-            ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{this.props.clearLabel}</button>
-            : null;
-
-        return (
-            <div className='date-picker-box flex flex-column'>
+        const inside: JSX.Element = this.props.simple
+            ? calendar
+            : (
                 <div className='split-layout'>
                     {calendar}
-                    <div className='date-selection column mod-small-content p2'>
-                        {datesSelectionBoxes}
-                        {clearOption}
-                    </div>
+                    {this.getdatePickerRightPart()}
                 </div>
+            );
+
+        return (
+            <div className={datePickerClasses}>
+                {inside}
                 {this.props.footer}
             </div>
         );
+    }
+
+    private getdatePickerRightPart(): JSX.Element {
+        return (
+            <div className = 'date-selection column mod-small-content p2' >
+                {this.getdateSelectionBoxes()}
+                {this.getClearOptions()}
+            </div >
+        );
+    }
+
+    private getdateSelectionBoxes(): JSX.Element[] {
+        return _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
+            const boxId: string = `${this.props.id}-${s.slugify(datesSelectionBox.title)}`;
+
+            const quickOptionsProps: IOptionPickerProps = {
+                id: boxId,
+                options: datesSelectionBox.quickOptions,
+            };
+            const optionPicker: JSX.Element = this.props.withReduxState
+                ? <OptionPickerConnected {...quickOptionsProps} />
+                : <OptionPicker {...quickOptionsProps} />;
+
+            const datesSelectionProps: IDatesSelectionProps = {
+                id: boxId,
+                withTime: datesSelectionBox.withTime,
+                hasSetToNowButton: datesSelectionBox.hasSetToNowButton,
+                setToNowTooltip: this.props.setToNowTooltip,
+                isRange: datesSelectionBox.isRange,
+                isClearable: this.props.isClearable,
+                rangeLimit: datesSelectionBox.rangeLimit,
+                color: datesSelectionBox.color,
+                calendarId: this.id,
+                lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
+                upperLimitPlaceholder: this.props.upperLimitPlaceholder,
+                initiallyUnselected: this.props.initiallyUnselected,
+            };
+            const dateSelection: JSX.Element = this.props.withReduxState
+                ? <DatesSelectionConnected {...datesSelectionProps} />
+                : <DatesSelection {...datesSelectionProps} />;
+
+            return (
+                <div key={boxId}>
+                    <h3 className='bold text-medium-blue'>{datesSelectionBox.title}</h3>
+                    {optionPicker}
+                    {dateSelection}
+                </div>
+            );
+        });
+    }
+
+    private getClearOptions(): JSX.Element {
+        return this.props.isClearable
+            ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{this.props.clearLabel}</button>
+            : null;
     }
 }

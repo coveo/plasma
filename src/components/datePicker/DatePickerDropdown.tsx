@@ -39,6 +39,7 @@ export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildren
     lowerLimitPlaceholder?: string;
     upperLimitPlaceholder?: string;
     isLinkedToDateRange?: boolean;
+    simple?: boolean;
 }
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
@@ -180,6 +181,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
             isClearable: this.props.isClearable,
             initiallyUnselected: this.props.initiallyUnselected,
             clearLabel: this.props.clearLabel,
+            simple: this.props.simple,
             onClear: () => this.handleClear(),
             footer: (
                 <ModalFooter classes={['mod-small']}>

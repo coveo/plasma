@@ -116,6 +116,14 @@ describe('Select', () => {
             expect(singleSelect.find('.dropdown-toggle').hasClass('some-class')).toBe(true);
         });
 
+        it('should disable the toggle button when disabled prop is set to true', () => {
+            mountSingleSelect([], {
+                disabled: true,
+            });
+
+            expect(singleSelect.find('.dropdown-toggle').is('[disabled]')).toBe(true);
+        });
+
         it('should contain the prepend and append in the button when selected', () => {
             const prepend = 'pre';
             const append = 'post';

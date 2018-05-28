@@ -53,6 +53,7 @@ describe('Date picker', () => {
             appliedUpperLimit: then,
             inputLowerLimit: now,
             inputUpperLimit: then,
+            simple: false,
         };
 
         beforeEach(() => {
@@ -147,6 +148,7 @@ describe('Date picker', () => {
                 appliedUpperLimit: then,
                 inputLowerLimit: now,
                 inputUpperLimit: then,
+                simple: false,
             };
             propsWithDatePicker = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {datePicker});
             datePickerDropdown.setProps(propsWithDatePicker);
@@ -185,6 +187,7 @@ describe('Date picker', () => {
                         appliedUpperLimit: rightNow,
                         inputLowerLimit: rightNow,
                         inputUpperLimit: then,
+                        simple: false,
                     },
                 };
 
@@ -207,6 +210,7 @@ describe('Date picker', () => {
                 appliedUpperLimit: null,
                 inputLowerLimit: null,
                 inputUpperLimit: null,
+                simple: false,
             };
             const newProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 datePicker: newDatePicker,
@@ -234,6 +238,7 @@ describe('Date picker', () => {
                 appliedUpperLimit: end,
                 inputLowerLimit: start,
                 inputUpperLimit: end,
+                simple: false,
             };
             const propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {datePicker});
             datePickerDropdown.setProps(propsWithDatePicker);
