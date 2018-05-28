@@ -119,7 +119,7 @@ describe('Select', () => {
         it('should disable the toggle button when disabled prop is set to true', () => {
             mountSingleSelect([], {
                 disabled: true,
-            });
+            } as any);
 
             expect(singleSelect.find('.dropdown-toggle').is('[disabled]')).toBe(true);
         });

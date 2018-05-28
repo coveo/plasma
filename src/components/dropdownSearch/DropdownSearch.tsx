@@ -143,7 +143,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                 );
 
                 return opt.disabled && opt.disabledTooltip
-                    ? <Tooltip {...opt.disabledTooltip}>{formattedOption}</Tooltip>
+                    ? <Tooltip noSpanWrapper {...opt.disabledTooltip}>{formattedOption}</Tooltip>
                     : formattedOption;
 
             })
