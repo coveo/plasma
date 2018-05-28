@@ -38,7 +38,6 @@ module.exports = (config) => {
         colors: true,
 
         browsers: ['ChromeHeadless'],
-        // you can define custom flags
         customLaunchers: {
             ChromeHeadlessNoSandbox: {
                 base: 'ChromeHeadless',

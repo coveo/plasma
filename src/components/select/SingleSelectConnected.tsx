@@ -14,10 +14,11 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
     toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
+    items?: IItemBoxProps[];
 }
 
 export interface ISingleSelectStateProps {
-    selected?: string;
+    selectedOption?: string;
 }
 
 export interface ISingleSelectDispatchProps {}
@@ -27,7 +28,7 @@ export interface ISingleSelectProps extends ISingleSelectOwnProps, ISingleSelect
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
     const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
     return {
-        selected: listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : undefined,
+        selectedOption: listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : undefined,
     };
 };
 
@@ -43,8 +44,8 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
     };
 
     componentDidUpdate(prevProps: ISingleSelectProps) {
-        if (prevProps.selected !== this.props.selected) {
-            callIfDefined(this.props.onSelectOptionCallback, this.props.selected);
+        if (prevProps.selectedOption !== this.props.selectedOption) {
+            callIfDefined(this.props.onSelectOptionCallback, this.props.selectedOption);
         }
     }
 
@@ -61,7 +62,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
     }
 
     private getButton(props: ISelectButtonProps): JSX.Element {
-        const option = _.findWhere(this.props.items, {value: this.props.selected});
+        const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
 
         return (
             <button
