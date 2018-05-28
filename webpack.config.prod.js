@@ -8,6 +8,7 @@ const isTravis = process.env.TRAVIS;
 const config = {
     entry: './Index.ts',
     mode: 'production',
+    optimization: {minimize: false},
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'react-vapor.js',
@@ -36,6 +37,9 @@ const config = {
             {
                 test: /\.ts(x?)$/,
                 loader: 'ts-loader',
+                options: {
+                    compiler: 'ttypescript',
+                },
             },
             {
                 test: /\.css$/,
@@ -47,17 +51,26 @@ const config = {
                 }],
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 include: path.join(__dirname, 'src/components'),
                 use: [
                     {
                         loader: 'style-loader',
-                    }, {
+                    },
+                    {
                         loader: 'typings-for-css-modules-loader',
                         options: {
                             modules: true,
+                            scss: true,
                             namedExport: true,
+                            localIdentName: '[name]-[local]-[hash:base64]',
                         },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
                     },
                 ],
             },

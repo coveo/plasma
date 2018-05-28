@@ -40,6 +40,7 @@ describe('Date picker', () => {
         inputLowerLimit: new Date(new Date().setHours(0, 0, 0, 0)),
         inputUpperLimit: new Date(new Date().setHours(23, 59, 59, 999)),
         isClearable: false,
+        simple: false,
     };
 
     describe('datePickersReducer', () => {
@@ -432,6 +433,23 @@ describe('Date picker', () => {
                 expect(newDatePicker.inputUpperLimit).toBeNull();
                 expect(newDatePicker.selected).toBe(DateLimits.upper);
             });
+
+        it('should return the state with the lower limit selected when the date picker is simple and the action is "CHANGE_LOWER_LIMIT"', () => {
+            const oldDatePicker: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
+                id: 'some-date-picker',
+                simple: true,
+            });
+            const action: IReduxAction<IChangeDatePickerPayload> = {
+                type: DatePickerActions.changeLowerLimit,
+                payload: {
+                    id: 'some-date-picker',
+                    date: new Date(),
+                },
+            };
+            const newDatePicker: IDatePickerState = datePickerReducer(oldDatePicker, action);
+
+            expect(newDatePicker.selected).toBe(DateLimits.lower);
+        });
 
         it('should return the date picker with the new lower limit if the action is "CHANGE_UPPER_LIMIT" and the id is ' +
             'the one specified', () => {

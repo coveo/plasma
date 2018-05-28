@@ -2,6 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {keys} from 'ts-transformer-keys';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
@@ -32,8 +33,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProp
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({});
 
+const singleSelectPropsToOmit = keys<ISingleSelectProps>();
+
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.Component<ISingleSelectProps, {}> {
+export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.HTMLProps<HTMLButtonElement>, {}> {
 
     static defaultProps: Partial<ISingleSelectOwnProps> = {
         placeholder: 'Select an option',
@@ -50,7 +53,8 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
             <SelectConnected
                 id={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
-                items={this.props.items}>
+                items={this.props.items}
+            >
                 {this.props.children}
             </SelectConnected>
         );
@@ -58,6 +62,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const option = _.findWhere(this.props.items, {value: this.props.selected});
+
         return (
             <button
                 className={classNames(['btn', 'dropdown-toggle', this.props.toggleClasses])}
@@ -65,6 +70,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps, {
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
+                {..._.omit(this.props, singleSelectPropsToOmit)}
             >
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}

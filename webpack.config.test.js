@@ -51,17 +51,26 @@ module.exports = {
                 }],
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 include: path.join(__dirname, 'src/components'),
                 use: [
                     {
                         loader: 'style-loader',
-                    }, {
+                    },
+                    {
                         loader: 'typings-for-css-modules-loader',
                         options: {
                             modules: true,
+                            scss: true,
                             namedExport: true,
+                            localIdentName: '[name]-[local]-[hash:base64]',
                         },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
                     },
                 ],
             },
