@@ -6,6 +6,7 @@ import {keyCode} from '../../utils/InputUtils';
 import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
 import {ISvgProps, Svg} from '../svg/Svg';
+import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IDropdownOption {
     svg?: ISvgProps;
@@ -16,6 +17,7 @@ export interface IDropdownOption {
     custom?: boolean;
     hidden?: boolean;
     disabled?: boolean;
+    disabledTooltip?: ITooltipProps;
     default?: boolean;
     append?: string;
 }
@@ -124,7 +126,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                     ? this.getTextFiltered(value)
                     : value;
 
-                return (
+                const formattedOption = (
                     <li key={opt.value}
                         className={liClasses}
                         title={value}
@@ -139,6 +141,11 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                         {this.getDropdownOptionAppend(opt)}
                     </li>
                 );
+
+                return opt.disabled && opt.disabledTooltip
+                    ? <Tooltip {...opt.disabledTooltip}>{formattedOption}</Tooltip>
+                    : formattedOption;
+
             })
             .value();
 

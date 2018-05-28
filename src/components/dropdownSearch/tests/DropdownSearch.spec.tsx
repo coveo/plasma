@@ -6,6 +6,7 @@ import {keyCode} from '../../../utils/InputUtils';
 import {UUID} from '../../../utils/UUID';
 import {Content} from '../../content/Content';
 import {FilterBox} from '../../filterBox/FilterBox';
+import {Tooltip} from '../../tooltip/Tooltip';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
 import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
@@ -548,6 +549,37 @@ describe('DropdownSearch', () => {
                 renderDropdownSearchWithNumberOfOptions(1);
 
                 expect((dropdownSearch.instance() as any).isSearchOn()).toBe(false);
+            });
+        });
+
+        describe('disabled tooltip', () => {
+            it('should render each option wrapped by a tooltip if they are disabled and disabledTooltip is defined', () => {
+                renderDropdownSearch({
+                    ...ownProps,
+                    isOpened: true,
+                    options: options.map((opt: IDropdownOption) => ({...opt, disabled: true, disabledTooltip: {title: 'i am disabled'}})),
+                });
+
+                expect(dropdownSearch.find(Tooltip).length).toBe(options.length);
+            });
+
+            it('should not render each option wrapped by a tooltip if they are disabled and disabledTooltip is undefined', () => {
+                renderDropdownSearch({
+                    ...ownProps,
+                    isOpened: true,
+                    options: options.map((opt: IDropdownOption) => ({...opt, disabled: true})),
+                });
+
+                expect(dropdownSearch.find(Tooltip).length).toBe(0);
+            });
+
+            it('should not render each option wrapped by a tooltip if they are not disabled', () => {
+                renderDropdownSearch({
+                    ...ownProps,
+                    isOpened: true,
+                });
+
+                expect(dropdownSearch.find(Tooltip).length).toBe(0);
             });
         });
     });
