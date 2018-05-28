@@ -111,7 +111,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     private getdatePickerRightPart(): JSX.Element {
         return (
-            <div className = 'date-selection column mod-small-content p2' >
+            <div className='date-selection column mod-small-content p2' >
                 {this.getdateSelectionBoxes()}
                 {this.getClearOptions()}
             </div >
