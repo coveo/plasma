@@ -25,6 +25,8 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
         errorMessage: DEFAULT_JSON_ERROR_MESSAGE,
     };
 
+    private codemirror: ReactCodeMirror.ReactCodeMirror;
+
     constructor(props: IJSONEditorProps, state: IJSONEditorState) {
         super(props, state);
         this.state = {
@@ -44,6 +46,7 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
                 <CodeEditor
                     value={this.props.value}
                     onChange={(json: string) => this.handleChange(json)}
+                    onMount={(codemirror) => this.codemirror = codemirror}
                     mode={CodeMirrorModes.JSON}
                     readOnly={this.props.readOnly}
                 />

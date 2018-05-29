@@ -18,6 +18,7 @@ export interface ICodeEditorProps {
     value: string;
     readOnly?: boolean;
     onChange?: (code: string) => void;
+    onMount?: (codemirror: ReactCodeMirror.ReactCodeMirror) => void;
     errorMessage?: string;
     mode?: string;
 }
@@ -42,6 +43,12 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
     };
 
     private codemirror: ReactCodeMirror.ReactCodeMirror;
+
+    componentDidMount() {
+        if (this.props.onMount) {
+            this.props.onMount(this.codemirror);
+        }
+    }
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
         if (prevProps.value !== this.props.value) {
