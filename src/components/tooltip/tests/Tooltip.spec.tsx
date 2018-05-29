@@ -81,5 +81,23 @@ describe('Tooltip', () => {
 
             expect(tooltipWrapper.find(OverlayTrigger).length).toBe(0);
         });
+
+        it('should render with a span wrapper if noSpanWrapper prop is not passed', () => {
+            const content = <li>test</li>;
+            const tooltip = shallow(
+                <Tooltip {...TOOLTIP_PROPS}>{content}</Tooltip>,
+            );
+
+            expect(tooltip.find('li').parent().type()).toBe('span');
+        });
+
+        it('should not render with a span wrapper if noSpanWrapper prop is passed', () => {
+            const content = <li>test</li>;
+            const tooltip = shallow(
+                <Tooltip noSpanWrapper {...TOOLTIP_PROPS}>{content}</Tooltip>,
+            );
+
+            expect(tooltip.find('li').parent().type()).not.toBe('span');
+        });
     });
 });

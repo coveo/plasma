@@ -13,6 +13,7 @@ import {ItemFilterExamples} from '../src/components/actions/filters/examples/Ite
 import {AutocompleteExamples} from '../src/components/autocomplete/examples/AutocompleteExamples';
 import {BadgeExamples} from '../src/components/badge/examples/BadgeExamples';
 import {BlankSlateExample} from '../src/components/blankSlate/examples/BlankSlateExample';
+import {BorderedLineExamples} from '../src/components/borderedLine/examples/BorderedLineExamples';
 import {BreadcrumbsExamples} from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
 import {ButtonExamples} from '../src/components/button/examples/ButtonExamples';
 import {CalendarConnectedExamples} from '../src/components/calendar/examples/CalendarConnectedExamples';
@@ -111,6 +112,7 @@ class App extends React.Component<any, any> {
                             <MembersExample />
                         </div>
                     </div>
+                    <BorderedLineExamples />
                     <AutocompleteExamples />
                     <TextAreaExamples />
                     <SearchBarExamples />

@@ -37,7 +37,7 @@ module.exports = {
             },
             {
                 enforce: 'post',
-                test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\.(?!css).+$/i,
+                test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\.(?!scss).+$/i,
                 exclude: /(node_modules)/,
                 loader: 'istanbul-instrumenter-loader',
             },
@@ -51,17 +51,26 @@ module.exports = {
                 }],
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 include: path.join(__dirname, 'src/components'),
                 use: [
                     {
                         loader: 'style-loader',
-                    }, {
+                    },
+                    {
                         loader: 'typings-for-css-modules-loader',
                         options: {
                             modules: true,
+                            scss: true,
                             namedExport: true,
+                            localIdentName: '[name]-[local]-[hash:base64]',
                         },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
                     },
                 ],
             },

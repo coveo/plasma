@@ -62,7 +62,7 @@ export class DropdownSearchExamples extends React.Component<any, any> {
                         <DropdownSearchConnected
                             id={UUID.generate()}
                             defaultOptions={defaultOptions.defaultOptions.map(
-                                (opt, i) => ({...opt, append: i % 2 ? 'APP' : undefined, disabled: i < 2}),
+                                (opt, i) => ({...opt, append: i % 2 ? 'APP' : undefined, disabled: i < 2, disabledTooltip: {title: 'i am disabled', placement: 'top'}}),
                             )}
                             maxWidth='300px'
                         />

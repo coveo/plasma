@@ -5,7 +5,7 @@ import {Input} from '../input/Input';
 import {Label} from '../input/Label';
 import {AddInputAction} from './AddInputAction';
 import {DeleteInputAction} from './DeleteInputAction';
-import * as styles from './styles/SplitMultilineInput.css';
+import * as styles from './styles/SplitMultilineInput.scss';
 
 export interface ISplitInput {
     id: string;

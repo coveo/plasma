@@ -31,6 +31,13 @@ export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttribut
     positionLeft?: number;
     positionTop?: number;
     footer?: string;
+    /**
+     * By default, <Tooltip /> wraps children inside a span element to make sure the tooltip is applied on one html element only.
+     * Use noSpanWrapper to avoid wrapping your children inside a span.
+     *
+     * CAUTION: Make sure you have only 1 child if you use this prop.
+     */
+    noSpanWrapper?: boolean;
 }
 
 const PROPS_TO_OMIT: string[] = [
@@ -83,15 +90,21 @@ export class Tooltip extends React.Component<ITooltipProps, {}> {
             {tooltipFooter}
         </BootstrapTooltip>;
 
+        const children = this.props.noSpanWrapper
+            ? this.props.children as any
+            : (
+                <span className={this.props.className}>
+                    {this.props.children}
+                </span>
+            );
+
         if (this.props.title) {
             return (
                 <OverlayTrigger {..._.omit(this.props, OVERLAY_PROPS_TO_OMIT)} overlay={tooltip}>
-                    <span className={this.props.className}>
-                        {this.props.children}
-                    </span>
+                    {children}
                 </OverlayTrigger>
             );
         }
-        return (<span>{this.props.children}</span>);
+        return children;
     }
 }
