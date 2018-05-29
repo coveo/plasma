@@ -102,21 +102,5 @@ describe('JSONEditor', () => {
         it('should not throw on change if the onChange prop is undefined', () => {
             expect(() => (jsonEditorInstance as any).handleChange('expectedValue')).not.toThrow();
         });
-
-        it(`should clear codemirror's history if we set a new value`, () => {
-            const clearHistorySpy: jasmine.Spy = spyOn((jsonEditorInstance as any).codemirror.getCodeMirror().getDoc(), 'clearHistory');
-
-            jsonEditor.setProps({value: 'a new value'});
-
-            expect(clearHistorySpy).toHaveBeenCalledTimes(1);
-        });
-
-        it('should reset the value if we the value prop changes', () => {
-            const setValueSpy: jasmine.Spy = spyOn((jsonEditorInstance as any).codemirror.getCodeMirror(), 'setValue');
-
-            jsonEditor.setProps({value: 'a new value'});
-
-            expect(setValueSpy).toHaveBeenCalledTimes(1);
-        });
     });
 });

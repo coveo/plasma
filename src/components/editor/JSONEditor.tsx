@@ -2,11 +2,10 @@ import 'codemirror/mode/javascript/javascript';
 
 import * as classNames from 'classnames';
 import * as React from 'react';
-import * as ReactCodeMirror from 'react-codemirror';
-import * as _ from 'underscore';
 
 import {Svg} from '../svg/Svg';
-import {CodeMirrorGutters, CodeMirrorModes} from './EditorConstants';
+import {CodeEditor} from './CodeEditor';
+import {CodeMirrorModes} from './EditorConstants';
 
 export interface IJSONEditorProps {
     value: string;
@@ -25,32 +24,12 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
     static defaultProps: Partial<IJSONEditorProps> = {
         errorMessage: DEFAULT_JSON_ERROR_MESSAGE,
     };
-    static Options: CodeMirror.EditorConfiguration = {
-        mode: CodeMirrorModes.JSON,
-        lineNumbers: true,
-        foldGutter: true,
-        lint: true,
-        gutters: [
-            CodeMirrorGutters.LineNumbers,
-            CodeMirrorGutters.FoldGutter,
-            CodeMirrorGutters.LintMarkers,
-        ],
-    };
-
-    private codemirror: ReactCodeMirror.ReactCodeMirror;
 
     constructor(props: IJSONEditorProps, state: IJSONEditorState) {
         super(props, state);
         this.state = {
             isInError: false,
         };
-    }
-
-    componentDidUpdate(prevProps: IJSONEditorProps) {
-        if (prevProps.value !== this.props.value) {
-            this.codemirror.getCodeMirror().setValue(this.props.value);
-            this.codemirror.getCodeMirror().getDoc().clearHistory();
-        }
     }
 
     render() {
@@ -62,11 +41,11 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
         );
         return (
             <div className={classes}>
-                <ReactCodeMirror
-                    ref={(codemirror: ReactCodeMirror.ReactCodeMirror) => this.codemirror = codemirror}
+                <CodeEditor
                     value={this.props.value}
                     onChange={(json: string) => this.handleChange(json)}
-                    options={_.extend({}, JSONEditor.Options, {readOnly: this.props.readOnly})}
+                    mode={CodeMirrorModes.JSON}
+                    readOnly={this.props.readOnly}
                 />
                 {this.getValidationDetails()}
             </div>
