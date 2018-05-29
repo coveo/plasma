@@ -12,7 +12,7 @@ import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
-import {CodeMirrorGutters, CodeMirrorModes} from './EditorConstants';
+import {CodeMirrorGutters} from './EditorConstants';
 
 export interface ICodeEditorProps {
     value: string;
@@ -20,13 +20,10 @@ export interface ICodeEditorProps {
     onChange?: (code: string) => void;
     onMount?: (codemirror: ReactCodeMirror.UnControlled) => void;
     errorMessage?: string;
-    mode?: string;
+    mode: string;
 }
 
 export class CodeEditor extends React.Component<ICodeEditorProps> {
-    static defaultProps: Partial<ICodeEditorProps> = {
-        mode: CodeMirrorModes.Python,
-    };
     static Options: CodeMirror.EditorConfiguration = {
         lineNumbers: true,
         foldGutter: true,
@@ -61,7 +58,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
         return (
             <ReactCodeMirror.UnControlled
                 ref={(codemirror: ReactCodeMirror.UnControlled) => this.codemirror = codemirror}
-                editorDidMount={(editor: ReactCodeMirror.IInstance) => {this.editor = editor}}
+                editorDidMount={(editor: ReactCodeMirror.IInstance) => {this.editor = editor;}}
                 value={this.props.value}
                 onChange={(editor, data, code: string) => this.handleChange(code)}
                 options={_.extend({}, CodeEditor.Options, {readOnly: this.props.readOnly, mode: this.props.mode})}
