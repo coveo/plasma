@@ -2,8 +2,8 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror';
 import * as _ from 'underscore';
+
 import {CodeEditor, ICodeEditorProps} from '../CodeEditor';
-import {IJSONEditorProps, IJSONEditorState, JSONEditor} from '../JSONEditor';
 
 describe('CodeEditor', () => {
     const basicProps: ICodeEditorProps = {
