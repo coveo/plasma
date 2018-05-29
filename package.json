@@ -42,10 +42,11 @@
     "lintfix"
   ],
   "dependencies": {
+    "codemirror": "5.38.0",
     "react-bootstrap": "0.31.3",
-    "reselect": "3.0.1",
-    "react-codemirror": "1.0.0",
-    "react-tether": "0.5.7"
+    "react-codemirror2": "5.0.4",
+    "react-tether": "0.5.7",
+    "reselect": "3.0.1"
   },
   "peerDependencies": {
     "jquery": ">= 2.0.0 =< 3",
@@ -67,7 +68,6 @@
     "@types/rc-slider": "8.2.3",
     "@types/react": "15.6.1",
     "@types/react-bootstrap": "0.0.52",
-    "@types/react-codemirror": "1.0.1",
     "@types/react-dom": "15.5.4",
     "@types/react-redux": "5.0.8",
     "@types/react-tether": "0.5.3",

@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as ReactCodeMirror from 'react-codemirror';
+import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
 import {CodeEditor, ICodeEditorProps} from '../CodeEditor';
@@ -63,14 +63,14 @@ describe('CodeEditor', () => {
         });
 
         it('should display a <CodeMirror /> component', () => {
-            expect(codeEditor.find(ReactCodeMirror).length).toBe(1);
+            expect(codeEditor.find(ReactCodeMirror.UnControlled).length).toBe(1);
         });
 
         it('should call handleChange when the CodeMirror onChange prop is called', () => {
             const handleChangeSpy: jasmine.Spy = spyOn<any>(CodeEditor.prototype, 'handleChange');
             const expectedValue: string = 'anything at all really';
 
-            codeEditor.find(ReactCodeMirror).props().onChange(expectedValue, ({} as any));
+            codeEditor.find(ReactCodeMirror.UnControlled).props().onChange(({} as any), ({} as any), expectedValue);
 
             expect(handleChangeSpy).toHaveBeenCalledTimes(1);
             expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);
@@ -93,19 +93,11 @@ describe('CodeEditor', () => {
         });
 
         it(`should clear codemirror's history if we set a new value`, () => {
-            const clearHistorySpy: jasmine.Spy = spyOn((codeEditorInstance as any).codemirror.getCodeMirror().getDoc(), 'clearHistory');
+            const clearHistorySpy: jasmine.Spy = spyOn((codeEditorInstance as any).editor.getDoc(), 'clearHistory');
 
             codeEditor.setProps({value: 'a new value'});
 
             expect(clearHistorySpy).toHaveBeenCalledTimes(1);
-        });
-
-        it('should reset the value if we the value prop changes', () => {
-            const setValueSpy: jasmine.Spy = spyOn((codeEditorInstance as any).codemirror.getCodeMirror(), 'setValue');
-
-            codeEditor.setProps({value: 'a new value'});
-
-            expect(setValueSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

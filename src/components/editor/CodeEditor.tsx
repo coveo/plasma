@@ -9,7 +9,7 @@ import 'codemirror/addon/search/search';
 import 'codemirror/mode/python/python';
 
 import * as React from 'react';
-import * as ReactCodeMirror from 'react-codemirror';
+import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
 import {CodeMirrorGutters, CodeMirrorModes} from './EditorConstants';
@@ -18,7 +18,7 @@ export interface ICodeEditorProps {
     value: string;
     readOnly?: boolean;
     onChange?: (code: string) => void;
-    onMount?: (codemirror: ReactCodeMirror.ReactCodeMirror) => void;
+    onMount?: (codemirror: ReactCodeMirror.UnControlled) => void;
     errorMessage?: string;
     mode?: string;
 }
@@ -42,7 +42,8 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
         },
     };
 
-    private codemirror: ReactCodeMirror.ReactCodeMirror;
+    private codemirror: ReactCodeMirror.UnControlled;
+    private editor: ReactCodeMirror.IInstance;
 
     componentDidMount() {
         if (this.props.onMount) {
@@ -52,17 +53,17 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
         if (prevProps.value !== this.props.value) {
-            this.codemirror.getCodeMirror().setValue(this.props.value);
-            this.codemirror.getCodeMirror().getDoc().clearHistory();
+            this.editor.getDoc().clearHistory();
         }
     }
 
     render() {
         return (
-            <ReactCodeMirror
-                ref={(codemirror: ReactCodeMirror.ReactCodeMirror) => this.codemirror = codemirror}
+            <ReactCodeMirror.UnControlled
+                ref={(codemirror: ReactCodeMirror.UnControlled) => this.codemirror = codemirror}
+                editorDidMount={(editor: ReactCodeMirror.IInstance) => {this.editor = editor}}
                 value={this.props.value}
-                onChange={(code: string) => this.handleChange(code)}
+                onChange={(editor, data, code: string) => this.handleChange(code)}
                 options={_.extend({}, CodeEditor.Options, {readOnly: this.props.readOnly, mode: this.props.mode})}
             />
         );

@@ -1,8 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as ReactCodeMirror from 'react-codemirror';
+import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 import {IJSONEditorProps, IJSONEditorState, JSONEditor} from '../JSONEditor';
+import { CodeEditor } from '../CodeEditor';
 
 describe('JSONEditor', () => {
     const basicProps: IJSONEditorProps = {
@@ -61,15 +62,15 @@ describe('JSONEditor', () => {
             expect(onChangeProp).toBeDefined();
         });
 
-        it('should display a <CodeMirror /> component', () => {
-            expect(jsonEditor.find(ReactCodeMirror).length).toBe(1);
+        it('should display a <CodeEditor /> component', () => {
+            expect(jsonEditor.find(CodeEditor).length).toBe(1);
         });
 
         it('should call handleChange when the CodeMirror onChange prop is called', () => {
             const handleChangeSpy: jasmine.Spy = spyOn<any>(JSONEditor.prototype, 'handleChange');
             const expectedValue: string = 'anything at all really';
 
-            jsonEditor.find(ReactCodeMirror).props().onChange(expectedValue, ({} as any));
+            jsonEditor.find(CodeEditor).props().onChange(expectedValue);
 
             expect(handleChangeSpy).toHaveBeenCalledTimes(1);
             expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);

@@ -2,6 +2,7 @@ import 'codemirror/mode/javascript/javascript';
 
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {UnControlled} from 'react-codemirror2';
 
 import {Svg} from '../svg/Svg';
 import {CodeEditor} from './CodeEditor';
@@ -25,7 +26,7 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
         errorMessage: DEFAULT_JSON_ERROR_MESSAGE,
     };
 
-    private codemirror: ReactCodeMirror.ReactCodeMirror;
+    private codemirror: UnControlled;
 
     constructor(props: IJSONEditorProps, state: IJSONEditorState) {
         super(props, state);
