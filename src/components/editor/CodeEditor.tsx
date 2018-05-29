@@ -63,7 +63,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
 
     private handleChange(code: string) {
         if (this.props.onChange) {
-            this.props.onChange(code)
+            this.props.onChange(code);
         }
     }
 }
