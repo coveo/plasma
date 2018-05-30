@@ -160,16 +160,16 @@ describe('<TableChildBody />', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {disabled: true})});
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(1);
         });
-        
+
         it('should set the selectionDisabled prop to false on the <TableHeadingRow /> if there are actions defined for the row', () => {
             expect(mountComponentWithProps().find(TableHeadingRow).props().selectionDisabled).toBe(false);
         });
-        
+
         it('should set the selectionDisabled prop to true on the <TableHeadingRow /> if there are no actions defined for the row', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
                 getActions: jasmine.createSpy('getActions').and.returnValue([]),
             });
-    
+
             expect(mountComponentWithProps(newProps).find(TableHeadingRow).props().selectionDisabled).toBe(true);
         });
     });
