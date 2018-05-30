@@ -4,10 +4,12 @@ import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
 import {CodeEditor, ICodeEditorProps} from '../CodeEditor';
+import {CodeMirrorModes} from '../EditorConstants';
 
 describe('CodeEditor', () => {
     const basicProps: ICodeEditorProps = {
         value: 'any string',
+        mode: CodeMirrorModes.Python
     };
 
     it('should render without errors', () => {

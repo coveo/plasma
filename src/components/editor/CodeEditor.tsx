@@ -8,6 +8,7 @@ import 'codemirror/addon/search/matchesonscrollbar';
 import 'codemirror/addon/search/search';
 import 'codemirror/mode/python/python';
 
+import * as CodeMirror from 'codemirror';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
@@ -50,7 +51,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
         if (prevProps.value !== this.props.value) {
-            this.editor.getDoc().clearHistory();
+            (this.editor as any).getDoc().clearHistory();
         }
     }
 
