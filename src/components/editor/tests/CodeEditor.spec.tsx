@@ -9,7 +9,7 @@ import {CodeMirrorModes} from '../EditorConstants';
 describe('CodeEditor', () => {
     const basicProps: ICodeEditorProps = {
         value: 'any string',
-        mode: CodeMirrorModes.Python
+        mode: CodeMirrorModes.Python,
     };
 
     it('should render without errors', () => {
