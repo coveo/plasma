@@ -157,7 +157,7 @@ describe('<Table />', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
             table.find(TableChildBody).first().props().getActions({id: 'any'});
 
-            expect(tablePropsMockWithData.getActions).toHaveBeenCalledTimes(1);
+            expect(tablePropsMockWithData.getActions).toHaveBeenCalled();
         });
 
         describe('componentWillReceiveProps', () => {
