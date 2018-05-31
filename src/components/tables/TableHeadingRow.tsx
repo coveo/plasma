@@ -1,5 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {TableCollapsibleRowToggle} from './TableCollapsibleRowToggle';
 
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
@@ -11,6 +13,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
     onDoubleClick?: () => void;
     className?: string;
     isMultiSelect?: boolean;
+    selectionDisabled?: boolean;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -64,18 +67,17 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     }
 
     private handleClick(e: React.MouseEvent<any>) {
-        if (this.props.onClick) {
-            this.props.onClick((e.metaKey || e.ctrlKey) && this.props.isMultiSelect);
-        }
+        if (!this.props.selectionDisabled) {
+            const hasMultipleSelectedRow = (e.metaKey || e.ctrlKey) && this.props.isMultiSelect;
 
-        if (this.props.onClickCallback) {
-            this.props.onClickCallback();
+            callIfDefined(this.props.onClick, hasMultipleSelectedRow);
+            callIfDefined(this.props.onClickCallback);
         }
     }
 
     private handleDoubleClick() {
-        if (this.props.onDoubleClick) {
-            this.props.onDoubleClick();
+        if (!this.props.selectionDisabled) {
+            callIfDefined(this.props.onDoubleClick);
         }
     }
 }

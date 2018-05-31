@@ -107,10 +107,9 @@ describe('Tables', () => {
             const onClickSpy = jasmine.createSpy('onClick');
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClick: onClickSpy});
 
-            expect(() => (tableHeadingRowInstance['handleClick'].call(tableHeadingRowInstance))).not.toThrow();
-
             tableHeadingRow.setProps(newTabledHeadingRowProps);
             tableHeadingRow.find('tr').simulate('click');
+
             expect(onClickSpy).toHaveBeenCalled();
         });
 
@@ -118,10 +117,9 @@ describe('Tables', () => {
             const onDoubleClickSpy = jasmine.createSpy('onDoubleClick');
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onDoubleClick: onDoubleClickSpy});
 
-            expect(() => (tableHeadingRowInstance['handleDoubleClick'].call(tableHeadingRowInstance))).not.toThrow();
-
             tableHeadingRow.setProps(newTabledHeadingRowProps);
             tableHeadingRow.find('tr').simulate('dblclick');
+
             expect(onDoubleClickSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -133,6 +131,27 @@ describe('Tables', () => {
             tableHeadingRow.find('tr').simulate('click');
 
             expect(onClickCallback).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not call the onClick props when selectionDisabled is set to true', () => {
+            const onClickSpy = jasmine.createSpy('onClick');
+            const onClickCallbackSpy = jasmine.createSpy('onClickCallback');
+            const onDoubleClickSpy = jasmine.createSpy('onDoubleClick');
+
+            const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {
+                selectionDisabled: true,
+                onClick: onClickSpy,
+                onClickCallback: onClickCallbackSpy,
+                onDoubleClick: onDoubleClickSpy,
+            });
+
+            tableHeadingRow.setProps(newTabledHeadingRowProps);
+
+            tableHeadingRow.find('tr').simulate('click');
+
+            expect(onClickSpy).not.toHaveBeenCalled();
+            expect(onClickCallbackSpy).not.toHaveBeenCalled();
+            expect(onDoubleClickSpy).not.toHaveBeenCalled();
         });
     });
 });

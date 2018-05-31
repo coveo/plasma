@@ -86,6 +86,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
                 .forEach((action) => action.trigger())
             }
             isMultiSelect={props.isMultiSelect}
+            selectionDisabled={props.getActions(props.rowData).length < 1}
         >
             {tableHeadingRowContent}
         </TableHeadingRowConnected>

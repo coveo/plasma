@@ -15,7 +15,11 @@ import {TableHeadingRow} from '../TableHeadingRow';
 describe('<TableChildBody />', () => {
     const spyOnRowClick: jasmine.Spy = jasmine.createSpy('onRowClick');
     const spyHandleOnRowClick: jasmine.Spy = jasmine.createSpy('handleOnRowClick');
-    const someActions: IActionOptions[] = [];
+    const someActions: IActionOptions[] = [{
+        name: 'some-action',
+        trigger: jasmine.createSpy('triggerMethod'),
+        enabled: true,
+    }];
     const tableChildBodyProps: ITableChildBodyProps = {
         tableId: 'best-table',
         rowData: {
@@ -134,7 +138,7 @@ describe('<TableChildBody />', () => {
 
             mountComponentWithProps(newProps).find(TableHeadingRow).simulate('dblclick');
 
-            expect(getActionsSpy).toHaveBeenCalledTimes(1);
+            expect(getActionsSpy).toHaveBeenCalled();
             expect(actionSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -147,14 +151,26 @@ describe('<TableChildBody />', () => {
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(0);
         });
 
-        it('should send send disabled as a class to the <TableHeadingRow /> if the enabled property is set to false on the row data', () => {
+        it('should send disabled as a class to the <TableHeadingRow /> if the enabled property is set to false on the row data', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: false})});
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(1);
         });
 
-        it('should send send disabled as a class to the <TableHeadingRow /> if the disabled property is set to true on the row data', () => {
+        it('should send disabled as a class to the <TableHeadingRow /> if the disabled property is set to true on the row data', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {disabled: true})});
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(1);
+        });
+
+        it('should set the selectionDisabled prop to false on the <TableHeadingRow /> if there are actions defined for the row', () => {
+            expect(mountComponentWithProps().find(TableHeadingRow).props().selectionDisabled).toBe(false);
+        });
+
+        it('should set the selectionDisabled prop to true on the <TableHeadingRow /> if there are no actions defined for the row', () => {
+            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
+                getActions: jasmine.createSpy('getActions').and.returnValue([]),
+            });
+
+            expect(mountComponentWithProps(newProps).find(TableHeadingRow).props().selectionDisabled).toBe(true);
         });
     });
 });
