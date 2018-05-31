@@ -21,7 +21,8 @@ export interface ICodeEditorProps {
     onChange?: (code: string) => void;
     onMount?: (codemirror: ReactCodeMirror.UnControlled) => void;
     errorMessage?: string;
-    mode: string;
+    mode: any; // string or object ex.: {name: "javascript", json: true}
+    extraKeywords?: string[];
 }
 
 export class CodeEditor extends React.Component<ICodeEditorProps> {
@@ -59,7 +60,10 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
         return (
             <ReactCodeMirror.UnControlled
                 ref={(codemirror: ReactCodeMirror.UnControlled) => this.codemirror = codemirror}
-                editorDidMount={(editor: ReactCodeMirror.IInstance) => {this.editor = editor;}}
+                editorDidMount={(editor: ReactCodeMirror.IInstance) => {
+                    this.editor = editor;
+                    this.addExtraKeywords();
+                }}
                 value={this.props.value}
                 onChange={(editor, data, code: string) => this.handleChange(code)}
                 options={_.extend({}, CodeEditor.Options, {readOnly: this.props.readOnly, mode: this.props.mode})}
@@ -70,6 +74,13 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
     private handleChange(code: string) {
         if (this.props.onChange) {
             this.props.onChange(code);
+        }
+    }
+
+    private addExtraKeywords() {
+        if (this.props.extraKeywords) {
+            const mode: string = this.props.mode.name || this.props.mode;
+            (CodeMirror as any).helpers.hintWords[mode] = (CodeMirror as any).helpers.hintWords[mode].concat(this.props.extraKeywords);
         }
     }
 }

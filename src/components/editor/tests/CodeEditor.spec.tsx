@@ -1,3 +1,4 @@
+import * as CodeMirror from 'codemirror';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
@@ -100,6 +101,18 @@ describe('CodeEditor', () => {
             codeEditor.setProps({value: 'a new value'});
 
             expect(clearHistorySpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should add any extra keywords for the autocompletion if there are some in the props', () => {
+            const currentKeywords: string[] = [...(CodeMirror as any).helpers.hintWords[basicProps.mode]];
+            const expectedNewKeywords = ['one', 'two'];
+
+            codeEditor.setProps(_.extend({}, basicProps, {extraKeywords: expectedNewKeywords}));
+            (codeEditorInstance as any).addExtraKeywords();
+
+            const newList: string[] = (CodeMirror as any).helpers.hintWords[basicProps.mode];
+            expect(newList).not.toEqual(currentKeywords);
+            expect(newList).toEqual(currentKeywords.concat(expectedNewKeywords));
         });
     });
 });
