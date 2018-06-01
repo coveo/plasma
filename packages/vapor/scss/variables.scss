@@ -187,7 +187,7 @@ $application-container-min-height: 400px;
 $navigation-menu-header-font-weight: 700;
 $navigation-menu-item-font-weight: 400;
 $navigation-width: 245px;
-$navigation-margin-for-scroll-bar: 1px;
+$navigation-border-for-scroll-bar: 1px;
 $navigation-background-color: $purple-blue;
 $navigation-active-background-color: #354667;
 $navigation-active-border-width: 3px;
@@ -528,3 +528,6 @@ $multi-step-warning-color: $orange;
 
 // Icons
 $icon-hover-offset: 2px;
+
+// Scroll bar
+$slim-scroll-bar-width: 6px;

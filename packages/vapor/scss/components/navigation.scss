@@ -1,12 +1,21 @@
 .navigation {
   width: $navigation-width;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: overlay;
 
   background-color: $navigation-background-color;
 
   user-select: none;
 
-  @include slim-scroll($purple-blue, $light-grey);
+  @include slim-scroll($purple-blue, rgba(255,255,255,0.5));
+  &::-webkit-scrollbar, ::-webkit-scrollbar {
+    width: $slim-scroll-bar-width + $navigation-border-for-scroll-bar * 2;
+    height: $slim-scroll-bar-width + $navigation-border-for-scroll-bar * 2;
+  }
+
+  &::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
+    border: $navigation-border-for-scroll-bar solid $purple-blue;
+  }
 
   *, *:before, *:after {
     -moz-osx-font-smoothing: grayscale;
@@ -29,8 +38,7 @@
     position: relative;
 
     height: 100%;
-    margin-right: $navigation-margin-for-scroll-bar;
-    overflow: auto;
+    overflow-x: visible;
 
     color: $white;
 
@@ -61,6 +69,8 @@
         }
 
         .navigation-menu-section-items {
+          overflow-x: auto;
+
           border-top: 1px solid $dark-grey;
 
           .navigation-menu-section-item {
@@ -81,6 +91,7 @@
 
               color: $white;
               font-size: $default-font-size;
+              word-break: break-all;
 
               &.state-locked {
                 color: $navigation-locked-color;
@@ -133,9 +144,11 @@
 .navigation-tag {
   display: inline-block;
   padding: $navigation-tag-padding;
+  margin-left: $default-margin;
 
   font-size: $navigation-tag-font-size;
   text-transform: uppercase;
+  word-break: keep-all;
 
   border: $default-border;
   border-color: $orange;
