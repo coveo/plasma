@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as ReactCodeMirror from 'react-codemirror';
 import * as _ from 'underscore';
+import {CodeEditor} from '../CodeEditor';
 import {IJSONEditorProps, IJSONEditorState, JSONEditor} from '../JSONEditor';
 
 describe('JSONEditor', () => {
@@ -61,15 +61,15 @@ describe('JSONEditor', () => {
             expect(onChangeProp).toBeDefined();
         });
 
-        it('should display a <CodeMirror /> component', () => {
-            expect(jsonEditor.find(ReactCodeMirror).length).toBe(1);
+        it('should display a <CodeEditor /> component', () => {
+            expect(jsonEditor.find(CodeEditor).length).toBe(1);
         });
 
         it('should call handleChange when the CodeMirror onChange prop is called', () => {
             const handleChangeSpy: jasmine.Spy = spyOn<any>(JSONEditor.prototype, 'handleChange');
             const expectedValue: string = 'anything at all really';
 
-            jsonEditor.find(ReactCodeMirror).props().onChange(expectedValue, ({} as any));
+            jsonEditor.find(CodeEditor).props().onChange(expectedValue);
 
             expect(handleChangeSpy).toHaveBeenCalledTimes(1);
             expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);
@@ -101,22 +101,6 @@ describe('JSONEditor', () => {
 
         it('should not throw on change if the onChange prop is undefined', () => {
             expect(() => (jsonEditorInstance as any).handleChange('expectedValue')).not.toThrow();
-        });
-
-        it(`should clear codemirror's history if we set a new value`, () => {
-            const clearHistorySpy: jasmine.Spy = spyOn((jsonEditorInstance as any).codemirror.getCodeMirror().getDoc(), 'clearHistory');
-
-            jsonEditor.setProps({value: 'a new value'});
-
-            expect(clearHistorySpy).toHaveBeenCalledTimes(1);
-        });
-
-        it('should reset the value if we the value prop changes', () => {
-            const setValueSpy: jasmine.Spy = spyOn((jsonEditorInstance as any).codemirror.getCodeMirror(), 'setValue');
-
-            jsonEditor.setProps({value: 'a new value'});
-
-            expect(setValueSpy).toHaveBeenCalledTimes(1);
         });
     });
 });
