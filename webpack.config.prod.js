@@ -90,6 +90,7 @@ const config = {
         }),
     ],
     externals: {
+        codemirror: {root: 'CodeMirror', commonjs2: 'codemirror', commonjs: 'codemirror', amd: 'codemirror'},
         jquery: {root: '$', commonjs2: 'jquery', commonjs: 'jquery', amd: 'jquery'},
         react: {root: 'React', commonjs2: 'react', commonjs: 'react', amd: 'react'},
         'react-dom': {root: 'ReactDOM', commonjs2: 'react-dom', commonjs: 'react-dom', amd: 'react-dom'},
