@@ -44,7 +44,7 @@
   "dependencies": {
     "react-bootstrap": "0.31.3",
     "react-codemirror2": "5.0.4",
-    "react-tether": "0.5.7",
+    "react-tether": "0.5.7"
   },
   "peerDependencies": {
     "jquery": ">= 2.0.0 =< 3",
