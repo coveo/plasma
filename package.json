@@ -83,7 +83,7 @@
     "classnames": "2.2.5",
     "codemirror": "5.38.0",
     "codecov": "3.0.2",
-    "coveo-styleguide": "2.18.x",
+    "coveo-styleguide": "~2.19.0",
     "css-loader": "0.28.11",
     "del": "3.0.0",
     "dts-generator": "2.1.0",
