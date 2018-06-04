@@ -91,7 +91,6 @@
 
               color: $white;
               font-size: $default-font-size;
-              word-break: break-all;
 
               &.state-locked {
                 color: $navigation-locked-color;
@@ -139,12 +138,12 @@
 
 .navigation-menu-section-item-link-icon, .navigation-tag {
   float: right;
+  margin-left: $default-margin;
 }
 
 .navigation-tag {
   display: inline-block;
   padding: $navigation-tag-padding;
-  margin-left: $default-margin;
 
   font-size: $navigation-tag-font-size;
   text-transform: uppercase;
