@@ -117,7 +117,7 @@
     "karma-webpack": "3.0.0",
     "lorem-ipsum": "1.0.4",
     "merge-stream": "1.0.1",
-    "moment": "2.22.1",
+    "moment": "2.22.2",
     "node-sass": "4.9.0",
     "postcss-loader": "2.1.5",
     "pre-commit": "1.2.2",
