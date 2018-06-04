@@ -143,7 +143,7 @@
     "ttypescript": "1.4.2",
     "typescript": "2.8.3",
     "typings-for-css-modules-loader": "1.7.0",
-    "underscore": "1.9.0",
+    "underscore": "1.9.1",
     "underscore.string": "3.3.4",
     "webpack": "4.8.1",
     "webpack-cli": "2.1.3",
