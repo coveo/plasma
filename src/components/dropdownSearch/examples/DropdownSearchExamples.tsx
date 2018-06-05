@@ -192,7 +192,7 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
     }
 
     private getNewOptions() {
-       if (this.optionsPage < 10) {
+        if (this.optionsPage < 10) {
             _.times(10, (n: number) => {
                 const optionNumber: number = n + this.optionsPage * 10;
                 this.options.push({
