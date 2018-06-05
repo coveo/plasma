@@ -150,7 +150,7 @@
     left: auto;
   }
 
-  li {
+  li, .option-wrapper {
     &:hover, &:focus {
       color: $dark-blue;
 
