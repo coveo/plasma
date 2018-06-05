@@ -33,11 +33,11 @@ import {
     DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
-import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
-import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';*/
-import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
+import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';*/
+import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+/*import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
 import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
-/*import {FacetConnectedExamples} from '../src/components/facets/examples/FacetConnectedExamples';
+import {FacetConnectedExamples} from '../src/components/facets/examples/FacetConnectedExamples';
 import {FacetExamples} from '../src/components/facets/examples/FacetExamples';
 import {FilterBoxConnectedExamples} from '../src/components/filterBox/examples/FilterBoxConnectedExamples';
 import {FilterBoxExamples} from '../src/components/filterBox/examples/FilterBoxExamples';
@@ -135,7 +135,6 @@ class App extends React.Component<any, any> {
                     <BreadcrumbHeaderExample />
                     <SingleSelectExamples />
                     <MultiSelectExamples />
-                    <DropdownSearchExamples />
                     <FlatSelectExamples />
                     <TooltipExamples />
                     <ChosenSelectExamples />
@@ -194,9 +193,10 @@ class App extends React.Component<any, any> {
                     <LabeledValueExamples />
                     <CollapsibleContainerExamples />
                     <SplitLayoutExamples />
-                    <SplitMultilineInputExamples />*/}
+                    <SplitMultilineInputExamples />
                     <JSONEditorExamples />
-                    <CodeEditorExamples />
+                    <CodeEditorExamples />*/}
+                    <DropdownSearchExamples />
                 </div>
             </Provider>
         );

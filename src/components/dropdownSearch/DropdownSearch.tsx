@@ -1,12 +1,15 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
+
 import {keyCode} from '../../utils/InputUtils';
 import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
 import {ISvgProps, Svg} from '../svg/Svg';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
 
 export interface IDropdownOption {
     svg?: ISvgProps;
@@ -52,6 +55,8 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
     onClickCallBack?: () => void;
     supportSingleCustomOption?: boolean;
     searchThresold?: number;
+    infiniteScroll?: InfiniteScrollProps;
+    hasMoreItems?: () => boolean;
 }
 
 export interface IDropdownSearchDispatchProps {
@@ -75,10 +80,6 @@ export interface IDropdownSearchDispatchProps {
 export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdownSearchStateProps, IDropdownSearchDispatchProps {}
 
 export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
-    filterInput: HTMLDivElement;
-    ulElement: HTMLElement;
-    protected dropdownButton: HTMLElement;
-
     static defaultProps: Partial<IDropdownSearchProps> = {
         isOpened: false,
         highlightThreshold: 100,
@@ -87,21 +88,51 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         searchThresold: 7,
     };
 
-    protected getSelectedOption(): IDropdownOption {
-        return _.findWhere(this.props.options, {selected: true});
+    filterInput: HTMLDivElement;
+    ulElement: HTMLElement;
+
+    protected dropdownButton: HTMLElement;
+
+    componentDidUpdate() {
+        this.updateScrollPositionBasedOnActiveElement();
+
+        if (this.dropdownButton && this.props.setFocusOnDropdownButton && this.isSearchOn()) {
+            this.dropdownButton.focus();
+        }
+
+        if (this.props.updateOptions && !this.props.options.length && this.props.defaultOptions && this.props.defaultOptions.length) {
+            this.props.updateOptions(this.props.defaultOptions);
+        }
     }
 
-    protected getSelectedOptions(): IDropdownOption[] {
-        return _.where(this.props.options, {selected: true});
+    componentWillMount() {
+        if (this.props.onMount) {
+            this.props.onMount();
+        }
+
+        if (this.props.onMountCallBack) {
+            this.props.onMountCallBack();
+        }
     }
 
-    protected getDisplayedOptions(): IDropdownOption[] {
-        return _.reject(this.props.options, (option) => {
-            return (!this.props.supportSingleCustomOption && option.custom) || option.hidden;
-        });
+    componentWillUnmount() {
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
+    }
+
+    render() {
+
+        return (
+            <div className={this.getClasses()} style={this.getStyles()}>
+                {this.getMainInput()}
+                {this.getDropdownMenu()}
+            </div>
+        );
     }
 
     protected getDropdownOptions(): JSX.Element[] {
+        const ElementTag: string = this.props.infiniteScroll ? 'div' : 'li';
         const options = _.chain(this.getDisplayedOptions())
             .filter((option: IDropdownOption) => {
                 const value = option.displayValue || option.value;
@@ -116,10 +147,13 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                         'state-selected': opt.selected,
                     },
                 );
-                const liClasses = classNames({
-                    'active': JSON.stringify(opt) === JSON.stringify(this.props.activeOption),
-                    'disabled': !!opt.disabled,
-                });
+                const wrapperClasses = classNames(
+                    'option-wrapper',
+                    {
+                        'active': JSON.stringify(opt) === JSON.stringify(this.props.activeOption),
+                        'disabled': !!opt.disabled,
+                    },
+                );
 
                 const value = opt.displayValue || opt.value;
                 const valueToShow = !!this.props.highlightAllFilterResult || opts.length <= this.props.highlightThreshold
@@ -127,8 +161,9 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                     : value;
 
                 const formattedOption = (
-                    <li key={opt.value}
-                        className={liClasses}
+                    <ElementTag
+                        key={opt.value}
+                        className={wrapperClasses}
                         title={value}
                         data-value={opt.value}
                         onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
@@ -139,11 +174,11 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                             {valueToShow}
                         </span>
                         {this.getDropdownOptionAppend(opt)}
-                    </li>
+                    </ElementTag>
                 );
 
                 return opt.disabled && opt.disabledTooltip
-                    ? <Tooltip noSpanWrapper {...opt.disabledTooltip}>{formattedOption}</Tooltip>
+                    ? <Tooltip key={opt.value} noSpanWrapper {...opt.disabledTooltip}>{formattedOption}</Tooltip>
                     : formattedOption;
 
             })
@@ -152,8 +187,16 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         return options.length ? options : this.getNoOptions();
     }
 
+    protected getSelectedOption(): IDropdownOption {
+        return _.findWhere(this.props.options, {selected: true});
+    }
+
+    protected getSelectedOptions(): IDropdownOption[] {
+        return _.where(this.props.options, {selected: true});
+    }
+
     protected getDropdownOptionAppend(option?: IDropdownOption): JSX.Element {
-        return !_.isUndefined(option && option.append)
+        return option && option.append
             ? <div className='dropdown-option-append'>{option && option.append}</div>
             : null;
     }
@@ -167,15 +210,14 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
 
     protected getSvg(option: IDropdownOption): JSX.Element {
-        if (option && option.svg) {
-            return (
+        return option && option.svg
+            ? (
                 <span key={option.svg.name}
                     className='value-icon'>
                     <Svg {...option.svg} />
                 </span>
-            );
-        }
-        return null;
+            )
+            : null;
     }
 
     protected getTextFiltered(text: string): Array<JSX.Element | string> | string {
@@ -231,8 +273,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         const filterPlaceHolder: string = selectedOption && (selectedOption.displayValue || selectedOption.value)
             || this.props.filterPlaceholder;
 
-        if (this.props.isOpened
-            && (this.isSearchOn() || this.props.supportSingleCustomOption)) {
+        if (this.props.isOpened && (this.isSearchOn() || this.props.supportSingleCustomOption)) {
             return <FilterBox
                 id={this.props.id}
                 onFilter={(id, filterText) => this.handleOnFilterTextChange(filterText)}
@@ -274,6 +315,10 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         return (elTop >= boxTop) && (elBottom <= boxBottom);
     }
 
+    protected getDisplayedOptions(): IDropdownOption[] {
+        return _.reject(this.props.options, (option) => (!this.props.supportSingleCustomOption && option.custom) || option.hidden);
+    }
+
     protected handleOnOptionClickOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
         if (this.isKeyToPreventOnKeyDown(e)) {
             e.preventDefault();
@@ -308,6 +353,33 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         return {
             width: this.props.width,
         };
+    }
+
+    private getDropdownMenu(): JSX.Element {
+        if (!this.props.isOpened) {
+            return null;
+        }
+        const dropdownOptions: JSX.Element[] = this.getDropdownOptions();
+        return this.props.infiniteScroll
+            ? (
+                <DropdownSearchInfiniteScrollOptions
+                    infiniteScroll={{
+                        ...this.props.infiniteScroll,
+                        dataLength: dropdownOptions.length,
+                        hasMore: this.props.hasMoreItems && this.props.hasMoreItems(),
+                    }}
+                    onMouseEnter={() => this.handleOnMouseEnter()}
+                    ulElementRefFunction={(menu: HTMLElement) => this.ulElement = menu}
+                    options={dropdownOptions}
+                />
+            )
+            : (
+                <ul className='dropdown-menu'
+                    ref={(menu: HTMLUListElement) => {this.ulElement = menu;}}
+                    onMouseEnter={() => this.handleOnMouseEnter()}>
+                    {dropdownOptions}
+                </ul>
+            );
     }
 
     private getSelectedOptionElement(): JSX.Element[] {
@@ -423,52 +495,5 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         if (this.props.onMouseEnterDropdown) {
             this.props.onMouseEnterDropdown(this.props.activeOption);
         }
-    }
-
-    componentDidUpdate() {
-        this.updateScrollPositionBasedOnActiveElement();
-
-        if (this.dropdownButton && this.props.setFocusOnDropdownButton && this.isSearchOn()) {
-            this.dropdownButton.focus();
-        }
-
-        if (this.props.updateOptions && !this.props.options.length && this.props.defaultOptions && this.props.defaultOptions.length) {
-            this.props.updateOptions(this.props.defaultOptions);
-        }
-    }
-
-    componentWillMount() {
-        if (this.props.onMount) {
-            this.props.onMount();
-        }
-
-        if (this.props.onMountCallBack) {
-            this.props.onMountCallBack();
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
-    }
-
-    render() {
-        const options: JSX.Element = this.props.isOpened
-            ? (
-                <ul className='dropdown-menu'
-                    ref={(input: HTMLUListElement) => {this.ulElement = input;}}
-                    onMouseEnter={() => this.handleOnMouseEnter()}>
-                    {this.getDropdownOptions()}
-                </ul>
-            )
-            : null;
-
-        return (
-            <div className={this.getClasses()} style={this.getStyles()}>
-                {this.getMainInput()}
-                {options}
-            </div>
-        );
     }
 }
