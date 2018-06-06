@@ -14,6 +14,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
     className?: string;
     isMultiSelect?: boolean;
     selectionDisabled?: boolean;
+    isPartOfCollapsibleTable?: boolean;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -47,7 +48,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     render() {
         const toggle: JSX.Element = this.props.isCollapsible
             ? <TableCollapsibleRowToggle isExpanded={this.props.opened} />
-            : null;
+            : this.props.isPartOfCollapsibleTable && <td></td>;
         const rowClasses = classNames({
             'heading-row': this.props.isCollapsible,
             'selected': this.props.selected,
@@ -67,17 +68,13 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     }
 
     private handleClick(e: React.MouseEvent<any>) {
-        if (!this.props.selectionDisabled) {
-            const hasMultipleSelectedRow = (e.metaKey || e.ctrlKey) && this.props.isMultiSelect;
+        const hasMultipleSelectedRow = (e.metaKey || e.ctrlKey) && this.props.isMultiSelect;
 
-            callIfDefined(this.props.onClick, hasMultipleSelectedRow);
-            callIfDefined(this.props.onClickCallback);
-        }
+        callIfDefined(this.props.onClick, hasMultipleSelectedRow);
+        callIfDefined(this.props.onClickCallback);
     }
 
     private handleDoubleClick() {
-        if (!this.props.selectionDisabled) {
-            callIfDefined(this.props.onDoubleClick);
-        }
+        callIfDefined(this.props.onDoubleClick);
     }
 }
