@@ -127,6 +127,22 @@ describe('DropdownSearch', () => {
                 expect(onFilterTextChange).toHaveBeenCalled();
             });
 
+            it('should not call onFilterTextChange if defined when the filter box input changes and customFiltering is defined', () => {
+                const onFilterTextChange = jasmine.createSpy('onFilterTextChange');
+                dropdownSearch.setProps({isOpened: true, onFilterTextChange, customFiltering: jasmine.createSpy('customFiltering')});
+                dropdownSearch.find('input.filter-box').simulate('change');
+
+                expect(onFilterTextChange).not.toHaveBeenCalled();
+            });
+
+            it('shoudl call customFiltering if defined when the filter box input changes', () => {
+                const customFiltering = jasmine.createSpy('customFiltering');
+                dropdownSearch.setProps({isOpened: true, customFiltering});
+                dropdownSearch.find('input.filter-box').simulate('change');
+
+                expect(customFiltering).toHaveBeenCalledTimes(1);
+            });
+
             it('should call onBlur if defined when we lost focus on "filter-box" input', () => {
                 const onBlur = jasmine.createSpy('onBlur');
                 dropdownSearch.setProps({onBlur, isOpened: true});

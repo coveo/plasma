@@ -186,6 +186,7 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
                                 loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more items...</span></div>,
                             }}
                             hasMoreItems={() => this.optionsPage < maxPage - 1} // Used to overwrite the hasMore prop for the infinite scroll
+                            customFiltering={(filterText: string) => this.filter(filterText)}
                         />
                     </div>
                 </div>
@@ -204,5 +205,14 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
             });
             this.props.onOptionsChanged(this.ids[13], this.options);
         }
+    }
+
+    private filter(filterText: string) {
+        this.props.onOptionsChanged(this.ids[13], [
+            {
+                displayValue: `Custom option return by filtering`,
+                value: `Custom option`,
+            },
+        ]);
     }
 }

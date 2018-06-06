@@ -4,6 +4,7 @@ import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
 
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
@@ -57,6 +58,7 @@ export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownS
     searchThresold?: number;
     infiniteScroll?: InfiniteScrollProps;
     hasMoreItems?: () => boolean;
+    customFiltering?: (filterText: string) => void;
 }
 
 export interface IDropdownSearchDispatchProps {
@@ -231,8 +233,12 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                     textFilterElements.push(text.substring(0, index));
                 }
                 textFilterElements.push(
-                    this.getTextElement(text.substring(index, index + this.props.filterText.length), originalText, highlightIndexKey,
-                        'bold'));
+                    this.getTextElement(
+                        text.substring(index, index + this.props.filterText.length),
+                        originalText, highlightIndexKey,
+                        'bold',
+                    ),
+                );
                 text = text.substring(index + this.props.filterText.length);
                 index = text.toLowerCase().indexOf(this.props.filterText.toLowerCase());
                 highlightIndexKey += 1;
@@ -420,8 +426,10 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
 
     private handleOnFilterTextChange(filterText: string) {
-        if (this.props.onFilterTextChange) {
-            this.props.onFilterTextChange(filterText);
+        if (this.props.customFiltering) {
+            this.props.customFiltering(filterText);
+        } else {
+            callIfDefined(this.props.onFilterTextChange, filterText);
         }
     }
 
