@@ -197,7 +197,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
 
     protected getDropdownOptionAppend(option?: IDropdownOption): JSX.Element {
         return option && option.append
-            ? <div className='dropdown-option-append'>{option && option.append}</div>
+            ? <div className='dropdown-option-append'>{option.append}</div>
             : null;
     }
 

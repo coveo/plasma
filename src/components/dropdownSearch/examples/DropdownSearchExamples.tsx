@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
+import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
 import {IDropdownOption} from '../DropdownSearch';
-import {IOptionsDropdownSearchPayload, updateOptionsDropdownSearch} from '../DropdownSearchActions';
+import {updateOptionsDropdownSearch} from '../DropdownSearchActions';
 import {DropdownSearchConnected} from '../DropdownSearchConnected';
 import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearch/MultiSelectDropdownSearchConnected';
 
@@ -14,7 +14,7 @@ interface DropdownSearchExamplesProps {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IOptionsDropdownSearchPayload>) => void): DropdownSearchExamplesProps => ({
+const mapDispatchToProps = (dispatch: IDispatch): DropdownSearchExamplesProps => ({
     onOptionsChanged: (id: string, options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(id, options)),
 });
 
