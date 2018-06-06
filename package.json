@@ -53,8 +53,7 @@
     "react": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
-    "underscore": "^1.8.3",
-    "reselect": "^3.0.1"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "@types/chosen-js": "1.6.2",
