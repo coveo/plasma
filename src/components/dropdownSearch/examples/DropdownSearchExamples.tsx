@@ -12,6 +12,8 @@ interface DropdownSearchExamplesProps {
     onOptionsChanged?: (id: string, options: IDropdownOption[]) => void;
 }
 
+const maxPage: number = 500; // Change this for the max number of elements in the infinite scroll example (page * 10 element)
+
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: IDispatch): DropdownSearchExamplesProps => ({
@@ -183,7 +185,7 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
                                 endMessage: <div className='option-wrapper'><span className='dropdown-option'>No more items to show</span></div>,
                                 loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more items...</span></div>,
                             }}
-                            hasMoreItems={() => this.optionsPage < 9} // Used to overwrite the hasMore prop for the infinite scroll
+                            hasMoreItems={() => this.optionsPage < maxPage - 1} // Used to overwrite the hasMore prop for the infinite scroll
                         />
                     </div>
                 </div>
@@ -192,7 +194,7 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
     }
 
     private getNewOptions() {
-        if (this.optionsPage < 10) {
+        if (this.optionsPage < maxPage) {
             _.times(10, (n: number) => {
                 const optionNumber: number = n + this.optionsPage * 10;
                 this.options.push({
