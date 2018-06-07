@@ -6,7 +6,6 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
-
 // import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 // import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 // import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
@@ -163,7 +162,7 @@ class App extends React.Component<any, any> {
                     <ActionBarExamples />
                     <ActionBarConnectedExamples />
                     <ItemFilterExamples />
-                    <ItemFilterConnectedExamples /> 
+                    <ItemFilterConnectedExamples />
                     <TableRowExamples />
                     <TableRowConnectedExamples />
                     <TableEmptyRowExamples />
