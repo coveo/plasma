@@ -6,7 +6,7 @@ import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {updateSelectedRows} from './TableActions';
 import {ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow} from './TableHeadingRow';
 import {ITableState} from './TableReducers';
-import {addRow, removeRow, selectRow} from './TableRowActions';
+import {addRow, removeRow, selectRow, toggleRowOpened} from './TableRowActions';
 import {ITableRowState} from './TableRowReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnProps) => {
@@ -21,8 +21,13 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnProps) => ({
     onClick: (hasMultipleSelectedRow: boolean) => {
-        dispatch(selectRow(ownProps.id, ownProps.isCollapsible, ownProps.tableId, ownProps.rowId));
-        dispatch(updateSelectedRows(ownProps.tableId, [ownProps.rowId], hasMultipleSelectedRow));
+        if (!ownProps.selectionDisabled) {
+            dispatch(selectRow(ownProps.id, ownProps.tableId, ownProps.rowId));
+            dispatch(updateSelectedRows(ownProps.tableId, [ownProps.rowId], hasMultipleSelectedRow));
+        }
+        if (ownProps.isCollapsible) {
+            dispatch(toggleRowOpened(ownProps.id, ownProps.tableId, ownProps.rowId));
+        }
     },
     onRender: () => dispatch(addRow(ownProps.id, ownProps.tableId)),
     onDestroy: () => dispatch(removeRow(ownProps.id)),

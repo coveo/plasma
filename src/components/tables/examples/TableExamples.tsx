@@ -406,8 +406,11 @@ export class TableExamples extends React.Component<any, any> {
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
                         initialTableData={tableData}
-                        collapsibleFormatter={(rowData: IData) => <div className='p2'>This is the collapsible row! And here's the value of
-                            attribute 3: {rowData.attribute3}</div>}
+                        collapsibleFormatter={(rowData: IData) => _.keys(tableDataById).indexOf(rowData.id) % 2 === 0 &&
+                            <div className='p2'>
+                                This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}
+                            </div>
+                        }
                         getActions={(rowData: IData) => ([
                             {
                                 name: 'Link to Coveo',

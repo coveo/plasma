@@ -4,12 +4,12 @@ export const TableRowActions = {
     add: 'ADD_ROW',
     remove: 'REMOVE_ROW',
     select: 'SELECT_ROW',
+    toggleOpen: 'TOGGLE_COLLAPSE_ROW',
     unselectAll: 'UNSELECT_ALL_ROW',
 };
 
 export interface ITableRowActionPayload {
     id?: string;
-    isCollapsible?: boolean;
     tableId?: string;
     rowId?: string;
 }
@@ -29,11 +29,19 @@ export const removeRow = (id: string): IReduxAction<ITableRowActionPayload> => (
     },
 });
 
-export const selectRow = (id: string, isCollapsible?: boolean, tableId?: string, rowId?: string): IReduxAction<ITableRowActionPayload> => ({
+export const selectRow = (id: string, tableId?: string, rowId?: string): IReduxAction<ITableRowActionPayload> => ({
     type: TableRowActions.select,
     payload: {
         id,
-        isCollapsible,
+        tableId,
+        rowId,
+    },
+});
+
+export const toggleRowOpened = (id: string, tableId?: string, rowId?: string): IReduxAction<ITableRowActionPayload> => ({
+    type: TableRowActions.toggleOpen,
+    payload: {
+        id,
         tableId,
         rowId,
     },
