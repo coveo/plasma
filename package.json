@@ -22,7 +22,7 @@
   "scripts": {
     "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --devtool eval --inline --hot --progress --colors",
     "docs": "webpack --config webpack.config.js",
-    "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js docs/**/*.js",
+    "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js docs/**/*.js **/*css.d.ts",
     "compileTs": "webpack --config webpack.config.prod.js",
     "minify": "webpack --config webpack.config.prod.minify.js",
     "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
