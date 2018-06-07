@@ -23,18 +23,19 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
                 opened: false,
                 selected: false,
             };
+        case TableRowActions.toggleOpen:
+            return state.tableId === action.payload.tableId
+                ? {...state, opened: state.id === action.payload.id && !state.opened}
+                : state;
         case TableRowActions.select:
-            if (state.tableId === action.payload.tableId) {
-                return state.id === action.payload.id
-                    ? {...state, selected: true, opened: !!action.payload.isCollapsible && !state.opened}
-                    : {...state, selected: false, opened: false};
-            }
+            return state.tableId === action.payload.tableId
+                ? {...state, selected: state.id === action.payload.id}
+                : state;
         case TableRowActions.unselectAll:
-            if (state.tableId === action.payload.tableId) {
-                return {...state, selected: false, opened: false};
-            }
-        default:
-            return state;
+            return state.tableId === action.payload.tableId
+                ? {...state, selected: false, opened: false}
+                : state;
+        default: return state;
     }
 };
 
@@ -49,6 +50,7 @@ export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState
             return _.reject(state, (row: ITableRowState) => {
                 return action.payload.id === row.id;
             });
+        case TableRowActions.toggleOpen:
         case TableRowActions.select:
         case TableRowActions.unselectAll:
             return state.map((row: ITableRowState) => tableRowReducer(row, action));

@@ -18,6 +18,20 @@ describe('Tables', () => {
         let tableHeadingRow: ReactWrapper<ITableHeadingRowProps, any>;
         let store: Store<IReactVaporState>;
 
+        const mountWithProps = (props?: Partial<ITableHeadingRowOwnProps>) => {
+            wrapper = mount(
+                <Provider store={store}>
+                    <table>
+                        <tbody>
+                            <TableHeadingRowConnected {...{...basicTableHeadingRowProps, ...props}} />
+                        </tbody>
+                    </table>
+                </Provider>,
+                {attachTo: document.getElementById('App')},
+            );
+            tableHeadingRow = wrapper.find(TableHeadingRow).first();
+        };
+
         beforeEach(() => {
             basicTableHeadingRowProps = {
                 id: 'heading-row',
@@ -25,18 +39,7 @@ describe('Tables', () => {
             };
 
             store = TestUtils.buildStore();
-
-            wrapper = mount(
-                <Provider store={store}>
-                    <table>
-                        <tbody>
-                            <TableHeadingRowConnected {...basicTableHeadingRowProps} />
-                        </tbody>
-                    </table>
-                </Provider>,
-                {attachTo: document.getElementById('App')},
-            );
-            tableHeadingRow = wrapper.find(TableHeadingRow).first();
+            mountWithProps();
         });
 
         afterEach(() => {
@@ -93,23 +96,29 @@ describe('Tables', () => {
             expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).opened).toBe(true);
         });
 
+        it('should set the selected property to true on click when the selectionDisabled prop is false', () => {
+            expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).selected).toBe(false);
+
+            tableHeadingRow.find('tr').simulate('click');
+            expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).selected).toBe(true);
+        });
+
+        it('should not set the selected property to true on click if the selectionDisabled prop is true', () => {
+            expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).selected).toBe(false);
+
+            mountWithProps({selectionDisabled: true});
+
+            tableHeadingRow.find('tr').simulate('click');
+            expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).selected).toBe(false);
+        });
+
         it('should not dispatch any action on render, on destroy and on click if not collapsible', () => {
             store.dispatch(clearState());
 
-            const newHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {isCollapsible: false});
             const rowState = _.clone(store.getState().rows);
 
-            wrapper = mount(
-                <Provider store={store}>
-                    <table>
-                        <tbody>
-                            <TableHeadingRowConnected {...newHeadingRowProps} />
-                        </tbody>
-                    </table>
-                </Provider>,
-                {attachTo: document.getElementById('App')},
-            );
-            tableHeadingRow = wrapper.find(TableHeadingRow).first();
+            mountWithProps({isCollapsible: false});
+
             expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));
 
             tableHeadingRow.find('tr').simulate('click');
