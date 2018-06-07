@@ -130,6 +130,37 @@ describe('Tables', () => {
                 expect(collapsibleRowsState.filter((row) => row.id === action.payload.id)[0].opened).toBe(openValue);
                 expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(openValue);
             });
+
+            it('should return the old state when the action does not target the specified tableId', () => {
+                oldState = [
+                    {
+                        id: 'row2',
+                        tableId: 'table3',
+                        opened: false,
+                        selected: false,
+                    }, {
+                        id: 'row1',
+                        tableId: 'table3',
+                        opened: true,
+                        selected: false,
+                    }, {
+                        id: 'row3',
+                        tableId: 'table3',
+                        opened: false,
+                        selected: false,
+                    },
+                ];
+                const action: IReduxAction<ITableRowActionPayload> = {
+                    type: TableRowActions.toggleOpen,
+                    payload: {
+                        id: 'row1',
+                        tableId: 'table2',
+                    },
+                };
+                const nexState: ITableRowState[] = tableRowsReducer(oldState, action);
+
+                expect(nexState).toEqual(oldState);
+            });
         });
 
         describe('selected behavior', () => {
@@ -191,6 +222,37 @@ describe('Tables', () => {
                 const currentStateWithTableId = oldState.map((rowState) => ({...rowState, tableId: `different${tableId}`, selected: true}));
 
                 expect(tableRowsReducer(currentStateWithTableId, action).every((row) => row.selected)).toBe(true);
+            });
+
+            it('should return the old state when the action does not target the specified tableId', () => {
+                oldState = [
+                    {
+                        id: 'row2',
+                        tableId: 'table3',
+                        opened: false,
+                        selected: false,
+                    }, {
+                        id: 'row1',
+                        tableId: 'table3',
+                        opened: true,
+                        selected: false,
+                    }, {
+                        id: 'row3',
+                        tableId: 'table3',
+                        opened: false,
+                        selected: false,
+                    },
+                ];
+                const action: IReduxAction<ITableRowActionPayload> = {
+                    type: TableRowActions.select,
+                    payload: {
+                        id: 'row1',
+                        tableId: 'table2',
+                    },
+                };
+                const nexState: ITableRowState[] = tableRowsReducer(oldState, action);
+
+                expect(nexState).toEqual(oldState);
             });
         });
     });
