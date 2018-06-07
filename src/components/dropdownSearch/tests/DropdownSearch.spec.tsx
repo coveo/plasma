@@ -1,13 +1,14 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {keyCode} from '../../../utils/InputUtils';
 import {UUID} from '../../../utils/UUID';
 import {Content} from '../../content/Content';
 import {FilterBox} from '../../filterBox/FilterBox';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
+import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
 import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
@@ -34,6 +35,7 @@ describe('DropdownSearch', () => {
     describe('<DropdownSearch />', () => {
         let dropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
         let dropdownSearchInstance: DropdownSearch;
+        let dropdownSearchInstanceAsAny: any;
 
         const renderDropdownSearch = (props?: IDropdownSearchProps) => {
             dropdownSearch = mount(
@@ -41,6 +43,7 @@ describe('DropdownSearch', () => {
                 {attachTo: document.getElementById('App')},
             );
             dropdownSearchInstance = dropdownSearch.instance() as DropdownSearch;
+            dropdownSearchInstanceAsAny = dropdownSearchInstance;
         };
 
         afterEach(() => {
@@ -122,6 +125,22 @@ describe('DropdownSearch', () => {
                 dropdownSearch.find('input.filter-box').simulate('change');
 
                 expect(onFilterTextChange).toHaveBeenCalled();
+            });
+
+            it('should not call onFilterTextChange if defined when the filter box input changes and customFiltering is defined', () => {
+                const onFilterTextChange = jasmine.createSpy('onFilterTextChange');
+                dropdownSearch.setProps({isOpened: true, onFilterTextChange, customFiltering: jasmine.createSpy('customFiltering')});
+                dropdownSearch.find('input.filter-box').simulate('change');
+
+                expect(onFilterTextChange).not.toHaveBeenCalled();
+            });
+
+            it('shoudl call customFiltering if defined when the filter box input changes', () => {
+                const customFiltering = jasmine.createSpy('customFiltering');
+                dropdownSearch.setProps({isOpened: true, customFiltering});
+                dropdownSearch.find('input.filter-box').simulate('change');
+
+                expect(customFiltering).toHaveBeenCalledTimes(1);
             });
 
             it('should call onBlur if defined when we lost focus on "filter-box" input', () => {
@@ -249,13 +268,13 @@ describe('DropdownSearch', () => {
 
             describe('getDropdownOptionAppend', () => {
                 it('should return a non null append jsx.element if append is defined', () => {
-                    expect(shallow((dropdownSearch.instance() as any).getDropdownOptionAppend({value: 'test', append: 'test append'}))
+                    expect(shallow(dropdownSearchInstanceAsAny.getDropdownOptionAppend({value: 'test', append: 'test append'}))
                         .find('.dropdown-option-append').text()).toBe('test append');
                 });
 
                 it('should a null value if option is undefined or append is undefined', () => {
-                    expect((dropdownSearch.instance() as any).getDropdownOptionAppend()).toBeNull();
-                    expect((dropdownSearch.instance() as any).getDropdownOptionAppend({value: 'test'})).toBeNull();
+                    expect(dropdownSearchInstanceAsAny.getDropdownOptionAppend()).toBeNull();
+                    expect(dropdownSearchInstanceAsAny.getDropdownOptionAppend({value: 'test'})).toBeNull();
                 });
             });
 
@@ -264,7 +283,7 @@ describe('DropdownSearch', () => {
                     const onOptionClick = jasmine.createSpy('onOptionClick');
                     dropdownSearch.setProps({...ownProps, onOptionClick});
 
-                    (dropdownSearch.instance() as any).handleOnOptionClick({target: 'defined', currentTarget: {dataset: {value: options[0].value}}});
+                    dropdownSearchInstanceAsAny.handleOnOptionClick({target: 'defined', currentTarget: {dataset: {value: options[0].value}}});
                     expect(onOptionClick).toHaveBeenCalledTimes(1);
                 });
 
@@ -272,7 +291,7 @@ describe('DropdownSearch', () => {
                     const onOptionClick = jasmine.createSpy('onOptionClick');
                     dropdownSearch.setProps({...ownProps, onOptionClick});
 
-                    (dropdownSearch.instance() as any).handleOnOptionClick({
+                    dropdownSearchInstanceAsAny.handleOnOptionClick({
                         target: 'defined',
                         currentTarget: {dataset: {value: 'i do not exist in options'}},
                         preventDefault: _.noop,
@@ -285,13 +304,98 @@ describe('DropdownSearch', () => {
 
             describe('getSelectedOption', () => {
                 it('should return undefined if there are no selected options', () => {
-                    expect((dropdownSearch.instance() as any).getSelectedOption()).toBeUndefined();
+                    expect(dropdownSearchInstanceAsAny.getSelectedOption()).toBeUndefined();
                 });
 
                 it('should return the selected option if there is one', () => {
                     const selected = {value: 'test', selected: true};
                     dropdownSearch.setProps({...ownProps, options: [selected, ...ownProps.options]});
-                    expect((dropdownSearch.instance() as any).getSelectedOption()).toEqual(selected);
+                    expect(dropdownSearchInstanceAsAny.getSelectedOption()).toEqual(selected);
+                });
+            });
+
+            describe('getDropdownOptions', () => {
+                it('should return li elements if the infiniteScrollProps are undefined', () => {
+                    expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('li');
+                });
+
+                it('should return div elements if the infiniteScrollProps are defined', () => {
+                    dropdownSearch.setProps({
+                        ...ownProps,
+                        infiniteScroll: {
+                            dataLength: 2,
+                            hasMore: true,
+                            next: jasmine.createSpy('next'),
+                            endMessage: 'no more',
+                        },
+                    });
+                    expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
+                });
+            });
+
+            describe('getDropdownMenu', () => {
+                it('should return null if isOpened is false', () => {
+                    expect(dropdownSearchInstanceAsAny.getDropdownMenu()).toBeNull();
+                });
+
+                it('should return a ul if the infiniteScrollProps are undefined', () => {
+                    dropdownSearch.setProps({
+                        ...ownProps,
+                        isOpened: true,
+                    });
+                    expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe('ul');
+                });
+
+                it('should return a DropdownSearchInfiniteScrollOptions if the infiniteScrollProps are defined', () => {
+                    dropdownSearch.setProps({
+                        ...ownProps,
+                        isOpened: true,
+                        infiniteScroll: {
+                            dataLength: 2,
+                            hasMore: true,
+                            next: jasmine.createSpy('next'),
+                            endMessage: 'no more',
+                        },
+                    });
+                    expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchInfiniteScrollOptions);
+                });
+
+                it('should call the hasMoreItems prop to let the infinite scroll if there are more items', () => {
+                    const hasMoreItemsSpy: jasmine.Spy = jasmine.createSpy('hasMoreItems');
+                    dropdownSearch.setProps({
+                        ...ownProps,
+                        isOpened: true,
+                        infiniteScroll: {
+                            dataLength: 2,
+                            hasMore: true,
+                            next: jasmine.createSpy('next'),
+                            endMessage: 'no more',
+                        },
+                        hasMoreItems: hasMoreItemsSpy,
+                    });
+                    const hasMoreItemsCallsCount = hasMoreItemsSpy.calls.count();
+                    dropdownSearchInstanceAsAny.getDropdownMenu();
+
+                    expect(hasMoreItemsSpy).toHaveBeenCalledTimes(hasMoreItemsCallsCount + 1);
+                });
+
+                it('should call handleOnMouseEnter when calling DropdownSearchInfiniteScrollOptions onMouseEnter prop', () => {
+                    const handleOnMouseEnterSpy = spyOn<any>(dropdownSearchInstance, 'handleOnMouseEnter');
+
+                    dropdownSearch.setProps({
+                        ...ownProps,
+                        isOpened: true,
+                        infiniteScroll: {
+                            dataLength: 2,
+                            hasMore: true,
+                            next: jasmine.createSpy('next'),
+                            endMessage: 'no more',
+                        },
+                    });
+
+                    dropdownSearchInstanceAsAny.getDropdownMenu().props.onMouseEnter();
+
+                    expect(handleOnMouseEnterSpy).toHaveBeenCalledTimes(1);
                 });
             });
         });
@@ -464,12 +568,10 @@ describe('DropdownSearch', () => {
                     options: [],
                 }));
 
-                const newDropdownSearchInstance = (dropdownSearch.instance() as any);
-
-                expect(JSON.stringify(newDropdownSearchInstance.getNoOptions()))
+                expect(JSON.stringify(dropdownSearchInstanceAsAny.getNoOptions()))
                     .toBe(JSON.stringify([
                         <li key='noResultDropdownSearch'>
-                            <span className='no-search-results'>{newDropdownSearchInstance.props.noResultText}</span>
+                            <span className='no-search-results'>{dropdownSearchInstance.props.noResultText}</span>
                         </li>,
                     ]));
             });
@@ -487,8 +589,8 @@ describe('DropdownSearch', () => {
                     activeOption: {value: 'testd 1', displayValue: 'test 1'},
                 }));
 
-                spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
-                const spy = spyOn((dropdownSearch.instance() as any), 'updateScrollPositionBasedOnActiveElement').and.callThrough();
+                spyOn(dropdownSearchInstanceAsAny, 'isScrolledIntoView').and.returnValue(false);
+                const spy = spyOn(dropdownSearchInstanceAsAny, 'updateScrollPositionBasedOnActiveElement').and.callThrough();
 
                 const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
                 spyOn(ul, 'getBoundingClientRect').and.returnValue({bottom: 10, top: 10});
@@ -510,8 +612,8 @@ describe('DropdownSearch', () => {
                     activeOption: {value: 'test 19', displayValue: 'test 19'},
                 }));
 
-                spyOn((dropdownSearch.instance() as any), 'isScrolledIntoView').and.returnValue(false);
-                const spy = spyOn((dropdownSearch.instance() as any), 'updateScrollPositionBasedOnActiveElement').and.callThrough();
+                spyOn(dropdownSearchInstanceAsAny, 'isScrolledIntoView').and.returnValue(false);
+                const spy = spyOn<any>(dropdownSearchInstance, 'updateScrollPositionBasedOnActiveElement').and.callThrough();
 
                 const ul: Element = dropdownSearch.find('ul.dropdown-menu').getDOMNode();
                 spyOn(ul, 'getBoundingClientRect').and.returnValue({bottom: 200000, top: 200000});
@@ -536,19 +638,19 @@ describe('DropdownSearch', () => {
             it('should return true if the number of options is greater than the search thresold', () => {
                 renderDropdownSearchWithNumberOfOptions(3);
 
-                expect((dropdownSearch.instance() as any).isSearchOn()).toBe(true);
+                expect(dropdownSearchInstanceAsAny.isSearchOn()).toBe(true);
             });
 
             it('should return false if the number of options is equal to the search thresold', () => {
                 renderDropdownSearchWithNumberOfOptions(2);
 
-                expect((dropdownSearch.instance() as any).isSearchOn()).toBe(false);
+                expect(dropdownSearchInstanceAsAny.isSearchOn()).toBe(false);
             });
 
             it('should return false if the number of options is lower to the search thresold', () => {
                 renderDropdownSearchWithNumberOfOptions(1);
 
-                expect((dropdownSearch.instance() as any).isSearchOn()).toBe(false);
+                expect(dropdownSearchInstanceAsAny.isSearchOn()).toBe(false);
             });
         });
 

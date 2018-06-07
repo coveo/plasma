@@ -53,6 +53,7 @@ const TOOLTIP_PROPS_TO_OMIT: string[] = [
     'defaultOverlayShown',
     'delay',
     'delayShow',
+    'noSpanWrapper',
     'onEnter',
     'onEntered',
     'onEntering',

@@ -6,6 +6,7 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
+
 // import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 // import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 // import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
@@ -34,7 +35,7 @@ import {Provider} from 'react-redux';
 // } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 // import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 // import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
-// import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 // import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
 // import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
 // import {FacetConnectedExamples} from '../src/components/facets/examples/FacetConnectedExamples';
@@ -81,12 +82,12 @@ import {Provider} from 'react-redux';
 // import {SvgExamples} from '../src/components/svg/examples/SvgExamples';
 // import {SyncFeedbackExample} from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 // import {TabsExamples} from '../src/components/tab/examples/TabConnectedExample';
-import {TableWithDisabledRowsExamples} from '../src/components/tables/examples/TableDisabledRowsExamples';
-import {TableEmptyRowExamples} from '../src/components/tables/examples/TableEmptyRowExamples';
-import {TableExamples} from '../src/components/tables/examples/TableExamples';
-import {TableHeaderExamples} from '../src/components/tables/examples/TableHeaderExamples';
-import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
-import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
+// import {TableWithDisabledRowsExamples} from '../src/components/tables/examples/TableDisabledRowsExamples';
+// import {TableEmptyRowExamples} from '../src/components/tables/examples/TableEmptyRowExamples';
+// import {TableExamples} from '../src/components/tables/examples/TableExamples';
+// import {TableHeaderExamples} from '../src/components/tables/examples/TableHeaderExamples';
+// import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
+// import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
 // import {TextAreaExamples} from '../src/components/textarea/TextAreaExamples';
 // import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 // import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
@@ -135,7 +136,6 @@ class App extends React.Component<any, any> {
                     <BreadcrumbHeaderExample />
                     <SingleSelectExamples />
                     <MultiSelectExamples />
-                    <DropdownSearchExamples />
                     <FlatSelectExamples />
                     <TooltipExamples />
                     <ChosenSelectExamples />
@@ -163,14 +163,14 @@ class App extends React.Component<any, any> {
                     <ActionBarExamples />
                     <ActionBarConnectedExamples />
                     <ItemFilterExamples />
-                    <ItemFilterConnectedExamples /> */}
+                    <ItemFilterConnectedExamples /> 
                     <TableRowExamples />
                     <TableRowConnectedExamples />
                     <TableEmptyRowExamples />
                     <TableHeaderExamples />
                     <TableExamples />
                     <TableWithDisabledRowsExamples />
-                    {/* <OptionsCycleExamples />
+                    <OptionsCycleExamples />
                     <OptionsCycleConnectedExamples />
                     <CalendarConnectedExamples />
                     <DatesSelectionExamples />
@@ -196,7 +196,8 @@ class App extends React.Component<any, any> {
                     <SplitLayoutExamples />
                     <SplitMultilineInputExamples />
                     <JSONEditorExamples />
-                    <CodeEditorExamples /> */}
+                    <CodeEditorExamples />*/}
+                    <DropdownSearchExamples />
                 </div>
             </Provider>
         );
