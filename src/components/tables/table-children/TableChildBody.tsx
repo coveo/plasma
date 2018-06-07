@@ -87,7 +87,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             }
             isMultiSelect={props.isMultiSelect}
             selectionDisabled={props.getActions(props.rowData).length < 1}
-            isPartOfCollapsibleTable={!!props.collapsibleFormatter}
+            tableHasCollapsibleRow={!!props.collapsibleFormatter}
         >
             {tableHeadingRowContent}
         </TableHeadingRowConnected>

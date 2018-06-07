@@ -14,7 +14,7 @@ export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHea
     className?: string;
     isMultiSelect?: boolean;
     selectionDisabled?: boolean;
-    isPartOfCollapsibleTable?: boolean;
+    tableHasCollapsibleRow?: boolean;
 }
 
 export interface ITableHeadingRowStateProps {
@@ -48,7 +48,7 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
     render() {
         const toggle: JSX.Element = this.props.isCollapsible
             ? <TableCollapsibleRowToggle isExpanded={this.props.opened} />
-            : this.props.isPartOfCollapsibleTable && <td></td>;
+            : this.props.tableHasCollapsibleRow && <td></td>;
         const rowClasses = classNames({
             'heading-row': this.props.isCollapsible,
             'selected': this.props.selected,
