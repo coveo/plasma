@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import * as _ from 'underscore';
+import _ = require('underscore');
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {FlatSelect, IFlatSelectDispatchProps, IFlatSelectOwnProps, IFlatSelectProps, IFlatSelectStateProps} from './FlatSelect';
@@ -22,7 +22,7 @@ const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
     ownProps: IFlatSelectOwnProps,
 ): IFlatSelectDispatchProps => ({
-    onRender: () => dispatch(addFlatSelect(ownProps.id, ownProps.options.length && ownProps.options[0].id)),
+    onRender: () => dispatch(addFlatSelect(ownProps.id, ownProps.defaultSelectedOptionId || ownProps.options.length && ownProps.options[0].id)),
     onDestroy: () => dispatch(removeFlatSelect(ownProps.id)),
     onOptionClick: (selected: IFlatSelectOptionProps) => dispatch(selectFlatSelect(ownProps.id, selected.id)),
 });

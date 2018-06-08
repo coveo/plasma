@@ -18,6 +18,7 @@ describe('FlatSelect', () => {
         let store: Store<IReactVaporState>;
 
         const id: string = 'flatSelect';
+        const anOptionId: string = 'flatOption';
         const defaultOptions: IFlatSelectOptionProps[] = [
             {
                 id: UUID.generate(),
@@ -25,7 +26,7 @@ describe('FlatSelect', () => {
                     content: 'test',
                 },
             }, {
-                id: UUID.generate(),
+                id: anOptionId,
                 option: {
                     content: 'test 1',
                 },
@@ -65,6 +66,19 @@ describe('FlatSelect', () => {
 
                 wrapper.mount();
                 expect(store.getState().flatSelect.length).toBe(1);
+            });
+
+            it('should set the first selected option for selectedOptionId in the state on mount', () => {
+                wrapper.unmount();
+                store.dispatch(clearState());
+                expect(store.getState().flatSelect.length).toBe(0);
+
+                const newFlatSelect = <FlatSelectConnected id={id} options={defaultOptions} defaultSelectedOptionId={anOptionId} />;
+                wrapper.setProps({children: newFlatSelect});
+
+                wrapper.mount();
+                expect(store.getState().flatSelect.length).toBe(1);
+                expect(store.getState().flatSelect[0].selectedOptionId).toBe(anOptionId);
             });
 
             it('should call onDestroy prop when will unmount', () => {
