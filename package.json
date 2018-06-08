@@ -81,7 +81,7 @@
     "autoprefixer": "8.6.0",
     "bithound": "1.7.0",
     "chosen-js": "1.8.2",
-    "classnames": "2.2.5",
+    "classnames": "2.2.6",
     "codecov": "3.0.2",
     "codemirror": "5.38.0",
     "coveo-styleguide": "2.19.x",
