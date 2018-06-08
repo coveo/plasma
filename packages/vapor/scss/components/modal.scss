@@ -221,6 +221,7 @@ $icon-size: (4em / 3);
   flex-grow: 1;
 
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 
   background-color: $pure-white;
 
