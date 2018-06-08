@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import _ = require('underscore');
+import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {FlatSelect, IFlatSelectDispatchProps, IFlatSelectOwnProps, IFlatSelectProps, IFlatSelectStateProps} from './FlatSelect';
