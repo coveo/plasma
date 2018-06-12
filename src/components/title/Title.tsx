@@ -26,12 +26,7 @@ export class Title extends React.Component<ITitleProps, {}> {
         ]).flatten().compact().value();
 
         return this.props.documentationLink
-            ? (
-                <LinkSvg
-                    {...this.props.documentationLink}
-                    linkClasses={linkClasses}
-                />
-            )
+            ? <LinkSvg {...this.props.documentationLink} linkClasses={linkClasses} />
             : null;
     }
 
