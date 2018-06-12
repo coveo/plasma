@@ -30,7 +30,7 @@ export const PER_PAGE_LABEL: string = 'Results per page';
 
 export class NavigationPerPage extends React.Component<INavigationPerPageProps, any> {
     static defaultProps: Partial<INavigationPerPageProps> = {
-        initialPosition: 0,
+        initialPosition: 1,
     };
     private perPageNumbers: number[];
 
