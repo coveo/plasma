@@ -55,7 +55,7 @@ describe('<LinkSvg>', () => {
             expect(linkSvgComponent.find(`a[href="${linkSvgProps.url}"]`).length).toBe(1);
         });
 
-        it('should set the onClick on the <a> href', () => {
+        it('should set the onClick on the anchor element', () => {
             const onClick = jasmine.createSpy('onClick');
 
             renderLinkSvg({onClick});
