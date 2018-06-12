@@ -55,15 +55,6 @@ describe('<LinkSvg>', () => {
             expect(linkSvgComponent.find(`a[href="${linkSvgProps.url}"]`).length).toBe(1);
         });
 
-        it('should set the onClick on the anchor element', () => {
-            const onClick = jasmine.createSpy('onClick');
-
-            renderLinkSvg({onClick});
-            linkSvgComponent.find('a').prop('onClick')(undefined);
-
-            expect(onClick).toHaveBeenCalledTimes(1);
-        });
-
         it('should set the target on <a>', () => {
             renderLinkSvg({url: 'test', target: '_blank'});
 

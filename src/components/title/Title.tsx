@@ -20,8 +20,18 @@ export class Title extends React.Component<ITitleProps, {}> {
     };
 
     private getLinkIcon(): JSX.Element {
+        const linkClasses = _.chain([
+            'inline-doc-link',
+            this.props.documentationLink && this.props.documentationLink.linkClasses,
+        ]).flatten().compact().value();
+
         return this.props.documentationLink
-            ? <LinkSvg {...this.props.documentationLink} />
+            ? (
+                <LinkSvg
+                    {...this.props.documentationLink}
+                    linkClasses={linkClasses}
+                />
+            )
             : null;
     }
 
