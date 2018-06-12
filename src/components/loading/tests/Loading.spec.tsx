@@ -15,6 +15,11 @@ describe('<Loading />', () => {
         expect(loading.find('.spinner').length).toBe(1);
     });
 
+    it('should render the optional classes if any in addition to the default spinner class', () => {
+        const loading: ShallowWrapper<ILoadingProps, any> = shallow(<Loading className='p2' />);
+        expect(loading.find('.spinner.p2').length).toBe(1);
+    });
+
     it('should call onRender if prop is set when mounting', () => {
         const onRenderSpy = jasmine.createSpy('onRender');
         const loading: ReactWrapper<ILoadingProps, any> = mount(
