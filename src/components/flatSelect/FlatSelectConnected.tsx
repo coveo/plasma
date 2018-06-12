@@ -22,7 +22,7 @@ const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
     ownProps: IFlatSelectOwnProps,
 ): IFlatSelectDispatchProps => ({
-    onRender: () => dispatch(addFlatSelect(ownProps.id, ownProps.options.length && ownProps.options[0].id)),
+    onRender: () => dispatch(addFlatSelect(ownProps.id, ownProps.defaultSelectedOptionId || ownProps.options.length && ownProps.options[0].id)),
     onDestroy: () => dispatch(removeFlatSelect(ownProps.id)),
     onOptionClick: (selected: IFlatSelectOptionProps) => dispatch(selectFlatSelect(ownProps.id, selected.id)),
 });

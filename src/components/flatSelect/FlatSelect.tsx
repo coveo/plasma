@@ -9,6 +9,7 @@ export interface IFlatSelectOwnProps {
     classes?: string[];
     group?: boolean;
     optionPicker?: boolean;
+    defaultSelectedOptionId?: string;
     onClick?: (option: IFlatSelectOptionProps) => void;
 }
 
