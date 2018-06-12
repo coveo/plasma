@@ -19,6 +19,7 @@ describe('<NavigationConnected />', () => {
         totalPages: 10,
         totalEntries: 105,
         perPageNumbers: [10, 100],
+        initialPosition: 0,
     };
     let store: Store<IReactVaporState>;
     let wrapper: ReactWrapper<any, any>;
