@@ -19,7 +19,8 @@ import {IPerPageState} from './NavigationPerPageReducers';
 const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPerPageOwnProps): INavigationPerPageStateProps => {
     const item: IPerPageState = _.findWhere(state.perPageComposite, {id: ownProps.id});
     const pagination: IPaginationState = _.findWhere(state.paginationComposite, {id: 'pagination-' + ownProps.id});
-    const firstPerPage: number = ownProps.perPageNumbers ? ownProps.perPageNumbers[0] : PER_PAGE_NUMBERS[0];
+    const initialPosition: number = ownProps.initialPosition || 0;
+    const firstPerPage: number = ownProps.perPageNumbers ? ownProps.perPageNumbers[initialPosition] : PER_PAGE_NUMBERS[initialPosition];
 
     return {
         currentPerPage: item ? item.perPage : firstPerPage,

@@ -25,6 +25,7 @@ export interface INavigationChildrenProps {
     hidePages?: boolean;
     currentPerPage?: number;
     currentPage?: number;
+    initialPosition?: number;
 }
 
 export interface INavigationStateProps extends IReduxStatePossibleProps {
@@ -56,6 +57,7 @@ export class Navigation extends React.Component<INavigationProps, any> {
             label: this.props.perPageLabel,
             perPageNumbers: this.props.perPageNumbers,
             totalEntries: this.props.totalEntries,
+            initialPosition: this.props.initialPosition,
         };
         if (this.props.currentPerPage) {
             perPageProps.currentPerPage = this.props.currentPerPage;
