@@ -21,6 +21,7 @@ describe('<NavigationPerPageConnected />', () => {
     const basicNavigationPerPageProps: INavigationPerPageProps = {
         totalEntries: 55,
         id: 'navigation-per-page',
+        initialPosition: 0,
     };
     const loadingId: string = basicNavigationPerPageProps.id + '-loading';
     basicNavigationPerPageProps.loadingIds = [loadingId];
