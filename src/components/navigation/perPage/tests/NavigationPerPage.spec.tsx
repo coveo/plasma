@@ -163,5 +163,15 @@ describe('NavigationPerPage', () => {
             navigationPerPageInstanceAsAny.handleClick(expectedPerPage);
             expect(newProps.onPerPageClick).not.toHaveBeenCalled();
         });
+
+        it('should set the per page at the initial position on first render', () => {
+            const expectedSelected: number = 2;
+            navigationPerPage = mount(
+                <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} initialPosition={expectedSelected} />,
+                {attachTo: document.getElementById('App')},
+            );
+
+            expect(navigationPerPage.find(NavigationPerPageSelect).at(expectedSelected).props().selected).toBe(true);
+        });
     });
 });

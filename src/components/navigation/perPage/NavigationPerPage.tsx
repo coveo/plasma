@@ -8,6 +8,7 @@ export interface INavigationPerPageOwnProps extends React.ClassAttributes<Naviga
     label?: string;
     perPageNumbers?: number[];
     loadingIds?: string[];
+    initialPosition?: number;
 }
 
 export interface INavigationPerPageStateProps {
@@ -28,6 +29,9 @@ export const PER_PAGE_NUMBERS: number[] = [10, 20, 30];
 export const PER_PAGE_LABEL: string = 'Results per page';
 
 export class NavigationPerPage extends React.Component<INavigationPerPageProps, any> {
+    static defaultProps: Partial<INavigationPerPageProps> = {
+        initialPosition: 0,
+    };
     private perPageNumbers: number[];
 
     private handleClick(newPerPage: number) {
@@ -39,7 +43,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
     componentWillMount() {
         this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
         if (this.props.onRender) {
-            this.props.onRender(this.perPageNumbers[0]);
+            this.props.onRender(this.perPageNumbers[this.props.initialPosition]);
         }
     }
 
@@ -52,7 +56,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
     render() {
         this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
 
-        const currentPerPage: number = this.props.currentPerPage || this.perPageNumbers[0];
+        const currentPerPage: number = this.props.currentPerPage || this.perPageNumbers[this.props.initialPosition];
         const topNumber: number = this.props.totalEntries;
         const label: string = this.props.label || PER_PAGE_LABEL;
 
