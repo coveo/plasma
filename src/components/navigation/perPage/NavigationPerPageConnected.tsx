@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../../utils/ReduxUtils';
 import {turnOnLoading} from '../../loading/LoadingActions';
@@ -11,19 +12,21 @@ import {
     INavigationPerPageOwnProps,
     INavigationPerPageProps,
     INavigationPerPageStateProps,
-    NavigationPerPage, PER_PAGE_NUMBERS,
+    NavigationPerPage,
+    PER_PAGE_NUMBERS,
 } from './NavigationPerPage';
 import {addPerPage, changePerPage, removePerPage} from './NavigationPerPageActions';
 import {IPerPageState} from './NavigationPerPageReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPerPageOwnProps): INavigationPerPageStateProps => {
+    const perPageNumber: number[] = ownProps.perPageNumbers || PER_PAGE_NUMBERS;
+    const defaultInitialPosition: number = Math.ceil(perPageNumber.length / 2) - 1;
     const item: IPerPageState = _.findWhere(state.perPageComposite, {id: ownProps.id});
-    const pagination: IPaginationState = _.findWhere(state.paginationComposite, {id: 'pagination-' + ownProps.id});
-    const initialPosition: number = !_.isUndefined(ownProps.initialPosition) ? ownProps.initialPosition : 1;
-    const firstPerPage: number = ownProps.perPageNumbers ? ownProps.perPageNumbers[initialPosition] : PER_PAGE_NUMBERS[initialPosition];
+    const pagination: IPaginationState = _.findWhere(state.paginationComposite, {id: `pagination-${ownProps.id}`});
+    const initialPosition: number = !_.isUndefined(ownProps.initialPosition) ? ownProps.initialPosition : defaultInitialPosition;
 
     return {
-        currentPerPage: item ? item.perPage : firstPerPage,
+        currentPerPage: item ? item.perPage : perPageNumber[initialPosition],
         currentPage: pagination ? pagination.pageNb : 0,
     };
 };
