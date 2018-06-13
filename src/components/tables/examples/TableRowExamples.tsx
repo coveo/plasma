@@ -48,7 +48,7 @@ export class TableRowExamples extends React.Component<{}, TableRowExamplesState>
                             </TableCollapsibleRow>
                         </tbody>
                         <tbody className='selected'>
-                            <TableHeadingRow isCollapsible={false}>
+                            <TableHeadingRow isCollapsible={false} tableHasCollapsibleRow>
                                 {this.firstRowCols}
                             </TableHeadingRow>
                         </tbody>
