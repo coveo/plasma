@@ -5,6 +5,7 @@ export const TableRowActions = {
     remove: 'REMOVE_ROW',
     select: 'SELECT_ROW',
     toggleOpen: 'TOGGLE_COLLAPSE_ROW',
+    open: 'EXPAND_ROW',
     unselectAll: 'UNSELECT_ALL_ROW',
 };
 
@@ -12,6 +13,7 @@ export interface ITableRowActionPayload {
     id?: string;
     tableId?: string;
     rowId?: string;
+    opened?: boolean;
 }
 
 export const addRow = (id: string, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
@@ -44,6 +46,15 @@ export const toggleRowOpened = (id: string, tableId?: string, rowId?: string): I
         id,
         tableId,
         rowId,
+    },
+});
+
+export const setRowOpened = (id: string, opened: boolean, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
+    type: TableRowActions.open,
+    payload: {
+        id,
+        opened,
+        tableId,
     },
 });
 

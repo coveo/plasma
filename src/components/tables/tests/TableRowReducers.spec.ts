@@ -1,5 +1,5 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableRowActionPayload, TableRowActions, unselectAllRows} from '../TableRowActions';
+import {ITableRowActionPayload, TableRowActions, unselectAllRows, setRowOpened} from '../TableRowActions';
 import {
     ITableRowState,
     tableRowInitialState,
@@ -113,6 +113,27 @@ describe('Tables', () => {
                     {id: 'row1', opened: openValue, selected: doesNotMatter},
                 ];
             });
+
+            it('should set the opened property to the value specified in the paylaod when the action is "EXPAND_ROW"', () => {
+                const setOpenedAction = setRowOpened('row1', true);
+                const setCollapsedAction = setRowOpened('row1', false);
+                let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, setOpenedAction);
+
+                expect(collapsibleRowsState.length).toBe(oldState.length);
+                expect(collapsibleRowsState.filter((row) => row.id === setOpenedAction.payload.id)[0].opened).toBe(true);
+                expect(collapsibleRowsState.filter((row) => row.id !== setOpenedAction.payload.id)[0].opened).toBe(openValue);
+
+                collapsibleRowsState = tableRowsReducer(collapsibleRowsState, setOpenedAction);
+
+                expect(collapsibleRowsState.filter((row) => row.id === setOpenedAction.payload.id)[0].opened).toBe(true);
+                expect(collapsibleRowsState.filter((row) => row.id !== setOpenedAction.payload.id)[0].opened).toBe(openValue);
+
+                collapsibleRowsState = tableRowsReducer(collapsibleRowsState, setCollapsedAction);
+
+                expect(collapsibleRowsState.filter((row) => row.id === setCollapsedAction.payload.id)[0].opened).toBe(false);
+                expect(collapsibleRowsState.filter((row) => row.id !== setCollapsedAction.payload.id)[0].opened).toBe(openValue);
+            });
+
 
             it('should toggle the opened property to true if the action is "TOGGLE_COLLAPSE_ROW"', () => {
                 const action: IReduxAction<ITableRowActionPayload> = {
