@@ -19,9 +19,6 @@ export interface IDropdownSearchState {
     supportSingleCustomOption?: boolean;
 }
 
-export const isSelectingOption = (keyPressed: number, activeOption: IDropdownOption): boolean =>
-    _.contains([keyCode.enter, keyCode.tab], keyPressed) && activeOption && !activeOption.disabled;
-
 export const defaultSelectedOptionPlaceholder: IDropdownOption = {
     value: 'Select an option',
     selected: true,
@@ -271,7 +268,7 @@ export const dropdownSearchReducer = (
                 id: action.payload.id,
                 isOpened: false,
                 activeOption: undefined,
-                setFocusOnDropdownButton: false,
+                setFocusOnDropdownButton: action.payload.setFocusOnDropdown,
             };
         case DropdownSearchActions.add:
             return {
@@ -303,18 +300,6 @@ export const dropdownSearchReducer = (
                     options: state.supportSingleCustomOption && isFirstSelectedOption ? removeCustomOptions(state.options, false) : state.options,
                     activeOption: !isFirstSelectedOption ? activeOption : undefined,
                     setFocusOnDropdownButton: isFirstSelectedOption,
-                };
-            } else if (isSelectingOption(keyPressed, state.activeOption)) {
-                const optionsWithOneSelectedOpt = selectSingleOption(deselectAllOptions(state.options, true), state.activeOption);
-
-                return {
-                    ...state,
-                    id: action.payload.id,
-                    isOpened: false,
-                    options: removeCustomOptions(optionsWithOneSelectedOpt, state.supportSingleCustomOption, false),
-                    activeOption: undefined,
-                    filterText: '',
-                    setFocusOnDropdownButton: true,
                 };
             } else if (keyPressed === keyCode.escape) {
                 return {
