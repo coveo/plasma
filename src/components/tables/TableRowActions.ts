@@ -12,6 +12,7 @@ export interface ITableRowActionPayload {
     id?: string;
     tableId?: string;
     rowId?: string;
+    opened?: boolean;
 }
 
 export const addRow = (id: string, tableId?: string): IReduxAction<ITableRowActionPayload> => ({
@@ -38,12 +39,13 @@ export const selectRow = (id: string, tableId?: string, rowId?: string): IReduxA
     },
 });
 
-export const toggleRowOpened = (id: string, tableId?: string, rowId?: string): IReduxAction<ITableRowActionPayload> => ({
+export const toggleRowOpened = (id: string, tableId?: string, rowId?: string, opened?: boolean): IReduxAction<ITableRowActionPayload> => ({
     type: TableRowActions.toggleOpen,
     payload: {
         id,
         tableId,
         rowId,
+        opened,
     },
 });
 
