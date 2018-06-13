@@ -23,14 +23,13 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
                 opened: false,
                 selected: false,
             };
-        case TableRowActions.open:
-            return state.tableId === action.payload.tableId
-                ? {...state, opened: state.id === action.payload.id && !!action.payload.opened}
-                : state;
         case TableRowActions.toggleOpen:
-            return state.tableId === action.payload.tableId
+            if (state.tableId !== action.payload.tableId) {
+                return state;
+            }
+            return _.isUndefined(action.payload.opened)
                 ? {...state, opened: state.id === action.payload.id && !state.opened}
-                : state;
+                : {...state, opened: state.id === action.payload.id && action.payload.opened};
         case TableRowActions.select:
             return state.tableId === action.payload.tableId
                 ? {...state, selected: state.id === action.payload.id}
@@ -55,7 +54,6 @@ export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState
                 return action.payload.id === row.id;
             });
         case TableRowActions.toggleOpen:
-        case TableRowActions.open:
         case TableRowActions.select:
         case TableRowActions.unselectAll:
             return state.map((row: ITableRowState) => tableRowReducer(row, action));

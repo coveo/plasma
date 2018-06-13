@@ -1,5 +1,5 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableRowActionPayload, setRowOpened, TableRowActions, unselectAllRows} from '../TableRowActions';
+import {ITableRowActionPayload, TableRowActions, unselectAllRows} from '../TableRowActions';
 import {
     ITableRowState,
     tableRowInitialState,
@@ -114,27 +114,7 @@ describe('Tables', () => {
                 ];
             });
 
-            it('should set the opened property to the value specified in the paylaod when the action is "EXPAND_ROW"', () => {
-                const setOpenedAction = setRowOpened('row1', true);
-                const setCollapsedAction = setRowOpened('row1', false);
-                let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, setOpenedAction);
-
-                expect(collapsibleRowsState.length).toBe(oldState.length);
-                expect(collapsibleRowsState.filter((row) => row.id === setOpenedAction.payload.id)[0].opened).toBe(true);
-                expect(collapsibleRowsState.filter((row) => row.id !== setOpenedAction.payload.id)[0].opened).toBe(openValue);
-
-                collapsibleRowsState = tableRowsReducer(collapsibleRowsState, setOpenedAction);
-
-                expect(collapsibleRowsState.filter((row) => row.id === setOpenedAction.payload.id)[0].opened).toBe(true);
-                expect(collapsibleRowsState.filter((row) => row.id !== setOpenedAction.payload.id)[0].opened).toBe(openValue);
-
-                collapsibleRowsState = tableRowsReducer(collapsibleRowsState, setCollapsedAction);
-
-                expect(collapsibleRowsState.filter((row) => row.id === setCollapsedAction.payload.id)[0].opened).toBe(false);
-                expect(collapsibleRowsState.filter((row) => row.id !== setCollapsedAction.payload.id)[0].opened).toBe(openValue);
-            });
-
-            it('should toggle the opened property to true if the action is "TOGGLE_COLLAPSE_ROW"', () => {
+            it('should toggle the opened property if the action is "TOGGLE_COLLAPSE_ROW" and opened is not specified', () => {
                 const action: IReduxAction<ITableRowActionPayload> = {
                     type: TableRowActions.toggleOpen,
                     payload: {id: 'row1'},
@@ -151,7 +131,39 @@ describe('Tables', () => {
                 expect(collapsibleRowsState.filter((row) => row.id !== action.payload.id)[0].opened).toBe(openValue);
             });
 
-            it('should return the old state when the action does not target the specified tableId', () => {
+            it('should set the opened property to the value specified by the action "TOGGLE_COLLAPSE_ROW"', () => {
+                const setToTrue: IReduxAction<ITableRowActionPayload> = {
+                    type: TableRowActions.toggleOpen,
+                    payload: {
+                        id: 'row1',
+                        opened: true,
+                    },
+                };
+                const setToFalse: IReduxAction<ITableRowActionPayload> = {
+                    type: TableRowActions.toggleOpen,
+                    payload: {
+                        id: 'row1',
+                        opened: false,
+                    },
+                };
+                let collapsibleRowsState: ITableRowState[] = tableRowsReducer(oldState, setToTrue);
+
+                expect(collapsibleRowsState.length).toBe(oldState.length);
+                expect(collapsibleRowsState.filter((row) => row.id === setToTrue.payload.id)[0].opened).toBe(true);
+                expect(collapsibleRowsState.filter((row) => row.id !== setToTrue.payload.id)[0].opened).toBe(openValue);
+
+                collapsibleRowsState = tableRowsReducer(collapsibleRowsState, setToTrue);
+
+                expect(collapsibleRowsState.filter((row) => row.id === setToTrue.payload.id)[0].opened).toBe(true);
+                expect(collapsibleRowsState.filter((row) => row.id !== setToTrue.payload.id)[0].opened).toBe(openValue);
+
+                collapsibleRowsState = tableRowsReducer(collapsibleRowsState, setToFalse);
+
+                expect(collapsibleRowsState.filter((row) => row.id === setToTrue.payload.id)[0].opened).toBe(false);
+                expect(collapsibleRowsState.filter((row) => row.id !== setToTrue.payload.id)[0].opened).toBe(openValue);
+            });
+
+            it('should return the old state when the action "TOGGLE_COLLAPSE_ROW" does not target the specified tableId', () => {
                 oldState = [
                     {
                         id: 'row2',
