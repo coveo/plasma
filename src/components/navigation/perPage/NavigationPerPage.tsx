@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {callIfDefined} from '../../../utils/FalsyValuesUtils';
 import {NavigationPerPageSelect} from './NavigationPerPageSelect';
 
 export interface INavigationPerPageOwnProps extends React.ClassAttributes<NavigationPerPage> {
@@ -28,11 +30,12 @@ export interface INavigationPerPageProps extends INavigationPerPageOwnProps, INa
 export const PER_PAGE_NUMBERS: number[] = [10, 20, 30];
 export const PER_PAGE_LABEL: string = 'Results per page';
 
-export class NavigationPerPage extends React.Component<INavigationPerPageProps, any> {
+export class NavigationPerPage extends React.Component<INavigationPerPageProps> {
     static defaultProps: Partial<INavigationPerPageProps> = {
-        initialPosition: 1,
+        perPageNumbers: PER_PAGE_NUMBERS,
+        label: PER_PAGE_LABEL,
     };
-    private perPageNumbers: number[];
+    private initialPosition: number;
 
     private handleClick(newPerPage: number) {
         if (this.props.onPerPageClick && this.props.currentPerPage !== newPerPage) {
@@ -41,31 +44,23 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
     }
 
     componentWillMount() {
-        this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
-        if (this.props.onRender) {
-            this.props.onRender(this.perPageNumbers[this.props.initialPosition]);
-        }
+        this.initialPosition = !_.isUndefined(this.props.initialPosition) ? this.props.initialPosition : Math.ceil(this.props.perPageNumbers.length / 2) - 1;
+        callIfDefined(this.props.onRender, this.props.perPageNumbers[this.initialPosition]);
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
+        callIfDefined(this.props.onDestroy);
     }
 
     render() {
-        this.perPageNumbers = this.props.perPageNumbers || PER_PAGE_NUMBERS;
-
-        const currentPerPage: number = this.props.currentPerPage || this.perPageNumbers[this.props.initialPosition];
+        const currentPerPage: number = this.props.currentPerPage || this.props.perPageNumbers[this.initialPosition];
         const topNumber: number = this.props.totalEntries;
-        const label: string = this.props.label || PER_PAGE_LABEL;
 
-        const perPageSelects: JSX.Element[] = _.map(this.perPageNumbers, (num: number, index: number): JSX.Element => {
-            const shouldShowPerPageSelect: boolean =
-                topNumber > (this.perPageNumbers[index - 1] || 0);
+        const perPageSelects: JSX.Element[] = _.map(this.props.perPageNumbers, (num: number, index: number): JSX.Element => {
+            const shouldShowPerPageSelect: boolean = topNumber > (this.props.perPageNumbers[index - 1] || 0);
 
             if (shouldShowPerPageSelect) {
-                const selectId: string = 'perpage-' + (this.props.id || '') + num;
+                const selectId: string = `perpage-${this.props.id || ''}-${num}`;
                 const isSelected: boolean = currentPerPage === num;
                 return (
                     <NavigationPerPageSelect
@@ -80,7 +75,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps, 
 
         return (
             <div className='items-per-page prepended-flat-select'>
-                <div className='flat-select-prepend'>{label}:</div>
+                <div className='flat-select-prepend'>{this.props.label}:</div>
                 <div className='flat-select clearfix'>
                     {perPageSelects}
                 </div>
