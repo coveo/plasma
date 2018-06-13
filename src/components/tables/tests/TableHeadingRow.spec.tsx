@@ -34,7 +34,9 @@ describe('Tables', () => {
             };
 
             tableHeadingRow = mount(
-                <TableHeadingRow {...basicTableHeadingRowProps} />,
+                <TableHeadingRow {...basicTableHeadingRowProps}>
+                    <td><div className='dropdown' /></td>
+                </TableHeadingRow>,
                 {attachTo: document.getElementById('AppTableBody')},
             );
             tableHeadingRowInstance = tableHeadingRow.instance() as TableHeadingRow;
@@ -131,6 +133,16 @@ describe('Tables', () => {
             tableHeadingRow.find('tr').simulate('click');
 
             expect(onClickCallback).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not call onClick prop if set when clicking inside an underlying dropdown', () => {
+            const onClickSpy = jasmine.createSpy('onClick');
+            const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClick: onClickSpy});
+
+            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.find('.dropdown').simulate('click');
+
+            expect(onClickSpy).not.toHaveBeenCalled();
         });
     });
 });

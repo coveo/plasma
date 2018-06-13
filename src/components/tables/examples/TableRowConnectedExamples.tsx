@@ -1,14 +1,19 @@
 import * as React from 'react';
+
+import {UUID} from '../../../utils/UUID';
+import {SingleSelectConnected} from '../../select/SingleSelectConnected';
 import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
 import {TableHeadingRowConnected} from '../TableHeadingRowConnected';
 
 export class TableRowConnectedExamples extends React.Component<any, any> {
 
     render() {
-        const firstRowCols: JSX.Element[] = [
+        const firstRowCols: (id: string) => JSX.Element[] = (id: string) => [
             <td key='anything'>Anything</td>,
             <td key='something'>Something</td>,
-            <td key='everything'>Everything</td>,
+            <td key='everything'>
+                <SingleSelectConnected id={id} />
+            </td>,
         ];
 
         return (
@@ -18,15 +23,15 @@ export class TableRowConnectedExamples extends React.Component<any, any> {
                     <table className='mod-collapsible-rows'>
                         <tbody className='selected'>
                             <TableHeadingRowConnected id='first-row-connected' isCollapsible={true}>
-                                {firstRowCols}
+                                {firstRowCols(UUID.generate())}
                             </TableHeadingRowConnected>
                             <TableCollapsibleRowConnected id='first-row-connected' nbColumns={4}>
                                 <div className='p2'>This is the collapsible row!</div>
                             </TableCollapsibleRowConnected>
                         </tbody>
                         <tbody className='selected'>
-                            <TableHeadingRowConnected id='second-row-connected' isCollapsible={false}>
-                                {firstRowCols}
+                            <TableHeadingRowConnected id='second-row-connected' isCollapsible={false} tableHasCollapsibleRow>
+                                {firstRowCols(UUID.generate())}
                             </TableHeadingRowConnected>
                         </tbody>
                     </table>

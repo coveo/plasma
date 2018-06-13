@@ -34,7 +34,7 @@ import {Provider} from 'react-redux';
 // } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 // import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 // import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
-import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+// import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 // import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
 // import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
 // import {FacetConnectedExamples} from '../src/components/facets/examples/FacetConnectedExamples';
@@ -85,8 +85,8 @@ import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/
 // import {TableEmptyRowExamples} from '../src/components/tables/examples/TableEmptyRowExamples';
 // import {TableExamples} from '../src/components/tables/examples/TableExamples';
 // import {TableHeaderExamples} from '../src/components/tables/examples/TableHeaderExamples';
-// import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
-// import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
+import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
+import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
 // import {TextAreaExamples} from '../src/components/textarea/TextAreaExamples';
 // import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 // import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
@@ -111,8 +111,8 @@ class App extends React.Component<any, any> {
                         <div className='form-control'>
                             <MembersExample />
                         </div>
-                    </div>
-                    <BorderedLineExamples />
+                    </div> */}
+                    {/* <BorderedLineExamples />
                     <AutocompleteExamples />
                     <TextAreaExamples />
                     <SearchBarExamples />
@@ -162,10 +162,10 @@ class App extends React.Component<any, any> {
                     <ActionBarExamples />
                     <ActionBarConnectedExamples />
                     <ItemFilterExamples />
-                    <ItemFilterConnectedExamples />
+                    <ItemFilterConnectedExamples /> */}
                     <TableRowExamples />
                     <TableRowConnectedExamples />
-                    <TableEmptyRowExamples />
+                    {/* <TableEmptyRowExamples />
                     <TableHeaderExamples />
                     <TableExamples />
                     <TableWithDisabledRowsExamples />
@@ -195,8 +195,8 @@ class App extends React.Component<any, any> {
                     <SplitLayoutExamples />
                     <SplitMultilineInputExamples />
                     <JSONEditorExamples />
-                    <CodeEditorExamples />*/}
-                    <DropdownSearchExamples />
+                    <CodeEditorExamples />
+                    <DropdownSearchExamples /> */}
                 </div>
             </Provider>
         );
