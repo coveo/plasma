@@ -111,19 +111,6 @@ describe('<Table />', () => {
             expect(tableAsAny.find(TableChildBlankSlate).length).toBe(1);
         });
 
-        it('should render a blankslate if no loading, empty table and isInitialLoad is false', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
-                ...tablePropsMock,
-                initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
-                tableCompositeState: {
-                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
-                    isLoading: false,
-                },
-            } as any);
-
-            expect(table.find(TableChildBlankSlate).length).toBe(1);
-        });
-
         it('should render with the wrapper fixed-header-table-container if the props withFixedHeader is true', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
                 ...tablePropsMock,
