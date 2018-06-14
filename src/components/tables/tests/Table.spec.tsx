@@ -9,7 +9,6 @@ import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 import {TableChildBody} from '../table-children/TableChildBody';
 import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
-import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
 
 describe('<Table />', () => {
@@ -124,14 +123,14 @@ describe('<Table />', () => {
             expect(onUnmountSpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should set isInitialLoad to false after tableCompositeState.data is defined with componentDidUpdate', () => {
-            const tableCompositeState = {...tablePropsMock.tableCompositeState, data: undefined as ITableData};
+        it('should set isInitialLoad to false after tableCompositeState.data changes from DEFAULT_TABLE_DATA to new table data', () => {
+            const tableCompositeState = {...tablePropsMock.tableCompositeState, data: DEFAULT_TABLE_DATA};
             const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
 
-            expect(tableAsAny.props.tableCompositeState.data).toBeUndefined();
+            expect(tableAsAny.props.tableCompositeState.data).toEqual(DEFAULT_TABLE_DATA);
             expect(tableAsAny.isInitialLoad).toBe(true);
 
-            tableAsAny.props.tableCompositeState.data = DEFAULT_TABLE_DATA;
+            tableAsAny.props.tableCompositeState.data = {...DEFAULT_TABLE_DATA, allIds: ['trigger-change-in-default-table-data']};
             tableAsAny.componentDidUpdate();
 
             expect(tableAsAny.isInitialLoad).toBe(false);

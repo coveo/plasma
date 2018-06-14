@@ -141,7 +141,7 @@ export class Table extends React.Component<ITableProps> {
     }
 
     componentDidUpdate() {
-        if (this.isInitialLoad && !_.isUndefined(this.props.tableCompositeState.data)) {
+        if (this.isInitialLoad && JSON.stringify(this.props.tableCompositeState.data) !== JSON.stringify(DEFAULT_TABLE_DATA)) {
             this.isInitialLoad = false;
         }
     }
