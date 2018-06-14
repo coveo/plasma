@@ -96,7 +96,7 @@ describe('<Table />', () => {
             expect(table.find(TableChildBlankSlate).length).toBe(1);
         });
 
-        it('should render a blankslate if no loading, empty table, isInError is true, and isInitialLoad is true', () => {
+        it('should render a blankslate if no loading, empty table, isInError is true, and isInitialLoad is true (related issue: https://github.com/coveo/react-vapor/issues/621)', () => {
             const tableAsAny: any = mountComponentWithProps({
                 ...tablePropsMock,
                 initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
@@ -111,7 +111,7 @@ describe('<Table />', () => {
             expect(tableAsAny.find(TableChildBlankSlate).length).toBe(1);
         });
 
-                it('should render a blankslate if no loading, empty table and isInitialLoad is false', () => {
+        it('should render a blankslate if no loading, empty table and isInitialLoad is false', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
                 ...tablePropsMock,
                 initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
