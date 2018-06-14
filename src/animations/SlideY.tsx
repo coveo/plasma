@@ -15,7 +15,7 @@ export class SlideY extends React.Component<TransitionProps, {}> {
     }
 
     componentWillUpdate() {
-        this.el.style.height = this.el.getBoundingClientRect().height + 'px';
+        this.el.style.height = this.getCurrentHeight();
     }
 
     componentDidUpdate() {
@@ -42,20 +42,20 @@ export class SlideY extends React.Component<TransitionProps, {}> {
     }
 
     private onEntering() {
-        const prevHeight = `${this.el.getBoundingClientRect().height}px`;
+        const prevHeight = this.getCurrentHeight();
 
         this.el.classList.remove('slide-y-closed');
         this.el.style.height = 'auto';
-        const endHeight = getComputedStyle(this.el).height;
+
+        const endHeight = this.getCurrentHeight();
 
         if (parseFloat(endHeight).toFixed(2) !== parseFloat(prevHeight).toFixed(2)) {
             this.transitionHeight(prevHeight, endHeight);
         }
-
     }
 
     private onExiting() {
-        this.transitionHeight(getComputedStyle(this.el).height, '0px');
+        this.transitionHeight(this.getCurrentHeight(), '0px');
     }
 
     private handleTransitionEnd() {
@@ -75,4 +75,6 @@ export class SlideY extends React.Component<TransitionProps, {}> {
         this.el.style.transitionProperty = 'height';
         this.el.style.height = to;
     }
+
+    private getCurrentHeight = (): string => `${this.el.getBoundingClientRect().height}px`;
 }
