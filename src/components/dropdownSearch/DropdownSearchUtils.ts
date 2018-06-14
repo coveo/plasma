@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+import {keyCode} from '../../utils/InputUtils';
 import {IDropdownOption} from './DropdownSearch';
 import {IDropdownSearchState} from './DropdownSearchReducers';
 
@@ -13,3 +14,9 @@ export const getDropdownSearchSelectedOption = (id: string, dropdownSearchState:
         ? _.findWhere(dropdown.options, {selected: true})
         : undefined;
 };
+
+/**
+ * Utility function identifying when a user is selecting an option with keyboard events (not mouse events).
+ */
+export const isSelectingOption = (keyPressed: number, activeOption: IDropdownOption): boolean =>
+    _.contains([keyCode.enter, keyCode.tab], keyPressed) && activeOption && !activeOption.disabled;
