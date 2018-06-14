@@ -175,8 +175,7 @@ export class Table extends React.Component<ITableProps> {
             this.props.tableClasses,
         );
 
-        const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
-        const tableBodyNode: React.ReactNode = tableData.displayedIds.length || this.props.tableCompositeState.isLoading || this.isInitialLoad
+        const tableBodyNode: React.ReactNode = this.shouldShowTableBody()
             ? this.getTableBody()
             : <TableChildBlankSlate {...this.props} />;
 
@@ -263,5 +262,12 @@ export class Table extends React.Component<ITableProps> {
                     {tableBodyNode}
                 </tbody>
             );
+    }
+
+    private shouldShowTableBody(): boolean {
+        const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
+
+        return !this.props.tableCompositeState.isInError
+            && !!(tableData.displayedIds.length || this.props.tableCompositeState.isLoading || this.isInitialLoad);
     }
 }
