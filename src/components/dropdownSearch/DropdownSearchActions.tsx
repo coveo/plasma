@@ -1,5 +1,6 @@
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {IDropdownOption} from './DropdownSearch';
+import {isSelectingOption} from './DropdownSearchUtils';
 
 export interface IDefaultDropdownSearchPayload {
     id: string;
@@ -19,6 +20,7 @@ export interface IOptionsDropdownSearchPayload extends IDefaultDropdownSearchPay
     addedSelectedOption?: IDropdownOption;
     isOpened?: boolean;
     supportSingleCustomOption?: boolean;
+    setFocusOnDropdown?: boolean;
     selectAValue?: boolean;
 }
 
@@ -106,11 +108,12 @@ export const removeDropdownSearch = (id: string): IReduxAction<IDefaultDropdownS
     },
 });
 
-export const selectOptionDropdownSearch = (id: string, addedSelectedOption: IDropdownOption): IReduxAction<IOptionsDropdownSearchPayload> => ({
+export const selectOptionDropdownSearch = (id: string, addedSelectedOption: IDropdownOption, setFocusOnDropdown = false): IReduxAction<IOptionsDropdownSearchPayload> => ({
     type: DropdownSearchActions.select,
     payload: {
         id,
         addedSelectedOption,
+        setFocusOnDropdown,
     },
 });
 
@@ -161,3 +164,8 @@ export const keyDownMultiselectDropdownSearch = (id: string, keyCode: number): I
         keyCode,
     },
 });
+
+export const selectOrSetNextActiveOption = (id: string, keyCode: number, activeOption?: IDropdownOption) =>
+    isSelectingOption(keyCode, activeOption)
+        ? selectOptionDropdownSearch(id, activeOption, true)
+        : updateActiveOptionDropdownSearch(id, keyCode, activeOption);

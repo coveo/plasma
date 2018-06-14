@@ -251,7 +251,7 @@ describe('DropdownSearch', () => {
 
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
 
-                dropdownSearch.props().onKeyDownDropdownButton(keyCode.enter);
+                dropdownSearch.props().onKeyDownDropdownButton(keyCode.enter, {value: 'anywoulddo', selected: false});
 
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
             });
@@ -263,7 +263,7 @@ describe('DropdownSearch', () => {
 
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
 
-                dropdownSearch.props().onKeyDownDropdownButton(keyCode.tab);
+                dropdownSearch.props().onKeyDownDropdownButton(keyCode.tab, {value: 'anywoulddo', selected: false});
 
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
             });
@@ -275,7 +275,7 @@ describe('DropdownSearch', () => {
 
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
 
-                dropdownSearch.props().onKeyDownFilterBox(keyCode.tab);
+                dropdownSearch.props().onKeyDownFilterBox(keyCode.tab, {value: 'anywoulddo', selected: false});
 
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
             });
