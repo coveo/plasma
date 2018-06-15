@@ -23,26 +23,26 @@ if (isDocs) {
                 WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
             }),
         ],
-    }
+    };
 } else {
-   contextDependentConfig = {
-    entry: './Index.ts',
-    mode: 'production',
-    optimization: {minimize: false},
-    output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'react-vapor.js',
-        library: ['ReactVapor'],
-        libraryTarget: 'umd',
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
-            'process.env.NODE_ENV': JSON.stringify('production'),
-        }),
-        // new BundleAnalyzerPlugin(), // Uncomment to analyze the bundle
-    ],
-   } 
+    contextDependentConfig = {
+        entry: './Index.ts',
+        mode: 'production',
+        optimization: {minimize: false},
+        output: {
+            path: path.join(__dirname, '/dist'),
+            filename: 'react-vapor.js',
+            library: ['ReactVapor'],
+            libraryTarget: 'umd',
+        },
+        plugins: [
+            new webpack.DefinePlugin({
+                WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
+                'process.env.NODE_ENV': JSON.stringify('production'),
+            }),
+            // new BundleAnalyzerPlugin(), // Uncomment to analyze the bundle
+        ],
+    };
 }
 
 /**
@@ -132,7 +132,8 @@ const config = {
         'react-dom': 'ReactDOM',
         'react-bootstrap': 'ReactBootstrap',
         'react-redux': 'ReactRedux',
-        'rc-slider': 'Slider',
+        Slider: {root: ['rc-slider', 'Slider']},
+        createSliderWithTooltip: {root: ['rc-slider', 'createSliderWithTooltip']},
         'coveo-styleguide': 'VaporSVG',
         redux: 'Redux',
         underscore: '_',
