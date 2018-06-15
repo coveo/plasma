@@ -20,11 +20,11 @@
     "url": "git+https://github.com/coveo/react-vapor.git"
   },
   "scripts": {
-    "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --devtool eval --inline --hot --progress --colors",
-    "docs": "webpack --config webpack.config.js",
+    "start": "npm run docs && DOCS=true webpack-dev-server --mode development --config webpack.config.js --devtool eval --inline --hot --progress --colors",
+    "docs": "DOCS=true webpack --config webpack.config.js",
     "lintfix": "node node_modules/tsjs --all --exclude coverage/**/*.js docs/**/*.js **/*css.d.ts",
-    "compileTs": "webpack --config webpack.config.prod.js",
-    "minify": "webpack --config webpack.config.prod.minify.js",
+    "compileTs": "webpack --config webpack.config.js",
+    "minify": "webpack --config webpack.config.prod.js",
     "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
     "pretest": "gulp clean:tests",
     "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
@@ -147,6 +147,7 @@
     "underscore": "1.9.1",
     "underscore.string": "3.3.4",
     "webpack": "4.11.1",
+    "webpack-bundle-analyzer": "2.13.1",
     "webpack-cli": "3.0.2",
     "webpack-dev-server": "3.1.4"
   },
