@@ -17,11 +17,34 @@ npm install react-vapor
 > The project is at its early stages, some components can still have _lots_ of breaking changes between versions.
 
 ### Dependencies
-Those are required in order to use react-vapor in your own project:
-- [Tether](http://tether.io/)  (tested with 1.3.7)
-- [React](https://facebook.github.io/react/) (tested with 15.3.1)
-- [React DOM](https://facebook.github.io/react/) (tested with 15.3.1)
-- [Underscore](http://underscorejs.org/)  (tested with 1.8.3)
+React-Vapor is bundled with the popular bundler tool [Webpack](https://webpack.js.org/). However, we specify many dependencies as [externals](https://webpack.js.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx) to maintain the library at a reasonable size, and to allow developers to cherry pick missing dependencies according to their own projects. The following packages are the external dependencies utilized by React-Vapor:      
+
+- [codemirror](https://www.npmjs.com/package/codemirror)  
+- [jquery](https://www.npmjs.com/package/jquery)  
+- [react](https://www.npmjs.com/package/react)  
+- [react-dom](https://www.npmjs.com/package/react-dom)  
+- [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)  
+- [react-redux](https://www.npmjs.com/package/react-redux)  
+- [rc-slider](https://www.npmjs.com/package/rc-slider)  
+- [coveo-styleguide](https://www.npmjs.com/package/coveo-styleguide)  
+- [redux](https://www.npmjs.com/package/redux)  
+- [underscore](https://www.npmjs.com/package/underscore)  
+- [moment](https://www.npmjs.com/package/moment)     
+
+When you install the library, these dependencies are available under a single file at:    
+
+```  
+dist/react-vapor.dependencies.js  
+```  
+
+so you can import them all at once in your project. If you prefer to cherry pick specific dependencies, those are also available seperately under the following folder:   
+ 
+```  
+dist/dependencies/  
+```  
+ 
+   
+
 
 ### Building
 Make sure you have Node JS and NPM installed.
