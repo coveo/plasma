@@ -17,7 +17,7 @@ import {IPaginationState} from '../navigation/pagination/NavigationPaginationRed
 import {IPerPageState} from '../navigation/perPage/NavigationPerPageReducers';
 import {IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table} from './Table';
 import {addTable, removeTable} from './TableActions';
-import {TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent} from './TableConstants';
+import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent} from './TableConstants';
 import {defaultTableStateModifierThunk} from './TableDataModifier';
 import {ITableHeaderCellState} from './TableHeaderCellReducers';
 import {ITableById, ITableCompositeState, ITableData, ITableState} from './TableReducers';
@@ -104,7 +104,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
         dispatch(
             addTable(
                 ownProps.id,
-                ownProps.initialTableData,
+                ownProps.initialTableData || DEFAULT_TABLE_DATA,
                 ownProps.predicates,
             ),
         );
