@@ -14,10 +14,9 @@ Vapor CSS components implemented with React!
 ```sh
 npm install react-vapor
 ```
-> The project is at its early stages, some components can still have _lots_ of breaking changes between versions.
 
 ### Dependencies
-React-Vapor is bundled with the popular bundler tool [Webpack](https://webpack.js.org/). However, we specify many dependencies as [externals](https://webpack.js.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx) to maintain the library at a reasonable size, and to allow developers to cherry pick missing dependencies according to their own projects. The following packages are the external dependencies utilized by React-Vapor:      
+React-Vapor is bundled with the popular bundler tool [Webpack](https://webpack.js.org/). However, we specify many dependencies as [externals](https://webpack.js.org/configuration/externals/#src/components/Sidebar/Sidebar.jsx) to maintain the library at a reasonable size, and to allow developers to cherry pick missing dependencies according to their own projects. The following packages are the external dependencies used by React-Vapor:      
 
 - [codemirror](https://www.npmjs.com/package/codemirror)  
 - [jquery](https://www.npmjs.com/package/jquery)  
