@@ -85,20 +85,25 @@ export class Facet extends React.Component<IFacetProps, any> {
     }
 
     render() {
+        if (!this.props.facetRows.length && !this.props.selectedFacetRows.length) {
+            return null;
+        }
         const removeSelectedClass: string = 'facet-header-eraser' + (this.props.selectedFacetRows.length ? '' : ' hidden');
         const selected: IFacet[] = this.sortFacetRows(this.props.selectedFacetRows);
         const unselected: IFacet[] = this.sortFacetRows(this.props.facetRows);
         const allRows: IFacet[] = _.union(selected, unselected);
         const facetRows: IFacet[] = _.uniq(allRows, false, (item) => item.name);
         const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
-            return (<FacetRow
-                key={facetRow.name}
-                facet={this.props.facet.name}
-                facetRow={facetRow}
-                onToggleFacet={this.buildFacet}
-                isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
-                maxTooltipLabelLength={this.props.maxTooltipLabelLength}
-            />);
+            return (
+                <FacetRow
+                    key={facetRow.name}
+                    facet={this.props.facet.name}
+                    facetRow={facetRow}
+                    onToggleFacet={this.buildFacet}
+                    isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
+                    maxTooltipLabelLength={this.props.maxTooltipLabelLength}
+                />
+            );
         });
         const rowsToShow: number = Math.max(this.props.selectedFacetRows.length, this.props.maxRowsToShow);
         // If there is only 1 extra row, show it instead of the moreRowsToggle
