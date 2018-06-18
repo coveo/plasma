@@ -224,7 +224,6 @@ describe('Facets', () => {
             expect(facetComponent.find(expectedClass).length).toBe(1);
         });
 
-
         const callBuildCategoryFacet = () => {
             facetInstance['buildFacet'].call(facetInstance, {name: '1', formattedName: '1'});
         };
