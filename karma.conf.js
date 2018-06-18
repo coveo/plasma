@@ -1,4 +1,5 @@
 const webpackConfig = require('./webpack.config.test.js');
+const mainReporter = !!process.env.TRAVIS ? 'progress' : 'mocha';
 
 module.exports = (config) => {
     config.set({
@@ -20,7 +21,7 @@ module.exports = (config) => {
             noInfo: true,
         },
 
-        reporters: ['mocha', 'coverage'],
+        reporters: [mainReporter, 'coverage'],
 
         mochaReporter: {
             ignoreSkipped: true,
