@@ -56,7 +56,7 @@ describe('Facets', () => {
             expect(facetComponent.html()).toBeNull();
         });
 
-        it('should render som ehtml when there are rows to display', () => {
+        it('should render some html when there are rows to display', () => {
             facetComponent.setProps({...facetBasicAttributes, facetRows: [{name: 'a', formattedName: 'b'}]});
             expect(facetComponent.html()).not.toBeNull();
         });
