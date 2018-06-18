@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.config.test.js');
-const mainReporter = !!process.env.TRAVIS ? 'progress' : 'mocha';
+const mainReporter = !!process.env.TRAVIS ? 'dots' : 'mocha';
 
 module.exports = (config) => {
     config.set({
