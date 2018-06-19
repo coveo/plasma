@@ -213,6 +213,10 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
                 displayValue: `Custom option return by filtering`,
                 value: `Custom option`,
             },
+            {
+                displayValue: `Custom option ${filterText}`,
+                value: `Custom option2`,
+            },
         ]);
     }
 }
