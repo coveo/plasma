@@ -407,10 +407,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
 
     private isSearchOn(): boolean {
-        if (this.props.infiniteScroll) {
-            return true;
-        }
-        return this.props.options.length > this.props.searchThresold;
+        return !!this.props.infiniteScroll || this.props.options.length > this.props.searchThresold;
     }
 
     private updateScrollPositionBasedOnActiveElement() {
