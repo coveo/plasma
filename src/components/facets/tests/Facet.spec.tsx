@@ -41,9 +41,7 @@ describe('Facets', () => {
                 maxRowsToShow,
             };
             facetComponent = mount(
-                <Facet
-                    {...facetBasicAttributes}
-                />,
+                <Facet {...facetBasicAttributes} />,
                 {attachTo: document.getElementById('App')},
             );
             facetInstance = facetComponent.instance() as Facet;
@@ -52,6 +50,15 @@ describe('Facets', () => {
         afterEach(() => {
             facetComponent.unmount();
             facetComponent.detach();
+        });
+
+        it('should not render anything when there are no rows to display', () => {
+            expect(facetComponent.html()).toBeNull();
+        });
+
+        it('should render some html when there are rows to display', () => {
+            facetComponent.setProps({...facetBasicAttributes, facetRows: [{name: 'a', formattedName: 'b'}]});
+            expect(facetComponent.html()).not.toBeNull();
         });
 
         it('should call prop onRender on mounting if set', () => {
@@ -208,7 +215,7 @@ describe('Facets', () => {
 
         it('should have class "facet-open" if it has isOpened prop set to true', () => {
             const expectedClass = '.facet-opened';
-            const newFacetAttributes = _.extend({}, facetBasicAttributes, {isOpened: true});
+            const newFacetAttributes = _.extend({}, facetBasicAttributes, {isOpened: true, facetRows: [{name: 'a', formattedName: 'b'}]});
 
             expect(facetComponent.find(expectedClass).length).toBe(0);
 
