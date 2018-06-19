@@ -1,6 +1,5 @@
 import 'codemirror/lib/codemirror.css';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
-import './style.scss';
 
 import * as React from 'react';
 import {render as ReactDOMRender, unmountComponentAtNode} from 'react-dom';

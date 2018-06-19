@@ -126,6 +126,7 @@ gulp.task('dependencies:docs', () => {
         'node_modules/underscore/underscore.js',
         'node_modules/moment/min/moment-with-locales.js',
         'node_modules/coveo-styleguide/dist/js/VaporSVG.js',
+        'node_modules/reselect/dist/reselect.js',
     ])
         .pipe(concat('react-vapor.dependencies.js'))
         .pipe(gulp.dest('./docs/dependencies/'));
@@ -144,6 +145,7 @@ gulp.task('dependencies:prod', () => {
         'node_modules/underscore/underscore-min.js',
         'node_modules/moment/min/moment-with-locales.min.js',
         'node_modules/coveo-styleguide/dist/js/VaporSVG.js',
+        'node_modules/reselect/dist/reselect.js',
     ])
         .pipe(gulp.dest('./dist/dependencies/'))
         .pipe(concat('react-vapor.dependencies.js'))
