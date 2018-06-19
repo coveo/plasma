@@ -138,7 +138,7 @@ const config = {
         redux: 'Redux',
         underscore: '_',
         moment: 'moment',
-        reselect: 'reselect',
+        reselect: 'Reselect',
     },
 };
 
