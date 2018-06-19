@@ -50,7 +50,8 @@
     "underscore": "^1.8.3",
     "coveo-style-guide": "^2.19.0",
     "moment": "^2.22.2",
-    "rc-slider": "^8.2.3"
+    "rc-slider": "^8.2.3",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "react-bootstrap": "0.31.3",
