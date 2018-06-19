@@ -329,7 +329,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         if (this.isKeyToPreventOnKeyDown(e)) {
             e.preventDefault();
 
-            if (this.props.onOptionClickCallBack && this.props.activeOption) {
+            if (e.keyCode !== keyCode.upArrow && this.props.onOptionClickCallBack && this.props.activeOption) {
                 this.props.onOptionClickCallBack(this.props.activeOption);
             }
         }
@@ -407,7 +407,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
 
     private isSearchOn(): boolean {
-        return this.props.options.length > this.props.searchThresold;
+        return !!this.props.infiniteScroll || this.props.options.length > this.props.searchThresold;
     }
 
     private updateScrollPositionBasedOnActiveElement() {

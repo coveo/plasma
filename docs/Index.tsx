@@ -3,7 +3,7 @@ import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import './style.scss';
 
 import * as React from 'react';
-import {render as ReactDOMRender, unmountComponentAtNode} from 'react-dom';
+import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
@@ -72,6 +72,7 @@ import {MultiSelectExamples} from '../src/components/select/examples/MultiSelect
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
 import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
+import {SimpleDropdownSearchExamples} from '../src/components/simpleDropdownSearch/examples/SimpleDropdownSearchExamples';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
 import {SplitLayoutExamples} from '../src/components/splitlayout/examples/SplitLayoutExamples';
 import {StepProgressBarExamples} from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
@@ -94,39 +95,28 @@ import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
 import {MembersExample} from './members-example/MembersExample';
-
 import {ReactVaporStore} from './ReactVaporStore';
 
-class ExampleWrapper extends React.Component<{component: any, componentName: string}, any> {
+interface ExampleWrapperState {
+    shown: boolean;
+}
+class ExampleWrapper extends React.Component<{component: any, componentName: string}, ExampleWrapperState> {
+    state: ExampleWrapperState = {shown: false};
+
     render() {
         return (
             <div className='px2 py2 mod-border-bottom'>
-                <h2 className='link' onClick={() => this.toggleComponent()}>{this.props.componentName}</h2>
+                <h2 className='link' onClick={() => this.setState({shown: !this.state.shown})}>{this.props.componentName}</h2>
                 <div id={this.props.componentName} className='mb1 mt1'>
+                    {this.state.shown && <this.props.component />}
                 </div>
             </div>
         );
-    }
-
-    private toggleComponent() {
-        if (!document.getElementById(this.props.componentName).childNodes.length) {
-            ReactDOMRender(
-                <Provider store={ReactVaporStore}>
-                    <this.props.component />
-                </Provider>,
-                document.getElementById(this.props.componentName),
-            );
-        } else {
-            unmountComponentAtNode(
-                document.getElementById(this.props.componentName),
-            );
-        }
     }
 }
 
 class App extends React.Component<any, any> {
     render() {
-        (window as any).store = ReactVaporStore;
         return (
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form'>
@@ -217,6 +207,7 @@ class App extends React.Component<any, any> {
                         {component: JSONEditorExamples, componentName: 'JSONEditorExamples'},
                         {component: CodeEditorExamples, componentName: 'CodeEditorExamples'},
                         {component: DropdownSearchExamples, componentName: 'DropdownSearchExamples'},
+                        {component: SimpleDropdownSearchExamples, componentName: 'SimpleDropdownSearchExamples'},
                     ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
                 </div>
             </Provider>
