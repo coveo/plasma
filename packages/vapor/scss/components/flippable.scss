@@ -48,4 +48,6 @@
   background-color: $pure-white;
 
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
 }
