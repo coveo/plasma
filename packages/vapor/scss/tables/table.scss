@@ -46,8 +46,12 @@ table:not(.datepicker-table) {
     border-top: $table-border;
     border-bottom: $table-border;
 
+    position: sticky;
+    top: 0;
+    background-color: $pure-white;
+    z-index: 2;
+
     &.admin-sort {
-      position: relative;
 
       cursor: pointer;
 
@@ -211,4 +215,8 @@ table:not(.datepicker-table) {
   color: rgba($dark-grey, 0.5);
   font-size: 11px;
   text-align: right;
+}
+
+.coveo-table-actions-container + table:not(.datepicker-table) th {
+  top: $table-actions-container-height;
 }
