@@ -31,7 +31,7 @@ export interface ITableData {
      * Only used by DEFAULT_TABLE_DATA object in TableConstants.tsx.
      * Useful for differientiating it from empty table data during the table initial load logic
      */
-    DEFAULT_TABLE_DATA?: boolean;
+    IS_DEFAULT_TABLE_DATA?: boolean;
 }
 
 export interface ITablesState {

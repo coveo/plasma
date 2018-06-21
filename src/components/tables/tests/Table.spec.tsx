@@ -159,7 +159,7 @@ describe('<Table />', () => {
             expect(tableAsAny.props.tableCompositeState.data).toEqual(DEFAULT_TABLE_DATA);
             expect(tableAsAny.isInitialLoad).toBe(true);
 
-            tableAsAny.props.tableCompositeState.data = _.omit(DEFAULT_TABLE_DATA, 'DEFAULT_TABLE_DATA');
+            tableAsAny.props.tableCompositeState.data = _.omit(DEFAULT_TABLE_DATA, 'IS_DEFAULT_TABLE_DATA');
             tableAsAny.componentDidUpdate();
 
             expect(tableAsAny.isInitialLoad).toBe(false);
