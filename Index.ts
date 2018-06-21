@@ -1,4 +1,4 @@
-const req = require.context('./src/', true, /^((?!\.spec|examples|Test|\.d).)*\.tsx?$/i);
+const req = require.context('./src/', true, /^((?!\.spec|examples|Tests?|\.d).)*\.tsx?$/i);
 req.keys().forEach((key) => {
     const importedModule = req(key);
     _.extend(module.exports, importedModule);
