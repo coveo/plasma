@@ -27,6 +27,11 @@ export interface ITableData {
     totalEntries: number;
     totalPages: number;
     selectedIds?: string[];
+    /**
+     * Only used by DEFAULT_TABLE_DATA object in TableConstants.tsx.
+     * Useful for differientiating it from empty table data during the table initial load logic
+     */
+    IS_DEFAULT_TABLE_DATA?: boolean;
 }
 
 export interface ITablesState {

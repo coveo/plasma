@@ -1,6 +1,7 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider, Store} from 'react-redux';
+import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -146,6 +147,19 @@ describe('<Table />', () => {
             expect(tableAsAny.isInitialLoad).toBe(true);
 
             tableAsAny.props.tableCompositeState.data = {...DEFAULT_TABLE_DATA, allIds: ['trigger-change-in-default-table-data']};
+            tableAsAny.componentDidUpdate();
+
+            expect(tableAsAny.isInitialLoad).toBe(false);
+        });
+
+        it('should set isInitialLoad to false after tableCompositeState.data changes from DEFAULT_TABLE_DATA to new table data, even if new data is empty', () => {
+            const tableCompositeState = {...tablePropsMock.tableCompositeState, data: DEFAULT_TABLE_DATA};
+            const tableAsAny = new Table({...tablePropsMock, tableCompositeState}) as any;
+
+            expect(tableAsAny.props.tableCompositeState.data).toEqual(DEFAULT_TABLE_DATA);
+            expect(tableAsAny.isInitialLoad).toBe(true);
+
+            tableAsAny.props.tableCompositeState.data = _.omit(DEFAULT_TABLE_DATA, 'IS_DEFAULT_TABLE_DATA');
             tableAsAny.componentDidUpdate();
 
             expect(tableAsAny.isInitialLoad).toBe(false);
