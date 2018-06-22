@@ -24,11 +24,11 @@ React-Vapor is bundled with the popular bundler tool [Webpack](https://webpack.j
 - [react-dom](https://www.npmjs.com/package/react-dom)  
 - [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)  
 - [react-redux](https://www.npmjs.com/package/react-redux)  
-- [rc-slider](https://www.npmjs.com/package/rc-slider)  
 - [coveo-styleguide](https://www.npmjs.com/package/coveo-styleguide)  
 - [redux](https://www.npmjs.com/package/redux)  
 - [underscore](https://www.npmjs.com/package/underscore)  
 - [moment](https://www.npmjs.com/package/moment)     
+- [chosen-js](https://www.npmjs.com/package/chosen-js)
 
 When you install the library, these dependencies are available under a single file at:    
 
