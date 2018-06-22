@@ -42,8 +42,21 @@ so you can import them all at once in your project. If you prefer to cherry pick
 dist/dependencies/  
 ```  
  
-   
-
+If you use webpack, you also have access to the externals file that you can deconstruct in your webpack config:  
+  
+```javascript  
+// webpack.config.js  
+  
+const reactVaporExternals = require('node_modules/react-vapor/dist/react-vapor.webpack.externals');  
+  
+const webpackConfig = {
+    // your webpack config... 
+    externals: {
+        ...reactVaporExternals,
+        // your other externas...
+    }
+};
+```
 
 ### Building
 Make sure you have Node JS and NPM installed.
