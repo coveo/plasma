@@ -42,7 +42,7 @@ so you can import them all at once in your project. If you prefer to cherry pick
 dist/dependencies/  
 ```  
  
-If you use webpack, you also have access to the externals file that you can deconstruct in your webpack config:  
+If you use webpack, you also have access to the react-vapor externals, which you can deconstruct in your webpack configuration:  
   
 ```javascript  
 // webpack.config.js  
