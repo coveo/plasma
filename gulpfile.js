@@ -122,11 +122,11 @@ gulp.task('dependencies:docs', () => {
         'node_modules/react-dom/dist/react-dom.js',
         'node_modules/react-redux/dist/react-redux.js',
         'node_modules/react-bootstrap/dist/react-bootstrap.js',
-        'node_modules/rc-slider/dist/rc-slider.js',
         'node_modules/underscore/underscore.js',
         'node_modules/moment/min/moment-with-locales.js',
         'node_modules/coveo-styleguide/dist/js/VaporSVG.js',
         'node_modules/reselect/dist/reselect.js',
+        'node_modules/chosen-js/chosen.jquery.min.js',
     ])
         .pipe(concat('react-vapor.dependencies.js'))
         .pipe(gulp.dest('./docs/dependencies/'));
@@ -141,18 +141,26 @@ gulp.task('dependencies:prod', () => {
         'node_modules/react-dom/dist/react-dom.min.js',
         'node_modules/react-redux/dist/react-redux.min.js',
         'node_modules/react-bootstrap/dist/react-bootstrap.min.js',
-        'node_modules/rc-slider/dist/rc-slider.min.js',
         'node_modules/underscore/underscore-min.js',
         'node_modules/moment/min/moment-with-locales.min.js',
         'node_modules/coveo-styleguide/dist/js/VaporSVG.js',
         'node_modules/reselect/dist/reselect.js',
+        'node_modules/chosen-js/chosen.jquery.min.js',
     ])
         .pipe(gulp.dest('./dist/dependencies/'))
         .pipe(concat('react-vapor.dependencies.js'))
         .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('dependencies', ['dependencies:prod', 'dependencies:docs']);
+gulp.task('dependencies:externals', () => {
+    return gulp.src([
+        'webpack.externals.js',
+    ])
+        .pipe(rename('react-vapor.webpack.externals.js'))
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('dependencies', ['dependencies:prod', 'dependencies:docs', 'dependencies:externals']);
 
 gulp.task('default', 'Clean, and compile the project', (done) => {
     runSequence('clean:dist', 'ts:definitions', done);

@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const isTravis = process.env.TRAVIS;
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const externals = require('./webpack.externals');
 
 const isDocs = !!process.env.DOCS;
 let contextDependentConfig;
@@ -45,11 +46,9 @@ if (isDocs) {
     };
 }
 
-/**
- * Config file for the packaged library
- */
 const config = {
     ...contextDependentConfig,
+    externals,
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
     },
@@ -79,11 +78,16 @@ const config = {
             {
                 test: /\.css$/,
                 exclude: path.join(__dirname, 'src/components'),
-                use: [{
+                use: [
+                    {
                     loader: 'style-loader',
                 }, {
                     loader: 'css-loader',
-                }],
+                },
+                {
+                    loader: 'postcss-loader',
+                },
+            ],
             },
             {
                 test: /\.scss$/,
@@ -124,21 +128,6 @@ const config = {
                 loader: 'file-loader',
             },
         ],
-    },
-    externals: {
-        codemirror: 'CodeMirror',
-        jquery: '$',
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'react-bootstrap': 'ReactBootstrap',
-        'react-redux': 'ReactRedux',
-        Slider: {root: ['rc-slider', 'Slider']},
-        createSliderWithTooltip: {root: ['rc-slider', 'createSliderWithTooltip']},
-        'coveo-styleguide': 'VaporSVG',
-        redux: 'Redux',
-        underscore: '_',
-        moment: 'moment',
-        reselect: 'Reselect',
     },
 };
 

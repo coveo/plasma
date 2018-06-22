@@ -1,12 +1,5 @@
-import 'codemirror/addon/dialog/dialog';
 import 'codemirror/addon/dialog/dialog.css';
-import 'codemirror/addon/hint/anyword-hint';
-import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/show-hint.css';
-import 'codemirror/addon/search/jump-to-line';
-import 'codemirror/addon/search/matchesonscrollbar';
-import 'codemirror/addon/search/search';
-import 'codemirror/mode/python/python';
 
 import * as CodeMirror from 'codemirror';
 import * as React from 'react';
