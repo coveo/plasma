@@ -46,7 +46,6 @@ If you use webpack, you also have access to the react-vapor externals, which you
   
 ```javascript  
 // webpack.config.js  
-  
 const reactVaporExternals = require('node_modules/react-vapor/dist/react-vapor.webpack.externals');  
   
 const webpackConfig = {
