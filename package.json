@@ -90,7 +90,7 @@
     "dts-generator": "2.1.0",
     "enzyme": "2.9.1",
     "escape-string-regexp": "1.0.5",
-    "eslint": "4.19.1",
+    "eslint": "5.0.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "2.12.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
