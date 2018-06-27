@@ -72,7 +72,6 @@ import {MultiSelectExamples} from '../src/components/select/examples/MultiSelect
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
 import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
-import {SimpleDropdownSearchExamples} from '../src/components/simpleDropdownSearch/examples/SimpleDropdownSearchExamples';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
 import {SplitLayoutExamples} from '../src/components/splitlayout/examples/SplitLayoutExamples';
 import {StepProgressBarExamples} from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
@@ -207,7 +206,6 @@ class App extends React.Component<any, any> {
                         {component: JSONEditorExamples, componentName: 'JSONEditorExamples'},
                         {component: CodeEditorExamples, componentName: 'CodeEditorExamples'},
                         {component: DropdownSearchExamples, componentName: 'DropdownSearchExamples'},
-                        {component: SimpleDropdownSearchExamples, componentName: 'SimpleDropdownSearchExamples'},
                     ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
                 </div>
             </Provider>

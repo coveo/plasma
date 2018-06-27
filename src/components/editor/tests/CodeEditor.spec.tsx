@@ -114,5 +114,9 @@ describe('CodeEditor', () => {
             expect(newList).not.toEqual(currentKeywords);
             expect(newList).toEqual(currentKeywords.concat(expectedNewKeywords));
         });
+
+        it('should have a border by default', () => {
+            expect(CodeEditor.defaultProps).toContain('mod-border');
+        });
     });
 });
