@@ -116,7 +116,6 @@ describe('CodeEditor', () => {
         });
 
         it('should have a border by default', () => {
-            expect(CodeEditor.defaultProps.className).toBe('mod-border');
             expect(codeEditor.find(ReactCodeMirror.UnControlled).props().className).toBe('mod-border');
         });
     });
