@@ -23,9 +23,14 @@ export interface ICodeEditorProps {
     errorMessage?: string;
     mode: any; // string or object ex.: {name: "javascript", json: true}
     extraKeywords?: string[];
+    className?: string;
 }
 
 export class CodeEditor extends React.Component<ICodeEditorProps> {
+    static defaultProps: Partial<ICodeEditorProps> = {
+        className: 'mod-border',
+    };
+
     static Options: CodeMirror.EditorConfiguration = {
         lineNumbers: true,
         foldGutter: true,
@@ -67,6 +72,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps> {
                 value={this.props.value}
                 onChange={(editor, data, code: string) => this.handleChange(code)}
                 options={_.extend({}, CodeEditor.Options, {readOnly: this.props.readOnly, mode: this.props.mode})}
+                className={this.props.className}
             />
         );
     }
