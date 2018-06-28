@@ -116,7 +116,7 @@ describe('CodeEditor', () => {
         });
 
         it('should have a border by default', () => {
-            expect(CodeEditor.defaultProps).toContain('mod-border');
+            expect(CodeEditor.defaultProps.className).toContain('mod-border');
         });
     });
 });
