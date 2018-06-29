@@ -47,20 +47,6 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                exclude: [/src\/components/],
-                loader: 'style-loader!css-loader!postcss-loader!sass-loader',
-            },
-            {
-                test: /\.css$/,
-                exclude: path.join(__dirname, 'src/components'),
-                use: [{
-                    loader: 'style-loader',
-                }, {
-                    loader: 'css-loader',
-                }],
-            },
-            {
-                test: /\.scss$/,
                 include: path.join(__dirname, 'src/components'),
                 use: [
                     {
@@ -82,6 +68,20 @@ module.exports = {
                         loader: 'sass-loader',
                     },
                 ],
+            },
+            {
+                test: /\.scss$/,
+                exclude: [/src\/components/],
+                loader: 'style-loader!css-loader!postcss-loader!sass-loader',
+            },
+            {
+                test: /\.css$/,
+                exclude: path.join(__dirname, 'src/components'),
+                use: [{
+                    loader: 'style-loader',
+                }, {
+                    loader: 'css-loader',
+                }],
             },
             {
                 test: /\.png$/,

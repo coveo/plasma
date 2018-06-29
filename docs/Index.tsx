@@ -34,6 +34,7 @@ import {
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
+import {DiffViewerExamples} from '../src/components/diffViewer/examples/DiffViewerExamples';
 import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
 import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
@@ -206,6 +207,7 @@ class App extends React.Component<any, any> {
                         {component: JSONEditorExamples, componentName: 'JSONEditorExamples'},
                         {component: CodeEditorExamples, componentName: 'CodeEditorExamples'},
                         {component: DropdownSearchExamples, componentName: 'DropdownSearchExamples'},
+                        {component: DiffViewerExamples, componentName: 'DiffViewerExamples'},
                     ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
                 </div>
             </Provider>

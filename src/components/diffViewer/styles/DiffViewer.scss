@@ -1,0 +1,110 @@
+.diffViewer {
+
+    :global(.d2h-file-wrapper) {
+        border: none;
+    }
+
+    :global(.d2h-file-diff) {
+        overflow: initial;
+    }
+
+    :global(.d2h-file-header) {
+        display: none;
+    }
+
+    :global(.d2h-code-wrapper) {
+        position: relative;
+    }
+
+    :global(.d2h-diff-table) {
+        font-family: 'Courier New', Courier, monospace;
+        border-bottom: 1px solid #BCC3CA;
+    }
+
+    :global(.d2h-code-linenumber) {
+        background: #f1f3f4; // $white TODO import variable
+        width: auto;
+        height: 21px;
+        border: none;
+        border-left: 1px solid #BCC3CA;
+        margin-top: 1px;
+
+        &:global(.d2h-change) {
+            background: #f1f3f4;
+        }
+    }
+
+    :global(.line-num1), :global(.line-num2) {
+        width: 25px;
+    }
+
+    :global(tr:last-child) :global(.d2h-code-linenumber) {
+        height: 19px;
+    }
+
+    :global(td) {
+        border-right: 1px solid #BCC3CA;
+    }
+
+    :global(td.d2h-info) {
+        height: auto;
+        line-height: normal;
+        border: 1px solid #BCC3CA;
+        border-left: none;
+        border-right: none;
+        background: none;
+
+        &:global(.d2h-code-linenumber) {
+            border-left: none;
+            border-bottom: none;
+            border-right: none;
+            width: 55px;
+            margin-top: 0;
+            background: #fff;
+            height: 2px;
+        }
+    }
+
+    :global(tr:first-child) :global(td.d2h-info) {
+        border-top: none;
+    }
+
+    :global(.d2h-code-line) {
+        margin-left: 50px;
+
+        &:global(.d2h-info) {
+            background: white;
+            color: white;
+            font-size: 0;
+            width: 100%;
+            margin-left: 0;
+            border-bottom: 2px solid #BCC3CA;
+            margin-bottom: 10px;
+            position: relative;
+
+            &:before {
+                content: '...';
+                border: 1px solid #f1f3f4;
+                border-radius: 2px;
+                content: '...';
+                font-size: 10px;
+                line-height: 5px;
+                padding-bottom: 3px;
+                color: grey;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                background: white;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    :global(.d2h-ins.d2h-change):not(:global(.d2h-code-linenumber)) {
+        background: #D0E9C4;
+    }
+
+    :global(.d2h-del):not(:global(.d2h-code-linenumber)) {
+        background: #EDBCBF;
+    }
+}
