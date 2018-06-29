@@ -1,3 +1,6 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
 .diffViewer {
 
     :global(.d2h-file-wrapper) {
@@ -18,38 +21,38 @@
 
     :global(.d2h-diff-table) {
         font-family: 'Courier New', Courier, monospace;
-        border-bottom: 1px solid #BCC3CA;
+        border-bottom: 1px solid $medium-grey;
     }
 
     :global(.d2h-code-linenumber) {
-        background: #f1f3f4; // $white TODO import variable
+        background: $white;
         width: auto;
-        height: 21px;
+        height: calc(#{$diff-line-height} + #{$diff-line-ajustment});
         border: none;
-        border-left: 1px solid #BCC3CA;
-        margin-top: 1px;
+        border-left: 1px solid $medium-grey;
+        margin-top: $diff-line-ajustment;
 
         &:global(.d2h-change) {
-            background: #f1f3f4;
+            background: $white;
         }
     }
 
     :global(.line-num1), :global(.line-num2) {
-        width: 25px;
+        width: $diff-line-number-width;
     }
 
     :global(tr:last-child) :global(.d2h-code-linenumber) {
-        height: 19px;
+        height: calc(#{$diff-line-height} - #{$diff-line-ajustment});
     }
 
     :global(td) {
-        border-right: 1px solid #BCC3CA;
+        border-right: 1px solid $medium-grey;
     }
 
     :global(td.d2h-info) {
         height: auto;
         line-height: normal;
-        border: 1px solid #BCC3CA;
+        border: 1px solid $medium-grey;
         border-left: none;
         border-right: none;
         background: none;
@@ -58,10 +61,10 @@
             border-left: none;
             border-bottom: none;
             border-right: none;
-            width: 55px;
+            width: calc(#{$diff-line-number-width} * 2 + #{$diff-line-number-width});
             margin-top: 0;
-            background: #fff;
-            height: 2px;
+            background: $pure-white;
+            height: $diff-line-ajustment * 2;
         }
     }
 
@@ -70,27 +73,27 @@
     }
 
     :global(.d2h-code-line) {
-        margin-left: 50px;
+        margin-left: $diff-line-number-width * 2;
 
         &:global(.d2h-info) {
-            background: white;
-            color: white;
+            background: $pure-white;
+            color: $pure-white;
             font-size: 0;
             width: 100%;
             margin-left: 0;
-            border-bottom: 2px solid #BCC3CA;
-            margin-bottom: 10px;
+            border-bottom: 2px solid $medium-grey;
+            margin-bottom: $diff-separator-margin;
             position: relative;
 
             &:before {
                 content: '...';
-                border: 1px solid #f1f3f4;
-                border-radius: 2px;
+                border: $default-border-size solid $white;
+                border-radius: $border-radius;
                 content: '...';
-                font-size: 10px;
-                line-height: 5px;
-                padding-bottom: 3px;
-                color: grey;
+                font-size: $diff-separator-font-size;
+                line-height: $diff-separator-line-height;
+                padding-bottom: $diff-separator-padding;
+                color: $dark-medium-grey;
                 position: absolute;
                 left: 0;
                 top: 50%;
@@ -100,11 +103,17 @@
         }
     }
 
-    :global(.d2h-ins.d2h-change):not(:global(.d2h-code-linenumber)) {
-        background: #D0E9C4;
+    :global(.d2h-ins):not(:global(.d2h-code-linenumber)) {
+        background: $soft-green;
+    }
+
+    :global(.d2h-code-line), :global(.d2h-code-side-line) {
+        :global(ins) {
+            background: $soft-green;
+        }
     }
 
     :global(.d2h-del):not(:global(.d2h-code-linenumber)) {
-        background: #EDBCBF;
+        background: $soft-red;
     }
 }
