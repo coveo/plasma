@@ -58,7 +58,7 @@
   "devDependencies": {
     "@types/chosen-js": "1.6.2",
     "@types/classnames": "2.2.4",
-    "@types/codemirror": "0.0.57",
+    "@types/codemirror": "0.0.58",
     "@types/enzyme": "2.8.7",
     "@types/escape-string-regexp": "0.0.32",
     "@types/faker": "4.1.2",
