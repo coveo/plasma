@@ -1,27 +1,25 @@
-table {
-  &.mod-align-header {
-    th:first-child {
-      padding-left: $header-padding;
-    }
+table.mod-align-header {
+  th:first-child {
+    padding-left: $header-padding;
+  }
 
-    tbody tr td:first-child {
-      padding-left: $table-first-column-padding-left;
-    }
+  tbody tr td:first-child {
+    padding-left: $table-first-column-padding-left;
+  }
 
-    &.mod-collapsible-rows tbody tr.collapsible-row td:first-child {
-      padding-left: $table-first-column-padding-left;
+  &.mod-collapsible-rows tbody tr.collapsible-row td:first-child {
+    padding-left: $table-first-column-padding-left;
 
-      .container {
-        // fix so that elements can take the full width of the table during animation
-        padding-right: $table-first-column-padding-left;
-        padding-left: $table-first-column-padding-left;
-        margin-right: -$table-first-column-padding-left;
-        margin-left: -$table-first-column-padding-left;
-      }
-    }
-
-    &.mod-collapsible-rows tbody tr.collapsible-row td:last-child {
+    .container {
+      // fix so that elements can take the full width of the table during animation
       padding-right: $table-first-column-padding-left;
+      padding-left: $table-first-column-padding-left;
+      margin-right: -$table-first-column-padding-left;
+      margin-left: -$table-first-column-padding-left;
     }
+  }
+
+  &.mod-collapsible-rows tbody tr.collapsible-row td:last-child {
+    padding-right: $table-first-column-padding-left;
   }
 }
