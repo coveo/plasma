@@ -25,7 +25,7 @@ export class TableHeaderExamples extends React.Component<any, any> {
             <div className='mt2'>
                 <div className='form-group'>
                     <label className='form-control-label'>Table header with specific class on last cell and generic class</label>
-                    <table className='mod-collapsible-rows'>
+                    <table className='mod-collapsible-rows table'>
                         <TableHeader columns={columns} headerClass={'mod-no-border-top'} />
                     </table>
                 </div>
