@@ -3,37 +3,36 @@ import * as React from 'react';
 import * as unidiff from 'unidiff';
 import * as styles from './styles/DiffViewer.scss';
 
-export const OutputFormat = {
-    Side: 'side-by-side',
-    Line: 'line-by-line',
-};
-
-export const InputFormat = {
-    Diff: 'diff',
-    JSON: 'json',
-};
-
-export const Matching = {
-    Lines: 'lines',
-    Words: 'words',
-    None: 'none',
-};
-
 export interface DiffViewerProps extends React.ClassAttributes<DiffViewer> {
     first: string;
     second: string;
 }
 
 export class DiffViewer extends React.Component<DiffViewerProps> {
+    static OutputFormat = {
+        Side: 'side-by-side',
+        Line: 'line-by-line',
+    };
+
+    static InputFormat = {
+        Diff: 'diff',
+        JSON: 'json',
+    };
+
+    static Matching = {
+        Lines: 'lines',
+        Words: 'words',
+        None: 'none',
+    };
 
     render() {
         const diff = unidiff.diffLines(this.props.first, this.props.second);
         const formattedDiff = unidiff.formatLines(diff, {context: 3});
         const html = Diff2Html.getPrettyHtml(formattedDiff, {
-            inputFormat: InputFormat.Diff,
+            inputFormat: DiffViewer.InputFormat.Diff,
             showFiles: false,
-            matching: Matching.Words,
-            outputFormat: OutputFormat.Line,
+            matching: DiffViewer.Matching.Words,
+            outputFormat: DiffViewer.OutputFormat.Line,
         });
 
         return (
