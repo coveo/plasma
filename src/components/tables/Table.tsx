@@ -166,6 +166,7 @@ export class Table extends React.Component<ITableProps> {
 
     render() {
         const tableClasses = classNames(
+            'table',
             'mod-collapsible-rows',
             'mod-align-header',
             {
