@@ -1,5 +1,7 @@
 .color-dot {
   display: inline-block;
+  width: $color-dot-size;
+  height: $color-dot-size;
 
   background-color: $green;
   border-radius: 100%;

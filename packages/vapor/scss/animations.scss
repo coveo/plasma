@@ -29,10 +29,11 @@
 
 @keyframes scaleoutCentered {
   0% {
-    transform: scale(0.0) translateY(-50%);
+    transform: scale(0.0);
   }
   100% {
-    transform: scale(1.0) translateY(-50%);
+    // Since opacity is 0 at 100% we need to add the extra .1 so that it appears 100% in size.
+    transform: scale(1.1);
 
     opacity: 0;
   }
