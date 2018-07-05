@@ -97,7 +97,7 @@ export class Facet extends React.Component<IFacetProps, any> {
         const facetRows: IFacet[] = _.uniq(allRows, false, (item) => item.name);
         const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
             const isSelected: boolean = _.contains(_.pluck(selected, 'name'), facetRow.name);
-            return(
+            return (
                 <FacetRow
                     key={facetRow.name}
                     facet={this.props.facet.name}
@@ -115,18 +115,6 @@ export class Facet extends React.Component<IFacetProps, any> {
             ? (this.props.withReduxState
                 ? <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
                 : <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
-            )
-            : null;
-        const moreRows: JSX.Element = moreRowsToggle
-            ? (this.props.withReduxState
-                ? <FacetMoreRowsConnected
-                    facet={this.props.facet.name}
-                    facetRows={rows.splice(rowsToShow)}
-                    filterPlaceholder={this.props.filterPlaceholder} />
-                : <FacetMoreRows
-                    facet={this.props.facet.name}
-                    facetRows={rows.splice(rowsToShow)}
-                    filterPlaceholder={this.props.filterPlaceholder} />
             )
             : null;
         const facetClasses: string = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
@@ -147,8 +135,22 @@ export class Facet extends React.Component<IFacetProps, any> {
                     {rows}
                     {moreRowsToggle}
                 </ul>
-                {moreRows}
+                {this.getMoreRows(!!moreRowsToggle, rows.splice(rowsToShow))}
             </div>
         );
+    }
+
+    private getMoreRows(isNeedMore: boolean, rows: JSX.Element[]): JSX.Element {
+        if (isNeedMore) {
+            return this.props.withReduxState
+                ? <FacetMoreRowsConnected
+                    facet={this.props.facet.name}
+                    facetRows={rows}
+                    filterPlaceholder={this.props.filterPlaceholder} />
+                : <FacetMoreRows
+                    facet={this.props.facet.name}
+                    facetRows={rows}
+                    filterPlaceholder={this.props.filterPlaceholder} />;
+        }
     }
 }

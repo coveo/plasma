@@ -100,6 +100,10 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
                     <label className='form-control-label'>Facet with exclude enabled</label>
                     <FacetConnected facet={facet4} facetRows={facetRows} enabledExclude clearFacet={clearFacet} toggleFacet={toggleFacet} />
                 </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Facet with exclude enabled and many rows</label>
+                    <FacetConnected facet={facet3} facetRows={moreFacetRows} enabledExclude clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                </div>
             </div>
         );
     }

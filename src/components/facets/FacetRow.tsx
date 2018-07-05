@@ -89,7 +89,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     private toggleFacetToExclude(): void {
-        this.props.onToggleFacet(_.extend({}, this.props.facetRow, {isExclude: true, isChecked: true}));
+        this.props.onToggleFacet(_.extend({}, this.props.facetRow, {isExclude: true}));
     }
 
     private toggleFacet(): void {
