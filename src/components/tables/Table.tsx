@@ -117,6 +117,7 @@ export class Table extends React.Component<ITableProps> {
         } as Partial<ITableCompositeState>,
         initialTableData: DEFAULT_TABLE_DATA,
         rowsMultiSelect: false,
+        withoutHoverOnRow: false,
     } as Partial<ITableOwnProps>;
 
     constructor(props: ITableProps) {
@@ -252,6 +253,7 @@ export class Table extends React.Component<ITableProps> {
                     handleOnRowClick={this.props.handleOnRowClick}
                     additionalRowClasses={this.props.additionalRowClasses}
                     isMultiSelect={this.props.rowsMultiSelect}
+                    withoutHoverOnRow={this.props.withoutHoverOnRow}
                 />
             );
         });
