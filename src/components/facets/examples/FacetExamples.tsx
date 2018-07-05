@@ -1,7 +1,8 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 import {Facet, IFacet} from '../Facet';
 
-export class FacetExamples extends React.Component<any, any> {
+export class FacetExamples extends React.Component<any> {
 
     render() {
         const facet: IFacet = {name: 'facetTitle', formattedName: 'Facet Title'};
@@ -18,10 +19,17 @@ export class FacetExamples extends React.Component<any, any> {
                 formattedName: 'Row 3 with very long facet name that will get cut',
             },
         ];
-        const selectedFacetRows: IFacet[] = [{
-            name: 'row2',
-            formattedName: 'Row 2',
-        }];
+        const selectedFacetRows: IFacet[] = [
+            {
+                name: 'row2',
+                formattedName: 'Row 2',
+                isExclude: true,
+            },
+            {
+                name: 'row1',
+                formattedName: 'Row 1',
+            },
+        ];
         const moreFacetRows = facetRows.concat(
             {
                 name: 'row4',
@@ -40,7 +48,8 @@ export class FacetExamples extends React.Component<any, any> {
                 formattedName: 'Row 7',
             },
         );
-        const onToggleFacet: (facet: string, facetRow: IFacet) => void = () => {return;};
+
+        const onToggleFacet: (facet: string, facetRow: IFacet) => void = _.noop;
         const clearFacet: (facet: string) => void = () => {return;};
         return (
             <div className='mt2' style={{width: 300}}>
@@ -55,6 +64,10 @@ export class FacetExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>Facet with many rows</label>
                     <Facet facet={facet} facetRows={moreFacetRows} clearFacet={clearFacet} toggleFacet={onToggleFacet} />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Facet with enabled exclude rows</label>
+                    <Facet facet={facet} facetRows={moreFacetRows} selectedFacetRows={selectedFacetRows} enabledExclude clearFacet={clearFacet} toggleFacet={onToggleFacet} />
                 </div>
             </div>
         );

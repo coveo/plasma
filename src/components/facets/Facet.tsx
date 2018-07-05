@@ -14,6 +14,7 @@ export interface IFacet {
     formattedName: string;
     tooltipLabel?: string;
     count?: string;
+    isExclude?: boolean;
 }
 
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
@@ -41,6 +42,7 @@ export interface IFacetDispatchProps {
 export interface IFacetChildrenProps {
     moreLabel?: string;
     filterPlaceholder?: string;
+    enabledExclude?: boolean;
 }
 
 export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps, IFacetChildrenProps {}
@@ -93,16 +95,20 @@ export class Facet extends React.Component<IFacetProps, any> {
         const unselected: IFacet[] = this.sortFacetRows(this.props.facetRows);
         const allRows: IFacet[] = _.union(selected, unselected);
         const facetRows: IFacet[] = _.uniq(allRows, false, (item) => item.name);
-        const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => (
-            <FacetRow
-                key={facetRow.name}
-                facet={this.props.facet.name}
-                facetRow={facetRow}
-                onToggleFacet={this.buildFacet}
-                isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
-                maxTooltipLabelLength={this.props.maxTooltipLabelLength}
-            />
-        ));
+        const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
+            const isSelected: boolean = _.contains(_.pluck(selected, 'name'), facetRow.name);
+            return(
+                <FacetRow
+                    key={facetRow.name}
+                    facet={this.props.facet.name}
+                    facetRow={facetRow}
+                    onToggleFacet={this.buildFacet}
+                    isChecked={isSelected}
+                    enabledExclude={this.props.enabledExclude}
+                    maxTooltipLabelLength={this.props.maxTooltipLabelLength}
+                />
+            );
+        });
         const rowsToShow: number = Math.max(this.props.selectedFacetRows.length, this.props.maxRowsToShow);
         // If there is only 1 extra row, show it instead of the moreRowsToggle
         const moreRowsToggle: JSX.Element = rows.length > rowsToShow + 1
