@@ -118,7 +118,7 @@
       padding-left: 10px;
     }
 
-    &:hover td {
+    &:not(.no-hover):hover td {
       background-color: $light-grey;
     }
 
