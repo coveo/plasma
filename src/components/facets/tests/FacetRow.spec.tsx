@@ -156,5 +156,37 @@ describe('Facets', () => {
             expect(facetRowView.find('span.facet-value-count').length).toBe(1);
             expect(facetRowView.html()).toContain(newProps.facetRow.count);
         });
+
+    });
+    describe('<FacetRow enableExclude />', () => {
+        let facetRowExcludeView: ReactWrapper<IFacetRowProps>;
+        let props: IFacetRowProps;
+        beforeEach(() => {
+            props = {...FACET_ROW_PROPS, enabledExclude: true};
+            facetRowExcludeView = mount(<FacetRow {...props} />, {attachTo: document.getElementById('App')});
+        });
+
+        it('should display a .facet-exclude-button when exclude behavior is enabled', () => {
+            expect(facetRowExcludeView.find('.facet-exclude-button').length).toBe(1);
+        });
+
+        it('should display a .exclude-box when exclude behavior is enabled and checkbox is checked as exclude', () => {
+            const facetRow: IFacet = {...FACET_ROW_PROPS.facetRow, isExclude: true};
+            facetRowExcludeView.setProps({...props, isChecked: true, facetRow});
+
+            expect(facetRowExcludeView.props().enabledExclude).toBe(true);
+            expect(facetRowExcludeView.props().enabledExclude).toBe(true);
+            expect(facetRowExcludeView.html()).toBe('');
+            expect(facetRowExcludeView.find('.exclude-box').length).toBe(1);
+        });
+
+        it('should display a .exclude-icon when exclude behavior is enabled and checkbox is checked as exclude', () => {
+            expect(facetRowExcludeView.find('.icon.hide.exclude-icon').length).toBe(1);
+        });
+
+        it('should display a .text-exclude when exclude behavior is enabled and checkbox is checked as exclude', () => {
+            expect(facetRowExcludeView.find('.text-exclude').length).toBe(2);
+        });
+
     });
 });
