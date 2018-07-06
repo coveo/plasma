@@ -21,7 +21,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             ? this.props.maxTooltipLabelLength - this.props.facetRow.count.length
             : this.props.maxTooltipLabelLength;
         const label: JSX.Element = this.props.facetRow.formattedName.length > maxCalculatedNameLength
-            ? <Tooltip title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName} placement='top' className='inline-block'>
+            ? <Tooltip title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName} placement='top' className='inline-block full-content-x'>
                 {this.props.facetRow.formattedName}
             </Tooltip>
             : <span>{this.props.facetRow.formattedName}</span>;
