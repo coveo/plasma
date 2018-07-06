@@ -235,7 +235,7 @@ export class TableExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>Table without hover on row</label>
                     <TableConnected
-                        id={'react-vapor-table-without-hover'}
+                        id='react-vapor-table-without-hover'
                         initialTableData={simplestTableData}
                         headingAttributes={[
                             {
@@ -252,7 +252,7 @@ export class TableExamples extends React.Component<any, any> {
                             },
                         ]}
                         blankSlateDefault={{title: 'No results!'}}
-                        withoutHoverOnRow={true}
+                        withoutHoverOnRow
                     />
                 </div>
                 <div className='form-group'>
