@@ -46,6 +46,7 @@
     border-top: $table-border;
     border-bottom: $table-border;
 
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     background-color: $pure-white;
