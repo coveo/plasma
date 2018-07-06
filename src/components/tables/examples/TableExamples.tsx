@@ -233,6 +233,29 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>Table without hover on row</label>
+                    <TableConnected
+                        id='react-vapor-table-without-hover'
+                        initialTableData={simplestTableData}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                        withoutHoverOnRow
+                    />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>Simplest Table with checkbox
                     </label>
                     <TableConnected
