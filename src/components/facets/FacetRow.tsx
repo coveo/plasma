@@ -41,6 +41,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         className='coveo-checkbox facet-checkbox-input'
                         checked={this.props.isChecked && !this.isExclude}
                         onClick={(e) => {e.preventDefault(); e.stopPropagation();}}
+                        onChange={_.noop}
                     />
                     <button type='button' className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
                         <Svg svgName='clear' className='icon hide exclude-icon' svgClass='fill-red' />
@@ -83,11 +84,8 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         type='checkbox'
                         className='coveo-checkbox'
                         checked={this.props.isChecked && this.isExclude}
-                        onClick={(e) => {
-                            // prevent event bubbling and trigger onToggleFacet only once no matter where you click on the row
-                            e.preventDefault();
-                            this.toggleFacet();
-                        }}
+                        onClick={(e) => {e.preventDefault(); e.stopPropagation();}}
+                        onChange={_.noop}
                     />
                     <span className='center-align exclude-button' >
                         <Svg svgName='clear' className='icon' svgClass='fill-medium-grey' />
