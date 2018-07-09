@@ -86,7 +86,8 @@ export class Tooltip extends React.Component<ITooltipProps, {}> {
 
         const tooltip: JSX.Element = <BootstrapTooltip
             id={_.uniqueId('tooltip-')}
-            {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}>
+            {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
+        >
             {this.props.title}
             {tooltipFooter}
         </BootstrapTooltip>;

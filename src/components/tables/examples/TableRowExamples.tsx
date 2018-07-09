@@ -38,7 +38,7 @@ export class TableRowExamples extends React.Component<{}, TableRowExamplesState>
             <div className='mt2'>
                 <div className='form-group'>
                     <label className='form-control-label'>Table rows without and with collapsible rows</label>
-                    <table className='mod-collapsible-rows'>
+                    <table className='table mod-collapsible-rows'>
                         <tbody className='selected'>
                             <TableHeadingRow isCollapsible={true} opened={this.state.first} onClick={() => this.setState({first: !this.state.first})}>
                                 {this.firstRowCols}
