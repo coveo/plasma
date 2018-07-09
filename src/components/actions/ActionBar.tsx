@@ -28,7 +28,6 @@ export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
     withSmallActions?: boolean;
     prefixContent?: IContentProps;
     width?: number;
-    // maxScroll?: number;
 }
 
 export interface IActionBarStateProps extends IReduxStatePossibleProps {
