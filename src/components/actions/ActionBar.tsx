@@ -28,7 +28,6 @@ export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
     withSmallActions?: boolean;
     prefixContent?: IContentProps;
     width?: number;
-    maxScroll?: number;
 }
 
 export interface IActionBarStateProps extends IReduxStatePossibleProps {
@@ -36,7 +35,6 @@ export interface IActionBarStateProps extends IReduxStatePossibleProps {
     prompt?: JSX.Element;
     itemFilter?: string;
     isLoading?: boolean;
-    tableYPosition?: number;
 }
 
 export interface IActionBarDispatchProps {
@@ -60,7 +58,6 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
     static defaultProps: Partial<IActionBarOwnProps> = {
         extraContainerClasses: [],
         withSmallActions: false,
-        maxScroll: 0,
     };
 
     private handleClear() {
@@ -131,7 +128,6 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
             {
                 'mod-deactivate-pointer': !!this.props.isLoading,
                 'small-actions-container': this.props.withSmallActions,
-                'fixed-actions': this.props.tableYPosition && this.props.tableYPosition <= this.props.maxScroll,
             },
         );
 
