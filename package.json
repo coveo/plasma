@@ -120,7 +120,7 @@
     "merge-stream": "1.0.1",
     "moment": "2.22.2",
     "node-sass": "4.9.0",
-    "postcss-loader": "2.1.5",
+    "postcss-loader": "2.1.6",
     "pre-commit": "1.2.2",
     "rc-slider": "8.6.1",
     "react": "15.6.1",
