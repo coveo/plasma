@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 import {SlideY} from '../../animations/SlideY';
 import {IErrorSection, TableError} from './TableError';
 
@@ -24,7 +25,12 @@ export interface ITableCollapsibleRowProps extends ITableCollapsibleRowOwnProps,
 
 export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowProps, any> {
     render() {
-        const rowClasses: string = 'collapsible-row ' + this.props.id + (this.props.opened ? ' in' : '');
+        const rowClasses: string = classNames(
+            'collapsible-row',
+            'no-hover',
+            this.props.id,
+            {'in': this.props.opened},
+        );
         const error: JSX.Element = this.props.isInError ?
             <TableError
                 error={this.props.error}
