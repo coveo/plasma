@@ -38,6 +38,7 @@ $button-color-transition: all 0.05s ease-in;
 $checkbox-size: 18px;
 $checkbox-label-margin: 18px;
 $checkbox-label-margin-top: 10px;
+$checkbox-default-border: solid 2px $medium-blue;
 $radio-button-option-height: 18px;
 $radio-button-size: 18px;
 
@@ -362,6 +363,10 @@ $facet-checkbox-line-width: 2px;
 $facet-more-height: 200px;
 $facet-more-button-border: 2px dashed $medium-grey;
 $facet-more-button-icon-size: 10px;
+$facet-exclude-padding-right: 24px;
+$facet-exclude-checkbox-icon-size: 10px;
+$facet-exclude-button-size: 13px;
+$facet-exclude-button-icon-size: 7px;
 
 // Spaced boxes
 $box-spacing: 10px;
