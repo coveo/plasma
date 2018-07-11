@@ -94,7 +94,7 @@ export class DraggableSelectedOption extends React.Component<IDraggableSelectedO
 
         const content: React.ReactNode = [
             this.props.connectDragSource(
-                <div className='move-option' >
+                <div className='move-option infline-flex cursor-move align-center'>
                     <Svg svgName='drag-drop' svgClass='icon mod-small' />
                 </div>,
             ),
