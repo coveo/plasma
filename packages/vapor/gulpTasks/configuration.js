@@ -1,6 +1,6 @@
 module.exports = {
     autoprefixerOptions: {
-        browsers: ['Chrome >= 23', 'Firefox >= 21', 'Explorer >= 10', 'Opera >= 15', 'Safari >= 6'],
+        browsers: ['cover 90%', 'last 1 versions', 'IE 11', 'not dead'],
     },
     gzipOptions: {
         append: false,
