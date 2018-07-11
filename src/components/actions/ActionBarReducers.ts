@@ -31,13 +31,6 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
                 id: action.payload.id,
                 isLoading: false,
             };
-        case ActionBarActions.setYPosition:
-            if (state.tableYPosition !== action.payload.yPosition) {
-                return {
-                    ...state,
-                    tableYPosition: action.payload.yPosition,
-                };
-            }
         case LoadingActions.turnOn:
             return _.contains(action.payload.ids, state.id)
                 ? {...state, isLoading: true}
@@ -54,7 +47,6 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
 export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState[] => {
     switch (action.type) {
         case ActionBarActions.addActions:
-        case ActionBarActions.setYPosition:
         case LoadingActions.turnOn:
         case LoadingActions.turnOff:
             return state.map((bar) =>

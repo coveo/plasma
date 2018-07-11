@@ -117,6 +117,7 @@ export class Table extends React.Component<ITableProps> {
         } as Partial<ITableCompositeState>,
         initialTableData: DEFAULT_TABLE_DATA,
         rowsMultiSelect: false,
+        withoutHoverOnRow: false,
     } as Partial<ITableOwnProps>;
 
     constructor(props: ITableProps) {
@@ -166,6 +167,7 @@ export class Table extends React.Component<ITableProps> {
 
     render() {
         const tableClasses = classNames(
+            'table',
             'mod-collapsible-rows',
             'mod-align-header',
             {
@@ -251,6 +253,7 @@ export class Table extends React.Component<ITableProps> {
                     handleOnRowClick={this.props.handleOnRowClick}
                     additionalRowClasses={this.props.additionalRowClasses}
                     isMultiSelect={this.props.rowsMultiSelect}
+                    withoutHoverOnRow={this.props.withoutHoverOnRow}
                 />
             );
         });

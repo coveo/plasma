@@ -68,7 +68,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             ? <Tooltip
                 title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName}
                 placement='top'
-                className={`inline-block${className}`}
+                className={`inline-block full-content-x${className}`}
             >
                 {this.props.facetRow.formattedName}
             </Tooltip>

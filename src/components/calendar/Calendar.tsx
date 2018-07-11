@@ -216,6 +216,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         });
 
         const tableClasses: string = classNames(
+            'table',
             'calendar-grid',
             {
                 'selecting': !!this.getSelectedDatePicker(),

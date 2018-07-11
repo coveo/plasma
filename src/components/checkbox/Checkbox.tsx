@@ -54,7 +54,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
                 onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
                 readOnly
             >
-                <button disabled={!!this.props.disabled}></button>
+                <button type='button' disabled={!!this.props.disabled}></button>
                 {this.props.children}
             </Input>
         );
