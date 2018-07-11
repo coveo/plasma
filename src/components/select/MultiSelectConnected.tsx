@@ -1,17 +1,23 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {clearListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
+import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 
 export interface IMultiSelectOwnProps extends ISelectProps {
     placeholder?: string;
+    emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
+    sortable?: boolean;
 }
 
 export interface IMultiSelectStateProps {
@@ -21,6 +27,7 @@ export interface IMultiSelectStateProps {
 export interface IMultiSelectDispatchProps {
     onRemoveClick?: (item: IItemBoxProps) => void;
     onRemoveAll?: () => void;
+    onReorder?: (values: string[]) => void;
 }
 
 export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
@@ -35,13 +42,17 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
     onRemoveClick: (item: IItemBoxProps) => dispatch(unselectListBoxOption(ownProps.id, item.value)),
     onRemoveAll: () => dispatch(clearListBoxOption(ownProps.id)),
+    onReorder: (values: string[]) => dispatch(reorderListBoxOption(ownProps.id, values)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
+@DragDropContext(HTML5Backend)
 export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}> {
     static defaultProps: Partial<IMultiSelectProps> = {
-        placeholder: 'No selected values',
+        placeholder: 'Select an option',
+        emptyPlaceholder: 'No selected option',
         deselectAllTooltipText: 'Deselect All',
+        sortable: false,
     };
 
     render() {
@@ -56,22 +67,58 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         );
     }
 
-    private getSelectedOptionComponents(): JSX.Element | JSX.Element[] {
+    private getSelectedOptionComponents() {
         const selected = this.getSelectedOptions();
 
-        return selected.length
-            ? selected.map((item: IItemBoxProps) => <SelectedOption
-                label={item.displayValue || item.value}
-                value={item.value}
-                key={item.value}
-                onRemoveClick={() => this.props.onRemoveClick(item)}
-            />)
-            : <input placeholder={this.props.placeholder} readOnly />;
+        if (selected.length) {
+            return selected.map((item: IItemBoxProps, index: number) => this.props.sortable
+                ? this.renderDraggableOption(item, index)
+                : this.renderOption(item));
+        }
+        return <span className='multiselect-empty'>{this.props.emptyPlaceholder}</span>;
+    }
+
+    private renderOption(item: IItemBoxProps) {
+        return <SelectedOption
+            label={item.displayValue || item.value}
+            value={item.value}
+            key={item.value}
+            onRemoveClick={() => this.props.onRemoveClick(item)}
+        />;
+    }
+
+    private renderDraggableOption(item: IItemBoxProps, index: number) {
+        return (
+            <div className='flex flex-row flex-center sortable-selected-option'>
+                <span className='mr1 text-medium-grey'>{index + 1}</span>
+                <DraggableSelectedOption
+                    label={item.displayValue || item.value}
+                    value={item.value}
+                    key={item.value}
+                    onRemoveClick={() => this.props.onRemoveClick(item)}
+                    index={index}
+                    move={(dragIndex: number, hoverIndex: number) => this.move(dragIndex, hoverIndex)}
+                />
+            </div>
+        );
+    }
+
+    private move(dragIndex: number, hoverIndex: number) {
+        const moving = this.props.selected[dragIndex];
+        const newOrder = [...this.props.selected];
+
+        // Remove the element at position dragIndex
+        newOrder.splice(dragIndex, 1);
+
+        // Insert the moving element at hoverIndex
+        newOrder.splice(hoverIndex, 0, moving);
+
+        this.props.onReorder(newOrder);
     }
 
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
-        return this.getSelectedOptions().length
-            ? <Tooltip title={this.props.deselectAllTooltipText} placement='top'>
+        return this.getSelectedOptions().length > 1
+            ? <Tooltip title={this.props.deselectAllTooltipText} placement='top' noSpanWrapper>
                 <div className='remove-all-selected-options' onClick={() => this.props.onRemoveAll()}>
                     <Svg svgName='clear' svgClass='icon fill-medium-blue' />
                 </div>
@@ -80,22 +127,37 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
     }
 
     private getButton(props: ISelectButtonProps): JSX.Element {
+        const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
         return (
-            <div className='multiselect-input'>
-                <div
-                    className='selected-options-container'
+            <div className={classes}>
+                <div className='multiselect-selected flex flex-center flex-auto'>
+                    <div className='selected-options-container'>
+                        {this.getSelectedOptionComponents()}
+                    </div>
+                    {this.getRemoveAllSelectedOptionsButton()}
+                </div>
+                <button
+                    className='btn dropdown-toggle multiselect-add'
+                    type='button'
                     onMouseUp={props.onMouseUp}
                     onKeyDown={props.onKeyDown}
                     onKeyUp={props.onKeyUp}
                 >
-                    {this.getSelectedOptionComponents()}
-                </div>
-                {this.getRemoveAllSelectedOptionsButton()}
+                    <span className='dropdown-no-value'>{this.props.placeholder}</span>
+                    <span className='dropdown-toggle-arrow' />
+                </button>
             </div>
         );
     }
 
     private getSelectedOptions() {
+        if (this.props.sortable) {
+            return _.chain(this.props.selected)
+                .map((selected: string) => _.findWhere(this.props.items, {value: selected}))
+                .compact()
+                .value();
+        }
+
         return this.props.items
             .filter((option: IItemBoxProps) => _.contains(this.props.selected, option.value));
     }

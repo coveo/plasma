@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {selectListBoxOption} from '../../listBox/ListBoxActions';
+import {selectListBoxOption, setActiveListBoxOption} from '../../listBox/ListBoxActions';
 import {addSelect, ISelectPayload, removeSelect, toggleSelect} from '../SelectActions';
 import {ISelectState, selectCompositeInitialState, selectCompositeReducer, selectInitialState, selectReducer} from '../SelectReducers';
 
@@ -236,6 +236,46 @@ describe('Select', () => {
                 const oldState: ISelectState[] = [selectInitialState];
                 const oldStateBefore = _.clone(oldState);
                 selectCompositeReducer(oldState, selectListBoxOption(id, false, 'abc'));
+
+                expect(oldState).toEqual(oldStateBefore);
+            });
+        });
+
+        // The Select Reducer open itself when a list box item is set to active
+        describe('SET_ACTIVE_ITEM_LIST_BOX', () => {
+            const id = 'list-box-id';
+            let defaultState: ISelectState[];
+
+            beforeEach(() => {
+                defaultState = [_.extend({}, selectInitialState, {id, open: false}), selectInitialState];
+            });
+
+            it('should set the open property to true', () => {
+                const oldState: ISelectState[] = defaultState;
+                const newState: ISelectState[] = selectCompositeReducer(oldState, setActiveListBoxOption(id, 1));
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+                expect(newState[0].open).toBe(true);
+            });
+
+            it('should not throw if the the open property is already true', () => {
+                const state = _.clone(defaultState);
+                state[0].open = true;
+
+                const oldState: ISelectState[] = state;
+                let newState: ISelectState[] = [];
+                expect(() => newState = selectCompositeReducer(oldState, setActiveListBoxOption(id, 1))).not.toThrow();
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+                expect(newState[0].open).toBe(true);
+            });
+
+            it('should not modify the old state', () => {
+                const oldState: ISelectState[] = [selectInitialState];
+                const oldStateBefore = _.clone(oldState);
+                selectCompositeReducer(oldState, setActiveListBoxOption(id, 1));
 
                 expect(oldState).toEqual(oldStateBefore);
             });

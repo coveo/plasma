@@ -1,12 +1,17 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider, Store} from 'react-redux';
+import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
+import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {filterThrough} from '../../filterBox/FilterBoxActions';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {selectListBoxOption, setActiveListBoxOption} from '../../listBox/ListBoxActions';
 import {IMultiSelectProps} from '../MultiSelectConnected';
+import {toggleSelect} from '../SelectActions';
 import {SingleSelectWithFilter} from '../SelectComponents';
 import {SelectConnected} from '../SelectConnected';
 
@@ -36,6 +41,17 @@ describe('Select', () => {
             store.dispatch(clearState());
             wrapper.unmount();
             wrapper.detach();
+        });
+
+        beforeAll(() => {
+            // tslint:disable
+            // make debounce synchronous
+            spyOn(_, 'debounce').and.callFake(function(func: () => void) {
+                return function(this: any) {
+                    func.apply(this, arguments);
+                };
+            });
+            // tslint:enable
         });
 
         describe('mount and unmount', () => {
@@ -74,6 +90,7 @@ describe('Select', () => {
             ];
 
             mountSingleSelect(items);
+            store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
 
             expect(singleSelect.props().items.length).toBe(items.length);
@@ -89,6 +106,7 @@ describe('Select', () => {
             ];
 
             mountSingleSelect(items);
+            store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
             store.dispatch(filterThrough(id, ''));
 
@@ -106,11 +124,82 @@ describe('Select', () => {
             ];
 
             mountSingleSelect(items, () => false);
+            store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
 
             expect(singleSelect.props().items.length).toBe(items.length);
             singleSelect.find(SelectConnected).props().items
                 .every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
+        });
+
+        describe('interactions', () => {
+            const items = [
+                {value: 'a'},
+                {value: 'b', selected: true},
+                {value: 'c'},
+            ];
+            let dispatchSpy: jasmine.Spy;
+
+            beforeEach(() => {
+                dispatchSpy = spyOn(store, 'dispatch').and.callThrough();
+                mountSingleSelect(items);
+            });
+
+            it('should toggle the dropdown when the user mouseup on the dropdown-toggle', () => {
+                expect(dispatchSpy).not.toHaveBeenCalledWith(toggleSelect(id));
+
+                singleSelect.find('.dropdown-toggle').simulate('mouseup');
+
+                expect(dispatchSpy).toHaveBeenCalledWith(toggleSelect(id));
+            });
+
+            it('should select the active element if the user press enter', () => {
+                store.dispatch(toggleSelect(id, true));
+
+                singleSelect.find('.dropdown-toggle')
+                    .simulate('keydown', {keyCode: keyCode.enter})
+                    .simulate('keyup', {keyCode: keyCode.enter});
+
+                expect(dispatchSpy).toHaveBeenCalledWith(selectListBoxOption(id, undefined, items[0].value));
+            });
+
+            it('should dispatch a setActiveListBoxOption when the user press the up or down arrow', () => {
+                store.dispatch(toggleSelect(id, true));
+
+                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 1));
+                singleSelect.find(FilterBoxConnected).find('input')
+                    .simulate('keydown', {keyCode: keyCode.downArrow})
+                    .simulate('keyup', {keyCode: keyCode.downArrow});
+
+                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 1));
+
+                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, -1));
+                singleSelect.find(FilterBoxConnected).find('input')
+                    .simulate('keydown', {keyCode: keyCode.upArrow})
+                    .simulate('keyup', {keyCode: keyCode.upArrow});
+
+                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, -1));
+            });
+
+            it('should dispatch a setActiveListBoxOption with 0 as the active parameter when the user press the up or down arrow but the dropdown is not open', () => {
+                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+                singleSelect.find('.dropdown-toggle')
+                    .simulate('keydown', {keyCode: keyCode.downArrow})
+                    .simulate('keyup', {keyCode: keyCode.downArrow});
+
+                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+
+                // Close the dropdown
+                store.dispatch(toggleSelect(id, false));
+                dispatchSpy.calls.reset();
+
+                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+                singleSelect.find('.dropdown-toggle')
+                    .simulate('keydown', {keyCode: keyCode.upArrow})
+                    .simulate('keyup', {keyCode: keyCode.upArrow});
+
+                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+            });
         });
     });
 });

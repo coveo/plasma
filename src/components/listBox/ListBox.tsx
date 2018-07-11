@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {mod} from '../../utils/DataStructuresUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
 export interface IListBoxOwnProps {
@@ -14,6 +15,7 @@ export interface IListBoxOwnProps {
 
 export interface IListBoxStateProps {
     selected?: string[];
+    active?: number;
 }
 
 export interface IListBoxDispatchProps {
@@ -50,8 +52,18 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     }
 
     protected getItems(): JSX.Element[] | JSX.Element {
+        const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
+        let index = 0;
         const items = _.chain(this.props.items)
             .filter((item: IItemBoxProps) => !item.hidden)
+            .map((item: IItemBoxProps) => {
+                let active = false;
+                if (!item.disabled) {
+                    active = mod(this.props.active, visibleLength) === index;
+                    index++;
+                }
+                return {...item, active};
+            })
             .map((item: IItemBoxProps) => <ItemBox
                 key={item.value}
                 {...item}
