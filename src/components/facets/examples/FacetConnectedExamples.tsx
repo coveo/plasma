@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>
             dispatch(changeFacet(facet4.name, {
                 name: 'row3',
                 formattedName: 'Row 3',
-                isExclude: true,
+                exclude: true,
             }));
         },
     };
@@ -99,11 +99,11 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Facet with exclude enabled</label>
-                    <FacetConnected facet={facet4} facetRows={facetRows} enabledExclude clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                    <FacetConnected facet={facet4} facetRows={facetRows} enableExclusions clearFacet={clearFacet} toggleFacet={toggleFacet} />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Facet with exclude enabled and many rows</label>
-                    <FacetConnected facet={facet5} facetRows={moreFacetRows} enabledExclude clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                    <FacetConnected facet={facet5} facetRows={moreFacetRows} enableExclusions clearFacet={clearFacet} toggleFacet={toggleFacet} />
                 </div>
             </div>
         );

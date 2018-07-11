@@ -14,7 +14,7 @@ export interface IFacet {
     formattedName: string;
     tooltipLabel?: string;
     count?: string;
-    isExclude?: boolean;
+    exclude?: boolean;
 }
 
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
@@ -42,7 +42,7 @@ export interface IFacetDispatchProps {
 export interface IFacetChildrenProps {
     moreLabel?: string;
     filterPlaceholder?: string;
-    enabledExclude?: boolean;
+    enableExclusions?: boolean;
 }
 
 export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps, IFacetChildrenProps {}
@@ -104,7 +104,7 @@ export class Facet extends React.Component<IFacetProps, any> {
                     facetRow={facetRow}
                     onToggleFacet={this.buildFacet}
                     isChecked={isSelected}
-                    enabledExclude={this.props.enabledExclude}
+                    enableExclusions={this.props.enableExclusions}
                     maxTooltipLabelLength={this.props.maxTooltipLabelLength}
                 />
             );
@@ -140,8 +140,8 @@ export class Facet extends React.Component<IFacetProps, any> {
         );
     }
 
-    private getMoreRows(isNeedMore: boolean, rows: JSX.Element[]): JSX.Element {
-        if (isNeedMore) {
+    private getMoreRows(needMoreRows: boolean, rows: JSX.Element[]): JSX.Element {
+        if (needMoreRows) {
             return this.props.withReduxState
                 ? <FacetMoreRowsConnected
                     facet={this.props.facet.name}

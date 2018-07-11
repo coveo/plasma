@@ -23,7 +23,7 @@ export class FacetExamples extends React.Component<any> {
             {
                 name: 'row2',
                 formattedName: 'Row 2',
-                isExclude: true,
+                exclude: true,
             },
             {
                 name: 'row1',
@@ -67,7 +67,7 @@ export class FacetExamples extends React.Component<any> {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Facet with enabled exclude rows</label>
-                    <Facet facet={facet} facetRows={moreFacetRows} selectedFacetRows={selectedFacetRows} enabledExclude clearFacet={clearFacet} toggleFacet={onToggleFacet} />
+                    <Facet facet={facet} facetRows={moreFacetRows} selectedFacetRows={selectedFacetRows} enableExclusions clearFacet={clearFacet} toggleFacet={onToggleFacet} />
                 </div>
             </div>
         );

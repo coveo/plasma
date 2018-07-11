@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {Svg} from '../svg/Svg';
@@ -10,7 +11,7 @@ export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
     onToggleFacet: (facetRow: IFacet) => void;
     isChecked: boolean;
     maxTooltipLabelLength?: number;
-    enabledExclude?: boolean;
+    enableExclusions?: boolean;
 }
 
 export class FacetRow extends React.Component<IFacetRowProps, any> {
@@ -19,11 +20,15 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     };
 
     get isExclude(): boolean {
-        return !!this.props.enabledExclude && !!this.props.facetRow.isExclude;
+        return !!this.props.enableExclusions && !!this.props.facetRow.exclude;
     }
 
     render() {
-        const className: string = `facet-value facet-selectable ${!!this.props.enabledExclude ? 'facet-exclude' : ''}`;
+        const className: string = classNames(
+            'facet-value',
+            'facet-selectable',
+            {'facet-exclude': this.props.enableExclusions},
+        );
         return (
             <li className={className}>
                 {this.getExcludeCheckbox()}
@@ -59,25 +64,27 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             ? this.props.maxTooltipLabelLength - this.props.facetRow.count.length
             : this.props.maxTooltipLabelLength;
 
-        if (this.props.facetRow.formattedName.length > maxCalculatedNameLength) {
-            return (
-                <Tooltip title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName} placement='top' className={`inline-block${className}`}>
-                    {this.props.facetRow.formattedName}
-                </Tooltip>
-            );
-        } else {
-            return <span className={className}>{this.props.facetRow.formattedName}</span>;
-        }
+        return (this.props.facetRow.formattedName.length > maxCalculatedNameLength)
+            ? <Tooltip
+                title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName}
+                placement='top'
+                className={`inline-block${className}`}
+            >
+                {this.props.facetRow.formattedName}
+            </Tooltip>
+            : <span className={className}>
+                {this.props.facetRow.formattedName}
+            </span>;
     }
 
     private getCount(): JSX.Element {
         if (!_.isUndefined(this.props.facetRow.count)) {
-            return <span className={`facet-value-count ${this.props.isChecked && this.isExclude ? 'text-exclude' : ''}`}>{this.props.facetRow.count}</span>;
+            return <span className={classNames('facet-value-count', {'text-exclude': this.props.isChecked && this.isExclude})}>{this.props.facetRow.count}</span>;
         }
     }
 
     private getExcludeCheckbox(): JSX.Element {
-        if (!!this.props.enabledExclude) {
+        if (!!this.props.enableExclusions) {
             return (
                 <div className='flex center-align facet-exclude-button' onClick={() => this.toggleFacetToExclude()}>
                     <input
@@ -101,10 +108,10 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     private toggleFacetToExclude(): void {
-        this.props.onToggleFacet(_.extend({}, this.props.facetRow, {isExclude: true}));
+        this.props.onToggleFacet({...this.props.facetRow, exclude: true});
     }
 
     private toggleFacet(): void {
-        this.props.onToggleFacet(_.extend({}, this.props.facetRow, {isExclude: false}));
+        this.props.onToggleFacet({...this.props.facetRow, exclude: false});
     }
 }

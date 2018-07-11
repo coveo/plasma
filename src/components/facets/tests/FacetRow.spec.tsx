@@ -169,7 +169,7 @@ describe('Facets', () => {
         let facetRowExcludeView: ReactWrapper<IFacetRowProps>;
         let props: IFacetRowProps;
         beforeEach(() => {
-            props = {...FACET_ROW_PROPS, enabledExclude: true};
+            props = {...FACET_ROW_PROPS, enableExclusions: true};
             facetRowExcludeView = mount(<FacetRow {...props} />, {attachTo: document.getElementById('App')});
         });
 
@@ -185,14 +185,14 @@ describe('Facets', () => {
             facetRowExcludeView.find('.facet-exclude-button').first().simulate('click');
             const facet: IFacet = {
                 ...facetRowExcludeView.props().facetRow,
-                isExclude: true,
+                exclude: true,
             };
             expect(spyOnToggleFacet).toHaveBeenCalledWith(facet);
         });
 
         describe('FacetRow enableExclude excluded row', () => {
             beforeEach(() => {
-                const facetRow: IFacet = {...FACET_ROW_PROPS.facetRow, isExclude: true, count: '2334'};
+                const facetRow: IFacet = {...FACET_ROW_PROPS.facetRow, exclude: true, count: '2334'};
                 facetRowExcludeView.setProps({...props, isChecked: true, facetRow});
             });
 
