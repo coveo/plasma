@@ -6,7 +6,7 @@
   padding: 0;
 
   background: $pure-white;
-  border: 2px solid $medium-blue;
+  border: $checkbox-default-border;
   border-radius: $border-radius;
   outline: none;
 
@@ -92,7 +92,7 @@ input[type=checkbox].coveo-checkbox {
 
       content: '';
 
-      border-bottom: solid 2px $medium-blue;
+      border-bottom: $checkbox-default-border;
     }
   }
 
