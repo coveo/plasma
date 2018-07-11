@@ -37,6 +37,14 @@ describe('Facets', () => {
             facetRowView.detach();
         });
 
+        it('should stop event if click on checkbox directly', () => {
+            const event = jasmine.createSpyObj('e', ['preventDefault', 'stopPropagation']);
+            (facetRowView.instance() as any).stopEvent(event);
+
+            expect(event.preventDefault).toHaveBeenCalled();
+            expect(event.stopPropagation).toHaveBeenCalled();
+        });
+
         it('should get the facet row as a prop', () => {
             const facetRowProp = facetRowView.props().facetRow;
 
@@ -171,6 +179,15 @@ describe('Facets', () => {
 
         it('should display a .exclude-icon when exclude behavior is enabled and checkbox is checked as exclude', () => {
             expect(facetRowExcludeView.find('.icon.hide.exclude-icon').length).toBe(1);
+        });
+
+        it('should call onToggle with good attribute when exclude behavior is enabled', () => {
+            facetRowExcludeView.find('.facet-exclude-button').first().simulate('click');
+            const facet: IFacet = {
+                ...facetRowExcludeView.props().facetRow,
+                isExclude: true,
+            };
+            expect(spyOnToggleFacet).toHaveBeenCalledWith(facet);
         });
 
         describe('FacetRow enableExclude excluded row', () => {

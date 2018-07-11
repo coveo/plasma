@@ -40,7 +40,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         name={this.props.facetRow.name}
                         className='coveo-checkbox facet-checkbox-input'
                         checked={this.props.isChecked && !this.isExclude}
-                        onClick={(e) => {e.preventDefault(); e.stopPropagation();}}
+                        onClick={this.stopEvent}
                         onChange={_.noop}
                     />
                     <button type='button' className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
@@ -84,7 +84,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         type='checkbox'
                         className='coveo-checkbox'
                         checked={this.props.isChecked && this.isExclude}
-                        onClick={(e) => {e.preventDefault(); e.stopPropagation();}}
+                        onClick={this.stopEvent}
                         onChange={_.noop}
                     />
                     <span className='center-align exclude-button' >
@@ -93,6 +93,11 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                 </div>
             );
         }
+    }
+
+    private stopEvent(event: React.MouseEvent<HTMLInputElement>): void {
+        event.preventDefault();
+        event.stopPropagation();
     }
 
     private toggleFacetToExclude(): void {
