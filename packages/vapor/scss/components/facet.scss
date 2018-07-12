@@ -134,10 +134,11 @@
 }
 
 .exclude-icon {
-  display: none;
   position: relative;
-  height: $facet-exclude-checkbox-icon-size;
+
+  display: none;
   width: $facet-exclude-checkbox-icon-size;
+  height: $facet-exclude-checkbox-icon-size;
 
   svg {
     position: absolute;
@@ -148,20 +149,19 @@
 
 .exclude-button {
   display: none;
-
-  height: $facet-exclude-button-size;
   width: $facet-exclude-button-size;
+  height: $facet-exclude-button-size;
 
   background:  $pure-white;
   border: $default-border;
   border-radius: $border-radius;
 
   .icon {
-    display: block;
     position: relative;
 
-    height: $facet-exclude-button-icon-size;
+    display: block;
     width: $facet-exclude-button-icon-size;
+    height: $facet-exclude-button-icon-size;
 
     svg {
       position: absolute;
@@ -172,22 +172,25 @@
 }
 
 .facet-exclude-button {
-  cursor: pointer;
   position: absolute;
-  right: 0;
   top: 0;
-  height: 100%;
+  right: 0;
+
   width:  $facet-exclude-padding-right;
+  height: 100%;
+
+  cursor: pointer;
 
   &:hover .exclude-button {
     display: flex;
   }
 
-  + .coveo-checkbox-label > .exclude-box,
-  &:hover + .coveo-checkbox-label > button {
-    display: flex;
-    justify-content: center;
+  + .coveo-checkbox-label > .exclude-box, &:hover + .coveo-checkbox-label > button {
     align-items: center;
+    justify-content: center;
+
+    display: flex;
+
     background: $pure-white;
     border: $checkbox-default-border;
 
