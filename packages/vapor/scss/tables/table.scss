@@ -11,7 +11,6 @@
     position: relative;
 
     text-align: left;
-    vertical-align: middle;
 
     &.selection {
       width: 25px !important;
@@ -25,6 +24,14 @@
     .coveo-checkbox-label + .cell-content {
       margin-left: 10px;
     }
+  }
+
+  th {
+    vertical-align: middle;
+  }
+
+  td {
+    vertical-align: top;
   }
 
   thead tr {
