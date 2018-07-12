@@ -39,20 +39,19 @@
   }
 
   th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
     padding: $table-header-top-bottom-padding $table-cell-left-right-padding;
 
     white-space: nowrap;
 
+    background-color: $pure-white;
     border-top: $table-border;
     border-bottom: $table-border;
 
-    position: sticky;
-    top: 0;
-    background-color: $pure-white;
-    z-index: 1;
-
     &.admin-sort {
-
       cursor: pointer;
 
       .admin-sort-icon {
