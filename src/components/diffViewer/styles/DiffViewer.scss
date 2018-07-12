@@ -20,8 +20,8 @@
     }
 
     :global(.d2h-diff-table) {
-        font-family: 'Courier New', Courier, monospace;
-        border-bottom: 1px solid $medium-grey;
+        font-family: $code-font-family;
+        border-bottom: $default-border;
     }
 
     :global(.d2h-code-linenumber) {
@@ -29,7 +29,7 @@
         width: auto;
         height: calc(#{$diff-line-height} + #{$diff-line-ajustment});
         border: none;
-        border-left: 1px solid $medium-grey;
+        border-left: $default-border;
         margin-top: $diff-line-ajustment;
 
         &:global(.d2h-change) {
@@ -46,13 +46,13 @@
     }
 
     :global(td) {
-        border-right: 1px solid $medium-grey;
+        border-right: $default-border;
     }
 
     :global(td.d2h-info) {
         height: auto;
         line-height: normal;
-        border: 1px solid $medium-grey;
+        border: $default-border;
         border-left: none;
         border-right: none;
         background: none;
