@@ -172,7 +172,7 @@ export class Table extends React.Component<ITableProps> {
             'mod-align-header',
             {
                 'mod-loading-content': !!(this.props.tableCompositeState && this.props.tableCompositeState.isLoading),
-                'loading-component': this.isInitialLoad,
+                'loading-component': this.isInitialLoad && !this.props.tableCompositeState.isInError,
             },
             this.props.tableClasses,
         );
