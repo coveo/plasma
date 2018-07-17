@@ -13,8 +13,7 @@ export interface IDateComponents {
 }
 
 export const SIMPLE_DATE_FORMAT: string = 'MMM DD, YYYY';
-export const LONG_DATE_FORMAT: string = 'YYYY-MM-DD HH:mm';
-export const LONG_DATE_WITH_SMALL_HOURS_FORMAT: string = 'YYYY-MM-DD H:mm';
+export const LONG_DATE_FORMAT: string = SIMPLE_DATE_FORMAT + ', H:mm';
 export const DATES_SEPARATOR: string = '%';
 
 export class DateUtils {
@@ -70,12 +69,7 @@ export class DateUtils {
     }
 
     static getValidDate(date: string, fromTime: boolean = false): Date {
-        let momentDate: moment.Moment = moment(date, LONG_DATE_FORMAT, fromTime);
-        if (momentDate.isValid()) {
-            return momentDate.toDate();
-        }
-
-        momentDate = moment(date, LONG_DATE_WITH_SMALL_HOURS_FORMAT, fromTime);
+        const momentDate: moment.Moment = moment(date, LONG_DATE_FORMAT, fromTime);
         if (momentDate.isValid()) {
             return momentDate.toDate();
         }
