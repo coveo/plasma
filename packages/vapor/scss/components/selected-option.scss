@@ -29,12 +29,20 @@
 }
 
 .selected-option-value {
+  display: inline-flex;
   margin-left: $dropdown-multiselect-items-margin;
   overflow: hidden;
 
   text-overflow: ellipsis;
 
   @extend .selected-option-item;
+}
+
+.move-option {
+  justify-content: center;
+
+  height: 100%;
+  margin-right: $dropdown-multiselect-items-margin;
 }
 
 .remove-option {

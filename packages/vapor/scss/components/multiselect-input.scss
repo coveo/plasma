@@ -6,40 +6,61 @@
 
   display: flex;
   width: $dropdown-button-min-width;
-  padding: $dropdown-multiselect-padding;
+  padding: $multiselect-padding;
 
-  border: $default-border;
   border-radius: $border-radius;
+
+  @extend .mod-border-transparency-4;
+}
+
+.select-dropdown.mod-multi .select-dropdown-button + .select-dropdown-container {
+  margin-top: $multiselect-dropdown-margin;
+}
+
+.multiselect-add {
+  width: 100%;
+}
+
+.multiselect-selected {
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  display: flex;
 }
 
 .selected-options-container {
-  align-items: center;
-  flex: 1 1;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-flow: row wrap;
 
   display: inline-flex;
-  padding: $dropdown-multiselect-margin;
-  overflow: hidden;
 
-  input {
-    height: $dropdown-multiselect-option-height;
-    min-width: 100%;
-    padding: $dropdown-multiselect-margin;
-
-    font-size: $dropdown-button-font-size;
-
-    border: none;
-  }
-
-  input:focus {
-    outline:none;
+  .selected-option, .sortable-selected-option {
+    margin: 0 $dropdown-multiselect-margin $dropdown-multiselect-margin 0;
   }
 }
 
+.multiselect-input.mod-sortable .selected-options-container {
+  align-items: flex-start;
+  flex-flow: column nowrap;
+
+  .selected-option {
+    margin: 0;
+  }
+}
+
+.multiselect-empty {
+  margin-bottom: $spacing;
+
+  color: $medium-grey;
+  line-height: $button-small-height + 2 * $button-border-width;
+}
+
+.selected-option:last-child, .sortable-selected-option:last-child {
+  margin-bottom: $spacing;
+}
+
 .remove-all-selected-options {
-  flex: 0 1;
+  align-self: flex-start;
 
   padding: $dropdown-multiselect-items-margin;
 }
