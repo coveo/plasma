@@ -1,4 +1,5 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IFacet} from '../Facet';
 import {emptyAllFacets, FacetActions, IChangeFacetActionPayload, IFacetActionPayload} from '../FacetActions';
 import {facetInitialState, facetReducer, facetsInitialState, facetsReducer, IFacetState} from '../FacetReducers';
 
@@ -195,6 +196,38 @@ describe('Facets', () => {
             expect(facetsState.length).toBe(oldState.length);
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(0);
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+        });
+
+        it('should set selected property to an empty array the facet when the action is "EMPTY_FACET', () => {
+            const selectedRows: IFacet[] = [{
+                name: 'row',
+                formattedName: 'Row',
+                exclude: false,
+            }];
+            const oldState: IFacetState[] = [
+                {
+                    facet: 'some-facet2',
+                    opened: true,
+                    selected: selectedRows,
+                }, {
+                    facet: 'some-facet1',
+                    opened: false,
+                    selected: [],
+                },
+            ];
+            const action: IReduxAction<IChangeFacetActionPayload> = {
+                type: FacetActions.changeFacet,
+                payload: {
+                    facet: 'some-facet2',
+                    facetRow: {
+                        ...selectedRows[0],
+                        exclude: true,
+                    },
+                },
+            };
+            const facetsState: IFacetState[] = facetsReducer(oldState, action);
+
+            expect(facetsState[0].selected[0].exclude).toBeTruthy();
         });
 
         it('should set selected property to an empty array in all facets when the action is "EMPTY_ALL_FACET', () => {
