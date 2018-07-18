@@ -2,6 +2,7 @@
 dist
 coverage
 docs/assets/
+docs/dependencies/
 
 # Node files
 node_modules

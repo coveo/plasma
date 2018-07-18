@@ -8,6 +8,9 @@ const path = require('path');
 const replace = require('gulp-replace');
 const remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 const runSequence = require('gulp-sequence');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const packageJSON = require('./package.json');
 
 // <editor-fold desc="Clean">
 const clean = (paths, done) => {
@@ -109,6 +112,55 @@ gulp.task('test:watch', 'Run all tests in PhantomJS and watch', (done) => {
     runTests(done, false, 'PhantomJS');
 });
 // </editor-fold>
+
+gulp.task('dependencies:docs', () => {
+    return gulp.src([
+        'node_modules/codemirror/lib/codemirror.js',
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/redux/dist/redux.js',
+        'node_modules/react/dist/react.js',
+        'node_modules/react-dom/dist/react-dom.js',
+        'node_modules/react-redux/dist/react-redux.js',
+        'node_modules/react-bootstrap/dist/react-bootstrap.js',
+        'node_modules/underscore/underscore.js',
+        'node_modules/moment/min/moment-with-locales.js',
+        'node_modules/coveo-styleguide/dist/js/VaporSVG.js',
+        'node_modules/reselect/dist/reselect.js',
+        'node_modules/chosen-js/chosen.jquery.min.js',
+    ])
+        .pipe(concat('react-vapor.dependencies.js'))
+        .pipe(gulp.dest('./docs/dependencies/'));
+});
+
+gulp.task('dependencies:prod', () => {
+    return gulp.src([
+        'node_modules/codemirror/lib/codemirror.js',
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/redux/dist/redux.min.js',
+        'node_modules/react/dist/react.min.js',
+        'node_modules/react-dom/dist/react-dom.min.js',
+        'node_modules/react-redux/dist/react-redux.min.js',
+        'node_modules/react-bootstrap/dist/react-bootstrap.min.js',
+        'node_modules/underscore/underscore-min.js',
+        'node_modules/moment/min/moment-with-locales.min.js',
+        'node_modules/coveo-styleguide/dist/js/VaporSVG.js',
+        'node_modules/reselect/dist/reselect.js',
+        'node_modules/chosen-js/chosen.jquery.min.js',
+    ])
+        .pipe(gulp.dest('./dist/dependencies/'))
+        .pipe(concat('react-vapor.dependencies.js'))
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('dependencies:externals', () => {
+    return gulp.src([
+        'webpack.externals.js',
+    ])
+        .pipe(rename('react-vapor.webpack.externals.js'))
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('dependencies', ['dependencies:prod', 'dependencies:docs', 'dependencies:externals']);
 
 gulp.task('default', 'Clean, and compile the project', (done) => {
     runSequence('clean:dist', 'ts:definitions', done);
