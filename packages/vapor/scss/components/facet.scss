@@ -80,6 +80,9 @@
 
   &:hover {
     background-color: $light-grey;
+    .exclude-button {
+      display: flex;
+    }
   }
 }
 
@@ -151,23 +154,12 @@
   display: none;
   width: $facet-exclude-button-size;
   height: $facet-exclude-button-size;
-
-  background:  $pure-white;
-  border: $default-border;
-  border-radius: $border-radius;
-
-  .icon {
-    position: relative;
-
-    display: block;
-    width: $facet-exclude-button-icon-size;
-    height: $facet-exclude-button-icon-size;
-
-    svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+  &:hover svg {
+    fill: $dark-blue;
   }
 }
 
@@ -181,11 +173,8 @@
 
   cursor: pointer;
 
-  &:hover .exclude-button {
-    display: flex;
-  }
-
-  + .coveo-checkbox-label > .exclude-box, &:hover + .coveo-checkbox-label > button {
+  + .coveo-checkbox-label > .exclude-box,
+  &:hover + .coveo-checkbox-label > button {
     align-items: center;
     justify-content: center;
 
