@@ -198,7 +198,7 @@ describe('Facets', () => {
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
         });
 
-        it('should set selected property to an empty array the facet when the action is "EMPTY_FACET', () => {
+        it('should set the selected facet exclude property to true if it aleady selected to not exclude', () => {
             const selectedRows: IFacet[] = [{
                 name: 'row',
                 formattedName: 'Row',
