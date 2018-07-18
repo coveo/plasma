@@ -29,6 +29,7 @@ export interface ISelectStateProps {
     items?: IItemBoxProps[];
     isOpen?: boolean;
     active?: number;
+    selected?: string[];
     selectedLength?: number;
 }
 
@@ -57,6 +58,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISelectOwnProps): IS
     return {
         isOpen: select && select.open,
         active: list && list.active,
+        selected: list && list.selected,
         selectedLength: list && list.selected.length || 0,
     };
 };
@@ -182,7 +184,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
 
         if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpen) {
             const actives = _.chain(this.props.items)
-                .filter((item: IItemBoxProps) => !item.hidden && !item.disabled)
+                .filter((item: IItemBoxProps) => !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value)) && !item.disabled)
                 .value();
             const active = actives[mod(this.props.active, actives.length)];
             if (active) {

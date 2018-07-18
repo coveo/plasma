@@ -44,14 +44,7 @@ describe('Select', () => {
         });
 
         beforeAll(() => {
-            // tslint:disable
-            // make debounce synchronous
-            spyOn(_, 'debounce').and.callFake(function(func: () => void) {
-                return function(this: any) {
-                    func.apply(this, arguments);
-                };
-            });
-            // tslint:enable
+            TestUtils.makeDebounceStatic();
         });
 
         describe('mount and unmount', () => {

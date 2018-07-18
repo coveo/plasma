@@ -67,7 +67,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         );
     }
 
-    private getSelectedOptionComponents() {
+    private getSelectedOptionComponents(): React.ReactNode {
         const selected = this.getSelectedOptions();
 
         if (selected.length) {
@@ -78,7 +78,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         return <span className='multiselect-empty'>{this.props.emptyPlaceholder}</span>;
     }
 
-    private renderOption(item: IItemBoxProps) {
+    private renderOption(item: IItemBoxProps): JSX.Element {
         return <SelectedOption
             label={item.displayValue || item.value}
             value={item.value}
@@ -87,7 +87,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         />;
     }
 
-    private renderDraggableOption(item: IItemBoxProps, index: number) {
+    private renderDraggableOption(item: IItemBoxProps, index: number): JSX.Element {
         return (
             <div className='flex flex-row flex-center sortable-selected-option'>
                 <span className='mr1 text-medium-grey'>{index + 1}</span>
@@ -150,7 +150,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         );
     }
 
-    private getSelectedOptions() {
+    private getSelectedOptions(): IItemBoxProps[] {
         if (this.props.sortable) {
             return _.chain(this.props.selected)
                 .map((selected: string) => _.findWhere(this.props.items, {value: selected}))

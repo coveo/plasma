@@ -61,7 +61,10 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                         id={UUID.generate()}
                         items={this.state.first}
                         placeholder='Select something'
-                        onSelectOptionCallback={console.log}
+                        onSelectOptionCallback={(option: string) => {
+                            // tslint:disable-next-line:no-console
+                            console.log(option);
+                        }}
                     />
                 </div>
                 <div className='form-group'>

@@ -52,10 +52,12 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     }
 
     protected getItems(): JSX.Element[] | JSX.Element {
-        const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
+        const shouldShow = (item: IItemBoxProps) => !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
+        const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled).length;
+
         let index = 0;
         const items = _.chain(this.props.items)
-            .filter((item: IItemBoxProps) => !item.hidden)
+            .filter(shouldShow)
             .map((item: IItemBoxProps) => {
                 let active = false;
                 if (!item.disabled) {
