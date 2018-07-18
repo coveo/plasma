@@ -347,6 +347,8 @@ $dropdown-multiselect-icon-thickness: 2px;
 $dropdown-multiselect-icon-margin: 5px;
 $dropdown-multiselect-icon-position: $dropdown-multiselect-icon-size / 2 -
   $dropdown-multiselect-icon-thickness / 2;
+$multiselect-padding: 2 * $spacing;
+$multiselect-dropdown-margin: calc(-#{$multiselect-padding} -  2 * #{$default-border-size});
 
 // Chosen
 $chosen-clear-icon-size: 10px;
