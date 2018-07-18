@@ -94,9 +94,9 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         onClick={this.stopEvent}
                         onChange={_.noop}
                     />
-                    <span className='center-align exclude-button' >
-                        <Svg svgName='clear' className='icon' svgClass='fill-medium-grey' />
-                    </span>
+                    <Tooltip className='exclude-button' title={`Exclude ${this.props.facetRow.formattedName} logs`}>
+                        <Svg svgName='exclude' className='icon' svgClass='fill-medium-grey' />
+                    </Tooltip>
                 </div>
             );
         }
@@ -108,7 +108,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     private toggleFacetToExclude(): void {
-        this.props.onToggleFacet({...this.props.facetRow, exclude: true});
+        this.props.onToggleFacet({...this.props.facetRow, exclude: !this.isExclude});
     }
 
     private toggleFacet(): void {
