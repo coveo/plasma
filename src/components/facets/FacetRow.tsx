@@ -12,6 +12,7 @@ export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
     isChecked: boolean;
     maxTooltipLabelLength?: number;
     enableExclusions?: boolean;
+    excludeTooltipMessage?(facetsRowName: string): string;
 }
 
 export class FacetRow extends React.Component<IFacetRowProps, any> {
@@ -94,12 +95,18 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         onClick={this.stopEvent}
                         onChange={_.noop}
                     />
-                    <span className='center-align exclude-button' >
-                        <Svg svgName='clear' className='icon' svgClass='fill-medium-grey' />
-                    </span>
+                    {this.getExcludeButton()}
                 </div>
             );
         }
+    }
+
+    private getExcludeButton(): JSX.Element {
+        return this.props.excludeTooltipMessage
+            ? <Tooltip className='exclude-button' title={this.props.excludeTooltipMessage(this.props.facetRow.formattedName)}>
+                <Svg svgName='exclude' className='icon' svgClass='fill-medium-grey' />
+            </Tooltip>
+            : <Svg svgName='exclude' className='exclude-button icon' svgClass='fill-medium-grey' />;
     }
 
     private stopEvent(event: React.MouseEvent<HTMLInputElement>): void {
@@ -108,7 +115,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     private toggleFacetToExclude(): void {
-        this.props.onToggleFacet({...this.props.facetRow, exclude: true});
+        this.props.onToggleFacet({...this.props.facetRow, exclude: !this.isExclude});
     }
 
     private toggleFacet(): void {

@@ -25,6 +25,7 @@ export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
     clearFacetLabel?: string;
     maxRowsToShow?: number;
     maxTooltipLabelLength?: number;
+    excludeTooltipMessage?(facetsRowName: string): string;
 }
 
 export interface IFacetStateProps extends IReduxStatePossibleProps {
@@ -106,6 +107,7 @@ export class Facet extends React.Component<IFacetProps, any> {
                     isChecked={isSelected}
                     enableExclusions={this.props.enableExclusions}
                     maxTooltipLabelLength={this.props.maxTooltipLabelLength}
+                    excludeTooltipMessage={this.props.excludeTooltipMessage}
                 />
             );
         });
