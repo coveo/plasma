@@ -30,7 +30,6 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             'facet-selectable',
             {'facet-exclude': this.props.enableExclusions},
         );
-        const labelClassName = this.props.isChecked && this.isExclude ? 'text-exclude' : '';
         return (
             <li className={className}>
                 {this.getExcludeCheckbox()}
@@ -53,18 +52,21 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                     <button type='button' className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
                         <Svg svgName='clear' className='icon hide exclude-icon' svgClass='fill-red' />
                     </button>
-                    {this.getLabel(<span className={labelClassName}>{this.props.facetRow.formattedName}</span>)}
+                    {this.getLabel()}
                     {this.getCount()}
                 </label>
             </li>
         );
     }
 
-    private getLabel(label: JSX.Element): JSX.Element {
+    private getLabel(): JSX.Element {
 
         const maxCalculatedNameLength = this.props.facetRow.count
             ? this.props.maxTooltipLabelLength - this.props.facetRow.count.length
             : this.props.maxTooltipLabelLength;
+
+        const className = classNames({'text-exclude': this.props.isChecked && this.isExclude});
+        const label: JSX.Element = <span className={className}>{this.props.facetRow.formattedName}</span>;
 
         return (this.props.facetRow.formattedName.length > maxCalculatedNameLength)
             ? <Tooltip
