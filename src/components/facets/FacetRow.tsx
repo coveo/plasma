@@ -12,7 +12,7 @@ export interface IFacetRowProps extends React.ClassAttributes<FacetRow> {
     isChecked: boolean;
     maxTooltipLabelLength?: number;
     enableExclusions?: boolean;
-    excludeTooltipMessage(facetsRowName: string): string;
+    excludeTooltipMessage?(facetsRowName: string): string;
 }
 
 export class FacetRow extends React.Component<IFacetRowProps, any> {
