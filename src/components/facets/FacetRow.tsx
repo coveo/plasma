@@ -30,7 +30,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             'facet-selectable',
             {'facet-exclude': this.props.enableExclusions},
         );
-        const labelClassName = this.props.isChecked && this.isExclude ? ' text-exclude' : '';
+        const labelClassName = this.props.isChecked && this.isExclude ? 'text-exclude' : '';
         return (
             <li className={className}>
                 {this.getExcludeCheckbox()}
