@@ -194,29 +194,6 @@ describe('Actions', () => {
                 expect(actionBar.hasClass('small-actions-container')).toBe(true);
             });
 
-            it('should add the class fixed-actions if the props tableYPosition is smaller or equal to the prop maxScroll', () => {
-                renderActionBar({
-                    tableYPosition: 10,
-                    maxScroll: 9,
-                });
-
-                expect(actionBar.hasClass('fixed-actions')).toBe(false);
-
-                renderActionBar({
-                    tableYPosition: 9,
-                    maxScroll: 9,
-                });
-
-                expect(actionBar.hasClass('fixed-actions')).toBe(true);
-
-                renderActionBar({
-                    tableYPosition: 9,
-                    maxScroll: 19,
-                });
-
-                expect(actionBar.hasClass('fixed-actions')).toBe(true);
-            });
-
             it('should set the width on the bar if there is one sent as a prop', () => {
                 const expectedWidth: number = 90;
                 renderActionBar({
