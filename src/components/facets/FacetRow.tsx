@@ -30,6 +30,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             'facet-selectable',
             {'facet-exclude': this.props.enableExclusions},
         );
+        const labelClassName = this.props.isChecked && this.isExclude ? ' text-exclude' : '';
         return (
             <li className={className}>
                 {this.getExcludeCheckbox()}
@@ -52,15 +53,15 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                     <button type='button' className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
                         <Svg svgName='clear' className='icon hide exclude-icon' svgClass='fill-red' />
                     </button>
-                    <span className='label'>{this.getLabel()}</span>
+                    {this.getLabel(<span className={labelClassName}>{this.props.facetRow.formattedName}</span>)}
                     {this.getCount()}
                 </label>
             </li>
         );
     }
 
-    private getLabel(): JSX.Element {
-        const className = this.props.isChecked && this.isExclude ? ' text-exclude' : '';
+    private getLabel(label: JSX.Element): JSX.Element {
+
         const maxCalculatedNameLength = this.props.facetRow.count
             ? this.props.maxTooltipLabelLength - this.props.facetRow.count.length
             : this.props.maxTooltipLabelLength;
@@ -69,13 +70,11 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             ? <Tooltip
                 title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName}
                 placement='top'
-                className={`inline-block full-content-x${className}`}
+                className='label'
             >
-                {this.props.facetRow.formattedName}
+                {label}
             </Tooltip>
-            : <span className={className}>
-                {this.props.facetRow.formattedName}
-            </span>;
+            : <span className='label'>{label}</span>;
     }
 
     private getCount(): JSX.Element {
