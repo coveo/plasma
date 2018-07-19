@@ -128,6 +128,7 @@
     "react-addons-test-utils": "15.6.0",
     "react-dnd": "2.5.1",
     "react-dnd-html5-backend": "2.5.1",
+    "react-dnd-test-backend": "2.5.1",
     "react-dom": "15.6.1",
     "react-redux": "5.0.6",
     "react-test-renderer": "15.6.1",

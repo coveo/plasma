@@ -1,3 +1,6 @@
+import * as React from 'react';
+import {DragDropContext} from 'react-dnd';
+import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
 import thunk from 'redux-thunk';
 import * as _ from 'underscore';
@@ -104,6 +107,17 @@ export class TestUtils {
             };
         });
         // tslint:enable
+    }
+
+    static wrapComponentInDnDContext(WrappedComponent: any) {
+        @DragDropContext(TestBackend)
+        class TestContextContainer extends React.Component<any, any> {
+            render() {
+                return React.createElement(WrappedComponent, this.props);
+            }
+        }
+
+        return TestContextContainer;
     }
 }
 

@@ -102,7 +102,7 @@ export class DraggableSelectedOption extends React.Component<IDraggableSelectedO
         ];
         return this.props.connectDragPreview(
             this.props.connectDropTarget(
-                <div style={{opacity}}>
+                <div className='selected-option-wrapper' style={{opacity}}>
                     <SelectedOption {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)} label={content} />
                 </div>,
             ),

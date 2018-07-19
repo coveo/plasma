@@ -35,3 +35,8 @@ declare module 'react-dnd-html5-backend' {
     const X: any;
     export default X;
 }
+
+declare module 'react-dnd-test-backend' {
+    const X: any;
+    export default X;
+}
