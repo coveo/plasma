@@ -52,7 +52,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                     <button type='button' className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
                         <Svg svgName='clear' className='icon hide exclude-icon' svgClass='fill-red' />
                     </button>
-                    <span className='label'>{this.getLabel()}</span>
+                    {this.getLabel()}
                     {this.getCount()}
                 </label>
             </li>
@@ -60,22 +60,23 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     private getLabel(): JSX.Element {
-        const className = this.props.isChecked && this.isExclude ? ' text-exclude' : '';
+
         const maxCalculatedNameLength = this.props.facetRow.count
             ? this.props.maxTooltipLabelLength - this.props.facetRow.count.length
             : this.props.maxTooltipLabelLength;
+
+        const className = classNames({'text-exclude': this.props.isChecked && this.isExclude});
+        const label: JSX.Element = <span className={className}>{this.props.facetRow.formattedName}</span>;
 
         return (this.props.facetRow.formattedName.length > maxCalculatedNameLength)
             ? <Tooltip
                 title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName}
                 placement='top'
-                className={`inline-block full-content-x${className}`}
+                className='label'
             >
-                {this.props.facetRow.formattedName}
+                {label}
             </Tooltip>
-            : <span className={className}>
-                {this.props.facetRow.formattedName}
-            </span>;
+            : <span className='label'>{label}</span>;
     }
 
     private getCount(): JSX.Element {
