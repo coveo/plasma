@@ -181,6 +181,16 @@ describe('FilterBox', () => {
             expect(onKeyDown).toHaveBeenCalled();
         });
 
+        it('should call onKeyUp when the input get a key up event', () => {
+            const onKeyUp = jasmine.createSpy('onKeyUp');
+            filterBox.setProps({onKeyUp});
+
+            const element = filterBox.find('.filter-box');
+            element.simulate('keyup');
+
+            expect(onKeyUp).toHaveBeenCalled();
+        });
+
         it('should call placeCursorAtEndOfInputValue when a focus event is triggered on the filter box', () => {
             const placeCursorAtEndOfInputValueSpy = spyOn(FilterBox.prototype, 'placeCursorAtEndOfInputValue');
 
