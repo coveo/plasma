@@ -20,6 +20,10 @@ declare module ReactDnD {
         canDrop?: (props: ReactProps, monitor: DropTarget) => boolean;
     }
 
+    interface IDropTargetProps {
+        connectDropTarget?: any;
+    }
+
     type IDragSourceCollect = (connect: DragSourceConnector, monitor: DragSourceMonitor) => any;
     type IDragTargetCollect = (connect: DropTargetConnector, monitor: DropTargetMonitor) => any;
     const DropTarget: (type: DropTargetTypes, spec: IDropTarget, collect: IDragTargetCollect) => (component: React.ReactComponent) => ReactClass;

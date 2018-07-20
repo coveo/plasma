@@ -1,11 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {DragDropContext} from 'react-dnd';
+import {DragDropContext, DropTarget, IDropTargetProps} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {DraggableSelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
+import {DraggableSelectedOption, DraggableSelectedOptionType} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
@@ -13,7 +13,7 @@ import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 
-export interface IMultiSelectOwnProps extends ISelectProps {
+export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
     placeholder?: string;
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
@@ -45,8 +45,17 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps)
     onReorder: (values: string[]) => dispatch(reorderListBoxOption(ownProps.id, values)),
 });
 
+// This object is usefull when the drag happen outside of the DraggableSelectedOption,
+// instead of making the child handle it, the parent catches the event
+const parentDropTarget = {
+    drop: _.noop,
+};
+
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 @DragDropContext(HTML5Backend)
+@DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
+    connectDropTarget: connect.dropTarget(),
+}))
 export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}> {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
@@ -130,12 +139,14 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
         return (
             <div className={classes}>
-                <div className='multiselect-selected flex flex-center flex-auto'>
-                    <div className='selected-options-container'>
-                        {this.getSelectedOptionComponents()}
-                    </div>
-                    {this.getRemoveAllSelectedOptionsButton()}
-                </div>
+                {this.props.connectDropTarget(
+                    <div className='multiselect-selected flex flex-center flex-auto'>
+                        <div className='selected-options-container'>
+                            {this.getSelectedOptionComponents()}
+                        </div>
+                        {this.getRemoveAllSelectedOptionsButton()}
+                    </div>,
+                )}
                 <button
                     className='btn dropdown-toggle multiselect-add'
                     type='button'

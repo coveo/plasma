@@ -21,7 +21,7 @@ const selectedOptionSource: IDragSource = {
     isDragging(props: IDraggableSelectedOptionProps, monitor: any) {
         return props.label === monitor.getItem().label;
     },
-    beginDrag(props: ISelectedOptionProps) {
+    beginDrag(props: IDraggableSelectedOptionProps) {
         return {...props};
     },
 };
@@ -76,7 +76,7 @@ const cardTarget: IDropTarget = {
     },
 };
 
-const DraggableSelectedOptionType = 'SELECTED_OPTION';
+export const DraggableSelectedOptionType = 'SELECTED_OPTION';
 const DraggableSelectedOptionPropsToOmit = keys<IDraggableSelectedOptionOwnProps>();
 
 @DropTarget(DraggableSelectedOptionType, cardTarget, (connect: any) => ({
