@@ -20,7 +20,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFa
 
 const getSelectedRows = (rows: IFacet[], selected: IFacet[]): IFacet[] => _.without(_.map(rows, (row: IFacet) => {
     const element = _.findWhere(selected, {name: row.name});
-    return element ? _.extend(element, row) : null;
+    return element ? _.extend({}, element, row) : null;
 }), null);
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IFacetDispatchProps => ({
