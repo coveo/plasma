@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {IInputProps, Input} from '../Input';
 import {Label} from '../Label';
 
@@ -191,6 +191,14 @@ describe('Input', () => {
             input.setProps({autoFocus: true});
 
             expect(innerInput.prop('autoFocus')).toBe(true);
+        });
+
+        it('should change the value if we change the value prop', () => {
+            const expectedValue = 'a new value';
+
+            input.setProps({value: expectedValue});
+
+            expect((input as any).node.innerInput.value).toBe(expectedValue);
         });
     });
 });
