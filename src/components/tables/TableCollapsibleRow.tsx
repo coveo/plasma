@@ -27,7 +27,6 @@ export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowPro
     render() {
         const rowClasses: string = classNames(
             'collapsible-row',
-            'no-hover',
             this.props.id,
             {'in': this.props.opened},
         );
