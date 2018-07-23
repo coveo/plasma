@@ -202,3 +202,13 @@
     margin-left: $button-margin-width;
   }
 }
+
+.btn-hover:hover {
+  .icon {
+    fill: $links-color;
+  }
+
+  .btn-hover-text {
+    color: $links-color;
+  }
+}
