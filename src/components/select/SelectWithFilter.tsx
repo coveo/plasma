@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {ReduxConnect} from '../../utils/ReduxUtils';
@@ -6,9 +7,12 @@ import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectProps} from './SelectConnected';
 
-export interface ISelectWithFilterProps extends ISelectProps {
+export interface ISelectWithFilterOwnProps {
     matchFilter?: (filterValue: string, item: IItemBoxProps) => boolean;
 }
+const SelectWithFilterPropsToOmit = keys<ISelectWithFilterOwnProps>();
+
+export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps, ISelectProps {}
 
 export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
     const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
@@ -41,9 +45,15 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
         render() {
             return (
-                <Component {...this.props}>
+                <Component {..._.omit(this.props, SelectWithFilterPropsToOmit)}>
+                    <FilterBoxConnected
+                        id={this.props.id}
+                        containerClasses={[!!this.props.children ? 'mb2' : '']}
+                        onKeyDown={(this.props as any).onKeyDown}
+                        onKeyUp={(this.props as any).onKeyUp}
+                        isAutoFocus
+                    />
                     {this.props.children}
-                    <FilterBoxConnected containerClasses={[!!this.props.children ? 'mt2' : '']} id={this.props.id} />
                 </Component>
             );
         }

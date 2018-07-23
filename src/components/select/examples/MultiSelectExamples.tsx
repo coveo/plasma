@@ -25,6 +25,7 @@ const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
 
 export interface IMultiSelectExamplesState {
     first: IItemBoxProps[];
+    drag: IItemBoxProps[];
     second: IItemBoxProps[];
     hoc: IItemBoxProps[];
 }
@@ -41,6 +42,7 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
 
         this.state = {
             first: _.clone(defaultItems),
+            drag: _.clone(defaultItems),
             second,
             hoc,
         };
@@ -51,9 +53,14 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
             <div>
                 <h1>Multi Select</h1>
                 <div className='form-group'>
-                    <label className='form-control-label'>A Simple Multi Select with a Custom Placeholder</label>
+                    <label className='form-control-label'>A Simple Multi Select with Custom Strings</label>
                     <br />
-                    <MultiSelectConnected id={UUID.generate()} items={this.state.first} placeholder='Select something' />
+                    <MultiSelectConnected id={UUID.generate()} items={this.state.first} placeholder='Select something' deselectAllTooltipText='Remove all' />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Sortable Multi Select with Custom Strings</label>
+                    <br />
+                    <MultiSelectConnected id={UUID.generate()} items={this.state.first} placeholder='Select something' deselectAllTooltipText='Remove all' sortable />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter</label>

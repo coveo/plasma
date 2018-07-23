@@ -13,6 +13,8 @@ export interface ILastUpdateConnectedExamplesProps {
 const facet: IFacet = {name: 'facetTitle1', formattedName: 'Facet Title'};
 const facet2: IFacet = {name: 'facetTitle2', formattedName: 'Facet Title'};
 const facet3: IFacet = {name: 'facetTitle3', formattedName: 'Facet Title'};
+const facet4: IFacet = {name: 'facetTitle4', formattedName: 'Facet Title'};
+const facet5: IFacet = {name: 'facetTitle5', formattedName: 'Facet Title'};
 
 const mapStateToProps = () => {
     return {};
@@ -24,6 +26,15 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>
             dispatch(changeFacet(facet2.name, {
                 name: 'row2',
                 formattedName: 'Row 2',
+            }));
+            dispatch(changeFacet(facet4.name, {
+                name: 'row2',
+                formattedName: 'Row 2',
+            }));
+            dispatch(changeFacet(facet4.name, {
+                name: 'row3',
+                formattedName: 'Row 3',
+                exclude: true,
             }));
         },
     };
@@ -85,6 +96,14 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
                 <div className='form-group'>
                     <label className='form-control-label'>Facet with many rows</label>
                     <FacetConnected facet={facet3} facetRows={moreFacetRows} clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Facet with exclude enabled</label>
+                    <FacetConnected facet={facet4} facetRows={facetRows} enableExclusions clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Facet with exclude enabled and many rows</label>
+                    <FacetConnected facet={facet5} facetRows={moreFacetRows} enableExclusions clearFacet={clearFacet} toggleFacet={toggleFacet} />
                 </div>
             </div>
         );

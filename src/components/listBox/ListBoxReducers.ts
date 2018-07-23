@@ -1,11 +1,13 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {AutocompleteActions} from '../autocomplete/AutocompleteActions';
+import {SelectActions} from '../select/SelectActions';
 import {IListBoxPayload, ListBoxActions} from './ListBoxActions';
 
 export interface IListBoxState {
     id: string;
     selected: string[];
+    active?: number;
 }
 
 export const listBoxInitialState: IListBoxState = {id: undefined, selected: []};
@@ -25,12 +27,13 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
             return {
                 id: action.payload.id,
                 selected: selected,
+                active: 0,
             };
         case ListBoxActions.select:
             return {
                 ...state,
                 selected: action.payload.multi
-                    ? [...state.selected, action.payload.value]
+                    ? _.uniq([...state.selected, action.payload.value])
                     : [action.payload.value],
             };
         case AutocompleteActions.setValue:
@@ -43,10 +46,28 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
                 ...state,
                 selected: _.without(state.selected, action.payload.value),
             };
+        case ListBoxActions.reorder:
+            return {
+                ...state,
+                selected: action.payload.values,
+            };
+        case ListBoxActions.setActive:
+            let active = state.active + action.payload.diff;
+            if (_.isUndefined(state.active)) {
+                active = action.payload.diff === 1 ? 0 : -1;
+            }
+
+            return {...state, active};
         case ListBoxActions.clear:
             return {
                 ...state,
+                active: 0,
                 selected: [],
+            };
+        case SelectActions.toggle:
+            return {
+                ...state,
+                active: 0,
             };
         default:
             return state;
@@ -68,7 +89,10 @@ export const listBoxesReducer = (
         case ListBoxActions.clear:
         case ListBoxActions.unselect:
         case ListBoxActions.select:
+        case ListBoxActions.reorder:
+        case ListBoxActions.setActive:
         case AutocompleteActions.setValue:
+        case SelectActions.toggle:
             return state.map((listBox: IListBoxState) => listBoxReducer(listBox, action));
         default:
             return state;
