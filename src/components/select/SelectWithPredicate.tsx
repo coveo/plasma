@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {ReduxConnect} from '../../utils/ReduxUtils';
@@ -7,10 +8,13 @@ import {IFlatSelectOptionProps} from '../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectProps} from './SelectConnected';
 
-export interface ISelectWithPredicateProps extends ISelectProps {
+export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];
     matchPredicate: (predicate: string, item: IItemBoxProps) => boolean;
 }
+const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
+
+export interface ISelectWithPredicateProps extends ISelectWithPredicateOwnProps, ISelectProps {}
 
 export const selectWithPredicate = (Component: (React.ComponentClass<ISelectProps> | React.StatelessComponent<ISelectProps>)): React.ComponentClass<ISelectWithPredicateProps> => {
 
@@ -33,9 +37,9 @@ export const selectWithPredicate = (Component: (React.ComponentClass<ISelectProp
     class WrappedComponent extends React.Component<ISelectWithPredicateProps> {
         render() {
             return (
-                <Component {...this.props}>
-                    {this.props.children}
+                <Component {..._.omit(this.props, SelectWithPredicatePropsToOmit)}>
                     <FlatSelectConnected id={this.props.id} classes={['full-content-x']} options={this.props.options} group optionPicker />
+                    {this.props.children}
                 </Component>
             );
         }

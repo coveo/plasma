@@ -9,7 +9,7 @@ import {IFacetState} from './FacetReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFacetStateProps => {
     const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet.name});
-    const selectedFacetRows = item ? ownProps.facetRows.filter((row) => _.findWhere(item.selected, {name: row.name})) : [];
+    const selectedFacetRows: IFacet[] = item ? getSelectedRows(ownProps.facetRows, item.selected) : [];
 
     return {
         isOpened: item && item.opened,
@@ -17,6 +17,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFa
         withReduxState: true,
     };
 };
+
+const getSelectedRows = (rows: IFacet[], selectedRows: IFacet[]): IFacet[] => _.compact(_.map(rows, (row: IFacet) => {
+    const selectedRow: IFacet = _.findWhere(selectedRows, {name: row.name});
+    return selectedRow && {...selectedRow, ...row};
+}));
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IFacetDispatchProps => ({
     onRender: (facet: string) => dispatch(addFacet(facet)),

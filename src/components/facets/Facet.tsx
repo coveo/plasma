@@ -14,6 +14,7 @@ export interface IFacet {
     formattedName: string;
     tooltipLabel?: string;
     count?: string;
+    exclude?: boolean;
 }
 
 export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
@@ -24,6 +25,7 @@ export interface IFacetOwnProps extends React.ClassAttributes<Facet> {
     clearFacetLabel?: string;
     maxRowsToShow?: number;
     maxTooltipLabelLength?: number;
+    excludeTooltipMessage?(facetsRowName: string): string;
 }
 
 export interface IFacetStateProps extends IReduxStatePossibleProps {
@@ -41,6 +43,7 @@ export interface IFacetDispatchProps {
 export interface IFacetChildrenProps {
     moreLabel?: string;
     filterPlaceholder?: string;
+    enableExclusions?: boolean;
 }
 
 export interface IFacetProps extends IFacetOwnProps, IFacetStateProps, IFacetDispatchProps, IFacetChildrenProps {}
@@ -93,34 +96,27 @@ export class Facet extends React.Component<IFacetProps, any> {
         const unselected: IFacet[] = this.sortFacetRows(this.props.facetRows);
         const allRows: IFacet[] = _.union(selected, unselected);
         const facetRows: IFacet[] = _.uniq(allRows, false, (item) => item.name);
-        const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => (
-            <FacetRow
-                key={facetRow.name}
-                facet={this.props.facet.name}
-                facetRow={facetRow}
-                onToggleFacet={this.buildFacet}
-                isChecked={_.contains(_.pluck(this.props.selectedFacetRows, 'name'), facetRow.name)}
-                maxTooltipLabelLength={this.props.maxTooltipLabelLength}
-            />
-        ));
+        const rows: JSX.Element[] = _.map(facetRows, (facetRow: IFacet) => {
+            const isSelected: boolean = _.contains(_.pluck(selected, 'name'), facetRow.name);
+            return (
+                <FacetRow
+                    key={facetRow.name}
+                    facet={this.props.facet.name}
+                    facetRow={facetRow}
+                    onToggleFacet={this.buildFacet}
+                    isChecked={isSelected}
+                    enableExclusions={this.props.enableExclusions}
+                    maxTooltipLabelLength={this.props.maxTooltipLabelLength}
+                    excludeTooltipMessage={this.props.excludeTooltipMessage}
+                />
+            );
+        });
         const rowsToShow: number = Math.max(this.props.selectedFacetRows.length, this.props.maxRowsToShow);
         // If there is only 1 extra row, show it instead of the moreRowsToggle
         const moreRowsToggle: JSX.Element = rows.length > rowsToShow + 1
             ? (this.props.withReduxState
                 ? <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
                 : <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
-            )
-            : null;
-        const moreRows: JSX.Element = moreRowsToggle
-            ? (this.props.withReduxState
-                ? <FacetMoreRowsConnected
-                    facet={this.props.facet.name}
-                    facetRows={rows.splice(rowsToShow)}
-                    filterPlaceholder={this.props.filterPlaceholder} />
-                : <FacetMoreRows
-                    facet={this.props.facet.name}
-                    facetRows={rows.splice(rowsToShow)}
-                    filterPlaceholder={this.props.filterPlaceholder} />
             )
             : null;
         const facetClasses: string = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
@@ -141,8 +137,22 @@ export class Facet extends React.Component<IFacetProps, any> {
                     {rows}
                     {moreRowsToggle}
                 </ul>
-                {moreRows}
+                {this.getMoreRows(!!moreRowsToggle, rows.splice(rowsToShow))}
             </div>
         );
+    }
+
+    private getMoreRows(needMoreRows: boolean, rows: JSX.Element[]): JSX.Element {
+        if (needMoreRows) {
+            return this.props.withReduxState
+                ? <FacetMoreRowsConnected
+                    facet={this.props.facet.name}
+                    facetRows={rows}
+                    filterPlaceholder={this.props.filterPlaceholder} />
+                : <FacetMoreRows
+                    facet={this.props.facet.name}
+                    facetRows={rows}
+                    filterPlaceholder={this.props.filterPlaceholder} />;
+        }
     }
 }

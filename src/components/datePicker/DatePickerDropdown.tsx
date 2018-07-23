@@ -1,10 +1,13 @@
+import * as classNames from 'classnames';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {DEFAULT_YEARS, ICalendarSelectionRule} from '../calendar/Calendar';
+import {Input} from '../input/Input';
 import {ModalFooter} from '../modal/ModalFooter';
 import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox} from './DatePickerBox';
 import {IDatePickerState} from './DatePickerReducers';
@@ -23,6 +26,7 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
     initiallyUnselected?: boolean;
     isClearable?: boolean;
     attributeName?: string;
+    readonly?: boolean;
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -83,6 +87,90 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
     private dropdown: HTMLDivElement;
 
+    componentWillMount() {
+        if (this.props.onRender) {
+            this.props.onRender();
+        }
+
+        if (this.props.onDocumentClick && !this.props.readonly) {
+            document.addEventListener('click', this.handleDocumentClick);
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.onDocumentClick && !this.props.readonly) {
+            document.removeEventListener('click', this.handleDocumentClick);
+        }
+
+        if (this.props.onDestroy) {
+            this.props.onDestroy();
+        }
+    }
+
+    render() {
+        let label: string = this.props.label;
+        let toLabel: JSX.Element = null;
+        let labelSecondPart: string = '';
+        if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
+            label = this.formatDate(this.props.datePicker.appliedLowerLimit);
+            if (this.props.datePicker.isRange) {
+                const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
+                if (formattedUpper !== label) {
+                    toLabel = <span className='to-label'> {this.props.toLabel} </span>;
+                    labelSecondPart = formattedUpper;
+                }
+            }
+        }
+
+        if (this.props.readonly) {
+            return (
+                <Input
+                    value={`${label} ${this.props.datePicker && this.props.datePicker.isRange ? this.props.toLabel + ' ' + labelSecondPart : ''}`}
+                    readOnly
+                />
+            );
+        }
+
+        const dropdownClasses: string = classNames(
+            ...this.props.extraDropdownClasses,
+            'dropdown-wrapper',
+            'dropdown',
+            {
+                open: this.props.isOpened,
+            },
+        );
+
+        const menuClasses: string = classNames(
+            'dropdown-menu',
+            'normal-height',
+            {
+                'on-right': this.props.onRight,
+            },
+        );
+
+        return (
+            <div className='date-picker-dropdown'>
+                <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
+                    <span
+                        className={`dropdown-toggle btn inline-flex flex-center ${this.props.extraDropdownToggleClasses.join(' ')}`}
+                        onClick={() => this.handleClick()}>
+                        <span className='dropdown-selected-value'>
+                            <label>
+                                {label}
+                                {toLabel}
+                                {labelSecondPart}
+                            </label>
+                        </span>
+                        <span className='dropdown-toggle-arrow'></span>
+                    </span>
+                    <div className={menuClasses}>
+                        {this.getDatePickerBox()}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     private handleClick = () => {
         if (this.props.onClick) {
             this.props.onClick(this.props.datePicker);
@@ -94,26 +182,6 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         if (!dropdown.contains(e.target as Node) && this.props.isOpened) {
             this.props.onDocumentClick();
             this.handleCancel();
-        }
-    }
-
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
-
-        if (this.props.onDocumentClick) {
-            document.addEventListener('click', this.handleDocumentClick);
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onDocumentClick) {
-            document.removeEventListener('click', this.handleDocumentClick);
-        }
-
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
         }
     }
 
@@ -163,95 +231,48 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         return false;
     }
 
-    render() {
-        const hasExceededRangeLimit = this.hasExceededRangeLimit();
-        const datePickerBoxProps: IDatePickerBoxProps = {
-            setToNowTooltip: this.props.setToNowTooltip,
-            datesSelectionBoxes: this.props.datesSelectionBoxes,
-            months: this.props.months,
-            startingMonth: this.props.startingMonth,
-            years: this.props.years,
-            startingYear: this.props.startingYear,
-            days: this.props.days,
-            startingDay: this.props.startingDay,
-            selectionRules: this.props.selectionRules,
-            lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
-            upperLimitPlaceholder: this.props.upperLimitPlaceholder,
-            isLinkedToDateRange: this.props.isLinkedToDateRange,
-            isClearable: this.props.isClearable,
-            initiallyUnselected: this.props.initiallyUnselected,
-            clearLabel: this.props.clearLabel,
-            simple: this.props.simple,
-            onClear: () => this.handleClear(),
-            footer: (
-                <ModalFooter classes={['mod-small']}>
-                    <Button enabled={!hasExceededRangeLimit}
-                        name={this.props.applyLabel}
-                        small={true}
-                        primary={true}
-                        tooltip={hasExceededRangeLimit ? this.props.datePicker.rangeLimit.message : ''}
-                        tooltipPlacement={'left'}
-                        onClick={() => this.handleApply()} />
-                    <Button enabled={true}
-                        name={this.props.cancelLabel}
-                        small={true}
-                        primary={true}
-                        onClick={() => this.handleCancel()} />
-                </ModalFooter>
-            ),
-        };
-
-        let datePickerBox: JSX.Element = null;
+    private getDatePickerBox(): JSX.Element {
         if (this.props.isOpened || this.props.renderDatePickerWhenClosed) {
-            datePickerBox = this.props.withReduxState
+            const hasExceededRangeLimit = this.hasExceededRangeLimit();
+            const datePickerBoxProps: IDatePickerBoxProps = {
+                setToNowTooltip: this.props.setToNowTooltip,
+                datesSelectionBoxes: this.props.datesSelectionBoxes,
+                months: this.props.months,
+                startingMonth: this.props.startingMonth,
+                years: this.props.years,
+                startingYear: this.props.startingYear,
+                days: this.props.days,
+                startingDay: this.props.startingDay,
+                selectionRules: this.props.selectionRules,
+                lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
+                upperLimitPlaceholder: this.props.upperLimitPlaceholder,
+                isLinkedToDateRange: this.props.isLinkedToDateRange,
+                isClearable: this.props.isClearable,
+                initiallyUnselected: this.props.initiallyUnselected,
+                clearLabel: this.props.clearLabel,
+                simple: this.props.simple,
+                onClear: () => this.handleClear(),
+                footer: (
+                    <ModalFooter classes={['mod-small']}>
+                        <Button enabled={!hasExceededRangeLimit}
+                            name={this.props.applyLabel}
+                            small={true}
+                            primary={true}
+                            tooltip={hasExceededRangeLimit ? this.props.datePicker.rangeLimit.message : ''}
+                            tooltipPlacement={'left'}
+                            onClick={() => this.handleApply()} />
+                        <Button enabled={true}
+                            name={this.props.cancelLabel}
+                            small={true}
+                            primary={true}
+                            onClick={() => this.handleCancel()} />
+                    </ModalFooter>
+                ),
+            };
+
+            return this.props.withReduxState
                 ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
                 : <DatePickerBox {...datePickerBoxProps} />;
         }
-
-        const dropdownClasses: string[] = ['dropdown-wrapper', 'dropdown', ...this.props.extraDropdownClasses];
-        if (this.props.isOpened) {
-            dropdownClasses.push('open');
-        }
-
-        let label: string = this.props.label;
-        let toLabel: JSX.Element = null;
-        let labelSecondPart: string;
-        if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
-            label = this.formatDate(this.props.datePicker.appliedLowerLimit);
-            if (this.props.datePicker.isRange) {
-                const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
-                if (formattedUpper !== label) {
-                    toLabel = <span className='to-label'> {this.props.toLabel} </span>;
-                    labelSecondPart = formattedUpper;
-                }
-            }
-        }
-
-        const menuClasses: string[] = ['dropdown-menu', 'normal-height'];
-        if (this.props.onRight) {
-            menuClasses.push('on-right');
-        }
-
-        return (
-            <div className='date-picker-dropdown'>
-                <div className={dropdownClasses.join(' ')} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
-                    <span
-                        className={`dropdown-toggle btn inline-flex flex-center ${this.props.extraDropdownToggleClasses.join(' ')}`}
-                        onClick={() => this.handleClick()}>
-                        <span className='dropdown-selected-value'>
-                            <label>
-                                {label}
-                                {toLabel}
-                                {labelSecondPart}
-                            </label>
-                        </span>
-                        <span className='dropdown-toggle-arrow'></span>
-                    </span>
-                    <div className={menuClasses.join(' ')}>
-                        {datePickerBox}
-                    </div>
-                </div>
-            </div>
-        );
     }
 }

@@ -6,7 +6,9 @@ import {
     clearListBoxOption,
     IListBoxPayload,
     removeListBox,
+    reorderListBoxOption,
     selectListBoxOption,
+    setActiveListBoxOption,
     unselectListBoxOption,
 } from '../ListBoxActions';
 import {IListBoxState, listBoxesInitialState, listBoxesReducer, listBoxInitialState, listBoxReducer} from '../ListBoxReducers';
@@ -230,6 +232,90 @@ describe('ListBox', () => {
                 listBoxesReducer(oldState, unselectListBoxOption(id, selected[0]));
 
                 expect(oldState).toEqual(defaultState);
+            });
+        });
+
+        describe('REORDER_ITEM_LIST_BOX', () => {
+            const id = 'list-box-id';
+            const items = [{value: 'a', selected: true}, {value: 'b', selected: true}];
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            let defaultState: IListBoxState[];
+
+            beforeEach(() => {
+                defaultState = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
+            });
+
+            it('should reorder with the new values', () => {
+                const oldState: IListBoxState[] = defaultState;
+                const newOrder = [selected[1], selected[0]];
+                const newState: IListBoxState[] = listBoxesReducer(oldState, reorderListBoxOption(id, newOrder));
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].selected.length).toBe(2);
+                expect(newState[0].selected[0]).toBe(newOrder[0]);
+                expect(newState[0].selected[1]).toBe(newOrder[1]);
+            });
+
+            it('should not modify the old state', () => {
+                const oldState: IListBoxState[] = _.clone(defaultState);
+                listBoxesReducer(oldState, reorderListBoxOption(id, selected[0]));
+
+                expect(oldState).toEqual(defaultState);
+            });
+        });
+
+        describe('SET_ACTIVE_ITEM_LIST_BOX', () => {
+            const id = 'list-box-id';
+            const items = [{value: 'a', selected: true}, {value: 'b', selected: true}];
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            let defaultState: IListBoxState[];
+
+            beforeEach(() => {
+                defaultState = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
+            });
+
+            it('should set the active to 0 if the diff is 1 and set the active is undefined in the state', () => {
+                const expectedValue = 0;
+                defaultState[0].active = undefined;
+                const oldState: IListBoxState[] = defaultState;
+                const newState: IListBoxState[] = listBoxesReducer(oldState, setActiveListBoxOption(id, 1));
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+                expect(newState[0].active).toBe(expectedValue);
+            });
+
+            it('should modify  the active to 0 if the diff is 1 and set the active is undefined in the state', () => {
+                const expectedValue = -1;
+                defaultState[0].active = undefined;
+                const oldState: IListBoxState[] = defaultState;
+                const newState: IListBoxState[] = listBoxesReducer(oldState, setActiveListBoxOption(id, -1));
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+                expect(newState[0].active).toBe(expectedValue);
+            });
+
+            it('should increment the active from the state by 1 if the diff is 1', () => {
+                const initialValue = 5;
+                const increment = 1;
+                const expectedValue = initialValue + increment;
+
+                defaultState[0].active = initialValue;
+                const oldState: IListBoxState[] = defaultState;
+                const newState: IListBoxState[] = listBoxesReducer(oldState, setActiveListBoxOption(id, increment));
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+                expect(newState[0].active).toBe(expectedValue);
+            });
+
+            it('should not modify the old state', () => {
+                const oldState: IListBoxState[] = [listBoxInitialState];
+                const oldStateBefore = _.clone(oldState);
+                listBoxesReducer(oldState, setActiveListBoxOption(id, 1));
+
+                expect(oldState).toEqual(oldStateBefore);
             });
         });
 

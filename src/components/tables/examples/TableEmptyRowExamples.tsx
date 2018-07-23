@@ -9,7 +9,7 @@ export class TableEmptyRowExamples extends React.Component<any, any> {
             <div className='mt2'>
                 <div className='form-group'>
                     <label className='form-control-label'>Table with no rows</label>
-                    <table className='mod-collapsible-rows'>
+                    <table className='mod-collapsible-rows table'>
                         <thead>
                             <tr>
                                 <th>First column</th>

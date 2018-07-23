@@ -1,5 +1,9 @@
+import * as React from 'react';
+import {DragDropContext} from 'react-dnd';
+import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
 import thunk from 'redux-thunk';
+import * as _ from 'underscore';
 import {actionBarsReducer} from '../components/actions/ActionBarReducers';
 import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReducers';
 import {autocompletesReducer} from '../components/autocomplete/AutocompleteReducers';
@@ -93,6 +97,27 @@ export class TestUtils {
 
     static randomDate() {
         return new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
+    }
+
+    static makeDebounceStatic() {
+        // tslint:disable
+        spyOn(_, 'debounce').and.callFake(function(func: () => void) {
+            return function(this: any) {
+                func.apply(this, arguments);
+            };
+        });
+        // tslint:enable
+    }
+
+    static wrapComponentInDnDContext(WrappedComponent: any) {
+        @DragDropContext(TestBackend)
+        class TestContextContainer extends React.Component<any, any> {
+            render() {
+                return React.createElement(WrappedComponent, this.props);
+            }
+        }
+
+        return TestContextContainer;
     }
 }
 

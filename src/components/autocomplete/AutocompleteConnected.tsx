@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {SlideY} from '../../animations/SlideY';
 import {IReactVaporState} from '../../ReactVapor';
+import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -62,7 +63,6 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProp
     let index = 0;
     const activeIndex = autocomplete && autocomplete.active;
     const visibleLength = _.filter(itemsWithHidden, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
-    const mod = (x: number, n: number) => (x % n + n) % n; // mod is a modulo function that works with negative numbers
     const visibleItems = _.map(itemsWithHidden, (item: IItemBoxProps): IItemBoxProps => {
         let active = false;
         if (!item.hidden && !item.disabled) {

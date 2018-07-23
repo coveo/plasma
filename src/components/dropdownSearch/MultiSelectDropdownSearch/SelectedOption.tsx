@@ -3,7 +3,7 @@ import {Svg} from '../../svg/Svg';
 
 export interface ISelectedOptionProps {
     value: string;
-    label: string;
+    label: React.ReactNode;
     onRemoveClick?: (value: string) => void;
     key: string;
 }

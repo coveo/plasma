@@ -18,6 +18,7 @@ export interface ITableBodyInheritedFromTableProps {
     headingAttributes: ITableHeadingAttribute[];
     collapsibleFormatter?: (tableRowData: IData) => JSXRenderable;
     additionalRowClasses?: IAdditionalClass[];
+    withoutHoverOnRow?: boolean;
 }
 
 export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps {
@@ -26,6 +27,7 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
     isLoading: boolean;
     onRowClick?: (actions: IActionOptions[]) => void;
     isMultiSelect: boolean;
+    withoutHoverOnRow?: boolean;
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
 }
 
@@ -61,6 +63,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
     const tableRowClasses = classNames(
         {
             disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
+            'no-hover': !!props.withoutHoverOnRow,
         },
         getAdditionalClasses(props.additionalRowClasses, props.rowData),
     );

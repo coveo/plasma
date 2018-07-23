@@ -20,7 +20,7 @@ export class TableRowConnectedExamples extends React.Component<any, any> {
             <div className='mt2'>
                 <div className='form-group'>
                     <label className='form-control-label'>Table rows without and with collapsible rows and Redux state</label>
-                    <table className='mod-collapsible-rows'>
+                    <table className='table mod-collapsible-rows'>
                         <tbody className='selected'>
                             <TableHeadingRowConnected id='first-row-connected' isCollapsible={true}>
                                 {firstRowCols(UUID.generate())}

@@ -83,20 +83,18 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
         }
     }
 
-    private getFilterIcon(): JSX.Element {
-        if (!this.props.selectedOptions.length) {
-            return (
-                <Svg svgName='filter' className='icon fill-dark-medium-grey' />
-            );
-        }
-    }
-
     render() {
         return (
             <div className='multiselect-input'>
-                <div className='selected-options-container'>
-                    {this.getSelectedOptionComponents()}
+                <div className='multiselect-selected flex flex-center flex-auto'>
+                    <div className='selected-options-container'>
+                        {this.getSelectedOptionComponents()}
+                    </div>
+                    {this.getRemoveAllSelectedOptionsButton()}
+                </div>
+                <div className='multiselect-add flex flex-center flex-auto'>
                     <input
+                        className='mod-no-border flex-auto'
                         placeholder={this.props.filterPlaceholder}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange(e)}
                         onBlur={() => this.handleOnBlur()}
@@ -104,9 +102,8 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
                         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDown(e)}
                         value={this.props.filterText}
                     />
+                    <Svg svgName='filter' className='icon fill-dark-medium-grey' />
                 </div>
-                {this.getFilterIcon()}
-                {this.getRemoveAllSelectedOptionsButton()}
             </div>
         );
     }

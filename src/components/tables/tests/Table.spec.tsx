@@ -120,6 +120,46 @@ describe('<Table />', () => {
 
             expect(table.find(TableChildBlankSlate).length).toBe(0);
         });
+
+        it('should have the class loading component if it is the initial load', () => {
+            const tableAsAny: any = mountComponentWithProps({
+                ...tablePropsMock,
+                tableCompositeState: {
+                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    isLoading: false,
+                    isInError: false,
+                },
+            } as any);
+
+            expect(tableAsAny.html()).toContain('loading-component');
+        });
+
+        it('should not have the class loading component if it is not the initial load', () => {
+            const tableAsAny: any = mountComponentWithProps({
+                ...tablePropsMock,
+                initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
+                tableCompositeState: {
+                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    isLoading: false,
+                    isInError: false,
+                },
+            } as any);
+
+            expect(tableAsAny.html()).not.toContain('loading-component');
+        });
+
+        it('should not have the class loading component if it is the initial load and the table is in error', () => {
+            const tableAsAny: any = mountComponentWithProps({
+                ...tablePropsMock,
+                tableCompositeState: {
+                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    isLoading: false,
+                    isInError: true,
+                },
+            } as any);
+
+            expect(tableAsAny.html()).not.toContain('loading-component');
+        });
     });
 
     describe('after render', () => {
