@@ -125,7 +125,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         if (this.props.readonly) {
             return (
                 <Input
-                    defaultValue={`${label} ${this.props.datePicker && this.props.datePicker.isRange ? this.props.toLabel + ' ' + labelSecondPart : ''}`}
+                    value={`${label} ${this.props.datePicker && this.props.datePicker.isRange ? this.props.toLabel + ' ' + labelSecondPart : ''}`}
                     readOnly
                 />
             );
