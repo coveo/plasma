@@ -22,15 +22,19 @@
     :global(.d2h-diff-table) {
         font-family: $code-font-family;
         border-bottom: $default-border;
+        font-size: $code-font-size;
     }
 
     :global(.d2h-code-linenumber) {
         background: $white;
+        color: $dark-grey;
         width: auto;
         height: calc(#{$diff-line-height} + #{$diff-line-ajustment});
         border: none;
         border-left: $default-border;
         margin-top: $diff-line-ajustment;
+        cursor: initial;
+        top: -#{$diff-line-ajustment};
 
         &:global(.d2h-change) {
             background: $white;
@@ -45,8 +49,17 @@
         height: calc(#{$diff-line-height} - #{$diff-line-ajustment});
     }
 
+    :global(tr) {
+        display: block;
+        position: relative;
+    }
+
     :global(td) {
         border-right: $default-border;
+    }
+
+    :global(td:last-child) {
+        display: block;
     }
 
     :global(td.d2h-info) {
@@ -65,6 +78,7 @@
             margin-top: 0;
             background: $pure-white;
             height: $diff-line-ajustment * 2;
+            top: 0;
         }
     }
 
