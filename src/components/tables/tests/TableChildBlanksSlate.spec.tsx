@@ -1,8 +1,9 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
+
 import {ITableProps} from '../Table';
 import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
-import {DEFAULT_TABLE_DATA} from '../TableConstants';
+import {DEFAULT_TABLE_DATA, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 import {tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildBlankSlate />', () => {
@@ -149,7 +150,7 @@ describe('<TableChildBlankSlate />', () => {
                     expect(mountComponentWithProps({
                         ...tablePropsMock,
                         collapsibleFormatter: () => null,
-                    }).find('td').prop('colSpan')).toBe(tablePropsMock.headingAttributes.length + 1);
+                    }).find('td').prop('colSpan')).toBe(tablePropsMock.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT);
                 });
 
             it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and filter is non empty', () => {

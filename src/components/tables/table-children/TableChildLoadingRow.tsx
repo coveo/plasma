@@ -11,7 +11,7 @@ export const TableChildLoadingRow = (props: ITableChildLoadingRowProps): JSX.Ele
     return props.isInitialLoad ? (
         <tbody className='loading-row'>
             <tr>
-                <td colSpan={props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
+                <td colSpan={props.headingAttributes.length + (!!props.collapsibleFormatter ? TOGGLE_ARROW_CELL_COUNT : 0)}>
                     <Loading />
                 </td>
             </tr>

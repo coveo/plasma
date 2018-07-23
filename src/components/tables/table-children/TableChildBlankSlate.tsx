@@ -1,12 +1,11 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {BlankSlate, IBlankSlateProps} from '../../blankSlate/BlankSlate';
 import {ITableProps} from '../Table';
-import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
+import {TABLE_PREDICATE_DEFAULT_VALUE, TOGGLE_ARROW_CELL_COUNT} from '../TableConstants';
 
 export interface ITableChildBlankSlateProps extends ITableProps {}
-
-const collapseColumnLength: number = 1;
 
 export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Element => {
     const {
@@ -32,7 +31,7 @@ export const TableChildBlankSlate = (props: ITableChildBlankSlateProps): JSX.Ele
     return (
         <tbody>
             <tr className={'blankslate-rows'}>
-                <td colSpan={headingAttributes.length + (!!props.collapsibleFormatter ? collapseColumnLength : 0)}>
+                <td colSpan={headingAttributes.length + (!!props.collapsibleFormatter ? TOGGLE_ARROW_CELL_COUNT : 0)}>
                     <BlankSlate {...blankSlatePropsToUse} />
                 </td>
             </tr>
