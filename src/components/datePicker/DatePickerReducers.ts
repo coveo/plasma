@@ -41,6 +41,8 @@ export const datePickersInitialState: IDatePickerState[] = [];
 
 const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePickerPayload>): IDatePickerState => {
     const mayBeNull = (d: Date) => action.payload.initiallyUnselected ? null : d;
+    const appliedLowerLimit = (action.payload.dateRangeOnRender || [])[0];
+    const appliedUpperLimit = (action.payload.dateRangeOnRender || [])[1];
 
     return {
         id: action.payload.id,
@@ -48,13 +50,13 @@ const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePic
         color: action.payload.color,
         isRange: action.payload.isRange,
         rangeLimit: action.payload.rangeLimit,
-        lowerLimit: mayBeNull(state.lowerLimit),
-        upperLimit: mayBeNull(state.upperLimit),
-        inputLowerLimit: mayBeNull(state.inputLowerLimit),
-        inputUpperLimit: mayBeNull(state.inputUpperLimit),
+        lowerLimit: appliedLowerLimit || mayBeNull(state.lowerLimit),
+        upperLimit: appliedUpperLimit || mayBeNull(state.upperLimit),
+        inputLowerLimit: appliedLowerLimit || mayBeNull(state.inputLowerLimit),
+        inputUpperLimit: appliedUpperLimit || mayBeNull(state.inputUpperLimit),
         selected: state.selected,
-        appliedLowerLimit: mayBeNull(state.appliedLowerLimit),
-        appliedUpperLimit: mayBeNull(state.appliedUpperLimit),
+        appliedLowerLimit: appliedLowerLimit || mayBeNull(state.appliedLowerLimit),
+        appliedUpperLimit: appliedUpperLimit || mayBeNull(state.appliedUpperLimit),
         isClearable: action.payload.isClearable,
         simple: action.payload.simple,
     };
