@@ -27,7 +27,7 @@ describe('<TableChildBlankSlate />', () => {
                 }).not.toThrow();
             });
 
-            it('should render without error if the table as displayed rows', () => {
+            it('should render without error if the table has displayed rows', () => {
                 expect(() => {
                     mountComponentWithProps({
                         ...tablePropsMock,
@@ -139,6 +139,18 @@ describe('<TableChildBlankSlate />', () => {
             it('should render the default blankslate if no results without actions and without table being in error', () => {
                 expect(mountComponentWithProps(tablePropsMock).text()).toContain(tablePropsMock.blankSlateDefault.title);
             });
+
+            it('should render the default blanslate that spans accross all table columns', () => {
+                expect(mountComponentWithProps(tablePropsMock).find('td').prop('colSpan')).toBe(tablePropsMock.headingAttributes.length);
+            });
+
+            it('should render the default blanslate that spans accross all table columns + the collapsible toggle column ' +
+                'when the table has at least one collapsible column', () => {
+                    expect(mountComponentWithProps({
+                        ...tablePropsMock,
+                        collapsibleFormatter: () => null,
+                    }).find('td').prop('colSpan')).toBe(tablePropsMock.headingAttributes.length + 1);
+                });
 
             it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and filter is non empty', () => {
                 const blankslateTitleOnAction = 'no results on action!';
