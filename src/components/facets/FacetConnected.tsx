@@ -18,10 +18,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFa
     };
 };
 
-const getSelectedRows = (rows: IFacet[], selected: IFacet[]): IFacet[] => _.without(_.map(rows, (row: IFacet) => {
-    const element = _.findWhere(selected, {name: row.name});
-    return element ? _.extend(element, row) : null;
-}), null);
+const getSelectedRows = (rows: IFacet[], selectedRows: IFacet[]): IFacet[] => _.compact(_.map(rows, (row: IFacet) => {
+    const selectedRow: IFacet = _.findWhere(selectedRows, {name: row.name});
+    return selectedRow && {...selectedRow, ...row};
+}));
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IFacetDispatchProps => ({
     onRender: (facet: string) => dispatch(addFacet(facet)),
