@@ -5,6 +5,7 @@ docs/assets/
 
 # Node files
 node_modules
+npm-debug.log.*
 
 # OS/editor 
 ._*
