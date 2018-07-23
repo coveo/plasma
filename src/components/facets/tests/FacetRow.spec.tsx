@@ -203,6 +203,21 @@ describe('Facets', () => {
             it('should display two .text-exclude when exclude behavior is enabled and checkbox is checked as exclude', () => {
                 expect(facetRowExcludeView.find('.text-exclude').length).toBe(2);
             });
+
+            it('should display a <Tooltip /> if the excludeTooltipMessage is defined', () => {
+                const facetRow: IFacet = {
+                    name: 'something',
+                    formattedName: 'Something',
+                    count: '11',
+                };
+                const newProps: IFacetRowProps = {...FACET_ROW_PROPS, facetRow, excludeTooltipMessage: () => 'test exclude tooltip'};
+
+                expect(facetRowExcludeView.find('Tooltip').length).toBe(0);
+
+                facetRowExcludeView.setProps(newProps);
+
+                expect(facetRowExcludeView.find('Tooltip').length).toBe(1);
+            });
         });
     });
 });

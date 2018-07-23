@@ -8,6 +8,7 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
     filterPlaceholder?: string;
     onBlur?: () => void;
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     isAutoFocus?: boolean;
     maxWidth?: number;
     withTitleOnInput?: boolean;
@@ -65,6 +66,12 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         }
     }
 
+    private handleOnKeyUp(e: React.KeyboardEvent<HTMLInputElement>) {
+        if (this.props.onKeyUp) {
+            this.props.onKeyUp(e);
+        }
+    }
+
     private clearValue = () => {
         this.filterInput.focus();
         this.handleChange('');
@@ -117,6 +124,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                     onBlur={() => this.handleOnBlur()}
                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => {this.placeCursorAtEndOfInputValue(e);}}
                     onKeyDown={(e) => this.handleOnKeyDown(e)}
+                    onKeyUp={(e) => this.handleOnKeyUp(e)}
                     style={inputMaxWidth}
                     autoFocus={this.props.isAutoFocus}
                 />

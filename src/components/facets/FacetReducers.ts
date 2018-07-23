@@ -47,20 +47,31 @@ const changeFacet = (state: IFacetState, action: (IReduxAction<IReduxActionsPayl
     }
 
     let selected = state.selected;
-    if (_.some(state.selected, (facetRow: IFacet) => facetRow.name === action.payload.facetRow.name && !action.payload.facetRow.exclude)) {
-        selected = _.reject(state.selected, (facetRow: IFacet) => {
-            return facetRow.name === action.payload.facetRow.name;
-        });
+    if (_.some(state.selected, (facetRow: IFacet) => facetRow.name === action.payload.facetRow.name)) {
+        const selectedIndex: number = _.findIndex(state.selected, {name: action.payload.facetRow.name});
+        if (!selected[selectedIndex].exclude && action.payload.facetRow.exclude) {
+            selected[selectedIndex] = {
+                name: action.payload.facetRow.name,
+                formattedName: action.payload.facetRow.formattedName,
+                exclude: true,
+            };
+        } else {
+            selected = _.reject(state.selected, (facetRow: IFacet, index: number) => index === selectedIndex);
+        }
     } else {
         selected = [
-            action.payload.facetRow,
+            {
+                name: action.payload.facetRow.name,
+                formattedName: action.payload.facetRow.formattedName,
+                exclude: action.payload.facetRow.exclude,
+            },
             ...state.selected,
         ];
     }
     return {
         facet: state.facet,
         opened: state.opened,
-        selected: selected,
+        selected,
     };
 };
 

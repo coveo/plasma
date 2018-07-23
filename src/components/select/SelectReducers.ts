@@ -25,6 +25,8 @@ export const selectReducer = (state: ISelectState = selectInitialState, action: 
         case SelectActions.toggle:
             // if open was sent in the dispatch use the value. Otherwise toggle the property
             return {...state, open: !_.isUndefined(action.payload.open) ? action.payload.open : !state.open};
+        case ListBoxActions.setActive:
+            return {...state, open: true};
         case ListBoxActions.select:
             // when the user selects a value in the list, close the dropdown
             return {...state, open: false};
@@ -45,6 +47,7 @@ export const selectCompositeReducer = (
             ];
         case SelectActions.remove:
             return _.reject(state, (listBox: ISelectState) => action.payload.id === listBox.id);
+        case ListBoxActions.setActive:
         case ListBoxActions.select:
         case SelectActions.toggle:
             return state.map((select: ISelectState) => selectReducer(select, action));
