@@ -1,11 +1,13 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {SlideY} from '../../animations/SlideY';
+
 import {IClassName} from '../../utils/ClassNameUtils';
 import {JSXRenderable} from '../../utils/JSXUtils';
 import {LinkSvg} from '../svg/LinkSvg';
 import {Svg} from '../svg/Svg';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {CollapsibleConnected} from './CollapsibleContainerConnected';
+import * as styles from './styles/collapsibleContainer.scss';
 
 export interface ICollapsibleContainerOwnProps {
     id: string;
@@ -34,25 +36,47 @@ export interface ICollapsibleContainerProps extends
     ICollapsibleContainerDispatchProps {}
 
 export class CollapsibleContainer extends React.Component<ICollapsibleContainerProps> {
-    private getCollapsibleHeaderClass(): string {
-        return classNames(
-            'collapsible-header btn',
-            {
-                active: this.props.expanded,
-            },
+    componentWillMount() {
+        if (this.props.onMount) {
+            this.props.onMount();
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.onUnmount) {
+            this.props.onUnmount();
+        }
+    }
+
+    render() {
+        return (
+            <CollapsibleConnected
+                id={this.props.id}
+                className={classNames(this.props.className, styles.collapsible)}
+                headerContent={this.getHeader()}
+                expandedOnMount={this.props.expandedOnMount}
+                headerClasses={classNames(styles.header, 'bg-white')}
+                toggleIconClassName='fill-medium-blue mr3'
+                withBorders
+            >
+                <div className={classNames(styles.content, this.props.collapsibleBodyClassName, 'mod-border-bottom')}>
+                    {this.props.children}
+                </div>
+            </CollapsibleConnected>
+        );
+    }
+
+    private getHeader = (): React.ReactNode => {
+        const headerClasses = classNames(
+            'inline-flex flex-center text-medium-blue caps p2 bold bg-white ml3',
             this.props.collapsibleHeaderClassName,
         );
-    }
-
-    private getCollapsibleBodyClass(): string {
-        return classNames(
-            'collapsible-body-visible',
-            this.props.collapsibleBodyClassName,
+        return (
+            <div className={headerClasses}>
+                <div>{this.props.title}</div>
+                {this.getCollapsibleHeaderIcon()}
+            </div>
         );
-    }
-
-    private getCollapsibleBody(): JSX.Element {
-        return <div className={this.getCollapsibleBodyClass()}>{this.props.children}</div>;
     }
 
     private getSvgClass(): string {
@@ -78,34 +102,5 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
             : <Tooltip {...tooltipProps}><Svg {...svgProps} /></Tooltip>;
 
         return <span className='round-contextual-help'>{collapsibleHeaderIcon}</span>;
-    }
-
-    componentWillMount() {
-        if (this.props.onMount) {
-            this.props.onMount();
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onUnmount) {
-            this.props.onUnmount();
-        }
-    }
-
-    render() {
-        return (
-            <div id={this.props.id} className={classNames('collapsible', this.props.className)}>
-                <button
-                    type='button'
-                    className={this.getCollapsibleHeaderClass()}
-                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => this.props.onToggleExpandedState(this.props.expanded)}>
-                    {this.props.title}
-                    {this.getCollapsibleHeaderIcon()}
-                </button>
-                <SlideY in={this.props.expanded} timeout={350}>
-                    {this.getCollapsibleBody()}
-                </SlideY>
-            </div>
-        );
     }
 }

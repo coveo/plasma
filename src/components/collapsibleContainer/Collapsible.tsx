@@ -9,8 +9,10 @@ export interface CollapsibleOwnProps {
     id: string;
     expandedOnMount?: boolean;
     headerContent?: React.ReactNode;
+    headerClasses?: string;
     toggleIconClassName?: string;
     className?: string;
+    withBorders?: boolean;
 }
 
 export interface CollapsibleStateProps {
@@ -37,10 +39,19 @@ export class Collapsible extends React.Component<CollapsibleProps> {
     }
 
     render() {
+        const headerClasses = classNames(
+            'cursor-pointer flex space-between center-align',
+            this.props.headerClasses,
+            {
+                'mod-border-bottom': this.props.withBorders,
+                'mod-border-top': this.props.withBorders,
+            },
+        );
+
         return (
             <div className={classNames(this.props.className)}>
                 <div
-                    className='cursor-pointer flex space-between center-align'
+                    className={headerClasses}
                     onClick={() => this.handleHeaderClick()}
                 >
                     {this.props.headerContent}
