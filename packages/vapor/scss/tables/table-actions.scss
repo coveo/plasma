@@ -1,6 +1,9 @@
 .coveo-table-actions-container {
+  position: sticky;
+  top: 0;
   flex-flow: row wrap;
   justify-content: flex-end;
+  z-index: 2;
 
   box-sizing: content-box; // Make sure $table-actions-container-height is respected with or without the mod-border-top class.
   display: flex;
