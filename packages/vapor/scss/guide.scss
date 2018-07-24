@@ -1,12 +1,12 @@
 // Must be the first import
 @import 'dependencies';
-@import 'common/common';
 @import 'common/palette';
 @import 'common/palette-map';
+@import 'variables';
+@import 'common/common';
 @import 'common/font';
 @import 'custom-reset';
 @import 'sprites';
-@import 'variables';
 @import 'animations';
 @import 'slide-animation';
 @import 'helpers';
