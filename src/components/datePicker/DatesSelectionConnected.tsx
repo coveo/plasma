@@ -48,6 +48,8 @@ const mapDispatchToProps = (
             ownProps.calendarId,
             ownProps.initiallyUnselected,
             ownProps.isClearable,
+            undefined,
+            ownProps.initialDateRange,
         ));
     },
     onDestroy: () => dispatch(removeDatePicker(ownProps.id)),

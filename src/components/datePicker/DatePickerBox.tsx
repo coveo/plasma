@@ -9,6 +9,7 @@ import {CalendarConnected} from '../calendar/CalendarConnected';
 import {IOption} from '../optionPicker/Option';
 import {IOptionPickerProps, OptionPicker} from '../optionPicker/OptionPicker';
 import {OptionPickerConnected} from '../optionPicker/OptionPickerConnected';
+import {DatePickerDateRange} from './DatePickerConstants';
 import {DatesSelection, IDatesSelectionProps, IRangeLimit} from './DatesSelection';
 import {DatesSelectionConnected} from './DatesSelectionConnected';
 
@@ -47,6 +48,7 @@ export interface IDatePickerBoxChildrenProps {
     lowerLimitPlaceholder?: string;
     upperLimitPlaceholder?: string;
     isLinkedToDateRange?: boolean;
+    initialDateRange?: DatePickerDateRange;
 }
 
 export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
@@ -143,6 +145,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
                 upperLimitPlaceholder: this.props.upperLimitPlaceholder,
                 initiallyUnselected: this.props.initiallyUnselected,
+                initialDateRange: this.props.initialDateRange,
             };
             const dateSelection: JSX.Element = this.props.withReduxState
                 ? <DatesSelectionConnected {...datesSelectionProps} />
