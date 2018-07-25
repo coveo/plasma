@@ -10,17 +10,17 @@ describe('CollapsibleInfoBox', () => {
     const basicProps: CollapsibleInfoBoxProps = {
         id: 'my-collapsible-info-box',
         title: 'wanna-buy-some-magic?',
-    }
+    };
 
     const mountComponent = () => mount(
         <Provider store={TestUtils.buildStore()}>
             <CollapsibleInfoBox {...basicProps}></CollapsibleInfoBox>
-        </Provider>
+        </Provider>,
     );
 
     it('should render without errors', () => {
         expect(() => shallow(
-            <CollapsibleInfoBox id='platano' title='header text'></CollapsibleInfoBox>
+            <CollapsibleInfoBox id='platano' title='header text'></CollapsibleInfoBox>,
         )).not.toThrow();
     });
 
