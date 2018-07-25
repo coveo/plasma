@@ -43,7 +43,7 @@ const getStatusRowStyle = (state: StateRow, content: JSXRenderable) => {
         'state-icon-row',
     ]);
     return <span className='flex flex-center'>
-        <Svg className={svgStyle} svgName={state === 'success' ? 'check' : 'message-alert'} />
+        <Svg className={svgStyle} svgName={state === 'success' ? 'checkmark' : 'message-alert'} />
         <span className='bold'>{content}</span>
     </span>;
 };
