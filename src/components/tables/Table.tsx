@@ -13,7 +13,7 @@ import {IFilterBoxProps} from '../filterBox/FilterBox';
 import {INavigationChildrenProps} from '../navigation/Navigation';
 import {TableChildActionBar} from './table-children/TableChildActionBar';
 import {TableChildBlankSlate} from './table-children/TableChildBlankSlate';
-import {ITableBodyInheritedFromTableProps, TableChildBody} from './table-children/TableChildBody';
+import {ITableBodyInheritedFromTableProps, StateRow, TableChildBody} from './table-children/TableChildBody';
 import {TableChildHeader} from './table-children/TableChildHeader';
 import {TableChildLastUpdated} from './table-children/TableChildLastUpdated';
 import {TableChildLoadingRow} from './table-children/TableChildLoadingRow';
@@ -65,15 +65,18 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     blankSlateOnError?: IBlankSlateProps;
     datePicker?: IDatePickerDropdownProps;
     filter?: true | IFilterBoxProps;
-    filterMethod?: (attributeValue: any, props: ITableOwnProps, filterValue: string) => boolean;
     predicates?: ITablePredicate[];
     prefixContent?: IContentProps;
     navigation?: true | INavigationChildrenProps;
     lastUpdatedLabel?: string;
     withoutLastUpdated?: boolean;
     withFixedHeader?: boolean;
-    handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
     rowsMultiSelect?: boolean;
+    disabled?: boolean;
+    withStateRows?: boolean;
+    asCard?: boolean;
+    handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
+    filterMethod?: (attributeValue: any, props: ITableOwnProps, filterValue: string) => boolean;
     manual?: (
         tableOwnProps: ITableOwnProps,
         shouldResetPage: boolean,
@@ -186,12 +189,12 @@ export class Table extends React.Component<ITableProps> {
             : null;
 
         return (
-            <div className={classNames('table-container', this.props.tableContainerClasses)}>
+            <div className={classNames('table-container', this.props.tableContainerClasses, {'table-card': this.props.asCard})}>
                 <TableChildActionBar {...this.props} />
                 {this.setFixedHeaderWrapper(
                     <table id={`table-${this.props.id}`} className={tableClasses}>
                         <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
-                        <TableChildHeader {...this.props} />
+                        {!this.props.asCard || this.shouldShowTableBody() ? <TableChildHeader {...this.props} /> : null}
                         {tableBodyNode}
                     </table>,
                 )}
@@ -238,11 +241,18 @@ export class Table extends React.Component<ITableProps> {
         const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
         const tableBodyNode: React.ReactNode = tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-            const currentRowData: IData = tableData.byId[id];
+            const row: IData = tableData.byId[id];
+            const firstColumnName: string = _.keys(row)[1];
+            const rowState: StateRow = this.props.withStateRows ? row[firstColumnName].state : null;
+            const currentRowData: IData = this.props.withStateRows
+                ? {...row, [firstColumnName]: row[firstColumnName].content}
+                : row;
 
             return (
                 <TableChildBody
                     key={id}
+                    state={rowState}
+                    disabled={this.props.disabled}
                     tableId={this.props.id}
                     rowData={currentRowData}
                     isLoading={this.props.tableCompositeState.isLoading}

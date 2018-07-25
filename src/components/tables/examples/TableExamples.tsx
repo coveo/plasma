@@ -80,6 +80,35 @@ const simplestTableData: ITableData = {
     totalPages: Math.ceil(_.keys(simplestTableDataById).length / perPageNumbers[0]),
 };
 
+const simplestTableDataByIdWithStatus = _.range(0, 7).reduce((obj, num) => ({
+    ...obj,
+    ['row' + num]: {
+        id: 'row' + num,
+        attribute1: {content: generateText(), state: ['success', 'warning', 'error'][_.random(2)]},
+        attribute2: generateText(),
+        attribute3: generateText(),
+        attribute4: generateText(),
+        attribute5: generateBoolean(),
+    },
+}), {} as ITableRowData);
+
+const simplestTableDataWithSatus: ITableData = {
+    byId: simplestTableDataByIdWithStatus,
+    allIds: _.keys(simplestTableDataByIdWithStatus),
+    displayedIds: _.keys(simplestTableDataByIdWithStatus),
+    totalEntries: _.keys(simplestTableDataByIdWithStatus).length,
+    totalPages: Math.ceil(_.keys(simplestTableDataByIdWithStatus).length / perPageNumbers[0]),
+};
+
+const emptyData: ITableRowData = {};
+const empty: ITableData = {
+    byId: emptyData,
+    allIds: _.keys(emptyData),
+    displayedIds: _.keys(emptyData),
+    totalEntries: _.keys(emptyData).length,
+    totalPages: Math.ceil(_.keys(emptyData).length / perPageNumbers[0]),
+};
+
 const tableData: ITableData = {
     byId: tableDataById,
     allIds: _.keys(tableDataById),
@@ -215,6 +244,80 @@ export class TableExamples extends React.Component<any, any> {
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
                         initialTableData={simplestTableData}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table Card With State Rows</label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={simplestTableDataWithSatus}
+                        asCard
+                        withStateRows
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table Card With State Rows Disabled</label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={simplestTableDataWithSatus}
+                        disabled
+                        asCard
+                        withStateRows
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table Card Empty</label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={empty}
+                        disabled
+                        asCard
+                        withStateRows
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
