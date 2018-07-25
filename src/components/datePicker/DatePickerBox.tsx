@@ -48,7 +48,7 @@ export interface IDatePickerBoxChildrenProps {
     lowerLimitPlaceholder?: string;
     upperLimitPlaceholder?: string;
     isLinkedToDateRange?: boolean;
-    dateRangeOnRender?: DatePickerDateRange;
+    initialDateRange?: DatePickerDateRange;
 }
 
 export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
@@ -145,7 +145,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
                 upperLimitPlaceholder: this.props.upperLimitPlaceholder,
                 initiallyUnselected: this.props.initiallyUnselected,
-                dateRangeOnRender: this.props.dateRangeOnRender,
+                initialDateRange: this.props.initialDateRange,
             };
             const dateSelection: JSX.Element = this.props.withReduxState
                 ? <DatesSelectionConnected {...datesSelectionProps} />

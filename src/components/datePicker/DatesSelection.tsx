@@ -24,7 +24,7 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
     lowerLimitPlaceholder?: string;
     upperLimitPlaceholder?: string;
     initiallyUnselected?: boolean;
-    dateRangeOnRender?: DatePickerDateRange;
+    initialDateRange?: DatePickerDateRange;
 }
 
 export interface IDatesSelectionStateProps {

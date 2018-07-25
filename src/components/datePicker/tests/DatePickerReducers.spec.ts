@@ -84,7 +84,7 @@ describe('Date picker', () => {
                     .toBe(1);
             });
 
-            it('should return the old state with default lowerlimit and upperlimit state properties if dateRangeOnRender is not passed', () => {
+            it('should return the old state with default lowerlimit and upperlimit state properties if initialDateRange is not passed', () => {
                 const datePickersState: IDatePickerState[] = datePickersReducer(undefined, action);
 
                 expect(datePickersState[0].lowerLimit as Date).toBe(datePickerInitialState.lowerLimit);
@@ -96,11 +96,11 @@ describe('Date picker', () => {
                 expect(datePickersState[0].appliedUpperLimit as Date).toBe(datePickerInitialState.appliedUpperLimit);
             });
 
-            it('should return the old state with dateRangeOnRender set properly in the state if passed', () => {
+            it('should return the old state with initialDateRange set properly in the state if passed', () => {
                 const testDateRange = [moment().toDate(), moment().add(2, 'day').toString()];
-                const actionWithDateRangeOnRender = {...action, payload: {...action.payload, dateRangeOnRender: testDateRange}};
+                const actionWithinitialDateRange = {...action, payload: {...action.payload, initialDateRange: testDateRange}};
 
-                const datePickersState: IDatePickerState[] = datePickersReducer(undefined, actionWithDateRangeOnRender);
+                const datePickersState: IDatePickerState[] = datePickersReducer(undefined, actionWithinitialDateRange);
 
                 expect(datePickersState[0].lowerLimit as Date).toBe(testDateRange[0] as Date);
                 expect(datePickersState[0].inputLowerLimit as Date).toBe(testDateRange[0] as Date);

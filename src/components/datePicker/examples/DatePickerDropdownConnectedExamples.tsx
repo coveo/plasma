@@ -28,7 +28,7 @@ export class DatePickerDropdownConnectedExamples extends React.Component<any, an
                         id='date-picker-dropdown-with-date-range'
                         datesSelectionBoxes={SELECTION_BOXES}
                         selectionRules={CALENDAR_SELECTION_RULES}
-                        dateRangeOnRender={DATE_RANGE_EXAMPLE}
+                        initialDateRange={DATE_RANGE_EXAMPLE}
                     />
                 </div>
                 <div className='form-group'>

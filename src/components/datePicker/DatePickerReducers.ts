@@ -41,8 +41,8 @@ export const datePickersInitialState: IDatePickerState[] = [];
 
 const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePickerPayload>): IDatePickerState => {
     const mayBeNull = (d: Date) => action.payload.initiallyUnselected ? null : d;
-    const appliedLowerLimit = (action.payload.dateRangeOnRender || [])[0];
-    const appliedUpperLimit = (action.payload.dateRangeOnRender || [])[1];
+    const appliedLowerLimit = (action.payload.initialDateRange || [])[0];
+    const appliedUpperLimit = (action.payload.initialDateRange || [])[1];
 
     return {
         id: action.payload.id,

@@ -35,7 +35,7 @@ describe('Date picker', () => {
                     initiallyUnselected: true,
                     isClearable: true,
                     simple: false,
-                    dateRangeOnRender: undefined,
+                    initialDateRange: undefined,
                 },
             };
 
@@ -54,7 +54,7 @@ describe('Date picker', () => {
                     initiallyUnselected: false,
                     isClearable: false,
                     simple: false,
-                    dateRangeOnRender: undefined,
+                    initialDateRange: undefined,
                 },
             };
 
