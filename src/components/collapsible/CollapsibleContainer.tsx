@@ -6,7 +6,7 @@ import {JSXRenderable} from '../../utils/JSXUtils';
 import {LinkSvg} from '../svg/LinkSvg';
 import {Svg} from '../svg/Svg';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
-import {CollapsibleConnected} from './CollapsibleContainerConnected';
+import {CollapsibleConnected} from './CollapsibleConnected';
 import * as styles from './styles/collapsibleContainer.scss';
 
 export interface ICollapsibleContainerOwnProps {
@@ -18,6 +18,7 @@ export interface ICollapsibleContainerOwnProps {
     className?: IClassName;
     collapsibleHeaderClassName?: IClassName;
     collapsibleBodyClassName?: IClassName;
+    withoutContentPadding?: boolean;
 }
 
 export interface ICollapsibleContainerStateProps {
@@ -49,17 +50,23 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
     }
 
     render() {
+        const contentClasses = classNames(
+            {[styles.content]: !this.props.withoutContentPadding},
+            this.props.collapsibleBodyClassName,
+            'mod-border-bottom',
+        );
+
         return (
             <CollapsibleConnected
                 id={this.props.id}
                 className={classNames(this.props.className, styles.collapsible)}
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
-                headerClasses={classNames(styles.header, 'bg-white')}
+                headerClasses={classNames(styles.header, this.props.expanded ? 'bg-light-grey' : 'bg-white')}
                 toggleIconClassName='fill-medium-blue mr3'
                 withBorders
             >
-                <div className={classNames(styles.content, this.props.collapsibleBodyClassName, 'mod-border-bottom')}>
+                <div className={contentClasses}>
                     {this.props.children}
                 </div>
             </CollapsibleConnected>
@@ -68,7 +75,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
 
     private getHeader = (): React.ReactNode => {
         const headerClasses = classNames(
-            'inline-flex flex-center text-medium-blue caps p2 bold bg-white ml3',
+            'inline-flex flex-center text-medium-blue caps p2 bold ml3',
             this.props.collapsibleHeaderClassName,
         );
         return (

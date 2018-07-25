@@ -22,9 +22,9 @@ import {CheckboxExamples} from '../src/components/checkbox/examples/CheckboxExam
 import {GroupableCheckboxConnectedExamples} from '../src/components/checkbox/examples/GroupableCheckboxConnectedExamples';
 import {ChildFormExamples} from '../src/components/childForm/examples/ChildFormExamples';
 import {ChosenSelectExamples} from '../src/components/chosen/examples/ChosenSelectExamples';
-import {CollapsibleContainerExamples} from '../src/components/collapsibleContainer/examples/CollapsibleContainerExamples';
-import {CollapsibleExamples} from '../src/components/collapsibleContainer/examples/CollapsibleExamples';
-import {CollapsibleInfoBoxExamples} from '../src/components/collapsibleInfoBox/examples/CollapsibleInfoBoxExamples';
+import {CollapsibleContainerExamples} from '../src/components/collapsible/examples/CollapsibleContainerExamples';
+import {CollapsibleExamples} from '../src/components/collapsible/examples/CollapsibleExamples';
+import {CollapsibleInfoBoxExamples} from '../src/components/collapsible/examples/CollapsibleInfoBoxExamples';
 import {ColorBarExamples} from '../src/components/colorBar/ColorBarExamples';
 import {ContentExamples} from '../src/components/content/examples/ContentExamples';
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';

@@ -28,7 +28,7 @@ export interface CollapsibleDispatchProps {
 export interface CollapsibleProps extends CollapsibleOwnProps, CollapsibleStateProps, CollapsibleDispatchProps {}
 
 export class Collapsible extends React.Component<CollapsibleProps> {
-    static TIMEOUT = 350;
+    static TIMEOUT = 200;
 
     componentWillMount() {
         callIfDefined(this.props.onMount);
@@ -42,10 +42,7 @@ export class Collapsible extends React.Component<CollapsibleProps> {
         const headerClasses = classNames(
             'cursor-pointer flex space-between center-align',
             this.props.headerClasses,
-            {
-                'mod-border-bottom': this.props.withBorders,
-                'mod-border-top': this.props.withBorders,
-            },
+            {'mod-border-bottom mod-border-top': this.props.withBorders},
         );
 
         return (

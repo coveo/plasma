@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
-import {setExpandedCollapsibleContainer} from '../CollapsibleContainerActions';
+import {setExpandedCollapsibleContainer} from '../CollapsibleActions';
 import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
 
 export const CollapsibleContainerExamples = () =>
@@ -17,7 +18,7 @@ export const CollapsibleContainerExamples = () =>
                     informationTooltip={{title: 'I display information and if you click me you\'ll be led to a url that was provided to me.', placement: 'top'}}
                     expandedOnMount>
                     I am expanded on mount!
-          </CollapsibleContainerConnected>
+                </CollapsibleContainerConnected>
                 <CollapsibleContainerConnected
                     id='collapsible-example-5'
                     title='CollapsibleContainer (why not stack two on top of each other)'
@@ -25,7 +26,7 @@ export const CollapsibleContainerExamples = () =>
                     informationTooltip={{title: 'I display information and if you click me you\'ll be led to a url that was provided to me.', placement: 'top'}}
                     expandedOnMount>
                     I am expanded on mount!
-          </CollapsibleContainerConnected>
+                </CollapsibleContainerConnected>
             </div>
         </div>
         <div className='form-group'>
@@ -36,7 +37,7 @@ export const CollapsibleContainerExamples = () =>
                     title='CollapsibleContainer not expanded on mount'
                     informationTooltip={{title: 'I display information only since no url was given to me.', placement: 'top'}}>
                     I was not expanded on mount, but now I am! Thanks!
-        </CollapsibleContainerConnected>
+                </CollapsibleContainerConnected>
             </div>
         </div>
         <div className='form-group'>
@@ -45,7 +46,7 @@ export const CollapsibleContainerExamples = () =>
       <button
                     className='ml1'
                     onClick={() => {
-                        const collapsibleState = _.findWhere(ReactVaporStore.getState().collapsibleContainers, {id: 'collapsible-example-3'});
+                        const collapsibleState = _.findWhere(ReactVaporStore.getState().collapsibles, {id: 'collapsible-example-3'});
                         ReactVaporStore.dispatch(setExpandedCollapsibleContainer('collapsible-example-3', !collapsibleState.expanded));
                     }}>
                     Toggle Container!
@@ -56,7 +57,7 @@ export const CollapsibleContainerExamples = () =>
                     id='collapsible-example-3'
                     title='CollapsibleContainer'>
                     You just expanded me with that button! Thanks!
-        </CollapsibleContainerConnected>
+                </CollapsibleContainerConnected>
             </div>
         </div>
     </div>;

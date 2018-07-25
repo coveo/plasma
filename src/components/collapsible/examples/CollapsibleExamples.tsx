@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CollapsibleConnected} from '../CollapsibleContainerConnected';
+import {CollapsibleConnected} from '../CollapsibleConnected';
 
 export const CollapsibleExamples = () =>
     <div className='mt2'>

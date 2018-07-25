@@ -11,17 +11,12 @@ import {
     CollapsibleProps,
     CollapsibleStateProps,
 } from './Collapsible';
-import {CollapsibleContainer, ICollapsibleContainerProps} from './CollapsibleContainer';
-import {
-    addCollapsibleContainer,
-    removeCollapsibleContainer,
-    setExpandedCollapsibleContainer,
-} from './CollapsibleContainerActions';
+import {addCollapsibleContainer, removeCollapsibleContainer, setCollapsibleExpanded} from './CollapsibleActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: CollapsibleOwnProps): CollapsibleStateProps => {
-    const collapsibleContainerState = findWhere(state.collapsibleContainers, {id: ownProps.id});
+    const collapsibleState = findWhere(state.collapsibles, {id: ownProps.id});
 
-    return {expanded: collapsibleContainerState && collapsibleContainerState.expanded};
+    return {expanded: collapsibleState && collapsibleState.expanded};
 };
 
 const mapDispatchToProps = (
@@ -30,11 +25,8 @@ const mapDispatchToProps = (
 ): CollapsibleDispatchProps => ({
     onMount: () => dispatch(addCollapsibleContainer(ownProps.id, !!ownProps.expandedOnMount)),
     onUnmount: () => dispatch(removeCollapsibleContainer(ownProps.id)),
-    onToggleExpandedState: (currentExpandedState: boolean) => dispatch(setExpandedCollapsibleContainer(ownProps.id, !currentExpandedState)),
+    onToggleExpandedState: (currentExpandedState: boolean) => dispatch(setCollapsibleExpanded(ownProps.id, !currentExpandedState)),
 });
-
-export const CollapsibleContainerConnected: React.ComponentClass<ICollapsibleContainerProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(CollapsibleContainer);
 
 export const CollapsibleConnected: React.ComponentClass<CollapsibleProps> =
     connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Collapsible);
