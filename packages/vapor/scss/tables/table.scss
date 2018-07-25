@@ -1,7 +1,6 @@
 
 .table {
   width: 100%;
-
   text-align: left;
 
   border: none;
@@ -212,4 +211,48 @@
 
 .coveo-table-actions-container + table:not(.datepicker-table) th {
   top: $table-actions-container-height;
+}
+
+.table-container {
+  &.table-card {
+    overflow: hidden;
+    box-shadow: $table-shadow;
+    border-radius: $border-radius;
+  }
+}
+
+.state-icon-row {
+  width: $table-state-icon-size;
+  height: $table-state-icon-size;
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+$row-style: (
+  success: $green,
+  warning: $orange-2,
+  error: $red,
+);
+
+@each $style, $color in $row-style {
+  .row-#{$style} {
+    > td:first-child {
+      border-left-color: $color;
+      color: $color;
+      svg {
+        fill: $color;
+      }
+    }
+  }
+}
+.row-disabled {
+  color: $dark-medium-grey;
+  > td:first-child {
+    border-left-color: $dark-medium-grey;
+  }
+  svg {
+    fill: $dark-medium-grey
+  }
 }
