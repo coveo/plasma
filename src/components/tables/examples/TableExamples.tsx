@@ -61,25 +61,6 @@ const tableDataById = _.range(0, 100).reduce((obj, num) => ({
     },
 }), {} as ITableRowData);
 
-const perPageNumbers = [5, 10, 20];
-
-const predicateOptionsAttribute4 = [
-    {value: TABLE_PREDICATE_DEFAULT_VALUE},
-    ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, {value: tableDataById[id].attribute4}], []),
-].slice(0, 4);
-const predicateOptionsAttribute3 = [
-    {value: TABLE_PREDICATE_DEFAULT_VALUE},
-    ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, {value: tableDataById[id].attribute3}], []),
-].slice(0, 4);
-
-const simplestTableData: ITableData = {
-    byId: simplestTableDataById,
-    allIds: _.keys(simplestTableDataById),
-    displayedIds: _.keys(simplestTableDataById),
-    totalEntries: _.keys(simplestTableDataById).length,
-    totalPages: Math.ceil(_.keys(simplestTableDataById).length / perPageNumbers[0]),
-};
-
 const simplestTableDataByIdWithStatus = _.range(0, 7).reduce((obj, num) => ({
     ...obj,
     ['row' + num]: {
@@ -92,30 +73,29 @@ const simplestTableDataByIdWithStatus = _.range(0, 7).reduce((obj, num) => ({
     },
 }), {} as ITableRowData);
 
-const simplestTableDataWithSatus: ITableData = {
-    byId: simplestTableDataByIdWithStatus,
-    allIds: _.keys(simplestTableDataByIdWithStatus),
-    displayedIds: _.keys(simplestTableDataByIdWithStatus),
-    totalEntries: _.keys(simplestTableDataByIdWithStatus).length,
-    totalPages: Math.ceil(_.keys(simplestTableDataByIdWithStatus).length / perPageNumbers[0]),
-};
-
 const emptyData: ITableRowData = {};
-const empty: ITableData = {
-    byId: emptyData,
-    allIds: _.keys(emptyData),
-    displayedIds: _.keys(emptyData),
-    totalEntries: _.keys(emptyData).length,
-    totalPages: Math.ceil(_.keys(emptyData).length / perPageNumbers[0]),
+
+const getTableDataById = (tableData: ITableRowData): ITableData => {
+    const allIds: string[] = _.keys(tableData);
+    return {
+        byId: tableData,
+        allIds,
+        displayedIds: allIds.slice(0, perPageNumbers[0]),
+        totalEntries: allIds.length,
+        totalPages: Math.ceil(allIds.length / perPageNumbers[0]),
+    };
 };
 
-const tableData: ITableData = {
-    byId: tableDataById,
-    allIds: _.keys(tableDataById),
-    displayedIds: _.keys(tableDataById).slice(0, perPageNumbers[0]),
-    totalEntries: _.keys(tableDataById).length,
-    totalPages: Math.ceil(_.keys(tableDataById).length / perPageNumbers[0]),
-};
+const perPageNumbers = [5, 10, 20];
+
+const predicateOptionsAttribute4 = [
+    {value: TABLE_PREDICATE_DEFAULT_VALUE},
+    ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, {value: tableDataById[id].attribute4}], []),
+].slice(0, 4);
+const predicateOptionsAttribute3 = [
+    {value: TABLE_PREDICATE_DEFAULT_VALUE},
+    ..._.keys(tableDataById).reduce((arr: IDropdownOption[], id: string) => [...arr, {value: tableDataById[id].attribute3}], []),
+].slice(0, 4);
 
 const tableDataWithBoolean = (): ITableData => {
     globalBoolean = !globalBoolean;
@@ -243,7 +223,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Simplest Table</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableData}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -265,7 +245,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Simplest Table Card With State Rows</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableDataWithSatus}
+                        initialTableData={getTableDataById(simplestTableDataByIdWithStatus)}
                         asCard
                         withStateRows
                         headingAttributes={[
@@ -289,7 +269,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Simplest Table Card With State Rows Disabled</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableDataWithSatus}
+                        initialTableData={getTableDataById(simplestTableDataByIdWithStatus)}
                         disabled
                         asCard
                         withStateRows
@@ -314,7 +294,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Simplest Table Card Empty</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={empty}
+                        initialTableData={getTableDataById(emptyData)}
                         disabled
                         asCard
                         withStateRows
@@ -339,7 +319,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Table without hover on row</label>
                     <TableConnected
                         id='react-vapor-table-without-hover'
-                        initialTableData={simplestTableData}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -363,7 +343,7 @@ export class TableExamples extends React.Component<any, any> {
                     </label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableData}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -396,7 +376,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Simplest Table with a custom header</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableData}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -428,7 +408,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Table with Content type Breadcrumb</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableData}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -464,7 +444,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Table with filter</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableData}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -492,7 +472,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Table with datePicker</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={tableData}
+                        initialTableData={getTableDataById(tableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute5',
@@ -531,7 +511,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Complex Table in default mode</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={tableData}
+                        initialTableData={getTableDataById(tableDataById)}
                         collapsibleFormatter={(rowData: IData) => _.keys(tableDataById).indexOf(rowData.id) % 2 === 0 &&
                             <div className='p2'>
                                 This is the collapsible row! And here's the value of attribute 3: {rowData.attribute3}
@@ -598,7 +578,7 @@ export class TableExamples extends React.Component<any, any> {
                     </label>
                     <TableConnected
                         id={'react-vapor-table-multiple-selection'}
-                        initialTableData={tableData}
+                        initialTableData={getTableDataById(tableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute5',
@@ -687,7 +667,7 @@ export class TableExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Table with selectable values</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={simplestTableData}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         headingAttributes={[
                             {
                                 attributeName: 'attribute5',
