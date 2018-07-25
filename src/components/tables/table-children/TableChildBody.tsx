@@ -57,7 +57,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
         return (
-            <td key={`cell-${xPosition}`} className={classNames([{'pl1': !!props.state && xPosition === 0}])}>
+            <td key={`cell-${xPosition}`}>
                 <div className='wrapper'>
                     {props.state && xPosition === 0 ? getStatusRowStyle(props.state, headingRowContent) : headingRowContent}
                 </div>
