@@ -25,30 +25,11 @@ export interface ICollapsibleContainerStateProps {
     expanded?: boolean;
 }
 
-export interface ICollapsibleContainerDispatchProps {
-    onMount?: () => void;
-    onUnmount?: () => void;
-    onToggleExpandedState?: (currentExpandedState: boolean) => void;
-}
-
 export interface ICollapsibleContainerProps extends
     ICollapsibleContainerOwnProps,
-    ICollapsibleContainerStateProps,
-    ICollapsibleContainerDispatchProps {}
+    ICollapsibleContainerStateProps {}
 
 export class CollapsibleContainer extends React.Component<ICollapsibleContainerProps> {
-    componentWillMount() {
-        if (this.props.onMount) {
-            this.props.onMount();
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onUnmount) {
-            this.props.onUnmount();
-        }
-    }
-
     render() {
         const contentClasses = classNames(
             {[styles.content]: !this.props.withoutContentPadding},
