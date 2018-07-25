@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {DATES_SEPARATOR, DateUtils} from '../../utils/DateUtils';
 import {DatePicker, IDatePickerProps} from './DatePicker';
+import {DatePickerDateRange} from './DatePickerConstants';
 
 export interface IRangeLimit {
     weeks?: number;
@@ -23,6 +24,7 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
     lowerLimitPlaceholder?: string;
     upperLimitPlaceholder?: string;
     initiallyUnselected?: boolean;
+    initialDateRange?: DatePickerDateRange;
 }
 
 export interface IDatesSelectionStateProps {
