@@ -74,7 +74,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     render() {
         const pickerClasses = classNames(
             'select-dropdown dropdown',
-            this.props.classes,
+            this.props.className,
             {
                 open: this.props.isOpen,
             },
