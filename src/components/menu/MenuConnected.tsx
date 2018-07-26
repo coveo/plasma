@@ -55,7 +55,6 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     private button: HTMLButtonElement;
 
     static defaultProps: Partial<IMenuProps> = {
-        className: '',
         positionRight: false,
     };
 
