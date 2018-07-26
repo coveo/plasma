@@ -12,7 +12,7 @@ import {IMenuState} from './MenuReducers';
 
 export interface IMenuOwnProps {
     items: IItemBoxProps[];
-    classes?: string;
+    className?: string;
     id: string;
     positionRight?: boolean;
 }
@@ -57,7 +57,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     private button: HTMLButtonElement;
 
     static defaultProps: Partial<IMenuProps> = {
-        classes: '',
+        className: '',
         positionRight: false,
     };
 
