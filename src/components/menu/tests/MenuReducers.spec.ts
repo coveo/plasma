@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {addMenu, IMenuPayload, removeMenu, toggleMenu, updateListMenu} from '../MenuActions';
-import {IMenuState, menuCompositeInitialState, menuCompositeReducer, menuInitialState, menuReducer} from '../MenuReducers';
+import {IMenusState, IMenuState, menuCompositeInitialState, menuCompositeReducer, menuInitialState, menuReducer} from '../MenuReducers';
 
 describe('Menu', () => {
     describe('Menu Reducers', () => {
@@ -13,7 +13,7 @@ describe('Menu', () => {
         };
 
         it('should return the default state if the action is not defined and the state is undefined', () => {
-            const newState: IMenuState[] = menuCompositeReducer(undefined, genericAction);
+            const newState: IMenusState = menuCompositeReducer(undefined, genericAction);
 
             expect(newState).toBe(menuCompositeInitialState);
         });
@@ -25,8 +25,8 @@ describe('Menu', () => {
         });
 
         it('should return the old state when the action is not defined', () => {
-            const oldState: IMenuState[] = [menuInitialState];
-            const newState: IMenuState[] = menuCompositeReducer(oldState, genericAction);
+            const oldState: IMenusState = {'test': menuInitialState};
+            const newState: IMenusState = menuCompositeReducer(oldState, genericAction);
 
             expect(newState).toBe(oldState);
         });
@@ -49,15 +49,14 @@ describe('Menu', () => {
             const id = 'added-menu';
 
             it('should return the old state with one more menu', () => {
-                const oldState: IMenuState[] = [menuInitialState];
-                const newState: IMenuState[] = menuCompositeReducer(oldState, addMenu(id, []));
+                const oldState: IMenusState = {[id]: {...menuInitialState, id}};
+                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id, []));
 
-                expect(newState.length).toBe(oldState.length + 1);
-                expect(newState[1].id).toBe(id);
+                expect(newState[id].id).toBe(id);
             });
 
             it('should not modify the old state', () => {
-                const oldState: IMenuState[] = [menuInitialState];
+                const oldState: IMenusState = {[id]: {...menuInitialState, id}};
                 const oldStateBefore = _.clone(oldState);
                 menuCompositeReducer(oldState, addMenu(id, []));
 
@@ -67,31 +66,30 @@ describe('Menu', () => {
             it('should return the old state with the list in the menu', () => {
                 const list = [{value: 'test'}];
 
-                const oldState: IMenuState[] = [menuInitialState];
-                const newState: IMenuState[] = menuCompositeReducer(oldState, addMenu(id, list));
+                const oldState: IMenusState = {[id]: menuInitialState};
+                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id, list));
 
-                expect(newState[1].list).toEqual(list);
+                expect(newState[id].list).toEqual(list);
             });
         });
 
         describe('REMOVE_MENU', () => {
             const id = 'remove-menu';
-            let defaultState: IMenuState[];
+            let defaultState: IMenusState;
 
             beforeEach(() => {
-                defaultState = [_.extend({}, menuInitialState, {id}), menuInitialState];
+                defaultState = {[id]: menuInitialState};
             });
 
             it('should return the old state with one less menu', () => {
-                const oldState: IMenuState[] = defaultState;
-                const newState: IMenuState[] = menuCompositeReducer(oldState, removeMenu(id));
+                const oldState: IMenusState = defaultState;
+                const newState: IMenusState = menuCompositeReducer(oldState, removeMenu(id));
 
-                expect(newState.length).toBe(oldState.length - 1);
-                expect(newState[0].id).not.toBe(id);
+                expect(newState[id]).not.toBeDefined();
             });
 
             it('should not modify the old state', () => {
-                const oldState: IMenuState[] = [menuInitialState];
+                const oldState: IMenusState = {[id]: {...menuInitialState, id}};
                 const oldStateBefore = _.clone(oldState);
                 menuCompositeReducer(oldState, removeMenu(id));
 
@@ -101,56 +99,52 @@ describe('Menu', () => {
 
         describe('TOGGLE_MENU', () => {
             const id = 'open-menu';
-            let defaultState: IMenuState[];
+            let defaultState: IMenusState;
 
             beforeEach(() => {
-                defaultState = [_.extend({}, menuInitialState, {id}), menuInitialState];
+                defaultState = {[id]: {...menuInitialState, id}};
             });
 
             it('should set the open property to true', () => {
-                const oldState: IMenuState[] = defaultState;
-                const newState: IMenuState[] = menuCompositeReducer(oldState, toggleMenu(id, true));
+                const oldState: IMenusState = defaultState;
+                const newState: IMenusState = menuCompositeReducer(oldState, toggleMenu(id, true));
 
-                expect(newState.length).toBe(oldState.length);
-                expect(newState[0].id).toBe(id);
-                expect(newState[0].open).toBe(true);
+                expect(newState[id].id).toBe(id);
+                expect(newState[id].open).toBe(true);
             });
 
             it('should set the open property to false if its true before', () => {
                 const oldState = _.clone(defaultState);
-                oldState[0].open = true;
-                const newState: IMenuState[] = menuCompositeReducer(oldState, toggleMenu(id));
+                oldState[id].open = true;
+                const newState: IMenusState = menuCompositeReducer(oldState, toggleMenu(id));
 
-                expect(newState.length).toBe(oldState.length);
-                expect(newState[0].id).toBe(id);
-                expect(newState[0].open).toBe(false);
+                expect(newState[id].id).toBe(id);
+                expect(newState[id].open).toBe(false);
             });
 
             it('should set the open property to true if its false before', () => {
                 const oldState = _.clone(defaultState);
-                oldState[0].open = false;
-                const newState: IMenuState[] = menuCompositeReducer(oldState, toggleMenu(id));
+                oldState[id].open = false;
+                const newState: IMenusState = menuCompositeReducer(oldState, toggleMenu(id));
 
-                expect(newState.length).toBe(oldState.length);
-                expect(newState[0].id).toBe(id);
-                expect(newState[0].open).toBe(true);
+                expect(newState[id].id).toBe(id);
+                expect(newState[id].open).toBe(true);
             });
 
             it('should not throw if the the open property is already true', () => {
                 const state = _.clone(defaultState);
-                state[0].open = true;
+                state[id].open = true;
 
-                const oldState: IMenuState[] = state;
-                let newState: IMenuState[] = [];
+                const oldState: IMenusState = state;
+                let newState: IMenusState = {};
                 expect(() => newState = menuCompositeReducer(oldState, toggleMenu(id, true))).not.toThrow();
 
-                expect(newState.length).toBe(oldState.length);
-                expect(newState[0].id).toBe(id);
-                expect(newState[0].open).toBe(true);
+                expect(newState[id].id).toBe(id);
+                expect(newState[id].open).toBe(true);
             });
 
             it('should not modify the old state', () => {
-                const oldState: IMenuState[] = [menuInitialState];
+                const oldState: IMenusState = {[id]: {...menuInitialState, id}};
                 const oldStateBefore = _.clone(oldState);
                 menuCompositeReducer(oldState, toggleMenu(id, true));
 
@@ -160,16 +154,18 @@ describe('Menu', () => {
 
         describe('UPDATE_MENU', () => {
             const id = 'update-menu';
-            let defaultState: IMenuState[];
+            let defaultState: IMenusState;
 
             beforeEach(() => {
-                defaultState = [_.extend({}, menuInitialState, {
-                    id,
-                    open: false,
-                    list: [{
-                        value: 'test',
-                    }],
-                }), menuInitialState];
+                defaultState = {
+                    [id]: {
+                        id,
+                        open: false,
+                        list: [{
+                            value: 'test',
+                        }],
+                    },
+                };
             });
 
             it('should update the current list in the state', () => {
@@ -178,12 +174,11 @@ describe('Menu', () => {
                     displayValue: 'test22',
                 }];
 
-                const oldState: IMenuState[] = defaultState;
-                const newState: IMenuState[] = menuCompositeReducer(oldState, updateListMenu(id, newList));
+                const oldState: IMenusState = defaultState;
+                const newState: IMenusState = menuCompositeReducer(oldState, updateListMenu(id, newList));
 
-                expect(newState.length).toBe(oldState.length);
-                expect(newState[0].id).toBe(id);
-                expect(newState[0].list).toEqual(newList);
+                expect(newState[id].id).toBe(id);
+                expect(newState[id].list).toEqual(newList);
             });
         });
     });

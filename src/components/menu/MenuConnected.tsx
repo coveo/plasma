@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -32,7 +31,7 @@ export interface IMenuDispatchProps {
 export interface IMenuProps extends IMenuOwnProps, IMenuStateProps, IMenuDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IMenuOwnProps): IMenuStateProps => {
-    const menu: IMenuState = _.findWhere(state.menus, {id: ownProps.id});
+    const menu: IMenuState = state.menus[ownProps.id];
 
     return {
         isOpen: menu && menu.open,
@@ -52,7 +51,6 @@ const mapDispatchToProps = (
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MenuConnected extends React.Component<IMenuProps, {}> {
-    private icon: HTMLDivElement;
     private list: HTMLDivElement;
     private button: HTMLButtonElement;
 
@@ -83,7 +81,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
             hidden: !this.props.isOpen,
         });
         return (
-            <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.icon = ref}>
+            <div className={pickerClasses}>
                 <button
                     className={classNames('btn menu-toggle', {'bg-light-grey': this.props.isOpen})}
                     type='button'

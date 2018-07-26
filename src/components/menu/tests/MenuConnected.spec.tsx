@@ -46,20 +46,20 @@ describe('Menu', () => {
             });
 
             it('should add the menu to the state when mounted', () => {
-                expect(store.getState().menus.length).toBe(0);
+                expect(store.getState().menus).toEqual({});
 
                 mountMenuConnected();
 
-                expect(store.getState().menus.length).toBe(1);
+                expect(store.getState().menus[id]).toBeDefined();
             });
 
             it('should remove the menu from the state when the component unmount', () => {
                 mountMenuConnected();
 
-                expect(store.getState().menus.length).toBe(1);
+                expect(store.getState().menus[id]).toBeDefined();
                 wrapper.unmount();
 
-                expect(store.getState().menus.length).toBe(0);
+                expect(store.getState().menus).toEqual({});
             });
         });
 
@@ -102,22 +102,22 @@ describe('Menu', () => {
                 mountMenuConnected();
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
-                expect(store.getState().menus[0].open).toBe(true, '1');
+                expect(store.getState().menus[id].open).toBe(true, '1');
 
                 clickOnEl(menuWrapper.find('.select-dropdown-container').getDOMNode());
-                expect(store.getState().menus[0].open).toBe(true, '2');
+                expect(store.getState().menus[id].open).toBe(true, '2');
 
                 clickOnEl();
-                expect(store.getState().menus[0].open).toBe(false, '3');
+                expect(store.getState().menus[id].open).toBe(false, '3');
             });
 
             it('should not open the menu when the user click outside the menu', () => {
                 mountMenuConnected();
 
-                expect(store.getState().menus[0].open).toBe(false);
+                expect(store.getState().menus[id].open).toBe(false);
 
                 clickOnEl();
-                expect(store.getState().menus[0].open).toBe(false);
+                expect(store.getState().menus[id].open).toBe(false);
             });
         });
     });

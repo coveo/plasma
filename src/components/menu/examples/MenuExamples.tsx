@@ -39,7 +39,7 @@ export class MenuExamples extends React.Component {
                 </div>
 
                 <div className='form-group'>
-                    <label className='form-control-label'>Menu with list to the right</label>
+                    <label className='form-control-label'>Menu with a custom Svg component</label>
                     <div className='form-control'>
                         <MenuConnected id='menu-example-5' items={defaultItems} >
                             <Svg

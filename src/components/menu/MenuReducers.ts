@@ -3,6 +3,8 @@ import {IReduxAction} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IMenuPayload, MenuActions} from './MenuActions';
 
+export interface IMenusState {[id: string]: IMenuState;}
+
 export interface IMenuState {
     id: string;
     open: boolean;
@@ -10,7 +12,7 @@ export interface IMenuState {
 }
 
 export const menuInitialState: IMenuState = {id: undefined, open: false, list: []};
-export const menuCompositeInitialState: IMenuState[] = [];
+export const menuCompositeInitialState: IMenusState = {};
 
 export const menuReducer = (state: IMenuState = menuInitialState, action: IReduxAction<IMenuPayload>): IMenuState => {
     if (state.id !== action.payload.id && action.type !== MenuActions.add) {
@@ -34,20 +36,20 @@ export const menuReducer = (state: IMenuState = menuInitialState, action: IRedux
 };
 
 export const menuCompositeReducer = (
-    state: IMenuState[] = menuCompositeInitialState,
+    state: IMenusState = menuCompositeInitialState,
     action: IReduxAction<IMenuPayload>,
-): IMenuState[] => {
+): IMenusState => {
     switch (action.type) {
         case MenuActions.add:
-            return [
+            return {
                 ...state,
-                menuReducer(undefined, action),
-            ];
+                [action.payload.id]: menuReducer(undefined, action),
+            };
         case MenuActions.remove:
-            return _.reject(state, (menu: IMenuState) => action.payload.id === menu.id);
+            return _.omit(state, action.payload.id);
         case MenuActions.toggle:
         case MenuActions.updateList:
-            return state.map((menu: IMenuState) => menuReducer(menu, action));
+            return {...state, [action.payload.id]: menuReducer(state[action.payload.id], action)};
         default:
             return state;
     }
