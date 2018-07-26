@@ -44,7 +44,7 @@ export const menuCompositeReducer = (
                 menuReducer(undefined, action),
             ];
         case MenuActions.remove:
-            return _.reject(state, (listBox: IMenuState) => action.payload.id === listBox.id);
+            return _.reject(state, (menu: IMenuState) => action.payload.id === menu.id);
         case MenuActions.toggle:
         case MenuActions.updateList:
             return state.map((menu: IMenuState) => menuReducer(menu, action));

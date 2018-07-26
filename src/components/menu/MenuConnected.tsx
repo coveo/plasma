@@ -48,7 +48,7 @@ const mapDispatchToProps = (
     onRender: () => dispatch(addMenu(ownProps.id, ownProps.items)),
     onDestroy: () => dispatch(removeMenu(ownProps.id)),
     onToggleMenu: () => dispatch(toggleMenu(ownProps.id)),
-    onDocumentClick: () => dispatch(toggleMenu(ownProps.id)),
+    onDocumentClick: () => dispatch(toggleMenu(ownProps.id, false)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -124,10 +124,10 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     private setListPosition() {
         const menuToggle = this.getMenuToggle();
         if (menuToggle) {
-            this.list.style.minWidth = menuToggle.clientWidth + 2 + 'px';
+            this.list.style.minWidth = `${menuToggle.clientWidth}2px`;
             this.props.positionRight
-                ? this.list.style.right = menuToggle.offsetLeft + 'px'
-                : this.list.style.left = menuToggle.offsetLeft + 'px';
+                ? this.list.style.right = `${menuToggle.offsetLeft}px`
+                : this.list.style.left = `${menuToggle.offsetLeft}px`;
         }
     }
 
