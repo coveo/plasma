@@ -66,6 +66,6 @@ export class Collapsible extends React.Component<CollapsibleProps> {
     }
 
     private handleHeaderClick() {
-        callIfDefined(this.props.onToggleExpandedState(this.props.expanded));
+        callIfDefined(this.props.onToggleExpandedState, this.props.expanded);
     }
 }
