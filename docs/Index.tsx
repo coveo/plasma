@@ -54,6 +54,7 @@ import {LastUpdatedExamples} from '../src/components/lastUpdated/examples/LastUp
 import {ListBoxExamples} from '../src/components/listBox/examples/ListBoxExamples';
 import {LoadingExamples} from '../src/components/loading/LoadingExamples';
 import {LogoCardExamples} from '../src/components/logoCard/examples/LogoCardExamples';
+import {MenuExamples} from '../src/components/menu/examples/MenuExamples';
 import {ModalCompositeConnectedExamples} from '../src/components/modal/examples/ModalCompositeConnectedExamples';
 import {ModalCompositeExamples} from '../src/components/modal/examples/ModalCompositeExamples';
 import {ModalConnectedExamples} from '../src/components/modal/examples/ModalConnectedExamples';
@@ -121,6 +122,7 @@ class App extends React.Component<any, any> {
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form'>
                     {[
+                        {component: MenuExamples, componentName: 'MenuExamples'},
                         {component: MembersExample, componentName: 'MembersExample'},
                         {component: BorderedLineExamples, componentName: 'BorderedLineExamples'},
                         {component: AutocompleteExamples, componentName: 'AutocompleteExamples'},

@@ -22,6 +22,7 @@ import {inputsReducer} from '../components/input/InputReducers';
 import {lastUpdatedCompositeReducer} from '../components/lastUpdated/LastUpdatedReducers';
 import {listBoxesReducer} from '../components/listBox/ListBoxReducers';
 import {loadingsReducer} from '../components/loading/LoadingReducers';
+import {menuCompositeReducer} from '../components/menu/MenuReducers';
 import {modalsReducer} from '../components/modal/ModalReducers';
 import {paginationCompositeReducer} from '../components/navigation/pagination/NavigationPaginationReducers';
 import {perPageCompositeReducer} from '../components/navigation/perPage/NavigationPerPageReducers';
@@ -85,6 +86,7 @@ export class TestUtils {
             flippables: flippablesReducer,
             groupableCheckboxes: groupableCheckboxesReducer,
             textAreas: textAreasReducer,
+            menus: menuCompositeReducer,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {

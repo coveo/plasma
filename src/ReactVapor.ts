@@ -20,6 +20,7 @@ import {IInputState} from './components/input/InputReducers';
 import {ILastUpdatedState} from './components/lastUpdated/LastUpdatedReducers';
 import {IListBoxState} from './components/listBox/ListBoxReducers';
 import {ILoadingState} from './components/loading/LoadingReducers';
+import {IMenuState} from './components/menu/MenuReducers';
 import {IModalState} from './components/modal/ModalReducers';
 import {IPaginationState} from './components/navigation/pagination/NavigationPaginationReducers';
 import {IPerPageState} from './components/navigation/perPage/NavigationPerPageReducers';
@@ -71,6 +72,7 @@ export interface IReactVaporState {
     flippables?: IFlippableState[];
     groupableCheckboxes?: IGroupableCheckboxesState[];
     textAreas?: ITextAreaState[];
+    menus?: IMenuState[];
 }
 
 export interface IReduxActionsPayload {
