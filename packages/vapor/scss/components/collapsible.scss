@@ -16,7 +16,7 @@
     background-position: right $header-padding center;
     background-size: $collapsible-header-icon-size $collapsible-header-icon-size;
     border: none;
-    border-bottom: $collapsible-border-width solid $medium-grey;
+    border-bottom: $default-border;
     outline: none;
 
     cursor: pointer;
@@ -32,14 +32,14 @@
     display: none;
     padding: $form-top-padding $header-padding;
 
-    border-bottom: $collapsible-border-width solid $medium-grey;
+    border-bottom: $default-border;
   }
 
   .collapsible-body-visible {
     box-sizing: border-box;
     padding: $form-top-padding $header-padding;
 
-    border-bottom: $collapsible-border-width solid $medium-grey;
+    border-bottom: $default-border;
   }
 
   .round-contextual-help {
