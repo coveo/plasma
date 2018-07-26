@@ -15,6 +15,7 @@ export interface IOverlayTriggerProps {
     onExit?: (...args: any[]) => void;
     onExited?: (...args: any[]) => void;
     onExiting?: (...args: any[]) => void;
+    onClick?: (...args: any[]) => void;
     placement?: string;
     container?: string;
     rootClose?: boolean;
@@ -60,6 +61,7 @@ const TOOLTIP_PROPS_TO_OMIT: string[] = [
     'onExit',
     'onExited',
     'onExiting',
+    'onClick',
     'overlay',
     'rootClose',
     'trigger',
