@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
+import {IReduxAction, BasePayload} from '../../utils/ReduxUtils';
 
 export const CollapsibleActions = {
     add: 'ADD_COLLAPSIBLE',
@@ -6,46 +6,40 @@ export const CollapsibleActions = {
     setExpanded: 'SET_COLLAPSIBLE_EXPANDED',
 };
 
-export interface ILoadingActionPayload {
-    id: string;
+export interface CollapsiblePayload extends BasePayload {
     expanded?: boolean;
 }
 
 /**
- * @deprecated use addCollapsible instead
+ * @deprecated use CollapsiblePayload interface instead
  */
-export const addCollapsibleContainer = (id: string, expanded: boolean): IReduxAction<ILoadingActionPayload> => ({
+export interface ILoadingActionPayload extends CollapsiblePayload {}
+
+export const addCollapsible = (id: string, expanded: boolean): IReduxAction<CollapsiblePayload> => ({
     type: CollapsibleActions.add,
     payload: {id, expanded},
 });
 
 /**
- * @deprecated use removeCollapsible instead
+ * @deprecated use addCollapsible instead
  */
-export const removeCollapsibleContainer = (id: string): IReduxAction<ILoadingActionPayload> => ({
+export const addCollapsibleContainer = addCollapsible;
+
+export const removeCollapsible = (id: string): IReduxAction<CollapsiblePayload> => ({
     type: CollapsibleActions.remove,
     payload: {id},
+});
+/**
+ * @deprecated use removeCollapsible instead
+ */
+export const removeCollapsibleContainer = removeCollapsible;
+
+export const setCollapsibleExpanded = (id: string, expanded: boolean): IReduxAction<CollapsiblePayload> => ({
+    type: CollapsibleActions.setExpanded,
+    payload: {id, expanded},
 });
 
 /**
  * @deprecated use setCollapsibleExpanded instead
  */
-export const setExpandedCollapsibleContainer = (id: string, expanded: boolean): IReduxAction<ILoadingActionPayload> => ({
-    type: CollapsibleActions.setExpanded,
-    payload: {id, expanded},
-});
-
-export const addCollapsible = (id: string, expanded: boolean): IReduxAction<ILoadingActionPayload> => ({
-    type: CollapsibleActions.add,
-    payload: {id, expanded},
-});
-
-export const removeCollapsible = (id: string): IReduxAction<ILoadingActionPayload> => ({
-    type: CollapsibleActions.remove,
-    payload: {id},
-});
-
-export const setCollapsibleExpanded = (id: string, expanded: boolean): IReduxAction<ILoadingActionPayload> => ({
-    type: CollapsibleActions.setExpanded,
-    payload: {id, expanded},
-});
+export const setExpandedCollapsibleContainer = setCollapsibleExpanded;

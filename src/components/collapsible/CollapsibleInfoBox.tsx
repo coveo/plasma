@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import {Svg} from '../svg/Svg';
 import {CollapsibleConnected} from './CollapsibleConnected';
-import * as styles from './styles/collapsibleInfoBox.scss';
+import * as styles from './styles/CollapsibleInfoBox.scss';
 
 export interface CollapsibleInfoBoxProps {
     id: string;

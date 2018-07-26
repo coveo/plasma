@@ -11,7 +11,7 @@ import {
     CollapsibleProps,
     CollapsibleStateProps,
 } from './Collapsible';
-import {addCollapsibleContainer, removeCollapsibleContainer, setCollapsibleExpanded} from './CollapsibleActions';
+import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './CollapsibleActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: CollapsibleOwnProps): CollapsibleStateProps => {
     const collapsibleState = findWhere(state.collapsibles, {id: ownProps.id});
@@ -23,8 +23,8 @@ const mapDispatchToProps = (
     dispatch: IDispatch,
     ownProps: CollapsibleOwnProps,
 ): CollapsibleDispatchProps => ({
-    onMount: () => dispatch(addCollapsibleContainer(ownProps.id, !!ownProps.expandedOnMount)),
-    onUnmount: () => dispatch(removeCollapsibleContainer(ownProps.id)),
+    onMount: () => dispatch(addCollapsible(ownProps.id, !!ownProps.expandedOnMount)),
+    onUnmount: () => dispatch(removeCollapsible(ownProps.id)),
     onToggleExpandedState: (currentExpandedState: boolean) => dispatch(setCollapsibleExpanded(ownProps.id, !currentExpandedState)),
 });
 

@@ -7,7 +7,7 @@ import {LinkSvg} from '../svg/LinkSvg';
 import {Svg} from '../svg/Svg';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 import {CollapsibleConnected} from './CollapsibleConnected';
-import * as styles from './styles/collapsibleContainer.scss';
+import * as styles from './styles/CollapsibleContainer.scss';
 
 export interface ICollapsibleContainerOwnProps {
     id: string;
