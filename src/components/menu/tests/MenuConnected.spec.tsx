@@ -64,6 +64,14 @@ describe('Menu', () => {
         });
 
         describe('custom props', () => {
+            it('should add a style right on the menu to set the position right', () => {
+                mountMenuConnected([], {positionRight: true});
+
+                menuWrapper.find('.menu-toggle').simulate('mouseUp');
+
+                expect((menuWrapper.find('.select-dropdown-container').get(0) as any).style.right).toBe('8px');
+            });
+
             it('should add custom classes on dropdown element', () => {
                 mountMenuConnected([], {classes: ['test']});
 

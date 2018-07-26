@@ -82,7 +82,6 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
         );
         const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {
             hidden: !this.props.isOpen,
-            right: this.props.positionRight,
         });
         return (
             <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.icon = ref}>
