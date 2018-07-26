@@ -10,7 +10,7 @@ import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ICollapsibleContainerOwnProps} from '../CollapsibleContainer';
 import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
-import * as styles from '../styles/collapsibleContainer.scss';
+import * as styles from '../styles/CollapsibleContainer.scss';
 import {collapsibleContainerPossibleProps} from './CollapsibleTestCommon.spec';
 
 describe('<CollapsibleContainerConnected />', () => {

@@ -1,19 +1,9 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {
-    addCollapsible,
-    removeCollapsible,
-    setCollapsibleExpanded,
-} from '../CollapsibleActions';
-import {
-    collapsibleInitialState,
-    collapsibleReducer,
-    collapsiblesInitialState,
-    collapsiblesReducer,
-    CollapsibleState,
-} from '../CollapsibleReducers';
+import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from '../CollapsibleActions';
+import {collapsiblesInitialState, collapsiblesReducer, CollapsibleState} from '../CollapsibleReducers';
 
 describe('Reducers', () => {
-    describe('CollapsibleReducers', () => {
+    describe('CollapsiblesReducers', () => {
         const unrelatedAction: IReduxAction<any> = {
             type: 'DO_SOMETHING',
             payload: {id: ''},
@@ -21,10 +11,6 @@ describe('Reducers', () => {
 
         it('should return the default state if the action is not related and the state is undefined ', () => {
             expect(collapsiblesReducer(undefined, unrelatedAction)).toEqual(collapsiblesInitialState);
-        });
-
-        it('should return the default state if the action is not related and the state is undefined for one collapsible state', () => {
-            expect(collapsibleReducer(undefined, unrelatedAction)).toEqual(collapsibleInitialState);
         });
 
         it('should return the old state when the action is unrelated to collapsible s', () => {
@@ -38,11 +24,11 @@ describe('Reducers', () => {
         });
 
         it('should return the old state when the action is unrelated for one ', () => {
-            const oldState: CollapsibleState = {
+            const oldState: CollapsibleState[] = [{
                 id: 'some-',
                 expanded: false,
-            };
-            const newState: CollapsibleState = collapsibleReducer(oldState, unrelatedAction);
+            }];
+            const newState: CollapsibleState[] = collapsiblesReducer(oldState, unrelatedAction);
 
             expect(oldState).toEqual(newState);
         });
