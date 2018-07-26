@@ -73,7 +73,7 @@ describe('Menu', () => {
             });
 
             it('should add custom classes on dropdown element', () => {
-                mountMenuConnected([], {classes: ['test']});
+                mountMenuConnected([], {classes: 'test'});
 
                 expect(menuWrapper.find('.dropdown').hasClass('test')).toBe(true);
             });

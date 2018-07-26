@@ -2,8 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
-import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {IReactVaporState} from '../../ReactVapor';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg/Svg';
@@ -12,9 +12,8 @@ import {IMenuState} from './MenuReducers';
 
 export interface IMenuOwnProps {
     items: IItemBoxProps[];
-    classes?: string[];
+    classes?: string;
     id: string;
-    svgName?: string;
     positionRight?: boolean;
 }
 
@@ -42,7 +41,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMenuOwnProps): IMen
 };
 
 const mapDispatchToProps = (
-    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+    dispatch: IDispatch,
     ownProps: IMenuOwnProps,
 ): IMenuDispatchProps => ({
     onRender: () => dispatch(addMenu(ownProps.id, ownProps.items)),
@@ -55,10 +54,10 @@ const mapDispatchToProps = (
 export class MenuConnected extends React.Component<IMenuProps, {}> {
     private icon: HTMLDivElement;
     private list: HTMLDivElement;
+    private button: HTMLButtonElement;
 
     static defaultProps: Partial<IMenuProps> = {
-        svgName: 'more-append',
-        classes: [],
+        classes: '',
         positionRight: false,
     };
 
@@ -89,8 +88,9 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                     className={classNames('btn menu-toggle', {'bg-light-grey': this.props.isOpen})}
                     type='button'
                     onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
+                    ref={(ref: HTMLButtonElement) => this.button = ref}
                 >
-                    {this.getSvg()}
+                    {this.props.children ? this.props.children : this.getDefaultSvg()}
                 </button>
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.list = ref}>
                     <ListBox id={this.props.id} items={this.props.items} />
@@ -99,17 +99,13 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
         );
     }
 
-    private getSvg() {
+    private getDefaultSvg() {
         return (
             <Svg
-                svgName={this.props.svgName}
-                svgClass={'fill-medium-blue icon mod-lg'}
+                svgName='more-append'
+                svgClass='fill-medium-blue icon mod-lg'
             />
         );
-    }
-
-    private getMenuToggle(): HTMLElement {
-        return this.icon.querySelector('.menu-toggle');
     }
 
     private onToggleMenu(e: React.SyntheticEvent<HTMLElement>) {
@@ -122,12 +118,11 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     }
 
     private setListPosition() {
-        const menuToggle = this.getMenuToggle();
-        if (menuToggle) {
-            this.list.style.minWidth = `${menuToggle.clientWidth}2px`;
+        if (this.button) {
+            this.list.style.minWidth = `${this.button.clientWidth + 2}px`;
             this.props.positionRight
-                ? this.list.style.right = `${menuToggle.offsetLeft}px`
-                : this.list.style.left = `${menuToggle.offsetLeft}px`;
+                ? this.list.style.right = `${this.button.offsetLeft}px`
+                : this.list.style.left = `${this.button.offsetLeft}px`;
         }
     }
 
