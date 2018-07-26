@@ -1,4 +1,4 @@
-import {IReduxAction, BasePayload} from '../../utils/ReduxUtils';
+import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
 
 export const CollapsibleActions = {
     add: 'ADD_COLLAPSIBLE',

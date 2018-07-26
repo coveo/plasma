@@ -35,7 +35,7 @@ export const collapsiblesReducer = (
         case CollapsibleActions.setExpanded:
             return state.map((collapsible: CollapsibleState) => collapsible.id === action.payload.id
                 ? action.payload as CollapsibleState
-                : collapsible
+                : collapsible,
             );
         default:
             return state;
