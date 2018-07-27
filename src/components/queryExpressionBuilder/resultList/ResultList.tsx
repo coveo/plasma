@@ -9,7 +9,7 @@ import { IResult } from '../resultsParser/ResultsParser';
 
 export interface IResultListProps {
     results: IResult[];
-    onClick: (result: IResult) => void;
+    onClick?: (result: IResult) => void;
 }
 
 export interface IResultListState {
