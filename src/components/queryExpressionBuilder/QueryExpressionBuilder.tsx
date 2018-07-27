@@ -19,10 +19,26 @@ export interface IQueryExpressionBuilderState {
     queryExpression: string;
 }
 
-const TAB_SEARCH_ID = 'tabSearch';
-const TAB_FORM_ID = 'tabForm';
-const TAB_ADVANCED_ID = 'tabAdvanced';
-const TAB_OUTPUT_ID = 'tabOutput';
+const TAB_SEARCH_MODE_ID = 'tabSearchMode';
+const TAB_FORM_MODE_ID = 'tabFormMode';
+const TAB_ADVANCED_MODE_ID = 'tabAdvancedMode';
+const TAB_OUTPUT_MODE_ID = 'tabOutputMode';
+
+// General TODOs :
+//
+// style
+//
+// functions in props :
+// this version :
+// (expression: string) => this.updateExpression(expression)
+// or this one :
+// private updateExpression = (expression: string) => {
+//     this.setState({ queryExpression: expression });
+// }
+//
+// hard coded strings
+//
+// eos2015 in tsconfig
 
 export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuilderProps, IQueryExpressionBuilderState> {
     private queryTrigger: QueryTrigger;
@@ -37,6 +53,10 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
         this.queryTrigger = new QueryTrigger(this.props.accessToken, this.props.organizationId);
     }
 
+    private updateExpression = (expression: string) => {
+        this.setState({ queryExpression: expression });
+    }
+
     render() {
         return (
             <div>
@@ -48,28 +68,28 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
 
                 {/* TODO : Move this under an 'Editors' component  */}
                 <TabNavigation>
-                    <TabConnected id={TAB_SEARCH_ID} title='Search Mode' />
-                    <TabConnected id={TAB_FORM_ID} title='Form Mode' />
-                    <TabConnected id={TAB_ADVANCED_ID} title='Advanced Mode' />
-                    <TabConnected id={TAB_OUTPUT_ID} title='Output' />
+                    <TabConnected id={TAB_SEARCH_MODE_ID} title='Search Mode' />
+                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
+                    <TabConnected id={TAB_ADVANCED_MODE_ID} title='Advanced Mode' />
+                    <TabConnected id={TAB_OUTPUT_MODE_ID} title='Output' />
                 </TabNavigation>
                 <TabContent>
-                    <TabPaneConnected id={TAB_SEARCH_ID}>
+                    <TabPaneConnected id={TAB_SEARCH_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            <SearchMode queryTrigger={this.queryTrigger} />
+                            <SearchMode queryTrigger={this.queryTrigger} updateExpression={this.updateExpression} />
                         </div>
                     </TabPaneConnected>
-                    <TabPaneConnected id={TAB_FORM_ID}>
+                    <TabPaneConnected id={TAB_FORM_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
                             Content of the second tab.
                         </div>
                     </TabPaneConnected>
-                    <TabPaneConnected id={TAB_ADVANCED_ID}>
+                    <TabPaneConnected id={TAB_ADVANCED_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
                             <CodeEditor value={'Code Editor Content'} mode={CodeMirrorModes.Python} />
                         </div>
                     </TabPaneConnected>
-                    <TabPaneConnected id={TAB_OUTPUT_ID}>
+                    <TabPaneConnected id={TAB_OUTPUT_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
                             <OutputMode queryTrigger={this.queryTrigger} queryExpression={this.state.queryExpression} />
                         </div>

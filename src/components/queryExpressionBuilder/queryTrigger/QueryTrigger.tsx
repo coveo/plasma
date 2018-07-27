@@ -1,40 +1,56 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
+import { IResult, ResultsParser } from '../resultsParser/ResultsParser';
 
 const DEFAULT_REST_URI: string = 'https://platform.cloud.coveo.com/rest/search/v2';
 
+export interface IQueryParameters {
+    q?: string;
+    aq?: string;
+    numberOfResults?: number;
+    queryStringArguments?: IQueryStringArguments;
+}
+
+export interface IQueryStringArguments {
+    organizationId?: string;
+    viewAllContent?: number;
+}
+
+// TODO : Do we want to pass the QueryTrigger in the props?
+//        or just declare two instances; one in the SearchMode and one in the OutputMode
 export class QueryTrigger {
+    private resultsParser: ResultsParser;
 
     constructor(private accessToken: string, private organizationId: string, private restUri?: string) {
         this.initialize(); // TODO put default props instead of this.initialize
+        this.resultsParser = new ResultsParser();
     }
 
-    async getResultsWithBasicExpression(basicExpression: string) {
+    async getResultsWithBasicExpression(basicExpression: string): Promise<IResult[]> {
         const data = _.extend({q: basicExpression}, this.getDefaultData());
         return await this.executeQuery(data);
     }
 
-    async getResultsWithAdvancedExpression(advancedExpression: string) {
+    async getResultsWithAdvancedExpression(advancedExpression: string): Promise<IResult[]> {
         const data = _.extend({aq: advancedExpression}, this.getDefaultData());
         return await this.executeQuery(data);
     }
 
-    async getAllResults() {
+    async getAllResults(): Promise<IResult[]> {
         return await this.executeQuery(this.getDefaultData());
     }
 
     private getDefaultData() {
         return {
-            // numberOfResults: 50, default to 10
             queryStringArguments: {
                 organizationId: this.organizationId,
                 viewAllContent: 1,
-            },
-        };
+            } as IQueryStringArguments,
+        } as IQueryParameters;
     }
 
-    private async executeQuery(data: any) {
-        let results;
+    private async executeQuery(data: IQueryParameters): Promise<IResult[]> {
+        let xmlResponse;
         // TODO : better handling of fail... always needed?
         await $.ajax({
             type: 'GET',
@@ -42,12 +58,14 @@ export class QueryTrigger {
             headers: {Authorization: `Bearer ${this.accessToken}`},
             data,
             })
-            .done((finaleData) => {
-                results = finaleData;
+            .done((repsonseData) => {
+                xmlResponse = repsonseData;
             })
             .fail((error) => {
-                results = 'error';
-            })
+                xmlResponse = 'error';
+            });
+        // TODO : Review parsing des results;
+        const results = this.resultsParser.parse(xmlResponse);
 
         return results;
     }
