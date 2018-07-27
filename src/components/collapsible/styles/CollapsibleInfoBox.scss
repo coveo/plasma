@@ -1,0 +1,10 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+.roundedBorders {
+    border-radius: $collapsible-infobox-border-radius;
+}
+
+.alignWithIcon {
+    margin-left: calc(1rem + #{$collapsible-infobox-icon-size});
+}

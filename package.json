@@ -1,6 +1,6 @@
 {
   "name": "react-vapor",
-  "version": "2.23.4",
+  "version": "2.24.0",
   "description": "Vapor CSS components implemented with React!",
   "keywords": [
     "coveo",
@@ -87,7 +87,7 @@
     "classnames": "2.2.6",
     "codecov": "3.0.4",
     "codemirror": "5.38.0",
-    "coveo-styleguide": "3.3.x",
+    "coveo-styleguide": "3.5.x",
     "css-loader": "1.0.0",
     "del": "3.0.0",
     "dnd-core": "2.5.1",
