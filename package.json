@@ -153,7 +153,7 @@
     "typings-for-css-modules-loader": "1.7.0",
     "underscore": "1.9.1",
     "underscore.string": "3.3.4",
-    "webpack": "4.16.2",
+    "webpack": "4.16.3",
     "webpack-cli": "3.1.0",
     "webpack-dev-server": "3.1.5"
   },
