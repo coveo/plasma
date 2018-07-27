@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { CodeEditor } from '../editor/CodeEditor';
-import { CodeMirrorModes } from '../editor/EditorConstants';
 import { TabConnected } from '../tab/TabConnected';
 import { TabContent } from '../tab/TabContent';
 import { TabNavigation } from '../tab/TabNavigation';
@@ -8,6 +6,7 @@ import { TabPaneConnected } from '../tab/TabPaneConnected';
 import { OutputMode } from './outputMode/OutputMode';
 import { QueryTrigger } from './queryTrigger/QueryTrigger';
 import { SearchMode } from './searchMode/SearchMode';
+import { AdvancedMode } from './advancedMode/AdvancedMode';
 
 export interface IQueryExpressionBuilderProps {
     accessToken: string;
@@ -46,7 +45,7 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
     constructor(props: IQueryExpressionBuilderProps) {
         super(props);
         this.initializeQueryTrigger();
-        this.state = {queryExpression: '@test==foo'};
+        this.state = {queryExpression: ''};
     }
 
     private initializeQueryTrigger() {
@@ -86,7 +85,7 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_ADVANCED_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            <CodeEditor value={'Code Editor Content'} mode={CodeMirrorModes.Python} />
+                            <AdvancedMode initialExpression={this.state.queryExpression} updateExpression={this.updateExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_OUTPUT_MODE_ID}>

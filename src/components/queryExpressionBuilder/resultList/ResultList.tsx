@@ -26,8 +26,11 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
     private onClick(resultItemBox: IItemBoxProps) {
         const resultID: string = resultItemBox.value;
         this.setState({selectedResult: resultID});
-        const result: IResult = this.getResultByID(resultID);
-        this.props.onClick(result);
+
+        if (this.props.onClick) {
+            const result: IResult = this.getResultByID(resultID);
+            this.props.onClick(result);
+        }
     }
 
     private getItems(): IItemBoxProps[] {
