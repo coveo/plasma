@@ -5,7 +5,7 @@ import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducer
 import {autocompletesReducer} from './components/autocomplete/AutocompleteReducers';
 import {checkboxesReducer} from './components/checkbox/CheckboxReducers';
 import {groupableCheckboxesReducer} from './components/checkbox/GroupableCheckboxReducers';
-import {collapsibleContainersReducer} from './components/collapsibleContainer/CollapsibleContainerReducers';
+import {collapsiblesReducer} from './components/collapsible/CollapsibleReducers';
 import {datePickersReducer} from './components/datePicker/DatePickerReducers';
 import {dropdownsReducer} from './components/dropdown/DropdownReducers';
 import {dropdownsSearchReducer} from './components/dropdownSearch/DropdownSearchReducers';
@@ -63,7 +63,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     toastContainers: toastsContainerReducer,
     tableHeaderCells: tableHeaderCellsReducer,
     checkboxes: checkboxesReducer,
-    collapsibleContainers: collapsibleContainersReducer,
+    collapsibles: collapsiblesReducer,
     inputs: inputsReducer,
     searchBars: searchBarsReducer,
     flippables: flippablesReducer,
