@@ -18,5 +18,5 @@
 }
 
 .show-on-top {
-  z-index: 2147483647; // Max safe z-index
+  z-index: $max-z-index;
 }
