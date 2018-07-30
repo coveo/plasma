@@ -28,8 +28,8 @@ module.exports = {
             {
                 /**
                  *  Transform let and const to var in js files below to make them ES5 compatible
-                 *  Target only problematic files to prevent compilation from hanging 
-                 **/
+                 *  Target only problematic files to prevent compilation from hanging
+                 */
                 include: [
                     path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
                 ],
