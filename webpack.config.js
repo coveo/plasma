@@ -39,8 +39,13 @@ module.exports = {
                 },
             },
             {
-                // transform let and const to var in this file to make it ES5 compatible
-                test: /node_modules\/unidiff\/hunk\.js/,
+                /**
+                 *  Transform let and const to var in the files below to make them ES5 compatible
+                 *  A simple/global fix with ts-loader or awesome-typescript-loader was not found for this issue
+                 **/
+                include: [
+                    path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
+                ],
                 use: [{loader: 'babel-loader', options: {plugins: ['transform-es2015-block-scoping']}}],
             },
             {
