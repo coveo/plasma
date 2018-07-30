@@ -10,23 +10,31 @@ export interface IResult {
     source?: string;
 }
 
-export class ResultsParser {
+export class ResponseParser {
 
     // TODO : review any ...
     parse(xmlResponse: any): IResult[] {
-        const xmlResults = xmlResponse['results'];
         const finalResults: IResult[] = [];
+        try {
+            const xmlResults = xmlResponse['results'];
+            _.forEach(xmlResults, (xmlResult) => {
+                const parsedResult: IResult = this.parseResult(xmlResult);
+                finalResults.push(parsedResult);
+            });
+            return finalResults;
+        } catch(e) {
+            return [];
+        }
 
-        _.forEach(xmlResults, (xmlResult) => {
-            const parsedResult: IResult = this.parseResult(xmlResult);
-            finalResults.push(parsedResult);
-        });
-        return finalResults;
     }
 
     // TODO : There is probably a better way, 'any .....'
     private parseResult(result: any): IResult {
         const raw = result['raw'];
+        if (!raw) {
+            return null;
+        }
+
         return {
             title: result['Title'],
             excerpt: result['Excerpt'],

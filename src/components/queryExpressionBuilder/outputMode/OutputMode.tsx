@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from '../../button/Button';
 import { QueryTrigger } from '../queryTrigger/QueryTrigger';
 import { ResultList } from '../resultList/ResultList';
-import { IResult } from '../resultsParser/ResultsParser';
+import { IResult } from '../responseParser/ResponseParser';
 
 export interface IOutputModeProps {
     queryTrigger: QueryTrigger;

@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { IResult } from '../resultsParser/ResultsParser';
+import { IResult } from '../responseParser/ResponseParser';
 
 export interface IResultItemProps {
     result: IResult;

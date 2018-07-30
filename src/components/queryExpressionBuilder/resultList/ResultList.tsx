@@ -5,7 +5,7 @@ import { IContentProps } from '../../content/Content';
 import { IItemBoxProps } from '../../itemBox/ItemBox';
 import { ListBox } from '../../listBox/ListBox';
 import { ResultItem } from '../resultItem/ResultItem';
-import { IResult } from '../resultsParser/ResultsParser';
+import { IResult } from '../responseParser/ResponseParser';
 
 export interface IResultListProps {
     results: IResult[];
@@ -35,7 +35,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
 
     private getItems(): IItemBoxProps[] {
         const items: IItemBoxProps[] = [];
-        _.forEach(this.props.results, (result) => {
+        _.forEach(this.props.results, (result: IResult) => {
             const getAppend: IContentProps = {content: () => <ResultItem result={result} />};
             const getItemBox: IItemBoxProps = {value: result.uniqueID, displayValue: result.title, append: getAppend};
             items.push(getItemBox);
@@ -44,16 +44,16 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
     }
 
     private getResultByID(value: string): IResult {
-        return _.find(this.props.results, (result) => result.uniqueID === value);
+        return _.find(this.props.results, (result: IResult) => result.uniqueID === value);
     }
 
     render() {
         return (
             <div>
                 <ListBox
-                items={this.getItems()}
-                selected={[this.state.selectedResult]}
-                onOptionClick={(resultItemBox: IItemBoxProps) => this.onClick(resultItemBox)}
+                    items={this.getItems()}
+                    selected={[this.state.selectedResult]}
+                    onOptionClick={(resultItemBox: IItemBoxProps) => this.onClick(resultItemBox)}
                 />
             </div>
         );

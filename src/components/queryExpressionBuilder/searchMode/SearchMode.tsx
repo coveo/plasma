@@ -3,11 +3,11 @@ import { ISearchBarStateProps, SearchBar } from '../../searchBar/SearchBar';
 import { ExpressionParser, IFieldExpression } from '../expressionParser/ExpressionParser';
 import { QueryTrigger } from '../queryTrigger/QueryTrigger';
 import { ResultList } from '../resultList/ResultList';
-import { IResult } from '../resultsParser/ResultsParser';
+import { IResult } from '../responseParser/ResponseParser';
 
 export interface ISearchModeProps {
     queryTrigger: QueryTrigger;
-    updateExpression: (expression: string) => void;
+    updateQueryExpression: (expression: string) => void;
 }
 
 export interface ISearchModeState extends ISearchBarStateProps {
@@ -21,6 +21,7 @@ export enum FieldType {
     SOURCE = 'sourcetype',
 }
 
+// TODO : @source field est souvent pas un bon format
 export class SearchMode extends React.Component<ISearchModeProps, ISearchModeState> {
     private expressionParser: ExpressionParser;
 
@@ -32,20 +33,20 @@ export class SearchMode extends React.Component<ISearchModeProps, ISearchModeSta
 
     private onClick(result: IResult) {
         const parsedFieldExpression: string = this.getParsedFieldExpression(result);
-        this.props.updateExpression(parsedFieldExpression);
+        this.props.updateQueryExpression(parsedFieldExpression);
     }
 
     private getParsedFieldExpression(result: IResult) {
         const fieldExpression = this.getFieldExpression(result);
-        let parsedFieldExpresson: string = null;
-        if (fieldExpression) {
-            parsedFieldExpresson = this.expressionParser.parseFieldExpression(fieldExpression);
+        if (!fieldExpression) {
+            return null;
         }
-        return parsedFieldExpresson;
+        return this.expressionParser.parseFieldExpression(fieldExpression);
     }
 
+    // TODO ; better logic?
     private getFieldExpression(result: IResult): IFieldExpression {
-        if (result == null) {
+        if (!result) {
             return null;
         }
 
@@ -89,13 +90,12 @@ export class SearchMode extends React.Component<ISearchModeProps, ISearchModeSta
         return (
             <div>
                 <SearchBar
-                id='search-mode-search-bar'
-                placeholder='Search awesome things'
-                value={this.state.value}
-                disabled={this.state.disabled}
-                searching={this.state.searching}
-                onChange={(event) => this.setState({value: event.target.value})}
-                onSearch={(searchBarText: string) => {this.onSearch(searchBarText);}}
+                    id='search-mode-search-bar'
+                    placeholder='Search'
+                    value={this.state.value}
+                    searching={this.state.searching}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({value: event.target.value})}
+                    onSearch={(searchBarText: string) => {this.onSearch(searchBarText);}}
                 />
                 <ResultList results={this.state.results} onClick={(result: IResult) => (this.onClick(result))} />
             </div>

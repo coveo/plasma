@@ -1,6 +1,6 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
-import { IResult, ResultsParser } from '../resultsParser/ResultsParser';
+import { IResult, ResponseParser } from '../responseParser/ResponseParser';
 
 const DEFAULT_REST_URI: string = 'https://platform.cloud.coveo.com/rest/search/v2';
 
@@ -16,14 +16,14 @@ export interface IQueryStringArguments {
     viewAllContent?: number;
 }
 
-// TODO : Do we want to pass the QueryTrigger in the props?
-//        or just declare two instances; one in the SearchMode and one in the OutputMode
+// TODO : Add logic : listing fields values as well fields definition of the organization.
 export class QueryTrigger {
-    private resultsParser: ResultsParser;
+    private responseParser: ResponseParser;
 
     constructor(private accessToken: string, private organizationId: string, private restUri?: string) {
-        this.initialize(); // TODO put default props instead of this.initialize
-        this.resultsParser = new ResultsParser();
+         // TODO put default props instead of this.initialize
+        this.initialize();
+        this.responseParser = new ResponseParser();
     }
 
     async getResultsWithBasicExpression(basicExpression: string): Promise<IResult[]> {
@@ -64,10 +64,7 @@ export class QueryTrigger {
             .fail((error) => {
                 xmlResponse = 'error';
             });
-        // TODO : Review parsing des results;
-        const results = this.resultsParser.parse(xmlResponse);
-
-        return results;
+        return this.responseParser.parseResults(xmlResponse);
     }
 
     private initialize() {

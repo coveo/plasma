@@ -7,6 +7,7 @@ import { OutputMode } from './outputMode/OutputMode';
 import { QueryTrigger } from './queryTrigger/QueryTrigger';
 import { SearchMode } from './searchMode/SearchMode';
 import { AdvancedMode } from './advancedMode/AdvancedMode';
+import { FormMode } from './formMode/FormMode';
 
 export interface IQueryExpressionBuilderProps {
     accessToken: string;
@@ -29,9 +30,9 @@ const TAB_OUTPUT_MODE_ID = 'tabOutputMode';
 //
 // functions in props :
 // this version :
-// (expression: string) => this.updateExpression(expression)
+// (expression: string) => this.updateQueryExpression(expression)
 // or this one :
-// private updateExpression = (expression: string) => {
+// private updateQueryExpression = (expression: string) => {
 //     this.setState({ queryExpression: expression });
 // }
 //
@@ -44,15 +45,11 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
 
     constructor(props: IQueryExpressionBuilderProps) {
         super(props);
-        this.initializeQueryTrigger();
+        this.queryTrigger = new QueryTrigger(this.props.accessToken, this.props.organizationId);
         this.state = {queryExpression: ''};
     }
 
-    private initializeQueryTrigger() {
-        this.queryTrigger = new QueryTrigger(this.props.accessToken, this.props.organizationId);
-    }
-
-    private updateExpression = (expression: string) => {
+    private updateQueryExpression = (expression: string) => {
         this.setState({ queryExpression: expression });
     }
 
@@ -66,6 +63,7 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
                 </div>
 
                 {/* TODO : Move this under an 'Editors' component  */}
+                {/* TODO : The tab system uses redux... */}
                 <TabNavigation>
                     <TabConnected id={TAB_SEARCH_MODE_ID} title='Search Mode' />
                     <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
@@ -75,17 +73,17 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
                 <TabContent>
                     <TabPaneConnected id={TAB_SEARCH_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            <SearchMode queryTrigger={this.queryTrigger} updateExpression={this.updateExpression} />
+                            <SearchMode queryTrigger={this.queryTrigger} updateQueryExpression={this.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_FORM_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            Content of the second tab.
+                            <FormMode />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_ADVANCED_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            <AdvancedMode initialExpression={this.state.queryExpression} updateExpression={this.updateExpression} />
+                            <AdvancedMode queryExpression={this.state.queryExpression} updateQueryExpression={this.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_OUTPUT_MODE_ID}>
