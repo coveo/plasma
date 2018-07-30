@@ -39,7 +39,12 @@ module.exports = {
                 },
             },
             {
-                test: /\.(ts|tsx)$/,
+                // transform let and const to var in this file to make it ES5 compatible
+                test: /node_modules\/unidiff\/hunk\.js/,
+                use: [{loader: 'babel-loader', options: {plugins: ['transform-es2015-block-scoping']}}],
+            },
+            {
+                test: /\.tsx?$/,
                 loader: 'ts-loader',
                 options: {
                     compiler: 'ttypescript',
