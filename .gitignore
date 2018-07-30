@@ -27,3 +27,6 @@ package-lock.json
 
 # Visual Studio Code files
 .vscode
+
+# awesome-typescript-loader
+.awcache

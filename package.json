@@ -145,7 +145,6 @@
     "sass-loader": "7.0.3",
     "shelljs": "0.8.2",
     "style-loader": "0.21.0",
-    "ts-loader": "4.4.2",
     "ts-transformer-keys": "0.3.3",
     "tsjs": "0.5.x",
     "tslint-loader": "3.6.0",
