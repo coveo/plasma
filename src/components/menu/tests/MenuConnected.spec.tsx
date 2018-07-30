@@ -18,7 +18,7 @@ describe('Menu', () => {
         const mountMenuConnected = (items: IItemBoxProps[] = [], props: Partial<IMenuProps> = {}) => {
             wrapper = mount(
                 <Provider store={store}>
-                    <MenuConnected id={id} items={items} {...props} />
+                    <MenuConnected id={id} listBox={{items}} {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );

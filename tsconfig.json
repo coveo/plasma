@@ -4,6 +4,7 @@
     "experimentalDecorators": true,
     "jsx": "react",
     "module": "commonjs",
+    "allowJs": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,

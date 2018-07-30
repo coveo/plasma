@@ -4,10 +4,12 @@
     "experimentalDecorators": true,
     "inlineSourceMap": true,
     "jsx": "react",
+    "allowJs": true,
     "module": "commonjs",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
+    "skipLibCheck": true,
     "sourceMap": false,
     "target": "ES5",
     "plugins": [
