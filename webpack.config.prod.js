@@ -36,17 +36,17 @@ const config = {
             },
             {
                 /**
-                 *  Transform let and const to var in the files below to make them ES5 compatible
-                 *  A fix with ts-loader or awesome-typescript-loader was not found without causing side effects elsewhere
+                 *  Transform let and const to var in js files below to make them ES5 compatible
+                 *  Target only problematic files to prevent compilation from hanging 
                  **/
                 include: [
                     path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
                 ],
-                use: [{loader: 'babel-loader', options: {plugins: ['transform-es2015-block-scoping']}}],
+                loader: 'awesome-typescript-loader',
             },
             {
                 test: /\.tsx?$/,
-                loader: 'ts-loader',
+                loader: 'awesome-typescript-loader',
                 options: {
                     compiler: 'ttypescript',
                 },
