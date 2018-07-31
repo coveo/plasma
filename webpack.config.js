@@ -39,9 +39,21 @@ module.exports = {
                 },
             },
             {
-                test: /\.(ts|tsx)$/,
-                loader: 'ts-loader',
+                /**
+                 *  Transform let and const to var in js files below to make them ES5 compatible
+                 *  Target only problematic files to prevent compilation from hanging
+                 */
+                include: [
+                    path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
+                ],
+                use: [{loader: 'awesome-typescript-loader'}],
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'awesome-typescript-loader',
                 options: {
+                    useCache: true,
+                    cacheDirectory: '.awcache',
                     compiler: 'ttypescript',
                 },
             },

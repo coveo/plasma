@@ -4,13 +4,13 @@ import * as ReactDOM from 'react-dom';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {ListBox} from '../listBox/ListBox';
+import {IListBoxProps, ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg/Svg';
 import {addMenu, removeMenu, toggleMenu} from './MenuActions';
 import {IMenuState} from './MenuReducers';
 
 export interface IMenuOwnProps {
-    items: IItemBoxProps[];
+    listBox: IListBoxProps;
     className?: string;
     id: string;
     positionRight?: boolean;
@@ -35,7 +35,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMenuOwnProps): IMen
 
     return {
         isOpen: menu && menu.open,
-        list: (menu && menu.list) || ownProps.items,
+        list: (menu && menu.list) || ownProps.listBox.items,
     };
 };
 
@@ -43,7 +43,7 @@ const mapDispatchToProps = (
     dispatch: IDispatch,
     ownProps: IMenuOwnProps,
 ): IMenuDispatchProps => ({
-    onRender: () => dispatch(addMenu(ownProps.id, ownProps.items)),
+    onRender: () => dispatch(addMenu(ownProps.id, ownProps.listBox.items)),
     onDestroy: () => dispatch(removeMenu(ownProps.id)),
     onToggleMenu: () => dispatch(toggleMenu(ownProps.id)),
     onDocumentClick: () => dispatch(toggleMenu(ownProps.id, false)),
@@ -90,7 +90,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                     {this.props.children ? this.props.children : this.getDefaultSvg()}
                 </button>
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.list = ref}>
-                    <ListBox id={this.props.id} items={this.props.items} />
+                    <ListBox id={this.props.id} {...this.props.listBox} />
                 </div>
             </div>
         );
