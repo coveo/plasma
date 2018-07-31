@@ -3,9 +3,11 @@ import * as _ from 'underscore';
 import {DatePickerDropdownConnected} from '../DatePickerDropdownConnected';
 import {
     CALENDAR_SELECTION_RULES,
+    DATE_RANGE_EXAMPLE,
     FOUR_SELECTION_BOXES,
     SELECTION_BOXES,
-    SELECTION_BOXES_LONG_WITHOUT_TIME, SELECTION_BOXES_WITHOUT_TIME_AND_NOW,
+    SELECTION_BOXES_LONG_WITHOUT_TIME,
+    SELECTION_BOXES_WITHOUT_TIME_AND_NOW,
 } from './DatePickerExamplesCommon';
 
 export class DatePickerDropdownConnectedExamples extends React.Component<any, any> {
@@ -19,6 +21,15 @@ export class DatePickerDropdownConnectedExamples extends React.Component<any, an
                         id='date-picker-dropdown'
                         datesSelectionBoxes={SELECTION_BOXES}
                         selectionRules={CALENDAR_SELECTION_RULES} />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Date picker dropdown with Redux state and selected date range set on render</label>
+                    <DatePickerDropdownConnected
+                        id='date-picker-dropdown-with-date-range'
+                        datesSelectionBoxes={SELECTION_BOXES}
+                        selectionRules={CALENDAR_SELECTION_RULES}
+                        initialDateRange={DATE_RANGE_EXAMPLE}
+                    />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Date picker dropdown with a range limit of 3 days Redux state</label>

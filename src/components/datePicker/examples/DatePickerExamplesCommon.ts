@@ -3,6 +3,7 @@ import {DATES_SEPARATOR} from '../../../utils/DateUtils';
 import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar';
 import {DatePickerColors} from '../DatePicker';
 import {IDatesSelectionBox} from '../DatePickerBox';
+import {DatePickerDateRange} from './../DatePickerConstants';
 
 export const SELECTION_BOXES: IDatesSelectionBox[] = [
     {
@@ -177,3 +178,5 @@ export const CALENDAR_SELECTION_RULES_SINGLE_DATE: ICalendarSelectionRule[] = [
         isFor: CalendarSelectionRuleType.all,
     },
 ];
+
+export const DATE_RANGE_EXAMPLE: DatePickerDateRange = [moment().toDate(), moment().add(3, 'day').toDate()];

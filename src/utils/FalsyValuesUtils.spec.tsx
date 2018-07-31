@@ -49,8 +49,12 @@ describe('callIfDefined', () => {
 
         expect(() => callIfDefined(undefined)).not.toThrow();
         expect(() => callIfDefined(null)).not.toThrow();
-        expect(() => callIfDefined('')).not.toThrow();
-        expect(() => callIfDefined('askjdh')).not.toThrow();
         expect(() => callIfDefined(someDeclaredButNotAssignedCallback)).not.toThrow();
+    });
+
+    it('should return what the callback returns', () => {
+        const returnBananas = () => 'bananas';
+
+        expect(callIfDefined(returnBananas)).toBe('bananas');
     });
 });

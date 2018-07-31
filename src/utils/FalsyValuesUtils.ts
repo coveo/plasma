@@ -5,8 +5,8 @@ export const convertUndefinedAndNullToEmptyString = (value: any) =>
         ? ''
         : value;
 
-export const callIfDefined = (callback: any, ...args: any[]) => {
+export const callIfDefined = <T>(callback: (...params: any[]) => T, ...args: any[]): T => {
     if (_.isFunction(callback)) {
-        callback(...args);
+        return callback(...args);
     }
 };

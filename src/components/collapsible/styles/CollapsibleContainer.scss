@@ -1,0 +1,14 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+.collapsible {
+    margin-top: -$default-border-size;
+}
+
+.header {
+    min-height: $collapsible-height;
+}
+
+.content {
+    padding: $form-top-padding $header-padding;
+}

@@ -10,6 +10,7 @@ import {DEFAULT_YEARS, ICalendarSelectionRule} from '../calendar/Calendar';
 import {Input} from '../input/Input';
 import {ModalFooter} from '../modal/ModalFooter';
 import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox} from './DatePickerBox';
+import {DatePickerDateRange} from './DatePickerConstants';
 import {IDatePickerState} from './DatePickerReducers';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
@@ -44,6 +45,7 @@ export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildren
     upperLimitPlaceholder?: string;
     isLinkedToDateRange?: boolean;
     simple?: boolean;
+    initialDateRange?: DatePickerDateRange;
 }
 
 export interface IDatePickerDropdownStateProps extends IReduxStatePossibleProps {
@@ -251,6 +253,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 initiallyUnselected: this.props.initiallyUnselected,
                 clearLabel: this.props.clearLabel,
                 simple: this.props.simple,
+                initialDateRange: this.props.initialDateRange,
                 onClear: () => this.handleClear(),
                 footer: (
                     <ModalFooter classes={['mod-small']}>

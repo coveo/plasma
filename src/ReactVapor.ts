@@ -4,7 +4,7 @@ import {IItemFilterState} from './components/actions/filters/ItemFilterReducers'
 import {IAutocompleteState} from './components/autocomplete/AutocompleteReducers';
 import {ICheckboxState} from './components/checkbox/CheckboxReducers';
 import {IGroupableCheckboxesState} from './components/checkbox/GroupableCheckboxReducers';
-import {ICollapsibleContainerState} from './components/collapsibleContainer/CollapsibleContainerReducers';
+import {CollapsibleState} from './components/collapsible/CollapsibleReducers';
 import {IDatePickerState} from './components/datePicker/DatePickerReducers';
 import {IDropdownState} from './components/dropdown/DropdownReducers';
 import {IDropdownOption} from './components/dropdownSearch/DropdownSearch';
@@ -20,6 +20,7 @@ import {IInputState} from './components/input/InputReducers';
 import {ILastUpdatedState} from './components/lastUpdated/LastUpdatedReducers';
 import {IListBoxState} from './components/listBox/ListBoxReducers';
 import {ILoadingState} from './components/loading/LoadingReducers';
+import {IMenusState} from './components/menu/MenuReducers';
 import {IModalState} from './components/modal/ModalReducers';
 import {IPaginationState} from './components/navigation/pagination/NavigationPaginationReducers';
 import {IPerPageState} from './components/navigation/perPage/NavigationPerPageReducers';
@@ -66,11 +67,12 @@ export interface IReactVaporState {
     tables?: ITablesState;
     checkboxes?: ICheckboxState[];
     inputs?: IInputState[];
-    collapsibleContainers?: ICollapsibleContainerState[];
+    collapsibles?: CollapsibleState[];
     searchBars?: ISearchBarState[];
     flippables?: IFlippableState[];
     groupableCheckboxes?: IGroupableCheckboxesState[];
     textAreas?: ITextAreaState[];
+    menus?: IMenusState;
 }
 
 export interface IReduxActionsPayload {

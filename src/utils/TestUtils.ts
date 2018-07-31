@@ -9,7 +9,7 @@ import {itemFiltersReducer} from '../components/actions/filters/ItemFilterReduce
 import {autocompletesReducer} from '../components/autocomplete/AutocompleteReducers';
 import {checkboxesReducer} from '../components/checkbox/CheckboxReducers';
 import {groupableCheckboxesReducer} from '../components/checkbox/GroupableCheckboxReducers';
-import {collapsibleContainersReducer} from '../components/collapsibleContainer/CollapsibleContainerReducers';
+import {collapsiblesReducer} from '../components/collapsible/CollapsibleReducers';
 import {datePickersReducer} from '../components/datePicker/DatePickerReducers';
 import {dropdownsReducer} from '../components/dropdown/DropdownReducers';
 import {dropdownsSearchReducer} from '../components/dropdownSearch/DropdownSearchReducers';
@@ -22,6 +22,7 @@ import {inputsReducer} from '../components/input/InputReducers';
 import {lastUpdatedCompositeReducer} from '../components/lastUpdated/LastUpdatedReducers';
 import {listBoxesReducer} from '../components/listBox/ListBoxReducers';
 import {loadingsReducer} from '../components/loading/LoadingReducers';
+import {menuCompositeReducer} from '../components/menu/MenuReducers';
 import {modalsReducer} from '../components/modal/ModalReducers';
 import {paginationCompositeReducer} from '../components/navigation/pagination/NavigationPaginationReducers';
 import {perPageCompositeReducer} from '../components/navigation/perPage/NavigationPerPageReducers';
@@ -79,12 +80,13 @@ export class TestUtils {
             toastContainers: toastsContainerReducer,
             tables: tablesReducer,
             checkboxes: checkboxesReducer,
-            collapsibleContainers: collapsibleContainersReducer,
+            collapsibles: collapsiblesReducer,
             inputs: inputsReducer,
             searchBars: searchBarsReducer,
             flippables: flippablesReducer,
             groupableCheckboxes: groupableCheckboxesReducer,
             textAreas: textAreasReducer,
+            menus: menuCompositeReducer,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
