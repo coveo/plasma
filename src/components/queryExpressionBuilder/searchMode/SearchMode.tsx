@@ -31,6 +31,11 @@ export class SearchMode extends React.Component<ISearchModeProps, ISearchModeSta
         this.expressionParser = new ExpressionParser();
     }
 
+    async componentDidMount() {
+        const allResults = await this.props.queryTrigger.getAllResults();
+        this.setState({results: allResults});
+    }
+
     private onClick(result: IResult) {
         const parsedFieldExpression: string = this.getParsedFieldExpression(result);
         this.props.updateQueryExpression(parsedFieldExpression);

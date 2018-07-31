@@ -63,10 +63,10 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
                 </div>
 
                 {/* TODO : Move this under an 'Editors' component  */}
-                {/* TODO : The tab system uses redux... */}
+                {/* TODO : Move back the Form Mode after the searchMode */}
                 <TabNavigation>
-                    <TabConnected id={TAB_SEARCH_MODE_ID} title='Search Mode' />
                     <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
+                    <TabConnected id={TAB_SEARCH_MODE_ID} title='Search Mode' />
                     <TabConnected id={TAB_ADVANCED_MODE_ID} title='Advanced Mode' />
                     <TabConnected id={TAB_OUTPUT_MODE_ID} title='Output' />
                 </TabNavigation>
@@ -78,7 +78,7 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_FORM_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            <FormMode />
+                            <FormMode queryTrigger={this.queryTrigger} updateQueryExpression={this.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_ADVANCED_MODE_ID}>

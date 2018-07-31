@@ -33,7 +33,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
         }
     }
 
-    private getItems(): IItemBoxProps[] {
+    private getResultsItems(): IItemBoxProps[] {
         const items: IItemBoxProps[] = [];
         _.forEach(this.props.results, (result: IResult) => {
             const getAppend: IContentProps = {content: () => <ResultItem result={result} />};
@@ -51,7 +51,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
         return (
             <div>
                 <ListBox
-                    items={this.getItems()}
+                    items={this.getResultsItems()}
                     selected={[this.state.selectedResult]}
                     onOptionClick={(resultItemBox: IItemBoxProps) => this.onClick(resultItemBox)}
                 />

@@ -2,7 +2,7 @@ import * as $ from 'jquery';
 import * as _ from 'underscore';
 import { IResult, ResponseParser } from '../responseParser/ResponseParser';
 
-const DEFAULT_REST_URI: string = 'https://platform.cloud.coveo.com/rest/search/v2';
+const DEFAULT_REST_URL: string = 'https://platform.cloud.coveo.com/rest/search/v2';
 
 export interface IQueryParameters {
     q?: string;
@@ -20,7 +20,7 @@ export interface IQueryStringArguments {
 export class QueryTrigger {
     private responseParser: ResponseParser;
 
-    constructor(private accessToken: string, private organizationId: string, private restUri?: string) {
+    constructor(private accessToken: string, private organizationId: string, private restUrl?: string) {
          // TODO put default props instead of this.initialize
         this.initialize();
         this.responseParser = new ResponseParser();
@@ -28,16 +28,16 @@ export class QueryTrigger {
 
     async getResultsWithBasicExpression(basicExpression: string): Promise<IResult[]> {
         const data = _.extend({q: basicExpression}, this.getDefaultData());
-        return await this.executeQuery(data);
+        return await this.getResults(data);
     }
 
     async getResultsWithAdvancedExpression(advancedExpression: string): Promise<IResult[]> {
         const data = _.extend({aq: advancedExpression}, this.getDefaultData());
-        return await this.executeQuery(data);
+        return await this.getResults(data);
     }
 
     async getAllResults(): Promise<IResult[]> {
-        return await this.executeQuery(this.getDefaultData());
+        return await this.getResults(this.getDefaultData());
     }
 
     private getDefaultData() {
@@ -49,14 +49,34 @@ export class QueryTrigger {
         } as IQueryParameters;
     }
 
-    private async executeQuery(data: IQueryParameters): Promise<IResult[]> {
+    private async getResults(data: IQueryParameters): Promise<IResult[]> {
+        const response = await this.executeQuery(this.restUrl, data);
+        return this.responseParser.parseResults(response);
+    }
+
+    public async getFields(): Promise<any> {
+        // TODO: Do we want to get all fields
+        // TODO : Do we need to link it with the organization id ? : https://platform.cloud.coveo.com/rest/organizations/{organizationId}/indexes/page/fields
+        const fieldsRestUrl: string = `${DEFAULT_REST_URL}/fields`;
+        const response = await this.executeQuery(fieldsRestUrl);
+        return this.responseParser.parseFields(response);
+    }
+
+    public async getFieldValues(fieldType: string): Promise<any> {
+        // TODO: get all no max number of values
+        const fieldValuesRestUrl: string = `${DEFAULT_REST_URL}/values?field=${fieldType}&maximumNumberOfValues=100`;
+        const response = await this.executeQuery(fieldValuesRestUrl);
+        return this.responseParser.parseFieldValues(response);
+    }
+
+    private async executeQuery(url: string, data: IQueryParameters = {}): Promise<IResult[]> {
         let xmlResponse;
-        // TODO : better handling of fail... always needed?
+        // TODO : better handling of fail...
         await $.ajax({
             type: 'GET',
-            url: this.restUri,
+            url: url,
             headers: {Authorization: `Bearer ${this.accessToken}`},
-            data,
+            data: data,
             })
             .done((repsonseData) => {
                 xmlResponse = repsonseData;
@@ -64,12 +84,14 @@ export class QueryTrigger {
             .fail((error) => {
                 xmlResponse = 'error';
             });
-        return this.responseParser.parseResults(xmlResponse);
+        
+        // console.log(xmlResponse);
+        return xmlResponse;
     }
 
     private initialize() {
-        if (!this.restUri) {
-            this.restUri = DEFAULT_REST_URI;
+        if (!this.restUrl) {
+            this.restUrl = DEFAULT_REST_URL;
         }
     }
 }
