@@ -15,6 +15,7 @@ import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
 import {ITableOwnProps} from '../Table';
 import {IData, ITableRowData} from '../Table';
+import {StateRow} from '../table-children/TableChildBody';
 import {modifyState, setIsInError} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
@@ -65,7 +66,7 @@ const simplestTableDataByIdWithStatus = _.range(0, 7).reduce((obj, num) => ({
     ...obj,
     ['row' + num]: {
         id: 'row' + num,
-        attribute1: {content: generateText(), state: ['success', 'warning', 'error'][_.random(2)]},
+        attribute1: {content: generateText(), state: [StateRow.Success, StateRow.Warning, StateRow.Error][_.random(2)]},
         attribute2: generateText(),
         attribute3: generateText(),
         attribute4: generateText(),

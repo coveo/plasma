@@ -22,7 +22,11 @@ export interface ITableBodyInheritedFromTableProps {
     withoutHoverOnRow?: boolean;
 }
 
-export type StateRow = 'error' | 'warning' | 'success';
+export enum StateRow {
+    Error = 'error',
+    Warning = 'warning',
+    Success = 'success',
+}
 
 export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps {
     tableId: string;
@@ -37,13 +41,13 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
 }
 
 const getStatusRowStyle = (state: StateRow, content: JSXRenderable) => {
-    const svgStyle: string = classNames([
+    const svgClasses: string = classNames([
         'mr3',
         'icon',
         'state-icon-row',
     ]);
     return <span className='flex flex-center'>
-        <Svg className={svgStyle} svgName={state === 'success' ? 'checkmark' : 'message-alert'} />
+        <Svg className={svgClasses} svgName={state === StateRow.Success ? 'checkmark' : 'message-alert'} />
         <span className='bold'>{content}</span>
     </span>;
 };
