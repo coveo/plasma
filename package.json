@@ -142,7 +142,7 @@
     "redux-thunk": "2.2.0",
     "remap-istanbul": "0.11.1",
     "reselect": "3.0.1",
-    "sass-loader": "7.0.3",
+    "sass-loader": "7.1.0",
     "shelljs": "0.8.2",
     "style-loader": "0.21.0",
     "ts-transformer-keys": "0.3.3",
