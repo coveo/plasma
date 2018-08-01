@@ -133,7 +133,7 @@ describe('TableDataModifier', () => {
         });
     });
 
-    fdescribe('applySortOnDisplayedIds', () => {
+    describe('applySortOnDisplayedIds', () => {
         const {tableCompositeState} = tablePropsMockWithData;
         const {data} = tableCompositeState;
         const {displayedIds} = data;
