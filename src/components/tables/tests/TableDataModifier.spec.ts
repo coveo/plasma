@@ -5,7 +5,7 @@ import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {ITableProps} from '../Table';
+import {ITableProps, IData} from '../Table';
 import {TableActions} from '../TableActions';
 import {TableChildComponent, TableSortingOrder} from '../TableConstants';
 import {
@@ -133,7 +133,7 @@ describe('TableDataModifier', () => {
         });
     });
 
-    describe('applySortOnDisplayedIds', () => {
+    fdescribe('applySortOnDisplayedIds', () => {
         const {tableCompositeState} = tablePropsMockWithData;
         const {data} = tableCompositeState;
         const {displayedIds} = data;
@@ -234,6 +234,42 @@ describe('TableDataModifier', () => {
                 );
 
                 expect(resultIds).toEqual(expectedOrderOfIds);
+            });
+        });
+
+        describe('with custom sortMethod', () => {
+            let tableProps: ITableProps;
+            const testColumnAttribute = 'userName';
+
+            const cumtomSortFunction = (items: IData[], attribute: string, ascending: boolean): IData[] => {
+                expect(attribute).toBe(testColumnAttribute);
+                expect(ascending).toBe(true);
+                return _.sortBy(items, attribute);
+            }
+
+            beforeEach(() => {
+                tableProps = {
+                    ...tablePropsMockWithData,
+                    headingAttributes: [
+                        {
+                            attributeName: testColumnAttribute,
+                            titleFormatter: _.identity,
+                            attributeFormatter: _.identity,
+                            sortMethod: cumtomSortFunction,
+                        },
+                    ],
+                };
+            });
+
+            it('should return the same ids but sorted by the specified custom sortMethod function', () => {
+                const expectedOrderOfIds = _.sortBy(_.values(data.byId), testColumnAttribute).map((currentData) => currentData.id);
+
+                expect(applySortOnDisplayedIds(
+                    [...displayedIds],
+                    data.byId,
+                    {...tableCompositeState, sortState: {order: TableSortingOrder.ASCENDING, attribute: testColumnAttribute}},
+                    tableProps,
+                )).toEqual(expectedOrderOfIds);
             });
         });
     });
