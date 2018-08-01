@@ -5,7 +5,7 @@ import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {ITableProps, IData} from '../Table';
+import {IData, ITableProps} from '../Table';
 import {TableActions} from '../TableActions';
 import {TableChildComponent, TableSortingOrder} from '../TableConstants';
 import {
@@ -245,7 +245,7 @@ describe('TableDataModifier', () => {
                 expect(attribute).toBe(testColumnAttribute);
                 expect(ascending).toBe(true);
                 return _.sortBy(items, attribute);
-            }
+            };
 
             beforeEach(() => {
                 tableProps = {
