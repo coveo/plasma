@@ -1,9 +1,9 @@
 
 import * as React from 'react';
-import { IItemBoxProps } from '../../../itemBox/ItemBox';
-import { SingleSelectWithFilter } from '../../../select/SelectComponents';
-import { FieldType } from '../ExpressionEditor';
-// import * as _ from 'underscore'; // TODO 
+import {IItemBoxProps} from '../../../itemBox/ItemBox';
+import {SingleSelectWithFilter} from '../../../select/SelectComponents';
+import {FieldType} from '../ExpressionEditor';
+// import * as _ from 'underscore'; // TODO
 
 export interface IOperatorSelectorProps {
     selectedFieldType: FieldType;
@@ -32,13 +32,13 @@ export class OperatorSelector extends React.Component<IOperatorSelectorProps, IO
 
     private getOperatorItems(): IItemBoxProps[] {
         switch (this.props.selectedFieldType) {
-            case FieldType.Date: 
+            case FieldType.Date:
                 return dateOperators;
-            case FieldType.Number: 
+            case FieldType.Number:
                 return numberOperators;
-            case FieldType.String: 
+            case FieldType.String:
                 return stringOperators;
-            default: 
+            default:
                 return null;
         }
     }

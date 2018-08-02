@@ -1,10 +1,10 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IItemBoxProps } from '../../../itemBox/ItemBox';
-import { IField, IFieldValue } from '../../responseParser/ResponseParser';
-import { SingleSelectWithFilter } from '../../../select/SelectComponents';
-import { QueryTrigger } from '../../queryTrigger/QueryTrigger';
+import {IItemBoxProps} from '../../../itemBox/ItemBox';
+import {SingleSelectWithFilter} from '../../../select/SelectComponents';
+import {QueryTrigger} from '../../queryTrigger/QueryTrigger';
+import {IField, IFieldValue} from '../../responseParser/ResponseParser';
 
 export interface IFieldSelectorProps {
     fields: IField[];
@@ -28,7 +28,6 @@ export class FieldSelector extends React.Component<IFieldSelectorProps, IFieldSe
         return fieldsItems;
     }
 
-
     private async fieldOnSelect(field: string) {
         await this.updateFieldValues(field);
         this.props.updateField(field);
@@ -51,7 +50,6 @@ export class FieldSelector extends React.Component<IFieldSelectorProps, IFieldSe
         });
         return fieldValuesItems;
     }
-
 
     render() {
         return (

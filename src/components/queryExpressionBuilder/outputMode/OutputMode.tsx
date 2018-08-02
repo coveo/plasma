@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Button } from '../../button/Button';
-import { QueryTrigger } from '../queryTrigger/QueryTrigger';
-import { ResultList } from '../resultList/ResultList';
-import { IResult } from '../responseParser/ResponseParser';
+import {Button} from '../../button/Button';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import {IResult} from '../responseParser/ResponseParser';
+import {ResultList} from '../resultList/ResultList';
 
 export interface IOutputModeProps {
     queryTrigger: QueryTrigger;
@@ -27,7 +27,7 @@ export class OutputMode extends React.Component<IOutputModeProps, IOutputModeSta
     render() {
         return (
             <div>
-                <Button enabled={true} name={'Call'} onClick={() => this.updateResults()}/>
+                <Button enabled={true} name={'Call'} onClick={() => this.updateResults()} />
                 <ResultList results={this.state.results} />
             </div>
         );

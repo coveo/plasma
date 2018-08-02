@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { QueryTrigger } from '../queryTrigger/QueryTrigger';
-import { ExpressionEditor } from '../expressionEditor/ExpressionEditor';
-
+import {ExpressionEditor} from '../expressionEditor/ExpressionEditor';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 
 export interface IFormModeProps {
     queryTrigger: QueryTrigger;
@@ -17,7 +16,7 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeState> {
     constructor(props: IFormModeProps) {
         super(props);
     }
-  
+
     render() {
         return (
             <div>

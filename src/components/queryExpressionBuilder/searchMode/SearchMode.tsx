@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ISearchBarStateProps, SearchBar } from '../../searchBar/SearchBar';
-import { ExpressionParser, IFieldExpression } from '../expressionParser/ExpressionParser';
-import { QueryTrigger } from '../queryTrigger/QueryTrigger';
-import { ResultList } from '../resultList/ResultList';
-import { IResult } from '../responseParser/ResponseParser';
+import {ISearchBarStateProps, SearchBar} from '../../searchBar/SearchBar';
+import {ExpressionParser, IFieldExpression} from '../expressionParser/ExpressionParser';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import {IResult} from '../responseParser/ResponseParser';
+import {ResultList} from '../resultList/ResultList';
 
 export interface ISearchModeProps {
     queryTrigger: QueryTrigger;

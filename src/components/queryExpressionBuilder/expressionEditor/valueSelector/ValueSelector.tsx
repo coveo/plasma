@@ -1,7 +1,7 @@
 
 import * as React from 'react';
-import { SingleSelectWithFilter } from '../../../select/SelectComponents';
-import { IItemBoxProps } from '../../../itemBox/ItemBox';
+import {IItemBoxProps} from '../../../itemBox/ItemBox';
+import {SingleSelectWithFilter} from '../../../select/SelectComponents';
 
 export interface IValueSelectorProps {
     fieldValueItems: IItemBoxProps[];
@@ -32,7 +32,6 @@ export class ValueSelector extends React.Component<IValueSelectorProps, IValueSe
                     placeholder={'Select operator'}
                     onSelectOptionCallback={(value: string) => this.fieldValueOnSelect(value)}
                 />
-
 
                 {/* <MultiSelectWithFilter
                     id={'fieldValues-selector'}

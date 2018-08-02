@@ -1,26 +1,26 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
-import { Button } from '../../button/Button';
-import { QueryTrigger } from '../queryTrigger/QueryTrigger';
-import { IItemBoxProps } from '../../itemBox/ItemBox';
-import { IField } from '../responseParser/ResponseParser';
-import { OperatorSelector } from './operatorSelector/OperatorSelector';
-import { FieldSelector } from './fieldSelector/FieldSelector';
-import { ValueSelector } from './valueSelector/ValueSelector';
+import {Button} from '../../button/Button';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import {IField} from '../responseParser/ResponseParser';
+import {FieldSelector} from './fieldSelector/FieldSelector';
+import {OperatorSelector} from './operatorSelector/OperatorSelector';
+import {ValueSelector} from './valueSelector/ValueSelector';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',
     Double = 'Double',
     Long = 'Long',
     Long64 = 'Long64',
-    Date = 'Date'
+    Date = 'Date',
 }
 
 export enum FieldType {
     Date = 'date',
     Number = 'number',
-    String = 'string'
+    String = 'string',
 }
 
 export interface IExpressionEditorProps {
@@ -28,7 +28,7 @@ export interface IExpressionEditorProps {
     updateQueryExpression: (expression: string) => void;
 }
 
-// TODO : Review les fieldValue vs fieldValues maintenant ça devrait être des fieldValues  
+// TODO : Review les fieldValue vs fieldValues maintenant ça devrait être des fieldValues
 export interface IExpressionEditorState {
     fieldValueItems: IItemBoxProps[];
     selectedField: string;
@@ -38,7 +38,7 @@ export interface IExpressionEditorState {
 
 export class ExpressionEditor extends React.Component<IExpressionEditorProps, IExpressionEditorState> {
     // TODO : Would it be better to have it in the state?
-    private fields:  IField[];
+    private fields: IField[];
 
     constructor(props: IExpressionEditorProps) {
         super(props);
@@ -46,7 +46,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
             fieldValueItems: [],
             selectedField: '',
             selectedOperator: '',
-            selectedFieldValues: []
+            selectedFieldValues: [],
         };
         this.fields = [];
     }
@@ -69,11 +69,11 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         // TODO : Review that we have all types
         if (originalFieldType === OriginalFieldType.Date) {
             return FieldType.Date;
-        } else if  (originalFieldType === (OriginalFieldType.Long64 || OriginalFieldType.Long || OriginalFieldType.Double)) {
+        } else if (originalFieldType === (OriginalFieldType.Long64 || OriginalFieldType.Long || OriginalFieldType.Double)) {
             return FieldType.Number;
         } else {
             return FieldType.String;
-        } 
+        }
     }
 
     // TODO : those functions could be removed; we could just use this.setState directly
@@ -90,10 +90,9 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private updateFieldValueItems(fieldValueItems: IItemBoxProps[]) {
-        
+
         this.setState({fieldValueItems: fieldValueItems});
     }
-
 
     private async updateQueryExpression() {
         // TODO review buildding expression
@@ -109,7 +108,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     render() {
         return (
             <div>
-                <FieldSelector 
+                <FieldSelector
                     fields={this.fields}
                     queryTrigger={this.props.queryTrigger}
                     updateField={(field: string) => this.updateField(field)}
@@ -121,7 +120,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                 />
                 <ValueSelector fieldValueItems={this.state.fieldValueItems} updateFieldValues={(fieldValues: string[]) => this.updateFieldValues(fieldValues)} />
 
-                <Button enabled={true} name={'Update Query Expression'} onClick={() => {this.updateQueryExpression()}}/>
+                <Button enabled={true} name={'Update Query Expression'} onClick={() => {this.updateQueryExpression();}} />
             </div>
         );
     }

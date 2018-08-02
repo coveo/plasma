@@ -1,6 +1,6 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
-import { IResult, ResponseParser } from '../responseParser/ResponseParser';
+import {IResult, ResponseParser} from '../responseParser/ResponseParser';
 
 const DEFAULT_REST_URL: string = 'https://platform.cloud.coveo.com/rest/search/v2';
 
@@ -21,7 +21,7 @@ export class QueryTrigger {
     private responseParser: ResponseParser;
 
     constructor(private accessToken: string, private organizationId: string, private restUrl?: string) {
-         // TODO put default props instead of this.initialize
+        // TODO put default props instead of this.initialize
         this.initialize();
         this.responseParser = new ResponseParser();
     }
@@ -54,7 +54,7 @@ export class QueryTrigger {
         return this.responseParser.parseResults(response);
     }
 
-    public async getFields(): Promise<any> {
+    async getFields(): Promise<any> {
         // TODO: Do we want to get all fields
         // TODO : Do we need to link it with the organization id ? : https://platform.cloud.coveo.com/rest/organizations/{organizationId}/indexes/page/fields
         const fieldsRestUrl: string = `${DEFAULT_REST_URL}/fields`;
@@ -62,7 +62,7 @@ export class QueryTrigger {
         return this.responseParser.parseFields(response);
     }
 
-    public async getFieldValues(fieldType: string): Promise<any> {
+    async getFieldValues(fieldType: string): Promise<any> {
         // TODO: get all no max number of values
         const fieldValuesRestUrl: string = `${DEFAULT_REST_URL}/values?field=${fieldType}&maximumNumberOfValues=100`;
         const response = await this.executeQuery(fieldValuesRestUrl);
@@ -77,14 +77,14 @@ export class QueryTrigger {
             url: url,
             headers: {Authorization: `Bearer ${this.accessToken}`},
             data: data,
-            })
+        })
             .done((repsonseData) => {
                 xmlResponse = repsonseData;
             })
             .fail((error) => {
                 xmlResponse = 'error';
             });
-        
+
         // console.log(xmlResponse);
         return xmlResponse;
     }

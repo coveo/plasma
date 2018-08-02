@@ -1,11 +1,11 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IContentProps } from '../../content/Content';
-import { IItemBoxProps } from '../../itemBox/ItemBox';
-import { ListBox } from '../../listBox/ListBox';
-import { ResultItem } from '../resultItem/ResultItem';
-import { IResult } from '../responseParser/ResponseParser';
+import {IContentProps} from '../../content/Content';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {ListBox} from '../../listBox/ListBox';
+import {IResult} from '../responseParser/ResponseParser';
+import {ResultItem} from '../resultItem/ResultItem';
 
 export interface IResultListProps {
     results: IResult[];
@@ -53,7 +53,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
                 <ListBox
                     items={this.getResultsItems()}
                     selected={[this.state.selectedResult]}
-                    onOptionClick={(resultItemBox: IItemBoxProps) => this.onClick(resultItemBox)}
+                    onOptionClick={(resultItemBox: IItemBoxProps) =>  this.onClick(resultItemBox)}
                 />
             </div>
         );

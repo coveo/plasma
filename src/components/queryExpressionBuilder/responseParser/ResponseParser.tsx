@@ -33,7 +33,7 @@ export class ResponseParser {
                 parsedFieldValues.push(parsedFieldValue);
             });
             return parsedFieldValues;
-        } catch(e) {
+        } catch (e) {
             return [];
         }
 
@@ -42,7 +42,7 @@ export class ResponseParser {
     private parseValue(field: any): IFieldValue {
         return {
             value: field['value'],
-            numberOfResults: field['numberOfResults']
+            numberOfResults: field['numberOfResults'],
         };
     }
 
@@ -56,7 +56,7 @@ export class ResponseParser {
                 parsedFields.push(parsedField);
             });
             return parsedFields;
-        } catch(e) {
+        } catch (e) {
             return [];
         }
     }
@@ -64,7 +64,7 @@ export class ResponseParser {
     private parseField(field: any): IField {
         return {
             name: field['name'],
-            fieldType: field['fieldType']
+            fieldType: field['fieldType'],
         };
     }
 
@@ -77,7 +77,7 @@ export class ResponseParser {
                 parsedResults.push(parsedResult);
             });
             return parsedResults;
-        } catch(e) {
+        } catch (e) {
             return [];
         }
 

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { TabConnected } from '../tab/TabConnected';
-import { TabContent } from '../tab/TabContent';
-import { TabNavigation } from '../tab/TabNavigation';
-import { TabPaneConnected } from '../tab/TabPaneConnected';
-import { OutputMode } from './outputMode/OutputMode';
-import { QueryTrigger } from './queryTrigger/QueryTrigger';
-import { SearchMode } from './searchMode/SearchMode';
-import { AdvancedMode } from './advancedMode/AdvancedMode';
-import { FormMode } from './formMode/FormMode';
+import {TabConnected} from '../tab/TabConnected';
+import {TabContent} from '../tab/TabContent';
+import {TabNavigation} from '../tab/TabNavigation';
+import {TabPaneConnected} from '../tab/TabPaneConnected';
+import {AdvancedMode} from './advancedMode/AdvancedMode';
+import {FormMode} from './formMode/FormMode';
+import {OutputMode} from './outputMode/OutputMode';
+import {QueryTrigger} from './queryTrigger/QueryTrigger';
+import {SearchMode} from './searchMode/SearchMode';
 
 export interface IQueryExpressionBuilderProps {
     accessToken: string;
@@ -50,16 +50,16 @@ export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuil
     }
 
     private updateQueryExpression = (expression: string) => {
-        this.setState({ queryExpression: expression });
+        this.setState({queryExpression: expression});
     }
 
     render() {
         return (
             <div>
-                <label className='form-control-label'> Query Expression Builder </label> <br/><br/><br/>
+                <label className='form-control-label'> Query Expression Builder </label> <br /><br /><br />
                 <div>
                     <span> Current query expression : </span>
-                    <span> {this.state.queryExpression} </span> <br/><br/><br/><br/>
+                    <span> {this.state.queryExpression} </span> <br /><br /><br /><br />
                 </div>
 
                 {/* TODO : Move this under an 'Editors' component  */}
