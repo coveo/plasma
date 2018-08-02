@@ -53,7 +53,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
                 <ListBox
                     items={this.getResultsItems()}
                     selected={[this.state.selectedResult]}
-                    onOptionClick={(resultItemBox: IItemBoxProps) =>  this.onClick(resultItemBox)}
+                    onOptionClick={(resultItemBox: IItemBoxProps) => this.onClick(resultItemBox)}
                 />
             </div>
         );

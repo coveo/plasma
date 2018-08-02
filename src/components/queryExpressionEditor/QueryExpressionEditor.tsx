@@ -9,13 +9,13 @@ import {OutputMode} from './outputMode/OutputMode';
 import {QueryTrigger} from './queryTrigger/QueryTrigger';
 import {SearchMode} from './searchMode/SearchMode';
 
-export interface IQueryExpressionBuilderProps {
+export interface IQueryExpressionEditorProps {
     accessToken: string;
     organizationId: string;
     restUri?: string;
 }
 
-export interface IQueryExpressionBuilderState {
+export interface IQueryExpressionEditorState {
     queryExpression: string;
 }
 
@@ -40,10 +40,10 @@ const TAB_OUTPUT_MODE_ID = 'tabOutputMode';
 //
 // eos2015 in tsconfig
 
-export class QueryExpressionBuilder extends React.Component<IQueryExpressionBuilderProps, IQueryExpressionBuilderState> {
+export class QueryExpressionEditor extends React.Component<IQueryExpressionEditorProps, IQueryExpressionEditorState> {
     private queryTrigger: QueryTrigger;
 
-    constructor(props: IQueryExpressionBuilderProps) {
+    constructor(props: IQueryExpressionEditorProps) {
         super(props);
         this.queryTrigger = new QueryTrigger(this.props.accessToken, this.props.organizationId);
         this.state = {queryExpression: ''};
