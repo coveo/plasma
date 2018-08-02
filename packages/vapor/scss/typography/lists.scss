@@ -19,10 +19,10 @@ $list-style-types: disc, circle, square, decimal, lower-alpha, upper-alpha;
 
 @each $style-type in $list-style-types {
   .list-#{$style-type} {
-    list-style: $style-type;
-    
     padding-left: $list-padding;
-    
+
+    list-style: $style-type;
+
     li {
       margin-bottom: $box-spacing;
     }

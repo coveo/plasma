@@ -173,8 +173,7 @@
 
   cursor: pointer;
 
-  + .coveo-checkbox-label > .exclude-box,
-  &:hover + .coveo-checkbox-label > button {
+  + .coveo-checkbox-label > .exclude-box, &:hover + .coveo-checkbox-label > button {
     align-items: center;
     justify-content: center;
 

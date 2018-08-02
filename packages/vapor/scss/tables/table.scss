@@ -1,6 +1,7 @@
 
 .table {
   width: 100%;
+
   text-align: left;
 
   border: none;
@@ -216,6 +217,7 @@
 .table-container {
   &.table-card {
     overflow: hidden;
+
     box-shadow: $table-shadow;
     border-radius: $border-radius;
   }
@@ -239,8 +241,9 @@ $row-style: (
 @each $style, $color in $row-style {
   .row-#{$style} {
     > td:first-child {
-      border-left-color: $color;
       color: $color;
+
+      border-left-color: $color;
       svg {
         fill: $color;
       }
@@ -253,6 +256,6 @@ $row-style: (
     border-left-color: $dark-medium-grey;
   }
   svg {
-    fill: $dark-medium-grey
+    fill: $dark-medium-grey;
   }
 }

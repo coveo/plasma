@@ -1,51 +1,76 @@
+/**
+ * Flippable implementation supporting IE 
+ * inspiration: https://davidwalsh.name/css-flip
+ */
+
+%flipper-side {
+  margin: 0;
+
+  background-color: $pure-white;
+}
+
 .flippable {
   position: relative;
   z-index: $flippable-z-index;
 
+  width: 100%;
+
   perspective: $flippable-perspective;
+  transform-style: preserve-3d;
 
   transition: z-index $flippable-transition-duration;
 }
 
 .flipper {
-  width: 100%;
+  position: relative;
 
   transform-style: preserve-3d;
 
   transition: transform $flippable-transition-duration;
 
-  &.show-front {
-    transform: rotateY(0deg);
+  &.show-back {
+    .flipper-back {
+      transform: rotateY(0deg);
+    }
+
+    .flipper-front {
+      transform: rotateY(180deg);
+    }
   }
 
-  &.show-back {
-    transform: rotateY(180deg);
+  &.show-front {
+    .flipper-back {
+      transform: rotateY(-180deg);
+    }
+
+    .flipper-front {
+      transform: rotateY(0deg);
+    }
   }
 }
 
-.flipper-front {
-  transform: rotateY(0deg);
+.flipper-front, .flipper-back {
+  transform-style: preserve-3d;
+
+  backface-visibility: hidden;
+  transition: transform $flippable-transition-duration;
 
   cursor: pointer;
 
   @extend %flipper-side;
 }
 
+.flipper-front {
+  z-index: 2;
+
+  transform: rotateY(0);
+}
+
 .flipper-back {
   position: absolute;
   top: 0;
-  right:  0;
+  left: 0;
 
   box-shadow: $flippable-shadow;
-  transform: rotateY(180deg);
-
-  @extend %flipper-side;
-}
-
-%flipper-side {
-  margin: 0;
-
-  background-color: $pure-white;
-
-  backface-visibility: hidden;
+  transform: rotateY(-180deg);
 }
