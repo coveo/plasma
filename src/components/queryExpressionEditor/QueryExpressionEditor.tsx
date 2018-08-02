@@ -4,10 +4,10 @@ import {TabContent} from '../tab/TabContent';
 import {TabNavigation} from '../tab/TabNavigation';
 import {TabPaneConnected} from '../tab/TabPaneConnected';
 import {AdvancedMode} from './advancedMode/AdvancedMode';
+import {BuildFromResult} from './buildFromResult/BuildFromResult';
 import {FormMode} from './formMode/FormMode';
 import {OutputMode} from './outputMode/OutputMode';
 import {QueryTrigger} from './queryTrigger/QueryTrigger';
-import {BuildFromResult} from './buildFromResult/BuildFromResult';
 
 export interface IQueryExpressionEditorProps {
     accessToken: string;
@@ -65,8 +65,8 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
                 {/* TODO : Move this under an 'Editors' component  */}
                 {/* TODO : Move back the Form Mode after the BuildFromResult */}
                 <TabNavigation>
-                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
                     <TabConnected id={TAB_SEARCH_MODE_ID} title='Search Mode' />
+                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
                     <TabConnected id={TAB_ADVANCED_MODE_ID} title='Advanced Mode' />
                     <TabConnected id={TAB_OUTPUT_MODE_ID} title='Output' />
                 </TabNavigation>

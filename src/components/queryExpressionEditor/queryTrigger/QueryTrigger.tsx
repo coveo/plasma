@@ -63,7 +63,7 @@ export class QueryTrigger {
     }
 
     async getFieldValues(fieldType: string): Promise<any> {
-        // TODO: get all no max number of values
+        // TODO: get all not max number of values
         const fieldValuesRestUrl: string = `${DEFAULT_REST_URL}/values?field=${fieldType}&maximumNumberOfValues=100`;
         const response = await this.executeQuery(fieldValuesRestUrl);
         return this.responseParser.parseFieldValues(response);
@@ -78,12 +78,12 @@ export class QueryTrigger {
             headers: {Authorization: `Bearer ${this.accessToken}`},
             data: data,
         })
-            .done((repsonseData) => {
-                xmlResponse = repsonseData;
-            })
-            .fail((error) => {
-                xmlResponse = 'error';
-            });
+        .done((repsonseData) => {
+            xmlResponse = repsonseData;
+        })
+        .fail((error) => {
+            xmlResponse = 'error';
+        });
 
         // console.log(xmlResponse);
         return xmlResponse;

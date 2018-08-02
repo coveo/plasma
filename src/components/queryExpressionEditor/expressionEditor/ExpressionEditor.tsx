@@ -28,7 +28,7 @@ export interface IExpressionEditorProps {
     updateQueryExpression: (expression: string) => void;
 }
 
-// TODO : Review les fieldValue vs fieldValues maintenant ça devrait être des fieldValues
+// TODO : Review le naming des fieldValue vs fieldValues maintenant ça devrait être des fieldValues
 export interface IExpressionEditorState {
     fieldValueItems: IItemBoxProps[];
     selectedField: string;
@@ -37,7 +37,6 @@ export interface IExpressionEditorState {
 }
 
 export class ExpressionEditor extends React.Component<IExpressionEditorProps, IExpressionEditorState> {
-    // TODO : Would it be better to have it in the state?
     private fields: IField[];
 
     constructor(props: IExpressionEditorProps) {
@@ -95,7 +94,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private async updateQueryExpression() {
-        // TODO review buildding expression
+        // TODO review building of the expression and use the expressionParser
         const expression = `${this.state.selectedField}${this.state.selectedOperator}${this.state.selectedFieldValues[0]}`;
         this.props.updateQueryExpression(expression);
     }

@@ -12,8 +12,9 @@ export interface IField {
 
 export interface IResult {
     title: string;
-    excerpt: string;
+    excerpt: string; // TODO remove if not used
     uniqueID: string;
+    uri: string;
     objectType: string;
     fileType: string;
     connectorType: string;
@@ -89,6 +90,7 @@ export class ResponseParser {
             title: result['Title'],
             excerpt: result['Excerpt'],
             uniqueID: result['UniqueId'],
+            uri: raw['uri'],
             objectType: raw['sysobjecttype'],
             fileType: raw['sysfiltetype'],
             connectorType: raw['sysconnectortype'],
