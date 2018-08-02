@@ -5,12 +5,12 @@ import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IResult} from '../responseParser/ResponseParser';
 import {ResultList} from '../resultList/ResultList';
 
-export interface ISearchModeProps {
+export interface IBuildFromResultProps {
     queryTrigger: QueryTrigger;
     updateQueryExpression: (expression: string) => void;
 }
 
-export interface ISearchModeState extends ISearchBarStateProps {
+export interface IBuildFromResultState extends ISearchBarStateProps {
     results: IResult[];
 }
 
@@ -22,10 +22,10 @@ export enum FieldType {
 }
 
 // TODO : @source field est souvent pas un bon format
-export class SearchMode extends React.Component<ISearchModeProps, ISearchModeState> {
+export class BuildFromResult extends React.Component<IBuildFromResultProps, IBuildFromResultState> {
     private expressionParser: ExpressionParser;
 
-    constructor(props: ISearchModeProps) {
+    constructor(props: IBuildFromResultProps) {
         super(props);
         this.state = {results: []};
         this.expressionParser = new ExpressionParser();

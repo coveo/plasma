@@ -7,7 +7,7 @@ import {AdvancedMode} from './advancedMode/AdvancedMode';
 import {FormMode} from './formMode/FormMode';
 import {OutputMode} from './outputMode/OutputMode';
 import {QueryTrigger} from './queryTrigger/QueryTrigger';
-import {SearchMode} from './searchMode/SearchMode';
+import {BuildFromResult} from './buildFromResult/BuildFromResult';
 
 export interface IQueryExpressionEditorProps {
     accessToken: string;
@@ -19,7 +19,7 @@ export interface IQueryExpressionEditorState {
     queryExpression: string;
 }
 
-const TAB_SEARCH_MODE_ID = 'tabSearchMode';
+const TAB_SEARCH_MODE_ID = 'tabBuildFromResult';
 const TAB_FORM_MODE_ID = 'tabFormMode';
 const TAB_ADVANCED_MODE_ID = 'tabAdvancedMode';
 const TAB_OUTPUT_MODE_ID = 'tabOutputMode';
@@ -63,7 +63,7 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
                 </div>
 
                 {/* TODO : Move this under an 'Editors' component  */}
-                {/* TODO : Move back the Form Mode after the searchMode */}
+                {/* TODO : Move back the Form Mode after the BuildFromResult */}
                 <TabNavigation>
                     <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
                     <TabConnected id={TAB_SEARCH_MODE_ID} title='Search Mode' />
@@ -73,7 +73,7 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
                 <TabContent>
                     <TabPaneConnected id={TAB_SEARCH_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            <SearchMode queryTrigger={this.queryTrigger} updateQueryExpression={this.updateQueryExpression} />
+                            <BuildFromResult queryTrigger={this.queryTrigger} updateQueryExpression={this.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_FORM_MODE_ID}>
