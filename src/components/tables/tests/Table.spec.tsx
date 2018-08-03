@@ -456,45 +456,5 @@ describe('<Table />', () => {
             expect(table.find(TableChildHeader).length).toBe(0);
             expect(table.find(TableChildBlankSlate).length).toBe(1);
         });
-
-        it('should not show table head if table has no rows and it is display as card', () => {
-            const simplestTableDataByIdWithStatus: ITableRowData = {
-                ['row1']: {
-                    id: 'row1',
-                    email: {content: 'test-success-content', state: 'success'},
-                    avatar: 'test',
-                    userName: 'test',
-                    attributeName: 'test',
-                    lastLogin: 'test',
-                },
-                ['row2']: {
-                    id: 'row2',
-                    email: {content: 'test-error-content', state: 'error'},
-                    avatar: 'test',
-                    userName: 'test',
-                    attributeName: 'test',
-                    lastLogin: 'test',
-                },
-            };
-
-            const simplestTableDataWithSatus: ITableData = {
-                byId: simplestTableDataByIdWithStatus,
-                allIds: _.keys(simplestTableDataByIdWithStatus),
-                displayedIds: _.keys(simplestTableDataByIdWithStatus),
-                totalEntries: _.keys(simplestTableDataByIdWithStatus).length,
-                totalPages: Math.ceil(_.keys(simplestTableDataByIdWithStatus).length / perPageNumbers[0]),
-            };
-            const tableProps: ITableProps = {
-                ...tablePropsMock,
-                withStateRows: true,
-                initialTableData: simplestTableDataWithSatus,
-                tableCompositeState: {data: simplestTableDataWithSatus} as ITableCompositeState,
-            };
-            const table: ReactWrapper<ITableProps, any> = mountComponentWithProps(tableProps);
-
-            expect(table.find(Table).first().props().tableCompositeState.data).toBeDefined();
-            expect(table.find('tr.row-success > td span.bold').text()).toBe('test-success-content');
-            expect(table.find('tr.row-error > td span.bold').text()).toBe('test-error-content');
-        });
     });
 });

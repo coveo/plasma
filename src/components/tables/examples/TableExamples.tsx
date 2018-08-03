@@ -15,7 +15,6 @@ import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
 import {ITableOwnProps} from '../Table';
 import {IData, ITableRowData} from '../Table';
-import {StateRow} from '../table-children/TableChildBody';
 import {modifyState, setIsInError} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
@@ -59,18 +58,6 @@ const tableDataById = _.range(0, 100).reduce((obj, num) => ({
         attribute3: generateText(),
         attribute4: generateText(),
         attribute5: generateDate(moment().subtract(2, 'week').toDate(), moment().endOf('day').toDate()),
-    },
-}), {} as ITableRowData);
-
-const simplestTableDataByIdWithStatus = _.range(0, 7).reduce((obj, num) => ({
-    ...obj,
-    ['row' + num]: {
-        id: 'row' + num,
-        attribute1: {content: generateText(), state: [StateRow.Success, StateRow.Warning, StateRow.Error][_.random(2)]},
-        attribute2: generateText(),
-        attribute3: generateText(),
-        attribute4: generateText(),
-        attribute5: generateBoolean(),
     },
 }), {} as ITableRowData);
 
@@ -243,12 +230,11 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Simplest Table Card With State Rows</label>
+                    <label className='form-control-label'>Simplest Table As Card</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={getTableDataById(simplestTableDataByIdWithStatus)}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         asCard
-                        withStateRows
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -267,13 +253,12 @@ export class TableExamples extends React.Component<any, any> {
                     />
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Simplest Table Card With State Rows Disabled</label>
+                    <label className='form-control-label'>Simplest Table As Card Disabled</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
-                        initialTableData={getTableDataById(simplestTableDataByIdWithStatus)}
+                        initialTableData={getTableDataById(simplestTableDataById)}
                         disabled
                         asCard
-                        withStateRows
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',
@@ -298,7 +283,6 @@ export class TableExamples extends React.Component<any, any> {
                         initialTableData={getTableDataById(emptyData)}
                         disabled
                         asCard
-                        withStateRows
                         headingAttributes={[
                             {
                                 attributeName: 'attribute1',

@@ -1,12 +1,10 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-
 import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils';
 import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {IActionOptions} from '../../actions/Action';
-import {Svg} from '../../svg/Svg';
 import {IData, ITableHeadingAttribute} from '../Table';
 import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
 import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
@@ -22,12 +20,6 @@ export interface ITableBodyInheritedFromTableProps {
     withoutHoverOnRow?: boolean;
 }
 
-export enum StateRow {
-    Error = 'error',
-    Warning = 'warning',
-    Success = 'success',
-}
-
 export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps {
     tableId: string;
     rowData: IData;
@@ -36,34 +28,21 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
     disabled?: boolean;
     isMultiSelect: boolean;
     withoutHoverOnRow?: boolean;
-    state?: StateRow;
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
 }
-
-const getStatusRowStyle = (state: StateRow, content: JSXRenderable) => {
-    const svgClasses: string = classNames([
-        'mr3',
-        'icon',
-        'state-icon-row',
-    ]);
-    return <span className='flex flex-center'>
-        <Svg className={svgClasses} svgName={state === StateRow.Success ? 'checkmark' : 'message-alert'} />
-        <span className='bold'>{content}</span>
-    </span>;
-};
 
 export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
     const headingAndCollapsibleId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_HEADING_ROW)}${props.rowData.id}`;
     const tableHeadingRowContent = _.map(props.headingAttributes, (headingAttribute: ITableHeadingAttribute, xPosition: number) => {
         const {attributeName, attributeFormatter} = headingAttribute;
-        const headingRowContent: JSXRenderable = attributeFormatter
+        const headingRowContent: React.ReactNode = attributeFormatter
             ? attributeFormatter(props.rowData[attributeName], attributeName, props.rowData)
             : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
         return (
             <td key={`cell-${xPosition}`}>
                 <div className='wrapper'>
-                    {props.state && xPosition === 0 ? getStatusRowStyle(props.state, headingRowContent) : headingRowContent}
+                    {headingRowContent}
                 </div>
             </td>
         );
@@ -87,7 +66,6 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         {
             disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
             'no-hover': !!props.withoutHoverOnRow,
-            [`row-${props.state}`]: !props.disabled,
             'row-disabled': props.disabled,
         },
         getAdditionalClasses(props.additionalRowClasses, props.rowData),

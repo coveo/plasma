@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {JSXRenderable} from '../../utils/JSXUtils';
 import {IThunkAction} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {IActionBarProps} from '../actions/ActionBar';
@@ -13,7 +12,7 @@ import {IFilterBoxProps} from '../filterBox/FilterBox';
 import {INavigationChildrenProps} from '../navigation/Navigation';
 import {TableChildActionBar} from './table-children/TableChildActionBar';
 import {TableChildBlankSlate} from './table-children/TableChildBlankSlate';
-import {ITableBodyInheritedFromTableProps, StateRow, TableChildBody} from './table-children/TableChildBody';
+import {ITableBodyInheritedFromTableProps, TableChildBody} from './table-children/TableChildBody';
 import {TableChildHeader} from './table-children/TableChildHeader';
 import {TableChildLastUpdated} from './table-children/TableChildLastUpdated';
 import {TableChildLoadingRow} from './table-children/TableChildLoadingRow';
@@ -35,7 +34,7 @@ export interface IPredicateAttributes {
     [attributeName: string]: IAttributeValue;
 }
 
-export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => JSXRenderable;
+export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => React.ReactNode;
 export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string, data?: IData) => React.ReactNode;
 
 export interface ITableHeadingAttribute {
@@ -73,7 +72,6 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     withFixedHeader?: boolean;
     rowsMultiSelect?: boolean;
     disabled?: boolean;
-    withStateRows?: boolean;
     asCard?: boolean;
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
     filterMethod?: (attributeValue: any, props: ITableOwnProps, filterValue: string) => boolean;
@@ -242,19 +240,13 @@ export class Table extends React.Component<ITableProps> {
 
         const tableBodyNode: React.ReactNode = tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
             const row: IData = tableData.byId[id];
-            const firstColumnName: string = _.keys(row)[1];
-            const rowState: StateRow = this.props.withStateRows ? row[firstColumnName].state : null;
-            const currentRowData: IData = this.props.withStateRows
-                ? {...row, [firstColumnName]: row[firstColumnName].content}
-                : row;
 
             return (
                 <TableChildBody
                     key={id}
-                    state={rowState}
                     disabled={this.props.disabled}
                     tableId={this.props.id}
-                    rowData={currentRowData}
+                    rowData={row}
                     isLoading={this.props.tableCompositeState.isLoading}
                     getActions={(rowData?: IData) => (this.props.getActions && this.props.getActions(rowData)) || []}
                     headingAttributes={this.props.headingAttributes}
