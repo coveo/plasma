@@ -75,11 +75,23 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     withFixedHeader?: boolean;
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
     rowsMultiSelect?: boolean;
+    /**
+     * A custom thunk action replacing the default table state modification taking place each time an action is 
+     * performed on the table (page change, per page change, filtering, predicate selection, etc).  
+     * 
+     * The manual prop (thunk action) is thus dispatched each time the onModifyData prop is called,
+     * where the specified parameters (tableOwnProps, shouldResetPage, tableCompositeState, and previousTableCompositeState)
+     * are provided as arguments.
+     * 
+     * This prop can be particularly useful in cases where new data needs to be fetched from the server
+     * on each table action (page change, per page change, filtering, predicate selection, etc),
+     * or if you need to refresh the table data periodically.
+     */
     manual?: (
-        tableOwnProps: ITableOwnProps,
-        shouldResetPage: boolean,
-        tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState,
+        tableOwnProps?: Partial<ITableOwnProps>,
+        shouldResetPage?: boolean,
+        tableCompositeState?: ITableCompositeState,
+        previousTableCompositeState?: ITableCompositeState,
     ) => IThunkAction;
 }
 
