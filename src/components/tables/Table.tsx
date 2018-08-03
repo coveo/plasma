@@ -43,6 +43,7 @@ export interface ITableHeadingAttribute {
     filterFormatter?: IAttributeNameOrValueFormatter; // use this for filter if you render JSX through the attribute formatter
     sort?: boolean;
     sortByMethod?: (attributeValue: any, data?: IData) => string;
+    sortMethod?: (data: IData[], attribute: string, ascending: boolean) => IData[];
     attributeFormatter?: IAttributeFormatter;
 }
 
@@ -75,11 +76,23 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     asCard?: boolean;
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
     filterMethod?: (attributeValue: any, props: ITableOwnProps, filterValue: string) => boolean;
+    /**
+     * A custom thunk action replacing the default table state modification taking place each time an action is
+     * performed on the table (page change, per page change, filtering, predicate selection, etc).
+     *
+     * The manual prop (thunk action) is thus dispatched each time the onModifyData prop is called,
+     * where the specified parameters (tableOwnProps, shouldResetPage, tableCompositeState, and previousTableCompositeState)
+     * are provided as arguments.
+     *
+     * This prop can be particularly useful in cases where new data needs to be fetched from the server
+     * on each table action (page change, per page change, filtering, predicate selection, etc),
+     * or if you need to refresh the table data periodically.
+     */
     manual?: (
-        tableOwnProps: ITableOwnProps,
-        shouldResetPage: boolean,
-        tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState,
+        tableOwnProps?: Partial<ITableOwnProps>,
+        shouldResetPage?: boolean,
+        tableCompositeState?: ITableCompositeState,
+        previousTableCompositeState?: ITableCompositeState,
     ) => IThunkAction;
 }
 
@@ -239,14 +252,14 @@ export class Table extends React.Component<ITableProps> {
         const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
         const tableBodyNode: React.ReactNode = tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-            const row: IData = tableData.byId[id];
+            const currentRowData: IData = tableData.byId[id];
 
             return (
                 <TableChildBody
                     key={id}
                     disabled={this.props.disabled}
                     tableId={this.props.id}
-                    rowData={row}
+                    rowData={currentRowData}
                     isLoading={this.props.tableCompositeState.isLoading}
                     getActions={(rowData?: IData) => (this.props.getActions && this.props.getActions(rowData)) || []}
                     headingAttributes={this.props.headingAttributes}
