@@ -2,24 +2,23 @@
 import * as React from 'react';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {SingleSelectWithFilter} from '../../select/SelectComponents';
-import { FieldType } from '../expressionEditor/ExpressionEditor';
-// import * as _ from 'underscore'; // TODO
+import {FieldType} from '../expressionEditor/ExpressionEditor';
 
-export interface IOperatorSelectorProps {
+export interface IOperatorSelectProps {
     selectedFieldType: FieldType;
     updateOperator: (operator: string) => void;
 }
 
-export interface IOperatorSelectorState {
+export interface IOperatorSelectState {
 }
 
 const dateOperators: IItemBoxProps[] = [{value: '='}, {value: '=='}, {value: '<='}, {value: '>='}, {value: '..'}];
 const numberOperators: IItemBoxProps[] = [{value: '='}, {value: '=='}, {value: '<='}, {value: '>='}];
 const stringOperators: IItemBoxProps[] = [{value: '='}, {value: '=='}];
 
-export class OperatorSelector extends React.Component<IOperatorSelectorProps, IOperatorSelectorState> {
+export class OperatorSelect extends React.Component<IOperatorSelectProps, IOperatorSelectState> {
 
-    constructor(props: IOperatorSelectorProps) {
+    constructor(props: IOperatorSelectProps) {
         super(props);
         this.state = {
         };
@@ -39,7 +38,7 @@ export class OperatorSelector extends React.Component<IOperatorSelectorProps, IO
             case FieldType.String:
                 return stringOperators;
             default:
-                return null;
+                return dateOperators; // TODO put null instead of dateOperators
         }
     }
 

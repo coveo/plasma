@@ -6,18 +6,18 @@ import {SingleSelectWithFilter} from '../../select/SelectComponents';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField, IFieldValue} from '../responseParser/ResponseParser';
 
-export interface IFieldSelectorProps {
+export interface IFieldSelectProps {
     fields: IField[];
     queryTrigger: QueryTrigger;
     updateField: (field: string) => void;
     updateFieldValueItems: (fieldValueItems: IItemBoxProps[]) => void;
 }
 
-export interface IFieldSelectorState {
+export interface IFieldSelectState {
 
 }
 
-export class FieldSelector extends React.Component<IFieldSelectorProps, IFieldSelectorState> {
+export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelectState> {
 
     private getFieldsItems(): IItemBoxProps[] {
         const fieldsItems: IItemBoxProps[] = [];

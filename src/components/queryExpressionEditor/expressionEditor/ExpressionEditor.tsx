@@ -3,11 +3,11 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {Button} from '../../button/Button';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {FieldSelect} from '../fieldSelect/FieldSelect';
+import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
-import {FieldSelector} from '../fieldSelector/FieldSelector';
-import {OperatorSelector} from '../operatorSelector/OperatorSelector';
-import {ValueSelector} from '../valueSelector/ValueSelector';
+import {ValueSelect} from '../valueSelect/ValueSelect';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',
@@ -89,7 +89,6 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private updateFieldValueItems(fieldValueItems: IItemBoxProps[]) {
-
         this.setState({fieldValueItems: fieldValueItems});
     }
 
@@ -107,17 +106,20 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     render() {
         return (
             <div>
-                <FieldSelector
+                <FieldSelect
                     fields={this.fields}
                     queryTrigger={this.props.queryTrigger}
                     updateField={(field: string) => this.updateField(field)}
                     updateFieldValueItems={(fieldValueItems: IItemBoxProps[]) => this.updateFieldValueItems(fieldValueItems)}
                 />
-                <OperatorSelector
+                <OperatorSelect
                     selectedFieldType={this.getSelectedFieldType()}
                     updateOperator={(operator: string) => this.updateOperator(operator)}
                 />
-                <ValueSelector fieldValueItems={this.state.fieldValueItems} updateFieldValues={(fieldValues: string[]) => this.updateFieldValues(fieldValues)} />
+                <ValueSelect 
+                    fieldValueItems={this.state.fieldValueItems}
+                    updateFieldValues={(fieldValues: string[]) => this.updateFieldValues(fieldValues)}
+                />
 
                 <Button enabled={true} name={'Update Query Expression'} onClick={() => {this.updateQueryExpression();}} />
             </div>

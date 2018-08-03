@@ -1,18 +1,18 @@
 
 import * as React from 'react';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {SingleSelectWithFilter} from '../../select/SelectComponents';
+import {SingleSelectWithFilter, MultiSelectWithFilter} from '../../select/SelectComponents';
 
-export interface IValueSelectorProps {
+export interface IValueSelectProps {
     fieldValueItems: IItemBoxProps[];
     updateFieldValues: (value: string[]) => void;
 }
 
-export interface IValueSelectorState {
+export interface IValueSelectState {
 }
 
-export class ValueSelector extends React.Component<IValueSelectorProps, IValueSelectorState> {
-    constructor(props: IValueSelectorProps) {
+export class ValueSelect extends React.Component<IValueSelectProps, IValueSelectState> {
+    constructor(props: IValueSelectProps) {
         super(props);
         this.state = {
         };
@@ -33,11 +33,11 @@ export class ValueSelector extends React.Component<IValueSelectorProps, IValueSe
                     onSelectOptionCallback={(value: string) => this.fieldValueOnSelect(value)}
                 />
 
-                {/* <MultiSelectWithFilter
+                <MultiSelectWithFilter
                     id={'fieldValues-selector'}
-                    items={this.state.fieldValueItems}
+                    items={this.props.fieldValueItems}
                     placeholder={'Select field value'}
-                /> */}
+                />
 
             </span>
         );
