@@ -1,7 +1,7 @@
 
 import * as React from 'react';
-import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {SingleSelectWithFilter} from '../../../select/SelectComponents';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {SingleSelectWithFilter} from '../../select/SelectComponents';
 
 export interface IValueSelectorProps {
     fieldValueItems: IItemBoxProps[];

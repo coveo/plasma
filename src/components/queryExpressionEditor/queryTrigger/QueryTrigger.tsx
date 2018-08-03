@@ -78,12 +78,12 @@ export class QueryTrigger {
             headers: {Authorization: `Bearer ${this.accessToken}`},
             data: data,
         })
-        .done((repsonseData) => {
-            xmlResponse = repsonseData;
-        })
-        .fail((error) => {
-            xmlResponse = 'error';
-        });
+            .done((repsonseData) => {
+                xmlResponse = repsonseData;
+            })
+            .fail((error) => {
+                xmlResponse = 'error';
+            });
 
         // console.log(xmlResponse);
         return xmlResponse;

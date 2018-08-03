@@ -5,9 +5,9 @@ import {Button} from '../../button/Button';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
-import {FieldSelector} from './fieldSelector/FieldSelector';
-import {OperatorSelector} from './operatorSelector/OperatorSelector';
-import {ValueSelector} from './valueSelector/ValueSelector';
+import {FieldSelector} from '../fieldSelector/FieldSelector';
+import {OperatorSelector} from '../operatorSelector/OperatorSelector';
+import {ValueSelector} from '../valueSelector/ValueSelector';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',

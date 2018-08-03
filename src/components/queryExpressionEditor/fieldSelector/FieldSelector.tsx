@@ -1,10 +1,10 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
-import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {SingleSelectWithFilter} from '../../../select/SelectComponents';
-import {QueryTrigger} from '../../queryTrigger/QueryTrigger';
-import {IField, IFieldValue} from '../../responseParser/ResponseParser';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {SingleSelectWithFilter} from '../../select/SelectComponents';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import {IField, IFieldValue} from '../responseParser/ResponseParser';
 
 export interface IFieldSelectorProps {
     fields: IField[];

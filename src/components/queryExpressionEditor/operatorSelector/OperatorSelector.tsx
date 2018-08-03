@@ -1,8 +1,8 @@
 
 import * as React from 'react';
-import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {SingleSelectWithFilter} from '../../../select/SelectComponents';
-import {FieldType} from '../ExpressionEditor';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {SingleSelectWithFilter} from '../../select/SelectComponents';
+import { FieldType } from '../expressionEditor/ExpressionEditor';
 // import * as _ from 'underscore'; // TODO
 
 export interface IOperatorSelectorProps {

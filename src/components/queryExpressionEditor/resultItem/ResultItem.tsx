@@ -1,7 +1,7 @@
 
 import * as React from 'react';
-import { Label } from '../../input/Label';
-import { Radio } from '../../radio/Radio';
+import {Label} from '../../input/Label';
+import {Radio} from '../../radio/Radio';
 import {IResult} from '../responseParser/ResponseParser';
 
 export interface IResultItemProps {
