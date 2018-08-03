@@ -11,7 +11,7 @@ import {TableChildBody} from '../table-children/TableChildBody';
 import {TableChildHeader} from '../table-children/TableChildHeader';
 import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
-import {ITableCompositeState, ITableData} from '../TableReducers';
+import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
 
 const perPageNumbers = [5, 10, 20];
