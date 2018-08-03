@@ -76,10 +76,10 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
     rowsMultiSelect?: boolean;
     manual?: (
-        tableOwnProps: ITableOwnProps,
-        shouldResetPage: boolean,
-        tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState,
+        tableOwnProps: Partial<ITableOwnProps>,
+        shouldResetPage?: boolean,
+        tableCompositeState?: ITableCompositeState,
+        previousTableCompositeState?: ITableCompositeState,
     ) => IThunkAction;
 }
 
