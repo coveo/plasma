@@ -71,7 +71,7 @@
     "@types/rc-slider": "8.2.3",
     "@types/react": "15.6.1",
     "@types/react-bootstrap": "0.0.52",
-    "@types/react-codemirror": "1.0.1",
+    "@types/react-codemirror": "1.0.2",
     "@types/react-dom": "15.5.4",
     "@types/react-infinite-scroll-component": "4.1.0",
     "@types/react-redux": "5.0.8",
