@@ -5,12 +5,16 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
-import {ITableProps, Table} from '../Table';
+import {ITableProps, ITableRowData, Table} from '../Table';
 import {TableChildBlankSlate} from '../table-children/TableChildBlankSlate';
 import {TableChildBody} from '../table-children/TableChildBody';
+import {TableChildHeader} from '../table-children/TableChildHeader';
 import {TableChildLastUpdated} from '../table-children/TableChildLastUpdated';
 import {DEFAULT_TABLE_DATA, TableSortingOrder} from '../TableConstants';
+import {ITableData} from '../TableReducers';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
+
+const perPageNumbers = [5, 10, 20];
 
 describe('<Table />', () => {
     let store: Store<IReactVaporState>;
@@ -431,6 +435,26 @@ describe('<Table />', () => {
 
                 expect(onWillUpdateSpy).toHaveBeenCalledWith(nextProps.actions);
             });
+        });
+
+        it('should not show table head if table has no rows and it is display as card', () => {
+            const emptyData: ITableRowData = {};
+            const empty: ITableData = {
+                byId: emptyData,
+                allIds: _.keys(emptyData),
+                displayedIds: _.keys(emptyData),
+                totalEntries: _.keys(emptyData).length,
+                totalPages: Math.ceil(_.keys(emptyData).length / perPageNumbers[0]),
+            };
+            const tableProps: ITableProps = {
+                ...tablePropsMock,
+                asCard: true,
+                initialTableData: empty,
+            };
+            const table = mountComponentWithProps(tableProps);
+
+            expect(table.find(TableChildHeader).length).toBe(0);
+            expect(table.find(TableChildBlankSlate).length).toBe(1);
         });
     });
 });

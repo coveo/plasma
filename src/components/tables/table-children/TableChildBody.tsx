@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-
 import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils';
 import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {JSXRenderable} from '../../../utils/JSXUtils';
@@ -26,6 +25,7 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
     rowData: IData;
     isLoading: boolean;
     onRowClick?: (actions: IActionOptions[]) => void;
+    disabled?: boolean;
     isMultiSelect: boolean;
     withoutHoverOnRow?: boolean;
     handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
@@ -33,15 +33,17 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
 
 export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
     const headingAndCollapsibleId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_HEADING_ROW)}${props.rowData.id}`;
-    const tableHeadingRowContent = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute, xPosition: number) => {
+    const tableHeadingRowContent = _.map(props.headingAttributes, (headingAttribute: ITableHeadingAttribute, xPosition: number) => {
         const {attributeName, attributeFormatter} = headingAttribute;
-        const headingRowContent: JSXRenderable = attributeFormatter
+        const headingRowContent: React.ReactNode = attributeFormatter
             ? attributeFormatter(props.rowData[attributeName], attributeName, props.rowData)
             : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
         return (
             <td key={`cell-${xPosition}`}>
-                <div className='wrapper'>{headingRowContent}</div>
+                <div className='wrapper'>
+                    {headingRowContent}
+                </div>
             </td>
         );
     });
@@ -64,6 +66,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         {
             disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
             'no-hover': !!props.withoutHoverOnRow,
+            'row-disabled': props.disabled,
         },
         getAdditionalClasses(props.additionalRowClasses, props.rowData),
     );

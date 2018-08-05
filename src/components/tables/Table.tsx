@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {JSXRenderable} from '../../utils/JSXUtils';
 import {IThunkAction} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {IActionBarProps} from '../actions/ActionBar';
@@ -35,7 +34,7 @@ export interface IPredicateAttributes {
     [attributeName: string]: IAttributeValue;
 }
 
-export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => JSXRenderable;
+export type IAttributeFormatter = (attributeValue: any, attributeName?: string, data?: IData) => React.ReactNode;
 export type IAttributeNameOrValueFormatter = (attributeNameOrValue: string, data?: IData) => React.ReactNode;
 
 export interface ITableHeadingAttribute {
@@ -66,15 +65,17 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     blankSlateOnError?: IBlankSlateProps;
     datePicker?: IDatePickerDropdownProps;
     filter?: true | IFilterBoxProps;
-    filterMethod?: (attributeValue: any, props: ITableOwnProps, filterValue: string) => boolean;
     predicates?: ITablePredicate[];
     prefixContent?: IContentProps;
     navigation?: true | INavigationChildrenProps;
     lastUpdatedLabel?: string;
     withoutLastUpdated?: boolean;
     withFixedHeader?: boolean;
-    handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
     rowsMultiSelect?: boolean;
+    disabled?: boolean;
+    asCard?: boolean;
+    handleOnRowClick?: (actions: IActionOptions[], rowData: IData) => void;
+    filterMethod?: (attributeValue: any, props: ITableOwnProps, filterValue: string) => boolean;
     /**
      * A custom thunk action replacing the default table state modification taking place each time an action is
      * performed on the table (page change, per page change, filtering, predicate selection, etc).
@@ -199,12 +200,12 @@ export class Table extends React.Component<ITableProps> {
             : null;
 
         return (
-            <div className={classNames('table-container', this.props.tableContainerClasses)}>
+            <div className={classNames('table-container', this.props.tableContainerClasses, {'table-card': this.props.asCard})}>
                 <TableChildActionBar {...this.props} />
                 {this.setFixedHeaderWrapper(
                     <table id={`table-${this.props.id}`} className={tableClasses}>
                         <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
-                        <TableChildHeader {...this.props} />
+                        {!this.props.asCard || this.shouldShowTableBody() ? <TableChildHeader {...this.props} /> : null}
                         {tableBodyNode}
                     </table>,
                 )}
@@ -256,6 +257,7 @@ export class Table extends React.Component<ITableProps> {
             return (
                 <TableChildBody
                     key={id}
+                    disabled={this.props.disabled}
                     tableId={this.props.id}
                     rowData={currentRowData}
                     isLoading={this.props.tableCompositeState.isLoading}
