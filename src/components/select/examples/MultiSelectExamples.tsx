@@ -53,6 +53,16 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
             <div>
                 <h1>Multi Select</h1>
                 <div className='form-group'>
+                    <label className='form-control-label'>A Simple Multi Select without items</label>
+                    <br />
+                    <MultiSelectConnected id={UUID.generate()} items={[]} />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Simple Multi Select with only one items</label>
+                    <br />
+                    <MultiSelectConnected id={UUID.generate()} items={[{value: 'Single Item'}]} />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>A Simple Multi Select with Custom Strings</label>
                     <br />
                     <MultiSelectConnected id={UUID.generate()} items={this.state.first} placeholder='Select something' deselectAllTooltipText='Remove all' />
