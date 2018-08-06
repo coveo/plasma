@@ -75,7 +75,7 @@
     "@types/react-dom": "15.5.4",
     "@types/react-infinite-scroll-component": "4.1.0",
     "@types/react-redux": "5.0.8",
-    "@types/react-tether": "0.5.3",
+    "@types/react-tether": "0.5.4",
     "@types/react-transition-group": "2.0.7",
     "@types/redux-logger": "3.0.5",
     "@types/underscore": "1.8.8",
