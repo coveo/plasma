@@ -6,7 +6,7 @@ export interface IFieldExpression {
 
 export class ExpressionParser {
     parseFieldExpression(fieldExpression: IFieldExpression): string {
-        // TODO : Better handling of exceptions; if the @ is already there ...
+        // TODO : Better handling of exceptions...
         if (fieldExpression.fieldType && fieldExpression.value) {
             return `@${fieldExpression.fieldType}=${fieldExpression.value}`;
         } else {

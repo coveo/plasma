@@ -8,6 +8,7 @@ import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import {ValueSelect} from '../valueSelect/ValueSelect';
+// import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',
@@ -23,31 +24,54 @@ export enum FieldType {
     String = 'string',
 }
 
-export interface IExpressionEditorProps {
+export interface IExpressionEditorOwnProps {
+    id: string;
     queryTrigger: QueryTrigger;
     updateQueryExpression: (expression: string) => void;
 }
 
-// TODO : Review le naming des fieldValue vs fieldValues maintenant ça devrait être des fieldValues
-export interface IExpressionEditorState {
+export interface IExpressionEditorOwnState {
+     // TODO maybe do not pass it as a props... to review
     fieldValueItems: IItemBoxProps[];
-    selectedField: string;
-    selectedOperator: string;
-    selectedFieldValues: string[];
+
+    // TODO : this was updated with componentWillReceiveProps
+    // localExpression: string;
 }
 
-export class ExpressionEditor extends React.Component<IExpressionEditorProps, IExpressionEditorState> {
+export interface IExpressionEditorStateProps {
+    expression?: string;
+    selectedField?: string;
+    selectedOperator?: string;
+    selectedFieldValues?: string[];
+}
+
+export interface IExpressionEditorDispatchProps {
+    update?: (expression?: string) => void;
+}
+
+export interface IExpressionEditorProps extends IExpressionEditorOwnProps, IExpressionEditorStateProps, IExpressionEditorDispatchProps {}
+
+
+export class ExpressionEditor extends React.Component<IExpressionEditorProps, IExpressionEditorOwnState> {
     private fields: IField[];
 
     constructor(props: IExpressionEditorProps) {
         super(props);
         this.state = {
             fieldValueItems: [],
-            selectedField: '',
-            selectedOperator: '',
-            selectedFieldValues: [],
+            // localExpression: '',
         };
         this.fields = [];
+    }
+
+    // TODO : Is it good practice to use componentWillReceiveProps?
+    componentWillReceiveProps(nextProps: IExpressionEditorProps) {
+        // this.setState({localExpression: expression});
+        
+        // const expression: string = this.getExpression();
+
+        // this.props.update(expression);
+        // this.updateExpression(nextProps);
     }
 
     async componentDidMount() {
@@ -55,8 +79,23 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         this.forceUpdate();
     }
 
+    private getExpression(): string {
+        // TODO : Better parsing
+        return `${this.props.selectedField ? this.props.selectedField : ''}
+                ${this.props.selectedOperator ? this.props.selectedOperator : ''}
+                (${this.props.selectedFieldValues ? this.props.selectedFieldValues : ''})`
+    }
+
+    // TODO : Version with componentWillReceiveProps
+    // private getExpression(nextProps: IExpressionEditorProps): string {
+    //     // TODO : Better parsing
+    //     return `${nextProps.selectedField ? nextProps.selectedField : ''}
+    //             ${nextProps.selectedOperator ? nextProps.selectedOperator : ''}
+    //             (${nextProps.selectedFieldValues ? nextProps.selectedFieldValues : ''})`
+    // }
+
     private getSelectedFieldType(): FieldType {
-        const selectedField = _.find(this.fields, (field: IField) => field.name === this.state.selectedField);
+        const selectedField = _.find(this.fields, (field: IField) => field.name === this.props.selectedField);
         if (!selectedField) {
             return null;
         }
@@ -65,7 +104,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private parseOriginalFieldType(originalFieldType: string): FieldType {
-        // TODO : Review that we have all types
+        // TODO : Review that all types handled
         if (originalFieldType === OriginalFieldType.Date) {
             return FieldType.Date;
         } else if (originalFieldType === (OriginalFieldType.Long64 || OriginalFieldType.Long || OriginalFieldType.Double)) {
@@ -75,53 +114,42 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         }
     }
 
-    // TODO : those functions could be removed; we could just use this.setState directly
-    private updateFieldValues(fieldValues: string[]) {
-        this.setState({selectedFieldValues: fieldValues});
-    }
-
-    private updateOperator(operator: string) {
-        this.setState({selectedOperator: operator});
-    }
-
-    private updateField(field: string) {
-        this.setState({selectedField: field});
-    }
-
+    // TODO : could be removed; we could just use this.setState directly
     private updateFieldValueItems(fieldValueItems: IItemBoxProps[]) {
         this.setState({fieldValueItems: fieldValueItems});
     }
 
     private async updateQueryExpression() {
-        // TODO review building of the expression and use the expressionParser
-        const expression = `${this.state.selectedField}${this.state.selectedOperator}${this.state.selectedFieldValues[0]}`;
-        this.props.updateQueryExpression(expression);
+        // TODO : example for parsing the string initially
+        // ReactVaporStore.dispatch(selectListBoxOption(`${expressionEditor1ID}-${singleSelectFieldId}`, false, '@uri'))
+        
+        const expression: string = this.getExpression();
+        this.props.update(expression);
+        // console.log(ReactVaporStore.getState())
+        
+        // this.props.update(this.state.localExpression);
+        // this.props.updateQueryExpression(this.state.localExpression);
     }
-
-    // private onSelectValue(value: string) {
-    //     this.state.selectedFieldValues.push(value);
-    //     console.log(this.state.selectedFieldValues)
-    // }
 
     render() {
         return (
             <div>
                 <FieldSelect
                     fields={this.fields}
+                    expressionEditorId={this.props.id}
                     queryTrigger={this.props.queryTrigger}
-                    updateField={(field: string) => this.updateField(field)}
                     updateFieldValueItems={(fieldValueItems: IItemBoxProps[]) => this.updateFieldValueItems(fieldValueItems)}
                 />
                 <OperatorSelect
+                    expressionEditorId={this.props.id}
                     selectedFieldType={this.getSelectedFieldType()}
-                    updateOperator={(operator: string) => this.updateOperator(operator)}
                 />
-                <ValueSelect 
+                <ValueSelect
+                    expressionEditorId={this.props.id}
                     fieldValueItems={this.state.fieldValueItems}
-                    updateFieldValues={(fieldValues: string[]) => this.updateFieldValues(fieldValues)}
                 />
-
                 <Button enabled={true} name={'Update Query Expression'} onClick={() => {this.updateQueryExpression();}} />
+                {this.props.expression}
             </div>
         );
     }

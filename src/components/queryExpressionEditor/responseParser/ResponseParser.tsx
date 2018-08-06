@@ -21,13 +21,13 @@ export interface IResult {
     source: string;
 }
 
-// TODO : review any ...
+// TODO : review type any ...
 export class ResponseParser {
 
     parseFieldValues(xmlResponse: any): IFieldValue[] {
         const parsedFieldValues: IFieldValue[] = [];
         try {
-            const xmlFields = xmlResponse['values'];
+            const xmlFields = xmlResponse.values;
             _.forEach(xmlFields, (xmlField) => {
 
                 const parsedFieldValue: IFieldValue = this.parseValue(xmlField);
@@ -42,15 +42,15 @@ export class ResponseParser {
 
     private parseValue(field: any): IFieldValue {
         return {
-            value: field['value'],
-            numberOfResults: field['numberOfResults'],
+            value: field.value,
+            numberOfResults: field.numberOfResults,
         };
     }
 
     parseFields(xmlResponse: any): IField[] {
         const parsedFields: IField[] = [];
         try {
-            const xmlFields = xmlResponse['fields'];
+            const xmlFields = xmlResponse.fields;
             _.forEach(xmlFields, (xmlField) => {
 
                 const parsedField: IField = this.parseField(xmlField);
@@ -64,15 +64,15 @@ export class ResponseParser {
 
     private parseField(field: any): IField {
         return {
-            name: field['name'],
-            fieldType: field['fieldType'],
+            name: field.name,
+            fieldType: field.fieldType,
         };
     }
 
     parseResults(xmlResponse: any): IResult[] {
         const parsedResults: IResult[] = [];
         try {
-            const xmlResults = xmlResponse['results'];
+            const xmlResults = xmlResponse.results;
             _.forEach(xmlResults, (xmlResult) => {
                 const parsedResult: IResult = this.parseResult(xmlResult);
                 parsedResults.push(parsedResult);
@@ -85,16 +85,15 @@ export class ResponseParser {
     }
 
     private parseResult(result: any): IResult {
-        const raw = result['raw'];
         return {
-            title: result['Title'],
-            excerpt: result['Excerpt'],
-            uniqueID: result['UniqueId'],
-            uri: raw['uri'],
-            objectType: raw['sysobjecttype'],
-            fileType: raw['sysfiltetype'],
-            connectorType: raw['sysconnectortype'],
-            source: raw['syssource'],
+            title: result.Title,
+            excerpt: result.Excerpt,
+            uniqueID: result.UniqueId,
+            uri: result.raw.uri,
+            objectType: result.raw.sysobjecttype,
+            fileType: result.raw.sysfiltetype,
+            connectorType: result.raw.sysconnectortype,
+            source: result.raw.syssource,
         };
     }
 }

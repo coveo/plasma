@@ -1,15 +1,19 @@
 
 import * as React from 'react';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {SingleSelectWithFilter, MultiSelectWithFilter} from '../../select/SelectComponents';
+import {MultiSelectWithFilter} from '../../select/SelectComponents';
+
+export const fieldValueSelectId: string = 'field-value-select';
 
 export interface IValueSelectProps {
+    expressionEditorId: string;
     fieldValueItems: IItemBoxProps[];
-    updateFieldValues: (value: string[]) => void;
 }
 
 export interface IValueSelectState {
 }
+
+// const mock: IItemBoxProps[] = [{value: 'a'}, {value: 'b'}, {value: 'c'}, {value: 'd'}, {value: 'e'}];
 
 export class ValueSelect extends React.Component<IValueSelectProps, IValueSelectState> {
     constructor(props: IValueSelectProps) {
@@ -18,27 +22,15 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
         };
     }
 
-    // TODO : Could call this.props.updateOperator(operator); directly
-    private fieldValueOnSelect(value: string) {
-        this.props.updateFieldValues([value]);
-    }
-
     render() {
         return (
             <span>
-                <SingleSelectWithFilter
-                    id={'fieldValues-selector'}
-                    items={this.props.fieldValueItems}
-                    placeholder={'Select operator'}
-                    onSelectOptionCallback={(value: string) => this.fieldValueOnSelect(value)}
-                />
-
                 <MultiSelectWithFilter
-                    id={'fieldValues-selector'}
+                    id={`${this.props.expressionEditorId}-${fieldValueSelectId}`}
                     items={this.props.fieldValueItems}
+                    // items={mock}
                     placeholder={'Select field value'}
                 />
-
             </span>
         );
     }

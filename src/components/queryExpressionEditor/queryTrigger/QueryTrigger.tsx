@@ -16,7 +16,8 @@ export interface IQueryStringArguments {
     viewAllContent?: number;
 }
 
-// TODO : Add logic : listing fields values as well fields definition of the organization.
+// TODO : The redux action should call this module and after getting the response 
+// from the api it should continue to the reducer so that the reducer update the state,       
 export class QueryTrigger {
     private responseParser: ResponseParser;
 
@@ -55,7 +56,7 @@ export class QueryTrigger {
     }
 
     async getFields(): Promise<any> {
-        // TODO: Do we want to get all fields
+        // TODO: Do we want to get all fields?
         // TODO : Do we need to link it with the organization id ? : https://platform.cloud.coveo.com/rest/organizations/{organizationId}/indexes/page/fields
         const fieldsRestUrl: string = `${DEFAULT_REST_URL}/fields`;
         const response = await this.executeQuery(fieldsRestUrl);
@@ -63,7 +64,7 @@ export class QueryTrigger {
     }
 
     async getFieldValues(fieldType: string): Promise<any> {
-        // TODO: get all not max number of values
+        // TODO: get all values, not max number of values
         const fieldValuesRestUrl: string = `${DEFAULT_REST_URL}/values?field=${fieldType}&maximumNumberOfValues=100`;
         const response = await this.executeQuery(fieldValuesRestUrl);
         return this.responseParser.parseFieldValues(response);

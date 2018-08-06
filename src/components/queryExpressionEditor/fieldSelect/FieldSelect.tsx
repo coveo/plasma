@@ -6,10 +6,12 @@ import {SingleSelectWithFilter} from '../../select/SelectComponents';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField, IFieldValue} from '../responseParser/ResponseParser';
 
+export const fieldSelectId: string = 'field-select';
+
 export interface IFieldSelectProps {
     fields: IField[];
+    expressionEditorId: string;
     queryTrigger: QueryTrigger;
-    updateField: (field: string) => void;
     updateFieldValueItems: (fieldValueItems: IItemBoxProps[]) => void;
 }
 
@@ -18,6 +20,11 @@ export interface IFieldSelectState {
 }
 
 export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelectState> {
+
+    // TODO remove if not used
+    constructor(props: IFieldSelectProps) {
+        super(props);
+    }
 
     private getFieldsItems(): IItemBoxProps[] {
         const fieldsItems: IItemBoxProps[] = [];
@@ -30,7 +37,6 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
 
     private async fieldOnSelect(field: string) {
         await this.updateFieldValues(field);
-        this.props.updateField(field);
     }
 
     private async updateFieldValues(field: string) {
@@ -55,7 +61,7 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
         return (
             <span>
                 <SingleSelectWithFilter
-                    id={'fields-selector'}
+                    id={`${this.props.expressionEditorId}-${fieldSelectId}`}
                     items={this.getFieldsItems()}
                     placeholder={'Select field'}
                     onSelectOptionCallback={(field: string) => this.fieldOnSelect(field)}

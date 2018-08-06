@@ -18,7 +18,7 @@ export class ResultItem extends React.Component<IResultItemProps> {
     render() {
         return (
             <div>
-                {/* // TODO : review the checked attribute it's slow... */}
+                {/* // TODO : review the checked attribute... */}
                 {/* // TODO : add css  */}
                 {/* // TODO : props to put a Radio or not  */}
                 {/* // TODO : la Radio brise le concept de la listem tout serait plus clean sans... à voir si on l'a veut ou non  */}

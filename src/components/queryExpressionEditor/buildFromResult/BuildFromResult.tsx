@@ -21,7 +21,7 @@ export enum FieldType {
     SOURCE = 'sourcetype',
 }
 
-// TODO : @source field est souvent pas un bon format
+// TODO : @source field value is not well parsed spaces should be removed
 export class BuildFromResult extends React.Component<IBuildFromResultProps, IBuildFromResultState> {
     private expressionParser: ExpressionParser;
 
@@ -91,6 +91,7 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
         this.setState({results: results});
     }
 
+    // TODO remove {} dans onSearch? 
     render() {
         return (
             <div>
@@ -102,7 +103,7 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({value: event.target.value})}
                     onSearch={(searchBarText: string) => {this.onSearch(searchBarText);}}
                 />
-                <ResultList results={this.state.results} onClick={(result: IResult) => (this.onClick(result))} />
+                <ResultList results={this.state.results} onClick={(result: IResult) => this.onClick(result)} />
             </div>
         );
     }

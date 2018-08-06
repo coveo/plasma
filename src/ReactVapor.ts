@@ -37,6 +37,7 @@ import {ITableData, ITablesState} from './components/tables/TableReducers';
 import {ITableRowState} from './components/tables/TableRowReducers';
 import {ITextAreaState} from './components/textarea/TextAreaReducers';
 import {IToastsState} from './components/toast/ToastReducers';
+import {IExpressionEditorState} from './components/queryExpressionEditor/expressionEditor/ExpressionEditorReducers';
 
 export interface IReactVaporState {
     autocompletes: IAutocompleteState[];
@@ -73,6 +74,7 @@ export interface IReactVaporState {
     groupableCheckboxes?: IGroupableCheckboxesState[];
     textAreas?: ITextAreaState[];
     menus?: IMenusState;
+    expressionEditors?: IExpressionEditorState[];
 }
 
 export interface IReduxActionsPayload {
@@ -113,4 +115,5 @@ export interface IReduxActionsPayload {
     disabled?: boolean;
     searching?: boolean;
     yPosition?: number;
+    expression?: string;
 }

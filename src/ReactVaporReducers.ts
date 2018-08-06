@@ -33,6 +33,7 @@ import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
+import {expressionEditorsReducer} from './components/queryExpressionEditor/expressionEditor/ExpressionEditorReducers';
 
 export const ReactVaporReducers: ReducersMapObject = {
     autocompletes: autocompletesReducer,
@@ -70,4 +71,5 @@ export const ReactVaporReducers: ReducersMapObject = {
     groupableCheckboxes: groupableCheckboxesReducer,
     textAreas: textAreasReducer,
     menus: menuCompositeReducer,
+    expressionEditors: expressionEditorsReducer
 };

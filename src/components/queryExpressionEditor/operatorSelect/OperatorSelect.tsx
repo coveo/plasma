@@ -4,9 +4,11 @@ import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {SingleSelectWithFilter} from '../../select/SelectComponents';
 import {FieldType} from '../expressionEditor/ExpressionEditor';
 
+export const operatorSelectId: string = 'operator-select';
+
 export interface IOperatorSelectProps {
     selectedFieldType: FieldType;
-    updateOperator: (operator: string) => void;
+    expressionEditorId: string;
 }
 
 export interface IOperatorSelectState {
@@ -24,10 +26,6 @@ export class OperatorSelect extends React.Component<IOperatorSelectProps, IOpera
         };
     }
 
-    // TODO : Could call this.props.updateOperator(operator); directly
-    private operatorOnSelect(operator: string) {
-        this.props.updateOperator(operator);
-    }
 
     private getOperatorItems(): IItemBoxProps[] {
         switch (this.props.selectedFieldType) {
@@ -46,10 +44,9 @@ export class OperatorSelect extends React.Component<IOperatorSelectProps, IOpera
         return (
             <span>
                 <SingleSelectWithFilter
-                    id={'operator-selector'}
+                    id={`${this.props.expressionEditorId}-${operatorSelectId}`}
                     items={this.getOperatorItems()}
                     placeholder={'Select operator'}
-                    onSelectOptionCallback={(operator: string) => this.operatorOnSelect(operator)}
                 />
             </span>
         );
