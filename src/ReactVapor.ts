@@ -26,6 +26,7 @@ import {IPaginationState} from './components/navigation/pagination/NavigationPag
 import {IPerPageState} from './components/navigation/perPage/NavigationPerPageReducers';
 import {IOptionPickerState} from './components/optionPicker/OptionPickerReducers';
 import {IOptionsCycleState} from './components/optionsCycle/OptionsCycleReducers';
+import {IExpressionEditorState} from './components/queryExpressionEditor/expressionEditor/ExpressionEditorReducers';
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
 import {ISelectState} from './components/select/SelectReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
@@ -37,7 +38,6 @@ import {ITableData, ITablesState} from './components/tables/TableReducers';
 import {ITableRowState} from './components/tables/TableRowReducers';
 import {ITextAreaState} from './components/textarea/TextAreaReducers';
 import {IToastsState} from './components/toast/ToastReducers';
-import {IExpressionEditorState} from './components/queryExpressionEditor/expressionEditor/ExpressionEditorReducers';
 
 export interface IReactVaporState {
     autocompletes: IAutocompleteState[];

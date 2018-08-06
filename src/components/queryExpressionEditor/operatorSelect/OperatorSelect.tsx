@@ -26,7 +26,6 @@ export class OperatorSelect extends React.Component<IOperatorSelectProps, IOpera
         };
     }
 
-
     private getOperatorItems(): IItemBoxProps[] {
         switch (this.props.selectedFieldType) {
             case FieldType.Date:

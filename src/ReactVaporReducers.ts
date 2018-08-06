@@ -24,6 +24,7 @@ import {paginationCompositeReducer} from './components/navigation/pagination/Nav
 import {perPageCompositeReducer} from './components/navigation/perPage/NavigationPerPageReducers';
 import {optionPickersReducer} from './components/optionPicker/OptionPickerReducers';
 import {optionsCyclesReducer} from './components/optionsCycle/OptionsCycleReducers';
+import {expressionEditorsReducer} from './components/queryExpressionEditor/expressionEditor/ExpressionEditorReducers';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
@@ -33,7 +34,6 @@ import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
-import {expressionEditorsReducer} from './components/queryExpressionEditor/expressionEditor/ExpressionEditorReducers';
 
 export const ReactVaporReducers: ReducersMapObject = {
     autocompletes: autocompletesReducer,
@@ -71,5 +71,5 @@ export const ReactVaporReducers: ReducersMapObject = {
     groupableCheckboxes: groupableCheckboxesReducer,
     textAreas: textAreasReducer,
     menus: menuCompositeReducer,
-    expressionEditors: expressionEditorsReducer
+    expressionEditors: expressionEditorsReducer,
 };

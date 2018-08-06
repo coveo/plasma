@@ -1,15 +1,15 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import { IReactVaporState } from '../../../ReactVapor';
-import { IExpressionEditorOwnProps, IExpressionEditorStateProps, ExpressionEditor, IExpressionEditorProps, IExpressionEditorDispatchProps } from './ExpressionEditor';
-import { IListBoxState } from '../../listBox/ListBoxReducers';
-import { ReduxUtils, IReduxAction } from '../../../utils/ReduxUtils';
-import { fieldValueSelectId } from '../valueSelect/ValueSelect';
-import { fieldSelectId } from '../fieldSelect/FieldSelect';
-import { operatorSelectId } from '../operatorSelect/OperatorSelect';
-import { ICheckboxActionPayload } from '../../checkbox/CheckboxActions';
-import { updateExpressionEditor } from './ExpressionEditorActions';
-import { IExpressionEditorState } from './ExpressionEditorReducers';
+import {IReactVaporState} from '../../../ReactVapor';
+import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
+import {ICheckboxActionPayload} from '../../checkbox/CheckboxActions';
+import {IListBoxState} from '../../listBox/ListBoxReducers';
+import {fieldSelectId} from '../fieldSelect/FieldSelect';
+import {operatorSelectId} from '../operatorSelect/OperatorSelect';
+import {fieldValueSelectId} from '../valueSelect/ValueSelect';
+import {ExpressionEditor, IExpressionEditorDispatchProps, IExpressionEditorOwnProps, IExpressionEditorProps, IExpressionEditorStateProps} from './ExpressionEditor';
+import {updateExpressionEditor} from './ExpressionEditorActions';
+import {IExpressionEditorState} from './ExpressionEditorReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IExpressionEditorOwnProps): IExpressionEditorStateProps => {
     const expressionEditor: IExpressionEditorState = _.findWhere(state.expressionEditors, {id: ownProps.id});

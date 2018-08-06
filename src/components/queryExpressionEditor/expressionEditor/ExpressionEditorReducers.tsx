@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import { IReduxAction } from '../../../utils/ReduxUtils';
-import { IExpressionEditorActionPayload, ExpressionEditorActions } from './ExpressionEditorActions';
+import {IReduxAction} from '../../../utils/ReduxUtils';
+import {ExpressionEditorActions, IExpressionEditorActionPayload} from './ExpressionEditorActions';
 
 export interface IExpressionEditorState {
     id: string;
@@ -8,7 +8,7 @@ export interface IExpressionEditorState {
     // disabled: boolean;
 }
 
-export const expressionEditorState: IExpressionEditorState = {id:'initid', expression: 'initial'};
+export const expressionEditorState: IExpressionEditorState = {id: 'initid', expression: 'initial'};
 export const expressionEditorsInitialState: IExpressionEditorState[] = [];
 
 export const expressionEditorReducer = (

@@ -16,8 +16,8 @@ export interface IQueryStringArguments {
     viewAllContent?: number;
 }
 
-// TODO : The redux action should call this module and after getting the response 
-// from the api it should continue to the reducer so that the reducer update the state,       
+// TODO : The redux action should call this module and after getting the response
+// from the api it should continue to the reducer so that the reducer update the state,
 export class QueryTrigger {
     private responseParser: ResponseParser;
 

@@ -18,7 +18,7 @@ export class AdvancedMode extends React.Component<IAdvancedModeProps, IAdvancedM
         this.state = {content: ''};
     }
 
-    // TODO : Can't update it live for now 
+    // TODO : Can't update it live for now
     // private onChange(content: string) {
     //     this.props.updateQueryExpression(content);
     // }

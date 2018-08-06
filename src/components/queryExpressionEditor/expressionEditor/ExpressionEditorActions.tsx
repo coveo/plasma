@@ -1,4 +1,4 @@
-import { IReduxAction } from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../../utils/ReduxUtils';
 
 export interface IExpressionEditorActionPayload {
     id: string;
@@ -17,5 +17,3 @@ export const updateExpressionEditor = (id: string, expression?: string): IReduxA
         expression,
     },
 });
-
-

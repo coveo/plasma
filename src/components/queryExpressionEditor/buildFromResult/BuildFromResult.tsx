@@ -91,7 +91,7 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
         this.setState({results: results});
     }
 
-    // TODO remove {} dans onSearch? 
+    // TODO remove {} dans onSearch?
     render() {
         return (
             <div>

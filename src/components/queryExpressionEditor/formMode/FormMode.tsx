@@ -1,6 +1,6 @@
 import * as React from 'react';
+import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
-import { ExpressionEditorConnected } from '../expressionEditor/ExpressionEditorConnected';
 
 export const expressionEditor1ID: string = 'expression-editor-1';
 export const expressionEditor2ID: string = 'expression-editor-2';
@@ -14,14 +14,11 @@ export interface IFormModeStateProps {
     expressions?: string[];
 }
 
-
 export interface IFormModeDispatchProps {
-    
+
 }
 
-
 export interface IFormModeProps extends IFormModeOwnProps, IFormModeStateProps, IFormModeDispatchProps {}
-
 
 export class FormMode extends React.Component<IFormModeProps> {
 
@@ -30,9 +27,9 @@ export class FormMode extends React.Component<IFormModeProps> {
     }
 
     // componentWillReceiveProps(nextProps: IExpressionEditorProps) {
-        // update le state courant avec toutes les expressions
-        // const finalExpression: string = this.getExpression(nextProps);
-        // this.setState({finalExpression: expression});
+    // update le state courant avec toutes les expressions
+    // const finalExpression: string = this.getExpression(nextProps);
+    // this.setState({finalExpression: expression});
     // }
 
     render() {

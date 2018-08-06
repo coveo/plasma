@@ -31,7 +31,7 @@ export interface IExpressionEditorOwnProps {
 }
 
 export interface IExpressionEditorOwnState {
-     // TODO maybe do not pass it as a props... to review
+    // TODO maybe do not pass it as a props... to review
     fieldValueItems: IItemBoxProps[];
 
     // TODO : this was updated with componentWillReceiveProps
@@ -51,7 +51,6 @@ export interface IExpressionEditorDispatchProps {
 
 export interface IExpressionEditorProps extends IExpressionEditorOwnProps, IExpressionEditorStateProps, IExpressionEditorDispatchProps {}
 
-
 export class ExpressionEditor extends React.Component<IExpressionEditorProps, IExpressionEditorOwnState> {
     private fields: IField[];
 
@@ -67,7 +66,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     // TODO : Is it good practice to use componentWillReceiveProps?
     componentWillReceiveProps(nextProps: IExpressionEditorProps) {
         // this.setState({localExpression: expression});
-        
+
         // const expression: string = this.getExpression();
 
         // this.props.update(expression);
@@ -83,7 +82,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         // TODO : Better parsing
         return `${this.props.selectedField ? this.props.selectedField : ''}
                 ${this.props.selectedOperator ? this.props.selectedOperator : ''}
-                (${this.props.selectedFieldValues ? this.props.selectedFieldValues : ''})`
+                (${this.props.selectedFieldValues ? this.props.selectedFieldValues : ''})`;
     }
 
     // TODO : Version with componentWillReceiveProps
@@ -122,11 +121,11 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     private async updateQueryExpression() {
         // TODO : example for parsing the string initially
         // ReactVaporStore.dispatch(selectListBoxOption(`${expressionEditor1ID}-${singleSelectFieldId}`, false, '@uri'))
-        
+
         const expression: string = this.getExpression();
         this.props.update(expression);
         // console.log(ReactVaporStore.getState())
-        
+
         // this.props.update(this.state.localExpression);
         // this.props.updateQueryExpression(this.state.localExpression);
     }
