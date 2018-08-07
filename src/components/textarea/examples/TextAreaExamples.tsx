@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
-import {ReactVaporStore} from '../../../docs/ReactVaporStore';
-import {TextAreaConnected} from './TextArea';
-import {setDisabledTextArea} from './TextAreaActions';
-import {TextAreaLabel} from './TextAreaLabel';
+import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {TextAreaConnected} from '../TextArea';
+import {setDisabledTextArea} from '../TextAreaActions';
+import {TextAreaLabel} from '../TextAreaLabel';
 
 export const TextAreaExamples = (): JSX.Element =>
     <div className='mt2'>
