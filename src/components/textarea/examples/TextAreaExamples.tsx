@@ -70,7 +70,7 @@ export const TextAreaExamples = (): JSX.Element =>
                 <div className='form-control'>
                     <TextAreaConnected
                         id='super-textarea-6'
-                        autosizeProps={{placeholder: 'Try to enter a lot of text here'}}
+                        additionalAttributes={{placeholder: 'Try to enter a lot of text here'}}
                         isAutosize
                     />
                 </div>
