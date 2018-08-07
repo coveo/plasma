@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
@@ -21,6 +22,9 @@ export interface ITextAreaOwnProps {
      * Use with TextAreaConnected. Only useful in a Redux context.
      */
     disabledOnMount?: boolean;
+
+    isAutosize?: boolean;
+    autosizeProps?: TextareaAutosizeProps;
 }
 
 export interface ITextAreaStateProps {
@@ -69,9 +73,14 @@ export class TextArea extends React.Component<ITextAreaProps, {}> {
     }
 
     render() {
+        const TextareaEl: any = this.props.isAutosize ? TextareaAutosize : 'textarea';
+        let propsToAdd;
+        if (this.props.isAutosize) {
+            propsToAdd = _.extend({}, this.props.additionalAttributes, this.props.autosizeProps);
+        }
         return (
-            <textarea
-                {...this.props.additionalAttributes}
+            <TextareaEl
+                {...propsToAdd}
                 id={this.props.id}
                 disabled={this.props.disabled}
                 className={this.props.className}

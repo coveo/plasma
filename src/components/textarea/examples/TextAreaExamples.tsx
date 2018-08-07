@@ -56,5 +56,34 @@ export const TextAreaExamples = (): JSX.Element =>
                     />
                 </TextAreaLabel>
             </div>
+            <div className='form-group'>
+                <label className='form-control-label'>Default textarea autosize empty</label>
+                <div className='form-control'>
+                    <TextAreaConnected
+                        id='super-textarea-5'
+                        isAutosize
+                    />
+                </div>
+            </div>
+            <div className='form-group'>
+                <label className='form-control-label'>Textarea with a placeholder</label>
+                <div className='form-control'>
+                    <TextAreaConnected
+                        id='super-textarea-6'
+                        autosizeProps={{placeholder: 'Try to enter a lot of text here'}}
+                        isAutosize
+                    />
+                </div>
+            </div>
+            <div className='form-group'>
+                <label className='form-control-label'>Textarea with a default value</label>
+                <div className='form-control'>
+                    <TextAreaConnected
+                        id='super-textarea-7'
+                        valueOnMount='this is the default value'
+                        isAutosize
+                    />
+                </div>
+            </div>
         </div>
     </div>;
