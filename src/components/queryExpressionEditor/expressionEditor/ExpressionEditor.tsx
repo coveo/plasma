@@ -2,12 +2,12 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {Button} from '../../button/Button';
-import { AddRuleSelect } from '../addRuleSelect/AddRuleSelect';
+import {AddRuleSelect} from '../addRuleSelect/AddRuleSelect';
 import {FieldSelect} from '../fieldSelect/FieldSelect';
 import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
-import { ValueSelectConnected } from '../valueSelect/ValueSelectConnected';
+import {ValueSelectConnected} from '../valueSelect/ValueSelectConnected';
 // import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 
 export enum OriginalFieldType {
@@ -52,7 +52,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
 
     constructor(props: IExpressionEditorProps) {
         super(props);
-        this.state = { };
+        this.state = {};
         this.fields = [];
     }
 
@@ -83,13 +83,13 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
 
     private isNewExpressionComplete(nextProps: IExpressionEditorProps): boolean {
         const isNewExpressionComplete: boolean = (nextProps.selectedField && nextProps.selectedOperator
-                                                  && nextProps.selectedFieldValues.length > 0) || false;
+            && nextProps.selectedFieldValues.length > 0) || false;
         return isNewExpressionComplete;
     }
 
     private isCurrentExpressionComplete(): boolean {
         const isCurrentExpressionComplete: boolean = (this.props.selectedField && this.props.selectedOperator
-                                                      && this.props.selectedFieldValues.length > 0) || false;
+            && this.props.selectedFieldValues.length > 0) || false;
         return isCurrentExpressionComplete;
     }
 

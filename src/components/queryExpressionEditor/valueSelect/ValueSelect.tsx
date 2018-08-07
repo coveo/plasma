@@ -1,10 +1,10 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IItemBoxProps } from '../../itemBox/ItemBox';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {MultiSelectWithFilter} from '../../select/SelectComponents';
-import { QueryTrigger } from '../queryTrigger/QueryTrigger';
-import { IFieldValue } from '../responseParser/ResponseParser';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import {IFieldValue} from '../responseParser/ResponseParser';
 
 export const fieldValueSelectId: string = 'field-value-select';
 

@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import { IReactVaporState } from '../../../ReactVapor';
-import { ReduxUtils } from '../../../utils/ReduxUtils';
-import { IListBoxState } from '../../listBox/ListBoxReducers';
-import { fieldSelectId } from '../fieldSelect/FieldSelect';
-import { operatorSelectId } from '../operatorSelect/OperatorSelect';
-import { IValueSelectOwnProps, IValueSelectProps, IValueSelectStateProps, ValueSelect } from './ValueSelect';
+import {IReactVaporState} from '../../../ReactVapor';
+import {ReduxUtils} from '../../../utils/ReduxUtils';
+import {IListBoxState} from '../../listBox/ListBoxReducers';
+import {fieldSelectId} from '../fieldSelect/FieldSelect';
+import {operatorSelectId} from '../operatorSelect/OperatorSelect';
+import {IValueSelectOwnProps, IValueSelectProps, IValueSelectStateProps, ValueSelect} from './ValueSelect';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IValueSelectOwnProps): IValueSelectStateProps => {
     const operatorSelect: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.expressionEditorId}-${operatorSelectId}`});
