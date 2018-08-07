@@ -2,8 +2,8 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
 import {fakeJSON, fakeJSON1, JSONToString} from '../../../utils/JSONUtils';
-import {DiffViewer, DiffViewerProps} from '../DiffViewer';
 import {BlankSlate} from '../../blankSlate/BlankSlate';
+import {DiffViewer, DiffViewerProps} from '../DiffViewer';
 
 describe('DiffViewer', () => {
     const basicProps: DiffViewerProps = {
