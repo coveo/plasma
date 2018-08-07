@@ -9,6 +9,7 @@ export interface DiffViewerProps extends React.ClassAttributes<DiffViewer> {
     first: string;
     second: string;
     noChangesLabel?: string;
+    noChangesDescription?: string;
 }
 
 export class DiffViewer extends React.Component<DiffViewerProps> {
@@ -46,6 +47,6 @@ export class DiffViewer extends React.Component<DiffViewerProps> {
 
         return !DiffViewer.EmptyHtmlRegex.test(html)
             ? <div className={styles.diffViewer} dangerouslySetInnerHTML={{__html: html}}></div>
-            : <BlankSlate title={this.props.noChangesLabel} />;
+            : <BlankSlate title={this.props.noChangesLabel} description={this.props.noChangesDescription} />;
     }
 }
