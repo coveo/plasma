@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
-import { IField } from '../responseParser/ResponseParser';
+import {IField} from '../responseParser/ResponseParser';
 
 export const expressionEditor1ID: string = 'expression-editor-1';
 export const expressionEditor2ID: string = 'expression-editor-2';

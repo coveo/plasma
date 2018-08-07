@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {MultiSelectWithFilter} from '../../select/SelectComponents';
-import { FieldType } from '../expressionEditor/ExpressionEditor';
+import {FieldType} from '../expressionEditor/ExpressionEditor';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IFieldValue} from '../responseParser/ResponseParser';
 

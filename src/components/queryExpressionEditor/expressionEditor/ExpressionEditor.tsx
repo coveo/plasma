@@ -6,7 +6,7 @@ import {AddRuleSelect} from '../addRuleSelect/AddRuleSelect';
 import {FieldSelect} from '../fieldSelect/FieldSelect';
 import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
-import { IField } from '../responseParser/ResponseParser';
+import {IField} from '../responseParser/ResponseParser';
 import {ValueSelectConnected} from '../valueSelect/ValueSelectConnected';
 // import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 
