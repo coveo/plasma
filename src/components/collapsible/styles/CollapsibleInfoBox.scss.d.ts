@@ -1,2 +1,2 @@
-export const roundedBorders: string;
+export const container: string;
 export const alignWithIcon: string;
