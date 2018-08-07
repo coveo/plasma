@@ -32,6 +32,7 @@ export const expressionEditorReducer = (
     }
 };
 
+// TODO le reducer est tout croche il faudrait l'arranger quand je vais faire l'ajout des expressions editor
 export const expressionEditorsReducer = (
     state: IExpressionEditorState[] = expressionEditorsInitialState,
     action: IReduxAction<IExpressionEditorActionPayload>,

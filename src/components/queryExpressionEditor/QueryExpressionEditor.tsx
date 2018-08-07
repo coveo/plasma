@@ -19,7 +19,7 @@ export interface IQueryExpressionEditorState {
     queryExpression: string;
 }
 
-const TAB_SEARCH_MODE_ID = 'tabBuildFromResult';
+const TAB_BUILD_FROM_RESULT_ID = 'tabBuildFromResult';
 const TAB_FORM_MODE_ID = 'tabFormMode';
 const TAB_ADVANCED_MODE_ID = 'tabAdvancedMode';
 const TAB_OUTPUT_MODE_ID = 'tabOutputMode';
@@ -63,15 +63,16 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
                 </div>
 
                 {/* TODO : Move this under an 'Editors' component  */}
+                {/* TODO : Remove MODE from all the names?  */}
                 {/* TODO : Move back the Form Mode after the BuildFromResult */}
                 <TabNavigation>
-                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
-                    <TabConnected id={TAB_SEARCH_MODE_ID} title='Search Mode' />
+                    <TabConnected id={TAB_BUILD_FROM_RESULT_ID} title='Build From Result' />
+                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />    
                     <TabConnected id={TAB_ADVANCED_MODE_ID} title='Advanced Mode' />
                     <TabConnected id={TAB_OUTPUT_MODE_ID} title='Output' />
                 </TabNavigation>
                 <TabContent>
-                    <TabPaneConnected id={TAB_SEARCH_MODE_ID}>
+                    <TabPaneConnected id={TAB_BUILD_FROM_RESULT_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
                             <BuildFromResult queryTrigger={this.queryTrigger} updateQueryExpression={this.updateQueryExpression} />
                         </div>

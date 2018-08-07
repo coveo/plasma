@@ -103,7 +103,7 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({value: event.target.value})}
                     onSearch={(searchBarText: string) => {this.onSearch(searchBarText);}}
                 />
-                <ResultList results={this.state.results} onClick={(result: IResult) => this.onClick(result)} />
+                <ResultList results={this.state.results} isSelectable onClick={(result: IResult) => this.onClick(result)} />
             </div>
         );
     }

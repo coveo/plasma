@@ -7,12 +7,34 @@ import {IResult} from '../responseParser/ResponseParser';
 export interface IResultItemProps {
     result: IResult;
     selectedResult: string;
+    isSelectable?: boolean;
 }
 
 export class ResultItem extends React.Component<IResultItemProps> {
+    static defaultProps: IResultItemProps = {
+        result: null,
+        isSelectable: false,
+        selectedResult: '',
+    };
 
     private isSelected() {
         return this.props.selectedResult === this.props.result.uniqueID;
+    }
+
+    private getSelectableResultItem(): JSX.Element {
+        return (
+            <Radio name='singleoption' value='blue' checked={this.isSelected()}>
+                {this.getResultItem()}
+            </Radio>
+        );
+    }
+    private getResultItem(): JSX.Element {
+        return (
+            <Label>
+                <div>{this.props.result.title}</div>
+                <div>{this.props.result.uri}</div>
+            </Label>
+        );
     }
 
     render() {
@@ -25,12 +47,7 @@ export class ResultItem extends React.Component<IResultItemProps> {
                 {/* Il faut ajouter un prop dans 2 class pour afficher la radio ou non
                     Avec cette logique c'est lent sélectionner ... */}
                 <div className='form-group'>
-                    <Radio name='singleoption' value='blue' checked={this.isSelected()}>
-                        <Label>
-                            <div>{this.props.result.title}</div>
-                            <div>{this.props.result.uri}</div>
-                        </Label>
-                    </Radio>
+                    {this.props.isSelectable ? this.getSelectableResultItem(): this.getResultItem()}
                 </div>
             </div>
         );

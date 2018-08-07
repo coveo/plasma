@@ -9,6 +9,7 @@ import {ResultItem} from '../resultItem/ResultItem';
 
 export interface IResultListProps {
     results: IResult[];
+    isSelectable?: boolean;
     onClick?: (result: IResult) => void;
 }
 
@@ -17,6 +18,10 @@ export interface IResultListState {
 }
 
 export class ResultList extends React.Component<IResultListProps, IResultListState> {
+    static defaultProps: IResultListProps = {
+        results: [],
+        isSelectable: false,
+    };
 
     constructor(props: IResultListProps) {
         super(props);
@@ -24,6 +29,10 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
     }
 
     private onClick(resultItemBox: IItemBoxProps) {
+        if (!this.props.isSelectable) {
+            return;
+        }
+
         const resultID: string = resultItemBox.value;
         this.setState({selectedResult: resultID});
 
@@ -36,7 +45,9 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
     private getResultsItems(): IItemBoxProps[] {
         const items: IItemBoxProps[] = [];
         _.forEach(this.props.results, (result: IResult) => {
-            const getAppend: IContentProps = {content: () => <ResultItem result={result} selectedResult={this.state.selectedResult} />};
+            const getAppend: IContentProps = {content: () => 
+                <ResultItem result={result} isSelectable={this.props.isSelectable} selectedResult={this.state.selectedResult} />
+            };
             const getItemBox: IItemBoxProps = {value: result.uniqueID, displayValue: ' ', append: getAppend};
             items.push(getItemBox);
         });
