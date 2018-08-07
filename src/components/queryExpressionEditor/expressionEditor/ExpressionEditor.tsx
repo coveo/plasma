@@ -31,17 +31,15 @@ export interface IExpressionEditorOwnProps {
 }
 
 export interface IExpressionEditorOwnState {
-    // TODO maybe do not pass it as a props... to review
+     // TODO maybe do not pass it as a props... to review
     fieldValueItems: IItemBoxProps[];
-
-    // TODO : this was updated with componentWillReceiveProps
-    // localExpression: string;
 }
 
 export interface IExpressionEditorStateProps {
     expression?: string;
     selectedField?: string;
     selectedOperator?: string;
+    // TODO : Make an interface to regroup all the type of values and all the selector that could exists
     selectedFieldValues?: string[];
 }
 
@@ -58,19 +56,8 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         super(props);
         this.state = {
             fieldValueItems: [],
-            // localExpression: '',
         };
         this.fields = [];
-    }
-
-    // TODO : Is it good practice to use componentWillReceiveProps?
-    componentWillReceiveProps(nextProps: IExpressionEditorProps) {
-        // this.setState({localExpression: expression});
-
-        // const expression: string = this.getExpression();
-
-        // this.props.update(expression);
-        // this.updateExpression(nextProps);
     }
 
     async componentDidMount() {
@@ -78,20 +65,48 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         this.forceUpdate();
     }
 
-    private getExpression(): string {
-        // TODO : Better parsing
-        return `${this.props.selectedField ? this.props.selectedField : ''}
-                ${this.props.selectedOperator ? this.props.selectedOperator : ''}
-                (${this.props.selectedFieldValues ? this.props.selectedFieldValues : ''})`;
+    componentWillReceiveProps(nextProps: IExpressionEditorProps) {
+        this.updateExpressionIfCompleted(nextProps);
     }
 
-    // TODO : Version with componentWillReceiveProps
-    // private getExpression(nextProps: IExpressionEditorProps): string {
-    //     // TODO : Better parsing
-    //     return `${nextProps.selectedField ? nextProps.selectedField : ''}
-    //             ${nextProps.selectedOperator ? nextProps.selectedOperator : ''}
-    //             (${nextProps.selectedFieldValues ? nextProps.selectedFieldValues : ''})`
-    // }
+    private updateExpressionIfCompleted(nextProps: IExpressionEditorProps) {
+        if (!this.isExpressionComplete(nextProps)) {
+            this.props.update('');
+            return;
+        }
+
+        if (!this.expressionHasChanged(nextProps)) {
+            return;
+        }
+
+        const expression: string = this.getExpression(nextProps);
+        this.props.update(expression);
+    }
+
+    private isExpressionComplete(nextProps: IExpressionEditorProps): boolean {
+        const isExpressionComplete: boolean = (nextProps.selectedField && nextProps.selectedOperator && nextProps.selectedFieldValues.length > 0) || false;
+        return isExpressionComplete;
+    }
+
+    private expressionHasChanged(nextProps: IExpressionEditorProps): boolean {
+        const selectedFieldHasChange: boolean = this.props.selectedField !== nextProps.selectedField;
+        const selectedOperatorHasChange: boolean = this.props.selectedOperator !== nextProps.selectedOperator;
+        const selectedFieldValuesHasChange: boolean = this.props.selectedFieldValues !== nextProps.selectedFieldValues;
+
+        return selectedFieldHasChange || selectedOperatorHasChange || selectedFieldValuesHasChange;
+    }
+
+    private getExpression(nextProps: IExpressionEditorProps): string {
+        // TODO : Better parsing
+        const selectedField: string = nextProps.selectedField ? nextProps.selectedField : '';
+        const selectedOperator: string = nextProps.selectedOperator ? nextProps.selectedOperator : '';
+        const selectedFieldValues: string[] = nextProps.selectedFieldValues ? nextProps.selectedFieldValues : [];
+
+        const expression: string = selectedField + selectedOperator + selectedFieldValues;
+
+        const sanitizedExpression: string = expression.replace(/\s/g,'');
+        return sanitizedExpression;
+    }
 
     private getSelectedFieldType(): FieldType {
         const selectedField = _.find(this.fields, (field: IField) => field.name === this.props.selectedField);
@@ -103,7 +118,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private parseOriginalFieldType(originalFieldType: string): FieldType {
-        // TODO : Review that all types handled
+        // TODO : Review that all types are handled
         if (originalFieldType === OriginalFieldType.Date) {
             return FieldType.Date;
         } else if (originalFieldType === (OriginalFieldType.Long64 || OriginalFieldType.Long || OriginalFieldType.Double)) {
@@ -118,16 +133,10 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         this.setState({fieldValueItems: fieldValueItems});
     }
 
-    private async updateQueryExpression() {
-        // TODO : example for parsing the string initially
-        // ReactVaporStore.dispatch(selectListBoxOption(`${expressionEditor1ID}-${singleSelectFieldId}`, false, '@uri'))
-
-        const expression: string = this.getExpression();
-        this.props.update(expression);
+    // TODO remove if no used
+    private logReduxState() {
         // console.log(ReactVaporStore.getState())
-
-        // this.props.update(this.state.localExpression);
-        // this.props.updateQueryExpression(this.state.localExpression);
+        // console.log(ReactVaporStore.getState().expressionEditors)
     }
 
     render() {
@@ -147,7 +156,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                     expressionEditorId={this.props.id}
                     fieldValueItems={this.state.fieldValueItems}
                 />
-                <Button enabled={true} name={'Update Query Expression'} onClick={() => {this.updateQueryExpression();}} />
+                <Button enabled={true} name={'Log Redux State'} onClick={() => {this.logReduxState();}} />
                 {this.props.expression}
             </div>
         );

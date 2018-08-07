@@ -60,6 +60,7 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
     render() {
         return (
             <span>
+                {/* TODO : if we want the infinite scroll we need to use dropdownSearchConnected */}
                 <SingleSelectWithFilter
                     id={`${this.props.expressionEditorId}-${fieldSelectId}`}
                     items={this.getFieldsItems()}
