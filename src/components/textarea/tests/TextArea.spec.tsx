@@ -3,11 +3,11 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'react-redux';
 import {findWhere} from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
-import {clearState} from '../../utils/ReduxUtils';
-import {TestUtils} from '../../utils/TestUtils';
-import {ITextAreaProps, TextArea, TextAreaConnected} from './TextArea';
-import {ITextAreaState} from './TextAreaReducers';
+import {IReactVaporState} from '../../../ReactVapor';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/TestUtils';
+import {ITextAreaProps, TextArea, TextAreaConnected} from '../TextArea';
+import {ITextAreaState} from '../TextAreaReducers';
 
 describe('TextArea', () => {
     describe('<TextArea />', () => {

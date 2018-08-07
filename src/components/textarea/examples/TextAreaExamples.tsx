@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
-import {ReactVaporStore} from '../../../docs/ReactVaporStore';
-import {TextAreaConnected} from './TextArea';
-import {setDisabledTextArea} from './TextAreaActions';
-import {TextAreaLabel} from './TextAreaLabel';
+import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {TextAreaConnected} from '../TextArea';
+import {setDisabledTextArea} from '../TextAreaActions';
+import {TextAreaLabel} from '../TextAreaLabel';
 
 export const TextAreaExamples = (): JSX.Element =>
     <div className='mt2'>
@@ -55,6 +55,35 @@ export const TextAreaExamples = (): JSX.Element =>
                         id='super-textarea-4'
                     />
                 </TextAreaLabel>
+            </div>
+            <div className='form-group'>
+                <label className='form-control-label'>Default textarea autosize empty</label>
+                <div className='form-control'>
+                    <TextAreaConnected
+                        id='super-textarea-5'
+                        isAutosize
+                    />
+                </div>
+            </div>
+            <div className='form-group'>
+                <label className='form-control-label'>Textarea with a placeholder</label>
+                <div className='form-control'>
+                    <TextAreaConnected
+                        id='super-textarea-6'
+                        additionalAttributes={{placeholder: 'Try to enter a lot of text here'}}
+                        isAutosize
+                    />
+                </div>
+            </div>
+            <div className='form-group'>
+                <label className='form-control-label'>Textarea with a default value</label>
+                <div className='form-control'>
+                    <TextAreaConnected
+                        id='super-textarea-7'
+                        valueOnMount='this is the default value'
+                        isAutosize
+                    />
+                </div>
             </div>
         </div>
     </div>;

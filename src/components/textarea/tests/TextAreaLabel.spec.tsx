@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {TextArea, TextAreaConnected} from './TextArea';
-import {TextAreaLabel} from './TextAreaLabel';
+import {TextArea, TextAreaConnected} from '../TextArea';
+import {TextAreaLabel} from '../TextAreaLabel';
 
 describe('TextAreaLabel', () => {
     it('should render without error with TextArea or TextAreaConnected inside it', () => {
