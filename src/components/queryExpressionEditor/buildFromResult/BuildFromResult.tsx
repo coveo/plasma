@@ -14,7 +14,7 @@ export interface IBuildFromResultState extends ISearchBarStateProps {
     results: IResult[];
 }
 
-export enum FieldType {
+export enum Field {
     OBJECT = 'objecttype',
     FILE = 'filetype',
     CONNECTOR = 'connectortype',
@@ -57,23 +57,23 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
 
         if (result.objectType) {
             return {
-                fieldType: FieldType.OBJECT,
-                value: result.objectType,
+                field: Field.OBJECT,
+                fieldValue: result.objectType,
             };
         } else if (result.fileType) {
             return {
-                fieldType: FieldType.FILE,
-                value: result.fileType,
+                field: Field.FILE,
+                fieldValue: result.fileType,
             };
         } else if (result.connectorType) {
             return {
-                fieldType: FieldType.CONNECTOR,
-                value: result.connectorType,
+                field: Field.CONNECTOR,
+                fieldValue: result.connectorType,
             };
         } else if (result.source) {
             return {
-                fieldType: FieldType.SOURCE,
-                value: result.source,
+                field: Field.SOURCE,
+                fieldValue: result.source,
             };
         } else {
             return null;

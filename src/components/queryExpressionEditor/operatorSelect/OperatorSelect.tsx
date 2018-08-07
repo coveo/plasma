@@ -7,8 +7,8 @@ import {FieldType} from '../expressionEditor/ExpressionEditor';
 export const operatorSelectId: string = 'operator-select';
 
 export interface IOperatorSelectProps {
-    selectedFieldType: FieldType;
     expressionEditorId: string;
+    selectedFieldType: FieldType;
 }
 
 export interface IOperatorSelectState {
@@ -35,7 +35,7 @@ export class OperatorSelect extends React.Component<IOperatorSelectProps, IOpera
             case FieldType.String:
                 return stringOperators;
             default:
-                return dateOperators; // TODO put null instead of dateOperators
+                return null;
         }
     }
 

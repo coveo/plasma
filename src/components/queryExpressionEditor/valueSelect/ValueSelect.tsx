@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {MultiSelectWithFilter} from '../../select/SelectComponents';
+import { FieldType } from '../expressionEditor/ExpressionEditor';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IFieldValue} from '../responseParser/ResponseParser';
 
@@ -11,6 +12,7 @@ export const fieldValueSelectId: string = 'field-value-select';
 export interface IValueSelectOwnProps {
     expressionEditorId: string;
     queryTrigger: QueryTrigger;
+    selectedFieldType: FieldType;
 }
 
 export interface IValueSelectOwnState {

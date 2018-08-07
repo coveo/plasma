@@ -6,7 +6,7 @@ import {SingleSelectWithFilter} from '../../select/SelectComponents';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 
-const mockFields: IItemBoxProps[] = [{value: '@filetype'}, {value: '@language'}];
+const mockFields: IItemBoxProps[] = [{value: '@filetype'}, {value: '@language'}, {value: '@date'}];
 
 export const fieldSelectId: string = 'field-select';
 

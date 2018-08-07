@@ -6,7 +6,7 @@ import {AddRuleSelect} from '../addRuleSelect/AddRuleSelect';
 import {FieldSelect} from '../fieldSelect/FieldSelect';
 import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
-import {IField} from '../responseParser/ResponseParser';
+import { IField } from '../responseParser/ResponseParser';
 import {ValueSelectConnected} from '../valueSelect/ValueSelectConnected';
 // import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 
@@ -26,11 +26,13 @@ export enum FieldType {
 
 export interface IExpressionEditorOwnProps {
     id: string;
+    fields: IField[];
     queryTrigger: QueryTrigger;
     updateQueryExpression: (expression: string) => void;
 }
 
 export interface IExpressionEditorOwnState {
+    selectedFieldType: FieldType;
 }
 
 export interface IExpressionEditorStateProps {
@@ -48,23 +50,14 @@ export interface IExpressionEditorDispatchProps {
 export interface IExpressionEditorProps extends IExpressionEditorOwnProps, IExpressionEditorStateProps, IExpressionEditorDispatchProps {}
 
 export class ExpressionEditor extends React.Component<IExpressionEditorProps, IExpressionEditorOwnState> {
-    private fields: IField[];
-
     constructor(props: IExpressionEditorProps) {
         super(props);
-        this.state = {};
-        this.fields = [];
-    }
-
-    async componentDidMount() {
-        this.fields = await this.props.queryTrigger.getFields();
-        this.forceUpdate();
+        this.state = {selectedFieldType: null};
     }
 
     componentWillReceiveProps(nextProps: IExpressionEditorProps) {
-        // console.log(nextProps.selectedFieldValues)
-
         this.updateExpressionIfCompleted(nextProps);
+        this.updateSelectedFieldType(nextProps.selectedField);
     }
 
     private updateExpressionIfCompleted(nextProps: IExpressionEditorProps) {
@@ -113,13 +106,16 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         return sanitizedExpression;
     }
 
-    private getSelectedFieldType(): FieldType {
-        const selectedField = _.find(this.fields, (field: IField) => field.name === this.props.selectedField);
-        if (!selectedField) {
-            return null;
+    private updateSelectedFieldType(selectedFieldName: string) {
+        const selectedField = _.find(this.props.fields, (field: IField) => field.name === selectedFieldName);
+
+        if (selectedField === undefined) {
+            this.setState({selectedFieldType: null});
+            return;
         }
 
-        return this.parseOriginalFieldType(selectedField.fieldType);
+        const fieldType: FieldType = this.parseOriginalFieldType(selectedField.fieldType);
+        this.setState({selectedFieldType: fieldType});
     }
 
     private parseOriginalFieldType(originalFieldType: string): FieldType {
@@ -143,17 +139,18 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         return (
             <div>
                 <FieldSelect
-                    fields={this.fields}
                     expressionEditorId={this.props.id}
+                    fields={this.props.fields}
                     queryTrigger={this.props.queryTrigger}
                 />
                 <OperatorSelect
                     expressionEditorId={this.props.id}
-                    selectedFieldType={this.getSelectedFieldType()}
+                    selectedFieldType={this.state.selectedFieldType}
                 />
                 <ValueSelectConnected
                     expressionEditorId={this.props.id}
                     queryTrigger={this.props.queryTrigger}
+                    selectedFieldType={this.state.selectedFieldType}
                 />
                 <AddRuleSelect
                     expressionEditorId={this.props.id}

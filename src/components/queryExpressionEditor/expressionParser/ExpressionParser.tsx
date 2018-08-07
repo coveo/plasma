@@ -1,14 +1,14 @@
 
 export interface IFieldExpression {
-    fieldType: string;
-    value: string;
+    field: string;
+    fieldValue: string;
 }
 
 export class ExpressionParser {
     parseFieldExpression(fieldExpression: IFieldExpression): string {
         // TODO : Better handling of exceptions...
-        if (fieldExpression.fieldType && fieldExpression.value) {
-            return `@${fieldExpression.fieldType}=${fieldExpression.value}`;
+        if (fieldExpression.field && fieldExpression.fieldValue) {
+            return `@${fieldExpression.field}=${fieldExpression.fieldValue}`;
         } else {
             return null;
         }
