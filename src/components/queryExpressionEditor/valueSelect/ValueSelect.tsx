@@ -1,25 +1,55 @@
 
 import * as React from 'react';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
+import * as _ from 'underscore';
+import { IItemBoxProps } from '../../itemBox/ItemBox';
 import {MultiSelectWithFilter} from '../../select/SelectComponents';
+import { QueryTrigger } from '../queryTrigger/QueryTrigger';
+import { IFieldValue } from '../responseParser/ResponseParser';
 
 export const fieldValueSelectId: string = 'field-value-select';
 
-export interface IValueSelectProps {
+export interface IValueSelectOwnProps {
     expressionEditorId: string;
+    queryTrigger: QueryTrigger;
+}
+
+export interface IValueSelectOwnState {
     fieldValueItems: IItemBoxProps[];
 }
 
-export interface IValueSelectState {
+export interface IValueSelectStateProps {
+    selectedField?: string;
+    selectedOperator?: string;
 }
 
-// const mock: IItemBoxProps[] = [{value: 'a'}, {value: 'b'}, {value: 'c'}, {value: 'd'}, {value: 'e'}];
+export interface IValueSelectProps extends IValueSelectOwnProps, IValueSelectStateProps {}
 
-export class ValueSelect extends React.Component<IValueSelectProps, IValueSelectState> {
+export class ValueSelect extends React.Component<IValueSelectProps, IValueSelectOwnState> {
     constructor(props: IValueSelectProps) {
         super(props);
-        this.state = {
-        };
+        this.state = {fieldValueItems: []};
+    }
+
+    componentWillReceiveProps(nextProps: IValueSelectProps) {
+        this.updateFieldValues(nextProps.selectedField);
+    }
+
+    private async updateFieldValues(field: string) {
+        const newFieldValuesItems: IItemBoxProps[] = await this.getFieldValuesItems(field);
+        this.setState({fieldValueItems: newFieldValuesItems});
+    }
+
+    private async getFieldValuesItems(field: string): Promise<IItemBoxProps[]> {
+        // TODO use the expressionParser
+        const parsedField = [field.slice(0, 1), 'sys', field.slice(1)].join('');
+
+        const fieldValues: IFieldValue[] = await this.props.queryTrigger.getFieldValues(parsedField);
+        const fieldValuesItems: IItemBoxProps[] = [];
+        _.forEach(fieldValues, (fieldValue: IFieldValue) => {
+            const getItemBox: IItemBoxProps = {value: fieldValue.value};
+            fieldValuesItems.push(getItemBox);
+        });
+        return fieldValuesItems;
     }
 
     render() {
@@ -27,8 +57,7 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
             <span>
                 <MultiSelectWithFilter
                     id={`${this.props.expressionEditorId}-${fieldValueSelectId}`}
-                    items={this.props.fieldValueItems}
-                    // items={mock}
+                    items={this.state.fieldValueItems}
                     placeholder={'Select field value'}
                 />
             </span>

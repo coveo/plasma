@@ -2,12 +2,12 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {Button} from '../../button/Button';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
+import { AddRuleSelect } from '../addRuleSelect/AddRuleSelect';
 import {FieldSelect} from '../fieldSelect/FieldSelect';
 import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
-import {ValueSelect} from '../valueSelect/ValueSelect';
+import { ValueSelectConnected } from '../valueSelect/ValueSelectConnected';
 // import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 
 export enum OriginalFieldType {
@@ -31,8 +31,6 @@ export interface IExpressionEditorOwnProps {
 }
 
 export interface IExpressionEditorOwnState {
-     // TODO maybe do not pass it as a props... to review
-    fieldValueItems: IItemBoxProps[];
 }
 
 export interface IExpressionEditorStateProps {
@@ -54,9 +52,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
 
     constructor(props: IExpressionEditorProps) {
         super(props);
-        this.state = {
-            fieldValueItems: [],
-        };
+        this.state = { };
         this.fields = [];
     }
 
@@ -66,11 +62,13 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     componentWillReceiveProps(nextProps: IExpressionEditorProps) {
+        // console.log(nextProps.selectedFieldValues)
+
         this.updateExpressionIfCompleted(nextProps);
     }
 
     private updateExpressionIfCompleted(nextProps: IExpressionEditorProps) {
-        if (!this.isExpressionComplete(nextProps)) {
+        if (!this.isNewExpressionComplete(nextProps)) {
             this.props.update('');
             return;
         }
@@ -83,9 +81,16 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         this.props.update(expression);
     }
 
-    private isExpressionComplete(nextProps: IExpressionEditorProps): boolean {
-        const isExpressionComplete: boolean = (nextProps.selectedField && nextProps.selectedOperator && nextProps.selectedFieldValues.length > 0) || false;
-        return isExpressionComplete;
+    private isNewExpressionComplete(nextProps: IExpressionEditorProps): boolean {
+        const isNewExpressionComplete: boolean = (nextProps.selectedField && nextProps.selectedOperator
+                                                  && nextProps.selectedFieldValues.length > 0) || false;
+        return isNewExpressionComplete;
+    }
+
+    private isCurrentExpressionComplete(): boolean {
+        const isCurrentExpressionComplete: boolean = (this.props.selectedField && this.props.selectedOperator
+                                                      && this.props.selectedFieldValues.length > 0) || false;
+        return isCurrentExpressionComplete;
     }
 
     private expressionHasChanged(nextProps: IExpressionEditorProps): boolean {
@@ -104,7 +109,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
 
         const expression: string = selectedField + selectedOperator + selectedFieldValues;
 
-        const sanitizedExpression: string = expression.replace(/\s/g,'');
+        const sanitizedExpression: string = expression.replace(/\s/g, '');
         return sanitizedExpression;
     }
 
@@ -128,11 +133,6 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         }
     }
 
-    // TODO : could be removed; we could just use this.setState directly
-    private updateFieldValueItems(fieldValueItems: IItemBoxProps[]) {
-        this.setState({fieldValueItems: fieldValueItems});
-    }
-
     // TODO remove if no used
     private logReduxState() {
         // console.log(ReactVaporStore.getState())
@@ -146,15 +146,18 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                     fields={this.fields}
                     expressionEditorId={this.props.id}
                     queryTrigger={this.props.queryTrigger}
-                    updateFieldValueItems={(fieldValueItems: IItemBoxProps[]) => this.updateFieldValueItems(fieldValueItems)}
                 />
                 <OperatorSelect
                     expressionEditorId={this.props.id}
                     selectedFieldType={this.getSelectedFieldType()}
                 />
-                <ValueSelect
+                <ValueSelectConnected
                     expressionEditorId={this.props.id}
-                    fieldValueItems={this.state.fieldValueItems}
+                    queryTrigger={this.props.queryTrigger}
+                />
+                <AddRuleSelect
+                    expressionEditorId={this.props.id}
+                    isCurrentExpressionComplete={this.isCurrentExpressionComplete()}
                 />
                 <Button enabled={true} name={'Log Redux State'} onClick={() => {this.logReduxState();}} />
                 {this.props.expression}

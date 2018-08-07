@@ -1,23 +1,28 @@
 
 import * as React from 'react';
-import * as _ from 'underscore';
+// import * as _ from 'underscore';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {SingleSelectWithFilter} from '../../select/SelectComponents';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
-import {IField, IFieldValue} from '../responseParser/ResponseParser';
+import {IField} from '../responseParser/ResponseParser';
+
+const mockFields: IItemBoxProps[] = [{value: '@filetype'}, {value: '@language'}];
 
 export const fieldSelectId: string = 'field-select';
 
 export interface IFieldSelectProps {
     fields: IField[];
     expressionEditorId: string;
+    // TODO remove if not used
     queryTrigger: QueryTrigger;
-    updateFieldValueItems: (fieldValueItems: IItemBoxProps[]) => void;
 }
 
 export interface IFieldSelectState {
 
 }
+
+// TODO this component should dispatch what type of field hase been selected; No need of reducer (no redux state needs to be held)
+// Hte problem we need to have acces to the fiedls object
 
 export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelectState> {
 
@@ -26,36 +31,14 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
         super(props);
     }
 
-    private getFieldsItems(): IItemBoxProps[] {
-        const fieldsItems: IItemBoxProps[] = [];
-        _.forEach(this.props.fields, (field: IField) => {
-            const getItemBox: IItemBoxProps = {value: field.name};
-            fieldsItems.push(getItemBox);
-        });
-        return fieldsItems;
-    }
-
-    private async fieldOnSelect(field: string) {
-        await this.updateFieldValues(field);
-    }
-
-    private async updateFieldValues(field: string) {
-        const newFieldValuesItems: IItemBoxProps[] = await this.getFieldValuesItems(field);
-        this.props.updateFieldValueItems(newFieldValuesItems);
-    }
-
-    private async getFieldValuesItems(field: string): Promise<IItemBoxProps[]> {
-        // TODO use the expressionParser
-        const parsedField = [field.slice(0, 1), 'sys', field.slice(1)].join('');
-
-        const fieldValues: IFieldValue[] = await this.props.queryTrigger.getFieldValues(parsedField);
-        const fieldValuesItems: IItemBoxProps[] = [];
-        _.forEach(fieldValues, (fieldValue: IFieldValue) => {
-            const getItemBox: IItemBoxProps = {value: fieldValue.value};
-            fieldValuesItems.push(getItemBox);
-        });
-        return fieldValuesItems;
-    }
+    // private getFieldsItems(): IItemBoxProps[] {
+    //     const fieldsItems: IItemBoxProps[] = [];
+    //     _.forEach(this.props.fields, (field: IField) => {
+    //         const getItemBox: IItemBoxProps = {value: field.name};
+    //         fieldsItems.push(getItemBox);
+    //     });
+    //     return fieldsItems;
+    // }
 
     render() {
         return (
@@ -63,9 +46,9 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
                 {/* TODO : if we want the infinite scroll we need to use dropdownSearchConnected */}
                 <SingleSelectWithFilter
                     id={`${this.props.expressionEditorId}-${fieldSelectId}`}
-                    items={this.getFieldsItems()}
+                    // items={this.getFieldsItems()}
+                    items={mockFields}
                     placeholder={'Select field'}
-                    onSelectOptionCallback={(field: string) => this.fieldOnSelect(field)}
                 />
             </span>
         );
