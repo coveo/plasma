@@ -67,7 +67,7 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
                 {/* TODO : Move back the Form Mode after the BuildFromResult */}
                 <TabNavigation>
                     <TabConnected id={TAB_BUILD_FROM_RESULT_ID} title='Build From Result' />
-                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />    
+                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
                     <TabConnected id={TAB_ADVANCED_MODE_ID} title='Advanced Mode' />
                     <TabConnected id={TAB_OUTPUT_MODE_ID} title='Output' />
                 </TabNavigation>

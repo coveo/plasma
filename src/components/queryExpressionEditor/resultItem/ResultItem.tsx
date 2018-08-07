@@ -47,7 +47,7 @@ export class ResultItem extends React.Component<IResultItemProps> {
                 {/* Il faut ajouter un prop dans 2 class pour afficher la radio ou non
                     Avec cette logique c'est lent sélectionner ... */}
                 <div className='form-group'>
-                    {this.props.isSelectable ? this.getSelectableResultItem(): this.getResultItem()}
+                    {this.props.isSelectable ? this.getSelectableResultItem() : this.getResultItem()}
                 </div>
             </div>
         );

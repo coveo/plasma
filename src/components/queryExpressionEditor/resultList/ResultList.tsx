@@ -45,8 +45,9 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
     private getResultsItems(): IItemBoxProps[] {
         const items: IItemBoxProps[] = [];
         _.forEach(this.props.results, (result: IResult) => {
-            const getAppend: IContentProps = {content: () => 
-                <ResultItem result={result} isSelectable={this.props.isSelectable} selectedResult={this.state.selectedResult} />
+            const getAppend: IContentProps = {
+                content: () =>
+                    <ResultItem result={result} isSelectable={this.props.isSelectable} selectedResult={this.state.selectedResult} />,
             };
             const getItemBox: IItemBoxProps = {value: result.uniqueID, displayValue: ' ', append: getAppend};
             items.push(getItemBox);
