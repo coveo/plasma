@@ -72,9 +72,9 @@ export class TextArea extends React.Component<ITextAreaProps, {}> {
     }
 
     render() {
-        const TextareaEl: any = this.props.isAutosize ? TextareaAutosize : 'textarea';
+        const TextareaTagName: any = this.props.isAutosize ? TextareaAutosize : 'textarea';
         return (
-            <TextareaEl
+            <TextareaTagName
                 {...this.props.additionalAttributes}
                 id={this.props.id}
                 disabled={this.props.disabled}
