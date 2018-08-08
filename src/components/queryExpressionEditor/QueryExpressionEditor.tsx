@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as styles from './QueryExpressionEditor.scss';
 import {Editors} from './editors/Editors';
 import {Preview} from './preview/Preview';
+import * as styles from './QueryExpressionEditor.scss';
 import {QueryTrigger} from './queryTrigger/QueryTrigger';
 
 export interface IQueryExpressionEditorProps {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as styles from './Editors.scss';
 import {TabConnected} from '../../tab/TabConnected';
 import {TabContent} from '../../tab/TabContent';
 import {TabNavigation} from '../../tab/TabNavigation';
@@ -8,6 +7,7 @@ import {AdvancedMode} from '../advancedMode/AdvancedMode';
 import {BuildFromResult} from '../buildFromResult/BuildFromResult';
 import {FormMode} from '../formMode/FormMode';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import * as styles from './Editors.scss';
 
 export interface IEditorsProps {
     queryTrigger: QueryTrigger;
