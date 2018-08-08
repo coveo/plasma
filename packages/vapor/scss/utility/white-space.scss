@@ -102,3 +102,13 @@
   padding-top: $form-top-padding;
   padding-bottom: $form-bottom-padding;
 }
+
+.input, .textarea {
+  .initial-padding {
+    padding: 0;
+  }
+
+  .initial-margin {
+    margin: 0;
+  }
+}
