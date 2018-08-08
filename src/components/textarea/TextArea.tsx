@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
 
@@ -24,6 +25,8 @@ export interface ITextAreaOwnProps {
     disabledOnMount?: boolean;
 
     isAutosize?: boolean;
+
+    onChangeCallback?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export interface ITextAreaStateProps {
@@ -80,9 +83,14 @@ export class TextArea extends React.Component<ITextAreaProps, {}> {
                 disabled={this.props.disabled}
                 className={this.props.className}
                 value={this.props.value}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.props.onChange(e)}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.handleOnChange(e)}
             />
         );
+    }
+
+    private handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+        callIfDefined(this.props.onChange, e);
+        callIfDefined(this.props.onChangeCallback, e);
     }
 }
 
