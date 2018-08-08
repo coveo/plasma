@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as styles from './Editors.scss';
-import { QueryTrigger } from '../queryTrigger/QueryTrigger';
-import { TabNavigation } from '../../tab/TabNavigation';
-import { TabConnected } from '../../tab/TabConnected';
-import { TabContent } from '../../tab/TabContent';
-import { TabPaneConnected } from '../../tab/TabPaneConnected';
-import { BuildFromResult } from '../buildFromResult/BuildFromResult';
-import { FormMode } from '../formMode/FormMode';
-import { AdvancedMode } from '../advancedMode/AdvancedMode';
+import {TabConnected} from '../../tab/TabConnected';
+import {TabContent} from '../../tab/TabContent';
+import {TabNavigation} from '../../tab/TabNavigation';
+import {TabPaneConnected} from '../../tab/TabPaneConnected';
+import {AdvancedMode} from '../advancedMode/AdvancedMode';
+import {BuildFromResult} from '../buildFromResult/BuildFromResult';
+import {FormMode} from '../formMode/FormMode';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 
 export interface IEditorsProps {
     queryTrigger: QueryTrigger;
@@ -20,7 +20,7 @@ const TAB_FORM_MODE_ID = 'tabFormMode';
 const TAB_ADVANCED_MODE_ID = 'tabAdvancedMode';
 
 export class Editors extends React.Component<IEditorsProps> {
-    // TODO : is it good to have a component with just a render method ... probably not ... 
+    // TODO : is it good to have a component with just a render method ... probably not ...
     // TODO : remove if not needed
     constructor(props: IEditorsProps) {
         super(props);
@@ -29,7 +29,7 @@ export class Editors extends React.Component<IEditorsProps> {
 
         return (
             <div className={styles.editorsContainer}>
-                
+
                 {/* TODO : Remove MODE from all the names?  */}
                 {/* TODO : Move back the Form Mode after the BuildFromResult */}
 

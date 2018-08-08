@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as styles from './QueryExpressionEditor.scss';
+import {Editors} from './editors/Editors';
+import {Preview} from './preview/Preview';
 import {QueryTrigger} from './queryTrigger/QueryTrigger';
-import { Editors } from './editors/Editors';
-import { Preview } from './preview/Preview';
 
 export interface IQueryExpressionEditorProps {
     accessToken: string;
@@ -46,22 +46,22 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
     render() {
         return (
             <div className={styles.container}>
-                <div className={styles.leftContainer}> 
-                <br /><br /><br />
+                <div className={styles.leftContainer}>
+                    <br /><br /><br />
                     <label className='form-control-label'> Query Expression Builder </label> <br /><br />
                     <div>
                         <span> Current query expression : </span>
                         <span> {this.state.queryExpression} </span> <br /><br /><br />
                     </div>
 
-                    <Editors 
+                    <Editors
                         queryTrigger={this.queryTrigger}
                         queryExpression={this.state.queryExpression}
                         updateQueryExpression={this.updateQueryExpression}
-                    />  
+                    />
                 </div>
 
-                <div className={styles.rightContainer}> 
+                <div className={styles.rightContainer}>
                     <Preview
                         queryTrigger={this.queryTrigger}
                         queryExpression={this.state.queryExpression}

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as styles from './Preview.scss';
-import { QueryTrigger } from '../queryTrigger/QueryTrigger';
-import { IResult } from '../responseParser/ResponseParser';
-import { Button } from '../../button/Button';
-import { ResultList } from '../resultList/ResultList';
+import {Button} from '../../button/Button';
+import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import {IResult} from '../responseParser/ResponseParser';
+import {ResultList} from '../resultList/ResultList';
 
 export interface IPreviewProps {
     queryTrigger: QueryTrigger;
