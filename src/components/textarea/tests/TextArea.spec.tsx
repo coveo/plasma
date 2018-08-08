@@ -68,6 +68,12 @@ describe('TextArea', () => {
             expect(textArea.prop('value')).toBe('non empty');
         });
 
+        it('should not throw if the onChange prop is not define onChange', () => {
+            wrapper.setProps({onChange: undefined});
+            expect(textArea.simulate('change')).not.toThrow();
+
+        });
+
         it('should call prop onChange on textarea change', () => {
             const onChange = jasmine.createSpy('onChange');
 
@@ -75,6 +81,15 @@ describe('TextArea', () => {
             textArea.simulate('change');
 
             expect(onChange).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call prop onChangeCallBack on textarea change', () => {
+            const onChangeCallBack = jasmine.createSpy('onChangeCallBack');
+
+            wrapper.setProps({onChangeCallBack});
+            textArea.simulate('change');
+
+            expect(onChangeCallBack).toHaveBeenCalledTimes(1);
         });
 
         it('should call prop onMount on mount', () => {

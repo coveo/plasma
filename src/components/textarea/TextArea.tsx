@@ -24,6 +24,8 @@ export interface ITextAreaOwnProps {
     disabledOnMount?: boolean;
 
     isAutosize?: boolean;
+
+    onChangeCallBack?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
 export interface ITextAreaStateProps {
@@ -80,9 +82,19 @@ export class TextArea extends React.Component<ITextAreaProps, {}> {
                 disabled={this.props.disabled}
                 className={this.props.className}
                 value={this.props.value}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.props.onChange(e)}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.handleOnChange(e)}
             />
         );
+    }
+
+    private handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+        if (this.props.onChange) {
+            this.props.onChange(e);
+        }
+
+        if (this.props.onChangeCallBack) {
+            this.props.onChangeCallBack(e);
+        }
     }
 }
 
