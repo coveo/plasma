@@ -69,12 +69,15 @@ describe('TextArea', () => {
         });
 
         it('should not throw if the onChange prop is not defined onChange', () => {
-            const handleOnChangeSpy = spyOn<any>(wrapper.instance(), 'handleOnChange');
-
             wrapper.setProps({onChange: undefined});
-            textArea.simulate('change');
 
-            expect(handleOnChangeSpy).not.toThrow();
+            expect(() => (wrapper.instance() as any).handleOnChange()).not.toThrow();
+        });
+
+        it('should not throw if the onChangeCallback prop is not defined onChange', () => {
+            wrapper.setProps({onChangeCallback: undefined});
+
+            expect(() => (wrapper.instance() as any).handleOnChange()).not.toThrow();
         });
 
         it('should call prop onChange on textarea change', () => {
@@ -86,13 +89,13 @@ describe('TextArea', () => {
             expect(onChange).toHaveBeenCalledTimes(1);
         });
 
-        it('should call prop onChangeCallBack on textarea change', () => {
-            const onChangeCallBack = jasmine.createSpy('onChangeCallBack');
+        it('should call prop onChangeCallback on textarea change', () => {
+            const onChangeCallback = jasmine.createSpy('onChangeCallback');
 
-            wrapper.setProps({onChangeCallBack});
+            wrapper.setProps({onChangeCallback});
             textArea.simulate('change');
 
-            expect(onChangeCallBack).toHaveBeenCalledTimes(1);
+            expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });
 
         it('should call prop onMount on mount', () => {
