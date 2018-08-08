@@ -49,3 +49,8 @@ input[type='text'], textarea {
     border-radius: 0 2px 2px 0;
   }
 }
+
+.textarea.textarea-autosize {
+  width: 100%;
+  resize: none;
+}
