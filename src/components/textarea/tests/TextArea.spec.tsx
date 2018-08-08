@@ -68,6 +68,15 @@ describe('TextArea', () => {
             expect(textArea.prop('value')).toBe('non empty');
         });
 
+        it('should not throw if the onChange prop is not defined onChange', () => {
+            const handleOnChangeSpy = spyOn<any>(wrapper.instance(), 'handleOnChange');
+
+            wrapper.setProps({onChange: undefined});
+            textArea.simulate('change');
+
+            expect(handleOnChangeSpy).not.toThrow();
+        });
+
         it('should call prop onChange on textarea change', () => {
             const onChange = jasmine.createSpy('onChange');
 

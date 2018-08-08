@@ -25,7 +25,7 @@ export interface ITextAreaOwnProps {
 
     isAutosize?: boolean;
 
-    onChangeCallBack?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+    onChangeCallBack?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export interface ITextAreaStateProps {
