@@ -65,7 +65,7 @@ export class ListBoxExamples extends React.Component {
                 <div className='form-group'>
                     <label className='form-control-label'>List Box with an onClick event on the last element</label>
                     <div className='form-control'>
-                        <ListBox items={clickableItems}/>
+                        <ListBox items={clickableItems} />
                     </div>
                 </div>
                 <div className='form-group'>

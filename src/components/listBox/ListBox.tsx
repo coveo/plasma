@@ -2,8 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {mod} from '../../utils/DataStructuresUtils';
-import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
 export interface IListBoxOwnProps {
     items: IItemBoxProps[];
