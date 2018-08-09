@@ -88,6 +88,39 @@ describe('<TableChildBody />', () => {
             expect(component.find('td.new-class')).toBeDefined();
         });
 
+        it('should trigger an onClick event on click cell element', () => {
+            const spy = jasmine.createSpy('onclickcell');
+
+            const component = mountComponentWithProps({
+                ...tableChildBodyProps,
+                headingAttributes: [{...tableChildBodyProps.headingAttributes[0],
+                    onClickCell: {
+                        callBack: spy,
+                    },
+                }],
+            });
+
+            component.find('td').simulate('click');
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('should not trigger an onClick event on click cell element', () => {
+            const spy = jasmine.createSpy('onclickcell');
+
+            const component = mountComponentWithProps({
+                ...tableChildBodyProps,
+                headingAttributes: [{...tableChildBodyProps.headingAttributes[0],
+                    onClickCell: {
+                        callBack: spy,
+                        condition: () => false,
+                    },
+                }],
+            });
+
+            component.find('td').simulate('click');
+            expect(spy).not.toHaveBeenCalled();
+        });
+
         it('should not render a <TableCollapsibleRowWrapper /> if the prop collapsibleFormatter is not defined', () => {
             expect(mountComponentWithProps().find(TableCollapsibleRowWrapper).length).toBe(0);
         });
