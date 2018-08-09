@@ -93,7 +93,8 @@ describe('<TableChildBody />', () => {
 
             const component = mountComponentWithProps({
                 ...tableChildBodyProps,
-                headingAttributes: [{...tableChildBodyProps.headingAttributes[0],
+                headingAttributes: [{
+                    ...tableChildBodyProps.headingAttributes[0],
                     onClickCell: {
                         callBack: spy,
                     },
@@ -109,7 +110,8 @@ describe('<TableChildBody />', () => {
 
             const component = mountComponentWithProps({
                 ...tableChildBodyProps,
-                headingAttributes: [{...tableChildBodyProps.headingAttributes[0],
+                headingAttributes: [{
+                    ...tableChildBodyProps.headingAttributes[0],
                     onClickCell: {
                         callBack: spy,
                         condition: () => false,
