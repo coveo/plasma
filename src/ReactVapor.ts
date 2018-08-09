@@ -116,4 +116,5 @@ export interface IReduxActionsPayload {
     searching?: boolean;
     yPosition?: number;
     expression?: string;
+    booleanOperator?: string;
 }

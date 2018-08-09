@@ -4,8 +4,9 @@ import {ExpressionEditorActions, IExpressionEditorActionPayload} from './Express
 
 export interface IExpressionEditorState {
     id: string;
-    expression?: string;
     // disabled: boolean;
+    expression?: string;
+    booleanOperator?: string;
 }
 
 export const expressionEditorState: IExpressionEditorState = {id: 'initid', expression: 'initial'};
@@ -15,40 +16,42 @@ export const expressionEditorReducer = (
     state: IExpressionEditorState = expressionEditorState,
     action: IReduxAction<IExpressionEditorActionPayload>,
 ): IExpressionEditorState => {
-    // TODO : add this part when the add/remove will be implemented
-    // if (state.id !== action.payload.id) {
-    //     return state;
-    // }
-
     switch (action.type) {
         case ExpressionEditorActions.update:
             return {
                 ...state,
                 id: action.payload.id,
                 expression: action.payload.expression,
+                booleanOperator: action.payload.booleanOperator,
             };
         default:
             return state;
     }
 };
 
-// TODO le reducer est tout croche il faudrait l'arranger quand je vais faire l'ajout des expressions editor
 export const expressionEditorsReducer = (
     state: IExpressionEditorState[] = expressionEditorsInitialState,
     action: IReduxAction<IExpressionEditorActionPayload>,
 ): IExpressionEditorState[] => {
     switch (action.type) {
         case ExpressionEditorActions.update:
-            // TODO : Remove when the add/remove will have been implemented
             const expressionEditor: IExpressionEditorState = _.findWhere(state, {id: action.payload.id});
-
             if (expressionEditor == null) {
                 return [
                     ...state,
                     expressionEditorReducer(undefined, action),
                 ];
+            } else {
+                return state.map((editor: IExpressionEditorState) => {
+                    return editor.id === action.payload.id
+                        ? expressionEditorReducer(editor, action)
+                        : editor;
+                });
             }
-            return state.map((expressionEditors: IExpressionEditorState) => expressionEditorReducer(expressionEditors, action));
+        case ExpressionEditorActions.remove:
+            return _.reject(state, (editor: IExpressionEditorState) => {
+                return action.payload.id === editor.id;
+            });
         default:
             return state;
     }

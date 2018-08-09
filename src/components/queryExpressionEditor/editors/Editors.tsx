@@ -5,7 +5,7 @@ import {TabNavigation} from '../../tab/TabNavigation';
 import {TabPaneConnected} from '../../tab/TabPaneConnected';
 import {AdvancedMode} from '../advancedMode/AdvancedMode';
 import {BuildFromResult} from '../buildFromResult/BuildFromResult';
-import {FormMode} from '../formMode/FormMode';
+import { FormModeConnected } from '../formMode/FormModeConnected';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import * as styles from './Editors.scss';
 
@@ -32,10 +32,9 @@ export class Editors extends React.Component<IEditorsProps> {
 
                 {/* TODO : Remove MODE from all the names?  */}
                 {/* TODO : Move back the Form Mode after the BuildFromResult */}
-
                 <TabNavigation>
-                    <TabConnected id={TAB_BUILD_FROM_RESULT_ID} title='Build From Result' />
                     <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
+                    <TabConnected id={TAB_BUILD_FROM_RESULT_ID} title='Build From Result' />
                     <TabConnected id={TAB_ADVANCED_MODE_ID} title='Advanced Mode' />
                 </TabNavigation>
                 <TabContent>
@@ -46,7 +45,7 @@ export class Editors extends React.Component<IEditorsProps> {
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_FORM_MODE_ID}>
                         <div className='mod-header-padding mod-form-top-bottom-padding'>
-                            <FormMode queryTrigger={this.props.queryTrigger} updateQueryExpression={this.props.updateQueryExpression} />
+                            <FormModeConnected queryTrigger={this.props.queryTrigger} updateQueryExpression={this.props.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_ADVANCED_MODE_ID}>

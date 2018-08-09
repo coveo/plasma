@@ -2,13 +2,12 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {Button} from '../../button/Button';
-import {AddRuleSelect} from '../addRuleSelect/AddRuleSelect';
+import {BooleanOperatorSelect} from '../booleanOperatorSelect/BooleanOperatorSelect';
 import {FieldSelect} from '../fieldSelect/FieldSelect';
 import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import {ValueSelectConnected} from '../valueSelect/ValueSelectConnected';
-// import { ReactVaporStore } from '../../../../docs/ReactVaporStore';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',
@@ -29,6 +28,9 @@ export interface IExpressionEditorOwnProps {
     fields: IField[];
     queryTrigger: QueryTrigger;
     updateQueryExpression: (expression: string) => void;
+    addExpressionEditor: () => void;
+    deleteExpressionEditor: (id: string) => void;
+    ensureLastEditorCanAddRule: () => void;
 }
 
 export interface IExpressionEditorOwnState {
@@ -36,7 +38,8 @@ export interface IExpressionEditorOwnState {
 }
 
 export interface IExpressionEditorStateProps {
-    expression?: string;
+    expression?: string; // TODO : this will not be needed I think
+    booleanOperator?: string; // TODO : this will not be needed I think
     selectedField?: string;
     selectedOperator?: string;
     // TODO : Make an interface to regroup all the type of values and all the selector that could exists
@@ -44,7 +47,8 @@ export interface IExpressionEditorStateProps {
 }
 
 export interface IExpressionEditorDispatchProps {
-    update?: (expression?: string) => void;
+    update?: (expression?: string, booleanOperator?: string) => void;
+    remove?: () => void;
 }
 
 export interface IExpressionEditorProps extends IExpressionEditorOwnProps, IExpressionEditorStateProps, IExpressionEditorDispatchProps {}
@@ -61,8 +65,8 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private updateExpressionIfCompleted(nextProps: IExpressionEditorProps) {
-        if (!this.isNewExpressionComplete(nextProps)) {
-            this.props.update('');
+        if (!this.isExpressionComplete(nextProps) || this.selectedFieldHasChange(nextProps)) {
+            this.props.update('', undefined);
             return;
         }
 
@@ -71,19 +75,17 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         }
 
         const expression: string = this.getExpression(nextProps);
-        this.props.update(expression);
+        this.props.update(expression, this.props.booleanOperator);
     }
 
-    private isNewExpressionComplete(nextProps: IExpressionEditorProps): boolean {
-        const isNewExpressionComplete: boolean = (nextProps.selectedField && nextProps.selectedOperator
-            && nextProps.selectedFieldValues.length > 0) || false;
+    private isExpressionComplete(props: IExpressionEditorProps): boolean {
+        const isNewExpressionComplete: boolean = (props.selectedField && props.selectedOperator
+            && props.selectedFieldValues.length > 0) || false;
         return isNewExpressionComplete;
     }
 
-    private isCurrentExpressionComplete(): boolean {
-        const isCurrentExpressionComplete: boolean = (this.props.selectedField && this.props.selectedOperator
-            && this.props.selectedFieldValues.length > 0) || false;
-        return isCurrentExpressionComplete;
+    private selectedFieldHasChange(newProps: IExpressionEditorProps): boolean {
+        return this.props.selectedField !== newProps.selectedField;
     }
 
     private expressionHasChanged(nextProps: IExpressionEditorProps): boolean {
@@ -129,10 +131,19 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         }
     }
 
-    // TODO remove if no used
-    private logReduxState() {
-        // console.log(ReactVaporStore.getState())
-        // console.log(ReactVaporStore.getState().expressionEditors)
+    private deleteExpressionEditor() {
+        this.props.ensureLastEditorCanAddRule();
+        this.props.remove();
+        this.props.deleteExpressionEditor(this.props.id);
+    }
+
+    private onBooleanOperatorSelect(selectedBooleanOperator: string) {
+
+        if (!this.props.booleanOperator) {
+            this.props.addExpressionEditor();
+        }
+
+        this.props.update(this.props.expression, selectedBooleanOperator);
     }
 
     render() {
@@ -152,11 +163,12 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                     queryTrigger={this.props.queryTrigger}
                     selectedFieldType={this.state.selectedFieldType}
                 />
-                <AddRuleSelect
+                <BooleanOperatorSelect
                     expressionEditorId={this.props.id}
-                    isCurrentExpressionComplete={this.isCurrentExpressionComplete()}
+                    isCurrentExpressionComplete={this.isExpressionComplete(this.props)}
+                    onBooleanOperatorSelect={(selectedBooleanOperator) => this.onBooleanOperatorSelect(selectedBooleanOperator)}
                 />
-                <Button enabled={true} name={'Log Redux State'} onClick={() => {this.logReduxState();}} />
+                <Button enabled={true} name={'Delete'} onClick={() => this.deleteExpressionEditor()} />
                 {this.props.expression}
             </div>
         );

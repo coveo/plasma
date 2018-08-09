@@ -8,7 +8,7 @@ import {fieldSelectId} from '../fieldSelect/FieldSelect';
 import {operatorSelectId} from '../operatorSelect/OperatorSelect';
 import {fieldValueSelectId} from '../valueSelect/ValueSelect';
 import {ExpressionEditor, IExpressionEditorDispatchProps, IExpressionEditorOwnProps, IExpressionEditorProps, IExpressionEditorStateProps} from './ExpressionEditor';
-import {updateExpressionEditor} from './ExpressionEditorActions';
+import {removeExpressionEditor, updateExpressionEditor} from './ExpressionEditorActions';
 import {IExpressionEditorState} from './ExpressionEditorReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IExpressionEditorOwnProps): IExpressionEditorStateProps => {
@@ -19,6 +19,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IExpressionEditorOwn
 
     return {
         expression: expressionEditor && expressionEditor.expression ? expressionEditor.expression : undefined,
+        booleanOperator: expressionEditor && expressionEditor.booleanOperator ? expressionEditor.booleanOperator : undefined,
         selectedOperator: operatorSelect && operatorSelect.selected ? operatorSelect.selected[0] : undefined,
         selectedField: fieldSelect && fieldSelect.selected ? fieldSelect.selected[0] : undefined,
         selectedFieldValues: fieldValuesSelect && fieldValuesSelect.selected ? fieldValuesSelect.selected : undefined,
@@ -27,7 +28,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IExpressionEditorOwn
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<ICheckboxActionPayload>) => void, ownProps: IExpressionEditorOwnProps): IExpressionEditorDispatchProps => {
     return {
-        update: (expression: string) => dispatch(updateExpressionEditor(ownProps.id, expression)),
+        update: (expression: string, booleanOperator: string) => dispatch(updateExpressionEditor(ownProps.id, expression, booleanOperator)),
+        remove: () => dispatch(removeExpressionEditor(ownProps.id)),
     };
 };
 
