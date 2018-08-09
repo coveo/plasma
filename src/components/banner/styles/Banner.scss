@@ -1,0 +1,94 @@
+.banner {
+    background: linear-gradient(45deg, #1E253F 0%, #1E2743 8.62%, #1D2B4C 16.56%, #1C3059 23.93%, #1B3666 30.85%, #193D74 37.42%, #174382 43.77%, #15498F 50%, #134F9B 56.23%, #1054A5 62.58%, #0D58AE 69.15%, #0A5CB6 76.07%, #075FBB 83.44%, #0460BF 91.38%, #0061C0 100%);
+    box-shadow: inset 0 5px 10px 0 rgba(0,0,0,0.1), inset 0 -10px 50px 0 rgba(0,0,0,0.2);
+    padding: 25px 40px;
+    height: 300px;
+    box-sizing: border-box;
+    position: relative;
+
+    button {
+        background: #19B5EA;
+        color: white;
+        display: inline-block;
+        border-radius: 2px;
+        text-transform: uppercase;
+        padding: 8px 25px;
+        border: none;
+        font-size: 12px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:global(.primary) {
+            background-color: #F58020;
+            border: none;
+        }
+    }
+}
+
+.bannerTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bannerName {
+    font-size: 12px;
+    color: white;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+.bannerSubtitle {
+    color: white;
+    font-size: 24px;
+}
+
+.bannerMain {
+    position: absolute;
+    bottom: 0;
+    height: 165px;
+    color: white;
+    width: 100%;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+
+.bannerTitle {
+    font-size: 32px;
+}
+
+.bannerWarningTitle {
+    color: #FFDF00;
+    position: relative;
+}
+
+.bannerErrorTitle {
+    color: #ce3f00;
+}
+
+.bannerWarningIcon {
+    fill: #FFDF00;
+    position: relative;
+    top: 2px;
+
+    .bannerErrorTitle & {
+        fill: #ce3f00;
+    }
+}
+
+.bannerDescription {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bannerRight {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bannerBottomRightInfos {
+    max-width: 300px;
+    display: inline;
+}
