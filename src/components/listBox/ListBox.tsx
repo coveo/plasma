@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {mod} from '../../utils/DataStructuresUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 
 export interface IListBoxOwnProps {
     items: IItemBoxProps[];
@@ -69,7 +70,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
             .map((item: IItemBoxProps) => <ItemBox
                 key={item.value}
                 {...item}
-                onOptionClick={(option: IItemBoxProps) => this.onSelectItem(option)}
+                onOptionClick={(option: IItemBoxProps) => this.onSelectItem(option, item)}
                 selected={_.contains(this.props.selected, item.value)}
                 highlight={this.props.highlight}
             />)
@@ -88,9 +89,10 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         );
     }
 
-    private onSelectItem(option: IItemBoxProps) {
-        if (this.props.onOptionClick && !option.disabled) {
-            this.props.onOptionClick(option);
+    private onSelectItem(option: IItemBoxProps, item: IItemBoxProps) {
+        if (!option.disabled) {
+            callIfDefined(this.props.onOptionClick, option);
+            callIfDefined(item.onOptionClick, option);
         }
     }
 }
