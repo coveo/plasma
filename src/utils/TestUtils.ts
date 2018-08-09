@@ -133,3 +133,7 @@ export const defaultTooltipProps: ITooltipProps = {
     placement: 'bottom',
     container: 'body',
 };
+
+export const triggerAlertFunction = () => {
+    alert(`Alert function triggered`);
+};

@@ -72,6 +72,22 @@ describe('<TableChildBody />', () => {
             expect(() => mountComponentWithProps()).not.toThrow();
         });
 
+        it('should add additional classes on the cell element for each row', () => {
+            const component = mountComponentWithProps({
+                ...tableChildBodyProps,
+                headingAttributes: [{
+                    attributeName: 'email',
+                    titleFormatter: _.identity,
+                    attributeFormatter: _.escape,
+                    filterFormatter: _.identity,
+                    additionalCellClasses: [{
+                        className: 'new-class',
+                    }],
+                }],
+            });
+            expect(component.find('td.new-class')).toBeDefined();
+        });
+
         it('should not render a <TableCollapsibleRowWrapper /> if the prop collapsibleFormatter is not defined', () => {
             expect(mountComponentWithProps().find(TableCollapsibleRowWrapper).length).toBe(0);
         });
