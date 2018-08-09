@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import {Button} from '../../button/Button';
 // import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
-import { IExpressionEditorState } from '../expressionEditor/ExpressionEditorReducers';
+import {IExpressionEditorState} from '../expressionEditor/ExpressionEditorReducers';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 // import { selectListBoxOption } from '../../listBox/ListBoxActions';
@@ -40,9 +40,9 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
     }
 
     componentWillReceiveProps(nextProps: IFormModeProps) {
-    // update le state courant avec toutes les expressions
-    // const finalExpression: string = this.getExpression(nextProps);
-    // this.setState({finalExpression: expression});
+        // update le state courant avec toutes les expressions
+        // const finalExpression: string = this.getExpression(nextProps);
+        // this.setState({finalExpression: expression});
         const finaleExpression = this.getFinalExpression(nextProps);
         this.props.updateQueryExpression(finaleExpression);
     }

@@ -5,7 +5,7 @@ import {TabNavigation} from '../../tab/TabNavigation';
 import {TabPaneConnected} from '../../tab/TabPaneConnected';
 import {AdvancedMode} from '../advancedMode/AdvancedMode';
 import {BuildFromResult} from '../buildFromResult/BuildFromResult';
-import { FormModeConnected } from '../formMode/FormModeConnected';
+import {FormModeConnected} from '../formMode/FormModeConnected';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import * as styles from './Editors.scss';
 
