@@ -94,6 +94,10 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
         // ReactVaporStore.dispatch(selectListBoxOption(`${lastEditorId}-${booleanOperatorSelectId}`, false, undefined));
     }
 
+    // private isExpressionEditorAlone() {
+    //     return this.state.expressionEditors.length === 1;
+    // }
+
     private deleteExpressionEditor(id: string) {
         const updatedExpressionEditors = this.state.expressionEditors;
         const index = updatedExpressionEditors.findIndex((editor) => {

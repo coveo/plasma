@@ -16,10 +16,12 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IExpressionEditorOwn
     const operatorSelect: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.id}-${operatorSelectId}`});
     const fieldSelect: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.id}-${fieldSelectId}`});
     const fieldValuesSelect: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.id}-${fieldValueSelectId}`});
+    const expressionEditors: IExpressionEditorState[] = state.expressionEditors && state.expressionEditors;
 
     return {
         expression: expressionEditor && expressionEditor.expression ? expressionEditor.expression : undefined,
         booleanOperator: expressionEditor && expressionEditor.booleanOperator ? expressionEditor.booleanOperator : undefined,
+        isExpressionEditorAlone: expressionEditors && expressionEditors.length ? expressionEditors.length === 1 : undefined,
         selectedOperator: operatorSelect && operatorSelect.selected ? operatorSelect.selected[0] : undefined,
         selectedField: fieldSelect && fieldSelect.selected ? fieldSelect.selected[0] : undefined,
         selectedFieldValues: fieldValuesSelect && fieldValuesSelect.selected ? fieldValuesSelect.selected : undefined,

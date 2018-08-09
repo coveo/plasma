@@ -38,8 +38,9 @@ export interface IExpressionEditorOwnState {
 }
 
 export interface IExpressionEditorStateProps {
-    expression?: string; // TODO : this will not be needed I think
-    booleanOperator?: string; // TODO : this will not be needed I think
+    expression?: string;
+    booleanOperator?: string;
+    isExpressionEditorAlone?: boolean;
     selectedField?: string;
     selectedOperator?: string;
     // TODO : Make an interface to regroup all the type of values and all the selector that could exists
@@ -138,7 +139,6 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private onBooleanOperatorSelect(selectedBooleanOperator: string) {
-
         if (!this.props.booleanOperator) {
             this.props.addExpressionEditor();
         }
@@ -168,7 +168,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                     isCurrentExpressionComplete={this.isExpressionComplete(this.props)}
                     onBooleanOperatorSelect={(selectedBooleanOperator) => this.onBooleanOperatorSelect(selectedBooleanOperator)}
                 />
-                <Button enabled={true} name={'Delete'} onClick={() => this.deleteExpressionEditor()} />
+                <Button enabled={!this.props.isExpressionEditorAlone} name={'Delete'} onClick={() => this.deleteExpressionEditor()} />
                 {this.props.expression}
             </div>
         );
