@@ -117,7 +117,7 @@
       padding-left: 10px;
     }
 
-    &:not(.no-hover):not(.collapsible-row):hover td {
+    &:not(.no-hover):not(.collapsible-row):not(.empty):hover td {
       background-color: $light-grey;
     }
 
