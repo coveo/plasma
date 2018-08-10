@@ -8,27 +8,6 @@
     height: $banner-height;
     box-sizing: border-box;
     position: relative;
-
-    button {
-        background: $picton-blue;
-        color: $pure-white;
-        display: inline-block;
-        border-radius: $border-radius;
-        text-transform: uppercase;
-        padding: $button-padding-y $button-padding-x;
-        border: none;
-        font-size: $button-font-size;
-        cursor: pointer;
-
-        &:hover {
-            opacity: $transparency-2;
-        }
-
-        &:global(.primary) {
-            background-color: $orange;
-            border: none;
-        }
-    }
 }
 
 .bannerName {

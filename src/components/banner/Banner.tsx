@@ -9,7 +9,6 @@ export interface BannerProps {
     name: string;
     nameSubtitle?: string;
     messageTitle?: string;
-    messageDescription?: React.ReactNode;
     messageState?: string;
     alignCenter?: boolean;
     topRightInfos?: React.ReactNode;
@@ -52,7 +51,7 @@ export class Banner extends React.PureComponent<BannerProps> {
                 </div>
                 <div className={mainClasses}>
                     {this.props.messageTitle && <h3 className={titleClasses}>{this.getTitleSvg()}{this.props.messageTitle}</h3>}
-                    {this.props.messageDescription && <div className={styles.bannerDescription}>{this.props.messageDescription}</div>}
+                    {this.props.children && <div className={styles.bannerDescription}>{this.props.children}</div>}
                 </div>
                 {this.props.bottomRightInfos && <div className={classNames(styles.bannerRight, 'right-align')}>
                     <div className={styles.bannerBottomRightInfos}>{this.props.bottomRightInfos}</div>

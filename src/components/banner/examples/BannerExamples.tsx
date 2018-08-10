@@ -14,15 +14,12 @@ export class BannerExamples extends React.Component {
                             name='Page Name'
                             nameSubtitle='Section name'
                             messageTitle='This is the new page'
-                            messageDescription={
-                                <div>
-                                    <div>You should find all the information you need here</div>
-                                    <button className='mt2'>Click me!</button>
-                                </div>
-                            }
                             topRightInfos={<div>More information</div>}
                             alignCenter
-                        />
+                        >
+                            <div>You should find all the information you need here</div>
+                            <button className='mt2 btn'>Click me!</button>
+                        </Banner>
                     </div>
                 </div>
                 <div className='form-group'>
@@ -33,9 +30,8 @@ export class BannerExamples extends React.Component {
                             nameSubtitle='Section name'
                             messageTitle='Look at me'
                             messageState={BannerMessageStates.Warning}
-                            messageDescription={<div>I think we should do something about it</div>}
                             alignCenter
-                        />
+                        >I think we should do something about it</Banner>
                     </div>
                 </div>
                 <div className='form-group'>
@@ -46,9 +42,8 @@ export class BannerExamples extends React.Component {
                             nameSubtitle='Section name'
                             messageTitle='You broke it'
                             messageState={BannerMessageStates.Error}
-                            messageDescription={<div>I think you're in deep trouble now. You better run.</div>}
                             alignCenter
-                        />
+                        >I think you're in deep trouble now. You better run.</Banner>
                     </div>
                 </div>
                 <div className='form-group'>
@@ -58,13 +53,12 @@ export class BannerExamples extends React.Component {
                             name='Page Name'
                             nameSubtitle='Section name'
                             messageTitle='Not centered'
-                            messageDescription={<div>Sometimes we need to give you more information.</div>}
                             topRightInfos={<div>More information</div>}
                             bottomRightInfos={[
                                 <div key='infos'>Even more information for you to enjoy</div>,
-                                <button key='button' className='primary mt2'>Here is a button</button>,
+                                <button key='button' className='mt2 btn mod-primary'>Here is a button</button>,
                             ]}
-                        />
+                        >Sometimes we need to give you more information.</Banner>
                     </div>
                 </div>
             </div>

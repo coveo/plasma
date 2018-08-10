@@ -36,7 +36,6 @@ describe('Banner', () => {
             const props: Partial<BannerProps> = {
                 nameSubtitle: 'jhdkj',
                 messageTitle: 'hsjkashk',
-                messageDescription: <div>Hello</div>,
                 messageState: 'a',
                 alignCenter: true,
                 topRightInfos: <div>Help</div>,
@@ -48,7 +47,6 @@ describe('Banner', () => {
             expect(bannerProps.name).toBe(basicProps.name);
             expect(bannerProps.nameSubtitle).toBe(props.nameSubtitle);
             expect(bannerProps.messageTitle).toBe(props.messageTitle);
-            expect(bannerProps.messageDescription).toBe(props.messageDescription);
             expect(bannerProps.messageState).toBe(props.messageState);
             expect(bannerProps.alignCenter).toBe(props.alignCenter);
             expect(bannerProps.topRightInfos).toBe(props.topRightInfos);
@@ -107,10 +105,13 @@ describe('Banner', () => {
             expect(banner.find('h3').length).toBe(1);
         });
 
-        it('should display a bannerDescription if there is a messageDescription', () => {
+        it('should display a bannerDescription if there are children', () => {
             expect(banner.find(`.${styles.bannerDescription}`).length).toBe(0);
 
-            mountWithProps({messageDescription: <div></div>});
+            banner = mount(
+                <Banner {...basicProps}>I am a child!</Banner>,
+                {attachTo: document.getElementById('App')},
+            );
 
             expect(banner.find(`.${styles.bannerDescription}`).length).toBe(1);
         });
