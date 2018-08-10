@@ -1,9 +1,9 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import * as _ from 'underscore';
 
-import * as styles from './styles/Banner.scss';
 import {Svg} from '../svg/Svg';
+import * as styles from './styles/Banner.scss';
 
 export interface BannerProps {
     name: string;
@@ -27,7 +27,7 @@ export class Banner extends React.PureComponent<BannerProps> {
         messageState: BannerMessageStates.Normal,
     };
 
-    render() {
+    render(): JSX.Element {
         const mainClasses: string = classNames(
             styles.bannerMain,
             {

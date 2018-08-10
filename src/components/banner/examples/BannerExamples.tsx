@@ -22,7 +22,7 @@ export class BannerExamples extends React.Component {
                             }
                             topRightInfos={<div>More information</div>}
                             alignCenter
-                         />
+                        />
                     </div>
                 </div>
                 <div className='form-group'>
@@ -35,7 +35,7 @@ export class BannerExamples extends React.Component {
                             messageState={BannerMessageStates.Warning}
                             messageDescription={<div>I think we should do something about it</div>}
                             alignCenter
-                         />
+                        />
                     </div>
                 </div>
                 <div className='form-group'>
@@ -48,7 +48,7 @@ export class BannerExamples extends React.Component {
                             messageState={BannerMessageStates.Error}
                             messageDescription={<div>I think you're in deep trouble now. You better run.</div>}
                             alignCenter
-                         />
+                        />
                     </div>
                 </div>
                 <div className='form-group'>
@@ -62,9 +62,9 @@ export class BannerExamples extends React.Component {
                             topRightInfos={<div>More information</div>}
                             bottomRightInfos={[
                                 <div key='infos'>Even more information for you to enjoy</div>,
-                                <button key='button' className='primary mt2'>Here is a button</button>
+                                <button key='button' className='primary mt2'>Here is a button</button>,
                             ]}
-                         />
+                        />
                     </div>
                 </div>
             </div>
