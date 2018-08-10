@@ -1,67 +1,98 @@
 
 import * as React from 'react';
-import * as _ from 'underscore';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {MultiSelectWithFilter} from '../../select/SelectComponents';
+import { SingleSelectConnected } from '../../select/SingleSelectConnected';
 import {FieldType} from '../expressionEditor/ExpressionEditor';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
-import {IFieldValue} from '../responseParser/ResponseParser';
-
-export const fieldValueSelectId: string = 'field-value-select';
+import { ValueSelectDate } from '../valueSelectDate/ValueSelectDate';
+import { ValueSelectNumber } from '../valueSelectNumber/ValueSelectNumber';
+import { ValueSelectStringConnected } from '../valueSelectString/ValueSelectStringConnected';
 
 export interface IValueSelectOwnProps {
     expressionEditorId: string;
     queryTrigger: QueryTrigger;
     selectedFieldType: FieldType;
+    updateSelectedFieldValue: (value: string) => void;
 }
 
 export interface IValueSelectOwnState {
-    fieldValueItems: IItemBoxProps[];
 }
 
 export interface IValueSelectStateProps {
-    selectedField?: string;
-    selectedOperator?: string;
+    selectedStringValue?: string[];
+    selectedNumberValue?: string;
+    selectedLowerDateValue?: Date;
+    selectedUpperDateValue?: Date;
 }
 
 export interface IValueSelectProps extends IValueSelectOwnProps, IValueSelectStateProps {}
 
 export class ValueSelect extends React.Component<IValueSelectProps, IValueSelectOwnState> {
+    private selectedValue: string;
+
     constructor(props: IValueSelectProps) {
         super(props);
         this.state = {fieldValueItems: []};
+        this.selectedValue = '';
     }
 
     componentWillReceiveProps(nextProps: IValueSelectProps) {
-        this.updateFieldValues(nextProps.selectedField);
+        // this.props.updateValueSelected('nextProps.selectedStringValue[0]')
+        this.updateValueSelected(nextProps);
     }
 
-    private async updateFieldValues(field: string) {
-        const newFieldValuesItems: IItemBoxProps[] = await this.getFieldValuesItems(field);
-        this.setState({fieldValueItems: newFieldValuesItems});
+    private updateValueSelected(nextProps: IValueSelectProps) {
+        let newSelectedValue: string;
+
+        // TODO nextProps or this.props
+        switch (this.props.selectedFieldType) {
+            case FieldType.String:
+                newSelectedValue = this.getSelectedStringValue(nextProps);
+            case FieldType.Number:
+                newSelectedValue = this.getSelectedNumberValue(nextProps);
+            case FieldType.Date:
+                newSelectedValue = this.getSelectedDateValue(nextProps);
+            default:
+                newSelectedValue = 'default';
+
+        }
+
+        if (this.selectedValue !== newSelectedValue) {
+            // console.log('this.selectedValue !== newSelectedValue');
+            this.selectedValue = newSelectedValue;
+            this.props.updateSelectedFieldValue(newSelectedValue);
+        }
     }
 
-    private async getFieldValuesItems(field: string): Promise<IItemBoxProps[]> {
-        // TODO use the expressionParser
-        const parsedField = [field.slice(0, 1), 'sys', field.slice(1)].join('');
+    private getSelectedStringValue(nextProps: IValueSelectProps): string {
+        return 'string';
+    }
 
-        const fieldValues: IFieldValue[] = await this.props.queryTrigger.getFieldValues(parsedField);
-        const fieldValuesItems: IItemBoxProps[] = [];
-        _.forEach(fieldValues, (fieldValue: IFieldValue) => {
-            const getItemBox: IItemBoxProps = {value: fieldValue.value};
-            fieldValuesItems.push(getItemBox);
-        });
-        return fieldValuesItems;
+    private getSelectedNumberValue(nextProps: IValueSelectProps): string {
+
+        return 'number';
+    }
+
+    private getSelectedDateValue(nextProps: IValueSelectProps): string {
+        return 'date';
+    }
+
+    private getValueSelector(): JSX.Element {
+        switch (this.props.selectedFieldType) {
+            case FieldType.String:
+                return <ValueSelectStringConnected expressionEditorId={this.props.expressionEditorId} queryTrigger={this.props.queryTrigger} />;
+            case FieldType.Number:
+                return <ValueSelectNumber expressionEditorId={this.props.expressionEditorId} />;
+            case FieldType.Date:
+                return <ValueSelectDate expressionEditorId={this.props.expressionEditorId} />;
+            default:
+                return <SingleSelectConnected id={`temporary-disable-select-value`} placeholder='Select Value' disabled={true}/>;
+        }
     }
 
     render() {
         return (
             <span>
-                <MultiSelectWithFilter
-                    id={`${this.props.expressionEditorId}-${fieldValueSelectId}`}
-                    items={this.state.fieldValueItems}
-                    placeholder={'Select field value'}
-                />
+                {this.getValueSelector()}
             </span>
         );
     }

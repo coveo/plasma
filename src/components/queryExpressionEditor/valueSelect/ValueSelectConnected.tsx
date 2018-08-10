@@ -2,18 +2,24 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {ReduxUtils} from '../../../utils/ReduxUtils';
+import { IDatePickerState } from '../../datePicker/DatePickerReducers';
+import { IInputState } from '../../input/InputReducers';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {fieldSelectId} from '../fieldSelect/FieldSelect';
-import {operatorSelectId} from '../operatorSelect/OperatorSelect';
+import { valueSelectDateId } from '../valueSelectDate/ValueSelectDate';
+import { valueSelectNumberId } from '../valueSelectNumber/ValueSelectNumber';
+import { valueSelectStringId } from '../valueSelectString/ValueSelectString';
 import {IValueSelectOwnProps, IValueSelectProps, IValueSelectStateProps, ValueSelect} from './ValueSelect';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IValueSelectOwnProps): IValueSelectStateProps => {
-    const operatorSelect: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.expressionEditorId}-${operatorSelectId}`});
-    const fieldSelect: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.expressionEditorId}-${fieldSelectId}`});
+    const valueSelectString: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.expressionEditorId}-${valueSelectStringId}`});
+    const valuesSelectNumber: IInputState = _.findWhere(state.inputs, {id: `${ownProps.expressionEditorId}-${valueSelectNumberId}`});
+    const valueSelectDate: IDatePickerState = _.findWhere(state.datePickers, {calendarId: `calendar-${ownProps.expressionEditorId}-${valueSelectDateId}`});
 
     return {
-        selectedOperator: operatorSelect && operatorSelect.selected ? operatorSelect.selected[0] : undefined,
-        selectedField: fieldSelect && fieldSelect.selected ? fieldSelect.selected[0] : undefined,
+        selectedStringValue : valueSelectString && valueSelectString.selected ? valueSelectString.selected : undefined,
+        selectedNumberValue : valuesSelectNumber && valuesSelectNumber.value ? valuesSelectNumber.value : undefined,
+        selectedLowerDateValue : valueSelectDate && valueSelectDate.lowerLimit ? valueSelectDate.lowerLimit : undefined,
+        selectedUpperDateValue : valueSelectDate && valueSelectDate.appliedUpperLimit ? valueSelectDate.appliedUpperLimit : undefined,
     };
 };
 

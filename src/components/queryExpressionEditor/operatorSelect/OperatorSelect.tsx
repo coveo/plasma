@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {SingleSelectWithFilter} from '../../select/SelectComponents';
+import { SingleSelectConnected } from '../../select/SingleSelectConnected';
 import {FieldType} from '../expressionEditor/ExpressionEditor';
 
 export const operatorSelectId: string = 'operator-select';
@@ -22,8 +22,7 @@ export class OperatorSelect extends React.Component<IOperatorSelectProps, IOpera
 
     constructor(props: IOperatorSelectProps) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
     }
 
     private getOperatorItems(): IItemBoxProps[] {
@@ -42,10 +41,12 @@ export class OperatorSelect extends React.Component<IOperatorSelectProps, IOpera
     render() {
         return (
             <span>
-                <SingleSelectWithFilter
+                <SingleSelectConnected
                     id={`${this.props.expressionEditorId}-${operatorSelectId}`}
                     items={this.getOperatorItems()}
                     placeholder={'Select operator'}
+                    // TODO : review le disabled,
+                    disabled={this.getOperatorItems() === null}
                 />
             </span>
         );

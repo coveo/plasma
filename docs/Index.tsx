@@ -11,12 +11,14 @@ import {QueryExpressionEditorExample} from '../src/components/queryExpressionEdi
 // import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 // import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
 // import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
-// import {DatePickerDropdownConnectedSingleDateExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
+import {DatePickerDropdownConnectedSingleDateExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 // import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
+import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 
 // import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 // import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
 // import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
+// import {InputConnectedExamples} from '../src/components/input/examples/InputConnectedExamples';
 
 import {ReactVaporStore} from './ReactVaporStore';
 
@@ -33,11 +35,15 @@ class App extends React.Component<any, any> {
                     {/* <DatePickerBoxConnectedExamples />
                     <DatePickerBoxExamples />
                     <DatePickerDropdownConnectedExamples />
-                    <DatePickerDropdownConnectedSingleDateExamples />
-                    <DatesSelectionConnectedExamples />
-                    <DatesSelectionExamples />
+                    */}
+                    {/* <DatesSelectionConnectedExamples /> */}
+                    {/* <DatesSelectionExamples />
                     <MultiSelectExamples />
                     <RadioExamples /> */}
+                    <DatePickerDropdownConnectedSingleDateExamples />
+                    {/* <InputConnectedExamples /> */}
+
+                    <DropdownSearchExamples />
                 </div>
             </Provider>
         );

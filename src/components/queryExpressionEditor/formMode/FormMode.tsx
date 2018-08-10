@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {Button} from '../../button/Button';
-// import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import { selectListBoxOption } from '../../listBox/ListBoxActions';
+import { booleanOperatorSelectId } from '../booleanOperatorSelect/BooleanOperatorSelect';
 import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
 import {IExpressionEditorState} from '../expressionEditor/ExpressionEditorReducers';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
-// import { selectListBoxOption } from '../../listBox/ListBoxActions';
-// import { booleanOperatorSelectId } from '../booleanOperatorSelect/BooleanOperatorSelect';
 
 export const expressionEditorId: string = 'expression-editor';
 
@@ -26,6 +26,7 @@ export interface IFormModeStateProps {
 }
 
 export interface IFormModeDispatchProps {
+    selectListBoxOption?: (id: string, multi: boolean, value: string) => void;
 }
 
 export interface IFormModeProps extends IFormModeOwnProps, IFormModeStateProps, IFormModeDispatchProps {}
@@ -53,14 +54,6 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
         this.addExpressionEditor();
     }
 
-    private getFinalExpression(nextProps: IFormModeProps) {
-        let finaleExpression: string = 'a';
-        _.forEach(nextProps.expressionEditorsState, (expressionEditorState) => {
-            finaleExpression = finaleExpression.concat(expressionEditorState.expression);
-        });
-        return finaleExpression;
-    }
-
     // TODO remove
     private logReduxState() {
         // console.log(ReactVaporStore.getState())
@@ -75,7 +68,6 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
                 id={`${expressionEditorId}-${this.id}`}
                 fields={this.state.fields}
                 queryTrigger={this.props.queryTrigger}
-                updateQueryExpression={this.props.updateQueryExpression}
                 addExpressionEditor={() => this.addExpressionEditor()}
                 deleteExpressionEditor={(id: string) => this.deleteExpressionEditor(id)}
                 ensureLastEditorCanAddRule={() => this.ensureLastEditorCanAddRule()}
@@ -84,19 +76,6 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
         this.setState({expressionEditors: newSate});
         this.id++;
     }
-    // on select add condition if value undefined we dont call add
-
-    private ensureLastEditorCanAddRule() {
-        // TODO : Fix this it is probably better to use a prop!
-        // console.log( this.props.expressionEditorsState)
-        // const lastEditorId = this.props.expressionEditorsState[0].id;
-        // console.log( lastEditorId)
-        // ReactVaporStore.dispatch(selectListBoxOption(`${lastEditorId}-${booleanOperatorSelectId}`, false, undefined));
-    }
-
-    // private isExpressionEditorAlone() {
-    //     return this.state.expressionEditors.length === 1;
-    // }
 
     private deleteExpressionEditor(id: string) {
         const updatedExpressionEditors = this.state.expressionEditors;
@@ -107,6 +86,22 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
             updatedExpressionEditors.splice(index, 1);
         }
         this.setState({expressionEditors: updatedExpressionEditors});
+    }
+
+    private ensureLastEditorCanAddRule() {
+        // TODO : Fix this it is probably better to use a prop!
+        // console.log( this.props.expressionEditorsState)
+        const lastEditorId = this.props.expressionEditorsState[this.props.expressionEditorsState.length - 2].id;
+        // console.log( lastEditorId)
+        ReactVaporStore.dispatch(selectListBoxOption(`${lastEditorId}-${booleanOperatorSelectId}`, false, null));
+    }
+
+    private getFinalExpression(nextProps: IFormModeProps) {
+        let finaleExpression: string = 'a';
+        _.forEach(nextProps.expressionEditorsState, (expressionEditorState) => {
+            finaleExpression = finaleExpression.concat(expressionEditorState.expression);
+        });
+        return finaleExpression;
     }
 
     render() {

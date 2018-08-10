@@ -1,54 +1,95 @@
 
 import * as React from 'react';
-// import * as _ from 'underscore';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {SingleSelectWithFilter} from '../../select/SelectComponents';
-import {QueryTrigger} from '../queryTrigger/QueryTrigger';
+import * as _ from 'underscore';
+import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
+import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
 import {IField} from '../responseParser/ResponseParser';
 
-const mockFields: IItemBoxProps[] = [{value: '@filetype'}, {value: '@language'}, {value: '@date'}];
-
 export const fieldSelectId: string = 'field-select';
+export const optionsPerPage: number = 10;
 
-export interface IFieldSelectProps {
+export interface IFieldSelectOwnProps {
     fields: IField[];
     expressionEditorId: string;
-    // TODO remove if not used
-    queryTrigger: QueryTrigger;
 }
 
-export interface IFieldSelectState {
-
+export interface IFieldSelectOwnState {
+    hasMoreItems?: boolean;
 }
 
-// TODO this component should dispatch what type of field hase been selected; No need of reducer (no redux state needs to be held)
-// Hte problem we need to have acces to the fiedls object
+export interface IFieldSelectDispatchProps {
+    onOptionsChanged?: (id: string, options: IDropdownOption[]) => void;
+}
 
-export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelectState> {
+export interface IFieldSelectProps extends IFieldSelectOwnProps, IFieldSelectDispatchProps {}
 
-    // TODO remove if not used
+export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelectOwnState> {
+    private allFieldOptions: IDropdownOption[];
+    private currentFieldOptions: IDropdownOption[];
+    private optionsPage: number;
+
     constructor(props: IFieldSelectProps) {
         super(props);
+        this.state = {hasMoreItems: true};
+        this.allFieldOptions = null;
+        this.currentFieldOptions = [];
+        this.optionsPage = 1;
     }
 
-    // private getFieldsItems(): IItemBoxProps[] {
-    //     const fieldsItems: IItemBoxProps[] = [];
-    //     _.forEach(this.props.fields, (field: IField) => {
-    //         const getItemBox: IItemBoxProps = {value: field.name};
-    //         fieldsItems.push(getItemBox);
-    //     });
-    //     return fieldsItems;
-    // }
+    componentWillMount() {
+        this.allFieldOptions = this.getFieldsOptions();
+        this.updateInfinteScroll();
+    }
+
+    private getFieldsOptions(): IDropdownOption[] {
+        const fieldsDropdownOptions: IDropdownOption[] = [];
+        _.forEach(this.props.fields, (field: IField) => {
+            const getDropDownOption: IDropdownOption = {value: field.name};
+            fieldsDropdownOptions.push(getDropDownOption);
+        });
+        return fieldsDropdownOptions;
+    }
+
+    private updateInfinteScroll() {
+        this.updateHasMoreItems();
+        this.updateCurrentOptions();
+        this.optionsPage++;
+    }
+
+    private updateHasMoreItems() {
+        const startingIndex: number = (this.optionsPage - 1) * optionsPerPage;
+        if (startingIndex > (this.allFieldOptions.length - 1)) {
+            this.setState({hasMoreItems: false});
+        }
+    }
+
+    private updateCurrentOptions() {
+        const newOptions: IDropdownOption[] = this.getNewOptions();
+        this.currentFieldOptions = this.currentFieldOptions.concat(newOptions);
+        this.props.onOptionsChanged(`${this.props.expressionEditorId}-${fieldSelectId}`, this.currentFieldOptions);
+    }
+
+    private getNewOptions(): IDropdownOption[] {
+        const startingIndex: number = (this.optionsPage - 1) * optionsPerPage;
+        const newOptions: IDropdownOption[] = this.allFieldOptions.slice(startingIndex, startingIndex + optionsPerPage);
+        return newOptions;
+    }
 
     render() {
         return (
             <span>
-                {/* TODO : if we want the infinite scroll we need to use dropdownSearchConnected */}
-                <SingleSelectWithFilter
+                <DropdownSearchConnected
+                    defaultOptions={this.currentFieldOptions}
                     id={`${this.props.expressionEditorId}-${fieldSelectId}`}
-                    // items={this.getFieldsItems()}
-                    items={mockFields}
-                    placeholder={'Select field'}
+                    infiniteScroll={{
+                        next: () => this.updateInfinteScroll(),
+                        dataLength: 0,
+                        hasMore: true,
+                        endMessage: <div className='option-wrapper'><span className='dropdown-option'>No more items to show</span></div>,
+                        loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more items...</span></div>,
+                    }}
+                    hasMoreItems={() => this.state.hasMoreItems}
+                    defaultSelectedOption={{value: 'Select field'}}
                 />
             </span>
         );
