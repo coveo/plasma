@@ -43,7 +43,7 @@ export class Banner extends React.PureComponent<BannerProps> {
         );
         return (
             <div className={styles.banner}>
-                <div className={styles.bannerTop}>
+                <div className='flex space-between'>
                     <div>
                         <h1 className={styles.bannerName}>{this.props.name}</h1>
                         {this.props.nameSubtitle && <h2 className={styles.bannerSubtitle}>{this.props.nameSubtitle}</h2>}

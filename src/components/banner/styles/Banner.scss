@@ -1,94 +1,92 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
 .banner {
-    background: linear-gradient(45deg, #1E253F 0%, #1E2743 8.62%, #1D2B4C 16.56%, #1C3059 23.93%, #1B3666 30.85%, #193D74 37.42%, #174382 43.77%, #15498F 50%, #134F9B 56.23%, #1054A5 62.58%, #0D58AE 69.15%, #0A5CB6 76.07%, #075FBB 83.44%, #0460BF 91.38%, #0061C0 100%);
-    box-shadow: inset 0 5px 10px 0 rgba(0,0,0,0.1), inset 0 -10px 50px 0 rgba(0,0,0,0.2);
-    padding: 25px 40px;
-    height: 300px;
+    background: linear-gradient(45deg, $mirage 0%, $science-blue 100%);
+    box-shadow: $banner-box-shadow;
+    padding: $banner-padding;
+    height: $banner-height;
     box-sizing: border-box;
     position: relative;
 
     button {
-        background: #19B5EA;
-        color: white;
+        background: $picton-blue;
+        color: $pure-white;
         display: inline-block;
-        border-radius: 2px;
+        border-radius: $border-radius;
         text-transform: uppercase;
-        padding: 8px 25px;
+        padding: $button-padding-y $button-padding-x;
         border: none;
-        font-size: 12px;
+        font-size: $button-font-size;
         cursor: pointer;
 
         &:hover {
-            opacity: 0.7;
+            opacity: $transparency-2;
         }
 
         &:global(.primary) {
-            background-color: #F58020;
+            background-color: $orange;
             border: none;
         }
     }
 }
 
-.bannerTop {
-    display: flex;
-    justify-content: space-between;
-}
-
 .bannerName {
-    font-size: 12px;
-    color: white;
-    opacity: 0.5;
+    font-size: $small-font-size;
+    color: $pure-white;
+    opacity: $transparency-3;
     text-transform: uppercase;
 }
 
 .bannerSubtitle {
-    color: white;
-    font-size: 24px;
+    color: $pure-white;
+    font-size: $big-font-size;
 }
 
 .bannerMain {
     position: absolute;
     bottom: 0;
-    height: 165px;
-    color: white;
+    height: $banner-content-height;
+    color: $pure-white;
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: $banner-content-padding;
     box-sizing: border-box;
 }
 
 .bannerTitle {
-    font-size: 32px;
+    font-size: $big-title-font-size;
 }
 
 .bannerWarningTitle {
-    color: #FFDF00;
+    color: $school-bus-yellow;
     position: relative;
 }
 
 .bannerErrorTitle {
-    color: #ce3f00;
+    color: $red;
 }
 
 .bannerWarningIcon {
-    fill: #FFDF00;
+    fill: $school-bus-yellow;
     position: relative;
-    top: 2px;
+    top: $banner-warning-icon-fix;
 
     .bannerErrorTitle & {
-        fill: #ce3f00;
+        fill: $red;
     }
 }
 
 .bannerDescription {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: $medium-title-font-size;
+    color: rgba($pure-white, $transparency-2);
 }
 
 .bannerRight {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: $default-font-size;
+    color: rgba($pure-white, $transparency-2);
 }
 
 .bannerBottomRightInfos {
-    max-width: 300px;
+    max-width: $banner-right-width;
     display: inline;
 }

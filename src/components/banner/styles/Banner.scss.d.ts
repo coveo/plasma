@@ -1,5 +1,4 @@
 export const banner: string;
-export const bannerTop: string;
 export const bannerName: string;
 export const bannerSubtitle: string;
 export const bannerMain: string;

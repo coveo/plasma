@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import {Banner, BannerProps, BannerMessageStates} from '../Banner';
+import {Banner, BannerMessageStates, BannerProps} from '../Banner';
 import * as styles from '../styles/Banner.scss';
 
 describe('Banner', () => {
