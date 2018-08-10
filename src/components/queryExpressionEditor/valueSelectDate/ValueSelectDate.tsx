@@ -1,10 +1,10 @@
 
 import * as moment from 'moment';
 import * as React from 'react';
-import { CalendarSelectionRuleType, ICalendarSelectionRule } from '../../calendar/Calendar';
-import { DatePickerColors } from '../../datePicker/DatePicker';
-import { IDatesSelectionBox } from '../../datePicker/DatePickerBox';
-import { DatePickerDropdownConnected } from '../../datePicker/DatePickerDropdownConnected';
+import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar';
+import {DatePickerColors} from '../../datePicker/DatePicker';
+import {IDatesSelectionBox} from '../../datePicker/DatePickerBox';
+import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
 
 export const valueSelectDateId: string = 'value-select-date';
 

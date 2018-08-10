@@ -1,17 +1,17 @@
 
 import * as React from 'react';
-import { SingleSelectConnected } from '../../select/SingleSelectConnected';
+import {SingleSelectConnected} from '../../select/SingleSelectConnected';
 import {FieldType} from '../expressionEditor/ExpressionEditor';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
-import { ValueSelectDate } from '../valueSelectDate/ValueSelectDate';
-import { ValueSelectNumber } from '../valueSelectNumber/ValueSelectNumber';
-import { ValueSelectStringConnected } from '../valueSelectString/ValueSelectStringConnected';
+import {ValueSelectDate} from '../valueSelectDate/ValueSelectDate';
+import {ValueSelectNumber} from '../valueSelectNumber/ValueSelectNumber';
+import {ValueSelectStringConnected} from '../valueSelectString/ValueSelectStringConnected';
 
 export interface IValueSelectOwnProps {
     expressionEditorId: string;
     queryTrigger: QueryTrigger;
     selectedFieldType: FieldType;
-    updateSelectedFieldValue: (value: string) => void;
+    updateSelectedFieldValue: (value: string) =>  void;
 }
 
 export interface IValueSelectOwnState {
@@ -85,7 +85,7 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
             case FieldType.Date:
                 return <ValueSelectDate expressionEditorId={this.props.expressionEditorId} />;
             default:
-                return <SingleSelectConnected id={`temporary-disable-select-value`} placeholder='Select Value' disabled={true}/>;
+                return <SingleSelectConnected id={`temporary-disable-select-value`} placeholder='Select Value' disabled={true} />;
         }
     }
 

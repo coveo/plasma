@@ -1,8 +1,8 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
-import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { DropdownSearchConnected } from '../../dropdownSearch/DropdownSearchConnected';
+import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
+import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
 import {IField} from '../responseParser/ResponseParser';
 
 export const fieldSelectId: string = 'field-select';

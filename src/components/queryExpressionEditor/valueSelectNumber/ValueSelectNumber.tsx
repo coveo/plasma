@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { InputConnected } from '../../input/InputConnected';
+import {InputConnected} from '../../input/InputConnected';
 
 export const valueSelectNumberId: string = 'value-select-number';
 

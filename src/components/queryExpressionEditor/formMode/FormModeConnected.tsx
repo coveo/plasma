@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
-import { selectListBoxOption } from '../../listBox/ListBoxActions';
+import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {FormMode, IFormModeDispatchProps, IFormModeProps, IFormModeStateProps} from './FormMode';
 
 const mapStateToProps = (state: IReactVaporState): IFormModeStateProps => {

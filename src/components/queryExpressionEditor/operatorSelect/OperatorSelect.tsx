@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import { SingleSelectConnected } from '../../select/SingleSelectConnected';
+import {SingleSelectConnected} from '../../select/SingleSelectConnected';
 import {FieldType} from '../expressionEditor/ExpressionEditor';
 
 export const operatorSelectId: string = 'operator-select';

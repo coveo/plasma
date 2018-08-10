@@ -2,12 +2,12 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {ReduxUtils} from '../../../utils/ReduxUtils';
-import { IDropdownOption } from '../../dropdownSearch/DropdownSearch';
-import { IDropdownSearchState } from '../../dropdownSearch/DropdownSearchReducers';
+import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
+import {IDropdownSearchState} from '../../dropdownSearch/DropdownSearchReducers';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
 import {fieldSelectId} from '../fieldSelect/FieldSelect';
 import {operatorSelectId} from '../operatorSelect/OperatorSelect';
-import { IValueSelectStringOwnProps, IValueSelectStringProps, IValueSelectStringStateProps, ValueSelectString } from './ValueSelectString';
+import {IValueSelectStringOwnProps, IValueSelectStringProps, IValueSelectStringStateProps, ValueSelectString} from './ValueSelectString';
 
 // TODO : : Is this the only way to get the selectedOption? + Duplication of code with ExpressionEditorConnected.tsx
 function getSelectedOption(options: IDropdownOption[]): string {

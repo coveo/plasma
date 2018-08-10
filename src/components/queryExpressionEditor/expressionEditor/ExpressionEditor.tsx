@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {Button} from '../../button/Button';
 import {BooleanOperatorSelect} from '../booleanOperatorSelect/BooleanOperatorSelect';
-import { FieldSelectConnected } from '../fieldSelect/FieldSelectConnected';
+import {FieldSelectConnected} from '../fieldSelect/FieldSelectConnected';
 import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
@@ -105,7 +105,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         // TODO : Better parsing
         const selectedField: string = nextProps.selectedField ? nextProps.selectedField : '';
         const selectedOperator: string = nextProps.selectedOperator ? nextProps.selectedOperator : '';
-        const selectedFieldValue: string = this.state.selectedFieldValue ? this.state.selectedFieldValue  : '';
+        const selectedFieldValue: string = this.state.selectedFieldValue ? this.state.selectedFieldValue : '';
 
         const expression: string = selectedField + selectedOperator + selectedFieldValue;
 
