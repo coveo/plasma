@@ -95,9 +95,7 @@ describe('<TableChildBody />', () => {
                 ...tableChildBodyProps,
                 headingAttributes: [{
                     ...tableChildBodyProps.headingAttributes[0],
-                    onClickCell: {
-                        callBack: spy,
-                    },
+                    onClickCell: spy,
                 }],
             });
 
@@ -112,10 +110,7 @@ describe('<TableChildBody />', () => {
                 ...tableChildBodyProps,
                 headingAttributes: [{
                     ...tableChildBodyProps.headingAttributes[0],
-                    onClickCell: {
-                        callBack: spy,
-                        condition: () => false,
-                    },
+                    onClickCell: spy,
                 }],
             });
 

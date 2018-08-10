@@ -16,7 +16,6 @@ import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
 import {IData, ITableRowData} from '../Table';
 import {ITableOwnProps} from '../Table';
-import {ITableChildBodyProps} from '../table-children/TableChildBody';
 import {modifyState, setIsInError} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
@@ -244,9 +243,7 @@ export class TableExamples extends React.Component<any, any> {
                             {
                                 attributeName: 'attribute4',
                                 titleFormatter: () => 'click on me',
-                                onClickCell: {
-                                    callBack: () => triggerAlertFunction(),
-                                },
+                                onClickCell: () => triggerAlertFunction(),
                                 additionalCellClasses: [{
                                     className: 'cursor-pointer',
                                     condition: () => true,
@@ -273,9 +270,10 @@ export class TableExamples extends React.Component<any, any> {
                             {
                                 attributeName: 'attribute4',
                                 titleFormatter: () => 'click on me',
-                                onClickCell: {
-                                    callBack: () => triggerAlertFunction(),
-                                    condition: (data: ITableChildBodyProps) => data.rowData.id === 'row1',
+                                onClickCell: (event, data) => {
+                                    if (data.rowData.id === 'row1') {
+                                        triggerAlertFunction();
+                                    }
                                 },
                                 additionalCellClasses: [{
                                     className: 'cursor-pointer',

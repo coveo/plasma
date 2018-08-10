@@ -113,7 +113,5 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
 };
 
 const handleOnClick = (event: React.MouseEvent<HTMLTableDataCellElement>, headingAttributes: ITableHeadingAttribute, childBodyProps: ITableChildBodyProps) => {
-    if (headingAttributes.onClickCell && (_.isUndefined(headingAttributes.onClickCell.condition) || headingAttributes.onClickCell.condition(childBodyProps))) {
-        callIfDefined(headingAttributes.onClickCell.callBack, event, childBodyProps);
-    }
+    callIfDefined(headingAttributes.onClickCell, event, childBodyProps);
 };
