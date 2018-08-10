@@ -12,8 +12,8 @@ describe('ListBox', () => {
 
     const defaultProps: IListBoxProps = {
         items: [
-            {value: 'test', onOptionClick: spyOnOptionClick},
-            {value: 'test1'},
+            {value: 'test'},
+            {value: 'test1', onOptionClick: spyOnOptionClick},
             {value: 'test2'},
             {value: 'test3'},
             {value: 'test4'},
@@ -80,7 +80,7 @@ describe('ListBox', () => {
         it('should render items with events on onOptionClick', () => {
             renderListBox();
 
-            (listBoxComponent.find(ItemBox) as any).node.handleOnOptionClick({target: 'target'});
+            (listBoxComponent.find(ItemBox) as any).get(1).handleOnOptionClick({target: 'target'});
             expect(spyOnOptionClick).toHaveBeenCalled();
         });
 

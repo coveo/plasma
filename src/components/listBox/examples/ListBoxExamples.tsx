@@ -27,10 +27,11 @@ export class ListBoxExamples extends React.Component {
             {value: 'test7'},
         ];
 
-        const clickableItems: IItemBoxProps[] = defaultItems.concat([{
-            value: 'test8',
-            onOptionClick: triggerAlertFunction,
-        },
+        const clickableItems: IItemBoxProps[] = defaultItems.concat([
+            {
+                value: 'test8',
+                onOptionClick: triggerAlertFunction,
+            },
         ]);
 
         return (
