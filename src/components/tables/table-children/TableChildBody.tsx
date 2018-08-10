@@ -41,7 +41,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
 
         return (
             <td key={`cell-${xPosition}`}
-                className={classNames(getAdditionalClasses(headingAttribute.additionalCellClasses, {}))}
+                className={classNames(getAdditionalClasses(headingAttribute.additionalCellClasses, props.rowData))}
                 onClick={(event: React.MouseEvent<HTMLTableDataCellElement>) => handleOnClick(event, headingAttribute, props)}
             >
                 <div className='wrapper'>
