@@ -70,7 +70,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
             .map((item: IItemBoxProps) => <ItemBox
                 key={item.value}
                 {...item}
-                onOptionClick={(option: IItemBoxProps) => this.onSelectItem(option, item)}
+                onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item)}
                 selected={_.contains(this.props.selected, item.value)}
                 highlight={this.props.highlight}
             />)
@@ -89,10 +89,10 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         );
     }
 
-    private onSelectItem(option: IItemBoxProps, item: IItemBoxProps) {
-        if (!option.disabled) {
-            callIfDefined(this.props.onOptionClick, option);
-            callIfDefined(item.onOptionClick, option);
+    private onSelectItem(item: IItemBoxProps) {
+        if (!item.disabled) {
+            callIfDefined(this.props.onOptionClick, item);
+            callIfDefined(item.onOptionClick, item);
         }
     }
 }
