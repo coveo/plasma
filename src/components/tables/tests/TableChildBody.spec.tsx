@@ -103,21 +103,6 @@ describe('<TableChildBody />', () => {
             expect(spy).toHaveBeenCalled();
         });
 
-        it('should not trigger an onClick event on click cell element', () => {
-            const spy = jasmine.createSpy('onclickcell');
-
-            const component = mountComponentWithProps({
-                ...tableChildBodyProps,
-                headingAttributes: [{
-                    ...tableChildBodyProps.headingAttributes[0],
-                    onClickCell: spy,
-                }],
-            });
-
-            component.find('td').simulate('click');
-            expect(spy).not.toHaveBeenCalled();
-        });
-
         it('should not render a <TableCollapsibleRowWrapper /> if the prop collapsibleFormatter is not defined', () => {
             expect(mountComponentWithProps().find(TableCollapsibleRowWrapper).length).toBe(0);
         });
