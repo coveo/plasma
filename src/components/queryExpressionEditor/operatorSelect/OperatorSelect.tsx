@@ -3,6 +3,7 @@ import * as React from 'react';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {SingleSelectConnected} from '../../select/SingleSelectConnected';
 import {FieldType} from '../expressionEditor/ExpressionEditor';
+import * as styles from './OperatorSelect.scss';
 
 export const operatorSelectId: string = 'operator-select';
 
@@ -14,9 +15,9 @@ export interface IOperatorSelectProps {
 export interface IOperatorSelectState {
 }
 
-const dateOperators: IItemBoxProps[] = [{value: '='}, {value: '=='}, {value: '<='}, {value: '>='}, {value: '..'}];
-const numberOperators: IItemBoxProps[] = [{value: '='}, {value: '=='}, {value: '<='}, {value: '>='}];
-const stringOperators: IItemBoxProps[] = [{value: '='}, {value: '=='}];
+const dateOperators: IItemBoxProps[] = [{value: '=', displayValue: 'equal'}, {value: '<=', displayValue: 'less or equal'}, {value: '>=', displayValue: 'greater or equal'}, {value: '<', displayValue: 'less'}, {value: '>', displayValue: 'greater'}, {value: '..', displayValue: 'between'}];
+const numberOperators: IItemBoxProps[] = [{value: '=', displayValue: 'equal'}, {value: '<=', displayValue: 'less or equal'}, {value: '>=', displayValue: 'greater or equal'}, {value: '<', displayValue: 'less'}, {value: '>', displayValue: 'greater'}];
+const stringOperators: IItemBoxProps[] = [{value: '==', displayValue: 'equal'}];
 
 export class OperatorSelect extends React.Component<IOperatorSelectProps, IOperatorSelectState> {
 
@@ -45,9 +46,10 @@ export class OperatorSelect extends React.Component<IOperatorSelectProps, IOpera
                     id={`${this.props.expressionEditorId}-${operatorSelectId}`}
                     items={this.getOperatorItems()}
                     placeholder={'Select operator'}
-                    // TODO : review le disabled,
-                    disabled={this.getOperatorItems() === null}
+                    disabled={!this.props.selectedFieldType}
+                    toggleClasses={styles.selector}
                 />
+                <span className={'h3 mr2 ml2'}>to</span>
             </span>
         );
     }

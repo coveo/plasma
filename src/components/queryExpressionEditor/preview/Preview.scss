@@ -1,4 +1,10 @@
 .container {
-    background: rgb(241, 243, 244);
-    height: 600px;
+    height: 640px;
+}
+
+.titleContainer {
+    height: 44px;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
 }

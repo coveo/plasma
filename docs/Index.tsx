@@ -11,9 +11,9 @@ import {QueryExpressionEditorExample} from '../src/components/queryExpressionEdi
 // import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 // import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
 // import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
-import {DatePickerDropdownConnectedSingleDateExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
+// import {DatePickerDropdownConnectedSingleDateExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 // import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
-import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
+// import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 
 // import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 // import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
@@ -27,7 +27,7 @@ class App extends React.Component<any, any> {
         return (
             <Provider store={ReactVaporStore}>
 
-                <div className='coveo-form'>
+                <div className='coveo-form bg-dark-blue'>
                     {/* TODO : incorporer un Provider/store dans le QueryExpressionEditor? */}
                     <QueryExpressionEditorExample />
 
@@ -40,10 +40,10 @@ class App extends React.Component<any, any> {
                     {/* <DatesSelectionExamples />
                     <MultiSelectExamples />
                     <RadioExamples /> */}
-                    <DatePickerDropdownConnectedSingleDateExamples />
+                    {/* <DatePickerDropdownConnectedSingleDateExamples /> */}
                     {/* <InputConnectedExamples /> */}
 
-                    <DropdownSearchExamples />
+                    {/* <DropdownSearchExamples /> */}
                 </div>
             </Provider>
         );

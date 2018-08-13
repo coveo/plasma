@@ -15,10 +15,11 @@ export interface IResult {
     excerpt: string; // TODO remove if not used
     uniqueID: string;
     uri: string;
+    // TODO : This should be grouped in a map...
     objectType: string;
     fileType: string;
     connectorType: string;
-    source: string;
+    sourceType: string;
 }
 
 // TODO : review type any ...
@@ -93,7 +94,7 @@ export class ResponseParser {
             objectType: result.raw.sysobjecttype,
             fileType: result.raw.sysfiltetype,
             connectorType: result.raw.sysconnectortype,
-            source: result.raw.syssource,
+            sourceType: result.raw.syssourcetype,
         };
     }
 }

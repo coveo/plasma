@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import {InputConnected} from '../../input/InputConnected';
+import * as styles from './ValueSelectNumber.scss';
 
 export const valueSelectNumberId: string = 'value-select-number';
 
@@ -19,8 +20,8 @@ export class ValueSelectNumber extends React.Component<IValueSelectNumberProps, 
 
     private isInteger(value: string): boolean {
         // TODO : 22aa is valid review parsing
-        // const parsedInt = parseInt(value, radix);
-        // return true; Number.isInteger(parsedInt);
+        // const parsedInt = parseInt(value);
+        // return Number.isInteger(parsedInt);
         return true;
     }
 
@@ -32,7 +33,7 @@ export class ValueSelectNumber extends React.Component<IValueSelectNumberProps, 
                     validate={(numberValue: string) => this.isInteger(numberValue)}
                     labelTitle='Enter a number'
                     labelProps={{invalidMessage: 'Enter a valid number'}}
-                    innerInputClasses='mb2'
+                    innerInputClasses={`${styles.numberInput}`}
                     validateOnChange
                 />
             </span>

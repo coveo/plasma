@@ -6,12 +6,13 @@ import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {ValueSelectDate} from '../valueSelectDate/ValueSelectDate';
 import {ValueSelectNumber} from '../valueSelectNumber/ValueSelectNumber';
 import {ValueSelectStringConnected} from '../valueSelectString/ValueSelectStringConnected';
+import * as styles from './ValueSelect.scss';
 
 export interface IValueSelectOwnProps {
     expressionEditorId: string;
     queryTrigger: QueryTrigger;
     selectedFieldType: FieldType;
-    updateSelectedFieldValue: (value: string) =>  void;
+    updateSelectedFieldValue: (value: string) => void;
 }
 
 export interface IValueSelectOwnState {
@@ -52,7 +53,7 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
             case FieldType.Date:
                 newSelectedValue = this.getSelectedDateValue(nextProps);
             default:
-                newSelectedValue = 'default';
+                newSelectedValue = 'default'; // TODO should be ''
 
         }
 
@@ -85,13 +86,15 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
             case FieldType.Date:
                 return <ValueSelectDate expressionEditorId={this.props.expressionEditorId} />;
             default:
-                return <SingleSelectConnected id={`temporary-disable-select-value`} placeholder='Select Value' disabled={true} />;
+                return <SingleSelectConnected id={`temporary-disable-select-value`} placeholder='Select Value' disabled={true} toggleClasses={styles.selectValueWidth}/>;
         }
     }
 
     render() {
+        const isRaised: string = this.props.selectedFieldType === FieldType.String ?  '' : styles.raiseElement;
+
         return (
-            <span>
+            <span className={`mr3 ${isRaised} ${styles.selectValue} ${styles.selectValueWidth}`}>
                 {this.getValueSelector()}
             </span>
         );

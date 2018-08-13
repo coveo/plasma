@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
+import * as styles from './ResultList.scss';
 import {IContentProps} from '../../content/Content';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
@@ -28,6 +29,16 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
         this.state = {selectedResult: ''};
     }
 
+    resultListClasses(): string[] {
+        let classes: string[] = [];
+        const listBoxMaxHeight: string = this.props.isSelectable ? styles.resultListBoxSearch : styles.resultListBoxPreview;
+
+        classes.push(styles.resultListBox);
+        classes.push(listBoxMaxHeight);
+
+        return classes;
+    }
+
     private onClick(resultItemBox: IItemBoxProps) {
         if (!this.props.isSelectable) {
             return;
@@ -45,11 +56,10 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
     private getResultsItems(): IItemBoxProps[] {
         const items: IItemBoxProps[] = [];
         _.forEach(this.props.results, (result: IResult) => {
-            const getAppend: IContentProps = {
-                content: () =>
-                    <ResultItem result={result} isSelectable={this.props.isSelectable} selectedResult={this.state.selectedResult} />,
+            const resultItem: IContentProps = {
+                content: () => <ResultItem result={result} isSelectable={this.props.isSelectable} selectedResult={this.state.selectedResult} />,
             };
-            const getItemBox: IItemBoxProps = {value: result.uniqueID, displayValue: ' ', append: getAppend};
+            const getItemBox: IItemBoxProps = {value: result.uniqueID, displayValue: ' ', append: resultItem};
             items.push(getItemBox);
         });
         return items;
@@ -66,6 +76,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
                     items={this.getResultsItems()}
                     selected={[this.state.selectedResult]}
                     onOptionClick={(resultItemBox: IItemBoxProps) => this.onClick(resultItemBox)}
+                    classes={this.resultListClasses()}
                 />
             </div>
         );

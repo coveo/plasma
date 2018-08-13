@@ -5,6 +5,7 @@ import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/
 import {DatePickerColors} from '../../datePicker/DatePicker';
 import {IDatesSelectionBox} from '../../datePicker/DatePickerBox';
 import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
+import * as styles from './ValueSelectDate.scss';
 
 export const valueSelectDateId: string = 'value-select-date';
 
@@ -51,6 +52,7 @@ export class ValueSelectDate extends React.Component<IValueSelectDateProps, IVal
                     datesSelectionBoxes={SELECTION_BOX}
                     selectionRules={CALENDAR_SELECTION_RULES_SINGLE_DATE}
                     isLinkedToDateRange={true}
+                    extraDropdownToggleClasses={[styles.selectValueWidth]}
                 />
             </span>
         );

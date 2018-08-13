@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 import {TabConnected} from '../../tab/TabConnected';
 import {TabContent} from '../../tab/TabContent';
 import {TabNavigation} from '../../tab/TabNavigation';
@@ -25,7 +26,12 @@ export class Editors extends React.Component<IEditorsProps> {
     constructor(props: IEditorsProps) {
         super(props);
     }
+
     render() {
+
+        const tabContainerClasses: string = classNames(
+            styles.tabContainer,
+        );
 
         return (
             <div className={styles.editorsContainer}>
@@ -39,17 +45,17 @@ export class Editors extends React.Component<IEditorsProps> {
                 </TabNavigation>
                 <TabContent>
                     <TabPaneConnected id={TAB_BUILD_FROM_RESULT_ID}>
-                        <div className='mod-header-padding mod-form-top-bottom-padding'>
+                        <div className={tabContainerClasses}>
                             <BuildFromResult queryTrigger={this.props.queryTrigger} updateQueryExpression={this.props.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_FORM_MODE_ID}>
-                        <div className='mod-header-padding mod-form-top-bottom-padding'>
+                        <div className={tabContainerClasses}>
                             <FormModeConnected queryTrigger={this.props.queryTrigger} updateQueryExpression={this.props.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB_ADVANCED_MODE_ID}>
-                        <div className='mod-header-padding mod-form-top-bottom-padding'>
+                        <div className={tabContainerClasses}>
                             <AdvancedMode queryExpression={this.props.queryExpression} updateQueryExpression={this.props.updateQueryExpression} />
                         </div>
                     </TabPaneConnected>

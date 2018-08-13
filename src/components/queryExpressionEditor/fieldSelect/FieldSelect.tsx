@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
 import {IField} from '../responseParser/ResponseParser';
+import * as styles from './FieldSelect.scss';
 
 export const fieldSelectId: string = 'field-select';
 export const optionsPerPage: number = 10;
@@ -77,7 +78,7 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
 
     render() {
         return (
-            <span>
+            <span className={`${styles.container}`}>
                 <DropdownSearchConnected
                     defaultOptions={this.currentFieldOptions}
                     id={`${this.props.expressionEditorId}-${fieldSelectId}`}
@@ -90,7 +91,12 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
                     }}
                     hasMoreItems={() => this.state.hasMoreItems}
                     defaultSelectedOption={{value: 'Select field'}}
+                    // containerClasses={[styles.selector]}
+                    // width={'120'}
+                    // maxWidth={'120'}
+                    // We need to change the min-width of the button inside the selector
                 />
+                <span className={'mr2 ml2 h3'}>is</span>
             </span>
         );
     }

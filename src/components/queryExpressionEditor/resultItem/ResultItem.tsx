@@ -1,8 +1,11 @@
 
 import * as React from 'react';
-import {Label} from '../../input/Label';
+import * as classNames from 'classnames';
+import * as styles from './ResultItem.scss';
 import {Radio} from '../../radio/Radio';
 import {IResult} from '../responseParser/ResponseParser';
+import {Label} from '../../input/Label';
+import {Field} from '../buildFromResult/BuildFromResult';
 
 export interface IResultItemProps {
     result: IResult;
@@ -17,38 +20,68 @@ export class ResultItem extends React.Component<IResultItemProps> {
         selectedResult: '',
     };
 
-    private isSelected() {
+    private get isSelected() {
         return this.props.selectedResult === this.props.result.uniqueID;
     }
 
-    private getSelectableResultItem(): JSX.Element {
+    private getRadio(): JSX.Element {
         return (
-            <Radio name='singleoption' value='blue' checked={this.isSelected()}>
-                {this.getResultItem()}
-            </Radio>
+            <div>
+                <Radio checked={this.isSelected}>
+                    <Label classes={[styles.radioLabelContainer]} />
+                </Radio>
+            </div>
         );
     }
+
     private getResultItem(): JSX.Element {
         return (
-            <Label>
-                <div>{this.props.result.title}</div>
-                <div>{this.props.result.uri}</div>
-            </Label>
+            <div className={'mt2 mb2'}>
+                <div className={'h2 text-dark-blue mb1'}>{this.props.result.title}</div>
+                <div className={'text-medium-blue mb1'}>
+                    <span className={'h3'}>URI</span>
+                    <span className={'ml1'}>{this.props.result.uri}</span>
+                </div>
+                {this.getDefinedFieldExpressions()}
+            </div>
+        );
+    }
+
+    private getDefinedFieldExpressions(): JSX.Element {
+        return (
+            <div className={'text-medium-blue'}>
+                {this.props.result.objectType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ObjectType}=</span>{this.props.result.objectType}</span> : null}
+                {this.props.result.fileType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.FileType}=</span>{this.props.result.fileType}</span> : null}
+                {this.props.result.connectorType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ConnectorType}=</span>{this.props.result.connectorType}</span> : null}
+                {this.props.result.sourceType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.SourceType}=</span>{this.props.result.sourceType}</span> : null}
+            </div>
         );
     }
 
     render() {
+        const containerClasses: string = classNames(
+            'material-card',
+            styles.resultItemContainer,
+            {
+                'with-hover': this.props.isSelectable,
+                'with-active': this.props.isSelectable,
+                'border': this.isSelected,
+            }
+        );
+
+        const contentClasses: string = classNames(
+            'inline-flex',
+            styles.resultItemContent
+        );
+
+        const borderIfSelected: string = this.isSelected ? ` ${styles.resultItemBorder}` : '';
+
         return (
-            <div>
-                {/* // TODO : review the checked attribute... */}
-                {/* // TODO : add css  */}
-                {/* // TODO : props to put a Radio or not  */}
-                {/* // TODO : la Radio brise le concept de la listem tout serait plus clean sans... à voir si on l'a veut ou non  */}
-                {/* Il faut ajouter un prop dans 2 class pour afficher la radio ou non
-                    Avec cette logique c'est lent sélectionner ... */}
-                <div className='form-group'>
-                    {this.props.isSelectable ? this.getSelectableResultItem() : this.getResultItem()}
-                </div>
+            <div className={containerClasses + borderIfSelected}>
+                <span className={contentClasses}>
+                    {this.props.isSelectable ? this.getRadio() : null}
+                    {this.getResultItem()}
+                </span>
             </div>
         );
     }

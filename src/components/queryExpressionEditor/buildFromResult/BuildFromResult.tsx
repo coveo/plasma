@@ -15,10 +15,10 @@ export interface IBuildFromResultState extends ISearchBarStateProps {
 }
 
 export enum Field {
-    OBJECT = 'objecttype',
-    FILE = 'filetype',
-    CONNECTOR = 'connectortype',
-    SOURCE = 'sourcetype',
+    ObjectType = '@objecttype',
+    FileType = '@filetype',
+    ConnectorType = '@connectortype',
+    SourceType = '@sourcetype',
 }
 
 // TODO : @source field value is not well parsed spaces should be removed
@@ -57,23 +57,23 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
 
         if (result.objectType) {
             return {
-                field: Field.OBJECT,
+                field: Field.ObjectType,
                 fieldValue: result.objectType,
             };
         } else if (result.fileType) {
             return {
-                field: Field.FILE,
+                field: Field.FileType,
                 fieldValue: result.fileType,
             };
         } else if (result.connectorType) {
             return {
-                field: Field.CONNECTOR,
+                field: Field.ConnectorType,
                 fieldValue: result.connectorType,
             };
-        } else if (result.source) {
+        } else if (result.sourceType) {
             return {
-                field: Field.SOURCE,
-                fieldValue: result.source,
+                field: Field.SourceType,
+                fieldValue: result.sourceType,
             };
         } else {
             return null;
@@ -95,14 +95,17 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
     render() {
         return (
             <div>
-                <SearchBar
-                    id='search-mode-search-bar'
-                    placeholder='Search'
-                    value={this.state.value}
-                    searching={this.state.searching}
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({value: event.target.value})}
-                    onSearch={(searchBarText: string) => {this.onSearch(searchBarText);}}
-                />
+                <div className='text-medium-blue mt4 mb3 ml4'> Search and select a result similar to the ones you want the query to match. </div>
+                <div className='mt4 mb3 ml4'>
+                    <SearchBar
+                        id='search-mode-search-bar'
+                        placeholder='Search'
+                        value={this.state.value}
+                        searching={this.state.searching}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({value: event.target.value})}
+                        onSearch={(searchBarText: string) => {this.onSearch(searchBarText);}}
+                    />
+                </div>
                 <ResultList results={this.state.results} isSelectable onClick={(result: IResult) => this.onClick(result)} />
             </div>
         );

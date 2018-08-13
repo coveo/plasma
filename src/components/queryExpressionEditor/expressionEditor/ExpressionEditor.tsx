@@ -8,6 +8,7 @@ import {OperatorSelect} from '../operatorSelect/OperatorSelect';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import {ValueSelectConnected} from '../valueSelect/ValueSelectConnected';
+import * as styles from './ExpressionEditor.scss';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',
@@ -160,41 +161,56 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         this.updateExpressionIfCompleted();
     }
 
-    private logTest() {
-        // console.log(this.props.selectedField)
+    // private logTest() {
+    //     // console.log(this.props.selectedField)
 
-        // console.log(this.props.selectedUpperDateValue.toISOString().slice(0,10))
+    //     // console.log(this.props.selectedUpperDateValue.toISOString().slice(0,10))
 
-        // console.log(this.props.selectedUpperDateValue.toLocaleDateString("en-US"))
-    }
+    //     // console.log(this.props.selectedUpperDateValue.toLocaleDateString("en-US"))
+    // }
 
     render() {
+        const firstLineContainerPadding: string = this.state.selectedFieldType === FieldType.String ?  styles.slimPadding : styles.loosePadding;
+
         return (
-            <div>
-                <FieldSelectConnected
-                    expressionEditorId={this.props.id}
-                    fields={this.props.fields}
-                />
-                <OperatorSelect
-                    expressionEditorId={this.props.id}
-                    selectedFieldType={this.state.selectedFieldType}
-                />
-                <ValueSelectConnected
-                    expressionEditorId={this.props.id}
-                    queryTrigger={this.props.queryTrigger}
-                    selectedFieldType={this.state.selectedFieldType}
-                    updateSelectedFieldValue={(value: string) => this.updateSelectedFieldValue(value)}
-                />
-                <BooleanOperatorSelect
-                    expressionEditorId={this.props.id}
-                    isCurrentExpressionComplete={this.isExpressionComplete(this.props)}
-                    onBooleanOperatorSelect={(selectedBooleanOperator) => this.onBooleanOperatorSelect(selectedBooleanOperator)}
-                />
-                <Button enabled={!this.props.isExpressionEditorAlone} name={'Delete'} onClick={() => this.deleteExpressionEditor()} />
+            <div className={`mt1 text-medium-blue`}>
+                <div className={`ml5 bg-light-grey ${styles.firstLineContainer} ${firstLineContainerPadding}`}> 
+                    <div className={ `spaced-boxes-container flex flex-nowrap ${styles.firstLineInnerContainer}`}>
+                        <div className={`${styles.raiseElement}`}>
+                            <FieldSelectConnected
+                                expressionEditorId={this.props.id}
+                                fields={this.props.fields}
+                            />
+                            <OperatorSelect
+                                expressionEditorId={this.props.id}
+                                selectedFieldType={this.state.selectedFieldType}
+                            />
+                        </div>
+                        <ValueSelectConnected
+                            expressionEditorId={this.props.id}
+                            queryTrigger={this.props.queryTrigger}
+                            selectedFieldType={this.state.selectedFieldType}
+                            updateSelectedFieldValue={(value: string) => this.updateSelectedFieldValue(value)}
+                        />
+                        <span className={`${styles.raiseElement}`}>
+                            <Button enabled={!this.props.isExpressionEditorAlone} name={'X'} onClick={() => this.deleteExpressionEditor()} />
+                        </span>
+                    </div>
+                </div>
 
-                <Button enabled={true} name={'LOG test'} onClick={() => this.logTest()} />
+                <div className={`ml3 mt1`}>
+                    <BooleanOperatorSelect
+                        expressionEditorId={this.props.id}
+                        isCurrentExpressionComplete={this.isExpressionComplete(this.props)}
+                        onBooleanOperatorSelect={(selectedBooleanOperator) => this.onBooleanOperatorSelect(selectedBooleanOperator)}
+                    />   
+                </div>
+    
 
-                {this.props.expression}
+
+                {/* <Button enabled={true} name={'LOG test'} onClick={() => this.logTest()} /> */}
+
+                {/* {this.props.expression} */}
             </div>
         );
     }

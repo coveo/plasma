@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
-import {Button} from '../../button/Button';
+// import {Button} from '../../button/Button';
 import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {booleanOperatorSelectId} from '../booleanOperatorSelect/BooleanOperatorSelect';
 import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
 import {IExpressionEditorState} from '../expressionEditor/ExpressionEditorReducers';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
+import * as styles from './FormMode.scss';
 
 export const expressionEditorId: string = 'expression-editor';
 
@@ -55,10 +56,10 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
     }
 
     // TODO remove
-    private logReduxState() {
-        // console.log(ReactVaporStore.getState())
-        // console.log(ReactVaporStore.getState().expressionEditors)
-    }
+    // private logReduxState() {
+    //     // console.log(ReactVaporStore.getState())
+    //     // console.log(ReactVaporStore.getState().expressionEditors)
+    // }
 
     private addExpressionEditor() {
         const newSate = this.state.expressionEditors;
@@ -106,10 +107,15 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
 
     render() {
         return (
-            <div>
-                <Button enabled={true} name={'Log Redux State'} onClick={() => this.logReduxState()} />
-                <Button enabled={true} name={'dispatch test'} onClick={() => this.ensureLastEditorCanAddRule()} />
-                {this.state.expressionEditors}
+            <div className={styles.expressionEditorsContainer}>
+                <div className='text-medium-blue mt4 ml4'> 
+                   Build your query by selecting the desired parameters in the form.
+                </div>
+                {/* <Button enabled={true} name={'Log Redux State'} onClick={() => this.logReduxState()} /> */}
+                {/* <Button enabled={true} name={'dispatch test'} onClick={() => this.ensureLastEditorCanAddRule()} /> */}
+                <div className='mt3'> 
+                    {this.state.expressionEditors}
+                </div>
             </div>
         );
     }
