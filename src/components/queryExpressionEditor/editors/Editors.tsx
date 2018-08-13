@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 import {TabConnected} from '../../tab/TabConnected';
 import {TabContent} from '../../tab/TabContent';
 import {TabNavigation} from '../../tab/TabNavigation';

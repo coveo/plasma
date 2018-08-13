@@ -27,8 +27,8 @@ export class AdvancedMode extends React.Component<IAdvancedModeProps, IAdvancedM
     render() {
         return (
             <div>
-                <div className='text-medium-blue mt4 ml4'> 
-                    Write your query using <a href="https://onlinehelp.coveo.com/en/cloud/coveo_cloud_query_syntax_reference.htm">Coveo query syntax </a>.
+                <div className='text-medium-blue mt4 ml4'>
+                    Write your query using <a href='https://onlinehelp.coveo.com/en/cloud/coveo_cloud_query_syntax_reference.htm'>Coveo query syntax </a>.
                 </div>
                 <div className={`mt3 ml4 ${styles.codeEditor}`}>
                     <CodeEditor

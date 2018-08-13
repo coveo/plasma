@@ -1,8 +1,8 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
-import * as styles from './QueryExpressionEditor.scss';
+import * as React from 'react';
 import {Editors} from './editors/Editors';
 import {Preview} from './preview/Preview';
+import * as styles from './QueryExpressionEditor.scss';
 import {QueryTrigger} from './queryTrigger/QueryTrigger';
 
 export interface IQueryExpressionEditorProps {
@@ -54,7 +54,7 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
         return (
             <div className={containerClasses}>
                 <div className={styles.leftContainer}>
-                    <div  className={styles.topLeftContainer}>
+                    <div className={styles.topLeftContainer}>
                         <div className='h1 text-medium-blue mt5 ml4 semibold'>
                             Query Expression Builder
                         </div>
@@ -63,7 +63,7 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
                                 <span>Generated Query Expression : </span>
                                 <span className='semibold'> {this.state.queryExpression} </span>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                     <Editors
                         queryTrigger={this.queryTrigger}

@@ -170,12 +170,12 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     // }
 
     render() {
-        const firstLineContainerPadding: string = this.state.selectedFieldType === FieldType.String ?  styles.slimPadding : styles.loosePadding;
+        const firstLineContainerPadding: string = this.state.selectedFieldType === FieldType.String ? styles.slimPadding : styles.loosePadding;
 
         return (
             <div className={`mt1 text-medium-blue`}>
-                <div className={`ml5 bg-light-grey ${styles.firstLineContainer} ${firstLineContainerPadding}`}> 
-                    <div className={ `spaced-boxes-container flex flex-nowrap ${styles.firstLineInnerContainer}`}>
+                <div className={`ml5 bg-light-grey ${styles.firstLineContainer} ${firstLineContainerPadding}`}>
+                    <div className={`spaced-boxes-container flex flex-nowrap ${styles.firstLineInnerContainer}`}>
                         <div className={`${styles.raiseElement}`}>
                             <FieldSelectConnected
                                 expressionEditorId={this.props.id}
@@ -203,10 +203,8 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                         expressionEditorId={this.props.id}
                         isCurrentExpressionComplete={this.isExpressionComplete(this.props)}
                         onBooleanOperatorSelect={(selectedBooleanOperator) => this.onBooleanOperatorSelect(selectedBooleanOperator)}
-                    />   
+                    />
                 </div>
-    
-
 
                 {/* <Button enabled={true} name={'LOG test'} onClick={() => this.logTest()} /> */}
 

@@ -108,12 +108,12 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
     render() {
         return (
             <div className={styles.expressionEditorsContainer}>
-                <div className='text-medium-blue mt4 ml4'> 
-                   Build your query by selecting the desired parameters in the form.
+                <div className='text-medium-blue mt4 ml4'>
+                    Build your query by selecting the desired parameters in the form.
                 </div>
                 {/* <Button enabled={true} name={'Log Redux State'} onClick={() => this.logReduxState()} /> */}
                 {/* <Button enabled={true} name={'dispatch test'} onClick={() => this.ensureLastEditorCanAddRule()} /> */}
-                <div className='mt3'> 
+                <div className='mt3'>
                     {this.state.expressionEditors}
                 </div>
             </div>

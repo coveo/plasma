@@ -91,10 +91,10 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
                     }}
                     hasMoreItems={() => this.state.hasMoreItems}
                     defaultSelectedOption={{value: 'Select field'}}
-                    // containerClasses={[styles.selector]}
-                    // width={'120'}
-                    // maxWidth={'120'}
-                    // We need to change the min-width of the button inside the selector
+                // containerClasses={[styles.selector]}
+                // width={'120'}
+                // maxWidth={'120'}
+                // We need to change the min-width of the button inside the selector
                 />
                 <span className={'mr2 ml2 h3'}>is</span>
             </span>

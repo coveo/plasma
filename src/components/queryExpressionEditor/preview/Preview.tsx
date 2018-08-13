@@ -1,9 +1,9 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
-import * as styles from './Preview.scss';
+import * as React from 'react';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IResult} from '../responseParser/ResponseParser';
 import {ResultList} from '../resultList/ResultList';
+import * as styles from './Preview.scss';
 
 export interface IPreviewProps {
     queryTrigger: QueryTrigger;
@@ -28,12 +28,12 @@ export class Preview extends React.Component<IPreviewProps, IPreviewState> {
         const results = await this.props.queryTrigger.getResultsWithAdvancedExpression(queryExpression);
         this.setState({results: results});
     }
-  
+
     render() {
         const containerClasses: string = classNames(
             styles.container,
             'bg-light-grey',
-            'mod-border-left'
+            'mod-border-left',
         );
 
         return (

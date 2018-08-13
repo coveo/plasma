@@ -1,12 +1,12 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
-import * as styles from './ResultList.scss';
 import {IContentProps} from '../../content/Content';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
 import {IResult} from '../responseParser/ResponseParser';
 import {ResultItem} from '../resultItem/ResultItem';
+import * as styles from './ResultList.scss';
 
 export interface IResultListProps {
     results: IResult[];
@@ -30,7 +30,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
     }
 
     resultListClasses(): string[] {
-        let classes: string[] = [];
+        const classes: string[] = [];
         const listBoxMaxHeight: string = this.props.isSelectable ? styles.resultListBoxSearch : styles.resultListBoxPreview;
 
         classes.push(styles.resultListBox);

@@ -86,12 +86,12 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
             case FieldType.Date:
                 return <ValueSelectDate expressionEditorId={this.props.expressionEditorId} />;
             default:
-                return <SingleSelectConnected id={`temporary-disable-select-value`} placeholder='Select Value' disabled={true} toggleClasses={styles.selectValueWidth}/>;
+                return <SingleSelectConnected id={`temporary-disable-select-value`} placeholder='Select Value' disabled={true} toggleClasses={styles.selectValueWidth} />;
         }
     }
 
     render() {
-        const isRaised: string = this.props.selectedFieldType === FieldType.String ?  '' : styles.raiseElement;
+        const isRaised: string = this.props.selectedFieldType === FieldType.String ? '' : styles.raiseElement;
 
         return (
             <span className={`mr3 ${isRaised} ${styles.selectValue} ${styles.selectValueWidth}`}>

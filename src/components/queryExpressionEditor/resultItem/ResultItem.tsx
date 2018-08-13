@@ -1,11 +1,11 @@
 
-import * as React from 'react';
 import * as classNames from 'classnames';
-import * as styles from './ResultItem.scss';
-import {Radio} from '../../radio/Radio';
-import {IResult} from '../responseParser/ResponseParser';
+import * as React from 'react';
 import {Label} from '../../input/Label';
+import {Radio} from '../../radio/Radio';
 import {Field} from '../buildFromResult/BuildFromResult';
+import {IResult} from '../responseParser/ResponseParser';
+import * as styles from './ResultItem.scss';
 
 export interface IResultItemProps {
     result: IResult;
@@ -50,10 +50,10 @@ export class ResultItem extends React.Component<IResultItemProps> {
     private getDefinedFieldExpressions(): JSX.Element {
         return (
             <div className={'text-medium-blue'}>
-                {this.props.result.objectType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ObjectType}=</span>{this.props.result.objectType}</span> : null}
-                {this.props.result.fileType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.FileType}=</span>{this.props.result.fileType}</span> : null}
-                {this.props.result.connectorType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ConnectorType}=</span>{this.props.result.connectorType}</span> : null}
-                {this.props.result.sourceType ?  <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.SourceType}=</span>{this.props.result.sourceType}</span> : null}
+                {this.props.result.objectType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ObjectType}=</span>{this.props.result.objectType}</span> : null}
+                {this.props.result.fileType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.FileType}=</span>{this.props.result.fileType}</span> : null}
+                {this.props.result.connectorType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ConnectorType}=</span>{this.props.result.connectorType}</span> : null}
+                {this.props.result.sourceType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.SourceType}=</span>{this.props.result.sourceType}</span> : null}
             </div>
         );
     }
@@ -66,12 +66,12 @@ export class ResultItem extends React.Component<IResultItemProps> {
                 'with-hover': this.props.isSelectable,
                 'with-active': this.props.isSelectable,
                 'border': this.isSelected,
-            }
+            },
         );
 
         const contentClasses: string = classNames(
             'inline-flex',
-            styles.resultItemContent
+            styles.resultItemContent,
         );
 
         const borderIfSelected: string = this.isSelected ? ` ${styles.resultItemBorder}` : '';
