@@ -31,3 +31,27 @@ $borders: border-top border-bottom border-left border-right;
 .mod-no-border {
   border: none;
 }
+
+@for $i from 1 through 10 {
+  $radius: $border-radius * $i;
+
+  .mod-rounded-border-#{$i} {
+    border-radius: $radius;
+  }
+  
+  .mod-rounded-border-top-#{$i} {
+    border-radius: $radius $radius 0 0;
+  }
+  
+  .mod-rounded-border-bottom-#{$i} {
+    border-radius: 0 0 $radius $radius;
+  }
+  
+  .mod-rounded-border-left-#{$i} {
+    border-radius: $radius 0 0 $radius;
+  }
+  
+  .mod-rounded-border-right-#{$i} {
+    border-radius: 0 $radius $radius 0;
+  }
+}
