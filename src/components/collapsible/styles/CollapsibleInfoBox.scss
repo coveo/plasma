@@ -4,7 +4,6 @@
 $collapsible-timeout: 200ms;
 
 .container {
-    border-radius: $collapsible-infobox-border-radius;
     transition: background-color $collapsible-timeout ease-in-out;
     &:hover {
         background-color: $white;
