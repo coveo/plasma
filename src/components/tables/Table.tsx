@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {IAdditionalClass} from '../../utils/ClassNameUtils';
 import {IThunkAction} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {IActionBarProps} from '../actions/ActionBar';
@@ -45,6 +46,8 @@ export interface ITableHeadingAttribute {
     sortByMethod?: (attributeValue: any, data?: IData) => string;
     sortMethod?: (data: IData[], attribute: string, ascending: boolean) => IData[];
     attributeFormatter?: IAttributeFormatter;
+    onClickCell?: (event?: any, data?: any) => void;
+    additionalCellClasses?: IAdditionalClass[];
 }
 
 export interface ITablePredicate {

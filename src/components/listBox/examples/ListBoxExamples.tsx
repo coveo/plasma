@@ -7,6 +7,10 @@ import {ListBoxConnected} from '../ListBoxConnected';
 
 export class ListBoxExamples extends React.Component {
     render() {
+        const triggerAlertFunction = (item: IItemBoxProps) => {
+            alert(`The item value triggered is ${item.value}`);
+        };
+
         const tooltip: ITooltipProps = {
             title: 'title test',
             placement: 'bottom',
@@ -23,9 +27,12 @@ export class ListBoxExamples extends React.Component {
             {value: 'test7'},
         ];
 
-        const triggerAlertFunction = (item: IItemBoxProps) => {
-            alert(`The item value triggered is ${item.value}`);
-        };
+        const clickableItems: IItemBoxProps[] = defaultItems.concat([
+            {
+                value: 'test8',
+                onOptionClick: triggerAlertFunction,
+            },
+        ]);
 
         return (
             <div className='mt2'>
@@ -53,6 +60,13 @@ export class ListBoxExamples extends React.Component {
                     <label className='form-control-label'>List Box with custom classes</label>
                     <div className='form-control'>
                         <ListBox items={defaultItems} classes={['bg-light-blue']} />
+                    </div>
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>List Box with an onClick event on the last element</label>
+                    <div className='form-control'>
+                        <ListBox items={clickableItems} />
                     </div>
                 </div>
                 <div className='form-group'>

@@ -93,7 +93,7 @@ import {TableExamples} from '../src/components/tables/examples/TableExamples';
 import {TableHeaderExamples} from '../src/components/tables/examples/TableHeaderExamples';
 import {TableRowConnectedExamples} from '../src/components/tables/examples/TableRowConnectedExamples';
 import {TableRowExamples} from '../src/components/tables/examples/TableRowExamples';
-import {TextAreaExamples} from '../src/components/textarea/TextAreaExamples';
+import {TextAreaExamples} from '../src/components/textarea/examples/TextAreaExamples';
 import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';

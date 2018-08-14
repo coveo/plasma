@@ -5,6 +5,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
+import {triggerAlertFunction} from '../../../utils/TestUtils';
 import {Breadcrumb} from '../../breadcrumbs/Breadcrumb';
 import {Button} from '../../button/Button';
 import {Checkbox} from '../../checkbox/Checkbox';
@@ -13,8 +14,8 @@ import {GroupableCheckboxConnected} from '../../checkbox/GroupableCheckboxConnec
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
-import {ITableOwnProps} from '../Table';
 import {IData, ITableRowData} from '../Table';
+import {ITableOwnProps} from '../Table';
 import {modifyState, setIsInError} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
@@ -220,6 +221,64 @@ export class TableExamples extends React.Component<any, any> {
                             {
                                 attributeName: 'attribute4',
                                 titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table with onClick event for the second cell</label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={getTableDataById(simplestTableDataById)}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: () => 'click on me',
+                                onClickCell: () => triggerAlertFunction(),
+                                additionalCellClasses: [{
+                                    className: 'cursor-pointer',
+                                    condition: () => true,
+                                }],
+                            },
+                            {
+                                attributeName: 'attribute3',
+                                titleFormatter: _.identity,
+                            },
+                        ]}
+                        blankSlateDefault={{title: 'No results!'}}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Simplest Table with onClick event only on the second row for the second cell</label>
+                    <TableConnected
+                        id={_.uniqueId('react-vapor-table')}
+                        initialTableData={getTableDataById(simplestTableDataById)}
+                        headingAttributes={[
+                            {
+                                attributeName: 'attribute1',
+                                titleFormatter: _.identity,
+                            },
+                            {
+                                attributeName: 'attribute4',
+                                titleFormatter: () => 'click on me',
+                                onClickCell: (event, data) => {
+                                    if (data.rowData.id === 'row1') {
+                                        triggerAlertFunction();
+                                    }
+                                },
+                                additionalCellClasses: [{
+                                    className: 'cursor-pointer',
+                                    condition: () => true,
+                                }],
                             },
                             {
                                 attributeName: 'attribute3',
