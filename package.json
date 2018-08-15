@@ -61,7 +61,7 @@
   "devDependencies": {
     "@types/chosen-js": "1.6.2",
     "@types/classnames": "2.2.4",
-    "@types/codemirror": "0.0.58",
+    "@types/codemirror": "0.0.59",
     "@types/diff2html": "0.0.4",
     "@types/enzyme": "2.8.7",
     "@types/react-textarea-autosize": "4.3.3",
