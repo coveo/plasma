@@ -12,6 +12,7 @@ import {ItemFilterConnectedExamples} from '../src/components/actions/filters/exa
 import {ItemFilterExamples} from '../src/components/actions/filters/examples/ItemFilterExamples';
 import {AutocompleteExamples} from '../src/components/autocomplete/examples/AutocompleteExamples';
 import {BadgeExamples} from '../src/components/badge/examples/BadgeExamples';
+import {BannerExamples} from '../src/components/banner/examples/BannerExamples';
 import {BlankSlateExample} from '../src/components/blankSlate/examples/BlankSlateExample';
 import {BorderedLineExamples} from '../src/components/borderedLine/examples/BorderedLineExamples';
 import {BreadcrumbsExamples} from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
@@ -30,9 +31,7 @@ import {ContentExamples} from '../src/components/content/examples/ContentExample
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import {
-    DatePickerDropdownConnectedExamples,
-} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import {
     DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
@@ -216,6 +215,7 @@ class App extends React.Component<any, any> {
                         {component: CodeEditorExamples, componentName: 'CodeEditor'},
                         {component: DropdownSearchExamples, componentName: 'DropdownSearch'},
                         {component: DiffViewerExamples, componentName: 'DiffViewer'},
+                        {component: BannerExamples, componentName: 'Banner'},
                     ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
                 </div>
             </Provider>
