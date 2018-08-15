@@ -21,11 +21,16 @@ $default-border-size: 1px;
 $default-border: $default-border-size solid $medium-grey;
 
 // Typography
-$title-font-size: 16px;
 $small-font-size: 13px;
 $default-font-size: 15px;
+$title-font-size: 16px;
+$medium-title-font-size: 18px;
+$big-font-size: 24px;
+$big-title-font-size: 32px;
+
 $default-line-height: 16px;
 $big-line-height: 21px;
+
 $code-font-size: 14px;
 $base-font-family: 'Lato', Arial, Helvetica, sans-serif;
 $code-font-family: source_code_pro_regular, 'Courier New', Courier, monospace;
@@ -575,3 +580,12 @@ $diff-separator-margin: 10px;
 
 // Color dots
 $color-dot-size: $default-line-height;
+
+//Banners
+$banner-padding: 25px 40px;
+$banner-height: 300px;
+$banner-content-height: 165px;
+$banner-content-padding: 50px;
+$banner-right-width: 300px;
+$banner-warning-icon-fix: 2px;
+$banner-box-shadow: inset 0 5px 10px 0 rgba($black, 0.1), inset 0 -10px 50px 0 rgba($black, 0.2);
