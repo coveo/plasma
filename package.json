@@ -80,7 +80,7 @@
     "@types/react-tether": "0.5.3",
     "@types/react-transition-group": "2.0.7",
     "@types/redux-logger": "3.0.5",
-    "@types/underscore": "1.8.8",
+    "@types/underscore": "1.8.9",
     "@types/underscore.string": "0.0.32",
     "@types/webpack-env": "1.13.6",
     "autoprefixer": "9.0.1",
