@@ -18,7 +18,7 @@ export enum Field {
     ObjectType = '@objecttype',
     FileType = '@filetype',
     ConnectorType = '@connectortype',
-    SourceType = '@sourcetype',
+    Source = '@source',
 }
 
 // TODO : @source field value is not well parsed spaces should be removed
@@ -70,10 +70,10 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
                 field: Field.ConnectorType,
                 fieldValue: result.connectorType,
             };
-        } else if (result.sourceType) {
+        } else if (result.source) {
             return {
-                field: Field.SourceType,
-                fieldValue: result.sourceType,
+                field: Field.Source,
+                fieldValue: result.source,
             };
         } else {
             return null;

@@ -53,7 +53,7 @@ export class ResultItem extends React.Component<IResultItemProps> {
                 {this.props.result.objectType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ObjectType}=</span>{this.props.result.objectType}</span> : null}
                 {this.props.result.fileType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.FileType}=</span>{this.props.result.fileType}</span> : null}
                 {this.props.result.connectorType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ConnectorType}=</span>{this.props.result.connectorType}</span> : null}
-                {this.props.result.sourceType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.SourceType}=</span>{this.props.result.sourceType}</span> : null}
+                {this.props.result.source ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.Source}=</span>{this.props.result.source}</span> : null}
             </div>
         );
     }

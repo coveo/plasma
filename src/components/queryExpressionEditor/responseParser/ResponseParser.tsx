@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+import {addQuotesIfContainsWhiteSpace} from '../QueryExpressionEditorUtils';
 
 export interface IFieldValue {
     value: string;
@@ -12,14 +13,12 @@ export interface IField {
 
 export interface IResult {
     title: string;
-    excerpt: string; // TODO remove if not used
     uniqueID: string;
     uri: string;
-    // TODO : This should be grouped in a map...
     objectType: string;
     fileType: string;
     connectorType: string;
-    sourceType: string;
+    source: string;
 }
 
 // TODO : review type any ...
@@ -88,13 +87,12 @@ export class ResponseParser {
     private parseResult(result: any): IResult {
         return {
             title: result.Title,
-            excerpt: result.Excerpt,
             uniqueID: result.UniqueId,
             uri: result.raw.uri,
             objectType: result.raw.sysobjecttype,
             fileType: result.raw.sysfiltetype,
             connectorType: result.raw.sysconnectortype,
-            sourceType: result.raw.syssourcetype,
+            source: addQuotesIfContainsWhiteSpace(result.raw.syssource),
         };
     }
 }
