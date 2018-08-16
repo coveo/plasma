@@ -17,7 +17,7 @@ export interface IQueryStringArguments {
 }
 
 // TODO : Improve the API calls and handling of errors
-// Some fields raise an error when a call to the API is made with them 
+// Some fields raise an error when a call to the API is made with them
 // See parsedField variable in ValueSelectString.tsx
 //      - Maybe I'm not using the right API call or
 //      - Maybe I'm not parsing the field value correctly

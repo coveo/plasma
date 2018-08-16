@@ -1,17 +1,17 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
-import {ReduxUtils, IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {IDropdownSearchState} from '../../dropdownSearch/DropdownSearchReducers';
+import {clearListBoxOption} from '../../listBox/ListBoxActions';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
 import {fieldSelectId} from '../fieldSelect/FieldSelect';
 import {operatorSelectId} from '../operatorSelect/OperatorSelect';
-import {IValueSelectStringOwnProps, IValueSelectStringProps, IValueSelectStringStateProps, ValueSelectString, IValueSelectStringDispatchProps} from './ValueSelectString';
-import { clearListBoxOption } from '../../listBox/ListBoxActions';
+import {IValueSelectStringDispatchProps, IValueSelectStringOwnProps, IValueSelectStringProps, IValueSelectStringStateProps, ValueSelectString} from './ValueSelectString';
 
-// TODO QUESTION R-V : 
-// Is this the only way to get the selected option from a DropdownSearchConnected selector? 
+// TODO QUESTION R-V :
+// Is this the only way to get the selected option from a DropdownSearchConnected selector?
 // Note : Duplication of code with ExpressionEditorConnected.tsx
 function getSelectedOption(options: IDropdownOption[]): string {
     const selectedOption: IDropdownOption = _.findWhere(options, {selected: true});

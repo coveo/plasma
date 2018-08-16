@@ -82,11 +82,11 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
     render() {
         return (
             <span className={`${styles.container}`}>
-                {/* 
+                {/*
                 // TODO: BUG?
                 // When loading more values in the infinte scroll,
                 // The selected value resets to 'Select an option'
-                // Why does the value gets reset? 
+                // Why does the value gets reset?
                 */}
                 <DropdownSearchConnected
                     defaultOptions={this.currentFieldOptions}

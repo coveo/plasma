@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {booleanOperatorSelectId} from '../booleanOperatorSelect/BooleanOperatorSelect';
 import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
@@ -8,7 +9,6 @@ import {IExpressionEditorState} from '../expressionEditor/ExpressionEditorReduce
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import * as styles from './FormMode.scss';
-import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 // import {Button} from '../../button/Button';
 
 export const expressionEditorId: string = 'expression-editor';
@@ -104,7 +104,7 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
             const completeExpression: string = `${expression} ${booleanOperator} `;
 
             finaleExpression = finaleExpression.concat(completeExpression);
-        };
+        }
         return finaleExpression;
     }
 
@@ -116,16 +116,16 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
         const nextExpressionState: IExpressionEditorState = expressions[i + 1];
         if (_.isNull(nextExpressionState) || _.isUndefined(nextExpressionState)) {
             return true;
-        } 
+        }
 
         const nextExpression: string = convertUndefinedAndNullToEmptyString(nextExpressionState.expression);
         if (nextExpression === '') {
             return true;
         }
-        
+
         return false;
     }
-    
+
     // TODO : Temporary function for debugging
     // private logReduxState() {
     //     console.log(ReactVaporStore.getState())

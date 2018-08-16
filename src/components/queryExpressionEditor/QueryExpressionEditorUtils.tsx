@@ -6,4 +6,4 @@ export const addQuotesIfContainsWhiteSpace = (value: string) => {
     }
 
     return value;
-}
+};

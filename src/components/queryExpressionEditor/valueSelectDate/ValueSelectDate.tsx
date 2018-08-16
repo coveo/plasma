@@ -6,7 +6,7 @@ import {IDatesSelectionBox} from '../../datePicker/DatePickerBox';
 import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
 import * as styles from './ValueSelectDate.scss';
 
-// TODO DATE SELECTION: 
+// TODO DATE SELECTION:
 // The selection of a date range has not been implemented yet
 // The selection of yesterday has not been implemented yet
 // The places that will need some adjusments are tagged with 'TODO DATE SELECTION:'
@@ -25,14 +25,14 @@ export const SELECTION_BOX: IDatesSelectionBox[] = [
         title: 'Select date',
         // TODO DATE SELECTION: Hide yesterday option if we select a range.
         // TODO DATE SELECTION: add the logic to parse correctly the yesterday selection
-        // quickOptions: [ 
+        // quickOptions: [
         //     {
         //         label: 'Yesterday',
         //         value: () => moment().subtract(1, 'day').toDate().toString(),
         //     },
         // ],
         // TODO DATE SELECTION:  If operator from.. to.. is selected set to 'true'
-        isRange: false, 
+        isRange: false,
         withTime: false,
         color: DatePickerColors.blue,
     },
