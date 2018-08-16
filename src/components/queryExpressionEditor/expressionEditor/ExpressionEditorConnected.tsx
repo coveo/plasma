@@ -12,7 +12,9 @@ import {ExpressionEditor, IExpressionEditorDispatchProps, IExpressionEditorOwnPr
 import {removeExpressionEditor, updateExpressionEditor} from './ExpressionEditorActions';
 import {IExpressionEditorState} from './ExpressionEditorReducers';
 
-// TODO : : Is this the only way to get the selectedOption? + Duplication of code with ValueSelectConnected.tsx
+// TODO QUESTION : 
+// Is this the only way to get the selected option from a DropdownSearchConnected selector? 
+// Note : Duplication of code with ValueSelectStringConnected.tsx
 function getSelectedOption(options: IDropdownOption[]): string {
     const selectedOption: IDropdownOption = _.findWhere(options, {selected: true});
     return selectedOption.value;

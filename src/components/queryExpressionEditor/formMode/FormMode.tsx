@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
-// import {Button} from '../../button/Button';
 import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {booleanOperatorSelectId} from '../booleanOperatorSelect/BooleanOperatorSelect';
 import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
@@ -9,6 +8,8 @@ import {IExpressionEditorState} from '../expressionEditor/ExpressionEditorReduce
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import * as styles from './FormMode.scss';
+import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
+// import {Button} from '../../button/Button';
 
 export const expressionEditorId: string = 'expression-editor';
 
@@ -42,9 +43,6 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
     }
 
     componentWillReceiveProps(nextProps: IFormModeProps) {
-        // update le state courant avec toutes les expressions
-        // const finalExpression: string = this.getExpression(nextProps);
-        // this.setState({finalExpression: expression});
         const finaleExpression = this.getFinalExpression(nextProps);
         this.props.updateQueryExpression(finaleExpression);
     }
@@ -54,12 +52,6 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
         this.setState({fields: getfields});
         this.addExpressionEditor();
     }
-
-    // TODO remove
-    // private logReduxState() {
-    //     // console.log(ReactVaporStore.getState())
-    //     // console.log(ReactVaporStore.getState().expressionEditors)
-    // }
 
     private addExpressionEditor() {
         const newSate = this.state.expressionEditors;
@@ -90,20 +82,54 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
     }
 
     private ensureLastEditorCanAddRule() {
-        // TODO : Fix this it is probably better to use a prop!
-        // console.log( this.props.expressionEditorsState)
         const lastEditorId = this.props.expressionEditorsState[this.props.expressionEditorsState.length - 2].id;
-        // console.log( lastEditorId)
         ReactVaporStore.dispatch(selectListBoxOption(`${lastEditorId}-${booleanOperatorSelectId}`, false, null));
     }
 
     private getFinalExpression(nextProps: IFormModeProps) {
-        let finaleExpression: string = 'a';
-        _.forEach(nextProps.expressionEditorsState, (expressionEditorState) => {
-            finaleExpression = finaleExpression.concat(expressionEditorState.expression);
-        });
+        let finaleExpression: string = '';
+        const expressions: IExpressionEditorState[] = nextProps.expressionEditorsState;
+        for (let i = 0; i < expressions.length; i++) {
+            const expression: string = convertUndefinedAndNullToEmptyString(expressions[i].expression);
+            let booleanOperator: string = convertUndefinedAndNullToEmptyString(expressions[i].booleanOperator);
+
+            if (expression === '') {
+                booleanOperator = '';
+            }
+
+            if (this.nextExpressionIsNotDefined(i, expressions)) {
+                booleanOperator = '';
+            }
+
+            const completeExpression: string = `${expression} ${booleanOperator} `;
+
+            finaleExpression = finaleExpression.concat(completeExpression);
+        };
         return finaleExpression;
     }
+
+    private nextExpressionIsNotDefined(i: number, expressions: IExpressionEditorState[]): boolean {
+        if (i === expressions.length - 1) {
+            return true;
+        }
+
+        const nextExpressionState: IExpressionEditorState = expressions[i + 1];
+        if (_.isNull(nextExpressionState) || _.isUndefined(nextExpressionState)) {
+            return true;
+        } 
+
+        const nextExpression: string = convertUndefinedAndNullToEmptyString(nextExpressionState.expression);
+        if (nextExpression === '') {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    // TODO : Temporary function for debugging
+    // private logReduxState() {
+    //     console.log(ReactVaporStore.getState())
+    // }
 
     render() {
         return (
@@ -111,8 +137,8 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
                 <div className='text-medium-blue mt4 ml4'>
                     Build your query by selecting the desired parameters in the form.
                 </div>
-                {/* <Button enabled={true} name={'Log Redux State'} onClick={() => this.logReduxState()} /> */}
-                {/* <Button enabled={true} name={'dispatch test'} onClick={() => this.ensureLastEditorCanAddRule()} /> */}
+                {/* TODO : Temporary button for debugging */}
+                {/* <Button enabled={true} name={'Log Redux State'} onClick={() => this.logReduxState()} />  */}
                 <div className='mt3'>
                     {this.state.expressionEditors}
                 </div>

@@ -8,6 +8,7 @@ import * as styles from './FieldSelect.scss';
 
 export const fieldSelectId: string = 'field-select';
 export const optionsPerPage: number = 10;
+export const fieldSelectDefaultOption: string = 'Select field';
 
 export interface IFieldSelectOwnProps {
     fields: IField[];
@@ -28,6 +29,7 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
     private allFieldOptions: IDropdownOption[];
     private currentFieldOptions: IDropdownOption[];
     private optionsPage: number;
+    readonly dropdownSearchId: string;
 
     constructor(props: IFieldSelectProps) {
         super(props);
@@ -35,6 +37,7 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
         this.allFieldOptions = null;
         this.currentFieldOptions = [];
         this.optionsPage = 1;
+        this.dropdownSearchId = `${this.props.expressionEditorId}-${fieldSelectId}`;
     }
 
     componentWillMount() {
@@ -67,7 +70,7 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
     private updateCurrentOptions() {
         const newOptions: IDropdownOption[] = this.getNewOptions();
         this.currentFieldOptions = this.currentFieldOptions.concat(newOptions);
-        this.props.onOptionsChanged(`${this.props.expressionEditorId}-${fieldSelectId}`, this.currentFieldOptions);
+        this.props.onOptionsChanged(this.dropdownSearchId, this.currentFieldOptions);
     }
 
     private getNewOptions(): IDropdownOption[] {
@@ -79,22 +82,24 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
     render() {
         return (
             <span className={`${styles.container}`}>
+                {/* 
+                // TODO: BUG?
+                // When loading more values in the infinte scroll,
+                // The selected value resets to 'Select an option'
+                // Why does the value gets reset? 
+                */}
                 <DropdownSearchConnected
                     defaultOptions={this.currentFieldOptions}
-                    id={`${this.props.expressionEditorId}-${fieldSelectId}`}
+                    id={this.dropdownSearchId}
                     infiniteScroll={{
                         next: () => this.updateInfinteScroll(),
                         dataLength: 0,
                         hasMore: true,
-                        endMessage: <div className='option-wrapper'><span className='dropdown-option'>No more items to show</span></div>,
-                        loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more items...</span></div>,
+                        endMessage: <div className='option-wrapper'><span className='dropdown-option'>No more fields to show</span></div>,
+                        loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more fields...</span></div>,
                     }}
                     hasMoreItems={() => this.state.hasMoreItems}
-                    defaultSelectedOption={{value: 'Select field'}}
-                // containerClasses={[styles.selector]}
-                // width={'120'}
-                // maxWidth={'120'}
-                // We need to change the min-width of the button inside the selector
+                    defaultSelectedOption={{value: fieldSelectDefaultOption}}
                 />
                 <span className={'mr2 ml2 h3'}>is</span>
             </span>

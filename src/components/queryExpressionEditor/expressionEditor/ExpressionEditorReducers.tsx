@@ -4,12 +4,11 @@ import {ExpressionEditorActions, IExpressionEditorActionPayload} from './Express
 
 export interface IExpressionEditorState {
     id: string;
-    // disabled: boolean;
     expression?: string;
     booleanOperator?: string;
 }
 
-export const expressionEditorState: IExpressionEditorState = {id: 'initid', expression: 'initial'};
+export const expressionEditorState: IExpressionEditorState = {id: '', expression: ''};
 export const expressionEditorsInitialState: IExpressionEditorState[] = [];
 
 export const expressionEditorReducer = (

@@ -24,6 +24,11 @@ export enum FieldType {
     String = 'string',
 }
 
+export interface SelectedFieldValue {
+    value: string;
+    hasChange: boolean;
+}
+
 export interface FieldValue {
     numberValue: number;
     dateValue: string[];
@@ -41,7 +46,6 @@ export interface IExpressionEditorOwnProps {
 
 export interface IExpressionEditorOwnState {
     selectedFieldType: FieldType;
-    selectedFieldValue: string;
 }
 
 export interface IExpressionEditorStateProps {
@@ -61,9 +65,12 @@ export interface IExpressionEditorDispatchProps {
 export interface IExpressionEditorProps extends IExpressionEditorOwnProps, IExpressionEditorStateProps, IExpressionEditorDispatchProps {}
 
 export class ExpressionEditor extends React.Component<IExpressionEditorProps, IExpressionEditorOwnState> {
+    private selectedFieldValue: SelectedFieldValue;
+
     constructor(props: IExpressionEditorProps) {
         super(props);
-        this.state = {selectedFieldType: null, selectedFieldValue: ''};
+        this.state = {selectedFieldType: null};
+        this.selectedFieldValue = {value: '', hasChange: false};
     }
 
     componentWillReceiveProps(nextProps: IExpressionEditorProps) {
@@ -71,9 +78,9 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         this.updateSelectedFieldType(nextProps.selectedField);
     }
 
-    private updateExpressionIfCompleted(nextProps: IExpressionEditorProps = this.props) {
+    private updateExpressionIfCompleted(nextProps: IExpressionEditorProps) {
         if (!this.isExpressionComplete(nextProps) || this.selectedFieldHasChange(nextProps)) {
-            this.props.update('', undefined);
+            this.props.update('', this.props.booleanOperator);
             return;
         }
 
@@ -83,11 +90,13 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
 
         const expression: string = this.getExpression(nextProps);
         this.props.update(expression, this.props.booleanOperator);
+        this.selectedFieldValue.hasChange = false;
     }
 
     private isExpressionComplete(props: IExpressionEditorProps): boolean {
         const isNewExpressionComplete: boolean = (props.selectedField && props.selectedOperator
-            && this.state.selectedFieldValue != null) || false;
+            && (this.selectedFieldValue.value !== null && this.selectedFieldValue.value !== '')) || false;
+
         return isNewExpressionComplete;
     }
 
@@ -99,19 +108,18 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         const selectedFieldHasChange: boolean = this.props.selectedField !== nextProps.selectedField;
         const selectedOperatorHasChange: boolean = this.props.selectedOperator !== nextProps.selectedOperator;
 
-        return selectedFieldHasChange || selectedOperatorHasChange;
+        return selectedFieldHasChange || selectedOperatorHasChange || this.selectedFieldValue.hasChange;
     }
 
     private getExpression(nextProps: IExpressionEditorProps): string {
         // TODO : Better parsing
         const selectedField: string = nextProps.selectedField ? nextProps.selectedField : '';
         const selectedOperator: string = nextProps.selectedOperator ? nextProps.selectedOperator : '';
-        const selectedFieldValue: string = this.state.selectedFieldValue ? this.state.selectedFieldValue : '';
+        const selectedFieldValue: string = this.selectedFieldValue.value ? this.selectedFieldValue.value : '';
 
         const expression: string = selectedField + selectedOperator + selectedFieldValue;
 
-        const sanitizedExpression: string = expression.replace(/\s/g, '');
-        return sanitizedExpression;
+        return expression;
     }
 
     private updateSelectedFieldType(selectedFieldName: string) {
@@ -143,12 +151,8 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         this.props.deleteExpressionEditor(this.props.id);
     }
 
-    // TODO check condition
     private onBooleanOperatorSelect(selectedBooleanOperator: string) {
-        if (!this.props.booleanOperator &&
-            selectedBooleanOperator !== 'null' &&
-            selectedBooleanOperator !== null &&
-            selectedBooleanOperator !== undefined) {
+        if (!this.props.booleanOperator && selectedBooleanOperator !== null) {
             this.props.addExpressionEditor();
         }
 
@@ -156,18 +160,10 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private updateSelectedFieldValue(value: string) {
-        // console.log('updateValueSelected')
-        this.setState({selectedFieldValue: value});
-        this.updateExpressionIfCompleted();
+        this.selectedFieldValue.value = value;
+        this.selectedFieldValue.hasChange = true;
+        this.updateExpressionIfCompleted(this.props);
     }
-
-    // private logTest() {
-    //     // console.log(this.props.selectedField)
-
-    //     // console.log(this.props.selectedUpperDateValue.toISOString().slice(0,10))
-
-    //     // console.log(this.props.selectedUpperDateValue.toLocaleDateString("en-US"))
-    // }
 
     render() {
         const firstLineContainerPadding: string = this.state.selectedFieldType === FieldType.String ? styles.slimPadding : styles.loosePadding;
@@ -192,7 +188,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                             selectedFieldType={this.state.selectedFieldType}
                             updateSelectedFieldValue={(value: string) => this.updateSelectedFieldValue(value)}
                         />
-                        <span className={`${styles.raiseElement}`}>
+                        <span className={`ml2 ${styles.raiseElement}`}>
                             <Button enabled={!this.props.isExpressionEditorAlone} name={'X'} onClick={() => this.deleteExpressionEditor()} />
                         </span>
                     </div>
@@ -205,10 +201,6 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                         onBooleanOperatorSelect={(selectedBooleanOperator) => this.onBooleanOperatorSelect(selectedBooleanOperator)}
                     />
                 </div>
-
-                {/* <Button enabled={true} name={'LOG test'} onClick={() => this.logTest()} /> */}
-
-                {/* {this.props.expression} */}
             </div>
         );
     }

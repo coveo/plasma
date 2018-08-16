@@ -16,14 +16,17 @@ export interface IQueryStringArguments {
     viewAllContent?: number;
 }
 
-// TODO : The redux action should call this module and after getting the response
-// from the api it should continue to the reducer so that the reducer update the state,
+// TODO : Improve the API calls and handling of errors
+// Some fields raise an error when a call to the API is made with them 
+// See parsedField variable in ValueSelectString.tsx
+//      - Maybe I'm not using the right API call or
+//      - Maybe I'm not parsing the field value correctly
+// I will have to investigate that.
 export class QueryTrigger {
     private responseParser: ResponseParser;
 
     constructor(private accessToken: string, private organizationId: string, private restUrl?: string) {
-        // TODO put default props instead of this.initialize
-        this.initialize();
+        this.initializeRestUrl();
         this.responseParser = new ResponseParser();
     }
 
@@ -41,8 +44,13 @@ export class QueryTrigger {
         return await this.getResults(this.getDefaultData());
     }
 
+    private initializeRestUrl() {
+        this.restUrl = this.restUrl ? this.restUrl : DEFAULT_REST_URL;
+    }
+
     private getDefaultData() {
         return {
+            numberOfResults: 20,
             queryStringArguments: {
                 organizationId: this.organizationId,
                 viewAllContent: 1,
@@ -56,7 +64,6 @@ export class QueryTrigger {
     }
 
     async getFields(): Promise<any> {
-        // TODO: Do we want to get all fields?
         // TODO : Do we need to link it with the organization id ? : https://platform.cloud.coveo.com/rest/organizations/{organizationId}/indexes/page/fields
         const fieldsRestUrl: string = `${DEFAULT_REST_URL}/fields`;
         const response = await this.executeQuery(fieldsRestUrl);
@@ -64,7 +71,6 @@ export class QueryTrigger {
     }
 
     async getFieldValues(fieldType: string): Promise<any> {
-        // TODO: get all values, not max number of values
         const fieldValuesRestUrl: string = `${DEFAULT_REST_URL}/values?field=${fieldType}&maximumNumberOfValues=100`;
         const response = await this.executeQuery(fieldValuesRestUrl);
         return this.responseParser.parseFieldValues(response);
@@ -72,7 +78,7 @@ export class QueryTrigger {
 
     private async executeQuery(url: string, data: IQueryParameters = {}): Promise<IResult[]> {
         let xmlResponse;
-        // TODO : better handling of fail...
+        // TODO : Better handling of errors...
         await $.ajax({
             type: 'GET',
             url: url,
@@ -86,13 +92,6 @@ export class QueryTrigger {
                 xmlResponse = 'error';
             });
 
-        // console.log(xmlResponse);
         return xmlResponse;
-    }
-
-    private initialize() {
-        if (!this.restUrl) {
-            this.restUrl = DEFAULT_REST_URL;
-        }
     }
 }

@@ -1,15 +1,18 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../../ReactVapor';
-import {ReduxUtils} from '../../../utils/ReduxUtils';
+import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
+import {ReduxUtils, IReduxAction} from '../../../utils/ReduxUtils';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {IDropdownSearchState} from '../../dropdownSearch/DropdownSearchReducers';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
 import {fieldSelectId} from '../fieldSelect/FieldSelect';
 import {operatorSelectId} from '../operatorSelect/OperatorSelect';
-import {IValueSelectStringOwnProps, IValueSelectStringProps, IValueSelectStringStateProps, ValueSelectString} from './ValueSelectString';
+import {IValueSelectStringOwnProps, IValueSelectStringProps, IValueSelectStringStateProps, ValueSelectString, IValueSelectStringDispatchProps} from './ValueSelectString';
+import { clearListBoxOption } from '../../listBox/ListBoxActions';
 
-// TODO : : Is this the only way to get the selectedOption? + Duplication of code with ExpressionEditorConnected.tsx
+// TODO QUESTION R-V : 
+// Is this the only way to get the selected option from a DropdownSearchConnected selector? 
+// Note : Duplication of code with ExpressionEditorConnected.tsx
 function getSelectedOption(options: IDropdownOption[]): string {
     const selectedOption: IDropdownOption = _.findWhere(options, {selected: true});
     return selectedOption.value;
@@ -25,4 +28,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IValueSelectStringOw
     };
 };
 
-export const ValueSelectStringConnected: React.ComponentClass<IValueSelectStringProps> = connect(mapStateToProps, null, ReduxUtils.mergeProps)(ValueSelectString);
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IValueSelectStringDispatchProps => ({
+    clearSelectedFieldValues: (id: string) => dispatch(clearListBoxOption(id)),
+});
+
+export const ValueSelectStringConnected: React.ComponentClass<IValueSelectStringProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ValueSelectString);

@@ -22,25 +22,42 @@ export interface IValueSelectStringStateProps {
     selectedOperator?: string;
 }
 
-export interface IValueSelectStringProps extends IValueSelectStringOwnProps, IValueSelectStringStateProps {}
+export interface IValueSelectStringDispatchProps {
+    clearSelectedFieldValues?: (id: string) => void;
+}
+
+export interface IValueSelectStringProps extends IValueSelectStringOwnProps, IValueSelectStringStateProps, IValueSelectStringDispatchProps {}
 
 export class ValueSelectString extends React.Component<IValueSelectStringProps, IValueSelectStringOwnState> {
+    readonly multiSelectWithFilterId: string;
+
     constructor(props: IValueSelectStringProps) {
         super(props);
         this.state = {fieldValueItems: []};
+        this.multiSelectWithFilterId = `${this.props.expressionEditorId}-${valueSelectStringId}`;
     }
 
     componentWillReceiveProps(nextProps: IValueSelectStringProps) {
+        this.props.clearSelectedFieldValues(this.multiSelectWithFilterId);
         this.updateFieldValues(nextProps.selectedField);
     }
 
     private async updateFieldValues(field: string) {
+        // TODO : This is a temporary fix,
+        // See the comment (BUG?) in FieldSelect.tsx
+        if (field === 'Select an option') {
+            this.setState({fieldValueItems: []});
+            return;
+        }
+
         const newFieldValuesItems: IItemBoxProps[] = await this.getFieldValuesItems(field);
         this.setState({fieldValueItems: newFieldValuesItems});
     }
 
     private async getFieldValuesItems(field: string): Promise<IItemBoxProps[]> {
-        // TODO use the expressionParser
+        // TODO : This is a temporary fix,
+        // (it makes the API call works for certain fields)
+        // See the comment (Improve the API calls and handling of errors) in QueryTrigger.tsx
         const parsedField = [field.slice(0, 1), 'sys', field.slice(1)].join('');
 
         const fieldValues: IFieldValue[] = await this.props.queryTrigger.getFieldValues(parsedField);
@@ -54,13 +71,11 @@ export class ValueSelectString extends React.Component<IValueSelectStringProps, 
 
     render() {
         return (
-            <span>
-                <MultiSelectWithFilter
-                    id={`${this.props.expressionEditorId}-${valueSelectStringId}`}
-                    items={this.state.fieldValueItems}
-                    placeholder={'Select field value'}
-                />
-            </span>
+            <MultiSelectWithFilter
+                id={this.multiSelectWithFilterId}
+                items={this.state.fieldValueItems}
+                placeholder={'Select field value'}
+            />
         );
     }
 }

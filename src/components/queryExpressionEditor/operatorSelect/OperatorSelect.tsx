@@ -12,19 +12,12 @@ export interface IOperatorSelectProps {
     selectedFieldType: FieldType;
 }
 
-export interface IOperatorSelectState {
-}
-
-const dateOperators: IItemBoxProps[] = [{value: '=', displayValue: 'equal'}, {value: '<=', displayValue: 'less or equal'}, {value: '>=', displayValue: 'greater or equal'}, {value: '<', displayValue: 'less'}, {value: '>', displayValue: 'greater'}, {value: '..', displayValue: 'between'}];
-const numberOperators: IItemBoxProps[] = [{value: '=', displayValue: 'equal'}, {value: '<=', displayValue: 'less or equal'}, {value: '>=', displayValue: 'greater or equal'}, {value: '<', displayValue: 'less'}, {value: '>', displayValue: 'greater'}];
+const basicOperators: IItemBoxProps[] = [{value: '=', displayValue: 'equal'}, {value: '<=', displayValue: 'less or equal'}, {value: '>=', displayValue: 'greater or equal'}, {value: '<', displayValue: 'less'}, {value: '>', displayValue: 'greater'}];
+const dateOperators: IItemBoxProps[] = basicOperators; // TODO : this operator will eventually be added with the Between Dates feature : {value: '..', displayValue: 'between'}];
+const numberOperators: IItemBoxProps[] = basicOperators;
 const stringOperators: IItemBoxProps[] = [{value: '==', displayValue: 'equal'}];
 
-export class OperatorSelect extends React.Component<IOperatorSelectProps, IOperatorSelectState> {
-
-    constructor(props: IOperatorSelectProps) {
-        super(props);
-        this.state = {};
-    }
+export class OperatorSelect extends React.Component<IOperatorSelectProps> {
 
     private getOperatorItems(): IItemBoxProps[] {
         switch (this.props.selectedFieldType) {
