@@ -2,6 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
 import {fakeJSON, fakeJSON1, JSONToString} from '../../../utils/JSONUtils';
+import {BlankSlate} from '../../blankSlate/BlankSlate';
 import {DiffViewer, DiffViewerProps} from '../DiffViewer';
 
 describe('DiffViewer', () => {
@@ -40,6 +41,12 @@ describe('DiffViewer', () => {
 
         it('should render the diff table from diff2html', () => {
             expect(diffViewer.html()).toContain('d2h-diff-table');
+        });
+
+        it('should display a blankslate if there are no changes', () => {
+            diffViewer.setProps({...basicProps, second: basicProps.first});
+
+            expect(diffViewer.find(BlankSlate).length).toBe(1);
         });
     });
 });

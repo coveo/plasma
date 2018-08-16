@@ -3,11 +3,11 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'react-redux';
 import {findWhere} from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
-import {clearState} from '../../utils/ReduxUtils';
-import {TestUtils} from '../../utils/TestUtils';
-import {ITextAreaProps, TextArea, TextAreaConnected} from './TextArea';
-import {ITextAreaState} from './TextAreaReducers';
+import {IReactVaporState} from '../../../ReactVapor';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/TestUtils';
+import {ITextAreaProps, TextArea, TextAreaConnected} from '../TextArea';
+import {ITextAreaState} from '../TextAreaReducers';
 
 describe('TextArea', () => {
     describe('<TextArea />', () => {
@@ -68,6 +68,18 @@ describe('TextArea', () => {
             expect(textArea.prop('value')).toBe('non empty');
         });
 
+        it('should not throw if the onChange prop is not defined onChange', () => {
+            wrapper.setProps({onChange: undefined});
+
+            expect(() => (wrapper.instance() as any).handleOnChange()).not.toThrow();
+        });
+
+        it('should not throw if the onChangeCallback prop is not defined onChange', () => {
+            wrapper.setProps({onChangeCallback: undefined});
+
+            expect(() => (wrapper.instance() as any).handleOnChange()).not.toThrow();
+        });
+
         it('should call prop onChange on textarea change', () => {
             const onChange = jasmine.createSpy('onChange');
 
@@ -75,6 +87,15 @@ describe('TextArea', () => {
             textArea.simulate('change');
 
             expect(onChange).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call prop onChangeCallback on textarea change', () => {
+            const onChangeCallback = jasmine.createSpy('onChangeCallback');
+
+            wrapper.setProps({onChangeCallback});
+            textArea.simulate('change');
+
+            expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });
 
         it('should call prop onMount on mount', () => {

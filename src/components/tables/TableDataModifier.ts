@@ -107,8 +107,18 @@ export const applySortOnDisplayedIds = (
     if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
         const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, {attributeName: sortState.attribute});
         const hasCustomSortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod;
+        const hasCustomSortMethod = headingAttributeToSort && headingAttributeToSort.sortMethod;
 
-        if (hasCustomSortByMethod) {
+        if (hasCustomSortMethod) {
+            nextDisplayedIds = _.pluck(
+                headingAttributeToSort.sortMethod(
+                    _.map(nextDisplayedIds, (displayedId: string) => tableDataById[displayedId]),
+                    sortState.attribute,
+                    sortState.order === TableSortingOrder.ASCENDING,
+                ),
+                'id',
+            );
+        } else if (hasCustomSortByMethod) {
             nextDisplayedIds = _.sortBy(
                 nextDisplayedIds,
                 (displayedId: string): string => {
@@ -125,7 +135,7 @@ export const applySortOnDisplayedIds = (
             nextDisplayedIds = _.sortBy(nextDisplayedIds, defaultSortByMethod);
         }
 
-        if (sortState.order === TableSortingOrder.DESCENDING) {
+        if (!hasCustomSortMethod && sortState.order === TableSortingOrder.DESCENDING) {
             nextDisplayedIds.reverse();
         }
     }

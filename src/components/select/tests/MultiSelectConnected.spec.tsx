@@ -112,6 +112,30 @@ describe('Select', () => {
             expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(secondSelected);
         });
 
+        it('should disable the dropdown if there is no options', () => {
+            mountMultiSelect([]);
+
+            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
+        });
+
+        it('should not disable the dropdown if one of the options is not is selected', () => {
+            mountMultiSelect([
+                {value: 'a', selected: false},
+                {value: 'b', selected: true},
+            ]);
+
+            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeUndefined();
+        });
+
+        it('should disable the dropdown when every option is selected', () => {
+            mountMultiSelect([
+                {value: 'a', selected: true},
+                {value: 'b', selected: true},
+            ]);
+
+            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
+        });
+
         it('should remove the selected item when a X on SelectedOption is clicked', () => {
             const firstSelected = 'dis 1';
             const secondSelected = 'dis two';

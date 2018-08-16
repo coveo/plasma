@@ -163,13 +163,16 @@ describe('Input', () => {
             expect(input.find('div').first().hasClass('input-field')).toBe(false);
         });
 
-        it('should set the invalid class on the input if valid prop is false and input text is of type text or number', () => {
+        it('should set the invalid class on the input if valid prop is false and input text is of type text or number or password', () => {
             expect(input.find('input').first().hasClass('invalid')).toBe(false);
 
             input.setProps({valid: false});
             expect(input.find('input').first().hasClass('invalid')).toBe(true);
 
             input.setProps({type: 'number'});
+            expect(input.find('input').first().hasClass('invalid')).toBe(true);
+
+            input.setProps({type: 'password'});
             expect(input.find('input').first().hasClass('invalid')).toBe(true);
 
             input.setProps({type: 'checkbox'});

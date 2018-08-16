@@ -1,6 +1,6 @@
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {addTextArea, changeTextAreaValue, ITextAreaActionPayload, removeTextArea, setDisabledTextArea} from './TextAreaActions';
-import {ITextAreaState, textAreaInitialState, textAreasInitialState, textAreasReducer} from './TextAreaReducers';
+import {IReduxAction} from '../../../utils/ReduxUtils';
+import {addTextArea, changeTextAreaValue, ITextAreaActionPayload, removeTextArea, setDisabledTextArea} from '../TextAreaActions';
+import {ITextAreaState, textAreaInitialState, textAreasInitialState, textAreasReducer} from '../TextAreaReducers';
 
 describe('Reducers', () => {
     let oldState: ITextAreaState[];

@@ -72,6 +72,37 @@ describe('<TableChildBody />', () => {
             expect(() => mountComponentWithProps()).not.toThrow();
         });
 
+        it('should add additional classes on the cell element for each row', () => {
+            const component = mountComponentWithProps({
+                ...tableChildBodyProps,
+                headingAttributes: [{
+                    attributeName: 'email',
+                    titleFormatter: _.identity,
+                    attributeFormatter: _.escape,
+                    filterFormatter: _.identity,
+                    additionalCellClasses: [{
+                        className: 'new-class',
+                    }],
+                }],
+            });
+            expect(component.find('td.new-class')).toBeDefined();
+        });
+
+        it('should trigger an onClick event on click cell element', () => {
+            const spy = jasmine.createSpy('onclickcell');
+
+            const component = mountComponentWithProps({
+                ...tableChildBodyProps,
+                headingAttributes: [{
+                    ...tableChildBodyProps.headingAttributes[0],
+                    onClickCell: spy,
+                }],
+            });
+
+            component.find('td').simulate('click');
+            expect(spy).toHaveBeenCalled();
+        });
+
         it('should not render a <TableCollapsibleRowWrapper /> if the prop collapsibleFormatter is not defined', () => {
             expect(mountComponentWithProps().find(TableCollapsibleRowWrapper).length).toBe(0);
         });

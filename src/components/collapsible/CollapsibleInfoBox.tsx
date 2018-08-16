@@ -16,12 +16,13 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
         return (
             <CollapsibleConnected
                 id={this.props.id}
-                className={classNames(styles.roundedBorders, 'bg-white text-grey-9 p1')}
+                className={classNames(styles.container, 'text-grey-9 mod-rounded-border-2')}
+                headerClasses='p1'
                 toggleIconClassName='fill-medium-blue'
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
             >
-                <div className={classNames(styles.alignWithIcon, 'pt1 mr3')}>
+                <div className={classNames(styles.alignWithIcon, 'px1 pb1 mr3')}>
                     {this.props.children}
                 </div>
             </CollapsibleConnected>

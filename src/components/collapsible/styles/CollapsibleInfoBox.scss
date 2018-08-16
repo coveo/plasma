@@ -1,8 +1,13 @@
 @import '~coveo-styleguide/scss/common/palette.scss';
 @import '~coveo-styleguide/scss/variables.scss';
 
-.roundedBorders {
-    border-radius: $collapsible-infobox-border-radius;
+$collapsible-timeout: 200ms;
+
+.container {
+    transition: background-color $collapsible-timeout ease-in-out;
+    &:hover {
+        background-color: $white;
+    }
 }
 
 .alignWithIcon {

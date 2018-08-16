@@ -4,6 +4,8 @@ import {contains, isUndefined} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ILabelProps, Label} from './Label';
 
+const validatedInputTypes: string[] = ['number', 'text', 'password'];
+
 export interface IInputOwnProps {
     id?: string;
     name?: string;
@@ -144,12 +146,12 @@ export class Input extends React.Component<IInputProps, IInputState> {
         const classes = classNames(
             'input-wrapper validate',
             {
-                'input-field': contains(['number', 'text'], this.props.type),
+                'input-field': contains(validatedInputTypes, this.props.type),
             },
             this.props.classes,
         );
         const innerInputClasses = classNames({
-            invalid: !this.state.valid && contains(['number', 'text'], this.props.type),
+            invalid: !this.state.valid && contains(validatedInputTypes, this.props.type),
         }, this.props.innerInputClasses);
 
         return (

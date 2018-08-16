@@ -8,10 +8,12 @@ describe('ListBox', () => {
 
     let listBoxComponent: ReactWrapper<IListBoxProps, any>;
 
+    const spyOnOptionClick = jasmine.createSpy('onOptionClick');
+
     const defaultProps: IListBoxProps = {
         items: [
             {value: 'test'},
-            {value: 'test1'},
+            {value: 'test1', onOptionClick: spyOnOptionClick},
             {value: 'test2'},
             {value: 'test3'},
             {value: 'test4'},
@@ -73,6 +75,13 @@ describe('ListBox', () => {
 
             listBoxComponent.unmount();
             expect(onDestroySpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should render items with events on onOptionClick', () => {
+            renderListBox();
+
+            (listBoxComponent.find(ItemBox) as any).get(1).handleOnOptionClick({target: 'target'});
+            expect(spyOnOptionClick).toHaveBeenCalled();
         });
 
         it('should render items with events on onOptionClick', () => {
