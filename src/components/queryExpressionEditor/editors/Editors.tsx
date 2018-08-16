@@ -21,26 +21,16 @@ const TAB_FORM_MODE_ID = 'tabFormMode';
 const TAB_ADVANCED_MODE_ID = 'tabAdvancedMode';
 
 export class Editors extends React.Component<IEditorsProps> {
-    // TODO : is it good to have a component with just a render method ... probably not ...
-    // TODO : remove if not needed
-    constructor(props: IEditorsProps) {
-        super(props);
-    }
-
     render() {
-
         const tabContainerClasses: string = classNames(
             styles.tabContainer,
         );
 
         return (
             <div className={styles.editorsContainer}>
-
-                {/* TODO : Remove MODE from all the names?  */}
-                {/* TODO : Move back the Form Mode after the BuildFromResult */}
                 <TabNavigation>
-                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
                     <TabConnected id={TAB_BUILD_FROM_RESULT_ID} title='Build From Result' />
+                    <TabConnected id={TAB_FORM_MODE_ID} title='Form Mode' />
                     <TabConnected id={TAB_ADVANCED_MODE_ID} title='Advanced Mode' />
                 </TabNavigation>
                 <TabContent>

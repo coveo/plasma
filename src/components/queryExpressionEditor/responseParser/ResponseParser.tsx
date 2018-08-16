@@ -21,7 +21,6 @@ export interface IResult {
     source: string;
 }
 
-// TODO : review type any ...
 export class ResponseParser {
 
     parseFieldValues(xmlResponse: any): IFieldValue[] {

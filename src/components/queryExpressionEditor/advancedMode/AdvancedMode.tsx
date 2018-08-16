@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Button} from '../../button/Button';
 import {CodeEditor} from '../../editor/CodeEditor';
 import {CodeMirrorModes} from '../../editor/EditorConstants';
 import * as styles from './AdvancedMode.scss';
@@ -10,19 +9,28 @@ export interface IAdvancedModeProps {
 }
 
 export interface IAdvancedModeState {
-    content: string;
+    initialContent: string;
 }
 
 export class AdvancedMode extends React.Component<IAdvancedModeProps, IAdvancedModeState> {
+    private codeEditorContent: string;
+
     constructor(props: IAdvancedModeProps) {
         super(props);
-        this.state = {content: ''};
+        this.state = {initialContent: ''};
+        this.codeEditorContent = '';
     }
 
-    // TODO : Can't update it live for now
-    // private onChange(content: string) {
-    //     this.props.updateQueryExpression(content);
-    // }
+    componentWillReceiveProps(nextProps: IAdvancedModeProps) {
+        if (this.codeEditorContent !== nextProps.queryExpression) {
+            this.setState({initialContent: nextProps.queryExpression});
+        }
+    }
+
+    private onChange(content: string) {
+        this.codeEditorContent = content;
+        this.props.updateQueryExpression(content);
+    }
 
     render() {
         return (
@@ -32,12 +40,9 @@ export class AdvancedMode extends React.Component<IAdvancedModeProps, IAdvancedM
                 </div>
                 <div className={`mt3 ml4 ${styles.codeEditor}`}>
                     <CodeEditor
-                        value={this.props.queryExpression} mode={CodeMirrorModes.Python}
-                        onChange={(code: string) => this.setState({content: code})}
+                        value={this.state.initialContent} mode={CodeMirrorModes.Python}
+                        onChange={(content: string) => this.onChange(content)}
                     />
-                </div>
-                <div className={`mt2 ${styles.button}`}>
-                    <Button enabled={true} name={'Update Query Expression'} onClick={() => this.props.updateQueryExpression(this.state.content)} />
                 </div>
             </div>
         );
