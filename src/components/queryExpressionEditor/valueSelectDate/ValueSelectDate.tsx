@@ -1,6 +1,5 @@
 
 import * as React from 'react';
-import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar';
 import {DatePickerColors} from '../../datePicker/DatePicker';
 import {IDatesSelectionBox} from '../../datePicker/DatePickerBox';
 import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
@@ -8,17 +7,10 @@ import * as styles from './ValueSelectDate.scss';
 
 // TODO DATE SELECTION:
 // The selection of a date range has not been implemented yet
-// The selection of yesterday has not been implemented yet
+// Also, the selection of the 'yesterday' value has not been implemented either
 // The places that will need some adjusments are tagged with 'TODO DATE SELECTION:'
 
-export const valueSelectDateId: string = 'value-select-date';
-
-export const CALENDAR_SELECTION_RULES_SINGLE_DATE: ICalendarSelectionRule[] = [
-    {
-        test: (date: Date) => date.getFullYear() > 1700 || date.getFullYear() < 4000,
-        isFor: CalendarSelectionRuleType.all,
-    },
-];
+export const VALUE_SELECT_DATE_ID: string = 'value-select-date';
 
 export const SELECTION_BOX: IDatesSelectionBox[] = [
     {
@@ -42,21 +34,13 @@ export interface IValueSelectDateProps {
     expressionEditorId: string;
 }
 
-export interface IValueSelectDateState {
-}
-
-export class ValueSelectDate extends React.Component<IValueSelectDateProps, IValueSelectDateState> {
-    constructor(props: IValueSelectDateProps) {
-        super(props);
-        this.state = {};
-    }
-
+export class ValueSelectDate extends React.Component<IValueSelectDateProps> {
+    
     render() {
         return (
             <DatePickerDropdownConnected
-                id={`${this.props.expressionEditorId}-${valueSelectDateId}`}
+                id={`${this.props.expressionEditorId}-${VALUE_SELECT_DATE_ID}`}
                 datesSelectionBoxes={SELECTION_BOX}
-                selectionRules={CALENDAR_SELECTION_RULES_SINGLE_DATE}
                 isLinkedToDateRange={true}
                 extraDropdownToggleClasses={[styles.selectValueWidth]}
             />

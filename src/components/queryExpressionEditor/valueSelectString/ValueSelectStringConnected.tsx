@@ -5,9 +5,7 @@ import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {IDropdownSearchState} from '../../dropdownSearch/DropdownSearchReducers';
 import {clearListBoxOption} from '../../listBox/ListBoxActions';
-import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {fieldSelectId} from '../fieldSelect/FieldSelect';
-import {operatorSelectId} from '../operatorSelect/OperatorSelect';
+import {FIELD_SELECT_ID} from '../fieldSelect/FieldSelect';
 import {IValueSelectStringDispatchProps, IValueSelectStringOwnProps, IValueSelectStringProps, IValueSelectStringStateProps, ValueSelectString} from './ValueSelectString';
 
 // TODO QUESTION R-V :
@@ -19,11 +17,9 @@ function getSelectedOption(options: IDropdownOption[]): string {
 }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IValueSelectStringOwnProps): IValueSelectStringStateProps => {
-    const operatorSelect: IListBoxState = _.findWhere(state.listBoxes, {id: `${ownProps.expressionEditorId}-${operatorSelectId}`});
-    const fieldSelect: IDropdownSearchState = _.findWhere(state.dropdownSearch, {id: `${ownProps.expressionEditorId}-${fieldSelectId}`});
+    const fieldSelect: IDropdownSearchState = _.findWhere(state.dropdownSearch, {id: `${ownProps.expressionEditorId}-${FIELD_SELECT_ID}`});
 
     return {
-        selectedOperator: operatorSelect && operatorSelect.selected ? operatorSelect.selected[0] : undefined,
         selectedField: fieldSelect && fieldSelect.options ? getSelectedOption(fieldSelect.options) : undefined,
     };
 };

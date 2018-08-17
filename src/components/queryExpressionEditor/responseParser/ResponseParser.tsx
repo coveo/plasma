@@ -15,6 +15,7 @@ export interface IResult {
     title: string;
     uniqueID: string;
     uri: string;
+    // TODO QUESTION : Should these (objectType, fileType, connectorType, and source) be grouped in a map <string, string>?
     objectType: string;
     fileType: string;
     connectorType: string;
@@ -28,7 +29,6 @@ export class ResponseParser {
         try {
             const xmlFields = xmlResponse.values;
             _.forEach(xmlFields, (xmlField) => {
-
                 const parsedFieldValue: IFieldValue = this.parseValue(xmlField);
                 parsedFieldValues.push(parsedFieldValue);
             });
@@ -51,7 +51,6 @@ export class ResponseParser {
         try {
             const xmlFields = xmlResponse.fields;
             _.forEach(xmlFields, (xmlField) => {
-
                 const parsedField: IField = this.parseField(xmlField);
                 parsedFields.push(parsedField);
             });

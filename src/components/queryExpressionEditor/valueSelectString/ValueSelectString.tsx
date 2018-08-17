@@ -6,7 +6,7 @@ import {MultiSelectWithFilter} from '../../select/SelectComponents';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IFieldValue} from '../responseParser/ResponseParser';
 
-export const valueSelectStringId: string = 'value-select-string';
+export const VALUE_SELECT_STRING_ID: string = 'value-select-string';
 
 export interface IValueSelectStringOwnProps {
     expressionEditorId: string;
@@ -19,7 +19,6 @@ export interface IValueSelectStringOwnState {
 
 export interface IValueSelectStringStateProps {
     selectedField?: string;
-    selectedOperator?: string;
 }
 
 export interface IValueSelectStringDispatchProps {
@@ -34,7 +33,7 @@ export class ValueSelectString extends React.Component<IValueSelectStringProps, 
     constructor(props: IValueSelectStringProps) {
         super(props);
         this.state = {fieldValueItems: []};
-        this.multiSelectWithFilterId = `${this.props.expressionEditorId}-${valueSelectStringId}`;
+        this.multiSelectWithFilterId = `${this.props.expressionEditorId}-${VALUE_SELECT_STRING_ID}`;
     }
 
     componentWillReceiveProps(nextProps: IValueSelectStringProps) {

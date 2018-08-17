@@ -1,6 +1,7 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 import {IResult, ResponseParser} from '../responseParser/ResponseParser';
+import { convertUndefinedAndNullToEmptyString } from '../../../utils/FalsyValuesUtils';
 
 const DEFAULT_REST_URL: string = 'https://platform.cloud.coveo.com/rest/search/v2';
 
@@ -17,7 +18,7 @@ export interface IQueryStringArguments {
 }
 
 // TODO : Improve the API calls and handling of errors
-// Some fields raise an error when a call to the API is made with them
+// Some fields raise some errors when a call to the API is made with them
 // See parsedField variable in ValueSelectString.tsx
 //      - Maybe I'm not using the right API call or
 //      - Maybe I'm not parsing the field value correctly
@@ -31,24 +32,24 @@ export class QueryTrigger {
     }
 
     async getResultsWithBasicExpression(basicExpression: string): Promise<IResult[]> {
-        const data = _.extend({q: basicExpression}, this.getDefaultData());
-        return await this.getResults(data);
+        const parameters = _.extend({q: basicExpression}, this.getDefaultParameters());
+        return await this.getResults(parameters);
     }
 
     async getResultsWithAdvancedExpression(advancedExpression: string): Promise<IResult[]> {
-        const data = _.extend({aq: advancedExpression}, this.getDefaultData());
-        return await this.getResults(data);
+        const parameters = _.extend({aq: advancedExpression}, this.getDefaultParameters());
+        return await this.getResults(parameters);
     }
 
     async getAllResults(): Promise<IResult[]> {
-        return await this.getResults(this.getDefaultData());
+        return await this.getResults(this.getDefaultParameters());
     }
 
     private initializeRestUrl() {
-        this.restUrl = this.restUrl ? this.restUrl : DEFAULT_REST_URL;
+        this.restUrl = convertUndefinedAndNullToEmptyString(this.restUrl) === '' ? DEFAULT_REST_URL : this.restUrl;
     }
 
-    private getDefaultData() {
+    private getDefaultParameters() {
         return {
             numberOfResults: 20,
             queryStringArguments: {
@@ -58,8 +59,8 @@ export class QueryTrigger {
         } as IQueryParameters;
     }
 
-    private async getResults(data: IQueryParameters): Promise<IResult[]> {
-        const response = await this.executeQuery(this.restUrl, data);
+    private async getResults(parameters: IQueryParameters): Promise<IResult[]> {
+        const response = await this.executeQuery(this.restUrl, parameters);
         return this.responseParser.parseResults(response);
     }
 
@@ -76,17 +77,17 @@ export class QueryTrigger {
         return this.responseParser.parseFieldValues(response);
     }
 
-    private async executeQuery(url: string, data: IQueryParameters = {}): Promise<IResult[]> {
+    private async executeQuery(url: string, parameters: IQueryParameters = {}): Promise<IResult[]> {
         let xmlResponse;
         // TODO : Better handling of errors...
         await $.ajax({
             type: 'GET',
             url: url,
             headers: {Authorization: `Bearer ${this.accessToken}`},
-            data: data,
+            data: parameters,
         })
-            .done((repsonseData) => {
-                xmlResponse = repsonseData;
+            .done((repsonse) => {
+                xmlResponse = repsonse;
             })
             .fail((error) => {
                 xmlResponse = 'error';

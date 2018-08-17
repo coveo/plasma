@@ -1,3 +1,4 @@
+// TODO : Review isWrappedWithQuotes condition
 export const addQuotesIfContainsWhiteSpace = (value: string) => {
     const hasWhiteSpaces = new RegExp(/\s/);
     const firstCharacterIsQuote = new RegExp(/^"/);

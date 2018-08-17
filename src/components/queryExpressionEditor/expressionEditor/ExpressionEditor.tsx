@@ -9,6 +9,7 @@ import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import {ValueSelectConnected} from '../valueSelect/ValueSelectConnected';
 import * as styles from './ExpressionEditor.scss';
+import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',
@@ -29,19 +30,12 @@ export interface SelectedFieldValue {
     hasChange: boolean;
 }
 
-export interface FieldValue {
-    numberValue: number;
-    dateValue: string[];
-    stringValue: string[];
-}
-
 export interface IExpressionEditorOwnProps {
     id: string;
     fields: IField[];
     queryTrigger: QueryTrigger;
     addExpressionEditor: () => void;
     deleteExpressionEditor: (id: string) => void;
-    ensureLastEditorCanAddRule: () => void;
 }
 
 export interface IExpressionEditorOwnState {
@@ -58,8 +52,8 @@ export interface IExpressionEditorStateProps {
 }
 
 export interface IExpressionEditorDispatchProps {
-    update?: (expression?: string, booleanOperator?: string) => void;
-    remove?: () => void;
+    updateExpression?: (expression?: string, booleanOperator?: string) => void;
+    removeExpressionEditorState?: () => void;
 }
 
 export interface IExpressionEditorProps extends IExpressionEditorOwnProps, IExpressionEditorStateProps, IExpressionEditorDispatchProps {}
@@ -80,7 +74,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
 
     private updateExpressionIfCompleted(nextProps: IExpressionEditorProps) {
         if (!this.isExpressionComplete(nextProps) || this.selectedFieldHasChange(nextProps)) {
-            this.props.update('', this.props.booleanOperator);
+            this.props.updateExpression('', this.props.booleanOperator);
             return;
         }
 
@@ -89,7 +83,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         }
 
         const expression: string = this.getExpression(nextProps);
-        this.props.update(expression, this.props.booleanOperator);
+        this.props.updateExpression(expression, this.props.booleanOperator);
         this.selectedFieldValue.hasChange = false;
     }
 
@@ -112,12 +106,11 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private getExpression(nextProps: IExpressionEditorProps): string {
-        // TODO : Better parsing
-        const selectedField: string = nextProps.selectedField ? nextProps.selectedField : '';
-        const selectedOperator: string = nextProps.selectedOperator ? nextProps.selectedOperator : '';
-        const selectedFieldValue: string = this.selectedFieldValue.value ? this.selectedFieldValue.value : '';
-
-        const expression: string = selectedField + selectedOperator + selectedFieldValue;
+        const selectedField: string = convertUndefinedAndNullToEmptyString(nextProps.selectedField);
+        const selectedOperator: string = convertUndefinedAndNullToEmptyString(nextProps.selectedOperator);
+        const selectedFieldValue: string = convertUndefinedAndNullToEmptyString(this.selectedFieldValue.value);
+        
+        const expression: string = `${selectedField}${selectedOperator}${selectedFieldValue}`;
 
         return expression;
     }
@@ -135,19 +128,24 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
     }
 
     private parseOriginalFieldType(originalFieldType: string): FieldType {
-        // TODO : Review that all types are handled
+        // TODO : Review if all types are handled
         if (originalFieldType === OriginalFieldType.Date) {
             return FieldType.Date;
-        } else if (originalFieldType === (OriginalFieldType.Long64 || OriginalFieldType.Long || OriginalFieldType.Double)) {
+        } 
+        
+        if (originalFieldType === (OriginalFieldType.Long64 || OriginalFieldType.Long || OriginalFieldType.Double)) {
             return FieldType.Number;
-        } else {
+        } 
+
+        if (originalFieldType === OriginalFieldType.LargeString) {
             return FieldType.String;
-        }
+        } 
+
+        return null;
     }
 
     private deleteExpressionEditor() {
-        this.props.ensureLastEditorCanAddRule();
-        this.props.remove();
+        this.props.removeExpressionEditorState();
         this.props.deleteExpressionEditor(this.props.id);
     }
 
@@ -156,7 +154,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
             this.props.addExpressionEditor();
         }
 
-        this.props.update(this.props.expression, selectedBooleanOperator);
+        this.props.updateExpression(this.props.expression, selectedBooleanOperator);
     }
 
     private updateSelectedFieldValue(value: string) {
@@ -197,7 +195,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
                 <div className={`ml3 mt1`}>
                     <BooleanOperatorSelect
                         expressionEditorId={this.props.id}
-                        isCurrentExpressionComplete={this.isExpressionComplete(this.props)}
+                        isExpressionComplete={this.isExpressionComplete(this.props)}
                         onBooleanOperatorSelect={(selectedBooleanOperator) => this.onBooleanOperatorSelect(selectedBooleanOperator)}
                     />
                 </div>

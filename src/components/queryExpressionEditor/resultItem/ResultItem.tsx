@@ -16,8 +16,8 @@ export interface IResultItemProps {
 export class ResultItem extends React.Component<IResultItemProps> {
     static defaultProps: IResultItemProps = {
         result: null,
-        isSelectable: false,
         selectedResult: '',
+        isSelectable: false,
     };
 
     private get isSelected() {
@@ -47,16 +47,64 @@ export class ResultItem extends React.Component<IResultItemProps> {
         );
     }
 
+    // TODO : This will have to be refactored. 
+    // See comment QUESTION in ResponseParser.tsx
+    // If we use a map we could prevent the duplication of code for the Labels.
     private getDefinedFieldExpressions(): JSX.Element {
         return (
             <div className={'text-medium-blue'}>
-                {this.props.result.objectType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ObjectType}=</span>{this.props.result.objectType}</span> : null}
-                {this.props.result.fileType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.FileType}=</span>{this.props.result.fileType}</span> : null}
-                {this.props.result.connectorType ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.ConnectorType}=</span>{this.props.result.connectorType}</span> : null}
-                {this.props.result.source ? <span className={'mr1'}><span className={'text-darker-blue semibold'}>{Field.Source}=</span>{this.props.result.source}</span> : null}
+                {this.props.result.objectType ? this.getObjectTypeLabel() : null}
+                {this.props.result.fileType ? this.getFileTypeLabel() : null}
+                {this.props.result.connectorType ? this.getConnectorTypeLabel() : null}
+                {this.props.result.source ? this.getSourceLabel() : null}
             </div>
         );
     }
+
+    private getObjectTypeLabel(): JSX.Element {
+        return (
+            <span className={'mr1'}>
+                <span className={'text-darker-blue semibold'}>
+                    {`${Field.ObjectType}=`}
+                </span>
+                {this.props.result.objectType}
+            </span>
+        );
+    }
+
+    private getFileTypeLabel(): JSX.Element {
+        return (
+            <span className={'mr1'}>
+                <span className={'text-darker-blue semibold'}>
+                    {`${Field.FileType}=`}
+                </span>
+                {this.props.result.fileType}
+            </span>
+        );
+    }
+
+    private getConnectorTypeLabel(): JSX.Element {
+        return (
+            <span className={'mr1'}>
+                <span className={'text-darker-blue semibold'}>
+                    {`${Field.ConnectorType}=`}
+                </span>
+                {this.props.result.connectorType}
+            </span>
+        );
+    }
+
+    private getSourceLabel(): JSX.Element {
+        return (
+            <span className={'mr1'}>
+                <span className={'text-darker-blue semibold'}>
+                    {`${Field.Source}=`}
+                </span>
+                {this.props.result.source}
+            </span>
+        );
+    }
+
 
     render() {
         const containerClasses: string = classNames(

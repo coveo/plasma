@@ -29,15 +29,6 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
         this.state = {selectedResult: ''};
     }
 
-    resultListClasses(): string[] {
-        const classes: string[] = [];
-        const listBoxMaxHeight: string = this.props.isSelectable ? styles.resultListBoxSearch : styles.resultListBoxPreview;
-
-        classes.push(styles.resultListBox);
-        classes.push(listBoxMaxHeight);
-
-        return classes;
-    }
 
     private onClick(resultItemBox: IItemBoxProps) {
         if (!this.props.isSelectable) {
@@ -52,6 +43,10 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
             this.props.onClick(result);
         }
     }
+    
+    private getResultByID(value: string): IResult {
+        return _.find(this.props.results, (result: IResult) => result.uniqueID === value);
+    }
 
     private getResultsItems(): IItemBoxProps[] {
         const items: IItemBoxProps[] = [];
@@ -65,18 +60,17 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
         return items;
     }
 
-    private getResultByID(value: string): IResult {
-        return _.find(this.props.results, (result: IResult) => result.uniqueID === value);
-    }
-
     render() {
+        const listBoxMaxHeight: string = this.props.isSelectable ? styles.resultListBoxSearch : styles.resultListBoxPreview;
+        const resultListClasses: string[] = [styles.resultListBox, listBoxMaxHeight];
+
         return (
             <div>
                 <ListBox
                     items={this.getResultsItems()}
                     selected={[this.state.selectedResult]}
                     onOptionClick={(resultItemBox: IItemBoxProps) => this.onClick(resultItemBox)}
-                    classes={this.resultListClasses()}
+                    classes={resultListClasses}
                 />
             </div>
         );

@@ -1,17 +1,14 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
-import {selectListBoxOption} from '../../listBox/ListBoxActions';
-import {booleanOperatorSelectId} from '../booleanOperatorSelect/BooleanOperatorSelect';
+import {BOOLEAN_OPRATOR_SELECT_ID} from '../booleanOperatorSelect/BooleanOperatorSelect';
 import {ExpressionEditorConnected} from '../expressionEditor/ExpressionEditorConnected';
 import {IExpressionEditorState} from '../expressionEditor/ExpressionEditorReducers';
 import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import * as styles from './FormMode.scss';
-// import {Button} from '../../button/Button';
 
-export const expressionEditorId: string = 'expression-editor';
+export const EXPRESSION_EDITOR_ID: string = 'expression-editor';
 
 export interface IFormModeOwnProps {
     queryTrigger: QueryTrigger;
@@ -34,12 +31,12 @@ export interface IFormModeDispatchProps {
 export interface IFormModeProps extends IFormModeOwnProps, IFormModeStateProps, IFormModeDispatchProps {}
 
 export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState> {
-    private id: number;
+    private expressionEditorNewId: number;
 
     constructor(props: IFormModeOwnProps) {
         super(props);
         this.state = {fields: [], expressionEditors: []};
-        this.id = 0;
+        this.expressionEditorNewId = 0;
     }
 
     componentWillReceiveProps(nextProps: IFormModeProps) {
@@ -57,20 +54,24 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
         const newSate = this.state.expressionEditors;
         newSate.push(
             <ExpressionEditorConnected
-                key={`${expressionEditorId}-${this.id}`}
-                id={`${expressionEditorId}-${this.id}`}
+                key={`${EXPRESSION_EDITOR_ID}-${this.expressionEditorNewId}`}
+                id={`${EXPRESSION_EDITOR_ID}-${this.expressionEditorNewId}`}
                 fields={this.state.fields}
                 queryTrigger={this.props.queryTrigger}
                 addExpressionEditor={() => this.addExpressionEditor()}
                 deleteExpressionEditor={(id: string) => this.deleteExpressionEditor(id)}
-                ensureLastEditorCanAddRule={() => this.ensureLastEditorCanAddRule()}
             />,
         );
         this.setState({expressionEditors: newSate});
-        this.id++;
+        this.expressionEditorNewId++;
     }
 
     private deleteExpressionEditor(id: string) {
+        this.removeExpressionEditor(id);
+        this.ensureLastEditorCanAddRule();
+    }
+
+    private removeExpressionEditor(id: string) {
         const updatedExpressionEditors = this.state.expressionEditors;
         const index = updatedExpressionEditors.findIndex((editor) => {
             return editor.props.id === id;
@@ -83,7 +84,7 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
 
     private ensureLastEditorCanAddRule() {
         const lastEditorId = this.props.expressionEditorsState[this.props.expressionEditorsState.length - 2].id;
-        ReactVaporStore.dispatch(selectListBoxOption(`${lastEditorId}-${booleanOperatorSelectId}`, false, null));
+        this.props.selectListBoxOption(`${lastEditorId}-${BOOLEAN_OPRATOR_SELECT_ID}`, false, null);
     }
 
     private getFinalExpression(nextProps: IFormModeProps) {
@@ -126,19 +127,12 @@ export class FormMode extends React.Component<IFormModeProps, IFormModeOwnState>
         return false;
     }
 
-    // TODO : Temporary function for debugging
-    // private logReduxState() {
-    //     console.log(ReactVaporStore.getState())
-    // }
-
     render() {
         return (
             <div className={styles.expressionEditorsContainer}>
                 <div className='text-medium-blue mt4 ml4'>
                     Build your query by selecting the desired parameters in the form.
                 </div>
-                {/* TODO : Temporary button for debugging */}
-                {/* <Button enabled={true} name={'Log Redux State'} onClick={() => this.logReduxState()} />  */}
                 <div className='mt3'>
                     {this.state.expressionEditors}
                 </div>

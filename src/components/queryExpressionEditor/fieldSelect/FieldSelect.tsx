@@ -6,9 +6,9 @@ import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnec
 import {IField} from '../responseParser/ResponseParser';
 import * as styles from './FieldSelect.scss';
 
-export const fieldSelectId: string = 'field-select';
-export const optionsPerPage: number = 10;
-export const fieldSelectDefaultOption: string = 'Select field';
+export const FIELD_SELECT_ID: string = 'field-select';
+export const OPTIONS_PER_PAGE: number = 10;
+export const FIELD_SELECT_DEFAULT_OPTION: string = 'Select field';
 
 export interface IFieldSelectOwnProps {
     fields: IField[];
@@ -16,7 +16,7 @@ export interface IFieldSelectOwnProps {
 }
 
 export interface IFieldSelectOwnState {
-    hasMoreItems?: boolean;
+    hasMoreFieldOptions?: boolean;
 }
 
 export interface IFieldSelectDispatchProps {
@@ -26,30 +26,30 @@ export interface IFieldSelectDispatchProps {
 export interface IFieldSelectProps extends IFieldSelectOwnProps, IFieldSelectDispatchProps {}
 
 export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelectOwnState> {
+    readonly dropdownSearchId: string;
     private allFieldOptions: IDropdownOption[];
     private currentFieldOptions: IDropdownOption[];
     private optionsPage: number;
-    readonly dropdownSearchId: string;
 
     constructor(props: IFieldSelectProps) {
         super(props);
-        this.state = {hasMoreItems: true};
+        this.state = {hasMoreFieldOptions: true};
+        this.dropdownSearchId = `${this.props.expressionEditorId}-${FIELD_SELECT_ID}`;
         this.allFieldOptions = null;
         this.currentFieldOptions = [];
         this.optionsPage = 1;
-        this.dropdownSearchId = `${this.props.expressionEditorId}-${fieldSelectId}`;
     }
 
-    componentWillMount() {
-        this.allFieldOptions = this.getFieldsOptions();
+    async componentWillMount() {
+        this.allFieldOptions = await this.getFieldsOptions();
         this.updateInfinteScroll();
     }
 
     private getFieldsOptions(): IDropdownOption[] {
         const fieldsDropdownOptions: IDropdownOption[] = [];
         _.forEach(this.props.fields, (field: IField) => {
-            const getDropDownOption: IDropdownOption = {value: field.name};
-            fieldsDropdownOptions.push(getDropDownOption);
+            const dropDownOption: IDropdownOption = {value: field.name};
+            fieldsDropdownOptions.push(dropDownOption);
         });
         return fieldsDropdownOptions;
     }
@@ -61,9 +61,9 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
     }
 
     private updateHasMoreItems() {
-        const startingIndex: number = (this.optionsPage - 1) * optionsPerPage;
+        const startingIndex: number = (this.optionsPage - 1) * OPTIONS_PER_PAGE;
         if (startingIndex > (this.allFieldOptions.length - 1)) {
-            this.setState({hasMoreItems: false});
+            this.setState({hasMoreFieldOptions: false});
         }
     }
 
@@ -74,8 +74,8 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
     }
 
     private getNewOptions(): IDropdownOption[] {
-        const startingIndex: number = (this.optionsPage - 1) * optionsPerPage;
-        const newOptions: IDropdownOption[] = this.allFieldOptions.slice(startingIndex, startingIndex + optionsPerPage);
+        const startingIndex: number = (this.optionsPage - 1) * OPTIONS_PER_PAGE;
+        const newOptions: IDropdownOption[] = this.allFieldOptions.slice(startingIndex, startingIndex + OPTIONS_PER_PAGE);
         return newOptions;
     }
 
@@ -83,7 +83,7 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
         return (
             <span className={`${styles.container}`}>
                 {/*
-                // TODO: BUG?
+                // TODO QUESTION R-V : BUG?
                 // When loading more values in the infinte scroll,
                 // The selected value resets to 'Select an option'
                 // Why does the value gets reset?
@@ -98,8 +98,8 @@ export class FieldSelect extends React.Component<IFieldSelectProps, IFieldSelect
                         endMessage: <div className='option-wrapper'><span className='dropdown-option'>No more fields to show</span></div>,
                         loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more fields...</span></div>,
                     }}
-                    hasMoreItems={() => this.state.hasMoreItems}
-                    defaultSelectedOption={{value: fieldSelectDefaultOption}}
+                    hasMoreItems={() => this.state.hasMoreFieldOptions}
+                    defaultSelectedOption={{value: FIELD_SELECT_DEFAULT_OPTION}}
                 />
                 <span className={'mr2 ml2 h3'}>is</span>
             </span>

@@ -2,8 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {Editors} from './editors/Editors';
 import {Preview} from './preview/Preview';
-import * as styles from './QueryExpressionEditor.scss';
 import {QueryTrigger} from './queryTrigger/QueryTrigger';
+import * as styles from './QueryExpressionEditor.scss';
 
 export interface IQueryExpressionEditorProps {
     accessToken: string;
@@ -15,28 +15,18 @@ export interface IQueryExpressionEditorState {
     queryExpression: string;
 }
 
-// General TODOs :
-//
-// style
-//
-// functions in props :
-// this version :
-// (expression: string) => this.updateQueryExpression(expression)
-// or this one :
-// private updateQueryExpression = (expression: string) => {
-//     this.setState({ queryExpression: expression });
-// }
-//
-// hard coded strings
-//
-// eos2015 in tsconfig
-
 export class QueryExpressionEditor extends React.Component<IQueryExpressionEditorProps, IQueryExpressionEditorState> {
+    static defaultProps: IQueryExpressionEditorProps = {
+        accessToken: '',
+        organizationId: '',
+        restUri: '',
+    };
+    
     private queryTrigger: QueryTrigger;
 
     constructor(props: IQueryExpressionEditorProps) {
         super(props);
-        this.queryTrigger = new QueryTrigger(this.props.accessToken, this.props.organizationId);
+        this.queryTrigger = new QueryTrigger(this.props.accessToken, this.props.organizationId, this.props.restUri);
         this.state = {queryExpression: ''};
     }
 

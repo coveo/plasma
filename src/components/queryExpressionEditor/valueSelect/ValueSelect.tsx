@@ -17,9 +17,6 @@ export interface IValueSelectOwnProps {
     updateSelectedFieldValue: (value: string) => void;
 }
 
-export interface IValueSelectOwnState {
-}
-
 export interface IValueSelectStateProps {
     selectedStringValue?: string[];
     selectedNumberValue?: string;
@@ -29,7 +26,7 @@ export interface IValueSelectStateProps {
 
 export interface IValueSelectProps extends IValueSelectOwnProps, IValueSelectStateProps {}
 
-export class ValueSelect extends React.Component<IValueSelectProps, IValueSelectOwnState> {
+export class ValueSelect extends React.Component<IValueSelectProps> {
     private selectedValue: string;
 
     constructor(props: IValueSelectProps) {
@@ -86,17 +83,27 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
     }
 
     private getSelectedDateValue(nextProps: IValueSelectProps): string {
-        const date: string = nextProps.selectedLowerDateValue.toLocaleDateString();
-        const reformatedDate: string = date.split('/').reverse().join('/');
+        const date: Date = nextProps.selectedLowerDateValue;
+
+        if (_.isUndefined(date) || _.isNull(date)) {
+            return null;
+        }
+
+        const dateStringified: string = date.toLocaleDateString();
+        const reformatedDate: string = dateStringified.split('/').reverse().join('/');
 
         return reformatedDate;
     }
 
+    private get isSelectedFieldTypeIsValid(): boolean {
+        return this.props.selectedFieldType === FieldType.String ||
+               this.props.selectedFieldType === FieldType.Number ||
+               this.props.selectedFieldType === FieldType.Date;
+    }
+
     render() {
         const isRaised: string = this.props.selectedFieldType === FieldType.String ? '' : styles.raiseElement;
-        const selectedFieldTypeIsValid: boolean = this.props.selectedFieldType === FieldType.String ||
-            this.props.selectedFieldType === FieldType.Number ||
-            this.props.selectedFieldType === FieldType.Date;
+
         return (
             <span className={`mr3 ${styles.container} ${isRaised} ${styles.selectValueWidth}`}>
                 <span className={this.props.selectedFieldType === FieldType.String ? '' : styles.isHidden}>
@@ -108,7 +115,7 @@ export class ValueSelect extends React.Component<IValueSelectProps, IValueSelect
                 <span className={this.props.selectedFieldType === FieldType.Date ? '' : styles.isHidden}>
                     <ValueSelectDate expressionEditorId={this.props.expressionEditorId} />
                 </span>
-                <span className={selectedFieldTypeIsValid ? styles.isHidden : ''}>
+                <span className={this.isSelectedFieldTypeIsValid ? styles.isHidden : ''}>
                     <SingleSelectConnected id={`disabled-select-value`} placeholder='Select Value' disabled={true} toggleClasses={styles.selectValueWidth} />
                 </span>
             </span>
