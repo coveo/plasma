@@ -39,7 +39,7 @@ import {ITextAreaState} from './components/textarea/TextAreaReducers';
 import {IToastsState} from './components/toast/ToastReducers';
 
 export interface IReactVaporState {
-    autocompletes: IAutocompleteState[];
+    autocompletes?: IAutocompleteState[];
     lastUpdatedComposite?: ILastUpdatedState[];
     facets?: IFacetState[];
     filters?: IFilterState[];
