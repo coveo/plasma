@@ -47,7 +47,7 @@ export class ResultItem extends React.Component<IResultItemProps> {
         );
     }
 
-    // TODO : This will have to be refactored. 
+    // TODO : This will have to be refactored.
     // See comment QUESTION in ResponseParser.tsx
     // If we use a map we could prevent the duplication of code for the Labels.
     private getDefinedFieldExpressions(): JSX.Element {
@@ -104,7 +104,6 @@ export class ResultItem extends React.Component<IResultItemProps> {
             </span>
         );
     }
-
 
     render() {
         const containerClasses: string = classNames(

@@ -56,20 +56,20 @@ export class BuildFromResult extends React.Component<IBuildFromResultProps, IBui
 
         if (result.objectType) {
             return {field: Field.ObjectType, fieldValue: result.objectType};
-        }  
-        
+        }
+
         if (result.fileType) {
             return {field: Field.FileType, fieldValue: result.fileType};
-        } 
-        
+        }
+
         if (result.connectorType) {
             return {field: Field.ConnectorType, fieldValue: result.connectorType};
-        } 
-        
+        }
+
         if (result.source) {
             return {field: Field.Source, fieldValue: result.source};
-        }             
-        
+        }
+
         return null;
     }
 

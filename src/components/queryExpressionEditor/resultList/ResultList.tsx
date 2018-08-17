@@ -29,7 +29,6 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
         this.state = {selectedResult: ''};
     }
 
-
     private onClick(resultItemBox: IItemBoxProps) {
         if (!this.props.isSelectable) {
             return;
@@ -43,7 +42,7 @@ export class ResultList extends React.Component<IResultListProps, IResultListSta
             this.props.onClick(result);
         }
     }
-    
+
     private getResultByID(value: string): IResult {
         return _.find(this.props.results, (result: IResult) => result.uniqueID === value);
     }

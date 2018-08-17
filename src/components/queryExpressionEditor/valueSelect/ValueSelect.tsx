@@ -97,8 +97,8 @@ export class ValueSelect extends React.Component<IValueSelectProps> {
 
     private get isSelectedFieldTypeIsValid(): boolean {
         return this.props.selectedFieldType === FieldType.String ||
-               this.props.selectedFieldType === FieldType.Number ||
-               this.props.selectedFieldType === FieldType.Date;
+            this.props.selectedFieldType === FieldType.Number ||
+            this.props.selectedFieldType === FieldType.Date;
     }
 
     render() {

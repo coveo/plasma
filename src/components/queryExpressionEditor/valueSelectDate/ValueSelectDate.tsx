@@ -35,7 +35,7 @@ export interface IValueSelectDateProps {
 }
 
 export class ValueSelectDate extends React.Component<IValueSelectDateProps> {
-    
+
     render() {
         return (
             <DatePickerDropdownConnected

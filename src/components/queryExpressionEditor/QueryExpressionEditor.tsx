@@ -2,8 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {Editors} from './editors/Editors';
 import {Preview} from './preview/Preview';
-import {QueryTrigger} from './queryTrigger/QueryTrigger';
 import * as styles from './QueryExpressionEditor.scss';
+import {QueryTrigger} from './queryTrigger/QueryTrigger';
 
 export interface IQueryExpressionEditorProps {
     accessToken: string;
@@ -21,7 +21,7 @@ export class QueryExpressionEditor extends React.Component<IQueryExpressionEdito
         organizationId: '',
         restUri: '',
     };
-    
+
     private queryTrigger: QueryTrigger;
 
     constructor(props: IQueryExpressionEditorProps) {

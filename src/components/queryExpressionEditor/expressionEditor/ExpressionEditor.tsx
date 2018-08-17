@@ -1,6 +1,7 @@
 
 import * as React from 'react';
 import * as _ from 'underscore';
+import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {Button} from '../../button/Button';
 import {BooleanOperatorSelect} from '../booleanOperatorSelect/BooleanOperatorSelect';
 import {FieldSelectConnected} from '../fieldSelect/FieldSelectConnected';
@@ -9,7 +10,6 @@ import {QueryTrigger} from '../queryTrigger/QueryTrigger';
 import {IField} from '../responseParser/ResponseParser';
 import {ValueSelectConnected} from '../valueSelect/ValueSelectConnected';
 import * as styles from './ExpressionEditor.scss';
-import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 
 export enum OriginalFieldType {
     LargeString = 'LargeString',
@@ -109,7 +109,7 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         const selectedField: string = convertUndefinedAndNullToEmptyString(nextProps.selectedField);
         const selectedOperator: string = convertUndefinedAndNullToEmptyString(nextProps.selectedOperator);
         const selectedFieldValue: string = convertUndefinedAndNullToEmptyString(this.selectedFieldValue.value);
-        
+
         const expression: string = `${selectedField}${selectedOperator}${selectedFieldValue}`;
 
         return expression;
@@ -131,15 +131,15 @@ export class ExpressionEditor extends React.Component<IExpressionEditorProps, IE
         // TODO : Review if all types are handled
         if (originalFieldType === OriginalFieldType.Date) {
             return FieldType.Date;
-        } 
-        
+        }
+
         if (originalFieldType === (OriginalFieldType.Long64 || OriginalFieldType.Long || OriginalFieldType.Double)) {
             return FieldType.Number;
-        } 
+        }
 
         if (originalFieldType === OriginalFieldType.LargeString) {
             return FieldType.String;
-        } 
+        }
 
         return null;
     }

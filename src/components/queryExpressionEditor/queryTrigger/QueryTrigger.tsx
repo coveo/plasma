@@ -1,7 +1,7 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
+import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {IResult, ResponseParser} from '../responseParser/ResponseParser';
-import { convertUndefinedAndNullToEmptyString } from '../../../utils/FalsyValuesUtils';
 
 const DEFAULT_REST_URL: string = 'https://platform.cloud.coveo.com/rest/search/v2';
 
