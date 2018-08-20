@@ -1,15 +1,27 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
-import {addTable, ITableActionPayload, modifyState, removeTable, setIsInError, TableActions} from '../TableActions';
+import {
+    addTable,
+    addTableDataEntry,
+    deleteTableDataEntry,
+    ITableActionPayload,
+    modifyState,
+    removeTable,
+    setIsInError,
+    TableActions,
+    updateTableDataEntry,
+} from '../TableActions';
 import {DEFAULT_TABLE_DATA, TableChildComponent} from '../TableConstants';
 import {sortFromHeaderCell} from '../TableHeaderCellActions';
 import {
     ITablesState,
-    ITableState, tableReducer,
+    ITableState,
+    tableReducer,
     tablesInitialState,
     tablesReducer,
 } from '../TableReducers';
 import {getTableChildComponentId} from '../TableUtils';
+import {IData} from './../Table';
 
 describe('TableReducers', () => {
     const tableId = 'super-table';
@@ -201,6 +213,74 @@ describe('TableReducers', () => {
             const newState: ITableState = tableReducer(oldState as ITableState, getUpdateSelectedIdsAction(true));
 
             expect(newState.data.selectedIds.length).toBe(3);
+        });
+    });
+
+    describe('single table data entry actions', () => {
+        const getOldState = () => ({
+            id: 'table1',
+            data: {
+                selectedIds: ['id2', 'id3'],
+                displayedIds: ['id2', 'id3'],
+                allIds: ['id2', 'id3'],
+                byId: {
+                    id2: {id: 'id2'},
+                    id3: {id: 'id3'},
+                },
+            },
+        });
+
+        let oldState: any;
+        beforeEach(() => {
+            oldState = getOldState();
+        });
+
+        describe('deleteTableDataEntry', () => {
+            it('should remove the specified data if present in the table', () => {
+                const newState = tableReducer(oldState, deleteTableDataEntry(oldState.id, 'id2'));
+
+                expect(newState.data.byId['id2']).toBeUndefined();
+                expect(newState.data.allIds.length).toBe(1);
+                expect(newState.data.allIds[0]).toBe('id3');
+                expect(newState.data.displayedIds.length).toBe(1);
+                expect(newState.data.displayedIds[0]).toBe('id3');
+            });
+
+            it('should keep the old state if the id specified is not in the table', () => {
+                const newState = tableReducer(oldState, deleteTableDataEntry(oldState.id, 'idontexistid'));
+
+                expect(newState).toEqual(oldState);
+            });
+        });
+
+        describe('addTableDataEntry', () => {
+            it('should add the specified data in the table', () => {
+                const newData: IData = {id: 'newDataId'};
+                const newState = tableReducer(oldState, addTableDataEntry(oldState.id, newData));
+
+                expect(newState.data.byId[newData.id]).toEqual(newData);
+                expect(newState.data.allIds).toContain(newData.id);
+                expect(newState.data.displayedIds).toContain(newData.id);
+            });
+        });
+
+        describe('updateTableDataEntry', () => {
+            it('should update the specified data in the table', () => {
+                const existingDataUpdated: IData = {id: 'id2', someNewProp: 'hello there!'};
+                const newState = tableReducer(oldState, updateTableDataEntry(oldState.id, existingDataUpdated));
+
+                expect(newState.data.byId[existingDataUpdated.id]).toEqual(existingDataUpdated);
+                expect(newState.data.allIds.length).toBe(oldState.data.allIds.length);
+                expect(newState.data.displayedIds.length).toBe(oldState.data.displayedIds.length);
+            });
+
+            it('should do nothing if the data is not already in the table', () => {
+                const nonExistingDataUpdated: IData = {id: 'nonexistingid', someNewProp: 'hello there!'};
+                const newState = tableReducer(oldState, updateTableDataEntry(oldState.id, nonExistingDataUpdated));
+
+                expect(newState.data.byId[nonExistingDataUpdated.id]).toBeUndefined();
+                expect(newState).toEqual(oldState);
+            });
         });
     });
 });
