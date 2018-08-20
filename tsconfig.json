@@ -12,7 +12,7 @@
     "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "ES5",
+    "target": "es2015",
     "plugins": [
     {
         "transform": "ts-transformer-keys/transformer"

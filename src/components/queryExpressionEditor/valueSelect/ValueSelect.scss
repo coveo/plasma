@@ -1,0 +1,21 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+
+.container {
+    // TODO : Adjust background color of string selector
+    // background-color: $pure-white; 
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
+.raiseElement {
+    margin-bottom: 17px;
+}
+
+.selectValueWidth {
+    // TODO : Adjust the width of the different selector
+    width: 226px;
+}
+
+.isHidden {
+    display: none;
+}

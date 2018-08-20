@@ -1,0 +1,20 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+
+.resultItemContainer {
+    height: 100px;
+}
+
+.resultItemBorder {
+    border-style: solid;
+    border-width: 2px;
+    border-color: $blue;
+}
+
+.resultItemContent {
+    height: 100%;
+    margin-left: 25px;
+}
+
+.radioLabelContainer {
+    margin-top: 39px;
+}
