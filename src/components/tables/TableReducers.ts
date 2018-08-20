@@ -176,7 +176,7 @@ export const tableReducer = (
                         ...state.data.byId,
                         [action.payload.data.id]: action.payload.data,
                     },
-                    allIds: [action.payload.data.id, ...state.data.allIds],
+                    allIds: _.uniq([action.payload.data.id, ...state.data.allIds]),
                     displayedIds: _.initial([action.payload.data.id, ...state.data.displayedIds]),
                 },
             };
