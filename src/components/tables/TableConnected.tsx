@@ -37,7 +37,7 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
 
     return {
         id: tableState.id,
-        data: tableState.data,
+        data: tableState.data || DEFAULT_TABLE_DATA,
         isInError: tableState.isInError,
         isLoading: tableState.isLoading,
         filter: filterState && filterState.filterText,

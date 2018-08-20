@@ -168,17 +168,11 @@ export class Table extends React.Component<ITableProps> {
         const {tableCompositeState} = this.props;
 
         if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
-            const shouldResetPage =
-                // if the change occurs outside the navigation (per page, pagination), reset the pagination to 0
-                (
-                    tableCompositeState.page === nextProps.tableCompositeState.page
-                    && tableCompositeState.perPage === nextProps.tableCompositeState.perPage
-                )
-                /**
-                 * if a data entry was created with TableActions.addTableDataEntry in the table
-                 * reset page for the user to see the added data at first position/row in the table
-                 */
-                || this.isTotalNumberOfDataEntriesChanged(tableCompositeState, nextProps.tableCompositeState);
+            // if the change occurs outside the navigation (per page, pagination), reset the pagination to 0
+            const shouldResetPage = (
+                tableCompositeState.page === nextProps.tableCompositeState.page
+                && tableCompositeState.perPage === nextProps.tableCompositeState.perPage
+            );
 
             this.props.onModifyData(shouldResetPage, nextProps.tableCompositeState, tableCompositeState);
         }
@@ -255,16 +249,8 @@ export class Table extends React.Component<ITableProps> {
             )
             || currentTableCompositeState.from !== nextTableCompositeState.from
             || currentTableCompositeState.to !== nextTableCompositeState.to
-            || this.isTotalNumberOfDataEntriesChanged(currentTableCompositeState, nextTableCompositeState)
+            || currentTableCompositeState.data.allIds.length > nextTableCompositeState.data.allIds.length
         );
-    }
-
-    private isTotalNumberOfDataEntriesChanged(
-        currentTableCompositeState: ITableCompositeState,
-        nextTableCompositeState: ITableCompositeState,
-    ): boolean {
-        return currentTableCompositeState.data && nextTableCompositeState.data
-            && Object.keys(currentTableCompositeState.data.byId).length !== Object.keys(nextTableCompositeState.data.byId).length;
     }
 
     private getTableBody() {

@@ -1,7 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {TableActions} from './TableActions';
 import {TableSortingOrder} from './TableConstants';
 import {TableHeaderCellActions} from './TableHeaderCellActions';
 import {getNextTableSortingOrder} from './TableUtils';
@@ -47,10 +46,6 @@ export const tableHeaderCellReducer = (
             return state.tableId === action.payload.tableId
                 ? {...state, sorted: getNextTableSortingOrder(state.sorted)}
                 : state;
-        case TableActions.addTableDataEntry:
-            return state.tableId === action.payload.id
-                ? {...state, sorted: TableSortingOrder.UNSORTED}
-                : state;
         default:
             return state;
     }
@@ -69,7 +64,6 @@ export const tableHeaderCellsReducer = (
         case TableHeaderCellActions.remove:
             return _.omit(state, action.payload.id);
         case TableHeaderCellActions.sort:
-        case TableActions.addTableDataEntry:
             return _.mapObject(
                 state,
                 (headerCell: ITableHeaderCellState) => tableHeaderCellReducer(headerCell, action),

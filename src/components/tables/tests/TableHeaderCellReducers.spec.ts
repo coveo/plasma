@@ -1,4 +1,3 @@
-import {addTableDataEntry} from '../TableActions';
 import {TableSortingOrder} from '../TableConstants';
 import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from '../TableHeaderCellActions';
 import {tableHeaderCellReducer, tableHeaderCellsInitialState, tableHeaderCellsReducer} from '../TableHeaderCellReducers';
@@ -81,23 +80,6 @@ describe('tableHeaderCellsReducer', () => {
 
             expect(tableHeaderCellsReducer(currentState, sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, 'differentTableId')))
                 .toEqual(currentState);
-        });
-    });
-
-    describe('on TableActions.addTableDataEntry', () => {
-        it('should unsort table header cells related to the tableId to let the added data appear first', () => {
-            const currentState = {
-                unchangedHeaderCell: {...testHeaderCell, id: 'unchangedHeaderCell', sorted: TableSortingOrder.ASCENDING, tableId: 'unrelated'},
-                [testHeaderCell.id]: {...testHeaderCell, sorted: TableSortingOrder.ASCENDING},
-            };
-
-            const nextState = {
-                ...currentState,
-                [testHeaderCell.id]: {...testHeaderCell, sorted: TableSortingOrder.UNSORTED},
-            };
-
-            expect(tableHeaderCellsReducer(currentState, addTableDataEntry(testHeaderCell.tableId, {id: 'someFakeDataId'})))
-                .toEqual(nextState);
         });
     });
 });
