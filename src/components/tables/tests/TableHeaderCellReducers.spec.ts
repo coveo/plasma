@@ -1,3 +1,4 @@
+import {addTableDataEntry} from '../TableActions';
 import {TableSortingOrder} from '../TableConstants';
 import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from '../TableHeaderCellActions';
 import {tableHeaderCellReducer, tableHeaderCellsInitialState, tableHeaderCellsReducer} from '../TableHeaderCellReducers';
@@ -80,6 +81,23 @@ describe('tableHeaderCellsReducer', () => {
 
             expect(tableHeaderCellsReducer(currentState, sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, 'differentTableId')))
                 .toEqual(currentState);
+        });
+    });
+
+    describe('on TableActions.addTableDataEntry', () => {
+        it('should unsort table header cells related to the tableId to let the added data appear first', () => {
+            const currentState = {
+                [testHeaderCell.id]: {...testHeaderCell, sorted: TableSortingOrder.ASCENDING},
+                [testHeaderCell.id]: {...testHeaderCell, sorted: TableSortingOrder.ASCENDING, tableId: 'unrelated'},
+            };
+
+            const nextState = {
+                [testHeaderCell.id]: {...testHeaderCell, sorted: TableSortingOrder.UNSORTED},
+                [testHeaderCell.id]: {...testHeaderCell, sorted: TableSortingOrder.ASCENDING, tableId: 'unrelated'},
+            };
+
+            expect(tableHeaderCellsReducer(currentState, addTableDataEntry(testHeaderCell.tableId, {id: 'someFakeDataId'})))
+                .toEqual(nextState);
         });
     });
 });

@@ -155,6 +155,47 @@ export const tableReducer = (
                         : action.payload.selectedIds.slice(0, 1),
                 },
             };
+        case TableActions.deleteTableDataEntry:
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    byId: {
+                        ..._.omit(state.data.byId, action.payload.dataId),
+                    },
+                    allIds: _.reject(state.data.allIds, (id) => id === action.payload.dataId),
+                    displayedIds: _.reject(state.data.displayedIds, (id) => id === action.payload.dataId),
+                },
+            };
+        case TableActions.addTableDataEntry:
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    byId: {
+                        ...state.data.byId,
+                        [action.payload.data.id]: action.payload.data,
+                    },
+                    allIds: [action.payload.data.id, ...state.data.allIds],
+                    displayedIds: _.initial([action.payload.data.id, ...state.data.displayedIds]),
+                },
+            };
+        case TableActions.updateTableDataEntry:
+            return state.data.byId[action.payload.data.id]
+                ? ({
+                    ...state,
+                    data: {
+                        ...state.data,
+                        byId: {
+                            ...state.data.byId,
+                            [action.payload.data.id]: {
+                                ...state.data.byId[action.payload.data.id],
+                                ...action.payload.data,
+                            },
+                        },
+                    },
+                })
+                : state;
         default:
             return state;
     }

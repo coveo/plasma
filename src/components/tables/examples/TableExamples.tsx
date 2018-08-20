@@ -16,7 +16,7 @@ import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
 import {IData, ITableRowData} from '../Table';
 import {ITableOwnProps} from '../Table';
-import {modifyState, setIsInError} from '../TableActions';
+import {addTableDataEntry, deleteTableDataEntry, modifyState, setIsInError, updateTableDataEntry} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification} from '../TableDataModifier';
@@ -50,15 +50,20 @@ const tableDataWithBooleanById = (booleanValue: boolean) => _.range(0, 5).reduce
     },
 }), {} as ITableRowData);
 
+const addRandomData = () => ({
+    attribute1: generateText(),
+    attribute2: generateText(),
+    attribute3: generateText(),
+    attribute4: generateText(),
+    attribute5: generateDate(moment().subtract(2, 'week').toDate(), moment().endOf('day').toDate()),
+});
+
+const tableIdWithDataEntryActions = 'table-id-with-data-entry-actions';
 const tableDataById = _.range(0, 100).reduce((obj, num) => ({
     ...obj,
     ['row' + num]: {
         id: 'row' + num,
-        attribute1: generateText(),
-        attribute2: generateText(),
-        attribute3: generateText(),
-        attribute4: generateText(),
-        attribute5: generateDate(moment().subtract(2, 'week').toDate(), moment().endOf('day').toDate()),
+        ...addRandomData(),
     },
 }), {} as ITableRowData);
 
@@ -554,7 +559,7 @@ export class TableExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>Complex Table in default mode</label>
                     <TableConnected
-                        id={_.uniqueId('react-vapor-table')}
+                        id={tableIdWithDataEntryActions}
                         initialTableData={getTableDataById(tableDataById)}
                         collapsibleFormatter={(rowData: IData) => _.keys(tableDataById).indexOf(rowData.id) % 2 === 0 &&
                             <div className='p2'>
@@ -569,18 +574,35 @@ export class TableExamples extends React.Component<any, any> {
                                 icon: 'exit',
                                 primary: true,
                                 enabled: true,
-                            }, {
+                            },
+                            {
                                 name: 'action1',
                                 trigger: () => alert('attribute 4 value of the selected row is: ' + rowData.attribute4),
                                 enabled: true,
                                 callOnDoubleClick: true,
-                            }, {
+                            },
+                            {
                                 separator: true,
                                 enabled: true,
                             },
                             {
                                 name: 'action3',
                                 trigger: () => alert('another action'),
+                                enabled: true,
+                            },
+                            {
+                                name: 'delete row',
+                                trigger: () => ReactVaporStore.dispatch(deleteTableDataEntry(tableIdWithDataEntryActions, rowData.id)),
+                                enabled: true,
+                            },
+                            {
+                                name: 'add new row',
+                                trigger: () => ReactVaporStore.dispatch(addTableDataEntry(tableIdWithDataEntryActions, {id: _.uniqueId('row'), ...addRandomData()})),
+                                enabled: true,
+                            },
+                            {
+                                name: 'update attribute 1',
+                                trigger: () => ReactVaporStore.dispatch(updateTableDataEntry(tableIdWithDataEntryActions, {id: rowData.id, attribute1: generateText()})),
                                 enabled: true,
                             },
                         ])}
