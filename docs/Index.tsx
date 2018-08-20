@@ -6,6 +6,7 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
+import {SlideYExamples} from '../src/animations/examples/SlideYExamples';
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
@@ -216,6 +217,7 @@ class App extends React.Component<any, any> {
                         {component: DropdownSearchExamples, componentName: 'DropdownSearch'},
                         {component: DiffViewerExamples, componentName: 'DiffViewer'},
                         {component: BannerExamples, componentName: 'Banner'},
+                        {component: SlideYExamples, componentName: 'SlideY'},
                     ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
                 </div>
             </Provider>

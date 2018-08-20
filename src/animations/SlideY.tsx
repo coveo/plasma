@@ -4,6 +4,10 @@
 import * as React from 'react';
 import Transition, {TransitionProps} from 'react-transition-group/Transition';
 
+export interface SlideYProps extends TransitionProps {
+    duration?: number;
+}
+
 export class SlideY extends React.Component<TransitionProps, {}> {
     private el: HTMLElement;
 
@@ -27,6 +31,7 @@ export class SlideY extends React.Component<TransitionProps, {}> {
     }
 
     render() {
+        const style = this.props.duration && {style: {transitionDuration: `${this.props.duration}ms`}};
         return (
             <Transition
                 in={this.props.in}
@@ -34,7 +39,7 @@ export class SlideY extends React.Component<TransitionProps, {}> {
                 onEntering={() => this.onEntering()}
                 onExiting={() => this.onExiting()}
                 onTransitionEnd={() => this.handleTransitionEnd()}>
-                <div className='slide-y slide-y-closed' ref={(el: HTMLElement) => this.el = el}>
+                <div className='slide-y slide-y-closed' ref={(el: HTMLElement) => this.el = el} {...style}>
                     {this.props.children}
                 </div>
             </Transition>
