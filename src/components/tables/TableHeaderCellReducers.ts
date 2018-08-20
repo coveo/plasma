@@ -69,6 +69,7 @@ export const tableHeaderCellsReducer = (
         case TableHeaderCellActions.remove:
             return _.omit(state, action.payload.id);
         case TableHeaderCellActions.sort:
+        case TableActions.addTableDataEntry:
             return _.mapObject(
                 state,
                 (headerCell: ITableHeaderCellState) => tableHeaderCellReducer(headerCell, action),

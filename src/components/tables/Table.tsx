@@ -242,11 +242,7 @@ export class Table extends React.Component<ITableProps> {
         currentTableCompositeState: ITableCompositeState,
         nextTableCompositeState: ITableCompositeState,
     ): boolean {
-        if (!currentTableCompositeState) {
-            return false;
-        }
-
-        return (
+        return !!currentTableCompositeState && (
             currentTableCompositeState.filter !== nextTableCompositeState.filter
             || currentTableCompositeState.perPage !== nextTableCompositeState.perPage
             || currentTableCompositeState.page !== nextTableCompositeState.page
