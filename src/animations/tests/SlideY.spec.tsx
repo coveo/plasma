@@ -1,7 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import {TransitionProps} from 'react-transition-group/Transition';
-import {SlideY} from './SlideY';
+import {SlideY, SlideYProps} from '../SlideY';
 
 describe('SlideY', () => {
     const dummyTimeout = 400;
@@ -48,7 +47,7 @@ describe('SlideY', () => {
     describe('when transition ends', () => {
         const timeout = 5;
         let wrapper: ReactWrapper<any, any>;
-        let component: ReactWrapper<TransitionProps, any>;
+        let component: ReactWrapper<SlideYProps, any>;
 
         beforeEach(() => {
             jasmine.clock().install();
@@ -58,8 +57,11 @@ describe('SlideY', () => {
             jasmine.clock().uninstall();
         });
 
-        const mountAndWrap = (isIn: boolean) => {
-            wrapper = mount(<SlideY in={isIn} timeout={timeout}>{testElement}</SlideY>, {attachTo: document.getElementById('App')});
+        const mountAndWrap = (isIn: boolean, duration?: number) => {
+            wrapper = mount(
+                <SlideY in={isIn} timeout={timeout} duration={duration}>{testElement}</SlideY>,
+                {attachTo: document.getElementById('App')},
+            );
             component = wrapper.find(SlideY).first();
         };
 
@@ -119,6 +121,15 @@ describe('SlideY', () => {
             transitionToEnd(slideY.getDOMNode() as HTMLElement);
 
             expect(slideY.hasClass('slide-y-closed')).toBe(true);
+        });
+
+        it('should had the duration if one is added as a prop', () => {
+            const expectedDuration = 1000;
+            mountAndWrap(false, expectedDuration);
+
+            const slideY = component.find('.slide-y').first();
+
+            expect(slideY.prop('style').transitionDuration).toContain(expectedDuration);
         });
     });
 });
