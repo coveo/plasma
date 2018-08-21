@@ -30,7 +30,6 @@ describe('<BasicHeader/>', () => {
         });
 
         afterEach(() => {
-            basicHeaderComponent.unmount();
             basicHeaderComponent.detach();
         });
 

@@ -2,6 +2,7 @@ import * as Redux from 'redux';
 // uncomment the line below for the redux logs to show in your chrome console
 // import {createLogger} from 'redux-logger';
 import thunk from 'redux-thunk';
+import {IReduxAction} from '../src/utils/ReduxUtils';
 import {IReactVaporExampleState, Reducers} from './Reducers';
 
 if ((window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
@@ -9,7 +10,7 @@ if ((window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
 }
 
 export const ReactVaporStore: Redux.Store<IReactVaporExampleState> =
-    Redux.createStore<IReactVaporExampleState>(
+    Redux.createStore<IReactVaporExampleState, IReduxAction, {}, {}>(
         Reducers,
         (window as any).devToolsExtension && (window as any).devToolsExtension.call(),
         Redux.applyMiddleware(

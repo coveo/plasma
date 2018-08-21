@@ -4,7 +4,7 @@ import {ITabProps} from '../tab/Tab';
 import {TabConnected} from '../tab/TabConnected';
 import {TabNavigation} from '../tab/TabNavigation';
 
-export interface ITabsHeaderProps extends React.ClassAttributes<React.Component<any, any>> {
+export interface ITabsHeaderProps {
     tabs?: ITabProps[];
 }
 

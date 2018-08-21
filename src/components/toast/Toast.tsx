@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ComponentContent} from '../../utils/ComponentUtils';
 import {Svg} from '../svg/Svg';
 
 export interface IToastProps {
@@ -12,7 +11,7 @@ export interface IToastProps {
     dismiss?: number;
     dismissible?: boolean;
     animate?: boolean;
-    content?: ComponentContent;
+    content?: React.ReactNode;
     onRender?: () => void;
     onClose?: () => void;
     onDestroy?: () => void;
@@ -83,7 +82,7 @@ export class Toast extends React.Component<IToastProps, {}> {
                     ? <div className='toast-description'>{
                         _.isString(this.props.content)
                             ? this.props.content
-                            : <this.props.content />
+                            : React.createElement(this.props.content as React.ComponentClass)
                     }</div>
                     : null
                 }

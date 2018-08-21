@@ -33,7 +33,6 @@ describe('Facets', () => {
         });
 
         afterEach(() => {
-            facetRowView.unmount();
             facetRowView.detach();
         });
 

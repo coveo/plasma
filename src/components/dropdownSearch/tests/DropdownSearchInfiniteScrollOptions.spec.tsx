@@ -39,7 +39,6 @@ describe('DropdownSearchInfiniteScrollOptions', () => {
         });
 
         afterEach(() => {
-            infiniteScrollOptions.unmount();
             infiniteScrollOptions.detach();
         });
 

@@ -46,7 +46,6 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableCollapsibleRow.unmount();
             tableCollapsibleRow.detach();
         });
 

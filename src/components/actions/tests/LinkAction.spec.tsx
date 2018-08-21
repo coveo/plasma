@@ -38,7 +38,6 @@ describe('Actions', () => {
         });
 
         afterEach(() => {
-            linkAction.unmount();
             linkAction.detach();
         });
 

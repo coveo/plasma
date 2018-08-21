@@ -45,7 +45,6 @@ describe('ModalPrompt', () => {
         });
 
         afterEach(() => {
-            modalPrompt.unmount();
             modalPrompt.detach();
         });
 
@@ -80,7 +79,6 @@ describe('ModalPrompt', () => {
         });
 
         afterEach(() => {
-            modalPrompt.unmount();
             modalPrompt.detach();
         });
 

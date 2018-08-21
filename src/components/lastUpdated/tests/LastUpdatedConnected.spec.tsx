@@ -36,7 +36,6 @@ describe('LastUpdated', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 

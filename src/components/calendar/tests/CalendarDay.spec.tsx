@@ -47,7 +47,6 @@ describe('Calendar day', () => {
         });
 
         afterEach(() => {
-            calendarDay.unmount();
             calendarDay.detach();
         });
 

@@ -9,7 +9,7 @@ export interface IButtonProps extends IBaseActionOptions {
     classes?: string[];
 }
 
-export class Button extends React.Component<IButtonProps, {}> {
+export class Button extends React.Component<IButtonProps> {
 
     static defaultProps: Partial<IButtonProps> = {
         enabled: true,

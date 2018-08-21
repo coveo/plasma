@@ -36,7 +36,6 @@ describe('Dropdown', () => {
         });
 
         afterEach(() => {
-            dropdown.unmount();
             dropdown.detach();
         });
 

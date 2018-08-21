@@ -37,7 +37,6 @@ describe('DraggableSelectedOption', () => {
 
         afterEach(() => {
             dndMonitor.registry.types = {};
-            selectedOption.unmount();
         });
 
         it('should render the display value in the selectedOption', () => {

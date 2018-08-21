@@ -46,7 +46,6 @@ describe('Actions', () => {
             });
 
             afterEach(() => {
-                actionBar.unmount();
                 actionBar.detach();
             });
 

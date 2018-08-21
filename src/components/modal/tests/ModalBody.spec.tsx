@@ -26,7 +26,6 @@ describe('ModalBody', () => {
         });
 
         afterEach(() => {
-            modalBody.unmount();
             modalBody.detach();
         });
 

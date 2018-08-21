@@ -25,7 +25,6 @@ describe('Label', () => {
         });
 
         afterEach(() => {
-            label.unmount();
             label.detach();
         });
 

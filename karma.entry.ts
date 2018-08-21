@@ -1,3 +1,5 @@
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import * as $ from 'jquery';
 import * as s from 'underscore.string';
 
@@ -23,6 +25,10 @@ import * as s from 'underscore.string';
 
     (window as any).MouseEvent = MouseEvent;
 })(window);
+
+beforeAll(() => {
+    Enzyme.configure({adapter: new Adapter()});
+});
 
 beforeEach(() => {
     if (!$('#App').length) {

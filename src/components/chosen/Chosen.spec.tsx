@@ -1,6 +1,6 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
+import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
+
 import {ChosenSelect, IChosenSelectProps} from './ChosenSelect';
 
 describe('<ChosenSelect>', () => {
@@ -17,7 +17,7 @@ describe('<ChosenSelect>', () => {
     });
 
     it('should render without error', () => {
-        expect(() => shallow(
+        expect(() => mount(
             <ChosenSelect {...chosenSelectProps}>
                 <option value='1'>Option 1</option>
                 <option value='2'>Option 2</option>
@@ -57,7 +57,6 @@ describe('<ChosenSelect>', () => {
         });
 
         afterEach(() => {
-            chosenSelectWrapper.unmount();
             chosenSelectWrapper.detach();
         });
 

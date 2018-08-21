@@ -125,7 +125,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
-            const list: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.list);
+            const list: Element | Text = ReactDOM.findDOMNode(this.list);
 
             if (!list.contains(e.target as Node)) {
                 this.props.onDocumentClick();

@@ -1,9 +1,10 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as moment from 'moment';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {DateUtils} from '../../../utils/DateUtils';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -51,7 +52,6 @@ describe('Calendar', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -77,6 +77,7 @@ describe('Calendar', () => {
             expect(selectedMonthProp).toBe(DateUtils.currentMonth);
 
             store.dispatch(changeOptionsCycle(CALENDAR_ID + MONTH_PICKER_ID, expectedSelectedMonth));
+            wrapper.update();
             selectedMonthProp = calendar.props().selectedMonth;
 
             expect(selectedMonthProp).toBe(expectedSelectedMonth);
@@ -90,6 +91,7 @@ describe('Calendar', () => {
             expect(selectedYearProp).toBe(10);
 
             store.dispatch(changeOptionsCycle(CALENDAR_ID + YEAR_PICKER_ID, expectedSelectedYear));
+            wrapper.update();
             selectedYearProp = calendar.props().selectedYear;
 
             expect(selectedYearProp).toBe(expectedSelectedYear);
@@ -102,6 +104,7 @@ describe('Calendar', () => {
             expect(calendarSelectionProp).toEqual([]);
 
             store.dispatch(addDatePicker('any', false, undefined, 'any', CALENDAR_ID));
+            wrapper.update();
 
             calendarSelectionProp = calendar.props().calendarSelection;
 

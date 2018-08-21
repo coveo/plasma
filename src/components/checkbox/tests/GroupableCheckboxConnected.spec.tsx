@@ -69,7 +69,6 @@ describe('GroupableCheckbox', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -184,7 +183,6 @@ describe('GroupableCheckbox', () => {
 
             afterEach(() => {
                 _.each(wrappers, (currentWrapper: ReactWrapper<any, any>) => {
-                    currentWrapper.unmount();
                     currentWrapper.detach();
                 });
             });

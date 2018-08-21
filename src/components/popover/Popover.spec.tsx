@@ -81,7 +81,6 @@ describe('<Popover>', () => {
 
     describe('Mounted Popover', () => {
         afterEach(() => {
-            popoverWrapper.unmount();
             popoverWrapper.detach();
         });
 

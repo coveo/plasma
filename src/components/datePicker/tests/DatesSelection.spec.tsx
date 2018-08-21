@@ -35,7 +35,6 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            datesSelection.unmount();
             datesSelection.detach();
         });
 

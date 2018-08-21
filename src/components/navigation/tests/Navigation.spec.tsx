@@ -34,7 +34,6 @@ describe(' navigation', () => {
         });
 
         afterEach(() => {
-            navigation.unmount();
             navigation.detach();
         });
 

@@ -26,7 +26,6 @@ describe('ModalBackdrop', () => {
         });
 
         afterEach(() => {
-            modalBackdrop.unmount();
             modalBackdrop.detach();
         });
 

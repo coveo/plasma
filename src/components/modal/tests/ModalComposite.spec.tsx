@@ -30,7 +30,6 @@ describe('ModalComposite', () => {
         });
 
         afterEach(() => {
-            modalComposite.unmount();
             modalComposite.detach();
         });
 

@@ -31,7 +31,6 @@ describe('MultiSelectInput', () => {
         });
 
         afterEach(() => {
-            multiSelectInput.unmount();
             multiSelectInput.detach();
         });
 

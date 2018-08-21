@@ -25,7 +25,6 @@ describe('Checkbox', () => {
             };
 
             afterEach(() => {
-                checkbox.unmount();
                 checkbox.detach();
             });
 
@@ -92,8 +91,8 @@ describe('Checkbox', () => {
                 renderCheckbox({
                     indeterminate: true,
                 });
-                const innerInput = checkbox.find('input');
-                expect((innerInput as any).node.indeterminate).toBe(true);
+                const innerInput: any = checkbox.find('input');
+                expect(innerInput.getElement().indeterminate).toBe(true);
             });
 
             it('should add the disable class on the label only if input is disabled', () => {

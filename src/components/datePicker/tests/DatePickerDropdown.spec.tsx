@@ -67,7 +67,6 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            datePickerDropdown.unmount();
             datePickerDropdown.detach();
         });
 

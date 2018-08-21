@@ -26,7 +26,6 @@ describe('DeleteInputAction', () => {
         });
 
         afterEach(() => {
-            deleteInput.unmount();
             deleteInput.detach();
         });
 

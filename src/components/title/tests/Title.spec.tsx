@@ -28,7 +28,6 @@ describe('<Title/>', () => {
         });
 
         afterEach(() => {
-            titleComponent.unmount();
             titleComponent.detach();
         });
 

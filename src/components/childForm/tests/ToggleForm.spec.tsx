@@ -30,7 +30,6 @@ describe('ToggleForm', () => {
         });
 
         afterEach(() => {
-            toggleForm.unmount();
             toggleForm.detach();
         });
 
@@ -40,19 +39,16 @@ describe('ToggleForm', () => {
             const innerLabel = toggleForm.find('div').first();
             expect(innerLabel.hasClass(innerClass)).toBe(false);
 
-            toggleForm.setProps({classes});
-            toggleForm.mount();
+            toggleForm.setProps({classes}).mount().update();
             expect(innerLabel.hasClass(innerClass)).toBe(true);
         });
 
         it('should check inner radio control when checked property is true', () => {
             const parentControl = toggleForm.find('Radio').first();
-            toggleForm.setProps({checked: false});
-            toggleForm.mount();
+            toggleForm.setProps({checked: false}).mount().update();
             expect(parentControl.prop('checked')).toBe(false);
 
-            toggleForm.setProps({checked: true});
-            toggleForm.mount();
+            toggleForm.setProps({checked: true}).mount().update();
             expect(parentControl.prop('checked')).toBe(true);
         });
 
@@ -78,12 +74,10 @@ describe('ToggleForm', () => {
             const childElement = toggleForm.find('ChildForm').first();
             expect(childElement.prop('disabled')).toBe(true);
 
-            toggleForm.setProps({checked: false});
-            toggleForm.mount();
+            toggleForm.setProps({checked: false}).mount().update();
             expect(childElement.prop('disabled')).toBe(true);
 
-            toggleForm.setProps({checked: true});
-            toggleForm.mount();
+            toggleForm.setProps({checked: true}).mount().update();
             expect(childElement.prop('disabled')).toBe(false);
         });
     });

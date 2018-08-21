@@ -29,7 +29,6 @@ describe('Options cycle', () => {
         });
 
         afterEach(() => {
-            optionsCycle.unmount();
             optionsCycle.detach();
         });
 

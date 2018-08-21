@@ -1,6 +1,8 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
+
 import {clearState} from '../../utils/ReduxUtils';
 import {TestUtils} from '../../utils/TestUtils';
 import {Svg} from '../svg/Svg';
@@ -81,7 +83,7 @@ describe('SearchBarConnected', () => {
         });
 
         afterEach(() => {
-            component.unmount();
+            component.detach();
         });
 
         it('should change the value in the state on input change', () => {

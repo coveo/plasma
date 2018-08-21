@@ -43,7 +43,6 @@ describe('FlatSelect', () => {
         };
 
         afterEach(() => {
-            flatSelect.unmount();
             flatSelect.detach();
         });
 

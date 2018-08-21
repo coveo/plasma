@@ -36,7 +36,6 @@ describe('Tab', () => {
         });
 
         afterEach(() => {
-            tab.unmount();
             tab.detach();
         });
 

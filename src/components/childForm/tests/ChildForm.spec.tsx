@@ -28,7 +28,6 @@ describe('ChildForm', () => {
         });
 
         afterEach(() => {
-            childForm.unmount();
             childForm.detach();
         });
 
@@ -36,12 +35,10 @@ describe('ChildForm', () => {
             const childElement = childForm.find('Radio').first();
             expect(childElement.prop('disabled')).toBe(false);
 
-            childForm.setProps({disabled: false});
-            childForm.mount();
+            childForm.setProps({disabled: false}).mount().update();
             expect(childElement.prop('disabled')).toBe(false);
 
-            childForm.setProps({disabled: true});
-            childForm.mount();
+            childForm.setProps({disabled: true}).mount().update();
             expect(childElement.prop('disabled')).toBe(true);
         });
     });

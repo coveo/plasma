@@ -34,8 +34,8 @@ export interface ISingleSelectExamplesState {
 }
 
 export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamplesState> {
-    constructor() {
-        super();
+    constructor(props: {}, state: ISingleSelectExamplesState) {
+        super(props, state);
 
         const second = _.map(defaultItems, (item) => _.clone(item));
         second[0].selected = true;

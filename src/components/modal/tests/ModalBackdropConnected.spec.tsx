@@ -34,7 +34,6 @@ describe('ModalBackdrop', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -80,7 +79,6 @@ describe('ModalBackdrop', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 

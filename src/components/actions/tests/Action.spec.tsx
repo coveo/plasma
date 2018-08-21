@@ -40,7 +40,6 @@ describe('Actions', () => {
         });
 
         afterEach(() => {
-            actionComponent.unmount();
             actionComponent.detach();
         });
 

@@ -26,7 +26,6 @@ describe('Input', () => {
         });
 
         afterEach(() => {
-            input.unmount();
             input.detach();
         });
 
@@ -36,7 +35,7 @@ describe('Input', () => {
             const innerInput = input.find('input').first();
             expect(innerInput.hasClass(innerInputClass)).toBe(false);
 
-            input.setProps({innerInputClasses: classes}).mount();
+            input.setProps({innerInputClasses: classes}).mount().update();
             expect(innerInput.hasClass(innerInputClass)).toBe(true);
         });
 
@@ -45,7 +44,7 @@ describe('Input', () => {
             const innerInput = input.find('input').first();
             expect(innerInput.prop('id')).toBe(undefined);
 
-            input.setProps({id}).mount();
+            input.setProps({id}).mount().update();
             expect(innerInput.prop('id')).toBe(id);
         });
 
@@ -54,13 +53,13 @@ describe('Input', () => {
             const innerInput = input.find('input').first();
             expect(innerInput.prop('name')).toBe(undefined);
 
-            input.setProps({name}).mount();
+            input.setProps({name}).mount().update();
             expect(innerInput.prop('name')).toBe(name);
         });
 
         it('should set checked prop when specified', () => {
             const innerInput = input.find('input').first();
-            input.setProps({checked: false}).mount();
+            input.setProps({checked: false}).mount().update();
             expect(innerInput.prop('checked')).toBe(false);
 
             input.setProps({checked: true}).mount();
@@ -69,19 +68,19 @@ describe('Input', () => {
 
         it('should set disabled prop when specified', () => {
             const innerInput = input.find('input').first();
-            input.setProps({disabled: false}).mount();
+            input.setProps({disabled: false}).mount().update();
             expect(innerInput.prop('disabled')).toBe(false);
 
-            input.setProps({disabled: true}).mount();
+            input.setProps({disabled: true}).mount().update();
             expect(innerInput.prop('disabled')).toBe(true);
         });
 
         it('should set readonly prop when specified', () => {
             const innerInput = input.find('input').first();
-            input.setProps({readOnly: false}).mount();
+            input.setProps({readOnly: false}).mount().update();
             expect(innerInput.prop('readOnly')).toBe(false);
 
-            input.setProps({readOnly: true}).mount();
+            input.setProps({readOnly: true}).mount().update();
             expect(innerInput.prop('readOnly')).toBe(true);
         });
 
@@ -90,7 +89,7 @@ describe('Input', () => {
             const innerInput = input.find('input').first();
             expect(innerInput.prop('type')).toBe('text');
 
-            input.setProps({type}).mount();
+            input.setProps({type}).mount().update();
             expect(innerInput.prop('type')).toBe(type);
         });
 
@@ -98,7 +97,7 @@ describe('Input', () => {
             const blurSpy = jasmine.createSpy('onBlur');
             const innerInput = input.find('input');
 
-            input.setProps({onBlur: blurSpy}).mount();
+            input.setProps({onBlur: blurSpy}).mount().update();
             innerInput.simulate('blur');
 
             expect(blurSpy.calls.count()).toBe(1);
@@ -108,7 +107,7 @@ describe('Input', () => {
             const changeSpy = jasmine.createSpy('onChange');
             const innerInput = input.find('input');
 
-            input.setProps({onChange: changeSpy}).mount();
+            input.setProps({onChange: changeSpy}).mount().update();
             innerInput.simulate('change');
 
             expect(changeSpy.calls.count()).toBe(1);
@@ -118,7 +117,7 @@ describe('Input', () => {
             const clickSpy = jasmine.createSpy('onClick');
             const innerContainer = input.find('div');
 
-            input.setProps({onClick: clickSpy}).mount();
+            input.setProps({onClick: clickSpy}).mount().update();
             innerContainer.simulate('click');
 
             expect(clickSpy.calls.count()).toBe(1);
@@ -128,7 +127,7 @@ describe('Input', () => {
             const keyUpSpy = jasmine.createSpy('onKeyUp');
             const innerInput = input.find('input');
 
-            input.setProps({onKeyUp: keyUpSpy}).mount();
+            input.setProps({onKeyUp: keyUpSpy}).mount().update();
             innerInput.simulate('keyUp');
 
             expect(keyUpSpy.calls.count()).toBe(1);
@@ -137,7 +136,7 @@ describe('Input', () => {
         it('should not render without a label if labelTitle is not passed as prop (even with labelProps)', () => {
             expect(input.find(Label).length).toBe(0);
 
-            input.setProps({labelProps: {}}).mount();
+            input.setProps({labelProps: {}}).mount().update();
             expect(input.find(Label).length).toBe(0);
         });
 
@@ -201,7 +200,7 @@ describe('Input', () => {
 
             input.setProps({value: expectedValue});
 
-            expect((input as any).node.innerInput.value).toBe(expectedValue);
+            expect((input as any).getElement().innerInput.value).toBe(expectedValue);
         });
     });
 });

@@ -27,7 +27,6 @@ describe('<SideNavigationMenuSection />', () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         wrapper.detach();
     });
 

@@ -33,7 +33,6 @@ describe('Facets', () => {
         });
 
         afterEach(() => {
-            facetMoreToggle.unmount();
             facetMoreToggle.detach();
         });
 

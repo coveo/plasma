@@ -29,7 +29,6 @@ describe('Toasts', () => {
         });
 
         afterEach(() => {
-            component.unmount();
             component.detach();
         });
 
@@ -50,7 +49,6 @@ describe('Toasts', () => {
 
             expect(() => instance.componentWillUnmount()).not.toThrow();
 
-            component.unmount();
             component.setProps(newToastAttributes).mount();
 
             component.unmount();

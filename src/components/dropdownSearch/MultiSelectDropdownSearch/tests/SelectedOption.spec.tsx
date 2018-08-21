@@ -27,7 +27,6 @@ describe('SelectedOption', () => {
         });
 
         afterEach(() => {
-            selectedOption.unmount();
             selectedOption.detach();
         });
 

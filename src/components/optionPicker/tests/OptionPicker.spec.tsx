@@ -41,7 +41,6 @@ describe('Option picker', () => {
         });
 
         afterEach(() => {
-            optionPicker.unmount();
             optionPicker.detach();
         });
 

@@ -49,7 +49,6 @@ describe('<HeaderWrapper/>', () => {
         };
 
         afterEach(() => {
-            headerWrapperComponent.unmount();
             headerWrapperComponent.detach();
         });
 

@@ -37,7 +37,6 @@ describe('SubNavigation', () => {
         });
 
         afterEach(() => {
-            wrapper.unmount();
             wrapper.detach();
         });
 

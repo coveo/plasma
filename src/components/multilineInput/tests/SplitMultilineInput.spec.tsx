@@ -50,7 +50,6 @@ describe('SplitMultilineInput', () => {
         });
 
         afterEach(() => {
-            splitMultilineInput.unmount();
             splitMultilineInput.detach();
         });
 

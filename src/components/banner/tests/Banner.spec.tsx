@@ -28,7 +28,6 @@ describe('Banner', () => {
         });
 
         afterEach(() => {
-            banner.unmount();
             banner.detach();
         });
 

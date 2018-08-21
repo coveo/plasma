@@ -33,7 +33,6 @@ describe('FilterBox', () => {
         });
 
         afterEach(() => {
-            filterBox.unmount();
             filterBox.detach();
         });
 

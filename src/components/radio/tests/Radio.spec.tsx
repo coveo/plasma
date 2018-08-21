@@ -28,7 +28,6 @@ describe('Radio', () => {
         });
 
         afterEach(() => {
-            radio.unmount();
             radio.detach();
         });
 

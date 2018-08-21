@@ -31,7 +31,6 @@ describe('TabPane', () => {
         });
 
         afterEach(() => {
-            tab.unmount();
             tab.detach();
         });
 

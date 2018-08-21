@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import {Breadcrumb, IBreadcrumbProps} from '../breadcrumbs/Breadcrumb';
 import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
 
-export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps, React.ClassAttributes<React.Component<any, any>> {
+export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps {
     breadcrumb: IBreadcrumbProps;
 }
 
@@ -21,7 +21,7 @@ export class BreadcrumbHeader extends React.Component<IBreadcrumbHeaderProps, {}
     render() {
 
         return (
-            <HeaderWrapper {...this.props}>
+            <HeaderWrapper {..._.omit(this.props, 'breadcrumb')}>
                 <Breadcrumb {...this.props.breadcrumb} />
             </HeaderWrapper>
         );

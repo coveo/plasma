@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
-import {ComponentContent} from '../../utils/ComponentUtils';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
@@ -16,7 +15,7 @@ import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {ISelectState} from './SelectReducers';
 
 export interface ISelectSpecificProps {
-    button: ComponentContent;
+    button: React.ReactNode;
     multi?: boolean;
 }
 
@@ -207,7 +206,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
-            const dropdown: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.menu);
+            const dropdown: Element | Text = ReactDOM.findDOMNode(this.menu);
 
             if (!dropdown.contains(e.target as Node)) {
                 this.props.onDocumentClick();

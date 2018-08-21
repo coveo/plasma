@@ -33,7 +33,6 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableEmptyRow.unmount();
             tableEmptyRow.detach();
         });
 

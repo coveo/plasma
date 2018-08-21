@@ -1,4 +1,5 @@
 import {ReducersMapObject} from 'redux';
+
 import {membersReducers} from '../docs/members-example/reducers/MembersReducers';
 import {actionBarsReducer} from './components/actions/ActionBarReducers';
 import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducers';
@@ -33,6 +34,12 @@ import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
+import {IReactVaporState} from './ReactVapor';
+import {IReduxAction} from './utils/ReduxUtils';
+
+const lastAction = (state: IReactVaporState = null, action: IReduxAction): IReduxAction => {
+    return action;
+};
 
 export const ReactVaporReducers: ReducersMapObject = {
     autocompletes: autocompletesReducer,
@@ -70,4 +77,5 @@ export const ReactVaporReducers: ReducersMapObject = {
     groupableCheckboxes: groupableCheckboxesReducer,
     textAreas: textAreasReducer,
     menus: menuCompositeReducer,
+    lastAction,
 };

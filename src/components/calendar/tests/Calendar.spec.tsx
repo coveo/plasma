@@ -43,7 +43,6 @@ describe('Calendar', () => {
         });
 
         afterEach(() => {
-            calendar.unmount();
             calendar.detach();
         });
 

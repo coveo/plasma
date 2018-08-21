@@ -1,7 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState, TestUtils} from '../../../utils/TestUtils';
@@ -42,7 +44,6 @@ describe('DropdownSearch', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 

@@ -13,7 +13,6 @@ describe('<SideNavigation />', () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         wrapper.detach();
     });
 

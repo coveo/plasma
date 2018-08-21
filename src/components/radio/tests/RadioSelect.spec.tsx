@@ -34,7 +34,6 @@ describe('RadioSelect', () => {
         });
 
         afterEach(() => {
-            radioSelect.unmount();
             radioSelect.detach();
         });
 

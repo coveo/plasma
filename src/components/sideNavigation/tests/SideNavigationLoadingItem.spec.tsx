@@ -13,7 +13,6 @@ describe('<SideNavigationLoadingItem />', () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         wrapper.detach();
     });
 

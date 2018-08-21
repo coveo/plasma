@@ -1,16 +1,15 @@
 import {mount, ReactWrapper} from 'enzyme';
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import {Store} from 'react-redux';
 import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
 import {changeOptionsCycle} from '../OptionsCycleActions';
 import {OptionsCycleConnected} from '../OptionsCycleConnected';
-/* tslint:enable:no-unused-variable */
 
 describe('Options cycle', () => {
     const optionsCycleBasicProps: IOptionsCycleProps = {
@@ -37,7 +36,6 @@ describe('Options cycle', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 

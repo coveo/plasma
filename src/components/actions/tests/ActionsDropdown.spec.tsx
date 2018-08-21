@@ -44,7 +44,6 @@ describe('Actions', () => {
         });
 
         afterEach(() => {
-            actionsDropdown.unmount();
             actionsDropdown.detach();
         });
 

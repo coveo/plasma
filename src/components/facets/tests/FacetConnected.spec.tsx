@@ -69,7 +69,6 @@ describe('Facets', () => {
         });
 
         afterEach(() => {
-            wrapper.unmount();
             wrapper.detach();
         });
 

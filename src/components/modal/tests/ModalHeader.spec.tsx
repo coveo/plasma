@@ -34,7 +34,6 @@ describe('ModalHeader', () => {
         });
 
         afterEach(() => {
-            modal.unmount();
             modal.detach();
         });
 

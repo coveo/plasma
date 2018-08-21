@@ -35,7 +35,6 @@ describe('MultilineInput', () => {
         });
 
         afterEach(() => {
-            multilineInput.unmount();
             multilineInput.detach();
         });
 

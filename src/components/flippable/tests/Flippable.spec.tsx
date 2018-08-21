@@ -22,7 +22,6 @@ describe('Flippable', () => {
         });
 
         afterEach(() => {
-            flippable.unmount();
             flippable.detach();
         });
 

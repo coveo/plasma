@@ -32,7 +32,6 @@ describe('NavigationPaginationSelect', () => {
         });
 
         afterEach(() => {
-            navigationPaginationSelect.unmount();
             navigationPaginationSelect.detach();
         });
 

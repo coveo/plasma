@@ -31,8 +31,8 @@ export interface IMultiSelectExamplesState {
 }
 
 export class MultiSelectExamples extends React.Component<{}, IMultiSelectExamplesState> {
-    constructor() {
-        super();
+    constructor(props: {}, state: IMultiSelectExamplesState) {
+        super(props, state);
 
         const second = _.map(defaultItems, (item) => _.clone(item));
         second[0].selected = true;

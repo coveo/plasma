@@ -26,7 +26,6 @@ describe('ModalFooter', () => {
         });
 
         afterEach(() => {
-            modalBody.unmount();
             modalBody.detach();
         });
 

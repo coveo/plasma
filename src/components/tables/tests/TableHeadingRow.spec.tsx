@@ -43,7 +43,6 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableHeadingRow.unmount();
             tableHeadingRow.detach();
         });
 

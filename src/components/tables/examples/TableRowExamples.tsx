@@ -21,8 +21,8 @@ export class TableRowExamples extends React.Component<{}, TableRowExamplesState>
     ];
     private thirdContent: JSX.Element[];
 
-    constructor() {
-        super();
+    constructor(props: {}, state: TableRowExamplesState) {
+        super(props, state);
 
         this.state = {
             isLoading: true,
