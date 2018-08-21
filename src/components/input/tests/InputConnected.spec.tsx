@@ -55,7 +55,7 @@ describe('<InputConnected />', () => {
         });
 
         it('should not throw when calling onRender with validateOnMount set as a prop', () => {
-            mountComponentWithProps({...inputProps, validateOnMount: true})
+            mountComponentWithProps({...inputProps, validateOnMount: true});
             expect(() => wrapper.find(Input).prop('onRender')()).not.toThrow();
         });
 
@@ -75,7 +75,7 @@ describe('<InputConnected />', () => {
         });
 
         it('should not throw when calling onChange when validateOnChange and validate are set as props', () => {
-            mountComponentWithProps({...inputProps, validateOnChange: true, validate: (value: string) => !!value})
+            mountComponentWithProps({...inputProps, validateOnChange: true, validate: (value: string) => !!value});
             expect(() => wrapper.find(Input).prop('onChange')()).not.toThrow();
         });
     });
