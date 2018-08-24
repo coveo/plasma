@@ -44,6 +44,7 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                             modalBodyChildren='The content of the modal'
                             modalFooterChildren={<button className='btn' onClick={() => this.closeModal(modalId)}>Close</button>}
                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                            docLink={{url: 'https://www.coveo.com', tooltip: 'Go to coveo.com'}}
                         />
                     </div>
                 </div>

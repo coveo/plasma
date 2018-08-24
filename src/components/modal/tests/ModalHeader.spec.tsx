@@ -1,6 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {Svg} from '../../svg/Svg';
+import {Tooltip} from '../../tooltip/Tooltip';
 import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
 
 describe('ModalHeader', () => {
@@ -97,12 +99,18 @@ describe('ModalHeader', () => {
             expect(modal.find('h1').hasClass(expectedClass)).toBe(true);
         });
 
-        it('should have a div wrapper arround the title only if there are children', () => {
-            expect(modal.find('h1').parent().type()).not.toBe('div');
+        it('should not have a tooltip, anchor, and svg for doclink by default', () => {
+            expect(modal.find(Tooltip).length).toBe(0);
+        });
 
-            setChildren();
+        it('should have a tooltip, anchor, and svg for doclink if the prop is passed', () => {
+            const docLink = {url: 'testomax', tooltip: 'doclinktooltip'};
+            modal.setProps({docLink});
 
-            expect(modal.find('h1').parent().type()).toBe('div');
+            expect(modal.find(Tooltip).length).toBe(1);
+            expect(modal.find(Tooltip).prop('title')).toBe(docLink.tooltip);
+            expect(modal.find(Tooltip).find('a').prop('href')).toBe(docLink.url);
+            expect(modal.find(Tooltip).find('a').find(Svg).prop('svgName')).toBe('help');
         });
     });
 });
