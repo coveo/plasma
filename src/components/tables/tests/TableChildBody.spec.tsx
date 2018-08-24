@@ -65,7 +65,7 @@ describe('<TableChildBody />', () => {
             if (wrapper && wrapper.length) {
                 wrapper.unmount();
             }
-            wrapper =  mount(
+            wrapper = mount(
                 <Provider store={store}>
                     <TableChildBody {...props} />
                 </Provider>,

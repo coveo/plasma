@@ -153,7 +153,7 @@ describe('Actions', () => {
                 it('should remove the default container classes if it is set to true', () => {
                     actionBar.setProps({removeDefaultContainerClasses: true});
                     DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-                     expect(actionBar.find('div').first().html()).not.toContain(className);
+                        expect(actionBar.find('div').first().html()).not.toContain(className);
                     });
                 });
             });
