@@ -244,6 +244,8 @@ describe('TableReducers', () => {
                 expect(newState.data.allIds[0]).toBe('id3');
                 expect(newState.data.displayedIds.length).toBe(1);
                 expect(newState.data.displayedIds[0]).toBe('id3');
+                expect(newState.data.selectedIds.length).toBe(1);
+                expect(newState.data.selectedIds[0]).toBe('id3');
             });
 
             it('should keep the old state if the id specified is not in the table', () => {
