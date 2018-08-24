@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
-import {JSXRenderable} from '../../utils/JSXUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {IModalProps, Modal} from './Modal';
 import {IModalBackdropProps, ModalBackdrop} from './ModalBackdrop';
@@ -13,11 +12,11 @@ import {IModalHeaderProps, ModalHeader} from './ModalHeader';
 import {ModalHeaderConnected} from './ModalHeaderConnected';
 
 export interface IModalCompositeOwnProps extends IModalProps, IModalHeaderProps, IModalFooterProps, IModalBackdropProps {
-    modalHeaderChildren?: JSXRenderable;
+    modalHeaderChildren?: React.ReactNode;
     modalHeaderClasses?: IClassName;
-    modalBodyChildren?: JSXRenderable;
+    modalBodyChildren?: React.ReactNode;
     modalBodyClasses?: IClassName;
-    modalFooterChildren?: JSXRenderable;
+    modalFooterChildren?: React.ReactNode;
     modalFooterClasses?: IClassName;
     isPrompt?: boolean;
 }
@@ -42,7 +41,7 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
         );
     }
 
-    private getModal(children: JSXRenderable) {
+    private getModal(children: React.ReactNode) {
         const basicProps: IModalProps = {
             id: this.props.id,
             classes: this.props.classes,
@@ -69,6 +68,7 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
             id: this.props.id,
             title: this.props.title,
             classes: this.props.modalHeaderClasses,
+            docLink: this.props.docLink,
         };
         const onCloseProp = this.props.onClose ? () => this.props.onClose() : undefined;
 
