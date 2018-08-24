@@ -26,10 +26,6 @@ import * as s from 'underscore.string';
     (window as any).MouseEvent = MouseEvent;
 })(window);
 
-beforeAll(() => {
-    Enzyme.configure({adapter: new Adapter()});
-});
-
 beforeEach(() => {
     if (!$('#App').length) {
         $('body').append('<div id="App" class="coveo-styleguide"></div>');
@@ -39,6 +35,8 @@ beforeEach(() => {
 afterEach(() => {
     $('body > div:not(.jasmine_html-reporter)').remove();
 });
+
+Enzyme.configure({adapter: new Adapter()});
 
 const testsContext = require.context('./src', true, /\.spec\.ts(x?)$/);
 testsContext.keys().forEach(testsContext);

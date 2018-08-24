@@ -167,6 +167,7 @@ describe('Facets', () => {
     describe('<FacetRow enableExclude />', () => {
         let facetRowExcludeView: ReactWrapper<IFacetRowProps>;
         let props: IFacetRowProps;
+
         beforeEach(() => {
             props = {...FACET_ROW_PROPS, enableExclusions: true};
             facetRowExcludeView = mount(<FacetRow {...props} />, {attachTo: document.getElementById('App')});
@@ -177,7 +178,7 @@ describe('Facets', () => {
         });
 
         it('should display a .exclude-icon when exclude behavior is enabled and checkbox is checked as exclude', () => {
-            expect(facetRowExcludeView.find('.icon.hide.exclude-icon').length).toBe(1);
+            expect(facetRowExcludeView.find('.icon.hide.exclude-icon').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should call onToggle with good attribute when exclude behavior is enabled', () => {

@@ -60,8 +60,12 @@ describe('<TableChildBody />', () => {
     });
 
     describe('render', () => {
+        let wrapper: ReactWrapper<any, any>;
         const mountComponentWithProps = (props: ITableChildBodyProps = tableChildBodyProps) => {
-            const wrapper: ReactWrapper<any, any> = mount(
+            if (wrapper && wrapper.length) {
+                wrapper.unmount();
+            }
+            wrapper =  mount(
                 <Provider store={store}>
                     <TableChildBody {...props} />
                 </Provider>,
@@ -186,12 +190,12 @@ describe('<TableChildBody />', () => {
 
         it('should send disabled as a class to the <TableHeadingRow /> if the enabled property is set to false on the row data', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: false})});
-            expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(1);
+            expect(mountComponentWithProps(newProps).find('.disabled').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should send disabled as a class to the <TableHeadingRow /> if the disabled property is set to true on the row data', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {disabled: true})});
-            expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(1);
+            expect(mountComponentWithProps(newProps).find('.disabled').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should set the selectionDisabled prop to false on the <TableHeadingRow /> if there are actions defined for the row', () => {

@@ -82,8 +82,9 @@ describe('Options cycle', () => {
             const expectedCurrentOption = 5;
 
             store.dispatch(changeOptionsCycle(optionsCycleBasicProps.id, expectedCurrentOption));
+            wrapper.update();
 
-            expect(optionsCycle.props().currentOption).toBe(expectedCurrentOption);
+            expect(wrapper.find(OptionsCycle).props().currentOption).toBe(expectedCurrentOption);
         });
 
         it('should call onRender prop when mounted', () => {

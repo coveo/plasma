@@ -70,7 +70,7 @@ describe('Menu', () => {
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
 
-                expect((menuWrapper.find('.select-dropdown-container').get(0) as any).style.right).toBe('8px');
+                expect((menuWrapper.find('.select-dropdown-container').instance() as any).style.right).toBe('8px');
             });
 
             it('should add custom classes on dropdown element', () => {

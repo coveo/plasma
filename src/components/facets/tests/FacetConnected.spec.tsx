@@ -1,14 +1,14 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {TestUtils} from '../../../utils/TestUtils';
 import {Facet, IFacet, IFacetProps} from '../Facet';
 import {FacetConnected} from '../FacetConnected';
-import {FacetMoreRowsConnected} from '../FacetMoreRowsConnected';
-import {FacetMoreToggleConnected} from '../FacetMoreToggleConnected';
+import {FacetMoreRows} from '../FacetMoreRows';
+import {FacetMoreToggle} from '../FacetMoreToggle';
 import {FacetRow} from '../FacetRow';
 
 describe('Facets', () => {
@@ -129,7 +129,7 @@ describe('Facets', () => {
         });
 
         it('should render a toggle to view more facet rows if there are more than maxRowsToShow (number in props + 1 extra)', () => {
-            expect(facetComponent.find(FacetMoreToggleConnected).length).toBe(0);
+            expect(facetComponent.find(FacetMoreToggle).length).toBe(0);
 
             facetRows = facetRows.concat(
                 {
@@ -152,13 +152,13 @@ describe('Facets', () => {
                 clearFacet={clearFacet}
                 maxRowsToShow={maxRowsToShow}
             />;
-            wrapper.setProps({children: newRow});
+            wrapper.setProps({children: newRow}).update();
 
-            expect(facetComponent.find(FacetMoreToggleConnected).length).toBe(1);
+            expect(wrapper.find(Facet).find(FacetMoreToggle).length).toBe(1);
         });
 
         it('should render more facet rows if there are more than maxRowsToShow (number in props + 1 extra)', () => {
-            expect(facetComponent.find(FacetMoreRowsConnected).length).toBe(0);
+            expect(facetComponent.find(FacetMoreRows).length).toBe(0);
 
             facetRows = facetRows.concat(
                 {
@@ -182,12 +182,13 @@ describe('Facets', () => {
                 maxRowsToShow={maxRowsToShow}
             />;
             wrapper.setProps({children: newRow});
+            wrapper.update();
 
-            expect(facetComponent.find(FacetMoreRowsConnected).length).toBe(1);
+            expect(wrapper.find(Facet).find(FacetMoreRows).length).toBe(1);
         });
 
         it('should show the button to clear the facet if there is a selected row', () => {
-            expect(facetComponent.find('.facet-header-eraser').hasClass('hidden')).toBe(false);
+            expect(wrapper.find(Facet).find('.facet-header-eraser.hidden').length).toBe(0);
 
             selectedFacetRows = [];
 
@@ -199,8 +200,9 @@ describe('Facets', () => {
                 clearFacet={clearFacet}
             />;
             wrapper.setProps({children: newRow});
+            wrapper.update();
 
-            expect(facetComponent.find('.facet-header-eraser').hasClass('hidden')).toBe(true);
+            expect(wrapper.find(Facet).find('.facet-header-eraser.hidden').length).toBe(1);
         });
 
         it('should display the facet title', () => {

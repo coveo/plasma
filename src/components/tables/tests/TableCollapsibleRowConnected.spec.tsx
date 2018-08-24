@@ -44,8 +44,10 @@ describe('Tables', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
-            tableCollapsibleRow = wrapper.find(TableCollapsibleRow).first();
             store.dispatch(addRow(basicTableCollapsibleRowProps.id));
+
+            wrapper.update();
+            tableCollapsibleRow = wrapper.find(TableCollapsibleRow).first();
         });
 
         afterEach(() => {

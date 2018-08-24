@@ -61,10 +61,10 @@ describe('Actions', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
-            actionBar = wrapper.find(ActionBar).first();
-
             store.dispatch(addActionsToActionBar(id, actions));
             store.dispatch(filterItems(id, itemFilter));
+            wrapper.update();
+            actionBar = wrapper.find(ActionBar).first();
         });
 
         afterEach(() => {
@@ -169,11 +169,12 @@ describe('Actions', () => {
                 className: expectedClass,
             };
             store.dispatch(addPrompt(id, inlinePromptOptions));
+            wrapper.update();
 
-            const promptProp = actionBar.props().prompt;
+            const promptProp = wrapper.find(ActionBar).props().prompt;
             expect(promptProp).toBeDefined();
 
-            expect(actionBar.find('.prompt-' + expectedClass).length).toBe(1);
+            expect(wrapper.find(ActionBar).find(`.prompt-${expectedClass}`).length).toBe(1);
         });
 
         it('should call onClearItemFilter when calling clearItemFilter', () => {

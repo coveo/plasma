@@ -85,6 +85,8 @@ describe('Select', () => {
             mountSingleSelect(items);
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
+            wrapper.update();
+            singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
             singleSelect.find(SelectConnected).props().items
@@ -102,6 +104,8 @@ describe('Select', () => {
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
             store.dispatch(filterThrough(id, ''));
+            wrapper.update();
+            singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
             expect(singleSelect.find(SelectConnected).props().items[0].hidden).toBe(true);
@@ -119,6 +123,8 @@ describe('Select', () => {
             mountSingleSelect(items, () => false);
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
+            wrapper.update();
+            singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
             singleSelect.find(SelectConnected).props().items
@@ -158,6 +164,7 @@ describe('Select', () => {
 
             it('should dispatch a setActiveListBoxOption when the user press the up or down arrow', () => {
                 store.dispatch(toggleSelect(id, true));
+                wrapper.update();
 
                 expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 1));
                 wrapper.find(FilterBoxConnected).find('input')

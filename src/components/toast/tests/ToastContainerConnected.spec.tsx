@@ -60,7 +60,7 @@ describe('Toasts', () => {
             store.dispatch(addToast(containerId, 'toast title', {type: ToastType.Error}));
             wrapper.update();
 
-            expect(component.props().toasts.length).toBe(1);
+            expect(wrapper.find(ToastContainer).props().toasts.length).toBe(1);
             expect(wrapper.find(Toast).length).toBe(1);
         });
 

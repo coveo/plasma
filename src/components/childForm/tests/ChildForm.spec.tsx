@@ -32,14 +32,13 @@ describe('ChildForm', () => {
         });
 
         it('should disable children when disabled property is true', () => {
-            const childElement = childForm.find('Radio').first();
-            expect(childElement.prop('disabled')).toBe(false);
+            expect(childForm.find(Radio).first().prop('disabled')).toBe(false);
 
             childForm.setProps({disabled: false}).mount().update();
-            expect(childElement.prop('disabled')).toBe(false);
+            expect(childForm.find(Radio).first().prop('disabled')).toBe(false);
 
             childForm.setProps({disabled: true}).mount().update();
-            expect(childElement.prop('disabled')).toBe(true);
+            expect(childForm.find(Radio).first().prop('disabled')).toBe(true);
         });
     });
 });

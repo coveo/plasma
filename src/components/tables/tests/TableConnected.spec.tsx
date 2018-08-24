@@ -119,6 +119,7 @@ describe('<TableConnected />', () => {
 
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onRowClick(actions, 1);
+            wrapper.update();
             expect(wrapper.find(PrimaryAction).length).toBe(actions.length);
         });
 
@@ -144,6 +145,7 @@ describe('<TableConnected />', () => {
 
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onRowClick(actions, 2);
+            wrapper.update();
             expect(wrapper.find(PrimaryAction).length).toBe(1);
         });
 
@@ -158,6 +160,7 @@ describe('<TableConnected />', () => {
             const tableConnected = wrapper.find(Table);
             const predicateId = `${getTableChildComponentId(tableConnected.props().id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
             store.dispatch(openDropdownSearch(predicateId));
+            wrapper.update();
 
             tableConnected.props().onPredicateOptionClick(predicateId, testOption);
 
@@ -189,6 +192,7 @@ describe('<TableConnected />', () => {
 
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onWillUpdate(actions);
+            wrapper.update();
             expect(wrapper.find(PrimaryAction).length).toBe(actions.length);
         });
 
@@ -198,6 +202,7 @@ describe('<TableConnected />', () => {
 
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onWillUpdate([]);
+            wrapper.update();
             expect(wrapper.find(PrimaryAction).length).toBe(0);
         });
 

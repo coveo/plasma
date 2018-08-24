@@ -50,6 +50,7 @@ describe('DraggableSelectedOption', () => {
             mountOption();
 
             dndBackend.simulateBeginDrag([getHandlerId()[0]]);
+            selectedOption.update();
             expect(selectedOption.find('.selected-option-wrapper').prop('style').opacity).toBe(0);
 
             dndBackend.simulateEndDrag();

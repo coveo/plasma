@@ -94,6 +94,8 @@ describe('Select', () => {
             mountMultiSelect(items);
             store.dispatch(toggleSelect(id, true));
             store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
+            wrapper.update();
+            multiSelect = wrapper.find(SelectConnected);
 
             expect(multiSelect.props().items.length).toBe(items.length);
             multiSelect.find(SelectConnected).props().items
@@ -110,6 +112,8 @@ describe('Select', () => {
             mountMultiSelect(items);
             store.dispatch(toggleSelect(id, true));
             store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[0].id));
+            wrapper.update();
+            multiSelect = wrapper.find(SelectConnected);
 
             expect(multiSelect.props().items.length).toBe(items.length);
             expect(multiSelect.find(SelectConnected).props().items[0].hidden).toBe(true);

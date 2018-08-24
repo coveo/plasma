@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as _ from 'underscore';
+
 import {ItemBox} from '../../itemBox/ItemBox';
 import {IListBoxProps, ListBox} from '../ListBox';
 
@@ -38,6 +38,10 @@ describe('ListBox', () => {
             );
         });
 
+        afterEach(() => {
+            listBoxComponent.detach();
+        });
+
         it('should render with the box-item class', () => {
             expect(listBoxComponent.find(ItemBox).length).toBe(defaultProps.items.length);
         });
@@ -51,10 +55,14 @@ describe('ListBox', () => {
 
         const renderListBox = (props: Partial<IListBoxProps> = {}) => {
             listBoxComponent = mount(
-                <ListBox {..._.defaults(props, defaultProps)} />,
+                <ListBox {...defaultProps} {...props} />,
                 {attachTo: document.getElementById('App')},
             );
         };
+
+        afterEach(() => {
+            listBoxComponent.detach();
+        });
 
         it('should call onRender on mount', () => {
             const onRenderSpy = jasmine.createSpy('onRender');
@@ -77,10 +85,10 @@ describe('ListBox', () => {
             expect(onDestroySpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should render items with events on onOptionClick', () => {
+        it('should render items with events on onOptionClick on the item', () => {
             renderListBox();
 
-            (listBoxComponent.find(ItemBox) as any).get(1).handleOnOptionClick({target: 'target'});
+            (listBoxComponent.find(ItemBox).at(1).instance() as any).handleOnOptionClick({target: 'target'});
             expect(spyOnOptionClick).toHaveBeenCalled();
         });
 
@@ -90,7 +98,7 @@ describe('ListBox', () => {
                 onOptionClick,
             });
 
-            (listBoxComponent.find(ItemBox) as any).node.handleOnOptionClick({target: 'target'});
+            (listBoxComponent.find(ItemBox).first().instance() as any).handleOnOptionClick({target: 'target'});
             expect(onOptionClick).toHaveBeenCalled();
         });
 
@@ -101,7 +109,7 @@ describe('ListBox', () => {
                 onOptionClick,
             });
 
-            (listBoxComponent.find(ItemBox) as any).node.handleOnOptionClick({target: 'target'});
+            (listBoxComponent.find(ItemBox).instance() as any).handleOnOptionClick({target: 'target'});
             expect(onOptionClick).not.toHaveBeenCalled();
         });
 

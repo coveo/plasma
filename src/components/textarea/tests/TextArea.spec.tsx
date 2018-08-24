@@ -47,25 +47,25 @@ describe('TextArea', () => {
             expect(textArea.hasClass(className)).toBe(false);
 
             wrapper.setProps({className}).update();
-            expect(textArea.hasClass(className)).toBe(true);
+            expect(wrapper.find('textarea').hasClass(className)).toBe(true);
         });
 
         it('should set additionalAttributes when specified', () => {
             expect(textArea.prop('placeholder')).toBeUndefined();
             wrapper.setProps({additionalAttributes: {placeholder: 'not null'}}).update();
-            expect(textArea.prop('placeholder')).toBe('not null');
+            expect(wrapper.find('textarea').prop('placeholder')).toBe('not null');
         });
 
         it('should set disabled prop when specified', () => {
             expect(textArea.prop('disabled')).toBeUndefined();
             wrapper.setProps({disabled: true}).update();
-            expect(textArea.prop('disabled')).toBe(true);
+            expect(wrapper.find('textarea').prop('disabled')).toBe(true);
         });
 
         it('should set value prop when specified', () => {
             expect(textArea.prop('value')).toBeUndefined();
             wrapper.setProps({value: 'non empty'}).update();
-            expect(textArea.prop('value')).toBe('non empty');
+            expect(wrapper.find('textarea').prop('value')).toBe('non empty');
         });
 
         it('should not throw if the onChange prop is not defined onChange', () => {
@@ -83,8 +83,8 @@ describe('TextArea', () => {
         it('should call prop onChange on textarea change', () => {
             const onChange = jasmine.createSpy('onChange');
 
-            wrapper.setProps({onChange});
-            textArea.simulate('change');
+            wrapper.setProps({onChange}).update();
+            wrapper.find('textarea').simulate('change');
 
             expect(onChange).toHaveBeenCalledTimes(1);
         });
@@ -92,8 +92,8 @@ describe('TextArea', () => {
         it('should call prop onChangeCallback on textarea change', () => {
             const onChangeCallback = jasmine.createSpy('onChangeCallback');
 
-            wrapper.setProps({onChangeCallback});
-            textArea.simulate('change');
+            wrapper.setProps({onChangeCallback}).update();
+            wrapper.find('textarea').simulate('change');
 
             expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });

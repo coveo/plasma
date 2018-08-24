@@ -117,6 +117,7 @@ describe('FlatSelect', () => {
 
             it('should get the current selectedOption as a prop', () => {
                 store.dispatch(selectFlatSelect(id, defaultOptions[1].id));
+                wrapper.update();
 
                 flatSelect = wrapper.find(FlatSelect).first();
                 const optionsPropId = flatSelect.props().selectedOptionId;

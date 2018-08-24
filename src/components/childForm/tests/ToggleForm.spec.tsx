@@ -36,20 +36,18 @@ describe('ToggleForm', () => {
         it('should set classes when specified', () => {
             const innerClass = 'salut';
             const classes = [innerClass];
-            const innerLabel = toggleForm.find('div').first();
-            expect(innerLabel.hasClass(innerClass)).toBe(false);
+            expect(toggleForm.find('div').first().hasClass(innerClass)).toBe(false);
 
             toggleForm.setProps({classes}).mount().update();
-            expect(innerLabel.hasClass(innerClass)).toBe(true);
+            expect(toggleForm.find('div').first().hasClass(innerClass)).toBe(true);
         });
 
         it('should check inner radio control when checked property is true', () => {
-            const parentControl = toggleForm.find('Radio').first();
             toggleForm.setProps({checked: false}).mount().update();
-            expect(parentControl.prop('checked')).toBe(false);
+            expect(toggleForm.find('Radio').first().prop('checked')).toBe(false);
 
             toggleForm.setProps({checked: true}).mount().update();
-            expect(parentControl.prop('checked')).toBe(true);
+            expect(toggleForm.find('Radio').first().prop('checked')).toBe(true);
         });
 
         it('should not throw when parent control is clicked and prop is undefined', () => {
@@ -71,14 +69,13 @@ describe('ToggleForm', () => {
         });
 
         it('should disable ChildForm children when checked property is false', () => {
-            const childElement = toggleForm.find('ChildForm').first();
-            expect(childElement.prop('disabled')).toBe(true);
+            expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(true);
 
             toggleForm.setProps({checked: false}).mount().update();
-            expect(childElement.prop('disabled')).toBe(true);
+            expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(true);
 
             toggleForm.setProps({checked: true}).mount().update();
-            expect(childElement.prop('disabled')).toBe(false);
+            expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(false);
         });
     });
 });

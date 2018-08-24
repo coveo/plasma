@@ -32,7 +32,7 @@ describe('Badge', () => {
         it('should render the badge with the default badge class', () => {
             mountWithProps({});
 
-            expect(badge.hasClass(DEFAULT_BADGE_CLASSNAME)).toBe(true);
+            expect(badge.find(`.${DEFAULT_BADGE_CLASSNAME}`).length).toBe(1);
         });
 
         it('should render the badge with the extra classes specified as props', () => {
@@ -40,8 +40,8 @@ describe('Badge', () => {
                 extraClasses: ['bg-blue', 'bold'],
             });
 
-            expect(badge.hasClass('bg-blue')).toBe(true);
-            expect(badge.hasClass('bold')).toBe(true);
+            expect(badge.find('.bg-blue').length).toBe(1);
+            expect(badge.find('.bold').length).toBe(1);
         });
     });
 });
