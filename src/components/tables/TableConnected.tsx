@@ -65,30 +65,26 @@ const getDataById = (data: ITableData, props: ITableOwnProps): ITableById => dat
 
 const getSelectedIds = (data: ITableData, props: ITableOwnProps): string[] => data.selectedIds || [];
 
-const getActions = (data: ITableData, props: ITableOwnProps): (rowData?: IData) => IActionOptions[] => props.getActions;
-
 const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => props.rowsMultiSelect;
 
-const actionsSelector = createSelector([
-    getDataById,
-    getSelectedIds,
-    getMultiSelect,
-    getActions,
-], (
+const getGetActionsMethod = (data: ITableData, props: ITableOwnProps): (rowData?: IData) => IActionOptions[] => props.getActions;
+
+const getFinalActions = (
     byId: ITableById,
     selectedIds: string[],
     isMultiSelect: boolean,
-    getAction: (rowData?: IData) => IActionOptions[],
-    ): IActionOptions[] => {
-        const rowsData: IData[] = _.map(selectedIds, (id: string) => byId[id]);
-        if (getAction && rowsData.length) {
-            const actions: IActionOptions[] = getAction(rowsData[0]);
-            return isMultiSelect && selectedIds.length >= 2
-                ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
-                : actions;
-        }
-        return [];
-    },
+    getActions: (rowData?: IData) => IActionOptions[],
+): IActionOptions[] => getActions && selectedIds.length
+        ? getActions(byId[selectedIds[0]])
+            .filter((action) => !isMultiSelect || (isMultiSelect && !!action.grouped))
+        : [];
+
+const actionsSelector = createSelector(
+    getDataById,
+    getSelectedIds,
+    getMultiSelect,
+    getGetActionsMethod,
+    getFinalActions,
 );
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {

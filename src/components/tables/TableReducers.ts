@@ -165,6 +165,7 @@ export const tableReducer = (
                     },
                     allIds: _.reject(state.data.allIds, (id) => id === action.payload.dataId),
                     displayedIds: _.reject(state.data.displayedIds, (id) => id === action.payload.dataId),
+                    selectedIds: _.reject(state.data.selectedIds, (id) => id === action.payload.dataId),
                 },
             };
         case TableActions.addTableDataEntry:
