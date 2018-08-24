@@ -2,12 +2,18 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
+import {Tooltip} from '../tooltip/Tooltip';
 
 export interface IModalHeaderOwnProps {
     id?: string;
     title: string;
     classes?: IClassName;
+    docLink?: {
+        url: string;
+        tooltip: string;
+    };
 }
 
 export interface IModalHeaderStateProps {
@@ -56,16 +62,11 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
 
         return (
             <header className={classes}>
-                {
-                    !!this.props.children
-                        ? (
-                            <div>
-                                {this.getTitle()}
-                                {this.props.children}
-                            </div>
-                        )
-                        : this.getTitle()
-                }
+                <div>
+                    {this.getTitle()}
+                    {this.getDocLink()}
+                    {this.props.children}
+                </div>
                 {closeComponent}
             </header>
         );
@@ -73,8 +74,27 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
 
     private getTitle(): JSX.Element {
         const titleClass: string = classNames({
-            inline: !!this.props.children,
+            inline: !!this.props.children || !!this.props.docLink,
         });
         return <h1 className={titleClass}>{this.props.title}</h1>;
+    }
+
+    private getDocLink(): JSX.Element {
+        return this.props.docLink
+            ? (
+                <Tooltip
+                    title={this.props.docLink.tooltip}
+                    placement={TooltipPlacement.Bottom}
+                >
+                    <a
+                        href={this.props.docLink.url}
+                        target='_blank'
+                        className='inline-doc-link ml1'
+                    >
+                        <Svg svgName='help' className='mod-lg icon fill-orange' />
+                    </a>
+                </Tooltip>
+            )
+            : null;
     }
 }

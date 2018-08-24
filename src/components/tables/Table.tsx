@@ -169,8 +169,10 @@ export class Table extends React.Component<ITableProps> {
 
         if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
             // if the change occurs outside the navigation (per page, pagination), reset the pagination to 0
-            const shouldResetPage = tableCompositeState.page === nextProps.tableCompositeState.page
-                && tableCompositeState.perPage === nextProps.tableCompositeState.perPage;
+            const shouldResetPage = (
+                tableCompositeState.page === nextProps.tableCompositeState.page
+                && tableCompositeState.perPage === nextProps.tableCompositeState.perPage
+            );
 
             this.props.onModifyData(shouldResetPage, nextProps.tableCompositeState, tableCompositeState);
         }
@@ -247,6 +249,7 @@ export class Table extends React.Component<ITableProps> {
             )
             || currentTableCompositeState.from !== nextTableCompositeState.from
             || currentTableCompositeState.to !== nextTableCompositeState.to
+            || currentTableCompositeState.data.allIds.length > nextTableCompositeState.data.allIds.length
         );
     }
 
