@@ -2,9 +2,9 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
-import {TooltipPlacement} from '../../utils/TooltipUtils';
 
 export interface IModalHeaderOwnProps {
     id?: string;
