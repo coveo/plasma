@@ -18,7 +18,7 @@ export const modalReducer = (
         case ModalAction.addModal:
             return {
                 id: action.payload.id,
-                isOpened: false,
+                isOpened: !!action.payload.isOpened,
             };
         case ModalAction.openModal:
             return state.id !== action.payload.id

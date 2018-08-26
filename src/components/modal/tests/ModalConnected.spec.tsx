@@ -65,8 +65,26 @@ describe('Modal', () => {
             expect(onDestroyProp).toBeDefined();
         });
 
-        it('should add the modal in the store on render', () => {
-            expect(store.getState().modals.filter((currentModal) => currentModal.id === id).length).toBe(1);
+        it('should add the modal not opened by default in the store on render', () => {
+            const modalInState = store.getState().modals.filter((currentModal) => currentModal.id === id);
+            expect(modalInState.length).toBe(1);
+            expect(modalInState[0].isOpened).toBe(false);
+        });
+
+        it('should add the modal opened in the store on render if openOnMount is passed as prop', () => {
+            mount(
+                <Provider store={store}>
+                    <ModalConnected
+                        id={id}
+                        openOnMount
+                    />
+                </Provider>,
+                {attachTo: document.getElementById('App')},
+            );
+
+            const modalInState = store.getState().modals.filter((currentModal) => currentModal.id === id);
+            expect(modalInState.length).toBe(1);
+            expect(modalInState[0].isOpened).toBe(true);
         });
 
         it('should open the modal in the store when dispatching a "openModal" action', () => {
