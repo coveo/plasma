@@ -7,6 +7,11 @@ export interface IModalOwnProps {
     classes?: IClassName;
     closeCallback?: () => void;
     closeTimeout?: number;
+    /**
+     * Renders the Modal already opened.
+     * To be used with ModalConnected only.
+     */
+    openOnMount?: boolean;
 }
 
 export interface IModalStateProps {

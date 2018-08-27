@@ -60,6 +60,31 @@ describe('Modal', () => {
             expect(modalsState.filter((modal) => modal.id === action.payload.id).length).toBe(1);
         });
 
+        it('should return the old state with one more IModalState with isOpened false when the action is "ModalAction.addModal" without isOpened in the payload', () => {
+            const action: IReduxAction<IModalActionPayload> = {
+                type: ModalAction.addModal,
+                payload: {
+                    id: 'some-modal',
+                },
+            };
+            const modalsState: IModalState[] = modalsReducer(modalsInitialState, action);
+
+            expect(modalsState[0].isOpened).toBe(false);
+        });
+
+        it('should return the old state with one more IModalState with isOpened true when the action is "ModalAction.addModal" with isOpened set to true in the payload', () => {
+            const action: IReduxAction<IModalActionPayload> = {
+                type: ModalAction.addModal,
+                payload: {
+                    id: 'some-modal',
+                    isOpened: true,
+                },
+            };
+            const modalsState: IModalState[] = modalsReducer(modalsInitialState, action);
+
+            expect(modalsState[0].isOpened).toBe(true);
+        });
+
         it('should return the old state without the IModalState when the action is "ModalAction.removeModal"', () => {
             let oldState: IModalState[] = [
                 {
