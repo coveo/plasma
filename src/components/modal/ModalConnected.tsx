@@ -17,7 +17,7 @@ const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
     ownProps: IModalOwnProps,
 ): IModalDispatchProps => ({
-    onRender: () => dispatch(addModal(ownProps.id)),
+    onRender: () => dispatch(addModal(ownProps.id, ownProps.openOnMount)),
     onDestroy: () => dispatch(removeModal(ownProps.id)),
 });
 

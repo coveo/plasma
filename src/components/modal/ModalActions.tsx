@@ -3,6 +3,7 @@ import {IReduxAction} from '../../utils/ReduxUtils';
 export interface IModalActionPayload {
     id?: string;
     ids?: string[];
+    isOpened?: boolean;
 }
 
 export const ModalAction = {
@@ -26,10 +27,11 @@ export const openModal = (id: string): IReduxAction<IModalActionPayload> => ({
     },
 });
 
-export const addModal = (id: string): IReduxAction<IModalActionPayload> => ({
+export const addModal = (id: string, isOpened?: boolean): IReduxAction<IModalActionPayload> => ({
     type: ModalAction.addModal,
     payload: {
         id,
+        isOpened,
     },
 });
 
