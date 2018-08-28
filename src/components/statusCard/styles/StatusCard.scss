@@ -1,0 +1,40 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/common/palette-map.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+.statusCard {
+    border-left: $status-card-border-width solid $green;
+    box-shadow: $table-shadow;
+    border-radius: $border-radius;
+}
+
+@each $color, $value in $palette {
+    &:global(.border-color-#{$color}) {
+        border-left-color: $value;
+    }
+}
+
+.statusCardIcon {
+    margin: $status-card-padding;
+}
+
+.statusCardTitle {
+    margin: $status-card-padding-y $status-card-padding $status-card-text-margin 0;
+    font-size: $default-font-size;
+}
+
+.statusCardInfo {
+    font-size: $title-font-size;
+    margin: 0 $status-card-padding $status-card-padding-y 0;
+}
+
+:global(.status-card-wrapper) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .statusCard {
+        width: calc((100% - #{$status-card-margin} * 3) / 4);
+        margin-bottom: $status-card-margin;
+    }
+}
