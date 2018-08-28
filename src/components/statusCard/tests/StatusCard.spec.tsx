@@ -9,7 +9,7 @@ describe('StatusCard', () => {
     const basicProps: StatusCardProps = {
         color: 'green',
         icon: 'view',
-        title: 'Title'
+        title: 'Title',
     };
     const statusCardChild = 'Some child';
 
