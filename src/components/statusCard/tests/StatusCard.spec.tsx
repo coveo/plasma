@@ -8,7 +8,6 @@ import * as styles from '../styles/StatusCard.scss';
 describe('StatusCard', () => {
     const basicProps: StatusCardProps = {
         color: 'green',
-        icon: 'view',
         title: 'Title',
     };
     const statusCardChild = 'Some child';
@@ -24,7 +23,7 @@ describe('StatusCard', () => {
 
         const mountWithProps = (props?: Partial<StatusCardProps>) => {
             statusCard = mount(
-                <StatusCard {...basicProps}>{statusCardChild}</StatusCard>,
+                <StatusCard {...basicProps} {...props}>{statusCardChild}</StatusCard>,
                 {attachTo: document.getElementById('App')},
             );
         };
@@ -39,10 +38,14 @@ describe('StatusCard', () => {
         });
 
         it('should get the props correctly', () => {
+            const addedProps: Partial<StatusCardProps> = {icon: 'view', simple: true};
+            mountWithProps(addedProps);
             const statusCardProps = statusCard.props();
+
             expect(statusCardProps.color).toBe(basicProps.color);
-            expect(statusCardProps.icon).toBe(basicProps.icon);
+            expect(statusCardProps.icon).toBe(addedProps.icon);
             expect(statusCardProps.title).toBe(basicProps.title);
+            expect(statusCardProps.simple).toBe(addedProps.simple);
             expect((statusCardProps as any).children).toBe(statusCardChild);
         });
 
@@ -54,7 +57,19 @@ describe('StatusCard', () => {
             expect(statusCard.find(`.border-color-${basicProps.color}`).length).toBe(1);
         });
 
-        it('should render a <Svg /> with the class styles.statusCardIcon', () => {
+        it('should have the class simple if simple prop is set to true', () => {
+            expect(statusCard.find('.simple').length).toBe(0);
+
+            mountWithProps({simple: true});
+
+            expect(statusCard.find('.simple').length).toBe(1);
+        });
+
+        it('should render a <Svg /> with the class styles.statusCardIcon if there is an icon prop', () => {
+            expect(statusCard.find(Svg).length).toBe(0);
+
+            mountWithProps({icon: 'view'});
+
             const svg = statusCard.find(Svg);
             expect(svg.length).toBe(1);
             expect(svg.find(`.${styles.statusCardIcon}`).length).toBe(1);

@@ -6,6 +6,12 @@
     border-left: $status-card-border-width solid $green;
     box-shadow: $table-shadow;
     border-radius: $border-radius;
+    background: $pure-white;
+
+    &:global(.simple) {
+        background: transparent;
+        box-shadow: none;
+    }
 }
 
 @each $color, $value in $palette {
@@ -21,11 +27,19 @@
 .statusCardTitle {
     margin: $status-card-padding-y $status-card-padding $status-card-text-margin 0;
     font-size: $default-font-size;
+
+    :global(.simple) & {
+        margin: 0 $status-card-margin $status-card-text-margin;
+    }
 }
 
 .statusCardInfo {
     font-size: $title-font-size;
     margin: 0 $status-card-padding $status-card-padding-y 0;
+
+    :global(.simple) & {
+        margin: 0 $status-card-margin;
+    }
 }
 
 :global(.status-card-wrapper) {

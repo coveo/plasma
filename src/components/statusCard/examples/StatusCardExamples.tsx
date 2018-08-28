@@ -17,6 +17,12 @@ export const StatusCardExamples = () => (
             </div>
         </div>
         <div className='form-group'>
+            <label className='form-control-label'>Simple status card</label>
+            <div className='form-control'>
+                <StatusCard color='yellow' title='Tasks' simple>6/10 done!</StatusCard>
+            </div>
+        </div>
+        <div className='form-group'>
             <label className='form-control-label'>Many status cards</label>
             <div className='form-control'>
                 <div className='status-card-wrapper'>

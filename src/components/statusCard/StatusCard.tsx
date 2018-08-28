@@ -6,8 +6,9 @@ import * as styles from './styles/StatusCard.scss';
 
 export interface StatusCardProps {
     color: string;
-    icon: string;
     title: string;
+    icon?: string;
+    simple?: boolean;
 }
 
 export class StatusCard extends React.Component<StatusCardProps> {
@@ -16,6 +17,9 @@ export class StatusCard extends React.Component<StatusCardProps> {
             styles.statusCard,
             [`border-color-${this.props.color}`],
             'flex',
+            {
+                simple: this.props.simple,
+            },
         );
 
         const titleClasses: string = classNames(
@@ -25,7 +29,7 @@ export class StatusCard extends React.Component<StatusCardProps> {
 
         return (
             <div className={cardClasses}>
-                <Svg svgName={this.props.icon} svgClass='icon mod-2x' className={styles.statusCardIcon} />
+                {this.props.icon && <Svg svgName={this.props.icon} svgClass='icon mod-2x' className={styles.statusCardIcon} />}
                 <div>
                     <h3 className={titleClasses}>{this.props.title}</h3>
                     <div className={styles.statusCardInfo}>{this.props.children}</div>
