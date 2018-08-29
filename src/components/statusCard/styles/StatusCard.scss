@@ -14,12 +14,6 @@
     }
 }
 
-@each $color, $value in $palette {
-    &:global(.border-color-#{$color}) {
-        border-left-color: $value;
-    }
-}
-
 .statusCardIcon {
     margin: $status-card-padding;
 }
