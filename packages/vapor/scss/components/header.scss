@@ -20,30 +20,27 @@
   }
 }
 
+
 .header-height {
   height: $panel-header-height;
 }
 
 .header-hamburger {
-  padding: $header-hamburger-margin;
+  padding: $header-hamburger-padding;
 
   background-color: transparent;
   border: none;
 
-  transition: opacity $navigation-side-nav-toggle-anim-duration ease-in-out;
-
+  outline-width: 0;
   cursor: pointer;
-  opacity: 0.7;
 
-  fill: $pure-white;
+  transition: opacity $navigation-toggle-duration ease-in-out;
 
-  &:focus {
-    outline-width: 0;
-  }
+  opacity: $transparency-2;
 }
 
 .header-hamburger-opened {
-  transition: opacity $navigation-side-nav-toggle-anim-duration ease-in-out;
+  transition: opacity $navigation-toggle-duration ease-in-out;
 
-  opacity: 0.3;
+  opacity: $transparency-4;
 }
