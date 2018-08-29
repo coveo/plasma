@@ -8,15 +8,11 @@
 
   border-top-left-radius: 2px;
 
-  transition: transform $navigation-side-nav-toggle-anim-duration ease-in-out;
+  transition: padding-left $navigation-toggle-duration ease-in-out;
 }
 
 .application-container-with-navigation {
-  max-width: calc(100vw - #{$navigation-width});
-
-  transform: translateX($navigation-width);
-
-  transition: transform $navigation-side-nav-toggle-anim-duration ease-in-out;
+  padding-left: $navigation-width;
 }
 
 .application-wrapper {

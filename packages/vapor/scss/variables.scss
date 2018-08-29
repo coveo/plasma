@@ -150,7 +150,7 @@ $panel-header-height: 100px;
 $panel-header-action-padding-horizontal: 12px;
 $panel-header-action-padding-vertical: 8px;
 $description-margin-top: 5px;
-$header-hamburger-margin: 15px 20px 15px 15px;
+$header-hamburger-padding: 15px 20px;
 
 // Popover
 $popover-min-width: 320px;
@@ -227,7 +227,14 @@ $navigation-loading-height: 12px;
 $navigation-loading-item-border-radius: 10px;
 $navigation-loading-background-size: 300% 104px;
 $navigation-loading-bullet-width: 12px;
-$navigation-side-nav-toggle-anim-duration: 0.3s;
+$navigation-toggle-duration: 0.3s;
+%navigation-toggle-closed {
+  margin-left: -$navigation-width;
+  transition: transform $navigation-toggle-duration ease-in-out; 
+}
+%navigation-toggle-opened {
+  transform: translateX($navigation-width);
+}
 
 // Sub Navigation
 $sub-navigation-padding-top: 26px;
