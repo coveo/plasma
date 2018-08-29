@@ -148,7 +148,7 @@
     "shelljs": "0.8.2",
     "style-loader": "0.22.1",
     "ts-transformer-keys": "0.3.3",
-    "tsjs": "0.6.6",
+    "tsjs": "0.6.7",
     "tslint-loader": "3.6.0",
     "ttypescript": "1.5.4",
     "typescript": "3.0.1",
