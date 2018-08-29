@@ -17,8 +17,7 @@
 }
 
 // @deprecated, the .bg-polygon class is deprecated, use .bg-gradient instead
-.bg-polygon,
-.bg-gradient {
+.bg-polygon, .bg-gradient {
   background: linear-gradient(65deg, $mirage 0%, $blue-purple-3 100%);
   background-size: cover;
 }

@@ -33,12 +33,12 @@
       }
 
       &:focus:not([readonly]) {
-       border-bottom-color: $azure;
+        border-bottom-color: $azure;
 
-       & + label {
-         color: $azure;
-       }
-     }
+        & + label {
+          color: $azure;
+        }
+      }
     }
 
     &:disabled, &[readonly='readonly'] {

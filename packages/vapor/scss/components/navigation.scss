@@ -168,3 +168,15 @@
     transform: translateY(-50%) rotate(180deg);
   }
 }
+
+.navigation {
+  margin-left: -$navigation-width;
+
+  transition: transform $navigation-side-nav-toggle-anim-duration ease-in-out;
+}
+
+.navigation-opened {
+  transform: translateX($navigation-width);
+
+  transition: transform $navigation-side-nav-toggle-anim-duration ease-in-out;
+}

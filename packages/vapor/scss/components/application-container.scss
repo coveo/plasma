@@ -3,9 +3,20 @@
   flex-grow: 1;
   order: 2;
 
+  max-width: 100vw;
   overflow: auto;
 
   border-top-left-radius: 2px;
+
+  transition: transform $navigation-side-nav-toggle-anim-duration ease-in-out;
+}
+
+.application-container-with-navigation {
+  max-width: calc(100vw - #{$navigation-width});
+
+  transform: translateX($navigation-width);
+
+  transition: transform $navigation-side-nav-toggle-anim-duration ease-in-out;
 }
 
 .application-wrapper {
