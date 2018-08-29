@@ -6,20 +6,44 @@
   color: $white;
 
   background-color: $purple-blue;
+}
 
-  .header-section {
-    border-left: solid 1px $dark-grey;
+.header-section {
+  border-left: solid 1px $dark-grey;
 
-    &.mod-padded {
-      padding: 0 25px;
-    }
+  &.mod-padded {
+    padding: 0 25px;
+  }
 
-    &:first-child {
-      border-left: none;
-    }
+  &:first-child {
+    border-left: none;
   }
 }
 
 .header-height {
   height: $panel-header-height;
+}
+
+.header-hamburger {
+  padding: $header-hamburger-margin;
+
+  background-color: transparent;
+  border: none;
+
+  transition: opacity $navigation-side-nav-toggle-anim-duration ease-in-out;
+
+  cursor: pointer;
+  opacity: 0.7;
+
+  fill: $pure-white;
+
+  &:focus {
+    outline-width: 0;
+  }
+}
+
+.header-hamburger-opened {
+  transition: opacity $navigation-side-nav-toggle-anim-duration ease-in-out;
+
+  opacity: 0.3;
 }

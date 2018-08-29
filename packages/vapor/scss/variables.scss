@@ -150,6 +150,7 @@ $panel-header-height: 100px;
 $panel-header-action-padding-horizontal: 12px;
 $panel-header-action-padding-vertical: 8px;
 $description-margin-top: 5px;
+$header-hamburger-margin: 15px 20px 15px 15px;
 
 // Popover
 $popover-min-width: 320px;
@@ -226,6 +227,7 @@ $navigation-loading-height: 12px;
 $navigation-loading-item-border-radius: 10px;
 $navigation-loading-background-size: 300% 104px;
 $navigation-loading-bullet-width: 12px;
+$navigation-side-nav-toggle-anim-duration: 0.3s;
 
 // Sub Navigation
 $sub-navigation-padding-top: 26px;
@@ -578,7 +580,7 @@ $diff-separator-margin: 10px;
 // Color dots
 $color-dot-size: $default-line-height;
 
-//Banners
+// Banners
 $banner-padding: 25px 40px;
 $full-banner-height: 300px;
 $banner-content-height: 165px;
@@ -586,3 +588,10 @@ $banner-content-padding: 50px;
 $banner-right-width: 300px;
 $banner-warning-icon-fix: 2px;
 $banner-box-shadow: inset 0 5px 10px 0 rgba($black, 0.1), inset 0 -10px 50px 0 rgba($black, 0.2);
+
+// Status Cards
+$status-card-border-width: 4px;
+$status-card-padding: 25px;
+$status-card-padding-y: 13px;
+$status-card-margin: 10px;
+$status-card-text-margin: 5px;

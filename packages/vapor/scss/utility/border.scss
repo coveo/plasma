@@ -55,3 +55,25 @@ $borders: border-top border-bottom border-left border-right;
     border-radius: 0 $radius $radius 0;
   }
 }
+
+@each $color, $value in $palette {
+  .border-color-#{$color} {
+    border-color: $value;
+  }
+
+  .border-left-color-#{$color} {
+    border-left-color: $value;
+  }
+
+  .border-right-color-#{$color} {
+    border-left-color: $value;
+  }
+
+  .border-top-color-#{$color} {
+    border-left-color: $value;
+  }
+
+  .border-bottom-color-#{$color} {
+    border-left-color: $value;
+  }
+}
