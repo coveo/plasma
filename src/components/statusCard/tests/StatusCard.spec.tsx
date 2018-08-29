@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
+import {Loading} from '../../loading/Loading';
 import {Svg} from '../../svg/Svg';
 import {StatusCard, StatusCardProps} from '../StatusCard';
 import * as styles from '../styles/StatusCard.scss';
@@ -54,7 +55,7 @@ describe('StatusCard', () => {
         });
 
         it('should have a class with the color prop', () => {
-            expect(statusCard.find(`.border-color-${basicProps.color}`).length).toBe(1);
+            expect(statusCard.find(`.border-left-color-${basicProps.color}`).length).toBe(1);
         });
 
         it('should have the class simple if simple prop is set to true', () => {
@@ -86,6 +87,14 @@ describe('StatusCard', () => {
             const children = statusCard.find(`.${styles.statusCardInfo}`);
             expect(children.length).toBe(1);
             expect(children.html()).toContain(statusCardChild);
+        });
+
+        it('should render a <Loading /> component when the prop loading is set to true', () => {
+            expect(statusCard.find(Loading).length).toBe(0);
+
+            mountWithProps({loading: true});
+
+            expect(statusCard.find(Loading).length).toBe(1);
         });
     });
 });

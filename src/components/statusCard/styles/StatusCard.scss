@@ -3,14 +3,22 @@
 @import '~coveo-styleguide/scss/variables.scss';
 
 .statusCard {
-    border-left: $status-card-border-width solid $green;
+    border-left: $status-card-border-width solid transparent;
     box-shadow: $table-shadow;
     border-radius: $border-radius;
     background: $pure-white;
+    position: relative;
 
     &:global(.simple) {
         background: transparent;
         box-shadow: none;
+    }
+
+    :global(.spinner) {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 
