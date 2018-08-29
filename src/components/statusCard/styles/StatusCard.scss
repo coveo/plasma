@@ -1,0 +1,55 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+.statusCard {
+    border-left: $status-card-border-width solid transparent;
+    box-shadow: $table-shadow;
+    border-radius: $border-radius;
+    background: $pure-white;
+    position: relative;
+
+    &:global(.simple) {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    :global(.spinner) {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.statusCardIcon {
+    margin: $status-card-padding;
+}
+
+.statusCardTitle {
+    margin: $status-card-padding-y $status-card-padding $status-card-text-margin 0;
+    font-size: $default-font-size;
+
+    :global(.simple) & {
+        margin: 0 $status-card-margin $status-card-text-margin;
+    }
+}
+
+.statusCardInfo {
+    font-size: $title-font-size;
+    margin: 0 $status-card-padding $status-card-padding-y 0;
+
+    :global(.simple) & {
+        margin: 0 $status-card-margin;
+    }
+}
+
+:global(.status-card-wrapper) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .statusCard {
+        width: calc((100% - #{$status-card-margin} * 3) / 4);
+        margin-bottom: $status-card-margin;
+    }
+}
