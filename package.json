@@ -51,6 +51,7 @@
     "unidiff": "0.0.4"
   },
   "peerDependencies": {
+    "codemirror": "^5.39.2",
     "jquery": ">= 2.0.0 =< 3",
     "react-dom": "^15.6.0",
     "react": "^15.6.1",
