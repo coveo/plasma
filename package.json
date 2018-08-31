@@ -75,7 +75,7 @@
     "@types/react-bootstrap": "0.0.52",
     "@types/react-codemirror": "1.0.1",
     "@types/react-dom": "15.5.4",
-    "@types/react-infinite-scroll-component": "4.2.1",
+    "@types/react-infinite-scroll-component": "4.2.2",
     "@types/react-redux": "5.0.8",
     "@types/react-tether": "0.5.3",
     "@types/react-transition-group": "2.0.13",
