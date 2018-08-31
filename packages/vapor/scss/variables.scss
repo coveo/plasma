@@ -201,9 +201,6 @@ $wizard-card-large-width: 1095px;
 $wizard-card-form-padding: 30px;
 $wizard-card-footer-padding: 20px 30px;
 
-// Application
-$application-container-min-height: 400px;
-
 // Navigation
 $navigation-menu-header-font-weight: 700;
 $navigation-menu-item-font-weight: 400;
@@ -230,10 +227,22 @@ $navigation-loading-bullet-width: 12px;
 $navigation-toggle-duration: 0.1s;
 %navigation-toggle-closed {
   margin-left: -$navigation-width;
+
   transition: transform $navigation-toggle-duration ease-in-out;
 }
 %navigation-toggle-opened {
   transform: translateX($navigation-width);
+}
+
+// Application
+$application-container-min-height: 400px;
+%application-container-toggle-with-navigation {
+  max-width: calc(100vw - #{$navigation-width});
+
+  transform: translateX($navigation-width);
+}
+%application-container-toggle-without-navigation {
+  transition: transform $navigation-toggle-duration ease-in-out;
 }
 
 // Sub Navigation

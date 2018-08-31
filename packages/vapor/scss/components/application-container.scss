@@ -8,11 +8,15 @@
 
   border-top-left-radius: 2px;
 
-  transition: padding-left $navigation-toggle-duration ease-in-out;
+  .application-main-header, .application-main-content {
+    @extend %application-container-toggle-without-navigation;
+  }
 }
 
 .application-container-with-navigation {
-  padding-left: $navigation-width;
+  .application-main-header, .application-main-content {
+    @extend %application-container-toggle-with-navigation;
+  }
 }
 
 .application-wrapper {
