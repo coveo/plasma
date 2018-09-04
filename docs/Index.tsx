@@ -80,6 +80,7 @@ import {SideNavigationExample} from '../src/components/sideNavigation/examples/S
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
 import {SplitLayoutExamples} from '../src/components/splitlayout/examples/SplitLayoutExamples';
+import {StatusCardExamples} from '../src/components/statusCard/examples/StatusCardExamples';
 import {StepProgressBarExamples} from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
 import {SubNavigationConnectedExamples} from '../src/components/subNavigation/examples/SubNavigationConnectedExamples';
 import {SubNavigationExamples} from '../src/components/subNavigation/examples/SubNavigationExamples';
@@ -218,6 +219,7 @@ class App extends React.Component<any, any> {
                         {component: DiffViewerExamples, componentName: 'DiffViewer'},
                         {component: BannerExamples, componentName: 'Banner'},
                         {component: SlideYExamples, componentName: 'SlideY'},
+                        {component: StatusCardExamples, componentName: 'StatusCard'},
                     ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
                 </div>
             </Provider>
