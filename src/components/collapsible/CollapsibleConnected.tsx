@@ -15,8 +15,11 @@ import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './Colla
 
 const mapStateToProps = (state: IReactVaporState, ownProps: CollapsibleOwnProps): CollapsibleStateProps => {
     const collapsibleState = findWhere(state.collapsibles, {id: ownProps.id});
+    if (collapsibleState) {
+        return {expanded: collapsibleState.expanded};
+    }
 
-    return {expanded: collapsibleState && collapsibleState.expanded};
+    return {expanded: ownProps.expandedOnMount};
 };
 
 const mapDispatchToProps = (
