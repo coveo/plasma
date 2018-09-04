@@ -84,7 +84,7 @@
     "@types/underscore": "1.8.9",
     "@types/underscore.string": "0.0.32",
     "@types/webpack-env": "1.13.6",
-    "autoprefixer": "9.1.2",
+    "autoprefixer": "9.1.4",
     "awesome-typescript-loader": "5.2.0",
     "bithound": "1.7.0",
     "chosen-js": "1.8.2",
