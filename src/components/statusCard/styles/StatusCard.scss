@@ -50,7 +50,7 @@
     .statusCard {
         width: calc((100% - #{$status-card-margin} * 3) / 4);
         margin-bottom: $status-card-margin;
-        margin-right: 10px;
+        margin-right: $status-card-margin;
 
         &:nth-child(4n) {
             margin-right: 0;
