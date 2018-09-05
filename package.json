@@ -130,7 +130,7 @@
     "node-sass": "4.9.3",
     "postcss-loader": "2.1.5",
     "pre-commit": "1.2.2",
-    "rc-slider": "8.6.1",
+    "rc-slider": "8.6.2",
     "react": "15.6.1",
     "react-addons-test-utils": "15.6.2",
     "react-dnd": "2.5.1",
