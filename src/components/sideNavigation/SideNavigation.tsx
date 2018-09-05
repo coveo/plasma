@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {JSXRenderable} from '../../utils/JSXUtils';
-import { IReduxStatePossibleProps } from '../../utils/ReduxUtils';
+import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 
 export interface ISideNavProps extends IReduxStatePossibleProps {
     className?: string;
@@ -10,7 +10,7 @@ export interface ISideNavProps extends IReduxStatePossibleProps {
 }
 
 export const SideNavigation = (props: ISideNavProps) =>
-    <nav className={classNames(props.className, 'navigation', { 'navigation-opened': props.withReduxState ? props.opened : true })}>
+    <nav className={classNames(props.className, 'navigation', {'navigation-opened': props.withReduxState ? props.opened : true})}>
         <div className='navigation-menu'>
             <div className='navigation-menu-sections'>
                 {props.children}
