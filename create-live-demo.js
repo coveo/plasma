@@ -21,10 +21,12 @@ sh.exec(`git push -f ${originWithAuthentication} ${currentCommit}:gh-pages`);
 
 console.log('Posting demo in GitHub Pull Request...\n');
 axios.post(APIEndpointWithAuthentication, {event: 'COMMENT', body: livedemoMessage})
-    .then(() => console.log('Demo URL successfully posted in GitHub Pull Request'))
+    .then(() => {
+        console.log('Demo URL successfully posted in GitHub Pull Request');
+        process.exit();
+    })
     .catch((e) => {
         console.log('Something went wrong while posting demo url in GitHub Pull Request. See error below for details:\n');
         console.log(e);
+        process.exit();
     });
-
-process.exit();
