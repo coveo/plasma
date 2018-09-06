@@ -6,7 +6,6 @@ import {Radio} from './Radio';
 export interface IRadioSelectProps {
     id?: string;
     name?: string;
-    value?: string;
     disabled?: boolean;
     children?: Array<React.ReactElement<Radio>> | Array<React.ReactElement<ToggleForm>>;
     onChangeCallback?: (value?: string, e?: React.MouseEvent<HTMLElement>) => any;
@@ -65,8 +64,6 @@ export class RadioSelect extends React.Component<IRadioSelectAllProps, any> {
                 },
             });
         });
-
-        console.log(children);
 
         return (
             <div className='form-control radio-select'>

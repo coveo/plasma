@@ -8,7 +8,6 @@ import {removeRadioSelect, setRadioSelect} from './RadioSelectActions';
 const mapStateToProps = (state: IReactVaporState, ownProps: IRadioSelectProps): IRadioSelectStateProps => {
     const radioSelect = _.findWhere(state.radioSelects, {id: ownProps.id});
 
-    console.log(radioSelect);
     return {
         value: radioSelect && radioSelect.value,
         disabledValues: radioSelect && radioSelect.disabledValues,

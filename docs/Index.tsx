@@ -221,8 +221,8 @@ class App extends React.Component<any, any> {
                         {component: SlideYExamples, componentName: 'SlideY'},
                         {component: StatusCardExamples, componentName: 'StatusCard'},
                     ]
-                    .sort((componentA, componentB) => componentA.componentName.toLowerCase().localeCompare(componentB.componentName.toLowerCase()))
-                    .map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
+                        .sort((componentA, componentB) => componentA.componentName.toLowerCase().localeCompare(componentB.componentName.toLowerCase()))
+                        .map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
                 </div>
             </Provider>
         );

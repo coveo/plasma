@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Radio} from '../Radio';
-import {IRadioSelectProps, RadioSelect} from '../RadioSelect';
+import {IRadioSelectAllProps, RadioSelect} from '../RadioSelect';
 
 describe('RadioSelect', () => {
     describe('<RadioSelect />', () => {
@@ -16,7 +16,7 @@ describe('RadioSelect', () => {
     });
 
     describe('<RadioSelect />', () => {
-        let radioSelect: ReactWrapper<IRadioSelectProps, any>;
+        let radioSelect: ReactWrapper<IRadioSelectAllProps, any>;
         let clickSpy: jasmine.Spy;
         const aRadioValue = 'blue';
         const anotherRadioValue = 'red';

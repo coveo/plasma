@@ -9,10 +9,10 @@ export interface IRadioSelectState {
 }
 
 export const radioSelectInitialState: IRadioSelectState = {id: undefined, value: undefined, disabledValues: undefined};
-export const radioSelectesInitialState: IRadioSelectState[] = [];
+export const radioSelectsInitialState: IRadioSelectState[] = [];
 
 export const radioSelectsReducer = (
-    state: IRadioSelectState[] = radioSelectesInitialState,
+    state: IRadioSelectState[] = radioSelectsInitialState,
     action: IReduxAction<IRadioSelectActionPayload>,
 ): IRadioSelectState[] => {
     switch (action.type) {
