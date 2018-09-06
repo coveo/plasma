@@ -39,7 +39,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
                     <h2 className='text-medium-blue'>{this.props.title}</h2>
                     {
                         this.props.sectionAdditionalContent
-                            && <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
+                        && <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
                     }
                 </div>
             )
