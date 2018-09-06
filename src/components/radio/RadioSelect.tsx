@@ -8,7 +8,6 @@ export interface IRadioSelectProps {
     name?: string;
     disabled?: boolean;
     children?: Array<React.ReactElement<Radio>> | Array<React.ReactElement<ToggleForm>>;
-    onChangeCallback?: (value?: string, e?: React.MouseEvent<HTMLElement>) => any;
     /**
      * used in RadioSelectConnected component only
      */
@@ -33,10 +32,6 @@ export class RadioSelect extends React.Component<IRadioSelectAllProps, any> {
     private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
         if (this.props.onChange) {
             this.props.onChange(value, this.props.id, e);
-        }
-
-        if (this.props.onChangeCallback) {
-            this.props.onChangeCallback(value, e);
         }
     }
 
