@@ -15,7 +15,7 @@ describe('CollapsibleInfoBox', () => {
 
     it('should render without errors', () => {
         expect(() => shallow(
-            <CollapsibleInfoBox {...basicProps}/>,
+            <CollapsibleInfoBox {...basicProps} />,
         )).not.toThrow();
     });
 
@@ -28,9 +28,9 @@ describe('CollapsibleInfoBox', () => {
             }
             component = mount(
                 <Provider store={TestUtils.buildStore()}>
-                    <CollapsibleInfoBox {...basicProps} {...props}/>
+                    <CollapsibleInfoBox {...basicProps} {...props} />
                 </Provider>,
-            )
+            );
         };
 
         beforeEach(() => {
