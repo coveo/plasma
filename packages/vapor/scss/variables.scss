@@ -237,7 +237,7 @@ $navigation-toggle-duration: 0.1s;
 // Application
 $application-container-min-height: 400px;
 %application-container-toggle-with-navigation {
-  max-width: calc(100vw - #{$navigation-width});
+  max-width: calc(100% - #{$navigation-width});
 
   transform: translateX($navigation-width);
 }
