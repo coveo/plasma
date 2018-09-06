@@ -19,10 +19,10 @@ export const radioSelectsReducer = (
         case RadioSelectActions.set:
             const radioSelect = _.findWhere(state, {id: action.payload.id});
             return radioSelect
-                ? _.reject(state, (radioSelect) => radioSelect.id === action.payload.id).concat({...radioSelect, ...action.payload})
+                ? _.reject(state, (radio) => radio.id === action.payload.id).concat({...radioSelect, ...action.payload})
                 : [...state, {...radioSelectInitialState, ...action.payload}];
         case RadioSelectActions.remove:
-            return _.reject(state, (radioSelect) => action.payload.id === radioSelect.id);
+            return _.reject(state, (radio) => action.payload.id === radio.id);
         default:
             return state;
     }

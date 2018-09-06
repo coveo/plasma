@@ -66,6 +66,8 @@ export class RadioSelect extends React.Component<IRadioSelectAllProps, any> {
             });
         });
 
+        console.log(children);
+
         return (
             <div className='form-control radio-select'>
                 {children}
