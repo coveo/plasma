@@ -37,7 +37,10 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
             ? (
                 <div className='inline-flex'>
                     <h2 className='text-medium-blue'>{this.props.title}</h2>
-                    {this.showAdditionalInformation() && this.props.sectionAdditionalContent}
+                    {
+                        this.props.sectionAdditionalContent
+                            && <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
+                    }
                 </div>
             )
             : (
@@ -48,7 +51,9 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
             );
     }
 
-    private showAdditionalInformation() {
-        return !this.props.sectionAdditionalContentCondition || this.props.sectionAdditionalContentCondition();
+    private getAdditionalInfoClasses() {
+        return classNames({
+            hidden: this.props.sectionAdditionalContentCondition && !this.props.sectionAdditionalContentCondition(),
+        });
     }
 }
