@@ -20,7 +20,7 @@ const currentCommit = sh.exec('git show --oneline -s').stdout.trim().split(' ')[
 sh.exec(`git push -f ${originWithAuthentication} ${currentCommit}:gh-pages`);
 
 console.log('Posting demo in GitHub Pull Request...\n');
-$(APIEndpointWithAuthentication).post({event: 'COMMENT', body: livedemoMessage})
+$.post(APIEndpointWithAuthentication, {event: 'COMMENT', body: livedemoMessage})
     .done(() => console.log('Demo URL successfully posted in GitHub Pull Request'))
     .fail((e) => {
         console.log('Something went wrong while posting demo url in GitHub Pull Request. See error below for details:\n');
