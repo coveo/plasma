@@ -92,7 +92,7 @@ describe('RadioSelect', () => {
             radioSelect.setProps({onChange: clickSpy}).mount();
             innerRadioInput.simulate('click');
 
-            expect(clickSpy.calls.count()).toBe(2)
+            expect(clickSpy.calls.count()).toBe(2);
         });
 
         it('should chain prop onChangeCallback with children onClick prop and call both on children change', () => {
