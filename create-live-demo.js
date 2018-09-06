@@ -4,7 +4,7 @@ const branchName = process.env.TRAVIS_PULL_REQUEST_BRANCH; // travis provides th
 const prNumber = process.env.TRAVIS_PULL_REQUEST;
 const userpassword = process.env.GITUSRPWD;
 const originWithAuthentication = `https://${userpassword}@github.com/coveo/react-vapor.git`;
-const APIEndpointWithAuthentication = `https://${userpassword}api.github.com/repos/coveo/react-vapor/pulls/${prNumber}/reviews`;
+const APIEndpointWithAuthentication = `https://${userpassword}@api.github.com/repos/coveo/react-vapor/pulls/${prNumber}/reviews`;
 const livedemoMessage = `live demo at https://coveo.github.io/react-vapor/${branchName}/`;
 
 console.log(`Creating live demo for branch: ${branchName}`);
