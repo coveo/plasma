@@ -40,6 +40,7 @@ import {textAreasReducer} from '../components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from '../components/toast/ToastReducers';
 import {ITooltipProps} from '../components/tooltip/Tooltip';
 import {IReactVaporState} from '../ReactVapor';
+import {radioSelectsReducer} from './../components/radio/RadioSelectReducers';
 import {CommonActions} from './ReduxUtils';
 
 export interface IReactVaporTestState extends IReactVaporState {
@@ -87,6 +88,7 @@ export class TestUtils {
             groupableCheckboxes: groupableCheckboxesReducer,
             textAreas: textAreasReducer,
             menus: menuCompositeReducer,
+            radioSelects: radioSelectsReducer,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {

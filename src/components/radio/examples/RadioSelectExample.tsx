@@ -7,12 +7,12 @@ export interface IRadioSelectExampleProps extends IRadioSelectProps {
     defaultValue?: string;
 }
 
-export interface IRadioSelectState {
+export interface IRadioSelectExampleState {
     value: string;
 }
 
-export class RadioSelectExample extends React.Component<IRadioSelectExampleProps, IRadioSelectState> {
-    constructor(props: IRadioSelectExampleProps, state: IRadioSelectState) {
+export class RadioSelectExample extends React.Component<IRadioSelectExampleProps, IRadioSelectExampleState> {
+    constructor(props: IRadioSelectExampleProps, state: IRadioSelectExampleState) {
         super(props, state);
         this.state = {
             value: this.props.defaultValue,

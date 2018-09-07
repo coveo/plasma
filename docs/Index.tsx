@@ -106,7 +106,13 @@ import {ReactVaporStore} from './ReactVaporStore';
 interface ExampleWrapperState {
     shown: boolean;
 }
-class ExampleWrapper extends React.Component<{component: any, componentName: string}, ExampleWrapperState> {
+
+interface ExampleProps {
+    component: any;
+    componentName: string;
+}
+
+class ExampleWrapper extends React.Component<ExampleProps, ExampleWrapperState> {
     state: ExampleWrapperState = {shown: false};
 
     render() {
@@ -120,6 +126,9 @@ class ExampleWrapper extends React.Component<{component: any, componentName: str
         );
     }
 }
+
+const sortComponentsByName = (a: ExampleProps, b: ExampleProps) => a.componentName.toLowerCase().localeCompare(b.componentName.toLowerCase());
+const formatComponentsExamples = (example: ExampleProps) => <ExampleWrapper key={example.componentName} componentName={example.componentName} component={example.component} />;
 
 class App extends React.Component<any, any> {
     render() {
@@ -220,7 +229,9 @@ class App extends React.Component<any, any> {
                         {component: BannerExamples, componentName: 'Banner'},
                         {component: SlideYExamples, componentName: 'SlideY'},
                         {component: StatusCardExamples, componentName: 'StatusCard'},
-                    ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
+                    ]
+                        .sort(sortComponentsByName)
+                        .map(formatComponentsExamples)}
                 </div>
             </Provider>
         );
