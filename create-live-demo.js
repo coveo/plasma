@@ -24,8 +24,8 @@ console.log('Posting demo in GitHub Pull Request...\n');
 const handleError = (e) => {
     console.log('Something went wrong while posting Demo URL in GitHub Pull Request. See error below for details:\n');
     console.log(e);
-    process.exit(); 
-}
+    process.exit();
+};
 axios.get(APIEndpointWithAuthentication)
     .then((response) => _.chain(response).pluck('body').contains(livedemoMessage).value()
         ? process.exit()
@@ -37,4 +37,4 @@ axios.get(APIEndpointWithAuthentication)
             .catch(handleError)
     )
     .catch(handleError);
-
+
