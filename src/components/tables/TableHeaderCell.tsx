@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {IClassName} from '../../utils/ClassNameUtils';
 import {Svg} from '../svg/Svg';
 import {TableSortingOrder} from './TableConstants';
 
@@ -9,7 +10,7 @@ export interface ITableHeaderCellOwnProps extends React.ClassAttributes<TableHea
     id?: string;
     attributeToSort?: string;
     tableId?: string;
-    className?: string;
+    className?: IClassName;
     withFixedHeader?: boolean;
     onClickCallback?: (e: React.MouseEvent<HTMLTableHeaderCellElement>) => void;
 }

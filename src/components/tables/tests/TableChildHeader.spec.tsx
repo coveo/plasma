@@ -38,6 +38,12 @@ describe('<TableChildHeader />', () => {
             }).not.toThrow();
         });
 
+        it('should have as many non-connected header cells as there are headerAttribute', () => {
+            const tableHeader = mountComponentWithProps(tablePropsMock).find(TableHeader);
+
+            expect(tableHeader.find(TableHeaderCell).length).toBe(tablePropsMock.headingAttributes.length);
+        });
+
         it('should render with a mod-no-border-top and no mod-deactivate-pointer class by default', () => {
             const tableHeader = mountComponentWithProps(tablePropsMock).find(TableHeader);
 
@@ -51,6 +57,23 @@ describe('<TableChildHeader />', () => {
 
             expect(tableHeader.props().headerClass).toContain('mod-no-border-top');
             expect(tableHeader.props().headerClass).toContain('mod-deactivate-pointer');
+        });
+
+        it('should render with class name if defined', () => {
+            const newClassToAdd = 'wow';
+            const tableHeader = mountComponentWithProps({...tablePropsMock, tableHeaderClasses: [newClassToAdd]}).find(TableHeader);
+
+            expect(tableHeader.props().headerClass).toContain(newClassToAdd);
+        });
+
+        it('should have class on header when defined in the attributes', () => {
+            const newClassToAdd = 'wow';
+            const headerAttributesWithHeaderClasses = tablePropsMock.headingAttributes.map((attribute) => ({...attribute, headerClasses: [newClassToAdd]}));
+            const tableHeader = mountComponentWithProps({...tablePropsMock, headingAttributes: headerAttributesWithHeaderClasses}).find(TableHeader);
+
+            tableHeader.find(TableHeaderCell).forEach((headerCell) => {
+                expect(headerCell.props().className).toContain(newClassToAdd);
+            });
         });
 
         it('should have no connected header cells if no headerAttribute has sort', () => {

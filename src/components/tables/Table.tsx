@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {IAdditionalClass} from '../../utils/ClassNameUtils';
+import {IAdditionalClass, IClassName} from '../../utils/ClassNameUtils';
 import {IThunkAction} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {IActionBarProps} from '../actions/ActionBar';
@@ -48,6 +48,7 @@ export interface ITableHeadingAttribute {
     attributeFormatter?: IAttributeFormatter;
     onClickCell?: (event?: any, data?: any) => void;
     additionalCellClasses?: IAdditionalClass[];
+    headerClasses?: IClassName;
 }
 
 export interface ITablePredicate {
@@ -59,9 +60,10 @@ export interface ITablePredicate {
 export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBodyInheritedFromTableProps {
     id: string;
     blankSlateDefault: IBlankSlateProps;
-    tableContainerClasses?: string[];
-    tableClasses?: string[];
-    tableBodyClasses?: string[];
+    tableContainerClasses?: IClassName;
+    tableClasses?: IClassName;
+    tableBodyClasses?: IClassName;
+    tableHeaderClasses?: IClassName;
     initialTableData?: ITableData;
     actionBar?: true | IActionBarProps;
     blankSlateNoResultsOnAction?: IBlankSlateProps;

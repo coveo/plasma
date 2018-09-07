@@ -11,14 +11,16 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
     const tableHeaderCells: ITableHeaderCellOwnProps[] = props.headingAttributes.map((headingAttribute: ITableHeadingAttribute) => {
         const id = `${getTableChildComponentId(props.id, TableChildComponent.TABLE_HEADER_CELL)}${headingAttribute.attributeName}`;
         const title: React.ReactNode = (headingAttribute.titleFormatter as (args: string) => JSXRenderable)(headingAttribute.attributeName);
+        const className = headingAttribute.headerClasses;
         const tableSortInformation = !!headingAttribute.sort
             ? {tableId: props.id, attributeToSort: headingAttribute.attributeName}
             : {};
 
-        return {id, title, withFixedHeader: props.withFixedHeader, ...tableSortInformation};
+        return {id, title, className, withFixedHeader: props.withFixedHeader, ...tableSortInformation} as ITableHeaderCellOwnProps;
     });
 
     const headerClass = classNames(
+        props.tableHeaderClasses,
         'mod-no-border-top',
         {'mod-deactivate-pointer': !!props.tableCompositeState.isLoading},
     );
