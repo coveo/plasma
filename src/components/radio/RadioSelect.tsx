@@ -1,24 +1,29 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ToggleForm} from '../childForm/ToggleForm';
 import {Radio} from './Radio';
 
-export interface IRadioSelectProps {
+export interface IRadioSelectOnChangeCallback {
+    onChange?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>) => void;
+}
+
+export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
     id?: string;
     name?: string;
+    value?: string;
     disabled?: boolean;
     children?: Array<React.ReactElement<Radio>> | Array<React.ReactElement<ToggleForm>>;
-    /**
-     * used in RadioSelectConnected component only
-     */
+}
+
+export interface IRadioSelectConnectedProps {
     valueOnMount?: string;
     disabledValuesOnMount?: string[];
 }
 
-export interface IRadioSelectDispatchProps {
+export interface IRadioSelectDispatchProps extends IRadioSelectOnChangeCallback {
     onMount?: (id: string, valueOnMount: string, disabledValues: string[]) => void;
     onUnmount?: (id: string) => void;
-    onChange?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface IRadioSelectStateProps {
@@ -26,25 +31,15 @@ export interface IRadioSelectStateProps {
     disabledValues?: string[];
 }
 
-export interface IRadioSelectAllProps extends IRadioSelectProps, IRadioSelectDispatchProps, IRadioSelectStateProps {}
+export interface IRadioSelectAllProps extends IRadioSelectProps, IRadioSelectConnectedProps, IRadioSelectDispatchProps, IRadioSelectStateProps {}
 
 export class RadioSelect extends React.Component<IRadioSelectAllProps, any> {
-    private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
-        if (this.props.onChange) {
-            this.props.onChange(value, this.props.id, e);
-        }
-    }
-
     componentWillMount() {
-        if (this.props.onMount) {
-            this.props.onMount(this.props.id, this.props.valueOnMount, this.props.disabledValuesOnMount);
-        }
+        callIfDefined(this.props.onMount, this.props.id, this.props.valueOnMount, this.props.disabledValuesOnMount);
     }
 
     componentWillUnmount() {
-        if (this.props.onUnmount) {
-            this.props.onUnmount(this.props.id);
-        }
+        callIfDefined(this.props.onUnmount, this.props.id);
     }
 
     render() {
@@ -65,6 +60,10 @@ export class RadioSelect extends React.Component<IRadioSelectAllProps, any> {
                 {children}
             </div>
         );
+    }
+
+    private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
+        callIfDefined(this.props.onChange, value, this.props.id, e);
     }
 
     private isValueDisabled(childValue: string): boolean {
