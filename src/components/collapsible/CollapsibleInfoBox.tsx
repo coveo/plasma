@@ -9,6 +9,9 @@ export interface CollapsibleInfoBoxProps {
     id: string;
     title: string;
     expandedOnMount?: boolean;
+    isSection?: boolean;
+    sectionAdditionalContent?: React.ReactNode;
+    sectionAdditionalContentCondition?: () => boolean;
 }
 
 export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxProps> {
@@ -30,11 +33,27 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
     }
 
     private getHeader(): React.ReactNode {
-        return (
-            <div className='inline-flex'>
-                <Svg svgName='info' className='icon mod-20 mx1' svgClass='fill-medium-grey' />
-                <h3 className='text-medium-blue'>{this.props.title}</h3>
-            </div>
-        );
+        return this.props.isSection
+            ? (
+                <div className='inline-flex'>
+                    <h2 className='text-medium-blue'>{this.props.title}</h2>
+                    {
+                        this.props.sectionAdditionalContent
+                        && <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
+                    }
+                </div>
+            )
+            : (
+                <div className='inline-flex'>
+                    <Svg svgName='info' className='icon mod-20 mx1 js-info-svg' svgClass='fill-medium-grey' />
+                    <h3 className='text-medium-blue'>{this.props.title}</h3>
+                </div>
+            );
+    }
+
+    private getAdditionalInfoClasses() {
+        return classNames({
+            hidden: this.props.sectionAdditionalContentCondition && !this.props.sectionAdditionalContentCondition(),
+        });
     }
 }
