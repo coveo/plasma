@@ -19,7 +19,8 @@ export const TableChildHeader = (props: ITableProps): JSX.Element => {
         return {id, title, className, withFixedHeader: props.withFixedHeader, ...tableSortInformation} as ITableHeaderCellOwnProps;
     });
 
-    const headerClass = classNames(props.tableHeaderClasses,
+    const headerClass = classNames(
+        props.tableHeaderClasses,
         'mod-no-border-top',
         {'mod-deactivate-pointer': !!props.tableCompositeState.isLoading},
     );
