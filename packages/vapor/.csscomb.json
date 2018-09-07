@@ -4,6 +4,7 @@
     "scss/icons/svgs.scss",
     "scss/utility/border.scss",
     "scss/utility/colors.scss",
+    "scss/utility/default-white-space.scss",
     "scss/sprites.scss"
   ],
   "remove-empty-rulesets": true,

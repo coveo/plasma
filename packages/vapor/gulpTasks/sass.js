@@ -44,6 +44,7 @@ gulp.task('sass:format', () => {
         '!./scss/icons/svgs.scss',
         '!./scss/utility/colors.scss',
         '!./scss/utility/border.scss',
+        '!./scss/utility/default-white-space.scss',
         '!./scss/helpers.scss',
         '!./scss/sprites.scss',
     ])
