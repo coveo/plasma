@@ -18,8 +18,13 @@ export const radioSelectsReducer = (
     switch (action.type) {
         case RadioSelectActions.set:
             const radioSelect = _.findWhere(state, {id: action.payload.id});
+            const shouldReplaceValue = radioSelect
+                && !_.isUndefined(action.payload.value)
+                && (!radioSelect.disabledValues || !_.contains(radioSelect.disabledValues, action.payload.value));
+
             return radioSelect
-                ? _.reject(state, (radio) => radio.id === action.payload.id).concat({...radioSelect, ...action.payload})
+                ? _.reject(state, (radio) => radio.id === action.payload.id)
+                    .concat({...radioSelect, ...action.payload, value: shouldReplaceValue ? action.payload.value : radioSelect.value})
                 : [...state, {...radioSelectInitialState, ...action.payload}];
         case RadioSelectActions.remove:
             return _.reject(state, (radio) => action.payload.id === radio.id);

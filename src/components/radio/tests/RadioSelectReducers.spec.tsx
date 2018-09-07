@@ -42,22 +42,39 @@ describe('RadioSelect', () => {
             expect(radioSelectsState.filter((radioSelect) => radioSelect.id === action.payload.id).length).toBe(1);
         });
 
-        it('should return the old state with the same number of IRadioSelectState when the action is "RadioSelectAction.set" and the id is already in the state, and update the proper IRadioSelectState', () => {
-            let oldState: IRadioSelectState[] = [{...radioSelectInitialState, id: 'somealreadyexistingradioselect'}];
-            const radioSelectId = 'testRadioSelect';
-            const action = setRadioSelect(radioSelectId, {value: 'anywoulddo'});
-            let radioSelectsState: IRadioSelectState[] = radioSelectsReducer(oldState, action);
+        describe('"RadioSelectAction.set" when id is arleady in the state', () => {
+            it('should return the old state with the same number of IRadioSelectStatec and update the proper IRadioSelectState', () => {
+                let oldState: IRadioSelectState[] = [{...radioSelectInitialState, id: 'somealreadyexistingradioselect'}];
+                const radioSelectId = 'testRadioSelect';
+                const action = setRadioSelect(radioSelectId, {value: 'anywoulddo'});
+                let radioSelectsState: IRadioSelectState[] = radioSelectsReducer(oldState, action);
+    
+                expect(radioSelectsState.length).toBe(oldState.length + 1);
+                expect(radioSelectsState.filter((radioSelect) => radioSelect.id === action.payload.id).length).toBe(1);
+    
+                oldState = radioSelectsState;
+                action.payload.value = 'check if the value changed';
+                radioSelectsState = radioSelectsReducer(oldState, action);
+    
+                expect(radioSelectsState.length).toBe(oldState.length);
+                expect(_.findWhere(radioSelectsState, {id: action.payload.id}).value).toBe(action.payload.value);
+                expect(_.reject(radioSelectsState, (radio) => radio.id === action.payload.id)).toEqual(_.reject(oldState, (radio) => radio.id === action.payload.id));
+            });            
 
-            expect(radioSelectsState.length).toBe(oldState.length + 1);
-            expect(radioSelectsState.filter((radioSelect) => radioSelect.id === action.payload.id).length).toBe(1);
-
-            oldState = radioSelectsState;
-            action.payload.value = 'check if the value changed';
-            radioSelectsState = radioSelectsReducer(oldState, action);
-
-            expect(radioSelectsState.length).toBe(oldState.length);
-            expect(_.findWhere(radioSelectsState, {id: action.payload.id}).value).toBe(action.payload.value);
-            expect(_.reject(radioSelectsState, (radio) => radio.id === action.payload.id)).toEqual(_.reject(oldState, (radio) => radio.id === action.payload.id));
+            it('should not change the value if the value in the payload is also in the disabled values in the state', () => {
+                let oldState: IRadioSelectState[] = [{...radioSelectInitialState, id: 'somealreadyexistingradioselect'}];
+                const radioSelectId = 'testRadioSelect';
+                const action = setRadioSelect(radioSelectId, {value: 'anywoulddo', disabledValues: ['disabledValue']});
+                let radioSelectsState: IRadioSelectState[] = radioSelectsReducer(oldState, action);
+   
+                oldState = radioSelectsState;
+                const secondAction = {...action, payload: {...action.payload, value: 'disabledValue'}};
+                radioSelectsState = radioSelectsReducer(oldState, secondAction);
+    
+                expect(radioSelectsState.length).toBe(oldState.length);
+                // check if value is still  the value of the first action
+                expect(_.findWhere(radioSelectsState, {id: action.payload.id}).value).toBe(action.payload.value);
+            });  
         });
 
         it('should return the old state without the IRadioSelectState when the action is "RadioSelectAction.remove"', () => {
@@ -68,7 +85,7 @@ describe('RadioSelect', () => {
                     disabledValues: [],
                 },
                 {
-                    id: 'some-radioSelect2',
+                    id: 'some-radioSelect2'
                     value: 'somevalue2',
                     disabledValues: [],
                 },
