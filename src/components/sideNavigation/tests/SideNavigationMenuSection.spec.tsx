@@ -60,11 +60,11 @@ describe('<SideNavigationMenuSection />', () => {
         expect(wrapper.find(SlideY).prop('in')).toBeDefined(true);
     });
 
-    it('should call onClick prop when clicked and onClick prop is specified', () => {
+    it('should call onClick prop when header clicked and onClick prop is specified', () => {
         const onClickSpy = jasmine.createSpy('click');
         wrapper.setProps({header: {title}, onClick: onClickSpy});
         wrapper.mount();
-        wrapper.find('div').first().simulate('click');
+        wrapper.find(SideNavigationHeader).first().simulate('click');
 
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
