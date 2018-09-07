@@ -67,11 +67,11 @@ describe('CollapsibleInfoBox', () => {
 
             mountComponent({isSection: true, sectionAdditionalContent, sectionAdditionalContentCondition: () => false});
 
-            expect(component.html()).not.toContain(sectionAdditionalContent);
+            expect(component.find('.hidden').length).toBe(1);
 
             mountComponent({isSection: true, sectionAdditionalContent, sectionAdditionalContentCondition: () => true});
 
-            expect(component.html()).toContain(sectionAdditionalContent);
+            expect(component.find('.hidden').length).toBe(0);
         });
     });
 });
