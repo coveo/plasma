@@ -86,6 +86,7 @@
     "@types/webpack-env": "1.13.6",
     "autoprefixer": "9.1.2",
     "awesome-typescript-loader": "5.2.0",
+    "axios": "0.18.0",
     "bithound": "1.7.0",
     "chosen-js": "1.8.2",
     "classnames": "2.2.6",
