@@ -85,7 +85,7 @@ describe('RadioSelect', () => {
                     disabledValues: [],
                 },
                 {
-                    id: 'some-radioSelect2'
+                    id: 'some-radioSelect2',
                     value: 'somevalue2',
                     disabledValues: [],
                 },
