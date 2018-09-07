@@ -27,7 +27,7 @@ const handleError = (e) => {
     process.exit();
 };
 axios.get(APIEndpointWithAuthentication)
-    .then((response) => _.chain(response).pluck('body').contains(livedemoMessage).value()
+    .then((response) => _.chain(response.data).pluck('body').contains(livedemoMessage).value()
         ? process.exit()
         : axios.post(APIEndpointWithAuthentication, {event: 'COMMENT', body: livedemoMessage})
             .then(() => {
@@ -37,4 +37,4 @@ axios.get(APIEndpointWithAuthentication)
             .catch(handleError)
     )
     .catch(handleError);
-
+
