@@ -73,5 +73,14 @@ describe('CollapsibleInfoBox', () => {
 
             expect(component.find('.hidden').length).toBe(0);
         });
+
+        it('should have the class passed as a prop for the additional content', () => {
+            const classes: string = 'something';
+            const sectionAdditionalContent = 'some content';
+
+            mountComponent({isSection: true, sectionAdditionalContent, sectionAdditionalContentClasses: classes});
+
+            expect(component.find(`.${classes}`).length).toBe(1);
+        });
     });
 });

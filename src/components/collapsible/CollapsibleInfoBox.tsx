@@ -12,6 +12,7 @@ export interface CollapsibleInfoBoxProps {
     isSection?: boolean;
     sectionAdditionalContent?: React.ReactNode;
     sectionAdditionalContentCondition?: () => boolean;
+    sectionAdditionalContentClasses?: string;
 }
 
 export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxProps> {
@@ -35,7 +36,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
     private getHeader(): React.ReactNode {
         return this.props.isSection
             ? (
-                <div className='inline-flex'>
+                <div className='flex full-content-x'>
                     <h2 className='text-medium-blue'>{this.props.title}</h2>
                     {
                         this.props.sectionAdditionalContent
@@ -52,8 +53,11 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
     }
 
     private getAdditionalInfoClasses() {
-        return classNames({
-            hidden: this.props.sectionAdditionalContentCondition && !this.props.sectionAdditionalContentCondition(),
-        });
+        return classNames(
+            this.props.sectionAdditionalContentClasses,
+            {
+                hidden: this.props.sectionAdditionalContentCondition && !this.props.sectionAdditionalContentCondition(),
+            },
+        );
     }
 }
