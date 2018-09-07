@@ -79,7 +79,7 @@
     "@types/react-redux": "5.0.8",
     "@types/react-tether": "0.5.3",
     "@types/react-textarea-autosize": "4.3.3",
-    "@types/react-transition-group": "2.0.13",
+    "@types/react-transition-group": "2.0.14",
     "@types/redux-logger": "3.0.5",
     "@types/underscore": "1.8.9",
     "@types/underscore.string": "0.0.32",
