@@ -6,12 +6,12 @@ const prNumber = process.env.TRAVIS_PULL_REQUEST;
 const userpassword = process.env.GITUSRPWD;
 const originWithAuthentication = `https://${userpassword}@github.com/coveo/react-vapor.git`;
 const APIEndpointWithAuthentication = `https://${userpassword}@api.github.com/repos/coveo/react-vapor/pulls/${prNumber}/reviews`;
-const livedemoMessage = `live demo at https://coveo.github.io/react-vapor/${branchName}/`;
+const liveDemoMessage = `live demo at https://coveo.github.io/react-vapor/${branchName}/`;
 
 console.log(`Creating live demo for branch: ${branchName}`);
 sh.cp('-R', 'docs', branchName);
 sh.exec('git add .');
-sh.exec(`git commit -m '${livedemoMessage}' --no-verify`);
+sh.exec(`git commit -m '${liveDemoMessage}' --no-verify`);
 
 console.log(`Syncing with gh-pages from branch: ${branchName}`);
 sh.exec(`git pull --no-edit --strategy-option ours ${originWithAuthentication} gh-pages`);
@@ -27,9 +27,9 @@ const handleError = (e) => {
     process.exit();
 };
 axios.get(APIEndpointWithAuthentication)
-    .then((response) => _.chain(response.data).pluck('body').contains(livedemoMessage).value()
+    .then((response) => _.chain(response.data).pluck('body').contains(liveDemoMessage).value()
         ? process.exit()
-        : axios.post(APIEndpointWithAuthentication, {event: 'COMMENT', body: livedemoMessage})
+        : axios.post(APIEndpointWithAuthentication, {event: 'COMMENT', body: liveDemoMessage})
             .then(() => {
                 console.log('Demo URL successfully posted in GitHub Pull Request');
                 process.exit();
