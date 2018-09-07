@@ -35,7 +35,7 @@ export class SideNavigationExample extends React.Component<any, any> {
                             <SideNavigationLoadingItem className='mod-width-40' />
                         </SideNavigationMenuSection>
                         <SideNavigationMenuSection header={{title: 'Section 3', svgName: 'menu-content'}} expandable expanded={this.state.expanded} onClick={() => this.click()}>
-                            <SideNavigationItem href='http://coveo.com' title='Link to Coveo' />
+                            <SideNavigationItem href='http://coveo.com' target='_blank' title='Link to Coveo' />
                             <SideNavigationItem href='http://coveo.com' title='Another link to Coveo' />
                         </SideNavigationMenuSection>
                     </SideNavigation>
