@@ -57,7 +57,7 @@
         }
 
         &:global(.simple) {
-            width: 160px;
+            width: $status-card-small-width;
         }
     }
 }
