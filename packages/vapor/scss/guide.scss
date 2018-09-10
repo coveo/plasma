@@ -120,6 +120,7 @@
 .coveo-styleguide {
   @import 'typography/utility';
   @import 'typography/lists';
+  @import 'typography/font-size.scss';
   @import 'utility/align';
   @import 'utility/border';
   @import 'utility/flex';
