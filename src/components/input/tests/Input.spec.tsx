@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import {IInputProps, Input} from '../Input';
 import {Label} from '../Label';
+import {Tooltip} from '../../tooltip/Tooltip';
 
 describe('Input', () => {
     describe('<Input />', () => {
@@ -202,6 +203,16 @@ describe('Input', () => {
             input.setProps({value: expectedValue});
 
             expect((input as any).node.innerInput.value).toBe(expectedValue);
+        });
+
+        describe('with disabledTooltip', () => {
+            it('should wrap the input with a tooltip if the input is disabled and disabledTooltip is truthy', () => {
+                const disabledTooltip = 'i am truthy'
+                input.setProps({disabledTooltip, disabled: true});
+
+                expect(input.find(Tooltip).prop('title')).toBe(disabledTooltip);
+                expect(input.find(Tooltip).find('input').length).toBe(1);
+            });
         });
     });
 });
