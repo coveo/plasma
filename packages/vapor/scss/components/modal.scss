@@ -23,6 +23,11 @@ $icon-size: (4em / 3);
   height: 100vh;
   overflow: hidden;
 
+  &.prompt-backdrop {
+    width: 100%;
+    height: 100%;
+  }
+
   .modal-container, .modal-container + .modal-backdrop {
     top: calc((100vh - 100%) / -2);
     left: calc((100vw - 100%) / -2);
