@@ -30,7 +30,7 @@ export class SideNavigationMenuSection extends React.Component<ISideNavigationSe
 
     render() {
         return (
-            <div className='block navigation-menu-section' onClick={() => this.handleClick()}>
+            <div className='block navigation-menu-section'>
                 {this.buildHeader()}
                 <SlideY in={!(this.props.expandable && !this.props.expanded)} timeout={350}>
                     <div className='navigation-menu-section-items'>
@@ -50,7 +50,7 @@ export class SideNavigationMenuSection extends React.Component<ISideNavigationSe
                     : <Svg svgName='arrow-bottom-rounded' className={arrowClassName} />;
             }
             return (
-                <SideNavigationHeader {...this.props.header}>
+                <SideNavigationHeader {...this.props.header} onClick={() => this.handleClick()}>
                     {arrow}
                 </SideNavigationHeader>
             );

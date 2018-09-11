@@ -80,6 +80,7 @@ import {SideNavigationExample} from '../src/components/sideNavigation/examples/S
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
 import {SplitLayoutExamples} from '../src/components/splitlayout/examples/SplitLayoutExamples';
+import {StatusCardExamples} from '../src/components/statusCard/examples/StatusCardExamples';
 import {StepProgressBarExamples} from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
 import {SubNavigationConnectedExamples} from '../src/components/subNavigation/examples/SubNavigationConnectedExamples';
 import {SubNavigationExamples} from '../src/components/subNavigation/examples/SubNavigationExamples';
@@ -105,7 +106,13 @@ import {ReactVaporStore} from './ReactVaporStore';
 interface ExampleWrapperState {
     shown: boolean;
 }
-class ExampleWrapper extends React.Component<{component: any, componentName: string}, ExampleWrapperState> {
+
+interface ExampleProps {
+    component: any;
+    componentName: string;
+}
+
+class ExampleWrapper extends React.Component<ExampleProps, ExampleWrapperState> {
     state: ExampleWrapperState = {shown: false};
 
     render() {
@@ -119,6 +126,9 @@ class ExampleWrapper extends React.Component<{component: any, componentName: str
         );
     }
 }
+
+const sortComponentsByName = (a: ExampleProps, b: ExampleProps) => a.componentName.toLowerCase().localeCompare(b.componentName.toLowerCase());
+const formatComponentsExamples = (example: ExampleProps) => <ExampleWrapper key={example.componentName} componentName={example.componentName} component={example.component} />;
 
 class App extends React.Component<any, any> {
     render() {
@@ -218,7 +228,10 @@ class App extends React.Component<any, any> {
                         {component: DiffViewerExamples, componentName: 'DiffViewer'},
                         {component: BannerExamples, componentName: 'Banner'},
                         {component: SlideYExamples, componentName: 'SlideY'},
-                    ].map((component) => <ExampleWrapper key={component.componentName} componentName={component.componentName} component={component.component} />)}
+                        {component: StatusCardExamples, componentName: 'StatusCard'},
+                    ]
+                        .sort(sortComponentsByName)
+                        .map(formatComponentsExamples)}
                 </div>
             </Provider>
         );

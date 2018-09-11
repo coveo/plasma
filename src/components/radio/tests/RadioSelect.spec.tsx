@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
 import {Radio} from '../Radio';
-import {IRadioSelectProps, RadioSelect} from '../RadioSelect';
+import {IRadioSelectAllProps, RadioSelect} from '../RadioSelect';
 
 describe('RadioSelect', () => {
     describe('<RadioSelect />', () => {
@@ -16,7 +16,7 @@ describe('RadioSelect', () => {
     });
 
     describe('<RadioSelect />', () => {
-        let radioSelect: ReactWrapper<IRadioSelectProps, any>;
+        let radioSelect: ReactWrapper<IRadioSelectAllProps, any>;
         let clickSpy: jasmine.Spy;
         let innerRadios: any;
         let innerRadio1: any;

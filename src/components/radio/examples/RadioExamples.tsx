@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {RadioDisabledExample} from './RadioDisabledExample';
+import {RadioSelectConnectedExample} from './RadioSelectConnectedExample';
 import {RadioSelectExample} from './RadioSelectExample';
 import {SingleRadioExample} from './SingleRadioExample';
 
@@ -11,6 +12,7 @@ export class RadioExamples extends React.Component<any, any> {
                 <SingleRadioExample />
                 <RadioSelectExample />
                 <RadioDisabledExample />
+                <RadioSelectConnectedExample />
             </div>
         );
     }

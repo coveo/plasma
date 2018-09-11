@@ -1,6 +1,6 @@
 {
   "name": "react-vapor",
-  "version": "2.26.6",
+  "version": "2.27.6",
   "description": "Vapor CSS components implemented with React!",
   "keywords": [
     "coveo",
@@ -51,6 +51,7 @@
     "unidiff": "0.0.4"
   },
   "peerDependencies": {
+    "codemirror": "^5.39.2",
     "jquery": ">= 2.0.0 =< 3",
     "react-dom": "^15.6.0",
     "react": "^15.6.1",
@@ -79,19 +80,20 @@
     "@types/react-redux": "6.0.6",
     "@types/react-tether": "0.5.3",
     "@types/react-textarea-autosize": "4.3.3",
-    "@types/react-transition-group": "2.0.7",
+    "@types/react-transition-group": "2.0.13",
     "@types/redux-logger": "3.0.5",
     "@types/underscore": "1.8.9",
     "@types/underscore.string": "0.0.32",
     "@types/webpack-env": "1.13.6",
     "autoprefixer": "9.1.2",
     "awesome-typescript-loader": "5.2.0",
+    "axios": "0.18.0",
     "bithound": "1.7.0",
     "chosen-js": "1.8.2",
     "classnames": "2.2.6",
     "codecov": "3.0.4",
     "codemirror": "5.39.2",
-    "coveo-styleguide": "3.5.x",
+    "coveo-styleguide": "3.6.x",
     "css-loader": "1.0.0",
     "del": "3.0.0",
     "dnd-core": "2.5.1",
