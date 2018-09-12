@@ -14,7 +14,7 @@ export class RadioSelectConnectedExample extends React.Component {
             <div className='mt2'>
                 <div className='form-group mt1'>
                     <label className='form-control-label'>A Radio Select Connected</label>
-                    <RadioSelectConnected id='radioselectconnected'>
+                    <RadioSelectConnected id='radioselectconnected' disabledTooltip='you see me because of the disabledTooltip prop' disabledValuesOnMount={['blue']}>
                         <Radio id='Option1' name='enabledOptions' value='blue'>
                             <Label>Blue</Label>
                         </Radio>

@@ -41,4 +41,3 @@ axios.get(APIEndpointWithAuthentication)
             .catch(handleError)
     )
     .catch(handleError);
-
