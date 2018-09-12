@@ -150,6 +150,7 @@ describe('TableReducers', () => {
                 selectedIds,
                 displayedIds: ['id2', 'id3'],
             },
+            dataDeleted: false,
         });
 
         it('should not throw if the selectedIds array is not defined', () => {
@@ -228,6 +229,7 @@ describe('TableReducers', () => {
                     id3: {id: 'id3'},
                 },
             },
+            dataDeleted: false,
         });
 
         let oldState: any;
@@ -246,6 +248,7 @@ describe('TableReducers', () => {
                 expect(newState.data.displayedIds[0]).toBe('id3');
                 expect(newState.data.selectedIds.length).toBe(1);
                 expect(newState.data.selectedIds[0]).toBe('id3');
+                expect(newState.dataDeleted).toBe(true);
             });
 
             it('should keep the old state if the id specified is not in the table', () => {
