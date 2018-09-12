@@ -59,7 +59,7 @@ export interface ITableCompositeState {
     from: Date;
     to: Date;
     actions?: IActionOptions[];
-    dataDeleted: boolean;
+    dataDeleted?: boolean;
 }
 
 export interface ITableState {
@@ -75,7 +75,7 @@ export interface ITableState {
     predicateIds: string[];
     tableHeaderCellId: string;
     yPosition: number;
-    dataDeleted: boolean;
+    dataDeleted?: boolean;
 }
 
 export const tableInitialState: ITableState = {
