@@ -141,7 +141,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
     private getLabel(): JSX.Element {
         const {labelProps, labelTitle} = this.props;
         return labelTitle
-            ? <Label htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
+            ? <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
             : null;
     }
 
@@ -159,6 +159,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
 
         const inputElements = [
             <input
+                key={this.props.id}
                 id={this.props.id}
                 className={innerInputClasses}
                 type={this.props.type}
@@ -184,10 +185,10 @@ export class Input extends React.Component<IInputProps, IInputState> {
             ? (
                 <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
                     <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
-                        {...inputElements}
+                        {inputElements}
                     </Tooltip>
                 </div>
             )
-            : <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>{...inputElements}</div>;
+            : <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>{inputElements}</div>;
     }
 }
