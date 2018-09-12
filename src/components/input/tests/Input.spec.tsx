@@ -47,7 +47,7 @@ describe('Input', () => {
             expect(innerInput.prop('id')).toBe(undefined);
 
             input.setProps({id}).mount();
-            expect(innerInput.prop('id')).toBe(id);
+            expect(input.find('input').prop('id')).toBe(id);
         });
 
         it('should set inner input name when specified', () => {
