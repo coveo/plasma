@@ -2,6 +2,11 @@
 @import '~coveo-styleguide/scss/variables.scss';
 
 $actionable-item-dots-padding-x: 8px;
+$actionable-item-dots-width: 12px;
+
+:export { 
+    actionableItemWidthWithPadding: $actionable-item-dots-padding-x * 2 + $actionable-item-dots-width + $button-border-width;
+}
 
 .actionableItemContent,
 .actionableItemDots {
@@ -20,4 +25,8 @@ $actionable-item-dots-padding-x: 8px;
     &:hover {
         background-color: $light-grey;
     }
+}
+
+:global(.actionable-item-target) {
+    display: inline-block;
 }

@@ -40,6 +40,7 @@ import {textAreasReducer} from '../components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from '../components/toast/ToastReducers';
 import {ITooltipProps} from '../components/tooltip/Tooltip';
 import {IReactVaporState} from '../ReactVapor';
+import {popoversReducer} from './../components/popover/PopoverReducers';
 import {radioSelectsReducer} from './../components/radio/RadioSelectReducers';
 import {CommonActions} from './ReduxUtils';
 
@@ -89,6 +90,7 @@ export class TestUtils {
             textAreas: textAreasReducer,
             menus: menuCompositeReducer,
             radioSelects: radioSelectsReducer,
+            popovers: popoversReducer,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {

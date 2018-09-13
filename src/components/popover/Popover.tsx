@@ -1,8 +1,9 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import * as ReactTether from 'react-tether';
 import * as _ from 'underscore';
-
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 // This is a hack since the tether definition file doesn't match the code
 // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16909
 const TetherComponent = (ReactTether as any) as () => JSX.Element;
@@ -25,12 +26,20 @@ export interface ITetherComponentCopiedProps {
     onRepositioned?: (...args: any[]) => void;
 }
 
-export interface IPopoverProps extends ITetherComponentCopiedProps, React.ClassAttributes<Popover> {
+export interface IPopoverDispatchProps {
+    onToggle?: (isOpen: boolean) => void;
+    onMount?: (isOpen: boolean) => void;
+    onUnmount?: () => void;
+}
+
+export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCopiedProps {
+    id?: string;
     /**
      * Optionnal, use it to specify the isOpen state of the Popover.
      * @default: false
      */
     isOpen?: boolean;
+    isOpenOnMount?: boolean;
 
     /**
      * Optionnal, a callback fired when the Popover wishes to change visibility. Called with the requested `isOpen` value. Use this prop if
@@ -46,7 +55,7 @@ export interface IPopoverProps extends ITetherComponentCopiedProps, React.ClassA
 }
 
 export interface IPopoverState {
-    isOpen: boolean;
+    isOpen?: boolean;
 }
 
 export class Popover extends React.Component<IPopoverProps, IPopoverState> {
@@ -65,10 +74,12 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     }
 
     componentDidMount() {
+        callIfDefined(this.props.onMount, this.props.isOpenOnMount);
         document.addEventListener('click', this.handleDocumentClick, true);
     }
 
     componentWillUnmount() {
+        callIfDefined(this.props.onUnmount);
         document.removeEventListener('click', this.handleDocumentClick, true);
     }
 
@@ -83,12 +94,9 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
                 <div ref={(toggle: HTMLElement) => this.tetherToggle = toggle} onClick={() => this.toggleOpened(!isOpen)}>
                     {tetherToggle}
                 </div>
-                {
-                    isOpen &&
-                    <div ref={(element: HTMLElement) => this.tetherElement = element}>
-                        {tetherElement}
-                    </div>
-                }
+                <div className={classNames({hide: !isOpen})} ref={(element: HTMLElement) => this.tetherElement = element}>
+                    {tetherElement}
+                </div>
             </TetherComponent>
         );
     }

@@ -24,6 +24,7 @@ import {paginationCompositeReducer} from './components/navigation/pagination/Nav
 import {perPageCompositeReducer} from './components/navigation/perPage/NavigationPerPageReducers';
 import {optionPickersReducer} from './components/optionPicker/OptionPickerReducers';
 import {optionsCyclesReducer} from './components/optionsCycle/OptionsCycleReducers';
+import {popoversReducer} from './components/popover/PopoverReducers';
 import {radioSelectsReducer} from './components/radio/RadioSelectReducers';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
@@ -72,4 +73,5 @@ export const ReactVaporReducers: ReducersMapObject = {
     textAreas: textAreasReducer,
     menus: menuCompositeReducer,
     radioSelects: radioSelectsReducer,
+    popovers: popoversReducer,
 };
