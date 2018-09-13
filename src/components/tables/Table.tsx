@@ -251,7 +251,7 @@ export class Table extends React.Component<ITableProps> {
             )
             || currentTableCompositeState.from !== nextTableCompositeState.from
             || currentTableCompositeState.to !== nextTableCompositeState.to
-            || currentTableCompositeState.data.allIds.length > nextTableCompositeState.data.allIds.length
+            || !!currentTableCompositeState.dataDeleted
         );
     }
 
