@@ -87,8 +87,6 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
         const tetherToggle = !!this.props.children && (this.props.children as JSX.Element[])[0];
         const tetherElement = !!this.props.children && (this.props.children as JSX.Element[])[1];
 
-        console.log(tetherToggle, tetherElement);
-
         const isOpen: boolean = this.state && this.state.isOpen || this.props.isOpen;
 
         return (
