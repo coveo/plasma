@@ -50,12 +50,13 @@
 }
 
 .splash-box {
-  text-align: center;
   margin: 0 1em;
 
+  text-align: center;
+
   background: $pure-white;
-  border-radius: $big-border-radius;
   box-shadow: $splash-box-shadow;
+  border-radius: $big-border-radius;
 
   .splash-box-title {
     padding: $splash-vertical-padding 0 40px;
@@ -83,6 +84,7 @@
 
   .splash-box-footer {
     margin-top: 50px;
+
     border-radius: 0 0 $big-border-radius $big-border-radius;
   }
 
@@ -94,8 +96,12 @@
 .splash-footer {
   z-index: 1;
 
-  min-height: 45px;
+  min-height: $splash-min-height;
   padding: 10px 20px 10px;
+
+  @media (max-width: 580px) {
+    min-height: $splash-mobile-min-height;
+  }
 
   span {
     line-height: 25px;

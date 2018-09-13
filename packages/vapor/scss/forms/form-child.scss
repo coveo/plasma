@@ -41,8 +41,8 @@ $child-arrow-height: 10px;
       left: -$child-arrow-height - ($child-arrow-width / 2);
 
       border-top: $child-arrow-width / 2 solid transparent;
-      border-bottom: $child-arrow-width / 2 solid transparent;
       border-right: $child-arrow-height solid $white;
+      border-bottom: $child-arrow-width / 2 solid transparent;
     }
   }
 
