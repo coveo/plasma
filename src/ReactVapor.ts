@@ -26,6 +26,7 @@ import {IPaginationState} from './components/navigation/pagination/NavigationPag
 import {IPerPageState} from './components/navigation/perPage/NavigationPerPageReducers';
 import {IOptionPickerState} from './components/optionPicker/OptionPickerReducers';
 import {IOptionsCycleState} from './components/optionsCycle/OptionsCycleReducers';
+import {IPopoverState} from './components/popover/Popover';
 import {IRadioSelectState} from './components/radio/RadioSelectReducers';
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
 import {ISelectState} from './components/select/SelectReducers';
@@ -75,6 +76,7 @@ export interface IReactVaporState {
     textAreas?: ITextAreaState[];
     menus?: IMenusState;
     radioSelects?: IRadioSelectState[];
+    popovers?: IPopoverState[];
 }
 
 export interface IReduxActionsPayload {
@@ -116,4 +118,5 @@ export interface IReduxActionsPayload {
     searching?: boolean;
     yPosition?: number;
     disabledValues?: string[];
+    isOpen?: boolean;
 }
