@@ -16,6 +16,7 @@ $transparencies: $transparency-1 $transparency-2 $transparency-3 $transparency-4
 
 // Border
 $border-radius: 2px;
+$big-border-radius: 4px;
 $default-border-size: 1px;
 $default-border: $default-border-size solid $medium-grey;
 
@@ -440,6 +441,7 @@ $splash-wizard-width: 1025px;
 $splash-wizard-padding-top: 145px;
 $splash-large-wizard-width: 1400px;
 $splash-vertical-padding: 70px;
+$splash-box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
 
 // Calendar & Date Picker
 $date-picker-width: 562px;
