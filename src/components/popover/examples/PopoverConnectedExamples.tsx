@@ -10,10 +10,6 @@ export const PopoverConnectedExamples = () => (
             renderElementTo='.js-popover-connected'
             attachment='top left'
             targetAttachment='bottom left'
-            constraints={[{
-                to: 'window',
-                pin: true,
-            }]}
         >
             <div className='btn js-popover-connected'>Click to toggle the popover</div>
             <div className='coveo-child'>I am popping under the button</div>
