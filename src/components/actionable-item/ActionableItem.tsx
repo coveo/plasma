@@ -4,7 +4,7 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
 import {PopoverConnected} from '../popover/PopoverConnected';
 import {Svg} from '../svg/Svg';
-import {actionableItemContent, actionableItemDots, actionableItemWidthWithPadding} from './styles/ActionableItem.scss';
+import {actionableItemContent, actionableItemDots, actionableItemDotsWidthWithPadding} from './styles/ActionableItem.scss';
 
 export interface IActionableItemProps extends React.HTMLAttributes<HTMLDivElement> {
     id: string;
