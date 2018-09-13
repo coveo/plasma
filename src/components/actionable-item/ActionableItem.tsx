@@ -26,7 +26,7 @@ export class ActionableItem extends React.Component<any> {
                     id={this.props.id}
                     attachment='top right'
                     classPrefix='actionable-item'
-                    offset={`0 -${actionableItemWidthWithPadding}`}
+                    offset={`0 -${actionableItemDotsWidthWithPadding}`}
                 >
                     <div className={classNames('actionable-item-dots cursor-pointer inline-block mod-border-top mod-border-right border-color-medium-grey mod-border-bottom', actionableItemDots)}>
                         <Svg svgName='more-append' svgClass='icon mod-12' />

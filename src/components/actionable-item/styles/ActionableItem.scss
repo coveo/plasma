@@ -5,7 +5,7 @@ $actionable-item-dots-padding-x: 8px;
 $actionable-item-dots-width: 12px;
 
 :export { 
-    actionableItemWidthWithPadding: $actionable-item-dots-padding-x * 2 + $actionable-item-dots-width + $button-border-width;
+    actionableItemDotsWidthWithPadding: $actionable-item-dots-padding-x * 2 + $actionable-item-dots-width + $button-border-width;
 }
 
 .actionableItemContent,
