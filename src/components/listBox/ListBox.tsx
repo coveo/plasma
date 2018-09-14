@@ -49,7 +49,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     }
 
     private getClasses(): string {
-        return classNames('list-box', this.props.classes);
+        return classNames('list-box bg-pure-white', this.props.classes);
     }
 
     protected getItems(): JSX.Element[] | JSX.Element {

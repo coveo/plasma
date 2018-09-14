@@ -7,6 +7,7 @@ import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {SlideYExamples} from '../src/animations/examples/SlideYExamples';
+import {ActionableItemExamples} from '../src/components/actionable-item/examples/ActionableItemExamples';
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
 import {ActionBarExamples} from '../src/components/actions/examples/ActionBarExamples';
 import {ItemFilterConnectedExamples} from '../src/components/actions/filters/examples/ItemFilterConnectedExamples';
@@ -230,6 +231,7 @@ class App extends React.Component<any, any> {
                         {component: BannerExamples, componentName: 'Banner'},
                         {component: SlideYExamples, componentName: 'SlideY'},
                         {component: StatusCardExamples, componentName: 'StatusCard'},
+                        {component: ActionableItemExamples, componentName: 'ActionableItem'},
                         {component: PopoverConnectedExamples, componentName: 'Popover'},
                     ]
                         .sort(sortComponentsByName)

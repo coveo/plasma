@@ -1,0 +1,32 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+$actionable-item-dots-padding-x: 8px;
+$actionable-item-dots-width: 12px;
+
+:export { 
+    actionableItemDotsWidthWithPadding: $actionable-item-dots-padding-x * 2 + $actionable-item-dots-width + $button-border-width;
+}
+
+.actionableItemContent,
+.actionableItemDots {
+    border-radius: $border-radius;
+}
+
+.actionableItemContent {
+    padding: $button-padding-y $button-padding-x;
+    border-radius: $border-radius 0 0 $border-radius;
+}
+
+.actionableItemDots {
+    padding: $button-padding-y $actionable-item-dots-padding-x;
+    border-radius: 0 $border-radius $border-radius 0;
+
+    &:hover {
+        background-color: $light-grey;
+    }
+}
+
+:global(.actionable-item-target) {
+    display: inline-block;
+}
