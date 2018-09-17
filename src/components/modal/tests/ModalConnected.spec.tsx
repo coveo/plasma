@@ -35,7 +35,6 @@ describe('Modal', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -72,7 +71,8 @@ describe('Modal', () => {
         });
 
         it('should add the modal opened in the store on render if openOnMount is passed as prop', () => {
-            mount(
+            wrapper.unmount();
+            wrapper = mount(
                 <Provider store={store}>
                     <ModalConnected
                         id={id}

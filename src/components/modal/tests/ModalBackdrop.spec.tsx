@@ -26,7 +26,6 @@ describe('ModalBackdrop', () => {
         });
 
         afterEach(() => {
-            modalBackdrop.unmount();
             modalBackdrop.detach();
         });
 
@@ -41,20 +40,20 @@ describe('ModalBackdrop', () => {
 
         it('should not set "closed" class when display prop is true', () => {
             const container = modalBackdrop.find('div').first();
-            expect(container.hasClass('closed')).toBe(true);
+            expect(container.html()).toContain('closed');
 
             modalBackdrop.setProps({display: true});
             modalBackdrop.mount();
-            expect(container.hasClass('closed')).toBe(false);
+            expect(container.html()).not.toContain('closed');
         });
 
         it('should set "prompt-backdrop" class when isPrompt prop is passed', () => {
             const container = modalBackdrop.find('div').first();
-            expect(container.hasClass('prompt-backdrop')).toBe(false);
+            expect(container.html()).not.toContain('prompt-backdrop');
 
             modalBackdrop.setProps({isPrompt: true});
             modalBackdrop.mount();
-            expect(container.hasClass('prompt-backdrop')).toBe(true);
+            expect(container.html()).toContain('prompt-backdrop');
         });
 
         it('should call onClick on click when onClick prop is set', () => {

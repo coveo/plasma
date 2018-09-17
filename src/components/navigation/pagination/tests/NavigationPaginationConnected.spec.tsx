@@ -49,7 +49,6 @@ describe('<NavigationPaginationConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.unmount();
         wrapper.detach();
     });
 
@@ -61,16 +60,15 @@ describe('<NavigationPaginationConnected />', () => {
     });
 
     it('should get the current page as a prop', () => {
-        let currentPageProp = navigationPagination.props().currentPage;
+        const currentPageProp = navigationPagination.props().currentPage;
 
         expect(currentPageProp).toBeDefined();
         expect(currentPageProp).toBe(0);
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, 3));
+        wrapper.update();
 
-        currentPageProp = navigationPagination.props().currentPage;
-
-        expect(currentPageProp).toBe(3);
+        expect(wrapper.find(NavigationPagination).first().props().currentPage).toBe(3);
     });
 
     it('should get what to do on click as a prop', () => {
@@ -90,41 +88,42 @@ describe('<NavigationPaginationConnected />', () => {
     });
 
     it('should set the previous arrow to disabled if on first page', () => {
-        const previousArrow = navigationPagination.find('.flat-select-option').first();
-
-        expect(previousArrow.hasClass('disabled')).toBe(true);
+        expect(wrapper.find('.flat-select-option').first().hasClass('disabled')).toBe(true);
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, 3));
+        wrapper.update();
 
-        expect(previousArrow.hasClass('disabled')).toBe(false);
+        expect(wrapper.find('.flat-select-option').first().hasClass('disabled')).toBe(false);
     });
 
     it('should set the next arrow to disabled if on last page', () => {
-        const nextArrow = navigationPagination.find('.flat-select-option').last();
-
-        expect(nextArrow.hasClass('disabled')).toBe(false);
+        expect(wrapper.find(NavigationPagination).first().find('.flat-select-option').last().hasClass('disabled')).toBe(false);
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, 3));
+        wrapper.update();
 
-        expect(nextArrow.hasClass('disabled')).toBe(false);
+        expect(wrapper.find(NavigationPagination).first().find('.flat-select-option').last().hasClass('disabled')).toBe(false);
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 1));
+        wrapper.update();
 
-        expect(nextArrow.hasClass('disabled')).toBe(true);
+        expect(wrapper.find(NavigationPagination).first().find('.flat-select-option').last().hasClass('disabled')).toBe(true);
     });
 
     it('should show the last page if there are less pages left than half maximum number of pages shown (7)', () => {
         const lastPage = basicNavigationPaginationProps.totalPages - 1;
 
-        expect(navigationPagination.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(0);
+        expect(wrapper.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(0);
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, lastPage - 4));
+        wrapper.update();
 
-        expect(navigationPagination.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(0);
+        expect(wrapper.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(0);
 
         store.dispatch(changePage(basicNavigationPaginationProps.id, lastPage - 3));
+        wrapper.update();
 
-        expect(navigationPagination.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(1);
+        expect(wrapper.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(1);
     });
 
     it('should add loading on page click', () => {
@@ -145,9 +144,11 @@ describe('<NavigationPaginationConnected />', () => {
 
     it('should return to the first page when resetting the pagination', () => {
         store.dispatch(store.dispatch(changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 4)));
-        expect(navigationPagination.props().currentPage).not.toBe(0);
+        wrapper.update();
+        expect(wrapper.find(NavigationPagination).first().props().currentPage).not.toBe(0);
 
         store.dispatch(resetPaging(basicNavigationPaginationProps.id));
-        expect(navigationPagination.props().currentPage).toBe(0);
+        wrapper.update();
+        expect(wrapper.find(NavigationPagination).first().props().currentPage).toBe(0);
     });
 });

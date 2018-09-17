@@ -27,7 +27,6 @@ describe('AddInput', () => {
         });
 
         afterEach(() => {
-            addInput.unmount();
             addInput.detach();
         });
 

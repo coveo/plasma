@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../../ReactVapor';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/TestUtils';
@@ -44,25 +44,26 @@ describe('<NavigationPerPageConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.unmount();
         wrapper.detach();
     });
 
     it('should get the current perPageNumber as a prop', () => {
-        let currentPerPageProp = navigationPerPage.props().currentPerPage;
+        const currentPerPageProp = navigationPerPage.props().currentPerPage;
 
         expect(currentPerPageProp).toBeDefined();
         expect(currentPerPageProp).toBe(10);
 
         store.dispatch(changePerPage(basicNavigationPerPageProps.id, 20));
+        wrapper.update();
 
-        currentPerPageProp = navigationPerPage.props().currentPerPage;
-        expect(currentPerPageProp).toBe(20);
+        expect(wrapper.find(NavigationPerPage).props().currentPerPage).toBe(20);
 
         store.dispatch(clearState());
+        wrapper.update();
 
-        currentPerPageProp = navigationPerPage.props().currentPerPage;
-        expect(currentPerPageProp).toBe(PER_PAGE_NUMBERS[0]);
+        expect(wrapper.find(NavigationPerPage).props().currentPerPage).toBe(PER_PAGE_NUMBERS[0]);
+
+        wrapper.unmount();
 
         const perPageNumber: number[] = [11, 22, 33];
         wrapper = mount(
@@ -73,11 +74,10 @@ describe('<NavigationPerPageConnected />', () => {
             </Provider>,
             {attachTo: document.getElementById('App')},
         );
-        navigationPerPage = wrapper.find(NavigationPerPage).first();
         store.dispatch(clearState());
+        wrapper.update();
 
-        currentPerPageProp = navigationPerPage.props().currentPerPage;
-        expect(currentPerPageProp).toBe(perPageNumber[0]);
+        expect(wrapper.find(NavigationPerPage).props().currentPerPage).toBe(perPageNumber[0]);
     });
 
     it('should get what to do onRender as a prop', () => {

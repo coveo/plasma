@@ -50,7 +50,6 @@ describe('SplitMultilineInput', () => {
         });
 
         afterEach(() => {
-            splitMultilineInput.unmount();
             splitMultilineInput.detach();
         });
 
@@ -81,7 +80,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should render one DeletableInput when one value is specified', () => {
-            splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]}));
+            splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
             const innerDeleteInput = splitMultilineInput.find(DeleteInputAction);
 
             expect(innerDeleteInput.length).toBe(1);
@@ -97,9 +96,10 @@ describe('SplitMultilineInput', () => {
 
         it('should call removeLine with the index of the input when clicking the delete input action', () => {
             const removeLineSpy: jasmine.Spy = spyOn<any>(splitMultilineInputInstance, 'removeLine');
-            splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]}));
+            splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
 
             splitMultilineInput.find(DeleteInputAction).simulate('click');
+            splitMultilineInput.update();
 
             expect(removeLineSpy).toHaveBeenCalledTimes(1);
             expect(removeLineSpy).toHaveBeenCalledWith(0);
@@ -109,7 +109,7 @@ describe('SplitMultilineInput', () => {
             const changeValueSpy: jasmine.Spy = spyOn<any>(splitMultilineInputInstance, 'changeValue');
             const expectedValue: string = 'a new value';
 
-            splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]}));
+            splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
             splitMultilineInput.find(Input).first().props().onChange(expectedValue, true);
 
             expect(changeValueSpy).toHaveBeenCalledTimes(1);

@@ -39,7 +39,6 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            datePickerBox.unmount();
             datePickerBox.detach();
         });
 
@@ -161,7 +160,6 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            wrapper.unmount();
             wrapper.detach();
         });
 

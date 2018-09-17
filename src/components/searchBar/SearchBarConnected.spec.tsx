@@ -1,6 +1,8 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
+
 import {clearState} from '../../utils/ReduxUtils';
 import {TestUtils} from '../../utils/TestUtils';
 import {Svg} from '../svg/Svg';
@@ -80,10 +82,6 @@ describe('SearchBarConnected', () => {
             );
         });
 
-        afterEach(() => {
-            component.unmount();
-        });
-
         it('should change the value in the state on input change', () => {
             component.find('input').prop('onChange')({target: {value: 'new value'}});
             expect(store.getState().searchBars[0].value).toBe('new value');
@@ -91,20 +89,28 @@ describe('SearchBarConnected', () => {
 
         it('should toggle the disabled state of search bar in the UI when toggleSearchBarDisabled is dispatched', () => {
             store.dispatch(toggleSearchBarDisabled(requiredProps.id, true));
+            component.update();
+
             expect(component.find('input').prop('disabled')).toBe(true);
             expect(component.find(Svg).prop('svgClass')).toBe('fill-light-grey');
 
             store.dispatch(toggleSearchBarDisabled(requiredProps.id, false));
+            component.update();
+
             expect(component.find('input').prop('disabled')).toBe(false);
             expect(component.find(Svg).prop('svgClass')).toBe('fill-medium-blue');
         });
 
         it('should toggle the searching state of search bar in the UI when toggleSearching is dispatched', () => {
             store.dispatch(toggleSearching(requiredProps.id, true));
+            component.update();
+
             expect(component.find('div').first().hasClass('search-bar-loading')).toBe(true);
             expect(component.find('input').prop('disabled')).toBe(true);
 
             store.dispatch(toggleSearching(requiredProps.id, false));
+            component.update();
+
             expect(component.find('div').first().hasClass('search-bar-loading')).toBe(false);
             expect(component.find('input').prop('disabled')).toBe(false);
         });

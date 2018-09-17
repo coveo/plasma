@@ -1,7 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../../ReactVapor';
 import {keyCode} from '../../../../utils/InputUtils';
 import {clearState} from '../../../../utils/ReduxUtils';
@@ -51,7 +53,6 @@ describe('MultiSelectDropdownSearch', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -147,13 +148,13 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should open the dropdown on focus', () => {
-                const dropdown = wrapper.find('.dropdown');
-
                 store.dispatch(closeDropdownSearch(id, []));
+                wrapper.update();
 
-                multiSelectDropdownSearchConnected.props().onFocus();
+                wrapper.find(MultiSelectDropdownSearch).props().onFocus();
+                wrapper.update();
 
-                expect(dropdown.hasClass('open')).toBe(true);
+                expect(wrapper.find('.open').length).toBe(1);
             });
 
             it('should add the selected value in the state on click an option', () => {

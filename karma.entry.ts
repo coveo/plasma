@@ -1,3 +1,5 @@
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import * as $ from 'jquery';
 import * as s from 'underscore.string';
 
@@ -33,6 +35,8 @@ beforeEach(() => {
 afterEach(() => {
     $('body > div:not(.jasmine_html-reporter)').remove();
 });
+
+Enzyme.configure({adapter: new Adapter()});
 
 const testsContext = require.context('./src', true, /\.spec\.ts(x?)$/);
 testsContext.keys().forEach(testsContext);

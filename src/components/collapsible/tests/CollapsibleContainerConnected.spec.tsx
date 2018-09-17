@@ -1,6 +1,7 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';

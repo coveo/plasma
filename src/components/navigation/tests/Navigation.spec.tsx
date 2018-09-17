@@ -1,11 +1,11 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Loading} from '../../loading/Loading';
 import {INavigationProps, Navigation} from '../Navigation';
 import {NavigationPagination} from '../pagination/NavigationPagination';
-import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from '../perPage/NavigationPerPage';
+import {NavigationPerPage, PER_PAGE_NUMBERS} from '../perPage/NavigationPerPage';
 
 describe(' navigation', () => {
     const basicNavigationProps: INavigationProps = {
@@ -34,7 +34,6 @@ describe(' navigation', () => {
         });
 
         afterEach(() => {
-            navigation.unmount();
             navigation.detach();
         });
 
@@ -75,14 +74,13 @@ describe(' navigation', () => {
         });
 
         it('should pass on the currentPerPage prop if it is set (used without Redux)', () => {
-            const perPageNav: ReactWrapper<INavigationPerPageProps, any> = navigation.find(NavigationPerPage);
             const expectedPerPage: number = 33;
             const newNavigationProps: INavigationProps = _.extend({}, basicNavigationProps, {currentPerPage: expectedPerPage});
 
-            expect(perPageNav.props().currentPerPage).toBeUndefined();
+            expect(navigation.find(NavigationPerPage).props().currentPerPage).toBeUndefined();
 
-            navigation.setProps(newNavigationProps);
-            expect(perPageNav.props().currentPerPage).toBe(expectedPerPage);
+            navigation.setProps(newNavigationProps).update();
+            expect(navigation.find(NavigationPerPage).props().currentPerPage).toBe(expectedPerPage);
         });
     });
 });

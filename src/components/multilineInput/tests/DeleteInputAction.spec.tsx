@@ -26,7 +26,6 @@ describe('DeleteInputAction', () => {
         });
 
         afterEach(() => {
-            deleteInput.unmount();
             deleteInput.detach();
         });
 
@@ -34,9 +33,8 @@ describe('DeleteInputAction', () => {
             const title = 'a title';
             expect(deleteInput.find(`[title="${title}"]`).length).toBe(0);
 
-            deleteInput.setProps({title});
-            deleteInput.mount();
-            expect(deleteInput.find(`[title="${title}"]`).length).toBe(1);
+            deleteInput.setProps({title}).update();
+            expect(deleteInput.find(`[title="${title}"]`).length).toBeGreaterThanOrEqual(1);
         });
     });
 });

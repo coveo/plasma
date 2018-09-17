@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 import {Content, IContentProps} from '../content/Content';
 import {ITabsHeaderProps, TabsHeader} from './TabsHeader';
 
-export interface IHeaderWrapperProps extends ITabsHeaderProps, React.ClassAttributes<React.Component<any, any>> {
+export interface IHeaderWrapperProps extends ITabsHeaderProps {
     description?: string;
     actions?: IContentProps[];
     classes?: string[];

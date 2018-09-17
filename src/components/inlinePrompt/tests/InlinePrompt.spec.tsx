@@ -52,7 +52,6 @@ describe('InlinePrompt', () => {
         });
 
         afterEach(() => {
-            inlinePrompt.unmount();
             inlinePrompt.detach();
         });
 

@@ -1,5 +1,4 @@
 import * as _ from 'underscore';
-import {ComponentContent} from '../../utils/ComponentUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ToastType} from './Toast';
 import {IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction} from './ToastActions';
@@ -16,7 +15,7 @@ export interface IToastState {
     dismiss?: number;
     dismissible?: boolean;
     animate?: boolean;
-    content?: ComponentContent;
+    content?: React.ReactNode;
 }
 
 export const toastContainerInitialState: IToastsState = {

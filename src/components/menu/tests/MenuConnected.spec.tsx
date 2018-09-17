@@ -1,6 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -31,7 +33,6 @@ describe('Menu', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -69,7 +70,7 @@ describe('Menu', () => {
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
 
-                expect((menuWrapper.find('.select-dropdown-container').get(0) as any).style.right).toBe('8px');
+                expect((menuWrapper.find('.select-dropdown-container').instance() as any).style.right).toBe('8px');
             });
 
             it('should add custom classes on dropdown element', () => {

@@ -36,7 +36,6 @@ describe('ModalHeader', () => {
         });
 
         afterEach(() => {
-            modal.unmount();
             modal.detach();
         });
 
@@ -81,12 +80,11 @@ describe('ModalHeader', () => {
         it('should set class when the class is specified', () => {
             const headerClass = 'mod-big';
             const classes = [headerClass];
-            const header = modal.find('header').first();
-            expect(header.hasClass(headerClass)).toBe(false);
+            expect(modal.find('header').first().html()).not.toContain(headerClass);
 
             modal.setProps(_.extend({}, basicProps, {classes}));
             modal.mount();
-            expect(header.hasClass(headerClass)).toBe(true);
+            expect(modal.find('header').first().html()).toContain(headerClass);
         });
 
         it('should have the class inline on the title only if there are children', () => {

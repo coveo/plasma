@@ -1,6 +1,7 @@
-import {mount} from 'enzyme';
+import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
 import {SlideY} from '../../../animations/SlideY';
@@ -15,6 +16,22 @@ import {collapsiblePossibleProps} from './CollapsibleTestCommon.spec';
 describe('<CollapsibleConnected />', () => {
     let store: Store<IReactVaporState>;
     let basicCollapsibleProps: CollapsibleOwnProps;
+    let collapsible: ReactWrapper<CollapsibleOwnProps>;
+
+    const mountComponentWithProps = (props: CollapsibleOwnProps) => {
+        if (collapsible && collapsible.length) {
+            collapsible.unmount();
+        }
+        collapsible = mount(
+            <Provider store={store}>
+                <CollapsibleConnected {...props}>
+                    dummy children
+                </CollapsibleConnected>
+            </Provider>,
+            {attachTo: document.getElementById('App')},
+        );
+        return collapsible;
+    };
 
     beforeEach(() => {
         store = TestUtils.buildStore();
@@ -23,18 +40,8 @@ describe('<CollapsibleConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
+        collapsible.detach();
     });
-
-    const mountComponentWithProps = (props: CollapsibleOwnProps) => {
-        return mount(
-            <Provider store={store}>
-                <CollapsibleConnected {...props}>
-                    dummy children
-                </CollapsibleConnected>
-            </Provider>,
-            {attachTo: document.getElementById('App')},
-        );
-    };
 
     it('should not throw when calling onMount', () => {
         expect(() => mountComponentWithProps(basicCollapsibleProps).find(Collapsible).props().onMount()).not.toThrow();
@@ -62,7 +69,7 @@ describe('<CollapsibleConnected />', () => {
         });
 
         it('should put the collapsible container in the store on mount', () => {
-            const collapsible = mountComponentWithProps(basicCollapsibleProps);
+            mountComponentWithProps(basicCollapsibleProps);
             expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id})).toBeDefined();
             collapsible.unmount();
             expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id})).toBeUndefined();
@@ -72,7 +79,7 @@ describe('<CollapsibleConnected />', () => {
     describe('after render', () => {
         describe('Expansion/Toggling logic', () => {
             it('should toggle the expanded prop on click of the collapsible header button', () => {
-                const collapsible = mountComponentWithProps(basicCollapsibleProps);
+                mountComponentWithProps(basicCollapsibleProps);
                 const expandedBeforeClick = findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded;
                 collapsible.find(`.${basicCollapsibleProps.headerClasses}`).simulate('click');
                 expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded)
@@ -84,29 +91,31 @@ describe('<CollapsibleConnected />', () => {
             });
 
             it('should toggle the SlideY component when CollapsibleActions.setExpanded is triggered', () => {
-                const collapsible = mountComponentWithProps({...basicCollapsibleProps});
+                mountComponentWithProps({...basicCollapsibleProps});
                 expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded).toBe(false);
 
                 store.dispatch(setCollapsibleExpanded(basicCollapsibleProps.id, true));
+                collapsible.update();
 
                 expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded).toBe(true);
                 expect(collapsible.find(SlideY).prop('in')).toBe(true);
 
                 store.dispatch(setCollapsibleExpanded(basicCollapsibleProps.id, false));
+                collapsible.update();
 
                 expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded).toBe(false);
                 expect(collapsible.find(SlideY).prop('in')).toBe(false);
             });
 
             it('should render as expanded if expandedOnMount is passed in props', () => {
-                const collapsible = mountComponentWithProps({...basicCollapsibleProps, expandedOnMount: true});
+                mountComponentWithProps({...basicCollapsibleProps, expandedOnMount: true});
 
                 expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded).toBe(true);
                 expect(collapsible.find(SlideY).prop('in')).toBe(true);
             });
 
             it('should render as not expanded if expandedOnMount is not passed in props', () => {
-                const collapsible = mountComponentWithProps(basicCollapsibleProps);
+                mountComponentWithProps(basicCollapsibleProps);
 
                 expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded).toBe(false);
                 expect(collapsible.find(SlideY).prop('in')).toBe(false);

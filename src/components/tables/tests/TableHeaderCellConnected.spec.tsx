@@ -44,7 +44,6 @@ describe('Tables', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -75,28 +74,32 @@ describe('Tables', () => {
 
         it('should change the sorted attribute to ASCENDING after one click', () => {
             tableHeaderCell.simulate('click');
-            expect(tableHeaderCell.props().sorted).toBe(TableSortingOrder.ASCENDING);
+            wrapper.update();
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.ASCENDING);
         });
 
         it('should change the sorted attribute to DESCENDING after two clicks', () => {
             tableHeaderCell.simulate('click').simulate('click');
-            expect(tableHeaderCell.props().sorted).toBe(TableSortingOrder.DESCENDING);
+            wrapper.update();
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.DESCENDING);
         });
 
         it('should change the sorted attribute to ASCENDING after three clicks', () => {
             tableHeaderCell.simulate('click').simulate('click').simulate('click');
-            expect(tableHeaderCell.props().sorted).toBe(TableSortingOrder.ASCENDING);
+            wrapper.update();
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.ASCENDING);
         });
 
         it('should sort the clicked header cell and unsort the others with the same tableId', () => {
             const tableHeaderCell2 = wrapper.find(TableHeaderCell).last();
 
             tableHeaderCell.simulate('click');
-            expect(tableHeaderCell.props().sorted).toBe(TableSortingOrder.ASCENDING);
+            wrapper.update();
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.ASCENDING);
 
             tableHeaderCell2.simulate('click');
-            expect(tableHeaderCell.props().sorted).toBe(TableSortingOrder.UNSORTED);
-            expect(tableHeaderCell2.props().sorted).toBe(TableSortingOrder.ASCENDING);
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.UNSORTED);
+            expect(wrapper.find(TableHeaderCell).last().props().sorted).toBe(TableSortingOrder.ASCENDING);
         });
     });
 });

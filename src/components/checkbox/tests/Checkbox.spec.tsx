@@ -1,23 +1,23 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
+import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
+
 import {IInputProps} from '../../input/Input';
 import {Checkbox, ICheckboxProps} from '../Checkbox';
 
 describe('Checkbox', () => {
     describe('<Checkbox />', () => {
         it('should render without errors', () => {
-            expect(() => {
-                shallow(
-                    <Checkbox />,
-                );
-            }).not.toThrow();
+            expect(() => mount(<Checkbox />)).not.toThrow();
         });
 
         describe('<Checkbox />', () => {
             let checkbox: ReactWrapper<IInputProps, any>;
 
             const renderCheckbox = (props: ICheckboxProps = {}) => {
+                if (checkbox && checkbox.length) {
+                    checkbox.unmount();
+                }
+
                 checkbox = mount(
                     <Checkbox {...props} />,
                     {attachTo: document.getElementById('App')},
@@ -25,7 +25,6 @@ describe('Checkbox', () => {
             };
 
             afterEach(() => {
-                checkbox.unmount();
                 checkbox.detach();
             });
 
@@ -92,8 +91,8 @@ describe('Checkbox', () => {
                 renderCheckbox({
                     indeterminate: true,
                 });
-                const innerInput = checkbox.find('input');
-                expect((innerInput as any).node.indeterminate).toBe(true);
+                const innerInput: any = checkbox.find('input').instance();
+                expect(innerInput.indeterminate).toBe(true);
             });
 
             it('should add the disable class on the label only if input is disabled', () => {

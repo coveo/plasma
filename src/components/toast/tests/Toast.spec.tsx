@@ -26,7 +26,6 @@ describe('Toasts', () => {
         });
 
         afterEach(() => {
-            toastComponent.unmount();
             toastComponent.detach();
         });
 
@@ -48,7 +47,6 @@ describe('Toasts', () => {
 
             expect(() => toastInstance.componentWillUnmount()).not.toThrow();
 
-            toastComponent.unmount();
             toastComponent.setProps(newToastAttributes).mount();
 
             toastComponent.unmount();
@@ -185,8 +183,6 @@ describe('Toasts', () => {
 
         afterEach(() => {
             jasmine.clock().uninstall();
-
-            toastComponent.unmount();
             toastComponent.detach();
         });
 
@@ -217,8 +213,8 @@ describe('Toasts', () => {
         it('should clear the timeout on mouseenter', () => {
             expect(onCloseToast).not.toHaveBeenCalled();
 
-            expect(toastComponent.hasClass('toast')).toBe(true);
-            toastComponent.simulate('mouseEnter');
+            expect(toastComponent.find('.toast').length).toBe(1);
+            toastComponent.find('.toast').simulate('mouseEnter');
             jasmine.clock().tick(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();

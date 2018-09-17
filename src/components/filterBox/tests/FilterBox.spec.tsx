@@ -33,7 +33,6 @@ describe('FilterBox', () => {
         });
 
         afterEach(() => {
-            filterBox.unmount();
             filterBox.detach();
         });
 
@@ -97,38 +96,33 @@ describe('FilterBox', () => {
         });
 
         it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', () => {
-            const filterInput = filterBox.find('input');
-            const clearIcon = filterBox.find('span').first();
-
-            expect(clearIcon.hasClass('hidden')).toBe(true);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
 
             filterBoxInstance.filterInput.value = 'something';
-            filterInput.simulate('change');
-            expect(clearIcon.hasClass('hidden')).toBe(false);
+            filterBox.find('input').simulate('change');
+            filterBox.mount().update();
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
 
             filterBoxInstance.filterInput.value = '';
-            filterInput.simulate('change');
-            expect(clearIcon.hasClass('hidden')).toBe(true);
+            filterBox.find('input').simulate('change');
+            filterBox.mount().update();
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
         });
 
         it('should remove the hidden class of the clear icon if there is a value in the input without a change event', () => {
-            const clearIcon = filterBox.find('span').first();
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
 
-            expect(clearIcon.hasClass('hidden')).toBe(true);
+            (filterBox.instance() as FilterBox).filterInput.value = 'non empty';
+            filterBox.mount().update();
 
-            filterBoxInstance.filterInput.value = 'non empty';
-            filterBox.update();
-
-            expect(clearIcon.hasClass('hidden')).toBe(false);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
         });
 
         it('should leave the hidden class of the clear icon if there is an empty value in the input without a change event', () => {
-            const clearIcon = filterBox.find('span').first();
-
             filterBoxInstance.filterInput.value = '';
             filterBox.update();
 
-            expect(clearIcon.hasClass('hidden')).toBe(true);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
         });
 
         it('should clear the filter input when clicking the clear icon', () => {
@@ -152,12 +146,10 @@ describe('FilterBox', () => {
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const containerClasses = [containerClass];
-            const container = filterBox.find('div').first();
-            expect(container.hasClass(containerClass)).toBe(false);
+            expect(filterBox.find('div').first().hasClass(containerClass)).toBe(false);
 
-            filterBox.setProps({id: id, containerClasses});
-            filterBox.mount();
-            expect(container.hasClass(containerClass)).toBe(true);
+            filterBox.setProps({id: id, containerClasses}).update();
+            expect(filterBox.find('div').first().hasClass(containerClass)).toBe(true);
         });
 
         it('should call onBlur when the input loose focus', () => {
@@ -216,10 +208,10 @@ describe('FilterBox', () => {
             });
 
             it('should have a title on the input container if the input has a value in it', () => {
-                (filterBox.find('.filter-box').get(0) as any).value = 'test';
-                filterBox.update();
+                (filterBox.instance() as FilterBox).filterInput.value = 'test';
+                filterBox.mount().update();
 
-                expect(filterBox.find('.filter-container').prop('title')).toBe('test');
+                expect((filterBox.find('.filter-container').instance() as any).title).toBe('test');
             });
         });
 

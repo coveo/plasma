@@ -1,4 +1,4 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {SlideY, SlideYProps} from '../SlideY';
 
@@ -13,19 +13,18 @@ describe('SlideY', () => {
     });
 
     it('should not throw when rendered with in prop to true', () => {
-        expect(() => shallow(<SlideY in timeout={dummyTimeout}>{testElement}</SlideY>)).not.toThrow();
+        expect(() => mount(<SlideY in timeout={dummyTimeout}>{testElement}</SlideY>)).not.toThrow();
     });
 
     it('should not throw when rendered with in prop to false', () => {
-        expect(() => shallow(<SlideY in={false} timeout={dummyTimeout}>{testElement}</SlideY>)).not.toThrow();
+        expect(() => mount(<SlideY in={false} timeout={dummyTimeout}>{testElement}</SlideY>)).not.toThrow();
     });
 
     it('should not throw when updating props', () => {
         const wrapper = mount(<SlideY in={false} timeout={dummyTimeout}>{testElement}</SlideY>, {attachTo: document.getElementById('App')});
-        const component = wrapper.find(SlideY).first();
 
-        expect(() => wrapper.setProps({in: true})).not.toThrow();
-        expect(component.props().in).toBe(true);
+        expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
+        expect(wrapper.find(SlideY).first().props().in).toBe(true);
     });
 
     it('should stay opened when updating props but still in', () => {
@@ -85,15 +84,15 @@ describe('SlideY', () => {
             mountAndWrap(true);
             expect(() => wrapper.setProps({in: false})).not.toThrow();
 
-            const el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
+            const el = wrapper.find('.slide-y').first().getDOMNode() as HTMLElement;
             expect(el.style.height).toBe('0px');
         });
 
         it('should remove the class slide-y-transition', () => {
             mountAndWrap(false);
-            expect(() => wrapper.setProps({in: true})).not.toThrow();
+            expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
 
-            const slideY = component.find('.slide-y').first();
+            const slideY = wrapper.find('.slide-y').first();
             transitionToEnd(slideY.getDOMNode() as HTMLElement);
 
             expect(slideY.hasClass('slide-y-transition')).toBe(false);
@@ -102,34 +101,30 @@ describe('SlideY', () => {
         it('should remove the class slide-y-closed when the SlideY opens', () => {
             mountAndWrap(false);
 
-            const slideY = component.find('.slide-y').first();
-            expect(slideY.hasClass('slide-y-closed')).toBe(true);
+            expect(wrapper.html()).toContain('slide-y-closed');
 
-            expect(() => wrapper.setProps({in: true})).not.toThrow();
-            transitionToEnd(slideY.getDOMNode() as HTMLElement);
+            expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
+            transitionToEnd(wrapper.find('.slide-y').first().getDOMNode() as HTMLElement);
 
-            expect(slideY.hasClass('slide-y-closed')).toBe(false);
+            expect(wrapper.html()).not.toContain('slide-y-closed');
         });
 
         it('should add the class slide-y-closed when the SlideY closes', () => {
             mountAndWrap(true);
 
-            const slideY = component.find('.slide-y').first();
-            expect(slideY.hasClass('slide-y-closed')).toBe(false);
+            expect(wrapper.html()).not.toContain('slide-y-closed');
 
             expect(() => wrapper.setProps({in: false})).not.toThrow();
-            transitionToEnd(slideY.getDOMNode() as HTMLElement);
+            transitionToEnd(wrapper.find('.slide-y').first().getDOMNode() as HTMLElement);
 
-            expect(slideY.hasClass('slide-y-closed')).toBe(true);
+            expect(wrapper.html()).toContain('slide-y-closed');
         });
 
         it('should had the duration if one is added as a prop', () => {
             const expectedDuration = 1000;
             mountAndWrap(false, expectedDuration);
 
-            const slideY = component.find('.slide-y').first();
-
-            expect(slideY.prop('style').transitionDuration).toContain(expectedDuration);
+            expect(wrapper.find('.slide-y').first().prop('style').transitionDuration).toContain(expectedDuration.toString());
         });
     });
 });

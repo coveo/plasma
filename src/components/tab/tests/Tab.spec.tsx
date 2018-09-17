@@ -36,7 +36,6 @@ describe('Tab', () => {
         });
 
         afterEach(() => {
-            tab.unmount();
             tab.detach();
         });
 
@@ -75,12 +74,10 @@ describe('Tab', () => {
         });
 
         it('should set active class on container when isActive is true', () => {
-            const container = tab.find('div').first();
-            expect(container.hasClass('active')).toBe(false);
+            expect(tab.find('div').first().hasClass('active')).toBe(false);
 
-            tab.setProps({id, title, isActive: true});
-            tab.mount();
-            expect(container.hasClass('active')).toBe(true);
+            tab.setProps({id, title, isActive: true}).mount().update();
+            expect(tab.find('div').first().hasClass('active')).toBe(true);
         });
     });
 });

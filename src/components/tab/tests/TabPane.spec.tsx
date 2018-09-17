@@ -31,23 +31,20 @@ describe('TabPane', () => {
         });
 
         afterEach(() => {
-            tab.unmount();
             tab.detach();
         });
 
         it('should set active class on container when isActive is true', () => {
-            const container = tab.find('div').first();
-            expect(container.hasClass('active')).toBe(false);
+            expect(tab.find('div').first().hasClass('active')).toBe(false);
 
             tab.setProps({id, isActive: true});
             tab.mount();
-            expect(container.hasClass('active')).toBe(true);
+            expect(tab.find('div').first().hasClass('active')).toBe(true);
         });
 
         it('should add classNames when className prop set', () => {
-            const container = tab.find('div').first();
             tab.setProps({id, className: 'hello'}).mount();
-            expect(container.hasClass('hello')).toBe(true);
+            expect(tab.find('div').first().hasClass('hello')).toBe(true);
         });
     });
 });

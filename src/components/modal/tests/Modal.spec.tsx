@@ -33,7 +33,6 @@ describe('Modal', () => {
         });
 
         afterEach(() => {
-            modal.unmount();
             modal.detach();
         });
 
@@ -108,12 +107,11 @@ describe('Modal', () => {
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const classes = [containerClass];
-            const container = modal.find('div').first();
-            expect(container.hasClass(containerClass)).toBe(false);
+            expect(modal.find('div').first().html()).not.toContain(containerClass);
 
             modal.setProps({id, classes});
             modal.mount();
-            expect(container.hasClass(containerClass)).toBe(true);
+            expect(modal.find('div').first().html()).toContain(containerClass);
         });
     });
 });

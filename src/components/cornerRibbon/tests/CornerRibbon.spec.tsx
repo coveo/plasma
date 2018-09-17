@@ -22,14 +22,14 @@ describe('CornerRibbon', () => {
         it('should have the default corner-ribon class', () => {
             mountWithProps({});
 
-            expect(cornerRibbon.hasClass(DEFAULT_CORNER_RIBBON_CLASSNAME)).toBe(true);
+            expect(cornerRibbon.find(`.${DEFAULT_CORNER_RIBBON_CLASSNAME}`).length).toBe(1);
         });
 
         it('should render in the top right of its ribbon-container by default', () => {
             mountWithProps({});
 
-            expect(cornerRibbon.hasClass(PlacementY.Top)).toBe(true);
-            expect(cornerRibbon.hasClass(PlacementX.Right)).toBe(true);
+            expect(cornerRibbon.find(`.${PlacementY.Top}`).length).toBe(1);
+            expect(cornerRibbon.find(`.${PlacementX.Right}`).length).toBe(1);
         });
 
         it('should render the label specified as prop if any', () => {
@@ -45,13 +45,13 @@ describe('CornerRibbon', () => {
                 placementX: PlacementX.Left,
             });
 
-            expect(cornerRibbon.hasClass(PlacementX.Left)).toBe(true);
+            expect(cornerRibbon.find(`.${PlacementX.Left}`).length).toBe(1);
 
             cornerRibbon.setProps({
                 placementX: PlacementX.Right,
             });
 
-            expect(cornerRibbon.hasClass(PlacementX.Right)).toBe(true);
+            expect(cornerRibbon.find(`.${PlacementX.Right}`).length).toBe(1);
         });
 
         it('should render the ribbon in y axle position specified as prop if any', () => {
@@ -59,13 +59,13 @@ describe('CornerRibbon', () => {
                 placementY: PlacementY.Bottom,
             });
 
-            expect(cornerRibbon.hasClass(PlacementY.Bottom)).toBe(true);
+            expect(cornerRibbon.find(`.${PlacementY.Bottom}`).length).toBe(1);
 
             cornerRibbon.setProps({
                 placementY: PlacementY.Top,
             });
 
-            expect(cornerRibbon.hasClass(PlacementY.Top)).toBe(true);
+            expect(cornerRibbon.find(`.${PlacementY.Top}`).length).toBe(1);
         });
 
         it('should render the ribbon with extra classes if specified as prop', () => {
@@ -73,8 +73,8 @@ describe('CornerRibbon', () => {
                 extraClasses: ['bold', 'bg-orange'],
             });
 
-            expect(cornerRibbon.hasClass('bold')).toBe(true);
-            expect(cornerRibbon.hasClass('bg-orange')).toBe(true);
+            expect(cornerRibbon.find('.bold').length).toBe(1);
+            expect(cornerRibbon.find('.bg-orange').length).toBe(1);
         });
     });
 });

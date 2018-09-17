@@ -35,7 +35,6 @@ describe('Actions', () => {
         });
 
         afterEach(() => {
-            primaryAction.unmount();
             primaryAction.detach();
         });
 

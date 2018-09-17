@@ -35,7 +35,6 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            datesSelection.unmount();
             datesSelection.detach();
         });
 
@@ -214,8 +213,8 @@ describe('Date picker', () => {
                 datesSelection.find(DatePicker).props().onBlur(new Date(), false);
             }).not.toThrow();
 
-            datesSelection.setProps({onBlur: onBlurSpy});
-            (datesSelection.find('input').get(0) as any).value = DateUtils.getDateWithTimeString(new Date());
+            datesSelection.setProps({onBlur: onBlurSpy}).update();
+            (datesSelection.find('input').instance() as any).value = DateUtils.getDateWithTimeString(new Date());
             datesSelection.find(DatePicker).props().onBlur(new Date(), false);
 
             expect(onBlurSpy).toHaveBeenCalledTimes(1);

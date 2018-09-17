@@ -34,7 +34,6 @@ describe('Item filter', () => {
         });
 
         afterEach(() => {
-            itemFilterComponent.unmount();
             itemFilterComponent.detach();
         });
 

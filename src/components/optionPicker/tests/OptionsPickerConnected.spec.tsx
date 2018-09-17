@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {Store} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -46,7 +46,6 @@ describe('Option picker', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -84,9 +83,10 @@ describe('Option picker', () => {
 
         it('should return an empty string for the activeLabel when the option picker does not exist in the state', () => {
             store.dispatch(clearState());
+            wrapper.update();
 
             expect(_.findWhere(store.getState().optionPickers, {id: OPTION_PICKER_BASIC_PROPS.id})).toBeUndefined();
-            expect(optionPicker.props().activeLabel).toBe('');
+            expect(wrapper.find(OptionPicker).props().activeLabel).toBe('');
         });
 
         it('should return the activeLabel from the state when the option picker exists in the state', () => {
@@ -94,8 +94,9 @@ describe('Option picker', () => {
             const expectedSelectedLabel: string = 'our label';
 
             store.dispatch(changeOptionPicker(OPTION_PICKER_BASIC_PROPS.id, expectedSelectedLabel, expectedSelectedValue));
+            wrapper.update();
 
-            expect(optionPicker.props().activeLabel).toBe(expectedSelectedLabel);
+            expect(wrapper.find(OptionPicker).props().activeLabel).toBe(expectedSelectedLabel);
         });
 
         it('should call onRender prop when mounted', () => {

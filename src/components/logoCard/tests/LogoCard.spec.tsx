@@ -30,11 +30,11 @@ describe('LogoCard', () => {
         });
 
         it('should have the default logo-card class', () => {
-            expect(logoCard.hasClass(DEFAULT_LOGO_CARD_CLASSNAME)).toBe(true);
+            expect(logoCard.html()).toContain(DEFAULT_LOGO_CARD_CLASSNAME);
         });
 
         it('should not have the ribbon-container class if no ribbon is used on the LogoCard', () => {
-            expect(logoCard.hasClass(DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME)).toBe(false);
+            expect(logoCard.html()).not.toContain(DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME);
         });
 
         it('should render the specied title as props', () => {
@@ -83,11 +83,11 @@ describe('LogoCard', () => {
         });
 
         it('should have the disabled class', () => {
-            expect(logoCard.hasClass('disabled')).toBe(true);
+            expect(logoCard.html()).toContain('disabled');
         });
 
         it('should have the ribbon-container class', () => {
-            expect(logoCard.hasClass(DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME)).toBe(true);
+            expect(logoCard.html()).toContain(DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME);
         });
 
         it('should not call onClick when clicking on the logoCard', () => {
@@ -142,7 +142,7 @@ describe('LogoCard', () => {
         });
 
         it('should render extra container classes if specified as props', () => {
-            expect(logoCard.hasClass('some-extra-class')).toBe(true);
+            expect(logoCard.html()).toContain('some-extra-class');
         });
 
         it('should have the svgName specified as props', () => {

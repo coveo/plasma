@@ -13,7 +13,6 @@ describe('<SideNavigation />', () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         wrapper.detach();
     });
 
@@ -27,10 +26,8 @@ describe('<SideNavigation />', () => {
 
     it('should render a <SideNavigation /> with classes prop', () => {
         const className = 'foo';
-        const container = wrapper.find('nav').first();
-        wrapper.setProps({className});
-        wrapper.mount();
-        expect(container.hasClass(className)).toBe(true);
+        wrapper.setProps({className}).mount().update();
+        expect(wrapper.find('nav').first().hasClass(className)).toBe(true);
     });
 
     it('should not have class navigation-opened if opened prop is true and withReduxState prop is false.', () => {
@@ -43,13 +40,12 @@ describe('<SideNavigation />', () => {
     });
 
     it('should have class navigation-opened if opened prop is true and withReduxState prop is true.', () => {
-        const container = wrapper.find('nav').first();
         wrapper.setProps({opened: false, withReduxState: true});
-        wrapper.mount();
-        expect(container.hasClass('navigation-opened')).toBe(false);
+        wrapper.update();
+        expect(wrapper.find('nav').hasClass('navigation-opened')).toBe(false);
 
         wrapper.setProps({opened: true, withReduxState: true});
-        wrapper.mount();
-        expect(container.hasClass('navigation-opened')).toBe(true);
+        wrapper.update();
+        expect(wrapper.find('nav').hasClass('navigation-opened')).toBe(true);
     });
 });

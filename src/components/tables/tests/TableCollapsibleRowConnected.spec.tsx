@@ -1,8 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {Store} from 'react-redux';
 import {Provider} from 'react-redux';
+import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -44,13 +44,14 @@ describe('Tables', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
-            tableCollapsibleRow = wrapper.find(TableCollapsibleRow).first();
             store.dispatch(addRow(basicTableCollapsibleRowProps.id));
+
+            wrapper.update();
+            tableCollapsibleRow = wrapper.find(TableCollapsibleRow).first();
         });
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 

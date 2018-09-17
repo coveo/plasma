@@ -26,7 +26,6 @@ describe('<SideNavigationHeader />', () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         wrapper.detach();
     });
 

@@ -115,8 +115,8 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     // addEventListener and removeEventListener and therefore prevent leaking listeners.
     private handleDocumentClick: EventListener = (event: Event) => {
         if (this.props.isOpen) {
-            const tetherToggle = findDOMNode<HTMLElement>(this.tetherToggle);
-            const tetherElement = findDOMNode<HTMLElement>(this.tetherElement);
+            const tetherToggle: Element | Text = findDOMNode(this.tetherToggle);
+            const tetherElement: Element | Text = findDOMNode(this.tetherElement);
 
             const outsideTetherToggle = !tetherToggle.contains(event.target as Node);
             const outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;

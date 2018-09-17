@@ -1,8 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {Store} from 'react-redux';
+import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -43,7 +43,6 @@ describe('Actions', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 

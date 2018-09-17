@@ -26,7 +26,6 @@ describe('AddInputAction', () => {
         });
 
         afterEach(() => {
-            addInput.unmount();
             addInput.detach();
         });
 
@@ -34,8 +33,8 @@ describe('AddInputAction', () => {
             const title = 'a title';
             expect(addInput.find(`[title="${title}"]`).length).toBe(0);
 
-            addInput.setProps({title}).mount();
-            expect(addInput.find(`[title="${title}"]`).length).toBe(1);
+            addInput.setProps({title}).mount().update();
+            expect(addInput.find(`[title="${title}"]`).length).toBeGreaterThanOrEqual(1);
         });
 
         it('should call onClick props on button click if prop is set', () => {

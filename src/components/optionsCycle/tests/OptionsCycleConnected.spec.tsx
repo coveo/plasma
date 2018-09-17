@@ -1,16 +1,15 @@
 import {mount, ReactWrapper} from 'enzyme';
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import {Store} from 'react-redux';
 import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
 import {changeOptionsCycle} from '../OptionsCycleActions';
 import {OptionsCycleConnected} from '../OptionsCycleConnected';
-/* tslint:enable:no-unused-variable */
 
 describe('Options cycle', () => {
     const optionsCycleBasicProps: IOptionsCycleProps = {
@@ -37,7 +36,6 @@ describe('Options cycle', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -84,8 +82,9 @@ describe('Options cycle', () => {
             const expectedCurrentOption = 5;
 
             store.dispatch(changeOptionsCycle(optionsCycleBasicProps.id, expectedCurrentOption));
+            wrapper.update();
 
-            expect(optionsCycle.props().currentOption).toBe(expectedCurrentOption);
+            expect(wrapper.find(OptionsCycle).props().currentOption).toBe(expectedCurrentOption);
         });
 
         it('should call onRender prop when mounted', () => {

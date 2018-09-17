@@ -16,29 +16,27 @@ describe('ModalFooter', () => {
     });
 
     describe('<ModalFooter />', () => {
-        let modalBody: ReactWrapper<IModalFooterProps, any>;
+        let modalFooter: ReactWrapper<IModalFooterProps, any>;
 
         beforeEach(() => {
-            modalBody = mount(
+            modalFooter = mount(
                 <ModalFooter />,
                 {attachTo: document.getElementById('App')},
             );
         });
 
         afterEach(() => {
-            modalBody.unmount();
-            modalBody.detach();
+            modalFooter.detach();
         });
 
         it('should set class when the class is specified', () => {
             const containerClass = 'mod-header-padding';
             const classes = [containerClass];
-            const container = modalBody.find('div').first();
-            expect(container.hasClass(containerClass)).toBe(false);
+            expect(modalFooter.find('div').first().html()).not.toContain(containerClass);
 
-            modalBody.setProps({classes});
-            modalBody.mount();
-            expect(container.hasClass(containerClass)).toBe(true);
+            modalFooter.setProps({classes});
+            modalFooter.mount();
+            expect(modalFooter.find('div').first().html()).toContain(containerClass);
         });
     });
 });

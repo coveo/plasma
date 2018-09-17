@@ -1,7 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState, TestUtils} from '../../../utils/TestUtils';
@@ -42,7 +44,6 @@ describe('DropdownSearch', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -197,22 +198,17 @@ describe('DropdownSearch', () => {
             });
 
             it('should toggle the dropdown class to open and close on click on the dropdown button', () => {
-                const dropdown = wrapper.find('.dropdown');
-                const button = wrapper.find('.dropdown-toggle');
-
-                expect(dropdown.hasClass('open')).toBe(false, 'start closed');
-                button.simulate('click');
-                expect(dropdown.hasClass('open')).toBe(true, 'open on first click');
+                expect(wrapper.find('.dropdown').find('.open').length).toBe(0, 'start closed');
+                wrapper.find('.dropdown-toggle').simulate('click');
+                expect(wrapper.find('.dropdown').find('.open').length).toBe(1, 'open on first click');
             });
 
             it('should close the dropdown on calling onClose', () => {
-                const dropdown = wrapper.find('.dropdown');
-                const button = wrapper.find('.dropdown-toggle');
-
-                button.simulate('click');
-                expect(dropdown.hasClass('open')).toBe(true);
-                dropdownSearch.props().onClose();
-                expect(dropdown.hasClass('open')).toBe(false);
+                wrapper.find('.dropdown-toggle').simulate('click');
+                expect(wrapper.find('.open').length).toBe(1);
+                wrapper.find(DropdownSearch).props().onClose();
+                wrapper.update();
+                expect(wrapper.find('.dropdown').find('.open').length).toBe(0);
             });
 
             it('should toggle the close dropdown on blur', () => {
@@ -222,12 +218,13 @@ describe('DropdownSearch', () => {
 
                 dropdownSearch.props().onBlur([]);
 
-                expect(dropdown.hasClass('open')).toBe(false, 'close the dropdown on blur');
+                expect(dropdown.find('.open').length).toBe(0, 'close the dropdown on blur');
             });
 
             it('should add the selected value in the state on click an option', () => {
                 store.dispatch(updateOptionsDropdownSearch(id, [{value: 'test 1'}, {value: 'test 2'}]));
                 store.dispatch(toggleDropdownSearch(id));
+                wrapper.update();
 
                 wrapper.find('li span').first().simulate('mouseDown');
 
@@ -248,89 +245,102 @@ describe('DropdownSearch', () => {
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBeUndefined();
 
                 store.dispatch(updateActiveOptionDropdownSearch(id, keyCode.downArrow));
+                wrapper.update();
 
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
 
-                dropdownSearch.props().onKeyDownDropdownButton(keyCode.enter, {value: 'anywoulddo', selected: false});
+                wrapper.find(DropdownSearch).props().onKeyDownDropdownButton(keyCode.enter, {value: 'anywoulddo', selected: false});
+                wrapper.update();
 
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(true);
             });
 
             it('should set the setFocusOnDropdownButton to true if the keyCode send on onKeyDownDropdownButton is "Tab"', () => {
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBeUndefined();
 
                 store.dispatch(updateActiveOptionDropdownSearch(id, keyCode.downArrow));
+                wrapper.update();
 
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
 
-                dropdownSearch.props().onKeyDownDropdownButton(keyCode.tab, {value: 'anywoulddo', selected: false});
+                wrapper.find(DropdownSearch).props().onKeyDownDropdownButton(keyCode.tab, {value: 'anywoulddo', selected: false});
+                wrapper.update();
 
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(true);
             });
 
             it('should set the setFocusOnDropdownButton to true if the keyCode send on onKeyDownFilterBox is "Tab"', () => {
                 expect(dropdownSearch.props().setFocusOnDropdownButton).toBeUndefined();
 
                 store.dispatch(updateActiveOptionDropdownSearch(id, keyCode.downArrow));
+                wrapper.update();
 
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
 
-                dropdownSearch.props().onKeyDownFilterBox(keyCode.tab, {value: 'anywoulddo', selected: false});
+                wrapper.find(DropdownSearch).props().onKeyDownFilterBox(keyCode.tab, {value: 'anywoulddo', selected: false});
+                wrapper.update();
 
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(true);
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(true);
             });
 
             it('should update the activeOption on "upArrow" and set the setFocusOnDropdownButton to false', () => {
                 expect(dropdownSearch.props().activeOption).toBeUndefined();
 
                 dropdownSearch.props().onKeyDownDropdownButton(keyCode.upArrow);
+                wrapper.update();
 
-                expect(dropdownSearch.props().activeOption).toBeDefined();
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+                expect(wrapper.find(DropdownSearch).props().activeOption).toBeDefined();
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
             });
 
             it('should update the activeOption on "upArrow" for the first element if not defined', () => {
                 expect(dropdownSearch.props().activeOption).toBeUndefined();
 
                 dropdownSearch.props().onKeyDownDropdownButton(keyCode.upArrow);
+                wrapper.update();
 
-                expect(dropdownSearch.props().activeOption).toEqual(defaultOptions[0]);
+                expect(wrapper.find(DropdownSearch).props().activeOption).toEqual(defaultOptions[0]);
             });
 
             it('should update the activeOption on "downArrow" and set the setFocusOnDropdownButton to false', () => {
                 expect(dropdownSearch.props().activeOption).toBeUndefined();
 
                 dropdownSearch.props().onKeyDownDropdownButton(keyCode.downArrow);
+                wrapper.update();
 
-                expect(dropdownSearch.props().activeOption).toBeDefined();
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+                expect(wrapper.find(DropdownSearch).props().activeOption).toBeDefined();
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
             });
 
             it('should update the activeOption on "downArrow" for the first element if not defined', () => {
                 expect(dropdownSearch.props().activeOption).toBeUndefined();
 
                 dropdownSearch.props().onKeyDownDropdownButton(keyCode.downArrow);
+                wrapper.update();
 
-                expect(dropdownSearch.props().activeOption).toEqual(defaultOptions[0]);
+                expect(wrapper.find(DropdownSearch).props().activeOption).toEqual(defaultOptions[0]);
             });
 
             it('should update the activeOption on "downArrow" for the first element if not defined', () => {
                 expect(dropdownSearch.props().activeOption).toBeUndefined();
 
                 dropdownSearch.props().onKeyDownDropdownButton(keyCode.downArrow);
+                wrapper.update();
 
-                expect(dropdownSearch.props().activeOption).toEqual(defaultOptions[0]);
+                expect(wrapper.find(DropdownSearch).props().activeOption).toEqual(defaultOptions[0]);
             });
 
             it('should reset the activeOption and remove focus on dropdown on onMouseEnterDropdown', () => {
                 dropdownSearch.props().onKeyDownDropdownButton(keyCode.upArrow);
+                wrapper.update();
 
-                expect(dropdownSearch.props().activeOption).toBeDefined();
+                expect(wrapper.find(DropdownSearch).props().activeOption).toBeDefined();
 
                 dropdownSearch.props().onMouseEnterDropdown();
+                wrapper.update();
 
-                expect(dropdownSearch.props().activeOption).toBeUndefined();
-                expect(dropdownSearch.props().setFocusOnDropdownButton).toBe(false);
+                expect(wrapper.find(DropdownSearch).props().activeOption).toBeUndefined();
+                expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
             });
         });
     });

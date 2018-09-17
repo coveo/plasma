@@ -31,7 +31,6 @@ describe('<Breadcrumb/>', () => {
         });
 
         afterEach(() => {
-            breadcrumbComponent.unmount();
             breadcrumbComponent.detach();
         });
 
@@ -57,7 +56,6 @@ describe('<Breadcrumb/>', () => {
         };
 
         afterEach(() => {
-            breadcrumbComponent.unmount();
             breadcrumbComponent.detach();
         });
 

@@ -25,36 +25,32 @@ describe('Label', () => {
         });
 
         afterEach(() => {
-            label.unmount();
             label.detach();
         });
 
         it('should set inner label classes when specified', () => {
             const innerLabelClass = 'valid';
             const classes = [innerLabelClass];
-            const innerLabel = label.find('label').first();
-            expect(innerLabel.hasClass(innerLabelClass)).toBe(false);
+            expect(label.find('label').hasClass(innerLabelClass)).toBe(false);
 
-            label.setProps({classes}).mount();
-            expect(innerLabel.hasClass(innerLabelClass)).toBe(true);
+            label.setProps({classes}).mount().update();
+            expect(label.find('label').hasClass(innerLabelClass)).toBe(true);
         });
 
         it('should set inner label valid message when specified', () => {
             const message = 'salut';
-            const innerLabel = label.find('label').first();
-            expect(innerLabel.prop('data-valid-message')).toBe(undefined);
+            expect(label.find('label').prop('data-valid-message')).toBe(undefined);
 
-            label.setProps({validMessage: message}).mount();
-            expect(innerLabel.prop('data-valid-message')).toBe(message);
+            label.setProps({validMessage: message}).mount().update();
+            expect(label.find('label').prop('data-valid-message')).toBe(message);
         });
 
         it('should set inner label invalid message when specified', () => {
             const message = 'salut';
-            const innerLabel = label.find('label').first();
-            expect(innerLabel.prop('data-invalid-message')).toBe(undefined);
+            expect(label.find('label').prop('data-invalid-message')).toBe(undefined);
 
-            label.setProps({invalidMessage: message}).mount();
-            expect(innerLabel.prop('data-invalid-message')).toBe(message);
+            label.setProps({invalidMessage: message}).mount().update();
+            expect(label.find('label').prop('data-invalid-message')).toBe(message);
         });
     });
 });

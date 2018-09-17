@@ -51,14 +51,14 @@ describe('Facets', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
-            facetMoreRows = wrapper.find(FacetMoreRows);
-
             store.dispatch(addFacet(facet));
+            wrapper.update();
+
+            facetMoreRows = wrapper.find(FacetMoreRows);
         });
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -81,6 +81,8 @@ describe('Facets', () => {
             expect(facetMoreRows.find('.facet-more-search').hasClass('hidden')).toBe(true);
 
             store.dispatch(toggleMoreFacetRows(facet));
+            wrapper.update();
+            facetMoreRows = wrapper.find(FacetMoreRows);
 
             expect(facetMoreRows.props().isOpened).toBe(true);
             expect(facetMoreRows.find('.facet-more-search').hasClass('hidden')).toBe(false);
@@ -92,18 +94,21 @@ describe('Facets', () => {
         });
 
         it('should show only the filtered rows', () => {
-            const filterId = 'filter-' + facet;
+            const filterId = `filter-${facet}`;
             store.dispatch(addFilter(filterId));
+            wrapper.update();
 
-            expect(facetMoreRows.find(FacetRow).length).toBe(2);
+            expect(wrapper.find(FacetMoreRows).find(FacetRow).length).toBe(2);
 
             store.dispatch(filterThrough(filterId, 'row'));
+            wrapper.update();
 
-            expect(facetMoreRows.find(FacetRow).length).toBe(2);
+            expect(wrapper.find(FacetMoreRows).find(FacetRow).length).toBe(2);
 
             store.dispatch(filterThrough(filterId, 'Row 2'));
+            wrapper.update();
 
-            expect(facetMoreRows.find(FacetRow).length).toBe(1);
+            expect(wrapper.find(FacetMoreRows).find(FacetRow).length).toBe(1);
         });
 
         it('should set the filter value to an empty string when opening', () => {
@@ -119,19 +124,24 @@ describe('Facets', () => {
 
         it('should close itself when clicking out of the "facet-search" div', () => {
             store.dispatch(toggleMoreFacetRows(facet));
-            expect(facetMoreRows.props().isOpened).toBe(true);
+            wrapper.update();
+            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
 
             (document.getElementsByClassName('facet-search')[0] as HTMLDivElement).click();
-            expect(facetMoreRows.props().isOpened).toBe(true);
+            wrapper.update();
+            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
 
             (document.getElementsByClassName('facet-more-search')[0] as HTMLDivElement).click();
-            expect(facetMoreRows.props().isOpened).toBe(false);
+            wrapper.update();
+            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(false);
 
             store.dispatch(toggleMoreFacetRows(facet));
-            expect(facetMoreRows.props().isOpened).toBe(true);
+            wrapper.update();
+            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
 
             document.getElementById('App').click();
-            expect(facetMoreRows.props().isOpened).toBe(false);
+            wrapper.update();
+            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(false);
         });
     });
 });

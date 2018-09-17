@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import {ITitleProps, Title} from '../title/Title';
 import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
 
-export interface IBasicHeaderProps extends IHeaderWrapperProps, React.ClassAttributes<React.Component<any, any>> {
+export interface IBasicHeaderProps extends IHeaderWrapperProps {
     title: ITitleProps;
 }
 
@@ -18,7 +18,7 @@ export class BasicHeader extends React.Component<IBasicHeaderProps, {}> {
 
     render() {
         return (
-            <HeaderWrapper {...this.props}>
+            <HeaderWrapper {..._.omit(this.props, 'title')}>
                 <Title {...this.props.title} />
             </HeaderWrapper>
         );

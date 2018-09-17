@@ -46,7 +46,6 @@ describe('Actions', () => {
             });
 
             afterEach(() => {
-                actionBar.unmount();
                 actionBar.detach();
             });
 
@@ -140,21 +139,21 @@ describe('Actions', () => {
             describe('removeDefaultContainerClasses', () => {
                 it('should leave the default container classes if it is not set', () => {
                     DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-                        expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+                        expect(actionBar.find('div').first().html()).toContain(className);
                     });
                 });
 
                 it('should leave the default container classes if it is set to false', () => {
                     actionBar.setProps({removeDefaultContainerClasses: false});
                     DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-                        expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+                        expect(actionBar.find('div').first().html()).toContain(className);
                     });
                 });
 
                 it('should remove the default container classes if it is set to true', () => {
                     actionBar.setProps({removeDefaultContainerClasses: true});
                     DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-                        expect(actionBar.find('div').first().hasClass(className)).toBe(false);
+                        expect(actionBar.find('div').first().html()).not.toContain(className);
                     });
                 });
             });
@@ -164,7 +163,7 @@ describe('Actions', () => {
                     const extraContainerClasses = ['test', 'with', 'multiple', 'classes', 'tobesure'];
                     actionBar.setProps({extraContainerClasses});
                     extraContainerClasses.forEach((className: string) => {
-                        expect(actionBar.find('div').first().hasClass(className)).toBe(true);
+                        expect(actionBar.find('div').first().html()).toContain(className);
                     });
                 });
             });
@@ -172,12 +171,12 @@ describe('Actions', () => {
             describe('loading behavior', () => {
                 it('should not have the mod-deactivate-pointer class if the action bar is not loading', () => {
                     actionBar.setProps({isLoading: false});
-                    expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(false);
+                    expect(actionBar.find('div').first().html()).not.toContain('mod-deactivate-pointer');
                 });
 
                 it('should have the mod-deactivate-pointer class if the action bar is loading', () => {
                     actionBar.setProps({isLoading: true});
-                    expect(actionBar.find('div').first().hasClass('mod-deactivate-pointer')).toBe(true);
+                    expect(actionBar.find('div').first().html()).toContain('mod-deactivate-pointer');
                 });
             });
         });
@@ -191,7 +190,7 @@ describe('Actions', () => {
 
                 expect(actionsProp).toBeDefined();
                 expect(actionsProp).toBe(true);
-                expect(actionBar.hasClass('small-actions-container')).toBe(true);
+                expect(actionBar.find('.small-actions-container').length).toBe(1);
             });
 
             it('should set the width on the bar if there is one sent as a prop', () => {

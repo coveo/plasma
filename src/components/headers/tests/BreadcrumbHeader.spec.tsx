@@ -32,7 +32,6 @@ describe('<BreadcrumbHeader/>', () => {
         });
 
         afterEach(() => {
-            basicHeaderComponent.unmount();
             basicHeaderComponent.detach();
         });
 

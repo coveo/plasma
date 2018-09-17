@@ -23,8 +23,8 @@ export interface ISingleSelectExamplesState {
 }
 
 export class AutocompleteExamples extends React.Component<{}, ISingleSelectExamplesState> {
-    constructor() {
-        super();
+    constructor(props: {}, state: ISingleSelectExamplesState) {
+        super(props, state);
 
         const second = _.map(defaultItems, (item: IItemBoxProps): IItemBoxProps => ({value: item.displayValue, disabled: item.disabled}));
         second[0].selected = true;

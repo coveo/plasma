@@ -35,7 +35,6 @@ describe('TabPane', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -55,17 +54,17 @@ describe('TabPane', () => {
 
         it('should set the tab pane as active when adding a tab with same ID and no other tab is in the store', () => {
             store.dispatch(addTab(id));
-            const isActive = tabPane.props().isActive;
+            wrapper.update();
 
-            expect(isActive).toBe(true);
+            expect(wrapper.find(TabPane).props().isActive).toBe(true);
         });
 
         it('should not set the tab pane as active when adding a tab with same ID and another tab is in the store', () => {
             store.dispatch(addTab('tab-id-2'));
             store.dispatch(addTab(id));
-            const isActive = tabPane.props().isActive;
+            wrapper.update();
 
-            expect(isActive).toBe(false);
+            expect(wrapper.find(TabPane).props().isActive).toBe(false);
         });
     });
 });

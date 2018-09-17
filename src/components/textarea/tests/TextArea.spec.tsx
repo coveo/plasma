@@ -1,8 +1,9 @@
 import {HTMLAttributes, mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {Store} from 'react-redux';
+import {Store} from 'redux';
 import {findWhere} from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -34,7 +35,6 @@ describe('TextArea', () => {
         });
 
         afterEach(() => {
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -46,30 +46,30 @@ describe('TextArea', () => {
             const className = 'a-class';
             expect(textArea.hasClass(className)).toBe(false);
 
-            wrapper.setProps({className});
-            expect(textArea.hasClass(className)).toBe(true);
+            wrapper.setProps({className}).update();
+            expect(wrapper.find('textarea').hasClass(className)).toBe(true);
         });
 
         it('should set additionalAttributes when specified', () => {
             expect(textArea.prop('placeholder')).toBeUndefined();
-            wrapper.setProps({additionalAttributes: {placeholder: 'not null'}});
-            expect(textArea.prop('placeholder')).toBe('not null');
+            wrapper.setProps({additionalAttributes: {placeholder: 'not null'}}).update();
+            expect(wrapper.find('textarea').prop('placeholder')).toBe('not null');
         });
 
         it('should set disabled prop when specified', () => {
             expect(textArea.prop('disabled')).toBeUndefined();
-            wrapper.setProps({disabled: true});
-            expect(textArea.prop('disabled')).toBe(true);
+            wrapper.setProps({disabled: true}).update();
+            expect(wrapper.find('textarea').prop('disabled')).toBe(true);
         });
 
         it('should set value prop when specified', () => {
             expect(textArea.prop('value')).toBeUndefined();
-            wrapper.setProps({value: 'non empty'});
-            expect(textArea.prop('value')).toBe('non empty');
+            wrapper.setProps({value: 'non empty'}).update();
+            expect(wrapper.find('textarea').prop('value')).toBe('non empty');
         });
 
         it('should not throw if the onChange prop is not defined onChange', () => {
-            wrapper.setProps({onChange: undefined});
+            wrapper.setProps({onChange: undefined}).update();
 
             expect(() => (wrapper.instance() as any).handleOnChange()).not.toThrow();
         });
@@ -83,8 +83,8 @@ describe('TextArea', () => {
         it('should call prop onChange on textarea change', () => {
             const onChange = jasmine.createSpy('onChange');
 
-            wrapper.setProps({onChange});
-            textArea.simulate('change');
+            wrapper.setProps({onChange}).update();
+            wrapper.find('textarea').simulate('change');
 
             expect(onChange).toHaveBeenCalledTimes(1);
         });
@@ -92,8 +92,8 @@ describe('TextArea', () => {
         it('should call prop onChangeCallback on textarea change', () => {
             const onChangeCallback = jasmine.createSpy('onChangeCallback');
 
-            wrapper.setProps({onChangeCallback});
-            textArea.simulate('change');
+            wrapper.setProps({onChangeCallback}).update();
+            wrapper.find('textarea').simulate('change');
 
             expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });
@@ -134,7 +134,6 @@ describe('TextArea', () => {
 
             afterEach(() => {
                 store.dispatch(clearState());
-                wrapper.unmount();
                 wrapper.detach();
             });
 

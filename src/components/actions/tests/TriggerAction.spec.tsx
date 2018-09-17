@@ -43,7 +43,6 @@ describe('Actions', () => {
         });
 
         afterEach(() => {
-            triggerAction.unmount();
             triggerAction.detach();
         });
 

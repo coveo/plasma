@@ -35,7 +35,6 @@ describe('NavigationPerPage', () => {
         });
 
         afterEach(() => {
-            navigationPerPage.unmount();
             navigationPerPage.detach();
         });
 

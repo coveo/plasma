@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {IInputProps} from '../../input/Input';
 import {Radio} from '../Radio';
 
@@ -28,7 +28,6 @@ describe('Radio', () => {
         });
 
         afterEach(() => {
-            radio.unmount();
             radio.detach();
         });
 
@@ -39,11 +38,10 @@ describe('Radio', () => {
 
         it('should set name prop when specified', () => {
             const name = 'salut';
-            const innerInput = radio.find('input').first();
-            expect(innerInput.prop('name')).toBe(undefined);
+            expect(radio.find('input').prop('name')).toBe(undefined);
 
-            radio.setProps({name}).mount();
-            expect(innerInput.prop('name')).toBe(name);
+            radio.setProps({name}).mount().update();
+            expect(radio.find('input').prop('name')).toBe(name);
         });
 
         it('should set value prop when specified', () => {
@@ -65,31 +63,28 @@ describe('Radio', () => {
         });
 
         it('should set disabled prop when specified', () => {
-            const innerInput = radio.find('input').first();
-            radio.setProps({disabled: false}).mount();
-            expect(innerInput.prop('disabled')).toBe(false);
+            radio.setProps({disabled: false}).mount().update();
+            expect(radio.find('input').prop('disabled')).toBe(false);
 
-            radio.setProps({disabled: true}).mount();
-            expect(innerInput.prop('disabled')).toBe(true);
+            radio.setProps({disabled: true}).mount().update();
+            expect(radio.find('input').prop('disabled')).toBe(true);
         });
 
         it('should set checked prop when specified', () => {
-            const innerInput = radio.find('input').first();
-            radio.setProps({checked: false}).mount();
-            expect(innerInput.prop('checked')).toBe(false);
+            radio.setProps({checked: false}).mount().update();
+            expect(radio.find('input').prop('checked')).toBe(false);
 
-            radio.setProps({checked: true}).mount();
-            expect(innerInput.prop('checked')).toBe(true);
+            radio.setProps({checked: true}).mount().update();
+            expect(radio.find('input').prop('checked')).toBe(true);
         });
 
         it('should set classes when specified', () => {
             const innerClass = 'salut';
             const classes = [innerClass];
-            const innerDiv = radio.find('div').first();
-            expect(innerDiv.hasClass(innerClass)).toBe(false);
+            expect(radio.find('div').hasClass(innerClass)).toBe(false);
 
-            radio.setProps({classes}).mount();
-            expect(innerDiv.hasClass(innerClass)).toBe(true);
+            radio.setProps({classes}).mount().update();
+            expect(radio.find('div').hasClass(innerClass)).toBe(true);
         });
 
         it('should call prop onChange when specified on click', () => {

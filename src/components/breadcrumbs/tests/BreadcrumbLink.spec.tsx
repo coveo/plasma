@@ -27,7 +27,6 @@ describe('<BreadcrumbLink/>', () => {
         };
 
         afterEach(() => {
-            breadcrumbLinkComponent.unmount();
             breadcrumbLinkComponent.detach();
         });
 

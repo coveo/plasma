@@ -34,7 +34,7 @@ export interface IDropdownSearchStateProps {
     setFocusOnDropdownButton?: boolean;
 }
 
-export interface IDropdownSearchOwnProps extends React.ClassAttributes<DropdownSearch> {
+export interface IDropdownSearchOwnProps {
     id?: string;
     modMenu?: boolean;
     fixedPrepend?: string;

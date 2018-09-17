@@ -13,7 +13,6 @@ describe('<SideNavigationLoadingItem />', () => {
     });
 
     afterEach(() => {
-        wrapper.unmount();
         wrapper.detach();
     });
 
@@ -27,10 +26,8 @@ describe('<SideNavigationLoadingItem />', () => {
 
     it('should render a <SideNavigationLoadingItem /> with classes prop', () => {
         const className = 'mod-width-30';
-        const container = wrapper.find('div').first();
-        wrapper.setProps({className});
-        wrapper.mount();
-        expect(container.hasClass(className)).toBe(true);
+        wrapper.setProps({className}).mount().update();
+        expect(wrapper.find('div').first().hasClass(className)).toBe(true);
     });
 
     it('should render without errors', () => {

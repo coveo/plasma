@@ -1,10 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ComponentContent} from '../../utils/ComponentUtils';
 
 export interface IContentProps {
-    content: ComponentContent;
+    content: React.ReactNode;
     componentProps?: {[key: string]: any};
     classes?: string[];
     tag?: string;
@@ -18,7 +17,9 @@ export class Content extends React.Component<IContentProps, {}> {
     };
 
     private getContent(): JSX.Element | string {
-        return _.isString(this.props.content) ? this.props.content : <this.props.content {...this.props.componentProps} />;
+        return _.isString(this.props.content)
+            ? this.props.content
+            : React.createElement(this.props.content as React.ComponentClass, this.props.componentProps);
     }
 
     render() {

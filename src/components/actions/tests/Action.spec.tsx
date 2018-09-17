@@ -1,7 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {Svg} from '../../svg/Svg';
 import {Action, IActionOptions, IActionProps} from '../Action';
 
 describe('Actions', () => {
@@ -30,6 +31,9 @@ describe('Actions', () => {
         const simple: boolean = false;
 
         beforeEach(() => {
+            if (actionComponent && actionComponent.length) {
+                actionComponent.unmount();
+            }
             actionComponent = mount(
                 <Action
                     action={action}
@@ -40,7 +44,6 @@ describe('Actions', () => {
         });
 
         afterEach(() => {
-            actionComponent.unmount();
             actionComponent.detach();
         });
 
@@ -67,13 +70,11 @@ describe('Actions', () => {
         });
 
         it('should have icon more if no icon is defined', () => {
-            expect(actionComponent.find('.action-icon-more').length).toBe(1);
+            expect(actionComponent.find('.action-icon-more').length).toBeGreaterThanOrEqual(1);
 
-            const newAction = _.extend({}, action);
-            newAction.icon = 'delete';
-            actionComponent.setProps({action: newAction, simple: false});
+            actionComponent.setProps({action: {...action, icon: 'delete'}, simple: false});
 
-            expect(actionComponent.find('Svg').length).toBe(1);
+            expect(actionComponent.find(Svg).length).toBe(1);
             expect(actionComponent.find('.more-icon').length).toBe(0);
         });
 

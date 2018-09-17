@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {Store} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -48,7 +48,6 @@ describe('Date picker', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -124,12 +123,14 @@ describe('Date picker', () => {
 
         it('should return isOpen if the dropdown is opened', () => {
             store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
+            wrapper.update();
 
-            expect(datePickerDropdown.props().isOpened).toBe(true);
+            expect(wrapper.find(DatePickerDropdown).props().isOpened).toBe(true);
 
             store.dispatch(closeDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
+            wrapper.update();
 
-            expect(datePickerDropdown.props().isOpened).toBe(false);
+            expect(wrapper.find(DatePickerDropdown).props().isOpened).toBe(false);
         });
 
         it('should return the first date picker with the id starting with the dropdown id for the datePicker prop', () => {
@@ -137,8 +138,9 @@ describe('Date picker', () => {
             store.dispatch(addDatePicker(firstDatePickerId, false));
             store.dispatch(addDatePicker(DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '32', false));
             store.dispatch(addDatePicker('1', false));
+            wrapper.update();
 
-            expect(datePickerDropdown.props().datePicker.id).toBe(firstDatePickerId);
+            expect(wrapper.find(DatePickerDropdown).props().datePicker.id).toBe(firstDatePickerId);
         });
 
         it('should call onRender prop when mounted', () => {
@@ -179,10 +181,12 @@ describe('Date picker', () => {
             expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(true);
         });
 
-        it('should select the date picker\'s lower limit when calling the onClick prop', () => {
+        it(`should select the date picker's lower limit when calling the onClick prop`, () => {
             const pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
 
             store.dispatch(addDatePicker(pickerId, false));
+            wrapper.update();
+            datePickerDropdown = wrapper.find(DatePickerDropdown);
 
             expect(_.findWhere(store.getState().datePickers, {id: pickerId}).selected).toBe('');
 

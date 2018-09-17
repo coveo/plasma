@@ -102,8 +102,8 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
 
     private handleOutsideClick = (e: MouseEvent) => {
         if (this.props.isFlipped) {
-            const frontside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.frontside);
-            const backside: HTMLDivElement = ReactDOM.findDOMNode<HTMLDivElement>(this.backside);
+            const frontside: Element | Text = ReactDOM.findDOMNode(this.frontside);
+            const backside: Element | Text = ReactDOM.findDOMNode(this.backside);
             const target: Node = e.target as Node;
 
             if (!backside.contains(target) && !frontside.contains(target) && (!this.props.allowUnflip || this.props.allowUnflip(target))) {

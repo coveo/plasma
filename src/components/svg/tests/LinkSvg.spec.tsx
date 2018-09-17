@@ -38,7 +38,6 @@ describe('<LinkSvg>', () => {
 
     describe('Props handling', () => {
         afterEach(() => {
-            linkSvgComponent.unmount();
             linkSvgComponent.detach();
         });
 

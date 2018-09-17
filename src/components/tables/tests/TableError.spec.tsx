@@ -41,7 +41,6 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableError.unmount();
             tableError.detach();
         });
 

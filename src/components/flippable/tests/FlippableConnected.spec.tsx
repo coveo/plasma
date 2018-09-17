@@ -1,6 +1,7 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -36,7 +37,6 @@ describe('Flippable', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -90,18 +90,21 @@ describe('Flippable', () => {
             expect(flippable.props().isFlipped).toBe(false);
 
             flippable.props().onFlip();
+            wrapper.update();
 
-            expect(flippable.props().isFlipped).toBe(true);
+            expect(wrapper.find(Flippable).props().isFlipped).toBe(true);
         });
 
         it('should unflip the flippable component when calling onUnflip prop', () => {
             store.dispatch(changeFlippableSide(FLIPPABLE_BASIC_PROPS.id, true));
+            wrapper.update();
 
-            expect(flippable.props().isFlipped).toBe(true);
+            expect(wrapper.find(Flippable).props().isFlipped).toBe(true);
 
-            flippable.props().onUnflip();
+            wrapper.find(Flippable).props().onUnflip();
+            wrapper.update();
 
-            expect(flippable.props().isFlipped).toBe(false);
+            expect(wrapper.find(Flippable).props().isFlipped).toBe(false);
         });
     });
 });

@@ -19,6 +19,9 @@ describe('Tables', () => {
         let store: Store<IReactVaporState>;
 
         const mountWithProps = (props?: Partial<ITableHeadingRowOwnProps>) => {
+            if (wrapper && wrapper.length) {
+                wrapper.unmount();
+            }
             wrapper = mount(
                 <Provider store={store}>
                     <table>
@@ -44,7 +47,6 @@ describe('Tables', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -108,7 +110,9 @@ describe('Tables', () => {
 
             mountWithProps({selectionDisabled: true});
 
-            tableHeadingRow.find('tr').simulate('click');
+            wrapper.find('tr').simulate('click');
+            wrapper.update();
+
             expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).selected).toBe(false);
         });
 

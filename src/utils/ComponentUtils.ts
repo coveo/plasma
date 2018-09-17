@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {ILinkSvgProps} from '../components/svg/LinkSvg';
 
 /**
@@ -14,8 +13,6 @@ export const DisplayClass = {
     TABLE: 'table',
     TABLE_CELL: 'table-cell',
 };
-
-export type ComponentContent = (new () => React.Component) | string | ((props?: any) => JSX.Element);
 
 export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => {
     return {

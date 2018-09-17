@@ -31,7 +31,6 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableCollapsibleRowToggle.unmount();
             tableCollapsibleRowToggle.detach();
         });
 
@@ -43,13 +42,13 @@ describe('Tables', () => {
         });
 
         it('should have a svg with state-collapsed if collapsed', () => {
-            expect(tableCollapsibleRowToggle.find('.state-collapsed').length).toBe(1);
+            expect(tableCollapsibleRowToggle.find('.state-collapsed').length).toBeGreaterThanOrEqual(1);
             expect(tableCollapsibleRowToggle.find('.state-expanded').length).toBe(0);
         });
 
         it('should have a svg with state-expanded if expanded', () => {
             tableCollapsibleRowToggle.setProps({isExpanded: true});
-            expect(tableCollapsibleRowToggle.find('.state-expanded').length).toBe(1);
+            expect(tableCollapsibleRowToggle.find('.state-expanded').length).toBeGreaterThanOrEqual(1);
             expect(tableCollapsibleRowToggle.find('.state-collapsed').length).toBe(0);
         });
     });

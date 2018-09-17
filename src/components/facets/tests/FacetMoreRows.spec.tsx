@@ -41,7 +41,6 @@ describe('Facets', () => {
         });
 
         afterEach(() => {
-            facetMoreRows.unmount();
             facetMoreRows.detach();
         });
 

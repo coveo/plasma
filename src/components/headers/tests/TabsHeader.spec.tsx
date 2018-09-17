@@ -41,7 +41,6 @@ describe('<TabsHeader/>', () => {
         });
 
         afterEach(() => {
-            tabsHeaderComponent.unmount();
             tabsHeaderComponent.detach();
         });
 
@@ -72,7 +71,6 @@ describe('<TabsHeader/>', () => {
         };
 
         afterEach(() => {
-            tabsHeaderComponent.unmount();
             tabsHeaderComponent.detach();
         });
 

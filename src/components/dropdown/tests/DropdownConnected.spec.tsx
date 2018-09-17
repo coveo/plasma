@@ -38,7 +38,6 @@ describe('Dropdown', () => {
         });
 
         afterEach(() => {
-            wrapper.unmount();
             wrapper.detach();
         });
 

@@ -17,19 +17,16 @@ describe('Banner', () => {
 
     describe('<Banner />', () => {
         const mountWithProps = (props?: Partial<BannerProps>) => {
+            if (banner && banner.length) {
+                banner.unmount();
+            }
             banner = mount(
                 <Banner {...basicProps} {...props} />,
-                {attachTo: document.getElementById('App')},
             );
         };
 
         beforeEach(() => {
             mountWithProps();
-        });
-
-        afterEach(() => {
-            banner.unmount();
-            banner.detach();
         });
 
         it('should get the props correctly', () => {
@@ -117,15 +114,15 @@ describe('Banner', () => {
         });
 
         it('should display a bannerWarningIcon if the messageState is either set to Warning or Error', () => {
-            expect(banner.find(`.${styles.bannerWarningIcon}`).length).toBe(0);
+            expect(banner.html()).not.toContain(styles.bannerWarningIcon);
 
             mountWithProps({messageTitle: 'something', messageState: BannerMessageStates.Warning});
 
-            expect(banner.find(`.${styles.bannerWarningIcon}`).length).toBe(1);
+            expect(banner.html()).toContain(styles.bannerWarningIcon);
 
             mountWithProps({messageTitle: 'something', messageState: BannerMessageStates.Error});
 
-            expect(banner.find(`.${styles.bannerWarningIcon}`).length).toBe(1);
+            expect(banner.html()).toContain(styles.bannerWarningIcon);
         });
     });
 });

@@ -1,8 +1,9 @@
-import {mount} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
+import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import {findWhere} from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -12,6 +13,7 @@ import {inputPossibleProps, inputProps} from './InputTestCommons.spec';
 
 describe('<InputConnected />', () => {
     let store: Store<IReactVaporState>;
+    let wrapper: ReactWrapper<any, any>;
 
     beforeEach(() => {
         store = TestUtils.buildStore();
@@ -19,14 +21,20 @@ describe('<InputConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
+        wrapper.detach();
     });
 
-    const mountComponentWithProps = (props: IInputProps = {}) => mount(
-        <Provider store={store}>
-            <InputConnected {...props} />
-        </Provider>,
-        {attachTo: document.getElementById('App')},
-    );
+    const mountComponentWithProps = (props: IInputProps = {}) => {
+        if (wrapper && wrapper.length) {
+            wrapper.unmount();
+        }
+        wrapper = mount(
+            <Provider store={store}>
+                <InputConnected {...props} />
+            </Provider>,
+            {attachTo: document.getElementById('App')},
+        );
+    };
 
     it('should mount without errors in various props scenarios', () => {
         expect(() => {
@@ -42,29 +50,33 @@ describe('<InputConnected />', () => {
 
     describe('dispatch props', () => {
         it('should not throw when calling onRender with basic props', () => {
-            expect(() => mountComponentWithProps(inputProps).find(Input).prop('onRender')()).not.toThrow();
+            mountComponentWithProps(inputProps);
+            expect(() => wrapper.find(Input).prop('onRender')()).not.toThrow();
         });
 
         it('should not throw when calling onRender with validateOnMount set as a prop', () => {
-            expect(() => mountComponentWithProps({...inputProps, validateOnMount: true}).find(Input).prop('onRender')()).not.toThrow();
+            mountComponentWithProps({...inputProps, validateOnMount: true});
+            expect(() => wrapper.find(Input).prop('onRender')()).not.toThrow();
         });
 
         it('should not throw when calling onDestroy', () => {
-            expect(() => mountComponentWithProps(inputProps).find(Input).prop('onDestroy')()).not.toThrow();
+            mountComponentWithProps(inputProps);
+            expect(() => wrapper.find(Input).prop('onDestroy')()).not.toThrow();
         });
 
         it('should not throw when calling onChange with basic props', () => {
-            expect(() => mountComponentWithProps(inputProps).find(Input).prop('onChange')()).not.toThrow();
+            mountComponentWithProps(inputProps);
+            expect(() => wrapper.find(Input).prop('onChange')()).not.toThrow();
         });
 
         it('should not throw when calling onChange when validateOnChange is set as a prop but not validate', () => {
-            const props = {...inputProps, validateOnChange: true};
-            expect(() => mountComponentWithProps(props).find(Input).prop('onChange')()).not.toThrow();
+            mountComponentWithProps({...inputProps, validateOnChange: true});
+            expect(() => wrapper.find(Input).prop('onChange')()).not.toThrow();
         });
 
         it('should not throw when calling onChange when validateOnChange and validate are set as props', () => {
-            const props = {...inputProps, validateOnChange: true, validate: (value: string) => !!value};
-            expect(() => mountComponentWithProps(props).find(Input).prop('onChange')()).not.toThrow();
+            mountComponentWithProps({...inputProps, validateOnChange: true, validate: (value: string) => !!value});
+            expect(() => wrapper.find(Input).prop('onChange')()).not.toThrow();
         });
     });
 
@@ -117,11 +129,11 @@ describe('<InputConnected />', () => {
 
     describe('onUnmount', () => {
         it('should remove the input from the store', () => {
-            const input = mountComponentWithProps(inputProps);
+            mountComponentWithProps(inputProps);
 
             expect(findWhere(store.getState().inputs, {id: inputProps.id})).toBeDefined();
 
-            input.unmount();
+            wrapper.unmount();
 
             expect(findWhere(store.getState().inputs, {id: inputProps.id})).toBeUndefined();
         });
@@ -129,12 +141,12 @@ describe('<InputConnected />', () => {
 
     describe('onChange', () => {
         it('should change the value in the store to the new value and leave the valid value unchanged', () => {
-            const input = mountComponentWithProps(inputProps);
+            mountComponentWithProps(inputProps);
             const oldInputState = findWhere(store.getState().inputs, {id: inputProps.id});
             expect(oldInputState.value).toBe('');
 
             (document.querySelector(`#${inputProps.id}`) as HTMLInputElement).value = 'new value';
-            input.find('input').simulate('change');
+            wrapper.find('input').simulate('change');
 
             const newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
             expect(newInputState.value).toBe('new value');
@@ -144,17 +156,17 @@ describe('<InputConnected />', () => {
         it('should send the proper valid value to the input state if validateOnChange and validate are set as props', () => {
             const validateOnChange = true;
             const validate = (value: string) => !!value;
-            const input = mountComponentWithProps({...inputProps, validate, validateOnChange});
+            mountComponentWithProps({...inputProps, validate, validateOnChange});
 
             (document.querySelector(`#${inputProps.id}`) as HTMLInputElement).value = 'new value';
-            input.find('input').simulate('change');
+            wrapper.find('input').simulate('change');
 
             let newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
             expect(validate(newInputState.value)).toBe(true);
             expect(newInputState.valid).toBe(validate(newInputState.value));
 
             (document.querySelector(`#${inputProps.id}`) as HTMLInputElement).value = '';
-            input.find('input').simulate('change');
+            wrapper.find('input').simulate('change');
 
             newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
             expect(validate(newInputState.value)).toBe(false);

@@ -1,9 +1,10 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as moment from 'moment';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {DateUtils} from '../../../utils/DateUtils';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -34,6 +35,9 @@ describe('Calendar', () => {
         let store: Store<IReactVaporState>;
 
         const mountComponent = (props = {}) => {
+            if (wrapper && wrapper.length) {
+                wrapper.unmount();
+            }
             wrapper = mount(
                 <Provider store={store}>
                     <CalendarConnected id={CALENDAR_ID} {...props} />
@@ -51,7 +55,6 @@ describe('Calendar', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -70,43 +73,41 @@ describe('Calendar', () => {
         });
 
         it('should get the selected month as a prop', () => {
-            let selectedMonthProp: number = calendar.props().selectedMonth;
+            const selectedMonthProp: number = calendar.props().selectedMonth;
             const expectedSelectedMonth: number = 3;
 
             expect(selectedMonthProp).toBeDefined();
             expect(selectedMonthProp).toBe(DateUtils.currentMonth);
 
             store.dispatch(changeOptionsCycle(CALENDAR_ID + MONTH_PICKER_ID, expectedSelectedMonth));
-            selectedMonthProp = calendar.props().selectedMonth;
+            wrapper.update();
 
-            expect(selectedMonthProp).toBe(expectedSelectedMonth);
+            expect(wrapper.find(Calendar).props().selectedMonth).toBe(expectedSelectedMonth);
         });
 
         it('should get the selected year as a prop', () => {
-            let selectedYearProp: number = calendar.props().selectedYear;
+            const selectedYearProp: number = calendar.props().selectedYear;
             const expectedSelectedYear: number = 3;
 
             expect(selectedYearProp).toBeDefined();
             expect(selectedYearProp).toBe(10);
 
             store.dispatch(changeOptionsCycle(CALENDAR_ID + YEAR_PICKER_ID, expectedSelectedYear));
-            selectedYearProp = calendar.props().selectedYear;
+            wrapper.update();
 
-            expect(selectedYearProp).toBe(expectedSelectedYear);
+            expect(wrapper.find(Calendar).props().selectedYear).toBe(expectedSelectedYear);
         });
 
         it('should get the calendar selections as a prop', () => {
-            let calendarSelectionProp = calendar.props().calendarSelection;
+            const calendarSelectionProp = calendar.props().calendarSelection;
 
             expect(calendarSelectionProp).toBeDefined();
             expect(calendarSelectionProp).toEqual([]);
 
             store.dispatch(addDatePicker('any', false, undefined, 'any', CALENDAR_ID));
+            wrapper.update();
 
-            calendarSelectionProp = calendar.props().calendarSelection;
-
-            expect(calendarSelectionProp).toBeDefined();
-            expect(calendarSelectionProp.length).toBe(1);
+            expect(wrapper.find(Calendar).props().calendarSelection.length).toBe(1);
         });
 
         it('should get what to do on click as a prop', () => {

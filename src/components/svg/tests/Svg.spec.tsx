@@ -46,7 +46,6 @@ describe('Svg', () => {
         };
 
         afterEach(() => {
-            svg.unmount();
             svg.detach();
         });
 

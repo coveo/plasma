@@ -31,7 +31,6 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            setToNowButton.unmount();
             setToNowButton.detach();
         });
 

@@ -48,7 +48,6 @@ describe('Facets', () => {
         });
 
         afterEach(() => {
-            facetComponent.unmount();
             facetComponent.detach();
         });
 

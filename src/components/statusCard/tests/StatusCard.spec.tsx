@@ -73,7 +73,7 @@ describe('StatusCard', () => {
 
             const svg = statusCard.find(Svg);
             expect(svg.length).toBe(1);
-            expect(svg.find(`.${styles.statusCardIcon}`).length).toBe(1);
+            expect(svg.find(`.${styles.statusCardIcon}`).length).toBeGreaterThanOrEqual(1);
         });
 
         it('should render a <h3/> with the class styles.statusCardTitle', () => {

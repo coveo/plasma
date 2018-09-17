@@ -45,7 +45,6 @@ describe('ModalPrompt', () => {
         });
 
         afterEach(() => {
-            modalPrompt.unmount();
             modalPrompt.detach();
         });
 
@@ -80,17 +79,15 @@ describe('ModalPrompt', () => {
         });
 
         afterEach(() => {
-            modalPrompt.unmount();
             modalPrompt.detach();
         });
 
         it('should set opened class on container when isOpened is true', () => {
-            const container = modalPrompt.find('.modal-container');
-            expect(container.hasClass('opened')).toBe(false);
+            expect(modalPrompt.find('.modal-container').hasClass('opened')).toBe(false);
 
-            modalPrompt.setProps({id, title, isOpened: true});
+            modalPrompt.setProps({id, title, isOpened: true}).update();
 
-            expect(container.hasClass('opened')).toBe(true);
+            expect(modalPrompt.find('.modal-container').hasClass('opened')).toBe(true);
         });
 
         describe('with a confirm spy', () => {

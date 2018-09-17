@@ -34,7 +34,6 @@ describe('ModalBackdrop', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -47,10 +46,9 @@ describe('ModalBackdrop', () => {
 
         it('should get display true as a prop when modal is opened', () => {
             store.dispatch(openModal(modal1Id));
+            wrapper.update();
 
-            const displayProp = modalBackdrop.props().display;
-
-            expect(displayProp).toBe(true);
+            expect(wrapper.find(ModalBackdrop).props().display).toBe(true);
         });
     });
 
@@ -80,7 +78,6 @@ describe('ModalBackdrop', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -93,21 +90,21 @@ describe('ModalBackdrop', () => {
 
         it('should get display true as a prop when modal hidden for is opened', () => {
             store.dispatch(openModal(modal1Id));
+            wrapper.update();
 
             expect(store.getState().modals.filter((modal) => modal.id === modal1Id)[0].isOpened).toBe(true);
-            const displayProp = modalBackdrop.props().display;
 
-            expect(displayProp).toBe(true);
+            expect(wrapper.find(ModalBackdrop).props().display).toBe(true);
         });
 
         it('should get display false as a prop when modal not hidden for is opened', () => {
             store.dispatch(openModal(modal2Id));
+            wrapper.update();
 
             expect(store.getState().modals.filter((modal) => modal.id === modal1Id)[0].isOpened).toBe(false);
             expect(store.getState().modals.filter((modal) => modal.id === modal2Id)[0].isOpened).toBe(true);
-            const displayProp = modalBackdrop.props().display;
 
-            expect(displayProp).toBe(false);
+            expect(wrapper.find(ModalBackdrop).props().display).toBe(false);
         });
 
         it('should call onClick when clicked', () => {

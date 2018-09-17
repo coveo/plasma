@@ -45,7 +45,7 @@ describe('ColorBar', () => {
                 const {backgroundColor, width} = color.first().prop('style');
 
                 if (backgroundColor !== 'transparent') {
-                    expect(nonZeroNonTransparentColors[backgroundColor]).toBe(parseInt(width, 10));
+                    expect(nonZeroNonTransparentColors[backgroundColor]).toBe(parseInt(width.toString(), 10));
                 } else {
                     expect(backgroundColor).toBe('transparent');
                 }
@@ -64,7 +64,7 @@ describe('ColorBar', () => {
 
         shallow(<ColorBar {...doubledWidthProps} />).find('.color-bar-color').forEach((color) => {
             const {backgroundColor, width} = color.prop('style');
-            expect(doubledWidthProps.widthPerColor[backgroundColor] / 2).toBe(parseInt(width, 10));
+            expect(doubledWidthProps.widthPerColor[backgroundColor] / 2).toBe(parseInt(width.toString(), 10));
         });
     });
 

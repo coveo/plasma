@@ -29,14 +29,13 @@ describe('Facets', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
-            facetMoreToggle = wrapper.find(FacetMoreToggle);
-
             store.dispatch(addFacet(facet));
+            wrapper.update();
+            facetMoreToggle = wrapper.find(FacetMoreToggle);
         });
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -57,16 +56,18 @@ describe('Facets', () => {
             expect(facetMoreToggle.props().isOpened).toBe(false);
 
             facetMoreToggle.find('input').simulate('change');
+            wrapper.update();
 
-            expect(facetMoreToggle.props().isOpened).toBe(true);
+            expect(wrapper.find(FacetMoreToggle).props().isOpened).toBe(true);
         });
 
         it('should be hidden when the other rows are opened', () => {
             expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(false);
 
             store.dispatch(toggleMoreFacetRows(facet));
+            wrapper.update();
 
-            expect(facetMoreToggle.find('li').hasClass('hidden')).toBe(true);
+            expect(wrapper.find(FacetMoreToggle).find('li').hasClass('hidden')).toBe(true);
         });
     });
 });

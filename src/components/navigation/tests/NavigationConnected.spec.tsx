@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -11,7 +11,9 @@ import {LoadingConnected} from '../../loading/LoadingConnected';
 import {INavigationProps, Navigation} from '../Navigation';
 import {NavigationConnected} from '../NavigationConnected';
 import {NavigationPaginationConnected} from '../pagination/NavigationPaginationConnected';
+import {NavigationPaginationSelect} from '../pagination/NavigationPaginationSelect';
 import {NavigationPerPageConnected} from '../perPage/NavigationPerPageConnected';
+import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect';
 
 describe('<NavigationConnected />', () => {
     const basicNavigationProps: INavigationProps = {
@@ -41,7 +43,6 @@ describe('<NavigationConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.unmount();
         wrapper.detach();
     });
 
@@ -73,18 +74,19 @@ describe('<NavigationConnected />', () => {
         });
 
     it('should adjust page selected to appropriate one if a perPageSelect is clicked', () => {
-        navigation.find('NavigationPaginationSelect').last().simulate('click');
+        wrapper.find(NavigationPaginationSelect).last().simulate('click');
 
         expect(_.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb)
             .toBe(6);
 
-        navigation.find('NavigationPerPageSelect').last().simulate('click');
+        navigation.find(NavigationPerPageSelect).last().simulate('click');
+        wrapper.update();
 
         expect(_.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb)
             .toBe(0);
 
-        navigation.find('NavigationPaginationSelect').at(1).simulate('click');
-        navigation.find('NavigationPerPageSelect').first().simulate('click');
+        wrapper.find(NavigationPaginationSelect).at(1).simulate('click');
+        wrapper.find(NavigationPerPageSelect).first().simulate('click');
 
         expect(_.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb)
             .toBe(10);

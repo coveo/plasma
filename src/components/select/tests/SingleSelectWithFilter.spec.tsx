@@ -1,6 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider, Store} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -38,7 +40,6 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -84,6 +85,8 @@ describe('Select', () => {
             mountSingleSelect(items);
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
+            wrapper.update();
+            singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
             singleSelect.find(SelectConnected).props().items
@@ -101,6 +104,8 @@ describe('Select', () => {
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
             store.dispatch(filterThrough(id, ''));
+            wrapper.update();
+            singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
             expect(singleSelect.find(SelectConnected).props().items[0].hidden).toBe(true);
@@ -118,6 +123,8 @@ describe('Select', () => {
             mountSingleSelect(items, () => false);
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
+            wrapper.update();
+            singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
             singleSelect.find(SelectConnected).props().items
@@ -148,7 +155,7 @@ describe('Select', () => {
             it('should select the active element if the user press enter', () => {
                 store.dispatch(toggleSelect(id, true));
 
-                singleSelect.find('.dropdown-toggle')
+                wrapper.find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.enter})
                     .simulate('keyup', {keyCode: keyCode.enter});
 
@@ -157,16 +164,17 @@ describe('Select', () => {
 
             it('should dispatch a setActiveListBoxOption when the user press the up or down arrow', () => {
                 store.dispatch(toggleSelect(id, true));
+                wrapper.update();
 
                 expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 1));
-                singleSelect.find(FilterBoxConnected).find('input')
+                wrapper.find(FilterBoxConnected).find('input')
                     .simulate('keydown', {keyCode: keyCode.downArrow})
                     .simulate('keyup', {keyCode: keyCode.downArrow});
 
                 expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 1));
 
                 expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, -1));
-                singleSelect.find(FilterBoxConnected).find('input')
+                wrapper.find(FilterBoxConnected).find('input')
                     .simulate('keydown', {keyCode: keyCode.upArrow})
                     .simulate('keyup', {keyCode: keyCode.upArrow});
 

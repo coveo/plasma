@@ -47,7 +47,6 @@ describe('DropdownSearch', () => {
         };
 
         afterEach(() => {
-            dropdownSearch.unmount();
             dropdownSearch.detach();
         });
 

@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {Store} from 'react-redux';
+import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
@@ -22,12 +22,16 @@ describe('Date picker', () => {
         let store: Store<IReactVaporState>;
 
         const mountComponent = (props = {}) => {
+            if (wrapper && wrapper.length) {
+                wrapper.unmount();
+            }
             wrapper = mount(
                 <Provider store={store}>
                     <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
+            wrapper.update();
             datesSelection = wrapper.find(DatesSelection).first();
         };
 
@@ -41,7 +45,6 @@ describe('Date picker', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.unmount();
             wrapper.detach();
             jasmine.clock().uninstall();
         });
@@ -104,47 +107,53 @@ describe('Date picker', () => {
 
         it('should return the current date for the lower limit when the date picker does not exist in the state', () => {
             store.dispatch(clearState());
+            wrapper.update();
 
             expect(_.findWhere(store.getState().datePickers, {id: DATES_SELECTION_ID})).toBeUndefined();
-            expect(datesSelection.props().lowerLimit).toEqual(NOW);
+            expect(wrapper.find(DatesSelection).props().lowerLimit).toEqual(NOW);
         });
 
         it('should return the current date for the upper limit when the date picker does not exist in the state', () => {
             store.dispatch(clearState());
+            wrapper.update();
 
             expect(_.findWhere(store.getState().datePickers, {id: DATES_SELECTION_ID})).toBeUndefined();
-            expect(datesSelection.props().upperLimit).toEqual(NOW);
+            expect(wrapper.find(DatesSelection).props().upperLimit).toEqual(NOW);
         });
 
         it('should return an empty string for the picker selected when the date picker does not exist in the state', () => {
             store.dispatch(clearState());
+            wrapper.update();
 
             expect(_.findWhere(store.getState().datePickers, {id: DATES_SELECTION_ID})).toBeUndefined();
-            expect(datesSelection.props().isSelecting).toBe('');
+            expect(wrapper.find(DatesSelection).props().isSelecting).toBe('');
         });
 
         it('should return the lower limit from the state when the date picker exists in the state', () => {
             const expectedValue: Date = new Date(new Date().setHours(11, 1, 11, 1));
 
             store.dispatch(changeDatePickerLowerLimit(DATES_SELECTION_ID, expectedValue));
+            wrapper.update();
 
-            expect(datesSelection.props().lowerLimit).toBe(expectedValue);
+            expect(wrapper.find(DatesSelection).props().lowerLimit).toBe(expectedValue);
         });
 
         it('should return the upper limit from the state when the date picker exists in the state', () => {
             const expectedValue: Date = new Date(new Date().setHours(11, 1, 11, 1));
 
             store.dispatch(changeDatePickerUpperLimit(DATES_SELECTION_ID, expectedValue));
+            wrapper.update();
 
-            expect(datesSelection.props().upperLimit).toBe(expectedValue);
+            expect(wrapper.find(DatesSelection).props().upperLimit).toBe(expectedValue);
         });
 
         it('should return the picker selected when the date picker exists in the state', () => {
             const expectedValue: string = 'one limit';
 
             store.dispatch(selectDate(DATES_SELECTION_ID, expectedValue));
+            wrapper.update();
 
-            expect(datesSelection.props().isSelecting).toBe(expectedValue);
+            expect(wrapper.find(DatesSelection).props().isSelecting).toBe(expectedValue);
         });
 
         it('should return the selected value if the option picker exists in the state', () => {
@@ -152,8 +161,9 @@ describe('Date picker', () => {
 
             store.dispatch(addOptionPicker(DATES_SELECTION_ID));
             store.dispatch(changeOptionPicker(DATES_SELECTION_ID, 'this label', expectedValue));
+            wrapper.update();
 
-            expect(datesSelection.props().quickOption).toBe(expectedValue);
+            expect(wrapper.find(DatesSelection).props().quickOption).toBe(expectedValue);
         });
 
         it('should call onRender prop when mounted', () => {

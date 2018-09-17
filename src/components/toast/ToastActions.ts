@@ -1,5 +1,4 @@
 import * as _ from 'underscore';
-import {ComponentContent} from '../../utils/ComponentUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 
 export interface IToastContainerActionPayload {
@@ -23,7 +22,7 @@ export interface IToastAddOptionalPayload {
     dismissible?: boolean;
     type?: string;
     animate?: boolean;
-    content?: ComponentContent;
+    content?: React.ReactNode;
 }
 
 export interface IToastAddPayload extends IToastActionPayload, IToastAddOptionalPayload {

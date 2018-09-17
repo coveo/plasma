@@ -36,7 +36,6 @@ describe('Dropdown', () => {
         });
 
         afterEach(() => {
-            dropdown.unmount();
             dropdown.detach();
         });
 
@@ -68,8 +67,8 @@ describe('Dropdown', () => {
 
             expect(dropdown.find('.some-class').length).toBe(0);
 
-            dropdown.setProps(newDropdownProps);
-            expect(dropdown.find('.some-class').length).toBe(1);
+            dropdown.setProps(newDropdownProps).update();
+            expect(dropdown.find('.some-class').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should call onClick prop if set when clicking the toggle', () => {

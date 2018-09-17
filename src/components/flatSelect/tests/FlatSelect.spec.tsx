@@ -43,7 +43,6 @@ describe('FlatSelect', () => {
         };
 
         afterEach(() => {
-            flatSelect.unmount();
             flatSelect.detach();
         });
 
@@ -107,7 +106,7 @@ describe('FlatSelect', () => {
                 const onClick = jasmine.createSpy('onClick');
                 flatSelect.setProps({onClick});
 
-                flatSelect.find(FlatSelectOption).getNodes()[0].props.onClick({});
+                flatSelect.find(FlatSelectOption).first().props().onClick({} as any);
 
                 expect(onClick).toHaveBeenCalled();
             });
@@ -116,7 +115,7 @@ describe('FlatSelect', () => {
                 const onOptionClick = jasmine.createSpy('onOptionClick');
                 flatSelect.setProps({onOptionClick});
 
-                flatSelect.find(FlatSelectOption).getNodes()[0].props.onClick({});
+                flatSelect.find(FlatSelectOption).first().props().onClick({} as any);
 
                 expect(onOptionClick).toHaveBeenCalled();
             });

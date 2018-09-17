@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {INavigationPaginationSelectProps, NavigationPaginationSelect} from '../NavigationPaginationSelect';
 
 describe('NavigationPaginationSelect', () => {
@@ -32,7 +32,6 @@ describe('NavigationPaginationSelect', () => {
         });
 
         afterEach(() => {
-            navigationPaginationSelect.unmount();
             navigationPaginationSelect.detach();
         });
 

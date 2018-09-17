@@ -32,7 +32,6 @@ describe('NavigationPerPageSelect', () => {
         });
 
         afterEach(() => {
-            navigationPerPageSelect.unmount();
             navigationPerPageSelect.detach();
         });
 
@@ -58,27 +57,24 @@ describe('NavigationPerPageSelect', () => {
 
         it('should have "selectable" class if it is not selected', () => {
             const newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, {selected: true});
-            const option = navigationPerPageSelect.find('.flat-select-option');
 
-            expect(option.hasClass('selectable')).toBe(true);
+            expect(navigationPerPageSelect.find('.flat-select-option').hasClass('selectable')).toBe(true);
 
-            navigationPerPageSelect.setProps(newNavigationPerPageSelectProps);
+            navigationPerPageSelect.setProps(newNavigationPerPageSelectProps).update();
 
-            expect(option.hasClass('selectable')).toBe(false);
+            expect(navigationPerPageSelect.find('.flat-select-option').hasClass('selectable')).toBe(false);
         });
 
         it('should have "selected-value" "state-selected" classes when selected', () => {
             const newNavigationPerPageSelectProps = _.extend({}, basicNavigationPerPageSelectProps, {selected: true});
-            const option = navigationPerPageSelect.find('.flat-select-option');
-            const optionSpan = option.find('.enabled');
 
-            expect(optionSpan.hasClass('selected-value')).toBe(false);
-            expect(optionSpan.hasClass('state-selected')).toBe(false);
+            expect(navigationPerPageSelect.find('.flat-select-option .enabled').hasClass('selected-value')).toBe(false);
+            expect(navigationPerPageSelect.find('.flat-select-option .enabled').hasClass('state-selected')).toBe(false);
 
-            navigationPerPageSelect.setProps(newNavigationPerPageSelectProps);
+            navigationPerPageSelect.setProps(newNavigationPerPageSelectProps).update();
 
-            expect(optionSpan.hasClass('selected-value')).toBe(true);
-            expect(optionSpan.hasClass('state-selected')).toBe(true);
+            expect(navigationPerPageSelect.find('.flat-select-option .enabled').hasClass('selected-value')).toBe(true);
+            expect(navigationPerPageSelect.find('.flat-select-option .enabled').hasClass('state-selected')).toBe(true);
         });
 
         it('should call onPerPageClick when clicking link', () => {

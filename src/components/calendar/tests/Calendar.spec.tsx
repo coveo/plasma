@@ -1,12 +1,12 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as moment from 'moment';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {DateUtils} from '../../../utils/DateUtils';
 import {DateLimits} from '../../datePicker/DatePickerActions';
 import {IDatePickerState} from '../../datePicker/DatePickerReducers';
-import {IOptionsCycleProps, OptionsCycle} from '../../optionsCycle/OptionsCycle';
+import {OptionsCycle} from '../../optionsCycle/OptionsCycle';
 import {
     Calendar,
     CalendarSelectionRuleType,
@@ -43,7 +43,6 @@ describe('Calendar', () => {
         });
 
         afterEach(() => {
-            calendar.unmount();
             calendar.detach();
         });
 
@@ -92,13 +91,12 @@ describe('Calendar', () => {
                 'novembre',
                 'décembre',
             ];
-            const monthPicker: ReactWrapper<IOptionsCycleProps, any> = calendar.find(OptionsCycle).first();
 
-            expect(monthPicker.props().options).toEqual(DEFAULT_MONTHS);
+            expect(calendar.find(OptionsCycle).first().props().options).toEqual(DEFAULT_MONTHS);
 
-            calendar.setProps({months});
+            calendar.setProps({months}).update();
 
-            expect(monthPicker.props().options).toEqual(months);
+            expect(calendar.find(OptionsCycle).first().props().options).toEqual(months);
         });
 
         it('should send the years sent as props or the default ones to the year picker <OptionsCycle />', () => {
@@ -107,13 +105,12 @@ describe('Calendar', () => {
                 '2016',
                 '2017',
             ];
-            const yearPicker: ReactWrapper<IOptionsCycleProps, any> = calendar.find(OptionsCycle).last();
 
-            expect(yearPicker.props().options).toEqual(DEFAULT_YEARS);
+            expect(calendar.find(OptionsCycle).last().props().options).toEqual(DEFAULT_YEARS);
 
-            calendar.setProps({years});
+            calendar.setProps({years}).update();
 
-            expect(yearPicker.props().options).toEqual(years);
+            expect(calendar.find(OptionsCycle).last().props().options).toEqual(years);
         });
 
         it('should use the startingMonth prop to set the month picker at the desired month or use the current one', () => {

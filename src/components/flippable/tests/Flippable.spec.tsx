@@ -22,7 +22,6 @@ describe('Flippable', () => {
         });
 
         afterEach(() => {
-            flippable.unmount();
             flippable.detach();
         });
 
@@ -50,7 +49,7 @@ describe('Flippable', () => {
         });
 
         it('should have the default flippable class', () => {
-            expect(flippable.hasClass(Flippable.CONTAINER_CLASSNAME)).toBe(true);
+            expect(flippable.find(`.${Flippable.CONTAINER_CLASSNAME}`).length).toBe(1);
         });
 
         it('should render a flipper div', () => {
@@ -58,7 +57,7 @@ describe('Flippable', () => {
         });
 
         it('should show the front face by default', () => {
-            expect(flippable.find(`.${Flippable.FLIPPER_CLASSNAME}`).hasClass(Flippable.triggers.FRONT)).toBe(true);
+            expect(flippable.find(`.${Flippable.triggers.FRONT}`).length).toBe(1);
         });
 
         it('should render additional classes if any on the flippable container', () => {
@@ -66,7 +65,7 @@ describe('Flippable', () => {
                 className: 'some-class',
             });
 
-            expect(flippable.hasClass('some-class')).toBe(true);
+            expect(flippable.find('.some-class').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should render the front side content on the front', () => {
@@ -96,7 +95,7 @@ describe('Flippable', () => {
                 isFlipped: true,
             });
 
-            expect(flippable.hasClass('show-on-top')).toBe(true);
+            expect(flippable.find('.show-on-top').length).toBe(1);
         });
 
         it('should call onFlip prop if any when clicking on the front side and flippable is not flipped', () => {

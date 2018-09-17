@@ -35,7 +35,6 @@ describe('Tooltip', () => {
         });
 
         afterEach(() => {
-            tooltipWrapper.unmount();
             tooltipWrapper.detach();
         });
 

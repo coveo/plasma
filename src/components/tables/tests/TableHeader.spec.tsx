@@ -54,7 +54,6 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableHeader.unmount();
             tableHeader.detach();
         });
 

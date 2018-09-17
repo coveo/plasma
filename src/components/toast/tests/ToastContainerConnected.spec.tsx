@@ -26,11 +26,10 @@ describe('Toasts', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );
-            component = wrapper.find(ToastContainer);
+            component = wrapper.find(ToastContainer).first();
         });
 
         afterEach(() => {
-            wrapper.unmount();
             wrapper.detach();
         });
 
@@ -56,18 +55,20 @@ describe('Toasts', () => {
 
         it('should contain Toasts when a addToast is dispatched', () => {
             expect(component.props().toasts.length).toBe(0);
-            expect(component.find(Toast).length).toBe(0);
+            expect(wrapper.find(Toast).length).toBe(0);
 
             store.dispatch(addToast(containerId, 'toast title', {type: ToastType.Error}));
+            wrapper.update();
 
-            expect(component.props().toasts.length).toBe(1);
-            expect(component.find(Toast).length).toBe(1);
+            expect(wrapper.find(ToastContainer).props().toasts.length).toBe(1);
+            expect(wrapper.find(Toast).length).toBe(1);
         });
 
         it('should call onCloseToast when the user close a Toast', () => {
             store.dispatch(addToast(containerId, 'toast title'));
+            wrapper.update();
 
-            const toast = component.find(Toast).first();
+            const toast = wrapper.find(Toast).first();
             toast.props().onClose();
 
             expect(component.props().toasts.length).toBe(0);
