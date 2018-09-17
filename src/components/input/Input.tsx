@@ -2,6 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {contains, isUndefined} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {TooltipPlacement} from '../../utils/TooltipUtils';
+import {Tooltip} from '../tooltip/Tooltip';
 import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
@@ -25,6 +27,7 @@ export interface IInputOwnProps {
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
     autoFocus?: boolean;
+    disabledTooltip?: string;
 }
 
 export interface IInputStateProps {
@@ -138,7 +141,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
     private getLabel(): JSX.Element {
         const {labelProps, labelTitle} = this.props;
         return labelTitle
-            ? <Label htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
+            ? <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
             : null;
     }
 
@@ -154,29 +157,38 @@ export class Input extends React.Component<IInputProps, IInputState> {
             invalid: !this.state.valid && contains(validatedInputTypes, this.props.type),
         }, this.props.innerInputClasses);
 
-        return (
-            <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
-                <input
-                    id={this.props.id}
-                    className={innerInputClasses}
-                    type={this.props.type}
-                    defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
-                    ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
-                    onBlur={() => this.handleBlur()}
-                    onChange={() => this.handleChange()}
-                    onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
-                    placeholder={this.props.placeholder}
-                    checked={!!this.props.checked}
-                    disabled={!!this.props.disabled}
-                    name={this.props.name}
-                    required
-                    readOnly={!!this.props.readOnly}
-                    autoFocus={!!this.props.autoFocus}
-                    step={this.props.type === 'number' ? 'any' : null}
-                />
-                {this.getLabel()}
-                {this.props.children}
-            </div>
-        );
+        const inputElements = [
+            <input
+                key={this.props.id}
+                id={this.props.id}
+                className={innerInputClasses}
+                type={this.props.type}
+                defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
+                ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
+                onBlur={() => this.handleBlur()}
+                onChange={() => this.handleChange()}
+                onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
+                placeholder={this.props.placeholder}
+                checked={!!this.props.checked}
+                disabled={!!this.props.disabled}
+                name={this.props.name}
+                required
+                readOnly={!!this.props.readOnly}
+                autoFocus={!!this.props.autoFocus}
+                step={this.props.type === 'number' ? 'any' : null}
+            />,
+            this.getLabel(),
+            this.props.children,
+        ];
+
+        return this.props.disabled && this.props.disabledTooltip
+            ? (
+                <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
+                    <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
+                        {inputElements}
+                    </Tooltip>
+                </div>
+            )
+            : <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>{inputElements}</div>;
     }
 }

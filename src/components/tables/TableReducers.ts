@@ -59,6 +59,7 @@ export interface ITableCompositeState {
     from: Date;
     to: Date;
     actions?: IActionOptions[];
+    dataDeleted?: boolean;
 }
 
 export interface ITableState {
@@ -74,6 +75,7 @@ export interface ITableState {
     predicateIds: string[];
     tableHeaderCellId: string;
     yPosition: number;
+    dataDeleted?: boolean;
 }
 
 export const tableInitialState: ITableState = {
@@ -89,6 +91,7 @@ export const tableInitialState: ITableState = {
     datePickerId: undefined,
     datePickerRangeId: undefined,
     yPosition: undefined,
+    dataDeleted: false,
 };
 
 export const tablesInitialState: {[tableId: string]: ITableState;} = {};
@@ -97,6 +100,7 @@ export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]):
     const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => !_.contains(state.data.displayedIds, selectedId));
     return {
         ...state,
+        dataDeleted: false,
         data: {
             ...state.data,
             selectedIds: newSelectedIds,
@@ -121,6 +125,7 @@ export const tableReducer = (
                     `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`),
                 datePickerId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER),
                 datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
+                dataDeleted: false,
             };
         case TableActions.modifyState:
             const selectedIds: string[] = state.data && state.data.selectedIds ? state.data.selectedIds : [];
@@ -128,26 +133,31 @@ export const tableReducer = (
         case TableActions.inError:
             return {
                 ...state,
+                dataDeleted: false,
                 isInError: action.payload.isInError,
             };
         case LoadingActions.turnOn:
             return {
                 ...state,
+                dataDeleted: false,
                 isLoading: true,
             };
         case LoadingActions.turnOff:
             return {
                 ...state,
+                dataDeleted: false,
                 isLoading: false,
             };
         case TableHeaderCellActions.sort:
             return {
                 ...state,
+                dataDeleted: false,
                 tableHeaderCellId: action.payload.id,
             };
         case TableActions.updateSelectedIds:
             return {
                 ...state,
+                dataDeleted: false,
                 data: {
                     ...state.data,
                     selectedIds: action.payload.hasMultipleSelectedRow
@@ -158,6 +168,7 @@ export const tableReducer = (
         case TableActions.deleteTableDataEntry:
             return {
                 ...state,
+                dataDeleted: !!state.data.byId[action.payload.dataId],
                 data: {
                     ...state.data,
                     byId: {
@@ -171,6 +182,7 @@ export const tableReducer = (
         case TableActions.addTableDataEntry:
             return {
                 ...state,
+                dataDeleted: false,
                 data: {
                     ...state.data,
                     byId: {
@@ -185,6 +197,7 @@ export const tableReducer = (
             return state.data.byId[action.payload.data.id]
                 ? ({
                     ...state,
+                    dataDeleted: false,
                     data: {
                         ...state.data,
                         byId: {

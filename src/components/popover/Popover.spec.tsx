@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IPopoverProps, Popover} from './Popover';
 
 describe('<Popover>', () => {

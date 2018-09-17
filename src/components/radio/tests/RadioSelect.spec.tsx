@@ -97,5 +97,15 @@ describe('RadioSelect', () => {
 
             expect(clickSpy.calls.count()).toBe(2);
         });
+
+        it('should chain prop onChangeCallback with children onClick prop and call both on children change', () => {
+            const innerRadio = radioSelect.find('Radio').findWhere((radio) => radio.prop('value') === aRadioValue).first();
+            const innerRadioInput = innerRadio.find('input').first();
+
+            radioSelect.setProps({onChangeCallback: clickSpy}).mount();
+            innerRadioInput.simulate('click');
+
+            expect(clickSpy.calls.count()).toBe(2);
+        });
     });
 });
