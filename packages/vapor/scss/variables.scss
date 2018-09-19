@@ -226,25 +226,9 @@ $navigation-loading-item-border-radius: 10px;
 $navigation-loading-background-size: 300% 104px;
 $navigation-loading-bullet-width: 12px;
 $navigation-toggle-duration: 0.1s;
-%navigation-toggle-closed {
-  margin-left: -$navigation-width;
-
-  transition: transform $navigation-toggle-duration ease-in-out;
-}
-%navigation-toggle-opened {
-  transform: translateX($navigation-width);
-}
 
 // Application
 $application-container-min-height: 400px;
-%application-container-toggle-with-navigation {
-  max-width: calc(100% - #{$navigation-width});
-
-  transform: translateX($navigation-width);
-}
-%application-container-toggle-without-navigation {
-  transition: transform $navigation-toggle-duration ease-in-out;
-}
 
 // Sub Navigation
 $sub-navigation-padding-top: 26px;
