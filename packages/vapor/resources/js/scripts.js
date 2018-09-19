@@ -160,8 +160,7 @@ $(document).ready(function () {
 
     // handle side nav toggle
     document.querySelector('.header-hamburger').addEventListener('click', () => {
-        document.querySelector('.navigation').classList.toggle('navigation-opened');
-        document.querySelector('.application-container').classList.toggle('application-container-with-navigation');
+        document.querySelector('.navigation-wrapper').classList.toggle('navigation-wrapper-opened');
         document.querySelector('.header-hamburger').classList.toggle('header-hamburger-opened');
     });
 });
