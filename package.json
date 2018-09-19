@@ -134,7 +134,7 @@
     "postcss-loader": "2.1.5",
     "pre-commit": "1.2.2",
     "rc-slider": "8.6.1",
-    "react": "16.4.2",
+    "react": "16.5.2",
     "react-dnd": "2.5.1",
     "react-dnd-html5-backend": "2.5.1",
     "react-dnd-test-backend": "2.5.1",
