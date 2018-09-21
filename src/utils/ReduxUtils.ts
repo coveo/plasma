@@ -2,8 +2,8 @@ import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import {extend} from 'underscore';
 
-export type IDispatch = (action: IReduxAction<any> | IThunkAction) => void;
-export type IThunkAction = (dispatch: IDispatch, getState?: () => any) => void;
+export type IDispatch<T = void> = (action: IReduxAction<any> | IThunkAction) => T;
+export type IThunkAction<T = void> = (dispatch: IDispatch, getState?: () => any) => T;
 
 export class ReduxUtils {
     static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
