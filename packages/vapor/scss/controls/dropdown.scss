@@ -63,6 +63,10 @@
     @include arrow-down-icon($medium-grey);
   }
 
+  &.dropdown-toggle-placeholder {
+    color: $medium-grey;
+  }
+
   &.mod-primary {
     font-size: $button-font-size;
     text-transform: uppercase;
