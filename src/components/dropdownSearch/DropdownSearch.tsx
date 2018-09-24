@@ -290,9 +290,13 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                 filterText={this.props.filterText || ''}
             />;
         }
+        const buttonClasses = classNames('btn dropdown-toggle dropdown-button-search-container mod-search', {
+            'dropdown-toggle-placeholder': selectedOption && selectedOption.default === true,
+        });
+
         return (
             <button
-                className='btn dropdown-toggle dropdown-button-search-container mod-search'
+                className={buttonClasses}
                 type='button'
                 data-toggle='dropdown'
                 onClick={() => this.handleOnClick()}
