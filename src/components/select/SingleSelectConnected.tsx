@@ -63,10 +63,13 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
+        const buttonClasses = classNames('btn', 'dropdown-toggle', this.props.toggleClasses, {
+            'dropdown-toggle-placeholder': !option,
+        });
 
         return (
             <button
-                className={classNames(['btn', 'dropdown-toggle', this.props.toggleClasses])}
+                className={buttonClasses}
                 type='button'
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}

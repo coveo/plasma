@@ -150,11 +150,15 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
             },
         );
 
+        const toggleClasses = classNames('dropdown-toggle btn inline-flex flex-center', this.props.extraDropdownToggleClasses, {
+            'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
+        });
+
         return (
             <div className='date-picker-dropdown'>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
                     <span
-                        className={`dropdown-toggle btn inline-flex flex-center ${this.props.extraDropdownToggleClasses.join(' ')}`}
+                        className={toggleClasses}
                         onClick={() => this.handleClick()}>
                         <span className='dropdown-selected-value'>
                             <label>

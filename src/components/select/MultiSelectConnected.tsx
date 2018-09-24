@@ -149,7 +149,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                     </div>,
                 )}
                 <button
-                    className='btn dropdown-toggle multiselect-add'
+                    className='btn dropdown-toggle multiselect-add dropdown-toggle-placeholder'
                     type='button'
                     onMouseUp={props.onMouseUp}
                     onKeyDown={props.onKeyDown}
