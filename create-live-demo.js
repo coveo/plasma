@@ -26,10 +26,12 @@ const handleError = (e) => {
     console.log(e);
     process.exit();
 };
+
 const exitSinceDemoIsAlreadyPosted = () => {
     console.log('Demo URL is already posted in GitHub Pull Request.');
     process.exit();
 };
+
 axios.get(APIEndpointWithAuthentication)
     .then((response) => _.chain(response.data).pluck('body').contains(liveDemoMessage).value()
         ? exitSinceDemoIsAlreadyPosted()
