@@ -9,8 +9,7 @@ export interface IMultiSelectDropdownSearchProps extends IDropdownSearchProps {
 }
 
 export class MultiSelectDropdownSearch extends DropdownSearch {
-
-    static defaultProps: Partial<IMultiSelectDropdownSearchProps> = {
+    static defaultProps: IMultiSelectDropdownSearchProps = {
         ...DropdownSearch.defaultProps,
         createOptionText: 'Create option for ',
         isOpened: false,
