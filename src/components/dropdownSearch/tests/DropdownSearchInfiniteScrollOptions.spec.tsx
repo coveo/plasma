@@ -20,6 +20,7 @@ describe('DropdownSearchInfiniteScrollOptions', () => {
                 hasMore: true,
                 next: jasmine.createSpy('next'),
                 endMessage: 'The end.',
+                loader: undefined,
             },
         };
     });

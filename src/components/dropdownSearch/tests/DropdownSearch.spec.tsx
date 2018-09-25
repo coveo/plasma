@@ -326,6 +326,7 @@ describe('DropdownSearch', () => {
                             hasMore: true,
                             next: jasmine.createSpy('next'),
                             endMessage: 'no more',
+                            loader: undefined,
                         },
                     });
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
@@ -354,6 +355,7 @@ describe('DropdownSearch', () => {
                             hasMore: true,
                             next: jasmine.createSpy('next'),
                             endMessage: 'no more',
+                            loader: undefined,
                         },
                     });
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchInfiniteScrollOptions);
@@ -369,6 +371,7 @@ describe('DropdownSearch', () => {
                             hasMore: true,
                             next: jasmine.createSpy('next'),
                             endMessage: 'no more',
+                            loader: undefined,
                         },
                         hasMoreItems: hasMoreItemsSpy,
                     });
@@ -389,6 +392,7 @@ describe('DropdownSearch', () => {
                             hasMore: true,
                             next: jasmine.createSpy('next'),
                             endMessage: 'no more',
+                            loader: undefined,
                         },
                     });
 
