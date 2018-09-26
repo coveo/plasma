@@ -21,7 +21,7 @@ export interface INavigationChildrenProps {
     onPageClick?: (pageNb: number) => void;
     perPageLabel?: string;
     perPageNumbers?: number[];
-    onPerPageClick?: () => void;
+    onPerPageClick?: (newPerPage: number, currentPerPage: number, currentPage: number) => void;
     hidePages?: boolean;
     currentPerPage?: number;
     currentPage?: number;
