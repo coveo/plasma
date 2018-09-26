@@ -6,6 +6,7 @@ import {Loading} from '../../loading/Loading';
 import {INavigationProps, Navigation} from '../Navigation';
 import {NavigationPagination} from '../pagination/NavigationPagination';
 import {NavigationPerPage, PER_PAGE_NUMBERS} from '../perPage/NavigationPerPage';
+import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect';
 
 describe(' navigation', () => {
     const basicNavigationProps: INavigationProps = {
@@ -81,6 +82,15 @@ describe(' navigation', () => {
 
             navigation.setProps(newNavigationProps).update();
             expect(navigation.find(NavigationPerPage).props().currentPerPage).toBe(expectedPerPage);
+        });
+
+        it('should call onPerPageClick prop with the correct values when it is set', () => {
+            const onPerPageClick = jasmine.createSpy('mockOnPerPageClick');
+            const perPageNumbers: number[] = [2, 3, 4];
+            const currentPerPage: number = 3;
+            const newNavigationProps: INavigationProps = _.extend({}, basicNavigationProps, {currentPerPage, perPageNumbers, onPerPageClick});
+            navigation.setProps(newNavigationProps).update().find(NavigationPerPageSelect).last().simulate('click');
+            expect(onPerPageClick).toHaveBeenCalledWith(4, 3, undefined); // newPerPage, currentPerPage, currentPage (currentPerPage and currentPage are undefined unless passed as props)
         });
     });
 });
