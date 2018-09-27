@@ -37,26 +37,12 @@ describe('Date picker', () => {
     });
 
     describe('<DatePickerDropdown />', () => {
-        let datePickerDropdown: ReactWrapper<IDatePickerDropdownProps, any>;
+        let datePickerDropdown: ReactWrapper<IDatePickerDropdownProps>;
         let datePickerDropdownInstance: DatePickerDropdown;
+        let datePicker: IDatePickerState;
 
         const now: Date = new Date();
         const then: Date = new Date(new Date().setDate(new Date().getDate() + 1));
-        let datePicker: IDatePickerState = {
-            id: 'id',
-            calendarId: 'calendarId',
-            color: 'color',
-            lowerLimit: now,
-            upperLimit: then,
-            isRange: false,
-            isClearable: false,
-            selected: '',
-            appliedLowerLimit: now,
-            appliedUpperLimit: then,
-            inputLowerLimit: now,
-            inputUpperLimit: then,
-            simple: false,
-        };
 
         beforeEach(() => {
             datePickerDropdown = mount(
@@ -64,6 +50,21 @@ describe('Date picker', () => {
                 {attachTo: document.getElementById('App')},
             );
             datePickerDropdownInstance = datePickerDropdown.instance() as DatePickerDropdown;
+            datePicker = {
+                id: 'id',
+                calendarId: 'calendarId',
+                color: 'color',
+                lowerLimit: now,
+                upperLimit: then,
+                isRange: false,
+                isClearable: false,
+                selected: '',
+                appliedLowerLimit: now,
+                appliedUpperLimit: then,
+                inputLowerLimit: now,
+                inputUpperLimit: then,
+                simple: false,
+            };
         });
 
         afterEach(() => {
