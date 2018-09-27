@@ -62,7 +62,7 @@
   "devDependencies": {
     "@types/chosen-js": "1.6.2",
     "@types/classnames": "2.2.6",
-    "@types/codemirror": "0.0.60",
+    "@types/codemirror": "0.0.61",
     "@types/diff2html": "0.0.4",
     "@types/enzyme": "3.1.14",
     "@types/enzyme-adapter-react-16": "1.0.3",
