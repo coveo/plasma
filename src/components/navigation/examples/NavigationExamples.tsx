@@ -8,6 +8,8 @@ export class NavigationExamples extends React.Component<any, any> {
             totalPages: 10,
             totalEntries: 50,
             currentPerPage: 10,
+            onPageClick: (newPage) => alert('New page selected: ' + (newPage + 1)),
+            onPerPageClick: (newPerPage) => alert('New per page option selected: ' + newPerPage),
         };
         return (
             <div className='mt2'>
