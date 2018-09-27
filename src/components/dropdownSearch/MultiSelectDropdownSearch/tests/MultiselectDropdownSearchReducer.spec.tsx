@@ -20,19 +20,18 @@ describe('DropdownSearch', () => {
                 {value: 'test 2'},
             ];
 
-            defaultOldState = _.extend(defaultOldState, {
+            defaultOldState = {
+                ...defaultOldState,
                 options: options,
                 isOpened: false,
-            });
+            };
         });
 
         it('should add a new multiselect state on "ADD_MULTI_SELECT_DROPDOWN_SEARCH"', () => {
             const oldState: IDropdownSearchState = {id: 'new-dropdown-search'};
             const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                 type: DropdownSearchActions.addMultiSelect,
-                payload: _.extend(defaultPayload, {
-                    dropdownOptions: options,
-                }),
+                payload: {...defaultPayload, dropdownOptions: options},
             };
 
             const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldState, action);
@@ -49,9 +48,7 @@ describe('DropdownSearch', () => {
 
             const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                 type: DropdownSearchActions.multiSelect,
-                payload: _.extend(defaultPayload, {
-                    addedSelectedOption: addedSelectedOption,
-                }),
+                payload: {...defaultPayload, addedSelectedOption},
             };
 
             const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
@@ -64,9 +61,7 @@ describe('DropdownSearch', () => {
 
             const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                 type: DropdownSearchActions.multiSelect,
-                payload: _.extend(defaultPayload, {
-                    addedSelectedOption: addedSelectedOption,
-                }),
+                payload: {...defaultPayload, addedSelectedOption},
             };
 
             const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
@@ -106,9 +101,7 @@ describe('DropdownSearch', () => {
 
             const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                 type: DropdownSearchActions.deselectOption,
-                payload: _.extend(defaultPayload, {
-                    selectedOptionValue: selectedOptionValue,
-                }),
+                payload: {...defaultPayload, selectedOptionValue},
             };
 
             const expectedOptionsState: IDropdownOption[] = [
@@ -126,9 +119,7 @@ describe('DropdownSearch', () => {
 
             const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                 type: DropdownSearchActions.deselectOption,
-                payload: _.extend(defaultPayload, {
-                    selectedOptionValue: selectedOptionValue,
-                }),
+                payload: {...defaultPayload, selectedOptionValue},
             };
 
             const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
@@ -143,9 +134,7 @@ describe('DropdownSearch', () => {
 
             const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                 type: DropdownSearchActions.addCustomSelectedOption,
-                payload: _.extend(defaultPayload, {
-                    selectedOptionValue: customValue,
-                }),
+                payload: {...defaultPayload, selectedOptionValue: customValue},
             };
 
             const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
@@ -156,16 +145,17 @@ describe('DropdownSearch', () => {
         describe('on key down', () => {
 
             it('should return the new state with active option above the last one if the keyCode is "Up Arrow"', () => {
-                const oldstate: IDropdownSearchState = _.extend(defaultOldState, {
+                const oldstate: IDropdownSearchState = {
+                    ...defaultOldState,
                     id: 'new-dropdown-search',
                     isOpened: true,
                     options: options,
                     activeOption: options[1],
-                });
+                };
                 const keycode = keyCode.upArrow;
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {keyCode: keycode}),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
 
@@ -175,15 +165,14 @@ describe('DropdownSearch', () => {
             it('should add a custom option on enter if the selected option is not present', () => {
                 const keycode = keyCode.enter;
                 const customValue: string = 'custom_value';
-                const stateWithFilterTextPresent: IDropdownSearchState = _.extend(defaultOldState, {
+                const stateWithFilterTextPresent: IDropdownSearchState = {
+                    ...defaultOldState,
                     filterText: customValue,
                     activeOption: undefined,
-                });
+                };
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {
-                        keyCode: keycode,
-                    }),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
@@ -193,14 +182,10 @@ describe('DropdownSearch', () => {
 
             it('should add the active option on tab in selected options', () => {
                 const keycode = keyCode.tab;
-                const oldstate: IDropdownSearchState = _.extend(defaultOldState, {
-                    activeOption: options[0],
-                });
+                const oldstate: IDropdownSearchState = {...defaultOldState, activeOption: options[0]};
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {
-                        keyCode: keycode,
-                    }),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(oldstate, action);
@@ -211,18 +196,17 @@ describe('DropdownSearch', () => {
             it('should remove last selected option on backspace when the filter text is empty', () => {
                 const keycode = keyCode.backspace;
                 const filterText: string = '';
-                const stateWithFilterTextPresent: IDropdownSearchState = _.extend(defaultOldState, {
+                const stateWithFilterTextPresent: IDropdownSearchState = {
+                    ...defaultOldState,
                     filterText,
                     options: [
                         {...options[0], selected: true, hidden: true},
                         {...options[1], selected: true, hidden: true},
                     ],
-                });
+                };
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {
-                        keyCode: keycode,
-                    }),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
 
                 const expectedOptions: IDropdownOption[] = [
@@ -238,15 +222,14 @@ describe('DropdownSearch', () => {
             it('should not remove last selected option on backspace when the filter text is not empty', () => {
                 const keycode = keyCode.backspace;
                 const filterText: string = 'not empty filter text';
-                const stateWithFilterTextPresent: IDropdownSearchState = _.extend(defaultOldState, {
+                const stateWithFilterTextPresent: IDropdownSearchState = {
+                    ...defaultOldState,
                     filterText,
                     options: [].concat(options),
-                });
+                };
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {
-                        keyCode: keycode,
-                    }),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
 
                 const expectedSelectedOptions: IDropdownOption[] = [];
@@ -260,9 +243,7 @@ describe('DropdownSearch', () => {
                 const keycode = keyCode.escape;
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {
-                        keyCode: keycode,
-                    }),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
@@ -274,9 +255,7 @@ describe('DropdownSearch', () => {
                 const keycode = -1;
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {
-                        keyCode: keycode,
-                    }),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
@@ -288,9 +267,7 @@ describe('DropdownSearch', () => {
                 const keycode = -1;
                 const action: IReduxAction<IOptionsDropdownSearchPayload> = {
                     type: DropdownSearchActions.onKeyDownMultiselect,
-                    payload: _.extend(defaultPayload, {
-                        keyCode: keycode,
-                    }),
+                    payload: {...defaultPayload, keyCode: keycode},
                 };
 
                 const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
