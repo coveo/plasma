@@ -28,10 +28,10 @@ describe('Actions', () => {
     describe('<TriggerAction />', () => {
         let triggerAction: ReactWrapper<ITriggerActionProps, any>;
         let triggerActionInstance: TriggerAction;
-        triggerSpy = jasmine.createSpy('triggerMethod');
-        action.trigger = triggerSpy;
 
         beforeEach(() => {
+            triggerSpy = jasmine.createSpy('triggerMethod');
+            action.trigger = triggerSpy;
             triggerAction = mount(
                 <TriggerAction
                     action={action}
@@ -43,6 +43,7 @@ describe('Actions', () => {
         });
 
         afterEach(() => {
+            triggerAction.unmount();
             triggerAction.detach();
         });
 
@@ -82,7 +83,7 @@ describe('Actions', () => {
             const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.enabled').simulate('click');
-            expect(onTriggerActionSpy.calls.count()).toBe(1);
+            expect(onTriggerActionSpy).toHaveBeenCalledTimes(1);
         });
 
         it('should not call onTriggerAction when clicked if action is not enabled and visible', () => {
@@ -90,12 +91,12 @@ describe('Actions', () => {
             const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.state-disabled').simulate('click');
-            expect(onTriggerActionSpy.calls.count()).toBe(0);
+            expect(onTriggerActionSpy).not.toHaveBeenCalled();
         });
 
         it('should call the trigger of the action when clicked and no confirmation is required', () => {
             triggerAction.find('.enabled').simulate('click');
-            expect(triggerSpy.calls.count()).toBe(1);
+            expect(triggerSpy).toHaveBeenCalledTimes(1);
         });
 
         it('should call the onCloseDropdown if it exists and no confirmation is required', () => {

@@ -187,7 +187,7 @@ describe('Date picker', () => {
                 readonly: true,
             };
 
-            datePickerDropdown.setProps(propsWithDatePicker);
+            datePickerDropdown.setProps(propsWithDatePicker).mount();
 
             expect(datePickerDropdown.html()).toContain(formattedNow);
             expect(datePickerDropdown.html()).not.toContain(formattedThen);

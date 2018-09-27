@@ -186,10 +186,11 @@ describe('ListBox', () => {
         describe('UNSELECT_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
             const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const selected = _.chain(items).where({selected: true}).pluck('value').value();
             let defaultState: IListBoxState[];
+            let selected: any[];
 
             beforeEach(() => {
+                selected = _.chain(items).where({selected: true}).pluck('value').value();
                 defaultState = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
             });
 

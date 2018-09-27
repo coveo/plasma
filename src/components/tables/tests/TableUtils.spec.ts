@@ -95,13 +95,11 @@ describe('TableUtils', () => {
                 },
             };
 
-            describe('convertInitialCollectionToDataById', () => {
-                expect(convertInitialCollectionToDataById(collection, 'companyName')).toEqual(dataById);
-            });
+            // convertInitialCollectionToDataById
+            expect(convertInitialCollectionToDataById(collection, 'companyName')).toEqual(dataById);
 
-            describe('convertDataByIdToCollection', () => {
-                expect(convertDataByIdToCollection(dataById)).toEqual(collection);
-            });
+            // convertDataByIdToCollection
+            expect(convertDataByIdToCollection(dataById)).toEqual(collection);
         });
     });
 });
