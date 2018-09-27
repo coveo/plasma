@@ -21,7 +21,7 @@ export interface INavigationPerPageStateProps {
 export interface INavigationPerPageDispatchProps {
     onRender?: (perPageNb: number) => void;
     onDestroy?: () => void;
-    onPerPageClick?: (perPageNb: number, oldPerPageNb: number, currentPage: number) => void;
+    onPerPageClick?: (newPerPage: number, currentPerPage?: number, currentPage?: number) => void;
 }
 
 export interface INavigationPerPageProps extends INavigationPerPageOwnProps, INavigationPerPageStateProps,
