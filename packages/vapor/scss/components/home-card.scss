@@ -17,6 +17,8 @@
 
   display: flex;
   margin-bottom: $home-card-margin;
+  padding: 2 * $spacing;
+  border: 1px solid rgba($grey-5, $transparency-4);
 
   background: $pure-white;
   box-shadow: $material-card-shadow;
