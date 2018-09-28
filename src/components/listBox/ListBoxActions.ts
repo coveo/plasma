@@ -9,6 +9,7 @@ export const ListBoxActions = {
     reorder: 'REORDER_ITEM_LIST_BOX',
     setActive: 'SET_ACTIVE_ITEM_LIST_BOX',
     clear: 'CLEAR_ITEM_LIST_BOX',
+    update: 'UPDATE_ITEM_LIST_BOX',
 };
 
 export interface IListBoxPayload {
@@ -53,4 +54,9 @@ export const setActiveListBoxOption = (id: string, diff: number): IReduxAction<I
 export const clearListBoxOption = (id: string): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.clear,
     payload: {id},
+});
+
+export const updateListBoxOption = (id: string, items: IItemBoxProps[]): IReduxAction<IListBoxPayload> => ({
+    type: ListBoxActions.update,
+    payload: {id, items},
 });

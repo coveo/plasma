@@ -52,7 +52,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         return classNames('list-box bg-pure-white', this.props.classes);
     }
 
-    protected getItems(): JSX.Element[] | JSX.Element {
+    protected getItems(): React.ReactNode {
         const shouldShow = (item: IItemBoxProps) => !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
         const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled).length;
 
@@ -78,7 +78,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
 
         return items.length
             ? items
-            : <ItemBox {..._.extend(this.props.noResultItem, {classes: ['multi-line']})} />;
+            : <ItemBox {...{...this.props.noResultItem, classes: ['multi-line']}} />;
     }
 
     render() {
