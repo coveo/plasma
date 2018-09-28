@@ -1,14 +1,6 @@
 // Immutable padding utilities, based on a global white space scale.
 // Inspired by: http://www.basscss.com/docs/white-space/
 
-.p0 {
-  padding: 0;
-}
-
-.m0 {
-  margin: 0;
-}
-
 .mx-auto {
   margin-right: auto;
   margin-left: auto;
@@ -22,7 +14,7 @@
   margin-right: auto;
 }
 
-@for $i from 1 through 5 {
+@for $i from 0 through 5 {
   .p#{$i} {
     padding: $i * $spacing;
   }
@@ -53,7 +45,7 @@
 }
 
 // Loop is duplicated so that individual paddings and margins overwrite general ones
-@for $i from 1 through 5 {
+@for $i from 0 through 5 {
   .pt#{$i} {
     padding-top: $i * $spacing;
   }
