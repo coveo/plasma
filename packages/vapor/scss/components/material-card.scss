@@ -2,6 +2,8 @@
   background-color: $pure-white;
   box-shadow: $material-card-shadow;
   border-radius: $border-radius;
+  padding: 2 * $spacing;
+  border: 1px solid rgba($grey-5, $transparency-4);
 
   transition: box-shadow 0.1s ease-out;
 

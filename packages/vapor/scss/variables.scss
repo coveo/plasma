@@ -202,6 +202,10 @@ $wizard-card-large-width: 1095px;
 $wizard-card-form-padding: 30px;
 $wizard-card-footer-padding: 20px 30px;
 
+// Card
+$card-minimum-width: 160px;
+$card-minimum-height: 70px;
+
 // Navigation
 $navigation-menu-header-font-weight: 700;
 $navigation-menu-item-font-weight: 400;
@@ -528,9 +532,9 @@ $flippable-transition-duration: 0.8s;
 $flippable-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
 
 // Material Card
-$material-card-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
-$material-card-shadow-hover: 0 6px 12px 0 rgba(0,0,0,0.4);
-$material-card-shadow-active: 0 8px 12px 0 rgba(0,0,0,0.5);
+$material-card-shadow: 0 2px 20px 0 rgba(0,0,0,0.1);
+$material-card-shadow-hover: 0 2px 30px 0 rgba(0,0,0,0.3);
+$material-card-shadow-active: 0 2px 20px 0 rgba(0,0,0,0.3);
 $material-card-colored-border-height: 5px;
 
 // Content placeholder
