@@ -1,16 +1,16 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
-import * as classNames from 'classnames';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {Button} from '../button/Button';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
+import {selectListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {ISelectProps} from './SelectConnected';
-import {Button} from '../button/Button';
-import {selectListBoxOption} from '../listBox/ListBoxActions';
 
 export interface ISelectWithFilterOwnProps {
     matchFilter?: (filterValue: string, item: IItemBoxProps) => boolean;
