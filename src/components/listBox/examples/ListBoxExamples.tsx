@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {defaultMapStateToProps, TestUtils} from '../../../utils/TestUtils';
 import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
@@ -7,7 +8,6 @@ import {ITooltipProps} from '../../tooltip/Tooltip';
 import {ListBox} from '../ListBox';
 import {updateListBoxOption} from '../ListBoxActions';
 import {ListBoxConnected} from '../ListBoxConnected';
-import {defaultMapStateToProps, TestUtils} from '../../../utils/TestUtils';
 
 interface IListBoxExamplesProps {
     updateOptions?: (id: string, options: IItemBoxProps[], reset: boolean) => void;
@@ -108,7 +108,7 @@ export class ListBoxExamples extends React.Component<IListBoxExamplesProps> {
                 <div className='form-group'>
                     <label className='form-control-label'>List Box Connected updated with new options (single)</label>
                     <div className='form-control'>
-                        <ListBoxConnected id={idSingle} items={defaultItems}/>
+                        <ListBoxConnected id={idSingle} items={defaultItems} />
                         <Button classes={['my2']} enabled={true} name='Update options without a reset on the selected value' onClick={() => this.handleOnClick(idSingle, defaultItems, false)} />
                     </div>
                 </div>
