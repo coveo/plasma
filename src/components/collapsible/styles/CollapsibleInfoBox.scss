@@ -1,7 +1,7 @@
 @import '~coveo-styleguide/scss/common/palette.scss';
 @import '~coveo-styleguide/scss/variables.scss';
 
-$collapsible-timeout: 200ms;
+$collapsible-timeout: 100ms;
 
 .container {
     transition: background-color $collapsible-timeout ease-in-out;
