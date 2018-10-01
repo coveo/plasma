@@ -52,6 +52,7 @@ export class Button extends React.Component<IButtonProps> {
                 <button className={buttonClass}
                     {...buttonAttrs}>
                     {this.props.name}
+                    {this.props.children}
                 </button>);
         }
 
