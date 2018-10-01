@@ -18,6 +18,7 @@ export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
     sortable?: boolean;
+    customValues?: boolean;
 }
 
 export interface IMultiSelectStateProps {
@@ -70,7 +71,9 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                 id={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
                 items={this.props.items}
-                multi>
+                multi
+                customValues={this.props.customValues}
+            >
                 {this.props.children}
             </SelectConnected>
         );
