@@ -6,11 +6,11 @@ export type IDispatch<T = void> = (action: IReduxAction<any> | IThunkAction) => 
 export type IThunkAction<T = void> = (dispatch: IDispatch, getState?: () => any) => T;
 
 export class ReduxUtils {
-    static mergeProps(stateProps: object, dispatchProps: object, ownProps: object) {
+    static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
         return extend({}, stateProps, dispatchProps, ownProps);
     }
 
-    static mergePropsWithStatePropsPriority(stateProps: object, dispatchProps: object, ownProps: object) {
+    static mergePropsWithStatePropsPriority(stateProps: any, dispatchProps: any, ownProps: any) {
         return extend({}, ownProps, dispatchProps, stateProps);
     }
 }
