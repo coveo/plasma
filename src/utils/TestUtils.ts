@@ -33,6 +33,10 @@ export class TestUtils {
         return new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
     }
 
+    static randomValue1To100() {
+        return Math.floor((Math.random() * 100) + 1);
+    }
+
     static makeDebounceStatic() {
         // tslint:disable
         spyOn(_, 'debounce').and.callFake(function(func: () => void) {
@@ -54,6 +58,8 @@ export class TestUtils {
         return TestContextContainer;
     }
 }
+
+export const defaultMapStateToProps = () => ({});
 
 export const defaultSvgProps: ISvgProps = {
     svgName: 'domain-google',

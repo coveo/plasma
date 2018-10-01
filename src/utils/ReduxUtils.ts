@@ -9,6 +9,10 @@ export class ReduxUtils {
     static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
         return extend({}, stateProps, dispatchProps, ownProps);
     }
+
+    static mergePropsWithStatePropsPriority(stateProps: any, dispatchProps: any, ownProps: any) {
+        return extend({}, ownProps, dispatchProps, stateProps);
+    }
 }
 
 export const CommonActions = {
