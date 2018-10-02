@@ -7,13 +7,17 @@ export const FilterActions = {
     filterThrough: 'FILTER',
 };
 
-const defaultMatchFilter = (filterValue: string, item: any, propertiesName: string[]) => {
+export const defaultMatchFilter = (filterValue: string, item: any, propertiesName: string[]) => {
     if (filterValue === '') {
         return true;
     }
 
-    const regex = new RegExp(filterValue, 'gi');
-    return _.some(propertiesName, (property: string) => item[property] ? regex.test(item[property]) : false);
+    if (filterValue && item) {
+        const regex = new RegExp(filterValue, 'gi');
+        return _.some(propertiesName, (property: string) => item[property] ? regex.test(item[property]) : false);
+    }
+
+    return false;
 };
 
 export type MatchFilter = (filterValue: string, item: any, propertiesName: string[]) => boolean;
