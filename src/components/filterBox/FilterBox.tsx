@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {Svg} from '../svg/Svg';
+import {MatchFilter} from './FilterBoxActions';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
     id?: string;
@@ -15,6 +16,7 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
     truncate?: boolean;
     onFilterCallback?: (id: string, filterText: string) => void;
     className?: string;
+    matchFilter?: MatchFilter;
 }
 
 export interface IFilterBoxStateProps {
@@ -22,7 +24,7 @@ export interface IFilterBoxStateProps {
 }
 
 export interface IFilterBoxDispatchProps {
-    onRender?: (id: string) => void;
+    onRender?: (id: string, matchFilter: MatchFilter) => void;
     onDestroy?: (id: string) => void;
     onFilter?: (id: string, filterText: string) => void;
 }
@@ -87,7 +89,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
 
     componentWillMount() {
         if (this.props.onRender) {
-            this.props.onRender(this.props.id);
+            this.props.onRender(this.props.id, this.props.matchFilter);
         }
     }
 

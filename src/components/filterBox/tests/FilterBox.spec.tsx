@@ -47,6 +47,18 @@ describe('FilterBox', () => {
             expect(renderSpy.calls.count()).toBe(1);
         });
 
+        it('should call prop onRender with the id and the matchFilter to set in the store', () => {
+            const renderSpy = jasmine.createSpy('onRender');
+            const matchFilter = jasmine.createSpy('matchFilter');
+
+            expect(() => filterBoxInstance.componentWillMount()).not.toThrow();
+
+            filterBox.setProps({id: id, onRender: renderSpy, matchFilter: matchFilter});
+            filterBox.unmount();
+            filterBox.mount();
+            expect(renderSpy).toHaveBeenCalledWith(id, matchFilter);
+        });
+
         it('should call prop onDestroy on unmounting if set', () => {
             const destroySpy = jasmine.createSpy('onDestroy');
 
@@ -143,13 +155,21 @@ describe('FilterBox', () => {
             expect(filterBoxInstance.filterInput).toBe(document.activeElement as HTMLInputElement);
         });
 
+        it('should set className on the first div if specified', () => {
+            const classNameToTest = 'mod-small';
+            expect(filterBox.find('div').first().hasClass(classNameToTest)).toBe(false);
+
+            filterBox.setProps({id: id, className: classNameToTest}).update();
+            expect(filterBox.find('div').first().hasClass(classNameToTest)).toBe(true);
+        });
+
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const containerClasses = [containerClass];
-            expect(filterBox.find('div').first().hasClass(containerClass)).toBe(false);
+            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(false);
 
             filterBox.setProps({id: id, containerClasses}).update();
-            expect(filterBox.find('div').first().hasClass(containerClass)).toBe(true);
+            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(true);
         });
 
         it('should call onBlur when the input loose focus', () => {

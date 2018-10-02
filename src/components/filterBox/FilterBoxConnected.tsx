@@ -10,7 +10,7 @@ import {
     IFilterBoxProps,
     IFilterBoxStateProps,
 } from './FilterBox';
-import {addFilter, filterThrough, removeFilter} from './FilterBoxActions';
+import {addFilter, filterThrough, MatchFilter, removeFilter} from './FilterBoxActions';
 
 const FILTER_THROUGH_DEBOUNCE = 400;
 export const debouncedFilterThrough = _.debounce(
@@ -27,7 +27,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFilterBoxOwnProps):
 };
 
 const mapDispatchToProps = (dispatch: IDispatch): IFilterBoxDispatchProps => ({
-    onRender: (id: string) => dispatch(addFilter(id)),
+    onRender: (id: string, matchFilter: MatchFilter) => dispatch(addFilter(id, matchFilter)),
     onDestroy: (id: string) => dispatch(removeFilter(id)),
     onFilter: (id: string, filterText: string) => debouncedFilterThrough(dispatch, id, filterText),
 });
