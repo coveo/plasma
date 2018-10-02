@@ -31,7 +31,7 @@ export class SlideY extends React.Component<TransitionProps, {}> {
     }
 
     render() {
-        const style = this.props.duration && {style: {transitionDuration: `${this.props.duration}ms`}};
+        const style = this.props.duration && {style: {transitionDuration: `${this.props.duration}ms`, transitionTimingFunction: 'ease-in-out'}};
         return (
             <Transition
                 in={this.props.in}

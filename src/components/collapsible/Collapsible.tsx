@@ -28,7 +28,7 @@ export interface CollapsibleDispatchProps {
 export interface CollapsibleProps extends CollapsibleOwnProps, CollapsibleStateProps, CollapsibleDispatchProps {}
 
 export class Collapsible extends React.Component<CollapsibleProps> {
-    static TIMEOUT = 200;
+    static TIMEOUT = 150;
 
     componentWillMount() {
         callIfDefined(this.props.onMount);
@@ -58,7 +58,7 @@ export class Collapsible extends React.Component<CollapsibleProps> {
                         className='mr3'
                     />
                 </div>
-                <SlideY in={this.props.expanded} timeout={Collapsible.TIMEOUT}>
+                <SlideY in={this.props.expanded} timeout={Collapsible.TIMEOUT} duration={Collapsible.TIMEOUT}>
                     {this.props.children}
                 </SlideY>
             </div>
