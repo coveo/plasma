@@ -28,7 +28,7 @@ export interface CollapsibleDispatchProps {
 export interface CollapsibleProps extends CollapsibleOwnProps, CollapsibleStateProps, CollapsibleDispatchProps {}
 
 export class Collapsible extends React.Component<CollapsibleProps> {
-    static TIMEOUT = 100;
+    static TIMEOUT = 150;
 
     componentWillMount() {
         callIfDefined(this.props.onMount);
