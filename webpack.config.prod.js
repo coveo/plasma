@@ -6,12 +6,14 @@ const isTravis = process.env.TRAVIS;
  * Config file for the packaged library
  */
 const config = {
-    entry: './Index.ts',
+    entry: {
+        'react-vapor': ['./Index.ts'],
+        'react-vapor.dependencies': ['jquery', 'underscore', 'react', 'react-dom', 'react-redux', 'redux', 'codemirror'],
+    },
     mode: 'production',
-    optimization: {minimize: false},
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'react-vapor.js',
+        filename: '[name].js',
         library: ['ReactVapor'],
         libraryTarget: 'umd',
     },
