@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Svg} from '../../svg/Svg';
 import {Button} from '../Button';
 
 export class ButtonExamples extends React.Component<any, any> {
@@ -101,6 +102,22 @@ export class ButtonExamples extends React.Component<any, any> {
                     <div className='form-control'>
                         <Button enabled={false} name='Disabled Button link with onClick' link='http://perdu.com/' target='_blank'
                             onClick={() => alert('Hello')} />
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Button with children Svg</label>
+                    <div className='form-control'>
+                        <Button classes={['p1', 'full-content-y']} enabled>
+                            <Svg svgName={'add'} className='icon mod-2x' />
+                        </Button>
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Button with children name and Svg</label>
+                    <div className='form-control'>
+                        <Button classes={['p1', 'full-content-y']} name={'Button'} enabled>
+                            <Svg svgName={'add'} className='ml1 icon mod-2x' />
+                        </Button>
                     </div>
                 </div>
             </div>
