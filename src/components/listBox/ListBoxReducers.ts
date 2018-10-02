@@ -63,10 +63,15 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
             return {...state, active};
         case ListBoxActions.update:
             let selectedUpdated = [];
-            if (!action.payload.resetSelected) {
+            if (!action.payload.resetSelected && !action.payload.updateSelected) {
                 selectedUpdated = _.chain(action.payload.items)
                     .pluck('value')
                     .intersection(state.selected)
+                    .value();
+            } else if (!action.payload.resetSelected && action.payload.updateSelected) {
+                selectedUpdated = _.chain(action.payload.items)
+                    .where({selected: true})
+                    .pluck('value')
                     .value();
             }
             return {

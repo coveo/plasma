@@ -1,6 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
@@ -9,25 +8,27 @@ import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {SelectConnected} from '../SelectConnected';
+import * as ListBoxActions from '../../listBox/ListBoxActions';
+import {ISelectProps, ISelectSpecificProps, SelectConnected} from '../SelectConnected';
 import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
     describe('<SingleSelectConnected />', () => {
-        let wrapper: ReactWrapper<any, any>;
-        let singleSelect: ReactWrapper<ISingleSelectProps, void>;
+        let singleSelect: ReactWrapper<ISingleSelectProps>;
+        let select: ReactWrapper<ISelectProps & ISelectSpecificProps>;
         let store: Store<IReactVaporState>;
 
         const id: string = 'list-box-connected';
 
         const mountSingleSelect = (items: IItemBoxProps[] = [], props: Partial<ISingleSelectProps> = {}) => {
-            wrapper = mount(
-                <Provider store={store}>
-                    <SingleSelectConnected id={id} items={items} {...props} />
-                </Provider>,
-                {attachTo: document.getElementById('App')},
+            singleSelect = mount(
+                <SingleSelectConnected id={id} items={items} {...props} />,
+                {
+                    attachTo: document.getElementById('App'),
+                    context: {store},
+                },
             );
-            singleSelect = wrapper.find(SelectConnected).first();
+            select = singleSelect.find(SelectConnected).first();
         };
 
         beforeEach(() => {
@@ -36,7 +37,7 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            singleSelect.detach();
         });
 
         describe('mount and unmount', () => {
@@ -46,7 +47,7 @@ describe('Select', () => {
 
             it('should not throw on unmount', () => {
                 mountSingleSelect();
-                expect(() => wrapper.unmount()).not.toThrow();
+                expect(() => singleSelect.unmount()).not.toThrow();
             });
 
             it('should add the list box to the state when mounted', () => {
@@ -61,7 +62,7 @@ describe('Select', () => {
                 mountSingleSelect();
 
                 expect(store.getState().selects.length).toBe(1);
-                wrapper.unmount();
+                singleSelect.unmount();
 
                 expect(store.getState().selects.length).toBe(0);
             });
@@ -75,7 +76,7 @@ describe('Select', () => {
                 {value: 'b'},
             ], {placeholder: expectedPlaceholder});
 
-            expect(singleSelect.html()).toContain(expectedPlaceholder);
+            expect(select.html()).toContain(expectedPlaceholder);
         });
 
         it('should contain the selected value', () => {
@@ -85,7 +86,7 @@ describe('Select', () => {
                 {value: selectedValue, selected: true},
             ]);
 
-            expect(singleSelect.html()).toContain(selectedValue);
+            expect(select.html()).toContain(selectedValue);
         });
 
         it('should contain the display value when the selected value has one', () => {
@@ -95,7 +96,7 @@ describe('Select', () => {
                 {value: 'dis 1', displayValue: selectedDisplayValue, selected: true},
             ]);
 
-            expect(singleSelect.html()).toContain(selectedDisplayValue);
+            expect(select.html()).toContain(selectedDisplayValue);
         });
 
         it('should contain the selected item as a prop', () => {
@@ -105,8 +106,31 @@ describe('Select', () => {
                 {value: selectedValue, selected: true},
             ]);
 
-            const value: string = singleSelect.find('.dropdown-selected-value').prop<string>('data-value');
+            const value: string = select.find('.dropdown-selected-value').prop<string>('data-value');
             expect(value).toBe(selectedValue);
+        });
+
+        it('should update the listbox items state when items prop changes by dispatching updateListBoxOption action', () => {
+            const spy = spyOn(ListBoxActions, 'updateListBoxOption').and.returnValue({type: 'whatever', payload: {}});
+            const newItems: IItemBoxProps[] = [{value: 'a', selected: true}, {value: 'b'}];
+
+            mountSingleSelect([{value: 'a', disabled: true}, {value: 'b', selected: true}]);
+
+            singleSelect.setProps({items: newItems});
+
+            expect(spy).toHaveBeenCalledWith(id, newItems, false, true);
+        });
+
+        it('should not update the listbox items state when items prop does not change by dispatching updateListBoxOption action', () => {
+            const spy = spyOn(ListBoxActions, 'updateListBoxOption').and.returnValue({type: 'whatever', payload: {}});
+            const currentItems: IItemBoxProps[] = [{value: 'a', selected: true}, {value: 'b'}];
+            const newItems: IItemBoxProps[] = [{value: 'a', selected: true}, {value: 'b'}];
+
+            mountSingleSelect(currentItems);
+
+            singleSelect.setProps({items: newItems});
+
+            expect(spy).not.toHaveBeenCalled();
         });
 
         it('should set the toggleClasses prop if any on the dropdown-toggle', () => {
@@ -114,7 +138,7 @@ describe('Select', () => {
                 toggleClasses: 'some-class',
             });
 
-            expect(singleSelect.find('.dropdown-toggle').hasClass('some-class')).toBe(true);
+            expect(select.find('.dropdown-toggle').hasClass('some-class')).toBe(true);
         });
 
         it('should disable the toggle button when disabled prop is set to true', () => {
@@ -122,7 +146,7 @@ describe('Select', () => {
                 disabled: true,
             } as any);
 
-            expect(singleSelect.find('.dropdown-toggle').is('[disabled]')).toBe(true);
+            expect(select.find('.dropdown-toggle').is('[disabled]')).toBe(true);
         });
 
         it('should contain the prepend and append in the button when selected', () => {
@@ -132,7 +156,7 @@ describe('Select', () => {
                 {value: 'a', selected: true, prepend: {content: prepend}, append: {content: append}},
                 {value: 'b', selected: false},
             ]);
-            const buttonHTML = singleSelect.find('.dropdown-toggle').html();
+            const buttonHTML = select.find('.dropdown-toggle').html();
 
             expect(buttonHTML).toContain(prepend);
             expect(buttonHTML).toContain(append);
@@ -146,7 +170,7 @@ describe('Select', () => {
                 {value: 'b', selected: true},
             ]);
 
-            const buttonHTML = singleSelect.find('.dropdown-toggle').html();
+            const buttonHTML = select.find('.dropdown-toggle').html();
 
             expect(buttonHTML).not.toContain(prepend);
             expect(buttonHTML).not.toContain(append);
@@ -157,8 +181,8 @@ describe('Select', () => {
 
             mountSingleSelect([{value: 'a'}, {value: 'b'}], {onSelectOptionCallback: onSelectOptionCallbackSpy});
 
-            singleSelect.find('.dropdown-toggle').simulate('click');
-            singleSelect.find('.item-box').first().simulate('click');
+            select.find('.dropdown-toggle').simulate('click');
+            select.find('.item-box').first().simulate('click');
 
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('a');
         });
@@ -167,7 +191,7 @@ describe('Select', () => {
             it('should not throw on keydown in the dropdown', () => {
                 mountSingleSelect();
 
-                const el = singleSelect.find('.dropdown-toggle');
+                const el = select.find('.dropdown-toggle');
                 _.each(keyCode, (code) => {
                     expect(() => el.simulate('keydown', {keyCode: code})).not.toThrow();
                 });
@@ -178,7 +202,7 @@ describe('Select', () => {
 
                 expect(store.getState().selects[0].open).toBe(false);
 
-                singleSelect.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
+                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
                 expect(store.getState().selects[0].open).toBe(true);
             });
 
@@ -186,13 +210,13 @@ describe('Select', () => {
                 mountSingleSelect();
 
                 expect(store.getState().selects[0].open).toBe(false);
-                singleSelect.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
+                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
                 expect(store.getState().selects[0].open).toBe(false);
 
-                singleSelect.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
+                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
                 expect(store.getState().selects[0].open).toBe(true);
 
-                singleSelect.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
+                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
                 expect(store.getState().selects[0].open).toBe(false);
             });
         });
@@ -219,10 +243,10 @@ describe('Select', () => {
             it('should close the dropdown when the user click outside the dropdown and the dropdown is open', () => {
                 mountSingleSelect();
 
-                singleSelect.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
+                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
                 expect(store.getState().selects[0].open).toBe(true, '1');
 
-                clickOnEl(singleSelect.find('.select-dropdown-container').getDOMNode());
+                clickOnEl(select.find('.select-dropdown-container').getDOMNode());
                 expect(store.getState().selects[0].open).toBe(true, '2');
 
                 clickOnEl();

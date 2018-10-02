@@ -358,6 +358,15 @@ describe('ListBox', () => {
                 expect(newState.items).toBe(newItems);
                 expect(newState.selected).toEqual([]);
             });
+
+            it('should update items in the state and update the selected value when payload has updateSelected = true', () => {
+                const oldState: IListBoxState = {...listBoxInitialState, id, items: items, selected: [items[0].value]};
+                const newState: IListBoxState = listBoxReducer(oldState, updateListBoxOption(id, newItems, false, true));
+
+                expect(newState.id).toBe(id);
+                expect(newState.items).toBe(newItems);
+                expect(newState.selected).toEqual(['b']);
+            });
         });
 
         describe('CLEAR_ITEM_LIST_BOX', () => {
