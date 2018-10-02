@@ -5,8 +5,11 @@ import {mod} from '../../utils/DataStructuresUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
-export interface IListBoxOwnProps {
+export interface IListBoxCommonProps {
     items: IItemBoxProps[];
+}
+
+export interface IListBoxOwnProps extends IListBoxCommonProps {
     noResultItem?: IItemBoxProps;
     classes?: string[];
     id?: string;
@@ -14,7 +17,7 @@ export interface IListBoxOwnProps {
     highlight?: string;
 }
 
-export interface IListBoxStateProps {
+export interface IListBoxStateProps extends IListBoxCommonProps {
     selected?: string[];
     active?: number;
 }
@@ -52,7 +55,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         return classNames('list-box bg-pure-white', this.props.classes);
     }
 
-    protected getItems(): JSX.Element[] | JSX.Element {
+    protected getItems(): React.ReactNode {
         const shouldShow = (item: IItemBoxProps) => !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
         const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled).length;
 
@@ -78,7 +81,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
 
         return items.length
             ? items
-            : <ItemBox {..._.extend(this.props.noResultItem, {classes: ['multi-line']})} />;
+            : <ItemBox {...{...this.props.noResultItem, classes: ['multi-line']}} />;
     }
 
     render() {
