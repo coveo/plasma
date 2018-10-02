@@ -1,3 +1,4 @@
+import * as _ from 'underscore';
 import {IReduxAction} from '../../utils/ReduxUtils';
 
 export const FilterActions = {
@@ -6,18 +7,31 @@ export const FilterActions = {
     filterThrough: 'FILTER',
 };
 
+const defaultMatchFilter = (filterValue: string, item: any, propertiesName: string[]) => {
+    if (filterValue === '') {
+        return true;
+    }
+
+    const regex = new RegExp(filterValue, 'gi');
+    return _.some(propertiesName, (property: string) => item[property] ? regex.test(item[property]) : false);
+};
+
+export type MatchFilter = (filterValue: string, item: any, propertiesName: string[]) => boolean;
+
 export interface IFilterActionPayload {
     id: string;
+    matchFilter?: MatchFilter;
 }
 
 export interface IChangeFilterActionPayload extends IFilterActionPayload {
     filterText: string;
 }
 
-export const addFilter = (id: string): IReduxAction<IFilterActionPayload> => ({
+export const addFilter = (id: string, matchFilter: MatchFilter = defaultMatchFilter): IReduxAction<IFilterActionPayload> => ({
     type: FilterActions.addFilter,
     payload: {
         id,
+        matchFilter,
     },
 });
 
