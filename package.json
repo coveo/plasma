@@ -68,7 +68,7 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/escape-string-regexp": "1.0.0",
     "@types/faker": "4.1.4",
-    "@types/jasmine": "2.8.8",
+    "@types/jasmine": "2.8.9",
     "@types/jquery": "2.0.46",
     "@types/lorem-ipsum": "1.0.2",
     "@types/rc-slider": "8.6.0",
