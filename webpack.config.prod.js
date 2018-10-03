@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const isTravis = process.env.TRAVIS;
 
 /**
@@ -100,6 +101,7 @@ const config = {
             WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
+        // new BundleAnalyzerPlugin(),
     ],
     externals: {
         codemirror: {root: 'CodeMirror', commonjs2: 'codemirror', commonjs: 'codemirror', amd: 'codemirror'},
