@@ -40,15 +40,11 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     };
 
     componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
+        callIfDefined(this.props.onRender);
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
+        callIfDefined(this.props.onDestroy);
     }
 
     private getClasses(): string {

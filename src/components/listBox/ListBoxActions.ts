@@ -20,6 +20,7 @@ export interface IListBoxPayload {
     items?: IItemBoxProps[];
     diff?: number;
     resetSelected?: boolean;
+    updateSelected?: boolean;
 }
 
 export const addListBox = (id: string, items: IItemBoxProps[]): IReduxAction<IListBoxPayload> => ({
@@ -57,7 +58,7 @@ export const clearListBoxOption = (id: string): IReduxAction<IListBoxPayload> =>
     payload: {id},
 });
 
-export const updateListBoxOption = (id: string, items: IItemBoxProps[], resetSelected: boolean = false): IReduxAction<IListBoxPayload> => ({
+export const updateListBoxOption = (id: string, items: IItemBoxProps[], resetSelected = false, updateSelected = false): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.update,
-    payload: {id, items, resetSelected},
+    payload: {id, items, resetSelected, updateSelected},
 });
