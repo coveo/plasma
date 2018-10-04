@@ -153,7 +153,11 @@ export const listBoxesReducer = (
             return state.map((listBox: IListBoxState) => listBoxReducer(listBox, action));
         case FilterActions.addFilter:
         case FilterActions.filterThrough:
-            return state.map((listBox: IListBoxState) => listBoxFilterReducer(listBox, action));
+            return state.map((listBox: IListBoxState) => {
+                return listBox.id === action.payload.id
+                    ? listBoxFilterReducer(listBox, action)
+                    : listBox;
+            });
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {toggleSelect} from '../../select/SelectActions';
-import {FilterActions, IChangeFilterActionPayload, IFilterActionPayload} from '../FilterBoxActions';
+import {FilterActions, IFilterActionPayload} from '../FilterBoxActions';
 import {
     filterBoxesReducer,
     filterBoxInitialState,
@@ -120,7 +120,7 @@ describe('FilterBox', () => {
                 },
             ];
             const newFilter = 'something';
-            const action: IReduxAction<IChangeFilterActionPayload> = {
+            const action: IReduxAction<IFilterActionPayload> = {
                 type: FilterActions.filterThrough,
                 payload: {
                     id: 'some-filter1',

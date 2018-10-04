@@ -1,6 +1,6 @@
 import {IReduxActionsDefaultPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {IChangeFilterActionPayload} from '../filterBox/FilterBoxActions';
+import {IFilterActionPayload} from '../filterBox/FilterBoxActions';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 
 export const ListBoxActions = {
@@ -23,7 +23,7 @@ export interface IListBoxPayload extends IReduxActionsDefaultPayload {
     resetSelected?: boolean;
 }
 
-export interface IListBoxFilterPayload extends IListBoxPayload, IChangeFilterActionPayload {}
+export interface IListBoxFilterPayload extends IListBoxPayload, IFilterActionPayload {}
 
 export const addListBox = (id: string, items: IItemBoxProps[]): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.add,
