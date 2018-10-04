@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {mod} from '../../utils/DataStructuresUtils';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
@@ -17,16 +18,17 @@ import {ISelectState} from './SelectReducers';
 export interface ISelectSpecificProps {
     button: React.ReactNode;
     multi?: boolean;
+    customValues?: boolean;
 }
 
 export interface ISelectOwnProps {
     id: string;
     placeholder?: string;
-    customValues?: boolean;
 }
 
 export interface ISelectStateProps {
     items?: IItemBoxProps[];
+    selected?: string[];
     isOpen?: boolean;
     active?: number;
     selectedValues?: string[];
@@ -133,8 +135,14 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
             const newChildren = React.Children.map(this.props.children, (child: React.ReactElement<any>) => {
                 if (child) {
                     return React.cloneElement(child, {
-                        onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
-                        onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
+                        onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
+                            callIfDefined(child.props.onKeyDown, e);
+                            this.onKeyDown(e);
+                        },
+                        onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => {
+                            callIfDefined(child.props.onKeyUp, e);
+                            this.onKeyUp(e);
+                        },
                     });
                 }
             });
