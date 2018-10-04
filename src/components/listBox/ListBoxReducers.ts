@@ -1,15 +1,20 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {AutocompleteActions} from '../autocomplete/AutocompleteActions';
+import {FilterActions, MatchFilter} from '../filterBox/FilterBoxActions';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {SelectActions} from '../select/SelectActions';
-import {IListBoxPayload, ListBoxActions} from './ListBoxActions';
+import {IListBoxFilterPayload, IListBoxPayload, ListBoxActions} from './ListBoxActions';
 
 export interface IListBoxState {
     id: string;
     selected: string[];
     active?: number;
     items: IItemBoxProps[];
+}
+
+export interface IListBoxFilterState extends IListBoxState {
+    matchFilter?: MatchFilter;
 }
 
 export const listBoxInitialState: IListBoxState = {id: undefined, selected: [], items: []};
@@ -65,8 +70,10 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
             let selectedUpdated = [];
             if (!action.payload.resetSelected) {
                 selectedUpdated = _.chain(action.payload.items)
+                    .difference(state.items)
+                    .where({selected: true})
                     .pluck('value')
-                    .intersection(state.selected)
+                    .union(state.selected)
                     .value();
             }
             return {
@@ -79,12 +86,44 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
                 ...state,
                 active: 0,
                 selected: [],
-                items: [],
             };
         case SelectActions.toggle:
+            const items: IItemBoxProps[] = _.map(state.items, (item: IItemBoxProps) => {
+                const hidden: boolean = _.some(state.selected, (selectedValue: string) => selectedValue === item.value);
+                return {
+                    ...item,
+                    hidden,
+                };
+            });
             return {
                 ...state,
+                items: items,
                 active: 0,
+            };
+        default:
+            return state;
+    }
+};
+
+export const listBoxFilterReducer = (
+    state: IListBoxFilterState = listBoxInitialState,
+    action: IReduxAction<IListBoxFilterPayload>,
+): IListBoxFilterState => {
+    switch (action.type) {
+        case FilterActions.addFilter: {
+            return {
+                ...state,
+                matchFilter: action.payload.matchFilter,
+            };
+        }
+        case FilterActions.filterThrough:
+            const items = _.map(state.items, (item: IItemBoxProps) => {
+                const visible = state.matchFilter(action.payload.filterText, item, ['value', 'displayValue']);
+                return {...item, hidden: !visible};
+            });
+            return {
+                ...state,
+                items,
             };
         default:
             return state;
@@ -93,7 +132,7 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
 
 export const listBoxesReducer = (
     state: IListBoxState[] = listBoxesInitialState,
-    action: IReduxAction<IListBoxPayload>,
+    action: IReduxAction<IListBoxFilterPayload>,
 ): IListBoxState[] => {
     switch (action.type) {
         case ListBoxActions.add:
@@ -112,6 +151,13 @@ export const listBoxesReducer = (
         case AutocompleteActions.setValue:
         case SelectActions.toggle:
             return state.map((listBox: IListBoxState) => listBoxReducer(listBox, action));
+        case FilterActions.addFilter:
+        case FilterActions.filterThrough:
+            return state.map((listBox: IListBoxState) => {
+                return listBox.id === action.payload.id
+                    ? listBoxFilterReducer(listBox, action)
+                    : listBox;
+            });
         default:
             return state;
     }

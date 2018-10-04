@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+import {IReduxActionsDefaultPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
 
 export const FilterActions = {
@@ -22,13 +23,9 @@ export const defaultMatchFilter = (filterValue: string, item: any, propertiesNam
 
 export type MatchFilter = (filterValue: string, item: any, propertiesName: string[]) => boolean;
 
-export interface IFilterActionPayload {
-    id: string;
+export interface IFilterActionPayload extends IReduxActionsDefaultPayload {
     matchFilter?: MatchFilter;
-}
-
-export interface IChangeFilterActionPayload extends IFilterActionPayload {
-    filterText: string;
+    filterText?: string;
 }
 
 export const addFilter = (id: string, matchFilter: MatchFilter = defaultMatchFilter): IReduxAction<IFilterActionPayload> => ({
@@ -46,7 +43,7 @@ export const removeFilter = (id: string): IReduxAction<IFilterActionPayload> => 
     },
 });
 
-export const filterThrough = (id: string, filterText: string): IReduxAction<IChangeFilterActionPayload> => ({
+export const filterThrough = (id: string, filterText: string): IReduxAction<IFilterActionPayload> => ({
     type: FilterActions.filterThrough,
     payload: {
         id,

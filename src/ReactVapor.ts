@@ -81,6 +81,10 @@ export interface IReactVaporState {
     lastAction?: Redux.Action;
 }
 
+export interface IReduxActionsDefaultPayload {
+    id: string;
+}
+
 export interface IReduxActionsPayload {
     id?: string;
     ids?: string[];

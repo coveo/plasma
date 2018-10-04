@@ -3,8 +3,7 @@ import {IReduxAction} from '../../../utils/ReduxUtils';
 import {setAutocompleteValue} from '../../autocomplete/AutocompleteActions';
 import {
     addListBox,
-    clearListBoxOption,
-    IListBoxPayload,
+    clearListBoxOption, IListBoxFilterPayload,
     removeListBox,
     reorderListBoxOption,
     selectListBoxOption,
@@ -15,7 +14,7 @@ import {IListBoxState, listBoxesInitialState, listBoxesReducer, listBoxInitialSt
 
 describe('ListBox', () => {
     describe('ListBox Reducers', () => {
-        const genericAction: IReduxAction<IListBoxPayload> = {
+        const genericAction: IReduxAction<IListBoxFilterPayload> = {
             type: 'DO_SOMETHING',
             payload: {
                 id: 'list-box-id',
@@ -343,11 +342,20 @@ describe('ListBox', () => {
 
             it('should update items in the state and keep the selected value by default', () => {
                 const oldState: IListBoxState = {...listBoxInitialState, id, items: items, selected: [items[0].value]};
+                const newState: IListBoxState = listBoxReducer(oldState, updateListBoxOption(id, [{value: 'a'}]));
+
+                expect(newState.id).toBe(id);
+                expect(oldState.selected.length).toEqual(newState.selected.length);
+                expect(newState.selected[0]).toBe('a');
+            });
+
+            it('should update items in the state and add the new item selected in the selected list', () => {
+                const oldState: IListBoxState = {...listBoxInitialState, id, items: items, selected: [items[0].value]};
                 const newState: IListBoxState = listBoxReducer(oldState, updateListBoxOption(id, newItems));
 
                 expect(newState.id).toBe(id);
-                expect(newState.items).toBe(newItems);
-                expect(newState.selected[0]).toBe(items[0].value);
+                expect(oldState.selected.length).toBeLessThan(newState.selected.length);
+                expect(newState.selected[0]).toBe(newItems[1].value);
             });
 
             it('should update items in the state and remove the selected value by default', () => {
