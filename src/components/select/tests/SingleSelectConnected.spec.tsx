@@ -20,7 +20,7 @@ describe('Select', () => {
 
         const id: string = 'list-box-connected';
 
-        const mountSingleSelect = (items: IItemBoxProps[] = [], props: Partial<ISingleSelectProps> = {}) => {
+        const mountSingleSelect = (items: IItemBoxProps[] = [], props: ISingleSelectProps & any = {}) => {
             wrapper = mount(
                 <Provider store={store}>
                     <SingleSelectConnected id={id} items={items} {...props} />

@@ -18,9 +18,9 @@ const defaultItems: IItemBoxProps[] = [
 ];
 
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
-    {id: UUID.generate(), option: {content: 'All'}, selected: true},
-    {id: UUID.generate(), option: {content: 'even'}},
-    {id: UUID.generate(), option: {content: 'odd'}},
+    {id: 'defaultFlatSelectOption', option: {content: 'All'}, selected: true},
+    {id: 'eventFlatSelectOption', option: {content: 'even'}},
+    {id: 'oddFlatSelectOption', option: {content: 'odd'}},
 ];
 
 export interface IMultiSelectExamplesState {
@@ -86,7 +86,7 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                     <label className='form-control-label'>A Multi Select With Filter and Custom Values</label>
                     <br />
                     <MultiSelectWithFilter
-                        id={UUID.generate()}
+                        id={'multiSelectFilterCustomValues'}
                         items={this.state.hoc}
                         customValues
                     />
@@ -94,13 +94,18 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                 <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Predicates</label>
                     <br />
-                    <MultiSelectWithPredicate id={UUID.generate()} items={this.state.hoc} options={defaultFlatSelectOptions} matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)} />
+                    <MultiSelectWithPredicate
+                        id={'multiSelectPredicate'}
+                        items={this.state.hoc}
+                        options={defaultFlatSelectOptions}
+                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                    />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter and Predicates</label>
                     <br />
                     <MultiSelectWithPredicateAndFilter
-                        id={UUID.generate()}
+                        id={'multiSelectFilterPredicate'}
                         items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
