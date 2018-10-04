@@ -23,6 +23,7 @@ export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
 
 export interface IMultiSelectStateProps {
     selected?: string[];
+    items?: IItemBoxProps[];
 }
 
 export interface IMultiSelectDispatchProps {
@@ -37,6 +38,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps
     const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
     return {
         selected: listbox && listbox.selected ? listbox.selected : undefined,
+        items: listbox && listbox.items ? listbox.items : ownProps.items,
     };
 };
 
@@ -57,7 +59,7 @@ const parentDropTarget = {
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))
-export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}> {
+export class MultiSelectConnected extends React.Component<IMultiSelectProps> {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
