@@ -2,43 +2,76 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
-import {ReduxConnect} from '../../utils/ReduxUtils';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {FlatSelectConnected} from '../flatSelect/FlatSelectConnected';
 import {IFlatSelectOptionProps} from '../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {ISelectProps} from './SelectConnected';
+import {updateListBoxOption} from '../listBox/ListBoxActions';
+import {ISelectWithPredicateAndFilterProps} from './SelectComponents';
+import {ISelectOwnProps, ISelectProps, ISelectStateProps} from './SelectConnected';
+
+export type MatchPredicate = (predicate: string, item: IItemBoxProps) => boolean;
 
 export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];
-    matchPredicate: (predicate: string, item: IItemBoxProps) => boolean;
+    matchPredicate?: MatchPredicate;
 }
+
+export interface ISelectWithPredicateDispatchProps {
+    updateItems: (predicate: string, items: IItemBoxProps[], matchPredicate: MatchPredicate) => void;
+}
+
+export interface ISelectWithPredicateProps extends ISelectWithPredicateOwnProps,
+    Partial<ISelectWithPredicateDispatchProps>,
+    ISelectProps {}
+
 const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
 
-export interface ISelectWithPredicateProps extends ISelectWithPredicateOwnProps, ISelectProps {}
+export const selectWithPredicate = (Component: (React.ComponentClass<ISelectProps> | React.StatelessComponent<ISelectProps>)): React.ComponentClass<ISelectWithPredicateAndFilterProps> => {
 
-export const selectWithPredicate = (Component: (React.ComponentClass<ISelectProps> | React.StatelessComponent<ISelectProps>)): React.ComponentClass<ISelectWithPredicateProps> => {
-
-    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithPredicateProps): Partial<ISelectProps> => {
-        const flatSelect = _.findWhere(state.flatSelect, {id: ownProps.id});
-        const predicate = flatSelect && flatSelect.selectedOptionId || ownProps.options[0].id;
-
-        const items = _.map(ownProps.items, (item: IItemBoxProps) => {
-            const visible = ownProps.matchPredicate(predicate, item);
-
-            return {...item, hidden: !visible || item.hidden};
-        });
-
+    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithPredicateProps): Partial<ISelectStateProps> => {
+        const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
         return {
-            items,
+            items: listbox ? listbox.items : ownProps.items,
         };
     };
 
-    @ReduxConnect(mapStateToProps)
-    class WrappedComponent extends React.Component<ISelectWithPredicateProps> {
+    const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectWithPredicateOwnProps & ISelectOwnProps): ISelectWithPredicateDispatchProps => ({
+        updateItems: (predicate: string, items: IItemBoxProps[], matchPredicate: MatchPredicate) => {
+            const newItems = _.map(items, (item: IItemBoxProps) => {
+                const visible = matchPredicate(predicate, item);
+                return {...item, hidden: !visible};
+            });
+            dispatch(updateListBoxOption(
+                ownProps.id,
+                [...newItems],
+            ));
+        },
+    });
+
+    @ReduxConnect(mapStateToProps, mapDispatchToProps)
+    class WrappedComponent extends React.Component<ISelectWithPredicateAndFilterProps> {
+
+        private handleOnClick(option: IFlatSelectOptionProps) {
+            callIfDefined(this.props.updateItems, option.id, this.props.items, this.props.matchPredicate);
+        }
+
+        componentWillMount() {
+            callIfDefined(this.props.updateItems, this.props.options[0].id, this.props.items, this.props.matchPredicate);
+        }
+
         render() {
             return (
                 <Component {..._.omit(this.props, SelectWithPredicatePropsToOmit)}>
-                    <FlatSelectConnected id={this.props.id} classes={['full-content-x']} options={this.props.options} group optionPicker />
+                    <FlatSelectConnected
+                        id={this.props.id}
+                        classes={['full-content-x']}
+                        options={this.props.options}
+                        onClick={(option: IFlatSelectOptionProps) => this.handleOnClick(option)}
+                        group
+                        optionPicker
+                    />
                     {this.props.children}
                 </Component>
             );
