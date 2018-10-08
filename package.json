@@ -149,7 +149,7 @@
     "reselect": "3.0.1",
     "sass-loader": "7.1.0",
     "shelljs": "0.8.2",
-    "style-loader": "0.23.0",
+    "style-loader": "0.23.1",
     "ts-transformer-keys": "0.3.3",
     "tsjs": "0.6.7",
     "tslint-loader": "3.6.0",
