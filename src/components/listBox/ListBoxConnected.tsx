@@ -15,7 +15,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IListBoxOwnProps): I
     return {
         selected: list ? list.selected : [],
         active: list ? list.active : undefined,
-        items: list ? list.items : ownProps.items,
+        items: ownProps.items || [],
     };
 };
 
@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IL
 });
 
 export const ListBoxConnected: React.ComponentClass<IListBoxProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergePropsWithStatePropsPriority)(ListBox);
+    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.defaultMergeProps)(ListBox);
