@@ -9,7 +9,7 @@ import {keyCode} from '../../utils/InputUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {selectListBoxOption, setActiveListBoxOption, updateListBoxOption} from '../listBox/ListBoxActions';
+import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {IListBoxState} from '../listBox/ListBoxReducers';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
@@ -40,7 +40,6 @@ export interface ISelectDispatchProps {
     onToggleDropdown?: () => void;
     onSelectValue?: (value: string, isMulti: boolean) => void;
     setActive?: (diff: number) => void;
-    onItemsHaveChanged?: (items: IItemBoxProps[]) => void;
 }
 
 export interface ISelectButtonProps {
@@ -74,7 +73,6 @@ const mapDispatchToProps = (
     onToggleDropdown: () => dispatch(toggleSelect(ownProps.id)),
     onSelectValue: (value: string, isMulti: boolean) => dispatch(selectListBoxOption(ownProps.id, isMulti, value)),
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
-    onItemsHaveChanged: (items: IItemBoxProps[]) => dispatch(updateListBoxOption(ownProps.id, items, false, true)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -91,12 +89,6 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleDocumentClick);
         this.props.onDestroy();
-    }
-
-    componentWillReceiveProps(nextProps: ISelectProps) {
-        if (JSON.stringify(nextProps.items) !== JSON.stringify(this.props.items)) {
-            this.props.onItemsHaveChanged(nextProps.items);
-        }
     }
 
     componentWillUpdate(nextProps: ISelectProps): any {

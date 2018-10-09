@@ -1,7 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {AutocompleteActions} from '../autocomplete/AutocompleteActions';
-import {IItemBoxProps} from '../itemBox/ItemBox';
 import {SelectActions} from '../select/SelectActions';
 import {IListBoxPayload, ListBoxActions} from './ListBoxActions';
 
@@ -9,10 +8,9 @@ export interface IListBoxState {
     id: string;
     selected: string[];
     active?: number;
-    items: IItemBoxProps[];
 }
 
-export const listBoxInitialState: IListBoxState = {id: undefined, selected: [], items: []};
+export const listBoxInitialState: IListBoxState = {id: undefined, selected: []};
 export const listBoxesInitialState: IListBoxState[] = [];
 
 export const listBoxReducer = (state: IListBoxState = listBoxInitialState, action: IReduxAction<IListBoxPayload>): IListBoxState => {
@@ -22,15 +20,10 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
 
     switch (action.type) {
         case ListBoxActions.add:
-            const selected = _.chain(action.payload.items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
             return {
                 id: action.payload.id,
-                selected: selected,
+                selected: [],
                 active: 0,
-                items: action.payload.items,
             };
         case ListBoxActions.select:
             return {
@@ -61,30 +54,11 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
             }
 
             return {...state, active};
-        case ListBoxActions.update:
-            let selectedUpdated = [];
-            if (!action.payload.resetSelected && !action.payload.updateSelected) {
-                selectedUpdated = _.chain(action.payload.items)
-                    .pluck('value')
-                    .intersection(state.selected)
-                    .value();
-            } else if (!action.payload.resetSelected && action.payload.updateSelected) {
-                selectedUpdated = _.chain(action.payload.items)
-                    .where({selected: true})
-                    .pluck('value')
-                    .value();
-            }
-            return {
-                ...state,
-                selected: selectedUpdated,
-                items: action.payload.items,
-            };
         case ListBoxActions.clear:
             return {
                 ...state,
                 active: 0,
                 selected: [],
-                items: [],
             };
         case SelectActions.toggle:
             return {
@@ -113,7 +87,6 @@ export const listBoxesReducer = (
         case ListBoxActions.select:
         case ListBoxActions.reorder:
         case ListBoxActions.setActive:
-        case ListBoxActions.update:
         case AutocompleteActions.setValue:
         case SelectActions.toggle:
             return state.map((listBox: IListBoxState) => listBoxReducer(listBox, action));

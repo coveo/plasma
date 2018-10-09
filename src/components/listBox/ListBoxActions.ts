@@ -1,5 +1,4 @@
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
 
 export const ListBoxActions = {
     add: 'ADD_LIST_BOX',
@@ -9,7 +8,6 @@ export const ListBoxActions = {
     reorder: 'REORDER_ITEM_LIST_BOX',
     setActive: 'SET_ACTIVE_ITEM_LIST_BOX',
     clear: 'CLEAR_ITEM_LIST_BOX',
-    update: 'UPDATE_ITEM_LIST_BOX',
 };
 
 export interface IListBoxPayload {
@@ -17,15 +15,12 @@ export interface IListBoxPayload {
     multi?: boolean;
     value?: string;
     values?: string[];
-    items?: IItemBoxProps[];
     diff?: number;
-    resetSelected?: boolean;
-    updateSelected?: boolean;
 }
 
-export const addListBox = (id: string, items: IItemBoxProps[]): IReduxAction<IListBoxPayload> => ({
+export const addListBox = (id: string): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.add,
-    payload: {id, items},
+    payload: {id},
 });
 
 export const removeListBox = (id: string): IReduxAction<IListBoxPayload> => ({
@@ -56,9 +51,4 @@ export const setActiveListBoxOption = (id: string, diff: number): IReduxAction<I
 export const clearListBoxOption = (id: string): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.clear,
     payload: {id},
-});
-
-export const updateListBoxOption = (id: string, items: IItemBoxProps[], resetSelected = false, updateSelected = false): IReduxAction<IListBoxPayload> => ({
-    type: ListBoxActions.update,
-    payload: {id, items, resetSelected, updateSelected},
 });

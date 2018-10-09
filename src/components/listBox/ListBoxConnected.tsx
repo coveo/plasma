@@ -15,12 +15,12 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IListBoxOwnProps): I
     return {
         selected: list ? list.selected : [],
         active: list ? list.active : undefined,
-        items: list ? list.items : ownProps.items,
+        items: ownProps.items || [],
     };
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IListBoxDispatchProps => ({
-    onRender: () => dispatch(addListBox(ownProps.id, ownProps.items)),
+    onRender: () => dispatch(addListBox(ownProps.id)),
     onDestroy: () => dispatch(removeListBox(ownProps.id)),
     onOptionClick: (option: IItemBoxProps) => dispatch(selectListBoxOption(ownProps.id, ownProps.multi, option.value)),
 });
