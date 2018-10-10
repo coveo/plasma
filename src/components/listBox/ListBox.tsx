@@ -5,19 +5,16 @@ import {mod} from '../../utils/DataStructuresUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
-export interface IListBoxCommonProps {
-    items: IItemBoxProps[];
-}
-
-export interface IListBoxOwnProps extends IListBoxCommonProps {
+export interface IListBoxOwnProps {
     noResultItem?: IItemBoxProps;
     classes?: string[];
     id?: string;
     multi?: boolean;
     highlight?: string;
+    items?: IItemBoxProps[];
 }
 
-export interface IListBoxStateProps extends IListBoxCommonProps {
+export interface IListBoxStateProps {
     selected?: string[];
     active?: number;
 }

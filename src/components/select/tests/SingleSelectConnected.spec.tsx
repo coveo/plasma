@@ -8,7 +8,6 @@ import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import * as ListBoxActions from '../../listBox/ListBoxActions';
 import {ISelectProps, ISelectSpecificProps, SelectConnected} from '../SelectConnected';
 import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
@@ -108,29 +107,6 @@ describe('Select', () => {
 
             const value: string = select.find('.dropdown-selected-value').prop<string>('data-value');
             expect(value).toBe(selectedValue);
-        });
-
-        it('should update the listbox items state when items prop changes by dispatching updateListBoxOption action', () => {
-            const spy = spyOn(ListBoxActions, 'updateListBoxOption').and.returnValue({type: 'whatever', payload: {}});
-            const newItems: IItemBoxProps[] = [{value: 'a', selected: true}, {value: 'b'}];
-
-            mountSingleSelect([{value: 'a', disabled: true}, {value: 'b', selected: true}]);
-
-            singleSelect.setProps({items: newItems});
-
-            expect(spy).toHaveBeenCalledWith(id, newItems, false, true);
-        });
-
-        it('should not update the listbox items state when items prop does not change by dispatching updateListBoxOption action', () => {
-            const spy = spyOn(ListBoxActions, 'updateListBoxOption').and.returnValue({type: 'whatever', payload: {}});
-            const currentItems: IItemBoxProps[] = [{value: 'a', selected: true}, {value: 'b'}];
-            const newItems: IItemBoxProps[] = [{value: 'a', selected: true}, {value: 'b'}];
-
-            mountSingleSelect(currentItems);
-
-            singleSelect.setProps({items: newItems});
-
-            expect(spy).not.toHaveBeenCalled();
         });
 
         it('should set the toggleClasses prop if any on the dropdown-toggle', () => {

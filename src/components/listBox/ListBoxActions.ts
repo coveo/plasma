@@ -1,4 +1,5 @@
 import {IReduxAction} from '../../utils/ReduxUtils';
+import {IItemBoxProps} from '../itemBox/ItemBox';
 
 export const ListBoxActions = {
     add: 'ADD_LIST_BOX',
@@ -15,12 +16,13 @@ export interface IListBoxPayload {
     multi?: boolean;
     value?: string;
     values?: string[];
+    items?: IItemBoxProps[];
     diff?: number;
 }
 
-export const addListBox = (id: string): IReduxAction<IListBoxPayload> => ({
+export const addListBox = (id: string, items: IItemBoxProps[]): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.add,
-    payload: {id},
+    payload: {id, items},
 });
 
 export const removeListBox = (id: string): IReduxAction<IListBoxPayload> => ({

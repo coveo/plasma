@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IReactVaporExampleState} from '../../../../docs/Reducers';
-import {callIfDefined} from '../../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect, ReduxUtils} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {Button} from '../../button/Button';
@@ -16,7 +15,7 @@ interface IListBoxExamplesDispatchProps {
 }
 
 interface IListBoxExamplesStateProps {
-    items: IItemBoxProps[];
+    items?: IItemBoxProps[];
 }
 
 interface IListBoxExamplesProps extends Partial<IListBoxExamplesDispatchProps>, Partial<IListBoxExamplesStateProps> {
@@ -35,9 +34,7 @@ const mapStateToProps = (state: IReactVaporExampleState, ownProps: IListBoxExamp
         };
     }
 
-    return {
-        items: ownProps.items,
-    };
+    return {};
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxExamplesProps): IListBoxExamplesDispatchProps => ({
@@ -55,15 +52,15 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxExamplesProps
 export class ListBoxExampleConnected extends React.Component<IListBoxExamplesProps> {
 
     componentWillMount() {
-        callIfDefined(this.props.addListBoxExample);
+        this.props.addListBoxExample();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.removeListBoxExample);
+        this.props.removeListBoxExample();
     }
 
     private handleOnClick() {
-        callIfDefined(this.props.updateOptions);
+        this.props.updateOptions();
     }
 
     render() {

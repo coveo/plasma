@@ -20,9 +20,13 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
 
     switch (action.type) {
         case ListBoxActions.add:
+            const selected = _.chain(action.payload.items)
+                .where({selected: true})
+                .pluck('value')
+                .value();
             return {
                 id: action.payload.id,
-                selected: [],
+                selected: selected,
                 active: 0,
             };
         case ListBoxActions.select:

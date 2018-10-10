@@ -9,7 +9,7 @@ import {
     reorderListBoxOption,
     selectListBoxOption,
     setActiveListBoxOption,
-    unselectListBoxOption, updateListBoxOption,
+    unselectListBoxOption,
 } from '../ListBoxActions';
 import {IListBoxState, listBoxesInitialState, listBoxesReducer, listBoxInitialState, listBoxReducer} from '../ListBoxReducers';
 
@@ -62,7 +62,7 @@ describe('ListBox', () => {
 
             it('should return the old state with one more list box', () => {
                 const oldState: IListBoxState[] = [listBoxInitialState];
-                const newState: IListBoxState[] = listBoxesReducer(oldState, addListBox(id, []));
+                const newState: IListBoxState[] = listBoxesReducer(oldState, addListBox(id, items));
 
                 expect(newState.length).toBe(oldState.length + 1);
                 expect(newState[1].id).toBe(id);
@@ -83,13 +83,6 @@ describe('ListBox', () => {
                 listBoxesReducer(oldState, addListBox(id, items));
 
                 expect(oldState).toEqual(oldStateBefore);
-            });
-
-            it('should add the list in the state', () => {
-                const oldState: IListBoxState = listBoxInitialState;
-                const newState: IListBoxState = listBoxReducer(oldState, addListBox(id, items));
-
-                expect(newState.items).toEqual(items);
             });
         });
 
@@ -324,48 +317,6 @@ describe('ListBox', () => {
                 listBoxesReducer(oldState, setActiveListBoxOption(id, 1));
 
                 expect(oldState).toEqual(oldStateBefore);
-            });
-        });
-
-        describe('UPDATE_ITEM_LIST_BOX', () => {
-            const id = 'list-box-id';
-            const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const newItems = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
-
-            it('should update items in the state with listBoxesReducer', () => {
-                const oldState: IListBoxState[] = [...listBoxesInitialState, {...listBoxInitialState, id, items: items}];
-                const newState: IListBoxState[] = listBoxesReducer(oldState, updateListBoxOption(id, newItems));
-
-                expect(newState.length).toBe(oldState.length);
-                expect(newState[0].id).toBe(id);
-                expect(newState[0].items).toBe(newItems);
-            });
-
-            it('should update items in the state and keep the selected value by default', () => {
-                const oldState: IListBoxState = {...listBoxInitialState, id, items: items, selected: [items[0].value]};
-                const newState: IListBoxState = listBoxReducer(oldState, updateListBoxOption(id, newItems));
-
-                expect(newState.id).toBe(id);
-                expect(newState.items).toBe(newItems);
-                expect(newState.selected[0]).toBe(items[0].value);
-            });
-
-            it('should update items in the state and remove the selected value by default', () => {
-                const oldState: IListBoxState = {...listBoxInitialState, id, items: items, selected: [items[0].value]};
-                const newState: IListBoxState = listBoxReducer(oldState, updateListBoxOption(id, newItems, true));
-
-                expect(newState.id).toBe(id);
-                expect(newState.items).toBe(newItems);
-                expect(newState.selected).toEqual([]);
-            });
-
-            it('should update items in the state and update the selected value when payload has updateSelected = true', () => {
-                const oldState: IListBoxState = {...listBoxInitialState, id, items: items, selected: [items[0].value]};
-                const newState: IListBoxState = listBoxReducer(oldState, updateListBoxOption(id, newItems, false, true));
-
-                expect(newState.id).toBe(id);
-                expect(newState.items).toBe(newItems);
-                expect(newState.selected).toEqual(['b']);
             });
         });
 
