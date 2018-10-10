@@ -14,6 +14,7 @@ export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
     withTitleOnInput?: boolean;
     truncate?: boolean;
     onFilterCallback?: (id: string, filterText: string) => void;
+    className?: string;
 }
 
 export interface IFilterBoxStateProps {
@@ -110,26 +111,30 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         const svgClearClasses = classNames({'hidden': !(this.filterInput && this.filterInput.value)});
 
         return (
-            <div
-                id={this.props.id}
-                className={filterBoxContainerClasses}
-                style={inputMaxWidth}
-                title={this.filterInput && this.props.withTitleOnInput ? this.filterInput.value : undefined}>
-                <input
-                    ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
-                    type='text'
-                    className={filterInputClasses}
-                    placeholder={filterPlaceholder}
-                    onChange={(e: React.FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
-                    onBlur={() => this.handleOnBlur()}
-                    onFocus={(e: React.FocusEvent<HTMLInputElement>) => {this.placeCursorAtEndOfInputValue(e);}}
-                    onKeyDown={(e) => this.handleOnKeyDown(e)}
-                    onKeyUp={(e) => this.handleOnKeyUp(e)}
+            <div className={this.props.className}>
+                <div
+                    id={this.props.id}
+                    className={filterBoxContainerClasses}
                     style={inputMaxWidth}
-                    autoFocus={this.props.isAutoFocus}
-                />
-                <Svg svgName='clear' className={svgClearClasses} svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
-                <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
+                    title={this.filterInput && this.props.withTitleOnInput ? this.filterInput.value : undefined}>
+                    <input
+                        ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
+                        type='text'
+                        className={filterInputClasses}
+                        placeholder={filterPlaceholder}
+                        onChange={(e: React.FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
+                        onBlur={() => this.handleOnBlur()}
+                        onFocus={(e: React.FocusEvent<HTMLInputElement>) => {this.placeCursorAtEndOfInputValue(e);}}
+                        onKeyDown={(e) => this.handleOnKeyDown(e)}
+                        onKeyUp={(e) => this.handleOnKeyUp(e)}
+                        style={inputMaxWidth}
+                        autoFocus={this.props.isAutoFocus}
+                    />
+                    <Svg svgName='clear' className={svgClearClasses} svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
+                    <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
+
+                </div>
+                {this.props.children}
             </div>
         );
     }
