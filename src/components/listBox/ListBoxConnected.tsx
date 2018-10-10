@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IL
 });
 
 export const ListBoxConnected: React.ComponentClass<IListBoxProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergePropsWithStatePropsPriority)(ListBox);
+    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.defaultMergeProps)(ListBox);

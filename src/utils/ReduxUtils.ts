@@ -10,8 +10,10 @@ export class ReduxUtils {
         return extend({}, stateProps, dispatchProps, ownProps);
     }
 
-    static mergePropsWithStatePropsPriority(stateProps: any, dispatchProps: any, ownProps: any) {
-        return extend({}, ownProps, dispatchProps, stateProps);
+    // Default MergeProps by react-redux
+    // https://github.com/reduxjs/react-redux/blob/master/docs/api.md
+    static defaultMergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
+        return extend({}, ownProps, stateProps, dispatchProps);
     }
 }
 
