@@ -146,10 +146,10 @@ describe('FilterBox', () => {
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const containerClasses = [containerClass];
-            expect(filterBox.find('div').first().hasClass(containerClass)).toBe(false);
+            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(false);
 
             filterBox.setProps({id: id, containerClasses}).update();
-            expect(filterBox.find('div').first().hasClass(containerClass)).toBe(true);
+            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(true);
         });
 
         it('should call onBlur when the input loose focus', () => {
