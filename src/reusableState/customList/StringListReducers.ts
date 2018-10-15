@@ -21,7 +21,7 @@ export const stringListCompositeState = (
 ): IStringListCompositeState => {
 
     if (!action.payload || (!state[action.payload.id] && action.type !== StringListActions.add)) {
-        return state;
+        return {...state};
     }
 
     const stateList: IStringListState = {...state[action.payload.id]};
@@ -39,24 +39,22 @@ export const stringListCompositeState = (
                 ..._.omit(state, [action.payload.id]),
             };
         case StringListActions.addValue:
-            state[action.payload.id] = {
-                ...stateList,
-                list: _.uniq([...stateList.list, action.payload.value]),
-            };
-
             return {
                 ...state,
+                [action.payload.id]: {
+                    ...stateList,
+                    list: _.uniq([...stateList.list, action.payload.value]),
+                },
             };
         case StringListActions.removeValue:
-            state[action.payload.id] = {
-                ...stateList,
-                list: [..._.without(stateList.list, action.payload.value)],
-            };
-
             return {
                 ...state,
+                [action.payload.id]: {
+                    ...stateList,
+                    list: [..._.without(stateList.list, action.payload.value)],
+                },
             };
         default:
-            return state;
+            return {...state};
     }
 };
