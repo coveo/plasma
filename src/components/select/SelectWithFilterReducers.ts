@@ -8,45 +8,47 @@ export type ISelectWithFilterCompositeState = {[id: string]: ISelectWithFilterSt
 
 export interface ISelectWithFilterState extends IStringListState {}
 
-export const initialState: ISelectWithFilterCompositeState = {};
+export interface ISelectWithFilterPayload extends IStringListPayload, IListBoxPayload {}
+
+export const selectWithFilterInitialState: ISelectWithFilterCompositeState = {};
 
 export const selectWithFilterCompositeState = (
-    state: ISelectWithFilterCompositeState = initialState,
-    action: IReduxAction<IStringListPayload | IListBoxPayload>,
+    state: ISelectWithFilterCompositeState = selectWithFilterInitialState,
+    action: IReduxAction<ISelectWithFilterPayload>,
 ): ISelectWithFilterCompositeState => {
-    if (_.contains(StringListActions, action.type)) {
-        return stringListCompositeState(state, action);
-    }
-
     if (!action.payload || !state[action.payload.id]) {
         return state;
+    }
+
+    if (_.contains(StringListActions, action.type)) {
+        return stringListCompositeState(state, action);
     }
 
     const stateList = {...state[action.payload.id]};
     switch (action.type) {
         case ListBoxActions.select:
-            state[action.payload.id] = {
-                ...stateList,
-                list: _.uniq([...stateList.list, action.payload.value]),
-            };
             return {
                 ...state,
+                [action.payload.id]: {
+                    ...stateList,
+                    list: action.payload.multi ? _.uniq([...stateList.list, action.payload.value]) : [action.payload.value],
+                },
             };
         case ListBoxActions.unselect:
-            state[action.payload.id] = {
-                ...stateList,
-                list: [..._.without(stateList.list, action.payload.value)],
-            };
             return {
                 ...state,
+                [action.payload.id]: {
+                    ...stateList,
+                    list: [..._.without(stateList.list, action.payload.value)],
+                },
             };
         case ListBoxActions.clear:
-            state[action.payload.id] = {
-                ...stateList,
-                list: [],
-            };
             return {
                 ...state,
+                [action.payload.id]: {
+                    ...stateList,
+                    list: [],
+                },
             };
         default:
             return state;

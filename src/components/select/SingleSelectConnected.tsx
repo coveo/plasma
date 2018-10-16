@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps
 const singleSelectPropsToOmit = keys<ISingleSelectProps>();
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.HTMLProps<HTMLButtonElement>, {}> {
+export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
 
     static defaultProps: Partial<ISingleSelectOwnProps> = {
         placeholder: 'Select an option',
