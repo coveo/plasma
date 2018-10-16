@@ -4,10 +4,8 @@ import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {ReduxConnect} from '../../utils/ReduxUtils';
-import {Button} from '../button/Button';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {Svg} from '../svg/Svg';
 import {ISelectProps} from './SelectConnected';
 
 export interface ISelectWithFilterOwnProps {
@@ -47,17 +45,6 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
 
     @ReduxConnect(mapStateToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
-
-        private getButton(): React.ReactNode {
-            return this.props.customValues
-                ? (
-                    <Button classes={['p1', 'ml1']} onClick={() => this.handleOnClick()}>
-                        <Svg svgName={'add'} className='icon mod-lg mod-align-with-text' />
-                    </Button>
-                )
-                : null;
-        }
-
         render() {
             const filterBoxContainerClassNames: string = classNames({
                 'mb2': !!this.props.children,
@@ -76,9 +63,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                         onKeyUp={(this.props as any).onKeyUp}
                         className={filterBoxClassNames}
                         isAutoFocus
-                    >
-                        {this.getButton()}
-                    </FilterBoxConnected>
+                    />
                     {this.props.children}
                 </Component>
             );
