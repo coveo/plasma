@@ -78,6 +78,11 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                     <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>A Single Select With Filter and a custom value</label>
+                    <br />
+                    <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>A Single Select With Filter that only match display value</label>
                     <br />
                     <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1} />
@@ -95,6 +100,17 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                         items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Single Select With Filter, Predicates and a custom value</label>
+                    <br />
+                    <SingleSelectWithPredicateAndFilter
+                        id={'test-test'}
+                        items={this.state.hoc}
+                        options={defaultFlatSelectOptions}
+                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                        customValues
                     />
                 </div>
                 <div className='form-group'>

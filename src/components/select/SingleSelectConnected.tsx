@@ -4,8 +4,9 @@ import * as _ from 'underscore';
 
 import {keys} from 'ts-transformer-keys';
 import {IReactVaporState} from '../../ReactVapor';
+import {IStringListState} from '../../reusableState/customList/StringListReducers';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
@@ -27,17 +28,21 @@ export interface ISingleSelectProps extends ISingleSelectOwnProps, ISingleSelect
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
     const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
+    const listState: IStringListState = state.stringList[ownProps.id];
+
+    const selected: string[] = listbox && listbox.selected ? listbox.selected : [];
+    const customSelected: string[] = listState && listState.list || [];
     return {
-        selectedOption: listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : undefined,
+        selectedOption: selected.length ? listbox.selected[0] : customSelected[0],
     };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({});
+const mapDispatchToProps = (): ISingleSelectDispatchProps => ({});
 
 const singleSelectPropsToOmit = keys<ISingleSelectProps>();
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.HTMLProps<HTMLButtonElement>, {}> {
+export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
 
     static defaultProps: Partial<ISingleSelectOwnProps> = {
         placeholder: 'Select an option',
