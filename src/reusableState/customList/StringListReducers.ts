@@ -20,8 +20,11 @@ export const stringListCompositeState = (
     action: IReduxAction<IStringListPayload>,
 ): IStringListCompositeState => {
 
-    if (!action.payload || (!state[action.payload.id] && action.type !== StringListActions.add)) {
-        return {...state};
+    if (!action.payload
+        || (!state[action.payload.id] && action.type !== StringListActions.add)
+        || (state[action.payload.id] && action.type === StringListActions.add)
+    ) {
+        return state;
     }
 
     const stateList: IStringListState = {...state[action.payload.id]};
@@ -31,13 +34,11 @@ export const stringListCompositeState = (
                 ...state,
                 [action.payload.id]: {
                     id: action.payload.id,
-                    list: action.payload.list || [],
+                    list: action.payload.list,
                 },
             };
         case StringListActions.remove:
-            return {
-                ..._.omit(state, [action.payload.id]),
-            };
+            return _.omit(state, [action.payload.id]);
         case StringListActions.addValue:
             return {
                 ...state,
@@ -55,6 +56,6 @@ export const stringListCompositeState = (
                 },
             };
         default:
-            return {...state};
+            return state;
     }
 };
