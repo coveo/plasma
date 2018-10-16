@@ -29,7 +29,7 @@ import {popoversReducer} from './components/popover/PopoverReducers';
 import {radioSelectsReducer} from './components/radio/RadioSelectReducers';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
-import {selectWithFilterCompositeState} from './components/select/withFilter/SelectWithFilterReducers';
+import {selectWithFilterCompositeState} from './components/select/SelectWithFilterReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from './components/tab/TabReducers';
 import {tableHeaderCellsReducer} from './components/tables/TableHeaderCellReducers';

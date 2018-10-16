@@ -2,16 +2,16 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
-import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
-import {convertStringListToItemsBox, IStringListState} from '../../../reusableState/customList/StringListReducers';
-import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
-import {Button} from '../../button/Button';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {clearListBoxOption} from '../../listBox/ListBoxActions';
-import {Svg} from '../../svg/Svg';
-import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from '../SelectConnected';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
+import {convertStringListToItemsBox, IStringListState} from '../../reusableState/customList/StringListReducers';
+import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {Button} from '../button/Button';
+import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
+import {IItemBoxProps} from '../itemBox/ItemBox';
+import {clearListBoxOption} from '../listBox/ListBoxActions';
+import {Svg} from '../svg/Svg';
+import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from './SelectConnected';
 
 export interface ISelectWithFilterOwnProps {
     matchFilter?: (filterValue: string, item: IItemBoxProps) => boolean;
