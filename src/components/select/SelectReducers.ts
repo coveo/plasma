@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+import {StringListActions} from '../../reusableState/customList/StringListActions';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ListBoxActions} from '../listBox/ListBoxActions';
 import {ISelectPayload, SelectActions} from './SelectActions';
@@ -27,6 +28,7 @@ export const selectReducer = (state: ISelectState = selectInitialState, action: 
             return {...state, open: !_.isUndefined(action.payload.open) ? action.payload.open : !state.open};
         case ListBoxActions.setActive:
             return {...state, open: true};
+        case StringListActions.addValue:
         case ListBoxActions.select:
             // when the user selects a value in the list, close the dropdown
             return {...state, open: false};
@@ -47,6 +49,7 @@ export const selectCompositeReducer = (
             ];
         case SelectActions.remove:
             return _.reject(state, (listBox: ISelectState) => action.payload.id === listBox.id);
+        case StringListActions.addValue:
         case ListBoxActions.setActive:
         case ListBoxActions.select:
         case SelectActions.toggle:

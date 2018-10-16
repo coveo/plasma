@@ -23,6 +23,7 @@ export interface ISelectSpecificProps {
 export interface ISelectOwnProps {
     id: string;
     placeholder?: string;
+    noResultItem?: IItemBoxProps;
 }
 
 export interface ISelectStateProps {
@@ -118,7 +119,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
                 }} />
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
                     {this.renderChildren()}
-                    <ListBoxConnected id={this.props.id} items={this.props.items} multi={this.props.multi} />
+                    <ListBoxConnected id={this.props.id} items={this.props.items} multi={this.props.multi} noResultItem={this.props.noResultItem || undefined} />
                 </div>
             </div>
         );
