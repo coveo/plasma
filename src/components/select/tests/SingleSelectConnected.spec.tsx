@@ -125,6 +125,13 @@ describe('Select', () => {
             expect(select.find('.dropdown-toggle').is('[disabled]')).toBe(true);
         });
 
+        it('should contain the toggle prepend in the toggle (button) if defined', () => {
+            const expectedPrepend = <span>{'some prepended text'}</span>;
+            mountSingleSelect([], {togglePrepend: expectedPrepend});
+
+            expect(select.find('.dropdown-toggle').children().first().equals(expectedPrepend)).toBe(true);
+        });
+
         it('should contain the prepend and append in the button when selected', () => {
             const prepend = 'pre';
             const append = 'post';

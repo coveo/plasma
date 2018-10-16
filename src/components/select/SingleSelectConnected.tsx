@@ -15,6 +15,7 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
     items?: IItemBoxProps[];
+    togglePrepend?: React.ReactNode;
 }
 
 export interface ISingleSelectStateProps {
@@ -76,6 +77,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
                 onKeyUp={props.onKeyUp}
                 {..._.omit(this.props, singleSelectPropsToOmit)}
             >
+                {this.props.togglePrepend}
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
                 {option && option.append ? <Content {...option.append} /> : null}
