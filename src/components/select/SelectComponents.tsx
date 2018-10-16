@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {IMultiSelectOwnProps, MultiSelectConnected} from './MultiSelectConnected';
-import {ISelectWithFilterProps, selectWithFilter} from './SelectWithFilter';
 import {ISelectWithPredicateProps, selectWithPredicate} from './SelectWithPredicate';
 import {ISingleSelectOwnProps, SingleSelectConnected} from './SingleSelectConnected';
+import {ISelectWithFilterProps, selectWithFilter} from './withFilter/SelectWithFilter';
 
 export interface ISelectWithPredicateAndFilterProps extends ISelectWithFilterProps, ISelectWithPredicateProps {}
 
