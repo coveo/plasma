@@ -48,7 +48,6 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 <Component {..._.omit(this.props, SelectWithFilterPropsToOmit)}>
                     <FilterBoxConnected
                         id={this.props.id}
-                        containerClasses={[!!this.props.children ? 'mb2' : '']}
                         onKeyDown={(this.props as any).onKeyDown}
                         onKeyUp={(this.props as any).onKeyUp}
                         isAutoFocus
