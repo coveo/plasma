@@ -62,7 +62,8 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                         onKeyDown={(this.props as any).onKeyDown}
                         onKeyUp={(this.props as any).onKeyUp}
                         className={filterBoxClassNames}
-                        isAutoFocus />
+                        isAutoFocus
+                    />
                     {this.props.children}
                 </Component>
             );
