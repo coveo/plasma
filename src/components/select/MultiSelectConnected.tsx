@@ -4,6 +4,7 @@ import {DragDropContext, DropTarget, IDropTargetProps} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
+import {IStringListState} from '../../reusableState/customList/StringListReducers';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DraggableSelectedOption, DraggableSelectedOptionType} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
@@ -34,8 +35,13 @@ export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectSta
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => {
     const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
+    const listState: IStringListState = state.stringList[ownProps.id];
+
+    const selected: string[] = listbox && listbox.selected ? listbox.selected : [];
+    const customSelected: string[] = listState && listState.list || [];
+
     return {
-        selected: listbox && listbox.selected ? listbox.selected : undefined,
+        selected: [...selected, ...customSelected],
     };
 };
 
@@ -70,6 +76,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                 id={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
                 items={this.props.items}
+                noResultItem={this.props.noResultItem}
                 multi>
                 {this.props.children}
             </SelectConnected>
