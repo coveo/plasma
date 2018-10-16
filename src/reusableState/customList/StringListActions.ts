@@ -11,6 +11,7 @@ export interface IStringListPayload {
     id: string;
     list?: string[];
     value?: string;
+    reset?: boolean;
 }
 
 export const addStringList = (id: string, list?: string[]): IReduxAction<IStringListPayload> => ({
@@ -23,9 +24,9 @@ export const removeStringList = (id: string): IReduxAction<IStringListPayload> =
     payload: {id},
 });
 
-export const addValueStringList = (id: string, value: string): IReduxAction<IStringListPayload> => ({
+export const addValueStringList = (id: string, value: string, reset: boolean = false): IReduxAction<IStringListPayload> => ({
     type: StringListActions.addValue,
-    payload: {id, value},
+    payload: {id, value, reset},
 });
 
 export const removeValueStringList = (id: string, value: string): IReduxAction<IStringListPayload> => ({

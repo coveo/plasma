@@ -43,7 +43,7 @@ export const stringListCompositeState = (
                 ...state,
                 [action.payload.id]: {
                     ...stateList,
-                    list: _.uniq([...stateList.list, action.payload.value]),
+                    list: action.payload.reset ? [action.payload.value] : _.uniq([...stateList.list, action.payload.value]),
                 },
             };
         case StringListActions.removeValue:
