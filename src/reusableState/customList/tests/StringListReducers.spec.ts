@@ -5,7 +5,6 @@ import {
     IStringListPayload,
     removeStringList,
     removeValueStringList,
-    StringListActions,
 } from '../StringListActions';
 import {IStringListCompositeState, stringListCompositeState, stringListInitialState} from '../StringListReducers';
 
@@ -28,37 +27,34 @@ describe('StringList', () => {
         it('should return the default state if the action has no payload and the state is undefined', () => {
             const newState: IStringListCompositeState = stringListCompositeState(undefined, genericAction);
 
-            expect(newState).toEqual(stringListInitialState);
-            expect(newState).not.toBe(stringListInitialState);
+            expect(newState).toBe(stringListInitialState);
         });
 
-        it(`should return the default state if the payload id is not in the state, the action type is not ${StringListActions.add} and the state is undefined`, () => {
+        it('should return the default state if the payload id is not in the state, the action type is not ADD_STRING_LIST and the state is undefined', () => {
             const newState: IStringListCompositeState = stringListCompositeState(undefined, {...genericAction, payload: {id: 'pokemon'}});
 
             expect(newState).toEqual(stringListInitialState);
         });
 
-        it(`should return the oldState state if the payload id is not in the state and the action type is not ${StringListActions.add}`, () => {
+        it('should return the oldState state if the payload id is not in the state and the action type is not ADD_STRING_LIST', () => {
             const newState: IStringListCompositeState = stringListCompositeState(oldState, {...genericAction, payload: {id: 'pokemon'}});
 
-            expect(newState).toEqual(oldState);
+            expect(newState).toBe(oldState);
         });
 
-        it(`should return the oldState state if the id is in the state but the action type do not exist in the StringListActions`, () => {
+        it('should return the oldState state if the id is in the state but the action type do not exist in the StringListActions', () => {
             const newState: IStringListCompositeState = stringListCompositeState(oldState, {type: 'custom_action', payload: {id: stateId}});
 
-            expect(newState).toEqual(oldState);
-            expect(newState).not.toBe(oldState);
+            expect(newState).toBe(oldState);
         });
 
-        describe(StringListActions.add, () => {
+        describe('ADD_STRING_LIST', () => {
             const newId: string = 'charmeleon';
 
             it('should return the oldState if the id is already in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeState(oldState, addStringList(stateId));
 
-                expect(newState).toEqual(oldState);
-                expect(newState).not.toBe(oldState);
+                expect(newState).toBe(oldState);
             });
 
             it('should add the new stringList in the state if the id do not exist', () => {
@@ -81,14 +77,13 @@ describe('StringList', () => {
             });
         });
 
-        describe(StringListActions.remove, () => {
+        describe('REMOVE_STRING_LIST', () => {
             const newId: string = 'pidgeot';
 
             it('should remove nothing if the id is not in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeState(oldState, removeStringList(newId));
 
-                expect(newState).toEqual(oldState);
-                expect(newState).not.toBe(oldState);
+                expect(newState).toBe(oldState);
             });
 
             it('should remove the list if the id is in the state', () => {
@@ -98,15 +93,14 @@ describe('StringList', () => {
             });
         });
 
-        describe(StringListActions.addValue, () => {
+        describe('ADD_VALUE_STRING_LIST', () => {
             const newId: string = 'bulbasaur';
             const newValue: string = 'ivysaur';
 
             it('should return the oldState if the id where to add the value is not in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeState(oldState, addValueStringList(newId, newValue));
 
-                expect(newState).toEqual(oldState);
-                expect(newState).not.toBe(oldState);
+                expect(newState).toBe(oldState);
             });
 
             it('should add the value at the end of the list if the id is in the state', () => {
@@ -116,17 +110,30 @@ describe('StringList', () => {
                 expect(newStateListLength).toBeGreaterThan(oldState[stateId].list.length);
                 expect(newState[stateId].list[newStateListLength - 1]).toEqual(newValue);
             });
+
+            it('should reset the list before and add the new list', () => {
+                const oldStateWithValues = {
+                    [stateId]: {
+                        id: stateId,
+                        list: ['a', 'b', 'c'],
+                    },
+                };
+
+                const newState: IStringListCompositeState = stringListCompositeState(oldStateWithValues, addValueStringList(stateId, newValue, true));
+
+                expect(newState[stateId].list.length).toBe(1);
+                expect(newState[stateId].list[0]).toBe(newValue);
+            });
         });
 
-        describe(StringListActions.removeValue, () => {
+        describe('REMOVE_VALUE_STRING_LIST', () => {
             const newId: string = 'bulbasaur';
             const newValue: string = 'venusaur';
 
             it('should return the oldState if the id where to remove the value is not in the state', () => {
                 const newState: IStringListCompositeState = stringListCompositeState(oldState, removeValueStringList(newId, newValue));
 
-                expect(newState).toEqual(oldState);
-                expect(newState).not.toBe(oldState);
+                expect(newState).toBe(oldState);
             });
 
             it('should remove the value in the list if the id is in the state', () => {
