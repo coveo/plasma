@@ -262,6 +262,7 @@ $table-header-line-height: 16px;
 $table-header-top-bottom-padding: (
   ($table-header-inner-height - $table-header-line-height) / 2
 );
+$table-header-z-index: 2;
 $table-row-inner-height: 36px;
 $table-row-height: $table-row-inner-height + $table-border-width;
 $table-row-font-size: 15px;
