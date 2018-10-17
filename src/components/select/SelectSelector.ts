@@ -23,9 +23,9 @@ export const getFilterText = (state: IReactVaporState, ownProps: ISelectWithFilt
     return (filter && filter.filterText) || '';
 };
 
-export const getListState = (state: IReactVaporState, ownProps: ISelectWithFilterProps): IStringListState => state.selectWithFilter[ownProps.id];
+export const getListState = (state: IReactVaporState, ownProps: ISelectWithFilterProps): Partial<IStringListState> => state.selectWithFilter[ownProps.id] || {};
 
-export const getListBox = (state: IReactVaporState, ownProps: ISelectWithFilterProps): IListBoxState => _.findWhere(state.listBoxes, {id: ownProps.id});
+export const getListBox = (state: IReactVaporState, ownProps: ISelectWithFilterProps): Partial<IListBoxState> => _.findWhere(state.listBoxes, {id: ownProps.id}) || {};
 
 export const getItems = (state: IReactVaporState, ownProps: ISelectWithFilterProps): IItemBoxProps[] => ownProps.items || [];
 
