@@ -4,7 +4,6 @@ import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
-import {convertStringListToItemsBox, IStringListState} from '../../reusableState/customList/StringListReducers';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
 import {Button} from '../button/Button';
@@ -13,9 +12,10 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from './SelectConnected';
+import {customItemsSelector, getFilterText, itemsSelector, listBoxSelectedSelector, MatchFilter} from './SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
-    matchFilter?: (filterValue: string, item: IItemBoxProps) => boolean;
+    matchFilter?: MatchFilter;
     customValues?: boolean;
 }
 
@@ -39,41 +39,11 @@ export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps,
 
 export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
 
-    const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
-        if (filterValue === '') {
-            return true;
-        }
-
-        const regex = new RegExp(filterValue, 'gi');
-        return regex.test(item.value) || regex.test(item.displayValue);
-    };
-
-    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps => {
-        const filter = _.findWhere(state.filters, {id: ownProps.id});
-        const filterValue = filter && filter.filterText || '';
-        const listState: IStringListState = state.selectWithFilter[ownProps.id];
-        const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
-
-        let customItemBox: IItemBoxProps[] = [];
-        if (listState && listState.list) {
-            const valueToRemove: string[] = _.map(ownProps.items, (item: IItemBoxProps) => item.value);
-            customItemBox = convertStringListToItemsBox(_.difference(listState.list, valueToRemove), {hidden: true, selected: true});
-        }
-
-        const items: IItemBoxProps[] = _.map(ownProps.items, (item: IItemBoxProps) => {
-            const visible = _.isUndefined(ownProps.matchFilter)
-                ? defaultMatchFilter(filterValue, item)
-                : ownProps.matchFilter(filterValue, item);
-
-            return {...item, hidden: !visible || item.hidden};
-        });
-
-        return {
-            filterValue,
-            items: [...items, ...customItemBox],
-            selected: listbox && listbox.selected ? listbox.selected : [],
-        };
-    };
+    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps => ({
+        filterValue: getFilterText(state, ownProps),
+        items: [...itemsSelector(state, ownProps), ...customItemsSelector(state, ownProps)],
+        selected: listBoxSelectedSelector(state, ownProps),
+    });
 
     const mapDispatchToProps = (
         dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
