@@ -9,7 +9,6 @@ import {UUID} from '../../utils/UUID';
 import {Button} from '../button/Button';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {clearListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from './SelectConnected';
 import {customItemsSelector, getFilterText, itemsSelector, listBoxSelectedSelector, MatchFilter} from './SelectSelector';
@@ -55,10 +54,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         onRenderFilter: () => dispatch(addStringList(ownProps.id)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
         onSelectCustomValue: (filterValue: string) => {
-            if (!ownProps.multi) {
-                dispatch(clearListBoxOption(ownProps.id));
-            }
-            dispatch(addValueStringList(ownProps.id, filterValue, !ownProps.multi));
+            dispatch(addValueStringList(ownProps.id, filterValue));
         },
     });
 
@@ -82,14 +78,16 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         }
 
         private addItemBoxCustomValue(): IItemBoxProps[] {
-            return [{
+            const addItemBox: IItemBoxProps = {
                 displayValue: this.props.addValueText(this.props.filterValue),
                 value: this.props.filterValue,
                 onOptionClick: () => this.props.onSelectCustomValue(this.props.filterValue),
-            }, {
-                value: this.dividerId,
-                divider: true,
-            }];
+            };
+            const divider: IItemBoxProps[] = _.some(this.props.items, (item: IItemBoxProps) => !item.hidden)
+                ? [{value: this.dividerId, divider: true}]
+                : [];
+
+            return [addItemBox, ...divider];
         }
 
         private noResultFilter(): IItemBoxProps {

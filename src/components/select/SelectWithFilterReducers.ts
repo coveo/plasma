@@ -16,12 +16,12 @@ export const selectWithFilterCompositeState = (
     state: ISelectWithFilterCompositeState = selectWithFilterInitialState,
     action: IReduxAction<ISelectWithFilterPayload>,
 ): ISelectWithFilterCompositeState => {
-    if (!action.payload || !state[action.payload.id]) {
-        return state;
-    }
-
     if (_.contains(StringListActions, action.type)) {
         return stringListCompositeState(state, action);
+    }
+
+    if (!action.payload || !state[action.payload.id]) {
+        return state;
     }
 
     const stateList = {...state[action.payload.id]};
