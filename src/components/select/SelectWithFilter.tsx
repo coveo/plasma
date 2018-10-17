@@ -17,6 +17,9 @@ import {customItemsSelector, getFilterText, itemsSelector, listBoxSelectedSelect
 export interface ISelectWithFilterOwnProps {
     matchFilter?: MatchFilter;
     customValues?: boolean;
+    addValueText?: (filterText: string) => string;
+    duplicateText?: string;
+    noResultFilterText?: (filterText: string) => string;
 }
 
 export interface ISelectWithFilterStateProps extends ISelectStateProps {
@@ -62,6 +65,12 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
 
+        static defaultProps: Partial<ISelectWithFilterProps> = {
+            duplicateText: 'Cannot add a duplicate value',
+            noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
+            addValueText: (filterText: string) => `Add "${filterText}"`,
+        };
+
         private dividerId: string = UUID.generate();
 
         componentWillMount() {
@@ -74,7 +83,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
 
         private addItemBoxCustomValue(): IItemBoxProps[] {
             return [{
-                displayValue: `Add "${this.props.filterValue}"`,
+                displayValue: this.props.addValueText(this.props.filterValue),
                 value: this.props.filterValue,
                 onOptionClick: () => this.props.onSelectCustomValue(this.props.filterValue),
             }, {
@@ -85,13 +94,13 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
 
         private noResultFilter(): IItemBoxProps {
             return {
-                value: `No results match "${this.props.filterValue}"`,
+                value: this.props.noResultFilterText(this.props.filterValue),
             };
         }
 
         private duplicateValue(): IItemBoxProps {
             return {
-                value: `Cannot add a duplicate value`,
+                value: this.props.duplicateText,
             };
         }
 
