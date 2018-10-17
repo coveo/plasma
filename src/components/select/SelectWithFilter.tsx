@@ -6,6 +6,7 @@ import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
 import {convertStringListToItemsBox, IStringListState} from '../../reusableState/customList/StringListReducers';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {UUID} from '../../utils/UUID';
 import {Button} from '../button/Button';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -37,6 +38,7 @@ export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps,
     ISelectOwnProps {}
 
 export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
+
     const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
         if (filterValue === '') {
             return true;
@@ -90,6 +92,8 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
 
+        private dividerId: string = UUID.generate();
+
         componentWillMount() {
             this.props.onRenderFilter();
         }
@@ -98,12 +102,15 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             this.props.onDestroyFilter();
         }
 
-        private addItemBoxCustomValue(): IItemBoxProps {
-            return {
+        private addItemBoxCustomValue(): IItemBoxProps[] {
+            return [{
                 displayValue: `Add "${this.props.filterValue}"`,
                 value: this.props.filterValue,
                 onOptionClick: () => this.props.onSelectCustomValue(this.props.filterValue),
-            };
+            }, {
+                value: this.dividerId,
+                divider: true,
+            }];
         }
 
         private noResultFilter(): IItemBoxProps {
@@ -155,7 +162,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             if (this.isDuplicateValue()) {
                 noResultItem = this.duplicateValue();
             } else if (!_.isEmpty(this.props.filterValue) && this.props.customValues) {
-                items = [...items, this.addItemBoxCustomValue()];
+                items = [...this.addItemBoxCustomValue(), ...items];
             }
 
             const newProps = {..._.omit(this.props, [...SelectWithFilterPropsToOmit, 'selected']), items};
