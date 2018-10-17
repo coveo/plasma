@@ -83,9 +83,9 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 value: this.props.filterValue,
                 onOptionClick: () => this.props.onSelectCustomValue(this.props.filterValue),
             };
-            const divider: IItemBoxProps[]  =_.some(this.props.items, (item: IItemBoxProps) => !item.hidden)
-                                           ? [{ value: this.dividerId, divider: true }]
-                                           : [];
+            const divider: IItemBoxProps[] = _.some(this.props.items, (item: IItemBoxProps) => !item.hidden)
+                ? [{value: this.dividerId, divider: true}]
+                : [];
 
             return [addItemBox, ...divider];
         }
