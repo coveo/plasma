@@ -45,8 +45,7 @@ const customItemsCombiner = (
 };
 
 export const getCustomItems = createSelector(
-    getItems,
-    getListState,
+    [getItems, getListState],
     customItemsCombiner,
 );
 
