@@ -40,6 +40,7 @@ import {ITableData, ITablesState} from './components/tables/TableReducers';
 import {ITableRowState} from './components/tables/TableRowReducers';
 import {ITextAreaState} from './components/textarea/TextAreaReducers';
 import {IToastsState} from './components/toast/ToastReducers';
+import {IStringListCompositeState} from './reusableState/customList/StringListReducers';
 
 export interface IReactVaporState {
     autocompletes?: IAutocompleteState[];
@@ -78,6 +79,7 @@ export interface IReactVaporState {
     menus?: IMenusState;
     radioSelects?: IRadioSelectState[];
     popovers?: IPopoverState[];
+    stringList?: IStringListCompositeState;
     lastAction?: Redux.Action;
 }
 
