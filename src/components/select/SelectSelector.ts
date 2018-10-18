@@ -29,6 +29,8 @@ export const getListBox = (state: IReactVaporState, ownProps: ISelectWithFilterP
 
 export const getItems = (state: IReactVaporState, ownProps: ISelectWithFilterProps): IItemBoxProps[] => ownProps.items || [];
 
+export const getcustomValueSelected = (state: IReactVaporState, ownProps: ISelectWithFilterProps): string[] => state.stringList[ownProps.id] ? state.stringList[ownProps.id].list : [];
+
 const getMatchFilter = (state: IReactVaporState, ownProps: ISelectWithFilterProps): MatchFilter => _.isUndefined(ownProps.matchFilter)
     ? defaultMatchFilter
     : ownProps.matchFilter;
