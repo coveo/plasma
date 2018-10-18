@@ -149,7 +149,7 @@ describe('FilterBox', () => {
             expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(false);
 
             filterBox.setProps({id: id, containerClasses}).update();
-            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(true)
+            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(true);
         });
 
         it('should call onBlur when the input loose focus', () => {

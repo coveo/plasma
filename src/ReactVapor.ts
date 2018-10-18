@@ -31,7 +31,7 @@ import {IPopoverState} from './components/popover/Popover';
 import {IRadioSelectState} from './components/radio/RadioSelectReducers';
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
 import {ISelectState} from './components/select/SelectReducers';
-import {ISelectWithFilterCompositeState} from './components/select/withFilter/SelectWithFilterReducers';
+import {ISelectWithFilterCompositeState} from './components/select/SelectWithFilterReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
 import {ITablePredicate} from './components/tables/Table';

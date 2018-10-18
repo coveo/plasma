@@ -2,20 +2,23 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
-import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
-import {convertStringListToItemsBox, IStringListState} from '../../../reusableState/customList/StringListReducers';
-import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
-import {Button} from '../../button/Button';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {clearListBoxOption} from '../../listBox/ListBoxActions';
-import {Svg} from '../../svg/Svg';
-import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from '../SelectConnected';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
+import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {UUID} from '../../utils/UUID';
+import {Button} from '../button/Button';
+import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
+import {IItemBoxProps} from '../itemBox/ItemBox';
+import {Svg} from '../svg/Svg';
+import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from './SelectConnected';
+import {customItemsSelector, getFilterText, itemsSelector, listBoxSelectedSelector, MatchFilter} from './SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
-    matchFilter?: (filterValue: string, item: IItemBoxProps) => boolean;
+    matchFilter?: MatchFilter;
     customValues?: boolean;
+    addValueText?: (filterText: string) => string;
+    duplicateText?: string;
+    noResultFilterText?: (filterText: string) => string;
 }
 
 export interface ISelectWithFilterStateProps extends ISelectStateProps {
@@ -37,41 +40,12 @@ export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps,
     ISelectOwnProps {}
 
 export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
-    const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
-        if (filterValue === '') {
-            return true;
-        }
 
-        const regex = new RegExp(filterValue, 'gi');
-        return regex.test(item.value) || regex.test(item.displayValue);
-    };
-
-    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps => {
-        const filter = _.findWhere(state.filters, {id: ownProps.id});
-        const filterValue = filter && filter.filterText || '';
-        const listState: IStringListState = state.selectWithFilter[ownProps.id];
-        const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
-
-        let customItemBox: IItemBoxProps[] = [];
-        if (listState && listState.list) {
-            const valueToRemove: string[] = _.map(ownProps.items, (item: IItemBoxProps) => item.value);
-            customItemBox = convertStringListToItemsBox(_.difference(listState.list, valueToRemove), {hidden: true, selected: true});
-        }
-
-        const items: IItemBoxProps[] = _.map(ownProps.items, (item: IItemBoxProps) => {
-            const visible = _.isUndefined(ownProps.matchFilter)
-                ? defaultMatchFilter(filterValue, item)
-                : ownProps.matchFilter(filterValue, item);
-
-            return {...item, hidden: !visible || item.hidden};
-        });
-
-        return {
-            filterValue,
-            items: [...items, ...customItemBox],
-            selected: listbox && listbox.selected ? listbox.selected : [],
-        };
-    };
+    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps => ({
+        filterValue: getFilterText(state, ownProps),
+        items: [...itemsSelector(state, ownProps), ...customItemsSelector(state, ownProps)],
+        selected: listBoxSelectedSelector(state, ownProps),
+    });
 
     const mapDispatchToProps = (
         dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
@@ -80,15 +54,20 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         onRenderFilter: () => dispatch(addStringList(ownProps.id)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
         onSelectCustomValue: (filterValue: string) => {
-            if (!ownProps.multi) {
-                dispatch(clearListBoxOption(ownProps.id));
-            }
-            dispatch(addValueStringList(ownProps.id, filterValue, !ownProps.multi));
+            dispatch(addValueStringList(ownProps.id, filterValue));
         },
     });
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
+
+        static defaultProps: Partial<ISelectWithFilterProps> = {
+            duplicateText: 'Cannot add a duplicate value',
+            noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
+            addValueText: (filterText: string) => `Add "${filterText}"`,
+        };
+
+        private dividerId: string = UUID.generate();
 
         componentWillMount() {
             this.props.onRenderFilter();
@@ -98,23 +77,28 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             this.props.onDestroyFilter();
         }
 
-        private addItemBoxCustomValue(): IItemBoxProps {
-            return {
-                displayValue: `Add "${this.props.filterValue}"`,
+        private addItemBoxCustomValue(): IItemBoxProps[] {
+            const addItemBox: IItemBoxProps = {
+                displayValue: this.props.addValueText(this.props.filterValue),
                 value: this.props.filterValue,
                 onOptionClick: () => this.props.onSelectCustomValue(this.props.filterValue),
             };
+            const divider: IItemBoxProps[] = _.some(this.props.items, (item: IItemBoxProps) => !item.hidden)
+                ? [{value: this.dividerId, divider: true}]
+                : [];
+
+            return [addItemBox, ...divider];
         }
 
         private noResultFilter(): IItemBoxProps {
             return {
-                value: `No results match "${this.props.filterValue}"`,
+                value: this.props.noResultFilterText(this.props.filterValue),
             };
         }
 
         private duplicateValue(): IItemBoxProps {
             return {
-                value: `Cannot add a duplicate value`,
+                value: this.props.duplicateText,
             };
         }
 
@@ -155,7 +139,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             if (this.isDuplicateValue()) {
                 noResultItem = this.duplicateValue();
             } else if (!_.isEmpty(this.props.filterValue) && this.props.customValues) {
-                items = [...items, this.addItemBoxCustomValue()];
+                items = [...this.addItemBoxCustomValue(), ...items];
             }
 
             const newProps = {..._.omit(this.props, [...SelectWithFilterPropsToOmit, 'selected']), items};

@@ -4,7 +4,6 @@ import {DragDropContext, DropTarget, IDropTargetProps} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
-import {IStringListState} from '../../reusableState/customList/StringListReducers';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DraggableSelectedOption, DraggableSelectedOptionType} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
@@ -13,6 +12,7 @@ import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '.
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {getcustomValueSelected, listBoxSelectedSelector} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
     placeholder?: string;
@@ -33,17 +33,9 @@ export interface IMultiSelectDispatchProps {
 
 export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => {
-    const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
-    const listState: IStringListState = state.stringList[ownProps.id];
-
-    const selected: string[] = listbox && listbox.selected ? listbox.selected : [];
-    const customSelected: string[] = listState && listState.list || [];
-
-    return {
-        selected: [...selected, ...customSelected],
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => ({
+    selected: [...listBoxSelectedSelector(state, ownProps), ...getcustomValueSelected(state, ownProps)],
+});
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
     onRemoveClick: (item: IItemBoxProps) => dispatch(unselectListBoxOption(ownProps.id, item.value)),
