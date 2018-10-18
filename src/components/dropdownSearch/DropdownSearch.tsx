@@ -136,7 +136,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
 
     protected getDropdownOptions(): JSX.Element[] {
-        const ElementTag: string = this.props.infiniteScroll ? 'div' : 'li';
+        const hasInfiniteScrolling = !!this.props.infiniteScroll || !!this.props.internalInfiniteScroll;
+        const ElementTag: string = hasInfiniteScrolling ? 'div' : 'li';
         const options = _.chain(this.getDisplayedOptions())
             .filter((option: IDropdownOption) => {
                 const value = option.displayValue || option.value;
