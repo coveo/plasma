@@ -10,8 +10,8 @@ import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
 import {ISvgProps, Svg} from '../svg/Svg';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
-import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
 import {DropdownSearchAutoInfiniteScroll, IDropdownSearchAutoInfiniteScrollOptions} from './DropdownSearchAutoInfiniteScroll';
+import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
 
 export interface IDropdownOption {
     svg?: ISvgProps;

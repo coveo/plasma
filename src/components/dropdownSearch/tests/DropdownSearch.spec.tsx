@@ -9,8 +9,8 @@ import {Content} from '../../content/Content';
 import {FilterBox} from '../../filterBox/FilterBox';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
-import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
 import {DropdownSearchAutoInfiniteScroll, IDropdownSearchAutoInfiniteScrollOptions} from '../DropdownSearchAutoInfiniteScroll';
+import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
 import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
