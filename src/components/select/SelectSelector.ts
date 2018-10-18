@@ -2,21 +2,13 @@ import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
+import {defaultMatchFilter} from '../../utils/FilterUtils';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
 import {ISelectWithFilterProps} from './SelectWithFilter';
 
 export type MatchFilter = (filterValue: string, item: IItemBoxProps) => boolean;
-
-export const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
-    if (filterValue === '') {
-        return true;
-    }
-
-    const regex = new RegExp(filterValue, 'gi');
-    return regex.test(item.value) || regex.test(item.displayValue);
-};
 
 export const getFilterText = (state: IReactVaporState, ownProps: ISelectWithFilterProps): string => {
     const filter: IFilterState = _.findWhere(state.filters, {id: ownProps.id});
