@@ -6,7 +6,7 @@ import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
-import {Button} from '../button/Button';
+import {Button, IButtonProps} from '../button/Button';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {Svg} from '../svg/Svg';
@@ -19,6 +19,7 @@ export interface ISelectWithFilterOwnProps {
     addValueText?: (filterText: string) => string;
     duplicateText?: string;
     noResultFilterText?: (filterText: string) => string;
+    filterButton?: IButtonProps;
 }
 
 export interface ISelectWithFilterStateProps extends ISelectStateProps {
@@ -53,9 +54,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
     ): ISelectWithFilterDispatchProps => ({
         onRenderFilter: () => dispatch(addStringList(ownProps.id)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
-        onSelectCustomValue: (filterValue: string) => {
-            dispatch(addValueStringList(ownProps.id, filterValue));
-        },
+        onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
     });
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -65,6 +64,11 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
             addValueText: (filterText: string) => `Add "${filterText}"`,
+            filterButton: {
+                enabled: true,
+                tooltip: 'Add',
+                tooltipPlacement: 'top',
+            },
         };
 
         private dividerId: string = UUID.generate();
@@ -111,7 +115,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         private getButton(): React.ReactNode {
             return this.props.customValues
                 ? (<div className='ml1'>
-                    <Button classes={['p1']} onClick={() => this.handleOnClick()} tooltip={'Add'} tooltipPlacement={'top'}>
+                    <Button classes={['p1']} onClick={() => this.handleOnClick()} {...this.props.filterButton}>
                         <Svg svgName={'add'} className='icon mod-lg mod-align-with-text' />
                     </Button>
                 </div>
@@ -145,9 +149,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             const newProps = {..._.omit(this.props, [...SelectWithFilterPropsToOmit, 'selected']), items};
 
             return (
-                <Component {...newProps}
-                    noResultItem={noResultItem}
-                >
+                <Component {...newProps} noResultItem={noResultItem}>
                     <FilterBoxConnected
                         id={this.props.id}
                         onKeyDown={(this.props as any).onKeyDown}
