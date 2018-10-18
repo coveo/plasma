@@ -2,7 +2,6 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {keys} from 'ts-transformer-keys';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
@@ -32,8 +31,6 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProp
         selectedOption: customSelected.length ? customSelected[customSelected.length - 1] : listBoxSelectedSelector(state, ownProps)[0],
     };
 };
-
-const singleSelectPropsToOmit = keys<ISingleSelectProps>();
 
 @ReduxConnect(mapStateToProps)
 export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
@@ -73,7 +70,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
-                {..._.omit(this.props, singleSelectPropsToOmit)}
+                disabled={this.props.disabled}
             >
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
