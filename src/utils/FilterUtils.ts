@@ -6,5 +6,5 @@ export const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => 
     }
 
     const regex = new RegExp(filterValue, 'gi');
-    return regex.test(item.value) || regex.test(item.displayValue);
+    return regex.test(item.value) || (item.displayValue && regex.test(item.displayValue));
 };
