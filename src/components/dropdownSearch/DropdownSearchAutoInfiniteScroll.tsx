@@ -39,7 +39,6 @@ export class DropdownSearchAutoInfiniteScroll extends React.Component<IDropdownS
     }
 
     private get showEndMessage() {
-        // Don't show endMessage if infinite scrolling is unused
         if (this.props.endMessage && this.props.options.length > this.props.optionsPerPage) {
             return this.props.endMessage;
         }
