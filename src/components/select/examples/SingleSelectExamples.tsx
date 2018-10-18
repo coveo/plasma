@@ -106,7 +106,7 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                     <label className='form-control-label'>A Single Select With Filter, Predicates and a custom value</label>
                     <br />
                     <SingleSelectWithPredicateAndFilter
-                        id={'test-test'}
+                        id={UUID.generate()}
                         items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
