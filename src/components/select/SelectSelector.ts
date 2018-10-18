@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
-import {convertStringListToItemsBox, IStringListState} from '../../reusableState/customList/StringListReducers';
+import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
@@ -23,7 +23,7 @@ export const getFilterText = (state: IReactVaporState, ownProps: ISelectWithFilt
     return (filter && filter.filterText) || '';
 };
 
-export const getListState = (state: IReactVaporState, ownProps: ISelectWithFilterProps): Partial<IStringListState> => state.selectWithFilter[ownProps.id] || {};
+export const getListState = (state: IReactVaporState, ownProps: ISelectWithFilterProps): string[] => state.selectWithFilter[ownProps.id] ? state.selectWithFilter[ownProps.id].list : [];
 
 export const getListBox = (state: IReactVaporState, ownProps: ISelectWithFilterProps): Partial<IListBoxState> => _.findWhere(state.listBoxes, {id: ownProps.id}) || {};
 
@@ -48,10 +48,10 @@ export const itemsSelector = createSelector(
 
 const getCustomItems = (
     items: IItemBoxProps[],
-    listState: IStringListState,
+    listState: string[],
 ) => {
     const valueToRemove: string[] = _.map(items, (item: IItemBoxProps) => item.value);
-    return convertStringListToItemsBox(_.difference(listState.list, valueToRemove), {hidden: true, selected: true});
+    return convertStringListToItemsBox(_.difference(listState, valueToRemove), {hidden: true, selected: true});
 };
 
 export const customItemsSelector = createSelector(
