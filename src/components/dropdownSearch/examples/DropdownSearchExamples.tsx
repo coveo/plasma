@@ -84,7 +84,7 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
                     <div className='form-control'>
                         <DropdownSearchConnected
                             {...manyOptions}
-                            internalInfiniteScroll={{
+                            autoInfiniteScroll={{
                                 optionsPerPage: 10,
                                 endMessage: <div className='option-wrapper'><span className='dropdown-option'>No more items to show</span></div>,
                                 loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more items...</span></div>,

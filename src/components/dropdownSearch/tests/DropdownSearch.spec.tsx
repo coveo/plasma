@@ -10,7 +10,7 @@ import {FilterBox} from '../../filterBox/FilterBox';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
 import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
-import {DropdownSearchInternalInfiniteScroll, IDropdownSearchInternalInfiniteScrollOptions} from '../DropdownSearchInternalInfiniteScroll';
+import {DropdownSearchAutoInfiniteScroll, IDropdownSearchAutoInfiniteScrollOptions} from '../DropdownSearchAutoInfiniteScroll';
 import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
@@ -42,7 +42,7 @@ describe('DropdownSearch', () => {
         loader: null,
     };
 
-    const internalInfiniteScrollOptions: IDropdownSearchInternalInfiniteScrollOptions = {
+    const autoInfiniteScrollOptions: IDropdownSearchAutoInfiniteScrollOptions = {
         optionsPerPage: 10,
     };
 
@@ -328,7 +328,7 @@ describe('DropdownSearch', () => {
             });
 
             describe('getDropdownOptions', () => {
-                it('should return li elements if the infiniteScroll and internalInfiniteScroll props are undefined', () => {
+                it('should return li elements if the infiniteScroll and autoInfiniteScroll props are undefined', () => {
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('li');
                 });
 
@@ -340,10 +340,10 @@ describe('DropdownSearch', () => {
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
                 });
 
-                it('should return div elements if the internalInfiniteScroll prop is defined', () => {
+                it('should return div elements if the autoInfiniteScroll prop is defined', () => {
                     dropdownSearch.setProps({
                         ...ownProps,
-                        internalInfiniteScroll: {...internalInfiniteScrollOptions},
+                        autoInfiniteScroll: {...autoInfiniteScrollOptions},
                     });
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
                 });
@@ -354,7 +354,7 @@ describe('DropdownSearch', () => {
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu()).toBeNull();
                 });
 
-                it('should return a ul if the infiniteScroll and internalInfiniteScroll props are undefined', () => {
+                it('should return a ul if the infiniteScroll and autoInfiniteScroll props are undefined', () => {
                     dropdownSearch.setProps({
                         ...ownProps,
                         isOpened: true,
@@ -371,13 +371,13 @@ describe('DropdownSearch', () => {
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchInfiniteScrollOptions);
                 });
 
-                it('should return a DropdownSearchInfiniteScrollOptions if the internalInfiniteScroll prop is defined', () => {
+                it('should return a DropdownSearchInfiniteScrollOptions if the autoInfiniteScroll prop is defined', () => {
                     dropdownSearch.setProps({
                         ...ownProps,
                         isOpened: true,
-                        internalInfiniteScroll: {...internalInfiniteScrollOptions},
+                        autoInfiniteScroll: {...autoInfiniteScrollOptions},
                     });
-                    expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchInternalInfiniteScroll);
+                    expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchAutoInfiniteScroll);
                 });
 
                 it('should call the hasMoreItems prop to let the infinite scroll if there are more items', () => {
@@ -409,14 +409,14 @@ describe('DropdownSearch', () => {
                         expect(handleOnMouseEnterSpy).toHaveBeenCalledTimes(1);
                     });
 
-                it(`if internalInfiniteScroll prop is defined
+                it(`if autoInfiniteScroll prop is defined
                     should call handleOnMouseEnter when calling DropdownSearchInfiniteScrollOptions onMouseEnter prop`, () => {
                         const handleOnMouseEnterSpy = spyOn<any>(dropdownSearchInstance, 'handleOnMouseEnter');
 
                         dropdownSearch.setProps({
                             ...ownProps,
                             isOpened: true,
-                            internalInfiniteScroll: {...internalInfiniteScrollOptions},
+                            autoInfiniteScroll: {...autoInfiniteScrollOptions},
                         });
 
                         dropdownSearchInstanceAsAny.getDropdownMenu().props.onMouseEnter();

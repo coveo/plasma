@@ -3,32 +3,32 @@ import * as _ from 'underscore';
 
 import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
 
-export interface IDropdownSearchInternalInfiniteScrollOptions {
+export interface IDropdownSearchAutoInfiniteScrollOptions {
     optionsPerPage: number;
     endMessage?: React.ReactNode;
     loader?: React.ReactNode;
 }
 
-export interface IDropdownSearchInternalInfiniteScrollProps
-    extends IDropdownSearchInternalInfiniteScrollOptions {
+export interface IDropdownSearchAutoInfiniteScrollProps
+    extends IDropdownSearchAutoInfiniteScrollOptions {
     options: JSX.Element[];
     onMouseEnter: () => void;
     ulElementRefFunction: (menu: HTMLElement) => void;
 }
 
-interface IDropdownSearchInternalInfiniteScrollState {
+interface IDropdownSearchAutoInfiniteScrollState {
     activeOptions: JSX.Element[];
 }
 
-export class DropdownSearchInternalInfiniteScroll extends React.Component<IDropdownSearchInternalInfiniteScrollProps, IDropdownSearchInternalInfiniteScrollState> {
-    constructor(props: IDropdownSearchInternalInfiniteScrollProps, state: IDropdownSearchInternalInfiniteScrollState) {
+export class DropdownSearchAutoInfiniteScroll extends React.Component<IDropdownSearchAutoInfiniteScrollProps, IDropdownSearchAutoInfiniteScrollState> {
+    constructor(props: IDropdownSearchAutoInfiniteScrollProps, state: IDropdownSearchAutoInfiniteScrollState) {
         super(props, state);
         this.state = {
             activeOptions: props.options.slice(0, props.optionsPerPage),
         };
     }
 
-    componentWillUpdate(nextProps: IDropdownSearchInternalInfiniteScrollProps) {
+    componentWillUpdate(nextProps: IDropdownSearchAutoInfiniteScrollProps) {
         if (!_.isEqual(this.props.options, nextProps.options)) {
             this.setState({activeOptions: nextProps.options.slice(0, this.props.optionsPerPage)});
         }
