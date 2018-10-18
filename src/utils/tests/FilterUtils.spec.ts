@@ -1,5 +1,5 @@
-import {defaultMatchFilter} from '../FilterUtils';
 import {IItemBoxProps} from '../../components/itemBox/ItemBox';
+import {defaultMatchFilter} from '../FilterUtils';
 
 describe('Utils', () => {
     describe('defaultMatchFilter', () => {
@@ -26,7 +26,6 @@ describe('Utils', () => {
         });
 
         describe('with displayValue', () => {
-
             const itemBoxWithDisplayValue: IItemBoxProps = {
                 displayValue: 'abc',
                 value: 'z',
