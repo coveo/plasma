@@ -28,7 +28,7 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
 
     componentWillMount() {
         // Generate ids ONCE for the components below
-        for (let i = 0; i < 14; i++) {
+        for (let i = 0; i < 15; i++) {
             this.ids[i] = UUID.generate();
         }
 
@@ -78,7 +78,21 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
         return (
             <div className='mt2'>
                 <h1 className='text-blue mb1 bold'>Dropdown List</h1>
-
+                {/* TODO: put at the end */}
+                <div className='form-group'>
+                    <label className='form-control-label'>Dropdown with an infinite scroll & filters on all options</label>
+                    <div className='form-control'>
+                        <DropdownSearchConnected
+                            {...manyOptions}
+                            internalInfiniteScroll={{
+                                optionsPerPage: 10,
+                                endMessage: <div className='option-wrapper'><span className='dropdown-option'>No more items to show</span></div>,
+                                loader: <div className='option-wrapper'><span className='dropdown-option'>Loading more items...</span></div>,
+                            }}
+                            id={this.ids[14]}
+                        />
+                    </div>
+                </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Multiselect Dropdown</label>
                     <div className='form-control'>
