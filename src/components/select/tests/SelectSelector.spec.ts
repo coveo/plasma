@@ -10,7 +10,8 @@ import {
     getListBox,
     getListState,
     getMatchFilter,
-    itemsWithFilterCombiner, listBoxSelectedCombiner,
+    itemsWithFilterCombiner,
+    listBoxSelectedCombiner,
     MatchFilter,
 } from '../SelectSelector';
 import {ISelectWithFilterProps} from '../SelectWithFilter';
