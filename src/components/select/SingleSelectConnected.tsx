@@ -8,7 +8,7 @@ import {ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
-import {getListState, listBoxSelectedSelector} from './SelectSelector';
+import {getListBoxSelected, getListState} from './SelectSelector';
 
 export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
@@ -28,7 +28,7 @@ export interface ISingleSelectProps extends ISingleSelectOwnProps, ISingleSelect
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
     const customSelected: string[] = getListState(state, ownProps);
     return {
-        selectedOption: customSelected.length ? customSelected[customSelected.length - 1] : listBoxSelectedSelector(state, ownProps)[0],
+        selectedOption: customSelected.length ? customSelected[customSelected.length - 1] : getListBoxSelected(state, ownProps)[0],
     };
 };
 
