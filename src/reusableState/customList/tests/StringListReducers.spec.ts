@@ -1,4 +1,3 @@
-import {IItemBoxProps} from '../../../components/itemBox/ItemBox';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {
     addStringList,
@@ -8,8 +7,6 @@ import {
     removeValueStringList,
 } from '../StringListActions';
 import {
-    convertItemsBoxToStringList,
-    convertStringListToItemsBox,
     IStringListCompositeState,
     stringListCompositeState,
     stringListInitialState,
