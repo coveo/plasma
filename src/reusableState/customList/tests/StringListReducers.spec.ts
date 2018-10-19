@@ -1,3 +1,4 @@
+import {IItemBoxProps} from '../../../components/itemBox/ItemBox';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {
     addStringList,
@@ -13,7 +14,6 @@ import {
     stringListCompositeState,
     stringListInitialState,
 } from '../StringListReducers';
-import {IItemBoxProps} from '../../../components/itemBox/ItemBox';
 
 describe('StringList', () => {
 
