@@ -1,3 +1,4 @@
+import {IItemBoxProps} from '../../../components/itemBox/ItemBox';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {
     addStringList,
@@ -6,7 +7,13 @@ import {
     removeStringList,
     removeValueStringList,
 } from '../StringListActions';
-import {IStringListCompositeState, stringListCompositeState, stringListInitialState} from '../StringListReducers';
+import {
+    convertItemsBoxToStringList,
+    convertStringListToItemsBox,
+    IStringListCompositeState,
+    stringListCompositeState,
+    stringListInitialState,
+} from '../StringListReducers';
 
 describe('StringList', () => {
 
@@ -143,6 +150,47 @@ describe('StringList', () => {
                 const newStateListLength: number = newState[stateId].list.length;
                 expect(newStateListLength).toBeLessThan(oldStateWithList[stateId].list.length);
                 expect(newStateListLength).toBe(0);
+            });
+        });
+    });
+
+    describe('utils', () => {
+        describe('convertStringListToItemsBox', () => {
+            const list: string[] = ['a', 'b'];
+
+            it('should return an empty list if the list as argument is empty', () => {
+                expect(convertStringListToItemsBox([])).toEqual([]);
+            });
+
+            it('should return a list of ItemBox with each value in the array as value', () => {
+                const newList: IItemBoxProps[] = convertStringListToItemsBox(list);
+
+                expect(newList.length).toBe(2);
+
+                expect(newList[0].value).toEqual(list[0]);
+                expect(newList[1].value).toEqual(list[1]);
+            });
+
+            it('should add itemBox props for each itemBox from the list', () => {
+                const newList: IItemBoxProps[] = convertStringListToItemsBox(list, {disabled: true, hidden: false});
+
+                expect(newList[0].disabled).toBe(true);
+                expect(newList[1].disabled).toBe(true);
+
+                expect(newList[0].hidden).toBe(false);
+                expect(newList[1].hidden).toBe(false);
+            });
+        });
+
+        describe('convertItemsBoxToStringList', () => {
+            const itemBox: IItemBoxProps[] = [{value: 'a'}, {value: 'b'}];
+
+            it('should return an empty array if the itemBox list is empty', () => {
+                expect(convertItemsBoxToStringList([])).toEqual([]);
+            });
+
+            it('should return the list of each value in the itemBox list', () => {
+                expect(convertItemsBoxToStringList(itemBox)).toEqual(['a', 'b']);
             });
         });
     });

@@ -4,12 +4,13 @@ import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
 import {
+    customItemsCombiner,
     getFilterText,
     getItems,
     getListBox,
     getListState,
     getMatchFilter,
-    itemsWithFilterCombiner,
+    itemsWithFilterCombiner, listBoxSelectedCombiner,
     MatchFilter,
 } from '../SelectSelector';
 import {ISelectWithFilterProps} from '../SelectWithFilter';
@@ -82,7 +83,6 @@ describe('Select', () => {
 
         describe('Combiner', () => {
             describe('itemsWithFilterCombiner', () => {
-
                 const items: IItemBoxProps[] = [{value: 'a'}];
                 const filterText: string = 'b';
                 const matchFilter: MatchFilter = () => true;
@@ -102,11 +102,30 @@ describe('Select', () => {
             });
 
             describe('customItemsCombiner', () => {
+                const items: IItemBoxProps[] = [{value: 'a'}];
+                const listState: string[] = ['b'];
 
+                const itemsResult: IItemBoxProps[] = [{value: 'b', hidden: true, selected: true}];
+
+                it('should return new items list with the value in the listState if items is empty', () => {
+                    expect(customItemsCombiner([], listState)).toEqual(itemsResult);
+                });
+
+                it('should return new items list from the listState value with all values in items removed', () => {
+                    expect(customItemsCombiner(items, [...listState, 'a'])).toEqual(itemsResult);
+                });
             });
 
             describe('listBoxSelectedCombiner', () => {
+                const listBox: IListBoxState = {id, selected: list};
 
+                it('should return an empty array if selected is not defined in the listBox', () => {
+                    expect(listBoxSelectedCombiner({id, selected: undefined})).toEqual([]);
+                });
+
+                it('should return the list of selected in the listBox', () => {
+                    expect(listBoxSelectedCombiner(listBox)).toEqual(list);
+                });
             });
         });
     });
