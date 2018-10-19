@@ -25,7 +25,7 @@ export const getMatchFilter = (state: IReactVaporState, ownProps: ISelectWithFil
     ? defaultMatchFilter
     : ownProps.matchFilter;
 
-const itemsWithFilterCombiner = (
+export const itemsWithFilterCombiner = (
     items: IItemBoxProps[],
     filterText: string,
     matchFilter: MatchFilter,
@@ -36,7 +36,7 @@ export const getItemsWithFilter = createSelector(
     itemsWithFilterCombiner,
 );
 
-const customItemsCombiner = (
+export const customItemsCombiner = (
     items: IItemBoxProps[],
     listState: string[],
 ) => {
@@ -49,7 +49,7 @@ export const getCustomItems = createSelector(
     customItemsCombiner,
 );
 
-const listBoxSelectedCombiner = (
+export const listBoxSelectedCombiner = (
     listBox: IListBoxState,
 ): string[] => listBox && listBox.selected ? listBox.selected : [];
 

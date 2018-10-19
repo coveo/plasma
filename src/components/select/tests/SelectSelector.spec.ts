@@ -3,7 +3,15 @@ import {defaultMatchFilter} from '../../../utils/FilterUtils';
 import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {getFilterText, getItems, getItemsWithFilter, getListBox, getListState, getMatchFilter, MatchFilter} from '../SelectSelector';
+import {
+    getFilterText,
+    getItems,
+    getListBox,
+    getListState,
+    getMatchFilter,
+    itemsWithFilterCombiner,
+    MatchFilter,
+} from '../SelectSelector';
 import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {
@@ -73,31 +81,31 @@ describe('Select', () => {
         });
 
         describe('Combiner', () => {
-            describe('getItemsWithFilter', () => {
+            describe('itemsWithFilterCombiner', () => {
 
                 const items: IItemBoxProps[] = [{value: 'a'}];
                 const filterText: string = 'b';
                 const matchFilter: MatchFilter = () => true;
 
                 it('should return an empty array if the items is already empty', () => {
-                    expect(getItemsWithFilter([], filterText, matchFilter)).toEqual([]);
+                    expect(itemsWithFilterCombiner([], filterText, matchFilter)).toEqual([]);
                 });
 
                 it('should return items with hidden false if match filter return true', () => {
-                    expect(getItemsWithFilter(items, filterText, matchFilter)).toEqual([{value: 'a', hidden: false}]);
+                    expect(itemsWithFilterCombiner(items, filterText, matchFilter)).toEqual([{value: 'a', hidden: false}]);
                 });
 
                 it('should return items with hidden true if match filter return false', () => {
                     const matchFilterFalse: MatchFilter = () => false;
-                    expect(getItemsWithFilter(items, filterText, matchFilterFalse)).toEqual([{value: 'a', hidden: true}]);
+                    expect(itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([{value: 'a', hidden: true}]);
                 });
             });
 
-            describe('getCustomItems', () => {
+            describe('customItemsCombiner', () => {
 
             });
 
-            describe('getListBoxSelected', () => {
+            describe('listBoxSelectedCombiner', () => {
 
             });
         });
