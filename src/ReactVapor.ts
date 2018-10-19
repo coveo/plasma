@@ -31,6 +31,7 @@ import {IPopoverState} from './components/popover/Popover';
 import {IRadioSelectState} from './components/radio/RadioSelectReducers';
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
 import {ISelectState} from './components/select/SelectReducers';
+import {ISelectWithFilterCompositeState} from './components/select/SelectWithFilterReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
 import {ITablePredicate} from './components/tables/Table';
@@ -80,6 +81,7 @@ export interface IReactVaporState {
     radioSelects?: IRadioSelectState[];
     popovers?: IPopoverState[];
     stringList?: IStringListCompositeState;
+    selectWithFilter?: ISelectWithFilterCompositeState;
     lastAction?: Redux.Action;
 }
 
