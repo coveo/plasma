@@ -109,8 +109,8 @@ describe('Select', () => {
 
             expect(singleSelect.props().items.length).toBe(items.length);
             expect(singleSelect.find(SelectConnected).props().items[0].hidden).toBe(true);
-            expect(singleSelect.find(SelectConnected).props().items[1].hidden).toBeUndefined();
-            expect(singleSelect.find(SelectConnected).props().items[2].hidden).toBeUndefined();
+            expect(singleSelect.find(SelectConnected).props().items[1].hidden).toBe(false);
+            expect(singleSelect.find(SelectConnected).props().items[2].hidden).toBe(false);
         });
 
         it('should hide items that do not match custom filter', () => {

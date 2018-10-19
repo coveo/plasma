@@ -39,7 +39,7 @@ export const getItemsWithFilter = createSelector(
 export const customItemsCombiner = (
     items: IItemBoxProps[],
     listState: string[],
-) => {
+): IItemBoxProps[] => {
     const valueToRemove: string[] = _.map(items, (item: IItemBoxProps) => item.value);
     return convertStringListToItemsBox(_.difference(listState, valueToRemove), {hidden: true, selected: true});
 };
