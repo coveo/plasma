@@ -27,7 +27,6 @@ export const stringListCompositeState = (
         return state;
     }
 
-    const stateList: IStringListState = {...state[action.payload.id]};
     switch (action.type) {
         case StringListActions.add:
             return {
@@ -43,16 +42,16 @@ export const stringListCompositeState = (
             return {
                 ...state,
                 [action.payload.id]: {
-                    ...stateList,
-                    list: action.payload.reset ? [action.payload.value] : _.uniq([...stateList.list, action.payload.value]),
+                    ...state[action.payload.id],
+                    list: action.payload.reset ? [action.payload.value] : _.uniq([...state[action.payload.id].list, action.payload.value]),
                 },
             };
         case StringListActions.removeValue:
             return {
                 ...state,
                 [action.payload.id]: {
-                    ...stateList,
-                    list: [..._.without(stateList.list, action.payload.value)],
+                    ...state[action.payload.id],
+                    list: [..._.without(state[action.payload.id].list, action.payload.value)],
                 },
             };
         default:
