@@ -284,7 +284,7 @@ describe('Select', () => {
                 expect(store.getState().selectWithFilter[id].list[0]).toBe(filterValue);
             });
 
-            it('should add a itemBox with the filter value in the list if its not already in the initial list', () => {
+            it('should add an itemBox with the filter value in the list if it is not already in the initial list', () => {
                 const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
                 const filterValue: string = 'a';
 
@@ -299,7 +299,7 @@ describe('Select', () => {
                 expect(itemsBox.props().value).toBe(filterValue);
             });
 
-            it('should add a itemBox divider with the add itemBox in the list', () => {
+            it('should add an itemBox divider with the add itemBox in the list', () => {
                 const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
                 const filterValue: string = 'a';
 
@@ -314,22 +314,7 @@ describe('Select', () => {
                 expect(itemsBox.props.divider).toBe(true);
             });
 
-            it('should add a itemBox divider with the add itemBox in the list', () => {
-                const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
-                const filterValue: string = 'a';
-
-                mountSingleSelectCustomValues(complexItems);
-                store.dispatch(filterThrough(id, filterValue));
-
-                wrapper.update();
-                const itemsBox = wrapper.find(SelectConnected)
-                    .find(ItemBox)
-                    .get(1);
-
-                expect(itemsBox.props.divider).toBe(true);
-            });
-
-            it('should add a itemBox with the filter value in the list on click list item', () => {
+            it('should add an itemBox with the filter value in the list on click list item', () => {
                 const filterValue: string = 'a';
 
                 mountSingleSelectCustomValues([]);
