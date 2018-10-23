@@ -72,6 +72,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
                     <Title
                         text={this.props.title}
                         documentationLink={docLinkProps}
+                        classes={['regular']}
                     />
                 </div>
                 {this.props.children}
