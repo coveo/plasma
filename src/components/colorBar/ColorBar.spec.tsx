@@ -16,10 +16,11 @@ describe('ColorBar', () => {
     it('should render a div with only a transparent color with width 100% if no colors are passed', () => {
         noColorsPropsScenarios.forEach((props) => {
             const colorBars = shallow(<ColorBar {...props} />).find('.color-bar-color');
-            const {backgroundColor, width} = colorBars.first().prop('style');
+            const {width} = colorBars.first().prop('style');
+            const colorProp = colorBars.first().prop('color');
 
             expect(colorBars.length).toBe(1);
-            expect(backgroundColor).toBe('transparent');
+            expect(colorProp).toBe('transparent');
             expect(width).toBe('100%');
         });
     });
@@ -29,11 +30,13 @@ describe('ColorBar', () => {
         expect(colorBars.length).toBe(2);
 
         const coloredStyle = colorBars.first().prop('style');
-        expect(coloredStyle.backgroundColor).toBe('blue');
+        const coloredColorProp = colorBars.first().prop('color');
+        expect(coloredColorProp).toBe('blue');
         expect(coloredStyle.width).toBe('20%');
 
         const transparentStyle = colorBars.last().prop('style');
-        expect(transparentStyle.backgroundColor).toBe('transparent');
+        const transparentColorProp = colorBars.last().prop('color');
+        expect(transparentColorProp).toBe('transparent');
         expect(transparentStyle.width).toBe('80%');
     });
 
