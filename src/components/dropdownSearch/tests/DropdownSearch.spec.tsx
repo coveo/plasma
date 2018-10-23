@@ -1,5 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
+import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 
 import {keyCode} from '../../../utils/InputUtils';
@@ -8,6 +9,7 @@ import {Content} from '../../content/Content';
 import {FilterBox} from '../../filterBox/FilterBox';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
+import {DropdownSearchAutoInfiniteScroll, IDropdownSearchAutoInfiniteScrollOptions} from '../DropdownSearchAutoInfiniteScroll';
 import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
 import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
@@ -30,6 +32,18 @@ describe('DropdownSearch', () => {
         isDisabled: false,
         isOpened: false,
         searchThresold: 1,
+    };
+
+    const infiniteScrollProps: InfiniteScrollProps = {
+        dataLength: 2,
+        hasMore: true,
+        next: jasmine.createSpy('next'),
+        endMessage: 'no more',
+        loader: null,
+    };
+
+    const autoInfiniteScrollOptions: IDropdownSearchAutoInfiniteScrollOptions = {
+        optionsPerPage: 10,
     };
 
     describe('<DropdownSearch />', () => {
@@ -314,20 +328,22 @@ describe('DropdownSearch', () => {
             });
 
             describe('getDropdownOptions', () => {
-                it('should return li elements if the infiniteScrollProps are undefined', () => {
+                it('should return li elements if the infiniteScroll and autoInfiniteScroll props are undefined', () => {
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('li');
                 });
 
                 it('should return div elements if the infiniteScrollProps are defined', () => {
                     dropdownSearch.setProps({
                         ...ownProps,
-                        infiniteScroll: {
-                            dataLength: 2,
-                            hasMore: true,
-                            next: jasmine.createSpy('next'),
-                            endMessage: 'no more',
-                            loader: undefined,
-                        },
+                        infiniteScroll: {...infiniteScrollProps},
+                    });
+                    expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
+                });
+
+                it('should return div elements if the autoInfiniteScroll prop is defined', () => {
+                    dropdownSearch.setProps({
+                        ...ownProps,
+                        autoInfiniteScroll: {...autoInfiniteScrollOptions},
                     });
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
                 });
@@ -338,7 +354,7 @@ describe('DropdownSearch', () => {
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu()).toBeNull();
                 });
 
-                it('should return a ul if the infiniteScrollProps are undefined', () => {
+                it('should return a ul if the infiniteScroll and autoInfiniteScroll props are undefined', () => {
                     dropdownSearch.setProps({
                         ...ownProps,
                         isOpened: true,
@@ -346,19 +362,22 @@ describe('DropdownSearch', () => {
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe('ul');
                 });
 
-                it('should return a DropdownSearchInfiniteScrollOptions if the infiniteScrollProps are defined', () => {
+                it('should return a DropdownSearchInfiniteScrollOptions if the infiniteScroll prop is defined', () => {
                     dropdownSearch.setProps({
                         ...ownProps,
                         isOpened: true,
-                        infiniteScroll: {
-                            dataLength: 2,
-                            hasMore: true,
-                            next: jasmine.createSpy('next'),
-                            endMessage: 'no more',
-                            loader: undefined,
-                        },
+                        infiniteScroll: {...infiniteScrollProps},
                     });
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchInfiniteScrollOptions);
+                });
+
+                it('should return a DropdownSearchInfiniteScrollOptions if the autoInfiniteScroll prop is defined', () => {
+                    dropdownSearch.setProps({
+                        ...ownProps,
+                        isOpened: true,
+                        autoInfiniteScroll: {...autoInfiniteScrollOptions},
+                    });
+                    expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchAutoInfiniteScroll);
                 });
 
                 it('should call the hasMoreItems prop to let the infinite scroll if there are more items', () => {
@@ -366,13 +385,7 @@ describe('DropdownSearch', () => {
                     dropdownSearch.setProps({
                         ...ownProps,
                         isOpened: true,
-                        infiniteScroll: {
-                            dataLength: 2,
-                            hasMore: true,
-                            next: jasmine.createSpy('next'),
-                            endMessage: 'no more',
-                            loader: undefined,
-                        },
+                        infiniteScroll: {...infiniteScrollProps},
                         hasMoreItems: hasMoreItemsSpy,
                     });
                     const hasMoreItemsCallsCount = hasMoreItemsSpy.calls.count();
@@ -381,25 +394,35 @@ describe('DropdownSearch', () => {
                     expect(hasMoreItemsSpy).toHaveBeenCalledTimes(hasMoreItemsCallsCount + 1);
                 });
 
-                it('should call handleOnMouseEnter when calling DropdownSearchInfiniteScrollOptions onMouseEnter prop', () => {
-                    const handleOnMouseEnterSpy = spyOn<any>(dropdownSearchInstance, 'handleOnMouseEnter');
+                it(`if infiniteScroll prop is defined
+                    should call handleOnMouseEnter when calling DropdownSearchInfiniteScrollOptions onMouseEnter prop`, () => {
+                        const handleOnMouseEnterSpy = spyOn<any>(dropdownSearchInstance, 'handleOnMouseEnter');
 
-                    dropdownSearch.setProps({
-                        ...ownProps,
-                        isOpened: true,
-                        infiniteScroll: {
-                            dataLength: 2,
-                            hasMore: true,
-                            next: jasmine.createSpy('next'),
-                            endMessage: 'no more',
-                            loader: undefined,
-                        },
+                        dropdownSearch.setProps({
+                            ...ownProps,
+                            isOpened: true,
+                            infiniteScroll: {...infiniteScrollProps},
+                        });
+
+                        dropdownSearchInstanceAsAny.getDropdownMenu().props.onMouseEnter();
+
+                        expect(handleOnMouseEnterSpy).toHaveBeenCalledTimes(1);
                     });
 
-                    dropdownSearchInstanceAsAny.getDropdownMenu().props.onMouseEnter();
+                it(`if autoInfiniteScroll prop is defined
+                    should call handleOnMouseEnter when calling DropdownSearchInfiniteScrollOptions onMouseEnter prop`, () => {
+                        const handleOnMouseEnterSpy = spyOn<any>(dropdownSearchInstance, 'handleOnMouseEnter');
 
-                    expect(handleOnMouseEnterSpy).toHaveBeenCalledTimes(1);
-                });
+                        dropdownSearch.setProps({
+                            ...ownProps,
+                            isOpened: true,
+                            autoInfiniteScroll: {...autoInfiniteScrollOptions},
+                        });
+
+                        dropdownSearchInstanceAsAny.getDropdownMenu().props.onMouseEnter();
+
+                        expect(handleOnMouseEnterSpy).toHaveBeenCalledTimes(1);
+                    });
             });
         });
 

@@ -10,6 +10,7 @@ import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
 import {ISvgProps, Svg} from '../svg/Svg';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
+import {DropdownSearchAutoInfiniteScroll, IDropdownSearchAutoInfiniteScrollOptions} from './DropdownSearchAutoInfiniteScroll';
 import {DropdownSearchInfiniteScrollOptions} from './DropdownSearchInfiniteScrollOptions';
 
 export interface IDropdownOption {
@@ -59,6 +60,7 @@ export interface IDropdownSearchOwnProps {
     infiniteScroll?: InfiniteScrollProps;
     hasMoreItems?: () => boolean;
     customFiltering?: (filterText: string) => void;
+    autoInfiniteScroll?: IDropdownSearchAutoInfiniteScrollOptions;
 }
 
 export interface IDropdownSearchDispatchProps {
@@ -134,7 +136,8 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
 
     protected getDropdownOptions(): JSX.Element[] {
-        const ElementTag: string = this.props.infiniteScroll ? 'div' : 'li';
+        const hasInfiniteScrolling = !!this.props.infiniteScroll || !!this.props.autoInfiniteScroll;
+        const ElementTag: string = hasInfiniteScrolling ? 'div' : 'li';
         const options = _.chain(this.getDisplayedOptions())
             .filter((option: IDropdownOption) => {
                 const value = option.displayValue || option.value;
@@ -370,8 +373,20 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
             return null;
         }
         const dropdownOptions: JSX.Element[] = this.getDropdownOptions();
-        return this.props.infiniteScroll
-            ? (
+
+        if (this.props.autoInfiniteScroll) {
+            return (
+                <DropdownSearchAutoInfiniteScroll
+                    {...this.props.autoInfiniteScroll}
+                    options={dropdownOptions}
+                    onMouseEnter={() => this.handleOnMouseEnter()}
+                    ulElementRefFunction={(menu: HTMLElement) => this.ulElement = menu}
+                />
+            );
+        }
+
+        if (this.props.infiniteScroll) {
+            return (
                 <DropdownSearchInfiniteScrollOptions
                     infiniteScroll={{
                         ...this.props.infiniteScroll,
@@ -382,14 +397,16 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                     ulElementRefFunction={(menu: HTMLElement) => this.ulElement = menu}
                     options={dropdownOptions}
                 />
-            )
-            : (
-                <ul className='dropdown-menu'
-                    ref={(menu: HTMLUListElement) => {this.ulElement = menu;}}
-                    onMouseEnter={() => this.handleOnMouseEnter()}>
-                    {dropdownOptions}
-                </ul>
             );
+        }
+
+        return (
+            <ul className='dropdown-menu'
+                ref={(menu: HTMLUListElement) => {this.ulElement = menu;}}
+                onMouseEnter={() => this.handleOnMouseEnter()}>
+                {dropdownOptions}
+            </ul>
+        );
     }
 
     private getSelectedOptionElement(): JSX.Element[] {
