@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
 import {Tooltip} from '../tooltip/Tooltip';
 
@@ -44,13 +45,17 @@ export class Title extends React.Component<ITitleProps, {}> {
             this.props.classes,
         );
 
+        const title = this.props.withTitleTooltip
+            ? <Tooltip title={this.props.text} placement='left'>
+                {this.props.text}
+            </Tooltip>
+            : this.props.text;
+
         return (
             <div className='flex flex-center full-content-x'>
                 <h1 className={titleClasses}>
                     <span className={prefixClasses}>{this.props.prefix}</span>
-                    <Tooltip title={this.props.withTitleTooltip ? this.props.text : ''} placement='left'>
-                        {this.props.text}
-                    </Tooltip>
+                    {title}
                 </h1>
                 {this.getLinkIcon()}
             </div>);
