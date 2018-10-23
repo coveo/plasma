@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
+import {ILinkSvgProps} from '../../svg/LinkSvg';
 
 describe('ModalHeader', () => {
     const basicProps: IModalHeaderProps = {
@@ -87,22 +88,12 @@ describe('ModalHeader', () => {
             expect(modal.find('header').first().html()).toContain(headerClass);
         });
 
-        it('should have the class inline on the title only if there are children', () => {
-            const expectedClass: string = 'inline';
-
-            expect(modal.find('h1').hasClass(expectedClass)).toBe(false);
-
-            setChildren();
-
-            expect(modal.find('h1').hasClass(expectedClass)).toBe(true);
-        });
-
         it('should not have a tooltip, anchor, and svg for doclink by default', () => {
             expect(modal.find(Tooltip).length).toBe(0);
         });
 
         it('should have a tooltip, anchor, and svg for doclink if the prop is passed', () => {
-            const docLink = {url: 'testomax', tooltip: 'doclinktooltip'};
+            const docLink: ILinkSvgProps = {url: 'testomax', tooltip: {title: 'doclinktooltip'}};
             modal.setProps({docLink});
 
             expect(modal.find(Tooltip).length).toBe(1);
