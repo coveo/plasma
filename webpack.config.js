@@ -83,7 +83,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                exclude: [/src\/components/],
+                exclude: path.join(__dirname, 'src/components'),
                 loader: 'style-loader!css-loader!postcss-loader!sass-loader',
             },
             {
