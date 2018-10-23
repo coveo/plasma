@@ -226,7 +226,7 @@ class App extends React.Component<any, any> {
                         {component: SplitMultilineInputExamples, componentName: 'SplitMultilineInput'},
                         {component: JSONEditorExamples, componentName: 'JSONEditor'},
                         {component: CodeEditorExamples, componentName: 'CodeEditor'},
-                        {component: DropdownSearchExamples, componentName: 'DropdownSearch'},
+                        {component: DropdownSearchExamples, componentName: 'DropdownSearch (deprecated)'},
                         {component: DiffViewerExamples, componentName: 'DiffViewer'},
                         {component: BannerExamples, componentName: 'Banner'},
                         {component: SlideYExamples, componentName: 'SlideY'},
