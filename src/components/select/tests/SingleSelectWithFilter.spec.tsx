@@ -7,14 +7,16 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
+import {Button} from '../../button/Button';
 import {filterThrough} from '../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {IItemBoxProps, ItemBox} from '../../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../../listBox/ListBoxActions';
 import {IMultiSelectProps} from '../MultiSelectConnected';
 import {toggleSelect} from '../SelectActions';
 import {SingleSelectWithFilter} from '../SelectComponents';
 import {SelectConnected} from '../SelectConnected';
+import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {
@@ -65,6 +67,14 @@ describe('Select', () => {
                 expect(store.getState().selects.length).toBe(1);
             });
 
+            it('should add the string list to the state when mounted', () => {
+                expect(store.getState().selectWithFilter[id]).toBeUndefined();
+
+                mountSingleSelect();
+
+                expect(store.getState().selectWithFilter[id]).toBeDefined();
+            });
+
             it('should remove the list box from the state when the component unmount', () => {
                 mountSingleSelect();
 
@@ -72,6 +82,16 @@ describe('Select', () => {
                 wrapper.unmount();
 
                 expect(store.getState().selects.length).toBe(0);
+            });
+
+            it('should remove the list box from the state when the component unmount', () => {
+                mountSingleSelect();
+
+                expect(store.getState().selectWithFilter[id]).toBeDefined();
+
+                wrapper.unmount();
+
+                expect(store.getState().selectWithFilter[id]).toBeUndefined();
             });
         });
 
@@ -109,8 +129,8 @@ describe('Select', () => {
 
             expect(singleSelect.props().items.length).toBe(items.length);
             expect(singleSelect.find(SelectConnected).props().items[0].hidden).toBe(true);
-            expect(singleSelect.find(SelectConnected).props().items[1].hidden).toBeUndefined();
-            expect(singleSelect.find(SelectConnected).props().items[2].hidden).toBeUndefined();
+            expect(singleSelect.find(SelectConnected).props().items[1].hidden).toBe(false);
+            expect(singleSelect.find(SelectConnected).props().items[2].hidden).toBe(false);
         });
 
         it('should hide items that do not match custom filter', () => {
@@ -199,6 +219,115 @@ describe('Select', () => {
                     .simulate('keyup', {keyCode: keyCode.upArrow});
 
                 expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+            });
+        });
+
+        describe('With CustomValue Props', () => {
+            const items = [
+                {value: 'a'},
+                {value: 'b', selected: true},
+                {value: 'c'},
+            ];
+
+            const mountSingleSelectCustomValues = (newItems: IItemBoxProps[] = [], matchFilter: (filterValue: string, item: IItemBoxProps) => boolean = undefined, props: Partial<ISelectWithFilterProps> = {}) => {
+                wrapper = mount(
+                    <Provider store={store}>
+                        <SingleSelectWithFilter id={id} items={newItems} matchFilter={matchFilter} customValues {...props} />
+                    </Provider>,
+                    {attachTo: document.getElementById('App')},
+                );
+
+                store.dispatch(toggleSelect(id, true));
+                wrapper.update();
+            };
+
+            it('should not add a button with the filter if customValue is false', () => {
+                mountSingleSelect(items, () => false);
+
+                expect(wrapper.find(Button).length).toBe(0);
+            });
+
+            it('should add a button with the filter', () => {
+                mountSingleSelectCustomValues(items, () => false);
+
+                expect(wrapper.find(Button).length).toBe(1);
+            });
+
+            it('should not add the value in the store list on click button if the filter value is empty', () => {
+                mountSingleSelectCustomValues(items, () => false);
+
+                expect(store.getState().selectWithFilter[id].list.length).toBe(0);
+                store.dispatch(filterThrough(id, ''));
+
+                wrapper.find(SelectConnected)
+                    .find(Button)
+                    .find('button')
+                    .simulate('click');
+
+                expect(store.getState().selectWithFilter[id].list.length).toBe(0);
+            });
+
+            it('should add the value in the store list on click button if the filterValue is not empty', () => {
+                const filterValue: string = 'wontmatchanything';
+
+                mountSingleSelectCustomValues(items, () => false);
+
+                expect(store.getState().selectWithFilter[id].list.length).toBe(0);
+                store.dispatch(filterThrough(id, filterValue));
+
+                wrapper.find(SelectConnected)
+                    .find(Button)
+                    .find('button')
+                    .simulate('click');
+
+                expect(store.getState().selectWithFilter[id].list.length).toBe(1);
+                expect(store.getState().selectWithFilter[id].list[0]).toBe(filterValue);
+            });
+
+            it('should add an itemBox with the filter value in the list if it is not already in the initial list', () => {
+                const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
+                const filterValue: string = 'a';
+
+                mountSingleSelectCustomValues(complexItems);
+                store.dispatch(filterThrough(id, filterValue));
+
+                wrapper.update();
+                const itemsBox = wrapper.find(SelectConnected)
+                    .find(ItemBox)
+                    .first();
+
+                expect(itemsBox.props().value).toBe(filterValue);
+            });
+
+            it('should add an itemBox divider with the add itemBox in the list', () => {
+                const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
+                const filterValue: string = 'a';
+
+                mountSingleSelectCustomValues(complexItems);
+                store.dispatch(filterThrough(id, filterValue));
+
+                wrapper.update();
+                const itemsBox = wrapper.find(SelectConnected)
+                    .find(ItemBox)
+                    .get(1);
+
+                expect(itemsBox.props.divider).toBe(true);
+            });
+
+            it('should add an itemBox with the filter value in the list on click list item', () => {
+                const filterValue: string = 'a';
+
+                mountSingleSelectCustomValues([]);
+                store.dispatch(filterThrough(id, filterValue));
+
+                wrapper.update();
+                wrapper.find(SelectConnected)
+                    .find(ItemBox)
+                    .find('li')
+                    .simulate('click');
+
+                expect(store.getState().selectWithFilter[id].list.length).toBe(1);
+                expect(store.getState().selectWithFilter[id].list[0]).toBe(filterValue);
             });
         });
     });

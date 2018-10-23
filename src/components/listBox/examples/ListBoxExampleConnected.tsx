@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as _ from 'underscore';
 import {IReactVaporExampleState} from '../../../../docs/Reducers';
+import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../../reusableState/customList/StringListReducers';
 import {IDispatch, ReduxConnect, ReduxUtils} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {Button} from '../../button/Button';
@@ -23,14 +23,11 @@ interface IListBoxExamplesProps extends Partial<IListBoxExamplesDispatchProps>, 
     multi?: boolean;
 }
 
-const convertOptionsToItemsBox = (options: string[]): IItemBoxProps[] => _.map(options, (option: string) => ({value: option}));
-const convertItemsBoxToOptions = (items: IItemBoxProps[]): string[] => _.pluck(items, 'value');
-
 const mapStateToProps = (state: IReactVaporExampleState, ownProps: IListBoxExamplesProps): IListBoxExamplesStateProps => {
     const listBoxExample = state.listBoxExampleState[ownProps.id];
     if (listBoxExample) {
         return {
-            items: convertOptionsToItemsBox(listBoxExample.options),
+            items: convertStringListToItemsBox(listBoxExample.options),
         };
     }
 
@@ -41,10 +38,10 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxExamplesProps
     updateOptions: () => {
         dispatch(updateListBoxExample(
             ownProps.id,
-            [...convertItemsBoxToOptions(ownProps.items), `${TestUtils.randomValue1To100()}_new_value`]),
+            [...convertItemsBoxToStringList(ownProps.items), `${TestUtils.randomValue1To100()}_new_value`]),
         );
     },
-    addListBoxExample: () => dispatch(addListBoxExample(ownProps.id, convertItemsBoxToOptions(ownProps.items))),
+    addListBoxExample: () => dispatch(addListBoxExample(ownProps.id, convertItemsBoxToStringList(ownProps.items))),
     removeListBoxExample: () => dispatch(removeListBoxExample(ownProps.id)),
 });
 

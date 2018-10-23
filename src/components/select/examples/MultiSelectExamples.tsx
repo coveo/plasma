@@ -78,6 +78,11 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                     <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>A Multi Select With Filter and Custom Values</label>
+                    <br />
+                    <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter that only match display value</label>
                     <br />
                     <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1} />
@@ -96,6 +101,16 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
                     />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Multi Select With Filter, Predicate and Custom Values</label>
+                    <br />
+                    <MultiSelectWithPredicateAndFilter
+                        id={UUID.generate()}
+                        items={this.state.hoc}
+                        options={defaultFlatSelectOptions}
+                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                        customValues />
                 </div>
             </div>
         );

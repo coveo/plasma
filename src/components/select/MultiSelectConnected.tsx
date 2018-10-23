@@ -12,6 +12,7 @@ import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '.
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {getListBoxSelected, getListState} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
     placeholder?: string;
@@ -32,12 +33,9 @@ export interface IMultiSelectDispatchProps {
 
 export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => {
-    const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
-    return {
-        selected: listbox && listbox.selected ? listbox.selected : undefined,
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => ({
+    selected: [...getListBoxSelected(state, ownProps), ...getListState(state, ownProps)],
+});
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
     onRemoveClick: (item: IItemBoxProps) => dispatch(unselectListBoxOption(ownProps.id, item.value)),
@@ -70,6 +68,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                 id={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
                 items={this.props.items}
+                noResultItem={this.props.noResultItem}
                 multi>
                 {this.props.children}
             </SelectConnected>
