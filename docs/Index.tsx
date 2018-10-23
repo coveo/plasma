@@ -87,6 +87,7 @@ import {StatusCardExamples} from '../src/components/statusCard/examples/StatusCa
 import {StepProgressBarExamples} from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
 import {SubNavigationConnectedExamples} from '../src/components/subNavigation/examples/SubNavigationConnectedExamples';
 import {SubNavigationExamples} from '../src/components/subNavigation/examples/SubNavigationExamples';
+import {SubNavigation} from '../src/components/subNavigation/SubNavigation';
 import {LinkSvgExamples} from '../src/components/svg/examples/LinkSvgExamples';
 import {SvgExamples} from '../src/components/svg/examples/SvgExamples';
 import {SyncFeedbackExample} from '../src/components/syncFeedback/examples/SyncFeedbackExample';
@@ -106,141 +107,162 @@ import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserF
 import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
 
-interface ExampleWrapperState {
-    shown: boolean;
-}
-
 interface ExampleProps {
-    component: any;
     componentName: string;
+    component: any;
 }
 
-class ExampleWrapper extends React.Component<ExampleProps, ExampleWrapperState> {
-    state: ExampleWrapperState = {shown: false};
+interface AppState {
+    activeComponentId: string;
+}
 
-    render() {
-        return (
-            <div className='px2 py2 mod-border-bottom'>
-                <h2 className='link' onClick={() => this.setState({shown: !this.state.shown})}>{this.props.componentName}</h2>
-                <div id={this.props.componentName} className='mb1 mt1'>
-                    {this.state.shown && <this.props.component />}
-                </div>
-            </div>
-        );
+class App extends React.Component<{}, AppState> {
+    private components = [
+        {component: MenuExamples, componentName: 'MenuExamples'},
+        {component: CollapsibleInfoBoxExamples, componentName: 'CollapsibleInfoBox'},
+        {component: MembersExample, componentName: 'Members'},
+        {component: BorderedLineExamples, componentName: 'BorderedLine'},
+        {component: AutocompleteExamples, componentName: 'Autocomplete'},
+        {component: TextAreaExamples, componentName: 'TextArea'},
+        {component: SearchBarExamples, componentName: 'SearchBar'},
+        {component: ColorBarExamples, componentName: 'ColorBar'},
+        {component: PartialStringMatchExamples, componentName: 'PartialStringMatch'},
+        {component: BadgeExamples, componentName: 'Badge'},
+        {component: CornerRibbonExamples, componentName: 'CornerRibbon'},
+        {component: LogoCardExamples, componentName: 'LogoCard'},
+        {component: FlippableExamples, componentName: 'Flippable'},
+        {component: SliderExamples, componentName: 'Slider'},
+        {component: SvgExamples, componentName: 'Svg'},
+        {component: LinkSvgExamples, componentName: 'LinkSvg'},
+        {component: TitleExamples, componentName: 'Title'},
+        {component: ContentExamples, componentName: 'Content'},
+        {component: ItemBoxExamples, componentName: 'ItemBox'},
+        {component: ListBoxExamples, componentName: 'ListBox'},
+        {component: ButtonExamples, componentName: 'Button'},
+        {component: BreadcrumbsExamples, componentName: 'Breadcrumbs'},
+        {component: BasicHeaderExamples, componentName: 'BasicHeader'},
+        {component: BreadcrumbHeaderExample, componentName: 'BreadcrumbHeader'},
+        {component: SingleSelectExamples, componentName: 'SingleSelect'},
+        {component: MultiSelectExamples, componentName: 'MultiSelect'},
+        {component: FlatSelectExamples, componentName: 'FlatSelect'},
+        {component: TooltipExamples, componentName: 'Tooltip'},
+        {component: ChosenSelectExamples, componentName: 'ChosenSelect'},
+        {component: UserFeedbackExample, componentName: 'UserFeedback'},
+        {component: SyncFeedbackExample, componentName: 'SyncFeedback'},
+        {component: LastUpdatedExamples, componentName: 'LastUpdated'},
+        {component: LastUpdatedConnectedExamples, componentName: 'LastUpdatedConnected'},
+        {component: LoadingExamples, componentName: 'Loading'},
+        {component: FilterBoxExamples, componentName: 'FilterBox'},
+        {component: FilterBoxConnectedExamples, componentName: 'FilterBoxConnected'},
+        {component: FacetExamples, componentName: 'Facet'},
+        {component: FacetConnectedExamples, componentName: 'FacetConnected'},
+        {component: ModalExamples, componentName: 'Modal'},
+        {component: ModalConnectedExamples, componentName: 'ModalConnected'},
+        {component: ModalCompositeExamples, componentName: 'ModalComposite'},
+        {component: ModalCompositeConnectedExamples, componentName: 'ModalCompositeConnected'},
+        {component: ModalPromptExamples, componentName: 'ModalPrompt'},
+        {component: NavigationExamples, componentName: 'Navigation'},
+        {component: NavigationConnectedExamples, componentName: 'NavigationConnected'},
+        {component: SubNavigationExamples, componentName: 'SubNavigation'},
+        {component: SubNavigationConnectedExamples, componentName: 'SubNavigationConnected'},
+        {component: SideNavigationExample, componentName: 'SideNavigation'},
+        {component: SideNavigationLoadingExample, componentName: 'SideNavigationLoading'},
+        {component: TabsExamples, componentName: 'Tabs'},
+        {component: ActionBarExamples, componentName: 'ActionBar'},
+        {component: ActionBarConnectedExamples, componentName: 'ActionBarConnected'},
+        {component: ItemFilterExamples, componentName: 'ItemFilter'},
+        {component: ItemFilterConnectedExamples, componentName: 'ItemFilterConnected'},
+        {component: TableRowExamples, componentName: 'TableRow'},
+        {component: TableRowConnectedExamples, componentName: 'TableRowConnected'},
+        {component: TableEmptyRowExamples, componentName: 'TableEmptyRow'},
+        {component: TableHeaderExamples, componentName: 'TableHeader'},
+        {component: TableExamples, componentName: 'Table'},
+        {component: TableWithDisabledRowsExamples, componentName: 'TableWithDisabledRows'},
+        {component: OptionsCycleExamples, componentName: 'OptionsCycle'},
+        {component: OptionsCycleConnectedExamples, componentName: 'OptionsCycleConnected'},
+        {component: CalendarConnectedExamples, componentName: 'CalendarConnected'},
+        {component: DatesSelectionExamples, componentName: 'DatesSelection'},
+        {component: DatesSelectionConnectedExamples, componentName: 'DatesSelectionConnected'},
+        {component: DatePickerBoxExamples, componentName: 'DatePickerBox'},
+        {component: DatePickerBoxConnectedExamples, componentName: 'DatePickerBoxConnected'},
+        {component: DatePickerDropdownConnectedExamples, componentName: 'DatePickerDropdownConnected'},
+        {component: DatePickerDropdownConnectedSingleDateExamples, componentName: 'DatePickerDropdownConnectedSingleDate'},
+        {component: MultilineInputExamples, componentName: 'MultilineInput'},
+        {component: BlankSlateExample, componentName: 'BlankSlat'},
+        {component: ToastExamples, componentName: 'Toast'},
+        {component: ToastConnectedExamples, componentName: 'ToastConnected'},
+        {component: InputAndInputConnectedExamples, componentName: 'InputAndInputConnected'},
+        {component: RadioExamples, componentName: 'Radio'},
+        {component: CheckboxExamples, componentName: 'Checkbox'},
+        {component: CheckboxConnectedExamples, componentName: 'CheckboxConnected'},
+        {component: GroupableCheckboxConnectedExamples, componentName: 'GroupableCheckboxConnected'},
+        {component: ChildFormExamples, componentName: 'ChildForm'},
+        {component: StepProgressBarExamples, componentName: 'StepProgressBar'},
+        {component: MultiStepBarExamples, componentName: 'MultiStepBar'},
+        {component: LabeledValueExamples, componentName: 'LabeledValue'},
+        {component: CollapsibleContainerExamples, componentName: 'CollapsibleContainer'},
+        {component: CollapsibleExamples, componentName: 'Collapsible'},
+        {component: SplitLayoutExamples, componentName: 'SplitLayout'},
+        {component: SplitMultilineInputExamples, componentName: 'SplitMultilineInput'},
+        {component: JSONEditorExamples, componentName: 'JSONEditor'},
+        {component: CodeEditorExamples, componentName: 'CodeEditor'},
+        {component: DropdownSearchExamples, componentName: 'DropdownSearch'},
+        {component: DiffViewerExamples, componentName: 'DiffViewer'},
+        {component: BannerExamples, componentName: 'Banner'},
+        {component: SlideYExamples, componentName: 'SlideY'},
+        {component: StatusCardExamples, componentName: 'StatusCard'},
+        {component: ActionableItemExamples, componentName: 'ActionableItem'},
+        {component: PopoverConnectedExamples, componentName: 'Popover'},
+        {component: ColorExamples, componentName: 'Color'},
+    ];
+
+    constructor(props: {}, state: AppState) {
+        super(props, state);
+
+        const componentIdFromHash = window.location.hash.replace(/^#/, '');
+        this.state = {
+            activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || this.components[0].componentName,
+        };
     }
-}
 
-const sortComponentsByName = (a: ExampleProps, b: ExampleProps) => a.componentName.toLowerCase().localeCompare(b.componentName.toLowerCase());
-const formatComponentsExamples = (example: ExampleProps) => <ExampleWrapper key={example.componentName} componentName={example.componentName} component={example.component} />;
+    componentDidMount() {
+        const el = document.querySelector(`[href="${window.location.hash}"]`);
 
-class App extends React.Component<any, any> {
+        if (el) {
+            el.scrollIntoView({behavior: 'instant', block: 'center'});
+        }
+    }
+
     render() {
+        const selectedComponent: any = this.getSelectedComponent(this.state.activeComponentId);
         return (
             <Provider store={ReactVaporStore}>
-                <div className='coveo-form'>
-                    {[
-                        {component: MenuExamples, componentName: 'MenuExamples'},
-                        {component: CollapsibleInfoBoxExamples, componentName: 'CollapsibleInfoBox'},
-                        {component: MembersExample, componentName: 'Members'},
-                        {component: BorderedLineExamples, componentName: 'BorderedLine'},
-                        {component: AutocompleteExamples, componentName: 'Autocomplete'},
-                        {component: TextAreaExamples, componentName: 'TextArea'},
-                        {component: SearchBarExamples, componentName: 'SearchBar'},
-                        {component: ColorBarExamples, componentName: 'ColorBar'},
-                        {component: PartialStringMatchExamples, componentName: 'PartialStringMatch'},
-                        {component: BadgeExamples, componentName: 'Badge'},
-                        {component: CornerRibbonExamples, componentName: 'CornerRibbon'},
-                        {component: LogoCardExamples, componentName: 'LogoCard'},
-                        {component: FlippableExamples, componentName: 'Flippable'},
-                        {component: SliderExamples, componentName: 'Slider'},
-                        {component: SvgExamples, componentName: 'Svg'},
-                        {component: LinkSvgExamples, componentName: 'LinkSvg'},
-                        {component: TitleExamples, componentName: 'Title'},
-                        {component: ContentExamples, componentName: 'Content'},
-                        {component: ItemBoxExamples, componentName: 'ItemBox'},
-                        {component: ListBoxExamples, componentName: 'ListBox'},
-                        {component: ButtonExamples, componentName: 'Button'},
-                        {component: BreadcrumbsExamples, componentName: 'Breadcrumbs'},
-                        {component: BasicHeaderExamples, componentName: 'BasicHeader'},
-                        {component: BreadcrumbHeaderExample, componentName: 'BreadcrumbHeader'},
-                        {component: SingleSelectExamples, componentName: 'SingleSelect'},
-                        {component: MultiSelectExamples, componentName: 'MultiSelect'},
-                        {component: FlatSelectExamples, componentName: 'FlatSelect'},
-                        {component: TooltipExamples, componentName: 'Tooltip'},
-                        {component: ChosenSelectExamples, componentName: 'ChosenSelect'},
-                        {component: UserFeedbackExample, componentName: 'UserFeedback'},
-                        {component: SyncFeedbackExample, componentName: 'SyncFeedback'},
-                        {component: LastUpdatedExamples, componentName: 'LastUpdated'},
-                        {component: LastUpdatedConnectedExamples, componentName: 'LastUpdatedConnected'},
-                        {component: LoadingExamples, componentName: 'Loading'},
-                        {component: FilterBoxExamples, componentName: 'FilterBox'},
-                        {component: FilterBoxConnectedExamples, componentName: 'FilterBoxConnected'},
-                        {component: FacetExamples, componentName: 'Facet'},
-                        {component: FacetConnectedExamples, componentName: 'FacetConnected'},
-                        {component: ModalExamples, componentName: 'Modal'},
-                        {component: ModalConnectedExamples, componentName: 'ModalConnected'},
-                        {component: ModalCompositeExamples, componentName: 'ModalComposite'},
-                        {component: ModalCompositeConnectedExamples, componentName: 'ModalCompositeConnected'},
-                        {component: ModalPromptExamples, componentName: 'ModalPrompt'},
-                        {component: NavigationExamples, componentName: 'Navigation'},
-                        {component: NavigationConnectedExamples, componentName: 'NavigationConnected'},
-                        {component: SubNavigationExamples, componentName: 'SubNavigation'},
-                        {component: SubNavigationConnectedExamples, componentName: 'SubNavigationConnected'},
-                        {component: SideNavigationExample, componentName: 'SideNavigation'},
-                        {component: SideNavigationLoadingExample, componentName: 'SideNavigationLoading'},
-                        {component: TabsExamples, componentName: 'Tabs'},
-                        {component: ActionBarExamples, componentName: 'ActionBar'},
-                        {component: ActionBarConnectedExamples, componentName: 'ActionBarConnected'},
-                        {component: ItemFilterExamples, componentName: 'ItemFilter'},
-                        {component: ItemFilterConnectedExamples, componentName: 'ItemFilterConnected'},
-                        {component: TableRowExamples, componentName: 'TableRow'},
-                        {component: TableRowConnectedExamples, componentName: 'TableRowConnected'},
-                        {component: TableEmptyRowExamples, componentName: 'TableEmptyRow'},
-                        {component: TableHeaderExamples, componentName: 'TableHeader'},
-                        {component: TableExamples, componentName: 'Table'},
-                        {component: TableWithDisabledRowsExamples, componentName: 'TableWithDisabledRows'},
-                        {component: OptionsCycleExamples, componentName: 'OptionsCycle'},
-                        {component: OptionsCycleConnectedExamples, componentName: 'OptionsCycleConnected'},
-                        {component: CalendarConnectedExamples, componentName: 'CalendarConnected'},
-                        {component: DatesSelectionExamples, componentName: 'DatesSelection'},
-                        {component: DatesSelectionConnectedExamples, componentName: 'DatesSelectionConnected'},
-                        {component: DatePickerBoxExamples, componentName: 'DatePickerBox'},
-                        {component: DatePickerBoxConnectedExamples, componentName: 'DatePickerBoxConnected'},
-                        {component: DatePickerDropdownConnectedExamples, componentName: 'DatePickerDropdownConnected'},
-                        {component: DatePickerDropdownConnectedSingleDateExamples, componentName: 'DatePickerDropdownConnectedSingleDate'},
-                        {component: MultilineInputExamples, componentName: 'MultilineInput'},
-                        {component: BlankSlateExample, componentName: 'BlankSlat'},
-                        {component: ToastExamples, componentName: 'Toast'},
-                        {component: ToastConnectedExamples, componentName: 'ToastConnected'},
-                        {component: InputAndInputConnectedExamples, componentName: 'InputAndInputConnected'},
-                        {component: RadioExamples, componentName: 'Radio'},
-                        {component: CheckboxExamples, componentName: 'Checkbox'},
-                        {component: CheckboxConnectedExamples, componentName: 'CheckboxConnected'},
-                        {component: GroupableCheckboxConnectedExamples, componentName: 'GroupableCheckboxConnected'},
-                        {component: ChildFormExamples, componentName: 'ChildForm'},
-                        {component: StepProgressBarExamples, componentName: 'StepProgressBar'},
-                        {component: MultiStepBarExamples, componentName: 'MultiStepBar'},
-                        {component: LabeledValueExamples, componentName: 'LabeledValue'},
-                        {component: CollapsibleContainerExamples, componentName: 'CollapsibleContainer'},
-                        {component: CollapsibleExamples, componentName: 'Collapsible'},
-                        {component: SplitLayoutExamples, componentName: 'SplitLayout'},
-                        {component: SplitMultilineInputExamples, componentName: 'SplitMultilineInput'},
-                        {component: JSONEditorExamples, componentName: 'JSONEditor'},
-                        {component: CodeEditorExamples, componentName: 'CodeEditor'},
-                        {component: DropdownSearchExamples, componentName: 'DropdownSearch'},
-                        {component: DiffViewerExamples, componentName: 'DiffViewer'},
-                        {component: BannerExamples, componentName: 'Banner'},
-                        {component: SlideYExamples, componentName: 'SlideY'},
-                        {component: StatusCardExamples, componentName: 'StatusCard'},
-                        {component: ActionableItemExamples, componentName: 'ActionableItem'},
-                        {component: PopoverConnectedExamples, componentName: 'Popover'},
-                        {component: ColorExamples, componentName: 'Color'},
-                    ]
-                        .sort(sortComponentsByName)
-                        .map(formatComponentsExamples)}
+                <div className='coveo-form flex full-content'>
+                    <div className='flex flex-column'>
+                        <SubNavigation
+                            selected={this.state.activeComponentId}
+                            items={this.components.sort(this.sortComponentsByName).map(this.formatComponentsExamples)}
+                            onClickItem={this.activateItem}
+                        />
+                    </div>
+                    <div className='flex-auto m2 overflow-auto'>
+                        {this.state.activeComponentId && React.createElement(selectedComponent)}
+                    </div>
                 </div>
             </Provider>
         );
+    }
+
+    private sortComponentsByName = (a: ExampleProps, b: ExampleProps) => a.componentName.toLowerCase().localeCompare(b.componentName.toLowerCase());
+    private formatComponentsExamples = (example: ExampleProps) => ({label: example.componentName, id: example.componentName, link: `#${example.componentName}`});
+    private getSelectedComponent = (id: string): any => {
+        const selected = this.components.filter((component: ExampleProps) => component.componentName === id);
+        return selected.length && selected[0].component;
+    }
+
+    private activateItem = (id: string) => {
+        this.setState({activeComponentId: id});
+        window.location.hash = id;
     }
 }
 
