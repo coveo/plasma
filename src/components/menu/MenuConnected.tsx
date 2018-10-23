@@ -14,6 +14,7 @@ export interface IMenuOwnProps {
     className?: string;
     id: string;
     positionRight?: boolean;
+    closeOnSelectItem?: boolean;
 }
 
 export interface IMenuStateProps {
@@ -56,6 +57,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
 
     static defaultProps: Partial<IMenuProps> = {
         positionRight: false,
+        closeOnSelectItem: true,
     };
 
     componentWillMount() {
@@ -124,11 +126,15 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     }
 
     private handleDocumentClick = (e: MouseEvent) => {
-        if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
-            const list: Element | Text = ReactDOM.findDOMNode(this.list);
+        if (this.props.closeOnSelectItem) {
+            this.props.onDocumentClick();
+        } else {
+            if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
+                const list: Element | Text = ReactDOM.findDOMNode(this.list);
 
-            if (!list.contains(e.target as Node)) {
-                this.props.onDocumentClick();
+                if (!list.contains(e.target as Node)) {
+                    this.props.onDocumentClick();
+                }
             }
         }
     }
