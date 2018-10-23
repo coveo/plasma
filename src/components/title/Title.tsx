@@ -1,8 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import { ILinkSvgProps, LinkSvg } from '../svg/LinkSvg';
-import { Tooltip } from '../tooltip/Tooltip';
+import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
+import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ITitleProps extends React.ClassAttributes<Title> {
     prefix?: string;

@@ -1,10 +1,10 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {ILinkSvgProps} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
-import {ILinkSvgProps} from '../../svg/LinkSvg';
 
 describe('ModalHeader', () => {
     const basicProps: IModalHeaderProps = {

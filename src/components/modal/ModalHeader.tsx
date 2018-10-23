@@ -2,9 +2,9 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {ILinkSvgProps} from '../svg/LinkSvg';
 import {Svg} from '../svg/Svg';
 import {Title} from '../title/Title';
-import {ILinkSvgProps} from '../svg/LinkSvg';
 
 export interface IModalHeaderOwnProps {
     id?: string;
