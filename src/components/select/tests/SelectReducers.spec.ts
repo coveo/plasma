@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+import {addValueStringList} from '../../../reusableState/customList/StringListActions';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {selectListBoxOption, setActiveListBoxOption} from '../../listBox/ListBoxActions';
 import {addSelect, ISelectPayload, removeSelect, toggleSelect} from '../SelectActions';
@@ -238,6 +239,17 @@ describe('Select', () => {
                 selectCompositeReducer(oldState, selectListBoxOption(id, false, 'abc'));
 
                 expect(oldState).toEqual(oldStateBefore);
+            });
+
+            describe('ADD_VALUE_STRING_LIST', () => {
+                it('should set the open property to true like SELECT_ITEM_LIST_BOX', () => {
+                    const oldState: ISelectState[] = defaultState;
+                    const newState: ISelectState[] = selectCompositeReducer(oldState, addValueStringList(id, 'anything'));
+
+                    expect(newState.length).toBe(oldState.length);
+                    expect(newState[0].id).toBe(id);
+                    expect(newState[0].open).toBe(false);
+                });
             });
         });
 
