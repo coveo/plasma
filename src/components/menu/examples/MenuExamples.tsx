@@ -1,10 +1,10 @@
 import * as React from 'react';
+import {UUID} from '../../../utils/UUID';
 import {Badge} from '../../badge/Badge';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
 import {Svg} from '../../svg/Svg';
 import {MenuConnected} from '../MenuConnected';
-import {UUID} from '../../../utils/UUID';
 
 export class MenuExamples extends React.Component {
 
@@ -62,9 +62,7 @@ export class MenuExamples extends React.Component {
                 <div className='form-group'>
                     <label className='form-control-label'>Menu with a custom Svg component</label>
                     <div className='form-control'>
-                        <MenuConnected id={UUID.generate()}
-                            buttonSvg={this.getCustomSvg()}
-                        >
+                        <MenuConnected id={UUID.generate()} buttonSvg={this.getCustomSvg()}>
                             <ListBox items={defaultItems} />
                         </MenuConnected>
                     </div>
@@ -72,10 +70,16 @@ export class MenuExamples extends React.Component {
                 <div className='form-group'>
                     <label className='form-control-label'>Menu with a Badge instead of a list</label>
                     <div className='form-control'>
-                        <MenuConnected id={UUID.generate()}
-                            buttonSvg={this.getCustomSvg()}
-                        >
+                        <MenuConnected id={UUID.generate()}>
                             <Badge label={'Badges'} />
+                        </MenuConnected>
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Menu with a custom offset of 10px</label>
+                    <div className='form-control'>
+                        <MenuConnected id={UUID.generate()} customOffset={10}>
+                            <ListBox items={defaultItems} />
                         </MenuConnected>
                     </div>
                 </div>

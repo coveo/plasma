@@ -13,6 +13,7 @@ export interface IMenuOwnProps {
     positionRight?: boolean;
     closeOnSelectItem?: boolean;
     buttonSvg?: React.ReactNode;
+    customOffset?: number;
 }
 
 export interface IMenuStateProps {
@@ -54,6 +55,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     static defaultProps: Partial<IMenuProps> = {
         positionRight: false,
         closeOnSelectItem: true,
+        customOffset: 0,
     };
 
     componentWillMount() {
@@ -87,11 +89,17 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                 >
                     {this.props.buttonSvg ? this.props.buttonSvg : this.getDefaultSvg()}
                 </button>
-                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.list = ref} onClick={() => this.props.onDocumentClick()}>
+                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.list = ref} onClick={() => this.onClickMenu()}>
                     {this.props.children}
                 </div>
             </div>
         );
+    }
+
+    private onClickMenu() {
+        if (this.props.closeOnSelectItem) {
+            this.props.onDocumentClick();
+        }
     }
 
     private getDefaultSvg() {
@@ -116,8 +124,8 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
         if (this.button) {
             this.list.style.minWidth = `${this.button.clientWidth + 2}px`;
             this.props.positionRight
-                ? this.list.style.right = `${this.button.offsetLeft}px`
-                : this.list.style.left = `${this.button.offsetLeft}px`;
+                ? this.list.style.right = `${this.button.offsetLeft + this.props.customOffset}px`
+                : this.list.style.left = `${this.button.offsetLeft + this.props.customOffset}px`;
         }
     }
 
