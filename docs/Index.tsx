@@ -220,8 +220,9 @@ class App extends React.Component<{}, AppState> {
         super(props, state);
 
         const componentIdFromHash = window.location.hash.replace(/^#/, '');
+        const firstComponentId = this.components.sort(this.sortComponentsByName);
         this.state = {
-            activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || this.components[0].componentName,
+            activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || firstComponentId[0].componentName,
         };
     }
 
