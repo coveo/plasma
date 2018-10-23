@@ -28,6 +28,7 @@ import {ChosenSelectExamples} from '../src/components/chosen/examples/ChosenSele
 import {CollapsibleContainerExamples} from '../src/components/collapsible/examples/CollapsibleContainerExamples';
 import {CollapsibleExamples} from '../src/components/collapsible/examples/CollapsibleExamples';
 import {CollapsibleInfoBoxExamples} from '../src/components/collapsible/examples/CollapsibleInfoBoxExamples';
+import {ColorExamples} from '../src/components/color/examples/ColorExamples';
 import {ColorBarExamples} from '../src/components/colorBar/ColorBarExamples';
 import {ContentExamples} from '../src/components/content/examples/ContentExamples';
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
@@ -233,6 +234,7 @@ class App extends React.Component<any, any> {
                         {component: StatusCardExamples, componentName: 'StatusCard'},
                         {component: ActionableItemExamples, componentName: 'ActionableItem'},
                         {component: PopoverConnectedExamples, componentName: 'Popover'},
+                        {component: ColorExamples, componentName: 'Color'},
                     ]
                         .sort(sortComponentsByName)
                         .map(formatComponentsExamples)}
