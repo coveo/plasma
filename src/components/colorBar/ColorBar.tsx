@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {KeyValue} from '../../utils/DataStructuresUtils';
+import {Color} from '../color/Color';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IColorBarProps {
@@ -30,11 +31,12 @@ export class ColorBar extends React.Component<IColorBarProps> {
                     this.getAdjustedWidthPerColor(),
                     (width: number, color: string) => {
                         const colorBarSection: JSX.Element = (
-                            <div
+                            <Color
                                 key={color}
                                 className='inline-block color-bar-color'
-                                style={{height: this.props.height, width: `${width}%`, backgroundColor: color}}>
-                            </div>
+                                color={color}
+                                style={{height: this.props.height, width: `${width}%`}}>
+                            </Color>
                         );
 
                         return this.props.tooltipPerColor[color]
