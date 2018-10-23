@@ -15,12 +15,12 @@ describe('Menu', () => {
         let menuWrapper: ReactWrapper<IMenuProps, void>;
         let store: Store<IReactVaporState>;
 
-        const id: string = 'list-box-connected';
+        const id: string = 'menu-test';
 
         const mountMenuConnected = (items: IItemBoxProps[] = [], props: Partial<IMenuProps> = {}) => {
             wrapper = mount(
                 <Provider store={store}>
-                    <MenuConnected id={id} listBox={{items}} {...props} />
+                    <MenuConnected id={id} {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')},
             );

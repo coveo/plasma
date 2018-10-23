@@ -139,7 +139,7 @@ class App extends React.Component<any, any> {
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form'>
                     {[
-                        {component: MenuExamples, componentName: 'MenuExamples'},
+                        {component: MenuExamples, componentName: 'Menu'},
                         {component: CollapsibleInfoBoxExamples, componentName: 'CollapsibleInfoBox'},
                         {component: MembersExample, componentName: 'Members'},
                         {component: BorderedLineExamples, componentName: 'BorderedLine'},
