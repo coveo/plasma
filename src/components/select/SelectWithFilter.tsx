@@ -12,11 +12,8 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {Svg} from '../svg/Svg';
 import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from './SelectConnected';
 import {
-    getCustomItems,
-    getFilterText,
-    getItemsWithFilter,
-    getListBoxSelected,
     MatchFilter,
+    SelectSelector,
 } from './SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
@@ -49,9 +46,9 @@ export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps,
 export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
 
     const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps => ({
-        filterValue: getFilterText(state, ownProps),
-        items: [...getItemsWithFilter(state, ownProps), ...getCustomItems(state, ownProps)],
-        selected: getListBoxSelected(state, ownProps),
+        filterValue: SelectSelector.getFilterText(state, ownProps),
+        items: [...SelectSelector.getItemsWithFilter(state, ownProps), ...SelectSelector.getCustomItems(state, ownProps)],
+        selected: SelectSelector.getListBoxSelected(state, ownProps),
     });
 
     const mapDispatchToProps = (
