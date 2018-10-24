@@ -89,7 +89,11 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                 >
                     {this.props.buttonSvg ? this.props.buttonSvg : this.getDefaultSvg()}
                 </button>
-                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.list = ref} onClick={() => this.onClickMenu()}>
+                <div
+                    className={dropdownClasses}
+                    ref={(ref: HTMLDivElement) => this.list = ref}
+                    onClick={() => this.onClickMenu()}
+                >
                     {this.props.children}
                 </div>
             </div>
