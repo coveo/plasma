@@ -246,7 +246,7 @@ class App extends React.Component<{}, AppState> {
                             onClickItem={this.activateItem}
                         />
                     </div>
-                    <div className='flex-auto m2 overflow-auto'>
+                    <div className='flex-auto my2 px2 overflow-auto'>
                         {this.state.activeComponentId && React.createElement(selectedComponent)}
                     </div>
                 </div>
