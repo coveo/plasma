@@ -50,7 +50,7 @@ describe('Menu', () => {
 
             it('should return the old state with one more menu', () => {
                 const oldState: IMenusState = {[id]: {...menuInitialState, id}};
-                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id, []));
+                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id));
 
                 expect(newState[id].id).toBe(id);
             });
@@ -58,18 +58,9 @@ describe('Menu', () => {
             it('should not modify the old state', () => {
                 const oldState: IMenusState = {[id]: {...menuInitialState, id}};
                 const oldStateBefore = _.clone(oldState);
-                menuCompositeReducer(oldState, addMenu(id, []));
+                menuCompositeReducer(oldState, addMenu(id));
 
                 expect(oldState).toEqual(oldStateBefore);
-            });
-
-            it('should return the old state with the list in the menu', () => {
-                const list = [{value: 'test'}];
-
-                const oldState: IMenusState = {[id]: menuInitialState};
-                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id, list));
-
-                expect(newState[id].list).toEqual(list);
             });
         });
 
