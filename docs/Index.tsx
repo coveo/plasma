@@ -135,7 +135,7 @@ class App extends React.Component<{}, AppState> {
         {component: SvgExamples, componentName: 'Svg'},
         {component: LinkSvgExamples, componentName: 'LinkSvg'},
         {component: TitleExamples, componentName: 'Title'},
-        {component: ContentExamples, componentName: 'Content'},
+        {component: ContentExamples, componentName: 'Content (deprecated)'},
         {component: ItemBoxExamples, componentName: 'ItemBox'},
         {component: ListBoxExamples, componentName: 'ListBox'},
         {component: ButtonExamples, componentName: 'Button'},
