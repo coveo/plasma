@@ -15,7 +15,8 @@ export const getFilterText = (state: IReactVaporState, ownProps: ISelectWithFilt
     return (filter && filter.filterText) || '';
 };
 
-export const getListState = (state: IReactVaporState, ownProps: ISelectWithFilterProps): string[] => state.selectWithFilter[ownProps.id] ? state.selectWithFilter[ownProps.id].list : [];
+export const getListState = (state: IReactVaporState, ownProps: ISelectWithFilterProps): string[] =>
+    state.selectWithFilter && state.selectWithFilter[ownProps.id] ? state.selectWithFilter[ownProps.id].list : [];
 
 export const getListBox = (state: IReactVaporState, ownProps: ISelectWithFilterProps): Partial<IListBoxState> => _.findWhere(state.listBoxes, {id: ownProps.id}) || {};
 
