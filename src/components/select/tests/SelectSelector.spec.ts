@@ -40,6 +40,10 @@ describe('Select', () => {
         });
 
         describe('getListState', () => {
+            it('should not throw when passing falsy values and return an empty array', () => {
+                expect(getListState({}, defaultOwnProps)).toEqual([]);
+            });
+
             it('should return an empty list if the selectWithFilter is not in the state', () => {
                 expect(getListState(defaultState, defaultOwnProps)).toEqual([]);
             });
