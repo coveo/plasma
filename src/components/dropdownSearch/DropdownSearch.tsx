@@ -83,6 +83,9 @@ export interface IDropdownSearchDispatchProps {
 
 export interface IDropdownSearchProps extends IDropdownSearchOwnProps, IDropdownSearchStateProps, IDropdownSearchDispatchProps {}
 
+/**
+ * @deprecated use components from SelectComponents instead
+ */
 export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     static defaultProps: Partial<IDropdownSearchProps> = {
         isOpened: false,
