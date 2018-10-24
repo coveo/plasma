@@ -1,6 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {ILinkSvgProps} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IModalHeaderProps, ModalHeader} from '../ModalHeader';
@@ -24,10 +26,6 @@ describe('ModalHeader', () => {
     describe('<ModalHeader />', () => {
         let modal: ReactWrapper<IModalHeaderProps, any>;
 
-        const setChildren = (children: any = 'any') => {
-            modal.setProps(_.extend({}, basicProps, {children}));
-        };
-
         beforeEach(() => {
             modal = mount(
                 <ModalHeader {...basicProps} />,
@@ -36,6 +34,7 @@ describe('ModalHeader', () => {
         });
 
         afterEach(() => {
+            modal.unmount();
             modal.detach();
         });
 
@@ -87,28 +86,18 @@ describe('ModalHeader', () => {
             expect(modal.find('header').first().html()).toContain(headerClass);
         });
 
-        it('should have the class inline on the title only if there are children', () => {
-            const expectedClass: string = 'inline';
-
-            expect(modal.find('h1').hasClass(expectedClass)).toBe(false);
-
-            setChildren();
-
-            expect(modal.find('h1').hasClass(expectedClass)).toBe(true);
-        });
-
         it('should not have a tooltip, anchor, and svg for doclink by default', () => {
-            expect(modal.find(Tooltip).length).toBe(0);
+            expect(modal.find(Tooltip).exists()).toBe(false);
         });
 
         it('should have a tooltip, anchor, and svg for doclink if the prop is passed', () => {
-            const docLink = {url: 'testomax', tooltip: 'doclinktooltip'};
+            const docLink: ILinkSvgProps = {url: 'testomax', tooltip: {title: 'doclinktooltip'}};
             modal.setProps({docLink});
 
-            expect(modal.find(Tooltip).length).toBe(1);
-            expect(modal.find(Tooltip).prop('title')).toBe(docLink.tooltip);
-            expect(modal.find(Tooltip).find('a').prop('href')).toBe(docLink.url);
-            expect(modal.find(Tooltip).find('a').find(Svg).prop('svgName')).toBe('help');
+            expect(modal.find(Tooltip).exists()).toBe(true);
+            expect(modal.find(Tooltip).props().title).toBe(docLink.tooltip.title);
+            expect(modal.find('a').props().href).toBe(docLink.url);
+            expect(modal.find(Svg).props().svgName).toBe('help');
         });
     });
 });
