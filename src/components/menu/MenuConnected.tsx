@@ -3,22 +3,21 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {IListBoxProps, ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg/Svg';
 import {addMenu, removeMenu, toggleMenu} from './MenuActions';
 import {IMenuState} from './MenuReducers';
 
 export interface IMenuOwnProps {
-    listBox: IListBoxProps;
     className?: string;
     id: string;
     positionRight?: boolean;
+    closeOnSelectItem?: boolean;
+    buttonSvg?: React.ReactNode;
+    customOffset?: number;
 }
 
 export interface IMenuStateProps {
     isOpen?: boolean;
-    list?: IItemBoxProps[];
 }
 
 export interface IMenuDispatchProps {
@@ -35,7 +34,6 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMenuOwnProps): IMen
 
     return {
         isOpen: menu && menu.open,
-        list: (menu && menu.list) || ownProps.listBox.items,
     };
 };
 
@@ -43,7 +41,7 @@ const mapDispatchToProps = (
     dispatch: IDispatch,
     ownProps: IMenuOwnProps,
 ): IMenuDispatchProps => ({
-    onRender: () => dispatch(addMenu(ownProps.id, ownProps.listBox.items)),
+    onRender: () => dispatch(addMenu(ownProps.id)),
     onDestroy: () => dispatch(removeMenu(ownProps.id)),
     onToggleMenu: () => dispatch(toggleMenu(ownProps.id)),
     onDocumentClick: () => dispatch(toggleMenu(ownProps.id, false)),
@@ -56,6 +54,8 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
 
     static defaultProps: Partial<IMenuProps> = {
         positionRight: false,
+        closeOnSelectItem: true,
+        customOffset: 0,
     };
 
     componentWillMount() {
@@ -87,13 +87,23 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                     onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
                     ref={(ref: HTMLButtonElement) => this.button = ref}
                 >
-                    {this.props.children ? this.props.children : this.getDefaultSvg()}
+                    {this.props.buttonSvg ? this.props.buttonSvg : this.getDefaultSvg()}
                 </button>
-                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.list = ref}>
-                    <ListBox id={this.props.id} {...this.props.listBox} />
+                <div
+                    className={dropdownClasses}
+                    ref={(ref: HTMLDivElement) => this.list = ref}
+                    onClick={() => this.onClickMenu()}
+                >
+                    {this.props.children}
                 </div>
             </div>
         );
+    }
+
+    private onClickMenu() {
+        if (this.props.closeOnSelectItem) {
+            this.props.onDocumentClick();
+        }
     }
 
     private getDefaultSvg() {
@@ -118,8 +128,8 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
         if (this.button) {
             this.list.style.minWidth = `${this.button.clientWidth + 2}px`;
             this.props.positionRight
-                ? this.list.style.right = `${this.button.offsetLeft}px`
-                : this.list.style.left = `${this.button.offsetLeft}px`;
+                ? this.list.style.right = `${this.button.offsetLeft + this.props.customOffset}px`
+                : this.list.style.left = `${this.button.offsetLeft + this.props.customOffset}px`;
         }
     }
 
