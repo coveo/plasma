@@ -146,7 +146,7 @@ class App extends React.Component<{}, AppState> {
         {component: MultiSelectExamples, componentName: 'MultiSelect'},
         {component: FlatSelectExamples, componentName: 'FlatSelect'},
         {component: TooltipExamples, componentName: 'Tooltip'},
-        {component: ChosenSelectExamples, componentName: 'ChosenSelect'},
+        {component: ChosenSelectExamples, componentName: 'ChosenSelect (deprecated)'},
         {component: UserFeedbackExample, componentName: 'UserFeedback'},
         {component: SyncFeedbackExample, componentName: 'SyncFeedback'},
         {component: LastUpdatedExamples, componentName: 'LastUpdated'},

@@ -34,6 +34,9 @@ const chosenSelectPropsToOmit = [
     'placeholderTextMultiple', 'placeholderTextSingle', 'searchContains', 'singleBackstrokeDelete', 'width',
 ];
 
+/**
+ * @deprecated use components from SelectComponents instead
+ */
 export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
     select: JQuery;
 
