@@ -4,15 +4,7 @@ import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
 import {
-    customItemsCombiner,
-    getFilterText,
-    getItems,
-    getListBox,
-    getListState,
-    getMatchFilter,
-    itemsWithFilterCombiner,
-    listBoxSelectedCombiner,
-    MatchFilter,
+    MatchFilter, SelectSelector,
 } from '../SelectSelector';
 import {ISelectWithFilterProps} from '../SelectWithFilter';
 
@@ -30,59 +22,59 @@ describe('Select', () => {
 
         describe('getFilterText', () => {
             it('should return an empty filterText if it is not in the state', () => {
-                expect(getFilterText(defaultState, defaultOwnProps)).toEqual('');
+                expect(SelectSelector.getFilterText(defaultState, defaultOwnProps)).toEqual('');
             });
 
             it('should return the filterText in the state if the id is in the state', () => {
                 const filter: IFilterState = {id, filterText: 'text'};
-                expect(getFilterText({filters: [filter]}, defaultOwnProps)).toEqual(filter.filterText);
+                expect(SelectSelector.getFilterText({filters: [filter]}, defaultOwnProps)).toEqual(filter.filterText);
             });
         });
 
         describe('getListState', () => {
             it('should not throw when passing falsy values and return an empty array', () => {
-                expect(getListState({}, defaultOwnProps)).toEqual([]);
+                expect(SelectSelector.getListState({}, defaultOwnProps)).toEqual([]);
             });
 
             it('should return an empty list if the selectWithFilter is not in the state', () => {
-                expect(getListState(defaultState, defaultOwnProps)).toEqual([]);
+                expect(SelectSelector.getListState(defaultState, defaultOwnProps)).toEqual([]);
             });
 
             it('should return the current list in the state if the id is in the state', () => {
-                expect(getListState({selectWithFilter: {[id]: {id, list}}}, defaultOwnProps)).toEqual(list);
+                expect(SelectSelector.getListState({selectWithFilter: {[id]: {id, list}}}, defaultOwnProps)).toEqual(list);
             });
         });
 
         describe('getListBox', () => {
             it('should return an empty listBox object if it is not in the state', () => {
-                expect(getListBox(defaultState, defaultOwnProps)).toEqual({});
+                expect(SelectSelector.getListBox(defaultState, defaultOwnProps)).toEqual({});
             });
 
             it('should return the current object in the state if the id is in the state', () => {
                 const listBox: IListBoxState = {id, selected: list};
-                expect(getListBox({listBoxes: [listBox]}, defaultOwnProps)).toEqual(listBox);
+                expect(SelectSelector.getListBox({listBoxes: [listBox]}, defaultOwnProps)).toEqual(listBox);
             });
         });
 
         describe('getItems', () => {
             it('should return an empty items list if it is not in the ownProps', () => {
-                expect(getItems(defaultState, defaultOwnProps)).toEqual([]);
+                expect(SelectSelector.getItems(defaultState, defaultOwnProps)).toEqual([]);
             });
 
             it('should return the filterText in the state if the id is in the state', () => {
                 const items: IItemBoxProps[] = [{value: 'a'}];
-                expect(getItems(defaultState, {id, items})).toEqual(items);
+                expect(SelectSelector.getItems(defaultState, {id, items})).toEqual(items);
             });
         });
 
         describe('getMatchFilter', () => {
             it('should return the defaultMatchFilter if the matchFilter is not defined in the ownProps', () => {
-                expect(getMatchFilter(defaultState, defaultOwnProps)).toEqual(defaultMatchFilter);
+                expect(SelectSelector.getMatchFilter(defaultState, defaultOwnProps)).toEqual(defaultMatchFilter);
             });
 
             it('should return the matchFilter if it is defined in the ownProps', () => {
                 const matchFilter: MatchFilter = () => true;
-                expect(getMatchFilter(defaultState, {id, matchFilter})).toEqual(matchFilter);
+                expect(SelectSelector.getMatchFilter(defaultState, {id, matchFilter})).toEqual(matchFilter);
             });
         });
 
@@ -93,16 +85,16 @@ describe('Select', () => {
                 const matchFilter: MatchFilter = () => true;
 
                 it('should return an empty array if the items is already empty', () => {
-                    expect(itemsWithFilterCombiner([], filterText, matchFilter)).toEqual([]);
+                    expect(SelectSelector.itemsWithFilterCombiner([], filterText, matchFilter)).toEqual([]);
                 });
 
                 it('should return items with hidden false if match filter return true', () => {
-                    expect(itemsWithFilterCombiner(items, filterText, matchFilter)).toEqual([{value: 'a', hidden: false}]);
+                    expect(SelectSelector.itemsWithFilterCombiner(items, filterText, matchFilter)).toEqual([{value: 'a', hidden: false}]);
                 });
 
                 it('should return items with hidden true if match filter return false', () => {
                     const matchFilterFalse: MatchFilter = () => false;
-                    expect(itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([{value: 'a', hidden: true}]);
+                    expect(SelectSelector.itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([{value: 'a', hidden: true}]);
                 });
             });
 
@@ -113,11 +105,11 @@ describe('Select', () => {
                 const itemsResult: IItemBoxProps[] = [{value: 'b', hidden: true, selected: true}];
 
                 it('should return new items list with the value in the listState if items is empty', () => {
-                    expect(customItemsCombiner([], listState)).toEqual(itemsResult);
+                    expect(SelectSelector.customItemsCombiner([], listState)).toEqual(itemsResult);
                 });
 
                 it('should return new items list from the listState value with all values in items removed', () => {
-                    expect(customItemsCombiner(items, [...listState, 'a'])).toEqual(itemsResult);
+                    expect(SelectSelector.customItemsCombiner(items, [...listState, 'a'])).toEqual(itemsResult);
                 });
             });
 
@@ -125,11 +117,11 @@ describe('Select', () => {
                 const listBox: IListBoxState = {id, selected: list};
 
                 it('should return an empty array if selected is not defined in the listBox', () => {
-                    expect(listBoxSelectedCombiner({id, selected: undefined})).toEqual([]);
+                    expect(SelectSelector.listBoxSelectedCombiner({id, selected: undefined})).toEqual([]);
                 });
 
                 it('should return the list of selected in the listBox', () => {
-                    expect(listBoxSelectedCombiner(listBox)).toEqual(list);
+                    expect(SelectSelector.listBoxSelectedCombiner(listBox)).toEqual(list);
                 });
             });
         });

@@ -12,7 +12,7 @@ import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '.
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
-import {getListBoxSelected, getListState} from './SelectSelector';
+import {SelectSelector} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
     placeholder?: string;
@@ -34,7 +34,7 @@ export interface IMultiSelectDispatchProps {
 export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => ({
-    selected: [...getListBoxSelected(state, ownProps), ...getListState(state, ownProps)],
+    selected: [...SelectSelector.getListBoxSelected(state, ownProps), ...SelectSelector.getListState(state, ownProps)],
 });
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
