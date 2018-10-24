@@ -7,6 +7,7 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {Svg} from '../../svg/Svg';
 import {IMenuProps, MenuConnected} from '../MenuConnected';
 
 describe('Menu', () => {
@@ -78,6 +79,12 @@ describe('Menu', () => {
 
                 expect(menuWrapper.find('.dropdown').hasClass('test')).toBe(true);
             });
+
+            it('should add the custom svg', () => {
+                mountMenuConnected([], {buttonSvg: <Svg svgName='add' />});
+
+                expect(menuWrapper.find(Svg).props().svgName).toBe('add');
+            });
         });
 
         describe('click handler', () => {
@@ -119,6 +126,16 @@ describe('Menu', () => {
 
                 clickOnEl();
                 expect(store.getState().menus[id].open).toBe(false);
+            });
+
+            it('should close the menu when the user click outside the menu and the menu is open', () => {
+                mountMenuConnected();
+
+                menuWrapper.find('.menu-toggle').simulate('mouseUp');
+                expect(store.getState().menus[id].open).toBe(true, 'open menu');
+
+                menuWrapper.find('.select-dropdown-container').simulate('click');
+                expect(store.getState().menus[id].open).toBe(false, 'close menu');
             });
         });
     });
