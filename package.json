@@ -140,7 +140,7 @@
     "react-dnd-test-backend": "2.5.1",
     "react-dom": "16.6.0",
     "react-redux": "5.0.7",
-    "react-test-renderer": "16.5.2",
+    "react-test-renderer": "16.6.0",
     "react-transition-group": "2.5.0",
     "redux": "4.0.0",
     "redux-logger": "3.0.6",
