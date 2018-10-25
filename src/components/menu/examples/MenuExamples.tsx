@@ -83,6 +83,14 @@ export class MenuExamples extends React.Component {
                         </MenuConnected>
                     </div>
                 </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Menu not close on items click</label>
+                    <div className='form-control'>
+                        <MenuConnected id={UUID.generate()} closeOnSelectItem={false}>
+                            <ListBox items={defaultItems} />
+                        </MenuConnected>
+                    </div>
+                </div>
             </div>
         );
     }

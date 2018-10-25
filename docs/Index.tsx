@@ -118,7 +118,7 @@ interface AppState {
 
 class App extends React.Component<{}, AppState> {
     private components = [
-        {component: MenuExamples, componentName: 'MenuExamples'},
+        {component: MenuExamples, componentName: 'Menu'},
         {component: CollapsibleInfoBoxExamples, componentName: 'CollapsibleInfoBox'},
         {component: MembersExample, componentName: 'Members'},
         {component: BorderedLineExamples, componentName: 'BorderedLine'},
