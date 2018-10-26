@@ -1,9 +1,11 @@
 .navigation-wrapper {
-  transition: margin-left $navigation-toggle-duration ease-in-out;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
   width: $navigation-width;
   margin-left: -$navigation-width;
+
+  transform: translate3d(0, 0, 0);
+
+  transition: margin-left $navigation-toggle-duration ease-in-out;
+  will-change: transform;
 }
 
 .navigation-wrapper-opened {
