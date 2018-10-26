@@ -72,7 +72,7 @@
   @extend .full-content-y;
 }
 
-@for $i from 1 through 9 {
+@for $i from 1 through 10 {
   $size: $i * 10;
   .mod-width-#{$size} {
     width: $size * 1%;
