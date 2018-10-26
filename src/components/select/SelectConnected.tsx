@@ -210,7 +210,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
         if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
             const dropdown: Element | Text = ReactDOM.findDOMNode(this.menu);
 
-            if (!dropdown.contains(e.target as Node)) {
+            if (!dropdown.contains(e.target as Node) && !this.getButton().contains(e.target as Node)) {
                 this.props.onDocumentClick();
             }
         }
