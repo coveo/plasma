@@ -9,6 +9,9 @@ export interface IContentProps {
     tag?: string;
 }
 
+/**
+ * @deprecated Use React.ReactNode instead.
+ */
 export class Content extends React.Component<IContentProps, {}> {
 
     static defaultProps: Partial<IContentProps> = {

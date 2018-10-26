@@ -2,19 +2,20 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {keys} from 'ts-transformer-keys';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {SelectSelector} from './SelectSelector';
 
 export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
     toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
     items?: IItemBoxProps[];
+    buttonPrepend?: React.ReactNode;
 }
 
 export interface ISingleSelectStateProps {
@@ -26,18 +27,14 @@ export interface ISingleSelectDispatchProps {}
 export interface ISingleSelectProps extends ISingleSelectOwnProps, ISingleSelectStateProps, ISingleSelectDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
-    const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
+    const customSelected: string[] = SelectSelector.getListState(state, ownProps);
     return {
-        selectedOption: listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : undefined,
+        selectedOption: customSelected.length ? customSelected[customSelected.length - 1] : SelectSelector.getListBoxSelected(state, ownProps)[0],
     };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({});
-
-const singleSelectPropsToOmit = keys<ISingleSelectProps>();
-
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.HTMLProps<HTMLButtonElement>, {}> {
+@ReduxConnect(mapStateToProps)
+export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
 
     static defaultProps: Partial<ISingleSelectOwnProps> = {
         placeholder: 'Select an option',
@@ -74,8 +71,9 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
-                {..._.omit(this.props, singleSelectPropsToOmit)}
+                disabled={this.props.disabled}
             >
+                {this.props.buttonPrepend}
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
                 {option && option.append ? <Content {...option.append} /> : null}

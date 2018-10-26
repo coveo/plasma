@@ -4,7 +4,7 @@
 # review when someone opens a pull request.
 # see https://help.github.com/articles/about-codeowners/ for more details
 
-* @pochretien @MichelML @GermainBergeron @gdostie @acollin1
+* @pochretien @MichelML @GermainBergeron @gdostie @acollin1 @ThibodeauJF
 
 # Prevent PRs that only modify package.json from notifying everyone
 package.json @ghost
