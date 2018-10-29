@@ -19,6 +19,7 @@ export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
     sortable?: boolean;
+    noDisabled?: boolean;
 }
 
 export interface IMultiSelectStateProps {
@@ -60,6 +61,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         emptyPlaceholder: 'No selected option',
         deselectAllTooltipText: 'Deselect All',
         sortable: false,
+        noDisabled: false,
     };
 
     render() {
@@ -136,7 +138,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
-        const buttonAttrs = this.props.selected && this.props.selected.length === this.props.items.length ? {disabled: true} : {};
+        const buttonAttrs = !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length ? {disabled: true} : {};
         return (
             <div className={classes}>
                 {this.props.connectDropTarget(
