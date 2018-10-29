@@ -83,6 +83,16 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                     <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>A Multi Select With Filter, Custom Values and no items</label>
+                    <br />
+                    <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Multi Select With Filter, Custom Values and list of items selectable</label>
+                    <br />
+                    <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} customValues />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter and list of items selectable</label>
                     <br />
                     <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} />
