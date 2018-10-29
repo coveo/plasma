@@ -22,6 +22,7 @@ export interface ISelectWithFilterOwnProps {
     addValueText?: (filterText: string) => string;
     duplicateText?: string;
     noResultFilterText?: (filterText: string) => string;
+    noItemsText?: string;
     filterButton?: IButtonProps;
 }
 
@@ -66,6 +67,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         static defaultProps: Partial<ISelectWithFilterProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
+            noItemsText: 'No Items in the list',
             addValueText: (filterText: string) => `Add "${filterText}"`,
             filterButton: {
                 enabled: true,
@@ -109,6 +111,12 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             };
         }
 
+        private noItems(): IItemBoxProps {
+            return {
+                value: this.props.noItemsText,
+            };
+        }
+
         private handleOnClick() {
             if (!_.isEmpty(this.props.filterValue)) {
                 this.props.onSelectCustomValue(this.props.filterValue);
@@ -147,12 +155,16 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 noResultItem = this.duplicateValue();
             } else if (!_.isEmpty(this.props.filterValue) && this.props.customValues) {
                 items = [...this.addItemBoxCustomValue(), ...items];
+            } else if (this.props.customValues && !this.props.items.length) {
+                items = [this.noItems()];
+            } else if (this.props.customValues && _.every(items, (item) => item.hidden)) {
+                noResultItem = this.noItems();
             }
 
             const newProps = {..._.omit(this.props, [...SelectWithFilterPropsToOmit, 'selected']), items};
 
             return (
-                <Component {...newProps} noResultItem={noResultItem}>
+                <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues}>
                     <FilterBoxConnected
                         id={this.props.id}
                         onKeyDown={(this.props as any).onKeyDown}
