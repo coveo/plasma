@@ -59,5 +59,17 @@ describe('Select', () => {
 
             expect(itemBox.props().value).toBe(duplicateText);
         });
+
+        it('should open the dropdown even if the list is empty with customValue', () => {
+            const noItemsText = 'not an item text';
+
+            mountMultiSelect({items: [], noItemsText, customValues: true});
+
+            const itemBox = wrapper.find(SelectConnected)
+                .find(ItemBox)
+                .first();
+
+            expect(itemBox.props().value).toBe(noItemsText);
+        });
     });
 });

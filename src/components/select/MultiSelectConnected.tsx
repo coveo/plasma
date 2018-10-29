@@ -138,7 +138,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
-        const buttonAttrs = {disabled: !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length};
+        const buttonAttrs = !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length ? {disabled: true} : {};
         return (
             <div className={classes}>
                 {this.props.connectDropTarget(
