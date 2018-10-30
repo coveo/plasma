@@ -2,9 +2,10 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IToastProps, Toast, ToastType} from '../Toast';
 
-describe('Toasts', () => {
+fdescribe('Toasts', () => {
     let toastComponent: ReactWrapper<IToastProps, {}>;
     let toastBasicAttributes: IToastProps;
     let toastInstance: Toast;
@@ -53,15 +54,10 @@ describe('Toasts', () => {
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should have class "mod-success" when no type is defined or type is Success', () => {
-            const expectedClass = '.mod-success';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {type: ToastType.Success});
+        it('should have class "mod-success" when type is Success', () => {
+            toastComponent.setProps({type: ToastType.Success});
 
-            expect(toastComponent.find(expectedClass).length).toBe(1);
-
-            toastComponent.setProps(newToastAttributes).mount();
-
-            expect(toastComponent.find(expectedClass).length).toBe(1);
+            expect(toastComponent.children().hasClass('mod-success')).toBe(true);
         });
 
         it('should have class "mod-warning" if the type is Warning', () => {
@@ -102,6 +98,14 @@ describe('Toasts', () => {
             expect(toastComponent.find(expectedClass).length).toBe(0);
         });
 
+        it('should have any class specified in the className prop', () => {
+            const expectedClass = 'my-awesome-class';
+
+            toastComponent.setProps({className: expectedClass});
+
+            expect(toastComponent.hasClass(expectedClass));
+        });
+
         it('should have a description when the content is set', () => {
             const descriptionContainer = '.toast-description';
             const expectedDescription = 'description';
@@ -118,7 +122,7 @@ describe('Toasts', () => {
         it('should allow JSX in the content', () => {
             const descriptionContainer = '.toast-description';
             const expectedDescription = 'description';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {content: () => <a href='#'>{expectedDescription}</a>});
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {content: <a href='#'>{expectedDescription}</a>});
 
             expect(toastComponent.find(descriptionContainer).length).toBe(0);
 
@@ -126,6 +130,21 @@ describe('Toasts', () => {
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
             expect(toastComponent.find(descriptionContainer).text()).toBe(expectedDescription);
+        });
+
+        it('should render the children node inside the toast', () => {
+            const descriptionContainer = '.toast-description';
+            const expectedChildren = <div>my toast content</div>;
+
+            toastComponent = mount(
+                <Toast {...toastBasicAttributes}>
+                    {expectedChildren}
+                </Toast>,
+                {attachTo: document.getElementById('App')},
+            );
+
+            expect(toastComponent.find(descriptionContainer).length).toBe(1);
+            expect(toastComponent.find(descriptionContainer).children().equals(expectedChildren)).toBe(true);
         });
 
         it('should contain a toast-close when the prop is undefined or true', () => {
