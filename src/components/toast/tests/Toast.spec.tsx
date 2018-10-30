@@ -5,7 +5,7 @@ import * as _ from 'underscore';
 
 import {IToastProps, Toast, ToastType} from '../Toast';
 
-fdescribe('Toasts', () => {
+describe('Toasts', () => {
     let toastComponent: ReactWrapper<IToastProps, {}>;
     let toastBasicAttributes: IToastProps;
     let toastInstance: Toast;
