@@ -57,7 +57,7 @@ export const tableWithPagination = (config: ITableWithPaginationConfig & Partial
                 perPage: perPageState.perPage,
                 totalEntries: length,
                 totalPages: Math.ceil(length / perPageState.perPage),
-                data: ownProps.data && slice(ownProps.data, startingIndex, endingIndex),
+                data: config.isServer ? ownProps.data : ownProps.data && slice(ownProps.data, startingIndex, endingIndex),
             };
         }
         return {

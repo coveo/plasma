@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import * as _ from 'underscore';
 
 import {ISvgProps} from '../components/svg/Svg';
+import {IExampleServerTableState} from '../components/table-hoc/examples/TableHOCServerExampleReducer';
 import {ITooltipProps} from '../components/tooltip/Tooltip';
 import {IReactVaporState} from '../ReactVapor';
 import {ReactVaporReducers} from '../ReactVaporReducers';
@@ -13,6 +14,7 @@ import {CommonActions} from './ReduxUtils';
 
 export interface IReactVaporTestState extends IReactVaporState {
     lastAction?: Redux.Action;
+    tableHOCExample?: IExampleServerTableState;
 }
 
 export class TestUtils {

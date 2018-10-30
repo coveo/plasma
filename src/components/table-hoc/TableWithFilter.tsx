@@ -10,6 +10,7 @@ import {ITableHOCOwnProps} from './TableHOC';
 
 export interface ITableWithFilterConfig {
     matchFilter?: (filterValue: string, datum: any) => boolean;
+    isServer?: boolean;
 }
 
 export interface ITableWithFilterStateProps {
@@ -39,7 +40,7 @@ export const tableWithFilter = (config: ITableWithFilterConfig = {matchFilter: d
         };
         return {
             filter: filter && filter.filterText,
-            data: ownProps.data && matchingData(ownProps.data),
+            data: config.isServer ? ownProps.data : ownProps.data && matchingData(ownProps.data),
         };
     };
 
