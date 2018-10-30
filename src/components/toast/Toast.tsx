@@ -70,7 +70,7 @@ export class Toast extends React.Component<IToastProps, {}> {
         const classes = classNames(
             'toast',
             {
-                'mod-success': this.props.type === ToastType.Success,
+                'mod-success': this.props.type === ToastType.Success || (_.isEmpty(this.props.className) && _.isEmpty(this.props.type)),
                 'mod-warning': this.props.type === ToastType.Warning,
                 'mod-error': this.props.type === ToastType.Error,
                 'mod-animated': _.isUndefined(this.props.animate) || this.props.animate === true,
@@ -78,18 +78,18 @@ export class Toast extends React.Component<IToastProps, {}> {
             this.props.className,
         );
 
-        const closeButton = this.props.dismissible ?
+        const closeButton = this.props.dismissible && (
             <span className='toast-close' onClick={() => this.close()}>
                 <Svg svgName='close' className='icon mod-lg fill-pure-white' />
             </span>
-            : null;
+        );
 
-        const toastContent = !!this.props.content || !!this.props.children
-            ? <div className='toast-description'>
+        const toastContent = (!!this.props.content || !!this.props.children) && (
+            <div className='toast-description'>
                 {this.props.children}
-                {this.props.content}
+                {_.isFunction(this.props.content) ? this.props.content() : this.props.content}
             </div>
-            : null;
+        );
 
         return (
             <div

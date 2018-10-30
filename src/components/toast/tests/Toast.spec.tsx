@@ -60,6 +60,10 @@ describe('Toasts', () => {
             expect(toastComponent.children().hasClass('mod-success')).toBe(true);
         });
 
+        it('should have class "mod-success" when both type and className props are empty', () => {
+            expect(toastComponent.children().hasClass('mod-success')).toBe(true);
+        });
+
         it('should have class "mod-warning" if the type is Warning', () => {
             const expectedClass = '.mod-warning';
             const newToastAttributes = _.extend({}, toastBasicAttributes, {type: ToastType.Warning});
@@ -122,7 +126,7 @@ describe('Toasts', () => {
         it('should allow JSX in the content', () => {
             const descriptionContainer = '.toast-description';
             const expectedDescription = 'description';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {content: <a href='#'>{expectedDescription}</a>});
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {content: () => <a href='#'>{expectedDescription}</a>});
 
             expect(toastComponent.find(descriptionContainer).length).toBe(0);
 
