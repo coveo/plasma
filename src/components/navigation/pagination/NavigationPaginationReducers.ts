@@ -38,10 +38,12 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
             if (contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
                 return {...state, pageNb: 0};
             }
+            return state;
         case FilterActions.filterThrough:
             if (contains(state.id, action.payload.id)) {
                 return {...state, pageNb: 0};
             }
+            return state;
         default:
             return state;
     }
