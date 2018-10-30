@@ -4,8 +4,13 @@ import {ITableProps} from '../Table';
 import {TableChildComponent} from '../TableConstants';
 import {getTableChildComponentId} from '../TableUtils';
 
-export const TableChildLastUpdated = (props: ITableProps): JSX.Element =>
+export interface TableChildLastUpdatedProps extends ITableProps {
+    pullLeft?: boolean;
+}
+
+export const TableChildLastUpdated = (props: TableChildLastUpdatedProps): JSX.Element =>
     <LastUpdatedConnected
+        className={props.pullLeft && 'left'}
         label={props.lastUpdatedLabel}
         id={getTableChildComponentId(props.id, TableChildComponent.LAST_UPDATED)}
     />;

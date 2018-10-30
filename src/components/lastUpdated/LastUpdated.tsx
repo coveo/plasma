@@ -1,9 +1,11 @@
+import classNames from 'classnames';
 import * as moment from 'moment';
 import * as React from 'react';
 
 export interface ILastUpdatedOwnProps extends React.ClassAttributes<LastUpdated> {
     id?: string;
     label?: string;
+    className?: string;
 }
 
 export interface ILastUpdatedStateProps {
@@ -39,7 +41,7 @@ export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
         const lastUpdateTime: string = moment(time).format('LTS');
 
         return (
-            <div className='table-last-update'>{label} {lastUpdateTime}</div>
+            <div className={classNames('table-last-update', this.props.className)}>{label} {lastUpdateTime}</div>
         );
     }
 }
