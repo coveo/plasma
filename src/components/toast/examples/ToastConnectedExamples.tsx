@@ -47,7 +47,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         }}>String Content</button>
 
                         <button className='btn' onClick={() => {
-                            this.props.addToast(containerId, 'Success!', {content: () => <a href='#'>JSX Element</a>});
+                            this.props.addToast(containerId, 'Success!', {content: <a href='#'>JSX Element</a>});
                         }}>JSX Content</button>
 
                         <button className='btn' onClick={() => {
