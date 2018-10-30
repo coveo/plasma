@@ -77,9 +77,11 @@ $toast-close-size: 16px;
     padding: $toast-padding;
     margin-top: $toast-margin;
 
-    background-color: $green;
-
     pointer-events: all;
+
+    &.mod-success {
+      background-color: $green;
+    }
 
     &.mod-warning {
       background-color: $yellow;
