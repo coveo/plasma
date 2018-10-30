@@ -90,7 +90,7 @@ export class Toast extends React.Component<IToastProps, {}> {
         const toastContent = (!!this.props.content || !!this.props.children) && (
             <div className='toast-description'>
                 {this.props.children}
-                {_.isString(this.props.content)
+                {_.isString(this.props.content) || !this.props.content
                     ? this.props.content
                     : React.createElement(this.props.content as React.ComponentClass)}
             </div>
