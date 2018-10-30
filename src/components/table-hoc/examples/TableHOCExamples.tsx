@@ -4,7 +4,12 @@ import * as _ from 'underscore';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
 import {tableWithFilter} from '../TableWithFilter';
-import {IExampleRowData} from './TableHOCServerExampleReducer';
+
+interface IExampleRowData {
+    city: string;
+    email: string;
+    username: string;
+}
 
 const TableWithFilter = _.compose(
     tableWithFilter(),
