@@ -13,6 +13,9 @@ export interface IToastProps {
     dismissible?: boolean;
     animate?: boolean;
     className?: string;
+    /**
+     * @deprecated use children instead
+     */
     content?: React.ReactNode;
     onRender?: () => void;
     onClose?: () => void;
@@ -87,7 +90,9 @@ export class Toast extends React.Component<IToastProps, {}> {
         const toastContent = (!!this.props.content || !!this.props.children) && (
             <div className='toast-description'>
                 {this.props.children}
-                {_.isFunction(this.props.content) ? this.props.content() : this.props.content}
+                {_.isString(this.props.content)
+                    ? this.props.content
+                    : React.createElement(this.props.content as React.ComponentClass)}
             </div>
         );
 
