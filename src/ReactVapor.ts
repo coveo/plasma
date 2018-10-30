@@ -34,6 +34,7 @@ import {ISelectState} from './components/select/SelectReducers';
 import {ISelectWithFilterCompositeState} from './components/select/SelectWithFilterReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
+import {ITableWithSortState} from './components/table-hoc/reducers/TableWithSortReducers';
 import {ITablePredicate} from './components/tables/Table';
 import {ITableStateModifier} from './components/tables/TableActions';
 import {ITableHeaderCellsState} from './components/tables/TableHeaderCellReducers';
@@ -70,6 +71,7 @@ export interface IReactVaporState {
     toastContainers?: IToastsState[];
     tableHeaderCells?: ITableHeaderCellsState;
     tables?: ITablesState;
+    tableHOCHeader?: ITableWithSortState[];
     checkboxes?: ICheckboxState[];
     inputs?: IInputState[];
     collapsibles?: CollapsibleState[];
