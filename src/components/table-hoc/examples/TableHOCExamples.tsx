@@ -6,6 +6,7 @@ import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
 import {tableWithBlankslate} from '../TableWithBlankslate';
 import {tableWithFilter} from '../TableWithFilter';
+import {tableWithPagination} from '../TableWithPagination';
 import {tableWithSort} from '../TableWithSort';
 import {IExampleRowData} from './TableHOCServerExampleReducer';
 
@@ -19,7 +20,14 @@ const TableWithUsernameFilter = _.compose(
     tableWithBlankslate({title: 'Filter caused the table to be empty'}),
 )(TableHOC);
 
-const TableWithSortAndFilter = _.compose(
+const TableWithFilterAndPagination = _.compose(
+    tableWithBlankslate({title: 'No data caused the table to be empty'}),
+    tableWithFilter(),
+    tableWithBlankslate({title: 'Filter caused the table to be empty'}),
+    tableWithPagination({perPageNumbers: [3, 5, 10]}),
+)(TableHOC);
+
+const TableWithSortFilterAndPagination = _.compose(
     tableWithBlankslate({title: 'No data caused the table to be empty'}),
     tableWithFilter(),
     tableWithBlankslate({title: 'Filter caused the table to be empty'}),
@@ -32,6 +40,7 @@ const TableWithSortAndFilter = _.compose(
             return 0;
         },
     }),
+    tableWithPagination({perPageNumbers: [3, 5, 10]}),
 )(TableHOC);
 
 export class TableHOCExamples extends React.Component {
@@ -105,19 +114,31 @@ export class TableHOCExamples extends React.Component {
 
                 <div className='form-group'>
                     <label className='form-control-label'>
-                        Tables with sort and filter
+                        Tables with filter and pagination
                     </label>
-                    <TableWithSortAndFilter
-                        id='filter-sort'
+                    <TableWithFilterAndPagination
+                        id='filter-and-pagination'
+                        className='table'
+                        data={generateData(50)}
+                        renderData={generateRow}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with sort, filter and pagination
+                    </label>
+                    <TableWithSortFilterAndPagination
+                        id='filter-sort-and-pagination'
                         className='table'
                         data={generateData(50)}
                         renderData={generateRow}
                         tableHeader={
                             <thead>
                                 <tr>
-                                    <TableHeaderWithSort id='city' tableId='filter-sort'>City</TableHeaderWithSort>
-                                    <TableHeaderWithSort id='email' tableId='filter-sort'>Email</TableHeaderWithSort>
-                                    <TableHeaderWithSort id='username' tableId='filter-sort' isDefault>Username</TableHeaderWithSort>
+                                    <TableHeaderWithSort id='city' tableId='filter-sort-and-pagination'>City</TableHeaderWithSort>
+                                    <TableHeaderWithSort id='email' tableId='filter-sort-and-pagination'>Email</TableHeaderWithSort>
+                                    <TableHeaderWithSort id='username' tableId='filter-sort-and-pagination' isDefault>Username</TableHeaderWithSort>
                                 </tr>
                             </thead>
                         }
