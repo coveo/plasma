@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 import {IStringListPayload, StringListActions} from '../../reusableState/customList/StringListActions';
-import {IStringListState, stringListCompositeState} from '../../reusableState/customList/StringListReducers';
+import {IStringListState, stringListCompositeReducer} from '../../reusableState/customList/StringListReducers';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {IListBoxPayload, ListBoxActions} from '../listBox/ListBoxActions';
 
@@ -12,12 +12,12 @@ export interface ISelectWithFilterPayload extends IStringListPayload, IListBoxPa
 
 export const selectWithFilterInitialState: ISelectWithFilterCompositeState = {};
 
-export const selectWithFilterCompositeState = (
+export const selectWithFilterCompositeReducer = (
     state: ISelectWithFilterCompositeState = selectWithFilterInitialState,
     action: IReduxAction<ISelectWithFilterPayload>,
 ): ISelectWithFilterCompositeState => {
     if (_.contains(StringListActions, action.type)) {
-        return stringListCompositeState(state, action);
+        return stringListCompositeReducer(state, action);
     }
 
     if (!action.payload || !state[action.payload.id]) {
