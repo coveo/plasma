@@ -17,6 +17,7 @@ import {
 } from './SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
+    defaultCustomValues?: string[];
     matchFilter?: MatchFilter;
     customValues?: boolean;
     addValueText?: (filterText: string) => string;
@@ -32,7 +33,7 @@ export interface ISelectWithFilterStateProps extends ISelectStateProps {
 }
 
 export interface ISelectWithFilterDispatchProps {
-    onRenderFilter: () => void;
+    onRenderFilter: (items: string[]) => void;
     onDestroyFilter: () => void;
     onSelectCustomValue: (filterValue: string) => void;
 }
@@ -56,7 +57,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
         ownProps: ISelectOwnProps & ISelectSpecificProps,
     ): ISelectWithFilterDispatchProps => ({
-        onRenderFilter: () => dispatch(addStringList(ownProps.id)),
+        onRenderFilter: (items: string[]) => dispatch(addStringList(ownProps.id, items)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
         onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
     });
@@ -74,12 +75,13 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 tooltip: 'Add',
                 tooltipPlacement: 'top',
             },
+            defaultCustomValues: [],
         };
 
         private dividerId: string = UUID.generate();
 
         componentWillMount() {
-            this.props.onRenderFilter();
+            this.props.onRenderFilter(this.props.defaultCustomValues);
         }
 
         componentWillUnmount() {
