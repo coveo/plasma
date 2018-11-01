@@ -32,6 +32,7 @@ import {selectCompositeReducer} from './components/select/SelectReducers';
 import {selectWithFilterCompositeState} from './components/select/SelectWithFilterReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from './components/tab/TabReducers';
+import {TableRowReducers} from './components/table-hoc/reducers/TableRowReducers';
 import {TableWithPaginationReducers} from './components/table-hoc/reducers/TableWithPaginationReducers';
 import {TableWithSortReducers} from './components/table-hoc/reducers/TableWithSortReducers';
 import {tableHeaderCellsReducer} from './components/tables/TableHeaderCellReducers';
@@ -51,6 +52,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     tables: tablesReducer,
     tableHOCHeader: TableWithSortReducers,
     tableHOCPagination: TableWithPaginationReducers,
+    tableHOCRow: TableRowReducers,
     membersCompositeState: membersReducers,
     lastUpdatedComposite: lastUpdatedCompositeReducer,
     filters: filterBoxesReducer,
