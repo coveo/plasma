@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
+import {tableWithBlankslate} from '../TableWithBlankslate';
 import {tableWithFilter} from '../TableWithFilter';
 
 interface IExampleRowData {
@@ -13,6 +14,12 @@ interface IExampleRowData {
 
 const TableWithFilter = _.compose(
     tableWithFilter(),
+)(TableHOC);
+
+const TableWithUsernameFilter = _.compose(
+    tableWithBlankslate({title: 'No data caused the table to be empty'}),
+    tableWithFilter({matchFilter: (filter: string, data: IExampleRowData) => data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1}),
+    tableWithBlankslate({title: 'Filter caused the table to be empty'}),
 )(TableHOC);
 
 export class TableHOCExamples extends React.Component {
@@ -56,6 +63,30 @@ export class TableHOCExamples extends React.Component {
                         id='with-filter'
                         className='table'
                         data={generateData(3)}
+                        renderData={generateRow}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with filter only on username
+                    </label>
+                    <TableWithUsernameFilter
+                        id='username-filter'
+                        className='table'
+                        data={generateData(3)}
+                        renderData={generateRow}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with filter (but no data)
+                    </label>
+                    <TableWithUsernameFilter
+                        id='username-no-data-filter'
+                        className='table'
+                        data={generateData(0)}
                         renderData={generateRow}
                     />
                 </div>
