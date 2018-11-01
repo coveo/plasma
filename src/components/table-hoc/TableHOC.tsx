@@ -6,6 +6,7 @@ import {ActionBarConnected} from '../actions/ActionBarConnected';
 export interface ITableHOCOwnProps {
     id: string;
     hasActionButtons?: boolean;
+    isLoading?: boolean;
     data: any[];
     renderData: (data: any) => React.ReactNode;
     actions?: React.ReactNode[];
@@ -19,13 +20,14 @@ export interface ITableHOCProps extends ITableHOCOwnProps {}
 export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> {
     static defaultProps: Partial<ITableHOCOwnProps> = {
         hasActionButtons: false,
+        isLoading: false,
         actions: [],
         onUpdate: () => undefined,
     };
 
     render() {
         return (
-            <div className='table-container'>
+            <div className={classNames('table-container', {'loading-component': this.props.isLoading})}>
                 {this.renderActions()}
                 <table className={classNames(this.props.className)}>
                     {this.props.tableHeader}
@@ -39,7 +41,9 @@ export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttribu
     private renderActions() {
         if (this.props.hasActionButtons || this.props.actions.length) {
             return (
-                <ActionBarConnected>
+                <ActionBarConnected id={this.props.id} removeDefaultContainerClasses extraContainerClasses={['coveo-table-actions-container',
+                    'mod-cancel-header-padding',
+                    'mod-align-header']}>
                     {this.props.actions.length && this.props.actions}
                 </ActionBarConnected>
             );
