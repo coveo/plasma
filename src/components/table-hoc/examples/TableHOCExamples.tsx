@@ -1,16 +1,13 @@
 import {helpers, seed} from 'faker';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
 import {tableWithBlankslate} from '../TableWithBlankslate';
 import {tableWithFilter} from '../TableWithFilter';
-
-interface IExampleRowData {
-    city: string;
-    email: string;
-    username: string;
-}
+import {tableWithSort} from '../TableWithSort';
+import {IExampleRowData} from './TableHOCServerExampleReducer';
 
 const TableWithFilter = _.compose(
     tableWithFilter(),
@@ -20,6 +17,21 @@ const TableWithUsernameFilter = _.compose(
     tableWithBlankslate({title: 'No data caused the table to be empty'}),
     tableWithFilter({matchFilter: (filter: string, data: IExampleRowData) => data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1}),
     tableWithBlankslate({title: 'Filter caused the table to be empty'}),
+)(TableHOC);
+
+const TableWithSortAndFilter = _.compose(
+    tableWithBlankslate({title: 'No data caused the table to be empty'}),
+    tableWithFilter(),
+    tableWithBlankslate({title: 'Filter caused the table to be empty'}),
+    tableWithSort({
+        sort: (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b: IExampleRowData) => {
+            if (key) {
+                const compare = (a[key] as string).toLowerCase().localeCompare(b[key].toLowerCase());
+                return isAsc ? compare : -1 * compare;
+            }
+            return 0;
+        },
+    }),
 )(TableHOC);
 
 export class TableHOCExamples extends React.Component {
@@ -88,6 +100,27 @@ export class TableHOCExamples extends React.Component {
                         className='table'
                         data={generateData(0)}
                         renderData={generateRow}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with sort and filter
+                    </label>
+                    <TableWithSortAndFilter
+                        id='filter-sort'
+                        className='table'
+                        data={generateData(50)}
+                        renderData={generateRow}
+                        tableHeader={
+                            <thead>
+                                <tr>
+                                    <TableHeaderWithSort id='city' tableId='filter-sort'>City</TableHeaderWithSort>
+                                    <TableHeaderWithSort id='email' tableId='filter-sort'>Email</TableHeaderWithSort>
+                                    <TableHeaderWithSort id='username' tableId='filter-sort' isDefault>Username</TableHeaderWithSort>
+                                </tr>
+                            </thead>
+                        }
                     />
                 </div>
             </div>
