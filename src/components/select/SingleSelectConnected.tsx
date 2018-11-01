@@ -52,6 +52,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
                 id={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
                 items={this.props.items}
+                selectClasses={this.props.selectClasses}
             >
                 {this.props.children}
             </SelectConnected>

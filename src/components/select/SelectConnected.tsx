@@ -24,6 +24,7 @@ export interface ISelectOwnProps {
     id: string;
     placeholder?: string;
     noResultItem?: IItemBoxProps;
+    selectClasses?: string;
 }
 
 export interface ISelectStateProps {
@@ -104,10 +105,13 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     }
 
     render() {
-        const pickerClasses = classNames('select-dropdown dropdown', {
-            open: this.props.isOpen,
-            'mod-multi': this.props.multi,
-        });
+        const pickerClasses = classNames(
+            'select-dropdown dropdown',
+            this.props.selectClasses || '',
+            {
+                open: this.props.isOpen,
+                'mod-multi': this.props.multi,
+            });
         const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {hidden: !this.props.isOpen});
         return (
             <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
