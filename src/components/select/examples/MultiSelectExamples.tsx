@@ -118,6 +118,16 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                     <MultiSelectWithPredicate id={UUID.generate()} items={this.state.hoc} options={defaultFlatSelectOptions} matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)} />
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>A Multi Select With 500px width</label>
+                    <br />
+                    <MultiSelectConnected id={UUID.generate()} items={this.state.hoc} multiSelectStyle={{width: '500px'}} />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Multi Select with width 100%</label>
+                    <br />
+                    <MultiSelectConnected id={'test'} items={this.state.hoc} selectClasses='mod-width-100' multiSelectStyle={{width: '100%'}} />
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter and Predicates</label>
                     <br />
                     <MultiSelectWithPredicateAndFilter
