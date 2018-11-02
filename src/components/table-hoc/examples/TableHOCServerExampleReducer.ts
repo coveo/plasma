@@ -1,6 +1,8 @@
 import * as $ from 'jquery';
 import {IDispatch, IReduxAction, IThunkAction} from '../../../utils/ReduxUtils';
+import {IReactVaporTestState} from '../../../utils/TestUtils';
 import {TableWithPaginationActions} from '../actions/TablePaginationActions';
+import {ITableHOCCompositeState, TableHOCUtils} from '../TableHOCUtils';
 import {TableHOCServerExamples} from './TableHOCServerExamples';
 
 export interface IExampleServerTableState {
@@ -27,7 +29,8 @@ const setData = (data: any[]): IReduxAction<ISetExampleDataPayload> => ({
     payload: {data},
 });
 
-const fetchData = (compositeState: any): IThunkAction => (dispatch: IDispatch) => {
+const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IReactVaporTestState) => {
+    const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(TableHOCServerExamples.TABLE_ID, getState());
     $.get('https://jsonplaceholder.typicode.com/users', {
         _page: compositeState.pageNb + 1,
         _limit: compositeState.perPage,
