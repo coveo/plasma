@@ -8,11 +8,10 @@ import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
 import {NavigationConnected} from '../navigation/NavigationConnected';
 import {TableWithPaginationActions} from './actions/TablePaginationActions';
-import {ITableHOCOwnProps} from './TableHOC';
+import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
 
-export interface ITableWithPaginationConfig {
+export interface ITableWithPaginationConfig extends IMaybeServerConfig {
     sliceData?: (data: any[], startingIndex: number, endingIndex: number) => any[];
-    isServer?: boolean;
 }
 
 export interface ITableWithPaginationOwnProps {}
@@ -97,12 +96,12 @@ export const tableWithPagination = (config: ITableWithPaginationConfig & Partial
         }
 
         render() {
-            const newProps = {..._.omit(this.props, [...TableWithPaginationPropsToOmit])};
+            const newProps = _.omit(this.props, [...TableWithPaginationPropsToOmit]);
             return (
                 <Component {...newProps}>
                     <NavigationConnected
                         id={this.props.id}
-                        {..._.pick(this.props, [TableWithPaginationPropsToOmit])}
+                        {..._.pick(this.props, TableWithPaginationPropsToOmit)}
                         {..._.omit(config, [...TableWithPaginationConfigToOmit])}
                         loadingIds={[this.props.id]}
                     />

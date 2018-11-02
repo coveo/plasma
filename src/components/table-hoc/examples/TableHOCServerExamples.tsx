@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/TestUtils';
 import {LastUpdated} from '../../lastUpdated/LastUpdated';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
-import {TableHOCUtils} from '../TableHOCUtils';
 import {TableRowConnected} from '../TableRowConnected';
 import {tableWithActions} from '../TableWithActions';
 import {tableWithBlankslate} from '../TableWithBlankslate';
@@ -44,7 +42,7 @@ const ServerTable = _.compose(
 )(TableHOC);
 
 interface TableHOCServerDispatchProps {
-    fetch: (compositeState: any) => void;
+    fetch: () => void;
 }
 
 interface TableHOCServerStateProps {
@@ -61,7 +59,7 @@ const mapStateToProps = (state: IReactVaporTestState) => ({
     serverData: state.tableHOCExample.data,
 });
 const mapDispatchToProps = (dispatch: IDispatch): TableHOCServerDispatchProps => ({
-    fetch: _.debounce((compositeState: any) => dispatch(TableHOCServerActions.fetchData(compositeState)), 400),
+    fetch: _.debounce(() => dispatch(TableHOCServerActions.fetchData()), 400),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -93,18 +91,8 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                         className='table'
                         data={this.props.serverData}
                         renderData={generateRow}
+                        tableHeader={this.renderHeader()}
                         onUpdate={this.onUpdate}
-                        totalEntries={this.props.totalEntries}
-                        totalPages={this.props.totalPages}
-                        tableHeader={
-                            <thead>
-                                <tr>
-                                    <TableHeaderWithSort id='address.city' tableId={TableHOCServerExamples.TABLE_ID}>City</TableHeaderWithSort>
-                                    <TableHeaderWithSort id='email' tableId={TableHOCServerExamples.TABLE_ID}>Email</TableHeaderWithSort>
-                                    <TableHeaderWithSort id='username' tableId={TableHOCServerExamples.TABLE_ID} isDefault>Username</TableHeaderWithSort>
-                                </tr>
-                            </thead>
-                        }
                         isLoading={this.props.isLoading}
                     >
                         <LastUpdated time={new Date()} />
@@ -114,8 +102,19 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
         );
     }
 
+    private renderHeader() {
+        return (
+            <thead>
+                <tr>
+                    <TableHeaderWithSort id='address.city' tableId={TableHOCServerExamples.TABLE_ID}>City</TableHeaderWithSort>
+                    <TableHeaderWithSort id='email' tableId={TableHOCServerExamples.TABLE_ID}>Email</TableHeaderWithSort>
+                    <TableHeaderWithSort id='username' tableId={TableHOCServerExamples.TABLE_ID} isDefault>Username</TableHeaderWithSort>
+                </tr>
+            </thead>
+        );
+    }
+
     private onUpdate = () => {
-        const compositeState = TableHOCUtils.getCompositeState(TableHOCServerExamples.TABLE_ID, ReactVaporStore.getState());
-        this.props.fetch(compositeState);
+        this.props.fetch();
     }
 }

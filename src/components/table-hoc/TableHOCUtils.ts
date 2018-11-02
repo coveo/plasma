@@ -4,10 +4,21 @@ import {IFilterState} from '../filterBox/FilterBoxReducers';
 import {IListBoxState} from '../listBox/ListBoxReducers';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 
-const getPredicateId = (tableId: string, componentId: string) => tableId + componentId;
-const getPaginationId = (tableId: string) => `pagination-${tableId}`;
+export interface ITableHOCPredicateValue {
+    id: string;
+    value: string;
+}
 
-const getCompositeState = (id: string, state: IReactVaporState) => {
+export interface ITableHOCCompositeState {
+    sortKey?: string;
+    sortAscending?: boolean;
+    perPage?: number;
+    pageNb?: number;
+    filter?: string;
+    predicates?: ITableHOCPredicateValue[];
+}
+
+const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompositeState => {
     const tableSort: ITableWithSortState = _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === id && _.isBoolean(v.isAsc));
     const paginationState = _.findWhere(state.paginationComposite, {id: getPaginationId(id)});
     const perPageState = _.findWhere(state.perPageComposite, {id});
@@ -34,6 +45,9 @@ const getCompositeState = (id: string, state: IReactVaporState) => {
         predicates: predicates,
     };
 };
+
+const getPredicateId = (tableId: string, componentId: string) => tableId + componentId;
+const getPaginationId = (tableId: string) => `pagination-${tableId}`;
 
 export const TableHOCUtils = {
     getCompositeState,

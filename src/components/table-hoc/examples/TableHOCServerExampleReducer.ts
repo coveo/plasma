@@ -1,8 +1,10 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 import {IDispatch, IReduxAction, IThunkAction} from '../../../utils/ReduxUtils';
+import {IReactVaporTestState} from '../../../utils/TestUtils';
 import {turnOffLoading} from '../../loading/LoadingActions';
 import {TableWithPaginationActions} from '../actions/TablePaginationActions';
+import {ITableHOCCompositeState, TableHOCUtils} from '../TableHOCUtils';
 import {TableHOCServerExamples} from './TableHOCServerExamples';
 
 export interface IExampleServerTableState {
@@ -40,7 +42,8 @@ const setIsLoading = (isLoading: boolean): IReduxAction<ISetExampleIsLoadingPayl
     payload: {isLoading},
 });
 
-const fetchData = (compositeState: any): IThunkAction => (dispatch: IDispatch) => {
+const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IReactVaporTestState) => {
+    const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(TableHOCServerExamples.TABLE_ID, getState());
     const params: any = {
         _page: compositeState.pageNb + 1,
         _limit: compositeState.perPage,
