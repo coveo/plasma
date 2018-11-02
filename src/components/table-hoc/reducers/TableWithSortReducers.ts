@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableHeaderAddPayload, ITableHeaderRemovePayload, ITableHeaderSortPayload, TableHeaderActionsType} from '../actions/TableHeaderActions';
+import {ITableHeaderAddPayload, ITableHeaderBasePayload, TableHeaderActionTypes} from '../actions/TableHeaderActions';
 
 export interface ITableWithSortState {
     id: string;
@@ -19,11 +19,11 @@ const addTableHeaderReducer = (state: ITableWithSortState[], action: IReduxActio
     ];
 };
 
-const removeTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderRemovePayload>) => {
+const removeTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderBasePayload>) => {
     return _.reject(state, (header: ITableWithSortState) => header.id === action.payload.id);
 };
 
-const sortTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderSortPayload>) => {
+const sortTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderBasePayload>) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
         return _.map(state, (header: ITableWithSortState) => {
@@ -40,12 +40,12 @@ const sortTableHeaderReducer = (state: ITableWithSortState[], action: IReduxActi
 };
 
 const TableWithSortActionReducers: {[key: string]: (...args: any[]) => any} = {
-    [TableHeaderActionsType.add]: addTableHeaderReducer,
-    [TableHeaderActionsType.remove]: removeTableHeaderReducer,
-    [TableHeaderActionsType.sort]: sortTableHeaderReducer,
+    [TableHeaderActionTypes.add]: addTableHeaderReducer,
+    [TableHeaderActionTypes.remove]: removeTableHeaderReducer,
+    [TableHeaderActionTypes.sort]: sortTableHeaderReducer,
 };
 
-type ITableHeaderPayload = ITableHeaderAddPayload | ITableHeaderRemovePayload | ITableHeaderSortPayload;
+type ITableHeaderPayload = ITableHeaderAddPayload | ITableHeaderBasePayload;
 export const TableWithSortReducers = (state: ITableWithSortState[] = [], action: IReduxAction<ITableHeaderPayload>) => {
     if (!_.isUndefined(TableWithSortActionReducers[action.type])) {
         return TableWithSortActionReducers[action.type](state, action);

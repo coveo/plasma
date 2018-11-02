@@ -20,7 +20,9 @@ export interface ITableWithSortProps extends Partial<ITableWithSortStateProps> {
 
 const TableWithSortPropsToOmit = keys<ITableWithSortStateProps>();
 
-export const tableWithSort = (config: ITableWithSortConfig) => (Component: (React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>)): React.ComponentClass<ITableWithSortProps & React.HTMLAttributes<HTMLTableElement>> => {
+type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps>;
+
+export const tableWithSort = (config: ITableWithSortConfig) => (Component: SortableTableComponent) => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithSortStateProps | ITableHOCOwnProps => {
         const tableSort: ITableWithSortState = _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === ownProps.id && _.isBoolean(v.isAsc));
         if (tableSort && ownProps.data) {
