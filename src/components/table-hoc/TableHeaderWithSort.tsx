@@ -47,10 +47,6 @@ const mapDispatchToProps = (
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class TableHeaderWithSort extends React.Component<ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>> {
-    private handleClick(e: React.MouseEvent<HTMLTableHeaderCellElement>) {
-        this.props.onSort();
-    }
-
     componentDidMount() {
         this.props.onMount();
     }
@@ -68,7 +64,7 @@ export class TableHeaderWithSort extends React.Component<ITableHeaderWithSortPro
         return (
             <th
                 className={headerCellClasses}
-                onClick={(e: React.MouseEvent<HTMLTableHeaderCellElement>) => this.handleClick(e)}>
+                onClick={() => this.props.onSort()}>
                 {this.props.children}
                 <div className='admin-sort-icon'>
                     <Svg svgName='asc-desc' className='tables-sort icon' />
