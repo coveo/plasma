@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys/index';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
@@ -29,6 +30,8 @@ export interface ITableHeaderWithSortProps extends
     ITableRowOwnProps,
     Partial<ITableRowStateProps>,
     Partial<ITableRowDispatchProps> {}
+
+const TableRowPropsToOmit = keys<ITableHeaderWithSortProps>();
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableRowOwnProps) => {
     const row: ITableRowState = _.findWhere(state.tableHOCRow, {id: ownProps.id});
@@ -72,10 +75,12 @@ export class TableRowConnected extends React.Component<ITableHeaderWithSortProps
     render() {
         return (
             <tr
-                {..._.omit(this.props, ['actions', 'selected', 'tableId', 'isMultiselect', 'onUnmount', 'onMount', 'onClick'])}
+                {..._.omit(this.props, TableRowPropsToOmit)}
                 className={classNames(this.props.className, {selected: this.props.selected})}
                 onClick={this.handleClick}
-            >{this.props.children}</tr>
+            >
+                {this.props.children}
+            </tr>
         );
     }
 }

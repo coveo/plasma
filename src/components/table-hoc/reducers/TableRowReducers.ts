@@ -3,7 +3,7 @@ import {IReduxAction} from '../../../utils/ReduxUtils';
 import {PaginationActions} from '../../navigation/pagination/NavigationPaginationActions';
 import {PerPageActions} from '../../navigation/perPage/NavigationPerPageActions';
 import {ITableRowAddPayload, ITableRowRemovePayload, ITableRowSelectPayload, TableRowActionsType} from '../actions/TableRowActions';
-import {TableHOCComponentType, TableHOCUtils} from '../TableHOCUtils';
+import {TableHOCUtils} from '../TableHOCUtils';
 
 export interface ITableRowState {
     id: string;
@@ -46,7 +46,7 @@ const selectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITa
 
 const deselectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
     return _.map(state, (row: ITableRowState) => {
-        return row.tableId === action.payload.id || TableHOCUtils.getComponentId(row.tableId, TableHOCComponentType.Pagination) === action.payload.id
+        return row.tableId === action.payload.id || TableHOCUtils.getPaginationId(row.tableId) === action.payload.id
             ? {...row, selected: false}
             : row;
     });

@@ -10,6 +10,7 @@ export interface IMaybeServerConfig {
 export interface ITableHOCOwnProps {
     id: string;
     isLoading?: boolean;
+    hasActionButtons?: boolean;
     data: any[];
     renderData: (data: any[]) => React.ReactNode;
     actions?: React.ReactNode[];
@@ -23,6 +24,7 @@ export interface ITableHOCProps extends ITableHOCOwnProps {}
 export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> {
     static defaultProps: Partial<ITableHOCOwnProps> = {
         isLoading: false,
+        hasActionButtons: false,
         actions: [],
         onUpdate: () => undefined,
     };
@@ -41,7 +43,7 @@ export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttribu
     }
 
     private renderActions() {
-        if (this.props.actions.length) {
+        if (this.props.hasActionButtons || this.props.actions.length) {
             return (
                 <ActionBarConnected id={this.props.id} removeDefaultContainerClasses extraContainerClasses={['coveo-table-actions-container',
                     'mod-cancel-header-padding',

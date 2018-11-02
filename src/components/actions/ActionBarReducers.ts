@@ -6,7 +6,7 @@ import {ListBoxActions} from '../listBox/ListBoxActions';
 import {LoadingActions} from '../loading/LoadingActions';
 import {PaginationActions} from '../navigation/pagination/NavigationPaginationActions';
 import {PerPageActions} from '../navigation/perPage/NavigationPerPageActions';
-import {TableHOCComponentType, TableHOCUtils} from '../table-hoc/TableHOCUtils';
+import {TableHOCUtils} from '../table-hoc/TableHOCUtils';
 import {IActionOptions} from './Action';
 import {ActionBarActions} from './ActionBarActions';
 
@@ -40,7 +40,7 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
         case PaginationActions.changePage:
         case ListBoxActions.select:
             return state.id === action.payload.id
-                || TableHOCUtils.getComponentId(state.id, TableHOCComponentType.Pagination) === action.payload.id
+                || TableHOCUtils.getPaginationId(state.id) === action.payload.id
                 || s.contains(action.payload.id, state.id)
                 ? {...state, actions: []}
                 : state;
