@@ -9,7 +9,7 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {SingleSelectConnected} from '../select/SingleSelectConnected';
 import * as styles from './styles/TableWithPredicates.scss';
 import {ITableHOCOwnProps} from './TableHOC';
-import {TableHOCComponentType, TableHOCUtils} from './TableHOCUtils';
+import {TableHOCUtils} from './TableHOCUtils';
 
 export interface ITableWithPredicateConfig {
     id: string;
@@ -35,7 +35,7 @@ type TableWithPredicateComponent = React.ComponentClass<ITableWithPredicateProps
 export const tableWithPredicate = (config: ITableWithPredicateConfig) => (Component: TableWithPredicateComponent): TableWithPredicateComponent => {
 
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithPredicateProps): ITableWithPredicateStateProps | ITableHOCOwnProps => {
-        const listbox = _.findWhere(state.listBoxes, {id: TableHOCUtils.getComponentId(ownProps.id, TableHOCComponentType.Predicate, config.id)});
+        const listbox = _.findWhere(state.listBoxes, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)});
         const matchPredicate = config.matchPredicate || defaultMatchPredicate;
         const predicateData = () => !config.isServer && listbox && listbox.selected.length
             ? _.filter(ownProps.data, (datum: any) => matchPredicate(listbox.selected[0], datum))
@@ -56,7 +56,7 @@ export const tableWithPredicate = (config: ITableWithPredicateConfig) => (Compon
         }
 
         render() {
-            const key = TableHOCUtils.getComponentId(this.props.id, TableHOCComponentType.Predicate, config.id);
+            const key = TableHOCUtils.getPredicateId(this.props.id, config.id);
             const actions = this.props.actions || [];
             const predicateAction = (
                 <div className={classNames('coveo-table-actions predicate-filters', styles.tablePredicateFilters)} key={key}>
