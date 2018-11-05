@@ -6,7 +6,7 @@ import {Svg} from '../svg/Svg';
 
 export interface IToastProps {
     id?: string;
-    title?: string;
+    title?: React.ReactNode;
     isOpened?: boolean;
     type?: string;
     dismiss?: number;
