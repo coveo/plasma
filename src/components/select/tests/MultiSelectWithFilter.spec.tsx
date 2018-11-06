@@ -71,5 +71,17 @@ describe('Select', () => {
 
             expect(itemBox.props().value).toBe(noItemsText);
         });
+
+        it('should set the noItems in noResultItem if items is not empty and all values are selected', () => {
+            const noItemsText = 'not an item text';
+
+            mountMultiSelect({items: [{value: 'a', selected: true}, {value: 'b', selected: true}], noItemsText, customValues: true});
+
+            const itemBox = wrapper.find(SelectConnected)
+                .find(ItemBox)
+                .first();
+
+            expect(itemBox.props().value).toBe(noItemsText);
+        });
     });
 });
