@@ -7,6 +7,7 @@ import {addStringList, addValueStringList, removeStringList} from '../../reusabl
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
 import {Button, IButtonProps} from '../button/Button';
+import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {Svg} from '../svg/Svg';
@@ -25,6 +26,7 @@ export interface ISelectWithFilterOwnProps {
     noResultFilterText?: (filterText: string) => string;
     noItemsText?: string;
     filterButton?: IButtonProps;
+    filter?: IFilterBoxOwnProps;
 }
 
 export interface ISelectWithFilterStateProps extends ISelectStateProps {
@@ -68,7 +70,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         static defaultProps: Partial<ISelectWithFilterProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
-            noItemsText: 'No Items in the list',
+            noItemsText: 'No items, enter a new value',
             addValueText: (filterText: string) => `Add "${filterText}"`,
             filterButton: {
                 enabled: true,
@@ -110,12 +112,14 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         private duplicateValue(): IItemBoxProps {
             return {
                 value: this.props.duplicateText,
+                disabled: true,
             };
         }
 
         private noItems(): IItemBoxProps {
             return {
                 value: this.props.noItemsText,
+                disabled: true,
             };
         }
 
@@ -144,6 +148,13 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 .value() !== -1;
         }
 
+        private allValuesAreSelected(): boolean {
+            return !_.chain(this.props.items)
+                .pluck('value')
+                .contains(this.props.selected)
+                .value();
+        }
+
         render() {
             const filterBoxClassNames: string = classNames({
                 'flex flex-center': this.props.customValues,
@@ -157,9 +168,9 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 noResultItem = this.duplicateValue();
             } else if (!_.isEmpty(this.props.filterValue) && this.props.customValues) {
                 items = [...this.addItemBoxCustomValue(), ...items];
-            } else if (this.props.customValues && !this.props.items.length) {
-                items = [this.noItems()];
             } else if (this.props.customValues && _.every(items, (item) => item.hidden)) {
+                noResultItem = this.noItems();
+            } else if (items.length && this.allValuesAreSelected()) {
                 noResultItem = this.noItems();
             }
 
@@ -168,6 +179,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             return (
                 <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues}>
                     <FilterBoxConnected
+                        {...this.props.filter}
                         id={this.props.id}
                         onKeyDown={(this.props as any).onKeyDown}
                         onKeyUp={(this.props as any).onKeyUp}
