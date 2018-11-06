@@ -15,6 +15,7 @@ import {
     MatchFilter,
     SelectSelector,
 } from './SelectSelector';
+import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];
@@ -25,6 +26,7 @@ export interface ISelectWithFilterOwnProps {
     noResultFilterText?: (filterText: string) => string;
     noItemsText?: string;
     filterButton?: IButtonProps;
+    filter?: IFilterBoxOwnProps;
 }
 
 export interface ISelectWithFilterStateProps extends ISelectStateProps {
@@ -177,6 +179,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             return (
                 <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues}>
                     <FilterBoxConnected
+                        {...this.props.filter}
                         id={this.props.id}
                         onKeyDown={(this.props as any).onKeyDown}
                         onKeyUp={(this.props as any).onKeyUp}
