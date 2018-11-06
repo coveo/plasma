@@ -110,12 +110,14 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         private duplicateValue(): IItemBoxProps {
             return {
                 value: this.props.duplicateText,
+                disabled: true,
             };
         }
 
         private noItems(): IItemBoxProps {
             return {
                 value: this.props.noItemsText,
+                disabled: true,
             };
         }
 
@@ -157,8 +159,6 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 noResultItem = this.duplicateValue();
             } else if (!_.isEmpty(this.props.filterValue) && this.props.customValues) {
                 items = [...this.addItemBoxCustomValue(), ...items];
-            } else if (this.props.customValues && !this.props.items.length) {
-                items = [this.noItems()];
             } else if (this.props.customValues && _.every(items, (item) => item.hidden)) {
                 noResultItem = this.noItems();
             }
