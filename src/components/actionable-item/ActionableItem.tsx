@@ -8,7 +8,7 @@ import {actionableItemContent, actionableItemDots, actionableItemDotsWidthWithPa
 
 export interface IActionableItemProps extends React.HTMLAttributes<HTMLDivElement> {
     id: string;
-    actions: IItemBoxProps[];
+    actions?: IItemBoxProps[];
 }
 
 export class ActionableItem extends React.Component<any> {
@@ -23,7 +23,7 @@ export class ActionableItem extends React.Component<any> {
                     {this.props.children}
                 </div>
                 {
-                    this.props.actions.length
+                    this.props.actions && this.props.actions.length
                         ? (
                             <PopoverConnected
                                 id={this.props.id}
