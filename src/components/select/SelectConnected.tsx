@@ -25,10 +25,11 @@ export interface ISelectOwnProps {
     placeholder?: string;
     noResultItem?: IItemBoxProps;
     selectClasses?: string;
+    items?: IItemBoxProps[];
+    hasFocusableChild?: boolean;
 }
 
 export interface ISelectStateProps {
-    items?: IItemBoxProps[];
     isOpen?: boolean;
     active?: number;
     selectedValues?: string[];
@@ -95,7 +96,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
 
     componentWillUpdate(nextProps: ISelectProps): any {
         const button = this.getButton();
-        this.keepFocus = !nextProps.isOpen && document.activeElement === button;
+        this.keepFocus = document.activeElement === button && (!nextProps.hasFocusableChild || !nextProps.isOpen);
     }
 
     componentDidUpdate(prevProps: ISelectProps, prevState: null, snapshot: any) {
@@ -107,11 +108,12 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     render() {
         const pickerClasses = classNames(
             'select-dropdown dropdown',
-            this.props.selectClasses || '',
+            this.props.selectClasses,
             {
                 open: this.props.isOpen,
                 'mod-multi': this.props.multi,
-            });
+            },
+        );
         const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {hidden: !this.props.isOpen});
         return (
             <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
@@ -123,7 +125,12 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
                 }} />
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
                     {this.renderChildren()}
-                    <ListBoxConnected id={this.props.id} items={this.props.items} multi={this.props.multi} noResultItem={this.props.noResultItem || undefined} />
+                    <ListBoxConnected
+                        id={this.props.id}
+                        items={this.props.items}
+                        multi={this.props.multi}
+                        noResultItem={this.props.noResultItem || undefined}
+                    />
                 </div>
             </div>
         );

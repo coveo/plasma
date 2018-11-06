@@ -74,6 +74,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                 items={this.props.items}
                 noResultItem={this.props.noResultItem}
                 selectClasses={this.props.selectClasses}
+                hasFocusableChild={this.props.hasFocusableChild}
                 multi>
                 {this.props.children}
             </SelectConnected>
