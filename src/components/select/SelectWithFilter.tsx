@@ -68,7 +68,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         static defaultProps: Partial<ISelectWithFilterProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
-            noItemsText: 'No Items in the list',
+            noItemsText: 'No more items, Add a new value',
             addValueText: (filterText: string) => `Add "${filterText}"`,
             filterButton: {
                 enabled: true,
