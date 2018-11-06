@@ -146,6 +146,13 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 .value() !== -1;
         }
 
+        private allValuesAreSelected(): boolean {
+            return !_.chain(this.props.items)
+                .pluck('value')
+                .contains(this.props.selected)
+                .value();
+        }
+
         render() {
             const filterBoxClassNames: string = classNames({
                 'flex flex-center': this.props.customValues,
@@ -160,6 +167,8 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             } else if (!_.isEmpty(this.props.filterValue) && this.props.customValues) {
                 items = [...this.addItemBoxCustomValue(), ...items];
             } else if (this.props.customValues && _.every(items, (item) => item.hidden)) {
+                noResultItem = this.noItems();
+            } else if (items.length && this.allValuesAreSelected()) {
                 noResultItem = this.noItems();
             }
 
