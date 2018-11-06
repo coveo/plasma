@@ -7,6 +7,7 @@ import {addStringList, addValueStringList, removeStringList} from '../../reusabl
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
 import {Button, IButtonProps} from '../button/Button';
+import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {Svg} from '../svg/Svg';
@@ -15,7 +16,6 @@ import {
     MatchFilter,
     SelectSelector,
 } from './SelectSelector';
-import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];
