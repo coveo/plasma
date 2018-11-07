@@ -499,8 +499,9 @@ $slide-y-transition-duration: 0.5s;
 
 // Progress bar
 $step-progress-bar-height: 8px;
-$step-progress-bar-done-color: #3bb862;
-$step-progress-bar-doing-color: #009830;
+$step-progress-bar-border-width: 3px;
+$step-progress-bar-done-color: $turquoise;
+$step-progress-bar-doing-color: $caribbean-green;
 $step-progress-bar-to-do-color: #d8d8d8;
 
 // Badge
