@@ -59,6 +59,17 @@ const getListBoxSelected: (state: IReactVaporState, ownProps: ISelectWithFilterP
     listBoxSelectedCombiner,
 );
 
+const multiSelectSelectedValuesCombiner = (
+    listBoxSelected: string[],
+    listState: string[],
+): string[] => _.uniq([...listBoxSelected, ...listState]);
+
+const getMultiSelectSelectedValues: (state: IReactVaporState, ownProps: ISelectWithFilterProps) => string[] = createSelector(
+    getListBoxSelected,
+    getListState,
+    multiSelectSelectedValuesCombiner,
+);
+
 export const SelectSelector = {
     getFilterText,
     getListState,
@@ -71,4 +82,5 @@ export const SelectSelector = {
     getCustomItems,
     listBoxSelectedCombiner,
     getListBoxSelected,
+    getMultiSelectSelectedValues,
 };

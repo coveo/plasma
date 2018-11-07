@@ -36,7 +36,7 @@ export interface IMultiSelectDispatchProps {
 export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => ({
-    selected: _.uniq([...SelectSelector.getListBoxSelected(state, ownProps), ...SelectSelector.getListState(state, ownProps)]),
+    selected: SelectSelector.getMultiSelectSelectedValues(state, ownProps),
 });
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
