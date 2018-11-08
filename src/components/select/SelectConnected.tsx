@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
@@ -11,9 +12,8 @@ import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
-import {IListBoxState} from '../listBox/ListBoxReducers';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
-import {ISelectState} from './SelectReducers';
+import {SelectSelector} from './SelectSelector';
 
 export interface ISelectSpecificProps {
     button: React.ReactNode;
@@ -30,10 +30,9 @@ export interface ISelectOwnProps {
 }
 
 export interface ISelectStateProps {
-    isOpen?: boolean;
+    isOpened?: boolean;
     active?: number;
     selectedValues?: string[];
-    selectedLength?: number;
 }
 
 export interface ISelectDispatchProps {
@@ -54,16 +53,14 @@ export interface ISelectButtonProps {
 
 export interface ISelectProps extends ISelectOwnProps, ISelectStateProps, ISelectDispatchProps {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ISelectOwnProps): ISelectStateProps => {
-    const select: ISelectState = _.findWhere(state.selects, {id: ownProps.id});
-    const list: IListBoxState = _.findWhere(state.listBoxes, {id: ownProps.id});
+const makeMapStateToProps = () => {
+    const statePropsSelector = createStructuredSelector({
+        selectedValues: SelectSelector.getListBoxSelected,
+        isOpened: SelectSelector.getSelectOpened,
+        active: SelectSelector.getListBoxActive,
+    });
 
-    return {
-        isOpen: select && select.open,
-        active: list && list.active,
-        selectedValues: list && list.selected,
-        selectedLength: list && list.selected.length || 0,
-    };
+    return (state: IReactVaporState, ownProps: ISelectOwnProps): ISelectStateProps => statePropsSelector(state, ownProps);
 };
 
 const mapDispatchToProps = (
@@ -78,13 +75,14 @@ const mapDispatchToProps = (
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
 });
 
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SelectConnected extends React.Component<ISelectProps & ISelectSpecificProps, {}> {
+// const serializeStateProps = (props: any) => JSON.stringify(_.pick(props, 'active', 'isOpened', 'selectedValues'));
+
+@ReduxConnect(makeMapStateToProps, mapDispatchToProps)
+export class SelectConnected extends React.PureComponent<ISelectProps & ISelectSpecificProps, {}> {
     private dropdown: HTMLDivElement;
     private menu: HTMLDivElement;
-    private keepFocus: boolean;
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.onRender();
         document.addEventListener('mousedown', this.handleDocumentClick);
     }
@@ -94,15 +92,19 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
         this.props.onDestroy();
     }
 
-    componentWillUpdate(nextProps: ISelectProps): any {
-        const button = this.getButton();
-        this.keepFocus = document.activeElement === button && (!nextProps.hasFocusableChild || !nextProps.isOpen);
-    }
+    componentDidUpdate(prevProps: ISelectProps) {
+        const wentFromOpenedToClosed = prevProps.isOpened && !this.props.isOpened;
+        const selectionChanged = prevProps.selectedValues.length <= this.props.selectedValues.length;
+        // const focusOnButton = this.getButton() === document.activeElement;
 
-    componentDidUpdate(prevProps: ISelectProps, prevState: null, snapshot: any) {
-        if (this.keepFocus || (prevProps.isOpen && !this.props.isOpen && prevProps.selectedLength <= this.props.selectedLength)) {
+        console.log('component did update');
+        console.log(prevProps);
+        console.log(this.props);
+        if ((this.props.isOpened && !this.props.hasFocusableChild)
+            || (wentFromOpenedToClosed && selectionChanged)) {
             this.focusOnButton();
         }
+        console.log(document.activeElement);
     }
 
     render() {
@@ -110,11 +112,11 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
             'select-dropdown dropdown',
             this.props.selectClasses,
             {
-                open: this.props.isOpen,
+                open: this.props.isOpened,
                 'mod-multi': this.props.multi,
             },
         );
-        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {hidden: !this.props.isOpen});
+        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {hidden: !this.props.isOpened});
         return (
             <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
                 <Content content={this.props.button} classes={['select-dropdown-button']} componentProps={{
@@ -137,7 +139,7 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     }
 
     private renderChildren() {
-        if (this.props.children && this.props.isOpen) {
+        if (this.props.children && this.props.isOpened) {
             const newChildren = React.Children.map(this.props.children, (child: React.ReactElement<any>) => {
                 if (child) {
                     return React.cloneElement(child, {
@@ -160,7 +162,8 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
     }
 
     private focusOnButton() {
-        this.getButton() && this.getButton().focus();
+        const button = this.getButton();
+        button && button.focus();
     }
 
     private setDropdownPosition() {
@@ -178,23 +181,23 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
         e.preventDefault();
 
         this.props.onToggleDropdown();
+        this.focusOnButton();
     }
 
     private onKeyDown(e: React.KeyboardEvent<HTMLElement>) {
         if (_.contains([keyCode.escape, keyCode.downArrow, keyCode.upArrow, keyCode.enter], e.keyCode)
-            || (e.keyCode === keyCode.tab && this.props.isOpen)) {
+            || (e.keyCode === keyCode.tab && this.props.isOpened)) {
             e.stopPropagation();
             e.preventDefault();
         }
     }
 
     private onKeyUp(e: React.KeyboardEvent<HTMLElement>) {
-        if (keyCode.escape === e.keyCode && this.props.isOpen) {
+        if (keyCode.escape === e.keyCode && this.props.isOpened) {
             this.onToggleDropdown(e);
-            this.focusOnButton();
         }
 
-        if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpen) {
+        if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpened) {
             const actives = _.chain(this.props.items)
                 .filter((item: IItemBoxProps) => !item.hidden && (!this.props.multi || !_.contains(this.props.selectedValues, item.value)) && !item.disabled)
                 .value();
@@ -208,17 +211,17 @@ export class SelectConnected extends React.Component<ISelectProps & ISelectSpeci
 
         if (keyCode.downArrow === e.keyCode) {
             this.setDropdownPosition();
-            this.props.setActive(this.props.isOpen ? 1 : 0);
+            this.props.setActive(this.props.isOpened ? 1 : 0);
         }
 
         if (keyCode.upArrow === e.keyCode) {
             this.setDropdownPosition();
-            this.props.setActive(this.props.isOpen ? -1 : 0);
+            this.props.setActive(this.props.isOpened ? -1 : 0);
         }
     }
 
     private handleDocumentClick = (e: MouseEvent) => {
-        if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
+        if (this.props.isOpened && document.contains(e.target as HTMLElement)) {
             const dropdown: Element | Text = ReactDOM.findDOMNode(this.menu);
 
             if (!dropdown.contains(e.target as Node) && !this.getButton().contains(e.target as Node)) {

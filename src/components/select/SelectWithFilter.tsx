@@ -128,7 +128,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             }
         }
 
-        private getButton(): React.ReactNode {
+        private getAddValueButton(): React.ReactNode {
             return this.props.customValues && (
                 <div className='ml1'>
                     <Button classes={['p1']} onClick={this.handleOnClick} {...this.props.filterButton}>
@@ -174,12 +174,11 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
 
             const newProps = {
                 ..._.omit(this.props, [...SelectWithFilterPropsToOmit, 'selected']),
-                hasFocusableChild: true,
                 items,
             };
 
             return (
-                <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues}>
+                <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues} hasFocusableChild>
                     <FilterBoxConnected
                         {...this.props.filter}
                         id={this.props.id}
@@ -188,7 +187,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                         className={filterBoxClassNames}
                         isAutoFocus
                     >
-                        {this.getButton()}
+                        {this.getAddValueButton()}
                     </FilterBoxConnected>
                     {this.props.children}
                 </Component>

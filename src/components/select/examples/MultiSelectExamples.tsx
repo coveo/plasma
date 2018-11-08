@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
-import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
+// import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {MultiSelectConnected} from '../MultiSelectConnected';
-import {MultiSelectWithFilter, MultiSelectWithPredicate, MultiSelectWithPredicateAndFilter} from '../SelectComponents';
+import {MultiSelectWithFilter} from '../SelectComponents';
+// import {MultiSelectConnected} from '../MultiSelectConnected';
+// import {MultiSelectWithFilter, MultiSelectWithPredicate, MultiSelectWithPredicateAndFilter} from '../SelectComponents';
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
@@ -17,11 +18,11 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Seven', value: '7'},
 ];
 
-const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
-    {id: UUID.generate(), option: {content: 'All'}, selected: true},
-    {id: UUID.generate(), option: {content: 'even'}},
-    {id: UUID.generate(), option: {content: 'odd'}},
-];
+// const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
+//     {id: UUID.generate(), option: {content: 'All'}, selected: true},
+//     {id: UUID.generate(), option: {content: 'even'}},
+//     {id: UUID.generate(), option: {content: 'odd'}},
+// ];
 
 export interface IMultiSelectExamplesState {
     first: IItemBoxProps[];
@@ -52,7 +53,7 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
         return (
             <div>
                 <h1>Multi Select</h1>
-                <div className='form-group'>
+                {/* <div className='form-group'>
                     <label className='form-control-label'>A Simple Multi Select without items</label>
                     <br />
                     <MultiSelectConnected id={UUID.generate()} items={[]} />
@@ -86,13 +87,13 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                     <label className='form-control-label'>A Multi Select With Filter, Custom Values and no items</label>
                     <br />
                     <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues />
-                </div>
+                </div> */}
                 <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter, Custom Values and list of items selectable</label>
                     <br />
                     <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} customValues />
                 </div>
-                <div className='form-group'>
+                {/* <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter and list of items selectable</label>
                     <br />
                     <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} />
@@ -146,21 +147,21 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
                         customValues />
-                </div>
+                </div> */}
             </div>
         );
     }
 
-    private matchPredicate(predicate: string, item: IItemBoxProps) {
-        const value = parseInt(item.value, 10);
-        if (predicate === defaultFlatSelectOptions[0].id) {
-            return true;
-        } else if (predicate === defaultFlatSelectOptions[1].id) {
-            return value % 2 === 0;
-        } else if (predicate === defaultFlatSelectOptions[2].id) {
-            return value % 2 === 1;
-        } else {
-            return true;
-        }
-    }
+    // private matchPredicate(predicate: string, item: IItemBoxProps) {
+    //     const value = parseInt(item.value, 10);
+    //     if (predicate === defaultFlatSelectOptions[0].id) {
+    //         return true;
+    //     } else if (predicate === defaultFlatSelectOptions[1].id) {
+    //         return value % 2 === 0;
+    //     } else if (predicate === defaultFlatSelectOptions[2].id) {
+    //         return value % 2 === 1;
+    //     } else {
+    //         return true;
+    //     }
+    // }
 }

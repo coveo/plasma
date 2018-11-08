@@ -70,6 +70,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         return (
             <SelectConnected
                 id={this.props.id}
+                key={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
                 items={this.props.items}
                 noResultItem={this.props.noResultItem}
@@ -142,7 +143,10 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
-        const buttonAttrs = !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length ? {disabled: true} : {};
+        const buttonAttrs = !this.props.noDisabled
+            && this.props.selected
+            && this.props.selected.length === this.props.items.length
+            ? {disabled: true} : {};
         return (
             <div className={classes} style={this.props.multiSelectStyle}>
                 {this.props.connectDropTarget(
