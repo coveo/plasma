@@ -142,7 +142,6 @@ describe('Select', () => {
                 });
 
                 it('should return a list with items from both list without duplicate', () => {
-                    debugger;
                     const state = {
                         selectWithFilter: {[id]: {id, list: list1}},
                         listBoxes: [{id, selected: list3}],
