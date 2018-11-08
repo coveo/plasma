@@ -75,8 +75,6 @@ const mapDispatchToProps = (
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
 });
 
-// const serializeStateProps = (props: any) => JSON.stringify(_.pick(props, 'active', 'isOpened', 'selectedValues'));
-
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 export class SelectConnected extends React.PureComponent<ISelectProps & ISelectSpecificProps, {}> {
     private dropdown: HTMLDivElement;
@@ -95,16 +93,11 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     componentDidUpdate(prevProps: ISelectProps) {
         const wentFromOpenedToClosed = prevProps.isOpened && !this.props.isOpened;
         const selectionChanged = prevProps.selectedValues.length <= this.props.selectedValues.length;
-        // const focusOnButton = this.getButton() === document.activeElement;
 
-        console.log('component did update');
-        console.log(prevProps);
-        console.log(this.props);
         if ((this.props.isOpened && !this.props.hasFocusableChild)
             || (wentFromOpenedToClosed && selectionChanged)) {
             this.focusOnButton();
         }
-        console.log(document.activeElement);
     }
 
     render() {
@@ -124,7 +117,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
                     onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
                     placeholder: this.props.placeholder,
-                }} />
+                }} key={`${this.props.id}-button`} />
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
                     {this.renderChildren()}
                     <ListBoxConnected

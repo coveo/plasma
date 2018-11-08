@@ -7,6 +7,7 @@ import {defaultMatchFilter} from '../../utils/FilterUtils';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
+import {IMultiSelectProps} from './MultiSelectConnected';
 import {ISelectProps} from './SelectConnected';
 import {ISelectState, selectInitialState} from './SelectReducers';
 import {ISelectWithFilterProps} from './SelectWithFilter';
@@ -58,6 +59,12 @@ const getCustomItems: (state: IReactVaporState, ownProps: ISelectWithFilterProps
     customItemsCombiner,
 );
 
+const getCustomItemsWithFilter: (state: IReactVaporState, ownProps: ISelectProps) => IItemBoxProps[] = createSelector(
+    getItemsWithFilter,
+    getCustomItems,
+    (filteredItems: IItemBoxProps[], customItems: IItemBoxProps[]) => [...filteredItems, ...customItems],
+);
+
 const listBoxSelectedCombiner = (
     listBox: IListBoxState,
 ): string[] => listBox && listBox.selected ? listBox.selected : [];
@@ -77,18 +84,32 @@ const getSelectOpened: (state: IReactVaporState, ownProps: ISelectProps) => bool
     (select: ISelectState) => select.open,
 );
 
+const multiSelectSelectedValuesCombiner = (
+    listBoxSelected: string[],
+    listState: string[],
+): string[] => _.uniq([...listBoxSelected, ...listState]);
+
+const getMultiSelectSelectedValues: (state: IReactVaporState, ownProps: IMultiSelectProps) => string[] = createSelector(
+    getListBoxSelected,
+    getListState,
+    multiSelectSelectedValuesCombiner,
+);
+
 export const SelectSelector = {
     getFilterText,
     getListState,
     getListBox,
     getItems,
     getMatchFilter,
-    itemsWithFilterCombiner,
-    getItemsWithFilter,
-    customItemsCombiner,
-    getCustomItems,
-    listBoxSelectedCombiner,
     getListBoxSelected,
     getListBoxActive,
     getSelectOpened,
+    getCustomItemsWithFilter,
+    getMultiSelectSelectedValues,
+};
+
+export const SelectCombiners = {
+    listBoxSelectedCombiner,
+    customItemsCombiner,
+    itemsWithFilterCombiner,
 };

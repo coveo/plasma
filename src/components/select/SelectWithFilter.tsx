@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
@@ -48,14 +49,16 @@ export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps,
 
 export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
 
-    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps => ({
-        filterValue: SelectSelector.getFilterText(state, ownProps),
-        items: [
-            ...SelectSelector.getItemsWithFilter(state, ownProps),
-            ...SelectSelector.getCustomItems(state, ownProps),
-        ],
-        selected: SelectSelector.getListBoxSelected(state, ownProps),
-    });
+    const makeMapStateToProps = () => {
+        const getStateProps = createStructuredSelector({
+            filterValue: SelectSelector.getFilterText,
+            items: SelectSelector.getCustomItemsWithFilter,
+            selected: SelectSelector.getListBoxSelected,
+        });
+
+        return (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps =>
+            getStateProps(state, ownProps);
+    };
 
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectOwnProps & ISelectSpecificProps): ISelectWithFilterDispatchProps => ({
         onRenderFilter: (items: string[]) => dispatch(addStringList(ownProps.id, items)),
@@ -63,7 +66,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
     });
 
-    @ReduxConnect(mapStateToProps, mapDispatchToProps)
+    @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
 
         static defaultProps: Partial<ISelectWithFilterProps> = {
