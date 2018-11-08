@@ -1,3 +1,4 @@
+import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {defaultMatchFilter} from '../../../utils/FilterUtils';
 import {IFilterState} from '../../filterBox/FilterBoxReducers';
@@ -122,6 +123,32 @@ describe('Select', () => {
 
                 it('should return the list of selected in the listBox', () => {
                     expect(SelectSelector.listBoxSelectedCombiner(listBox)).toEqual(list);
+                });
+            });
+
+            describe('multiSelectSelectedValuesCombiner', () => {
+                const list1 = ['a', 'b'];
+                const list2 = ['c', 'd'];
+                const list3 = ['a', 'e'];
+
+                it('should return a list with items from both list', () => {
+                    const state = {
+                        selectWithFilter: {[id]: {id, list: list1}},
+                        listBoxes: [{id, selected: list2}],
+                    };
+
+                    const resultList = [...list1, ...list2];
+                    expect(SelectSelector.getMultiSelectSelectedValues(state, {id}).length).toEqual(resultList.length);
+                });
+
+                it('should return a list with items from both list without duplicate', () => {
+                    const state = {
+                        selectWithFilter: {[id]: {id, list: list1}},
+                        listBoxes: [{id, selected: list3}],
+                    };
+
+                    const resultList = _.uniq([...list1, ...list3]);
+                    expect(SelectSelector.getMultiSelectSelectedValues(state, {id}).length).toEqual(resultList.length);
                 });
             });
         });
