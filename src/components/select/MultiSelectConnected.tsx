@@ -2,10 +2,15 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {DragDropContext, DropTarget, IDropTargetProps} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {DraggableSelectedOption, DraggableSelectedOptionType} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
+import {
+    DraggableSelectedOption,
+    DraggableSelectedOptionType,
+} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {SelectedOption} from '../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
@@ -35,9 +40,14 @@ export interface IMultiSelectDispatchProps {
 
 export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps => ({
-    selected: SelectSelector.getMultiSelectSelectedValues(state, ownProps),
-});
+const makeMapStateToProps = () => {
+    const getStateProps = createStructuredSelector({
+        selected: SelectSelector.getMultiSelectSelectedValues,
+    });
+
+    return (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps =>
+        getStateProps(state, ownProps);
+};
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
     onRemoveClick: (item: IItemBoxProps) => dispatch(unselectListBoxOption(ownProps.id, item.value)),
@@ -51,7 +61,7 @@ const parentDropTarget = {
     drop: _.noop,
 };
 
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
+@ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 @DragDropContext(HTML5Backend)
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
@@ -70,10 +80,12 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         return (
             <SelectConnected
                 id={this.props.id}
+                key={this.props.id}
                 button={(props: ISelectButtonProps) => this.getButton(props)}
                 items={this.props.items}
                 noResultItem={this.props.noResultItem}
                 selectClasses={this.props.selectClasses}
+                hasFocusableChild={this.props.hasFocusableChild}
                 multi>
                 {this.props.children}
             </SelectConnected>
@@ -141,7 +153,10 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
 
     private getButton(props: ISelectButtonProps): JSX.Element {
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
-        const buttonAttrs = !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length ? {disabled: true} : {};
+        const buttonAttrs = !this.props.noDisabled
+            && this.props.selected
+            && this.props.selected.length === this.props.items.length
+            ? {disabled: true} : {};
         return (
             <div className={classes} style={this.props.multiSelectStyle}>
                 {this.props.connectDropTarget(
@@ -153,6 +168,7 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                     </div>,
                 )}
                 <button
+
                     className='btn dropdown-toggle multiselect-add dropdown-toggle-placeholder'
                     type='button'
                     onMouseUp={props.onMouseUp}

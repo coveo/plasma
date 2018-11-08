@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';

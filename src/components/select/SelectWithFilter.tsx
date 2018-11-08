@@ -1,21 +1,20 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+
+import {IReactVaporState} from '../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
-import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
 import {Button, IButtonProps} from '../button/Button';
 import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {Svg} from '../svg/Svg';
-import {ISelectOwnProps, ISelectSpecificProps, ISelectStateProps} from './SelectConnected';
-import {
-    MatchFilter,
-    SelectSelector,
-} from './SelectSelector';
+import {ISelectOwnProps, ISelectSpecificProps} from './SelectConnected';
+import {MatchFilter, SelectSelector} from './SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];
@@ -29,9 +28,10 @@ export interface ISelectWithFilterOwnProps {
     filter?: IFilterBoxOwnProps;
 }
 
-export interface ISelectWithFilterStateProps extends ISelectStateProps {
+export interface ISelectWithFilterStateProps {
     filterValue: string;
     selected: string[];
+    items: IItemBoxProps[];
 }
 
 export interface ISelectWithFilterDispatchProps {
@@ -49,22 +49,24 @@ export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps,
 
 export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
 
-    const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps => ({
-        filterValue: SelectSelector.getFilterText(state, ownProps),
-        items: [...SelectSelector.getItemsWithFilter(state, ownProps), ...SelectSelector.getCustomItems(state, ownProps)],
-        selected: SelectSelector.getListBoxSelected(state, ownProps),
-    });
+    const makeMapStateToProps = () => {
+        const getStateProps = createStructuredSelector({
+            filterValue: SelectSelector.getFilterText,
+            items: SelectSelector.getCustomItemsWithFilter,
+            selected: SelectSelector.getListBoxSelected,
+        });
 
-    const mapDispatchToProps = (
-        dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-        ownProps: ISelectOwnProps & ISelectSpecificProps,
-    ): ISelectWithFilterDispatchProps => ({
+        return (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps =>
+            getStateProps(state, ownProps);
+    };
+
+    const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectOwnProps & ISelectSpecificProps): ISelectWithFilterDispatchProps => ({
         onRenderFilter: (items: string[]) => dispatch(addStringList(ownProps.id, items)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
         onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
     });
 
-    @ReduxConnect(mapStateToProps, mapDispatchToProps)
+    @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
 
         static defaultProps: Partial<ISelectWithFilterProps> = {
@@ -123,21 +125,20 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             };
         }
 
-        private handleOnClick() {
+        private handleOnClick = () => {
             if (!_.isEmpty(this.props.filterValue)) {
                 this.props.onSelectCustomValue(this.props.filterValue);
             }
         }
 
-        private getButton(): React.ReactNode {
-            return this.props.customValues
-                ? (<div className='ml1'>
-                    <Button classes={['p1']} onClick={() => this.handleOnClick()} {...this.props.filterButton}>
+        private getAddValueButton(): React.ReactNode {
+            return this.props.customValues && (
+                <div className='ml1'>
+                    <Button classes={['p1']} onClick={this.handleOnClick} {...this.props.filterButton}>
                         <Svg svgName={'add'} className='icon mod-lg mod-align-with-text' />
                     </Button>
                 </div>
-                )
-                : null;
+            );
         }
 
         private isDuplicateValue(): boolean {
@@ -174,10 +175,13 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                 noResultItem = this.noItems();
             }
 
-            const newProps = {..._.omit(this.props, [...SelectWithFilterPropsToOmit, 'selected']), items};
+            const newProps = {
+                ..._.omit(this.props, [...SelectWithFilterPropsToOmit, 'selected']),
+                items,
+            };
 
             return (
-                <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues}>
+                <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues} hasFocusableChild>
                     <FilterBoxConnected
                         {...this.props.filter}
                         id={this.props.id}
@@ -186,7 +190,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
                         className={filterBoxClassNames}
                         isAutoFocus
                     >
-                        {this.getButton()}
+                        {this.getAddValueButton()}
                     </FilterBoxConnected>
                     {this.props.children}
                 </Component>

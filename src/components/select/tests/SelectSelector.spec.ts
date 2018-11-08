@@ -1,12 +1,11 @@
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {defaultMatchFilter} from '../../../utils/FilterUtils';
 import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {
-    MatchFilter, SelectSelector,
-} from '../SelectSelector';
+import {MatchFilter, SelectCombiners, SelectSelector} from '../SelectSelector';
 import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {
@@ -86,16 +85,16 @@ describe('Select', () => {
                 const matchFilter: MatchFilter = () => true;
 
                 it('should return an empty array if the items is already empty', () => {
-                    expect(SelectSelector.itemsWithFilterCombiner([], filterText, matchFilter)).toEqual([]);
+                    expect(SelectCombiners.itemsWithFilterCombiner([], filterText, matchFilter)).toEqual([]);
                 });
 
                 it('should return items with hidden false if match filter return true', () => {
-                    expect(SelectSelector.itemsWithFilterCombiner(items, filterText, matchFilter)).toEqual([{value: 'a', hidden: false}]);
+                    expect(SelectCombiners.itemsWithFilterCombiner(items, filterText, matchFilter)).toEqual([{value: 'a', hidden: false}]);
                 });
 
                 it('should return items with hidden true if match filter return false', () => {
                     const matchFilterFalse: MatchFilter = () => false;
-                    expect(SelectSelector.itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([{value: 'a', hidden: true}]);
+                    expect(SelectCombiners.itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([{value: 'a', hidden: true}]);
                 });
             });
 
@@ -106,11 +105,11 @@ describe('Select', () => {
                 const itemsResult: IItemBoxProps[] = [{value: 'b', hidden: true, selected: true}];
 
                 it('should return new items list with the value in the listState if items is empty', () => {
-                    expect(SelectSelector.customItemsCombiner([], listState)).toEqual(itemsResult);
+                    expect(SelectCombiners.customItemsCombiner([], listState)).toEqual(itemsResult);
                 });
 
                 it('should return new items list from the listState value with all values in items removed', () => {
-                    expect(SelectSelector.customItemsCombiner(items, [...listState, 'a'])).toEqual(itemsResult);
+                    expect(SelectCombiners.customItemsCombiner(items, [...listState, 'a'])).toEqual(itemsResult);
                 });
             });
 
@@ -118,11 +117,11 @@ describe('Select', () => {
                 const listBox: IListBoxState = {id, selected: list};
 
                 it('should return an empty array if selected is not defined in the listBox', () => {
-                    expect(SelectSelector.listBoxSelectedCombiner({id, selected: undefined})).toEqual([]);
+                    expect(SelectCombiners.listBoxSelectedCombiner({id, selected: undefined})).toEqual([]);
                 });
 
                 it('should return the list of selected in the listBox', () => {
-                    expect(SelectSelector.listBoxSelectedCombiner(listBox)).toEqual(list);
+                    expect(SelectCombiners.listBoxSelectedCombiner(listBox)).toEqual(list);
                 });
             });
 
