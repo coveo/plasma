@@ -22,13 +22,13 @@ export interface IWithEditDispatchProps {
 }
 
 export const withEditing = (config: IWithEditing) => (Component: React.ComponentClass<any, any>): React.ComponentClass<any, any> => {
-    const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => {
-        return {isDirty: !!_.find(state.dirtyComponents, (id) => id === config.id)};
-    };
+    const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
+        isDirty: !!_.find(state.dirtyComponents, (id) => id === config.id),
+    });
 
-    const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => {
-        return {toggleDirtyComponent: (isDirty: boolean) => dispatch(toggleDirtyComponent(config.id, isDirty))};
-    };
+    const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
+        toggleDirtyComponent: (isDirty: boolean) => dispatch(toggleDirtyComponent(config.id, isDirty)),
+    });
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class ComponentWithEditing extends React.Component<any, any> {
