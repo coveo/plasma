@@ -96,7 +96,7 @@
     "coveo-styleguide": "3.6.x",
     "css-loader": "1.0.0",
     "del": "3.0.0",
-    "dnd-core": "2.5.1",
+    "dnd-core": "6.0.0",
     "dts-generator": "2.1.0",
     "enzyme": "3.6.0",
     "enzyme-adapter-react-16": "1.5.0",
