@@ -42,14 +42,11 @@ export const withEditing = (config: IWithEditing) => (Component: React.Component
                     <Component {..._.omit(this.props, 'isDirty', 'footerChildren')}>
                         {this.props.children}
                     </Component>
-                    {config.footerChildren
-                        ? (
-                            <StickyFooter classes={{[styles.stickyFooterOpened]: this.props.isDirty}}>
-                                {config.footerChildren}
-                            </StickyFooter>
-                        )
-                        : null
-                    }
+                    {config.footerChildren && (
+                        <StickyFooter classes={{[styles.stickyFooterOpened]: this.props.isDirty}}>
+                            {config.footerChildren}
+                        </StickyFooter>
+                    )}
                 </div>
             );
         }

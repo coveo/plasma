@@ -42,7 +42,7 @@ import {ITableRowState} from './components/tables/TableRowReducers';
 import {ITextAreaState} from './components/textarea/TextAreaReducers';
 import {IToastsState} from './components/toast/ToastReducers';
 import {IStringListCompositeState} from './reusableState/customList/StringListReducers';
-import {ComponentID} from './utils/ComponentUtils';
+import {ComponentId} from './utils/ComponentUtils';
 
 export interface IReactVaporState {
     autocompletes?: IAutocompleteState[];
@@ -84,7 +84,7 @@ export interface IReactVaporState {
     stringList?: IStringListCompositeState;
     selectWithFilter?: ISelectWithFilterCompositeState;
     lastAction?: Redux.Action;
-    dirtyComponents?: ComponentID[];
+    dirtyComponents?: ComponentId[];
 }
 
 export interface IReduxActionsPayload {

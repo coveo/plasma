@@ -150,8 +150,10 @@ class Header extends React.Component<{}, HeaderState> {
                         document.dispatchEvent(new Event(SideNavigation.toggleEvent));
                     }}
                 >
-                    {!this.state.sideNavOpened && <Svg svgName='hamburger' svgClass='icon mod-lg ml2 fill-pure-white' />}
-                    {this.state.sideNavOpened && <Svg svgName='arrow-left' svgClass='icon mod-lg ml2 fill-pure-white' />}
+                    <Svg
+                        svgName={this.state.sideNavOpened ? 'arrow-left' : 'hamburger'}
+                        svgClass='icon mod-lg ml2 fill-pure-white'
+                    />
                 </div>
                 <div className='h1 p2'>React Vapor</div>
             </div>

@@ -34,22 +34,21 @@ export class StickyFooter extends React.Component<IStickyFooterProps, IStickyFoo
 
     render() {
         return (
-            <div
-                id={StickyFooter.ID}
-                className={
-                    classNames(
-                        styles.stickyFooter,
-                        {[styles.stickyFooterWithSideNavClass]: !!this.state.withSideNav},
-                        this.props.classes,
-                    )
-                }
-            >
+            <div id={StickyFooter.ID} className={this.getClasses()}>
                 {this.props.children}
             </div>
         );
     }
 
-    setFooterState() {
+    private setFooterState() {
         this.setState({withSideNav: !this.state.withSideNav});
+    }
+
+    private getClasses(): string {
+        return classNames(
+            styles.stickyFooter,
+            {[styles.stickyFooterWithSideNavClass]: !!this.state.withSideNav},
+            this.props.classes,
+        );
     }
 }

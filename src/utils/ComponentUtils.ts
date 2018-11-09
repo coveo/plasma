@@ -1,6 +1,6 @@
 import {ILinkSvgProps} from '../components/svg/LinkSvg';
 
-export type ComponentID = string;
+export type ComponentId = string;
 
 /**
  * DisplayClass is a reflection of the atomic display classes available in Vapor
