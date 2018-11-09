@@ -23,7 +23,7 @@ export interface IWithEditDispatchProps {
 
 export const withEditing = (config: IWithEditing) => (Component: React.ComponentClass<any, any>): React.ComponentClass<any, any> => {
     const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
-        isDirty: !!_.find(state.dirtyComponents, (id) => id === config.id),
+        isDirty: !!_.contains(state.dirtyComponents, config.id),
     });
 
     const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
