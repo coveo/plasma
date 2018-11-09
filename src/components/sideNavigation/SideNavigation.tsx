@@ -9,11 +9,18 @@ export interface ISideNavProps extends IReduxStatePossibleProps {
     opened?: boolean;
 }
 
-export const SideNavigation = (props: ISideNavProps) =>
-    <nav className={classNames(props.className, 'navigation', {'navigation-opened': props.withReduxState ? props.opened : true})}>
-        <div className='navigation-menu'>
-            <div className='navigation-menu-sections'>
-                {props.children}
-            </div>
-        </div>
-    </nav>;
+export class SideNavigation extends React.Component<ISideNavProps> {
+    static toggleEvent = 'side-navigation-toggle';
+
+    render() {
+        return (
+            <nav className={classNames(this.props.className, 'navigation', {'navigation-opened': this.props.withReduxState ? this.props.opened : true})}>
+                <div className='navigation-menu'>
+                    <div className='navigation-menu-sections'>
+                        {this.props.children}
+                    </div>
+                </div>
+            </nav>
+        );
+    }
+}

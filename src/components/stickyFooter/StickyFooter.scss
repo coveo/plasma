@@ -1,0 +1,45 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+$stickyFooterHeight: 58px;
+
+:export { stickyFooterHeight: $stickyFooterHeight; }
+
+.stickyFooter {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    justify-content: flex-end;
+  
+    display: flex;
+    overflow: hidden;
+  
+    box-shadow: 0 -1px 5px 0 rgba(0,0,0,0.3);
+    background-color: $white;
+    border-radius: 0 0 $border-radius $border-radius;
+    padding: $modal-footer-small-padding;
+
+
+    margin-bottom: -$navigation-width;
+
+    transform: translate3d(0, 0, 0);
+
+    transition: margin-bottom $navigation-toggle-duration ease-in-out, width $navigation-toggle-duration ease-in-out;
+    will-change: transform;
+}
+
+.stickyFooterOpened {
+  margin-bottom: 0;
+}
+
+.stickyFooterPadding {
+  padding-bottom: $stickyFooterHeight; 
+}
+
+$stickyFooterWithSideNavClass: sticky-footer-with-side-nav;
+:global(.#{$stickyFooterWithSideNavClass}) {
+  width: calc(100% - #{$navigation-width});
+}
+:export { stickyFooterWithSideNavClass: $stickyFooterWithSideNavClass }
