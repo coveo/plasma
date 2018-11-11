@@ -6,6 +6,7 @@ import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {toggleDirtyComponent} from './withEditingActions';
+import {getIsDirty} from './withEditingReducers';
 
 export interface IWithEditing {
     id: string;
@@ -23,7 +24,7 @@ export interface IWithEditDispatchProps {
 
 export const withEditing = (config: IWithEditing) => (Component: React.ComponentClass<any, any>): React.ComponentClass<any, any> => {
     const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
-        isDirty: !!_.contains(state.dirtyComponents, config.id),
+        isDirty: getIsDirty(state, config.id),
     });
 
     const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
