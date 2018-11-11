@@ -19,8 +19,6 @@ export class StickyFooter extends React.Component<IStickyFooterProps, IStickyFoo
     constructor(props: IStickyFooterProps, state: IStickyFooterProps) {
         super(props, state);
         this.state = {};
-
-        this.setFooterState = this.setFooterState.bind(this);
     }
 
     componentDidMount() {
@@ -40,15 +38,11 @@ export class StickyFooter extends React.Component<IStickyFooterProps, IStickyFoo
         );
     }
 
-    private setFooterState() {
-        this.setState({withSideNav: !this.state.withSideNav});
-    }
+    private setFooterState = () => this.setState({withSideNav: !this.state.withSideNav});
 
-    private getClasses(): string {
-        return classNames(
-            styles.stickyFooter,
-            {[styles.stickyFooterWithSideNavClass]: !!this.state.withSideNav},
-            this.props.classes,
-        );
-    }
+    private getClasses = () => classNames(
+        styles.stickyFooter,
+        {[styles.stickyFooterWithSideNavClass]: !!this.state.withSideNav},
+        this.props.classes,
+    )
 }
