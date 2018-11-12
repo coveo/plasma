@@ -17,16 +17,10 @@ describe('StickyFooter', () => {
     });
 
     describe('with side nav', () => {
-        let component: any;
-
-        afterEach(() => {
-            component && component.unmount();
-        });
-
         it('should render with state withSideNav to true if .navigation-wrapper-opened is in the dom', () => {
             document.querySelector('.navigation-wrapper').classList.add('navigation-wrapper-opened');
 
-            component = shallow(<StickyFooter />);
+            const component = shallow(<StickyFooter />);
 
             expect(component.state('withSideNav')).toBe(true);
         });
@@ -40,13 +34,15 @@ describe('StickyFooter', () => {
         it('should render with state withSideNav to false if .navigation-wrapper-opened is in the dom', () => {
             document.querySelector('.navigation-wrapper').classList.remove('navigation-wrapper-opened');
 
-            component = shallow(<StickyFooter />);
+            const component = shallow(<StickyFooter />);
 
             expect(component.state('withSideNav')).toBe(false);
         });
 
         it('should toggle withSideNav on toggle side nav event', () => {
-            component = mount(<StickyFooter />);
+            document.querySelector('.navigation-wrapper').classList.add('navigation-wrapper-opened');
+
+            const component = mount(<StickyFooter />);
 
             expect(component.state('withSideNav')).toBe(true);
 
