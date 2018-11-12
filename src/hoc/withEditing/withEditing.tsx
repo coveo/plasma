@@ -21,7 +21,9 @@ export interface IWithEditDispatchProps {
     toggleDirtyComponent: (isDirty: boolean) => void;
 }
 
-export const withEditing = (config: IWithEditing) => (Component: React.ComponentClass<any, any>): React.ComponentClass<any, any> => {
+export interface IWithEditingProps extends IWithEditStateProps, IWithEditDispatchProps {}
+
+export const withEditing = (config: IWithEditing) => (Component: React.ComponentClass): React.ComponentClass => {
     const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
         isDirty: !!_.contains(state.dirtyComponents, config.id),
     });
@@ -31,7 +33,7 @@ export const withEditing = (config: IWithEditing) => (Component: React.Component
     });
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
-    class ComponentWithEditing extends React.Component<any, any> {
+    class ComponentWithEditing extends React.Component<IWithEditingProps> {
         componentDidMount() {
             callIfDefined(this.props.toggleDirtyComponent, config.isDirty);
         }
