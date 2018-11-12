@@ -3,15 +3,42 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
-import {TableRowConnected} from '../TableRowConnected';
 import {tableWithBlankslate} from '../TableWithBlankslate';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
+import {tableWithPredicate} from '../TableWithPredicate';
 import {tableWithSort} from '../TableWithSort';
 import {IExampleRowData} from './TableHOCServerExampleReducer';
 
 const TableWithFilter = _.compose(
     tableWithFilter(),
+)(TableHOC);
+
+const TableWithPredicate = _.compose(
+    tableWithPredicate({
+        id: 'city',
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'Marcoside', value: 'Marcoside'},
+        ],
+    }),
+)(TableHOC);
+
+const TableWithTwoPredicate = _.compose(
+    tableWithPredicate({
+        id: 'city',
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'Marcoside', value: 'Marcoside'},
+        ],
+    }),
+    tableWithPredicate({
+        id: 'username',
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'Hubert', value: 'Hubert93'},
+        ],
+    }),
 )(TableHOC);
 
 const TableWithUsernameFilter = _.compose(
@@ -55,11 +82,11 @@ export class TableHOCExamples extends React.Component {
             };
         });
         const generateRow = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
-            <TableRowConnected key={data.username}>
+            <tr key={data.username}>
                 <td key='city'>{data.city}</td>
                 <td key='email'>{data.email.toLowerCase()}</td>
                 <td key='username'>{data.username.toLowerCase()}</td>
-            </TableRowConnected>
+            </tr>
         ));
         return (
             <div className='mt2'>
@@ -82,6 +109,30 @@ export class TableHOCExamples extends React.Component {
                     </label>
                     <TableWithFilter
                         id='with-filter'
+                        className='table'
+                        data={generateData(3)}
+                        renderData={generateRow}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with predicate (no blankslate)
+                    </label>
+                    <TableWithPredicate
+                        id='with-predicate'
+                        className='table'
+                        data={generateData(3)}
+                        renderData={generateRow}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with two predicate (no blankslate)
+                    </label>
+                    <TableWithTwoPredicate
+                        id='with-two-predicate'
                         className='table'
                         data={generateData(3)}
                         renderData={generateRow}

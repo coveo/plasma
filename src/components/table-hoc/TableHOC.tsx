@@ -9,11 +9,13 @@ export interface IMaybeServerConfig {
 
 export interface ITableHOCOwnProps {
     id: string;
+    isLoading?: boolean;
     data: any[];
     renderData: (data: any[]) => React.ReactNode;
     actions?: React.ReactNode[];
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
+    containerClassName?: string;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
@@ -21,13 +23,14 @@ export interface ITableHOCProps extends ITableHOCOwnProps {}
 @ReduxConnect()
 export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> {
     static defaultProps: Partial<ITableHOCOwnProps> = {
+        isLoading: false,
         actions: [],
         onUpdate: () => undefined,
     };
 
     render() {
         return (
-            <div className='table-container'>
+            <div className={classNames('table-container', this.props.containerClassName, {'loading-component': this.props.isLoading})}>
                 {this.renderActions()}
                 <table className={classNames(this.props.className)}>
                     {this.props.tableHeader}
@@ -41,7 +44,11 @@ export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttribu
     private renderActions() {
         if (this.props.actions.length) {
             return (
-                <ActionBarConnected>
+                <ActionBarConnected
+                    id={this.props.id}
+                    removeDefaultContainerClasses
+                    extraContainerClasses={['coveo-table-actions-container', 'mod-cancel-header-padding', 'mod-align-header']}
+                >
                     {this.props.actions}
                 </ActionBarConnected>
             );

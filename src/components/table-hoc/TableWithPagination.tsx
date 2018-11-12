@@ -99,13 +99,13 @@ export const tableWithPagination = (config: ITableWithPaginationConfig & Partial
             const newProps = _.omit(this.props, [...TableWithPaginationPropsToOmit]);
             return (
                 <Component {...newProps}>
-                    {this.props.children}
                     <NavigationConnected
                         id={this.props.id}
                         {..._.pick(this.props, TableWithPaginationPropsToOmit)}
                         {..._.omit(config, [...TableWithPaginationConfigToOmit])}
                         loadingIds={[this.props.id]}
                     />
+                    {this.props.children}
                 </Component>
             );
         }
