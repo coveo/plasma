@@ -26,12 +26,6 @@ import * as s from 'underscore.string';
     (window as any).MouseEvent = MouseEvent;
 })(window);
 
-beforeAll(() => {
-    if (!$('.navigation-wrapper').length) {
-        $('body').append('<div class="navigation-wrapper navigation-wrapper-opened"></div>');
-    }
-});
-
 beforeEach(() => {
     if (!$('#App').length) {
         $('body').append('<div id="App" class="coveo-styleguide"></div>');
@@ -39,7 +33,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    $('body > div:not(.jasmine_html-reporter, .navigation-wrapper)').remove();
+    $('body > div:not(.jasmine_html-reporter)').remove();
 });
 
 Enzyme.configure({adapter: new Adapter()});

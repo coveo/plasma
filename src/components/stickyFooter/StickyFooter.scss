@@ -15,7 +15,7 @@
     border-radius: 0 0 $border-radius $border-radius;
     padding: $modal-footer-small-padding;
 
-    transform: translate3d(0, 100px, 0);
+    transform: translate3d(0, 100%, 0);
     transition: transform $navigation-toggle-duration ease-in-out, width $navigation-toggle-duration ease-in-out;
     will-change: transform;
 }

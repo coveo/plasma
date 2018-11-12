@@ -4,9 +4,9 @@ import * as _ from 'underscore';
 import {StickyFooter} from '../../components/stickyFooter/StickyFooter';
 import * as styles from '../../components/stickyFooter/StickyFooter.scss';
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {toggleDirtyComponent} from './withEditingActions';
+import {getIsDirty} from './withEditingReducers';
 
 export interface IWithEditing {
     id: string;
@@ -27,7 +27,7 @@ export interface IWithEditingProps extends IWithEditStateProps, IWithEditDispatc
 
 export const withEditing = (config: IWithEditing) => (Component: React.ComponentClass): React.ComponentClass => {
     const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
-        isDirty: !!_.contains(state.dirtyComponents, config.id),
+        isDirty: getIsDirty(state, config.id),
     });
 
     const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
@@ -37,11 +37,11 @@ export const withEditing = (config: IWithEditing) => (Component: React.Component
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class ComponentWithEditing extends React.Component<IWithEditingProps> {
         componentDidMount() {
-            callIfDefined(this.props.toggleDirtyComponent, config.isDirty);
+            this.props.toggleDirtyComponent(config.isDirty);
         }
 
         componentWillUnmount() {
-            callIfDefined(this.props.toggleDirtyComponent, false);
+            this.props.toggleDirtyComponent(false);
         }
 
         render() {
