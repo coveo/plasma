@@ -32,5 +32,5 @@ class ComponentWithEditingExample extends React.Component {
 }
 
 export const ComponentWithEditingExampleHOC = withEditing(
-    {id: ComponentWithEditingExample.ID, footerChildren: ComponentWithEditingExample.footerChildren},
+    {id: ComponentWithEditingExample.ID, footerChildren: ComponentWithEditingExample.footerChildren, footerClassName: 'sticky-footer-mod-header'},
 )(ComponentWithEditingExample);

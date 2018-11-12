@@ -146,9 +146,7 @@ class Header extends React.Component<{}, HeaderState> {
             <div className='flex flex-colum flex-center'>
                 <div
                     className='cursor-pointer'
-                    onClick={() => {
-                        document.dispatchEvent(new Event(SideNavigation.toggleEvent));
-                    }}
+                    onClick={() => document.dispatchEvent(new Event(SideNavigation.toggleEvent))}
                 >
                     <Svg
                         svgName={this.state.sideNavOpened ? 'arrow-left' : 'hamburger'}
@@ -296,7 +294,7 @@ class App extends React.Component<{}, AppState> {
                             onClickItem={this.activateItem}
                         />
                     </div>
-                    <div className='flex-auto my2 px2 overflow-auto'>
+                    <div className='flex-auto mod-header-padding mt2 overflow-auto'>
                         {
                             this.state.activeComponentId
                             && React.createElement(this.getSelectedComponent(this.state.activeComponentId))

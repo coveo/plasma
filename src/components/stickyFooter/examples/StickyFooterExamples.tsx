@@ -20,8 +20,8 @@ export class StickyFooterExamples extends React.Component<{}, {isOpened: boolean
         return (
             <div className='mt2'>
                 <Button name='toggle footer' onClick={() => this.setState({isOpened: !this.state.isOpened})} />
-                <div className='mt2' style={{paddingBottom: '58px'}}>{lorem}</div>
-                <StickyFooter classes={classNames({[styles.stickyFooterOpened]: this.state.isOpened})}>
+                <div className='mt2'>{lorem}</div>
+                <StickyFooter className={classNames('sticky-footer-mod-header', {[styles.stickyFooterOpened]: this.state.isOpened})}>
                     <Button primary name='Save' />
                 </StickyFooter>
             </div>

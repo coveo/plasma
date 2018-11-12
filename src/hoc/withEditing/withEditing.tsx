@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {StickyFooter} from '../../components/stickyFooter/StickyFooter';
@@ -10,6 +11,7 @@ import {toggleDirtyComponent} from './withEditingActions';
 export interface IWithEditing {
     id: string;
     isDirty?: boolean;
+    footerClassName?: string;
     footerChildren?: React.ReactNode;
 }
 
@@ -44,12 +46,12 @@ export const withEditing = (config: IWithEditing) => (Component: React.Component
 
         render() {
             return (
-                <div className={styles.stickyFooterPadding}>
-                    <Component {..._.omit(this.props, 'isDirty', 'footerChildren')}>
+                <div>
+                    <Component {...this.props}>
                         {this.props.children}
                     </Component>
                     {config.footerChildren && (
-                        <StickyFooter classes={{[styles.stickyFooterOpened]: this.props.isDirty}}>
+                        <StickyFooter className={classNames({[styles.stickyFooterOpened]: this.props.isDirty}, config.footerClassName)}>
                             {config.footerChildren}
                         </StickyFooter>
                     )}
