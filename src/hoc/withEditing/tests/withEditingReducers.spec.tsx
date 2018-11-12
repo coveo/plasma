@@ -12,7 +12,7 @@ describe('withEditing', () => {
         };
 
         it('should return the default state if the action is not defined and the state is undefined', () => {
-            const oldState = undefined;
+            const oldState: ComponentId[] = undefined;
 
             expect(withEditingReducer(oldState, genericAction)).toEqual(dirtyComponentsInitialState);
         });
@@ -27,15 +27,15 @@ describe('withEditing', () => {
             const payload: [ComponentId, boolean] = ['someId', true];
 
             it('should return the oldState with the id passed in the payload', () => {
-                const oldState = [];
-                const expectedState = [payload[0]];
+                const oldState: ComponentId[] = [];
+                const expectedState: ComponentId[] = [payload[0]];
 
                 expect(withEditingReducer(oldState, toggleDirtyComponent(payload[0], payload[1]))).toEqual(expectedState);
             });
 
             it('should return the oldState if the id is already in the state', () => {
-                const oldState = [payload[0]];
-                const expectedState = [payload[0]];
+                const oldState: ComponentId[] = [payload[0]];
+                const expectedState: ComponentId[] = [payload[0]];
 
                 expect(withEditingReducer(oldState, toggleDirtyComponent(payload[0], payload[1]))).toEqual(expectedState);
             });
@@ -45,15 +45,15 @@ describe('withEditing', () => {
             const payload: [ComponentId, boolean] = ['someId', false];
 
             it('should return the oldState without the id passed in the payload', () => {
-                const oldState = [payload[0]];
-                const expectedState = [];
+                const oldState: ComponentId[] = [payload[0]];
+                const expectedState: ComponentId[] = [];
 
                 expect(withEditingReducer(oldState, toggleDirtyComponent(payload[0], payload[1]))).toEqual(expectedState);
             });
 
             it('should return the oldState if the id passed in the payload is not in the state', () => {
-                const oldState = [];
-                const expectedState = [];
+                const oldState: ComponentId[] = [];
+                const expectedState: ComponentId[] = [];
 
                 expect(withEditingReducer(oldState, toggleDirtyComponent(payload[0], payload[1]))).toEqual(expectedState);
             });
