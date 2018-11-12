@@ -6,6 +6,7 @@ import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
+import {SelectSelector} from '../select/SelectSelector';
 import {SingleSelectConnected} from '../select/SingleSelectConnected';
 import * as styles from './styles/TableWithPredicates.scss';
 import {ITableHOCOwnProps} from './TableHOC';
@@ -35,13 +36,14 @@ type TableWithPredicateComponent = React.ComponentClass<ITableWithPredicateProps
 export const tableWithPredicate = (config: ITableWithPredicateConfig) => (Component: TableWithPredicateComponent): TableWithPredicateComponent => {
 
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithPredicateProps): ITableWithPredicateStateProps | ITableHOCOwnProps => {
-        const listbox = _.findWhere(state.listBoxes, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)});
+        const listbox = SelectSelector.getListBox(state, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)});
+        const predicate = SelectSelector.getListBoxSelected(state, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)})[0];
         const matchPredicate = config.matchPredicate || defaultMatchPredicate;
         const predicateData = () => !config.isServer && listbox && listbox.selected.length
             ? _.filter(ownProps.data, (datum: any) => matchPredicate(listbox.selected[0], datum))
             : ownProps.data;
         return {
-            predicate: listbox && listbox.selected.length && listbox.selected[0],
+            predicate: predicate,
             data: ownProps.data && predicateData(),
         };
     };

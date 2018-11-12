@@ -15,6 +15,7 @@ export interface ITableHOCOwnProps {
     actions?: React.ReactNode[];
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
+    containerClassName?: string;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
@@ -29,7 +30,7 @@ export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttribu
 
     render() {
         return (
-            <div className={classNames('table-container', {'loading-component': this.props.isLoading})}>
+            <div className={classNames('table-container', this.props.containerClassName, {'loading-component': this.props.isLoading})}>
                 {this.renderActions()}
                 <table className={classNames(this.props.className)}>
                     {this.props.tableHeader}
@@ -43,9 +44,11 @@ export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttribu
     private renderActions() {
         if (this.props.actions.length) {
             return (
-                <ActionBarConnected id={this.props.id} removeDefaultContainerClasses extraContainerClasses={['coveo-table-actions-container',
-                    'mod-cancel-header-padding',
-                    'mod-align-header']}>
+                <ActionBarConnected
+                    id={this.props.id}
+                    removeDefaultContainerClasses
+                    extraContainerClasses={['coveo-table-actions-container', 'mod-cancel-header-padding', 'mod-align-header']}
+                >
                     {this.props.actions}
                 </ActionBarConnected>
             );

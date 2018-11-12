@@ -27,23 +27,17 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
             };
         case PaginationActions.changePage:
         case PaginationActions.reset:
-            if (state.id !== action.payload.id) {
-                return state;
-            }
-            return {
-                id: state.id,
-                pageNb: action.payload.pageNb,
-            };
+            return state.id === action.payload.id
+                ? {id: state.id, pageNb: action.payload.pageNb}
+                : state;
         case TableActions.modifyState:
-            if (s.contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
-                return {...state, pageNb: 0};
-            }
-            return state;
+            return s.contains(state.id, action.payload.id) && action.payload.shouldResetPage
+                ? {...state, pageNb: 0}
+                : state;
         case FilterActions.filterThrough:
-            if (s.contains(state.id, action.payload.id)) {
-                return {...state, pageNb: 0};
-            }
-            return state;
+            return s.contains(state.id, action.payload.id)
+                ? {...state, pageNb: 0}
+                : state;
         default:
             return state;
     }

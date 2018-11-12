@@ -23,13 +23,12 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
     const paginationState = _.findWhere(state.paginationComposite, {id: getPaginationId(id)});
     const perPageState = _.findWhere(state.perPageComposite, {id});
     const filter: IFilterState = _.findWhere(state.filters, {id});
-    const predicates = _.chain(state.listBoxes)
-        .filter((list: IListBoxState) => new RegExp(`^${id}(.+)`).test(list.id))
-        .filter((list: IListBoxState) => list.selected && list.selected[0] !== '')
-        .map((list: IListBoxState) => ({id: list.id.replace(id, ''), value: list.selected[0]}))
-        .value();
+    const predicates = getTablePredicates(id, state);
 
     return {
+        // predicates
+        predicates,
+
         // sort
         sortKey: tableSort && tableSort.id,
         sortAscending: tableSort && tableSort.isAsc,
@@ -40,14 +39,23 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
 
         // filter
         filter: filter && filter.filterText,
-
-        // predicates
-        predicates: predicates,
     };
 };
 
 const getPredicateId = (tableId: string, componentId: string) => tableId + componentId;
+
 const getPaginationId = (tableId: string) => `pagination-${tableId}`;
+
+const getTablePredicates = (tableId: string, state: IReactVaporState): ITableHOCPredicateValue[] => {
+    return _.chain(state.listBoxes)
+        .filter((list: IListBoxState) => {
+            const startWithIdRegexp = new RegExp(`^${tableId}(.+)`);
+            return startWithIdRegexp.test(list.id);
+        })
+        .filter((list: IListBoxState) => list.selected && list.selected[0] !== '')
+        .map((list: IListBoxState) => ({id: list.id.replace(tableId, ''), value: list.selected[0]}))
+        .value();
+};
 
 export const TableHOCUtils = {
     getCompositeState,
