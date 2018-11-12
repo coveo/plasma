@@ -19,7 +19,7 @@
     "buildpages": "bundle exec jekyll build",
     "start": "concurrently \"npm run build && bundle exec jekyll server\" \"gulp watch\"",
     "lint": "csscomb -l scss/**/*.scss",
-    "version": "gulp clean && npm run compile",
+    "version": "gulp clean && npm run build",
     "reconstruct": "gulp clean --all && npm install && gulp",
     "lintfix": "node node_modules/tsjs --all --exclude tmp/**/*.js docs/**/*.js lib/**/*.js resources/**/*.js"
   },
