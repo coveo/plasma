@@ -22,9 +22,9 @@ const TableWithSortPropsToOmit = keys<ITableWithSortStateProps>();
 
 const defaultSort = () => 0;
 
-type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps>;
+export type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps & ITableWithSortProps>;
 
-export const tableWithSort = (config: ITableWithSortConfig) => (Component: SortableTableComponent) => {
+export const tableWithSort = (config: ITableWithSortConfig) => (Component: SortableTableComponent): SortableTableComponent => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithSortStateProps | ITableHOCOwnProps => {
         const tableSort: ITableWithSortState = _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === ownProps.id && _.isBoolean(v.isAsc));
         const sort = config.sort || defaultSort;
