@@ -10,6 +10,7 @@ const _ = require('underscore');
 const s = require('underscore.string');
 const gfi = require('gulp-file-insert');
 const del = require('del');
+const sortJSON = require('gulp-json-sort').default;
 
 function Dictionary(from) {
     this.json = JSON.parse(fs.readFileSync(from));
@@ -71,6 +72,7 @@ gulp.task('svg:concat', 'Concat all svg files into one in a json format and expo
         }))
         .pipe(filesToJson('CoveoStyleGuideSvg.json'))
         .pipe(gulp.dest('dist/svg'))
+        .pipe(sortJSON())
         .pipe(rename('icons.json'))
         .pipe(gulp.dest('docs/_data/'));
 });

@@ -36,3 +36,6 @@ Thumbs.db
 
 # package-lock
 package-lock.json*
+
+# ruby / bundle
+.bundle
