@@ -36,8 +36,10 @@ $child-arrow-height: 10px;
   &.vertical {
     margin-left: $child-arrow-height + $child-parent-spacing;
 
+    border-top-left-radius: $border-radius;
+
     &:before {
-      top: 0;
+      top: calc(50% - #{$child-arrow-height});
       left: -$child-arrow-height - ($child-arrow-width / 2);
 
       border-top: $child-arrow-width / 2 solid transparent;
