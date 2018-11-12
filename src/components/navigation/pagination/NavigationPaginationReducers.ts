@@ -1,7 +1,8 @@
 import * as _ from 'underscore';
-import {contains} from 'underscore.string';
+import * as s from 'underscore.string';
 import {IReduxActionsPayload} from '../../../ReactVapor';
 import {IReduxAction} from '../../../utils/ReduxUtils';
+import {FilterActions} from '../../filterBox/FilterBoxActions';
 import {TableActions} from '../../tables/TableActions';
 import {PaginationActions} from './NavigationPaginationActions';
 
@@ -34,9 +35,15 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
                 pageNb: action.payload.pageNb,
             };
         case TableActions.modifyState:
-            if (contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
+            if (s.contains(state.id, action.payload.id) && action.payload.shouldResetPage) {
                 return {...state, pageNb: 0};
             }
+            return state;
+        case FilterActions.filterThrough:
+            if (s.contains(state.id, action.payload.id)) {
+                return {...state, pageNb: 0};
+            }
+            return state;
         default:
             return state;
     }
@@ -55,6 +62,7 @@ export const paginationCompositeReducer = (state: IPaginationState[] = paginatio
             });
         case PaginationActions.changePage:
         case PaginationActions.reset:
+        case FilterActions.filterThrough:
         case TableActions.modifyState:
             return state.map((pagination: IPaginationState) => paginationReducer(pagination, action));
         default:

@@ -6,9 +6,9 @@ import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
-import {ITableHOCOwnProps} from './TableHOC';
+import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
 
-export interface ITableWithFilterConfig {
+export interface ITableWithFilterConfig extends IMaybeServerConfig {
     matchFilter?: (filterValue: string, datum: any) => boolean;
 }
 
@@ -40,7 +40,7 @@ export const tableWithFilter = (config: ITableWithFilterConfig = {}) => (Compone
 
         return {
             filter: filter && filter.filterText,
-            data: ownProps.data && filterData(),
+            data: config.isServer ? ownProps.data : ownProps.data && filterData(),
         };
     };
 

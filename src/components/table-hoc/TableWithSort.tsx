@@ -5,10 +5,10 @@ import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
-import {ITableHOCOwnProps} from './TableHOC';
+import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
 
-export interface ITableWithSortConfig {
-    sort: (sortKey: string, isAsc: boolean, a: any, b: any) => number;
+export interface ITableWithSortConfig extends IMaybeServerConfig {
+    sort?: (sortKey: string, isAsc: boolean, a: any, b: any) => number;
 }
 
 export interface ITableWithSortStateProps {
@@ -20,14 +20,17 @@ export interface ITableWithSortProps extends Partial<ITableWithSortStateProps> {
 
 const TableWithSortPropsToOmit = keys<ITableWithSortStateProps>();
 
+const defaultSort = () => 0;
+
 type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps>;
 
 export const tableWithSort = (config: ITableWithSortConfig) => (Component: SortableTableComponent) => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithSortStateProps | ITableHOCOwnProps => {
         const tableSort: ITableWithSortState = _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === ownProps.id && _.isBoolean(v.isAsc));
+        const sort = config.sort || defaultSort;
         if (tableSort && ownProps.data) {
             return {
-                data: [...ownProps.data].sort((a, b) => config.sort(tableSort.id, tableSort.isAsc, a, b)),
+                data: config.isServer ? ownProps.data : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
                 sortKey: tableSort && tableSort.id,
                 isAsc: tableSort && tableSort.isAsc,
             };

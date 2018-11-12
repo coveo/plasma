@@ -3,6 +3,10 @@ import * as React from 'react';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ActionBarConnected} from '../actions/ActionBarConnected';
 
+export interface IMaybeServerConfig {
+    isServer?: boolean;
+}
+
 export interface ITableHOCOwnProps {
     id: string;
     data: any[];

@@ -93,6 +93,7 @@ import {SvgExamples} from '../src/components/svg/examples/SvgExamples';
 import {SyncFeedbackExample} from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import {TabsExamples} from '../src/components/tab/examples/TabConnectedExample';
 import {TableHOCExamples} from '../src/components/table-hoc/examples/TableHOCExamples';
+import {TableHOCServerExamples} from '../src/components/table-hoc/examples/TableHOCServerExamples';
 import {TableWithDisabledRowsExamples} from '../src/components/tables/examples/TableDisabledRowsExamples';
 import {TableEmptyRowExamples} from '../src/components/tables/examples/TableEmptyRowExamples';
 import {TableExamples} from '../src/components/tables/examples/TableExamples';
@@ -215,6 +216,7 @@ class App extends React.Component<{}, AppState> {
         {component: ActionableItemExamples, componentName: 'ActionableItem'},
         {component: PopoverConnectedExamples, componentName: 'Popover'},
         {component: TableHOCExamples, componentName: 'Table (hoc)'},
+        {component: TableHOCServerExamples, componentName: 'Table (server + hoc)'},
         {component: ColorExamples, componentName: 'Color'},
     ];
 
