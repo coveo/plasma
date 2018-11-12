@@ -18,7 +18,7 @@ export class StickyFooter extends React.Component<IStickyFooterProps, IStickyFoo
 
     constructor(props: IStickyFooterProps, state: IStickyFooterProps) {
         super(props, state);
-        this.state = {};
+        this.state = {} as IStickyFooterState;
     }
 
     componentDidMount() {
