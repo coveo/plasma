@@ -1,6 +1,6 @@
 import {ComponentId} from '../../../utils/ComponentUtils';
 import {toggleDirtyComponent} from '../withEditingActions';
-import {withEditingReducer, dirtyComponentsInitialState} from '../withEditingReducers';
+import {dirtyComponentsInitialState, getIsDirty, withEditingReducer} from '../withEditingReducers';
 
 describe('withEditing', () => {
     describe('withEditingReducers', () => {
@@ -56,6 +56,18 @@ describe('withEditing', () => {
                 const expectedState: ComponentId[] = [];
 
                 expect(withEditingReducer(oldState, toggleDirtyComponent(payload[0], payload[1]))).toEqual(expectedState);
+            });
+        });
+
+        describe('getIsDirty selector', () => {
+            const componentId = 'componentId';
+
+            it('should return true if the component id is in the state', () => {
+                expect(getIsDirty({dirtyComponents: [componentId]}, componentId)).toBe(true);
+            });
+
+            it('should return false if the component id is not in the state', () => {
+                expect(getIsDirty({dirtyComponents: []}, componentId)).toBe(false);
             });
         });
     });

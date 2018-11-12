@@ -32,6 +32,10 @@ export const withEditing = (config: IWithEditing) => (Component: React.Component
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class ComponentWithEditing extends React.Component<any, any> {
+        componentDidMount() {
+            callIfDefined(this.props.toggleDirtyComponent, config.isDirty);
+        }
+
         componentWillUnmount() {
             callIfDefined(this.props.toggleDirtyComponent, false);
         }

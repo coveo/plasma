@@ -1,7 +1,7 @@
 import {mount, shallow} from 'enzyme';
 import * as React from 'react';
-import {StickyFooter} from '../StickyFooter';
 import {SideNavigation} from '../../sideNavigation/SideNavigation';
+import {StickyFooter} from '../StickyFooter';
 import * as styles from '../StickyFooter.scss';
 
 describe('StickyFooter', () => {
