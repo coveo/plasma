@@ -6,7 +6,7 @@ node_js:
   - '8.9'
 
 before_install:
-  - rvm install 2.2.2 && rvm use 2.2.2
+  - rvm install 2.5.3 && rvm use 2.5.3
 
 install:
   - bundle install
@@ -20,7 +20,7 @@ cache:
 
 script:
  - npm run-script lint
- - npm run-script compile
+ - npm run-script build
  - npm run-script buildpages
 
 notifications:

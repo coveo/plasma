@@ -14,11 +14,10 @@
   "license": "MIT",
   "main": "dist/js/VaporSVG",
   "scripts": {
-    "test": "",
     "clean": "gulp clean",
-    "compile": "gulp docs",
+    "build": "gulp docs",
     "buildpages": "bundle exec jekyll build",
-    "start": "npm run",
+    "start": "concurrently \"npm run build && bundle exec jekyll server\" \"gulp watch\"",
     "lint": "csscomb -l scss/**/*.scss",
     "version": "gulp clean && npm run compile",
     "reconstruct": "gulp clean --all && npm install && gulp",
@@ -26,7 +25,7 @@
   },
   "pre-commit": [
     "lint",
-    "compile"
+    "build"
   ],
   "repository": {
     "type": "git",
@@ -39,6 +38,7 @@
   },
   "devDependencies": {
     "autosize": "3.0.21",
+    "concurrently": "4.0.1",
     "csscomb": "3.1.7",
     "del": "3.0.0",
     "gulp": "3.9.1",
@@ -52,6 +52,7 @@
     "gulp-gzip": "1.4.1",
     "gulp-help": "1.6.1",
     "gulp-if": "2.0.2",
+    "gulp-json-sort": "1.0.0",
     "gulp-rename": "1.2.2",
     "gulp-sass": "3.1.0",
     "gulp-sourcemaps": "2.6.2",
