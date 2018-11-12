@@ -12,7 +12,7 @@ stylesheet: '/scss/forms/form-child.scss'
     </label>
     <div class="coveo-child">
         <label class="coveo-checkbox-label">
-            <input type="checkbox" class="coveo-checkbox"/>
+            <input type="checkbox" class="coveo-checkbox" />
             <button type="button"></button>
             <span class="label">Child checkbox</span>
         </label>
@@ -20,19 +20,19 @@ stylesheet: '/scss/forms/form-child.scss'
 </div>
 <div class="coveo-form mt2 coveo-parent">
     <label class="coveo-checkbox-label">
-        <input type="checkbox" class="coveo-checkbox"/>
+        <input type="checkbox" class="coveo-checkbox" />
         <button type="button"></button>
         <span class="label">It works with input elements too</span>
     </label>
     <div class="coveo-child">
         <div class="input-field form-group">
-            <input type="text" disabled required="" placeholder="Placeholder text"/>
+            <input type="text" disabled required="" placeholder="Placeholder text" />
             <label> Enabled invalid input
-            <span class="inline-help-tooltip" title="" data-placement="right" data-original-title="A simple inline help text.">
-                <span class="inline-help-icon">
-                    {{ site.data.icons['info'] }}
+                <span class="inline-help-tooltip" title="" data-placement="right" data-original-title="A simple inline help text.">
+                    <span class="inline-help-icon">
+                        {{ site.data.icons['info'] }}
+                    </span>
                 </span>
-            </span>
             </label>
         </div>
     </div>
@@ -48,43 +48,58 @@ stylesheet: '/scss/forms/form-child.scss'
             <span class="form-control-label">A radio-select</span>
             <div class="form-control radio-select">
                 <div class="radio-option">
-                    <input name="enabledOptions" type="radio" id="Option1-child" value="blue"/>
+                    <input name="enabledOptions" type="radio" id="Option1-child" value="blue" />
                     <label for="Option1-child">Blue</label>
                 </div>
                 <div class="radio-option">
-                    <input name="enabledOptions" type="radio" id="Option2-child" value="green" checked/>
+                    <input name="enabledOptions" type="radio" id="Option2-child" value="green" checked />
                     <label for="Option2-child">Green</label>
                 </div>
             </div>
         </fieldset>
     </div>
 </div>
-<div class="coveo-form mt2 coveo-parent">
-    <label class="coveo-checkbox-label">
-        <input type="checkbox" class="coveo-checkbox">
-        <button type="button"></button>
-        <span class="label">or checkboxes</span>
-    </label>
-    <div class="coveo-child">
-
-        <div class="form-control">
-            <label class="coveo-checkbox-label">
-                <input type="checkbox" class="coveo-checkbox" disabled>
-                <button type="button"></button>
-                <span class="label">Option 1</span>
-            </label>
-            <br>
-            <label class="mt1 coveo-checkbox-label">
-                <input type="checkbox" class="coveo-checkbox" checked disabled>
-                <button type="button"></button>
-                <span class="label">Option 2</span>
-            </label>
+<div class="coveo-form mt2 p2">
+    <div class="flex flex-row">
+        <fieldset class="form-group">
+            <span class="form-control-label">A radio-select</span>
+            <div class="form-control radio-select">
+                <div class="radio-option">
+                    <input name="enabledOptions" type="radio" id="Option4-child" value="blue2" />
+                    <label for="Option4-child">Blue</label>
+                </div>
+                <div class="radio-option">
+                    <input name="enabledOptions" type="radio" id="Option5-child" value="green2" checked />
+                    <label for="Option5-child">Green</label>
+                </div>
+                <div class="radio-option">
+                    <input name="enabledOptions" type="radio" id="Option6-child" value="yellow" />
+                    <label for="Option6-child">Yellow</label>
+                </div>
+            </div>
+        </fieldset>
+        <div class="p2">
+            <div class="coveo-child vertical">
+                <div class="form-control">
+                    <label class="coveo-checkbox-label">
+                        <input type="checkbox" class="coveo-checkbox" disabled>
+                        <button type="button"></button>
+                        <span class="label">Option 1</span>
+                    </label>
+                    <br>
+                    <label class="mt1 coveo-checkbox-label">
+                        <input type="checkbox" class="coveo-checkbox" checked disabled>
+                        <button type="button"></button>
+                        <span class="label">Option 2</span>
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    $('.coveo-checkbox').click(function() {
+    $('.coveo-checkbox').click(function () {
         var isChild = $(this).closest('.coveo-child').length > 0;
         if (!isChild) {
             var parent = $(this).closest('.coveo-parent');
