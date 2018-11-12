@@ -74,6 +74,12 @@ describe('ActionableItem', () => {
                 expect(actionableItem.find('.actionable-item-dots').find(Svg).prop('svgName')).toBe('more-append');
             });
 
+            it('should not render the more-append svg in the actionable-item-dots container if no actions', () => {
+                mountWithProps({id: 'mountwithnoactions', actions: []});
+
+                expect(actionableItem.find('.actionable-item-dots').find(Svg).length).toBe(0);
+            });
+
             it('should render the actions in a list-box', () => {
                 mountWithProps();
 
