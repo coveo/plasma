@@ -7,7 +7,7 @@ import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
 import {tableWithActions} from '../TableWithActions';
-import {tableWithBlankslate} from '../TableWithBlankslate';
+import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
 import {tableWithPredicate} from '../TableWithPredicate';
@@ -15,7 +15,7 @@ import {tableWithSort} from '../TableWithSort';
 import {IExampleRowData, TableHOCServerActions} from './TableHOCServerExampleReducer';
 
 const ServerTable = _.compose(
-    tableWithBlankslate({title: 'No data caused the table to be empty'}),
+    tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithPredicate({
         id: 'address.city',
         prepend: <span className='mr1 text-medium-grey'>City:</span>,
@@ -35,7 +35,7 @@ const ServerTable = _.compose(
         ],
     }),
     tableWithFilter({isServer: true}),
-    tableWithBlankslate({title: 'Filter caused the table to be empty'}),
+    tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
     tableWithSort({isServer: true}),
     tableWithPagination({isServer: true, perPageNumbers: [3, 5, 10]}),
     tableWithActions(),

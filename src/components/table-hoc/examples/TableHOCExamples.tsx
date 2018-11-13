@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
-import {tableWithBlankslate} from '../TableWithBlankslate';
+import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
 import {tableWithPredicate} from '../TableWithPredicate';
@@ -42,22 +42,22 @@ const TableWithTwoPredicate = _.compose(
 )(TableHOC);
 
 const TableWithUsernameFilter = _.compose(
-    tableWithBlankslate({title: 'No data caused the table to be empty'}),
+    tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithFilter({matchFilter: (filter: string, data: IExampleRowData) => data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1}),
-    tableWithBlankslate({title: 'Filter caused the table to be empty'}),
+    tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
 )(TableHOC);
 
 const TableWithFilterAndPagination = _.compose(
-    tableWithBlankslate({title: 'No data caused the table to be empty'}),
+    tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithFilter(),
-    tableWithBlankslate({title: 'Filter caused the table to be empty'}),
+    tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
     tableWithPagination({perPageNumbers: [3, 5, 10]}),
 )(TableHOC);
 
 const TableWithSortFilterAndPagination = _.compose(
-    tableWithBlankslate({title: 'No data caused the table to be empty'}),
+    tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithFilter(),
-    tableWithBlankslate({title: 'Filter caused the table to be empty'}),
+    tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
     tableWithSort({
         sort: (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b: IExampleRowData) => {
             if (key) {

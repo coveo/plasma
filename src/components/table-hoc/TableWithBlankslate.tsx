@@ -6,16 +6,16 @@ import {ReduxConnect} from '../../utils/ReduxUtils';
 import {BlankSlate, IBlankSlateProps} from '../blankSlate/BlankSlate';
 import {ITableHOCOwnProps} from './TableHOC';
 
-export interface ITableWithBlankslateStateProps {
+export interface ITableWithBlankSlateStateProps {
     isEmpty: boolean;
 }
 
-export interface ITableWithBlankslateProps extends Partial<ITableWithBlankslateStateProps> {}
+export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateStateProps> {}
 
-const TableWithBlankslatePropsToOmit = keys<ITableWithBlankslateStateProps>();
+const TableWithBlankSlatePropsToOmit = keys<ITableWithBlankSlateStateProps>();
 
-export const tableWithBlankslate = (config: IBlankSlateProps = {}) => (Component: (React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>)): React.ComponentClass<ITableWithBlankslateProps & React.HTMLAttributes<HTMLTableElement>> => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithBlankslateStateProps | ITableHOCOwnProps => {
+export const tableWithBlankSlate = (config: IBlankSlateProps = {}) => (Component: React.ComponentClass<ITableHOCOwnProps>): React.ComponentClass<ITableWithBlankSlateProps & React.HTMLAttributes<HTMLTableElement>> => {
+    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithBlankSlateStateProps | ITableHOCOwnProps => {
         const isEmpty = ownProps.data !== null && (!ownProps.data || ownProps.data.length === 0);
         return {
             isEmpty,
@@ -24,11 +24,11 @@ export const tableWithBlankslate = (config: IBlankSlateProps = {}) => (Component
     };
 
     @ReduxConnect(mapStateToProps)
-    class TableWithBlankslate extends React.Component<ITableHOCOwnProps & ITableWithBlankslateProps> {
+    class TableWithBlankSlate extends React.Component<ITableHOCOwnProps & ITableWithBlankSlateProps> {
 
         render() {
             const newProps = {
-                ..._.omit(this.props, [...TableWithBlankslatePropsToOmit]),
+                ..._.omit(this.props, [...TableWithBlankSlatePropsToOmit]),
                 renderData: this.props.isEmpty ? (): any => null : this.props.renderData,
             };
             return (
@@ -39,5 +39,5 @@ export const tableWithBlankslate = (config: IBlankSlateProps = {}) => (Component
         }
     }
 
-    return TableWithBlankslate;
+    return TableWithBlankSlate;
 };
