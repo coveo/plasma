@@ -1,5 +1,4 @@
 import {ReducersMapObject} from 'redux';
-
 import {membersReducers} from '../docs/members-example/reducers/MembersReducers';
 import {actionBarsReducer} from './components/actions/ActionBarReducers';
 import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducers';
@@ -29,7 +28,7 @@ import {popoversReducer} from './components/popover/PopoverReducers';
 import {radioSelectsReducer} from './components/radio/RadioSelectReducers';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
-import {selectWithFilterCompositeState} from './components/select/SelectWithFilterReducers';
+import {selectWithFilterCompositeReducer} from './components/select/SelectWithFilterReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from './components/tab/TabReducers';
 import {TableRowReducers} from './components/table-hoc/reducers/TableRowReducers';
@@ -40,6 +39,7 @@ import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
+import {withEditingReducer} from './hoc/withEditing/withEditingReducers';
 import {IReactVaporState} from './ReactVapor';
 import {IReduxAction} from './utils/ReduxUtils';
 
@@ -88,6 +88,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     menus: menuCompositeReducer,
     radioSelects: radioSelectsReducer,
     popovers: popoversReducer,
-    selectWithFilter: selectWithFilterCompositeState,
+    selectWithFilter: selectWithFilterCompositeReducer,
+    dirtyComponents: withEditingReducer,
     lastAction,
 };

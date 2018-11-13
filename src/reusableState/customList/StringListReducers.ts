@@ -15,7 +15,7 @@ export const stringListInitialState: IStringListCompositeState = {};
 export const convertStringListToItemsBox = (list: string[], itemsBoxParams: Partial<IItemBoxProps> = {}): IItemBoxProps[] => _.map(list, (value: string) => ({...itemsBoxParams, value}));
 export const convertItemsBoxToStringList = (items: IItemBoxProps[]): string[] => _.pluck(items, 'value');
 
-export const stringListCompositeState = (
+export const stringListCompositeReducer = (
     state: IStringListCompositeState = stringListInitialState,
     action: IReduxAction<IStringListPayload>,
 ): IStringListCompositeState => {
