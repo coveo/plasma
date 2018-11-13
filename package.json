@@ -93,7 +93,7 @@
     "classnames": "2.2.6",
     "codecov": "3.1.0",
     "codemirror": "5.40.2",
-    "coveo-styleguide": "3.6.x",
+    "coveo-styleguide": "~3.7.0",
     "css-loader": "1.0.0",
     "del": "3.0.0",
     "dnd-core": "2.5.1",
