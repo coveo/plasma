@@ -29,9 +29,7 @@ export interface ISingleSelectProps extends ISingleSelectOwnProps, ISingleSelect
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
     const customSelected: string[] = SelectSelector.getListState(state, ownProps);
     return {
-        selectedOption: customSelected.length
-            ? customSelected[customSelected.length - 1]
-            : SelectSelector.getListBoxSelected(state, ownProps)[0],
+        selectedOption: customSelected.length ? customSelected[customSelected.length - 1] : SelectSelector.getListBoxSelected(state, ownProps)[0],
     };
 };
 
@@ -52,19 +50,17 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
         return (
             <SelectConnected
                 id={this.props.id}
-                button={this.getButton}
+                button={(props: ISelectButtonProps) => this.getButton(props)}
                 items={this.props.items}
-                selectClasses={this.props.selectClasses}
-                hasFocusableChild={this.props.hasFocusableChild}
             >
                 {this.props.children}
             </SelectConnected>
         );
     }
 
-    private getButton = (props: ISelectButtonProps): JSX.Element => {
+    private getButton(props: ISelectButtonProps): JSX.Element {
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
-        const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
+        const buttonClasses = classNames('btn', 'dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
         });
 

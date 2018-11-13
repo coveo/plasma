@@ -2,7 +2,6 @@ import 'codemirror/lib/codemirror.css';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
 import './style.scss';
 
-import * as classNames from 'classnames';
 import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
@@ -82,18 +81,15 @@ import {MultiSelectExamples} from '../src/components/select/examples/MultiSelect
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
 import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
-import {SideNavigation} from '../src/components/sideNavigation/SideNavigation';
 import {SliderExamples} from '../src/components/slider/examples/SliderExamples';
 import {SplitLayoutExamples} from '../src/components/splitlayout/examples/SplitLayoutExamples';
 import {StatusCardExamples} from '../src/components/statusCard/examples/StatusCardExamples';
 import {StepProgressBarExamples} from '../src/components/stepProgressBar/examples/StepProgressBarExamples';
-import {StickyFooterExamples} from '../src/components/stickyFooter/examples/StickyFooterExamples';
 import {SubNavigationConnectedExamples} from '../src/components/subNavigation/examples/SubNavigationConnectedExamples';
 import {SubNavigationExamples} from '../src/components/subNavigation/examples/SubNavigationExamples';
 import {SubNavigation} from '../src/components/subNavigation/SubNavigation';
 import {LinkSvgExamples} from '../src/components/svg/examples/LinkSvgExamples';
 import {SvgExamples} from '../src/components/svg/examples/SvgExamples';
-import {Svg} from '../src/components/svg/Svg';
 import {SyncFeedbackExample} from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import {TabsExamples} from '../src/components/tab/examples/TabConnectedExample';
 import {TableHOCExamples} from '../src/components/table-hoc/examples/TableHOCExamples';
@@ -110,7 +106,6 @@ import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConn
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
-import {ComponentWithEditingExampleHOC} from '../src/hoc/withEditing/examples/withEditingExamples';
 import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
 
@@ -119,47 +114,10 @@ interface ExampleProps {
     component: any;
 }
 
-interface HeaderState {
-    sideNavOpened: boolean;
-}
-
 interface AppState {
     activeComponentId: string;
-    sideNavOpened: boolean;
 }
 
-class Header extends React.Component<{}, HeaderState> {
-    constructor(props: {}, state: HeaderState) {
-        super(props, state);
-
-        this.state = {
-            sideNavOpened: true,
-        };
-    }
-
-    componentDidMount() {
-        document.addEventListener(SideNavigation.toggleEvent, () => {
-            this.setState({sideNavOpened: !this.state.sideNavOpened});
-        });
-    }
-
-    render() {
-        return (
-            <div className='flex flex-colum flex-center'>
-                <div
-                    className='cursor-pointer'
-                    onClick={() => document.dispatchEvent(new Event(SideNavigation.toggleEvent))}
-                >
-                    <Svg
-                        svgName={this.state.sideNavOpened ? 'arrow-left' : 'hamburger'}
-                        svgClass='icon mod-lg ml2 fill-pure-white'
-                    />
-                </div>
-                <div className='h1 p2'>React Vapor</div>
-            </div>
-        );
-    }
-}
 class App extends React.Component<{}, AppState> {
     private components = [
         {component: MenuExamples, componentName: 'Menu'},
@@ -260,8 +218,6 @@ class App extends React.Component<{}, AppState> {
         {component: TableHOCExamples, componentName: 'Table (hoc)'},
         {component: TableHOCServerExamples, componentName: 'Table (server + hoc)'},
         {component: ColorExamples, componentName: 'Color'},
-        {component: StickyFooterExamples, componentName: 'StickyFooter'},
-        {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
     ];
 
     constructor(props: {}, state: AppState) {
@@ -271,7 +227,6 @@ class App extends React.Component<{}, AppState> {
         const firstComponentId = this.components.sort(this.sortComponentsByName);
         this.state = {
             activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || firstComponentId[0].componentName,
-            sideNavOpened: true,
         };
     }
 
@@ -281,28 +236,22 @@ class App extends React.Component<{}, AppState> {
         if (el) {
             el.scrollIntoView({behavior: 'instant', block: 'center'});
         }
-
-        document.addEventListener(SideNavigation.toggleEvent, () => {
-            this.setState({sideNavOpened: !this.state.sideNavOpened});
-        });
     }
 
     render() {
+        const selectedComponent: any = this.getSelectedComponent(this.state.activeComponentId);
         return (
             <Provider store={ReactVaporStore}>
                 <div className='coveo-form flex full-content'>
-                    <div className={classNames('flex flex-column', {'hide': !this.state.sideNavOpened, 'navigation-wrapper-opened': this.state.sideNavOpened})} style={{maxWidth: '245px'}}>
+                    <div className='flex flex-column'>
                         <SubNavigation
                             selected={this.state.activeComponentId}
                             items={this.components.sort(this.sortComponentsByName).map(this.formatComponentsExamples)}
                             onClickItem={this.activateItem}
                         />
                     </div>
-                    <div className='flex-auto mod-header-padding mt2 overflow-auto'>
-                        {
-                            this.state.activeComponentId
-                            && React.createElement(this.getSelectedComponent(this.state.activeComponentId))
-                        }
+                    <div className='flex-auto my2 px2 overflow-auto'>
+                        {this.state.activeComponentId && React.createElement(selectedComponent)}
                     </div>
                 </div>
             </Provider>
@@ -326,5 +275,4 @@ class App extends React.Component<{}, AppState> {
     }
 }
 
-ReactDOMRender(<Header />, document.getElementById('header'));
 ReactDOMRender(<App />, document.getElementById('App'));
