@@ -1,0 +1,28 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+:global(.coveo-styleguide .table.table-numbered) {
+    td:nth-child(2) {
+        border-left: $table-selected-border-width solid transparent;
+        padding-left: $default-margin;
+    }
+
+    tr:global(.selected) td:nth-child(2) {
+        border-left-color: $orange;
+    }
+}
+
+:global(.coveo-styleguide .table) .tableNumberedRow:first-child {
+    padding:0;
+    border-left: none;
+    width: 60px;
+    height: 40px;
+} 
+
+:global(.coveo-styleguide .table) .tableNumberedRowContainer {
+    color: $medium-blue;
+    border-left: none;
+    width: 60px;
+    text-align: center;
+    padding: $default-margin;
+} 
