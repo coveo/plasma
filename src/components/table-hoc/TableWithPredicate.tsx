@@ -36,11 +36,10 @@ type TableWithPredicateComponent = React.ComponentClass<ITableWithPredicateProps
 export const tableWithPredicate = (config: ITableWithPredicateConfig) => (Component: TableWithPredicateComponent): TableWithPredicateComponent => {
 
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithPredicateProps): ITableWithPredicateStateProps | ITableHOCOwnProps => {
-        const listbox = SelectSelector.getListBox(state, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)});
         const predicate = SelectSelector.getListBoxSelected(state, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)})[0];
         const matchPredicate = config.matchPredicate || defaultMatchPredicate;
-        const predicateData = () => !config.isServer && listbox && listbox.selected.length
-            ? _.filter(ownProps.data, (datum: any) => matchPredicate(listbox.selected[0], datum))
+        const predicateData = () => !config.isServer && predicate
+            ? _.filter(ownProps.data, (datum: any) => matchPredicate(predicate, datum))
             : ownProps.data;
         return {
             predicate: predicate,
