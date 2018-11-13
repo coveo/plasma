@@ -96,6 +96,30 @@
       border-right-color: $red;
     }
   }
+  
+  @each $color, $value in $palette {
+    &.mod-bg-#{$color} {
+      .tooltip-inner {
+        background-color: $value;
+      }
+    
+      &.left .tooltip-arrow {
+        border-left-color: $value;
+      }
+    
+      &.bottom .tooltip-arrow {
+        border-bottom-color: $value;
+      }
+    
+      &.top .tooltip-arrow {
+        border-top-color: $value;
+      }
+    
+      &.right .tooltip-arrow {
+        border-right-color: $value;
+      }
+    }
+  }  
 
   .tooltip-arrow {
     position: absolute;
