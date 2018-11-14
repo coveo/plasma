@@ -29,7 +29,7 @@ export const tableWithBlankSlate = (config: IBlankSlateProps = {}) => (Component
         render() {
             const newProps = {
                 ..._.omit(this.props, [...TableWithBlankSlatePropsToOmit]),
-                renderData: this.props.isEmpty ? (): any => null : this.props.renderData,
+                renderBody: this.props.isEmpty ? (): any => null : this.props.renderBody,
             };
             return (
                 <Component {...newProps}>
