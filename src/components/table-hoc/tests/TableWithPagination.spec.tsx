@@ -21,7 +21,7 @@ describe('Table HOC', () => {
         const defaultProps: ITableHOCProps = {
             id: 'a',
             data: _.map(_.range(10), (i: number) => ({value: i})),
-            renderData: _.identity,
+            renderBody: _.identity,
         };
 
         beforeEach(() => {
@@ -33,8 +33,8 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(() => shallowWithStore(<TableWithPagination id='a' data={[]} renderData={_.identity} />, store)).not.toThrow();
-            expect(() => shallowWithStore(<TableWithPagination id='b' data={[{value: 'a'}]} renderData={_.identity} />, store)).not.toThrow();
+            expect(() => shallowWithStore(<TableWithPagination id='a' data={[]} renderBody={_.identity} />, store)).not.toThrow();
+            expect(() => shallowWithStore(<TableWithPagination id='b' data={[{value: 'a'}]} renderBody={_.identity} />, store)).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
