@@ -12,17 +12,17 @@ describe('Table HOC', () => {
         )(TableHOC);
 
         it('should not throw', () => {
-            expect(shallow(<TableWithActions id='a' data={[]} renderData={_.identity} />));
-            expect(shallow(<TableWithActions id='b' data={[{value: 'a'}]} renderData={(allData: any[]) => _.map(allData, (data: any) => <tr><td>{data.value}</td></tr>)} />));
+            expect(shallow(<TableWithActions id='a' data={[]} renderBody={_.identity} />));
+            expect(shallow(<TableWithActions id='b' data={[{value: 'a'}]} renderBody={(allData: any[]) => _.map(allData, (data: any) => <tr><td>{data.value}</td></tr>)} />));
         });
 
         it('should render a TableHOC', () => {
-            const wrapper = shallowWithState(<TableWithActions id='a' data={[]} renderData={_.identity} />, {});
+            const wrapper = shallowWithState(<TableWithActions id='a' data={[]} renderBody={_.identity} />, {});
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should add the hasActionButtons prop on the table', () => {
-            const wrapper = shallowWithState(<TableWithActions id='a' data={[]} renderData={_.identity} />, {});
+            const wrapper = shallowWithState(<TableWithActions id='a' data={[]} renderBody={_.identity} />, {});
             expect(wrapper.find(TableHOC).prop('hasActionButtons')).toBe(true);
         });
     });

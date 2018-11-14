@@ -6,6 +6,8 @@ import {LastUpdated} from '../../lastUpdated/LastUpdated';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
+import {TableRowNumberColumn} from '../TableRowNumberColumn';
+import {TableRowNumberHeader} from '../TableRowNumberHeader';
 import {tableWithActions} from '../TableWithActions';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {tableWithFilter} from '../TableWithFilter';
@@ -67,7 +69,7 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
     static TABLE_ID = 'complex-example';
 
     render() {
-        const generateRow = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData, i: number) => (
+        const generateRows = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData, i: number) => (
             <TableRowConnected
                 id={data.username}
                 tableId={TableHOCServerExamples.TABLE_ID}
@@ -75,22 +77,24 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                 actions={[{primary: true, icon: 'edit', name: 'edit', enabled: true, trigger: () => alert(data.username)}]}
                 isMultiselect
             >
+                <TableRowNumberColumn number={i + 1} />
                 <td key='city'>{data.city}</td>
                 <td key='email'>{data.email.toLowerCase()}</td>
                 <td key='username'>{data.username.toLowerCase()}</td>
             </TableRowConnected>
         ));
+
         return (
             <div className='mt2'>
                 <div className='form-group'>
                     <label className='form-control-label'>
-                        Server table
+                        Server table with numbered rows
                     </label>
                     <ServerTable
                         id={TableHOCServerExamples.TABLE_ID}
-                        className='table'
+                        className='table table-numbered'
                         data={this.props.serverData}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                         tableHeader={this.renderHeader()}
                         onUpdate={this.onUpdate}
                         isLoading={this.props.isLoading}
@@ -106,6 +110,7 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
         return (
             <thead>
                 <tr>
+                    <TableRowNumberHeader />
                     <TableHeaderWithSort id='address.city' tableId={TableHOCServerExamples.TABLE_ID}>City</TableHeaderWithSort>
                     <TableHeaderWithSort id='email' tableId={TableHOCServerExamples.TABLE_ID}>Email</TableHeaderWithSort>
                     <TableHeaderWithSort id='username' tableId={TableHOCServerExamples.TABLE_ID} isDefault>Username</TableHeaderWithSort>

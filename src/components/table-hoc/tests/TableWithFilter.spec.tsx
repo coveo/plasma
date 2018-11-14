@@ -13,14 +13,14 @@ describe('Table HOC', () => {
         const defaultProps: ITableHOCProps = {
             id: 'a',
             data: [{value: 'a'}, {value: 'b'}],
-            renderData: _.identity,
+            renderBody: _.identity,
         };
 
         const getStateWithFilter = (filter: string) => ({filters: [{id: defaultProps.id, filterText: filter}]});
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithFilter id='a' data={[]} renderData={_.identity} />, {}));
-            expect(shallowWithState(<TableWithFilter id='b' data={[{value: 'a'}]} renderData={_.identity} />, {}));
+            expect(shallowWithState(<TableWithFilter id='a' data={[]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithFilter id='b' data={[{value: 'a'}]} renderBody={_.identity} />, {}));
         });
 
         it('should render a TableHOC', () => {

@@ -20,7 +20,7 @@ describe('Table HOC', () => {
         const defaultProps: ITableHOCProps = {
             id: 'a',
             data: [{value: 'a', city: 'not-test'}, {value: 'b', city: 'test'}],
-            renderData: _.identity,
+            renderBody: _.identity,
         };
 
         const getStateWithPredicate = (predicate: string) => ({
@@ -28,8 +28,8 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithPredicate id='a' data={[]} renderData={_.identity} />, {}));
-            expect(shallowWithState(<TableWithPredicate id='b' data={[{value: 'a'}]} renderData={_.identity} />, {}));
+            expect(shallowWithState(<TableWithPredicate id='a' data={[]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithPredicate id='b' data={[{value: 'a'}]} renderBody={_.identity} />, {}));
         });
 
         it('should render a TableHOC', () => {
