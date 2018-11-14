@@ -13,7 +13,7 @@ describe('Table HOC', () => {
         const defaultProps: ITableHOCProps = {
             id: 'a',
             data: [{value: 10}, {value: 5}],
-            renderData: _.identity,
+            renderBody: _.identity,
         };
 
         const getStateWithSort = (isAsc: boolean, sortKey: string) => ({
@@ -21,8 +21,8 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithSort id='a' data={[]} renderData={_.identity} />, {}));
-            expect(shallowWithState(<TableWithSort id='b' data={[{value: 'a'}]} renderData={_.identity} />, {}));
+            expect(shallowWithState(<TableWithSort id='a' data={[]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithSort id='b' data={[{value: 'a'}]} renderBody={_.identity} />, {}));
         });
 
         it('should render a TableHOC', () => {

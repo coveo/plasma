@@ -69,7 +69,7 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
     static TABLE_ID = 'complex-example';
 
     render() {
-        const generateRow = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData, i: number) => (
+        const generateRows = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData, i: number) => (
             <TableRowConnected
                 id={data.username}
                 tableId={TableHOCServerExamples.TABLE_ID}
@@ -94,7 +94,7 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                         id={TableHOCServerExamples.TABLE_ID}
                         className='table table-numbered'
                         data={this.props.serverData}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                         tableHeader={this.renderHeader()}
                         onUpdate={this.onUpdate}
                         isLoading={this.props.isLoading}

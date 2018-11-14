@@ -14,7 +14,7 @@ describe('Table HOC', () => {
         const defaultProps: ITableHOCProps = {
             id: 'a',
             data: [],
-            renderData: _.identity,
+            renderBody: _.identity,
         };
 
         it('should not throw', () => {
@@ -38,25 +38,25 @@ describe('Table HOC', () => {
                 expect(wrapper.find(TableHOC).exists()).toBe(true);
             });
 
-            it('should override the TableHOC renderData method when the data is empty', () => {
-                const wrapper = shallowWithProps({renderData: renderSpy}).dive();
-                const tableRenderData = wrapper.find(TableHOC).prop('renderData') as () => any;
-                tableRenderData();
+            it('should override the TableHOC renderBody method when the data is empty', () => {
+                const wrapper = shallowWithProps({renderBody: renderSpy}).dive();
+                const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
+                tableRenderBody();
 
                 expect(renderSpy).not.toHaveBeenCalled();
             });
 
-            it('should override the TableHOC renderData method to return null when the data is empty', () => {
+            it('should override the TableHOC renderBody method to return null when the data is empty', () => {
                 const wrapper = shallowWithProps().dive();
-                const tableRenderData = wrapper.find(TableHOC).prop('renderData') as () => any;
+                const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
 
-                expect(tableRenderData()).toBe(null);
+                expect(tableRenderBody()).toBe(null);
             });
 
-            it('should not override the TableHOC renderData method when there is data', () => {
-                const wrapper = shallowWithProps({data: [{value: 'a'}], renderData: renderSpy}).dive();
-                const tableRenderData = wrapper.find(TableHOC).prop('renderData') as () => any;
-                tableRenderData();
+            it('should not override the TableHOC renderBody method when there is data', () => {
+                const wrapper = shallowWithProps({data: [{value: 'a'}], renderBody: renderSpy}).dive();
+                const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
+                tableRenderBody();
 
                 expect(renderSpy).toHaveBeenCalledTimes(1);
             });

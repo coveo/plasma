@@ -81,7 +81,7 @@ export class TableHOCExamples extends React.Component {
                 username: data.username,
             };
         });
-        const generateRow = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
+        const generateRows = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
             <tr key={data.username}>
                 <td key='city'>{data.city}</td>
                 <td key='email'>{data.email.toLowerCase()}</td>
@@ -98,7 +98,7 @@ export class TableHOCExamples extends React.Component {
                         id='1'
                         className='table'
                         data={generateData(3)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                         tableHeader={<thead><tr><th>City</th><th>Email</th><th>Username</th></tr></thead>}
                     />
                 </div>
@@ -111,7 +111,7 @@ export class TableHOCExamples extends React.Component {
                         id='with-filter'
                         className='table'
                         data={generateData(3)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                     />
                 </div>
 
@@ -123,7 +123,7 @@ export class TableHOCExamples extends React.Component {
                         id='with-predicate'
                         className='table'
                         data={generateData(3)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                     />
                 </div>
 
@@ -135,7 +135,7 @@ export class TableHOCExamples extends React.Component {
                         id='with-two-predicate'
                         className='table'
                         data={generateData(3)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                     />
                 </div>
 
@@ -147,7 +147,7 @@ export class TableHOCExamples extends React.Component {
                         id='username-filter'
                         className='table'
                         data={generateData(3)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                     />
                 </div>
 
@@ -159,7 +159,7 @@ export class TableHOCExamples extends React.Component {
                         id='username-no-data-filter'
                         className='table'
                         data={generateData(0)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                     />
                 </div>
 
@@ -171,7 +171,7 @@ export class TableHOCExamples extends React.Component {
                         id='filter-and-pagination'
                         className='table'
                         data={generateData(50)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                     />
                 </div>
 
@@ -183,7 +183,7 @@ export class TableHOCExamples extends React.Component {
                         id='filter-sort-and-pagination'
                         className='table'
                         data={generateData(50)}
-                        renderData={generateRow}
+                        renderBody={generateRows}
                         tableHeader={
                             <thead>
                                 <tr>
