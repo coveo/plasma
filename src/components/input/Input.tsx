@@ -28,8 +28,8 @@ export interface IInputOwnProps {
     validateOnMount?: boolean;
     autoFocus?: boolean;
     disabledTooltip?: string;
-    minimum?: string;
-    maximum?: string;
+    minimum?: number;
+    maximum?: number;
 }
 
 export interface IInputStateProps {
