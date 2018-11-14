@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import {IDispatch, IReduxAction, IThunkAction} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/TestUtils';
 import {turnOffLoading} from '../../loading/LoadingActions';
-import {TableWithPaginationActions} from '../actions/TablePaginationActions';
+import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
 import {ITableHOCCompositeState, TableHOCUtils} from '../TableHOCUtils';
 import {TableHOCServerExamples} from './TableHOCServerExamples';
 

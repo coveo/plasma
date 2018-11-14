@@ -7,14 +7,11 @@ import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
 import {NavigationConnected} from '../navigation/NavigationConnected';
-import {TableWithPaginationActions} from './actions/TablePaginationActions';
+import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
 import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
+import {TableHOCUtils} from './TableHOCUtils';
 
-export interface ITableWithPaginationConfig extends IMaybeServerConfig {
-    sliceData?: (data: any[], startingIndex: number, endingIndex: number) => any[];
-}
-
-export interface ITableWithPaginationOwnProps {}
+export interface ITableWithPaginationConfig extends IMaybeServerConfig {}
 
 export interface ITableWithPaginationStateProps {
     totalEntries: number;
@@ -34,11 +31,11 @@ export interface ITableWithPaginationProps extends Partial<ITableWithPaginationS
 const TableWithPaginationPropsToOmit = keys<ITableWithPaginationStateProps>();
 const TableWithPaginationConfigToOmit = keys<ITableWithPaginationConfig>();
 
-const defaultSliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
+const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 
 export const tableWithPagination = (config: ITableWithPaginationConfig & Partial<INavigationOwnProps & INavigationChildrenProps> = {}) => (Component: (React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>)): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps & ITableWithPaginationOwnProps): ITableWithPaginationStateProps | ITableHOCOwnProps => {
-        const paginationState = _.findWhere(state.paginationComposite, {id: `pagination-${ownProps.id}`});
+    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithPaginationStateProps | ITableHOCOwnProps => {
+        const paginationState = _.findWhere(state.paginationComposite, {id: TableHOCUtils.getPaginationId(ownProps.id)});
         const perPageState = _.findWhere(state.perPageComposite, {id: ownProps.id}) || {perPage: 20};
         const tablePaginationState = _.findWhere(state.tableHOCPagination, {id: ownProps.id});
 
@@ -49,14 +46,13 @@ export const tableWithPagination = (config: ITableWithPaginationConfig & Partial
 
             const startingIndex = paginationState.pageNb * perPageState.perPage;
             const endingIndex = startingIndex + perPageState.perPage;
-            const slice = config.sliceData || defaultSliceData;
 
             return {
                 pageNb: paginationState.pageNb,
                 perPage: perPageState.perPage,
                 totalEntries: length,
                 totalPages: Math.ceil(length / perPageState.perPage),
-                data: config.isServer ? ownProps.data : ownProps.data && slice(ownProps.data, startingIndex, endingIndex),
+                data: config.isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
             };
         }
         return {
