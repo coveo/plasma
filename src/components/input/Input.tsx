@@ -28,6 +28,8 @@ export interface IInputOwnProps {
     validateOnMount?: boolean;
     autoFocus?: boolean;
     disabledTooltip?: string;
+    minimum?: number;
+    maximum?: number;
 }
 
 export interface IInputStateProps {
@@ -176,6 +178,8 @@ export class Input extends React.Component<IInputProps, IInputState> {
                 readOnly={!!this.props.readOnly}
                 autoFocus={!!this.props.autoFocus}
                 step={this.props.type === 'number' ? 'any' : null}
+                min={this.props.minimum}
+                max={this.props.maximum}
             />,
             this.getLabel(),
             this.props.children,
