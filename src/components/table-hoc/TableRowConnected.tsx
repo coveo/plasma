@@ -12,7 +12,7 @@ import {ITableRowState} from './reducers/TableRowReducers';
 export interface ITableRowOwnProps {
     id: string;
     tableId: string;
-    actions: IActionOptions[];
+    actions?: IActionOptions[];
     isMultiselect?: boolean;
 }
 
@@ -56,6 +56,7 @@ const mapDispatchToProps = (
 export class TableRowConnected extends React.Component<ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableRowElement>> {
 
     static defaultProps: Partial<ITableRowOwnProps> = {
+        actions: [],
         isMultiselect: false,
     };
 
