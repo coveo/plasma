@@ -5,7 +5,7 @@ import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
-import {IFilterState} from '../filterBox/FilterBoxReducers';
+import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
 import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
 
 export interface ITableWithFilterConfig extends IMaybeServerConfig {
@@ -32,14 +32,14 @@ type FilterableTableComponent = React.ComponentClass<ITableWithFilterProps>;
 
 export const tableWithFilter = (config: ITableWithFilterConfig = {}) => (Component: FilterableTableComponent): FilterableTableComponent => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithFilterProps): ITableWithFilterStateProps | ITableHOCOwnProps => {
-        const filter: IFilterState = _.findWhere(state.filters, {id: ownProps.id});
+        const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
         const matchFilter = config.matchFilter || defaultMatchFilter;
-        const filterData = () => filter && filter.filterText
-            ? _.filter(ownProps.data, (datum: any) => matchFilter(filter.filterText, datum))
+        const filterData = () => filterText
+            ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum))
             : ownProps.data;
 
         return {
-            filter: filter && filter.filterText,
+            filter: filterText,
             data: config.isServer ? ownProps.data : ownProps.data && filterData(),
         };
     };

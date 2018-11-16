@@ -1,5 +1,7 @@
 import {IItemBoxProps} from '../components/itemBox/ItemBox';
 
+export type MatchFilter = (filterValue: string, item: IItemBoxProps) => boolean;
+
 export const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
     if (filterValue === '') {
         return true;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {BlankSlate} from '../../blankSlate/BlankSlate';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {tableWithBlankSlate} from '../TableWithBlankslate';
+import {tableWithBlankSlate} from '../TableWithBlankSlate';
 
 describe('Table HOC', () => {
     describe('TableWithBlankSlate', () => {
