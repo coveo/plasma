@@ -39,7 +39,7 @@ export const tableWithPagination = (config: ITableWithPaginationConfig & Partial
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithPaginationStateProps | ITableHOCOwnProps => {
         const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
         const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
-        const length = TableSelectors.getDataCount(state, ownProps);
+        const length = TableSelectors.getDataCount(state, {id: ownProps.id, data: ownProps.data, isServer: config.isServer});
 
         const startingIndex = pageNb * perPage;
         const endingIndex = startingIndex + perPage;
