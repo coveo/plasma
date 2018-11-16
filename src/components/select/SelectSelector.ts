@@ -31,11 +31,9 @@ const itemsWithFilterCombiner = (
 ): IItemBoxProps[] => _.map(items, (item: IItemBoxProps) => ({...item, hidden: !matchFilter(filterText, item) || !!item.hidden}));
 
 const getItemsWithFilter: (state: IReactVaporState, ownProps: ISelectWithFilterProps) => IItemBoxProps[] = createSelector(
-    [
-        getItems,
-        (state: IReactVaporState, ownProps: ISelectWithFilterProps) => FilterBoxSelectors.getFilterText(state, {id: ownProps.id}),
-        (state: IReactVaporState, ownProps: ISelectWithFilterProps) => FilterBoxSelectors.getMatchFilter(state, {matchFilter: ownProps.matchFilter}),
-    ],
+    getItems,
+    (state: IReactVaporState, ownProps: ISelectWithFilterProps) => FilterBoxSelectors.getFilterText(state, {id: ownProps.id}),
+    (state: IReactVaporState, ownProps: ISelectWithFilterProps) => FilterBoxSelectors.getMatchFilter(state, {matchFilter: ownProps.matchFilter}),
     itemsWithFilterCombiner,
 );
 

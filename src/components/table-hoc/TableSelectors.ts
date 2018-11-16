@@ -8,9 +8,7 @@ export interface TableSelectorsProps {
     isServer?: boolean;
 }
 
-const getIsEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean => {
-    return props.data !== null && (!props.data || props.data.length === 0);
-};
+const getIsEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean => props.data !== null && (!props.data || props.data.length === 0);
 
 const getDataCount = (state: IReactVaporState, props: TableSelectorsProps): number => {
     const tablePaginationState = _.findWhere(state.tableHOCPagination, {id: props.id});
