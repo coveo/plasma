@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableWithPaginationBasePayload, ITableWithPaginationSetCountPayload, TableWithPaginationActionsType} from '../actions/TablePaginationActions';
+import {ITableWithPaginationBasePayload, ITableWithPaginationSetCountPayload, TableWithPaginationActionsType} from '../actions/TableWithPaginationActions';
 
 export interface ITableWithPaginationState {
     id: string;
