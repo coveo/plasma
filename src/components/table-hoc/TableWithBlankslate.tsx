@@ -5,6 +5,7 @@ import {IReactVaporState} from '../../ReactVapor';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {BlankSlate, IBlankSlateProps} from '../blankSlate/BlankSlate';
 import {ITableHOCOwnProps} from './TableHOC';
+import {TableSelectors} from './TableSelectors';
 
 export interface ITableWithBlankSlateStateProps {
     isEmpty: boolean;
@@ -16,7 +17,7 @@ const TableWithBlankSlatePropsToOmit = keys<ITableWithBlankSlateStateProps>();
 
 export const tableWithBlankSlate = (config: IBlankSlateProps = {}) => (Component: React.ComponentClass<ITableHOCOwnProps>): React.ComponentClass<ITableWithBlankSlateProps & React.HTMLAttributes<HTMLTableElement>> => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithBlankSlateStateProps | ITableHOCOwnProps => {
-        const isEmpty = ownProps.data !== null && (!ownProps.data || ownProps.data.length === 0);
+        const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
         return {
             isEmpty,
             data: isEmpty ? null : ownProps.data,

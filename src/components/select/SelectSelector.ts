@@ -3,21 +3,14 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
-import {defaultMatchFilter} from '../../utils/FilterUtils';
-import {IFilterState} from '../filterBox/FilterBoxReducers';
+import {MatchFilter} from '../../utils/FilterUtils';
+import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
 import {IMultiSelectProps} from './MultiSelectConnected';
 import {ISelectProps} from './SelectConnected';
 import {ISelectState, selectInitialState} from './SelectReducers';
 import {ISelectWithFilterProps} from './SelectWithFilter';
-
-export type MatchFilter = (filterValue: string, item: IItemBoxProps) => boolean;
-
-const getFilterText = (state: IReactVaporState, ownProps: ISelectWithFilterProps): string => {
-    const filter: IFilterState = _.findWhere(state.filters, {id: ownProps.id});
-    return (filter && filter.filterText) || '';
-};
 
 const getListState = (state: IReactVaporState, ownProps: ISelectProps): string[] =>
     state.selectWithFilter && state.selectWithFilter[ownProps.id] ? state.selectWithFilter[ownProps.id].list : [];
@@ -31,10 +24,6 @@ const getSelect = (state: IReactVaporState, ownProps: ISelectProps): ISelectStat
 
 const getItems = (state: IReactVaporState, ownProps: ISelectProps): IItemBoxProps[] => ownProps.items || [];
 
-const getMatchFilter = (state: IReactVaporState, ownProps: ISelectWithFilterProps): MatchFilter => _.isUndefined(ownProps.matchFilter)
-    ? defaultMatchFilter
-    : ownProps.matchFilter;
-
 const itemsWithFilterCombiner = (
     items: IItemBoxProps[],
     filterText: string,
@@ -42,7 +31,9 @@ const itemsWithFilterCombiner = (
 ): IItemBoxProps[] => _.map(items, (item: IItemBoxProps) => ({...item, hidden: !matchFilter(filterText, item) || !!item.hidden}));
 
 const getItemsWithFilter: (state: IReactVaporState, ownProps: ISelectWithFilterProps) => IItemBoxProps[] = createSelector(
-    [getItems, getFilterText, getMatchFilter],
+    getItems,
+    (state: IReactVaporState, ownProps: ISelectWithFilterProps) => FilterBoxSelectors.getFilterText(state, {id: ownProps.id}),
+    (state: IReactVaporState, ownProps: ISelectWithFilterProps) => FilterBoxSelectors.getMatchFilter(state, {matchFilter: ownProps.matchFilter}),
     itemsWithFilterCombiner,
 );
 
@@ -96,11 +87,9 @@ const getMultiSelectSelectedValues: (state: IReactVaporState, ownProps: IMultiSe
 );
 
 export const SelectSelector = {
-    getFilterText,
     getListState,
     getListBox,
     getItems,
-    getMatchFilter,
     getListBoxSelected,
     getListBoxActive,
     getSelectOpened,

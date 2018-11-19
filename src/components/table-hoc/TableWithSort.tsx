@@ -6,6 +6,7 @@ import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
+import {TableSelectors} from './TableSelectors';
 
 export interface ITableWithSortConfig extends IMaybeServerConfig {
     sort?: (sortKey: string, isAsc: boolean, a: any, b: any) => number;
@@ -26,7 +27,7 @@ export type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps & IT
 
 export const tableWithSort = (config: ITableWithSortConfig) => (Component: SortableTableComponent): SortableTableComponent => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithSortStateProps | ITableHOCOwnProps => {
-        const tableSort: ITableWithSortState = _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === ownProps.id && _.isBoolean(v.isAsc));
+        const tableSort: ITableWithSortState = TableSelectors.getSort(state, ownProps);
         const sort = config.sort || defaultSort;
         if (tableSort && ownProps.data) {
             return {

@@ -7,9 +7,11 @@ import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
 import {NavigationConnected} from '../navigation/NavigationConnected';
+import {NavigationSelectors} from '../navigation/NavigationSelectors';
 import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
 import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
 import {TableHOCUtils} from './TableHOCUtils';
+import {TableSelectors} from './TableSelectors';
 
 export interface ITableWithPaginationConfig extends IMaybeServerConfig {}
 
@@ -35,31 +37,19 @@ const sliceData = (data: any[], startingIndex: number, endingIndex: number) => d
 
 export const tableWithPagination = (config: ITableWithPaginationConfig & Partial<INavigationOwnProps & INavigationChildrenProps> = {}) => (Component: (React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>)): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithPaginationStateProps | ITableHOCOwnProps => {
-        const paginationState = _.findWhere(state.paginationComposite, {id: TableHOCUtils.getPaginationId(ownProps.id)});
-        const perPageState = _.findWhere(state.perPageComposite, {id: ownProps.id}) || {perPage: 20};
-        const tablePaginationState = _.findWhere(state.tableHOCPagination, {id: ownProps.id});
+        const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
+        const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
+        const length = TableSelectors.getDataCount(state, {id: ownProps.id, data: ownProps.data, isServer: config.isServer});
 
-        if (paginationState && perPageState) {
-            const length = config.isServer
-                ? tablePaginationState && tablePaginationState.count || 0
-                : ownProps.data && ownProps.data.length || 0;
+        const startingIndex = pageNb * perPage;
+        const endingIndex = startingIndex + perPage;
 
-            const startingIndex = paginationState.pageNb * perPageState.perPage;
-            const endingIndex = startingIndex + perPageState.perPage;
-
-            return {
-                pageNb: paginationState.pageNb,
-                perPage: perPageState.perPage,
-                totalEntries: length,
-                totalPages: Math.ceil(length / perPageState.perPage),
-                data: config.isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
-            };
-        }
         return {
-            totalEntries: 0,
-            totalPages: 0,
-            perPage: 0,
-            pageNb: 0,
+            pageNb,
+            perPage,
+            totalEntries: length,
+            totalPages: Math.ceil(length / perPage),
+            data: config.isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
         };
     };
 

@@ -178,7 +178,7 @@ class App extends React.Component<{}, AppState> {
         {component: TableRowConnectedExamples, componentName: 'TableRowConnected'},
         {component: TableEmptyRowExamples, componentName: 'TableEmptyRow'},
         {component: TableHeaderExamples, componentName: 'TableHeader'},
-        {component: TableExamples, componentName: 'Table'},
+        {component: TableExamples, componentName: 'Table (Deprecated)'},
         {component: TableWithDisabledRowsExamples, componentName: 'TableWithDisabledRows'},
         {component: OptionsCycleExamples, componentName: 'OptionsCycle'},
         {component: OptionsCycleConnectedExamples, componentName: 'OptionsCycleConnected'},

@@ -6,15 +6,17 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
+import {MatchFilter} from '../../utils/FilterUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
 import {Button, IButtonProps} from '../button/Button';
 import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
+import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {Svg} from '../svg/Svg';
 import {ISelectOwnProps, ISelectSpecificProps} from './SelectConnected';
-import {MatchFilter, SelectSelector} from './SelectSelector';
+import {SelectSelector} from './SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];
@@ -51,7 +53,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
 
     const makeMapStateToProps = () => {
         const getStateProps = createStructuredSelector({
-            filterValue: SelectSelector.getFilterText,
+            filterValue: FilterBoxSelectors.getFilterText,
             items: SelectSelector.getCustomItemsWithFilter,
             selected: SelectSelector.getListBoxSelected,
         });
