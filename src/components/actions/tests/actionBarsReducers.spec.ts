@@ -1,6 +1,10 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
+import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
+import {changePage} from '../../navigation/pagination/NavigationPaginationActions';
+import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
+import {TableHOCUtils} from '../../table-hoc/TableHOCUtils';
 import {ActionBarActions, IActionBarPayload, IChangeActionBarActionsPayload} from '../ActionBarActions';
 import {
     actionBarInitialState,
@@ -151,6 +155,26 @@ describe('Actions', () => {
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).isLoading).toBe(false);
                 expect(actionBarsState.filter(((actionBar) => actionBar.id !== oldState[2].id)))
                     .toEqual(oldState.filter(((actionBar) => actionBar.id !== oldState[2].id)));
+            });
+
+            it('should remove the actions when a change perPage action is dispatched and contain its id', () => {
+                const newPerPage = 5;
+                const actionBarsState = actionBarsReducer(oldState, changePerPage(oldState[2].id, newPerPage));
+
+                expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
+            });
+
+            it('should remove the actions when a change page action is dispatched and contain its id', () => {
+                const newPage = 5;
+                const actionBarsState = actionBarsReducer(oldState, changePage(TableHOCUtils.getPaginationId(oldState[2].id), newPage));
+
+                expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
+            });
+
+            it('should remove the actions when a change select action is dispatched and contain its id', () => {
+                const actionBarsState = actionBarsReducer(oldState, selectListBoxOption(oldState[2].id, false, 'new-value'));
+
+                expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
             });
         });
     });

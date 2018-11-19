@@ -122,6 +122,9 @@ export interface ITableDispatchProps {
 
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps {}
 
+/*
+ * @deprecated use the TableHOC
+ */
 export class Table extends React.Component<ITableProps> {
     private isInitialLoad: boolean;
 

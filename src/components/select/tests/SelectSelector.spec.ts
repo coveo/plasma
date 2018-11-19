@@ -1,11 +1,10 @@
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
-import {defaultMatchFilter} from '../../../utils/FilterUtils';
-import {IFilterState} from '../../filterBox/FilterBoxReducers';
+import {MatchFilter} from '../../../utils/FilterUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {MatchFilter, SelectCombiners, SelectSelector} from '../SelectSelector';
+import {SelectCombiners, SelectSelector} from '../SelectSelector';
 import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {
@@ -19,17 +18,6 @@ describe('Select', () => {
         };
         const defaultOwnProps: ISelectWithFilterProps = {id};
         const list: string[] = ['a', 'b'];
-
-        describe('getFilterText', () => {
-            it('should return an empty filterText if it is not in the state', () => {
-                expect(SelectSelector.getFilterText(defaultState, defaultOwnProps)).toEqual('');
-            });
-
-            it('should return the filterText in the state if the id is in the state', () => {
-                const filter: IFilterState = {id, filterText: 'text'};
-                expect(SelectSelector.getFilterText({filters: [filter]}, defaultOwnProps)).toEqual(filter.filterText);
-            });
-        });
 
         describe('getListState', () => {
             it('should not throw when passing falsy values and return an empty array', () => {
@@ -64,17 +52,6 @@ describe('Select', () => {
             it('should return the filterText in the state if the id is in the state', () => {
                 const items: IItemBoxProps[] = [{value: 'a'}];
                 expect(SelectSelector.getItems(defaultState, {id, items})).toEqual(items);
-            });
-        });
-
-        describe('getMatchFilter', () => {
-            it('should return the defaultMatchFilter if the matchFilter is not defined in the ownProps', () => {
-                expect(SelectSelector.getMatchFilter(defaultState, defaultOwnProps)).toEqual(defaultMatchFilter);
-            });
-
-            it('should return the matchFilter if it is defined in the ownProps', () => {
-                const matchFilter: MatchFilter = () => true;
-                expect(SelectSelector.getMatchFilter(defaultState, {id, matchFilter})).toEqual(matchFilter);
             });
         });
 

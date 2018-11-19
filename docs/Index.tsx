@@ -96,6 +96,8 @@ import {SvgExamples} from '../src/components/svg/examples/SvgExamples';
 import {Svg} from '../src/components/svg/Svg';
 import {SyncFeedbackExample} from '../src/components/syncFeedback/examples/SyncFeedbackExample';
 import {TabsExamples} from '../src/components/tab/examples/TabConnectedExample';
+import {TableHOCExamples} from '../src/components/table-hoc/examples/TableHOCExamples';
+import {TableHOCServerExamples} from '../src/components/table-hoc/examples/TableHOCServerExamples';
 import {TableWithDisabledRowsExamples} from '../src/components/tables/examples/TableDisabledRowsExamples';
 import {TableEmptyRowExamples} from '../src/components/tables/examples/TableEmptyRowExamples';
 import {TableExamples} from '../src/components/tables/examples/TableExamples';
@@ -218,7 +220,7 @@ class App extends React.Component<{}, AppState> {
         {component: TableRowConnectedExamples, componentName: 'TableRowConnected'},
         {component: TableEmptyRowExamples, componentName: 'TableEmptyRow'},
         {component: TableHeaderExamples, componentName: 'TableHeader'},
-        {component: TableExamples, componentName: 'Table'},
+        {component: TableExamples, componentName: 'Table (Deprecated)'},
         {component: TableWithDisabledRowsExamples, componentName: 'TableWithDisabledRows'},
         {component: OptionsCycleExamples, componentName: 'OptionsCycle'},
         {component: OptionsCycleConnectedExamples, componentName: 'OptionsCycleConnected'},
@@ -255,6 +257,8 @@ class App extends React.Component<{}, AppState> {
         {component: StatusCardExamples, componentName: 'StatusCard'},
         {component: ActionableItemExamples, componentName: 'ActionableItem'},
         {component: PopoverConnectedExamples, componentName: 'Popover'},
+        {component: TableHOCExamples, componentName: 'Table (hoc)'},
+        {component: TableHOCServerExamples, componentName: 'Table (server + hoc)'},
         {component: ColorExamples, componentName: 'Color'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
@@ -263,7 +267,7 @@ class App extends React.Component<{}, AppState> {
     constructor(props: {}, state: AppState) {
         super(props, state);
 
-        const componentIdFromHash = window.location.hash.replace(/^#/, '');
+        const componentIdFromHash = this.getHash();
         const firstComponentId = this.components.sort(this.sortComponentsByName);
         this.state = {
             activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || firstComponentId[0].componentName,
@@ -272,7 +276,7 @@ class App extends React.Component<{}, AppState> {
     }
 
     componentDidMount() {
-        const el = document.querySelector(`[href="${window.location.hash}"]`);
+        const el = document.querySelector(`[href="#${this.getHash()}"]`);
 
         if (el) {
             el.scrollIntoView({behavior: 'instant', block: 'center'});
@@ -315,6 +319,10 @@ class App extends React.Component<{}, AppState> {
     private activateItem = (id: string) => {
         this.setState({activeComponentId: id});
         window.location.hash = id;
+    }
+
+    private getHash = () => {
+        return decodeURIComponent(window.location.hash.replace(/^#/, ''));
     }
 }
 
