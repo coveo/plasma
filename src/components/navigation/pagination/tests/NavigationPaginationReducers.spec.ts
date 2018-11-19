@@ -1,5 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../../utils/ReduxUtils';
+import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {modifyState} from '../../../tables/TableActions';
 import {
     IChangePaginationActionPayload,
@@ -175,6 +176,28 @@ describe('Reducers', () => {
             };
 
             expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(oldState.pageNb);
+        });
+
+        it('should set the page number at 0 for the filterThrough action if the filter id is in the pagination id', () => {
+            const filterId = 'some-filter-id';
+            const oldState: IPaginationState = {
+                id: `pagination-${filterId}`,
+                pageNb: 22,
+            };
+
+            const action = filterThrough(filterId, 'new filter value');
+            expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(0);
+        });
+
+        it('should not set the page number at 0 for the filterThrough action if the filter id is not in the pagination id', () => {
+            const filterId = 'some-filter-id';
+            const oldState: IPaginationState = {
+                id: `pagination-different-filter-id`,
+                pageNb: 22,
+            };
+
+            const action = filterThrough(filterId, 'new filter value');
+            expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(oldState.pageNb);
         });
     });
 });
