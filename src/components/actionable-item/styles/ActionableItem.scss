@@ -8,6 +8,10 @@ $actionable-item-dots-width: 12px;
     actionableItemDotsWidthWithPadding: $actionable-item-dots-padding-x * 2 + $actionable-item-dots-width + $button-border-width;
 }
 
+.actionableItemContainer {
+    height: $button-height;
+}
+
 .actionableItemContent,
 .actionableItemDots {
     border-radius: $border-radius;
