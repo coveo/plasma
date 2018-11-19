@@ -32,7 +32,7 @@ export class ActionableItem extends React.Component<any> {
                                 offset={`0 -${actionableItemDotsWidthWithPadding}`}
                             >
                                 <div className={classNames('actionable-item-dots cursor-pointer inline-block mod-border-top mod-border-right border-color-medium-grey mod-border-bottom bg-pure-white', actionableItemDots, actionableItemContainer)}>
-                                    <Svg svgName='more-append' svgClass='icon mod-12' />
+                                    <Svg svgName='more-append' svgClass='icon mod-12 fill-medium-blue' />
                                 </div>
                                 <ListBox items={this.props.actions} />
                             </PopoverConnected>
