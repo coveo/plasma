@@ -12,6 +12,7 @@ export interface IModalOwnProps {
      * To be used with ModalConnected only.
      */
     openOnMount?: boolean;
+    contentRef?: (el: HTMLDivElement) => void;
 }
 
 export interface IModalStateProps {
@@ -69,7 +70,7 @@ export class Modal extends React.Component<IModalProps, {}> {
 
         return (
             <div className={classes}>
-                <div className='modal-content'>
+                <div className='modal-content' ref={this.props.contentRef}>
                     {this.props.children}
                 </div>
             </div>
