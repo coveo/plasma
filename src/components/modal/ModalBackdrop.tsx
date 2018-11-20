@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys/index';
 import * as _ from 'underscore';
 
 import {keyCode} from '../../utils/InputUtils';
@@ -21,7 +22,9 @@ export interface IModalBackdropDispatchProps {
 export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {
 }
 
-export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
+const ModalBackdropPropsToOmit = keys<IModalBackdropProps>();
+
+export class ModalBackdrop extends React.Component<IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>> {
     static defaultProps: Partial<IModalBackdropProps> = {
         lastOpened: true,
     };
@@ -60,7 +63,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropProps, {}> {
         );
 
         return (
-            <div className={classes} onClick={() => this.handleClick()}>
+            <div {..._.omit(this.props, ModalBackdropPropsToOmit)} className={classNames(this.props.className, classes)} onClick={() => this.handleClick()}>
                 <div className='mask'></div>
             </div>
         );
