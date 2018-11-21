@@ -5,7 +5,6 @@ export const MenuActions = {
     add: 'ADD_MENU',
     remove: 'REMOVE_MENU',
     toggle: 'TOGGLE_MENU',
-    updateList: 'UPDATE_MENU',
 };
 
 export interface IMenuPayload {
@@ -14,9 +13,9 @@ export interface IMenuPayload {
     list?: IItemBoxProps[];
 }
 
-export const addMenu = (id: string, list: IItemBoxProps[]): IReduxAction<IMenuPayload> => ({
+export const addMenu = (id: string): IReduxAction<IMenuPayload> => ({
     type: MenuActions.add,
-    payload: {id, list},
+    payload: {id},
 });
 
 export const removeMenu = (id: string): IReduxAction<IMenuPayload> => ({
@@ -27,9 +26,4 @@ export const removeMenu = (id: string): IReduxAction<IMenuPayload> => ({
 export const toggleMenu = (id: string, open?: boolean): IReduxAction<IMenuPayload> => ({
     type: MenuActions.toggle,
     payload: {id, open},
-});
-
-export const updateListMenu = (id: string, list: IItemBoxProps[]): IReduxAction<IMenuPayload> => ({
-    type: MenuActions.updateList,
-    payload: {id, list},
 });

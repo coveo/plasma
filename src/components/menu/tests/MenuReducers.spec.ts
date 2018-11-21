@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {addMenu, IMenuPayload, removeMenu, toggleMenu, updateListMenu} from '../MenuActions';
+import {addMenu, IMenuPayload, removeMenu, toggleMenu} from '../MenuActions';
 import {IMenusState, IMenuState, menuCompositeInitialState, menuCompositeReducer, menuInitialState, menuReducer} from '../MenuReducers';
 
 describe('Menu', () => {
@@ -50,7 +50,7 @@ describe('Menu', () => {
 
             it('should return the old state with one more menu', () => {
                 const oldState: IMenusState = {[id]: {...menuInitialState, id}};
-                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id, []));
+                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id));
 
                 expect(newState[id].id).toBe(id);
             });
@@ -58,18 +58,9 @@ describe('Menu', () => {
             it('should not modify the old state', () => {
                 const oldState: IMenusState = {[id]: {...menuInitialState, id}};
                 const oldStateBefore = _.clone(oldState);
-                menuCompositeReducer(oldState, addMenu(id, []));
+                menuCompositeReducer(oldState, addMenu(id));
 
                 expect(oldState).toEqual(oldStateBefore);
-            });
-
-            it('should return the old state with the list in the menu', () => {
-                const list = [{value: 'test'}];
-
-                const oldState: IMenusState = {[id]: menuInitialState};
-                const newState: IMenusState = menuCompositeReducer(oldState, addMenu(id, list));
-
-                expect(newState[id].list).toEqual(list);
             });
         });
 
@@ -149,36 +140,6 @@ describe('Menu', () => {
                 menuCompositeReducer(oldState, toggleMenu(id, true));
 
                 expect(oldState).toEqual(oldStateBefore);
-            });
-        });
-
-        describe('UPDATE_MENU', () => {
-            const id = 'update-menu';
-            let defaultState: IMenusState;
-
-            beforeEach(() => {
-                defaultState = {
-                    [id]: {
-                        id,
-                        open: false,
-                        list: [{
-                            value: 'test',
-                        }],
-                    },
-                };
-            });
-
-            it('should update the current list in the state', () => {
-                const newList = [{
-                    value: 'test2',
-                    displayValue: 'test22',
-                }];
-
-                const oldState: IMenusState = defaultState;
-                const newState: IMenusState = menuCompositeReducer(oldState, updateListMenu(id, newList));
-
-                expect(newState[id].id).toBe(id);
-                expect(newState[id].list).toEqual(newList);
             });
         });
     });

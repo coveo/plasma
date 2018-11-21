@@ -73,6 +73,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
     predicates?: ITablePredicate[];
     prefixContent?: IContentProps;
     navigation?: true | INavigationChildrenProps;
+    pullLastUpdateLeft?: boolean;
     lastUpdatedLabel?: string;
     withoutLastUpdated?: boolean;
     withFixedHeader?: boolean;
@@ -121,6 +122,9 @@ export interface ITableDispatchProps {
 
 export interface ITableProps extends ITableOwnProps, ITableCompositeStateProps, ITableDispatchProps {}
 
+/*
+ * @deprecated use the TableHOC
+ */
 export class Table extends React.Component<ITableProps> {
     private isInitialLoad: boolean;
 
@@ -203,7 +207,7 @@ export class Table extends React.Component<ITableProps> {
             : <TableChildBlankSlate {...this.props} />;
 
         const tableChildLastUpdatedNode: React.ReactNode = !this.props.withoutLastUpdated
-            ? <TableChildLastUpdated {...this.props} />
+            ? <TableChildLastUpdated {...this.props} pullLeft={this.props.pullLastUpdateLeft} />
             : null;
 
         return (

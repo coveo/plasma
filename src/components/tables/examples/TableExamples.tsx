@@ -3,6 +3,7 @@ import * as loremIpsum from 'lorem-ipsum';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
 import {triggerAlertFunction} from '../../../utils/TestUtils';
@@ -14,12 +15,16 @@ import {GroupableCheckboxConnected} from '../../checkbox/GroupableCheckboxConnec
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {defaultTitle, link1} from '../../headers/examples/ExamplesUtils';
-import {IData, ITableRowData} from '../Table';
-import {ITableOwnProps} from '../Table';
+import {SingleSelectConnected} from '../../select/SingleSelectConnected';
+import {IData, ITableOwnProps, ITableRowData} from '../Table';
 import {addTableDataEntry, deleteTableDataEntry, modifyState, setIsInError, updateTableDataEntry} from '../TableActions';
 import {TableConnected} from '../TableConnected';
 import {DEFAULT_TABLE_DATA, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
-import {defaultTableStateModifier, dispatchPostTableStateModification, dispatchPreTableStateModification} from '../TableDataModifier';
+import {
+    defaultTableStateModifier,
+    dispatchPostTableStateModification,
+    dispatchPreTableStateModification,
+} from '../TableDataModifier';
 import {ITableCompositeState, ITableData, ITablesState, ITableState} from '../TableReducers';
 
 const generateText = () => loremIpsum({count: 1, sentenceUpperBound: 3});
@@ -623,7 +628,13 @@ export class TableExamples extends React.Component<any, any> {
                                 attributeName: 'attribute3',
                                 titleFormatter: _.identity,
                                 sort: true,
-                                attributeFormatter: _.identity,
+                                attributeFormatter: (a, b, c) => (
+                                    <SingleSelectConnected
+                                        key={c.id}
+                                        id={c.id}
+                                        items={[{value: 'a'}, {value: 'b'}]}
+                                    />
+                                ),
                             },
                         ]}
                         actionBar={{

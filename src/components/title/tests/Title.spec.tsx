@@ -40,7 +40,7 @@ describe('<Title/>', () => {
         });
 
         it('should not add the tooltip for the title', () => {
-            expect(titleComponent.find(Tooltip).props().title).toBe('');
+            expect(titleComponent.find(Tooltip).exists()).toBe(false);
         });
 
         it('should not render the documentation link', () => {

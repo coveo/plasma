@@ -1,6 +1,6 @@
 const prodConfig = require('./webpack.config.prod');
 
-prodConfig.output.filename = 'react-vapor.min.js';
+prodConfig.output.filename = '[name].min.js';
 prodConfig.optimization = {minimize: true};
 
 module.exports = prodConfig;

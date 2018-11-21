@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import * as _ from 'underscore';
 
 import {ISvgProps} from '../components/svg/Svg';
+import {IExampleServerTableState} from '../components/table-hoc/examples/TableHOCServerExampleReducer';
 import {ITooltipProps} from '../components/tooltip/Tooltip';
 import {IReactVaporState} from '../ReactVapor';
 import {ReactVaporReducers} from '../ReactVaporReducers';
@@ -13,6 +14,7 @@ import {CommonActions} from './ReduxUtils';
 
 export interface IReactVaporTestState extends IReactVaporState {
     lastAction?: Redux.Action;
+    tableHOCExample?: IExampleServerTableState;
 }
 
 export class TestUtils {
@@ -31,6 +33,10 @@ export class TestUtils {
 
     static randomDate() {
         return new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
+    }
+
+    static randomValue1To100() {
+        return Math.floor((Math.random() * 100) + 1);
     }
 
     static makeDebounceStatic() {
@@ -54,6 +60,8 @@ export class TestUtils {
         return TestContextContainer;
     }
 }
+
+export const defaultMapStateToProps = () => ({});
 
 export const defaultSvgProps: ISvgProps = {
     svgName: 'domain-google',

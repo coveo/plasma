@@ -62,7 +62,7 @@ describe('ListBox', () => {
 
             it('should return the old state with one more list box', () => {
                 const oldState: IListBoxState[] = [listBoxInitialState];
-                const newState: IListBoxState[] = listBoxesReducer(oldState, addListBox(id, []));
+                const newState: IListBoxState[] = listBoxesReducer(oldState, addListBox(id, items));
 
                 expect(newState.length).toBe(oldState.length + 1);
                 expect(newState[1].id).toBe(id);
@@ -186,10 +186,11 @@ describe('ListBox', () => {
         describe('UNSELECT_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
             const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const selected = _.chain(items).where({selected: true}).pluck('value').value();
             let defaultState: IListBoxState[];
+            let selected: any[];
 
             beforeEach(() => {
+                selected = _.chain(items).where({selected: true}).pluck('value').value();
                 defaultState = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
             });
 

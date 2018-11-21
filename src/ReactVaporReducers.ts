@@ -1,5 +1,4 @@
 import {ReducersMapObject} from 'redux';
-
 import {membersReducers} from '../docs/members-example/reducers/MembersReducers';
 import {actionBarsReducer} from './components/actions/ActionBarReducers';
 import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducers';
@@ -29,13 +28,18 @@ import {popoversReducer} from './components/popover/PopoverReducers';
 import {radioSelectsReducer} from './components/radio/RadioSelectReducers';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
+import {selectWithFilterCompositeReducer} from './components/select/SelectWithFilterReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from './components/tab/TabReducers';
+import {TableRowReducers} from './components/table-hoc/reducers/TableRowReducers';
+import {TableWithPaginationReducers} from './components/table-hoc/reducers/TableWithPaginationReducers';
+import {TableWithSortReducers} from './components/table-hoc/reducers/TableWithSortReducers';
 import {tableHeaderCellsReducer} from './components/tables/TableHeaderCellReducers';
 import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
+import {withEditingReducer} from './hoc/withEditing/withEditingReducers';
 import {IReactVaporState} from './ReactVapor';
 import {IReduxAction} from './utils/ReduxUtils';
 
@@ -46,6 +50,9 @@ const lastAction = (state: IReactVaporState = null, action: IReduxAction): IRedu
 export const ReactVaporReducers: ReducersMapObject = {
     autocompletes: autocompletesReducer,
     tables: tablesReducer,
+    tableHOCHeader: TableWithSortReducers,
+    tableHOCPagination: TableWithPaginationReducers,
+    tableHOCRow: TableRowReducers,
     membersCompositeState: membersReducers,
     lastUpdatedComposite: lastUpdatedCompositeReducer,
     filters: filterBoxesReducer,
@@ -81,5 +88,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     menus: menuCompositeReducer,
     radioSelects: radioSelectsReducer,
     popovers: popoversReducer,
+    selectWithFilter: selectWithFilterCompositeReducer,
+    dirtyComponents: withEditingReducer,
     lastAction,
 };

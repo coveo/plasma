@@ -9,6 +9,12 @@ export class ReduxUtils {
     static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
         return extend({}, stateProps, dispatchProps, ownProps);
     }
+
+    // Default MergeProps by react-redux
+    // https://github.com/reduxjs/react-redux/blob/master/docs/api.md
+    static defaultMergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
+        return extend({}, ownProps, stateProps, dispatchProps);
+    }
 }
 
 export const CommonActions = {

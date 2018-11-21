@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+
 import {Content, IContentProps} from '../content/Content';
 import {PartialStringMatch} from '../partial-string-match/PartialStringMatch';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
@@ -20,7 +21,7 @@ export interface IItemBoxProps {
     onOptionClick?: (option: IItemBoxProps) => void;
 }
 
-export class ItemBox extends React.Component<IItemBoxProps, any> {
+export class ItemBox extends React.Component<IItemBoxProps> {
 
     static defaultProps: Partial<IItemBoxProps> = {
         tooltip: {
@@ -28,14 +29,15 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
         },
         highlight: '',
     };
-    private el: any;
 
-    componentDidUpdate(prevProps: IItemBoxProps, prevState: IItemBoxProps) {
+    private listItem: HTMLLIElement;
+
+    componentDidUpdate(prevProps: IItemBoxProps) {
         if (!prevProps.active && this.props.active) {
             // First parent is the span of the tooltip, second is the list
-            const container = this.el.offsetParent;
+            const container = this.listItem.offsetParent as HTMLElement;
             if (container) {
-                this.scrollIfNeeded(this.el, container);
+                this.scrollIfNeeded(this.listItem, container);
             }
         }
     }
@@ -74,7 +76,7 @@ export class ItemBox extends React.Component<IItemBoxProps, any> {
         return (
             <Tooltip {...this.props.tooltip}>
                 <li
-                    ref={(li) => this.el = li}
+                    ref={(li: HTMLLIElement) => this.listItem = li}
                     className={this.getClasses()}
                     onClick={() => this.handleOnOptionClick()}
                     data-value={this.props.value}>

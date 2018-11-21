@@ -4,8 +4,13 @@ import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ITooltipProps} from '../../tooltip/Tooltip';
 import {ListBox} from '../ListBox';
 import {ListBoxConnected} from '../ListBoxConnected';
+import {ListBoxExampleConnected} from './ListBoxExampleConnected';
 
 export class ListBoxExamples extends React.Component {
+
+    private idSingle: string = 'listbox_connected_updated_single';
+    private idMulti: string = 'listbox_connected_updated_multi';
+
     render() {
         const triggerAlertFunction = (item: IItemBoxProps) => {
             alert(`The item value triggered is ${item.value}`);
@@ -76,9 +81,21 @@ export class ListBoxExamples extends React.Component {
                     </div>
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>List Box Connected (mutli)</label>
+                    <label className='form-control-label'>List Box Connected (multi)</label>
                     <div className='form-control'>
                         <ListBoxConnected id={UUID.generate()} items={defaultItems} multi />
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>List Box Connected updated with new options (single)</label>
+                    <div className='form-control'>
+                        <ListBoxExampleConnected id={this.idSingle} items={defaultItems} />
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>List Box Connected updated with new options (multi)</label>
+                    <div className='form-control'>
+                        <ListBoxExampleConnected id={this.idMulti} items={defaultItems} multi />
                     </div>
                 </div>
             </div>
