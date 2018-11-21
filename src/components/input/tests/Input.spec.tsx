@@ -41,7 +41,7 @@ describe('Input', () => {
 
         it('should set inner input id when specified', () => {
             const id = 'yo';
-            expect(input.find('input').first().prop('id')).toBe(undefined);
+            expect(input.find('input').first().prop('id')).not.toBe(id);
 
             input.setProps({id});
             expect(input.find('input').first().prop('id')).toBe(id);
