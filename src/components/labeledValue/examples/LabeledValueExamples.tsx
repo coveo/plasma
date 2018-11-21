@@ -51,6 +51,13 @@ export const LabeledValueExamples = () =>
                 informationPlacement={TooltipPlacement.Bottom} />
         </div>
         <div className='form-group'>
+            <label className='form-control-label'>Labeled Value rendered on a single line</label>
+            <LabeledValue
+                label='Label'
+                value='value'
+                singleLine={true} />
+        </div>
+        <div className='form-group'>
             <label className='form-control-label'>Labeled Value with JSX.Element as value</label>
             <LabeledValue
                 label='Label'
