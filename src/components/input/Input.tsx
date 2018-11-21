@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {contains, isUndefined} from 'underscore';
+import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
@@ -57,6 +57,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
     private innerInput: HTMLInputElement;
 
     static defaultProps: Partial<IInputProps> = {
+        id: uniqueId('input'),
         type: 'text',
         valid: true,
     };
