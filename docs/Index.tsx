@@ -232,7 +232,7 @@ class App extends React.Component<{}, AppState> {
         {component: DatePickerDropdownConnectedExamples, componentName: 'DatePickerDropdownConnected'},
         {component: DatePickerDropdownConnectedSingleDateExamples, componentName: 'DatePickerDropdownConnectedSingleDate'},
         {component: MultilineInputExamples, componentName: 'MultilineInput'},
-        {component: BlankSlateExample, componentName: 'BlankSlat'},
+        {component: BlankSlateExample, componentName: 'BlankSlate'},
         {component: ToastExamples, componentName: 'Toast'},
         {component: ToastConnectedExamples, componentName: 'ToastConnected'},
         {component: InputAndInputConnectedExamples, componentName: 'InputAndInputConnected'},

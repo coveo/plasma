@@ -95,5 +95,17 @@ describe('LabeledValue', () => {
             labeledValue.setProps({'padding': false});
             expect(labeledValue.find('.box').hasClass('padded')).toBe(false);
         });
+
+        it('should have the singleLine prop set to true and not have the singleLine class by default', () => {
+            expect(LabeledValue.defaultProps.singleLine).toBeFalsy();
+            expect(labeledValue.find('.label').hasClass('inline-block')).toBe(false);
+            expect(labeledValue.find('.value').hasClass('inline-block')).toBe(false);
+        });
+
+        it('should have the singleLine class if prop singleLine is set to true', () => {
+            labeledValue.setProps({'singleLine': true});
+            expect(labeledValue.find('.label').hasClass('inline-block')).toBe(true);
+            expect(labeledValue.find('.value').hasClass('inline-block')).toBe(true);
+        });
     });
 });

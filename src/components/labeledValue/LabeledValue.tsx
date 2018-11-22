@@ -11,6 +11,7 @@ export interface ILabeledValueProps {
     information?: string;
     informationPlacement?: TooltipPlacement;
     padding?: boolean;
+    singleLine?: boolean;
     className?: string;
 }
 
@@ -38,13 +39,19 @@ export class LabeledValue extends React.PureComponent<ILabeledValueProps> {
                     this.props.className,
                 )}
             >
-                <header className='label'>
+                <header className={classNames(
+                    'label',
+                    {'inline-block': this.props.singleLine},
+                )}>
                     <span className={classNames({mr1: !!this.props.information})}>
                         {this.props.label}
                     </span>
                     {informationSVG}
                 </header>
-                <section className='value'>{this.props.value}</section>
+                <section className={classNames(
+                    'value',
+                    {'inline-block': this.props.singleLine},
+                )}>{this.props.value}</section>
             </div>
         );
     }
