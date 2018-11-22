@@ -16,7 +16,7 @@ export interface IModalBackdropStateProps {
 }
 
 export interface IModalBackdropDispatchProps {
-    onClick?: (id?: string) => void;
+    onClick?: () => void;
 }
 
 export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {
@@ -24,7 +24,9 @@ export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackd
 
 const ModalBackdropPropsToOmit = keys<IModalBackdropProps>();
 
-export class ModalBackdrop extends React.Component<IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>> {
+export type IModalBackdropAllProps = IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>;
+
+export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
     static defaultProps: Partial<IModalBackdropProps> = {
         lastOpened: true,
     };
