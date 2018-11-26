@@ -74,10 +74,24 @@ describe('Menu', () => {
                 expect((menuWrapper.find('.select-dropdown-container').instance() as any).style.right).toBe('8px');
             });
 
-            it('should add custom classes on dropdown element', () => {
+            it('should add custom classes on the element', () => {
                 mountMenuConnected([], {className: 'test'});
 
                 expect(menuWrapper.find('.dropdown').hasClass('test')).toBe(true);
+            });
+
+            it('should add custom classes on the toggle element', () => {
+                const expectedClass = 'test';
+                mountMenuConnected([], {toggleClassName: expectedClass});
+
+                expect(menuWrapper.find('.menu-toggle').hasClass(expectedClass)).toBe(true);
+            });
+
+            it('should add custom classes on the dropdown element', () => {
+                const expectedClass = 'test';
+                mountMenuConnected([], {dropdownClassName: expectedClass});
+
+                expect(menuWrapper.find('.select-dropdown-container').hasClass(expectedClass)).toBe(true);
             });
 
             it('should add the custom svg', () => {

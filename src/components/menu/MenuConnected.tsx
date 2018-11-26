@@ -8,8 +8,10 @@ import {addMenu, removeMenu, toggleMenu} from './MenuActions';
 import {IMenuState} from './MenuReducers';
 
 export interface IMenuOwnProps {
-    className?: string;
     id: string;
+    className?: string;
+    toggleClassName?: string;
+    dropdownClassName?: string;
     positionRight?: boolean;
     closeOnSelectItem?: boolean;
     buttonSvg?: React.ReactNode;
@@ -76,13 +78,13 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                 open: this.props.isOpen,
             },
         );
-        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {
+        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', this.props.dropdownClassName, {
             hidden: !this.props.isOpen,
         });
         return (
             <div className={pickerClasses}>
                 <button
-                    className={classNames('btn menu-toggle', {'bg-light-grey': this.props.isOpen})}
+                    className={classNames('btn menu-toggle', this.props.toggleClassName, {'bg-light-grey': this.props.isOpen})}
                     type='button'
                     onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
                     ref={(ref: HTMLButtonElement) => this.button = ref}
