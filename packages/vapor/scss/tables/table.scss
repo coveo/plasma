@@ -6,6 +6,7 @@
 
   border: none;
   border-spacing: 0;
+  border-collapse: collapse;
 
   th, td {
     position: relative;
@@ -89,10 +90,6 @@
         background-color: $light-grey;
       }
     }
-
-    &:first-child {
-      padding-left: 20px;
-    }
   }
 
   thead.mod-no-border-top th {
@@ -108,13 +105,10 @@
 
     font-size: $table-row-font-size;
     line-height: $table-row-line-height;
+    position: relative;
 
     &.disabled div.wrapper {
       opacity: 0.4;
-    }
-
-    &:first-child {
-      padding-left: 10px;
     }
 
     &:not(.no-hover):not(.collapsible-row):not(.empty):hover td {
@@ -132,8 +126,14 @@
         background-color: $white;
       }
 
-      td:first-child {
-        border-left-color: $orange;
+      td:first-child::before {
+        background-color: $orange;
+        content: '';
+        width: 5px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        position: absolute;
       }
     }
 
@@ -144,7 +144,6 @@
 
   td {
     padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
-    margin-left: 15px;
 
     text-align: left;
 
@@ -155,10 +154,6 @@
       overflow: hidden;
 
       text-overflow: ellipsis;
-    }
-
-    &:first-child {
-      border-left: $table-selected-border-width solid transparent;
     }
 
     &.edit.enabled {
