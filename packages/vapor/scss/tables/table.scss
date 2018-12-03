@@ -5,8 +5,8 @@
   text-align: left;
 
   border: none;
-  border-spacing: 0;
   border-collapse: collapse;
+  border-spacing: 0;
 
   th, td {
     position: relative;
@@ -101,11 +101,12 @@
   }
 
   tr {
+    position: relative;
+
     height: $table-row-height;
 
     font-size: $table-row-font-size;
     line-height: $table-row-line-height;
-    position: relative;
 
     &.disabled div.wrapper {
       opacity: 0.4;
@@ -127,13 +128,7 @@
       }
 
       td:first-child::before {
-        background-color: $orange;
-        content: '';
-        width: 5px;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        position: absolute;
+        @extend %selection-indicator;
       }
     }
 
@@ -239,7 +234,7 @@ $row-style: (
 
 @each $style, $color in $row-style {
   .row-#{$style} {
-    > td:first-child {
+     > td:first-child {
       color: $color;
 
       border-left-color: $color;
@@ -251,7 +246,7 @@ $row-style: (
 }
 .row-disabled {
   color: $dark-medium-grey;
-  > td:first-child {
+   > td:first-child {
     border-left-color: $dark-medium-grey;
   }
   svg {
