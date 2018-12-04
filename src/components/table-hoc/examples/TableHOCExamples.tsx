@@ -1,8 +1,10 @@
 import {helpers, seed} from 'faker';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
+import {TableRowConnected} from '../TableRowConnected';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
@@ -88,6 +90,13 @@ export class TableHOCExamples extends React.Component {
                 <td key='username'>{data.username.toLowerCase()}</td>
             </tr>
         ));
+        const generateCollapsibleRow = (data: IExampleRowData) => (
+            <div className='p2'>
+                <div>Hey there, I am collapsible information about</div>
+                <div>{JSON.stringify(data)}</div>
+            </div>
+        );
+
         return (
             <div className='mt2'>
                 <div className='form-group'>
@@ -100,6 +109,32 @@ export class TableHOCExamples extends React.Component {
                         data={generateData(3)}
                         renderBody={generateRows}
                         tableHeader={<thead><tr><th>City</th><th>Email</th><th>Username</th></tr></thead>}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with collapsible rows
+                    </label>
+                    <TableHOC
+                        id='collapsible-rows'
+                        className='table mod-collapsible-rows'
+                        data={generateData(3)}
+                        renderBody={(allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
+                            <TableRowConnected
+                                tableId='collapsible-rows'
+                                key={data.username}
+                                id={data.username}
+                                collapsible={{
+                                    content: generateCollapsibleRow(data),
+                                }}
+                            >
+                                <td key='city'>{data.city}</td>
+                                <td key='email'>{data.email.toLowerCase()}</td>
+                                <td key='username'>{data.username.toLowerCase()}</td>
+                            </TableRowConnected>
+                        ))}
+                        tableHeader={<thead><tr><th>City</th><th>Email</th><th>Username</th><th></th></tr></thead>}
                     />
                 </div>
 
