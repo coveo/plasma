@@ -1,6 +1,7 @@
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {createMockStore, mockStore} from 'redux-test-utils';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {TableRowActions} from '../actions/TableRowActions';
@@ -57,16 +58,16 @@ describe('Table HOC', () => {
             expect(wrapper.find('tr').hasClass('selected')).toBe(false);
         });
 
-        it('should dispatch a TableRowActions.addTableRow on componentDidMount', () => {
-            const expectedAction = TableRowActions.addTableRow(defaultProps.id, defaultProps.tableId);
+        it('should dispatch a TableRowActions.add on componentDidMount', () => {
+            const expectedAction = TableRowActions.add(defaultProps.id, defaultProps.tableId);
 
             shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
 
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch an TableRowActions.removeTableRow on componentWillUnmount', () => {
-            const expectedAction = TableRowActions.removeTableRow(defaultProps.id);
+        it('should dispatch an TableRowActions.remove on componentWillUnmount', () => {
+            const expectedAction = TableRowActions.remove(defaultProps.id);
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
             wrapper.unmount();
@@ -84,20 +85,26 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch an TableRowActions.selectRow on click', () => {
-            const expectedAction = TableRowActions.selectRow(defaultProps.id, false);
+        it('should dispatch a TableRowActions.select action on click when actions is not empty', () => {
+            const expectedAction = TableRowActions.select(defaultProps.id, false);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} />, store).dive();
             wrapper.find('tr').simulate('click', {});
 
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch an TableRowActions.selectRow on click and handle multi-select', () => {
-            const expectedActionWithMulti = TableRowActions.selectRow(defaultProps.id, true);
-            const expectedActionWithoutMulti = TableRowActions.selectRow(defaultProps.id, false);
+        it('should dispatch an TableRowActions.select on click and handle multi-select', () => {
+            const expectedActionWithMulti = TableRowActions.select(defaultProps.id, true);
+            const expectedActionWithoutMulti = TableRowActions.select(defaultProps.id, false);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} isMultiselect />, store).dive();
+            const wrapper = shallowWithStore(
+                <TableRowConnected
+                    {...defaultProps}
+                    actions={[{enabled: true, name: 'action'}]}
+                    isMultiselect />,
+                store,
+            ).dive();
 
             wrapper.find('tr').simulate('click', {ctrlKey: true});
             expect(store.isActionDispatched(expectedActionWithMulti)).toBe(true);

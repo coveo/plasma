@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {changePage} from '../../navigation/pagination/NavigationPaginationActions';
 import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
@@ -33,7 +34,7 @@ describe('Table HOC', () => {
             const expectedId = 'a';
             const expectedTableId = 'b';
             const expectedSelected = false;
-            const action = TableRowActions.addTableRow(expectedId, expectedTableId);
+            const action = TableRowActions.add(expectedId, expectedTableId);
 
             const oldState: ITableRowState[] = [];
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
@@ -63,7 +64,7 @@ describe('Table HOC', () => {
                     selected: true,
                 },
             ];
-            const action = TableRowActions.removeTableRow(oldState[1].id);
+            const action = TableRowActions.remove(oldState[1].id);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length - 1);
@@ -83,7 +84,7 @@ describe('Table HOC', () => {
                 },
             ];
 
-            const action = TableRowActions.selectRow(oldState[0].id, false);
+            const action = TableRowActions.select(oldState[0].id, false);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
@@ -104,7 +105,7 @@ describe('Table HOC', () => {
                 },
             ];
 
-            const action = TableRowActions.selectRow(oldState[0].id, true);
+            const action = TableRowActions.select(oldState[0].id, true);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
@@ -125,14 +126,14 @@ describe('Table HOC', () => {
                 },
             ];
 
-            const action = TableRowActions.selectRow(oldState[0].id);
+            const action = TableRowActions.select(oldState[0].id);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).selected).toBe(oldState[1].selected);
         });
 
         it('should not throw on select if the table row does not exists', () => {
             const oldState: ITableRowState[] = [];
-            const action = TableRowActions.selectRow('To be or not to be');
+            const action = TableRowActions.select('To be or not to be');
 
             expect(() => TableRowReducers(oldState, action)).not.toThrow();
         });

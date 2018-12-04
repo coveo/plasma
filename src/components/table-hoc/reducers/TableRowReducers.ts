@@ -15,7 +15,7 @@ export interface ITableRowState {
     id: string;
     tableId: string;
     selected: boolean;
-    opened: boolean;
+    opened?: boolean;
 }
 
 const addTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowAddPayload>) => {
