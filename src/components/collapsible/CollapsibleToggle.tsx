@@ -13,6 +13,6 @@ export const CollapsibleToggle: React.SFC<CollapsibleToggleProps> = ({expanded, 
     <Svg
         svgName={expanded ? 'arrow-top-rounded' : 'arrow-bottom-rounded'}
         svgClass={classNames('icon', svgClassName)}
-        className={classNames(className)}
+        className={className}
     />
 );
