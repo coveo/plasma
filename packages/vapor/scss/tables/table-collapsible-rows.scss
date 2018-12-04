@@ -1,8 +1,6 @@
 table {
   &.mod-collapsible-rows {
     tbody tr {
-      height: $table-collapsible-row-height;
-
       td {
         [data-collapse-state='collapsed'] {
           .state-expanded {
@@ -31,8 +29,6 @@ table {
 
       &.collapsible-row {
         height: 0;
-
-        line-height: 12px;
 
         > td {
           padding: 0;
