@@ -1,9 +1,9 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 
-import * as classNames from 'classnames';
 import {SlideY} from '../../animations/SlideY';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
-import {Svg} from '../svg/Svg';
+import {CollapsibleToggle} from './CollapsibleToggle';
 
 export interface CollapsibleOwnProps {
     id: string;
@@ -52,13 +52,13 @@ export class Collapsible extends React.Component<CollapsibleProps> {
                     onClick={() => this.handleHeaderClick()}
                 >
                     {this.props.headerContent}
-                    <Svg
-                        svgName={this.props.expanded ? 'arrow-top-rounded' : 'arrow-bottom-rounded'}
-                        svgClass={classNames('icon', this.props.toggleIconClassName)}
+                    <CollapsibleToggle
+                        expanded={this.props.expanded}
+                        svgClassName={this.props.toggleIconClassName}
                         className='mr3'
                     />
                 </div>
-                <SlideY in={this.props.expanded} timeout={Collapsible.TIMEOUT} duration={Collapsible.TIMEOUT}>
+                <SlideY id={this.props.id} in={this.props.expanded} timeout={Collapsible.TIMEOUT} duration={Collapsible.TIMEOUT}>
                     {this.props.children}
                 </SlideY>
             </div>
