@@ -31,13 +31,7 @@ export interface ISubNavigationProps extends ISubNavigationOwnProps, ISubNavigat
 
 const ISubNavigationPropsToOmit = keys<ISubNavigationProps>();
 
-export class SubNavigation extends React.Component<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> {
-
-    private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-        e.preventDefault();
-        callIfDefined(this.props.onClickItem, id);
-    }
-
+export class SubNavigation extends React.PureComponent<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> {
     componentWillMount() {
         callIfDefined(this.props.onRender);
     }
@@ -49,22 +43,21 @@ export class SubNavigation extends React.Component<ISubNavigationProps & React.H
     render() {
         const selected = this.props.selected || this.props.defaultSelected;
         const navProps = omit(this.props, ISubNavigationPropsToOmit);
-        const items = map(this.props.items, (item: ISubNavigationItem) => {
-            const classes = ['sub-navigation-item'];
-            if (item.id === selected) {
-                classes.push('mod-selected');
-            }
-            return (
-                <li key={item.id} className={classes.join(' ')}>
-                    <a
-                        href={item.link || '#'}
-                        className='sub-navigation-item-link'
-                        onClick={(e) => this.handleItemClick(e, item.id)}>
-                        {item.label}
-                    </a>
-                </li>
-            );
-        });
+        const items = map(this.props.items, ({id, link, label}: ISubNavigationItem) => (
+            <li
+                key={id}
+                className={classNames(
+                    'sub-navigation-item',
+                    {'mod-selected': id === selected},
+                )}>
+                <a
+                    href={link || '#'}
+                    className='sub-navigation-item-link'
+                    onClick={(e) => this.handleItemClick(e, id)}>
+                    {label}
+                </a>
+            </li>
+        ));
 
         return (
             <nav {...navProps} className={classNames('sub-navigation', navProps.className)}>
@@ -73,5 +66,10 @@ export class SubNavigation extends React.Component<ISubNavigationProps & React.H
                 </ul>
             </nav>
         );
+    }
+
+    private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault();
+        callIfDefined(this.props.onClickItem, id);
     }
 }
