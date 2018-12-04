@@ -129,7 +129,7 @@ export class TableRowConnected extends React.PureComponent<ITableRowConnectedPro
         let collapsibleRowToggle: React.ReactNode = null;
         if (rowIsCollapsible) {
             const customToggle = callIfDefined(this.props.collapsible.renderCustomToggleCell, this.props.opened);
-            collapsibleRowToggle = React.isValidElement(customToggle) || _.isString(customToggle)
+            collapsibleRowToggle = React.isValidElement(customToggle)
                 ? customToggle
                 : <td><CollapsibleToggle expanded={this.props.opened} svgClassName='mod-12' /></td>;
         }
