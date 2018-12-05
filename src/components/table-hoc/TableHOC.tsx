@@ -20,7 +20,7 @@ export interface ITableHOCOwnProps {
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
 
-export class TableHOC extends React.Component<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> {
+export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> {
     static defaultProps: Partial<ITableHOCOwnProps> = {
         isLoading: false,
         hasActionButtons: false,
