@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {createMockStore, mockStore} from 'redux-test-utils';
 
@@ -101,6 +101,24 @@ describe('Table HOC', () => {
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
             wrapper.find('tr').simulate('click', {});
+
+            expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+        });
+
+        it('should not dispatch a TableRowActions.select action on click when clicking inside an underlying dropdown', () => {
+            const actionNotExpected = TableRowActions.select(defaultProps.id, false);
+
+            // We must mount the component here because simulated events don't propagate throughout ShallowWrappers
+            const wrapper = mountWithStore(
+                <TableRowConnected
+                    {...defaultProps}
+                    actions={[{enabled: true, name: 'action'}]} >
+                    <td><div className='dropdown'></div></td>
+                </TableRowConnected>,
+                store,
+            );
+
+            wrapper.find('.dropdown').simulate('click');
 
             expect(store.isActionDispatched(actionNotExpected)).toBe(false);
         });

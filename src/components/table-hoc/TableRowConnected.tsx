@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
 import {IReactVaporState} from '../../ReactVapor';
+import {EventUtils} from '../../utils/EventUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
@@ -90,8 +91,10 @@ export class TableRowConnected extends React.PureComponent<ITableRowConnectedPro
     };
 
     private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
-        const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
-        this.props.onClick(isMulti);
+        if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
+            const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
+            this.props.onClick(isMulti);
+        }
     }
 
     componentDidMount() {
@@ -126,7 +129,7 @@ export class TableRowConnected extends React.PureComponent<ITableRowConnectedPro
             </tr>
         );
 
-        let collapsibleRowToggle: React.ReactNode = null;
+        let collapsibleRowToggle: React.ReactNode = [];
         if (rowIsCollapsible) {
             const customToggle = callIfDefined(this.props.collapsible.renderCustomToggleCell, this.props.opened);
             collapsibleRowToggle = React.isValidElement(customToggle)

@@ -2,6 +2,7 @@ import {helpers, seed} from 'faker';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {SingleSelectConnected} from '../../select/SingleSelectConnected';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
@@ -131,7 +132,7 @@ export class TableHOCExamples extends React.Component {
                             >
                                 <td key='city'>{data.city}</td>
                                 <td key='email'>{data.email.toLowerCase()}</td>
-                                <td key='username'>{data.username.toLowerCase()}</td>
+                                <td key='username'><SingleSelectConnected id={data.username + 'dropdown'} /></td>
                             </TableRowConnected>
                         ))}
                         tableHeader={<thead><tr><th>City</th><th>Email</th><th>Username</th><th></th></tr></thead>}
