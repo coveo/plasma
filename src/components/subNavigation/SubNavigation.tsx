@@ -1,5 +1,9 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
-import {map} from 'underscore';
+import {keys} from 'ts-transformer-keys';
+import {map, omit} from 'underscore';
+
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 
 export interface ISubNavigationOwnProps extends React.ClassAttributes<SubNavigation> {
     id?: string;
@@ -25,48 +29,47 @@ export interface ISubNavigationItem {
 
 export interface ISubNavigationProps extends ISubNavigationOwnProps, ISubNavigationStateProps, ISubNavigationDispatchProps {}
 
-export class SubNavigation extends React.Component<ISubNavigationProps, any> {
+const ISubNavigationPropsToOmit = keys<ISubNavigationProps>();
 
-    private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-        e.preventDefault();
-        if (this.props.onClickItem) {
-            this.props.onClickItem(id);
-        }
-    }
-
+export class SubNavigation extends React.PureComponent<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> {
     componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
+        callIfDefined(this.props.onRender);
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
+        callIfDefined(this.props.onDestroy);
     }
 
     render() {
         const selected = this.props.selected || this.props.defaultSelected;
-        const items = map(this.props.items, (item: ISubNavigationItem) => {
-            const classes = ['sub-navigation-item'];
-            if (item.id === selected) {
-                classes.push('mod-selected');
-            }
-            return (
-                <li key={item.id} className={classes.join(' ')}>
-                    <a href={item.link || '#'} className='sub-navigation-item-link'
-                        onClick={(e) => this.handleItemClick(e, item.id)}>{item.label}</a>
-                </li>
-            );
-        });
+        const navProps = omit(this.props, ISubNavigationPropsToOmit);
+        const items = map(this.props.items, ({id, link, label}: ISubNavigationItem) => (
+            <li
+                key={id}
+                className={classNames(
+                    'sub-navigation-item',
+                    {'mod-selected': id === selected},
+                )}>
+                <a
+                    href={link || '#'}
+                    className='sub-navigation-item-link'
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleItemClick(e, id)}>
+                    {label}
+                </a>
+            </li>
+        ));
 
         return (
-            <nav className='sub-navigation'>
+            <nav {...navProps} className={classNames('sub-navigation', navProps.className)}>
                 <ul className='sub-navigation-items'>
                     {items}
                 </ul>
             </nav>
         );
+    }
+
+    private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault();
+        callIfDefined(this.props.onClickItem, id);
     }
 }

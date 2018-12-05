@@ -1,10 +1,13 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {
-    ISubNavigationDispatchProps, ISubNavigationOwnProps, ISubNavigationProps, ISubNavigationStateProps,
+    ISubNavigationDispatchProps,
+    ISubNavigationOwnProps,
+    ISubNavigationProps,
+    ISubNavigationStateProps,
     SubNavigation,
 } from './SubNavigation';
 import {addSubNavigation, removeSubNavigation, selectSubNavigation} from './SubNavigationActions';
@@ -23,5 +26,5 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onClickItem: (itemId) => dispatch(selectSubNavigation(ownProps.id, itemId)),
 });
 
-export const SubNavigationConnected: React.ComponentClass<ISubNavigationProps> =
+export const SubNavigationConnected: React.ComponentClass<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> =
     connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SubNavigation);
