@@ -4,7 +4,6 @@ import {noop} from 'underscore';
 
 import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
 
-// tslint:disable-next-line:no-unused-variable
 describe('SubNavigation', () => {
     it('should render without errors', () => {
         expect(() => shallow(<SubNavigation items={[]} selected='' />)).not.toThrow();
@@ -23,8 +22,8 @@ describe('SubNavigation', () => {
 
     it('should call onDestroy when the element is created', () => {
         const spy = jasmine.createSpy('onDestroy');
-        const mounted = shallow(<SubNavigation items={[]} defaultSelected='' onDestroy={spy} />);
-        mounted.unmount();
+        const subNav = shallow(<SubNavigation items={[]} defaultSelected='' onDestroy={spy} />);
+        subNav.unmount();
 
         expect(spy).toHaveBeenCalledTimes(1);
     });

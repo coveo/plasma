@@ -53,7 +53,7 @@ export class SubNavigation extends React.PureComponent<ISubNavigationProps & Rea
                 <a
                     href={link || '#'}
                     className='sub-navigation-item-link'
-                    onClick={(e) => this.handleItemClick(e, id)}>
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleItemClick(e, id)}>
                     {label}
                 </a>
             </li>
