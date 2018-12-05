@@ -25,40 +25,41 @@ export interface IWithEditDispatchProps {
 
 export interface IWithEditingProps extends IWithEditStateProps, IWithEditDispatchProps {}
 
-export const withEditing = (config: IWithEditing) => (Component: React.ComponentClass): React.ComponentClass => {
-    const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
-        isDirty: getIsDirty(state, config.id),
-    });
+export const withEditing = <T, R = any>(config: IWithEditing) =>
+    (Component: React.ComponentClass): React.ComponentClass<Partial<IWithEditingProps> & T, R> => {
+        const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
+            isDirty: getIsDirty(state, config.id),
+        });
 
-    const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
-        toggleDirtyComponent: (isDirty: boolean) => dispatch(toggleDirtyComponent(config.id, isDirty)),
-    });
+        const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
+            toggleDirtyComponent: (isDirty: boolean) => dispatch(toggleDirtyComponent(config.id, isDirty)),
+        });
 
-    @ReduxConnect(mapStateToProps, mapDispatchToProps)
-    class ComponentWithEditing extends React.Component<IWithEditingProps> {
-        componentDidMount() {
-            this.props.toggleDirtyComponent(config.isDirty);
+        @ReduxConnect(mapStateToProps, mapDispatchToProps)
+        class ComponentWithEditing extends React.Component<Partial<IWithEditingProps> & T, R> {
+            componentDidMount() {
+                this.props.toggleDirtyComponent(config.isDirty);
+            }
+
+            componentWillUnmount() {
+                this.props.toggleDirtyComponent(false);
+            }
+
+            render() {
+                return (
+                    <div>
+                        <Component {...this.props}>
+                            {this.props.children}
+                        </Component>
+                        {config.footerChildren && (
+                            <StickyFooter className={classNames({[styles.stickyFooterOpened]: this.props.isDirty}, config.footerClassName)}>
+                                {config.footerChildren}
+                            </StickyFooter>
+                        )}
+                    </div>
+                );
+            }
         }
 
-        componentWillUnmount() {
-            this.props.toggleDirtyComponent(false);
-        }
-
-        render() {
-            return (
-                <div>
-                    <Component {...this.props}>
-                        {this.props.children}
-                    </Component>
-                    {config.footerChildren && (
-                        <StickyFooter className={classNames({[styles.stickyFooterOpened]: this.props.isDirty}, config.footerClassName)}>
-                            {config.footerChildren}
-                        </StickyFooter>
-                    )}
-                </div>
-            );
-        }
-    }
-
-    return ComponentWithEditing;
-};
+        return ComponentWithEditing;
+    };

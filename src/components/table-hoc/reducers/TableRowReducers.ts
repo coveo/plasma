@@ -1,14 +1,21 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
+
+import {BasePayload, IReduxAction} from '../../../utils/ReduxUtils';
 import {PaginationActions} from '../../navigation/pagination/NavigationPaginationActions';
 import {PerPageActions} from '../../navigation/perPage/NavigationPerPageActions';
-import {ITableRowAddPayload, ITableRowRemovePayload, ITableRowSelectPayload, TableRowActionsType} from '../actions/TableRowActions';
+import {
+    ITableRowAddPayload,
+    ITableRowSelectPayload,
+    ITableRowToggleCollapsiblePayload,
+    TableRowActionsType,
+} from '../actions/TableRowActions';
 import {TableHOCUtils} from '../TableHOCUtils';
 
 export interface ITableRowState {
     id: string;
     tableId: string;
     selected: boolean;
+    opened?: boolean;
 }
 
 const addTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowAddPayload>) => {
@@ -18,27 +25,46 @@ const addTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITable
             id: action.payload.id,
             tableId: action.payload.tableId,
             selected: false,
+            opened: false,
         },
     ];
 };
 
-const removeTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowRemovePayload>) => {
+const removeTableRowReducer = (state: ITableRowState[], action: IReduxAction<BasePayload>) => {
     return _.reject(state, (header: ITableRowState) => header.id === action.payload.id);
 };
 
 const selectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
-        return _.map(state, (header: ITableRowState) => {
-            if (header.id === current.id) {
+        return _.map(state, (row: ITableRowState) => {
+            if (row.id === current.id) {
                 return {
-                    ...header,
+                    ...row,
                     selected: true,
                 };
             }
-            return header.tableId === current.tableId
-                ? {...header, selected: header.selected && action.payload.isMulti}
-                : header;
+            return row.tableId === current.tableId
+                ? {...row, selected: row.selected && action.payload.isMulti}
+                : row;
+        });
+    }
+    return state;
+};
+
+const toggleCollasibleTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowToggleCollapsiblePayload>) => {
+    const current = _.findWhere(state, {id: action.payload.id});
+    if (current) {
+        return _.map(state, (row: ITableRowState) => {
+            if (row.id === current.id) {
+                return {
+                    ...row,
+                    opened: _.isBoolean(action.payload.opened) ? action.payload.opened : !current.opened,
+                };
+            }
+            return row.tableId === current.tableId
+                ? {...row, opened: false}
+                : row;
         });
     }
     return state;
@@ -56,11 +82,12 @@ const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {
     [TableRowActionsType.add]: addTableRowReducer,
     [TableRowActionsType.remove]: removeTableRowReducer,
     [TableRowActionsType.select]: selectTableRowReducer,
+    [TableRowActionsType.toggleCollapsible]: toggleCollasibleTableRowReducer,
     [PerPageActions.change]: deselectTableRowReducer,
     [PaginationActions.changePage]: deselectTableRowReducer,
 };
 
-type ITableRowPayload = ITableRowAddPayload | ITableRowRemovePayload | ITableRowSelectPayload;
+type ITableRowPayload = BasePayload | ITableRowAddPayload | ITableRowSelectPayload;
 export const TableRowReducers = (state: ITableRowState[] = [], action: IReduxAction<ITableRowPayload>) => {
     if (!_.isUndefined(TableRowActionReducers[action.type])) {
         return TableRowActionReducers[action.type](state, action);
