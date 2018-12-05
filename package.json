@@ -142,7 +142,7 @@
     "react-dnd-html5-backend": "2.5.1",
     "react-dnd-test-backend": "2.5.1",
     "react-dom": "16.5.2",
-    "react-redux": "5.1.1",
+    "react-redux": "6.0.0",
     "react-test-renderer": "16.5.2",
     "react-transition-group": "2.5.0",
     "redux": "4.0.0",
