@@ -1,10 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {JSXRenderable} from '../../utils/JSXUtils';
 
 export interface ISplitLayoutProps {
-    leftChildren?: JSXRenderable;
-    rightChildren?: JSXRenderable;
+    leftChildren?: React.ReactNode;
+    rightChildren?: React.ReactNode;
     className?: string | string[];
     leftContainerClassName?: string | string[];
     rightContainerClassName?: string | string[];
