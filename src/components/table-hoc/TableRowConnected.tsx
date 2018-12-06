@@ -40,6 +40,7 @@ export interface ITableRowDispatchProps {
     onMount: () => void;
     onUnmount: () => void;
     onClick: (isMulti: boolean) => void;
+    onUpdateToCollapsibleRow: () => void;
 }
 
 export interface ITableRowConnectedProps extends
@@ -80,20 +81,27 @@ const mapDispatchToProps = (
             dispatch(TableRowActions.toggleCollapsible(ownProps.id));
         }
     },
+    onUpdateToCollapsibleRow: () => {
+        if (ownProps.collapsible.expandOnMount) {
+            dispatch(TableRowActions.toggleCollapsible(ownProps.id, true));
+        }
+    },
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & React.HTMLAttributes<HTMLTableRowElement>> {
-    static defaultProps: Partial<ITableRowOwnProps> = {
-        actions: [],
-        isMultiselect: false,
-        collapsible: {},
-    };
+class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & React.HTMLAttributes<HTMLTableRowElement>> {
+    static defaultProps: Partial<ITableRowOwnProps>;
 
     private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
             this.props.onClick(isMulti);
+        }
+    }
+
+    componentDidUpdate(prevProps: ITableRowConnectedProps) {
+        if (!isCollapsible(prevProps) && isCollapsible(this.props)) {
+            this.props.onUpdateToCollapsibleRow();
         }
     }
 
@@ -160,3 +168,11 @@ export class TableRowConnected extends React.PureComponent<ITableRowConnectedPro
         );
     }
 }
+
+TableRowConnected.defaultProps = {
+    actions: [],
+    isMultiselect: false,
+    collapsible: {},
+};
+
+export {TableRowConnected};

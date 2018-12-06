@@ -243,5 +243,65 @@ describe('Table HOC', () => {
 
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
+
+        it('should dispatch a toggleCollapsible action with opened:true when changing from a non-collapsible to a collapsible row', () => {
+            const expectedAction = TableRowActions.toggleCollapsible(defaultProps.id, true);
+
+            store = createMockStore({
+                tableHOCRow: [{
+                    id: defaultProps.id,
+                    tableId: defaultProps.tableId,
+                    selected: false,
+                    opened: false,
+                }],
+            });
+
+            const row = shallowWithStore(
+                <TableRowConnected
+                    id={defaultProps.id}
+                    tableId={defaultProps.tableId}
+                    collapsible={{expandOnMount: true}}
+                />,
+                store,
+            ).dive();
+            expect(store.isActionDispatched(expectedAction)).toBe(false);
+
+            row.setProps({
+                collapsible: {
+                    expandOnMount: true,
+                    content: <div>Whatever</div>,
+                },
+            });
+            expect(store.isActionDispatched(expectedAction)).toBe(true);
+        });
+
+        it('should not dispatch a toggleCollapsible action when changing from a non-collapsible to a collapsible row if expandOnMount is false', () => {
+            const actionNotExpected = TableRowActions.toggleCollapsible(defaultProps.id, true);
+
+            store = createMockStore({
+                tableHOCRow: [{
+                    id: defaultProps.id,
+                    tableId: defaultProps.tableId,
+                    selected: false,
+                    opened: false,
+                }],
+            });
+
+            const row = shallowWithStore(
+                <TableRowConnected
+                    id={defaultProps.id}
+                    tableId={defaultProps.tableId}
+                />,
+                store,
+            ).dive();
+            expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+
+            row.setProps({
+                collapsible: {
+                    content: <div>Whatever</div>,
+                },
+            });
+            expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+        });
     });
 });
