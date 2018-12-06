@@ -167,6 +167,9 @@ describe('Table HOC', () => {
                         <td>Column 1</td>
                         <td>Column 2</td>
                         <td>Column 3</td>
+                        {null}
+                        {[]}
+                        {false}
                     </TableRowConnected>,
                     store,
                 ).dive();

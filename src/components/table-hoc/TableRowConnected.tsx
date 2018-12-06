@@ -92,13 +92,6 @@ const mapDispatchToProps = (
 class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & React.HTMLAttributes<HTMLTableRowElement>> {
     static defaultProps: Partial<ITableRowOwnProps>;
 
-    private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
-        if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
-            const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
-            this.props.onClick(isMulti);
-        }
-    }
-
     componentDidUpdate(prevProps: ITableRowConnectedProps) {
         if (!isCollapsible(prevProps) && isCollapsible(this.props)) {
             this.props.onUpdateToCollapsibleRow();
@@ -125,7 +118,7 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
                         'mod-border-bottom': this.props.opened,
                     },
                 )}>
-                <td colSpan={React.Children.count(this.props.children) + 1}>
+                <td colSpan={this.columnCount + 1}>
                     <SlideY
                         id={`${this.props.tableId}-${this.props.id}-collapsible`}
                         in={this.props.opened}
@@ -166,6 +159,17 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
                 {collapsibleContentRow}
             </React.Fragment>
         );
+    }
+
+    private get columnCount(): number {
+        return React.Children.toArray(this.props.children).filter((child: React.ReactChild) => React.isValidElement(child)).length;
+    }
+
+    private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
+        if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
+            const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
+            this.props.onClick(isMulti);
+        }
     }
 }
 
