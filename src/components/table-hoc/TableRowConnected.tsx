@@ -115,7 +115,7 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
                     'collapsible-row',
                     this.props.collapsible.className,
                     {
-                        'mod-border-bottom': this.props.opened,
+                        'in': this.props.opened,
                     },
                 )}>
                 <td colSpan={this.columnCount + 1}>
