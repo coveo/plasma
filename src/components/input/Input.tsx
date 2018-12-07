@@ -4,6 +4,7 @@ import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
+import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
@@ -49,10 +50,6 @@ export interface IInputDispatchProps {
 
 export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps {}
 
-export interface IInputState {
-    valid: boolean;
-}
-
 export class Input extends React.Component<IInputProps, IInputState> {
     private innerInput: HTMLInputElement;
 
@@ -66,7 +63,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
         super(props, state);
         this.state = {
             valid: this.props.valid,
-        };
+        } as IInputState;
     }
 
     componentWillMount() {
