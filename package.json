@@ -136,7 +136,7 @@
     "node-sass": "4.10.0",
     "postcss-loader": "3.0.0",
     "pre-commit": "1.2.2",
-    "rc-slider": "8.6.3",
+    "rc-slider": "8.6.4",
     "react": "16.6.3",
     "react-dnd": "2.5.1",
     "react-dnd-html5-backend": "2.5.1",
