@@ -155,7 +155,7 @@
     "sass-variable-loader": "0.1.2",
     "shelljs": "0.8.3",
     "style-loader": "0.23.1",
-    "ts-transformer-keys": "0.3.3",
+    "ts-transformer-keys": "0.3.4",
     "tsjs": "0.6.7",
     "tslint-loader": "3.6.0",
     "ttypescript": "1.5.5",
