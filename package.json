@@ -133,7 +133,7 @@
     "lorem-ipsum": "1.0.6",
     "merge-stream": "1.0.1",
     "moment": "2.22.2",
-    "node-sass": "4.10.0",
+    "node-sass": "4.11.0",
     "postcss-loader": "3.0.0",
     "pre-commit": "1.2.2",
     "rc-slider": "8.6.3",
