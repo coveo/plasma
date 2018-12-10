@@ -23,7 +23,7 @@ export interface ISubNavigationDispatchProps {
 
 export interface ISubNavigationItem {
     id: string;
-    label: string;
+    label: React.ReactNode;
     link?: string;
 }
 
