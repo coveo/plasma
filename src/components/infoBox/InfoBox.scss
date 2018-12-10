@@ -1,0 +1,21 @@
+@import '~coveo-styleguide/scss/common/palette';
+@import '~coveo-styleguide/scss/variables';
+
+$infoBoxPadding: 15px;
+$infoBoxBorderSize: 4px;
+$infoBoxAdditionnalLeftPadding: 10px;
+
+.infoBox {
+  border-left: $infoBoxBorderSize solid $azure;
+  border-radius: $border-radius;
+  padding: $infoBoxPadding $infoBoxPadding $infoBoxPadding ($infoBoxPadding + $infoBoxAdditionnalLeftPadding);
+
+  font-size: $blankslate-small-p-font-size;
+  line-height: $default-line-height;
+
+  box-shadow: 0 2px 4px 0 rgba($black, $transparency-5);
+}
+
+.infoBoxFooter {
+  margin-top: ($infoBoxPadding + $infoBoxAdditionnalLeftPadding);
+}
