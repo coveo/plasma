@@ -22,14 +22,17 @@ export class InfoBoxExamples extends React.PureComponent {
 
                 <div className='form-group'>
                     <label className='form-control-label'>Collapsible InfoBox</label>
-                    <InfoBox>
+                    <InfoBox className='py0'>
                         <CollapsibleConnected
+                            headerClasses='py2'
                             id='info-box-collapsible'
                             headerContent={<p className='bold'>Collapsible header</p>}
                             expandedOnMount
                         >
-                            <p className='mt2'>Some information about the current component.</p>
-                            <p className='mt2'>Or some other piece of information</p>
+                            <div className='pb2'>
+                                <p>Some information about the current component.</p>
+                                <p className='mt2'>Or some other piece of information</p>
+                            </div>
                         </CollapsibleConnected>
                     </InfoBox>
                 </div>

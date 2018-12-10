@@ -1,9 +1,9 @@
 @import '~coveo-styleguide/scss/common/palette';
 @import '~coveo-styleguide/scss/variables';
 
-$infoBoxPadding: 15px;
+$infoBoxPadding: 2 * $spacing;
 $infoBoxBorderSize: 4px;
-$infoBoxAdditionnalLeftPadding: 10px;
+$infoBoxAdditionnalLeftPadding: 3 * $spacing;
 
 .infoBox {
   border-left: $infoBoxBorderSize solid $azure;
