@@ -9,7 +9,14 @@
   display: flex;
   min-height: $table-actions-container-height;
 
-  background-color: $white;
+  // Workaround to make the action bar have a border between multiple rows
+  background: repeating-linear-gradient(
+                  $white,
+                  $white ($table-actions-container-height - 1),
+                  $medium-grey ($table-actions-container-height - 1),
+                  $medium-grey $table-actions-container-height
+  );
+  margin-bottom: -1px;
 }
 
 .coveo-table-actions {
