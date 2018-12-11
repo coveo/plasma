@@ -14,6 +14,10 @@ $transparency-4: 0.3;
 $transparency-5: 0.1;
 $transparencies: $transparency-1 $transparency-2 $transparency-3 $transparency-4 $transparency-5;
 
+// Breakpoints
+$breakpoint-desktop-small: 992px;
+$breakpoint-desktop-large: 1600px;
+
 // Border
 $border-radius: 2px;
 $big-border-radius: 4px;
@@ -91,7 +95,7 @@ $filter-box-height: 34px;
 $filter-box-small-height: 32px;
 $filter-box-small-font-size: 13px;
 $clear-icon-height: 12px;
-$screen-size-break-point: 1600px;
+$screen-size-break-point: $breakpoint-desktop-large;
 $filter-box-width-large-screen: 336px;
 $filter-box-width-small-screen: 260px;
 $filter-box-width-mod-small: 200px;
