@@ -113,6 +113,7 @@ $toast-close-size: 16px;
 
   .toast-close {
     float: right;
+    padding-left: $toast-close-padding-left;
 
     cursor: pointer;
 
