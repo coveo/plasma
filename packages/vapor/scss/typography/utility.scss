@@ -69,3 +69,9 @@
 .smaller {
   font-size: 0.8em;
 }
+
+.help-text {
+  color: $lynch;
+  font-size: $help-text-font-size;
+  line-height: $help-text-line-height;
+}
