@@ -203,8 +203,10 @@
   text-align: right;
 }
 
-.coveo-table-actions-container + table:not(.datepicker-table) th {
-  top: $table-actions-container-height;
+@supports ((position: sticky) or (postion: -webkit-sticky)) {
+  .coveo-table-actions-container + table:not(.datepicker-table) th {
+    top: $table-actions-container-height;
+  }
 }
 
 .table-container {
