@@ -1,12 +1,10 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
-import * as ReactTether from 'react-tether';
+import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
+
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
-// This is a hack since the tether definition file doesn't match the code
-// See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16909
-const TetherComponent = (ReactTether as any) as () => JSX.Element;
 
 export interface ITetherComponentCopiedProps {
     renderElementTag?: string;
@@ -59,11 +57,14 @@ export interface IPopoverState {
 }
 
 export class Popover extends React.Component<IPopoverProps, IPopoverState> {
-    private tetherToggle: HTMLElement;
-    private tetherElement: HTMLElement;
+    private tetherToggle: React.RefObject<HTMLDivElement>;
+    private tetherElement: React.RefObject<HTMLDivElement>;
 
     constructor(props: IPopoverProps, state: IPopoverState) {
         super(props, state);
+
+        this.tetherToggle = React.createRef();
+        this.tetherElement = React.createRef();
 
         // If onToggle wasn't passed, Popover is uncontrolled and we set an initial state.
         if (!_.isFunction(this.props.onToggle)) {
@@ -84,18 +85,19 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     }
 
     render() {
-        const tetherToggle = !!this.props.children && (this.props.children as JSX.Element[])[0];
-        const tetherElement = !!this.props.children && (this.props.children as JSX.Element[])[1];
+        const children = React.Children.toArray(this.props.children);
 
         const isOpen: boolean = this.state && this.state.isOpen || this.props.isOpen;
 
         return (
-            <TetherComponent {..._.omit(this.props, 'children')} >
-                <div ref={(toggle: HTMLElement) => this.tetherToggle = toggle} onClick={() => this.toggleOpened(!isOpen)}>
-                    {tetherToggle}
+            <TetherComponent
+                {..._.omit(this.props, 'children')}
+            >
+                <div ref={this.tetherToggle} onClick={() => this.toggleOpened(!isOpen)}>
+                    {children[0]}
                 </div>
-                <div className={classNames({hide: !isOpen})} ref={(element: HTMLElement) => this.tetherElement = element}>
-                    {tetherElement}
+                <div ref={this.tetherElement} className={classNames({hide: !isOpen})}>
+                    {children[1]}
                 </div>
             </TetherComponent>
         );
@@ -115,13 +117,11 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     // addEventListener and removeEventListener and therefore prevent leaking listeners.
     private handleDocumentClick: EventListener = (event: Event) => {
         if (this.props.isOpen) {
-            const tetherToggle: Element | Text = findDOMNode(this.tetherToggle);
-            const tetherElement: Element | Text = findDOMNode(this.tetherElement);
+            const tetherToggle: Element | Text = findDOMNode(this.tetherToggle.current);
+            const tetherElement: Element | Text = findDOMNode(this.tetherElement.current);
+            const target: Node = event.target as Node;
 
-            const outsideTetherToggle = !tetherToggle.contains(event.target as Node);
-            const outsideTetherElement = tetherElement ? !tetherElement.contains(event.target as Node) : true;
-
-            if (outsideTetherElement && outsideTetherToggle) {
+            if (!tetherElement.contains(target) && !tetherToggle.contains(target)) {
                 if (this.props.isModal) {
                     event.stopImmediatePropagation();
                     event.preventDefault();
