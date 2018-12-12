@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {IPopoverProps, Popover} from './Popover';
+import {IPopoverProps, Popover} from '../Popover';
 
 describe('<Popover>', () => {
     let popoverProps: IPopoverProps;
@@ -70,7 +70,7 @@ describe('<Popover>', () => {
             }).not.toThrow();
         });
 
-        it('should not throw when redering a Popover without childrens', () => {
+        it('should not throw when redering a Popover without children', () => {
             expect(() => {
                 shallow(
                     <Popover {...popoverProps} />,
