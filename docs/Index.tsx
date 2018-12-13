@@ -53,6 +53,7 @@ import {FlatSelectExamples} from '../src/components/flatSelect/examples/FlatSele
 import {FlippableExamples} from '../src/components/flippable/exemples/FlippableExamples';
 import {BasicHeaderExamples} from '../src/components/headers/examples/BasicHeaderExamples';
 import {BreadcrumbHeaderExample} from '../src/components/headers/examples/BreadcrumbHeaderExample';
+import {InfoBoxExamples} from '../src/components/infoBox/examples/InfoBoxExamples';
 import {InputAndInputConnectedExamples} from '../src/components/input/examples/InputAndInputConnectedExamples';
 import {ItemBoxExamples} from '../src/components/itemBox/examples/ItemBoxExamples';
 import {LabeledValueExamples} from '../src/components/labeledValue/examples/LabeledValueExamples';
@@ -260,6 +261,7 @@ class App extends React.Component<{}, AppState> {
         {component: TableHOCExamples, componentName: 'Table (hoc)'},
         {component: TableHOCServerExamples, componentName: 'Table (server + hoc)'},
         {component: ColorExamples, componentName: 'Color'},
+        {component: InfoBoxExamples, componentName: 'Info Box'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
     ];
