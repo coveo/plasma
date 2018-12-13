@@ -89,7 +89,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
         this.overlay = React.createRef();
     }
 
-    componentWillUnmount(): void {
+    componentWillUnmount() {
         if (this.overlay && this.overlay.current) {
             const node = ReactDOM.findDOMNode(this.overlay.current);
             if (node && !document.body.contains(node)) {
