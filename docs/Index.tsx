@@ -269,10 +269,8 @@ class App extends React.Component<{}, AppState> {
     constructor(props: {}, state: AppState) {
         super(props, state);
 
-        const componentIdFromHash = this.getHash();
-        const firstComponentId = this.components.sort(this.sortComponentsByName);
         this.state = {
-            activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || firstComponentId[0].componentName,
+            activeComponentId: this.getActiveComponentId(),
             sideNavOpened: true,
         };
     }
@@ -289,10 +287,8 @@ class App extends React.Component<{}, AppState> {
         });
 
         window.onhashchange = () => {
-            const componentIdFromHash = this.getHash();
-            const firstComponentId = this.components.sort(this.sortComponentsByName);
             this.setState({
-                activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || firstComponentId[0].componentName,
+                activeComponentId: this.getActiveComponentId(),
             });
         };
     }
@@ -333,6 +329,13 @@ class App extends React.Component<{}, AppState> {
 
     private getHash = () => {
         return decodeURIComponent(window.location.hash.replace(/^#/, ''));
+    }
+
+    private getActiveComponentId() {
+        const componentIdFromHash = this.getHash();
+        const firstComponentId = this.components.sort(this.sortComponentsByName);
+        return (this.getSelectedComponent(componentIdFromHash) && componentIdFromHash)
+            || firstComponentId[0].componentName;
     }
 }
 
