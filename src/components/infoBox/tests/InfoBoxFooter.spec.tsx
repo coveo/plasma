@@ -21,6 +21,6 @@ describe('InfoBoxFooter', () => {
         const expectedChildren = <div className='to-find' />;
         const wrapper = shallow(<InfoBoxFooter>{expectedChildren}</InfoBoxFooter>);
 
-        expect(wrapper.find('.to-find').exists()).toBe(true);
+        expect(wrapper.contains(expectedChildren)).toBe(true);
     });
 });
