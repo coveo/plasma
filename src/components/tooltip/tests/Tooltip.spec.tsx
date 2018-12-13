@@ -1,48 +1,32 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {OverlayTrigger} from 'react-bootstrap';
+import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {ITooltipProps, Tooltip} from '../Tooltip';
 
 describe('Tooltip', () => {
-    let tooltipWrapper: ReactWrapper<ITooltipProps, void>;
+    let tooltipWrapper: ShallowWrapper<ITooltipProps>;
     const TOOLTIP_PROPS: ITooltipProps = {
         title: 'My test tooltip!',
     };
-    const TOOLTIP: JSX.Element = <Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>;
 
     describe('<Tooltip />', () => {
         it('should render without error', () => {
-            expect(() => shallow(TOOLTIP)).not.toThrow();
+            expect(() => shallow(<Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>)).not.toThrow();
         });
 
         it('should mount and unmount/detach without error', () => {
             expect(() => {
-                tooltipWrapper = mount(TOOLTIP, {attachTo: document.getElementById('App')});
-            }).not.toThrow();
-
-            expect(() => {
+                tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>);
                 tooltipWrapper.unmount();
-                tooltipWrapper.detach();
             }).not.toThrow();
         });
     });
 
     describe('<Tooltip />', () => {
         beforeEach(() => {
-            tooltipWrapper = mount(TOOLTIP, {attachTo: document.getElementById('App')});
-        });
-
-        afterEach(() => {
-            tooltipWrapper.detach();
-        });
-
-        it('should get the title as a prop', () => {
-            const titleProp: string = tooltipWrapper.props().title;
-
-            expect(titleProp).toBeDefined();
-            expect(titleProp).toBe(TOOLTIP_PROPS.title);
+            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>);
         });
 
         it('should display the className passed as a prop', () => {
@@ -80,23 +64,77 @@ describe('Tooltip', () => {
 
             expect(tooltipWrapper.find(OverlayTrigger).length).toBe(0);
         });
+    });
 
+    describe('<Tooltip />', () => {
         it('should render with a span wrapper if noSpanWrapper prop is not passed', () => {
             const content = <li>test</li>;
-            const tooltip = shallow(
+            tooltipWrapper = shallow(
                 <Tooltip {...TOOLTIP_PROPS}>{content}</Tooltip>,
             );
 
-            expect(tooltip.find('li').parent().type()).toBe('span');
+            expect(tooltipWrapper.find('li').parent().type()).toBe('span');
         });
 
         it('should not render with a span wrapper if noSpanWrapper prop is passed', () => {
             const content = <li>test</li>;
-            const tooltip = shallow(
+            tooltipWrapper = shallow(
                 <Tooltip noSpanWrapper {...TOOLTIP_PROPS}>{content}</Tooltip>,
             );
 
-            expect(tooltip.find('li').parent().type()).not.toBe('span');
+            expect(tooltipWrapper.find('li').parent().type()).not.toBe('span');
+        });
+    });
+
+    describe('behaviour on unmount', () => {
+        let el: HTMLElement;
+        let customRef: React.RefObject<any>;
+
+        let findDOMNodeSpy: jasmine.Spy;
+        let containsSpy: jasmine.Spy;
+        let appendChildSpy: jasmine.Spy;
+
+        beforeEach(() => {
+            el = document.createElement('div');
+            customRef = React.createRef();
+
+            spyOn(React, 'createRef').and.returnValue(customRef);
+            findDOMNodeSpy = spyOn(ReactDOM, 'findDOMNode').and.returnValue(el);
+            containsSpy = spyOn(document.body, 'contains').and.returnValue(false);
+            appendChildSpy = spyOn(document.body, 'appendChild');
+
+            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hello</Tooltip>);
+            (customRef as any).current = el;
+        });
+
+        it('should re-add the tooltip element on unmount if its not in the DOM', () => {
+            tooltipWrapper.unmount();
+
+            expect(appendChildSpy).toHaveBeenCalledWith(el);
+        });
+
+        it('should not re-add the tooltip element on unmount if the DOM already contain the node', () => {
+            containsSpy.and.returnValue(true);
+
+            tooltipWrapper.unmount();
+
+            expect(appendChildSpy).not.toHaveBeenCalled();
+        });
+
+        it('should not re-add the tooltip element on unmount if the html node does not exists', () => {
+            findDOMNodeSpy.and.returnValue(null);
+
+            tooltipWrapper.unmount();
+
+            expect(appendChildSpy).not.toHaveBeenCalled();
+        });
+
+        it('should not re-add the tooltip element on unmount if the ref has no current view', () => {
+            (customRef as any).current = undefined;
+
+            tooltipWrapper.unmount();
+
+            expect(appendChildSpy).not.toHaveBeenCalled();
         });
     });
 });
