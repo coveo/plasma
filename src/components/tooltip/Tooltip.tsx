@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {OverlayTrigger, Tooltip as BootstrapTooltip} from 'react-bootstrap';
+import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
@@ -76,10 +77,26 @@ const OVERLAY_PROPS_TO_OMIT: string[] = [
     'container',
 ];
 
-export class Tooltip extends React.Component<ITooltipProps, {}> {
+export class Tooltip extends React.Component<ITooltipProps> {
     static defaultProps: Partial<ITooltipProps> = {
         className: '',
     };
+
+    private readonly overlay: React.RefObject<BootstrapTooltip>;
+
+    constructor(props: ITooltipProps) {
+        super(props);
+        this.overlay = React.createRef();
+    }
+
+    componentWillUnmount(): void {
+        if (this.overlay && this.overlay.current) {
+            const node = ReactDOM.findDOMNode(this.overlay.current);
+            if (node && !document.body.contains(node)) {
+                document.body.appendChild(node);
+            }
+        }
+    }
 
     render() {
         const tooltipFooter: JSX.Element = this.props.footer
@@ -88,6 +105,7 @@ export class Tooltip extends React.Component<ITooltipProps, {}> {
 
         const tooltip: JSX.Element = <BootstrapTooltip
             id={_.uniqueId('tooltip-')}
+            ref={this.overlay}
             {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
         >
             {this.props.title}
