@@ -287,6 +287,14 @@ class App extends React.Component<{}, AppState> {
         document.addEventListener(SideNavigation.toggleEvent, () => {
             this.setState({sideNavOpened: !this.state.sideNavOpened});
         });
+
+        window.onhashchange = () => {
+            const componentIdFromHash = this.getHash();
+            const firstComponentId = this.components.sort(this.sortComponentsByName);
+            this.setState({
+                activeComponentId: this.getSelectedComponent(componentIdFromHash) && componentIdFromHash || firstComponentId[0].componentName,
+            });
+        };
     }
 
     render() {
