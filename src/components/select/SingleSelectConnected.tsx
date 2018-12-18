@@ -63,7 +63,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getButton = (props: ISelectButtonProps): JSX.Element => {
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
-        const buttonClasses = classNames('btn dropdown-toggle dropdown-button-search-container', this.props.toggleClasses, {
+        const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
             [styles.singleSelectFixedWidth]: this.props.fixedWidth,
         });
