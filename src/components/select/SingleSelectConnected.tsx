@@ -17,7 +17,7 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     onSelectOptionCallback?: (option: string) => void;
     items?: IItemBoxProps[];
     buttonPrepend?: React.ReactNode;
-    fixedWidth?: boolean;
+    noFixedWidth?: true;
 }
 
 export interface ISingleSelectStateProps {
@@ -65,7 +65,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
-            [styles.singleSelectFixedWidth]: this.props.fixedWidth,
+            [styles.singleSelectFixedWidth]: !this.props.noFixedWidth,
         });
 
         return (
@@ -107,5 +107,4 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
 SingleSelectConnected.defaultProps = {
     placeholder: 'Select an option',
-    fixedWidth: true,
 };
