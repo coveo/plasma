@@ -9,6 +9,7 @@ import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
+import * as styles from './styles/SingleSelect.scss';
 
 export interface ISingleSelectOwnProps extends ISelectProps {
     placeholder?: string;
@@ -16,6 +17,7 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     onSelectOptionCallback?: (option: string) => void;
     items?: IItemBoxProps[];
     buttonPrepend?: React.ReactNode;
+    noFixedWidth?: true;
 }
 
 export interface ISingleSelectStateProps {
@@ -37,10 +39,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProp
 
 @ReduxConnect(mapStateToProps)
 export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
-
-    static defaultProps: Partial<ISingleSelectOwnProps> = {
-        placeholder: 'Select an option',
-    };
+    static defaultProps: Partial<ISingleSelectOwnProps>;
 
     componentDidUpdate(prevProps: ISingleSelectProps) {
         if (prevProps.selectedOption !== this.props.selectedOption) {
@@ -66,6 +65,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
+            [styles.singleSelectFixedWidth]: !this.props.noFixedWidth,
         });
 
         return (
@@ -104,3 +104,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
         return <span className='dropdown-no-value'>{this.props.placeholder}</span>;
     }
 }
+
+SingleSelectConnected.defaultProps = {
+    placeholder: 'Select an option',
+};
