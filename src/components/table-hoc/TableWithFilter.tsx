@@ -3,6 +3,7 @@ import {keys} from 'ts-transformer-keys/index';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
@@ -30,8 +31,10 @@ const defaultMatchFilter = (filter: string, datum: any) => JSON.stringify(_.valu
 
 type FilterableTableComponent = React.ComponentClass<ITableWithFilterProps>;
 
-export const tableWithFilter = (config: ITableWithFilterConfig = {}) => (Component: FilterableTableComponent): FilterableTableComponent => {
+export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig> = {}) => (Component: FilterableTableComponent): FilterableTableComponent => {
+
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithFilterProps): ITableWithFilterStateProps | ITableHOCOwnProps => {
+        const config = HocUtils.supplyConfig(supplier);
         const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
         const matchFilter = config.matchFilter || defaultMatchFilter;
         const filterData = () => filterText

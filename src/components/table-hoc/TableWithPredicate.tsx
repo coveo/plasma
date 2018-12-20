@@ -1,9 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys/index';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {SelectSelector} from '../select/SelectSelector';
@@ -33,9 +35,10 @@ const defaultMatchPredicate = (predicate: string, datum: any) => !predicate || _
 
 type TableWithPredicateComponent = React.ComponentClass<ITableWithPredicateProps>;
 
-export const tableWithPredicate = (config: ITableWithPredicateConfig) => (Component: TableWithPredicateComponent): TableWithPredicateComponent => {
+export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateConfig>) => (Component: TableWithPredicateComponent): TableWithPredicateComponent => {
 
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithPredicateProps): ITableWithPredicateStateProps | ITableHOCOwnProps => {
+        const config = HocUtils.supplyConfig(supplier);
         const predicate = SelectSelector.getListBoxSelected(state, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)})[0];
         const matchPredicate = config.matchPredicate || defaultMatchPredicate;
         const predicateData = () => !config.isServer && predicate
@@ -57,6 +60,7 @@ export const tableWithPredicate = (config: ITableWithPredicateConfig) => (Compon
         }
 
         render() {
+            const config = HocUtils.supplyConfig(supplier);
             const key = TableHOCUtils.getPredicateId(this.props.id, config.id);
             const actions = this.props.actions || [];
             const predicateAction = (
