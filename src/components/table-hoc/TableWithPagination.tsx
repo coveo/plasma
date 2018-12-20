@@ -1,8 +1,10 @@
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys/index';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
@@ -35,8 +37,9 @@ const TableWithPaginationConfigToOmit = keys<ITableWithPaginationConfig>();
 
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 
-export const tableWithPagination = (config: ITableWithPaginationConfig & Partial<INavigationOwnProps & INavigationChildrenProps> = {}) => (Component: (React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>)): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
+export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig & Partial<INavigationOwnProps & INavigationChildrenProps>> = {}) => (Component: (React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>)): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithPaginationStateProps | ITableHOCOwnProps => {
+        const config = HocUtils.supplyConfig(supplier);
         const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
         const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
         const length = TableSelectors.getDataCount(state, {id: ownProps.id, data: ownProps.data, isServer: config.isServer});
@@ -88,7 +91,7 @@ export const tableWithPagination = (config: ITableWithPaginationConfig & Partial
                     <NavigationConnected
                         id={this.props.id}
                         {..._.pick(this.props, TableWithPaginationPropsToOmit)}
-                        {..._.omit(config, [...TableWithPaginationConfigToOmit])}
+                        {..._.omit(HocUtils.supplyConfig(supplier), [...TableWithPaginationConfigToOmit])}
                         loadingIds={[this.props.id]}
                     />
                     {this.props.children}

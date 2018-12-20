@@ -1,8 +1,10 @@
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys/index';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
@@ -25,8 +27,9 @@ const defaultSort = () => 0;
 
 export type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps & ITableWithSortProps>;
 
-export const tableWithSort = (config: ITableWithSortConfig) => (Component: SortableTableComponent): SortableTableComponent => {
+export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig>) => (Component: SortableTableComponent): SortableTableComponent => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithSortStateProps | ITableHOCOwnProps => {
+        const config = HocUtils.supplyConfig(supplier);
         const tableSort: ITableWithSortState = TableSelectors.getSort(state, ownProps);
         const sort = config.sort || defaultSort;
         if (tableSort && ownProps.data) {
