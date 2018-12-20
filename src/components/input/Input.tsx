@@ -50,7 +50,11 @@ export interface IInputDispatchProps {
 
 export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps {}
 
-export class Input extends React.Component<IInputProps, IInputState> {
+export interface IInputComponentState {
+    valid: boolean;
+}
+
+export class Input extends React.Component<IInputProps, IInputComponentState> {
     private innerInput: HTMLInputElement;
 
     static defaultProps: Partial<IInputProps> = {
@@ -63,7 +67,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
         super(props, state);
         this.state = {
             valid: this.props.valid,
-        } as IInputState;
+        };
     }
 
     componentWillMount() {
