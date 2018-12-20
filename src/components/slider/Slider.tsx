@@ -1,9 +1,10 @@
 import * as classNames from 'classnames';
-import RCSlider, {createSliderWithTooltip, SliderProps} from 'rc-slider';
+import RCSlider, {createSliderWithTooltip, SliderProps, WithTooltipProps} from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import * as React from 'react';
 
 export interface ISliderProps {
-    slider?: SliderProps;
+    slider?: WithTooltipProps & SliderProps;
     classes?: string[];
     hasTooltip?: boolean;
 }
@@ -13,6 +14,7 @@ const Slider: React.SFC<ISliderProps> = ({hasTooltip, slider, classes}) => {
     if (hasTooltip) {
         (slider as any).tipProps = {
             overlayClassName: 'vapor-slider-overlay',
+            ...slider.tipProps,
         };
     }
 

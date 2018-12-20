@@ -1,4 +1,3 @@
-import 'rc-slider/assets/index.css';
 import * as React from 'react';
 import {Slider} from '../Slider';
 
@@ -56,7 +55,20 @@ export class SliderExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Slider with tooltip and value formatter</label>
                     <div className='form-control'>
                         <div style={style}>
-                            <Slider hasTooltip={true} slider={{tipFormatter: (value) => `${value}$`}}
+                            <Slider hasTooltip={true} slider={{tipFormatter: (value: number) => `${value}$`}}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>Slider with tooltip and value formatter (always showing)</label>
+                    <div className='form-control'>
+                        <div style={style}>
+                            <Slider hasTooltip={true} slider={{
+                                tipFormatter: (value: number) => `${value}$`,
+                                tipProps: {visible: true},
+                            }}
                             />
                         </div>
                     </div>
