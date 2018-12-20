@@ -110,7 +110,7 @@
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-react": "7.11.1",
     "faker": "4.1.0",
-    "file-loader": "2.0.0",
+    "file-loader": "3.0.0",
     "gulp": "3.9.1",
     "gulp-footer": "2.0.1",
     "gulp-help": "1.6.1",
