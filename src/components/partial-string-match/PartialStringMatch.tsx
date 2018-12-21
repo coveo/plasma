@@ -1,9 +1,11 @@
 import * as escapeRegExp from 'escape-string-regexp';
 import * as React from 'react';
-import {escape} from 'underscore';
 
 export interface PartialStringMatchProps {
-    wholeString: React.ReactNode;
+    /**
+     * @deprecated use children instead
+     */
+    wholeString?: string;
     partialMatch?: string;
     caseInsensitive?: boolean;
 }
@@ -15,13 +17,13 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
     };
 
     render() {
+        const toRender = this.props.wholeString || this.props.children;
         if (!this.props.partialMatch) {
-            return this.props.wholeString;
+            return toRender;
         }
 
-        const flags = this.props.caseInsensitive ? 'ig' : 'g';
-        const regExp = new RegExp(escapeRegExp(escape(this.props.partialMatch)), flags);
-        const iterator = this.deepReplaceStrings(this.props.wholeString, regExp);
+        const escaped = escapeRegExp(this.props.partialMatch);
+        const iterator = this.deepReplaceStrings(toRender, escaped);
 
         const children = [];
         let result: IteratorResult<React.ReactNode>;
@@ -33,24 +35,30 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
         return children;
     }
 
-    private *deepReplaceStrings(component: React.ReactNode | React.ReactNode[], regExp: RegExp): IterableIterator<React.ReactNode> {
+    private *deepReplaceStrings(component: React.ReactNode, escaped: string): IterableIterator<React.ReactNode> {
+        const flags = this.props.caseInsensitive ? 'ig' : 'g';
+        const regExp = new RegExp(`(${escaped})`, flags);
+
         const cast = component as any;
         if (!component) {
             return;
         } else if (component instanceof Array) {
             for (let i = 0; i < component.length; i++) {
-                yield* this.deepReplaceStrings(component[i], regExp);
+                yield* this.deepReplaceStrings(component[i], escaped);
             }
         } else if (typeof component === 'string') {
-            const clean = escape(component);
-            if (regExp.test(clean)) {
-                yield <span dangerouslySetInnerHTML={{__html: clean.replace(regExp, (match: string) => `<span class='bold'>${match}</span>`)}} />;
+            if (regExp.test(component)) {
+                const parts: React.ReactNode[] = component.split(regExp);
+                for (let i = 1; i < parts.length; i += 2) {
+                    parts[i] = <span className='bold' key={`match-${i}`}>{parts[i]}</span>;
+                }
+                yield parts;
             } else {
-                yield clean;
+                yield component;
             }
         } else if (cast.props && cast.props.children) {
             const newChildren = [];
-            const iterator = this.deepReplaceStrings(cast.props.children, regExp);
+            const iterator = this.deepReplaceStrings(cast.props.children, escaped);
 
             let result: IteratorResult<React.ReactNode>;
             do {
@@ -59,6 +67,8 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
             } while (!result.done);
 
             yield React.cloneElement(cast, {...cast.props, children: newChildren});
+        } else {
+            yield component;
         }
     }
 }
