@@ -145,6 +145,17 @@ describe('Select', () => {
             expect(buttonHTML).toContain(append);
         });
 
+        it('should display the selectedDisplayValue if defined in the button for the selected item', () => {
+            const selectedDisplayValue = 'Another selected value bites the dust';
+            mountSingleSelect([
+                {value: 'a', selected: true, selectedDisplayValue},
+                {value: 'b', selected: false},
+            ]);
+            const buttonHTML = select.find('.dropdown-toggle').html();
+
+            expect(buttonHTML).toContain(selectedDisplayValue);
+        });
+
         it('should not contain the prepend and append in the button when not selected', () => {
             const prepend = 'pre';
             const append = 'post';
