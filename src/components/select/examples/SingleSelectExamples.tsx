@@ -18,7 +18,7 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Four', value: '4'},
     {displayValue: 'Five', value: '5'},
     {displayValue: 'Six', value: '6'},
-    {displayValue: 'Seven', value: '7'},
+    {displayValue: 'Seven', value: '7', selectedDisplayValue: '007 Bond, James'},
 ];
 
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
@@ -52,7 +52,7 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
 
     render() {
         return (
-            <div>
+            <div className='my2'>
                 <h1>Single Select</h1>
                 <div className='form-group'>
                     <label className='form-control-label'>A Simple Single Select with a Custom Placeholder</label>

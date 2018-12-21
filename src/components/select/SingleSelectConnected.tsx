@@ -88,7 +88,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getSelectedOptionElement(option: IItemBoxProps): JSX.Element {
         if (option) {
-            const displayValue = option.displayValue || option.value;
+            const displayValue = option.selectedDisplayValue || option.displayValue || option.value;
             return (
                 <span
                     key={option.value}
