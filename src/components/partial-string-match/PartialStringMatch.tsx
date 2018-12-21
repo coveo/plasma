@@ -21,16 +21,16 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
 
         const flags = this.props.caseInsensitive ? 'ig' : 'g';
         const regExp = new RegExp(escapeRegExp(escape(this.props.partialMatch)), flags);
-        const it = this.deepReplaceStrings(this.props.wholeString, regExp);
-        let res = it.next();
+        const iterator = this.deepReplaceStrings(this.props.wholeString, regExp);
 
-        const els = [];
-        while (!res.done) {
-            els.push(res.value);
-            res = it.next();
-        }
+        const children = [];
+        let result: IteratorResult<React.ReactNode>;
+        do {
+            result = iterator.next();
+            children.push(result.value);
+        } while (!result.done);
 
-        return els;
+        return children;
     }
 
     private *deepReplaceStrings(component: React.ReactNode | React.ReactNode[], regExp: RegExp): IterableIterator<React.ReactNode> {
@@ -50,11 +50,11 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
             }
         } else if (cast.props && cast.props.children) {
             const newChildren = [];
-            const childIterator = this.deepReplaceStrings(cast.props.children, regExp);
+            const iterator = this.deepReplaceStrings(cast.props.children, regExp);
 
             let result: IteratorResult<React.ReactNode>;
             do {
-                result = childIterator.next();
+                result = iterator.next();
                 newChildren.push(result.value);
             } while (!result.done);
 
