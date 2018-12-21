@@ -19,6 +19,7 @@ export interface IItemBoxProps {
     prepend?: IContentProps;
     append?: IContentProps;
     onOptionClick?: (option: IItemBoxProps) => void;
+    selectedDisplayValue?: string;
 }
 
 export class ItemBox extends React.Component<IItemBoxProps> {
