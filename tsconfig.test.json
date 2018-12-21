@@ -2,6 +2,7 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "downlevelIteration": true,
     "inlineSourceMap": true,
     "jsx": "react",
     "allowJs": true,
@@ -13,10 +14,9 @@
     "sourceMap": false,
     "target": "ES5",
     "plugins": [
-    {
-      "transform": "ts-transformer-keys/transformer"
-    }
-  ]
+      {"transform": "ts-transformer-keys/transformer"}
+    ],
+    "lib": ["es2015", "dom"]
   },
   "include": [
     "src/**/*.tsx",

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "downlevelIteration": true,
     "jsx": "react",
     "module": "commonjs",
     "allowJs": true,
@@ -14,10 +15,9 @@
     "sourceMap": true,
     "target": "ES5",
     "plugins": [
-    {
-        "transform": "ts-transformer-keys/transformer"
-    }
-  ]
+      {"transform": "ts-transformer-keys/transformer"}
+    ],
+    "lib": ["es2015", "dom"]
   },
   "include": [
     "src/**/*.tsx",
@@ -25,6 +25,8 @@
     "types/**/*.d.ts"
   ],
   "exclude": [
-    "src/**/*.spec.*"
+    "src/**/*.spec.*",
+    "src/utils/TestUtils.ts",
+    "src/components/tables/tests/TableTestCommon.tsx"
   ]
 }

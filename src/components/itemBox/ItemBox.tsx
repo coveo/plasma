@@ -82,7 +82,9 @@ export class ItemBox extends React.Component<IItemBoxProps> {
                     onClick={() => this.handleOnOptionClick()}
                     data-value={this.props.value}>
                     {this.props.prepend ? <Content {...this.props.prepend} /> : null}
-                    <PartialStringMatch wholeString={this.props.displayValue || this.props.value} partialMatch={this.props.highlight} caseInsensitive />
+                    <PartialStringMatch partialMatch={this.props.highlight} caseInsensitive>
+                        {this.props.displayValue || this.props.value}
+                    </PartialStringMatch>
                     {this.props.append ? <Content {...this.props.append} /> : null}
                 </li>
             </Tooltip>
