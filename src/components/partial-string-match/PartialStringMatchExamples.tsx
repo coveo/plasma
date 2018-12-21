@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {InfoBox} from '../infoBox/InfoBox';
+import {InfoBoxLink} from '../infoBox/InfoBoxLink';
 import {PartialStringMatch} from './PartialStringMatch';
 
 export class PartialStringMatchExamples extends React.Component<any, any> {
@@ -43,6 +45,19 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                     <label className='form-control-label'>PartialStringMatch with dangerous match</label>
                     <div className='text-dark-grey'>
                         <PartialStringMatch wholeString='Hey <script>alert("I may be dangerous")</script>' partialMatch={'<script>alert("I may be dangerous")</script>'} />
+                    </div>
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>PartialStringMatch with children</label>
+                    <div className='text-dark-grey'>
+                        <PartialStringMatch wholeString={<><div>Hello</div><br /><div>World</div></>} partialMatch={'o'} />
+                        <PartialStringMatch caseInsensitive partialMatch={'hello'} wholeString={(
+                            <div className='py2'>
+                                <div className='my2'>Hello <span>is this working with deep structure? <span>(hello, still reading?)</span></span></div>
+                                <InfoBox>What about custom components? <InfoBoxLink>Can they contain hello?</InfoBoxLink></InfoBox>
+                            </div>
+                        )} />
                     </div>
                 </div>
             </div>
