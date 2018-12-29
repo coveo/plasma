@@ -238,7 +238,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     private updateScrollPositionBasedOnActiveElement() {
-        const activeLi: HTMLCollectionOf<Element> = this.ulElement ? this.ulElement.getElementsByClassName('active') : undefined;
+        const activeLi: HTMLCollectionOf<Element> = (this.ulElement ? this.ulElement.getElementsByClassName('active') : undefined) as HTMLCollectionOf<Element>;
         if (activeLi && activeLi.length) {
             const el: Element = activeLi[0];
             if (!this.isScrolledIntoView(el)) {
