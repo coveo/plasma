@@ -132,6 +132,26 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
                     />
                 </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Single Select with many elements</label>
+                    <br />
+                    <SingleSelectConnected
+                        id={UUID.generate()}
+                        items={
+                            [
+                                ...this.state.first,
+                                ...[
+                                    {displayValue: 'a', value: '8'},
+                                    {displayValue: 'b', value: '9'},
+                                    {displayValue: 'c', value: '10'},
+                                    {displayValue: 'd', value: '11'},
+                                    {displayValue: 'e', value: '12'},
+                                ],
+                            ]
+                        }
+                        placeholder='Select something'
+                    />
+                </div>
             </div>
         );
     }
