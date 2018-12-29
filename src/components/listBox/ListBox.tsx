@@ -12,6 +12,7 @@ export interface IListBoxOwnProps {
     multi?: boolean;
     highlight?: string;
     items?: IItemBoxProps[];
+    ulElementRefFunction?: (menu: HTMLElement) => void;
 }
 
 export interface IListBoxStateProps {
@@ -79,7 +80,10 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
 
     render() {
         return (
-            <ul className={this.getClasses()}>
+            <ul
+                className={this.getClasses()}
+                ref={(menu: HTMLElement) => callIfDefined(this.props.ulElementRefFunction, menu)}
+            >
                 {this.getItems()}
             </ul>
         );

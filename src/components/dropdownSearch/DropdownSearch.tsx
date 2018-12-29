@@ -95,7 +95,6 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         searchThresold: 7,
     };
 
-    filterInput: HTMLDivElement;
     ulElement: HTMLElement;
 
     protected dropdownButton: HTMLElement;

@@ -80,6 +80,8 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     private dropdown: HTMLDivElement;
     private menu: HTMLDivElement;
 
+    ulElement: HTMLElement;
+
     componentDidMount() {
         this.props.onRender();
         document.addEventListener('mousedown', this.handleDocumentClick);
@@ -91,6 +93,8 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     componentDidUpdate(prevProps: ISelectProps) {
+        this.updateScrollPositionBasedOnActiveElement();
+
         const wentFromOpenedToClosed = prevProps.isOpened && !this.props.isOpened;
         const selectionChanged = prevProps.selectedValues.length <= this.props.selectedValues.length;
 
@@ -125,6 +129,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                         items={this.props.items}
                         multi={this.props.multi}
                         noResultItem={this.props.noResultItem || undefined}
+                        ulElementRefFunction={(menu: HTMLElement) => this.ulElement = menu}
                     />
                 </div>
             </div>
@@ -219,6 +224,30 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
 
             if (!dropdown.contains(e.target as Node) && !this.getButton().contains(e.target as Node)) {
                 this.props.onDocumentClick();
+            }
+        }
+    }
+
+    private isScrolledIntoView(el: Element) {
+        const boxTop = this.ulElement.getBoundingClientRect().top;
+        const boxBottom = this.ulElement.getBoundingClientRect().bottom;
+        const elTop = el.getBoundingClientRect().top;
+        const elBottom = el.getBoundingClientRect().bottom;
+
+        return (elTop >= boxTop) && (elBottom <= boxBottom);
+    }
+
+    private updateScrollPositionBasedOnActiveElement() {
+        const activeLi: HTMLCollectionOf<Element> = this.ulElement ? this.ulElement.getElementsByClassName('active') : undefined;
+        if (activeLi && activeLi.length) {
+            const el: Element = activeLi[0];
+            if (!this.isScrolledIntoView(el)) {
+                if (el.getBoundingClientRect().bottom > this.ulElement.getBoundingClientRect().bottom) {
+                    this.ulElement.scrollTop += el.getBoundingClientRect().bottom - this.ulElement.getBoundingClientRect().bottom;
+                }
+                if (el.getBoundingClientRect().top < this.ulElement.getBoundingClientRect().top) {
+                    this.ulElement.scrollTop -= this.ulElement.getBoundingClientRect().top - el.getBoundingClientRect().top;
+                }
             }
         }
     }
