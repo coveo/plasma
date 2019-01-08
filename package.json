@@ -149,7 +149,7 @@
     "redux-logger": "3.0.6",
     "redux-test-utils": "0.3.0",
     "redux-thunk": "2.3.0",
-    "remap-istanbul": "0.12.0",
+    "remap-istanbul": "0.13.0",
     "reselect": "4.0.0",
     "sass-loader": "7.1.0",
     "sass-variable-loader": "0.1.2",
