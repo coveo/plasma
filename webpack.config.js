@@ -96,11 +96,7 @@ module.exports = {
                 }],
             },
             {
-                test: /\.png$/,
-                loader: 'file-loader?mimetype=image/png',
-            },
-            {
-                test: /\.(ttf|eot|woff|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|woff|svg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader',
             },
 
