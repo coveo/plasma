@@ -45,7 +45,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     }
 
     private getClasses(): string {
-        return classNames('list-box bg-pure-white', this.props.classes);
+        return classNames('list-box bg-pure-white relative', this.props.classes);
     }
 
     protected getItems(): React.ReactNode {
