@@ -35,6 +35,7 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
                 selected: action.payload.multi
                     ? _.uniq([...state.selected, action.payload.value])
                     : [action.payload.value],
+                active: action.payload.index,
             };
         case AutocompleteActions.setValue:
             return {
@@ -67,7 +68,6 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
         case SelectActions.toggle:
             return {
                 ...state,
-                active: 0,
             };
         default:
             return state;

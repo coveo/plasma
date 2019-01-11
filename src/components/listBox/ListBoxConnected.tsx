@@ -21,7 +21,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IListBoxOwnProps): I
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IListBoxDispatchProps => ({
     onRender: () => dispatch(addListBox(ownProps.id, ownProps.items)),
     onDestroy: () => dispatch(removeListBox(ownProps.id)),
-    onOptionClick: (option: IItemBoxProps) => dispatch(selectListBoxOption(ownProps.id, ownProps.multi, option.value)),
+    onOptionClick: (option: IItemBoxProps, index: number) => dispatch(selectListBoxOption(ownProps.id, ownProps.multi, option.value, index)),
 });
 
 export const ListBoxConnected: React.ComponentClass<IListBoxProps> =

@@ -17,6 +17,7 @@ export interface IListBoxPayload {
     value?: string;
     values?: string[];
     items?: IItemBoxProps[];
+    index?: number;
     diff?: number;
 }
 
@@ -30,9 +31,9 @@ export const removeListBox = (id: string): IReduxAction<IListBoxPayload> => ({
     payload: {id},
 });
 
-export const selectListBoxOption = (id: string, multi: boolean, value: string): IReduxAction<IListBoxPayload> => ({
+export const selectListBoxOption = (id: string, multi: boolean, value: string, index: number = 0): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.select,
-    payload: {id, multi, value},
+    payload: {id, multi, value, index},
 });
 
 export const unselectListBoxOption = (id: string, value: string): IReduxAction<IListBoxPayload> => ({
