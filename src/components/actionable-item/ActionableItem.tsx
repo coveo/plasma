@@ -29,6 +29,7 @@ export class ActionableItem extends React.Component<any> {
                                 id={this.props.id}
                                 attachment='top right'
                                 classPrefix='actionable-item'
+                                className='show-on-top'
                                 offset={`0 -${actionableItemDotsWidthWithPadding}`}
                             >
                                 <div className={classNames('actionable-item-dots cursor-pointer inline-block mod-border-top mod-border-right border-color-medium-grey mod-border-bottom bg-pure-white', actionableItemDots, actionableItemContainer)}>
