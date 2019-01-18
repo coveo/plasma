@@ -1,6 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 
+import {BrowserUtils} from '../../../utils/BrowserUtils';
 import {Flippable, IFlippableProps} from '../Flippable';
 
 describe('Flippable', () => {
@@ -50,6 +52,13 @@ describe('Flippable', () => {
 
         it('should have the default flippable class', () => {
             expect(flippable.find(`.${Flippable.CONTAINER_CLASSNAME}`).length).toBe(1);
+        });
+
+        it('should have the flippable-ie class when the browser is IE', () => {
+            spyOn(BrowserUtils, 'isIE').and.returnValue(true);
+            const component = shallowWithState(<Flippable />, {});
+
+            expect(component.hasClass('flippable-ie')).toBe(true);
         });
 
         it('should render a flipper div', () => {

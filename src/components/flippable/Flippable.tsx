@@ -4,6 +4,8 @@ import * as ReactDOM from 'react-dom';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
+import {BrowserUtils} from '../../utils/BrowserUtils';
+
 export interface IFlippableOwnProps {
     id?: string;
     front?: React.ReactNode;
@@ -64,7 +66,7 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
 
     render() {
         const containerClassName = classNames(
-            Flippable.CONTAINER_CLASSNAME,
+            BrowserUtils.isIE() ? 'flippable-ie' : Flippable.CONTAINER_CLASSNAME,
             this.props.isFlipped ? 'show-on-top' : '',
             this.props.className,
         );

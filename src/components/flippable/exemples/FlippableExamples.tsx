@@ -30,7 +30,7 @@ export class FlippableExamples extends React.Component<any, any> {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Flippable with redux state</label>
-                    <div className='form-control flex'>
+                    <div className='form-control flex' style={{width: '300px'}}>
                         <FlippableConnected
                             id='flippable-example2'
                             front={
@@ -39,7 +39,7 @@ export class FlippableExamples extends React.Component<any, any> {
                                 </div>
                             }
                             back={
-                                <div className='bg-light-grey bold p2'>
+                                <div className='bg-light-grey bold p2' style={{width: '300px'}}>
                                     Some content on the back.
                                 </div>
                             }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ActionableItem} from '../../actionable-item/ActionableItem';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {Modal} from '../Modal';
@@ -6,7 +7,6 @@ import {ModalBackdrop} from '../ModalBackdrop';
 import {ModalBody} from '../ModalBody';
 import {ModalFooter} from '../ModalFooter';
 import {ModalHeader} from '../ModalHeader';
-import {ActionableItem} from '../../actionable-item/ActionableItem';
 
 export interface IModalExamplesState {
     isOpened: boolean;
@@ -42,8 +42,8 @@ export class ModalExamples extends React.Component<any, IModalExamplesState> {
                             </ModalHeader>
                             <ModalBody classes={['mod-header-padding mod-form-top-bottom-padding']}>
                                 Modal content
-                                <ActionableItem actions={[{value:'hello', onOptionClick: () => 1}]}>hello</ActionableItem>
-              </ModalBody>
+                                <ActionableItem actions={[{value: 'hello', onOptionClick: () => 1}]}>hello</ActionableItem>
+                            </ModalBody>
                             <ModalFooter>
                                 <button className='btn' onClick={() => this.closeModal()}>Close</button>
                             </ModalFooter>
