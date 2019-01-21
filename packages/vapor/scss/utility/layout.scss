@@ -97,6 +97,7 @@
 
   @extend .flex;
   @extend .flex-auto;
+  @extend .flex-wrap;
 
   .column {
     max-width: 50%;
@@ -110,7 +111,18 @@
   }
 
   .column + .column {
-    border-left: 1px solid $medium-grey;
+    border-left: $default-border;
+  }
+
+  @media (max-width: $breakpoint-desktop-small) {
+    .column {
+      max-width: 100%;
+    }
+
+    .column + .column {
+      border-top: $default-border;
+      border-left: none;
+    }
   }
 }
 
