@@ -116,7 +116,7 @@
 
   @media (max-width: $breakpoint-desktop-small) {
     .column {
-      max-width: 100%;
+      min-width: 100%;
     }
 
     .column + .column {
