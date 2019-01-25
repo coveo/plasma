@@ -178,7 +178,7 @@ export class AutocompleteConnected extends React.Component<IAutocompleteProps & 
     }
 
     private handleDocumentClick = (e: MouseEvent) => {
-        if (this.props.isOpen && document.contains(e.target as HTMLElement)) {
+        if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
             const dropdown: Element | Text = ReactDOM.findDOMNode(this.dropdown);
 
             if (!dropdown.contains(e.target as Node)) {
