@@ -81,7 +81,7 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                 <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter and Custom Values</label>
                     <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
+                    <MultiSelectWithFilter id={'multi-predicate-custom'} items={this.state.hoc} customValues />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>A Multi Select With Filter, Custom Values and no items</label>
@@ -146,7 +146,8 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                         items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                        customValues />
+                        customValues
+                    />
                 </div>
             </div>
         );

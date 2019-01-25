@@ -17,6 +17,7 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {Svg} from '../svg/Svg';
 import {ISelectOwnProps, ISelectSpecificProps} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
+import {selectListBoxOption} from '../listBox/ListBoxActions';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];
@@ -39,7 +40,7 @@ export interface ISelectWithFilterStateProps {
 export interface ISelectWithFilterDispatchProps {
     onRenderFilter: (items: string[]) => void;
     onDestroyFilter: () => void;
-    onSelectCustomValue: (filterValue: string) => void;
+    onSelectCustomValue: (filterValue: string, fromAddButton?: boolean) => void;
 }
 
 const SelectWithFilterPropsToOmit = keys<ISelectWithFilterOwnProps>();
@@ -65,7 +66,12 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectOwnProps & ISelectSpecificProps): ISelectWithFilterDispatchProps => ({
         onRenderFilter: (items: string[]) => dispatch(addStringList(ownProps.id, items)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
-        onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
+        onSelectCustomValue: (filterValue: string, fromAddButton = false) => {
+            dispatch(addValueStringList(ownProps.id, filterValue));
+            if (fromAddButton) {
+                dispatch(selectListBoxOption(ownProps.id, true, filterValue));
+            }
+        },
     });
 
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
@@ -129,7 +135,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
 
         private handleOnClick = () => {
             if (!_.isEmpty(this.props.filterValue)) {
-                this.props.onSelectCustomValue(this.props.filterValue);
+                this.props.onSelectCustomValue(this.props.filterValue, true);
             }
         }
 
