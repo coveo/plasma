@@ -7,7 +7,7 @@ import {camelize} from 'underscore.string';
  * Pass the required svgName to get your svg.
  * Use svgClass to pass the svg fill class (and the icon class if you didn't pass is as className).
  */
-export interface ISvgProps extends React.HTMLProps<Svg> {
+export interface ISvgProps extends React.HTMLAttributes<HTMLSpanElement> {
     svgClass?: string;
     svgName: string;
 }
