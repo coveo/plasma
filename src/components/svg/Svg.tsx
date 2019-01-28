@@ -12,7 +12,7 @@ export interface ISvgProps {
 const svgPropsToOmit = keys<ISvgProps>();
 
 export class Svg extends React.Component<ISvgProps & React.HTMLAttributes<HTMLSpanElement>> {
-    static defaultProps: Partial<ISvgProps> = {
+    static defaultProps: Partial<ISvgProps & React.HTMLAttributes<HTMLSpanElement>> = {
         svgClass: '',
     };
 

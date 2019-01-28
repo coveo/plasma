@@ -220,7 +220,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     protected getSvg(option: IDropdownOption): JSX.Element {
         return option && option.svg
             ? (
-                <span key={option.svg.name}
+                <span key={option.svg.svgName}
                     className='value-icon'>
                     <Svg {...option.svg} />
                 </span>
