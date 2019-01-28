@@ -13,7 +13,7 @@ export interface ISvgProps extends ISvgTagProps, React.HTMLAttributes<HTMLSpanEl
 
 const svgPropsToOmit = keys<ISvgTagProps>();
 
-export class Svg extends React.Component<ISvgTagProps> {
+export class Svg extends React.Component<ISvgProps> {
     static defaultProps: Partial<ISvgProps> = {
         svgClass: '',
     };
