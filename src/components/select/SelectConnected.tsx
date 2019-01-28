@@ -214,7 +214,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     private handleDocumentClick = (e: MouseEvent) => {
-        if (this.props.isOpened && document.contains(e.target as HTMLElement)) {
+        if (this.props.isOpened && document.body.contains(e.target as HTMLElement)) {
             const dropdown: Element | Text = ReactDOM.findDOMNode(this.menu);
 
             if (!dropdown.contains(e.target as Node) && !this.getButton().contains(e.target as Node)) {
