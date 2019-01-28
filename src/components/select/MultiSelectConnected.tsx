@@ -19,7 +19,10 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
-export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
+export interface IMultiSelectOwnProps extends
+    ISelectProps,
+    IDropTargetProps,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {
     placeholder?: string;
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
@@ -38,7 +41,10 @@ export interface IMultiSelectDispatchProps {
     onReorder?: (values: string[]) => void;
 }
 
-export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
+export interface IMultiSelectProps extends
+    IMultiSelectOwnProps,
+    IMultiSelectStateProps,
+    IMultiSelectDispatchProps {}
 
 const makeMapStateToProps = () => {
     const getStateProps = createStructuredSelector({

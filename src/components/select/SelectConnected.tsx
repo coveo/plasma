@@ -21,7 +21,7 @@ export interface ISelectSpecificProps {
 }
 
 export interface ISelectOwnProps {
-    id: string;
+    id?: string;
     placeholder?: string;
     noResultItem?: IItemBoxProps;
     selectClasses?: string;
