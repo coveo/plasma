@@ -2,6 +2,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {extend, omit} from 'underscore';
 import {camelize} from 'underscore.string';
+import {keys} from 'ts-transformer-keys';
 
 /**
  * Pass the required svgName to get your svg.
@@ -16,9 +17,7 @@ export interface ISvgProps {
  * List of props that were passed to the <Svg> component but that should not be passed to the <span> element to avoid warnings.
  * @type {string[]}
  */
-const svgPropsToOmit = [
-    'svgClass', 'svgName',
-];
+const svgPropsToOmit = keys<ISvgProps>();
 
 export class Svg extends React.Component<ISvgProps & React.HTMLAttributes<HTMLSpanElement>> {
     static defaultProps: Partial<ISvgProps> = {
