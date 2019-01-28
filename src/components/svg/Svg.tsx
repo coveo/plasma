@@ -4,14 +4,16 @@ import {keys} from 'ts-transformer-keys';
 import {extend, omit} from 'underscore';
 import {camelize} from 'underscore.string';
 
-export interface ISvgProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface ISvgTagProps {
     svgClass?: string;
     svgName: string;
 }
 
-const svgPropsToOmit = keys<ISvgProps>();
+export interface ISvgProps extends ISvgTagProps, React.HTMLAttributes<HTMLSpanElement> {}
 
-export class Svg extends React.Component<ISvgProps> {
+const svgPropsToOmit = keys<ISvgTagProps>();
+
+export class Svg extends React.Component<ISvgTagProps> {
     static defaultProps: Partial<ISvgProps> = {
         svgClass: '',
     };
