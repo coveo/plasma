@@ -61,6 +61,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         id: uniqueId('input'),
         type: 'text',
         valid: true,
+        labelTitle: '',
     };
 
     constructor(props: IInputProps, state: IInputState) {
@@ -144,9 +145,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
 
     private getLabel(): JSX.Element {
         const {labelProps, labelTitle} = this.props;
-        return labelTitle
-            ? <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
-            : null;
+        return <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>;
     }
 
     render() {
