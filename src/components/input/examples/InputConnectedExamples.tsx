@@ -66,20 +66,12 @@ export const InputConnectedExamples = (): JSX.Element =>
             />
         </div>
         <div className='form-group'>
-            <button className='mt2 mb2' onClick={() => {
-                ReactVaporStore.dispatch(validateInputValue(
-                    'super-input-4',
-                    validate(findWhere(ReactVaporStore.getState().inputs, {id: 'super-input-4'}).value),
-                ));
-            }}>
-                Toggle valid state
-            </button>
             <InputConnected
                 id={UUID.generate()}
                 classes='mt1'
-                validate={(value: string) => value !== 'No label with validation'}
-                labelProps={{invalidMessage: 'no duplicate'}}
-                defaultValue='No label with validation'
+                validate={(value: string) => value === ''}
+                labelProps={{invalidMessage: 'not empty'}}
+                defaultValue='valid only on change'
                 validateOnChange
             />
         </div>
