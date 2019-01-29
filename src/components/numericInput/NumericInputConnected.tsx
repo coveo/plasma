@@ -6,9 +6,9 @@ import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {Svg} from '../svg/Svg';
-import {NumericInputActions} from './actions/NumericInputActions';
 import * as styles from './numeric-input.scss';
-import {initialNumericInputState} from './reducers/NumericInputReducers';
+import {NumericInputActions} from './NumericInputActions';
+import {initialNumericInputState} from './NumericInputReducers';
 
 export interface NumericInputOwnProps {
     id: string;

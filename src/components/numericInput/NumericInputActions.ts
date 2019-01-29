@@ -1,4 +1,4 @@
-import {IReduxAction} from '../../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils';
 
 export const NumericInputActionTypes = {
     mount: 'MOUNT_NUMERIC_INPUT',

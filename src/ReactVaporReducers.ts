@@ -22,7 +22,7 @@ import {menuCompositeReducer} from './components/menu/MenuReducers';
 import {modalsReducer, openModalsReducer} from './components/modal/ModalReducers';
 import {paginationCompositeReducer} from './components/navigation/pagination/NavigationPaginationReducers';
 import {perPageCompositeReducer} from './components/navigation/perPage/NavigationPerPageReducers';
-import {numericInputReducer} from './components/numericInput/reducers/NumericInputReducers';
+import {numericInputReducer} from './components/numericInput/NumericInputReducers';
 import {optionPickersReducer} from './components/optionPicker/OptionPickerReducers';
 import {optionsCyclesReducer} from './components/optionsCycle/OptionsCycleReducers';
 import {popoversReducer} from './components/popover/PopoverReducers';

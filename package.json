@@ -20,7 +20,7 @@
     "url": "git+https://github.com/coveo/react-vapor.git"
   },
   "scripts": {
-    "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --devtool eval --inline --hot --progress --colors",
+    "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --host 0.0.0.0 --devtool eval --inline --hot --progress --colors",
     "docs": "webpack --config webpack.config.js",
     "lintfix": "node node_modules/tsjs -a -n -e coverage/**/*.js docs/**/*.js **/*css.d.ts",
     "compileTs": "webpack --config webpack.config.prod.js",

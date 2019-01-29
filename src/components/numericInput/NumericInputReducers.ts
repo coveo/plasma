@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
-import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ISetNumericInputPayload, NumericInputActionTypes} from '../actions/NumericInputActions';
+import {IReduxAction} from '../../utils/ReduxUtils';
+import {ISetNumericInputPayload, NumericInputActionTypes} from './NumericInputActions';
 
 export interface INumericInputState {
     value: number | string;
