@@ -19,7 +19,9 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
-export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
+export interface IMultiSelectOwnProps extends
+    ISelectProps,
+    IDropTargetProps {
     placeholder?: string;
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
@@ -38,7 +40,10 @@ export interface IMultiSelectDispatchProps {
     onReorder?: (values: string[]) => void;
 }
 
-export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
+export interface IMultiSelectProps extends
+    IMultiSelectOwnProps,
+    IMultiSelectStateProps,
+    IMultiSelectDispatchProps {}
 
 const makeMapStateToProps = () => {
     const getStateProps = createStructuredSelector({
@@ -66,7 +71,7 @@ const parentDropTarget = {
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))
-export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}> {
+export class MultiSelectConnected extends React.Component<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>>     {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
@@ -86,7 +91,8 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
                 noResultItem={this.props.noResultItem}
                 selectClasses={this.props.selectClasses}
                 hasFocusableChild={this.props.hasFocusableChild}
-                multi>
+                multi
+            >
                 {this.props.children}
             </SelectConnected>
         );
@@ -156,7 +162,8 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps, {}>
         const buttonAttrs = !this.props.noDisabled
             && this.props.selected
             && this.props.selected.length === this.props.items.length
-            ? {disabled: true} : {};
+            ? {disabled: true}
+            : {disabled: this.props.disabled};
         return (
             <div className={classes} style={this.props.multiSelectStyle}>
                 {this.props.connectDropTarget(
