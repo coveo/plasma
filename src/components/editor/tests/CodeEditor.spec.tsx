@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
-import {CodeEditor, ICodeEditorProps} from '../CodeEditor';
+import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
 
 describe('CodeEditor', () => {
@@ -20,7 +20,7 @@ describe('CodeEditor', () => {
     });
 
     describe('<CodeEditor />', () => {
-        let codeEditor: ReactWrapper<ICodeEditorProps>;
+        let codeEditor: ReactWrapper<ICodeEditorProps, CodeEditorState>;
         let codeEditorInstance: CodeEditor;
 
         const mountWithProps = (props: Partial<ICodeEditorProps> = {}) => {
@@ -66,26 +66,15 @@ describe('CodeEditor', () => {
         });
 
         it('should display a <CodeMirror /> component', () => {
-            expect(codeEditor.find(ReactCodeMirror.UnControlled).length).toBe(1);
+            expect(codeEditor.find(ReactCodeMirror.Controlled).length).toBe(1);
         });
 
-        it('should call handleChange when the CodeMirror onChange prop is called', () => {
-            const handleChangeSpy: jasmine.Spy = spyOn<any>(CodeEditor.prototype, 'handleChange');
-            const expectedValue: string = 'anything at all really';
-
-            codeEditor.find(ReactCodeMirror.UnControlled).props().onChange(({} as any), ({} as any), expectedValue);
-
-            expect(handleChangeSpy).toHaveBeenCalledTimes(1);
-            expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);
-        });
-
-        it('should call the onChange prop if set when calling handleChange', () => {
+        it('should call onChange prop when its value prop changes', () => {
             const onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
             const expectedValue: string = 'the expected value';
 
             mountWithProps({onChange: onChangeSpy});
-
-            (codeEditorInstance as any).handleChange(expectedValue);
+            codeEditor.setProps({value: expectedValue});
 
             expect(onChangeSpy).toHaveBeenCalledTimes(1);
             expect(onChangeSpy).toHaveBeenCalledWith(expectedValue);
@@ -116,7 +105,7 @@ describe('CodeEditor', () => {
         });
 
         it('should have a border by default', () => {
-            expect(codeEditor.find(ReactCodeMirror.UnControlled).props().className).toBe('mod-border');
+            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toBe('mod-border');
         });
     });
 });
