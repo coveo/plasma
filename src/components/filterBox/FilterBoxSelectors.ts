@@ -4,7 +4,7 @@ import {defaultMatchFilter, MatchFilter} from '../../utils/FilterUtils';
 import {IFilterState} from './FilterBoxReducers';
 
 export interface GetFilterTextProps {
-    id: string;
+    id?: string;
 }
 
 const getFilterText = (state: IReactVaporState, props: GetFilterTextProps): string => {
