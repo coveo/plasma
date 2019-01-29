@@ -12,7 +12,7 @@ const mount = (id: string, initialValue: number): IReduxAction<ISetNumericInputP
     payload: {id, value: initialValue},
 });
 
-const unmount = (id: string): IReduxAction => ({
+const unmount = (id: string): IReduxAction<{id: string}> => ({
     type: NumericInputActionTypes.unmount,
     payload: {id},
 });

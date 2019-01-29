@@ -75,19 +75,19 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
             || valueAsNumber > this.props.min;
         return (
             <div className='flex flex-row'>
-                <Button classes={['mr1 inline-flex center-align p0', styles.numericInputButton]} enabled={decrementEnabled} onClick={this.onDecrement}>
+                <Button classes={['js-decrement mr1 p0', styles.numericInputButton]} enabled={decrementEnabled} onClick={this.onDecrement}>
                     <Svg svgName='minus' svgClass='icon mod-12 fill-pure-white' />
                 </Button>
                 <div className='flex flex-column'>
                     <input
                         {..._.omit(this.props, keys<NumericInputProps>())}
-                        className={classNames('mb1', this.props.className, styles.numericInput)}
+                        className={classNames('js-numeric-input mb1', this.props.className, styles.numericInput)}
                         value={this.props.value}
                         onChange={this.onChange}
                     />
                     {this.props.hasError && <span className='generic-form-error'>{this.props.invalidMessage}</span>}
                 </div>
-                <Button classes={['ml1 inline-flex center-align p0', styles.numericInputButton]} enabled={incrementEnabled} onClick={this.onIncrement}>
+                <Button classes={['js-increment ml1 p0', styles.numericInputButton]} enabled={incrementEnabled} onClick={this.onIncrement}>
                     <Svg svgName='plus' svgClass='icon mod-12 fill-pure-white' />
                 </Button>
             </div>

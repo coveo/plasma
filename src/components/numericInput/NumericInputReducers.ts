@@ -11,7 +11,7 @@ export interface INumericInputsState {
     [key: string]: INumericInputState;
 }
 
-const initialNumericInputsState: INumericInputsState = {};
+export const initialNumericInputsState: INumericInputsState = {};
 
 export const initialNumericInputState = {value: 1, hasError: false};
 

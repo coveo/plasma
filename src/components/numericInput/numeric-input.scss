@@ -19,9 +19,16 @@ $numeric-input-buttons-border-radius: 4px;
 }
 
 .numericInputButton {
+  line-height: $numeric-input-height - 2 * $default-border-size;
   background-color: $blue-purple-2;
   color: $pure-white;
   height: $numeric-input-height;
   width: $numeric-input-height;
   border-radius: $numeric-input-buttons-border-radius;
+}
+
+:global(.coveo-styleguide) {
+  .numericInputButton {
+    outline: none;
+  }
 }
