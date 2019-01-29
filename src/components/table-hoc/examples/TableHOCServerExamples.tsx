@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/TestUtils';
 import {LastUpdated} from '../../lastUpdated/LastUpdated';
@@ -74,8 +75,9 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                 id={data.username}
                 tableId={TableHOCServerExamples.TABLE_ID}
                 key={data.username}
-                actions={[{primary: true, icon: 'edit', name: 'edit', enabled: true, trigger: () => alert(data.username)}]}
+                actions={[{primary: true, icon: 'edit', name: 'edit', enabled: true, trigger: () => alert(data.username), callOnDoubleClick: true}]}
                 isMultiselect
+                disabled={i % 3 === 0}
             >
                 <TableRowNumberColumn number={i + 1} />
                 <td key='city'>{data.city}</td>

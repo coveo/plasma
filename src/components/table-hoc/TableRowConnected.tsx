@@ -29,6 +29,7 @@ export interface ITableRowOwnProps {
     actions?: IActionOptions[];
     isMultiselect?: boolean;
     collapsible?: CollapsibleRowProps;
+    disabled?: boolean;
 }
 
 export interface ITableRowStateProps {
@@ -149,9 +150,11 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
                             selected: this.props.selected,
                             opened: this.props.opened,
                             'heading-row': rowIsCollapsible,
+                            'row-disabled': this.props.disabled,
                         },
                     )}
                     onClick={this.handleClick}
+                    onDoubleClick={this.handleDoubleClick}
                 >
                     {this.props.children}
                     {collapsibleRowToggle}
@@ -170,6 +173,12 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
             this.props.onClick(isMulti);
         }
+    }
+
+    private handleDoubleClick = () => {
+        _(this.props.actions)
+            .filter((action: IActionOptions) => action.callOnDoubleClick)
+            .forEach((action: IActionOptions) => action.trigger());
     }
 }
 
