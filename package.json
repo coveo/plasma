@@ -74,7 +74,7 @@
     "@types/lorem-ipsum": "1.0.2",
     "@types/rc-slider": "8.6.0",
     "@types/react": "16.7.7",
-    "@types/react-bootstrap": "0.32.15",
+    "@types/react-bootstrap": "0.32.16",
     "@types/react-codemirror": "1.0.2",
     "@types/react-dom": "16.0.7",
     "@types/react-infinite-scroll-component": "4.2.3",
