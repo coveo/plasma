@@ -21,8 +21,7 @@ import {SelectSelector} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends
     ISelectProps,
-    IDropTargetProps,
-    React.ButtonHTMLAttributes<HTMLButtonElement> {
+    IDropTargetProps {
     placeholder?: string;
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
@@ -72,7 +71,7 @@ const parentDropTarget = {
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))
-export class MultiSelectConnected extends React.Component<IMultiSelectProps> {
+export class MultiSelectConnected extends React.Component<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>>     {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
