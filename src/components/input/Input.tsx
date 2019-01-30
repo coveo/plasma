@@ -107,7 +107,8 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
     }
 
     getInnerValue(): string {
-        return this.innerInput.value;
+        return (this.innerInput && this.innerInput.value)
+            || '';
     }
 
     validate() {
@@ -118,7 +119,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
 
     private handleBlur() {
         if (this.props.onBlur) {
-            this.props.onBlur(this.innerInput.value);
+            this.props.onBlur(this.getInnerValue());
         }
     }
 
@@ -126,8 +127,8 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         if (this.props.onChange) {
             const validOnChange = this.props.validateOnChange
                 && this.props.validate
-                && this.props.validate(this.innerInput.value);
-            this.props.onChange(this.innerInput.value, validOnChange);
+                && this.props.validate(this.getInnerValue());
+            this.props.onChange(this.getInnerValue(), validOnChange);
         }
     }
 
