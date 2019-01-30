@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {CodeEditor} from '../CodeEditor';
 import {IJSONEditorProps, IJSONEditorState, JSONEditor} from '../JSONEditor';
 
@@ -82,6 +83,17 @@ describe('JSONEditor', () => {
             mountWithProps({onChange: onChangeSpy});
 
             (jsonEditorInstance as any).handleChange(expectedValue);
+
+            expect(onChangeSpy).toHaveBeenCalledTimes(1);
+            expect(onChangeSpy).toHaveBeenCalledWith(expectedValue, true);
+        });
+
+        it('should call onChange prop when the value prop changes', () => {
+            const onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
+            const expectedValue: string = 'the expected value';
+
+            mountWithProps({onChange: onChangeSpy});
+            jsonEditor.setProps({value: expectedValue});
 
             expect(onChangeSpy).toHaveBeenCalledTimes(1);
             expect(onChangeSpy).toHaveBeenCalledWith(expectedValue, true);
