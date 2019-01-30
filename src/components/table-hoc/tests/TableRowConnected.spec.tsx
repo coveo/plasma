@@ -48,6 +48,11 @@ describe('Table HOC', () => {
             expect(wrapper.find('tr').hasClass('selected')).toBe(true);
         });
 
+        it('should have the class "row-disabled" if the row has disabled prop to true', () => {
+            const wrapper = shallowWithStore(<TableRowConnected id='a' tableId='b' disabled />, store).dive();
+            expect(wrapper.find('tr').hasClass('row-disabled')).toBe(true);
+        });
+
         it('should not have the class selected if the row is not selected in the state', () => {
             store = createMockStore({
                 tableHOCRow: [{
@@ -140,6 +145,21 @@ describe('Table HOC', () => {
 
             wrapper.find('tr').simulate('click', {ctrlKey: false});
             expect(store.isActionDispatched(expectedActionWithoutMulti)).toBe(true);
+        });
+
+        it('should dispatch trigger actions with callOnDoubleClick=true when double clicking the row', () => {
+            const triggerActionSpy = jasmine.createSpy('triggerAction');
+
+            const wrapper = shallowWithStore(
+                <TableRowConnected
+                    {...defaultProps}
+                    actions={[{enabled: true, name: 'action', callOnDoubleClick: true, trigger: triggerActionSpy}]}
+                />,
+                store,
+            ).dive();
+
+            wrapper.find('tr').simulate('doubleclick');
+            expect(triggerActionSpy).toHaveBeenCalledTimes(1);
         });
 
         describe('when the row is collapsible', () => {
