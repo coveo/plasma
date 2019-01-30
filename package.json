@@ -86,7 +86,7 @@
     "@types/redux-test-utils": "0.2.0",
     "@types/underscore": "1.8.9",
     "@types/underscore.string": "0.0.33",
-    "@types/webpack-env": "1.13.6",
+    "@types/webpack-env": "1.13.7",
     "autoprefixer": "9.4.0",
     "awesome-typescript-loader": "5.2.1",
     "axios": "0.18.0",
