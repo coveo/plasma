@@ -1,205 +1,260 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IInputProps, Input} from '../Input';
 import {Label} from '../Label';
 
-describe('Input', () => {
-    describe('<Input />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(
-                    <Input />,
-                );
-            }).not.toThrow();
-        });
+describe('<Input />', () => {
+
+    it('should mount without errors', () => {
+        expect(() => {
+            shallow(
+                <Input />,
+            );
+        }).not.toThrow();
     });
 
-    describe('<Input />', () => {
-        let input: ReactWrapper<IInputProps, any>;
+    it('should unMount without errors', () => {
+        const wrapper = shallow(<Input />);
+        expect(() => {
+            wrapper.unmount();
+        }).not.toThrow();
+    });
 
-        beforeEach(() => {
-            input = mount(
-                <Input />,
-                {attachTo: document.getElementById('App')},
-            );
-        });
+    describe('once mounted', () => {
+        let input: ShallowWrapper<IInputProps>;
 
-        afterEach(() => {
-            input.detach();
-        });
+        const shallowInput = (props: IInputProps = {}) => {
+            input = shallow(<Input {...props} />);
+        };
 
         it('should set inner input classes when specified', () => {
-            const innerInputClass = 'valid';
-            const classes = [innerInputClass];
-            expect(input.find('input').first().find(`.${innerInputClass}`).length).toBe(0);
+            const innerInputClasses = ['valid'];
+            shallowInput({
+                innerInputClasses,
+            });
 
-            input.setProps({innerInputClasses: classes}).mount().update();
-            expect(input.find('input').first().find(`.${innerInputClass}`).length).toBe(1);
+            expect(input.find('input').first().find(`.${innerInputClasses[0]}`).length).toBe(1);
         });
 
         it('should set inner input id when specified', () => {
-            const id = 'yo';
-            expect(input.find('input').first().prop('id')).not.toBe(id);
-
-            input.setProps({id});
-            expect(input.find('input').first().prop('id')).toBe(id);
+            const id = 'plume';
+            shallowInput({
+                id,
+            });
+            expect(input.find('input').first().props().id).toBe(id);
         });
 
         it('should set inner input name when specified', () => {
-            const name = 'yo';
-            expect(input.find('input').first().prop('name')).toBe(undefined);
-
-            input.setProps({name}).mount().update();
-            expect(input.find('input').first().prop('name')).toBe(name);
+            const name = 'pain';
+            shallowInput({
+                name,
+            });
+            expect(input.find('input').first().props().name).toBe(name);
         });
 
         it('should set checked prop when specified', () => {
-            input.setProps({checked: false}).mount().update();
-            expect(input.find('input').first().prop('checked')).toBe(false);
-
-            input.setProps({checked: true}).mount();
-            expect(input.find('input').first().prop('checked')).toBe(true);
+            const name = 'pita';
+            shallowInput({
+                name,
+            });
+            expect(input.find('input').first().props().name).toBe(name);
         });
 
         it('should set disabled prop when specified', () => {
-            input.setProps({disabled: false}).mount().update();
-            expect(input.find('input').first().prop('disabled')).toBe(false);
-
-            input.setProps({disabled: true}).mount().update();
-            expect(input.find('input').first().prop('disabled')).toBe(true);
+            shallowInput({
+                disabled: true,
+            });
+            expect(input.find('input').first().props().disabled).toBe(true);
         });
 
         it('should set readonly prop when specified', () => {
-            input.setProps({readOnly: false}).mount().update();
-            expect(input.find('input').first().prop('readOnly')).toBe(false);
-
-            input.setProps({readOnly: true}).mount().update();
-            expect(input.find('input').first().prop('readOnly')).toBe(true);
+            shallowInput({
+                readOnly: true,
+            });
+            expect(input.find('input').first().props().readOnly).toBe(true);
         });
 
         it('should set inner input type when specified', () => {
-            const type = 'password';
-            expect(input.find('input').first().prop('type')).toBe('text');
-
-            input.setProps({type}).mount().update();
-            expect(input.find('input').first().prop('type')).toBe(type);
+            const type = 'Calinours';
+            shallowInput({
+                type,
+            });
+            expect(input.find('input').first().props().type).toBe(type);
         });
 
         it('should call prop onBlur on inner input blur', () => {
-            const blurSpy = jasmine.createSpy('onBlur');
+            const spyOnBlur = jasmine.createSpy('onBlur');
 
-            input.setProps({onBlur: blurSpy});
-            input.find('input').first().simulate('blur');
+            shallowInput({
+                onBlur: spyOnBlur,
+                defaultValue: 'test',
+            });
 
-            expect(blurSpy.calls.count()).toBe(1);
+            input.find('input').first().props().onBlur({} as any);
+
+            expect(spyOnBlur).toHaveBeenCalledTimes(1);
         });
 
         it('should call prop onChange on inner input change', () => {
-            const changeSpy = jasmine.createSpy('onChange');
-            const innerInput = input.find('input');
+            const spyOnChange = jasmine.createSpy('onChange');
 
-            input.setProps({onChange: changeSpy});
-            innerInput.simulate('change');
+            shallowInput({
+                onChange: spyOnChange,
+            });
 
-            expect(changeSpy.calls.count()).toBe(1);
+            input.find('input').first().simulate('change');
+
+            expect(spyOnChange).toHaveBeenCalledTimes(1);
         });
 
         it('should call prop onClick on inner container click', () => {
-            const clickSpy = jasmine.createSpy('onClick');
-            const innerContainer = input.find('div');
+            const spyOnClick = jasmine.createSpy('onClick');
 
-            input.setProps({onClick: clickSpy});
-            innerContainer.simulate('click');
+            shallowInput({
+                classes: 'banane',
+                disabled: true,
+                disabledTooltip: 'biscuit aux fromages',
+                onClick: spyOnClick,
+            });
+            input.find('.banane').first().simulate('click');
 
-            expect(clickSpy.calls.count()).toBe(1);
+            expect(spyOnClick).toHaveBeenCalledTimes(1);
         });
 
         it('should call prop onKeyUp on key up', () => {
-            const keyUpSpy = jasmine.createSpy('onKeyUp');
-            const innerInput = input.find('input');
+            const spyOnKeyUp = jasmine.createSpy('onKeyUp');
 
-            input.setProps({onKeyUp: keyUpSpy});
-            innerInput.simulate('keyUp');
+            shallowInput({
+                onKeyUp: spyOnKeyUp,
+            });
 
-            expect(keyUpSpy.calls.count()).toBe(1);
+            input.find('input').first().simulate('keyUp');
+
+            expect(spyOnKeyUp).toHaveBeenCalledTimes(1);
         });
 
-        it('should not render without a label if labelTitle is not passed as prop (even with labelProps)', () => {
-            expect(input.find(Label).length).toBe(0);
-
-            input.setProps({labelProps: {}});
-            expect(input.find(Label).length).toBe(0);
-        });
-
-        it('should render with a label if labelTitle is passed as prop', () => {
-            input.setProps({labelTitle: 'hello there'});
+        it('should always render the label event if the labelTitle and labelProps is not defined', () => {
+            shallowInput();
             expect(input.find(Label).length).toBe(1);
-            expect(input.find(Label).text()).toBe('hello there');
         });
 
         it('should pass the labelProps to the rendered Label if labelTitle and labelProps are set as props', () => {
             const labelProps = {invalidMessage: 'do not leave me empty'};
-            input.setProps({labelTitle: 'hello there', labelProps});
+
+            shallowInput({
+                labelProps,
+                labelTitle: 'potatos',
+            });
             expect(input.find(Label).props()).toEqual(jasmine.objectContaining(labelProps));
         });
 
-        it('should set the input-field class on the container if the input is of type text or number', () => {
-            expect(input.find('div').first().hasClass('input-field')).toBe(true);
+        describe('add classes on specific input type defined in validatedInputTypes', () => {
 
-            input.setProps({type: 'number'});
-            expect(input.find('div').first().hasClass('input-field')).toBe(true);
+            it('should set the input-field class on the container if the input is of type text', () => {
+                shallowInput({
+                    type: 'text',
+                });
 
-            input.setProps({type: 'checkbox'});
-            expect(input.find('div').first().hasClass('input-field')).toBe(false);
-        });
+                expect(input.find('div').first().hasClass('input-field')).toBe(true);
+            });
 
-        it('should set the invalid class on the input if valid prop is false and input text is of type text or number or password', () => {
-            expect(input.find('.invalid').length).toBe(0);
+            it('should set the input-field class on the container if the input is of type number', () => {
+                shallowInput({
+                    type: 'number',
+                });
 
-            input.setProps({valid: false}).update();
-            expect(input.find('.invalid').length).toBe(1);
+                expect(input.find('div').first().hasClass('input-field')).toBe(true);
+            });
 
-            input.setProps({type: 'number'}).update();
-            expect(input.find('.invalid').length).toBe(1);
+            it('should set the input-field class on the container if the input is of type password', () => {
+                shallowInput({
+                    type: 'password',
+                });
 
-            input.setProps({type: 'password'}).update();
-            expect(input.find('.invalid').length).toBe(1);
+                expect(input.find('div').first().hasClass('input-field')).toBe(true);
+            });
 
-            input.setProps({type: 'checkbox'}).update();
-            expect(input.find('.invalid').length).toBe(0);
+            it('should not set the input-field class on the container if the input is of type checkbox', () => {
+                shallowInput({
+                    type: 'checkbox',
+                });
+
+                expect(input.find('div').first().hasClass('input-field')).toBe(false);
+            });
+
+            it('should set the invalid class on the input if valid prop is false and input type text', () => {
+                shallowInput({
+                    type: 'text',
+                    valid: false,
+                });
+
+                expect(input.find('.invalid').length).toBe(1);
+            });
+
+            it('should set the invalid class on the input if valid prop is false and input type number', () => {
+                shallowInput({
+                    type: 'number',
+                    valid: false,
+                });
+
+                expect(input.find('.invalid').length).toBe(1);
+            });
+
+            it('should set the invalid class on the input if valid prop is false and input type password', () => {
+                shallowInput({
+                    type: 'password',
+                    valid: false,
+                });
+
+                expect(input.find('.invalid').length).toBe(1);
+            });
+
+            it('should not set the invalid class on the input if valid prop is true and input type text', () => {
+                shallowInput({
+                    type: 'text',
+                    valid: true,
+                });
+
+                expect(input.find('.invalid').length).toBe(0);
+            });
+
+            it('should not set the invalid class on the input if valid prop is false and input type is not valid', () => {
+                shallowInput({
+                    type: 'checkbox',
+                    valid: false,
+                });
+
+                expect(input.find('.invalid').length).toBe(0);
+            });
         });
 
         it('should set the step prop to any if the input is of type number', () => {
-            expect(input.find('input').prop('step')).toBe(null);
+            shallowInput({
+                type: 'number',
+            });
 
-            input.setProps({type: 'number'}).update();
-            expect(input.find('input').prop('step')).toBe('any');
+            expect(input.find('input').props().step).toBe('any');
         });
 
         it('should set the autoFocus prop to the input', () => {
-            expect(input.find('input').prop('autoFocus')).toBe(false);
+            shallowInput({
+                autoFocus: true,
+            });
 
-            input.setProps({autoFocus: true});
-
-            expect(input.find('input').prop('autoFocus')).toBe(true);
-        });
-
-        it('should change the value if we change the value prop', () => {
-            const expectedValue = 'a new value';
-
-            input.setProps({value: expectedValue}).update();
-
-            expect((input.instance() as any).innerInput.value).toBe(expectedValue);
+            expect(input.find('input').props().autoFocus).toBe(true);
         });
 
         describe('with disabledTooltip', () => {
             it('should wrap the input with a tooltip if the input is disabled and disabledTooltip is truthy', () => {
                 const disabledTooltip = 'i am truthy';
-                input.setProps({disabledTooltip, disabled: true});
+                shallowInput({
+                    disabled: true,
+                    disabledTooltip,
+                });
 
-                expect(input.find(Tooltip).prop('title')).toBe(disabledTooltip);
+                expect(input.find(Tooltip).props().title).toBe(disabledTooltip);
                 expect(input.find(Tooltip).find('input').length).toBe(1);
             });
         });
