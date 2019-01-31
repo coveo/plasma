@@ -21,7 +21,7 @@ export interface NumericInputOwnProps {
 }
 
 export interface NumericInputStateProps {
-    value: number | string;
+    value: React.ReactText;
     hasError: boolean;
 }
 
@@ -45,7 +45,7 @@ export const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputO
 export const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
     mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value)),
     unmount: () => dispatch(NumericInputActions.unmount(ownProps.id)),
-    setValue: (value: number | string) => dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
+    setValue: (value: React.ReactText) => dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)

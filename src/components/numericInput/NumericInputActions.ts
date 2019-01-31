@@ -19,12 +19,12 @@ const unmount = (id: string): IReduxAction<{id: string}> => ({
 
 export interface ISetNumericInputPayload {
     id: string;
-    value: number | string;
+    value: React.ReactText;
     min?: number;
     max?: number;
 }
 
-const setValue = (id: string, value: number | string, min?: number, max?: number): IReduxAction<ISetNumericInputPayload> => ({
+const setValue = (id: string, value: React.ReactText, min?: number, max?: number): IReduxAction<ISetNumericInputPayload> => ({
     type: NumericInputActionTypes.set,
     payload: {id, value, min, max},
 });
