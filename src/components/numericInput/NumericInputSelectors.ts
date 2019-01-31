@@ -18,6 +18,6 @@ const getHasError: (state: IReactVaporState, ownProps: {id: string}) => boolean 
 );
 
 export const NumericInputSelectors = {
-    getHasError,
     getValue,
+    getHasError,
 };
