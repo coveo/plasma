@@ -24,7 +24,8 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
                 .where({selected: true})
                 .pluck('value')
                 .value();
-            const selectedIndex = _.findIndex(action.payload.items, (e) => e.selected);
+            let selectedIndex = _.findIndex(action.payload.items, (e) => e.selected);
+            selectedIndex = selectedIndex === -1 ? 0 : selectedIndex;
             return {
                 id: action.payload.id,
                 selected: selected,
@@ -69,7 +70,6 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
         case SelectActions.toggle:
             return {
                 ...state,
-                active: 0,
             };
         default:
             return state;
