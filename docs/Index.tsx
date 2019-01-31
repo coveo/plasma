@@ -73,6 +73,7 @@ import {SplitMultilineInputExamples} from '../src/components/multilineInput/exam
 import {MultiStepBarExamples} from '../src/components/multiStepBar/examples/MultiStepBarExamples';
 import {NavigationConnectedExamples} from '../src/components/navigation/examples/NavigationConnectedExamples';
 import {NavigationExamples} from '../src/components/navigation/examples/NavigationExamples';
+import {NumericInputExamples} from '../src/components/numericInput/examples/NumericInputExamples';
 import {OptionsCycleConnectedExamples} from '../src/components/optionsCycle/examples/OptionsCycleConnectedExamples';
 import {OptionsCycleExamples} from '../src/components/optionsCycle/examples/OptionsCycleExamples';
 import {PartialStringMatchExamples} from '../src/components/partial-string-match/PartialStringMatchExamples';
@@ -262,6 +263,7 @@ class App extends React.Component<{}, AppState> {
         {component: TableHOCServerExamples, componentName: 'Table (server + hoc)'},
         {component: ColorExamples, componentName: 'Color'},
         {component: InfoBoxExamples, componentName: 'Info Box'},
+        {component: NumericInputExamples, componentName: 'Numeric Input'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
     ];
