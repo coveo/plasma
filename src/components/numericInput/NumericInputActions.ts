@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {IReduxAction} from '../../utils/ReduxUtils';
 
 export const NumericInputActionTypes = {
