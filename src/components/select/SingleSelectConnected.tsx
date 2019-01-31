@@ -68,6 +68,9 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
             [styles.singleSelectFixedWidth]: !this.props.noFixedWidth,
         });
 
+        const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
+        const disabled = this.props.disabled || (visibleLength === 1 && this.props.selectedOption != null);
+
         return (
             <button
                 className={buttonClasses}
@@ -75,7 +78,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
                 onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
-                disabled={this.props.disabled}
+                disabled={disabled}
             >
                 {this.props.buttonPrepend}
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
