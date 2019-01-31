@@ -9,6 +9,7 @@ import {Svg} from '../svg/Svg';
 import * as styles from './numeric-input.scss';
 import {NumericInputActions} from './NumericInputActions';
 import {initialNumericInputState} from './NumericInputReducers';
+import {NumericInputSelectors} from './NumericInputSelectors';
 
 export interface NumericInputOwnProps {
     id: string;
@@ -35,10 +36,9 @@ export interface NumericInputProps extends NumericInputOwnProps,
     Partial<NumericInputDispatchProps> {}
 
 export const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputOwnProps): NumericInputStateProps => {
-    const numericInput = state.numericInputs && state.numericInputs[ownProps.id] || initialNumericInputState;
     return {
-        value: numericInput.value,
-        hasError: numericInput.hasError,
+        value: NumericInputSelectors.getValue(state, ownProps),
+        hasError: NumericInputSelectors.getHasError(state, ownProps),
     };
 };
 
