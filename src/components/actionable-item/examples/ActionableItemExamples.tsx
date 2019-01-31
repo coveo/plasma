@@ -5,7 +5,7 @@ export const ActionableItemExamples = () => (
     <div className='mt2'>
         <h1 className='text-blue mb1 bold'>ActionableItem List</h1>
         <div className='form-group'>
-            <label className='form-control-label'>Actionable Item without an onItemClick method</label>
+            <label className='form-control-label'>ActionableItem without an onItemClick method</label>
             <div className='form-control'>
                 <ActionableItem
                     id='actionable-item-1'
@@ -18,7 +18,7 @@ export const ActionableItemExamples = () => (
             </div>
         </div>
         <div className='form-group'>
-            <label className='form-control-label'>Actionable Item with an onItemClick method</label>
+            <label className='form-control-label'>ActionableItem with an onItemClick method</label>
             <div className='form-control'>
                 <ActionableItem
                     id='actionable-item-2'
