@@ -179,7 +179,7 @@ describe('Select', () => {
                     .simulate('keydown', {keyCode: keyCode.enter})
                     .simulate('keyup', {keyCode: keyCode.enter});
 
-                expect(dispatchSpy).toHaveBeenCalledWith(selectListBoxOption(id, undefined, items[0].value));
+                expect(dispatchSpy).toHaveBeenCalledWith(selectListBoxOption(id, undefined, items[1].value));
             });
 
             it('should dispatch a setActiveListBoxOption when the user press the up or down arrow', () => {
