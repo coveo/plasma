@@ -12,11 +12,10 @@
   // Workaround to make the action bar have a border between multiple rows
   background: repeating-linear-gradient(
                   $white,
-                  $white ($table-actions-container-height - 1),
-                  $medium-grey ($table-actions-container-height - 1),
-                  $medium-grey $table-actions-container-height
+                  $white $table-actions-container-height,
+                  $medium-grey $table-actions-container-height,
+                  $medium-grey ($table-actions-container-height + 1)
   );
-  margin-bottom: -1px;
 }
 
 .coveo-table-actions {
