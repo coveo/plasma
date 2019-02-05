@@ -8,7 +8,7 @@ export interface ICustomTag<T = HTMLElement> {
     props: React.HTMLProps<T>;
 }
 
-export const defaultCustomTag: ICustomTag<HTMLDivElement>  = {
+export const defaultCustomTag: ICustomTag<HTMLDivElement> = {
     tag: 'div',
     props: {},
 };
