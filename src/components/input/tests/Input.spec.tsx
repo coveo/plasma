@@ -135,8 +135,8 @@ describe('<Input />', () => {
             expect(spyOnKeyUp).toHaveBeenCalledTimes(1);
         });
 
-        it('should always render the label event if the labelTitle and labelProps is not defined', () => {
-            shallowInput();
+        it('should render the label even if the labelTitle is undefined when validate prop exists', () => {
+            shallowInput({validate: () => false});
             expect(input.find(Label).length).toBe(1);
         });
 

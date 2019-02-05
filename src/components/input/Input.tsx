@@ -146,7 +146,9 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
 
     private getLabel(): JSX.Element {
         const {labelProps, labelTitle} = this.props;
-        return <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>;
+        return labelTitle || this.props.validate
+            ? <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
+            : null;
     }
 
     render() {
