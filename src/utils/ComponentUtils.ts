@@ -3,9 +3,9 @@ import {ILinkSvgProps} from '../components/svg/LinkSvg';
 
 export type ComponentId = string;
 
-export interface ICustomTag {
+export interface ICustomTag<T = HTMLElement> {
     tag: string;
-    props: React.HTMLProps<HTMLElement>;
+    props: React.HTMLProps<T>;
 }
 
 /**
