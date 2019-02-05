@@ -78,7 +78,7 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
     }
 
     private getLastBoxProps(): T {
-        return deepClone(this.props.defaultProp);
+        return deepClone(this.props.defaultProp || {});
     }
 
     private getData(): Array<IMultilineSingleBoxProps<T>> {
