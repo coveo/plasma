@@ -1,6 +1,12 @@
+import * as React from 'react';
 import {ILinkSvgProps} from '../components/svg/LinkSvg';
 
 export type ComponentId = string;
+
+export interface ICustomTag {
+    tag: string;
+    props: React.HTMLProps<HTMLElement>;
+}
 
 /**
  * DisplayClass is a reflection of the atomic display classes available in Vapor
