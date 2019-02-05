@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {DragDropContext, DropTarget, IDropTargetProps} from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import {DropTarget, IDropTargetProps} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
@@ -67,7 +66,6 @@ const parentDropTarget = {
 };
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-@DragDropContext(HTML5Backend)
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))

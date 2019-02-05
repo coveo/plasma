@@ -7,6 +7,8 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import {SlideYExamples} from '../src/animations/examples/SlideYExamples';
 import {ActionableItemExamples} from '../src/components/actionable-item/examples/ActionableItemExamples';
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
@@ -162,7 +164,9 @@ class Header extends React.Component<{}, HeaderState> {
         );
     }
 }
-class App extends React.Component<{}, AppState> {
+
+@DragDropContext(HTML5Backend)
+class App extends React.PureComponent<{}, AppState> {
     private components = [
         {component: MenuExamples, componentName: 'Menu'},
         {component: CollapsibleInfoBoxExamples, componentName: 'CollapsibleInfoBox'},

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ICustomTag} from '../../../utils/ComponentUtils';
+import {defaultCustomTag, ICustomTag} from '../../../utils/ComponentUtils';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IMultilineBoxDispatchProps, IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps} from '../MultilineBox';
 
@@ -22,15 +22,14 @@ export const multilineBoxContainer = (supplier: ConfigSupplier<IMultilineBoxCont
         };
 
         private getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            const supplierProps: IMultilineBoxContainerSupplierProps = HocUtils.supplyConfig(supplier);
-            const ContainerTag = supplierProps.container.tag || 'div';
+            const supplierProps: IMultilineBoxContainerSupplierProps = {...{container: defaultCustomTag}, ...HocUtils.supplyConfig(supplier)};
             return React.Children.map(children, (child: React.ReactNode, index: number) => (
-                <ContainerTag
+                <supplierProps.container.tag
                     key={`${data[index].id}Container`}
                     {...supplierProps.container.props}
                 >
                     {child}
-                </ContainerTag>
+                </supplierProps.container.tag>
             ),
             );
         }
