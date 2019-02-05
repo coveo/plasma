@@ -68,6 +68,7 @@ import {ModalCompositeExamples} from '../src/components/modal/examples/ModalComp
 import {ModalConnectedExamples} from '../src/components/modal/examples/ModalConnectedExamples';
 import {ModalExamples} from '../src/components/modal/examples/ModalExamples';
 import {ModalPromptExamples} from '../src/components/modalPrompt/exemples/ModalPromptExamples';
+import {MultilineBoxExamples} from '../src/components/multilineBox/examples/MultilineBoxExamples';
 import {MultilineInputExamples} from '../src/components/multilineInput/examples/MultilineInputExamples';
 import {SplitMultilineInputExamples} from '../src/components/multilineInput/examples/SplitMultilineExamples';
 import {MultiStepBarExamples} from '../src/components/multiStepBar/examples/MultiStepBarExamples';
@@ -264,6 +265,7 @@ class App extends React.Component<{}, AppState> {
         {component: InfoBoxExamples, componentName: 'Info Box'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
+        {component: MultilineBoxExamples, componentName: 'MultilineBoxExamples'},
     ];
 
     constructor(props: {}, state: AppState) {
