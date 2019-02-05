@@ -427,26 +427,26 @@ export class MultilineBoxExamples extends React.PureComponent {
                         }]}
                         renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
                             _.map(data, (cData: IExampleData) => (
-                                    <React.Fragment key={cData.id}>
-                                        <InputConnected
-                                            id={`${cData.id}1`}
-                                            classes='mt0 inline-block mx1'
-                                            defaultValue={cData.props.name}
-                                            validate={(value: string) => cData.props.name === value}
-                                            validateOnChange
-                                            onChange={(value: string) => {
-                                                if (value !== '' && cData.isLast) {
-                                                    defaultProps.addNewBox();
-                                                }
-                                            }}
-                                        />
-                                        <InputConnected
-                                            id={`${cData.id}2`}
-                                            classes='mt0 inline-block mx1'
-                                            defaultValue={cData.props.displayName}
-                                        />
-                                    </React.Fragment>
-                                ),
+                                <React.Fragment key={cData.id}>
+                                    <InputConnected
+                                        id={`${cData.id}1`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.name}
+                                        validate={(value: string) => cData.props.name === value}
+                                        validateOnChange
+                                        onChange={(value: string) => {
+                                            if (value !== '' && cData.isLast) {
+                                                defaultProps.addNewBox();
+                                            }
+                                        }}
+                                    />
+                                    <InputConnected
+                                        id={`${cData.id}2`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.displayName}
+                                    />
+                                </React.Fragment>
+                            ),
                             )
                         }
                     />
