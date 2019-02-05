@@ -1,10 +1,12 @@
 import * as React from 'react';
+import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList, removeValueStringList} from '../../reusableState/customList/StringListActions';
 import {deepClone} from '../../utils/CloneUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
+import {IMultiSelectOwnProps} from '../select/MultiSelectConnected';
 import {MultilineBoxSelectors} from './MultilineBoxSelector';
 
 export interface IMultilineSingleBoxProps<T> {
@@ -42,10 +44,13 @@ export interface IMultilineBoxProps<T = any> extends IMultilineBoxOwnProps<T>,
     Partial<IMultilineBoxStateProps>,
     Partial<IMultilineBoxDispatchProps> {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IMultilineBoxOwnProps): IMultilineBoxStateProps => {
-    return {
-        multilineBoxIds: MultilineBoxSelectors.getIds(state, {id: ownProps.id}),
-    };
+const makeMapStateToProps = () => {
+    const getStateProps = createStructuredSelector({
+        multilineBoxIds: MultilineBoxSelectors.getIds,
+    });
+
+    return (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultilineBoxStateProps =>
+        getStateProps(state, {id: ownProps.id});
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps): IMultilineBoxDispatchProps => ({
@@ -55,7 +60,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps
     addNewBox: () => dispatch(addValueStringList(ownProps.id, UUID.generate())),
 });
 
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
+@ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> {
 
     private initialData: {[id: string]: T};
