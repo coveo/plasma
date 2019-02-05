@@ -22,6 +22,7 @@ type MultilineBoxWithDnDComponent<T = any> = React.ComponentClass<IMultilineBoxO
 
 export interface IMultilineBoxWithDnDSupplierProps {
     nativeTagDnDWrapper?: ICustomTag;
+    DnDContainerProps?: Partial<IDraggableContainerOwnProps>;
 }
 
 export interface IMultilineBoxWithDnDDispatchProps {
@@ -61,7 +62,13 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
         };
 
         private getDnDWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            const supplierProps: IMultilineBoxWithDnDSupplierProps = {...{nativeTagDnDWrapper: defaultCustomTag}, ...HocUtils.supplyConfig(supplier)};
+            const supplierProps: IMultilineBoxWithDnDSupplierProps = {
+                ...{
+                    nativeTagDnDWrapper: defaultCustomTag,
+                    DnDContainerProps: {},
+                },
+                ...HocUtils.supplyConfig(supplier),
+            };
             return React.Children.map(children, (child: React.ReactNode, index: number) => {
                 const isLast = index === data.length - 1;
                 return (
@@ -77,6 +84,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
                                 move={(dragIndex: number, hoverIndex: number) => DnDUtils.move(dragIndex, hoverIndex, this.props.multilineBoxIds, this.props.onReorder)}
                                 child={child}
                                 isDraggable={!isLast}
+                                {...supplierProps.DnDContainerProps}
                             />
                         </supplierProps.nativeTagDnDWrapper.tag>,
                     )
