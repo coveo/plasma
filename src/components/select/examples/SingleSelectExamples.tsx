@@ -21,6 +21,10 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Seven', value: '7', selectedDisplayValue: '007 Bond, James'},
 ];
 
+const defaultItemsSetTwo: IItemBoxProps[] = [
+    {displayValue: 'Test', value: '0'},
+    {displayValue: 'Disabled', value: 'disabled', disabled: true},
+];
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
     {id: UUID.generate(), option: {content: 'All'}, selected: true},
     {id: UUID.generate(), option: {content: 'even'}},
@@ -31,6 +35,8 @@ export interface ISingleSelectExamplesState {
     first: IItemBoxProps[];
     second: IItemBoxProps[];
     hoc: IItemBoxProps[];
+    third: IItemBoxProps[];
+    fourth: IItemBoxProps[];
 }
 
 export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamplesState> {
@@ -43,10 +49,15 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
         const hoc = _.map(defaultItems, (item) => _.extend({}, item, {append: {content: () => <span className='text-medium-grey ml1'>{item.value}</span>}}));
         hoc[0].selected = true;
 
+        const fourth = _.map(defaultItemsSetTwo, (item) => _.clone(item));
+        fourth[0].selected = true;
+
         this.state = {
             first: _.clone(defaultItems),
             second,
             hoc,
+            third: _.clone(defaultItemsSetTwo),
+            fourth,
         };
     }
 
@@ -130,6 +141,22 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                         items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Single Select with one enabled item and one disabled item</label>
+                    <br />
+                    <SingleSelectConnected
+                        id={UUID.generate()}
+                        items={this.state.third}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Single Select with one enabled item, which is selected, and one disabled item</label>
+                    <br />
+                    <SingleSelectConnected
+                        id={UUID.generate()}
+                        items={this.state.fourth}
                     />
                 </div>
             </div>
