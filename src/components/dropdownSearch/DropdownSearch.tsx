@@ -43,8 +43,8 @@ export interface IDropdownSearchOwnProps {
     defaultOptions?: IDropdownOption[];
     defaultSelectedOption?: IDropdownOption;
     filterPlaceholder?: string;
-    maxWidth?: number | string;
-    width?: number | string;
+    maxWidth?: React.ReactText;
+    width?: React.ReactText;
     hasFilterSuggestionBoxWidthFixed?: boolean;
     highlightThreshold?: number;
     highlightAllFilterResult?: boolean;

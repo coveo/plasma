@@ -35,7 +35,7 @@ export interface IRadioSelectStateProps {
 
 export interface IRadioSelectAllProps extends IRadioSelectProps, IRadioSelectConnectedProps, IRadioSelectDispatchProps, IRadioSelectStateProps {}
 
-export class RadioSelect extends React.Component<IRadioSelectAllProps, any> {
+export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
     componentWillMount() {
         callIfDefined(this.props.onMount, this.props.id, this.props.valueOnMount, this.props.disabledValuesOnMount);
     }

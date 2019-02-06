@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {UUID} from '../../../utils/UUID';
 import {setDisabledInput, validateInputValue} from '../InputActions';
 import {InputConnected} from '../InputConnected';
 
@@ -62,6 +63,16 @@ export const InputConnectedExamples = (): JSX.Element =>
                 labelTitle='I am a connected input and you can toggle my valid state with the button above'
                 labelProps={{invalidMessage: 'Do not leave me empty'}}
                 defaultValue=''
+            />
+        </div>
+        <div className='form-group'>
+            <InputConnected
+                id={UUID.generate()}
+                classes='mt1'
+                validate={(value: string) => value === ''}
+                labelProps={{invalidMessage: 'not empty'}}
+                defaultValue='valid only on change'
+                validateOnChange
             />
         </div>
     </div>;
