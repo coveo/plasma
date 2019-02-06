@@ -161,7 +161,6 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps & Re
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
         const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => !item.hidden && !item.disabled).length - this.props.selected.length;
         const disabled = this.props.disabled || (visibleLength === 0);
-        console.log('number of items', visibleLength);
 
         const buttonAttrs = !this.props.noDisabled
             && this.props.selected
