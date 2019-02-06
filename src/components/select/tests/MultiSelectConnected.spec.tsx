@@ -125,7 +125,7 @@ describe('Select', () => {
                 {value: 'b', selected: true},
             ]);
 
-            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeUndefined();
+            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeFalsy();
         });
 
         it('should disable the dropdown when every option is selected', () => {
