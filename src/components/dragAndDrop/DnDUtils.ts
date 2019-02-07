@@ -1,4 +1,6 @@
 import {IDragSource, IDropTarget} from 'react-dnd';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import {findDOMNode} from 'react-dom';
 import * as _ from 'underscore';
 import {DnDContainer, IDraggableContainerOwnProps} from './DnDContainer';
@@ -81,9 +83,18 @@ const parentDropTarget = {
     drop: _.noop,
 };
 
+let context: any;
+const TagControlContext = (DecoratedClass: any) => {
+    if (!context) {
+        context = DragDropContext(HTML5Backend);
+    }
+    return context(DecoratedClass);
+};
+
 export const DnDUtils = {
     move: move,
     getBoxTarget: getBoxTarget,
     getSelectedBoxSource: getSelectedBoxSource,
     parentDropTarget,
+    TagControlContext: TagControlContext,
 };

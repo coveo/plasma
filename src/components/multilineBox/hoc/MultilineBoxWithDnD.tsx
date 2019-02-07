@@ -3,7 +3,6 @@ import {DropTarget} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
 import {IReactVaporState} from '../../../ReactVapor';
 import {reorderStringList} from '../../../reusableState/customList/StringListActions';
-import {defaultCustomTag, ICustomTag} from '../../../utils/ComponentUtils';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {DnDContainer, DraggableContainerType, IDraggableContainerOwnProps} from '../../dragAndDrop/DnDContainer';
@@ -21,7 +20,6 @@ import {MultilineBoxSelectors} from '../MultilineBoxSelector';
 type MultilineBoxWithDnDComponent<T = any> = React.ComponentClass<IMultilineBoxOwnProps<T>>;
 
 export interface IMultilineBoxWithDnDSupplierProps {
-    nativeTagDnDWrapper?: ICustomTag;
     DnDContainerProps?: Partial<IDraggableContainerOwnProps>;
 }
 
@@ -64,7 +62,6 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
         private getDnDWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
             const supplierProps: IMultilineBoxWithDnDSupplierProps = {
                 ...{
-                    nativeTagDnDWrapper: defaultCustomTag,
                     DnDContainerProps: {},
                 },
                 ...HocUtils.supplyConfig(supplier),
@@ -72,22 +69,15 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
             return React.Children.map(children, (child: React.ReactNode, index: number) => {
                 const isLast = index === data.length - 1;
                 return (
-                    this.props.connectDropTarget(
-                        <supplierProps.nativeTagDnDWrapper.tag
-                            key={`${data[index].id}DnD`}
-                            {...supplierProps.nativeTagDnDWrapper.props}
-                        >
-                            <DnDContainer
-                                id={data[index].id}
-                                key={`${data[index].id}DnD`}
-                                index={index}
-                                move={(dragIndex: number, hoverIndex: number) => DnDUtils.move(dragIndex, hoverIndex, this.props.multilineBoxIds, this.props.onReorder)}
-                                child={child}
-                                isDraggable={!isLast}
-                                {...supplierProps.DnDContainerProps}
-                            />
-                        </supplierProps.nativeTagDnDWrapper.tag>,
-                    )
+                    <DnDContainer
+                        id={data[index].id}
+                        key={`${data[index].id}DnD`}
+                        index={index}
+                        move={(dragIndex: number, hoverIndex: number) => DnDUtils.move(dragIndex, hoverIndex, this.props.multilineBoxIds, this.props.onReorder)}
+                        child={child}
+                        isDraggable={!isLast}
+                        {...supplierProps.DnDContainerProps}
+                    />
                 );
             });
         }
@@ -104,5 +94,5 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
         }
     }
 
-    return MultilineBoxWithDnD;
+    return DnDUtils.TagControlContext(MultilineBoxWithDnD);
 };

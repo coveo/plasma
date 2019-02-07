@@ -7,8 +7,6 @@ import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
 import {Provider} from 'react-redux';
 
-import {DragDropContext} from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import {SlideYExamples} from '../src/animations/examples/SlideYExamples';
 import {ActionableItemExamples} from '../src/components/actionable-item/examples/ActionableItemExamples';
 import {ActionBarConnectedExamples} from '../src/components/actions/examples/ActionBarConnectedExamples';
@@ -166,7 +164,6 @@ class Header extends React.Component<{}, HeaderState> {
     }
 }
 
-@DragDropContext(HTML5Backend)
 class App extends React.PureComponent<{}, AppState> {
     private components = [
         {component: MenuExamples, componentName: 'Menu'},
@@ -271,7 +268,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: NumericInputExamples, componentName: 'Numeric Input'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
-        {component: MultilineBoxExamples, componentName: 'MultilineBoxExamples'},
+        {component: MultilineBoxExamples, componentName: 'MultilineBox'},
     ];
 
     constructor(props: {}, state: AppState) {

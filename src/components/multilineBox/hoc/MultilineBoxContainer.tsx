@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {defaultCustomTag, ICustomTag} from '../../../utils/ComponentUtils';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IMultilineBoxDispatchProps, IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps} from '../MultilineBox';
 
 type MultilineBoxContainerComponent<T = any> = React.ComponentClass<IMultilineBoxOwnProps<T>>;
 
 export interface IMultilineBoxContainerSupplierProps {
-    container?: ICustomTag;
+    containerProps?: React.HTMLProps<HTMLDivElement>;
 }
 
 export interface IMultilineBoxContainerProps<T> extends IMultilineBoxContainerSupplierProps,
@@ -19,17 +18,18 @@ export const multilineBoxContainer = (supplier: ConfigSupplier<IMultilineBoxCont
 
         static defaultProps = {
             renderBody: (children: React.ReactNode[]) => children,
+            containerProps: {},
         };
 
         private getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            const supplierProps: IMultilineBoxContainerSupplierProps = {...{container: defaultCustomTag}, ...HocUtils.supplyConfig(supplier)};
+            const supplierProps: IMultilineBoxContainerSupplierProps = HocUtils.supplyConfig(supplier);
             return React.Children.map(children, (child: React.ReactNode, index: number) => (
-                <supplierProps.container.tag
+                <div
                     key={`${data[index].id}Container`}
-                    {...supplierProps.container.props}
+                    {...supplierProps.containerProps}
                 >
                     {child}
-                </supplierProps.container.tag>
+                </div>
             ),
             );
         }

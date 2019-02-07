@@ -3,7 +3,6 @@ import * as React from 'react';
 import {DragSource, DropTarget} from 'react-dnd';
 import {keys} from 'ts-transformer-keys/index';
 import * as _ from 'underscore';
-import {ICustomTag} from '../../utils/ComponentUtils';
 import {IDraggableSelectedOptionOwnProps} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {Svg} from '../svg/Svg';
 import {DnDUtils} from './DnDUtils';
@@ -18,8 +17,8 @@ export interface IDraggableContainerOwnProps {
     move: (dragIndex: number, hoverIndex: number) => void;
     child: any;
     isDraggable?: boolean;
-    draggableContainerElement?: ICustomTag;
-    draggableIconElement?: ICustomTag;
+    draggableContainerProps?: React.HTMLProps<HTMLDivElement>;
+    draggableIconProps?: React.HTMLProps<HTMLDivElement>;
     icon: React.ReactNode;
 }
 
@@ -40,42 +39,38 @@ export class DnDContainer extends React.Component<IDraggableContainerOwnProps> {
 
     static defaultProps = {
         isDraggable: true,
-        draggableContainerElement: {
-            tag: 'div',
-            props: {className: 'flex flex-center'},
+        draggableContainerProps: {
+            className: 'flex flex-center',
         },
-        draggableIconElement: {
-            tag: 'div',
-            props: {},
-        },
+        draggableIconProps: {},
         icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass='icon' />,
     };
 
     private getIcon() {
         const icon: React.ReactNode = (
-            <this.props.draggableIconElement.tag
+            <div
                 style={{
                     visibility: this.props.isDraggable ? 'visible' : 'hidden',
                     cursor: this.props.isDraggable ? 'move' : 'default',
                 }}
-                {...this.props.draggableIconElement.props}
+                {...this.props.draggableIconProps}
             >
                 {this.props.icon}
-            </this.props.draggableIconElement.tag>
+            </div>
         );
         return this.props.isDraggable ? this.props.connectDragSource(icon) : icon;
     }
 
     render() {
         const opacity = this.props.isDragging ? 0 : 1;
-        const content = (
-            <this.props.draggableContainerElement.tag
-                {...this.props.draggableContainerElement.props}
+        const content = this.props.connectDropTarget(
+            <div
+                {...this.props.draggableContainerProps}
                 style={{opacity}}
             >
                 {this.getIcon()}
                 {React.cloneElement(this.props.child, _.omit(this.props, multilineBoxWithDnDPropsToOmit))}
-            </this.props.draggableContainerElement.tag>
+            </div>,
         );
 
         return this.props.isDraggable

@@ -16,11 +16,8 @@ export interface IMultilineBoxExamplesProps {
 
 const MultilineBoxWithContainer = _.compose(
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
+        containerProps: {
+            className: 'mod-border p2',
         },
     }),
 )(MultilineBox);
@@ -32,11 +29,8 @@ const MultilineBoxWithRemoveButton = _.compose(
 const MultilineBoxWithContainerAndRemoveButton = _.compose(
     multilineBoxWithRemoveButton(),
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'p1',
-            },
+        containerProps: {
+            className: 'p2',
         },
     }),
 )(MultilineBox);
@@ -44,20 +38,14 @@ const MultilineBoxWithContainerAndRemoveButton = _.compose(
 const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
     multilineBoxWithRemoveButton(),
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
+        containerProps: {
+            className: 'mod-border p2',
         },
     }),
     multilineBoxWithRemoveButton(),
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
+        containerProps: {
+            className: 'mod-border p2',
         },
     }),
 )(MultilineBox);
@@ -70,11 +58,8 @@ const ComplexMultilineBox = _.compose(
     multilineBoxWithRemoveButton(),
     multilineBoxWithDnD(),
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
+        containerProps: {
+            className: 'mod-border p2',
         },
     }),
 )(MultilineBox);
@@ -82,27 +67,15 @@ const ComplexMultilineBox = _.compose(
 const ComplexMultilineBox2 = _.compose(
     multilineBoxWithDnD({
         DnDContainerProps: {
-            draggableContainerElement: {
-                tag: 'div',
-                props: {
-                    className: 'inline-flex center-align',
-                },
-            },
-        },
-        nativeTagDnDWrapper: {
-            tag: 'div',
-            props: {
-                className: 'inline-flex',
+            draggableContainerProps: {
+                className: 'inline-flex center-align',
             },
         },
     }),
     multilineBoxWithRemoveButton(),
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
+        containerProps: {
+            className: 'mod-border p2',
         },
     }),
 )(MultilineBox);
@@ -432,13 +405,18 @@ export class MultilineBoxExamples extends React.PureComponent {
                                         id={`${cData.id}1`}
                                         classes='mt0 inline-block mx1'
                                         defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
+                                        validate={(value: string) => {
+                                            if (value !== '') {
+                                                if (cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                                return true;
                                             }
+
+                                            return false;
                                         }}
+                                        labelProps={{invalidMessage: 'Do not leave me empty'}}
+                                        validateOnChange
                                     />
                                     <InputConnected
                                         id={`${cData.id}2`}
