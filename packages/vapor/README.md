@@ -83,4 +83,4 @@ Vapor cherry picks from these awesome UI Libraries
 5. Wait for some nice guy to review and merge
 
 # License
-Vapor is distributed under [MIT license](LICENSE).
+Vapor is distributed under [Apache 2.0 license](LICENSE).
