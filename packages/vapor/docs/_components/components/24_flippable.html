@@ -8,7 +8,7 @@ stylesheet: '/scss/components/flippable.scss'
     <div class="flipper show-front">
         <div class="flipper-front bg-white p2">
             Front side. <br />
-            Flippable takes the height of the front side content by default no matter how big is the back side. 
+            Flippable takes the height of the front side content by default no matter how big is the back side.
         </div>
         <div class="flipper-back bg-light-grey p2">
             Some content on the back.
@@ -20,8 +20,21 @@ stylesheet: '/scss/components/flippable.scss'
         <div class="flipper-front bg-white p2">
             Front side.
         </div>
-        <div class="flipper-back bg-light-grey p2" style="width: 300px;height: 200px">
-            The back side can vary from the front in width and height, but it always stays aligned on the top left with the front side so be aware when the flippable is near the edges of the screen.
+        <div class="flipper-back bg-light-grey p2" style="width: 500px;height: 130px">
+            <div class="logo-card ribbon-container disabled">
+                <div class="logo-card-logo">
+                    <i class="icon mod-4x">{{ site.data.icons['source-custom'] }}</i>
+                </div>
+                <div class="logo-card-content">
+                    <h2 class="logo-card-title">Disabled logo card</h2>
+                    <div>
+                        <span class="badge bg-blue">Badge 1</span>
+                        <span class="badge bg-medium-blue">Badge 2</span>
+                        <span class="badge bg-darker-blue">Badge 3</span>
+                    </div>
+                </div>
+                <div class="corner-ribbon top right bg-orange">Ribbon</div>
+            </div>
         </div>
     </div>
 </div>
