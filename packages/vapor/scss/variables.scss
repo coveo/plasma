@@ -532,7 +532,8 @@ $logo-card-title-color: #4a4a4a;
 $logo-card-border: 1px solid $medium-grey;
 $logo-card-padding: 1rem;
 $logo-card-margin: 0.25rem;
-$logo-card-disabled-filter: grayscale(100%) opacity(75%);
+$logo-card-disabled-opacity: 0.75;
+$logo-card-disabled-filter: grayscale(100%);
 
 // Flippable
 $flippable-perspective: 1000px;
