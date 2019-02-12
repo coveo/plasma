@@ -25,6 +25,7 @@ import {IMenusState} from './components/menu/MenuReducers';
 import {IModalState} from './components/modal/ModalReducers';
 import {IPaginationState} from './components/navigation/pagination/NavigationPaginationReducers';
 import {IPerPageState} from './components/navigation/perPage/NavigationPerPageReducers';
+import {INumericInputsState} from './components/numericInput/NumericInputReducers';
 import {IOptionPickerState} from './components/optionPicker/OptionPickerReducers';
 import {IOptionsCycleState} from './components/optionsCycle/OptionsCycleReducers';
 import {IPopoverState} from './components/popover/Popover';
@@ -68,6 +69,7 @@ export interface IReactVaporState {
     optionPickers?: IOptionPickerState[];
     itemFilters?: IItemFilterState[];
     modals?: IModalState[];
+    numericInputs?: INumericInputsState;
     openModals?: string[];
     subNavigations?: ISubNavigationState[];
     tabs?: ITabGroupState[];

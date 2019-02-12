@@ -24,10 +24,12 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
                 .where({selected: true})
                 .pluck('value')
                 .value();
+            let selectedIndex = _.findIndex(action.payload.items, (e) => e.selected);
+            selectedIndex = selectedIndex === -1 ? 0 : selectedIndex;
             return {
                 id: action.payload.id,
                 selected: selected,
-                active: 0,
+                active: selectedIndex,
             };
         case ListBoxActions.select:
             return {
@@ -35,6 +37,7 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
                 selected: action.payload.multi
                     ? _.uniq([...state.selected, action.payload.value])
                     : [action.payload.value],
+                active: null,
             };
         case AutocompleteActions.setValue:
             return {
@@ -67,7 +70,6 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
         case SelectActions.toggle:
             return {
                 ...state,
-                active: 0,
             };
         default:
             return state;

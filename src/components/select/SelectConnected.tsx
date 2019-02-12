@@ -14,6 +14,7 @@ import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxAct
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {SelectSelector} from './SelectSelector';
+import * as styles from './styles/SelectConnected.scss';
 
 export interface ISelectSpecificProps {
     button: React.ReactNode;
@@ -101,6 +102,13 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     render() {
+        let showAbove = false;
+        if (this.dropdown) {
+            const top = this.dropdown.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            showAbove = top >= windowHeight / 2;
+        }
+
         const pickerClasses = classNames(
             'select-dropdown dropdown',
             this.props.selectClasses,
@@ -109,7 +117,10 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 'mod-multi': this.props.multi,
             },
         );
-        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {hidden: !this.props.isOpened});
+        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {
+            hidden: !this.props.isOpened,
+            [styles.showAbove]: this.props.isOpened && showAbove,
+        });
         return (
             <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
                 <Content content={this.props.button} classes={['select-dropdown-button']} componentProps={{
