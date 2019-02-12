@@ -1,0 +1,9 @@
+@import '~coveo-styleguide/scss/common/palette.scss';
+@import '~coveo-styleguide/scss/variables.scss';
+
+:global(.coveo-styleguide .select-dropdown .select-dropdown-button + .select-dropdown-container) {
+  &.showAbove {
+    margin-bottom: calc(#{$button-height} + #{2 * $spacing} + #{$default-border-size});
+    bottom: 0;
+  }
+}
