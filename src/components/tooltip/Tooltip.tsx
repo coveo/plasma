@@ -26,8 +26,8 @@ export interface IOverlayTriggerProps {
 export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttributes<Tooltip> {
     title: string;
     className?: string;
-    arrowOffsetLeft?: number | string;
-    arrowOffsetTop?: number | string;
+    arrowOffsetLeft?: React.ReactText;
+    arrowOffsetTop?: React.ReactText;
     bsStyle?: string;
     placement?: string;
     positionLeft?: number;

@@ -1,111 +1,146 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 
 import {Radio} from '../Radio';
 import {IRadioSelectAllProps, RadioSelect} from '../RadioSelect';
 
-describe('RadioSelect', () => {
-    describe('<RadioSelect />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(
-                    <RadioSelect />,
-                );
-            }).not.toThrow();
-        });
+describe('<RadioSelect />', () => {
+
+    it('should mount without errors', () => {
+        expect(() => {
+            shallow(
+                <RadioSelect />,
+            );
+        }).not.toThrow();
     });
 
-    describe('<RadioSelect />', () => {
-        let radioSelect: ReactWrapper<IRadioSelectAllProps, any>;
-        let clickSpy: jasmine.Spy;
-        let innerRadios: any;
-        let innerRadio1: any;
-        let innerRadio2: any;
+    it('should unmount without errors', () => {
+        const wrapper = shallow(<RadioSelect />);
+        expect(() => {
+            wrapper.unmount();
+        }).not.toThrow();
+    });
 
-        const aRadioValue = 'blue';
-        const anotherRadioValue = 'red';
-        const anotherName = 'Johnny the almighty magic chicken';
+    describe('once mounted', () => {
+        let radioSelect: ShallowWrapper<IRadioSelectAllProps>;
+        let spy: jasmine.Spy;
 
-        const updateInnerRadioVariables = () => {
-            innerRadios = radioSelect.find('Radio');
-            innerRadio1 = innerRadios.findWhere((radio: any) => radio.prop('value') === aRadioValue).first();
-            innerRadio2 = innerRadios.findWhere((radio: any) => radio.prop('value') === anotherRadioValue).first();
+        const firstRadioValue = 'blue';
+        const secondRadioValue = 'red';
+        const radioName = 'Johnny the almighty magic chicken';
+
+        const shallowRadioSelect = (props: IRadioSelectAllProps = {}) => {
+            spy = jasmine.createSpy('onClick');
+            radioSelect = shallow(
+                <RadioSelect
+                    {...props}
+                >
+                    <Radio id='radio1' value={firstRadioValue} onClick={spy} />
+                    <Radio id='radio2' value={secondRadioValue} name={radioName} />
+                </RadioSelect>,
+            );
         };
 
-        beforeEach(() => {
-            clickSpy = jasmine.createSpy('onClick');
-            radioSelect = mount(
-                <RadioSelect>
-                    <Radio id='radio1' value={aRadioValue} onClick={clickSpy} />
-                    <Radio id='radio2' value={anotherRadioValue} name={anotherName} />
-                </RadioSelect>,
-                {attachTo: document.getElementById('App')},
-            );
+        it('should call onMount on mount', () => {
+            const spyOnMount = jasmine.createSpy('onMount');
+            shallowRadioSelect({
+                onMount: spyOnMount,
+            });
+
+            expect(spyOnMount).toHaveBeenCalledTimes(1);
         });
 
-        afterEach(() => {
-            radioSelect.detach();
+        it('should call onUnmount on unmount', () => {
+            const spyOnUnmount = jasmine.createSpy('onUnmount');
+            shallowRadioSelect({
+                onUnmount: spyOnUnmount,
+            });
+            radioSelect.unmount();
+
+            expect(spyOnUnmount).toHaveBeenCalledTimes(1);
         });
 
-        it('should set value prop when specified', () => {
-            expect(radioSelect.prop('value')).toBe(undefined);
+        it('should set disabled on child if the props disabled is set to true', () => {
+            shallowRadioSelect({
+                disabled: true,
+            });
 
-            radioSelect.setProps({value: aRadioValue}).mount();
-            expect(radioSelect.prop('value')).toBe(aRadioValue);
+            expect(radioSelect.find(Radio).first().props().disabled).toBe(true);
         });
 
-        it('should disable children when disabled', () => {
-            radioSelect.setProps({disabled: false}).mount().update();
-            updateInnerRadioVariables();
+        it('should set disabled on child if the child value is present in the disabled values list', () => {
+            shallowRadioSelect({
+                disabled: false,
+                disabledValues: [firstRadioValue, secondRadioValue],
+            });
 
-            expect(innerRadio1.prop('disabled')).toBe(false);
-            expect(innerRadio2.prop('disabled')).toBe(false);
-
-            radioSelect.setProps({disabled: true}).mount().update();
-            updateInnerRadioVariables();
-
-            expect(innerRadio1.prop('disabled')).toBe(true);
-            expect(innerRadio2.prop('disabled')).toBe(true);
+            expect(radioSelect.find(Radio).first().props().disabled).toBe(true);
+            expect(radioSelect.find(Radio).last().props().disabled).toBe(true);
         });
 
-        it('should check children with same value', () => {
-            radioSelect.setProps({value: undefined}).mount().update();
-            updateInnerRadioVariables();
-            expect(innerRadio1.prop('checked')).toBe(false);
-            expect(innerRadio2.prop('checked')).toBe(false);
+        it('should use the name from the child if defined', () => {
+            shallowRadioSelect();
 
-            radioSelect.setProps({value: aRadioValue}).mount().update();
-            updateInnerRadioVariables();
-            expect(innerRadio1.prop('checked')).toBe(true);
-            expect(innerRadio2.prop('checked')).toBe(false);
+            expect(radioSelect.find(Radio).last().props().name).toBe(radioName);
         });
 
-        it('should set children name prop with self name prop when children does not specify it', () => {
-            const name = 'Maurice the nuclear trout 04';
+        it('should use the name prop instead of the child name if its not defined', () => {
+            shallowRadioSelect({
+                name: 'leaf',
+            });
 
-            radioSelect.setProps({name}).mount().update();
-            updateInnerRadioVariables();
-            expect(innerRadio1.prop('name')).toBe(name);
-            expect(innerRadio2.prop('name')).toBe(anotherName);
+            expect(radioSelect.find(Radio).first().props().name).toBe('leaf');
         });
 
-        it('should chain prop onChange with children onClick prop and call both on children change', () => {
-            radioSelect.setProps({onChange: clickSpy}).mount().update();
-            updateInnerRadioVariables();
-            const innerRadioInput = innerRadio1.find('input').first();
-            innerRadioInput.simulate('click');
+        it('should pass disabledTooltip prop to each child', () => {
+            const disabledTooltip = 'golf';
+            shallowRadioSelect({
+                disabledTooltip,
+            });
 
-            expect(clickSpy.calls.count()).toBe(2);
+            expect(radioSelect.find(Radio).first().props().disabledTooltip).toBe(disabledTooltip);
+            expect(radioSelect.find(Radio).last().props().disabledTooltip).toBe(disabledTooltip);
         });
 
-        it('should chain prop onChangeCallback with children onClick prop and call both on children change', () => {
-            const innerRadio = radioSelect.find('Radio').findWhere((radio) => radio.prop('value') === aRadioValue).first();
-            const innerRadioInput = innerRadio.find('input').first();
+        it('should set the prop checked of the children with the same value than the radio select', () => {
+            shallowRadioSelect({
+                value: firstRadioValue,
+            });
 
-            radioSelect.setProps({onChangeCallback: clickSpy}).mount();
-            innerRadioInput.simulate('click');
+            expect(radioSelect.find(Radio).first().props().checked).toBe(true);
+            expect(radioSelect.find(Radio).last().props().checked).toBe(false);
+        });
 
-            expect(clickSpy.calls.count()).toBe(2);
+        it('should call onClick on children props if defined', () => {
+            shallowRadioSelect();
+
+            expect(radioSelect.find(Radio).first().props().onClick).toBeDefined();
+
+            radioSelect.find(Radio).first().props().onClick({} as any);
+
+            expect(spy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call onChange prop when the child call onClick', () => {
+            const spyOnChange = jasmine.createSpy('onChange');
+            shallowRadioSelect({
+                onChange: spyOnChange,
+            });
+
+            radioSelect.find(Radio).first().props().onClick({} as any);
+
+            expect(spyOnChange).toHaveBeenCalledTimes(1);
+        });
+
+        it('should call onChangeCallback prop when the child call onClick', () => {
+            const spyOnChangeCallback = jasmine.createSpy('onChangeCallback');
+            shallowRadioSelect({
+                onChangeCallback: spyOnChangeCallback,
+            });
+
+            radioSelect.find(Radio).first().props().onClick({} as any);
+
+            expect(spyOnChangeCallback).toHaveBeenCalledTimes(1);
         });
     });
 });
