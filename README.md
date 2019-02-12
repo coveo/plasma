@@ -41,5 +41,5 @@ Run `npm test` to run all tests and get the code coverage!
 5. Wait for some nice guy to review and merge
 
 ## License
-Vapor is distributed under [MIT license](LICENSE).
+Vapor is distributed under [Apache 2.0 license](LICENSE).
 

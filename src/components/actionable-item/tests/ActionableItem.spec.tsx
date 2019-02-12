@@ -2,6 +2,7 @@ import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -86,6 +87,27 @@ describe('ActionableItem', () => {
                 // React-Tether renders the attached element to the body of the page, thus we need to start from there
                 expect(document.querySelector('body').querySelector('.actionable-item-element').querySelector('.list-box').innerHTML)
                     .toContain(basicProps.actions[0].value);
+            });
+
+            it('should not have the cursor-pointer class if onItemClick is not passed as prop', () => {
+                mountWithProps();
+
+                expect(actionableItem.find('.actionable-item-content').hasClass('cursor-pointer')).toBe(false);
+            });
+
+            it('should have the cursor-pointer class if onItemClick is passed as prop', () => {
+                mountWithProps({id: 'someid', onItemClick: _.noop});
+
+                expect(actionableItem.find('.actionable-item-content').hasClass('cursor-pointer')).toBe(true);
+            });
+
+            it('should call the onItemClick method if passed as prop', () => {
+                const props = {id: 'someid', onItemClick: jasmine.createSpy('onItemClick')};
+                mountWithProps(props);
+
+                actionableItem.find('.actionable-item-content').simulate('click');
+
+                expect(props.onItemClick).toHaveBeenCalledTimes(1);
             });
         });
     });

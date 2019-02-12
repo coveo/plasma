@@ -18,7 +18,7 @@ export interface IItemBoxProps {
     classes?: string[];
     prepend?: IContentProps;
     append?: IContentProps;
-    onOptionClick?: (option: IItemBoxProps) => void;
+    onOptionClick?: (option?: IItemBoxProps) => void;
     selectedDisplayValue?: string;
 }
 

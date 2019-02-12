@@ -53,13 +53,27 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled).length;
 
         let index = 0;
+        let activeSet = false;
         const items = _.chain(this.props.items)
             .filter(shouldShow)
             .map((item: IItemBoxProps) => {
                 let active = false;
                 if (!item.disabled) {
-                    active = mod(this.props.active, visibleLength) === index;
+                    if (this.props.active === null) {
+                        active = _.contains(this.props.selected, item.value);
+                    } else {
+                        active = mod(this.props.active, visibleLength) === index;
+                    }
+                    activeSet = active || activeSet;
                     index++;
+                }
+                return {...item, active};
+            })
+            .map((item: IItemBoxProps) => {
+                let active = item.active;
+                if (!item.disabled && activeSet === false) {
+                    active = true;
+                    activeSet = true;
                 }
                 return {...item, active};
             })

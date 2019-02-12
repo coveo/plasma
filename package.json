@@ -1,6 +1,6 @@
 {
   "name": "react-vapor",
-  "version": "3.14.2",
+  "version": "3.14.12",
   "description": "Vapor CSS components implemented with React!",
   "keywords": [
     "coveo",
@@ -20,7 +20,7 @@
     "url": "git+https://github.com/coveo/react-vapor.git"
   },
   "scripts": {
-    "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --devtool eval --inline --hot --progress --colors",
+    "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --host 0.0.0.0 --devtool eval --inline --hot --progress --colors",
     "docs": "webpack --config webpack.config.js",
     "lintfix": "node node_modules/tsjs -a -n -e coverage/**/*.js docs/**/*.js **/*css.d.ts",
     "compileTs": "webpack --config webpack.config.prod.js",
@@ -137,13 +137,13 @@
     "postcss-loader": "3.0.0",
     "pre-commit": "1.2.2",
     "rc-slider": "8.6.4",
-    "react": "16.7.0",
+    "react": "16.8.0",
     "react-dnd": "2.5.1",
     "react-dnd-html5-backend": "2.5.1",
     "react-dnd-test-backend": "2.5.1",
-    "react-dom": "16.7.0",
+    "react-dom": "16.8.0",
     "react-redux": "5.1.1",
-    "react-test-renderer": "16.7.0",
+    "react-test-renderer": "16.8.0",
     "react-transition-group": "2.5.1",
     "redux": "4.0.0",
     "redux-logger": "3.0.6",

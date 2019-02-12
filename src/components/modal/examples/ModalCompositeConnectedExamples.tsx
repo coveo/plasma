@@ -33,8 +33,8 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
 
     render() {
         return (
-            <div>
-                <div className='mt2'>
+            <>
+                <div>
                     <label className='form-control-label'>Modal Composite Connected (initialize a modal with just one component)</label>
                     <div className='form-group'>
                         <button className='btn' onClick={() => this.openModal(modalId)}>Open Modal</button>
@@ -48,7 +48,7 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                         />
                     </div>
                 </div>
-                <div className='mt2'>
+                <div className='mt3'>
                     <label className='form-control-label'>Modal Composite Connected with another modal inside</label>
                     <div className='form-group'>
                         <button className='btn' onClick={() => this.openModal(secondModalId)}>Open Modal</button>
@@ -72,7 +72,32 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                         />
                     </div>
                 </div>
-            </div>
+                <div className='mt3'>
+                    <label className='form-control-label'>A prompt made with the modal composite</label>
+                    <div className='form-group'>
+                        <button className='btn' onClick={() => this.openModal('error-prompt')}>Prompt error</button>
+                        <ModalCompositeConnected
+                            id='error-prompt'
+                            title='Error prompt'
+                            classes={['mod-prompt', 'mod-fade-in-scale']}
+                            modalBodyChildren={
+                                <>
+                                    <p>Error description paragraph 1</p>
+                                    <p className='mt1'>Error description paragraph 2</p>
+                                </>
+                            }
+                            modalFooterChildren={
+                                <>
+                                    <button className='btn mod-small mod-primary' onClick={() => alert('HELP')}>Cry for help</button>
+                                    <button className='btn mod-small' onClick={() => this.closeModal('error-prompt')}>Close</button>
+                                </>
+                            }
+                            modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                            modalHeaderClasses={['mod-warning']}
+                        />
+                    </div>
+                </div>
+            </>
         );
     }
 }
