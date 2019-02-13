@@ -40,6 +40,10 @@ export interface IMultilineBoxDispatchProps {
     addNewBox: () => void;
 }
 
+export interface IMultilineBoxState<T> {
+    initialData: {[id: string]: T};
+}
+
 export interface IMultilineBoxProps<T = any> extends IMultilineBoxOwnProps<T>,
     Partial<IMultilineBoxStateProps>,
     Partial<IMultilineBoxDispatchProps> {}
@@ -61,20 +65,20 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps
 });
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> {
+export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>, IMultilineBoxState<T>> {
 
-    private initialData: {[id: string]: T};
-
-    constructor(props: IMultilineBoxProps<T>) {
-        super(props);
-        this.initializeData();
+    private getInitialDataMappedWithBoxIDs(): {[id: string]: T} {
+        const initialData: {[id: string]: T} = {};
+        _.each(this.props.data, (data: T) => {
+            initialData[UUID.generate()] = data;
+        });
+        return initialData;
     }
 
-    private initializeData() {
-        this.initialData = {};
-        _.map(this.props.data, (data: T) => {
-            this.initialData[UUID.generate()] = data;
-        });
+    private getInitialBoxesWithAnExtraBox(initialData: {[id: string]: T}) {
+        const ids: string[] = _.keys(initialData);
+        ids.push(...this.props.multilineBoxIds, UUID.generate());
+        return ids;
     }
 
     private getLastBoxProps(): T {
@@ -83,7 +87,7 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
 
     private getData(): Array<IMultilineSingleBoxProps<T>> {
         return _.map(this.props.multilineBoxIds, (id: string, index: number) => {
-            const props: T = this.initialData[id] || this.getLastBoxProps();
+            const props: T = this.state.initialData[id] || this.getLastBoxProps();
             return {
                 id: id,
                 isLast: index === this.props.multilineBoxIds.length - 1,
@@ -100,10 +104,16 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
         };
     }
 
+    componentDidUpdate(prevProps: Readonly<IMultilineBoxProps<T>>, prevState: Readonly<IMultilineBoxState<T>>) {
+        if (prevState && JSON.stringify(this.state.initialData) !== JSON.stringify(prevState.initialData)) {
+            this.setState({initialData: this.getInitialDataMappedWithBoxIDs()});
+        }
+    }
+
     componentDidMount() {
-        const ids: string[] = _.keys(this.initialData);
-        ids.push(...this.props.multilineBoxIds, UUID.generate());
-        this.props.onMount(ids);
+        const initialData = this.getInitialDataMappedWithBoxIDs();
+        this.setState({initialData});
+        this.props.onMount(this.getInitialBoxesWithAnExtraBox(initialData));
     }
 
     componentWillUnmount() {
@@ -111,10 +121,6 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
     }
 
     render() {
-        return (
-            <>
-                {this.props.renderBody(this.getData(), this.getParentProps())}
-            </>
-        );
+        return this.props.renderBody(this.getData(), this.getParentProps());
     }
 }
