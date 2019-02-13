@@ -65,7 +65,7 @@
     "@types/codemirror": "0.0.62",
     "@types/diff2html": "0.0.4",
     "@types/enzyme": "3.1.15",
-    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/enzyme-adapter-react-16": "1.0.4",
     "@types/enzyme-redux": "0.2.1",
     "@types/escape-string-regexp": "1.0.0",
     "@types/faker": "4.1.4",
