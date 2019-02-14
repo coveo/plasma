@@ -25,7 +25,7 @@ export interface IMultilineBoxOwnProps<T = any> {
     id: string;
     data: T[];
     renderBody: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => React.ReactNode;
-    defaultProp: T;
+    defaultProps: T;
     renderWrapper?: (children: React.ReactNode, boxProps: IMultilineSingleBoxProps<T>, parentProps: IMultilineParentProps) => React.ReactNode;
 }
 
@@ -40,9 +40,13 @@ export interface IMultilineBoxDispatchProps {
     addNewBox: () => void;
 }
 
+export interface IMultilineBoxState<T> {
+    initialData: {[id: string]: T};
+}
+
 export interface IMultilineBoxProps<T = any> extends IMultilineBoxOwnProps<T>,
-    Partial<IMultilineBoxStateProps>,
-    Partial<IMultilineBoxDispatchProps> {}
+                                                     Partial<IMultilineBoxStateProps>,
+                                                     Partial<IMultilineBoxDispatchProps> {}
 
 const makeMapStateToProps = () => {
     const getStateProps = createStructuredSelector({
@@ -61,31 +65,39 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps
 });
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> {
+export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>, IMultilineBoxState<T>> {
 
-    private initialData: {[id: string]: T};
+    constructor(props: IMultilineBoxProps<T>, state: IMultilineBoxState<T>) {
+        super(props, state);
 
-    constructor(props: IMultilineBoxProps<T>) {
-        super(props);
-        this.initializeData();
+        this.state = {
+            initialData: this.getInitialDataMappedWithBoxIDs(),
+        };
     }
 
-    private initializeData() {
-        this.initialData = {};
-        _.map(this.props.data, (data: T) => {
-            this.initialData[UUID.generate()] = data;
+    private getInitialDataMappedWithBoxIDs(): {[id: string]: T} {
+        const initialData: {[id: string]: T} = {};
+        _.each(this.props.data, (data: T) => {
+            initialData[UUID.generate()] = data;
         });
+        return initialData;
+    }
+
+    private getInitialBoxesWithAnExtraBox() {
+        const ids: string[] = _.keys(this.state.initialData);
+        ids.push(...this.props.multilineBoxIds, UUID.generate());
+        return ids;
     }
 
     private getLastBoxProps(): T {
-        return deepClone(this.props.defaultProp);
+        return deepClone(this.props.defaultProps);
     }
 
     private getData(): Array<IMultilineSingleBoxProps<T>> {
         return _.map(this.props.multilineBoxIds, (id: string, index: number) => {
-            const props: T = this.initialData[id] || this.getLastBoxProps();
+            const props: T = this.state.initialData[id] || this.getLastBoxProps();
             return {
-                id: id,
+                id,
                 isLast: index === this.props.multilineBoxIds.length - 1,
                 props,
             };
@@ -100,10 +112,14 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
         };
     }
 
+    componentDidUpdate(prevProps: Readonly<IMultilineBoxProps<T>>, prevState: Readonly<IMultilineBoxState<T>>) {
+        if (prevState && !_.isEqual(this.state.initialData, prevState.initialData)) {
+            this.setState({initialData: this.getInitialDataMappedWithBoxIDs()});
+        }
+    }
+
     componentDidMount() {
-        const ids: string[] = _.keys(this.initialData);
-        ids.push(...this.props.multilineBoxIds, UUID.generate());
-        this.props.onMount(ids);
+        this.props.onMount(this.getInitialBoxesWithAnExtraBox());
     }
 
     componentWillUnmount() {
@@ -111,10 +127,6 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
     }
 
     render() {
-        return (
-            <>
-                {this.props.renderBody(this.getData(), this.getParentProps())}
-            </>
-        );
+        return this.props.renderBody(this.getData(), this.getParentProps());
     }
 }
