@@ -30,13 +30,13 @@
         top: 0;
         left: 0;
         z-index: 0;
-        background-color: $pure-white;
 
         width: $radio-button-size;
         height: $radio-button-size;
 
         content: '';
 
+        background-color: $pure-white;
         border-radius: 50%;
 
         transition: 0.28s ease;

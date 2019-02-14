@@ -235,7 +235,7 @@ $row-style: (
 
 @each $style, $color in $row-style {
   .row-#{$style} {
-     > td:first-child {
+    > td:first-child {
       color: $color;
 
       border-left-color: $color;
@@ -247,7 +247,7 @@ $row-style: (
 }
 .row-disabled {
   color: $dark-medium-grey;
-   > td:first-child {
+  > td:first-child {
     border-left-color: $dark-medium-grey;
   }
   svg {
