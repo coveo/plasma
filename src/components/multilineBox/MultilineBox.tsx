@@ -67,6 +67,14 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>, IMultilineBoxState<T>> {
 
+    constructor(props: IMultilineBoxProps<T>, state: IMultilineBoxState<T>) {
+        super(props, state);
+
+        this.state = {
+            initialData: this.getInitialDataMappedWithBoxIDs(),
+        };
+    }
+
     private getInitialDataMappedWithBoxIDs(): {[id: string]: T} {
         const initialData: {[id: string]: T} = {};
         _.each(this.props.data, (data: T) => {
@@ -75,8 +83,8 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>, 
         return initialData;
     }
 
-    private getInitialBoxesWithAnExtraBox(initialData: {[id: string]: T}) {
-        const ids: string[] = _.keys(initialData);
+    private getInitialBoxesWithAnExtraBox() {
+        const ids: string[] = _.keys(this.state.initialData);
         ids.push(...this.props.multilineBoxIds, UUID.generate());
         return ids;
     }
@@ -105,15 +113,13 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>, 
     }
 
     componentDidUpdate(prevProps: Readonly<IMultilineBoxProps<T>>, prevState: Readonly<IMultilineBoxState<T>>) {
-        if (prevState && JSON.stringify(this.state.initialData) !== JSON.stringify(prevState.initialData)) {
+        if (prevState && !_.isEqual(this.state.initialData, prevState.initialData)) {
             this.setState({initialData: this.getInitialDataMappedWithBoxIDs()});
         }
     }
 
     componentDidMount() {
-        const initialData = this.getInitialDataMappedWithBoxIDs();
-        this.setState({initialData});
-        this.props.onMount(this.getInitialBoxesWithAnExtraBox(initialData));
+        this.props.onMount(this.getInitialBoxesWithAnExtraBox());
     }
 
     componentWillUnmount() {
