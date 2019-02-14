@@ -79,7 +79,7 @@
     "@types/react-dom": "16.0.7",
     "@types/react-infinite-scroll-component": "4.2.3",
     "@types/react-redux": "6.0.10",
-    "@types/react-tether": "0.5.4",
+    "@types/react-tether": "0.5.5",
     "@types/react-textarea-autosize": "4.3.3",
     "@types/react-transition-group": "2.0.15",
     "@types/redux-logger": "3.0.6",
