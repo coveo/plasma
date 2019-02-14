@@ -8,13 +8,13 @@
   box-sizing: content-box; // Make sure $table-actions-container-height is respected with or without the mod-border-top class.
   display: flex;
   min-height: $table-actions-container-height;
-
   // Workaround to make the action bar have a border between multiple rows
+
   background: repeating-linear-gradient(
-                  $white,
-                  $white $table-actions-container-height,
-                  $medium-grey $table-actions-container-height,
-                  $medium-grey ($table-actions-container-height + 1)
+  $white,
+  $white $table-actions-container-height,
+  $medium-grey $table-actions-container-height,
+  $medium-grey ($table-actions-container-height + 1)
   );
 }
 
