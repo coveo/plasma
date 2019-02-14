@@ -54,6 +54,14 @@ export const stringListCompositeReducer = (
                     list: [..._.without(state[action.payload.id].list, action.payload.value)],
                 },
             };
+        case StringListActions.updateValues:
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    list: action.payload.list,
+                },
+            };
         default:
             return state;
     }

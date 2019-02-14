@@ -4,13 +4,7 @@ import {UUID} from '../../../utils/UUID';
 import {InputConnected} from '../../input/InputConnected';
 import {multilineBoxContainer} from '../hoc/MultilineBoxContainer';
 import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
-
-type IExampleData = IMultilineSingleBoxProps<IMultilineBoxExamplesProps>;
-
-export interface IMultilineBoxExamplesProps {
-    name: string;
-    displayName: string;
-}
+import {IExampleData, IMultilineBoxExamplesProps, WrapperExample} from './MultilineBoxExampleUtils';
 
 const MultilineBoxWithDefaultContainer = _.compose(
     multilineBoxContainer(),
@@ -73,6 +67,12 @@ export class MultilineBoxExamples extends React.PureComponent {
                             displayName: '',
                         }}
                     />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Multiline box with initial data and a button to update data
+                    </label>
+                    <WrapperExample />
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>
