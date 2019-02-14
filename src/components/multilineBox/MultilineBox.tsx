@@ -2,14 +2,20 @@ import * as React from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
-import {addStringList, addValueStringList, removeStringList, removeValueStringList} from '../../reusableState/customList/StringListActions';
+import {
+    addStringList,
+    addValueStringList,
+    removeStringList,
+    removeValueStringList,
+    updateValueStringList,
+} from '../../reusableState/customList/StringListActions';
 import {deepClone} from '../../utils/CloneUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {UUID} from '../../utils/UUID';
 import {IMultiSelectOwnProps} from '../select/MultiSelectConnected';
 import {MultilineBoxSelectors} from './MultilineBoxSelector';
 
-export interface IMultilineSingleBoxProps<T> {
+export interface IMultilineSingleBoxProps<T = any> {
     id: string;
     isLast: boolean;
     props: T;
@@ -25,7 +31,7 @@ export interface IMultilineBoxOwnProps<T = any> {
     id: string;
     data: T[];
     renderBody: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => React.ReactNode;
-    defaultProp: T;
+    defaultProps: T;
     renderWrapper?: (children: React.ReactNode, boxProps: IMultilineSingleBoxProps<T>, parentProps: IMultilineParentProps) => React.ReactNode;
 }
 
@@ -38,6 +44,7 @@ export interface IMultilineBoxDispatchProps {
     onUnmount: () => void;
     removeBox: (id: string) => void;
     addNewBox: () => void;
+    updateBox: (defaultIds: string[]) => void;
 }
 
 export interface IMultilineBoxProps<T = any> extends IMultilineBoxOwnProps<T>,
@@ -58,6 +65,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps
     onUnmount: () => dispatch(removeStringList(ownProps.id)),
     removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
     addNewBox: () => dispatch(addValueStringList(ownProps.id, UUID.generate())),
+    updateBox: (ids: string[]) => dispatch(updateValueStringList(ownProps.id, ids)),
 });
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
@@ -65,27 +73,35 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
 
     private initialData: {[id: string]: T};
 
-    constructor(props: IMultilineBoxProps<T>) {
-        super(props);
-        this.initializeData();
+    constructor(props: IMultilineBoxProps<T>, state: any) {
+        super(props, state);
+
+        this.initialData = this.getInitialDataMappedWithBoxIDs();
     }
 
-    private initializeData() {
-        this.initialData = {};
-        _.map(this.props.data, (data: T) => {
-            this.initialData[UUID.generate()] = data;
+    private getInitialDataMappedWithBoxIDs(): {[id: string]: T} {
+        const initialData: {[id: string]: T} = {};
+        _.each(this.props.data, (data: T) => {
+            initialData[UUID.generate()] = data;
         });
+        return initialData;
+    }
+
+    private getInitialBoxesWithAnExtraBox(): string[] {
+        const ids: string[] = _.keys(this.initialData);
+        ids.push(UUID.generate());
+        return ids;
     }
 
     private getLastBoxProps(): T {
-        return deepClone(this.props.defaultProp || {});
+        return deepClone(this.props.defaultProps || {});
     }
 
     private getData(): Array<IMultilineSingleBoxProps<T>> {
         return _.map(this.props.multilineBoxIds, (id: string, index: number) => {
             const props: T = this.initialData[id] || this.getLastBoxProps();
             return {
-                id: id,
+                id,
                 isLast: index === this.props.multilineBoxIds.length - 1,
                 props,
             };
@@ -100,10 +116,15 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
         };
     }
 
+    componentDidUpdate(prevProps: Readonly<IMultilineBoxProps<T>>) {
+        if (!_.isEqual(prevProps.data, this.props.data)) {
+            this.initialData = this.getInitialDataMappedWithBoxIDs();
+            this.props.updateBox(this.getInitialBoxesWithAnExtraBox());
+        }
+    }
+
     componentDidMount() {
-        const ids: string[] = _.keys(this.initialData);
-        ids.push(...this.props.multilineBoxIds, UUID.generate());
-        this.props.onMount(ids);
+        this.props.onMount(this.getInitialBoxesWithAnExtraBox());
     }
 
     componentWillUnmount() {
@@ -111,10 +132,6 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
     }
 
     render() {
-        return (
-            <>
-                {this.props.renderBody(this.getData(), this.getParentProps())}
-            </>
-        );
+        return this.props.renderBody(this.getData(), this.getParentProps());
     }
 }
