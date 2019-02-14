@@ -9,7 +9,7 @@ import {UUID} from '../../utils/UUID';
 import {IMultiSelectOwnProps} from '../select/MultiSelectConnected';
 import {MultilineBoxSelectors} from './MultilineBoxSelector';
 
-export interface IMultilineSingleBoxProps<T> {
+export interface IMultilineSingleBoxProps<T = any> {
     id: string;
     isLast: boolean;
     props: T;

@@ -14,12 +14,15 @@ export interface IMultilineBoxExamplesProps {
 
 const MultilineBoxWithContainer = _.compose(
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
-        },
+        containerNode: (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
+            (
+                <div
+                    key={`${data[index].id}Container`}
+                    className={'mod-border p1'}
+                >
+                    {child}
+                </div>
+            ),
     }),
 )(MultilineBox);
 
