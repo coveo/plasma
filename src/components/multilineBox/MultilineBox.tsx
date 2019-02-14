@@ -25,7 +25,7 @@ export interface IMultilineBoxOwnProps<T = any> {
     id: string;
     data: T[];
     renderBody: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => React.ReactNode;
-    defaultProp: T;
+    defaultProps: T;
     renderWrapper?: (children: React.ReactNode, boxProps: IMultilineSingleBoxProps<T>, parentProps: IMultilineParentProps) => React.ReactNode;
 }
 
@@ -90,14 +90,14 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>, 
     }
 
     private getLastBoxProps(): T {
-        return deepClone(this.props.defaultProp);
+        return deepClone(this.props.defaultProps);
     }
 
     private getData(): Array<IMultilineSingleBoxProps<T>> {
         return _.map(this.props.multilineBoxIds, (id: string, index: number) => {
             const props: T = this.state.initialData[id] || this.getLastBoxProps();
             return {
-                id: id,
+                id,
                 isLast: index === this.props.multilineBoxIds.length - 1,
                 props,
             };
