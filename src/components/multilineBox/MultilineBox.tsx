@@ -48,8 +48,8 @@ export interface IMultilineBoxDispatchProps {
 }
 
 export interface IMultilineBoxProps<T = any> extends IMultilineBoxOwnProps<T>,
-                                                     Partial<IMultilineBoxStateProps>,
-                                                     Partial<IMultilineBoxDispatchProps> {}
+    Partial<IMultilineBoxStateProps>,
+    Partial<IMultilineBoxDispatchProps> {}
 
 const makeMapStateToProps = () => {
     const getStateProps = createStructuredSelector({
