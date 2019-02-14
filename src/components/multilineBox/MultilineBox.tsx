@@ -113,7 +113,7 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>, 
     }
 
     componentDidUpdate(prevProps: Readonly<IMultilineBoxProps<T>>, prevState: Readonly<IMultilineBoxState<T>>) {
-        if (prevState && !_.isEqual(this.state.initialData, prevState.initialData)) {
+        if (!_.isEqual(prevProps.data, this.props.data)) {
             this.setState({initialData: this.getInitialDataMappedWithBoxIDs()});
         }
     }
