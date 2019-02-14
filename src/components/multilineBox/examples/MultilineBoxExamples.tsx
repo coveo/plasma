@@ -12,6 +12,10 @@ export interface IMultilineBoxExamplesProps {
     displayName: string;
 }
 
+const MultilineBoxWithDefaultContainer = _.compose(
+    multilineBoxContainer(),
+)(MultilineBox);
+
 const MultilineBoxWithContainer = _.compose(
     multilineBoxContainer({
         containerNode: (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
@@ -64,7 +68,7 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                        defaultProp={{
+                        defaultProps={{
                             name: '',
                             displayName: '',
                         }}
@@ -72,9 +76,9 @@ export class MultilineBoxExamples extends React.PureComponent {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>
-                        Multiline box with a container
+                        Multiline box with a default container
                     </label>
-                    <MultilineBoxWithContainer<IMultilineBoxExamplesProps>
+                    <MultilineBoxWithDefaultContainer<IMultilineBoxExamplesProps>
                         id={UUID.generate()}
                         data={[{
                             name: 'Poire',
@@ -104,7 +108,47 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                        defaultProp={{
+                        defaultProps={{
+                            name: '',
+                            displayName: '',
+                        }}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Multiline box with a container
+                    </label>
+                    <MultilineBoxWithContainer<IMultilineBoxExamplesProps>
+                        id={UUID.generate()}
+                        data={[{
+                            name: 'Poire',
+                            displayName: 'Pear',
+                        }]}
+                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                            _.map(data, (cData: IExampleData) => (
+                                    <div key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes='mt0 inline-block mx1'
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes='mt0 inline-block mx1'
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </div>
+                                ),
+                            )
+                        }
+                        defaultProps={{
                             name: '',
                             displayName: '',
                         }}

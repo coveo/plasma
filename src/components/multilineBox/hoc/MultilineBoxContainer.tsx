@@ -5,7 +5,7 @@ import {IMultilineBoxDispatchProps, IMultilineBoxOwnProps, IMultilineParentProps
 type MultilineBoxContainerComponent<T = any> = React.ComponentClass<IMultilineBoxOwnProps<T>>;
 
 export interface IMultilineBoxContainerSupplierProps<T = any> {
-    containerNode: (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>, index: number) => React.ReactNode;
+    containerNode?: (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>, index: number) => React.ReactNode;
 }
 
 export interface IMultilineBoxContainerProps<T> extends IMultilineBoxContainerSupplierProps<T>,
