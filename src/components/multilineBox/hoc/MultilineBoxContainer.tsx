@@ -22,26 +22,26 @@ export const multilineBoxContainer = (supplier: ConfigSupplier<IMultilineBoxCont
             static defaultProps = {
                 renderBody: (children: React.ReactNode[]) => children,
             };
-                <div
-                    {...supplierProps.containerProps}
-                </div>
+        <div
+            {...supplierProps.containerProps};;
+                </div >
 
-            private getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-                return React.Children.map(children, (child: React.ReactNode, index: number) =>
-                    HocUtils.supplyConfig(supplier).containerNode(child, data, index));
-            }
+    private; getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+        return React.Children.map(children, (child: React.ReactNode, index: number) =>
+            HocUtils.supplyConfig(supplier).containerNode(child, data, index));
+    }
 
             render() {
-                return (
+            return(
                     <Component
                         {...this.props}
-                        renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
+                        renderBody = {(boxProps: Array < IMultilineSingleBoxProps < T >> , parentProps: IMultilineParentProps) => this.getWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
                     >
-                        {this.props.children}
-                    </Component>
+        {this.props.children}
+                    </Component >
                 );
             }
         }
 
-        return MultilineBoxContainer;
-    };
+return MultilineBoxContainer;
+    }
