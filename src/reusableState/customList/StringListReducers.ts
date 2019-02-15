@@ -29,6 +29,7 @@ export const stringListCompositeReducer = (
 
     switch (action.type) {
         case StringListActions.add:
+        case StringListActions.updateValues:
             return {
                 ...state,
                 [action.payload.id]: {
