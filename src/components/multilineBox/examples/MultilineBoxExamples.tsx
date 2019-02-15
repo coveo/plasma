@@ -1,82 +1,94 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
+import {IButtonProps} from '../../button/Button';
 import {InputConnected} from '../../input/InputConnected';
 import {multilineBoxContainer} from '../hoc/MultilineBoxContainer';
+import {defaultMultilineBoxRemoveButtonClasses, multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {multilineBoxWithDnD} from '../hoc/MultilineBoxWithDnD';
 import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
+import {IExampleData, IMultilineBoxExamplesProps, WrapperExample} from './MultilineBoxExampleUtils';
 
-type IExampleData = IMultilineSingleBoxProps<IMultilineBoxExamplesProps>;
+const containerNodeExample = (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
+    (
+        <div
+            key={`${data[index].id}Container`}
+            className={'mod-border p1 flex'}
+        >
+            {child}
+        </div>
+    );
 
-export interface IMultilineBoxExamplesProps {
-    name: string;
-    displayName: string;
-}
+const containerNodeMaxWidthExample = (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
+    (
+        <div
+            key={`${data[index].id}Container`}
+            className={'mod-border p1 flex'}
+            style={{width: '500px', height: '70px'}}
+        >
+            {child}
+        </div>
+    );
+
+const MultilineBoxWithDefaultContainer = _.compose(
+    multilineBoxContainer(),
+)(MultilineBox);
 
 const MultilineBoxWithContainer = _.compose(
     multilineBoxContainer({
-        containerProps: {
-            className: 'mod-border p2',
-        },
+        containerNode: containerNodeExample,
     }),
 )(MultilineBox);
 
-const MultilineBoxWithRemoveButton = _.compose(
+const DefaultMultilineBoxWithRemoveButton = _.compose(
     multilineBoxWithRemoveButton(),
 )(MultilineBox);
 
-const MultilineBoxWithContainerAndRemoveButton = _.compose(
-    multilineBoxWithRemoveButton(),
+const MultilineBoxWithRemoveButton = _.compose(
+    multilineBoxWithRemoveButton({
+        containerNode: (child: React.ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode) =>
+            (
+                <>
+                    {child}
+                    {getRemoveButton({
+                        classes: [defaultMultilineBoxRemoveButtonClasses, 'flex-auto full-content-y'],
+                    })}
+                </>
+            ),
+    },
+    ),
     multilineBoxContainer({
-        containerProps: {
-            className: 'p2',
-        },
+        containerNode: containerNodeMaxWidthExample,
     }),
 )(MultilineBox);
 
 const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
-    multilineBoxWithRemoveButton(),
+    multilineBoxWithRemoveButton({
+        containerNode: (child: React.ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode) =>
+            (
+                <>
+                    {child}
+                    {getRemoveButton({
+                        classes: [defaultMultilineBoxRemoveButtonClasses, 'bg-light-grey full-content-y'],
+                    })}
+                </>
+            ),
+    }),
     multilineBoxContainer({
-        containerProps: {
-            className: 'mod-border p2',
-        },
+        containerNode: (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
+            (
+                <div
+                    key={`${data[index].id}Container`}
+                    className={'p1 bg-light-grey'}
+                >
+                    {child}
+                </div>
+            ),
     }),
     multilineBoxWithRemoveButton(),
     multilineBoxContainer({
-        containerProps: {
-            className: 'mod-border p2',
-        },
-    }),
-)(MultilineBox);
-
-const MultilineBoxWithDragAndDrop = _.compose(
-    multilineBoxWithDnD(),
-)(MultilineBox);
-
-const ComplexMultilineBox = _.compose(
-    multilineBoxWithRemoveButton(),
-    multilineBoxWithDnD(),
-    multilineBoxContainer({
-        containerProps: {
-            className: 'mod-border p2',
-        },
-    }),
-)(MultilineBox);
-
-const ComplexMultilineBox2 = _.compose(
-    multilineBoxWithDnD({
-        DnDContainerProps: {
-            draggableContainerProps: {
-                className: 'inline-flex center-align',
-            },
-        },
-    }),
-    multilineBoxWithRemoveButton(),
-    multilineBoxContainer({
-        containerProps: {
-            className: 'mod-border p2',
-        },
+        containerNode: containerNodeExample,
     }),
 )(MultilineBox);
 
@@ -118,7 +130,53 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                        defaultProp={{
+                        defaultProps={{
+                            name: '',
+                            displayName: '',
+                        }}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Multiline box with initial data and a button to update data
+                    </label>
+                    <WrapperExample />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Multiline box with a default container
+                    </label>
+                    <MultilineBoxWithDefaultContainer<IMultilineBoxExamplesProps>
+                        id={UUID.generate()}
+                        data={[{
+                            name: 'Poire',
+                            displayName: 'Pear',
+                        }]}
+                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                            _.map(data, (cData: IExampleData) => (
+                                <div key={cData.id}>
+                                    <InputConnected
+                                        id={`${cData.id}1`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.name}
+                                        validate={(value: string) => cData.props.name === value}
+                                        validateOnChange
+                                        onChange={(value: string) => {
+                                            if (value !== '' && cData.isLast) {
+                                                defaultProps.addNewBox();
+                                            }
+                                        }}
+                                    />
+                                    <InputConnected
+                                        id={`${cData.id}2`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.displayName}
+                                    />
+                                </div>
+                            ),
+                            )
+                        }
+                        defaultProps={{
                             name: '',
                             displayName: '',
                         }}
@@ -158,7 +216,7 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                        defaultProp={{
+                        defaultProps={{
                             name: 'Patate',
                             displayName: 'Pasdfsa',
                         }}
@@ -198,7 +256,7 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                        defaultProp={{
+                        defaultProps={{
                             name: '',
                             displayName: '',
                         }}
@@ -206,7 +264,43 @@ export class MultilineBoxExamples extends React.PureComponent {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>
-                        Multiline box with a button to remove the box
+                        Multiline box with a default hoc remove button
+                    </label>
+                    <DefaultMultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
+                        id={UUID.generate()}
+                        data={[{
+                            name: 'Poire',
+                            displayName: 'Pear',
+                        }]}
+                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                            _.map(data, (cData: IExampleData) => (
+                                <React.Fragment key={cData.id}>
+                                    <InputConnected
+                                        id={`${cData.id}1`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.name}
+                                        validate={(value: string) => cData.props.name === value}
+                                        validateOnChange
+                                        onChange={(value: string) => {
+                                            if (value !== '' && cData.isLast) {
+                                                defaultProps.addNewBox();
+                                            }
+                                        }}
+                                    />
+                                    <InputConnected
+                                        id={`${cData.id}2`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.displayName}
+                                    />
+                                </React.Fragment>
+                            ),
+                            )
+                        }
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Multiline box with a hoc remove button wrapped in a container to style the button position right
                     </label>
                     <MultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
                         id={UUID.generate()}
@@ -238,46 +332,6 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                    />
-                </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>
-                        Multiline box with a button to remove the box
-                    </label>
-                    <MultilineBoxWithContainerAndRemoveButton<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[{
-                            name: 'Poire',
-                            displayName: 'Pear',
-                        }]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes='mt0 inline-block mx1'
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes='mt0 inline-block mx1'
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ),
-                            )
-                        }
-                        defaultProp={{
-                            name: 'Patate',
-                            displayName: 'Pasdfsa',
-                        }}
                     />
                 </div>
                 <div className='form-group'>
