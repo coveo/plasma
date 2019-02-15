@@ -6,6 +6,7 @@ export const StringListActions = {
     addValue: 'ADD_VALUE_STRING_LIST',
     removeValue: 'REMOVE_VALUE_STRING_LIST',
     updateValues: 'UPDATE_VALUES_STRING_LIST',
+    reorder: 'REORDER_STRING_LIST',
 };
 
 export interface IStringListPayload {
@@ -33,6 +34,11 @@ export const addValueStringList = (id: string, value: string, reset: boolean = f
 export const removeValueStringList = (id: string, value: string): IReduxAction<IStringListPayload> => ({
     type: StringListActions.removeValue,
     payload: {id, value},
+});
+
+export const reorderStringList = (id: string, list: string[]): IReduxAction<IStringListPayload> => ({
+    type: StringListActions.reorder,
+    payload: {id, list},
 });
 
 export const updateValueStringList = (id: string, list: string[]): IReduxAction<IStringListPayload> => ({

@@ -163,7 +163,8 @@ class Header extends React.Component<{}, HeaderState> {
         );
     }
 }
-class App extends React.Component<{}, AppState> {
+
+class App extends React.PureComponent<{}, AppState> {
     private components = [
         {component: MenuExamples, componentName: 'Menu'},
         {component: CollapsibleInfoBoxExamples, componentName: 'CollapsibleInfoBox'},
@@ -267,7 +268,7 @@ class App extends React.Component<{}, AppState> {
         {component: NumericInputExamples, componentName: 'Numeric Input'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
-        {component: MultilineBoxExamples, componentName: 'MultilineBoxExamples'},
+        {component: MultilineBoxExamples, componentName: 'MultilineBox'},
     ];
 
     constructor(props: {}, state: AppState) {
