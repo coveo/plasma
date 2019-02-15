@@ -33,8 +33,7 @@ const multilineBoxWithDnDPropsToOmit = keys<IDraggableSelectedOptionOwnProps>();
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging(),
-}),
-)
+}))
 export class DnDContainer extends React.Component<IDraggableContainerOwnProps> {
 
     static defaultProps = {
