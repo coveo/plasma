@@ -6,7 +6,6 @@ import {InputConnected} from '../../input/InputConnected';
 import {multilineBoxContainer} from '../hoc/MultilineBoxContainer';
 import {multilineBoxWithDnD} from '../hoc/MultilineBoxWithDnD';
 import {defaultMultilineBoxRemoveButtonClasses, multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
-import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
 import {IExampleData, IMultilineBoxExamplesProps, WrapperExample} from './MultilineBoxExampleUtils';
 
@@ -85,6 +84,32 @@ const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
                     {child}
                 </div>
             ),
+    }),
+    multilineBoxWithRemoveButton(),
+    multilineBoxContainer({
+        containerNode: containerNodeExample,
+    }),
+)(MultilineBox);
+
+const MultilineBoxWithDragAndDrop = _.compose(
+    multilineBoxWithDnD(),
+)(MultilineBox);
+
+const ComplexMultilineBox = _.compose(
+    multilineBoxWithRemoveButton(),
+    multilineBoxWithDnD(),
+    multilineBoxContainer({
+        containerNode: containerNodeExample,
+    }),
+)(MultilineBox);
+
+const ComplexMultilineBox2 = _.compose(
+    multilineBoxWithDnD({
+        DnDContainerProps: {
+            draggableContainerProps: {
+                className: 'inline-flex center-align',
+            },
+        },
     }),
     multilineBoxWithRemoveButton(),
     multilineBoxContainer({
