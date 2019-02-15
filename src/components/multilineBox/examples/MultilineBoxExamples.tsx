@@ -1,11 +1,33 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
+import {IButtonProps} from '../../button/Button';
 import {InputConnected} from '../../input/InputConnected';
 import {multilineBoxContainer} from '../hoc/MultilineBoxContainer';
-import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
+import {defaultMultilineBoxRemoveButtonClasses, multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
 import {IExampleData, IMultilineBoxExamplesProps, WrapperExample} from './MultilineBoxExampleUtils';
+
+const containerNodeExample = (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
+    (
+        <div
+            key={`${data[index].id}Container`}
+            className={'mod-border p1 flex'}
+        >
+            {child}
+        </div>
+    );
+
+const containerNodeMaxWidthExample = (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
+    (
+        <div
+            key={`${data[index].id}Container`}
+            className={'mod-border p1 flex'}
+            style={{width: '500px', height: '70px'}}
+        >
+            {child}
+        </div>
+    );
 
 const MultilineBoxWithDefaultContainer = _.compose(
     multilineBoxContainer(),
@@ -13,52 +35,58 @@ const MultilineBoxWithDefaultContainer = _.compose(
 
 const MultilineBoxWithContainer = _.compose(
     multilineBoxContainer({
+        containerNode: containerNodeExample,
+    }),
+)(MultilineBox);
+
+const DefaultMultilineBoxWithRemoveButton = _.compose(
+    multilineBoxWithRemoveButton(),
+)(MultilineBox);
+
+const MultilineBoxWithRemoveButton = _.compose(
+    multilineBoxWithRemoveButton({
+        containerNode: (child: React.ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode) =>
+            (
+                <>
+                    {child}
+                    {getRemoveButton({
+                        classes: [defaultMultilineBoxRemoveButtonClasses, 'flex-auto full-content-y'],
+                    })}
+                </>
+            ),
+    },
+    ),
+    multilineBoxContainer({
+        containerNode: containerNodeMaxWidthExample,
+    }),
+)(MultilineBox);
+
+const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
+    multilineBoxWithRemoveButton({
+        containerNode: (child: React.ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode) =>
+            (
+                <>
+                    {child}
+                    {getRemoveButton({
+                        classes: [defaultMultilineBoxRemoveButtonClasses, 'bg-light-grey full-content-y'],
+                    })}
+                </>
+            ),
+    }),
+    multilineBoxContainer({
         containerNode: (child: React.ReactNode, data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>, index: number) =>
             (
                 <div
                     key={`${data[index].id}Container`}
-                    className={'mod-border p1'}
+                    className={'p1 bg-light-grey'}
                 >
                     {child}
                 </div>
             ),
     }),
-)(MultilineBox);
-
-const MultilineBoxWithRemoveButton = _.compose(
-    multilineBoxWithRemoveButton(),
-)(MultilineBox);
-
-const MultilineBoxWithContainerAndRemoveButton = _.compose(
     multilineBoxWithRemoveButton(),
     multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'p1',
-            },
-        },
-    }),
-)(MultilineBox);
-
-const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
-    multilineBoxWithRemoveButton(),
-    multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
-        },
-    }),
-    multilineBoxWithRemoveButton(),
-    multilineBoxContainer({
-        container: {
-            tag: 'div',
-            props: {
-                className: 'mod-border p1',
-            },
-        },
+        containerNode: containerNodeExample,
     }),
 )(MultilineBox);
 
@@ -186,7 +214,7 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                        defaultProp={{
+                        defaultProps={{
                             name: 'Patate',
                             displayName: 'Pasdfsa',
                         }}
@@ -234,9 +262,9 @@ export class MultilineBoxExamples extends React.PureComponent {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>
-                        Multiline box with a button to remove the box
+                        Multiline box with a default hoc remove button
                     </label>
-                    <MultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
+                    <DefaultMultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
                         id={UUID.generate()}
                         data={[{
                             name: 'Poire',
@@ -270,9 +298,9 @@ export class MultilineBoxExamples extends React.PureComponent {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>
-                        Multiline box with a button to remove the box
+                        Multiline box with a hoc remove button wrapped in a container to style the button position right
                     </label>
-                    <MultilineBoxWithContainerAndRemoveButton<IMultilineBoxExamplesProps>
+                    <MultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
                         id={UUID.generate()}
                         data={[{
                             name: 'Poire',
@@ -302,10 +330,6 @@ export class MultilineBoxExamples extends React.PureComponent {
                             ),
                             )
                         }
-                        defaultProp={{
-                            name: 'Patate',
-                            displayName: 'Pasdfsa',
-                        }}
                     />
                 </div>
                 <div className='form-group'>
