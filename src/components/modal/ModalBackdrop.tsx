@@ -26,6 +26,9 @@ const ModalBackdropPropsToOmit = keys<IModalBackdropProps>();
 
 export type IModalBackdropAllProps = IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>;
 
+/**
+ * @deprecated use ModalComposite instead
+ */
 export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
     static defaultProps: Partial<IModalBackdropProps> = {
         lastOpened: true,
@@ -60,6 +63,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
             'modal-backdrop',
             {
                 'closed': !this.props.display,
+                'opened': !!this.props.display,
                 'prompt-backdrop': this.props.isPrompt,
             },
         );

@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ILinkSvgProps} from '../svg/LinkSvg';
 import {Svg} from '../svg/Svg';
@@ -14,14 +15,14 @@ export interface IModalHeaderOwnProps {
 }
 
 export interface IModalHeaderStateProps {
-    lastOpened?: boolean;
+    lastOpened: boolean;
 }
 
 export interface IModalHeaderDispatchProps {
-    onClose?: () => void;
+    onClose: () => void;
 }
 
-export interface IModalHeaderProps extends IModalHeaderOwnProps, IModalHeaderStateProps, IModalHeaderDispatchProps {}
+export interface IModalHeaderProps extends IModalHeaderOwnProps, Partial<IModalHeaderStateProps>, Partial<IModalHeaderDispatchProps> {}
 
 export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
     static defaultProps: Partial<IModalHeaderProps> = {

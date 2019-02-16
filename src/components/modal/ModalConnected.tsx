@@ -21,4 +21,7 @@ const mapDispatchToProps = (
     onDestroy: () => dispatch(removeModal(ownProps.id)),
 });
 
+/**
+ * @deprecated use ModalCompositeConnected instead
+ */
 export const ModalConnected: React.ComponentClass<IModalProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Modal);

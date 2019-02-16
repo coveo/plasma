@@ -41,6 +41,7 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                         <ModalCompositeConnected
                             id={modalId}
                             title='Modal composite'
+                            classes={['mod-slide-in-bottom', 'mod-big', 'mod-stick-bottom']}
                             modalBodyChildren='The content of the modal'
                             modalFooterChildren={<button className='btn' onClick={() => this.closeModal(modalId)}>Close</button>}
                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
