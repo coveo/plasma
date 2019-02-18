@@ -63,7 +63,6 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
             'modal-backdrop',
             {
                 'closed': !this.props.display,
-                'opened': !!this.props.display,
                 'prompt-backdrop': this.props.isPrompt,
             },
         );

@@ -46,7 +46,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
                     beforeClose: 'closed',
                 }}
                 overlayClassName={{
-                    base: 'modal-backdrop',
+                    base: 'modal-backdrop --react-modal',
                     afterOpen: 'opened',
                     beforeClose: 'clear',
                 }}
