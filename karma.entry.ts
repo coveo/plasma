@@ -1,6 +1,7 @@
 import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import * as $ from 'jquery';
+import * as ReactModal from 'react-modal';
 import * as s from 'underscore.string';
 
 // Polyfill MouseEvent if needed
@@ -37,6 +38,7 @@ afterEach(() => {
 });
 
 Enzyme.configure({adapter: new Adapter()});
+ReactModal.setAppElement('body');
 
 const testsContext = require.context('./src', true, /\.spec\.ts(x?)$/);
 testsContext.keys().forEach(testsContext);

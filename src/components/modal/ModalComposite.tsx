@@ -29,7 +29,7 @@ export interface IModalCompositeDispatchProps extends IModalDispatchProps, IModa
 
 export interface IModalCompositeProps extends IModalCompositeOwnProps, Partial<IModalCompositeStateProps>, Partial<IModalCompositeDispatchProps> {}
 
-export class ModalComposite extends React.Component<IModalCompositeProps> {
+export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
     static defaultProps: Partial<IModalCompositeProps> = {
         id: _.uniqueId('modal'),
     };
@@ -79,22 +79,21 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
             classes: this.props.modalHeaderClasses,
             docLink: this.props.docLink,
         };
-        const onCloseProp = this.props.onClose ? () => this.props.onClose() : undefined;
 
         return this.props.withReduxState
             ? <ModalHeaderConnected key='modal-header' {...basicProps}>{this.props.modalHeaderChildren}</ModalHeaderConnected>
-            : <ModalHeader key='modal-header' {...basicProps} onClose={onCloseProp}>{this.props.modalHeaderChildren}</ModalHeader>;
+            : <ModalHeader key='modal-header' {...basicProps} onClose={this.props.onClose}>{this.props.modalHeaderChildren}</ModalHeader>;
     }
 
-    private getModalBody() {
-        return this.props.modalBodyChildren
-            ? <ModalBody key='modal-body' classes={this.props.modalBodyClasses}>{this.props.modalBodyChildren}</ModalBody>
-            : null;
-    }
+    private getModalBody = () => this.props.modalBodyChildren && (
+        <ModalBody key='modal-body' classes={this.props.modalBodyClasses}>
+            {this.props.modalBodyChildren}
+        </ModalBody>
+    )
 
-    private getModalFooter() {
-        return this.props.modalFooterChildren
-            ? <ModalFooter key='modal-footer' classes={this.props.modalFooterClasses}>{this.props.modalFooterChildren}</ModalFooter>
-            : null;
-    }
+    private getModalFooter = () => this.props.modalFooterChildren && (
+        <ModalFooter key='modal-footer' classes={this.props.modalFooterClasses}>
+            {this.props.modalFooterChildren}
+        </ModalFooter>
+    )
 }

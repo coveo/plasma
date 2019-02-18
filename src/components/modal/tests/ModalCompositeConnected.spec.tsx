@@ -1,14 +1,14 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {ReactWrapper} from 'enzyme';
+import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
-import {ModalBackdropConnected} from '../ModalBackdropConnected';
+import {openModal} from '../ModalActions';
 import {IModalCompositeProps, ModalComposite} from '../ModalComposite';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
-import {ModalConnected} from '../ModalConnected';
 import {ModalHeaderConnected} from '../ModalHeaderConnected';
 
 // tslint:disable-next-line:no-unused-variable
@@ -18,44 +18,37 @@ describe('<ModalCompositeConnected />', () => {
         title: 'Some random title',
     };
 
-    let modalComposite: ReactWrapper<IModalCompositeProps, any>;
     let wrapper: ReactWrapper<any, any>;
     let store: Store<IReactVaporState>;
 
     beforeEach(() => {
-
         store = TestUtils.buildStore();
 
-        wrapper = mount(
-            <Provider store={store}>
-                <ModalCompositeConnected {...basicProps} />
-            </Provider>,
-            {attachTo: document.getElementById('App')},
+        wrapper = mountWithStore(
+            <ModalCompositeConnected {...basicProps} />,
+            store,
         );
-        modalComposite = wrapper.find(ModalComposite).first();
     });
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.detach();
     });
 
     it('should get withReduxState set to true as a prop', () => {
-        const withReduxStateProp = modalComposite.props().withReduxState;
+        const withReduxStateProp = wrapper.find(ModalComposite).first().props().withReduxState;
 
         expect(withReduxStateProp).toBeDefined();
         expect(withReduxStateProp).toBe(true);
     });
 
-    it('should display a <ModalConnected /> component', () => {
-        expect(modalComposite.find(ModalConnected).length).toBe(1);
-    });
+    describe('when the modal is opened', () => {
+        beforeEach(() => {
+            store.dispatch(openModal(basicProps.id));
+            wrapper.update();
+        });
 
-    it('should display a <ModalHeaderConnected /> component', () => {
-        expect(modalComposite.find(ModalHeaderConnected).length).toBe(1);
-    });
-
-    it('should display a <ModalBackdropConnected /> component', () => {
-        expect(modalComposite.find(ModalBackdropConnected).length).toBe(1);
+        it('should display a <ModalHeaderConnected /> component', () => {
+            expect(wrapper.find(ModalHeaderConnected).length).toBe(1);
+        });
     });
 });
