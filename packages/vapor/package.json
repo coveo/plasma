@@ -44,7 +44,7 @@
     "gulp": "3.9.1",
     "gulp-autoprefixer": "5.0.0",
     "gulp-cheerio": "0.6.3",
-    "gulp-clean-css": "3.9.0",
+    "gulp-clean-css": "3.9.3",
     "gulp-concat": "2.6.1",
     "gulp-csscomb": "3.0.8",
     "gulp-file-insert": "1.0.3",
