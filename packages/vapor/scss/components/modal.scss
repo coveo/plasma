@@ -47,13 +47,16 @@ $icon-size: (4em / 3);
 .modal-backdrop {
   z-index: $base-backdrop-z-index;
 
-  background: $purple-blue;
+  background: rgba($purple-blue, 0.9);
 
   transition: all 0.3s;
 
-  opacity: 0.9;
+  opacity: 1;
 
   @include generate-layers(10, $base-backdrop-z-index);
+  &.--react-modal {
+    opacity: 0;
+  }
 
   &.prompt-backdrop {
     position: absolute;
@@ -66,6 +69,10 @@ $icon-size: (4em / 3);
       bottom: 0;
       left: 0;
     }
+  }
+
+  &.opened {
+    opacity: 1;
   }
 
   &.clear, &.closed {
@@ -84,15 +91,18 @@ $icon-size: (4em / 3);
 
   display: flex;
 
-  visibility: hidden;
   pointer-events: none; // Required to allow clicking through the modal-container on the modal-backdrop. Known issue: wont work on IE 10.
 
   @include generate-layers(10, $base-modal-z-index);
 
+  &:not(.--react-modal) {
+    visibility: hidden;
+  }
+
   &.opening, &.opened {
     visibility: visible;
 
-    > .modal-content {
+     > .modal-content {
       opacity: 1;
     }
   }
@@ -129,10 +139,10 @@ $icon-size: (4em / 3);
   &.mod-stick-bottom {
     align-items: flex-end;
 
-    > .modal-content {
+     > .modal-content {
       height: $modal-height-stick;
 
-      > .modal-footer {
+       > .modal-footer {
         border-radius: 0;
       }
     }
@@ -146,7 +156,7 @@ $icon-size: (4em / 3);
     }
   }
 
-  &.mod-fade-in-scale > .modal-content {
+  &.mod-fade-in-scale > .modal-content, &.closed.mod-fade-in-scale > .modal-content {
     transform: scale(0.7);
 
     transition: all 0.3s;
@@ -156,7 +166,7 @@ $icon-size: (4em / 3);
     transform: scale(1);
   }
 
-  &.mod-slide-in-bottom > .modal-content {
+  &.mod-slide-in-bottom > .modal-content, &closed.mod-slide-in-bottom > .modal-content {
     transform: translate3d(0, 20%, 0);
 
     transition: all 0.3s;
