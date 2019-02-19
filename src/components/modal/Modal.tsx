@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+
 import {IClassName} from '../../utils/ClassNameUtils';
 
 export interface IModalOwnProps {
@@ -16,16 +17,19 @@ export interface IModalOwnProps {
 }
 
 export interface IModalStateProps {
-    isOpened?: boolean;
+    isOpened: boolean;
 }
 
 export interface IModalDispatchProps {
-    onDestroy?: () => void;
-    onRender?: () => void;
+    onDestroy: () => void;
+    onRender: () => void;
 }
 
-export interface IModalProps extends IModalOwnProps, IModalStateProps, IModalDispatchProps {}
+export interface IModalProps extends IModalOwnProps, Partial<IModalStateProps>, Partial<IModalDispatchProps> {}
 
+/**
+ * @deprecated use ModalComposite instead
+ */
 export class Modal extends React.Component<IModalProps, {}> {
 
     componentWillMount() {

@@ -1,17 +1,19 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import * as ReactModal from 'react-modal';
 import * as _ from 'underscore';
+
 import {IClassName} from '../../utils/ClassNameUtils';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
-import {IModalProps, Modal} from './Modal';
-import {IModalBackdropProps, ModalBackdrop} from './ModalBackdrop';
-import {ModalBackdropConnected} from './ModalBackdropConnected';
+import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal';
+import {IModalBackdropOwnProps} from './ModalBackdrop';
 import {ModalBody} from './ModalBody';
-import {ModalConnected} from './ModalConnected';
 import {IModalFooterProps, ModalFooter} from './ModalFooter';
-import {IModalHeaderProps, ModalHeader} from './ModalHeader';
+import {IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps, ModalHeader} from './ModalHeader';
 import {ModalHeaderConnected} from './ModalHeaderConnected';
 
-export interface IModalCompositeOwnProps extends IModalProps, IModalHeaderProps, IModalFooterProps, IModalBackdropProps {
+export interface IModalCompositeOwnProps extends IModalOwnProps, IModalHeaderOwnProps, IModalFooterProps, IModalBackdropOwnProps {
     modalHeaderChildren?: React.ReactNode;
     modalHeaderClasses?: IClassName;
     modalBodyChildren?: React.ReactNode;
@@ -21,46 +23,53 @@ export interface IModalCompositeOwnProps extends IModalProps, IModalHeaderProps,
     isPrompt?: boolean;
 }
 
-export interface IModalCompositeStateProps extends IReduxStatePossibleProps {}
+export interface IModalCompositeStateProps extends IReduxStatePossibleProps, IModalStateProps {}
 
-export interface IModalCompositeDispatchProps {}
+export interface IModalCompositeDispatchProps extends IModalDispatchProps, IModalHeaderDispatchProps {}
 
-export interface IModalCompositeProps extends IModalCompositeOwnProps, IModalCompositeStateProps, IModalCompositeDispatchProps {}
+export interface IModalCompositeProps extends IModalCompositeOwnProps, Partial<IModalCompositeStateProps>, Partial<IModalCompositeDispatchProps> {}
 
-export class ModalComposite extends React.Component<IModalCompositeProps> {
+export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
     static defaultProps: Partial<IModalCompositeProps> = {
         id: _.uniqueId('modal'),
     };
+    static defaultTimeout = 300;
 
     render() {
         return (
-            <div>
-                {this.getModal([this.getModalHeader(), this.getModalBody(), this.getModalFooter()])}
-                {this.getModalBackdrop()}
-            </div>
+            <ReactModal
+                key={this.props.id}
+                isOpen={this.props.isOpened}
+                className={{
+                    base: classNames('modal-container --react-modal', this.props.classes),
+                    afterOpen: 'opened',
+                    beforeClose: 'closed',
+                }}
+                overlayClassName={{
+                    base: 'modal-backdrop --react-modal',
+                    afterOpen: 'opened',
+                    beforeClose: 'clear',
+                }}
+                onRequestClose={this.props.onClose}
+                onAfterClose={this.props.closeCallback}
+                closeTimeoutMS={this.props.closeTimeout || ModalComposite.defaultTimeout}
+                contentRef={this.props.contentRef}
+            >
+                <div className='modal-content'>
+                    {this.getModalHeader()}
+                    {this.getModalBody()}
+                    {this.getModalFooter()}
+                </div>
+            </ReactModal>
         );
     }
 
-    private getModal(children: React.ReactNode) {
-        const basicProps: IModalProps = {
-            id: this.props.id,
-            classes: this.props.classes,
-            closeCallback: this.props.closeCallback,
-            closeTimeout: this.props.closeTimeout,
-        };
-        const onRenderProp = this.props.onRender ? () => this.props.onRender() : undefined;
-        const onDestroyProp = this.props.onDestroy ? () => this.props.onDestroy() : undefined;
+    componentDidMount() {
+        callIfDefined(this.props.onRender);
+    }
 
-        return this.props.withReduxState
-            ? <ModalConnected {...basicProps}>{children}</ModalConnected>
-            : <Modal
-                {...basicProps}
-                isOpened={this.props.isOpened}
-                onRender={onRenderProp}
-                onDestroy={onDestroyProp}
-            >
-                {children}
-            </Modal>;
+    componentWillUnmount() {
+        callIfDefined(this.props.onDestroy);
     }
 
     private getModalHeader() {
@@ -70,42 +79,21 @@ export class ModalComposite extends React.Component<IModalCompositeProps> {
             classes: this.props.modalHeaderClasses,
             docLink: this.props.docLink,
         };
-        const onCloseProp = this.props.onClose ? () => this.props.onClose() : undefined;
 
         return this.props.withReduxState
             ? <ModalHeaderConnected key='modal-header' {...basicProps}>{this.props.modalHeaderChildren}</ModalHeaderConnected>
-            : <ModalHeader key='modal-header' {...basicProps} onClose={onCloseProp}>{this.props.modalHeaderChildren}</ModalHeader>;
+            : <ModalHeader key='modal-header' {...basicProps} onClose={this.props.onClose}>{this.props.modalHeaderChildren}</ModalHeader>;
     }
 
-    private getModalBody() {
-        return this.props.modalBodyChildren
-            ? <ModalBody key='modal-body' classes={this.props.modalBodyClasses}>{this.props.modalBodyChildren}</ModalBody>
-            : null;
-    }
+    private getModalBody = () => this.props.modalBodyChildren && (
+        <ModalBody key='modal-body' classes={this.props.modalBodyClasses}>
+            {this.props.modalBodyChildren}
+        </ModalBody>
+    )
 
-    private getModalFooter() {
-        return this.props.modalFooterChildren
-            ? <ModalFooter key='modal-footer' classes={this.props.modalFooterClasses}>{this.props.modalFooterChildren}</ModalFooter>
-            : null;
-    }
-
-    private getModalBackdrop() {
-        const basicProps: IModalBackdropProps = {
-            displayFor: [this.props.id],
-            isPrompt: this.props.isPrompt,
-        };
-
-        const onClickProp = () => {
-            if (this.props.onClose) {
-                this.props.onClose();
-            }
-            if (this.props.onClick) {
-                this.props.onClick();
-            }
-        };
-
-        return this.props.withReduxState
-            ? <ModalBackdropConnected {...basicProps} />
-            : <ModalBackdrop {...basicProps} display={this.props.display || this.props.isOpened} onClick={onClickProp} />;
-    }
+    private getModalFooter = () => this.props.modalFooterChildren && (
+        <ModalFooter key='modal-footer' classes={this.props.modalFooterClasses}>
+            {this.props.modalFooterChildren}
+        </ModalFooter>
+    )
 }

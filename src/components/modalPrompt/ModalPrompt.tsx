@@ -30,6 +30,9 @@ export const DEFAULT_MODAL_PROMPT_CANCEL_LABEL: string = 'Cancel';
 
 export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptStateProps, IModalPromptDispatchProps {}
 
+/**
+ * @deprecated use ModalComposite instead
+ */
 export class ModalPrompt extends React.Component<IModalPromptProps, any> {
 
     static defaultProps: Partial<IModalPromptProps> = {

@@ -1,142 +1,78 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow} from 'enzyme';
 import * as React from 'react';
-import * as _ from 'underscore';
-import {Modal} from '../Modal';
-import {ModalBackdrop} from '../ModalBackdrop';
+import * as ReactModal from 'react-modal';
+
 import {ModalBody} from '../ModalBody';
-import {IModalCompositeProps, ModalComposite} from '../ModalComposite';
+import {ModalComposite} from '../ModalComposite';
 import {ModalFooter} from '../ModalFooter';
 import {ModalHeader} from '../ModalHeader';
 
 describe('ModalComposite', () => {
-    const basicProps: IModalCompositeProps = {
-        title: 'Some random title',
-    };
-
-    describe('<ModalComposite />', () => {
-        it('should render without errors', () => {
-            expect(() => shallow(<ModalComposite {...basicProps} />)).not.toThrow();
-        });
+    it('should not throw when rendering and unmounting', () => {
+        expect(() => {
+            const modalComposite = shallow(<ModalComposite />);
+            modalComposite.unmount();
+        }).not.toThrow();
     });
 
-    describe('<ModalComposite />', () => {
-        let modalComposite: ReactWrapper<IModalCompositeProps, any>;
+    it('should render a ReactModal component', () => {
+        const modalComposite = shallow(<ModalComposite />);
 
-        beforeEach(() => {
-            modalComposite = mount(
-                <ModalComposite {...basicProps} />,
-                {attachTo: document.getElementById('App')},
-            );
-        });
+        expect(modalComposite.find(ReactModal).exists()).toBe(true);
+    });
 
-        afterEach(() => {
-            modalComposite.detach();
-        });
+    it('should call the onRender prop if defined on mount', () => {
+        const onRenderSpy = jasmine.createSpy('onRender');
 
-        it('should display a <Modal /> component', () => {
-            expect(modalComposite.find(Modal).length).toBe(1);
-        });
+        shallow(<ModalComposite onRender={onRenderSpy} />);
 
-        it('should display a <ModalHeader /> component', () => {
-            expect(modalComposite.find(ModalHeader).length).toBe(1);
-        });
+        expect(onRenderSpy).toHaveBeenCalledTimes(1);
+    });
 
-        it('should not display a <ModalBody /> component by default', () => {
-            expect(modalComposite.find(ModalBody).length).toBe(0);
-        });
+    it('should call the onDestroy prop if defined on unmount', () => {
+        const onDestroySpy = jasmine.createSpy('onDestroy');
 
-        it('should display a <ModalBody /> component if modalBodyChildren is set as a prop', () => {
-            const newProps: IModalCompositeProps = _.extend({}, basicProps, {modalBodyChildren: 'content'});
+        const modalComposite = shallow(<ModalComposite onDestroy={onDestroySpy} />);
+        modalComposite.unmount();
 
-            modalComposite.setProps(newProps);
+        expect(onDestroySpy).toHaveBeenCalledTimes(1);
+    });
 
-            expect(modalComposite.find(ModalBody).length).toBe(1);
-        });
+    it('should render a ModalHeader inside the modal content', () => {
+        const modalComposite = shallow(<ModalComposite isOpened />).dive();
+        const modalContent = modalComposite.find('.modal-content');
 
-        it('should not display a <ModalFooter /> component by default', () => {
-            expect(modalComposite.find(ModalFooter).length).toBe(0);
-        });
+        expect(modalContent.exists()).toBe(true);
+        expect(modalContent.find(ModalHeader).exists()).toBe(true);
+    });
 
-        it('should display a <ModalFooter /> component if modalFooterChildren is set as a prop', () => {
-            const newProps: IModalCompositeProps = _.extend({}, basicProps, {modalFooterChildren: 'content'});
+    it('should render modal header children inside the modal header', () => {
+        const modalHeaderChildren = <span>A bird in the hand is worth two in the bush.</span>;
+        const modalComposite = shallow(<ModalComposite isOpened modalHeaderChildren={modalHeaderChildren} />).dive();
 
-            modalComposite.setProps(newProps);
+        expect(modalComposite.find(ModalHeader).contains(modalHeaderChildren)).toBe(true);
+    });
 
-            expect(modalComposite.find(ModalFooter).length).toBe(1);
-        });
+    it('should render modal body children inside the modal body', () => {
+        const modalBodyChildren = <span>All that glitters is not gold.</span>;
+        const modalComposite = shallow(<ModalComposite isOpened modalBodyChildren={modalBodyChildren} />).dive();
 
-        it('should display a <ModalBackdrop /> component', () => {
-            expect(modalComposite.find(ModalBackdrop).length).toBe(1);
-        });
+        expect(modalComposite.find(ModalBody).contains(modalBodyChildren)).toBe(true);
+    });
 
-        it('should use the on render prop for the modal on render', () => {
-            const newProps: IModalCompositeProps = _.extend({}, basicProps, {onRender: jasmine.createSpy('onRender')});
+    it('should render modal footer children inside the modal footer', () => {
+        const modalFooterChildren = <span>A drowning man will clutch at a straw.</span>;
+        const modalComposite = shallow(<ModalComposite isOpened modalFooterChildren={modalFooterChildren} />).dive();
 
-            modalComposite.setProps(newProps);
+        expect(modalComposite.find(ModalFooter).contains(modalFooterChildren)).toBe(true);
+    });
 
-            const onRenderProp = modalComposite.find(Modal).props().onRender;
+    it('should call the closeCallback prop when the modal has closed', () => {
+        const closeCallbackSpy = jasmine.createSpy('closeCallback');
+        const modalComposite = shallow(<ModalComposite closeCallback={closeCallbackSpy} />);
 
-            expect(onRenderProp).toBeDefined();
+        modalComposite.find(ReactModal).props().onAfterClose();
 
-            onRenderProp();
-
-            expect(newProps.onRender).toHaveBeenCalledTimes(1);
-        });
-
-        it('should use the on destroy prop for the modal on render', () => {
-            const newProps: IModalCompositeProps = _.extend({}, basicProps, {onDestroy: jasmine.createSpy('onDestroy')});
-
-            modalComposite.setProps(newProps);
-
-            const onDestroyProp = modalComposite.find(Modal).props().onDestroy;
-
-            expect(onDestroyProp).toBeDefined();
-
-            onDestroyProp();
-
-            expect(newProps.onDestroy).toHaveBeenCalledTimes(1);
-        });
-
-        it('should use the on close prop for the modal header on when calling onClose', () => {
-            const newProps: IModalCompositeProps = _.extend({}, basicProps, {onClose: jasmine.createSpy('onClose')});
-
-            modalComposite.setProps(newProps);
-
-            const onCloseProp = modalComposite.find(ModalHeader).props().onClose;
-
-            expect(onCloseProp).toBeDefined();
-
-            onCloseProp();
-
-            expect(newProps.onClose).toHaveBeenCalledTimes(1);
-        });
-
-        it('should use the on close prop for the modal backdrop on when calling onClick', () => {
-            const newProps: IModalCompositeProps = _.extend({}, basicProps, {onClose: jasmine.createSpy('onClose')});
-
-            modalComposite.setProps(newProps);
-
-            const onClickProp = modalComposite.find(ModalBackdrop).props().onClick;
-
-            expect(onClickProp).toBeDefined();
-
-            onClickProp();
-
-            expect(newProps.onClose).toHaveBeenCalledTimes(1);
-        });
-
-        it('should use the on click prop for the modal backdrop on when calling onClick', () => {
-            const newProps: IModalCompositeProps = _.extend({}, basicProps, {onClick: jasmine.createSpy('onClick')});
-
-            modalComposite.setProps(newProps);
-
-            const onClickProp = modalComposite.find(ModalBackdrop).props().onClick;
-
-            expect(onClickProp).toBeDefined();
-
-            onClickProp();
-
-            expect(newProps.onClick).toHaveBeenCalledTimes(1);
-        });
+        expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
     });
 });

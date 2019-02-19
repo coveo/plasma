@@ -5,6 +5,7 @@ import './style.scss';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {render as ReactDOMRender} from 'react-dom';
+import * as ReactModal from 'react-modal';
 import {Provider} from 'react-redux';
 
 import {SlideYExamples} from '../src/animations/examples/SlideYExamples';
@@ -35,7 +36,9 @@ import {ContentExamples} from '../src/components/content/examples/ContentExample
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import {
+    DatePickerDropdownConnectedExamples,
+} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
 import {
     DatePickerDropdownConnectedSingleDateExamples,
 } from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
@@ -202,11 +205,11 @@ class App extends React.Component<{}, AppState> {
         {component: FilterBoxConnectedExamples, componentName: 'FilterBoxConnected'},
         {component: FacetExamples, componentName: 'Facet'},
         {component: FacetConnectedExamples, componentName: 'FacetConnected'},
-        {component: ModalExamples, componentName: 'Modal'},
-        {component: ModalConnectedExamples, componentName: 'ModalConnected'},
+        {component: ModalExamples, componentName: 'Modal (deprecated)'},
+        {component: ModalConnectedExamples, componentName: 'ModalConnected (deprecated)'},
         {component: ModalCompositeExamples, componentName: 'ModalComposite'},
         {component: ModalCompositeConnectedExamples, componentName: 'ModalCompositeConnected'},
-        {component: ModalPromptExamples, componentName: 'ModalPrompt'},
+        {component: ModalPromptExamples, componentName: 'ModalPrompt (deprecated)'},
         {component: NavigationExamples, componentName: 'Navigation'},
         {component: NavigationConnectedExamples, componentName: 'NavigationConnected'},
         {component: SubNavigationExamples, componentName: 'SubNavigation'},
@@ -343,3 +346,4 @@ class App extends React.Component<{}, AppState> {
 
 ReactDOMRender(<Header />, document.getElementById('header'));
 ReactDOMRender(<App />, document.getElementById('App'));
+ReactModal.setAppElement('#App');

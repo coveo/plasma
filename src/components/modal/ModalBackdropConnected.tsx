@@ -32,4 +32,7 @@ const mapDispatchToProps = (
     onClick: () => dispatch(closeModals(ownProps.displayFor)),
 });
 
+/**
+ * @deprecated use ModalCompositeConnected instead
+ */
 export const ModalBackdropConnected: React.ComponentClass<IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalBackdrop);
