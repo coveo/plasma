@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactModal from 'react-modal';
 import * as _ from 'underscore';
 
+import {defaults} from '../../Defaults';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -33,7 +34,6 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
     static defaultProps: Partial<IModalCompositeProps> = {
         id: _.uniqueId('modal'),
     };
-    static defaultTimeout = 300;
 
     render() {
         return (
@@ -52,8 +52,9 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
                 }}
                 onRequestClose={this.props.onClose}
                 onAfterClose={this.props.closeCallback}
-                closeTimeoutMS={this.props.closeTimeout || ModalComposite.defaultTimeout}
+                closeTimeoutMS={this.props.closeTimeout || defaults.MODAL_TIMEOUT}
                 contentRef={this.props.contentRef}
+                parentSelector={this.getParent}
             >
                 <div className='modal-content'>
                     {this.getModalHeader()}
@@ -96,4 +97,6 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
             {this.props.modalFooterChildren}
         </ModalFooter>
     )
+
+    private getParent = (): HTMLElement => document.querySelector(defaults.MODAL_ROOT);
 }
