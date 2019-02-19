@@ -158,12 +158,12 @@ describe('MultilineBox', () => {
                             }}
                         />,
                         {
-                            multilineIds: {                                
-[id]: {
+                            multilineIds: {
+                                [id]: {
                                     id: id,
                                     list: [testId],
-                                }
-                            }
+                                },
+                            },
                         },
                     ).dive();
 
@@ -188,7 +188,7 @@ describe('MultilineBox', () => {
                                     id: id,
                                     list: [testId, '1234'],
                                 },
-                            }
+                            },
                         },
                     ).dive();
 
@@ -214,8 +214,8 @@ describe('MultilineBox', () => {
                                     id: id,
                                     list: [testId],
                                 },
-                            }                        
-},
+                            },
+                        },
                     ).dive();
 
                     expect(dataToBody[0].props).toEqual({name: 'princess'});
@@ -240,7 +240,7 @@ describe('MultilineBox', () => {
                                     id: id,
                                     list: ['uniqueID'],
                                 },
-                            }
+                            },
                         },
                     ).dive();
 
@@ -269,7 +269,7 @@ describe('MultilineBox', () => {
                                     id: id,
                                     list: ['uniqueID'],
                                 },
-                            }
+                            },
                         },
                     ).dive();
 
