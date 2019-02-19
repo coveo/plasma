@@ -1,54 +1,64 @@
-import {ReactWrapper} from 'enzyme';
-import {mountWithStore} from 'enzyme-redux';
+import {ShallowWrapper} from 'enzyme';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {Store} from 'redux';
+import {createMockStore, mockStore} from 'redux-test-utils';
 
 import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
-import {openModal} from '../ModalActions';
-import {IModalCompositeProps, ModalComposite} from '../ModalComposite';
+import {addModal, closeModal, removeModal} from '../ModalActions';
+import {IModalCompositeProps} from '../ModalComposite';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
 import {ModalHeaderConnected} from '../ModalHeaderConnected';
 
 // tslint:disable-next-line:no-unused-variable
 describe('<ModalCompositeConnected />', () => {
     const basicProps: IModalCompositeProps = {
-        id: 'id',
+        id: 'modalo-mc-modal',
         title: 'Some random title',
     };
 
-    let wrapper: ReactWrapper<any, any>;
-    let store: Store<IReactVaporState>;
+    let mockstore: mockStore<IReactVaporState>;
 
     beforeEach(() => {
-        store = TestUtils.buildStore();
-
-        wrapper = mountWithStore(
-            <ModalCompositeConnected {...basicProps} />,
-            store,
-        );
-    });
-
-    afterEach(() => {
-        store.dispatch(clearState());
+        mockstore = createMockStore();
     });
 
     it('should get withReduxState set to true as a prop', () => {
-        const withReduxStateProp = wrapper.find(ModalComposite).first().props().withReduxState;
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore);
 
-        expect(withReduxStateProp).toBeDefined();
-        expect(withReduxStateProp).toBe(true);
+        expect(modalCompositeConnected.props().withReduxState).toBe(true);
     });
 
-    describe('when the modal is opened', () => {
-        beforeEach(() => {
-            store.dispatch(openModal(basicProps.id));
-            wrapper.update();
-        });
+    it('should have isOpened prop to true if the modal is opened in the store', () => {
+        mockstore = createMockStore({modals: [{id: 'another-modal', isOpened: false}, {id: basicProps.id, isOpened: true}]});
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore);
 
-        it('should display a <ModalHeaderConnected /> component', () => {
-            expect(wrapper.find(ModalHeaderConnected).length).toBe(1);
-        });
+        expect(modalCompositeConnected.props().isOpened).toBe(true);
+    });
+
+    it('should dispatch an "ADD_MODAL" action when it mounts', () => {
+        shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore).dive();
+
+        expect(mockstore.isActionDispatched(addModal(basicProps.id))).toBe(true);
+    });
+
+    it('should dispatch a "REMOVE_MODAL" action when it unmounts', () => {
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore).dive();
+
+        modalCompositeConnected.unmount();
+
+        expect(mockstore.isActionDispatched(removeModal(basicProps.id))).toBe(true);
+    });
+
+    it('should display a <ModalHeaderConnected /> component', () => {
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore).dive();
+        expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(1);
+    });
+
+    it('should dispatch a close modal action when closing the modal', () => {
+        const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithStore(<ModalCompositeConnected {...basicProps} isOpened />, mockstore).dive();
+
+        modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeEvent'));
+
+        expect(mockstore.isActionDispatched(closeModal(basicProps.id))).toBe(true);
     });
 });
