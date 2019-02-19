@@ -1,8 +1,11 @@
-import {mount, shallow} from 'enzyme';
+import {shallow} from 'enzyme';
 import * as React from 'react';
 import * as ReactModal from 'react-modal';
 
+import {ModalBody} from '../ModalBody';
 import {ModalComposite} from '../ModalComposite';
+import {ModalFooter} from '../ModalFooter';
+import {ModalHeader} from '../ModalHeader';
 
 describe('ModalComposite', () => {
     it('should not throw when rendering and unmounting', () => {
@@ -35,34 +38,33 @@ describe('ModalComposite', () => {
         expect(onDestroySpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should render the modal container, modal backdrop, modal header and modal content when isOpened prop is true', () => {
-        const modalComposite = mount(<ModalComposite isOpened />);
+    it('should render a ModalHeader inside the modal content', () => {
+        const modalComposite = shallow(<ModalComposite isOpened />).dive();
+        const modalContent = modalComposite.find('.modal-content');
 
-        expect(modalComposite.find('.modal-backdrop').exists()).toBe(true);
-        expect(modalComposite.find('.modal-container').exists()).toBe(true);
-        expect(modalComposite.find('.modal-header').exists()).toBe(true);
-        expect(modalComposite.find('.modal-content').exists()).toBe(true);
+        expect(modalContent.exists()).toBe(true);
+        expect(modalContent.find(ModalHeader).exists()).toBe(true);
     });
 
     it('should render modal header children inside the modal header', () => {
         const modalHeaderChildren = <span>A bird in the hand is worth two in the bush.</span>;
-        const modalComposite = mount(<ModalComposite isOpened modalHeaderChildren={modalHeaderChildren} />);
+        const modalComposite = shallow(<ModalComposite isOpened modalHeaderChildren={modalHeaderChildren} />).dive();
 
-        expect(modalComposite.find('.modal-header').contains(modalHeaderChildren)).toBe(true);
+        expect(modalComposite.find(ModalHeader).contains(modalHeaderChildren)).toBe(true);
     });
 
     it('should render modal body children inside the modal body', () => {
         const modalBodyChildren = <span>All that glitters is not gold.</span>;
-        const modalComposite = mount(<ModalComposite isOpened modalBodyChildren={modalBodyChildren} />);
+        const modalComposite = shallow(<ModalComposite isOpened modalBodyChildren={modalBodyChildren} />).dive();
 
-        expect(modalComposite.find('.modal-body').contains(modalBodyChildren)).toBe(true);
+        expect(modalComposite.find(ModalBody).contains(modalBodyChildren)).toBe(true);
     });
 
     it('should render modal footer children inside the modal footer', () => {
         const modalFooterChildren = <span>A drowning man will clutch at a straw.</span>;
-        const modalComposite = mount(<ModalComposite isOpened modalFooterChildren={modalFooterChildren} />);
+        const modalComposite = shallow(<ModalComposite isOpened modalFooterChildren={modalFooterChildren} />).dive();
 
-        expect(modalComposite.find('.modal-footer').contains(modalFooterChildren)).toBe(true);
+        expect(modalComposite.find(ModalFooter).contains(modalFooterChildren)).toBe(true);
     });
 
     it('should call the closeCallback prop when the modal has closed', () => {
