@@ -1,9 +1,12 @@
-import * as ReactRedux from 'react-redux';
+import {connect} from 'react-redux';
 import * as Redux from 'redux';
+import {ThunkAction, ThunkDispatch} from 'redux-thunk';
 import {extend} from 'underscore';
 
-export type IDispatch<T = void> = (action: IReduxAction<any> | IThunkAction) => T;
-export type IThunkAction<T = void> = (dispatch: IDispatch, getState?: () => any) => T;
+import {IReactVaporState} from '../ReactVapor';
+
+export type IThunkAction<R = any, S extends IReactVaporState = IReactVaporState> = ThunkAction<R, S, any, Redux.Action>;
+export type IDispatch<S extends IReactVaporState = IReactVaporState> = ThunkDispatch<S, any, Redux.Action>;
 
 export class ReduxUtils {
     static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {
@@ -26,7 +29,7 @@ export const clearState = (): Redux.Action => ({
 });
 
 export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, mergeProps?: any, options?: any): (target: any) => any {
-    return (target) => (ReactRedux.connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any);
+    return (target) => connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any;
 }
 
 export interface BasePayload {
