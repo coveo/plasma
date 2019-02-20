@@ -9,15 +9,11 @@
 }
 
 .header-section {
-  border-left: solid 1px $dark-grey;
 
   &.mod-padded {
     padding: 0 25px;
   }
 
-  &:first-child {
-    border-left: none;
-  }
 }
 
 
