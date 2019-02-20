@@ -56,7 +56,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
                 contentRef={this.props.contentRef}
                 parentSelector={this.getParent}
             >
-                <div className='modal-content'>
+                <div className='modal-content' id={this.props.id}>
                     {this.getModalHeader()}
                     {this.getModalBody()}
                     {this.getModalFooter()}
