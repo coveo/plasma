@@ -1,6 +1,6 @@
-import './style.scss';
 import 'codemirror/lib/codemirror.css';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
+import './style.scss';
 
 import * as classNames from 'classnames';
 import * as React from 'react';
