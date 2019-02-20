@@ -1,12 +1,13 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {ShallowWrapper} from 'enzyme';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
+import {ListBox} from '../../listBox/ListBox';
 import {Svg} from '../../svg/Svg';
 import {ActionableItem, IActionableItemProps} from '../ActionableItem';
 
@@ -15,8 +16,7 @@ describe('ActionableItem', () => {
         id: 'actionable-item',
         actions: [{value: 'some action'}],
     };
-    let wrapper: ReactWrapper<IActionableItemProps>;
-    let actionableItem: ReactWrapper<IActionableItemProps>;
+    let actionableItem: ShallowWrapper<IActionableItemProps>;
 
     describe('<ActionableItem />', () => {
         let store: Store<IReactVaporState>;
@@ -30,14 +30,7 @@ describe('ActionableItem', () => {
         });
 
         const mountWithProps = (props: Partial<IActionableItemProps> = basicProps, children: React.ReactNode = '') => {
-            wrapper = mount(
-                <Provider store={store}>
-                    <ActionableItem {...basicProps} {...props}>{children}</ActionableItem>
-                </Provider>,
-                {attachTo: document.getElementById('App')},
-            );
-
-            actionableItem = wrapper.find(ActionableItem);
+            actionableItem = shallowWithStore(<ActionableItem {...basicProps} {...props}>{children}</ActionableItem>, store);
         };
 
         it('should mount without error', () => {
@@ -48,18 +41,6 @@ describe('ActionableItem', () => {
         describe('after mount', () => {
             beforeEach(() => {
                 mountWithProps();
-
-            });
-
-            afterEach(() => {
-                wrapper.unmount();
-                wrapper.detach();
-            });
-
-            it('should get the props correctly', () => {
-                mountWithProps(basicProps);
-
-                expect(actionableItem.props().actions).toEqual(basicProps.actions);
             });
 
             it('should render the children in the actionable-item-content container', () => {
@@ -85,8 +66,7 @@ describe('ActionableItem', () => {
                 mountWithProps();
 
                 // React-Tether renders the attached element to the body of the page, thus we need to start from there
-                expect(document.querySelector('body').querySelector('.actionable-item-element').querySelector('.list-box').innerHTML)
-                    .toContain(basicProps.actions[0].value);
+                expect(actionableItem.find(ListBox).exists()).toBe(true);
             });
 
             it('should not have the cursor-pointer class if onItemClick is not passed as prop', () => {
@@ -99,6 +79,13 @@ describe('ActionableItem', () => {
                 mountWithProps({id: 'someid', onItemClick: _.noop});
 
                 expect(actionableItem.find('.actionable-item-content').hasClass('cursor-pointer')).toBe(true);
+            });
+
+            it('should have the cursor-pointer class if onItemClick is passed as prop', () => {
+                const expectedContainerClass = 'oxford-comma';
+                mountWithProps({id: 'someid', containerClassName: expectedContainerClass});
+
+                expect(actionableItem.find('.actionable-item-content').hasClass(expectedContainerClass)).toBe(true);
             });
 
             it('should call the onItemClick method if passed as prop', () => {
