@@ -28,23 +28,9 @@
     padding-top: $i * $spacing;
     padding-bottom: $i * $spacing;
   }
-
-  .m#{$i} {
-    margin: $i * $spacing;
-  }
-
-  .mx#{$i} {
-    margin-right: $i * $spacing;
-    margin-left: $i * $spacing;
-  }
-
-  .my#{$i} {
-    margin-top: $i * $spacing;
-    margin-bottom: $i * $spacing;
-  }
 }
 
-// Loop is duplicated so that individual paddings and margins overwrite general ones
+// Loop is duplicated so that individual paddings overwrite general ones
 @for $i from 0 through 5 {
   .pt#{$i} {
     padding-top: $i * $spacing;
@@ -61,7 +47,26 @@
   .pr#{$i} {
     padding-right: $i * $spacing;
   }
+}
 
+@for $i from -5 through 5 {
+  .m#{$i} {
+    margin: $i * $spacing;
+  }
+
+  .mx#{$i} {
+    margin-right: $i * $spacing;
+    margin-left: $i * $spacing;
+  }
+
+  .my#{$i} {
+    margin-top: $i * $spacing;
+    margin-bottom: $i * $spacing;
+  }
+}
+
+// Loop is duplicated so that individual margins overwrite general ones
+@for $i from -5 through 5 {
   .mt#{$i} {
     margin-top: $i * $spacing;
   }
