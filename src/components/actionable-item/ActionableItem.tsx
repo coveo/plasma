@@ -12,6 +12,7 @@ export interface IActionableItemProps {
     id: string;
     onItemClick?: (e?: React.MouseEvent<HTMLDivElement>) => any;
     actions?: IItemBoxProps[];
+    containerClassName?: string;
 }
 
 export class ActionableItem extends React.Component<IActionableItemProps & React.HTMLAttributes<HTMLDivElement>> {
@@ -28,6 +29,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         'actionable-item-content inline-block text-medium-blue border-color-medium-grey mod-border bg-pure-white',
                         actionableItemContent,
                         actionableItemContainer,
+                        this.props.containerClassName,
                     )}
                     onClick={(e: React.MouseEvent<HTMLDivElement>) => callIfDefined(this.props.onItemClick, e)}
                 >
