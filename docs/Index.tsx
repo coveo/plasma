@@ -1,6 +1,6 @@
+import './style.scss';
 import 'codemirror/lib/codemirror.css';
 import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
-import './style.scss';
 
 import * as classNames from 'classnames';
 import * as React from 'react';
@@ -114,7 +114,7 @@ import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConn
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
-import {defaults} from '../src/Defaults';
+import {Defaults} from '../src/Defaults';
 import {ComponentWithEditingExampleHOC} from '../src/hoc/withEditing/examples/withEditingExamples';
 import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
@@ -344,7 +344,7 @@ class App extends React.Component<{}, AppState> {
     }
 }
 
-defaults.APP_ELEMENT = '#App';
-defaults.MODAL_ROOT = '#Modals';
+Defaults.APP_ELEMENT = '#App';
+Defaults.MODAL_ROOT = '#Modals';
 ReactDOM.render(<Header />, document.getElementById('header'));
 ReactDOM.render(<App />, document.getElementById('App'));

@@ -3,9 +3,8 @@ import * as ReactModal from 'react-modal';
 let _MODAL_ROOT: string = 'body';
 let _MODAL_TIMEOUT: number = 300;
 
-// tslint:disable-next-line:class-name
 /* istanbul ignore next */
-export abstract class defaults {
+export abstract class Defaults {
     static get MODAL_ROOT(): string {
         return _MODAL_ROOT;
     }
