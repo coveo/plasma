@@ -86,7 +86,7 @@ const runTests = (done, singleRun, browser) => {
 };
 
 gulp.task('test:single', false, (done) => {
-    runTests(done, true, 'PhantomJS');
+    runTests(done, true, 'ChromeHeadless');
 });
 
 gulp.task('test:remap', false, () =>
@@ -97,15 +97,15 @@ gulp.task('test:remap', false, () =>
             },
         })));
 
-gulp.task('test', 'Run all tests in PhantomJS and exit', (done) => {
+gulp.task('test', 'Run all tests and exit', (done) => {
     runSequence('test:single', 'test:remap', done);
 });
 
-gulp.task('test:browser', 'Run all tests in Chrome and watch', (done) => {
+gulp.task('test:browser', 'Run all tests directly in Chrome browser and watch', (done) => {
     runTests(done, false, 'Chrome');
 });
 
-gulp.task('test:watch', 'Run all tests in PhantomJS and watch', (done) => {
+gulp.task('test:watch', 'Run all tests and watch', (done) => {
     runTests(done, false, 'PhantomJS');
 });
 // </editor-fold>
