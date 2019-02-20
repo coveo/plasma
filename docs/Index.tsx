@@ -4,8 +4,7 @@ import './style.scss';
 
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {render as ReactDOMRender} from 'react-dom';
-import * as ReactModal from 'react-modal';
+import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {SlideYExamples} from '../src/animations/examples/SlideYExamples';
@@ -115,6 +114,7 @@ import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConn
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
+import {Defaults} from '../src/Defaults';
 import {ComponentWithEditingExampleHOC} from '../src/hoc/withEditing/examples/withEditingExamples';
 import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
@@ -344,6 +344,7 @@ class App extends React.Component<{}, AppState> {
     }
 }
 
-ReactDOMRender(<Header />, document.getElementById('header'));
-ReactDOMRender(<App />, document.getElementById('App'));
-ReactModal.setAppElement('#App');
+Defaults.APP_ELEMENT = '#App';
+Defaults.MODAL_ROOT = '#Modals';
+ReactDOM.render(<Header />, document.getElementById('header'));
+ReactDOM.render(<App />, document.getElementById('App'));
