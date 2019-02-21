@@ -69,14 +69,14 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProp
             active = mod(activeIndex, visibleLength) === index;
             index++;
         }
-        return {...item, active};
+        return {...item, highlight: value, active};
     });
 
     return {
+        value,
         visibleItems,
         active: autocomplete && autocomplete.active,
         isOpen: autocomplete && autocomplete.open,
-        value: autocomplete && autocomplete.value || defaultValue,
     };
 };
 
@@ -134,7 +134,7 @@ export class AutocompleteConnected extends React.Component<IAutocompleteProps & 
                 </div>
                 <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
                     <SlideY in={this.props.isOpen} timeout={350}>
-                        <ListBoxConnected id={this.props.id} classes={['relative']} items={this.props.visibleItems} highlight={this.props.value} />
+                        <ListBoxConnected id={this.props.id} classes={['relative']} items={this.props.visibleItems} />
                     </SlideY>
                 </div>
             </div>

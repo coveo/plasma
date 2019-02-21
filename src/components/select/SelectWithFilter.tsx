@@ -165,7 +165,7 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             });
 
             let noResultItem: React.ReactNode = this.props.noResultItem || this.noResultFilter();
-            let items = [...this.props.items];
+            let items = this.props.items.map((item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue}));
 
             if (this.isDuplicateValue()) {
                 noResultItem = this.duplicateValue();
