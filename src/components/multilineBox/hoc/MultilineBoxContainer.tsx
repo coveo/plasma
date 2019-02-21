@@ -13,7 +13,7 @@ export interface IMultilineBoxContainerProps<T> extends IMultilineBoxContainerSu
     Partial<IMultilineBoxDispatchProps> {}
 
 const defaultContainerNode = (child: React.ReactNode, data: IMultilineSingleBoxProps[], index: number) => <div
-    key={`${data[index].id}Container`}>{child}</div>;
+    key={`${(data.length && data[index].id) || index}Container`}>{child}</div>;
 
 export const multilineBoxContainer = (supplier: ConfigSupplier<IMultilineBoxContainerSupplierProps> = {containerNode: defaultContainerNode}) =>
     (Component: MultilineBoxContainerComponent): MultilineBoxContainerComponent => {
@@ -21,7 +21,7 @@ export const multilineBoxContainer = (supplier: ConfigSupplier<IMultilineBoxCont
         class MultilineBoxContainer<T> extends React.PureComponent<IMultilineBoxContainerProps<T>> {
 
             static defaultProps = {
-                renderBody: (children: React.ReactNode[]) => children,
+                renderBody: () => <div></div>,
             };
 
             private getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
