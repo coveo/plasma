@@ -47,7 +47,7 @@ gulp.task('ts:definitions', 'Generate the project definition file', (done) => {
     runSequence('internalDefs', 'cleanDefs', done);
 });
 
-gulp.task('internalDefs', false, () => 
+gulp.task('internalDefs', false, () =>
     dtsGenerator.default({
         project: './',
         out: 'dist/react-vapor.d.ts',
