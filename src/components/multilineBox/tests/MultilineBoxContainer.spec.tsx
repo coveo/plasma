@@ -16,7 +16,7 @@ describe('Multiline box container', () => {
         it('should not throw if the containerNode and data is not defined', () => {
             expect(() => shallowWithState(
                 <MultilineBoxContainer
-                    id='multiline-box'
+                    id={id}
                 />, {}).dive().dive()).not.toThrow();
         });
 
@@ -44,7 +44,7 @@ describe('Multiline box container', () => {
             RTestUtils.mockUUID(testId);
             expect(() => shallowWithState(
                 <MultilineBoxContainer
-                    id={testId}
+                    id={id}
                     renderBody={(data: IMultilineSingleBoxProps[]) => <div />}
                     data={[{name: 'test'}]}
                 />,
@@ -62,7 +62,7 @@ describe('Multiline box container', () => {
         it('should mount without errors', () => {
             expect(() => shallowWithState(
                 <MultilineBoxContainer
-                    id='multiline-box'
+                    id={id}
                     data={[]}
                     renderBody={_.identity}
                     defaultProps={{}}
@@ -73,7 +73,7 @@ describe('Multiline box container', () => {
         it('should unmount without errors', () => {
             const wrapper = shallowWithState(
                 <MultilineBoxContainer
-                    id='multiline-box'
+                    id={id}
                     data={[]}
                     renderBody={_.identity}
                     defaultProps={{}}
