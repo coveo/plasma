@@ -151,6 +151,25 @@ describe('Select', () => {
                 .every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
         });
 
+        it('should set the highlight value equal to the filter', () => {
+            const filterValue = 'a';
+            const items = [
+                {value: 'aaaa'},
+                {value: 'baba', selected: true},
+                {value: 'dada'},
+            ];
+
+            mountSingleSelect(items, () => true);
+            store.dispatch(toggleSelect(id, true));
+            store.dispatch(filterThrough(id, filterValue));
+            wrapper.update();
+            singleSelect = wrapper.find(SelectConnected);
+
+            expect(singleSelect.props().items.length).toBe(items.length);
+            singleSelect.find(SelectConnected).props().items
+                .every((item: IItemBoxProps) => expect(item.highlight).toBe(filterValue));
+        });
+
         describe('interactions', () => {
             const items = [
                 {value: 'a'},
