@@ -26,7 +26,7 @@ describe('Multiline box container', () => {
             expect(() => shallowWithState(
                 <MultilineBoxContainer
                     id={id}
-                    renderBody={(data: IMultilineSingleBoxProps[]) => <div/>}
+                    renderBody={(data: IMultilineSingleBoxProps[]) => <div />}
                 />,
                 {
                     multilineIds: {
