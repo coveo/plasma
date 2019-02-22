@@ -19,7 +19,7 @@ export interface IMultilineBoxWithRemoveButtonProps<T> extends IMultilineBoxWith
 
 const defaultContainerNode = (child: React.ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode, data: IMultilineSingleBoxProps[], index: number) =>
     (
-        <React.Fragment key={`${data[index].id}RemoveButton`}>
+        <React.Fragment key={`${(data.length && data[index].id) || index}RemoveButton`}>
             {child}
             {getRemoveButton()}
         </React.Fragment>
@@ -41,7 +41,7 @@ export const multilineBoxWithRemoveButton = (supplier: ConfigSupplier<IMultiline
                 renderBody: (children: React.ReactNode[]) => children,
             };
 
-            private getRemoveButtonNode(data: IMultilineSingleBoxProps<T>, props: Partial<IButtonProps> = {}) {
+            private getRemoveButtonNode(data: Partial<IMultilineSingleBoxProps<T>> = {}, props: Partial<IButtonProps> = {}) {
                 return (
                     <Button
                         classes={[defaultMultilineBoxRemoveButtonClasses]}
