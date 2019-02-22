@@ -138,7 +138,7 @@ describe('Multiline box with remove button', () => {
                 }),
             )(MultilineBox);
 
-            it('should render de container node', () => {
+            it('should render the container node', () => {
                 const testId = 'testid';
 
                 RTestUtils.mockUUID(testId);
