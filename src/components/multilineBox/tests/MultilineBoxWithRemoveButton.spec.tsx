@@ -1,13 +1,13 @@
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import * as _ from 'underscore';
-import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
-import {IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
-import {Button, IButtonProps} from '../../button/Button';
 import {mockStore} from 'redux-test-utils';
+import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
+import {RTestUtils} from '../../../utils/tests/RTestUtils';
+import {Button, IButtonProps} from '../../button/Button';
+import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
+import {IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {
