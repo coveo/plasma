@@ -51,8 +51,9 @@ gulp.task('internalDefs', false, () =>
     dtsGenerator.default({
         project: './',
         out: 'dist/react-vapor.d.ts',
-        exclude: ['node_modules/**/*.d.ts', 'src/Index.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*', 'src/utils/TestUtils.ts'],
-    }));
+        exclude: ['node_modules/**/*.d.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*', 'src/utils/TestUtils.ts'],
+    })
+);
 
 gulp.task('cleanDefs', false, () =>
     gulp.src('dist/react-vapor.d.ts')
@@ -60,7 +61,7 @@ gulp.task('cleanDefs', false, () =>
         .pipe(replace(/: React.KeyboardEvent<[A-Za-z]+>/gm, ''))
         .pipe(replace(/: React.MouseEvent<[A-Za-z]+>/gm, ''))
         .pipe(replace(/: React.FocusEvent<[A-Za-z]+>/gm, ''))
-        .pipe(replace(/import.*$/gm, ''))
+        .pipe(replace(/import\s.*$/gm, ''))
         .pipe(replace(/export =.+;$/gm, ''))
         .pipe(replace(/export default.+;$/gm, ''))
         .pipe(replace(/export .+ from .+$/gm, ''))
@@ -72,7 +73,8 @@ gulp.task('cleanDefs', false, () =>
 
         .pipe(footer('declare module "react-vapor" {\n\texport = ReactVapor;\n}'))
 
-        .pipe(gulp.dest('dist')));
+        .pipe(gulp.dest('dist'))
+);
 // </editor-fold>
 
 // <editor-fold desc="Unit tests">
