@@ -92,9 +92,9 @@ const TagControlContext = (DecoratedClass: any) => {
 };
 
 export const DnDUtils = {
-    move: move,
-    getBoxTarget: getBoxTarget,
-    getSelectedBoxSource: getSelectedBoxSource,
+    move,
+    getBoxTarget,
+    getSelectedBoxSource,
     parentDropTarget,
-    TagControlContext: TagControlContext,
+    TagControlContext,
 };

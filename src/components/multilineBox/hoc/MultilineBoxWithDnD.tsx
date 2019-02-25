@@ -60,6 +60,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
         };
 
         private getDnDWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
+            debugger;
             const supplierProps: IMultilineBoxWithDnDSupplierProps = {
                 ...{
                     DnDContainerProps: {},
@@ -68,10 +69,11 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
             };
             return React.Children.map(children, (child: React.ReactNode, index: number) => {
                 const isLast = index === data.length - 1;
+                const id: string = (data.length &&  data[index].id) || index.toString();
                 return (
                     <DnDContainer
-                        id={data[index].id}
-                        key={`${data[index].id}DnD`}
+                        id={id}
+                        key={`${id}DnD`}
                         index={index}
                         move={(dragIndex: number, hoverIndex: number) => DnDUtils.move(dragIndex, hoverIndex, this.props.multilineBoxIds, this.props.onReorder)}
                         child={child}

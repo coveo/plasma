@@ -9,17 +9,20 @@ import {DnDUtils} from './DnDUtils';
 
 export interface IDraggableContainerOwnProps {
     id: string;
+    index: number;
+    move: (dragIndex: number, hoverIndex: number) => void;
+    child: any;
+    draggableContainerProps?: React.HTMLProps<HTMLDivElement>;
+    draggableIconProps?: React.HTMLProps<HTMLDivElement>;
+    icon: React.ReactNode;
+}
+
+export interface IDraggableContainerDnDProps {
+    isDraggable?: boolean;
     isDragging?: boolean;
     connectDragSource?: any;
     connectDropTarget?: any;
     connectDragPreview?: any;
-    index: number;
-    move: (dragIndex: number, hoverIndex: number) => void;
-    child: any;
-    isDraggable?: boolean;
-    draggableContainerProps?: React.HTMLProps<HTMLDivElement>;
-    draggableIconProps?: React.HTMLProps<HTMLDivElement>;
-    icon: React.ReactNode;
 }
 
 export const DraggableContainerType = 'CONTAINER_BOX';
@@ -34,7 +37,7 @@ const multilineBoxWithDnDPropsToOmit = keys<IDraggableSelectedOptionOwnProps>();
     connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging(),
 }))
-export class DnDContainer extends React.Component<IDraggableContainerOwnProps> {
+export class DnDContainer extends React.Component<IDraggableContainerOwnProps & IDraggableContainerDnDProps> {
 
     static defaultProps = {
         isDraggable: true,
@@ -73,11 +76,7 @@ export class DnDContainer extends React.Component<IDraggableContainerOwnProps> {
         );
 
         return this.props.isDraggable
-            ? this.props.connectDragPreview(
-                this.props.connectDropTarget(
-                    content,
-                ),
-            )
+            ? this.props.connectDragPreview(content)
             : content;
     }
 }
