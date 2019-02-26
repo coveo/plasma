@@ -73,6 +73,10 @@ export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> 
 
     private initialData: {[id: string]: T};
 
+    static defaultProps = {
+        renderBody: () => <div></div>,
+    };
+
     constructor(props: IMultilineBoxProps<T>, state: any) {
         super(props, state);
 

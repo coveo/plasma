@@ -67,14 +67,14 @@ describe('MultilineBox', () => {
             };
 
             it('should add an additional ids in the store on mount', () => {
-                store = RTestUtils.buildMultilineStore();
+                store = RTestUtils.buildMockStore();
                 shallowWithStore(<MultilineBox {...defaultProps} />, store).dive();
 
                 expect(store.isActionTypeDispatched(StringListActions.add)).toBe(true);
             });
 
             it('should remove ids in the store on unmount', () => {
-                store = RTestUtils.buildMultilineStore();
+                store = RTestUtils.buildMockStore();
                 const wrapper = shallowWithStore(<MultilineBox {...defaultProps} />, store).dive();
                 wrapper.unmount();
 
@@ -83,7 +83,7 @@ describe('MultilineBox', () => {
 
             describe('parentProps sent to the renderBody', () => {
                 it('should dispatch action to remove the current box id from the list on removeBox sent with the ParentProps object', () => {
-                    store = RTestUtils.buildMultilineStore();
+                    store = RTestUtils.buildMockStore();
                     shallowWithStore(
                         <MultilineBox
                             {...propsWithData}
@@ -99,7 +99,7 @@ describe('MultilineBox', () => {
                 });
 
                 it('should dispatch action to add a new id on addNewBox sent with the ParentProps object', () => {
-                    store = RTestUtils.buildMultilineStore();
+                    store = RTestUtils.buildMockStore();
                     shallowWithStore(
                         <MultilineBox
                             {...propsWithData}
@@ -116,7 +116,7 @@ describe('MultilineBox', () => {
 
                 it('should dispatch action to add a new id on addNewBox sent with the ParentProps object', () => {
                     let parentId: string = '';
-                    store = RTestUtils.buildMultilineStore();
+                    store = RTestUtils.buildMockStore();
                     shallowWithStore(
                         <MultilineBox
                             {...propsWithData}
@@ -274,7 +274,7 @@ describe('MultilineBox', () => {
 
                     const dataToTest: any = [{name: 'princess'}];
 
-                    store = RTestUtils.buildMultilineStore();
+                    store = RTestUtils.buildMockStore();
                     const wrapper = shallowWithStore(<MultilineBox
                         {...defaultProps}
                         data={dataToTest}
@@ -290,7 +290,7 @@ describe('MultilineBox', () => {
                 });
 
                 it('should call updateData if the previous data is not equal than the old props data', () => {
-                    store = RTestUtils.buildMultilineStore();
+                    store = RTestUtils.buildMockStore();
                     const wrapper = shallowWithStore(<MultilineBox
                         {...defaultProps}
                         data={[{name: 'princess'}]}

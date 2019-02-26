@@ -8,6 +8,7 @@ import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
     isDragging?: boolean;
+    isDraggable?: boolean;
     connectDragSource?: any;
     connectDropTarget?: any;
     connectDragPreview?: any;

@@ -91,7 +91,7 @@ describe('Multiline box with remove button', () => {
         describe('once rendered', () => {
 
             it('should contains a Button inside the remove button element sent as arguments', () => {
-                store = RTestUtils.buildMultilineStore();
+                store = RTestUtils.buildMockStore();
                 const wrapper = shallowWithStore(
                     <DefaultMultilineBoxWithRemoveButton
                         id={id}
@@ -107,7 +107,7 @@ describe('Multiline box with remove button', () => {
                 const testId = 'testid';
 
                 RTestUtils.mockUUID(testId);
-                store = RTestUtils.buildMultilineStore({
+                store = RTestUtils.buildMockStore({
                     multilineIds: {
                         [id]: {
                             id: id,
@@ -142,7 +142,7 @@ describe('Multiline box with remove button', () => {
                 const testId = 'testid';
 
                 RTestUtils.mockUUID(testId);
-                store = RTestUtils.buildMultilineStore({
+                store = RTestUtils.buildMockStore({
                     multilineIds: {
                         [id]: {
                             id: id,

@@ -1,60 +1,111 @@
-import {mount} from 'enzyme';
 import * as React from 'react';
-import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {DnDContainer} from '../../dragAndDrop/DnDContainer';
+import {DnDUtils} from '../../dragAndDrop/DnDUtils';
 import {multilineBoxWithDnD} from '../hoc/MultilineBoxWithDnD';
 import {MultilineBox} from '../MultilineBox';
-import {DragDropContext} from '../../../../types/react-dnd';
-import TestBackend from "react-dnd-test-backend";
 
 describe('Multiline box with drag & drop', () => {
     describe('<MultilineBoxWithDnD/>', () => {
 
-        let store: any;
-        let DefaultMultilineBoxWithDnD: any;
+        const DefaultMultilineBoxWithDnD = _.compose(
+            multilineBoxWithDnD(),
+        )(MultilineBox);
 
-        const identity = el => el;
         const id = 'multiline-box';
 
         beforeAll(() => {
             RTestUtils.mockTagContext();
-            store = TestUtils.buildStore();
-
-            DefaultMultilineBoxWithDnD = DragDropContext(TestBackend)(_.compose(
-                multilineBoxWithDnD(),
-            )(MultilineBox).DecoratedComponent);
         });
 
         it('should mount without errors', () => {
-            expect(() => mount(
-                <Provider store={store}>
-                    <DefaultMultilineBoxWithDnD
-                        id={id}
-                        data={[]}
-                        renderBody={() => <div></div>}
-                        defaultProps={{}}
-                        connectDropTarget={identity}
-                    />
-                </Provider>,
-                ),
-            ).not.toThrow();
+            expect(() => {
+                RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                    id,
+                    data: [],
+                    renderBody: () => <div></div>,
+                    defaultProps: {},
+                });
+            }).not.toThrow();
         });
 
         it('should unmount without errors', () => {
-            const wrapper = mount(
-                <Provider store={store}>
-                    <DefaultMultilineBoxWithDnD
-                        id={id}
-                        data={[]}
-                        renderBody={() => <div></div>}
-                        defaultProps={{}}
-                        connectDragSource={identity}
-                    />
-                </Provider>);
+            const component = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                id,
+                data: [],
+                renderBody: () => <div></div>,
+                defaultProps: {},
+            });
 
-            expect(() => wrapper.unmount()).not.toThrow();
+            expect(() => {
+                component.ret.unmount();
+            }).not.toThrow();
+        });
+
+        it('should use the default renderBody if not defined', () => {
+            expect(() => {
+                RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                    id,
+                    data: [],
+                    defaultProps: {},
+                });
+            }).not.toThrow();
+        });
+
+        describe('once rendered', () => {
+
+            it('should dispatch a reorder action on onReorder', () => {
+                const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                    id,
+                    data: [],
+                    renderBody: () => <div></div>,
+                    defaultProps: {},
+                });
+
+                component.ret.find(MultilineBox).props().onReorder(['a']);
+
+                expect(component.store.getState().multilineIds[id].list).toEqual(['a']);
+            });
+
+            it('should call the DnDUtils move function on props move set on DnDContainer', () => {
+                const spy = spyOn(DnDUtils, 'move').and.returnValue([]);
+
+                const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                    id,
+                    data: [],
+                    renderBody: () => <div></div>,
+                    defaultProps: {},
+                });
+
+                component.ret.find(DnDContainer).props().move();
+
+                expect(spy).toHaveBeenCalledTimes(1);
+            });
+        });
+
+        describe('with supplier', () => {
+
+            const CustomMultilineBoxWithDnD = _.compose(
+                multilineBoxWithDnD({
+                    DnDContainerProps: {
+                        draggableContainerProps: {
+                            className: 'select-me-plz',
+                        },
+                    },
+                }),
+            )(MultilineBox);
+
+            it('should add props on DnDContainer if added in the supplier for the hoc', () => {
+                const component: any = RTestUtils.renderComponent(CustomMultilineBoxWithDnD, {
+                    id,
+                    data: [],
+                    renderBody: () => <div></div>,
+                    defaultProps: {},
+                });
+
+                expect(component.ret.find('.select-me-plz').length).toBe(1);
+            });
         });
     });
 });
