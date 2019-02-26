@@ -6,7 +6,7 @@ import {ListBox} from '../../listBox/ListBox';
 import {Svg} from '../../svg/Svg';
 import {MenuConnected} from '../MenuConnected';
 
-export class MenuExamples extends React.Component {
+export class MenuExamples extends React.PureComponent {
 
     private getCustomSvg(): React.ReactNode {
         return (<Svg
