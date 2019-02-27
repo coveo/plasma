@@ -5,7 +5,7 @@ import {Store} from 'redux';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {ITableProps} from '../Table';
 import {TableChildNavigation} from '../table-children/TableChildNavigation';

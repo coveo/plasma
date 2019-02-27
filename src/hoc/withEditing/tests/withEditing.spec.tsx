@@ -7,7 +7,7 @@ import {Input} from '../../../components/input/Input';
 import {StickyFooter} from '../../../components/stickyFooter/StickyFooter';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IWithEditing, withEditing} from '../withEditing';
 import {toggleDirtyComponent} from '../withEditingActions';
 

@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addModal, openModal} from '../ModalActions';
 import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
 import {ModalBackdropConnected} from '../ModalBackdropConnected';

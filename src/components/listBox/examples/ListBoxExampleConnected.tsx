@@ -2,7 +2,7 @@ import * as React from 'react';
 import {IReactVaporExampleState} from '../../../../docs/Reducers';
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../../reusableState/customList/StringListReducers';
 import {IDispatch, ReduxConnect, ReduxUtils} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBoxConnected} from '../ListBoxConnected';

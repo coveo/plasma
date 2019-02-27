@@ -16,7 +16,6 @@ describe('MultilineBox', () => {
             id,
             data: [],
             renderBody: () => <div className='multiline-box' />,
-            defaultProps: {},
         };
 
         it('should not throw on create', () => {
@@ -63,7 +62,6 @@ describe('MultilineBox', () => {
                 id,
                 data: [{name: 'princess'}],
                 renderBody: () => <div className='multiline-box' />,
-                defaultProps: {},
             };
 
             it('should add an additional ids in the store on mount', () => {

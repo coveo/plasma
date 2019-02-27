@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../../ReactVapor';
 import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/TestUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
 import {addPagination, changePage} from '../../pagination/NavigationPaginationActions';
 import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_NUMBERS} from '../NavigationPerPage';

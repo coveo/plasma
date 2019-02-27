@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {IReactVaporState} from '../../../ReactVapor';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IActionOptions} from '../Action';
 import {IPrimaryActionProps, PrimaryAction} from '../PrimaryAction';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';

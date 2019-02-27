@@ -6,7 +6,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../../../ReactVapor';
 import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/TestUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
 import {INavigationPaginationProps, NavigationPagination} from '../NavigationPagination';
 import {changePage, resetPaging} from '../NavigationPaginationActions';

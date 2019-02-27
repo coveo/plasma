@@ -1,7 +1,7 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
 import {IDispatch, IReduxAction, IThunkAction} from '../../../utils/ReduxUtils';
-import {IReactVaporTestState} from '../../../utils/TestUtils';
+import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
 import {turnOffLoading} from '../../loading/LoadingActions';
 import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
 import {ITableHOCCompositeState, TableHOCUtils} from '../TableHOCUtils';

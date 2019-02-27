@@ -7,8 +7,8 @@ import {Store} from 'redux';
 import {createMockStore, mockStore} from 'redux-test-utils';
 import {DnDUtils} from '../../components/dragAndDrop/DnDUtils';
 import {IReactVaporState} from '../../ReactVapor';
-import {TestUtils} from '../TestUtils';
 import {UUID} from '../UUID';
+import {TestUtils} from './TestUtils';
 
 const mockUUID = (generatedId: string = 'id') => {
     spyOn(UUID, 'generate').and.returnValue(generatedId);
@@ -38,12 +38,12 @@ const renderComponent = (ComponentClass: any, props = {}, child: React.ReactNode
     }
 
     const Draggable = DD(Tester);
-    const ret = mount(
+    const wrapper = mount(
         <Draggable {...props} />,
     );
 
     return {
-        ret,
+        wrapper,
         store,
     };
 };

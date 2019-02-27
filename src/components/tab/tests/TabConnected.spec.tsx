@@ -6,7 +6,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITabProps, Tab} from '../Tab';
 import {addTab, selectTab} from '../TabActions';
 import {TabConnected} from '../TabConnected';

@@ -21,7 +21,7 @@ describe('DnDContainer', () => {
             });
 
             expect(() => {
-                component.ret.unmount();
+                component.wrapper.unmount();
             }).not.toThrow();
         });
 
@@ -36,7 +36,7 @@ describe('DnDContainer', () => {
                         isDraggable: false,
                     });
 
-                    expect(component.ret.find('.select-me').length).toBe(1);
+                    expect(component.wrapper.find('.select-me').length).toBe(1);
                 });
 
                 it('should set visibility to hidden on svg wrapper if the isDraggable is set to false', () => {
@@ -46,7 +46,7 @@ describe('DnDContainer', () => {
                         isDraggable: false,
                     });
 
-                    expect(component.ret.find('.select-me').props().style.visibility).toBe('hidden');
+                    expect(component.wrapper.find('.select-me').props().style.visibility).toBe('hidden');
                 });
 
                 it('should set visibility to visible on svg wrapper if the isDraggable is set to true', () => {
@@ -56,7 +56,7 @@ describe('DnDContainer', () => {
                         isDraggable: true,
                     });
 
-                    expect(component.ret.find('.select-me').props().style.visibility).toBe('visible');
+                    expect(component.wrapper.find('.select-me').props().style.visibility).toBe('visible');
                 });
 
                 it('should set cursor to default on svg wrapper if the isDraggable is set to false', () => {
@@ -66,7 +66,7 @@ describe('DnDContainer', () => {
                         isDraggable: false,
                     });
 
-                    expect(component.ret.find('.select-me').props().style.cursor).toBe('default');
+                    expect(component.wrapper.find('.select-me').props().style.cursor).toBe('default');
                 });
 
                 it('should set cursor to move on svg wrapper if the isDraggable is set to true', () => {
@@ -76,7 +76,7 @@ describe('DnDContainer', () => {
                         isDraggable: true,
                     });
 
-                    expect(component.ret.find('.select-me').props().style.cursor).toBe('move');
+                    expect(component.wrapper.find('.select-me').props().style.cursor).toBe('move');
                 });
 
                 it('should set the icon if defined as prop', () => {
@@ -85,7 +85,7 @@ describe('DnDContainer', () => {
                         icon: <div className='select-me'>test</div>,
                     });
 
-                    expect(component.ret.find('.select-me').length).toBe(1);
+                    expect(component.wrapper.find('.select-me').length).toBe(1);
                 });
             });
 
@@ -97,7 +97,7 @@ describe('DnDContainer', () => {
                         draggableContainerProps: {className: 'select-me'},
                     });
 
-                    expect(component.ret.find('.select-me').length).toBe(1);
+                    expect(component.wrapper.find('.select-me').length).toBe(1);
                 });
 
                 it('should render a clone of the child with its own props', () => {
@@ -108,7 +108,7 @@ describe('DnDContainer', () => {
                         child: <div {...props} />,
                     });
 
-                    expect(component.ret.find(`.${props.className}`).props()).toEqual(props);
+                    expect(component.wrapper.find(`.${props.className}`).props()).toEqual(props);
                 });
             });
         });

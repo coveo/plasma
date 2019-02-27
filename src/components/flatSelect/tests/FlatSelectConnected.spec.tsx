@@ -5,7 +5,7 @@ import {Store} from 'redux';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {UUID} from '../../../utils/UUID';
 import {FlatSelect, IFlatSelectProps} from '../FlatSelect';
 import {selectFlatSelect} from '../FlatSelectActions';

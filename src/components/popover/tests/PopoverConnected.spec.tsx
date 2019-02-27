@@ -6,7 +6,7 @@ import {findWhere} from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IPopoverProps, Popover} from '../Popover';
 import {PopoverConnected} from '../PopoverConnected';
 

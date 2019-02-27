@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ISelectProps, ISelectSpecificProps, SelectConnected} from '../SelectConnected';
 import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';

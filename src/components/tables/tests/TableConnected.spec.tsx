@@ -5,7 +5,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {PrimaryAction} from '../../actions/PrimaryAction';
 import {openDropdownSearch} from '../../dropdownSearch/DropdownSearchActions';
 import {ITableProps, Table} from '../Table';

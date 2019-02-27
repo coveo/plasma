@@ -24,8 +24,6 @@ describe('Multiline box with drag & drop', () => {
                 RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
                     data: [],
-                    renderBody: () => <div></div>,
-                    defaultProps: {},
                 });
             }).not.toThrow();
         });
@@ -34,8 +32,6 @@ describe('Multiline box with drag & drop', () => {
             const component = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                 id,
                 data: [],
-                renderBody: () => <div></div>,
-                defaultProps: {},
             });
 
             expect(() => {
@@ -48,7 +44,6 @@ describe('Multiline box with drag & drop', () => {
                 RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
                     data: [],
-                    defaultProps: {},
                 });
             }).not.toThrow();
         });
@@ -57,7 +52,6 @@ describe('Multiline box with drag & drop', () => {
             const component = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                 id,
                 data: [],
-                defaultProps: {},
                 renderBody: () => <div className='pick-me' />,
             });
 
@@ -70,8 +64,6 @@ describe('Multiline box with drag & drop', () => {
                 const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
                     data: [],
-                    renderBody: () => <div></div>,
-                    defaultProps: {},
                 });
 
                 component.ret.find(MultilineBox).props().onReorder(['a']);
@@ -85,8 +77,6 @@ describe('Multiline box with drag & drop', () => {
                 const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
                     data: [],
-                    renderBody: () => <div></div>,
-                    defaultProps: {},
                 });
 
                 component.ret.find(DnDContainer).props().move();
@@ -111,8 +101,6 @@ describe('Multiline box with drag & drop', () => {
                 const component: any = RTestUtils.renderComponent(CustomMultilineBoxWithDnD, {
                     id,
                     data: [],
-                    renderBody: () => <div></div>,
-                    defaultProps: {},
                 });
 
                 expect(component.ret.find('.select-me-plz').length).toBe(1);
