@@ -21,20 +21,14 @@ describe('MultilineBox', () => {
         it('should not throw on create', () => {
             expect(() => shallowWithState(
                 <MultilineBox
-                    id='multiline-box'
-                    data={[]}
-                    renderBody={_.identity}
-                    defaultProps={{}}
+                    {...defaultProps}
                 />, {})).not.toThrow();
         });
 
         it('should mount without errors', () => {
             expect(() => shallowWithState(
                 <MultilineBox
-                    id='multiline-box'
-                    data={[]}
-                    renderBody={_.identity}
-                    defaultProps={{}}
+                    {...defaultProps}
                 />, {}).dive(),
             ).not.toThrow();
         });
@@ -42,10 +36,7 @@ describe('MultilineBox', () => {
         it('should unmount without errors', () => {
             const wrapper = shallowWithState(
                 <MultilineBox
-                    id='multiline-box'
-                    data={[]}
-                    renderBody={_.identity}
-                    defaultProps={{}}
+                    {...defaultProps}
                 />, {}).dive();
 
             expect(() => wrapper.unmount()).not.toThrow();

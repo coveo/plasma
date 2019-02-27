@@ -68,6 +68,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
             };
             return React.Children.map(children, (child: React.ReactNode, index: number) => {
                 const isLast = index === data.length - 1;
+                const id: string = (data.length &&  data[index].id) || index.toString();
                 const id: string = (data.length && data[index].id) || index.toString();
                 return (
                     <DnDContainer
