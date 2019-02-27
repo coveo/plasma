@@ -1,13 +1,12 @@
 const del = require('del');
 const dtsGenerator = require('dts-generator');
-const footer = require('gulp-footer');
 const gulp = require('gulp-help')(require('gulp'));
 const gutil = require('gulp-util');
 const Karma = require('karma').Server;
 const path = require('path');
-const replace = require('gulp-replace');
 const remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
 const runSequence = require('gulp-sequence');
+const optimizeDeclarations = require('dts-generator-optimizer');
 
 // <editor-fold desc="Clean">
 const clean = (paths, done) => {
@@ -51,28 +50,16 @@ gulp.task('internalDefs', false, () =>
     dtsGenerator.default({
         project: './',
         out: 'dist/react-vapor.d.ts',
-        exclude: ['node_modules/**/*.d.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*', 'src/utils/TestUtils.ts'],
+        exclude: ['node_modules/**/*.d.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*', 'src/utils/TestUtils.ts', 'types/**/*.d.ts'],
     })
 );
 
 gulp.task('cleanDefs', false, () =>
     gulp.src('dist/react-vapor.d.ts')
-        .pipe(replace(/: Partial<[A-Za-z]+>/gm, ''))
-        .pipe(replace(/: React.KeyboardEvent<[A-Za-z]+>/gm, ''))
-        .pipe(replace(/: React.MouseEvent<[A-Za-z]+>/gm, ''))
-        .pipe(replace(/: React.FocusEvent<[A-Za-z]+>/gm, ''))
-        .pipe(replace(/import\s.*$/gm, ''))
-        .pipe(replace(/export =.+;$/gm, ''))
-        .pipe(replace(/export default.+;$/gm, ''))
-        .pipe(replace(/export .+ from .+$/gm, ''))
-        .pipe(replace(/export (?:default )?(.*)$/gm, '$1'))
-        .pipe(replace(/private .+;$/gm, ''))
-        .pipe(replace(/\t[A-Za-z]+;$/gm, ''))
-        .pipe(replace(/\n\t\s*(\n\t\s*)/g, '$1'))
-        .pipe(replace(/declare module (.*) {$/gm, 'declare module ReactVapor {'))
-
-        .pipe(footer('declare module "react-vapor" {\n\texport = ReactVapor;\n}'))
-
+        .pipe(optimizeDeclarations({
+            moduleName: 'ReactVapor',
+            internalImportPaths: ['docs/', 'src/'],
+        }))
         .pipe(gulp.dest('dist'))
 );
 // </editor-fold>
