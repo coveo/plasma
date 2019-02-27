@@ -7,7 +7,7 @@ import {Tooltip} from '../tooltip/Tooltip';
 export interface ILabeledValueProps {
     label: string;
     value: React.ReactNode;
-    fullRow?: true;
+    fullRow?: boolean;
     information?: string;
     informationPlacement?: TooltipPlacement;
     padding?: boolean;

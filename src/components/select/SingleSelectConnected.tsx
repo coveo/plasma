@@ -21,8 +21,8 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     onSelectOptionCallback?: (option: string) => void;
     items?: IItemBoxProps[];
     buttonPrepend?: React.ReactNode;
-    noFixedWidth?: true;
-    canClear?: true;
+    noFixedWidth?: boolean;
+    canClear?: boolean;
     deselectTooltipText?: string;
 }
 
