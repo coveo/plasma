@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {removeValueStringList} from '../../../reusableState/customList/StringListActions';
@@ -25,7 +26,7 @@ const defaultContainerNode = (child: React.ReactNode, getRemoveButton: (props?: 
         </React.Fragment>
     );
 
-export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-no-border cursor-pointer';
+export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-no-border ';
 
 export const multilineBoxWithRemoveButton = (supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}) =>
     (Component: MultilineBoxWithRemoveButtonComponent): MultilineBoxWithRemoveButtonComponent => {
@@ -44,7 +45,9 @@ export const multilineBoxWithRemoveButton = (supplier: ConfigSupplier<IMultiline
             private getRemoveButtonNode(data: Partial<IMultilineSingleBoxProps<T>> = {}, props: Partial<IButtonProps> = {}) {
                 return (
                     <Button
-                        classes={[defaultMultilineBoxRemoveButtonClasses]}
+                        classes={[classNames(defaultMultilineBoxRemoveButtonClasses, {
+                            'cursor-pointer': !data.isLast,
+                        })]}
                         style={{
                             visibility: !data.isLast ? 'visible' : 'hidden',
                         }}

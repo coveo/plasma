@@ -3,12 +3,12 @@ import * as React from 'react';
 import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import {createMockStore, mockStore} from 'redux-test-utils';
 import {DnDUtils} from '../../components/dragAndDrop/DnDUtils';
 import {IReactVaporState} from '../../ReactVapor';
 import {TestUtils} from '../TestUtils';
 import {UUID} from '../UUID';
-import {Store} from 'redux';
 
 const mockUUID = (generatedId: string = 'id') => {
     spyOn(UUID, 'generate').and.returnValue(generatedId);
@@ -22,14 +22,16 @@ const mockTagContext = () => {
 
 const DD = DragDropContext(TestBackend);
 
-const renderComponent = (ComponentClass: any, props = {}) => {
+const renderComponent = (ComponentClass: any, props = {}, child: React.ReactNode = null) => {
     const store: Store<IReactVaporState> = TestUtils.buildStore();
 
     class Tester extends React.Component {
         render() {
             return (
                 <Provider store={store}>
-                    <ComponentClass {...props} />
+                    <ComponentClass {...props} >
+                        {child}
+                    </ComponentClass>
                 </Provider>
             );
         }
@@ -37,7 +39,7 @@ const renderComponent = (ComponentClass: any, props = {}) => {
 
     const Draggable = DD(Tester);
     const ret = mount(
-        <Draggable/>,
+        <Draggable {...props}/>,
     );
 
     return {

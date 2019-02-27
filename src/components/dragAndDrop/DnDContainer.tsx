@@ -60,18 +60,19 @@ export class DnDContainer extends React.Component<IDraggableContainerOwnProps & 
 
     render() {
         const opacity = this.props.isDragging ? 0 : 1;
-        const content = this.props.connectDropTarget(
+
+        const content = (
             <div
                 {...this.props.draggableContainerProps}
                 style={{opacity}}
             >
                 {this.getIcon()}
-                {React.cloneElement(this.props.child, this.props.child.props)}
-            </div>,
+                {this.props.child && React.cloneElement(this.props.child, this.props.child.props)}
+            </div>
         );
 
         return this.props.isDraggable
-            ? this.props.connectDragPreview(content)
+            ? this.props.connectDropTarget(this.props.connectDragPreview(content))
             : content;
     }
 }
