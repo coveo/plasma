@@ -35,7 +35,7 @@ describe('Multiline box with drag & drop', () => {
             });
 
             expect(() => {
-                component.ret.unmount();
+                component.wrapper.unmount();
             }).not.toThrow();
         });
 
@@ -55,7 +55,7 @@ describe('Multiline box with drag & drop', () => {
                 renderBody: () => <div className='pick-me' />,
             });
 
-            expect(component.ret.find('.pick-me').length).toBe(1);
+            expect(component.wrapper.find('.pick-me').length).toBe(1);
         });
 
         describe('once rendered', () => {
@@ -66,7 +66,7 @@ describe('Multiline box with drag & drop', () => {
                     data: [],
                 });
 
-                component.ret.find(MultilineBox).props().onReorder(['a']);
+                component.wrapper.find(MultilineBox).props().onReorder(['a']);
 
                 expect(component.store.getState().multilineIds[id].list).toEqual(['a']);
             });
@@ -79,7 +79,7 @@ describe('Multiline box with drag & drop', () => {
                     data: [],
                 });
 
-                component.ret.find(DnDContainer).props().move();
+                component.wrapper.find(DnDContainer).props().move();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });
@@ -103,7 +103,7 @@ describe('Multiline box with drag & drop', () => {
                     data: [],
                 });
 
-                expect(component.ret.find('.select-me-plz').length).toBe(1);
+                expect(component.wrapper.find('.select-me-plz').length).toBe(1);
             });
         });
     });

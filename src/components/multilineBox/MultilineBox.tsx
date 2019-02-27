@@ -30,8 +30,8 @@ export interface IMultilineParentProps {
 export interface IMultilineBoxOwnProps<T = any> {
     id: string;
     data: T[];
-    renderBody: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => React.ReactNode;
-    defaultProps: T;
+    renderBody?: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => React.ReactNode;
+    defaultProps?: T;
     renderWrapper?: (children: React.ReactNode, boxProps: IMultilineSingleBoxProps<T>, parentProps: IMultilineParentProps) => React.ReactNode;
 }
 
