@@ -1,4 +1,5 @@
 import * as classNames from 'classnames';
+import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -121,7 +122,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
     private getDeselectOptionButton(): React.ReactNode {
         return (
             <Tooltip title={this.props.deselectTooltipText} placement='top' noSpanWrapper onClick={this.props.deselect}>
-                <Svg svgName='clear' svgClass='icon mod-12' className='btn-append center-align' />
+                <Svg svgName={VaporSVG.svg.clear.name} svgClass='icon mod-12' className='btn-append center-align' />
             </Tooltip>
         );
     }
