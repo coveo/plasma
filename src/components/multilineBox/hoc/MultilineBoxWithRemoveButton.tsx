@@ -26,7 +26,7 @@ const defaultContainerNode = (child: React.ReactNode, getRemoveButton: (props?: 
         </React.Fragment>
     );
 
-export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-no-border ';
+export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-no-border';
 
 export const multilineBoxWithRemoveButton = (supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}) =>
     (Component: MultilineBoxWithRemoveButtonComponent): MultilineBoxWithRemoveButtonComponent => {
