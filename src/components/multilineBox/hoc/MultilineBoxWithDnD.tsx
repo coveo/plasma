@@ -56,7 +56,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
     class MultilineBoxWithDnD<T> extends React.PureComponent<IMultilineBoxWithRemoveButtonProps<T>> {
 
         static defaultProps = {
-            renderBody: () => <div></div>,
+            renderBody: () => <div />,
         };
 
         private getDnDWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
