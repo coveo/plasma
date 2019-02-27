@@ -1,3 +1,4 @@
+import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {mockStore} from 'redux-test-utils';
@@ -8,7 +9,6 @@ import {RTestUtils} from '../../../utils/tests/RTestUtils';
 import {Button, IButtonProps} from '../../button/Button';
 import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineBoxOwnProps, MultilineBox} from '../MultilineBox';
-import {ShallowWrapper} from 'enzyme';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {
@@ -135,7 +135,7 @@ describe('Multiline box with remove button', () => {
                 const ModifiedMultilineBoxWithRemoveButton = _.compose(
                     multilineBoxWithRemoveButton({
                         containerNode: (child: React.ReactNode,
-                                        getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode): React.ReactNode =>
+                            getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode): React.ReactNode =>
                             <div className={'pick-me-plz'}>{child}{getRemoveButton({})}</div>,
                     }),
                 )(MultilineBox);
