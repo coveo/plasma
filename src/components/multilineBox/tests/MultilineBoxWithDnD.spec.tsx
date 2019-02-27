@@ -43,7 +43,7 @@ describe('Multiline box with drag & drop', () => {
             }).not.toThrow();
         });
 
-        it('should use the default renderBody if not defined', () => {
+        it('should not throw if the renderBody is not defined', () => {
             expect(() => {
                 RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
@@ -51,6 +51,17 @@ describe('Multiline box with drag & drop', () => {
                     defaultProps: {},
                 });
             }).not.toThrow();
+        });
+
+        it('should use the default renderBody if defined', () => {
+            const component = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                id,
+                data: [],
+                defaultProps: {},
+                renderBody: () => <div className='pick-me' />,
+            });
+
+            expect(component.ret.find('.pick-me').length).toBe(1);
         });
 
         describe('once rendered', () => {

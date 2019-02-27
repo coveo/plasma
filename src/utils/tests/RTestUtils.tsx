@@ -39,7 +39,7 @@ const renderComponent = (ComponentClass: any, props = {}, child: React.ReactNode
 
     const Draggable = DD(Tester);
     const ret = mount(
-        <Draggable {...props}/>,
+        <Draggable {...props} />,
     );
 
     return {

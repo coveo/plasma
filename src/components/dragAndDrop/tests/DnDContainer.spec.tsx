@@ -105,7 +105,7 @@ describe('DnDContainer', () => {
 
                     const component = RTestUtils.renderComponent(DnDContainer, {
                         id,
-                        child: <div {...props}/>,
+                        child: <div {...props} />,
                     });
 
                     expect(component.ret.find(`.${props.className}`).props()).toEqual(props);
