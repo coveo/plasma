@@ -38,7 +38,7 @@ export const multilineBoxWithRemoveButton = (supplier: ConfigSupplier<IMultiline
         class MultilineBoxWithRemoveButton<T> extends React.PureComponent<IMultilineBoxWithRemoveButtonProps<T>> {
 
             static defaultProps = {
-                renderBody: (children: React.ReactNode[]) => children,
+                renderBody: () => <div/>,
             };
 
             private getRemoveButtonNode(data: Partial<IMultilineSingleBoxProps<T>> = {}, props: Partial<IButtonProps> = {}) {
