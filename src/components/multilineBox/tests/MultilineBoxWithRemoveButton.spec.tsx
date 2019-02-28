@@ -143,14 +143,14 @@ describe('Multiline box with remove button', () => {
                 it('should render the container node', () => {
                     const testId = 'testid';
 
-                RTestUtils.mockUUID(testId);
-                store = RTestUtils.buildMockStore({
-                    multilineIds: {
-                        [id]: {
-                            id: id,
-                            list: [testId, '1234'],
-                        },
-                    });
+                    RTestUtils.mockUUID(testId);
+                    store = RTestUtils.buildMockStore({
+                        multilineIds: {
+                            [id]: {
+                                id: id,
+                                list: [testId, '1234'],
+                            },
+                        });
 
                     const wrapper = shallowComponentWithStore(ModifiedMultilineBoxWithRemoveButton, {
                         data: [{name: 'potatos'}],
