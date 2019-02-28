@@ -50,14 +50,23 @@ gulp.task('internalDefs', false, () =>
     dtsGenerator.default({
         project: './',
         out: 'dist/react-vapor.d.ts',
-        exclude: ['node_modules/**/*.d.ts', 'src/Index.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*', 'src/utils/tests/TestUtils.tsx'],
+        exclude: [
+            'node_modules/**/*.d.ts',
+            'docs/**/*',
+            'types/**/*',
+            'src/Index.ts',
+            '**/*Examples*',
+            '**/*Example*',
+            '**/*.spec.*',
+            'src/utils/tests/TestUtils.tsx',
+        ],
     }));
 
 gulp.task('cleanDefs', false, () =>
     gulp.src('dist/react-vapor.d.ts')
         .pipe(optimizeDeclarations({
             moduleName: 'ReactVapor',
-            internalImportPaths: ['docs/', 'src/'],
+            internalImportPaths: ['src/'],
         }))
         .pipe(gulp.dest('dist'))
 );
