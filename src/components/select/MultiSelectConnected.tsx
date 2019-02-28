@@ -1,12 +1,12 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {DragDropContext, DropTarget, IDropTargetProps} from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import {DropTarget, IDropTargetProps} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {DnDUtils} from '../dragAndDrop/DnDUtils';
 import {
     DraggableSelectedOption,
     DraggableSelectedOptionType,
@@ -67,11 +67,10 @@ const parentDropTarget = {
 };
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-@DragDropContext(HTML5Backend)
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))
-export class MultiSelectConnected extends React.Component<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>>     {
+class MultiSelect extends React.Component<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>>     {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
@@ -202,3 +201,5 @@ export class MultiSelectConnected extends React.Component<IMultiSelectProps & Re
             .filter((option: IItemBoxProps) => _.contains(this.props.selected, option.value));
     }
 }
+
+export const MultiSelectConnected: React.ComponentClass<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = DnDUtils.TagControlContext(MultiSelect);

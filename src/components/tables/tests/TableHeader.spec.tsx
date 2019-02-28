@@ -3,7 +3,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableHeaderProps, TableHeader} from '../TableHeader';
 import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
 import {ITableHeaderCellOwnProps} from '../TableHeaderCell';

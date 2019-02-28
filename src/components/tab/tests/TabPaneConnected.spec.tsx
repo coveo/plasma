@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addTab} from '../TabActions';
 import {ITabPaneProps, TabPane} from '../TabPane';
 import {TabPaneConnected} from '../TabPaneConnected';

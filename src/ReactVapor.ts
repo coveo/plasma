@@ -93,6 +93,7 @@ export interface IReactVaporState {
     selectWithFilter?: ISelectWithFilterCompositeState;
     lastAction?: Redux.Action;
     dirtyComponents?: ComponentId[];
+    multilineIds?: IStringListCompositeState;
 }
 
 export interface IReduxActionsPayload {

@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addOptionPicker, changeOptionPicker} from '../../optionPicker/OptionPickerActions';
 import {changeDatePickerLowerLimit, changeDatePickerUpperLimit, DateLimits, selectDate} from '../DatePickerActions';
 import {DatesSelection, IDatesSelectionProps} from '../DatesSelection';

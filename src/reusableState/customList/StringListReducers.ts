@@ -12,7 +12,8 @@ export interface IStringListState {
 
 export const stringListInitialState: IStringListCompositeState = {};
 
-export const convertStringListToItemsBox = (list: string[], itemsBoxParams: Partial<IItemBoxProps> = {}): IItemBoxProps[] => _.map(list, (value: string) => ({...itemsBoxParams, value}));
+export const convertStringListToItemsBox = (list: string[], itemsBoxParams: Partial<IItemBoxProps> = {}): IItemBoxProps[] => _.map(list,
+    (value: string) => ({...itemsBoxParams, value}));
 export const convertItemsBoxToStringList = (items: IItemBoxProps[]): string[] => _.pluck(items, 'value');
 
 export const stringListCompositeReducer = (
@@ -29,6 +30,8 @@ export const stringListCompositeReducer = (
 
     switch (action.type) {
         case StringListActions.add:
+        case StringListActions.updateValues:
+        case StringListActions.reorder:
             return {
                 ...state,
                 [action.payload.id]: {

@@ -3,7 +3,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {CalendarConnected} from '../../calendar/CalendarConnected';
 import {OptionPickerConnected} from '../../optionPicker/OptionPickerConnected';
 import {DatePickerBox, DEFAULT_CLEAR_DATE_LABEL, IDatePickerBoxProps} from '../DatePickerBox';

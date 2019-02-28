@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {filterThrough} from '../../filterBox/FilterBoxActions';
 import {ItemBox} from '../../itemBox/ItemBox';
 import {toggleSelect} from '../SelectActions';

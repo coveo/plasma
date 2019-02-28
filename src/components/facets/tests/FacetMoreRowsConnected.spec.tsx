@@ -6,7 +6,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addFilter, filterThrough} from '../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {addFacet, toggleMoreFacetRows} from '../FacetActions';

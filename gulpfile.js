@@ -50,9 +50,8 @@ gulp.task('internalDefs', false, () =>
     dtsGenerator.default({
         project: './',
         out: 'dist/react-vapor.d.ts',
-        exclude: ['node_modules/**/*.d.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*', 'src/utils/TestUtils.ts', 'types/**/*.d.ts'],
-    })
-);
+        exclude: ['node_modules/**/*.d.ts', 'src/Index.ts', '**/*Examples*', '**/*Example*', '**/*.spec.*', 'src/utils/tests/TestUtils.tsx'],
+    }));
 
 gulp.task('cleanDefs', false, () =>
     gulp.src('dist/react-vapor.d.ts')

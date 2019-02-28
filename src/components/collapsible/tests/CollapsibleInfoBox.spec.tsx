@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Svg} from '../../svg/Svg';
 import {CollapsibleConnected} from '../CollapsibleConnected';
 import {CollapsibleInfoBox, CollapsibleInfoBoxProps} from '../CollapsibleInfoBox';

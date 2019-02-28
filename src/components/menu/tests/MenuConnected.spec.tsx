@@ -5,7 +5,7 @@ import {Store} from 'redux';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {Svg} from '../../svg/Svg';
 import {IMenuProps, MenuConnected} from '../MenuConnected';
