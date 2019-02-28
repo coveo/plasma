@@ -8,6 +8,7 @@ import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {clearListBoxOption} from '../../listBox/ListBoxActions';
 import {ISelectProps, ISelectSpecificProps, SelectConnected} from '../SelectConnected';
 import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
@@ -143,6 +144,35 @@ describe('Select', () => {
 
             expect(buttonHTML).toContain(prepend);
             expect(buttonHTML).toContain(append);
+        });
+
+        it('should have a clear icon when a value selected and canClear is true', () => {
+            mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
+
+            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(true);
+            expect(select.find('.btn-append').exists()).toBe(true);
+        });
+
+        it('should not have a clear icon when a value selected and canClear is undefined', () => {
+            mountSingleSelect([{value: 'a', selected: true}]);
+
+            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(false);
+            expect(select.find('.btn-append').exists()).toBe(false);
+        });
+
+        it('should not have a clear icon when no value is selected and canClear is true', () => {
+            mountSingleSelect([{value: 'a', selected: false}], {canClear: true});
+
+            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(false);
+            expect(select.find('.btn-append').exists()).toBe(false);
+        });
+
+        it('should clear the selected value when the deselect is clicked', () => {
+            const spy = spyOn(store, 'dispatch').and.callThrough();
+            mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
+
+            select.find('.btn-append').first().simulate('click');
+            expect(spy).toHaveBeenCalledWith(clearListBoxOption(id));
         });
 
         it('should display the selectedDisplayValue if defined in the button for the selected item', () => {

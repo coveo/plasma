@@ -1,13 +1,10 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {
-    SingleSelectWithFilter,
-    SingleSelectWithPredicate,
-    SingleSelectWithPredicateAndFilter,
-} from '../SelectComponents';
+import {SingleSelectWithFilter, SingleSelectWithPredicate, SingleSelectWithPredicateAndFilter} from '../SelectComponents';
 import {SingleSelectConnected} from '../SingleSelectConnected';
 
 const defaultItems: IItemBoxProps[] = [
@@ -33,7 +30,7 @@ export interface ISingleSelectExamplesState {
     hoc: IItemBoxProps[];
 }
 
-export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamplesState> {
+export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectExamplesState> {
     constructor(props: {}, state: ISingleSelectExamplesState) {
         super(props, state);
 
@@ -57,12 +54,15 @@ export class SingleSelectExamples extends React.Component<{}, ISingleSelectExamp
                 <div className='form-group'>
                     <label className='form-control-label'>A Simple Single Select with a Custom Placeholder</label>
                     <br />
-                    <SingleSelectConnected
-                        id={UUID.generate()}
-                        items={this.state.first}
-                        placeholder='Select something'
-                    />
+                    <SingleSelectConnected id={UUID.generate()} items={this.state.first} placeholder='Select something' />
                 </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>A Simple Single Select with a Clear Button</label>
+                    <br />
+                    <SingleSelectConnected id={UUID.generate()} items={this.state.first} canClear />
+                </div>
+
                 <div className='form-group'>
                     <label className='form-control-label'>Disabled Simple Single Select</label>
                     <br />

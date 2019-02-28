@@ -1,12 +1,16 @@
 import * as classNames from 'classnames';
+import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
-import {ReduxConnect} from '../../utils/ReduxUtils';
+import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
+import {clearListBoxOption} from '../listBox/ListBoxActions';
+import {Svg} from '../svg/Svg';
+import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 import * as styles from './styles/SingleSelect.scss';
@@ -17,16 +21,20 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     onSelectOptionCallback?: (option: string) => void;
     items?: IItemBoxProps[];
     buttonPrepend?: React.ReactNode;
-    noFixedWidth?: true;
+    noFixedWidth?: boolean;
+    canClear?: boolean;
+    deselectTooltipText?: string;
 }
 
 export interface ISingleSelectStateProps {
-    selectedOption?: string;
+    selectedOption: string;
 }
 
-export interface ISingleSelectDispatchProps {}
+export interface ISingleSelectDispatchProps {
+    deselect: () => void;
+}
 
-export interface ISingleSelectProps extends ISingleSelectOwnProps, ISingleSelectStateProps, ISingleSelectDispatchProps {}
+export interface ISingleSelectProps extends ISingleSelectOwnProps, Partial<ISingleSelectStateProps>, Partial<ISingleSelectDispatchProps> {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
     const customSelected: string[] = SelectSelector.getListState(state, ownProps);
@@ -37,7 +45,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProp
     };
 };
 
-@ReduxConnect(mapStateToProps)
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({
+    deselect: () => dispatch(clearListBoxOption(ownProps.id)),
+});
+
+@ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
     static defaultProps: Partial<ISingleSelectOwnProps>;
 
@@ -63,9 +75,11 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getButton = (props: ISelectButtonProps): JSX.Element => {
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
+        const showClear = !!option && this.props.canClear;
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
             [styles.singleSelectFixedWidth]: !this.props.noFixedWidth,
+            'mod-append': showClear,
         });
 
         return (
@@ -82,6 +96,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
                 {this.getSelectedOptionElement(option)}
                 {option && option.append ? <Content {...option.append} /> : null}
                 <span className='dropdown-toggle-arrow' />
+                {showClear && this.getDeselectOptionButton()}
             </button>
         );
     }
@@ -92,7 +107,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
             return (
                 <span
                     key={option.value}
-                    className='dropdown-selected-value'
+                    className='dropdown-selected-value flex-auto left-align'
                     data-value={option.value}
                     title={displayValue}
                 >
@@ -103,8 +118,17 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
         return <span className='dropdown-no-value'>{this.props.placeholder}</span>;
     }
+
+    private getDeselectOptionButton(): React.ReactNode {
+        return (
+            <Tooltip title={this.props.deselectTooltipText} placement='top' noSpanWrapper onClick={this.props.deselect}>
+                <Svg svgName={VaporSVG.svg.clear.name} svgClass='icon mod-12' className='btn-append center-align' />
+            </Tooltip>
+        );
+    }
 }
 
 SingleSelectConnected.defaultProps = {
     placeholder: 'Select an option',
+    deselectTooltipText: 'Deselect',
 };
