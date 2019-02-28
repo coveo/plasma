@@ -4,10 +4,8 @@ import * as React from 'react';
 import {createMockStore, mockStore} from 'redux-test-utils';
 
 import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ModalBackdropConnected} from '../ModalBackdropConnected';
-import {IModalCompositeProps, ModalComposite} from '../ModalComposite';
+import {addModal, closeModal, removeModal} from '../ModalActions';
+import {IModalCompositeProps} from '../ModalComposite';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
 import {ModalHeaderConnected} from '../ModalHeaderConnected';
 
