@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addFacet, toggleMoreFacetRows} from '../FacetActions';
 import {FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
 import {FacetMoreToggleConnected} from '../FacetMoreToggleConnected';

@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
-import {triggerAlertFunction} from '../../../utils/TestUtils';
+import {triggerAlertFunction} from '../../../utils/tests/TestUtils';
 import {Breadcrumb} from '../../breadcrumbs/Breadcrumb';
 import {Button} from '../../button/Button';
 import {Checkbox} from '../../checkbox/Checkbox';

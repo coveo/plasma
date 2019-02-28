@@ -49,18 +49,17 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
         onReorder: (list: string[]) => dispatch(reorderStringList(ownProps.id, list)),
     });
 
-    @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     @DropTarget(DraggableContainerType, DnDUtils.parentDropTarget, (connect: any) => ({
         connectDropTarget: connect.dropTarget(),
     }))
+    @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     class MultilineBoxWithDnD<T> extends React.PureComponent<IMultilineBoxWithRemoveButtonProps<T>> {
 
         static defaultProps = {
-            renderBody: (children: React.ReactNode[]) => children,
+            renderBody: () => <div />,
         };
 
         private getDnDWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {
-            debugger;
             const supplierProps: IMultilineBoxWithDnDSupplierProps = {
                 ...{
                     DnDContainerProps: {},
@@ -69,7 +68,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
             };
             return React.Children.map(children, (child: React.ReactNode, index: number) => {
                 const isLast = index === data.length - 1;
-                const id: string = (data.length &&  data[index].id) || index.toString();
+                const id: string = (data.length && data[index].id) || index.toString();
                 return (
                     <DnDContainer
                         id={id}

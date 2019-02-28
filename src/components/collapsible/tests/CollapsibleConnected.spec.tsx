@@ -7,7 +7,7 @@ import {findWhere} from 'underscore';
 import {SlideY} from '../../../animations/SlideY';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Collapsible, CollapsibleOwnProps} from '../Collapsible';
 import {setCollapsibleExpanded} from '../CollapsibleActions';
 import {CollapsibleConnected} from '../CollapsibleConnected';

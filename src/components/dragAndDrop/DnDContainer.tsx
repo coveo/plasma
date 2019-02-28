@@ -1,9 +1,6 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {DragSource, DropTarget} from 'react-dnd';
-import {keys} from 'ts-transformer-keys/index';
-import * as _ from 'underscore';
-import {IDraggableSelectedOptionOwnProps} from '../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {Svg} from '../svg/Svg';
 import {DnDUtils} from './DnDUtils';
 
@@ -12,7 +9,7 @@ export interface IDraggableContainerOwnProps {
     index: number;
     move: (dragIndex: number, hoverIndex: number) => void;
     child: any;
-    draggableContainerProps?: React.HTMLProps<HTMLDivElement>;
+    draggableContainerProps?: Partial<React.HTMLProps<HTMLDivElement>>;
     draggableIconProps?: React.HTMLProps<HTMLDivElement>;
     icon: React.ReactNode;
 }
@@ -26,8 +23,6 @@ export interface IDraggableContainerDnDProps {
 }
 
 export const DraggableContainerType = 'CONTAINER_BOX';
-
-const multilineBoxWithDnDPropsToOmit = keys<IDraggableSelectedOptionOwnProps>();
 
 @DropTarget(DraggableContainerType, DnDUtils.getBoxTarget('id'), (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
@@ -65,18 +60,19 @@ export class DnDContainer extends React.Component<IDraggableContainerOwnProps & 
 
     render() {
         const opacity = this.props.isDragging ? 0 : 1;
-        const content = this.props.connectDropTarget(
+
+        const content = (
             <div
                 {...this.props.draggableContainerProps}
                 style={{opacity}}
             >
                 {this.getIcon()}
-                {React.cloneElement(this.props.child, _.omit(this.props, multilineBoxWithDnDPropsToOmit))}
-            </div>,
+                {this.props.child && React.cloneElement(this.props.child, this.props.child.props)}
+            </div>
         );
 
         return this.props.isDraggable
-            ? this.props.connectDragPreview(content)
+            ? this.props.connectDropTarget(this.props.connectDragPreview(content))
             : content;
     }
 }

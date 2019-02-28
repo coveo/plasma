@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IItemBoxProps, ItemBox} from '../../itemBox/ItemBox';
 import {IListBoxProps, ListBox} from '../ListBox';
 import {ListBoxConnected} from '../ListBoxConnected';

@@ -8,7 +8,7 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {DateUtils} from '../../../utils/DateUtils';
 import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {
     addDatePicker,
     changeDatePickerLowerLimit,

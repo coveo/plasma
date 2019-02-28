@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {clearState} from '../../utils/ReduxUtils';
-import {TestUtils} from '../../utils/TestUtils';
+import {TestUtils} from '../../utils/tests/TestUtils';
 import {Svg} from '../svg/Svg';
 import {toggleSearchBarDisabled, toggleSearching} from './SearchBarActions';
 import {SearchBarConnected} from './SearchBarConnected';

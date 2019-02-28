@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
-import {IReactVaporTestState, TestUtils} from '../../../utils/TestUtils';
+import {IReactVaporTestState, TestUtils} from '../../../utils/tests/TestUtils';
 import {UUID} from '../../../utils/UUID';
 import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
 import {

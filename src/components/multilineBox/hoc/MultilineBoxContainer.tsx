@@ -21,7 +21,7 @@ export const multilineBoxContainer = (supplier: ConfigSupplier<IMultilineBoxCont
         class MultilineBoxContainer<T> extends React.PureComponent<IMultilineBoxContainerProps<T>> {
 
             static defaultProps = {
-                renderBody: () => <div></div>,
+                renderBody: () => <div />,
             };
 
             private getWrapper(children: React.ReactNode, data: Array<IMultilineSingleBoxProps<T>>) {

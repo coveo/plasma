@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
-import {IReactVaporTestState} from '../../../utils/TestUtils';
+import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
 import {LastUpdated} from '../../lastUpdated/LastUpdated';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';

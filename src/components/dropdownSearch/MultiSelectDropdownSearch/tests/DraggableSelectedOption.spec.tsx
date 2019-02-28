@@ -1,7 +1,7 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {TestUtils} from '../../../../utils/TestUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {UUID} from '../../../../utils/UUID';
 import {DraggableSelectedOption, IDraggableSelectedOptionProps} from '../DraggableSelectedOption';
 
