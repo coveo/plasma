@@ -135,7 +135,7 @@ describe('Multiline box with remove button', () => {
                 const ModifiedMultilineBoxWithRemoveButton = _.compose(
                     multilineBoxWithRemoveButton({
                         containerNode: (child: React.ReactNode,
-                            getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode): React.ReactNode =>
+                                        getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode): React.ReactNode =>
                             <div className={'pick-me-plz'}>{child}{getRemoveButton({})}</div>,
                     }),
                 )(MultilineBox);
@@ -150,7 +150,8 @@ describe('Multiline box with remove button', () => {
                                 id: id,
                                 list: [testId, '1234'],
                             },
-                        });
+                        },
+                    });
 
                     const wrapper = shallowComponentWithStore(ModifiedMultilineBoxWithRemoveButton, {
                         data: [{name: 'potatos'}],
