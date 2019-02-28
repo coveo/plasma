@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Banner, BannerMessageStates} from '../Banner';
+import {BannerContainer} from '../BannerContainer';
 
 export class BannerExamples extends React.Component {
 
@@ -7,6 +8,12 @@ export class BannerExamples extends React.Component {
         return (
             <div className='mt2'>
                 <h1 className='text-blue mb1 bold'>Banners</h1>
+                <div className='form-group'>
+                    <label className='form-control-label'>Empty banner</label>
+                    <div className='form-control'>
+                        <BannerContainer />
+                    </div>
+                </div>
                 <div className='form-group'>
                     <label className='form-control-label'>Simple banner</label>
                     <div className='form-control'>

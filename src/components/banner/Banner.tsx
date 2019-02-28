@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {Svg} from '../svg/Svg';
+import {BannerContainer} from './BannerContainer';
 import * as styles from './styles/Banner.scss';
 
 export interface BannerProps {
@@ -41,7 +42,7 @@ export class Banner extends React.PureComponent<BannerProps> {
             },
         );
         return (
-            <div className={styles.banner}>
+            <BannerContainer className='flex flex-column'>
                 <div className='flex space-between'>
                     <div>
                         <h1 className={styles.bannerName}>{this.props.name}</h1>
@@ -56,7 +57,7 @@ export class Banner extends React.PureComponent<BannerProps> {
                 {this.props.bottomRightInfos && <div className={classNames(styles.bannerRight, 'right-align')}>
                     <div className={styles.bannerBottomRightInfos}>{this.props.bottomRightInfos}</div>
                 </div>}
-            </div>
+            </BannerContainer>
         );
     }
 
