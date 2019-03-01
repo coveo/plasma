@@ -1,6 +1,5 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
@@ -55,8 +54,6 @@ export interface IInputProps extends IInputOwnProps, Partial<IInputStateProps>, 
 export interface IInputComponentState {
     valid: boolean;
 }
-
-const inputPropsToOmit = keys<IInputProps>();
 
 export class Input extends React.Component<IInputProps, IInputComponentState> {
     private innerInput: HTMLInputElement;
