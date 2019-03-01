@@ -1,8 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys';
+import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
+import {Omit} from '../../utils/TypescriptUtils';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
@@ -10,28 +13,24 @@ import {ILabelProps, Label} from './Label';
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
 const inputTagPropsToOmit: string[] = ['defaultValue', 'onClick', 'onChange', 'onBlur', 'value'];
 
-export interface IInputOwnProps {
+type IInputNativeTagOwnProps = Omit<React.AllHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'>;
+
+export interface IInputAdditionalOwnProps {
     id?: string;
-    name?: string;
     type?: string;
     classes?: IClassName;
     innerInputClasses?: IClassName;
-    defaultValue?: string;
-    placeholder?: string;
-    defaultChecked?: boolean;
-    readOnly?: boolean;
     validate?: (value: any) => boolean;
     labelTitle?: string;
     labelProps?: ILabelProps;
-    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-    onBlur?: (value: string) => void;
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
-    autoFocus?: boolean;
     disabledTooltip?: string;
-    minimum?: number;
-    maximum?: number;
+    minimum?: number; /* @deprecated use min instead */
+    maximum?: number; /* @deprecated use max instead */
+    onBlur?: (value: string) => void;
+    defaultValue?: string;
 }
 
 export interface IInputStateProps {
@@ -49,11 +48,15 @@ export interface IInputDispatchProps {
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps {}
+export interface IInputOwnProps extends IInputAdditionalOwnProps, IInputNativeTagOwnProps {}
+
+export interface IInputProps extends IInputOwnProps, Partial<IInputStateProps>, Partial<IInputDispatchProps> {}
 
 export interface IInputComponentState {
     valid: boolean;
 }
+
+const inputPropsToOmit = keys<IInputProps>();
 
 export class Input extends React.Component<IInputProps, IInputComponentState> {
     private innerInput: HTMLInputElement;
