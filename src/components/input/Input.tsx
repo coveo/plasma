@@ -1,6 +1,5 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
@@ -11,6 +10,7 @@ import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
+const inputTagPropsToOmit: string[] = ['defaultValue', 'onClick', 'onChange', 'onBlur', 'value'];
 
 type IInputNativeTagOwnProps = Omit<React.AllHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'>;
 
@@ -54,8 +54,6 @@ export interface IInputProps extends IInputOwnProps, Partial<IInputStateProps>, 
 export interface IInputComponentState {
     valid: boolean;
 }
-
-const inputPropsToOmit = keys<IInputProps>();
 
 export class Input extends React.Component<IInputProps, IInputComponentState> {
     private innerInput: HTMLInputElement;
@@ -171,23 +169,15 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 key={this.props.id}
                 id={this.props.id}
                 className={innerInputClasses}
-                type={this.props.type}
                 defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
                 ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
                 onBlur={() => this.handleBlur()}
                 onChange={() => this.handleChange()}
                 onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
-                placeholder={this.props.placeholder}
-                checked={!!this.props.checked}
-                disabled={!!this.props.disabled}
-                name={this.props.name}
-                required
-                readOnly={!!this.props.readOnly}
-                autoFocus={!!this.props.autoFocus}
-                step={this.props.type === 'number' ? 'any' : null}
                 min={this.props.minimum}
                 max={this.props.maximum}
-                {..._.omit(this.props, inputPropsToOmit)}
+                required
+                {..._.omit(this.props, inputTagPropsToOmit)}
             />,
             this.getLabel(),
             this.props.children,
