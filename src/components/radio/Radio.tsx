@@ -7,6 +7,7 @@ export class Radio extends Input {
     static defaultProps: Partial<IInputProps> = {
         ...Input.defaultProps,
         checked: false,
+        disabled: false,
     };
 
     render() {
