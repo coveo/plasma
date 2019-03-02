@@ -4,6 +4,7 @@ import {keys} from 'ts-transformer-keys/index';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {PropsToOmitUtils} from '../../utils/react/PropsToOmitUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Omit} from '../../utils/TypescriptUtils';
 import {Tooltip} from '../tooltip/Tooltip';
@@ -11,7 +12,6 @@ import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
-const inputTagPropsToOmit: string[] = ['defaultValue', 'onClick', 'onChange', 'onBlur', 'value', 'valid', 'children', 'dangerouslySetInnerHTML'];
 
 type IInputNativeTagOwnProps = Omit<React.AllHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'>;
 
@@ -70,6 +70,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         type: 'text',
         valid: true,
         labelTitle: '',
+        required: true,
     };
 
     constructor(props: IInputProps, state: IInputState) {
@@ -183,8 +184,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
                 min={this.props.minimum}
                 max={this.props.maximum}
-                required
-                {..._.omit(this.props, [...inputTagPropsToOmit, ...inputPropsToOmit])}
+                {..._.omit(this.props, [...PropsToOmitUtils.input, ...inputPropsToOmit])}
             />,
             this.getLabel(),
             this.props.children,
