@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys/index';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
@@ -10,13 +11,12 @@ import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
-const inputTagPropsToOmit: string[] = ['defaultValue', 'onClick', 'onChange', 'onBlur', 'value'];
+const inputTagPropsToOmit: string[] = ['defaultValue', 'onClick', 'onChange', 'onBlur', 'value', 'valid', 'children', 'dangerouslySetInnerHTML'];
 
 type IInputNativeTagOwnProps = Omit<React.AllHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'>;
 
 export interface IInputAdditionalOwnProps {
     id?: string;
-    type?: string;
     classes?: IClassName;
     innerInputClasses?: IClassName;
     validate?: (value: any) => boolean;
@@ -32,13 +32,18 @@ export interface IInputAdditionalOwnProps {
     defaultValue?: string;
 }
 
-export interface IInputStateProps {
+export interface IInputNativeTagStateProps {
+    value?: string;
     checked?: boolean;
     disabled?: boolean;
-    value?: string;
+}
+
+export interface IInputAdditionalStateProps {
     valid?: boolean;
     indeterminate?: boolean;
 }
+
+export interface IInputStateProps extends IInputNativeTagStateProps, IInputAdditionalStateProps {}
 
 export interface IInputDispatchProps {
     onDestroy?: () => void;
@@ -46,6 +51,8 @@ export interface IInputDispatchProps {
     onChange?: (value?: string, valid?: boolean) => void;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
+
+const inputPropsToOmit = keys<IInputAdditionalOwnProps & IInputAdditionalStateProps & IInputDispatchProps>();
 
 export interface IInputOwnProps extends IInputAdditionalOwnProps, IInputNativeTagOwnProps {}
 
@@ -177,7 +184,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 min={this.props.minimum}
                 max={this.props.maximum}
                 required
-                {..._.omit(this.props, inputTagPropsToOmit)}
+                {..._.omit(this.props, [...inputTagPropsToOmit, ...inputPropsToOmit])}
             />,
             this.getLabel(),
             this.props.children,

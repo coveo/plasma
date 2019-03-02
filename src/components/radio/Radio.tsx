@@ -1,8 +1,14 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {Input} from '../input/Input';
+import {IInputProps, Input} from '../input/Input';
 
 export class Radio extends Input {
+
+    static defaultProps: Partial<IInputProps> = {
+        ...Input.defaultProps,
+        checked: false,
+    };
+
     render() {
         const classes: string = classNames('radio-option', this.props.classes);
         return (
