@@ -1,4 +1,4 @@
-const internalComponentPropsToOmit: string [] = ['children', 'dangerouslySetInnerHTML'];
+const internalComponentPropsToOmit: string[] = ['children', 'dangerouslySetInnerHTML'];
 
 const inputTagPropsToOmit: string[] = [...internalComponentPropsToOmit, 'defaultValue', 'onClick', 'onChange', 'onBlur', 'value', 'valid'];
 
