@@ -10,7 +10,17 @@ export class OptionsCycleConnectedExamples extends React.Component<any, any> {
             <div className='mt2'>
                 <div className='form-group'>
                     <label className='form-control-label'>Options cycle</label>
-                    <OptionsCycleConnected options={OPTIONS} />
+                    <OptionsCycleConnected id='Cycle-1' options={OPTIONS} />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>Options cycle at 2</label>
+                    <OptionsCycleConnected id='Cycle-2' options={OPTIONS} startAt={1} />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>Options cycle like an action</label>
+                    <OptionsCycleConnected id='Cycle-3' options={OPTIONS} previousClassName='btn mod-border w4' buttonClassName='btn ml1' nextClassName='btn mod-border ml1 w4' />
                 </div>
             </div>
         );

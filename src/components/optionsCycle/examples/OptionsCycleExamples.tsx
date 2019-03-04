@@ -12,6 +12,11 @@ export class OptionsCycleExamples extends React.Component<any, any> {
                     <label className='form-control-label'>Options cycle</label>
                     <OptionsCycle options={OPTIONS} />
                 </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>Options cycle at 2</label>
+                    <OptionsCycle options={OPTIONS} currentOption={1} />
+                </div>
             </div>
         );
     }

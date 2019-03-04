@@ -1,27 +1,42 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {Svg} from '../svg/Svg';
 
-export interface IOptionsCycleOwnProps extends React.ClassAttributes<OptionsCycle> {
-    options: string[];
-    id?: string;
+export interface IOptionsCycleConnectedOwnProps {
+    id: string;
     startAt?: number;
+}
+
+export interface IOptionsCycleOwnProps {
+    options: React.ReactNode[];
     isInline?: boolean;
+    className?: string;
+    previousClassName?: string;
+    nextClassName?: string;
+    buttonClassName?: string;
 }
 
 export interface IOptionsCycleStateProps {
-    currentOption?: number;
+    currentOption: number;
 }
 
 export interface IOptionsCycleDispatchProps {
-    onRender?: (index: number) => void;
-    onDestroy?: () => void;
-    onChange?: (index: number) => void;
+    onRender: () => void;
+    onDestroy: () => void;
+    onChange: (index: number) => void;
 }
 
-export interface IOptionsCycleProps extends IOptionsCycleOwnProps, IOptionsCycleStateProps, IOptionsCycleDispatchProps {}
+export interface IOptionsCycleProps extends IOptionsCycleOwnProps,
+    Partial<IOptionsCycleStateProps>,
+    Partial<IOptionsCycleDispatchProps> {}
 
-export class OptionsCycle extends React.Component<IOptionsCycleProps, any> {
-    private selectedOption: string;
+export class OptionsCycle extends React.Component<IOptionsCycleProps> {
+
+    static defaultProps: Partial<IOptionsCycleProps> = {
+        currentOption: 0,
+    };
 
     private goToPreviousOption() {
         if (this.props.onChange) {
@@ -37,43 +52,23 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps, any> {
         }
     }
 
-    private setSelectedOption(currentOption: number = 0) {
-        this.selectedOption = this.props.options[currentOption];
-    }
-
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender(this.props.startAt);
-            this.setSelectedOption(this.props.currentOption);
-        }
-        this.setSelectedOption(this.props.startAt);
+    componentDidMount() {
+        callIfDefined(this.props.onRender);
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
-    }
-
-    componentWillReceiveProps(nextProps: IOptionsCycleProps) {
-        this.setSelectedOption(nextProps.currentOption);
+        callIfDefined(this.props.onDestroy);
     }
 
     render() {
-        const optionsCycleClasses = ['options-cycle', 'text-medium-blue'];
-
-        if (this.props.isInline) {
-            optionsCycleClasses.push('mod-inline');
-        }
-
         return (
-            <div className={optionsCycleClasses.join(' ')}>
-                <button type='button' className='options-cycle-button previous-option' onClick={() => this.goToPreviousOption()}>
-                    <Svg svgName='arrow-left-rounded' svgClass='icon fill-dark-blue' />
+            <div className={classNames('options-cycle text-medium-blue', this.props.className, {'mod-inline': this.props.isInline})}>
+                <button type='button' className={classNames('options-cycle-button previous-option', this.props.previousClassName)} onClick={() => this.goToPreviousOption()}>
+                    <Svg svgName='arrow-left-rounded' svgClass='icon fill-dark-blue mod-16' />
                 </button>
-                <span className='options-cycle-option'>{this.selectedOption}</span>
-                <button type='button' className='options-cycle-button next-option' onClick={() => this.goToNextOption()}>
-                    <Svg svgName='arrow-right-rounded' svgClass='icon fill-dark-blue' />
+                <span className={classNames('options-cycle-option', this.props.buttonClassName)}>{this.props.options[this.props.currentOption]}</span>
+                <button type='button' className={classNames('options-cycle-button next-option', this.props.nextClassName)} onClick={() => this.goToNextOption()}>
+                    <Svg svgName='arrow-right-rounded' svgClass='icon fill-dark-blue mod-16' />
                 </button>
             </div>
         );

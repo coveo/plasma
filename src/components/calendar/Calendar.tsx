@@ -171,7 +171,6 @@ export class Calendar extends React.Component<ICalendarProps, any> {
     render() {
         const monthPickerProps: IOptionsCycleProps = {
             options: this.props.months,
-            startAt: this.props.startingMonth,
             isInline: true,
         };
 
@@ -179,7 +178,6 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         const startingYear: number = this.props.startingYear || (startingYearIndex >= 0 ? startingYearIndex : Math.floor(this.props.years.length / 2));
         const yearPickerProps: IOptionsCycleProps = {
             options: this.props.years,
-            startAt: startingYear,
             isInline: true,
         };
 
@@ -191,12 +189,12 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         const daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({title: day}));
 
         const monthPicker = this.props.withReduxState
-            ? <OptionsCycleConnected id={this.props.id + MONTH_PICKER_ID} {...monthPickerProps} />
-            : <OptionsCycle {...monthPickerProps} />;
+            ? <OptionsCycleConnected id={this.props.id + MONTH_PICKER_ID} startAt={this.props.startingMonth} {...monthPickerProps} />
+            : <OptionsCycle currentOption={this.props.startingMonth} {...monthPickerProps} />;
 
         const yearPicker = this.props.withReduxState
-            ? <OptionsCycleConnected id={this.props.id + YEAR_PICKER_ID} {...yearPickerProps} />
-            : <OptionsCycle {...yearPickerProps} />;
+            ? <OptionsCycleConnected id={this.props.id + YEAR_PICKER_ID} startAt={startingYear} {...yearPickerProps} />
+            : <OptionsCycle currentOption={startingYear} {...yearPickerProps} />;
 
         const selectedYearOption = !_.isUndefined(this.props.selectedYear) ? this.props.selectedYear : startingYear;
         const year = parseInt(this.props.years[selectedYearOption], 10);
