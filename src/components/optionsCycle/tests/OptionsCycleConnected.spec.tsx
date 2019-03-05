@@ -7,12 +7,12 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
+import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
 import {changeOptionsCycle} from '../OptionsCycleActions';
 import {OptionsCycleConnected} from '../OptionsCycleConnected';
 
 describe('Options cycle', () => {
-    const optionsCycleBasicProps: IOptionsCycleProps = {
+    const optionsCycleBasicProps: IOptionsCycleProps & IOptionsCycleConnectedOwnProps = {
         id: 'options-cycle',
         options: ['option 1', 'option 2', 'option 3', 'option 4'],
     };
@@ -37,13 +37,6 @@ describe('Options cycle', () => {
         afterEach(() => {
             store.dispatch(clearState());
             wrapper.detach();
-        });
-
-        it('should get an id as a prop', () => {
-            const idProp = optionsCycle.props().id;
-
-            expect(idProp).toBeDefined();
-            expect(idProp).toBe(optionsCycleBasicProps.id);
         });
 
         it('should get the current option as a prop', () => {

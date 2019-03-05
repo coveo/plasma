@@ -42,7 +42,7 @@ describe('Options cycle', () => {
         it('should call prop onRender on mounting if set', () => {
             const renderSpy = jasmine.createSpy('onRender');
 
-            expect(() => optionsCycleInstance.componentWillMount()).not.toThrow();
+            expect(() => optionsCycleInstance.componentDidMount()).not.toThrow();
 
             optionsCycle.setProps({options: OPTIONS, onRender: renderSpy});
             optionsCycle.unmount();
@@ -67,6 +67,32 @@ describe('Options cycle', () => {
             optionsCycle.setProps({options: OPTIONS, currentOption: 2});
 
             expect(optionsCycle.html()).toContain(OPTIONS[2]);
+        });
+
+        it('should display the selected option even if it is not a string', () => {
+            const className = 'catch-me-if-you-can';
+            const options = [
+                <span className='something' />,
+                <span className={className} />,
+                <span className='something-else' />,
+            ];
+            optionsCycle.setProps({options, currentOption: 1});
+
+            expect(optionsCycle.find(`.${className}`).exists()).toBe(true);
+        });
+
+        it('should allow custom classes', () => {
+            const className = 'i-wonder';
+            const previousClassName = 'where-is';
+            const nextClassName = 'the-closest';
+            const buttonClassName = 'wonder-there-is';
+
+            optionsCycle.setProps({className, previousClassName, nextClassName, buttonClassName});
+
+            expect(optionsCycle.find(`.${className}`).exists()).toBe(true);
+            expect(optionsCycle.find(`.${previousClassName}`).exists()).toBe(true);
+            expect(optionsCycle.find(`.${nextClassName}`).exists()).toBe(true);
+            expect(optionsCycle.find(`.${buttonClassName}`).exists()).toBe(true);
         });
 
         it('should not throw on goToPreviousOption or goToNextOption when onChange prop is not defined', () => {
@@ -159,7 +185,7 @@ describe('Options cycle', () => {
 
             optionsCycle.unmount();
             optionsCycle = mount(
-                <OptionsCycle options={OPTIONS} startAt={startAt} />,
+                <OptionsCycle options={OPTIONS} currentOption={startAt} />,
                 {attachTo: document.getElementById('App')},
             );
 
