@@ -40,7 +40,7 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
                         validMessage='Great!'
                         invalidMessage='The input box must not be empty.'>
                         An Input Box
-            </Label>
+                    </Label>
                 </Input>
             </div>
         );

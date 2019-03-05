@@ -1,45 +1,49 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys/index';
+import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {PropsToOmitUtils} from '../../utils/react/PropsToOmitUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
+import {Omit} from '../../utils/TypescriptUtils';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
 
-export interface IInputOwnProps {
+type IInputNativeTagOwnProps = Omit<React.AllHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'>;
+
+export interface IInputAdditionalOwnProps {
     id?: string;
-    name?: string;
-    type?: string;
     classes?: IClassName;
     innerInputClasses?: IClassName;
-    defaultValue?: string;
-    placeholder?: string;
-    defaultChecked?: boolean;
-    readOnly?: boolean;
     validate?: (value: any) => boolean;
     labelTitle?: string;
     labelProps?: ILabelProps;
-    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-    onBlur?: (value: string) => void;
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
-    autoFocus?: boolean;
     disabledTooltip?: string;
-    minimum?: number;
-    maximum?: number;
+    minimum?: number; /* @deprecated use min instead */
+    maximum?: number; /* @deprecated use max instead */
+    onBlur?: (value: string) => void;
+    defaultValue?: string;
 }
 
-export interface IInputStateProps {
+export interface IInputNativeTagStateProps {
+    value?: string;
     checked?: boolean;
     disabled?: boolean;
-    value?: string;
+}
+
+export interface IInputAdditionalStateProps {
     valid?: boolean;
     indeterminate?: boolean;
 }
+
+export interface IInputStateProps extends IInputNativeTagStateProps, IInputAdditionalStateProps {}
 
 export interface IInputDispatchProps {
     onDestroy?: () => void;
@@ -48,7 +52,11 @@ export interface IInputDispatchProps {
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface IInputProps extends IInputOwnProps, IInputStateProps, IInputDispatchProps {}
+const inputPropsToOmit = keys<IInputAdditionalOwnProps & IInputAdditionalStateProps & IInputDispatchProps>();
+
+export interface IInputOwnProps extends IInputAdditionalOwnProps, IInputNativeTagOwnProps {}
+
+export interface IInputProps extends IInputOwnProps, Partial<IInputStateProps>, Partial<IInputDispatchProps> {}
 
 export interface IInputComponentState {
     valid: boolean;
@@ -62,6 +70,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         type: 'text',
         valid: true,
         labelTitle: '',
+        required: true,
     };
 
     constructor(props: IInputProps, state: IInputState) {
@@ -168,22 +177,14 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 key={this.props.id}
                 id={this.props.id}
                 className={innerInputClasses}
-                type={this.props.type}
                 defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
                 ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
                 onBlur={() => this.handleBlur()}
                 onChange={() => this.handleChange()}
                 onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
-                placeholder={this.props.placeholder}
-                checked={!!this.props.checked}
-                disabled={!!this.props.disabled}
-                name={this.props.name}
-                required
-                readOnly={!!this.props.readOnly}
-                autoFocus={!!this.props.autoFocus}
-                step={this.props.type === 'number' ? 'any' : null}
                 min={this.props.minimum}
                 max={this.props.maximum}
+                {..._.omit(this.props, [...PropsToOmitUtils.input, ...inputPropsToOmit])}
             />,
             this.getLabel(),
             this.props.children,
