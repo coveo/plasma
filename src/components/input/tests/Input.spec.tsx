@@ -230,14 +230,6 @@ describe('<Input />', () => {
             });
         });
 
-        it('should set the step prop to undefined if the input is of type number', () => {
-            shallowInput({
-                type: 'number',
-            });
-
-            expect(input.find('input').props().step).toBeUndefined();
-        });
-
         it('should set the autoFocus prop to the input', () => {
             shallowInput({
                 autoFocus: true,
