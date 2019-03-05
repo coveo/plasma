@@ -15,6 +15,14 @@
 }
 
 @for $i from 0 through 5 {
+  .w#{$i} {
+    width: $i * $spacing;
+  }
+
+  .h#{$i} {
+    height: $i * $spacing;
+  }
+
   .p#{$i} {
     padding: $i * $spacing;
   }
