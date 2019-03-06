@@ -14,6 +14,7 @@ import {
 const mapStateToProps = (state: IReactVaporState, ownProps: IModalCompositeOwnProps): IModalCompositeStateProps => ({
     withReduxState: true,
     isOpened: state.modals && state.modals.some((modal) => modal.id === ownProps.id && modal.isOpened),
+    layer: state.openModals ? state.openModals.indexOf(ownProps.id) + 1 : 0,
 });
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalCompositeOwnProps): IModalCompositeDispatchProps => ({
