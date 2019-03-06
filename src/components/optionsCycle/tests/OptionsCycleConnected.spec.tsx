@@ -1,14 +1,11 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {ShallowWrapper} from 'enzyme';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {Store} from 'redux';
-import * as _ from 'underscore';
+import {createMockStore, mockStore} from 'redux-test-utils';
 
 import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
-import {changeOptionsCycle} from '../OptionsCycleActions';
+import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps} from '../OptionsCycle';
+import {addOptionsCycle, changeOptionsCycle} from '../OptionsCycleActions';
 import {OptionsCycleConnected} from '../OptionsCycleConnected';
 
 describe('Options cycle', () => {
@@ -18,28 +15,21 @@ describe('Options cycle', () => {
     };
 
     describe('<OptionsCycleConnected />', () => {
-        let wrapper: ReactWrapper<any, any>;
-        let optionsCycle: ReactWrapper<IOptionsCycleProps, any>;
-        let store: Store<IReactVaporState>;
+        let optionsCycle: ShallowWrapper<IOptionsCycleProps>;
+        let store: mockStore<IReactVaporState>;
+
+        const shallowCycleWithProps = (props: Partial<IOptionsCycleProps & IOptionsCycleConnectedOwnProps> = {}) => {
+            return shallowWithStore(<OptionsCycleConnected {...optionsCycleBasicProps} {...props} />, store);
+        };
 
         beforeEach(() => {
-            store = TestUtils.buildStore();
-
-            wrapper = mount(
-                <Provider store={store}>
-                    <OptionsCycleConnected {...optionsCycleBasicProps} />
-                </Provider>,
-                {attachTo: document.getElementById('App')},
-            );
-            optionsCycle = wrapper.find(OptionsCycle).first();
-        });
-
-        afterEach(() => {
-            store.dispatch(clearState());
-            wrapper.detach();
+            store = createMockStore({
+                optionsCycles: [],
+            });
         });
 
         it('should get the current option as a prop', () => {
+            optionsCycle = shallowCycleWithProps();
             const currentOptionProp = optionsCycle.props().currentOption;
 
             expect(currentOptionProp).toBeDefined();
@@ -47,87 +37,95 @@ describe('Options cycle', () => {
         });
 
         it('should get what to do on render as a prop', () => {
+            optionsCycle = shallowCycleWithProps();
             const onRenderProp = optionsCycle.props().onRender;
 
             expect(onRenderProp).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {
+            optionsCycle = shallowCycleWithProps();
             const onDestroyProp = optionsCycle.props().onDestroy;
 
             expect(onDestroyProp).toBeDefined();
         });
 
         it('should get what to do on change as a prop', () => {
+            optionsCycle = shallowCycleWithProps();
             const onChangeProp = optionsCycle.props().onChange;
 
             expect(onChangeProp).toBeDefined();
         });
 
-        it('should return 0 for the currentOption when the options cycle does not exist in the state', () => {
-            store.dispatch(clearState());
-
-            expect(_.findWhere(store.getState().optionsCycles, {id: optionsCycleBasicProps.id})).toBeUndefined();
-            expect(optionsCycle.props().currentOption).toBe(0);
+        it('should add the optionCycle to the state when mounted', () => {
+            optionsCycle = shallowCycleWithProps().dive();
+            expect(store.isActionDispatched(addOptionsCycle(optionsCycleBasicProps.id, 0))).toBe(true);
         });
 
-        it('should return  the currentOption from the state when the options cycle exists in the state', () => {
-            const expectedCurrentOption = 5;
-
-            store.dispatch(changeOptionsCycle(optionsCycleBasicProps.id, expectedCurrentOption));
-            wrapper.update();
-
-            expect(wrapper.find(OptionsCycle).props().currentOption).toBe(expectedCurrentOption);
-        });
-
-        it('should call onRender prop when mounted', () => {
-            wrapper.unmount();
-            store.dispatch(clearState());
-
-            expect(store.getState().optionsCycles.length).toBe(0);
-
-            wrapper.mount();
-
-            expect(store.getState().optionsCycles.length).toBe(1);
+        it('should add the optionCycle to the state when mounted with the startAt', () => {
+            const startAt = 3;
+            optionsCycle = shallowCycleWithProps({startAt}).dive();
+            expect(store.isActionDispatched(addOptionsCycle(optionsCycleBasicProps.id, startAt))).toBe(true);
         });
 
         it('should set the currentOption to the startAt prop', () => {
             const expectedCurrentOption: number = 3;
-            const newProps = _.extend({}, optionsCycleBasicProps, {startAt: expectedCurrentOption});
-            wrapper.unmount();
-            store.dispatch(clearState());
+            optionsCycle = shallowCycleWithProps({startAt: expectedCurrentOption});
 
-            expect(store.getState().optionsCycles.length).toBe(0);
-
-            wrapper = mount(
-                <Provider store={store}>
-                    <OptionsCycleConnected {...newProps} />
-                </Provider>,
-                {attachTo: document.getElementById('App')},
-            );
-            optionsCycle = wrapper.find(OptionsCycle).first();
-
-            expect(_.findWhere(store.getState().optionsCycles, {id: optionsCycleBasicProps.id}).currentOption).toBe(expectedCurrentOption);
+            expect(optionsCycle.props().currentOption).toBe(expectedCurrentOption);
         });
 
-        it('should call onDestroy prop when will unmount', () => {
-            wrapper.unmount();
+        it('should remove the optionCycle from the state when the component is unmounted', () => {
+            optionsCycle = shallowCycleWithProps().dive();
+            optionsCycle.unmount();
 
             expect(store.getState().optionsCycles.length).toBe(0);
         });
 
-        it('should set the current option to the one sent when calling the onChange prop', () => {
-            let expectedCurrentOption = 5;
+        it('should dispatch a changeOptionsCycle when pressing the previous button', () => {
+            const startAt = 2;
+            const wrapper = shallowCycleWithProps({startAt}).dive();
+            wrapper.find('.previous-option').simulate('click');
 
-            optionsCycle.props().onChange(expectedCurrentOption);
+            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, startAt - 1))).toBe(true);
+        });
 
-            expect(_.findWhere(store.getState().optionsCycles, {id: optionsCycleBasicProps.id}).currentOption).toBe(expectedCurrentOption);
+        it('should dispatch a changeOptionsCycle when pressing the next button', () => {
+            const startAt = 2;
+            const wrapper = shallowCycleWithProps({startAt}).dive();
+            wrapper.find('.next-option').simulate('click');
 
-            expectedCurrentOption = 19;
+            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, startAt + 1))).toBe(true);
+        });
 
-            optionsCycle.props().onChange(expectedCurrentOption);
+        it('should dispatch a changeOptionsCycle by wrapping around when at 0 and the user press the previous button', () => {
+            const startAt = 0;
+            const wrapper = shallowCycleWithProps({startAt}).dive();
+            wrapper.find('.previous-option').simulate('click');
 
-            expect(_.findWhere(store.getState().optionsCycles, {id: optionsCycleBasicProps.id}).currentOption).toBe(expectedCurrentOption);
+            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1))).toBe(true);
+        });
+
+        it('should dispatch a changeOptionsCycle by wrapping around when at max and the user press the next button', () => {
+            const startAt = optionsCycleBasicProps.options.length - 1;
+            const wrapper = shallowCycleWithProps({startAt}).dive();
+            wrapper.find('.next-option').simulate('click');
+
+            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, 0))).toBe(true);
+        });
+
+        it('should disable the previous button when wrapAround is false and the cycle is at 0', () => {
+            const startAt = 0;
+            const wrapper = shallowCycleWithProps({startAt, wrapAround: false}).dive();
+
+            expect(wrapper.find('.previous-option').prop('disabled')).toBe(true);
+        });
+
+        it('should disable the next button when wrapAround is false and the cycle is at max', () => {
+            const startAt = optionsCycleBasicProps.options.length - 1;
+            const wrapper = shallowCycleWithProps({startAt, wrapAround: false}).dive();
+
+            expect(wrapper.find('.next-option').prop('disabled')).toBe(true);
         });
     });
 });
