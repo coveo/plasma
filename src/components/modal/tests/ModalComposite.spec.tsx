@@ -75,4 +75,18 @@ describe('ModalComposite', () => {
 
         expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
     });
+
+    it('should add a "layer-x" class to the modal overlay where x equals the layer prop value', () => {
+        const modalComposite = shallow(<ModalComposite isOpened layer={3} />);
+        const overlayClasses = modalComposite.find(ReactModal).props().overlayClassName as ReactModal.Classes;
+
+        expect(overlayClasses.base).toContain('layer-3');
+    });
+
+    it('should not add any "layer-x" class to the modal overlay when the layer is smaller than 1', () => {
+        const modalComposite = shallow(<ModalComposite isOpened layer={0} />);
+        const overlayClasses = modalComposite.find(ReactModal).props().overlayClassName as ReactModal.Classes;
+
+        expect(overlayClasses.base).not.toContain('layer-0');
+    });
 });
