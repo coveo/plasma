@@ -24,7 +24,9 @@ export interface IModalCompositeOwnProps extends IModalOwnProps, IModalHeaderOwn
     isPrompt?: boolean;
 }
 
-export interface IModalCompositeStateProps extends IReduxStatePossibleProps, IModalStateProps {}
+export interface IModalCompositeStateProps extends IReduxStatePossibleProps, IModalStateProps {
+    layer: number;
+}
 
 export interface IModalCompositeDispatchProps extends IModalDispatchProps, IModalHeaderDispatchProps {}
 
@@ -41,12 +43,18 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
                 key={this.props.id}
                 isOpen={this.props.isOpened}
                 className={{
-                    base: classNames('modal-container --react-modal', this.props.classes),
+                    base: classNames(
+                        'modal-container --react-modal',
+                        this.props.classes,
+                    ),
                     afterOpen: 'opened',
                     beforeClose: 'closed',
                 }}
                 overlayClassName={{
-                    base: 'modal-backdrop --react-modal',
+                    base: classNames(
+                        'modal-backdrop --react-modal',
+                        {[`layer-${this.props.layer}`]: this.props.layer > 0},
+                    ),
                     afterOpen: 'opened',
                     beforeClose: 'clear',
                 }}

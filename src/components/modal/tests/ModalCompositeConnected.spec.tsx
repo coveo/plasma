@@ -35,6 +35,13 @@ describe('<ModalCompositeConnected />', () => {
         expect(modalCompositeConnected.props().isOpened).toBe(true);
     });
 
+    it('should have the layer prop set to the position of the current modal in opened modal stack + 1', () => {
+        mockstore = createMockStore({openModals: ['meeeeehhh-I-m-a-sheep', basicProps.id, 'mooooohhh-I-m-a-cow']});
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore);
+
+        expect(modalCompositeConnected.props().layer).toBe(2);
+    });
+
     it('should dispatch an "ADD_MODAL" action when it mounts', () => {
         shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore).dive();
 
