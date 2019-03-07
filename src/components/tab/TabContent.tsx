@@ -1,13 +1,14 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 
-export interface ITabContentProps {}
+export interface ITabContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export class TabContent extends React.Component<ITabContentProps, any> {
+export class TabContent extends React.Component<ITabContentProps> {
 
     render() {
 
         return (
-            <div className='tab-content'>
+            <div className={classNames('tab-content', this.props.className)} {...this.props}>
                 {this.props.children}
             </div>
         );
