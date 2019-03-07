@@ -13,8 +13,8 @@
     }
   }
 
-  input {
-    padding-right: 22px;
+  &.input-field input, input {
+    padding-right: $multiline-input-padding-right;
   }
 
   label {
