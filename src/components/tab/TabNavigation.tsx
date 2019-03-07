@@ -1,13 +1,13 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 
-export interface ITabNavigationProps {}
+export interface ITabNavigationProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export class TabNavigation extends React.Component<ITabNavigationProps, any> {
+export class TabNavigation extends React.Component<ITabNavigationProps> {
 
     render() {
-
         return (
-            <div className='tab-navigation'>
+            <div className={classNames('tab-navigation', this.props.className)} {...this.props}>
                 {this.props.children}
             </div>
         );
