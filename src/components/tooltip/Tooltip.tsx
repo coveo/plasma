@@ -107,6 +107,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
             id={_.uniqueId('tooltip-')}
             ref={this.overlay}
             {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
+            className='react-vapor-tooltip'
         >
             {this.props.title}
             {tooltipFooter}
