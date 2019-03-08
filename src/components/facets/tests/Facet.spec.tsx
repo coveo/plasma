@@ -212,6 +212,30 @@ describe('Facets', () => {
                 expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
             });
 
+        it('should display the last facet if the component has one more facet than allowed', () => {
+            const multipleRows = [{name: '1', formattedName: '1'}, {name: '2', formattedName: '2'}, {name: '3', formattedName: '3'}];
+            const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows, selectedFacetRows: [], maxRowsToShow: multipleRows.length - 1});
+
+            facetComponent.setProps(newFacetAttributes);
+            facetComponent.mount();
+
+            expect(facetComponent.find('FacetMoreRows').length).toBe(0);
+            expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
+            expect(facetComponent.find('.facet-values').find(FacetRow).length).toBe(multipleRows.length);
+        });
+
+        it('should display the more if the component has two more facet than allowed', () => {
+            const multipleRows = [{name: '1', formattedName: '1'}, {name: '2', formattedName: '2'}, {name: '3', formattedName: '3'}];
+            const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows, selectedFacetRows: [], maxRowsToShow: multipleRows.length - 2});
+
+            facetComponent.setProps(newFacetAttributes);
+            facetComponent.mount();
+
+            expect(facetComponent.find('FacetMoreRows').length).toBe(1);
+            expect(facetComponent.find('FacetMoreToggle').length).toBe(1);
+            expect(facetComponent.find('.facet-values').find(FacetRow).length).toBe(multipleRows.length - 2);
+        });
+
         it('should have class "facet-open" if it has isOpened prop set to true', () => {
             const expectedClass = '.facet-opened';
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {isOpened: true, facetRows: [{name: 'a', formattedName: 'b'}]});
