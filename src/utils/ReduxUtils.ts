@@ -5,8 +5,8 @@ import {extend} from 'underscore';
 
 import {IReactVaporState} from '../ReactVapor';
 
-export type IThunkAction<R = any, S extends IReactVaporState = IReactVaporState> = ThunkAction<R, S, any, Redux.Action>;
-export type IDispatch<S extends IReactVaporState = IReactVaporState> = ThunkDispatch<S, any, Redux.Action>;
+export type IThunkAction<R = any, S extends IReactVaporState = IReactVaporState> = ThunkAction<R, S, any, IReduxAction<any>>;
+export type IDispatch<S extends IReactVaporState = IReactVaporState> = ThunkDispatch<S, any, IReduxAction<any>>;
 
 export class ReduxUtils {
     static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {

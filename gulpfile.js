@@ -58,14 +58,15 @@ gulp.task('internalDefs', false, () =>
             '**/*Examples*',
             '**/*Example*',
             '**/*.spec.*',
-            'src/utils/tests/TestUtils.tsx',
+            'src/utils/tests/**/*',
         ],
     }));
 
 gulp.task('cleanDefs', false, () =>
     gulp.src('dist/react-vapor.d.ts')
         .pipe(optimizeDeclarations({
-            moduleName: 'ReactVapor',
+            libraryName: 'ReactVapor',
+            externalTypesToExport: ['redux-thunk'],
             internalImportPaths: ['src/'],
         }))
         .pipe(gulp.dest('dist'))
