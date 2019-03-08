@@ -15,9 +15,21 @@
     "sourceMap": true,
     "target": "ES5",
     "plugins": [
-      {"transform": "ts-transformer-keys/transformer"}
+      {
+        "transform": "ts-transformer-keys/transformer"
+      }
     ],
-    "lib": ["es2015", "dom"]
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/@types/*",
+        "*"
+      ]
+    },
   },
   "include": [
     "src/**/*.tsx",
@@ -26,7 +38,7 @@
   ],
   "exclude": [
     "src/**/*.spec.*",
-      "src/utils/tests/TestUtils.tsx",
+    "src/utils/tests/TestUtils.tsx",
     "src/components/tables/tests/TableTestCommon.tsx"
   ]
 }
