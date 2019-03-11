@@ -8,6 +8,10 @@ const TAB1_ID = 'tab1';
 const TAB2_ID = 'tab2';
 const TAB3_ID = 'tab3';
 
+const TAB11_ID = 'tab11';
+const TAB22_ID = 'tab22';
+const TAB33_ID = 'tab33';
+
 export class TabsExamples extends React.Component<any, any> {
 
     render() {
@@ -36,6 +40,34 @@ export class TabsExamples extends React.Component<any, any> {
                                 <div className='mod-header-padding mod-form-top-bottom-padding'>
                                     Last tab.
                 </div>
+                            </TabPaneConnected>
+                        </TabContent>
+                    </div>
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>Tabs with custom attributes on element (use the inspector to see changes)</label>
+                    <div>
+                        <TabNavigation className={'test'} style={{backgroundColor: 'grey'}}>
+                            <TabConnected id={TAB11_ID} title='A Tab' />
+                            <TabConnected id={TAB22_ID} title='Another Tab' />
+                            <TabConnected id={TAB33_ID} title='Yet Another Tab' />
+                        </TabNavigation>
+                        <TabContent className={'poils'}>
+                            <TabPaneConnected id={TAB11_ID}>
+                                <div className='mod-header-padding mod-form-top-bottom-padding'>
+                                    Content of the first tab.
+                                </div>
+                            </TabPaneConnected>
+                            <TabPaneConnected id={TAB22_ID}>
+                                <div className='mod-header-padding mod-form-top-bottom-padding'>
+                                    Content of the second tab.
+                                </div>
+                            </TabPaneConnected>
+                            <TabPaneConnected id={TAB33_ID}>
+                                <div className='mod-header-padding mod-form-top-bottom-padding'>
+                                    Last tab.
+                                </div>
                             </TabPaneConnected>
                         </TabContent>
                     </div>

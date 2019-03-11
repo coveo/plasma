@@ -8,7 +8,7 @@ export class TabContent extends React.Component<ITabContentProps> {
     render() {
 
         return (
-            <div className={classNames('tab-content', this.props.className)} {...this.props}>
+            <div {...this.props} className={classNames('tab-content', this.props.className)} >
                 {this.props.children}
             </div>
         );
