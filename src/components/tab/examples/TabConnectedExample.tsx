@@ -48,12 +48,12 @@ export class TabsExamples extends React.Component<any, any> {
                 <div className='form-group'>
                     <label className='form-control-label'>Tabs with custom attributes on element (use the inspector to see changes)</label>
                     <div>
-                        <TabNavigation className={'test'} style={{backgroundColor: 'grey'}}>
+                        <TabNavigation className={'tab-navigation-custom-class'} style={{backgroundColor: 'grey'}}>
                             <TabConnected id={TAB11_ID} title='A Tab' />
                             <TabConnected id={TAB22_ID} title='Another Tab' />
                             <TabConnected id={TAB33_ID} title='Yet Another Tab' />
                         </TabNavigation>
-                        <TabContent className={'poils'}>
+                        <TabContent className={'tab-content-custom-class'}>
                             <TabPaneConnected id={TAB11_ID}>
                                 <div className='mod-header-padding mod-form-top-bottom-padding'>
                                     Content of the first tab.
