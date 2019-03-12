@@ -6,8 +6,8 @@ gulp.task('palette', 'Generates the palette map with all the color variables', (
     const paletteMap = fs.readFileSync('./scss/common/palette.scss', 'utf8')
         .match(/\$.+(?=:)/g)
         .reduce(
-        (partialPalette, sassVariable) => `${partialPalette}    ${sassVariable.slice(1)}: ${sassVariable},\n`,
-        '$palette: (\n'
+            (partialPalette, sassVariable) => `${partialPalette}    ${sassVariable.slice(1)}: ${sassVariable},\n`,
+            '$palette: (\n'
         )
         .concat(');\n');
 

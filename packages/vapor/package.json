@@ -63,9 +63,9 @@
     "png-sprite": "0.1.1",
     "pre-commit": "1.2.2",
     "require-dir": "0.3.2",
-    "tsjs": "0.5.x",
-    "underscore": "1.8.3",
-    "underscore.string": "3.3.4"
+    "tsjs": "0.7.x",
+    "underscore": "1.9.1",
+    "underscore.string": "3.3.5"
   },
   "files": [
     "dist",
