@@ -7,7 +7,7 @@ export class TabNavigation extends React.Component<ITabNavigationProps> {
 
     render() {
         return (
-            <div className={classNames('tab-navigation', this.props.className)} {...this.props}>
+            <div {...this.props} className={classNames('tab-navigation', this.props.className)}>
                 {this.props.children}
             </div>
         );
