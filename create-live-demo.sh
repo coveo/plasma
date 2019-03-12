@@ -13,9 +13,9 @@ git add .
 git commit -m "live demo at https://coveo.github.io/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/" --no-verify
 
 echo "Syncing with gh-pages from branch: $TRAVIS_PULL_REQUEST_BRANCH"
-git pull --no-edit --strategy-option ours SSH_REPO gh-pages
+git pull --no-edit --strategy-option ours "$SSH_REPO" gh-pages
 
 echo "Pushing live demo to gh-pages for branch: $TRAVIS_PULL_REQUEST_BRANCH"
-git push -f SSH_REPO "$SHA:gh-pages"
+git push -f "$SSH_REPO" "$SHA:gh-pages"
 
 node ./create-live-demo.js
