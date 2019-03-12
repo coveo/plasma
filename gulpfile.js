@@ -1,11 +1,7 @@
 const del = require('del');
 const dtsGenerator = require('dts-generator');
-const gulp = require('gulp-help')(require('gulp'));
+const gulp = require('gulp');
 const gutil = require('gulp-util');
-const Karma = require('karma').Server;
-const path = require('path');
-const remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul');
-const runSequence = require('gulp-sequence');
 const optimizeDeclarations = require('dts-generator-optimizer');
 
 // <editor-fold desc="Clean">
@@ -16,19 +12,19 @@ const clean = (paths, done) => {
     });
 };
 
-gulp.task('clean:dist', false, (done) => {
+gulp.task('clean:dist', (done) => {
     clean(['dist'], done);
 });
 
-gulp.task('clean:docs', false, (done) => {
+gulp.task('clean:docs', (done) => {
     clean(['docs/assets'], done);
 });
 
-gulp.task('clean:tests', false, (done) => {
+gulp.task('clean:tests', (done) => {
     clean(['coverage'], done);
 });
 
-gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests'], (done) => {
+gulp.task('clean', gulp.parallel('clean:dist', 'clean:docs', 'clean:tests'), (done) => {
     if (gutil.env.all === true) {
         clean([
             '**/*.orig',
@@ -42,11 +38,7 @@ gulp.task('clean', 'Clean all', ['clean:dist', 'clean:docs', 'clean:tests'], (do
 // </editor-fold>
 
 // <editor-fold desc="Typescript d.ts generation">
-gulp.task('ts:definitions', 'Generate the project definition file', (done) => {
-    runSequence('internalDefs', 'cleanDefs', done);
-});
-
-gulp.task('internalDefs', false, () =>
+gulp.task('internalDefs', () =>
     dtsGenerator.default({
         project: './',
         out: 'dist/react-vapor.d.ts',
@@ -62,7 +54,7 @@ gulp.task('internalDefs', false, () =>
         ],
     }));
 
-gulp.task('cleanDefs', false, () =>
+gulp.task('cleanDefs', () =>
     gulp.src('dist/react-vapor.d.ts')
         .pipe(optimizeDeclarations({
             libraryName: 'ReactVapor',
@@ -71,42 +63,7 @@ gulp.task('cleanDefs', false, () =>
         }))
         .pipe(gulp.dest('dist'))
 );
+gulp.task('ts:definitions', gulp.series('internalDefs', 'cleanDefs'));
 // </editor-fold>
 
-// <editor-fold desc="Unit tests">
-const runTests = (done, singleRun, browser) => {
-    new Karma({
-        configFile: path.resolve('karma.conf.js'),
-        browsers: [browser],
-        singleRun,
-    }, done).start();
-};
-
-gulp.task('test:single', false, (done) => {
-    runTests(done, true, 'ChromeHeadless');
-});
-
-gulp.task('test:remap', false, () =>
-    gulp.src('./coverage/coverage.json')
-        .pipe(remapIstanbul({
-            reports: {
-                html: 'coverage/report',
-            },
-        })));
-
-gulp.task('test', 'Run all tests and exit', (done) => {
-    runSequence('test:single', 'test:remap', done);
-});
-
-gulp.task('test:browser', 'Run all tests directly in Chrome browser and watch', (done) => {
-    runTests(done, false, 'Chrome');
-});
-
-gulp.task('test:watch', 'Run all tests and watch', (done) => {
-    runTests(done, false, 'PhantomJS');
-});
-// </editor-fold>
-
-gulp.task('default', 'Clean, and compile the project', (done) => {
-    runSequence('clean:dist', 'ts:definitions', done);
-});
+gulp.task('default', gulp.series('clean:dist', 'ts:definitions'));
