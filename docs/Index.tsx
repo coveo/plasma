@@ -44,6 +44,7 @@ import {
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
 import {DiffViewerExamples} from '../src/components/diffViewer/examples/DiffViewerExamples';
+import {DropExamples} from '../src/components/drop/examples/DropExamples';
 import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
 import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
@@ -114,7 +115,6 @@ import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
-import {TooltipsHOCExamples} from '../src/components/tooltips-hoc/examples/TooltipsHOCExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
 import {Defaults} from '../src/Defaults';
 import {ComponentWithEditingExampleHOC} from '../src/hoc/withEditing/examples/withEditingExamples';
@@ -273,7 +273,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
         {component: MultilineBoxExamples, componentName: 'MultilineBox'},
-        {component: TooltipsHOCExamples, componentName: 'TooltipsHOC'},
+        {component: DropExamples, componentName: 'Drop'},
     ];
 
     constructor(props: {}, state: AppState) {

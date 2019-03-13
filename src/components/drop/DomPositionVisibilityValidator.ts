@@ -1,6 +1,6 @@
 import {CSSProperties} from 'react';
 
-export const positionValidator: {[position: string]: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect, window: Window) => Partial<CSSProperties>} = {
+export const DomPositionVisibilityValidator: {[position: string]: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect, window: Window) => Partial<CSSProperties>} = {
     bottom: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect, window: Window): Partial<CSSProperties> => {
         if (boxOffset.bottom + tooltipOffset.height < window.innerHeight) {
             if (boxOffset.left + tooltipOffset.width < window.innerWidth) {
