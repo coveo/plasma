@@ -13,7 +13,7 @@ export const DropPodPosition = {
 export interface IDropPodProps {
     isOpen: boolean;
     positions?: string[];
-    renderTooltip: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>) => React.ReactNode;
+    renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>) => React.ReactNode;
     selector?: string;
 }
 
@@ -65,7 +65,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
             let index = 0;
             while (_.isEmpty(style) && index < this.props.positions.length) {
-                style = DomPositionVisibilityValidator[this.props.positions[index]](this.state.offset, tooltipOffset, window) || {};
+                const validator = DomPositionVisibilityValidator[this.props.positions[index]];
+                style = validator && validator(this.state.offset, tooltipOffset, window) || {};
                 index += 1;
             }
         }
@@ -78,17 +79,13 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     render() {
-        const tooltip: React.ReactNode = this.props.renderTooltip({
+        const tooltip: React.ReactNode = this.props.renderDrop({
             position: 'absolute',
             display: 'inline-block',
             ...this.getStyle(),
         }, this.tooltip);
 
-        return ReactDOM.createPortal((
-            <>
-                {tooltip}
-            </>
-        ), document.querySelector(this.props.selector));
+        return ReactDOM.createPortal(tooltip, document.querySelector(this.props.selector));
     }
 }
 

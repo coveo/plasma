@@ -30,7 +30,7 @@ export class DropExamples extends React.PureComponent {
                     <label className='form-control-label'>Default tooltip</label>
                     <div className='form-control'>
                         <Drop
-                            buttonContainer={{
+                            buttonContainerProps={{
                                 className: 'inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (
@@ -51,7 +51,7 @@ export class DropExamples extends React.PureComponent {
                     <div className='form-control'>
                         <Drop
                             positions={[DropPodPosition.left, DropPodPosition.right]}
-                            buttonContainer={{
+                            buttonContainerProps={{
                                 className: 'right inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (
@@ -90,7 +90,7 @@ export class DropExamples extends React.PureComponent {
                     <div className='form-control'>
                         <Drop
                             positions={[DropPodPosition.top, DropPodPosition.bottom]}
-                            buttonContainer={{
+                            buttonContainerProps={{
                                 className: 'inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (
@@ -110,7 +110,7 @@ export class DropExamples extends React.PureComponent {
                     <div className='form-control'>
                         <Drop
                             positions={[]}
-                            buttonContainer={{
+                            buttonContainerProps={{
                                 className: 'right inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (
@@ -131,7 +131,7 @@ export class DropExamples extends React.PureComponent {
                     <div className='form-control'>
                         <Drop
                             positions={[DropPodPosition.right, DropPodPosition.left, DropPodPosition.bottom]}
-                            buttonContainer={{
+                            buttonContainerProps={{
                                 className: 'inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (

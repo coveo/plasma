@@ -3,9 +3,9 @@ import * as ReactDOM from 'react-dom';
 import {DropPod} from './DropPod';
 
 export interface IDropProps {
-    buttonContainer?: React.HTMLProps<HTMLDivElement>;
-    listContainer?: React.HTMLAttributes<HTMLDivElement>;
     renderOpenButton: (onClick: () => void) => React.ReactNode;
+    buttonContainerProps?: React.HTMLProps<HTMLDivElement>;
+    listContainerProps?: React.HTMLAttributes<HTMLDivElement>;
     closeOnClick?: boolean;
     positions?: string[];
     selector?: string;
@@ -44,12 +44,12 @@ export class Drop extends React.PureComponent<IDropProps, IDropState> {
             <>
                 <div
                     ref={this.button}
-                    {...this.props.buttonContainer}
+                    {...this.props.buttonContainerProps}
                 >
                     {this.props.renderOpenButton(this.onClick)}
                 </div>
                 {this.createPortalMenu()}
-            </>
+            </React.Fragment>
         );
     }
 
@@ -60,7 +60,7 @@ export class Drop extends React.PureComponent<IDropProps, IDropState> {
                 isOpen={this.state.isOpen}
                 ref={this.button}
                 renderTooltip={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
-                    <div style={style} ref={dropRef} {...this.props.listContainer}>
+                    <div style={style} ref={dropRef} {...this.props.listContainerProps}>
                         {this.props.children}
                     </div>
                 )}
