@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {DropPod} from './DropPod';
 
-export interface IMultiChoiceButtonListProps {
+export interface ITooltipHOCProps {
     buttonContainer?: React.HTMLAttributes<HTMLDivElement>;
     listContainer?: React.HTMLAttributes<HTMLDivElement>;
     renderOpenButton: (onClick: () => void) => React.ReactNode;
@@ -11,18 +11,18 @@ export interface IMultiChoiceButtonListProps {
     selector?: string;
 }
 
-export interface IMultiChoiceButtonListState {
+export interface ITooltipHOCState {
     isOpen: boolean;
 }
 
-export class TooltipHOC extends React.PureComponent<IMultiChoiceButtonListProps, IMultiChoiceButtonListState> {
+export class TooltipHOC extends React.PureComponent<ITooltipHOCProps, ITooltipHOCState> {
     readonly button: React.RefObject<HTMLDivElement>;
 
-    static defaultProps: Partial<IMultiChoiceButtonListProps> = {
+    static defaultProps: Partial<ITooltipHOCProps> = {
         closeOnClick: true,
     };
 
-    constructor(props: IMultiChoiceButtonListProps, state: IMultiChoiceButtonListState) {
+    constructor(props: ITooltipHOCProps, state: ITooltipHOCState) {
         super(props, state);
 
         this.button = React.createRef();
