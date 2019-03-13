@@ -114,6 +114,7 @@ import {TitleExamples} from '../src/components/title/examples/TitleExamples';
 import {ToastConnectedExamples} from '../src/components/toast/examples/ToastConnectedExamples';
 import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
+import {TooltipsHOCExamples} from '../src/components/tooltips-hoc/examples/TooltipsHOCExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
 import {Defaults} from '../src/Defaults';
 import {ComponentWithEditingExampleHOC} from '../src/hoc/withEditing/examples/withEditingExamples';
@@ -272,6 +273,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
         {component: MultilineBoxExamples, componentName: 'MultilineBox'},
+        {component: TooltipsHOCExamples, componentName: 'TooltipsHOC'},
     ];
 
     constructor(props: {}, state: AppState) {
