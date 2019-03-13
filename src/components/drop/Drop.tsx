@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {DropPod} from './DropPod';
 
-export interface ITooltipHOCProps {
-    buttonContainer?: React.HTMLAttributes<HTMLDivElement>;
+export interface IDropProps {
+    buttonContainer?: React.HTMLProps<HTMLDivElement>;
     listContainer?: React.HTMLAttributes<HTMLDivElement>;
     renderOpenButton: (onClick: () => void) => React.ReactNode;
     closeOnClick?: boolean;
@@ -11,18 +11,18 @@ export interface ITooltipHOCProps {
     selector?: string;
 }
 
-export interface ITooltipHOCState {
+export interface IDropState {
     isOpen: boolean;
 }
 
-export class TooltipHOC extends React.PureComponent<ITooltipHOCProps, ITooltipHOCState> {
+export class Drop extends React.PureComponent<IDropProps, IDropState> {
     readonly button: React.RefObject<HTMLDivElement>;
 
-    static defaultProps: Partial<ITooltipHOCProps> = {
+    static defaultProps: Partial<IDropProps> = {
         closeOnClick: true,
     };
 
-    constructor(props: ITooltipHOCProps, state: ITooltipHOCState) {
+    constructor(props: IDropProps, state: IDropState) {
         super(props, state);
 
         this.button = React.createRef();
@@ -46,7 +46,7 @@ export class TooltipHOC extends React.PureComponent<ITooltipHOCProps, ITooltipHO
                     ref={this.button}
                     {...this.props.buttonContainer}
                 >
-                    {this.props.renderOpenButton(() => this.onClick())}
+                    {this.props.renderOpenButton(this.onClick)}
                 </div>
                 {this.createPortalMenu()}
             </>
@@ -58,9 +58,9 @@ export class TooltipHOC extends React.PureComponent<ITooltipHOCProps, ITooltipHO
             <DropPod
                 positions={this.props.positions}
                 isOpen={this.state.isOpen}
-                buttonRef={this.button}
-                renderTooltip={(style: React.CSSProperties, containerRef: React.RefObject<HTMLDivElement>) => (
-                    <div style={style} ref={containerRef} {...this.props.listContainer}>
+                ref={this.button}
+                renderTooltip={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
+                    <div style={style} ref={dropRef} {...this.props.listContainer}>
                         {this.props.children}
                     </div>
                 )}
@@ -68,8 +68,8 @@ export class TooltipHOC extends React.PureComponent<ITooltipHOCProps, ITooltipHO
         );
     }
 
-    private onClick() {
-        this.setState((state) => ({
+    private onClick = () => {
+        this.setState((state: IDropState) => ({
             isOpen: !state.isOpen,
         }));
     }
