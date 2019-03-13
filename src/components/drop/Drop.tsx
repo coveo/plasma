@@ -49,7 +49,7 @@ export class Drop extends React.PureComponent<IDropProps, IDropState> {
                     {this.props.renderOpenButton(this.onClick)}
                 </div>
                 {this.createPortalMenu()}
-            </React.Fragment>
+            </>
         );
     }
 
@@ -59,7 +59,7 @@ export class Drop extends React.PureComponent<IDropProps, IDropState> {
                 positions={this.props.positions}
                 isOpen={this.state.isOpen}
                 ref={this.button}
-                renderTooltip={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
+                renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
                     <div style={style} ref={dropRef} {...this.props.listContainerProps}>
                         {this.props.children}
                     </div>

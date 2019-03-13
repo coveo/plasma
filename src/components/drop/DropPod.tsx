@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
+import {Defaults} from '../../Defaults';
 import {DomPositionVisibilityValidator} from './DomPositionVisibilityValidator';
 
 export const DropPodPosition = {
@@ -29,7 +30,6 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     readonly tooltip: React.RefObject<HTMLElement>;
 
     static defaultProps: Partial<IDropPodProps> = {
-        selector: '#App',
         isOpen: false,
         positions: [DropPodPosition.right, DropPodPosition.bottom, DropPodPosition.top, DropPodPosition.left],
     };
@@ -79,13 +79,14 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     render() {
+        const selector: any = this.props.selector || Defaults.DROP_ROOT;
         const tooltip: React.ReactNode = this.props.renderDrop({
             position: 'absolute',
             display: 'inline-block',
             ...this.getStyle(),
         }, this.tooltip);
 
-        return ReactDOM.createPortal(tooltip, document.querySelector(this.props.selector));
+        return ReactDOM.createPortal(tooltip, document.querySelector(selector));
     }
 }
 

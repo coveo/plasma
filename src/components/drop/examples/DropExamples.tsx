@@ -30,6 +30,7 @@ export class DropExamples extends React.PureComponent {
                     <label className='form-control-label'>Default tooltip</label>
                     <div className='form-control'>
                         <Drop
+                            selector={'#App'}
                             buttonContainerProps={{
                                 className: 'inline-block',
                             }}
@@ -50,6 +51,7 @@ export class DropExamples extends React.PureComponent {
                     <label className='form-control-label'>Tooltip with list position left</label>
                     <div className='form-control'>
                         <Drop
+                            selector={'#App'}
                             positions={[DropPodPosition.left, DropPodPosition.right]}
                             buttonContainerProps={{
                                 className: 'right inline-block',
@@ -71,6 +73,7 @@ export class DropExamples extends React.PureComponent {
                     <label className='form-control-label'>Tooltip with list position bottom</label>
                     <div className='form-control'>
                         <Drop
+                            selector={'#App'}
                             positions={[DropPodPosition.bottom, DropPodPosition.top]}
                             renderOpenButton={(onClick: () => void) => (
                                 <Button
@@ -89,6 +92,7 @@ export class DropExamples extends React.PureComponent {
                     <label className='form-control-label'>Tooltip with list position top</label>
                     <div className='form-control'>
                         <Drop
+                            selector={'#App'}
                             positions={[DropPodPosition.top, DropPodPosition.bottom]}
                             buttonContainerProps={{
                                 className: 'inline-block',
@@ -109,6 +113,7 @@ export class DropExamples extends React.PureComponent {
                     <label className='form-control-label'>Tooltip: no position. no toolip</label>
                     <div className='form-control'>
                         <Drop
+                            selector={'#App'}
                             positions={[]}
                             buttonContainerProps={{
                                 className: 'right inline-block',
@@ -130,6 +135,7 @@ export class DropExamples extends React.PureComponent {
                     <label className='form-control-label'>Tooltip with list position right with long text</label>
                     <div className='form-control'>
                         <Drop
+                            selector={'#App'}
                             positions={[DropPodPosition.right, DropPodPosition.left, DropPodPosition.bottom]}
                             buttonContainerProps={{
                                 className: 'inline-block',
