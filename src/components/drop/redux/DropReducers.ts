@@ -6,7 +6,7 @@ export interface IDropCompositeState extends IDropPayload {}
 
 export const dropInitialState: IDropCompositeState = {id: undefined, isOpen: false};
 
-export const dropCompositeReducer = (
+export const dropReducer = (
     state: IDropCompositeState = dropInitialState,
     action: IReduxAction<IDropPayload>,
 ): IDropCompositeState => {

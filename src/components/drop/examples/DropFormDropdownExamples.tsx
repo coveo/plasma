@@ -4,7 +4,7 @@ import {Button} from '../../button/Button';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
 import {Drop} from '../Drop';
-import {dropFormDropdown} from '../hoc/DropWithDropdown';
+import {dropFormDropdown} from '../hoc/DropFormDropdown';
 
 const DropFormDropdownExamples1 = _.compose(
     dropFormDropdown(),

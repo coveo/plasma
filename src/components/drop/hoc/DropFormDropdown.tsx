@@ -9,16 +9,16 @@ import {IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
 import {DropPodPosition} from '../DropPod';
 import {DropSelectors} from '../redux/DropReducers';
 
-type TooltipWithDropdownComponent<T = any> = React.ComponentClass<IDropProps>;
+type DropFormDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
 
 const mapStateToProps = (state: IReactVaporState, {id}: IDropOwnProps): IDropStateProps => ({
     isOpen: DropSelectors.isOpen(state, {id}),
 });
 
-export const dropFormDropdown = (supplier: ConfigSupplier = {}) => (Component: TooltipWithDropdownComponent): TooltipWithDropdownComponent => {
+export const dropFormDropdown = (supplier: ConfigSupplier = {}) => (Component: DropFormDropdownComponent): DropFormDropdownComponent => {
 
     @ReduxConnect(mapStateToProps)
-    class DropWithDropdown extends React.PureComponent<IDropProps> {
+    class DropFormDropdown extends React.PureComponent<IDropProps> {
 
         static defaultProps = {
             positions: [DropPodPosition.bottom, DropPodPosition.top],
@@ -37,5 +37,5 @@ export const dropFormDropdown = (supplier: ConfigSupplier = {}) => (Component: T
         }
     }
 
-    return DropWithDropdown;
+    return DropFormDropdown;
 };
