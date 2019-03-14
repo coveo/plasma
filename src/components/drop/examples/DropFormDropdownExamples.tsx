@@ -10,7 +10,7 @@ const DropFormDropdownExamples1 = _.compose(
     dropFormDropdown(),
 )(Drop);
 
-export class DropFromDropdownExamples extends React.PureComponent {
+export class DropFormDropdownExamples extends React.PureComponent {
 
     render() {
         const triggerAlertFunction = () => {
@@ -27,7 +27,7 @@ export class DropFromDropdownExamples extends React.PureComponent {
         return (
             <div className='mt2'>
                 <div className='form-group'>
-                    <label className='form-control-label'>Default drop with dropdown</label>
+                    <label className='form-control-label'>Default drop form dropdown</label>
                     <div className='form-control pt5'>
                         <DropFormDropdownExamples1
                             buttonContainer={{
