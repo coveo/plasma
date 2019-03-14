@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
@@ -27,9 +28,10 @@ export class DropExamples extends React.PureComponent {
         return (
             <div className='mt2'>
                 <div className='form-group'>
-                    <label className='form-control-label'>Default tooltip</label>
+                    <label className='form-control-label'>Default drop</label>
                     <div className='form-control'>
                         <Drop
+                            id={UUID.generate()}
                             selector={'#App'}
                             buttonContainerProps={{
                                 className: 'inline-block',
@@ -48,9 +50,10 @@ export class DropExamples extends React.PureComponent {
                     </div>
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Tooltip with list position left</label>
+                    <label className='form-control-label'>Drop with list position left</label>
                     <div className='form-control'>
                         <Drop
+                            id={UUID.generate()}
                             selector={'#App'}
                             positions={[DropPodPosition.left, DropPodPosition.right]}
                             buttonContainerProps={{
@@ -70,9 +73,10 @@ export class DropExamples extends React.PureComponent {
                     </div>
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Tooltip with list position bottom</label>
+                    <label className='form-control-label'>Drop with list position bottom</label>
                     <div className='form-control'>
                         <Drop
+                            id={UUID.generate()}
                             selector={'#App'}
                             positions={[DropPodPosition.bottom, DropPodPosition.top]}
                             renderOpenButton={(onClick: () => void) => (
@@ -89,9 +93,10 @@ export class DropExamples extends React.PureComponent {
                     </div>
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Tooltip with list position top</label>
+                    <label className='form-control-label'>Drop with list position top</label>
                     <div className='form-control'>
                         <Drop
+                            id={UUID.generate()}
                             selector={'#App'}
                             positions={[DropPodPosition.top, DropPodPosition.bottom]}
                             buttonContainerProps={{
@@ -110,9 +115,10 @@ export class DropExamples extends React.PureComponent {
                     </div>
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Tooltip: no position. no toolip</label>
+                    <label className='form-control-label'>Drop: no position. no toolip</label>
                     <div className='form-control'>
                         <Drop
+                            id={UUID.generate()}
                             selector={'#App'}
                             positions={[]}
                             buttonContainerProps={{
@@ -132,9 +138,10 @@ export class DropExamples extends React.PureComponent {
                     </div>
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Tooltip with list position right with long text</label>
+                    <label className='form-control-label'>Drop with list position right with long text</label>
                     <div className='form-control'>
                         <Drop
+                            id={UUID.generate()}
                             selector={'#App'}
                             positions={[DropPodPosition.right, DropPodPosition.left, DropPodPosition.bottom]}
                             buttonContainerProps={{

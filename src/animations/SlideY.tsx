@@ -4,12 +4,20 @@
 import * as React from 'react';
 import Transition, {TransitionProps} from 'react-transition-group/Transition';
 
-export interface SlideYProps extends TransitionProps {
+export interface SlideYProps extends Partial<TransitionProps> {
     duration?: number;
 }
 
-export class SlideY extends React.Component<TransitionProps, {}> {
+export class SlideY extends React.PureComponent<SlideYProps> {
     private el: HTMLElement;
+
+    static defaultTimeout: number = 200;
+    static defaultDuration: number = 200;
+
+    static defaultProps: Partial<SlideYProps> = {
+        timeout: SlideY.defaultTimeout,
+        duration: SlideY.defaultDuration,
+    };
 
     componentDidMount() {
         if (this.props.in) {

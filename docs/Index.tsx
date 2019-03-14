@@ -45,6 +45,7 @@ import {DatesSelectionConnectedExamples} from '../src/components/datePicker/exam
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
 import {DiffViewerExamples} from '../src/components/diffViewer/examples/DiffViewerExamples';
 import {DropExamples} from '../src/components/drop/examples/DropExamples';
+import {DropFromDropdownExamples} from '../src/components/drop/examples/DropFromDropdownExamples';
 import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
 import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
@@ -274,6 +275,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
         {component: MultilineBoxExamples, componentName: 'MultilineBox'},
         {component: DropExamples, componentName: 'Drop'},
+        {component: DropFromDropdownExamples, componentName: 'DropFormDropdown'},
     ];
 
     constructor(props: {}, state: AppState) {

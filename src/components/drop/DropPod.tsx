@@ -27,7 +27,7 @@ export interface IDropPodState {
 }
 
 class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
-    readonly tooltip: React.RefObject<HTMLElement>;
+    readonly dropRef: React.RefObject<HTMLElement>;
 
     static defaultProps: Partial<IDropPodProps> = {
         isOpen: false,
@@ -37,7 +37,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     constructor(props: IDropPodProps, state: IDropPodState) {
         super(props, state);
 
-        this.tooltip = React.createRef();
+        this.dropRef = React.createRef();
         this.state = {
             offset: undefined,
         };
@@ -60,8 +60,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
     private getStyle(): React.CSSProperties {
         let style: Partial<React.CSSProperties> = {};
-        if (this.tooltip.current && this.state.offset) {
-            const tooltipOffset: ClientRect | DOMRect = this.tooltip.current.getBoundingClientRect();
+        if (this.dropRef.current && this.state.offset) {
+            const tooltipOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
 
             let index = 0;
             while (_.isEmpty(style) && index < this.props.positions.length) {
@@ -80,13 +80,13 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
     render() {
         const selector: any = this.props.selector || Defaults.DROP_ROOT;
-        const tooltip: React.ReactNode = this.props.renderDrop({
+        const drop: React.ReactNode = this.props.renderDrop({
             position: 'absolute',
             display: 'inline-block',
             ...this.getStyle(),
-        }, this.tooltip);
+        }, this.dropRef);
 
-        return ReactDOM.createPortal(tooltip, document.querySelector(selector));
+        return ReactDOM.createPortal(drop, document.querySelector(selector));
     }
 }
 
