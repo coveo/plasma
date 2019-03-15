@@ -1,13 +1,19 @@
 const del = require('del');
 const dtsGenerator = require('dts-generator');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
+const colors = require('ansi-colors');
+const log = require('fancy-log');
+const parseArgs = require('minimist');
 const optimizeDeclarations = require('dts-generator-optimizer');
+
+const argv = parseArgs(process.argv.slice(2), {boolean: 'all'});
+const cleanAll = argv.all;
+console.dir(argv);
 
 // <editor-fold desc="Clean">
 const clean = (paths, done) => {
     del(paths, {force: true}).then((deletedFiles) => {
-        gutil.log(gutil.colors.green('Files deleted:'), deletedFiles.join(', '));
+        log(colors.green('Files deleted:'), deletedFiles.join(', '));
         done();
     });
 };
@@ -24,8 +30,8 @@ gulp.task('clean:tests', (done) => {
     clean(['coverage'], done);
 });
 
-gulp.task('clean', gulp.parallel('clean:dist', 'clean:docs', 'clean:tests'), (done) => {
-    if (gutil.env.all === true) {
+gulp.task('clean:others', (done) => {
+    if (cleanAll) {
         clean([
             '**/*.orig',
             '**/*.rej',
@@ -35,6 +41,8 @@ gulp.task('clean', gulp.parallel('clean:dist', 'clean:docs', 'clean:tests'), (do
         done();
     }
 });
+
+gulp.task('clean', gulp.series(gulp.parallel('clean:dist', 'clean:docs', 'clean:tests'), 'clean:others'));
 // </editor-fold>
 
 // <editor-fold desc="Typescript d.ts generation">
