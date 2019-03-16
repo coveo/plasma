@@ -132,7 +132,7 @@
     "karma-source-map-support": "1.3.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "3.0.5",
-    "lorem-ipsum": "1.0.6",
+    "lorem-ipsum": "2.0.0",
     "merge-stream": "1.0.1",
     "moment": "2.22.2",
     "node-sass": "4.11.0",
