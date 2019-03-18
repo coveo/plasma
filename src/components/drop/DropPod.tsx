@@ -16,6 +16,8 @@ export interface IDropPodProps {
     positions?: string[];
     renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>) => React.ReactNode;
     selector?: string;
+    minWidth?: number;
+    minHeight?: number;
 }
 
 export interface IRDropPodProps extends IDropPodProps {
@@ -71,7 +73,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         let style: React.CSSProperties = {};
         if (this.canRenderDrop()) {
             const buttonOffset: ClientRect | DOMRect = this.state && this.state.offset ||
-                this.props.buttonRef.current.getBoundingClientRect();
+                                                       this.props.buttonRef.current.getBoundingClientRect();
             const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
 
             const parentOffset = this.props.buttonRef.current.offsetParent.getBoundingClientRect();
@@ -84,9 +86,14 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
             let index = 0;
             while (_.keys(style).length < 2 && index < this.props.positions.length) {
+                const dropOffsetPrime = {
+                    ...dropOffset,
+                    width: Math.max(dropOffset.width && this.props.minWidth),
+                    height: Math.max(dropOffset.height && this.props.minHeight),
+                };
                 const validator = DomPositionVisibilityValidator[this.props.positions[index]];
                 style = validator &&
-                    validator(buttonOffset, dropOffset, boundingLimit) || {};
+                        validator(buttonOffset, dropOffsetPrime, boundingLimit) || {};
                 index += 1;
             }
 
@@ -104,7 +111,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             }
 
             // no space to render the drop target
-            if (dropOffset.height >= boundingLimit.maxY - boundingLimit.minY || dropOffset.width >= boundingLimit.maxX - boundingLimit.minX) {
+            if (dropOffset.height >= boundingLimit.maxY - boundingLimit.minY || dropOffset.width >= boundingLimit.maxX -
+                boundingLimit.minX) {
                 this.currentStyle = {};
             } else {
                 this.currentStyle = {
@@ -134,5 +142,5 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
 export const DropPod: React.ForwardRefExoticComponent<IDropPodProps & React.RefAttributes<HTMLElement>> =
     React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) =>
-        <RDropPod {...props} buttonRef={ref} />,
+        <RDropPod {...props} buttonRef={ref}/>,
     );

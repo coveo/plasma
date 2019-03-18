@@ -5,24 +5,23 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {ConfigSupplier} from '../../../utils/HocUtils';
 import {PropsToOmitUtils} from '../../../utils/react/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
-import {IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
+import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
 import {DropPodPosition} from '../DropPod';
+import {DefaultGroups} from '../redux/DropActions';
 import {DropSelectors} from '../redux/DropReducers';
 
-export type DropFormDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
+export type DropWithDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
 
-const mapStateToProps = (state: IReactVaporState, {id}: IDropOwnProps): IDropStateProps => ({
-    isOpen: DropSelectors.isOpen(state, {id}),
+const mapStateToProps = (state: IReactVaporState, {id, group}: IDropOwnProps): IDropStateProps => ({
+    isOpen: DropSelectors.isOpen(state, {id, group}),
 });
 
-export const dropFormDropdown = (supplier: ConfigSupplier = {}) => (Component: DropFormDropdownComponent): DropFormDropdownComponent => {
+export const dropWithDropdown = (supplier: ConfigSupplier = {}) => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
 
     @ReduxConnect(mapStateToProps)
-    class DropFormDropdown extends React.PureComponent<IDropProps> {
+    class DropWithDropdown extends React.PureComponent<IDropProps> {
 
-        static defaultProps = {
-            positions: [DropPodPosition.bottom, DropPodPosition.top],
-        };
+        static defaultProps: Partial<IDropProps>;
 
         render() {
             return (
@@ -37,5 +36,11 @@ export const dropFormDropdown = (supplier: ConfigSupplier = {}) => (Component: D
         }
     }
 
-    return DropFormDropdown;
+    DropWithDropdown.defaultProps = {
+        ...Drop.defaultProps,
+        positions: [DropPodPosition.bottom, DropPodPosition.top],
+        group: DefaultGroups.dropdown,
+    };
+
+    return DropWithDropdown;
 };

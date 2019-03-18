@@ -15,6 +15,7 @@ export interface IDropOwnProps extends IDropPodProps {
     closeOnClickOutside?: boolean;
     closeOnClickDrop?: boolean;
     group?: string;
+    minWidth?: number;
 }
 
 export interface IDropStateProps {
@@ -116,7 +117,9 @@ export class Drop extends React.PureComponent<IDropProps> {
 
 Drop.defaultProps = {
     group: DefaultGroups.default,
-        closeOnClickDrop: true,
-        closeOnClickOutside: true,
+    closeOnClickDrop: true,
+    closeOnClickOutside: true,
     listContainerProps: {},
+    minHeight: 0,
+    minWidth: 0,
 };
