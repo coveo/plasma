@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {Defaults} from '../../Defaults';
-import {DomPositionVisibilityValidator} from './DomPositionVisibilityValidator';
+import {DomPositionVisibilityValidator, IBoundingLimit} from './DomPositionVisibilityValidator';
 
 export const DropPodPosition = {
     bottom: 'bottom',
@@ -12,7 +12,7 @@ export const DropPodPosition = {
 };
 
 export interface IDropPodProps {
-    isOpen: boolean;
+    isOpen?: boolean;
     positions?: string[];
     renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>) => React.ReactNode;
     selector?: string;
@@ -24,10 +24,13 @@ export interface IRDropPodProps extends IDropPodProps {
 
 export interface IDropPodState {
     offset: ClientRect | DOMRect;
+    style: React.CSSProperties;
 }
 
 class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     readonly dropRef: React.RefObject<HTMLElement>;
+
+    private currentStyle: React.CSSProperties;
 
     static defaultProps: Partial<IDropPodProps> = {
         isOpen: false,
@@ -40,16 +43,18 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         this.dropRef = React.createRef();
         this.state = {
             offset: undefined,
+            style: undefined,
         };
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.updateOffset as any);
-        this.updateOffset();
+        window.addEventListener('resize', this.updateOffset, true);
+        window.addEventListener('scroll', this.updateOffset, true);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', this.updateOffset as any);
+        window.removeEventListener('scroll', this.updateOffset, true);
+        window.removeEventListener('resize', this.updateOffset, true);
     }
 
     private updateOffset = () => {
@@ -58,32 +63,69 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         });
     }
 
-    private getStyle(): React.CSSProperties {
-        let style: Partial<React.CSSProperties> = {};
-        if (this.dropRef.current && this.state.offset) {
-            const tooltipOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
+    private canRenderDrop() {
+        return this.dropRef.current && this.props.isOpen && this.props.positions.length;
+    }
+
+    private calculateStyleOffset() {
+        let style: React.CSSProperties = {};
+        if (this.canRenderDrop()) {
+            const buttonOffset: ClientRect | DOMRect = this.state && this.state.offset ||
+                this.props.buttonRef.current.getBoundingClientRect();
+            const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
+
+            const parentOffset = this.props.buttonRef.current.offsetParent.getBoundingClientRect();
+            const boundingLimit: IBoundingLimit = {
+                maxY: Math.min(parentOffset.bottom, window.innerHeight),
+                minY: Math.max(parentOffset.top, 0),
+                maxX: Math.min(parentOffset.right, window.innerWidth),
+                minX: Math.max(parentOffset.left, 0),
+            };
 
             let index = 0;
-            while (_.isEmpty(style) && index < this.props.positions.length) {
+            while (_.keys(style).length < 2 && index < this.props.positions.length) {
                 const validator = DomPositionVisibilityValidator[this.props.positions[index]];
-                style = validator && validator(this.state.offset, tooltipOffset, window) || {};
+                style = validator &&
+                    validator(buttonOffset, dropOffset, boundingLimit) || {};
                 index += 1;
             }
-        }
 
-        const visibility = !_.isEmpty(style) && this.props.isOpen ? 'visible' : 'hidden';
-        return {
-            ...style,
-            visibility,
-        };
+            if (buttonOffset.top <= boundingLimit.minY) {
+                style.top = boundingLimit.minY;
+            }
+            if (buttonOffset.bottom >= boundingLimit.maxY) {
+                style.top = boundingLimit.maxY - dropOffset.height;
+            }
+            if (buttonOffset.left <= boundingLimit.minX) {
+                style.left = boundingLimit.minX;
+            }
+            if (buttonOffset.right >= boundingLimit.maxX) {
+                style.left = boundingLimit.maxX - dropOffset.width;
+            }
+
+            // no space to render the drop target
+            if (dropOffset.height >= boundingLimit.maxY - boundingLimit.minY || dropOffset.width >= boundingLimit.maxX - boundingLimit.minX) {
+                this.currentStyle = {};
+            } else {
+                this.currentStyle = {
+                    ...this.currentStyle,
+                    ...style,
+                };
+            }
+        }
     }
 
     render() {
+        this.calculateStyleOffset();
+
         const selector: any = this.props.selector || Defaults.DROP_ROOT;
         const drop: React.ReactNode = this.props.renderDrop({
             position: 'absolute',
             display: 'inline-block',
-            ...this.getStyle(),
+            ...{
+                ...this.currentStyle,
+                visibility: this.canRenderDrop() ? 'visible' : 'hidden',
+            },
         }, this.dropRef);
 
         return ReactDOM.createPortal(drop, document.querySelector(selector));

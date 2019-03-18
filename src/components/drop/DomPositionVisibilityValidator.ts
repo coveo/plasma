@@ -1,68 +1,75 @@
 import {CSSProperties} from 'react';
 
-export const DomPositionVisibilityValidator: {[position: string]: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect, window: Window) => Partial<CSSProperties>} = {
-    bottom: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect, window: Window): Partial<CSSProperties> => {
-        if (boxOffset.bottom + tooltipOffset.height < window.innerHeight) {
-            if (boxOffset.left + tooltipOffset.width < window.innerWidth) {
+export interface IBoundingLimit {
+    maxY: number;
+    minY: number;
+    maxX: number;
+    minX: number;
+}
+
+export const DomPositionVisibilityValidator: {[position: string]: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit) => Partial<CSSProperties>} = {
+    bottom: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit): Partial<CSSProperties> => {
+        if (buttonOffset.bottom + dropOffset.height <= boundingLimit.maxY) {
+            if (buttonOffset.left + dropOffset.width <= boundingLimit.maxX) {
                 return {
-                    top: boxOffset.top + boxOffset.height,
-                    left: boxOffset.left,
+                    top: buttonOffset.bottom,
+                    left: buttonOffset.left,
                 };
-            } else if (boxOffset.right - tooltipOffset.width > 0) {
+            } else if (buttonOffset.right - dropOffset.width >= boundingLimit.minX) {
                 return {
-                    top: boxOffset.bottom,
-                    left: boxOffset.right - tooltipOffset.width,
+                    top: buttonOffset.top,
+                    left: buttonOffset.left + buttonOffset.width,
                 };
             }
         }
 
         return {};
     },
-    top: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect) => {
-        if (boxOffset.top - tooltipOffset.height > 0) {
-            if (boxOffset.left + tooltipOffset.width < window.innerWidth) {
+    top: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit) => {
+        if (buttonOffset.top - dropOffset.height >= boundingLimit.minY) {
+            if (buttonOffset.left + dropOffset.width <= boundingLimit.maxX) {
                 return {
-                    top: boxOffset.top - tooltipOffset.height,
-                    left: boxOffset.left,
+                    top: buttonOffset.top - dropOffset.height,
+                    left: buttonOffset.left,
                 };
-            } else if (boxOffset.right - tooltipOffset.width > 0) {
+            } else if (buttonOffset.right - dropOffset.width >= boundingLimit.minX) {
                 return {
-                    top: boxOffset.top - tooltipOffset.height,
-                    left: boxOffset.right - tooltipOffset.width,
-                };
-            }
-        }
-
-        return {};
-    },
-    left: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect) => {
-        if (boxOffset.left - tooltipOffset.width > 0) {
-            if (boxOffset.top + tooltipOffset.height < window.innerHeight) {
-                return {
-                    top: boxOffset.top,
-                    left: boxOffset.left - tooltipOffset.width,
-                };
-            } else if (boxOffset.bottom - tooltipOffset.height > 0) {
-                return {
-                    top: boxOffset.bottom - tooltipOffset.height,
-                    left: boxOffset.left - tooltipOffset.width,
+                    top: buttonOffset.top - dropOffset.height,
+                    left: buttonOffset.right - dropOffset.width,
                 };
             }
         }
 
         return {};
     },
-    right: (boxOffset: ClientRect | DOMRect, tooltipOffset: ClientRect | DOMRect) => {
-        if (boxOffset.right + tooltipOffset.width < window.innerWidth) {
-            if (boxOffset.top + tooltipOffset.height < window.innerHeight) {
+    left: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit) => {
+        if (buttonOffset.left - dropOffset.width > boundingLimit.minX) {
+            if (buttonOffset.top + dropOffset.height < boundingLimit.maxY) {
                 return {
-                    top: boxOffset.top,
-                    left: boxOffset.right,
+                    top: buttonOffset.top,
+                    left: buttonOffset.left - dropOffset.width,
                 };
-            } else if (boxOffset.bottom - tooltipOffset.height > 0) {
+            } else if (buttonOffset.bottom - dropOffset.height > boundingLimit.minY) {
                 return {
-                    top: boxOffset.bottom - tooltipOffset.height,
-                    left: boxOffset.right,
+                    top: buttonOffset.bottom - dropOffset.height,
+                    left: buttonOffset.left - dropOffset.width,
+                };
+            }
+        }
+
+        return {};
+    },
+    right: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit) => {
+        if (buttonOffset.right + dropOffset.width < boundingLimit.maxX) {
+            if (buttonOffset.top + dropOffset.height < boundingLimit.maxY) {
+                return {
+                    top: buttonOffset.top,
+                    left: buttonOffset.right,
+                };
+            } else if (buttonOffset.bottom - dropOffset.height > boundingLimit.minY) {
+                return {
+                    top: buttonOffset.bottom - dropOffset.height,
+                    left: buttonOffset.right,
                 };
             }
         }
