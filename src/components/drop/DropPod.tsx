@@ -73,7 +73,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         let style: React.CSSProperties = {};
         if (this.canRenderDrop()) {
             const buttonOffset: ClientRect | DOMRect = this.state && this.state.offset ||
-                                                       this.props.buttonRef.current.getBoundingClientRect();
+                this.props.buttonRef.current.getBoundingClientRect();
             const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
 
             const parentOffset = this.props.buttonRef.current.offsetParent.getBoundingClientRect();
@@ -93,7 +93,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
                 const validator = DomPositionVisibilityValidator[this.props.positions[index]];
                 style = validator &&
-                        validator(buttonOffset, dropOffsetPrime, boundingLimit) || {};
+                    validator(buttonOffset, dropOffsetPrime, boundingLimit) || {};
                 index += 1;
             }
 
@@ -142,5 +142,5 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
 export const DropPod: React.ForwardRefExoticComponent<IDropPodProps & React.RefAttributes<HTMLElement>> =
     React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) =>
-        <RDropPod {...props} buttonRef={ref}/>,
+        <RDropPod {...props} buttonRef={ref} />,
     );
