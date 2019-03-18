@@ -2,12 +2,13 @@
 dist
 coverage
 docs/assets/
+travis-deploy-key
 
 # Node files
 node_modules
 npm-debug.log.*
 
-# OS/editor 
+# OS/editor
 ._*
 .DS_Store
 .idea
