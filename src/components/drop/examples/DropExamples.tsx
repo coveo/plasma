@@ -1,12 +1,28 @@
 import * as React from 'react';
+import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
+import {IModalExamplesProps} from '../../modal/examples/ModalCompositeConnectedExamples';
+import {IModalActionPayload, openModal} from '../../modal/ModalActions';
+import {ModalCompositeConnected} from '../../modal/ModalCompositeConnected';
 import {Drop} from '../Drop';
 import {DropPodPosition} from '../DropPod';
 
-export class DropExamples extends React.PureComponent {
+const modalId: string = 'ModalIDDrop';
+const modalId2: string = 'ModalIDDrop2';
+
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => ({
+    openModal: (id: string) => dispatch(openModal(id)),
+});
+
+@ReduxConnect(null, mapDispatchToProps)
+export class DropExamples extends React.PureComponent<any> {
+
+    openModal(id: string) {
+        this.props.openModal(id);
+    }
 
     render() {
         const triggerAlertFunction = () => {
@@ -138,25 +154,100 @@ export class DropExamples extends React.PureComponent {
                     </div>
                 </div>
                 <div className='form-group'>
-                    <label className='form-control-label'>Drop with list position right with long text</label>
+                    <label className='form-control-label'>Drop inside a modal</label>
                     <div className='form-control'>
-                        <Drop
-                            id={UUID.generate()}
-                            selector={'#App'}
-                            positions={[DropPodPosition.right, DropPodPosition.left, DropPodPosition.bottom]}
-                            buttonContainerProps={{
-                                className: 'inline-block',
-                            }}
-                            renderOpenButton={(onClick: () => void) => (
-                                <Button
-                                    name={'Text'}
-                                    enabled={true}
-                                    onClick={() => onClick()}
-                                />
+                        <button className='btn' onClick={() => this.openModal(modalId)}>Open Modal</button>
+                        <ModalCompositeConnected
+                            id={modalId}
+                            title='Modal composite'
+                            classes={['mod-slide-in-bottom', 'mod-stick-bottom']}
+                            modalBodyChildren={(
+                                <Drop
+                                    id={UUID.generate()}
+                                    selector={'#App'}
+                                    positions={[DropPodPosition.right, DropPodPosition.left, DropPodPosition.bottom]}
+                                    buttonContainerProps={{
+                                        className: 'inline-block',
+                                    }}
+                                    renderOpenButton={(onClick: () => void) => (
+                                        <Button
+                                            name={'Text'}
+                                            enabled={true}
+                                            onClick={() => onClick()}
+                                        />
+                                    )}
+                                >
+                                    <ListBox items={defaultItemsLongText} />
+                                </Drop>
+
                             )}
-                        >
-                            <ListBox items={defaultItemsLongText} />
-                        </Drop>
+                            modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                        />
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>Drop inside a modal with a scroll</label>
+                    <div className='form-control'>
+                        <button className='btn' onClick={() => this.openModal(modalId2)}>Open Modal</button>
+                        <ModalCompositeConnected
+                            id={modalId2}
+                            title='Modal composite'
+                            classes={['mod-slide-in-bottom', 'mod-stick-bottom', 'mod-big']}
+                            modalBodyChildren={(
+                                <>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>
+                                        <Drop
+                                            id={UUID.generate()}
+                                            selector={'#App'}
+                                            positions={[DropPodPosition.bottom]}
+                                            buttonContainerProps={{
+                                                className: 'inline-block relative',
+                                            }}
+                                            renderOpenButton={(onClick: () => void) => (
+                                                <Button
+                                                    name={'Text'}
+                                                    enabled={true}
+                                                    onClick={() => onClick()}
+                                                />
+                                            )}
+                                        >
+                                            <ListBox items={defaultItemsLongText} />
+                                        </Drop>
+                                    </div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                    <div className='my5'>more...</div>
+                                </>
+
+                            )}
+                            modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                            modalFooterChildren={<div className={'mt5'}><button className='btn'>Do nothing</button></div>}
+                        />
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ import {IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
 import {DropPodPosition} from '../DropPod';
 import {DropSelectors} from '../redux/DropReducers';
 
-type DropFormDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
+export type DropFormDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
 
 const mapStateToProps = (state: IReactVaporState, {id}: IDropOwnProps): IDropStateProps => ({
     isOpen: DropSelectors.isOpen(state, {id}),

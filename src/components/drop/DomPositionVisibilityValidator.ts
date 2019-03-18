@@ -9,8 +9,8 @@ export interface IBoundingLimit {
 
 export const DomPositionVisibilityValidator: {[position: string]: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit) => Partial<CSSProperties>} = {
     bottom: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit): Partial<CSSProperties> => {
-        if (buttonOffset.bottom + dropOffset.height <= boundingLimit.maxY) {
-            if (buttonOffset.left + dropOffset.width <= boundingLimit.maxX) {
+        if (buttonOffset.bottom + dropOffset.height < boundingLimit.maxY) {
+            if (buttonOffset.left + dropOffset.width < boundingLimit.maxX) {
                 return {
                     top: buttonOffset.bottom,
                     left: buttonOffset.left,
@@ -26,13 +26,13 @@ export const DomPositionVisibilityValidator: {[position: string]: (buttonOffset:
         return {};
     },
     top: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit) => {
-        if (buttonOffset.top - dropOffset.height >= boundingLimit.minY) {
-            if (buttonOffset.left + dropOffset.width <= boundingLimit.maxX) {
+        if (buttonOffset.top - dropOffset.height > boundingLimit.minY) {
+            if (buttonOffset.left + dropOffset.width < boundingLimit.maxX) {
                 return {
                     top: buttonOffset.top - dropOffset.height,
                     left: buttonOffset.left,
                 };
-            } else if (buttonOffset.right - dropOffset.width >= boundingLimit.minX) {
+            } else if (buttonOffset.right - dropOffset.width > boundingLimit.minX) {
                 return {
                     top: buttonOffset.top - dropOffset.height,
                     left: buttonOffset.right - dropOffset.width,

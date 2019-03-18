@@ -7,7 +7,7 @@ import {ICheckboxState} from './components/checkbox/CheckboxReducers';
 import {IGroupableCheckboxesState} from './components/checkbox/GroupableCheckboxReducers';
 import {CollapsibleState} from './components/collapsible/CollapsibleReducers';
 import {IDatePickerState} from './components/datePicker/DatePickerReducers';
-import {IDropCompositeState} from './components/drop/redux/DropReducers';
+import {IDropState} from './components/drop/redux/DropReducers';
 import {IDropdownState} from './components/dropdown/DropdownReducers';
 import {IDropdownOption} from './components/dropdownSearch/DropdownSearch';
 import {IDropdownSearchState} from './components/dropdownSearch/DropdownSearchReducers';
@@ -95,7 +95,7 @@ export interface IReactVaporState {
     lastAction?: Redux.Action;
     dirtyComponents?: ComponentId[];
     multilineIds?: IStringListCompositeState;
-    drop?: IDropCompositeState;
+    drop?: IDropState;
 }
 
 export interface IReduxActionsPayload {
