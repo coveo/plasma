@@ -1,4 +1,3 @@
-import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {StickyFooter} from '../../components/stickyFooter/StickyFooter';
