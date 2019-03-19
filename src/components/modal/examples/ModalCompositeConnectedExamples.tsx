@@ -98,6 +98,24 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                         />
                     </div>
                 </div>
+                <div className='mt3'>
+                    <label className='form-control-label'>Modal Composite Connected with additional ReactModal props</label>
+                    <div className='form-group'>
+                        <button className='btn' onClick={() => this.openModal('example-4')}>Open Modal</button>
+                        <ModalCompositeConnected
+                            id='example-4'
+                            title='Modal with addtional ReactModal props'
+                            classes={['mod-fade-in-scale']}
+                            modalBodyChildren='This modal only closes by using the close button or the X.'
+                            modalFooterChildren={<button className='btn' onClick={() => this.closeModal('example-4')}>Close</button>}
+                            modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                            docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
+                            shouldCloseOnEsc={false}
+                            shouldCloseOnOverlayClick={false}
+                            onAfterOpen={() => alert('The modal content has mounted and is ready to open.')}
+                        />
+                    </div>
+                </div>
             </>
         );
     }

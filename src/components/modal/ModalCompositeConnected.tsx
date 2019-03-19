@@ -23,5 +23,5 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalCompositeOwnPro
     onClose: () => dispatch(closeModal(ownProps.id)),
 });
 
-export const ModalCompositeConnected: React.ComponentClass<IModalCompositeProps> =
+export const ModalCompositeConnected: React.ComponentClass<IModalCompositeProps & Partial<ReactModal.Props>> =
     connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalComposite);
