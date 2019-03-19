@@ -43,7 +43,7 @@ const mapDispatchToProps = (
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class Drop extends React.PureComponent<IDropProps> {
-    readonly button: React.RefObject<HTMLDivElement>;
+    private readonly button: React.RefObject<HTMLDivElement>;
     private dropRef: React.RefObject<HTMLDivElement>;
 
     static defaultProps: Partial<IDropProps>;
