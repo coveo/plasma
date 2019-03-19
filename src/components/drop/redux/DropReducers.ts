@@ -35,7 +35,6 @@ export const dropReducer = (
                         ...group,
                     },
                 };
-
             }
             return {
                 ...state,
@@ -49,9 +48,14 @@ export const dropReducer = (
     }
 };
 
-const isDropOpen = (state: IReactVaporState, props: {id: string, group: string}): boolean =>
-    props.group && state.drop[props.group] && state.drop[props.group].id === props.id ? state.drop[props.group].isOpen : false;
+const getDrop = (state: IReactVaporState, {group}: {group: string}) => state.drop && state.drop[group] || undefined;
+
+const isDropOpen = (state: IReactVaporState, {id, group}: {id: string, group: string}): boolean => {
+    const drop = getDrop(state, {group});
+    return drop && drop.id === id ? drop.isOpen : false;
+};
 
 export const DropSelectors = {
     isOpen: isDropOpen,
+    get: getDrop,
 };

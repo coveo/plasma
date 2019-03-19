@@ -9,12 +9,12 @@ import {DropSelectors} from './redux/DropReducers';
 
 export interface IDropOwnProps extends IDropPodProps {
     id: string;
+    group?: string;
     renderOpenButton: (onClick: () => void) => React.ReactNode;
     buttonContainerProps?: React.HTMLProps<HTMLDivElement>;
     listContainerProps?: React.HTMLAttributes<HTMLDivElement>;
     closeOnClickOutside?: boolean;
     closeOnClickDrop?: boolean;
-    group?: string;
 }
 
 export interface IDropStateProps {
@@ -42,7 +42,7 @@ const mapDispatchToProps = (
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class Drop extends React.PureComponent<IDropProps> {
-    readonly button: React.RefObject<HTMLDivElement>;
+    private readonly button: React.RefObject<HTMLDivElement>;
     private dropRef: React.RefObject<HTMLDivElement>;
 
     static defaultProps: Partial<IDropProps>;
@@ -83,6 +83,7 @@ export class Drop extends React.PureComponent<IDropProps> {
                 positions={this.props.positions}
                 selector={this.props.selector}
                 renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
+                    // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
                     <div style={style} ref={this.dropRef = dropRef} className={classNames('show-on-top', this.props.listContainerProps.className)} {...this.props.listContainerProps} >
                         {this.props.children}
                     </div>
