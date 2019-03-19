@@ -15,7 +15,6 @@ export interface IDropOwnProps extends IDropPodProps {
     closeOnClickOutside?: boolean;
     closeOnClickDrop?: boolean;
     group?: string;
-    minWidth?: number;
 }
 
 export interface IDropStateProps {
