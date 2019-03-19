@@ -27,6 +27,7 @@ export const DomPositionVisibilityValidator: {[position: string]: (buttonOffset:
     },
     top: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit) => {
         if (buttonOffset.top - dropOffset.height > boundingLimit.minY) {
+            debugger;
             if (buttonOffset.left + dropOffset.width < boundingLimit.maxX) {
                 return {
                     top: buttonOffset.top - dropOffset.height,
