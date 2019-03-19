@@ -45,9 +45,9 @@ deploy:
       branch: master
   - provider: s3
     skip_cleanup: true
-    access_key_id: AKIAJRPK7RSZINC7HADA
+    access_key_id: AKIAJ72WQIJQMW6TCHDA
     secret_access_key:
-      secure: arp5dQ0jPdM18y20Rpurkf3lBLx70k6ssnIlV+F6Q1j16uWQygwiA17WnXtJlgL8IDEKhxbIDc/lmH2HsMhbQJQdbfpiLmzWNw79HjV5kMkzeOxdGTuFLRfta5iZ4VVNemveRExUjygrbJIIulvhdv0NGLt3BkLUJaWw5zYm2LI=
+      secure: i3DHmH/JK5uSh8gqB1cW1LqkCneV1YhtyWrXVQZkGbFRFOrPfgZQu/21GW1GN+29/iNddBf7RN/7X1ULZq2pNBlD0kifpfxQFa4pLiJX04ZV47vF5DOPYq2xWU6hQcAOiNcLoig23DrwssbVe1EeAPxr3s3CpxZrq01UUWhTsoA= # https://docs.travis-ci.com/user/encryption-keys/
     bucket: coveo-public-content
     local-dir: deploy
     upload-dir: styleguide
