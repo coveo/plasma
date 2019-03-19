@@ -40,7 +40,7 @@ export interface ITableRowStateProps {
 export interface ITableRowDispatchProps {
     onMount: () => void;
     onUnmount: () => void;
-    onClick: (isMulti: boolean) => void;
+    handleClick: (isMulti: boolean) => void;
     onUpdateToCollapsibleRow: () => void;
 }
 
@@ -73,7 +73,7 @@ const mapDispatchToProps = (
         }
     },
     onUnmount: () => dispatch(TableRowActions.remove(ownProps.id)),
-    onClick: (isMulti: boolean) => {
+    handleClick: (isMulti: boolean) => {
         if (!_.isEmpty(ownProps.actions)) {
             dispatch(addActionsToActionBar(ownProps.tableId, ownProps.actions));
             dispatch(TableRowActions.select(ownProps.id, isMulti));
@@ -170,8 +170,9 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
 
     private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
+            callIfDefined(this.props.onClick, e);
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
-            this.props.onClick(isMulti);
+            this.props.handleClick(isMulti);
         }
     }
 

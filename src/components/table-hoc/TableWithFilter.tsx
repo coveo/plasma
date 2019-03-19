@@ -11,6 +11,7 @@ import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
 
 export interface ITableWithFilterConfig extends IMaybeServerConfig {
     matchFilter?: (filterValue: string, datum: any) => boolean;
+    placeholder?: string;
 }
 
 export interface ITableWithFilterStateProps {
@@ -57,11 +58,13 @@ export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig>
         }
 
         render() {
+            const {placeholder} = HocUtils.supplyConfig(supplier);
             const filterAction = (
                 <FilterBoxConnected
                     key='FilterBox'
                     id={this.props.id}
                     className='coveo-table-actions'
+                    filterPlaceholder={placeholder}
                     isAutoFocus
                 />
             );
