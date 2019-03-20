@@ -7,7 +7,9 @@ REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 
 echo "Syncing with gh-pages from branch: $TRAVIS_PULL_REQUEST_BRANCH"
+git stash
 git pull --no-edit --strategy-option ours "$SSH_REPO" gh-pages
+git stash pop
 
 echo "Creating live demo for branch: $TRAVIS_PULL_REQUEST_BRANCH";
 cp -R docs "$TRAVIS_PULL_REQUEST_BRANCH"
