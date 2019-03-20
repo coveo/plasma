@@ -1,8 +1,6 @@
-import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {StickyFooter} from '../../components/stickyFooter/StickyFooter';
-import * as styles from '../../components/stickyFooter/StickyFooter.scss';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {toggleDirtyComponent} from './withEditingActions';
@@ -52,7 +50,7 @@ export const withEditing = <T, R = any>(config: IWithEditing) =>
                             {this.props.children}
                         </Component>
                         {config.footerChildren && (
-                            <StickyFooter className={classNames({[styles.stickyFooterOpened]: this.props.isDirty}, config.footerClassName)}>
+                            <StickyFooter className={config.footerClassName} isOpened={this.props.isDirty}>
                                 {config.footerChildren}
                             </StickyFooter>
                         )}
