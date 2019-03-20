@@ -101,6 +101,28 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
+        it('should dispatch an addActionsToActionBar when the actions change', () => {
+            const actions = [{name: 'name', enabled: false}];
+            const newActions = [{name: 'name', enabled: true}];
+            const expectedAction = addActionsToActionBar(defaultProps.tableId, actions);
+
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
+            wrapper.setProps({actions: newActions});
+
+            expect(store.isActionDispatched(expectedAction)).toBe(true);
+        });
+
+        it('should dispatch a TableRowActions.select action when the action change', () => {
+            const actions = [{name: 'name', enabled: false}];
+            const newActions = [{name: 'name', enabled: true}];
+            const expectedAction = TableRowActions.select(defaultProps.id, false);
+
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
+            wrapper.setProps({actions: newActions});
+
+            expect(store.isActionDispatched(expectedAction)).toBe(true);
+        });
+
         it('should not dispatch a TableRowActions.select action on click when actions is empty', () => {
             const actionNotExpected = TableRowActions.select(defaultProps.id, false);
 
