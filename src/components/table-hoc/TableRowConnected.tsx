@@ -13,7 +13,6 @@ import {addActionsToActionBar} from '../actions/ActionBarActions';
 import {Collapsible} from '../collapsible/Collapsible';
 import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
 import {TableRowActions} from './actions/TableRowActions';
-import {ITableRowState} from './reducers/TableRowReducers';
 import {TableSelectors} from './TableSelectors';
 
 export interface CollapsibleRowProps {
@@ -42,6 +41,7 @@ export interface ITableRowDispatchProps {
     onUnmount: () => void;
     onClick: (isMulti: boolean) => void;
     onUpdateToCollapsibleRow: () => void;
+    onActionBarActionsChanged: () => void;
 }
 
 export interface ITableRowConnectedProps extends
@@ -55,39 +55,46 @@ const isCollapsible = (props: ITableRowOwnProps): boolean => props.collapsible
     && (React.isValidElement(props.collapsible.content) || _.isString(props.collapsible.content));
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableRowOwnProps) => {
-    const row: ITableRowState = TableSelectors.getTableRow(state, {id: ownProps.id});
+    const {selected, opened} = TableSelectors.getTableRow(state, {id: ownProps.id}) || {selected: false, opened: false};
     return {
-        selected: row && row.selected,
-        opened: row && row.opened,
+        selected,
+        opened,
     };
 };
 
 const mapDispatchToProps = (
     dispatch: IDispatch,
     ownProps: ITableRowOwnProps,
-): ITableRowDispatchProps => ({
-    onMount: () => {
-        dispatch(TableRowActions.add(ownProps.id, ownProps.tableId));
-        if (isCollapsible(ownProps) && ownProps.collapsible.expandOnMount) {
-            dispatch(TableRowActions.toggleCollapsible(ownProps.id, true));
-        }
-    },
-    onUnmount: () => dispatch(TableRowActions.remove(ownProps.id)),
-    onClick: (isMulti: boolean) => {
+): ITableRowDispatchProps => {
+    const refreshActionBarActions = (isMulti: boolean) => {
         if (!_.isEmpty(ownProps.actions)) {
             dispatch(addActionsToActionBar(ownProps.tableId, ownProps.actions));
             dispatch(TableRowActions.select(ownProps.id, isMulti));
         }
-        if (isCollapsible(ownProps)) {
-            dispatch(TableRowActions.toggleCollapsible(ownProps.id));
-        }
-    },
-    onUpdateToCollapsibleRow: () => {
-        if (ownProps.collapsible.expandOnMount) {
-            dispatch(TableRowActions.toggleCollapsible(ownProps.id, true));
-        }
-    },
-});
+    };
+
+    return ({
+        onMount: () => {
+            dispatch(TableRowActions.add(ownProps.id, ownProps.tableId));
+            if (isCollapsible(ownProps) && ownProps.collapsible.expandOnMount) {
+                dispatch(TableRowActions.toggleCollapsible(ownProps.id, true));
+            }
+        },
+        onUnmount: () => dispatch(TableRowActions.remove(ownProps.id)),
+        onClick: (isMulti: boolean) => {
+            refreshActionBarActions(isMulti);
+            if (isCollapsible(ownProps)) {
+                dispatch(TableRowActions.toggleCollapsible(ownProps.id));
+            }
+        },
+        onUpdateToCollapsibleRow: () => {
+            if (ownProps.collapsible.expandOnMount) {
+                dispatch(TableRowActions.toggleCollapsible(ownProps.id, true));
+            }
+        },
+        onActionBarActionsChanged: () => refreshActionBarActions(false),
+    });
+};
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & React.HTMLAttributes<HTMLTableRowElement>> {
@@ -96,6 +103,10 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
     componentDidUpdate(prevProps: ITableRowConnectedProps) {
         if (!isCollapsible(prevProps) && isCollapsible(this.props)) {
             this.props.onUpdateToCollapsibleRow();
+        }
+
+        if (JSON.stringify(prevProps.actions) !== JSON.stringify(this.props.actions) && this.props.selected) {
+            this.props.onActionBarActionsChanged();
         }
     }
 

@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactModal from 'react-modal';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
@@ -32,12 +33,15 @@ export interface IModalCompositeDispatchProps extends IModalDispatchProps, IModa
 
 export interface IModalCompositeProps extends IModalCompositeOwnProps, Partial<IModalCompositeStateProps>, Partial<IModalCompositeDispatchProps> {}
 
-export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
+const modalPropsToOmit = keys<IModalCompositeProps>();
+
+export class ModalComposite extends React.PureComponent<IModalCompositeProps & Partial<ReactModal.Props>> {
     static defaultProps: Partial<IModalCompositeProps> = {
         id: _.uniqueId('modal'),
     };
 
     render() {
+        const reactModalprops: Partial<ReactModal.Props> = _.omit(this.props, modalPropsToOmit);
         return (
             <ReactModal
                 key={this.props.id}
@@ -63,6 +67,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps> {
                 closeTimeoutMS={this.props.closeTimeout || Defaults.MODAL_TIMEOUT}
                 contentRef={this.props.contentRef}
                 parentSelector={this.getParent}
+                {...reactModalprops}
             >
                 <div className='modal-content' id={this.props.id}>
                     {this.getModalHeader()}
