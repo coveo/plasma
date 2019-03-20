@@ -54,6 +54,9 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
 
     @ReduxConnect(mapStateToProps)
     class TableWithDatePicker extends React.Component<ITableWithDatePickerProps> {
+        static defaultProps: Partial<ITableWithDatePickerProps> = {
+            actions: [],
+        };
 
         componentDidUpdate(prevProps: ITableWithDatePickerProps) {
             if (prevProps.lowerLimit !== this.props.lowerLimit
@@ -73,8 +76,8 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
                     onRight
                 />
             );
-            const newActions = [...(this.props.actions || []), datePickerAction];
-            const newProps = _.omit(this.props, [...TableWithFilterPropsToOmit]);
+            const newActions = [...this.props.actions, datePickerAction];
+            const newProps = _.omit(this.props, TableWithFilterPropsToOmit);
             return (
                 <Component {...newProps} actions={newActions}>
                     {this.props.children}

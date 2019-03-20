@@ -15,6 +15,7 @@ const getDatePickerLimits = (state: IReactVaporState, props: {id: string}): [Dat
     const picker = DatePickerSelectors.getDatePicker(state, props);
     return picker ? [picker.appliedLowerLimit, picker.appliedUpperLimit] : [null, null];
 };
+
 export const DatePickerSelectors = {
     getDatePicker,
     getDatePickerLimits,
