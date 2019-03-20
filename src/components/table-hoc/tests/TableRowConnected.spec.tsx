@@ -8,6 +8,7 @@ import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
 import {TableRowActions} from '../actions/TableRowActions';
 import {ITableRowConnectedProps, TableRowConnected} from '../TableRowConnected';
+import {TableSelectors} from '../TableSelectors';
 
 describe('Table HOC', () => {
     describe('TableRowConnected', () => {
@@ -101,10 +102,11 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch an addActionsToActionBar when the actions change', () => {
+        it('should dispatch an addActionsToActionBar when the actions change and the row was selected', () => {
             const actions = [{name: 'name', enabled: false}];
             const newActions = [{name: 'name', enabled: true}];
             const expectedAction = addActionsToActionBar(defaultProps.tableId, actions);
+            spyOn(TableSelectors, 'getTableRow').and.returnValue({selected: true, opened: false});
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
             wrapper.setProps({actions: newActions});
@@ -112,10 +114,11 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch a TableRowActions.select action when the action change', () => {
+        it('should dispatch a TableRowActions.select action when the action change and the row was selected', () => {
             const actions = [{name: 'name', enabled: false}];
             const newActions = [{name: 'name', enabled: true}];
             const expectedAction = TableRowActions.select(defaultProps.id, false);
+            spyOn(TableSelectors, 'getTableRow').and.returnValue({selected: true, opened: false});
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
             wrapper.setProps({actions: newActions});
