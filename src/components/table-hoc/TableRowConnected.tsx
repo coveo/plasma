@@ -13,7 +13,6 @@ import {addActionsToActionBar} from '../actions/ActionBarActions';
 import {Collapsible} from '../collapsible/Collapsible';
 import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
 import {TableRowActions} from './actions/TableRowActions';
-import {ITableRowState} from './reducers/TableRowReducers';
 import {TableSelectors} from './TableSelectors';
 
 export interface CollapsibleRowProps {
@@ -56,10 +55,10 @@ const isCollapsible = (props: ITableRowOwnProps): boolean => props.collapsible
     && (React.isValidElement(props.collapsible.content) || _.isString(props.collapsible.content));
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableRowOwnProps) => {
-    const row: ITableRowState = TableSelectors.getTableRow(state, {id: ownProps.id});
+    const {selected, opened} = TableSelectors.getTableRow(state, {id: ownProps.id}) || {selected: false, opened: false};
     return {
-        selected: row && row.selected,
-        opened: row && row.opened,
+        selected,
+        opened,
     };
 };
 
@@ -106,7 +105,7 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
             this.props.onUpdateToCollapsibleRow();
         }
 
-        if (!_.isEqual(prevProps.actions, this.props.actions)) {
+        if (JSON.stringify(prevProps.actions) !== JSON.stringify(this.props.actions) && this.props.selected) {
             this.props.onActionBarActionsChanged();
         }
     }

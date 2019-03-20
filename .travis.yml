@@ -28,7 +28,7 @@ after_success:
  - npm run report-coverage
 
 after_script:
- - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; ./create-live-demo.sh; fi' # run this line on pull request builds only
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
 
 before_install:
   - eval "$(ssh-agent -s)" #start the ssh agent
