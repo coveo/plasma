@@ -10,11 +10,14 @@ export interface IStickyFooterProps {
 
 export class StickyFooter extends React.Component<IStickyFooterProps> {
     static ID = 'StickyFooter';
+    static defaultProps: Partial<IStickyFooterProps> = {
+        id: StickyFooter.ID
+    }
 
     render() {
         const {id, className, isOpened} = this.props;
         return (
-            <div id={id || StickyFooter.ID} className={classNames(styles.stickyFooter, {[styles.stickyFooterOpened]: isOpened}, className)}>
+            <div id={id} className={classNames(styles.stickyFooter, {[styles.stickyFooterOpened]: isOpened}, className)}>
                 {this.props.children}
             </div>
         );
