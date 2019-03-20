@@ -32,7 +32,7 @@ export interface ITableWithDatePickerProps extends Partial<ITableWithDatePickerS
 
 const TableWithFilterPropsToOmit = keys<ITableWithDatePickerStateProps>();
 
-type FilterableTableComponent = React.ComponentClass<ITableWithDatePickerProps>;
+export type FilterableTableComponent = React.ComponentClass<ITableWithDatePickerProps>;
 
 const defaultMatchDates = () => true;
 
