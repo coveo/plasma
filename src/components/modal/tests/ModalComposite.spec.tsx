@@ -21,6 +21,13 @@ describe('ModalComposite', () => {
         expect(modalComposite.find(ReactModal).exists()).toBe(true);
     });
 
+    it('should pass down any ReactModal.Props to the ReactModal component', () => {
+        const modalComposite = shallow(<ModalComposite shouldCloseOnEsc={false} shouldCloseOnOverlayClick={false} />);
+
+        expect(modalComposite.find(ReactModal).props().shouldCloseOnEsc).toBe(false);
+        expect(modalComposite.find(ReactModal).props().shouldCloseOnOverlayClick).toBe(false);
+    });
+
     it('should call the onRender prop if defined on mount', () => {
         const onRenderSpy = jasmine.createSpy('onRender');
 
