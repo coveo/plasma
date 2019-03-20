@@ -38,7 +38,10 @@ const modalPropsToOmit = keys<IModalCompositeProps>();
 export class ModalComposite extends React.PureComponent<IModalCompositeProps & Partial<ReactModal.Props>> {
     static defaultProps: Partial<IModalCompositeProps> = {
         id: _.uniqueId('modal'),
+        closeTimeout: Defaults.MODAL_TIMEOUT,
     };
+
+    private timeoutId: number;
 
     render() {
         const reactModalprops: Partial<ReactModal.Props> = _.omit(this.props, modalPropsToOmit);
@@ -62,9 +65,8 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
                     afterOpen: 'opened',
                     beforeClose: 'clear',
                 }}
-                onRequestClose={this.props.onClose}
-                onAfterClose={this.props.closeCallback}
-                closeTimeoutMS={this.props.closeTimeout || Defaults.MODAL_TIMEOUT}
+                onRequestClose={this.handleRequestClose}
+                closeTimeoutMS={this.props.closeTimeout}
                 contentRef={this.props.contentRef}
                 parentSelector={this.getParent}
                 {...reactModalprops}
@@ -84,6 +86,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
 
     componentWillUnmount() {
         callIfDefined(this.props.onDestroy);
+        window.clearTimeout(this.timeoutId);
     }
 
     private getModalHeader() {
@@ -112,4 +115,13 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
     )
 
     private getParent = (): HTMLElement => document.querySelector(Defaults.MODAL_ROOT);
+
+    private handleRequestClose = () => {
+        // Workaround for https://github.com/reactjs/react-modal/issues/745
+        // Once issue is fixed, use onAfterClose={this.props.closeCallback} instead
+        callIfDefined(this.props.onClose);
+        this.timeoutId = window.setTimeout(() => {
+            callIfDefined(this.props.closeCallback);
+        }, this.props.closeTimeout);
+    }
 }
