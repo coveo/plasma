@@ -4,12 +4,12 @@ import * as ReactDOM from 'react-dom';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DropPod, IDropPodProps} from './DropPod';
-import {DefaultGroups, DropActions} from './redux/DropActions';
+import {DefaultGroupIds, DropActions} from './redux/DropActions';
 import {DropSelectors} from './redux/DropReducers';
 
 export interface IDropOwnProps extends IDropPodProps {
     id: string;
-    group?: string;
+    groupId?: string;
     renderOpenButton: (onClick: () => void) => React.ReactNode;
     buttonContainerProps?: React.HTMLProps<HTMLDivElement>;
     listContainerProps?: React.HTMLAttributes<HTMLDivElement>;
@@ -29,15 +29,15 @@ export interface IDropProps extends IDropOwnProps,
     Partial<IDropStateProps>,
     Partial<IDropDispatchProps> {}
 
-const mapStateToProps = (state: IReactVaporState, {id, group}: IDropOwnProps): IDropStateProps => ({
-    isOpen: DropSelectors.isOpen(state, {id, group}),
+const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps): IDropStateProps => ({
+    isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 
 const mapDispatchToProps = (
     dispatch: IDispatch,
     ownProps: IDropOwnProps,
 ): IDropDispatchProps => ({
-    toggle: (isOpen?: boolean) => dispatch(DropActions.toggle(ownProps.id, ownProps.group, isOpen)),
+    toggle: (isOpen?: boolean) => dispatch(DropActions.toggle(ownProps.id, ownProps.groupId, isOpen)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -118,7 +118,7 @@ export class Drop extends React.PureComponent<IDropProps> {
 }
 
 Drop.defaultProps = {
-    group: DefaultGroups.default,
+    groupId: DefaultGroupIds.default,
     closeOnClickDrop: true,
     closeOnClickOutside: true,
     listContainerProps: {},

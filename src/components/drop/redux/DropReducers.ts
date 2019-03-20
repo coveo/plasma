@@ -1,15 +1,15 @@
 import {IReactVaporState} from '../../../ReactVapor';
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {DefaultGroups, DropReducerActions, IDropPayload} from './DropActions';
+import {DefaultGroupIds, DropReducerActions, IDropPayload} from './DropActions';
 
 export interface IDropState {
-    [group: string]: {
+    [groupId: string]: {
         id: string,
         isOpen: boolean,
     };
 }
 
-export const dropInitialState: IDropState = {[DefaultGroups.default]: {id: undefined, isOpen: false}};
+export const dropInitialState: IDropState = {[DefaultGroupIds.default]: {id: undefined, isOpen: false}};
 
 export const dropReducer = (
     state: IDropState = dropInitialState,
@@ -17,28 +17,19 @@ export const dropReducer = (
 ): IDropState => {
     switch (action.type) {
         case DropReducerActions.toggle:
-            const group = state[action.payload.group];
-            if (group && group.id === action.payload.id) {
-                if (action.payload.id === group.id) {
-                    return {
-                        ...state,
-                        [action.payload.group]: {
-                            ...group,
-                            isOpen: !group.isOpen,
-                        },
-                    };
-                }
-
+            const group = DropSelectors.getByGroup({drop: state}, {groupId: action.payload.groupId});
+            if (group && action.payload.id === group.id) {
                 return {
                     ...state,
-                    [action.payload.group]: {
+                    [action.payload.groupId]: {
                         ...group,
+                        isOpen: !group.isOpen,
                     },
                 };
             }
             return {
                 ...state,
-                [action.payload.group]: {
+                [action.payload.groupId]: {
                     id: action.payload.id,
                     isOpen: action.payload.isOpen,
                 },
@@ -48,14 +39,14 @@ export const dropReducer = (
     }
 };
 
-const getDrop = (state: IReactVaporState, {group}: {group: string}) => state.drop && state.drop[group] || undefined;
+const getDropByGroup = (state: IReactVaporState, {groupId}: {groupId: string}) => state.drop && state.drop[groupId] || undefined;
 
-const isDropOpen = (state: IReactVaporState, {id, group}: {id: string, group: string}): boolean => {
-    const drop = getDrop(state, {group});
+const isDropOpen = (state: IReactVaporState, {id, groupId}: {id: string, groupId: string}): boolean => {
+    const drop = getDropByGroup(state, {groupId});
     return drop && drop.id === id ? drop.isOpen : false;
 };
 
 export const DropSelectors = {
     isOpen: isDropOpen,
-    get: getDrop,
+    getByGroup: getDropByGroup,
 };

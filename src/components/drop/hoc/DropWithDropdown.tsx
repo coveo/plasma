@@ -7,13 +7,13 @@ import {PropsToOmitUtils} from '../../../utils/react/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
 import {DropPodPosition} from '../DropPod';
-import {DefaultGroups} from '../redux/DropActions';
+import {DefaultGroupIds} from '../redux/DropActions';
 import {DropSelectors} from '../redux/DropReducers';
 
 export type DropWithDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
 
-const mapStateToProps = (state: IReactVaporState, {id, group}: IDropOwnProps): IDropStateProps => ({
-    isOpen: DropSelectors.isOpen(state, {id, group}),
+const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps): IDropStateProps => ({
+    isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 
 export const dropWithDropdown = (supplier: ConfigSupplier = {}) => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
@@ -39,7 +39,7 @@ export const dropWithDropdown = (supplier: ConfigSupplier = {}) => (Component: D
     DropWithDropdown.defaultProps = {
         ...Drop.defaultProps,
         positions: [DropPodPosition.bottom, DropPodPosition.top],
-        group: DefaultGroups.dropdown,
+        groupId: DefaultGroupIds.dropdown,
     };
 
     return DropWithDropdown;

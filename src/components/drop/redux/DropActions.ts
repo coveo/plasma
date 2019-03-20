@@ -1,6 +1,6 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 
-export const DefaultGroups = {
+export const DefaultGroupIds = {
     default: 'default',
     tooltip: 'tooltip',
     dropdown: 'dropdown',
@@ -13,15 +13,15 @@ export const DropReducerActions = {
 export interface IDropPayload {
     id: string;
     isOpen?: boolean;
-    group?: string;
+    groupId?: string;
 }
 
-const toggle = (id: string, group: string, isOpen?: boolean): IReduxAction<IDropPayload> => ({
+const toggle = (id: string, groupId: string, isOpen?: boolean): IReduxAction<IDropPayload> => ({
     type: DropReducerActions.toggle,
     payload: {
         id,
         isOpen,
-        group,
+        groupId,
     },
 });
 
