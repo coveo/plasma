@@ -7,6 +7,7 @@ import {checkboxesReducer} from './components/checkbox/CheckboxReducers';
 import {groupableCheckboxesReducer} from './components/checkbox/GroupableCheckboxReducers';
 import {collapsiblesReducer} from './components/collapsible/CollapsibleReducers';
 import {datePickersReducer} from './components/datePicker/DatePickerReducers';
+import {dropReducer} from './components/drop/redux/DropReducers';
 import {dropdownsReducer} from './components/dropdown/DropdownReducers';
 import {dropdownsSearchReducer} from './components/dropdownSearch/DropdownSearchReducers';
 import {facetsReducer} from './components/facets/FacetReducers';
@@ -94,5 +95,6 @@ export const ReactVaporReducers: ReducersMapObject = {
     selectWithFilter: selectWithFilterCompositeReducer,
     dirtyComponents: withEditingReducer,
     multilineIds: stringListCompositeReducer,
+    drop: dropReducer,
     lastAction,
 };
