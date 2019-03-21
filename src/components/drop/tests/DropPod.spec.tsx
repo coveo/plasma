@@ -55,10 +55,10 @@ describe('DropPod', () => {
             let wrapper: any;
             const shallowDropPod = (props: IDropPodProps = {renderDrop: () => defaultDrop}): ShallowWrapper<IDropPodProps> =>
                 wrapper = shallow(
-                <DropPod
-                    ref={buttonRef}
-                    {...props}
-                />, {});
+                    <DropPod
+                        ref={buttonRef}
+                        {...props}
+                    />, {});
 
             afterEach(() => {
                 if (wrapper) {
