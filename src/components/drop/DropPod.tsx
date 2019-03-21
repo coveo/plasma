@@ -51,6 +51,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             offset: undefined,
             style: undefined,
         };
+
+        this.updateOffset = this.updateOffset.bind(this);
     }
 
     componentDidMount() {
@@ -63,10 +65,12 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         window.removeEventListener('resize', this.updateOffset, true);
     }
 
-    private updateOffset = () => {
-        this.setState({
-            offset: this.props.buttonRef.current.getBoundingClientRect(),
-        });
+    private updateOffset() {
+        if (this.props.buttonRef && this.props.buttonRef.current) {
+            this.setState({
+                offset: this.props.buttonRef.current.getBoundingClientRect(),
+            });
+        }
     }
 
     private canRenderDrop() {

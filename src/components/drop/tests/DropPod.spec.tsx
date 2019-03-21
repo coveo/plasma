@@ -1,4 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
+import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import {DomPositionVisibilityValidator} from '../DomPositionVisibilityValidator';
 import {defaultDropPodPosition, DropPod, DropPodPosition, IDropPodProps} from '../DropPod';
@@ -54,7 +55,7 @@ describe('DropPod', () => {
 
             let wrapper: any;
             const shallowDropPod = (props: IDropPodProps = {renderDrop: () => defaultDrop}): ShallowWrapper<IDropPodProps> =>
-                wrapper = shallow(
+                wrapper = shallowWithState(
                     <DropPod
                         ref={buttonRef}
                         {...props}
@@ -113,7 +114,7 @@ describe('DropPod', () => {
                     expect(styleRendered.visibility).toBe('hidden');
                 });
 
-                xdescribe('calculate style position for the dropPod', () => {
+                describe('calculate style position for the dropPod', () => {
 
                     const shallowDropPodForStyle = (props: Partial<IDropPodProps> = {}) => wrapper = shallow(
                         <DropPod
@@ -350,7 +351,7 @@ describe('DropPod', () => {
                         expect(styleRendered.left).toBeUndefined();
                     });
 
-                    xdescribe('DomPositionVisibilityValidator', () => {
+                    describe('DomPositionVisibilityValidator', () => {
 
                         it('should be call with the buttonOffset, dropOffsetPrime and boundingLimit', () => {
                             const buttonOffset = {};
@@ -382,7 +383,6 @@ describe('DropPod', () => {
                             });
                         });
                     });
-                     **/
                 });
             });
         });
