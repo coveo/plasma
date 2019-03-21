@@ -7,16 +7,6 @@ import {Drop, IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
 
-const clickOnEl = (el: Element = document.getElementById('other')) => {
-    const evt = new MouseEvent('mousedown', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-        clientX: 20,
-    });
-    el.dispatchEvent(evt);
-};
-
 describe('Drop', () => {
     describe('<Drop />', () => {
 
@@ -67,25 +57,20 @@ describe('Drop', () => {
                 },
             });
 
-            beforeEach(() => {
-                const otherElement: HTMLDivElement = document.createElement('div');
-                otherElement.setAttribute('id', 'other');
-                document.body.appendChild(otherElement);
-            });
+            beforeEach(() => RTestUtils.addHTMLElementWithId());
 
-            afterEach(() => document.getElementById('other').remove());
+            afterEach(() => RTestUtils.removeHTMLElementWithId());
 
-            const mountDropWithStore = (props: Partial<IDropProps>, store: mockStore<IReactVaporState>,
-                                        child: React.ReactNode = null) => mountWithStore(
-                <Drop
-                    id={id}
-                    renderOpenButton={(onClick: () => void) => <div id={'Button'} className={'button'} onClick={onClick}></div>}
-                    {...props}
-                >
-                    {child}
-                </Drop>,
-                store,
-            );
+            const mountDropWithStore = (props: Partial<IDropProps>, store: mockStore<IReactVaporState>, child: React.ReactNode = null) => mountWithStore(
+                    <Drop
+                        id={id}
+                        renderOpenButton={(onClick: () => void) => <div id={'Button'} className={'button'} onClick={onClick}></div>}
+                        {...props}
+                    >
+                        {child}
+                    </Drop>,
+                    store,
+                );
 
             it('should render a <DropPod>', () => {
                 const wrapper = mountDropWithStore({}, RTestUtils.buildMockStore());
@@ -97,7 +82,7 @@ describe('Drop', () => {
                 const store = RTestUtils.buildMockStore(defaultStore(false));
                 mountDropWithStore({}, store);
 
-                clickOnEl(document.head);
+                RTestUtils.clickOnElement(document.head);
 
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
             });
@@ -106,7 +91,7 @@ describe('Drop', () => {
                 const store = RTestUtils.buildMockStore(defaultStore(true));
                 mountDropWithStore({}, store);
 
-                clickOnEl();
+                RTestUtils.clickOnElement();
 
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(true);
             });
@@ -115,12 +100,12 @@ describe('Drop', () => {
                 () => {
                     const store = RTestUtils.buildMockStore(defaultStore(true));
                     mountDropWithStore({
-                            closeOnClickOutside: false,
-                        },
+                        closeOnClickOutside: false,
+                    },
                         store,
                     );
 
-                    clickOnEl();
+                    RTestUtils.clickOnElement();
 
                     expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
                 });
@@ -132,7 +117,7 @@ describe('Drop', () => {
                     <div id={'Drop'} className={'drop'}></div>,
                 );
 
-                clickOnEl(document.getElementById('Drop'));
+                RTestUtils.clickOnElement(document.getElementById('Drop'));
 
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(true);
             });
@@ -141,13 +126,13 @@ describe('Drop', () => {
                 () => {
                     const store = RTestUtils.buildMockStore(defaultStore(true));
                     mountDropWithStore({
-                            closeOnClickDrop: false,
-                        },
+                        closeOnClickDrop: false,
+                    },
                         store,
                         <div id={'Drop'} className={'drop'}></div>,
                     );
 
-                    clickOnEl(document.getElementById('Drop'));
+                    RTestUtils.clickOnElement(document.getElementById('Drop'));
 
                     expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
                 });
@@ -156,11 +141,11 @@ describe('Drop', () => {
                 () => {
                     const store = RTestUtils.buildMockStore(defaultStore(false));
                     mountDropWithStore({
-                            renderOpenButton: (onClick: () => void) => {
-                                onClick();
-                                return <div></div>;
-                            },
+                        renderOpenButton: (onClick: () => void) => {
+                            onClick();
+                            return <div></div>;
                         },
+                    },
                         store,
                         <div id={'Drop'} className={'drop'}></div>,
                     );

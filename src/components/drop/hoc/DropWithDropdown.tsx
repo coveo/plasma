@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {SlideY} from '../../../animations/SlideY';
 import {IReactVaporState} from '../../../ReactVapor';
-import {ConfigSupplier} from '../../../utils/HocUtils';
 import {PropsToOmitUtils} from '../../../utils/react/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
@@ -16,7 +15,7 @@ const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps):
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 
-export const dropWithDropdown = (supplier: ConfigSupplier = {}) => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
+export const dropWithDropdown = () => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
 
     @ReduxConnect(mapStateToProps)
     class DropWithDropdown extends React.PureComponent<IDropProps> {
