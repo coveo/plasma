@@ -1,7 +1,6 @@
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {mockStore} from 'redux-test-utils';
-import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';

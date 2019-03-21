@@ -9,7 +9,7 @@ export interface IModalBodyProps {
 export class ModalBody extends React.Component<IModalBodyProps, {}> {
 
     render() {
-        const classes = classNames('modal-body', this.props.classes);
+        const classes = classNames('modal-body relative', this.props.classes);
 
         return (
             <div className={classes}>
