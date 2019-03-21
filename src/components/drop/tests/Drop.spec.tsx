@@ -48,6 +48,7 @@ describe('Drop', () => {
 
             const id = 'DropId';
 
+            let wrapper: any;
             const defaultStore = (isOpen: boolean) => ({
                 drop: {
                     [DefaultGroupIds.default]: {
@@ -59,21 +60,30 @@ describe('Drop', () => {
 
             beforeEach(() => RTestUtils.addHTMLElementWithId());
 
-            afterEach(() => RTestUtils.removeHTMLElementWithId());
+            afterEach(() => {
+                if (wrapper) {
+                    wrapper.unmount();
+                }
+                RTestUtils.removeHTMLElementWithId();
+            });
 
-            const mountDropWithStore = (props: Partial<IDropProps>, store: mockStore<IReactVaporState>, child: React.ReactNode = null) => mountWithStore(
-                <Drop
-                    id={id}
-                    renderOpenButton={(onClick: () => void) => <div id={'Button'} className={'button'} onClick={onClick}></div>}
-                    {...props}
-                >
-                    {child}
-                </Drop>,
-                store,
-            );
+            const mountDropWithStore = (props: Partial<IDropProps>, store: mockStore<IReactVaporState>, child: React.ReactNode = null) => {
+
+                wrapper = mountWithStore(
+                    <Drop
+                        id={id}
+                        renderOpenButton={(onClick: () => void) => <div id={'Button'} className={'button'} onClick={onClick}></div>}
+                        {...props}
+                    >
+                        {child}
+                    </Drop>,
+                    store,
+                );
+                return wrapper;
+            };
 
             it('should render a <DropPod>', () => {
-                const wrapper = mountDropWithStore({}, RTestUtils.buildMockStore());
+                wrapper = mountDropWithStore({}, RTestUtils.buildMockStore());
 
                 expect(wrapper.find(DropPod).length).toBe(1);
             });
