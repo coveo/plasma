@@ -113,7 +113,7 @@ describe('DropPod', () => {
                     expect(styleRendered.visibility).toBe('hidden');
                 });
 
-                describe('calculate style position for the dropPod', () => {
+                xdescribe('calculate style position for the dropPod', () => {
 
                     const shallowDropPodForStyle = (props: Partial<IDropPodProps> = {}) => wrapper = shallow(
                         <DropPod
@@ -132,8 +132,6 @@ describe('DropPod', () => {
 
                         expect(styleRendered.visibility).toBe('visible');
                     });
-
-                    /**
 
                     it('should set the visibility visible if the drop can be show', () => {
                         setupReference();
