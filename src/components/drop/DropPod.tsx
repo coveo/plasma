@@ -29,6 +29,8 @@ export interface IDropPodState {
     style: React.CSSProperties;
 }
 
+export const defaultDropPodPosition = [DropPodPosition.right, DropPodPosition.bottom, DropPodPosition.top, DropPodPosition.left];
+
 class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     readonly dropRef: React.RefObject<HTMLElement>;
 
@@ -36,7 +38,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
     static defaultProps: Partial<IDropPodProps> = {
         isOpen: false,
-        positions: [DropPodPosition.right, DropPodPosition.bottom, DropPodPosition.top, DropPodPosition.left],
+        positions: defaultDropPodPosition,
         minWidth: 0,
         minHeight: 0,
     };
