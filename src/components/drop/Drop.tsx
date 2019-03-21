@@ -51,6 +51,7 @@ export class Drop extends React.PureComponent<IDropProps> {
         super(props);
 
         this.button = React.createRef();
+        this.handleDocumentClick = this.handleDocumentClick.bind(this);
     }
 
     componentWillMount() {
@@ -102,7 +103,7 @@ export class Drop extends React.PureComponent<IDropProps> {
         this.props.toggle(false);
     }
 
-    private handleDocumentClick = (e: MouseEvent) => {
+    private handleDocumentClick(e: MouseEvent) {
         if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
             const button: Element | Text = ReactDOM.findDOMNode(this.button.current);
 
