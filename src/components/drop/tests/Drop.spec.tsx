@@ -62,15 +62,15 @@ describe('Drop', () => {
             afterEach(() => RTestUtils.removeHTMLElementWithId());
 
             const mountDropWithStore = (props: Partial<IDropProps>, store: mockStore<IReactVaporState>, child: React.ReactNode = null) => mountWithStore(
-                    <Drop
-                        id={id}
-                        renderOpenButton={(onClick: () => void) => <div id={'Button'} className={'button'} onClick={onClick}></div>}
-                        {...props}
-                    >
-                        {child}
-                    </Drop>,
-                    store,
-                );
+                <Drop
+                    id={id}
+                    renderOpenButton={(onClick: () => void) => <div id={'Button'} className={'button'} onClick={onClick}></div>}
+                    {...props}
+                >
+                    {child}
+                </Drop>,
+                store,
+            );
 
             it('should render a <DropPod>', () => {
                 const wrapper = mountDropWithStore({}, RTestUtils.buildMockStore());

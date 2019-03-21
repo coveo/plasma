@@ -98,7 +98,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
                 const validator = DomPositionVisibilityValidator[this.props.positions[index]];
                 style = validator &&
-                        validator(buttonOffset, dropOffsetPrime, boundingLimit) || {};
+                    validator(buttonOffset, dropOffsetPrime, boundingLimit) || {};
                 index += 1;
             }
 

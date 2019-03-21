@@ -1,11 +1,11 @@
 import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
-import {DomPositionVisibilityValidator} from '../DomPositionVisibilityValidator';
-import {defaultDropPodPosition, DropPod, DropPodPosition, IDropPodProps, IDropPodState} from '../DropPod';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
+import {DomPositionVisibilityValidator} from '../DomPositionVisibilityValidator';
 import {IDropProps} from '../Drop';
+import {defaultDropPodPosition, DropPod, DropPodPosition, IDropPodProps, IDropPodState} from '../DropPod';
 
-fdescribe('DropPod', () => {
+describe('DropPod', () => {
 
     const defaultDrop = <div></div>;
 
@@ -120,7 +120,7 @@ fdescribe('DropPod', () => {
                             ref={buttonRef}
                             renderDrop={(style) => {
                                 styleRendered = style;
-                                return <div/>;
+                                return <div />;
                             }}
                             isOpen
                             {...props}
@@ -174,8 +174,8 @@ fdescribe('DropPod', () => {
                         setupReference({
                             top: 100,
                         }, {
-                            top: 80,
-                        });
+                                top: 80,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -187,8 +187,8 @@ fdescribe('DropPod', () => {
                         setupReference({
                             top: 100,
                         }, {
-                            top: 100,
-                        });
+                                top: 100,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -200,10 +200,10 @@ fdescribe('DropPod', () => {
                         setupReference({
                             bottom: 100,
                         }, {
-                            bottom: 120,
-                        }, {
-                            height: 10,
-                        });
+                                bottom: 120,
+                            }, {
+                                height: 10,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -215,10 +215,10 @@ fdescribe('DropPod', () => {
                         setupReference({
                             bottom: 100,
                         }, {
-                            bottom: 100,
-                        }, {
-                            height: 10,
-                        });
+                                bottom: 100,
+                            }, {
+                                height: 10,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -230,8 +230,8 @@ fdescribe('DropPod', () => {
                         setupReference({
                             left: 50,
                         }, {
-                            left: 30,
-                        });
+                                left: 30,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -243,8 +243,8 @@ fdescribe('DropPod', () => {
                         setupReference({
                             left: 50,
                         }, {
-                            left: 50,
-                        });
+                                left: 50,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -256,10 +256,10 @@ fdescribe('DropPod', () => {
                         setupReference({
                             right: 60,
                         }, {
-                            right: 80,
-                        }, {
-                            width: 10,
-                        });
+                                right: 80,
+                            }, {
+                                width: 10,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -271,10 +271,10 @@ fdescribe('DropPod', () => {
                         setupReference({
                             right: 80,
                         }, {
-                            right: 80,
-                        }, {
-                            width: 10,
-                        });
+                                right: 80,
+                            }, {
+                                width: 10,
+                            });
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -284,9 +284,9 @@ fdescribe('DropPod', () => {
 
                     it('should return an empty style if the drop height is bigger than bounding height available to render', () => {
                         setupReference({
-                                bottom: 80,
-                                top: 120,
-                            },
+                            bottom: 80,
+                            top: 120,
+                        },
                             {},
                             {
                                 height: 1000,
@@ -301,9 +301,9 @@ fdescribe('DropPod', () => {
 
                     it('should return an empty style if the drop height is equal than bounding height available to render', () => {
                         setupReference({
-                                bottom: 80,
-                                top: 120,
-                            },
+                            bottom: 80,
+                            top: 120,
+                        },
                             {},
                             {
                                 height: 40,
@@ -318,9 +318,9 @@ fdescribe('DropPod', () => {
 
                     it('should return an empty style if the drop with is smaller than bounding width available to render', () => {
                         setupReference({
-                                left: 80,
-                                right: 120,
-                            },
+                            left: 80,
+                            right: 120,
+                        },
                             {},
                             {
                                 width: 5000,
@@ -335,9 +335,9 @@ fdescribe('DropPod', () => {
 
                     it('should return an empty style if the drop with is equal than bounding width available to render', () => {
                         setupReference({
-                                left: 80,
-                                right: 120,
-                            },
+                            left: 80,
+                            right: 120,
+                        },
                             {},
                             {
                                 width: 40,
@@ -390,7 +390,7 @@ fdescribe('DropPod', () => {
                 const mountDrop = (props: Partial<IDropProps>) => mount(
                     <DropPod
                         ref={buttonRef}
-                        renderDrop={() => <div/>}
+                        renderDrop={() => <div />}
                         {...props}
                     />,
                 );
@@ -409,7 +409,7 @@ fdescribe('DropPod', () => {
 
                     RTestUtils.clickOnElement(document.getElementById(RTestUtils.defaultId), 'resize');
 
-                    expect(wrapper.state().offset).toBe({top: 10});
+                    expect((wrapper.instance().state as any).offset).toBe({top: 10});
                 });
 
                 xit('should get the offset from the button on event scroll', () => {
@@ -422,7 +422,7 @@ fdescribe('DropPod', () => {
 
                     RTestUtils.clickOnElement(document.getElementById(RTestUtils.defaultId), 'resize');
 
-                    expect(wrapper.state().offset).toBe({top: 10});
+                    expect((wrapper.instance().state as any).offset).toBe({top: 10});
                 });
             });
         });
