@@ -6,7 +6,7 @@ import {defaultDropPodPosition, DropPod, DropPodPosition, IDropPodProps} from '.
 
 describe('DropPod', () => {
 
-    const defaultDrop = null;
+    const defaultDrop: any = null;
 
     describe('<DropPod />', () => {
 
