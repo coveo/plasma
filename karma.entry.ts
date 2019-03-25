@@ -30,6 +30,7 @@ beforeEach(() => {
     if (!$('#App').length) {
         $('body').append('<div id="App" class="coveo-styleguide"></div>');
     }
+    jasmine.clock().uninstall();
 });
 
 afterEach(() => {
