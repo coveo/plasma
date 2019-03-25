@@ -79,6 +79,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
             </ReactModal>
         );
     }
+    
     componentDidUpdate(prevProps: IModalCompositeProps) {
         // Workaround for https://github.com/reactjs/react-modal/issues/745
         if (prevProps.isOpened && !this.props.isOpened) {
