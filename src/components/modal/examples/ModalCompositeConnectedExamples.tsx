@@ -113,6 +113,7 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                             shouldCloseOnEsc={false}
                             shouldCloseOnOverlayClick={false}
                             onAfterOpen={() => alert('The modal content has mounted and is ready to open.')}
+                            closeCallback={() => alert('The modal has closed.')}
                         />
                     </div>
                 </div>

@@ -65,7 +65,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
                     afterOpen: 'opened',
                     beforeClose: 'clear',
                 }}
-                onRequestClose={this.handleRequestClose}
+                onRequestClose={this.props.onClose}
                 closeTimeoutMS={this.props.closeTimeout}
                 contentRef={this.props.contentRef}
                 parentSelector={this.getParent}
@@ -78,6 +78,15 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
                 </div>
             </ReactModal>
         );
+    }
+    componentDidUpdate(prevProps: IModalCompositeProps) {
+        // Workaround for https://github.com/reactjs/react-modal/issues/745
+        if (prevProps.isOpened && !this.props.isOpened) {
+            window.clearTimeout(this.timeoutId);
+            this.timeoutId = window.setTimeout(() => {
+                callIfDefined(this.props.closeCallback);
+            }, this.props.closeTimeout);
+        }
     }
 
     componentDidMount() {
@@ -115,13 +124,4 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
     )
 
     private getParent = (): HTMLElement => document.querySelector(Defaults.MODAL_ROOT);
-
-    private handleRequestClose = () => {
-        // Workaround for https://github.com/reactjs/react-modal/issues/745
-        // Once issue is fixed, use onAfterClose={this.props.closeCallback} instead
-        callIfDefined(this.props.onClose);
-        this.timeoutId = window.setTimeout(() => {
-            callIfDefined(this.props.closeCallback);
-        }, this.props.closeTimeout);
-    }
 }
