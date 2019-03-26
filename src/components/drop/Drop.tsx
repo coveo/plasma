@@ -111,7 +111,7 @@ export class Drop extends React.PureComponent<IDropProps> {
         this.props.toggle(true);
     }
 
-    private onClickOutside(e: MouseEvent) {
+    private onClickOutside() {
         this.props.toggle(false);
     }
 
