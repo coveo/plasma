@@ -1,7 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
+import {Defaults} from '../../Defaults';
 import {IClassName} from '../../utils/ClassNameUtils';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 
 export interface IModalOwnProps {
     id?: string;
@@ -31,6 +33,11 @@ export interface IModalProps extends IModalOwnProps, Partial<IModalStateProps>, 
  * @deprecated use ModalComposite instead
  */
 export class Modal extends React.Component<IModalProps, {}> {
+    static defaultProps: Partial<IModalProps> = {
+        closeTimeout: Defaults.MODAL_TIMEOUT,
+    };
+
+    private timeoutId: number;
 
     componentWillMount() {
         if (this.props.onRender) {
@@ -39,28 +46,23 @@ export class Modal extends React.Component<IModalProps, {}> {
     }
 
     componentWillUnmount() {
-        if (this.props.isOpened) {
-            this.closeModal();
-        }
         if (this.props.onDestroy) {
             this.props.onDestroy();
         }
+        window.clearTimeout(this.timeoutId);
     }
 
-    componentWillReceiveProps(nextProps: IModalProps) {
-        if (this.props.isOpened && !nextProps.isOpened) {
-            this.closeModal();
+    componentDidUpdate(prevProps: IModalProps) {
+        if (prevProps.isOpened && !this.props.isOpened) {
+            this.handleCloseCallback();
         }
     }
 
-    private closeModal() {
-        if (this.props.closeCallback) {
-            if (this.props.closeTimeout) {
-                setTimeout(() => this.props.closeCallback(), this.props.closeTimeout);
-            } else {
-                this.props.closeCallback();
-            }
-        }
+    private handleCloseCallback() {
+        window.clearTimeout(this.timeoutId);
+        this.timeoutId = window.setTimeout(() => {
+            callIfDefined(this.props.closeCallback);
+        }, this.props.closeTimeout);
     }
 
     render() {

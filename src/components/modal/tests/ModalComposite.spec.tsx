@@ -80,7 +80,8 @@ describe('ModalComposite', () => {
         const closeCallbackSpy = jasmine.createSpy('closeCallback');
         const modalComposite = shallow(<ModalComposite closeCallback={closeCallbackSpy} />);
 
-        modalComposite.find(ReactModal).props().onRequestClose(new MouseEvent('fake-close'));
+        modalComposite.setProps({isOpened: true});
+        modalComposite.setProps({isOpened: false});
         expect(closeCallbackSpy).not.toHaveBeenCalled();
 
         jasmine.clock().tick(Defaults.MODAL_TIMEOUT);

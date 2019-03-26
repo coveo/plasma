@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
+import {Defaults} from '../../../Defaults';
 import {IModalProps, Modal} from '../Modal';
 
 describe('Modal', () => {
@@ -58,34 +59,19 @@ describe('Modal', () => {
             expect(destroySpy.calls.count()).toBe(1);
         });
 
-        it('should call prop closeCallback on unmounting if set and if modal is opened', () => {
-            const closeCallbackSpy: jasmine.Spy = jasmine.createSpy('closeCallback');
-
-            modal.setProps({
-                closeCallback: closeCallbackSpy,
-                isOpened: false,
-            });
-            modal.mount();
-            modal.unmount();
-
-            expect(closeCallbackSpy).not.toHaveBeenCalled();
-
-            modal.setProps({
-                closeCallback: closeCallbackSpy,
-                isOpened: true,
-            });
-            modal.mount();
-            modal.unmount();
-
-            expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
-        });
-
         it('should call the prop closeCallback if it exists when closing the modal', () => {
+            jasmine.clock().install();
+
             const closeCallbackSpy: jasmine.Spy = jasmine.createSpy('closeCallback');
             modal.setProps({isOpened: true, closeCallback: closeCallbackSpy});
+            modal.update();
             modal.setProps({isOpened: false});
+            modal.update();
+
+            jasmine.clock().tick(Defaults.MODAL_TIMEOUT);
 
             expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
+            jasmine.clock().uninstall();
         });
 
         it('should call the prop closeCallback with a timeout if specified when closing the modal', () => {
@@ -93,7 +79,9 @@ describe('Modal', () => {
 
             const closeCallbackSpy: jasmine.Spy = jasmine.createSpy('closeCallback');
             modal.setProps({isOpened: true, closeCallback: closeCallbackSpy, closeTimeout: 5});
+            modal.update();
             modal.setProps({isOpened: false});
+            modal.update();
 
             expect(closeCallbackSpy).toHaveBeenCalledTimes(0);
 
