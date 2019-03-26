@@ -121,10 +121,10 @@ export class Drop extends React.PureComponent<IDropProps> {
 
             if (this.dropRef.current.contains(e.target as Node)) {
                 if (this.props.closeOnClickDrop) {
-                    this.onClickOutside(e);
+                    this.onClickOutside();
                 }
             } else if (!button.contains(e.target as Node) && this.props.closeOnClickOutside) {
-                this.onClickOutside(e);
+                this.onClickOutside();
             }
         }
     }
