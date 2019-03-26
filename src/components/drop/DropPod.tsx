@@ -18,6 +18,7 @@ export interface IDropPodProps {
     selector?: string;
     minWidth?: number;
     minHeight?: number;
+    hasSameWidth?: boolean;
 }
 
 export interface IRDropPodProps extends IDropPodProps {
@@ -41,6 +42,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         positions: defaultDropPodPosition,
         minWidth: 0,
         minHeight: 0,
+        hasSameWidth: false,
     };
 
     constructor(props: IDropPodProps, state: IDropPodState) {
@@ -55,12 +57,16 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         this.updateOffset = this.updateOffset.bind(this);
     }
 
-    componentDidMount() {
+    componentWillUnmount() {
+        this.removeEventsOnDocument();
+    }
+
+    private setEventsOnDocument() {
         window.addEventListener('resize', this.updateOffset, true);
         window.addEventListener('scroll', this.updateOffset, true);
     }
 
-    componentWillUnmount() {
+    private removeEventsOnDocument() {
         window.removeEventListener('scroll', this.updateOffset, true);
         window.removeEventListener('resize', this.updateOffset, true);
     }
@@ -74,7 +80,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     private canRenderDrop() {
-        return this.dropRef.current && this.props.isOpen && this.props.positions.length;
+        return this.dropRef.current && this.props.isOpen && !!this.props.positions.length;
     }
 
     private calculateStyleOffset() {
@@ -82,7 +88,13 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         if (this.canRenderDrop()) {
             const buttonOffset: ClientRect | DOMRect = this.state && this.state.offset ||
                 this.props.buttonRef.current.getBoundingClientRect();
-            const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
+            let dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
+            if (this.props.hasSameWidth) {
+                dropOffset = {
+                    ...(dropOffset as DOMRect).toJSON(),
+                    width: buttonOffset.width,
+                };
+            }
 
             const parentOffset = this.props.buttonRef.current.offsetParent.getBoundingClientRect();
             const boundingLimit: IBoundingLimit = {
@@ -120,6 +132,13 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 style.left = boundingLimit.maxX - dropOffset.width;
             }
 
+            if (this.props.hasSameWidth) {
+                style = {
+                    ...style,
+                    width: buttonOffset.width,
+                };
+            }
+
             // No space to render the drop target
             if (dropOffset.height >= boundingLimit.maxY - boundingLimit.minY || dropOffset.width >= boundingLimit.maxX -
                 boundingLimit.minX) {
@@ -134,6 +153,12 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     render() {
+        if (this.props.isOpen) {
+            this.setEventsOnDocument();
+        } else {
+            this.removeEventsOnDocument();
+        }
+
         this.calculateStyleOffset();
 
         const selector: any = this.props.selector || Defaults.DROP_ROOT;

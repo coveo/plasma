@@ -1,6 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+import * as _ from 'underscore';
 import {DomPositionVisibilityValidator} from '../DomPositionVisibilityValidator';
 import {defaultDropPodPosition, DropPod, DropPodPosition, IDropPodProps} from '../DropPod';
 
@@ -349,6 +350,26 @@ describe('DropPod', () => {
 
                         expect(styleRendered.top).toBeUndefined();
                         expect(styleRendered.left).toBeUndefined();
+                    });
+
+                    it('should return a style with the width equal than the button width if the prop hasSameWidth is set to true', () => {
+                        setupReference({
+                            left: 0,
+                            right: 1000,
+                        },
+                            {
+                                width: 100,
+                            },
+                            {
+                                width: 40,
+                                toJSON: () => ({}),
+                            });
+                        shallowDropPodForStyle({
+                            positions: [DropPodPosition.bottom],
+                            hasSameWidth: true,
+                        });
+
+                        expect(styleRendered.width).toBe(100);
                     });
 
                     describe('DomPositionVisibilityValidator', () => {

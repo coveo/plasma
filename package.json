@@ -26,6 +26,7 @@
     "compileTs": "webpack --config webpack.config.prod.js",
     "minify": "webpack --config webpack.config.prod.minify.js",
     "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
+    "build:dev": "gulp clean && npm run compileTs && gulp ts:definitions",
     "pretest": "gulp clean:tests",
     "test": "karma start",
     "test:compile": "webpack --display-error-details --config webpack.config.test.js",

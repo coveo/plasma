@@ -132,6 +132,18 @@ describe('Drop', () => {
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(true);
             });
 
+            it('should not dispatch an action to toggle drop isOpen if drop is close', () => {
+                const store = RTestUtils.buildMockStore(defaultStore(false));
+                mountDropWithStore({},
+                    store,
+                    <div id={'Drop'} className={'drop'}></div>,
+                );
+
+                RTestUtils.clickOnElement(document.getElementById('Drop'));
+
+                expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
+            });
+
             it('should not dispatch an action to toggle drop isOpen if the element target is in the body and inside the drop element if closeOnClickDrop is false',
                 () => {
                     const store = RTestUtils.buildMockStore(defaultStore(true));

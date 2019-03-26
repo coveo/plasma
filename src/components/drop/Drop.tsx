@@ -52,17 +52,20 @@ export class Drop extends React.PureComponent<IDropProps> {
 
         this.button = React.createRef();
         this.handleDocumentClick = this.handleDocumentClick.bind(this);
-    }
-
-    componentWillMount() {
-        document.addEventListener('mousedown', this.handleDocumentClick);
+        this.onClick = this.onClick.bind(this);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleDocumentClick);
+        this.removeEventOnClickOnDocument();
     }
 
     render() {
+        if (this.props.isOpen) {
+            this.setEventOnClickOnDocument();
+        } else {
+            this.removeEventOnClickOnDocument();
+        }
+
         return (
             <>
                 <div
@@ -76,6 +79,14 @@ export class Drop extends React.PureComponent<IDropProps> {
         );
     }
 
+    private setEventOnClickOnDocument() {
+        document.addEventListener('click', this.handleDocumentClick);
+    }
+
+    private removeEventOnClickOnDocument() {
+        document.removeEventListener('click', this.handleDocumentClick);
+    }
+
     private createPortalMenu() {
         return (
             <DropPod
@@ -85,6 +96,7 @@ export class Drop extends React.PureComponent<IDropProps> {
                 selector={this.props.selector}
                 minHeight={this.props.minHeight}
                 minWidth={this.props.minWidth}
+                hasSameWidth={this.props.hasSameWidth}
                 renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
                     <div style={style} ref={this.dropRef = dropRef} className={classNames('show-on-top', this.props.listContainerProps.className)} {...this.props.listContainerProps} >
@@ -95,11 +107,11 @@ export class Drop extends React.PureComponent<IDropProps> {
         );
     }
 
-    private onClick = () => {
+    private onClick() {
         this.props.toggle(true);
     }
 
-    private onClickOutside() {
+    private onClickOutside(e: MouseEvent) {
         this.props.toggle(false);
     }
 
@@ -109,10 +121,10 @@ export class Drop extends React.PureComponent<IDropProps> {
 
             if (this.dropRef.current.contains(e.target as Node)) {
                 if (this.props.closeOnClickDrop) {
-                    this.onClickOutside();
+                    this.onClickOutside(e);
                 }
             } else if (!button.contains(e.target as Node) && this.props.closeOnClickOutside) {
-                this.onClickOutside();
+                this.onClickOutside(e);
             }
         }
     }
@@ -125,4 +137,5 @@ Drop.defaultProps = {
     listContainerProps: {},
     minHeight: 0,
     minWidth: 0,
+    hasSameWidth: false,
 };
