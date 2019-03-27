@@ -71,6 +71,12 @@ export class ButtonExamples extends React.Component<any, any> {
                     </div>
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>Disabled Primary Button</label>
+                    <div className='form-control'>
+                        <Button enabled={false} name='Disabled Button' primary />
+                    </div>
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>Disabled Button with tooltip</label>
                     <div className='form-control'>
                         <Button enabled={false} name='Disabled Button with tooltip' tooltip='Tooltip test' />
