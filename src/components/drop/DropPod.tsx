@@ -16,6 +16,7 @@ export interface IDropPodProps {
     positions?: string[];
     renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>) => React.ReactNode;
     selector?: string;
+    parentSelector?: string;
     minWidth?: number;
     minHeight?: number;
     hasSameWidth?: boolean;
@@ -86,8 +87,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     private calculateStyleOffset() {
         let style: React.CSSProperties = {};
         if (this.canRenderDrop()) {
-            const buttonOffset: ClientRect | DOMRect = this.state && this.state.offset ||
-                this.props.buttonRef.current.getBoundingClientRect();
+            const buttonOffset: ClientRect | DOMRect = this.props.buttonRef.current && this.props.buttonRef.current.getBoundingClientRect() || this.state.offset;
             let dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
             if (this.props.hasSameWidth) {
                 dropOffset = {
@@ -96,7 +96,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
             }
 
-            const parentOffset = this.props.buttonRef.current.offsetParent.getBoundingClientRect();
+            const parentOffset = this.props.parentSelector ? this.props.buttonRef.current.closest(this.props.parentSelector).getBoundingClientRect() : this.props.buttonRef.current.offsetParent.getBoundingClientRect();
             const boundingLimit: IBoundingLimit = {
                 maxY: Math.min(parentOffset.bottom, window.innerHeight),
                 minY: Math.max(parentOffset.top, 0),
@@ -118,7 +118,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 index += 1;
             }
 
-            // Map each side of drop if the button offset is outside of the bounding limit
+            // Resize the button with the last position before the out of the box
+
             if (buttonOffset.top <= boundingLimit.minY) {
                 style.top = boundingLimit.minY;
             }
