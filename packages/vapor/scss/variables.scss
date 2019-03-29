@@ -528,6 +528,10 @@ $ribbon-font-size: 0.8em;
 $ribbon-letter-spacing: 1px;
 $ribbon-rotation-angle: 45deg;
 
+// Card
+$card-container-box-shadow: 0 2px 8px 0 rgba($black, $transparency-4);
+$card-hover-box-shadow: -5px 0 5px $light-grey;
+
 // Logo card
 $logo-card-title-color: #4a4a4a;
 $logo-card-border: 1px solid $medium-grey;
