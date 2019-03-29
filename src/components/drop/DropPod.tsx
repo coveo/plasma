@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {Defaults} from '../../Defaults';
 import {DomPositionVisibilityValidator, IBoundingLimit} from './DomPositionVisibilityValidator';
+import {IDropProps} from './Drop';
 
 export const DropPodPosition = {
     bottom: 'bottom',
@@ -60,6 +61,14 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
     componentWillUnmount() {
         this.removeEventsOnDocument();
+    }
+
+    componentDidUpdate(prevProps: Readonly<IDropProps>) {
+        if (!prevProps.isOpen && this.props.isOpen) {
+            this.setEventsOnDocument();
+        } else if (prevProps.isOpen && !this.props.isOpen) {
+            this.removeEventsOnDocument();
+        }
     }
 
     private setEventsOnDocument() {
@@ -154,12 +163,6 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     render() {
-        if (this.props.isOpen) {
-            this.setEventsOnDocument();
-        } else {
-            this.removeEventsOnDocument();
-        }
-
         this.calculateStyleOffset();
 
         const selector: any = this.props.selector || Defaults.DROP_ROOT;

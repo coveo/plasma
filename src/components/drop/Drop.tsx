@@ -59,13 +59,15 @@ export class Drop extends React.PureComponent<IDropProps> {
         this.removeEventOnClickOnDocument();
     }
 
-    render() {
-        if (this.props.isOpen) {
+    componentDidUpdate(prevProps: Readonly<IDropProps>) {
+        if (!prevProps.isOpen && this.props.isOpen) {
             this.setEventOnClickOnDocument();
-        } else {
+        } else if (prevProps.isOpen && !this.props.isOpen) {
             this.removeEventOnClickOnDocument();
         }
+    }
 
+    render() {
         return (
             <>
                 <div
