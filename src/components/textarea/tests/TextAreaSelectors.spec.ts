@@ -1,5 +1,5 @@
 import {IReactVaporState} from '../../../ReactVapor';
-import {TextAreaSelectors} from '../TestAreaSelectors';
+import {TextAreaSelectors} from '../TextAreaSelectors';
 
 describe('TextAreaSelectors', () => {
     it('should not throw and return an empty string when passing a falsy id', () => {
