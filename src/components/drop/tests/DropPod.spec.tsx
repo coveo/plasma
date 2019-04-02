@@ -4,7 +4,7 @@ import * as React from 'react';
 import {DomPositionVisibilityValidator} from '../DomPositionVisibilityValidator';
 import {defaultDropPodPosition, DropPod, DropPodPosition, IDropPodProps} from '../DropPod';
 
-fdescribe('DropPod', () => {
+describe('DropPod', () => {
 
     const defaultDrop: any = null;
 
@@ -409,7 +409,7 @@ fdescribe('DropPod', () => {
 
                     let RWrapper: ShallowWrapper;
 
-                        it('should add events if the dropPod is open', () => {
+                    it('should add events if the dropPod is open', () => {
                         const spy = spyOn(window, 'addEventListener');
 
                         shallowWithState(
