@@ -128,6 +128,8 @@ export class TableHOCExamples extends React.Component {
                                 id={data.username}
                                 collapsible={{
                                     content: generateCollapsibleRow(data),
+                                    // tslint:disable-next-line:no-console
+                                    onToggleCollapsible: (isOpen: boolean) => console.log(isOpen),
                                 }}
                             >
                                 <td key='city'>{data.city}</td>
