@@ -1,11 +1,10 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
-import * as _ from 'underscore';
 import {DomPositionVisibilityValidator} from '../DomPositionVisibilityValidator';
 import {defaultDropPodPosition, DropPod, DropPodPosition, IDropPodProps} from '../DropPod';
 
-describe('DropPod', () => {
+fdescribe('DropPod', () => {
 
     const defaultDrop: any = null;
 
@@ -403,6 +402,94 @@ describe('DropPod', () => {
                                 minX: 10,
                             });
                         });
+                    });
+                });
+
+                describe('events', () => {
+
+                    let RWrapper: ShallowWrapper;
+
+                        it('should add events if the dropPod is open', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={true}
+                            />, {}).dive();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
+                    });
+
+                    it('should not add events if the dropPod is close', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        expect(spy).toHaveBeenCalledTimes(0);
+                    });
+
+                    it('should remove events on unmount', () => {
+                        const spy = spyOn(window, 'removeEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        RWrapper.unmount();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
+                    });
+
+                    it('should add events if the prop isOpen change to true on update', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        RWrapper.setProps({isOpen: true});
+                        RWrapper.update();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
+                    });
+
+                    it('should not add events if the prop isOpen do not change on update', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        RWrapper.setProps({isOpen: false});
+                        RWrapper.update();
+
+                        expect(spy).toHaveBeenCalledTimes(0);
+                    });
+
+                    it('should remove events if the prop isOpen change to false on update', () => {
+                        const spy = spyOn(window, 'removeEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={true}
+                            />, {}).dive();
+
+                        RWrapper.setProps({isOpen: false});
+                        RWrapper.update();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
                     });
                 });
             });

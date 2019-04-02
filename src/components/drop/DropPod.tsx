@@ -59,6 +59,12 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         this.updateOffset = this.updateOffset.bind(this);
     }
 
+    componentWillMount() {
+        if (this.props.isOpen) {
+            this.setEventsOnDocument();
+        }
+    }
+
     componentWillUnmount() {
         this.removeEventsOnDocument();
     }

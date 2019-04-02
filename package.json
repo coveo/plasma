@@ -31,6 +31,7 @@
     "test": "karma start",
     "test:compile": "webpack --display-error-details --config webpack.config.test.js",
     "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run",
+    "test:browser": "karma start --browsers Chrome",
     "posttest": "npm run coverage",
     "coverage": "npm run coverage:remap && npm run coverage:report",
     "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,karma.entry.ts",

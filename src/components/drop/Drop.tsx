@@ -55,6 +55,12 @@ export class Drop extends React.PureComponent<IDropProps> {
         this.onClick = this.onClick.bind(this);
     }
 
+    componentWillMount() {
+        if (this.props.isOpen) {
+            this.setEventOnClickOnDocument();
+        }
+    }
+
     componentWillUnmount() {
         this.removeEventOnClickOnDocument();
     }
