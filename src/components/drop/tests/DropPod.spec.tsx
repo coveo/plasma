@@ -351,6 +351,26 @@ describe('DropPod', () => {
                         expect(styleRendered.left).toBeUndefined();
                     });
 
+                    it('should return a style with the width equal than the button width if the prop hasSameWidth is set to true', () => {
+                        setupReference({
+                            left: 0,
+                            right: 1000,
+                        },
+                            {
+                                width: 100,
+                            },
+                            {
+                                width: 40,
+                                toJSON: () => ({}),
+                            });
+                        shallowDropPodForStyle({
+                            positions: [DropPodPosition.bottom],
+                            hasSameWidth: true,
+                        });
+
+                        expect(styleRendered.width).toBe(100);
+                    });
+
                     describe('DomPositionVisibilityValidator', () => {
 
                         it('should be call with the buttonOffset, dropOffsetPrime and boundingLimit', () => {
@@ -382,6 +402,94 @@ describe('DropPod', () => {
                                 minX: 10,
                             });
                         });
+                    });
+                });
+
+                describe('events', () => {
+
+                    let RWrapper: ShallowWrapper;
+
+                    it('should add events if the dropPod is open', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={true}
+                            />, {}).dive();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
+                    });
+
+                    it('should not add events if the dropPod is close', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        expect(spy).toHaveBeenCalledTimes(0);
+                    });
+
+                    it('should remove events on unmount', () => {
+                        const spy = spyOn(window, 'removeEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        RWrapper.unmount();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
+                    });
+
+                    it('should add events if the prop isOpen change to true on update', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        RWrapper.setProps({isOpen: true});
+                        RWrapper.update();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
+                    });
+
+                    it('should not add events if the prop isOpen do not change on update', () => {
+                        const spy = spyOn(window, 'addEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={false}
+                            />, {}).dive();
+
+                        RWrapper.setProps({isOpen: false});
+                        RWrapper.update();
+
+                        expect(spy).toHaveBeenCalledTimes(0);
+                    });
+
+                    it('should remove events if the prop isOpen change to false on update', () => {
+                        const spy = spyOn(window, 'removeEventListener');
+
+                        RWrapper = shallowWithState(
+                            <DropPod
+                                renderDrop={() => defaultDrop}
+                                isOpen={true}
+                            />, {}).dive();
+
+                        RWrapper.setProps({isOpen: false});
+                        RWrapper.update();
+
+                        expect(spy).toHaveBeenCalledTimes(2);
                     });
                 });
             });
