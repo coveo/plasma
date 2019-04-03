@@ -88,7 +88,7 @@
     "@types/react-transition-group": "2.0.15",
     "@types/redux-logger": "3.0.6",
     "@types/redux-test-utils": "0.2.0",
-    "@types/underscore": "1.8.10",
+    "@types/underscore": "1.8.14",
     "@types/underscore.string": "0.0.33",
     "@types/webpack-env": "1.13.6",
     "ansi-colors": "3.2.4",
