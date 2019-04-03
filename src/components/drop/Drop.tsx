@@ -52,14 +52,25 @@ export class Drop extends React.PureComponent<IDropProps> {
 
         this.button = React.createRef();
         this.handleDocumentClick = this.handleDocumentClick.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
 
     componentWillMount() {
-        document.addEventListener('mousedown', this.handleDocumentClick);
+        if (this.props.isOpen) {
+            this.setEventOnClickOnDocument();
+        }
     }
 
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleDocumentClick);
+        this.removeEventOnClickOnDocument();
+    }
+
+    componentDidUpdate(prevProps: Readonly<IDropProps>) {
+        if (!prevProps.isOpen && this.props.isOpen) {
+            this.setEventOnClickOnDocument();
+        } else if (prevProps.isOpen && !this.props.isOpen) {
+            this.removeEventOnClickOnDocument();
+        }
     }
 
     render() {
@@ -76,6 +87,14 @@ export class Drop extends React.PureComponent<IDropProps> {
         );
     }
 
+    private setEventOnClickOnDocument() {
+        document.addEventListener('click', this.handleDocumentClick);
+    }
+
+    private removeEventOnClickOnDocument() {
+        document.removeEventListener('click', this.handleDocumentClick);
+    }
+
     private createPortalMenu() {
         return (
             <DropPod
@@ -85,6 +104,8 @@ export class Drop extends React.PureComponent<IDropProps> {
                 selector={this.props.selector}
                 minHeight={this.props.minHeight}
                 minWidth={this.props.minWidth}
+                hasSameWidth={this.props.hasSameWidth}
+                parentSelector={this.props.parentSelector}
                 renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
                     <div style={style} ref={this.dropRef = dropRef} className={classNames('show-on-top', this.props.listContainerProps.className)} {...this.props.listContainerProps} >
@@ -95,7 +116,7 @@ export class Drop extends React.PureComponent<IDropProps> {
         );
     }
 
-    private onClick = () => {
+    private onClick() {
         this.props.toggle(true);
     }
 
@@ -125,4 +146,5 @@ Drop.defaultProps = {
     listContainerProps: {},
     minHeight: 0,
     minWidth: 0,
+    hasSameWidth: false,
 };

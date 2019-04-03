@@ -262,7 +262,6 @@ describe('Table HOC', () => {
 
                 expect(store.isActionDispatched(expectedAction)).toBe(true);
             });
-
         });
 
         it('should dispatch a toggleCollapsible action with opened:true on mount when expandOnMount is set to true', () => {
@@ -350,6 +349,60 @@ describe('Table HOC', () => {
                 },
             });
             expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+        });
+
+        it('should call the onToggleCollapsible props with true the row is opened', () => {
+            const spy = jasmine.createSpy('onToggle');
+            store = createMockStore({
+                tableHOCRow: [{
+                    id: defaultProps.id,
+                    tableId: defaultProps.tableId,
+                    selected: false,
+                    opened: false,
+                }],
+            });
+
+            const row = shallowWithStore(
+                <TableRowConnected
+                    id={defaultProps.id}
+                    tableId={defaultProps.tableId}
+                    collapsible={{
+                        content: <div>Whatever</div>,
+                        onToggleCollapsible: spy,
+                    }}
+                />,
+                store,
+            ).dive();
+
+            row.find('tr.heading-row').simulate('click', {});
+            expect(spy).toHaveBeenCalledWith(true);
+        });
+
+        it('should call the onToggleCollapsible props with false the row is closed', () => {
+            const spy = jasmine.createSpy('onToggle');
+            store = createMockStore({
+                tableHOCRow: [{
+                    id: defaultProps.id,
+                    tableId: defaultProps.tableId,
+                    selected: false,
+                    opened: true,
+                }],
+            });
+
+            const row = shallowWithStore(
+                <TableRowConnected
+                    id={defaultProps.id}
+                    tableId={defaultProps.tableId}
+                    collapsible={{
+                        content: <div>Whatever</div>,
+                        onToggleCollapsible: spy,
+                    }}
+                />,
+                store,
+            ).dive();
+
+            row.find('tr.heading-row').simulate('click', {});
+            expect(spy).toHaveBeenCalledWith(false);
         });
     });
 });

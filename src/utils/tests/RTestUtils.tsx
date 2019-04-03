@@ -60,7 +60,7 @@ const removeHTMLElementWithId = (id: string = defaultId) => {
     document.getElementById(id).remove();
 };
 
-const clickOnElement = (el: Element = document.getElementById(defaultId), event: string = 'mousedown') => {
+const clickOnElement = (el: Element = document.getElementById(defaultId), event: string = 'click') => {
     const evt = new MouseEvent(event, {
         view: window,
         bubbles: true,
