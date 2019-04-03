@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {mod} from '../../utils/DataStructuresUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
@@ -83,9 +84,14 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
             />)
             .value();
 
-        return items.length
-            ? items
-            : <ItemBox {...{...this.props.noResultItem, classes: ['multi-line']}} />;
+        const emptyItem = (
+            <ItemBox
+                {...this.props.noResultItem}
+                classes={[classNames('multi-line', this.props.noResultItem.classes)]}
+            />
+        );
+
+        return _.isEmpty(items) ? emptyItem : items;
     }
 
     render() {
