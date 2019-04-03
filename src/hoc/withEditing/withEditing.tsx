@@ -23,8 +23,7 @@ export interface IWithEditDispatchProps {
 
 export interface IWithEditingProps extends IWithEditStateProps, IWithEditDispatchProps {}
 
-export const withEditing = <T, R = any>(config: IWithEditing) =>
-    (Component: React.ComponentClass): React.ComponentClass<Partial<IWithEditingProps> & T, R> => {
+export const withEditing = <T, R = any>(config: IWithEditing) => (Component: React.ComponentClass): React.ComponentClass<Partial<IWithEditingProps> & T, R> => {
         const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
             isDirty: getIsDirty(state, config.id),
         });
@@ -45,7 +44,7 @@ export const withEditing = <T, R = any>(config: IWithEditing) =>
 
             render() {
                 return (
-                    <div>
+                    <>
                         <Component {...this.props}>
                             {this.props.children}
                         </Component>
@@ -54,7 +53,7 @@ export const withEditing = <T, R = any>(config: IWithEditing) =>
                                 {config.footerChildren}
                             </StickyFooter>
                         )}
-                    </div>
+                    </>
                 );
             }
         }
