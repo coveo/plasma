@@ -75,7 +75,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getButton = (props: ISelectButtonProps): JSX.Element => {
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
-        const showClear = !!option && this.props.canClear;
+        const showClear = !!option && this.props.canClear && !this.props.disabled;
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
             [styles.singleSelectFixedWidth]: !this.props.noFixedWidth,
@@ -121,10 +121,16 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getDeselectOptionButton(): React.ReactNode {
         return (
-            <Tooltip title={this.props.deselectTooltipText} placement='top' noSpanWrapper onClick={this.props.deselect}>
+            <Tooltip title={this.props.deselectTooltipText} placement='top' noSpanWrapper onClick={this.handleDeselect}>
                 <Svg svgName={VaporSVG.svg.clear.name} svgClass='icon mod-12' className='btn-append center-align' />
             </Tooltip>
         );
+    }
+
+    private handleDeselect = () => {
+        if (!this.props.disabled) {
+            this.props.deselect();
+        }
     }
 }
 

@@ -20,7 +20,7 @@ describe('Select', () => {
 
         const id: string = 'list-box-connected';
 
-        const mountSingleSelect = (items: IItemBoxProps[] = [], props: Partial<ISingleSelectProps> = {}) => {
+        const mountSingleSelect = (items: IItemBoxProps[] = [], props: Partial<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = {}) => {
             singleSelect = mount(
                 <SingleSelectConnected id={id} items={items} {...props} />,
                 {
@@ -162,6 +162,13 @@ describe('Select', () => {
 
         it('should not have a clear icon when no value is selected and canClear is true', () => {
             mountSingleSelect([{value: 'a', selected: false}], {canClear: true});
+
+            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(false);
+            expect(select.find('.btn-append').exists()).toBe(false);
+        });
+
+        it('should not have a clear icon when disabled is true even if canClear is true', () => {
+            mountSingleSelect([{value: 'a', selected: false}], {canClear: true, disabled: true});
 
             expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(false);
             expect(select.find('.btn-append').exists()).toBe(false);
