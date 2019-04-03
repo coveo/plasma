@@ -24,39 +24,39 @@ export interface IWithEditDispatchProps {
 export interface IWithEditingProps extends IWithEditStateProps, IWithEditDispatchProps {}
 
 export const withEditing = <T, R = any>(config: IWithEditing) => (Component: React.ComponentClass): React.ComponentClass<Partial<IWithEditingProps> & T, R> => {
-        const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
-            isDirty: getIsDirty(state, config.id),
-        });
+    const mapStateToProps = (state: IReactVaporState): IWithEditStateProps => ({
+        isDirty: getIsDirty(state, config.id),
+    });
 
-        const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
-            toggleDirtyComponent: (isDirty: boolean) => dispatch(toggleDirtyComponent(config.id, isDirty)),
-        });
+    const mapDispatchToProps = (dispatch: IDispatch): IWithEditDispatchProps => ({
+        toggleDirtyComponent: (isDirty: boolean) => dispatch(toggleDirtyComponent(config.id, isDirty)),
+    });
 
-        @ReduxConnect(mapStateToProps, mapDispatchToProps)
-        class ComponentWithEditing extends React.Component<Partial<IWithEditingProps> & T, R> {
-            componentDidMount() {
-                this.props.toggleDirtyComponent(config.isDirty);
-            }
-
-            componentWillUnmount() {
-                this.props.toggleDirtyComponent(false);
-            }
-
-            render() {
-                return (
-                    <>
-                        <Component {...this.props}>
-                            {this.props.children}
-                        </Component>
-                        {config.footerChildren && (
-                            <StickyFooter className={config.footerClassName} isOpened={this.props.isDirty}>
-                                {config.footerChildren}
-                            </StickyFooter>
-                        )}
-                    </>
-                );
-            }
+    @ReduxConnect(mapStateToProps, mapDispatchToProps)
+    class ComponentWithEditing extends React.Component<Partial<IWithEditingProps> & T, R> {
+        componentDidMount() {
+            this.props.toggleDirtyComponent(config.isDirty);
         }
 
-        return ComponentWithEditing;
-    };
+        componentWillUnmount() {
+            this.props.toggleDirtyComponent(false);
+        }
+
+        render() {
+            return (
+                <>
+                    <Component {...this.props}>
+                        {this.props.children}
+                    </Component>
+                    {config.footerChildren && (
+                        <StickyFooter className={config.footerClassName} isOpened={this.props.isDirty}>
+                            {config.footerChildren}
+                        </StickyFooter>
+                    )}
+                </>
+            );
+        }
+    }
+
+    return ComponentWithEditing;
+};
