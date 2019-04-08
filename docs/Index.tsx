@@ -21,6 +21,7 @@ import {BorderedLineExamples} from '../src/components/borderedLine/examples/Bord
 import {BreadcrumbsExamples} from '../src/components/breadcrumbs/examples/BreadcrumbsExamples';
 import {ButtonExamples} from '../src/components/button/examples/ButtonExamples';
 import {CalendarConnectedExamples} from '../src/components/calendar/examples/CalendarConnectedExamples';
+import {ChartExamples} from '../src/components/chart/examples/ChartExamples';
 import {CheckboxConnectedExamples} from '../src/components/checkbox/examples/CheckboxConnectedExamples';
 import {CheckboxExamples} from '../src/components/checkbox/examples/CheckboxExamples';
 import {GroupableCheckboxConnectedExamples} from '../src/components/checkbox/examples/GroupableCheckboxConnectedExamples';
@@ -276,6 +277,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: MultilineBoxExamples, componentName: 'MultilineBox'},
         {component: DropExamples, componentName: 'Drop'},
         {component: DropWithDropdownExamples, componentName: 'DropWithDropdown'},
+        {component: ChartExamples, componentName: 'Charts'},
     ];
 
     constructor(props: {}, state: AppState) {
