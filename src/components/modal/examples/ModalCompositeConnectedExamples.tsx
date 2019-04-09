@@ -1,6 +1,12 @@
+import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 
+import {IWithDirtyProps} from '../../../hoc/withDirty/withDirty';
+import {IWithPreventNavigationProps, withPreventNavigation} from '../../../hoc/withPreventNavigation/withPreventNavigation';
 import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
+import {Input} from '../../input/Input';
+import {Svg} from '../../svg/Svg';
+import {Tooltip} from '../../tooltip/Tooltip';
 import {closeModal, IModalActionPayload, openModal} from '../ModalActions';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
 
@@ -13,14 +19,45 @@ const modalId: string = 'modal-composite-connected';
 const secondModalId: string = 'second-modal-composite';
 const insideModalId: string = 'inside-modal';
 
-const mapStateToProps = () => ({});
-
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => ({
     openModal: (id: string) => dispatch(openModal(id)),
     closeModal: (id: string) => dispatch(closeModal(id)),
 });
 
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
+const lorem = loremIpsum({count: 10});
+
+@ReduxConnect(undefined, mapDispatchToProps)
+class ComponentWithPreventNavigateExample extends React.Component<IWithDirtyProps & IWithPreventNavigationProps & IModalExamplesProps> {
+    render() {
+        return (
+            <ModalCompositeConnected
+                {...this.props}
+                id='modal-composite-2'
+                title='Modal composite'
+                modalHeaderChildren={(
+                    <Tooltip title='A tooltip for the title'>
+                        <Svg svgName='help' className='icon mod-2x ml1' svgClass='fill-orange' />
+                    </Tooltip>
+                )}
+                modalBodyChildren={(
+                    <div className='mt2'>
+                        <div className='mb2'>
+                            <Input id='input' labelTitle='Enter something, go ahead, make me dirty...'
+                                onChange={() => this.props.toggleIsDirty(true)} />
+                        </div>
+                        {lorem}
+                    </div>
+                )}
+                modalFooterChildren={<button className='btn' onClick={() => this.props.closeModal('modal-composite-2')}>Close</button>}
+                modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+            />
+        );
+    }
+}
+
+export const ComponentWithPreventNavigationHOC = withPreventNavigation({id: 'modal-composite-2'})(ComponentWithPreventNavigateExample);
+
+@ReduxConnect(undefined, mapDispatchToProps)
 export class ModalCompositeConnectedExamples extends React.Component<IModalExamplesProps, any> {
 
     openModal(id: string) {
@@ -115,6 +152,14 @@ export class ModalCompositeConnectedExamples extends React.Component<IModalExamp
                             onAfterOpen={() => alert('The modal content has mounted and is ready to open.')}
                             closeCallback={() => alert('The modal has closed.')}
                         />
+                    </div>
+
+                    <div className='mt3'>
+                        <label className='form-control-label'>Modal With a Prevent Navigation</label>
+                        <div className='form-group'>
+                            <button className='btn' onClick={() => this.props.openModal('modal-composite-2')}>Open Modal</button>
+                            <ComponentWithPreventNavigationHOC />
+                        </div>
                     </div>
                 </div>
             </>

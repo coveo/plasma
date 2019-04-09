@@ -43,7 +43,7 @@ export const withDirty = <T, R = any>(config: IWithDirty) => (Component: React.C
         render() {
             return (
                 <>
-                    <Component {...this.props} toggleIsDirty={this.props.toggleIsDirty}>
+                    <Component {...this.props}>
                         {this.props.children}
                     </Component>
                     {config.showDirty(this.props.isDirty)}
