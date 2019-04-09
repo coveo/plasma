@@ -2,14 +2,15 @@ import {mount} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+
 import {Button} from '../../../components/button/Button';
 import {Input} from '../../../components/input/Input';
 import {StickyFooter} from '../../../components/stickyFooter/StickyFooter';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
+import {IWithDirtyProps} from '../../withDirty/withDirty';
 import {IWithEditing, withEditing} from '../withEditing';
-import {toggleDirtyComponent} from '../withEditingActions';
 
 describe('Component with editing', () => {
     let store: Store<IReactVaporState>;
@@ -22,12 +23,12 @@ describe('Component with editing', () => {
         store.dispatch(clearState());
     });
 
-    class SomeInput extends React.Component {
+    class SomeInput extends React.Component<IWithDirtyProps> {
         static ID = 'SomeInput';
 
         render() {
             return (
-                <Input onChange={() => store.dispatch(toggleDirtyComponent(SomeInput.ID, true))} />
+                <Input onChange={() => this.props.toggleIsDirty(true)} />
             );
         }
     }

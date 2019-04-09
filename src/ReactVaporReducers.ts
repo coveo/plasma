@@ -41,7 +41,7 @@ import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
-import {withEditingReducer} from './hoc/withEditing/withEditingReducers';
+import {withDirtyReducer} from './hoc/withDirty/withDirtyReducers';
 import {IReactVaporState} from './ReactVapor';
 import {stringListCompositeReducer} from './reusableState/customList/StringListReducers';
 import {IReduxAction} from './utils/ReduxUtils';
@@ -93,7 +93,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     radioSelects: radioSelectsReducer,
     popovers: popoversReducer,
     selectWithFilter: selectWithFilterCompositeReducer,
-    dirtyComponents: withEditingReducer,
+    dirtyComponents: withDirtyReducer,
     multilineIds: stringListCompositeReducer,
     drop: dropReducer,
     lastAction,
