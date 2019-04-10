@@ -31,12 +31,14 @@ export interface IDomPositionCalculatorReturn {
     lastPosition?: IDropUIPosition;
 }
 
-export const DomPositionCalculator: {[position: string]: (
-    buttonOffset: ClientRect | DOMRect,
-    dropOffset: ClientRect | DOMRect,
-    boundingLimit: IBoundingLimit,
-    dropUIPosition: Partial<IDropUIPosition>,
-) => IDomPositionCalculatorReturn} = {
+export const DomPositionCalculator: {
+    [position: string]: (
+        buttonOffset: ClientRect | DOMRect,
+        dropOffset: ClientRect | DOMRect,
+        boundingLimit: IBoundingLimit,
+        dropUIPosition: Partial<IDropUIPosition>,
+    ) => IDomPositionCalculatorReturn,
+} = {
     bottom: (
         buttonOffset: ClientRect | DOMRect,
         dropOffset: ClientRect | DOMRect,
