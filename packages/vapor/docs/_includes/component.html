@@ -1,3 +1,4 @@
+
 <article class="sg-component">
 
     {% include component_header.html %}
@@ -7,10 +8,10 @@
             {{ entry.content }}
         </div>
         <div class="clearfix"></div>
-        <div class="sg-component-source">
+        <div class="sg-component-source {{ entry.source_visibility }}">
             {% highlight html %}{{ entry.content }}{% endhighlight %}
         </div>
-        <form class="codepen-form" action="http://codepen.io/pen/define" method="POST" target="_blank">
+        <form class="codepen-form {{ entry.source_visibility }}" action="http://codepen.io/pen/define" method="POST" target="_blank">
             <div class="hidden codepen-html">
                 <!-- The wrapper is only used to center content in CodePen -->
                 <div class="wrapper mx-auto p2 bg-pure-white">
