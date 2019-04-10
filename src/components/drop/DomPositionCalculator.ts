@@ -32,7 +32,7 @@ export interface IDomPositionCalculatorReturn {
 }
 
 export const DomPositionCalculator: {
-    [position: string]: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit, dropUIPosition: Partial<IDropUIPosition>) => IDomPositionCalculatorReturn
+    [position: string]: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit, dropUIPosition: Partial<IDropUIPosition>) => IDomPositionCalculatorReturn,
 } = {
     bottom: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit,
         dropUIPosition: IDropUIPosition): IDomPositionCalculatorReturn => {
