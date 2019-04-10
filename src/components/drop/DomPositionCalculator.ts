@@ -31,11 +31,18 @@ export interface IDomPositionCalculatorReturn {
     lastPosition?: IDropUIPosition;
 }
 
-export const DomPositionCalculator: {
-    [position: string]: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit, dropUIPosition: Partial<IDropUIPosition>) => IDomPositionCalculatorReturn,
-} = {
-    bottom: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit,
-        dropUIPosition: IDropUIPosition): IDomPositionCalculatorReturn => {
+export const DomPositionCalculator: {[position: string]: (
+    buttonOffset: ClientRect | DOMRect,
+    dropOffset: ClientRect | DOMRect,
+    boundingLimit: IBoundingLimit,
+    dropUIPosition: Partial<IDropUIPosition>,
+) => IDomPositionCalculatorReturn} = {
+    bottom: (
+        buttonOffset: ClientRect | DOMRect,
+        dropOffset: ClientRect | DOMRect,
+        boundingLimit: IBoundingLimit,
+        dropUIPosition: IDropUIPosition,
+    ): IDomPositionCalculatorReturn => {
         if (buttonOffset.bottom + dropOffset.height < boundingLimit.maxY || dropUIPosition.position === DropPodPosition.bottom) {
             if (buttonOffset.left + dropOffset.width < boundingLimit.maxX || dropUIPosition.orientation === DropPodPosition.left) {
                 return {
@@ -65,8 +72,12 @@ export const DomPositionCalculator: {
 
         return {};
     },
-    top: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit,
-        dropUIPosition: IDropUIPosition): IDomPositionCalculatorReturn => {
+    top: (
+        buttonOffset: ClientRect | DOMRect,
+        dropOffset: ClientRect | DOMRect,
+        boundingLimit: IBoundingLimit,
+        dropUIPosition: IDropUIPosition,
+    ): IDomPositionCalculatorReturn => {
         if (buttonOffset.top - dropOffset.height > boundingLimit.minY
             || dropUIPosition.position === DropPodPosition.top) {
             if (buttonOffset.left + dropOffset.width < boundingLimit.maxX || dropUIPosition.orientation === DropPodPosition.left) {
@@ -96,8 +107,12 @@ export const DomPositionCalculator: {
 
         return {};
     },
-    left: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit,
-        dropUIPosition: IDropUIPosition): IDomPositionCalculatorReturn => {
+    left: (
+        buttonOffset: ClientRect | DOMRect,
+        dropOffset: ClientRect | DOMRect,
+        boundingLimit: IBoundingLimit,
+        dropUIPosition: IDropUIPosition,
+    ): IDomPositionCalculatorReturn => {
         if (buttonOffset.left - dropOffset.width > boundingLimit.minX
             || dropUIPosition.position === DropPodPosition.left) {
             if (buttonOffset.top + dropOffset.height < boundingLimit.maxY || dropUIPosition.orientation === DropPodPosition.top) {
@@ -128,8 +143,12 @@ export const DomPositionCalculator: {
 
         return {};
     },
-    right: (buttonOffset: ClientRect | DOMRect, dropOffset: ClientRect | DOMRect, boundingLimit: IBoundingLimit,
-        dropUIPosition: IDropUIPosition): IDomPositionCalculatorReturn => {
+    right: (
+        buttonOffset: ClientRect | DOMRect,
+        dropOffset: ClientRect | DOMRect,
+        boundingLimit: IBoundingLimit,
+        dropUIPosition: IDropUIPosition,
+    ): IDomPositionCalculatorReturn => {
         if (buttonOffset.right + dropOffset.width < boundingLimit.maxX || dropUIPosition.position === DropPodPosition.right) {
             if (buttonOffset.top + dropOffset.height < boundingLimit.maxY || dropUIPosition.orientation === DropPodPosition.top) {
                 return {
