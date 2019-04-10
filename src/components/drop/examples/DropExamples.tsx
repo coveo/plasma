@@ -7,8 +7,8 @@ import {ListBox} from '../../listBox/ListBox';
 import {IModalExamplesProps} from '../../modal/examples/ModalCompositeConnectedExamples';
 import {IModalActionPayload, openModal} from '../../modal/ModalActions';
 import {ModalCompositeConnected} from '../../modal/ModalCompositeConnected';
+import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop} from '../Drop';
-import {DropPodPosition} from '../DropPod';
 
 const modalId: string = 'ModalIDDrop';
 const modalId2: string = 'ModalIDDrop2';
@@ -211,7 +211,7 @@ export class DropExamples extends React.PureComponent<any> {
                                         <Drop
                                             id={UUID.generate()}
                                             selector={'#App'}
-                                            positions={[DropPodPosition.bottom]}
+                                            positions={[DropPodPosition.top]}
                                             buttonContainerProps={{
                                                 className: 'inline-block relative',
                                             }}

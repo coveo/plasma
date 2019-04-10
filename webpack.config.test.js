@@ -5,7 +5,7 @@ const isTravis = process.env.TRAVIS;
 module.exports = {
     mode: 'development',
     entry: './karma.entry.ts',
-    devtool: 'cheap-source-map',
+    devtool: 'inline-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
     },
