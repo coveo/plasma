@@ -24,7 +24,7 @@ export interface IModalCompositeOwnProps extends IModalOwnProps, IModalHeaderOwn
     modalFooterChildren?: React.ReactNode;
     modalFooterClasses?: IClassName;
     isPrompt?: boolean;
-    validateShouldClose?: (isDirty: boolean) => void;
+    validateShouldNavigate?: (isDirty: boolean) => void;
 }
 
 export interface IModalCompositeStateProps extends IReduxStatePossibleProps, IModalStateProps {
@@ -107,8 +107,8 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
     }
 
     private onRequestClose() {
-        if (this.props.validateShouldClose) {
-            if (this.props.validateShouldClose(this.props.isDirty)) {
+        if (this.props.validateShouldNavigate) {
+            if (this.props.validateShouldNavigate(this.props.isDirty)) {
                 this.props.onClose();
             }
         } else {

@@ -2,7 +2,7 @@ import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
 
 import {IWithDirtyProps} from '../../../hoc/withDirty/withDirty';
-import {IWithPreventNavigationProps, withPreventNavigation} from '../../../hoc/withPreventNavigation/withPreventNavigation';
+import {modalWithPreventNavigation} from '../../../hoc/withPreventNavigation/modalWithPreventNavigation';
 import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
 import {Input} from '../../input/Input';
 import {Svg} from '../../svg/Svg';
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>
 const lorem = loremIpsum({count: 10});
 
 @ReduxConnect(undefined, mapDispatchToProps)
-class ComponentWithPreventNavigateExample extends React.Component<IWithDirtyProps & IWithPreventNavigationProps & IModalExamplesProps> {
+class ComponentWithPreventNavigateExample extends React.Component<IWithDirtyProps & IModalExamplesProps> {
     render() {
         return (
             <ModalCompositeConnected
@@ -55,7 +55,7 @@ class ComponentWithPreventNavigateExample extends React.Component<IWithDirtyProp
     }
 }
 
-export const ComponentWithPreventNavigationHOC = withPreventNavigation({id: 'modal-composite-2'})(ComponentWithPreventNavigateExample);
+export const ComponentWithPreventNavigationHOC = modalWithPreventNavigation({id: 'modal-composite-2'})(ComponentWithPreventNavigateExample);
 
 @ReduxConnect(undefined, mapDispatchToProps)
 export class ModalCompositeConnectedExamples extends React.Component<IModalExamplesProps, any> {
