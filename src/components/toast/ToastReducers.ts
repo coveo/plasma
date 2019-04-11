@@ -1,6 +1,7 @@
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {ToastType} from './Toast';
+import {IToastProps, ToastType} from './Toast';
 import {IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction} from './ToastActions';
 
 export interface IToastsState {
@@ -8,10 +9,9 @@ export interface IToastsState {
     toasts: IToastState[];
 }
 
-export interface IToastState {
+export interface IToastState extends IToastProps {
     id: string;
     title: React.ReactNode;
-    [toastProp: string]: any;
 }
 
 export const toastContainerInitialState: IToastsState = {
