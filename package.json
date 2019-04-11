@@ -84,7 +84,7 @@
     "@types/react-modal": "3.8.1",
     "@types/react-redux": "6.0.10",
     "@types/react-tether": "0.5.4",
-    "@types/react-textarea-autosize": "4.3.3",
+    "@types/react-textarea-autosize": "4.3.4",
     "@types/react-transition-group": "2.0.15",
     "@types/redux-logger": "3.0.6",
     "@types/redux-test-utils": "0.2.0",
