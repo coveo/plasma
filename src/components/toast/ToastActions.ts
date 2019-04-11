@@ -9,7 +9,7 @@ export interface IToastContainerActionPayload {
 
 export interface IToastActionPayload {
     containerId: string;
-    id?: string;
+    id: string;
 }
 
 export const ToastAction = {
@@ -19,13 +19,15 @@ export const ToastAction = {
     removeToastContainer: 'REMOVE_TOAST_CONTAINER',
 };
 
-export interface IToastAddOptionalPayload extends Partial<IToastProps> {}
+export interface IToastAddOptionalPayload extends Partial<IToastProps> {
+    id: string;
+}
 
 export interface IToastAddPayload extends IToastActionPayload, IToastAddOptionalPayload {
     title: React.ReactNode;
 }
 
-export const addToast = (containerId: string, title: string, optionals: IToastAddOptionalPayload = {}): IReduxAction<IToastAddPayload> => ({
+export const addToast = (containerId: string, title: string, optionals: Partial<IToastProps> = {}): IReduxAction<IToastAddPayload> => ({
     type: ToastAction.addToast,
     payload: {
         title,

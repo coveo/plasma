@@ -1,23 +1,18 @@
 import * as React from 'react';
-import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
+
+import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {ToastType} from '../Toast';
-import {addToast, IToastActionPayload, IToastAddOptionalPayload} from '../ToastActions';
+import {addToast} from '../ToastActions';
 import {ToastContainerConnected} from '../ToastContainerConnected';
 import {ToastContentExample} from './ToastContentExample';
 
 export interface IToastConnectedExamplesProps {
-    addToast?: (id: string, title: string, optionals?: IToastAddOptionalPayload) => void;
+    addToast: typeof addToast;
 }
 
 const containerId = 'some-id';
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IToastActionPayload>) => void): IToastConnectedExamplesProps => ({
-    addToast: (id: string, title: string, optionals: IToastAddOptionalPayload) => dispatch(addToast(id, title, optionals)),
-});
-
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
+@ReduxConnect(null, {addToast})
 export class ToastConnectedExamples extends React.Component<IToastConnectedExamplesProps, {}> {
 
     render() {

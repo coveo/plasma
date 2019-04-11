@@ -50,15 +50,7 @@ export const toastContainerReducer = (
 const toastsReducer = (state: IToastState[], action: IReduxAction<IToastActionPayload>): IToastState[] => {
     if (action.type === ToastAction.addToast) {
         const payload = action.payload as IToastAddPayload;
-        return [...state, {
-            id: payload.id,
-            title: payload.title,
-            animate: payload.animate,
-            dismiss: payload.dismiss,
-            dismissible: payload.dismissible,
-            content: payload.content,
-            type: payload.type,
-        }];
+        return [...state, payload];
     } else {
         return _.reject(state, (toast: IToastState) => action.payload.id === toast.id);
     }
