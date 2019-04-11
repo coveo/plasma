@@ -183,7 +183,6 @@ describe('Drop', () => {
             });
 
             it('should add the event on click if the drop is opening', () => {
-                debugger;
                 const spy = spyOn(document, 'addEventListener');
                 let shallowWrapper: ShallowWrapper;
 
