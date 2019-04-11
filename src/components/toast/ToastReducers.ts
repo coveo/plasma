@@ -10,12 +10,8 @@ export interface IToastsState {
 
 export interface IToastState {
     id: string;
-    title: string;
-    type?: string;
-    dismiss?: number;
-    dismissible?: boolean;
-    animate?: boolean;
-    content?: React.ReactNode;
+    title: React.ReactNode;
+    [toastProp: string]: any;
 }
 
 export const toastContainerInitialState: IToastsState = {
