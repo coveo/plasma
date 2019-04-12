@@ -3,11 +3,11 @@ import * as React from 'react';
 
 import {IWithDirtyProps} from '../../../hoc/withDirty/withDirty';
 import {modalWithPreventNavigation} from '../../../hoc/withPreventNavigation/modalWithPreventNavigation';
-import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
+import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {Input} from '../../input/Input';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
-import {closeModal, IModalActionPayload, openModal} from '../ModalActions';
+import {closeModal, openModal} from '../ModalActions';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
 
 export interface IModalExamplesProps {
@@ -19,14 +19,9 @@ const modalId: string = 'modal-composite-connected';
 const secondModalId: string = 'second-modal-composite';
 const insideModalId: string = 'inside-modal';
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => ({
-    openModal: (id: string) => dispatch(openModal(id)),
-    closeModal: (id: string) => dispatch(closeModal(id)),
-});
-
 const lorem = loremIpsum({count: 10});
 
-@ReduxConnect(undefined, mapDispatchToProps)
+@ReduxConnect(null, {closeModal})
 class ComponentWithPreventNavigateExample extends React.Component<IWithDirtyProps & IModalExamplesProps> {
     render() {
         return (
@@ -57,7 +52,7 @@ class ComponentWithPreventNavigateExample extends React.Component<IWithDirtyProp
 
 export const ComponentWithPreventNavigationHOC = modalWithPreventNavigation({id: 'modal-composite-2'})(ComponentWithPreventNavigateExample);
 
-@ReduxConnect(undefined, mapDispatchToProps)
+@ReduxConnect(null, {openModal, closeModal})
 export class ModalCompositeConnectedExamples extends React.Component<IModalExamplesProps, any> {
 
     openModal(id: string) {

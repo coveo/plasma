@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {closeModal, IModalActionPayload} from '../../components/modal/ModalActions';
-import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {closeModal} from '../../components/modal/ModalActions';
+import {ReduxConnect} from '../../utils/ReduxUtils';
 import {IWithDirtyProps, withDirty} from '../withDirty/withDirty';
 import {PreventNavigationPrompt} from './PreventNavigationPrompt';
 
@@ -34,18 +34,11 @@ export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfi
 };
 
 export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (Component: React.ComponentClass<T, R>): React.ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
-    const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IWithPreventNavigationDispatchProps => ({
-        closeModal: (id: string) => dispatch(closeModal(id)),
-    });
-
-    @ReduxConnect(undefined, mapDispatchToProps)
+    @ReduxConnect(null, {closeModal})
     class ModalWithPreventNavigation extends React.PureComponent<IWithPreventNavigationDispatchProps, IWithPreventNavigationState> {
-        constructor(props: any) {
-            super(props);
-            this.state = {
-                showPrevent: false,
-            };
-        }
+        state = {
+            showPrevent: false,
+        };
 
         render() {
             const {title, content, exit, stay} = _.defaults(config, preventNavigationDefaultConfig);
@@ -61,8 +54,7 @@ export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavig
                             onClose={() => {
                                 this.setState({showPrevent: false});
                                 this.props.closeModal(config.id);
-                            }
-                            }
+                            }}
                             exit={exit}
                             stay={stay}
                             content={content}
