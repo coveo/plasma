@@ -2,8 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
-import {DropPodPosition} from '../drop/DropPod';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg/Svg';
@@ -43,6 +43,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                                 id={this.props.id}
                                 positions={[DropPodPosition.bottom, DropPodPosition.top]}
                                 buttonContainerProps={{className: 'inline-block'}}
+                                parentSelector={'body'}
                                 renderOpenButton={(onClick: () => void) => (
                                     <div
                                         onClick={onClick}

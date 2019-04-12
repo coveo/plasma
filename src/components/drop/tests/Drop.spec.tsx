@@ -4,6 +4,7 @@ import * as React from 'react';
 import {mockStore} from 'redux-test-utils';
 import {IReactVaporState} from '../../../ReactVapor';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
+import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop, IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
@@ -181,41 +182,46 @@ describe('Drop', () => {
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, true))).toBe(true);
             });
 
-            it('should add the event on click if the drop is opening', () => {
-                const spy = spyOn(document, 'addEventListener');
-                let shallowWrapper: ShallowWrapper;
+            describe('events', () => {
 
-                shallowWrapper = shallowWithState(
-                    <Drop
-                        id={'test'}
-                        renderOpenButton={() => defaultButton}
-                    />,
-                    {},
-                ).dive();
+                it('should add the event on click if the drop is opening', () => {
+                    const spy = spyOn(document, 'addEventListener');
+                    let shallowWrapper: ShallowWrapper;
 
-                expect(spy).toHaveBeenCalledTimes(0);
+                    shallowWrapper = shallowWithState(
+                        <Drop
+                            id={'test'}
+                            renderOpenButton={() => defaultButton}
+                            positions={[DropPodPosition.bottom]}
+                        />,
+                        {},
+                    ).dive();
 
-                shallowWrapper.setProps({isOpen: true});
+                    expect(spy).toHaveBeenCalledTimes(0);
 
-                expect(spy).toHaveBeenCalledTimes(1);
-            });
+                    shallowWrapper.setProps({isOpen: true});
 
-            it('should remove the event on click if the drop is closing', () => {
-                const spy = spyOn(document, 'removeEventListener');
-                let shallowWrapper: ShallowWrapper;
+                    expect(spy).toHaveBeenCalledTimes(1);
+                });
 
-                shallowWrapper = shallowWithState(
-                    <Drop
-                        id={'test'}
-                        renderOpenButton={() => defaultButton}
-                    />,
-                    {},
-                ).dive();
+                it('should remove the event on click if the drop is closing', () => {
+                    const spy = spyOn(document, 'removeEventListener');
+                    let shallowWrapper: ShallowWrapper;
 
-                shallowWrapper.setProps({isOpen: true});
-                shallowWrapper.setProps({isOpen: false});
+                    shallowWrapper = shallowWithState(
+                        <Drop
+                            id={'test'}
+                            renderOpenButton={() => defaultButton}
+                            positions={[DropPodPosition.bottom]}
+                        />,
+                        {},
+                    ).dive();
 
-                expect(spy).toHaveBeenCalledTimes(1);
+                    shallowWrapper.setProps({isOpen: true});
+                    shallowWrapper.setProps({isOpen: false});
+
+                    expect(spy).toHaveBeenCalledTimes(1);
+                });
             });
         });
     });

@@ -100,7 +100,7 @@ export class Drop extends React.PureComponent<IDropProps> {
             <DropPod
                 ref={this.button}
                 isOpen={this.props.isOpen}
-                positions={this.props.positions}
+                positions={this.props.positions || []}
                 selector={this.props.selector}
                 minHeight={this.props.minHeight}
                 minWidth={this.props.minWidth}
