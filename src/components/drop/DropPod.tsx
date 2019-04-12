@@ -151,7 +151,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
             const {style} = newDomPosition;
             if (style) {
-                if (style.top <  boundingLimit.minY) {
+                if (style.top < boundingLimit.minY) {
                     style.top = Math.max(boundingLimit.minY, style.top as number);
                 } else {
                     style.top = Math.min(boundingLimit.maxY, style.top as number + dropOffset.height) - dropOffset.height;

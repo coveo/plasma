@@ -354,44 +354,6 @@ describe('DropPod', () => {
                             expect(styleRendered.left).toBe(450);
                         });
 
-                    it('should return style empty if the drop projection height is bigger than bounding height available to render', () => {
-                        setupReference({
-                            top: 10,
-                            bottom: 20,
-                        }, {
-                                width: 50,
-                                height: 50,
-                            }, {
-                                top: 100,
-                                left: 100,
-                            });
-                        shallowDropPodForStyle({
-                            positions: [DropPodPosition.bottom],
-                        });
-
-                        expect(styleRendered.top).toBeUndefined('top');
-                        expect(styleRendered.left).toBeUndefined('left');
-                    });
-
-                    it('should return style empty if the drop projection width is bigger than bounding width available to render', () => {
-                        setupReference({
-                            left: 10,
-                            right: 20,
-                        }, {
-                                width: 50,
-                                height: 50,
-                            }, {
-                                top: 100,
-                                left: 100,
-                            });
-                        shallowDropPodForStyle({
-                            positions: [DropPodPosition.bottom],
-                        });
-
-                        expect(styleRendered.top).toBeUndefined('top');
-                        expect(styleRendered.left).toBeUndefined('left');
-                    });
-
                     it('should return style with the width equal than the button width if the prop hasSameWidth is set to true', () => {
                         setupReference({
                             left: 0,
