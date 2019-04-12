@@ -12,11 +12,11 @@ export const DropPodPosition = {
     right: 'right',
 };
 
-export const OrientationByPosition: {[Position: string]: string[]} = {
-    bottom: [DropPodPosition.left, DropPodPosition.right],
-    top: [DropPodPosition.left, DropPodPosition.right],
-    left: [DropPodPosition.top, DropPodPosition.bottom],
-    right: [DropPodPosition.top, DropPodPosition.bottom],
+export const OrientationByPosition = {
+    [DropPodPosition.bottom]: [DropPodPosition.left, DropPodPosition.right],
+    [DropPodPosition.top]: [DropPodPosition.left, DropPodPosition.right],
+    [DropPodPosition.left]: [DropPodPosition.top, DropPodPosition.bottom],
+    [DropPodPosition.right]: [DropPodPosition.top, DropPodPosition.bottom],
 };
 
 export interface IBoundingLimit {

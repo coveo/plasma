@@ -151,13 +151,19 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
             const {style} = newDomPosition;
             if (style) {
-                style.top = Math.max(boundingLimit.minY, style.top as number);
-                style.top = Math.min(boundingLimit.maxY, style.top + dropOffset.height) - dropOffset.height;
-                style.left = Math.max(boundingLimit.minX, style.left as number);
-                style.left = Math.min(boundingLimit.maxX, style.left + dropOffset.width) - dropOffset.width;
+                if (style.top <  boundingLimit.minY) {
+                    style.top = Math.max(boundingLimit.minY, style.top as number);
+                } else {
+                    style.top = Math.min(boundingLimit.maxY, style.top as number + dropOffset.height) - dropOffset.height;
+                }
+                if (style.left < boundingLimit.minX) {
+                    style.left = Math.max(boundingLimit.minX, style.left as number);
+                } else {
+                    style.left = Math.min(boundingLimit.maxX, style.left as number + dropOffset.width) - dropOffset.width;
+                }
             }
 
-            // Set drop size same has the container
+            // Set drop size same as the container
             if (this.props.hasSameWidth) {
                 newDomPosition.style = {
                     ...style,
@@ -165,9 +171,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
             }
 
-            // No space to render the drop target
-            if (dropOffset.height >= boundingLimit.maxY - boundingLimit.minY || dropOffset.width >= boundingLimit.maxX -
-                boundingLimit.minX) {
+            // Don't show if no space to render the drop target inside the window
+            if (dropOffset.height > window.innerHeight || dropOffset.width > window.innerWidth) {
                 return {};
             }
 

@@ -43,6 +43,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                                 id={this.props.id}
                                 positions={[DropPodPosition.bottom, DropPodPosition.top]}
                                 buttonContainerProps={{className: 'inline-block'}}
+                                parentSelector={'body'}
                                 renderOpenButton={(onClick: () => void) => (
                                     <div
                                         onClick={onClick}
