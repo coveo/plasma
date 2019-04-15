@@ -31,7 +31,7 @@ export const withDirty = <T, R = any>(config: IWithDirty) => (Component: React.C
     });
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
-    class ComponentWithDirty extends React.Component<Partial<IWithDirtyProps> & T, R> {
+    class ComponentWithDirty extends React.PureComponent<Partial<IWithDirtyProps> & T, R> {
         componentDidMount() {
             this.props.toggleIsDirty(config.isDirty);
         }

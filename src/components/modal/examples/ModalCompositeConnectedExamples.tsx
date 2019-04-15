@@ -22,7 +22,7 @@ const insideModalId: string = 'inside-modal';
 const lorem = loremIpsum({count: 10});
 
 @ReduxConnect(null, {closeModal})
-class ComponentWithPreventNavigateExample extends React.Component<IWithDirtyProps & IModalExamplesProps> {
+class ComponentWithPreventNavigateExample extends React.PureComponent<IWithDirtyProps & IModalExamplesProps> {
     render() {
         return (
             <ModalCompositeConnected

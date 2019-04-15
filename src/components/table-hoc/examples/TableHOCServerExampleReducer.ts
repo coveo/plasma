@@ -1,4 +1,5 @@
 import * as $ from 'jquery';
+import * as moment from 'moment';
 import * as _ from 'underscore';
 import {IDispatch, IReduxAction, IThunkAction} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
@@ -16,6 +17,7 @@ export interface IExampleRowData {
     city: string;
     email: string;
     username: string;
+    dateOfBirth: Date;
 }
 
 interface ISetExampleDataPayload {
@@ -50,6 +52,8 @@ const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IRea
         _sort: compositeState.sortKey,
         _order: compositeState.sortAscending ? 'asc' : 'desc',
         q: compositeState.filter || undefined,
+        from: compositeState.dateLimits[0].toISOString(),
+        to: compositeState.dateLimits[1].toISOString(),
     };
     _.each(compositeState.predicates, (predicate: {id: string, value: string}) => {
         params[predicate.id] = predicate.value;
@@ -62,6 +66,7 @@ const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IRea
                 city: user.address.city,
                 username: user.username,
                 email: user.email,
+                dateOfBirth: moment().subtract(user.address.city.length, 'years').toDate(), // fake a year of birth
             }));
             dispatch(setData(users));
             dispatch(turnOffLoading([TableHOCServerExamples.TABLE_ID]));

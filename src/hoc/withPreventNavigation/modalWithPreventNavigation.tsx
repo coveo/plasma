@@ -36,13 +36,16 @@ export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfi
 export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (Component: React.ComponentClass<T, R>): React.ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
     @ReduxConnect(null, {closeModal})
     class ModalWithPreventNavigation extends React.PureComponent<IWithPreventNavigationDispatchProps, IWithPreventNavigationState> {
-        state = {
-            showPrevent: false,
-        };
+        private ComponentWithDirty: React.ComponentClass<IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>>;
 
-        render() {
+        constructor(props: IWithPreventNavigationDispatchProps) {
+            super(props);
+            this.state = {
+                showPrevent: false,
+            };
+
             const {title, content, exit, stay} = _.defaults(config, preventNavigationDefaultConfig);
-            const ComponentWithDirty = withDirty<T & Partial<IWithPreventNavigationInjectedProps>>({
+            this.ComponentWithDirty = withDirty<T & Partial<IWithPreventNavigationInjectedProps>>({
                 id: config.id,
                 showDirty: (isDirty: boolean) => {
                     return isDirty && (
@@ -62,7 +65,9 @@ export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavig
                     );
                 },
             })(Component as any);
+        }
 
+        render() {
             const newProps = {
                 ..._.omit(this.props, 'closeModal'),
                 validateShouldNavigate: (isDirty: boolean) => {
@@ -74,9 +79,9 @@ export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavig
                 },
             };
             return (
-                <ComponentWithDirty {...newProps}>
+                <this.ComponentWithDirty {...newProps}>
                     {this.props.children}
-                </ComponentWithDirty>
+                </this.ComponentWithDirty>
             );
         }
     }

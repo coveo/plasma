@@ -1,8 +1,11 @@
+import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {DateUtils} from '../../../utils/DateUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
+import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {LastUpdated} from '../../lastUpdated/LastUpdated';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
@@ -11,6 +14,7 @@ import {TableRowNumberColumn} from '../TableRowNumberColumn';
 import {TableRowNumberHeader} from '../TableRowNumberHeader';
 import {tableWithActions} from '../TableWithActions';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
+import {tableWithDatePicker} from '../TableWithDatePicker';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
 import {tableWithPredicate} from '../TableWithPredicate';
@@ -38,6 +42,12 @@ const ServerTable = _.compose(
         ],
     }),
     tableWithFilter({isServer: true}),
+    tableWithDatePicker({
+        isServer: true,
+        datesSelectionBoxes: SELECTION_BOXES_LONG,
+        years: [...DateUtils.getPreviousYears(25), DateUtils.currentYear.toString()],
+        initialDateRange: [moment().subtract(25, 'years').toDate(), moment().toDate()],
+    }),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
     tableWithSort({isServer: true}),
     tableWithPagination({isServer: true, perPageNumbers: [3, 5, 10]}),
@@ -83,6 +93,7 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                 <td key='city'>{data.city}</td>
                 <td key='email'>{data.email.toLowerCase()}</td>
                 <td key='username'>{data.username.toLowerCase()}</td>
+                <td key='date-of-birth'>{data.dateOfBirth.toLocaleDateString()}</td>
             </TableRowConnected>
         ));
 
@@ -92,6 +103,7 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                     <label className='form-control-label'>
                         Server table with numbered rows
                     </label>
+                    <span className='block my2 text-grey-7'>Please note that the backend service doesn't support dates but we still make a request for every change in the date range.</span>
                     <ServerTable
                         id={TableHOCServerExamples.TABLE_ID}
                         className='table table-numbered'
@@ -116,6 +128,7 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                     <TableHeaderWithSort id='address.city' tableId={TableHOCServerExamples.TABLE_ID}>City</TableHeaderWithSort>
                     <TableHeaderWithSort id='email' tableId={TableHOCServerExamples.TABLE_ID}>Email</TableHeaderWithSort>
                     <TableHeaderWithSort id='username' tableId={TableHOCServerExamples.TABLE_ID} isDefault>Username</TableHeaderWithSort>
+                    <th key='date-of-birth'>Date of Birth</th>
                 </tr>
             </thead>
         );
