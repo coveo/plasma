@@ -5,6 +5,7 @@ import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
+import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -23,6 +24,7 @@ export interface IModalCompositeOwnProps extends IModalOwnProps, IModalHeaderOwn
     modalFooterChildren?: React.ReactNode;
     modalFooterClasses?: IClassName;
     isPrompt?: boolean;
+    validateShouldNavigate?: (isDirty: boolean) => boolean;
 }
 
 export interface IModalCompositeStateProps extends IReduxStatePossibleProps, IModalStateProps {
@@ -35,13 +37,18 @@ export interface IModalCompositeProps extends IModalCompositeOwnProps, Partial<I
 
 const modalPropsToOmit = keys<IModalCompositeProps>();
 
-export class ModalComposite extends React.PureComponent<IModalCompositeProps & Partial<ReactModal.Props>> {
+export class ModalComposite extends React.PureComponent<IModalCompositeProps & Partial<ReactModal.Props> & Partial<IWithDirtyProps>> {
     static defaultProps: Partial<IModalCompositeProps> = {
         id: _.uniqueId('modal'),
         closeTimeout: Defaults.MODAL_TIMEOUT,
     };
 
     private timeoutId: number;
+
+    constructor(props: IModalCompositeProps) {
+        super(props);
+        this.onRequestClose = this.onRequestClose.bind(this);
+    }
 
     render() {
         const reactModalprops: Partial<ReactModal.Props> = _.omit(this.props, modalPropsToOmit);
@@ -65,7 +72,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
                     afterOpen: 'opened',
                     beforeClose: 'clear',
                 }}
-                onRequestClose={this.props.onClose}
+                onRequestClose={this.onRequestClose}
                 closeTimeoutMS={this.props.closeTimeout}
                 contentRef={this.props.contentRef}
                 parentSelector={this.getParent}
@@ -97,6 +104,16 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
     componentWillUnmount() {
         callIfDefined(this.props.onDestroy);
         window.clearTimeout(this.timeoutId);
+    }
+
+    private onRequestClose() {
+        if (this.props.validateShouldNavigate) {
+            if (this.props.validateShouldNavigate(this.props.isDirty)) {
+                callIfDefined(this.props.onClose);
+            }
+        } else {
+            callIfDefined(this.props.onClose);
+        }
     }
 
     private getModalHeader() {

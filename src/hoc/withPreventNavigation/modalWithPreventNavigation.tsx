@@ -1,0 +1,85 @@
+import * as React from 'react';
+import * as _ from 'underscore';
+
+import {closeModal} from '../../components/modal/ModalActions';
+import {ReduxConnect} from '../../utils/ReduxUtils';
+import {IWithDirtyProps, withDirty} from '../withDirty/withDirty';
+import {PreventNavigationPrompt} from './PreventNavigationPrompt';
+
+export interface IWithPreventNavigationConfig {
+    id: string;
+    title?: string;
+    content?: React.ReactNode;
+    exit?: string;
+    stay?: string;
+}
+
+export interface IWithPreventNavigationInjectedProps extends IWithDirtyProps {
+    validateShouldNavigate: (isDirty: boolean) => boolean;
+}
+
+export interface IWithPreventNavigationDispatchProps {
+    closeModal: (id: string) => void;
+}
+
+export interface IWithPreventNavigationState {
+    showPrevent: boolean;
+}
+
+export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfig> = {
+    title: 'Unsaved Changes',
+    content: 'Are you sure you want to leave this page without saving? All unsaved changes will be lost.',
+    exit: 'Exit without applying changes',
+    stay: 'Cancel',
+};
+
+export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (Component: React.ComponentClass<T, R>): React.ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
+    @ReduxConnect(null, {closeModal})
+    class ModalWithPreventNavigation extends React.PureComponent<IWithPreventNavigationDispatchProps, IWithPreventNavigationState> {
+        state = {
+            showPrevent: false,
+        };
+
+        render() {
+            const {title, content, exit, stay} = _.defaults(config, preventNavigationDefaultConfig);
+            const ComponentWithDirty = withDirty<T & Partial<IWithPreventNavigationInjectedProps>>({
+                id: config.id,
+                showDirty: (isDirty: boolean) => {
+                    return isDirty && (
+                        <PreventNavigationPrompt
+                            id={`prevent-navigation-${config.id}`}
+                            isOpen={this.state.showPrevent}
+                            title={title}
+                            onStay={() => this.setState({showPrevent: false})}
+                            onClose={() => {
+                                this.setState({showPrevent: false});
+                                this.props.closeModal(config.id);
+                            }}
+                            exit={exit}
+                            stay={stay}
+                            content={content}
+                        />
+                    );
+                },
+            })(Component as any);
+
+            const newProps = {
+                ..._.omit(this.props, 'closeModal'),
+                validateShouldNavigate: (isDirty: boolean) => {
+                    if (isDirty) {
+                        this.setState({showPrevent: true});
+                        return false;
+                    }
+                    return true;
+                },
+            };
+            return (
+                <ComponentWithDirty {...newProps}>
+                    {this.props.children}
+                </ComponentWithDirty>
+            );
+        }
+    }
+
+    return ModalWithPreventNavigation as any;
+};
