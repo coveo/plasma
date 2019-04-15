@@ -1,5 +1,6 @@
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
+import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
 import {IListBoxState} from '../listBox/ListBoxReducers';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
@@ -16,6 +17,7 @@ export interface ITableHOCCompositeState {
     pageNb?: number;
     filter?: string;
     predicates?: ITableHOCPredicateValue[];
+    dateLimits?: [Date, Date?];
 }
 
 const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompositeState => {
@@ -39,6 +41,9 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
 
         // filter
         filter: filter && filter.filterText,
+
+        // date
+        dateLimits: DatePickerSelectors.getDatePickerLimits(state, {id}),
     };
 };
 

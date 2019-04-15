@@ -23,18 +23,14 @@ import {
     IDatePickerDropdownStateProps,
 } from './DatePickerDropdown';
 import {IDatePickerState} from './DatePickerReducers';
+import {DatePickerSelectors} from './DatePickerSelectors';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
     const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});
-    const datePickers: IDatePickerState[] = _.map(state.datePickers, (datePicker: IDatePickerState) => {
-        if (datePicker.id.indexOf(ownProps.id) === 0) {
-            return datePicker;
-        }
-    }).filter(Boolean);
 
     return {
         isOpened: item && item.opened,
-        datePicker: datePickers.length ? datePickers[0] : null,
+        datePicker: DatePickerSelectors.getDatePicker(state, {id: ownProps.id}),
         withReduxState: true,
     };
 };

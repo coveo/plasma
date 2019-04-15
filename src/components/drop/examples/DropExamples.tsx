@@ -2,13 +2,14 @@ import * as React from 'react';
 import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
+import {ChildForm} from '../../childForm/ChildForm';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
 import {IModalExamplesProps} from '../../modal/examples/ModalCompositeConnectedExamples';
 import {IModalActionPayload, openModal} from '../../modal/ModalActions';
 import {ModalCompositeConnected} from '../../modal/ModalCompositeConnected';
+import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop} from '../Drop';
-import {DropPodPosition} from '../DropPod';
 
 const modalId: string = 'ModalIDDrop';
 const modalId2: string = 'ModalIDDrop2';
@@ -211,7 +212,7 @@ export class DropExamples extends React.PureComponent<any> {
                                         <Drop
                                             id={UUID.generate()}
                                             selector={'#App'}
-                                            positions={[DropPodPosition.bottom]}
+                                            positions={[DropPodPosition.top]}
                                             buttonContainerProps={{
                                                 className: 'inline-block relative',
                                             }}
@@ -250,6 +251,26 @@ export class DropExamples extends React.PureComponent<any> {
                         />
                     </div>
                 </div>
+                <ChildForm>
+                    <Drop
+                        id={UUID.generate()}
+                        selector={'#App'}
+                        positions={[DropPodPosition.bottom]}
+                        buttonContainerProps={{
+                            className: 'inline-block relative',
+                        }}
+                        parentSelector={'body'}
+                        renderOpenButton={(onClick: () => void) => (
+                            <Button
+                                name={'Text'}
+                                enabled={true}
+                                onClick={() => onClick()}
+                            />
+                        )}
+                    >
+                        <ListBox items={defaultItemsLongText} />
+                    </Drop>
+                </ChildForm>
             </div>
         );
     }

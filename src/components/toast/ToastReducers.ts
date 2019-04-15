@@ -1,6 +1,7 @@
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {ToastType} from './Toast';
+import {IToastProps, ToastType} from './Toast';
 import {IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction} from './ToastActions';
 
 export interface IToastsState {
@@ -8,14 +9,9 @@ export interface IToastsState {
     toasts: IToastState[];
 }
 
-export interface IToastState {
+export interface IToastState extends IToastProps {
     id: string;
-    title: string;
-    type?: string;
-    dismiss?: number;
-    dismissible?: boolean;
-    animate?: boolean;
-    content?: React.ReactNode;
+    title: React.ReactNode;
 }
 
 export const toastContainerInitialState: IToastsState = {
@@ -54,15 +50,7 @@ export const toastContainerReducer = (
 const toastsReducer = (state: IToastState[], action: IReduxAction<IToastActionPayload>): IToastState[] => {
     if (action.type === ToastAction.addToast) {
         const payload = action.payload as IToastAddPayload;
-        return [...state, {
-            id: payload.id,
-            title: payload.title,
-            animate: payload.animate,
-            dismiss: payload.dismiss,
-            dismissible: payload.dismissible,
-            content: payload.content,
-            type: payload.type,
-        }];
+        return [...state, payload];
     } else {
         return _.reject(state, (toast: IToastState) => action.payload.id === toast.id);
     }

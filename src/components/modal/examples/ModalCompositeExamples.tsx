@@ -5,7 +5,7 @@ import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ModalComposite} from '../ModalComposite';
 
-export const ModalCompositeExamples: React.SFC = () => {
+export const ModalCompositeExamples: React.FunctionComponent = () => {
     const [isOpened, setOpened] = useState(false);
 
     return (

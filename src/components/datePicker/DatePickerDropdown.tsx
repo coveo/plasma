@@ -15,6 +15,7 @@ import {IDatePickerState} from './DatePickerReducers';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
     label?: string;
+    className?: string;
     id?: string;
     applyLabel?: string;
     cancelLabel?: string;
@@ -155,7 +156,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         });
 
         return (
-            <div className='date-picker-dropdown'>
+            <div className={classNames('date-picker-dropdown', this.props.className)}>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
                     <span
                         className={toggleClasses}

@@ -4,8 +4,8 @@ import {SlideY} from '../../../animations/SlideY';
 import {IReactVaporState} from '../../../ReactVapor';
 import {PropsToOmitUtils} from '../../../utils/react/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
+import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';
-import {DropPodPosition} from '../DropPod';
 import {DefaultGroupIds} from '../redux/DropActions';
 import {DropSelectors} from '../redux/DropReducers';
 

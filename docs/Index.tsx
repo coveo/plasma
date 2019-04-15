@@ -119,6 +119,7 @@ import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
 import {Defaults} from '../src/Defaults';
+import {ComponentWithDirtyExampleHOC} from '../src/hoc/withDirty/examples/withDirtyExamples';
 import {ComponentWithEditingExampleHOC} from '../src/hoc/withEditing/examples/withEditingExamples';
 import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
@@ -274,6 +275,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: NumericInputExamples, componentName: 'Numeric Input'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
+        {component: ComponentWithDirtyExampleHOC, componentName: 'ComponentWithDirty'},
         {component: MultilineBoxExamples, componentName: 'MultilineBox'},
         {component: DropExamples, componentName: 'Drop'},
         {component: DropWithDropdownExamples, componentName: 'DropWithDropdown'},

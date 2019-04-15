@@ -1,12 +1,15 @@
 import {helpers, seed} from 'faker';
+import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
-
+import {DateUtils} from '../../../utils/DateUtils';
+import {SELECTION_BOX, SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {SingleSelectConnected} from '../../select/SingleSelectConnected';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
+import {ITableWithDatePickerProps, tableWithDatePicker} from '../TableWithDatePicker';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
 import {tableWithPredicate} from '../TableWithPredicate';
@@ -14,7 +17,7 @@ import {tableWithSort} from '../TableWithSort';
 import {IExampleRowData} from './TableHOCServerExampleReducer';
 
 const TableWithFilter = _.compose(
-    tableWithFilter(),
+    tableWithFilter({placeholder: 'custom placeholder'}),
 )(TableHOC);
 
 const TableWithPredicate = _.compose(
@@ -50,6 +53,15 @@ const TableWithUsernameFilter = _.compose(
     tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
 )(TableHOC);
 
+const TableWithDatePicker: React.ComponentClass<ITableWithDatePickerProps & React.HTMLAttributes<HTMLTableElement>> = _.compose(
+    tableWithDatePicker({
+        datesSelectionBoxes: SELECTION_BOX,
+        matchDates: (data: IExampleRowData, lowerLimit: Date) => data.dateOfBirth >= lowerLimit,
+        years: [...DateUtils.getPreviousYears(50), DateUtils.currentYear.toString()],
+        initialDateRange: [moment().subtract(50, 'years').toDate(), null],
+    }),
+)(TableHOC);
+
 const TableWithFilterAndPagination = _.compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithFilter(),
@@ -61,10 +73,24 @@ const TableWithSortFilterAndPagination = _.compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithFilter(),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
+    tableWithDatePicker({
+        datesSelectionBoxes: SELECTION_BOXES_LONG,
+        matchDates: (data: IExampleRowData, lowerLimit: Date, upperLimit?: Date) => _.isUndefined(upperLimit) || (lowerLimit <= data.dateOfBirth && data.dateOfBirth <= upperLimit),
+        years: [...DateUtils.getPreviousYears(100), DateUtils.currentYear.toString()],
+        initialDateRange: [moment().subtract(75, 'years').toDate(), moment().toDate()],
+    }),
+    tableWithBlankSlate({title: 'Date picker caused the table to be empty'}),
     tableWithSort({
         sort: (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b: IExampleRowData) => {
             if (key) {
-                const compare = (a[key] as string).toLowerCase().localeCompare(b[key].toLowerCase());
+                if (a[key] instanceof Date) {
+                    const dateCompare = (a[key] as any) - (b[key] as any);
+                    return isAsc ? dateCompare : -1 * dateCompare;
+                }
+
+                const compare = (a[key] as string).toLowerCase()
+                    .localeCompare((b[key] as string).toLowerCase());
+
                 return isAsc ? compare : -1 * compare;
             }
             return 0;
@@ -82,6 +108,7 @@ export class TableHOCExamples extends React.Component {
                 city: data.address.city,
                 email: data.email,
                 username: data.username,
+                dateOfBirth: data.dob,
             };
         });
         const generateRows = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
@@ -89,6 +116,7 @@ export class TableHOCExamples extends React.Component {
                 <td key='city'>{data.city}</td>
                 <td key='email'>{data.email.toLowerCase()}</td>
                 <td key='username'>{data.username.toLowerCase()}</td>
+                <td key='date-of-birth'>{data.dateOfBirth.toLocaleDateString()}</td>
             </tr>
         ));
         const generateCollapsibleRow = (data: IExampleRowData) => (
@@ -147,6 +175,18 @@ export class TableHOCExamples extends React.Component {
                     </label>
                     <TableWithFilter
                         id='with-filter'
+                        className='table'
+                        data={generateData(3)}
+                        renderBody={generateRows}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with date picker (no blankslate)
+                    </label>
+                    <TableWithDatePicker
+                        id='with-date-picker'
                         className='table'
                         data={generateData(3)}
                         renderBody={generateRows}
@@ -228,6 +268,7 @@ export class TableHOCExamples extends React.Component {
                                     <TableHeaderWithSort id='city' tableId='filter-sort-and-pagination'>City</TableHeaderWithSort>
                                     <TableHeaderWithSort id='email' tableId='filter-sort-and-pagination'>Email</TableHeaderWithSort>
                                     <TableHeaderWithSort id='username' tableId='filter-sort-and-pagination' isDefault>Username</TableHeaderWithSort>
+                                    <TableHeaderWithSort id='dateOfBirth' tableId='filter-sort-and-pagination'>Date of Birth</TableHeaderWithSort>
                                 </tr>
                             </thead>
                         }

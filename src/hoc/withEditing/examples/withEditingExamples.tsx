@@ -1,14 +1,14 @@
 import * as loremIpsum from 'lorem-ipsum';
 import * as React from 'react';
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+
 import {Button} from '../../../components/button/Button';
 import {Input} from '../../../components/input/Input';
+import {IWithDirtyProps} from '../../withDirty/withDirty';
 import {withEditing} from '../withEditing';
-import {toggleDirtyComponent} from '../withEditingActions';
 
 const lorem = loremIpsum({count: 200});
 
-class ComponentWithEditingExample extends React.Component {
+class ComponentWithEditingExample extends React.Component<IWithDirtyProps> {
     static ID = 'ComponentWithEdit';
 
     static footerChildren = (
@@ -22,7 +22,7 @@ class ComponentWithEditingExample extends React.Component {
                     <Input
                         id='input'
                         labelTitle='Enter something, go ahead, make me dirty...'
-                        onChange={() => ReactVaporStore.dispatch(toggleDirtyComponent(ComponentWithEditingExample.ID, true))}
+                        onChange={() => this.props.toggleIsDirty(true)}
                     />
                 </div>
                 {lorem}
