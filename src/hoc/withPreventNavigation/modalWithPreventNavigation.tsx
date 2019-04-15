@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {closeModal} from '../../components/modal/ModalActions';
-import {ReduxConnect} from '../../utils/ReduxUtils';
+import {closeModal, IModalActionPayload} from '../../components/modal/ModalActions';
+import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {IWithDirtyProps, withDirty} from '../withDirty/withDirty';
 import {PreventNavigationPrompt} from './PreventNavigationPrompt';
 
@@ -34,7 +34,12 @@ export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfi
 };
 
 export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (Component: React.ComponentClass<T, R>): React.ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
-    @ReduxConnect(null, {closeModal})
+
+    const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IWithPreventNavigationDispatchProps => ({
+        closeModal: (id: string) => dispatch(closeModal(id)),
+    });
+
+    @ReduxConnect(undefined, mapDispatchToProps)
     class ModalWithPreventNavigation extends React.PureComponent<IWithPreventNavigationDispatchProps, IWithPreventNavigationState> {
         private ComponentWithDirty: React.ComponentClass<IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>>;
 
