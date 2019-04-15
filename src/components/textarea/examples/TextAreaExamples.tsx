@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
+
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {Label} from '../../input/Label';
 import {TextAreaConnected} from '../TextArea';
 import {setDisabledTextArea} from '../TextAreaActions';
 import {TextAreaLabel} from '../TextAreaLabel';
@@ -84,6 +86,16 @@ export const TextAreaExamples = (): JSX.Element =>
                         isAutosize
                     />
                 </div>
+            </div>
+            <div className='form-group input-field validate'>
+                <TextAreaConnected
+                    id='super-textarea-8'
+                    isAutosize
+                    additionalAttributes={{
+                        required: true,
+                    }}
+                />
+                <Label htmlFor='super-textarea-8'>Beautiful Textarea</Label>
             </div>
         </div>
     </div>;

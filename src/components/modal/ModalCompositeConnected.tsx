@@ -1,5 +1,8 @@
+import * as React from 'react';
+import * as ReactModal from 'react-modal';
 import {connect} from 'react-redux';
 
+import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addModal, closeModal, removeModal} from './ModalActions';
@@ -23,5 +26,5 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalCompositeOwnPro
     onClose: () => dispatch(closeModal(ownProps.id)),
 });
 
-export const ModalCompositeConnected: React.ComponentClass<IModalCompositeProps & Partial<ReactModal.Props>> =
+export const ModalCompositeConnected: React.ComponentClass<IModalCompositeProps & Partial<ReactModal.Props> & Partial<IWithDirtyProps>> =
     connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalComposite);

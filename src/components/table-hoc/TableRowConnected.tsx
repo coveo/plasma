@@ -20,6 +20,7 @@ export interface CollapsibleRowProps {
     className?: string;
     expandOnMount?: boolean;
     renderCustomToggleCell?: (opened: boolean) => React.ReactNode;
+    onToggleCollapsible?: (open: boolean) => void;
 }
 
 export interface ITableRowOwnProps {
@@ -39,7 +40,7 @@ export interface ITableRowStateProps {
 export interface ITableRowDispatchProps {
     onMount: () => void;
     onUnmount: () => void;
-    handleClick: (isMulti: boolean) => void;
+    handleClick: (isMulti: boolean, isOpened: boolean) => void;
     onUpdateToCollapsibleRow: () => void;
     onActionBarActionsChanged: () => void;
 }
@@ -81,9 +82,10 @@ const mapDispatchToProps = (
             }
         },
         onUnmount: () => dispatch(TableRowActions.remove(ownProps.id)),
-        handleClick: (isMulti: boolean) => {
+        handleClick: (isMulti: boolean, isOpened: boolean) => {
             refreshActionBarActions(isMulti);
             if (isCollapsible(ownProps)) {
+                callIfDefined(ownProps.collapsible.onToggleCollapsible, !isOpened);
                 dispatch(TableRowActions.toggleCollapsible(ownProps.id));
             }
         },
@@ -183,7 +185,7 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
             callIfDefined(this.props.onClick, e);
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
-            this.props.handleClick(isMulti);
+            this.props.handleClick(isMulti, this.props.opened);
         }
     }
 

@@ -1,5 +1,7 @@
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../utils/ReduxUtils';
+import {IToastProps} from './Toast';
 
 export interface IToastContainerActionPayload {
     id: string;
@@ -7,7 +9,7 @@ export interface IToastContainerActionPayload {
 
 export interface IToastActionPayload {
     containerId: string;
-    id?: string;
+    id: string;
 }
 
 export const ToastAction = {
@@ -17,29 +19,21 @@ export const ToastAction = {
     removeToastContainer: 'REMOVE_TOAST_CONTAINER',
 };
 
-export interface IToastAddOptionalPayload {
-    dismiss?: number;
-    dismissible?: boolean;
-    type?: string;
-    animate?: boolean;
-    content?: React.ReactNode;
+export interface IToastAddOptionalPayload extends Partial<IToastProps> {
+    id: string;
 }
 
 export interface IToastAddPayload extends IToastActionPayload, IToastAddOptionalPayload {
-    title: string;
+    title: React.ReactNode;
 }
 
-export const addToast = (containerId: string, title: string, optionals: IToastAddOptionalPayload = {}): IReduxAction<IToastAddPayload> => ({
+export const addToast = (containerId: string, title: string, optionals: Partial<IToastProps> = {}): IReduxAction<IToastAddPayload> => ({
     type: ToastAction.addToast,
     payload: {
         title,
         containerId,
         id: _.uniqueId('toast'),
-        type: optionals.type,
-        dismiss: optionals.dismiss,
-        dismissible: optionals.dismissible,
-        animate: optionals.animate,
-        content: optionals.content,
+        ...optionals,
     },
 });
 

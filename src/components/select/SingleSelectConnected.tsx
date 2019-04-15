@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
@@ -11,7 +12,7 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
-import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 import * as styles from './styles/SingleSelect.scss';
 
@@ -25,6 +26,8 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     canClear?: boolean;
     deselectTooltipText?: string;
 }
+
+const selectPropsKeys = keys<ISelectOwnProps>();
 
 export interface ISingleSelectStateProps {
     selectedOption: string;
@@ -62,11 +65,8 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
     render() {
         return (
             <SelectConnected
-                id={this.props.id}
+                {..._.pick(this.props, selectPropsKeys)}
                 button={this.getButton}
-                items={this.props.items}
-                selectClasses={this.props.selectClasses}
-                hasFocusableChild={this.props.hasFocusableChild}
             >
                 {this.props.children}
             </SelectConnected>
@@ -75,7 +75,7 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getButton = (props: ISelectButtonProps): JSX.Element => {
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
-        const showClear = !!option && this.props.canClear;
+        const showClear = !!option && this.props.canClear && !this.props.disabled;
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
             [styles.singleSelectFixedWidth]: !this.props.noFixedWidth,
@@ -121,10 +121,16 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
 
     private getDeselectOptionButton(): React.ReactNode {
         return (
-            <Tooltip title={this.props.deselectTooltipText} placement='top' noSpanWrapper onClick={this.props.deselect}>
+            <Tooltip title={this.props.deselectTooltipText} placement='top' noSpanWrapper onClick={this.handleDeselect}>
                 <Svg svgName={VaporSVG.svg.clear.name} svgClass='icon mod-12' className='btn-append center-align' />
             </Tooltip>
         );
+    }
+
+    private handleDeselect = () => {
+        if (!this.props.disabled) {
+            this.props.deselect();
+        }
     }
 }
 

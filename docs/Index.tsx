@@ -44,6 +44,8 @@ import {
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
 import {DiffViewerExamples} from '../src/components/diffViewer/examples/DiffViewerExamples';
+import {DropExamples} from '../src/components/drop/examples/DropExamples';
+import {DropWithDropdownExamples} from '../src/components/drop/examples/DropWithDropdownExamples';
 import {DropdownSearchExamples} from '../src/components/dropdownSearch/examples/DropdownSearchExamples';
 import {CodeEditorExamples} from '../src/components/editor/examples/CodeEditorExamples';
 import {JSONEditorExamples} from '../src/components/editor/examples/JSONEditorExamples';
@@ -116,6 +118,7 @@ import {ToastExamples} from '../src/components/toast/examples/ToastExamples';
 import {TooltipExamples} from '../src/components/tooltip/examples/TooltipExamples';
 import {UserFeedbackExample} from '../src/components/userFeedback/examples/UserFeedbackExample';
 import {Defaults} from '../src/Defaults';
+import {ComponentWithDirtyExampleHOC} from '../src/hoc/withDirty/examples/withDirtyExamples';
 import {ComponentWithEditingExampleHOC} from '../src/hoc/withEditing/examples/withEditingExamples';
 import {MembersExample} from './members-example/MembersExample';
 import {ReactVaporStore} from './ReactVaporStore';
@@ -271,7 +274,10 @@ class App extends React.PureComponent<{}, AppState> {
         {component: NumericInputExamples, componentName: 'Numeric Input'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
         {component: ComponentWithEditingExampleHOC, componentName: 'ComponentWithEditing'},
+        {component: ComponentWithDirtyExampleHOC, componentName: 'ComponentWithDirty'},
         {component: MultilineBoxExamples, componentName: 'MultilineBox'},
+        {component: DropExamples, componentName: 'Drop'},
+        {component: DropWithDropdownExamples, componentName: 'DropWithDropdown'},
     ];
 
     constructor(props: {}, state: AppState) {

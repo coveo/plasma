@@ -7,6 +7,7 @@ import {checkboxesReducer} from './components/checkbox/CheckboxReducers';
 import {groupableCheckboxesReducer} from './components/checkbox/GroupableCheckboxReducers';
 import {collapsiblesReducer} from './components/collapsible/CollapsibleReducers';
 import {datePickersReducer} from './components/datePicker/DatePickerReducers';
+import {dropReducer} from './components/drop/redux/DropReducers';
 import {dropdownsReducer} from './components/dropdown/DropdownReducers';
 import {dropdownsSearchReducer} from './components/dropdownSearch/DropdownSearchReducers';
 import {facetsReducer} from './components/facets/FacetReducers';
@@ -40,7 +41,7 @@ import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
-import {withEditingReducer} from './hoc/withEditing/withEditingReducers';
+import {withDirtyReducer} from './hoc/withDirty/withDirtyReducers';
 import {IReactVaporState} from './ReactVapor';
 import {stringListCompositeReducer} from './reusableState/customList/StringListReducers';
 import {IReduxAction} from './utils/ReduxUtils';
@@ -92,7 +93,8 @@ export const ReactVaporReducers: ReducersMapObject = {
     radioSelects: radioSelectsReducer,
     popovers: popoversReducer,
     selectWithFilter: selectWithFilterCompositeReducer,
-    dirtyComponents: withEditingReducer,
+    dirtyComponents: withDirtyReducer,
     multilineIds: stringListCompositeReducer,
+    drop: dropReducer,
     lastAction,
 };

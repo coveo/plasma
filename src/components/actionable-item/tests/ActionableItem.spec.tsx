@@ -1,4 +1,4 @@
-import {ShallowWrapper} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Store} from 'redux';
@@ -7,6 +7,7 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
+import {Drop} from '../../drop/Drop';
 import {ListBox} from '../../listBox/ListBox';
 import {Svg} from '../../svg/Svg';
 import {ActionableItem, IActionableItemProps} from '../ActionableItem';
@@ -50,16 +51,18 @@ describe('ActionableItem', () => {
                 expect(actionableItem.find('.actionable-item-content').find('.children').length).toBe(1);
             });
 
-            it('should render the more-append svg in the actionable-item-dots container', () => {
+            it('should render the more-append svg in the Drop', () => {
                 shallowWithProps();
 
-                expect(actionableItem.find('.actionable-item-dots').find(Svg).prop('svgName')).toBe('more-append');
+                const renderButton: () => React.ReactElement = actionableItem.find(Drop).prop('renderOpenButton') as any;
+                const button = shallow(renderButton());
+                expect(button.find(Svg).prop('svgName')).toBe('more-append');
             });
 
-            it('should not render the more-append svg in the actionable-item-dots container if no actions', () => {
+            it('should not render a Drop if there is no actions', () => {
                 shallowWithProps({id: 'mountwithnoactions', actions: []});
 
-                expect(actionableItem.find('.actionable-item-dots').find(Svg).length).toBe(0);
+                expect(actionableItem.find(Drop).length).toBe(0);
             });
 
             it('should render the actions in a list-box', () => {
