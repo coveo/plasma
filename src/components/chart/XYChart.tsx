@@ -14,11 +14,13 @@ export interface XYSerie {
     data: XYPoint[];
 }
 
+export type Padding = {top?: number; right?: number; bottom?: number; left?: number};
+
 export interface XYChartProps extends ChartBaseProps {
     series: XYSerie[];
-    xDomain?: [number, number];
-    yDomain?: [number, number];
-    colors?: string[];
+    padding?: number | Padding;
+    colorPattern?: string[];
+    color?: (serie: number, colorPattern: string[], point?: XYPoint) => string;
 }
 
 export interface XYChartContextProps {
@@ -27,34 +29,58 @@ export interface XYChartContextProps {
     xDomain: [number, number];
     yDomain: [number, number];
     series: XYSerie[];
-    colors: string[];
+    colorPattern: string[];
+    color?: (serie: number, colorPattern: string[], point?: XYPoint) => string;
 }
 
-export const XYChartContext = React.createContext<XYChartContextProps>({width: 0, height: 0, xDomain: [0, 0], yDomain: [0, 0], series: [], colors: []});
+export const XYChartContext = React.createContext<XYChartContextProps>({
+    width: 0,
+    height: 0,
+    xDomain: [0, 0],
+    yDomain: [0, 0],
+    series: [],
+    colorPattern: [],
+});
 
 const getDateChartColorPattern = (numOfColors: number = 0) => {
     const colorPattern: string[] = [VaporColors.azure, VaporColors.java, VaporColors.anakiwa, VaporColors.nepal];
     return numOfColors > 2 ? [VaporColors.blue8, ...colorPattern] : colorPattern;
 };
 export class XYChart extends React.PureComponent<XYChartProps> {
+    static defaultProps: Partial<XYChartProps> = {
+        colorPattern: [],
+        padding: 10,
+    };
+
     render() {
         const xValues = _.flatten(this.props.series.map((serie: XYSerie) => serie.data.map((d: XYPoint) => d.x)));
-        const xDomain = this.props.xDomain || [Math.min(0, ...xValues), Math.max(...xValues)];
+        const xDomain: [number, number] = [Math.min(0, ...xValues), Math.max(...xValues)];
 
         const yValues = _.flatten(this.props.series.map((serie: XYSerie) => serie.data.map((d: XYPoint) => d.y)));
-        const yDomain = this.props.yDomain || [Math.min(0, ...yValues), Math.max(...yValues)];
+        const yDomain: [number, number] = [Math.min(0, ...yValues), Math.max(...yValues)];
+
+        const colorPattern = this.props.colorPattern.length ? this.props.colorPattern : getDateChartColorPattern(this.props.series.length);
+        const color = this.props.color || ((serie: number, pattern: string[]) => pattern[serie]);
+
+        const defaultPadding = XYChart.defaultProps.padding;
+        const padding: Padding = _.isNumber(this.props.padding)
+            ? {top: this.props.padding, right: this.props.padding, bottom: this.props.padding, left: this.props.padding}
+            : _.defaults(this.props.padding, {top: defaultPadding, right: defaultPadding, bottom: defaultPadding, left: defaultPadding});
 
         return (
             <XYChartContext.Provider value={{
                 xDomain,
                 yDomain,
-                width: this.props.width,
-                height: this.props.height,
+                color,
+                colorPattern,
+                width: this.props.width - padding.left - padding.right,
+                height: this.props.height - padding.top - padding.bottom,
                 series: this.props.series,
-                colors: getDateChartColorPattern(this.props.series.length),
             }}>
                 <svg width={this.props.width} height={this.props.height}>
-                    {this.props.children}
+                    <g transform={`translate(${padding.left},${padding.top})`}>
+                        {this.props.children}
+                    </g>
                 </svg>
             </XYChartContext.Provider>
         );
