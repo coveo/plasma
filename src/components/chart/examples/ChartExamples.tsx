@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Button} from '../../button/Button';
 
+import {Button} from '../../button/Button';
+import {VaporColors} from '../../color/Color';
 import {BarSeries} from '../BarSeries';
 import {ChartContainer} from '../ChartContainer';
 import {InfoLine} from '../InfoLine';
@@ -32,9 +33,20 @@ const data = [
             {x: 5, y: 4},
         ],
     },
+    {
+        label: 'Third',
+        data: [
+            {x: 0, y: 7},
+            {x: 1, y: 1},
+            {x: 2, y: 1},
+            {x: 3, y: 1},
+            {x: 4, y: 2},
+            {x: 5, y: 7},
+        ],
+    },
 ];
 
-const overPattern = ['#c30101', '#940000'];
+const overPattern = [VaporColors['orange-1'], VaporColors['orange-2'], VaporColors['orange-3']];
 
 export const ChartExamples = () => {
     const [chartType, setChartType] = React.useState('scatter');
@@ -45,7 +57,7 @@ export const ChartExamples = () => {
                 <label className='form-control-label'>Basic Chart</label>
                 <div className='form-control' style={{height: '300px'}}>
                     <ChartContainer id='yeah' renderChart={(width, height) => (
-                        <XYChart series={data} height={height} width={width} padding={chartType === 'bar' ? {left: width / 12, right: width / 12} : undefined}>
+                        <XYChart series={[data[0]]} height={height} width={width} padding={chartType === 'bar' ? {left: width / 12, right: width / 12} : undefined}>
                             {chartType === 'scatter' && <ScatterSeries />}
                             {chartType === 'line' && <LineSeries />}
                             {chartType === 'bar' && <BarSeries />}

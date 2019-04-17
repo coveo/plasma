@@ -23,7 +23,7 @@ export class BarSeries extends React.PureComponent<BarSeriesProps> {
             .domain(xDomain)
             .range([0, width]);
 
-        const barWidth = globalX(1) / series.length * this.props.barRatio;
+        const barWidth = globalX(1) / 2 * this.props.barRatio;
         const x = d3.scale.ordinal<number, number>()
             .domain(d3.range(series.length))
             .rangeBands([-barWidth, barWidth], 0);

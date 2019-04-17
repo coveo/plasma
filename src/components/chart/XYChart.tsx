@@ -44,7 +44,7 @@ export const XYChartContext = React.createContext<XYChartContextProps>({
 
 const getDateChartColorPattern = (numOfColors: number = 0) => {
     const colorPattern: string[] = [VaporColors.azure, VaporColors.java, VaporColors.anakiwa, VaporColors.nepal];
-    return numOfColors > 2 ? [VaporColors.blue8, ...colorPattern] : colorPattern;
+    return numOfColors > 2 ? [VaporColors['blue-8'], ...colorPattern] : colorPattern;
 };
 export class XYChart extends React.PureComponent<XYChartProps> {
     static defaultProps: Partial<XYChartProps> = {
