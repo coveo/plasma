@@ -11,43 +11,37 @@ export interface ChartBaseProps {
     height: number;
 }
 
-export class ChartContainer extends React.PureComponent<ChartContainerProps> {
-    private debouncedResize: () => void;
-    private static DebounceTime = 100;
-    private readonly container: React.RefObject<HTMLDivElement>;
+export const ChartContainer: React.FunctionComponent<ChartContainerProps> = (props) => {
+    const container = React.useRef<HTMLDivElement>(null);
+    useDebouncedWindowResize();
 
-    constructor(props: ChartContainerProps) {
-        super(props);
-        this.container = React.createRef<HTMLDivElement>();
-    }
-
-    componentDidMount() {
-        this.debouncedResize = _.debounce(() => this.forceUpdate(), ChartContainer.DebounceTime);
-        window.addEventListener('resize', this.debouncedResize);
-
-        this.forceUpdate();
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.debouncedResize);
-    }
-
-    render() {
-        this.toggleSvgs(false);
-        const {width, height} = this.container.current && this.container.current.getBoundingClientRect() || {width: 0, height: 0};
-        this.toggleSvgs(true);
-
-        return (
-            <div className='full-content' {..._.omit(this.props, 'renderChart')} ref={this.container}>
-                {width + height > 0 ? this.props.renderChart(width, height) : null}
-            </div>
-        );
-    }
-
-    private toggleSvgs(show: boolean) {
-        if (this.container.current) {
-            const svgs = this.container.current.querySelectorAll('svg');
+    const toggleSvgs = (show: boolean) => {
+        if (container.current) {
+            const svgs = container.current.querySelectorAll('svg');
             _.each(svgs, (svg: SVGElement) => svg.style.display = show ? 'block' : 'none');
         }
-    }
-}
+    };
+
+    toggleSvgs(false);
+    const {width, height} = container.current && container.current.getBoundingClientRect() || {width: 0, height: 0};
+    toggleSvgs(true);
+
+    return (
+        <div className='full-content' {..._.omit(props, 'renderChart')} ref={container}>
+            {width + height > 0 ? props.renderChart(width, height) : null}
+        </div>
+    );
+};
+
+const useForceUpdate = () => React.useState(undefined)[1];
+const useDebouncedWindowResize = () => {
+    const forceUpdate = useForceUpdate();
+    React.useEffect(() => {
+        const debouncedResize = () => window.requestAnimationFrame(forceUpdate);
+
+        window.addEventListener('resize', debouncedResize);
+        forceUpdate(1);
+
+        return () => window.removeEventListener('resize', debouncedResize);
+    });
+};

@@ -1,3 +1,4 @@
+import * as d3 from 'd3';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -30,6 +31,8 @@ export interface XYChartContextProps {
     yDomain: [number, number];
     series: XYSerie[];
     colorPattern: string[];
+    xScale: d3.scale.Linear<number, number>;
+    yScale: d3.scale.Linear<number, number>;
     color?: (serie: number, colorPattern: string[], point?: XYPoint) => string;
 }
 
@@ -40,6 +43,8 @@ export const XYChartContext = React.createContext<XYChartContextProps>({
     yDomain: [0, 0],
     series: [],
     colorPattern: [],
+    xScale: d3.scale.linear(),
+    yScale: d3.scale.linear(),
 });
 
 const getDateChartColorPattern = (numOfColors: number = 0) => {
@@ -67,14 +72,27 @@ export class XYChart extends React.PureComponent<XYChartProps> {
             ? {top: this.props.padding, right: this.props.padding, bottom: this.props.padding, left: this.props.padding}
             : _.defaults(this.props.padding, {top: defaultPadding, right: defaultPadding, bottom: defaultPadding, left: defaultPadding});
 
+        const width = this.props.width - padding.left - padding.right;
+        const height = this.props.height - padding.top - padding.bottom;
+
+        const xScale = d3.scale.linear<number, number>()
+            .domain(xDomain)
+            .range([0, width]);
+
+        const yScale = d3.scale.linear<number, number>()
+            .domain(yDomain)
+            .range([height, 0]);
+
         return (
             <XYChartContext.Provider value={{
+                width,
+                height,
                 xDomain,
                 yDomain,
+                xScale,
+                yScale,
                 color,
                 colorPattern,
-                width: this.props.width - padding.left - padding.right,
-                height: this.props.height - padding.top - padding.bottom,
                 series: this.props.series,
             }}>
                 <svg width={this.props.width} height={this.props.height}>

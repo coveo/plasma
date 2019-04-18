@@ -1,4 +1,3 @@
-import * as d3 from 'd3';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -29,80 +28,70 @@ const withDefaultConfig = (props: Partial<AxisProps> = {}): AxisProps => _.defau
     format: _.identity,
 });
 
-export class XYAxis extends React.PureComponent<XYAxisProps> {
-    static contextType = XYChartContext;
-    context!: React.ContextType<typeof XYChartContext>;
+export const XYAxis: React.FunctionComponent<XYAxisProps> = ({x, y, children}) => {
+    const context = React.useContext(XYChartContext);
+    const {xDomain, yDomain, xScale, yScale, width, height} = context;
 
-    render() {
-        const xAxis = withDefaultConfig(this.props.x);
-        const yAxis = withDefaultConfig(this.props.y);
+    const xAxis = withDefaultConfig(x);
+    const yAxis = withDefaultConfig(y);
 
-        const {xDomain, yDomain, width, height} = this.context;
+    const newXScale = xScale.copy().range([0, width - yAxis.size - (2 * xAxis.innerPadding)]);
+    const newYScale = yScale.copy().range([height - xAxis.size - (2 * yAxis.innerPadding), 0]);
 
-        const x = d3.scale.linear()
-            .domain(xDomain)
-            .range([yAxis.size, width - (2 * xAxis.innerPadding)]);
+    const minX = newXScale(xDomain[0]);
+    const maxX = newXScale(xDomain[1]);
+    const minY = newYScale(yDomain[0]);
+    const maxY = newYScale(yDomain[1]);
 
-        const y = d3.scale.linear()
-            .domain(yDomain)
-            .range([height - xAxis.size, 0]);
+    const yTicks = newYScale.ticks(yAxis.numberOfTicks).map((tick: number) => (
+        newYScale(tick) >= 0 && newYScale(tick) <= minY
+            ? (
+                <g key={`y-axis-tick-${tick}`} transform={`translate(${minX},${newYScale(tick)})`} className='y-axis-tick'>
+                    <line stroke='black' x1='0' x2={-yAxis.tickSize} />
+                    <text textAnchor='end' x={-yAxis.tickSize - 5} y={5}>{yAxis.format(tick)}</text>
+                    {yAxis.showGrid && <line stroke='rgba(0,0,0,0.2)' x1={0} x2={maxX} />}
+                </g>
+            )
+            : null
+    ));
 
-        const yTicks = y.ticks(yAxis.numberOfTicks).map((tick: number) => (
-            y(tick) >= 0 && y(tick) <= y(0)
-                ? (
-                    <g key={`y-axis-tick-${tick}`} transform={`translate(${x(0)},${y(tick)})`} className='y-axis-tick'>
-                        <line stroke='black' x1='0' x2={-yAxis.tickSize} />
-                        <text textAnchor='end' x={-yAxis.tickSize - 5} y={5}>{yAxis.format(tick)}</text>
-                        {yAxis.showGrid && <line stroke='rgba(0,0,0,0.2)' x1={0} x2={width - x(0)} />}
-                    </g>
-                )
-                : null
-        ));
+    const xTicks = newXScale.ticks(xAxis.numberOfTicks).map((tick: number) => (
+        newXScale(tick) >= 0 && newXScale(tick) <= maxX
+            ? (
+                <g key={`x-axis-tick-${tick}`} transform={`translate(${newXScale(tick) + xAxis.innerPadding},${minY})`} className='x-axis-tick'>
+                    <line stroke='black' y1='0' y2={xAxis.tickSize} />
+                    <text textAnchor='middle' y={xAxis.tickSize + 15}>{xAxis.format(tick)}</text>
+                    {xAxis.showGrid && <line stroke='rgba(0,0,0,0.2)' y1='0' y2={-minY} />}
+                </g>
+            )
+            : null
+    ));
 
-        const xTicks = x.ticks(xAxis.numberOfTicks).map((tick: number) => (
-            x(tick) >= 0 && x(tick) <= x(xDomain[1])
-                ? (
-                    <g key={`x-axis-tick-${tick}`} transform={`translate(${x(tick) + xAxis.innerPadding},${y(0)})`} className='x-axis-tick'>
-                        <line stroke='black' y1='0' y2={xAxis.tickSize} />
-                        <text textAnchor='middle' y={xAxis.tickSize + 15}>{xAxis.format(tick)}</text>
-                        {xAxis.showGrid && <line stroke='rgba(0,0,0,0.2)' y1='0' y2={-y(0)} />}
-                    </g>
-                )
-                : null
-        ));
-
-        return (
-            <>
-                <XYChartContext.Provider value={{...this.context, height: y(0), width: width - x(0) - (2 * xAxis.innerPadding)}}>
-                    <g transform={`translate(${x(0) + xAxis.innerPadding},0)`}>{this.props.children}</g>
-                </XYChartContext.Provider>
+    return (
+        <>
+            <XYChartContext.Provider value={{
+                ...context,
+                xScale: newXScale,
+                yScale: newYScale,
+                height: minY,
+                width: maxX,
+            }}>
+                <g transform={`translate(${yAxis.size + xAxis.innerPadding},0)`}>{children}</g>
+            </XYChartContext.Provider>
+            <g transform={`translate(${yAxis.size},0)`}>
                 {yAxis.show && (
                     <g className='y-axis'>
-                        <line
-                            className='axis-line'
-                            stroke='black'
-                            x1={x(0)}
-                            x2={x(0)}
-                            y1={y(0)}
-                            y2={y(yDomain[1])}
-                        />
+                        <line className='axis-line' stroke='black' x1={minX} x2={minX} y1={minY} y2={maxY} />
                         {yTicks}
                     </g>
                 )}
                 {xAxis.show && (
                     <g className='x-axis'>
-                        <line
-                            className='axis-line'
-                            stroke='black'
-                            x1={x(0)}
-                            x2={width - x(0) + yAxis.size}
-                            y1={y(0)}
-                            y2={y(0)}
-                        />
+                        <line className='axis-line' stroke='black' x1={minX} x2={maxX} y1={minY} y2={minY} />
                         {xTicks}
                     </g>
                 )}
-            </>
-        );
-    }
-}
+            </g>
+        </>
+    );
+};

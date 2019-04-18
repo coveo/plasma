@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 
 import {Button} from '../../button/Button';
 import {VaporColors} from '../../color/Color';
@@ -47,9 +48,14 @@ const data = [
 ];
 
 const overPattern = [VaporColors['orange-1'], VaporColors['orange-2'], VaporColors['orange-3']];
+const ChartType = {
+    Scatter: 'scatter',
+    Line: 'line',
+    Bar: 'bar',
+};
 
-export const ChartExamples = () => {
-    const [chartType, setChartType] = React.useState('scatter');
+export const ChartExamples: React.FunctionComponent = () => {
+    const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
         <div className='mt2'>
             <h1 className='text-blue mb1 bold'>Line Chart</h1>
@@ -57,16 +63,16 @@ export const ChartExamples = () => {
                 <label className='form-control-label'>Basic Chart</label>
                 <div className='form-control' style={{height: '300px'}}>
                     <ChartContainer id='yeah' renderChart={(width, height) => (
-                        <XYChart series={[data[0]]} height={height} width={width} padding={chartType === 'bar' ? {left: width / 12, right: width / 12} : undefined}>
-                            {chartType === 'scatter' && <ScatterSeries />}
-                            {chartType === 'line' && <LineSeries />}
-                            {chartType === 'bar' && <BarSeries />}
+                        <XYChart series={[data[0]]} height={height} width={width} padding={chartType === ChartType.Bar ? {left: width / 12, right: width / 12} : undefined}>
+                            {chartType === ChartType.Scatter && <ScatterSeries />}
+                            {chartType === ChartType.Line && <LineSeries />}
+                            {chartType === ChartType.Bar && <BarSeries />}
                         </XYChart>
                     )} />
                 </div>
-                <Button enabled={chartType !== 'scatter'} onClick={() => setChartType('scatter')} name='Scatter Series' />
-                <Button enabled={chartType !== 'line'} onClick={() => setChartType('line')} name='Line Series' />
-                <Button enabled={chartType !== 'bar'} onClick={() => setChartType('bar')} name='Bar Series' />
+                {_.map(ChartType, (type) => (
+                    <Button key={type} enabled={chartType !== type} onClick={() => setChartType(type)} name={`${type} Series`} />
+                ))}
             </div>
 
             <div className='form-group'>
@@ -74,7 +80,7 @@ export const ChartExamples = () => {
                 <div className='form-control' style={{height: '300px'}}>
                     <ChartContainer id='yeah' renderChart={(width, height) => (
                         <XYChart series={data} height={height} width={width}>
-                            <XYAxis x={{show: false}} y={{showGrid: true}}>
+                            <XYAxis x={{showGrid: true}} y={{showGrid: true}}>
                                 <LineSeries />
                                 <InfoLine value={3} label='Three' />
                                 <InfoLine value={3} isVertical />
