@@ -9,7 +9,7 @@ const isTravis = process.env.TRAVIS;
 const config = {
     entry: {
         'react-vapor': ['./Index.ts'],
-        'react-vapor.dependencies': ['jquery', 'underscore', 'react', 'react-dom', 'react-redux', 'redux', 'codemirror'],
+        'react-vapor.dependencies': ['jquery', 'underscore', 'react', 'react-dom', 'react-redux', 'redux', 'codemirror', 'd3'],
     },
     mode: 'production',
     output: {
@@ -105,6 +105,7 @@ const config = {
     ],
     externals: {
         codemirror: {root: 'CodeMirror', commonjs2: 'codemirror', commonjs: 'codemirror', amd: 'codemirror'},
+        d3: {root: 'd3', commonjs2: 'd3', commonjs: 'd3', amd: 'd3'},
         jquery: {root: '$', commonjs2: 'jquery', commonjs: 'jquery', amd: 'jquery'},
         react: {root: 'React', commonjs2: 'react', commonjs: 'react', amd: 'react'},
         'react-dom': {root: 'ReactDOM', commonjs2: 'react-dom', commonjs: 'react-dom', amd: 'react-dom'},

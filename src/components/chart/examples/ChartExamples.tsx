@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+import * as s from 'underscore.string';
 
 import {Button} from '../../button/Button';
 import {VaporColors} from '../../color/Color';
@@ -58,9 +59,9 @@ export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
         <div className='mt2'>
-            <h1 className='text-blue mb1 bold'>Line Chart</h1>
+            <h1 className='text-blue mb1 bold'>Charts</h1>
             <div className='form-group'>
-                <label className='form-control-label'>Basic Chart</label>
+                <label className='form-control-label'>Basic {s.capitalize(chartType)} Chart</label>
                 <div className='form-control' style={{height: '300px'}}>
                     <ChartContainer id='yeah' renderChart={(width, height) => (
                         <XYChart series={[data[0]]} height={height} width={width} padding={chartType === ChartType.Bar ? {left: width / 12, right: width / 12} : undefined}>
