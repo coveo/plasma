@@ -81,10 +81,10 @@ export const ChartExamples: React.FunctionComponent = () => {
                 <div className='form-control' style={{height: '300px'}}>
                     <ChartContainer id='yeah' renderChart={(width, height) => (
                         <XYChart series={data} height={height} width={width}>
-                            <XYAxis x={{showGrid: true}} y={{showGrid: true}}>
+                            <XYAxis x={{showGrid: true, innerPadding: 30}} y={{showGrid: true, innerPadding: 30}}>
                                 <LineSeries />
-                                <InfoLine value={3} label='Three' />
-                                <InfoLine value={3} isVertical />
+                                <InfoLine value={3} label='Three' padding={30} />
+                                <InfoLine value={2} label='Two' padding={30} isVertical />
                             </XYAxis>
                         </XYChart>
                     )} />
