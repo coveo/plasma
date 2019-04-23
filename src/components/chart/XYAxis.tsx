@@ -41,9 +41,9 @@ export const XYAxis: React.FunctionComponent<XYAxisProps> = ({x, y, children}) =
     const yTicks = newYScale.ticks(yTicksCount).map((tick: number) => (
         newYScale(tick) >= 0 && newYScale(tick) <= minY
             ? (
-                <g key={`y-axis-tick-${tick}`} transform={`translate(${minX},${newYScale(tick) + yAxis.innerPadding})`} className='y-axis-tick'>
-                    <line stroke='black' x1='0' x2={-yAxis.tickSize} />
-                    <text textAnchor='end' x={-yAxis.tickSize - 5} y={5}>{yFormat(tick)}</text>
+                <g key={`y-axis-tick-${tick}`} transform={`translate(${maxX + 2 * xAxis.innerPadding},${newYScale(tick) + yAxis.innerPadding})`} className='y-axis-tick'>
+                    <line stroke='black' x1='0' x2={yAxis.tickSize} />
+                    <text textAnchor='start' x={yAxis.tickSize + 5} y={5}>{yFormat(tick)}</text>
                 </g>
             )
             : null
@@ -69,22 +69,20 @@ export const XYAxis: React.FunctionComponent<XYAxisProps> = ({x, y, children}) =
                 height: minY,
                 width: maxX,
             }}>
-                <g transform={`translate(${yAxis.size + xAxis.innerPadding},${yAxis.innerPadding})`}>{children}</g>
+                <g transform={`translate(${xAxis.innerPadding},${yAxis.innerPadding})`}>{children}</g>
             </XYChartContext.Provider>
-            <g transform={`translate(${yAxis.size},0)`}>
-                {yAxis.show && (
-                    <g className='y-axis'>
-                        <line className='axis-line' stroke='black' x1={minX} x2={minX} y1={minY + 2 * yAxis.innerPadding} y2={maxY} />
-                        {yTicks}
-                    </g>
-                )}
-                {xAxis.show && (
-                    <g className='x-axis'>
-                        <line className='axis-line' stroke='black' x1={minX} x2={maxX + 2 * xAxis.innerPadding} y1={minY + 2 * yAxis.innerPadding} y2={minY + 2 * yAxis.innerPadding} />
-                        {xTicks}
-                    </g>
-                )}
-            </g>
+            {yAxis.show && (
+                <g className='y-axis'>
+                    <line className='axis-line' stroke='black' x1={maxX + 2 * xAxis.innerPadding} x2={maxX + 2 * xAxis.innerPadding} y1={minY + 2 * yAxis.innerPadding} y2={maxY} />
+                    {yTicks}
+                </g>
+            )}
+            {xAxis.show && (
+                <g className='x-axis'>
+                    <line className='axis-line' stroke='black' x1={minX} x2={maxX + 2 * xAxis.innerPadding} y1={minY + 2 * yAxis.innerPadding} y2={minY + 2 * yAxis.innerPadding} />
+                    {xTicks}
+                </g>
+            )}
         </>
     );
 };
