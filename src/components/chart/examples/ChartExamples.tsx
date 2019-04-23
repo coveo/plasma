@@ -6,6 +6,7 @@ import {Button} from '../../button/Button';
 import {VaporColors} from '../../color/Color';
 import {BarSeries} from '../BarSeries';
 import {ChartContainer} from '../ChartContainer';
+import {ChartTooltip} from '../ChartTooltip';
 import {InfoLine} from '../InfoLine';
 import {LineSeries} from '../LineSeries';
 import {ScatterSeries} from '../ScatterSeries';
@@ -79,6 +80,18 @@ export const ChartExamples: React.FunctionComponent = () => {
             </div>
 
             <div className='form-group'>
+                <label className='form-control-label'>Chart with tooltip</label>
+                <div className='form-control' style={{height: '300px'}}>
+                    <ChartContainer id='yeah' renderChart={(width, height) => (
+                        <XYChart series={data} height={height} width={width}>
+                            <ScatterSeries />
+                            <ChartTooltip />
+                        </XYChart>
+                    )} />
+                </div>
+            </div>
+
+            <div className='form-group'>
                 <label className='form-control-label'>Chart with y-axis and Info Lines</label>
                 <div className='form-control' style={{height: '300px'}}>
                     <ChartContainer id='yeah' renderChart={(width, height) => (
@@ -111,6 +124,7 @@ export const ChartExamples: React.FunctionComponent = () => {
                                 <BarSeries />
                                 <LineSeries />
                                 <ScatterSeries />
+                                <ChartTooltip sort />
                             </XYAxis>
                         </XYChart>
                     )} />
