@@ -5,12 +5,9 @@ import {XYChartContext} from './XYChart';
 
 export interface AxisProps {
     show?: boolean;
-    numberOfTicks?: number;
     tickSize?: number;
     size?: number;
     innerPadding?: number;
-    showGrid?: boolean;
-    format?: (value: number) => string;
 }
 
 export interface XYAxisProps {
@@ -19,18 +16,16 @@ export interface XYAxisProps {
 }
 
 const withDefaultConfig = (props: Partial<AxisProps> = {}): AxisProps => _.defaults(props, {
-    numberOfTicks: 5,
     tickSize: props.show !== false ? 7 : 0,
-    size: props.show !== false ? 25 : 0,
+    size: props.show !== false ? 40 : 0,
     innerPadding: 0,
-    showGrid: false,
     show: true,
     format: _.identity,
 });
 
 export const XYAxis: React.FunctionComponent<XYAxisProps> = ({x, y, children}) => {
     const context = React.useContext(XYChartContext);
-    const {xDomain, yDomain, xScale, yScale, width, height} = context;
+    const {xDomain, yDomain, xScale, yScale, xFormat, yFormat, width, height, xTicksCount, yTicksCount} = context;
 
     const xAxis = withDefaultConfig(x);
     const yAxis = withDefaultConfig(y);
@@ -43,25 +38,23 @@ export const XYAxis: React.FunctionComponent<XYAxisProps> = ({x, y, children}) =
     const minY = newYScale(yDomain[0]);
     const maxY = newYScale(yDomain[1]);
 
-    const yTicks = newYScale.ticks(yAxis.numberOfTicks).map((tick: number) => (
+    const yTicks = newYScale.ticks(yTicksCount).map((tick: number) => (
         newYScale(tick) >= 0 && newYScale(tick) <= minY
             ? (
                 <g key={`y-axis-tick-${tick}`} transform={`translate(${minX},${newYScale(tick) + yAxis.innerPadding})`} className='y-axis-tick'>
                     <line stroke='black' x1='0' x2={-yAxis.tickSize} />
-                    <text textAnchor='end' x={-yAxis.tickSize - 5} y={5}>{yAxis.format(tick)}</text>
-                    {yAxis.showGrid && <line stroke='rgba(0,0,0,0.2)' x1={0} x2={maxX + 2 * xAxis.innerPadding} />}
+                    <text textAnchor='end' x={-yAxis.tickSize - 5} y={5}>{yFormat(tick)}</text>
                 </g>
             )
             : null
     ));
 
-    const xTicks = newXScale.ticks(xAxis.numberOfTicks).map((tick: number) => (
+    const xTicks = newXScale.ticks(xTicksCount).map((tick: number) => (
         newXScale(tick) >= 0 && newXScale(tick) <= maxX
             ? (
                 <g key={`x-axis-tick-${tick}`} transform={`translate(${newXScale(tick) + xAxis.innerPadding},${minY + 2 * yAxis.innerPadding})`} className='x-axis-tick'>
                     <line stroke='black' y1='0' y2={xAxis.tickSize} />
-                    <text textAnchor='middle' y={xAxis.tickSize + 15}>{xAxis.format(tick)}</text>
-                    {xAxis.showGrid && <line stroke='rgba(0,0,0,0.2)' y1={-minY - 2 * yAxis.innerPadding} y2={0} />}
+                    <text textAnchor='middle' y={xAxis.tickSize + 15}>{xFormat(tick)}</text>
                 </g>
             )
             : null

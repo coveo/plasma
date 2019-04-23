@@ -9,8 +9,10 @@ import {ChartContainer} from '../ChartContainer';
 import {InfoLine} from '../InfoLine';
 import {LineSeries} from '../LineSeries';
 import {ScatterSeries} from '../ScatterSeries';
+import {XGrid} from '../XGrid';
 import {XYAxis} from '../XYAxis';
 import {XYChart, XYPoint} from '../XYChart';
+import {YGrid} from '../YGrid';
 
 const data = [
     {
@@ -81,7 +83,9 @@ export const ChartExamples: React.FunctionComponent = () => {
                 <div className='form-control' style={{height: '300px'}}>
                     <ChartContainer id='yeah' renderChart={(width, height) => (
                         <XYChart series={data} height={height} width={width}>
-                            <XYAxis x={{showGrid: true, innerPadding: 30}} y={{showGrid: true, innerPadding: 30}}>
+                            <XYAxis x={{innerPadding: 30}} y={{innerPadding: 30}}>
+                                <XGrid padding={30} />
+                                <YGrid padding={30} />
                                 <LineSeries />
                                 <InfoLine value={3} label='Three' padding={30} />
                                 <InfoLine value={2} label='Two' padding={30} isVertical />
@@ -100,6 +104,8 @@ export const ChartExamples: React.FunctionComponent = () => {
                             height={height}
                             width={width}
                             color={(serie: number, colorPattern: string[], point?: XYPoint) => point && point.y > 7 ? overPattern[serie] : colorPattern[serie]}
+                            xFormat={(value: number) => ['One', 'Two', 'Three', 'Four', 'Five', 'Six'][value]}
+                            yFormat={(value: number) => value * 10 + '%'}
                         >
                             <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
                                 <BarSeries />
