@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {TabConnected} from '../TabConnected';
 import {TabContent} from '../TabContent';
 import {TabNavigation} from '../TabNavigation';
@@ -22,24 +23,24 @@ export class TabsExamples extends React.Component<any, any> {
                     <div>
                         <TabNavigation>
                             <TabConnected id={TAB1_ID} title='A Tab' />
-                            <TabConnected id={TAB2_ID} title='Another Tab' />
-                            <TabConnected id={TAB3_ID} title='Yet Another Tab' />
+                            <TabConnected id={TAB2_ID} title='Another Tab' tooltip='I am an enabled tab' />
+                            <TabConnected id={TAB3_ID} title='A Disabled Tab' tooltip='I am a disabled tab' disabled />
                         </TabNavigation>
                         <TabContent>
                             <TabPaneConnected id={TAB1_ID}>
                                 <div className='mod-header-padding mod-form-top-bottom-padding'>
                                     Content of the first tab.
-                </div>
+                                </div>
                             </TabPaneConnected>
                             <TabPaneConnected id={TAB2_ID}>
                                 <div className='mod-header-padding mod-form-top-bottom-padding'>
                                     Content of the second tab.
-                </div>
+                                </div>
                             </TabPaneConnected>
                             <TabPaneConnected id={TAB3_ID}>
                                 <div className='mod-header-padding mod-form-top-bottom-padding'>
-                                    Last tab.
-                </div>
+                                    Last tab. You shouldn't be able to see this because the tab is disabled.
+                                </div>
                             </TabPaneConnected>
                         </TabContent>
                     </div>

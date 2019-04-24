@@ -1,53 +1,65 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
+import * as _ from 'underscore';
+
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {TooltipPlacement} from '../../utils/TooltipUtils';
+import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ITabOwnProps {
     groupId?: string;
     id?: string;
     title: string;
+    disabled?: boolean;
+    tooltip?: string;
 }
 
 export interface ITabStateProps {
-    isActive?: boolean;
+    isActive: boolean;
 }
 
 export interface ITabDispatchProps {
-    onRender?: () => void;
-    onDestroy?: () => void;
-    onSelect?: () => void;
+    onRender: () => void;
+    onDestroy: () => void;
+    onSelect: (e: React.MouseEvent) => void;
 }
 
-export interface ITabProps extends ITabOwnProps, ITabStateProps, ITabDispatchProps {}
+export interface ITabProps extends ITabOwnProps, Partial<ITabStateProps>, Partial<ITabDispatchProps> {}
 
 export class Tab extends React.Component<ITabProps, any> {
+    render() {
+        const className = classNames('tab', {
+            enabled: !this.props.disabled,
+            disabled: this.props.disabled,
+            active: this.props.isActive,
+        });
 
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
+        const tabTitle = _.isEmpty(this.props.tooltip)
+            ? this.props.title
+            : (
+                <Tooltip title={this.props.tooltip} placement={TooltipPlacement.Top}>
+                    {this.props.title}
+                </Tooltip>
+            );
+
+        return (
+            <div className={className} onClick={this.handleSelect}>
+                {tabTitle}
+            </div>
+        );
+    }
+
+    componentDidMount() {
+        callIfDefined(this.props.onRender);
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
+        callIfDefined(this.props.onDestroy);
     }
 
-    select() {
-        if (this.props.onSelect) {
-            this.props.onSelect();
+    private handleSelect = (e: React.MouseEvent) => {
+        if (!this.props.disabled) {
+            callIfDefined(this.props.onSelect, e);
         }
-    }
-
-    render() {
-        const classes = ['tab', 'enabled'];
-        if (this.props.isActive) {
-            classes.push('active');
-        }
-
-        return (
-            <div className={classes.join(' ')} onClick={() => this.select()}>
-                {this.props.title}
-            </div>
-        );
     }
 }
