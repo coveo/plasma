@@ -35,6 +35,12 @@ module.exports = (config) => {
             ],
         },
 
+        client: {
+            jasmine: {
+                random: false,
+            },
+        },
+
         port: 9876,
         colors: true,
 

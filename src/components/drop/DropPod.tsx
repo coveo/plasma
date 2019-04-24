@@ -11,9 +11,9 @@ import {
 } from './DomPositionCalculator';
 
 export interface IDropPodProps {
+    renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>, position: IDropUIPosition) => React.ReactNode;
     isOpen?: boolean;
     positions?: string[];
-    renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>) => React.ReactNode;
     selector?: string;
     parentSelector?: string;
     minWidth?: number;
@@ -183,7 +183,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 ...this.calculateStyleOffset(),
                 visibility: this.canRenderDrop() ? 'visible' : 'hidden',
             },
-        }, this.dropRef);
+        }, this.dropRef, this.lastPosition);
 
         return ReactDOM.createPortal(drop, document.querySelector(selector));
     }
