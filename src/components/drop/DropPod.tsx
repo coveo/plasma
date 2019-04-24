@@ -112,12 +112,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         if (this.canRenderDrop()) {
             const buttonOffset: ClientRect | DOMRect = this.props.buttonRef.current &&
                 this.props.buttonRef.current.getBoundingClientRect() || this.state.offset;
-            let dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
-            if (this.props.hasSameWidth) {
-                if (_.isObject(dropOffset)) {
-                    dropOffset = new DOMRect(dropOffset.left, dropOffset.top, buttonOffset.width, dropOffset.height);
-                }
-            }
+            const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
 
             const parentOffset = this.props.parentSelector ?
                 this.props.buttonRef.current.closest(this.props.parentSelector).getBoundingClientRect() :
