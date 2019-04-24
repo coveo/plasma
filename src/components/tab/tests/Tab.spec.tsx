@@ -1,83 +1,73 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
+import {shallow} from 'enzyme';
 import * as React from 'react';
+
+import {Tooltip} from '../../tooltip/Tooltip';
 import {ITabProps, Tab} from '../Tab';
 
 describe('Tab', () => {
-    const id: string = 'tab';
-    const title: string = 'Title';
+    const basicProps: ITabProps = {
+        title: 'tab title',
+    };
 
-    describe('<Tab />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(
-                    <Tab
-                        id={id}
-                        title={title}
-                    />,
-                );
-            }).not.toThrow();
-        });
+    it('should render and unmount without errors', () => {
+        expect(() => {
+            const tab = shallow(<Tab {...basicProps} />);
+            tab.unmount();
+        }).not.toThrow();
     });
 
-    describe('<Tab />', () => {
-        let tab: ReactWrapper<ITabProps, any>;
-        let tabInstance: Tab;
+    it('should call prop onRender on mounting if set', () => {
+        const onRenderSpy = jasmine.createSpy('onRender');
 
-        beforeEach(() => {
-            tab = mount(
-                <Tab
-                    id={id}
-                    title={title}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
-            tabInstance = tab.instance() as Tab;
-        });
+        shallow(<Tab {...basicProps} onRender={onRenderSpy} />);
 
-        afterEach(() => {
-            tab.detach();
-        });
+        expect(onRenderSpy).toHaveBeenCalledTimes(1);
+    });
 
-        it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jasmine.createSpy('onRender');
+    it('should call prop onDestroy when unmounting if set', () => {
+        const onDestroySpy = jasmine.createSpy('onDestroy');
 
-            expect(() => tabInstance.componentWillMount()).not.toThrow();
+        const tab = shallow(<Tab {...basicProps} onDestroy={onDestroySpy} />);
+        tab.unmount();
 
-            tab.setProps({id: id, title: title, onRender: renderSpy});
-            tab.unmount();
-            tab.mount();
-            expect(renderSpy.calls.count()).toBe(1);
-        });
+        expect(onDestroySpy).toHaveBeenCalledTimes(1);
+    });
 
-        it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jasmine.createSpy('onDestroy');
+    it('should call prop onSelect when tab is clicked and prop is set', () => {
+        const onSelectSpy = jasmine.createSpy('onSelect');
 
-            expect(() => tabInstance.componentWillUnmount()).not.toThrow();
+        const tab = shallow(<Tab {...basicProps} onSelect={onSelectSpy} />);
+        tab.simulate('click');
 
-            tab.setProps({id: id, title: title, onDestroy: destroySpy});
-            tab.mount();
-            tab.unmount();
-            expect(destroySpy.calls.count()).toBe(1);
-        });
+        expect(onSelectSpy).toHaveBeenCalledTimes(1);
+    });
 
-        it('should call prop onSelect when tab is clicked and prop is set', () => {
-            const selectSpy = jasmine.createSpy('onSelect');
+    it('should should not call onSelect prop when clicking on the tab and disabled is true', () => {
+        const onSelectSpy = jasmine.createSpy('onSelect');
 
-            tab.simulate('click');
-            expect(selectSpy.calls.count()).toBe(0);
+        const tab = shallow(<Tab {...basicProps} onSelect={onSelectSpy} disabled />);
+        tab.simulate('click');
 
-            tab.setProps({id: id, title: title, onSelect: selectSpy});
-            tab.mount();
-            tab.simulate('click');
-            expect(selectSpy.calls.count()).toBe(1);
-        });
+        expect(onSelectSpy).not.toHaveBeenCalled();
+    });
 
-        it('should set active class on container when isActive is true', () => {
-            expect(tab.find('div').first().hasClass('active')).toBe(false);
+    it('should set active class on container when isActive is true', () => {
+        const tab = shallow(<Tab {...basicProps} isActive />);
+        expect(tab.hasClass('active')).toBe(true);
+    });
 
-            tab.setProps({id, title, isActive: true}).mount().update();
-            expect(tab.find('div').first().hasClass('active')).toBe(true);
-        });
+    it('should set disabled class on container when disabled is true', () => {
+        const tab = shallow(<Tab {...basicProps} disabled />);
+
+        expect(tab.hasClass('enabled')).toBe(false);
+        expect(tab.hasClass('disabled')).toBe(true);
+    });
+
+    it('should render a Tooltip if the tooltip prop is not empty', () => {
+        const expectedTooltipText = 'I am a tooltip';
+        const tab = shallow(<Tab {...basicProps} tooltip={expectedTooltipText} />);
+
+        expect(tab.find(Tooltip).exists()).toBe(true);
+        expect(tab.find(Tooltip).props().title).toBe(expectedTooltipText);
     });
 });
