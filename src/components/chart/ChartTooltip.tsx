@@ -17,7 +17,6 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
     const [position, setPosition] = React.useState({x: 0, y: 0, position: '', index: 0});
     const dropRoot = React.useRef<any>(null);
 
-    console.warn(position);
 
     const onMouseMove = (e: React.MouseEvent<SVGRectElement, MouseEvent>) => {
         const dropPosition = e.currentTarget.getAttribute('data-position');
