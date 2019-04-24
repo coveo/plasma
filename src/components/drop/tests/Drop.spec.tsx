@@ -192,7 +192,6 @@ describe('Drop', () => {
                         <Drop
                             id={'test'}
                             renderOpenButton={() => defaultButton}
-                            positions={[DropPodPosition.bottom]}
                         />,
                         {},
                     ).dive();
@@ -212,7 +211,6 @@ describe('Drop', () => {
                         <Drop
                             id={'test'}
                             renderOpenButton={() => defaultButton}
-                            positions={[DropPodPosition.bottom]}
                         />,
                         {},
                     ).dive();

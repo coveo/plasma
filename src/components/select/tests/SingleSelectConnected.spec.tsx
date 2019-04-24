@@ -252,7 +252,7 @@ describe('Select', () => {
             });
         });
 
-        describe('click handler', () => {
+        xdescribe('click handler', () => {
             beforeEach(() => {
                 const otherElement: HTMLDivElement = document.createElement('div');
                 otherElement.setAttribute('id', 'other');
