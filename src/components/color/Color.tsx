@@ -7,7 +7,7 @@ export interface ColorProps {
 }
 
 // tslint:disable-next-line
-const VaporColors: {[key: string]: string} = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
+export const VaporColors: Record<string, string> = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
 
 export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
