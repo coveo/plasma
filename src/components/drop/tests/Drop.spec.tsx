@@ -4,7 +4,6 @@ import * as React from 'react';
 import {mockStore} from 'redux-test-utils';
 import {IReactVaporState} from '../../../ReactVapor';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop, IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
