@@ -9,7 +9,6 @@ import {
     IDropUIPosition,
     OrientationByPosition,
 } from './DomPositionCalculator';
-import {IDropProps} from './Drop';
 
 export interface IDropPodProps {
     isOpen?: boolean;
@@ -78,7 +77,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         this.removeEventsOnDocument();
     }
 
-    componentDidUpdate(prevProps: Readonly<IDropProps>) {
+    componentDidUpdate(prevProps: Readonly<IRDropPodProps>) {
         if (!prevProps.isOpen && this.props.isOpen) {
             this.setEventsOnDocument();
         } else if (prevProps.isOpen && !this.props.isOpen) {
@@ -115,10 +114,9 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 this.props.buttonRef.current.getBoundingClientRect() || this.state.offset;
             let dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
             if (this.props.hasSameWidth) {
-                dropOffset = {
-                    ...(dropOffset as DOMRect).toJSON(),
-                    width: buttonOffset.width,
-                };
+                if (_.isObject(dropOffset)) {
+                    dropOffset = new DOMRect(dropOffset.left, dropOffset.top, buttonOffset.width, dropOffset.height);
+                }
             }
 
             const parentOffset = this.props.parentSelector ?
