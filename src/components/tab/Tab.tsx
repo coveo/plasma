@@ -34,17 +34,11 @@ export class Tab extends React.Component<ITabProps, any> {
             active: this.props.isActive,
         });
 
-        const tabTitle = _.isEmpty(this.props.tooltip)
-            ? this.props.title
-            : (
+        return (
+            <div className={className} onClick={this.handleSelect}>
                 <Tooltip title={this.props.tooltip} placement={TooltipPlacement.Top}>
                     {this.props.title}
                 </Tooltip>
-            );
-
-        return (
-            <div className={className} onClick={this.handleSelect}>
-                {tabTitle}
             </div>
         );
     }
