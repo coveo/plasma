@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 export interface ChartContainerProps {
-    id: string;
     renderChart: (width: number, height: number) => React.ReactNode;
 }
 
@@ -43,5 +42,5 @@ const useDebouncedWindowResize = () => {
         forceUpdate(1);
 
         return () => window.removeEventListener('resize', debouncedResize);
-    });
+    }, [forceUpdate]);
 };

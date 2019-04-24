@@ -66,7 +66,7 @@ export const ChartExamples: React.FunctionComponent = () => {
             <div className='form-group'>
                 <label className='form-control-label'>Basic {s.capitalize(chartType)} Chart</label>
                 <div className='form-control' style={{height: '300px'}}>
-                    <ChartContainer id='yeah' renderChart={(width, height) => (
+                    <ChartContainer renderChart={(width, height) => (
                         <XYChart series={[data[0]]} height={height} width={width} padding={chartType === ChartType.Bar ? {left: width / 12, right: width / 12} : undefined}>
                             {chartType === ChartType.Scatter && <ScatterSeries />}
                             {chartType === ChartType.Line && <LineSeries />}
@@ -82,7 +82,7 @@ export const ChartExamples: React.FunctionComponent = () => {
             <div className='form-group'>
                 <label className='form-control-label'>Chart with tooltip</label>
                 <div className='form-control' style={{height: '300px'}}>
-                    <ChartContainer id='yeah' renderChart={(width, height) => (
+                    <ChartContainer renderChart={(width, height) => (
                         <XYChart series={data} height={height} width={width}>
                             <ScatterSeries />
                             <ChartTooltip />
@@ -94,7 +94,7 @@ export const ChartExamples: React.FunctionComponent = () => {
             <div className='form-group'>
                 <label className='form-control-label'>Chart with y-axis and Info Lines</label>
                 <div className='form-control' style={{height: '300px'}}>
-                    <ChartContainer id='yeah' renderChart={(width, height) => (
+                    <ChartContainer renderChart={(width, height) => (
                         <XYChart series={data} height={height} width={width}>
                             <XYAxis x={{innerPadding: 30}} y={{innerPadding: 30}}>
                                 <XGrid padding={30} />
@@ -111,7 +111,7 @@ export const ChartExamples: React.FunctionComponent = () => {
             <div className='form-group'>
                 <label className='form-control-label'>Combined Chart</label>
                 <div className='form-control' style={{height: '500px'}}>
-                    <ChartContainer id='yeah' renderChart={(width, height) => (
+                    <ChartContainer renderChart={(width, height) => (
                         <XYChart
                             series={data}
                             height={height}

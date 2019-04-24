@@ -16,6 +16,8 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
     const [position, setPosition] = React.useState({x: 0, y: 0, position: '', index: 0});
     const dropRoot = React.useRef<any>(null);
 
+    console.warn(position);
+
     const onMouseMove = (e: React.MouseEvent<SVGRectElement, MouseEvent>) => {
         const dropPosition = e.currentTarget.getAttribute('data-position');
         const index = parseFloat(e.currentTarget.getAttribute('data-index'));
@@ -58,7 +60,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
 
     return (
         <g className='chart-tooltip-zones'>
-            {!!position.position && <rect width={2} x={xScale(position.index) - 1} y={yScale(yDomain[1])} height={yScale(yDomain[0])} fill={VaporColors.orange} />}
+            {!!position.position && <rect className='chart-tooltip-line' width={2} x={xScale(position.index) - 1} y={yScale(yDomain[1])} height={yScale(yDomain[0])} fill={VaporColors.orange} />}
             <circle cx={position.x} cy={position.y} r='1' fill='transparent' ref={dropRoot} />
             <DropPod
                 ref={dropRoot}

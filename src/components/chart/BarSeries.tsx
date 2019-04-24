@@ -4,11 +4,10 @@ import * as React from 'react';
 import {XYChartContext, XYPoint, XYSerie} from './XYChart';
 
 export interface BarSeriesProps {
-    id?: string;
     barRatio?: number;
 }
 
-export const BarSeries: React.FunctionComponent<BarSeriesProps> = ({id, barRatio = 0.8, children}) => {
+export const BarSeries: React.FunctionComponent<BarSeriesProps> = ({barRatio = 0.8, children}) => {
     const {series, xScale, yScale, yDomain, color, colorPattern} = React.useContext(XYChartContext);
 
     const barWidth = xScale(1) / 2 * barRatio;
@@ -32,7 +31,7 @@ export const BarSeries: React.FunctionComponent<BarSeriesProps> = ({id, barRatio
             );
         }));
     return (
-        <g key={id} className='bar-series'>
+        <g className='bar-series'>
             {bars}
             {children}
         </g>
