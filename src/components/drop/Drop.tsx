@@ -3,11 +3,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {DropPod, IDropPodProps} from './DropPod';
+import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod';
 import {DefaultGroupIds, DropActions} from './redux/DropActions';
 import {DropSelectors} from './redux/DropReducers';
 
-export interface IDropOwnProps extends IDropPodProps {
+export interface IDropOwnProps extends Partial<IDropPodProps> {
     id: string;
     groupId?: string;
     renderOpenButton: (onClick: () => void) => React.ReactNode;
@@ -141,6 +141,7 @@ export class Drop extends React.PureComponent<IDropProps> {
 
 Drop.defaultProps = {
     groupId: DefaultGroupIds.default,
+    positions: defaultDropPodPosition,
     closeOnClickDrop: true,
     closeOnClickOutside: true,
     listContainerProps: {},

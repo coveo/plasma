@@ -155,6 +155,32 @@ export class DropExamples extends React.PureComponent<any> {
                     </div>
                 </div>
                 <div className='form-group'>
+                    <label className='form-control-label'>Drop with the same size than the button</label>
+                    <div className='form-control'>
+                        <Drop
+                            id={UUID.generate()}
+                            parentSelector={'body'}
+                            selector={'#App'}
+                            positions={[DropPodPosition.bottom]}
+                            buttonContainerProps={{
+                                className: 'inline-block',
+                            }}
+                            renderOpenButton={(onClick: () => void) => (
+                                <Button
+                                    name={'Text'}
+                                    enabled={true}
+                                    onClick={() => onClick()}
+                                    style={{width: '300px'}}
+                                />
+                            )
+                            }
+                            hasSameWidth
+                        >
+                            <ListBox items={defaultItems} />
+                        </Drop>
+                    </div>
+                </div>
+                <div className='form-group'>
                     <label className='form-control-label'>Drop inside a modal</label>
                     <div className='form-control'>
                         <button className='btn' onClick={() => this.openModal(modalId)}>Open Modal</button>

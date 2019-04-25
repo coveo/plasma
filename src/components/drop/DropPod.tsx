@@ -9,7 +9,6 @@ import {
     IDropUIPosition,
     OrientationByPosition,
 } from './DomPositionCalculator';
-import {IDropProps} from './Drop';
 
 export interface IDropPodProps {
     renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>, position: IDropUIPosition) => React.ReactNode;
@@ -78,7 +77,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         this.removeEventsOnDocument();
     }
 
-    componentDidUpdate(prevProps: Readonly<IDropProps>) {
+    componentDidUpdate(prevProps: Readonly<IRDropPodProps>) {
         if (!prevProps.isOpen && this.props.isOpen) {
             this.setEventsOnDocument();
         } else if (prevProps.isOpen && !this.props.isOpen) {
@@ -113,13 +112,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         if (this.canRenderDrop()) {
             const buttonOffset: ClientRect | DOMRect = this.props.buttonRef.current &&
                 this.props.buttonRef.current.getBoundingClientRect() || this.state.offset;
-            let dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
-            if (this.props.hasSameWidth) {
-                dropOffset = {
-                    ...(dropOffset as DOMRect).toJSON(),
-                    width: buttonOffset.width,
-                };
-            }
+            const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
 
             const parentOffset = this.props.parentSelector ?
                 this.props.buttonRef.current.closest(this.props.parentSelector).getBoundingClientRect() :
