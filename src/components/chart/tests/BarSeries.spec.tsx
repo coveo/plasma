@@ -2,6 +2,7 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 
 import {BarSeries} from '../BarSeries';
+import {ChartUtils} from '../ChartUtils';
 import {XYChartContextMock} from './XYChartContextMock';
 
 describe('<BarSeries />', () => {
@@ -23,6 +24,6 @@ describe('<BarSeries />', () => {
         const {series} = XYChartContextMock;
         const component = shallow(<BarSeries />);
 
-        expect(component.find('rect').length).toBe(series[0].data.length + series[1].data.length);
+        expect(component.find('rect').length).toBe(ChartUtils.getXValues(series).length * series.length);
     });
 });

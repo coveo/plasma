@@ -27,3 +27,4 @@ export const ScatterSeries: React.FunctionComponent<ScatterSeriesProps> = ({chil
         </g>
     );
 };
+ScatterSeries.displayName = 'ScatterSeries';

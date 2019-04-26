@@ -33,3 +33,4 @@ export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({interpolat
         </g>
     );
 };
+LineSeries.displayName = 'LineSeries';

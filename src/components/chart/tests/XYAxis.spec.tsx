@@ -1,3 +1,4 @@
+import * as d3 from 'd3';
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
@@ -35,12 +36,23 @@ describe('<XYAxis />', () => {
         expect(context.height).toBeLessThan(XYChartContextMock.height);
     });
 
-    it('should render as many x ticks as defined in the context', () => {
+    it('should render as many x ticks as there are points in the scale from the context', () => {
+        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
+        const component = shallow(<XYAxis x={{show: true}} y={{show: false}} />);
+
+        expect(component.find('.x-axis-tick').length).toBe(XYChartContextMock.xScale.domain().length);
+    });
+
+    it('should render as many x ticks labels as d3 determine', () => {
         spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
         const component = shallow(<XYAxis x={{show: true}} y={{show: false}} />);
 
         // D3 doesn't enforce a strict tick count
-        expect(component.find('.x-axis-tick').length).toBe(XYChartContextMock.xScale.ticks(XYChartContextMock.xTicksCount).length);
+        const linearScale = d3.scale.linear()
+            .range(XYChartContextMock.xScale.range())
+            .domain(XYChartContextMock.xDomain);
+
+        expect(component.find('.x-axis-tick text').length).toBe(linearScale.ticks(XYChartContextMock.xTicksCount).length);
     });
 
     it('should render as many y ticks as defined in the context', () => {

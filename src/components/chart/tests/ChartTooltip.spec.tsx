@@ -1,10 +1,11 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {DropPodPosition, IDropUIPosition} from '../../drop/DomPositionCalculator';
+import {DropPodPosition} from '../../drop/DomPositionCalculator';
 
 import {DropPod} from '../../drop/DropPod';
 import {ChartTooltip} from '../ChartTooltip';
 import {ChartTooltipContent} from '../ChartTooltipContent';
+import {ChartUtils} from '../ChartUtils';
 import {XYChartContextMock} from './XYChartContextMock';
 
 describe('<ChartTooltip />', () => {
@@ -21,7 +22,7 @@ describe('<ChartTooltip />', () => {
 
     it('should render two rectangles per data', () => {
         const component = shallow(<ChartTooltip />);
-        expect(component.find('rect').length).toBe(XYChartContextMock.series[0].data.length * 2);
+        expect(component.find('rect').length).toBe(ChartUtils.getXValues(XYChartContextMock.series).length * 2);
     });
 
     it('should render a DropPod', () => {

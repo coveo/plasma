@@ -13,54 +13,46 @@ export interface ChartTooltipProps {
 }
 
 export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort = false}) => {
-    const {series, xScale, yScale, yDomain, height} = React.useContext(XYChartContext);
-    const [position, setPosition] = React.useState({x: 0, y: 0, position: '', index: 0});
+    const {series, xScale, yScale, xDomain, yDomain, width, height} = React.useContext(XYChartContext);
+    const [position, setPosition] = React.useState({x: 0, y: 0, index: 0, position: '', pointX: null});
     const dropRoot = React.useRef<any>(null);
 
-
-    const onMouseMove = (e: React.MouseEvent<SVGRectElement, MouseEvent>) => {
-        const dropPosition = e.currentTarget.getAttribute('data-position');
-        const index = parseFloat(e.currentTarget.getAttribute('data-index'));
-        let x = parseFloat(e.currentTarget.getAttribute('x'));
-        if (dropPosition === DropPodPosition.right) {
-            x = x + xScale(0.5);
-        }
-        setPosition({x, y: height / 2, position: dropPosition, index});
+    const onMouseMove = (index: number, pointX: number, x: number) => {
+        const dropPodPosition: string = x < width / 2 ? DropPodPosition.right : DropPodPosition.left;
+        setPosition({x, y: height / 2, index, pointX, position: dropPodPosition});
     };
     const onMouseLeave = () => setPosition({...position, position: ''});
 
-    const bars = series[0].data.map((point: XYPoint, index: number) => (
-        <>
-            <rect
-                key={`chart-zone-${index}-left`}
-                fill='transparent'
-                width={xScale(0.5)}
-                height={yScale(yDomain[0])}
-                x={xScale(point.x) - xScale(0.5)}
-                y={yScale(yDomain[1])}
-                onMouseMove={onMouseMove}
-                onMouseLeave={onMouseLeave}
-                data-position={DropPodPosition.right}
-                data-index={index}
-            />
-            <rect
-                key={`chart-zone-${index}-right`}
-                fill='transparent'
-                width={xScale(0.5)}
-                height={yScale(yDomain[0])}
-                x={xScale(point.x)}
-                y={yScale(yDomain[1])}
-                onMouseMove={onMouseMove}
-                onMouseLeave={onMouseLeave}
-                data-position={DropPodPosition.left}
-                data-index={index}
-            />
-        </>
-    ));
+    const barWidth = (xScale(xDomain[1]) - xScale(xDomain[0])) / (series[0].data.length - 1);
+    const bars = series[0].data.map((point: XYPoint, index: number) => {
+        const x = xScale(point.x);
+        return (
+            <React.Fragment key={`chart-zone-${index}`}>
+                <rect
+                    fill='transparent'
+                    width={barWidth / 2}
+                    height={yScale(yDomain[0])}
+                    x={x - barWidth / 2}
+                    y={yScale(yDomain[1])}
+                    onMouseMove={() => onMouseMove(index, point.x, x)}
+                    onMouseLeave={onMouseLeave}
+                />
+                <rect
+                    fill='transparent'
+                    width={barWidth / 2}
+                    height={yScale(yDomain[0])}
+                    x={x}
+                    y={yScale(yDomain[1])}
+                    onMouseMove={() => onMouseMove(index, point.x, x)}
+                    onMouseLeave={onMouseLeave}
+                />
+            </React.Fragment>
+        );
+    });
 
     return (
         <g className='chart-tooltip-zones'>
-            {!!position.position && <rect className='chart-tooltip-line' width={2} x={xScale(position.index) - 1} y={yScale(yDomain[1])} height={yScale(yDomain[0])} fill={VaporColors.orange} />}
+            {!!position.position && <rect className='chart-tooltip-line' width={2} x={xScale(position.pointX) - 1} y={yScale(yDomain[1])} height={yScale(yDomain[0])} fill={VaporColors.orange} />}
             <circle cx={position.x} cy={position.y} r='1' fill='transparent' ref={dropRoot} />
             <DropPod
                 ref={dropRoot}
@@ -84,3 +76,4 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
         </g>
     );
 };
+ChartTooltip.displayName = 'ChartTooltip';

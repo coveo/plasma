@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
@@ -19,6 +20,7 @@ const data = [
     {
         label: 'First',
         data: [
+            {x: -1, y: 3},
             {x: 0, y: 3},
             {x: 1, y: 3},
             {x: 2, y: 6},
@@ -30,6 +32,7 @@ const data = [
     {
         label: 'Second',
         data: [
+            {x: -1, y: 1},
             {x: 0, y: 5},
             {x: 1, y: 4},
             {x: 2, y: 0},
@@ -41,6 +44,7 @@ const data = [
     {
         label: 'Third',
         data: [
+            {x: -1, y: 4},
             {x: 0, y: 7},
             {x: 1, y: 1},
             {x: 2, y: 1},
@@ -48,6 +52,13 @@ const data = [
             {x: 4, y: 2},
             {x: 5, y: 7},
         ],
+    },
+];
+
+const dateData = [
+    {
+        label: 'First',
+        data: _.range(25).map((i: number) => ({x: moment().startOf('day').subtract(i, 'day').unix(), y: i + 1})),
     },
 ];
 
@@ -63,6 +74,7 @@ export const ChartExamples: React.FunctionComponent = () => {
     return (
         <div className='mt2'>
             <h1 className='text-blue mb1 bold'>Charts</h1>
+
             <div className='form-group'>
                 <label className='form-control-label'>Basic {s.capitalize(chartType)} Chart</label>
                 <div className='form-control' style={{height: '300px'}}>
@@ -117,13 +129,32 @@ export const ChartExamples: React.FunctionComponent = () => {
                             height={height}
                             width={width}
                             color={(serie: number, colorPattern: string[], point?: XYPoint) => point && point.y > 7 ? overPattern[serie] : colorPattern[serie]}
-                            xFormat={(value: number) => ['One', 'Two', 'Three', 'Four', 'Five', 'Six'][value]}
+                            xFormat={(value: number) => ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'][value + 1]}
                             yFormat={(value: number) => value * 10 + '%'}
                         >
                             <XYAxis x={{innerPadding: width / 12}} y={{show: false}}>
                                 <BarSeries />
                                 <LineSeries />
                                 <ScatterSeries />
+                                <ChartTooltip sort />
+                            </XYAxis>
+                        </XYChart>
+                    )} />
+                </div>
+            </div>
+
+            <div className='form-group'>
+                <label className='form-control-label'>Date Chart</label>
+                <div className='form-control' style={{height: '300px'}}>
+                    <ChartContainer renderChart={(width, height) => (
+                        <XYChart
+                            series={dateData}
+                            height={height}
+                            width={width}
+                            xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
+                        >
+                            <XYAxis x={{innerPadding: width / dateData[0].data.length / 2}} y={{show: false}}>
+                                <BarSeries />
                                 <ChartTooltip sort />
                             </XYAxis>
                         </XYChart>

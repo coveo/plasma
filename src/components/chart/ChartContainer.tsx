@@ -31,6 +31,7 @@ export const ChartContainer: React.FunctionComponent<ChartContainerProps> = (pro
         </div>
     );
 };
+ChartContainer.displayName = 'ChartContainer';
 
 const useForceUpdate = () => React.useState(undefined)[1];
 const useDebouncedWindowResize = () => {

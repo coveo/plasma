@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 
 import {VaporColors} from '../color/Color';
 import {ChartBaseProps} from './ChartContainer';
+import {ChartUtils} from './ChartUtils';
 
 export interface XYPoint {
     x: number;
@@ -35,7 +36,7 @@ export interface XYChartContextProps {
     yDomain: [number, number];
     series: XYSerie[];
     colorPattern: string[];
-    xScale: d3.scale.Linear<number, number>;
+    xScale: d3.scale.Ordinal<number, number>;
     yScale: d3.scale.Linear<number, number>;
     xFormat: (value: number) => string | number;
     yFormat: (value: number) => string | number;
@@ -51,7 +52,7 @@ export const XYChartContext = React.createContext<XYChartContextProps>({
     yDomain: [0, 0],
     series: [],
     colorPattern: [],
-    xScale: d3.scale.linear(),
+    xScale: d3.scale.ordinal<number, number>(),
     yScale: d3.scale.linear(),
     xFormat: _.identity,
     yFormat: _.identity,
@@ -66,11 +67,11 @@ const getDateChartColorPattern = (numOfColors: number) => {
 const defaultPadding = 10;
 
 export const XYChart: React.FunctionComponent<XYChartProps> = ({width, height, series, colorPattern = [], color, padding = defaultPadding, xFormat = _.identity, yFormat = _.identity, xTicksCount, yTicksCount, children}) => {
-    const xValues = _.flatten(series.map((serie: XYSerie) => serie.data.map((d: XYPoint) => d.x)));
-    const xDomain: [number, number] = [Math.min(0, ...xValues), Math.max(...xValues)];
+    const xValues = ChartUtils.getXValues(series);
+    const xDomain: [number, number] = [Math.min(...xValues), Math.max(...xValues)];
 
     const yValues = _.flatten(series.map((serie: XYSerie) => serie.data.map((d: XYPoint) => d.y)));
-    const yDomain: [number, number] = [Math.min(0, ...yValues), Math.max(...yValues)];
+    const yDomain: [number, number] = [Math.min(...yValues), Math.max(...yValues)];
 
     colorPattern = colorPattern.length ? colorPattern : getDateChartColorPattern(series.length);
     color = color || ((serie: number, pattern: string[]) => pattern[serie]);
@@ -82,9 +83,9 @@ export const XYChart: React.FunctionComponent<XYChartProps> = ({width, height, s
     width = width - chartPadding.left - chartPadding.right;
     height = height - chartPadding.top - chartPadding.bottom;
 
-    const xScale = d3.scale.linear<number, number>()
-        .domain(xDomain)
-        .range([0, width]);
+    const xScale = d3.scale.ordinal<number, number>()
+        .domain(xValues)
+        .rangePoints([0, width]);
 
     const yScale = d3.scale.linear<number, number>()
         .domain(yDomain)
@@ -103,8 +104,8 @@ export const XYChart: React.FunctionComponent<XYChartProps> = ({width, height, s
             color,
             colorPattern,
             series,
-            xTicksCount: xTicksCount || _.uniq(xValues).length,
-            yTicksCount: yTicksCount || _.uniq(yValues).length,
+            xTicksCount: xTicksCount || xValues.length / 2,
+            yTicksCount: yTicksCount || yValues.length,
         }}>
             <svg width={width} height={height}>
                 <g transform={`translate(${chartPadding.left},${chartPadding.top})`}>
@@ -114,3 +115,4 @@ export const XYChart: React.FunctionComponent<XYChartProps> = ({width, height, s
         </XYChartContext.Provider>
     );
 };
+XYChart.displayName = 'XYChart';
