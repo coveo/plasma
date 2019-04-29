@@ -153,7 +153,7 @@ export const ChartExamples: React.FunctionComponent = () => {
                             width={width}
                             xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
                         >
-                            <XYAxis x={{innerPadding: width / dateData[0].data.length / 2}} y={{show: false}}>
+                            <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
                                 <BarSeries />
                                 <ChartTooltip sort />
                             </XYAxis>

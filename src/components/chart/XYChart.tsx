@@ -70,7 +70,7 @@ export const XYChart: React.FunctionComponent<XYChartProps> = ({width, height, s
     const xValues = ChartUtils.getXValues(series);
     const xDomain: [number, number] = [Math.min(...xValues), Math.max(...xValues)];
 
-    const yValues = _.flatten(series.map((serie: XYSerie) => serie.data.map((d: XYPoint) => d.y)));
+    const yValues = ChartUtils.getYValues(series);
     const yDomain: [number, number] = [Math.min(...yValues), Math.max(...yValues)];
 
     colorPattern = colorPattern.length ? colorPattern : getDateChartColorPattern(series.length);
@@ -105,7 +105,7 @@ export const XYChart: React.FunctionComponent<XYChartProps> = ({width, height, s
             colorPattern,
             series,
             xTicksCount: xTicksCount || xValues.length / 2,
-            yTicksCount: yTicksCount || yValues.length,
+            yTicksCount: yTicksCount || yValues.length / 2,
         }}>
             <svg width={width} height={height}>
                 <g transform={`translate(${chartPadding.left},${chartPadding.top})`}>
