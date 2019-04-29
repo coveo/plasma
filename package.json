@@ -46,7 +46,7 @@
   "dependencies": {
     "diff2html": "2.5.0",
     "react-bootstrap": "0.32.4",
-    "react-codemirror2": "5.1.0",
+    "react-codemirror2": "6.0.0",
     "react-infinite-scroll-component": "4.2.0",
     "react-modal": "3.8.1",
     "react-tether": "1.0.4",
