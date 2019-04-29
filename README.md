@@ -25,7 +25,7 @@ Make sure you have Node JS and NPM installed.
 Run `npm install` to get the required dependencies and build the librairy.
 
 ### Running documentation locally
-To build and run the doc locally, simply run `npm start`.
+To build and run the doc locally, simply run `npm start` and access http://localhost:8080/.
 
 ### Running the tests suite
 Run `npm test` to run all tests and get the code coverage!
