@@ -27,7 +27,7 @@ export const ChartContainer: React.FunctionComponent<ChartContainerProps> = (pro
 
     return (
         <div className='full-content' {..._.omit(props, 'renderChart')} ref={container}>
-            {width + height > 0 ? props.renderChart(width, height) : null}
+            {width > 0 && height > 0 ? props.renderChart(width, height) : null}
         </div>
     );
 };
