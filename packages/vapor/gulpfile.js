@@ -71,7 +71,7 @@ gulp.task('lib', () => {
         .pipe(gulpif(useMinifiedSources, gulp.dest('./dist/js')));
 });
 
-gulp.task('clean', () => {
+gulp.task('clean', (done) => {
     const filesToDelete = ['./dist', './docs/dist', './_gh_pages', './.sass-cache', './tmp'];
     if (cleanAll) {
         filesToDelete.concat([
@@ -83,6 +83,7 @@ gulp.task('clean', () => {
     }
     return del(filesToDelete).then((deletedFiles) => {
         log(colors.green('Files deleted:', deletedFiles.join(', ')));
+        done();
     });
 });
 
@@ -252,10 +253,8 @@ function sassError(err, doneCallback) {
 }
 
 gulp.task('default', gulp.series(
-    'sass',
-    'lib',
+    gulp.parallel('sass', 'lib', 'svg'),
     gulp.parallel('copy:images', 'copy:fonts', 'copy:js'),
-    'svg'
 ));
 
 gulp.task('docs:external-libs', () => {
@@ -263,10 +262,12 @@ gulp.task('docs:external-libs', () => {
         .pipe(gulp.dest('./docs/dist/js'));
 });
 
-gulp.task('docs', gulp.series('default', 'docs:external-libs', () => {
+gulp.task('docs:copy', () => {
     return gulp.src('./dist/**/*')
         .pipe(gulp.dest('./docs/dist'));
-}));
+});
+
+gulp.task('docs', gulp.series('clean', 'default', 'docs:external-libs', 'docs:copy'));
 
 gulp.task('watch', () => {
     gulp.watch(['./scss/**/*.scss', '!./scss/common/palette-map.scss', '!./scss/sprites.scss'], gulp.series('docs'));
