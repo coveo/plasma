@@ -28,3 +28,4 @@ export const InfoLine: React.FunctionComponent<InfoLineProps> = ({stroke = '#000
         </g>
     );
 };
+InfoLine.displayName = 'InfoLine';

@@ -4,7 +4,7 @@
 $chart-tooltip-content-size: 3px;
 
 .chartTooltipContent {
-  font-size: 0.75rem;
+  font-size: $small-font-size;
   box-shadow: 0 0 $chart-tooltip-content-size 0 rgba($black, $transparency-4);
   border: $default-border;
 }

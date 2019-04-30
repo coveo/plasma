@@ -3,11 +3,10 @@ import * as React from 'react';
 import {XYChartContext, XYPoint, XYSerie} from './XYChart';
 
 export interface ScatterSeriesProps {
-    id?: string;
     radius?: number;
 }
 
-export const ScatterSeries: React.FunctionComponent<ScatterSeriesProps> = ({id, children, radius = 3}) => {
+export const ScatterSeries: React.FunctionComponent<ScatterSeriesProps> = ({children, radius = 3}) => {
     const {series, xScale, yScale, color, colorPattern} = React.useContext(XYChartContext);
 
     const points = series.map((serie: XYSerie, i: number) =>
@@ -22,9 +21,10 @@ export const ScatterSeries: React.FunctionComponent<ScatterSeriesProps> = ({id, 
         )));
 
     return (
-        <g key={id} className='scatter-series'>
+        <g className='scatter-series'>
             {points}
             {children}
         </g>
     );
 };
+ScatterSeries.displayName = 'ScatterSeries';

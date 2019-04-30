@@ -4,12 +4,11 @@ import * as React from 'react';
 import {XYChartContext, XYPoint, XYSerie} from './XYChart';
 
 export interface LineSeriesProps {
-    id?: string;
     interpolate?: string;
     strokeWith?: number;
 }
 
-export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({interpolate = 'linear', strokeWith = 2, id, children}) => {
+export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({interpolate = 'linear', strokeWith = 2, children}) => {
     const {series, xScale, yScale, color, colorPattern} = React.useContext(XYChartContext);
 
     const line = d3.svg.line<XYPoint>()
@@ -28,9 +27,10 @@ export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({interpolat
     ));
 
     return (
-        <g key={id} className='line-series'>
+        <g className='line-series'>
             {lines}
             {children}
         </g>
     );
 };
+LineSeries.displayName = 'LineSeries';
