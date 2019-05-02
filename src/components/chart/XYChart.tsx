@@ -71,7 +71,7 @@ export const XYChart: React.FunctionComponent<XYChartProps> = ({width, height, s
     const xDomain: [number, number] = [Math.min(...xValues), Math.max(...xValues)];
 
     const yValues = ChartUtils.getYValues(series);
-    const yDomain: [number, number] = [Math.min(...yValues), Math.max(...yValues)];
+    const yDomain: [number, number] = [Math.min(0, ...yValues), Math.max(...yValues)];
 
     colorPattern = colorPattern.length ? colorPattern : getDateChartColorPattern(series.length);
     color = color || ((serie: number, pattern: string[]) => pattern[serie]);
