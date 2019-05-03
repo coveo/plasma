@@ -17,27 +17,19 @@ export interface IDropOwnProps extends Partial<IDropPodProps> {
     closeOnClickDrop?: boolean;
 }
 
-export interface IDropStateProps {
-    isOpen: boolean;
-}
-
-export interface IDropDispatchProps {
-    toggle: (isOpen?: boolean) => void;
-}
+export type IDropStateProps = ReturnType<typeof mapStateToProps>;
+export type IDropDispatchProps = ReturnType<typeof mapDispatchToProps>;
 
 export interface IDropProps extends IDropOwnProps,
     Partial<IDropStateProps>,
     Partial<IDropDispatchProps> {}
 
-const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps): IDropStateProps => ({
+const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps) => ({
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: IDropOwnProps,
-): IDropDispatchProps => ({
-    toggle: (isOpen?: boolean) => dispatch(DropActions.toggle(ownProps.id, ownProps.groupId, isOpen)),
+const mapDispatchToProps = (dispatch: IDispatch, {id, groupId}: IDropOwnProps) => ({
+    toggle: (isOpen?: boolean) => dispatch(DropActions.toggle(id, groupId, isOpen)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)

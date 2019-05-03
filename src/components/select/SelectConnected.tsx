@@ -1,20 +1,22 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
+import {Defaults} from '../../Defaults';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
+import {DropPodPosition} from '../drop/DomPositionCalculator';
+import {Drop} from '../drop/Drop';
+import {DropActions} from '../drop/redux/DropActions';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {SelectSelector} from './SelectSelector';
-import * as styles from './styles/SelectConnected.scss';
 
 export interface ISelectSpecificProps {
     button: React.ReactNode;
@@ -31,28 +33,20 @@ export interface ISelectOwnProps {
 }
 
 export interface ISelectStateProps {
-    isOpened?: boolean;
-    active?: number;
-    selectedValues?: string[];
+    isOpened: boolean;
+    active: number;
+    selectedValues: string[];
 }
 
-export interface ISelectDispatchProps {
-    onRender?: () => void;
-    onDestroy?: () => void;
-    onDocumentClick?: () => void;
-    onToggleDropdown?: () => void;
-    onSelectValue?: (value: string, isMulti: boolean) => void;
-    setActive?: (diff: number) => void;
-}
+export type ISelectDispatchProps = ReturnType<typeof mapDispatchToProps>;
 
 export interface ISelectButtonProps {
-    onMouseUp: (e: React.MouseEvent<HTMLElement>) => void;
     onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => void;
     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
     placeholder?: string;
 }
 
-export interface ISelectProps extends ISelectOwnProps, ISelectStateProps, ISelectDispatchProps {}
+export interface ISelectProps extends ISelectOwnProps, Partial<ISelectStateProps>, Partial<ISelectDispatchProps> {}
 
 const makeMapStateToProps = () => {
     const statePropsSelector = createStructuredSelector({
@@ -67,27 +61,27 @@ const makeMapStateToProps = () => {
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
     ownProps: ISelectOwnProps & ISelectSpecificProps,
-): ISelectDispatchProps => ({
+) => ({
     onRender: () => dispatch(addSelect(ownProps.id)),
     onDestroy: () => dispatch(removeSelect(ownProps.id)),
-    onDocumentClick: () => dispatch(toggleSelect(ownProps.id, false)),
     onToggleDropdown: () => dispatch(toggleSelect(ownProps.id)),
-    onSelectValue: (value: string, isMulti: boolean) => dispatch(selectListBoxOption(ownProps.id, isMulti, value)),
+    onSelectValue: (value: string, isMulti: boolean) => {
+        dispatch(selectListBoxOption(ownProps.id, isMulti, value));
+        dispatch(DropActions.toggle(ownProps.id, SelectConnected.DropGroup, false));
+    },
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
 });
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-export class SelectConnected extends React.PureComponent<ISelectProps & ISelectSpecificProps, {}> {
+export class SelectConnected extends React.PureComponent<ISelectProps & ISelectSpecificProps> {
+    static DropGroup = 'select';
     private dropdown: HTMLDivElement;
-    private menu: HTMLDivElement;
 
     componentDidMount() {
         this.props.onRender();
-        document.addEventListener('mousedown', this.handleDocumentClick);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleDocumentClick);
         this.props.onDestroy();
     }
 
@@ -102,13 +96,6 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     render() {
-        let showAbove = false;
-        if (this.dropdown) {
-            const top = this.dropdown.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            showAbove = top >= windowHeight / 2;
-        }
-
         const pickerClasses = classNames(
             'select-dropdown dropdown',
             this.props.selectClasses,
@@ -117,19 +104,27 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 'mod-multi': this.props.multi,
             },
         );
-        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', {
-            hidden: !this.props.isOpened,
-            [styles.showAbove]: this.props.isOpened && showAbove,
-        });
+        const minWidth = this.dropdown && this.dropdown.clientWidth || undefined;
         return (
-            <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
-                <Content content={this.props.button} classes={['select-dropdown-button']} componentProps={{
-                    onMouseUp: (e: React.MouseEvent<HTMLElement>) => this.onToggleDropdown(e),
-                    onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
-                    onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
-                    placeholder: this.props.placeholder,
-                }} key={`${this.props.id}-button`} />
-                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
+            <Drop
+                id={this.props.id}
+                groupId={SelectConnected.DropGroup}
+                selector={Defaults.DROP_ROOT}
+                positions={[DropPodPosition.bottom, DropPodPosition.top]}
+                buttonContainerProps={{className: pickerClasses}}
+                renderOpenButton={(onClick: () => void) => (
+                    <div className='js-drop-button-container' onClick={onClick} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
+                        <Content content={this.props.button} classes={['select-dropdown-button']} componentProps={{
+                            placeholder: this.props.placeholder,
+                            onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
+                            onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
+                        }} key={`${this.props.id}-button`} />
+                    </div>
+                )}
+                minWidth={minWidth}
+                closeOnClickDrop={false}
+            >
+                <div className='select-dropdown-container bg-pure-white' style={{minWidth}}>
                     {this.renderChildren()}
                     <ListBoxConnected
                         id={this.props.id}
@@ -138,7 +133,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                         noResultItem={this.props.noResultItem || undefined}
                     />
                 </div>
-            </div>
+            </Drop>
         );
     }
 
@@ -162,7 +157,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     private getButton(): HTMLElement {
-        return this.dropdown.querySelector('.dropdown-toggle');
+        return this.dropdown && this.dropdown.querySelector('.dropdown-toggle');
     }
 
     private focusOnButton() {
@@ -170,17 +165,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
         button && button.focus();
     }
 
-    private setDropdownPosition() {
-        const button = this.getButton();
-        if (button) {
-            this.menu.style.minWidth = button.clientWidth + 2 + 'px';
-            this.menu.style.left = button.offsetLeft + 'px';
-        }
-    }
-
     private onToggleDropdown(e: React.SyntheticEvent<HTMLElement>) {
-        this.setDropdownPosition();
-
         e.stopPropagation();
         e.preventDefault();
 
@@ -214,23 +199,11 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
         }
 
         if (keyCode.downArrow === e.keyCode) {
-            this.setDropdownPosition();
             this.props.setActive(this.props.isOpened ? 1 : 0);
         }
 
         if (keyCode.upArrow === e.keyCode) {
-            this.setDropdownPosition();
             this.props.setActive(this.props.isOpened ? -1 : 0);
-        }
-    }
-
-    private handleDocumentClick = (e: MouseEvent) => {
-        if (this.props.isOpened && document.body.contains(e.target as HTMLElement)) {
-            const dropdown: Element | Text = ReactDOM.findDOMNode(this.menu);
-
-            if (!dropdown.contains(e.target as Node) && !this.getButton().contains(e.target as Node)) {
-                this.props.onDocumentClick();
-            }
         }
     }
 }

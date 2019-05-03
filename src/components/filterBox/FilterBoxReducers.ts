@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
 import {IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
+import {DropReducerActions, IDropPayload} from '../drop/redux/DropActions';
 import {ListBoxActions} from '../listBox/ListBoxActions';
-import {ISelectPayload, SelectActions} from '../select/SelectActions';
 import {FilterActions} from './FilterBoxActions';
 
 export interface IFilterState {
@@ -34,8 +34,9 @@ export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, ac
                 id: state.id,
                 filterText: '',
             };
-        case SelectActions.toggle:
-            return (action.payload as ISelectPayload).open === true
+        case DropReducerActions.toggle:
+            const cast = action.payload as IDropPayload;
+            return cast.isOpen === true || _.isUndefined(cast.isOpen)
                 ? state
                 : {
                     id: state.id,
@@ -52,7 +53,7 @@ export const filterBoxesReducer = (
 ): IFilterState[] => {
     switch (action.type) {
         case ListBoxActions.select:
-        case SelectActions.toggle:
+        case DropReducerActions.toggle:
         case FilterActions.filterThrough:
             return state.map((filterBox) => filterBoxReducer(filterBox, action));
         case FilterActions.addFilter:

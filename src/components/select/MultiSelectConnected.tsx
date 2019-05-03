@@ -177,7 +177,6 @@ class MultiSelect extends React.Component<IMultiSelectProps & React.ButtonHTMLAt
 
                     className='btn dropdown-toggle multiselect-add dropdown-toggle-placeholder'
                     type='button'
-                    onMouseUp={props.onMouseUp}
                     onKeyDown={props.onKeyDown}
                     onKeyUp={props.onKeyUp}
                     {...buttonAttrs}

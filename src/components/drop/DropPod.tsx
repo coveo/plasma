@@ -39,10 +39,12 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     static defaultProps: Partial<IDropPodProps> = {
         isOpen: false,
         positions: defaultDropPodPosition,
+        parentSelector: Defaults.DROP_ROOT,
         minWidth: 0,
         minHeight: 0,
         hasSameWidth: false,
     };
+    private parentMutationObserver: MutationObserver;
 
     constructor(props: IDropPodProps, state: IDropPodState) {
         super(props, state);
@@ -88,11 +90,21 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     private setEventsOnDocument() {
         window.addEventListener('resize', this.updateOffset, true);
         window.addEventListener('scroll', this.updateOffset, true);
+
+        if (this.dropRef && this.dropRef.current) {
+            const config = {attributes: false, childList: true, subtree: true};
+            this.parentMutationObserver = new MutationObserver(this.updateOffset);
+            this.parentMutationObserver.observe(this.dropRef.current, config);
+        }
     }
 
     private removeEventsOnDocument() {
         window.removeEventListener('scroll', this.updateOffset, true);
         window.removeEventListener('resize', this.updateOffset, true);
+
+        if (this.parentMutationObserver) {
+            this.parentMutationObserver.disconnect();
+        }
     }
 
     private updateOffset() {

@@ -1,6 +1,8 @@
+import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {DefaultGroupIds, DropReducerActions, IDropPayload} from './DropActions';
+import {DropReducerActions, IDropPayload} from './DropActions';
 
 export interface IDropState {
     [groupId: string]: {
@@ -9,7 +11,7 @@ export interface IDropState {
     };
 }
 
-export const dropInitialState: IDropState = {[DefaultGroupIds.default]: {id: undefined, isOpen: false}};
+export const dropInitialState: IDropState = {};
 
 export const dropReducer = (
     state: IDropState = dropInitialState,
@@ -31,7 +33,7 @@ export const dropReducer = (
                 ...state,
                 [action.payload.groupId]: {
                     id: action.payload.id,
-                    isOpen: action.payload.isOpen,
+                    isOpen: _.isUndefined(action.payload.isOpen) ? true : action.payload.isOpen,
                 },
             };
         default:
