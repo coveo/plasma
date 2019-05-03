@@ -51,6 +51,14 @@ $child-arrow-height: 10px;
   &.mod-fixed-width {
     max-width: $input-max-width;
   }
+
+  &.mod-pure-white {
+    background-color: $pure-white;
+
+    &:before {
+      border-bottom-color: $pure-white;
+    }
+  }
 }
 
 .child-section {
