@@ -253,8 +253,9 @@ function sassError(err, doneCallback) {
 }
 
 gulp.task('default', gulp.series(
-    gulp.parallel('sass', 'lib', 'svg'),
+    gulp.parallel('sass', 'lib'),
     gulp.parallel('copy:images', 'copy:fonts', 'copy:js'),
+    'svg'
 ));
 
 gulp.task('docs:external-libs', () => {
