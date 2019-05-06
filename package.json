@@ -38,7 +38,9 @@
     "coverage:report": "istanbul report",
     "version": "gulp clean --all && npm install && npm run build && npm test",
     "report-coverage": "codecov -f coverage/coverage.json",
-    "reconstruct": "gulp clean --all && npm install && npm run docs"
+    "reconstruct": "gulp clean --all && npm install && npm run docs",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "pre-commit": [
     "lintfix"
@@ -51,7 +53,8 @@
     "react-modal": "3.8.1",
     "react-tether": "1.0.4",
     "react-textarea-autosize": "7.1.0",
-    "unidiff": "0.0.4"
+    "unidiff": "0.0.4",
+    "snyk": "^1.161.1"
   },
   "peerDependencies": {
     "codemirror": "^5.39.2",
@@ -178,5 +181,6 @@
     "gulpfile.js",
     "webpack.prod.config.js",
     "LICENSE"
-  ]
+  ],
+  "snyk": true
 }
