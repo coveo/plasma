@@ -70,7 +70,7 @@ const parentDropTarget = {
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))
-class MultiSelect extends React.Component<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>>     {
+class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>>     {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',

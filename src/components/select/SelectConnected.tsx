@@ -30,6 +30,7 @@ export interface ISelectOwnProps {
     selectClasses?: string;
     items?: IItemBoxProps[];
     hasFocusableChild?: boolean;
+    disabled?: boolean;
 }
 
 export interface ISelectStateProps {
@@ -113,7 +114,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 positions={[DropPodPosition.bottom, DropPodPosition.top]}
                 buttonContainerProps={{className: pickerClasses}}
                 renderOpenButton={(onClick: () => void) => (
-                    <div className='js-drop-button-container' onClick={onClick} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
+                    <div className='js-drop-button-container' onClick={() => !this.props.disabled && onClick()} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
                         <Content content={this.props.button} classes={['select-dropdown-button']} componentProps={{
                             placeholder: this.props.placeholder,
                             onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
