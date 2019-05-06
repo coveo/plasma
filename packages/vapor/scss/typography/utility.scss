@@ -50,8 +50,8 @@
 }
 
 .break-word {
-  word-wrap: break-word;
-  word-break: break-all; // Fallback for IE11
+  word-wrap: break-word; // Fallback for IE11
+  word-break: break-word; 
 }
 
 .break-all {
