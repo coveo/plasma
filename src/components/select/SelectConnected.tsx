@@ -28,6 +28,7 @@ export interface ISelectOwnProps {
     placeholder?: string;
     noResultItem?: IItemBoxProps;
     selectClasses?: string;
+    dropClasses?: string;
     items?: IItemBoxProps[];
     hasFocusableChild?: boolean;
     disabled?: boolean;
@@ -125,7 +126,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 minWidth={minWidth}
                 closeOnClickDrop={false}
             >
-                <div className='select-dropdown-container bg-pure-white' style={{minWidth}}>
+                <div className={classNames('select-dropdown-container bg-pure-white', this.props.dropClasses)} style={{minWidth}}>
                     {this.renderChildren()}
                     <ListBoxConnected
                         id={this.props.id}

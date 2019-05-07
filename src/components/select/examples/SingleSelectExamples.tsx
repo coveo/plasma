@@ -130,6 +130,7 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
                         items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                        dropClasses='drop-this'
                     />
                 </div>
             </div>
