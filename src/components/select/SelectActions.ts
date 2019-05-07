@@ -1,9 +1,10 @@
 import {IReduxAction} from '../../utils/ReduxUtils';
+import {DropActions} from '../drop/redux/DropActions';
+import {SelectConnected} from './SelectConnected';
 
 export const SelectActions = {
     add: 'ADD_SELECT',
     remove: 'REMOVE_SELECT',
-    toggle: 'TOGGLE_SELECT',
 };
 
 export interface ISelectPayload {
@@ -21,7 +22,4 @@ export const removeSelect = (id: string): IReduxAction<ISelectPayload> => ({
     payload: {id},
 });
 
-export const toggleSelect = (id: string, open?: boolean): IReduxAction<ISelectPayload> => ({
-    type: SelectActions.toggle,
-    payload: {id, open},
-});
+export const toggleSelect = (id: string, open?: boolean): IReduxAction<ISelectPayload> => DropActions.toggle(id, SelectConnected.DropGroup, open);

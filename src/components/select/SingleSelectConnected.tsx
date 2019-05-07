@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.Component<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
+export class SingleSelectConnected extends React.PureComponent<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
     static defaultProps: Partial<ISingleSelectOwnProps>;
 
     componentDidUpdate(prevProps: ISingleSelectProps) {
@@ -86,7 +86,6 @@ export class SingleSelectConnected extends React.Component<ISingleSelectProps & 
             <button
                 className={buttonClasses}
                 type='button'
-                onMouseUp={props.onMouseUp}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
                 disabled={this.props.disabled}

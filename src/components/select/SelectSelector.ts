@@ -4,23 +4,18 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
 import {MatchFilter} from '../../utils/FilterUtils';
+import {DropSelectors} from '../drop/redux/DropReducers';
 import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
 import {IMultiSelectProps} from './MultiSelectConnected';
-import {ISelectProps} from './SelectConnected';
-import {ISelectState, selectInitialState} from './SelectReducers';
+import {ISelectProps, SelectConnected} from './SelectConnected';
 import {ISelectWithFilterProps} from './SelectWithFilter';
 
 const getListState = (state: IReactVaporState, ownProps: ISelectProps): string[] =>
     state.selectWithFilter && state.selectWithFilter[ownProps.id] ? state.selectWithFilter[ownProps.id].list : [];
 
 const getListBox = (state: IReactVaporState, ownProps: ISelectProps): Partial<IListBoxState> => _.findWhere(state.listBoxes, {id: ownProps.id}) || {};
-
-const getSelect = (state: IReactVaporState, ownProps: ISelectProps): ISelectState => {
-    const select: ISelectState = _.findWhere(state.selects, {id: ownProps.id});
-    return select || selectInitialState;
-};
 
 const getItems = (state: IReactVaporState, ownProps: ISelectProps): IItemBoxProps[] => ownProps.items || [];
 
@@ -70,10 +65,7 @@ const getListBoxActive: (state: IReactVaporState, ownProps: ISelectProps) => num
     (listBox: IListBoxState) => listBox.active,
 );
 
-const getSelectOpened: (state: IReactVaporState, ownProps: ISelectProps) => boolean = createSelector(
-    getSelect,
-    (select: ISelectState) => select.open,
-);
+const getSelectOpened = (state: IReactVaporState, ownProps: ISelectProps) => DropSelectors.isOpen(state, {id: ownProps.id, groupId: SelectConnected.DropGroup});
 
 const multiSelectSelectedValuesCombiner = (
     listBoxSelected: string[],

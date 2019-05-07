@@ -41,12 +41,15 @@ describe('DropPod', () => {
 
             buttonRef = {
                 current: {
-                    offsetParent: {
+                    closest: () => ({
                         getBoundingClientRect: () => (parentOffset),
-                    },
+                    }),
                     getBoundingClientRect: () => (buttonOffset),
                 },
             } as any;
+
+            spyOn(MutationObserver.prototype, 'observe');
+            spyOn(MutationObserver.prototype, 'disconnect');
         };
 
         let buttonRef: React.RefObject<HTMLElement>;

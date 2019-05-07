@@ -1,6 +1,10 @@
+import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {DefaultGroupIds, DropReducerActions, IDropPayload} from './DropActions';
+import {ListBoxActions} from '../../listBox/ListBoxActions';
+import {SelectConnected} from '../../select/SelectConnected';
+import {DropReducerActions, IDropPayload} from './DropActions';
 
 export interface IDropState {
     [groupId: string]: {
@@ -9,13 +13,25 @@ export interface IDropState {
     };
 }
 
-export const dropInitialState: IDropState = {[DefaultGroupIds.default]: {id: undefined, isOpen: false}};
+export const dropInitialState: IDropState = {};
 
 export const dropReducer = (
     state: IDropState = dropInitialState,
     action: IReduxAction<IDropPayload>,
 ): IDropState => {
     switch (action.type) {
+        case ListBoxActions.select:
+            const selectGroup = DropSelectors.getByGroup({drop: state}, {groupId: SelectConnected.DropGroup});
+            if (selectGroup && action.payload.id === selectGroup.id) {
+                return {
+                    ...state,
+                    [SelectConnected.DropGroup]: {
+                        ...selectGroup,
+                        isOpen: false,
+                    },
+                };
+            }
+            return state;
         case DropReducerActions.toggle:
             const group = DropSelectors.getByGroup({drop: state}, {groupId: action.payload.groupId});
             if (group && action.payload.id === group.id) {
@@ -31,7 +47,7 @@ export const dropReducer = (
                 ...state,
                 [action.payload.groupId]: {
                     id: action.payload.id,
-                    isOpen: action.payload.isOpen,
+                    isOpen: _.isUndefined(action.payload.isOpen) ? true : action.payload.isOpen,
                 },
             };
         default:

@@ -10,6 +10,7 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {clearListBoxOption} from '../../listBox/ListBoxActions';
 import {ISelectProps, ISelectSpecificProps, SelectConnected} from '../SelectConnected';
+import {SelectSelector} from '../SelectSelector';
 import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
@@ -30,6 +31,8 @@ describe('Select', () => {
             );
             select = singleSelect.find(SelectConnected).first();
         };
+
+        const getIsOpen = () => SelectSelector.getSelectOpened(store.getState(), {id});
 
         beforeEach(() => {
             store = TestUtils.buildStore();
@@ -231,66 +234,24 @@ describe('Select', () => {
             it('should open the dropdown when the user press enter on the button', () => {
                 mountSingleSelect();
 
-                expect(store.getState().selects[0].open).toBe(false);
+                expect(getIsOpen()).toBe(false);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
-                expect(store.getState().selects[0].open).toBe(true);
+                expect(getIsOpen()).toBe(true);
             });
 
             it('should close the dropdown when the user press escape on the button and the dropdown is open', () => {
                 mountSingleSelect();
 
-                expect(store.getState().selects[0].open).toBe(false);
+                expect(getIsOpen()).toBe(false, 0);
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
-                expect(store.getState().selects[0].open).toBe(false);
+                expect(getIsOpen()).toBe(false, 1);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
-                expect(store.getState().selects[0].open).toBe(true);
+                expect(getIsOpen()).toBe(true, 2);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
-                expect(store.getState().selects[0].open).toBe(false);
-            });
-        });
-
-        describe('click handler', () => {
-            beforeEach(() => {
-                const otherElement: HTMLDivElement = document.createElement('div');
-                otherElement.setAttribute('id', 'other');
-                document.body.appendChild(otherElement);
-            });
-
-            afterEach(() => document.getElementById('other').remove());
-
-            const clickOnEl = (el: Element = document.getElementById('other')) => {
-                const evt = new MouseEvent('mousedown', {
-                    view: window,
-                    bubbles: true,
-                    cancelable: true,
-                    clientX: 20,
-                });
-                el.dispatchEvent(evt);
-            };
-
-            it('should close the dropdown when the user click outside the dropdown and the dropdown is open', () => {
-                mountSingleSelect();
-
-                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
-                expect(store.getState().selects[0].open).toBe(true, '1');
-
-                clickOnEl(select.find('.select-dropdown-container').getDOMNode());
-                expect(store.getState().selects[0].open).toBe(true, '2');
-
-                clickOnEl();
-                expect(store.getState().selects[0].open).toBe(false, '3');
-            });
-
-            it('should not open the dropdown when the user click outside the dropdown', () => {
-                mountSingleSelect();
-
-                expect(store.getState().selects[0].open).toBe(false);
-
-                clickOnEl();
-                expect(store.getState().selects[0].open).toBe(false);
+                expect(getIsOpen()).toBe(false, 3);
             });
         });
     });

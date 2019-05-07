@@ -183,14 +183,6 @@ describe('Select', () => {
                 mountSingleSelect(items);
             });
 
-            it('should toggle the dropdown when the user mouseup on the dropdown-toggle', () => {
-                expect(dispatchSpy).not.toHaveBeenCalledWith(toggleSelect(id));
-
-                singleSelect.find('.dropdown-toggle').simulate('mouseup');
-
-                expect(dispatchSpy).toHaveBeenCalledWith(toggleSelect(id));
-            });
-
             it('should select the active element if the user press enter', () => {
                 store.dispatch(toggleSelect(id, true));
 

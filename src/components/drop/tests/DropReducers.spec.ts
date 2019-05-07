@@ -52,6 +52,10 @@ describe('dropReducer', () => {
                 expect(DropSelectors.isOpen(mockState, {id: 'test', groupId: 'notAGroupId'})).toBe(false);
             });
 
+            it('should return false if the group exist but the element has a different id', () => {
+                expect(DropSelectors.isOpen(mockState, {id: 'test', groupId})).toBe(false);
+            });
+
             it('should return the current isOpen boolean if the group exist and the payload id is the same than the group drop id', () => {
                 expect(DropSelectors.isOpen(mockState, {id, groupId})).toBe(false);
             });

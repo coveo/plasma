@@ -8,6 +8,7 @@ import {ListBox} from '../../listBox/ListBox';
 import {IModalExamplesProps} from '../../modal/examples/ModalCompositeConnectedExamples';
 import {IModalActionPayload, openModal} from '../../modal/ModalActions';
 import {ModalCompositeConnected} from '../../modal/ModalCompositeConnected';
+import {SingleSelectWithFilter} from '../../select/SelectComponents';
 import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop} from '../Drop';
 
@@ -187,26 +188,39 @@ export class DropExamples extends React.PureComponent<any> {
                         <ModalCompositeConnected
                             id={modalId}
                             title='Modal composite'
-                            classes={['mod-slide-in-bottom', 'mod-stick-bottom']}
+                            classes={['mod-fade-in-scale']}
                             modalBodyChildren={(
-                                <Drop
-                                    id={UUID.generate()}
-                                    selector={'#App'}
-                                    positions={[DropPodPosition.right, DropPodPosition.left, DropPodPosition.bottom]}
-                                    buttonContainerProps={{
-                                        className: 'inline-block',
-                                    }}
-                                    renderOpenButton={(onClick: () => void) => (
-                                        <Button
-                                            name={'Text'}
-                                            enabled={true}
-                                            onClick={() => onClick()}
-                                        />
-                                    )}
-                                >
-                                    <ListBox items={defaultItemsLongText} />
-                                </Drop>
-
+                                <>
+                                    <Drop
+                                        id={UUID.generate()}
+                                        selector={'#App'}
+                                        positions={[DropPodPosition.right, DropPodPosition.left, DropPodPosition.bottom]}
+                                        buttonContainerProps={{
+                                            className: 'inline-block',
+                                        }}
+                                        renderOpenButton={(onClick: () => void) => (
+                                            <Button
+                                                name={'Text'}
+                                                enabled={true}
+                                                onClick={() => onClick()}
+                                            />
+                                        )}
+                                    >
+                                        <ListBox items={defaultItemsLongText} />
+                                    </Drop>
+                                    <div className='mt5 pt5'>
+                                        <SingleSelectWithFilter id={UUID.generate()} items={[
+                                            {displayValue: 'Test', value: '0'},
+                                            {displayValue: 'Test One', value: '1'},
+                                            {displayValue: 'Disabled', value: 'disabled', disabled: true},
+                                            {displayValue: 'Three', value: '3'},
+                                            {displayValue: 'Four', value: '4'},
+                                            {displayValue: 'Five', value: '5'},
+                                            {displayValue: 'Six', value: '6'},
+                                            {displayValue: 'Seven', value: '7', selectedDisplayValue: '007 Bond, James'},
+                                        ]} />
+                                    </div>
+                                </>
                             )}
                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                         />
