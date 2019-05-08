@@ -41,7 +41,7 @@ input[type=checkbox].coveo-slide-toggle {
 
   &:checked {
     + button:before {
-      background-color: $green;
+      background-color: $orange;
     }
 
     + button:after {

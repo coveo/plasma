@@ -28,13 +28,13 @@
     &.active {
       color: $medium-blue;
 
-      border-bottom: $tab-bottom-border-height solid $medium-blue;
+      border-bottom: $tab-bottom-border-height solid $orange;
     }
 
     &.disabled {
       color: $medium-grey;
 
-      cursor: default;
+      cursor: not-allowed;
     }
 
     &:last-child {
