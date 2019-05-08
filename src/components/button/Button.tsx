@@ -1,6 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
 import {IBaseActionOptions} from '../actions/Action';
 import {Tooltip} from '../tooltip/Tooltip';
 
@@ -8,6 +10,8 @@ export interface IButtonProps extends IBaseActionOptions {
     small?: boolean;
     classes?: string[];
 }
+
+const ButtonPropsToOmit = keys<IButtonProps>();
 
 export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
 
@@ -31,6 +35,7 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
         let buttonElement: JSX.Element;
 
         let buttonAttrs = {
+            ..._.omit(this.props, ButtonPropsToOmit),
             disabled: !this.props.enabled,
             onClick: () => this.onClick(),
         };

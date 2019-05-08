@@ -126,6 +126,15 @@ export class ButtonExamples extends React.Component<any, any> {
                         </Button>
                     </div>
                 </div>
+
+                <div className='form-group mb5'>
+                    <label className='form-control-label'>Button with custom style</label>
+                    <div className='form-control'>
+                        <Button enabled style={{background: 'linear-gradient(to right, blue, black)', color: 'white', border: 'none', borderRadius: 5}}>
+                            I Rock
+                        </Button>
+                    </div>
+                </div>
             </div>
         );
     }

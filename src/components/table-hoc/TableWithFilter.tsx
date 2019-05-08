@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys/index';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
