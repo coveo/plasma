@@ -61,13 +61,13 @@
 
     &:checked + label {
       &:before {
-        border: 2px solid $green;
+        border: 2px solid $orange;
       }
 
       &:after {
         z-index: 0;
 
-        background-color: $green;
+        background-color: $orange;
         transform: scale(0.5);
       }
     }
@@ -75,6 +75,7 @@
     &:disabled {
       & + label {
         color: $medium-grey;
+        cursor: not-allowed;
 
         &:before {
           border-color: $medium-grey;

@@ -51,8 +51,8 @@ input[type=checkbox].coveo-checkbox {
   }
 
   &:checked + button {
-    background-color: $green;
-    border-color: $green;
+    background-color: $orange;
+    border-color: $orange;
 
     &:before {
       position: absolute; // Position it in the center of the box
@@ -103,7 +103,7 @@ input[type=checkbox].coveo-checkbox {
   &:disabled + button {
     background-color: $dark-grey;
 
-    cursor: default;
+    cursor: not-allowed;
     opacity: 0.2;
   }
 }
@@ -122,7 +122,7 @@ input[type=checkbox].coveo-checkbox {
   }
 
   &.disabled .label {
-    cursor: default;
+    cursor: not-allowed;
     opacity: 0.4;
   }
 

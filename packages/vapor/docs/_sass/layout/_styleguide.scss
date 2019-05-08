@@ -7,6 +7,12 @@
   border: 1px solid #e7e7e7;
   border-radius: 4px;
   box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.1);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sg-component ul {
+  list-style-type: disc;
 }
 
 .sg-component-header {
@@ -31,6 +37,15 @@
 .sg-component-body {
   padding: 2em;
   position: relative;
+}
+
+.sg-component h2 {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.sg-component code {
+  font-family: monospace;
 }
 
 // Icons
