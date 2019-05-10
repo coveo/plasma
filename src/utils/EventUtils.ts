@@ -6,7 +6,7 @@ export class EventUtils {
         let currentTarget: HTMLElement = e && (e.target as HTMLElement);
         let isClickingInside = false;
 
-        while (e && !isEmpty(classname) && currentTarget !== e.currentTarget && !isClickingInside) {
+        while (e && !isEmpty(classname) && currentTarget && currentTarget !== e.currentTarget && !isClickingInside) {
             isClickingInside = currentTarget.classList.contains(classname);
             currentTarget = currentTarget.parentElement;
         }
