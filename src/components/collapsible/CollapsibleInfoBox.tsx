@@ -21,7 +21,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
             <CollapsibleConnected
                 id={this.props.id}
                 className={classNames(styles.container, 'text-grey-9 mod-rounded-border-2')}
-                headerClasses='p1'
+                headerClasses='p1 pr0'
                 toggleIconClassName='fill-medium-blue'
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
