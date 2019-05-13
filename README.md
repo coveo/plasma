@@ -12,7 +12,7 @@
 ## Getting started
 
 ### Prerequisites
-This repository uses some external libs that are defined as [peer dependencies](https://devdocs.io/npm/files/package.json#peerdependencies). You must install them in you own project so that `react-vapor` can do its magic properly. Theses peer dependencies are listed in the [package.json](https://github.com/coveo/react-vapor/blob/master/package.json) file along with their individual version requirements.
+This repository uses some external libs that are defined as [peer dependencies](https://devdocs.io/npm/files/package.json#peerdependencies). You must install them in you own project so that `react-vapor` can do its magic properly. These peer dependencies are listed in the [package.json](https://github.com/coveo/react-vapor/blob/master/package.json) file along with their individual version requirements.
 
 
 ### Install
@@ -48,7 +48,7 @@ ReactDom.render(
 ----
 ## Contributing
 
-### Building
+### Build
 
 Clone the repository using your favorite method.
 ```bash
@@ -64,7 +64,7 @@ npm install
 yarn install
 ```
 
-### Running the demo page locally
+### Run the demo page locally
 
 To build and run the demo page locally, simply run `npm start` and access http://localhost:8080/. Note that the demo page will refresh automatically on file save.
 
