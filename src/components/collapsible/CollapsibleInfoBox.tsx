@@ -26,7 +26,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
             >
-                <div className={classNames(styles.alignWithIcon, 'px1 pb1 mr3')}>
+                <div className={classNames(styles.alignWithIcon, styles.pbBox, 'px1 mr3')}>
                     {this.props.children}
                 </div>
             </CollapsibleConnected>
