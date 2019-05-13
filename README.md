@@ -84,6 +84,7 @@ npm test
 * `npm test` command creates a local coverage report at the end of its execution that you can browse through in order to see the hits and misses of your unit tests. View the report by opening up the `coverage/lcov-report/index.html` file in your favorite internet browser.
 * `npm run test:watch` command will run tests on file save.
 * `npm run reconstruct` command will reinstall and rebuild from scratch your local branch without loosing any pending change. Run this if you think your current state is messed up.
+* You can target specific unit tests or test suite by putting a `f` character in front of any `it` or `describe` block (thus resulting in `fit` and `fdescribe`). Only tests inside the focused blocks will be run on the next execution. **Don't forget to remove them before commit**.
 
 ----
 
