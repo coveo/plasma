@@ -106,7 +106,10 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
         window.clearTimeout(this.timeoutId);
     }
 
-    private onRequestClose() {
+    private onRequestClose(e: MouseEvent|KeyboardEvent) {
+        e.preventDefault();
+        e.stopPropagation();
+
         if (this.props.validateShouldNavigate) {
             if (this.props.validateShouldNavigate(this.props.isDirty)) {
                 callIfDefined(this.props.onClose);
