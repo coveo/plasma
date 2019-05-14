@@ -106,7 +106,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
         window.clearTimeout(this.timeoutId);
     }
 
-    private onRequestClose(e: MouseEvent|KeyboardEvent) {
+    private onRequestClose(e: MouseEvent | KeyboardEvent) {
         e.preventDefault();
         e.stopPropagation();
 
