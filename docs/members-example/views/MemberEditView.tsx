@@ -62,9 +62,6 @@ const mapDispatchToProps = (dispatch: (action: Action) => void, ownProps: IMembe
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MemberEditView extends React.Component<IMemberEditViewProps, IMemberEditionState> {
-    private popover: Popover;
-
-    private emailInput: HTMLInputElement;
     private sendEmailCheckbox: HTMLInputElement;
 
     render() {
@@ -72,7 +69,6 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
 
         return (
             <Popover
-                ref={(popover: Popover) => this.popover = popover}
                 attachment='top left'
                 targetAttachment='bottom left'
                 constraints={[{
@@ -90,7 +86,6 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
                         <fieldset className='form-group input-field'>
                             <input
                                 type='text' required name='email'
-                                ref={(email) => this.emailInput = email}
                                 value={this.props.email}
                                 onChange={(event: React.FormEvent<HTMLInputElement>) => {
                                     this.props.changeMemberEmail((event.target as HTMLInputElement).value);
@@ -119,7 +114,7 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
                         </button>
                         <button type='button' className='btn mod-small' onClick={() => this.props.cancelMemberChanges()}>
                             Cancel
-            </button>
+                        </button>
                     </div>
                 </div>
             </Popover>

@@ -295,7 +295,7 @@ class App extends React.PureComponent<{}, AppState> {
         const el = document.querySelector(`[href="#${this.getHash()}"]`);
 
         if (el) {
-            el.scrollIntoView({behavior: 'instant', block: 'center'});
+            el.scrollIntoView({behavior: 'instant', block: 'center'} as any);
         }
 
         document.addEventListener(SideNavigation.toggleEvent, () => {
