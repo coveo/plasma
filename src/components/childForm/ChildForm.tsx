@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 import * as _ from 'underscore';
 import {ValidComponentChildren} from '../../utils/ValidComponentChildren';
 
@@ -15,7 +16,10 @@ export class ChildForm extends React.Component<IChildFormProps> {
         }, null);
 
         return (
-            <div {..._.omit(this.props, 'disabled')}>
+            <div
+                {..._.omit(this.props, 'disabled')}
+                className={classNames('coveo-child', this.props.className)}
+            >
                 {children}
             </div>
         );
