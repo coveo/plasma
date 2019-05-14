@@ -527,7 +527,7 @@ export class MultilineBoxExamples extends React.PureComponent {
                 </div>
                 <div className='form-group'>
                     <label className='form-control-label'>
-                        Complex multiline box hoc without icon when dragging
+                        Complex multiline box hoc with a custom icon for the drag and drop
                     </label>
                     <ComplexMultilineBox3<IMultilineBoxExamplesProps>
                         id={UUID.generate()}
