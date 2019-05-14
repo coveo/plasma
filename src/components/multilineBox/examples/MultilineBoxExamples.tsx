@@ -1,8 +1,10 @@
+import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
 import {IButtonProps} from '../../button/Button';
 import {InputConnected} from '../../input/InputConnected';
+import {Svg} from '../../svg/Svg';
 import {multilineBoxContainer} from '../hoc/MultilineBoxContainer';
 import {multilineBoxWithDnD} from '../hoc/MultilineBoxWithDnD';
 import {defaultMultilineBoxRemoveButtonClasses, multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
@@ -109,6 +111,21 @@ const ComplexMultilineBox2 = _.compose(
             draggableContainerProps: {
                 className: 'inline-flex center-align',
             },
+        },
+    }),
+    multilineBoxWithRemoveButton(),
+    multilineBoxContainer({
+        containerNode: containerNodeExample,
+    }),
+)(MultilineBox);
+
+const ComplexMultilineBox3 = _.compose(
+    multilineBoxWithDnD({
+        DnDContainerProps: {
+            draggableContainerProps: {
+                className: 'inline-flex center-align',
+            },
+            icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass='icon fill-medium-grey mod-lg' />,
         },
     }),
     multilineBoxWithRemoveButton(),
@@ -472,6 +489,47 @@ export class MultilineBoxExamples extends React.PureComponent {
                         Complex multiline box hoc without icon when dragging
                     </label>
                     <ComplexMultilineBox2<IMultilineBoxExamplesProps>
+                        id={UUID.generate()}
+                        data={[{
+                            name: 'Poire',
+                            displayName: 'Pear',
+                        }]}
+                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                            _.map(data, (cData: IExampleData) => (
+                                <React.Fragment key={cData.id}>
+                                    <InputConnected
+                                        id={`${cData.id}1`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.name}
+                                        validate={(value: string) => {
+                                            if (value !== '') {
+                                                if (cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                                return true;
+                                            }
+
+                                            return false;
+                                        }}
+                                        labelProps={{invalidMessage: 'Do not leave me empty'}}
+                                        validateOnChange
+                                    />
+                                    <InputConnected
+                                        id={`${cData.id}2`}
+                                        classes='mt0 inline-block mx1'
+                                        defaultValue={cData.props.displayName}
+                                    />
+                                </React.Fragment>
+                            ),
+                            )
+                        }
+                    />
+                </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Complex multiline box hoc without icon when dragging
+                    </label>
+                    <ComplexMultilineBox3<IMultilineBoxExamplesProps>
                         id={UUID.generate()}
                         data={[{
                             name: 'Poire',

@@ -1,11 +1,12 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 import {ValidComponentChildren} from '../../utils/ValidComponentChildren';
 
-export interface IChildFormProps {
+export interface IChildFormProps extends React.HTMLAttributes<HTMLDivElement> {
     disabled?: boolean;
 }
 
-export class ChildForm extends React.Component<IChildFormProps, any> {
+export class ChildForm extends React.Component<IChildFormProps> {
     render() {
         const children = ValidComponentChildren.map(this.props.children, (child: React.ReactElement<any>) => {
             return React.cloneElement(child, {
@@ -14,7 +15,7 @@ export class ChildForm extends React.Component<IChildFormProps, any> {
         }, null);
 
         return (
-            <div className='coveo-child'>
+            <div {..._.omit(this.props, 'disabled')}>
                 {children}
             </div>
         );
