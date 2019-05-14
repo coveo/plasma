@@ -1,6 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
+
 import {keyCode} from '../../../utils/InputUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
 
 describe('ModalBackdrop', () => {
@@ -8,9 +10,8 @@ describe('ModalBackdrop', () => {
     describe('<ModalBackdrop />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <ModalBackdrop />,
-                );
+                const wrapper = shallow(<ModalBackdrop />);
+                wrapper.unmount();
             }).not.toThrow();
         });
     });
@@ -19,6 +20,8 @@ describe('ModalBackdrop', () => {
         let modalBackdrop: ReactWrapper<IModalBackdropProps, any>;
 
         beforeEach(() => {
+            TestUtils.makeDeferSync();
+
             modalBackdrop = mount(
                 <ModalBackdrop />,
                 {attachTo: document.getElementById('App')},
@@ -69,11 +72,9 @@ describe('ModalBackdrop', () => {
         });
 
         it('should call handleClick when user hits escape and the modal is the last one opened', () => {
-            jasmine.clock().install();
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: true});
-            jasmine.clock().tick(5);
 
             const event = document.createEvent('Event');
             (event as any).keyCode = keyCode.escape;
@@ -81,27 +82,43 @@ describe('ModalBackdrop', () => {
             document.dispatchEvent(event);
 
             expect(handleClickSpy).toHaveBeenCalledTimes(1);
-            jasmine.clock().uninstall();
         });
 
         it('should not call handleClick when user hits escape and the modal is not the last one opened', () => {
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
-            const event = document.createEvent('Event');
 
             modalBackdrop.setProps({lastOpened: false});
+
+            const event = document.createEvent('Event');
             (event as any).keyCode = keyCode.escape;
             event.initEvent('keydown', true, true);
             document.dispatchEvent(event);
 
-            expect(handleClickSpy).toHaveBeenCalledTimes(0);
+            expect(handleClickSpy).not.toHaveBeenCalled();
         });
 
         it('should not call handleClick when user hits another key', () => {
             const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
 
+            modalBackdrop.setProps({lastOpened: true});
+
             const event = document.createEvent('Event');
             (event as any).keyCode = keyCode.ctrl;
             event.initEvent('keydown', true, true);
+            document.dispatchEvent(event);
+
+            expect(handleClickSpy).not.toHaveBeenCalled();
+        });
+
+        it('should not call handleClick when user hits escape but the event was handled somewhere else', () => {
+            const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
+
+            modalBackdrop.setProps({lastOpened: true});
+
+            const event = document.createEvent('Event');
+            (event as any).keyCode = keyCode.escape;
+            event.initEvent('keydown', true, true);
+            event.preventDefault();
             document.dispatchEvent(event);
 
             expect(handleClickSpy).not.toHaveBeenCalled();
