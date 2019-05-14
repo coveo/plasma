@@ -12,7 +12,7 @@
 ## Getting started
 
 ### Prerequisites
-This repository uses some external libs that are defined as [peer dependencies](https://devdocs.io/npm/files/package.json#peerdependencies). You must install them in you own project so that `react-vapor` can do its magic properly. These peer dependencies are listed in the [package.json](https://github.com/coveo/react-vapor/blob/master/package.json) file along with their individual version requirements.
+This repository uses some external libraries defined as [peer dependencies](https://devdocs.io/npm/files/package.json#peerdependencies). You must install those libraries in you own project in order for `react-vapor` to work properly. All peer dependencies are listed in the [package.json](https://github.com/coveo/react-vapor/blob/master/package.json) file along with their respective version requirements.
 
 
 ### Install
@@ -21,7 +21,7 @@ npm install react-vapor
 # or
 yarn add react-vapor
 ```
-If you're looking to use `react-vapor` in a typescript context, the package already includes its types.
+If you want to use `react-vapor` in a TypeScript context, the package already includes its types.
 ### Usage
 In a `.jsx` context: 
 ```jsx
@@ -57,7 +57,7 @@ git clone https://github.com/coveo/react-vapor.git
 git clone git@github.com:coveo/react-vapor.git
 ```
 
-Make sure you have Node JS and NPM installed and install `react-vapor`'s dependencies.
+Make sure you have both Node.js' and NPM's LTS versions installed, then install `react-vapor`'s dependencies.
 ```bash
 npm install
 # or 
@@ -75,15 +75,15 @@ npm test
 ```
 
 ### Guidelines
-* We aim to have the highest code coverage possible. A pull request that increases or unchanges the code coverage ratio has higher chances of getting merged quickly.
-* Make sure your pull requests follow our code style. Normally the `lintfix` npm script is run on pre-commit so this should not be a problem. However, you can double check by running the script manually with `npm run lintfix`.
-* We're pretty flexible on the commit messages structure and pull requests descriptions, but still make sure you give enough details to your fellow reviewers.
+* A pull request that increases or does not change the code coverage ratio has a higher chance of being merged quickly.
+* Make sure your pull requests follow the project's code style. Normally the `lintfix` npm script is run on pre-commit so this should not be a problem. However, you can double check by running the script manually with `npm run lintfix`.
+* We're pretty flexible on the commit messages structure and pull requests descriptions, but still, make sure your commit messages and pull request descriptions provide enough details for fellow reviewers.
 * We tend to avoid comments in our code base, we strongly prefer good naming and code structure.
 
 ### Tips and tricks
-* `npm test` command creates a local coverage report at the end of its execution that you can browse through in order to see the hits and misses of your unit tests. View the report by opening up the `coverage/lcov-report/index.html` file in your favorite internet browser.
+* `npm test` command creates a local coverage report at the end of its execution that you can browse through in order to see the hits and misses of your unit tests. View the report by opening the `coverage/lcov-report/index.html` file in your favorite browser.
 * `npm run test:watch` command will run tests on file save.
-* `npm run reconstruct` command will reinstall and rebuild from scratch your local branch without loosing any pending change. Run this if you think your current state is messed up.
+* `npm run reconstruct` command will reinstall and rebuild your local branch from scratch without discarding any pending change. Run this if you think your current state is corrupted.
 * You can target specific unit tests or test suite by putting a `f` character in front of any `it` or `describe` block (thus resulting in `fit` and `fdescribe`). Only tests inside the focused blocks will be run on the next execution. **Don't forget to remove them before commit**.
 
 ----
