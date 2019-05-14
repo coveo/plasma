@@ -2,10 +2,13 @@
 // implemented with the new react-transition-group https://github.com/reactjs/react-transition-group
 
 import * as React from 'react';
-import Transition, {TransitionProps} from 'react-transition-group/Transition';
+import Transition from 'react-transition-group/Transition';
 
-export interface SlideYProps extends Partial<TransitionProps> {
+export interface SlideYProps {
+    id?: string;
     duration?: number;
+    in?: boolean;
+    timeout?: number | {enter?: number, exit?: number};
 }
 
 export class SlideY extends React.PureComponent<SlideYProps> {

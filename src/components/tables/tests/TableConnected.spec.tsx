@@ -37,7 +37,7 @@ describe('<TableConnected />', () => {
 
     describe('render', () => {
 
-        const getInitialTableDataMock: any = (selectedIds = ['id1']) => ({
+        const getInitialTableDataMock: any = (selectedIds: string[] = ['id1']) => ({
             byId: {
                 id1: {
                     status: 'pokeball',

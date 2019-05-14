@@ -168,22 +168,22 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
                     ? this.getTextFiltered(value)
                     : value;
 
-                const formattedOption = (
-                    <ElementTag
-                        key={opt.value}
-                        className={wrapperClasses}
-                        title={value}
-                        data-value={opt.value}
-                        onMouseDown={(e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e)}
-                    >
-                        <span className={optionClasses}>
-                            {this.getDropdownPrepend(opt)}
-                            {this.getSvg(opt)}
-                            {valueToShow}
-                        </span>
-                        {this.getDropdownOptionAppend(opt)}
-                    </ElementTag>
-                );
+                const formattedOption = React.createElement(ElementTag, {
+                    key: opt.value,
+                    className: wrapperClasses,
+                    title: value,
+                    'data-value': opt.value,
+                    onMouseDown: (e: React.MouseEvent<HTMLSpanElement>) => this.handleOnOptionClick(e),
+                }, (
+                        <>
+                            <span className={optionClasses}>
+                                {this.getDropdownPrepend(opt)}
+                                {this.getSvg(opt)}
+                                {valueToShow}
+                            </span>
+                            {this.getDropdownOptionAppend(opt)}
+                        </>
+                    ));
 
                 return opt.disabled && opt.disabledTooltip
                     ? <Tooltip key={opt.value} noSpanWrapper {...opt.disabledTooltip}>{formattedOption}</Tooltip>
@@ -435,7 +435,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
     }
 
     private updateScrollPositionBasedOnActiveElement() {
-        const activeLi: NodeListOf<Element> = this.ulElement ? this.ulElement.getElementsByClassName('active') : undefined;
+        const activeLi: HTMLCollectionOf<Element> = this.ulElement ? this.ulElement.getElementsByClassName('active') : undefined;
         if (activeLi && activeLi.length) {
             const el: Element = activeLi[0];
             if (!this.isScrolledIntoView(el)) {

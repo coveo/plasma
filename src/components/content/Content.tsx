@@ -26,9 +26,7 @@ export class Content extends React.Component<IContentProps, {}> {
     }
 
     render() {
-        const classes = classNames(this.props.classes);
-        return (<this.props.tag className={classes}>
-            {this.getContent()}
-        </this.props.tag>);
+        const className = classNames(this.props.classes);
+        return React.createElement(this.props.tag, {className}, this.getContent());
     }
 }
