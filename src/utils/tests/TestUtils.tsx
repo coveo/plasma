@@ -49,6 +49,14 @@ export class TestUtils {
         // tslint:enable
     }
 
+    static makeDeferSync() {
+        // tslint:disable
+        spyOn(_, 'defer').and.callFake(function(this: any, func: () => void) {
+            func.apply(this, arguments);
+        });
+        // tslint:enable
+    }
+
     static wrapComponentInDnDContext(WrappedComponent: any) {
         @DragDropContext(TestBackend)
         class TestContextContainer extends React.Component {

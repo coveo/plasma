@@ -75,7 +75,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
     }
 
     private onKeyDown = (e: KeyboardEvent) => {
-        if (this.canClose && e.keyCode === keyCode.escape) {
+        if (this.canClose && !e.defaultPrevented && e.keyCode === keyCode.escape) {
             e.stopPropagation();
             e.preventDefault();
             this.handleClick();

@@ -39,6 +39,8 @@ describe('Modal with Prevent Navigation', () => {
         component = mountWithStore(<SomeModalWithPreventNaviationHOC />, store);
     };
 
+    const fakeEvent = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+
     afterEach(() => {
         if (component && component.exists()) {
             component.unmount();
@@ -68,7 +70,7 @@ describe('Modal with Prevent Navigation', () => {
         mountComponentWithProps({}, false);
 
         // First because the prevent navigate modal is added after in the DOM
-        component.find(ReactModal).first().props().onRequestClose(undefined);
+        component.find(ReactModal).first().props().onRequestClose(fakeEvent);
         expect(component.find('ModalWithPreventNavigation').state().showPrevent).toBe(false);
     });
 
@@ -76,7 +78,7 @@ describe('Modal with Prevent Navigation', () => {
         mountComponentWithProps({}, true);
 
         // First because the prevent navigate modal is added after in the DOM
-        component.find(ReactModal).first().props().onRequestClose(undefined);
+        component.find(ReactModal).first().props().onRequestClose(fakeEvent);
         expect(component.find('ModalWithPreventNavigation').state().showPrevent).toBe(true);
     });
 
