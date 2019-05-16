@@ -21,12 +21,12 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
             <CollapsibleConnected
                 id={this.props.id}
                 className={classNames(styles.container, 'text-grey-9 mod-rounded-border-2')}
-                headerClasses='p1 pr0'
+                headerClasses='p1'
                 toggleIconClassName='fill-medium-blue'
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
             >
-                <div className={classNames(styles.alignWithIcon, styles.pbBox, 'px1 mr3')}>
+                <div className={classNames(styles.alignWithIcon, 'px1 pb1 mr3')}>
                     {this.props.children}
                 </div>
             </CollapsibleConnected>
@@ -36,7 +36,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
     private getHeader(): React.ReactNode {
         return this.props.isSection
             ? (
-                <div className='flex full-content-x'>
+                <div className='flex pl1'>
                     <h2 className='text-medium-blue'>{this.props.title}</h2>
                     {
                         this.props.sectionAdditionalContent

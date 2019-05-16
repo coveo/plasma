@@ -22,6 +22,7 @@ export const CollapsibleInfoBoxExamples = () => (
                     id='collapsible-info-box-example-2'
                     title='Section A'
                     sectionAdditionalContent={<span style={{position: 'relative', top: '8px', marginLeft: '20px'}}>Add anything here</span>}
+                    isSection
                 >
                     Lorem ipsum dolor sit amet.
                 </CollapsibleInfoBox>
@@ -36,7 +37,7 @@ export const CollapsibleInfoBoxExamples = () => (
                     title='Section A'
                     sectionAdditionalContent={<span style={{position: 'relative', top: '8px', marginLeft: '20px'}}>Add anything here</span>}
                     sectionAdditionalContentCondition={() => !(new Date().getMinutes() % 2)}
-
+                    isSection
                 >
                     Lorem ipsum dolor sit amet.
                 </CollapsibleInfoBox>
