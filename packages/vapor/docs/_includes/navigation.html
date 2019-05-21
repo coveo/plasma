@@ -5,9 +5,11 @@
             {% if pageInformation.title %}
             <li class="block navigation-menu-section">
                 <header class="navigation-menu-section-header text-white">
-                    <span class="navigation-menu-section-header-icon"></span>
+                    <span class="navigation-menu-section-header-icon fill-white transparency-3">
+                        {{ pageInformation.icon}}
+                    </span>
                     {{ pageInformation.title }}
-                    <span class="collapsible-arrow icon fill-white open">
+                    <span class="collapsible-arrow icon fill-white transparency-4 open">
                         {{ site.data.icons['arrow-bottom-rounded'] }}
                     </span>
                 </header>
