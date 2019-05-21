@@ -86,6 +86,7 @@ export class SingleSelectConnected extends React.PureComponent<ISingleSelectProp
             <button
                 className={buttonClasses}
                 type='button'
+                onClick={props.onClick}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
                 disabled={this.props.disabled}
