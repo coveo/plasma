@@ -190,13 +190,15 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
 
         if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpened) {
             const actives = _.chain(this.props.items)
-                .filter((item: IItemBoxProps) => !item.hidden && (!this.props.multi || !_.contains(this.props.selectedValues, item.value)) && !item.disabled)
-                .value();
+                .filter((item: IItemBoxProps) => !item.hidden && (!this.props.multi
+                    || !_.contains(this.props.selectedValues, item.value)) && !item.disabled).value();
             const active = actives[mod(this.props.active, actives.length)];
             if (active) {
                 this.props.onSelectValue(active.value, this.props.multi);
+                this.onToggleDropdown(e);
             }
-        } else if (keyCode.enter === e.keyCode) {
+        } else if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode)
+            && !this.props.isOpened) {
             this.onToggleDropdown(e);
         }
 
